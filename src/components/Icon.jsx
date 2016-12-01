@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import Config from './config';
 
 function getIconSprite(name) {
     return name.split(':')[0];
@@ -8,7 +9,6 @@ function getIconSprite(name) {
 function getIconName(name) {
     return name.split(':')[1];
 }
-
 
 export default class Icon extends React.Component {
     render() {
@@ -31,7 +31,8 @@ Icon.propTypes = {
 
 export class IconSvg extends React.Component {
     render() {
-        let useTag = `<use xlink:href="/icons/${ getIconSprite(this.props.iconName) }-sprite/svg/symbols.svg#${ getIconName(this.props.iconName ) }"></use>`;
+        let pathToAssets = Config.get('pathToAssets');
+        let useTag = `<use xlink:href="${ pathToAssets }/icons/${ getIconSprite(this.props.iconName) }-sprite/svg/symbols.svg#${ getIconName(this.props.iconName ) }"></use>`;
         return <svg aria-hidden="true" className={ this.getSvgClasses.call(this) } dangerouslySetInnerHTML={{__html: useTag }}/>
     }
 
