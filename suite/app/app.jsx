@@ -1,5 +1,5 @@
 import React from 'react';
-import {GlobalHeader, Tree, TreeItem} from './../../entry';
+import {GlobalHeader, Tree, TreeItem } from './../../entry';
 import {AppStyles} from './styles';
 
 
