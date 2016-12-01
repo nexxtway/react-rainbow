@@ -24,7 +24,7 @@ let handleDocumentClick = function (root, closeAction, e) {
     closeAction();
 };
 
-export let outsideClick = function () {
+export default function () {
     let onDocumentClickListener;
     let onDocumentKeyupListener;
     

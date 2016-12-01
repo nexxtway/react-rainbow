@@ -7,6 +7,9 @@ import LightningTree from './src/components/Tree.jsx';
 import LightningTreeItem from './src/components/TreeItem.jsx';
 import LightningConfig from './src/components/config';
 
+//libraries
+import LightningOutsideClick from './src/components/libs/outsideClick';
+
 export const Button = LightningButton;
 export const Badge = LightningBadge;
 export const GlobalHeader = LightningGlobalHeader;
@@ -15,4 +18,6 @@ export const DataGrid = LightningDataGrid;
 export const Tree = LightningTree;
 export const TreeItem = LightningTreeItem;
 export const Config = LightningConfig;
+export const outsideClick = LightningOutsideClick;
+
 
