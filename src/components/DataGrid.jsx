@@ -34,12 +34,12 @@ export default class DataGrid extends React.Component {
     }
 
     getTableBody() {
-        var metadata = this.props.metadata;
-        var dataSource = this.props.dataSource;
+        let metadata = this.props.metadata;
+        let dataSource = this.props.dataSource;
 
-        var rows = dataSource.map(function (field, index) {
+        let rows = dataSource.map(function (field, index) {
 
-            var fields = metadata.fields.map(function (meta) {
+            let fields = metadata.fields.map(function (meta) {
                 let CustomView = meta.customView;
                 
                 return (

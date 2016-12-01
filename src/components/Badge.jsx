@@ -4,7 +4,7 @@ import classnames from 'classnames';
 export default class Badge extends React.Component {
     render() {
         return (
-            <span className={ this.getBadgeClass() }>
+            <span className={ this.getBadgeClass() } style={ this.props.style }>
                 { this.props.label }
             </span>
         )
@@ -14,3 +14,8 @@ export default class Badge extends React.Component {
         return classnames('slds-badge', this.props.className);
     }
 }
+
+Badge.PropTypes = {
+    className: React.PropTypes.string,
+    style: React.PropTypes.object
+};
