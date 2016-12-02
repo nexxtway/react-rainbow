@@ -27,7 +27,8 @@ let handleDocumentClick = function (root, closeAction, e) {
 export default function () {
     let onDocumentClickListener;
     let onDocumentKeyupListener;
-    
+    let isListening = false;
+
     return {
         bindRootCloseHandlers: function (root, closeAction) {
             var doc = window.document;
@@ -36,12 +37,17 @@ export default function () {
             
             doc.addEventListener('click', onDocumentClickListener);
             doc.addEventListener('keyup', onDocumentKeyupListener);
+            isListening = true;
         },
         unbindRootCloseHandlers: function () {
             var doc = window.document;
             
             doc.removeEventListener('click', onDocumentClickListener);
             doc.removeEventListener('keyup', onDocumentKeyupListener);
+            isListening = false;
+        },
+        isListening: function () {
+            return isListening;
         }
     }    
 };

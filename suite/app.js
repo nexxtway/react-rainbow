@@ -26757,7 +26757,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.outsideClick = exports.Config = exports.TreeItem = exports.Tree = exports.DataGrid = exports.Calendar = exports.GlobalHeader = exports.Badge = exports.Button = undefined;
+	exports.outsideClick = exports.Config = exports.MenuItem = exports.Menu = exports.Dropdown = exports.TreeItem = exports.Tree = exports.DataGrid = exports.Calendar = exports.GlobalHeader = exports.Badge = exports.Button = undefined;
 
 	var _Button = __webpack_require__(235);
 
@@ -26787,6 +26787,18 @@
 
 	var _TreeItem2 = _interopRequireDefault(_TreeItem);
 
+	var _Dropdown = __webpack_require__(391);
+
+	var _Dropdown2 = _interopRequireDefault(_Dropdown);
+
+	var _Menu = __webpack_require__(392);
+
+	var _Menu2 = _interopRequireDefault(_Menu);
+
+	var _MenuItem = __webpack_require__(393);
+
+	var _MenuItem2 = _interopRequireDefault(_MenuItem);
+
 	var _config = __webpack_require__(242);
 
 	var _config2 = _interopRequireDefault(_config);
@@ -26806,6 +26818,9 @@
 	var DataGrid = exports.DataGrid = _DataGrid2.default;
 	var Tree = exports.Tree = _Tree2.default;
 	var TreeItem = exports.TreeItem = _TreeItem2.default;
+	var Dropdown = exports.Dropdown = _Dropdown2.default;
+	var Menu = exports.Menu = _Menu2.default;
+	var MenuItem = exports.MenuItem = _MenuItem2.default;
 	var Config = exports.Config = _config2.default;
 	var outsideClick = exports.outsideClick = _outsideClick2.default;
 
@@ -27008,7 +27023,7 @@
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'span',
-	                { className: this.getBadgeClass() },
+	                { className: this.getBadgeClass(), style: this.props.style },
 	                this.props.label
 	            );
 	        }
@@ -27023,6 +27038,12 @@
 	}(_react2.default.Component);
 
 	exports.default = Badge;
+
+
+	Badge.PropTypes = {
+	    className: _react2.default.PropTypes.string,
+	    style: _react2.default.PropTypes.object
+	};
 
 /***/ },
 /* 239 */
@@ -38934,6 +38955,7 @@
 	exports.default = function () {
 	    var onDocumentClickListener = void 0;
 	    var onDocumentKeyupListener = void 0;
+	    var _isListening = false;
 
 	    return {
 	        bindRootCloseHandlers: function bindRootCloseHandlers(root, closeAction) {
@@ -38943,12 +38965,17 @@
 
 	            doc.addEventListener('click', onDocumentClickListener);
 	            doc.addEventListener('keyup', onDocumentKeyupListener);
+	            _isListening = true;
 	        },
 	        unbindRootCloseHandlers: function unbindRootCloseHandlers() {
 	            var doc = window.document;
 
 	            doc.removeEventListener('click', onDocumentClickListener);
 	            doc.removeEventListener('keyup', onDocumentKeyupListener);
+	            _isListening = false;
+	        },
+	        isListening: function isListening() {
+	            return _isListening;
 	        }
 	    };
 	};
@@ -41123,11 +41150,16 @@
 
 	var _CustomStyleBadge2 = _interopRequireDefault(_CustomStyleBadge);
 
+	var _Dropdown = __webpack_require__(390);
+
+	var _Dropdown2 = _interopRequireDefault(_Dropdown);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = {
 	    Button: [{ name: 'Buttons variants', component: _ButtonVariants2.default }],
-	    Badge: [{ name: 'Base', component: _SimpleBadge2.default }, { name: 'Custom styles', component: _CustomStyleBadge2.default }]
+	    Badge: [{ name: 'Base', component: _SimpleBadge2.default }, { name: 'Custom styles', component: _CustomStyleBadge2.default }],
+	    Dropdown: [{ name: 'Dropdown', component: _Dropdown2.default }]
 	};
 
 /***/ },
@@ -41652,6 +41684,371 @@
 			URL.revokeObjectURL(oldSrc);
 	}
 
+
+/***/ },
+/* 390 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _entry = __webpack_require__(234);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var SimpleDropdown = function (_React$Component) {
+	    _inherits(SimpleDropdown, _React$Component);
+
+	    function SimpleDropdown() {
+	        _classCallCheck(this, SimpleDropdown);
+
+	        return _possibleConstructorReturn(this, (SimpleDropdown.__proto__ || Object.getPrototypeOf(SimpleDropdown)).apply(this, arguments));
+	    }
+
+	    _createClass(SimpleDropdown, [{
+	        key: 'render',
+	        value: function render() {
+	            var _this2 = this;
+
+	            return _react2.default.createElement(
+	                _entry.Dropdown,
+	                { trigger: _react2.default.createElement(
+	                        _entry.Button,
+	                        null,
+	                        'Dropdown'
+	                    ), showArrow: true, ref: function ref(_ref) {
+	                        return _this2.dropdown = _ref;
+	                    } },
+	                _react2.default.createElement(
+	                    _entry.Menu,
+	                    null,
+	                    _react2.default.createElement(
+	                        _entry.MenuItem,
+	                        { onClick: function onClick(e) {
+	                                return _this2.handleItemClick(e);
+	                            } },
+	                        'Menu Item One'
+	                    ),
+	                    _react2.default.createElement(
+	                        _entry.MenuItem,
+	                        null,
+	                        'Menu Item Two'
+	                    ),
+	                    _react2.default.createElement(
+	                        _entry.MenuItem,
+	                        null,
+	                        'Menu Item Three'
+	                    ),
+	                    _react2.default.createElement(
+	                        _entry.MenuItem,
+	                        null,
+	                        'Menu Item Four'
+	                    )
+	                )
+	            );
+	        }
+	    }, {
+	        key: 'handleItemClick',
+	        value: function handleItemClick(e) {
+	            this.dropdown.close();
+	        }
+	    }]);
+
+	    return SimpleDropdown;
+	}(_react2.default.Component);
+
+	exports.default = SimpleDropdown;
+
+/***/ },
+/* 391 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _classnames = __webpack_require__(236);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _outsideClick = __webpack_require__(360);
+
+	var _outsideClick2 = _interopRequireDefault(_outsideClick);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Dropdown = function (_React$Component) {
+	    _inherits(Dropdown, _React$Component);
+
+	    function Dropdown(props) {
+	        _classCallCheck(this, Dropdown);
+
+	        var _this = _possibleConstructorReturn(this, (Dropdown.__proto__ || Object.getPrototypeOf(Dropdown)).call(this, props));
+
+	        _this._outsideClick = (0, _outsideClick2.default)();
+	        _this.state = {
+	            isOpen: false
+	        };
+	        return _this;
+	    }
+
+	    _createClass(Dropdown, [{
+	        key: 'render',
+	        value: function render() {
+	            var _this2 = this;
+
+	            return _react2.default.createElement(
+	                'div',
+	                { className: this.getContainerClass(), ref: function ref(_ref) {
+	                        return _this2.rootElement = _ref;
+	                    } },
+	                _react2.default.createElement(
+	                    'span',
+	                    { onClick: function onClick() {
+	                            return _this2.toggle();
+	                        } },
+	                    this.props.trigger
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: this.getDropdownClass() },
+	                    this.props.children
+	                )
+	            );
+	        }
+	    }, {
+	        key: 'toggle',
+	        value: function toggle() {
+	            this.setState({ isOpen: !this.state.isOpen });
+	            if (this.props.closeWhenClickOutside) this._outsideClick.bindRootCloseHandlers(this.rootElement, this.close.bind(this));
+	        }
+	    }, {
+	        key: 'close',
+	        value: function close() {
+	            this.setState({ isOpen: false });
+	            if (this._outsideClick.isListening()) this._outsideClick.unbindRootCloseHandlers();
+	        }
+	    }, {
+	        key: 'getContainerClass',
+	        value: function getContainerClass() {
+	            return (0, _classnames2.default)('slds-dropdown-trigger', 'slds-dropdown-trigger--click', {
+	                'slds-is-open': this.state.isOpen
+	            });
+	        }
+	    }, {
+	        key: 'getDropdownClass',
+	        value: function getDropdownClass() {
+	            var isBottom = /^bottom-(right|left)$/.test(this.props.position);
+	            var isRight = /^(bottom|top)-right$/.test(this.props.position);
+	            var isLeft = /^(bottom|top)-left$/.test(this.props.position);
+
+	            return (0, _classnames2.default)('slds-dropdown', this.props.showArrow ? 'slds-nubbin--' + this.props.position : null, {
+	                'slds-dropdown--bottom': isBottom,
+	                'slds-dropdown--right': isRight,
+	                'slds-dropdown--left': isLeft
+	            });
+	        }
+	    }]);
+
+	    return Dropdown;
+	}(_react2.default.Component);
+
+	exports.default = Dropdown;
+
+
+	Dropdown.PropTypes = {
+	    trigger: _react2.default.PropTypes.any.isRequired,
+	    position: _react2.default.PropTypes.oneOf(['bottom-left', 'bottom-right', 'top-left', 'top-right']),
+	    closeOnOutsideClick: _react2.default.PropTypes.bool,
+	    showArrow: _react2.default.PropTypes.bool
+	};
+
+	Dropdown.defaultProps = {
+	    closeWhenClickOutside: true,
+	    position: 'top-right',
+	    showArrow: false
+	};
+
+/***/ },
+/* 392 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Menu = function (_React$Component) {
+	    _inherits(Menu, _React$Component);
+
+	    function Menu() {
+	        _classCallCheck(this, Menu);
+
+	        return _possibleConstructorReturn(this, (Menu.__proto__ || Object.getPrototypeOf(Menu)).apply(this, arguments));
+	    }
+
+	    _createClass(Menu, [{
+	        key: "render",
+	        value: function render() {
+	            return _react2.default.createElement(
+	                "ul",
+	                { className: "slds-dropdown__list", role: "menu" },
+	                this.props.children
+	            );
+	        }
+	    }]);
+
+	    return Menu;
+	}(_react2.default.Component);
+
+	exports.default = Menu;
+
+/***/ },
+/* 393 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _classnames = __webpack_require__(236);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _Icon = __webpack_require__(241);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var MenuItem = function (_React$Component) {
+	    _inherits(MenuItem, _React$Component);
+
+	    function MenuItem() {
+	        _classCallCheck(this, MenuItem);
+
+	        return _possibleConstructorReturn(this, (MenuItem.__proto__ || Object.getPrototypeOf(MenuItem)).apply(this, arguments));
+	    }
+
+	    _createClass(MenuItem, [{
+	        key: 'render',
+	        value: function render() {
+	            return this.props.variant === 'header' ? this.renderHeader() : this.renderItem();
+	        }
+	    }, {
+	        key: 'renderItem',
+	        value: function renderItem() {
+	            var _this2 = this;
+
+	            return _react2.default.createElement(
+	                'li',
+	                { className: this.getItemClass(), role: 'presentation', onClick: function onClick(e) {
+	                        return _this2.props.onClick && _this2.props.onClick(e);
+	                    } },
+	                _react2.default.createElement(
+	                    'a',
+	                    { href: 'javascript:void(0);', role: 'menuitemcheckbox', 'aria-checked': 'true', tabIndex: '0' },
+	                    _react2.default.createElement(
+	                        'span',
+	                        { className: 'slds-truncate' },
+	                        this.props.variant === 'selectable' ? _react2.default.createElement(_Icon.IconSvg, { iconName: 'utility:check', className: 'slds-icon--selected slds-icon--x-small slds-icon-text-default slds-m-right--x-small' }) : null,
+	                        this.props.children
+	                    )
+	                )
+	            );
+	        }
+	    }, {
+	        key: 'renderHeader',
+	        value: function renderHeader() {
+	            return _react2.default.createElement(
+	                'li',
+	                { className: 'slds-dropdown__header', role: 'separator' },
+	                _react2.default.createElement(
+	                    'span',
+	                    { className: 'slds-text-title--caps' },
+	                    this.props.children
+	                )
+	            );
+	        }
+	    }, {
+	        key: 'getItemClass',
+	        value: function getItemClass() {
+	            return (0, _classnames2.default)('slds-dropdown__item', {
+	                'slds-is-selected': this.props.variant === 'selectable' && this.props.isSelected === true
+	            });
+	        }
+	    }]);
+
+	    return MenuItem;
+	}(_react2.default.Component);
+
+	exports.default = MenuItem;
+
+
+	MenuItem.PropTypes = {
+	    variant: _react2.default.PropTypes.oneOf(['selectable', 'header']),
+	    isSelected: _react2.default.PropTypes.bool
+	};
+
+	MenuItem.defaultProps = {
+	    isSelected: false
+	};
 
 /***/ }
 /******/ ]);

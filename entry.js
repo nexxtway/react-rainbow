@@ -5,6 +5,9 @@ import LightningCalendar from './src/components/Calendar.jsx';
 import LightningDataGrid from './src/components/DataGrid.jsx';
 import LightningTree from './src/components/Tree.jsx';
 import LightningTreeItem from './src/components/TreeItem.jsx';
+import LightningDropdown from './src/components/Dropdown.jsx';
+import LightningMenu from './src/components/Menu.jsx';
+import LightningMenuItem from './src/components/MenuItem.jsx';
 import LightningConfig from './src/components/config';
 
 //libraries
@@ -17,6 +20,9 @@ export const Calendar = LightningCalendar;
 export const DataGrid = LightningDataGrid;
 export const Tree = LightningTree;
 export const TreeItem = LightningTreeItem;
+export const Dropdown = LightningDropdown;
+export const Menu = LightningMenu;
+export const MenuItem = LightningMenuItem;
 export const Config = LightningConfig;
 export const outsideClick = LightningOutsideClick;
 
