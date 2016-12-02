@@ -44,7 +44,7 @@ export default class DataGrid extends React.Component {
                 
                 return (
                     <td data-label={ meta.label || meta.key } key={ meta.key }>
-                        <div className="slds-truncate" title={ field[meta.key] } >
+                        <div className="slds-truncate" title={ field[meta.key] } style={ meta.cellStyles } >
                             { CustomView ? <CustomView value={ field[meta.key] }/> : field[meta.key] }
                         </div>
                     </td>
