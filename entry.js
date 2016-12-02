@@ -8,6 +8,7 @@ import LightningTreeItem from './src/components/TreeItem.jsx';
 import LightningDropdown from './src/components/Dropdown.jsx';
 import LightningMenu from './src/components/Menu.jsx';
 import LightningMenuItem from './src/components/MenuItem.jsx';
+import LightningIcon, { IconSvg } from './src/components/Icon.jsx';
 import LightningConfig from './src/components/config';
 
 //libraries
@@ -23,6 +24,8 @@ export const TreeItem = LightningTreeItem;
 export const Dropdown = LightningDropdown;
 export const Menu = LightningMenu;
 export const MenuItem = LightningMenuItem;
+export const Icon = LightningIcon;
+export const LightningSvg = IconSvg;
 export const Config = LightningConfig;
 export const outsideClick = LightningOutsideClick;
 
