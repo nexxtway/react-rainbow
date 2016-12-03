@@ -9,6 +9,8 @@ import LightningDropdown from './src/components/Dropdown.jsx';
 import LightningMenu from './src/components/Menu.jsx';
 import LightningMenuItem from './src/components/MenuItem.jsx';
 import LightningIcon, { IconSvg } from './src/components/Icon.jsx';
+import LightningTabset from './src/components/Tabset.jsx';
+import LightningTab from './src/components/Tab.jsx';
 import LightningConfig from './src/components/config';
 
 //libraries
@@ -26,6 +28,8 @@ export const Menu = LightningMenu;
 export const MenuItem = LightningMenuItem;
 export const Icon = LightningIcon;
 export const LightningSvg = IconSvg;
+export const Tabset = LightningTabset;
+export const Tab = LightningTab;
 export const Config = LightningConfig;
 export const outsideClick = LightningOutsideClick;
 

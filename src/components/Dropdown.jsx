@@ -51,7 +51,10 @@ export default class Dropdown extends React.Component {
             , this.props.showArrow ? `slds-nubbin--${ this.props.position }` : null, {
             'slds-dropdown--bottom': isBottom,
             'slds-dropdown--right': isRight,
-            'slds-dropdown--left': isLeft
+            'slds-dropdown--left': isLeft,
+            'slds-dropdown--large': this.props.size === 'large',
+            'slds-dropdown--medium': this.props.size === 'medium',
+            'slds-dropdown--small': this.props.size === 'small'
         })
     }
 }
@@ -59,8 +62,9 @@ export default class Dropdown extends React.Component {
 Dropdown.PropTypes = {
     trigger: React.PropTypes.any.isRequired,
     position: React.PropTypes.oneOf(['bottom-left', 'bottom-right', 'top-left', 'top-right']),
-    closeOnOutsideClick: React.PropTypes.bool,
-    showArrow: React.PropTypes.bool
+    closeWhenClickOutside: React.PropTypes.bool,
+    showArrow: React.PropTypes.bool,
+    size: React.PropTypes.oneOf(['small', 'medium', 'large'])
 };
 
 Dropdown.defaultProps = {
