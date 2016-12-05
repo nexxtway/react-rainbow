@@ -58,11 +58,11 @@
 
 	var _App2 = _interopRequireDefault(_App);
 
-	var _Dashboard = __webpack_require__(399);
+	var _Dashboard = __webpack_require__(401);
 
 	var _Dashboard2 = _interopRequireDefault(_Dashboard);
 
-	var _DisplayComponentDemos = __webpack_require__(400);
+	var _DisplayComponentDemos = __webpack_require__(402);
 
 	var _DisplayComponentDemos2 = _interopRequireDefault(_DisplayComponentDemos);
 
@@ -26680,15 +26680,15 @@
 
 	var _entry = __webpack_require__(247);
 
-	var _styles = __webpack_require__(379);
+	var _styles = __webpack_require__(381);
 
-	var _ComponentStore = __webpack_require__(380);
+	var _ComponentStore = __webpack_require__(382);
 
 	var _ComponentStore2 = _interopRequireDefault(_ComponentStore);
 
-	var _LeftNavActions = __webpack_require__(397);
+	var _LeftNavActions = __webpack_require__(399);
 
-	var _LeftNavStore = __webpack_require__(398);
+	var _LeftNavStore = __webpack_require__(400);
 
 	var _LeftNavStore2 = _interopRequireDefault(_LeftNavStore);
 
@@ -28155,7 +28155,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.outsideClick = exports.Config = exports.Tab = exports.Tabset = exports.LightningSvg = exports.Icon = exports.MenuItem = exports.Menu = exports.Dropdown = exports.TreeItem = exports.Tree = exports.DataGrid = exports.Calendar = exports.GlobalHeader = exports.Badge = exports.Button = undefined;
+	exports.outsideClick = exports.Config = exports.ModalFooter = exports.Modal = exports.Tab = exports.Tabset = exports.LightningSvg = exports.Icon = exports.MenuItem = exports.Menu = exports.Dropdown = exports.TreeItem = exports.Tree = exports.DataGrid = exports.Calendar = exports.GlobalHeader = exports.Badge = exports.Button = undefined;
 
 	var _Button = __webpack_require__(248);
 
@@ -28209,6 +28209,14 @@
 
 	var _Tab2 = _interopRequireDefault(_Tab);
 
+	var _Modal = __webpack_require__(379);
+
+	var _Modal2 = _interopRequireDefault(_Modal);
+
+	var _ModalFooter = __webpack_require__(380);
+
+	var _ModalFooter2 = _interopRequireDefault(_ModalFooter);
+
 	var _config = __webpack_require__(255);
 
 	var _config2 = _interopRequireDefault(_config);
@@ -28235,6 +28243,8 @@
 	var LightningSvg = exports.LightningSvg = _Icon.IconSvg;
 	var Tabset = exports.Tabset = _Tabset2.default;
 	var Tab = exports.Tab = _Tab2.default;
+	var Modal = exports.Modal = _Modal2.default;
+	var ModalFooter = exports.ModalFooter = _ModalFooter2.default;
 	var Config = exports.Config = _config2.default;
 	var outsideClick = exports.outsideClick = _outsideClick2.default;
 
@@ -40925,6 +40935,160 @@
 
 /***/ },
 /* 379 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Icon = __webpack_require__(254);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Modal = function (_React$Component) {
+	    _inherits(Modal, _React$Component);
+
+	    function Modal() {
+	        _classCallCheck(this, Modal);
+
+	        return _possibleConstructorReturn(this, (Modal.__proto__ || Object.getPrototypeOf(Modal)).apply(this, arguments));
+	    }
+
+	    _createClass(Modal, [{
+	        key: 'render',
+	        value: function render() {
+	            return this.props.isOpen ? this.renderModal() : null;
+	        }
+	    }, {
+	        key: 'renderModal',
+	        value: function renderModal() {
+	            var _this2 = this;
+
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    'div',
+	                    { role: 'dialog', tabIndex: '-1', 'aria-labelledby': 'header43', className: 'slds-modal slds-fade-in-open', onWheel: function onWheel(e) {
+	                            return e.preventDefault();
+	                        } },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'slds-modal__container', style: { position: 'relative' }, onWheel: function onWheel(e) {
+	                                return e.stopPropagation();
+	                            } },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'slds-modal__header' },
+	                            _react2.default.createElement(
+	                                'button',
+	                                { className: 'slds-button slds-modal__close slds-button--icon-inverse', onClick: function onClick() {
+	                                        return _this2.props.closeCallback();
+	                                    } },
+	                                _react2.default.createElement(_Icon.IconSvg, { iconName: 'utility:close', className: 'slds-button__icon slds-button__icon--large' }),
+	                                _react2.default.createElement(
+	                                    'span',
+	                                    { className: 'slds-assistive-text' },
+	                                    'Close'
+	                                )
+	                            ),
+	                            _react2.default.createElement(
+	                                'h2',
+	                                { id: 'header43', className: 'slds-text-heading--medium' },
+	                                this.props.title
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'slds-modal__content slds-p-around--medium' },
+	                            this.props.children
+	                        ),
+	                        this.props.footer || null
+	                    )
+	                ),
+	                _react2.default.createElement('div', { className: 'slds-backdrop slds-backdrop--open' })
+	            );
+	        }
+	    }]);
+
+	    return Modal;
+	}(_react2.default.Component);
+
+	exports.default = Modal;
+
+
+	Modal.propTypes = {
+	    isOpen: _react2.default.PropTypes.bool.isRequired,
+	    title: _react2.default.PropTypes.string.isRequired,
+	    footer: _react2.default.PropTypes.object,
+	    closeCallback: _react2.default.PropTypes.func.isRequired
+	};
+
+/***/ },
+/* 380 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var ModalFooter = function (_React$Component) {
+	    _inherits(ModalFooter, _React$Component);
+
+	    function ModalFooter() {
+	        _classCallCheck(this, ModalFooter);
+
+	        return _possibleConstructorReturn(this, (ModalFooter.__proto__ || Object.getPrototypeOf(ModalFooter)).apply(this, arguments));
+	    }
+
+	    _createClass(ModalFooter, [{
+	        key: "render",
+	        value: function render() {
+	            return _react2.default.createElement(
+	                "div",
+	                { className: "slds-modal__footer" },
+	                this.props.children
+	            );
+	        }
+	    }]);
+
+	    return ModalFooter;
+	}(_react2.default.Component);
+
+	exports.default = ModalFooter;
+
+/***/ },
+/* 381 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -40950,7 +41114,7 @@
 	};
 
 /***/ },
-/* 380 */
+/* 382 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40963,13 +41127,13 @@
 
 	var _utils = __webpack_require__(234);
 
-	var _AppDispatcher = __webpack_require__(381);
+	var _AppDispatcher = __webpack_require__(383);
 
 	var _AppDispatcher2 = _interopRequireDefault(_AppDispatcher);
 
-	var _immutable = __webpack_require__(384);
+	var _immutable = __webpack_require__(386);
 
-	var _components = __webpack_require__(385);
+	var _components = __webpack_require__(387);
 
 	var _components2 = _interopRequireDefault(_components);
 
@@ -41014,7 +41178,7 @@
 	exports.default = instance;
 
 /***/ },
-/* 381 */
+/* 383 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41024,7 +41188,7 @@
 	});
 	exports.dispatch = undefined;
 
-	var _flux = __webpack_require__(382);
+	var _flux = __webpack_require__(384);
 
 	var AppDispatcher = new _flux.Dispatcher();
 	exports.default = AppDispatcher;
@@ -41034,7 +41198,7 @@
 	var dispatch = exports.dispatch = AppDispatcher.dispatch.bind(AppDispatcher);
 
 /***/ },
-/* 382 */
+/* 384 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41048,10 +41212,10 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 */
 
-	module.exports.Dispatcher = __webpack_require__(383);
+	module.exports.Dispatcher = __webpack_require__(385);
 
 /***/ },
-/* 383 */
+/* 385 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -41292,7 +41456,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 384 */
+/* 386 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};/**
@@ -41529,7 +41693,7 @@
 	}var Immutable={Iterable:Iterable,Seq:Seq,Collection:Collection,Map:Map,OrderedMap:OrderedMap,List:List,Stack:Stack,Set:Set,OrderedSet:OrderedSet,Record:Record,Range:Range,Repeat:Repeat,is:is,fromJS:fromJS};return Immutable;});
 
 /***/ },
-/* 385 */
+/* 387 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41538,29 +41702,33 @@
 	    value: true
 	});
 
-	var _ButtonVariants = __webpack_require__(386);
+	var _ButtonVariants = __webpack_require__(388);
 
 	var _ButtonVariants2 = _interopRequireDefault(_ButtonVariants);
 
-	var _SimpleBadge = __webpack_require__(387);
+	var _SimpleBadge = __webpack_require__(389);
 
 	var _SimpleBadge2 = _interopRequireDefault(_SimpleBadge);
 
-	var _CustomStyleBadge = __webpack_require__(388);
+	var _CustomStyleBadge = __webpack_require__(390);
 
 	var _CustomStyleBadge2 = _interopRequireDefault(_CustomStyleBadge);
 
-	var _Dropdown = __webpack_require__(393);
+	var _Dropdown = __webpack_require__(395);
 
 	var _Dropdown2 = _interopRequireDefault(_Dropdown);
 
-	var _DefaultTabs = __webpack_require__(394);
+	var _DefaultTabs = __webpack_require__(396);
 
 	var _DefaultTabs2 = _interopRequireDefault(_DefaultTabs);
 
-	var _ScopedTabs = __webpack_require__(395);
+	var _ScopedTabs = __webpack_require__(397);
 
 	var _ScopedTabs2 = _interopRequireDefault(_ScopedTabs);
+
+	var _DefaultModal = __webpack_require__(398);
+
+	var _DefaultModal2 = _interopRequireDefault(_DefaultModal);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -41568,11 +41736,12 @@
 	    Button: [{ name: 'Buttons variants', component: _ButtonVariants2.default }],
 	    Badge: [{ name: 'Base', component: _SimpleBadge2.default }, { name: 'Custom styles', component: _CustomStyleBadge2.default }],
 	    Dropdown: [{ name: 'Dropdown', component: _Dropdown2.default }],
-	    Tabs: [{ name: 'Default', component: _DefaultTabs2.default }, { name: 'Scoped', component: _ScopedTabs2.default }]
+	    Tabs: [{ name: 'Default', component: _DefaultTabs2.default }, { name: 'Scoped', component: _ScopedTabs2.default }],
+	    Modal: [{ name: 'Modal', component: _DefaultModal2.default }]
 	};
 
 /***/ },
-/* 386 */
+/* 388 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41642,7 +41811,7 @@
 	exports.default = ButtonVariants;
 
 /***/ },
-/* 387 */
+/* 389 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41693,7 +41862,7 @@
 	exports.default = SimpleBadge;
 
 /***/ },
-/* 388 */
+/* 390 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41710,7 +41879,7 @@
 
 	var _entry = __webpack_require__(247);
 
-	var _styles = __webpack_require__(389);
+	var _styles = __webpack_require__(391);
 
 	var _styles2 = _interopRequireDefault(_styles);
 
@@ -41748,16 +41917,16 @@
 	exports.default = CustomStyleBadge;
 
 /***/ },
-/* 389 */
+/* 391 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(390);
+	var content = __webpack_require__(392);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(392)(content, {});
+	var update = __webpack_require__(394)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -41774,10 +41943,10 @@
 	}
 
 /***/ },
-/* 390 */
+/* 392 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(391)();
+	exports = module.exports = __webpack_require__(393)();
 	// imports
 
 
@@ -41788,7 +41957,7 @@
 
 
 /***/ },
-/* 391 */
+/* 393 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -41843,7 +42012,7 @@
 	};
 
 /***/ },
-/* 392 */
+/* 394 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -42095,7 +42264,7 @@
 
 
 /***/ },
-/* 393 */
+/* 395 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42184,7 +42353,7 @@
 	exports.default = SimpleDropdown;
 
 /***/ },
-/* 394 */
+/* 396 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42236,7 +42405,7 @@
 	exports.default = DefaultTabs;
 
 /***/ },
-/* 395 */
+/* 397 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42288,8 +42457,103 @@
 	exports.default = ScopedTabs;
 
 /***/ },
-/* 396 */,
-/* 397 */
+/* 398 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _entry = __webpack_require__(247);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var DefaultModal = function (_React$Component) {
+	    _inherits(DefaultModal, _React$Component);
+
+	    function DefaultModal(props) {
+	        _classCallCheck(this, DefaultModal);
+
+	        var _this = _possibleConstructorReturn(this, (DefaultModal.__proto__ || Object.getPrototypeOf(DefaultModal)).call(this, props));
+
+	        _this.state = {
+	            isOpen: false
+	        };
+	        return _this;
+	    }
+
+	    _createClass(DefaultModal, [{
+	        key: 'render',
+	        value: function render() {
+	            var _this2 = this;
+
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    _entry.Button,
+	                    { onClick: function onClick(e) {
+	                            return _this2.setState({ isOpen: true });
+	                        } },
+	                    'Open Modal'
+	                ),
+	                _react2.default.createElement(
+	                    _entry.Modal,
+	                    { title: 'Hi...',
+	                        isOpen: this.state.isOpen,
+	                        footer: this.getFooter(),
+	                        closeCallback: function closeCallback() {
+	                            return _this2.closeModal();
+	                        } },
+	                    'Hello World!'
+	                )
+	            );
+	        }
+	    }, {
+	        key: 'getFooter',
+	        value: function getFooter() {
+	            var _this3 = this;
+
+	            return _react2.default.createElement(
+	                _entry.ModalFooter,
+	                null,
+	                _react2.default.createElement(
+	                    _entry.Button,
+	                    { onClick: function onClick(e) {
+	                            return _this3.closeModal();
+	                        } },
+	                    'Cancel'
+	                )
+	            );
+	        }
+	    }, {
+	        key: 'closeModal',
+	        value: function closeModal() {
+	            this.setState({ isOpen: false });
+	        }
+	    }]);
+
+	    return DefaultModal;
+	}(_react2.default.Component);
+
+	exports.default = DefaultModal;
+
+/***/ },
+/* 399 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42299,7 +42563,7 @@
 	});
 	exports.toggleExpandTree = exports.TOGGLE_EXPAND_TREE = undefined;
 
-	var _AppDispatcher = __webpack_require__(381);
+	var _AppDispatcher = __webpack_require__(383);
 
 	var TOGGLE_EXPAND_TREE = exports.TOGGLE_EXPAND_TREE = 'TOGGLE_EXPAND_TREE';
 	var toggleExpandTree = exports.toggleExpandTree = function toggleExpandTree(session) {
@@ -42307,7 +42571,7 @@
 	};
 
 /***/ },
-/* 398 */
+/* 400 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42320,13 +42584,13 @@
 
 	var _utils = __webpack_require__(234);
 
-	var _AppDispatcher = __webpack_require__(381);
+	var _AppDispatcher = __webpack_require__(383);
 
 	var _AppDispatcher2 = _interopRequireDefault(_AppDispatcher);
 
-	var _immutable = __webpack_require__(384);
+	var _immutable = __webpack_require__(386);
 
-	var _LeftNavActions = __webpack_require__(397);
+	var _LeftNavActions = __webpack_require__(399);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -42379,7 +42643,7 @@
 	exports.default = instance;
 
 /***/ },
-/* 399 */
+/* 401 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42428,7 +42692,7 @@
 	exports.default = Dashboard;
 
 /***/ },
-/* 400 */
+/* 402 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42445,7 +42709,7 @@
 
 	var _utils = __webpack_require__(234);
 
-	var _ComponentStore = __webpack_require__(380);
+	var _ComponentStore = __webpack_require__(382);
 
 	var _ComponentStore2 = _interopRequireDefault(_ComponentStore);
 

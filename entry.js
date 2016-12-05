@@ -11,6 +11,8 @@ import LightningMenuItem from './src/components/MenuItem.jsx';
 import LightningIcon, { IconSvg } from './src/components/Icon.jsx';
 import LightningTabset from './src/components/Tabset.jsx';
 import LightningTab from './src/components/Tab.jsx';
+import LightningModal from './src/components/Modal.jsx';
+import LightningModalFooter from './src/components/ModalFooter.jsx';
 import LightningConfig from './src/components/config';
 
 //libraries
@@ -30,6 +32,8 @@ export const Icon = LightningIcon;
 export const LightningSvg = IconSvg;
 export const Tabset = LightningTabset;
 export const Tab = LightningTab;
+export const Modal = LightningModal;
+export const ModalFooter = LightningModalFooter;
 export const Config = LightningConfig;
 export const outsideClick = LightningOutsideClick;
 

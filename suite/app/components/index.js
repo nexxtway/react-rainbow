@@ -4,6 +4,7 @@ import CustomStyleBadge from './Badge/CustomStyleBadge.jsx';
 import Dropdown from './Dropdown/Dropdown.jsx';
 import DefaultTabs from './Tabs/DefaultTabs.jsx';
 import ScopedTabs from './Tabs/ScopedTabs.jsx';
+import DefaultModal from './Modal/DefaultModal.jsx';
 
 export default {
     Button: [
@@ -19,5 +20,8 @@ export default {
     Tabs: [
         { name: 'Default', component: DefaultTabs},
         { name: 'Scoped', component: ScopedTabs}
+    ],
+    Modal: [
+        { name: 'Modal', component: DefaultModal}
     ]
 }

@@ -31,16 +31,6 @@ export default class Modal extends React.Component  {
     }
 }
 
-export class ModalFooter extends React.Component {
-    render() {
-        return (
-            <div className="slds-modal__footer">
-                { this.props.children }
-            </div>
-        );
-    }
-}
-
 Modal.propTypes = {
     isOpen: React.PropTypes.bool.isRequired,
     title: React.PropTypes.string.isRequired,
