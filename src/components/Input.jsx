@@ -38,7 +38,8 @@ export default class Input extends React.Component {
                            type={ this.props.type }
                            step={ this.props.step }
                            placeholder={ this.props.placeholder }
-                           required="true"
+                           required={ this.props.required }
+                           disabled={ this.props.disabled }
                            name={ this.props.name }
                     />
                 </div>

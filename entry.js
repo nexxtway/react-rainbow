@@ -13,6 +13,8 @@ import LightningTabset from './src/components/Tabset.jsx';
 import LightningTab from './src/components/Tab.jsx';
 import LightningModal from './src/components/Modal.jsx';
 import LightningModalFooter from './src/components/ModalFooter.jsx';
+import LightningInput from './src/components/Input.jsx';
+import LightningSelect from './src/components/Select.jsx';
 import LightningConfig from './src/components/config';
 
 //libraries
@@ -34,6 +36,8 @@ export const Tabset = LightningTabset;
 export const Tab = LightningTab;
 export const Modal = LightningModal;
 export const ModalFooter = LightningModalFooter;
+export const Input = LightningInput;
+export const Select = LightningSelect;
 export const Config = LightningConfig;
 export const outsideClick = LightningOutsideClick;
 
