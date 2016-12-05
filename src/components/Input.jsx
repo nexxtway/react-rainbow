@@ -4,7 +4,7 @@ import InputError from './InputError.jsx';
 import InputFile from './InputFile.jsx';
 import uniqueId from './libs/uniqueId';
 
-let isRegularInput = (type) => ['text', 'search', 'number'].indexOf(type) !== -1;
+let isRegularInput = (type) => ['text', 'search', 'number', 'email', 'password'].indexOf(type) !== -1;
 let isTypeFile = (type) => type === 'file';
 
 export default class Input extends React.Component {
