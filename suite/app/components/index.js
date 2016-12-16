@@ -7,6 +7,7 @@ import ScopedTabs from './Tabs/ScopedTabs.jsx';
 import DefaultModal from './Modal/DefaultModal.jsx';
 import DefaultInput from './Input/DefaultInput.jsx';
 import DefaultSelect from './Select/DefaultSelect.jsx';
+import DefaultNavigation from './Navigation/DefaultNavigation.jsx';
 
 export default {
     Button: [
@@ -31,5 +32,8 @@ export default {
     ],
     Select: [
         { name: 'Select', component: DefaultSelect }
+    ],
+    Navigation: [
+        { name: 'Navigation', component: DefaultNavigation }
     ]
 }

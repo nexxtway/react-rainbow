@@ -16,6 +16,9 @@ import LightningModalFooter from './src/components/ModalFooter.jsx';
 import LightningInput from './src/components/Input.jsx';
 import LightningSelect from './src/components/Select.jsx';
 import LightningConfig from './src/components/config';
+import LightningNavigation from './src/components/Navigation.jsx';
+import LightningNavigationSession from './src/components/NavigationSession.jsx';
+import LightningNavigationItem from './src/components/NavigationItem.jsx';
 
 //libraries
 import LightningOutsideClick from './src/components/libs/outsideClick';
@@ -38,7 +41,11 @@ export const Modal = LightningModal;
 export const ModalFooter = LightningModalFooter;
 export const Input = LightningInput;
 export const Select = LightningSelect;
+export const Navigation = LightningNavigation;
+export const NavigationSession = LightningNavigationSession;
+export const NavigationItem = LightningNavigationItem;
 export const Config = LightningConfig;
 export const outsideClick = LightningOutsideClick;
+
 
 
