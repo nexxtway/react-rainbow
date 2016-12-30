@@ -14,6 +14,7 @@ export default class DefaultInput extends React.Component {
                 <Input type="text" label="Input label" isValid={ true } />
                 <Input type="number" label="Input label" isValid={ this.state.isNumberValid } required={ true } onChange={ e => this.checkValidity(e) } />
                 <Input label="Input label" isValid={ true } disabled={ true } />
+                <Input label="Input label" isValid={ true } value="$50" />
             </div>
         )
     }

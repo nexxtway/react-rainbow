@@ -30,6 +30,7 @@ export default class Input extends React.Component {
                 </label>
                 <div className="slds-form-element__control">
                     <input id={ this.inputId }
+                           value={ this.props.value }
                            ref={ (input) => this.input = input }
                            className="slds-input"
                            onInput={ (e) => this.handleOnInput(e) }
