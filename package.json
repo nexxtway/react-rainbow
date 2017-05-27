@@ -8,12 +8,14 @@
   },
   "keywords": [],
   "dependencies": {
+    "file-loader": "^0.11.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2"
   },
   "scripts": {
     "debug": "node debug app.js",
-    "start": "node app.js"
+    "start": "styleguidist server",
+    "build": "styleguidist build"
   },
   "main": "entry.js",
   "repository": {
@@ -36,6 +38,7 @@
     "node-sass": "^3.13.0",
     "react-intl": "^2.1.5",
     "react-router": "^3.0.0",
+    "react-styleguidist": "^5.2.1",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.3"
