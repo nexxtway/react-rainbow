@@ -11,7 +11,6 @@ export default class Button extends React.Component {
             onFocus,
             onBlur,
             onClick,
-            size,
             style,
             variant,
             children
@@ -24,7 +23,6 @@ export default class Button extends React.Component {
                     onFocus={ onFocus }
                     onBlur={ onBlur }
                     onClick={ onClick }
-                    size={ size }
                     style={ style }
                     variant={ variant }>
                 { children ? children : label }
@@ -40,8 +38,7 @@ export default class Button extends React.Component {
             'slds-button--brand': variant === 'brand',
             'slds-button--inverse': variant === 'inverse',
             'slds-button--destructive': variant === 'destructive',
-            'slds-button--success': variant === 'success',
-            'slds-button--small': size === 'small'
+            'slds-button--success': variant === 'success'
         }, className);
     }
 }
@@ -50,7 +47,7 @@ Button.propTypes = {
     label: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.node
-    ]),
+    ]).isRequired,
     variant: PropTypes.oneOf(['neutral', 'brand', 'inverse', 'destructive', 'success'
 ]),
     disabled: PropTypes.bool,
@@ -58,14 +55,12 @@ Button.propTypes = {
     onClick: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
-    size: PropTypes.oneOf(['medium', 'small']),
     style: PropTypes.object
 };
 
 Button.defaultProps = {
     variant: 'neutral',
     disabled: false,
-    size: 'medium',
     onClick: () => {},
     onFocus: () => {},
     onBlur: () => {}
