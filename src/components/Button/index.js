@@ -44,17 +44,26 @@ export default class Button extends React.Component {
 }
 
 Button.propTypes = {
+    /** Label for the button */
     label: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.node
-    ]).isRequired,
+    ]),
+    /** A button predefined style. It must be a string */
     variant: PropTypes.oneOf(['neutral', 'brand', 'inverse', 'destructive', 'success'
 ]),
+    /** Disables the button if set to true */
     disabled: PropTypes.bool,
+    /** Tab index */
     tabIndex: PropTypes.number,
+    /** Callback function fired when the button is clicked */
     onClick: PropTypes.func,
+    /** Callback function fired when the button is focused */
     onFocus: PropTypes.func,
+    /** Callback function fired when the button is blurred */
     onBlur: PropTypes.func,
+    /** Object with the custom styles. The properties must be 
+    in camelCase naming convention (e.g. { fontFamily: ‘helvetica’ }) */
     style: PropTypes.object
 };
 
