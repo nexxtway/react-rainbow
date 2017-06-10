@@ -12,7 +12,6 @@ export default class Button extends Component {
             onBlur,
             onClick,
             style,
-            variant,
             children
         } = this.props;
 
@@ -23,15 +22,14 @@ export default class Button extends Component {
                     onFocus={ onFocus }
                     onBlur={ onBlur }
                     onClick={ onClick }
-                    style={ style }
-                    variant={ variant }>
+                    style={ style } >
                 { children ? children : label }
             </button>
         )
     }
 
     getBtnClass() {
-        const { variant, size, className }  = this.props;
+        const { variant, className }  = this.props;
 
         return classnames('slds-button', {
             'slds-button--neutral': variant === 'neutral',
@@ -52,6 +50,8 @@ Button.propTypes = {
     /** A button predefined style. It must be a string */
     variant: PropTypes.oneOf(['neutral', 'brand', 'inverse', 'destructive', 'success'
 ]),
+    /** Class for custom styles */
+    className: PropTypes.string,
     /** Disables the button if set to true */
     disabled: PropTypes.bool,
     /** Tab index */
