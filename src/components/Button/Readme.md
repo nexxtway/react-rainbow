@@ -14,6 +14,8 @@ Button examples:
 			<Button label={ <span>I'm a button's child node within label</span> } style={{ backgroundColor: '#000', color: '#fff' }} />
 		</div>
 		<div>
-			<Button label="Button label" variant="destructive"><span>I have precedence over the label attrib</span></Button>
+			<Button label="Button label" variant="destructive">
+				<span>I have precedence over the label attrib</span>
+			</Button>
 		</div>
     </div>

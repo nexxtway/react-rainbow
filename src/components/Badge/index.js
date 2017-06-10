@@ -6,11 +6,11 @@ export default class Badge extends Component {
     render() {
         const { label, style } = this.props;
 
-	return (
-	    <span className={ this.getClass() } style={ style }>
-	        { label }
-	    </span>
-	)
+    	return (
+    	    <span className={ this.getClass() } style={ style }>
+    	        { label }
+    	    </span>
+    	)
     }
 
     getClass() {
