@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button/> should have proper classes when variant is brand 1`] = `
+<button
+  className="slds-button slds-button--brand"
+  disabled={false}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  style={undefined}
+  tabIndex={undefined}
+>
+  Button label
+</button>
+`;

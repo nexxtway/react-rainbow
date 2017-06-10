@@ -25,4 +25,4 @@ Badge.propTypes = {
     className: PropTypes.string,
     /** Object with the custom styles. The properties must be in camelCase naming convention (e.g. { fontFamily: ‘helvetica’ }) */
     style: PropTypes.object
-}
+};
