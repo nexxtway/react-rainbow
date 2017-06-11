@@ -22,4 +22,32 @@ describe('<Button/>', () => {
         expect(onClickMockFn.mock.calls.length).toBe(1);
     });
 
+    it('should call onBlur function when it lost the focus', () => {
+        const onBlurMockFn = jest.fn();
+        const component = shallow(
+            <Button label="Button label" onBlur={ onBlurMockFn }/>
+        );
+
+        component.simulate('blur');
+        expect(onBlurMockFn.mock.calls.length).toBe(1);
+    });
+    
+    it('should call onFocus function when it gets the focus', () => {
+        const onFocusMockFn = jest.fn();
+        const component = shallow(
+            <Button label="Button label" onFocus={ onFocusMockFn }/>
+        );
+
+        component.simulate('focus');
+        expect(onFocusMockFn.mock.calls.length).toBe(1);
+    });
+
+    it('should render a children node', () => {
+    	const component = shallow(
+    		<Button><p>Child node</p></Button>
+    	);
+
+    	expect(component.contains(<p>Child node</p>)).toBe(true);
+    });
+
 });
