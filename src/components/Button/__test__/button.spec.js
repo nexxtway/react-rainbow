@@ -44,10 +44,34 @@ describe('<Button/>', () => {
 
     it('should render a children node', () => {
     	const component = shallow(
-    		<Button><p>Child node</p></Button>
+            <Button label={<p>Button label</p>} ><p>Child node</p></Button>
     	);
 
     	expect(component.contains(<p>Child node</p>)).toBe(true);
+    });
+
+	it('should have not <p>Button label</p>', () => {
+    	const component = shallow(
+            <Button label={<p className="button-label">Button label</p>} ><p>Child node</p></Button>
+    	);
+
+    	expect(component.find('.button-label').exists()).toBe(false);
+    });    
+
+    it('should have only one children', () => {
+        const component = shallow(
+            <Button label={<p>Button label</p>} ><p>Child node</p></Button>
+        );
+
+        expect(component.children()).toHaveLength(1);
+    });  
+
+    it('should have the Child node text', () => {
+        const component = shallow(
+            <Button label={<p>Button label</p>} ><p>Child node</p></Button>
+        );
+
+        expect(component.text()).toBe('Child node');
     });
 
 });
