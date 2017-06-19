@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-
-const FORMAT_REGEX = /^[a-z]+:[a-z_0-9]+$/;
+import IconSvg from '../IconSvg';
 
 export default class Icon extends Component {
     render() {
@@ -10,27 +9,17 @@ export default class Icon extends Component {
             assistiveText,
             iconName,
             style,
-            title
+            size,
+            title,
+            variant
         } = this.props;
-        const isIconNameCorrect = FORMAT_REGEX.test(iconName);
-        
-        if (isIconNameCorrect) {
-            const sprite = iconName.split(':')[0];
-            const icon = iconName.split(':')[1];
 
-            return (
-                <span className={ this.getContainerClass() } title={ title } style={ style }>
-                    <svg className={ this.getSvgClass() } aria-hidden="true">
-                        <use xmlnsXlink="http://www.w3.org/1999/xlink" xlinkHref={`/icons/${sprite}-sprite/svg/symbols.svg#${icon}`} />
-                    </svg>
-                    <span className="slds-assistive-text">{ assistiveText }</span>
-                </span>
-            )
-        }
-        else {
-            console.warn('The iconName prop is wrong');
-            return null
-        }
+        return (
+            <span className={ this.getContainerClass() } title={ title } style={ style }>
+                <IconSvg className="slds-icon" iconName={ iconName } size={ size } variant={ variant } />
+                <span className="slds-assistive-text">{ assistiveText }</span>
+            </span>
+        )
     }
 
     getContainerClass() {
@@ -42,30 +31,6 @@ export default class Icon extends Component {
         return classnames('slds-icon_container', {
             'slds-icon_container_circle': isAction
         }, `slds-icon-${icon}`, className);
-    }
-
-    getSvgClass() {
-        const { iconName, variant, size } = this.props;
-        const utilityRegExp = /^utility:.+/;
-        const isUtility = utilityRegExp.test(iconName);
-        const actionRegExp = /^action:.+/;
-        const isAction = actionRegExp.test(iconName)
-
-        if (!isUtility && variant) {
-            console.warn('variant only make sense for utitlity sprites');
-        }
-
-        return classnames('slds-icon', {
-            'slds-icon-text-default': isUtility && variant === 'default',
-            'slds-icon-text-light': isUtility && variant === 'light',
-            'slds-icon-text-error': isUtility && variant === 'error',
-            'slds-icon-text-warning': isUtility && variant === 'warning'
-        }, {
-            'slds-icon_large': size === 'large' && !isAction, 
-            'slds-icon_small': size === 'small' && !isAction,
-            'slds-icon_x-small': size === 'x-small' && !isAction,
-            'slds-icon_xx-small': size === 'xx-small' && !isAction
-        });
     } 
 }
 

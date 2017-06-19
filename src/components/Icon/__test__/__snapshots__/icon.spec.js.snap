@@ -9,6 +9,7 @@ exports[`<Icon/> should render a custom icon 1`] = `
   <svg
     aria-hidden="true"
     className="slds-icon"
+    style={undefined}
   >
     <use
       xlinkHref="/icons/custom-sprite/svg/symbols.svg#custom5"
@@ -34,7 +35,8 @@ exports[`<Icon/> should render a standard icon with size and style props 1`] = `
 >
   <svg
     aria-hidden="true"
-    className="slds-icon slds-icon_large"
+    className="slds-icon_large slds-icon"
+    style={undefined}
   >
     <use
       xlinkHref="/icons/standard-sprite/svg/symbols.svg#announcement"
@@ -55,7 +57,8 @@ exports[`<Icon/> should render a utility icon with title and variant props 1`] =
 >
   <svg
     aria-hidden="true"
-    className="slds-icon slds-icon-text-light"
+    className="slds-icon-text-light slds-icon"
+    style={undefined}
   >
     <use
       xlinkHref="/icons/utility-sprite/svg/symbols.svg#like"
@@ -67,5 +70,3 @@ exports[`<Icon/> should render a utility icon with title and variant props 1`] =
   />
 </span>
 `;
-
-exports[`<Icon/> should render nothing when the iconName's format is wrong 1`] = `null`;

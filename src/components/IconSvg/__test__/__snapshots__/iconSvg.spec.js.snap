@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<IconSvg/> should render a icon 1`] = `
+<svg
+  aria-hidden="true"
+  className="slds-icon-text-default"
+  style={undefined}
+>
+  <use
+    xlinkHref="/icons/utility-sprite/svg/symbols.svg#like"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+  />
+</svg>
+`;
+
+exports[`<IconSvg/> should render nothing when the iconName's format is wrong 1`] = `null`;
