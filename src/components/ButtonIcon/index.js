@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import Button from '../Button';
 import IconSvg from '../IconSvg';
 
-const ICON_SVG_COMPONENT = <IconSvg className="slds-button__icon slds-button__icon_x-small" iconName="utility:down" variant="" />;
+const ICON_SVG_COMPONENT = <IconSvg className="slds-button__icon slds-button__icon_x-small" iconName="utility:down" variant="bare" />;
 
 export default class ButtonIcon extends Component {
     render() {
@@ -50,8 +50,8 @@ export default class ButtonIcon extends Component {
         const hasDropdownIcon = variant === 'dropdown' || variant === 'dropdownBorder' || variant === 'dropdownInverse';
 
         return (
-            <Button { ...this.props } className={ this.getBtnClass() } ariaHaspopup={ hasDropdownIcon ? true : false } >
-                <IconSvg className={ this.getIconSvgClass() } iconName={ iconName } variant="" />
+            <Button { ...this.props } className={ this.getBtnClass() } ariaHaspopup={ hasDropdownIcon ? true : false } variant="bare" >
+                <IconSvg className={ this.getIconSvgClass() } iconName={ iconName } variant="bare" />
                 { hasDropdownIcon ? ICON_SVG_COMPONENT : null }
                 <span className="slds-assistive-text">{ assistiveText }</span>
             </Button>

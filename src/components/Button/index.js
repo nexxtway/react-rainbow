@@ -53,8 +53,7 @@ Button.propTypes = {
         PropTypes.node
     ]),
     /** A button predefined style. It must be a string */
-    variant: PropTypes.oneOf(['neutral', 'brand', 'inverse', 'destructive', 'success'
-]),
+    variant: PropTypes.oneOf(['neutral', 'brand', 'inverse', 'destructive', 'success', 'bare']),
     /** Class for custom styles */
     className: PropTypes.string,
     /** Disables the button if set to true */

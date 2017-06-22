@@ -34,14 +34,12 @@ export default class IconSvg extends Component {
         const isUtility = UTILITY_REGEX.test(iconName);
         const isAction = ACTION_REGEX.test(iconName)
 
-        if (!isUtility && variant) {
+        if (!isUtility && variant && variant !== 'bare') {
             console.warn('variant only make sense for utitlity sprites');
-        } else if (isUtility && variant === undefined) {
-            variant = 'default';
         }
         
         return classnames({
-            'slds-icon-text-default': isUtility && variant === 'default',
+            'slds-icon-text-default': isUtility && (variant === 'default' || !variant),
             'slds-icon-text-light': isUtility && variant === 'light',
             'slds-icon-text-error': isUtility && variant === 'error',
             'slds-icon-text-warning': isUtility && variant === 'warning'
@@ -65,5 +63,5 @@ IconSvg.propTypes = {
     /** Object with the custom styles. The properties must be in camelCase naming convention (e.g. { backgroundColor: green }) */
     style: PropTypes.object,
     /** The fill color of the svg icon */
-    variant: PropTypes.oneOf(['default', 'light', 'error', 'warning'])
+    variant: PropTypes.oneOf(['default', 'light', 'error', 'warning', 'bare'])
 };
