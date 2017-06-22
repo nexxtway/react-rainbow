@@ -12,7 +12,9 @@ export default class Button extends Component {
             onBlur,
             onClick,
             style,
-            children
+            children,
+            title,
+            ariaHaspopup
         } = this.props;
 
         return (
@@ -22,7 +24,10 @@ export default class Button extends Component {
                     onFocus={ onFocus }
                     onBlur={ onBlur }
                     onClick={ onClick }
-                    style={ style } >
+                    title={ title }
+                    style={ style }
+                    //It is a attribute used in ButtonIcon component
+                    aria-haspopup={ ariaHaspopup } >
                 { children ? children : label }
             </button>
         )

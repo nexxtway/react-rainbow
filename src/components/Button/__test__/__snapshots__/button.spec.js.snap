@@ -2,6 +2,7 @@
 
 exports[`<Button/> should have proper classes when variant is brand 1`] = `
 <button
+  aria-haspopup={undefined}
   className="slds-button slds-button--brand"
   disabled={false}
   onBlur={[Function]}
@@ -9,6 +10,7 @@ exports[`<Button/> should have proper classes when variant is brand 1`] = `
   onFocus={[Function]}
   style={undefined}
   tabIndex={undefined}
+  title={undefined}
 >
   Button label
 </button>
