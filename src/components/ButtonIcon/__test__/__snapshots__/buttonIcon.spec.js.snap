@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ButtonIcon/> should render 1`] = `
+exports[`<ButtonIcon/> should render a button icon 1`] = `
 <button
   aria-haspopup={false}
   className="slds-button slds-button_icon"
@@ -27,3 +27,103 @@ exports[`<ButtonIcon/> should render 1`] = `
   />
 </button>
 `;
+
+exports[`<ButtonIcon/> should render a disabled button icon 1`] = `
+<button
+  aria-haspopup={false}
+  className="slds-button slds-button_icon"
+  disabled={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  style={undefined}
+  tabIndex={undefined}
+  title={undefined}
+>
+  <svg
+    aria-hidden="true"
+    className="slds-button__icon"
+    style={undefined}
+  >
+    <use
+      xlinkHref="/icons/utility-sprite/svg/symbols.svg#settings"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    />
+  </svg>
+  <span
+    className="slds-assistive-text"
+  />
+</button>
+`;
+
+exports[`<ButtonIcon/> should render a dropdown button icon 1`] = `
+<button
+  aria-haspopup={true}
+  className="slds-button slds-button_icon slds-button_icon-container-more"
+  disabled={false}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  style={undefined}
+  tabIndex={undefined}
+  title={undefined}
+>
+  <svg
+    aria-hidden="true"
+    className="slds-button__icon"
+    style={undefined}
+  >
+    <use
+      xlinkHref="/icons/utility-sprite/svg/symbols.svg#settings"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    />
+  </svg>
+  <svg
+    aria-hidden="true"
+    className="slds-button__icon slds-button__icon_x-small"
+    style={undefined}
+  >
+    <use
+      xlinkHref="/icons/utility-sprite/svg/symbols.svg#down"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    />
+  </svg>
+  <span
+    className="slds-assistive-text"
+  />
+</button>
+`;
+
+exports[`<ButtonIcon/> should render a hinthover button icon 1`] = `
+<div
+  className="slds-hint-parent"
+>
+  <button
+    aria-haspopup={false}
+    className="slds-button slds-button_icon"
+    disabled={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    style={undefined}
+    tabIndex={undefined}
+    title={undefined}
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-button__icon slds-button__icon_hint"
+      style={undefined}
+    >
+      <use
+        xlinkHref="/icons/utility-sprite/svg/symbols.svg#settings"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+      />
+    </svg>
+    <span
+      className="slds-assistive-text"
+    />
+  </button>
+</div>
+`;
+
+exports[`<ButtonIcon/> should render nothing when variant is one of the dropdown and size prop is passed other than medium 1`] = `null`;
