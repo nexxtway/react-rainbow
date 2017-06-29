@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Avatar /> should render a avatar with a cirle style when variant is set to true 1`] = `
+<span
+  className="slds-avatar slds-avatar_circle slds-avatar_medium"
+  style={undefined}
+>
+  <img
+    alt={undefined}
+    onError={[Function]}
+    src="images/avatar2.jpg"
+    title={undefined}
+  />
+</span>
+`;
+
+exports[`<Avatar /> should render a avatar with a custom icon 1`] = `
+<span
+  className="slds-avatar slds-avatar_medium"
+  style={undefined}
+>
+  <span
+    className="slds-icon_container slds-icon-custom-custom1"
+    style={undefined}
+    title={undefined}
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-icon"
+      style={undefined}
+    >
+      <use
+        xlinkHref="/icons/custom-sprite/svg/symbols.svg#custom1"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+      />
+    </svg>
+    <span
+      className="slds-assistive-text"
+    />
+  </span>
+</span>
+`;
+
+exports[`<Avatar /> should render a avatar with a default user icon 1`] = `
+<span
+  className="slds-avatar slds-avatar_medium"
+  style={undefined}
+>
+  <span
+    className="slds-icon_container slds-icon-standard-user"
+    style={undefined}
+    title={undefined}
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-icon"
+      style={undefined}
+    >
+      <use
+        xlinkHref="/icons/standard-sprite/svg/symbols.svg#user"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+      />
+    </svg>
+    <span
+      className="slds-assistive-text"
+    />
+  </span>
+</span>
+`;
+
+exports[`<Avatar /> should render a avatar with a default user icon when the initials provided are wrong 1`] = `
+<span
+  className="slds-avatar slds-avatar_medium"
+  style={undefined}
+>
+  <span
+    className="slds-icon_container slds-icon-standard-user"
+    style={undefined}
+    title={undefined}
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-icon"
+      style={undefined}
+    >
+      <use
+        xlinkHref="/icons/standard-sprite/svg/symbols.svg#user"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+      />
+    </svg>
+    <span
+      className="slds-assistive-text"
+    />
+  </span>
+</span>
+`;
+
+exports[`<Avatar /> should render a avatar with initials 1`] = `
+<span
+  className="slds-avatar slds-avatar_medium"
+  style={undefined}
+>
+  <abbr
+    className="slds-avatar__initials slds-icon-standard-user"
+    style={undefined}
+    title={undefined}
+  >
+    JL
+  </abbr>
+</span>
+`;
+
+exports[`<Avatar /> should render a large image avatar 1`] = `
+<span
+  className="slds-avatar slds-avatar_large"
+  style={undefined}
+>
+  <img
+    alt="Jose Leandro"
+    onError={[Function]}
+    src="images/avatar1.jpg"
+    title="Jose Leandro"
+  />
+</span>
+`;

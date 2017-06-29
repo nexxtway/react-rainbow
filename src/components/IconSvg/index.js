@@ -58,7 +58,7 @@ IconSvg.propTypes = {
     className: PropTypes.string,
     /** The icon name. It is required. It take the following format: ‘sprite name:icon name’ e.g. ‘utility:add’ */
     iconName: PropTypes.string.isRequired,
-     /** The icon size */
+    /** The icon size */
     size: PropTypes.oneOf(['large', 'medium','small', 'x-small', 'xx-small']),
     /** Object with the custom styles. The properties must be in camelCase naming convention (e.g. { backgroundColor: green }) */
     style: PropTypes.object,

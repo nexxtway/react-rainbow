@@ -48,7 +48,7 @@ Icon.propTypes = {
     /** The title that is showed when a user hover the icon. It is necessary if the icon sits alone and a sighted user might need to hover for a description */
     title: PropTypes.string,
     /** The fill color of the svg icon */
-    variant: PropTypes.oneOf(['default', 'light', 'error', 'warning'])
+    variant: PropTypes.oneOf(['default', 'light', 'error', 'warning', 'bare'])
 }
 
 Icon.defaultProps = {
