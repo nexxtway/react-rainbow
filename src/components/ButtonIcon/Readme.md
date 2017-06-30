@@ -14,6 +14,6 @@ ButtonIcon examples:
             <ButtonIcon iconName="custom:custom1" variant="border" />
         </div>
         <div className="slds-p-bottom--medium">
-            <ButtonIcon iconName="standard:announcement" variant="borderInverse" style={{ backgroundColor: 'gray' }} />
+            <ButtonIcon iconName="standard:announcement" variant="borderInverse" style={{ backgroundColor: 'green' }} />
         </div>
     </div>

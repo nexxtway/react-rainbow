@@ -1,5 +1,4 @@
 import React from 'react';
-import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
 import Avatar from './../index';
 
@@ -44,12 +43,5 @@ describe('<Avatar />', () => {
         const component = renderer.create(<Avatar src="images/avatar2.jpg" variant />);
 
         expect(component).toMatchSnapshot();
-    });
-
-    it('should fire onError event when src prop is not valid (image is not loaded)', (done) => {
-        const onErrorMockFnCallback = jest.fn(() => done());
-        shallow(<Avatar src="wrong/path" onError={onErrorMockFnCallback()} />);
-
-        expect(onErrorMockFnCallback).toHaveBeenCalledTimes(1);
     });
 });

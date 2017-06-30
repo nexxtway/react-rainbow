@@ -2,7 +2,7 @@
 
 exports[`<Button/> should have proper classes when variant is brand 1`] = `
 <button
-  aria-haspopup={undefined}
+  aria-haspopup={false}
   className="slds-button slds-button--brand"
   disabled={false}
   onBlur={[Function]}
