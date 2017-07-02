@@ -1,5 +1,6 @@
 /* eslint-disable */
 const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     components: 'src/components/**/index.js',
@@ -28,6 +29,12 @@ module.exports = {
                     },
                 }
             ]
-        }
-    }
+        },
+        plugins: [
+            new CopyWebpackPlugin([
+                { from: './assets/' }
+            ])
+        ]
+    },
+
 };
