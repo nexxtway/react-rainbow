@@ -1,6 +1,5 @@
 /* eslint-disable */
 const path = require('path');
-const PORT = Number(process.env.PORT) || 6060;
 
 module.exports = {
     components: 'src/components/**/index.js',
@@ -30,6 +29,5 @@ module.exports = {
                 }
             ]
         }
-    },
-    serverPort: PORT
+    }
 };
