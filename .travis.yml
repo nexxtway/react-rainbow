@@ -6,6 +6,6 @@ cache:
     - "node_modules"
 script:
   - npm test
-  - npm run lint
-after_success:
   - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+  - npm run lint
+
