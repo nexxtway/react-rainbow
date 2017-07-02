@@ -17,3 +17,4 @@ nbproject
 .sass-cache
 styleguide
 coverage
+.env
