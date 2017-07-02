@@ -1,3 +1,4 @@
+/* eslint-disable */
 const path = require('path');
 
 module.exports = {
@@ -28,5 +29,6 @@ module.exports = {
                 }
             ]
         }
-    }
+    },
+    serverPort: process.env.PORT || 6060
 };
