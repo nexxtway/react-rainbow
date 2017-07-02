@@ -15,8 +15,8 @@
     "react-dom": "^15.5.4"
   },
   "scripts": {
-    "start": "styleguidist server",
-    "build": "styleguidist build",
+    "start": "./node_modules/.bin/styleguidist server",
+    "build": "./node_modules/.bin/styleguidist build",
     "test": "jest --verbose",
     "lint": "./node_modules/.bin/eslint src"
   },
