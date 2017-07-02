@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "React components for Lightning Design System",
   "engines": {
-    "node": "6.3.1"
+    "node": "7.10.0"
   },
   "keywords": [],
   "dependencies": {
@@ -12,7 +12,8 @@
     "jest": "^20.0.4",
     "prop-types": "^15.5.10",
     "react": "^15.3.2",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "react-styleguidist": "^5.2.1"
   },
   "scripts": {
     "start": "./node_modules/.bin/styleguidist server",
@@ -53,7 +54,6 @@
     "eslint-plugin-react": "^7.1.0",
     "jest": "^20.0.4",
     "node-sass": "^3.13.0",
-    "react-styleguidist": "^5.2.1",
     "react-test-renderer": "^15.5.4",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
