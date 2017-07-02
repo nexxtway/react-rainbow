@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ComponentName/> should render a large progress bar 1`] = `
+exports[`<ProgressBar/> should render a large progress bar 1`] = `
 <div
   aria-valuemax="100"
   aria-valuemin="0"
@@ -20,7 +20,7 @@ exports[`<ComponentName/> should render a large progress bar 1`] = `
 </div>
 `;
 
-exports[`<ComponentName/> should render a progress bar with assistive text 1`] = `
+exports[`<ProgressBar/> should render a progress bar with assistive text 1`] = `
 <div
   aria-valuemax="100"
   aria-valuemin="0"

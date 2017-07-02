@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ButtonGroup/> should render the right markup with the right classes 1`] = `
+<div
+  className="slds-button-group"
+  role="group"
+  style={undefined}
+>
+  <button
+    aria-haspopup={false}
+    className="slds-button slds-button--neutral"
+    disabled={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    style={undefined}
+    tabIndex={undefined}
+    title={undefined}
+  >
+    Refresh
+  </button>
+  <button
+    aria-haspopup={false}
+    className="slds-button slds-button--neutral"
+    disabled={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    style={undefined}
+    tabIndex={undefined}
+    title={undefined}
+  >
+    Edit
+  </button>
+  <button
+    aria-haspopup={false}
+    className="slds-button slds-button--neutral"
+    disabled={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    style={undefined}
+    tabIndex={undefined}
+    title={undefined}
+  >
+    Save
+  </button>
+</div>
+`;
