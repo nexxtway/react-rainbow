@@ -1,0 +1,216 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Card/> should render nothing when the card is created without any prop 1`] = `null`;
+
+exports[`<Card/> should render the right markup for the card body when only children is passed 1`] = `
+<article
+  className="slds-card"
+  style={undefined}
+>
+  <div
+    className="slds-card__body slds-card__body_inner"
+  >
+    Card Body
+  </div>
+</article>
+`;
+
+exports[`<Card/> should render the right markup for the card component 1`] = `
+<article
+  className="slds-card"
+  style={undefined}
+>
+  <div
+    className="slds-card__header slds-grid"
+  >
+    <header
+      className="slds-media slds-media_center slds-has-flexi-truncate"
+    >
+      <div
+        className="slds-media__figure"
+      >
+        <span
+          className="slds-icon_container slds-icon-standard-contact"
+          style={undefined}
+          title={undefined}
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-icon_small slds-icon"
+            style={undefined}
+          >
+            <use
+              xlinkHref="/icons/standard-sprite/svg/symbols.svg#contact"
+              xmlnsXlink="http://www.w3.org/1999/xlink"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          />
+        </span>
+      </div>
+      <div
+        className="slds-media__body"
+      >
+        <h2>
+          <span
+            className="slds-text-heading_small"
+          >
+            Card Header
+          </span>
+        </h2>
+      </div>
+    </header>
+    <div
+      className="slds-no-flex"
+    >
+      <button
+        aria-haspopup={false}
+        className="slds-button slds-button--neutral"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        style={undefined}
+        tabIndex={undefined}
+        title={undefined}
+      >
+        New
+      </button>
+    </div>
+  </div>
+  <div
+    className="slds-card__body slds-card__body_inner"
+  >
+    Card Body (custom goes here)
+  </div>
+  <footer
+    className="slds-card__footer"
+  >
+    Card Footer
+  </footer>
+</article>
+`;
+
+exports[`<Card/> should render the right markup for the card footer when only footer is passed 1`] = `
+<article
+  className="slds-card"
+  style={undefined}
+>
+  <div
+    className="slds-card__body slds-card__body_inner"
+  />
+  <footer
+    className="slds-card__footer"
+  >
+    Card footer
+  </footer>
+</article>
+`;
+
+exports[`<Card/> should render the right markup for the card header when only actions is passed 1`] = `
+<article
+  className="slds-card"
+  style={undefined}
+>
+  <div
+    className="slds-card__header slds-grid"
+  >
+    <header
+      className="slds-media slds-media_center slds-has-flexi-truncate"
+    />
+    <div
+      className="slds-no-flex"
+    >
+      <button
+        aria-haspopup={false}
+        className="slds-button slds-button--neutral"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        style={undefined}
+        tabIndex={undefined}
+        title={undefined}
+      >
+        New
+      </button>
+    </div>
+  </div>
+  <div
+    className="slds-card__body slds-card__body_inner"
+  />
+</article>
+`;
+
+exports[`<Card/> should render the right markup for the card header when only iconName is passed 1`] = `
+<article
+  className="slds-card"
+  style={undefined}
+>
+  <div
+    className="slds-card__header slds-grid"
+  >
+    <header
+      className="slds-media slds-media_center slds-has-flexi-truncate"
+    >
+      <div
+        className="slds-media__figure"
+      >
+        <span
+          className="slds-icon_container slds-icon-standard-contact"
+          style={undefined}
+          title={undefined}
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-icon_small slds-icon"
+            style={undefined}
+          >
+            <use
+              xlinkHref="/icons/standard-sprite/svg/symbols.svg#contact"
+              xmlnsXlink="http://www.w3.org/1999/xlink"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          />
+        </span>
+      </div>
+    </header>
+  </div>
+  <div
+    className="slds-card__body slds-card__body_inner"
+  />
+</article>
+`;
+
+exports[`<Card/> should render the right markup for the card header when only title is passed 1`] = `
+<article
+  className="slds-card"
+  style={undefined}
+>
+  <div
+    className="slds-card__header slds-grid"
+  >
+    <header
+      className="slds-media slds-media_center slds-has-flexi-truncate"
+    >
+      <div
+        className="slds-media__body"
+      >
+        <h2>
+          <span
+            className="slds-text-heading_small"
+          >
+            Card title
+          </span>
+        </h2>
+      </div>
+    </header>
+  </div>
+  <div
+    className="slds-card__body slds-card__body_inner"
+  />
+</article>
+`;

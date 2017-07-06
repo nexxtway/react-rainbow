@@ -30,6 +30,11 @@ export default class Button extends Component {
             ariaHaspopup,
         } = this.props;
 
+        if (!label && !children) {
+            console.error('either the label or children are required');
+            return null;
+        }
+
         return (
             <button className={this.getBtnClass()}
                     disabled={disabled}
