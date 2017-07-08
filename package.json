@@ -47,7 +47,7 @@
     "eslint-plugin-react": "^7.1.0",
     "jest": "^20.0.4",
     "react-test-renderer": "^15.5.4",
-    "react-styleguidist": "^5.2.1",
+    "react-styleguidist": "reiniergs/react-styleguidist",
     "webpack": "^1.13.3",
     "babel-core": "^6.18.0",
     "babel-eslint": "^7.2.3",
