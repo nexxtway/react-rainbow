@@ -11,8 +11,9 @@ script:
   - npm run build
 deploy:
   provider: firebase
+  skip_cleanup: true
+  token: ${FIREBASE_TOKEN}
   on:
     branch: master
-  token:
-    secure: "lTbLHJXmTZK40jrxscl/PHADMuGRR0rwc4w3Gdu32Qx4NU0MLED9Le+O98Royt0PLC4yIi+v5VlWM6v1HFJfRmshwYqMKs3xK2EoZCZHvuX/u5ci4DazpMGHkcP9lXW0CmVClUcC6zCfoKqu2j9AhFqTpRCDxMUUEWCR6/bh0t3c+SzqJa8QtIerc1S7o1vf5pGfbSxp0bNQw5nl5bM6EYpqI9jP+CS125+c/umsG41UZzMnzwKBtJXuzn7jEIO0nYC5idRGKwv+lzxOtqWeXu60TTOcdM53sCi0loKCGVg8oprtwMpdIQnpgORGCteJygFpFUVwWt9cJsdZw7Kl3nrEQi+4vHjjZFFPCTZFSo0RscmpnPLgGOEXxI4jujgKw44lVR4322tubzZKRzw7uqziXWLMp1oyjOC6TYrYn0Z+fj5CarAWNCiuvCJ38qffK/z2vjJZNMxS43Hztdbkv66zyiGqSn59XNQPuTmuM5nXwh/fpqcq0PpZJpyAGw8Kv16yHC19PaxO7RnpyZyfrd7rN4vohcpcBaNp//KSP5lBWXtwsiDL4vVKIgHRbN4D1qB9JjHKg7GFXy+6jtZ62/SWjp8QjpslTov/spXO6jW7wn2in/w8Q/E1okvd6vqiDG66z5DYXuOJ3OjyMLL7YozNJd8fq3dNyvP/QrK339Q="
-
+  
+    

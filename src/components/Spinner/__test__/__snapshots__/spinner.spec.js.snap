@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Spinner/> should render nothing if isVisible is set to false 1`] = `null`;
+
+exports[`<Spinner/> should render the assistiveText if it is passed 1`] = `
+<div
+  className="slds-spinner slds-spinner_medium"
+  role="status"
+>
+  <span
+    className="slds-assistive-text"
+  >
+    Loading
+  </span>
+  <div
+    className="slds-spinner__dot-a"
+  />
+  <div
+    className="slds-spinner__dot-b"
+  />
+</div>
+`;
+
+exports[`<Spinner/> should render the right markup for brand variant 1`] = `
+<div
+  className="slds-spinner slds-spinner_brand slds-spinner_medium"
+  role="status"
+>
+  <div
+    className="slds-spinner__dot-a"
+  />
+  <div
+    className="slds-spinner__dot-b"
+  />
+</div>
+`;
+
+exports[`<Spinner/> should render the spinner by default if isVisible is not passed 1`] = `
+<div
+  className="slds-spinner slds-spinner_medium"
+  role="status"
+>
+  <div
+    className="slds-spinner__dot-a"
+  />
+  <div
+    className="slds-spinner__dot-b"
+  />
+</div>
+`;

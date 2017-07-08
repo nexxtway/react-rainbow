@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 import ProgressBar from './../index';
 
-describe('<ComponentName/>', () => {
+describe('<ProgressBar/>', () => {
     it('should render a large progress bar', () => {
         const component = renderer.create(<ProgressBar value={40} size="large" />);
 
