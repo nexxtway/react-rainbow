@@ -6,6 +6,7 @@ export Button from './src/components/Button';
 export ButtonGroup from './src/components/ButtonGroup';
 export ButtonIcon from './src/components/ButtonIcon';
 export Card from './src/components/Card';
+export ExpandableSection from './src/components/ExpandableSection';
 export Icon from './src/components/Icon';
 export IconSvg from './src/components/IconSvg';
 export ProgressBar from './src/components/ProgressBar';
