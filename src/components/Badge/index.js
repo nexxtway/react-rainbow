@@ -1,30 +1,41 @@
-/* eslint-disable react/require-default-props */
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-export default class Badge extends Component {
-    getClass() {
-        return classnames('slds-badge', this.props.className);
+export default function Badge(props) {
+    const {
+        className,
+        style,
+        label,
+        variant,
+    } = props;
+
+    function getClassName() {
+        return classnames('slds-badge', `slds-badge_${variant}`, className);
     }
 
-    render() {
-        const { label, style } = this.props;
-
-        return (
-            <span className={this.getClass()} style={style}>
-                { label }
-            </span>
-        );
-    }
+    return (
+        <span className={getClassName()} style={style}>
+            {label}
+        </span>
+    );
 }
 
 Badge.propTypes = {
-    /** Label for the button */
-    label: PropTypes.string.isRequired,
-    /** Class for custom styles */
+     /** The class name of the root element. */
     className: PropTypes.string,
-    /** Object with the custom styles. The properties must be in camelCase naming
-     convention (e.g. { fontFamily: ‘helvetica’ }) */
+     /** It is an object with custom style applied to the root element. */
     style: PropTypes.object,
+    /** Label for the badge. It is required. */
+    label: PropTypes.string.isRequired,
+    /** The badge variant. */
+    variant: PropTypes.oneOf([
+        'default', 'inverse', 'lightest',
+    ]),
+};
+
+Badge.defaultProps = {
+    className: undefined,
+    style: {},
+    variant: 'default',
 };

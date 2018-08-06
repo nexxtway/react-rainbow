@@ -1,46 +1,8 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 import ButtonIcon from './../index';
 
 describe('<ButtonIcon/>', () => {
-    it('should render a button icon', () => {
-        const component = renderer.create(<ButtonIcon iconName="utility:settings" />);
-
-        expect(component).toMatchSnapshot();
-    });
-
-    it('should render a dropdown button icon', () => {
-        const component = renderer.create(
-            <ButtonIcon iconName="utility:settings" variant="dropdown" />,
-        );
-
-        expect(component).toMatchSnapshot();
-    });
-
-    it('should render a hinthover button icon', () => {
-        const component = renderer.create(
-            <ButtonIcon iconName="utility:settings" variant="hinthover" />,
-        );
-
-        expect(component).toMatchSnapshot();
-    });
-
-    it('should render a disabled button icon', () => {
-        const component = renderer.create(
-            <ButtonIcon iconName="utility:settings" disabled />);
-
-        expect(component).toMatchSnapshot();
-    });
-
-    it('should render nothing when variant is one of the dropdown and size prop is passed other than medium', () => {
-        const component = renderer.create(
-            <ButtonIcon iconName="utility:settings" variant="dropdown" size="small" />,
-        );
-
-        expect(component).toMatchSnapshot();
-    });
-
     it('should show a console warning when variant is one of the dropdown and size prop is passed other than medium', () => {
         console.warn = jest.fn();
         shallow(<ButtonIcon iconName="custom-custom5" variant="dropdownBorder" size="x-small" />);

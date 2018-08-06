@@ -1,21 +1,8 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 import ProgressBar from './../index';
 
 describe('<ProgressBar/>', () => {
-    it('should render a large progress bar', () => {
-        const component = renderer.create(<ProgressBar value={40} size="large" />);
-
-        expect(component).toMatchSnapshot();
-    });
-
-    it('should render a progress bar with assistive text', () => {
-        const component = renderer.create(<ProgressBar assistiveText="Progress: 0%" />);
-
-        expect(component).toMatchSnapshot();
-    });
-
     it('should has set the value passed', () => {
         const component = shallow(<ProgressBar value={25} />);
 

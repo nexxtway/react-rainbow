@@ -1,21 +1,8 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 import IconSvg from './../index';
 
 describe('<IconSvg/>', () => {
-    it('should render a icon', () => {
-        const component = renderer.create(<IconSvg iconName="utility:like" />);
-
-        expect(component).toMatchSnapshot();
-    });
-
-    it('should render nothing when the iconName\'s format is wrong', () => {
-        const component = renderer.create(<IconSvg iconName="utility-like:custom5" />);
-
-        expect(component).toMatchSnapshot();
-    });
-
     it('should show a console warning when the iconName\'s format is wrong', () => {
         console.warn = jest.fn();
         shallow(<IconSvg iconName="custom-custom5" />);
