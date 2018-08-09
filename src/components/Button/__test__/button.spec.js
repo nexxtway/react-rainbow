@@ -1,56 +1,161 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
+import renderer from 'react-test-renderer';
 import Button from './../index';
 
 describe('<Button/>', () => {
     it('should call onClick function when someone click over', () => {
         const onClickMockFn = jest.fn();
-        const component = shallow(<Button label="Button label" onClick={onClickMockFn} />);
+        const component = mount(
+            <Button label="Button label" onClick={onClickMockFn} />,
+        );
 
         component.simulate('click');
         expect(onClickMockFn.mock.calls.length).toBe(1);
     });
-
     it('should call onBlur function when it lost the focus', () => {
         const onBlurMockFn = jest.fn();
-        const component = shallow(<Button label="Button label" onBlur={onBlurMockFn} />);
+        const component = mount(
+            <Button label="Button label" onBlur={onBlurMockFn} />,
+        );
 
         component.simulate('blur');
         expect(onBlurMockFn.mock.calls.length).toBe(1);
     });
-
     it('should call onFocus function when it gets the focus', () => {
         const onFocusMockFn = jest.fn();
-        const component = shallow(<Button label="Button label" onFocus={onFocusMockFn} />);
+        const component = mount(
+            <Button label="Button label" onFocus={onFocusMockFn} />,
+        );
 
         component.simulate('focus');
         expect(onFocusMockFn.mock.calls.length).toBe(1);
     });
+    it('should be defined the click method', () => {
+        const component = mount(
+            <Button />,
+        );
 
-    it('should render a children node', () => {
-        const component = shallow(<Button label={<p>Button label</p>} ><p>Child node</p></Button>);
-
-        expect(component.contains(<p>Child node</p>)).toBe(true);
+        expect(typeof component.instance().click).toBe('function');
     });
+    it('should be defined the focus method', () => {
+        const component = mount(
+            <Button />,
+        );
 
-    it('should have not <p>Button label</p>', () => {
-        const component = shallow(
-            <Button label={<p className="button-label">Button label</p>} >
-                <p>Child node</p>
-            </Button>);
-
-        expect(component.find('.button-label').exists()).toBe(false);
+        expect(typeof component.instance().focus).toBe('function');
     });
+    it('should be defined the blur method', () => {
+        const component = mount(
+            <Button />,
+        );
 
-    it('should have only one children', () => {
-        const component = shallow(<Button label={<p>Button label</p>} ><p>Child node</p></Button>);
-
-        expect(component.children()).toHaveLength(1);
+        expect(typeof component.instance().blur).toBe('function');
     });
+    it('should focus the button when the focus method is called', () => {
+        const component = mount(
+            <Button />,
+        );
 
-    it('should have the Child node text', () => {
-        const component = shallow(<Button label={<p>Button label</p>} ><p>Child node</p></Button>);
+        component.instance().focus();
+        const focusedElementDataId = document.activeElement.getAttribute('data-id');
+        const buttonDataId = component.find('button').prop('data-id');
+        expect(focusedElementDataId).toBe(buttonDataId);
+    });
+    it('should blur the button when the blur method is called', () => {
+        const component = mount(
+            <Button />,
+        );
+        const instance = component.instance();
+        const buttonDataId = component.find('button').prop('data-id');
 
-        expect(component.text()).toBe('Child node');
+        instance.focus();
+        expect(document.activeElement.getAttribute('data-id')).toBe(buttonDataId);
+        instance.blur();
+        expect(document.activeElement.getAttribute('data-id')).toBeNull();
+    });
+    it('should set disable to true when it is passed', () => {
+        const component = mount(
+            <Button label="my label" disabled />,
+        );
+
+        expect(component.find('button').prop('disabled')).toBe(true);
+    });
+    it('should set the tabIndex passed', () => {
+        const component = mount(
+            <Button label="my label" tabIndex={0} />,
+        );
+
+        expect(component.find('button').prop('tabIndex')).toBe(0);
+    });
+    it('should set the title passed', () => {
+        const component = mount(
+            <Button label="my label" title="my title" />,
+        );
+
+        expect(component.find('button').prop('title')).toBe('my title');
+    });
+    it('should set the type passed', () => {
+        const component = mount(
+            <Button label="my label" type="reset" />,
+        );
+
+        expect(component.find('button').prop('type')).toBe('reset');
+    });
+    it('should set aria-haspopup to true when it is passed', () => {
+        const component = mount(
+            <Button label="my label" ariaHaspopup />,
+        );
+
+        expect(component.find('button').prop('aria-haspopup')).toBe(true);
+    });
+    it('should set the label passed as children', () => {
+        const component = mount(
+            <Button label="Click me" />,
+        );
+
+        expect(component.find('button').text()).toBe('Click me');
+    });
+    it('should have the right class names', () => {
+        const component = renderer.create(
+            <Button label="Button Label" />,
+        );
+        expect(component).toMatchSnapshot();
+    });
+    it('should have the right class names when variant neutral and have a custom class', () => {
+        const component = renderer.create(
+            <Button label="Button Label" variant="neutral" className="my-custom-class-name" />,
+        );
+        expect(component).toMatchSnapshot();
+    });
+    it('should have the right class names when variant brand', () => {
+        const component = renderer.create(
+            <Button label="Button Label" variant="brand" />,
+        );
+        expect(component).toMatchSnapshot();
+    });
+    it('should have the right class names when variant outline-brand', () => {
+        const component = renderer.create(
+            <Button label="Button Label" variant="outline-brand" />,
+        );
+        expect(component).toMatchSnapshot();
+    });
+    it('should have the right class names when variant destructive', () => {
+        const component = renderer.create(
+            <Button label="Button Label" variant="destructive" />,
+        );
+        expect(component).toMatchSnapshot();
+    });
+    it('should have the right class names when variant success', () => {
+        const component = renderer.create(
+            <Button label="Button Label" variant="success" />,
+        );
+        expect(component).toMatchSnapshot();
+    });
+    it('should have the right class names when variant inverse', () => {
+        const component = renderer.create(
+            <Button label="Button Label" variant="inverse" />,
+        );
+        expect(component).toMatchSnapshot();
     });
 });
