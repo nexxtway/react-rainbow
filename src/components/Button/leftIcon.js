@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 export default function LeftIcon({ icon, position }) {
     if (icon && position === 'left') {
         return (
-            <span className="slds-button__icon slds-button__icon_left">
+            <span className="slds-button__icon_left slds-current-color">
                 {icon}
             </span>
         );
@@ -13,12 +13,13 @@ export default function LeftIcon({ icon, position }) {
 }
 
 LeftIcon.propTypes = {
-    icon: PropTypes.node.isRequired,
+    icon: PropTypes.node,
     position: PropTypes.oneOf([
         'left', 'right',
     ]),
 };
 
 LeftIcon.defaultProps = {
+    icon: null,
     position: undefined,
 };

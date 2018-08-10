@@ -2,7 +2,7 @@
 
 exports[`<RightIcon/> should have the right class names when the icon is passed and position is right 1`] = `
 <span
-  className="slds-button__icon slds-button__icon_right"
+  className="slds-button__icon_right slds-current-color"
 >
   <svg />
 </span>
