@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
+import IconSvg from '../IconSvg';
 
 function AssistiveText({ text }) {
     if (text) {
@@ -18,10 +19,31 @@ export default class ButtonIcon extends Component {
         this.blur = this.blur.bind(this);
     }
 
-    getSizeClassName() {
-        const { size } = this.props;
-        if (size && size !== 'medium') {
-            return `slds-button_icon-${size}`;
+    getIconSizeClassName() {
+        const { size, variant } = this.props;
+        if (variant === 'base') {
+            return {
+                'slds-button__icon_large': size === 'large',
+                'slds-button__icon_small': size === 'small',
+                'slds-button__icon_x-small': size === 'x-small' || size === 'xx-small',
+            };
+        }
+        return null;
+    }
+
+    getIconClassNames() {
+        const { className } = this.props;
+        return classnames('slds-button__icon', this.getIconSizeClassName(), className);
+    }
+
+    getButtonSizeClassName() {
+        const { size, variant } = this.props;
+        if (variant !== 'base') {
+            return {
+                'slds-button_icon-small': size === 'small',
+                'slds-button_icon-x-small': size === 'x-small',
+                'slds-button_icon-xx-small': size === 'xx-small',
+            };
         }
         return null;
     }
@@ -34,9 +56,9 @@ export default class ButtonIcon extends Component {
         return null;
     }
 
-    getClassNames() {
+    getButtonClassNames() {
         const { className } = this.props;
-        return classnames('slds-button', 'slds-button_icon', this.getVariantClassName(), this.getSizeClassName(), className);
+        return classnames('slds-button', 'slds-button_icon', this.getVariantClassName(), this.getButtonSizeClassName(), className);
     }
 
     click() {
@@ -62,14 +84,14 @@ export default class ButtonIcon extends Component {
             title,
             type,
             ariaHaspopup,
-            icon,
+            iconName,
             assistiveText,
         } = this.props;
 
         return (
             <button
                 data-id="button-icon-element"
-                className={this.getClassNames()}
+                className={this.getButtonClassNames()}
                 style={style}
                 disabled={disabled}
                 tabIndex={tabIndex}
@@ -80,7 +102,7 @@ export default class ButtonIcon extends Component {
                 type={type}
                 aria-haspopup={ariaHaspopup}
                 ref={(ref) => { this.button = ref; }} >
-                {icon}
+                <IconSvg iconName={iconName} className={this.getIconClassNames()} />
                 <AssistiveText text={assistiveText} />
             </button>
         );
@@ -122,11 +144,11 @@ ButtonIcon.propTypes = {
         'button', 'submit', 'reset',
     ]),
     /** The icon to show. */
-    icon: PropTypes.node,
+    iconName: PropTypes.string,
     /** Description for assistive sreen readers */
     assistiveText: PropTypes.string,
     /** The button icon size. */
-    size: PropTypes.oneOf(['medium', 'small', 'x-small', 'xx-small']),
+    size: PropTypes.oneOf(['large', 'medium', 'small', 'x-small', 'xx-small']),
 };
 
 ButtonIcon.defaultProps = {
@@ -141,7 +163,7 @@ ButtonIcon.defaultProps = {
     onBlur: () => {},
     title: undefined,
     type: 'button',
-    icon: null,
+    iconName: null,
     assistiveText: null,
     size: 'medium',
 };

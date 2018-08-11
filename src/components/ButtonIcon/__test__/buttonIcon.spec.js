@@ -79,6 +79,12 @@ describe('<ButtonIcon/>', () => {
         );
         expect(component).toMatchSnapshot();
     });
+    it('should have the right class names when variant is base and size is large', () => {
+        const component = renderer.create(
+            <ButtonIcon size="large" />,
+        );
+        expect(component).toMatchSnapshot();
+    });
     it('should have the right class names when variant border-filled and have a custom class', () => {
         const component = renderer.create(
             <ButtonIcon variant="border-filled" className="my-custom-class-name" />,

@@ -97,3 +97,17 @@ exports[`<ButtonIcon/> should have the right class names when variant inverse 1`
   type="button"
 />
 `;
+
+exports[`<ButtonIcon/> should have the right class names when variant is base and size is large 1`] = `
+<button
+  aria-haspopup={false}
+  className="slds-button slds-button_icon"
+  data-id="button-icon-element"
+  disabled={false}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  style={Object {}}
+  type="button"
+/>
+`;

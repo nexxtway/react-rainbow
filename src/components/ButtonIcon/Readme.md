@@ -1,34 +1,28 @@
 ButtonIcon examples:
 
-    const Contact = require('../icons/action/addContact').default;
-    const Custom = require('../icons/custom/custom1').default;
-    const Ai = require('../icons/doctype/ai').default;
-    const Account = require('../icons/standard/account').default;
-    const Activity = require('../icons/utility/activity').default;
-
     <div>
         <div style={{padding: '0.5rem'}}>
-            <ButtonIcon icon={<Contact />} />
+            <ButtonIcon iconName="custom:custom1" size="large" />
         </div>
         <div style={{padding: '0.5rem', backgroundColor: 'rgb(244, 246, 249)'}}>
-            <ButtonIcon style={{alignItems: 'center'}} icon={<Custom size="small" />} variant="border-filled" />
+            <ButtonIcon iconName="custom:custom1" variant="border-filled" size="small" />
         </div>
         <div style={{padding: '0.5rem', backgroundColor: 'rgb(22, 50, 92)'}}>
-            <ButtonIcon icon={<Ai size="small" />} variant="border-inverse" />
+            <ButtonIcon iconName="utility:activity" variant="border-inverse" size="large" />
         </div>
         <div style={{padding: '0.5rem', backgroundColor: 'rgb(244, 246, 249)'}}>
-            <ButtonIcon icon={<Account size="small" />} variant="border" />
+            <ButtonIcon iconName="standard:account" variant="border" />
         </div>
         <div style={{padding: '0.5rem'}}>
-            <ButtonIcon icon={<Activity size="small" />} variant="brand" />
+            <ButtonIcon iconName="doctype:ai" variant="brand" size="x-small" />
         </div>
         <div style={{padding: '0.5rem'}}>
-            <ButtonIcon icon={<Activity size="small" />} variant="brand" disabled />
+            <ButtonIcon iconName="doctype:ai" variant="brand" size="xx-small" disabled />
         </div>
         <div style={{padding: '0.5rem', backgroundColor: 'rgb(22, 50, 92)'}}>
-            <ButtonIcon icon={<Contact />} variant="inverse" />
+            <ButtonIcon iconName="utility:activity" variant="inverse" />
         </div>
         <div style={{padding: '0.5rem', backgroundColor: 'rgb(244, 246, 249)'}}>
-            <ButtonIcon icon={<Custom size="small" />} variant="container" />
+            <ButtonIcon iconName="custom:custom1" variant="container" />
         </div>
     </div>
