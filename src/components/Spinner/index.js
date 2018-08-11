@@ -1,41 +1,35 @@
-/* eslint-disable react/require-default-props */
+/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-export default class Spinner extends Component {
-    getContainerClass() {
-        const { size, variant } = this.props;
-
-        return classnames('slds-spinner', {
-            'slds-spinner_brand': variant === 'brand',
-            'slds-spinner_inverse': variant === 'inverse',
-            'slds-spinner_large': size === 'large',
-            'slds-spinner_medium': size === 'medium',
-            'slds-spinner_small': size === 'small',
-            'slds-spinner_x-small': size === 'x-small',
-            'slds-spinner_xx-small': size === 'xx-small',
-        });
+function AssistiveText({ text }) {
+    if (text) {
+        return <span className="slds-assistive-text">{text}</span>;
     }
+    return null;
+}
 
-    renderAssistiveText() {
-        const { assistiveText } = this.props;
-
-        if (assistiveText) {
-            return (
-                <span className="slds-assistive-text">
-                    {assistiveText}
-                </span>
-            );
+export default class Spinner extends Component {
+    getVariantClassNames() {
+        const { variant } = this.props;
+        if (variant !== 'base') {
+            return `slds-spinner_${variant}`;
         }
-
         return null;
     }
 
+    getContainerClass() {
+        const { className, size } = this.props;
+
+        return classnames('slds-spinner', `slds-spinner_${size}`, this.getVariantClassNames(), className);
+    }
+
     renderSpinner() {
+        const { assistiveText, style } = this.props;
         return (
-            <div className={this.getContainerClass()} role="status">
-                {this.renderAssistiveText()}
+            <div className={this.getContainerClass()} style={style} role="status">
+                <AssistiveText text={assistiveText} />
                 <div className="slds-spinner__dot-a" />
                 <div className="slds-spinner__dot-b" />
             </div>
@@ -48,6 +42,10 @@ export default class Spinner extends Component {
 }
 
 Spinner.propTypes = {
+    /** The class name of the root element. */
+    className: PropTypes.string,
+    /** It is an object with custom style applied to the root element. */
+    style: PropTypes.object,
     /** Description for assistive sreen readers */
     assistiveText: PropTypes.string,
     /** Show/Hide the spinner */
@@ -55,11 +53,14 @@ Spinner.propTypes = {
     /** The size of the spinner */
     size: PropTypes.oneOf(['large', 'medium', 'small', 'x-small', 'xx-small']),
     /** The variant of the spinner */
-    variant: PropTypes.oneOf(['default', 'brand', 'inverse']),
+    variant: PropTypes.oneOf(['base', 'brand', 'inverse']),
 };
 
 Spinner.defaultProps = {
+    className: undefined,
+    style: {},
+    assistiveText: null,
     isVisible: true,
     size: 'medium',
-    variant: 'default',
+    variant: 'base',
 };
