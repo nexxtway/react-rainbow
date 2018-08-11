@@ -1,153 +1,147 @@
-/* eslint-disable react/require-default-props */
+/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import Button from '../Button';
-import IconSvg from '../IconSvg';
+import PropTypes from 'prop-types';
 
-const ICON_SVG_COMPONENT = (
-    <IconSvg className="slds-button__icon slds-button__icon_x-small"
-             iconName="utility:down"
-             variant="bare" />
-);
+function AssistiveText({ text }) {
+    if (text) {
+        return <span className="slds-assistive-text">{text}</span>;
+    }
+    return null;
+}
 
 export default class ButtonIcon extends Component {
-    getBtnClass() {
-        const { className, size, variant } = this.props;
-
-        return classnames('slds-button_icon', {
-            'slds-button_icon-more': variant === 'dropdownBorder',
-            'slds-button_icon-container-more': variant === 'dropdown',
-            'slds-button_icon-inverse slds-button_icon-container-more': variant === 'dropdownInverse',
-            'slds-button_icon-border': variant === 'border' || variant === 'hinthoverBorder',
-            'slds-button_icon-border-inverse': variant === 'borderInverse' || variant === 'hinthoverInverse',
-        }, {
-            'slds-button_icon-small': size === 'small',
-            'slds-button_icon-x-small': size === 'x-small',
-            'slds-button_icon-xx-small': size === 'xx-small',
-        }, className);
+    constructor(props) {
+        super(props);
+        this.click = this.click.bind(this);
+        this.focus = this.focus.bind(this);
+        this.blur = this.blur.bind(this);
     }
 
-    getIconSvgClass() {
+    getSizeClassName() {
+        const { size } = this.props;
+        if (size && size !== 'medium') {
+            return `slds-button_icon-${size}`;
+        }
+        return null;
+    }
+
+    getVariantClassName() {
         const { variant } = this.props;
-
-        return classnames('slds-button__icon', {
-            'slds-button__icon_hint': variant === 'hinthover' || variant === 'hinthoverBorder',
-            'slds-button__icon_inverse-hint': variant === 'hinthoverInverse',
-        });
+        if (variant && variant !== 'base') {
+            return `slds-button_icon-${variant}`;
+        }
+        return null;
     }
 
-    renderComponent() {
-        const {
-            assistiveText,
-            disabled,
-            iconName,
-            onClick,
-            onFocus,
-            onBlur,
-            style,
-            title,
-            variant,
-        } = this.props;
-        const hasDropdownIcon = variant === 'dropdown' || variant === 'dropdownBorder' || variant === 'dropdownInverse';
+    getClassNames() {
+        const { className } = this.props;
+        return classnames('slds-button', 'slds-button_icon', this.getVariantClassName(), this.getSizeClassName(), className);
+    }
 
-        return (
-            <Button {...this.props}
-                    className={this.getBtnClass()}
-                    ariaHaspopup={hasDropdownIcon}
-                    disabled={disabled}
-                    onClick={onClick}
-                    onFocus={onFocus}
-                    onBlur={onBlur}
-                    style={style}
-                    title={title}
-                    variant="bare" >
-                <IconSvg className={this.getIconSvgClass()} iconName={iconName} variant="bare" />
-                { hasDropdownIcon ? ICON_SVG_COMPONENT : null }
-                <span className="slds-assistive-text">{ assistiveText }</span>
-            </Button>
-        );
+    click() {
+        this.button.click();
+    }
+
+    focus() {
+        this.button.focus();
+    }
+
+    blur() {
+        this.button.blur();
     }
 
     render() {
         const {
-            size,
-            variant,
+            style,
+            disabled,
+            tabIndex,
+            onFocus,
+            onBlur,
+            onClick,
+            title,
+            type,
+            ariaHaspopup,
+            icon,
+            assistiveText,
         } = this.props;
 
-        switch (variant) {
-        case 'default':
-        case 'border':
-        case 'borderInverse':
-            return this.renderComponent();
-        case 'dropdown':
-        case 'dropdownBorder':
-        case 'dropdownInverse':
-        /* This is because if a size prop if passed with another value,
-         the dropdown button icon become a mess */
-            if (size !== 'medium') {
-                console.warn('size prop does not make sense for dropdown variant');
-                return null;
-            }
-            return this.renderComponent();
-        case 'hinthover':
-        case 'hinthoverBorder':
-        case 'hinthoverInverse':
-            return (
-                <div className="slds-hint-parent">
-                    { this.renderComponent() }
-                </div>
-            );
-        default:
-            this.renderComponent();
-        }
-        return null;
+        return (
+            <button
+                data-id="button-icon-element"
+                className={this.getClassNames()}
+                style={style}
+                disabled={disabled}
+                tabIndex={tabIndex}
+                onFocus={onFocus}
+                onBlur={onBlur}
+                onClick={onClick}
+                title={title}
+                type={type}
+                aria-haspopup={ariaHaspopup}
+                ref={(ref) => { this.button = ref; }} >
+                {icon}
+                <AssistiveText text={assistiveText} />
+            </button>
+        );
     }
 }
 
 ButtonIcon.propTypes = {
-    /** Description for assistive screen readers if is required */
-    assistiveText: PropTypes.string,
-    /** Class for custom styles */
+    /** The class name of the root element. */
     className: PropTypes.string,
-    /** If is set to true it disables the button icon */
-    disabled: PropTypes.bool,
-    /** The icon name. It is required. It take the following format:
-     ‘sprite name:icon name’ e.g. ‘utility:add’ */
-    iconName: PropTypes.string.isRequired,
-    /** Callback function fired when the button icon is clicked */
-    onClick: PropTypes.func,
-    /** Callback function fired when the button icon is focused */
-    onFocus: PropTypes.func,
-    /** Callback function fired when the button icon is blurred */
-    onBlur: PropTypes.func,
-    /** The button icon size. It don't make sense to dropdown variant */
-    size: PropTypes.oneOf(['medium', 'small', 'x-small', 'xx-small']),
-    /** Object with the custom styles. The properties must be in camelCase
-     naming convention (e.g. { backgroundColor: green }) */
+    /** It is an object with custom style applied to the root element. */
     style: PropTypes.object,
-    /** The title that is showed when a user hover the icon. It is necessary
-     if the button icon sits alone and a sighted user might need to hover for a description */
-    title: PropTypes.string,
-    /** This is the type of button. All inverse variants needs a background color style. */
+    /** Indicates that the element has a popup context menu or sub-level menu. It is
+     used for srceen readers. */
+    ariaHaspopup: PropTypes.bool,
+    /** The variant for the button with predefined styles. */
     variant: PropTypes.oneOf([
-        'default',
-        'dropdown',
-        'dropdownBorder',
-        'dropdownInverse',
-        'hinthover',
-        'hinthoverBorder',
-        'hinthoverInverse',
+        'base',
+        'border-filled',
+        'border-inverse',
         'border',
-        'borderInverse',
+        'brand',
+        'inverse',
+        'container',
     ]),
+    /** Disables the button if set to true. */
+    disabled: PropTypes.bool,
+    /** Tab index */
+    tabIndex: PropTypes.number,
+    /** Event fired when the button is clicked. */
+    onClick: PropTypes.func,
+    /** Event fired when the button is focused. */
+    onFocus: PropTypes.func,
+    /** Event fired when the button is blurred. */
+    onBlur: PropTypes.func,
+    /** This is a description that is showed when a user hover the button. */
+    title: PropTypes.string,
+    /** The type of the button. */
+    type: PropTypes.oneOf([
+        'button', 'submit', 'reset',
+    ]),
+    /** The icon to show. */
+    icon: PropTypes.node,
+    /** Description for assistive sreen readers */
+    assistiveText: PropTypes.string,
+    /** The button icon size. */
+    size: PropTypes.oneOf(['medium', 'small', 'x-small', 'xx-small']),
 };
 
 ButtonIcon.defaultProps = {
+    className: undefined,
+    style: {},
+    ariaHaspopup: false,
+    variant: 'base',
     disabled: false,
-    size: 'medium',
-    variant: 'default',
+    tabIndex: undefined,
     onClick: () => {},
     onFocus: () => {},
     onBlur: () => {},
+    title: undefined,
+    type: 'button',
+    icon: null,
+    assistiveText: null,
+    size: 'medium',
 };

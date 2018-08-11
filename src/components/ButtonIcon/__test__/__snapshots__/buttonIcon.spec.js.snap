@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ButtonIcon/> should have the right class names 1`] = `
+<button
+  aria-haspopup={false}
+  className="slds-button slds-button_icon"
+  data-id="button-icon-element"
+  disabled={false}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  style={Object {}}
+  type="button"
+/>
+`;
+
+exports[`<ButtonIcon/> should have the right class names when variant border 1`] = `
+<button
+  aria-haspopup={false}
+  className="slds-button slds-button_icon slds-button_icon-border"
+  data-id="button-icon-element"
+  disabled={false}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  style={Object {}}
+  type="button"
+/>
+`;
+
+exports[`<ButtonIcon/> should have the right class names when variant border and size x-small 1`] = `
+<button
+  aria-haspopup={false}
+  className="slds-button slds-button_icon slds-button_icon-border slds-button_icon-x-small"
+  data-id="button-icon-element"
+  disabled={false}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  style={Object {}}
+  type="button"
+/>
+`;
+
+exports[`<ButtonIcon/> should have the right class names when variant border-filled and have a custom class 1`] = `
+<button
+  aria-haspopup={false}
+  className="slds-button slds-button_icon slds-button_icon-border-filled my-custom-class-name"
+  data-id="button-icon-element"
+  disabled={false}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  style={Object {}}
+  type="button"
+/>
+`;
+
+exports[`<ButtonIcon/> should have the right class names when variant border-inverse 1`] = `
+<button
+  aria-haspopup={false}
+  className="slds-button slds-button_icon slds-button_icon-border-inverse slds-button_icon-small"
+  data-id="button-icon-element"
+  disabled={false}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  style={Object {}}
+  type="button"
+/>
+`;
+
+exports[`<ButtonIcon/> should have the right class names when variant border-inverse and size small 1`] = `
+<button
+  aria-haspopup={false}
+  className="slds-button slds-button_icon slds-button_icon-border-inverse slds-button_icon-small"
+  data-id="button-icon-element"
+  disabled={false}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  style={Object {}}
+  type="button"
+/>
+`;
+
+exports[`<ButtonIcon/> should have the right class names when variant brand 1`] = `
+<button
+  aria-haspopup={false}
+  className="slds-button slds-button_icon slds-button_icon-brand"
+  data-id="button-icon-element"
+  disabled={false}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  style={Object {}}
+  type="button"
+/>
+`;
+
+exports[`<ButtonIcon/> should have the right class names when variant brand and size xx-small 1`] = `
+<button
+  aria-haspopup={false}
+  className="slds-button slds-button_icon slds-button_icon-brand slds-button_icon-xx-small"
+  data-id="button-icon-element"
+  disabled={false}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  style={Object {}}
+  type="button"
+/>
+`;
+
+exports[`<ButtonIcon/> should have the right class names when variant container 1`] = `
+<button
+  aria-haspopup={false}
+  className="slds-button slds-button_icon slds-button_icon-container"
+  data-id="button-icon-element"
+  disabled={false}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  style={Object {}}
+  type="button"
+/>
+`;
+
+exports[`<ButtonIcon/> should have the right class names when variant inverse 1`] = `
+<button
+  aria-haspopup={false}
+  className="slds-button slds-button_icon slds-button_icon-inverse"
+  data-id="button-icon-element"
+  disabled={false}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  style={Object {}}
+  type="button"
+/>
+`;
