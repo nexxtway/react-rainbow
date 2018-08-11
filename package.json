@@ -2,7 +2,13 @@
   "name": "react-lightning-components",
   "version": "0.0.1",
   "description": "React components for Lightning Design System",
-  "keywords": [],
+  "keywords": [
+    "react",
+    "components",
+    "slds",
+    "lightning",
+    "library"
+  ],
   "dependencies": {
     "classnames": "^2.2.5",
     "file-loader": "^1.1.11",
@@ -58,6 +64,11 @@
     "react-test-renderer": "^16.4.2",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
+    "pre-push": "^0.1.1",
     "webpack": "^1.13.3"
-  }
+  },
+  "pre-push": [
+    "lint",
+    "test"
+  ]
 }

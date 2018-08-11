@@ -18,3 +18,5 @@ nbproject
 styleguide
 coverage
 .env
+package-lock.json
+
