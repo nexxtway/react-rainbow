@@ -14,20 +14,6 @@ exports[`<ButtonIcon/> should have the right class names 1`] = `
 />
 `;
 
-exports[`<ButtonIcon/> should have the right class names when variant border 1`] = `
-<button
-  aria-haspopup={false}
-  className="slds-button slds-button_icon slds-button_icon-border"
-  data-id="button-icon-element"
-  disabled={false}
-  onBlur={[Function]}
-  onClick={[Function]}
-  onFocus={[Function]}
-  style={Object {}}
-  type="button"
-/>
-`;
-
 exports[`<ButtonIcon/> should have the right class names when variant border and size x-small 1`] = `
 <button
   aria-haspopup={false}
@@ -56,38 +42,10 @@ exports[`<ButtonIcon/> should have the right class names when variant border-fil
 />
 `;
 
-exports[`<ButtonIcon/> should have the right class names when variant border-inverse 1`] = `
-<button
-  aria-haspopup={false}
-  className="slds-button slds-button_icon slds-button_icon-border-inverse slds-button_icon-small"
-  data-id="button-icon-element"
-  disabled={false}
-  onBlur={[Function]}
-  onClick={[Function]}
-  onFocus={[Function]}
-  style={Object {}}
-  type="button"
-/>
-`;
-
 exports[`<ButtonIcon/> should have the right class names when variant border-inverse and size small 1`] = `
 <button
   aria-haspopup={false}
   className="slds-button slds-button_icon slds-button_icon-border-inverse slds-button_icon-small"
-  data-id="button-icon-element"
-  disabled={false}
-  onBlur={[Function]}
-  onClick={[Function]}
-  onFocus={[Function]}
-  style={Object {}}
-  type="button"
-/>
-`;
-
-exports[`<ButtonIcon/> should have the right class names when variant brand 1`] = `
-<button
-  aria-haspopup={false}
-  className="slds-button slds-button_icon slds-button_icon-brand"
   data-id="button-icon-element"
   disabled={false}
   onBlur={[Function]}
