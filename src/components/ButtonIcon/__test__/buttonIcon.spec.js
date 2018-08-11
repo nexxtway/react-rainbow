@@ -4,6 +4,18 @@ import renderer from 'react-test-renderer';
 import ButtonIcon from './../index';
 
 describe('<ButtonIcon/>', () => {
+    it('should not render the assistive text when is not passed', () => {
+        const component = mount(
+            <ButtonIcon />,
+        );
+        expect(component.find('.slds-assistive-text').length).toBe(0);
+    });
+    it('should render the assistive text passed', () => {
+        const component = mount(
+            <ButtonIcon assistiveText="for screen readers" />,
+        );
+        expect(component.find('.slds-assistive-text').text()).toBe('for screen readers');
+    });
     it('should focus the button when the focus method is called', () => {
         const component = mount(
             <ButtonIcon />,
