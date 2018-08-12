@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Card/> should have the right class names 1`] = `
+<article
+  className="slds-card"
+  style={Object {}}
+>
+  <div
+    className="slds-card__header slds-grid"
+  >
+    <header
+      className="slds-media slds-media_center slds-has-flexi-truncate"
+    >
+      <div
+        className="slds-media__figure"
+      >
+        <span
+          className="slds-icon_container slds-icon-custom-custom72"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-icon_small slds-icon"
+          >
+            <use
+              xlinkHref="/icons/custom-sprite/svg/symbols.svg#custom72"
+              xmlnsXlink="http://www.w3.org/1999/xlink"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          />
+        </span>
+      </div>
+      <div
+        className="slds-media__body"
+      >
+        <h2>
+          <a
+            className="slds-card__header-link slds-truncate"
+            href="javascript:void(0);"
+          >
+            <span
+              className="slds-text-heading_small"
+            >
+              Card Header
+            </span>
+          </a>
+        </h2>
+      </div>
+    </header>
+    <div
+      className="slds-no-flex"
+    >
+      <div>
+        Testing actions node
+      </div>
+    </div>
+  </div>
+  <div
+    className="slds-card__body slds-card__body_inner"
+  >
+    <div>
+      Testing childrens
+    </div>
+  </div>
+  <footer
+    className="slds-card__footer"
+  >
+    Card Footer
+  </footer>
+</article>
+`;
