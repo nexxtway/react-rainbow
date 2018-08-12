@@ -13,4 +13,13 @@ describe('<Breadcrumbs/>', () => {
 
         expect(component.find('[aria-label="Breadcrumbs"]').exists()).toBe(true);
     });
+    it('should render the children passed', () => {
+        const component = shallow(
+            <Breadcrumbs>
+                <span />
+            </Breadcrumbs>,
+        );
+
+        expect(component.find('span').exists()).toBe(true);
+    });
 });
