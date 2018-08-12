@@ -1,18 +1,18 @@
 ButtonGroup expamples:
 
     <div>
-        <div className="slds-p-bottom--medium">
+        <div style={{padding: '0.5rem'}}>
             <ButtonGroup>
-                <Button label="Refresh" />
-                <Button label="Edit" />
-                <Button label="Save" />
-            </ButtonGroup> 
+                <Button label="Refresh" variant="neutral" />
+                <Button label="Edit" variant="neutral" />
+                <Button label="Save" variant="neutral" />
+            </ButtonGroup>
         </div>
-        <div className="slds-p-bottom--medium">
-            <ButtonGroup variant="list">
+        <div style={{padding: '0.5rem'}}>
+            <ButtonGroup>
                 <Button label="Refresh" variant="brand" />
                 <Button label="Edit" variant="brand" />
                 <Button label="Save" variant="brand" />
-            </ButtonGroup> 
+            </ButtonGroup>
         </div>
     </div>

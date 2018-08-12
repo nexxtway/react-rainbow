@@ -1,41 +1,33 @@
-/* eslint-disable react/require-default-props */
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-export default class ButtonGroup extends Component {
-    getContainerClass() {
-        const { className, variant } = this.props;
+export default function ButtonGroup(props) {
+    const {
+        className,
+        style,
+        children,
+    } = props;
+    const getContainerClassName = () => classnames('slds-button-group', className);
 
-        return classnames({
-            'slds-button-group': variant === 'group',
-            'slds-button-group-list': variant === 'list',
-        }, className);
-    }
-
-    render() {
-        const { children, style } = this.props;
-
-        return (
-            <div className={this.getContainerClass()} style={style} role="group">
-                { children }
-            </div>
-        );
-    }
+    return (
+        <div className={getContainerClassName()} style={style} role="group">
+            { children }
+        </div>
+    );
 }
 
 ButtonGroup.propTypes = {
-    /** Class for custom styles */
+    /** The class name of the root element. */
     className: PropTypes.string,
-    /** Object with the custom styles. The properties must be in camelCase naming
-     convention (e.g. { backgroundColor: green }) */
+    /** It is an object with custom style applied to the root element. */
     style: PropTypes.object,
     /** The list of buttons component or button element */
     children: PropTypes.node,
-    /** It is the button group variant */
-    variant: PropTypes.oneOf(['group', 'list']),
 };
 
 ButtonGroup.defaultProps = {
-    variant: 'group',
+    className: undefined,
+    style: {},
+    children: null,
 };
