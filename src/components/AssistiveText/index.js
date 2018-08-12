@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function AssistiveText({ text }) {
     if (text) {
@@ -7,3 +7,11 @@ export default function AssistiveText({ text }) {
     }
     return null;
 }
+
+AssistiveText.propTypes = {
+    text: PropTypes.string,
+};
+
+AssistiveText.defaultProps = {
+    text: undefined,
+};

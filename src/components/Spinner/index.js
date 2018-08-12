@@ -19,11 +19,11 @@ export default function Spinner(props) {
         return null;
     };
 
-    const getContainerClass = () => classnames('slds-spinner', `slds-spinner_${size}`, getVariantClassNames(), className);
+    const getContainerClassNames = () => classnames('slds-spinner', `slds-spinner_${size}`, getVariantClassNames(), className);
 
     if (isVisible) {
         return (
-            <div className={getContainerClass()} style={style} role="status">
+            <div className={getContainerClassNames()} style={style} role="status">
                 <AssistiveText text={assistiveText} />
                 <div className="slds-spinner__dot-a" />
                 <div className="slds-spinner__dot-b" />

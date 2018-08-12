@@ -52,4 +52,10 @@ describe('<Spinner/>', () => {
         );
         expect(component).toMatchSnapshot();
     });
+    it('should pass assistiveText to the prop text of AssistiveText component', () => {
+        const component = mount(
+            <Spinner assistiveText="for screen readers" />,
+        );
+        expect(component.find('AssistiveText').prop('text')).toBe('for screen readers');
+    });
 });
