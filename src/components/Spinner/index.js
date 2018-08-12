@@ -13,13 +13,18 @@ export default function Spinner(props) {
         variant,
     } = props;
     const getVariantClassNames = () => {
-        if (variant !== 'base') {
-            return `slds-spinner_${variant}`;
+        if (variant === 'base') {
+            return '';
         }
-        return null;
+        return `slds-spinner_${variant}`;
     };
 
-    const getContainerClassNames = () => classnames('slds-spinner', `slds-spinner_${size}`, getVariantClassNames(), className);
+    const getContainerClassNames = () => classnames(
+        'slds-spinner',
+        `slds-spinner_${size}`,
+        getVariantClassNames(),
+        className,
+    );
 
     if (isVisible) {
         return (
