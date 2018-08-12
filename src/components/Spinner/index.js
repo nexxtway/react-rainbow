@@ -1,44 +1,36 @@
-/* eslint-disable react/prop-types */
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import AssistiveText from './../AssistiveText';
 
-function AssistiveText({ text }) {
-    if (text) {
-        return <span className="slds-assistive-text">{text}</span>;
-    }
-    return null;
-}
-
-export default class Spinner extends Component {
-    getVariantClassNames() {
-        const { variant } = this.props;
+export default function Spinner(props) {
+    const {
+        className,
+        style,
+        assistiveText,
+        isVisible,
+        size,
+        variant,
+    } = props;
+    const getVariantClassNames = () => {
         if (variant !== 'base') {
             return `slds-spinner_${variant}`;
         }
         return null;
-    }
+    };
 
-    getContainerClass() {
-        const { className, size } = this.props;
+    const getContainerClass = () => classnames('slds-spinner', `slds-spinner_${size}`, getVariantClassNames(), className);
 
-        return classnames('slds-spinner', `slds-spinner_${size}`, this.getVariantClassNames(), className);
-    }
-
-    renderSpinner() {
-        const { assistiveText, style } = this.props;
+    if (isVisible) {
         return (
-            <div className={this.getContainerClass()} style={style} role="status">
+            <div className={getContainerClass()} style={style} role="status">
                 <AssistiveText text={assistiveText} />
                 <div className="slds-spinner__dot-a" />
                 <div className="slds-spinner__dot-b" />
             </div>
         );
     }
-
-    render() {
-        return this.props.isVisible ? this.renderSpinner() : null;
-    }
+    return null;
 }
 
 Spinner.propTypes = {

@@ -16,18 +16,6 @@ describe('<Spinner/>', () => {
         );
         expect(component.children().length).toBe(1);
     });
-    it('should not render the assistive text when is not passed', () => {
-        const component = mount(
-            <Spinner />,
-        );
-        expect(component.find('.slds-assistive-text').length).toBe(0);
-    });
-    it('should render the assistive text passed', () => {
-        const component = mount(
-            <Spinner assistiveText="for screen readers" />,
-        );
-        expect(component.find('.slds-assistive-text').text()).toBe('for screen readers');
-    });
     it('should have the right class names when ehiter the variant and size are not passed', () => {
         const component = renderer.create(
             <Spinner />,
