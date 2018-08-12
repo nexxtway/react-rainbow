@@ -1,6 +1,6 @@
 {
-  "name": "react-lightning-components",
-  "version": "0.0.1",
+  "name": "react-slds",
+  "version": "0.0.5",
   "description": "React components for Lightning Design System",
   "keywords": [
     "react",
@@ -9,6 +9,15 @@
     "lightning",
     "library"
   ],
+  "scripts": {
+    "start": "./node_modules/.bin/styleguidist server",
+    "build": "./node_modules/.bin/styleguidist build",
+    "build:components": "npx babel src/components --out-dir components && npx babel index.js --out-dir components",
+    "prepublishOnly": "yarn clean && yarn build:components",
+    "clean": "rm -Rf components",
+    "test": "jest --verbose",
+    "lint": "./node_modules/.bin/eslint src"
+  },
   "dependencies": {
     "classnames": "^2.2.5",
     "file-loader": "^1.1.11",
@@ -16,13 +25,7 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2"
   },
-  "scripts": {
-    "start": "./node_modules/.bin/styleguidist server",
-    "build": "./node_modules/.bin/styleguidist build",
-    "test": "jest --verbose",
-    "lint": "./node_modules/.bin/eslint src"
-  },
-  "main": "index.js",
+  "main": "components/index.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/reiniergs/react-lightning-components.git"
@@ -39,6 +42,7 @@
   },
   "devDependencies": {
     "assert": "^1.4.1",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^7.2.3",
     "babel-jest": "^23.4.2",
@@ -60,11 +64,11 @@
     "eslint-plugin-react": "^7.1.0",
     "jest": "^23.4.2",
     "node-sass": "^3.13.0",
+    "pre-push": "^0.1.1",
     "react-styleguidist": "reiniergs/react-styleguidist",
     "react-test-renderer": "^16.4.2",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
-    "pre-push": "^0.1.1",
     "webpack": "^1.13.3"
   },
   "pre-push": [
