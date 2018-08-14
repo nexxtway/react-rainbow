@@ -16,7 +16,8 @@
     "prepublishOnly": "yarn clean && yarn build:components",
     "clean": "rm -Rf components",
     "test": "jest --verbose",
-    "lint": "./node_modules/.bin/eslint src"
+    "lint": "./node_modules/.bin/eslint src",
+    "deploy:library": "yarn build && firebase deploy"
   },
   "dependencies": {
     "classnames": "^2.2.5",
