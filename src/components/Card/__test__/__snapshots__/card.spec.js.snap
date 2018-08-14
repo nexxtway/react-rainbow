@@ -16,19 +16,18 @@ exports[`<Card/> should have the right class names 1`] = `
       >
         <span
           className="slds-icon_container slds-icon-custom-custom72"
+          style={Object {}}
         >
           <svg
-            aria-hidden="true"
-            className="slds-icon_small slds-icon"
+            aria-hidden={true}
+            className="slds-icon slds-icon_small"
+            style={Object {}}
           >
             <use
               xlinkHref="/icons/custom-sprite/svg/symbols.svg#custom72"
               xmlnsXlink="http://www.w3.org/1999/xlink"
             />
           </svg>
-          <span
-            className="slds-assistive-text"
-          />
         </span>
       </div>
       <div

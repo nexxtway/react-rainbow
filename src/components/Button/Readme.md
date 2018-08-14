@@ -28,13 +28,3 @@ Button Inverse example:
     <div style={buttonsContainerStyles}>
         <Button label="Button Inverse" variant="inverse" />
     </div>
-
-Button with icon example:
-
-    const AddContact = require('./../icons/action/addContact').default;
-
-    <Button
-        label="Add Contact"
-        variant="outline-brand"
-        icon={<AddContact />}
-        iconPosition="left" />

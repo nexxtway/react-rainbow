@@ -1,0 +1,7 @@
+.react-slds-logo {
+    background-image: url('./image/background.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-weight: 300;
+    height: 175px;
+}

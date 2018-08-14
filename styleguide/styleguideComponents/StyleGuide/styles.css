@@ -1,0 +1,12 @@
+.slds-react-styleguide-container {
+    background-color: #fff;
+}
+
+.react-slds-sidebar {
+    min-height: 100vh;
+}
+
+.react-slds-main-content {
+    background-color: #f4f6f9;
+    min-height: 100vh;
+}
