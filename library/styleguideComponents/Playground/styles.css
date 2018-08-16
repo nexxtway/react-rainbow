@@ -3,3 +3,7 @@
     right: 0;
     top: -36px;
 }
+
+.slds-react-playground-background-color {
+    background-color: #fafafb;
+}

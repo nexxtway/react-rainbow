@@ -4,6 +4,8 @@ import classnames from 'classnames';
 import LeftIcon from './leftIcon';
 import RightIcon from './rightIcon';
 
+/** Badges are labels which hold small amounts of information. */
+
 export default function Badge(props) {
     const {
         className,
@@ -38,9 +40,9 @@ Badge.propTypes = {
     variant: PropTypes.oneOf([
         'default', 'inverse', 'lightest',
     ]),
-    /** The Lightning Design System name of the icon. Names are written in the
+    /** The name of the icon. Names are written in the
      format '\utility:down\' where 'utility' is the category, and 'down' is the
-     specific icon to be displayed. The icon is displayed in the header to the left of the title */
+     specific icon to be displayed. */
     iconName: PropTypes.string,
     /** The position of the icon if it is passed. */
     iconPosition: PropTypes.oneOf([
@@ -54,5 +56,5 @@ Badge.defaultProps = {
     variant: 'default',
     iconName: '',
     iconPosition: 'left',
-    label: null,
+    label: '',
 };

@@ -6,13 +6,7 @@ import LeftIcon from './../leftIcon';
 describe('<LeftIcon/> in the Badge component', () => {
     it('should not have children when the iconName is not passed', () => {
         const component = mount(
-            <LeftIcon />,
-        );
-        expect(component.children().length).toBe(0);
-    });
-    it('should not have children when the position is not passed', () => {
-        const component = mount(
-            <LeftIcon iconName="utility:world" />,
+            <LeftIcon position="left" />,
         );
         expect(component.children().length).toBe(0);
     });
@@ -22,25 +16,13 @@ describe('<LeftIcon/> in the Badge component', () => {
         );
         expect(component.children().length).toBe(0);
     });
-    it('should not have margin right when the label is not passed', () => {
+    it('should have the right class names when the label is not passed', () => {
         const component = renderer.create(
            <LeftIcon iconName="utility:world" position="left" />,
        );
         expect(component).toMatchSnapshot();
     });
-    it('should have margin right when the label is passed', () => {
-        const component = renderer.create(
-           <LeftIcon label="testing LeftIcon" iconName="utility:world" position="left" />,
-       );
-        expect(component).toMatchSnapshot();
-    });
-    it('should have the right class names when the iconName is passed and position is left', () => {
-        const component = renderer.create(
-           <LeftIcon iconName="utility:world" position="left" />,
-       );
-        expect(component).toMatchSnapshot();
-    });
-    it('should have the right class names when the position is left and iconName and label is passed', () => {
+    it('should have the right class names when the label is passed', () => {
         const component = renderer.create(
            <LeftIcon label="testing LeftIcon" iconName="utility:world" position="left" />,
        );
