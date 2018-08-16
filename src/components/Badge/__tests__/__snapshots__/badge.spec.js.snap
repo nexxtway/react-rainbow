@@ -1,5 +1,74 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Badge/> should have the right class names when iconName is utility:world 1`] = `
+<span
+  className="slds-badge slds-badge_default"
+  style={Object {}}
+>
+  <span
+    className="slds-icon_container"
+    style={Object {}}
+  >
+    <svg
+      aria-hidden={true}
+      className="slds-icon slds-icon_xx-small slds-icon-text-default"
+      style={Object {}}
+    >
+      <use
+        xlinkHref="/icons/utility-sprite/svg/symbols.svg#world"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+      />
+    </svg>
+  </span>
+</span>
+`;
+
+exports[`<Badge/> should have the right class names when iconName is utility:world and iconPosition is left 1`] = `
+<span
+  className="slds-badge slds-badge_default"
+  style={Object {}}
+>
+  <span
+    className="slds-icon_container"
+    style={Object {}}
+  >
+    <svg
+      aria-hidden={true}
+      className="slds-icon slds-icon_xx-small slds-icon-text-default"
+      style={Object {}}
+    >
+      <use
+        xlinkHref="/icons/utility-sprite/svg/symbols.svg#world"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+      />
+    </svg>
+  </span>
+</span>
+`;
+
+exports[`<Badge/> should have the right class names when iconName is utility:world and iconPosition is right 1`] = `
+<span
+  className="slds-badge slds-badge_default"
+  style={Object {}}
+>
+  <span
+    className="slds-icon_container"
+    style={Object {}}
+  >
+    <svg
+      aria-hidden={true}
+      className="slds-icon slds-icon_xx-small slds-icon-text-default"
+      style={Object {}}
+    >
+      <use
+        xlinkHref="/icons/utility-sprite/svg/symbols.svg#world"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+      />
+    </svg>
+  </span>
+</span>
+`;
+
 exports[`<Badge/> should have the right class names when variant default and have a custom class 1`] = `
 <span
   className="slds-badge slds-badge_default custom-class"

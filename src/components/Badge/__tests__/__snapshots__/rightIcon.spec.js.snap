@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RightIcon in the Badge component/> should have margin left when the label is passed 1`] = `
+<span
+  className="slds-icon_container slds-m-left_xx-small"
+  style={Object {}}
+>
+  <svg
+    aria-hidden={true}
+    className="slds-icon slds-icon_xx-small slds-icon-text-default"
+    style={Object {}}
+  >
+    <use
+      xlinkHref="/icons/utility-sprite/svg/symbols.svg#world"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    />
+  </svg>
+</span>
+`;
+
+exports[`<RightIcon in the Badge component/> should have the right class names when the iconName is passed and position is right 1`] = `
+<span
+  className="slds-icon_container"
+  style={Object {}}
+>
+  <svg
+    aria-hidden={true}
+    className="slds-icon slds-icon_xx-small slds-icon-text-default"
+    style={Object {}}
+  >
+    <use
+      xlinkHref="/icons/utility-sprite/svg/symbols.svg#world"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    />
+  </svg>
+</span>
+`;
+
+exports[`<RightIcon in the Badge component/> should have the right class names when the position is left and iconName and label is passed 1`] = `
+<span
+  className="slds-icon_container slds-m-left_xx-small"
+  style={Object {}}
+>
+  <svg
+    aria-hidden={true}
+    className="slds-icon slds-icon_xx-small slds-icon-text-default"
+    style={Object {}}
+  >
+    <use
+      xlinkHref="/icons/utility-sprite/svg/symbols.svg#world"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    />
+  </svg>
+</span>
+`;
+
+exports[`<RightIcon in the Badge component/> should not have margin left when the label is not passed 1`] = `
+<span
+  className="slds-icon_container"
+  style={Object {}}
+>
+  <svg
+    aria-hidden={true}
+    className="slds-icon slds-icon_xx-small slds-icon-text-default"
+    style={Object {}}
+  >
+    <use
+      xlinkHref="/icons/utility-sprite/svg/symbols.svg#world"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    />
+  </svg>
+</span>
+`;
