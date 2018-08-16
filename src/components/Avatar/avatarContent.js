@@ -24,7 +24,6 @@ export default class AvatarContent extends Component {
             initials,
             iconName,
             alt,
-            style,
             title,
         } = this.props;
         const { imageFailed } = this.state;
@@ -33,14 +32,15 @@ export default class AvatarContent extends Component {
             return <img alt={alt} src={src} onError={this.handleImageError} title={title} />;
         } else if (isInitialsValid) {
             return (
-                <abbr className="slds-avatar__initials slds-icon-standard-user"
-                      style={style}
-                      title={title}>
-                    { initials }
+                <abbr
+                    className="slds-avatar__initials slds-icon-standard-user"
+                    title={title}>
+
+                    {initials}
                 </abbr>
             );
         }
-        return <Icon iconName={iconName} size="medium" variant="base" />;
+        return <Icon iconName={iconName} size="medium" />;
     }
 }
 
@@ -49,7 +49,6 @@ AvatarContent.propTypes = {
     src: PropTypes.string,
     initials: PropTypes.string,
     iconName: PropTypes.string.isRequired,
-    style: PropTypes.object,
     title: PropTypes.string,
 };
 
@@ -57,6 +56,5 @@ AvatarContent.defaultProps = {
     alt: undefined,
     src: undefined,
     initials: undefined,
-    style: {},
     title: undefined,
 };

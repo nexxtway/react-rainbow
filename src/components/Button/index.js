@@ -41,7 +41,7 @@ export default class Button extends Component {
             title,
             type,
             ariaHaspopup,
-            icon,
+            iconName,
             iconPosition,
         } = this.props;
 
@@ -60,9 +60,9 @@ export default class Button extends Component {
                 aria-haspopup={ariaHaspopup}
                 ref={(ref) => { this.button = ref; }} >
 
-                <LeftIcon icon={icon} position={iconPosition} />
+                <LeftIcon iconName={iconName} position={iconPosition} />
                 {label}
-                <RightIcon icon={icon} position={iconPosition} />
+                <RightIcon iconName={iconName} position={iconPosition} />
             </button>
         );
     }
@@ -107,9 +107,11 @@ Button.propTypes = {
     type: PropTypes.oneOf([
         'button', 'submit', 'reset',
     ]),
-    /** The icon to show. It would be at left or right of the label. */
-    icon: PropTypes.node,
-    /** The position of the icon if it is passed. */
+    /** The Lightning Design System name of the icon. Names are written in the
+     format '\utility:down\' where 'utility' is the category, and 'down' is the
+     specific icon to be displayed. The icon is displayed in the header to the left of the title */
+    iconName: PropTypes.string,
+     /** The position of the icon if it is passed. */
     iconPosition: PropTypes.oneOf([
         'left', 'right',
     ]),
@@ -127,6 +129,6 @@ Button.defaultProps = {
     onBlur: () => {},
     title: undefined,
     type: 'button',
-    icon: null,
-    iconPosition: undefined,
+    iconName: '',
+    iconPosition: 'left',
 };

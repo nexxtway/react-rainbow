@@ -49,7 +49,6 @@ Avatar.propTypes = {
     size: PropTypes.oneOf(['large', 'medium', 'small', 'x-small']),
     /** This is a description that is showed when a user hover the avatar */
     title: PropTypes.string,
-    abbrStyle: PropTypes.object,
 };
 
 Avatar.defaultProps = {
@@ -62,5 +61,4 @@ Avatar.defaultProps = {
     initials: undefined,
     style: {},
     title: undefined,
-    abbrStyle: {},
 };

@@ -11,21 +11,22 @@ module.exports = {
     version: 'v.0.0.5',
     require: [
         path.resolve(__dirname, 'assets/styles/salesforce-lightning-design-system.css'),
-        path.resolve(__dirname, 'styleguide/setup.js')
+        path.resolve(__dirname, 'library/setup.js')
     ],
     styleguideComponents: {
-        StyleGuideRenderer: path.join(__dirname, 'styleguide/styleguideComponents/StyleGuide'),
-    },
-    getComponentPathLine(componentPath) {
-        const name = path.basename(componentPath, '.js');
-        const dir = path.dirname(componentPath);
-        return `import ${name} from '${dir}';`;
+        StyleGuideRenderer: path.join(__dirname, 'library/styleguideComponents/StyleGuide'),
+        ReactComponentRenderer: path.join(__dirname, 'library/styleguideComponents/ReactComponent'),
+        TableRenderer: path.join(__dirname, 'library/styleguideComponents/PropsTable'),
+        Examples: path.join(__dirname, 'library/styleguideComponents/Examples'),
+        PlaygroundRenderer: path.join(__dirname, 'library/styleguideComponents/Playground'),
+        TabButtonRenderer: path.join(__dirname, 'library/styleguideComponents/CodeEditorButton'),
     },
     sections: [
         {
             name: 'Components',
             components: 'src/components/**/index.js',
             sectionDepth: 1,
+            usageMode: 'expand',
         },
     ],
     webpackConfig: {
@@ -38,7 +39,7 @@ module.exports = {
                 },
                 {
                     test: /\.(js|jsx)$/,
-                    include: path.resolve(__dirname, 'styleguide'),
+                    include: path.resolve(__dirname, 'library'),
                     loader: 'babel-loader',
                 },
                 {

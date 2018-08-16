@@ -10,6 +10,7 @@ import {
     hasBackgroundColor,
 } from './utils';
 
+/** Some component description here. */
 export default function Icon(props) {
     const {
         className,

@@ -16,6 +16,84 @@ exports[`<Button/> should have the right class names 1`] = `
 </button>
 `;
 
+exports[`<Button/> should have the right class names when iconName is utility:world 1`] = `
+<button
+  aria-haspopup={false}
+  className="slds-button slds-button_base"
+  data-id="button-element"
+  disabled={false}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  style={Object {}}
+  type="button"
+>
+  <svg
+    aria-hidden={true}
+    className="slds-button__icon slds-button__icon_left"
+    style={Object {}}
+  >
+    <use
+      xlinkHref="/icons/utility-sprite/svg/symbols.svg#world"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    />
+  </svg>
+  Button Label
+</button>
+`;
+
+exports[`<Button/> should have the right class names when iconName is utility:world and iconPosition is left 1`] = `
+<button
+  aria-haspopup={false}
+  className="slds-button slds-button_base"
+  data-id="button-element"
+  disabled={false}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  style={Object {}}
+  type="button"
+>
+  <svg
+    aria-hidden={true}
+    className="slds-button__icon slds-button__icon_left"
+    style={Object {}}
+  >
+    <use
+      xlinkHref="/icons/utility-sprite/svg/symbols.svg#world"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    />
+  </svg>
+  Button Label
+</button>
+`;
+
+exports[`<Button/> should have the right class names when iconName is utility:world and iconPosition is right 1`] = `
+<button
+  aria-haspopup={false}
+  className="slds-button slds-button_base"
+  data-id="button-element"
+  disabled={false}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  style={Object {}}
+  type="button"
+>
+  Button Label
+  <svg
+    aria-hidden={true}
+    className="slds-button__icon slds-button__icon_right"
+    style={Object {}}
+  >
+    <use
+      xlinkHref="/icons/utility-sprite/svg/symbols.svg#world"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    />
+  </svg>
+</button>
+`;
+
 exports[`<Button/> should have the right class names when variant brand 1`] = `
 <button
   aria-haspopup={false}
