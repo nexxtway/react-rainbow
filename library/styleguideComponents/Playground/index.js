@@ -16,7 +16,7 @@ export default function PlaygroundRenderer(props) {
     return (
         <div className="slds-is-relative slds-m-bottom_large">
             <div className="slds-react-isolate-button">{toolbar}</div>
-            <article {...rest} className="slds-card playground-background-color" data-preview={name}>
+            <article {...rest} className="slds-card slds-react-playground-background-color" data-preview={name}>
                 {preview}
             </article>
             <div className="slds-grid slds-grid_align-end slds-p-vertical_xx-small">{tabButtons}</div>
