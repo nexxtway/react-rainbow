@@ -1,6 +1,6 @@
 simple buttons
 
-    <div className="slds-p-vertical_large slds-align--absolute-center slds-wrap" >
+    <div className="slds-p-vertical_large slds-align_absolute-center slds-wrap" >
         <div className="slds-m-horizontal_medium">
             <Button label="Button Base" />
         </div>
@@ -15,7 +15,7 @@ simple buttons
 
 buttons varius
 
-    <div className="slds-p-vertical_large slds-align--absolute-center slds-wrap" >
+    <div className="slds-p-vertical_large slds-align_absolute-center slds-wrap" >
         <div className="slds-m-horizontal_medium">
             <Button label="Button Brand" onClick={() => alert('clicked!')} variant="brand" />
         </div>
@@ -30,7 +30,7 @@ buttons varius
 
 buttons with icon
 
-    <div className="slds-p-vertical_large slds-align--absolute-center slds-wrap" >
+    <div className="slds-p-vertical_large slds-align_absolute-center slds-wrap" >
         <div className="slds-m-horizontal_medium">
             <Button 
                 label="Button base"
@@ -56,7 +56,7 @@ buttons with icon
 
 disabled buttons
 
-    <div className="slds-p-vertical_large slds-align--absolute-center slds-wrap" >
+    <div className="slds-p-vertical_large slds-align_absolute-center slds-wrap" >
         <div className="slds-m-horizontal_medium">
             <Button label="Button Base Disabled" disabled />
         </div>
@@ -76,7 +76,7 @@ buttons inverse
         borderRadius: '0.25rem',
     };
 
-    <div className="slds-p-vertical_large slds-align--absolute-center" style={buttonsContainerStyles}>
+    <div className="slds-p-vertical_large slds-align_absolute-center" style={buttonsContainerStyles}>
         <div className="slds-m-horizontal_medium">
             <Button label="Button Inverse" variant="inverse" />
         </div>
