@@ -19,7 +19,7 @@ Card expamples 2:
             </Card>
             <Card
                 isLoading
-                className="slds-card slds-card_boundary"
+                className="slds-card_boundary"
                 iconName="utility:spinner"
                 title="Card is loading"
                 actions={<Button disabled variant="neutral" label="Add" />} >
