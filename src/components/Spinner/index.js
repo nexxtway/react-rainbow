@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import AssistiveText from './../AssistiveText';
 
+/** Spinners should be shown when retrieving data or performing slow computations,
+ * help to reassure the user that the system is actively retrieving data. */
+
 export default function Spinner(props) {
     const {
         className,
