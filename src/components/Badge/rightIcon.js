@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../Icon';
 
-export default function IconRight({ iconName, position, label }) {
-    if (!label && iconName && position === 'right') {
+export default function RightIcon({ iconName, position, label }) {
+    const hasRightIcon = iconName && position === 'right';
+    if (!label && hasRightIcon) {
         return (
             <Icon iconName={iconName} size="xx-small" />
         );
     }
-    if (label && iconName && position === 'right') {
+    if (label && hasRightIcon) {
         return (
             <Icon iconName={iconName} size="xx-small" className="slds-m-left_xx-small" />
         );
@@ -16,13 +17,11 @@ export default function IconRight({ iconName, position, label }) {
     return null;
 }
 
-IconRight.propTypes = {
-    iconName: PropTypes.string,
-    position: PropTypes.string,
+RightIcon.propTypes = {
+    iconName: PropTypes.string.isRequired,
+    position: PropTypes.string.isRequired,
     label: PropTypes.string,
 };
-IconRight.defaultProps = {
-    iconName: '',
-    position: '',
+RightIcon.defaultProps = {
     label: '',
 };

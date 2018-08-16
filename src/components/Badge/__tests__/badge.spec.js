@@ -21,22 +21,4 @@ describe('<Badge/>', () => {
         );
         expect(component).toMatchSnapshot();
     });
-    it('should have the right class names when iconName is utility:world', () => {
-        const component = renderer.create(
-            <Badge iconName="utility:world" />,
-        );
-        expect(component).toMatchSnapshot();
-    });
-    it('should have the right class names when iconName is utility:world and iconPosition is right', () => {
-        const component = renderer.create(
-            <Badge iconName="utility:world" iconPosition="right" />,
-        );
-        expect(component).toMatchSnapshot();
-    });
-    it('should have the right class names when iconName is utility:world and iconPosition is left', () => {
-        const component = renderer.create(
-            <Badge iconName="utility:world" iconPosition="left" />,
-        );
-        expect(component).toMatchSnapshot();
-    });
 });
