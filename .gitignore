@@ -20,4 +20,4 @@ coverage
 package-lock.json
 components
 !/src/components
-
+styleguide
