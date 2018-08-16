@@ -4,6 +4,8 @@ import classnames from 'classnames';
 import LeftIcon from './leftIcon';
 import RightIcon from './rightIcon';
 
+/** Buttons are clickable items used to perform an action. */
+
 export default class Button extends Component {
     constructor(props) {
         super(props);
@@ -107,9 +109,9 @@ Button.propTypes = {
     type: PropTypes.oneOf([
         'button', 'submit', 'reset',
     ]),
-    /** The Lightning Design System name of the icon. Names are written in the
+    /** The name of the icon. Names are written in the
      format '\utility:down\' where 'utility' is the category, and 'down' is the
-     specific icon to be displayed. The icon is displayed in the header to the left of the title */
+     specific icon to be displayed. */
     iconName: PropTypes.string,
      /** The position of the icon if it is passed. */
     iconPosition: PropTypes.oneOf([

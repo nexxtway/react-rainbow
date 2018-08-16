@@ -6,13 +6,7 @@ import RightIcon from './../rightIcon';
 describe('<RightIcon in the Button component/>', () => {
     it('should not have children when the iconName is not passed', () => {
         const component = mount(
-            <RightIcon />,
-        );
-        expect(component.children().length).toBe(0);
-    });
-    it('should not have children when the position is not passed', () => {
-        const component = mount(
-            <RightIcon iconName="utility:world" />,
+            <RightIcon position="right" />,
         );
         expect(component.children().length).toBe(0);
     });
