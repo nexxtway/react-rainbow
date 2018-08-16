@@ -1,61 +1,47 @@
-/* eslint-disable react/require-default-props */
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import AsistiveText from './../AssistiveText';
+import normalizeValue from './normalizeValue';
 
-function normalizeValue(value) {
-    if (value < 0) {
-        return 0;
-    } else if (value > 100) {
-        return 100;
-    }
-    return value;
-}
+export default function ProgressBar(props) {
+    const {
+        className,
+        style,
+        assistiveText,
+        value,
+        size,
+        variant,
+        color,
+     } = props;
 
-export default class ProgressBar extends Component {
-    getContainerClass() {
-        const { className, size, variant } = this.props;
+    const getContainerClassNames = () => classnames(
+            'slds-progress-bar',
+            `slds-progress-bar_${size}`,
+            { 'slds-progress-bar_circular': variant === 'circular' },
+            className,
+        );
 
-        return classnames('slds-progress-bar', {
-            'slds-progress-bar_circular': variant === 'circular',
-            'slds-progress-bar_x-small': size === 'x-small',
-            'slds-progress-bar_small': size === 'small',
-            'slds-progress-bar_medium': size === 'medium',
-            'slds-progress-bar_large': size === 'large',
-        }, className);
-    }
+    const getProgressBarClassNames = () => classnames(
+            'slds-progress-bar__value',
+            { 'slds-progress-bar__value_success': color === 'success' },
+            className,
+        );
 
-    renderAssistiveText() {
-        const { assistiveText } = this.props;
+    const WIDTH = { width: `${normalizeValue(value)}%` };
 
-        if (assistiveText) {
-            return (
-                <span className="slds-assistive-text">
-                    {assistiveText}
-                </span>
-            );
-        }
-
-        return null;
-    }
-
-    render() {
-        const { value, style } = this.props;
-        const normalizedValue = normalizeValue(value);
-
-        return (
-            <div className={this.getContainerClass()}
+    return (
+            <div className={getContainerClassNames()}
                  aria-valuemin="0"
                  aria-valuemax="100"
-                 aria-valuenow={normalizedValue}
+                 aria-valuenow={normalizeValue(value)}
                  role="progressbar"
-                 style={style} >
-                <span className="slds-progress-bar__value" style={{ width: `${normalizedValue}%` }}>
-                    {this.renderAssistiveText()}
+                 style={style}>
+                <span className={getProgressBarClassNames()} style={WIDTH}>
+                    <AsistiveText text={assistiveText} />
                 </span>
             </div>
-        );
-    }
+    );
 }
 
 ProgressBar.propTypes = {
@@ -72,10 +58,16 @@ ProgressBar.propTypes = {
     value: PropTypes.number,
     /** It is the progress bar variant */
     variant: PropTypes.oneOf(['square', 'circular']),
+    /** It is the progress bar color */
+    color: PropTypes.oneOf(['brand', 'success']),
 };
 
 ProgressBar.defaultProps = {
+    className: '',
+    style: {},
     size: 'medium',
     value: 0,
     variant: 'square',
+    assistiveText: '',
+    color: 'brand',
 };
