@@ -4,15 +4,9 @@ import renderer from 'react-test-renderer';
 import LeftIcon from './../leftIcon';
 
 describe('<LeftIcon in the Button compoent/>', () => {
-    it('should not have children when the icon is not passed', () => {
+    it('should not have children when the iconName is not passed', () => {
         const component = mount(
-            <LeftIcon />,
-        );
-        expect(component.children().length).toBe(0);
-    });
-    it('should not have children when the position is not passed', () => {
-        const component = mount(
-            <LeftIcon iconName="utility:world" />,
+            <LeftIcon position="left" />,
         );
         expect(component.children().length).toBe(0);
     });
