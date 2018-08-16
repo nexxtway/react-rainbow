@@ -130,7 +130,7 @@ exports[`<ProgressBar/> should have the right class names when variant, color an
   style={Object {}}
 >
   <span
-    className="slds-progress-bar__value custom-class"
+    className="slds-progress-bar__value"
     style={
       Object {
         "width": "0%",

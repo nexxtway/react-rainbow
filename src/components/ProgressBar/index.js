@@ -4,6 +4,8 @@ import classnames from 'classnames';
 import AsistiveText from './../AssistiveText';
 import normalizeValue from './normalizeValue';
 
+/** Progress bar component communicates to the user the progress of a particular process. */
+
 export default function ProgressBar(props) {
     const {
         className,
@@ -25,16 +27,16 @@ export default function ProgressBar(props) {
     const getProgressBarClassNames = () => classnames(
             'slds-progress-bar__value',
             { 'slds-progress-bar__value_success': color === 'success' },
-            className,
         );
 
-    const WIDTH = { width: `${normalizeValue(value)}%` };
+    const normalizedValue = normalizeValue(value);
+    const WIDTH = { width: `${normalizedValue}%` };
 
     return (
             <div className={getContainerClassNames()}
                  aria-valuemin="0"
                  aria-valuemax="100"
-                 aria-valuenow={normalizeValue(value)}
+                 aria-valuenow={normalizedValue}
                  role="progressbar"
                  style={style}>
                 <span className={getProgressBarClassNames()} style={WIDTH}>
@@ -57,7 +59,7 @@ ProgressBar.propTypes = {
     /** It is the current value of the progress bar. It must be between 0 and 100 */
     value: PropTypes.number,
     /** It is the progress bar variant */
-    variant: PropTypes.oneOf(['square', 'circular']),
+    variant: PropTypes.oneOf(['default', 'circular']),
     /** It is the progress bar color */
     color: PropTypes.oneOf(['brand', 'success']),
 };
@@ -67,7 +69,7 @@ ProgressBar.defaultProps = {
     style: {},
     size: 'medium',
     value: 0,
-    variant: 'square',
+    variant: 'default',
     assistiveText: '',
     color: 'brand',
 };
