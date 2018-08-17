@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import AvatarContent from './avatarContent';
 
+/** An avatar component represents an object or entity */
 export default function Avatar(props) {
     const {
         className,
