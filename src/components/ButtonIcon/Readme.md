@@ -56,7 +56,13 @@ button icon disabled
 
     <div className="slds-p-vertical_large slds-p-left_medium slds-grid slds-media_center">
         <div className="slds-m-horizontal_medium">
+            <ButtonIcon iconName="utility:settings" variant="brand" disabled />
+        </div>
+        <div className="slds-m-horizontal_medium">
             <ButtonIcon iconName="utility:settings" variant="border-filled" disabled />
+        </div>
+        <div className="slds-m-horizontal_medium">
+            <ButtonIcon iconName="utility:settings" variant="border" disabled />
         </div>
         <div className="slds-m-horizontal_medium">
             <ButtonIcon iconName="utility:settings" variant="container" disabled  />
