@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-/** Use breadcrumbs to note the path of a record and help
- * the user to navigate back to the parent. */
+/**
+* Use breadcrumbs to note the path of a record and help
+* the user to navigate back to the parent.
+*/
 export default function Breadcrumbs(props) {
     const {
         children,

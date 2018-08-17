@@ -4,8 +4,9 @@ import classnames from 'classnames';
 import LeftIcon from './leftIcon';
 import RightIcon from './rightIcon';
 
-/** Buttons are clickable items used to perform an action. */
-
+/**
+* Buttons are clickable items used to perform an action.
+*/
 export default class Button extends Component {
     constructor(props) {
         super(props);

@@ -10,8 +10,10 @@ import {
     hasBackgroundColor,
 } from './utils';
 
-/** The Icon component is the Lightning Design System Icon
- * component and should be used for naked icons. */
+/**
+* The Icon component is the Lightning Design System Icon
+* component and should be used for naked icons.
+*/
 export default function Icon(props) {
     const {
         className,
