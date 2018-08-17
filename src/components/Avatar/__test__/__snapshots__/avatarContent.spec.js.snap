@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AvatarContent/> should have the right class names 1`] = `
+<span
+  className="slds-icon_container slds-icon-standard-user"
+  style={Object {}}
+>
+  <svg
+    aria-hidden={true}
+    className="slds-icon"
+    style={Object {}}
+  >
+    <use
+      xlinkHref="/icons/standard-sprite/svg/symbols.svg#user"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    />
+  </svg>
+</span>
+`;
+
+exports[`<AvatarContent/> should have the right class names when initials variant is default 1`] = `
+<abbr
+  className="slds-avatar__initials slds-icon-standard-user"
+>
+  JD
+</abbr>
+`;
+
+exports[`<AvatarContent/> should have the right class names when initials variant is inverse 1`] = `
+<abbr
+  className="slds-avatar__initials slds-avatar__initials_inverse"
+>
+  JD
+</abbr>
+`;
