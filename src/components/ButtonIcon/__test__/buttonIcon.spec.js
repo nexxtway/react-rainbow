@@ -73,69 +73,69 @@ describe('<ButtonIcon/>', () => {
         );
         expect(component).toMatchSnapshot();
     });
-    it('should have the right class names when variant is base and size is large', () => {
-        const component = renderer.create(
-            <ButtonIcon size="large" />,
-        );
-        expect(component).toMatchSnapshot();
-    });
-    it('should have the right class names when variant border-filled and have a custom class', () => {
+    it('should have the right class names when variant is border-filled and have a custom class', () => {
         const component = renderer.create(
             <ButtonIcon variant="border-filled" className="my-custom-class-name" />,
         );
         expect(component).toMatchSnapshot();
     });
-    it('should have the right class names when variant border-inverse and size small', () => {
+    it('should have the right class names when variant is border-inverse and size is small', () => {
         const component = renderer.create(
             <ButtonIcon variant="border-inverse" size="small" />,
         );
         expect(component).toMatchSnapshot();
     });
-    it('should have the right class names when variant border and size x-small', () => {
+    it('should have the right class names when variant is border and size is x-small', () => {
         const component = renderer.create(
             <ButtonIcon variant="border" size="x-small" />,
         );
         expect(component).toMatchSnapshot();
     });
-    it('should have the right class names when variant brand and size xx-small', () => {
+    it('should have the right class names when variant is brand and size is xx-small', () => {
         const component = renderer.create(
             <ButtonIcon variant="brand" size="xx-small" />,
         );
         expect(component).toMatchSnapshot();
     });
-    it('should have the right class names when variant inverse', () => {
+    it('should have the right class names when variant is inverse and size is large', () => {
         const component = renderer.create(
-            <ButtonIcon variant="inverse" />,
+            <ButtonIcon variant="inverse" size="large" />,
         );
         expect(component).toMatchSnapshot();
     });
-    it('should have the right class names when variant container', () => {
+    it('should have the right class names when variant is container', () => {
         const component = renderer.create(
             <ButtonIcon variant="container" />,
         );
         expect(component).toMatchSnapshot();
     });
-    it('should have the right class names when variant base and size xx-small', () => {
+    it('should have the right class names when variant is base and size is xx-small', () => {
         const component = renderer.create(
-            <ButtonIcon size="xx-small" />,
+            <ButtonIcon iconName="utility:activity" size="xx-small" />,
         );
         expect(component).toMatchSnapshot();
     });
-    it('should have the right class names when variant base and size x-small', () => {
+    it('should have the right class names when variant is base and size is x-small', () => {
         const component = renderer.create(
-            <ButtonIcon size="x-small" />,
+            <ButtonIcon iconName="utility:activity" size="x-small" />,
         );
         expect(component).toMatchSnapshot();
     });
-    it('should have the right class names when variant base and size small', () => {
+    it('should have the right class names when variant is base and size is small', () => {
         const component = renderer.create(
-            <ButtonIcon size="small" />,
+            <ButtonIcon iconName="utility:activity" size="small" />,
         );
         expect(component).toMatchSnapshot();
     });
-    it('should have the right class names when variant base and size large', () => {
+    it('should have the right class names when variant is base and size is medium', () => {
         const component = renderer.create(
-            <ButtonIcon size="large" />,
+            <ButtonIcon iconName="utility:activity" size="medium" />,
+        );
+        expect(component).toMatchSnapshot();
+    });
+    it('should have the right class names when variant is base and size is large', () => {
+        const component = renderer.create(
+            <ButtonIcon iconName="utility:activity" size="large" />,
         );
         expect(component).toMatchSnapshot();
     });

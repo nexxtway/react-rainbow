@@ -14,7 +14,7 @@ exports[`<ButtonIcon/> should have the right class names 1`] = `
 />
 `;
 
-exports[`<ButtonIcon/> should have the right class names when variant base and size large 1`] = `
+exports[`<ButtonIcon/> should have the right class names when variant is base and size is large 1`] = `
 <button
   aria-haspopup={false}
   className="slds-button slds-button_icon"
@@ -25,10 +25,21 @@ exports[`<ButtonIcon/> should have the right class names when variant base and s
   onFocus={[Function]}
   style={Object {}}
   type="button"
-/>
+>
+  <svg
+    aria-hidden={true}
+    className="slds-button__icon slds-button__icon_large"
+    style={Object {}}
+  >
+    <use
+      xlinkHref="/icons/utility-sprite/svg/symbols.svg#activity"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    />
+  </svg>
+</button>
 `;
 
-exports[`<ButtonIcon/> should have the right class names when variant base and size small 1`] = `
+exports[`<ButtonIcon/> should have the right class names when variant is base and size is medium 1`] = `
 <button
   aria-haspopup={false}
   className="slds-button slds-button_icon"
@@ -39,10 +50,21 @@ exports[`<ButtonIcon/> should have the right class names when variant base and s
   onFocus={[Function]}
   style={Object {}}
   type="button"
-/>
+>
+  <svg
+    aria-hidden={true}
+    className="slds-button__icon"
+    style={Object {}}
+  >
+    <use
+      xlinkHref="/icons/utility-sprite/svg/symbols.svg#activity"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    />
+  </svg>
+</button>
 `;
 
-exports[`<ButtonIcon/> should have the right class names when variant base and size x-small 1`] = `
+exports[`<ButtonIcon/> should have the right class names when variant is base and size is small 1`] = `
 <button
   aria-haspopup={false}
   className="slds-button slds-button_icon"
@@ -53,10 +75,21 @@ exports[`<ButtonIcon/> should have the right class names when variant base and s
   onFocus={[Function]}
   style={Object {}}
   type="button"
-/>
+>
+  <svg
+    aria-hidden={true}
+    className="slds-button__icon slds-button__icon_small"
+    style={Object {}}
+  >
+    <use
+      xlinkHref="/icons/utility-sprite/svg/symbols.svg#activity"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    />
+  </svg>
+</button>
 `;
 
-exports[`<ButtonIcon/> should have the right class names when variant base and size xx-small 1`] = `
+exports[`<ButtonIcon/> should have the right class names when variant is base and size is x-small 1`] = `
 <button
   aria-haspopup={false}
   className="slds-button slds-button_icon"
@@ -67,10 +100,46 @@ exports[`<ButtonIcon/> should have the right class names when variant base and s
   onFocus={[Function]}
   style={Object {}}
   type="button"
-/>
+>
+  <svg
+    aria-hidden={true}
+    className="slds-button__icon slds-button__icon_x-small"
+    style={Object {}}
+  >
+    <use
+      xlinkHref="/icons/utility-sprite/svg/symbols.svg#activity"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    />
+  </svg>
+</button>
 `;
 
-exports[`<ButtonIcon/> should have the right class names when variant border and size x-small 1`] = `
+exports[`<ButtonIcon/> should have the right class names when variant is base and size is xx-small 1`] = `
+<button
+  aria-haspopup={false}
+  className="slds-button slds-button_icon"
+  data-id="button-icon-element"
+  disabled={false}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  style={Object {}}
+  type="button"
+>
+  <svg
+    aria-hidden={true}
+    className="slds-button__icon slds-button__icon_x-small"
+    style={Object {}}
+  >
+    <use
+      xlinkHref="/icons/utility-sprite/svg/symbols.svg#activity"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    />
+  </svg>
+</button>
+`;
+
+exports[`<ButtonIcon/> should have the right class names when variant is border and size is x-small 1`] = `
 <button
   aria-haspopup={false}
   className="slds-button slds-button_icon slds-button_icon-border slds-button_icon-x-small"
@@ -84,7 +153,7 @@ exports[`<ButtonIcon/> should have the right class names when variant border and
 />
 `;
 
-exports[`<ButtonIcon/> should have the right class names when variant border-filled and have a custom class 1`] = `
+exports[`<ButtonIcon/> should have the right class names when variant is border-filled and have a custom class 1`] = `
 <button
   aria-haspopup={false}
   className="slds-button slds-button_icon slds-button_icon-border-filled my-custom-class-name"
@@ -98,7 +167,7 @@ exports[`<ButtonIcon/> should have the right class names when variant border-fil
 />
 `;
 
-exports[`<ButtonIcon/> should have the right class names when variant border-inverse and size small 1`] = `
+exports[`<ButtonIcon/> should have the right class names when variant is border-inverse and size is small 1`] = `
 <button
   aria-haspopup={false}
   className="slds-button slds-button_icon slds-button_icon-border-inverse slds-button_icon-small"
@@ -112,7 +181,7 @@ exports[`<ButtonIcon/> should have the right class names when variant border-inv
 />
 `;
 
-exports[`<ButtonIcon/> should have the right class names when variant brand and size xx-small 1`] = `
+exports[`<ButtonIcon/> should have the right class names when variant is brand and size is xx-small 1`] = `
 <button
   aria-haspopup={false}
   className="slds-button slds-button_icon slds-button_icon-brand slds-button_icon-xx-small"
@@ -126,7 +195,7 @@ exports[`<ButtonIcon/> should have the right class names when variant brand and 
 />
 `;
 
-exports[`<ButtonIcon/> should have the right class names when variant container 1`] = `
+exports[`<ButtonIcon/> should have the right class names when variant is container 1`] = `
 <button
   aria-haspopup={false}
   className="slds-button slds-button_icon slds-button_icon-container"
@@ -140,24 +209,10 @@ exports[`<ButtonIcon/> should have the right class names when variant container 
 />
 `;
 
-exports[`<ButtonIcon/> should have the right class names when variant inverse 1`] = `
+exports[`<ButtonIcon/> should have the right class names when variant is inverse and size is large 1`] = `
 <button
   aria-haspopup={false}
   className="slds-button slds-button_icon slds-button_icon-inverse"
-  data-id="button-icon-element"
-  disabled={false}
-  onBlur={[Function]}
-  onClick={[Function]}
-  onFocus={[Function]}
-  style={Object {}}
-  type="button"
-/>
-`;
-
-exports[`<ButtonIcon/> should have the right class names when variant is base and size is large 1`] = `
-<button
-  aria-haspopup={false}
-  className="slds-button slds-button_icon"
   data-id="button-icon-element"
   disabled={false}
   onBlur={[Function]}
