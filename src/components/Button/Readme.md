@@ -13,7 +13,7 @@ simple buttons
     </div>
 
 
-buttons varius
+button variants
 
     <div className="slds-p-vertical_large slds-align--absolute-center slds-wrap" >
         <div className="slds-m-horizontal_medium">
