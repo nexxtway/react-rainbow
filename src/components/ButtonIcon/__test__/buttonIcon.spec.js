@@ -4,18 +4,6 @@ import renderer from 'react-test-renderer';
 import ButtonIcon from './../index';
 
 describe('<ButtonIcon/>', () => {
-    it('should not render the assistive text when is not passed', () => {
-        const component = mount(
-            <ButtonIcon />,
-        );
-        expect(component.find('.slds-assistive-text').length).toBe(0);
-    });
-    it('should render the assistive text passed', () => {
-        const component = mount(
-            <ButtonIcon assistiveText="for screen readers" />,
-        );
-        expect(component.find('.slds-assistive-text').text()).toBe('for screen readers');
-    });
     it('should focus the button when the focus method is called', () => {
         const component = mount(
             <ButtonIcon />,
@@ -73,6 +61,12 @@ describe('<ButtonIcon/>', () => {
 
         expect(component.find('button').prop('aria-haspopup')).toBe(true);
     });
+    it('should pass assistiveText to the prop text of AssistiveText component', () => {
+        const component = mount(
+            <ButtonIcon assistiveText="for screen readers" />,
+        );
+        expect(component.find('AssistiveText').prop('text')).toBe('for screen readers');
+    });
     it('should have the right class names', () => {
         const component = renderer.create(
             <ButtonIcon />,
@@ -118,6 +112,30 @@ describe('<ButtonIcon/>', () => {
     it('should have the right class names when variant container', () => {
         const component = renderer.create(
             <ButtonIcon variant="container" />,
+        );
+        expect(component).toMatchSnapshot();
+    });
+    it('should have the right class names when variant base and size xx-small', () => {
+        const component = renderer.create(
+            <ButtonIcon size="xx-small" />,
+        );
+        expect(component).toMatchSnapshot();
+    });
+    it('should have the right class names when variant base and size x-small', () => {
+        const component = renderer.create(
+            <ButtonIcon size="x-small" />,
+        );
+        expect(component).toMatchSnapshot();
+    });
+    it('should have the right class names when variant base and size small', () => {
+        const component = renderer.create(
+            <ButtonIcon size="small" />,
+        );
+        expect(component).toMatchSnapshot();
+    });
+    it('should have the right class names when variant base and size large', () => {
+        const component = renderer.create(
+            <ButtonIcon size="large" />,
         );
         expect(component).toMatchSnapshot();
     });

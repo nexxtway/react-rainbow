@@ -1,15 +1,8 @@
-/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import IconSvg from '../IconSvg';
-
-function AssistiveText({ text }) {
-    if (text) {
-        return <span className="slds-assistive-text">{text}</span>;
-    }
-    return null;
-}
+import AssistiveText from './../AssistiveText';
 
 export default class ButtonIcon extends Component {
     constructor(props) {
@@ -32,28 +25,27 @@ export default class ButtonIcon extends Component {
     }
 
     getIconClassNames() {
-        const { className } = this.props;
-        return classnames('slds-button__icon', this.getIconSizeClassName(), className);
+        return classnames('slds-button__icon', this.getIconSizeClassName());
     }
 
     getButtonSizeClassName() {
         const { size, variant } = this.props;
-        if (variant !== 'base') {
-            return {
-                'slds-button_icon-small': size === 'small',
-                'slds-button_icon-x-small': size === 'x-small',
-                'slds-button_icon-xx-small': size === 'xx-small',
-            };
+        if (variant === 'base') {
+            return null;
         }
-        return null;
+        return {
+            'slds-button_icon-small': size === 'small',
+            'slds-button_icon-x-small': size === 'x-small',
+            'slds-button_icon-xx-small': size === 'xx-small',
+        };
     }
 
     getVariantClassName() {
         const { variant } = this.props;
-        if (variant && variant !== 'base') {
-            return `slds-button_icon-${variant}`;
+        if (variant === 'base') {
+            return null;
         }
-        return null;
+        return `slds-button_icon-${variant}`;
     }
 
     getButtonClassNames() {
@@ -143,12 +135,20 @@ ButtonIcon.propTypes = {
     type: PropTypes.oneOf([
         'button', 'submit', 'reset',
     ]),
-    /** The icon to show. */
-    iconName: PropTypes.string,
+    /** The name of the icon. Names are written in the
+     format '\utility:down\' where 'utility' is the category, and 'down' is the
+     specific icon to be displayed. */
+    iconName: PropTypes.string.isRequired,
     /** Description for assistive sreen readers */
     assistiveText: PropTypes.string,
     /** The button icon size. */
-    size: PropTypes.oneOf(['large', 'medium', 'small', 'x-small', 'xx-small']),
+    size: PropTypes.oneOf([
+        'xx-small',
+        'x-small',
+        'small',
+        'medium',
+        'large',
+    ]),
 };
 
 ButtonIcon.defaultProps = {
@@ -163,7 +163,6 @@ ButtonIcon.defaultProps = {
     onBlur: () => {},
     title: undefined,
     type: 'button',
-    iconName: null,
-    assistiveText: null,
+    assistiveText: undefined,
     size: 'medium',
 };

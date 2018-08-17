@@ -14,6 +14,62 @@ exports[`<ButtonIcon/> should have the right class names 1`] = `
 />
 `;
 
+exports[`<ButtonIcon/> should have the right class names when variant base and size large 1`] = `
+<button
+  aria-haspopup={false}
+  className="slds-button slds-button_icon"
+  data-id="button-icon-element"
+  disabled={false}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  style={Object {}}
+  type="button"
+/>
+`;
+
+exports[`<ButtonIcon/> should have the right class names when variant base and size small 1`] = `
+<button
+  aria-haspopup={false}
+  className="slds-button slds-button_icon"
+  data-id="button-icon-element"
+  disabled={false}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  style={Object {}}
+  type="button"
+/>
+`;
+
+exports[`<ButtonIcon/> should have the right class names when variant base and size x-small 1`] = `
+<button
+  aria-haspopup={false}
+  className="slds-button slds-button_icon"
+  data-id="button-icon-element"
+  disabled={false}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  style={Object {}}
+  type="button"
+/>
+`;
+
+exports[`<ButtonIcon/> should have the right class names when variant base and size xx-small 1`] = `
+<button
+  aria-haspopup={false}
+  className="slds-button slds-button_icon"
+  data-id="button-icon-element"
+  disabled={false}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  style={Object {}}
+  type="button"
+/>
+`;
+
 exports[`<ButtonIcon/> should have the right class names when variant border and size x-small 1`] = `
 <button
   aria-haspopup={false}
