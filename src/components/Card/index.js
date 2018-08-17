@@ -7,6 +7,10 @@ import CardBoddy from './cardBody';
 import Footer from './footer';
 import Actions from './actions';
 
+/**
+ * Cards are used to apply a container around a
+ * related grouping of information.
+ */
 export default function Card(props) {
     const {
         className,

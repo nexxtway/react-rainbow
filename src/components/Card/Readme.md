@@ -1,27 +1,67 @@
-Card Expample 1:
+card default with illustration
 
-        <Card
-            iconName="custom:custom72"
-            title="Card Header"
-            footer="Card Footer"
-            actions={<Button variant="brand" label="New" />} >
-                Anything can go in the Card Body
+    <div className="slds-p-around_large">
+        <Card className="slds-card_boundary">
+           <img 
+            src="images/illustrations/empty-state-assistant.svg"
+            className="slds-p-vertical_x-large slds-align_absolute-center"
+            alt="the wood" />
         </Card>
+    </div>
 
-Card expamples 2:
 
-            <div className="slds-card-wrapper">
-            <Card
-                iconName="standard:contact"
-                title="Contacts"
-                footer="Card Footer"
-                actions={<Button variant="neutral" label="Add" />} >
-            </Card>
-            <Card
-                isLoading
-                className="slds-card_boundary"
-                iconName="utility:spinner"
-                title="Card is loading"
-                actions={<Button disabled variant="neutral" label="Add" />} >
-            </Card>
-            </div>
+card with header and button
+
+    <div className="slds-m-around_large">    
+        <Card
+            className="slds-card_boundary"
+            iconName="standard:avatar"
+            title="Conatct details"
+            actions={<Button variant="neutral" label="New" />} >
+        </Card>
+    </div>
+
+
+card with related list
+
+    <div className="slds-m-around_large">  
+        <Card
+            className="slds-card_boundary"
+            iconName="standard:groups"
+            title="Contacts (3)"
+            footer="View all"
+            actions={<Button variant="neutral" label="New" />} >
+
+                <h1 className="slds-p-bottom_medium slds-text-heading_x-small" >Anything in the body</h1>
+        </Card>
+    </div>
+
+
+card loading
+
+    <div className="slds-m-around_large">
+        <Card
+            className="slds-card_boundary"
+            isLoading
+            iconName="standard:task"
+            title="Task"
+            actions={<Button variant="neutral" label="New" />} >
+        </Card>
+    </div>
+
+
+card with header and illustration
+
+    <div className="slds-m-around_large">
+        <Card
+            className="slds-card_boundary"
+            iconName="standard:task"
+            title="Task"
+            actions={<Button variant="neutral" label="New" />} >
+
+                <div className="slds-p-vertical_large slds-align_absolute-center slds-grid_vertical" >
+                    <img src="images/illustrations/empty-state-tasks.svg" alt="the wood" />
+                    <h1 className="slds-p-top_large slds-text-heading_medium" >No new tasks</h1>
+                </div>
+        </Card>
+    </div>

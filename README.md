@@ -1,8 +1,8 @@
 # React Lightning Components Library
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Build Status](https://travis-ci.org/reiniergs/react-lightning-components.svg?branch=master)](https://travis-ci.org/reiniergs/react-lightning-components)
+[![CircleCI](https://circleci.com/gh/reiniergs/react-lightning-components/tree/master.svg?style=svg)](https://circleci.com/gh/reiniergs/react-lightning-components/tree/master)
 [![Coverage Status](https://coveralls.io/repos/github/reiniergs/react-lightning-components/badge.svg?branch=master)](https://coveralls.io/github/reiniergs/react-lightning-components?branch=master)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 
 ## Install
 

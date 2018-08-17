@@ -119,40 +119,6 @@ fallback user initials
     </div>
 
 
-fallback entity icon
-
-    <div className="slds-p-vertical_x-large slds-p-left_medium slds-grid slds-media_center slds-wrap">
-        <div className="slds-m-horizontal_medium">
-            <Avatar
-                iconName="custom:custom1"
-                title="Heart" />
-
-        </div>
-        <div className="slds-m-horizontal_medium">
-            <Avatar
-                iconName="custom:custom1"
-                title="Heart" />
-
-        </div>
-    </div>
-
-
-fallback entity initials
-
-    <div className="slds-p-vertical_x-large slds-p-left_medium slds-grid slds-media_center slds-wrap">
-        <div className="slds-m-horizontal_medium">
-            <Avatar
-                title="Heart" />
-
-        </div>
-        <div className="slds-m-horizontal_medium">
-            <Avatar
-                title="Heart" />
-
-        </div>
-    </div>
-
-
 fallback user initials inverse
 
     const avatarContainerStyles = {
