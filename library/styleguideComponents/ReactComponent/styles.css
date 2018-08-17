@@ -6,3 +6,14 @@
     color: #5876a3;
     font-weight: 300;
 }
+
+.slds-react-github-badge {
+    color: #00396a;
+    margin-right: 20px;
+    border-color: #00396a;
+    background-color: transparent;
+}
+
+.slds-react-github-badge svg {
+    fill: #00396a;
+}
