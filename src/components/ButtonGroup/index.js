@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-/** Button groups are used to bunch together buttons with similar actions */
+/**
+* Button groups are used to bunch together buttons with similar actions
+*/
 export default function ButtonGroup(props) {
     const {
         className,
