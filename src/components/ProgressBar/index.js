@@ -4,7 +4,9 @@ import classnames from 'classnames';
 import AsistiveText from './../AssistiveText';
 import normalizeValue from './normalizeValue';
 
-/** Progress bar component communicates to the user the progress of a particular process. */
+/**
+* Progress bar component communicates to the user the progress of a particular process.
+*/
 export default function ProgressBar(props) {
     const {
         className,

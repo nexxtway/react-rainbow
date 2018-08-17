@@ -4,8 +4,9 @@ import classnames from 'classnames';
 import LeftIcon from './leftIcon';
 import RightIcon from './rightIcon';
 
-/** Badges are labels which hold small amounts of information. */
-
+/**
+* Badges are labels which hold small amounts of information.
+*/
 export default function Badge(props) {
     const {
         className,
