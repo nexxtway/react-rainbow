@@ -1,8 +1,24 @@
 {
-  "name": "react-lightning-components",
-  "version": "0.0.1",
+  "name": "react-slds",
+  "version": "0.0.6",
   "description": "React components for Lightning Design System",
-  "keywords": [],
+  "keywords": [
+    "react",
+    "components",
+    "slds",
+    "lightning",
+    "library"
+  ],
+  "scripts": {
+    "start": "./node_modules/.bin/styleguidist server",
+    "build": "./node_modules/.bin/styleguidist build",
+    "build:components": "npx babel src/components --out-dir components && npx babel index.js --out-dir components",
+    "prepublishOnly": "yarn clean && yarn build:components",
+    "clean": "rm -Rf components",
+    "test": "jest --verbose",
+    "lint": "./node_modules/.bin/eslint src",
+    "deploy:library": "yarn build && firebase deploy"
+  },
   "dependencies": {
     "classnames": "^2.2.5",
     "file-loader": "^1.1.11",
@@ -10,13 +26,7 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2"
   },
-  "scripts": {
-    "start": "./node_modules/.bin/styleguidist server",
-    "build": "./node_modules/.bin/styleguidist build",
-    "test": "jest --verbose",
-    "lint": "./node_modules/.bin/eslint src"
-  },
-  "main": "index.js",
+  "main": "components/index.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/reiniergs/react-lightning-components.git"
@@ -33,13 +43,15 @@
   },
   "devDependencies": {
     "assert": "^1.4.1",
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^7.2.3",
+    "babel-cli": "6.26.0",
+    "babel-code-frame": "6.26.0",
+    "babel-core": "6.26.0",
+    "babel-eslint": "^8.2.6",
     "babel-jest": "^23.4.2",
-    "babel-loader": "^6.2.7",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-object-rest-spread": "6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "6.24.1",
     "copy-webpack-plugin": "^4.0.1",
     "coveralls": "^2.13.1",
     "css-loader": "^0.26.0",
@@ -53,11 +65,16 @@
     "eslint-plugin-jsx-a11y": "^5.1.0",
     "eslint-plugin-react": "^7.1.0",
     "jest": "^23.4.2",
-    "node-sass": "^3.13.0",
-    "react-styleguidist": "reiniergs/react-styleguidist",
+    "node-sass": "^4.9.3",
+    "pre-push": "^0.1.1",
+    "react-styleguidist": "^7.2.1",
     "react-test-renderer": "^16.4.2",
-    "sass-loader": "^4.0.2",
-    "style-loader": "^0.13.1",
-    "webpack": "^1.13.3"
-  }
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.22.1",
+    "webpack": "^4.16.5"
+  },
+  "pre-push": [
+    "lint",
+    "test"
+  ]
 }

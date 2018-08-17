@@ -1,0 +1,9 @@
+.slds-react-isolate-button {
+    position: absolute;
+    right: 0;
+    top: -36px;
+}
+
+.slds-react-playground-background-color {
+    background-color: #fafafb;
+}

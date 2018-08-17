@@ -1,43 +1,46 @@
-/* eslint-disable react/require-default-props */
-import React, { Component } from 'react';
+/* eslint-disable no-script-url */
+import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-export default class Breadcrumb extends Component {
-    getLiClass() {
-        return classnames('slds-breadcrumb__item slds-text-title_caps', this.props.className);
-    }
+export default function Breadcrumb(props) {
+    const {
+        href,
+        label,
+        onClick,
+        className,
+        style,
+    } = props;
+    const getLiClassNames = () => classnames(
+        'slds-breadcrumb__item slds-text-title_caps',
+        className,
+    );
 
-    render() {
-        const { href, label, onClick, style } = this.props;
-
-        return (
-            <li className={this.getLiClass()} style={style}>
-                <a href={href} onClick={onClick}>
-                    {label}
-                </a>
-            </li>
-        );
-    }
+    return (
+        <li className={getLiClassNames()} style={style}>
+            <a href={href} onClick={onClick}>
+                {label}
+            </a>
+        </li>
+    );
 }
 
 Breadcrumb.propTypes = {
+    /** The class name of the root element. */
+    className: PropTypes.string,
+    /** It is an object with custom style applied to the root element. */
+    style: PropTypes.object,
     /** The href of the anchor */
     href: PropTypes.string,
     /** Label for the breadcrumb */
-    label: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.node,
-    ]).isRequired,
+    label: PropTypes.string.isRequired,
     /** Callback function fired when the breadcrumb is clicked */
     onClick: PropTypes.func,
-    /** Class for custom styles */
-    className: PropTypes.string,
-    /** Object with the custom styles. The properties must be in camelCase naming
-     convention (e.g. { fontFamily: ‘helvetica’ }) */
-    style: PropTypes.object,
 };
 
 Breadcrumb.defaultProps = {
-    href: 'javascript:void(0);', // eslint-disable-line no-script-url
+    className: undefined,
+    style: {},
+    href: 'javascript:void(0);',
+    onClick: () => {},
 };

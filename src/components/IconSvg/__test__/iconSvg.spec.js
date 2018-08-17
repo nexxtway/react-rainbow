@@ -1,39 +1,30 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import IconSvg from './../index';
 
 describe('<IconSvg/>', () => {
-    it('should show a console warning when the iconName\'s format is wrong', () => {
-        console.warn = jest.fn();
-        shallow(<IconSvg iconName="custom-custom5" />);
-
-        expect(console.warn).toHaveBeenCalledTimes(1);
-    });
-
-    it('should show a console warning when variant is used in a sprite other than utility', () => {
-        console.warn = jest.fn();
-        shallow(<IconSvg iconName="custom:custom5" variant="error" />);
-
-        expect(console.warn).toHaveBeenCalledTimes(1);
-    });
-
-    it('should render a component with light variant', () => {
-        const component = shallow(<IconSvg iconName="utility:like" variant="light" />);
-
-        expect(component.find('.slds-icon-text-light').exists()).toBe(true);
-    });
-
-    it('should render a component with a large size', () => {
-        const component = shallow(
-            <IconSvg iconName="utility:like" size="large" variant="default" />,
+    it('should return nothing when the iconName format is wrong', () => {
+        const component = mount(
+            <IconSvg iconName="wrong-name" />,
         );
-
-        expect(component.find('.slds-icon_large').exists()).toBe(true);
+        expect(component.children().length).toBe(0);
     });
-
-    it('should use default variant when sprite is utility and variant was not passed', () => {
-        const component = shallow(<IconSvg iconName="utility:like" />);
-
-        expect(component.find('.slds-icon-text-default').exists()).toBe(true);
+    it('should render the svg element when the iconName format is valid', () => {
+        const component = mount(
+            <IconSvg iconName="utility:like" />,
+        );
+        expect(component.find('svg').exists()).toBe(true);
+    });
+    it('should set the aria-hidden to true in svg element', () => {
+        const component = mount(
+            <IconSvg iconName="utility:like" />,
+        );
+        expect(component.find('svg').prop('aria-hidden')).toBe(true);
+    });
+    it('should set the right xlinkHref value in use element', () => {
+        const component = mount(
+            <IconSvg iconName="action:add_contact" />,
+        );
+        expect(component.find('use').prop('xlinkHref')).toBe('/icons/action-sprite/svg/symbols.svg#add_contact');
     });
 });
