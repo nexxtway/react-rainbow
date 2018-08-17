@@ -1,25 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import IconSvg from '../IconSvg';
 
-export default function LeftIcon({ icon, position }) {
-    if (icon && position === 'left') {
+export default function LeftIcon({ iconName, position }) {
+    if (iconName && position === 'left') {
         return (
-            <span className="slds-button__icon_left slds-current-color">
-                {icon}
-            </span>
+            <IconSvg iconName={iconName} className="slds-button__icon slds-button__icon_left" />
         );
     }
     return null;
 }
 
 LeftIcon.propTypes = {
-    icon: PropTypes.node,
-    position: PropTypes.oneOf([
-        'left', 'right',
-    ]),
-};
-
-LeftIcon.defaultProps = {
-    icon: null,
-    position: undefined,
+    iconName: PropTypes.string.isRequired,
+    position: PropTypes.string.isRequired,
 };

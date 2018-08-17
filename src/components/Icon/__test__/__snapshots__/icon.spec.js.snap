@@ -1,0 +1,253 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Icon/> should have the right class names when custom className and svgClassName are passed 1`] = `
+<span
+  className="slds-icon_container my-custom-class-name"
+  style={Object {}}
+>
+  <svg
+    aria-hidden={true}
+    className="slds-icon slds-icon-text-default my-custom-svg-class-name"
+    style={Object {}}
+  >
+    <use
+      xlinkHref="/icons/utility-sprite/svg/symbols.svg#adduser"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    />
+  </svg>
+</span>
+`;
+
+exports[`<Icon/> should have the right class names when size and variant are not passed 1`] = `
+<span
+  className="slds-icon_container slds-icon-custom-custom5"
+  style={Object {}}
+>
+  <svg
+    aria-hidden={true}
+    className="slds-icon"
+    style={Object {}}
+  >
+    <use
+      xlinkHref="/icons/custom-sprite/svg/symbols.svg#custom5"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    />
+  </svg>
+</span>
+`;
+
+exports[`<Icon/> should have the right class names when size is large 1`] = `
+<span
+  className="slds-icon_container slds-icon_container_circle slds-icon-action-add-photo-video"
+  style={Object {}}
+>
+  <svg
+    aria-hidden={true}
+    className="slds-icon slds-icon_large"
+    style={Object {}}
+  >
+    <use
+      xlinkHref="/icons/action-sprite/svg/symbols.svg#add_photo_video"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    />
+  </svg>
+</span>
+`;
+
+exports[`<Icon/> should have the right class names when size is medium 1`] = `
+<span
+  className="slds-icon_container slds-icon-standard-action-list-component"
+  style={Object {}}
+>
+  <svg
+    aria-hidden={true}
+    className="slds-icon"
+    style={Object {}}
+  >
+    <use
+      xlinkHref="/icons/standard-sprite/svg/symbols.svg#action_list_component"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    />
+  </svg>
+</span>
+`;
+
+exports[`<Icon/> should have the right class names when size is small 1`] = `
+<span
+  className="slds-icon_container slds-icon-custom-custom6"
+  style={Object {}}
+>
+  <svg
+    aria-hidden={true}
+    className="slds-icon slds-icon_small"
+    style={Object {}}
+  >
+    <use
+      xlinkHref="/icons/custom-sprite/svg/symbols.svg#custom6"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    />
+  </svg>
+</span>
+`;
+
+exports[`<Icon/> should have the right class names when size is x-small 1`] = `
+<span
+  className="slds-icon_container"
+  style={Object {}}
+>
+  <svg
+    aria-hidden={true}
+    className="slds-icon slds-icon_x-small"
+    style={Object {}}
+  >
+    <use
+      xlinkHref="/icons/doctype-sprite/svg/symbols.svg#box_notes"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    />
+  </svg>
+</span>
+`;
+
+exports[`<Icon/> should have the right class names when size is x-small and the sprite is custom 1`] = `
+<span
+  className="slds-icon_container slds-icon-custom-custom5"
+  style={Object {}}
+>
+  <svg
+    aria-hidden={true}
+    className="slds-icon slds-icon_small"
+    style={Object {}}
+  >
+    <use
+      xlinkHref="/icons/custom-sprite/svg/symbols.svg#custom5"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    />
+  </svg>
+</span>
+`;
+
+exports[`<Icon/> should have the right class names when size is xx-small 1`] = `
+<span
+  className="slds-icon_container"
+  style={Object {}}
+>
+  <svg
+    aria-hidden={true}
+    className="slds-icon slds-icon_xx-small slds-icon-text-default"
+    style={Object {}}
+  >
+    <use
+      xlinkHref="/icons/utility-sprite/svg/symbols.svg#ad_set"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    />
+  </svg>
+</span>
+`;
+
+exports[`<Icon/> should have the right class names when size is xx-small and the sprite is action 1`] = `
+<span
+  className="slds-icon_container slds-icon_container_circle slds-icon-action-add-contact"
+  style={Object {}}
+>
+  <svg
+    aria-hidden={true}
+    className="slds-icon slds-icon_small"
+    style={Object {}}
+  >
+    <use
+      xlinkHref="/icons/action-sprite/svg/symbols.svg#add_contact"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    />
+  </svg>
+</span>
+`;
+
+exports[`<Icon/> should have the right class names when variant is default 1`] = `
+<span
+  className="slds-icon_container"
+  style={Object {}}
+>
+  <svg
+    aria-hidden={true}
+    className="slds-icon slds-icon-text-default"
+    style={Object {}}
+  >
+    <use
+      xlinkHref="/icons/utility-sprite/svg/symbols.svg#animal_and_nature"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    />
+  </svg>
+</span>
+`;
+
+exports[`<Icon/> should have the right class names when variant is error 1`] = `
+<span
+  className="slds-icon_container"
+  style={Object {}}
+>
+  <svg
+    aria-hidden={true}
+    className="slds-icon slds-icon-text-error"
+    style={Object {}}
+  >
+    <use
+      xlinkHref="/icons/utility-sprite/svg/symbols.svg#approval"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    />
+  </svg>
+</span>
+`;
+
+exports[`<Icon/> should have the right class names when variant is light 1`] = `
+<span
+  className="slds-icon_container"
+  style={Object {}}
+>
+  <svg
+    aria-hidden={true}
+    className="slds-icon slds-icon-text-light"
+    style={Object {}}
+  >
+    <use
+      xlinkHref="/icons/utility-sprite/svg/symbols.svg#answer"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    />
+  </svg>
+</span>
+`;
+
+exports[`<Icon/> should have the right class names when variant is passed and the sprite is other than utility 1`] = `
+<span
+  className="slds-icon_container slds-icon_container_circle slds-icon-action-add-contact"
+  style={Object {}}
+>
+  <svg
+    aria-hidden={true}
+    className="slds-icon"
+    style={Object {}}
+  >
+    <use
+      xlinkHref="/icons/action-sprite/svg/symbols.svg#add_contact"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    />
+  </svg>
+</span>
+`;
+
+exports[`<Icon/> should have the right class names when variant is warning 1`] = `
+<span
+  className="slds-icon_container"
+  style={Object {}}
+>
+  <svg
+    aria-hidden={true}
+    className="slds-icon slds-icon-text-warning"
+    style={Object {}}
+  >
+    <use
+      xlinkHref="/icons/utility-sprite/svg/symbols.svg#approval"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    />
+  </svg>
+</span>
+`;

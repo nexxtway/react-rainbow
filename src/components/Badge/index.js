@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import LeftIcon from './leftIcon';
+import RightIcon from './rightIcon';
+
+/** Badges are labels which hold small amounts of information. */
 
 export default function Badge(props) {
     const {
@@ -8,6 +12,8 @@ export default function Badge(props) {
         style,
         label,
         variant,
+        iconName,
+        iconPosition,
     } = props;
 
     function getClassName() {
@@ -16,7 +22,9 @@ export default function Badge(props) {
 
     return (
         <span className={getClassName()} style={style}>
+            <LeftIcon label={label} iconName={iconName} position={iconPosition} />
             {label}
+            <RightIcon label={label} iconName={iconName} position={iconPosition} />
         </span>
     );
 }
@@ -27,10 +35,18 @@ Badge.propTypes = {
      /** It is an object with custom style applied to the root element. */
     style: PropTypes.object,
     /** Label for the badge. It is required. */
-    label: PropTypes.string.isRequired,
+    label: PropTypes.string,
     /** The badge variant. */
     variant: PropTypes.oneOf([
         'default', 'inverse', 'lightest',
+    ]),
+    /** The name of the icon. Names are written in the
+     format '\utility:down\' where 'utility' is the category, and 'down' is the
+     specific icon to be displayed. */
+    iconName: PropTypes.string,
+    /** The position of the icon if it is passed. */
+    iconPosition: PropTypes.oneOf([
+        'left', 'right',
     ]),
 };
 
@@ -38,4 +54,7 @@ Badge.defaultProps = {
     className: undefined,
     style: {},
     variant: 'default',
+    iconName: '',
+    iconPosition: 'left',
+    label: '',
 };

@@ -1,9 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<RightIcon/> should have the right class names when the icon is passed and position is right 1`] = `
-<span
-  className="slds-button__icon_right slds-current-color"
+exports[`<RightIcon in the Button component/> should have the right class names when the iconName is passed and position is right 1`] = `
+<svg
+  aria-hidden={true}
+  className="slds-button__icon slds-button__icon_right"
+  style={Object {}}
 >
-  <svg />
-</span>
+  <use
+    xlinkHref="/icons/utility-sprite/svg/symbols.svg#world"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+  />
+</svg>
 `;
