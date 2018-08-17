@@ -76,7 +76,7 @@ Icon.propTypes = {
     title: PropTypes.string,
      /** Description for assistive screen readers if is required. */
     assistiveText: PropTypes.string,
-    /** The icon size. */
+    /** The icon size. The sizes xx-small and x-small only afect the utility and doctype sprite */
     size: PropTypes.oneOf([
         'xx-small',
         'x-small',
@@ -84,7 +84,7 @@ Icon.propTypes = {
         'medium',
         'large',
     ]),
-    /** The icon variant. */
+    /** The icon variant. Only make sense for utility sprite */
     variant: PropTypes.oneOf([
         'default',
         'light',
