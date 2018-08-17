@@ -25,7 +25,7 @@ button group with overflow menu icon
             <Button label="Refresh" variant="neutral" />
             <Button label="Edit" variant="neutral" />
             <Button label="Save" variant="neutral" />
-            <ButtonIcon iconName="utility:chevrondown" variant="border" style={{ backgroundColor: '#ffffff' }} />
+            <ButtonIcon iconName="utility:chevrondown" variant="border-filled" />
         </ButtonGroup>
     </div>
 
@@ -54,10 +54,10 @@ button group with icon
         </div>
         <div className="slds-m-horizontal_medium">
             <ButtonGroup>
-                <ButtonIcon iconName="utility:add" variant="border" style={{ backgroundColor: '#ffffff' }} />
-                <ButtonIcon iconName="utility:edit" variant="border" style={{ backgroundColor: '#ffffff' }} />
-                <ButtonIcon iconName="utility:paste" variant="border" style={{ backgroundColor: '#ffffff' }} />
-                <ButtonIcon iconName="utility:chevrondown" variant="border" style={{ backgroundColor: '#ffffff' }} />
+                <ButtonIcon iconName="utility:add" variant="border-filled" />
+                <ButtonIcon iconName="utility:edit" variant="border-filled" />
+                <ButtonIcon iconName="utility:paste" variant="border-filled" />
+                <ButtonIcon iconName="utility:chevrondown" variant="border-filled" />
             </ButtonGroup>
         </div>
     </div>
@@ -70,7 +70,7 @@ button group with button disabled
                 <Button label="Refresh" variant="neutral" />
                 <Button label="Edit" variant="neutral" />
                 <Button label="Save" variant="neutral" disabled />
-                <ButtonIcon iconName="utility:chevrondown" variant="border" disabled style={{ backgroundColor: '#ffffff' }} />
+                <ButtonIcon iconName="utility:chevrondown" variant="border-filled" disabled />
             </ButtonGroup>
         </div>
         <div className="slds-m-horizontal_medium">
@@ -96,10 +96,10 @@ button group with button disabled
         </div>
         <div className="slds-m-horizontal_medium">
             <ButtonGroup>
-                <ButtonIcon iconName="utility:add" variant="border" style={{ backgroundColor: '#ffffff' }} />
-                <ButtonIcon iconName="utility:edit" variant="border" style={{ backgroundColor: '#ffffff' }} />
-                <ButtonIcon iconName="utility:paste" variant="border" disabled style={{ backgroundColor: '#ffffff' }} />
-                <ButtonIcon iconName="utility:chevrondown" variant="border" disabled style={{ backgroundColor: '#ffffff' }} />
+                <ButtonIcon iconName="utility:add" variant="border-filled" />
+                <ButtonIcon iconName="utility:edit" variant="border-filled" />
+                <ButtonIcon iconName="utility:paste" variant="border-filled" disabled />
+                <ButtonIcon iconName="utility:chevrondown" variant="border-filled" disabled />
             </ButtonGroup>
         </div>
     </div>
@@ -118,7 +118,7 @@ buttons group with button inverse
                 <Button label="Refresh" variant="inverse" />
                 <Button label="Edit" variant="inverse" />
                 <Button label="Save" variant="inverse" />
-                <ButtonIcon iconName="utility:chevrondown" variant="borderInverse" />
+                <ButtonIcon iconName="utility:chevrondown" variant="border-inverse" />
             </ButtonGroup>
         </div>
         <div className="slds-m-horizontal_medium">
@@ -142,10 +142,10 @@ buttons group with button inverse
         </div>
         <div className="slds-m-horizontal_medium">
             <ButtonGroup>
-                <ButtonIcon iconName="utility:add" variant="borderInverse" />
-                <ButtonIcon iconName="utility:edit" variant="borderInverse" />
-                <ButtonIcon iconName="utility:paste" variant="borderInverse" />
-                <ButtonIcon iconName="utility:chevrondown" variant="borderInverse" />
+                <ButtonIcon iconName="utility:add" variant="border-inverse" />
+                <ButtonIcon iconName="utility:edit" variant="border-inverse" />
+                <ButtonIcon iconName="utility:paste" variant="border-inverse" />
+                <ButtonIcon iconName="utility:chevrondown" variant="border-inverse" />
             </ButtonGroup>
         </div>
     </div>
