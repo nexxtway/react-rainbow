@@ -4,6 +4,10 @@ import PropTypes from 'prop-types';
 import IconSvg from '../IconSvg';
 import AssistiveText from './../AssistiveText';
 
+/**
+ * Buttons Icons provide the user with visual iconography that
+ * is typically used to invoke an event or action.
+ */
 export default class ButtonIcon extends Component {
     constructor(props) {
         super(props);
