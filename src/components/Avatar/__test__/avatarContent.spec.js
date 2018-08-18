@@ -53,12 +53,6 @@ describe('<AvatarContent/>', () => {
             }),
         );
     });
-    it('should have the right class names', () => {
-        const component = renderer.create(
-            <AvatarContent iconName="standard:user" />,
-        );
-        expect(component).toMatchSnapshot();
-    });
     it('should have the right class names when initials variant is default', () => {
         const component = renderer.create(
             <AvatarContent iconName="standard:user" initialsVariant="default" initials="JD" />,
