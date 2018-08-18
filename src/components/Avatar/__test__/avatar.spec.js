@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme/build/index';
+import { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
 import Avatar from './../index';
 
@@ -9,12 +9,6 @@ describe('<Avatar/>', () => {
             <Avatar initials="JD" assistiveText="for screen readers" />,
         );
         expect(component.find('AssistiveText').prop('text')).toBe('for screen readers');
-    });
-    it('should have the right class names', () => {
-        const component = renderer.create(
-            <Avatar />,
-        );
-        expect(component).toMatchSnapshot();
     });
     it('should have the right class names', () => {
         const component = renderer.create(

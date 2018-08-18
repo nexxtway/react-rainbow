@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme/build/index';
+import { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
 import AvatarContent from './../avatarContent';
 
@@ -8,9 +8,9 @@ describe('<AvatarContent/>', () => {
         const component = mount(
             <AvatarContent iconName="standard:user" src="images/avatar1.jpg" />,
         );
-        expect(component.find('img'));
+        expect(component.find('img').exists()).toBe(true);
     });
-    it('should pass right props when a valid src is passed', () => {
+    it('should pass right props to the img element when a valid src is passed', () => {
         const component = mount(
             <AvatarContent iconName="standard:user" src="images/avatar1.jpg" title="Title" />,
         );
@@ -24,11 +24,11 @@ describe('<AvatarContent/>', () => {
         const component = mount(
             <AvatarContent iconName="standard:user" initials="JD" />,
         );
-        expect(component.find('abbr'));
+        expect(component.find('abbr').exists()).toBe(true);
     });
-    it('should pass right props when src is not passed and initials props is passed', () => {
+    it('should pass right props to the abbr element when src is not passed and initials props is passed', () => {
         const component = mount(
-            <AvatarContent iconName="standard:user" initials="JD" title="Title" />,
+            <AvatarContent iconName="standard:user" initialsVariant="default" initials="JD" title="Title" />,
         );
         expect(component.find('abbr').props()).toEqual({
             children: 'JD',
@@ -40,20 +40,18 @@ describe('<AvatarContent/>', () => {
         const component = mount(
             <AvatarContent iconName="standard:user" />,
         );
-        expect(component.find('Icon'));
-    });
-    it('should render an Icon when src is not passed and invalid initials is passed', () => {
-        const component = mount(
-            <AvatarContent iconName="standard:user" initials="jd" />,
-        );
-        expect(component.find('Icon'));
+        expect(component.find('Icon').exists()).toBe(true);
     });
     it('should pass right props to Icon component', () => {
         const component = mount(
             <AvatarContent iconName="standard:user" title="Title" />,
         );
-        expect(component.find('Icon').prop('iconName')).toBe('standard:user');
-        expect(component.find('Icon').prop('title')).toBe('Title');
+        expect(component.find('Icon').props()).toEqual(
+            expect.objectContaining({
+                iconName: 'standard:user',
+                title: 'Title',
+            }),
+        );
     });
     it('should have the right class names', () => {
         const component = renderer.create(
@@ -63,7 +61,7 @@ describe('<AvatarContent/>', () => {
     });
     it('should have the right class names when initials variant is default', () => {
         const component = renderer.create(
-            <AvatarContent iconName="standard:user" initials="JD" />,
+            <AvatarContent iconName="standard:user" initialsVariant="default" initials="JD" />,
         );
         expect(component).toMatchSnapshot();
     });

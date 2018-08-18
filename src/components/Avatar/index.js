@@ -39,12 +39,12 @@ Avatar.propTypes = {
     /** Is the avatar source path. Its value is the relative URL to the image.
      It take precedence over the initials and icon */
     src: PropTypes.string,
-    /** If set to true make the avatar a circle. */
+    /** The variant of the avatar. */
     variant: PropTypes.oneOf(['default', 'circle']),
-    /** The user initials. It only can have two letters (the first name and last name
-     first letter in upper case). It take precedence over the icon */
+    /** It is a string to show the initials. If the string passed have more than two letters
+     only will be showed the two first. It take precedence over the icon. */
     initials: PropTypes.string,
-    /** only make sense when initials is used. */
+    /** The variant of the initials. Only make sense when initials is used. */
     initialsVariant: PropTypes.oneOf(['default', 'inverse']),
     /** The icon name. It have the less precedence. It take the following format:
      ‘sprite name:icon name’ e.g. ‘utility:add’ */

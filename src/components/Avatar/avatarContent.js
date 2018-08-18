@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Icon from '../Icon';
-import isInitialsValid from './isInitialsValid';
+import normalizeInitials from './normalizeInitials';
 
 export default class AvatarContent extends Component {
     constructor(props) {
@@ -15,11 +15,18 @@ export default class AvatarContent extends Component {
         this.handleImageError = this.handleImageError.bind(this);
     }
 
-    getAbbrClassNames() {
+    getAbbrVariantClassNames() {
         const { initialsVariant } = this.props;
+        if (initialsVariant === 'default') {
+            return 'slds-icon-standard-user';
+        }
+        return 'slds-avatar__initials_inverse';
+    }
+
+    getAbbrClassNames() {
         return classnames(
             'slds-avatar__initials',
-            initialsVariant === 'default' ? 'slds-icon-standard-user' : `slds-avatar__initials_${initialsVariant}`,
+            this.getAbbrVariantClassNames(),
         );
     }
 
@@ -37,13 +44,13 @@ export default class AvatarContent extends Component {
         const { imageFailed } = this.state;
         if (src && !imageFailed) {
             return <img src={src} onError={this.handleImageError} title={title} />;
-        } else if (isInitialsValid(initials)) {
+        } else if (initials) {
             return (
                 <abbr
                     className={this.getAbbrClassNames()}
                     title={title}>
 
-                    {initials}
+                    {normalizeInitials(initials)}
                 </abbr>
             );
         }
@@ -54,7 +61,7 @@ export default class AvatarContent extends Component {
 AvatarContent.propTypes = {
     src: PropTypes.string,
     initials: PropTypes.string,
-    initialsVariant: PropTypes.oneOf(['default', 'inverse']),
+    initialsVariant: PropTypes.string.isRequired,
     iconName: PropTypes.string.isRequired,
     title: PropTypes.string,
 };
@@ -62,6 +69,5 @@ AvatarContent.propTypes = {
 AvatarContent.defaultProps = {
     src: undefined,
     initials: undefined,
-    initialsVariant: 'default',
     title: undefined,
 };
