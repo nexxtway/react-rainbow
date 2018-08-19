@@ -6,16 +6,16 @@ import Icon from '../Icon';
 function BadgeIcon(props) {
     const { isVisible, iconName, iconPosition, label } = props;
 
-    function getIconClassName() {
+    const iconClassName = () => {
         const hasLabel = label !== undefined && label !== null;
         return classnames({
             'slds-m-right_xx-small': hasLabel && iconPosition === 'left',
             'slds-m-left_xx-small': hasLabel && iconPosition === 'right',
         });
-    }
+    };
 
     if (isVisible) {
-        return <Icon size="xx-small" iconName={iconName} className={getIconClassName()} />;
+        return <Icon size="xx-small" iconName={iconName} className={iconClassName()} />;
     }
     return null;
 }
