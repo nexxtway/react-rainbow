@@ -6,7 +6,7 @@ import Icon from '../Icon';
 function BadgeIcon(props) {
     const { isVisible, iconName, iconPosition, label } = props;
 
-    const iconClassName = () => {
+    const getIconClassName = () => {
         const hasLabel = label !== undefined && label !== null;
         return classnames({
             'slds-m-right_xx-small': hasLabel && iconPosition === 'left',
@@ -15,7 +15,7 @@ function BadgeIcon(props) {
     };
 
     if (isVisible) {
-        return <Icon size="xx-small" iconName={iconName} className={iconClassName()} />;
+        return <Icon size="xx-small" iconName={iconName} className={getIconClassName()} />;
     }
     return null;
 }
