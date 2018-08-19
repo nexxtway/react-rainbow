@@ -8,7 +8,7 @@ module.exports = {
     skipComponentsWithoutExample: true,
     pagePerSection: true,
     title: 'React Lightning Components',
-    version: 'v.0.0.5',
+    version: JSON.stringify(require("./package.json").version),
     require: [
         path.resolve(__dirname, 'assets/styles/salesforce-lightning-design-system.css'),
         path.resolve(__dirname, 'library/setup.js')
