@@ -22,7 +22,6 @@ export default class Button extends Component {
 
     /**
     * Sets focus on the element.
-    *
     * @public
     */
     focus() {
@@ -31,7 +30,6 @@ export default class Button extends Component {
 
     /**
     * Sets click on the element.
-    *
     * @public
     */
     click() {
@@ -40,7 +38,6 @@ export default class Button extends Component {
 
     /**
     * Sets blur on the element.
-    *
     * @public
     */
     blur() {

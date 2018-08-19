@@ -59,7 +59,6 @@ export default class ButtonIcon extends Component {
 
     /**
     * Sets focus on the element.
-    *
     * @public
     */
     focus() {
@@ -68,7 +67,6 @@ export default class ButtonIcon extends Component {
 
     /**
     * Sets click on the element.
-    *
     * @public
     */
     click() {
@@ -77,7 +75,6 @@ export default class ButtonIcon extends Component {
 
     /**
     * Sets blur on the element.
-    *
     * @public
     */
     blur() {
