@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import AvatarContent from './avatarContent';
+import AssistiveText from './../AssistiveText';
 
 /**
 * An avatar component represents an object or entity
@@ -12,19 +13,20 @@ export default function Avatar(props) {
         style,
         variant,
         size,
+        assistiveText,
         ...rest
     } = props;
-    const getContainerClassNames = () => classnames('slds-avatar', {
-        'slds-avatar_circle': variant,
-        'slds-avatar_large': size === 'large',
-        'slds-avatar_medium': size === 'medium',
-        'slds-avatar_small': size === 'small',
-        'slds-avatar_x-small': size === 'x-small',
-    }, className);
+    const getContainerClassNames = () => classnames(
+        'slds-avatar',
+        { 'slds-avatar_circle': variant === 'circle' },
+        `slds-avatar_${size}`,
+        className,
+    );
 
     return (
         <span className={getContainerClassNames()} style={style}>
             <AvatarContent {...rest} />
+            <AssistiveText text={assistiveText} />
         </span>
     );
 }
@@ -34,34 +36,41 @@ Avatar.propTypes = {
     className: PropTypes.string,
     /** It is an object with custom style applied to the root element. */
     style: PropTypes.object,
-    /** Avatar description. It usually is a person name. Can be used only if
-     valid src is available */
-    alt: PropTypes.string,
     /** Is the avatar source path. Its value is the relative URL to the image.
      It take precedence over the initials and icon */
     src: PropTypes.string,
-    /** If set to true make the avatar a circle. */
-    variant: PropTypes.bool,
-    /** The user initials. It only can have two letters (the first name and last name
-     first letter in upper case). It take precedence over the icon */
+    /** The variant of the avatar. */
+    variant: PropTypes.oneOf(['default', 'circle']),
+    /** It is a string to show the initials. If the string passed have more than two letters
+     only will be showed the two first. It take precedence over the icon. */
     initials: PropTypes.string,
+    /** The variant of the initials. Only make sense when initials is used. */
+    initialsVariant: PropTypes.oneOf(['default', 'inverse']),
     /** The icon name. It have the less precedence. It take the following format:
      ‘sprite name:icon name’ e.g. ‘utility:add’ */
     iconName: PropTypes.string,
     /** The icon size. */
-    size: PropTypes.oneOf(['large', 'medium', 'small', 'x-small']),
+    size: PropTypes.oneOf([
+        'x-small',
+        'small',
+        'medium',
+        'large',
+    ]),
     /** This is a description that is showed when a user hover the avatar */
     title: PropTypes.string,
+    /** Description for assistive sreen readers */
+    assistiveText: PropTypes.string,
 };
 
 Avatar.defaultProps = {
     className: undefined,
     iconName: 'standard:user',
     size: 'medium',
-    variant: false,
-    alt: undefined,
+    variant: 'default',
     src: undefined,
     initials: undefined,
+    initialsVariant: 'default',
     style: {},
     title: undefined,
+    assistiveText: undefined,
 };
