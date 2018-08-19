@@ -5,7 +5,7 @@ import BodyRows from './bodyRows';
 
 export default function PropsTable(props) {
     return (
-        <table className="slds-table slds-table_bordered">
+        <table className="slds-table slds-table_bordered slds-m-bottom_large">
             <thead>
                 <HeaderRows columns={props.columns} />
             </thead>
