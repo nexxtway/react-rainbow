@@ -1,14 +1,27 @@
 simple buttons
 
+    initialState = { 
+        hasFocus: false, 
+        wasClicked: false 
+    };
     <div className="slds-p-vertical_large slds-align_absolute-center slds-wrap" >
         <div className="slds-m-horizontal_medium">
             <Button label="Button Base" />
         </div>
         <div className="slds-m-horizontal_medium">
-            <Button label="Button Neutral" variant="neutral" />
+            <Button 
+                label={state.wasClicked ? 'Clicked!' : 'Button Neutral'} 
+                variant="neutral"
+                onClick={() => setState({ wasClicked: true })}                 
+            />
         </div>
         <div className="slds-m-horizontal_medium">
-            <Button label="Button Outline Brand" variant="outline-brand" />
+            <Button 
+                label={state.hasFocus ? 'Focused' : 'Button Outline Brand'} 
+                variant="outline-brand"
+                onFocus={() => setState({ hasFocus: true})}
+                onBlur={() => setState({ hasFocus: false})} 
+            />
         </div>
     </div>
 
