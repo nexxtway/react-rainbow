@@ -26,12 +26,14 @@ export default function Badge(props) {
     return (
         <span className={getClassName()} style={style}>
             <Icon
+                data-id="left-icon"
                 iconName={iconName}
                 iconPosition={iconPosition}
                 label={label}
                 isVisible={showLeftIcon} />
             {label}
             <Icon
+                data-id="right-icon"
                 iconName={iconName}
                 iconPosition={iconPosition}
                 label={label}
