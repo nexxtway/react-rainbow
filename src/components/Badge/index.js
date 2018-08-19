@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import LeftIcon from './leftIcon';
-import RightIcon from './rightIcon';
+import Icon from './badgeIcon';
 
 /**
-* Badges are labels which hold small amounts of information.
-*/
+ * Badges are labels which hold small amounts of information.
+ */
 export default function Badge(props) {
     const {
         className,
@@ -21,22 +20,35 @@ export default function Badge(props) {
         return classnames('slds-badge', `slds-badge_${variant}`, className);
     }
 
+    const showLeftIcon = iconName && iconPosition === 'left';
+    const showRightIcon = iconName && iconPosition === 'right';
+
     return (
         <span className={getClassName()} style={style}>
-            <LeftIcon label={label} iconName={iconName} position={iconPosition} />
+            <Icon
+                data-id="left-icon"
+                iconName={iconName}
+                iconPosition={iconPosition}
+                label={label}
+                isVisible={showLeftIcon} />
             {label}
-            <RightIcon label={label} iconName={iconName} position={iconPosition} />
+            <Icon
+                data-id="right-icon"
+                iconName={iconName}
+                iconPosition={iconPosition}
+                label={label}
+                isVisible={showRightIcon} />
         </span>
     );
 }
 
 Badge.propTypes = {
-     /** The class name of the root element. */
+    /** The class name of the root element. */
     className: PropTypes.string,
-     /** It is an object with custom style applied to the root element. */
+    /** It is an object with custom style applied to the root element. */
     style: PropTypes.object,
-    /** Label for the badge. It is required. */
-    label: PropTypes.string,
+    /** Label for the badge. */
+    label: PropTypes.node,
     /** The badge variant. */
     variant: PropTypes.oneOf([
         'default', 'inverse', 'lightest',
@@ -57,5 +69,5 @@ Badge.defaultProps = {
     variant: 'default',
     iconName: '',
     iconPosition: 'left',
-    label: '',
+    label: null,
 };

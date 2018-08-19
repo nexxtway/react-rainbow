@@ -1,7 +1,7 @@
 /* eslint-disable */
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const version = JSON.stringify(require("./package.json").version);
+const version = require("./package.json").version;
 
 module.exports = {
     ignore: ['**/__tests__/**', '/node_modules/**'],
