@@ -5,7 +5,7 @@ export default function GithubStars(WrappedComponent) {
     return class extends Component {
         constructor(props) {
             super(props);
-            this.state = { stars: 0 };
+            this.state = { stars: '0' };
         }
 
         componentDidMount() {
