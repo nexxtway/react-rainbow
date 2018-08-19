@@ -20,14 +20,29 @@ export default class Button extends Component {
         return classnames('slds-button', `slds-button_${variant}`, className);
     }
 
-    click() {
-        this.button.click();
-    }
-
+    /**
+    * Sets focus on the element.
+    *
+    * @public
+    */
     focus() {
         this.button.focus();
     }
 
+    /**
+    * Sets click on the element.
+    *
+    * @public
+    */
+    click() {
+        this.button.click();
+    }
+
+    /**
+    * Sets blur on the element.
+    *
+    * @public
+    */
     blur() {
         this.button.blur();
     }
