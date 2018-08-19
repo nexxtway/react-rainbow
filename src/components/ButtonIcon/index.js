@@ -57,14 +57,29 @@ export default class ButtonIcon extends Component {
         return classnames('slds-button', 'slds-button_icon', this.getVariantClassName(), this.getButtonSizeClassName(), className);
     }
 
-    click() {
-        this.button.click();
-    }
-
+    /**
+    * Sets focus on the element.
+    *
+    * @public
+    */
     focus() {
         this.button.focus();
     }
 
+    /**
+    * Sets click on the element.
+    *
+    * @public
+    */
+    click() {
+        this.button.click();
+    }
+
+    /**
+    * Sets blur on the element.
+    *
+    * @public
+    */
     blur() {
         this.button.blur();
     }
