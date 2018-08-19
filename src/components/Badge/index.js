@@ -4,8 +4,8 @@ import classnames from 'classnames';
 import Icon from './badgeIcon';
 
 /**
-* Badges are labels which hold small amounts of information.
-*/
+ * Badges are labels which hold small amounts of information.
+ */
 export default function Badge(props) {
     const {
         className,
@@ -20,30 +20,30 @@ export default function Badge(props) {
         return classnames('slds-badge', `slds-badge_${variant}`, className);
     }
 
-    function getIconClassName() {
-        const hasLabel = label !== undefined && label !== null;
-        return classnames({
-            'slds-m-right_xx-small': hasLabel && iconPosition === 'left',
-            'slds-m-left_xx-small': hasLabel && iconPosition === 'right',
-        });
-    }
-
     const showLeftIcon = iconName && iconPosition === 'left';
     const showRightIcon = iconName && iconPosition === 'right';
 
     return (
         <span className={getClassName()} style={style}>
-            <Icon iconName={iconName} isVisible={showLeftIcon} className={getIconClassName()} />
+            <Icon
+                iconName={iconName}
+                iconPosition={iconPosition}
+                label={label}
+                isVisible={showLeftIcon} />
             {label}
-            <Icon iconName={iconName} isVisible={showRightIcon} className={getIconClassName()} />
+            <Icon
+                iconName={iconName}
+                iconPosition={iconPosition}
+                label={label}
+                isVisible={showRightIcon} />
         </span>
     );
 }
 
 Badge.propTypes = {
-     /** The class name of the root element. */
+    /** The class name of the root element. */
     className: PropTypes.string,
-     /** It is an object with custom style applied to the root element. */
+    /** It is an object with custom style applied to the root element. */
     style: PropTypes.object,
     /** Label for the badge. */
     label: PropTypes.node,

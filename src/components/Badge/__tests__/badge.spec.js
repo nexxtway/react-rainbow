@@ -21,4 +21,16 @@ describe('<Badge/>', () => {
         );
         expect(component).toMatchSnapshot();
     });
+    it('should render an icon on the left when iconName is passed', () => {
+        const component = renderer.create(
+            <Badge label="Lightest Badge" iconName="utility:world" />,
+        );
+        expect(component).toMatchSnapshot();
+    });
+    it('should render an icon on the right when iconName is passed and iconPosition is right', () => {
+        const component = renderer.create(
+            <Badge label="Lightest Badge" iconName="utility:world" iconPosition="right" />,
+        );
+        expect(component).toMatchSnapshot();
+    });
 });
