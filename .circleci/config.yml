@@ -31,8 +31,48 @@ jobs:
 
       - run: yarn test --coverage --coverageReporters=text-lcov | ./node_modules/coveralls/bin/coveralls.js
 
+  integration_tests:
+    docker:
+      - image: circleci/node:8.9.4-browsers
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run: yarn install
+
+      - run:
+          name: Install Chrome
+          command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+            sudo apt-get update
+            sudo apt-get -y install google-chrome-stable
+            
+      - run:
+          command: yarn start
+          background: true
+      - run: yarn test:integration --headless
+
+      - store_test_results:
+          path: ./junit-results
+
+      - store_artifacts:
+          path: ./errorShots
+
 workflows:
   version: 2
   build_and_test:
     jobs:
       - build_and_test
+      - integration_tests:
+          requires:
+            - build_and_test
