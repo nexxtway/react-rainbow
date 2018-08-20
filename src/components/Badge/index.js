@@ -17,7 +17,7 @@ export default function Badge(props) {
     } = props;
 
     function getClassName() {
-        return classnames('slds-badge', `slds-badge_${variant}`, className);
+        return classnames('slds-align_absolute-center', 'slds-badge', `slds-badge_${variant}`, className);
     }
 
     const showLeftIcon = iconName && iconPosition === 'left';
@@ -43,31 +43,34 @@ export default function Badge(props) {
 }
 
 Badge.propTypes = {
-    /** The class name of the root element. */
-    className: PropTypes.string,
-    /** It is an object with custom style applied to the root element. */
-    style: PropTypes.object,
-    /** Label for the badge. */
+    /** The text to be displayed inside the badge. */
     label: PropTypes.node,
-    /** The badge variant. */
-    variant: PropTypes.oneOf([
-        'default', 'inverse', 'lightest',
-    ]),
-    /** The name of the icon. Names are written in the
-     format '\utility:down\' where 'utility' is the category, and 'down' is the
-     specific icon to be displayed. */
+    /** The Lightning Design System name of the icon used as a fallback when
+    * the image fails to load. Names are written in the format {sprite_name}:{icon_name}
+    * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed.
+    * Only utility icons can be used in this component. */
     iconName: PropTypes.string,
-    /** The position of the icon if it is passed. */
+    /** Describes the position of the icon with respect to body. Options include left and right.
+    * This value defaults to left. */
     iconPosition: PropTypes.oneOf([
         'left', 'right',
     ]),
+    /** The variant changes the appearance of the badge. Accepted variants include base,
+    * default, inverse and lightest. This value defaults to default. */
+    variant: PropTypes.oneOf([
+        'default', 'inverse', 'lightest',
+    ]),
+    /** A CSS class for the outer element, in addition to the component's base classes. */
+    className: PropTypes.string,
+    /** An object with custom style applied to the outer element. */
+    style: PropTypes.object,
 };
 
 Badge.defaultProps = {
-    className: undefined,
-    style: {},
-    variant: 'default',
+    label: null,
     iconName: '',
     iconPosition: 'left',
-    label: null,
+    variant: 'default',
+    className: undefined,
+    style: {},
 };

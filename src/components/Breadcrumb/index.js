@@ -26,21 +26,21 @@ export default function Breadcrumb(props) {
 }
 
 Breadcrumb.propTypes = {
-    /** The class name of the root element. */
-    className: PropTypes.string,
-    /** It is an object with custom style applied to the root element. */
-    style: PropTypes.object,
-    /** The href of the anchor */
-    href: PropTypes.string,
-    /** Label for the breadcrumb */
+    /** The text label for the breadcrumb. */
     label: PropTypes.string.isRequired,
-    /** Callback function fired when the breadcrumb is clicked */
+    /** The URL of the page that the breadcrumb goes to. */
+    href: PropTypes.string,
+    /** The action triggered when the breadcrumb is clicked. */
     onClick: PropTypes.func,
+    /** A CSS class for the outer element, in addition to the component's base classes. */
+    className: PropTypes.string,
+    /** An object with custom style applied to the outer element. */
+    style: PropTypes.object,
 };
 
 Breadcrumb.defaultProps = {
-    className: undefined,
-    style: {},
     href: 'javascript:void(0);',
     onClick: () => {},
+    className: undefined,
+    style: {},
 };

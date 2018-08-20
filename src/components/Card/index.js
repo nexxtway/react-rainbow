@@ -45,33 +45,37 @@ export default function Card(props) {
 }
 
 Card.propTypes = {
-    /** Class for custom styles */
-    className: PropTypes.string,
-    /** Object with the custom styles. The properties must be in camelCase naming
-     convention (e.g. { backgroundColor: green }) */
-    style: PropTypes.object,
+    /** The title can include text or another component, and is displayed in the header. */
+    title: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]).isRequired,
+    /** The Lightning Design System name of the icon used as a fallback when
+    * the image fails to load. Names are written in the format {sprite_name}:{icon_name}
+    * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed.
+    * The icon is displayed in the header to the left of the title */
+    iconName: PropTypes.string,
     /** Actions are components such as button or buttonIcon. Actions are displayed in the header. */
     actions: PropTypes.node,
     /** The body of the component. In markup, this is everything in the body of the card */
     children: PropTypes.node,
     /** The footer can include text or another component */
-    footer: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** The Lightning Design System name of the icon. Names are written in the
-     format '\utility:down\' where 'utility' is the category, and 'down' is the
-     specific icon to be displayed. The icon is displayed in the header to the left of the title */
-    iconName: PropTypes.string,
-    /** The title can include text or another component, and is displayed in the header */
-    title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+    footer: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
     /** If is set to true, then is showed a loading symbol. */
     isLoading: PropTypes.bool,
+    /** A CSS class for the outer element, in addition to the component's base classes. */
+    className: PropTypes.string,
+    /** An object with custom style applied to the outer element. */
+    style: PropTypes.object,
 };
 
 Card.defaultProps = {
-    className: undefined,
-    style: {},
+    iconName: '',
     actions: null,
     children: null,
     footer: null,
-    iconName: '',
     isLoading: false,
+    className: undefined,
+    style: {},
 };

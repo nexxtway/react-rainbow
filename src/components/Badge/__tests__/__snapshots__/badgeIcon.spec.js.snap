@@ -2,7 +2,7 @@
 
 exports[`<BadgeIcon/> in the Badge component should have the right class names when the label is not passed 1`] = `
 <span
-  className="slds-icon_container"
+  className="slds-icon_container slds-align_absolute-center"
   style={Object {}}
 >
   <svg
@@ -20,7 +20,7 @@ exports[`<BadgeIcon/> in the Badge component should have the right class names w
 
 exports[`<BadgeIcon/> in the Badge component should have the right class names when the label is passed and iconPosition is left 1`] = `
 <span
-  className="slds-icon_container slds-m-right_xx-small"
+  className="slds-icon_container slds-align_absolute-center slds-m-right_xx-small"
   style={Object {}}
 >
   <svg
@@ -38,7 +38,7 @@ exports[`<BadgeIcon/> in the Badge component should have the right class names w
 
 exports[`<BadgeIcon/> in the Badge component should have the right class names when the label is passed and iconPosition is right 1`] = `
 <span
-  className="slds-icon_container slds-m-left_xx-small"
+  className="slds-icon_container slds-align_absolute-center slds-m-left_xx-small"
   style={Object {}}
 >
   <svg

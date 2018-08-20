@@ -3,7 +3,7 @@
 exports[`<ButtonIcon/> should have the right class names 1`] = `
 <button
   aria-haspopup={false}
-  className="slds-button slds-button_icon"
+  className="slds-align_absolute-center slds-button slds-button_icon"
   data-id="button-icon-element"
   disabled={false}
   onBlur={[Function]}
@@ -17,7 +17,7 @@ exports[`<ButtonIcon/> should have the right class names 1`] = `
 exports[`<ButtonIcon/> should have the right class names when variant is base and size is large 1`] = `
 <button
   aria-haspopup={false}
-  className="slds-button slds-button_icon"
+  className="slds-align_absolute-center slds-button slds-button_icon"
   data-id="button-icon-element"
   disabled={false}
   onBlur={[Function]}
@@ -42,7 +42,7 @@ exports[`<ButtonIcon/> should have the right class names when variant is base an
 exports[`<ButtonIcon/> should have the right class names when variant is base and size is medium 1`] = `
 <button
   aria-haspopup={false}
-  className="slds-button slds-button_icon"
+  className="slds-align_absolute-center slds-button slds-button_icon"
   data-id="button-icon-element"
   disabled={false}
   onBlur={[Function]}
@@ -67,7 +67,7 @@ exports[`<ButtonIcon/> should have the right class names when variant is base an
 exports[`<ButtonIcon/> should have the right class names when variant is base and size is small 1`] = `
 <button
   aria-haspopup={false}
-  className="slds-button slds-button_icon"
+  className="slds-align_absolute-center slds-button slds-button_icon"
   data-id="button-icon-element"
   disabled={false}
   onBlur={[Function]}
@@ -92,7 +92,7 @@ exports[`<ButtonIcon/> should have the right class names when variant is base an
 exports[`<ButtonIcon/> should have the right class names when variant is base and size is x-small 1`] = `
 <button
   aria-haspopup={false}
-  className="slds-button slds-button_icon"
+  className="slds-align_absolute-center slds-button slds-button_icon"
   data-id="button-icon-element"
   disabled={false}
   onBlur={[Function]}
@@ -117,7 +117,7 @@ exports[`<ButtonIcon/> should have the right class names when variant is base an
 exports[`<ButtonIcon/> should have the right class names when variant is base and size is xx-small 1`] = `
 <button
   aria-haspopup={false}
-  className="slds-button slds-button_icon"
+  className="slds-align_absolute-center slds-button slds-button_icon"
   data-id="button-icon-element"
   disabled={false}
   onBlur={[Function]}
@@ -142,7 +142,7 @@ exports[`<ButtonIcon/> should have the right class names when variant is base an
 exports[`<ButtonIcon/> should have the right class names when variant is border and size is x-small 1`] = `
 <button
   aria-haspopup={false}
-  className="slds-button slds-button_icon slds-button_icon-border slds-button_icon-x-small"
+  className="slds-align_absolute-center slds-button slds-button_icon slds-button_icon-border slds-button_icon-x-small"
   data-id="button-icon-element"
   disabled={false}
   onBlur={[Function]}
@@ -156,7 +156,7 @@ exports[`<ButtonIcon/> should have the right class names when variant is border 
 exports[`<ButtonIcon/> should have the right class names when variant is border-filled and have a custom class 1`] = `
 <button
   aria-haspopup={false}
-  className="slds-button slds-button_icon slds-button_icon-border-filled my-custom-class-name"
+  className="slds-align_absolute-center slds-button slds-button_icon slds-button_icon-border-filled my-custom-class-name"
   data-id="button-icon-element"
   disabled={false}
   onBlur={[Function]}
@@ -170,7 +170,7 @@ exports[`<ButtonIcon/> should have the right class names when variant is border-
 exports[`<ButtonIcon/> should have the right class names when variant is border-inverse and size is small 1`] = `
 <button
   aria-haspopup={false}
-  className="slds-button slds-button_icon slds-button_icon-border-inverse slds-button_icon-small"
+  className="slds-align_absolute-center slds-button slds-button_icon slds-button_icon-border-inverse slds-button_icon-small"
   data-id="button-icon-element"
   disabled={false}
   onBlur={[Function]}
@@ -184,7 +184,7 @@ exports[`<ButtonIcon/> should have the right class names when variant is border-
 exports[`<ButtonIcon/> should have the right class names when variant is brand and size is xx-small 1`] = `
 <button
   aria-haspopup={false}
-  className="slds-button slds-button_icon slds-button_icon-brand slds-button_icon-xx-small"
+  className="slds-align_absolute-center slds-button slds-button_icon slds-button_icon-brand slds-button_icon-xx-small"
   data-id="button-icon-element"
   disabled={false}
   onBlur={[Function]}
@@ -198,7 +198,7 @@ exports[`<ButtonIcon/> should have the right class names when variant is brand a
 exports[`<ButtonIcon/> should have the right class names when variant is container 1`] = `
 <button
   aria-haspopup={false}
-  className="slds-button slds-button_icon slds-button_icon-container"
+  className="slds-align_absolute-center slds-button slds-button_icon slds-button_icon-container"
   data-id="button-icon-element"
   disabled={false}
   onBlur={[Function]}
@@ -212,7 +212,7 @@ exports[`<ButtonIcon/> should have the right class names when variant is contain
 exports[`<ButtonIcon/> should have the right class names when variant is inverse and size is large 1`] = `
 <button
   aria-haspopup={false}
-  className="slds-button slds-button_icon slds-button_icon-inverse"
+  className="slds-align_absolute-center slds-button slds-button_icon slds-button_icon-inverse"
   data-id="button-icon-element"
   disabled={false}
   onBlur={[Function]}

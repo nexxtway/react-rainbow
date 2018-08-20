@@ -15,7 +15,7 @@ function BadgeIcon(props) {
     };
 
     if (isVisible) {
-        return <Icon size="xx-small" iconName={iconName} className={getIconClassName()} />;
+        return <Icon size="xx-small" iconName={iconName} className={['slds-align_absolute-center', getIconClassName()]} />;
     }
     return null;
 }

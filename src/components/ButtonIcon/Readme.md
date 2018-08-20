@@ -13,18 +13,12 @@ button icon base
         <div className="slds-m-horizontal_medium">
             <ButtonIcon iconName="utility:clear" size="x-small" />
         </div>
-        <div className="slds-m-horizontal_medium">
-            <ButtonIcon iconName="utility:ban" size="xx-small" />
-        </div>
     </div>
 
 
 button icon border
 
     <div className="slds-p-vertical_large slds-p-left_medium slds-grid slds-media_center slds-wrap">
-        <div className="slds-m-horizontal_medium">
-            <ButtonIcon iconName="utility:settings" variant="border" size="large" />
-        </div>
         <div className="slds-m-horizontal_medium">
             <ButtonIcon iconName="utility:broadcast" variant="border" size="medium" />
         </div>

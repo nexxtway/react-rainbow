@@ -32,45 +32,54 @@ export default function Avatar(props) {
 }
 
 Avatar.propTypes = {
-    /** The class name of the root element. */
-    className: PropTypes.string,
-    /** It is an object with custom style applied to the root element. */
-    style: PropTypes.object,
-    /** Is the avatar source path. Its value is the relative URL to the image.
-     It take precedence over the initials and icon */
+    /** The URL for the image.
+    It take precedence over the initials and icon */
     src: PropTypes.string,
-    /** The variant of the avatar. */
-    variant: PropTypes.oneOf(['default', 'circle']),
-    /** It is a string to show the initials. If the string passed have more than two letters
-     only will be showed the two first. It take precedence over the icon. */
+    /** If the record name contains two words, like first and last name,
+    * use the first capitalized letter of each. For records that only have a single word name,
+    * use the first two letters of that word using one capital and one lower case letter. */
     initials: PropTypes.string,
-    /** The variant of the initials. Only make sense when initials is used. */
-    initialsVariant: PropTypes.oneOf(['default', 'inverse']),
-    /** The icon name. It have the less precedence. It take the following format:
-     ‘sprite name:icon name’ e.g. ‘utility:add’ */
+    /** The Lightning Design System name of the icon used as a fallback when
+    * the image fails to load. Names are written in the format {sprite_name}:{icon_name}
+    * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed.
+    * Only utility icons can be used in this component. */
     iconName: PropTypes.string,
-    /** The icon size. */
+    /** The variant changes the shape of the avatar. Valid values are empty,
+    * default, and circle. This value defaults to default. */
+    variant: PropTypes.oneOf([
+        'default', 'circle',
+    ]),
+    /** The size of the avatar. Valid values are x-small, small, medium, and large.
+    * This value defaults to medium */
     size: PropTypes.oneOf([
         'x-small',
         'small',
         'medium',
         'large',
     ]),
-    /** This is a description that is showed when a user hover the avatar */
+    /** The variant of the initials. Only make sense when initials is used. */
+    initialsVariant: PropTypes.oneOf([
+        'default', 'inverse',
+    ]),
+    /** Displays tooltip text when the mouse moves over the element. */
     title: PropTypes.string,
-    /** Description for assistive sreen readers */
+    /** A description for assistive sreen readers */
     assistiveText: PropTypes.string,
+    /** A CSS class for the outer element, in addition to the component's base classes. */
+    className: PropTypes.string,
+    /** An object with custom style applied to the outer element. */
+    style: PropTypes.object,
 };
 
 Avatar.defaultProps = {
-    className: undefined,
-    iconName: 'standard:user',
-    size: 'medium',
-    variant: 'default',
     src: undefined,
     initials: undefined,
+    iconName: 'standard:user',
+    variant: 'default',
+    size: 'medium',
     initialsVariant: 'default',
-    style: {},
     title: undefined,
     assistiveText: undefined,
+    className: undefined,
+    style: {},
 };
