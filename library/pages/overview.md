@@ -8,12 +8,14 @@
 
 __installing with npm__
 
+![](images/header-terminal.svg)
 ```sh
 $ npm install @react-lightning-components
 ```
 
 __installing with npm__
 
+![](images/header-terminal.svg)
 ```sh
 $ npm install --save husky lint-staged prettier
 ```

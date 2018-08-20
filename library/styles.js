@@ -75,6 +75,7 @@ module.exports = {
             borderBottomLeftRadius: '10px',
             borderBottomRightRadius: '10px',
             overflow: 'auto',
+            marginTop: -5,
         },
     },
 };
