@@ -1,6 +1,7 @@
 /* eslint-disable */
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const version = require("./package.json").version;
 const styles = require('./library/styles');
 
 module.exports = {
@@ -9,7 +10,7 @@ module.exports = {
     skipComponentsWithoutExample: true,
     pagePerSection: true,
     title: 'React Lightning Components',
-    version: 'v.0.0.5',
+    version,
     require: [
         path.resolve(__dirname, 'assets/styles/salesforce-lightning-design-system.css'),
         path.resolve(__dirname, 'library/setup.js')

@@ -5,7 +5,8 @@
         "react",
         "jest",
         "jsx-a11y",
-        "import"
+        "import",
+        "webdriverio"
     ],
     "rules": {
         "indent": [2, 4],
@@ -20,7 +21,8 @@
         "es6": true,
         "node": true,
         "browser": true,
-        "jest/globals": true
+        "jest/globals": true,
+        "webdriverio/wdio": true
     },
     "parser": "babel-eslint",
     "parserOptions": {

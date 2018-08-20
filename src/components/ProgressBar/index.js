@@ -48,29 +48,38 @@ export default function ProgressBar(props) {
 }
 
 ProgressBar.propTypes = {
-    /** Class for custom styles */
-    className: PropTypes.string,
-    /** Object with the custom styles. The properties must be in camelCase naming
-     convention (e.g. { backgroundColor: green }) */
-    style: PropTypes.object,
-    /** Description for assistive screen reader */
-    assistiveText: PropTypes.string,
-    /** The size of the progress bar height */
-    size: PropTypes.oneOf(['large', 'medium', 'small', 'x-small']),
-    /** It is the current value of the progress bar. It must be between 0 and 100 */
+    /** The percentage value of the progress bar. It must be between 0 and 100 */
     value: PropTypes.number,
-    /** It is the progress bar variant */
-    variant: PropTypes.oneOf(['default', 'circular']),
-    /** It is the progress bar color */
-    color: PropTypes.oneOf(['brand', 'success']),
+    /** The size of the progress bar. Valid values are x-small, small, medium, and large.
+    * The default value is medium. */
+    size: PropTypes.oneOf([
+        'x-small',
+        'small',
+        'medium',
+        'large',
+    ]),
+    /** It is the progress bar color. The default value is brand. */
+    color: PropTypes.oneOf([
+        'brand', 'success',
+    ]),
+    /** The variant of the progress bar. Valid values are default and circular. */
+    variant: PropTypes.oneOf([
+        'default', 'circular',
+    ]),
+    /** A description for assistive sreen readers */
+    assistiveText: PropTypes.string,
+    /** A CSS class for the outer element, in addition to the component's base classes. */
+    className: PropTypes.string,
+    /** An object with custom style applied to the outer element. */
+    style: PropTypes.object,
 };
 
 ProgressBar.defaultProps = {
-    className: '',
-    style: {},
-    size: 'medium',
     value: 0,
+    size: 'medium',
+    color: 'brand',
     variant: 'default',
     assistiveText: '',
-    color: 'brand',
+    className: '',
+    style: {},
 };

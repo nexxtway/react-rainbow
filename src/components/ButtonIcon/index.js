@@ -54,17 +54,29 @@ export default class ButtonIcon extends Component {
 
     getButtonClassNames() {
         const { className } = this.props;
-        return classnames('slds-button', 'slds-button_icon', this.getVariantClassName(), this.getButtonSizeClassName(), className);
+        return classnames('slds-align_absolute-center', 'slds-button', 'slds-button_icon', this.getVariantClassName(), this.getButtonSizeClassName(), className);
     }
 
-    click() {
-        this.button.click();
-    }
-
+    /**
+    * Sets focus on the element.
+    * @public
+    */
     focus() {
         this.button.focus();
     }
 
+    /**
+    * Sets click on the element.
+    * @public
+    */
+    click() {
+        this.button.click();
+    }
+
+    /**
+    * Sets blur on the element.
+    * @public
+    */
     blur() {
         this.button.blur();
     }
@@ -106,46 +118,26 @@ export default class ButtonIcon extends Component {
 }
 
 ButtonIcon.propTypes = {
-    /** The class name of the root element. */
-    className: PropTypes.string,
-    /** It is an object with custom style applied to the root element. */
-    style: PropTypes.object,
-    /** Indicates that the element has a popup context menu or sub-level menu. It is
-     used for srceen readers. */
-    ariaHaspopup: PropTypes.bool,
-    /** The variant for the button with predefined styles. */
+    /** The variant changes the appearance of buttonIcon. Accepted variants include base,
+    *  brand, border, border-filled, border-inverse, inverse and container.
+    * This value defaults to base. */
     variant: PropTypes.oneOf([
         'base',
+        'brand',
+        'border',
         'border-filled',
         'border-inverse',
-        'border',
-        'brand',
         'inverse',
         'container',
     ]),
-    /** Disables the button if set to true. */
-    disabled: PropTypes.bool,
-    /** Tab index */
-    tabIndex: PropTypes.number,
-    /** Event fired when the button is clicked. */
-    onClick: PropTypes.func,
-    /** Event fired when the button is focused. */
-    onFocus: PropTypes.func,
-    /** Event fired when the button is blurred. */
-    onBlur: PropTypes.func,
-    /** This is a description that is showed when a user hover the button. */
-    title: PropTypes.string,
-    /** The type of the button. */
-    type: PropTypes.oneOf([
-        'button', 'submit', 'reset',
-    ]),
-    /** The name of the icon. Names are written in the
-     format '\utility:down\' where 'utility' is the category, and 'down' is the
-     specific icon to be displayed. */
+    /** The Lightning Design System name of the icon used as a fallback when
+    * the image fails to load. Names are written in the format {sprite_name}:{icon_name}
+    * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed.
+    * Only utility icons can be used in this component. */
     iconName: PropTypes.string.isRequired,
-    /** Description for assistive sreen readers */
-    assistiveText: PropTypes.string,
-    /** The button icon size. */
+    /** The size of the buttonIcon. For the base variant, options include x-small, small, medium,
+    * and large. For non-base variants, options include xx-small, x-small, small, and medium.
+    * This value defaults to medium. */
     size: PropTypes.oneOf([
         'xx-small',
         'x-small',
@@ -153,20 +145,46 @@ ButtonIcon.propTypes = {
         'medium',
         'large',
     ]),
+    /** Displays tooltip text when the mouse moves over the element. */
+    title: PropTypes.string,
+    /** Specifies the type of button. Valid values are button, reset, and submit.
+    * This value defaults to button. */
+    type: PropTypes.oneOf([
+        'button', 'submit', 'reset',
+    ]),
+    /** Specifies whether this button should be displayed in a disabled state.
+    * Disabled buttons can't be clicked. This value defaults to false. */
+    disabled: PropTypes.bool,
+    /** Specifies the tab order of an element (when the tab button is used for navigating). */
+    tabIndex: PropTypes.number,
+    /** The action that will be run when the button is clicked. */
+    onClick: PropTypes.func,
+    /** The action triggered when the element receives focus. */
+    onFocus: PropTypes.func,
+    /** The action triggered when the element releases focus. */
+    onBlur: PropTypes.func,
+    /** A description for assistive sreen readers */
+    assistiveText: PropTypes.string,
+    /** Indicates that the element has a popup context menu or sub-level menu. */
+    ariaHaspopup: PropTypes.bool,
+    /** A CSS class for the outer element, in addition to the component's base classes. */
+    className: PropTypes.string,
+    /** An object with custom style applied to the outer element. */
+    style: PropTypes.object,
 };
 
 ButtonIcon.defaultProps = {
-    className: undefined,
-    style: {},
-    ariaHaspopup: false,
     variant: 'base',
+    size: 'medium',
+    title: undefined,
+    type: 'button',
     disabled: false,
     tabIndex: undefined,
     onClick: () => {},
     onFocus: () => {},
     onBlur: () => {},
-    title: undefined,
-    type: 'button',
     assistiveText: undefined,
-    size: 'medium',
+    ariaHaspopup: false,
+    className: undefined,
+    style: {},
 };

@@ -21,3 +21,6 @@ package-lock.json
 components
 !/src/components
 styleguide
+errorShots
+allure-results
+junit-results

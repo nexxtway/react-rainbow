@@ -62,23 +62,13 @@ export default function Icon(props) {
 }
 
 Icon.propTypes = {
-    /** The class name of the root element. */
-    className: PropTypes.string,
-    /** The class name of the svg element. */
-    svgClassName: PropTypes.string,
-    /** It is an object with custom style applied to the root element. */
-    style: PropTypes.object,
-    /** It is an object with custom style applied to the svg element. */
-    svgStyle: PropTypes.object,
-    /** The icon name. It is required. It take the following format:
-     ‘sprite name:icon name’ e.g. ‘utility:add’. */
+    /** The Lightning Design System name of the icon used as a fallback when
+    * the image fails to load. Names are written in the format {sprite_name}:{icon_name}
+    * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed.
+    * The icon is displayed in the header to the left of the title */
     iconName: PropTypes.string.isRequired,
-    /** The title that is showed when a user hover the icon. It is necessary
-     if the icon sits alone and a sighted user might need to hover for a description. */
-    title: PropTypes.string,
-     /** Description for assistive screen readers if is required. */
-    assistiveText: PropTypes.string,
-    /** The icon size. The sizes xx-small and x-small only afect the utility and doctype sprite */
+    /** The size of the icon. Options include xx-small, x-small, small, medium, or large.
+    * This value defaults to medium. */
     size: PropTypes.oneOf([
         'xx-small',
         'x-small',
@@ -86,13 +76,27 @@ Icon.propTypes = {
         'medium',
         'large',
     ]),
-    /** The icon variant. Only make sense for utility sprite */
+    /** The variant changes the appearance of a utility icon.
+    * Accepted variants include default, light, warning, and error.
+    * Use the light variant to implement a white fill in utility icons on dark backgrounds. */
     variant: PropTypes.oneOf([
         'default',
         'light',
         'error',
         'warning',
     ]),
+    /** Displays tooltip text when the mouse moves over the element. */
+    title: PropTypes.string,
+    /** A description for assistive sreen readers */
+    assistiveText: PropTypes.string,
+    /** It is an object with custom style applied to the svg element. */
+    svgStyle: PropTypes.object,
+    /** A CSS class for the outer element, in addition to the component's base classes. */
+    className: PropTypes.string,
+    /** A CSS class for the  svg element. */
+    svgClassName: PropTypes.string,
+    /** An object with custom style applied to the outer element. */
+    style: PropTypes.object,
 };
 
 Icon.defaultProps = {

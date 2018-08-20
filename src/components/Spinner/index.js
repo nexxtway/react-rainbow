@@ -43,25 +43,35 @@ export default function Spinner(props) {
 }
 
 Spinner.propTypes = {
-    /** The class name of the root element. */
-    className: PropTypes.string,
-    /** It is an object with custom style applied to the root element. */
-    style: PropTypes.object,
-    /** Description for assistive sreen readers */
-    assistiveText: PropTypes.string,
+    /** The variant changes the appearance of the spinner.
+    * Accepted variants are base, brand, and inverse. This value defaults to base. */
+    variant: PropTypes.oneOf([
+        'base', 'brand', 'inverse',
+    ]),
+    /** The size of the spinner. Accepted sizes are small, medium, and large.
+    * This value defaults to medium. */
+    size: PropTypes.oneOf([
+        'xx-small',
+        'x-small',
+        'small',
+        'medium',
+        'large',
+    ]),
     /** Show/Hide the spinner */
     isVisible: PropTypes.bool,
-    /** The size of the spinner */
-    size: PropTypes.oneOf(['large', 'medium', 'small', 'x-small', 'xx-small']),
-    /** The variant of the spinner */
-    variant: PropTypes.oneOf(['base', 'brand', 'inverse']),
+    /** A description for assistive sreen readers */
+    assistiveText: PropTypes.string,
+    /** A CSS class for the outer element, in addition to the component's base classes. */
+    className: PropTypes.string,
+    /** An object with custom style applied to the outer element. */
+    style: PropTypes.object,
 };
 
 Spinner.defaultProps = {
+    variant: 'base',
+    size: 'medium',
+    isVisible: true,
+    assistiveText: null,
     className: undefined,
     style: {},
-    assistiveText: null,
-    isVisible: true,
-    size: 'medium',
-    variant: 'base',
 };

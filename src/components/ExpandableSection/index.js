@@ -59,10 +59,9 @@ export default class ExpandableSection extends Component {
 }
 
 ExpandableSection.propTypes = {
-    /** Class for custom styles */
+    /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
-    /** Object with the custom styles. The properties must be in camelCase naming
-     convention (e.g. { backgroundColor: green }) */
+    /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
     /** It tells if the section is expanded initially. This value only change the
      state of the section one time */

@@ -27,13 +27,14 @@ export default function IconSvg(props) {
 }
 
 IconSvg.propTypes = {
-    /** The class name of the root element. */
-    className: PropTypes.string,
-    /** It is an object with custom style applied to the root element. */
-    style: PropTypes.object,
-    /** The icon name. It is required and will take the following format:
-     ‘sprite_name:icon_name’ e.g. ‘utility:log_a_call’. */
+    /** The Lightning Design System name of the icon used as a fallback when
+    * the image fails to load. Names are written in the format {sprite_name}:{icon_name}
+    * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed. */
     iconName: PropTypes.string.isRequired,
+    /** A CSS class for the outer element, in addition to the component's base classes. */
+    className: PropTypes.string,
+    /** An object with custom style applied to the outer element. */
+    style: PropTypes.object,
 };
 
 IconSvg.defaultProps = {

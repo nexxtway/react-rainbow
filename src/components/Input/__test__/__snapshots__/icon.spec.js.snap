@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Icon/> in the Input component should have the right class names when isVisible and the iconPosition is left 1`] = `
+<svg
+  aria-hidden={true}
+  className="slds-icon slds-input__icon slds-icon-text-default slds-input__icon_undefined"
+  style={Object {}}
+>
+  <use
+    xlinkHref="/icons/utility-sprite/svg/symbols.svg#activity"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+  />
+</svg>
+`;
+
+exports[`<Icon/> in the Input component should have the right class names when isVisible and the iconPosition is right 1`] = `
+<svg
+  aria-hidden={true}
+  className="slds-icon slds-input__icon slds-icon-text-default slds-input__icon_undefined"
+  style={Object {}}
+>
+  <use
+    xlinkHref="/icons/utility-sprite/svg/symbols.svg#activity"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+  />
+</svg>
+`;
