@@ -4,9 +4,38 @@
 
 .react-slds-sidebar {
     min-height: 100vh;
+    width: 250px;
 }
 
 .react-slds-main-content {
     background-color: #f4f6f9;
     min-height: 100vh;
+    max-width: calc(100vw - 250px);
+    padding: 24px 64px;
+    margin-left: 250px;
+}
+
+@media (max-width: 800px) {
+    .react-slds-sidebar {
+        width: 200px;
+    }
+    .react-slds-main-content {
+        max-width: calc(100vw - 200px);
+        padding: 24px;
+        margin-left: 200px;
+    }
+}
+
+@media (max-width: 600px) {
+    .slds-react-styleguide-container {
+        flex-direction: column-reverse;
+    }
+    .react-slds-sidebar {
+        width: 100vw;
+    }
+    .react-slds-main-content {
+        max-width: 100vw;
+        padding: 16px;
+        margin-left: 0;
+    }
 }
