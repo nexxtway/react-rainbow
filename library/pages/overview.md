@@ -1,6 +1,4 @@
-<br>
-React Lightning Components  are react components  that implement Lightning Design System.
-<br>
+### React Lightning Components  are react components  that implement Lightning Design System.
 
 ## Install
 
