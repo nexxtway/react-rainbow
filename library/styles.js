@@ -56,11 +56,7 @@ module.exports = {
     },
     Code: {
         code: {
-            fontWeight: 'normal',
-            fontStyle: 'normal',
-            fontStretch: 'normal',
             lineHeight: 1.5,
-            letterSpacing: 'normal',
             color: '#2b2826',
             padding: 0,
         },
