@@ -11,7 +11,7 @@ __installing with npm__
 ![](images/windows-actions.svg)
 ######  
 ```sh
-  $ npm install @react-lightning-components
+  $ npm install react-slds --save
 ```
 
 __installing with npm__
@@ -19,7 +19,7 @@ __installing with npm__
 ![](images/windows-actions.svg)
 ######  
 ```sh
-  $ npm install --save husky lint-staged prettier
+  $ yarn add react-slds
 ```
 
 ## Project Overview

@@ -25,11 +25,11 @@ module.exports = {
             fontFamily: 'inherit',
         },
         heading6: {
-            height: '32px',
+            height: '34px',
             backgroundColor: '#04132c',
             color: '#04132c',
             borderRadius: '10px 10px 0 0',
-            marginTop: -26,
+            marginTop: -25,
         },
     },
     Link: {
