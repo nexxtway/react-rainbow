@@ -3,10 +3,8 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import IconSvg from '../IconSvg';
 
-
 export default function Icon(props) {
     const {
-        isVisible,
         iconName,
         position,
         error,
@@ -14,7 +12,7 @@ export default function Icon(props) {
 
     const getIconClassNames = () => {
         if (error) {
-            return 'slds-input__icon';
+            return `slds-input__icon slds-input__icon_${position}`;
         }
         return classnames(
             'slds-icon slds-input__icon slds-icon-text-default',
@@ -22,19 +20,19 @@ export default function Icon(props) {
         );
     };
 
-    if (isVisible) {
+    if (iconName) {
         return <IconSvg iconName={iconName} className={getIconClassNames()} />;
     }
     return null;
 }
 
 Icon.propTypes = {
-    iconName: PropTypes.string.isRequired,
-    isVisible: PropTypes.bool,
+    iconName: PropTypes.string,
+    error: PropTypes.node,
     position: PropTypes.string.isRequired,
-    error: PropTypes.node.isRequired,
 };
 
 Icon.defaultProps = {
-    isVisible: false,
+    iconName: undefined,
+    error: null,
 };

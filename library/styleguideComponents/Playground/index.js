@@ -26,7 +26,6 @@ export default function PlaygroundRenderer(props) {
 }
 
 PlaygroundRenderer.propTypes = {
-    classes: PropTypes.object.isRequired,
     name: PropTypes.string.isRequired,
     preview: PropTypes.node.isRequired,
     previewProps: PropTypes.object.isRequired,

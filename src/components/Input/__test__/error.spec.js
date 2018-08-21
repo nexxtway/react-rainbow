@@ -2,17 +2,26 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Error from './../error';
 
-describe('<Error/> in the Input component', () => {
-    it('should not render a div element when error is null', () => {
+describe('<InputError/>', () => {
+    it('should not render the error when it is not passed', () => {
         const component = mount(
-            <Error error={null} />,
+            <Error />,
         );
-        expect(component.find('div').exists()).toBe(false);
+        expect(component.find('div[className="slds-form-element__help"]').exists()).toBe(false);
     });
-    it('should render a div element when error is not null', () => {
+    it('should render the error passed', () => {
         const component = mount(
             <Error error="Error text" />,
         );
-        expect(component.find('div').exists()).toBe(true);
+        const error = component.find('div[className="slds-form-element__help"]');
+        expect(error.exists()).toBe(true);
+        expect(error.text()).toBe('Error text');
+    });
+    it('should set the id passed as the id prop in the error container element', () => {
+        const component = mount(
+            <Error error="Error text" id="error-message-125" />,
+        );
+        const error = component.find('div[className="slds-form-element__help"]');
+        expect(error.prop('id')).toBe('error-message-125');
     });
 });

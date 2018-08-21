@@ -2,17 +2,19 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Help from './../help';
 
-describe('<Help/> in the Input component', () => {
-    it('should not render a div element when text is null', () => {
+describe('<InputHelp/>', () => {
+    it('should not render the help text when it is not passed', () => {
         const component = mount(
-            <Help text={null} />,
+            <Help />,
         );
-        expect(component.find('div').exists()).toBe(false);
+        expect(component.find('div[className="slds-form-element__help slds-color__text_gray-11"]').exists()).toBe(false);
     });
-    it('should render a div element when text is not null', () => {
+    it('should render the help text passed', () => {
         const component = mount(
             <Help text="Help text" />,
         );
-        expect(component.find('div').exists()).toBe(true);
+        const help = component.find('div[className="slds-form-element__help slds-color__text_gray-11"]');
+        expect(help.exists()).toBe(true);
+        expect(help.text()).toBe('Help text');
     });
 });
