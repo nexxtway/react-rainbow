@@ -3,14 +3,16 @@
 }
 
 .react-slds-sidebar {
-    min-height: 100vh;
     width: 250px;
+    height: 100%;
+    position: fixed;
+    overflow-y: auto;
 }
 
 .react-slds-main-content {
     background-color: #f4f6f9;
     min-height: 100vh;
-    max-width: calc(100vw - 250px);
+    width: calc(100vw - 250px);
     padding: 24px 64px;
     margin-left: 250px;
 }
@@ -20,7 +22,7 @@
         width: 200px;
     }
     .react-slds-main-content {
-        max-width: calc(100vw - 200px);
+        width: calc(100vw - 200px);
         padding: 24px;
         margin-left: 200px;
     }
@@ -32,9 +34,10 @@
     }
     .react-slds-sidebar {
         width: 100vw;
+        position: initial;
     }
     .react-slds-main-content {
-        max-width: 100vw;
+        width: 100vw;
         padding: 16px;
         margin-left: 0;
     }

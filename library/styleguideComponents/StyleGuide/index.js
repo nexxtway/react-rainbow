@@ -13,9 +13,11 @@ export default function StyleGuide(props) {
 
     return (
         <div className="slds-grid slds-wrap slds-react-styleguide-container">
-            <aside className="react-slds-sidebar slds-is-fixed">
+            <aside className="react-slds-sidebar">
                 <Logo title={title} version={version} />
-                {toc}
+                <article className="react-slds-sidebar-navigation">
+                    {toc}
+                </article>
             </aside>
             <main className="react-slds-main-content">
                 {children}

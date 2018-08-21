@@ -2,22 +2,24 @@
 
 ## Install
 
-##### React-Lightning-Components is available as an [npm package]()
+##### React-Lightning-Components is available as an [npm package](https://www.npmjs.com/package/react-slds)
 
 ##### We recommend using npm or yarn to install, run:
 
 __installing with npm__
 
-![](images/header-terminal.svg)
+![](images/windows-actions.svg)
+######  
 ```sh
-$ npm install @react-lightning-components
+  $ npm install react-slds --save
 ```
 
 __installing with npm__
 
-![](images/header-terminal.svg)
+![](images/windows-actions.svg)
+######  
 ```sh
-$ npm install --save husky lint-staged prettier
+  $ yarn add react-slds
 ```
 
 ## Project Overview

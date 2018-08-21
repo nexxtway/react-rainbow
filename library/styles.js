@@ -24,18 +24,25 @@ module.exports = {
             color: '#5876a3',
             fontFamily: 'inherit',
         },
+        heading6: {
+            height: '34px',
+            backgroundColor: '#04132c',
+            color: '#04132c',
+            borderRadius: '10px 10px 0 0',
+            marginTop: -25,
+        },
     },
     Link: {
         link: {
             '&, &:link, &:visited': {
                 fontSize: 'inherit',
                 color: '#006dcc',
-                textDecoration: 'underline',
             },
             '&:hover, &:active': {
                 isolate: false,
                 color: '#005fb2',
                 cursor: 'pointer',
+                textDecoration: 'underline',
             },
         },
     },
@@ -57,21 +64,21 @@ module.exports = {
     Code: {
         code: {
             lineHeight: 1.5,
-            color: '#2b2826',
+            color: '#a2aab7',
             padding: 0,
         },
     },
     Pre: {
         pre: {
-            width: '522px',
-            backgroundColor: '#ffffff',
-            paddingTop: '13px',
-            paddingLeft: '25px',
+            width: '100%',
+            backgroundColor: '#061c3f',
+            paddingTop: '12px',
+            paddingLeft: '12px',
             paddingBottom: '48px',
-            borderBottomLeftRadius: '10px',
-            borderBottomRightRadius: '10px',
+            borderRadius: '0 0 5px 5px',
+            borderColor: '#061c3f',
             overflow: 'auto',
-            marginTop: -5,
+            marginTop: -20,
         },
     },
 };
