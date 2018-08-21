@@ -29,7 +29,7 @@ export default function ReactComponent(props) {
             </h2>
             {examples}
             <p className="slds-text-heading_medium slds-m-bottom_medium slds-react-component-title-text">
-                Property Details
+                Properties & Methods details
             </p>
             {tabBody}
         </div>
