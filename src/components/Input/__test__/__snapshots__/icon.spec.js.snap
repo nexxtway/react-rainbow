@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Icon/> in the Input component should have the right class names when isVisible and the iconPosition is left 1`] = `
+exports[`<InputIcon/> should have the right class names when iconName is passed and the position is left 1`] = `
 <svg
   aria-hidden={true}
-  className="slds-icon slds-input__icon slds-icon-text-default slds-input__icon_undefined"
+  className="slds-icon slds-input__icon slds-icon-text-default slds-input__icon_left"
   style={Object {}}
 >
   <use
@@ -13,10 +13,36 @@ exports[`<Icon/> in the Input component should have the right class names when i
 </svg>
 `;
 
-exports[`<Icon/> in the Input component should have the right class names when isVisible and the iconPosition is right 1`] = `
+exports[`<InputIcon/> should have the right class names when iconName is passed and the position is right 1`] = `
 <svg
   aria-hidden={true}
-  className="slds-icon slds-input__icon slds-icon-text-default slds-input__icon_undefined"
+  className="slds-icon slds-input__icon slds-icon-text-default slds-input__icon_right"
+  style={Object {}}
+>
+  <use
+    xlinkHref="/icons/utility-sprite/svg/symbols.svg#activity"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+  />
+</svg>
+`;
+
+exports[`<InputIcon/> should have the right class names when there is an error and the position is left 1`] = `
+<svg
+  aria-hidden={true}
+  className="slds-input__icon slds-input__icon_left"
+  style={Object {}}
+>
+  <use
+    xlinkHref="/icons/utility-sprite/svg/symbols.svg#activity"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+  />
+</svg>
+`;
+
+exports[`<InputIcon/> should have the right class names when there is an error and the position is right 1`] = `
+<svg
+  aria-hidden={true}
+  className="slds-input__icon slds-input__icon_right"
   style={Object {}}
 >
   <use

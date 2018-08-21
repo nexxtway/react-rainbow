@@ -5,26 +5,24 @@ exports[`<Input/> should have the right class names when error is passed 1`] = `
   className="slds-form-element slds-has-error"
   style={Object {}}
 >
-  <label
-    className="slds-form-element__label"
-    htmlFor="input-1"
-  />
   <div
     className="slds-form-element__control"
   >
     <input
+      aria-describedby="error-message-3"
       className="slds-input"
-      data-id="input-1"
       disabled={false}
+      id="input-1"
       onChange={[Function]}
       placeholder={null}
       readOnly={false}
-      required={false}
+      required={true}
       type="text"
     />
   </div>
   <div
     className="slds-form-element__help"
+    id="error-message-3"
   >
     Error text
   </div>
@@ -36,17 +34,13 @@ exports[`<Input/> should have the right class names when have a custom class 1`]
   className="slds-form-element my-custom-class-name"
   style={Object {}}
 >
-  <label
-    className="slds-form-element__label"
-    htmlFor="input-1"
-  />
   <div
     className="slds-form-element__control"
   >
     <input
       className="slds-input"
-      data-id="input-1"
       disabled={false}
+      id="input-1"
       onChange={[Function]}
       placeholder={null}
       readOnly={false}
@@ -62,10 +56,6 @@ exports[`<Input/> should have the right class names when iconName is passed 1`] 
   className="slds-form-element"
   style={Object {}}
 >
-  <label
-    className="slds-form-element__label"
-    htmlFor="input-1"
-  />
   <div
     className="slds-form-element__control slds-input-has-icon slds-input-has-icon_left"
   >
@@ -81,8 +71,40 @@ exports[`<Input/> should have the right class names when iconName is passed 1`] 
     </svg>
     <input
       className="slds-input"
-      data-id="input-1"
       disabled={false}
+      id="input-1"
+      onChange={[Function]}
+      placeholder={null}
+      readOnly={false}
+      required={false}
+      type="text"
+    />
+  </div>
+</div>
+`;
+
+exports[`<Input/> should have the right class names when iconName is passed and iconPosition is right 1`] = `
+<div
+  className="slds-form-element"
+  style={Object {}}
+>
+  <div
+    className="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+  >
+    <svg
+      aria-hidden={true}
+      className="slds-icon slds-input__icon slds-icon-text-default slds-input__icon_right"
+      style={Object {}}
+    >
+      <use
+        xlinkHref="/icons/utility-sprite/svg/symbols.svg#activity"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+      />
+    </svg>
+    <input
+      className="slds-input"
+      disabled={false}
+      id="input-1"
       onChange={[Function]}
       placeholder={null}
       readOnly={false}
@@ -98,17 +120,13 @@ exports[`<Input/> should have the right class names when isBare 1`] = `
   className="slds-form-element"
   style={Object {}}
 >
-  <label
-    className="slds-form-element__label"
-    htmlFor="input-1"
-  />
   <div
     className="slds-form-element__control"
   >
     <input
       className="slds-input slds-input_bare"
-      data-id="input-1"
       disabled={false}
+      id="input-1"
       onChange={[Function]}
       placeholder={null}
       readOnly={false}
@@ -124,43 +142,13 @@ exports[`<Input/> should have the right class names when isCentered 1`] = `
   className="slds-form-element"
   style={Object {}}
 >
-  <label
-    className="slds-form-element__label"
-    htmlFor="input-1"
-  />
   <div
     className="slds-form-element__control"
   >
     <input
       className="slds-input slds-input_counter"
-      data-id="input-1"
       disabled={false}
-      onChange={[Function]}
-      placeholder={null}
-      readOnly={false}
-      required={false}
-      type="text"
-    />
-  </div>
-</div>
-`;
-
-exports[`<Input/> should have the right class names when labelClassName is passed 1`] = `
-<div
-  className="slds-form-element"
-  style={Object {}}
->
-  <label
-    className="slds-form-element__label my-custom-label-class-name"
-    htmlFor="input-1"
-  />
-  <div
-    className="slds-form-element__control"
-  >
-    <input
-      className="slds-input"
-      data-id="input-1"
-      disabled={false}
+      id="input-1"
       onChange={[Function]}
       placeholder={null}
       readOnly={false}

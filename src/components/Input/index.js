@@ -1,14 +1,15 @@
-/* eslint-disable jsx-a11y/label-has-for */
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { uniqueId } from './../../libs/utils';
 import Icon from './icon';
 import Help from './help';
 import Error from './error';
-import RequiredAsterisk from './requiredAsterisk';
-import { uniqueId } from './../../libs/utils';
+import Label from './label';
 
 const inputId = uniqueId('input');
+const inlineTextLabelId = uniqueId('inline-text-label');
+const errorMessageId = uniqueId('error-message');
 
 export default function Input(props) {
     const {
@@ -34,46 +35,53 @@ export default function Input(props) {
         isBare,
         isCentered,
     } = props;
+    const isRequiredOrHasError = !!(required || error);
 
-    const getInputClassNames = () => classnames(
-            'slds-input',
-            { 'slds-input_bare': isBare, 'slds-input_counter': isCentered },
-    );
+    const getContainerClassNames = () => classnames('slds-form-element', {
+        'slds-has-error': error,
+    }, className);
 
-    const getLabelClassNames = () => classnames('slds-form-element__label', labelClassName);
+    const getFormControlClassNames = () => classnames('slds-form-element__control', {
+        'slds-input-has-icon': iconName,
+        [`slds-input-has-icon_${iconPosition}`]: iconName,
+    });
 
-    const getContainerClassNames = () => classnames(
-        'slds-form-element',
-        { 'slds-has-error': error },
-        className,
-    );
+    const getInputClassNames = () => classnames('slds-input', {
+        'slds-input_bare': isBare,
+        'slds-input_counter': isCentered,
+    });
 
-    const getIconContainerClassNames = () => {
-        if (iconName) {
-            return classnames('slds-input-has-icon', `slds-input-has-icon_${iconPosition}`);
+    const getInlineTextLabelId = () => {
+        if (bottomHelpText) {
+            return inlineTextLabelId;
         }
-        return null;
+        return undefined;
     };
 
-    const getFormControlClassNames = () => classnames('slds-form-element__control', getIconContainerClassNames());
+    const getErrorMessageId = () => {
+        if (error) {
+            return errorMessageId;
+        }
+        return undefined;
+    };
 
-    const isLeftIcon = iconName && iconPosition === 'left';
-    const isRightIcon = iconName && iconPosition === 'right';
     return (
         <div className={getContainerClassNames()} style={style}>
-            <label className={getLabelClassNames()} htmlFor={inputId}>
-                <RequiredAsterisk required={required} />
-                {label}
-            </label>
+            <Label
+                className={labelClassName}
+                label={label}
+                required={isRequiredOrHasError}
+                inputId={inputId}
+                id={getInlineTextLabelId()} />
+
             <div className={getFormControlClassNames()}>
                 <Icon
-                    data-id="input-left-icon"
-                    isVisible={isLeftIcon}
                     iconName={iconName}
                     position={iconPosition}
                     error={error} />
+
                 <input
-                    data-id={inputId}
+                    id={inputId}
                     type={type}
                     className={getInputClassNames()}
                     value={value}
@@ -82,19 +90,16 @@ export default function Input(props) {
                     tabIndex={tabIndex}
                     disabled={disabled}
                     readOnly={readOnly}
-                    required={required}
+                    required={isRequiredOrHasError}
                     maxLength={maxLength}
                     minLength={minLength}
-                    pattern={pattern} />
-                <Icon
-                    data-id="input-right-icon"
-                    isVisible={isRightIcon}
-                    iconName={iconName}
-                    position={iconPosition}
-                    error={error} />
-                <Help text={bottomHelpText} />
+                    pattern={pattern}
+                    aria-labelledby={getInlineTextLabelId()}
+                    aria-describedby={getErrorMessageId()} />
+
             </div>
-            <Error error={error} />
+            <Help text={bottomHelpText} />
+            <Error id={getErrorMessageId()} error={error} />
         </div>
     );
 }
@@ -110,12 +115,15 @@ Input.propTypes = {
     onChange: PropTypes.func,
     /** The input label */
     label: PropTypes.node,
+    /** The error to show below the input. */
     error: PropTypes.node,
     /** The placeholder of the input */
     placeholder: PropTypes.string,
     /** Disables the input if set to true. */
     disabled: PropTypes.bool,
+    /** If set to true the input is read only. */
     readOnly: PropTypes.bool,
+    /** If set to true the input is required. */
     required: PropTypes.bool,
     /** Tab index */
     tabIndex: PropTypes.number,
@@ -136,9 +144,13 @@ Input.propTypes = {
         'tel',
         'color',
     ]),
+    /** The max length of characters allowed by the input. */
     maxLength: PropTypes.number,
+    /** The min length of characters allowed by the input. */
     minLength: PropTypes.number,
+    /** The input pattern. */
     pattern: PropTypes.string,
+    /** The class name of the label element. */
     labelClassName: PropTypes.string,
     /** The name of the icon. Names are written in the
      format '\utility:down\' where 'utility' is the category, and 'down' is the
@@ -148,8 +160,11 @@ Input.propTypes = {
     iconPosition: PropTypes.oneOf([
         'left', 'right',
     ]),
+    /** The help text to show below the input. */
     bottomHelpText: PropTypes.node,
+    /** If is set to true the input will not have border. */
     isBare: PropTypes.bool,
+    /** If is set to true the input text will be centered. */
     isCentered: PropTypes.bool,
 };
 
@@ -170,7 +185,7 @@ Input.defaultProps = {
     minLength: undefined,
     pattern: undefined,
     labelClassName: undefined,
-    iconName: '',
+    iconName: undefined,
     iconPosition: 'left',
     bottomHelpText: null,
     isBare: false,

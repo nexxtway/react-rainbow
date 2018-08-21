@@ -3,28 +3,40 @@ import { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
 import Icon from './../icon';
 
-describe('<Icon/> in the Input component', () => {
-    it('should not render an IconSvg element when isVisible is false', () => {
+describe('<InputIcon/>', () => {
+    it('should not render the IconSvg when iconName is not passed', () => {
         const component = mount(
-            <Icon isVisible={false} />,
+            <Icon />,
         );
         expect(component.find('IconSvg').exists()).toBe(false);
     });
-    it('should render an IconSvg element when isVisible is true', () => {
+    it('should render the IconSvg when iconName is passed', () => {
         const component = mount(
-            <Icon isVisible />,
+            <Icon iconName="utility:user" />,
         );
         expect(component.find('IconSvg').exists()).toBe(true);
     });
-    it('should have the right class names when isVisible and the iconPosition is left', () => {
+    it('should have the right class names when iconName is passed and the position is left', () => {
         const component = renderer.create(
-            <Icon isVisible iconName="utility:activity" iconPosition="left" />,
+            <Icon iconName="utility:activity" position="left" />,
         );
         expect(component).toMatchSnapshot();
     });
-    it('should have the right class names when isVisible and the iconPosition is right', () => {
+    it('should have the right class names when iconName is passed and the position is right', () => {
         const component = renderer.create(
-            <Icon isVisible iconName="utility:activity" iconPosition="right" />,
+            <Icon iconName="utility:activity" position="right" />,
+        );
+        expect(component).toMatchSnapshot();
+    });
+    it('should have the right class names when there is an error and the position is left', () => {
+        const component = renderer.create(
+            <Icon iconName="utility:activity" error="input error" position="left" />,
+        );
+        expect(component).toMatchSnapshot();
+    });
+    it('should have the right class names when there is an error and the position is right', () => {
+        const component = renderer.create(
+            <Icon iconName="utility:activity" error="input error" position="right" />,
         );
         expect(component).toMatchSnapshot();
     });
