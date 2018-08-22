@@ -11,7 +11,7 @@
 .cm-s-base16-light {
     background: #061c3f !important;
     border-radius: 0 0 8px 8px;
-    padding: 16px 24px !important;
+    padding: 16px 24px 24px 24px !important;
 }
 
 .CodeMirror-line {
