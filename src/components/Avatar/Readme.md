@@ -44,7 +44,8 @@ avatar circle
                 src="images/avatar1.jpg"
                 assistiveText="Jose Leandro"
                 title="Jose Leandro"
-                size="large" />
+                size="large"
+                variant="circle" />
 
         </div>
         <div className="slds-m-horizontal_medium">
@@ -52,14 +53,16 @@ avatar circle
                 src="images/avatar2.jpg"
                 assistiveText="Tahimi Leon"
                 title="Tahimi Leon"
-                size="medium" />
+                size="medium"
+                variant="circle" />
 
         </div>
         <div className="slds-m-horizontal_medium">
             <Avatar
                 src="images/avatar3.jpg"
                 title="Jonh Doe"
-                size="small" />
+                size="small"
+                variant="circle" />
 
         </div>
         <div className="slds-m-horizontal_medium">
@@ -67,7 +70,8 @@ avatar circle
                 src="images/avatar2.jpg"
                 assistiveText="Jane Doe"
                 title="Jane Doe"
-                size="x-small" />
+                size="x-small"
+                variant="circle" />
 
         </div>
     </div>

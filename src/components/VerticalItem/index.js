@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import iconNameUtilityPropType from './../../propTypes/iconNameUtilityPropType';
 import ItemIcon from './icon';
 import { Consumer } from '../VerticalNavigation/context';
 
@@ -56,7 +57,7 @@ VerticalItem.propTypes = {
     * the image fails to load. Names are written in the format {sprite_name}:{icon_name}
     * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed.
     * Only utility icons can be used in this component. */
-    iconName: PropTypes.string,
+    iconName: iconNameUtilityPropType,
     /** The URL of the page that the navigation item goes to. */
     href: PropTypes.string,
     /** The notification comoponent to display on the right */
