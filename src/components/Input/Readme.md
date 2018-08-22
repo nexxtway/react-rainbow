@@ -30,7 +30,7 @@ type of the inputs
             <div className="slds-p-horizontal_small slds-size_1-of-2">
                 <Input
                     label="Input DateTime"
-                    placeholder="02/12/2018"
+                    value="02/12/2018"
                     type="datetime" />
 
             </div>
@@ -141,10 +141,20 @@ input with icons
 input with help
 
     <div className="slds-p-vertical_large slds-p-horizontal_xx-large">
+        <div className="slds-p-bottom_medium">
+            <Input
+                label="Input label"
+                placeholder="Input with inline help"
+                bottomHelpText="ex: (111) 111 1111" />
+
+        </div>
+        
         <Input
             label="Input label"
-            placeholder="Input with inline help"
-            bottomHelpText="ex: (111) 111 1111" />
+            placeholder="Input with inline help and icon"
+            bottomHelpText="ex: (111) 111 1111"
+            iconName="utility:world"
+            iconPosition="left" />
     </div>
 
 
@@ -153,7 +163,7 @@ input required
     <div className="slds-p-vertical_large slds-p-horizontal_xx-large">
         <Input
             label="Input label"
-            placeholder="Input with inline help"
+            placeholder="Input required"
             required />
     </div>
 
@@ -163,8 +173,18 @@ input disabled
     <div className="slds-p-vertical_large slds-p-horizontal_xx-large">
         <Input
             label="Input label"
-            placeholder="Input with inline help"
+            value="Input disabled"
             disabled />
+    </div>
+
+
+input centered
+
+    <div className="slds-p-vertical_large slds-p-horizontal_xx-large">
+        <Input
+            label="Input label"
+            placeholder="center"
+            isCentered />
     </div>
 
 
@@ -184,4 +204,14 @@ input error
             iconName="utility:error"
             iconPosition="left"
             error="This Field is Required" />
+    </div>
+
+
+input read only
+
+    <div className="slds-p-vertical_large slds-p-horizontal_xx-large">
+        <Input
+            label="Input Label"
+            readOnly
+            value="Read Only" />
     </div>
