@@ -11,6 +11,9 @@ const inputId = uniqueId('input');
 const inlineTextLabelId = uniqueId('inline-text-label');
 const errorMessageId = uniqueId('error-message');
 
+/**
+* Text inputs are used for freeform data entry.
+*/
 export default function Input(props) {
     const {
         className,
@@ -105,29 +108,9 @@ export default function Input(props) {
 }
 
 Input.propTypes = {
-    /** The class name of the root element. */
-    className: PropTypes.string,
-    /** It is an object with custom style applied to the root element. */
-    style: PropTypes.object,
-    /** The value of the input */
+    /** Specifies the value of an input element. */
     value: PropTypes.string,
-    /** Event fired when the input value change */
-    onChange: PropTypes.func,
-    /** The input label */
-    label: PropTypes.node,
-    /** The error to show below the input. */
-    error: PropTypes.node,
-    /** The placeholder of the input */
-    placeholder: PropTypes.string,
-    /** Disables the input if set to true. */
-    disabled: PropTypes.bool,
-    /** If set to true the input is read only. */
-    readOnly: PropTypes.bool,
-    /** If set to true the input is required. */
-    required: PropTypes.bool,
-    /** Tab index */
-    tabIndex: PropTypes.number,
-    /** The input type */
+    /** The type of the input. This value defaults to text. */
     type: PropTypes.oneOf([
         'text',
         'password',
@@ -144,50 +127,75 @@ Input.propTypes = {
         'tel',
         'color',
     ]),
-    /** The max length of characters allowed by the input. */
-    maxLength: PropTypes.number,
-    /** The min length of characters allowed by the input. */
-    minLength: PropTypes.number,
-    /** The input pattern. */
-    pattern: PropTypes.string,
-    /** The class name of the label element. */
-    labelClassName: PropTypes.string,
-    /** The name of the icon. Names are written in the
-     format '\utility:down\' where 'utility' is the category, and 'down' is the
-     specific icon to be displayed. */
+    /** The input label */
+    label: PropTypes.node,
+    /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
+    placeholder: PropTypes.string,
+    /** The Lightning Design System name of the icon used as a fallback when
+    * the image fails to load. Names are written in the format {sprite_name}:{icon_name}
+    * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed.
+    * Only utility icons can be used in this component. */
     iconName: PropTypes.string,
-    /** The position of the icon if it is passed. */
+    /** Describes the position of the icon with respect to body. Options include left and right.
+    * This value defaults to left. */
     iconPosition: PropTypes.oneOf([
         'left', 'right',
     ]),
-    /** The help text to show below the input. */
+    /** The maximum number of characters allowed in the field. */
+    maxLength: PropTypes.number,
+    /** The minimum number of characters allowed in the field. */
+    minLength: PropTypes.number,
+    /** Shows the help message below the input. */
     bottomHelpText: PropTypes.node,
-    /** If is set to true the input will not have border. */
-    isBare: PropTypes.bool,
-    /** If is set to true the input text will be centered. */
+    /** Specifies that an input field must be filled out before submitting the form.
+    * This value defaults to false. */
+    required: PropTypes.bool,
+    /** Specifies the regular expression that the input's value is checked against.
+    * This attribute is supported for text, search, url, tel, email, and password types. */
+    pattern: PropTypes.string,
+    /** Specifies that an input text will be centered. This value defaults to false. */
     isCentered: PropTypes.bool,
+    /** Specifies that an input will not have border. This value defaults to false. */
+    isBare: PropTypes.bool,
+    /** Specifies that an input field must be filled out before submitting the form.
+    * This value defaults to false. */
+    error: PropTypes.node,
+    /** Specifies that an input element should be disabled. This value defaults to false. */
+    disabled: PropTypes.bool,
+    /** Specifies that an input field is read-only. This value defaults to false. */
+    readOnly: PropTypes.bool,
+    /** The action triggered when a value attribute changes. */
+    onChange: PropTypes.func,
+    /** Specifies the tab order of an element (when the tab button is used for navigating). */
+    tabIndex: PropTypes.number,
+    /** A CSS class for the outer element, in addition to the component's base classes. */
+    className: PropTypes.string,
+    /** A CSS class for the label element, in addition to the label's base classes. */
+    labelClassName: PropTypes.string,
+    /** An object with custom style applied to the outer element. */
+    style: PropTypes.object,
 };
 
 Input.defaultProps = {
-    className: undefined,
-    style: {},
     value: undefined,
-    onChange: () => {},
-    label: null,
-    error: null,
-    placeholder: null,
-    disabled: false,
-    readOnly: false,
-    required: false,
-    tabIndex: undefined,
     type: 'text',
-    maxLength: undefined,
-    minLength: undefined,
-    pattern: undefined,
-    labelClassName: undefined,
+    label: null,
+    placeholder: null,
     iconName: undefined,
     iconPosition: 'left',
+    maxLength: undefined,
+    minLength: undefined,
     bottomHelpText: null,
-    isBare: false,
+    required: false,
+    pattern: undefined,
     isCentered: false,
+    isBare: false,
+    error: null,
+    disabled: false,
+    readOnly: false,
+    onChange: () => {},
+    tabIndex: undefined,
+    className: undefined,
+    labelClassName: undefined,
+    style: {},
 };
