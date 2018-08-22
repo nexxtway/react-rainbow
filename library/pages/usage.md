@@ -6,11 +6,10 @@
 
 ![](images/windows-actions.svg)
 ######  
-```sh
-1	import { Button } from '@react-lightning-components';
-2
-3	<Button label="Hello World" />
-4
+```js static
+    import { Button } from '@react-lightning-components';
+
+    <Button label="Hello World" />
 
 ```
 
@@ -20,9 +19,9 @@
 
 ![](images/windows-actions.svg)
 ######  
-```sh
-1	import Button from '@react-lightning-components/components/button';
-2
-3	<Button label="Hello World" />
-4
+```js static
+    import Button from '@react-lightning-components/components/button';
+
+    <Button label="Hello World" />
+
 ```
