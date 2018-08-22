@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme/build/index';
+import { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
 import ButtonIcon from './../index';
 
