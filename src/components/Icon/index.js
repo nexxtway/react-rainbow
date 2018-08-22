@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import iconNamePropType from './../../propTypes/iconNamePropType';
 import IconSvg from './../IconSvg';
 import AssistiveText from './../AssistiveText';
 import {
@@ -66,7 +67,7 @@ Icon.propTypes = {
     * the image fails to load. Names are written in the format {sprite_name}:{icon_name}
     * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed.
     * The icon is displayed in the header to the left of the title */
-    iconName: PropTypes.string.isRequired,
+    iconName: iconNamePropType.isRequired,
     /** The size of the icon. Options include xx-small, x-small, small, medium, or large.
     * This value defaults to medium. */
     size: PropTypes.oneOf([

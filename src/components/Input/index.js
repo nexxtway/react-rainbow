@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { uniqueId } from './../../libs/utils';
+import iconNamePropType from './../../propTypes/iconNamePropType';
 import Icon from './icon';
 import Help from './help';
 import Error from './error';
@@ -135,7 +136,7 @@ Input.propTypes = {
     * the image fails to load. Names are written in the format {sprite_name}:{icon_name}
     * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed.
     * Only utility icons can be used in this component. */
-    iconName: PropTypes.string,
+    iconName: iconNamePropType,
     /** Describes the position of the icon with respect to body. Options include left and right.
     * This value defaults to left. */
     iconPosition: PropTypes.oneOf([

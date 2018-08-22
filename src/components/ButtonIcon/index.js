@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
+import iconNameUtilityPropType from './../../propTypes/iconNameUtilityPropType';
 import IconSvg from '../IconSvg';
 import AssistiveText from './../AssistiveText';
 
@@ -134,7 +135,7 @@ ButtonIcon.propTypes = {
     * the image fails to load. Names are written in the format {sprite_name}:{icon_name}
     * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed.
     * Only utility icons can be used in this component. */
-    iconName: PropTypes.string.isRequired,
+    iconName: iconNameUtilityPropType.isRequired,
     /** The size of the buttonIcon. For the base variant, options include x-small, small, medium,
     * and large. For non-base variants, options include xx-small, x-small, small, and medium.
     * This value defaults to medium. */

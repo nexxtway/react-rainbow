@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import iconNameUtilityPropType from './../../propTypes/iconNameUtilityPropType';
 import AvatarContent from './avatarContent';
 import AssistiveText from './../AssistiveText';
 
@@ -43,7 +44,7 @@ Avatar.propTypes = {
     * the image fails to load. Names are written in the format {sprite_name}:{icon_name}
     * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed.
     * Only utility icons can be used in this component. */
-    iconName: PropTypes.string,
+    iconName: iconNameUtilityPropType,
     /** The variant changes the shape of the avatar. Valid values are empty,
     * default, and circle. This value defaults to default. */
     variant: PropTypes.oneOf([

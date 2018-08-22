@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import iconNamePropType from './../../propTypes/iconNamePropType';
 import {
     isIconNameValid,
     getSpriteName,
@@ -30,7 +31,7 @@ IconSvg.propTypes = {
     /** The Lightning Design System name of the icon used as a fallback when
     * the image fails to load. Names are written in the format {sprite_name}:{icon_name}
     * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed. */
-    iconName: PropTypes.string.isRequired,
+    iconName: iconNamePropType.isRequired,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
