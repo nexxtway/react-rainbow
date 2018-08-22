@@ -6,10 +6,10 @@
 
 ![](images/windows-actions.svg)
 ######  
-```js static
+```jsx static
     import { Button } from '@react-lightning-components';
 
-    <Button label="Hello World" />
+    <Button label="Hello World!" variant="brand" onClick={handleClick} />
 
 ```
 
@@ -19,9 +19,9 @@
 
 ![](images/windows-actions.svg)
 ######  
-```js static
+```jsx static
     import Button from '@react-lightning-components/components/button';
 
-    <Button label="Hello World" />
+    <Button label="Hello World!" variant="brand" onClick={handleClick} />
 
 ```
