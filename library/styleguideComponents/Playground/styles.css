@@ -7,3 +7,37 @@
 .slds-react-playground-background-color {
     background-color: #fafafb;
 }
+
+.cm-s-base16-light {
+    background: #061c3f !important;
+    border-radius: 0 0 8px 8px;
+    padding: 16px 24px !important;
+}
+
+.CodeMirror-line {
+    color: #a1a7b0 !important;
+}
+
+.cm-tag {
+    color: #df6a72 !important;
+}
+
+.cm-bracket {
+    color: #4cb6c4 !important;
+}
+
+.cm-name {
+    color: #df6a72 !important;
+}
+
+.cm-attribute {
+    color: #c574dd !important;
+}
+
+.cm-string {
+    color: #96C571 !important;
+}
+
+.cm-keyword {
+    color: #4cb6c4 !important;
+}
