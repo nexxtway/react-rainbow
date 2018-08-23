@@ -1,51 +1,154 @@
-Example:
+button menu base
 
-    initialState = { isVisible: false };
-
-    function HiddenItem({ isVisible }) {
-        if (isVisible) {
-            return <MenuItem label="item 3" onClick={() => alert('clicked item 3')} />;
-        }
-        return null;
-    }
-
-    <div className="slds-grid slds-p-around_large">
-        <ButtonMenu>
-            <MenuItem label="item 1" onClick={() => alert('clicked item 1')} />
-            <MenuItem label="item 2" onClick={() => alert('clicked item 2')} />
-            <HiddenItem isVisible={state.isVisible} />
-            <MenuItem label="item 4" iconName="utility:user" onClick={() => alert('clicked item 4')} />
-            <MenuItem label="item 5" iconName="utility:user" onClick={() => alert('clicked item 5')} />
-        </ButtonMenu>
-        <Button
-            className="slds-m-left_large"
-            label={state.isVisible ? 'Hide Third Item' : 'Show Hidden Item'}
-            variant="brand"
-            onClick={() => setState({ isVisible: !state.isVisible })} />
+    <div className="slds-p-vertical_large slds-align_absolute-center" >
+        <ButtonGroup>
+            <ButtonIcon iconName="utility:add" variant="border-filled" />
+            <ButtonIcon iconName="utility:edit" variant="border-filled" />
+            <ButtonIcon iconName="utility:paste" variant="border-filled" />
+            <ButtonMenu menuAlignment="right" menuSize="x-small">
+                <MenuItem label="Menu Item One" />
+                <MenuItem label="Menu Item Two" />
+                <MenuItem label="Menu Item Three" />
+            </ButtonMenu>
+        </ButtonGroup>
     </div>
 
-Other Example:
 
-    <div className="slds-grid slds-p-around_large">
-        <div className="slds-m-horizontal_large">
-            <ButtonMenu isLoading />
-        </div>
-        <div className="slds-m-horizontal_large">
-            <ButtonMenu menuSize="large" menuAlignment="right">
-                <MenuItem label="item 1" disabled />
-                <MenuItem label="item 2" />
-                <MenuItem label="users" variant="header" />
-                <MenuItem label="item 3" iconName="utility:user" iconPosition="right" />
-                <MenuItem label="item 4" iconName="utility:user" iconPosition="right" />
+button menu with subheaders
+
+    <div className="slds-p-vertical_large slds-align_absolute-center" >
+        <ButtonGroup>
+            <ButtonIcon iconName="utility:add" variant="border-filled" />
+            <ButtonIcon iconName="utility:edit" variant="border-filled" />
+            <ButtonIcon iconName="utility:paste" variant="border-filled" />
+            <ButtonMenu menuAlignment="right" menuSize="x-small">
+                <MenuItem label="Menu header" variant="header" />
+                <MenuItem label="Menu Item One" />
+                <MenuItem label="Menu Item Two" />
+                <MenuItem label="Menu Item Three" />
+                <MenuItem label="Menu header" variant="header" />
+                <MenuItem label="Menu Item One" />
+                <MenuItem label="Menu Item Two" />
+            </ButtonMenu>
+        </ButtonGroup>
+    </div>
+
+
+button menu with icons
+
+    <div className="slds-p-around_large slds-align_absolute-center" >
+        <div className="slds-m-horizontal_xx-large">
+            <ButtonMenu menuAlignment="right" menuSize="x-small">
+                <MenuItem 
+                    label="Right Icon"
+                    iconName="utility:table" 
+                    iconPosition="right" />
+
+                <MenuItem 
+                    label="Right Icon"
+                    iconName="utility:kanban" 
+                    iconPosition="right" />
+
+                <MenuItem 
+                    label="Right Icon"
+                    iconName="utility:side_list" 
+                    iconPosition="right" />
+
             </ButtonMenu>
         </div>
-        <div className="slds-m-horizontal_large">
-            <ButtonMenu menuSize="large" menuAlignment="bottom">
-                <MenuItem label="Juan" iconName="utility:user" />
-                <MenuItem label="Pepe" iconName="utility:user" />
-                <MenuItem label="Jose" iconName="utility:user" />
-                <MenuItem label="Julio" iconName="utility:user" />
-                <MenuItem label="Luis" iconName="utility:user" />
+        <div className="slds-m-horizontal_xx-large">
+            <ButtonMenu menuSize="x-small">
+               <MenuItem 
+                   label="Left Icon"
+                   iconName="utility:announcement" 
+                   iconPosition="left" />
+
+               <MenuItem 
+                   label="Left Icon"
+                   iconName="utility:announcement" 
+                   iconPosition="left" />
+
+               <MenuItem 
+                   label="Left Icon"
+                   iconName="utility:announcement" 
+                   iconPosition="left" />
+
             </ButtonMenu>
         </div>
+    </div>
+
+
+button menu position variants
+
+    <div className="slds-p-around_large slds-align_absolute-center" >
+        <div className="slds-m-horizontal_xx-large">
+            <ButtonMenu menuAlignment="right" menuSize="x-small">
+                <MenuItem label="Menu Positioned Right" />
+                <MenuItem label="Menu Positioned Right" />
+                <MenuItem label="Menu Positioned Right" />
+            </ButtonMenu>
+        </div>
+        <div className="slds-m-horizontal_xx-large">
+            <ButtonMenu menuAlignment="center" menuSize="x-small">
+                <MenuItem label="Menu Positioned Center" />
+                <MenuItem label="Menu Positioned Center" />
+                <MenuItem label="Menu Positioned Center" />
+            </ButtonMenu>
+        </div>
+        <div className="slds-m-horizontal_xx-large">
+            <ButtonMenu menuAlignment="left" menuSize="x-small">
+                <MenuItem label="Menu Positioned Left" />
+                <MenuItem label="Menu Positioned Left" />
+                <MenuItem label="Menu Positioned Left" />
+            </ButtonMenu>
+        </div>
+    </div>
+
+
+button menu width variants
+
+    <div className="slds-m-horizontal_xx-large slds-m-vertical_large" >
+        <div className="slds-grid slds-grid_align-spread">
+            <ButtonMenu menuSize="xx-small">
+                <MenuItem label="xx-small" />
+                <MenuItem label="xx-small" />
+                <MenuItem label="xx-small" />
+            </ButtonMenu>
+            <ButtonMenu menuSize="x-small" menuAlignment="right">
+                <MenuItem label="x-small" />
+                <MenuItem label="x-small" />
+                <MenuItem label="x-small" />
+            </ButtonMenu>
+            <ButtonMenu menuSize="small" menuAlignment="right">
+                <MenuItem label="small" />
+                <MenuItem label="small" />
+                <MenuItem label="small" />
+            </ButtonMenu>
+        </div>
+        <div className="slds-p-top_xx-large">
+            <ButtonMenu menuSize="medium">
+                <MenuItem label="Menu medium" />
+                <MenuItem label="Menu medium" />
+                <MenuItem label="Menu medium" />
+            </ButtonMenu>
+        </div>
+        <div className="slds-p-top_xx-large">
+            <ButtonMenu menuSize="large">
+                <MenuItem label="Menu large" />
+                <MenuItem label="Menu large" />
+                <MenuItem label="Menu large" />
+            </ButtonMenu>
+        </div>
+    </div>
+    
+
+button menu loading
+
+    <div className="slds-p-vertical_large slds-align_absolute-center" >
+        <ButtonGroup>
+            <ButtonIcon iconName="utility:add" variant="border-filled" />
+            <ButtonIcon iconName="utility:edit" variant="border-filled" />
+            <ButtonIcon iconName="utility:paste" variant="border-filled" />
+            <ButtonMenu menuAlignment="right" menuSize="x-small" isLoading />
+        </ButtonGroup>
     </div>

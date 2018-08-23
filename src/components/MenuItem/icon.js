@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import iconNamePropType from './../../propTypes/iconNamePropType';
 import IconSvg from './../IconSvg';
 
 export default function Icon({ iconName, isVisible, position }) {
@@ -20,7 +21,7 @@ export default function Icon({ iconName, isVisible, position }) {
 }
 
 Icon.propTypes = {
-    iconName: PropTypes.string,
+    iconName: iconNamePropType,
     isVisible: PropTypes.bool.isRequired,
     position: PropTypes.string.isRequired,
 };
