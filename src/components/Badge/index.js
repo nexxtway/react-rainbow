@@ -21,8 +21,8 @@ export default function Badge(props) {
         return classnames('slds-align_absolute-center', 'slds-badge', `slds-badge_${variant}`, className);
     }
 
-    const showLeftIcon = iconName && iconPosition === 'left';
-    const showRightIcon = iconName && iconPosition === 'right';
+    const showLeftIcon = !!(iconName && iconPosition === 'left');
+    const showRightIcon = !!(iconName && iconPosition === 'right');
 
     return (
         <span className={getClassName()} style={style}>
@@ -32,6 +32,7 @@ export default function Badge(props) {
                 iconPosition={iconPosition}
                 label={label}
                 isVisible={showLeftIcon} />
+
             {label}
             <Icon
                 data-id="right-icon"
@@ -39,6 +40,7 @@ export default function Badge(props) {
                 iconPosition={iconPosition}
                 label={label}
                 isVisible={showRightIcon} />
+
         </span>
     );
 }

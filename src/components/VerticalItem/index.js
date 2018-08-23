@@ -1,9 +1,10 @@
-/* eslint-disable no-script-url,react/prop-types */
+/* eslint-disable no-script-url, react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import iconNameUtilityPropType from './../../propTypes/iconNameUtilityPropType';
-import ItemIcon from './icon';
+import Icon from './icon';
+import Notification from './notification';
 import { Consumer } from '../VerticalNavigation/context';
 
 function Item(props) {
@@ -16,25 +17,33 @@ function Item(props) {
         notification,
         className,
         style,
-        privateSelectedItem,
-        privateOnSelect,
+        selectedItem,
+        onSelect,
     } = props;
+    const isSelected = name === selectedItem;
 
-    const itemClassName = classnames('slds-nav-vertical__item', className,
-        { 'slds-is-active': name === privateSelectedItem },
-    );
+    const getContainerClassNames = () => classnames('slds-nav-vertical__item', {
+        'slds-is-active': isSelected,
+    }, className);
+
+    const getAriaCurrent = () => {
+        if (isSelected) {
+            return 'page';
+        }
+        return undefined;
+    };
 
     function hanldeOnClick(e) {
         onClick(e);
-        privateOnSelect(e, name);
+        onSelect(e, name);
     }
 
     return (
-        <li className={itemClassName} style={style} role="presentation" onClick={hanldeOnClick}>
-            <a href={href} className="slds-nav-vertical__action" aria-describedby="entity-header">
-                <ItemIcon iconName={iconName} />
+        <li className={getContainerClassNames()} style={style} role="presentation" onClick={hanldeOnClick}>
+            <a href={href} className="slds-nav-vertical__action" aria-current={getAriaCurrent()}>
+                <Icon iconName={iconName} />
                 {label}
-                <span className="slds-col_bump-left">{notification}</span>
+                <Notification notification={notification} />
             </a>
         </li>
     );
@@ -52,7 +61,7 @@ VerticalItem.propTypes = {
     /** The text displayed for the navigation item. */
     label: PropTypes.string,
     /** A unique identifier for the navigation item. */
-    name: PropTypes.string,
+    name: PropTypes.string.isRequired,
     /** The Lightning Design System name of the icon used as a fallback when
     * the image fails to load. Names are written in the format {sprite_name}:{icon_name}
     * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed.
@@ -72,7 +81,6 @@ VerticalItem.propTypes = {
 
 VerticalItem.defaultProps = {
     label: '',
-    name: undefined,
     iconName: undefined,
     href: 'javascript:void(0);',
     onClick: () => {},

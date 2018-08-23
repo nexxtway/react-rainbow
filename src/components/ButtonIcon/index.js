@@ -111,6 +111,7 @@ export default class ButtonIcon extends Component {
                 type={type}
                 aria-haspopup={ariaHaspopup}
                 ref={(ref) => { this.button = ref; }} >
+
                 <IconSvg iconName={iconName} className={this.getIconClassNames()} />
                 <AssistiveText text={assistiveText} />
             </button>

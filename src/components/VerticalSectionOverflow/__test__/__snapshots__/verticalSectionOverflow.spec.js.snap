@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<VerticalSectionOverflow/> should have the right class names when a custom className is passed 1`] = `
+<div
+  className="slds-nav-vertical__overflow custom-class-name"
+  style={Object {}}
+>
+  <button
+    aria-controls="search-results-1"
+    aria-expanded={false}
+    className="slds-button slds-button_reset slds-nav-vertical__action slds-nav-vertical__action_overflow"
+    onClick={[Function]}
+  >
+    <svg
+      aria-hidden={true}
+      className="slds-button__icon slds-button__icon_left"
+      style={Object {}}
+    >
+      <use
+        xlinkHref="/icons/utility-sprite/svg/symbols.svg#chevronright"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+      />
+    </svg>
+    <span
+      className="slds-nav-vertical__action-text"
+    >
+      Show More
+    </span>
+  </button>
+  <div
+    className="slds-hide"
+    data-id="vertical-overflow"
+    id="search-results-1"
+  >
+    <ul />
+  </div>
+</div>
+`;

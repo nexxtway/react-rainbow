@@ -4,10 +4,17 @@ import classnames from 'classnames';
 import Header from './header';
 
 function VerticalSection(props) {
-    const { label, className, style, children } = props;
-    const containerClassName = classnames('slds-nav-vertical__section', className);
+    const {
+        label,
+        className,
+        style,
+        children,
+    } = props;
+
+    const getClassNames = () => classnames('slds-nav-vertical__section', className);
+
     return (
-        <div className={containerClassName} style={style}>
+        <div className={getClassNames()} style={style}>
             <Header label={label} />
             <ul>
                 {children}
@@ -18,7 +25,7 @@ function VerticalSection(props) {
 
 VerticalSection.propTypes = {
     /** The heading text for this section. */
-    label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+    label: PropTypes.node,
     /** The content body section */
     children: PropTypes.node,
     /** A CSS class for the outer element, in addition to the component's base classes. */
@@ -28,7 +35,7 @@ VerticalSection.propTypes = {
 };
 
 VerticalSection.defaultProps = {
-    label: '',
+    label: null,
     children: null,
     className: '',
     style: {},

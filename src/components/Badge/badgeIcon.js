@@ -8,30 +8,28 @@ function BadgeIcon(props) {
 
     const getIconClassName = () => {
         const hasLabel = label !== undefined && label !== null;
-        return classnames({
+        return classnames('slds-align_absolute-center', {
             'slds-m-right_xx-small': hasLabel && iconPosition === 'left',
             'slds-m-left_xx-small': hasLabel && iconPosition === 'right',
         });
     };
 
     if (isVisible) {
-        return <Icon size="xx-small" iconName={iconName} className={['slds-align_absolute-center', getIconClassName()]} />;
+        return <Icon size="xx-small" iconName={iconName} className={getIconClassName()} />;
     }
     return null;
 }
 
 BadgeIcon.propTypes = {
-    isVisible: PropTypes.bool,
+    isVisible: PropTypes.bool.isRequired,
     iconName: PropTypes.string,
-    iconPosition: PropTypes.string,
+    iconPosition: PropTypes.string.isRequired,
     label: PropTypes.node,
 
 };
 
 BadgeIcon.defaultProps = {
-    isVisible: false,
-    iconName: null,
-    iconPosition: null,
+    iconName: '',
     label: null,
 };
 

@@ -1,50 +1,70 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import Icon from '../Icon';
-import OpenCloseLabel from './label';
+import IconSvg from './../IconSvg';
+import Label from './label';
+import AssistiveText from './../AssistiveText';
+import { uniqueId } from './../../libs/utils';
 
-class VerticalSectionOverflow extends Component {
+const searchResultsId = uniqueId('search-results');
+
+export default class VerticalSectionOverflow extends Component {
     constructor(props) {
         super(props);
-        this.state = { expanded: props.expanded };
+        this.state = {
+            isExpanded: props.expanded,
+        };
         this.toggleOverflow = this.toggleOverflow.bind(this);
     }
 
-    componentWillReceiveProps(prevProps, newProps) {
-        if (prevProps.expanded !== newProps.expanded) {
-            this.setState({ expanded: newProps.expanded });
+    getContainerClassNames() {
+        const { className } = this.props;
+        return classnames('slds-nav-vertical__overflow', className);
+    }
+
+    getOverflowClassName() {
+        const { isExpanded } = this.state;
+        if (isExpanded) {
+            return 'slds-show';
         }
+        return 'slds-hide';
     }
 
     toggleOverflow() {
-        this.setState({ expanded: !this.state.expanded });
-    }
-
-    isExpanded() {
-        return this.state.expanded;
+        const { isExpanded } = this.state;
+        this.setState({ isExpanded: !isExpanded });
     }
 
     render() {
-        const { expandedLabel, collapsedLabel, className, style, children } = this.props;
-        const { expanded } = this.state;
-        const containerClassName = classnames('slds-nav-vertical__overflow', className);
-        const overflowSectionClassName = classnames({ 'slds-hide': !expanded, 'slds-show': expanded });
+        const {
+            expandedLabel,
+            collapsedLabel,
+            style,
+            assistiveText,
+            children,
+        } = this.props;
+        const { isExpanded } = this.state;
+
         return (
-            <div className={containerClassName} style={style}>
+            <div className={this.getContainerClassNames()} style={style}>
                 <button
                     className="slds-button slds-button_reset slds-nav-vertical__action slds-nav-vertical__action_overflow"
-                    aria-controls="search-results"
-                    aria-expanded="false"
+                    aria-controls={searchResultsId}
+                    aria-expanded={isExpanded}
                     onClick={this.toggleOverflow}>
 
-                    <Icon iconName="utility-sprite:chevronright" />
-                    <OpenCloseLabel
-                        expandedLabel={expandedLabel}
-                        collapsedLabel={collapsedLabel}
-                        expanded={expanded} />
+                    <IconSvg iconName="utility:chevronright" className="slds-button__icon slds-button__icon_left" />
+                    <span className="slds-nav-vertical__action-text">
+                        <Label
+                            isExpanded={isExpanded}
+                            expandedLabel={expandedLabel}
+                            collapsedLabel={collapsedLabel} />
+
+                        <AssistiveText text={assistiveText} />
+                    </span>
+
                 </button>
-                <div id="search-results" className={overflowSectionClassName}>
+                <div data-id="vertical-overflow" id={searchResultsId} className={this.getOverflowClassName()}>
                     <ul>
                         {children}
                     </ul>
@@ -56,9 +76,9 @@ class VerticalSectionOverflow extends Component {
 
 VerticalSectionOverflow.propTypes = {
     /** The label to show when the section is collapsed */
-    expandedLabel: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+    collapsedLabel: PropTypes.node,
     /** The label to show when the section is expanded */
-    collapsedLabel: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+    expandedLabel: PropTypes.node,
     /** The state of the overflow */
     expanded: PropTypes.bool,
     /** The content body section */
@@ -67,15 +87,16 @@ VerticalSectionOverflow.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied for the outer element. */
     style: PropTypes.object,
+    /** A description for assistive sreen readers. */
+    assistiveText: PropTypes.string,
 };
 
 VerticalSectionOverflow.defaultProps = {
-    expandedLabel: 'Show More',
-    collapsedLabel: 'Show Less',
+    expandedLabel: 'Show Less',
+    collapsedLabel: 'Show More',
     expanded: false,
-    className: '',
+    className: undefined,
     style: {},
     children: null,
+    assistiveText: undefined,
 };
-
-export default VerticalSectionOverflow;

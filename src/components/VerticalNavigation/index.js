@@ -1,59 +1,40 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Provider } from './context';
 
-class VerticalNavigation extends Component {
-    constructor(props) {
-        super(props);
-        this.handleOnSelect = this.handleOnSelect.bind(this);
-        this.state = {
-            privateSelectedItem: props.selectedItem,
-            privateOnSelect: this.handleOnSelect,
-        };
-    }
+export default function VerticalNavigation(props) {
+    const {
+        ariaLabel,
+        style,
+        selectedItem,
+        onSelect,
+        compact,
+        shaded,
+        className,
+        children,
+    } = props;
+    const context = {
+        selectedItem,
+        onSelect,
+    };
 
-    componentWillReceiveProps(prevProps, newProps) {
-        if (prevProps.selectedItem !== newProps.selectedItem) {
-            this.setState({ privateSelectedItem: newProps.selectedItem });
-        }
-    }
+    const getClassNames = () => classnames('slds-nav-vertical', {
+        'slds-nav-vertical_compact': compact,
+        'slds-nav-vertical_shade': shaded,
+    }, className);
 
-    getClassNames() {
-        const { compact, shaded, className } = this.props;
-        return classnames('slds-nav-vertical', {
-            'slds-nav-vertical_compact': compact,
-            'slds-nav-vertical_shade': shaded,
-        }, className);
-    }
+    return (
+        <nav
+            className={getClassNames()}
+            style={style}
+            aria-label={ariaLabel}>
 
-    handleOnSelect(e, selectedItem) {
-        const { onSelect } = this.props;
-        if (typeof onSelect === 'function') {
-            onSelect(e, selectedItem);
-        } else {
-            this.setState({ privateSelectedItem: selectedItem });
-        }
-    }
-
-    render() {
-        const {
-            ariaLabel,
-            style,
-            children,
-        } = this.props;
-
-        return (
-            <nav
-                className={this.getClassNames()}
-                style={style}
-                aria-label={ariaLabel}>
-                <Provider value={this.state}>
-                    {children}
-                </Provider>
-            </nav>
-        );
-    }
+            <Provider value={context}>
+                {children}
+            </Provider>
+        </nav>
+    );
 }
 
 VerticalNavigation.propTypes = {
@@ -80,12 +61,10 @@ VerticalNavigation.propTypes = {
 VerticalNavigation.defaultProps = {
     children: null,
     selectedItem: null,
-    onSelect: undefined,
+    onSelect: () => {},
     compact: false,
     shaded: false,
-    ariaLabel: '',
+    ariaLabel: undefined,
     className: '',
     style: {},
 };
-
-export default VerticalNavigation;
