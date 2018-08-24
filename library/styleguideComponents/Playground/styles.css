@@ -19,6 +19,20 @@
     background-color: #061c3f !important;
 }
 
+.CodeMirror-hscrollbar {
+    width: 0 !important;
+    height: 0 !important;
+    overflow-x: hidden !important;
+}
+
+.CodeMirror-vscrollbar {
+    width: 0 !important;
+}
+
+#rsg-root > div > main > section > section > div > div > article > div:nth-child(6) > div:nth-child(4) > div > div > div > div:nth-child(1) {
+    width: 0 !important;
+}
+
 .CodeMirror-line {
     color: #a1a7b0 !important;
 }
