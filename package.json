@@ -73,7 +73,6 @@
     "react-test-renderer": "^16.4.2",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.22.1",
-    "wdio-allure-reporter": "^0.7.0",
     "wdio-chromedriver-service": "^0.1.3",
     "wdio-jasmine-framework": "^0.3.5",
     "wdio-junit-reporter": "^0.4.4",
