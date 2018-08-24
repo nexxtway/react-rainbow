@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import VerticalNavigation from './../../../src/components/VerticalNavigation';
-import VerticalSectionOverflow from './../../../src/components/VerticalSectionOverflow';
+import VerticalSection from './../../../src/components/VerticalSection';
 import VerticalItem from './../../../src/components/VerticalItem';
 import './styles.css';
 
@@ -18,13 +18,12 @@ function Sections({ items }) {
     return items.map(({ heading, visibleName, href, content }) => {
         if (heading) {
             return (
-                <VerticalSectionOverflow
+                <VerticalSection
                     key={href}
-                    collapsedLabel={visibleName}
-                    expandedLabel={visibleName}>
+                    label={visibleName}>
 
                     <Items content={content} />
-                </VerticalSectionOverflow>
+                </VerticalSection>
             );
         }
         return null;
