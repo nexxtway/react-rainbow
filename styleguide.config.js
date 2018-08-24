@@ -23,6 +23,8 @@ module.exports = {
         TableRenderer: path.join(__dirname, 'library/styleguideComponents/PropsTable'),
         PlaygroundRenderer: path.join(__dirname, 'library/styleguideComponents/Playground'),
         TabButtonRenderer: path.join(__dirname, 'library/styleguideComponents/CodeEditorButton'),
+        TableOfContentsRenderer: path.join(__dirname, 'library/styleguideComponents/TableOfContents'),
+        ComponentsListRenderer: path.join(__dirname, 'library/styleguideComponents/ComponentsList'),
     },
     sections: [
         {

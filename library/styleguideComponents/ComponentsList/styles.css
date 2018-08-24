@@ -1,0 +1,4 @@
+.slds-react-vertical-navigation {
+    overflow-y: auto;
+    height: calc(100vh - 239px);
+}
