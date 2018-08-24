@@ -4,6 +4,28 @@ import { mount } from 'enzyme';
 import ButtonMenu from './../';
 
 describe('<ButtonMenu/>', () => {
+    it('should focus the button when the focus method is called', () => {
+        const component = mount(
+            <ButtonMenu />,
+        );
+
+        component.instance().focus();
+        const focusedElementDataId = document.activeElement.getAttribute('data-id');
+        const buttonDataId = component.find('button').prop('data-id');
+        expect(focusedElementDataId).toBe(buttonDataId);
+    });
+    it('should blur the button when the blur method is called', () => {
+        const component = mount(
+            <ButtonMenu />,
+        );
+        const instance = component.instance();
+        const buttonDataId = component.find('button').prop('data-id');
+
+        instance.focus();
+        expect(document.activeElement.getAttribute('data-id')).toBe(buttonDataId);
+        instance.blur();
+        expect(document.activeElement.getAttribute('data-id')).toBeNull();
+    });
     it('should set the title passed in the ButtonIcon', () => {
         const component = mount(
             <ButtonMenu title="my title">

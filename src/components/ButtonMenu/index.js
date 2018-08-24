@@ -212,6 +212,30 @@ export default class ButtonMenu extends Component {
         return this.openMenu();
     }
 
+    /**
+    * Sets focus on the element.
+    * @public
+    */
+    focus() {
+        this.buttonRef.current.focus();
+    }
+
+    /**
+    * Sets click on the element.
+    * @public
+    */
+    click() {
+        this.buttonRef.current.click();
+    }
+
+    /**
+    * Sets blur on the element.
+    * @public
+    */
+    blur() {
+        this.buttonRef.current.blur();
+    }
+
     render() {
         const {
             style,
@@ -239,6 +263,7 @@ export default class ButtonMenu extends Component {
                 ref={this.containerRef}>
 
                 <ButtonIcon
+                    data-id="button-menu-icon"
                     disabled={disabled}
                     tabIndex={tabIndex}
                     variant={buttonVariant}

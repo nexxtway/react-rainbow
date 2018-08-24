@@ -11,6 +11,7 @@ import RightIcon from './rightIcon';
 export default class Button extends Component {
     constructor(props) {
         super(props);
+        this.buttonRef = React.createRef();
         this.click = this.click.bind(this);
         this.focus = this.focus.bind(this);
         this.blur = this.blur.bind(this);
@@ -26,7 +27,7 @@ export default class Button extends Component {
     * @public
     */
     focus() {
-        this.button.focus();
+        this.buttonRef.current.focus();
     }
 
     /**
@@ -34,7 +35,7 @@ export default class Button extends Component {
     * @public
     */
     click() {
-        this.button.click();
+        this.buttonRef.current.click();
     }
 
     /**
@@ -42,7 +43,7 @@ export default class Button extends Component {
     * @public
     */
     blur() {
-        this.button.blur();
+        this.buttonRef.current.blur();
     }
 
     render() {
@@ -74,7 +75,7 @@ export default class Button extends Component {
                 title={title}
                 type={type}
                 aria-haspopup={ariaHaspopup}
-                ref={(ref) => { this.button = ref; }} >
+                ref={this.buttonRef} >
 
                 <LeftIcon iconName={iconName} position={iconPosition} />
                 {label}
