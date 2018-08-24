@@ -52,7 +52,7 @@ export default class ButtonMenu extends Component {
         const { isOpen } = this.state;
         const { className } = this.props;
 
-        return classnames('slds-dropdown-trigger slds-dropdown-trigger_click', {
+        return classnames('slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last', {
             'slds-is-open': isOpen,
         }, className);
     }
@@ -328,8 +328,7 @@ ButtonMenu.propTypes = {
     menuAlignment: PropTypes.oneOf([
         'left', 'right', 'bottom',
     ]),
-     /** The body of the component. This is what will be displayed inside the menu.
-    * MenuItem component childrens */
+    /** The body of the component. This is what will be displayed inside the menu. */
     children: PropTypes.node,
     /** The Lightning Design System name of the icon used as a fallback when
     * the image fails to load. Names are written in the format {sprite_name}:{icon_name}

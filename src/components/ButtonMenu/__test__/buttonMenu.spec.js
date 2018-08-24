@@ -129,7 +129,7 @@ describe('<ButtonMenu/>', () => {
             </ButtonMenu>,
         );
         component.find('ButtonIcon').simulate('click');
-        expect(component.find('div[role="presentation"]').prop('className')).toBe('slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open');
+        expect(component.find('div[role="presentation"]').prop('className')).toBe('slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last slds-is-open');
     });
     it('should have the right class names', () => {
         const component = renderer.create(

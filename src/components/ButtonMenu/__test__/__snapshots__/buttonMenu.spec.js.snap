@@ -2,7 +2,7 @@
 
 exports[`<ButtonMenu/> should have the right class names 1`] = `
 <div
-  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+  className="slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last"
   onKeyDown={[Function]}
   role="presentation"
   style={Object {}}
@@ -44,7 +44,7 @@ exports[`<ButtonMenu/> should have the right class names 1`] = `
 
 exports[`<ButtonMenu/> should have the right class names when menuAlignment is left and isLoading is true 1`] = `
 <div
-  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+  className="slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last"
   onKeyDown={[Function]}
   role="presentation"
   style={Object {}}
@@ -102,7 +102,7 @@ exports[`<ButtonMenu/> should have the right class names when menuAlignment is l
 
 exports[`<ButtonMenu/> should have the right class names when menuAlignment is right and menuSize is xx-small 1`] = `
 <div
-  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+  className="slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last"
   onKeyDown={[Function]}
   role="presentation"
   style={Object {}}
@@ -144,7 +144,7 @@ exports[`<ButtonMenu/> should have the right class names when menuAlignment is r
 
 exports[`<ButtonMenu/> should have the right class names when menuSize is large 1`] = `
 <div
-  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+  className="slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last"
   onKeyDown={[Function]}
   role="presentation"
   style={Object {}}
@@ -186,7 +186,7 @@ exports[`<ButtonMenu/> should have the right class names when menuSize is large 
 
 exports[`<ButtonMenu/> should have the right class names when menuSize is medium 1`] = `
 <div
-  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+  className="slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last"
   onKeyDown={[Function]}
   role="presentation"
   style={Object {}}
@@ -228,7 +228,7 @@ exports[`<ButtonMenu/> should have the right class names when menuSize is medium
 
 exports[`<ButtonMenu/> should have the right class names when menuSize is small 1`] = `
 <div
-  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+  className="slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last"
   onKeyDown={[Function]}
   role="presentation"
   style={Object {}}
@@ -270,7 +270,7 @@ exports[`<ButtonMenu/> should have the right class names when menuSize is small 
 
 exports[`<ButtonMenu/> should have the right class names when menuSize is x-small 1`] = `
 <div
-  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+  className="slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last"
   onKeyDown={[Function]}
   role="presentation"
   style={Object {}}
