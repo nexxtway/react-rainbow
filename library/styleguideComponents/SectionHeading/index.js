@@ -14,11 +14,18 @@ const GithubStarsBadge = GithubStars(({ stars }) => (
         variant="lightest" />
 ));
 
+function resolveTitle(title) {
+    if (title === 'Getting Started') {
+        return 'Overview';
+    }
+    return title;
+}
+
 export default function SectionHeading({ children }) {
     return (
             <header className="slds-border_bottom slds-p-bottom_large slds-grid slds-grid_align-spread">
                 <h1 className="slds-text-heading_large slds-react-component-title-text">
-                    {children}
+                    {resolveTitle(children)}
                 </h1>
                 <div className="slds-grid slds-grid_vertical-align-center">
                     <div>

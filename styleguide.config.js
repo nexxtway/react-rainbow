@@ -30,6 +30,7 @@ module.exports = {
         {
             name: 'Getting Started',
             sectionDepth: 1,
+            content: 'library/pages/overview.md',
             sections: [
                 {
                     name: 'Overview',
