@@ -9,9 +9,9 @@ import Footer from './footer';
 import Actions from './actions';
 
 /**
- * Cards are used to apply a container around a
- * related grouping of information.
- */
+* Cards are used to apply a container around a
+* related grouping of information.
+*/
 export default function Card(props) {
     const {
         className,
@@ -53,13 +53,11 @@ Card.propTypes = {
     /** The Lightning Design System name of the icon used as a fallback when
     * the image fails to load. Names are written in the format {sprite_name}:{icon_name}
     * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed.
-    * The icon is displayed in the header to the left of the title */
+    * The icon is displayed in the header to the left of the title. */
     iconName: iconNamePropType,
     /** Actions are components such as button or buttonIcon. Actions are displayed in the header. */
     actions: PropTypes.node,
-    /** The body of the component. In markup, this is everything in the body of the card */
-    children: PropTypes.node,
-    /** The footer can include text or another component */
+    /** The footer can include text or another component. */
     footer: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
@@ -69,14 +67,19 @@ Card.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /**
+    * This prop that should not be visible in the documentation.
+    * @ignore
+    */
+    children: PropTypes.node,
 };
 
 Card.defaultProps = {
     iconName: '',
     actions: null,
-    children: null,
     footer: null,
     isLoading: false,
     className: undefined,
     style: {},
+    children: null,
 };

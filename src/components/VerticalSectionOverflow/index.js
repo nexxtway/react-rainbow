@@ -75,20 +75,23 @@ export default class VerticalSectionOverflow extends Component {
 }
 
 VerticalSectionOverflow.propTypes = {
-    /** The label to show when the section is collapsed */
+    /** The label to show when the section is collapsed. */
     collapsedLabel: PropTypes.node,
-    /** The label to show when the section is expanded */
+    /** The label to show when the section is expanded. */
     expandedLabel: PropTypes.node,
-    /** The state of the overflow */
+    /** The state of the overflow. */
     expanded: PropTypes.bool,
-    /** The content body section */
-    children: PropTypes.node,
+    /** A description for assistive sreen readers. */
+    assistiveText: PropTypes.string,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied for the outer element. */
     style: PropTypes.object,
-    /** A description for assistive sreen readers. */
-    assistiveText: PropTypes.string,
+    /**
+    * This prop that should not be visible in the documentation.
+    * @ignore
+    */
+    children: PropTypes.node,
 };
 
 VerticalSectionOverflow.defaultProps = {
@@ -97,6 +100,6 @@ VerticalSectionOverflow.defaultProps = {
     expanded: false,
     className: undefined,
     style: {},
-    children: null,
     assistiveText: undefined,
+    children: null,
 };

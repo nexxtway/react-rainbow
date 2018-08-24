@@ -48,7 +48,7 @@ export default function ProgressBar(props) {
 }
 
 ProgressBar.propTypes = {
-    /** The percentage value of the progress bar. It must be between 0 and 100 */
+    /** The percentage value of the progress bar. It must be between 0 and 100. */
     value: PropTypes.number,
     /** The size of the progress bar. Valid values are x-small, small, medium, and large.
     * The default value is medium. */
@@ -66,7 +66,7 @@ ProgressBar.propTypes = {
     variant: PropTypes.oneOf([
         'default', 'circular',
     ]),
-    /** A description for assistive sreen readers */
+    /** A description for assistive sreen readers. */
     assistiveText: PropTypes.string,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,

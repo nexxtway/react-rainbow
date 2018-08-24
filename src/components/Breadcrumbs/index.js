@@ -22,17 +22,19 @@ export default function Breadcrumbs(props) {
 }
 
 Breadcrumbs.propTypes = {
-    /** This is what will be displayed inside the breadcrumbs. It is a list of
-     Breadcrumb component childrens */
-    children: PropTypes.node,
-     /** A CSS class for the outer element, in addition to the component's base classes. */
+    /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
-     /** An object with custom style applied to the outer element. */
+    /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /**
+    * This prop that should not be visible in the documentation.
+    * @ignore
+    */
+    children: PropTypes.node,
 };
 
 Breadcrumbs.defaultProps = {
-    children: null,
     className: undefined,
     style: {},
+    children: null,
 };

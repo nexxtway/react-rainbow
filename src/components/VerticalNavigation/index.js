@@ -42,8 +42,6 @@ export default function VerticalNavigation(props) {
 }
 
 VerticalNavigation.propTypes = {
-    /** The content body section. */
-    children: PropTypes.node,
     /** Name of the nagivation item to make active. */
     selectedItem: PropTypes.node,
     /** Action fired when an item is selected.
@@ -60,10 +58,14 @@ VerticalNavigation.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied for the outer element. */
     style: PropTypes.object,
+    /**
+    * This prop that should not be visible in the documentation.
+    * @ignore
+    */
+    children: PropTypes.node,
 };
 
 VerticalNavigation.defaultProps = {
-    children: null,
     selectedItem: null,
     onSelect: () => {},
     compact: false,
@@ -71,4 +73,5 @@ VerticalNavigation.defaultProps = {
     ariaLabel: undefined,
     className: '',
     style: {},
+    children: null,
 };

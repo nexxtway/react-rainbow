@@ -34,7 +34,7 @@ export default function Avatar(props) {
 
 Avatar.propTypes = {
     /** The URL for the image.
-    It take precedence over the initials and icon */
+    It take precedence over the initials and icon. */
     src: PropTypes.string,
     /** If the record name contains two words, like first and last name,
     * use the first capitalized letter of each. For records that only have a single word name,
@@ -51,7 +51,7 @@ Avatar.propTypes = {
         'default', 'circle',
     ]),
     /** The size of the avatar. Valid values are x-small, small, medium, and large.
-    * This value defaults to medium */
+    * This value defaults to medium. */
     size: PropTypes.oneOf([
         'x-small',
         'small',
@@ -64,7 +64,7 @@ Avatar.propTypes = {
     ]),
     /** Displays tooltip text when the mouse moves over the element. */
     title: PropTypes.string,
-    /** A description for assistive sreen readers */
+    /** A description for assistive sreen readers. */
     assistiveText: PropTypes.string,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,

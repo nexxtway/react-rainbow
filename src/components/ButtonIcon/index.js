@@ -166,7 +166,7 @@ ButtonIcon.propTypes = {
     onFocus: PropTypes.func,
     /** The action triggered when the element releases focus. */
     onBlur: PropTypes.func,
-    /** A description for assistive sreen readers */
+    /** A description for assistive sreen readers. */
     assistiveText: PropTypes.string,
     /** Indicates that the element has a popup context menu or sub-level menu. */
     ariaHaspopup: PropTypes.bool,

@@ -66,7 +66,7 @@ Icon.propTypes = {
     /** The Lightning Design System name of the icon used as a fallback when
     * the image fails to load. Names are written in the format {sprite_name}:{icon_name}
     * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed.
-    * The icon is displayed in the header to the left of the title */
+    * The icon is displayed in the header to the left of the title. */
     iconName: iconNamePropType.isRequired,
     /** The size of the icon. Options include xx-small, x-small, small, medium, or large.
     * This value defaults to medium. */
@@ -88,7 +88,7 @@ Icon.propTypes = {
     ]),
     /** Displays tooltip text when the mouse moves over the element. */
     title: PropTypes.string,
-    /** A description for assistive sreen readers */
+    /** A description for assistive sreen readers. */
     assistiveText: PropTypes.string,
     /** It is an object with custom style applied to the svg element. */
     svgStyle: PropTypes.object,

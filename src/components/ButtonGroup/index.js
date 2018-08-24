@@ -21,12 +21,15 @@ export default function ButtonGroup(props) {
 }
 
 ButtonGroup.propTypes = {
-    /** The list of buttons component or button element */
-    children: PropTypes.node,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /**
+    * This prop that should not be visible in the documentation.
+    * @ignore
+    */
+    children: PropTypes.node,
 };
 
 ButtonGroup.defaultProps = {

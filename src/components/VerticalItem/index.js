@@ -69,7 +69,7 @@ VerticalItem.propTypes = {
     iconName: iconNameUtilityPropType,
     /** The URL of the page that the navigation item goes to. */
     href: PropTypes.string,
-    /** The notification comoponent to display on the right */
+    /** The notification comoponent to display on the right. */
     notification: PropTypes.node,
     /** Event fired when the item is clicked. */
     onClick: PropTypes.func,

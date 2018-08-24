@@ -57,9 +57,9 @@ Spinner.propTypes = {
         'medium',
         'large',
     ]),
-    /** Show/Hide the spinner */
+    /** Show/Hide the spinner. */
     isVisible: PropTypes.bool,
-    /** A description for assistive sreen readers */
+    /** A description for assistive sreen readers. */
     assistiveText: PropTypes.string,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,

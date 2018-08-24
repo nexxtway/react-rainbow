@@ -19,6 +19,9 @@ import {
     ENTER_KEY,
 } from './../../constants';
 
+/**
+* A Button Menu offers a list of actions or functions that a user can access.
+*/
 export default class ButtonMenu extends Component {
     constructor(props) {
         super(props);
@@ -328,8 +331,6 @@ ButtonMenu.propTypes = {
     menuAlignment: PropTypes.oneOf([
         'left', 'right', 'bottom',
     ]),
-    /** The body of the component. This is what will be displayed inside the menu. */
-    children: PropTypes.node,
     /** The Lightning Design System name of the icon used as a fallback when
     * the image fails to load. Names are written in the format {sprite_name}:{icon_name}
     * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed.
@@ -342,7 +343,7 @@ ButtonMenu.propTypes = {
     isLoading: PropTypes.bool,
     /** Displays tooltip text when the mouse moves over the element. */
     title: PropTypes.string,
-    /** A description for assistive sreen readers */
+    /** A description for assistive sreen readers. */
     assistiveText: PropTypes.string,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
     tabIndex: PropTypes.number,
@@ -354,6 +355,11 @@ ButtonMenu.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /**
+    * This prop that should not be visible in the documentation.
+    * @ignore
+    */
+    children: PropTypes.node,
 };
 
 ButtonMenu.defaultProps = {
@@ -361,7 +367,6 @@ ButtonMenu.defaultProps = {
     buttonSize: 'medium',
     menuSize: 'xx-small',
     menuAlignment: 'left',
-    children: null,
     iconName: 'utility:down',
     disabled: false,
     isLoading: false,
@@ -372,4 +377,5 @@ ButtonMenu.defaultProps = {
     onBlur: () => {},
     className: '',
     style: {},
+    children: null,
 };
