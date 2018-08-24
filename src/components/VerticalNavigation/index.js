@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Provider } from './context';
 
+/**
+* Navigation represents a list of links that either take the user to another page
+* or parts of the page the user is in.
+*/
 export default function VerticalNavigation(props) {
     const {
         ariaLabel,
@@ -38,7 +42,7 @@ export default function VerticalNavigation(props) {
 }
 
 VerticalNavigation.propTypes = {
-    /** The content body section */
+    /** The content body section. */
     children: PropTypes.node,
     /** Name of the nagivation item to make active. */
     selectedItem: PropTypes.node,
@@ -50,7 +54,7 @@ VerticalNavigation.propTypes = {
     /** Specify true when the vertical navigation is sitting on top of a shaded background.
     * This value defaults to false. */
     shaded: PropTypes.bool,
-    /** The aria label attribute for the navigation component */
+    /** The aria label attribute for the navigation component. */
     ariaLabel: PropTypes.string,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
