@@ -7,7 +7,7 @@
 ![](images/windows-actions.svg)
 ######  
 ```jsx static
-    import { Button } from '@react-lightning-components';
+    import { Button } from 'react-slds';
 
     <Button label="Hello World!" variant="brand" onClick={handleClick} />
 
@@ -15,12 +15,12 @@
 
 ## Recommended Usage (ES6 modules)
 
-##### Recommended usage requires that your babel presets are set up correctly. create-react-app and environments that do not transpile code within node_modules are not compatible with the component import below. All the examples on the documentation site use this syntax. You can use the Babel preset, @react-lightning-components, to get started. This preset will keep Babel compatible with React Lightning Components and allow ES6 module benefits such as tree-shaking.
+##### Recommended usage requires that your babel presets are set up correctly. create-react-app and environments that do not transpile code within node_modules are not compatible with the component import below. All the examples on the documentation site use this syntax. You can use the Babel preset, 'react-slds', to get started. This preset will keep Babel compatible with React Lightning Components and allow ES6 module benefits such as tree-shaking.
 
 ![](images/windows-actions.svg)
 ######  
 ```jsx static
-    import Button from '@react-lightning-components/components/button';
+    import Button from 'react-slds/components/button';
 
     <Button label="Hello World!" variant="brand" onClick={handleClick} />
 

@@ -14,8 +14,17 @@
     padding: 16px 24px 24px 24px !important;
 }
 
+.CodeMirror {
+    background: #061c3f !important;
+    background-color: #061c3f !important;
+}
+
 .CodeMirror-line {
     color: #a1a7b0 !important;
+}
+
+.CodeMirror-scroll {
+    overflow: hidden !important;
 }
 
 .cm-tag {
