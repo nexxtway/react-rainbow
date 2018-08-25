@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { uniqueId } from './../../libs/utils';
@@ -8,104 +8,126 @@ import Help from './help';
 import Error from './error';
 import Label from './label';
 
-const inputId = uniqueId('input');
-const inlineTextLabelId = uniqueId('inline-text-label');
-const errorMessageId = uniqueId('error-message');
-
 /**
-* Text inputs are used for freeform data entry.
-*/
-export default function Input(props) {
-    const {
-        className,
-        style,
-        value,
-        onChange,
-        label,
-        error,
-        placeholder,
-        disabled,
-        readOnly,
-        required,
-        tabIndex,
-        type,
-        maxLength,
-        minLength,
-        pattern,
-        labelClassName,
-        iconName,
-        iconPosition,
-        bottomHelpText,
-        isBare,
-        isCentered,
-    } = props;
-    const isRequiredOrHasError = !!(required || error);
+ * Text inputs are used for freeform data entry.
+ */
+export default class Input extends Component {
+    constructor(props) {
+        super(props);
+        this.inputId = uniqueId('input');
+        this.inlineTextLabelId = uniqueId('inline-text-label');
+        this.errorMessageId = uniqueId('error-message');
+    }
 
-    const getContainerClassNames = () => classnames('slds-form-element', {
-        'slds-has-error': error,
-    }, className);
+    getContainerClassNames() {
+        const {
+            className,
+            error,
+        } = this.props;
+        return classnames('slds-form-element', { 'slds-has-error': error }, className);
+    }
 
-    const getFormControlClassNames = () => classnames('slds-form-element__control', {
-        'slds-input-has-icon': iconName,
-        [`slds-input-has-icon_${iconPosition}`]: iconName,
-    });
+    getFormControlClassNames() {
+        const {
+            iconName,
+            iconPosition,
+        } = this.props;
+        return classnames('slds-form-element__control', {
+            'slds-input-has-icon': iconName,
+            [`slds-input-has-icon_${iconPosition}`]: iconName,
+        });
+    }
 
-    const getInputClassNames = () => classnames('slds-input', {
-        'slds-input_bare': isBare,
-        'slds-input_counter': isCentered,
-    });
+    getInputClassNames() {
+        const {
+            isBare,
+            isCentered,
+        } = this.props;
+        return classnames('slds-input', {
+            'slds-input_bare': isBare,
+            'slds-input_counter': isCentered,
+        });
+    }
 
-    const getInlineTextLabelId = () => {
+    getInlineTextLabelId() {
+        const {
+            bottomHelpText,
+        } = this.props;
         if (bottomHelpText) {
-            return inlineTextLabelId;
+            return this.inlineTextLabelId;
         }
         return undefined;
-    };
+    }
 
-    const getErrorMessageId = () => {
+    getErrorMessageId() {
+        const { error } = this.props;
         if (error) {
-            return errorMessageId;
+            return this.errorMessageId;
         }
         return undefined;
-    };
+    }
 
-    return (
-        <div className={getContainerClassNames()} style={style}>
-            <Label
-                className={labelClassName}
-                label={label}
-                required={isRequiredOrHasError}
-                inputId={inputId}
-                id={getInlineTextLabelId()} />
+    render() {
+        const {
+            style,
+            value,
+            onChange,
+            label,
+            error,
+            placeholder,
+            disabled,
+            readOnly,
+            tabIndex,
+            type,
+            maxLength,
+            minLength,
+            pattern,
+            labelClassName,
+            iconName,
+            iconPosition,
+            bottomHelpText,
+            required,
+        } = this.props;
+        const isRequiredOrHasError = !!(required || error);
 
-            <div className={getFormControlClassNames()}>
-                <Icon
-                    iconName={iconName}
-                    position={iconPosition}
-                    error={error} />
-
-                <input
-                    id={inputId}
-                    type={type}
-                    className={getInputClassNames()}
-                    value={value}
-                    placeholder={placeholder}
-                    onChange={onChange}
-                    tabIndex={tabIndex}
-                    disabled={disabled}
-                    readOnly={readOnly}
+        return (
+            <div className={this.getContainerClassNames()} style={style}>
+                <Label
+                    className={labelClassName}
+                    label={label}
                     required={isRequiredOrHasError}
-                    maxLength={maxLength}
-                    minLength={minLength}
-                    pattern={pattern}
-                    aria-labelledby={getInlineTextLabelId()}
-                    aria-describedby={getErrorMessageId()} />
+                    inputId={this.inputId}
+                    id={this.getInlineTextLabelId()} />
 
+                <div className={this.getFormControlClassNames()}>
+                    <Icon
+                        iconName={iconName}
+                        position={iconPosition}
+                        error={error} />
+
+                    <input
+                        id={this.inputId}
+                        type={type}
+                        className={this.getInputClassNames()}
+                        value={value}
+                        placeholder={placeholder}
+                        onChange={onChange}
+                        tabIndex={tabIndex}
+                        disabled={disabled}
+                        readOnly={readOnly}
+                        required={isRequiredOrHasError}
+                        maxLength={maxLength}
+                        minLength={minLength}
+                        pattern={pattern}
+                        aria-labelledby={this.getInlineTextLabelId()}
+                        aria-describedby={this.getErrorMessageId()} />
+
+                </div>
+                <Help text={bottomHelpText} />
+                <Error id={this.getErrorMessageId()} error={error} />
             </div>
-            <Help text={bottomHelpText} />
-            <Error id={getErrorMessageId()} error={error} />
-        </div>
-    );
+        );
+    }
 }
 
 Input.propTypes = {
@@ -133,12 +155,12 @@ Input.propTypes = {
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
     placeholder: PropTypes.string,
     /** The Lightning Design System name of the icon used as a fallback when
-    * the image fails to load. Names are written in the format {sprite_name}:{icon_name}
-    * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed.
-    * Only utility icons can be used in this component. */
+     * the image fails to load. Names are written in the format {sprite_name}:{icon_name}
+     * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed.
+     * Only utility icons can be used in this component. */
     iconName: iconNamePropType,
     /** Describes the position of the icon with respect to body. Options include left and right.
-    * This value defaults to left. */
+     * This value defaults to left. */
     iconPosition: PropTypes.oneOf([
         'left', 'right',
     ]),
@@ -149,17 +171,17 @@ Input.propTypes = {
     /** Shows the help message below the input. */
     bottomHelpText: PropTypes.node,
     /** Specifies that an input field must be filled out before submitting the form.
-    * This value defaults to false. */
+     * This value defaults to false. */
     required: PropTypes.bool,
     /** Specifies the regular expression that the input's value is checked against.
-    * This attribute is supported for text, search, url, tel, email, and password types. */
+     * This attribute is supported for text, search, url, tel, email, and password types. */
     pattern: PropTypes.string,
     /** Specifies that an input text will be centered. This value defaults to false. */
     isCentered: PropTypes.bool,
     /** Specifies that an input will not have border. This value defaults to false. */
     isBare: PropTypes.bool,
     /** Specifies that an input field must be filled out before submitting the form.
-    * This value defaults to false. */
+     * This value defaults to false. */
     error: PropTypes.node,
     /** Specifies that an input element should be disabled. This value defaults to false. */
     disabled: PropTypes.bool,

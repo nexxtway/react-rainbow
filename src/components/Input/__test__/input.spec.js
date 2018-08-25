@@ -1,6 +1,5 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import renderer from 'react-test-renderer';
 import Input from './../index';
 
 describe('<Input/>', () => {
@@ -137,40 +136,46 @@ describe('<Input/>', () => {
             position: 'right',
         });
     });
-    it('should have the right class names when have a custom class', () => {
-        const component = renderer.create(
-            <Input className="my-custom-class-name" />,
+    it('should have the right class name in the container element', () => {
+        const component = mount(
+            <Input />,
         );
-        expect(component).toMatchSnapshot();
+        expect(component.find('div[className="slds-form-element"]').exists()).toBe(true);
+    });
+    it('should have the right class name in the form element control container', () => {
+        const component = mount(
+            <Input />,
+        );
+        expect(component.find('div[className="slds-form-element__control"]').exists()).toBe(true);
     });
     it('should have the right class names when iconName is passed', () => {
-        const component = renderer.create(
+        const component = mount(
             <Input iconName="utility:activity" />,
         );
-        expect(component).toMatchSnapshot();
+        expect(component.find('div[className="slds-form-element__control slds-input-has-icon slds-input-has-icon_left"]').exists()).toBe(true);
     });
     it('should have the right class names when iconName is passed and iconPosition is right', () => {
-        const component = renderer.create(
+        const component = mount(
             <Input iconName="utility:activity" iconPosition="right" />,
         );
-        expect(component).toMatchSnapshot();
+        expect(component.find('div[className="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"]').exists()).toBe(true);
     });
     it('should have the right class names when error is passed', () => {
-        const component = renderer.create(
+        const component = mount(
             <Input error="Error text" />,
         );
-        expect(component).toMatchSnapshot();
+        expect(component.find('div[className="slds-form-element slds-has-error"]').exists()).toBe(true);
     });
     it('should have the right class names when isBare', () => {
-        const component = renderer.create(
+        const component = mount(
             <Input isBare />,
         );
-        expect(component).toMatchSnapshot();
+        expect(component.find('input').prop('className')).toBe('slds-input slds-input_bare');
     });
     it('should have the right class names when isCentered', () => {
-        const component = renderer.create(
+        const component = mount(
             <Input isCentered />,
         );
-        expect(component).toMatchSnapshot();
+        expect(component.find('input').prop('className')).toBe('slds-input slds-input_counter');
     });
 });
