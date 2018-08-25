@@ -81,6 +81,12 @@ module.exports = {
             marginTop: -20,
         },
     },
+    PlaygroundError: {
+        root: {
+            padding: '16px 24px',
+            whiteSpace: 'pre-wrap !important',
+        },
+    },
     MarkdownHeading: {
         spacing: {
             marginBottom: 8,
