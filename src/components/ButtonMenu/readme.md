@@ -9,7 +9,7 @@
                     <MenuItem label="Menu Item One" />
                     <MenuItem label="Menu Item Two" />
                     <MenuItem label="Menu Item Three" />
-                    <li className="slds-has-divider_top-space" role="separator"></li>
+                    <MenuDivider variant="space" />
                     <MenuItem label="Menu Item Four" />
                 </ButtonMenu>
             </ButtonGroup>
