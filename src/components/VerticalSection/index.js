@@ -1,26 +1,40 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { uniqueId } from '../../libs/utils';
+import { Provider } from './context';
 import Header from './header';
 
-function VerticalSection(props) {
-    const {
-        label,
-        className,
-        style,
-        children,
-    } = props;
 
-    const getClassNames = () => classnames('slds-nav-vertical__section', className);
+class VerticalSection extends Component {
+    constructor(props) {
+        super(props);
+        this.entityHeaderId = uniqueId('entity-header');
+    }
 
-    return (
-        <div className={getClassNames()} style={style}>
-            <Header label={label} />
-            <ul>
-                {children}
-            </ul>
-        </div>
-    );
+    getClassNames() {
+        const { className } = this.props;
+        return classnames('slds-nav-vertical__section', className);
+    }
+
+    render() {
+        const {
+            label,
+            style,
+            children,
+        } = this.props;
+
+        return (
+            <div className={this.getClassNames()} style={style}>
+                <Header label={label} id={this.entityHeaderId} />
+                <Provider value={this.entityHeaderId}>
+                    <ul>
+                        {children}
+                    </ul>
+                </Provider>
+            </div>
+        );
+    }
 }
 
 VerticalSection.propTypes = {
