@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import iconNameUtilityPropType from './../../propTypes/iconNameUtilityPropType';
-import LeftIcon from './leftIcon';
-import RightIcon from './rightIcon';
+import Icon from './icon';
 
 /**
 * Buttons are clickable items used to perform an action.
@@ -62,6 +61,9 @@ export default class Button extends Component {
             iconPosition,
         } = this.props;
 
+        const showLeftIcon = !!(iconName && iconPosition === 'left');
+        const showRightIcon = !!(iconName && iconPosition === 'right');
+
         return (
             <button
                 data-id="button-element"
@@ -77,9 +79,19 @@ export default class Button extends Component {
                 aria-haspopup={ariaHaspopup}
                 ref={this.buttonRef} >
 
-                <LeftIcon iconName={iconName} position={iconPosition} />
+                <Icon
+                    data-id="left-icon"
+                    iconName={iconName}
+                    position={iconPosition}
+                    isVisible={showLeftIcon} />
+
                 {label}
-                <RightIcon iconName={iconName} position={iconPosition} />
+                <Icon
+                    data-id="right-icon"
+                    iconName={iconName}
+                    position={iconPosition}
+                    isVisible={showRightIcon} />
+
             </button>
         );
     }
