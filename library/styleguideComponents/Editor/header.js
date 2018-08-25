@@ -1,17 +1,27 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import windowsActionsSvg from '../../../assets/images/windows-actions.svg';
+import ButtonIcon from '../../../src/components/ButtonIcon';
 import './styles.css';
 
-function Header() {
+function Header({ iconName, onClick, onBlur }) {
     return (
         <div className="slds-react-editor-header">
             <img src={windowsActionsSvg} alt="widnows actions img" />
+            <ButtonIcon
+                iconName={iconName}
+                className="slds-m-around--none"
+                onClick={onClick}
+                onBlur={onBlur}
+                assistiveText="copy to clipboard" />
         </div>
     );
 }
 
-Header.propTypes = {};
-
-Header.defaultProps = {};
+Header.propTypes = {
+    iconName: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired,
+    onBlur: PropTypes.func.isRequired,
+};
 
 export default Header;
