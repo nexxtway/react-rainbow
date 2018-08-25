@@ -100,6 +100,6 @@ VerticalItem.defaultProps = {
     href: 'javascript:void(0);',
     onClick: () => {},
     notification: null,
-    className: '',
-    style: {},
+    className: undefined,
+    style: undefined,
 };

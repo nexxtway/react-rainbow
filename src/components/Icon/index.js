@@ -103,8 +103,8 @@ Icon.propTypes = {
 Icon.defaultProps = {
     className: undefined,
     svgClassName: undefined,
-    style: {},
-    svgStyle: {},
+    style: undefined,
+    svgStyle: undefined,
     title: undefined,
     assistiveText: undefined,
     size: 'medium',

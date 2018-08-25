@@ -149,6 +149,6 @@ MenuItem.defaultProps = {
     disabled: false,
     onClick: () => {},
     title: undefined,
-    className: '',
-    style: {},
+    className: undefined,
+    style: undefined,
 };

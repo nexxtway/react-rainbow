@@ -35,6 +35,6 @@ Breadcrumbs.propTypes = {
 
 Breadcrumbs.defaultProps = {
     className: undefined,
-    style: {},
+    style: undefined,
     children: null,
 };

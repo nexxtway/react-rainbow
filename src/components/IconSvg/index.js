@@ -39,6 +39,6 @@ IconSvg.propTypes = {
 };
 
 IconSvg.defaultProps = {
-    className: '',
-    style: {},
+    className: undefined,
+    style: undefined,
 };

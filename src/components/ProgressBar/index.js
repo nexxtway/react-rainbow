@@ -80,6 +80,6 @@ ProgressBar.defaultProps = {
     color: 'brand',
     variant: 'default',
     assistiveText: '',
-    className: '',
-    style: {},
+    className: undefined,
+    style: undefined,
 };

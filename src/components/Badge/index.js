@@ -75,5 +75,5 @@ Badge.defaultProps = {
     iconPosition: 'left',
     variant: 'default',
     className: undefined,
-    style: {},
+    style: undefined,
 };

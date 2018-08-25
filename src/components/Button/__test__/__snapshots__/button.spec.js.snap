@@ -9,7 +9,6 @@ exports[`<Button/> should have the right class names 1`] = `
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
-  style={Object {}}
   type="button"
 >
   Button Label
@@ -25,7 +24,6 @@ exports[`<Button/> should have the right class names when variant brand 1`] = `
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
-  style={Object {}}
   type="button"
 >
   Button Label
@@ -41,7 +39,6 @@ exports[`<Button/> should have the right class names when variant destructive 1`
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
-  style={Object {}}
   type="button"
 >
   Button Label
@@ -57,7 +54,6 @@ exports[`<Button/> should have the right class names when variant inverse 1`] = 
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
-  style={Object {}}
   type="button"
 >
   Button Label
@@ -73,7 +69,6 @@ exports[`<Button/> should have the right class names when variant neutral and ha
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
-  style={Object {}}
   type="button"
 >
   Button Label
@@ -89,7 +84,6 @@ exports[`<Button/> should have the right class names when variant outline-brand 
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
-  style={Object {}}
   type="button"
 >
   Button Label
@@ -105,7 +99,6 @@ exports[`<Button/> should have the right class names when variant success 1`] = 
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
-  style={Object {}}
   type="button"
 >
   Button Label

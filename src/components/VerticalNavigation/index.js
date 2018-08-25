@@ -71,7 +71,7 @@ VerticalNavigation.defaultProps = {
     compact: false,
     shaded: false,
     ariaLabel: undefined,
-    className: '',
-    style: {},
+    className: undefined,
+    style: undefined,
     children: null,
 };

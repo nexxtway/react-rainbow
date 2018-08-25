@@ -9,7 +9,6 @@ exports[`<ButtonIcon/> should have the right class names 1`] = `
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
-  style={Object {}}
   type="button"
 />
 `;
@@ -23,13 +22,11 @@ exports[`<ButtonIcon/> should have the right class names when variant is base an
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
-  style={Object {}}
   type="button"
 >
   <svg
     aria-hidden={true}
     className="slds-button__icon slds-button__icon_large"
-    style={Object {}}
   >
     <use
       xlinkHref="/icons/utility-sprite/svg/symbols.svg#activity"
@@ -48,13 +45,11 @@ exports[`<ButtonIcon/> should have the right class names when variant is base an
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
-  style={Object {}}
   type="button"
 >
   <svg
     aria-hidden={true}
     className="slds-button__icon"
-    style={Object {}}
   >
     <use
       xlinkHref="/icons/utility-sprite/svg/symbols.svg#activity"
@@ -73,13 +68,11 @@ exports[`<ButtonIcon/> should have the right class names when variant is base an
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
-  style={Object {}}
   type="button"
 >
   <svg
     aria-hidden={true}
     className="slds-button__icon slds-button__icon_small"
-    style={Object {}}
   >
     <use
       xlinkHref="/icons/utility-sprite/svg/symbols.svg#activity"
@@ -98,13 +91,11 @@ exports[`<ButtonIcon/> should have the right class names when variant is base an
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
-  style={Object {}}
   type="button"
 >
   <svg
     aria-hidden={true}
     className="slds-button__icon slds-button__icon_x-small"
-    style={Object {}}
   >
     <use
       xlinkHref="/icons/utility-sprite/svg/symbols.svg#activity"
@@ -123,13 +114,11 @@ exports[`<ButtonIcon/> should have the right class names when variant is base an
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
-  style={Object {}}
   type="button"
 >
   <svg
     aria-hidden={true}
     className="slds-button__icon slds-button__icon_x-small"
-    style={Object {}}
   >
     <use
       xlinkHref="/icons/utility-sprite/svg/symbols.svg#activity"
@@ -148,7 +137,6 @@ exports[`<ButtonIcon/> should have the right class names when variant is border 
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
-  style={Object {}}
   type="button"
 />
 `;
@@ -162,7 +150,6 @@ exports[`<ButtonIcon/> should have the right class names when variant is border-
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
-  style={Object {}}
   type="button"
 />
 `;
@@ -176,7 +163,6 @@ exports[`<ButtonIcon/> should have the right class names when variant is border-
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
-  style={Object {}}
   type="button"
 />
 `;
@@ -190,7 +176,6 @@ exports[`<ButtonIcon/> should have the right class names when variant is brand a
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
-  style={Object {}}
   type="button"
 />
 `;
@@ -204,7 +189,6 @@ exports[`<ButtonIcon/> should have the right class names when variant is contain
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
-  style={Object {}}
   type="button"
 />
 `;
@@ -218,7 +202,6 @@ exports[`<ButtonIcon/> should have the right class names when variant is inverse
   onBlur={[Function]}
   onClick={[Function]}
   onFocus={[Function]}
-  style={Object {}}
   type="button"
 />
 `;

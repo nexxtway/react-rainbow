@@ -7,7 +7,6 @@ exports[`<ProgressBar/> should have the right class names when color success 1`]
   aria-valuenow={0}
   className="slds-progress-bar slds-progress-bar_medium"
   role="progressbar"
-  style={Object {}}
 >
   <span
     className="slds-progress-bar__value slds-progress-bar__value_success"
@@ -27,7 +26,6 @@ exports[`<ProgressBar/> should have the right class names when size large 1`] = 
   aria-valuenow={0}
   className="slds-progress-bar slds-progress-bar_large"
   role="progressbar"
-  style={Object {}}
 >
   <span
     className="slds-progress-bar__value"
@@ -47,7 +45,6 @@ exports[`<ProgressBar/> should have the right class names when size medium 1`] =
   aria-valuenow={0}
   className="slds-progress-bar slds-progress-bar_medium"
   role="progressbar"
-  style={Object {}}
 >
   <span
     className="slds-progress-bar__value"
@@ -67,7 +64,6 @@ exports[`<ProgressBar/> should have the right class names when size small 1`] = 
   aria-valuenow={0}
   className="slds-progress-bar slds-progress-bar_small"
   role="progressbar"
-  style={Object {}}
 >
   <span
     className="slds-progress-bar__value"
@@ -87,7 +83,6 @@ exports[`<ProgressBar/> should have the right class names when size x-small 1`] 
   aria-valuenow={0}
   className="slds-progress-bar slds-progress-bar_x-small"
   role="progressbar"
-  style={Object {}}
 >
   <span
     className="slds-progress-bar__value"
@@ -107,7 +102,6 @@ exports[`<ProgressBar/> should have the right class names when variant circular 
   aria-valuenow={0}
   className="slds-progress-bar slds-progress-bar_medium slds-progress-bar_circular"
   role="progressbar"
-  style={Object {}}
 >
   <span
     className="slds-progress-bar__value"
@@ -127,7 +121,6 @@ exports[`<ProgressBar/> should have the right class names when variant, color an
   aria-valuenow={0}
   className="slds-progress-bar slds-progress-bar_medium custom-class"
   role="progressbar"
-  style={Object {}}
 >
   <span
     className="slds-progress-bar__value"

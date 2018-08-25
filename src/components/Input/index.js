@@ -198,5 +198,5 @@ Input.defaultProps = {
     tabIndex: undefined,
     className: undefined,
     labelClassName: undefined,
-    style: {},
+    style: undefined,
 };

@@ -3,7 +3,6 @@
 exports[`<VerticalSectionOverflow/> should have the right class names when a custom className is passed 1`] = `
 <div
   className="slds-nav-vertical__overflow custom-class-name"
-  style={Object {}}
 >
   <button
     aria-controls="search-results-1"
@@ -14,7 +13,6 @@ exports[`<VerticalSectionOverflow/> should have the right class names when a cus
     <svg
       aria-hidden={true}
       className="slds-button__icon slds-button__icon_left"
-      style={Object {}}
     >
       <use
         xlinkHref="/icons/utility-sprite/svg/symbols.svg#chevronright"

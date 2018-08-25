@@ -3,7 +3,6 @@
 exports[`<Card/> should have the right class names 1`] = `
 <article
   className="slds-card"
-  style={Object {}}
 >
   <div
     className="slds-card__header slds-grid"
@@ -16,12 +15,10 @@ exports[`<Card/> should have the right class names 1`] = `
       >
         <span
           className="slds-icon_container slds-icon-custom-custom72"
-          style={Object {}}
         >
           <svg
             aria-hidden={true}
             className="slds-icon slds-icon_small"
-            style={Object {}}
           >
             <use
               xlinkHref="/icons/custom-sprite/svg/symbols.svg#custom72"

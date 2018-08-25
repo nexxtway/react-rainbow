@@ -5,7 +5,6 @@ exports[`<MenuItem/> should have the right class names when a custom className i
   className="slds-dropdown__item my-class-name"
   onClick={[Function]}
   role="presentation"
-  style={Object {}}
 >
   <a
     aria-disabled={false}
@@ -25,7 +24,6 @@ exports[`<MenuItem/> should have the right class names when variant is header an
 <li
   className="slds-dropdown__header slds-truncate my-header-class-name"
   role="separator"
-  style={Object {}}
 >
   <span
     className="slds-text-title_caps"

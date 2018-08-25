@@ -82,5 +82,5 @@ Avatar.defaultProps = {
     title: undefined,
     assistiveText: undefined,
     className: undefined,
-    style: {},
+    style: undefined,
 };

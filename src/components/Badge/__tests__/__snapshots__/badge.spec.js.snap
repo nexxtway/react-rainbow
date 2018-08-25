@@ -3,7 +3,6 @@
 exports[`<Badge/> should have the right class names when variant default and have a custom class 1`] = `
 <span
   className="slds-align_absolute-center slds-badge slds-badge_default custom-class"
-  style={Object {}}
 >
   Badge label
 </span>
@@ -12,7 +11,6 @@ exports[`<Badge/> should have the right class names when variant default and hav
 exports[`<Badge/> should have the right class names when variant inverse 1`] = `
 <span
   className="slds-align_absolute-center slds-badge slds-badge_inverse"
-  style={Object {}}
 >
   Inverse Badge
 </span>
@@ -21,7 +19,6 @@ exports[`<Badge/> should have the right class names when variant inverse 1`] = `
 exports[`<Badge/> should have the right class names when variant lightest 1`] = `
 <span
   className="slds-align_absolute-center slds-badge slds-badge_lightest"
-  style={Object {}}
 >
   Lightest Badge
 </span>

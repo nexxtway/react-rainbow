@@ -55,8 +55,8 @@ VerticalSection.propTypes = {
 
 VerticalSection.defaultProps = {
     label: null,
-    className: '',
-    style: {},
+    className: undefined,
+    style: undefined,
     children: null,
 };
 

@@ -35,5 +35,5 @@ ButtonGroup.propTypes = {
 ButtonGroup.defaultProps = {
     children: null,
     className: undefined,
-    style: {},
+    style: undefined,
 };

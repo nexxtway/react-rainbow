@@ -4,7 +4,6 @@ exports[`<MenuItemIcon/> should have the right class names when the position is 
 <svg
   aria-hidden={true}
   className="slds-icon slds-icon_x-small slds-icon-text-default slds-m-right_small"
-  style={Object {}}
 >
   <use
     xlinkHref="/icons/utility-sprite/svg/symbols.svg#user"
@@ -17,7 +16,6 @@ exports[`<MenuItemIcon/> should have the right class names when the position is 
 <svg
   aria-hidden={true}
   className="slds-icon slds-icon_x-small slds-icon-text-default slds-m-left_small slds-shrink-none"
-  style={Object {}}
 >
   <use
     xlinkHref="/icons/utility-sprite/svg/symbols.svg#user"

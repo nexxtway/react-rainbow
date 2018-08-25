@@ -189,5 +189,5 @@ ButtonIcon.defaultProps = {
     assistiveText: undefined,
     ariaHaspopup: false,
     className: undefined,
-    style: {},
+    style: undefined,
 };

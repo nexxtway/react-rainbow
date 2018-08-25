@@ -4,7 +4,6 @@ exports[`<LeftIcon in the Button compoent/> should have the right class names wh
 <svg
   aria-hidden={true}
   className="slds-button__icon slds-button__icon_left"
-  style={Object {}}
 >
   <use
     xlinkHref="/icons/utility-sprite/svg/symbols.svg#world"

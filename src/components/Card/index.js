@@ -80,6 +80,6 @@ Card.defaultProps = {
     footer: null,
     isLoading: false,
     className: undefined,
-    style: {},
+    style: undefined,
     children: null,
 };

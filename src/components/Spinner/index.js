@@ -73,5 +73,5 @@ Spinner.defaultProps = {
     isVisible: true,
     assistiveText: null,
     className: undefined,
-    style: {},
+    style: undefined,
 };

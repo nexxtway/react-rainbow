@@ -5,7 +5,6 @@ exports[`<ButtonMenu/> should have the right class names 1`] = `
   className="slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last"
   onKeyDown={[Function]}
   role="presentation"
-  style={Object {}}
 >
   <button
     aria-haspopup={true}
@@ -15,13 +14,11 @@ exports[`<ButtonMenu/> should have the right class names 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    style={Object {}}
     type="button"
   >
     <svg
       aria-hidden={true}
       className="slds-button__icon"
-      style={Object {}}
     >
       <use
         xlinkHref="/icons/utility-sprite/svg/symbols.svg#down"
@@ -47,7 +44,6 @@ exports[`<ButtonMenu/> should have the right class names when menuAlignment is l
   className="slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last"
   onKeyDown={[Function]}
   role="presentation"
-  style={Object {}}
 >
   <button
     aria-haspopup={true}
@@ -57,13 +53,11 @@ exports[`<ButtonMenu/> should have the right class names when menuAlignment is l
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    style={Object {}}
     type="button"
   >
     <svg
       aria-hidden={true}
       className="slds-button__icon"
-      style={Object {}}
     >
       <use
         xlinkHref="/icons/utility-sprite/svg/symbols.svg#down"
@@ -81,7 +75,6 @@ exports[`<ButtonMenu/> should have the right class names when menuAlignment is l
       <div
         className="slds-spinner slds-spinner_small"
         role="status"
-        style={Object {}}
       >
         <span
           className="slds-assistive-text"
@@ -105,7 +98,6 @@ exports[`<ButtonMenu/> should have the right class names when menuAlignment is r
   className="slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last"
   onKeyDown={[Function]}
   role="presentation"
-  style={Object {}}
 >
   <button
     aria-haspopup={true}
@@ -115,13 +107,11 @@ exports[`<ButtonMenu/> should have the right class names when menuAlignment is r
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    style={Object {}}
     type="button"
   >
     <svg
       aria-hidden={true}
       className="slds-button__icon"
-      style={Object {}}
     >
       <use
         xlinkHref="/icons/utility-sprite/svg/symbols.svg#down"
@@ -147,7 +137,6 @@ exports[`<ButtonMenu/> should have the right class names when menuSize is large 
   className="slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last"
   onKeyDown={[Function]}
   role="presentation"
-  style={Object {}}
 >
   <button
     aria-haspopup={true}
@@ -157,13 +146,11 @@ exports[`<ButtonMenu/> should have the right class names when menuSize is large 
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    style={Object {}}
     type="button"
   >
     <svg
       aria-hidden={true}
       className="slds-button__icon"
-      style={Object {}}
     >
       <use
         xlinkHref="/icons/utility-sprite/svg/symbols.svg#down"
@@ -189,7 +176,6 @@ exports[`<ButtonMenu/> should have the right class names when menuSize is medium
   className="slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last"
   onKeyDown={[Function]}
   role="presentation"
-  style={Object {}}
 >
   <button
     aria-haspopup={true}
@@ -199,13 +185,11 @@ exports[`<ButtonMenu/> should have the right class names when menuSize is medium
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    style={Object {}}
     type="button"
   >
     <svg
       aria-hidden={true}
       className="slds-button__icon"
-      style={Object {}}
     >
       <use
         xlinkHref="/icons/utility-sprite/svg/symbols.svg#down"
@@ -231,7 +215,6 @@ exports[`<ButtonMenu/> should have the right class names when menuSize is small 
   className="slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last"
   onKeyDown={[Function]}
   role="presentation"
-  style={Object {}}
 >
   <button
     aria-haspopup={true}
@@ -241,13 +224,11 @@ exports[`<ButtonMenu/> should have the right class names when menuSize is small 
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    style={Object {}}
     type="button"
   >
     <svg
       aria-hidden={true}
       className="slds-button__icon"
-      style={Object {}}
     >
       <use
         xlinkHref="/icons/utility-sprite/svg/symbols.svg#down"
@@ -273,7 +254,6 @@ exports[`<ButtonMenu/> should have the right class names when menuSize is x-smal
   className="slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last"
   onKeyDown={[Function]}
   role="presentation"
-  style={Object {}}
 >
   <button
     aria-haspopup={true}
@@ -283,13 +263,11 @@ exports[`<ButtonMenu/> should have the right class names when menuSize is x-smal
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
-    style={Object {}}
     type="button"
   >
     <svg
       aria-hidden={true}
       className="slds-button__icon"
-      style={Object {}}
     >
       <use
         xlinkHref="/icons/utility-sprite/svg/symbols.svg#down"

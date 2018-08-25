@@ -3,12 +3,10 @@
 exports[`<BadgeIcon/> in the Badge component should have the right class names when the label is not passed 1`] = `
 <span
   className="slds-icon_container slds-align_absolute-center"
-  style={Object {}}
 >
   <svg
     aria-hidden={true}
     className="slds-icon slds-icon_xx-small slds-icon-text-default"
-    style={Object {}}
   >
     <use
       xlinkHref="/icons/utility-sprite/svg/symbols.svg#world"
@@ -21,12 +19,10 @@ exports[`<BadgeIcon/> in the Badge component should have the right class names w
 exports[`<BadgeIcon/> in the Badge component should have the right class names when the label is passed and iconPosition is left 1`] = `
 <span
   className="slds-icon_container slds-align_absolute-center slds-m-right_xx-small"
-  style={Object {}}
 >
   <svg
     aria-hidden={true}
     className="slds-icon slds-icon_xx-small slds-icon-text-default"
-    style={Object {}}
   >
     <use
       xlinkHref="/icons/utility-sprite/svg/symbols.svg#world"
@@ -39,12 +35,10 @@ exports[`<BadgeIcon/> in the Badge component should have the right class names w
 exports[`<BadgeIcon/> in the Badge component should have the right class names when the label is passed and iconPosition is right 1`] = `
 <span
   className="slds-icon_container slds-align_absolute-center slds-m-left_xx-small"
-  style={Object {}}
 >
   <svg
     aria-hidden={true}
     className="slds-icon slds-icon_xx-small slds-icon-text-default"
-    style={Object {}}
   >
     <use
       xlinkHref="/icons/utility-sprite/svg/symbols.svg#world"

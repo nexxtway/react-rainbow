@@ -150,5 +150,5 @@ Button.defaultProps = {
     onBlur: () => {},
     ariaHaspopup: false,
     className: undefined,
-    style: {},
+    style: undefined,
 };

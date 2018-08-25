@@ -376,6 +376,6 @@ ButtonMenu.defaultProps = {
     onFocus: () => {},
     onBlur: () => {},
     className: '',
-    style: {},
+    style: undefined,
     children: null,
 };

@@ -45,5 +45,5 @@ Breadcrumb.defaultProps = {
     href: 'javascript:void(0);',
     onClick: () => {},
     className: undefined,
-    style: {},
+    style: undefined,
 };

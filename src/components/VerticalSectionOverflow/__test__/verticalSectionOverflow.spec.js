@@ -54,7 +54,6 @@ describe('<VerticalSectionOverflow/>', () => {
         expect(component.find('IconSvg').props()).toEqual({
             iconName: 'utility:chevronright',
             className: 'slds-button__icon slds-button__icon_left',
-            style: expect.any(Object),
         });
     });
     it('should pass the right props to Label component when use default values', () => {

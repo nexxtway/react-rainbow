@@ -103,7 +103,7 @@ VerticalSectionOverflow.defaultProps = {
     collapsedLabel: 'Show More',
     expanded: false,
     className: undefined,
-    style: {},
+    style: undefined,
     assistiveText: undefined,
     children: null,
 };

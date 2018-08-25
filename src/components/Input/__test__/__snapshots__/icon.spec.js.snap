@@ -4,7 +4,6 @@ exports[`<InputIcon/> should have the right class names when iconName is passed 
 <svg
   aria-hidden={true}
   className="slds-icon slds-input__icon slds-icon-text-default slds-input__icon_left"
-  style={Object {}}
 >
   <use
     xlinkHref="/icons/utility-sprite/svg/symbols.svg#activity"
@@ -17,7 +16,6 @@ exports[`<InputIcon/> should have the right class names when iconName is passed 
 <svg
   aria-hidden={true}
   className="slds-icon slds-input__icon slds-icon-text-default slds-input__icon_right"
-  style={Object {}}
 >
   <use
     xlinkHref="/icons/utility-sprite/svg/symbols.svg#activity"
@@ -30,7 +28,6 @@ exports[`<InputIcon/> should have the right class names when there is an error a
 <svg
   aria-hidden={true}
   className="slds-input__icon slds-input__icon_left"
-  style={Object {}}
 >
   <use
     xlinkHref="/icons/utility-sprite/svg/symbols.svg#activity"
@@ -43,7 +40,6 @@ exports[`<InputIcon/> should have the right class names when there is an error a
 <svg
   aria-hidden={true}
   className="slds-input__icon slds-input__icon_right"
-  style={Object {}}
 >
   <use
     xlinkHref="/icons/utility-sprite/svg/symbols.svg#activity"

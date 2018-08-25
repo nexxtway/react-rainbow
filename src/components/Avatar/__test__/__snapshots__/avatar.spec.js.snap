@@ -3,16 +3,13 @@
 exports[`<Avatar/> should have the right class names 1`] = `
 <span
   className="slds-avatar slds-avatar_medium"
-  style={Object {}}
 >
   <span
     className="slds-icon_container slds-icon-standard-user"
-    style={Object {}}
   >
     <svg
       aria-hidden={true}
       className="slds-icon"
-      style={Object {}}
     >
       <use
         xlinkHref="/icons/standard-sprite/svg/symbols.svg#user"
@@ -26,16 +23,13 @@ exports[`<Avatar/> should have the right class names 1`] = `
 exports[`<Avatar/> should have the right class names when size is large 1`] = `
 <span
   className="slds-avatar slds-avatar_large"
-  style={Object {}}
 >
   <span
     className="slds-icon_container slds-icon-standard-user"
-    style={Object {}}
   >
     <svg
       aria-hidden={true}
       className="slds-icon"
-      style={Object {}}
     >
       <use
         xlinkHref="/icons/standard-sprite/svg/symbols.svg#user"
@@ -49,16 +43,13 @@ exports[`<Avatar/> should have the right class names when size is large 1`] = `
 exports[`<Avatar/> should have the right class names when size is medium 1`] = `
 <span
   className="slds-avatar slds-avatar_medium"
-  style={Object {}}
 >
   <span
     className="slds-icon_container slds-icon-standard-user"
-    style={Object {}}
   >
     <svg
       aria-hidden={true}
       className="slds-icon"
-      style={Object {}}
     >
       <use
         xlinkHref="/icons/standard-sprite/svg/symbols.svg#user"
@@ -72,16 +63,13 @@ exports[`<Avatar/> should have the right class names when size is medium 1`] = `
 exports[`<Avatar/> should have the right class names when size is small 1`] = `
 <span
   className="slds-avatar slds-avatar_small"
-  style={Object {}}
 >
   <span
     className="slds-icon_container slds-icon-standard-user"
-    style={Object {}}
   >
     <svg
       aria-hidden={true}
       className="slds-icon"
-      style={Object {}}
     >
       <use
         xlinkHref="/icons/standard-sprite/svg/symbols.svg#user"
@@ -95,16 +83,13 @@ exports[`<Avatar/> should have the right class names when size is small 1`] = `
 exports[`<Avatar/> should have the right class names when variant is circle and size is x-small 1`] = `
 <span
   className="slds-avatar slds-avatar_circle slds-avatar_x-small"
-  style={Object {}}
 >
   <span
     className="slds-icon_container slds-icon-standard-user"
-    style={Object {}}
   >
     <svg
       aria-hidden={true}
       className="slds-icon"
-      style={Object {}}
     >
       <use
         xlinkHref="/icons/standard-sprite/svg/symbols.svg#user"
