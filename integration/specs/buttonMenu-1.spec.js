@@ -1,7 +1,7 @@
 const MENU_BTN = '#rsg-root > div > main > section > section > div > div > article > div > article > div > div > div > header > div > div > div > button';
 const ITEM_1_CONTAINER = 'li=Menu Item One';
 const ITEM_1 = 'a=Menu Item One';
-const ITEM_2 = 'a=Menu Item Two';
+const ITEM_2 = '//*[@id="rsg-root"]/div/main/section/section/div/div/article/div/article/div/div/div/header/div/div/div/div/ul/li[2]/a';
 const ITEM_4 = 'a=Menu Item Four';
 const REACT_LOGO = 'img[alt*="react lightning logo"]';
 const ESCAPE_KEY = '\uE00C';
@@ -22,7 +22,6 @@ describe('ButtonMenu base example', () => {
     afterEach(() => {
         browser.keys(ESCAPE_KEY);
     });
-
     it('should open the menu when click on the button', () => {
         browser.click(MENU_BTN);
         expect(browser.isVisible(ITEM_1_CONTAINER)).toBe(true);
@@ -54,8 +53,8 @@ describe('ButtonMenu base example', () => {
     });
     it('should move to the next item when press arrow down', () => {
         browser.click(MENU_BTN);
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ARROW_DOWN_KEY);
+        browser.keys('ArrowDown');
+        browser.keys('ArrowDown');
         expect(browser.hasFocus(ITEM_2)).toBe(true);
     });
     it('should move to the previous item when press arrow up', () => {
@@ -84,6 +83,7 @@ describe('ButtonMenu base example', () => {
     });
     // this is a test for a bug.
     // it('should put to the "Menu Item Four"(next menu item applicable) focused the "Menu Item Three" is focused and press the key "m"', () => {
+    //     browser.url('/#!/ButtonMenu/1');
     //     browser.click(MENU_BTN);
     //     browser.keys(ARROW_UP_KEY);
     //     browser.keys(ARROW_UP_KEY);

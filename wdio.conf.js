@@ -137,7 +137,7 @@ exports.config = {
             outputDir: './junit-results',
         },
     },
-    //
+
     // Options to be passed to Jasmine.
     jasmineNodeOpts: {
         //

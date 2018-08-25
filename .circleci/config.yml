@@ -6,7 +6,7 @@ version: 2
 jobs:
   build_and_test:
     docker:
-      - image: circleci/node:8.9.4-browsers
+      - image: circleci/node:8.9.4-stretch-browsers
 
     working_directory: ~/repo
 
@@ -16,7 +16,7 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-{{ checksum "yarn.lock" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
@@ -25,7 +25,7 @@ jobs:
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
 
       - run: yarn lint
 
@@ -33,7 +33,7 @@ jobs:
 
   integration_tests:
     docker:
-      - image: circleci/node:8.9.4-browsers
+      - image: circleci/node:8.9.4-stretch-browsers
 
     working_directory: ~/repo
 
@@ -43,7 +43,7 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-{{ checksum "yarn.lock" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
@@ -60,6 +60,9 @@ jobs:
       - run:
           command: yarn start
           background: true
+          
+      - run: sleep 10
+          
       - run: yarn test:integration --headless
 
       - store_test_results:
