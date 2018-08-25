@@ -1,4 +1,4 @@
-export default function iconNameUtilityPropType(props, propName, componentName) {
+function iconNameUtilityPropTypeValidator(isRequired, props, propName, componentName) {
     const { iconName } = props;
     if (iconName !== undefined && iconName !== null && iconName !== '') {
         const [prefix] = iconName.split(':');
@@ -8,3 +8,8 @@ export default function iconNameUtilityPropType(props, propName, componentName) 
     }
     return null;
 }
+
+const iconNameUtilityPropType = iconNameUtilityPropTypeValidator.bind(null, false);
+iconNameUtilityPropType.isRequired = iconNameUtilityPropTypeValidator.bind(null, true);
+
+export default iconNameUtilityPropType;

@@ -1,5 +1,5 @@
 const allowedPrefixes = ['action', 'custom', 'doctype', 'standard', 'utility'];
-export default function iconNamePropType(props, propName, componentName) {
+function iconNamePropTypeValidator(isrequired, props, propName, componentName) {
     const { iconName } = props;
     if (iconName !== undefined && iconName !== null && iconName !== '') {
         const [prefix] = iconName.split(':');
@@ -9,3 +9,8 @@ export default function iconNamePropType(props, propName, componentName) {
     }
     return null;
 }
+
+const iconNamePropType = iconNamePropTypeValidator.bind(null, false);
+iconNamePropType.isRequired = iconNamePropTypeValidator.bind(null, true);
+
+export default iconNamePropType;
