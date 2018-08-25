@@ -25,6 +25,7 @@ module.exports = {
         TabButtonRenderer: path.join(__dirname, 'library/styleguideComponents/CodeEditorButton'),
         TableOfContentsRenderer: path.join(__dirname, 'library/styleguideComponents/TableOfContents'),
         ComponentsListRenderer: path.join(__dirname, 'library/styleguideComponents/ComponentsList'),
+        Editor: path.join(__dirname, 'library/styleguideComponents/Editor'),
     },
     sections: [
         {
