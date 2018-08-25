@@ -53,6 +53,17 @@ describe('<AvatarContent/>', () => {
             }),
         );
     });
+    it('should pass standard:user as iconName when the sprite of the iconName passed is not standard', () => {
+        const component = mount(
+            <AvatarContent iconName="utility:user" title="Title" />,
+        );
+        expect(component.find('Icon').props()).toEqual(
+            expect.objectContaining({
+                iconName: 'standard:user',
+                title: 'Title',
+            }),
+        );
+    });
     it('should have the right class names when initials variant is default', () => {
         const component = renderer.create(
             <AvatarContent iconName="standard:user" initialsVariant="default" initials="JD" />,

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Icon from '../Icon';
 import normalizeInitials from './normalizeInitials';
+import isStandardSprite from './isStandardSprite';
 
 export default class AvatarContent extends Component {
     constructor(props) {
@@ -30,6 +31,14 @@ export default class AvatarContent extends Component {
         );
     }
 
+    getIconName() {
+        const { iconName } = this.props;
+        if (isStandardSprite(iconName)) {
+            return iconName;
+        }
+        return 'standard:user';
+    }
+
     handleImageError() {
         this.setState({ imageFailed: true });
     }
@@ -38,7 +47,6 @@ export default class AvatarContent extends Component {
         const {
             src,
             initials,
-            iconName,
             title,
         } = this.props;
         const { imageFailed } = this.state;
@@ -54,7 +62,7 @@ export default class AvatarContent extends Component {
                 </abbr>
             );
         }
-        return <Icon iconName={iconName} size="medium" title={title} />;
+        return <Icon iconName={this.getIconName()} size="medium" title={title} />;
     }
 }
 
