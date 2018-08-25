@@ -9,19 +9,10 @@
             <Button label="Button Base" />
         </div>
         <div className="slds-m-horizontal_medium">
-            <Button 
-                label={state.wasClicked ? 'Clicked!' : 'Button Neutral'} 
-                variant="neutral"
-                onClick={() => setState({ wasClicked: true })}                 
-            />
+            <Button label="Button Neutral" variant="neutral" />
         </div>
         <div className="slds-m-horizontal_medium">
-            <Button 
-                label={state.hasFocus ? 'Focused' : 'Button Outline Brand'} 
-                variant="outline-brand"
-                onFocus={() => setState({ hasFocus: true})}
-                onBlur={() => setState({ hasFocus: false})} 
-            />
+            <Button label="Button Outline Brand" variant="outline-brand" />
         </div>
     </div>
 
