@@ -33,7 +33,7 @@ vertical navigation
 
     <div>
         <GlobalHeader src="images/avatar2.jpg" />
-        <div className="slds-size_1-of-3 slds-color__background_gray-1 slds-p-vertical_medium slds-border_right">
+        <div className="slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-small-size_1-of-1 slds-color__background_gray-1 slds-p-vertical_medium slds-border_right">
             <SimpleVerticalNavigation />
         </div>
     </div>
@@ -71,7 +71,7 @@ compact vertical navigation with href
 
     <div>
         <GlobalHeader />
-        <div className="slds-size_1-of-3 slds-color__background_gray-1 slds-p-vertical_medium slds-border_right">
+        <div className="slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-small-size_1-of-1 slds-color__background_gray-1 slds-p-vertical_medium slds-border_right">
             <CompactVerticalNavigation />
         </div>
     </div>
@@ -119,7 +119,7 @@ vertical navigation with icons
 
     <div>
         <GlobalHeader />
-        <div className="slds-size_1-of-3 slds-color__background_gray-1 slds-p-vertical_medium slds-border_right">
+        <div className="slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-small-size_1-of-1 slds-color__background_gray-1 slds-p-vertical_medium slds-border_right">
             <VerticalNavigationWithIcons />
         </div>
     </div>
@@ -168,7 +168,7 @@ vertical navigation with notifications
 
     <div>
         <GlobalHeader />
-        <div className="slds-size_1-of-3 slds-color__background_gray-1 slds-p-vertical_medium slds-border_right">
+        <div className="slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-small-size_1-of-1 slds-color__background_gray-1 slds-p-vertical_medium slds-border_right">
             <VerticalNavigationWithNofifications />
         </div>
     </div>
@@ -209,7 +209,7 @@ shaded vertical navigation
 
     <div>
         <GlobalHeader />
-        <div className="slds-size_1-of-3 slds-p-vertical_medium slds-border_right">
+        <div className="slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-small-size_1-of-1 slds-color__background_gray-3 slds-p-vertical_medium slds-border_right">
             <ShadedVerticalNavigation />
         </div>
     </div>
@@ -252,7 +252,7 @@ vertical navigation expandable
 
     <div>
         <GlobalHeader />
-        <div className="slds-size_1-of-3 slds-color__background_gray-1 slds-p-vertical_medium slds-border_right">
+        <div className="slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-small-size_1-of-1 slds-color__background_gray-1 slds-p-vertical_medium slds-border_right">
             <ShadedVerticalNavigation />
         </div>
     </div>
