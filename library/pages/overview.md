@@ -8,19 +8,11 @@
 
 __installing with npm__
 
-![](images/windows-actions.svg)
-######  
-```sh
-  $ npm install react-slds --save
-```
+    <CodeEditor code="npm install react-slds --save" />
 
-__installing with npm__
+__installing with yarn__
 
-![](images/windows-actions.svg)
-######  
-```sh
-  $ yarn add react-slds
-```
+    <CodeEditor code="yarn add react-slds" />
 
 ## Project Overview
 

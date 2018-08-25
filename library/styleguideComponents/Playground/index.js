@@ -11,9 +11,9 @@ export default function PlaygroundRenderer(props) {
         tabBody,
         toolbar,
     } = props;
-    const { className, ...rest } = previewProps;
+    const { ...rest } = previewProps;
 
-    if (name === 'Icons') {
+    if (name === 'Icons' || name === 'Overview' || name === 'Usage') {
         return (
             <div className="slds-is-relative">
                 {preview}

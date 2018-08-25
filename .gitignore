@@ -19,6 +19,7 @@ coverage
 .env
 package-lock.json
 components
+!/library/pages/components
 !/src/components
 styleguide
 errorShots

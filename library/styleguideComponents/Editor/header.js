@@ -7,7 +7,7 @@ import './styles.css';
 function Header({ iconName, onClick, onBlur }) {
     return (
         <div className="slds-react-editor-header">
-            <img src={windowsActionsSvg} alt="widnows actions img" />
+            <img src={windowsActionsSvg} alt="widnows actions img" className="slds-m-left--x-small" />
             <ButtonIcon
                 iconName={iconName}
                 className="slds-m-around--none slds-p-right_x-small"

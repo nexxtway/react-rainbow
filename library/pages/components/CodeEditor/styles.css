@@ -1,0 +1,24 @@
+.slds-react-editor-header {
+    background: #04132c !important;
+    border-radius: 10px 10px 0 0;
+    height: 34px;
+    display: flex;
+    justify-content:  space-between;
+    padding-right: 8px;
+    align-items: center;
+}
+
+.react-codemirror2 {
+    border-radius: 0 0 5px 5px;
+    overflow-y: hidden;
+}
+
+.CodeMirror {
+    height: auto !important;
+}
+
+.CodeMirror-lines {
+    padding: 16px 24px 24px 24px !important;
+    font-family: Consolas, "Liberation Mono", Menlo, monospace;
+    height: auto;
+}

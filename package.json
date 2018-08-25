@@ -26,7 +26,8 @@
     "file-loader": "^1.1.11",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
-    "react-dom": "^16.4.2"
+    "react-dom": "^16.4.2",
+    "react-codemirror2": "^5.1.0"
   },
   "main": "components/index.js",
   "repository": {
