@@ -78,7 +78,7 @@ module.exports = {
             borderRadius: '0 0 5px 5px',
             borderColor: '#061c3f',
             overflow: 'auto',
-            marginTop: -20,
+            marginTop: -14,
         },
     },
     PlaygroundError: {

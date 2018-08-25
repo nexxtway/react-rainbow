@@ -10,10 +10,11 @@ function Header({ iconName, onClick, onBlur }) {
             <img src={windowsActionsSvg} alt="widnows actions img" />
             <ButtonIcon
                 iconName={iconName}
-                className="slds-m-around--none"
+                className="slds-m-around--none slds-p-right_x-small"
                 onClick={onClick}
                 onBlur={onBlur}
-                assistiveText="copy to clipboard" />
+                assistiveText="copy to clipboard"
+                variant="inverse" />
         </div>
     );
 }
