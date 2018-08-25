@@ -1,4 +1,4 @@
-vertical navigation
+##### vertical navigation
 
     class SimpleVerticalNavigation extends React.Component {
         constructor(props) {
@@ -39,7 +39,7 @@ vertical navigation
     </div>
 
 
-compact vertical navigation with href
+##### compact vertical navigation with href
 
     class CompactVerticalNavigation extends React.Component {
         constructor(props) {
@@ -76,7 +76,7 @@ compact vertical navigation with href
         </div>
     </div>
 
-vertical navigation with icons
+##### vertical navigation with icons
 
     class VerticalNavigationWithIcons extends React.Component {
         constructor(props) {
@@ -124,7 +124,7 @@ vertical navigation with icons
         </div>
     </div>
 
-vertical navigation with notifications
+##### vertical navigation with notifications
 
     class VerticalNavigationWithNofifications extends React.Component {
         constructor(props) {
@@ -174,7 +174,7 @@ vertical navigation with notifications
     </div>
     
 
-shaded vertical navigation
+##### shaded vertical navigation
 
     class ShadedVerticalNavigation extends React.Component {
         constructor(props) {
@@ -214,7 +214,7 @@ shaded vertical navigation
         </div>
     </div>
 
-vertical navigation expandable
+##### vertical navigation expandable
 
     class ShadedVerticalNavigation extends React.Component {
         constructor(props) {

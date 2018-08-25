@@ -1,4 +1,4 @@
-list loading using spinner - base - medium
+##### list loading using spinner - base - medium
 
     <div>
        <GlobalHeader src="images/avatar2.jpg" />
@@ -10,7 +10,7 @@ list loading using spinner - base - medium
     </div>
 
 
-full screen loading using spinner - brand - large
+##### full screen loading using spinner - brand - large
 
     const spinnerTextStyles = {
         color: '#0070d2',
@@ -23,7 +23,7 @@ full screen loading using spinner - brand - large
         <h1 className="slds-text-heading_small slds-m-vertical_x-large" style={spinnerTextStyles}>Loading…</h1>
     </div>
 
-lazy loading using spinner - base - small
+##### lazy loading using spinner - base - small
 
     const spinner = (
         <div className="slds-align_absolute-center">
