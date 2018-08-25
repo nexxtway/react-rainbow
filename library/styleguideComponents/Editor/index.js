@@ -4,6 +4,8 @@ import copy from 'clipboard-copy';
 import Editor from 'react-styleguidist/lib/rsg-components/Editor/Editor';
 import EditorHeader from './header';
 
+const editorConfig = { lineNumbers: true };
+
 export default class EditorLoader extends Component {
     constructor(props) {
         super(props);
@@ -30,7 +32,7 @@ export default class EditorLoader extends Component {
                     onClick={this.handleCopyToClipboardClick}
                     onBlur={this.handleOnBlur}
                     iconName={iconName} />
-                <Editor {...this.props} />
+                <Editor {...this.props} editorConfig={editorConfig} />
             </div>
         );
     }
