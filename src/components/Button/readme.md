@@ -1,4 +1,4 @@
-simple buttons
+##### simple buttons
 
     initialState = { 
         hasFocus: false, 
@@ -26,7 +26,7 @@ simple buttons
     </div>
 
 
-button variants
+##### button variants
 
     <div className="slds-p-vertical_large slds-align_absolute-center slds-wrap" >
         <div className="slds-m-horizontal_medium">
@@ -41,7 +41,7 @@ button variants
     </div>
 
 
-buttons with icon
+##### buttons with icon
 
     <div className="slds-p-vertical_large slds-align_absolute-center slds-wrap" >
         <div className="slds-m-horizontal_medium">
@@ -67,7 +67,7 @@ buttons with icon
     </div>
 
 
-disabled buttons
+##### disabled buttons
 
     <div className="slds-p-vertical_large slds-align_absolute-center slds-wrap" >
         <div className="slds-m-horizontal_medium">
@@ -82,7 +82,7 @@ disabled buttons
     </div>
 
 
-buttons inverse
+##### buttons inverse
 
     const buttonsContainerStyles = {
         backgroundColor: '#16325c',

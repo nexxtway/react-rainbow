@@ -1,4 +1,4 @@
-button icon base
+##### button icon base
 
     <div className="slds-p-vertical_large slds-p-left_medium slds-grid slds-media_center slds-wrap">
         <div className="slds-m-horizontal_medium">
@@ -16,8 +16,7 @@ button icon base
     </div>
 
 
-button icon border
-
+##### button icon border
     <div className="slds-p-vertical_large slds-p-left_medium slds-grid slds-media_center slds-wrap">
         <div className="slds-m-horizontal_medium">
             <ButtonIcon iconName="utility:broadcast" variant="border" size="medium" />
@@ -34,7 +33,7 @@ button icon border
     </div>
 
 
-button icon filled
+##### button icon filled
 
     <div className="slds-p-vertical_large slds-p-left_medium slds-grid slds-media_center">
         <div className="slds-m-horizontal_medium">
@@ -46,7 +45,7 @@ button icon filled
     </div>
 
 
-button icon disabled
+##### button icon disabled
 
     <div className="slds-p-vertical_large slds-p-left_medium slds-grid slds-media_center">
         <div className="slds-m-horizontal_medium">
@@ -64,7 +63,7 @@ button icon disabled
     </div>
 
 
-button icon inverse
+##### button icon inverse
 
     const buttonsIconContainerStyles = {
         backgroundColor: '#16325c',

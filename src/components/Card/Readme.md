@@ -1,4 +1,4 @@
-card default with illustration
+##### card default with illustration
 
     <div className="slds-p-around_large">
         <Card className="slds-card_boundary">
@@ -10,7 +10,7 @@ card default with illustration
     </div>
 
 
-card with header and button
+##### card with header and button
 
     <div className="slds-m-around_large">    
         <Card
@@ -22,7 +22,7 @@ card with header and button
     </div>
 
 
-card with related list
+##### card with related list
 
     <div className="slds-m-around_large">  
         <Card
@@ -37,7 +37,7 @@ card with related list
     </div>
 
 
-card loading
+##### card loading
 
     <div className="slds-m-around_large">
         <Card
@@ -50,7 +50,7 @@ card loading
     </div>
 
 
-card with header and illustration
+##### card with header and illustration
 
     <div className="slds-m-around_large">
         <Card

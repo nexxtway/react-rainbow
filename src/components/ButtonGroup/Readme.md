@@ -1,4 +1,4 @@
-button group
+##### button group
 
     <div className="slds-p-vertical_large slds-align_absolute-center slds-wrap">
         <div className="slds-m-horizontal_medium">
@@ -18,7 +18,7 @@ button group
     </div>
 
 
-button group with overflow menu icon
+##### button group with overflow menu icon
 
     <div className="slds-p-vertical_large slds-align_absolute-center slds-m-horizontal_medium">
         <ButtonGroup>
@@ -30,7 +30,7 @@ button group with overflow menu icon
     </div>
 
 
-button group with icon
+##### button group with icon
 
     <div className="slds-p-vertical_large slds-align_absolute-center slds-wrap">
         <div className="slds-m-horizontal_medium">
@@ -62,7 +62,7 @@ button group with icon
         </div>
     </div>
 
-button group with button disabled
+##### button group with button disabled
 
     <div className="slds-p-vertical_large slds-align_absolute-center slds-wrap">
         <div className="slds-m-horizontal_medium">
@@ -105,7 +105,7 @@ button group with button disabled
     </div>
 
 
-buttons group with button inverse
+##### buttons group with button inverse
 
     const buttonsContainerStyles = {
         backgroundColor: '#16325c',

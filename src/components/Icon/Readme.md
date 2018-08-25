@@ -1,4 +1,4 @@
-action icons
+##### action icons
 
     <div className="slds-p-vertical_large slds-p-left_medium slds-grid slds-media_center slds-wrap">
         <div className="slds-m-horizontal_medium">
@@ -33,7 +33,7 @@ action icons
 
     </div>
 
-custom icons
+##### custom icons
 
     <div className="slds-p-vertical_large slds-p-left_medium slds-grid slds-media_center slds-wrap">
         <div className="slds-m-horizontal_medium">
@@ -67,7 +67,7 @@ custom icons
         </div>
     </div>
 
-doctype icons
+##### doctype icons
 
     <div className="slds-p-vertical_large slds-p-left_medium slds-grid slds-media_center slds-wrap">
         <div className="slds-m-horizontal_medium"> 
@@ -118,7 +118,7 @@ doctype icons
         </div>
     </div>
 
-standard icons
+##### standard icons
 
     <div className="slds-p-vertical_large slds-p-left_medium slds-grid slds-media_center slds-wrap">
         <div className="slds-m-horizontal_medium">
@@ -152,7 +152,7 @@ standard icons
         </div>
     </div>
 
-default utility icons
+##### default utility icons
 
     <div className="slds-p-vertical_large slds-p-left_medium slds-grid slds-media_center slds-wrap">
         <div className="slds-m-horizontal_medium">
@@ -201,7 +201,7 @@ default utility icons
         </div>
     </div>
 
-utility icons variants
+##### utility icons variants
 
     <div className="slds-p-vertical_large slds-p-left_medium slds-grid slds-media_center slds-wrap">
         <div className="slds-m-horizontal_medium">

@@ -1,4 +1,4 @@
-badges without icon
+##### badges without icon
 
     <div className="slds-p-vertical_large slds-align--absolute-center slds-wrap">
         <div className="slds-m-horizontal_medium">
@@ -12,7 +12,7 @@ badges without icon
         </div>
     </div>
 
-badges with icon
+##### badges with icon
 
     <div className="slds-p-vertical_large slds-align--absolute-center slds-wrap">
         <div className="slds-m-horizontal_medium">

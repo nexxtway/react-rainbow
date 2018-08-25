@@ -1,4 +1,4 @@
-button menu base
+##### button menu base
 
     <div className="slds-m-bottom_xx-large slds-p-bottom_xx-large">
         <GlobalHeader className="slds-p-bottom_xx-large slds-m-bottom_xx-large">
@@ -17,7 +17,7 @@ button menu base
     </div>    
 
 
-button menu with subheaders
+##### button menu with subheaders
 
     <div className="slds-m-bottom_xx-large slds-p-bottom_xx-large">
         <GlobalHeader className="slds-p-bottom_xx-large slds-m-bottom_xx-large" src="images/avatar2.jpg">
@@ -38,7 +38,7 @@ button menu with subheaders
     </div>
 
 
-button menu with icons
+##### button menu with icons
 
     <div className="slds-m-bottom_xx-large slds-p-bottom_xx-large">
         <GlobalHeader className="slds-p-bottom_xx-large slds-m-bottom_xx-large" src="images/avatar3.jpg">
@@ -78,7 +78,7 @@ button menu with icons
     </div>
 
 
-button menu position variants
+##### button menu position variants
 
     <GlobalHeader className="slds-m-bottom_xx-large slds-p-bottom_xx-large" src="images/avatar2.jpg">
         <ButtonGroup className="slds-m-right_medium">
@@ -105,7 +105,7 @@ button menu position variants
     </div>
 
 
-button menu width variants
+##### button menu width variants
 
     <GlobalHeader className="slds-m-bottom_xx-large slds-p-bottom_xx-large">
         <ButtonGroup className="slds-m-right_medium">
@@ -147,7 +147,7 @@ button menu width variants
     </div>
 
 
-button menu loading
+##### button menu loading
 
     <div className="slds-m-bottom_xx-large slds-p-bottom_xx-large">
         <GlobalHeader className="slds-p-bottom_xx-large slds-m-bottom_xx-large" src="images/avatar3.jpg">

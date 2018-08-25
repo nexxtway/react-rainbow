@@ -1,4 +1,4 @@
-avatar base
+##### avatar base
 
     <div className="slds-p-vertical_large slds-p-left_medium slds-grid slds-media_center slds-wrap">
         <div className="slds-m-horizontal_medium">
@@ -36,7 +36,7 @@ avatar base
     </div>
 
 
-avatar circle
+##### avatar circle
 
     <div className="slds-p-vertical_large slds-p-left_medium slds-grid slds-media_center slds-wrap">
         <div className="slds-m-horizontal_medium">
@@ -77,7 +77,7 @@ avatar circle
     </div>
 
 
-fallback user icon
+##### fallback user icon
 
     <div className="slds-p-vertical_x-large slds-p-left_medium slds-grid slds-media_center slds-wrap">
         <div className="slds-m-horizontal_medium">
@@ -97,7 +97,7 @@ fallback user icon
     </div>
 
 
-fallback icon
+##### fallback icon
 
     <div className="slds-p-vertical_x-large slds-p-left_medium slds-grid slds-media_center slds-wrap">
         <div className="slds-m-horizontal_medium">
@@ -179,7 +179,7 @@ fallback icon
     </div>
 
 
-fallback user initials
+##### fallback user initials
 
     <div className="slds-p-vertical_x-large slds-p-left_medium slds-grid slds-media_center slds-wrap">
         <div className="slds-m-horizontal_medium">
@@ -201,7 +201,7 @@ fallback user initials
     </div>
 
 
-fallback user initials inverse
+##### fallback user initials inverse
 
     const avatarContainerStyles = {
         backgroundColor: '#16325c',

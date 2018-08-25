@@ -81,4 +81,9 @@ module.exports = {
             marginTop: -20,
         },
     },
+    MarkdownHeading: {
+        spacing: {
+            marginBottom: 8,
+        },
+    },
 };

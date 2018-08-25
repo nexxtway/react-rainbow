@@ -1,18 +1,18 @@
-progressBar base
+##### progressBar base
 
     <div className="slds-p-around_x-large" >
         <ProgressBar value={25} /> 
     </div>
    
 
-progressBar success
+##### progressBar success
 
     <div className="slds-p-around_x-large" >
         <ProgressBar value={50} color="success" /> 
     </div>
 
 
-descriptive progressBar
+##### descriptive progressBar
 
     <div className="slds-p-around_x-large" >
         <div class="slds-grid slds-grid_align-spread slds-p-bottom_x-small">
@@ -25,14 +25,14 @@ descriptive progressBar
     </div>
 
 
-circular progressBar
+##### circular progressBar
 
     <div className="slds-p-around_x-large" >
         <ProgressBar value={75} variant="circular" />
     </div>
 
 
-progressBar with size variants
+##### progressBar with size variants
 
     <div className="slds-p-around_large">
         <div className="slds-p-around_medium">
@@ -52,3 +52,4 @@ progressBar with size variants
             <span class="slds-grid slds-m-top_x-small slds-text-color_weak">size: large</span>
         </div>
     </div>
+    

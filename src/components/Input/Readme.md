@@ -1,4 +1,4 @@
-input base
+##### input base
 
     <div className="slds-p-vertical_large slds-p-horizontal_xx-large">
         <Input
@@ -7,7 +7,7 @@ input base
     </div>
 
 
-type of the inputs
+##### type of the inputs
 
     <div className="slds-p-around_x-large">
         <div className="slds-grid slds-p-bottom_medium">
@@ -119,7 +119,7 @@ type of the inputs
     </div>
 
 
-input with icons
+##### input with icons
 
     <div className="slds-p-vertical_large slds-p-horizontal_xx-large">
         <div className="slds-p-bottom_medium">
@@ -138,7 +138,7 @@ input with icons
     </div>
 
 
-input with help
+##### input with help
 
     <div className="slds-p-vertical_large slds-p-horizontal_xx-large">
         <div className="slds-p-bottom_medium">
@@ -158,7 +158,7 @@ input with help
     </div>
 
 
-input required
+##### input required
 
     <div className="slds-p-vertical_large slds-p-horizontal_xx-large">
         <Input
@@ -168,7 +168,7 @@ input required
     </div>
 
 
-input disabled
+##### input disabled
 
     <div className="slds-p-vertical_large slds-p-horizontal_xx-large">
         <Input
@@ -178,7 +178,7 @@ input disabled
     </div>
 
 
-input centered
+##### input centered
 
     <div className="slds-p-vertical_large slds-p-horizontal_xx-large">
         <Input
@@ -188,7 +188,7 @@ input centered
     </div>
 
 
-input error
+##### input error
 
     <div className="slds-p-vertical_large slds-p-horizontal_xx-large">
         <div className="slds-p-bottom_medium">
@@ -207,7 +207,7 @@ input error
     </div>
 
 
-input read only
+##### input read only
 
     <div className="slds-p-vertical_large slds-p-horizontal_xx-large">
         <Input
