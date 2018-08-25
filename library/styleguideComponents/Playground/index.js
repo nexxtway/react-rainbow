@@ -13,6 +13,14 @@ export default function PlaygroundRenderer(props) {
     } = props;
     const { className, ...rest } = previewProps;
 
+    if (name === 'Icons') {
+        return (
+            <div className="slds-is-relative">
+                {preview}
+            </div>
+        );
+    }
+
     return (
         <div className="slds-is-relative slds-m-bottom_large">
             <div className="slds-react-isolate-button">{toolbar}</div>

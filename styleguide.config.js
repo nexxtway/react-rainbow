@@ -48,6 +48,17 @@ module.exports = {
             ]
         },
         {
+            name: 'Icons',
+            content: 'library/pages/icons.md',
+            sectionDepth: 1,
+            sections: [
+                {
+                    name: 'Icons',
+                    content: 'library/pages/icons.md',
+                },
+            ],
+        },
+        {
             name: 'Components',
             components: 'src/components/**/index.js',
             sectionDepth: 1,
