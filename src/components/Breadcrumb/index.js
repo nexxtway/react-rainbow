@@ -3,6 +3,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
+/**
+* An item in the hierarchy path of the page the user is on.
+*/
 export default function Breadcrumb(props) {
     const {
         href,

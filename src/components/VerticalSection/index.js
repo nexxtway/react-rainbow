@@ -5,7 +5,9 @@ import { uniqueId } from '../../libs/utils';
 import { Provider } from './context';
 import Header from './header';
 
-
+/**
+* Represents a section within a verticalNavigation.
+*/
 class VerticalSection extends Component {
     constructor(props) {
         super(props);

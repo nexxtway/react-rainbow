@@ -55,6 +55,9 @@ function Item(props) {
     );
 }
 
+/**
+* A text-only link within verticalNavigationSection or verticalNavigationOverflow.
+*/
 export default function VerticalItem(props) {
     return (
         <NavStateConsumer>

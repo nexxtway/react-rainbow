@@ -101,6 +101,9 @@ class Item extends Component {
     }
 }
 
+/**
+* Represents a list item in a menu.
+*/
 export default function MenuItem(props) {
     return (
         <Consumer>
