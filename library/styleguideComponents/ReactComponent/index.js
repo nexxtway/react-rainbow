@@ -20,7 +20,7 @@ export default function ReactComponent(props) {
             {heading}
             <Description text={descriptionText} />
             <div className="slds-m-vertical_large">
-                <Pathline>
+                <Pathline name={name}>
                     {`import ${name} from 'react-slds/components/${name}'`}
                 </Pathline>
             </div>
