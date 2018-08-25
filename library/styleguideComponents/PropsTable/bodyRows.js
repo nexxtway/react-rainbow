@@ -11,6 +11,13 @@ function getTitleValue(value) {
     return value;
 }
 
+function renderValue(value) {
+    if (value === 'undefined' || value === 'null') {
+        return '';
+    }
+    return value;
+}
+
 export default function BodyRows({ rows, columns, getRowKey }) {
     return (
         rows.map(row => (
@@ -22,7 +29,7 @@ export default function BodyRows({ rows, columns, getRowKey }) {
                     return (
                         <td key={key} data-label={caption}>
                             <div className="slds-truncate" title={titleValue}>
-                                {value}
+                                {renderValue(value)}
                             </div>
                         </td>
                     );
