@@ -27,7 +27,11 @@ export default function Application(props) {
 }
 
 Application.propTypes = {
-    /** The URL of the SLDS assets */
+    /**
+     * The URL to the SLDS assets. It allows to configure the path to the statics assets.
+     * This value is used for components like Icon in order to generate the href to the
+     * icon sprites.
+     */
     assetsSrc: PropTypes.string,
     /**
      * This prop should not be visible in the documentation.
