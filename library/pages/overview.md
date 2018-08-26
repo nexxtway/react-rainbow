@@ -2,22 +2,14 @@
 
 ## Install
 
-##### React-Lightning-Components is available as an <a href="https://github.com/reiniergs/react-lightning-components" target="_blank">npm package</a>
+##### React-Lightning-Components is available as an <a href="https://www.npmjs.com/package/react-slds" target="_blank">npm package</a>
 
-##### We recommend using npm or yarn to install, run:
+_installing with npm_
 
-__installing with npm__
+    <CodeEditor code="$ npm install react-slds --save" />
 
-    <CodeEditor code="npm install react-slds --save" />
+_installing with yarn_
 
-__installing with yarn__
+    <CodeEditor code="$ yarn add react-slds" />
 
-    <CodeEditor code="yarn add react-slds" />
-
-## Project Overview
-
-##### React-Lightning-Components is an implementation of the Lightning Design System where each React-Lightning-Components  component is a specific variant of a component from Lightning Design System.
-
-##### The easiest way to get started with React-Lightning-Componentst is to click through to any of our examples where you can play with it live.
-
-##### React-Lightning-Components is currently optimized for React 16.4.2
+### React-Lightning-Components is currently optimized for React 16.4.2

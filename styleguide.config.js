@@ -44,7 +44,7 @@ module.exports = {
                 },
                 {
                     name: 'Contribuiting',
-                    content: 'library/pages/contribuiting.md',
+                    content: 'CONTRIBUTING.md',
                 },
             ]
         },
