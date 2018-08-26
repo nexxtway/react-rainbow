@@ -22,4 +22,10 @@
     );
     `;
 
-    <CodeEditor code={HelloWorldExample} />
+    <div>
+        <CodeEditor code={HelloWorldExample} />
+        <iframe 
+            src="https://codesandbox.io/embed/38wn6kop9p?hidenavigation=1&fontsize=14&view=preview"
+            style={{ width: '100%', height: 350, border:0 }} 
+        />
+    </div>    
