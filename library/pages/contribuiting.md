@@ -5,4 +5,4 @@
 ##### We are excited that you are interested in contributing to this project!
 ##### This page will give you an overview of the library codebase organization, conventions, and implementation. Components will always be moving toward this specification, but may not comply currently.
 
-##### Feel free to contribuite in react-lightning-components available in [our repository in github](https://github.com/reiniergs/react-lightning-components)
+##### Feel free to contribuite in react-lightning-components available in <a href="https://github.com/reiniergs/react-lightning-components" target="_blank">our repository in github</a>

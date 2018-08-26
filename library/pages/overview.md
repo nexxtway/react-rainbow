@@ -2,7 +2,7 @@
 
 ## Install
 
-##### React-Lightning-Components is available as an [npm package](https://www.npmjs.com/package/react-slds)
+##### React-Lightning-Components is available as an <a href="https://github.com/reiniergs/react-lightning-components" target="_blank">npm package</a>
 
 ##### We recommend using npm or yarn to install, run:
 
