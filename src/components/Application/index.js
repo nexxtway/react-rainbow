@@ -33,7 +33,10 @@ Application.propTypes = {
      * This prop should not be visible in the documentation.
      * @ignore
      */
-    children: PropTypes.arrayOf(PropTypes.node),
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.object,
+    ]),
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */

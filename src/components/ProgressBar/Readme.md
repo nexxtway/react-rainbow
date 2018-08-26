@@ -15,7 +15,7 @@
 ##### descriptive progressBar
 
     <div className="slds-p-around_x-large" >
-        <div class="slds-grid slds-grid_align-spread slds-p-bottom_x-small">
+        <div className="slds-grid slds-grid_align-spread slds-p-bottom_x-small">
             <span>Einstein Setup Assistant</span>
             <span aria-hidden="true">
               <strong>25% Complete</strong>
@@ -37,19 +37,18 @@
     <div className="slds-p-around_large">
         <div className="slds-p-around_medium">
             <ProgressBar value={25} size="x-small" />
-            <span class="slds-grid slds-m-top_x-small slds-text-color_weak">size: x-small</span>
+            <span className="slds-grid slds-m-top_x-small slds-text-color_weak">size: x-small</span>
         </div>
         <div className="slds-p-around_medium">
             <ProgressBar value={50} size="small" />
-            <span class="slds-grid slds-m-top_x-small slds-text-color_weak">size: small</span>
+            <span className="slds-grid slds-m-top_x-small slds-text-color_weak">size: small</span>
         </div>
         <div className="slds-p-around_medium">
             <ProgressBar value={35} size="medium" />
-            <span class="slds-grid slds-m-top_x-small slds-text-color_weak">size: medium</span>
+            <span className="slds-grid slds-m-top_x-small slds-text-color_weak">size: medium</span>
         </div>
         <div className="slds-p-around_medium">
             <ProgressBar value={75} size="large" />
-            <span class="slds-grid slds-m-top_x-small slds-text-color_weak">size: large</span>
+            <span className="slds-grid slds-m-top_x-small slds-text-color_weak">size: large</span>
         </div>
     </div>
-    

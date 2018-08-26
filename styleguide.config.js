@@ -50,6 +50,12 @@ module.exports = {
             ]
         },
         {
+            name: 'Components',
+            components: 'src/components/**/index.js',
+            sectionDepth: 1,
+            usageMode: 'expand',
+        },
+        {
             name: 'Icons',
             content: 'library/pages/icons.md',
             sectionDepth: 1,
@@ -59,12 +65,6 @@ module.exports = {
                     content: 'library/pages/icons.md',
                 },
             ],
-        },
-        {
-            name: 'Components',
-            components: 'src/components/**/index.js',
-            sectionDepth: 1,
-            usageMode: 'expand',
         },
     ],
     webpackConfig: {
