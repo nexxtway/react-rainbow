@@ -7,3 +7,18 @@
     padding-right: 8px;
     align-items: center;
 }
+
+.CodeMirror-line {
+    word-wrap: break-word !important;
+    white-space: pre-wrap !important;
+    word-break: normal !important;
+}
+
+.CodeMirror-gutters {
+    background-color: #061c3f !important;
+    border: none !important;
+}
+
+.cm-def {
+    color: #a1a7b0 !important;
+}

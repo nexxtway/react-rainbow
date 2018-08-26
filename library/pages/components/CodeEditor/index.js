@@ -1,11 +1,14 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { UnControlled as CodeMirror } from 'react-codemirror2';
+import { Controlled as CodeMirror } from 'react-codemirror2';
 import Header from './header';
 import './styles.css';
 
-const configOptions = { mode: 'jsx' };
+const configOptions = {
+    mode: 'jsx',
+    lineNumbers: true,
+};
 
 export default function CodeEditor({ code }) {
     return (

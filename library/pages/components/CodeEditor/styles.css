@@ -18,7 +18,26 @@
 }
 
 .CodeMirror-lines {
-    padding: 16px 24px 24px 24px !important;
+    padding: 16px 24px 24px 8px !important;
     font-family: Consolas, "Liberation Mono", Menlo, monospace;
     height: auto;
+}
+
+.CodeMirror-line {
+    word-wrap: break-word !important;
+    white-space: pre-wrap !important;
+    word-break: normal !important;
+}
+
+.CodeMirror-gutters {
+    background-color: #061c3f !important;
+    border: none !important;
+}
+
+.cm-def {
+    color: #a1a7b0 !important;
+}
+
+.CodeMirror-selected {
+    background: #284066 !important;
 }

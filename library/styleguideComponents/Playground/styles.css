@@ -11,7 +11,7 @@
 .cm-s-base16-light {
     background: #061c3f !important;
     border-radius: 0 0 8px 8px;
-    padding: 16px 24px 24px 8px !important;
+    padding: 0 !important;
 }
 
 .CodeMirror {
@@ -62,4 +62,8 @@
 
 .CodeMirror-linenumbers {
     margin-right: 18px !important;
+}
+
+.CodeMirror-selected {
+    background: #284066 !important;
 }
