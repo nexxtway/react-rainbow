@@ -104,27 +104,6 @@
             <Avatar
                 assistiveText="Jose Leandro"
                 title="Jose Leandro"
-                iconName="action:call" />
-
-        </div>
-        <div className="slds-m-horizontal_medium">
-            <Avatar
-                assistiveText="Jose Leandro"
-                title="Jose Leandro"
-                iconName="custom:custom1" />
-
-        </div>
-        <div className="slds-m-horizontal_medium">
-            <Avatar
-                assistiveText="Jose Leandro"
-                title="Jose Leandro"
-                iconName="doctype:ai" />
-
-        </div>
-        <div className="slds-m-horizontal_medium">
-            <Avatar
-                assistiveText="Jose Leandro"
-                title="Jose Leandro"
                 iconName="standard:account" />
 
         </div>
@@ -132,50 +111,10 @@
             <Avatar
                 assistiveText="Jose Leandro"
                 title="Jose Leandro"
-                iconName="utility:activity" />
+                iconName="standard:account"
+                variant="circle" />
 
         </div>
-        <div className="slds-m-horizontal_medium">
-            <Avatar
-                assistiveText="Tahimi Leon"
-                title="Tahimi Leon"
-                variant="circle"
-                iconName="action:call" />
-
-        </div>
-        <div className="slds-m-horizontal_medium">
-            <Avatar
-                assistiveText="Tahimi Leon"
-                title="Tahimi Leon"
-                variant="circle"
-                iconName="custom:custom1" />
-
-        </div>
-        <div className="slds-m-horizontal_medium">
-            <Avatar
-                assistiveText="Tahimi Leon"
-                title="Tahimi Leon"
-                variant="circle"
-                iconName="doctype:ai" />
-
-        </div>
-        <div className="slds-m-horizontal_medium">
-            <Avatar
-                assistiveText="Tahimi Leon"
-                title="Tahimi Leon"
-                variant="circle"
-                iconName="standard:account" />
-
-        </div>
-        <div className="slds-m-horizontal_medium">
-            <Avatar
-                assistiveText="Tahimi Leon"
-                title="Tahimi Leon"
-                variant="circle"
-                iconName="utility:activity" />
-
-        </div>
-
     </div>
 
 
