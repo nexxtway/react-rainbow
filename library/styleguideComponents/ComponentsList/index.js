@@ -30,11 +30,15 @@ function Sections({ items }) {
     });
 }
 
+function resolveCurrentUrl() {
+    return window.location.href.split('#/')[1] || 'Overview';
+}
+
 export default class ComponentsList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedItem: 'Overview',
+            selectedItem: resolveCurrentUrl(),
         };
         this.handleOnSelect = this.handleOnSelect.bind(this);
     }

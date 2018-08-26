@@ -23,7 +23,7 @@ export default function PlaygroundRenderer(props) {
 
     return (
         <div className="slds-is-relative slds-m-bottom_large">
-            <div className="slds-react-isolate-button">{toolbar}</div>
+            {toolbar}
             <article {...rest} className="slds-card slds-react-playground-background-color" data-preview={name}>
                 {preview}
             </article>

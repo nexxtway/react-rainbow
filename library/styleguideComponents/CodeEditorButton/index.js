@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from './../../../src/components/Button';
-import './styles.css';
 
 export default function CodeEditorButton({ name, onClick, active }) {
     const getLabel = () => {
