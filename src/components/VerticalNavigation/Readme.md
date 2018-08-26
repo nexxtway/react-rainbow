@@ -238,12 +238,12 @@
                         <VerticalItem name="item-3" label="Private Reports" />
                     </VerticalSection>
                     <VerticalSectionOverflow expandedLabel= "FOLDERS" collapsedLabel= "FOLDERS">
-                        <VerticalItem name="item-4" label="Created by Me" />
-                        <VerticalItem name="item-5" label="Shared with Me" />
+                        <VerticalItem name="item-4" label="Folder created by Me" />
+                        <VerticalItem name="item-5" label="Folder shared with Me" />
                     </VerticalSectionOverflow>
                     <VerticalSectionOverflow expanded expandedLabel= "DOCUMENTS" collapsedLabel= "DOCUMENTS">
-                        <VerticalItem name="item-6" label="Created by Me" />
-                        <VerticalItem name="item-7" label="Shared with Me" />
+                        <VerticalItem name="item-6" label="Document created by Me" />
+                        <VerticalItem name="item-7" label="Document shared with Me" />
                     </VerticalSectionOverflow>
                 </VerticalNavigation>
             );
