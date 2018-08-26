@@ -1,18 +1,23 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import iconNamePropType from './../../propTypes/iconNamePropType';
+import { Consumer } from './../Application';
 import {
     isIconNameValid,
     getSpriteName,
     getIconName,
 } from './utils';
 
-export default function IconSvg(props) {
+function Svg(props) {
     const {
         className,
         style,
         iconName,
+        assetsSrc,
     } = props;
+
+    const resolveSrc = () => assetsSrc || '';
 
     if (isIconNameValid(iconName)) {
         const sprite = getSpriteName(iconName);
@@ -20,11 +25,19 @@ export default function IconSvg(props) {
 
         return (
             <svg className={className} style={style} aria-hidden>
-                <use xmlnsXlink="http://www.w3.org/1999/xlink" xlinkHref={`/icons/${sprite}-sprite/svg/symbols.svg#${icon}`} />
+                <use xmlnsXlink="http://www.w3.org/1999/xlink" href={`${resolveSrc()}/icons/${sprite}-sprite/svg/symbols.svg#${icon}`} />
             </svg>
         );
     }
     return null;
+}
+
+export default function IconSvg(props) {
+    return (
+        <Consumer>
+            {values => <Svg {...props} {...values} />}
+        </Consumer>
+    );
 }
 
 IconSvg.propTypes = {

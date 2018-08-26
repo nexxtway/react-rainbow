@@ -21,7 +21,7 @@ exports[`<Card/> should have the right class names 1`] = `
             className="slds-icon slds-icon_small"
           >
             <use
-              xlinkHref="/icons/custom-sprite/svg/symbols.svg#custom72"
+              href="/icons/custom-sprite/svg/symbols.svg#custom72"
               xmlnsXlink="http://www.w3.org/1999/xlink"
             />
           </svg>

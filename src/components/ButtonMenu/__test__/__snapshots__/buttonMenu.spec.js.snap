@@ -21,7 +21,7 @@ exports[`<ButtonMenu/> should have the right class names 1`] = `
       className="slds-button__icon"
     >
       <use
-        xlinkHref="/icons/utility-sprite/svg/symbols.svg#down"
+        href="/icons/utility-sprite/svg/symbols.svg#down"
         xmlnsXlink="http://www.w3.org/1999/xlink"
       />
     </svg>
@@ -60,7 +60,7 @@ exports[`<ButtonMenu/> should have the right class names when menuAlignment is l
       className="slds-button__icon"
     >
       <use
-        xlinkHref="/icons/utility-sprite/svg/symbols.svg#down"
+        href="/icons/utility-sprite/svg/symbols.svg#down"
         xmlnsXlink="http://www.w3.org/1999/xlink"
       />
     </svg>
@@ -114,7 +114,7 @@ exports[`<ButtonMenu/> should have the right class names when menuAlignment is r
       className="slds-button__icon"
     >
       <use
-        xlinkHref="/icons/utility-sprite/svg/symbols.svg#down"
+        href="/icons/utility-sprite/svg/symbols.svg#down"
         xmlnsXlink="http://www.w3.org/1999/xlink"
       />
     </svg>
@@ -153,7 +153,7 @@ exports[`<ButtonMenu/> should have the right class names when menuSize is large 
       className="slds-button__icon"
     >
       <use
-        xlinkHref="/icons/utility-sprite/svg/symbols.svg#down"
+        href="/icons/utility-sprite/svg/symbols.svg#down"
         xmlnsXlink="http://www.w3.org/1999/xlink"
       />
     </svg>
@@ -192,7 +192,7 @@ exports[`<ButtonMenu/> should have the right class names when menuSize is medium
       className="slds-button__icon"
     >
       <use
-        xlinkHref="/icons/utility-sprite/svg/symbols.svg#down"
+        href="/icons/utility-sprite/svg/symbols.svg#down"
         xmlnsXlink="http://www.w3.org/1999/xlink"
       />
     </svg>
@@ -231,7 +231,7 @@ exports[`<ButtonMenu/> should have the right class names when menuSize is small 
       className="slds-button__icon"
     >
       <use
-        xlinkHref="/icons/utility-sprite/svg/symbols.svg#down"
+        href="/icons/utility-sprite/svg/symbols.svg#down"
         xmlnsXlink="http://www.w3.org/1999/xlink"
       />
     </svg>
@@ -270,7 +270,7 @@ exports[`<ButtonMenu/> should have the right class names when menuSize is x-smal
       className="slds-button__icon"
     >
       <use
-        xlinkHref="/icons/utility-sprite/svg/symbols.svg#down"
+        href="/icons/utility-sprite/svg/symbols.svg#down"
         xmlnsXlink="http://www.w3.org/1999/xlink"
       />
     </svg>

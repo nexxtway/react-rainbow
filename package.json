@@ -11,10 +11,10 @@
   ],
   "scripts": {
     "start": "./node_modules/.bin/styleguidist server",
-    "build": "./node_modules/.bin/styleguidist build",
-    "build:components": "npx babel src/components --out-dir components && npx babel index.js --out-dir components",
-    "prepublishOnly": "yarn clean && yarn build:components",
-    "clean": "rm -Rf components",
+    "build": "npx babel ./src --out-dir ./ && npx babel index.js --out-dir components",
+    "build:library": "./node_modules/.bin/styleguidist build",
+    "prepublishOnly": "yarn clean && yarn build",
+    "clean": "rm -Rf components && rm -Rf propTypes && rm -Rf libs",
     "test": "jest ./src --verbose",
     "lint": "./node_modules/.bin/eslint src",
     "deploy:library": "yarn build && firebase deploy",
@@ -42,7 +42,7 @@
   "jest": {
     "collectCoverage": true,
     "testURL": "http://localhost/",
-    "setupTestFrameworkScriptFile": "./src/setupTests.js"
+    "setupTestFrameworkScriptFile": "./setupTests.js"
   },
   "devDependencies": {
     "assert": "^1.4.1",

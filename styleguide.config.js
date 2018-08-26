@@ -27,6 +27,7 @@ module.exports = {
         ComponentsListRenderer: path.join(__dirname, 'library/styleguideComponents/ComponentsList'),
         Editor: path.join(__dirname, 'library/styleguideComponents/Editor'),
         PathlineRenderer: path.join(__dirname, 'library/styleguideComponents/Pathline'),
+        Wrapper: path.join(__dirname, 'library/styleguideComponents/Wrapper'),
     },
     sections: [
         {

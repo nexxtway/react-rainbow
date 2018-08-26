@@ -17,7 +17,7 @@ import {
     ESCAPE_KEY,
     TAB_KEY,
     ENTER_KEY,
-} from './../../constants';
+} from './../../libs/constants';
 
 /**
 * A Button Menu offers a list of actions or functions that a user can access.

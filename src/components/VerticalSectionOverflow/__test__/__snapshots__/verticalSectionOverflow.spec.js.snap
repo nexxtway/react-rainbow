@@ -15,7 +15,7 @@ exports[`<VerticalSectionOverflow/> should have the right class names when a cus
       className="slds-button__icon slds-button__icon_left"
     >
       <use
-        xlinkHref="/icons/utility-sprite/svg/symbols.svg#chevronright"
+        href="/icons/utility-sprite/svg/symbols.svg#chevronright"
         xmlnsXlink="http://www.w3.org/1999/xlink"
       />
     </svg>

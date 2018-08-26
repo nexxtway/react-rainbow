@@ -3,11 +3,11 @@ import { mount } from 'enzyme';
 import IconSvg from './../index';
 
 describe('<IconSvg/>', () => {
-    it('should return nothing when the iconName format is wrong', () => {
+    it('should not render the svg when the iconName format is wrong', () => {
         const component = mount(
             <IconSvg iconName="wrong-name" />,
         );
-        expect(component.children().length).toBe(0);
+        expect(component.find('svg').exists()).toBe(false);
     });
     it('should render the svg element when the iconName format is valid', () => {
         const component = mount(
@@ -21,10 +21,10 @@ describe('<IconSvg/>', () => {
         );
         expect(component.find('svg').prop('aria-hidden')).toBe(true);
     });
-    it('should set the right xlinkHref value in use element', () => {
+    it('should set the right href value in use element', () => {
         const component = mount(
             <IconSvg iconName="action:add_contact" />,
         );
-        expect(component.find('use').prop('xlinkHref')).toBe('/icons/action-sprite/svg/symbols.svg#add_contact');
+        expect(component.find('use').prop('href')).toBe('/icons/action-sprite/svg/symbols.svg#add_contact');
     });
 });

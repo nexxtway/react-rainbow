@@ -9,7 +9,7 @@ exports[`<Icon/> should have the right class names when custom className and svg
     className="slds-icon slds-icon-text-default my-custom-svg-class-name"
   >
     <use
-      xlinkHref="/icons/utility-sprite/svg/symbols.svg#adduser"
+      href="/icons/utility-sprite/svg/symbols.svg#adduser"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     />
   </svg>
@@ -25,7 +25,7 @@ exports[`<Icon/> should have the right class names when size and variant are not
     className="slds-icon"
   >
     <use
-      xlinkHref="/icons/custom-sprite/svg/symbols.svg#custom5"
+      href="/icons/custom-sprite/svg/symbols.svg#custom5"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     />
   </svg>
@@ -41,7 +41,7 @@ exports[`<Icon/> should have the right class names when size is large 1`] = `
     className="slds-icon slds-icon_large"
   >
     <use
-      xlinkHref="/icons/action-sprite/svg/symbols.svg#add_photo_video"
+      href="/icons/action-sprite/svg/symbols.svg#add_photo_video"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     />
   </svg>
@@ -57,7 +57,7 @@ exports[`<Icon/> should have the right class names when size is medium 1`] = `
     className="slds-icon"
   >
     <use
-      xlinkHref="/icons/standard-sprite/svg/symbols.svg#action_list_component"
+      href="/icons/standard-sprite/svg/symbols.svg#action_list_component"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     />
   </svg>
@@ -73,7 +73,7 @@ exports[`<Icon/> should have the right class names when size is small 1`] = `
     className="slds-icon slds-icon_small"
   >
     <use
-      xlinkHref="/icons/custom-sprite/svg/symbols.svg#custom6"
+      href="/icons/custom-sprite/svg/symbols.svg#custom6"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     />
   </svg>
@@ -89,7 +89,7 @@ exports[`<Icon/> should have the right class names when size is x-small 1`] = `
     className="slds-icon slds-icon_x-small"
   >
     <use
-      xlinkHref="/icons/doctype-sprite/svg/symbols.svg#box_notes"
+      href="/icons/doctype-sprite/svg/symbols.svg#box_notes"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     />
   </svg>
@@ -105,7 +105,7 @@ exports[`<Icon/> should have the right class names when size is x-small and the 
     className="slds-icon slds-icon_small"
   >
     <use
-      xlinkHref="/icons/custom-sprite/svg/symbols.svg#custom5"
+      href="/icons/custom-sprite/svg/symbols.svg#custom5"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     />
   </svg>
@@ -121,7 +121,7 @@ exports[`<Icon/> should have the right class names when size is xx-small 1`] = `
     className="slds-icon slds-icon_xx-small slds-icon-text-default"
   >
     <use
-      xlinkHref="/icons/utility-sprite/svg/symbols.svg#ad_set"
+      href="/icons/utility-sprite/svg/symbols.svg#ad_set"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     />
   </svg>
@@ -137,7 +137,7 @@ exports[`<Icon/> should have the right class names when size is xx-small and the
     className="slds-icon slds-icon_small"
   >
     <use
-      xlinkHref="/icons/action-sprite/svg/symbols.svg#add_contact"
+      href="/icons/action-sprite/svg/symbols.svg#add_contact"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     />
   </svg>
@@ -153,7 +153,7 @@ exports[`<Icon/> should have the right class names when variant is default 1`] =
     className="slds-icon slds-icon-text-default"
   >
     <use
-      xlinkHref="/icons/utility-sprite/svg/symbols.svg#animal_and_nature"
+      href="/icons/utility-sprite/svg/symbols.svg#animal_and_nature"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     />
   </svg>
@@ -169,7 +169,7 @@ exports[`<Icon/> should have the right class names when variant is error 1`] = `
     className="slds-icon slds-icon-text-error"
   >
     <use
-      xlinkHref="/icons/utility-sprite/svg/symbols.svg#approval"
+      href="/icons/utility-sprite/svg/symbols.svg#approval"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     />
   </svg>
@@ -185,7 +185,7 @@ exports[`<Icon/> should have the right class names when variant is light 1`] = `
     className="slds-icon slds-icon-text-light"
   >
     <use
-      xlinkHref="/icons/utility-sprite/svg/symbols.svg#answer"
+      href="/icons/utility-sprite/svg/symbols.svg#answer"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     />
   </svg>
@@ -201,7 +201,7 @@ exports[`<Icon/> should have the right class names when variant is passed and th
     className="slds-icon"
   >
     <use
-      xlinkHref="/icons/action-sprite/svg/symbols.svg#add_contact"
+      href="/icons/action-sprite/svg/symbols.svg#add_contact"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     />
   </svg>
@@ -217,7 +217,7 @@ exports[`<Icon/> should have the right class names when variant is warning 1`] =
     className="slds-icon slds-icon-text-warning"
   >
     <use
-      xlinkHref="/icons/utility-sprite/svg/symbols.svg#approval"
+      href="/icons/utility-sprite/svg/symbols.svg#approval"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     />
   </svg>

@@ -6,7 +6,7 @@ exports[`<InputIcon/> should have the right class names when iconName is passed 
   className="slds-icon slds-input__icon slds-icon-text-default slds-input__icon_left"
 >
   <use
-    xlinkHref="/icons/utility-sprite/svg/symbols.svg#activity"
+    href="/icons/utility-sprite/svg/symbols.svg#activity"
     xmlnsXlink="http://www.w3.org/1999/xlink"
   />
 </svg>
@@ -18,7 +18,7 @@ exports[`<InputIcon/> should have the right class names when iconName is passed 
   className="slds-icon slds-input__icon slds-icon-text-default slds-input__icon_right"
 >
   <use
-    xlinkHref="/icons/utility-sprite/svg/symbols.svg#activity"
+    href="/icons/utility-sprite/svg/symbols.svg#activity"
     xmlnsXlink="http://www.w3.org/1999/xlink"
   />
 </svg>
@@ -30,7 +30,7 @@ exports[`<InputIcon/> should have the right class names when there is an error a
   className="slds-input__icon slds-input__icon_left"
 >
   <use
-    xlinkHref="/icons/utility-sprite/svg/symbols.svg#activity"
+    href="/icons/utility-sprite/svg/symbols.svg#activity"
     xmlnsXlink="http://www.w3.org/1999/xlink"
   />
 </svg>
@@ -42,7 +42,7 @@ exports[`<InputIcon/> should have the right class names when there is an error a
   className="slds-input__icon slds-input__icon_right"
 >
   <use
-    xlinkHref="/icons/utility-sprite/svg/symbols.svg#activity"
+    href="/icons/utility-sprite/svg/symbols.svg#activity"
     xmlnsXlink="http://www.w3.org/1999/xlink"
   />
 </svg>

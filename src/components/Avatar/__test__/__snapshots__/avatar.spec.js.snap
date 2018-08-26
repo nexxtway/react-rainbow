@@ -12,7 +12,7 @@ exports[`<Avatar/> should have the right class names 1`] = `
       className="slds-icon"
     >
       <use
-        xlinkHref="/icons/standard-sprite/svg/symbols.svg#user"
+        href="/icons/standard-sprite/svg/symbols.svg#user"
         xmlnsXlink="http://www.w3.org/1999/xlink"
       />
     </svg>
@@ -32,7 +32,7 @@ exports[`<Avatar/> should have the right class names when size is large 1`] = `
       className="slds-icon"
     >
       <use
-        xlinkHref="/icons/standard-sprite/svg/symbols.svg#user"
+        href="/icons/standard-sprite/svg/symbols.svg#user"
         xmlnsXlink="http://www.w3.org/1999/xlink"
       />
     </svg>
@@ -52,7 +52,7 @@ exports[`<Avatar/> should have the right class names when size is medium 1`] = `
       className="slds-icon"
     >
       <use
-        xlinkHref="/icons/standard-sprite/svg/symbols.svg#user"
+        href="/icons/standard-sprite/svg/symbols.svg#user"
         xmlnsXlink="http://www.w3.org/1999/xlink"
       />
     </svg>
@@ -72,7 +72,7 @@ exports[`<Avatar/> should have the right class names when size is small 1`] = `
       className="slds-icon"
     >
       <use
-        xlinkHref="/icons/standard-sprite/svg/symbols.svg#user"
+        href="/icons/standard-sprite/svg/symbols.svg#user"
         xmlnsXlink="http://www.w3.org/1999/xlink"
       />
     </svg>
@@ -92,7 +92,7 @@ exports[`<Avatar/> should have the right class names when variant is circle and 
       className="slds-icon"
     >
       <use
-        xlinkHref="/icons/standard-sprite/svg/symbols.svg#user"
+        href="/icons/standard-sprite/svg/symbols.svg#user"
         xmlnsXlink="http://www.w3.org/1999/xlink"
       />
     </svg>

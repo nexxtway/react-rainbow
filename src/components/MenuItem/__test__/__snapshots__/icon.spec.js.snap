@@ -6,7 +6,7 @@ exports[`<MenuItemIcon/> should have the right class names when the position is 
   className="slds-icon slds-icon_x-small slds-icon-text-default slds-m-right_small"
 >
   <use
-    xlinkHref="/icons/utility-sprite/svg/symbols.svg#user"
+    href="/icons/utility-sprite/svg/symbols.svg#user"
     xmlnsXlink="http://www.w3.org/1999/xlink"
   />
 </svg>
@@ -18,7 +18,7 @@ exports[`<MenuItemIcon/> should have the right class names when the position is 
   className="slds-icon slds-icon_x-small slds-icon-text-default slds-m-left_small slds-shrink-none"
 >
   <use
-    xlinkHref="/icons/utility-sprite/svg/symbols.svg#user"
+    href="/icons/utility-sprite/svg/symbols.svg#user"
     xmlnsXlink="http://www.w3.org/1999/xlink"
   />
 </svg>

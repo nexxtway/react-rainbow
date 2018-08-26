@@ -9,7 +9,7 @@ exports[`<BadgeIcon/> in the Badge component should have the right class names w
     className="slds-icon slds-icon_xx-small slds-icon-text-default"
   >
     <use
-      xlinkHref="/icons/utility-sprite/svg/symbols.svg#world"
+      href="/icons/utility-sprite/svg/symbols.svg#world"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     />
   </svg>
@@ -25,7 +25,7 @@ exports[`<BadgeIcon/> in the Badge component should have the right class names w
     className="slds-icon slds-icon_xx-small slds-icon-text-default"
   >
     <use
-      xlinkHref="/icons/utility-sprite/svg/symbols.svg#world"
+      href="/icons/utility-sprite/svg/symbols.svg#world"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     />
   </svg>
@@ -41,7 +41,7 @@ exports[`<BadgeIcon/> in the Badge component should have the right class names w
     className="slds-icon slds-icon_xx-small slds-icon-text-default"
   >
     <use
-      xlinkHref="/icons/utility-sprite/svg/symbols.svg#world"
+      href="/icons/utility-sprite/svg/symbols.svg#world"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     />
   </svg>
