@@ -16,11 +16,9 @@ const MENU_BTN_FOCUSED = () => {
 };
 
 describe('ButtonMenu base example', () => {
-    beforeAll(() => {
+    beforeEach(() => {
         browser.url('/#!/ButtonMenu/1');
-    });
-    afterEach(() => {
-        browser.keys(ESCAPE_KEY);
+        browser.refresh();
     });
     it('should open the menu when click on the button', () => {
         browser.click(MENU_BTN);
@@ -81,13 +79,4 @@ describe('ButtonMenu base example', () => {
         browser.keys(TAB_KEY);
         expect(browser.isVisible(ITEM_1_CONTAINER)).toBe(false);
     });
-    // this is a test for a bug.
-    // it('should put to the "Menu Item Four"(next menu item applicable) focused the "Menu Item Three" is focused and press the key "m"', () => {
-    //     browser.url('/#!/ButtonMenu/1');
-    //     browser.click(MENU_BTN);
-    //     browser.keys(ARROW_UP_KEY);
-    //     browser.keys(ARROW_UP_KEY);
-    //     browser.keys('m');
-    //     expect(browser.hasFocus(ITEM_4)).toBe(true);
-    // });
 });
