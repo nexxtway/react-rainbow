@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
+/**
+* The MenuDivider are used for separate content inside the ButtonMenu.
+*/
 export default function MenuDivider(props) {
     const {
         variant,
@@ -38,5 +41,5 @@ MenuDivider.propTypes = {
 MenuDivider.defaultProps = {
     variant: 'default',
     className: undefined,
-    style: {},
+    style: undefined,
 };

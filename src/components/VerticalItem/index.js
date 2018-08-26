@@ -56,7 +56,7 @@ function Item(props) {
 }
 
 /**
-* A text-only link within verticalNavigationSection or verticalNavigationOverflow.
+* A text-only link within VerticalNavigationSection or VerticalNavigationOverflow.
 */
 export default function VerticalItem(props) {
     return (

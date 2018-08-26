@@ -9,7 +9,7 @@ import { uniqueId } from './../../libs/utils';
 const searchResultsId = uniqueId('search-results');
 
 /**
-* Represents an overflow of items from a preceding verticalNavigationSection,
+* Represents an overflow of items from a preceding VerticalNavigationSection,
 * with the ability to toggle visibility.
 */
 export default class VerticalSectionOverflow extends Component {

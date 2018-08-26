@@ -6,7 +6,7 @@ import { Provider } from './context';
 import Header from './header';
 
 /**
-* Represents a section within a verticalNavigation.
+* Represents a section within a VerticalNavigation.
 */
 class VerticalSection extends Component {
     constructor(props) {

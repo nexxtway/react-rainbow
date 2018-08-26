@@ -139,7 +139,7 @@
                 <MenuItem label="Menu medium" />
             </ButtonMenu>
         </ButtonGroup>
-        <ButtonMenu menuAlignment="right" menuSize="small" iconName="utility:custom_apps">
+        <ButtonMenu menuAlignment="right" menuSize="large" iconName="utility:custom_apps">
             <MenuItem label="Menu large" />
             <MenuItem label="Menu large" />
             <MenuItem label="Menu large" />
