@@ -21,7 +21,7 @@ export default function Icon({ iconName, isVisible, position }) {
 }
 
 Icon.propTypes = {
-    iconName: iconNamePropType,
+    iconName: iconNamePropType.simple,
     isVisible: PropTypes.bool.isRequired,
     position: PropTypes.string.isRequired,
 };

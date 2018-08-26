@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import iconNameUtilityPropType from './../../propTypes/iconNameUtilityPropType';
+import iconNamePropType from './../../propTypes/iconNamePropType';
 import ButtonIcon from './../ButtonIcon';
 import MenuContent from './menuContent';
 import { Provider } from './context';
@@ -335,7 +335,7 @@ ButtonMenu.propTypes = {
     * the image fails to load. Names are written in the format {sprite_name}:{icon_name}
     * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed.
     * Only utility icons can be used in this component. */
-    iconName: iconNameUtilityPropType,
+    iconName: iconNamePropType.oneOf(['utility']),
     /** If true, the menu is disabled. Disabling the menu prevents users from opening it.
     * This value defaults to false. */
     disabled: PropTypes.bool,

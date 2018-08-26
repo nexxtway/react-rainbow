@@ -54,7 +54,7 @@ Card.propTypes = {
     * the image fails to load. Names are written in the format {sprite_name}:{icon_name}
     * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed.
     * The icon is displayed in the header to the left of the title. */
-    iconName: iconNamePropType,
+    iconName: iconNamePropType.simple,
     /** Actions are components such as button or buttonIcon. Actions are displayed in the header. */
     actions: PropTypes.node,
     /** The footer can include text or another component. */
@@ -75,7 +75,7 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
-    iconName: '',
+    iconName: undefined,
     actions: null,
     footer: null,
     isLoading: false,
