@@ -1,8 +1,8 @@
-## There are several runnable examples in this Git repo, but here's a Hello World one:
+### There are several runnable examples in this Git repo, but here's a Hello World one:
+<br>
 
-
-    const HelloWorldExample = `
-    import React from 'react';
+    const HelloWorldExample = 
+    `import React from 'react';
     import ReactDOM from 'react-dom';
     import Button from 'react-slds/components/button';
     

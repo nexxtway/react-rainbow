@@ -38,6 +38,11 @@
     color: #a1a7b0 !important;
 }
 
+.CodeMirror-linenumber {
+    color: rgba(255, 255, 255, 0.3) !important;
+    text-align: right !important;
+}
+
 .CodeMirror-selected {
     background: #284066 !important;
 }
