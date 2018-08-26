@@ -1,7 +1,7 @@
-const MENU_BTN = '#rsg-root > div > main > section > section > div > div > article > div > article > div > div > div > header > div > div > div > button';
+const MENU_BTN = '#rsg-root > div > main > section > section > div > div > article > div > article > div > div > div > div > header > div > div > div > button';
 const ITEM_1_CONTAINER = 'li=Menu Item One';
 const ITEM_1 = 'a=Menu Item One';
-const ITEM_2 = '//*[@id="rsg-root"]/div/main/section/section/div/div/article/div/article/div/div/div/header/div/div/div/div/ul/li[2]/a';
+const ITEM_2 = 'a=Menu Item Two';
 const ITEM_4 = 'a=Menu Item Four';
 const REACT_LOGO = 'img[alt*="react lightning logo"]';
 const ESCAPE_KEY = '\uE00C';

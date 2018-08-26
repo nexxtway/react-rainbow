@@ -18,12 +18,14 @@ nbproject
 coverage
 .env
 package-lock.json
+components
+propTypes
+libs
 !/library/pages/components
 !/src/components
+!/src/libs
+!/src/propTypes
 styleguide
 errorShots
 allure-results
 junit-results
-components
-propTypes
-libs
