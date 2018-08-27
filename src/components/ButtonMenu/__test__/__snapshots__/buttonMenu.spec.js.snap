@@ -8,7 +8,7 @@ exports[`<ButtonMenu/> should have the right class names 1`] = `
 >
   <button
     aria-haspopup={true}
-    className="slds-align_absolute-center slds-button slds-button_icon slds-button_icon-border-filled"
+    className="slds-grid slds-grid_align-center slds-media_center slds-button slds-button_icon slds-button_icon-border-filled"
     data-id="button-icon-element"
     disabled={false}
     onBlur={[Function]}
@@ -47,7 +47,7 @@ exports[`<ButtonMenu/> should have the right class names when menuAlignment is l
 >
   <button
     aria-haspopup={true}
-    className="slds-align_absolute-center slds-button slds-button_icon slds-button_icon-border-filled"
+    className="slds-grid slds-grid_align-center slds-media_center slds-button slds-button_icon slds-button_icon-border-filled"
     data-id="button-icon-element"
     disabled={false}
     onBlur={[Function]}
@@ -101,7 +101,7 @@ exports[`<ButtonMenu/> should have the right class names when menuAlignment is r
 >
   <button
     aria-haspopup={true}
-    className="slds-align_absolute-center slds-button slds-button_icon slds-button_icon-border-filled"
+    className="slds-grid slds-grid_align-center slds-media_center slds-button slds-button_icon slds-button_icon-border-filled"
     data-id="button-icon-element"
     disabled={false}
     onBlur={[Function]}
@@ -140,7 +140,7 @@ exports[`<ButtonMenu/> should have the right class names when menuSize is large 
 >
   <button
     aria-haspopup={true}
-    className="slds-align_absolute-center slds-button slds-button_icon slds-button_icon-border-filled"
+    className="slds-grid slds-grid_align-center slds-media_center slds-button slds-button_icon slds-button_icon-border-filled"
     data-id="button-icon-element"
     disabled={false}
     onBlur={[Function]}
@@ -179,7 +179,7 @@ exports[`<ButtonMenu/> should have the right class names when menuSize is medium
 >
   <button
     aria-haspopup={true}
-    className="slds-align_absolute-center slds-button slds-button_icon slds-button_icon-border-filled"
+    className="slds-grid slds-grid_align-center slds-media_center slds-button slds-button_icon slds-button_icon-border-filled"
     data-id="button-icon-element"
     disabled={false}
     onBlur={[Function]}
@@ -218,7 +218,7 @@ exports[`<ButtonMenu/> should have the right class names when menuSize is small 
 >
   <button
     aria-haspopup={true}
-    className="slds-align_absolute-center slds-button slds-button_icon slds-button_icon-border-filled"
+    className="slds-grid slds-grid_align-center slds-media_center slds-button slds-button_icon slds-button_icon-border-filled"
     data-id="button-icon-element"
     disabled={false}
     onBlur={[Function]}
@@ -257,7 +257,7 @@ exports[`<ButtonMenu/> should have the right class names when menuSize is x-smal
 >
   <button
     aria-haspopup={true}
-    className="slds-align_absolute-center slds-button slds-button_icon slds-button_icon-border-filled"
+    className="slds-grid slds-grid_align-center slds-media_center slds-button slds-button_icon slds-button_icon-border-filled"
     data-id="button-icon-element"
     disabled={false}
     onBlur={[Function]}

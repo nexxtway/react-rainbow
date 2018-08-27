@@ -18,7 +18,7 @@ export default class Button extends Component {
 
     getClassNames() {
         const { className, variant } = this.props;
-        return classnames('slds-align_absolute-center', 'slds-button', `slds-button_${variant}`, className);
+        return classnames('slds-grid', 'slds-grid_align-center', 'slds-media_center', 'slds-button', `slds-button_${variant}`, className);
     }
 
     /**

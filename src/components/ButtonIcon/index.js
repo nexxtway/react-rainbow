@@ -56,7 +56,7 @@ export default class ButtonIcon extends Component {
 
     getButtonClassNames() {
         const { className } = this.props;
-        return classnames('slds-align_absolute-center', 'slds-button', 'slds-button_icon', this.getVariantClassName(), this.getButtonSizeClassName(), className);
+        return classnames('slds-grid', 'slds-grid_align-center', 'slds-media_center', 'slds-button', 'slds-button_icon', this.getVariantClassName(), this.getButtonSizeClassName(), className);
     }
 
     /**

@@ -3,7 +3,7 @@
 exports[`<Button/> should have the right class names 1`] = `
 <button
   aria-haspopup={false}
-  className="slds-align_absolute-center slds-button slds-button_base"
+  className="slds-grid slds-grid_align-center slds-media_center slds-button slds-button_base"
   data-id="button-element"
   disabled={false}
   onBlur={[Function]}
@@ -18,7 +18,7 @@ exports[`<Button/> should have the right class names 1`] = `
 exports[`<Button/> should have the right class names when variant brand 1`] = `
 <button
   aria-haspopup={false}
-  className="slds-align_absolute-center slds-button slds-button_brand"
+  className="slds-grid slds-grid_align-center slds-media_center slds-button slds-button_brand"
   data-id="button-element"
   disabled={false}
   onBlur={[Function]}
@@ -33,7 +33,7 @@ exports[`<Button/> should have the right class names when variant brand 1`] = `
 exports[`<Button/> should have the right class names when variant destructive 1`] = `
 <button
   aria-haspopup={false}
-  className="slds-align_absolute-center slds-button slds-button_destructive"
+  className="slds-grid slds-grid_align-center slds-media_center slds-button slds-button_destructive"
   data-id="button-element"
   disabled={false}
   onBlur={[Function]}
@@ -48,7 +48,7 @@ exports[`<Button/> should have the right class names when variant destructive 1`
 exports[`<Button/> should have the right class names when variant inverse 1`] = `
 <button
   aria-haspopup={false}
-  className="slds-align_absolute-center slds-button slds-button_inverse"
+  className="slds-grid slds-grid_align-center slds-media_center slds-button slds-button_inverse"
   data-id="button-element"
   disabled={false}
   onBlur={[Function]}
@@ -63,7 +63,7 @@ exports[`<Button/> should have the right class names when variant inverse 1`] = 
 exports[`<Button/> should have the right class names when variant neutral and have a custom class 1`] = `
 <button
   aria-haspopup={false}
-  className="slds-align_absolute-center slds-button slds-button_neutral my-custom-class-name"
+  className="slds-grid slds-grid_align-center slds-media_center slds-button slds-button_neutral my-custom-class-name"
   data-id="button-element"
   disabled={false}
   onBlur={[Function]}
@@ -78,7 +78,7 @@ exports[`<Button/> should have the right class names when variant neutral and ha
 exports[`<Button/> should have the right class names when variant outline-brand 1`] = `
 <button
   aria-haspopup={false}
-  className="slds-align_absolute-center slds-button slds-button_outline-brand"
+  className="slds-grid slds-grid_align-center slds-media_center slds-button slds-button_outline-brand"
   data-id="button-element"
   disabled={false}
   onBlur={[Function]}
@@ -93,7 +93,7 @@ exports[`<Button/> should have the right class names when variant outline-brand 
 exports[`<Button/> should have the right class names when variant success 1`] = `
 <button
   aria-haspopup={false}
-  className="slds-align_absolute-center slds-button slds-button_success"
+  className="slds-grid slds-grid_align-center slds-media_center slds-button slds-button_success"
   data-id="button-element"
   disabled={false}
   onBlur={[Function]}
