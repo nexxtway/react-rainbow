@@ -17,7 +17,7 @@
     "clean": "rm -Rf components && rm -Rf propTypes && rm -Rf libs",
     "test": "jest ./src --verbose",
     "lint": "./node_modules/.bin/eslint src",
-    "deploy:library": "yarn build && firebase deploy",
+    "deploy:library": "yarn build:library && firebase deploy",
     "test:integration": "wdio"
   },
   "dependencies": {
