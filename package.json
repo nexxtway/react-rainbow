@@ -1,6 +1,6 @@
 {
   "name": "react-slds",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React components for Lightning Design System",
   "keywords": [
     "react",
@@ -30,6 +30,11 @@
     "react-codemirror2": "^5.1.0"
   },
   "main": "components/index.js",
+  "files": [
+    "components",
+    "propTypes",
+    "libs"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/reiniergs/react-lightning-components.git"

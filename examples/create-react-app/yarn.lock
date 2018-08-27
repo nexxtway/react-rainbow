@@ -1442,6 +1442,10 @@ cli-width@^2.0.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/cli-width/-/cli-width-2.2.0.tgz#ff19ede8a9a5e579324147b0c11f0fbcbabed639"
 
+clipboard-copy@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/clipboard-copy/-/clipboard-copy-2.0.0.tgz#663abcd8be9c641de6e92a2eb9afef6e0afa727e"
+
 cliui@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/cliui/-/cliui-2.1.0.tgz#4b475760ff80264c762c3a1719032e91c7fea0d1"
@@ -5535,6 +5539,10 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-codemirror2@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/react-codemirror2/-/react-codemirror2-5.1.0.tgz#62de4460178adea40eb52eabf7491669bf3794b8"
+
 react-dev-utils@^5.0.2:
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-5.0.2.tgz#7bb68d2c4f6ffe7ed1184c5b0124fcad692774d2"
@@ -5639,14 +5647,16 @@ react-scripts@1.1.5:
   optionalDependencies:
     fsevents "^1.1.3"
 
-react-slds@0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/react-slds/-/react-slds-0.0.6.tgz#f22273f8f6a52224f19aefe23b66c7699945c351"
+react-slds@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/react-slds/-/react-slds-0.1.1.tgz#13cfd121c8019964ed41242df44ce1e86efad840"
   dependencies:
     classnames "^2.2.5"
+    clipboard-copy "^2.0.0"
     file-loader "^1.1.11"
     prop-types "^15.6.2"
     react "^16.4.2"
+    react-codemirror2 "^5.1.0"
     react-dom "^16.4.2"
 
 react@^16.4.2:

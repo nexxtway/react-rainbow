@@ -9,7 +9,7 @@
     "react-dom": "^16.4.2",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5",
-    "react-slds": "0.1.0"
+    "react-slds": "0.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
