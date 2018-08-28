@@ -47,6 +47,7 @@
   "jest": {
     "collectCoverage": true,
     "testURL": "http://localhost/",
+    "testPathIgnorePatterns": ["./examples"],
     "setupTestFrameworkScriptFile": "./setupTests.js"
   },
   "devDependencies": {

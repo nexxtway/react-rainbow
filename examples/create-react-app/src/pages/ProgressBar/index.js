@@ -1,7 +1,7 @@
 import React from 'react';
 import ProgressBar from 'react-slds/components/ProgressBar';
 
-export default function ButtonExample() {
+export default function ProgressBarExample() {
     return (
         <div>
             <div className="slds-p-around_x-large" >

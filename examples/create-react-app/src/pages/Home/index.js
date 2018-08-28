@@ -3,7 +3,7 @@ import VerticalNavigation from 'react-slds/components/VerticalNavigation';
 import VerticalSection from 'react-slds/components/VerticalSection';
 import VerticalItem from 'react-slds/components/VerticalItem';
 
-export default class CompactVerticalNavigation extends Component {
+export default class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
