@@ -1,15 +1,25 @@
-# React Lightning Components Library
+<p align="center">
+  <a href="https://react-lightning-components.firebaseapp.com/" rel="noopener" target="_blank"><img width="100%" src="https://github.com/reiniergs/react-lightning-components/blob/master/assets/images/background-home.svg" alt="React Lightning Component logo"></a></p>
+</p>
+
+<div align="center">
+<p align="center">
+[React Lightning Components](https://react-lightning-components.firebaseapp.com/ ) are [react](http://facebook.github.io/react/) components that implement [Lightning Design System.](https://www.lightningdesignsystem.com/)
+</p>
 [![CircleCI](https://circleci.com/gh/reiniergs/react-lightning-components/tree/master.svg?style=svg)](https://circleci.com/gh/reiniergs/react-lightning-components/tree/master)
 [![Coverage Status](https://coveralls.io/repos/github/reiniergs/react-lightning-components/badge.svg?branch=master)](https://coveralls.io/github/reiniergs/react-lightning-components?branch=master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+</div>
 
 
-## Install
+## Installation
+
+Lightning Design System is available as an [npm package](https://www.npmjs.com/package/react-slds).
 
 ```bash
 $ yarn add react-slds
 ```
- ### or
+ ##### or
  
 ```bash
 $ npm install react-slds --save
@@ -18,11 +28,31 @@ $ npm install react-slds --save
 
 ## Usage
 
+Here is a quick example to get you started, **it's all you need**:
 ```
-import Button from 'react-slds/components/Button';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Button from 'react-slds/components/button';
 
-<Button label="Hello World!" onClick={handleClick} />
+function App() {
+    return (
+        <Button 
+            label="Hello World!" 
+            variant="brand" 
+            onClick={() => alert('Hello World!')} 
+        />
+    );    
+}
+
+ReactDOM.render(
+    <App />,
+    document.getElementById('container')
+);
 ```
+
+Yes, it's really all you need to get started as you can see in this live and interactive demo:
+
+[![Edit Button](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/52wqonrr44?from-embed)
 
 ## Running locally
 1. git clone https://github.com/reiniergs/react-lightning-components.git
