@@ -140,7 +140,8 @@ export default class ButtonMenu extends Component {
             if (newMatchedItem) this.focusChild(findItemIndex(childrenRefs, newMatchedItem));
             return null;
         }
-        const matchedItem = findItemByKey(key, childrenRefs);
+        const newChildrenRefs = childrenRefs.slice(childFocusedIndex + 1);
+        const matchedItem = findItemByKey(key, newChildrenRefs);
         if (matchedItem) {
             this.setState({ matchedKeyPressed: key });
             return this.focusMatchedItem(matchedItem);
@@ -194,6 +195,7 @@ export default class ButtonMenu extends Component {
 
     openMenu() {
         window.addEventListener('click', this.handleClick);
+        setTimeout(() => this.focusChild(0), 0);
         return this.setState({
             isOpen: true,
         });
@@ -375,7 +377,7 @@ ButtonMenu.defaultProps = {
     assistiveText: undefined,
     onFocus: () => {},
     onBlur: () => {},
-    className: '',
+    className: undefined,
     style: undefined,
     children: null,
 };

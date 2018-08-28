@@ -49,9 +49,12 @@ describe('ButtonMenu base example', () => {
         browser.keys(ENTER_KEY);
         expect(browser.isVisible(ITEM_1_CONTAINER)).toBe(true);
     });
+    it('should set the focus to the first menu item when open the menu', () => {
+        browser.click(MENU_BTN);
+        expect(browser.hasFocus(ITEM_1)).toBe(true);
+    });
     it('should move to the next item when press arrow down', () => {
         browser.click(MENU_BTN);
-        browser.keys('ArrowDown');
         browser.keys('ArrowDown');
         expect(browser.hasFocus(ITEM_2)).toBe(true);
     });
@@ -60,7 +63,7 @@ describe('ButtonMenu base example', () => {
         browser.keys(ARROW_DOWN_KEY);
         browser.keys(ARROW_DOWN_KEY);
         browser.keys(ARROW_UP_KEY);
-        expect(browser.hasFocus(ITEM_1)).toBe(true);
+        expect(browser.hasFocus(ITEM_2)).toBe(true);
     });
     it('should move to the first item when last item is active and press arrow down', () => {
         browser.click(MENU_BTN);
@@ -70,7 +73,6 @@ describe('ButtonMenu base example', () => {
     });
     it('should move to the last item when first item is active and press arrow up', () => {
         browser.click(MENU_BTN);
-        browser.keys(ARROW_DOWN_KEY);
         browser.keys(ARROW_UP_KEY);
         expect(browser.hasFocus(ITEM_4)).toBe(true);
     });
