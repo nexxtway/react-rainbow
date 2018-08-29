@@ -1,6 +1,5 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import renderer from 'react-test-renderer';
 import Button from './../index';
 
 describe('<Button/>', () => {
@@ -116,48 +115,6 @@ describe('<Button/>', () => {
 
         expect(component.find('button').text()).toBe('Click me');
     });
-    it('should have the right class names', () => {
-        const component = renderer.create(
-            <Button label="Button Label" />,
-        );
-        expect(component).toMatchSnapshot();
-    });
-    it('should have the right class names when variant neutral and have a custom class', () => {
-        const component = renderer.create(
-            <Button label="Button Label" variant="neutral" className="my-custom-class-name" />,
-        );
-        expect(component).toMatchSnapshot();
-    });
-    it('should have the right class names when variant brand', () => {
-        const component = renderer.create(
-            <Button label="Button Label" variant="brand" />,
-        );
-        expect(component).toMatchSnapshot();
-    });
-    it('should have the right class names when variant outline-brand', () => {
-        const component = renderer.create(
-            <Button label="Button Label" variant="outline-brand" />,
-        );
-        expect(component).toMatchSnapshot();
-    });
-    it('should have the right class names when variant destructive', () => {
-        const component = renderer.create(
-            <Button label="Button Label" variant="destructive" />,
-        );
-        expect(component).toMatchSnapshot();
-    });
-    it('should have the right class names when variant success', () => {
-        const component = renderer.create(
-            <Button label="Button Label" variant="success" />,
-        );
-        expect(component).toMatchSnapshot();
-    });
-    it('should have the right class names when variant inverse', () => {
-        const component = renderer.create(
-            <Button label="Button Label" variant="inverse" />,
-        );
-        expect(component).toMatchSnapshot();
-    });
     it('should render an icon on the left when iconName is passed', () => {
         const component = mount(
             <Button label="Button Label" iconName="utility:world" />,
@@ -177,5 +134,82 @@ describe('<Button/>', () => {
 
         expect(leftIcon.prop('isVisible')).toBe(false);
         expect(rightIcon.prop('isVisible')).toBe(true);
+    });
+    it('should have the right class names', () => {
+        const component = mount(
+            <Button label="Button Label" />,
+        );
+        expect(component.find('button').prop('className')).toBe('rainbow-button');
+    });
+    it('should have the right class names when variant neutral and have a custom class', () => {
+        const component = mount(
+            <Button label="Button Label" variant="neutral" className="my-custom-class-name" />,
+        );
+        expect(component.find('button').prop('className')).toBe('rainbow-button rainbow-button_neutral my-custom-class-name');
+    });
+    it('should have the right class names when variant brand', () => {
+        const component = mount(
+            <Button label="Button Label" variant="brand" />,
+        );
+        expect(component.find('button').prop('className')).toBe('rainbow-button rainbow-button_brand');
+    });
+    it('should have the right class names when variant outline-brand', () => {
+        const component = mount(
+            <Button label="Button Label" variant="outline-brand" />,
+        );
+        expect(component.find('button').prop('className')).toBe('rainbow-button rainbow-button_outline-brand');
+    });
+    it('should have the right class names when variant destructive', () => {
+        const component = mount(
+            <Button label="Button Label" variant="destructive" />,
+        );
+        expect(component.find('button').prop('className')).toBe('rainbow-button rainbow-button_destructive');
+    });
+    it('should have the right class names when variant success', () => {
+        const component = mount(
+            <Button label="Button Label" variant="success" />,
+        );
+        expect(component.find('button').prop('className')).toBe('rainbow-button rainbow-button_success');
+    });
+    it('should have the right class names when variant inverse', () => {
+        const component = mount(
+            <Button label="Button Label" variant="inverse" />,
+        );
+        expect(component.find('button').prop('className')).toBe('rainbow-button rainbow-button_inverse');
+    });
+    it('should have the right class names when shaded is true and the valid shaded variants are passed', () => {
+        const variants = [
+            'neutral',
+            'brand',
+            'destructive',
+            'success',
+        ];
+        variants.forEach((variant) => {
+            const component = mount(
+                <Button label="Button Label" variant={variant} shaded />,
+            );
+            const buttonClassNameProp = component.find('button').prop('className');
+            expect(buttonClassNameProp).toBe(`rainbow-button rainbow-button_${variant} rainbow-button_shaded`);
+        });
+    });
+    it('should have the right class names when shaded is true and the invalid shaded variants are passed', () => {
+        const variants = [
+            'outline-brand',
+            'inverse',
+        ];
+        variants.forEach((variant) => {
+            const component = mount(
+                <Button label="Button Label" variant={variant} shaded />,
+            );
+            const buttonClassNameProp = component.find('button').prop('className');
+            expect(buttonClassNameProp).toBe(`rainbow-button rainbow-button_${variant}`);
+        });
+    });
+    it('should have the right class names when shaded is true and variant is base', () => {
+        const component = mount(
+                <Button label="Button Label" variant="base" shaded />,
+            );
+        const buttonClassNameProp = component.find('button').prop('className');
+        expect(buttonClassNameProp).toBe('rainbow-button');
     });
 });

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import iconNamePropType from './../../propTypes/iconNamePropType';
 import Icon from './icon';
+import './styles.css';
 
 /**
 * Buttons are clickable items used to perform an action.
@@ -16,9 +17,26 @@ export default class Button extends Component {
         this.blur = this.blur.bind(this);
     }
 
+    getVariantClassNames() {
+        const { variant } = this.props;
+        if (variant === 'base') {
+            return null;
+        }
+        return `rainbow-button_${variant}`;
+    }
+
     getClassNames() {
-        const { className, variant } = this.props;
-        return classnames('slds-grid', 'slds-grid_align-center', 'slds-media_center', 'slds-button', `slds-button_${variant}`, className);
+        const { className, shaded, variant } = this.props;
+        const isShaded = shaded && (
+            variant === 'neutral'
+            || variant === 'brand'
+            || variant === 'destructive'
+            || variant === 'success'
+        );
+
+        return classnames('rainbow-button', this.getVariantClassNames(), {
+            'rainbow-button_shaded': isShaded,
+        }, className);
     }
 
     /**
@@ -100,7 +118,8 @@ export default class Button extends Component {
 Button.propTypes = {
     /** The text to be displayed inside the button. */
     label: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node]).isRequired,
+        PropTypes.string, PropTypes.node,
+    ]).isRequired,
     /** The variant changes the appearance of the button.
     * Accepted variants include base, neutral, brand, outline-brand, destructive,
     * success and inverse. This value defaults to base. */
@@ -113,6 +132,10 @@ Button.propTypes = {
         'success',
         'inverse',
     ]),
+    /** Specify true when the button has a shadow around it.
+    * This value defaults to false.
+    * Only neutral, brand, destructive and success variant can be shaded. */
+    shaded: PropTypes.bool,
     /** The Lightning Design System name of the icon used as a fallback when
     * the image fails to load. Names are written in the format {sprite_name}:{icon_name}
     * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed.
@@ -151,6 +174,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
     variant: 'base',
+    shaded: false,
     iconName: '',
     iconPosition: 'left',
     title: undefined,

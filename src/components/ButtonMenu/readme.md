@@ -97,10 +97,10 @@
         </ButtonMenu>
     </GlobalHeader>
     <div className="slds-m-horizontal_large slds-p-top_xx-large slds-m-bottom_large slds-grid slds-grid_align-end">
-        <ButtonMenu menuAlignment="center" menuSize="x-small" iconName="utility:add">
-            <MenuItem label="Menu Positioned Center" />
-            <MenuItem label="Menu Positioned Center" />
-            <MenuItem label="Menu Positioned Center" />
+        <ButtonMenu menuAlignment="bottom" menuSize="x-small" iconName="utility:add">
+            <MenuItem label="Menu Positioned Bottom" />
+            <MenuItem label="Menu Positioned Bottom" />
+            <MenuItem label="Menu Positioned Bottom" />
         </ButtonMenu>
     </div>
 

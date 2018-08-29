@@ -45,7 +45,7 @@ Avatar.propTypes = {
     * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed.
     * Only utility icons can be used in this component. */
     iconName: iconNamePropType.oneOf(['standard']),
-    /** The variant changes the shape of the avatar. Valid values are empty,
+    /** The variant changes the shape of the avatar. Valid values are
     * default, and circle. This value defaults to default. */
     variant: PropTypes.oneOf([
         'default', 'circle',
