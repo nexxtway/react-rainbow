@@ -1,0 +1,182 @@
+@import './../../styles/colors.scss';
+@import './../../styles/shadows.scss';
+
+.rainbow-button {
+    align-items: center;
+    display: flex;
+    font-size: 0.875rem;
+    justify-content: center;
+    position: relative;
+    padding: 0 1rem;
+    background: transparent;
+    background-clip: border-box;
+    border: 1px solid transparent;
+    border-radius: 100px;
+    line-height: 2.125rem;
+    text-decoration: none;
+    color: $color-brand;
+    cursor: pointer;
+    -webkit-appearance: none;
+    white-space: normal;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+
+    &:hover, &:focus, &:active, &:visited {
+        text-decoration: none;
+    }
+    &:hover, &:focus {
+        color: $color-brand-active;
+    }
+    &:focus {
+        outline: 0;
+        box-shadow: 0 0 3px #0070D2;
+    }
+    &:active {
+        color: $color-brand-active;
+    }
+    &[disabled] {
+        color: $color-gray-2;
+    }
+    &[disabled] * {
+        cursor: default;
+        pointer-events: none;
+    }
+}
+
+.rainbow-button + .rainbow-button {
+    margin-left: 0.25rem;
+}
+
+.rainbow-button_neutral {
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid $color-gray-2;
+    transition: border 0.15s linear;
+    border-color: $color-gray-2;
+    background-color: white;
+
+    &:hover, &:focus, &:active {
+        background-color: $color-gray-1;
+    }
+    &[disabled] {
+        background-color: transparent;
+        border-color: $color-gray-2;
+    }
+}
+
+.rainbow-button_brand {
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid $color-brand;
+    transition: border 0.15s linear;
+    background-color: $color-brand;
+    border-color: $color-brand;
+    color: white;
+
+    &:link, &:visited, &:active {
+        color: white;
+    }
+    &:hover, &:focus, &:active {
+        background-color: $color-brand-active;
+        border-color: $color-brand-active;
+        color: white;
+    }
+    &[disabled] {
+        background-color: $color-gray-1;
+        border-color: $color-gray-1;
+    }
+}
+
+.rainbow-button_outline-brand {
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid $color-brand;
+    transition: border 0.15s linear;
+    border-color: $color-brand;
+
+    &:hover, &:focus, &:active {
+        border-color: $color-brand-active;
+    }
+    &[disabled] {
+        background-color: transparent;
+        border-color: $color-gray-2;
+    }
+}
+
+.rainbow-button_inverse {
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid white;
+    transition: border 0.15s linear;
+    background-color: transparent;
+    border-color: white;
+    color: white;
+
+    &:hover, &:focus, &:active {
+        border-color: $color-brand;
+        color: $color-brand;
+    }
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 3px $color-gray-1;
+    }
+    &[disabled] {
+        background-color: transparent;
+        border-color: $color-gray-4;
+        color: $color-gray-4;
+    }
+}
+
+.rainbow-button_destructive {
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid $color-error;
+    transition: border 0.15s linear;
+    background-color: $color-error;
+    border-color: $color-error;
+    color: white;
+
+    &:link, &:visited, &:active {
+        color: white;
+    }
+    &:hover, &:focus {
+        background-color: $color-error-active;
+        color: white;
+    }
+    &:active {
+        background-color: $color-error-active;
+        border-color: $color-error-active;
+    }
+    &[disabled] {
+        background-color: $color-gray-1;
+        border-color: $color-gray-1;
+    }
+}
+
+.rainbow-button_success {
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid $color-success;
+    transition: border 0.15s linear;
+    background-color: $color-success;
+    border-color: $color-success;
+    color: white;
+
+    &:link, &:visited, &:active, &:hover, &:focus {
+        color: white;
+    }
+    &:hover, &:focus, &:active {
+        background-color: $color-success-active;
+        border-color: $color-success-active;
+    }
+    &[disabled] {
+        background-color: $color-gray-1;
+        border-color: $color-gray-1;
+    }
+}
+
+.rainbow-button_shaded {
+    box-shadow: $shadow-1;
+}

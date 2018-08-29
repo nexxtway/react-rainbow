@@ -28,6 +28,21 @@
     </div>
 
 
+##### button shaded
+
+    <div className="slds-p-vertical_large slds-align_absolute-center slds-wrap" >
+        <div className="slds-m-horizontal_medium">
+            <Button shaded label="Button Brand" onClick={() => alert('clicked!')} variant="brand" />
+        </div>
+        <div className="slds-m-horizontal_medium">
+            <Button shaded label="Button Success" onBlur={ () => alert('blurred!') } variant="success" />
+        </div>
+        <div className="slds-m-horizontal_medium">
+            <Button shaded label="Button Destructive" variant="destructive" />
+        </div>
+    </div>
+
+
 ##### buttons with icon
 
     <div className="slds-p-vertical_large slds-align_absolute-center slds-wrap" >
