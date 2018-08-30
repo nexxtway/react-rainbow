@@ -102,3 +102,6 @@ workflows:
           requires:
             - build_and_test
             - integration_tests
+          filters:
+            branches:
+              only: master
