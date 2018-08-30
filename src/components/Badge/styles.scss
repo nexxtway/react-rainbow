@@ -1,5 +1,4 @@
 @import './../../styles/colors.scss';
-@import './../../styles/shadows.scss';
 
 .rainbow-badge {
     display: -ms-flexbox;
@@ -10,7 +9,6 @@
         align-content: center;
     -ms-flex-align: center;
         align-items: center;
-    margin: auto;
     background-color: $color-gray-2;
     padding: 0.25rem 0.5rem;
     border-radius: 15rem;
@@ -19,16 +17,6 @@
     text-transform: uppercase;
     letter-spacing: 0.0625em;
     color: $color-gray-4;
-    vertical-align: bottom;
-    white-space: nowrap;
-}
-
-.rainbow-badge + .rainbow-badge {
-    margin-left: 0.5rem;
-}
-
-.rainbow-badge:empty {
-    padding: 0;
 }
 
 .rainbow-badge_inverse {

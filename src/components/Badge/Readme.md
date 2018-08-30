@@ -43,7 +43,7 @@
         </div>
         <div className="slds-m-horizontal_medium">
             <Badge variant="lightest">
-            <FontAwesomeIcon icon={faStar}/>
+                <FontAwesomeIcon icon={faStar}/>
             </Badge>
         </div>
     </div>

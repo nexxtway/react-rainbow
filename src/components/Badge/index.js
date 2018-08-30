@@ -38,7 +38,9 @@ export default function Badge(props) {
 
 Badge.propTypes = {
     /** The text to be displayed inside the badge. */
-    label: PropTypes.node,
+    label: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
     /** The variant changes the appearance of the badge. Accepted variants include default,
     * inverse, lightest, brand and outline-brand. This value defaults to default. */
     variant: PropTypes.oneOf([
@@ -48,7 +50,10 @@ Badge.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
-    /** */
+    /**
+    * This prop that should not be visible in the documentation.
+    * @ignore
+    */
     children: PropTypes.arrayOf(PropTypes.node),
 };
 

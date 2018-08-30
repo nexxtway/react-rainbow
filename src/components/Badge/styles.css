@@ -7,7 +7,6 @@
   align-content: center;
   -ms-flex-align: center;
   align-items: center;
-  margin: auto;
   background-color: #e3e5ed;
   padding: 0.25rem 0.5rem;
   border-radius: 15rem;
@@ -15,15 +14,7 @@
   line-height: normal;
   text-transform: uppercase;
   letter-spacing: 0.0625em;
-  color: #576574;
-  vertical-align: bottom;
-  white-space: nowrap; }
-
-.rainbow-badge + .rainbow-badge {
-  margin-left: 0.5rem; }
-
-.rainbow-badge:empty {
-  padding: 0; }
+  color: #576574; }
 
 .rainbow-badge_inverse {
   background-color: #576574;
