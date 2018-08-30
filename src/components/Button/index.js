@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import iconNamePropType from './../../propTypes/iconNamePropType';
-import Icon from './icon';
+import Content from './content';
 import './styles.css';
 
 /**
@@ -67,6 +66,7 @@ export default class Button extends Component {
         const {
             style,
             label,
+            children,
             disabled,
             tabIndex,
             onFocus,
@@ -75,13 +75,7 @@ export default class Button extends Component {
             title,
             type,
             ariaHaspopup,
-            iconName,
-            iconPosition,
         } = this.props;
-
-        const showLeftIcon = !!(iconName && iconPosition === 'left');
-        const showRightIcon = !!(iconName && iconPosition === 'right');
-
         return (
             <button
                 data-id="button-element"
@@ -97,19 +91,9 @@ export default class Button extends Component {
                 aria-haspopup={ariaHaspopup}
                 ref={this.buttonRef} >
 
-                <Icon
-                    data-id="left-icon"
-                    iconName={iconName}
-                    position={iconPosition}
-                    isVisible={showLeftIcon} />
-
-                {label}
-                <Icon
-                    data-id="right-icon"
-                    iconName={iconName}
-                    position={iconPosition}
-                    isVisible={showRightIcon} />
-
+                <Content label={label}>
+                    {children}
+                </Content>
             </button>
         );
     }
@@ -119,7 +103,7 @@ Button.propTypes = {
     /** The text to be displayed inside the button. */
     label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
-    ]).isRequired,
+    ]),
     /** The variant changes the appearance of the button.
     * Accepted variants include base, neutral, brand, outline-brand, destructive,
     * success and inverse. This value defaults to base. */
@@ -136,16 +120,6 @@ Button.propTypes = {
     * This value defaults to false.
     * Only neutral, brand, destructive and success variant can be shaded. */
     shaded: PropTypes.bool,
-    /** The Lightning Design System name of the icon used as a fallback when
-    * the image fails to load. Names are written in the format {sprite_name}:{icon_name}
-    * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed.
-    * Only utility icons can be used in this component. */
-    iconName: iconNamePropType.oneOf(['utility']),
-    /** Describes the position of the icon with respect to body. Options include left and right.
-    * This value defaults to left. */
-    iconPosition: PropTypes.oneOf([
-        'left', 'right',
-    ]),
     /** Displays tooltip text when the mouse moves over the element. */
     title: PropTypes.string,
     /** Specifies the type of button. Valid values are button, reset, and submit.
@@ -170,9 +144,12 @@ Button.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** */
+    children: PropTypes.arrayOf(PropTypes.node),
 };
 
 Button.defaultProps = {
+    label: undefined,
     variant: 'base',
     shaded: false,
     iconName: '',
@@ -187,4 +164,5 @@ Button.defaultProps = {
     ariaHaspopup: false,
     className: undefined,
     style: undefined,
+    children: [],
 };

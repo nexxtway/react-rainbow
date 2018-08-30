@@ -44,27 +44,35 @@
 
 
 ##### buttons with icon
-
+    // more details about how to use react-font-awesome
+    // visit https://github.com/FortAwesome/react-fontawesome
+    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+    const { 
+        faCoffee,
+        faCheck, 
+        faArrowRight,
+    } = require('@fortawesome/free-solid-svg-icons');
+    
     <div className="slds-p-vertical_large slds-align_absolute-center slds-wrap" >
         <div className="slds-m-horizontal_medium">
-            <Button 
-                label="Button base"
-                iconName="utility:check" 
-                iconPosition="left" />
+            <Button>
+                <FontAwesomeIcon icon={faCoffee} className="slds-button__icon_left"/>
+                Button base
+            </Button>
         </div>
         <div className="slds-m-horizontal_medium">
             <Button 
-                label="Button with right icon" 
-                variant="neutral"
-                iconName="utility:forward" 
-                iconPosition="right" />
+                variant="neutral">
+                Button with right icon
+                <FontAwesomeIcon icon={faCheck} className="slds-button__icon_right"/>
+            </Button>    
         </div>
         <div className="slds-m-horizontal_medium">
             <Button 
-                label="Button with left icon"
-                variant="brand"
-                iconName="utility:add" 
-                iconPosition="left" />
+                variant="brand">
+                Brand button with right icon
+                <FontAwesomeIcon icon={faArrowRight} className="slds-button__icon_right"/>
+            </Button>    
         </div>
     </div>
 
