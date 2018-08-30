@@ -32,28 +32,28 @@ describe('<Button/>', () => {
     });
     it('should be defined the click method', () => {
         const component = mount(
-            <Button />,
+            <Button label="OK" />,
         );
 
         expect(typeof component.instance().click).toBe('function');
     });
     it('should be defined the focus method', () => {
         const component = mount(
-            <Button />,
+            <Button label="OK" />,
         );
 
         expect(typeof component.instance().focus).toBe('function');
     });
     it('should be defined the blur method', () => {
         const component = mount(
-            <Button />,
+            <Button label="OK" />,
         );
 
         expect(typeof component.instance().blur).toBe('function');
     });
     it('should focus the button when the focus method is called', () => {
         const component = mount(
-            <Button />,
+            <Button label="OK" />,
         );
 
         component.instance().focus();
@@ -63,7 +63,7 @@ describe('<Button/>', () => {
     });
     it('should blur the button when the blur method is called', () => {
         const component = mount(
-            <Button />,
+            <Button label="OK" />,
         );
         const instance = component.instance();
         const buttonDataId = component.find('button').prop('data-id');
@@ -114,26 +114,6 @@ describe('<Button/>', () => {
         );
 
         expect(component.find('button').text()).toBe('Click me');
-    });
-    it('should render an icon on the left when iconName is passed', () => {
-        const component = mount(
-            <Button label="Button Label" iconName="utility:world" />,
-        );
-        const leftIcon = component.find('[data-id="left-icon"]');
-        const rightIcon = component.find('[data-id="right-icon"]');
-
-        expect(leftIcon.prop('isVisible')).toBe(true);
-        expect(rightIcon.prop('isVisible')).toBe(false);
-    });
-    it('should render an icon on the right when iconName is passed and iconPosition is right', () => {
-        const component = mount(
-            <Button label="Button Label" iconName="utility:world" iconPosition="right" />,
-        );
-        const leftIcon = component.find('[data-id="left-icon"]');
-        const rightIcon = component.find('[data-id="right-icon"]');
-
-        expect(leftIcon.prop('isVisible')).toBe(false);
-        expect(rightIcon.prop('isVisible')).toBe(true);
     });
     it('should have the right class names', () => {
         const component = mount(

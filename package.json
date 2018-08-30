@@ -61,6 +61,9 @@
     }
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.4",
+    "@fortawesome/free-solid-svg-icons": "^5.3.1",
+    "@fortawesome/react-fontawesome": "^0.1.2",
     "assert": "^1.4.1",
     "babel-cli": "6.26.0",
     "babel-code-frame": "6.26.0",
