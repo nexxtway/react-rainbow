@@ -1,0 +1,35 @@
+.rainbow-badge {
+  display: -ms-flexbox;
+  display: inline-flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #e3e5ed;
+  padding: 0.25rem 0.5rem;
+  border-radius: 15rem;
+  font-size: 0.625rem;
+  line-height: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.0625em;
+  color: #576574; }
+
+.rainbow-badge_inverse {
+  background-color: #576574;
+  color: #ffffff; }
+
+.rainbow-badge_lightest {
+  border: 1px solid #e3e5ed;
+  background-color: #ffffff;
+  color: #576574; }
+
+.rainbow-badge_brand {
+  background-color: #01b6f5;
+  color: #ffffff; }
+
+.rainbow-badge_outline-brand {
+  border: 1px solid #01b6f5;
+  background-color: transparent;
+  color: #01b6f5; }

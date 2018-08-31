@@ -1,45 +1,48 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import renderer from 'react-test-renderer';
 import Badge from './../index';
 
 describe('<Badge/>', () => {
-    it('should have the right class names when variant default and have a custom class', () => {
-        const component = renderer.create(
-            <Badge label="Badge label" className="custom-class" />,
+    it('should set the label passed as children', () => {
+        const component = mount(
+            <Badge label="Testing Label in Badge" />,
         );
-        expect(component).toMatchSnapshot();
+        expect(component.find('span').text()).toBe('Testing Label in Badge');
     });
-    it('should have the right class names when variant inverse', () => {
-        const component = renderer.create(
-            <Badge label="Inverse Badge" variant="inverse" />,
+    it('should have the right class names when variant is not passed', () => {
+        const component = mount(
+            <Badge label="Badge Label" />,
         );
-        expect(component).toMatchSnapshot();
+        expect(component.find('span').prop('className')).toBe('rainbow-badge');
+    });
+    it('should have the right class names when variant default and have a custom class', () => {
+        const component = mount(
+            <Badge label="Badge Label" variant="default" className="my-custom-class-name" />,
+        );
+        expect(component.find('span').prop('className')).toBe('rainbow-badge my-custom-class-name');
+    });
+    it('should have the right class names when variant brand', () => {
+        const component = mount(
+            <Badge label="Badge Label" variant="brand" />,
+        );
+        expect(component.find('span').prop('className')).toBe('rainbow-badge rainbow-badge_brand');
+    });
+    it('should have the right class names when variant outline-brand', () => {
+        const component = mount(
+            <Badge label="Badge Label" variant="outline-brand" />,
+        );
+        expect(component.find('span').prop('className')).toBe('rainbow-badge rainbow-badge_outline-brand');
     });
     it('should have the right class names when variant lightest', () => {
-        const component = renderer.create(
-            <Badge label="Lightest Badge" variant="lightest" />,
-        );
-        expect(component).toMatchSnapshot();
-    });
-    it('should render an icon on the left when iconName is passed', () => {
         const component = mount(
-            <Badge label="Lightest Badge" iconName="utility:world" />,
+            <Badge label="Badge Label" variant="lightest" />,
         );
-        const leftIcon = component.find('[data-id="left-icon"]');
-        const rightIcon = component.find('[data-id="right-icon"]');
-
-        expect(leftIcon.prop('isVisible')).toBe(true);
-        expect(rightIcon.prop('isVisible')).toBe(false);
+        expect(component.find('span').prop('className')).toBe('rainbow-badge rainbow-badge_lightest');
     });
-    it('should render an icon on the right when iconName is passed and iconPosition is right', () => {
+    it('should have the right class names when variant inverse', () => {
         const component = mount(
-            <Badge label="Lightest Badge" iconName="utility:world" iconPosition="right" />,
+            <Badge label="Badge Label" variant="inverse" />,
         );
-        const leftIcon = component.find('[data-id="left-icon"]');
-        const rightIcon = component.find('[data-id="right-icon"]');
-
-        expect(leftIcon.prop('isVisible')).toBe(false);
-        expect(rightIcon.prop('isVisible')).toBe(true);
+        expect(component.find('span').prop('className')).toBe('rainbow-badge rainbow-badge_inverse');
     });
 });

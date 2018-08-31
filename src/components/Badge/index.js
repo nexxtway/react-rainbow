@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import iconNamePropType from './../../propTypes/iconNamePropType';
-import Icon from './badgeIcon';
+import Content from './content';
+import './styles.css';
 
 /**
  * Badges are labels which hold small amounts of information.
@@ -12,68 +12,59 @@ export default function Badge(props) {
         className,
         style,
         label,
+        children,
         variant,
-        iconName,
-        iconPosition,
     } = props;
 
-    function getClassName() {
-        return classnames('slds-align_absolute-center', 'slds-badge', `slds-badge_${variant}`, className);
+    function getVariantClassNames() {
+        if (variant === 'default') {
+            return null;
+        }
+        return `rainbow-badge_${variant}`;
     }
 
-    const showLeftIcon = !!(iconName && iconPosition === 'left');
-    const showRightIcon = !!(iconName && iconPosition === 'right');
+    function getClassName() {
+        return classnames('rainbow-badge', getVariantClassNames(), className);
+    }
+
+    if (children === null && label === null) {
+        return null;
+    }
 
     return (
         <span className={getClassName()} style={style}>
-            <Icon
-                data-id="left-icon"
-                iconName={iconName}
-                iconPosition={iconPosition}
-                label={label}
-                isVisible={showLeftIcon} />
-
-            {label}
-            <Icon
-                data-id="right-icon"
-                iconName={iconName}
-                iconPosition={iconPosition}
-                label={label}
-                isVisible={showRightIcon} />
-
+            <Content label={label}>
+                {children}
+            </Content>
         </span>
     );
 }
 
 Badge.propTypes = {
     /** The text to be displayed inside the badge. */
-    label: PropTypes.node,
-    /** The Lightning Design System name of the icon used as a fallback when
-    * the image fails to load. Names are written in the format {sprite_name}:{icon_name}
-    * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed.
-    * Only utility icons can be used in this component. */
-    iconName: iconNamePropType.oneOf(['utility']),
-    /** Describes the position of the icon with respect to body. Options include left and right.
-    * This value defaults to left. */
-    iconPosition: PropTypes.oneOf([
-        'left', 'right',
+    label: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
     ]),
-    /** The variant changes the appearance of the badge. Accepted variants include base,
-    * default, inverse and lightest. This value defaults to default. */
+    /** The variant changes the appearance of the badge. Accepted variants include default,
+    * inverse, lightest, brand and outline-brand. This value defaults to default. */
     variant: PropTypes.oneOf([
-        'default', 'inverse', 'lightest',
+        'default', 'inverse', 'lightest', 'outline-brand', 'brand',
     ]),
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /**
+    * The content of the badge. Used to render icon or text elements inside the badge.
+    * Children takes precedence over label.
+    */
+    children: PropTypes.arrayOf(PropTypes.node),
 };
 
 Badge.defaultProps = {
     label: null,
-    iconName: '',
-    iconPosition: 'left',
     variant: 'default',
     className: undefined,
     style: undefined,
+    children: null,
 };
