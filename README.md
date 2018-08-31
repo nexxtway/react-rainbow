@@ -1,11 +1,3 @@
-<p align="center">
-  <a href="https://react-lightning-components.firebaseapp.com/" rel="noopener" target="_blank"><img width="100%" src="https://github.com/reiniergs/react-lightning-components/blob/master/assets/images/background-home.svg" alt="React Lightning Component logo"></a></p>
-</p>
-
-<div align="center">
-<p align="center">
-[React Lightning Components](https://react-lightning-components.firebaseapp.com/ ) are [react](http://facebook.github.io/react/) components that implement [Lightning Design System.](https://www.lightningdesignsystem.com/)
-</p>
 [![CircleCI](https://circleci.com/gh/reiniergs/react-lightning-components/tree/master.svg?style=svg)](https://circleci.com/gh/reiniergs/react-lightning-components/tree/master)
 [![Coverage Status](https://coveralls.io/repos/github/reiniergs/react-lightning-components/badge.svg?branch=master)](https://coveralls.io/github/reiniergs/react-lightning-components?branch=master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -17,12 +9,12 @@
 Lightning Design System is available as an [npm package](https://www.npmjs.com/package/react-slds).
 
 ```bash
-$ yarn add react-slds
+$ yarn add react-rainbow
 ```
  ##### or
  
 ```bash
-$ npm install react-slds --save
+$ npm install react-rainbow --save
 ```
  
 
@@ -32,7 +24,7 @@ Here is a quick example to get you started, **it's all you need**:
 ```
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Button from 'react-slds/components/button';
+import Button from 'react-rainbow/components/button';
 
 function App() {
     return (
