@@ -51,8 +51,8 @@ Badge.propTypes = {
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
     /**
-    * This prop that should not be visible in the documentation.
-    * @ignore
+    * The content of the badge. Used to render icon or text elements inside the badge.
+    * Children takes precedence over label.
     */
     children: PropTypes.arrayOf(PropTypes.node),
 };
