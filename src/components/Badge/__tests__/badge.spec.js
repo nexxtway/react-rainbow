@@ -9,6 +9,12 @@ describe('<Badge/>', () => {
         );
         expect(component.find('span').text()).toBe('Testing Label in Badge');
     });
+    it('should not render the "Badge" when label and children is not passed', () => {
+        const component = mount(
+            <Badge label="Testing Label in Badge" />,
+        );
+        expect(component.find('span.rainbow-badge').exists()).toBe(true);
+    });
     it('should have the right class names when variant is not passed', () => {
         const component = mount(
             <Badge label="Badge Label" />,
