@@ -1,6 +1,6 @@
 .rainbow-badge {
   display: -ms-flexbox;
-  display: flex;
+  display: inline-flex;
   -ms-flex-pack: center;
   justify-content: center;
   -ms-flex-line-pack: center;
