@@ -27,6 +27,10 @@ export default function Badge(props) {
         return classnames('rainbow-badge', getVariantClassNames(), className);
     }
 
+    if (children === null && label === null) {
+        return null;
+    }
+
     return (
         <span className={getClassName()} style={style}>
             <Content label={label}>
