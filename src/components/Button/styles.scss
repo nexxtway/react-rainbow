@@ -19,26 +19,31 @@
     -webkit-appearance: none;
     white-space: normal;
     -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 
     &:hover, &:focus, &:active, &:visited {
         text-decoration: none;
     }
+
     &:hover, &:focus {
         color: $color-brand-active;
     }
+
     &:focus {
         outline: 0;
-        box-shadow: 0 0 3px #0070D2;
+        box-shadow: 0 0 3px #0070d2;
     }
+
     &:active {
         color: $color-brand-active;
     }
+
     &[disabled] {
         color: $color-gray-2;
     }
+
     &[disabled] * {
         cursor: default;
         pointer-events: none;
@@ -60,6 +65,7 @@
     &:hover, &:focus, &:active {
         background-color: $color-gray-1;
     }
+
     &[disabled] {
         background-color: transparent;
         border-color: $color-gray-2;
@@ -78,11 +84,13 @@
     &:link, &:visited, &:active {
         color: white;
     }
+
     &:hover, &:focus, &:active {
         background-color: $color-brand-active;
         border-color: $color-brand-active;
         color: white;
     }
+
     &[disabled] {
         background-color: $color-gray-1;
         border-color: $color-gray-1;
@@ -99,6 +107,7 @@
     &:hover, &:focus, &:active {
         border-color: $color-brand-active;
     }
+
     &[disabled] {
         background-color: transparent;
         border-color: $color-gray-2;
@@ -118,10 +127,12 @@
         border-color: $color-brand;
         color: $color-brand;
     }
+
     &:focus {
         outline: none;
         box-shadow: 0 0 3px $color-gray-1;
     }
+
     &[disabled] {
         background-color: transparent;
         border-color: $color-gray-4;
@@ -141,14 +152,17 @@
     &:link, &:visited, &:active {
         color: white;
     }
+
     &:hover, &:focus {
         background-color: $color-error-active;
         color: white;
     }
+
     &:active {
         background-color: $color-error-active;
         border-color: $color-error-active;
     }
+
     &[disabled] {
         background-color: $color-gray-1;
         border-color: $color-gray-1;
@@ -167,10 +181,12 @@
     &:link, &:visited, &:active, &:hover, &:focus {
         color: white;
     }
+
     &:hover, &:focus, &:active {
         background-color: $color-success-active;
         border-color: $color-success-active;
     }
+
     &[disabled] {
         background-color: $color-gray-1;
         border-color: $color-gray-1;

@@ -2,9 +2,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import iconNamePropType from './../../propTypes/iconNamePropType';
 import { Consumer } from './../ButtonMenu/context';
 import Icon from './icon';
+import './styles.css';
 
 class Item extends Component {
     constructor(props) {
@@ -29,12 +29,12 @@ class Item extends Component {
 
     getHeaderClassNames() {
         const { className } = this.props;
-        return classnames('slds-dropdown__header slds-truncate', className);
+        return classnames('rainbow-menu-item-header rainbow-truncate', className);
     }
 
     getItemClassNames() {
         const { className } = this.props;
-        return classnames('slds-dropdown__item', className);
+        return classnames('rainbow-menu-item', className);
     }
 
     handleClick(event) {
@@ -56,7 +56,7 @@ class Item extends Component {
             label,
             title,
             variant,
-            iconName,
+            icon,
             iconPosition,
             disabled,
         } = this.props;
@@ -64,13 +64,13 @@ class Item extends Component {
         if (variant === 'header') {
             return (
                 <li className={this.getHeaderClassNames()} style={style} title={title} role="separator">
-                    <span className="slds-text-title_caps">{label}</span>
+                    <span className="rainbow-text-title_caps">{label}</span>
                 </li>
             );
         }
 
-        const hasLeftIcon = !!(iconName && iconPosition === 'left');
-        const hasRightIcon = !!(iconName && iconPosition === 'right');
+        const hasLeftIcon = !!(icon && iconPosition === 'left');
+        const hasRightIcon = !!(icon && iconPosition === 'right');
 
         return (
             <li className={this.getItemClassNames()} style={style} role="presentation" onClick={this.handleClick}>
@@ -80,10 +80,10 @@ class Item extends Component {
                     aria-disabled={disabled}
                     ref={this.itemRef}>
 
-                    <span className="slds-truncate" title={title}>
+                    <span className="rainbow-truncate" title={title}>
                         <Icon
                             data-id="menu-item-left-icon"
-                            iconName={iconName}
+                            icon={icon}
                             isVisible={hasLeftIcon}
                             position={iconPosition} />
 
@@ -91,7 +91,7 @@ class Item extends Component {
                     </span>
                     <Icon
                         data-id="menu-item-right-icon"
-                        iconName={iconName}
+                        icon={icon}
                         isVisible={hasRightIcon}
                         position={iconPosition} />
 
@@ -120,11 +120,8 @@ MenuItem.propTypes = {
     variant: PropTypes.oneOf([
         'default', 'header',
     ]),
-    /** The Lightning Design System name of the icon used as a fallback when
-    * the image fails to load. Names are written in the format {sprite_name}:{icon_name}
-    * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed.
-    * Only utility icons can be used in this component. */
-    iconName: iconNamePropType.oneOf(['utility']),
+    /** The icon component to show. */
+    icon: PropTypes.node,
     /** Describes the position of the icon with respect to body. Options include left and right.
     * This value defaults to left. */
     iconPosition: PropTypes.oneOf([
@@ -143,8 +140,9 @@ MenuItem.propTypes = {
 };
 
 MenuItem.defaultProps = {
+    label: null,
     variant: 'default',
-    iconName: undefined,
+    icon: null,
     iconPosition: 'left',
     disabled: false,
     onClick: () => {},

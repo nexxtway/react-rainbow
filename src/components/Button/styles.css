@@ -25,7 +25,7 @@
     color: #009acf; }
   .rainbow-button:focus {
     outline: 0;
-    box-shadow: 0 0 3px #0070D2; }
+    box-shadow: 0 0 3px #0070d2; }
   .rainbow-button:active {
     color: #009acf; }
   .rainbow-button[disabled] {

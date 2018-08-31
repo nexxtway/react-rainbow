@@ -1,6 +1,5 @@
 /* eslint-disable no-script-url */
 import React from 'react';
-import renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import MenuItem from './../';
 
@@ -15,19 +14,19 @@ describe('<MenuItem/>', () => {
         const component = mount(
             <MenuItem title="item title" />,
         );
-        expect(component.find('span[className="slds-truncate"]').prop('title')).toBe('item title');
+        expect(component.find('span[className="rainbow-truncate"]').prop('title')).toBe('item title');
     });
     it('should pass the right props to the left and right Icon', () => {
         const component = mount(
-            <MenuItem iconName="utility:user" iconPosition="right" />,
+            <MenuItem icon={<svg />} iconPosition="right" />,
         );
         expect(component.find('Icon[data-id="menu-item-left-icon"]').props()).toEqual(expect.objectContaining({
-            iconName: 'utility:user',
+            icon: <svg />,
             isVisible: false,
             position: 'right',
         }));
         expect(component.find('Icon[data-id="menu-item-right-icon"]').props()).toEqual(expect.objectContaining({
-            iconName: 'utility:user',
+            icon: <svg />,
             isVisible: true,
             position: 'right',
         }));
@@ -87,16 +86,16 @@ describe('<MenuItem/>', () => {
         );
         expect(component.find('li').prop('title')).toBe('header title');
     });
-    it('should have the right class names when a custom className is passed', () => {
-        const component = renderer.create(
-            <MenuItem label="menu item 1" className="my-class-name" />,
+    it('should have the right class names when variant is header', () => {
+        const component = mount(
+            <MenuItem variant="header" />,
         );
-        expect(component).toMatchSnapshot();
+        expect(component.find('li').prop('className')).toBe('rainbow-menu-item-header rainbow-truncate');
     });
-    it('should have the right class names when variant is header and have a custom className', () => {
-        const component = renderer.create(
-            <MenuItem label="menu item 2" variant="header" className="my-header-class-name" />,
+    it('should have the right class names when variant is not passed', () => {
+        const component = mount(
+            <MenuItem label="menu item 2" />,
         );
-        expect(component).toMatchSnapshot();
+        expect(component.find('li').prop('className')).toBe('rainbow-menu-item');
     });
 });

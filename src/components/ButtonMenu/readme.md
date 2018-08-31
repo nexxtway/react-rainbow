@@ -40,39 +40,52 @@
 
 ##### button menu with icons
 
+    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+    const {
+        faCoffee,
+        faCheck,
+        faUser,
+    } = require('@fortawesome/free-solid-svg-icons');
+
     <div className="slds-m-bottom_xx-large slds-p-bottom_xx-large">
         <GlobalHeader className="slds-p-bottom_xx-large slds-m-bottom_xx-large" src="images/avatar3.jpg">
             <ButtonGroup className="slds-m-right_medium">
                 <ButtonIcon iconName="utility:add" variant="border-filled" disabled />
                 <ButtonIcon iconName="utility:edit" variant="border-filled" disabled />
                 <ButtonMenu menuSize="x-small" menuAlignment="right" iconName="utility:threedots_vertical">
-                    <MenuItem 
+                    <MenuItem
                         label="Right Icon"
-                        iconName="utility:table" 
+                        icon={<FontAwesomeIcon icon={faCoffee} />}
                         iconPosition="right" />
-                    <MenuItem 
+
+                    <MenuItem
                         label="Right Icon"
-                        iconName="utility:kanban" 
+                        icon={<FontAwesomeIcon icon={faCheck} />}
                         iconPosition="right" />
-                    <MenuItem 
+
+                    <MenuItem
                         label="Right Icon"
-                        iconName="utility:side_list" 
+                        icon={<FontAwesomeIcon icon={faUser} />}
                         iconPosition="right" />
+
                 </ButtonMenu>
             </ButtonGroup>
             <ButtonMenu menuAlignment="right" menuSize="x-small" iconName="utility:notification">
-                <MenuItem 
+                <MenuItem
                     label="Left Icon"
-                    iconName="utility:announcement" 
+                    icon={<FontAwesomeIcon icon={faCoffee} />}
                     iconPosition="left" />
-                <MenuItem 
+
+                <MenuItem
                     label="Left Icon"
-                    iconName="utility:announcement" 
+                    icon={<FontAwesomeIcon icon={faCheck} />}
                     iconPosition="left" />
-                <MenuItem 
+
+                <MenuItem
                     label="Left Icon"
-                    iconName="utility:announcement" 
+                    icon={<FontAwesomeIcon icon={faUser} />}
                     iconPosition="left" />
+
             </ButtonMenu>
         </GlobalHeader>
     </div>

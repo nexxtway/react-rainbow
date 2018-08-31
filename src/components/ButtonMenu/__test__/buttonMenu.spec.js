@@ -1,5 +1,4 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import ButtonMenu from './../';
 
@@ -122,69 +121,84 @@ describe('<ButtonMenu/>', () => {
         );
         expect(component.find('ul').prop('aria-label')).toBe('assistive description');
     });
-    it('should set the right class names to the container element when the menu is opened', () => {
+    it('should have the right class names in the container element', () => {
+        const component = mount(
+            <ButtonMenu>
+                <span />
+            </ButtonMenu>,
+        );
+        expect(component.find('div[role="presentation"]').prop('className')).toBe('rainbow-button-menu');
+    });
+    it('should have the right class names in the container element when the menu is opened', () => {
         const component = mount(
             <ButtonMenu>
                 <span />
             </ButtonMenu>,
         );
         component.find('ButtonIcon').simulate('click');
-        expect(component.find('div[role="presentation"]').prop('className')).toBe('slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last slds-is-open');
+        expect(component.find('div[role="presentation"]').prop('className')).toBe('rainbow-button-menu rainbow-button-menu_is-open');
     });
-    it('should have the right class names', () => {
-        const component = renderer.create(
+    it('should have the right class names in the menu dropdown element', () => {
+        const component = mount(
             <ButtonMenu>
                 <span />
             </ButtonMenu>,
         );
-        expect(component).toMatchSnapshot();
+        const dropdown = component.find('ul[role="menu"]').parent();
+        expect(dropdown.prop('className')).toBe('rainbow-button-menu-dropdown rainbow-button-menu-dropdown_left rainbow-button-menu-dropdown_xx-small');
     });
     it('should have the right class names when menuAlignment is left and isLoading is true', () => {
-        const component = renderer.create(
+        const component = mount(
             <ButtonMenu menuAlignment="left" isLoading>
                 <span />
             </ButtonMenu>,
         );
-        expect(component).toMatchSnapshot();
+        const dropdown = component.find('ul[role="menu"]').parent();
+        expect(dropdown.prop('className')).toBe('rainbow-button-menu-dropdown rainbow-button-menu-dropdown_left rainbow-button-menu-dropdown_xx-small rainbow-button-menu-dropdown_loading-box');
     });
     it('should have the right class names when menuAlignment is right and menuSize is xx-small', () => {
-        const component = renderer.create(
+        const component = mount(
             <ButtonMenu menuAlignment="right" menuSize="xx-small">
                 <span />
             </ButtonMenu>,
         );
-        expect(component).toMatchSnapshot();
+        const dropdown = component.find('ul[role="menu"]').parent();
+        expect(dropdown.prop('className')).toBe('rainbow-button-menu-dropdown rainbow-button-menu-dropdown_right rainbow-button-menu-dropdown_xx-small');
     });
     it('should have the right class names when menuSize is x-small', () => {
-        const component = renderer.create(
+        const component = mount(
             <ButtonMenu menuSize="x-small">
                 <span />
             </ButtonMenu>,
         );
-        expect(component).toMatchSnapshot();
+        const dropdown = component.find('ul[role="menu"]').parent();
+        expect(dropdown.prop('className')).toBe('rainbow-button-menu-dropdown rainbow-button-menu-dropdown_left rainbow-button-menu-dropdown_x-small');
     });
     it('should have the right class names when menuSize is small', () => {
-        const component = renderer.create(
+        const component = mount(
             <ButtonMenu menuSize="small">
                 <span />
             </ButtonMenu>,
         );
-        expect(component).toMatchSnapshot();
+        const dropdown = component.find('ul[role="menu"]').parent();
+        expect(dropdown.prop('className')).toBe('rainbow-button-menu-dropdown rainbow-button-menu-dropdown_left rainbow-button-menu-dropdown_small');
     });
     it('should have the right class names when menuSize is medium', () => {
-        const component = renderer.create(
+        const component = mount(
             <ButtonMenu menuSize="medium">
                 <span />
             </ButtonMenu>,
         );
-        expect(component).toMatchSnapshot();
+        const dropdown = component.find('ul[role="menu"]').parent();
+        expect(dropdown.prop('className')).toBe('rainbow-button-menu-dropdown rainbow-button-menu-dropdown_left rainbow-button-menu-dropdown_medium');
     });
     it('should have the right class names when menuSize is large', () => {
-        const component = renderer.create(
+        const component = mount(
             <ButtonMenu menuSize="large">
                 <span />
             </ButtonMenu>,
         );
-        expect(component).toMatchSnapshot();
+        const dropdown = component.find('ul[role="menu"]').parent();
+        expect(dropdown.prop('className')).toBe('rainbow-button-menu-dropdown rainbow-button-menu-dropdown_left rainbow-button-menu-dropdown_large');
     });
 });
