@@ -2,41 +2,24 @@
 
 exports[`<Card/> should have the right class names 1`] = `
 <article
-  className="slds-card"
+  className="rainbow-card"
 >
   <div
-    className="slds-card__header slds-grid"
+    className="rainbow-card__header rainbow-grid"
   >
     <header
-      className="slds-media slds-media_center slds-has-flexi-truncate"
+      className="rainbow-media rainbow-media_center rainbow-has-flexi-truncate"
     >
       <div
-        className="slds-media__figure"
-      >
-        <span
-          className="slds-icon_container slds-icon-custom-custom72"
-        >
-          <svg
-            aria-hidden={true}
-            className="slds-icon slds-icon_small"
-          >
-            <use
-              href="/icons/custom-sprite/svg/symbols.svg#custom72"
-              xmlnsXlink="http://www.w3.org/1999/xlink"
-            />
-          </svg>
-        </span>
-      </div>
-      <div
-        className="slds-media__body"
+        className="rainbow-media__body"
       >
         <h2>
           <a
-            className="slds-card__header-link slds-truncate"
+            className="rainbow-card__header-link rainbow-truncate"
             href="javascript:void(0);"
           >
             <span
-              className="slds-text-heading_small"
+              className="rainbow-text-heading_small"
             >
               Card Header
             </span>
@@ -45,7 +28,7 @@ exports[`<Card/> should have the right class names 1`] = `
       </div>
     </header>
     <div
-      className="slds-no-flex"
+      className="rainbow-no-flex"
     >
       <div>
         Testing actions node
@@ -53,14 +36,14 @@ exports[`<Card/> should have the right class names 1`] = `
     </div>
   </div>
   <div
-    className="slds-card__body slds-card__body_inner"
+    className="rainbow-card__body rainbow-card__body_inner"
   >
     <div>
       Testing childrens
     </div>
   </div>
   <footer
-    className="slds-card__footer"
+    className="rainbow-card__footer"
   >
     Card Footer
   </footer>

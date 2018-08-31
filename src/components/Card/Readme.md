@@ -15,7 +15,6 @@
     <div className="slds-m-around_large">    
         <Card
             className="slds-card_boundary"
-            iconName="standard:avatar"
             title="Conatct details"
             actions={<Button variant="neutral" label="New" />} >
         </Card>
@@ -27,7 +26,6 @@
     <div className="slds-m-around_large">  
         <Card
             className="slds-card_boundary"
-            iconName="standard:groups"
             title="Contacts (3)"
             footer="View all"
             actions={<Button variant="neutral" label="New" />} >
@@ -43,7 +41,6 @@
         <Card
             className="slds-card_boundary"
             isLoading
-            iconName="standard:task"
             title="Task"
             actions={<Button variant="neutral" label="New" />} >
         </Card>
@@ -55,7 +52,6 @@
     <div className="slds-m-around_large">
         <Card
             className="slds-card_boundary"
-            iconName="standard:task"
             title="Task"
             actions={<Button variant="neutral" label="New" />} >
 
