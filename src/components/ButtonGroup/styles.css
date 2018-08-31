@@ -7,7 +7,7 @@
   border-width: 1px;
   margin-left: -1px; }
 
-.rainbow-button-group .slds-button {
+.rainbow-button-group .rainbow-button-icon {
   border-radius: 0;
   border-width: 1px;
   margin-left: -1px;
@@ -19,15 +19,15 @@
 .rainbow-button-group > button:first-child, .rainbow-button-group > div:first-child {
   border-radius: 100px 0 0 100px; }
 
-.rainbow-button-group > div:first-child .slds-button_icon {
+.rainbow-button-group > div:first-child .rainbow-button-icon {
   border-radius: 0 100px 100px 0; }
 
 .rainbow-button-group > button:last-child, .rainbow-button-group > div:last-child {
   border-radius: 0 100px 100px 0; }
 
-.rainbow-button-group > div:last-child .slds-button_icon {
+.rainbow-button-group > div:last-child .rainbow-button-icon {
   border-radius: 0 100px 100px 0; }
 
 .rainbow-button-group .rainbow-button:only-child,
 .rainbow-button-group-list li:only-child .rainbow-button {
-  border-radius: 0.25rem; }
+  border-radius: 0.875rem; }
