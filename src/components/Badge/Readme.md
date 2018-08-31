@@ -31,19 +31,19 @@
     <div className="slds-p-vertical_large slds-align--absolute-center slds-wrap">
         <div className="slds-m-horizontal_medium">
             <Badge variant="inverse">
-                <FontAwesomeIcon icon={faStar} pull="left" />
+                <FontAwesomeIcon icon={faStar} pull="left" size="lg" />
                 112 005
             </Badge>
         </div>
         <div className="slds-m-horizontal_medium">
             <Badge variant="lightest">
-                <FontAwesomeIcon icon={faStar} pull="left" />
+                <FontAwesomeIcon icon={faStar} pull="left" size="lg" />
                 212 002
             </Badge>
         </div>
         <div className="slds-m-horizontal_medium">
             <Badge variant="lightest">
-                <FontAwesomeIcon icon={faStar} />
+                <FontAwesomeIcon icon={faStar} size="lg" />
             </Badge>
         </div>
     </div>
