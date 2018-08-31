@@ -1,0 +1,7 @@
+.rainbow-divider {
+  border-top: solid 1px #e3e5ed; }
+
+.rainbow-divider_space {
+  border-top: solid 1px #e3e5ed;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem; }

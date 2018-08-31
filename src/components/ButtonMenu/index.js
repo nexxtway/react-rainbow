@@ -18,6 +18,7 @@ import {
     TAB_KEY,
     ENTER_KEY,
 } from './../../libs/constants';
+import './styles.css';
 
 /**
 * A Button Menu offers a list of actions or functions that a user can access.
@@ -55,23 +56,28 @@ export default class ButtonMenu extends Component {
         const { isOpen } = this.state;
         const { className } = this.props;
 
-        return classnames('slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last', {
-            'slds-is-open': isOpen,
+        return classnames('rainbow-button-menu', {
+            'rainbow-button-menu_is-open': isOpen,
         }, className);
     }
 
     getDropdownClassNames() {
         const { menuAlignment, menuSize, isLoading } = this.props;
         return classnames(
-            'slds-dropdown',
-            `slds-dropdown_${menuAlignment}`,
-            `slds-dropdown_${menuSize}`,
-            { 'slds-icon_large': isLoading },
+            'rainbow-button-menu-dropdown',
+            `rainbow-button-menu-dropdown_${menuAlignment}`,
+            `rainbow-button-menu-dropdown_${menuSize}`,
+            { 'rainbow-button-menu-dropdown_loading-box': isLoading },
         );
     }
 
     focusChild(index) {
+        const { isLoading } = this.props;
         const { childrenRefs } = this.state;
+
+        if (isLoading) {
+            return null;
+        }
         this.setState({ childFocusedIndex: index });
         return childrenRefs[index].focus();
     }
@@ -283,7 +289,7 @@ export default class ButtonMenu extends Component {
                     ref={this.buttonRef} />
 
                 <div className={this.getDropdownClassNames()}>
-                    <ul className="slds-dropdown__list" role="menu" aria-label={ariaLabel}>
+                    <ul role="menu" aria-label={ariaLabel}>
                         <MenuContent isLoading={isLoading}>
                             <Provider value={context}>
                                 {children}
