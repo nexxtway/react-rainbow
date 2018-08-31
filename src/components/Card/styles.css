@@ -37,11 +37,6 @@
   -ms-flex: none;
   flex: none; }
 
-.rainbow-media__figure {
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  margin-right: 0.75rem; }
-
 .rainbow-media__body {
   -ms-flex: 1;
   flex: 1;
