@@ -5,17 +5,17 @@ exports[`<Card/> should have the right class names 1`] = `
   className="rainbow-card"
 >
   <div
-    className="rainbow-card__header rainbow-grid"
+    className="rainbow-card__header-container"
   >
     <header
-      className="rainbow-media rainbow-media_center rainbow-has-flexi-truncate"
+      className="rainbow-card__header"
     >
       <div
         className="rainbow-media__body"
       >
         <h2>
           <a
-            className="rainbow-card__header-link rainbow-truncate"
+            className="rainbow-card__header-link"
             href="javascript:void(0);"
           >
             <span
@@ -36,7 +36,7 @@ exports[`<Card/> should have the right class names 1`] = `
     </div>
   </div>
   <div
-    className="rainbow-card__body rainbow-card__body_inner"
+    className="rainbow-card__body"
   >
     <div>
       Testing childrens

@@ -26,13 +26,13 @@ export default function Card(props) {
 
     return (
         <article className={getContainerClassName()} style={style}>
-            <div className="rainbow-card__header rainbow-grid">
-                <header className="rainbow-media rainbow-media_center rainbow-has-flexi-truncate">
+            <div className="rainbow-card__header-container">
+                <header className="rainbow-card__header">
                     <HeaderTitle title={title} />
                 </header>
                 <Actions content={actions} />
             </div>
-            <div className="rainbow-card__body rainbow-card__body_inner">
+            <div className="rainbow-card__body">
                 <CardBoddy isLoading={isLoading}>
                     {children}
                 </CardBoddy>

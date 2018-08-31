@@ -8,7 +8,7 @@ export default function HeaderTitle({ title }) {
         return (
             <div className="rainbow-media__body">
                 <h2>
-                    <a href="javascript:void(0);" className="rainbow-card__header-link rainbow-truncate">
+                    <a href="javascript:void(0);" className="rainbow-card__header-link">
                         <span className="rainbow-text-heading_small">{title}</span>
                     </a>
                 </h2>
