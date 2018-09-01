@@ -58,7 +58,7 @@ ProgressBar.propTypes = {
         'medium',
         'large',
     ]),
-    /** The variant of the progress bar. Valid values are default and circular. */
+    /** The variant of the progress bar. Valid values are brand and success. */
     variant: PropTypes.oneOf([
         'brand', 'success',
     ]),
