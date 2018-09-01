@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './styles.css';
 
 export default function RequiredAsterisk({ required }) {
     if (required) {
-        return <abbr className="slds-required" title="required">* </abbr>;
+        return <abbr className="rainbow-required" title="required">* </abbr>;
     }
     return null;
 }

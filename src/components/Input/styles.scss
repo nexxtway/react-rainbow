@@ -1,0 +1,361 @@
+@import "../../styles/colors";
+
+.rainbow-form-element {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.rainbow-form-element__helper {
+    font-size: 0.75rem;
+}
+
+.rainbow-form-element__label {
+    color: #706e6b;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    margin-right: 0.75rem;
+    margin-bottom: 0.125rem;
+    align-self: center;
+}
+
+.rainbow-form-element__label_read-only {
+    align-self: flex-start;
+}
+
+.rainbow-form-element__label:empty {
+    margin: 0;
+}
+
+.rainbow-form-element__control .rainbow-radio,
+.rainbow-form-element__control .rainbow-checkbox {
+    display: block;
+}
+
+.rainbow-form-element__icon {
+    display: inline-block;
+    position: relative;
+}
+
+.rainbow-form-element__help {
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+    align-self: center;
+}
+
+.rainbow-form-element__static {
+    display: inline-block;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    min-height: calc(1.875rem + 2px);
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #2b2826;
+}
+
+.rainbow-form-element_edit .rainbow-form-element__static {
+    width: calc(100% - 1.5rem);
+}
+
+.rainbow-form-element_edit .rainbow-button_icon {
+    vertical-align: bottom;
+}
+
+/**
+ * Fixed text that sits to the left or right of an input
+ *
+ * @selector .rainbow-form-element__addon
+ * @restrict .rainbow-form-element span
+ */
+.rainbow-form-element__addon {
+    display: inline-block;
+    margin: 0 0.5rem;
+    align-self: center;
+}
+
+.rainbow-form-element__static.rainbow-text-longform *:last-child {
+    margin-bottom: 0;
+}
+
+.rainbow-form-element__static--edit {
+    width: calc(100% - 1.5rem);
+}
+
+/**
+ * Required Star
+ *
+ * @selector .rainbow-required
+ * @restrict .rainbow-form-element abbr, abbr
+ */
+.rainbow-required {
+    color: $color-error;
+    margin: 0 0.125rem;
+}
+
+/**
+ * Error styles for form element
+ *
+ * @selector .rainbow-has-error
+ * @restrict .rainbow-form-element
+ * @modifier
+ * @group feedback
+ */
+.rainbow-has-error .rainbow-form-element__help {
+    color: $color-error;
+}
+
+.rainbow-input-has-icon .rainbow-input__icon {
+    fill: #b0adab;
+    width: 0.875rem;
+    height: 0.875rem;
+    position: absolute;
+    top: 50%;
+    margin-top: -0.4375rem;
+    line-height: 1;
+    border: 0;
+    z-index: 2;
+}
+
+.rainbow-input {
+    background-color: white;
+    border: 1px solid #dddbda;
+    border-radius: 100px;
+    width: 100%;
+    transition: border 0.1s linear, background-color 0.1s linear;
+    display: inline-block;
+    padding: 0 1rem 0 0.75rem;
+    line-height: 1.875rem;
+    min-height: calc(1.875rem + (1px * 2));
+}
+
+.rainbow-input:focus, .rainbow-input:active {
+    outline: 0;
+    border-color: $color-brand;
+    background-color: white;
+    box-shadow: 0 0 3px $color-brand-active;
+}
+
+.rainbow-input[disabled], .rainbow-input.rainbow-is-disabled {
+    background-color: #ecebea;
+    border-color: #c9c7c5;
+    cursor: not-allowed;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.rainbow-input[disabled]:focus,
+.rainbow-input[disabled]:active,
+.rainbow-input.rainbow-is-disabled:focus,
+.rainbow-input.rainbow-is-disabled:active {
+    box-shadow: none;
+}
+
+.rainbow-input[readonly] {
+    padding-left: 0;
+    border-color: transparent;
+    background-color: transparent;
+    font-size: 0.875rem;
+    font-weight: 400;
+}
+
+.rainbow-input[type="search"]::-ms-clear {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+.rainbow-input_bare {
+    background-color: transparent;
+    border: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 0.75rem;
+    color: #3e3e3c;
+    line-height: 1.875rem;
+}
+
+.rainbow-input_bare:focus, .rainbow-input_bare:active {
+    outline: 0;
+    box-shadow: none;
+}
+
+.rainbow-input_counter {
+    text-align: center;
+    padding: 0 3rem;
+}
+
+.rainbow-input_height {
+    min-height: calc(1.875rem + (1px * 2));
+}
+
+/**
+ * @summary Modifier to allow a [readonly] input to have borders
+ *
+ * @selector .rainbow-input_borders
+ * @restrict .rainbow-input
+ */
+.rainbow-input_borders {
+    padding-left: 0.75rem;
+    border-color: #dddbda;
+}
+
+/**
+ * @summary Modifier if text input has svg icon adjacent to input
+ *
+ * @selector .rainbow-input-has-icon
+ * @restrict .rainbow-form-element div
+ */
+.rainbow-input-has-icon {
+    position: relative;
+}
+
+.rainbow-has-error .rainbow-input__icon {
+    fill: $color-error;
+    color: $color-error;
+}
+
+.rainbow-input-has-icon_left .rainbow-input__icon {
+    left: 0.75rem;
+}
+
+.rainbow-input-has-icon_right .rainbow-input__icon {
+    right: 0.75rem;
+}
+
+.rainbow-input-has-icon .rainbow-input__icon:not(button) {
+    pointer-events: none;
+}
+
+.rainbow-input-has-icon_left .rainbow-input,
+.rainbow-input-has-icon_left .rainbow-input_bare {
+    padding-left: 2rem;
+}
+
+.rainbow-input-has-icon_right .rainbow-input,
+.rainbow-input-has-icon_right .rainbow-input_bare {
+    padding-right: 2rem;
+}
+
+.rainbow-input-has-icon_left-right {
+    /**
+     * @summary Hook for .rainbow-input-has-icon--left-right
+     *
+     * @selector .rainbow-input__icon_left
+     * @restrict .rainbow-input__icon
+     */
+
+    /**
+     * @summary Hook for .rainbow-input-has-icon_left-right
+     *
+     * @selector .rainbow-input__icon_right
+     * @restrict .rainbow-input__icon
+     */
+}
+
+.rainbow-input-has-icon_left-right .rainbow-input__icon_left,
+.rainbow-input-has-icon_left-right .rainbow-input__icon--left {
+    left: 0.75rem;
+}
+
+.rainbow-input-has-icon_left-right .rainbow-input__icon_right,
+.rainbow-input-has-icon_left-right .rainbow-input__icon--right {
+    right: 0.75rem;
+}
+
+.rainbow-input-has-icon_left-right .rainbow-input,
+.rainbow-input-has-icon_left-right .rainbow-input_bare {
+    padding: 0 2rem;
+}
+
+.rainbow-input-has-icon_group-right .rainbow-input,
+.rainbow-input-has-icon_group-right .rainbow-input_bare {
+    padding-right: 3.25rem;
+}
+
+/**
+ * @summary Positions two items (icons and/or spinners) on one side or the other of the input
+ *
+ * @selector .rainbow-input__icon-group
+ * @restrict .rainbow-input-has-icon div
+ */
+.rainbow-input__icon-group {
+    position: absolute;
+    height: 1rem;
+    margin-top: -0.5rem;
+}
+
+/**
+ * @summary Positions the close icon and spinner on the right side of the input while searching
+ *
+ * @selector .rainbow-input__icon-group_right
+ * @restrict .rainbow-input__icon-group
+ */
+.rainbow-input__icon-group_right {
+    right: 0;
+    top: 50%;
+}
+
+.rainbow-input__icon-group_right .rainbow-input__icon_right {
+    right: 0.5rem;
+}
+
+.rainbow-input__icon-group_right .rainbow-input__spinner {
+    right: 1.5rem;
+    left: auto;
+}
+
+/**
+ * @summary Use on input container to let it know
+ * there is fixed text to the left or right of the input
+ * @selector .rainbow-input-has-fixed-addon
+ * @restrict .rainbow-form-element .rainbow-form-element__control
+ */
+.rainbow-input-has-fixed-addon {
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.rainbow-input:required {
+    box-shadow: none;
+}
+
+.rainbow-has-error .rainbow-input {
+    background-color: white;
+    border-color: $color-error;
+    box-shadow: $color-error-active 0 0 0 1px inset;
+    background-clip: padding-box;
+}
+
+.rainbow-input:required:focus {
+    box-shadow: 0 0 3px $color-brand-active;
+}
+
+.rainbow-has-error .rainbow-input:focus, .rainbow-has-error .rainbow-input:active {
+    box-shadow: $color-error-active 0 0 0 1px inset, 0 0 3px $color-brand-active;
+}
+
+/**
+ * @summary Positions decrement button within counter input field
+ *
+ * @selector .rainbow-input__button_decrement
+ * @restrict button
+ */
+.rainbow-input__button_decrement {
+    position: absolute;
+    bottom: 0.25rem;
+    left: 0.75rem;
+}
+
+/**
+ * @summary Positions increment button within counter input field
+ *
+ * @selector .rainbow-input__button_increment
+ * @restrict button
+ */
+.rainbow-input__button_increment {
+    position: absolute;
+    bottom: 0.25rem;
+    right: 0.75rem;
+}

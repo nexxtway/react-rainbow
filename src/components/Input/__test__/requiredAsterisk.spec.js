@@ -7,13 +7,13 @@ describe('<InputRequiredAsterisk/>', () => {
         const component = mount(
             <RequiredAsterisk required={false} />,
         );
-        expect(component.find('abbr[className="slds-required"]').exists()).toBe(false);
+        expect(component.find('abbr[className="rainbow-required"]').exists()).toBe(false);
     });
     it('should render the abbr element when is required', () => {
         const component = mount(
             <RequiredAsterisk required />,
         );
-        const asterisk = component.find('abbr[className="slds-required"]');
+        const asterisk = component.find('abbr[className="rainbow-required"]');
         expect(asterisk.exists()).toBe(true);
         expect(asterisk.text()).toBe('* ');
     });
@@ -21,7 +21,7 @@ describe('<InputRequiredAsterisk/>', () => {
         const component = mount(
             <RequiredAsterisk required />,
         );
-        const asterisk = component.find('abbr[className="slds-required"]');
+        const asterisk = component.find('abbr[className="rainbow-required"]');
         expect(asterisk.prop('title')).toBe('required');
     });
 });

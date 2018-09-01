@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import IconSvg from '../IconSvg';
+import './styles.css';
 
 export default function Icon(props) {
     const {
@@ -12,11 +13,11 @@ export default function Icon(props) {
 
     const getIconClassNames = () => {
         if (error) {
-            return `slds-input__icon slds-input__icon_${position}`;
+            return `rainbow-input__icon rainbow-input__icon_${position}`;
         }
         return classnames(
-            'slds-icon slds-input__icon slds-icon-text-default',
-            `slds-input__icon_${position}`,
+            'rainbow-icon rainbow-input__icon rainbow-icon-text-default',
+            `rainbow-input__icon_${position}`,
         );
     };
 

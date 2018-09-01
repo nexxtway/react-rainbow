@@ -7,6 +7,7 @@ import Icon from './icon';
 import Help from './help';
 import Error from './error';
 import Label from './label';
+import './styles.css';
 
 /**
  * Text inputs are used for freeform data entry.
@@ -24,7 +25,7 @@ export default class Input extends Component {
             className,
             error,
         } = this.props;
-        return classnames('slds-form-element', { 'slds-has-error': error }, className);
+        return classnames('rainbow-form-element', { 'rainbow-has-error': error }, className);
     }
 
     getFormControlClassNames() {
@@ -32,9 +33,9 @@ export default class Input extends Component {
             iconName,
             iconPosition,
         } = this.props;
-        return classnames('slds-form-element__control', {
-            'slds-input-has-icon': iconName,
-            [`slds-input-has-icon_${iconPosition}`]: iconName,
+        return classnames('rainbow-form-element__control', {
+            'rainbow-input-has-icon': iconName,
+            [`rainbow-input-has-icon_${iconPosition}`]: iconName,
         });
     }
 
@@ -43,9 +44,9 @@ export default class Input extends Component {
             isBare,
             isCentered,
         } = this.props;
-        return classnames('slds-input', {
-            'slds-input_bare': isBare,
-            'slds-input_counter': isCentered,
+        return classnames('rainbow-input', {
+            'rainbow-input_bare': isBare,
+            'rainbow-input_counter': isCentered,
         });
     }
 
@@ -97,6 +98,7 @@ export default class Input extends Component {
                     label={label}
                     required={isRequiredOrHasError}
                     inputId={this.inputId}
+                    readOnly={readOnly}
                     id={this.getInlineTextLabelId()} />
 
                 <div className={this.getFormControlClassNames()}>

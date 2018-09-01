@@ -17,27 +17,39 @@ describe('<InputIcon/>', () => {
         expect(component.find('IconSvg').exists()).toBe(true);
     });
     it('should have the right class names when iconName is passed and the position is left', () => {
-        const component = renderer.create(
+        const component = mount(
             <Icon iconName="utility:activity" position="left" />,
         );
-        expect(component).toMatchSnapshot();
+
+        const icon = component.find('IconSvg');
+
+        expect(icon.prop('className')).toBe('rainbow-icon rainbow-input__icon rainbow-icon-text-default rainbow-input__icon_left');
     });
     it('should have the right class names when iconName is passed and the position is right', () => {
-        const component = renderer.create(
+        const component = mount(
             <Icon iconName="utility:activity" position="right" />,
         );
-        expect(component).toMatchSnapshot();
+
+        const icon = component.find('IconSvg');
+
+        expect(icon.prop('className')).toBe('rainbow-icon rainbow-input__icon rainbow-icon-text-default rainbow-input__icon_right');
     });
     it('should have the right class names when there is an error and the position is left', () => {
-        const component = renderer.create(
+        const component = mount(
             <Icon iconName="utility:activity" error="input error" position="left" />,
         );
-        expect(component).toMatchSnapshot();
+
+        const icon = component.find('IconSvg');
+
+        expect(icon.prop('className')).toBe('rainbow-input__icon rainbow-input__icon_left');
     });
     it('should have the right class names when there is an error and the position is right', () => {
-        const component = renderer.create(
+        const component = mount(
             <Icon iconName="utility:activity" error="input error" position="right" />,
         );
-        expect(component).toMatchSnapshot();
+
+        const icon = component.find('IconSvg');
+
+        expect(icon.prop('className')).toBe('rainbow-input__icon rainbow-input__icon_right');
     });
 });

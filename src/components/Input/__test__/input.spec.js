@@ -117,6 +117,7 @@ describe('<Input/>', () => {
             className: 'my-class-name',
             label: 'custom label',
             required: true,
+            readOnly: false,
             inputId: expect.any(String),
         });
     });
@@ -140,42 +141,42 @@ describe('<Input/>', () => {
         const component = mount(
             <Input />,
         );
-        expect(component.find('div[className="slds-form-element"]').exists()).toBe(true);
+        expect(component.find('div[className="rainbow-form-element"]').exists()).toBe(true);
     });
     it('should have the right class name in the form element control container', () => {
         const component = mount(
             <Input />,
         );
-        expect(component.find('div[className="slds-form-element__control"]').exists()).toBe(true);
+        expect(component.find('div[className="rainbow-form-element__control"]').exists()).toBe(true);
     });
     it('should have the right class names when iconName is passed', () => {
         const component = mount(
             <Input iconName="utility:activity" />,
         );
-        expect(component.find('div[className="slds-form-element__control slds-input-has-icon slds-input-has-icon_left"]').exists()).toBe(true);
+        expect(component.find('div[className="rainbow-form-element__control rainbow-input-has-icon rainbow-input-has-icon_left"]').exists()).toBe(true);
     });
     it('should have the right class names when iconName is passed and iconPosition is right', () => {
         const component = mount(
             <Input iconName="utility:activity" iconPosition="right" />,
         );
-        expect(component.find('div[className="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"]').exists()).toBe(true);
+        expect(component.find('div[className="rainbow-form-element__control rainbow-input-has-icon rainbow-input-has-icon_right"]').exists()).toBe(true);
     });
     it('should have the right class names when error is passed', () => {
         const component = mount(
             <Input error="Error text" />,
         );
-        expect(component.find('div[className="slds-form-element slds-has-error"]').exists()).toBe(true);
+        expect(component.find('div[className="rainbow-form-element rainbow-has-error"]').exists()).toBe(true);
     });
     it('should have the right class names when isBare', () => {
         const component = mount(
             <Input isBare />,
         );
-        expect(component.find('input').prop('className')).toBe('slds-input slds-input_bare');
+        expect(component.find('input').prop('className')).toBe('rainbow-input rainbow-input_bare');
     });
     it('should have the right class names when isCentered', () => {
         const component = mount(
             <Input isCentered />,
         );
-        expect(component.find('input').prop('className')).toBe('slds-input slds-input_counter');
+        expect(component.find('input').prop('className')).toBe('rainbow-input rainbow-input_counter');
     });
 });

@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './styles.css';
 
 export default function Error({ id, error }) {
     if (error) {
-        return <div id={id} className="slds-form-element__help">{error}</div>;
+        return <div id={id} className="rainbow-form-element__help">{error}</div>;
     }
     return null;
 }
