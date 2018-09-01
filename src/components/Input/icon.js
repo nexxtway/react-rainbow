@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import IconSvg from '../IconSvg';
-import './styles.css';
 
 export default function Icon(props) {
     const {
-        iconName,
+        icon,
         position,
         error,
     } = props;
@@ -21,19 +19,23 @@ export default function Icon(props) {
         );
     };
 
-    if (iconName) {
-        return <IconSvg iconName={iconName} className={getIconClassNames()} />;
+    if (icon) {
+        return (
+            <span className={getIconClassNames()}>
+                {icon}
+            </span>
+        );
     }
     return null;
 }
 
 Icon.propTypes = {
-    iconName: PropTypes.string,
+    icon: PropTypes.node,
     error: PropTypes.node,
     position: PropTypes.string.isRequired,
 };
 
 Icon.defaultProps = {
-    iconName: undefined,
+    icon: null,
     error: null,
 };

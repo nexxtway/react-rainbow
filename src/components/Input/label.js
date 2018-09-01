@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import RequiredAsterisk from './requiredAsterisk';
-import './styles.css';
 
 export default function Label(props) {
     const {

@@ -7,7 +7,7 @@
   font-size: 0.75rem; }
 
 .rainbow-form-element__label {
-  color: #706e6b;
+  color: #576574;
   font-size: 0.75rem;
   line-height: 1.5;
   margin-right: 0.75rem;
@@ -48,12 +48,6 @@
 .rainbow-form-element_edit .rainbow-button_icon {
   vertical-align: bottom; }
 
-/**
- * Fixed text that sits to the left or right of an input
- *
- * @selector .rainbow-form-element__addon
- * @restrict .rainbow-form-element span
- */
 .rainbow-form-element__addon {
   display: inline-block;
   margin: 0 0.5rem;
@@ -65,24 +59,10 @@
 .rainbow-form-element__static--edit {
   width: calc(100% - 1.5rem); }
 
-/**
- * Required Star
- *
- * @selector .rainbow-required
- * @restrict .rainbow-form-element abbr, abbr
- */
 .rainbow-required {
   color: #fe4849;
   margin: 0 0.125rem; }
 
-/**
- * Error styles for form element
- *
- * @selector .rainbow-has-error
- * @restrict .rainbow-form-element
- * @modifier
- * @group feedback
- */
 .rainbow-has-error .rainbow-form-element__help {
   color: #fe4849; }
 
@@ -106,14 +86,23 @@
   display: inline-block;
   padding: 0 1rem 0 0.75rem;
   line-height: 2.125rem;
-  min-height: calc(2.125rem + (1px * 2)); }
+  height: calc(2.125rem + (1px * 2)); }
 
 .rainbow-input:focus, .rainbow-input:active {
   outline: 0;
-  line-height: 2rem;
+  line-height: 0.5rem;
+  padding-left: 0.6875rem;
   border: 2px #01b6f5 solid;
   background-color: white;
   box-shadow: 0 0 2px 0 #a4a7b5; }
+
+.rainbow-input[type="datetime"]:focus, .rainbow-input[type="datetime"]:active,
+.rainbow-input[type="date"]:focus, .rainbow-input[type="date"]:active,
+.rainbow-input[type="datetime-local"]:focus, .rainbow-input[type="datetime-local"]:active,
+.rainbow-input[type="time"]:focus, .rainbow-input[type="time"]:active,
+.rainbow-input[type="month"]:focus, .rainbow-input[type="month"]:active,
+.rainbow-input[type="week"]:focus, .rainbow-input[type="week"]:active {
+  line-height: 2.125rem; }
 
 .rainbow-input[disabled], .rainbow-input.rainbow-is-disabled {
   background-color: #ecebea;
@@ -149,7 +138,7 @@
   padding-bottom: 0;
   padding-left: 0.75rem;
   color: #3e3e3c;
-  line-height: 1.875rem; }
+  line-height: 2.125rem; }
 
 .rainbow-input_bare:focus, .rainbow-input_bare:active {
   outline: 0;
@@ -159,25 +148,10 @@
   text-align: center;
   padding: 0 3rem; }
 
-.rainbow-input_height {
-  min-height: calc(2.25rem + (1px * 2)); }
+.rainbow-input_counter:focus,
+.rainbow-input_counter:active {
+  padding: 0 3rem; }
 
-/**
- * @summary Modifier to allow a [readonly] input to have borders
- *
- * @selector .rainbow-input_borders
- * @restrict .rainbow-input
- */
-.rainbow-input_borders {
-  padding-left: 0.75rem;
-  border-color: #dddbda; }
-
-/**
- * @summary Modifier if text input has svg icon adjacent to input
- *
- * @selector .rainbow-input-has-icon
- * @restrict .rainbow-form-element div
- */
 .rainbow-input-has-icon {
   position: relative; }
 
@@ -202,26 +176,10 @@
 .rainbow-input-has-icon_right .rainbow-input_bare {
   padding-right: 2rem; }
 
-.rainbow-input-has-icon_left-right {
-  /**
-     * @summary Hook for .rainbow-input-has-icon--left-right
-     *
-     * @selector .rainbow-input__icon_left
-     * @restrict .rainbow-input__icon
-     */
-  /**
-     * @summary Hook for .rainbow-input-has-icon_left-right
-     *
-     * @selector .rainbow-input__icon_right
-     * @restrict .rainbow-input__icon
-     */ }
-
-.rainbow-input-has-icon_left-right .rainbow-input__icon_left,
-.rainbow-input-has-icon_left-right .rainbow-input__icon--left {
+.rainbow-input-has-icon_left-right .rainbow-input__icon_left {
   left: 0.75rem; }
 
-.rainbow-input-has-icon_left-right .rainbow-input__icon_right,
-.rainbow-input-has-icon_left-right .rainbow-input__icon--right {
+.rainbow-input-has-icon_left-right .rainbow-input__icon_right {
   right: 0.75rem; }
 
 .rainbow-input-has-icon_left-right .rainbow-input,
@@ -232,23 +190,11 @@
 .rainbow-input-has-icon_group-right .rainbow-input_bare {
   padding-right: 3.25rem; }
 
-/**
- * @summary Positions two items (icons and/or spinners) on one side or the other of the input
- *
- * @selector .rainbow-input__icon-group
- * @restrict .rainbow-input-has-icon div
- */
 .rainbow-input__icon-group {
   position: absolute;
   height: 1rem;
   margin-top: -0.5rem; }
 
-/**
- * @summary Positions the close icon and spinner on the right side of the input while searching
- *
- * @selector .rainbow-input__icon-group_right
- * @restrict .rainbow-input__icon-group
- */
 .rainbow-input__icon-group_right {
   right: 0;
   top: 50%; }
@@ -260,12 +206,6 @@
   right: 1.5rem;
   left: auto; }
 
-/**
- * @summary Use on input container to let it know
- * there is fixed text to the left or right of the input
- * @selector .rainbow-input-has-fixed-addon
- * @restrict .rainbow-form-element .rainbow-form-element__control
- */
 .rainbow-input-has-fixed-addon {
   display: -ms-flexbox;
   display: flex; }
@@ -276,6 +216,7 @@
 .rainbow-has-error .rainbow-input {
   background-color: white;
   border: 2px #fe4849 solid;
+  padding-left: 0.75rem;
   box-shadow: 0 0 2px 0 #a4a7b5;
   background-clip: padding-box;
   line-height: 2rem; }
@@ -283,23 +224,11 @@
 .rainbow-input:required:focus {
   box-shadow: 0 0 2px 0 #a4a7b5; }
 
-/**
- * @summary Positions decrement button within counter input field
- *
- * @selector .rainbow-input__button_decrement
- * @restrict button
- */
 .rainbow-input__button_decrement {
   position: absolute;
   bottom: 0.25rem;
   left: 0.75rem; }
 
-/**
- * @summary Positions increment button within counter input field
- *
- * @selector .rainbow-input__button_increment
- * @restrict button
- */
 .rainbow-input__button_increment {
   position: absolute;
   bottom: 0.25rem;

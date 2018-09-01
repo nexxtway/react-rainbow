@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { uniqueId } from './../../libs/utils';
-import iconNamePropType from './../../propTypes/iconNamePropType';
 import Icon from './icon';
 import Help from './help';
 import Error from './error';
@@ -30,12 +29,12 @@ export default class Input extends Component {
 
     getFormControlClassNames() {
         const {
-            iconName,
+            icon,
             iconPosition,
         } = this.props;
         return classnames('rainbow-form-element__control', {
-            'rainbow-input-has-icon': iconName,
-            [`rainbow-input-has-icon_${iconPosition}`]: iconName,
+            'rainbow-input-has-icon': icon,
+            [`rainbow-input-has-icon_${iconPosition}`]: icon,
         });
     }
 
@@ -84,7 +83,7 @@ export default class Input extends Component {
             minLength,
             pattern,
             labelClassName,
-            iconName,
+            icon,
             iconPosition,
             bottomHelpText,
             required,
@@ -103,7 +102,7 @@ export default class Input extends Component {
 
                 <div className={this.getFormControlClassNames()}>
                     <Icon
-                        iconName={iconName}
+                        icon={icon}
                         position={iconPosition}
                         error={error} />
 
@@ -160,7 +159,7 @@ Input.propTypes = {
      * the image fails to load. Names are written in the format {sprite_name}:{icon_name}
      * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed.
      * Only utility icons can be used in this component. */
-    iconName: iconNamePropType.oneOf(['utility']),
+    icon: PropTypes.node,
     /** Describes the position of the icon with respect to body. Options include left and right.
      * This value defaults to left. */
     iconPosition: PropTypes.oneOf([
@@ -206,7 +205,7 @@ Input.defaultProps = {
     type: 'text',
     label: null,
     placeholder: null,
-    iconName: undefined,
+    icon: undefined,
     iconPosition: 'left',
     maxLength: undefined,
     minLength: undefined,

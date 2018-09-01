@@ -2,6 +2,8 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Input from './../index';
 
+const icon = <svg />;
+
 describe('<Input/>', () => {
     it('should set an id in the input element', () => {
         const component = mount(
@@ -129,11 +131,11 @@ describe('<Input/>', () => {
     });
     it('should pass the right props to the Icon component', () => {
         const component = mount(
-            <Input iconName="utility:activity" iconPosition="right" error="error to show" />,
+            <Input icon={icon} iconPosition="right" error="error to show" />,
         );
         expect(component.find('Icon').props()).toEqual({
             error: 'error to show',
-            iconName: 'utility:activity',
+            icon,
             position: 'right',
         });
     });

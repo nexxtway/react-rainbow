@@ -1,5 +1,6 @@
 @import "../../styles/colors";
 @import "../../styles/shadows";
+@import "../../styles/font-sizes";
 
 .rainbow-form-element {
     position: relative;
@@ -12,8 +13,8 @@
 }
 
 .rainbow-form-element__label {
-    color: #706e6b;
-    font-size: 0.75rem;
+    color: $color-gray-4;
+    font-size: $font-size-text-small;
     line-height: 1.5;
     margin-right: 0.75rem;
     margin-bottom: 0.125rem;
@@ -62,12 +63,6 @@
     vertical-align: bottom;
 }
 
-/**
- * Fixed text that sits to the left or right of an input
- *
- * @selector .rainbow-form-element__addon
- * @restrict .rainbow-form-element span
- */
 .rainbow-form-element__addon {
     display: inline-block;
     margin: 0 0.5rem;
@@ -82,25 +77,11 @@
     width: calc(100% - 1.5rem);
 }
 
-/**
- * Required Star
- *
- * @selector .rainbow-required
- * @restrict .rainbow-form-element abbr, abbr
- */
 .rainbow-required {
     color: $color-error;
     margin: 0 0.125rem;
 }
 
-/**
- * Error styles for form element
- *
- * @selector .rainbow-has-error
- * @restrict .rainbow-form-element
- * @modifier
- * @group feedback
- */
 .rainbow-has-error .rainbow-form-element__help {
     color: $color-error;
 }
@@ -126,15 +107,25 @@
     display: inline-block;
     padding: 0 1rem 0 0.75rem;
     line-height: 2.125rem;
-    min-height: calc(2.125rem + (1px * 2));
+    height: calc(2.125rem + (1px * 2));
 }
 
 .rainbow-input:focus, .rainbow-input:active {
     outline: 0;
-    line-height: 2rem;
+    line-height: 0.5rem;
+    padding-left: 0.6875rem;
     border: 2px $color-brand solid;
     background-color: white;
     box-shadow: $shadow-1;
+}
+
+.rainbow-input[type="datetime"]:focus, .rainbow-input[type="datetime"]:active,
+.rainbow-input[type="date"]:focus, .rainbow-input[type="date"]:active,
+.rainbow-input[type="datetime-local"]:focus, .rainbow-input[type="datetime-local"]:active,
+.rainbow-input[type="time"]:focus, .rainbow-input[type="time"]:active,
+.rainbow-input[type="month"]:focus, .rainbow-input[type="month"]:active,
+.rainbow-input[type="week"]:focus, .rainbow-input[type="week"]:active {
+    line-height: 2.125rem;
 }
 
 .rainbow-input[disabled], .rainbow-input.rainbow-is-disabled {
@@ -175,7 +166,7 @@
     padding-bottom: 0;
     padding-left: 0.75rem;
     color: #3e3e3c;
-    line-height: 1.875rem;
+    line-height: 2.125rem;
 }
 
 .rainbow-input_bare:focus, .rainbow-input_bare:active {
@@ -188,27 +179,11 @@
     padding: 0 3rem;
 }
 
-.rainbow-input_height {
-    min-height: calc(2.25rem + (1px * 2));
+.rainbow-input_counter:focus,
+.rainbow-input_counter:active {
+    padding: 0 3rem;
 }
 
-/**
- * @summary Modifier to allow a [readonly] input to have borders
- *
- * @selector .rainbow-input_borders
- * @restrict .rainbow-input
- */
-.rainbow-input_borders {
-    padding-left: 0.75rem;
-    border-color: #dddbda;
-}
-
-/**
- * @summary Modifier if text input has svg icon adjacent to input
- *
- * @selector .rainbow-input-has-icon
- * @restrict .rainbow-form-element div
- */
 .rainbow-input-has-icon {
     position: relative;
 }
@@ -240,29 +215,11 @@
     padding-right: 2rem;
 }
 
-.rainbow-input-has-icon_left-right {
-    /**
-     * @summary Hook for .rainbow-input-has-icon--left-right
-     *
-     * @selector .rainbow-input__icon_left
-     * @restrict .rainbow-input__icon
-     */
-
-    /**
-     * @summary Hook for .rainbow-input-has-icon_left-right
-     *
-     * @selector .rainbow-input__icon_right
-     * @restrict .rainbow-input__icon
-     */
-}
-
-.rainbow-input-has-icon_left-right .rainbow-input__icon_left,
-.rainbow-input-has-icon_left-right .rainbow-input__icon--left {
+.rainbow-input-has-icon_left-right .rainbow-input__icon_left {
     left: 0.75rem;
 }
 
-.rainbow-input-has-icon_left-right .rainbow-input__icon_right,
-.rainbow-input-has-icon_left-right .rainbow-input__icon--right {
+.rainbow-input-has-icon_left-right .rainbow-input__icon_right {
     right: 0.75rem;
 }
 
@@ -276,24 +233,12 @@
     padding-right: 3.25rem;
 }
 
-/**
- * @summary Positions two items (icons and/or spinners) on one side or the other of the input
- *
- * @selector .rainbow-input__icon-group
- * @restrict .rainbow-input-has-icon div
- */
 .rainbow-input__icon-group {
     position: absolute;
     height: 1rem;
     margin-top: -0.5rem;
 }
 
-/**
- * @summary Positions the close icon and spinner on the right side of the input while searching
- *
- * @selector .rainbow-input__icon-group_right
- * @restrict .rainbow-input__icon-group
- */
 .rainbow-input__icon-group_right {
     right: 0;
     top: 50%;
@@ -308,12 +253,6 @@
     left: auto;
 }
 
-/**
- * @summary Use on input container to let it know
- * there is fixed text to the left or right of the input
- * @selector .rainbow-input-has-fixed-addon
- * @restrict .rainbow-form-element .rainbow-form-element__control
- */
 .rainbow-input-has-fixed-addon {
     display: -ms-flexbox;
     display: flex;
@@ -326,6 +265,7 @@
 .rainbow-has-error .rainbow-input {
     background-color: white;
     border: 2px $color-error solid;
+    padding-left: 0.75rem;
     box-shadow: $shadow-1;
     background-clip: padding-box;
     line-height: 2rem;
@@ -335,28 +275,12 @@
     box-shadow: $shadow-1;
 }
 
-//.rainbow-has-error .rainbow-input:focus, .rainbow-has-error .rainbow-input:active {
-//    box-shadow: $color-error-active $shadow-1, $shadow-1 $color-brand-active;
-//}
-
-/**
- * @summary Positions decrement button within counter input field
- *
- * @selector .rainbow-input__button_decrement
- * @restrict button
- */
 .rainbow-input__button_decrement {
     position: absolute;
     bottom: 0.25rem;
     left: 0.75rem;
 }
 
-/**
- * @summary Positions increment button within counter input field
- *
- * @selector .rainbow-input__button_increment
- * @restrict button
- */
 .rainbow-input__button_increment {
     position: absolute;
     bottom: 0.25rem;
