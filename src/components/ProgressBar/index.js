@@ -16,19 +16,18 @@ export default function ProgressBar(props) {
         value,
         size,
         variant,
-        color,
      } = props;
 
     const getContainerClassNames = () => classnames(
             'rainbow-progress-bar',
             `rainbow-progress-bar_${size}`,
-            { 'rainbow-progress-bar_success': color === 'success', 'rainbow-progress-bar_circular': variant === 'circular' },
+            { 'rainbow-progress-bar_success': variant === 'success' },
             className,
         );
 
     const getProgressBarClassNames = () => classnames(
             'rainbow-progress-bar__value',
-            { 'rainbow-progress-bar__value_success': color === 'success' },
+            { 'rainbow-progress-bar__value_success': variant === 'success' },
         );
 
     const normalizedValue = normalizeValue(value);
@@ -59,13 +58,9 @@ ProgressBar.propTypes = {
         'medium',
         'large',
     ]),
-    /** It is the progress bar color. The default value is brand. */
-    color: PropTypes.oneOf([
-        'brand', 'success',
-    ]),
     /** The variant of the progress bar. Valid values are default and circular. */
     variant: PropTypes.oneOf([
-        'default', 'circular',
+        'brand', 'success',
     ]),
     /** A description for assistive sreen readers. */
     assistiveText: PropTypes.string,
@@ -78,8 +73,7 @@ ProgressBar.propTypes = {
 ProgressBar.defaultProps = {
     value: 0,
     size: 'medium',
-    color: 'brand',
-    variant: 'default',
+    variant: 'brand',
     assistiveText: '',
     className: undefined,
     style: undefined,

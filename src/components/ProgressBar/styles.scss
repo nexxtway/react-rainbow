@@ -7,6 +7,7 @@
     background: $color-brand-light;
     border: 0;
     position: relative;
+    border-radius: 0.5rem;
 }
 
 .rainbow-progress-bar_success {
@@ -43,7 +44,7 @@
     background: $color-success;
 }
 
-.rainbow-progress-bar_circular .rainbow-progress-bar__value {
+.rainbow-progress-bar .rainbow-progress-bar__value {
     border-radius: 0.5rem;
 }
 

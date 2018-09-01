@@ -1,6 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import renderer from 'react-test-renderer';
+import { mount, shallow } from 'enzyme';
 import ProgressBar from './../index';
 
 describe('<ProgressBar/>', () => {
@@ -18,45 +17,48 @@ describe('<ProgressBar/>', () => {
         expect(component.find('div[aria-valuenow=25]').exists()).toBe(true);
     });
     it('should have the right class names when variant, color and size default and have a custom class', () => {
-        const component = renderer.create(
+        const component = mount(
             <ProgressBar className="custom-class" />,
         );
-        expect(component).toMatchSnapshot();
-    });
-    it('should have the right class names when variant circular', () => {
-        const component = renderer.create(
-            <ProgressBar variant="circular" />,
-        );
-        expect(component).toMatchSnapshot();
+        const container = component.find('div.rainbow-progress-bar.rainbow-progress-bar_medium.custom-class');
+        const progressBar = component.find('span.rainbow-progress-bar__value');
+
+        expect(container.exists()).toBe(true);
+        expect(progressBar.exists()).toBe(true);
     });
     it('should have the right class names when size large', () => {
-        const component = renderer.create(
+        const component = mount(
             <ProgressBar size="large" />,
         );
-        expect(component).toMatchSnapshot();
+        expect(component.find('div.rainbow-progress-bar.rainbow-progress-bar_large').exists()).toBe(true);
     });
     it('should have the right class names when size medium', () => {
-        const component = renderer.create(
+        const component = mount(
             <ProgressBar size="medium" />,
         );
-        expect(component).toMatchSnapshot();
+        expect(component.find('div.rainbow-progress-bar.rainbow-progress-bar_medium').exists()).toBe(true);
     });
     it('should have the right class names when size small', () => {
-        const component = renderer.create(
+        const component = mount(
             <ProgressBar size="small" />,
         );
-        expect(component).toMatchSnapshot();
+        expect(component.find('div.rainbow-progress-bar.rainbow-progress-bar_small').exists()).toBe(true);
     });
     it('should have the right class names when size x-small', () => {
-        const component = renderer.create(
+        const component = mount(
             <ProgressBar size="x-small" />,
         );
-        expect(component).toMatchSnapshot();
+        expect(component.find('div.rainbow-progress-bar.rainbow-progress-bar_x-small').exists()).toBe(true);
     });
-    it('should have the right class names when color success', () => {
-        const component = renderer.create(
-            <ProgressBar color="success" />,
+    it('should have the right class names when varaint success', () => {
+        const component = mount(
+            <ProgressBar variant="success" />,
         );
-        expect(component).toMatchSnapshot();
+
+        const container = component.find('div.rainbow-progress-bar.rainbow-progress-bar_medium.rainbow-progress-bar_success');
+        const progressBar = component.find('span.rainbow-progress-bar__value.rainbow-progress-bar__value_success');
+
+        expect(container.exists()).toBe(true);
+        expect(progressBar.exists()).toBe(true);
     });
 });
