@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default function AssistiveText({ text }) {
     if (text) {
-        return <span className="slds-assistive-text">{text}</span>;
+        return <span className="rainbow-assistive-text">{text}</span>;
     }
     return null;
 }

@@ -7,12 +7,12 @@ describe('<AssistiveText/>', () => {
         const component = mount(
             <AssistiveText />,
         );
-        expect(component.find('.slds-assistive-text').length).toBe(0);
+        expect(component.find('.rainbow-assistive-text').length).toBe(0);
     });
     it('should render the text passed', () => {
         const component = mount(
             <AssistiveText text="for screen readers" />,
         );
-        expect(component.find('.slds-assistive-text').text()).toBe('for screen readers');
+        expect(component.find('.rainbow-assistive-text').text()).toBe('for screen readers');
     });
 });
