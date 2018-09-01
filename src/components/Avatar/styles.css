@@ -9,8 +9,6 @@
   width: 2rem; }
   .rainbow-avatar:hover, .rainbow-avatar:focus {
     color: currentColor; }
-  .rainbow-avatar:hover:focus {
-    color: currentColor; }
 
 .rainbow-avatar_x-small {
   font-size: 0.625rem;
