@@ -119,12 +119,18 @@
     box-shadow: $shadow-1;
 }
 
-.rainbow-input[type="datetime"]:focus, .rainbow-input[type="datetime"]:active,
-.rainbow-input[type="date"]:focus, .rainbow-input[type="date"]:active,
-.rainbow-input[type="datetime-local"]:focus, .rainbow-input[type="datetime-local"]:active,
-.rainbow-input[type="time"]:focus, .rainbow-input[type="time"]:active,
-.rainbow-input[type="month"]:focus, .rainbow-input[type="month"]:active,
-.rainbow-input[type="week"]:focus, .rainbow-input[type="week"]:active {
+.rainbow-input[type="datetime"]:focus,
+.rainbow-input[type="datetime"]:active,
+.rainbow-input[type="date"]:focus,
+.rainbow-input[type="date"]:active,
+.rainbow-input[type="datetime-local"]:focus,
+.rainbow-input[type="datetime-local"]:active,
+.rainbow-input[type="time"]:focus,
+.rainbow-input[type="time"]:active,
+.rainbow-input[type="month"]:focus,
+.rainbow-input[type="month"]:active,
+.rainbow-input[type="week"]:focus,
+.rainbow-input[type="week"]:active {
     line-height: 2.125rem;
 }
 
