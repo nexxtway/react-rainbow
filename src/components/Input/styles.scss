@@ -1,4 +1,5 @@
 @import "../../styles/colors";
+@import "../../styles/shadows";
 
 .rainbow-form-element {
     position: relative;
@@ -121,18 +122,19 @@
     border: 1px solid #dddbda;
     border-radius: 100px;
     width: 100%;
-    transition: border 0.1s linear, background-color 0.1s linear;
+    transition: all 0.1s linear;
     display: inline-block;
     padding: 0 1rem 0 0.75rem;
-    line-height: 1.875rem;
-    min-height: calc(1.875rem + (1px * 2));
+    line-height: 2.125rem;
+    min-height: calc(2.125rem + (1px * 2));
 }
 
 .rainbow-input:focus, .rainbow-input:active {
     outline: 0;
-    border-color: $color-brand;
+    line-height: 2rem;
+    border: 2px $color-brand solid;
     background-color: white;
-    box-shadow: 0 0 3px $color-brand-active;
+    box-shadow: $shadow-1;
 }
 
 .rainbow-input[disabled], .rainbow-input.rainbow-is-disabled {
@@ -187,7 +189,7 @@
 }
 
 .rainbow-input_height {
-    min-height: calc(1.875rem + (1px * 2));
+    min-height: calc(2.25rem + (1px * 2));
 }
 
 /**
@@ -323,18 +325,19 @@
 
 .rainbow-has-error .rainbow-input {
     background-color: white;
-    border-color: $color-error;
-    box-shadow: $color-error-active 0 0 0 1px inset;
+    border: 2px $color-error solid;
+    box-shadow: $shadow-1;
     background-clip: padding-box;
+    line-height: 2rem;
 }
 
 .rainbow-input:required:focus {
-    box-shadow: 0 0 3px $color-brand-active;
+    box-shadow: $shadow-1;
 }
 
-.rainbow-has-error .rainbow-input:focus, .rainbow-has-error .rainbow-input:active {
-    box-shadow: $color-error-active 0 0 0 1px inset, 0 0 3px $color-brand-active;
-}
+//.rainbow-has-error .rainbow-input:focus, .rainbow-has-error .rainbow-input:active {
+//    box-shadow: $color-error-active $shadow-1, $shadow-1 $color-brand-active;
+//}
 
 /**
  * @summary Positions decrement button within counter input field

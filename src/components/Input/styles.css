@@ -102,17 +102,18 @@
   border: 1px solid #dddbda;
   border-radius: 100px;
   width: 100%;
-  transition: border 0.1s linear, background-color 0.1s linear;
+  transition: all 0.1s linear;
   display: inline-block;
   padding: 0 1rem 0 0.75rem;
-  line-height: 1.875rem;
-  min-height: calc(1.875rem + (1px * 2)); }
+  line-height: 2.125rem;
+  min-height: calc(2.125rem + (1px * 2)); }
 
 .rainbow-input:focus, .rainbow-input:active {
   outline: 0;
-  border-color: #01b6f5;
+  line-height: 2rem;
+  border: 2px #01b6f5 solid;
   background-color: white;
-  box-shadow: 0 0 3px #009acf; }
+  box-shadow: 0 0 2px 0 #a4a7b5; }
 
 .rainbow-input[disabled], .rainbow-input.rainbow-is-disabled {
   background-color: #ecebea;
@@ -159,7 +160,7 @@
   padding: 0 3rem; }
 
 .rainbow-input_height {
-  min-height: calc(1.875rem + (1px * 2)); }
+  min-height: calc(2.25rem + (1px * 2)); }
 
 /**
  * @summary Modifier to allow a [readonly] input to have borders
@@ -274,15 +275,13 @@
 
 .rainbow-has-error .rainbow-input {
   background-color: white;
-  border-color: #fe4849;
-  box-shadow: #ea4243 0 0 0 1px inset;
-  background-clip: padding-box; }
+  border: 2px #fe4849 solid;
+  box-shadow: 0 0 2px 0 #a4a7b5;
+  background-clip: padding-box;
+  line-height: 2rem; }
 
 .rainbow-input:required:focus {
-  box-shadow: 0 0 3px #009acf; }
-
-.rainbow-has-error .rainbow-input:focus, .rainbow-has-error .rainbow-input:active {
-  box-shadow: #ea4243 0 0 0 1px inset, 0 0 3px #009acf; }
+  box-shadow: 0 0 2px 0 #a4a7b5; }
 
 /**
  * @summary Positions decrement button within counter input field
