@@ -3,6 +3,9 @@
     "rules": {
         "indentation": 4,
         "selector-list-comma-newline-after": "always-multi-line",
-        "max-line-length": 100
+        "max-line-length": 100,
+        "at-rule-no-unknown": [true, {
+            "ignoreAtRules": ["mixin", "include"]
+        }]
     }
 }
