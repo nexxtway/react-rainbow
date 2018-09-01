@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import iconNamePropType from './../../propTypes/iconNamePropType';
-import HeaderIcon from './headerIcon';
 import HeaderTitle from './headerTitle';
 import CardBoddy from './cardBody';
 import Footer from './footer';
 import Actions from './actions';
+import './styles.css';
 
 /**
 * Cards are used to apply a container around a
@@ -19,23 +18,21 @@ export default function Card(props) {
         actions,
         children,
         footer,
-        iconName,
         title,
         isLoading,
     } = props;
 
-    const getContainerClassName = () => classnames('slds-card', className);
+    const getContainerClassName = () => classnames('rainbow-card', className);
 
     return (
         <article className={getContainerClassName()} style={style}>
-            <div className="slds-card__header slds-grid">
-                <header className="slds-media slds-media_center slds-has-flexi-truncate">
-                    <HeaderIcon iconName={iconName} />
+            <div className="rainbow-card__header-container">
+                <header className="rainbow-card__header">
                     <HeaderTitle title={title} />
                 </header>
                 <Actions content={actions} />
             </div>
-            <div className="slds-card__body slds-card__body_inner">
+            <div className="rainbow-card__body">
                 <CardBoddy isLoading={isLoading}>
                     {children}
                 </CardBoddy>
@@ -50,11 +47,6 @@ Card.propTypes = {
     title: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]).isRequired,
-    /** The Lightning Design System name of the icon used as a fallback when
-    * the image fails to load. Names are written in the format {sprite_name}:{icon_name}
-    * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed.
-    * The icon is displayed in the header to the left of the title. */
-    iconName: iconNamePropType.simple,
     /** Actions are components such as button or buttonIcon. Actions are displayed in the header. */
     actions: PropTypes.node,
     /** The footer can include text or another component. */
@@ -75,7 +67,6 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
-    iconName: undefined,
     actions: null,
     footer: null,
     isLoading: false,

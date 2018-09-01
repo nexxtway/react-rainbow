@@ -7,6 +7,6 @@ describe('<HeaderTitle/>', () => {
         const component = mount(
             <HeaderTitle title="my title" />,
         );
-        expect(component.find('.slds-text-heading_small').text()).toBe('my title');
+        expect(component.find('.rainbow-text-heading_small').text()).toBe('my title');
     });
 });

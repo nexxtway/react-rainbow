@@ -7,6 +7,6 @@ describe('<Footer/>', () => {
         const component = mount(
             <Footer content={<div>my footer</div>} />,
         );
-        expect(component.find('.slds-card__footer').text()).toBe('my footer');
+        expect(component.find('.rainbow-card__footer').text()).toBe('my footer');
     });
 });
