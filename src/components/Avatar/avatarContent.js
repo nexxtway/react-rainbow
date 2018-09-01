@@ -2,9 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import Icon from '../Icon';
 import normalizeInitials from './normalizeInitials';
-import isStandardSprite from './isStandardSprite';
 
 export default class AvatarContent extends Component {
     constructor(props) {
@@ -18,25 +16,17 @@ export default class AvatarContent extends Component {
 
     getAbbrVariantClassNames() {
         const { initialsVariant } = this.props;
-        if (initialsVariant === 'default') {
-            return 'slds-icon-standard-user';
+        if (initialsVariant === 'inverse') {
+            return 'rainbow-avatar__initials_inverse';
         }
-        return 'slds-avatar__initials_inverse';
+        return null;
     }
 
     getAbbrClassNames() {
         return classnames(
-            'slds-avatar__initials',
+            'rainbow-avatar__initials',
             this.getAbbrVariantClassNames(),
         );
-    }
-
-    getIconName() {
-        const { iconName } = this.props;
-        if (isStandardSprite(iconName)) {
-            return iconName;
-        }
-        return 'standard:user';
     }
 
     handleImageError() {
@@ -62,7 +52,7 @@ export default class AvatarContent extends Component {
                 </abbr>
             );
         }
-        return <Icon iconName={this.getIconName()} size="medium" title={title} />;
+        return <abbr className={this.getAbbrClassNames()} title={title} />;
     }
 }
 
@@ -70,7 +60,6 @@ AvatarContent.propTypes = {
     src: PropTypes.string,
     initials: PropTypes.string,
     initialsVariant: PropTypes.string.isRequired,
-    iconName: PropTypes.string.isRequired,
     title: PropTypes.string,
 };
 

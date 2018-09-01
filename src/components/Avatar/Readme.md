@@ -1,9 +1,9 @@
-##### avatar base
+##### photo-url
 
     <div className="slds-p-vertical_large slds-p-left_medium slds-grid slds-media_center slds-wrap">
         <div className="slds-m-horizontal_medium">
             <Avatar
-                src="images/avatar1.jpg"
+                src="images/user/user1.jpg"
                 assistiveText="Jose Leandro"
                 title="Jose Leandro"
                 size="large" />
@@ -11,7 +11,7 @@
         </div>
         <div className="slds-m-horizontal_medium">
             <Avatar
-                src="images/avatar2.jpg"
+                src="images/user/user2.jpg"
                 assistiveText="Tahimi Leon"
                 title="Tahimi Leon"
                 size="medium" />
@@ -19,100 +19,18 @@
         </div>
         <div className="slds-m-horizontal_medium">
             <Avatar
-                src="images/avatar3.jpg"
-                assistiveText="Jonh Doe"
-                title="Jonh Doe"
+                src="images/user/user3.jpg"
+                assistiveText="Carlos Miguel"
+                title="Carlos Miguel"
                 size="small" />
 
         </div>
         <div className="slds-m-horizontal_medium">
             <Avatar
-                src="images/avatar2.jpg"
+                src="images/user/user4.jpg"
                 assistiveText="Jane Doe"
                 title="Jane Doe"
                 size="x-small" />
-
-        </div>
-    </div>
-
-
-##### avatar circle
-
-    <div className="slds-p-vertical_large slds-p-left_medium slds-grid slds-media_center slds-wrap">
-        <div className="slds-m-horizontal_medium">
-            <Avatar
-                src="images/avatar1.jpg"
-                assistiveText="Jose Leandro"
-                title="Jose Leandro"
-                size="large"
-                variant="circle" />
-
-        </div>
-        <div className="slds-m-horizontal_medium">
-            <Avatar
-                src="images/avatar2.jpg"
-                assistiveText="Tahimi Leon"
-                title="Tahimi Leon"
-                size="medium"
-                variant="circle" />
-
-        </div>
-        <div className="slds-m-horizontal_medium">
-            <Avatar
-                src="images/avatar3.jpg"
-                title="Jonh Doe"
-                size="small"
-                variant="circle" />
-
-        </div>
-        <div className="slds-m-horizontal_medium">
-            <Avatar
-                src="images/avatar2.jpg"
-                assistiveText="Jane Doe"
-                title="Jane Doe"
-                size="x-small"
-                variant="circle" />
-
-        </div>
-    </div>
-
-
-##### fallback user icon
-
-    <div className="slds-p-vertical_x-large slds-p-left_medium slds-grid slds-media_center slds-wrap">
-        <div className="slds-m-horizontal_medium">
-            <Avatar
-                assistiveText="Jose Leandro"
-                title="Jose Leandro" />
-
-        </div>
-        <div className="slds-m-horizontal_medium">
-            <Avatar
-                assistiveText="Tahimi Leon"
-                title="Tahimi Leon"
-                variant="circle" />
-
-        </div>
-
-    </div>
-
-
-##### fallback icon
-
-    <div className="slds-p-vertical_x-large slds-p-left_medium slds-grid slds-media_center slds-wrap">
-        <div className="slds-m-horizontal_medium">
-            <Avatar
-                assistiveText="Jose Leandro"
-                title="Jose Leandro"
-                iconName="standard:account" />
-
-        </div>
-        <div className="slds-m-horizontal_medium">
-            <Avatar
-                assistiveText="Jose Leandro"
-                title="Jose Leandro"
-                iconName="standard:account"
-                variant="circle" />
 
         </div>
     </div>
@@ -123,18 +41,9 @@
     <div className="slds-p-vertical_x-large slds-p-left_medium slds-grid slds-media_center slds-wrap">
         <div className="slds-m-horizontal_medium">
             <Avatar
-                src="images/wrong.jpg"
                 assistiveText="Jane Doe"
                 initials="JD"
                 title="Jane Doe" />
-
-        </div>
-        <div className="slds-m-horizontal_medium">
-            <Avatar
-                assistiveText="Jane Doe"
-                initials="JD"
-                title="Jane Doe"
-                variant="circle" />
 
         </div>
     </div>
@@ -150,19 +59,9 @@
     <div className="slds-p-vertical_x-large slds-p-left_medium slds-grid slds-media_center" style={avatarContainerStyles}>
         <div className="slds-m-horizontal_medium">
             <Avatar
-                src="images/wrong.jpg"
                 assistiveText="Jane Doe"
-                initials="TL"
-                title="Tahimi Leon"
-                initialsVariant="inverse" />
-
-        </div>
-        <div className="slds-m-horizontal_medium">
-            <Avatar
-                assistiveText="Jane Doe"
-                initials="LT"
-                title="Leandro Torres"
-                variant="circle"
+                initials="JD"
+                title="Jane Doe"
                 initialsVariant="inverse" />
 
         </div>

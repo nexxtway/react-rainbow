@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import iconNamePropType from './../../propTypes/iconNamePropType';
 import AvatarContent from './avatarContent';
 import AssistiveText from './../AssistiveText';
+import './styles.css';
 
 /**
 * An avatar component represents an object or entity
@@ -12,15 +12,13 @@ export default function Avatar(props) {
     const {
         className,
         style,
-        variant,
         size,
         assistiveText,
         ...rest
     } = props;
     const getContainerClassNames = () => classnames(
-        'slds-avatar',
-        { 'slds-avatar_circle': variant === 'circle' },
-        `slds-avatar_${size}`,
+        'rainbow-avatar',
+        `rainbow-avatar_${size}`,
         className,
     );
 
@@ -34,22 +32,12 @@ export default function Avatar(props) {
 
 Avatar.propTypes = {
     /** The URL for the image.
-    It take precedence over the initials and icon. */
+    It take precedence over the initials. */
     src: PropTypes.string,
     /** If the record name contains two words, like first and last name,
     * use the first capitalized letter of each. For records that only have a single word name,
     * use the first two letters of that word using one capital and one lower case letter. */
     initials: PropTypes.string,
-    /** The Lightning Design System name of the icon used as a fallback when
-    * the image fails to load. Names are written in the format {sprite_name}:{icon_name}
-    * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed.
-    * Only utility icons can be used in this component. */
-    iconName: iconNamePropType.oneOf(['standard']),
-    /** The variant changes the shape of the avatar. Valid values are
-    * default, and circle. This value defaults to default. */
-    variant: PropTypes.oneOf([
-        'default', 'circle',
-    ]),
     /** The size of the avatar. Valid values are x-small, small, medium, and large.
     * This value defaults to medium. */
     size: PropTypes.oneOf([
@@ -75,8 +63,6 @@ Avatar.propTypes = {
 Avatar.defaultProps = {
     src: undefined,
     initials: undefined,
-    iconName: 'standard:user',
-    variant: 'default',
     size: 'medium',
     initialsVariant: 'default',
     title: undefined,
