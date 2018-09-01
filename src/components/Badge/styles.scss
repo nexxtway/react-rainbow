@@ -11,6 +11,7 @@
 
 .rainbow-badge {
     @include colors($color-gray-4, $color-gray-2);
+
     display: -ms-flexbox;
     display: inline-flex;
     -ms-flex-pack: center;
