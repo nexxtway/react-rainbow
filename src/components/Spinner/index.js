@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import AssistiveText from './../AssistiveText';
+import './styles.css';
 
 /**
 * Spinners should be shown when retrieving data or performing slow computations,
@@ -20,22 +21,28 @@ export default function Spinner(props) {
         if (variant === 'base') {
             return '';
         }
-        return `slds-spinner_${variant}`;
+        return `rainbow-spinner_${variant}`;
     };
 
     const getContainerClassNames = () => classnames(
-        'slds-spinner',
-        `slds-spinner_${size}`,
+        'rainbow-spinner',
+        `rainbow-spinner_${size}`,
         getVariantClassNames(),
         className,
     );
 
     if (isVisible) {
         return (
-            <div className={getContainerClassNames()} style={style} role="status">
+            <div className={getContainerClassNames()} style={style}>
                 <AssistiveText text={assistiveText} />
-                <div className="slds-spinner__dot-a" />
-                <div className="slds-spinner__dot-b" />
+                <div />
+                <div />
+                <div />
+                <div />
+                <div />
+                <div />
+                <div />
+                <div />
             </div>
         );
     }

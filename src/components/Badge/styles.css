@@ -18,16 +18,16 @@
 
 .rainbow-badge_inverse {
   background-color: #576574;
-  color: #ffffff; }
+  color: #fff; }
 
 .rainbow-badge_lightest {
   border: 1px solid #e3e5ed;
-  background-color: #ffffff;
+  background-color: #fff;
   color: #576574; }
 
 .rainbow-badge_brand {
   background-color: #01b6f5;
-  color: #ffffff; }
+  color: #fff; }
 
 .rainbow-badge_outline-brand {
   border: 1px solid #01b6f5;
