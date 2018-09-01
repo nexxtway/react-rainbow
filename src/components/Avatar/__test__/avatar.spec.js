@@ -1,6 +1,5 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import renderer from 'react-test-renderer';
 import Avatar from './../index';
 
 describe('<Avatar/>', () => {
@@ -10,34 +9,34 @@ describe('<Avatar/>', () => {
         );
         expect(component.find('AssistiveText').prop('text')).toBe('for screen readers');
     });
-    it('should have the right class names', () => {
-        const component = renderer.create(
+    it('should have the right class names when props are not passed', () => {
+        const component = mount(
             <Avatar />,
         );
-        expect(component).toMatchSnapshot();
-    });
-    it('should have the right class names when variant is circle and size is x-small', () => {
-        const component = renderer.create(
-            <Avatar variant="circle" size="x-small" />,
-        );
-        expect(component).toMatchSnapshot();
+        expect(component.find('span[className="rainbow-avatar rainbow-avatar_medium"]').exists()).toBe(true);
     });
     it('should have the right class names when size is small', () => {
-        const component = renderer.create(
+        const component = mount(
             <Avatar size="small" />,
         );
-        expect(component).toMatchSnapshot();
+        expect(component.find('span[className="rainbow-avatar rainbow-avatar_small"]').exists()).toBe(true);
+    });
+    it('should have the right class names when size is x-small', () => {
+        const component = mount(
+            <Avatar size="x-small" />,
+        );
+        expect(component.find('span[className="rainbow-avatar rainbow-avatar_x-small"]').exists()).toBe(true);
     });
     it('should have the right class names when size is medium', () => {
-        const component = renderer.create(
+        const component = mount(
             <Avatar size="medium" />,
         );
-        expect(component).toMatchSnapshot();
+        expect(component.find('span[className="rainbow-avatar rainbow-avatar_medium"]').exists()).toBe(true);
     });
     it('should have the right class names when size is large', () => {
-        const component = renderer.create(
+        const component = mount(
             <Avatar size="large" />,
         );
-        expect(component).toMatchSnapshot();
+        expect(component.find('span[className="rainbow-avatar rainbow-avatar_large"]').exists()).toBe(true);
     });
 });
