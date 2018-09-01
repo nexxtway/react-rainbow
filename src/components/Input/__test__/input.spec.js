@@ -153,13 +153,13 @@ describe('<Input/>', () => {
     });
     it('should have the right class names when iconName is passed', () => {
         const component = mount(
-            <Input iconName="utility:activity" />,
+            <Input icon={icon} />,
         );
         expect(component.find('div[className="rainbow-form-element__control rainbow-input-has-icon rainbow-input-has-icon_left"]').exists()).toBe(true);
     });
     it('should have the right class names when iconName is passed and iconPosition is right', () => {
         const component = mount(
-            <Input iconName="utility:activity" iconPosition="right" />,
+            <Input icon={icon} iconPosition="right" />,
         );
         expect(component.find('div[className="rainbow-form-element__control rainbow-input-has-icon rainbow-input-has-icon_right"]').exists()).toBe(true);
     });
