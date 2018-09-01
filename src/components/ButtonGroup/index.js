@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import './styles.css';
 
 /**
 * Button groups are used to bunch together buttons with similar actions
@@ -11,7 +12,7 @@ export default function ButtonGroup(props) {
         style,
         children,
     } = props;
-    const getContainerClassName = () => classnames('slds-button-group', className);
+    const getContainerClassName = () => classnames('rainbow-button-group', className);
 
     return (
         <div className={getContainerClassName()} style={style} role="group">
