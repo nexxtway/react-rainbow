@@ -47,4 +47,16 @@ describe('<AvatarContent/>', () => {
         );
         expect(component.find('span[className="rainbow-avatar__initials rainbow-avatar__initials_inverse"]').exists()).toBe(true);
     });
+    it('should have the right class names when initials, icon and variant are not passed', () => {
+        const component = mount(
+            <AvatarContent />,
+        );
+        expect(component.find('span[className="rainbow-avatar__initials"]').exists()).toBe(true);
+    });
+    it('should return the icon passed when src and initials are not passed', () => {
+        const component = mount(
+            <AvatarContent icon={<svg />} />,
+        );
+        expect(component.find('svg').exists()).toBe(true);
+    });
 });
