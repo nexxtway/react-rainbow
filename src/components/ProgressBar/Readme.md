@@ -1,14 +1,14 @@
 ##### progressBar base
 
     <div className="slds-p-around_x-large" >
-        <ProgressBar value={25} /> 
+        <ProgressBar value={25} />
     </div>
-   
+
 
 ##### progressBar success
 
     <div className="slds-p-around_x-large" >
-        <ProgressBar value={50} color="success" /> 
+        <ProgressBar value={50} variant="success" />
     </div>
 
 
@@ -21,14 +21,7 @@
               <strong>25% Complete</strong>
             </span>
         </div>
-        <ProgressBar value={25} /> 
-    </div>
-
-
-##### circular progressBar
-
-    <div className="slds-p-around_x-large" >
-        <ProgressBar value={75} variant="circular" />
+        <ProgressBar value={25} />
     </div>
 
 
