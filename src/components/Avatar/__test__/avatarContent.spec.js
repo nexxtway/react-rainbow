@@ -39,12 +39,12 @@ describe('<AvatarContent/>', () => {
         const component = mount(
             <AvatarContent initialsVariant="default" />,
         );
-        expect(component.find('abbr').prop('className')).toBe('rainbow-avatar__initials');
+        expect(component.find('span[className="rainbow-avatar__initials"]').exists()).toBe(true);
     });
     it('should have the right class names when initials variant is inverse', () => {
         const component = mount(
             <AvatarContent initialsVariant="inverse" />,
         );
-        expect(component.find('abbr').prop('className')).toBe('rainbow-avatar__initials rainbow-avatar__initials_inverse');
+        expect(component.find('span[className="rainbow-avatar__initials rainbow-avatar__initials_inverse"]').exists()).toBe(true);
     });
 });

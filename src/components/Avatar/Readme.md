@@ -49,6 +49,22 @@
     </div>
 
 
+##### fallback user icon
+
+    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+    const { faUser } = require('@fortawesome/free-regular-svg-icons');
+
+    <div className="slds-p-vertical_x-large slds-p-left_medium slds-grid slds-media_center slds-wrap">
+        <div className="slds-m-horizontal_medium">
+            <Avatar
+                icon={<FontAwesomeIcon icon={faUser} size="lg" />}
+                assistiveText="user icon"
+                title="user icon" />
+
+        </div>
+    </div>
+
+
 ##### fallback user initials inverse
 
     const avatarContainerStyles = {

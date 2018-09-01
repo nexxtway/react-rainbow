@@ -32,13 +32,14 @@ export default function Avatar(props) {
 
 Avatar.propTypes = {
     /** The URL for the image.
-    It take precedence over the initials. */
+    It take precedence over the initials and icon. */
     src: PropTypes.string,
     /** If the record name contains two words, like first and last name,
     * use the first capitalized letter of each. For records that only have a single word name,
     * use the first two letters of that word using one capital and one lower case letter. */
     initials: PropTypes.string,
     /** The size of the avatar. Valid values are x-small, small, medium, and large.
+    * It take precedence over the icon.
     * This value defaults to medium. */
     size: PropTypes.oneOf([
         'x-small',
@@ -58,6 +59,8 @@ Avatar.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The fallback icon to show when src and initials are not passed. */
+    icon: PropTypes.node,
 };
 
 Avatar.defaultProps = {
@@ -69,4 +72,5 @@ Avatar.defaultProps = {
     assistiveText: undefined,
     className: undefined,
     style: undefined,
+    icon: null,
 };

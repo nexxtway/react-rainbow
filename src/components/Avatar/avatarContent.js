@@ -14,18 +14,11 @@ export default class AvatarContent extends Component {
         this.handleImageError = this.handleImageError.bind(this);
     }
 
-    getAbbrVariantClassNames() {
+    getClassNames() {
         const { initialsVariant } = this.props;
-        if (initialsVariant === 'inverse') {
-            return 'rainbow-avatar__initials_inverse';
-        }
-        return null;
-    }
-
-    getAbbrClassNames() {
         return classnames(
             'rainbow-avatar__initials',
-            this.getAbbrVariantClassNames(),
+            { 'rainbow-avatar__initials_inverse': initialsVariant === 'inverse' },
         );
     }
 
@@ -38,6 +31,7 @@ export default class AvatarContent extends Component {
             src,
             initials,
             title,
+            icon,
         } = this.props;
         const { imageFailed } = this.state;
         if (src && !imageFailed) {
@@ -45,14 +39,23 @@ export default class AvatarContent extends Component {
         } else if (initials) {
             return (
                 <abbr
-                    className={this.getAbbrClassNames()}
+                    className={this.getClassNames()}
                     title={title}>
 
                     {normalizeInitials(initials)}
                 </abbr>
             );
+        } else if (icon) {
+            return (
+                <span
+                    className={this.getClassNames()}
+                    title={title}>
+
+                    {icon}
+                </span>
+            );
         }
-        return <abbr className={this.getAbbrClassNames()} title={title} />;
+        return <span className={this.getClassNames()} title={title} />;
     }
 }
 
@@ -61,10 +64,12 @@ AvatarContent.propTypes = {
     initials: PropTypes.string,
     initialsVariant: PropTypes.string.isRequired,
     title: PropTypes.string,
+    icon: PropTypes.node,
 };
 
 AvatarContent.defaultProps = {
     src: undefined,
     initials: undefined,
     title: undefined,
+    icon: null,
 };
