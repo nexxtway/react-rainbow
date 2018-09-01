@@ -1,4 +1,4 @@
-##### badges badges border
+##### badges border
 
     <div className="slds-p-vertical_large slds-align--absolute-center slds-wrap">
         <div className="slds-m-horizontal_medium">

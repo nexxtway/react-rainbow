@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './styles.css';
 
 export default function Actions({ content }) {
     if (content) {
-        return <div className="slds-no-flex">{content}</div>;
+        return <div className="rainbow-no-flex">{content}</div>;
     }
     return null;
 }

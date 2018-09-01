@@ -2,9 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import Icon from '../Icon';
 import normalizeInitials from './normalizeInitials';
-import isStandardSprite from './isStandardSprite';
 
 export default class AvatarContent extends Component {
     constructor(props) {
@@ -16,27 +14,12 @@ export default class AvatarContent extends Component {
         this.handleImageError = this.handleImageError.bind(this);
     }
 
-    getAbbrVariantClassNames() {
+    getClassNames() {
         const { initialsVariant } = this.props;
-        if (initialsVariant === 'default') {
-            return 'slds-icon-standard-user';
-        }
-        return 'slds-avatar__initials_inverse';
-    }
-
-    getAbbrClassNames() {
         return classnames(
-            'slds-avatar__initials',
-            this.getAbbrVariantClassNames(),
+            'rainbow-avatar__initials',
+            { 'rainbow-avatar__initials_inverse': initialsVariant === 'inverse' },
         );
-    }
-
-    getIconName() {
-        const { iconName } = this.props;
-        if (isStandardSprite(iconName)) {
-            return iconName;
-        }
-        return 'standard:user';
     }
 
     handleImageError() {
@@ -48,6 +31,7 @@ export default class AvatarContent extends Component {
             src,
             initials,
             title,
+            icon,
         } = this.props;
         const { imageFailed } = this.state;
         if (src && !imageFailed) {
@@ -55,14 +39,23 @@ export default class AvatarContent extends Component {
         } else if (initials) {
             return (
                 <abbr
-                    className={this.getAbbrClassNames()}
+                    className={this.getClassNames()}
                     title={title}>
 
                     {normalizeInitials(initials)}
                 </abbr>
             );
+        } else if (icon) {
+            return (
+                <span
+                    className={this.getClassNames()}
+                    title={title}>
+
+                    {icon}
+                </span>
+            );
         }
-        return <Icon iconName={this.getIconName()} size="medium" title={title} />;
+        return <span className={this.getClassNames()} title={title} />;
     }
 }
 
@@ -70,12 +63,13 @@ AvatarContent.propTypes = {
     src: PropTypes.string,
     initials: PropTypes.string,
     initialsVariant: PropTypes.string.isRequired,
-    iconName: PropTypes.string.isRequired,
     title: PropTypes.string,
+    icon: PropTypes.node,
 };
 
 AvatarContent.defaultProps = {
     src: undefined,
     initials: undefined,
     title: undefined,
+    icon: null,
 };

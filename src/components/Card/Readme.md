@@ -3,7 +3,7 @@
     <div className="slds-p-around_large">
         <Card className="slds-card_boundary">
            <img 
-            src="images/illustrations/empty-state-assistant.svg"
+            src="images/illustrations/Illustration-rainbow-1.svg"
             className="slds-p-vertical_x-large slds-align_absolute-center"
             alt="the wood" />
         </Card>
@@ -15,7 +15,6 @@
     <div className="slds-m-around_large">    
         <Card
             className="slds-card_boundary"
-            iconName="standard:avatar"
             title="Conatct details"
             actions={<Button variant="neutral" label="New" />} >
         </Card>
@@ -27,7 +26,6 @@
     <div className="slds-m-around_large">  
         <Card
             className="slds-card_boundary"
-            iconName="standard:groups"
             title="Contacts (3)"
             footer="View all"
             actions={<Button variant="neutral" label="New" />} >
@@ -43,7 +41,6 @@
         <Card
             className="slds-card_boundary"
             isLoading
-            iconName="standard:task"
             title="Task"
             actions={<Button variant="neutral" label="New" />} >
         </Card>
@@ -55,12 +52,11 @@
     <div className="slds-m-around_large">
         <Card
             className="slds-card_boundary"
-            iconName="standard:task"
             title="Task"
             actions={<Button variant="neutral" label="New" />} >
 
                 <div className="slds-p-vertical_large slds-align_absolute-center slds-grid_vertical" >
-                    <img src="images/illustrations/empty-state-tasks.svg" alt="the wood" />
+                    <img src="images/illustrations/Illustration-rainbow-2.svg" alt="the wood" />
                     <h1 className="slds-p-top_large slds-text-heading_medium" >No new tasks</h1>
                 </div>
         </Card>

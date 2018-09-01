@@ -1,0 +1,45 @@
+@import "../../styles/colors";
+
+.rainbow-progress-bar {
+    display: block;
+    width: 100%;
+    height: 0.5rem;
+    background: $color-brand-light;
+    border: 0;
+    position: relative;
+    border-radius: 0.5rem;
+}
+
+.rainbow-progress-bar_success {
+    background: $color-success-light;
+}
+
+.rainbow-progress-bar_x-small {
+    height: 0.125rem;
+}
+
+.rainbow-progress-bar_small {
+    height: 0.25rem;
+}
+
+.rainbow-progress-bar_medium {
+    height: 0.625rem;
+}
+
+.rainbow-progress-bar_large {
+    height: 1rem;
+}
+
+.rainbow-progress-bar__value {
+    display: block;
+    background: $color-brand;
+    height: 100%;
+}
+
+.rainbow-progress-bar__value_success {
+    background: $color-success;
+}
+
+.rainbow-progress-bar .rainbow-progress-bar__value {
+    border-radius: 0.5rem;
+}

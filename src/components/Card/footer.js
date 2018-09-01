@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './styles.css';
 
 export default function Footer({ content, isLoading }) {
     if (content && !isLoading) {
         return (
-            <footer className="slds-card__footer">
+            <footer className="rainbow-card__footer">
                 {content}
             </footer>
         );
