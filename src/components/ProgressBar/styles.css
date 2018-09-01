@@ -4,7 +4,8 @@
   height: 0.5rem;
   background: rgba(0, 184, 245, 0.2);
   border: 0;
-  position: relative; }
+  position: relative;
+  border-radius: 0.5rem; }
 
 .rainbow-progress-bar_success {
   background: rgba(29, 233, 182, 0.2); }
@@ -21,9 +22,6 @@
 .rainbow-progress-bar_large {
   height: 1rem; }
 
-.rainbow-progress-bar_circular {
-  border-radius: 0.5rem; }
-
 .rainbow-progress-bar__value {
   display: block;
   background: #01b6f5;
@@ -32,21 +30,5 @@
 .rainbow-progress-bar__value_success {
   background: #1de9b6; }
 
-.rainbow-progress-bar_circular .rainbow-progress-bar__value {
+.rainbow-progress-bar .rainbow-progress-bar__value {
   border-radius: 0.5rem; }
-
-.rainbow-progress-bar_vertical {
-  height: 100%;
-  width: 0.5rem; }
-
-.rainbow-progress-bar_vertical.rainbow-progress-bar_x-small {
-  width: 0.125rem; }
-
-.rainbow-progress-bar_vertical.rainbow-progress-bar_small {
-  width: 0.25rem; }
-
-.rainbow-progress-bar_vertical.rainbow-progress-bar_medium {
-  width: 0.625rem; }
-
-.rainbow-progress-bar_vertical.rainbow-progress-bar_large {
-  width: 1rem; }

@@ -43,4 +43,3 @@
                 <div className="slds-p-vertical_xx-large" />
         </Card>
     </div>
-        

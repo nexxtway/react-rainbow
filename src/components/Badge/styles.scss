@@ -1,6 +1,17 @@
 @import './../../styles/colors.scss';
+@import './../../styles/paddings.scss';
+@import './../../styles/font-sizes.scss';
+@import './../../styles/border-radius.scss';
+
+@mixin colors($text-color, $background, $border-color: transparent) {
+    color: $text-color;
+    background-color: $background;
+    border: 1px solid $border-color;
+}
 
 .rainbow-badge {
+    @include colors($color-gray-4, $color-gray-2);
+
     display: -ms-flexbox;
     display: inline-flex;
     -ms-flex-pack: center;
@@ -9,34 +20,26 @@
     align-content: center;
     -ms-flex-align: center;
     align-items: center;
-    background-color: $color-gray-2;
-    padding: 0.25rem 0.5rem;
-    border-radius: 15rem;
-    font-size: 0.625rem;
+    font-size: $font-size-text-x-small;
     line-height: normal;
     text-transform: uppercase;
     letter-spacing: 0.0625em;
-    color: $color-gray-4;
-}
-
-.rainbow-badge_inverse {
-    background-color: $color-gray-4;
-    color: #fff;
+    padding: $padding-xx-small $padding-x-small;
+    border-radius: $border-radius-2;
 }
 
 .rainbow-badge_lightest {
-    border: 1px solid $color-gray-2;
-    background-color: #fff;
-    color: $color-gray-4;
+    @include colors($color-gray-4, #fff, $color-gray-2);
 }
 
 .rainbow-badge_brand {
-    background-color: $color-brand;
-    color: #fff;
+    @include colors(#fff, $color-brand);
 }
 
 .rainbow-badge_outline-brand {
-    border: 1px solid $color-brand;
-    background-color: transparent;
-    color: $color-brand;
+    @include colors($color-brand, transparent, $color-brand);
+}
+
+.rainbow-badge_inverse {
+    @include colors(#fff, $color-gray-4);
 }
