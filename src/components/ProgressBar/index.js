@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import AsistiveText from './../AssistiveText';
 import normalizeValue from './normalizeValue';
+import './styles.css';
 
 /**
 * Progress bar component communicates to the user the progress of a particular process.
@@ -19,15 +20,15 @@ export default function ProgressBar(props) {
      } = props;
 
     const getContainerClassNames = () => classnames(
-            'slds-progress-bar',
-            `slds-progress-bar_${size}`,
-            { 'slds-progress-bar_circular': variant === 'circular' },
+            'rainbow-progress-bar',
+            `rainbow-progress-bar_${size}`,
+            { 'rainbow-progress-bar_success': color === 'success', 'rainbow-progress-bar_circular': variant === 'circular' },
             className,
         );
 
     const getProgressBarClassNames = () => classnames(
-            'slds-progress-bar__value',
-            { 'slds-progress-bar__value_success': color === 'success' },
+            'rainbow-progress-bar__value',
+            { 'rainbow-progress-bar__value_success': color === 'success' },
         );
 
     const normalizedValue = normalizeValue(value);

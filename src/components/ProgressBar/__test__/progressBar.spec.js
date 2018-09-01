@@ -7,7 +7,7 @@ describe('<ProgressBar/>', () => {
     it('should has set the value passed', () => {
         const component = shallow(<ProgressBar value={25} />);
 
-        expect(component.find('span.slds-progress-bar__value').prop('style').width).toBe('25%');
+        expect(component.find('span.rainbow-progress-bar__value').prop('style').width).toBe('25%');
     });
     it('should be accesible', () => {
         const component = shallow(<ProgressBar value={25} />);
