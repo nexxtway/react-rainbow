@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './styles.css';
+import './styles/rainbow-styles.css';
 
 export const { Provider, Consumer } = React.createContext();
 
