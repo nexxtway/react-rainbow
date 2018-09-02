@@ -19,16 +19,16 @@ export default function ReactComponent(props) {
         <div>
             {heading}
             <Description text={descriptionText} />
-            <div className="slds-m-vertical_large">
+            <div className="rainbow-m-vertical_large">
                 <Pathline name={name}>
                     {`import ${name} from 'react-slds/components/${name}'`}
                 </Pathline>
             </div>
-            <h2 className="slds-text-heading_medium slds-m-bottom_medium slds-react-component-title-text">
+            <h2 className="rainbow-font-size-heading_medium rainbow-m-bottom_medium react-rainbow-component-title-text rainbow-color_dark-1">
                 Interactive Examples
             </h2>
             {examples}
-            <p className="slds-text-heading_medium slds-m-bottom_medium slds-react-component-title-text">
+            <p className="rainbow-font-size-heading_medium rainbow-m-bottom_medium react-rainbow-component-title-text rainbow-color_dark-1">
                 Properties & Methods details
             </p>
             {tabBody}

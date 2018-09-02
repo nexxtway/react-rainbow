@@ -1,4 +1,9 @@
-.slds-react-component-description-text {
-    color: #5876a3;
+.react-rainbow-component-description-text {
     font-weight: 300;
+    line-height: 1.75;
+}
+
+.react-rainbow-component-title-text {
+    font-weight: 300;
+    line-height: 1.25;
 }
