@@ -1,24 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Icon from '../Icon';
 
-export default function ItemIcon({ iconName }) {
-    if (iconName) {
+export default function Icon({ icon }) {
+    if (icon) {
         return (
-            <Icon
-                iconName={iconName}
-                className="slds-line-height_reset"
-                svgClassName="slds-m-right_x-small"
-                size="x-small" />
+            <span className="rainbow-nav-vertical_icon" >{icon}</span>
         );
     }
     return null;
 }
 
-ItemIcon.propTypes = {
-    iconName: PropTypes.string,
+Icon.propTypes = {
+    icon: PropTypes.node,
 };
 
-ItemIcon.defaultProps = {
-    iconName: undefined,
+Icon.defaultProps = {
+    icon: undefined,
 };

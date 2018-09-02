@@ -1,5 +1,8 @@
 ##### vertical item
 
+    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+    const { faFolderOpen, faTh } = require('@fortawesome/free-solid-svg-icons');
+
     class SimpleVerticalNavigation extends React.Component {
         constructor(props) {
             super(props);
@@ -17,9 +20,9 @@
             return (
                 <VerticalNavigation selectedItem={this.state.selectedItem} onSelect={this.handleOnSelect}>
                     <VerticalSection label="REPORTS">
-                        <VerticalItem name="item-1" label="Folders" iconName="utility:opened_folder" />
-                        <VerticalItem name="item-2" label="Components" iconName="utility:opened_folder" />
-                        <VerticalItem name="item-3" label="Apps" iconName="utility:apps" />
+                        <VerticalItem name="item-1" label="Folders" icon={<FontAwesomeIcon icon={faFolderOpen} />} />
+                        <VerticalItem name="item-2" label="Components" icon={<FontAwesomeIcon icon={faFolderOpen} />} />
+                        <VerticalItem name="item-3" label="Apps" icon={<FontAwesomeIcon icon={faTh} />} />
                         <VerticalItem name="item-4" label="VerticalItem" href="/#/Components/VerticalItem" />
                         <VerticalItem name="item-5" label="VerticalSection" href="/#/Components/VerticalItem" />
                         <VerticalItem name="item-6" label="VerticalNavigation" href="/#/Components/VerticalNavigation" />

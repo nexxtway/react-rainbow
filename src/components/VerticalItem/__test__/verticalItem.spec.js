@@ -8,16 +8,16 @@ describe('<VerticalItem/>', () => {
             <VerticalItem label="item 1" name="item1" />,
         );
         expect(component.find('li').props()).toEqual(expect.objectContaining({
-            className: 'slds-nav-vertical__item',
+            className: 'rainbow-nav-vertical__item',
             role: 'presentation',
             onClick: expect.any(Function),
         }));
     });
-    it('should set the slds-is-active className to li container when the item is selected', () => {
+    it('should set the rainbow-is-active className to li container when the item is selected', () => {
         const component = mount(
             <VerticalItem label="item 1" name="item1" selectedItem="item1" />,
         );
-        expect(component.find('li').prop('className')).toBe('slds-nav-vertical__item slds-is-active');
+        expect(component.find('li').prop('className')).toBe('rainbow-nav-vertical__item rainbow-is-active');
     });
     it('should pass the right props to anchor element', () => {
         const component = mount(
@@ -25,7 +25,7 @@ describe('<VerticalItem/>', () => {
         );
         expect(component.find('a').props()).toEqual(expect.objectContaining({
             href: '/page/to/go',
-            className: 'slds-nav-vertical__action',
+            className: 'rainbow-nav-vertical__action',
             'aria-current': undefined,
         }));
     });
@@ -35,11 +35,12 @@ describe('<VerticalItem/>', () => {
         );
         expect(component.find('a').prop('aria-current')).toBe('page');
     });
-    it('should pass the iconName passed to the Icon component', () => {
+    it('should pass the icon passed to the Icon component', () => {
+        const icon = <svg />;
         const component = mount(
-            <VerticalItem label="item 1" name="item1" iconName="utility:log_a_call" />,
+            <VerticalItem label="item 1" name="item1" icon={icon} />,
         );
-        expect(component.find('Icon').prop('iconName')).toBe('utility:log_a_call');
+        expect(component.find('Icon').prop('icon')).toBe(icon);
     });
     it('should render the label passed', () => {
         const component = mount(

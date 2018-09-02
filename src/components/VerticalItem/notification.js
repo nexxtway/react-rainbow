@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default function Notification({ notification }) {
     if (notification) {
-        return <span className="slds-col_bump-left">{notification}</span>;
+        return <span className="rainbow-col_bump-left">{notification}</span>;
     }
     return null;
 }

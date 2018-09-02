@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Notification from './../notification';
 
-describe('<VerticalItemIcon/>', () => {
+describe('<VerticalItemNotification/>', () => {
     it('should not render the notification when it is not passed', () => {
         const component = mount(
             <Notification />,
@@ -20,6 +20,6 @@ describe('<VerticalItemIcon/>', () => {
         const component = mount(
             <Notification notification="3" />,
         );
-        expect(component.find('span').prop('className')).toBe('slds-col_bump-left');
+        expect(component.find('span').prop('className')).toBe('rainbow-col_bump-left');
     });
 });

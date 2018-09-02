@@ -3,27 +3,22 @@ import { mount } from 'enzyme';
 import Icon from './../icon';
 
 describe('<VerticalItemIcon/>', () => {
-    it('should not render the Icon when the iconName is not passed', () => {
+    it('should not render the icon when is not passed', () => {
         const component = mount(
             <Icon />,
         );
-        expect(component.find('Icon').exists()).toBe(false);
+        expect(component.find('.rainbow-nav-vertical_icon').exists()).toBe(false);
     });
-    it('should render the Icon when the iconName is passed', () => {
+    it('should render the icon when is passed', () => {
         const component = mount(
-            <Icon iconName="utility:user" />,
+            <Icon icon={<svg />} />,
         );
-        expect(component.find('Icon').exists()).toBe(true);
+        expect(component.find('svg').exists()).toBe(true);
     });
-    it('should pass the right props to Icon component when the iconName is passed', () => {
+    it('should pass the right className to the span element when the icon is passed', () => {
         const component = mount(
-            <Icon iconName="utility:user" />,
+            <Icon icon={<svg />} />,
         );
-        expect(component.find('Icon').props()).toEqual(expect.objectContaining({
-            iconName: 'utility:user',
-            className: 'slds-line-height_reset',
-            svgClassName: 'slds-m-right_x-small',
-            size: 'x-small',
-        }));
+        expect(component.find('.rainbow-nav-vertical_icon').prop('className')).toBe('rainbow-nav-vertical_icon');
     });
 });
