@@ -1,12 +1,32 @@
 ##### example
 
+    // more details about how to use react-font-awesome
+    // visit https://github.com/FortAwesome/react-fontawesome
+    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+    const {
+        faSearch,
+        faTasks,
+        faShareAlt,
+        faHeart,
+        faAngleDown,
+    } = require('@fortawesome/free-solid-svg-icons');
+
+    const iconContainerStyles = {
+        width: '2rem',
+        height: '2rem',
+    };
+
+    const inputStyles = {
+        width: '35%',
+    };
+
     <Application>
         <section>
-            <header className="slds-grid slds-media_center slds-grid_align-spread slds-color__background_gray-1 slds-p-vertical_x-small slds-border_bottom react-slds-golbal-header">
-                <img src="path/to/assets/react.svg" alt="react lightning logo" className="slds-m-left_medium" />
-                <article className="slds-grid slds-media_center">
+            <header className="rainbow-align-content_space-between rainbow-background-color_white rainbow-p-vertical_x-small react-rainbow-golbal-header">
+                <img src="images/rainbow-logo.svg" alt="rainbow logo" className="rainbow-m-left_medium react-rainbow-global-header_logo" />
 
-                    <ButtonGroup className="slds-m-right_medium">
+                <article>
+                    <ButtonGroup className="rainbow-m-right_medium">
                         <ButtonMenu menuSize="x-small" menuAlignment="right" label="more">
                             <MenuItem label="Options" variant="header" />
                             <MenuItem label="Menu Item" />
@@ -27,31 +47,47 @@
                     </ButtonGroup>
 
                     <Avatar
-                        src="path/to/assets/images/avatar2.jpg"
+                        src="images/user/user2.jpg"
                         variant="circle"
-                        className="slds-m-horizontal_medium" />
+                        className="rainbow-m-horizontal_medium" />
 
                 </article>
             </header>
-            <section className="slds-m-horizontal_large slds-m-top_large slds-m-bottom_xx-large">
+            <section className="rainbow-m-horizontal_large rainbow-m-top_large rainbow-m-bottom_xx-large">
                 <Card
-                    className="slds-card_boundary"
-                    iconName="standard:task"
-                    title="Task"
-                    footer={<Button label="View All" />}
+                    title="Tasks"
+                    icon={
+                        <span className="rainbow-background-color_brand rainbow-border-radius_circle rainbow-align-content_center"  style={iconContainerStyles} >
+                            <FontAwesomeIcon icon={faTasks} size="lg" className="rainbow-color_white" />
+                        </span>
+                    }
+                    footer={
+                        <div className="rainbow-align-content_space-between">
+                            <div>
+                                <FontAwesomeIcon icon={faHeart} size="lg" className="rainbow-m-right_medium rainbow-color_gray-4" />
+                                <FontAwesomeIcon icon={faShareAlt} size="lg" className="rainbow-color_gray-4" />
+                            </div>
+                            <FontAwesomeIcon icon={faAngleDown} size="lg" className="rainbow-color_gray-4" />
+                        </div>
+                    }
                     actions={<Button variant="neutral" label="New" />} >
-                        <div className="slds-p-bottom_large" >
+                        <div className="rainbow-p-bottom_large">
                             <Input
-                                iconName="utility:search"
                                 placeholder="Search"
+                                icon={<FontAwesomeIcon icon={faSearch} className="rainbow-color_gray-3" />}
                                 type="search"
-                                className="slds-p-around_small slds-size_1-of-3" />
-                            <div className="slds-p-vertical_large slds-align_absolute-center    slds-grid_vertical" >
-                                <img src="path/to/assets/images/illustrations/empty-state-tasks.svg" alt="the   wood" />
-                                <h1 className="slds-p-top_large slds-text-heading_medium" >No new tasks</h1>
+                                className="rainbow-p-around_small"
+                                style={inputStyles}  />
+                            <div className="rainbow-p-vertical_large rainbow-flex_column rainbow-align-content_center">
+                                <img 
+                                    src="images/illustrations/Illustration-rainbow-1.svg"
+                                    className="rainbow-p-vertical_x-large rainbow-align_absolute-center"
+                                    alt="the rainbow" />
+                                <p className="rainbow-p-top_medium rainbow-font-size-heading_small rainbow-color_gray-3">
+                                    No new tasks
+                                </p>
                             </div>
                         </div>
-
                 </Card>
             </section>
         </section>
