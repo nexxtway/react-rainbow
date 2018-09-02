@@ -5,7 +5,7 @@ import ButtonMenu from './../';
 describe('<ButtonMenu/>', () => {
     it('should focus the button when the focus method is called', () => {
         const component = mount(
-            <ButtonMenu />,
+            <ButtonMenu label="menu" />,
         );
 
         component.instance().focus();
@@ -15,7 +15,7 @@ describe('<ButtonMenu/>', () => {
     });
     it('should blur the button when the blur method is called', () => {
         const component = mount(
-            <ButtonMenu />,
+            <ButtonMenu label="menu" />,
         );
         const instance = component.instance();
         const buttonDataId = component.find('button').prop('data-id');
@@ -25,65 +25,57 @@ describe('<ButtonMenu/>', () => {
         instance.blur();
         expect(document.activeElement.getAttribute('data-id')).toBeNull();
     });
-    it('should set the title passed in the ButtonIcon', () => {
+    it('should set the title passed in the Button', () => {
         const component = mount(
-            <ButtonMenu title="my title">
+            <ButtonMenu label="menu" title="my title">
                 <span />
             </ButtonMenu>,
         );
-        expect(component.find('ButtonIcon').prop('title')).toBe('my title');
+        expect(component.find('Button').prop('title')).toBe('my title');
     });
-    it('should set the assistiveText passed in the ButtonIcon', () => {
+    it('should set the label passed in the Button', () => {
         const component = mount(
-            <ButtonMenu assistiveText="assistive description">
+            <ButtonMenu label="menu label">
                 <span />
             </ButtonMenu>,
         );
-        expect(component.find('ButtonIcon').prop('assistiveText')).toBe('assistive description');
+        expect(component.find('Button').prop('label')).toBe('menu label');
     });
-    it('should set the iconName passed in the ButtonIcon', () => {
+    it('should set the buttonVariant passed as variant in the Button', () => {
         const component = mount(
-            <ButtonMenu iconName="utility:user">
+            <ButtonMenu label="menu" buttonVariant="brand">
                 <span />
             </ButtonMenu>,
         );
-        expect(component.find('ButtonIcon').prop('iconName')).toBe('utility:user');
+        expect(component.find('Button').prop('variant')).toBe('brand');
     });
-    it('should set the buttonVariant passed as variant in the ButtonIcon', () => {
+    it('should set the disabled passed in the Button', () => {
         const component = mount(
-            <ButtonMenu buttonVariant="brand">
+            <ButtonMenu label="menu" disabled>
                 <span />
             </ButtonMenu>,
         );
-        expect(component.find('ButtonIcon').prop('variant')).toBe('brand');
+        expect(component.find('Button').prop('disabled')).toBe(true);
     });
-    it('should set the buttonSize passed as size in the ButtonIcon', () => {
+    it('should set the buttonShaded passed in the Button', () => {
         const component = mount(
-            <ButtonMenu buttonSize="large">
+            <ButtonMenu label="menu" buttonShaded>
                 <span />
             </ButtonMenu>,
         );
-        expect(component.find('ButtonIcon').prop('size')).toBe('large');
+        expect(component.find('Button').prop('shaded')).toBe(true);
     });
-    it('should set the disabled passed in the ButtonIcon', () => {
+    it('should set the tabIndex passed in the Button', () => {
         const component = mount(
-            <ButtonMenu disabled>
+            <ButtonMenu label="menu" tabIndex={0}>
                 <span />
             </ButtonMenu>,
         );
-        expect(component.find('ButtonIcon').prop('disabled')).toBe(true);
-    });
-    it('should set the tabIndex passed in the ButtonIcon', () => {
-        const component = mount(
-            <ButtonMenu tabIndex={0}>
-                <span />
-            </ButtonMenu>,
-        );
-        expect(component.find('ButtonIcon').prop('tabIndex')).toBe(0);
+        expect(component.find('Button').prop('tabIndex')).toBe(0);
     });
     it('should set the isLoading passed in the MenuContent', () => {
         const component = mount(
-            <ButtonMenu isLoading>
+            <ButtonMenu label="menu" isLoading>
                 <span />
             </ButtonMenu>,
         );
@@ -91,7 +83,7 @@ describe('<ButtonMenu/>', () => {
     });
     it('should render the children passed', () => {
         const component = mount(
-            <ButtonMenu>
+            <ButtonMenu label="menu">
                 <span data-id="menu-children">menu content</span>
             </ButtonMenu>,
         );
@@ -99,7 +91,7 @@ describe('<ButtonMenu/>', () => {
     });
     it('should set the role as menu in the ul element', () => {
         const component = mount(
-            <ButtonMenu>
+            <ButtonMenu label="menu">
                 <span />
             </ButtonMenu>,
         );
@@ -107,7 +99,7 @@ describe('<ButtonMenu/>', () => {
     });
     it('should set the title passed as the aria-label in the ul element', () => {
         const component = mount(
-            <ButtonMenu title="button title" assistiveText="assistive description">
+            <ButtonMenu label="menu" title="button title" assistiveText="assistive description">
                 <span />
             </ButtonMenu>,
         );
@@ -115,7 +107,7 @@ describe('<ButtonMenu/>', () => {
     });
     it('should set the assistiveText passed as the aria-label in the ul element when the title is not passed', () => {
         const component = mount(
-            <ButtonMenu assistiveText="assistive description">
+            <ButtonMenu label="menu" assistiveText="assistive description">
                 <span />
             </ButtonMenu>,
         );
@@ -123,7 +115,7 @@ describe('<ButtonMenu/>', () => {
     });
     it('should have the right class names in the container element', () => {
         const component = mount(
-            <ButtonMenu>
+            <ButtonMenu label="menu">
                 <span />
             </ButtonMenu>,
         );
@@ -131,16 +123,16 @@ describe('<ButtonMenu/>', () => {
     });
     it('should have the right class names in the container element when the menu is opened', () => {
         const component = mount(
-            <ButtonMenu>
+            <ButtonMenu label="menu">
                 <span />
             </ButtonMenu>,
         );
-        component.find('ButtonIcon').simulate('click');
+        component.find('Button').simulate('click');
         expect(component.find('div[role="presentation"]').prop('className')).toBe('rainbow-button-menu rainbow-button-menu_is-open');
     });
     it('should have the right class names in the menu dropdown element', () => {
         const component = mount(
-            <ButtonMenu>
+            <ButtonMenu label="menu">
                 <span />
             </ButtonMenu>,
         );
@@ -149,7 +141,7 @@ describe('<ButtonMenu/>', () => {
     });
     it('should have the right class names when menuAlignment is left and isLoading is true', () => {
         const component = mount(
-            <ButtonMenu menuAlignment="left" isLoading>
+            <ButtonMenu label="menu" menuAlignment="left" isLoading>
                 <span />
             </ButtonMenu>,
         );
@@ -158,7 +150,7 @@ describe('<ButtonMenu/>', () => {
     });
     it('should have the right class names when menuAlignment is right and menuSize is xx-small', () => {
         const component = mount(
-            <ButtonMenu menuAlignment="right" menuSize="xx-small">
+            <ButtonMenu label="menu" menuAlignment="right" menuSize="xx-small">
                 <span />
             </ButtonMenu>,
         );
@@ -167,7 +159,7 @@ describe('<ButtonMenu/>', () => {
     });
     it('should have the right class names when menuSize is x-small', () => {
         const component = mount(
-            <ButtonMenu menuSize="x-small">
+            <ButtonMenu label="menu" menuSize="x-small">
                 <span />
             </ButtonMenu>,
         );
@@ -176,7 +168,7 @@ describe('<ButtonMenu/>', () => {
     });
     it('should have the right class names when menuSize is small', () => {
         const component = mount(
-            <ButtonMenu menuSize="small">
+            <ButtonMenu label="menu" menuSize="small">
                 <span />
             </ButtonMenu>,
         );
@@ -185,7 +177,7 @@ describe('<ButtonMenu/>', () => {
     });
     it('should have the right class names when menuSize is medium', () => {
         const component = mount(
-            <ButtonMenu menuSize="medium">
+            <ButtonMenu label="menu" menuSize="medium">
                 <span />
             </ButtonMenu>,
         );
@@ -194,7 +186,7 @@ describe('<ButtonMenu/>', () => {
     });
     it('should have the right class names when menuSize is large', () => {
         const component = mount(
-            <ButtonMenu menuSize="large">
+            <ButtonMenu label="menu" menuSize="large">
                 <span />
             </ButtonMenu>,
         );

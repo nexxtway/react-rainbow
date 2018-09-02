@@ -1,5 +1,10 @@
 ##### button group
 
+    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+    const {
+        faAngleDown,
+    } = require('@fortawesome/free-solid-svg-icons');
+
     <div className="slds-p-vertical_large slds-align_absolute-center slds-wrap">
         <div className="slds-m-horizontal_medium">
             <ButtonGroup>
@@ -13,6 +18,9 @@
                 <Button label="Refresh" variant="outline-brand" />
                 <Button label="Edit" variant="outline-brand" />
                 <Button label="Save" variant="outline-brand" />
+                <Button variant="outline-brand">
+                    <FontAwesomeIcon icon={faAngleDown} />
+                </Button>
             </ButtonGroup>
         </div>
     </div>
@@ -20,22 +28,51 @@
 
 ##### button group with overflow menu icon
 
+    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+    const {
+        faAngleDown,
+        faCogs,
+    } = require('@fortawesome/free-solid-svg-icons');
+
     <div className="slds-p-vertical_large slds-align_absolute-center slds-m-horizontal_medium">
         <ButtonGroup>
             <Button label="Refresh" variant="neutral" />
             <Button label="Edit" variant="neutral" />
             <Button label="Save" variant="neutral" />
-            <ButtonIcon iconName="utility:chevrondown" variant="border-filled" />
+            <Button variant="neutral">
+                <FontAwesomeIcon icon={faAngleDown} />
+            </Button>
+            <ButtonMenu
+                buttonVariant="neutral"
+                menuAlignment="right"
+                menuSize="x-small"
+                label={<FontAwesomeIcon icon={faCogs} />}>
+
+                <MenuItem label="Menu header" variant="header" />
+                <MenuItem label="Menu Item One" />
+                <MenuItem label="Menu Item Two" />
+                <MenuItem label="Menu Item Three" />
+                <MenuItem label="Menu header" variant="header" />
+                <MenuItem label="Menu Item One" />
+                <MenuItem label="Menu Item Two" />
+            </ButtonMenu>
         </ButtonGroup>
     </div>
 
 
 ##### button group with icon
 
+    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+    const {
+        faPlus,
+        faEdit,
+        faAngleDown,
+    } = require('@fortawesome/free-solid-svg-icons');
+
     <div className="slds-p-vertical_large slds-align_absolute-center slds-wrap">
         <div className="slds-m-horizontal_medium">
             <ButtonGroup>
-                <Button 
+                <Button
                     label="Add"
                     variant="neutral"
                     iconName="utility:add" 
@@ -54,10 +91,15 @@
         </div>
         <div className="slds-m-horizontal_medium">
             <ButtonGroup>
-                <ButtonIcon iconName="utility:add" variant="border-filled" />
-                <ButtonIcon iconName="utility:edit" variant="border-filled" />
-                <ButtonIcon iconName="utility:paste" variant="border-filled" />
-                <ButtonIcon iconName="utility:chevrondown" variant="border-filled" />
+                <Button variant="neutral">
+                    <FontAwesomeIcon icon={faPlus} />
+                </Button>
+                <Button variant="neutral">
+                    <FontAwesomeIcon icon={faEdit} />
+                </Button>
+                <Button variant="neutral">
+                    <FontAwesomeIcon icon={faAngleDown} />
+                </Button>
             </ButtonGroup>
         </div>
     </div>
@@ -70,7 +112,6 @@
                 <Button label="Refresh" variant="neutral" />
                 <Button label="Edit" variant="neutral" />
                 <Button label="Save" variant="neutral" disabled />
-                <ButtonIcon iconName="utility:chevrondown" variant="border-filled" disabled />
             </ButtonGroup>
         </div>
         <div className="slds-m-horizontal_medium">
@@ -96,10 +137,6 @@
         </div>
         <div className="slds-m-horizontal_medium">
             <ButtonGroup>
-                <ButtonIcon iconName="utility:add" variant="border-filled" />
-                <ButtonIcon iconName="utility:edit" variant="border-filled" />
-                <ButtonIcon iconName="utility:paste" variant="border-filled" disabled />
-                <ButtonIcon iconName="utility:chevrondown" variant="border-filled" disabled />
             </ButtonGroup>
         </div>
     </div>
@@ -118,7 +155,6 @@
                 <Button label="Refresh" variant="inverse" />
                 <Button label="Edit" variant="inverse" />
                 <Button label="Save" variant="inverse" />
-                <ButtonIcon iconName="utility:chevrondown" variant="border-inverse" />
             </ButtonGroup>
         </div>
         <div className="slds-m-horizontal_medium">
@@ -142,10 +178,6 @@
         </div>
         <div className="slds-m-horizontal_medium">
             <ButtonGroup>
-                <ButtonIcon iconName="utility:add" variant="border-inverse" />
-                <ButtonIcon iconName="utility:edit" variant="border-inverse" />
-                <ButtonIcon iconName="utility:paste" variant="border-inverse" />
-                <ButtonIcon iconName="utility:chevrondown" variant="border-inverse" />
             </ButtonGroup>
         </div>
     </div>

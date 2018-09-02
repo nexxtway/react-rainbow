@@ -1,30 +1,32 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import copy from 'clipboard-copy';
-import ButtonIcon from '../../../src/components/ButtonIcon';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClipboard, faClipboardCheck } from '@fortawesome/free-solid-svg-icons';
+import Button from '../../../src/components/Button';
 import './styles.css';
 
 export default class CustomPathline extends Component {
     constructor(props) {
         super(props);
-        this.state = { iconName: 'utility:copy_to_clipboard' };
+        this.state = { icon: faClipboard };
         this.handleCopyToClipBoardButtonClick = this.handleCopyToClipBoardButtonClick.bind(this);
-        this.handleOnBlur = this.handleOnBlur.bind(this);
     }
 
     handleCopyToClipBoardButtonClick() {
         const { children } = this.props;
         copy(children);
-        this.setState({ iconName: 'utility:check' });
-    }
-
-    handleOnBlur() {
-        this.setState({ iconName: 'utility:copy_to_clipboard' });
+        this.setState({ icon: faClipboardCheck });
+        setTimeout(() => {
+            this.setState({ icon: faClipboard });
+        }, 1000);
     }
 
     render() {
         const { name } = this.props;
-        const { iconName } = this.state;
+        const { icon } = this.state;
+
         return (
             <div className="slds-grid">
                 <span>
@@ -33,11 +35,12 @@ export default class CustomPathline extends Component {
                     <span className="slds-react-text-color-violet"> from </span>
                     <span className="slds-react-text-color-green">{`'react-slds/components/${name}';`}</span>
                 </span>
-                <ButtonIcon
-                    iconName={iconName}
+                <Button
                     className="slds-m-left--xx-small"
-                    onClick={this.handleCopyToClipBoardButtonClick}
-                    onBlur={this.handleOnBlur} />
+                    onClick={this.handleCopyToClipBoardButtonClick}>
+
+                    <FontAwesomeIcon icon={icon} />
+                </Button>
             </div>
         );
     }

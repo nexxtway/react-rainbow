@@ -1,6 +1,9 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import PropTypes from 'prop-types';
-import ButtonIcon from '../../../src/components/ButtonIcon';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExpand, faCompress } from '@fortawesome/free-solid-svg-icons';
+import Button from '../../../src/components/Button';
 import './styles.css';
 
 export default function ToolbarButton(props) {
@@ -20,7 +23,9 @@ export default function ToolbarButton(props) {
     if (href !== undefined && title === 'Open isolated') {
         return (
             <a className="slds-react-toolbar-button" href={href} title={title} aria-label={title}>
-                <ButtonIcon iconName="utility:expand" />
+                <Button>
+                    <FontAwesomeIcon icon={faExpand} />
+                </Button>
             </a>
         );
     }
@@ -28,7 +33,9 @@ export default function ToolbarButton(props) {
     if (href !== undefined && title === 'Show all components') {
         return (
             <a className="slds-react-toolbar-button" href={resolveHref()} title={title} aria-label={title}>
-                <ButtonIcon iconName="utility:contract" />
+                <Button>
+                    <FontAwesomeIcon icon={faCompress} />
+                </Button>
             </a>
         );
     }
@@ -53,4 +60,5 @@ ToolbarButton.propTypes = {
 ToolbarButton.defaultProps = {
     href: undefined,
     onClick: () => {},
+    children: null,
 };

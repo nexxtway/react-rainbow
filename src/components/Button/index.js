@@ -76,6 +76,7 @@ export default class Button extends Component {
             type,
             ariaHaspopup,
         } = this.props;
+
         return (
             <button
                 data-id="button-element"
@@ -115,6 +116,7 @@ Button.propTypes = {
         'destructive',
         'success',
         'inverse',
+        'border-inverse',
     ]),
     /** Specify true when the button has a shadow around it.
     * This value defaults to false.
@@ -144,8 +146,14 @@ Button.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
-    /** */
-    children: PropTypes.arrayOf(PropTypes.node),
+    /**
+     * This prop should not be visible in the documentation.
+     * @ignore
+     */
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.object,
+    ]),
 };
 
 Button.defaultProps = {
@@ -164,5 +172,5 @@ Button.defaultProps = {
     ariaHaspopup: false,
     className: undefined,
     style: undefined,
-    children: [],
+    children: null,
 };

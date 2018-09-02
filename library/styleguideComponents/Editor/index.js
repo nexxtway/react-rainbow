@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { Component } from 'react';
 import copy from 'clipboard-copy';
+import { faClipboard, faClipboardCheck } from '@fortawesome/free-solid-svg-icons';
 import Editor from 'react-styleguidist/lib/rsg-components/Editor/Editor';
 import EditorHeader from './header';
 
@@ -9,29 +10,27 @@ const editorConfig = { lineNumbers: true };
 export default class EditorLoader extends Component {
     constructor(props) {
         super(props);
-        this.state = { iconName: 'utility:copy_to_clipboard' };
+        this.state = { icon: faClipboard };
         this.handleCopyToClipboardClick = this.handleCopyToClipboardClick.bind(this);
-        this.handleOnBlur = this.handleOnBlur.bind(this);
     }
 
     handleCopyToClipboardClick() {
         const { code } = this.props;
         copy(code);
-        this.setState({ iconName: 'utility:check' });
-    }
-
-    handleOnBlur() {
-        this.setState({ iconName: 'utility:copy_to_clipboard' });
+        this.setState({ icon: faClipboardCheck });
+        setTimeout(() => {
+            this.setState({ icon: faClipboard });
+        }, 1000);
     }
 
     render() {
-        const { iconName } = this.state;
+        const { icon } = this.state;
         return (
             <div>
                 <EditorHeader
                     onClick={this.handleCopyToClipboardClick}
-                    onBlur={this.handleOnBlur}
-                    iconName={iconName} />
+                    icon={icon} />
+
                 <Editor {...this.props} editorConfig={editorConfig} />
             </div>
         );

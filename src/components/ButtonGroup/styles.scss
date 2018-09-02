@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 .rainbow-button-group {
     display: -ms-inline-flexbox;
     display: inline-flex;
@@ -9,38 +10,29 @@
     margin-left: -1px;
 }
 
-.rainbow-button-group .rainbow-button-icon {
-    border-radius: 0;
-    border-width: 1px;
-    margin-left: -1px;
-    height: 2.25rem;
-}
-
 .rainbow-button-group .rainbow-button:focus {
     z-index: 1;
 }
 
-.rainbow-button-group > button:first-child, .rainbow-button-group > div:first-child {
+.rainbow-button-group > button:first-child {
     border-radius: 100px 0 0 100px;
 }
 
-.rainbow-button-group > div:first-child {
-    .rainbow-button-icon {
-        border-radius: 0 100px 100px 0;
-    }
-}
-
-.rainbow-button-group > button:last-child, .rainbow-button-group > div:last-child {
+.rainbow-button-group > button:last-child {
     border-radius: 0 100px 100px 0;
 }
 
-.rainbow-button-group > div:last-child {
-    .rainbow-button-icon {
-        border-radius: 0 100px 100px 0;
-    }
+.rainbow-button-group > div:first-child > button {
+    border-radius: 100px 0 0 100px;
+    height: 2.25rem;
 }
 
-.rainbow-button-group .rainbow-button:only-child,
-.rainbow-button-group-list li:only-child .rainbow-button {
-    border-radius: 0.875rem;
+.rainbow-button-group > div:last-child > button {
+    border-radius: 0 100px 100px 0;
+    height: 2.25rem;
+}
+
+.rainbow-button-group > button:only-child,
+.rainbow-button-group > div:only-child > button {
+    border-radius: 100px;
 }

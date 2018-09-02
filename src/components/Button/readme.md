@@ -94,6 +94,11 @@
 
 ##### buttons inverse
 
+    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+    const {
+        faArrowRight,
+    } = require('@fortawesome/free-solid-svg-icons');
+
     const buttonsContainerStyles = {
         backgroundColor: '#16325c',
         borderRadius: '0.25rem',
@@ -104,10 +109,9 @@
             <Button label="Button Inverse" variant="inverse" />
         </div>
         <div className="slds-m-horizontal_medium">
-            <Button
-                label="Button Inverse with icon"
-                variant="inverse"
-                iconName="utility:add"
-                iconPosition="left" />
+            <Button variant="border-inverse">
+                Button Inverse with icon
+                <FontAwesomeIcon icon={faArrowRight} className="slds-button__icon_right" />
+            </Button>
         </div>
     </div>
