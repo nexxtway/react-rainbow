@@ -9,10 +9,10 @@ module.exports = {
     assetsDir: path.resolve(__dirname, 'assets'),
     skipComponentsWithoutExample: true,
     pagePerSection: true,
-    title: 'React Lightning Components',
     version,
     require: [
         path.resolve(__dirname, 'assets/styles/salesforce-lightning-design-system.css'),
+        path.resolve(__dirname, 'src/components/Application/styles/rainbow-styles.css'),
         path.resolve(__dirname, 'library/setup.js')
     ],
     styles,

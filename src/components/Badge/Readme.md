@@ -1,6 +1,6 @@
 ##### badges border
 
-    <div className="rainbow-p-vertical_large">
+    <div className="rainbow-p-vertical_large rainbow-align-content_center">
         <div className="rainbow-m-horizontal_medium">
             <Badge label="Lightest Badge" variant="lightest" />
         </div>
@@ -11,7 +11,7 @@
 
 ##### badges variant
 
-    <div className="rainbow-p-vertical_large">
+    <div className="rainbow-p-vertical_large rainbow-align-content_center">
         <div className="rainbow-m-horizontal_medium">
             <Badge label="Default Badge" />
         </div>
@@ -28,7 +28,7 @@
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
     const { faStar } = require('@fortawesome/free-solid-svg-icons');
 
-    <div className="rainbow-p-vertical_large">
+    <div className="rainbow-p-vertical_large rainbow-align-content_center">
         <div className="rainbow-m-horizontal_medium">
             <Badge variant="inverse">
                 <FontAwesomeIcon icon={faStar} pull="left" size="lg" />

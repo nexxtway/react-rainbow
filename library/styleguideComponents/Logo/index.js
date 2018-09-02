@@ -1,31 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import reactLogo from './image/react.svg';
-import lightningLogo from './image/lightning.svg';
+import rainbowLogo from './../../../assets/images/rainbow-logo.svg';
 import './styles.css';
 
-export default function Logo({ title, version }) {
+export default function Logo({ version }) {
     return (
-        <div className="react-slds-logo slds-align_absolute-center slds-p-horizontal_x-small">
-            <div className="slds-text-align_center">
-                <p className="slds-text-color_inverse slds-text-heading_small">{title}</p>
-                <div className="slds-m-top_medium slds-m-bottom_medium">
-                    <img src={reactLogo} alt="react logo" className="slds-icon" />
-                    <span className="slds-text-heading_medium slds-text-color_inverse-weak slds-m-horizontal_x-small slds-align-middle">
-                        +
-                    </span>
-                    <img src={lightningLogo} alt="lightning logo" className="slds-icon" />
+        <section>
+            <div className="react-rainbow_logo-container">
+                <img className="react-rainbow_logo-icon" src={rainbowLogo} alt="rainbow logo" />
+                <div className="react-rainbow_title-version_container">
+                    <div className="react-rainbow_title-container">
+                        <p>rainbow</p>
+                        <p className="react-rainbow_title-thin">components</p>
+                    </div>
+                    <p className="react-rainbow_version" aria-label="version">
+                        {`Latest release: ${version}`}
+                    </p>
                 </div>
-                <p aria-label="version" className="slds-text-color_inverse slds-text-body_small">
-                    {`Latest release: ${version}`}
-                </p>
             </div>
-        </div>
+            <div className="react-rainbow_divider-dotted" />
+        </section>
     );
 }
 
 Logo.propTypes = {
-    title: PropTypes.node.isRequired,
     version: PropTypes.string.isRequired,
 };
 
