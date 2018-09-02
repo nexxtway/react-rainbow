@@ -37,9 +37,9 @@
             title="Contacts"
             actions={
                 <ButtonGroup>
-                    <ButtonIcon iconName="utility:add" variant="border-filled" />
-                    <ButtonIcon iconName="utility:edit" variant="border-filled" disabled />
-                    <ButtonIcon iconName="utility:chevrondown" variant="border-filled" disabled />
+                    <Button label="add" />
+                    <ButtonIcon label="edit" />
+                    <ButtonIcon label="chevrondown" />
                 </ButtonGroup>
             } />
     </div>
