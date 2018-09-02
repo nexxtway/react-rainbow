@@ -1,12 +1,13 @@
 @import './../../styles/colors.scss';
 @import './../../styles/shadows.scss';
+@import './../../styles/border-radius.scss';
 
 .rainbow-card {
     position: relative;
     padding: 0;
     background-color: #fff;
     border: 0.0625rem solid $color-gray-2;
-    border-radius: 0.25rem;
+    border-radius: $border-radius-1;
     background-clip: padding-box;
     box-shadow: $shadow-4;
 }

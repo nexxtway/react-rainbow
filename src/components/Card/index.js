@@ -50,10 +50,7 @@ Card.propTypes = {
     title: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]).isRequired,
-    /** The Lightning Design System name of the icon used as a fallback when
-     * the image fails to load. Names are written in the format {sprite_name}:{icon_name}
-     * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed.
-     * The icon is displayed in the header to the left of the title. */
+    /** The icon component to show if it is passed. */
     icon: PropTypes.node,
     /** Actions are components such as button or buttonIcon. Actions are displayed in the header. */
     actions: PropTypes.node,

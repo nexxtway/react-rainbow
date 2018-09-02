@@ -1,7 +1,7 @@
 ##### card default with illustration
 
     <div className="slds-p-around_large">
-        <Card className="slds-card_boundary">
+        <Card>
            <img 
             src="images/illustrations/Illustration-rainbow-1.svg"
             className="slds-p-vertical_x-large slds-align_absolute-center"
@@ -17,11 +17,9 @@
 
     <div className="slds-m-around_large">
         <Card
-            className="slds-card_boundary"
             icon={<Avatar icon={<FontAwesomeIcon icon={faUser} size="lg" />} />}
             title="Contact details"
-            actions={<Button variant="neutral" label="New" variant="outline-brand" />} >
-        </Card>
+            actions={<Button variant="neutral" label="New" variant="outline-brand" />} />
     </div>
 
 
@@ -30,11 +28,12 @@
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
     const { faUsers } = require('@fortawesome/free-solid-svg-icons');
 
+    const iconStyles = { color: '#01b6f5' };
+
     <div className="slds-m-around_large">
         <Card
-            className="slds-card_boundary"
             isLoading
-            icon={<FontAwesomeIcon icon={faUsers} size="lg" style={{ color: '#01b6f5' }} />}
+            icon={<FontAwesomeIcon icon={faUsers} size="lg" style={iconStyles} />}
             title="Contacts"
             actions={
                 <ButtonGroup>
@@ -42,8 +41,7 @@
                     <ButtonIcon iconName="utility:edit" variant="border-filled" disabled />
                     <ButtonIcon iconName="utility:chevrondown" variant="border-filled" disabled />
                 </ButtonGroup>
-            } >
-        </Card>
+            } />
     </div>
 
 
@@ -53,27 +51,33 @@
     const { faTasks, faShareAlt, faAngleDown } = require('@fortawesome/free-solid-svg-icons');
     const { faHeart } = require('@fortawesome/free-regular-svg-icons');
 
+    const iconContainerStyles = {
+        borderRadius: '15rem',
+        backgroundColor: '#1de9b6',
+        width: '2rem',
+        height: '2rem',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+    };
+    const tasksIconStyles = { color: '#fff' };
+    const footerContainerStyles = { display: 'flex', justifyContent: 'space-between' };
+    const heartIconStyles = { marginRight: '1rem' };
+
     <div className="slds-m-around_large">
         <Card
             className="slds-card_boundary"
             icon={
-                <span style={{
-                    borderRadius: '15rem',
-                    backgroundColor: '#1de9b6',
-                    width: '2rem',
-                    height: '2rem',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'}} >
-                    <FontAwesomeIcon icon={faTasks} size="lg" style={{color: '#fff'}} />
+                <span style={iconContainerStyles} >
+                    <FontAwesomeIcon icon={faTasks} size="lg" style={tasksIconStyles} />
                 </span>
             }
             title="Task"
             actions={<Button variant="neutral" label="Add" />}
             footer={
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <div style={footerContainerStyles}>
                     <div >
-                        <FontAwesomeIcon icon={faHeart} size="lg" style={{ marginRight: '1rem' }} />
+                        <FontAwesomeIcon icon={faHeart} size="lg" style={heartIconStyles} />
                         <FontAwesomeIcon icon={faShareAlt} size="lg" />
                     </div>
                     <FontAwesomeIcon icon={faAngleDown} size="lg" />
