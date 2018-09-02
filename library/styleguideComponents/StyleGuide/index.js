@@ -17,7 +17,6 @@ export default function StyleGuide(props) {
                 <Logo title={title} version={version} />
                 {toc}
             </aside>
-            <div className="react-rainbow_heading-section" />
             <main className="react-slds-main-content">
                 {children}
             </main>

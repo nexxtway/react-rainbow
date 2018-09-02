@@ -1,8 +1,11 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCode } from '@fortawesome/free-solid-svg-icons';
 import Button from './../../../src/components/Button';
 
-export default function CodeEditorButton({ name, onClick, active }) {
+export default function CodeEditorButton({ onClick, active }) {
     const getLabel = () => {
         if (active) {
             return 'Hide Code';
@@ -11,12 +14,16 @@ export default function CodeEditorButton({ name, onClick, active }) {
     };
 
     return (
-        <Button label={getLabel()} iconName="utility:insert_tag_field" name={name} onClick={onClick} />
+        <Button onClick={onClick}>
+            <FontAwesomeIcon
+                className="rainbow-color_brand rainbow-font-size-heading_small rainbow-m-right_x-small"
+                icon={faCode} />
+            {getLabel()}
+        </Button>
     );
 }
 
 CodeEditorButton.propTypes = {
-    name: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired,
     active: PropTypes.bool,
 };
