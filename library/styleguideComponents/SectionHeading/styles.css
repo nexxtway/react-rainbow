@@ -1,3 +1,36 @@
-.slds-react-component-title-text {
-    color: #00396b;
+.react-rainbow_title-text {
+    color: #061c3f;
+    font-weight: 300;
+    font-size: 1.75rem;
+    line-height: 1.25;
+}
+
+.react-rainbow_github-badge {
+    color: #061c3f;
+    margin-right: 20px;
+    border-color: #061c3f;
+    background-color: transparent;
+}
+
+.react-rainbow_heading-container {
+    position: absolute;
+    top: 0;
+    width: calc(100vw - 250px - 64px - 64px);
+    height: 68px;
+    background-color: #fff;
+}
+
+@media (max-width: 800px) {
+    .react-rainbow_heading-container {
+        width: calc(100vw - 200px - 24px - 24px);
+    }
+}
+
+@media (max-width: 600px) {
+    .react-rainbow_heading-container {
+        width: 100vw;
+        margin-left: -16px;
+        padding: 0 16px 0 16px;
+        box-shadow: 0 1px 2px 0 #e3e5ed;
+    }
 }
