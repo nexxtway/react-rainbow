@@ -1,8 +1,37 @@
 ##### progressBar base
 
-    <div className="slds-p-around_x-large" >
-        <ProgressBar value={25} />
-    </div>
+    class GrowingProgressBar extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = { value : 0};
+            this.increment = this.increment.bind(this);
+        }
+
+        componentDidMount() {
+            this.increment();
+        }
+
+        increment() {
+            const { value } = this.state;
+            if (value === 100) {
+                this.setState({ value: 0 });
+            } else {
+                this.setState({ value: value + 2 });
+            }
+            setTimeout(this.increment, 500);
+        }
+
+        render() {
+            const { value } = this.state;
+            return (
+                <div className="slds-p-around_x-large" >
+                    <ProgressBar value={value} />
+                </div>
+            );
+        }
+    }
+
+    <GrowingProgressBar />
 
 
 ##### progressBar success
