@@ -7,13 +7,13 @@ describe('<InputHelp/>', () => {
         const component = mount(
             <Help />,
         );
-        expect(component.find('div[className="slds-form-element__help slds-color__text_gray-11"]').exists()).toBe(false);
+        expect(component.find('div[className="rainbow-form-element__help rainbow-color__text_gray-11"]').exists()).toBe(false);
     });
     it('should render the help text passed', () => {
         const component = mount(
             <Help text="Help text" />,
         );
-        const help = component.find('div[className="slds-form-element__help slds-color__text_gray-11"]');
+        const help = component.find('div[className="rainbow-form-element__help rainbow-color__text_gray-11"]');
         expect(help.exists()).toBe(true);
         expect(help.text()).toBe('Help text');
     });

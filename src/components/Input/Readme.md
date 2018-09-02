@@ -131,7 +131,7 @@
 
         </div>
         <Input
-            label="Input label" 
+            label="Input label"
             placeholder="Input with right icon"
             iconName="utility:search"
             iconPosition="right" />
@@ -148,7 +148,7 @@
                 bottomHelpText="ex: (111) 111 1111" />
 
         </div>
-        
+
         <Input
             label="Input label"
             placeholder="Input with inline help and icon"
@@ -199,7 +199,7 @@
 
         </div>
         <Input
-            label="Input label" 
+            label="Input label"
             placeholder="Placeholder text with icon"
             iconName="utility:error"
             iconPosition="left"

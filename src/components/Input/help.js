@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default function Help({ text }) {
     if (text) {
-        return <div className="slds-form-element__help slds-color__text_gray-11">{text}</div>;
+        return <div className="rainbow-form-element__help rainbow-color__text_gray-11">{text}</div>;
     }
     return null;
 }

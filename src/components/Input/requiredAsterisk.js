@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default function RequiredAsterisk({ required }) {
     if (required) {
-        return <abbr className="slds-required" title="required">* </abbr>;
+        return <abbr className="rainbow-required" title="required">* </abbr>;
     }
     return null;
 }
