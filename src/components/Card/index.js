@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import HeaderTitle from './headerTitle';
+import HeaderIcon from './headerIcon';
 import CardBoddy from './cardBody';
 import Footer from './footer';
 import Actions from './actions';
@@ -19,6 +20,7 @@ export default function Card(props) {
         children,
         footer,
         title,
+        icon,
         isLoading,
     } = props;
 
@@ -28,6 +30,7 @@ export default function Card(props) {
         <article className={getContainerClassName()} style={style}>
             <div className="rainbow-card__header-container">
                 <header className="rainbow-card__header">
+                    <HeaderIcon icon={icon} />
                     <HeaderTitle title={title} />
                 </header>
                 <Actions content={actions} />
@@ -47,6 +50,11 @@ Card.propTypes = {
     title: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]).isRequired,
+    /** The Lightning Design System name of the icon used as a fallback when
+     * the image fails to load. Names are written in the format {sprite_name}:{icon_name}
+     * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed.
+     * The icon is displayed in the header to the left of the title. */
+    icon: PropTypes.node,
     /** Actions are components such as button or buttonIcon. Actions are displayed in the header. */
     actions: PropTypes.node,
     /** The footer can include text or another component. */
@@ -67,6 +75,7 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
+    icon: null,
     actions: null,
     footer: null,
     isLoading: false,

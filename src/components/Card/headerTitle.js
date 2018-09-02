@@ -6,20 +6,14 @@ import './styles.css';
 export default function HeaderTitle({ title }) {
     if (typeof title === 'string') {
         return (
-            <div className="rainbow-media__body">
-                <h2>
-                    <a href="javascript:void(0);" className="rainbow-card__header-link">
-                        <span className="rainbow-text-heading_small">{title}</span>
-                    </a>
-                </h2>
-            </div>
+            <h2>
+                <a href="javascript:void(0);" className="rainbow-card__header-link">
+                    <span className="rainbow-text-heading_small">{title}</span>
+                </a>
+            </h2>
         );
     }
-    return (
-        <div className="rainbow-media__body">
-            {title}
-        </div>
-    );
+    return title;
 }
 
 HeaderTitle.propTypes = {
