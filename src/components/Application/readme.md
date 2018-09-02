@@ -24,8 +24,8 @@
         <section>
             <header className="rainbow-align-content_space-between rainbow-background-color_white rainbow-p-vertical_x-small react-rainbow-golbal-header">
                 <img src="images/rainbow-logo.svg" alt="rainbow logo" className="rainbow-m-left_medium react-rainbow-global-header_logo" />
-                <article className="rainbow-grid slds-media_center">
 
+                <article>
                     <ButtonGroup className="rainbow-m-right_medium">
                         <ButtonMenu menuSize="x-small" menuAlignment="right" label="more">
                             <MenuItem label="Options" variant="header" />
@@ -49,7 +49,7 @@
                     <Avatar
                         src="images/user/user2.jpg"
                         variant="circle"
-                        className="slds-m-horizontal_medium" />
+                        className="rainbow-m-horizontal_medium" />
 
                 </article>
             </header>
