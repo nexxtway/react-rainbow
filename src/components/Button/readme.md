@@ -1,13 +1,13 @@
 ##### simple buttons
 
-    <div className="slds-p-vertical_large slds-align_absolute-center slds-wrap" >
-        <div className="slds-m-horizontal_medium">
+    <div className="rainbow-p-vertical_large rainbow-align-content_center">
+        <div className="rainbow-m-horizontal_medium">
             <Button label="Button Base" />
         </div>
-        <div className="slds-m-horizontal_medium">
+        <div className="rainbow-m-horizontal_medium">
             <Button label="Button Neutral" variant="neutral" />
         </div>
-        <div className="slds-m-horizontal_medium">
+        <div className="rainbow-m-horizontal_medium">
             <Button label="Button Outline Brand" variant="outline-brand" />
         </div>
     </div>
@@ -15,14 +15,20 @@
 
 ##### button variants
 
-    <div className="slds-p-vertical_large slds-align_absolute-center slds-wrap" >
-        <div className="slds-m-horizontal_medium">
-            <Button label="Button Brand" onClick={() => alert('clicked!')} variant="brand" />
+    <div className="rainbow-p-vertical_large rainbow-align-content_center">
+        <div className="rainbow-m-horizontal_medium">
+            <Button 
+                label="Button Brand"
+                onClick={() => alert('clicked!')}
+                variant="brand" />
         </div>
-        <div className="slds-m-horizontal_medium">
-            <Button label="Button Success" onBlur={ () => alert('blurred!') } variant="success" />
+        <div className="rainbow-m-horizontal_medium">
+            <Button 
+                label="Button Success"
+                onBlur={ () => alert('blurred!') }
+                variant="success" />
         </div>
-        <div className="slds-m-horizontal_medium">
+        <div className="rainbow-m-horizontal_medium">
             <Button label="Button Destructive" variant="destructive" />
         </div>
     </div>
@@ -30,15 +36,26 @@
 
 ##### button shaded
 
-    <div className="slds-p-vertical_large slds-align_absolute-center slds-wrap" >
-        <div className="slds-m-horizontal_medium">
-            <Button shaded label="Button Brand" onClick={() => alert('clicked!')} variant="brand" />
+    <div className="rainbow-p-vertical_large rainbow-align-content_center">
+        <div className="rainbow-m-horizontal_medium">
+            <Button 
+                shaded
+                label="Button Brand"
+                onClick={() => alert('clicked!')}
+                variant="brand" />
         </div>
-        <div className="slds-m-horizontal_medium">
-            <Button shaded label="Button Success" onBlur={ () => alert('blurred!') } variant="success" />
+        <div className="rainbow-m-horizontal_medium">
+            <Button
+                shaded
+                label="Button Success"
+                onBlur={ () => alert('blurred!') }
+                variant="success" />
         </div>
-        <div className="slds-m-horizontal_medium">
-            <Button shaded label="Button Destructive" variant="destructive" />
+        <div className="rainbow-m-horizontal_medium">
+            <Button
+                shaded
+                label="Button Destructive"
+                variant="destructive" />
         </div>
     </div>
 
@@ -53,25 +70,25 @@
         faArrowRight,
     } = require('@fortawesome/free-solid-svg-icons');
 
-    <div className="slds-p-vertical_large slds-align_absolute-center slds-wrap" >
-        <div className="slds-m-horizontal_medium">
+    <div className="rainbow-p-vertical_large rainbow-align-content_center">
+        <div className="rainbow-m-horizontal_medium">
             <Button>
-                <FontAwesomeIcon icon={faCoffee} className="slds-button__icon_left" />
+                <FontAwesomeIcon icon={faCoffee} className="rainbow-m-right_medium" />
                 Button base
             </Button>
         </div>
-        <div className="slds-m-horizontal_medium">
+        <div className="rainbow-m-horizontal_medium">
             <Button
                 variant="neutral">
                 Button with right icon
-                <FontAwesomeIcon icon={faCheck} className="slds-button__icon_right" />
+                <FontAwesomeIcon icon={faCheck} className="rainbow-m-left_medium" />
             </Button>
         </div>
-        <div className="slds-m-horizontal_medium">
+        <div className="rainbow-m-horizontal_medium">
             <Button
                 variant="brand">
                 Brand button with right icon
-                <FontAwesomeIcon icon={faArrowRight} className="slds-button__icon_right" />
+                <FontAwesomeIcon icon={faArrowRight} className="rainbow-m-left_medium" />
             </Button>
         </div>
     </div>
@@ -79,14 +96,14 @@
 
 ##### disabled buttons
 
-    <div className="slds-p-vertical_large slds-align_absolute-center slds-wrap" >
-        <div className="slds-m-horizontal_medium">
+    <div className="rainbow-p-vertical_large rainbow-align-content_center">
+        <div className="rainbow-m-horizontal_medium">
             <Button label="Button Base Disabled" disabled />
         </div>
-        <div className="slds-m-horizontal_medium">
+        <div className="rainbow-m-horizontal_medium">
             <Button label="Button Neutral Disabled" variant="neutral" disabled />
         </div>
-        <div className="slds-m-horizontal_medium">
+        <div className="rainbow-m-horizontal_medium">
             <Button label="Button Brand Disabled" variant="brand" disabled />
         </div>
     </div>
@@ -94,24 +111,25 @@
 
 ##### buttons inverse
 
+    // more details about how to use react-font-awesome
+    // visit https://github.com/FortAwesome/react-fontawesome
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-    const {
-        faArrowRight,
-    } = require('@fortawesome/free-solid-svg-icons');
+    const { faArrowRight } = require('@fortawesome/free-solid-svg-icons');
 
     const buttonsContainerStyles = {
-        backgroundColor: '#16325c',
-        borderRadius: '0.25rem',
+        backgroundColor: '#061c3f',
+        borderRadius: '0.875rem',
     };
 
-    <div className="slds-p-vertical_large slds-align_absolute-center" style={buttonsContainerStyles}>
-        <div className="slds-m-horizontal_medium">
+    <div className="rainbow-p-vertical_large rainbow-align-content_center" style={buttonsContainerStyles}>
+        <div className="rainbow-m-horizontal_medium">
             <Button label="Button Inverse" variant="inverse" />
         </div>
-        <div className="slds-m-horizontal_medium">
-            <Button variant="border-inverse">
+        <div className="rainbow-m-horizontal_medium">
+            <Button
+                variant="inverse">
                 Button Inverse with icon
-                <FontAwesomeIcon icon={faArrowRight} className="slds-button__icon_right" />
+                <FontAwesomeIcon icon={faArrowRight} className="rainbow-m-left_medium" />
             </Button>
         </div>
     </div>
