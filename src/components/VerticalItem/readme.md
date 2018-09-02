@@ -24,7 +24,7 @@
                         <VerticalItem name="item-2" label="Components" icon={<FontAwesomeIcon icon={faFolderOpen} />} />
                         <VerticalItem name="item-3" label="Apps" icon={<FontAwesomeIcon icon={faTh} />} />
                         <VerticalItem name="item-4" label="VerticalItem" href="/#/Components/VerticalItem" />
-                        <VerticalItem name="item-5" label="VerticalSection" href="/#/Components/VerticalItem" />
+                        <VerticalItem name="item-5" label="VerticalSection" href="/#/Components/VerticalSection" />
                         <VerticalItem name="item-6" label="VerticalNavigation" href="/#/Components/VerticalNavigation" />
                     </VerticalSection>
                 </VerticalNavigation>
