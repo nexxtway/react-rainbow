@@ -1,0 +1,232 @@
+@import "./../../styles/colors.scss";
+@import "./../../styles/shadows.scss";
+@import "./../../styles/border-radius.scss";
+
+@mixin variants-common-styles($background-color, $border-color, $color) {
+    background-color: $background-color;
+    border: 1px solid $border-color;
+    color: $color;
+}
+
+.rainbow-button-icon {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+    padding: 0;
+    background: transparent;
+    background-clip: border-box;
+    border: 1px solid transparent;
+    border-radius: $border-radius-2;
+    line-height: 1.875rem;
+    text-decoration: none;
+    color: $color-gray-4;
+    -webkit-appearance: none;
+    white-space: normal;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: $color-brand-active;
+    }
+
+    &:focus {
+        outline: 0;
+        box-shadow: $shadow-outline;
+    }
+
+    &[disabled] {
+        color: $color-gray-2;
+    }
+
+    &[disabled] * {
+        cursor: default;
+        pointer-events: none;
+    }
+}
+
+.rainbow-button-icon + .rainbow-button-icon {
+    margin-left: 0.25rem;
+}
+
+.rainbow-button-icon_brand {
+    @include variants-common-styles($color-brand, $color-brand, white);
+
+    &:link,
+    &:visited,
+    &:active {
+        color: white;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+        @include variants-common-styles($color-brand-active, $color-brand-active, white);
+    }
+
+    &[disabled] {
+        @include variants-common-styles($color-gray-1, $color-gray-1, white);
+    }
+}
+
+.rainbow-button-icon_success {
+    @include variants-common-styles($color-success, $color-success, white);
+
+    &:link,
+    &:visited,
+    &:active {
+        color: white;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+        @include variants-common-styles($color-success-active, $color-success-active, white);
+    }
+
+    &[disabled] {
+        @include variants-common-styles($color-gray-1, $color-gray-1, white);
+    }
+}
+
+.rainbow-button-icon_border {
+    @include variants-common-styles(transparent, $color-gray-2, $color-gray-4);
+
+    transition: border 0.15s linear;
+
+    &:hover,
+    &:focus,
+    &:active {
+        @include variants-common-styles(transparent, $color-brand-active, $color-brand-active);
+    }
+
+    &[disabled] {
+        @include variants-common-styles(transparent, $color-gray-2, $color-gray-2);
+    }
+}
+
+.rainbow-button-icon_border-filled {
+    @include variants-common-styles(white, $color-gray-2, $color-gray-4);
+
+    transition: border 0.15s linear;
+
+    &:hover,
+    &:focus,
+    &:active {
+        background-color: $color-gray-1;
+    }
+
+    &[disabled] {
+        background-color: transparent;
+    }
+}
+
+.rainbow-button-icon_border-inverse {
+    @include variants-common-styles(transparent, white, white);
+
+    &:hover,
+    &:focus,
+    &:active {
+        border-color: $color-gray-3;
+        color: $color-gray-3;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: $shadow-5;
+    }
+
+    &[disabled] {
+        background-color: transparent;
+        border-color: $color-gray-4;
+        color: $color-gray-4;
+    }
+}
+
+.rainbow-button-icon_inverse {
+    @include variants-common-styles(transparent, transparent, white);
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: $color-gray-3;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: $shadow-5;
+    }
+
+    &[disabled] {
+        background-color: transparent;
+        color: $color-gray-4;
+    }
+}
+
+.rainbow-button-icon_shaded {
+    box-shadow: $shadow-1;
+}
+
+.rainbow-button-icon_xx-small {
+    width: 1rem;
+    height: 1rem;
+    line-height: 1;
+}
+
+.rainbow-button-icon_xx-small > svg {
+    font-size: 0.5rem !important;
+    width: 0.5rem !important;
+    height: 0.5rem !important;
+}
+
+.rainbow-button-icon_x-small {
+    width: 1.25rem;
+    height: 1.25rem;
+    line-height: 1;
+}
+
+.rainbow-button-icon_x-small > svg {
+    font-size: 0.75rem !important;
+    width: 0.75rem !important;
+    height: 0.75rem !important;
+}
+
+.rainbow-button-icon_small {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.rainbow-button-icon_small > svg {
+    font-size: 0.875rem !important;
+    width: 0.875rem !important;
+    height: 0.875rem !important;
+}
+
+.rainbow-button-icon_medium {
+    width: 2rem;
+    height: 2rem;
+}
+
+.rainbow-button-icon_medium > svg {
+    font-size: 1rem !important;
+    width: 1rem !important;
+    height: 1rem !important;
+}
+
+.rainbow-button-icon_large {
+    width: 3rem;
+    height: 3rem;
+}
+
+.rainbow-button-icon_large > svg {
+    font-size: 1.5rem !important;
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+}
