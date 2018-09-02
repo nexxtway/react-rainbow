@@ -172,7 +172,7 @@
             <VerticalNavigationWithNofifications />
         </div>
     </div>
-    
+
 
 ##### shaded vertical navigation
 
@@ -216,6 +216,9 @@
 
 ##### vertical navigation expandable
 
+    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+    const { faUser } = require('@fortawesome/free-regular-svg-icons');
+
     class ShadedVerticalNavigation extends React.Component {
         constructor(props) {
             super(props);
@@ -237,11 +240,16 @@
                         <VerticalItem name="item-2" label="Created by Me" />
                         <VerticalItem name="item-3" label="Private Reports" />
                     </VerticalSection>
-                    <VerticalSectionOverflow expandedLabel= "FOLDERS" collapsedLabel= "FOLDERS">
+                    <VerticalSectionOverflow
+                        title="Folders"
+                        description="Folders created, shared..."
+                        leftIcon={<FontAwesomeIcon icon={faUser} size="sm" />}
+                        rightIcon={<FontAwesomeIcon icon={faUser} size="sm" />}>
+
                         <VerticalItem name="item-4" label="Folder created by Me" />
                         <VerticalItem name="item-5" label="Folder shared with Me" />
                     </VerticalSectionOverflow>
-                    <VerticalSectionOverflow expanded expandedLabel= "DOCUMENTS" collapsedLabel= "DOCUMENTS">
+                    <VerticalSectionOverflow expanded title="Documents" description="Documents created, shared...">
                         <VerticalItem name="item-6" label="Document created by Me" />
                         <VerticalItem name="item-7" label="Document shared with Me" />
                     </VerticalSectionOverflow>

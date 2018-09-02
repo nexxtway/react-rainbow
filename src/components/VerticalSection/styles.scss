@@ -1,0 +1,19 @@
+.rainbow-nav-vertical__section:not(:first-of-type) {
+    margin-top: 0.5rem;
+}
+
+.rainbow-nav-vertical__title {
+    padding: 0.5rem 1rem 0.5rem 1.5rem;
+}
+
+.rainbow-nav-vertical__title:not(:first-of-type) {
+    margin-top: 0.5rem;
+}
+
+.rainbow-text-title_caps {
+    font-size: 0.75rem;
+    line-height: 1.25;
+    color: #706e6b;
+    text-transform: uppercase;
+    letter-spacing: 0.0625rem;
+}

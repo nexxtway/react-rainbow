@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import IconSvg from './../IconSvg';
-import Label from './label';
 import AssistiveText from './../AssistiveText';
 import { uniqueId } from './../../libs/utils';
+import Description from './description';
+import LeftIcon from './leftIcon';
+import RightIcon from './rightIcon';
+import './styles.css';
 
 const searchResultsId = uniqueId('search-results');
 
@@ -21,17 +23,24 @@ export default class VerticalSectionOverflow extends Component {
         this.toggleOverflow = this.toggleOverflow.bind(this);
     }
 
-    getContainerClassNames() {
+    getContainerClassName() {
         const { className } = this.props;
-        return classnames('slds-nav-vertical__overflow', className);
+        return classnames('rainbow-nav-vertical-section-overflow-container', className);
+    }
+
+    getButtonClassName() {
+        const { isExpanded } = this.state;
+        return classnames(
+            'rainbow-button rainbow-button_reset rainbow-nav-vertical__action',
+            { 'rainbow-nav-vertical__action_overflow': isExpanded });
     }
 
     getOverflowClassName() {
         const { isExpanded } = this.state;
         if (isExpanded) {
-            return 'slds-show';
+            return 'rainbow-nav-certical-overflow-show';
         }
-        return 'slds-hide';
+        return 'rainbow-nav-certical-overflow-hide';
     }
 
     toggleOverflow() {
@@ -41,8 +50,10 @@ export default class VerticalSectionOverflow extends Component {
 
     render() {
         const {
-            expandedLabel,
-            collapsedLabel,
+            title,
+            description,
+            leftIcon,
+            rightIcon,
             style,
             assistiveText,
             children,
@@ -50,22 +61,19 @@ export default class VerticalSectionOverflow extends Component {
         const { isExpanded } = this.state;
 
         return (
-            <div className={this.getContainerClassNames()} style={style}>
+            <div className={this.getContainerClassName()} style={style}>
                 <button
-                    className="slds-button slds-button_reset slds-nav-vertical__action slds-nav-vertical__action_overflow"
+                    className={this.getButtonClassName()}
                     aria-controls={searchResultsId}
                     aria-expanded={isExpanded}
                     onClick={this.toggleOverflow}>
-
-                    <IconSvg iconName="utility:chevronright" className="slds-button__icon slds-button__icon_left" />
-                    <span className="slds-nav-vertical__action-text">
-                        <Label
-                            isExpanded={isExpanded}
-                            expandedLabel={expandedLabel}
-                            collapsedLabel={collapsedLabel} />
-
+                    <LeftIcon className="rainbow-button__icon rainbow-button__icon_left" icon={leftIcon} />
+                    <div className="rainbow-nav-vertical__action-text">
+                        <span className="rainbow-nav-vertical__action-title">{title}</span>
+                        <Description isExpanded={isExpanded} description={description} />
                         <AssistiveText text={assistiveText} />
-                    </span>
+                    </div>
+                    <RightIcon className="rainbow-button__icon rainbow-button__icon_right" icon={rightIcon} />
 
                 </button>
                 <div data-id="vertical-overflow" id={searchResultsId} className={this.getOverflowClassName()}>
@@ -79,10 +87,11 @@ export default class VerticalSectionOverflow extends Component {
 }
 
 VerticalSectionOverflow.propTypes = {
+    leftIcon: PropTypes.node,
+    rightIcon: PropTypes.node,
+    description: PropTypes.string,
     /** The label to show when the section is collapsed. */
-    collapsedLabel: PropTypes.node,
-    /** The label to show when the section is expanded. */
-    expandedLabel: PropTypes.node,
+    title: PropTypes.string,
     /** The state of the overflow. */
     expanded: PropTypes.bool,
     /** A description for assistive sreen readers. */
@@ -99,8 +108,10 @@ VerticalSectionOverflow.propTypes = {
 };
 
 VerticalSectionOverflow.defaultProps = {
-    expandedLabel: 'Show Less',
-    collapsedLabel: 'Show More',
+    leftIcon: null,
+    rightIcon: null,
+    title: '',
+    description: '',
     expanded: false,
     className: undefined,
     style: undefined,

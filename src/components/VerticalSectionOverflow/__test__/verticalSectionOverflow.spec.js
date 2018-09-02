@@ -1,6 +1,5 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import renderer from 'react-test-renderer';
 import VerticalSectionOverflow from './../';
 
 describe('<VerticalSectionOverflow/>', () => {
@@ -47,42 +46,43 @@ describe('<VerticalSectionOverflow/>', () => {
         component.find('button').simulate('click');
         expect(component.find('button').prop('aria-expanded')).toBe(true);
     });
-    it('should pass the right props to the IconSvg component', () => {
+    it('should render the left icon when a left icon is passed', () => {
         const component = mount(
-            <VerticalSectionOverflow />,
+            <VerticalSectionOverflow leftIcon={<svg data-id="left-icon" />} />,
         );
-        expect(component.find('IconSvg').props()).toEqual({
-            iconName: 'utility:chevronright',
-            className: 'slds-button__icon slds-button__icon_left',
-        });
+        expect(component.find('svg[data-id="left-icon"]').exists()).toBe(true);
     });
-    it('should pass the right props to Label component when use default values', () => {
+    it('should render the right icon when a right icon is passed', () => {
+        const component = mount(
+            <VerticalSectionOverflow rightIcon={<svg data-id="right-icon" />} />,
+        );
+        expect(component.find('svg[data-id="right-icon"]').exists()).toBe(true);
+    });
+    it('should pass the right props to Description component when use default values', () => {
         const component = mount(
             <VerticalSectionOverflow />,
         );
-        expect(component.find('Label').props()).toEqual({
-            collapsedLabel: 'Show More',
-            expandedLabel: 'Show Less',
+        expect(component.find('Description').props()).toEqual({
+            description: '',
             isExpanded: false,
         });
     });
-    it('should pass the right props to Label component when the respective props are passed', () => {
+    it('should pass the right props to Description component when the respective props are passed', () => {
         const component = mount(
-            <VerticalSectionOverflow collapsedLabel="collapsed label" expandedLabel="expanded label" expanded />,
+            <VerticalSectionOverflow description="collapsed label" expanded />,
         );
-        expect(component.find('Label').props()).toEqual({
-            collapsedLabel: 'collapsed label',
-            expandedLabel: 'expanded label',
+        expect(component.find('Description').props()).toEqual({
+            description: 'collapsed label',
             isExpanded: true,
         });
     });
-    it('should set the isExpanded prop in Label component to true when the the button is clicked', () => {
+    it('should set the isExpanded prop in Description component to true when the the button is clicked', () => {
         const component = mount(
             <VerticalSectionOverflow />,
         );
-        expect(component.find('Label').prop('isExpanded')).toBe(false);
+        expect(component.find('Description').prop('isExpanded')).toBe(false);
         component.find('button').simulate('click');
-        expect(component.find('Label').prop('isExpanded')).toBe(true);
+        expect(component.find('Description').prop('isExpanded')).toBe(true);
     });
     it('should set the assistiveText passed as text in AssistiveText component', () => {
         const component = mount(
@@ -94,21 +94,21 @@ describe('<VerticalSectionOverflow/>', () => {
         const component = mount(
             <VerticalSectionOverflow />,
         );
-        expect(component.find('div[data-id="vertical-overflow"]').prop('className')).toBe('slds-hide');
+        expect(component.find('div[data-id="vertical-overflow"]').prop('className')).toBe('rainbow-nav-certical-overflow-hide');
     });
     it('should set the right className in the overflow container when expanded is passed', () => {
         const component = mount(
             <VerticalSectionOverflow expanded />,
         );
-        expect(component.find('div[data-id="vertical-overflow"]').prop('className')).toBe('slds-show');
+        expect(component.find('div[data-id="vertical-overflow"]').prop('className')).toBe('rainbow-nav-certical-overflow-show');
     });
     it('should set the right className in the overflow container when the button is clicked', () => {
         const component = mount(
             <VerticalSectionOverflow />,
         );
-        expect(component.find('div[data-id="vertical-overflow"]').prop('className')).toBe('slds-hide');
+        expect(component.find('div[data-id="vertical-overflow"]').prop('className')).toBe('rainbow-nav-certical-overflow-hide');
         component.find('button').simulate('click');
-        expect(component.find('div[data-id="vertical-overflow"]').prop('className')).toBe('slds-show');
+        expect(component.find('div[data-id="vertical-overflow"]').prop('className')).toBe('rainbow-nav-certical-overflow-show');
     });
     it('should render the children passed', () => {
         const component = mount(
@@ -119,9 +119,9 @@ describe('<VerticalSectionOverflow/>', () => {
         expect(component.find('ul').text()).toBe('the section children');
     });
     it('should have the right class names when a custom className is passed', () => {
-        const component = renderer.create(
+        const component = mount(
             <VerticalSectionOverflow className="custom-class-name" />,
         );
-        expect(component).toMatchSnapshot();
+        expect(component.find('div.rainbow-nav-vertical-section-overflow-container.custom-class-name').exists()).toBe(true);
     });
 });
