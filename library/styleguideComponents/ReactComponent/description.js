@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 export default function Description({ text }) {
     if (text) {
         return (
-            <p className="slds-text-heading_small slds-m-top_medium slds-react-component-description-text">
+            <p className="rainbow-font-size-heading_small rainbow-m-top_medium react-rainbow-component-description-text rainbow-color_dark-1">
                 {text}
             </p>
         );
