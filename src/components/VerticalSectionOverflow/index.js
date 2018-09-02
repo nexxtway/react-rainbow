@@ -4,8 +4,7 @@ import classnames from 'classnames';
 import AssistiveText from './../AssistiveText';
 import { uniqueId } from './../../libs/utils';
 import Description from './description';
-import LeftIcon from './leftIcon';
-import RightIcon from './rightIcon';
+import Icon from './icon';
 import './styles.css';
 
 const searchResultsId = uniqueId('search-results');
@@ -67,13 +66,13 @@ export default class VerticalSectionOverflow extends Component {
                     aria-controls={searchResultsId}
                     aria-expanded={isExpanded}
                     onClick={this.toggleOverflow}>
-                    <LeftIcon className="rainbow-button__icon rainbow-button__icon_left" icon={leftIcon} />
+                    <Icon position="left" icon={leftIcon} />
                     <div className="rainbow-nav-vertical__action-text">
                         <span className="rainbow-nav-vertical__action-title">{title}</span>
                         <Description isExpanded={isExpanded} description={description} />
                         <AssistiveText text={assistiveText} />
                     </div>
-                    <RightIcon className="rainbow-button__icon rainbow-button__icon_right" icon={rightIcon} />
+                    <Icon position="right" icon={rightIcon} />
 
                 </button>
                 <div data-id="vertical-overflow" id={searchResultsId} className={this.getOverflowClassName()}>
