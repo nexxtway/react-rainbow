@@ -5,15 +5,15 @@
         faAngleDown,
     } = require('@fortawesome/free-solid-svg-icons');
 
-    <div className="slds-p-vertical_large slds-align_absolute-center slds-wrap">
-        <div className="slds-m-horizontal_medium">
+    <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
+        <div className="rainbow-m-horizontal_medium">
             <ButtonGroup>
                 <Button label="Refresh" variant="neutral" />
                 <Button label="Edit" variant="neutral" />
                 <Button label="Save" variant="neutral" />
             </ButtonGroup>
         </div>
-        <div className="slds-m-horizontal_medium">
+        <div className="rainbow-m-horizontal_medium">
             <ButtonGroup>
                 <Button label="Refresh" variant="outline-brand" />
                 <Button label="Edit" variant="outline-brand" />
@@ -34,7 +34,7 @@
         faCogs,
     } = require('@fortawesome/free-solid-svg-icons');
 
-    <div className="slds-p-vertical_large slds-align_absolute-center slds-m-horizontal_medium">
+    <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-m-horizontal_medium">
         <ButtonGroup>
             <Button label="Refresh" variant="neutral" />
             <Button label="Edit" variant="neutral" />
@@ -69,8 +69,8 @@
         faAngleDown,
     } = require('@fortawesome/free-solid-svg-icons');
 
-    <div className="slds-p-vertical_large slds-align_absolute-center slds-wrap">
-        <div className="slds-m-horizontal_medium">
+    <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
+        <div className="rainbow-m-horizontal_medium">
             <ButtonGroup>
                 <Button
                     label="Add"
@@ -89,7 +89,7 @@
                     iconPosition="left" />
             </ButtonGroup>
         </div>
-        <div className="slds-m-horizontal_medium">
+        <div className="rainbow-m-horizontal_medium">
             <ButtonGroup>
                 <Button variant="neutral">
                     <FontAwesomeIcon icon={faPlus} />
@@ -106,15 +106,15 @@
 
 ##### button group with button disabled
 
-    <div className="slds-p-vertical_large slds-align_absolute-center slds-wrap">
-        <div className="slds-m-horizontal_medium">
+    <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
+        <div className="rainbow-m-horizontal_medium">
             <ButtonGroup>
                 <Button label="Refresh" variant="neutral" />
                 <Button label="Edit" variant="neutral" />
                 <Button label="Save" variant="neutral" disabled />
             </ButtonGroup>
         </div>
-        <div className="slds-m-horizontal_medium">
+        <div className="rainbow-m-horizontal_medium">
             <ButtonGroup>
                 <Button 
                     label="Add"
@@ -135,7 +135,7 @@
                     disabled />
             </ButtonGroup>
         </div>
-        <div className="slds-m-horizontal_medium">
+        <div className="rainbow-m-horizontal_medium">
             <ButtonGroup>
             </ButtonGroup>
         </div>
@@ -149,15 +149,15 @@
         borderRadius: '0.25rem',
     };
 
-    <div className="slds-p-vertical_large slds-align_absolute-center slds-wrap" style={buttonsContainerStyles}>
-        <div className="slds-m-horizontal_medium">
+    <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap" style={buttonsContainerStyles}>
+        <div className="rainbow-m-horizontal_medium">
             <ButtonGroup>
                 <Button label="Refresh" variant="inverse" />
                 <Button label="Edit" variant="inverse" />
                 <Button label="Save" variant="inverse" />
             </ButtonGroup>
         </div>
-        <div className="slds-m-horizontal_medium">
+        <div className="rainbow-m-horizontal_medium">
             <ButtonGroup>
                 <Button 
                     label="Add"
@@ -176,7 +176,7 @@
                     iconPosition="left" />
             </ButtonGroup>
         </div>
-        <div className="slds-m-horizontal_medium">
+        <div className="rainbow-m-horizontal_medium">
             <ButtonGroup>
             </ButtonGroup>
         </div>
