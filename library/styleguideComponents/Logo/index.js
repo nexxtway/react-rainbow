@@ -14,7 +14,7 @@ export default function Logo({ version }) {
                         <p className="react-rainbow_title-thin">components</p>
                     </div>
                     <p className="react-rainbow_version" aria-label="version">
-                    {`Latest release: ${version}`}
+                        {`Latest release: ${version}`}
                     </p>
                 </div>
             </div>

@@ -8,8 +8,8 @@
 }
 
 .react-rainbow_logo-icon {
-    width: 2rem;
-    height: 2rem;
+    width: 2.25rem;
+    height: 2.25rem;
 }
 
 .react-rainbow_title-version_container {
@@ -33,12 +33,28 @@
 }
 
 .react-rainbow_version {
-    font-size: 0.625rem;
-    line-height: 0.625rem;
+    font-size: 0.75rem;
+    line-height: 0.75rem;
     font-weight: 300;
     color: #576574;
 }
 
 .react-rainbow_divider-dotted {
     border-bottom: 1px dotted #e3e5ed;
+}
+
+@media (max-width: 800px) {
+    
+    .react-rainbow_title-container {
+        font-size: 0.9rem;
+        line-height: 0.9rem;
+    }
+}
+
+@media (max-width: 600px) {
+    
+    .react-rainbow_title-container {
+        font-size: 1rem;
+        line-height: 1rem;
+    }
 }
