@@ -58,6 +58,13 @@ describe('<VerticalSectionOverflow/>', () => {
         );
         expect(component.find('svg[data-id="right-icon"]').exists()).toBe(true);
     });
+    it('should render the left and right icon when a left and right icon are passed', () => {
+        const component = mount(
+            <VerticalSectionOverflow leftIcon={<svg data-id="left-icon" />} rightIcon={<svg data-id="right-icon" />} />,
+        );
+        expect(component.find('svg[data-id="left-icon"]').exists()).toBe(true);
+        expect(component.find('svg[data-id="right-icon"]').exists()).toBe(true);
+    });
     it('should pass the right props to Description component when use default values', () => {
         const component = mount(
             <VerticalSectionOverflow />,
