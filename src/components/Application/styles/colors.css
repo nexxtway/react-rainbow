@@ -53,10 +53,16 @@
   color: #a4a7b5; }
 
 .rainbow-background-color_gray-4 {
-  background-color: #e3e5ed; }
+  background-color: #576574; }
 
 .rainbow-color_gray-4 {
-  color: #e3e5ed; }
+  color: #576574; }
+
+.rainbow-background-color_white {
+  background-color: #fff; }
+
+.rainbow-color_white {
+  color: #fff; }
 
 .rainbow-background-color_dark-1 {
   background-color: #061c3f; }

@@ -1,0 +1,35 @@
+@import './../../../styles/font-sizes.scss';
+
+// font-sizes-heading
+.rainbow-font-size-heading_small {
+    font-size: $font-size-heading-small;
+}
+
+.rainbow-font-size-heading_medium {
+    font-size: $font-size-heading-medium;
+}
+
+.rainbow-font-size-heading_large {
+    font-size: $font-size-heading-large;
+}
+
+.rainbow-font-size-heading_x-large {
+    font-size: $font-size-heading-x-large;
+}
+
+// font-sizes-text-body
+.rainbow-font-size-text_x-small {
+    font-size: $font-size-text-x-small;
+}
+
+.rainbow-font-size-text_small {
+    font-size: $font-size-text-small;
+}
+
+.rainbow-font-size-text_medium {
+    font-size: $font-size-text-medium;
+}
+
+.rainbow-font-size-text_large {
+    font-size: $font-size-text-large;
+}

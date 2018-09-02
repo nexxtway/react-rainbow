@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import react from './../images/react.svg';
+import logo from './../../../assets/images/rainbow-logo.svg';
 import Avatar from './../../../src/components/Avatar';
 import './styles.css';
 
@@ -13,14 +13,14 @@ export default function GlobalHeader(props) {
 
     return (
         <div className={className}>
-            <header className="slds-grid slds-media_center slds-grid_align-spread slds-color__background_gray-1 slds-p-vertical_x-small slds-border_bottom react-slds-golbal-header">
-                <img src={react} alt="react lightning logo" className="slds-m-left_medium" />
-                <div className="slds-grid slds-media_center">
+            <header className="rainbow-align-content_space-between rainbow-p-vertical_small react-rainbow-golbal-header rainbow-background-color_white">
+                <img src={logo} alt="rainbow logo" className="rainbow-m-left_medium react-rainbow-global-header_logo" />
+                <div className="rainbow-flex rainbow-align_center">
                     {children}
                     <Avatar
                         src={src}
                         variant="circle"
-                        className="slds-m-horizontal_medium" />
+                        className="rainbow-m-horizontal_medium" />
                 </div>
             </header>
         </div>
@@ -36,5 +36,5 @@ GlobalHeader.propTypes = {
 GlobalHeader.defaultProps = {
     children: null,
     className: undefined,
-    src: 'images/avatar1.jpg',
+    src: 'images/user/user1.jpg',
 };
