@@ -3,7 +3,7 @@ const ITEM_1_CONTAINER = 'li=Menu Item One';
 const ITEM_1 = 'a=Menu Item One';
 const ITEM_2 = 'a=Menu Item Two';
 const ITEM_4 = 'a=Menu Item Four';
-const REACT_LOGO = 'img[alt*="react lightning logo"]';
+const REACT_LOGO = 'img[alt="rainbow logo"]';
 const ESCAPE_KEY = '\uE00C';
 const SPACE_KEY = '\uE00D';
 const ENTER_KEY = '\uE006';

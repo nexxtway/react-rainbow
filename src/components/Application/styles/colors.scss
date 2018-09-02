@@ -77,11 +77,20 @@
 }
 
 .rainbow-background-color_gray-4 {
-    background-color: $color-gray-2;
+    background-color: $color-gray-4;
 }
 
 .rainbow-color_gray-4 {
-    color: $color-gray-2;
+    color: $color-gray-4;
+}
+
+// white colors
+.rainbow-background-color_white {
+    background-color: #fff;
+}
+
+.rainbow-color_white {
+    color: #fff;
 }
 
 // black colors

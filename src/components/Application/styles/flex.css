@@ -5,6 +5,18 @@
 .rainbow-inline-flex {
   display: inline-flex; }
 
+.rainbow-flex_column {
+  flex-direction: column; }
+
+.rainbow-flex_column-reverse {
+  flex-direction: column-reverse; }
+
+.rainbow-flex_row {
+  flex-direction: row; }
+
+.rainbow-flex_row-reverse {
+  flex-direction: row-reverse; }
+
 .rainbow-justify_center {
   -ms-flex-pack: center;
   justify-content: center; }

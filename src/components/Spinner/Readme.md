@@ -2,9 +2,9 @@
 
     <div>
        <GlobalHeader src="images/avatar2.jpg" />
-            <div className="slds-p-vertical_xx-large slds-align_absolute-center slds-wrap">
-                <div className="slds-m-horizontal_medium slds-m-vertical_xx-large">
-                    <Spinner size="medium" />
+            <div className="rainbow-p-vertical_xx-large">
+                <div className="rainbow-position_relative rainbow-m-vertical_xx-large rainbow-p-vertical_xx-large">
+                    <Spinner size="large" />
                 </div>
             </div>
     </div>
@@ -12,34 +12,30 @@
 
 ##### full screen loading using spinner - brand - large
 
-    const spinnerTextStyles = {
-        color: '#0070d2',
+     const ContainerStyles = {
+        borderRadius: '0.875rem',
     };
 
-    <div className="slds-p-vertical_xx-large slds-align_absolute-center slds-wrap slds-grid_vertical">
-        <div className="slds-is-relative slds-m-top_xx-large slds-p-top_xx-large">
-            <Spinner variant="brand" size="large" />
-        </div>
-        <h1 className="slds-text-heading_small slds-m-vertical_x-large" style={spinnerTextStyles}>Loading…</h1>
+    <div className="rainbow-background-color_white rainbow-align-content_center rainbow-position_relative rainbow-p-vertical_xx-large" style={ContainerStyles}>
+        <Spinner variant="brand" size="medium" />
+        <h1 className="rainbow-color_brand rainbow-font-size-text_medium rainbow-p-top_xx-large rainbow-m-top_xx-large rainbow-m-bottom_large">Loading…</h1>
     </div>
 
 ##### lazy loading using spinner - base - small
 
     const spinner = (
-        <div className="slds-align_absolute-center">
-            <div className="slds-is-relative">
-                <Spinner size="small" />
+        <div className="rainbow-align-content_center">
+            <div className="rainbow-position_relative">
+                <Spinner size="small" variant="inverse" />
             </div>
-            <h1 className="slds-text-heading_small slds-m-left_large slds-text-color_default">Loading…</h1>
+            <h1 className="rainbow-font-size-text_medium rainbow-m-left_large rainbow-color_gray-4">Loading…</h1>
         </div>
     );
-    <div className="slds-p-vertical_large slds-p-horizontal_large">
+    <div className="rainbow-p-vertical_large rainbow-p-horizontal_large">
         <Card
-            className="slds-card_boundary"
-            iconName="standard:account"
-            title="Accounts (6)"
+            title="Tasks"
             footer={spinner}
-            actions={<Button variant="neutral" label="New" />} >
-                <div className="slds-p-vertical_xx-large" />
+            actions={<Button variant="neutral" label="Add" />} >
+                <div className="rainbow-p-vertical_xx-large" />
         </Card>
     </div>
