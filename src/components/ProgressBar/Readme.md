@@ -5,6 +5,9 @@
             super(props);
             this.state = { value : 0};
             this.increment = this.increment.bind(this);
+        }
+
+        componentDidMount() {
             this.increment();
         }
 
@@ -15,7 +18,7 @@
             } else {
                 this.setState({ value: value + 2 });
             }
-            setTimeout(() => { this.increment() }, 500);
+            setTimeout(this.increment, 500);
         }
 
         render() {
