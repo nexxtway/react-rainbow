@@ -9,7 +9,7 @@ import Badge from '../../../src/components/Badge';
 import './styles.css';
 
 const GithubStarsBadge = GithubStars(({ stars }) => (
-    <Badge className="react-rainbow_github-badge" variant="lightest">
+    <Badge className="react-rainbow_github-badge rainbow-color_dark-1 rainbow-m-right_medium" variant="lightest">
         <FontAwesomeIcon color="#061c3f" icon={faStar} pull="left" size="lg" />
         {stars}
     </Badge>
@@ -24,16 +24,16 @@ function resolveTitle(title) {
 
 export default function SectionHeading({ children }) {
     return (
-            <header className="react-rainbow_heading-container rainbow-align-content_space-between">
-                <h1 className="react-rainbow_title-text">
+            <header className="react-rainbow_heading-container rainbow-align-content_space-between rainbow-position_fixed">
+                <h1 className="react-rainbow_title-text rainbow-color_dark-1 rainbow-font-size-heading_large">
                     {resolveTitle(children)}
                 </h1>
-                <div className="rainbow-align-content_center">
+                <div className="rainbow-align-content_center react-rainbow_github-badge_container">
                     <div>
                         <GithubStarsBadge />
                     </div>
                     <a
-                        href="https://github.com/reiniergs/react-lightning-components"
+                        href="https://github.com/reiniergs/react-rainbow"
                         target="_blank"
                         rel="noopener noreferrer">
                         <img src={githublogo} alt="github logo" />

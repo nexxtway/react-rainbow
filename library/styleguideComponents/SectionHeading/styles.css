@@ -1,28 +1,38 @@
 .react-rainbow_title-text {
-    color: #061c3f;
     font-weight: 300;
-    font-size: 1.75rem;
     line-height: 1.25;
+    margin-left: 64px;
+}
+
+.react-rainbow_github-badge_container {
+    margin-right: 64px;
 }
 
 .react-rainbow_github-badge {
-    color: #061c3f;
-    margin-right: 20px;
     border-color: #061c3f;
     background-color: transparent;
 }
 
 .react-rainbow_heading-container {
-    position: absolute;
     top: 0;
-    width: calc(100vw - 250px - 64px - 64px);
     height: 68px;
     background-color: #fff;
+    margin-left: -64px;
+    width: calc(100vw - 250px);
+    z-index: 10000;
+    box-shadow: 0 1px 2px 0 #e3e5ed;
 }
 
 @media (max-width: 800px) {
     .react-rainbow_heading-container {
-        width: calc(100vw - 200px - 24px - 24px);
+        width: calc(100vw - 200px);
+        margin-left: -24px;
+    }
+    .react-rainbow_title-text {
+        margin-left: 24px;
+    }
+    .react-rainbow_github-badge_container {
+        margin-right: 24px;
     }
 }
 
@@ -30,7 +40,11 @@
     .react-rainbow_heading-container {
         width: 100vw;
         margin-left: -16px;
-        padding: 0 16px 0 16px;
-        box-shadow: 0 1px 2px 0 #e3e5ed;
+    }
+    .react-rainbow_title-text {
+        margin-left: 16px;
+    }
+    .react-rainbow_github-badge_container {
+        margin-right: 16px;
     }
 }
