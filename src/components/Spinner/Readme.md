@@ -1,7 +1,7 @@
 ##### list loading using spinner - base - medium
 
     <div>
-       <GlobalHeader src="images/avatar2.jpg" />
+       <GlobalHeader src="images/user/user3.jpg" />
             <div className="rainbow-p-vertical_xx-large">
                 <div className="rainbow-position_relative rainbow-m-vertical_xx-large rainbow-p-vertical_xx-large">
                     <Spinner size="large" />
@@ -21,7 +21,16 @@
         <h1 className="rainbow-color_brand rainbow-font-size-text_medium rainbow-p-top_xx-large rainbow-m-top_xx-large rainbow-m-bottom_large">Loading…</h1>
     </div>
 
+
 ##### lazy loading using spinner - base - small
+
+    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+    const { faTasks } = require('@fortawesome/free-solid-svg-icons');
+
+    const iconContainerStyles = {
+        width: '2rem',
+        height: '2rem',
+    };
 
     const spinner = (
         <div className="rainbow-align-content_center">
@@ -33,7 +42,12 @@
     );
     <div className="rainbow-p-vertical_large rainbow-p-horizontal_large">
         <Card
-            title="Tasks"
+           icon={
+                <div className="rainbow-background-color_brand rainbow-border-radius_circle rainbow-align-content_center" style={iconContainerStyles} >
+                    <FontAwesomeIcon icon={faTasks} size="lg" className="rainbow-color_white" />
+                </div>
+            }
+            title="Task"
             footer={spinner}
             actions={<Button variant="neutral" label="Add" />} >
                 <div className="rainbow-p-vertical_xx-large" />
