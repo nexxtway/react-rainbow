@@ -1,6 +1,6 @@
 ##### simple buttons
 
-    <div className="rainbow-p-vertical_large rainbow-align-content_center">
+    <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
         <div className="rainbow-m-horizontal_medium">
             <Button label="Button Base" />
         </div>
@@ -15,7 +15,7 @@
 
 ##### button variants
 
-    <div className="rainbow-p-vertical_large rainbow-align-content_center">
+    <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
         <div className="rainbow-m-horizontal_medium">
             <Button 
                 label="Button Brand"
@@ -36,7 +36,7 @@
 
 ##### button shaded
 
-    <div className="rainbow-p-vertical_large rainbow-align-content_center">
+    <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
         <div className="rainbow-m-horizontal_medium">
             <Button 
                 shaded
@@ -70,7 +70,7 @@
         faArrowRight,
     } = require('@fortawesome/free-solid-svg-icons');
 
-    <div className="rainbow-p-vertical_large rainbow-align-content_center">
+    <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
         <div className="rainbow-m-horizontal_medium">
             <Button>
                 <FontAwesomeIcon icon={faCoffee} className="rainbow-m-right_medium" />
@@ -96,7 +96,7 @@
 
 ##### disabled buttons
 
-    <div className="rainbow-p-vertical_large rainbow-align-content_center">
+    <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
         <div className="rainbow-m-horizontal_medium">
             <Button label="Button Base Disabled" disabled />
         </div>
@@ -121,7 +121,7 @@
         borderRadius: '0.875rem',
     };
 
-    <div className="rainbow-p-vertical_large rainbow-align-content_center" style={buttonsContainerStyles}>
+    <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap" style={buttonsContainerStyles}>
         <div className="rainbow-m-horizontal_medium">
             <Button label="Button Inverse" variant="inverse" />
         </div>
