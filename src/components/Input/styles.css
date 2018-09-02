@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 .rainbow-form-element {
   position: relative;
   display: flex;
