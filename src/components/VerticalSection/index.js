@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import { uniqueId } from '../../libs/utils';
 import { Provider } from './context';
 import Header from './header';
+import './styles.css';
 
 /**
 * Represents a section within a VerticalNavigation.
@@ -16,7 +17,7 @@ class VerticalSection extends Component {
 
     getClassNames() {
         const { className } = this.props;
-        return classnames('slds-nav-vertical__section', className);
+        return classnames('rainbow-nav-vertical__section', className);
     }
 
     render() {

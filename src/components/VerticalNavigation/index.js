@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Provider } from './context';
+import './styles.css';
 
 /**
 * Navigation represents a list of links that either take the user to another page
@@ -23,9 +24,9 @@ export default function VerticalNavigation(props) {
         onSelect,
     };
 
-    const getClassNames = () => classnames('slds-nav-vertical', {
-        'slds-nav-vertical_compact': compact,
-        'slds-nav-vertical_shade': shaded,
+    const getClassNames = () => classnames('rainbow-nav-vertical', {
+        'rainbow-nav-vertical_compact': compact,
+        'rainbow-nav-vertical_shade': shaded,
     }, className);
 
     return (

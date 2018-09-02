@@ -1,0 +1,109 @@
+@import "../../styles/colors";
+
+.rainbow-nav-vertical-section-overflow-container {
+    border-bottom: 0.0625rem solid $color-gray-1;
+    margin-top: -0.125rem;
+}
+
+.rainbow-nav-certical-overflow-show {
+    display: block;
+    border-left: 0.25rem $color-brand solid;
+    padding-left: 1.5rem;
+}
+
+.rainbow-nav-certical-overflow-hide {
+    display: none !important;
+}
+
+.rainbow-nav-vertical__action {
+    display: flex;
+    align-items: flex-start !important;
+    width: 100%;
+    padding: 0.5rem 1.5rem !important;
+    border-top: 0 !important;
+    border-bottom: 0 !important;
+    border-radius: 0;
+    padding-bottom: 0.625rem !important;
+}
+
+.rainbow-nav-vertical__action_overflow {
+    border-left: 0.25rem $color-brand solid !important;
+    padding-left: 1.3125rem !important;
+    padding-bottom: 0 !important;
+}
+
+.rainbow-nav-vertical__action,
+.rainbow-nav-vertical__action:active,
+.rainbow-nav-vertical__action:hover,
+.rainbow-nav-vertical__action:focus {
+    color: currentColor;
+}
+
+.rainbow-nav-vertical__action:hover {
+    background-color: #f3f2f2;
+    text-decoration: none;
+}
+
+.rainbow-nav-vertical__action:focus {
+    outline: 0;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.rainbow-nav-vertical__action:active {
+    background-color: #ecebea;
+}
+
+.rainbow-nav-vertical__action:active:focus {
+    text-decoration: none;
+}
+
+.rainbow-nav-vertical__item.rainbow-is-active .rainbow-nav-vertical__action {
+    background-color: rgba(21, 137, 238, 0.1);
+}
+
+.rainbow-nav-vertical__action-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex: 1;
+}
+
+.rainbow-nav-vertical__action-title {
+    font-size: 0.9375rem;
+    color: $color-gray-4;
+}
+
+.rainbow-nav-vertical__action-description {
+    font-size: 0.625rem;
+    line-height: 0.625rem;
+    color: $color-gray-3;
+}
+
+.rainbow-nav-vertical-section-overflow__icon {
+    width: 0.875rem;
+    height: 0.875rem;
+    fill: currentColor;
+}
+
+.rainbow-nav-vertical-section-overflow__icon_left {
+    margin-right: 0.5rem;
+}
+
+.rainbow-nav-vertical-section-overflow__icon_right {
+    margin-left: 0.5rem;
+}
+
+.rainbow-button_reset {
+    font-size: inherit;
+    color: inherit;
+    line-height: inherit;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    text-align: inherit;
+    border-radius: 0 !important;
+    justify-content: flex-start !important;
+}
+

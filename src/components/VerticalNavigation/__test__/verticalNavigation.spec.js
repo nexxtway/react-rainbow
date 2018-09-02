@@ -9,19 +9,19 @@ describe('<VerticalNavigation/>', () => {
         const component = mount(
             <VerticalNavigation />,
         );
-        expect(component.find('nav').prop('className')).toBe('slds-nav-vertical');
+        expect(component.find('nav').prop('className')).toBe('rainbow-nav-vertical');
     });
     it('should have the right className in the nav element when compact is true', () => {
         const component = mount(
             <VerticalNavigation compact />,
         );
-        expect(component.find('nav').prop('className')).toBe('slds-nav-vertical slds-nav-vertical_compact');
+        expect(component.find('nav').prop('className')).toBe('rainbow-nav-vertical rainbow-nav-vertical_compact');
     });
     it('should have the right className in the nav element when shaded is true', () => {
         const component = mount(
             <VerticalNavigation shaded />,
         );
-        expect(component.find('nav').prop('className')).toBe('slds-nav-vertical slds-nav-vertical_shade');
+        expect(component.find('nav').prop('className')).toBe('rainbow-nav-vertical rainbow-nav-vertical_shade');
     });
     it('should set the ariaLabel passed as aria-label in the nav element', () => {
         const component = mount(

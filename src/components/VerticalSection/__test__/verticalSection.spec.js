@@ -7,7 +7,7 @@ describe('<VerticalSection/>', () => {
         const component = mount(
             <VerticalSection />,
         );
-        expect(component.find('div[className="slds-nav-vertical__section"]').exists()).toBe(true);
+        expect(component.find('div[className="rainbow-nav-vertical__section"]').exists()).toBe(true);
     });
     it('should pass the label passed to the Header component', () => {
         const component = mount(

@@ -1,5 +1,5 @@
-const FOLDERS_BTN = 'button=FOLDERS';
-const DOCUMENTS_BTN = 'button=DOCUMENTS';
+const FOLDERS_BTN = '#rsg-root > div > main > section > section > div > div > article > div > article > div > div > div > div.slds-large-size_1-of-3.slds-medium-size_1-of-2.slds-small-size_1-of-1.slds-color__background_gray-1.slds-p-vertical_medium.slds-border_right > nav > div:nth-child(2) > button';
+const DOCUMENTS_BTN = '#rsg-root > div > main > section > section > div > div > article > div > article > div > div > div > div.slds-large-size_1-of-3.slds-medium-size_1-of-2.slds-small-size_1-of-1.slds-color__background_gray-1.slds-p-vertical_medium.slds-border_right > nav > div:nth-child(3) > button';
 const CHILD_FOLDERS_BTN = 'li=Folder created by Me';
 const CHILD_DOCUMENTS_BTN = 'li=Document created by Me';
 const RECENT_ITEM = 'li=Recent';
@@ -15,15 +15,15 @@ describe('VerticalNavigation expandable example', () => {
         browser.refresh();
     });
 
-    it('should open the "FOLDER" menu when click on the "FOLDER" button', () => {
+    it('should open the "Folders" menu when click on the "Folders" button', () => {
         browser.click(FOLDERS_BTN);
         expect(browser.isVisible(CHILD_FOLDERS_BTN)).toBe(true);
     });
-    it('should close the "DOCUMENTS" menu when click on the "DOCUMENTS" button', () => {
+    it('should close the "Documents" menu when click on the "DOCUMENTS" button', () => {
         browser.click(DOCUMENTS_BTN);
         expect(browser.isVisible(CHILD_DOCUMENTS_BTN)).toBe(false);
     });
-    it('should not lost focus the "DOCUMENTS" menu when it was closed', () => {
+    it('should not lost focus the "Documents" menu when it was closed', () => {
         browser.click(DOCUMENTS_BTN);
         expect(browser.hasFocus(DOCUMENTS_BTN)).toBe(true);
     });
