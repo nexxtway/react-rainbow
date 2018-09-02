@@ -1,17 +1,18 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 import GithubStars from './GithubStarsWrapper';
 import githublogo from './image/github.svg';
 import Badge from '../../../src/components/Badge';
 import './styles.css';
 
 const GithubStarsBadge = GithubStars(({ stars }) => (
-    <Badge
-        iconName="utility:favorite"
-        label={stars}
-        className="slds-react-github-badge"
-        variant="lightest" />
+    <Badge className="react-rainbow_github-badge" variant="lightest">
+        <FontAwesomeIcon color="#061c3f" icon={faStar} pull="left" size="lg" />
+        {stars}
+    </Badge>
 ));
 
 function resolveTitle(title) {
@@ -23,11 +24,11 @@ function resolveTitle(title) {
 
 export default function SectionHeading({ children }) {
     return (
-            <header className="slds-border_bottom slds-p-bottom_large slds-grid slds-grid_align-spread">
-                <h1 className="slds-text-heading_large slds-react-component-title-text">
+            <header className="react-rainbow_heading-container rainbow-align-content_space-between">
+                <h1 className="react-rainbow_title-text">
                     {resolveTitle(children)}
                 </h1>
-                <div className="slds-grid slds-grid_vertical-align-center">
+                <div className="rainbow-align-content_center">
                     <div>
                         <GithubStarsBadge />
                     </div>

@@ -24,12 +24,14 @@
 
 .slds-react-styleguide-container {
     background-color: #fff;
+    flex-wrap: wrap;
 }
 
 .react-slds-sidebar {
     width: 250px;
     height: 100%;
     position: fixed;
+    z-index: 4;
 }
 
 .react-slds-main-content {
@@ -40,6 +42,16 @@
     margin-left: 250px;
 }
 
+.react-rainbow_heading-section {
+    background-color: transparent;
+    width: calc(100vw - 250px);
+    height: 68px;
+    margin-left: 250px;
+    border-left: 1px solid #e3e5ed;
+    box-shadow: 0 1px 2px 0 #e3e5ed;
+    z-index: 3;
+}
+
 @media (max-width: 800px) {
     .react-slds-sidebar {
         width: 200px;
@@ -47,6 +59,10 @@
     .react-slds-main-content {
         width: calc(100vw - 200px);
         padding: 24px;
+        margin-left: 200px;
+    }
+    .react-rainbow_heading-section {
+        width: calc(100vw - 200px);
         margin-left: 200px;
     }
 }
@@ -63,5 +79,9 @@
         width: 100vw;
         padding: 16px;
         margin-left: 0;
+    }
+    .react-rainbow_heading-section {
+        width: 0;
+        height: 0;
     }
 }
