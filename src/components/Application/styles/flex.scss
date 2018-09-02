@@ -23,6 +23,14 @@
     flex-direction: row-reverse;
 }
 
+.rainbow-flex_wrap {
+    flex-wrap: wrap;
+}
+
+.rainbow-flex_no-wrap {
+    flex-wrap: nowrap;
+}
+
 .rainbow-justify_center {
     -ms-flex-pack: center;
     justify-content: center;

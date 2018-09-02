@@ -35,10 +35,10 @@
   color: #ea4243; }
 
 .rainbow-background-color_gray-1 {
-  background-color: #faf6f9; }
+  background-color: #f4f6f9; }
 
 .rainbow-color_gray-1 {
-  color: #faf6f9; }
+  color: #f4f6f9; }
 
 .rainbow-background-color_gray-2 {
   background-color: #e3e5ed; }
@@ -459,6 +459,12 @@
 
 .rainbow-flex_row-reverse {
   flex-direction: row-reverse; }
+
+.rainbow-flex_wrap {
+  flex-wrap: wrap; }
+
+.rainbow-flex_no-wrap {
+  flex-wrap: nowrap; }
 
 .rainbow-justify_center {
   -ms-flex-pack: center;
