@@ -1,0 +1,94 @@
+@import './../../../styles/colors.scss';
+
+// brand colors
+.rainbow-background-color_brand {
+    background-color: $color-brand;
+}
+
+.rainbow-background-color_brand-active {
+    background-color: $color-brand-active;
+}
+
+.rainbow-color_brand {
+    color: $color-brand;
+}
+
+.rainbow-color_brand-active {
+    color: $color-brand-active;
+}
+
+// success colors
+.rainbow-background-color_success {
+    background-color: $color-success;
+}
+
+.rainbow-background-color_success-active {
+    background-color: $color-success-active;
+}
+
+.rainbow-color_success {
+    color: $color-success;
+}
+
+.rainbow-color_success-active {
+    color: $color-success-active;
+}
+
+// destructive colors
+.rainbow-background-color_error {
+    background-color: $color-error;
+}
+
+.rainbow-background-color_error-active {
+    background-color: $color-error-active;
+}
+
+.rainbow-color_error {
+    color: $color-error;
+}
+
+.rainbow-color_error-active {
+    color: $color-error-active;
+}
+
+// gray colors
+.rainbow-background-color_gray-1 {
+    background-color: $color-gray-1;
+}
+
+.rainbow-color_gray-1 {
+    color: $color-gray-1;
+}
+
+.rainbow-background-color_gray-2 {
+    background-color: $color-gray-2;
+}
+
+.rainbow-color_gray-2 {
+    color: $color-gray-2;
+}
+
+.rainbow-background-color_gray-3 {
+    background-color: $color-gray-3;
+}
+
+.rainbow-color_gray-3 {
+    color: $color-gray-3;
+}
+
+.rainbow-background-color_gray-4 {
+    background-color: $color-gray-2;
+}
+
+.rainbow-color_gray-4 {
+    color: $color-gray-2;
+}
+
+// black colors
+.rainbow-background-color_dark-1 {
+    background-color: $color-dark-1;
+}
+
+.rainbow-color_dark-1 {
+    color: $color-dark-1;
+}

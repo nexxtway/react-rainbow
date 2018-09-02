@@ -34,15 +34,15 @@ export default function Spinner(props) {
     if (isVisible) {
         return (
             <div className={getContainerClassNames()} style={style}>
+                <div />
+                <div />
+                <div />
+                <div />
+                <div />
+                <div />
+                <div />
+                <div />
                 <AssistiveText text={assistiveText} />
-                <div />
-                <div />
-                <div />
-                <div />
-                <div />
-                <div />
-                <div />
-                <div />
             </div>
         );
     }

@@ -1,7 +1,7 @@
 ##### photo-url
 
-    <div className="slds-p-vertical_large slds-p-left_medium slds-grid slds-media_center slds-wrap">
-        <div className="slds-m-horizontal_medium">
+    <div className="rainbow-p-vertical_large rainbow-p-left_medium rainbow-flex rainbow-align_center">
+        <div className="rainbow-m-horizontal_medium">
             <Avatar
                 src="images/user/user1.jpg"
                 assistiveText="Jose Leandro"
@@ -9,7 +9,7 @@
                 size="large" />
 
         </div>
-        <div className="slds-m-horizontal_medium">
+        <div className="rainbow-m-horizontal_medium">
             <Avatar
                 src="images/user/user2.jpg"
                 assistiveText="Tahimi Leon"
@@ -17,7 +17,7 @@
                 size="medium" />
 
         </div>
-        <div className="slds-m-horizontal_medium">
+        <div className="rainbow-m-horizontal_medium">
             <Avatar
                 src="images/user/user3.jpg"
                 assistiveText="Carlos Miguel"
@@ -25,7 +25,7 @@
                 size="small" />
 
         </div>
-        <div className="slds-m-horizontal_medium">
+        <div className="rainbow-m-horizontal_medium">
             <Avatar
                 src="images/user/user4.jpg"
                 assistiveText="Jane Doe"
@@ -38,8 +38,8 @@
 
 ##### fallback user initials
 
-    <div className="slds-p-vertical_x-large slds-p-left_medium slds-grid slds-media_center slds-wrap">
-        <div className="slds-m-horizontal_medium">
+    <div className="rainbow-p-vertical_x-large rainbow-p-left_medium">
+        <div className="rainbow-m-horizontal_medium">
             <Avatar
                 assistiveText="Jane Doe"
                 initials="JD"
@@ -54,8 +54,8 @@
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
     const { faUser } = require('@fortawesome/free-regular-svg-icons');
 
-    <div className="slds-p-vertical_x-large slds-p-left_medium slds-grid slds-media_center slds-wrap">
-        <div className="slds-m-horizontal_medium">
+    <div className="rainbow-p-vertical_x-large rainbow-p-left_medium">
+        <div className="rainbow-m-horizontal_medium">
             <Avatar
                 icon={<FontAwesomeIcon icon={faUser} size="lg" />}
                 assistiveText="user icon"
@@ -68,12 +68,11 @@
 ##### fallback user initials inverse
 
     const avatarContainerStyles = {
-        backgroundColor: '#16325c',
-        borderRadius: '0.25rem',
+        borderRadius: '0.875rem',
     };
 
-    <div className="slds-p-vertical_x-large slds-p-left_medium slds-grid slds-media_center" style={avatarContainerStyles}>
-        <div className="slds-m-horizontal_medium">
+    <div className="rainbow-p-vertical_x-large rainbow-p-left_medium rainbow-background-color_dark-1" style={avatarContainerStyles}>
+        <div className="rainbow-m-horizontal_medium">
             <Avatar
                 assistiveText="Jane Doe"
                 initials="JD"
@@ -82,3 +81,4 @@
 
         </div>
     </div>
+    
