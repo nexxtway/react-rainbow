@@ -66,7 +66,6 @@
 
     <div className="slds-m-around_large">
         <Card
-            className="slds-card_boundary"
             icon={
                 <span style={iconContainerStyles} >
                     <FontAwesomeIcon icon={faTasks} size="lg" style={tasksIconStyles} />
