@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExpand, faCompress } from '@fortawesome/free-solid-svg-icons';
+import { faExpandArrowsAlt, faCompress } from '@fortawesome/free-solid-svg-icons';
 import Button from '../../../src/components/Button';
 import './styles.css';
 
@@ -24,7 +24,7 @@ export default function ToolbarButton(props) {
         return (
             <a className="slds-react-toolbar-button" href={href} title={title} aria-label={title}>
                 <Button>
-                    <FontAwesomeIcon icon={faExpand} />
+                    <FontAwesomeIcon icon={faExpandArrowsAlt} className="rainbow-color_gray-4" />
                 </Button>
             </a>
         );
@@ -34,7 +34,7 @@ export default function ToolbarButton(props) {
         return (
             <a className="slds-react-toolbar-button" href={resolveHref()} title={title} aria-label={title}>
                 <Button>
-                    <FontAwesomeIcon icon={faCompress} />
+                    <FontAwesomeIcon icon={faCompress} className="rainbow-color_gray-4" />
                 </Button>
             </a>
         );

@@ -15,19 +15,19 @@ export default function PlaygroundRenderer(props) {
 
     if (name === 'Getting Started' || name === 'Overview' || name === 'Usage') {
         return (
-            <div className="slds-is-relative">
+            <div className="rainbow-position_relative">
                 {preview}
             </div>
         );
     }
 
     return (
-        <div className="slds-is-relative slds-m-bottom_large">
+        <div className="rainbow-position_relative rainbow-m-bottom_large">
             {toolbar}
-            <article {...rest} className="slds-card slds-react-playground-background-color" data-preview={name}>
+            <article {...rest} className="react-rainbow_playground" data-preview={name}>
                 {preview}
             </article>
-            <div className="slds-grid slds-grid_align-end slds-p-vertical_xx-small">{tabButtons}</div>
+            <div className="rainbow-flex rainbow-justify_end rainbow-p-vertical_xx-small">{tabButtons}</div>
             <div>{tabBody}</div>
         </div>
     );
