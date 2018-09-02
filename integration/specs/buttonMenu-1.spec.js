@@ -81,4 +81,9 @@ describe('ButtonMenu base example', () => {
         browser.keys(TAB_KEY);
         expect(browser.isVisible(ITEM_1_CONTAINER)).toBe(false);
     });
+    it('should move focus to the item hovered', () => {
+        browser.click(MENU_BTN);
+        browser.moveToObject(ITEM_2);
+        expect(browser.hasFocus(ITEM_2)).toBe(true);
+    });
 });
