@@ -4,7 +4,7 @@ const CHILD_FOLDERS_BTN = 'li=Folder created by Me';
 const CHILD_DOCUMENTS_BTN = 'li=Document created by Me';
 const RECENT_ITEM = 'li=Recent';
 const RECENT_ITEM_LINK = 'a=Recent';
-const RECENT_ITEM_CLASS = 'slds-nav-vertical__item slds-is-active';
+const RECENT_ITEM_CLASS = 'rainbow-nav-vertical__item rainbow-is-active';
 const CREATED_BY_ME_LINK = 'a=Created by Me';
 const ENTER_KEY = '\uE006';
 const TAB_KEY = '\uE004';

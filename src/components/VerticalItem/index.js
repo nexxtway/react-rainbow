@@ -2,16 +2,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import iconNamePropType from './../../propTypes/iconNamePropType';
 import Icon from './icon';
 import Notification from './notification';
 import { Consumer as NavStateConsumer } from '../VerticalNavigation/context';
 import { Consumer as ItemIdConsumer } from '../VerticalSection/context';
+import './styles.css';
 
 function Item(props) {
     const {
         label,
-        iconName,
+        icon,
         name,
         href,
         onClick,
@@ -24,8 +24,8 @@ function Item(props) {
     } = props;
     const isSelected = name === selectedItem;
 
-    const getContainerClassNames = () => classnames('slds-nav-vertical__item', {
-        'slds-is-active': isSelected,
+    const getContainerClassNames = () => classnames('rainbow-nav-vertical__item', {
+        'rainbow-is-active': isSelected,
     }, className);
 
     const getAriaCurrent = () => {
@@ -45,19 +45,19 @@ function Item(props) {
             <a
                 href={href}
                 aria-describedby={entityHeaderId}
-                className="slds-nav-vertical__action"
+                className="rainbow-nav-vertical__action"
                 aria-current={getAriaCurrent()}>
-                    <Icon iconName={iconName} />
-                    {label}
-                    <Notification notification={notification} />
+                <Icon icon={icon} />
+                {label}
+                <Notification notification={notification} />
             </a>
         </li>
     );
 }
 
 /**
-* A text-only link within VerticalNavigationSection or VerticalNavigationOverflow.
-*/
+ * A text-only link within VerticalNavigationSection or VerticalNavigationOverflow.
+ */
 export default function VerticalItem(props) {
     return (
         <NavStateConsumer>
@@ -77,11 +77,8 @@ VerticalItem.propTypes = {
     label: PropTypes.string,
     /** A unique identifier for the navigation item. */
     name: PropTypes.string.isRequired,
-    /** The Lightning Design System name of the icon used as a fallback when
-     * the image fails to load. Names are written in the format {sprite_name}:{icon_name}
-     * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed.
-     * Only utility icons can be used in this component. */
-    iconName: iconNamePropType.oneOf(['utility']),
+    /** The icon component to show if it is passed. */
+    icon: PropTypes.node,
     /** The URL of the page that the navigation item goes to. */
     href: PropTypes.string,
     /** The notification comoponent to display on the right. */
@@ -96,7 +93,7 @@ VerticalItem.propTypes = {
 
 VerticalItem.defaultProps = {
     label: '',
-    iconName: undefined,
+    icon: undefined,
     href: 'javascript:void(0);',
     onClick: () => {},
     notification: null,

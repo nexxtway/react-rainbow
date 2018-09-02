@@ -37,7 +37,7 @@ describe('<VerticalNavigation/>', () => {
         );
         expect(component.find('span').text()).toBe('item children');
     });
-    it('should set the slds-is-active class only to the third VerticalItem when selectedItem is item 3', () => {
+    it('should set the rainbow-is-active class only to the third VerticalItem when selectedItem is item 3', () => {
         const component = mount(
             <VerticalNavigation selectedItem="item 3">
                 <VerticalSection label="header section">
@@ -50,9 +50,9 @@ describe('<VerticalNavigation/>', () => {
         const item1 = component.find('VerticalItem[name="item 1"]').find('li');
         const item2 = component.find('VerticalItem[name="item 2"]').find('li');
         const item3 = component.find('VerticalItem[name="item 3"]').find('li');
-        expect(item1.prop('className')).toBe('slds-nav-vertical__item');
-        expect(item2.prop('className')).toBe('slds-nav-vertical__item');
-        expect(item3.prop('className')).toBe('slds-nav-vertical__item slds-is-active');
+        expect(item1.prop('className')).toBe('rainbow-nav-vertical__item');
+        expect(item2.prop('className')).toBe('rainbow-nav-vertical__item');
+        expect(item3.prop('className')).toBe('rainbow-nav-vertical__item rainbow-is-active');
     });
     it('should call onSelect event with the right data when an item is clicked', () => {
         const onSelectMockFn = jest.fn();

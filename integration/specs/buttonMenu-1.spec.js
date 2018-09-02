@@ -1,5 +1,5 @@
 const MENU_BTN = '#rsg-root > div > main > section > section > div > div > article > div > article > div > div > div > div > header > div > div > div > button';
-const ITEM_1_CONTAINER = 'li=Menu Item One';
+const ITEM_CONTAINER = 'li=Menu Item Two';
 const ITEM_1 = 'a=Menu Item One';
 const ITEM_2 = 'a=Menu Item Two';
 const ITEM_4 = 'a=Menu Item Four';
@@ -22,17 +22,17 @@ describe('ButtonMenu base example', () => {
     });
     it('should open the menu when click on the button', () => {
         browser.click(MENU_BTN);
-        expect(browser.isVisible(ITEM_1_CONTAINER)).toBe(true);
+        expect(browser.isVisible(ITEM_CONTAINER)).toBe(true);
     });
     it('should close the menu when the menu is opened and click outside of the menu', () => {
         browser.click(MENU_BTN);
         browser.click(REACT_LOGO);
-        expect(browser.isVisible(ITEM_1_CONTAINER)).toBe(false);
+        expect(browser.isVisible(ITEM_CONTAINER)).toBe(false);
     });
     it('should close the menu when the menu is opened and press ESC', () => {
         browser.click(MENU_BTN);
         browser.keys(ESCAPE_KEY);
-        expect(browser.isVisible(ITEM_1_CONTAINER)).toBe(false);
+        expect(browser.isVisible(ITEM_CONTAINER)).toBe(false);
     });
     it('should put the menu button focused when the menu is opened and press ESC', () => {
         browser.click(MENU_BTN);
@@ -42,12 +42,12 @@ describe('ButtonMenu base example', () => {
     it('should open the menu when the button is focused and press Space', () => {
         MENU_BTN_FOCUSED();
         browser.keys(SPACE_KEY);
-        expect(browser.isVisible(ITEM_1_CONTAINER)).toBe(true);
+        expect(browser.isVisible(ITEM_CONTAINER)).toBe(true);
     });
     it('should open the menu when the button is focused and press Enter', () => {
         MENU_BTN_FOCUSED();
         browser.keys(ENTER_KEY);
-        expect(browser.isVisible(ITEM_1_CONTAINER)).toBe(true);
+        expect(browser.isVisible(ITEM_CONTAINER)).toBe(true);
     });
     it('should set the focus to the first menu item when open the menu', () => {
         browser.click(MENU_BTN);
@@ -79,7 +79,7 @@ describe('ButtonMenu base example', () => {
     it('should close the menu when the menu is opened and press the hey "tab"', () => {
         browser.click(MENU_BTN);
         browser.keys(TAB_KEY);
-        expect(browser.isVisible(ITEM_1_CONTAINER)).toBe(false);
+        expect(browser.isVisible(ITEM_CONTAINER)).toBe(false);
     });
     it('should move focus to the item hovered', () => {
         browser.click(MENU_BTN);
