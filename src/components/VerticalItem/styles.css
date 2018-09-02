@@ -17,19 +17,21 @@
   align-items: center;
   width: 100%;
   padding: 0.75rem 1.5rem;
-  border-top: 0.0625rem solid #faf6f9;
-  border-bottom: 0.0625rem solid #faf6f9;
+  border-bottom: 0.0625rem solid #f4f6f9;
   border-radius: 0;
-  color: #576574; }
+  color: #576574;
+  font-size: 0.875rem; }
+
+.rainbow-nav-vertical__action:hover {
+  background-color: #f4f6f9;
+  color: #061c3f;
+  text-decoration: none; }
 
 .rainbow-is-active .rainbow-nav-vertical__action,
-.rainbow-nav-vertical__action:active,
-.rainbow-nav-vertical__action:hover,
-.rainbow-nav-vertical__action:focus {
-  background-color: #faf6f9;
-  color: #01b6f5;
-  font-size: 0.9375rem;
-  font-weight: 900;
+.rainbow-nav-vertical__action:active {
+  background-color: #f4f6f9;
+  color: #061c3f;
+  font-weight: 600;
   text-decoration: none; }
 
 .rainbow-nav-vertical_icon {
