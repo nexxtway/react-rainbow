@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import HeaderTitle from './headerTitle';
+import HeaderIcon from './headerIcon';
 import CardBoddy from './cardBody';
 import Footer from './footer';
 import Actions from './actions';
@@ -19,6 +20,7 @@ export default function Card(props) {
         children,
         footer,
         title,
+        icon,
         isLoading,
     } = props;
 
@@ -28,6 +30,7 @@ export default function Card(props) {
         <article className={getContainerClassName()} style={style}>
             <div className="rainbow-card__header-container">
                 <header className="rainbow-card__header">
+                    <HeaderIcon icon={icon} />
                     <HeaderTitle title={title} />
                 </header>
                 <Actions content={actions} />
@@ -47,6 +50,8 @@ Card.propTypes = {
     title: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]).isRequired,
+    /** The icon component to show if it is passed. */
+    icon: PropTypes.node,
     /** Actions are components such as button or buttonIcon. Actions are displayed in the header. */
     actions: PropTypes.node,
     /** The footer can include text or another component. */
@@ -67,6 +72,7 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
+    icon: null,
     actions: null,
     footer: null,
     isLoading: false,

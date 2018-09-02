@@ -10,22 +10,18 @@ exports[`<Card/> should have the right class names 1`] = `
     <header
       className="rainbow-card__header"
     >
-      <div
-        className="rainbow-media__body"
-      >
-        <h2>
-          <a
-            className="rainbow-card__header-link"
-            href="javascript:void(0);"
+      <h2>
+        <a
+          className="rainbow-card__header-link"
+          href="javascript:void(0);"
+        >
+          <span
+            className="rainbow-text-heading_small"
           >
-            <span
-              className="rainbow-text-heading_small"
-            >
-              Card Header
-            </span>
-          </a>
-        </h2>
-      </div>
+            Card Header
+          </span>
+        </a>
+      </h2>
     </header>
     <div
       className="rainbow-no-flex"
