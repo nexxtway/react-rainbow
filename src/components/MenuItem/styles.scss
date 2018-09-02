@@ -39,7 +39,7 @@
     cursor: pointer;
 }
 
-.rainbow-menu-item > a:hover, .rainbow-menu-item > a:focus {
+.rainbow-menu-item > a:focus {
     outline: 0;
     text-decoration: none;
     background-color: $color-gray-2;

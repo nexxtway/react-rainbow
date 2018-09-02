@@ -11,6 +11,7 @@ class Item extends Component {
         super(props);
         this.itemRef = React.createRef();
         this.handleClick = this.handleClick.bind(this);
+        this.handleHover = this.handleHover.bind(this);
     }
 
     componentDidMount() {
@@ -46,6 +47,11 @@ class Item extends Component {
         return privateOnClose();
     }
 
+    handleHover(event) {
+        const { privateOnHover } = this.props;
+        return privateOnHover(event, this.itemRef.current);
+    }
+
     click() {
         this.itemRef.current.click();
     }
@@ -73,7 +79,13 @@ class Item extends Component {
         const hasRightIcon = !!(icon && iconPosition === 'right');
 
         return (
-            <li className={this.getItemClassNames()} style={style} role="presentation" onClick={this.handleClick}>
+            <li
+                className={this.getItemClassNames()}
+                style={style}
+                role="presentation"
+                onClick={this.handleClick}
+                onMouseEnter={this.handleHover}>
+
                 <a
                     href="javascript:void(0);"
                     role="menuitem"

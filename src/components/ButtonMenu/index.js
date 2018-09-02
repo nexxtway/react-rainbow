@@ -35,6 +35,7 @@ export default class ButtonMenu extends Component {
         this.handleKeyEnterPressed = this.handleKeyEnterPressed.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.closeMenu = this.closeMenu.bind(this);
+        this.hoverChild = this.hoverChild.bind(this);
 
         this.registerChild = this.registerChild.bind(this);
         this.unregisterChild = this.unregisterChild.bind(this);
@@ -47,6 +48,7 @@ export default class ButtonMenu extends Component {
                 privateOnClose: this.closeMenu,
                 privateRegisterChild: this.registerChild,
                 privateUnregisterChild: this.unregisterChild,
+                privateOnHover: this.hoverChild,
             },
         };
     }
@@ -188,6 +190,10 @@ export default class ButtonMenu extends Component {
         this.setState({
             childrenRefs: newChildrenRefs,
         });
+    }
+
+    hoverChild(event, childRef) {
+        return this.focusMatchedItem(childRef);
     }
 
     handleClick(event) {
