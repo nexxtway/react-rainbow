@@ -1,6 +1,10 @@
+/* stylelint-disable no-descending-specificity */
 @import "../../styles/colors";
 @import "../../styles/shadows";
 @import "../../styles/font-sizes";
+@import "../../styles/border-radius";
+@import "../../styles/margins";
+@import "../../styles/paddings";
 
 .rainbow-form-element {
     position: relative;
@@ -9,7 +13,8 @@
 }
 
 .rainbow-form-element__helper {
-    font-size: 0.75rem;
+    font-size: $font-size-text-small;
+    color: $color-dark-1;
 }
 
 .rainbow-form-element__label {
@@ -29,28 +34,18 @@
     margin: 0;
 }
 
-.rainbow-form-element__control .rainbow-radio,
-.rainbow-form-element__control .rainbow-checkbox {
-    display: block;
-}
-
-.rainbow-form-element__icon {
-    display: inline-block;
-    position: relative;
-}
-
 .rainbow-form-element__help {
-    font-size: 0.75rem;
-    margin-top: 0.5rem;
+    font-size: $font-size-text-small;
+    margin-top: $margin-x-small;
     align-self: center;
 }
 
 .rainbow-form-element__static {
     display: inline-block;
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
+    padding-top: $margin-xx-small;
+    padding-bottom: $margin-xx-small;
     min-height: calc(1.875rem + 2px);
-    font-size: 0.875rem;
+    font-size: $font-size-text-medium;
     font-weight: 400;
     color: #2b2826;
 }
@@ -87,7 +82,7 @@
 }
 
 .rainbow-input-has-icon .rainbow-input__icon {
-    fill: #b0adab;
+    fill: $color-gray-3;
     width: 0.875rem;
     height: 0.875rem;
     position: absolute;
@@ -100,23 +95,30 @@
 
 .rainbow-input {
     background-color: white;
-    border: 1px solid #dddbda;
-    border-radius: 100px;
+    border: 1px solid $color-gray-3;
+    border-radius: $border-radius-2;
     width: 100%;
     transition: all 0.1s linear;
     display: inline-block;
-    padding: 0 1rem 0 0.75rem;
+    padding: 0 1rem 0 1rem;
     line-height: 2.125rem;
     height: calc(2.125rem + (1px * 2));
-}
+    color: $color-dark-1;
 
-.rainbow-input:focus, .rainbow-input:active {
-    outline: 0;
-    line-height: 0.5rem;
-    padding-left: 0.6875rem;
-    border: 2px $color-brand solid;
-    background-color: white;
-    box-shadow: $shadow-1;
+    &:focus,
+    &:active {
+        outline: 0;
+        line-height: 0.5rem;
+        padding-left: 0.9375rem;
+        border: 2px $color-brand solid;
+        background-color: white;
+        box-shadow: $shadow-3;
+    }
+
+    &::placeholder {
+        color: $color-gray-3;
+        font-weight: 300;
+    }
 }
 
 .rainbow-input[type="datetime"]:focus,
@@ -135,28 +137,39 @@
 }
 
 .rainbow-input[disabled], .rainbow-input.rainbow-is-disabled {
-    background-color: #ecebea;
-    border-color: #c9c7c5;
+    background-color: $color-gray-1;
+    border-color: $color-gray-2;
+    color: $color-gray-2;
     cursor: not-allowed;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-}
 
-.rainbow-input[disabled]:focus,
-.rainbow-input[disabled]:active,
-.rainbow-input.rainbow-is-disabled:focus,
-.rainbow-input.rainbow-is-disabled:active {
-    box-shadow: none;
+    &:focus,
+    &:active {
+        box-shadow: none;
+        background-color: $color-gray-1;
+        border: 1px $color-gray-2 solid;
+        padding-left: $padding-medium;
+    }
 }
 
 .rainbow-input[readonly] {
     padding-left: 0;
+    padding-right: 0;
     border-color: transparent;
     background-color: transparent;
-    font-size: 0.875rem;
+    font-size: $font-size-text-medium;
+    color: $color-dark-1;
     font-weight: 400;
+
+    &:focus,
+    &:active {
+        box-shadow: none;
+        border: 1px transparent solid;
+        padding-right: 0;
+    }
 }
 
 .rainbow-input[type="search"]::-ms-clear {
@@ -171,23 +184,24 @@
     padding-top: 0;
     padding-bottom: 0;
     padding-left: 0.75rem;
-    color: #3e3e3c;
+    color: $color-dark-1;
     line-height: 2.125rem;
-}
 
-.rainbow-input_bare:focus, .rainbow-input_bare:active {
-    outline: 0;
-    box-shadow: none;
+    &:focus,
+    &:active {
+        outline: 0;
+        box-shadow: none;
+    }
 }
 
 .rainbow-input_counter {
     text-align: center;
     padding: 0 3rem;
-}
 
-.rainbow-input_counter:focus,
-.rainbow-input_counter:active {
-    padding: 0 3rem;
+    &:focus,
+    &:active {
+        padding: 0 3rem;
+    }
 }
 
 .rainbow-input-has-icon {
@@ -200,33 +214,20 @@
 }
 
 .rainbow-input-has-icon_left .rainbow-input__icon {
-    left: 0.75rem;
+    left: 1rem;
 }
 
 .rainbow-input-has-icon_right .rainbow-input__icon {
-    right: 0.75rem;
+    right: 1rem;
 }
 
 .rainbow-input-has-icon .rainbow-input__icon:not(button) {
     pointer-events: none;
 }
 
-.rainbow-input-has-icon_left .rainbow-input,
-.rainbow-input-has-icon_left .rainbow-input_bare {
-    padding-left: 2rem;
-}
-
 .rainbow-input-has-icon_right .rainbow-input,
 .rainbow-input-has-icon_right .rainbow-input_bare {
-    padding-right: 2rem;
-}
-
-.rainbow-input-has-icon_left-right .rainbow-input__icon_left {
-    left: 0.75rem;
-}
-
-.rainbow-input-has-icon_left-right .rainbow-input__icon_right {
-    right: 0.75rem;
+    padding-right: 2.25rem;
 }
 
 .rainbow-input-has-icon_left-right .rainbow-input,
@@ -237,6 +238,16 @@
 .rainbow-input-has-icon_group-right .rainbow-input,
 .rainbow-input-has-icon_group-right .rainbow-input_bare {
     padding-right: 3.25rem;
+}
+
+.rainbow-input-has-icon_left .rainbow-input,
+.rainbow-input-has-icon_left .rainbow-input_bare {
+    padding-left: 2.25rem;
+
+    &:focus,
+    &:active {
+        padding-left: 2.1875rem;
+    }
 }
 
 .rainbow-input__icon-group {
@@ -262,33 +273,28 @@
 .rainbow-input-has-fixed-addon {
     display: -ms-flexbox;
     display: flex;
-}
 
-.rainbow-input:required {
-    box-shadow: none;
+    &:required {
+        box-shadow: none;
+    }
 }
 
 .rainbow-has-error .rainbow-input {
     background-color: white;
     border: 2px $color-error solid;
-    padding-left: 0.75rem;
-    box-shadow: $shadow-1;
+    padding-left: $padding-medium;
+    box-shadow: $shadow-3;
     background-clip: padding-box;
     line-height: 2rem;
+
+    &:required,
+    &:focus {
+        box-shadow: $shadow-3;
+    }
 }
 
-.rainbow-input:required:focus {
-    box-shadow: $shadow-1;
-}
-
-.rainbow-input__button_decrement {
+.rainbow-input__button_decrement, .rainbow-input__button_increment {
     position: absolute;
     bottom: 0.25rem;
-    left: 0.75rem;
-}
-
-.rainbow-input__button_increment {
-    position: absolute;
-    bottom: 0.25rem;
-    right: 0.75rem;
+    left: 1rem;
 }
