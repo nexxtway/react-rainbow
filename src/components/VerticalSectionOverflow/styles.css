@@ -5,7 +5,6 @@
 .rainbow-nav-certical-overflow-show {
   display: block;
   border-left: 0.25rem #01b6f5 solid;
-  margin-top: -1px;
   padding-left: 1.5rem; }
 
 .rainbow-nav-certical-overflow-hide {
@@ -16,8 +15,8 @@
   align-items: flex-start !important;
   width: 100%;
   padding: 0.5rem 1.5rem !important;
-  border-top: 1px solid transparent;
-  border-bottom: 1px solid transparent;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
   border-radius: 0;
   padding-bottom: 0.625rem !important; }
 
@@ -66,27 +65,15 @@
   line-height: 0.625rem;
   color: #a4a7b5; }
 
-.rainbow-button__icon {
+.rainbow-nav-vertical-section-overflow__icon {
   width: 0.875rem;
   height: 0.875rem;
   fill: currentColor; }
 
-.rainbow-button__icon_large {
-  width: 1.5rem;
-  height: 1.5rem; }
-
-.rainbow-button__icon_small {
-  width: 0.75rem;
-  height: 0.75rem; }
-
-.rainbow-button__icon_x-small {
-  width: 0.5rem;
-  height: 0.5rem; }
-
-.rainbow-button__icon_left {
+.rainbow-nav-vertical-section-overflow__icon_left {
   margin-right: 0.5rem; }
 
-.rainbow-button__icon_right {
+.rainbow-nav-vertical-section-overflow__icon_right {
   margin-left: 0.5rem; }
 
 .rainbow-button_reset {

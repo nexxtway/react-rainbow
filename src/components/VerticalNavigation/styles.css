@@ -6,11 +6,11 @@
   padding: 0.25rem 1.5rem; }
 
 .rainbow-nav-vertical_shade .rainbow-nav-vertical__action:hover {
-  background-color: #f3f2f2; }
+  background-color: #faf6f9; }
 
 .rainbow-nav-vertical_shade .rainbow-nav-vertical__action:active {
-  background-color: #ecebea; }
+  background-color: #faf6f9; }
 
 .rainbow-nav-vertical_shade .rainbow-is-active .rainbow-nav-vertical__action {
-  background-color: white;
-  border-color: #dddbda; }
+  background-color: #faf6f9;
+  border-color: #a4a7b5; }

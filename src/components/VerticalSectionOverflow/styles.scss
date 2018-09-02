@@ -8,7 +8,7 @@
 .rainbow-nav-certical-overflow-show {
     display: block;
     border-left: 0.25rem $color-brand solid;
-    margin-top: -1px;
+    //margin-top: 0.0625rem;
     padding-left: 1.5rem;
 }
 
@@ -21,8 +21,8 @@
     align-items: flex-start !important;
     width: 100%;
     padding: 0.5rem 1.5rem !important;
-    border-top: 1px solid transparent;
-    border-bottom: 1px solid transparent;
+    border-top: 0 !important;
+    border-bottom: 0 !important;
     border-radius: 0;
     padding-bottom: 0.625rem !important;
 }
@@ -82,17 +82,17 @@
     color: $color-gray-3;
 }
 
-.rainbow-button__icon {
+.rainbow-nav-vertical-section-overflow__icon {
     width: 0.875rem;
     height: 0.875rem;
     fill: currentColor;
 }
 
-.rainbow-button__icon_left {
+.rainbow-nav-vertical-section-overflow__icon_left {
     margin-right: 0.5rem;
 }
 
-.rainbow-button__icon_right {
+.rainbow-nav-vertical-section-overflow__icon_right {
     margin-left: 0.5rem;
 }
 

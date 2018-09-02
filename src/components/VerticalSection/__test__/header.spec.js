@@ -26,6 +26,6 @@ describe('<VerticalSectionHeader/>', () => {
         const component = mount(
             <Header label="header section label" />,
         );
-        expect(component.find('h2').prop('className')).toBe('rainbow-nav-vertical__title rainbow-text-title_caps');
+        expect(component.find('h2').prop('className')).toBe('rainbow-nav-vertical__title');
     });
 });

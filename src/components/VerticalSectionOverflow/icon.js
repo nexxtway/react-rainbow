@@ -5,14 +5,13 @@ import classnames from 'classnames';
 
 export default function Icon(props) {
     const { icon, position } = props;
+
+    const getClassNames = () => (
+        classnames('rainbow-nav-vertical-section-overflow__icon', `rainbow-nav-vertical-section-overflow__icon_${position}`)
+    );
+
     if (icon) {
-        const className = classnames(
-            'rainbow-button__icon',
-            {
-                'rainbow-button__icon_left': position === 'left',
-                'rainbow-button__icon_right': position === 'right',
-            });
-        return <span className={className}>{icon}</span>;
+        return <span className={getClassNames()}>{icon}</span>;
     }
 
     return null;

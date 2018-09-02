@@ -5,7 +5,7 @@ export default function Header(props) {
     const { label, id } = props;
     if (label) {
         return (
-            <h2 id={id} className="rainbow-nav-vertical__title rainbow-text-title_caps">
+            <h2 id={id} className="rainbow-nav-vertical__title">
                 {label}
             </h2>
         );
