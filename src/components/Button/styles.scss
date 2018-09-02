@@ -1,5 +1,15 @@
-@import './../../styles/colors.scss';
-@import './../../styles/shadows.scss';
+@import "./../../styles/colors.scss";
+@import "./../../styles/shadows.scss";
+
+@mixin variants-common-styles($background-color, $border-color, $color) {
+    background-color: $background-color;
+    border: 1px solid $border-color;
+    color: $color;
+    padding: 0 1rem;
+    text-align: center;
+    vertical-align: middle;
+    transition: border 0.15s linear;
+}
 
 .rainbow-button {
     align-items: center;
@@ -7,7 +17,6 @@
     font-size: 0.875rem;
     justify-content: center;
     position: relative;
-    padding: 0 1rem;
     background: transparent;
     background-clip: border-box;
     border: 1px solid transparent;
@@ -15,6 +24,7 @@
     line-height: 2.125rem;
     text-decoration: none;
     color: $color-brand;
+    padding: 0;
     cursor: pointer;
     -webkit-appearance: none;
     white-space: normal;
@@ -23,17 +33,21 @@
     -ms-user-select: none;
     user-select: none;
 
-    &:hover, &:focus, &:active, &:visited {
+    &:hover,
+    &:focus,
+    &:active,
+    &:visited {
         text-decoration: none;
     }
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         color: $color-brand-active;
     }
 
     &:focus {
         outline: 0;
-        box-shadow: 0 0 3px #0070d2;
+        box-shadow: $shadow-outline;
     }
 
     &:active {
@@ -55,37 +69,31 @@
 }
 
 .rainbow-button_neutral {
-    text-align: center;
-    vertical-align: middle;
-    border: 1px solid $color-gray-2;
-    transition: border 0.15s linear;
-    border-color: $color-gray-2;
-    background-color: white;
+    @include variants-common-styles(white, $color-gray-2, $color-brand);
 
-    &:hover, &:focus, &:active {
+    &:hover,
+    &:focus,
+    &:active {
         background-color: $color-gray-1;
     }
 
     &[disabled] {
         background-color: transparent;
-        border-color: $color-gray-2;
     }
 }
 
 .rainbow-button_brand {
-    text-align: center;
-    vertical-align: middle;
-    border: 1px solid $color-brand;
-    transition: border 0.15s linear;
-    background-color: $color-brand;
-    border-color: $color-brand;
-    color: white;
+    @include variants-common-styles($color-brand, $color-brand, white);
 
-    &:link, &:visited, &:active {
+    &:link,
+    &:visited,
+    &:active {
         color: white;
     }
 
-    &:hover, &:focus, &:active {
+    &:hover,
+    &:focus,
+    &:active {
         background-color: $color-brand-active;
         border-color: $color-brand-active;
         color: white;
@@ -98,13 +106,11 @@
 }
 
 .rainbow-button_outline-brand {
-    text-align: center;
-    vertical-align: middle;
-    border: 1px solid $color-brand;
-    transition: border 0.15s linear;
-    border-color: $color-brand;
+    @include variants-common-styles(transparent, $color-brand, $color-brand);
 
-    &:hover, &:focus, &:active {
+    &:hover,
+    &:focus,
+    &:active {
         border-color: $color-brand-active;
     }
 
@@ -115,15 +121,33 @@
 }
 
 .rainbow-button_inverse {
-    text-align: center;
-    vertical-align: middle;
-    border: 1px solid white;
-    transition: border 0.15s linear;
-    background-color: transparent;
-    border-color: white;
-    color: white;
+    @include variants-common-styles(transparent, transparent, white);
 
-    &:hover, &:focus, &:active {
+    padding: 0;
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: $color-brand;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 3px $color-gray-1;
+    }
+
+    &[disabled] {
+        background-color: transparent;
+        color: $color-gray-4;
+    }
+}
+
+.rainbow-button_border-inverse {
+    @include variants-common-styles(transparent, white, white);
+
+    &:hover,
+    &:focus,
+    &:active {
         border-color: $color-brand;
         color: $color-brand;
     }
@@ -141,19 +165,16 @@
 }
 
 .rainbow-button_destructive {
-    text-align: center;
-    vertical-align: middle;
-    border: 1px solid $color-error;
-    transition: border 0.15s linear;
-    background-color: $color-error;
-    border-color: $color-error;
-    color: white;
+    @include variants-common-styles($color-error, $color-error, white);
 
-    &:link, &:visited, &:active {
+    &:link,
+    &:visited,
+    &:active {
         color: white;
     }
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         background-color: $color-error-active;
         color: white;
     }
@@ -170,19 +191,19 @@
 }
 
 .rainbow-button_success {
-    text-align: center;
-    vertical-align: middle;
-    border: 1px solid $color-success;
-    transition: border 0.15s linear;
-    background-color: $color-success;
-    border-color: $color-success;
-    color: white;
+    @include variants-common-styles($color-success, $color-success, white);
 
-    &:link, &:visited, &:active, &:hover, &:focus {
+    &:link,
+    &:visited,
+    &:active,
+    &:hover,
+    &:focus {
         color: white;
     }
 
-    &:hover, &:focus, &:active {
+    &:hover,
+    &:focus,
+    &:active {
         background-color: $color-success-active;
         border-color: $color-success-active;
     }

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import iconNamePropType from './../../propTypes/iconNamePropType';
-import ButtonIcon from './../ButtonIcon';
+import Button from './../Button';
 import MenuContent from './menuContent';
 import { Provider } from './context';
 import {
@@ -21,8 +20,8 @@ import {
 import './styles.css';
 
 /**
-* A Button Menu offers a list of actions or functions that a user can access.
-*/
+ * A Button Menu offers a list of actions or functions that a user can access.
+ */
 export default class ButtonMenu extends Component {
     constructor(props) {
         super(props);
@@ -252,11 +251,11 @@ export default class ButtonMenu extends Component {
             style,
             title,
             assistiveText,
-            iconName,
             buttonVariant,
-            buttonSize,
+            buttonShaded,
             disabled,
             tabIndex,
+            label,
             onFocus,
             onBlur,
             isLoading,
@@ -273,16 +272,15 @@ export default class ButtonMenu extends Component {
                 onKeyDown={this.handleKeyPressed}
                 ref={this.containerRef}>
 
-                <ButtonIcon
+                <Button
                     data-id="button-menu-icon"
                     disabled={disabled}
                     tabIndex={tabIndex}
+                    label={label}
                     variant={buttonVariant}
-                    size={buttonSize}
+                    shaded={buttonShaded}
                     ariaHaspopup
                     title={title}
-                    assistiveText={assistiveText}
-                    iconName={iconName}
                     onFocus={onFocus}
                     onBlur={onBlur}
                     onClick={this.toggleMenu}
@@ -303,27 +301,26 @@ export default class ButtonMenu extends Component {
 }
 
 ButtonMenu.propTypes = {
+    /** The text to be displayed inside the button. */
+    label: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]).isRequired,
     /** The variant changes the look of the button. Accepted variants include base, container,
     * brand, border, border-filled, bare-inverse, and inverse.
     * This value defaults to border-filled. */
     buttonVariant: PropTypes.oneOf([
         'base',
-        'border-filled',
-        'border-inverse',
-        'border',
+        'neutral',
         'brand',
+        'outline-brand',
+        'destructive',
+        'success',
         'inverse',
-        'container',
     ]),
-    /** The size of the button. Options include xx-small, x-small, medium, or large.
-    * This value defaults to medium. */
-    buttonSize: PropTypes.oneOf([
-        'xx-small',
-        'x-small',
-        'small',
-        'medium',
-        'large',
-    ]),
+    /** Specify true when the button has a shadow around it.
+    * This value defaults to false.
+    * Only neutral, brand, destructive and success variant can be shaded. */
+    buttonShaded: PropTypes.bool,
     /** The size of the menu. Options include xx-small, x-small, medium, or large.
     * This value defaults to small. */
     menuSize: PropTypes.oneOf([
@@ -339,11 +336,6 @@ ButtonMenu.propTypes = {
     menuAlignment: PropTypes.oneOf([
         'left', 'right', 'bottom',
     ]),
-    /** The Lightning Design System name of the icon used as a fallback when
-    * the image fails to load. Names are written in the format {sprite_name}:{icon_name}
-    * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed.
-    * Only utility icons can be used in this component. */
-    iconName: iconNamePropType.oneOf(['utility']),
     /** If true, the menu is disabled. Disabling the menu prevents users from opening it.
     * This value defaults to false. */
     disabled: PropTypes.bool,
@@ -371,11 +363,10 @@ ButtonMenu.propTypes = {
 };
 
 ButtonMenu.defaultProps = {
-    buttonVariant: 'border-filled',
-    buttonSize: 'medium',
+    buttonVariant: 'base',
+    buttonShaded: false,
     menuSize: 'xx-small',
     menuAlignment: 'left',
-    iconName: 'utility:down',
     disabled: false,
     isLoading: false,
     tabIndex: undefined,

@@ -8,7 +8,7 @@
 
     <div className="slds-m-bottom_xx-large slds-p-bottom_xx-large">
         <GlobalHeader className="slds-p-bottom_xx-large slds-m-bottom_xx-large">
-            <ButtonMenu menuAlignment="right" menuSize="small">
+            <ButtonMenu menuAlignment="right" menuSize="small" label="Menu">
                 <MenuItem label="Menu Item Header" variant="header" />
                 <MenuItem label="Menu Item Base" />
                 <MenuItem label="Other Menu Item Base" />
