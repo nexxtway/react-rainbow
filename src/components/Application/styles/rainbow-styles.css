@@ -529,6 +529,12 @@
 .rainbow-position_fixed {
   position: fixed; }
 
+.rainbow-border-radius_circle {
+  border-radius: 12rem; }
+
+.rainbow-border-radius_oval {
+  border-radius: 0.875rem; }
+
 .rainbow-font-size-heading_small {
   font-size: 1rem; }
 
