@@ -2,10 +2,14 @@
 
 .rainbow-spinner,
 .rainbow-spinner > div {
-    position: relative;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 9051;
+    transform: translate(-50%, -50%) rotate(90deg);
 }
 
 .rainbow-spinner {

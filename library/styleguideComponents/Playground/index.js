@@ -13,7 +13,7 @@ export default function PlaygroundRenderer(props) {
     } = props;
     const { ...rest } = previewProps;
 
-    if (name === 'Icons' || name === 'Overview' || name === 'Usage') {
+    if (name === 'Getting Started' || name === 'Overview' || name === 'Usage') {
         return (
             <div className="slds-is-relative">
                 {preview}
