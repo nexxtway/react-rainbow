@@ -45,8 +45,8 @@
     border: 1px solid #009acf;
     color: white; }
   .rainbow-button-icon_brand[disabled] {
-    background-color: #faf6f9;
-    border: 1px solid #faf6f9;
+    background-color: #f4f6f9;
+    border: 1px solid #f4f6f9;
     color: white; }
 
 .rainbow-button-icon_success {
@@ -60,8 +60,8 @@
     border: 1px solid #1ad1a3;
     color: white; }
   .rainbow-button-icon_success[disabled] {
-    background-color: #faf6f9;
-    border: 1px solid #faf6f9;
+    background-color: #f4f6f9;
+    border: 1px solid #f4f6f9;
     color: white; }
 
 .rainbow-button-icon_border {
@@ -84,7 +84,7 @@
   color: #576574;
   transition: border 0.15s linear; }
   .rainbow-button-icon_border-filled:hover, .rainbow-button-icon_border-filled:focus, .rainbow-button-icon_border-filled:active {
-    background-color: #faf6f9; }
+    background-color: #f4f6f9; }
   .rainbow-button-icon_border-filled[disabled] {
     background-color: transparent; }
 
@@ -97,7 +97,7 @@
     color: #a4a7b5; }
   .rainbow-button-icon_border-inverse:focus {
     outline: none;
-    box-shadow: 0 0 3px #faf6f9; }
+    box-shadow: 0 0 3px #f4f6f9; }
   .rainbow-button-icon_border-inverse[disabled] {
     background-color: transparent;
     border-color: #576574;
@@ -111,7 +111,7 @@
     color: #a4a7b5; }
   .rainbow-button-icon_inverse:focus {
     outline: none;
-    box-shadow: 0 0 3px #faf6f9; }
+    box-shadow: 0 0 3px #f4f6f9; }
   .rainbow-button-icon_inverse[disabled] {
     background-color: transparent;
     color: #576574; }
@@ -149,8 +149,8 @@
   height: 0.875rem !important; }
 
 .rainbow-button-icon_medium {
-  width: 2rem;
-  height: 2rem; }
+  width: 2.25rem;
+  height: 2.25rem; }
 
 .rainbow-button-icon_medium > svg {
   font-size: 1rem !important;
