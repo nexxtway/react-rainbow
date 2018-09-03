@@ -92,7 +92,7 @@
   transition: border 0.15s linear;
   padding: 0; }
   .rainbow-button_inverse:hover, .rainbow-button_inverse:focus, .rainbow-button_inverse:active {
-    color: #01b6f5; }
+    color: #a4a7b5; }
   .rainbow-button_inverse:focus {
     outline: none;
     box-shadow: 0 0 3px #f4f6f9; }
@@ -109,8 +109,8 @@
   vertical-align: middle;
   transition: border 0.15s linear; }
   .rainbow-button_border-inverse:hover, .rainbow-button_border-inverse:focus, .rainbow-button_border-inverse:active {
-    border-color: #01b6f5;
-    color: #01b6f5; }
+    border-color: #a4a7b5;
+    color: #a4a7b5; }
   .rainbow-button_border-inverse:focus {
     outline: none;
     box-shadow: 0 0 3px #f4f6f9; }

@@ -127,7 +127,7 @@
         </div>
         <div className="rainbow-m-horizontal_medium">
             <Button
-                variant="inverse">
+                variant="border-inverse">
                 Button Inverse with icon
                 <FontAwesomeIcon icon={faArrowRight} className="rainbow-m-left_medium" />
             </Button>

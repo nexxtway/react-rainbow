@@ -128,12 +128,12 @@
     &:hover,
     &:focus,
     &:active {
-        color: $color-brand;
+        color: $color-gray-3;
     }
 
     &:focus {
         outline: none;
-        box-shadow: 0 0 3px $color-gray-1;
+        box-shadow: $shadow-5;
     }
 
     &[disabled] {
@@ -148,13 +148,13 @@
     &:hover,
     &:focus,
     &:active {
-        border-color: $color-brand;
-        color: $color-brand;
+        border-color: $color-gray-3;
+        color: $color-gray-3;
     }
 
     &:focus {
         outline: none;
-        box-shadow: 0 0 3px $color-gray-1;
+        box-shadow: $shadow-5;
     }
 
     &[disabled] {
