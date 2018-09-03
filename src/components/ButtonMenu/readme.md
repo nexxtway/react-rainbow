@@ -3,15 +3,19 @@
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
     const {
         faAngleDown,
+        faEdit,
+        faPaste,
     } = require('@fortawesome/free-solid-svg-icons');
 
     <div className="slds-m-bottom_xx-large slds-p-bottom_xx-large">
         <GlobalHeader className="slds-p-bottom_xx-large slds-m-bottom_xx-large">
             <ButtonGroup>
+                <ButtonIcon icon={<FontAwesomeIcon icon={faEdit} />} variant="border-filled" disabled />
+                <ButtonIcon icon={<FontAwesomeIcon icon={faPaste} />} variant="border-filled" disabled />
                 <ButtonMenu
                     menuAlignment="right"
                     menuSize="x-small"
-                    label={<FontAwesomeIcon icon={faAngleDown} />}>
+                    icon={<FontAwesomeIcon icon={faAngleDown} />}>
 
                     <MenuItem label="Menu Item One" />
                     <MenuItem label="Menu Item Two" />
@@ -38,7 +42,7 @@
                     buttonVariant="neutral"
                     menuAlignment="right"
                     menuSize="x-small"
-                    label={<FontAwesomeIcon icon={faCogs} />}>
+                    icon={<FontAwesomeIcon icon={faCogs} />}>
 
                     <MenuItem label="Menu header" variant="header" />
                     <MenuItem label="Menu Item One" />
@@ -71,7 +75,7 @@
                     menuSize="x-small"
                     menuAlignment="right"
                     buttonVariant="brand"
-                    label={<FontAwesomeIcon icon={faEllipsisV} />}>
+                    icon={<FontAwesomeIcon icon={faEllipsisV} />}>
 
                     <MenuItem
                         label="Right Icon"
@@ -93,8 +97,8 @@
             <ButtonMenu
                 menuAlignment="right"
                 menuSize="x-small"
-                buttonVariant="brand"
-                label={<FontAwesomeIcon icon={faBell} />}>
+                buttonVariant="success"
+                icon={<FontAwesomeIcon icon={faBell} />}>
 
                 <MenuItem
                     label="Left Icon"

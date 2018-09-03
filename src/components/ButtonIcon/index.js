@@ -28,8 +28,7 @@ export default class ButtonIcon extends Component {
     getButtonClassNames() {
         const { className, shaded, variant, size } = this.props;
         const isShaded = shaded && (
-            variant === 'border'
-            || variant === 'border-filled'
+            variant === 'border-filled'
             || variant === 'brand'
             || variant === 'success'
         );
@@ -127,7 +126,7 @@ ButtonIcon.propTypes = {
     ]),
     /** Specify true when the button has a shadow around it.
     * This value defaults to false.
-    * Only border, border-filled, brand, and success variant can be shaded. */
+    * Only border-filled, brand, and success variant can be shaded. */
     shaded: PropTypes.bool,
     /** Displays tooltip text when the mouse moves over the element. */
     title: PropTypes.string,
