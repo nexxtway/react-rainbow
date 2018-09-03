@@ -72,7 +72,7 @@
     }
 
     &[disabled] {
-        @include variants-common-styles($color-gray-1, $color-gray-1, white);
+        @include variants-common-styles($color-gray-1, $color-gray-1, $color-gray-2);
     }
 }
 
@@ -92,7 +92,7 @@
     }
 
     &[disabled] {
-        @include variants-common-styles($color-gray-1, $color-gray-1, white);
+        @include variants-common-styles($color-gray-1, $color-gray-1, $color-gray-2);
     }
 }
 
@@ -171,7 +171,7 @@
 }
 
 .rainbow-button-icon_shaded {
-    box-shadow: $shadow-1;
+    box-shadow: $shadow-5;
 }
 
 .rainbow-button-icon_xx-small {
