@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import Button from './../Button';
+import ButtonIcon from './../ButtonIcon';
 import MenuContent from './menuContent';
 import { Provider } from './context';
 import {
@@ -255,13 +255,14 @@ export default class ButtonMenu extends Component {
     render() {
         const {
             style,
+            icon,
+            buttonSize,
             title,
             assistiveText,
             buttonVariant,
             buttonShaded,
             disabled,
             tabIndex,
-            label,
             onFocus,
             onBlur,
             isLoading,
@@ -278,11 +279,13 @@ export default class ButtonMenu extends Component {
                 onKeyDown={this.handleKeyPressed}
                 ref={this.containerRef}>
 
-                <Button
+                <ButtonIcon
                     data-id="button-menu-icon"
+                    icon={icon}
+                    size={buttonSize}
+                    assistiveText={assistiveText}
                     disabled={disabled}
                     tabIndex={tabIndex}
-                    label={label}
                     variant={buttonVariant}
                     shaded={buttonShaded}
                     ariaHaspopup
@@ -307,21 +310,28 @@ export default class ButtonMenu extends Component {
 }
 
 ButtonMenu.propTypes = {
-    /** The text to be displayed inside the button. */
-    label: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]).isRequired,
+    /** The icon component to show. It must be a svg icon and is a required value. */
+    icon: PropTypes.node.isRequired,
     /** The variant changes the look of the button. Accepted variants include base, container,
     * brand, border, border-filled, bare-inverse, and inverse.
     * This value defaults to border-filled. */
     buttonVariant: PropTypes.oneOf([
         'base',
-        'neutral',
         'brand',
-        'outline-brand',
-        'destructive',
         'success',
+        'border',
+        'border-filled',
+        'border-inverse',
         'inverse',
+    ]),
+    /** The size of the button. Options include xx-small, x-small, medium, or large.
+    * This value defaults to medium. */
+    buttonSize: PropTypes.oneOf([
+        'xx-small',
+        'x-small',
+        'small',
+        'medium',
+        'large',
     ]),
     /** Specify true when the button has a shadow around it.
     * This value defaults to false.
@@ -369,7 +379,8 @@ ButtonMenu.propTypes = {
 };
 
 ButtonMenu.defaultProps = {
-    buttonVariant: 'base',
+    buttonVariant: 'border-filled',
+    buttonSize: 'medium',
     buttonShaded: false,
     menuSize: 'xx-small',
     menuAlignment: 'left',
