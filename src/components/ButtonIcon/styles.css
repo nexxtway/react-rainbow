@@ -47,7 +47,7 @@
   .rainbow-button-icon_brand[disabled] {
     background-color: #f4f6f9;
     border: 1px solid #f4f6f9;
-    color: white; }
+    color: #e3e5ed; }
 
 .rainbow-button-icon_success {
   background-color: #1de9b6;
@@ -62,7 +62,7 @@
   .rainbow-button-icon_success[disabled] {
     background-color: #f4f6f9;
     border: 1px solid #f4f6f9;
-    color: white; }
+    color: #e3e5ed; }
 
 .rainbow-button-icon_border {
   background-color: transparent;
@@ -117,7 +117,7 @@
     color: #576574; }
 
 .rainbow-button-icon_shaded {
-  box-shadow: 0 0 2px 0 #a4a7b5; }
+  box-shadow: 0 0 3px #f4f6f9; }
 
 .rainbow-button-icon_xx-small {
   width: 1rem;
