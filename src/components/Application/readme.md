@@ -9,6 +9,8 @@
         faShareAlt,
         faHeart,
         faAngleDown,
+        faPencilAlt,
+        faBell,
     } = require('@fortawesome/free-solid-svg-icons');
 
     const iconContainerStyles = {
@@ -25,23 +27,22 @@
             <header className="rainbow-align-content_space-between rainbow-background-color_white rainbow-p-vertical_x-small react-rainbow-golbal-header">
                 <img src="images/rainbow-logo.svg" alt="rainbow logo" className="rainbow-m-left_medium react-rainbow-global-header_logo" />
 
-                <article>
+                <article className="rainbow-flex rainbow-align_center">
                     <ButtonGroup className="rainbow-m-right_medium">
-                        <ButtonMenu menuSize="x-small" menuAlignment="right" label="more">
-                            <MenuItem label="Options" variant="header" />
-                            <MenuItem label="Menu Item" />
-                            <MenuItem label="Menu Item" />
-                            <MenuItem label="Menu Item" />
-                            <MenuDivider variant="space" />
-                            <MenuItem
-                                label="Right Icon"
-                                iconName="utility:kanban"
-                                iconPosition="right" />
-
-                            <MenuItem
-                                label="Right Icon"
-                                iconName="utility:side_list"
-                                iconPosition="right" />
+                        <ButtonIcon variant="border" disabled icon={<FontAwesomeIcon icon={faPencilAlt} />} />
+                        <ButtonIcon variant="border" disabled icon={<FontAwesomeIcon icon={faBell} />} />
+                        <ButtonMenu 
+                            menuSize="x-small"
+                            menuAlignment="right"
+                            icon={<FontAwesomeIcon icon={faAngleDown} />}>
+                                <MenuItem label="Options" variant="header" />
+                                <MenuItem label="Menu Item" />
+                                <MenuItem label="Menu Item" />
+                                <MenuDivider variant="space" />
+                                <MenuItem
+                                    label="Right Icon"
+                                    icon={<FontAwesomeIcon icon={faTasks} />}
+                                    iconPosition="right" />
 
                         </ButtonMenu>
                     </ButtonGroup>
