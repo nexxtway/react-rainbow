@@ -185,7 +185,7 @@
             </ButtonMenu>
         </GlobalHeader>
         <div className="rainbow-m-horizontal_large rainbow-p-top_xx-large rainbow-m-bottom_large rainbow-grid   rainbow-grid_align-end">
-            <ButtonMenu menuAlignment="bottom" menuSize="x-small" icon={<FontAwesomeIcon icon={faPlus} />}>
+            <ButtonMenu menuAlignment="bottom" buttonVariant="brand" menuSize="x-small" icon={<FontAwesomeIcon icon={faPlus} />}>
                 <MenuItem label="Menu Positioned Bottom" />
                 <MenuItem label="Menu Positioned Bottom" />
                 <MenuItem label="Menu Positioned Bottom" />
