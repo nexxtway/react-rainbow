@@ -5,7 +5,7 @@ import './styles.css';
 export default function HeaderIcon({ icon }) {
     if (icon) {
         return (
-            <div className="rainbow-media__figure">
+            <div className="rainbow-card-media__figure">
                 {icon}
             </div>
         );
