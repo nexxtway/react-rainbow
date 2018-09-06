@@ -1,10 +1,18 @@
 @import './../../styles/colors.scss';
 @import './../../styles/shadows.scss';
 @import './../../styles/border-radius.scss';
+@import './../../styles/paddings.scss';
+@import './../../styles/margins.scss';
+@import './../../styles/font-sizes.scss';
+
+@mixin text-styles($font-size, $font-weidth, $text-color: inherit) {
+    font-size: $font-size;
+    font-weight: $font-weidth;
+    color: $text-color;
+}
 
 .rainbow-card {
     position: relative;
-    padding: 0;
     background-color: #fff;
     border: 0.0625rem solid $color-gray-2;
     border-radius: $border-radius-1;
@@ -13,11 +21,11 @@
 }
 
 .rainbow-card__header-container {
-    padding: 0.75rem 1rem 0;
-    margin: 0 0 0.75rem;
     display: -ms-flexbox;
     display: flex;
     justify-content: space-between;
+    padding: $padding-small $padding-medium 0 $padding-medium;
+    margin-bottom: $margin-small;
 }
 
 .rainbow-card__header {
@@ -26,47 +34,30 @@
     justify-content: center;
 }
 
-.rainbow-card__body {
-    margin-bottom: 0.75rem;
-    padding: 0 1rem;
-}
-
 .rainbow-card__footer {
-    padding: 0.75rem 1rem;
-    margin-top: 0.75rem;
+    @include text-styles($font-size-text-medium, normal);
+
     text-align: center;
-    font-size: 0.8125rem;
     border-top: 0.0625rem solid $color-gray-2;
-}
-
-.rainbow-no-flex {
-    -ms-flex: none;
-    flex: none;
-}
-
-.rainbow-media__body {
-    -ms-flex: 1;
-    flex: 1;
-    min-width: 0;
+    padding: $padding-small $padding-medium;
+    margin-top: $margin-small;
 }
 
 .rainbow-card__header-link {
-    color: inherit;
-    font-weight: 700;
+    @include text-styles(inherit, 700);
+
     max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-.rainbow-text-heading_small {
-    font-size: 1rem;
-    font-weight: 500;
-    color: $color-gray-4;
+.rainbow-card-text-heading_small {
+    @include text-styles($font-size-heading-small, 500, $color-gray-4);
 }
 
-.rainbow-media__figure {
+.rainbow-card-media__figure {
     -ms-flex-negative: 0;
     flex-shrink: 0;
-    margin-right: 0.75rem;
+    margin-right: $margin-small;
 }

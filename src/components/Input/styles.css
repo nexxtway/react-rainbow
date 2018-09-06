@@ -81,7 +81,8 @@
   padding: 0 1rem 0 1rem;
   line-height: 2.125rem;
   height: calc(2.125rem + (1px * 2));
-  color: #061c3f; }
+  color: #061c3f;
+  font-size: 0.875rem; }
   .rainbow-input:focus, .rainbow-input:active {
     outline: 0;
     line-height: 0.5rem;
@@ -225,6 +226,9 @@
   line-height: 2rem; }
   .rainbow-has-error .rainbow-input:required, .rainbow-has-error .rainbow-input:focus {
     box-shadow: 0 0 1px 0 #a4a7b5; }
+
+.rainbow-has-error .rainbow-input-has-icon.rainbow-input-has-icon_left .rainbow-input {
+  padding-left: 2rem; }
 
 .rainbow-input__button_decrement, .rainbow-input__button_increment {
   position: absolute;

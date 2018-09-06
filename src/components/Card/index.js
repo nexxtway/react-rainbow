@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import HeaderTitle from './headerTitle';
-import HeaderIcon from './headerIcon';
 import CardBoddy from './cardBody';
 import Footer from './footer';
-import Actions from './actions';
+import Header from './header';
 import './styles.css';
 
 /**
@@ -28,14 +26,8 @@ export default function Card(props) {
 
     return (
         <article className={getContainerClassName()} style={style}>
-            <div className="rainbow-card__header-container">
-                <header className="rainbow-card__header">
-                    <HeaderIcon icon={icon} />
-                    <HeaderTitle title={title} />
-                </header>
-                <Actions content={actions} />
-            </div>
-            <div className="rainbow-card__body">
+            <Header actions={actions} title={title} icon={icon} />
+            <div>
                 <CardBoddy isLoading={isLoading}>
                     {children}
                 </CardBoddy>
@@ -46,11 +38,13 @@ export default function Card(props) {
 }
 
 Card.propTypes = {
-    /** The title can include text or another component, and is displayed in the header. */
+    /** The title can include text or another component,
+    * and is displayed in the header of the component. */
     title: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]).isRequired,
-    /** The icon component to show if it is passed. */
+    /** The icon component to show if it is passed.
+    * It is displayed in the header of the component. */
     icon: PropTypes.node,
     /** Actions are components such as button or buttonIcon. Actions are displayed in the header. */
     actions: PropTypes.node,
