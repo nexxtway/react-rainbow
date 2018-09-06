@@ -104,6 +104,7 @@
     line-height: 2.125rem;
     height: calc(2.125rem + (1px * 2));
     color: $color-dark-1;
+    font-size: $font-size-text-medium;
 
     &:focus,
     &:active {
