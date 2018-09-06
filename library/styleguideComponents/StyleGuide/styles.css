@@ -22,12 +22,20 @@
     color: #4cb6c4;
 }
 
+<<<<<<< Updated upstream
 .react-rainbow-styleguide-container {
+=======
+.react-rainbow_styleguide-container {
+>>>>>>> Stashed changes
     background-color: #fff;
     flex-wrap: wrap;
 }
 
+<<<<<<< Updated upstream
 .react-rainbow-sidebar {
+=======
+.react-rainbow_sidebar {
+>>>>>>> Stashed changes
     width: 250px;
     height: 100%;
     position: fixed;
@@ -35,7 +43,11 @@
     box-shadow: 0 1px 2px 0 #e3e5ed;
 }
 
+<<<<<<< Updated upstream
 .react-rainbow-main-content {
+=======
+.react-rainbow_main-content {
+>>>>>>> Stashed changes
     background-color: #f4f6f9;
     min-height: 100vh;
     width: calc(100vw - 250px);

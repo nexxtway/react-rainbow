@@ -30,13 +30,13 @@ export default class CustomPathline extends Component {
         return (
             <div className="slds-grid">
                 <span>
-                    <span className="slds-react-text-color-violet">import </span>
-                    <span className="slds-react-text-color-gray">{name}</span>
-                    <span className="slds-react-text-color-violet"> from </span>
-                    <span className="slds-react-text-color-green">{`'react-slds/components/${name}';`}</span>
+                    <span className="react-rainbow-text-color-violet">import </span>
+                    <span className="react-rainbow-text-color-gray">{name}</span>
+                    <span className="react-rainbow-text-color-violet"> from </span>
+                    <span className="react-rainbow-text-color-green">{`'react-slds/components/${name}';`}</span>
                 </span>
                 <Button
-                    className="slds-m-left--xx-small"
+                    className="rainbow-m-left_xx-small"
                     onClick={this.handleCopyToClipBoardButtonClick}>
 
                     <FontAwesomeIcon icon={icon} />

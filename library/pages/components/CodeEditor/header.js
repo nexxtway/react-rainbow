@@ -27,10 +27,10 @@ export default class Header extends Component {
     render() {
         const { icon } = this.state;
         return (
-            <div className="slds-react-editor-header">
-                <img src={windowsActionsSvg} alt="widnows actions img" className="slds-m-left--x-small" />
+            <div className="react-rainbow-editor-header">
+                <img src={windowsActionsSvg} alt="widnows actions img" className="rainbow-m-left_x-small" />
                 <Button
-                    className="slds-m-around--none"
+                    className="rainbow-m-around_none"
                     onClick={this.handleCopyToClipboardClick}
                     variant="inverse"
                     assistiveText="copy to clipboard">

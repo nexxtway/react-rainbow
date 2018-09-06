@@ -57,7 +57,11 @@ export default class ComponentsList extends Component {
 
         return (
             <VerticalNavigation
+<<<<<<< Updated upstream
                 className="rainbow-p-bottom_large react-rainbow-vertical-navigation"
+=======
+                className="rainbow-p-bottom_large react-rainbow_vertical-navigation"
+>>>>>>> Stashed changes
                 selectedItem={selectedItem}
                 onSelect={this.handleOnSelect}>
 

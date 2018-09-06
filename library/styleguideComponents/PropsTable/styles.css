@@ -1,0 +1,14 @@
+.react-rainbow-truncate {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.react-rainbow-text-title_caps {
+    font-size: 0.75rem;
+    line-height: 1.25;
+    color: #706e6b;
+    text-transform: uppercase;
+    letter-spacing: 0.0625rem;
+}

@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 .react-rainbow-vertical-navigation {
+=======
+.react-rainbow_vertical-navigation {
+>>>>>>> Stashed changes
     overflow-y: auto;
     height: calc(100vh - 136px);
 }

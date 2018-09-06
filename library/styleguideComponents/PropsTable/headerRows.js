@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 export default function HeaderRows({ columns }) {
     return (
-        <tr className="slds-text-title_caps">
+        <tr className="react-rainbow-text-title_caps">
             {columns.map(({ caption }) => (
                 <th key={caption} scope="col">
-                    <div className="slds-truncate" title={caption}>
+                    <div className="react-rainbow-truncate" title={caption}>
                         {caption}
                     </div>
                 </th>
