@@ -16,24 +16,20 @@ exports[`<Card/> should have the right class names 1`] = `
           href="javascript:void(0);"
         >
           <span
-            className="rainbow-text-heading_small"
+            className="rainbow-card-text-heading_small"
           >
             Card Header
           </span>
         </a>
       </h2>
     </header>
-    <div
-      className="rainbow-no-flex"
-    >
+    <div>
       <div>
         Testing actions node
       </div>
     </div>
   </div>
-  <div
-    className="rainbow-card__body"
-  >
+  <div>
     <div>
       Testing childrens
     </div>

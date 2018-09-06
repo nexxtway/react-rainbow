@@ -4,7 +4,7 @@ import './styles.css';
 
 export default function Actions({ content }) {
     if (content) {
-        return <div className="rainbow-no-flex">{content}</div>;
+        return <div>{content}</div>;
     }
     return null;
 }

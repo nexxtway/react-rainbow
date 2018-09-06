@@ -8,7 +8,7 @@ export default function HeaderTitle({ title }) {
         return (
             <h2>
                 <a href="javascript:void(0);" className="rainbow-card__header-link">
-                    <span className="rainbow-text-heading_small">{title}</span>
+                    <span className="rainbow-card-text-heading_small">{title}</span>
                 </a>
             </h2>
         );
