@@ -1,6 +1,12 @@
 @import "./../../styles/colors.scss";
 @import "./../../styles/font-sizes.scss";
 
+%nav-vertical__action-hover-active {
+    background-color: $color-gray-1;
+    color: $color-dark-1;
+    text-decoration: none;
+}
+
 .rainbow-nav-vertical__item {
     position: relative;
 }
@@ -32,17 +38,14 @@
 }
 
 .rainbow-nav-vertical__action:hover {
-    background-color: $color-gray-1;
-    color: $color-dark-1;
-    text-decoration: none;
+    @extend %nav-vertical__action-hover-active;
 }
 
 .rainbow-is-active .rainbow-nav-vertical__action,
 .rainbow-nav-vertical__action:active {
-    background-color: $color-gray-1;
-    color: $color-dark-1;
+    @extend %nav-vertical__action-hover-active;
+
     font-weight: 600;
-    text-decoration: none;
 }
 
 .rainbow-nav-vertical_icon {

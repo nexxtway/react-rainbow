@@ -1,3 +1,9 @@
+.rainbow-nav-vertical__action:hover, .rainbow-is-active .rainbow-nav-vertical__action,
+.rainbow-nav-vertical__action:active {
+  background-color: #f4f6f9;
+  color: #061c3f;
+  text-decoration: none; }
+
 .rainbow-nav-vertical__item {
   position: relative; }
 
@@ -25,17 +31,9 @@
   text-overflow: ellipsis;
   white-space: nowrap; }
 
-.rainbow-nav-vertical__action:hover {
-  background-color: #f4f6f9;
-  color: #061c3f;
-  text-decoration: none; }
-
 .rainbow-is-active .rainbow-nav-vertical__action,
 .rainbow-nav-vertical__action:active {
-  background-color: #f4f6f9;
-  color: #061c3f;
-  font-weight: 600;
-  text-decoration: none; }
+  font-weight: 600; }
 
 .rainbow-nav-vertical_icon {
   line-height: 1;
