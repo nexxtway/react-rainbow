@@ -64,11 +64,11 @@
                     }
                     footer={
                         <div className="rainbow-align-content_space-between">
-                            <div>
-                                <FontAwesomeIcon icon={faHeart} size="lg" className="rainbow-m-right_medium rainbow-color_gray-4" />
-                                <FontAwesomeIcon icon={faShareAlt} size="lg" className="rainbow-color_gray-4" />
+                            <div className="rainbow-flex">
+                                <ButtonIcon icon={<FontAwesomeIcon icon={faHeart} />} className="rainbow-m-right_xx-small" />
+                                <ButtonIcon icon={<FontAwesomeIcon icon={faShareAlt} />} />
                             </div>
-                            <FontAwesomeIcon icon={faAngleDown} size="lg" className="rainbow-color_gray-4" />
+                            <ButtonIcon icon={<FontAwesomeIcon icon={faAngleDown} />} />
                         </div>
                     }
                     actions={<Button variant="neutral" label="New" />} >
@@ -84,7 +84,7 @@
                                     src="images/illustrations/Illustration-rainbow-1.svg"
                                     className="rainbow-p-vertical_x-large rainbow-align_absolute-center"
                                     alt="the rainbow" />
-                                <p className="rainbow-p-top_medium rainbow-font-size-heading_small rainbow-color_gray-3">
+                                <p className="rainbow-p-top_medium rainbow-font-size-heading_small rainbow-color_gray-4">
                                     No new tasks
                                 </p>
                             </div>
