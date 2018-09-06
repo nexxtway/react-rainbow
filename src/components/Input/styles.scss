@@ -104,6 +104,7 @@
     line-height: 2.125rem;
     height: calc(2.125rem + (1px * 2));
     color: $color-dark-1;
+    font-size: $font-size-text-medium;
 
     &:focus,
     &:active {
@@ -291,6 +292,10 @@
     &:focus {
         box-shadow: $shadow-3;
     }
+}
+
+.rainbow-has-error .rainbow-input-has-icon.rainbow-input-has-icon_left .rainbow-input {
+    padding-left: $padding-x-large;
 }
 
 .rainbow-input__button_decrement, .rainbow-input__button_increment {
