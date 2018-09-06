@@ -28,7 +28,7 @@ export default class CustomPathline extends Component {
         const { icon } = this.state;
 
         return (
-            <div className="slds-grid">
+            <div className="rainbow-flex">
                 <span>
                     <span className="react-rainbow-text-color-violet">import </span>
                     <span className="react-rainbow-text-color-gray">{name}</span>

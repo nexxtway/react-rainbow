@@ -4,7 +4,7 @@
     const HelloWorldExample = 
     `import React from 'react';
     import ReactDOM from 'react-dom';
-    import Button from 'react-slds/components/button';
+    import Button from 'react-rainbow/components/button';
     
     function App() {
         return (
