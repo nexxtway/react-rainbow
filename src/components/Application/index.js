@@ -16,10 +16,9 @@ export default function Application(props) {
       className,
       style,
     } = props;
-    const context = { assetsSrc };
 
     return (
-        <Provider value={context}>
+        <Provider>
             <div className={className} style={style}>
                 {children}
             </div>
@@ -28,12 +27,6 @@ export default function Application(props) {
 }
 
 Application.propTypes = {
-    /**
-     * The URL to the SLDS assets. It allows to configure the path to the statics assets.
-     * This value is used for components like Icon in order to generate the href to the
-     * icon sprites.
-     */
-    assetsSrc: PropTypes.string,
     /**
      * This prop should not be visible in the documentation.
      * @ignore
@@ -49,7 +42,6 @@ Application.propTypes = {
 };
 
 Application.defaultProps = {
-    assetsSrc: '',
     children: [],
     className: undefined,
     style: undefined,
