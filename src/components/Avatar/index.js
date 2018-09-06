@@ -38,6 +38,8 @@ Avatar.propTypes = {
     * use the first capitalized letter of each. For records that only have a single word name,
     * use the first two letters of that word using one capital and one lower case letter. */
     initials: PropTypes.string,
+    /** The fallback icon to show when src and initials are not passed. */
+    icon: PropTypes.node,
     /** The size of the avatar. Valid values are x-small, small, medium, and large.
     * It take precedence over the icon.
     * This value defaults to medium. */
@@ -59,18 +61,16 @@ Avatar.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
-    /** The fallback icon to show when src and initials are not passed. */
-    icon: PropTypes.node,
 };
 
 Avatar.defaultProps = {
     src: undefined,
     initials: undefined,
+    icon: null,
     size: 'medium',
     initialsVariant: 'default',
     title: undefined,
     assistiveText: undefined,
     className: undefined,
     style: undefined,
-    icon: null,
 };

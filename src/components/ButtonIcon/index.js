@@ -5,9 +5,9 @@ import AssistiveText from './../AssistiveText';
 import './styles.css';
 
 /**
- * Buttons Icons provide the user with visual iconography that
- * is typically used to invoke an event or action.
- */
+* Buttons Icons provide the user with visual iconography that
+* is typically used to invoke an event or action.
+*/
 export default class ButtonIcon extends Component {
     constructor(props) {
         super(props);
@@ -100,10 +100,11 @@ export default class ButtonIcon extends Component {
 }
 
 ButtonIcon.propTypes = {
-    /** The icon component to show. It must be a svg icon and is a required value. */
+    /** The icon to show if it is passed.
+    * It must be a svg icon or a font icon. It is a required value. */
     icon: PropTypes.node.isRequired,
     /** The variant changes the appearance of buttonIcon. Accepted variants include base,
-    *  brand, border, border-filled, border-inverse, inverse and container.
+    *  brand, success, border, border-filled, border-inverse and inverse.
     * This value defaults to base. */
     variant: PropTypes.oneOf([
         'base',

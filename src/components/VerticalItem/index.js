@@ -77,7 +77,7 @@ VerticalItem.propTypes = {
     label: PropTypes.string,
     /** A unique identifier for the navigation item. */
     name: PropTypes.string.isRequired,
-    /** The icon component to show if it is passed. */
+    /** The icon to show if it is passed. It must be a svg icon or a font icon. */
     icon: PropTypes.node,
     /** The URL of the page that the navigation item goes to. */
     href: PropTypes.string,

@@ -155,13 +155,10 @@ Input.propTypes = {
     label: PropTypes.node,
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
     placeholder: PropTypes.string,
-    /** The Lightning Design System name of the icon used as a fallback when
-     * the image fails to load. Names are written in the format {sprite_name}:{icon_name}
-     * where {sprite_name} is the category, and {icon_name} is the specific icon to be displayed.
-     * Only utility icons can be used in this component. */
+    /** The icon to show if it is passed. It must be a svg icon or a font icon. */
     icon: PropTypes.node,
     /** Describes the position of the icon with respect to body. Options include left and right.
-     * This value defaults to left. */
+    * This value defaults to left. */
     iconPosition: PropTypes.oneOf([
         'left', 'right',
     ]),
@@ -172,17 +169,17 @@ Input.propTypes = {
     /** Shows the help message below the input. */
     bottomHelpText: PropTypes.node,
     /** Specifies that an input field must be filled out before submitting the form.
-     * This value defaults to false. */
+    * This value defaults to false. */
     required: PropTypes.bool,
     /** Specifies the regular expression that the input's value is checked against.
-     * This attribute is supported for text, search, url, tel, email, and password types. */
+    * This attribute is supported for text, search, url, tel, email, and password types. */
     pattern: PropTypes.string,
     /** Specifies that an input text will be centered. This value defaults to false. */
     isCentered: PropTypes.bool,
     /** Specifies that an input will not have border. This value defaults to false. */
     isBare: PropTypes.bool,
     /** Specifies that an input field must be filled out before submitting the form.
-     * This value defaults to false. */
+    * This value defaults to false. */
     error: PropTypes.node,
     /** Specifies that an input element should be disabled. This value defaults to false. */
     disabled: PropTypes.bool,

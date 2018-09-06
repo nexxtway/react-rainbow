@@ -22,15 +22,16 @@ export default function ButtonGroup(props) {
 }
 
 ButtonGroup.propTypes = {
+    /** The content of the ButtonGroup.
+    * Accepted childrens include Button, ButtonIcon and ButtonMenu. */
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.object,
+    ]),
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
-    /**
-    * This prop that should not be visible in the documentation.
-    * @ignore
-    */
-    children: PropTypes.node,
 };
 
 ButtonGroup.defaultProps = {

@@ -105,9 +105,15 @@ Button.propTypes = {
     label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
+    /** The content of the button. Used to render icon or text elements inside the button.
+    * Children takes precedence over label. */
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.object,
+    ]),
     /** The variant changes the appearance of the button.
     * Accepted variants include base, neutral, brand, outline-brand, destructive,
-    * success and inverse. This value defaults to base. */
+    * success, inverse and border-inverse. This value defaults to base. */
     variant: PropTypes.oneOf([
         'base',
         'neutral',
@@ -146,18 +152,11 @@ Button.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
-    /**
-     * This prop should not be visible in the documentation.
-     * @ignore
-     */
-    children: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.node),
-        PropTypes.object,
-    ]),
 };
 
 Button.defaultProps = {
     label: undefined,
+    children: null,
     variant: 'base',
     shaded: false,
     iconName: '',
@@ -172,5 +171,4 @@ Button.defaultProps = {
     ariaHaspopup: false,
     className: undefined,
     style: undefined,
-    children: null,
 };

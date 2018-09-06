@@ -310,10 +310,17 @@ export default class ButtonMenu extends Component {
 }
 
 ButtonMenu.propTypes = {
-    /** The icon component to show. It must be a svg icon and is a required value. */
+    /** The icon to show if it is passed.
+    * It must be a svg icon or a font icon. It is a required value. */
     icon: PropTypes.node.isRequired,
-    /** The variant changes the look of the button. Accepted variants include base, container,
-    * brand, border, border-filled, bare-inverse, and inverse.
+    /** The content of the ButtonMenu. Used to render the menuItem elements
+    * when the ButtonMenu is open. */
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.object,
+    ]),
+    /** The variant changes the look of the button. Accepted variants include base,
+    * brand, success, border, border-filled, bare-inverse, and inverse.
     * This value defaults to border-filled. */
     buttonVariant: PropTypes.oneOf([
         'base',
@@ -371,14 +378,10 @@ ButtonMenu.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
-    /**
-    * This prop that should not be visible in the documentation.
-    * @ignore
-    */
-    children: PropTypes.node,
 };
 
 ButtonMenu.defaultProps = {
+    children: null,
     buttonVariant: 'border-filled',
     buttonSize: 'medium',
     buttonShaded: false,
@@ -393,5 +396,4 @@ ButtonMenu.defaultProps = {
     onBlur: () => {},
     className: undefined,
     style: undefined,
-    children: null,
 };
