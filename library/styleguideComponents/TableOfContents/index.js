@@ -1,5 +1,8 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import Input from './../../../src/components/Input';
 
 export default function TableOfContents({ children, searchTerm, onSearchTermChange }) {
@@ -11,7 +14,10 @@ export default function TableOfContents({ children, searchTerm, onSearchTermChan
                     value={searchTerm}
                     placeholder="Filter by name"
                     aria-label="Filter by name"
-                    onChange={event => onSearchTermChange(event.target.value)} />
+                    onChange={event => onSearchTermChange(event.target.value)}
+                    icon={
+                        <FontAwesomeIcon icon={faSearch} className="rainbow-color_gray-3" />
+                    } />
 
             </div>
             {children}
