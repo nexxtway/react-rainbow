@@ -27,7 +27,7 @@ export default class Header extends Component {
     render() {
         const { icon } = this.state;
         return (
-            <div className="react-rainbow-editor-header">
+            <div className="react-rainbow-code-editor-header">
                 <img src={windowsActionsSvg} alt="widnows actions img" className="rainbow-m-left_x-small" />
                 <Button
                     className="rainbow-m-around_none"

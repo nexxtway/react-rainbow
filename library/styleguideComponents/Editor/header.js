@@ -8,7 +8,7 @@ import './styles.css';
 
 function Header({ icon, onClick }) {
     return (
-        <div className="react-rainbow_editor-header">
+        <div className="react-rainbow-editor-header">
             <img src={windowsActionsSvg} alt="widnows actions img" className="rainbow-m-left_x-small" />
             <Button
                 className="rainbow-m-around_none rainbow-p-right_x-small"

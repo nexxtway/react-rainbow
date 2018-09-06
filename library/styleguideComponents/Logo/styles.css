@@ -1,4 +1,4 @@
-.react-rainbow_logo-container {
+.react-rainbow-logo-container {
     background-color: #fff;
     display: flex;
     justify-content: center;
@@ -7,12 +7,12 @@
     padding: 1rem 1.375rem;
 }
 
-.react-rainbow_logo-icon {
+.react-rainbow-logo-icon {
     width: 2.25rem;
     height: 2.25rem;
 }
 
-.react-rainbow_title-version_container {
+.react-rainbow-title-version-container {
     margin-left: 0.625rem;
     height: 2.25rem;
     display: flex;
@@ -20,32 +20,32 @@
     flex-direction: column;
 }
 
-.react-rainbow_title-container {
+.react-rainbow-title-container {
     display: flex;
     font-size: 1rem;
     line-height: 1rem;
     color: #061c3f;
 }
 
-.react-rainbow_title-thin {
+.react-rainbow-title-thin {
     font-weight: 300;
     margin-left: 0.25rem;
 }
 
-.react-rainbow_version {
+.react-rainbow-version {
     font-size: 0.75rem;
     line-height: 0.75rem;
     font-weight: 300;
     color: #576574;
 }
 
-.react-rainbow_divider-dotted {
+.react-rainbow-divider-dotted {
     border-bottom: 1px dotted #e3e5ed;
 }
 
 @media (max-width: 800px) {
     
-    .react-rainbow_title-container {
+    .react-rainbow-title-container {
         font-size: 0.9rem;
         line-height: 0.9rem;
     }
@@ -53,7 +53,7 @@
 
 @media (max-width: 600px) {
     
-    .react-rainbow_title-container {
+    .react-rainbow-title-container {
         font-size: 1rem;
         line-height: 1rem;
     }

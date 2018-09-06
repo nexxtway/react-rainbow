@@ -12,21 +12,12 @@ export default function StyleGuide(props) {
     } = props;
 
     return (
-<<<<<<< Updated upstream
         <div className="react-rainbow-styleguide-container rainbow-position-align_start">
             <aside className="react-rainbow-sidebar">
                 <Logo title={title} version={version} />
                 {toc}
             </aside>
             <main className="react-rainbow-main-content">
-=======
-        <div className="react-rainbow_styleguide-container rainbow-position-align_start">
-            <aside className="react-rainbow_sidebar">
-                <Logo title={title} version={version} />
-                {toc}
-            </aside>
-            <main className="react-rainbow_main-content">
->>>>>>> Stashed changes
                 {children}
             </main>
         </div>
