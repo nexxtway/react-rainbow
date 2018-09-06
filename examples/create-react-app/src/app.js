@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import LightningApplication from 'react-slds/components/Application';
+import LightningApplication from 'react-rainbow-components/components/Application';
 import Home from './pages/Home';
 import Avatar from './pages/Avatar';
 import Badge from './pages/Badge';
