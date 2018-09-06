@@ -1,15 +1,15 @@
-### React Lightning Components  are react components  that implement Lightning Design System.
+### React Rainbow is a collection of components that will reliably help you build your application in a snap. Give it a hack and let us know what you think.
 
 ## Install
 
-##### React-Lightning-Components is available as an <a href="https://www.npmjs.com/package/react-slds" target="_blank">npm package</a>
+##### React Rainbow Components is available as an <a href="https://www.npmjs.com/package/react-rainbow-components" target="_blank">npm package</a>
 
 _installing with npm_
 
-    <CodeEditor code="$ npm install react-slds --save" />
+    <CodeEditor code="$ npm install react-rainbow-components --save" />
 
 _installing with yarn_
 
-    <CodeEditor code="$ yarn add react-slds" />
+    <CodeEditor code="$ yarn add react-rainbow" />
 
-### React-Lightning-Components is currently optimized for React 16.4.2
+### React Rainbow Components is currently optimized for React 16.4.2
