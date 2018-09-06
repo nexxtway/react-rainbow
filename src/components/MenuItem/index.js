@@ -132,7 +132,7 @@ MenuItem.propTypes = {
     variant: PropTypes.oneOf([
         'default', 'header',
     ]),
-    /** The icon component to show. */
+    /** The icon to show if it is passed. It must be a svg icon or a font icon. */
     icon: PropTypes.node,
     /** Describes the position of the icon with respect to body. Options include left and right.
     * This value defaults to left. */

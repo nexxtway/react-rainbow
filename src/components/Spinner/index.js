@@ -5,7 +5,7 @@ import AssistiveText from './../AssistiveText';
 import './styles.css';
 
 /**
-* Spinners should be shown when retrieving data or performing slow computations,
+* Spinners should be shown when retrieving data or performing slow,
 * help to reassure the user that the system is actively retrieving data.
 */
 export default function Spinner(props) {

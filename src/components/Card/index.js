@@ -43,7 +43,7 @@ Card.propTypes = {
     title: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]).isRequired,
-    /** The icon component to show if it is passed.
+    /** The icon to show if it is passed. It must be a svg icon or a font icon.
     * It is displayed in the header of the component. */
     icon: PropTypes.node,
     /** Actions are components such as button or buttonIcon. Actions are displayed in the header. */
@@ -52,17 +52,17 @@ Card.propTypes = {
     footer: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
+    /** The content of the Card. */
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.object,
+    ]),
     /** If is set to true, then is showed a loading symbol. */
     isLoading: PropTypes.bool,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
-    /**
-    * This prop that should not be visible in the documentation.
-    * @ignore
-    */
-    children: PropTypes.node,
 };
 
 Card.defaultProps = {

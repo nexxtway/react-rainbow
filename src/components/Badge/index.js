@@ -5,8 +5,8 @@ import Content from './content';
 import './styles.css';
 
 /**
- * Badges are labels which hold small amounts of information.
- */
+* Badges are labels which hold small amounts of information.
+*/
 export default function Badge(props) {
     const {
         className,
@@ -45,6 +45,12 @@ Badge.propTypes = {
     label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
+    /** The content of the badge. Used to render icon or text elements inside the badge.
+    * Children takes precedence over label. */
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.object,
+    ]),
     /** The variant changes the appearance of the badge. Accepted variants include default,
     * inverse, lightest, brand and outline-brand. This value defaults to default. */
     variant: PropTypes.oneOf([
@@ -54,17 +60,12 @@ Badge.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
-    /**
-    * The content of the badge. Used to render icon or text elements inside the badge.
-    * Children takes precedence over label.
-    */
-    children: PropTypes.arrayOf(PropTypes.node),
 };
 
 Badge.defaultProps = {
     label: null,
+    children: null,
     variant: 'default',
     className: undefined,
     style: undefined,
-    children: null,
 };
