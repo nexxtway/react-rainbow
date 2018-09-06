@@ -10,7 +10,7 @@ module.exports = {
             marginTop: '1.75rem',
         },
         heading3: {
-            lineHeight: 1.25,
+            lineHeight: 1.5,
             fontWeight: 300,
             fontSize: '1rem',
             color: '#061c3f',
@@ -19,9 +19,9 @@ module.exports = {
         },
         heading5: {
             lineHeight: 1.5,
-            fontWeight: 300,
+            fontWeight: 350,
             fontSize: '0.88rem',
-            color: '#061c3f',
+            color: '#576574',
             fontFamily: 'inherit',
         },
         heading6: {

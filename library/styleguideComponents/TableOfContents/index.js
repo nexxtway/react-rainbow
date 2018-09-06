@@ -8,7 +8,7 @@ import Input from './../../../src/components/Input';
 export default function TableOfContents({ children, searchTerm, onSearchTermChange }) {
     return (
         <div>
-            <div className="rainbow-p-vertical_medium rainbow-p-horizontal_small">
+            <div className="rainbow-p-top_large rainbow-p-bottom_medium rainbow-p-horizontal_large">
                 <Input
                     iconName="utility:search"
                     value={searchTerm}
