@@ -71,10 +71,10 @@
             footer={
                 <div className="rainbow-align-content_space-between">
                     <div className="rainbow-flex">
-                        <ButtonIcon icon={<FontAwesomeIcon icon={faHeart} size="lg" />} className="rainbow-m-right_xx-small" />
-                        <ButtonIcon icon={<FontAwesomeIcon icon={faShareAlt} size="lg" />} />
+                        <ButtonIcon icon={<FontAwesomeIcon icon={faHeart} />} className="rainbow-m-right_xx-small" />
+                        <ButtonIcon icon={<FontAwesomeIcon icon={faShareAlt} />} />
                     </div>
-                    <ButtonIcon icon={<FontAwesomeIcon icon={faAngleDown} size="lg" />} />
+                    <ButtonIcon icon={<FontAwesomeIcon icon={faAngleDown} />} />
                 </div>
             } >
 
