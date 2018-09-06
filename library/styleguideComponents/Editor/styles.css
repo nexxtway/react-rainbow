@@ -1,4 +1,4 @@
-.slds-react-editor-header {
+.react-rainbow-editor-header {
     background: #04132c !important;
     border-radius: 10px 10px 0 0;
     height: 34px;
@@ -21,4 +21,8 @@
 
 .cm-def {
     color: #a1a7b0 !important;
+}
+
+.cm-number {
+    color: #d19a66 !important;
 }

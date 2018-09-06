@@ -6,19 +6,19 @@ import './styles.css';
 export default function Logo({ version }) {
     return (
         <section>
-            <div className="react-rainbow_logo-container">
-                <img className="react-rainbow_logo-icon" src={rainbowLogo} alt="rainbow logo" />
-                <div className="react-rainbow_title-version_container">
-                    <div className="react-rainbow_title-container">
+            <div className="react-rainbow-logo-container">
+                <img className="react-rainbow-logo-icon" src={rainbowLogo} alt="rainbow logo" />
+                <div className="react-rainbow-title-version-container">
+                    <div className="react-rainbow-title-container">
                         <p>rainbow</p>
-                        <p className="react-rainbow_title-thin">components</p>
+                        <p className="react-rainbow-title-thin">components</p>
                     </div>
-                    <p className="react-rainbow_version" aria-label="version">
+                    <p className="react-rainbow-version" aria-label="version">
                         {`Latest release: ${version}`}
                     </p>
                 </div>
             </div>
-            <div className="react-rainbow_divider-dotted" />
+            <div className="react-rainbow-divider-dotted" />
         </section>
     );
 }

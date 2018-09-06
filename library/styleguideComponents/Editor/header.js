@@ -8,10 +8,10 @@ import './styles.css';
 
 function Header({ icon, onClick }) {
     return (
-        <div className="slds-react-editor-header">
-            <img src={windowsActionsSvg} alt="widnows actions img" className="slds-m-left--x-small" />
+        <div className="react-rainbow-editor-header">
+            <img src={windowsActionsSvg} alt="widnows actions img" className="rainbow-m-left_x-small" />
             <Button
-                className="slds-m-around--none slds-p-right_x-small"
+                className="rainbow-m-around_none rainbow-p-right_x-small"
                 onClick={onClick}
                 assistiveText="copy to clipboard"
                 variant="inverse">

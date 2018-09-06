@@ -14,7 +14,7 @@ export default function GlobalHeader(props) {
     return (
         <div className={className}>
             <header className="rainbow-align-content_space-between rainbow-p-vertical_small react-rainbow-golbal-header rainbow-background-color_white">
-                <img src={logo} alt="rainbow logo" className="rainbow-m-left_medium react-rainbow-global-header_logo" />
+                <img src={logo} alt="rainbow logo" className="rainbow-m-left_medium react-rainbow-global-header-logo" />
                 <div className="rainbow-flex rainbow-align_center">
                     {children}
                     <Avatar

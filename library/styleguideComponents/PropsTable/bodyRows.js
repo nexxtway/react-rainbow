@@ -28,7 +28,7 @@ export default function BodyRows({ rows, columns, getRowKey }) {
                     const titleValue = getTitleValue(value);
                     return (
                         <td key={key} data-label={caption}>
-                            <div className="slds-truncate" title={titleValue}>
+                            <div className="react-rainbow-truncate" title={titleValue}>
                                 {renderValue(value)}
                             </div>
                         </td>

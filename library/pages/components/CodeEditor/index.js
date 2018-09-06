@@ -12,7 +12,7 @@ const configOptions = {
 
 export default function CodeEditor({ code }) {
     return (
-        <div className="slds-grid slds-grid_vertical slds-grid--vertical-stretch slds-m-bottom_medium">
+        <div className="rainbow-flex rainbow-flex_column rainbow_vertical-stretch rainbow-m-vertical_medium">
             <Header code={code} />
             <CodeMirror value={code} options={configOptions} />
         </div>
