@@ -1,3 +1,66 @@
+.react-rainbow-table {
+    background-color: white;
+    border-radius: 0.875rem;
+    font-size: 0.875rem;
+}
+
+.react-rainbow-table th {
+    color: #061c3f;
+    padding: 0.5rem 0.75rem;
+    white-space: nowrap;
+    position: relative;
+}
+
+.react-rainbow-table td {
+    color: #576574;
+    padding: 0 0.75rem;
+    white-space: nowrap;
+    position: relative;
+}
+
+.react-rainbow-table th {
+    font-weight: 400;
+    background-color: #e3e5ed;
+}
+
+.react-rainbow-table th:focus {
+    outline: 0;
+}
+
+.react-rainbow-table > thead > tr > th:first-child {
+    border-top-left-radius: 0.875rem;
+}
+
+.react-rainbow-table > thead > tr > th:last-child {
+    border-top-right-radius: 0.875rem;
+}
+
+.react-rainbow-table tbody tr {
+    counter-increment: row-number;
+}
+
+.react-rainbow-table th:focus {
+    box-shadow: #0070d2 0 0 0 1px inset;
+    outline: 0;
+}
+
+.react-rainbow-table th:active {
+    box-shadow: none;
+}
+
+.react-rainbow-table-bordered {
+    border-collapse: separate;
+}
+
+.react-rainbow-table-bordered thead > tr + tr > th {
+    border-top: 1px solid #e3e5ed;
+}
+
+.react-rainbow-table-bordered tbody td,
+.react-rainbow-table-bordered tbody th {
+    border-top: 1px solid #e3e5ed;
+}
+
 .react-rainbow-truncate {
     max-width: 100%;
     overflow: hidden;
@@ -8,7 +71,7 @@
 .react-rainbow-text-title-caps {
     font-size: 0.75rem;
     line-height: 1.25;
-    color: #706e6b;
+    color: #576574;
     text-transform: uppercase;
     letter-spacing: 0.0625rem;
 }

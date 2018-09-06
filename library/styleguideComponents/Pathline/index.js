@@ -33,7 +33,7 @@ export default class CustomPathline extends Component {
                     <span className="react-rainbow-text-color-violet">import </span>
                     <span className="react-rainbow-text-color-gray">{name}</span>
                     <span className="react-rainbow-text-color-violet"> from </span>
-                    <span className="react-rainbow-text-color-green">{`'react-slds/components/${name}';`}</span>
+                    <span className="react-rainbow-text-color-green">{`'react-rainbow-components/components/${name}';`}</span>
                 </span>
                 <Button
                     className="rainbow-m-left_xx-small"

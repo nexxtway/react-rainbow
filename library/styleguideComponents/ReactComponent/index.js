@@ -21,7 +21,7 @@ export default function ReactComponent(props) {
             <Description text={descriptionText} />
             <div className="rainbow-m-vertical_large">
                 <Pathline name={name}>
-                    {`import ${name} from 'react-slds/components/${name}'`}
+                    {`import ${name} from 'react-rainbow-components/components/${name}'`}
                 </Pathline>
             </div>
             <h2 className="rainbow-font-size-heading_medium rainbow-m-bottom_medium react-rainbow-component-title-text rainbow-color_dark-1">

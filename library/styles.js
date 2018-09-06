@@ -50,6 +50,7 @@ module.exports = {
         para: {
             marginBottom: 4,
             marginTop: 4,
+            color: '#576574',
         },
     },
     Text: {
