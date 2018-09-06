@@ -11,7 +11,6 @@ export const { Provider, Consumer } = React.createContext();
  */
 export default function Application(props) {
     const {
-      assetsSrc,
       children,
       className,
       style,
