@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import AssistiveText from './../AssistiveText';
 import { uniqueId } from './../../libs/utils';
 import Description from './description';
@@ -20,18 +19,6 @@ export default class VerticalSectionOverflow extends Component {
             isExpanded: props.expanded,
         };
         this.toggleOverflow = this.toggleOverflow.bind(this);
-    }
-
-    getContainerClassName() {
-        const { className } = this.props;
-        return classnames('rainbow-nav-vertical-section-overflow-container', className);
-    }
-
-    getButtonClassName() {
-        const { isExpanded } = this.state;
-        return classnames(
-            'rainbow-button rainbow-button_reset rainbow-nav-vertical__action',
-            { 'rainbow-nav-vertical__action_overflow': isExpanded });
     }
 
     getOverflowClassName() {
@@ -56,19 +43,21 @@ export default class VerticalSectionOverflow extends Component {
             style,
             assistiveText,
             children,
+            className,
         } = this.props;
         const { isExpanded } = this.state;
 
         return (
-            <div className={this.getContainerClassName()} style={style}>
+            <div className={className} style={style}>
                 <button
-                    className={this.getButtonClassName()}
+                    className="rainbow-nav-vertical-section-overflow-button"
                     aria-controls={searchResultsId}
                     aria-expanded={isExpanded}
                     onClick={this.toggleOverflow}>
+
                     <Icon position="left" icon={leftIcon} />
-                    <div className="rainbow-nav-vertical__action-text">
-                        <span className="rainbow-nav-vertical__action-title">{title}</span>
+                    <div className="rainbow-nav-vertical-overflow__action-text">
+                        <span className="rainbow-nav-vertical-overflow__action-title">{title}</span>
                         <Description isExpanded={isExpanded} description={description} />
                         <AssistiveText text={assistiveText} />
                     </div>

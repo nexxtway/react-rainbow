@@ -217,7 +217,7 @@
 ##### vertical navigation expandable
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-    const { faUser } = require('@fortawesome/free-regular-svg-icons');
+    const { faCog, faChevronDown } = require('@fortawesome/free-solid-svg-icons');
 
     class ShadedVerticalNavigation extends React.Component {
         constructor(props) {
@@ -243,8 +243,8 @@
                     <VerticalSectionOverflow
                         title="Folders"
                         description="Folders created, shared..."
-                        leftIcon={<FontAwesomeIcon icon={faUser} size="sm" />}
-                        rightIcon={<FontAwesomeIcon icon={faUser} size="sm" />}>
+                        leftIcon={<FontAwesomeIcon icon={faCog} />}
+                        rightIcon={<FontAwesomeIcon icon={faChevronDown} />}>
 
                         <VerticalItem name="item-4" label="Folder created by Me" />
                         <VerticalItem name="item-5" label="Folder shared with Me" />

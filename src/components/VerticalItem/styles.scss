@@ -26,6 +26,9 @@
     border-radius: 0;
     color: $color-gray-4;
     font-size: $font-size-text-medium;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .rainbow-nav-vertical__action:hover {
@@ -45,7 +48,7 @@
 .rainbow-nav-vertical_icon {
     line-height: 1;
     color: $color-brand;
-    margin-right: 0.4375rem;
+    margin-right: 0.5rem;
 }
 
 .rainbow-col_bump-left {

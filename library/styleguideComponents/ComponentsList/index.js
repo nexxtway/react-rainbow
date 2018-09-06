@@ -57,7 +57,7 @@ export default class ComponentsList extends Component {
 
         return (
             <VerticalNavigation
-                className="slds-p-bottom_large slds-react-vertical-navigation"
+                className="rainbow-p-bottom_large react-rainbow-vertical-navigation"
                 selectedItem={selectedItem}
                 onSelect={this.handleOnSelect}>
 

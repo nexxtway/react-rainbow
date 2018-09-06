@@ -6,7 +6,7 @@ export default function Description({ description, isExpanded }) {
         return null;
     }
     return (
-        <span className="rainbow-nav-vertical__action-description">
+        <span className="rainbow-nav-vertical-overflow__action-description">
             {description}
         </span>
     );

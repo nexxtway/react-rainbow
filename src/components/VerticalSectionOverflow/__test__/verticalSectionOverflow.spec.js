@@ -125,10 +125,4 @@ describe('<VerticalSectionOverflow/>', () => {
         );
         expect(component.find('ul').text()).toBe('the section children');
     });
-    it('should have the right class names when a custom className is passed', () => {
-        const component = mount(
-            <VerticalSectionOverflow className="custom-class-name" />,
-        );
-        expect(component.find('div.rainbow-nav-vertical-section-overflow-container.custom-class-name').exists()).toBe(true);
-    });
 });
