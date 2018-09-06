@@ -80,7 +80,7 @@
 
                 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_column" >
                     <img src="images/illustrations/Illustration-rainbow-2.svg" alt="the rainbow" />
-                    <h1 className="slds-p-top_large slds-text-heading_medium" >No new tasks</h1>
+                    <h1 className="rainbow-p-top_large rainbow-font-size-heading_small rainbow-color_dark-1" >No new tasks</h1>
                 </div>
         </Card>
     </div>

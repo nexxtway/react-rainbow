@@ -26,3 +26,7 @@
 .cm-number {
     color: #d19a66 !important;
 }
+
+.CodeMirror-sizer {
+    margin-bottom: 24px !important;
+}
