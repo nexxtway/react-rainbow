@@ -15,6 +15,7 @@
                     <MenuItem label="Menu Item One" />
                     <MenuItem label="Menu Item Two" />
                     <MenuItem label="Menu Item Three" />
+                    <MenuItem label="Menu Item Four" />
                 </ButtonMenu>
             </ButtonGroup>
         </GlobalHeader>
