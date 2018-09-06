@@ -47,6 +47,7 @@ function Item(props) {
                 aria-describedby={entityHeaderId}
                 className="rainbow-nav-vertical__action"
                 aria-current={getAriaCurrent()}>
+
                 <Icon icon={icon} />
                 {label}
                 <Notification notification={notification} />

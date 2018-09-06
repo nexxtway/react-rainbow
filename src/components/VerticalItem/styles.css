@@ -20,7 +20,10 @@
   border-bottom: 0.0625rem solid #f4f6f9;
   border-radius: 0;
   color: #576574;
-  font-size: 0.875rem; }
+  font-size: 0.875rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
 
 .rainbow-nav-vertical__action:hover {
   background-color: #f4f6f9;
@@ -37,7 +40,7 @@
 .rainbow-nav-vertical_icon {
   line-height: 1;
   color: #01b6f5;
-  margin-right: 0.4375rem; }
+  margin-right: 0.5rem; }
 
 .rainbow-col_bump-left {
   margin-left: auto; }

@@ -22,12 +22,12 @@
     color: #4cb6c4;
 }
 
-.slds-react-styleguide-container {
+.react-rainbow-styleguide-container {
     background-color: #fff;
     flex-wrap: wrap;
 }
 
-.react-slds-sidebar {
+.react-rainbow-sidebar {
     width: 250px;
     height: 100%;
     position: fixed;
@@ -35,7 +35,7 @@
     box-shadow: 0 1px 2px 0 #e3e5ed;
 }
 
-.react-slds-main-content {
+.react-rainbow-main-content {
     background-color: #f4f6f9;
     min-height: 100vh;
     width: calc(100vw - 250px);
@@ -44,10 +44,10 @@
 }
 
 @media (max-width: 800px) {
-    .react-slds-sidebar {
+    .react-rainbow-sidebar {
         width: 200px;
     }
-    .react-slds-main-content {
+    .react-rainbow-main-content {
         width: calc(100vw - 200px);
         padding: 80px 24px 24px 24px;
         margin-left: 200px;
@@ -55,14 +55,14 @@
 }    
 
 @media (max-width: 600px) {
-    .slds-react-styleguide-container {
+    .react-rainbow-styleguide-container {
         flex-direction: column-reverse;
     }
-    .react-slds-sidebar {
+    .react-rainbow-sidebar {
         width: 100vw;
         position: initial;
     }
-    .react-slds-main-content {
+    .react-rainbow-main-content {
         width: 100vw;
         padding: 80px 16px 16px 16px;
         margin-left: 0;

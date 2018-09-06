@@ -9,6 +9,6 @@ describe('<VerticalSectionOverflowDescription/>', () => {
     });
     it('should return the description label when isExpanded is false', () => {
         const component = mount(<Description description="test" />);
-        expect(component.find('span.rainbow-nav-vertical__action-description').exists()).toBe(true);
+        expect(component.find('.rainbow-nav-vertical-overflow__action-description').exists()).toBe(true);
     });
 });

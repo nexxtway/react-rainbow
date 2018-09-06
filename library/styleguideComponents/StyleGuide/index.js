@@ -12,12 +12,12 @@ export default function StyleGuide(props) {
     } = props;
 
     return (
-        <div className="slds-react-styleguide-container rainbow-position-align_start">
-            <aside className="react-slds-sidebar">
+        <div className="react-rainbow-styleguide-container rainbow-position-align_start">
+            <aside className="react-rainbow-sidebar">
                 <Logo title={title} version={version} />
                 {toc}
             </aside>
-            <main className="react-slds-main-content">
+            <main className="react-rainbow-main-content">
                 {children}
             </main>
         </div>
