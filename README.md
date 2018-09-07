@@ -12,11 +12,11 @@ React Rainbow components  is available as an [npm package](https://www.npmjs.com
 $ yarn add react-rainbow-components
 ```
  ##### or
- 
+
 ```bash
 $ npm install react-rainbow-components --save
 ```
- 
+
 
 ## Usage
 
@@ -28,12 +28,12 @@ import Button from 'react-rainbow-components/components/Button';
 
 function App() {
     return (
-        <Button 
-            label="Hello World!" 
-            variant="brand" 
-            onClick={() => alert('Hello World!')} 
+        <Button
+            label="Hello World!"
+            variant="brand"
+            onClick={() => alert('Hello World!')}
         />
-    );    
+    );
 }
 
 ReactDOM.render(
@@ -44,7 +44,7 @@ ReactDOM.render(
 
 Yes, it's really all you need to get started as you can see in this live and interactive demo:
 
-[![Edit Button](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/52wqonrr44?from-embed)
+[![Edit Button](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/24p8n0pnz0?from-embed)
 
 ## Running locally
 1. git clone https://github.com/reiniergs/react-rainbow.git
