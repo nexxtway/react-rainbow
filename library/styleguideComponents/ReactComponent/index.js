@@ -1,13 +1,12 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faList } from '@fortawesome/free-solid-svg-icons';
 import Pathline from 'react-styleguidist/lib/rsg-components/Pathline';
 import Description from './description';
 import Card from './../../../src/components/Card';
 import './styles.css';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faList } = require('@fortawesome/free-solid-svg-icons');
 
 export default function ReactComponent(props) {
     const {
