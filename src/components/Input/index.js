@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { uniqueId } from './../../libs/utils';
 import Icon from './icon';
-import Help from './help';
-import Error from './error';
 import Label from './label';
+import RenderIf from '../RenderIf';
 import './styles.css';
 
 /**
@@ -124,8 +123,12 @@ export default class Input extends Component {
                         aria-describedby={this.getErrorMessageId()} />
 
                 </div>
-                <Help text={bottomHelpText} />
-                <Error id={this.getErrorMessageId()} error={error} />
+                <RenderIf isTrue={!!bottomHelpText}>
+                    <div className="rainbow-form-element__help rainbow-color__text_gray-11">{bottomHelpText}</div>
+                </RenderIf>
+                <RenderIf isTrue={!!error}>
+                    <div id={this.getErrorMessageId()} className="rainbow-form-element__help">{error}</div>
+                </RenderIf>
             </div>
         );
     }

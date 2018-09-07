@@ -92,24 +92,12 @@ describe('<Input/>', () => {
         expect(component.find('Label').prop('id')).toMatch(/inline-text-label/);
         expect(component.find('input').prop('aria-labelledby')).toMatch(/inline-text-label/);
     });
-    it('should pass a generated id to the Error component and set the same id to the aria-describedby for the input when a error is passed', () => {
+    it('should pass a generated id to the Error element and set the same id to the aria-describedby for the input when a error is passed', () => {
         const component = mount(
             <Input error="error message" />,
         );
-        expect(component.find('Error').prop('id')).toMatch(/error-message/);
+        expect(component.find('.rainbow-form-element__help').prop('id')).toMatch(/error-message/);
         expect(component.find('input').prop('aria-describedby')).toMatch(/error-message/);
-    });
-    it('should set the bottomHelpText passed as the text prop in the Help component', () => {
-        const component = mount(
-            <Input bottomHelpText="Help text" />,
-        );
-        expect(component.find('Help').prop('text')).toBe('Help text');
-    });
-    it('should set the error passed in the Error component', () => {
-        const component = mount(
-            <Input error="Error text" />,
-        );
-        expect(component.find('Error').prop('error')).toBe('Error text');
     });
     it('should pass the right props to the Label component', () => {
         const component = mount(

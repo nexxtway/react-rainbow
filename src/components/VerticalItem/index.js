@@ -2,10 +2,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import Icon from './icon';
-import Notification from './notification';
 import { Consumer as NavStateConsumer } from '../VerticalNavigation/context';
 import { Consumer as ItemIdConsumer } from '../VerticalSection/context';
+import RenderIf from '../RenderIf';
 import './styles.css';
 
 function Item(props) {
@@ -48,9 +47,13 @@ function Item(props) {
                 className="rainbow-nav-vertical__action"
                 aria-current={getAriaCurrent()}>
 
-                <Icon icon={icon} />
+                <RenderIf isTrue={!!icon}>
+                    <span className="rainbow-nav-vertical_icon" >{icon}</span>
+                </RenderIf>
                 {label}
-                <Notification notification={notification} />
+                <RenderIf isTrue={!!notification}>
+                    <span className="rainbow-col_bump-left">{notification}</span>
+                </RenderIf>
             </a>
         </li>
     );

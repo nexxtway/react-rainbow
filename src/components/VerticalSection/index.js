@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { uniqueId } from '../../libs/utils';
 import { Provider } from './context';
-import Header from './header';
+import RenderIf from '../RenderIf';
 import './styles.css';
 
 /**
-* Represents a section within a VerticalNavigation.
-*/
+ * Represents a section within a VerticalNavigation.
+ */
 class VerticalSection extends Component {
     constructor(props) {
         super(props);
@@ -29,7 +29,11 @@ class VerticalSection extends Component {
 
         return (
             <div className={this.getClassNames()} style={style}>
-                <Header label={label} id={this.entityHeaderId} />
+                <RenderIf isTrue={!!label}>
+                    <h2 id={this.entityHeaderId} className="rainbow-nav-vertical__title">
+                        {label}
+                    </h2>
+                </RenderIf>
                 <Provider value={this.entityHeaderId}>
                     <ul>
                         {children}

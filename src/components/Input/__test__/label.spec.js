@@ -3,20 +3,6 @@ import { mount } from 'enzyme';
 import Label from './../label';
 
 describe('<InputLabel/>', () => {
-    it('should not render the label when is not passed', () => {
-        const component = mount(
-            <Label />,
-        );
-        expect(component.find('label').exists()).toBe(false);
-    });
-    it('should render the label when it is passed', () => {
-        const component = mount(
-            <Label label="Label text" />,
-        );
-        const label = component.find('label');
-        expect(label.exists()).toBe(true);
-        expect(label.text()).toBe('Label text');
-    });
     it('should set the inputId passed as the htmlFor prop in the label element', () => {
         const component = mount(
             <Label label="Input Label" inputId="input-213" />,

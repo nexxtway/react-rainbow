@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import RenderIf from '../RenderIf';
 
 export default function Icon(props) {
     const {
@@ -19,14 +20,13 @@ export default function Icon(props) {
         );
     };
 
-    if (icon) {
-        return (
+    return (
+        <RenderIf isTrue={!!icon}>
             <span className={getIconClassNames()}>
                 {icon}
             </span>
-        );
-    }
-    return null;
+        </RenderIf>
+    );
 }
 
 Icon.propTypes = {

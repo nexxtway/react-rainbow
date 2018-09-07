@@ -9,12 +9,6 @@ describe('<VerticalSection/>', () => {
         );
         expect(component.find('div[className="rainbow-nav-vertical__section"]').exists()).toBe(true);
     });
-    it('should pass the label passed to the Header component', () => {
-        const component = mount(
-            <VerticalSection label="header label" />,
-        );
-        expect(component.find('Header').prop('label')).toBe('header label');
-    });
     it('should render the children passed', () => {
         const component = mount(
             <VerticalSection>

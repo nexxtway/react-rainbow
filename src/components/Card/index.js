@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import CardBoddy from './cardBody';
-import Footer from './footer';
 import Header from './header';
+import RenderIf from '../RenderIf';
 import './styles.css';
 
 /**
@@ -32,7 +32,12 @@ export default function Card(props) {
                     {children}
                 </CardBoddy>
             </div>
-            <Footer content={footer} isLoading={isLoading} />
+
+            <RenderIf isTrue={footer && !isLoading}>
+                <footer className="rainbow-card__footer">
+                    {footer}
+                </footer>
+            </RenderIf>
         </article>
     );
 }
