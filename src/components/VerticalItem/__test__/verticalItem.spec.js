@@ -35,24 +35,11 @@ describe('<VerticalItem/>', () => {
         );
         expect(component.find('a').prop('aria-current')).toBe('page');
     });
-    it('should pass the icon passed to the Icon component', () => {
-        const icon = <svg />;
-        const component = mount(
-            <VerticalItem label="item 1" name="item1" icon={icon} />,
-        );
-        expect(component.find('Icon').prop('icon')).toBe(icon);
-    });
     it('should render the label passed', () => {
         const component = mount(
             <VerticalItem label="item label" name="item1" />,
         );
         expect(component.find('a').text()).toBe('item label');
-    });
-    it('should pass the notification passed to the Notification component', () => {
-        const component = mount(
-            <VerticalItem label="item 1" name="item1" notification="23" />,
-        );
-        expect(component.find('Notification').prop('notification')).toBe('23');
     });
     it('should fire an event onClick when the item is clicked', () => {
         const onClickMockFn = jest.fn();

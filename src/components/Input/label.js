@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import RequiredAsterisk from './requiredAsterisk';
+import RenderIf from '../RenderIf';
 
 export default function Label(props) {
     const {
@@ -18,15 +19,14 @@ export default function Label(props) {
         { 'rainbow-form-element__label_read-only': readOnly },
         className);
 
-    if (label) {
-        return (
+    return (
+        <RenderIf isTrue={!!label}>
             <label className={getLabelClassNames()} htmlFor={inputId} id={id}>
                 <RequiredAsterisk required={required} />
                 {label}
             </label>
-        );
-    }
-    return null;
+        </RenderIf>
+    );
 }
 
 Label.propTypes = {

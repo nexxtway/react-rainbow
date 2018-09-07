@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import RenderIf from '../RenderIf';
 
 export default function Icon({ icon, isVisible, position }) {
     const getIconClassNames = () => classnames('rainbow-icon-container', `rainbow-icon-${position}`);
 
-    if (isVisible) {
-        return <span className={getIconClassNames()}>{icon}</span>;
-    }
-    return null;
+    return (
+        <RenderIf isTrue={isVisible}>
+            <span className={getIconClassNames()}>{icon}</span>
+        </RenderIf>
+    );
 }
 
 Icon.propTypes = {

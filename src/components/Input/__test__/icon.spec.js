@@ -5,18 +5,6 @@ import Icon from './../icon';
 const iconComponent = <svg />;
 
 describe('<InputIcon/>', () => {
-    it('should not render the icon when icon is not passed', () => {
-        const component = mount(
-            <Icon position="left" />,
-        );
-        expect(component.find('span').exists()).toBe(false);
-    });
-    it('should render the Icon when icon is passed', () => {
-        const component = mount(
-            <Icon icon={iconComponent} position="left" />,
-        );
-        expect(component.find('svg').exists()).toBe(true);
-    });
     it('should have the right class names when iconName is passed and the position is left', () => {
         const component = mount(
             <Icon icon={iconComponent} position="left" />,
