@@ -11,21 +11,9 @@ export default function ButtonGroupExample() {
                 <Button label="Save" variant="outline-brand" />
             </ButtonGroup>
             <ButtonGroup>
-                <Button
-                    label="Add"
-                    variant="neutral"
-                    iconName="utility:add"
-                    iconPosition="left" />
-                <Button
-                    label="Edit"
-                    variant="neutral"
-                    iconName="utility:edit"
-                    iconPosition="left" />
-                <Button
-                    label="Paste"
-                    variant="neutral"
-                    iconName="utility:paste"
-                    iconPosition="left" />
+                <Button label="Add" variant="neutral" />
+                <Button label="Edit" variant="neutral" />
+                <Button label="Paste" variant="neutral" />
             </ButtonGroup>
         </div>
     );

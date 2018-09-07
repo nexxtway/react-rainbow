@@ -1,5 +1,5 @@
 import React from 'react';
-import Spinner from 'react-slds/components/Spinner';
+import Spinner from 'react-rainbow-components/components/Spinner';
 
 export default function SpinnerExample() {
     return (

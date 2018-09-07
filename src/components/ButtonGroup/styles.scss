@@ -1,7 +1,13 @@
 /* stylelint-disable no-descending-specificity */
+@import './../../styles/margins.scss';
+
 .rainbow-button-group {
     display: -ms-inline-flexbox;
     display: inline-flex;
+}
+
+.rainbow-button-group + .rainbow-button-group {
+    margin-left: $margin-x-small;
 }
 
 .rainbow-button-group button.rainbow-button,

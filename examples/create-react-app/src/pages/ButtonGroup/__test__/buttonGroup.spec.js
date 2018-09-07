@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ButtonGroup from 'react-slds/components/ButtonGroup';
-import Button from 'react-slds/components/Button';
+import ButtonGroup from 'react-rainbow-components/components/ButtonGroup';
+import Button from 'react-rainbow-components/components/Button';
 import ButtonGroupExample from './../';
 
 describe('<ButtonGroupExample/>', () => {

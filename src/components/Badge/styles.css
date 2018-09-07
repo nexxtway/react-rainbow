@@ -2,7 +2,7 @@
   color: #576574;
   background-color: #e3e5ed;
   border: 1px solid transparent;
-  display: -ms-flexbox;
+  display: -ms-inline-flexbox;
   display: inline-flex;
   -ms-flex-pack: center;
   justify-content: center;

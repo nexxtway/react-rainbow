@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Card from 'react-slds/components/Card';
+import Card from 'react-rainbow-components/components/Card';
 import CardExample from './../';
 
 describe('<CardExample/>', () => {

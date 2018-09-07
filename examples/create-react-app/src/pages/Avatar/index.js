@@ -8,7 +8,7 @@ export default function AvatarExample() {
         <div>
             <Avatar
                 className="rainbow-m-horizontal_medium"
-                src="assets/images/user1.jpg"
+                src="assets/images/user4.jpg"
                 assistiveText="Jose Leandro"
                 title="Jose Leandro"
                 size="large" />

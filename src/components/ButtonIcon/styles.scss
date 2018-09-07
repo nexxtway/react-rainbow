@@ -9,8 +9,8 @@
 }
 
 .rainbow-button-icon {
-    display: -ms-flexbox;
-    display: flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
     -ms-flex-pack: center;
     justify-content: center;
     -ms-flex-align: center;
@@ -24,6 +24,7 @@
     line-height: 1.875rem;
     text-decoration: none;
     color: $color-gray-4;
+    cursor: pointer;
     -webkit-appearance: none;
     white-space: normal;
     -webkit-user-select: none;
