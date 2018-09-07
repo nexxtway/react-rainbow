@@ -5,7 +5,7 @@ module.exports = {
             fontWeight: 300,
             fontSize: '1.25rem',
             color: '#061c3f',
-            fontFamily: 'inherit',
+            fontFamily: 'Lato',
             marginBottom: '1rem',
             marginTop: '1.75rem',
         },
@@ -14,7 +14,7 @@ module.exports = {
             fontWeight: 300,
             fontSize: '1rem',
             color: '#061c3f',
-            fontFamily: 'inherit',
+            fontFamily: 'Lato',
             marginTop: '1rem',
         },
         heading5: {
@@ -22,7 +22,7 @@ module.exports = {
             fontWeight: 350,
             fontSize: '0.88rem',
             color: '#576574',
-            fontFamily: 'inherit',
+            fontFamily: 'Lato',
         },
         heading6: {
             height: '34px',
@@ -51,6 +51,7 @@ module.exports = {
             marginBottom: 4,
             marginTop: 4,
             color: '#576574',
+            fontFamily: 'Lato',
         },
     },
     Text: {
@@ -59,7 +60,7 @@ module.exports = {
             fontWeight: 300,
             fontSize: '0.85rem',
             color: '#061c3f',
-            fontFamily: 'inherit',
+            fontFamily: 'Lato',
         },
     },
     Code: {

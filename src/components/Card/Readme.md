@@ -76,7 +76,7 @@
                     </div>
                     <ButtonIcon icon={<FontAwesomeIcon icon={faAngleDown} />} />
                 </div>
-            } >
+            }>
 
                 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_column" >
                     <img src="images/illustrations/Illustration-rainbow-2.svg" alt="the rainbow" />
