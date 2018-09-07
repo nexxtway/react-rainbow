@@ -2,27 +2,25 @@ module.exports = {
     Heading: {
         heading2: {
             lineHeight: 1.25,
-            fontWeight: 300,
             fontSize: '1.25rem',
             color: '#061c3f',
-            fontFamily: 'Lato',
+            fontFamily: 'Lato-Light',
             marginBottom: '1rem',
             marginTop: '1.75rem',
         },
         heading3: {
             lineHeight: 1.5,
-            fontWeight: 300,
             fontSize: '1rem',
             color: '#061c3f',
-            fontFamily: 'Lato',
+            fontFamily: 'Lato-Light',
             marginTop: '1rem',
         },
         heading5: {
             lineHeight: 1.5,
-            fontWeight: 350,
             fontSize: '0.88rem',
+            fontWeight: 200,
             color: '#576574',
-            fontFamily: 'Lato',
+            fontFamily: 'Lato-Light',
         },
         heading6: {
             height: '34px',
@@ -57,7 +55,6 @@ module.exports = {
     Text: {
         strong: {
             lineHeight: 1.5,
-            fontWeight: 300,
             fontSize: '0.85rem',
             color: '#061c3f',
             fontFamily: 'Lato',
