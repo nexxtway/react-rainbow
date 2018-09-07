@@ -27,14 +27,6 @@
     outline: 0;
 }
 
-.react-rainbow-table > thead > tr > th:first-child {
-    border-top-left-radius: 0.875rem;
-}
-
-.react-rainbow-table > thead > tr > th:last-child {
-    border-top-right-radius: 0.875rem;
-}
-
 .react-rainbow-table tbody tr {
     counter-increment: row-number;
 }

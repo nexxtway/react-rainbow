@@ -1,8 +1,11 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faList } from '@fortawesome/free-solid-svg-icons';
 import Pathline from 'react-styleguidist/lib/rsg-components/Pathline';
 import Description from './description';
+import Card from './../../../src/components/Card';
 import './styles.css';
 
 export default function ReactComponent(props) {
@@ -28,10 +31,13 @@ export default function ReactComponent(props) {
                 Interactive Examples
             </h2>
             {examples}
-            <p className="rainbow-font-size-heading_medium rainbow-m-bottom_medium react-rainbow-component-title-text rainbow-color_dark-1">
-                Properties & Methods details
-            </p>
-            {tabBody}
+            <Card
+                className="rainbow-m-bottom_x-large"
+                icon={<FontAwesomeIcon icon={faList} size="lg" className="rainbow-color_brand" />}
+                title="Properties & Methods details">
+
+                    {tabBody}
+            </Card>
         </div>
     );
 }
