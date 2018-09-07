@@ -48,10 +48,6 @@
     border-top: 1px solid #e3e5ed;
 }
 
-.react-rainbow-table > thead > tr > th:last-child {
-    border-bottom: 1px solid #e3e5ed;
-}
-
 .react-rainbow-table-bordered tbody td,
 .react-rainbow-table-bordered tbody th {
     border-top: 1px solid #e3e5ed;
