@@ -15,7 +15,7 @@ export default function CustomPathline(props) {
                     <span className="react-rainbow-text-color-violet"> from </span>
                     <span className="react-rainbow-text-color-green">{`'react-rainbow-components/components/${name}';`}</span>
                 </span>
-            <CopyToClipboard code={children} variant="base" />
+            <CopyToClipboard text={children} variant="base" />
         </div>
     );
 }

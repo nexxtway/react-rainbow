@@ -9,7 +9,7 @@ function Header({ code }) {
     return (
         <div className="react-rainbow-editor-header">
             <img src={windowsActionsSvg} alt="widnows actions img" className="rainbow-m-left_x-small" />
-            <CopyToClipboard code={code} />
+            <CopyToClipboard text={code} />
         </div>
     );
 }

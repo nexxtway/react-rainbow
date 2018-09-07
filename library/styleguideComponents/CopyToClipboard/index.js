@@ -14,8 +14,8 @@ export default class CopyToClipboard extends Component {
     }
 
     handleCopyToClipboardClick() {
-        const { code } = this.props;
-        copy(code);
+        const { text } = this.props;
+        copy(text);
         this.setState({ icon: faClipboardCheck });
         setTimeout(() => {
             this.setState({ icon: faClipboard });
@@ -37,7 +37,7 @@ export default class CopyToClipboard extends Component {
 }
 
 CopyToClipboard.propTypes = {
-    code: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
     variant: PropTypes.string,
 };
 
