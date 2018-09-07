@@ -3,20 +3,20 @@ import { mount } from 'enzyme';
 import RenderIf from './../index';
 
 describe('<RenderIf/>', () => {
-    it('should not return the children when is not True', () => {
+    it('should not render the children when isTrue is false', () => {
         const component = mount(
             <RenderIf>
                 <svg />
             </RenderIf>,
         );
-        expect(component.children().length).toBe(0);
+        expect(component.find('svg').exists()).toBe(false);
     });
-    it('should return the children when isTrue', () => {
+    it('should render the children when isTrue is true', () => {
         const component = mount(
-            <RenderIf isTrue={<svg />}>
+            <RenderIf isTrue >
                 <svg />
             </RenderIf>,
         );
-        expect(component.children().length).toBe(1);
+        expect(component.find('svg').exists()).toBe(true);
     });
 });
