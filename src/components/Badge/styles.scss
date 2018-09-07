@@ -1,5 +1,6 @@
 @import './../../styles/colors.scss';
 @import './../../styles/paddings.scss';
+@import './../../styles/margins.scss';
 @import './../../styles/font-sizes.scss';
 @import './../../styles/border-radius.scss';
 
@@ -26,6 +27,10 @@
     letter-spacing: 0.0625em;
     padding: $padding-xx-small $padding-x-small;
     border-radius: $border-radius-2;
+}
+
+.rainbow-badge + .rainbow-badge {
+    margin-left: $margin-x-small;
 }
 
 .rainbow-badge_lightest {

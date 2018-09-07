@@ -1,34 +1,40 @@
 import React from 'react';
-import Avatar from 'react-slds/components/Avatar';
+import Avatar from 'react-rainbow-components/components/Avatar';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 export default function AvatarExample() {
     return (
         <div>
             <Avatar
-                className="slds-m-horizontal_medium"
-                src="images/avatar1.jpg"
+                className="rainbow-m-horizontal_medium"
+                src="assets/images/user1.jpg"
                 assistiveText="Jose Leandro"
                 title="Jose Leandro"
                 size="large" />
 
             <Avatar
-                className="slds-m-horizontal_medium"
-                assistiveText="Jose Leandro"
-                title="Jose Leandro" />
-
-            <Avatar
-                className="slds-m-horizontal_medium"
+                className="rainbow-m-horizontal_medium"
                 assistiveText="Jose Leandro"
                 title="Jose Leandro"
-                iconName="standard:account"
-                variant="circle" />
+                icon={<FontAwesomeIcon icon={faUser} />} />
 
             <Avatar
-                className="slds-m-horizontal_medium"
+                className="rainbow-m-horizontal_medium"
                 src="images/wrong.jpg"
                 assistiveText="Jane Doe"
                 initials="JD"
-                title="Jane Doe" />
+                title="Jane Doe"
+                size="small" />
+
+            <Avatar
+                className="rainbow-m-horizontal_medium"
+                assistiveText="Jane Doe"
+                initials="JD"
+                title="Jane Doe"
+                initialsVariant="inverse"
+                size="x-small" />
+
         </div>
     );
 }

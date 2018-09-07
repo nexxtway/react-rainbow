@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Avatar from 'react-slds/components/Avatar';
+import Avatar from 'react-rainbow-components/components/Avatar';
 import AvatarExample from './../';
 
 describe('<AvatarExample/>', () => {

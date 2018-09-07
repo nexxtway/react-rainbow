@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from 'react-slds/components/Button';
+import Button from 'react-rainbow-components/components/Button';
 
 export default function ButtonExample() {
     return (

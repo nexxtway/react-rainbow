@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Button from 'react-slds/components/Button';
+import Button from 'react-rainbow-components/components/Button';
 import ButtonExample from './../';
 
 describe('<ButtonExample/>', () => {
