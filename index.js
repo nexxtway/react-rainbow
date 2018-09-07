@@ -1,18 +1,17 @@
-import Avatar from './src/components/Avatar/';
-import Badge from './src/components/Badge/';
-import Button from './src/components/Button/';
-import ButtonGroup from './src/components/ButtonGroup/';
-import ButtonMenu from './src/components/ButtonMenu/';
-import Card from './src/components/Card/';
-import Icon from './src/components/Icon/';
-import Input from './src/components/Input/';
-import MenuItem from './src/components/MenuItem/';
-import ProgressBar from './src/components/ProgressBar/';
-import Spinner from './src/components/Spinner/';
-import VerticalItem from './src/components/VerticalItem/';
-import VerticalNavigation from './src/components/VerticalNavigation/';
-import VerticalSection from './src/components/VerticalSection/';
-import VerticalSectionOverflow from './src/components/VerticalSectionOverflow/';
+import Avatar from './Avatar';
+import Badge from './Badge';
+import Button from './Button';
+import ButtonGroup from './ButtonGroup';
+import ButtonMenu from './ButtonMenu';
+import Card from './Card';
+import Input from './Input';
+import MenuItem from './MenuItem';
+import ProgressBar from './ProgressBar';
+import Spinner from './Spinner';
+import VerticalItem from './VerticalItem';
+import VerticalNavigation from './VerticalNavigation';
+import VerticalSection from './VerticalSection';
+import VerticalSectionOverflow from './VerticalSectionOverflow';
 
 export {
     Avatar,
@@ -21,7 +20,6 @@ export {
     ButtonGroup,
     ButtonMenu,
     Card,
-    Icon,
     Input,
     MenuItem,
     ProgressBar,

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Spinner from 'react-slds/components/Spinner';
+import Spinner from 'react-rainbow-components/components/Spinner';
 import SpinnerExample from './../';
 
 describe('<SpinnerExample/>', () => {

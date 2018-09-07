@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ButtonMenu from 'react-slds/components/ButtonMenu';
-import MenuItem from 'react-slds/components/MenuItem';
-import MenuDivider from 'react-slds/components/MenuDivider';
+import ButtonMenu from 'react-rainbow-components/components/ButtonMenu';
+import MenuItem from 'react-rainbow-components/components/MenuItem';
+import MenuDivider from 'react-rainbow-components/components/MenuDivider';
 import ButtonMenuExample from './../';
 
 describe('<ButtonMenuExample/>', () => {

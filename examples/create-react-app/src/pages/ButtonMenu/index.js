@@ -1,19 +1,36 @@
 import React from 'react';
-import ButtonMenu from 'react-slds/components/ButtonMenu';
-import MenuItem from 'react-slds/components/MenuItem';
-import MenuDivider from 'react-slds/components/MenuDivider';
+import ButtonMenu from 'react-rainbow-components/components/ButtonMenu';
+import MenuItem from 'react-rainbow-components/components/MenuItem';
+import MenuDivider from 'react-rainbow-components/components/MenuDivider';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+    faUser,
+    faCog,
+    faCaretDown,
+    faTable,
+    faCogs,
+    faAddressBook,
+} from '@fortawesome/free-solid-svg-icons';
 
 export default function ButtonMenuExample() {
     return (
         <div>
-            <ButtonMenu className="slds-m-horizontal_medium" menuSize="x-small">
+            <ButtonMenu
+                className="rainbow-m-horizontal_medium"
+                menuSize="x-small"
+                icon={<FontAwesomeIcon icon={faCaretDown} />}>
+
                 <MenuItem label="Menu Item One" />
                 <MenuItem label="Menu Item Two" />
                 <MenuItem label="Menu Item Three" />
                 <MenuDivider variant="space" />
                 <MenuItem label="Menu Item Four" />
             </ButtonMenu>
-            <ButtonMenu className="slds-m-horizontal_medium" menuSize="x-small" iconName="utility:settings">
+            <ButtonMenu
+                className="rainbow-m-horizontal_medium"
+                menuSize="x-small"
+                icon={<FontAwesomeIcon icon={faUser} />}>
+
                 <MenuItem label="Menu header" variant="header" />
                 <MenuItem label="Menu Item One" />
                 <MenuItem label="Menu Item Two" />
@@ -22,19 +39,26 @@ export default function ButtonMenuExample() {
                 <MenuItem label="Menu Item One" />
                 <MenuItem label="Menu Item Two" />
             </ButtonMenu>
-            <ButtonMenu className="slds-m-horizontal_medium" menuSize="x-small" iconName="utility:threedots_vertical">
+            <ButtonMenu
+                className="rainbow-m-horizontal_medium"
+                menuSize="x-small"
+                icon={<FontAwesomeIcon icon={faCog} />}>
+
                 <MenuItem
                     label="Right Icon"
-                    iconName="utility:table"
+                    icon={<FontAwesomeIcon icon={faTable} />}
                     iconPosition="right" />
+
                 <MenuItem
                     label="Right Icon"
-                    iconName="utility:kanban"
+                    icon={<FontAwesomeIcon icon={faCogs} />}
                     iconPosition="right" />
+
                 <MenuItem
                     label="Right Icon"
-                    iconName="utility:side_list"
+                    icon={<FontAwesomeIcon icon={faAddressBook} />}
                     iconPosition="right" />
+
             </ButtonMenu>
         </div>
     );

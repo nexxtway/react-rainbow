@@ -1,17 +1,17 @@
 import React from 'react';
-import ProgressBar from 'react-slds/components/ProgressBar';
+import ProgressBar from 'react-rainbow-components/components/ProgressBar';
 
 export default function ProgressBarExample() {
     return (
         <div>
-            <div className="slds-p-around_x-large" >
+            <div className="rainbow-p-around_x-large" >
                 <ProgressBar value={25} />
             </div>
-            <div className="slds-p-around_x-large" >
-                <ProgressBar value={50} color="success" />
+            <div className="rainbow-p-around_x-large" >
+                <ProgressBar value={50} variant="success" />
             </div>
-            <div className="slds-p-around_x-large" >
-                <ProgressBar value={75} variant="circular" />
+            <div className="rainbow-p-around_x-large" >
+                <ProgressBar value={75} />
             </div>
         </div>
     );

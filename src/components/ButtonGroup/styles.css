@@ -3,6 +3,9 @@
   display: -ms-inline-flexbox;
   display: inline-flex; }
 
+.rainbow-button-group + .rainbow-button-group {
+  margin-left: 0.5rem; }
+
 .rainbow-button-group button.rainbow-button,
 .rainbow-button-group button.rainbow-button-icon {
   border-radius: 0;
