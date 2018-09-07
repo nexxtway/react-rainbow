@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import VerticalNavigation from 'react-slds/components/VerticalNavigation';
-import VerticalSection from 'react-slds/components/VerticalSection';
-import VerticalItem from 'react-slds/components/VerticalItem';
+import VerticalNavigation from 'react-rainbow-components/components/VerticalNavigation';
+import VerticalSection from 'react-rainbow-components/components/VerticalSection';
+import VerticalItem from 'react-rainbow-components/components/VerticalItem';
 import Home from './../';
 
 describe('<Home/>', () => {

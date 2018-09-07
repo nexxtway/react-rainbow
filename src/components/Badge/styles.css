@@ -17,6 +17,9 @@
   padding: 0.25rem 0.5rem;
   border-radius: 12rem; }
 
+.rainbow-badge + .rainbow-badge {
+  margin-left: 0.5rem; }
+
 .rainbow-badge_lightest {
   color: #576574;
   background-color: #fff;

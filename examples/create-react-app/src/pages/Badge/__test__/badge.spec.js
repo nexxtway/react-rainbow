@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Badge from 'react-slds/components/Badge';
+import Badge from 'react-rainbow-components/components/Badge';
 import BadgeExample from './../';
 
 describe('<BadgeExample/>', () => {
