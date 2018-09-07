@@ -1,10 +1,9 @@
 <p align="center">
-  <a href="https://react-rainbow.firebaseapp.com/" rel="noopener" target="_blank"><img width="25%" src="https://github.com/reiniergs/react-rainbow/blob/master/assets/images/rainbow-logo.svg" alt="React Rainbow Component logo"></a></p>
+  <a href="https://react-rainbow.firebaseapp.com/" rel="noopener" target="_blank"><img width="15%" src="https://github.com/reiniergs/react-rainbow/blob/master/assets/images/rainbow-logo.svg" alt="React Rainbow Component logo"></a>
 </p>
 
 <h2 align="center">
-[React Rainbow](https://react-rainbow.firebaseapp.com/ "React Rainbow")
-
+<a href="https://react-rainbow.firebaseapp.com/" rel="noopener" target="_blank">React Rainbow</a>
 </h2>
 
 <p align="center">
