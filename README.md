@@ -1,7 +1,18 @@
+<p align="center">
+  <a href="https://react-rainbow.firebaseapp.com/" rel="noopener" target="_blank"><img width="25%" src="https://github.com/reiniergs/react-rainbow/blob/master/assets/images/rainbow-logo.svg" alt="React Rainbow Component logo"></a></p>
+</p>
+
+<h2 align="center">
+[React Rainbow](https://react-rainbow.firebaseapp.com/ "React Rainbow")
+
+</h2>
+
+<p align="center">
+React Rainbow is a collection of components that will reliably help you build your application in a snap. Give it a hack and let us know what you think.
+</p>
 [![CircleCI](https://circleci.com/gh/reiniergs/react-rainbow/tree/master.svg?style=svg)](https://circleci.com/gh/reiniergs/react-rainbow/tree/master)
 [![Coverage Status](https://coveralls.io/repos/github/reiniergs/react-lightning-components/badge.svg?branch=master)](https://coveralls.io/github/reiniergs/react-lightning-components?branch=master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-</div>
 
 
 ## Installation
