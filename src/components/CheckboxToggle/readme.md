@@ -23,7 +23,7 @@
         }
     }
 
-    <div className="rainbow-p-vertical_small rainbow-p-horizontal_xx-small rainbow-m-horizontal_xx-small">
+    <div className="rainbow-p-vertical_large rainbow-p-left_medium">
         <SimpleCheckboxToggle />
     </div>
 
@@ -52,7 +52,7 @@
         }
     }
 
-    <div className="rainbow-p-vertical_small rainbow-p-horizontal_xx-small rainbow-m-horizontal_xx-small">
+    <div className="rainbow-p-vertical_large rainbow-p-left_medium">
         <CheckedCheckboxToggle />
     </div>
 
@@ -82,6 +82,6 @@
         }
     }
 
-    <div className="rainbow-p-vertical_small rainbow-p-horizontal_xx-small rainbow-m-horizontal_xx-small">
+    <div className="rainbow-p-vertical_large rainbow-p-left_medium">
         <DisabledCheckboxToggle />
     </div>
