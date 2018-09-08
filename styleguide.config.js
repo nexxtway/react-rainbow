@@ -11,7 +11,6 @@ module.exports = {
     pagePerSection: true,
     version,
     require: [
-        path.resolve(__dirname, 'assets/styles/salesforce-lightning-design-system.css'),
         path.resolve(__dirname, 'src/components/Application/styles/rainbow-styles.css'),
         path.resolve(__dirname, 'library/setup.js')
     ],
