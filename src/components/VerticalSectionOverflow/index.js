@@ -8,8 +8,6 @@ import getMaxHeight from './compute-max-height';
 import Description from './description';
 import './styles.css';
 
-const searchResultsId = uniqueId('search-results');
-
 /**
 * Represents an overflow of items from a preceding VerticalNavigationSection,
 * with the ability to toggle visibility.
@@ -17,6 +15,7 @@ const searchResultsId = uniqueId('search-results');
 export default class VerticalSectionOverflow extends Component {
     constructor(props) {
         super(props);
+        this.searchResultsId = uniqueId('search-results');
         this.state = {
             isExpanded: props.expanded,
         };
@@ -62,7 +61,7 @@ export default class VerticalSectionOverflow extends Component {
             <div data-id="vertical-overflow-container" className={this.getContainerClassNames()} style={style}>
                 <button
                     className="rainbow-nav-vertical-section-overflow-button"
-                    aria-controls={searchResultsId}
+                    aria-controls={this.searchResultsId}
                     aria-expanded={isExpanded}
                     onClick={this.toggleOverflow}>
 
@@ -80,7 +79,7 @@ export default class VerticalSectionOverflow extends Component {
                 </button>
                 <div
                     data-id="vertical-overflow"
-                    id={searchResultsId}
+                    id={this.searchResultsId}
                     className={this.getOverflowClassName()}
                     style={sectionMaxHeight}>
 
