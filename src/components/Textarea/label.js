@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import RequiredAsterisk from './requiredAsterisk';
+import RenderIf from '../RenderIf';
 
 export default function Label(props) {
     const {
@@ -17,8 +18,8 @@ export default function Label(props) {
         'rainbow-textarea-label',
         className);
 
-    if (label) {
-        return (
+    return (
+        <RenderIf isTrue={!!label}>
             <label
                 className={getLabelClassNames()}
                 htmlFor={textareaId}
@@ -27,9 +28,8 @@ export default function Label(props) {
                     <RequiredAsterisk required={required} />
                     {label}
             </label>
-        );
-    }
-    return null;
+        </RenderIf>
+    );
 }
 
 Label.propTypes = {
