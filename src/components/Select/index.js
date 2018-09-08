@@ -19,11 +19,11 @@ export default class Select extends Component {
 
     getOptionItems() {
         const { options } = this.props;
-        return options.map(option => <option value={option.value} key={uniqueId('option-')}>{option.label}</option>);
+        return options.map(option => <option value={option.value} key={uniqueId('option')}>{option.label}</option>);
     }
 
     render() {
-        const { label, onChange, error, required, disabled, style } = this.props;
+        const { label, value, onChange, error, required, disabled, style } = this.props;
         return (
             <div className={this.getContainerClassNames()} style={style}>
                 <RenderIf isTrue={!!label}>
@@ -39,7 +39,7 @@ export default class Select extends Component {
                             placeholder="please select"
                             id={this.selectId}
                             onChange={onChange}
-                            value={null}
+                            value={value}
                             disabled={disabled}>
                             {this.getOptionItems()}
                         </select>
@@ -56,6 +56,8 @@ export default class Select extends Component {
 Select.propTypes = {
     /** The input label */
     label: PropTypes.string,
+    /** Specifies the value of an input element. */
+    value: PropTypes.string,
     /** The action triggered when a option item is selected. */
     onChange: PropTypes.func,
     /** Specifies that an input field must be filled out before submitting the form.
@@ -80,6 +82,7 @@ Select.propTypes = {
 
 Select.defaultProps = {
     label: null,
+    value: undefined,
     onChange: () => {},
     error: null,
     required: false,
