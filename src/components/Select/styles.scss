@@ -105,8 +105,4 @@
             padding-left: $padding-medium;
         }
     }
-
-    &[disabled]:focus, &[disabled]:active {
-        box-shadow: none;
-    }
 }
