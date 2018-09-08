@@ -10,6 +10,9 @@ module.exports = {
     skipComponentsWithoutExample: true,
     pagePerSection: true,
     version,
+    template: {
+        favicon: '/assets/favicon.ico'
+    },
     require: [
         path.resolve(__dirname, 'assets/styles/salesforce-lightning-design-system.css'),
         path.resolve(__dirname, 'src/components/Application/styles/rainbow-styles.css'),
