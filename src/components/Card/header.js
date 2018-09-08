@@ -6,7 +6,7 @@ import './styles.css';
 
 export default function Header({ icon, title, actions }) {
     return (
-        <RenderIf isTrue={icon || title || actions}>
+        <RenderIf isTrue={!!(icon || title || actions)}>
             <div className="rainbow-card__header-container">
                 <header className="rainbow-card__header">
                     <RenderIf isTrue={!!icon}>
