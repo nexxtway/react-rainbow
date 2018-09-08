@@ -79,7 +79,7 @@ export default class VerticalSectionOverflow extends Component {
                 </button>
                 <div
                     data-id="vertical-overflow"
-                    id={searchResultsId}
+                    id={this.searchResultsId}
                     className={this.getOverflowClassName()}
                     style={sectionMaxHeight}>
 

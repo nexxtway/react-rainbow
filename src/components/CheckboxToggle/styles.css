@@ -1,24 +1,15 @@
 /* stylelint-disable no-descending-specificity,max-line-length */
 .rainbow-checkbox_toggle {
-  width: 100%; }
-
-.rainbow-checkbox_toggle-grid {
+  width: 100%;
   display: -ms-flexbox;
-  display: flex; }
+  display: flex;
+  align-items: center; }
 
 .rainbow-checkbox_toggle-form-element__label {
   display: inline-block;
-  color: #706e6b;
+  color: #576574;
   font-size: 0.75rem;
-  line-height: 1.5;
-  margin-right: 0.75rem;
-  margin-bottom: 0.125rem; }
-
-.rainbow-checkbox_toggle-form-element__label:empty {
-  margin: 0; }
-
-.rainbow-checkbox_toggle-m-bottom_none {
-  margin-bottom: 0 !important; }
+  margin-left: 0.75rem; }
 
 .rainbow-checkbox_toggle .rainbow-checkbox__toggle_faux {
   display: block;
@@ -31,7 +22,7 @@
   border-radius: 1rem;
   transition: background-color 0.2s cubic-bezier(0.75, 0, 0.08, 1); }
 
-.rainbow-checkbox__toggle_toggle .rainbow-checkbox__toggle_faux:hover,
+.rainbow-checkbox_toggle .rainbow-checkbox__toggle_faux:hover,
 .rainbow-checkbox_toggle .rainbow-checkbox__toggle_faux:focus {
   cursor: pointer;
   background-color: #a4a7b5; }
@@ -42,7 +33,7 @@
   top: 0;
   bottom: 0;
   margin: auto;
-  left: 0.03125rem;
+  left: 0.015625rem;
   width: 1.75rem;
   height: 1.75rem;
   background-color: white;

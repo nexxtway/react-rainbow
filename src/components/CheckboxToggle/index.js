@@ -3,17 +3,18 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { uniqueId } from '../../libs/utils';
+import RenderIf from '../RenderIf';
 import './styles.css';
 
 export default class CheckboxToggle extends Component {
     constructor(props) {
         super(props);
-        this.spanId = uniqueId('span');
+        this.toggleId = uniqueId('checkbox-toggle');
     }
 
     getClassNames() {
         const { className } = this.props;
-        return classnames('rainbow-checkbox_toggle rainbow-checkbox_toggle-grid', className);
+        return classnames('rainbow-checkbox_toggle', className);
     }
 
     render() {
@@ -27,18 +28,20 @@ export default class CheckboxToggle extends Component {
 
         return (
             <label className={this.getClassNames()} style={style}>
-                <span className="rainbow-checkbox_toggle-form-element__label rainbow-checkbox_toggle-m-bottom_none">{label}</span>
                 <input
                     type="checkbox"
-                    name={this.spanId}
-                    value={this.spanId}
-                    aria-describedby={this.spanId}
+                    name={this.toggleId}
+                    value={this.toggleId}
+                    aria-describedby={this.toggleId}
                     checked={value}
                     onChange={onChange}
                     disabled={disabled} />
-                <span id={this.spanId} className="rainbow-checkbox__toggle_faux_container" aria-live="assertive">
+                <span id={this.toggleId} className="rainbow-checkbox__toggle_faux_container" aria-live="assertive">
                     <span className="rainbow-checkbox__toggle_faux" />
                 </span>
+                <RenderIf isTrue={!!label} >
+                    <span className="rainbow-checkbox_toggle-form-element__label">{label}</span>
+                </RenderIf>
             </label>
         );
     }
