@@ -1,0 +1,112 @@
+/* stylelint-disable no-descending-specificity */
+@import "../../styles/colors";
+@import "../../styles/shadows";
+@import "../../styles/font-sizes";
+@import "../../styles/border-radius";
+@import "../../styles/margins";
+@import "../../styles/paddings";
+
+.rainbow-form-element {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.rainbow-form-element__help {
+    font-size: $font-size-text-small;
+    margin-top: $margin-x-small;
+    align-self: center;
+}
+
+.rainbow-form-element__label {
+    color: $color-gray-4;
+    font-size: $font-size-text-small;
+    line-height: 1.5;
+    margin-right: 0.75rem;
+    margin-bottom: 0.125rem;
+    align-self: center;
+
+    &:empty {
+        margin: 0;
+    }
+}
+
+.rainbow-select_container {
+    position: relative;
+
+    &::after {
+        position: absolute;
+        content: '';
+        display: block;
+        right: 0.5rem;
+        bottom: 40%;
+        width: 0;
+        height: 0;
+        border-left: 0.1875rem solid transparent;
+        border-right: 0.1875rem solid transparent;
+        border-top: 0.3125rem solid $color-dark-1;
+    }
+}
+
+.rainbow-has-error {
+    .rainbow-select {
+        background-color: white;
+        border: 2px $color-error solid;
+        box-shadow: $shadow-1;
+        background-clip: padding-box;
+    }
+
+    .rainbow-select:focus, .rainbow-select:active {
+        box-shadow: $color-error-active $shadow-1, $shadow-2 $color-brand-active;
+    }
+}
+
+.rainbow-select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+    line-height: 2rem;
+    height: calc(2.125rem + (1px * 2));
+    border: 1px solid $color-gray-3;
+    border-radius: $border-radius-2;
+    padding: 0 1rem 0 1rem;
+    background-color: white;
+    color: $color-dark-1;
+    font-size: $font-size-text-medium;
+    transition: border 0.1s linear, background-color 0.1s linear;
+
+    &::-ms-expand {
+        display: none;
+    }
+
+    &:focus, &:active, &:visited {
+        outline: 0;
+        padding: 0 1rem 0 0.9375rem;
+        border: 0.125rem $color-brand solid;
+        box-shadow: $shadow-3;
+        line-height: 1.875rem;
+    }
+
+    &[disabled] {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        cursor: not-allowed;
+        user-select: none;
+        background-color: $color-gray-1;
+        border-color: $color-gray-2;
+        color: $color-gray-2;
+
+        &:focus,
+        &:active {
+            box-shadow: none;
+            background-color: $color-gray-1;
+            border: 1px $color-gray-2 solid;
+            padding-left: $padding-medium;
+        }
+    }
+
+    &[disabled]:focus, &[disabled]:active {
+        box-shadow: none;
+    }
+}
