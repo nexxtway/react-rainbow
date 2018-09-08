@@ -64,7 +64,6 @@ export default class Textarea extends Component {
             disabled,
             maxLength,
             minLength,
-            labelClassName,
             bottomHelpText,
             required,
             cols,
@@ -75,7 +74,6 @@ export default class Textarea extends Component {
         return (
             <div className={this.getContainerClassNames()} style={style}>
                 <Label
-                    className={labelClassName}
                     label={label}
                     required={isRequiredOrHasError}
                     textareaId={this.textareaId}
@@ -136,8 +134,6 @@ Textarea.propTypes = {
     disabled: PropTypes.bool,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
-    /** A CSS class for the label element, in addition to the label's base classes. */
-    labelClassName: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
     /** Specifies that the textarea field is read-only. This value defaults to false. */
@@ -167,7 +163,6 @@ Textarea.defaultProps = {
     error: null,
     disabled: false,
     className: undefined,
-    labelClassName: undefined,
     style: undefined,
     readOnly: false,
     cols: undefined,

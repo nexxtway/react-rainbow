@@ -29,18 +29,19 @@
     background-color: #f4f6f9;
     border: solid 1px #e3e5ed;
     color: #e3e5ed; }
-  .rainbow-textarea[disabled]:focus, .rainbow-textarea[disabled]:active {
-    box-shadow: none; }
-  .rainbow-textarea[disabled]::placeholder {
-    color: #e3e5ed; }
+    .rainbow-textarea[disabled]:focus, .rainbow-textarea[disabled]:active {
+      box-shadow: none;
+      padding: 0.625rem 1rem; }
+    .rainbow-textarea[disabled]::placeholder {
+      color: #e3e5ed; }
   .rainbow-textarea[readonly] {
     border: none;
     border-radius: 0;
     background-color: transparent;
     padding: 0; }
-  .rainbow-textarea[readonly]:focus, .rainbow-textarea[readonly]:active {
-    box-shadow: none;
-    border: none; }
+    .rainbow-textarea[readonly]:focus, .rainbow-textarea[readonly]:active {
+      box-shadow: none;
+      border: none; }
 
 .rainbow-textarea-label {
   color: #576574;
@@ -71,8 +72,6 @@
   background-color: #fff;
   border: solid 2px #fe4849;
   background-clip: padding-box; }
-
-.rainbow-textarea-has-error .rainbow-textarea:active,
-.rainbow-textarea-has-error .rainbow-textarea:focus {
-  box-shadow: #fe4849 0 0 0 1px inset, 0 0 3px #fe4849;
-  padding: 0.625rem 1rem; }
+  .rainbow-textarea-has-error .rainbow-textarea:focus, .rainbow-textarea-has-error .rainbow-textarea:active {
+    box-shadow: #fe4849 0 0 0 1px inset, 0 0 3px #fe4849;
+    padding: 0.625rem 1rem; }

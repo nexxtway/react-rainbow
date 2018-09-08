@@ -42,15 +42,16 @@
         background-color: $color-gray-1;
         border: solid 1px $color-gray-2;
         color: $color-gray-2;
-    }
 
-    &[disabled]:focus,
-    &[disabled]:active {
-        box-shadow: none;
-    }
+        &:focus,
+        &:active {
+            box-shadow: none;
+            padding: 0.625rem 1rem;
+        }
 
-    &[disabled]::placeholder {
-        color: $color-gray-2;
+        &::placeholder {
+            color: $color-gray-2;
+        }
     }
 
     &[readonly] {
@@ -58,12 +59,12 @@
         border-radius: 0;
         background-color: transparent;
         padding: 0;
-    }
 
-    &[readonly]:focus,
-    &[readonly]:active {
-        box-shadow: none;
-        border: none;
+        &:focus,
+        &:active {
+            box-shadow: none;
+            border: none;
+        }
     }
 }
 
@@ -105,11 +106,11 @@
         background-color: #fff;
         border: solid 2px $color-error;
         background-clip: padding-box;
-    }
 
-    .rainbow-textarea:active,
-    .rainbow-textarea:focus {
-        box-shadow: $color-error 0 0 0 1px inset, 0 0 3px $color-error;
-        padding: 0.625rem 1rem;
+        &:focus,
+        &:active {
+            box-shadow: $color-error 0 0 0 1px inset, 0 0 3px $color-error;
+            padding: 0.625rem 1rem;
+        }
     }
 }

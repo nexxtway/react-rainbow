@@ -27,10 +27,4 @@ describe('<InputLabel/>', () => {
         );
         expect(component.find('label.rainbow-form-element__label.rainbow-form-element__label_read-only').exists()).toBe(true);
     });
-    it('should have the right class names when a custom class name is passed', () => {
-        const component = mount(
-            <Label label="Input Label" className="my-custom-class-name" />,
-        );
-        expect(component.find('label.rainbow-form-element__label.my-custom-class-name').exists()).toBe(true);
-    });
 });

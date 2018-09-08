@@ -101,10 +101,9 @@ describe('<Input/>', () => {
     });
     it('should pass the right props to the Label component', () => {
         const component = mount(
-            <Input labelClassName="my-class-name" label="custom label" required />,
+            <Input label="custom label" required />,
         );
         expect(component.find('Label').props()).toEqual({
-            className: 'my-class-name',
             label: 'custom label',
             required: true,
             readOnly: false,
