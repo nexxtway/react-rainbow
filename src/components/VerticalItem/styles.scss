@@ -12,7 +12,7 @@
 }
 
 .rainbow-is-active::before {
-    content: '';
+    content: "";
     width: 0.25rem;
     left: 0;
     top: 0;
@@ -27,8 +27,7 @@
     -ms-flex-align: center;
     align-items: center;
     width: 100%;
-    padding: 1rem 1.5rem;
-    border-bottom: 0.0625rem solid $color-gray-1;
+    padding: 1rem 1rem 1rem 2rem;
     border-radius: 0;
     color: $color-gray-4;
     cursor: pointer;
@@ -46,7 +45,7 @@
 .rainbow-nav-vertical__action:active {
     @extend %nav-vertical__action-hover-active;
 
-    font-weight: 600;
+    font-family: "Lato Black", Arial, sans-serif;
 }
 
 .rainbow-nav-vertical_icon {

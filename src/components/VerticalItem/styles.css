@@ -8,7 +8,7 @@
   position: relative; }
 
 .rainbow-is-active::before {
-  content: '';
+  content: "";
   width: 0.25rem;
   left: 0;
   top: 0;
@@ -22,8 +22,7 @@
   -ms-flex-align: center;
   align-items: center;
   width: 100%;
-  padding: 1rem 1.5rem;
-  border-bottom: 0.0625rem solid #f4f6f9;
+  padding: 1rem 1rem 1rem 2rem;
   border-radius: 0;
   color: #576574;
   cursor: pointer;
@@ -34,7 +33,7 @@
 
 .rainbow-is-active .rainbow-nav-vertical__action,
 .rainbow-nav-vertical__action:active {
-  font-weight: 600; }
+  font-family: "Lato Black", Arial, sans-serif; }
 
 .rainbow-nav-vertical_icon {
   line-height: 1;
