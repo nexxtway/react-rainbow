@@ -22,8 +22,8 @@
     color: $color-gray-4;
     font-size: $font-size-text-small;
     line-height: 1.5;
-    margin-right: 0.75rem;
-    margin-bottom: 0.125rem;
+    margin-right: $margin-small;
+    margin-bottom: $margin-xx-small;
     align-self: center;
 
     &:empty {
@@ -69,7 +69,7 @@
     height: calc(2.125rem + (1px * 2));
     border: 1px solid $color-gray-3;
     border-radius: $border-radius-2;
-    padding: 0 1rem 0 1rem;
+    padding: 0 $padding-medium 0 $padding-medium;
     background-color: white;
     color: $color-dark-1;
     font-size: $font-size-text-medium;
@@ -81,7 +81,7 @@
 
     &:focus, &:active, &:visited {
         outline: 0;
-        padding: 0 1rem 0 0.9375rem;
+        padding: 0 $padding-medium 0 0.9375rem;
         border: 0.125rem $color-brand solid;
         box-shadow: $shadow-3;
         line-height: 1.875rem;
