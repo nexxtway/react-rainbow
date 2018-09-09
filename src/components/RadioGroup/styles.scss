@@ -1,0 +1,137 @@
+/* stylelint-disable no-descending-specificity,max-line-length */
+@import "../../styles/colors";
+@import "../../styles/shadows";
+
+.rainbow-radio-group-form-element {
+    position: relative;
+}
+
+.rainbow-radio-group-form-element__label {
+    display: inline-block;
+    color: $color-gray-4;
+    font-size: 0.75rem;
+    margin-right: 0.75rem;
+    margin-bottom: 0.125rem;
+}
+
+.rainbow-radio-group-form-element__control .rainbow-radio {
+    display: block;
+}
+
+.rainbow-radio {
+    display: inline-block;
+}
+
+.rainbow-radio .rainbow-radio_faux {
+    width: 1rem;
+    height: 1rem;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    border: 1px solid $color-gray-2;
+    border-radius: 50%;
+    background-color: white;
+    transition: border 0.1s linear, background-color 0.1s linear;
+}
+
+.rainbow-radio-form-element__label {
+    display: inline;
+    vertical-align: middle;
+    font-size: 0.875rem;
+    color: $color-dark-1;
+}
+
+.rainbow-radio-form-element__label-disabled {
+    color: $color-gray-3;
+}
+
+.rainbow-radio [type="radio"] {
+    width: 1px;
+    height: 1px;
+    border: 0;
+    clip: rect(0 0 0 0);
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+}
+
+.rainbow-radio [type="radio"]:checked + .rainbow-radio_faux,
+.rainbow-radio [type="radio"]:checked ~ .rainbow-radio_faux,
+.rainbow-radio [type="radio"]:checked + .rainbow-radio__label .rainbow-radio_faux {
+    background: white;
+
+    &::after {
+        width: 0.5rem;
+        height: 0.5rem;
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0);
+        border-radius: 50%;
+        background: $color-brand;
+    }
+}
+
+.rainbow-radio [type="radio"]:focus + .rainbow-radio_faux,
+.rainbow-radio [type="radio"]:focus ~ .rainbow-radio_faux,
+.rainbow-radio [type="radio"]:focus + .rainbow-radio__label .rainbow-radio_faux {
+    border-color: $color-brand;
+    box-shadow: $shadow-outline;
+}
+
+.rainbow-radio [type="radio"][disabled] {
+    cursor: not-allowed;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.rainbow-radio [type="radio"][disabled] ~ .rainbow-radio_faux,
+.rainbow-radio [type="radio"][disabled] + .rainbow-radio__label .rainbow-radio_faux {
+    background-color: $color-gray-1;
+    border-color: $color-gray-2;
+}
+
+.rainbow-radio-group-has-error .rainbow-radio [type='radio'] + .rainbow-radio_faux,
+.rainbow-radio-group-has-error .rainbow-radio [type='radio'] ~ .rainbow-radio_faux,
+.rainbow-radio-group-has-error .rainbow-radio [type='radio'] + .rainbow-radio__label .rainbow-radio_faux {
+    border: solid 1.5px $color-error;
+}
+
+.rainbow-radio-group-has-error .rainbow-radio [type='radio']:focus + .rainbow-radio_faux,
+.rainbow-radio-group-has-error .rainbow-radio [type='radio']:focus ~ .rainbow-radio_faux,
+.rainbow-radio-group-has-error .rainbow-radio [type='radio']:focus + .rainbow-radio__label .rainbow-radio_faux {
+    box-shadow: $shadow-error;
+}
+
+.rainbow-radio-group-has-error .rainbow-radio [type='radio']:checked + .rainbow-radio_faux,
+.rainbow-radio-group-has-error .rainbow-radio [type='radio']:checked ~ .rainbow-radio_faux,
+.rainbow-radio-group-has-error .rainbow-radio [type='radio']:checked + .rainbow-radio__label .rainbow-radio_faux {
+    background: white;
+
+    &::after {
+        background: $color-error;
+        border-color: $color-error;
+    }
+}
+
+.rainbow-radio-form-element .rainbow-radio [type='radio'] + .rainbow-radio_faux,
+.rainbow-radio-form-element .rainbow-radio [type='radio'] ~ .rainbow-radio_faux,
+.rainbow-radio [type='radio'] + .rainbow-radio__label .rainbow-radio_faux {
+    margin-right: 0.5rem;
+}
+
+.rainbow-radio-group-required {
+    color: $color-error;
+    margin: 0 0.125rem;
+}
+
+.rainbow-radio-group-form-element__error {
+    font-size: 1rem;
+    margin-top: 0.125rem;
+    display: block;
+    color: $color-error-active;
+}
