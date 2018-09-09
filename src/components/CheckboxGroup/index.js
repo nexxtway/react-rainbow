@@ -87,7 +87,7 @@ CheckboxGroup.defaultProps = {
     required: false,
     options: [],
     error: null,
-    className: '',
-    style: {},
+    className: undefined,
+    style: undefined,
 };
 
