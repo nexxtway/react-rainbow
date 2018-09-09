@@ -21,7 +21,6 @@ export default class Select extends Component {
     render() {
         const {
             label,
-            placeholder,
             value,
             options,
             onChange,
