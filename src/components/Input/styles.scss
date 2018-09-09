@@ -113,7 +113,7 @@
         padding-left: 0.9375rem;
         border: 2px $color-brand solid;
         background-color: white;
-        box-shadow: $shadow-3;
+        box-shadow: $shadow-outline;
     }
 
     &::placeholder {
@@ -284,13 +284,12 @@
     background-color: white;
     border: 2px $color-error solid;
     padding-left: $padding-medium;
-    box-shadow: $shadow-3;
     background-clip: padding-box;
     line-height: 2rem;
 
     &:required,
     &:focus {
-        box-shadow: $shadow-3;
+        box-shadow: $shadow-error;
     }
 }
 

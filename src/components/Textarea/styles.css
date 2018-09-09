@@ -18,7 +18,7 @@
     outline: 0;
     background-color: #fff;
     border: solid 2px #01b6f5;
-    box-shadow: 0 0 1px 0 #a4a7b5;
+    box-shadow: 0 0 2px #01b6f5;
     padding: 0.5625rem 0.9375rem; }
   .rainbow-textarea::placeholder {
     color: #a4a7b5;
@@ -73,5 +73,5 @@
   border: solid 2px #fe4849;
   background-clip: padding-box; }
   .rainbow-textarea-has-error .rainbow-textarea:focus, .rainbow-textarea-has-error .rainbow-textarea:active {
-    box-shadow: #fe4849 0 0 0 1px inset, 0 0 3px #fe4849;
-    padding: 0.625rem 1rem; }
+    padding: 0.625rem 1rem;
+    box-shadow: 0 0 2px #fe4849; }

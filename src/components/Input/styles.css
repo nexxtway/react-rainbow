@@ -89,7 +89,7 @@
     padding-left: 0.9375rem;
     border: 2px #01b6f5 solid;
     background-color: white;
-    box-shadow: 0 0 1px 0 #a4a7b5; }
+    box-shadow: 0 0 2px #01b6f5; }
   .rainbow-input::placeholder {
     color: #a4a7b5;
     font-weight: 300; }
@@ -221,11 +221,10 @@
   background-color: white;
   border: 2px #fe4849 solid;
   padding-left: 1rem;
-  box-shadow: 0 0 1px 0 #a4a7b5;
   background-clip: padding-box;
   line-height: 2rem; }
   .rainbow-has-error .rainbow-input:required, .rainbow-has-error .rainbow-input:focus {
-    box-shadow: 0 0 1px 0 #a4a7b5; }
+    box-shadow: 0 0 2px #fe4849; }
 
 .rainbow-has-error .rainbow-input-has-icon.rainbow-input-has-icon_left .rainbow-input {
   padding-left: 2rem; }

@@ -25,7 +25,7 @@
     color: #009acf; }
   .rainbow-button-icon:focus {
     outline: 0;
-    box-shadow: 0 0 3px #0070d2; }
+    box-shadow: 0 0 2px #01b6f5; }
   .rainbow-button-icon[disabled] {
     color: #e3e5ed; }
   .rainbow-button-icon[disabled] * {
