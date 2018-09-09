@@ -39,6 +39,6 @@ describe('Select component', () => {
         const component = mount(
             <Select error="Error text" />,
         );
-        expect(component.find('div[className="rainbow-form-element rainbow-has-error"]').exists()).toBe(true);
+        expect(component.find('div[className="rainbow-select-wrapper rainbow-select-has-error"]').exists()).toBe(true);
     });
 });
