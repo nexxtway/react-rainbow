@@ -10,7 +10,7 @@
   transition: all 0.1s linear;
   width: 100%;
   padding: 0.625rem 1rem;
-  resize: none;
+  resize: both;
   font-size: 0.875rem;
   line-height: 1.57;
   color: #061c3f; }

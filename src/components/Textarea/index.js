@@ -20,7 +20,11 @@ export default class Textarea extends Component {
     }
 
     componentDidMount() {
-        autosize(this.textareaRef.current);
+        const { grow } = this.props;
+        if (grow) {
+            return autosize(this.textareaRef.current);
+        }
+        return undefined;
     }
 
     getContainerClassNames() {
@@ -150,6 +154,9 @@ Textarea.propTypes = {
     cols: PropTypes.number,
     /** The number of visible text lines for the control. The value by default is 3. */
     rows: PropTypes.number,
+    /** This make to textarea grow. */
+    /* This value defaults to false. */
+    grow: PropTypes.bool,
 };
 
 Textarea.defaultProps = {
@@ -167,6 +174,7 @@ Textarea.defaultProps = {
     readOnly: false,
     cols: undefined,
     rows: 3,
+    grow: false,
     onChange: () => {},
     onFocus: () => {},
     onBlur: () => {},
