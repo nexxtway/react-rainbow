@@ -3,7 +3,7 @@
     const options = [
         { value: 'admin', label: 'Admin' },
         { value: 'user', label: 'User' },
-        { value: 'anonymous', label: 'Anonymous' }
+        { value: 'anonymous', label: 'Anonymous' },
     ]
 
     class SimpleRadioGroup extends React.Component {
@@ -39,7 +39,7 @@
     const options = [
         { value: 'admin', label: 'Admin', disabled: true },
         { value: 'user', label: 'User' },
-        { value: 'anonymous', label: 'Anonymous' }
+        { value: 'anonymous', label: 'Anonymous' },
     ]
 
     class DisabledRadioGroup extends React.Component {
@@ -75,7 +75,7 @@
     const options = [
         { value: 'admin', label: 'Admin' },
         { value: 'user', label: 'User' },
-        { value: 'anonymous', label: 'Anonymous' }
+        { value: 'anonymous', label: 'Anonymous' },
     ]
 
     class RequiredRadioGroup extends React.Component {
@@ -112,7 +112,7 @@
     const options = [
         { value: 'admin', label: 'Admin' },
         { value: 'user', label: 'User' },
-        { value: 'anonymous', label: 'Anonymous' }
+        { value: 'anonymous', label: 'Anonymous' },
     ]
 
     class ErrorRadioGroup extends React.Component {

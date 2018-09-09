@@ -11,11 +11,6 @@ export default class Radio extends Component {
         this.radioId = uniqueId('radio');
     }
 
-    getClassNames() {
-        const { className } = this.props;
-        return classnames('rainbow-radio', className);
-    }
-
     getLabelClassNames() {
         const { disabled } = this.props;
         return classnames(
@@ -25,7 +20,6 @@ export default class Radio extends Component {
 
     render() {
         const {
-            style,
             label,
             ariaDescribedby,
             onChange,
@@ -35,7 +29,7 @@ export default class Radio extends Component {
             name,
         } = this.props;
         return (
-            <span className={this.getClassNames()} style={style}>
+            <span className="rainbow-radio">
                 <input
                     type="radio"
                     id={this.radioId}
@@ -58,8 +52,6 @@ export default class Radio extends Component {
 
 Radio.propTypes = {
     label: PropTypes.node,
-    className: PropTypes.string,
-    style: PropTypes.object,
     value: PropTypes.string,
     onChange: PropTypes.func,
     ariaDescribedby: PropTypes.string,
@@ -70,8 +62,6 @@ Radio.propTypes = {
 
 Radio.defaultProps = {
     label: null,
-    className: undefined,
-    style: undefined,
     value: undefined,
     onChange: () => {},
     ariaDescribedby: undefined,

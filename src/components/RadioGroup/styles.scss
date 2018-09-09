@@ -1,6 +1,16 @@
 /* stylelint-disable no-descending-specificity,max-line-length */
 @import "../../styles/colors";
 @import "../../styles/shadows";
+@import "../../styles/margins";
+@import "../../styles/font-sizes";
+@import "../../styles/border-radius";
+
+@mixin user-select() {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 
 .rainbow-radio-group-form-element {
     position: relative;
@@ -9,9 +19,9 @@
 .rainbow-radio-group-form-element__label {
     display: inline-block;
     color: $color-gray-4;
-    font-size: 0.75rem;
-    margin-right: 0.75rem;
-    margin-bottom: 0.125rem;
+    font-size: $font-size-text-small;
+    margin-right: $margin-small;
+    margin-bottom: $margin-xx-small;
 }
 
 .rainbow-radio-group-form-element__control .rainbow-radio {
@@ -28,8 +38,8 @@
     display: inline-block;
     position: relative;
     vertical-align: middle;
-    border: 1px solid $color-gray-2;
-    border-radius: 50%;
+    border: 0.0625rem solid $color-gray-2;
+    border-radius: $border-radius-2;
     background-color: white;
     transition: border 0.1s linear, background-color 0.1s linear;
 }
@@ -37,7 +47,7 @@
 .rainbow-radio-form-element__label {
     display: inline;
     vertical-align: middle;
-    font-size: 0.875rem;
+    font-size: $font-size-text-medium;
     color: $color-dark-1;
 }
 
@@ -46,11 +56,11 @@
 }
 
 .rainbow-radio [type="radio"] {
-    width: 1px;
-    height: 1px;
+    width: 0.0625rem;
+    height: 0.0625rem;
     border: 0;
     clip: rect(0 0 0 0);
-    margin: -1px;
+    margin: -0.0625rem;
     overflow: hidden;
     padding: 0;
     position: absolute;
@@ -69,7 +79,7 @@
         top: 50%;
         left: 50%;
         transform: translate3d(-50%, -50%, 0);
-        border-radius: 50%;
+        border-radius: $border-radius-2;
         background: $color-brand;
     }
 }
@@ -83,10 +93,8 @@
 
 .rainbow-radio [type="radio"][disabled] {
     cursor: not-allowed;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+
+    @include user-select();
 }
 
 .rainbow-radio [type="radio"][disabled] ~ .rainbow-radio_faux,
@@ -98,7 +106,7 @@
 .rainbow-radio-group-has-error .rainbow-radio [type='radio'] + .rainbow-radio_faux,
 .rainbow-radio-group-has-error .rainbow-radio [type='radio'] ~ .rainbow-radio_faux,
 .rainbow-radio-group-has-error .rainbow-radio [type='radio'] + .rainbow-radio__label .rainbow-radio_faux {
-    border: solid 1.5px $color-error;
+    border: solid 0.09375rem $color-error;
 }
 
 .rainbow-radio-group-has-error .rainbow-radio [type='radio']:focus + .rainbow-radio_faux,
@@ -121,17 +129,17 @@
 .rainbow-radio-form-element .rainbow-radio [type='radio'] + .rainbow-radio_faux,
 .rainbow-radio-form-element .rainbow-radio [type='radio'] ~ .rainbow-radio_faux,
 .rainbow-radio [type='radio'] + .rainbow-radio__label .rainbow-radio_faux {
-    margin-right: 0.5rem;
+    margin-right: $margin-x-small;
 }
 
 .rainbow-radio-group-required {
     color: $color-error;
-    margin: 0 0.125rem;
+    margin: 0 $margin-xx-small;
 }
 
 .rainbow-radio-group-form-element__error {
-    font-size: 1rem;
-    margin-top: 0.125rem;
+    font-size: $font-size-heading-small;
+    margin-top: $margin-xx-small;
     display: block;
     color: $color-error-active;
 }

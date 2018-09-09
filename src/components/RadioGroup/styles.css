@@ -7,7 +7,7 @@
   color: #576574;
   font-size: 0.75rem;
   margin-right: 0.75rem;
-  margin-bottom: 0.125rem; }
+  margin-bottom: 0.25rem; }
 
 .rainbow-radio-group-form-element__control .rainbow-radio {
   display: block; }
@@ -21,8 +21,8 @@
   display: inline-block;
   position: relative;
   vertical-align: middle;
-  border: 1px solid #e3e5ed;
-  border-radius: 50%;
+  border: 0.0625rem solid #e3e5ed;
+  border-radius: 12rem;
   background-color: white;
   transition: border 0.1s linear, background-color 0.1s linear; }
 
@@ -36,11 +36,11 @@
   color: #a4a7b5; }
 
 .rainbow-radio [type="radio"] {
-  width: 1px;
-  height: 1px;
+  width: 0.0625rem;
+  height: 0.0625rem;
   border: 0;
   clip: rect(0 0 0 0);
-  margin: -1px;
+  margin: -0.0625rem;
   overflow: hidden;
   padding: 0;
   position: absolute; }
@@ -59,7 +59,7 @@
     top: 50%;
     left: 50%;
     transform: translate3d(-50%, -50%, 0);
-    border-radius: 50%;
+    border-radius: 12rem;
     background: #01b6f5; }
 
 .rainbow-radio [type="radio"]:focus + .rainbow-radio_faux,
@@ -83,7 +83,7 @@
 .rainbow-radio-group-has-error .rainbow-radio [type='radio'] + .rainbow-radio_faux,
 .rainbow-radio-group-has-error .rainbow-radio [type='radio'] ~ .rainbow-radio_faux,
 .rainbow-radio-group-has-error .rainbow-radio [type='radio'] + .rainbow-radio__label .rainbow-radio_faux {
-  border: solid 1.5px #fe4849; }
+  border: solid 0.09375rem #fe4849; }
 
 .rainbow-radio-group-has-error .rainbow-radio [type='radio']:focus + .rainbow-radio_faux,
 .rainbow-radio-group-has-error .rainbow-radio [type='radio']:focus ~ .rainbow-radio_faux,
@@ -107,10 +107,10 @@
 
 .rainbow-radio-group-required {
   color: #fe4849;
-  margin: 0 0.125rem; }
+  margin: 0 0.25rem; }
 
 .rainbow-radio-group-form-element__error {
   font-size: 1rem;
-  margin-top: 0.125rem;
+  margin-top: 0.25rem;
   display: block;
   color: #ea4243; }
