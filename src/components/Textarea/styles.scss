@@ -1,0 +1,116 @@
+@import "../../styles/colors.scss";
+@import "../../styles/shadows.scss";
+@import "../../styles/font-sizes.scss";
+@import "../../styles/border-radius.scss";
+@import "../../styles/margins.scss";
+
+.rainbow-textarea-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.rainbow-textarea {
+    border-radius: $border-radius-1;
+    background-color: #fff;
+    border: solid 1px $color-gray-3;
+    transition: all 0.1s linear;
+    width: 100%;
+    padding: 0.625rem 1rem;
+    resize: none;
+    font-size: $font-size-text-medium;
+    line-height: 1.57;
+    color: $color-dark-1;
+
+    &:focus,
+    &:active {
+        outline: 0;
+        background-color: #fff;
+        border: solid 2px $color-brand;
+        box-shadow: $shadow-3;
+        padding: 0.5625rem 0.9375rem;
+    }
+
+    &::placeholder {
+        color: $color-gray-3;
+        font-size: $font-size-text-medium;
+    }
+
+    &[disabled] {
+        cursor: not-allowed;
+        user-select: none;
+        background-color: $color-gray-1;
+        border: solid 1px $color-gray-2;
+        color: $color-gray-2;
+
+        &:focus,
+        &:active {
+            box-shadow: none;
+            padding: 0.625rem 1rem;
+        }
+
+        &::placeholder {
+            color: $color-gray-2;
+        }
+    }
+
+    &[readonly] {
+        border: none;
+        border-radius: 0;
+        background-color: transparent;
+        padding: 0;
+
+        &:focus,
+        &:active {
+            box-shadow: none;
+            border: none;
+        }
+    }
+}
+
+.rainbow-textarea-label {
+    color: $color-gray-4;
+    font-size: $font-size-text-small;
+    line-height: 1.5;
+    margin-bottom: 0.125rem;
+    align-self: center;
+
+    &:empty {
+        margin: 0;
+    }
+
+    &[readonly] {
+        align-self: flex-start;
+        margin-bottom: $margin-xx-small;
+    }
+}
+
+.rainbow-textarea-help-error {
+    font-size: $font-size-text-small;
+    color: $color-gray-4;
+    margin-top: $margin-x-small;
+    align-self: center;
+}
+
+.rainbow-textarea-required {
+    color: $color-error;
+    margin: 0 0.125rem;
+}
+
+.rainbow-textarea-has-error {
+    .rainbow-textarea-help-error {
+        color: $color-error;
+    }
+
+    .rainbow-textarea {
+        background-color: #fff;
+        border: solid 2px $color-error;
+        background-clip: padding-box;
+
+        &:focus,
+        &:active {
+            box-shadow: $color-error 0 0 0 1px inset, 0 0 3px $color-error;
+            padding: 0.625rem 1rem;
+        }
+    }
+}
