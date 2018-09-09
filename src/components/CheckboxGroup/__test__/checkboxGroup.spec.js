@@ -20,29 +20,4 @@ describe('<CheckboxGroup />', () => {
 
         expect(component.find('fieldset.rainbow-checkbox-group-container.custom-class-name').exists()).toBe(true);
     });
-
-    it('should render the label when label is passed', () => {
-        const component = mount(<CheckboxGroup options={options} label="label" />);
-
-        expect(component.find('legend.rainbow-checkbox-group-label').exists()).toBe(true);
-    });
-
-    it('should render the RequiredAsterisk component when required is passed', () => {
-        const component = mount(<CheckboxGroup options={options} label="label" required />);
-
-        expect(component.find('RequiredAsterisk').exists()).toBe(true);
-    });
-
-    it('should render the error when error is passed', () => {
-        const component = mount(<CheckboxGroup options={options} label="label" error="this field is required" />);
-
-        expect(component.find('div.rainbow-checkbox-group-error').exists()).toBe(true);
-    });
-
-    it('should render the amount of children passed as options ', () => {
-        const component = mount(<CheckboxGroup options={options} />);
-        const checkboxContainer = component.find('div.rainbow-checkbox');
-
-        expect(checkboxContainer.length).toBe(3);
-    });
 });

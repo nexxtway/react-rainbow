@@ -1,3 +1,5 @@
+import React from 'react';
+import { mount } from 'enzyme';
 import CheckboxList from '../checkboxList';
 
 const options = [
@@ -8,25 +10,15 @@ const options = [
 
 describe('<CheckboxList />', () => {
     it('should return the right amount of checkboxes ', () => {
-        const component = CheckboxList({
-            options,
-            checkIfSelected: () => {},
-            onChange: () => {},
-            describedBy: 'checkboxGroupId',
-        });
-        expect(component.length).toBe(3);
+        const component = mount(<CheckboxList options={options} />);
+        expect(component.children().length).toBe(3);
     });
 
     it('should pass the right props to the Checkbox component', () => {
-        const component = CheckboxList({
-            options,
-            checkIfSelected: () => {},
-            onChange: () => {},
-            describedBy: 'checkboxGroupId',
-        });
-        const checkbox = component[0];
-        expect(checkbox.props.value).toBe('admin');
-        expect(checkbox.props.label).toBe('Admin');
-        expect(checkbox.props.disabled).toBe(false);
+        const component = mount(<CheckboxList options={[{ value: 'admin', label: 'Admin', disabled: false }]} />);
+        const checkbox = component.find('Checkbox');
+        expect(checkbox.prop('value')).toBe('admin');
+        expect(checkbox.prop('label')).toBe('Admin');
+        expect(checkbox.prop('disabled')).toBe(false);
     });
 });

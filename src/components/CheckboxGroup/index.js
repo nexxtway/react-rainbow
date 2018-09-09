@@ -10,9 +10,16 @@ import './styles.css';
 export default class CheckboxGroup extends Component {
     constructor(props) {
         super(props);
-        this.checkboxGruopId = uniqueId('checkboxGroup');
+        this.errorMessageId = uniqueId('error-message');
         this.handleOnChange = this.handleOnChange.bind(this);
-        this.checkIfSelected = this.checkIfSelected.bind(this);
+    }
+
+    getErrorMessageId() {
+        const { error } = this.props;
+        if (error) {
+            return this.errorMessageId;
+        }
+        return undefined;
     }
 
     getCheckboxContainerClassNames() {
@@ -34,13 +41,8 @@ export default class CheckboxGroup extends Component {
         }
     }
 
-    checkIfSelected(option) {
-        const { value: values } = this.props;
-        return values.find(value => value === option.value) !== undefined;
-    }
-
     render() {
-        const { options, required, label, error, style } = this.props;
+        const { value, options, required, label, error, style } = this.props;
         return (
             <fieldset className={this.getCheckboxContainerClassNames()} style={style}>
                 <RenderIf isTrue={!!label}>
@@ -49,16 +51,16 @@ export default class CheckboxGroup extends Component {
                         {label}
                     </legend>
                 </RenderIf>
-                <div id={this.checkboxGruopId} className="rainbow-checkbox-group-checkbox-container">
+                <div className="rainbow-checkbox-group-checkbox-container">
 
                     <CheckboxList
+                        values={value}
                         options={options}
-                        checkIfSelected={this.checkIfSelected}
                         onChange={this.handleOnChange}
-                        describedBy={this.checkboxGruopId} />
+                        describedBy={this.getErrorMessageId()} />
                 </div>
                 <RenderIf isTrue={!!error}>
-                    <div className="rainbow-checkbox-group-error">{error}</div>
+                    <div id={this.getErrorMessageId()} className="rainbow-checkbox-group-error">{error}</div>
                 </RenderIf>
             </fieldset>
         );
