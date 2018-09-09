@@ -1,5 +1,11 @@
 ##### vertical navigation
 
+    const verticalNavigationContainerStyles = {
+        width: '280px',
+        borderBottomLeftRadius: '0.875rem',
+        borderRight: '1px solid #e3e5ed',
+    };
+
     class SimpleVerticalNavigation extends React.Component {
         constructor(props) {
             super(props);
@@ -16,15 +22,12 @@
         render() {
             return (
                 <VerticalNavigation selectedItem={this.state.selectedItem} onSelect={this.handleOnSelect}>
-                    <VerticalSection label="REPORTS">
+                    <VerticalSection>
                         <VerticalItem name="item-1" label="Recent" />
-                        <VerticalItem name="item-2" label="Created by Me" />
-                        <VerticalItem name="item-3" label="Private Reports" />
-                        <VerticalItem name="item-4" label="Public Reports" />
-                    </VerticalSection>
-                    <VerticalSection label="Folders">
-                        <VerticalItem name="item-5" label="Created by Me" />
-                        <VerticalItem name="item-6" label="Shared with Me" />
+                        <VerticalItem name="item-2" label="Projects" />
+                        <VerticalItem name="item-3" label="Folders" />
+                        <VerticalItem name="item-4" label="Settings" />
+                        <VerticalItem name="item-5" label="Reports" />
                     </VerticalSection>
                 </VerticalNavigation>
             );
@@ -32,14 +35,20 @@
     }
 
     <div>
-        <GlobalHeader src="images/avatar2.jpg" />
-        <div className="slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-small-size_1-of-1 slds-color__background_gray-1 slds-p-vertical_medium slds-border_right">
+        <GlobalHeader src="images/user/user3.jpg" />
+        <div className="rainbow-background-color_white rainbow-p-top_small rainbow-p-bottom_medium" style={verticalNavigationContainerStyles}>
             <SimpleVerticalNavigation />
         </div>
     </div>
 
 
 ##### compact vertical navigation with href
+
+    const verticalNavigationContainerStyles = {
+        width: '280px',
+        borderBottomLeftRadius: '0.875rem',
+        borderRight: '1px solid #e3e5ed',
+    };
 
     class CompactVerticalNavigation extends React.Component {
         constructor(props) {
@@ -57,11 +66,11 @@
         render() {
             return (
                 <VerticalNavigation compact selectedItem={this.state.selectedItem} onSelect={this.handleOnSelect}>
-                    <VerticalSection label="COMPONENTS">
+                    <VerticalSection>
                         <VerticalItem name="item-1" label="Avatar" href="/#/Components/Avatar" />
                         <VerticalItem name="item-2" label="Button" href="/#/Components/Button" />
                         <VerticalItem name="item-3" label="ButtonMenu" href="/#/Components/ButtonMenu" />
-                        <VerticalItem name="item-4" label="Card" href="/#/Components/Card" />
+                        <VerticalItem name="item-4" label="VerticalItem" href="/#/Components/VerticalItem" />
                         <VerticalItem name="item-5" label="VerticalNavigation" href="/#/Components/VerticalNavigation" />
                     </VerticalSection>
                 </VerticalNavigation>
@@ -70,13 +79,69 @@
     }
 
     <div>
-        <GlobalHeader />
-        <div className="slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-small-size_1-of-1 slds-color__background_gray-1 slds-p-vertical_medium slds-border_right">
+        <GlobalHeader src="images/user/user2.jpg" />
+        <div className="rainbow-background-color_white rainbow-p-top_small rainbow-p-vertical_medium" style={verticalNavigationContainerStyles}>
             <CompactVerticalNavigation />
         </div>
     </div>
 
+
+##### vertical navigation with headers
+
+    const verticalNavigationContainerStyles = {
+        width: '280px',
+        borderBottomLeftRadius: '0.875rem',
+        borderRight: '1px solid #e3e5ed',
+    };
+
+    class VerticalNavigationWithHeaders extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                selectedItem: 'item 1',
+            };
+            this.handleOnSelect = this.handleOnSelect.bind(this);
+        }
+
+        handleOnSelect(e, selectedItem) {
+            return this.setState({ selectedItem });
+        }
+
+        render() {
+            return (
+                <VerticalNavigation selectedItem={this.state.selectedItem} onSelect={this.handleOnSelect}>
+                    <VerticalSection label="GETTING STARTED">
+                        <VerticalItem name="item-1" label="Recent" />
+                        <VerticalItem name="item-2" label="Projects" />
+                        <VerticalItem name="item-3" label="Settings" />
+                    </VerticalSection>
+                    <VerticalSection label="FOLDERS">
+                        <VerticalItem name="item-5" label="Created by Me" />
+                        <VerticalItem name="item-6" label="Shared with Me" />
+                    </VerticalSection>
+                </VerticalNavigation>
+            );
+        }
+    }
+
+    <div>
+        <GlobalHeader src="images/user/user3.jpg" />
+        <div style={verticalNavigationContainerStyles} className="rainbow-background-color_white rainbow-p-top_small rainbow-p-vertical_medium">
+            <VerticalNavigationWithHeaders />
+        </div>
+    </div>
+
+
 ##### vertical navigation with icons
+
+    const verticalNavigationContainerStyles = {
+        width: '280px',
+        borderBottomLeftRadius: '0.875rem',
+        borderRight: '1px solid #e3e5ed',
+    };
+
+    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+    const { faClock, faCog, faFolderOpen, faBook, faReceipt } = require('@fortawesome/free-solid-svg-icons');
 
     class VerticalNavigationWithIcons extends React.Component {
         constructor(props) {
@@ -94,23 +159,12 @@
         render() {
             return (
                 <VerticalNavigation selectedItem={this.state.selectedItem} onSelect={this.handleOnSelect}>
-                    <VerticalSection label="REPORTS">
-                        <VerticalItem name="item-1" label="Recent" />
-                        <VerticalItem name="item-2" label="Created by Me" />
-                    </VerticalSection>
-                    <VerticalSection label="Folders">
-                        <VerticalItem
-                            name="item-3"
-                            label="Created by Me"
-                            iconName="utility:opened_folder" />
-                        <VerticalItem
-                            name="item-4"
-                            label="Shared with Me"
-                            iconName="utility:opened_folder" />
-                        <VerticalItem
-                            name="item-5"
-                            label="Apps"
-                            iconName="utility:apps" />
+                    <VerticalSection>
+                        <VerticalItem name="item-1" label="Folders" icon={<FontAwesomeIcon icon={faFolderOpen} />} />
+                        <VerticalItem name="item-2" label="Recents" icon={<FontAwesomeIcon icon={faClock} />} />
+                        <VerticalItem name="item-3" label="Settings" icon={<FontAwesomeIcon icon={faCog} />} />
+                        <VerticalItem name="item-4" label="Projects" icon={<FontAwesomeIcon icon={faBook} />} />
+                        <VerticalItem name="item-5" label="Reports" icon={<FontAwesomeIcon icon={faReceipt} />} />
                     </VerticalSection>
                 </VerticalNavigation>
             );
@@ -119,12 +173,137 @@
 
     <div>
         <GlobalHeader />
-        <div className="slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-small-size_1-of-1 slds-color__background_gray-1 slds-p-vertical_medium slds-border_right">
+        <div style={verticalNavigationContainerStyles} className="rainbow-background-color_white rainbow-p-top_small rainbow-p-bottom_large">
             <VerticalNavigationWithIcons />
         </div>
     </div>
 
+
+##### vertical navigation with header and icons
+
+    const verticalNavigationContainerStyles = {
+        width: '280px',
+        borderBottomLeftRadius: '0.875rem',
+        borderRight: '1px solid #e3e5ed',
+    };
+
+    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+    const { faClock, faCog, faFolderOpen, faBook, faReceipt } = require('@fortawesome/free-solid-svg-icons');
+
+    class VerticalNavigationWithIcons extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                selectedItem: 'item 5',
+            };
+            this.handleOnSelect = this.handleOnSelect.bind(this);
+        }
+
+        handleOnSelect(e, selectedItem) {
+            return this.setState({ selectedItem });
+        }
+
+        render() {
+            return (
+                <VerticalNavigation selectedItem={this.state.selectedItem} onSelect={this.handleOnSelect}>
+                    <VerticalSection label="GETTING STARTED">
+                        <VerticalItem name="item-1" label="Folders" icon={<FontAwesomeIcon icon={faFolderOpen} />} />
+                        <VerticalItem name="item-2" label="Recents" icon={<FontAwesomeIcon icon={faClock} />} />
+                    </VerticalSection>
+
+                    <VerticalSection label="ACCOUNT">
+                        <VerticalItem name="item-3" label="Settings" icon={<FontAwesomeIcon icon={faCog} />} />
+                        <VerticalItem name="item-4" label="Projects" icon={<FontAwesomeIcon icon={faBook} />} />
+                        <VerticalItem name="item-5" label="Reports" icon={<FontAwesomeIcon icon={faReceipt} />} />
+                    </VerticalSection>
+                </VerticalNavigation>
+            );
+        }
+    }
+
+    <div>
+        <GlobalHeader src="images/user/user2.jpg" />
+        <div style={verticalNavigationContainerStyles} className="rainbow-background-color_white rainbow-p-vertical_medium rainbow-p-top_small">
+            <VerticalNavigationWithIcons />
+        </div>
+    </div>
+
+
+##### vertical navigation expandable
+
+    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+    const { faChevronDown, faTh, faFolderOpen } = require('@fortawesome/free-solid-svg-icons');
+
+    const containerStyles = {
+        width: '280px',
+        borderBottomLeftRadius: '0.875rem',
+        borderRight: '1px solid #e3e5ed',
+    };
+    
+    class ShadedVerticalNavigation extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                selectedItem: 'item 1',
+            };
+            this.handleOnSelect = this.handleOnSelect.bind(this);
+        }
+
+        handleOnSelect(e, selectedItem) {
+            return this.setState({ selectedItem });
+        }
+
+        render() {
+            return (
+                <VerticalNavigation selectedItem={this.state.selectedItem} onSelect={this.handleOnSelect}>
+                    <VerticalSectionOverflow
+                        title="Folders"
+                        description="Folders created, shared..."
+                        icon={<FontAwesomeIcon icon={faChevronDown} />}>
+
+                        <VerticalItem name="item-3" label="Apps" icon={<FontAwesomeIcon icon={faTh} />} />
+                        <VerticalItem name="item-4" label="Folder shared with Me" icon={<FontAwesomeIcon icon={faFolderOpen} />} />
+                    </VerticalSectionOverflow>
+                    
+                    <VerticalSectionOverflow
+                        title="Recents"
+                        description="Folders created, shared..."
+                        icon={<FontAwesomeIcon icon={faChevronDown} />}>
+
+                        <VerticalItem name="item-1" label="Shared with Me" />
+                        <VerticalItem name="item-2" label="Created by Me" />
+                    </VerticalSectionOverflow>
+
+                    <VerticalSectionOverflow
+                        title="Documents"
+                        description="Document created, shared..."
+                        icon={<FontAwesomeIcon icon={faChevronDown} />}>
+
+                        <VerticalItem name="item-5" label="Recents" />
+                        <VerticalItem name="item-6" label="Folder created by Me" />
+                        <VerticalItem name="item-7" label="Folder shared with Me" />
+                    </VerticalSectionOverflow>
+                    
+                </VerticalNavigation>
+            );
+        }
+    }
+
+    <div>
+        <GlobalHeader />
+        <div className="rainbow-background-color_white rainbow-p-top_small rainbow-p-bottom_x-large" style={containerStyles}>
+            <ShadedVerticalNavigation />
+        </div>
+    </div>
+
+
 ##### vertical navigation with notifications
+
+    const containerStyles = {
+        width: '280px',
+        borderBottomLeftRadius: '0.875rem',
+        borderRight: '1px solid #e3e5ed',
+    };
 
     class VerticalNavigationWithNofifications extends React.Component {
         constructor(props) {
@@ -142,24 +321,21 @@
         render() {
             return (
                 <VerticalNavigation selectedItem={this.state.selectedItem} onSelect={this.handleOnSelect}>
-                    <VerticalSection label="REPORTS">
+                    <VerticalSection>
                         <VerticalItem name="item-1" label="Recent" />
                         <VerticalItem
                             name="item-2"
-                            label="Created by Me"
+                            label="Projects"
                             notification={<Badge label="NEW" variant="default" />}
                         />
-                        <VerticalItem name="item-3" label="Private Reports" />
-                        <VerticalItem name="item-4" label="Public Reports" />
-                    </VerticalSection>
-                    <VerticalSection label="Folders">
+                        <VerticalItem name="item-3" label="Folders" />
+                        <VerticalItem name="item-4" label="Settings" />
                         <VerticalItem
                             name="item-5"
-                            label="Created by Me"
+                            label="Reports"
                             notification={<Badge label="5" variant="inverse" />}
                         />
-                        <VerticalItem name="item-6" label="Shared with Me" />
-                        <VerticalItem name="item-7" label="Apps" />
+                        <VerticalItem name="item-6" label="Apps" />
                     </VerticalSection>
                 </VerticalNavigation>
             );
@@ -167,100 +343,8 @@
     }
 
     <div>
-        <GlobalHeader />
-        <div className="slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-small-size_1-of-1 slds-color__background_gray-1 slds-p-vertical_medium slds-border_right">
+        <GlobalHeader src="images/user/user3.jpg" />
+        <div className="rainbow-background-color_white rainbow-p-top_small rainbow-p-bottom_x-large" style={containerStyles}>
             <VerticalNavigationWithNofifications />
-        </div>
-    </div>
-
-
-##### shaded vertical navigation
-
-    class ShadedVerticalNavigation extends React.Component {
-        constructor(props) {
-            super(props);
-            this.state = {
-                selectedItem: 'item 1',
-            };
-            this.handleOnSelect = this.handleOnSelect.bind(this);
-        }
-
-        handleOnSelect(e, selectedItem) {
-            return this.setState({ selectedItem });
-        }
-
-        render() {
-            return (
-                <VerticalNavigation shaded selectedItem={this.state.selectedItem} onSelect={this.handleOnSelect}>
-                    <VerticalSection label="REPORTS">
-                        <VerticalItem name="item-1" label="Recent" />
-                        <VerticalItem name="item-2" label="Created by Me" />
-                        <VerticalItem name="item-3" label="Private Reports" />
-                        <VerticalItem name="item-4" label="Public Reports" />
-                    </VerticalSection>
-                    <VerticalSection label="Folders">
-                        <VerticalItem name="item-5" label="Created by Me" />
-                        <VerticalItem name="item-6" label="Shared with Me" />
-                    </VerticalSection>
-                </VerticalNavigation>
-            );
-        }
-    }
-
-    <div>
-        <GlobalHeader />
-        <div className="slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-small-size_1-of-1 slds-color__background_gray-3 slds-p-vertical_medium slds-border_right">
-            <ShadedVerticalNavigation />
-        </div>
-    </div>
-
-##### vertical navigation expandable
-
-    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-    const { faCog, faChevronDown } = require('@fortawesome/free-solid-svg-icons');
-
-    class ShadedVerticalNavigation extends React.Component {
-        constructor(props) {
-            super(props);
-            this.state = {
-                selectedItem: 'item 1',
-            };
-            this.handleOnSelect = this.handleOnSelect.bind(this);
-        }
-
-        handleOnSelect(e, selectedItem) {
-            return this.setState({ selectedItem });
-        }
-
-        render() {
-            return (
-                <VerticalNavigation selectedItem={this.state.selectedItem} onSelect={this.handleOnSelect}>
-                    <VerticalSection label="REPORTS">
-                        <VerticalItem name="item-1" label="Recent" />
-                        <VerticalItem name="item-2" label="Created by Me" />
-                        <VerticalItem name="item-3" label="Private Reports" />
-                    </VerticalSection>
-                    <VerticalSectionOverflow
-                        title="Folders"
-                        description="Folders created, shared..."
-                        leftIcon={<FontAwesomeIcon icon={faCog} />}
-                        rightIcon={<FontAwesomeIcon icon={faChevronDown} />}>
-
-                        <VerticalItem name="item-4" label="Folder created by Me" />
-                        <VerticalItem name="item-5" label="Folder shared with Me" />
-                    </VerticalSectionOverflow>
-                    <VerticalSectionOverflow expanded title="Documents" description="Documents created, shared...">
-                        <VerticalItem name="item-6" label="Document created by Me" />
-                        <VerticalItem name="item-7" label="Document shared with Me" />
-                    </VerticalSectionOverflow>
-                </VerticalNavigation>
-            );
-        }
-    }
-
-    <div>
-        <GlobalHeader />
-        <div className="slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-small-size_1-of-1 slds-color__background_gray-1 slds-p-vertical_medium slds-border_right">
-            <ShadedVerticalNavigation />
         </div>
     </div>

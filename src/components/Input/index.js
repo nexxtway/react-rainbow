@@ -81,7 +81,6 @@ export default class Input extends Component {
             maxLength,
             minLength,
             pattern,
-            labelClassName,
             icon,
             iconPosition,
             bottomHelpText,
@@ -92,7 +91,6 @@ export default class Input extends Component {
         return (
             <div className={this.getContainerClassNames()} style={style}>
                 <Label
-                    className={labelClassName}
                     label={label}
                     required={isRequiredOrHasError}
                     inputId={this.inputId}
@@ -194,8 +192,6 @@ Input.propTypes = {
     tabIndex: PropTypes.number,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
-    /** A CSS class for the label element, in addition to the label's base classes. */
-    labelClassName: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
 };
@@ -220,6 +216,5 @@ Input.defaultProps = {
     onChange: () => {},
     tabIndex: undefined,
     className: undefined,
-    labelClassName: undefined,
     style: undefined,
 };

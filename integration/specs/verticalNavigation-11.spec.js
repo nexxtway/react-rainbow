@@ -1,13 +1,11 @@
-const FOLDERS_BTN = '#rsg-root > div > main > section > section > div > div > article > div > article > div > div > div > div.slds-large-size_1-of-3.slds-medium-size_1-of-2.slds-small-size_1-of-1.slds-color__background_gray-1.slds-p-vertical_medium.slds-border_right > nav > div:nth-child(2) > button';
-const DOCUMENTS_BTN = '#rsg-root > div > main > section > section > div > div > article > div > article > div > div > div > div.slds-large-size_1-of-3.slds-medium-size_1-of-2.slds-small-size_1-of-1.slds-color__background_gray-1.slds-p-vertical_medium.slds-border_right > nav > div:nth-child(3) > button';
-const CHILD_FOLDERS_BTN = 'li=Folder created by Me';
-const CHILD_DOCUMENTS_BTN = 'li=Document created by Me';
-const RECENT_ITEM = 'li=Recent';
-const RECENT_ITEM_LINK = 'a=Recent';
-const RECENT_ITEM_CLASS = 'rainbow-nav-vertical__item rainbow-is-active';
-const CREATED_BY_ME_LINK = 'a=Created by Me';
-const ENTER_KEY = '\uE006';
+const FOLDERS_BTN = 'div.rainbow-background-color_white.rainbow-p-top_small.rainbow-p-bottom_x-large > nav > div:nth-child(1) > button';
+const ITEMS_CONTAINER = '#search-results-6';
+const APPS_ITEM = 'li=Apps';
+const SHARED_ITEM_LINK = 'a=Folder shared with Me';
+const SHARED_ITEM = 'div.rainbow-background-color_white.rainbow-p-top_small.rainbow-p-bottom_x-large > nav > div:nth-child(1) > div > ul > li:nth-child(2)';
+const SELECTED_ITEM_CLASS = 'rainbow-nav-vertical__item rainbow-is-active';
 const TAB_KEY = '\uE004';
+const ENTER_KEY = '\uE006';
 
 describe('VerticalNavigation expandable example', () => {
     beforeEach(() => {
@@ -15,47 +13,52 @@ describe('VerticalNavigation expandable example', () => {
         browser.refresh();
     });
 
-    it('should open the "Folders" menu when click on the "Folders" button', () => {
+    it('should open the "FOLDERS" menu when click on the "FOLDERS" button', () => {
         browser.click(FOLDERS_BTN);
-        expect(browser.isVisible(CHILD_FOLDERS_BTN)).toBe(true);
+        expect(browser.isVisible(ITEMS_CONTAINER)).toBe(true);
     });
-    it('should close the "Documents" menu when click on the "DOCUMENTS" button', () => {
-        browser.click(DOCUMENTS_BTN);
-        expect(browser.isVisible(CHILD_DOCUMENTS_BTN)).toBe(false);
+    it('should get focus the "FOLDERS" menu when click in the "FOLDERS" button', () => {
+        browser.click(FOLDERS_BTN);
+        expect(browser.hasFocus(FOLDERS_BTN)).toBe(true);
     });
-    it('should not lost focus the "Documents" menu when it was closed', () => {
-        browser.click(DOCUMENTS_BTN);
-        expect(browser.hasFocus(DOCUMENTS_BTN)).toBe(true);
+    it('should close the "FOLDERS" menu when it is open and click on it', () => {
+        browser.click(FOLDERS_BTN);
+        browser.click(FOLDERS_BTN);
+        browser.pause(500);
+        expect(browser.isVisible(ITEMS_CONTAINER)).toBe(false);
     });
-    it('should focus the "Recent" item when click on it', () => {
-        browser.click(RECENT_ITEM);
-        expect(browser.hasFocus(RECENT_ITEM_LINK)).toBe(true);
+    it('should not lost focus the "FOLDERS" menu when it was closed', () => {
+        browser.click(FOLDERS_BTN);
+        browser.click(FOLDERS_BTN);
+        expect(browser.hasFocus(FOLDERS_BTN)).toBe(true);
     });
-    it('should lost focus the "Recent" link when it is focused and press the hey "TAB"', () => {
-        browser.click(RECENT_ITEM);
+    it('should lost focus the "FOLDERS" menu when it is focused and press the key "TAB"', () => {
+        browser.click(FOLDERS_BTN);
         browser.keys(TAB_KEY);
-        expect(browser.hasFocus(RECENT_ITEM_LINK)).toBe(false);
+        expect(browser.hasFocus(FOLDERS_BTN)).toBe(false);
     });
-    it('should select the "Recent" item when click on it', () => {
-        browser.click(RECENT_ITEM);
-        expect(browser.getAttribute(RECENT_ITEM, 'class')).toBe(RECENT_ITEM_CLASS);
+    it('should select the "Apps" item when click on it', () => {
+        browser.click(FOLDERS_BTN);
+        browser.click(APPS_ITEM);
+        expect(browser.getAttribute(APPS_ITEM, 'class')).toBe(SELECTED_ITEM_CLASS);
     });
-    it('should not lost select the "Recent" item when it is selected and press the hey "TAB"', () => {
-        browser.click(RECENT_ITEM);
+    it('should not lost select the "Apps" item when it is selected and press the key "TAB"', () => {
+        browser.click(FOLDERS_BTN);
+        browser.click(APPS_ITEM);
         browser.keys(TAB_KEY);
-        expect(browser.getAttribute(RECENT_ITEM, 'class')).toBe(RECENT_ITEM_CLASS);
+        expect(browser.getAttribute(APPS_ITEM, 'class')).toBe(SELECTED_ITEM_CLASS);
     });
-    it('should move to the previous link ("Created by Me" link) when "Recent" item is focused and press "TAB"', () => {
-        browser.click(RECENT_ITEM);
+    it('should move to the previous link ("Folder shared with Me" item) when "Apps" item is selected and press "TAB"', () => {
+        browser.click(FOLDERS_BTN);
+        browser.click(APPS_ITEM);
         browser.keys(TAB_KEY);
-        expect(browser.hasFocus(CREATED_BY_ME_LINK)).toBe(true);
+        expect(browser.hasFocus(SHARED_ITEM_LINK)).toBe(true);
     });
-    it('should open the "FOLDER" menu when it is focused and press ENTER', () => {
-        browser.click(RECENT_ITEM);
-        browser.keys(TAB_KEY);
-        browser.keys(TAB_KEY);
+    it('should select the "SHARED" item when it is focused and press the key "ENTER"', () => {
+        browser.click(FOLDERS_BTN);
+        browser.click(APPS_ITEM);
         browser.keys(TAB_KEY);
         browser.keys(ENTER_KEY);
-        expect(browser.isVisible(CHILD_FOLDERS_BTN)).toBe(true);
+        expect(browser.getAttribute(SHARED_ITEM, 'class')).toBe(SELECTED_ITEM_CLASS);
     });
 });

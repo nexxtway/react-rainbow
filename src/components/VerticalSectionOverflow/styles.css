@@ -1,13 +1,21 @@
+.rainbow-nav-vertical-section-overflow-container {
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; }
+
+.rainbow-nav-vertical-section-overflow-container-expanded {
+  background-color: rgba(244, 246, 249, 0.4);
+  box-shadow: inset 0 0 2px 0 #e3e5ed;
+  padding-bottom: 16px; }
+
 .rainbow-nav-vertical-section-overflow-button {
   border: 0;
   display: -ms-flexbox;
   display: flex;
-  padding: 1rem 1rem 1rem 1.5rem;
-  border-bottom: 0.0625rem solid #f4f6f9;
+  padding: 1rem 1rem 1rem 2rem;
   border-radius: 0;
   color: #576574;
   font-size: 0.875rem;
   background-clip: border-box;
+  background-color: transparent;
   text-decoration: none;
   width: 100%;
   cursor: pointer;
@@ -21,10 +29,20 @@
     outline: 0; }
 
 .rainbow-nav-certical-overflow-show {
-  display: block; }
+  transition: all 0.2s ease-out;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out; }
 
 .rainbow-nav-certical-overflow-hide {
-  display: none !important; }
+  max-height: 0;
+  overflow: hidden;
+  transition: 0.4s;
+  -webkit-transition: 0.4s;
+  -moz-transition: 0.4s;
+  -ms-transition: 0.4s;
+  -o-transition: 0.4s; }
 
 .rainbow-nav-vertical-overflow__action-text {
   display: flex;
@@ -35,12 +53,17 @@
 
 .rainbow-nav-vertical-overflow__action-title {
   font-size: 0.9375rem;
-  color: #576574; }
+  color: #01b6f5;
+  text-transform: uppercase; }
 
 .rainbow-nav-vertical-overflow__action-description {
   font-size: 0.625rem;
-  line-height: 1rem 1rem 1rem;
-  color: #a4a7b5; }
+  line-height: 1rem;
+  color: #a4a7b5;
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; }
+
+.rainbow-nav-vertical-overflow__action-description-expanded {
+  opacity: 0; }
 
 .rainbow-nav-vertical-section-overflow__icon > svg {
   font-size: 0.75rem !important;
@@ -48,11 +71,8 @@
   height: 0.75rem !important;
   color: #01b6f5 !important; }
 
-.rainbow-nav-vertical-section-overflow__icon_left {
-  margin-right: 0.5rem; }
-
 .rainbow-nav-vertical-section-overflow__icon_right {
   margin-left: 0.5rem; }
 
-.rainbow-nav-certical-overflow-show .rainbow-nav-vertical__action {
-  padding: 0.5rem 0.5rem 0.5rem 2.875rem; }
+.rainbow-nav-vertical-section-overflow-container .rainbow-nav-vertical__action {
+  padding: 0.75rem 0.5rem 0.75rem 2.875rem; }

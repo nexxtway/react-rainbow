@@ -1,0 +1,77 @@
+.rainbow-textarea-container {
+  position: relative;
+  display: flex;
+  flex-direction: column; }
+
+.rainbow-textarea {
+  border-radius: 0.875rem;
+  background-color: #fff;
+  border: solid 1px #a4a7b5;
+  transition: all 0.1s linear;
+  width: 100%;
+  padding: 0.625rem 1rem;
+  resize: none;
+  font-size: 0.875rem;
+  line-height: 1.57;
+  color: #061c3f; }
+  .rainbow-textarea:focus, .rainbow-textarea:active {
+    outline: 0;
+    background-color: #fff;
+    border: solid 2px #01b6f5;
+    box-shadow: 0 0 2px #01b6f5;
+    padding: 0.5625rem 0.9375rem; }
+  .rainbow-textarea::placeholder {
+    color: #a4a7b5;
+    font-size: 0.875rem; }
+  .rainbow-textarea[disabled] {
+    cursor: not-allowed;
+    user-select: none;
+    background-color: #f4f6f9;
+    border: solid 1px #e3e5ed;
+    color: #e3e5ed; }
+    .rainbow-textarea[disabled]:focus, .rainbow-textarea[disabled]:active {
+      box-shadow: none;
+      padding: 0.625rem 1rem; }
+    .rainbow-textarea[disabled]::placeholder {
+      color: #e3e5ed; }
+  .rainbow-textarea[readonly] {
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    padding: 0; }
+    .rainbow-textarea[readonly]:focus, .rainbow-textarea[readonly]:active {
+      box-shadow: none;
+      border: none; }
+
+.rainbow-textarea-label {
+  color: #576574;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  margin-bottom: 0.125rem;
+  align-self: center; }
+  .rainbow-textarea-label:empty {
+    margin: 0; }
+  .rainbow-textarea-label[readonly] {
+    align-self: flex-start;
+    margin-bottom: 0.25rem; }
+
+.rainbow-textarea-help-error {
+  font-size: 0.75rem;
+  color: #576574;
+  margin-top: 0.5rem;
+  align-self: center; }
+
+.rainbow-textarea-required {
+  color: #fe4849;
+  margin: 0 0.125rem; }
+
+.rainbow-textarea-has-error .rainbow-textarea-help-error {
+  color: #fe4849; }
+
+.rainbow-textarea-has-error .rainbow-textarea {
+  background-color: #fff;
+  border: solid 2px #fe4849;
+  background-clip: padding-box; }
+  .rainbow-textarea-has-error .rainbow-textarea:focus, .rainbow-textarea-has-error .rainbow-textarea:active {
+    padding: 0.625rem 1rem;
+    box-shadow: 0 0 2px #fe4849; }

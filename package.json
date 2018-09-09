@@ -27,6 +27,7 @@
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^5.1.0-11",
     "@fortawesome/free-regular-svg-icons": "^5.1.0-11",
+    "autosize": "^4.0.2",
     "classnames": "^2.2.5",
     "clipboard-copy": "^2.0.0",
     "file-loader": "^1.1.11",
