@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import { uniqueId } from './../../libs/utils';
 import RenderIf from '../RenderIf';
 import RequiredAsterisk from '../Input/requiredAsterisk';
+import OptionItems from './optionItems';
 import './styles.css';
 
 export default class Select extends Component {
@@ -14,39 +15,42 @@ export default class Select extends Component {
 
     getContainerClassNames() {
         const { classNames, error } = this.props;
-        return classnames('rainbow-form-element', { 'rainbow-has-error': error }, classNames);
-    }
-
-    getOptionItems() {
-        const { options } = this.props;
-        return options.map(option => <option value={option.value} key={uniqueId('option')}>{option.label}</option>);
+        return classnames('rainbow-select-wrapper', { 'rainbow-select-has-error': error }, classNames);
     }
 
     render() {
-        const { label, value, onChange, error, required, disabled, style } = this.props;
+        const {
+            label,
+            placeholder,
+            value,
+            options,
+            onChange,
+            error,
+            required,
+            disabled,
+            style,
+        } = this.props;
         return (
             <div className={this.getContainerClassNames()} style={style}>
                 <RenderIf isTrue={!!label}>
-                    <label className="rainbow-form-element__label" htmlFor={this.selectId}>
+                    <label className="rainbow-select-label" htmlFor={this.selectId}>
                         <RequiredAsterisk required={required} />
                         {label}
                     </label>
                 </RenderIf>
-                <div className="rainbow-form-element__control">
-                    <div className="rainbow-select_container">
-                        <select
-                            className="rainbow-select"
-                            placeholder="please select"
-                            id={this.selectId}
-                            onChange={onChange}
-                            value={value}
-                            disabled={disabled}>
-                            {this.getOptionItems()}
-                        </select>
-                    </div>
+                <div className="rainbow-select-container">
+                    <select
+                        className="rainbow-select"
+                        placeholder={placeholder}
+                        id={this.selectId}
+                        onChange={onChange}
+                        value={value}
+                        disabled={disabled}>
+                        <OptionItems options={options} />
+                    </select>
                 </div>
                 <RenderIf isTrue={!!error}>
-                    <div className="rainbow-form-element__help">{error}</div>
+                    <div className="rainbow-select-error">{error}</div>
                 </RenderIf>
             </div>
         );
@@ -54,9 +58,9 @@ export default class Select extends Component {
 }
 
 Select.propTypes = {
-    /** The input label */
+    /** The select label */
     label: PropTypes.string,
-    /** Specifies the value of an input element. */
+    /** Specifies the selected value. */
     value: PropTypes.string,
     /** The action triggered when a option item is selected. */
     onChange: PropTypes.func,
@@ -73,6 +77,7 @@ Select.propTypes = {
         {
             value: PropTypes.string,
             label: PropTypes.string,
+            disabbled: PropTypes.bool,
         })),
     /** A CSS class for the outer element, in addition to the component's base classes. */
     classNames: PropTypes.string,
@@ -88,7 +93,7 @@ Select.defaultProps = {
     required: false,
     disabled: false,
     options: [],
-    classNames: '',
-    style: {},
+    classNames: undefined,
+    style: undefined,
 };
 

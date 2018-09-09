@@ -6,19 +6,19 @@
 @import "../../styles/margins";
 @import "../../styles/paddings";
 
-.rainbow-form-element {
+.rainbow-select-wrapper {
     position: relative;
     display: flex;
     flex-direction: column;
 }
 
-.rainbow-form-element__help {
+.rainbow-select-error {
     font-size: $font-size-text-small;
     margin-top: $margin-x-small;
     align-self: center;
 }
 
-.rainbow-form-element__label {
+.rainbow-select-label {
     color: $color-gray-4;
     font-size: $font-size-text-small;
     line-height: 1.5;
@@ -31,7 +31,7 @@
     }
 }
 
-.rainbow-select_container {
+.rainbow-select-container {
     position: relative;
 
     &::after {
@@ -48,7 +48,7 @@
     }
 }
 
-.rainbow-has-error {
+.rainbow-select-has-error {
     .rainbow-select {
         background-color: white;
         border: 2px $color-error solid;
@@ -91,8 +91,8 @@
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
-        cursor: not-allowed;
         user-select: none;
+        cursor: not-allowed;
         background-color: $color-gray-1;
         border-color: $color-gray-2;
         color: $color-gray-2;

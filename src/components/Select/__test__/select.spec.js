@@ -29,12 +29,6 @@ describe('Select component', () => {
         );
         expect(component.find('select').prop('disabled')).toBe(true);
     });
-    it('should set disabled in the select element if it is passed', () => {
-        const component = mount(
-            <Select disabled />,
-        );
-        expect(component.find('select').prop('disabled')).toBe(true);
-    });
     it('should set the required prop passed in the RequiredAsterisk component', () => {
         const component = mount(
             <Select label="Select Label" required />,
