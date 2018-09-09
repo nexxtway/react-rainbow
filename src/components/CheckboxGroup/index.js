@@ -4,78 +4,80 @@ import classnames from 'classnames';
 import { uniqueId } from '../../libs/utils';
 import RenderIf from '../RenderIf';
 import RequiredAsterisk from '../Input/requiredAsterisk';
-import Checkbox from './checkbox';
+import CheckboxList from './checkboxList';
 import './styles.css';
 
 export default class CheckboxGroup extends Component {
     constructor(props) {
         super(props);
+        this.checkboxGruopId = uniqueId('checkboxGroup');
         this.handleOnChange = this.handleOnChange.bind(this);
-    }
-
-    getCheckboxValues() {
-        const { options } = this.props;
-        return options.map(option => (
-            <Checkbox
-                {...option}
-                isSelected={this.checkIfSelected(option)}
-                onChange={this.handleOnChange}
-                key={uniqueId('checkbox')} />
-        ));
+        this.checkIfSelected = this.checkIfSelected.bind(this);
     }
 
     getCheckboxContainerClassNames() {
-        const { error } = this.props;
-        return classnames('rainbow-checkbox-group-container', { 'rainbow-has-error': !!error });
+        const { error, className } = this.props;
+        return classnames(
+            'rainbow-checkbox-group-container',
+            { 'rainbow-checkbox-group-has-error': !!error },
+            className,
+        );
     }
 
-    handleOnChange(id, isSelected, disabled) {
-        if (disabled) return;
+    handleOnChange(event) {
+        const { value, checked } = event.target;
         const { value: values, onChange } = this.props;
-        if (!isSelected) {
-            onChange(values.filter(valueId => valueId !== id));
+        if (checked) {
+            onChange(values.concat([value]));
         } else {
-            onChange(values.concat([id]));
+            onChange(values.filter(valueId => valueId !== value));
         }
     }
 
     checkIfSelected(option) {
         const { value: values } = this.props;
-        return !!values.find(value => value === option.id);
+        return values.find(value => value === option.value) !== undefined;
     }
 
     render() {
-        const { required, label, error } = this.props;
+        const { options, required, label, error, style } = this.props;
         return (
-            <div className={this.getCheckboxContainerClassNames()}>
+            <fieldset className={this.getCheckboxContainerClassNames()} style={style}>
                 <RenderIf isTrue={!!label}>
-                    <legend className="rainbow-checkbox-group__label">
+                    <legend className="rainbow-checkbox-group-label">
                         <RequiredAsterisk required={required} />
                         {label}
                     </legend>
                 </RenderIf>
-                <div className="rainbow-checkbox-group_checkbox-container">
-                    {this.getCheckboxValues()}
+                <div id={this.checkboxGruopId} className="rainbow-checkbox-group-checkbox-container">
+
+                    <CheckboxList
+                        options={options}
+                        checkIfSelected={this.checkIfSelected}
+                        onChange={this.handleOnChange}
+                        describedBy={this.checkboxGruopId} />
                 </div>
                 <RenderIf isTrue={!!error}>
-                    <div className="rainbow-form-element__help">{error}</div>
+                    <div className="rainbow-checkbox-group-error">{error}</div>
                 </RenderIf>
-            </div>
+            </fieldset>
         );
     }
 }
 
 CheckboxGroup.propTypes = {
-    value: PropTypes.array,
+    value: PropTypes.arrayOf(PropTypes.string),
     onChange: PropTypes.func,
     label: PropTypes.string,
     required: PropTypes.bool,
     options: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.string,
+        value: PropTypes.string,
         label: PropTypes.string,
         disabled: PropTypes.bool,
     })),
     error: PropTypes.node,
+    className: PropTypes.string,
+    style: PropTypes.object,
 };
 
 CheckboxGroup.defaultProps = {
@@ -85,5 +87,7 @@ CheckboxGroup.defaultProps = {
     required: false,
     options: [],
     error: null,
+    className: '',
+    style: {},
 };
 

@@ -1,8 +1,8 @@
 ##### CheckboxGroup basic
     const options = [
-        { id: 'admin', label: 'Admin', disabled: false },
-        { id: 'user', label: 'User', disabled: false },
-        { id: 'nobody', label: 'Anonymus', disabled: true },
+        { value: 'admin', label: 'Admin', disabled: false },
+        { value: 'user', label: 'User', disabled: false },
+        { value: 'nobody', label: 'Anonymus', disabled: true },
     ];
 
     class CheckboxGroupTry extends React.Component {
