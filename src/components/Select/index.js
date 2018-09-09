@@ -40,7 +40,6 @@ export default class Select extends Component {
                 <div className="rainbow-select-container">
                     <select
                         className="rainbow-select"
-                        placeholder={placeholder}
                         id={this.selectId}
                         onChange={onChange}
                         value={value}
