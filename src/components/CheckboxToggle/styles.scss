@@ -69,7 +69,7 @@
 .rainbow-checkbox_toggle [type="checkbox"]:focus ~ .rainbow-checkbox__toggle_faux,
 .rainbow-checkbox_toggle [type="checkbox"]:focus + .rainbow-checkbox__toggle_faux_container .rainbow-checkbox__toggle_faux {
     background-color: $color-gray-2;
-    border-color: #dcdfe7;;
+    border-color: #dcdfe7;
 }
 
 .rainbow-checkbox_toggle [type="checkbox"]:checked + .rainbow-checkbox__toggle_faux,
