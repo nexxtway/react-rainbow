@@ -27,7 +27,7 @@
         outline: 0;
         background-color: #fff;
         border: solid 2px $color-brand;
-        box-shadow: $shadow-3;
+        box-shadow: $shadow-outline;
         padding: 0.5625rem 0.9375rem;
     }
 
@@ -109,8 +109,8 @@
 
         &:focus,
         &:active {
-            box-shadow: $color-error 0 0 0 1px inset, 0 0 3px $color-error;
             padding: 0.625rem 1rem;
+            box-shadow: $shadow-error;
         }
     }
 }

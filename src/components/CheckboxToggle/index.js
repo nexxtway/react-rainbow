@@ -6,6 +6,10 @@ import { uniqueId } from '../../libs/utils';
 import RenderIf from '../RenderIf';
 import './styles.css';
 
+/**
+* Checkbox toggle is a checkable input that communicates if an option is true,
+* false or indeterminate.
+*/
 export default class CheckboxToggle extends Component {
     constructor(props) {
         super(props);
