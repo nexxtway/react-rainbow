@@ -57,7 +57,7 @@
     }
 
     .rainbow-select:focus, .rainbow-select:active {
-        box-shadow: $color-error-active $shadow-1, $shadow-2 $color-brand-active;
+        box-shadow: $shadow-error;
     }
 }
 

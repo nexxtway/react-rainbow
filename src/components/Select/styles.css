@@ -40,7 +40,7 @@
   background-clip: padding-box; }
 
 .rainbow-select-has-error .rainbow-select:focus, .rainbow-select-has-error .rainbow-select:active {
-  box-shadow: #ea4243 0 0 2px 0 #a4a7b5, 0 2px 4px 0 #e3e5ed #009acf; }
+  box-shadow: 0 0 2px #fe4849; }
 
 .rainbow-select {
   -moz-appearance: none;
