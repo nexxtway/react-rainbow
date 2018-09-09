@@ -15,8 +15,8 @@
             this.handleOnChange = this.handleOnChange.bind(this);
         }
 
-        handleOnChange(value) {
-            return this.setState({ value });
+        handleOnChange(event) {
+            return this.setState({ value: event.target.value });
         }
 
         render() {
@@ -51,8 +51,8 @@
             this.handleOnChange = this.handleOnChange.bind(this);
         }
 
-        handleOnChange(value) {
-            return this.setState({ value });
+        handleOnChange(event) {
+            return this.setState({ value: event.target.value });
         }
 
         render() {
@@ -87,8 +87,8 @@
             this.handleOnChange = this.handleOnChange.bind(this);
         }
 
-        handleOnChange(value) {
-            return this.setState({ value });
+        handleOnChange(event) {
+            return this.setState({ value: event.target.value });
         }
 
         render() {
@@ -124,8 +124,8 @@
             this.handleOnChange = this.handleOnChange.bind(this);
         }
 
-        handleOnChange(value) {
-            return this.setState({ value });
+        handleOnChange(event) {
+            return this.setState({ value: event.target.value });
         }
 
         render() {

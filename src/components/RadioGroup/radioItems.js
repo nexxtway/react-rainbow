@@ -11,18 +11,13 @@ export default function RadioItems(props) {
         name,
     } = props;
 
-    const handleOnChange = (event) => {
-        const { value: radioValue } = event.target;
-        onChange(radioValue);
-    };
-
     const isChecked = option => option.value === value;
 
     return (
         options.map(option => (
             <Radio
                 value={option.value}
-                onChange={handleOnChange}
+                onChange={onChange}
                 isChecked={isChecked(option)}
                 label={option.label}
                 disabled={option.disabled}
@@ -42,5 +37,5 @@ RadioItems.propTypes = {
 
 RadioItems.defaultProps = {
     ariaDescribedby: undefined,
-    onChange: PropTypes.func,
+    onChange: () => {},
 };
