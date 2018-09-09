@@ -12,21 +12,21 @@
 }
 
 .rainbow-form-element-helper {
-    font-size: 0.75rem;
+    font-size: $font-size-text-small;
 }
 
 .rainbow-checkbox-group-label {
     display: inline-block;
     color: $color-gray-4;
-    font-size: 0.75rem;
+    font-size: $font-size-text-small;
     line-height: 1.5;
-    margin-right: 0.75rem;
-    margin-bottom: 0.125rem;
+    margin-right: $margin-small;
+    margin-bottom: $margin-xx-small;
 }
 
 .rainbow-checkbox-group-error {
-    font-size: 0.75rem;
-    margin-top: 0.5rem;
+    font-size: $font-size-text-small;
+    margin-top: $margin-small;
     display: block;
 }
 
@@ -48,9 +48,9 @@
         position: relative;
         vertical-align: middle;
         border: 1px solid $color-gray-2;
-        border-radius: 0.25rem;
+        border-radius: $border-radius-3;
         background: white;
-        margin-right: 0.5rem;
+        margin-right: $margin-small;
         transition: border 0.1s linear, background-color 0.1s linear;
     }
 
@@ -91,7 +91,7 @@
     [type="checkbox"]:focus + .rainbow-checkbox-label-container .rainbow-checkbox-faux {
         content: '';
         border-color: $color-brand;
-        box-shadow: 0 0 3px $color-brand-active;
+        box-shadow: $shadow-outline;
     }
 
     [type="checkbox"]:focus:checked > .rainbow-checkbox-faux,
@@ -99,7 +99,7 @@
     [type="checkbox"]:focus:checked + .rainbow-checkbox-label-container .rainbow-checkbox-faux {
         border-color: $color-brand-active;
         background-color: white;
-        box-shadow: 0 0 3px $color-brand-active;
+        box-shadow: $shadow-outline;
     }
 
     [type="checkbox"][disabled] + .rainbow-checkbox-faux,
@@ -158,6 +158,6 @@
     .rainbow-checkbox [type="checkbox"] + .rainbow-checkbox-faux,
     .rainbow-checkbox [type="checkbox"] ~ .rainbow-checkbox-faux,
     .rainbow-checkbox [type="checkbox"] + .rainbow-checkbox-label-container .rainbow-checkbox-faux {
-        margin-right: 0.5rem;
+        margin-right: $margin-small;
     }
 }
