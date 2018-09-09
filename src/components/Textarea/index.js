@@ -24,7 +24,7 @@ export default class Textarea extends Component {
         if (grow) {
             return autosize(this.textareaRef.current);
         }
-        return undefined;
+        return null;
     }
 
     getContainerClassNames() {
@@ -154,8 +154,7 @@ Textarea.propTypes = {
     cols: PropTypes.number,
     /** The number of visible text lines for the control. The value by default is 3. */
     rows: PropTypes.number,
-    /** This make to textarea grow. */
-    /* This value defaults to false. */
+    /** This make to textarea grow. This value defaults to false. */
     grow: PropTypes.bool,
 };
 
