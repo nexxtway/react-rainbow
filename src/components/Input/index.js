@@ -179,8 +179,7 @@ Input.propTypes = {
     isCentered: PropTypes.bool,
     /** Specifies that an input will not have border. This value defaults to false. */
     isBare: PropTypes.bool,
-    /** Specifies that an input field must be filled out before submitting the form.
-    * This value defaults to false. */
+    /** Specifies that an input field must be filled out before submitting the form. */
     error: PropTypes.node,
     /** Specifies that an input element should be disabled. This value defaults to false. */
     disabled: PropTypes.bool,

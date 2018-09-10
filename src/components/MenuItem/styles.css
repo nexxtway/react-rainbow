@@ -47,7 +47,8 @@
 
 .rainbow-menu-item > a[aria-disabled="true"]:hover,
 .rainbow-menu-item > a[aria-disabled="true"]:focus {
-  background-color: transparent; }
+  background-color: transparent;
+  text-decoration: none; }
 
 .rainbow-icon-container {
   width: 1rem;
