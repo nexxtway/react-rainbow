@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import LightningApplication from 'react-rainbow-components/components/Application';
+import RainbowApplication from 'react-rainbow-components/components/Application';
 import Home from './pages/Home';
 import Avatar from './pages/Avatar';
 import Badge from './pages/Badge';
@@ -16,7 +16,7 @@ import Spinner from './pages/Spinner';
 export default function App() {
     return (
         <Router>
-            <LightningApplication>
+            <RainbowApplication>
                 <Route exact path="/" component={Home} />
                 <Route path="/avatar" component={Avatar} />
                 <Route path="/badge" component={Badge} />
@@ -28,7 +28,7 @@ export default function App() {
                 <Route path="/input" component={Input} />
                 <Route path="/progress-bar" component={ProgressBar} />
                 <Route path="/spinner" component={Spinner} />
-            </LightningApplication>
+            </RainbowApplication>
         </Router>
     );
 }

@@ -93,7 +93,7 @@
             <div className="rainbow-p-horizontal_small" style={inputContainerStyles}>
                 <Input
                     label="Input Url"
-                    placeholder="https://react-lightning-components.com"
+                    placeholder="https://react-rainbow-components.com"
                     type="url" />
 
             </div>

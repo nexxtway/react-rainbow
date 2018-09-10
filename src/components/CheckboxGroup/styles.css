@@ -66,13 +66,13 @@
   .rainbow-checkbox [type="checkbox"]:focus + .rainbow-checkbox-label-container .rainbow-checkbox-faux {
     content: '';
     border-color: #01b6f5;
-    box-shadow: 0 0 3px #0070d2; }
+    box-shadow: 0 0 2px #01b6f5; }
   .rainbow-checkbox [type="checkbox"]:focus:checked > .rainbow-checkbox-faux,
   .rainbow-checkbox [type="checkbox"]:focus:checked ~ .rainbow-checkbox-faux,
   .rainbow-checkbox [type="checkbox"]:focus:checked + .rainbow-checkbox-label-container .rainbow-checkbox-faux {
     border-color: #009acf;
     background-color: white;
-    box-shadow: 0 0 3px #0070d2; }
+    box-shadow: 0 0 2px #01b6f5; }
   .rainbow-checkbox [type="checkbox"][disabled] + .rainbow-checkbox-faux,
   .rainbow-checkbox [type="checkbox"][disabled] ~ .rainbow-checkbox-faux,
   .rainbow-checkbox [type="checkbox"][disabled] + .rainbow-checkbox-label-container .rainbow-checkbox-faux {
