@@ -1,8 +1,8 @@
 ##### Checkbox Group basic
     const options = [
-        { value: 'admin', label: 'Admin', disabled: false },
-        { value: 'user', label: 'User', disabled: false },
-        { value: 'nobody', label: 'Anonymus', disabled: true },
+        { value: 'checkboxOne', label: 'Checkbox One', disabled: false },
+        { value: 'checkboxTwo', label: 'Checkbox Two', disabled: false },
+        { value: 'checkboxThree', label: 'Checkbox Three', disabled: false },
     ];
 
     class CheckboxGroupTry extends React.Component {
@@ -19,9 +19,9 @@
         render() {
             const { values } = this.state;
             return (
-                <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
+                <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
                     <CheckboxGroup
-                        label="checkbox group"
+                        label="Checkbox Group Label"
                         options={options}
                         value={values}
                         onChange={this.handleOnChange} />
@@ -32,45 +32,12 @@
 
     <CheckboxGroupTry />
 
-##### Checkbox Group active
-    const options = [
-        { value: 'admin', label: 'Admin', disabled: false },
-        { value: 'user', label: 'User', disabled: false },
-        { value: 'nobody', label: 'Anonymus', disabled: true },
-    ];
-
-    class CheckboxGroupTry extends React.Component {
-        constructor(props) {
-            super(props);
-            this.state = { values: ['admin', 'user'] };
-            this.handleOnChange = this.handleOnChange.bind(this);
-        }
-
-        handleOnChange(values) {
-            this.setState({ values });
-        }
-
-        render() {
-            const { values } = this.state;
-            return (
-                <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
-                    <CheckboxGroup
-                        label="checkbox group"
-                        options={options}
-                        value={values}
-                        onChange={this.handleOnChange} />
-                </div>
-            );
-        }
-    }
-
-    <CheckboxGroupTry />
 
 ##### Checkbox Group disabled
     const options = [
-        { value: 'admin', label: 'Admin', disabled: true },
-        { value: 'user', label: 'User', disabled: true },
-        { value: 'nobody', label: 'Anonymus', disabled: true },
+        { value: 'checkboxOne', label: 'Checkbox One', disabled: true },
+        { value: 'checkboxTwo', label: 'Checkbox Two', disabled: true },
+        { value: 'checkboxThree', label: 'Checkbox Three', disabled: true },
     ];
 
     class CheckboxGroupTry extends React.Component {
@@ -87,9 +54,9 @@
         render() {
             const { values } = this.state;
             return (
-                <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
+                <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
                     <CheckboxGroup
-                        label="checkbox group"
+                        label="Checkbox Group Label"
                         options={options}
                         value={values}
                         onChange={this.handleOnChange} />
@@ -103,9 +70,9 @@
 
 ##### Checkbox Group required
     const options = [
-        { value: 'admin', label: 'Admin', disabled: false },
-        { value: 'user', label: 'User', disabled: false },
-        { value: 'nobody', label: 'Anonymus', disabled: true },
+        { value: 'checkboxOne', label: 'Checkbox One', disabled: false },
+        { value: 'checkboxTwo', label: 'Checkbox Two', disabled: false },
+        { value: 'checkboxThree', label: 'Checkbox Three', disabled: false },
     ];
 
     class CheckboxGroupTry extends React.Component {
@@ -122,9 +89,9 @@
         render() {
             const { values } = this.state;
             return (
-                <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
+                <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
                     <CheckboxGroup
-                        label="checkbox group"
+                        label="Checkbox Group Label"
                         required
                         options={options}
                         value={values}
@@ -136,11 +103,12 @@
 
     <CheckboxGroupTry />
 
+
 ##### Checkbox Group error
     const options = [
-        { value: 'admin', label: 'Admin', disabled: false },
-        { value: 'user', label: 'User', disabled: false },
-        { value: 'nobody', label: 'Anonymus', disabled: true },
+        { value: 'checkboxOne', label: 'Checkbox One', disabled: false },
+        { value: 'checkboxTwo', label: 'Checkbox Two', disabled: false },
+        { value: 'checkboxThree', label: 'Checkbox Three', disabled: false },
     ];
 
     class CheckboxGroupTry extends React.Component {
@@ -157,11 +125,10 @@
         render() {
             const { values } = this.state;
             return (
-                <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
+                <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
                     <CheckboxGroup
-                        label="checkbox group"
-                        required
-                        error="this field is required"
+                        label="Checkbox Group Label"
+                        error="This field is required"
                         options={options}
                         value={values}
                         onChange={this.handleOnChange} />

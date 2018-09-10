@@ -7,6 +7,9 @@ import RequiredAsterisk from '../Input/requiredAsterisk';
 import CheckboxList from './checkboxList';
 import './styles.css';
 
+/**
+* A checkable input that communicates if an option is true, false or indeterminate.
+*/
 export default class CheckboxGroup extends Component {
     constructor(props) {
         super(props);

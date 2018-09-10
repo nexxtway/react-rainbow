@@ -134,12 +134,12 @@
 
 .rainbow-radio-group-required {
     color: $color-error;
-    margin: 0 $margin-xx-small;
+    margin: 0;
 }
 
 .rainbow-radio-group-form-element__error {
-    font-size: $font-size-heading-small;
-    margin-top: $margin-xx-small;
+    font-size: $font-size-text-small;
+    margin-top: $margin-x-small;
     display: block;
     color: $color-error-active;
 }

@@ -23,7 +23,7 @@
         }
     }
 
-    <div className="rainbow-p-vertical_large rainbow-p-left_medium">
+    <div className="rainbow-p-vertical_large rainbow-p-left_x-large">
         <SimpleCheckboxToggle />
     </div>
 
@@ -52,7 +52,7 @@
         }
     }
 
-    <div className="rainbow-p-vertical_large rainbow-p-left_medium">
+    <div className="rainbow-p-vertical_large rainbow-p-left_x-large">
         <CheckedCheckboxToggle />
     </div>
 
@@ -82,6 +82,6 @@
         }
     }
 
-    <div className="rainbow-p-vertical_large rainbow-p-left_medium">
+    <div className="rainbow-p-vertical_large rainbow-p-left_x-large">
         <DisabledCheckboxToggle />
     </div>

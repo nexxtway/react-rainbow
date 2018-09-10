@@ -107,10 +107,10 @@
 
 .rainbow-radio-group-required {
   color: #fe4849;
-  margin: 0 0.25rem; }
+  margin: 0; }
 
 .rainbow-radio-group-form-element__error {
-  font-size: 1rem;
-  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
   display: block;
   color: #ea4243; }
