@@ -6,7 +6,7 @@
 @import "../../styles/margins";
 @import "../../styles/paddings";
 
-.rainbow-select-wrapper {
+.rainbow-select-container {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -31,7 +31,7 @@
     }
 }
 
-.rainbow-select-container {
+.rainbow-select-form-element__control {
     position: relative;
 
     &::after {
@@ -45,19 +45,6 @@
         border-left: 0.1875rem solid transparent;
         border-right: 0.1875rem solid transparent;
         border-top: 0.3125rem solid $color-dark-1;
-    }
-}
-
-.rainbow-select-has-error {
-    .rainbow-select {
-        background-color: white;
-        border: 2px $color-error solid;
-        box-shadow: $shadow-1;
-        background-clip: padding-box;
-    }
-
-    .rainbow-select:focus, .rainbow-select:active {
-        box-shadow: $shadow-error;
     }
 }
 
@@ -104,5 +91,22 @@
             border: 1px $color-gray-2 solid;
             padding-left: $padding-medium;
         }
+    }
+}
+
+.rainbow-select-has-error {
+    .rainbow-select {
+        background-color: white;
+        border: 2px $color-error solid;
+        box-shadow: $shadow-1;
+        background-clip: padding-box;
+
+        &:focus, &:active {
+            box-shadow: $shadow-error;
+        }
+    }
+
+    .rainbow-select-error {
+        color: $color-error;
     }
 }

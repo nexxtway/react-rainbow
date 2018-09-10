@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import { uniqueId } from './../../libs/utils';
 import RenderIf from '../RenderIf';
 import RequiredAsterisk from '../Input/requiredAsterisk';
-import OptionItems from './optionItems';
+import Options from './options';
 import './styles.css';
 
 export default class Select extends Component {
@@ -15,36 +15,42 @@ export default class Select extends Component {
 
     getContainerClassNames() {
         const { classNames, error } = this.props;
-        return classnames('rainbow-select-wrapper', { 'rainbow-select-has-error': error }, classNames);
+        return classnames('rainbow-select-container', {
+            'rainbow-select-has-error': error,
+        }, classNames);
     }
 
     render() {
         const {
             label,
             value,
-            options,
             onChange,
             error,
             required,
             disabled,
+            options,
             style,
         } = this.props;
+        const isRequiredOrHasError = !!(required || error);
+
         return (
             <div className={this.getContainerClassNames()} style={style}>
                 <RenderIf isTrue={!!label}>
                     <label className="rainbow-select-label" htmlFor={this.selectId}>
-                        <RequiredAsterisk required={required} />
+                        <RequiredAsterisk required={isRequiredOrHasError} />
                         {label}
                     </label>
                 </RenderIf>
-                <div className="rainbow-select-container">
+                <div className="rainbow-select-form-element__control">
                     <select
                         className="rainbow-select"
                         id={this.selectId}
                         onChange={onChange}
                         value={value}
+                        required={isRequiredOrHasError}
                         disabled={disabled}>
-                        <OptionItems options={options} />
+
+                        <Options options={options} />
                     </select>
                 </div>
                 <RenderIf isTrue={!!error}>
@@ -94,4 +100,3 @@ Select.defaultProps = {
     classNames: undefined,
     style: undefined,
 };
-

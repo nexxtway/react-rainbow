@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-.rainbow-select-wrapper {
+.rainbow-select-container {
   position: relative;
   display: flex;
   flex-direction: column; }
@@ -19,9 +19,9 @@
   .rainbow-select-label:empty {
     margin: 0; }
 
-.rainbow-select-container {
+.rainbow-select-form-element__control {
   position: relative; }
-  .rainbow-select-container::after {
+  .rainbow-select-form-element__control::after {
     position: absolute;
     content: '';
     display: block;
@@ -32,15 +32,6 @@
     border-left: 0.1875rem solid transparent;
     border-right: 0.1875rem solid transparent;
     border-top: 0.3125rem solid #061c3f; }
-
-.rainbow-select-has-error .rainbow-select {
-  background-color: white;
-  border: 2px #fe4849 solid;
-  box-shadow: 0 0 2px 0 #a4a7b5;
-  background-clip: padding-box; }
-
-.rainbow-select-has-error .rainbow-select:focus, .rainbow-select-has-error .rainbow-select:active {
-  box-shadow: 0 0 2px #fe4849; }
 
 .rainbow-select {
   -moz-appearance: none;
@@ -77,3 +68,14 @@
       background-color: #f4f6f9;
       border: 1px #e3e5ed solid;
       padding-left: 1rem; }
+
+.rainbow-select-has-error .rainbow-select {
+  background-color: white;
+  border: 2px #fe4849 solid;
+  box-shadow: 0 0 2px 0 #a4a7b5;
+  background-clip: padding-box; }
+  .rainbow-select-has-error .rainbow-select:focus, .rainbow-select-has-error .rainbow-select:active {
+    box-shadow: 0 0 2px #fe4849; }
+
+.rainbow-select-has-error .rainbow-select-error {
+  color: #fe4849; }

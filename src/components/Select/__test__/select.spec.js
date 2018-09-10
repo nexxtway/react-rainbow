@@ -29,6 +29,18 @@ describe('Select component', () => {
         );
         expect(component.find('select').prop('disabled')).toBe(true);
     });
+    it('should set the required passed in the select element when it is passed', () => {
+        const component = mount(
+            <Select required />,
+        );
+        expect(component.find('select').prop('required')).toBe(true);
+    });
+    it('should set the required passed in the select element when there is an error', () => {
+        const component = mount(
+            <Select error="select error" />,
+        );
+        expect(component.find('select').prop('required')).toBe(true);
+    });
     it('should set the required prop passed in the RequiredAsterisk component', () => {
         const component = mount(
             <Select label="Select Label" required />,
@@ -39,6 +51,6 @@ describe('Select component', () => {
         const component = mount(
             <Select error="Error text" />,
         );
-        expect(component.find('div[className="rainbow-select-wrapper rainbow-select-has-error"]').exists()).toBe(true);
+        expect(component.find('div[className="rainbow-select-container rainbow-select-has-error"]').exists()).toBe(true);
     });
 });
