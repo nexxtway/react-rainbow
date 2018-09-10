@@ -8,21 +8,23 @@
     "library"
   ],
   "scripts": {
-    "build:css": "node-sass-chokidar src/components/ -o ./components/",
-    "watch:css": "node-sass-chokidar src/components/ -o src/components/ --watch --recursive",
     "start:library": "./node_modules/.bin/styleguidist server",
-    "start": "npm-run-all -p start:library watch:css",
-    "build:fonts": "npx babel src/components/Application/fonts --out-dir components/Application/fonts --copy-files",
-    "build": "npx babel ./src --out-dir ./ && npx babel index.js --out-dir components && yarn build:css && yarn build:fonts",
+    "watch:css": "node-sass-chokidar src/components/ -o src/components/ --watch --recursive",
+    "start": "run-p start:library watch:css",
     "build:library": "./node_modules/.bin/styleguidist build",
+    "build:components": "npx babel ./src --out-dir ./",
+    "build:index": "npx babel index.js --out-dir components",
+    "build:css": "node-sass-chokidar src/components/ -o ./components/",
+    "build:fonts": "npx babel src/components/Application/fonts --out-dir components/Application/fonts --copy-files",
+    "build": "run-p build:components build:index build:css build:fonts",
     "prepublishOnly": "yarn clean && yarn build",
-    "clean": "rm -Rf components && rm -Rf propTypes && rm -Rf libs",
-    "test": "jest ./src --verbose",
+    "clean": "rm -Rf components && rm -Rf libs",
     "lint:js": "eslint src",
     "lint:scss": "stylelint src",
     "lint": "yarn lint:js && yarn lint:scss",
-    "deploy:library": "yarn build:library && firebase deploy",
-    "test:integration": "wdio"
+    "test": "jest ./src --verbose",
+    "test:integration": "wdio",
+    "deploy:library": "yarn build:library && firebase deploy"
   },
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^5.1.0-11",
