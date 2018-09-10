@@ -7,6 +7,9 @@ import RequiredAsterisk from '../Input/requiredAsterisk';
 import Options from './options';
 import './styles.css';
 
+/**
+* Select element presents a menu of options.
+*/
 export default class Select extends Component {
     constructor(props) {
         super(props);

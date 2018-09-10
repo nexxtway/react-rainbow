@@ -1,9 +1,9 @@
 ##### radio group base
 
     const options = [
-        { value: 'admin', label: 'Admin' },
-        { value: 'user', label: 'User' },
-        { value: 'anonymous', label: 'Anonymous' },
+        { value: 'Radio One', label: 'Radio One' },
+        { value: 'Radio Two', label: 'Radio Two' },
+        { value: 'Radio Three', label: 'Radio Three' },
     ]
 
     class SimpleRadioGroup extends React.Component {
@@ -30,16 +30,16 @@
         }
     }
 
-    <div className="rainbow-p-vertical_large rainbow-p-left_medium">
+    <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
         <SimpleRadioGroup />
     </div>
 
 ##### radio group disabled
 
     const options = [
-        { value: 'admin', label: 'Admin', disabled: true },
-        { value: 'user', label: 'User' },
-        { value: 'anonymous', label: 'Anonymous' },
+        { value: 'Radio One', label: 'Radio One', disabled: true },
+        { value: 'Radio Two', label: 'Radio Two', disabled: true },
+        { value: 'Radio Three', label: 'Radio Three', disabled: true },
     ]
 
     class DisabledRadioGroup extends React.Component {
@@ -66,16 +66,16 @@
         }
     }
 
-    <div className="rainbow-p-vertical_large rainbow-p-left_medium">
+    <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
         <DisabledRadioGroup />
     </div>
 
 ##### radio group required
 
     const options = [
-        { value: 'admin', label: 'Admin' },
-        { value: 'user', label: 'User' },
-        { value: 'anonymous', label: 'Anonymous' },
+        { value: 'Radio One', label: 'Radio One' },
+        { value: 'Radio Two', label: 'Radio Two' },
+        { value: 'Radio Three', label: 'Radio Three' },
     ]
 
     class RequiredRadioGroup extends React.Component {
@@ -103,16 +103,16 @@
         }
     }
 
-    <div className="rainbow-p-vertical_large rainbow-p-left_medium">
+    <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
         <RequiredRadioGroup />
     </div>
 
 ##### radio group error
 
     const options = [
-        { value: 'admin', label: 'Admin' },
-        { value: 'user', label: 'User' },
-        { value: 'anonymous', label: 'Anonymous' },
+        { value: 'Radio One', label: 'Radio One' },
+        { value: 'Radio Two', label: 'Radio Two' },
+        { value: 'Radio Three', label: 'Radio Three' },
     ]
 
     class ErrorRadioGroup extends React.Component {
@@ -141,6 +141,6 @@
         }
     }
 
-    <div className="rainbow-p-vertical_large rainbow-p-left_medium">
+    <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
         <ErrorRadioGroup />
     </div>

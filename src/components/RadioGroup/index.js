@@ -6,6 +6,9 @@ import RenderIf from '../RenderIf';
 import { uniqueId } from '../../libs/utils';
 import './styles.css';
 
+/**
+* A select list that can have a single entry checked at any one time.
+*/
 export default class RadioGroup extends Component {
     constructor(props) {
         super(props);
