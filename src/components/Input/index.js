@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { uniqueId } from './../../libs/utils';
-import Icon from './icon';
 import Label from './label';
 import RenderIf from '../RenderIf';
 import './styles.css';
@@ -23,15 +22,15 @@ export default class Input extends Component {
             className,
             error,
         } = this.props;
-        return classnames('rainbow-form-element', { 'rainbow-has-error': error }, className);
+        return classnames('rainbow-input-container', { 'rainbow-input-has-error': error }, className);
     }
 
-    getFormControlClassNames() {
+    getIconPositionClassNames() {
         const {
             icon,
             iconPosition,
         } = this.props;
-        return classnames('rainbow-form-element__control', {
+        return classnames({
             'rainbow-input-has-icon': icon,
             [`rainbow-input-has-icon_${iconPosition}`]: icon,
         });
@@ -82,7 +81,6 @@ export default class Input extends Component {
             minLength,
             pattern,
             icon,
-            iconPosition,
             bottomHelpText,
             required,
         } = this.props;
@@ -97,11 +95,12 @@ export default class Input extends Component {
                     readOnly={readOnly}
                     id={this.getInlineTextLabelId()} />
 
-                <div className={this.getFormControlClassNames()}>
-                    <Icon
-                        icon={icon}
-                        position={iconPosition}
-                        error={error} />
+                <div className={this.getIconPositionClassNames()}>
+                    <RenderIf isTrue={!!icon}>
+                        <span className="rainbow-input__icon">
+                            {icon}
+                        </span>
+                    </RenderIf>
 
                     <input
                         id={this.inputId}
@@ -122,10 +121,10 @@ export default class Input extends Component {
 
                 </div>
                 <RenderIf isTrue={!!bottomHelpText}>
-                    <div className="rainbow-form-element__help rainbow-color__text_gray-11">{bottomHelpText}</div>
+                    <div className="rainbow-input-help">{bottomHelpText}</div>
                 </RenderIf>
                 <RenderIf isTrue={!!error}>
-                    <div id={this.getErrorMessageId()} className="rainbow-form-element__help">{error}</div>
+                    <div id={this.getErrorMessageId()} className="rainbow-input-help">{error}</div>
                 </RenderIf>
             </div>
         );
