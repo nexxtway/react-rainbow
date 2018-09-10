@@ -13,7 +13,7 @@ React Rainbow is a collection of components that will reliably help you build yo
 <br>
 
 [![CircleCI](https://circleci.com/gh/reiniergs/react-rainbow/tree/master.svg?style=svg)](https://circleci.com/gh/reiniergs/react-rainbow/tree/master)
-[![Coverage Status](https://coveralls.io/repos/github/reiniergs/react-lightning-components/badge.svg?branch=master)](https://coveralls.io/github/reiniergs/react-lightning-components?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/reiniergs/react-rainbow-components/badge.svg?branch=master)](https://coveralls.io/github/reiniergs/react-rainbow-components?branch=master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
