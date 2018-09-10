@@ -14,8 +14,8 @@ export default function Label(props) {
     } = props;
 
     const getLabelClassNames = () => classnames(
-        'rainbow-form-element__label',
-        { 'rainbow-form-element__label_read-only': readOnly });
+        'rainbow-input-label',
+        { 'rainbow-input-label_read-only': readOnly });
 
     return (
         <RenderIf isTrue={!!label}>
