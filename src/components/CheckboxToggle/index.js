@@ -44,7 +44,7 @@ export default class CheckboxToggle extends Component {
                     <span className="rainbow-checkbox__toggle_faux" />
                 </span>
                 <RenderIf isTrue={!!label} >
-                    <span className="rainbow-checkbox_toggle-form-element__label">{label}</span>
+                    <span className="rainbow-checkbox_toggle-label">{label}</span>
                 </RenderIf>
             </label>
         );

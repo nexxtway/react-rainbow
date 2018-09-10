@@ -1,5 +1,7 @@
 .rainbow-menu-item-header {
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 0.75rem; }
+
+.rainbow-truncate {
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
