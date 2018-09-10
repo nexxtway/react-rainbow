@@ -122,13 +122,13 @@ describe('<Input/>', () => {
         );
         expect(component.find('div[className="rainbow-input-container"]').exists()).toBe(true);
     });
-    it('should have the right class names when iconName is passed', () => {
+    it('should have the right class names when icon is passed', () => {
         const component = mount(
             <Input icon={icon} />,
         );
         expect(component.find('div[className="rainbow-input-has-icon rainbow-input-has-icon_left"]').exists()).toBe(true);
     });
-    it('should have the right class names when iconName is passed and iconPosition is right', () => {
+    it('should have the right class names when icon is passed and iconPosition is right', () => {
         const component = mount(
             <Input icon={icon} iconPosition="right" />,
         );
