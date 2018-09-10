@@ -128,7 +128,7 @@
                 <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
                     <CheckboxGroup
                         label="Checkbox Group Label"
-                        error="this field is required"
+                        error="This field is required"
                         options={options}
                         value={values}
                         onChange={this.handleOnChange} />

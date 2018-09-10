@@ -22,8 +22,9 @@
 
 .rainbow-checkbox-group-error {
     font-size: $font-size-text-small;
-    margin-top: $margin-small;
+    margin-top: $margin-x-small;
     display: block;
+    color: $color-error-active;
 }
 
 .rainbow-checkbox-group-checkbox-container {
