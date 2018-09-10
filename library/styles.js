@@ -20,7 +20,7 @@ module.exports = {
             fontSize: '0.88rem',
             fontWeight: 200,
             color: '#576574',
-            fontFamily: 'Lato-Light',
+            fontFamily: 'Lato',
         },
         heading6: {
             height: '34px',
@@ -28,6 +28,7 @@ module.exports = {
             color: '#04132c',
             borderRadius: '10px 10px 0 0',
             marginTop: -25,
+            fontFamily: 'Lato',
         },
     },
     Link: {

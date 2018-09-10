@@ -1,0 +1,112 @@
+/* stylelint-disable no-descending-specificity */
+@import "../../styles/colors";
+@import "../../styles/shadows";
+@import "../../styles/font-sizes";
+@import "../../styles/border-radius";
+@import "../../styles/margins";
+@import "../../styles/paddings";
+
+.rainbow-select-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.rainbow-select-error {
+    font-size: $font-size-text-small;
+    margin-top: $margin-x-small;
+    align-self: center;
+}
+
+.rainbow-select-label {
+    color: $color-gray-4;
+    font-size: $font-size-text-small;
+    line-height: 1.5;
+    margin-right: $margin-small;
+    margin-bottom: $margin-xx-small;
+    align-self: center;
+
+    &:empty {
+        margin: 0;
+    }
+}
+
+.rainbow-select-form-element__control {
+    position: relative;
+
+    &::after {
+        position: absolute;
+        content: '';
+        display: block;
+        right: 0.5rem;
+        bottom: 40%;
+        width: 0;
+        height: 0;
+        border-left: 0.1875rem solid transparent;
+        border-right: 0.1875rem solid transparent;
+        border-top: 0.3125rem solid $color-dark-1;
+    }
+}
+
+.rainbow-select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+    line-height: 2rem;
+    height: calc(2.125rem + (1px * 2));
+    border: 1px solid $color-gray-3;
+    border-radius: $border-radius-2;
+    padding: 0 $padding-medium 0 $padding-medium;
+    background-color: white;
+    color: $color-dark-1;
+    font-size: $font-size-text-medium;
+    transition: border 0.1s linear, background-color 0.1s linear;
+
+    &::-ms-expand {
+        display: none;
+    }
+
+    &:focus, &:active, &:visited {
+        outline: 0;
+        padding: 0 $padding-medium 0 0.9375rem;
+        border: 0.125rem $color-brand solid;
+        box-shadow: $shadow-3;
+        line-height: 1.875rem;
+    }
+
+    &[disabled] {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        cursor: not-allowed;
+        background-color: $color-gray-1;
+        border-color: $color-gray-2;
+        color: $color-gray-2;
+
+        &:focus,
+        &:active {
+            box-shadow: none;
+            background-color: $color-gray-1;
+            border: 1px $color-gray-2 solid;
+            padding-left: $padding-medium;
+        }
+    }
+}
+
+.rainbow-select-has-error {
+    .rainbow-select {
+        background-color: white;
+        border: 2px $color-error solid;
+        box-shadow: $shadow-1;
+        background-clip: padding-box;
+
+        &:focus, &:active {
+            box-shadow: $shadow-error;
+        }
+    }
+
+    .rainbow-select-error {
+        color: $color-error;
+    }
+}
