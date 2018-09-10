@@ -2,9 +2,6 @@
 
 .rainbow-menu-item-header {
     padding: 0.5rem 0.75rem;
-}
-
-.rainbow-truncate {
     max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -37,27 +34,27 @@
     color: $color-dark-1;
     white-space: nowrap;
     cursor: pointer;
-}
 
-.rainbow-menu-item > a:focus {
-    outline: 0;
-    text-decoration: none;
-    background-color: $color-gray-2;
-}
+    &:focus {
+        outline: 0;
+        text-decoration: none;
+        background-color: $color-gray-2;
+    }
 
-.rainbow-menu-item > a:active {
-    text-decoration: none;
-    background-color: $color-gray-2;
-}
+    &:active {
+        text-decoration: none;
+        background-color: $color-gray-2;
+    }
 
-.rainbow-menu-item > a[aria-disabled="true"] {
-    color: $color-gray-2;
-    cursor: default;
-}
+    &[aria-disabled="true"] {
+        color: $color-gray-2;
+        cursor: default;
 
-.rainbow-menu-item > a[aria-disabled="true"]:hover,
-.rainbow-menu-item > a[aria-disabled="true"]:focus {
-    background-color: transparent;
+        &:hover,
+        &:focus {
+            background-color: transparent;
+        }
+    }
 }
 
 .rainbow-icon-container {
