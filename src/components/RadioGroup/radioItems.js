@@ -13,23 +13,23 @@ export default function RadioItems(props) {
 
     const isChecked = option => option.value === value;
 
-    return (
-        options.map(option => (
+    return options.map((option, index) => {
+        const key = `radio-${index}`;
+        return (
             <Radio
-                value={option.value}
+                key={key}
                 onChange={onChange}
                 isChecked={isChecked(option)}
-                label={option.label}
-                disabled={option.disabled}
                 ariaDescribedby={ariaDescribedby}
-                name={name} />
-        ))
-    );
+                name={name}
+                {...option} />
+        );
+    });
 }
 
 RadioItems.propTypes = {
     ariaDescribedby: PropTypes.string,
-    value: PropTypes.string.isRequired,
+    value: PropTypes.string,
     options: PropTypes.array.isRequired,
     onChange: PropTypes.func,
     name: PropTypes.string.isRequired,
@@ -37,5 +37,6 @@ RadioItems.propTypes = {
 
 RadioItems.defaultProps = {
     ariaDescribedby: undefined,
+    value: undefined,
     onChange: () => {},
 };

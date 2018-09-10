@@ -22,10 +22,10 @@
         render() {
             return (
                 <RadioGroup
-                options={options}
-                value={this.state.value}
-                onChange={this.handleOnChange}
-                label="Radio Group Label" />
+                    options={options}
+                    value={this.state.value}
+                    onChange={this.handleOnChange}
+                    label="Radio Group Label" />
             );
         }
     }
@@ -46,7 +46,7 @@
         constructor(props) {
             super(props);
             this.state = {
-                value: undefined,
+                value: 'user',
             };
             this.handleOnChange = this.handleOnChange.bind(this);
         }
@@ -58,10 +58,10 @@
         render() {
             return (
                 <RadioGroup
-                options={options}
-                value={this.state.value}
-                onChange={this.handleOnChange}
-                label="Radio Group Label" />
+                    options={options}
+                    value={this.state.value}
+                    onChange={this.handleOnChange}
+                    label="Radio Group Label" />
             );
         }
     }
@@ -94,11 +94,11 @@
         render() {
             return (
                 <RadioGroup
-                options={options}
-                value={this.state.value}
-                onChange={this.handleOnChange}
-                label="Radio Group Label"
-                required />
+                    options={options}
+                    value={this.state.value}
+                    onChange={this.handleOnChange}
+                    label="Radio Group Label"
+                    required />
             );
         }
     }
@@ -131,12 +131,12 @@
         render() {
             return (
                 <RadioGroup
-                options={options}
-                value={this.state.value}
-                onChange={this.handleOnChange}
-                label="Radio Group Label"
-                required
-                error="This field is required" />
+                    options={options}
+                    value={this.state.value}
+                    onChange={this.handleOnChange}
+                    label="Radio Group Label"
+                    required
+                    error="This field is required" />
             );
         }
     }

@@ -54,4 +54,10 @@ describe('<Radio />', () => {
         );
         expect(component.find('input').prop('disabled')).toBe(true);
     });
+    it('should have the right classNames when in the span element of the label when is disabled', () => {
+        const component = mount(
+            <Radio label="radio label" disabled />,
+        );
+        expect(component.find('span[className="rainbow-radio-form-element__label rainbow-radio-form-element__label-disabled"]').exists()).toBe(true);
+    });
 });

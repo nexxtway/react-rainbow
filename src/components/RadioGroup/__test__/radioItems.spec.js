@@ -12,17 +12,16 @@ describe('<RadioItems />', () => {
         const component = mount(
             <RadioItems options={options} />,
         );
-        expect(component.find('Radio').length).toBe(3);
+        expect(component.children().length).toBe(3);
     });
     it('should pass the right props to the Radio component', () => {
         const option = [{ value: 'admin', label: 'Admin', disabled: true }];
-        const onChangeFn = jest.fn();
         const component = mount(
             <RadioItems
-            options={option}
-            name="name-1"
-            ariaDescribedby="error-1"
-            onChange={onChangeFn} />,
+                options={option}
+                name="name-1"
+                ariaDescribedby="error-1"
+                onChange={() => {}} />,
         );
         expect(component.find('Radio').props()).toEqual({
             value: option[0].value,
@@ -30,7 +29,7 @@ describe('<RadioItems />', () => {
             disabled: option[0].disabled,
             ariaDescribedby: 'error-1',
             name: 'name-1',
-            onChange: onChangeFn,
+            onChange: expect.any(Function),
             isChecked: false,
         });
     });

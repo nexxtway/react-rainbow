@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import RadioItmes from './radioItems';
 import RenderIf from '../RenderIf';
-import './styles.css';
 import { uniqueId } from '../../libs/utils';
+import './styles.css';
 
 export default class RadioGroup extends Component {
     constructor(props) {
         super(props);
-        this.errorId = uniqueId('error');
+        this.errorId = uniqueId('error-message');
         this.groupNameId = uniqueId('options');
     }
 
@@ -18,7 +18,16 @@ export default class RadioGroup extends Component {
         return classnames(
             'rainbow-radio-group-form-element',
             { 'rainbow-radio-group-has-error': !!error },
-            className);
+            className,
+        );
+    }
+
+    getErrorMessageId() {
+        const { error } = this.props;
+        if (error) {
+            return this.errorId;
+        }
+        return undefined;
     }
 
     render() {
@@ -31,6 +40,7 @@ export default class RadioGroup extends Component {
             options,
             value,
         } = this.props;
+
         return (
             <fieldset className={this.getContainerClassNames()} style={style}>
                 <RenderIf isTrue={!!label}>
@@ -46,15 +56,18 @@ export default class RadioGroup extends Component {
                         value={value}
                         onChange={onChange}
                         options={options}
-                        name={this.groupNameId} />
+                        name={this.groupNameId}
+                        ariaDescribedby={this.getErrorMessageId()} />
+
                 </div>
                 <RenderIf isTrue={!!error}>
-                    <div id={this.errorId} className="rainbow-radio-group-form-element__error">{error}</div>
+                    <div id={this.getErrorMessageId()} className="rainbow-radio-group-form-element__error">
+                        {error}
+                    </div>
                 </RenderIf>
             </fieldset>
         );
     }
-
 }
 
 RadioGroup.propTypes = {
@@ -68,7 +81,9 @@ RadioGroup.propTypes = {
     value: PropTypes.string,
     /** The action triggered when a value attribute changes. */
     onChange: PropTypes.func,
+    /** If is set to true the radio group is required. This value defaults to false. */
     required: PropTypes.bool,
+    /** An array with the radio options. */
     options: PropTypes.arrayOf(
         PropTypes.shape({
             value: PropTypes.string,
@@ -76,6 +91,7 @@ RadioGroup.propTypes = {
             disabled: PropTypes.bool,
         }),
     ),
+    /** Specifies that an radio group must be filled out before submitting the form. */
     error: PropTypes.node,
 };
 
@@ -87,5 +103,5 @@ RadioGroup.defaultProps = {
     onChange: () => {},
     required: false,
     options: [],
-    error: undefined,
+    error: null,
 };

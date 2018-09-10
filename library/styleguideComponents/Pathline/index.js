@@ -8,7 +8,7 @@ export default function CustomPathline(props) {
     const { name, children } = props;
 
     return (
-        <div className="rainbow-flex">
+        <div className="rainbow-flex rainbow-align_center">
                 <span>
                     <span className="react-rainbow-text-color-violet">import </span>
                     <span className="react-rainbow-text-color-gray">{name}</span>

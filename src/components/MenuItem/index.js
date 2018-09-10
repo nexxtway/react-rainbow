@@ -48,7 +48,10 @@ class Item extends Component {
     }
 
     handleHover(event) {
-        const { privateOnHover } = this.props;
+        const { privateOnHover, disabled } = this.props;
+        if (disabled) {
+            return null;
+        }
         return privateOnHover(event, this.itemRef.current);
     }
 

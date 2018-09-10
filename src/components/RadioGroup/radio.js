@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import RenderIf from '../RenderIf';
 import { uniqueId } from '../../libs/utils';
-import './styles.css';
 
 export default class Radio extends Component {
     constructor(props) {
@@ -28,6 +27,7 @@ export default class Radio extends Component {
             isChecked,
             name,
         } = this.props;
+
         return (
             <span className="rainbow-radio">
                 <input
@@ -39,6 +39,7 @@ export default class Radio extends Component {
                     aria-describedby={ariaDescribedby}
                     onChange={onChange}
                     disabled={disabled} />
+
                 <label className="rainbow-radio__label" htmlFor={this.radioId}>
                     <span className="rainbow-radio_faux" />
                     <RenderIf isTrue={!!label}>
