@@ -1,9 +1,9 @@
 ##### radio group base
 
     const options = [
-        { value: 'Radio One', label: 'Radio One' },
-        { value: 'Radio Two', label: 'Radio Two' },
-        { value: 'Radio Three', label: 'Radio Three' },
+        { value: 'radioOne', label: 'Radio One' },
+        { value: 'radioTwo', label: 'Radio Two' },
+        { value: 'radioThree', label: 'Radio Three' },
     ]
 
     class SimpleRadioGroup extends React.Component {
@@ -34,12 +34,13 @@
         <SimpleRadioGroup />
     </div>
 
+
 ##### radio group disabled
 
     const options = [
-        { value: 'Radio One', label: 'Radio One', disabled: true },
-        { value: 'Radio Two', label: 'Radio Two', disabled: true },
-        { value: 'Radio Three', label: 'Radio Three', disabled: true },
+        { value: 'radioOne', label: 'Radio One', disabled: true },
+        { value: 'radioTwo', label: 'Radio Two', disabled: true },
+        { value: 'radioThree', label: 'Radio Three', disabled: true },
     ]
 
     class DisabledRadioGroup extends React.Component {
@@ -70,12 +71,13 @@
         <DisabledRadioGroup />
     </div>
 
+
 ##### radio group required
 
     const options = [
-        { value: 'Radio One', label: 'Radio One' },
-        { value: 'Radio Two', label: 'Radio Two' },
-        { value: 'Radio Three', label: 'Radio Three' },
+       { value: 'radioOne', label: 'Radio One' },
+        { value: 'radioTwo', label: 'Radio Two' },
+        { value: 'radioThree', label: 'Radio Three' },
     ]
 
     class RequiredRadioGroup extends React.Component {
@@ -107,12 +109,13 @@
         <RequiredRadioGroup />
     </div>
 
+
 ##### radio group error
 
     const options = [
-        { value: 'Radio One', label: 'Radio One' },
-        { value: 'Radio Two', label: 'Radio Two' },
-        { value: 'Radio Three', label: 'Radio Three' },
+        { value: 'radioOne', label: 'Radio One' },
+        { value: 'radioTwo', label: 'Radio Two' },
+        { value: 'radioThree', label: 'Radio Three' },
     ]
 
     class ErrorRadioGroup extends React.Component {
@@ -135,7 +138,6 @@
                     value={this.state.value}
                     onChange={this.handleOnChange}
                     label="Radio Group Label"
-                    required
                     error="This field is required" />
             );
         }
