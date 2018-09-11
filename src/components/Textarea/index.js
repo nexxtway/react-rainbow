@@ -70,7 +70,6 @@ export default class Textarea extends Component {
             minLength,
             bottomHelpText,
             required,
-            cols,
             rows,
         } = this.props;
         const isRequiredOrHasError = !!(required || error);
@@ -97,7 +96,6 @@ export default class Textarea extends Component {
                     onBlur={onBlur}
                     onPaste={onPaste}
                     readOnly={readOnly}
-                    cols={cols}
                     rows={rows}
                     value={value}
                     aria-labelledby={this.getInlineTextLabelId()}
@@ -143,8 +141,6 @@ Textarea.propTypes = {
     ]),
     /** Specifies that the textarea element should be disabled. This value defaults to false. */
     disabled: PropTypes.bool,
-    /** The visible width of the text control, in average character widths. */
-    cols: PropTypes.number,
     /** The number of visible text lines for the control. The value by default is 3. */
     rows: PropTypes.number,
     /** Specifies that the textarea field is read-only. This value defaults to false. */
@@ -174,7 +170,6 @@ Textarea.defaultProps = {
     required: false,
     error: null,
     disabled: false,
-    cols: undefined,
     rows: 3,
     readOnly: false,
     onChange: () => {},
