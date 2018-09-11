@@ -46,7 +46,9 @@ class VerticalSection extends Component {
 
 VerticalSection.propTypes = {
     /** The heading text for this section. */
-    label: PropTypes.node,
+    label: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied for the outer element. */

@@ -65,15 +65,19 @@ export default class Select extends Component {
 }
 
 Select.propTypes = {
-    /** The select label */
-    label: PropTypes.string,
+    /** Text label for the select. */
+    label: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
     /** Specifies the selected value. */
     value: PropTypes.string,
     /** The action triggered when a option item is selected. */
     onChange: PropTypes.func,
     /** Specifies that an input field must be filled out before submitting the form.
      * This value defaults to false. */
-    error: PropTypes.node,
+    error: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
     /** Specifies that an input field must be filled out before submitting the form.
      * This value defaults to false. */
     required: PropTypes.bool,
@@ -82,9 +86,11 @@ Select.propTypes = {
     /** The option items to be displayed. */
     options: PropTypes.arrayOf(PropTypes.shape(
         {
+            label: PropTypes.oneOfType([
+                PropTypes.string, PropTypes.node,
+            ]),
             value: PropTypes.string,
-            label: PropTypes.string,
-            disabbled: PropTypes.bool,
+            disabled: PropTypes.bool,
         })),
     /** A CSS class for the outer element, in addition to the component's base classes. */
     classNames: PropTypes.string,

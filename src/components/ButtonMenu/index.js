@@ -365,7 +365,9 @@ ButtonMenu.propTypes = {
     /** If is set to true, then is showed a loading symbol. */
     isLoading: PropTypes.bool,
     /** Displays tooltip text when the mouse moves over the element. */
-    title: PropTypes.string,
+    title: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
     /** A description for assistive sreen readers. */
     assistiveText: PropTypes.string,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */

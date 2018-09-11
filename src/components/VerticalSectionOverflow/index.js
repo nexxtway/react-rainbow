@@ -93,10 +93,16 @@ export default class VerticalSectionOverflow extends Component {
 }
 
 VerticalSectionOverflow.propTypes = {
+    /** The title to show when the section is collapsed. */
+    title: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
+    /** The description to show when the section is collapsed. */
+    description: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
+    /** The icon positioned in the right of the section title. */
     icon: PropTypes.node,
-    description: PropTypes.string,
-    /** The label to show when the section is collapsed. */
-    title: PropTypes.string,
     /** The state of the overflow. */
     expanded: PropTypes.bool,
     /** A description for assistive sreen readers. */

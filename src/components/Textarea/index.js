@@ -116,30 +116,37 @@ export default class Textarea extends Component {
 }
 
 Textarea.propTypes = {
-    /** The textarea label */
-    label: PropTypes.node,
-    /** Specifies the value of the textarea element. */
+    /** Text that describes the desired textarea input. */
+    label: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
+    /** The value of the textarea, also used as the default value during init. */
     value: PropTypes.string,
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
     placeholder: PropTypes.string,
-    /** The maximum number of characters allowed in the field. */
+    /** The maximum number of characters allowed in the textarea. */
     maxLength: PropTypes.number,
-    /** The minimum number of characters allowed in the field. */
+    /** The minimum number of characters allowed in the textarea. */
     minLength: PropTypes.number,
+    /** This make to textarea grow. This value defaults to false. */
+    grow: PropTypes.bool,
     /** Shows the help message below the textarea. */
-    bottomHelpText: PropTypes.node,
+    bottomHelpText: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
     /** Specifies that the textarea field must be filled out before submitting the form.
     * This value defaults to false. */
     required: PropTypes.bool,
-    /** Specifies that the textarea field must be filled out before submitting the form.
-    * This value defaults to false. */
-    error: PropTypes.node,
+    /** Specifies that the textarea field must be filled out before submitting the form. */
+    error: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
     /** Specifies that the textarea element should be disabled. This value defaults to false. */
     disabled: PropTypes.bool,
-    /** A CSS class for the outer element, in addition to the component's base classes. */
-    className: PropTypes.string,
-    /** An object with custom style applied to the outer element. */
-    style: PropTypes.object,
+    /** The visible width of the text control, in average character widths. */
+    cols: PropTypes.number,
+    /** The number of visible text lines for the control. The value by default is 3. */
+    rows: PropTypes.number,
     /** Specifies that the textarea field is read-only. This value defaults to false. */
     readOnly: PropTypes.bool,
     /** The action triggered when a value attribute changes. */
@@ -150,12 +157,10 @@ Textarea.propTypes = {
     onBlur: PropTypes.func,
     /** Event fired when the user paste on the textarea */
     onPaste: PropTypes.func,
-    /** The visible width of the text control, in average character widths. */
-    cols: PropTypes.number,
-    /** The number of visible text lines for the control. The value by default is 3. */
-    rows: PropTypes.number,
-    /** This make to textarea grow. This value defaults to false. */
-    grow: PropTypes.bool,
+    /** A CSS class for the outer element, in addition to the component's base classes. */
+    className: PropTypes.string,
+    /** An object with custom style applied to the outer element. */
+    style: PropTypes.object,
 };
 
 Textarea.defaultProps = {
@@ -164,18 +169,18 @@ Textarea.defaultProps = {
     placeholder: null,
     maxLength: undefined,
     minLength: undefined,
+    grow: false,
     bottomHelpText: null,
     required: false,
     error: null,
     disabled: false,
-    className: undefined,
-    style: undefined,
-    readOnly: false,
     cols: undefined,
     rows: 3,
-    grow: false,
+    readOnly: false,
     onChange: () => {},
     onFocus: () => {},
     onBlur: () => {},
     onPaste: () => {},
+    className: undefined,
+    style: undefined,
 };

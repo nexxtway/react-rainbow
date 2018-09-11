@@ -151,8 +151,10 @@ Input.propTypes = {
         'tel',
         'color',
     ]),
-    /** The input label */
-    label: PropTypes.node,
+    /** Text label for the input. */
+    label: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
     placeholder: PropTypes.string,
     /** The icon to show if it is passed. It must be a svg icon or a font icon. */
@@ -167,7 +169,9 @@ Input.propTypes = {
     /** The minimum number of characters allowed in the field. */
     minLength: PropTypes.number,
     /** Shows the help message below the input. */
-    bottomHelpText: PropTypes.node,
+    bottomHelpText: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
     /** Specifies that an input field must be filled out before submitting the form.
     * This value defaults to false. */
     required: PropTypes.bool,
@@ -179,7 +183,9 @@ Input.propTypes = {
     /** Specifies that an input will not have border. This value defaults to false. */
     isBare: PropTypes.bool,
     /** Specifies that an input field must be filled out before submitting the form. */
-    error: PropTypes.node,
+    error: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
     /** Specifies that an input element should be disabled. This value defaults to false. */
     disabled: PropTypes.bool,
     /** Specifies that an input field is read-only. This value defaults to false. */
