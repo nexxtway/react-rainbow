@@ -150,11 +150,3 @@
         border-color: white;
     }
 }
-
-.rainbow-form-element {
-    .rainbow-checkbox [type="checkbox"] + .rainbow-checkbox-faux,
-    .rainbow-checkbox [type="checkbox"] ~ .rainbow-checkbox-faux,
-    .rainbow-checkbox [type="checkbox"] + .rainbow-checkbox-label-container .rainbow-checkbox-faux {
-        margin-right: $margin-small;
-    }
-}

@@ -71,17 +71,26 @@ export default class CheckboxGroup extends Component {
 }
 
 CheckboxGroup.propTypes = {
-    value: PropTypes.arrayOf(PropTypes.string),
-    onChange: PropTypes.func,
-    label: PropTypes.string,
-    required: PropTypes.bool,
+    /** An Array of checkbox options with label, value and disabled for each checkbox. */
     options: PropTypes.arrayOf(PropTypes.shape({
-        value: PropTypes.string,
         label: PropTypes.string,
+        value: PropTypes.string,
         disabled: PropTypes.bool,
     })),
+    /** Text label for the checkbox group. */
+    label: PropTypes.string,
+    /** The list of selected checkboxes. Each array entry contains the value of a selected checkbox.
+    * The value of each checkbox is set in the options attribute. */
+    value: PropTypes.arrayOf(PropTypes.string),
+    /** Set to true if at least one checkbox must be selected. This value defaults to false. */
+    required: PropTypes.bool,
+    /** Specifies that an input field must be filled out before submitting the form. */
     error: PropTypes.node,
+    /** Text label for the checkbox group. */
+    onChange: PropTypes.func,
+    /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
+    /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
 };
 

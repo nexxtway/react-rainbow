@@ -1,10 +1,15 @@
 @import "../../styles/colors";
 
-.rainbow-progress-bar {
+@mixin background-height($background, $height) {
     display: block;
+    background: $background;
+    height: $height;
+}
+
+.rainbow-progress-bar {
+    @include background-height($color-brand-light, 0.5rem);
+
     width: 100%;
-    height: 0.5rem;
-    background: $color-brand-light;
     border: 0;
     position: relative;
     border-radius: 0.5rem;
@@ -31,9 +36,7 @@
 }
 
 .rainbow-progress-bar__value {
-    display: block;
-    background: $color-brand;
-    height: 100%;
+    @include background-height($color-brand, 100%);
 }
 
 .rainbow-progress-bar__value_success {

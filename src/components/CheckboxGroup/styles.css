@@ -113,8 +113,3 @@
 .rainbow-checkbox-group-has-error [type="checkbox"][disabled] ~ .rainbow-checkbox-faux::after,
 .rainbow-checkbox-group-has-error [type="checkbox"][disabled] + .rainbow-checkbox-label-container .rainbow-checkbox-faux::after {
   border-color: white; }
-
-.rainbow-form-element .rainbow-checkbox [type="checkbox"] + .rainbow-checkbox-faux,
-.rainbow-form-element .rainbow-checkbox [type="checkbox"] ~ .rainbow-checkbox-faux,
-.rainbow-form-element .rainbow-checkbox [type="checkbox"] + .rainbow-checkbox-label-container .rainbow-checkbox-faux {
-  margin-right: 0.75rem; }

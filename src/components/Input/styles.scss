@@ -6,91 +6,58 @@
 @import "../../styles/margins";
 @import "../../styles/paddings";
 
-.rainbow-form-element {
+.rainbow-input-container {
     position: relative;
     display: flex;
     flex-direction: column;
 }
 
-.rainbow-form-element__helper {
-    font-size: $font-size-text-small;
-    color: $color-dark-1;
-}
-
-.rainbow-form-element__label {
+.rainbow-input-label {
     color: $color-gray-4;
     font-size: $font-size-text-small;
     line-height: 1.5;
     margin-right: 0.75rem;
     margin-bottom: 0.125rem;
     align-self: center;
+
+    &:empty {
+        margin: 0;
+    }
 }
 
-.rainbow-form-element__label_read-only {
+.rainbow-input-label_read-only {
     align-self: flex-start;
 }
 
-.rainbow-form-element__label:empty {
-    margin: 0;
-}
-
-.rainbow-form-element__help {
+.rainbow-input-help {
     font-size: $font-size-text-small;
     margin-top: $margin-x-small;
     align-self: center;
 }
 
-.rainbow-form-element__static {
-    display: inline-block;
-    padding-top: $margin-xx-small;
-    padding-bottom: $margin-xx-small;
-    min-height: calc(1.875rem + 2px);
-    font-size: $font-size-text-medium;
-    font-weight: 400;
-    color: #2b2826;
-}
-
-.rainbow-form-element_edit .rainbow-form-element__static {
-    width: calc(100% - 1.5rem);
-}
-
-.rainbow-form-element_edit .rainbow-button_icon {
-    vertical-align: bottom;
-}
-
-.rainbow-form-element__addon {
-    display: inline-block;
-    margin: 0 0.5rem;
-    align-self: center;
-}
-
-.rainbow-form-element__static.rainbow-text-longform *:last-child {
-    margin-bottom: 0;
-}
-
-.rainbow-form-element__static--edit {
-    width: calc(100% - 1.5rem);
-}
-
-.rainbow-required {
+.rainbow-input-required {
     color: $color-error;
     margin: 0 0.125rem;
 }
 
-.rainbow-has-error .rainbow-form-element__help {
-    color: $color-error;
-}
+.rainbow-input-has-icon {
+    position: relative;
 
-.rainbow-input-has-icon .rainbow-input__icon {
-    fill: $color-gray-3;
-    width: 0.875rem;
-    height: 0.875rem;
-    position: absolute;
-    top: 50%;
-    margin-top: -0.4375rem;
-    line-height: 1;
-    border: 0;
-    z-index: 2;
+    .rainbow-input__icon {
+        fill: $color-gray-3;
+        width: 0.875rem;
+        height: 0.875rem;
+        position: absolute;
+        top: 50%;
+        margin-top: -0.4375rem;
+        line-height: 1;
+        border: 0;
+        z-index: 2;
+    }
+
+    .rainbow-input__icon:not(button) {
+        pointer-events: none;
+    }
 }
 
 .rainbow-input {
@@ -106,6 +73,12 @@
     color: $color-dark-1;
     font-size: $font-size-text-medium;
 
+    &[type="search"]::-ms-clear {
+        display: none;
+        width: 0;
+        height: 0;
+    }
+
     &:focus,
     &:active {
         outline: 0;
@@ -119,6 +92,71 @@
     &::placeholder {
         color: $color-gray-3;
         font-weight: 300;
+    }
+
+    &[readonly] {
+        padding-left: 0;
+        padding-right: 0;
+        border-color: transparent;
+        background-color: transparent;
+        font-size: $font-size-text-medium;
+        color: $color-dark-1;
+        font-weight: 400;
+
+        &:focus,
+        &:active {
+            box-shadow: none;
+            border: 1px transparent solid;
+            padding-right: 0;
+        }
+    }
+
+    &[disabled] {
+        background-color: $color-gray-1;
+        border-color: $color-gray-2;
+        color: $color-gray-2;
+        cursor: not-allowed;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+
+        &:focus,
+        &:active {
+            box-shadow: none;
+            background-color: $color-gray-1;
+            border: 1px $color-gray-2 solid;
+            padding-left: $padding-medium;
+        }
+    }
+}
+
+.rainbow-input-has-error {
+    .rainbow-input {
+        background-color: white;
+        border: 2px $color-error solid;
+        padding-left: $padding-medium;
+        background-clip: padding-box;
+        line-height: 2rem;
+
+        &:focus {
+            box-shadow: $shadow-error;
+        }
+    }
+
+    .rainbow-input-help {
+        color: $color-error;
+    }
+
+    .rainbow-input__icon {
+        fill: $color-error;
+        color: $color-error;
+    }
+
+    .rainbow-input-has-icon.rainbow-input-has-icon_left {
+        .rainbow-input {
+            padding-left: 2.25rem;
+        }
     }
 }
 
@@ -135,48 +173,6 @@
 .rainbow-input[type="week"]:focus,
 .rainbow-input[type="week"]:active {
     line-height: 2.125rem;
-}
-
-.rainbow-input[disabled], .rainbow-input.rainbow-is-disabled {
-    background-color: $color-gray-1;
-    border-color: $color-gray-2;
-    color: $color-gray-2;
-    cursor: not-allowed;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-
-    &:focus,
-    &:active {
-        box-shadow: none;
-        background-color: $color-gray-1;
-        border: 1px $color-gray-2 solid;
-        padding-left: $padding-medium;
-    }
-}
-
-.rainbow-input[readonly] {
-    padding-left: 0;
-    padding-right: 0;
-    border-color: transparent;
-    background-color: transparent;
-    font-size: $font-size-text-medium;
-    color: $color-dark-1;
-    font-weight: 400;
-
-    &:focus,
-    &:active {
-        box-shadow: none;
-        border: 1px transparent solid;
-        padding-right: 0;
-    }
-}
-
-.rainbow-input[type="search"]::-ms-clear {
-    display: none;
-    width: 0;
-    height: 0;
 }
 
 .rainbow-input_bare {
@@ -205,100 +201,29 @@
     }
 }
 
-.rainbow-input-has-icon {
-    position: relative;
-}
+.rainbow-input-has-icon_left {
+    .rainbow-input__icon {
+        left: 1rem;
+    }
 
-.rainbow-has-error .rainbow-input__icon {
-    fill: $color-error;
-    color: $color-error;
-}
+    .rainbow-input,
+    .rainbow-input_bare {
+        padding-left: 2.25rem;
 
-.rainbow-input-has-icon_left .rainbow-input__icon {
-    left: 1rem;
-}
-
-.rainbow-input-has-icon_right .rainbow-input__icon {
-    right: 1rem;
-}
-
-.rainbow-input-has-icon .rainbow-input__icon:not(button) {
-    pointer-events: none;
-}
-
-.rainbow-input-has-icon_right .rainbow-input,
-.rainbow-input-has-icon_right .rainbow-input_bare {
-    padding-right: 2.25rem;
-}
-
-.rainbow-input-has-icon_left-right .rainbow-input,
-.rainbow-input-has-icon_left-right .rainbow-input_bare {
-    padding: 0 2rem;
-}
-
-.rainbow-input-has-icon_group-right .rainbow-input,
-.rainbow-input-has-icon_group-right .rainbow-input_bare {
-    padding-right: 3.25rem;
-}
-
-.rainbow-input-has-icon_left .rainbow-input,
-.rainbow-input-has-icon_left .rainbow-input_bare {
-    padding-left: 2.25rem;
-
-    &:focus,
-    &:active {
-        padding-left: 2.1875rem;
+        &:focus,
+        &:active {
+            padding-left: 2.1875rem;
+        }
     }
 }
 
-.rainbow-input__icon-group {
-    position: absolute;
-    height: 1rem;
-    margin-top: -0.5rem;
-}
-
-.rainbow-input__icon-group_right {
-    right: 0;
-    top: 50%;
-}
-
-.rainbow-input__icon-group_right .rainbow-input__icon_right {
-    right: 0.5rem;
-}
-
-.rainbow-input__icon-group_right .rainbow-input__spinner {
-    right: 1.5rem;
-    left: auto;
-}
-
-.rainbow-input-has-fixed-addon {
-    display: -ms-flexbox;
-    display: flex;
-
-    &:required {
-        box-shadow: none;
+.rainbow-input-has-icon_right {
+    .rainbow-input__icon {
+        right: 1rem;
     }
-}
 
-.rainbow-has-error .rainbow-input {
-    background-color: white;
-    border: 2px $color-error solid;
-    padding-left: $padding-medium;
-    background-clip: padding-box;
-    line-height: 2rem;
-
-    &:required,
-    &:focus {
-        box-shadow: $shadow-error;
+    .rainbow-input,
+    .rainbow-input_bare {
+        right: 1rem;
     }
-}
-
-.rainbow-has-error .rainbow-input-has-icon.rainbow-input-has-icon_left .rainbow-input {
-    padding-left: $padding-x-large;
-}
-
-.rainbow-input__button_decrement, .rainbow-input__button_increment {
-    position: absolute;
-    bottom: 0.25rem;
-    left: 1rem;
 }
