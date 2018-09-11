@@ -40,6 +40,7 @@ export default class CheckboxToggle extends Component {
                     checked={value}
                     onChange={onChange}
                     disabled={disabled} />
+
                 <span id={this.toggleId} className="rainbow-checkbox__toggle_faux_container" aria-live="assertive">
                     <span className="rainbow-checkbox__toggle_faux" />
                 </span>

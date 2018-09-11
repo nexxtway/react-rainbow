@@ -8,7 +8,15 @@ export default class Checkbox extends Component {
         this.inputId = uniqueId('checkboxInput');
     }
     render() {
-        const { value, label, disabled, isSelected, onChange, describedBy } = this.props;
+        const {
+            value,
+            label,
+            disabled,
+            isSelected,
+            onChange,
+            describedBy,
+        } = this.props;
+
         return (
             <div className="rainbow-checkbox">
                 <input
@@ -19,6 +27,7 @@ export default class Checkbox extends Component {
                     disabled={disabled}
                     onChange={onChange}
                     aria-describedby={describedBy} />
+
                 <label className="rainbow-checkbox-label-container" htmlFor={this.inputId}>
                     <span className="rainbow-checkbox-faux" />
                     <span className="rainbow-checkbox-label">{label}</span>

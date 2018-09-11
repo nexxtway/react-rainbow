@@ -40,6 +40,7 @@ export default function ProgressBar(props) {
                  aria-valuenow={normalizedValue}
                  role="progressbar"
                  style={style}>
+
                 <span className={getProgressBarClassNames()} style={WIDTH}>
                     <AsistiveText text={assistiveText} />
                 </span>

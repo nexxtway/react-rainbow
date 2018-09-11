@@ -55,12 +55,12 @@ export default class CheckboxGroup extends Component {
                     </legend>
                 </RenderIf>
                 <div className="rainbow-checkbox-group-checkbox-container">
-
                     <CheckboxList
                         values={value}
                         options={options}
                         onChange={this.handleOnChange}
                         describedBy={this.getErrorMessageId()} />
+
                 </div>
                 <RenderIf isTrue={!!error}>
                     <div id={this.getErrorMessageId()} className="rainbow-checkbox-group-error">{error}</div>

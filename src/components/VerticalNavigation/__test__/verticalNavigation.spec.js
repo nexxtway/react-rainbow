@@ -65,7 +65,7 @@ describe('<VerticalNavigation/>', () => {
                 </VerticalSection>
             </VerticalNavigation>,
         );
-        const item2 = component.find('VerticalItem[name="item 2"]');
+        const item2 = component.find('VerticalItem[name="item 2"]').find('a');
         item2.simulate('click');
         expect(onSelectMockFn).toHaveBeenCalledWith(expect.any(Object), 'item 2');
     });
