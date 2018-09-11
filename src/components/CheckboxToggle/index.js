@@ -18,7 +18,7 @@ export default class CheckboxToggle extends Component {
 
     getClassNames() {
         const { className } = this.props;
-        return classnames('rainbow-checkbox_toggle', className);
+        return classnames('rainbow-checkbox-toggle', className);
     }
 
     render() {
@@ -40,11 +40,11 @@ export default class CheckboxToggle extends Component {
                     checked={value}
                     onChange={onChange}
                     disabled={disabled} />
-                <span id={this.toggleId} className="rainbow-checkbox__toggle_faux_container" aria-live="assertive">
-                    <span className="rainbow-checkbox__toggle_faux" />
+                <span id={this.toggleId} className="rainbow-checkbox-toggle_faux_container" aria-live="assertive">
+                    <span className="rainbow-checkbox-toggle_faux" />
                 </span>
                 <RenderIf isTrue={!!label} >
-                    <span className="rainbow-checkbox_toggle-label">{label}</span>
+                    <span className="rainbow-checkbox-toggle-label">{label}</span>
                 </RenderIf>
             </label>
         );

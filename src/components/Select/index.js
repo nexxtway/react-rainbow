@@ -44,7 +44,7 @@ export default class Select extends Component {
                         {label}
                     </label>
                 </RenderIf>
-                <div className="rainbow-select-form-element__control">
+                <div className="rainbow-select-inner-container">
                     <select
                         className="rainbow-select"
                         id={this.selectId}
