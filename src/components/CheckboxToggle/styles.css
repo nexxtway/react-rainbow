@@ -3,48 +3,46 @@
   display: -ms-flexbox;
   display: inline-flex;
   align-items: center; }
+  .rainbow-checkbox_toggle [type="checkbox"] {
+    width: 0.0625rem;
+    height: 0.0625rem;
+    border: 0;
+    clip: rect(0 0 0 0);
+    margin: -0.0625rem;
+    overflow: hidden;
+    padding: 0;
+    position: absolute; }
+  .rainbow-checkbox_toggle .rainbow-checkbox__toggle_faux {
+    display: block;
+    width: 3.75rem;
+    height: 2rem;
+    padding: 0.125rem;
+    transition: background-color 0.2s cubic-bezier(0.75, 0, 0.08, 1);
+    border-radius: 1rem;
+    border: solid 0.125rem #dcdfe7;
+    background-color: #e3e5ed;
+    position: relative; }
+    .rainbow-checkbox_toggle .rainbow-checkbox__toggle_faux:hover, .rainbow-checkbox_toggle .rainbow-checkbox__toggle_faux:focus {
+      cursor: pointer;
+      background-color: #dcdfe7; }
+    .rainbow-checkbox_toggle .rainbow-checkbox__toggle_faux::after {
+      content: '';
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      left: 0.015625rem;
+      width: 1.75rem;
+      height: 1.75rem;
+      box-shadow: 0 0 2px 0 #a4a7b5;
+      border-radius: 1rem;
+      border: solid 0.125rem transparent;
+      background-color: white;
+      position: absolute; }
 
-.rainbow-checkbox_toggle-form-element__label {
+.rainbow-checkbox_toggle-label {
   color: #576574;
   font-size: 0.75rem;
   margin-left: 0.75rem; }
-
-.rainbow-checkbox_toggle .rainbow-checkbox__toggle_faux {
-  display: block;
-  width: 3.75rem;
-  height: 2rem;
-  padding: 0.125rem;
-  transition: background-color 0.2s cubic-bezier(0.75, 0, 0.08, 1);
-  border-radius: 1rem;
-  border: solid 0.125rem #dcdfe7;
-  background-color: #e3e5ed;
-  position: relative; }
-  .rainbow-checkbox_toggle .rainbow-checkbox__toggle_faux:hover, .rainbow-checkbox_toggle .rainbow-checkbox__toggle_faux:focus {
-    cursor: pointer;
-    background-color: #dcdfe7; }
-  .rainbow-checkbox_toggle .rainbow-checkbox__toggle_faux::after {
-    content: '';
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    left: 0.015625rem;
-    width: 1.75rem;
-    height: 1.75rem;
-    box-shadow: 0 0 2px 0 #a4a7b5;
-    border-radius: 1rem;
-    border: solid 0.125rem transparent;
-    background-color: white;
-    position: absolute; }
-
-.rainbow-checkbox_toggle [type="checkbox"] {
-  width: 0.0625rem;
-  height: 0.0625rem;
-  border: 0;
-  clip: rect(0 0 0 0);
-  margin: -0.0625rem;
-  overflow: hidden;
-  padding: 0;
-  position: absolute; }
 
 .rainbow-checkbox_toggle [type="checkbox"] + .rainbow-checkbox__toggle_faux_container {
   font-size: 0.625rem;

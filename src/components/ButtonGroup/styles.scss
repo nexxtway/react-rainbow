@@ -1,25 +1,35 @@
 /* stylelint-disable no-descending-specificity */
 @import './../../styles/margins.scss';
 
-.rainbow-button-group {
-    display: -ms-inline-flexbox;
-    display: inline-flex;
-}
-
-.rainbow-button-group + .rainbow-button-group {
-    margin-left: $margin-x-small;
-}
-
-.rainbow-button-group button.rainbow-button,
-.rainbow-button-group button.rainbow-button-icon {
+%border-margin {
     border-radius: 0;
     border-width: 1px;
     margin-left: -1px;
 }
 
-.rainbow-button-group button.rainbow-button:focus,
-.rainbow-button-group button.rainbow-button-icon:focus {
-    z-index: 1;
+.rainbow-button-group {
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+
+    button.rainbow-button {
+        @extend %border-margin;
+
+        &:focus {
+            z-index: 1;
+        }
+    }
+
+    button.rainbow-button-icon {
+        @extend %border-margin;
+
+        &:focus {
+            z-index: 1;
+        }
+    }
+}
+
+.rainbow-button-group + .rainbow-button-group {
+    margin-left: $margin-x-small;
 }
 
 .rainbow-button-group > button.rainbow-button:first-child,

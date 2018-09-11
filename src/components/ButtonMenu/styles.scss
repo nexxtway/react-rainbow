@@ -4,6 +4,11 @@
 .rainbow-button-menu {
     position: relative;
     display: inline-block;
+
+    &:hover,
+    &:focus {
+        outline: 0;
+    }
 }
 
 .rainbow-button-menu-dropdown {
@@ -29,15 +34,13 @@
     top: 100%;
 }
 
-.rainbow-button-menu.rainbow-button-menu_is-open .rainbow-button-menu-dropdown {
-    display: block;
-    opacity: 1;
-    transition: opacity 0.1s linear, visibility 0.1s linear;
-    visibility: visible;
-}
-
-.rainbow-button-menu:hover, .rainbow-button-menu:focus {
-    outline: 0;
+.rainbow-button-menu.rainbow-button-menu_is-open {
+    .rainbow-button-menu-dropdown {
+        display: block;
+        opacity: 1;
+        transition: opacity 0.1s linear, visibility 0.1s linear;
+        visibility: visible;
+    }
 }
 
 .rainbow-button-menu-dropdown_left {

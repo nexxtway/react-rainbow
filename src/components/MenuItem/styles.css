@@ -31,24 +31,18 @@
   color: #061c3f;
   white-space: nowrap;
   cursor: pointer; }
-
-.rainbow-menu-item > a:focus {
-  outline: 0;
-  text-decoration: none;
-  background-color: #e3e5ed; }
-
-.rainbow-menu-item > a:active {
-  text-decoration: none;
-  background-color: #e3e5ed; }
-
-.rainbow-menu-item > a[aria-disabled="true"] {
-  color: #e3e5ed;
-  cursor: default; }
-
-.rainbow-menu-item > a[aria-disabled="true"]:hover,
-.rainbow-menu-item > a[aria-disabled="true"]:focus {
-  background-color: transparent;
-  text-decoration: none; }
+  .rainbow-menu-item > a:focus {
+    outline: 0;
+    text-decoration: none;
+    background-color: #e3e5ed; }
+  .rainbow-menu-item > a:active {
+    text-decoration: none;
+    background-color: #e3e5ed; }
+  .rainbow-menu-item > a[aria-disabled="true"] {
+    color: #e3e5ed;
+    cursor: default; }
+    .rainbow-menu-item > a[aria-disabled="true"]:hover, .rainbow-menu-item > a[aria-disabled="true"]:focus {
+      background-color: transparent; }
 
 .rainbow-icon-container {
   width: 1rem;
