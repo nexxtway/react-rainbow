@@ -3,16 +3,6 @@ import { mount } from 'enzyme';
 import VerticalItem from './../';
 
 describe('<VerticalItem/>', () => {
-    it('should pass the right props to li container', () => {
-        const component = mount(
-            <VerticalItem label="item 1" name="item1" />,
-        );
-        expect(component.find('li').props()).toEqual(expect.objectContaining({
-            className: 'rainbow-nav-vertical__item',
-            role: 'presentation',
-            onClick: expect.any(Function),
-        }));
-    });
     it('should set the rainbow-is-active className to li container when the item is selected', () => {
         const component = mount(
             <VerticalItem label="item 1" name="item1" selectedItem="item1" />,
@@ -27,6 +17,7 @@ describe('<VerticalItem/>', () => {
             href: '/page/to/go',
             className: 'rainbow-nav-vertical__action',
             'aria-current': undefined,
+            onClick: expect.any(Function),
         }));
     });
     it('should set the aria-current as page in anchor element when the item is selected', () => {
@@ -46,7 +37,7 @@ describe('<VerticalItem/>', () => {
         const component = mount(
             <VerticalItem label="item 1" name="item35" onClick={onClickMockFn} onSelect={() => {}} />,
         );
-        component.find('li').simulate('click');
+        component.find('a').simulate('click');
         expect(onClickMockFn).toHaveBeenCalledWith(expect.any(Object));
     });
     it('should fire an event onSelect when the item is clicked', () => {
@@ -54,7 +45,7 @@ describe('<VerticalItem/>', () => {
         const component = mount(
             <VerticalItem label="item 1" name="item35" onSelect={onSelectMockFn} />,
         );
-        component.find('li').simulate('click');
+        component.find('a').simulate('click');
         expect(onSelectMockFn).toHaveBeenCalledWith(expect.any(Object), 'item35');
     });
 });

@@ -95,6 +95,7 @@
     "eslint-plugin-webdriverio": "^1.0.1",
     "firebase-tools": "^4.2.1",
     "jest": "^23.4.2",
+    "jest-axe": "^3.1.0",
     "node-sass": "^4.9.3",
     "pre-push": "^0.1.1",
     "react-styleguidist": "^7.2.1",

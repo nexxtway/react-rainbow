@@ -32,10 +32,18 @@ export default class AvatarContent extends Component {
             initials,
             title,
             icon,
+            assistiveText,
         } = this.props;
+
         const { imageFailed } = this.state;
         if (src && !imageFailed) {
-            return <img src={src} onError={this.handleImageError} title={title} />;
+            return (
+                <img
+                    src={src}
+                    onError={this.handleImageError}
+                    title={title}
+                    alt={assistiveText} />
+            );
         } else if (initials) {
             return (
                 <abbr
@@ -65,6 +73,7 @@ AvatarContent.propTypes = {
     initialsVariant: PropTypes.string.isRequired,
     title: PropTypes.string,
     icon: PropTypes.node,
+    assistiveText: PropTypes.string,
 };
 
 AvatarContent.defaultProps = {
@@ -72,4 +81,5 @@ AvatarContent.defaultProps = {
     initials: undefined,
     title: undefined,
     icon: null,
+    assistiveText: undefined,
 };

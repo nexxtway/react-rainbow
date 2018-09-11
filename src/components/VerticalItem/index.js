@@ -40,9 +40,10 @@ function Item(props) {
     }
 
     return (
-        <li className={getContainerClassNames()} style={style} role="presentation" onClick={hanldeOnClick}>
+        <li className={getContainerClassNames()} style={style}>
             <a
                 href={href}
+                onClick={hanldeOnClick}
                 aria-describedby={entityHeaderId}
                 className="rainbow-nav-vertical__action"
                 aria-current={getAriaCurrent()}>

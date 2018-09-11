@@ -24,7 +24,7 @@ export default function Avatar(props) {
 
     return (
         <span className={getContainerClassNames()} style={style}>
-            <AvatarContent {...rest} />
+            <AvatarContent {...rest} assistiveText={assistiveText} />
             <AssistiveText text={assistiveText} />
         </span>
     );
