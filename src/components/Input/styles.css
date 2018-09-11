@@ -49,8 +49,8 @@
   transition: all 0.1s linear;
   display: inline-block;
   padding: 0 1rem 0 1rem;
-  line-height: 2.125rem;
-  height: calc(2.125rem + (1px * 2));
+  line-height: 2.375rem;
+  height: 2.375rem;
   color: #061c3f;
   font-size: 0.875rem; }
   .rainbow-input[type="search"]::-ms-clear {
@@ -59,7 +59,7 @@
     height: 0; }
   .rainbow-input:focus, .rainbow-input:active {
     outline: 0;
-    line-height: 0.5rem;
+    line-height: 2.375rem;
     padding-left: 0.9375rem;
     border: 2px #01b6f5 solid;
     background-color: white;
@@ -99,7 +99,7 @@
   border: 2px #fe4849 solid;
   padding-left: 1rem;
   background-clip: padding-box;
-  line-height: 2rem; }
+  line-height: 2.375rem; }
   .rainbow-input-has-error .rainbow-input:focus {
     box-shadow: 0 0 2px #fe4849; }
 
@@ -125,7 +125,7 @@
 .rainbow-input[type="month"]:active,
 .rainbow-input[type="week"]:focus,
 .rainbow-input[type="week"]:active {
-  line-height: 2.125rem; }
+  line-height: 2.375rem; }
 
 .rainbow-input_bare {
   background-color: transparent;
@@ -134,7 +134,7 @@
   padding-bottom: 0;
   padding-left: 0.75rem;
   color: #061c3f;
-  line-height: 2.125rem; }
+  line-height: 2.375rem; }
   .rainbow-input_bare:focus, .rainbow-input_bare:active {
     outline: 0;
     box-shadow: none; }
@@ -161,4 +161,5 @@
 
 .rainbow-input-has-icon_right .rainbow-input,
 .rainbow-input-has-icon_right .rainbow-input_bare {
-  right: 1rem; }
+  right: 1rem;
+  padding-right: 2.25rem; }

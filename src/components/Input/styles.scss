@@ -68,8 +68,8 @@
     transition: all 0.1s linear;
     display: inline-block;
     padding: 0 1rem 0 1rem;
-    line-height: 2.125rem;
-    height: calc(2.125rem + (1px * 2));
+    line-height: 2.375rem;
+    height: 2.375rem;
     color: $color-dark-1;
     font-size: $font-size-text-medium;
 
@@ -82,7 +82,7 @@
     &:focus,
     &:active {
         outline: 0;
-        line-height: 0.5rem;
+        line-height: 2.375rem;
         padding-left: 0.9375rem;
         border: 2px $color-brand solid;
         background-color: white;
@@ -137,7 +137,7 @@
         border: 2px $color-error solid;
         padding-left: $padding-medium;
         background-clip: padding-box;
-        line-height: 2rem;
+        line-height: 2.375rem;
 
         &:focus {
             box-shadow: $shadow-error;
@@ -172,7 +172,7 @@
 .rainbow-input[type="month"]:active,
 .rainbow-input[type="week"]:focus,
 .rainbow-input[type="week"]:active {
-    line-height: 2.125rem;
+    line-height: 2.375rem;
 }
 
 .rainbow-input_bare {
@@ -182,7 +182,7 @@
     padding-bottom: 0;
     padding-left: 0.75rem;
     color: $color-dark-1;
-    line-height: 2.125rem;
+    line-height: 2.375rem;
 
     &:focus,
     &:active {
@@ -225,5 +225,6 @@
     .rainbow-input,
     .rainbow-input_bare {
         right: 1rem;
+        padding-right: 2.25rem;
     }
 }
