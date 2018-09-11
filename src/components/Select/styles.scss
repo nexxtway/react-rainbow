@@ -35,16 +35,23 @@
     position: relative;
 
     &::after {
-        position: absolute;
         content: '';
+        position: absolute;
         display: block;
-        right: 0.5rem;
-        bottom: 40%;
-        width: 0;
-        height: 0;
-        border-left: 0.1875rem solid transparent;
-        border-right: 0.1875rem solid transparent;
-        border-top: 0.3125rem solid $color-dark-1;
+        right: 1rem;
+        bottom: 45%;
+        pointer-events: none;
+        width: 0.45rem;
+        height: 0.45rem;
+        border-style: solid;
+        border-width: 0.15em 0.15em 0 0;
+        transform: rotate(135deg);
+        vertical-align: top;
+        color: $color-dark-1;
+    }
+
+    &[disabled]::after {
+        color: $color-gray-2;
     }
 }
 
@@ -53,14 +60,14 @@
     -webkit-appearance: none;
     width: 100%;
     line-height: 2rem;
-    height: calc(2.125rem + (1px * 2));
+    height: 2.375rem;
     border: 1px solid $color-gray-3;
     border-radius: $border-radius-2;
     padding: 0 $padding-medium 0 $padding-medium;
     background-color: white;
     color: $color-dark-1;
     font-size: $font-size-text-medium;
-    transition: border 0.1s linear, background-color 0.1s linear;
+    transition: all 0.1s linear;
 
     &::-ms-expand {
         display: none;
@@ -68,10 +75,10 @@
 
     &:focus, &:active, &:visited {
         outline: 0;
-        padding: 0 $padding-medium 0 0.9375rem;
+        padding-left: 0.9375rem;
         border: 0.125rem $color-brand solid;
         box-shadow: $shadow-3;
-        line-height: 1.875rem;
+        line-height: 2rem;
     }
 
     &[disabled] {
@@ -88,7 +95,7 @@
         &:active {
             box-shadow: none;
             background-color: $color-gray-1;
-            border: 1px $color-gray-2 solid;
+            border: 0.0626rem $color-gray-2 solid;
             padding-left: $padding-medium;
         }
     }
@@ -97,9 +104,10 @@
 .rainbow-select-has-error {
     .rainbow-select {
         background-color: white;
-        border: 2px $color-error solid;
+        border: 0.125rem $color-error solid;
         box-shadow: $shadow-1;
         background-clip: padding-box;
+        padding-left: $padding-medium;
 
         &:focus, &:active {
             box-shadow: $shadow-error;
