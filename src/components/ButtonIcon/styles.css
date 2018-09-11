@@ -126,9 +126,9 @@
   line-height: 1; }
 
 .rainbow-button-icon_xx-small > svg {
-  font-size: 0.5rem !important;
   width: 0.5rem !important;
-  height: 0.5rem !important; }
+  height: 0.5rem !important;
+  font-size: 0.5rem !important; }
 
 .rainbow-button-icon_x-small {
   width: 1.25rem;
@@ -136,33 +136,33 @@
   line-height: 1; }
 
 .rainbow-button-icon_x-small > svg {
-  font-size: 0.75rem !important;
   width: 0.75rem !important;
-  height: 0.75rem !important; }
+  height: 0.75rem !important;
+  font-size: 0.75rem !important; }
 
 .rainbow-button-icon_small {
   width: 1.5rem;
   height: 1.5rem; }
 
 .rainbow-button-icon_small > svg {
-  font-size: 0.875rem !important;
   width: 0.875rem !important;
-  height: 0.875rem !important; }
+  height: 0.875rem !important;
+  font-size: 0.875rem !important; }
 
 .rainbow-button-icon_medium {
   width: 2.25rem;
   height: 2.25rem; }
 
 .rainbow-button-icon_medium > svg {
-  font-size: 1rem !important;
   width: 1rem !important;
-  height: 1rem !important; }
+  height: 1rem !important;
+  font-size: 1rem !important; }
 
 .rainbow-button-icon_large {
   width: 3rem;
   height: 3rem; }
 
 .rainbow-button-icon_large > svg {
-  font-size: 1.5rem !important;
   width: 1.5rem !important;
-  height: 1.5rem !important; }
+  height: 1.5rem !important;
+  font-size: 1.5rem !important; }

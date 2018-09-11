@@ -37,28 +37,27 @@
     color: $color-dark-1;
     white-space: nowrap;
     cursor: pointer;
-}
 
-.rainbow-menu-item > a:focus {
-    outline: 0;
-    text-decoration: none;
-    background-color: $color-gray-2;
-}
+    &:focus {
+        outline: 0;
+        text-decoration: none;
+        background-color: $color-gray-2;
+    }
 
-.rainbow-menu-item > a:active {
-    text-decoration: none;
-    background-color: $color-gray-2;
-}
+    &:active {
+        text-decoration: none;
+        background-color: $color-gray-2;
+    }
 
-.rainbow-menu-item > a[aria-disabled="true"] {
-    color: $color-gray-2;
-    cursor: default;
-}
+    &[aria-disabled="true"] {
+        color: $color-gray-2;
+        cursor: default;
 
-.rainbow-menu-item > a[aria-disabled="true"]:hover,
-.rainbow-menu-item > a[aria-disabled="true"]:focus {
-    background-color: transparent;
-    text-decoration: none;
+        &:hover,
+        &:focus {
+            background-color: transparent;
+        }
+    }
 }
 
 .rainbow-icon-container {
