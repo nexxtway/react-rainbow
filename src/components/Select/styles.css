@@ -19,9 +19,9 @@
   .rainbow-select-label:empty {
     margin: 0; }
 
-.rainbow-select-form-element__control {
+.rainbow-select-inner-container {
   position: relative; }
-  .rainbow-select-form-element__control::after {
+  .rainbow-select-inner-container::after {
     position: absolute;
     content: '';
     display: block;

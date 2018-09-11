@@ -13,8 +13,8 @@ export default class Radio extends Component {
     getLabelClassNames() {
         const { disabled } = this.props;
         return classnames(
-            'rainbow-radio-form-element__label',
-            { 'rainbow-radio-form-element__label-disabled': disabled });
+            'rainbow-radio-label',
+            { 'rainbow-radio-label-disabled': disabled });
     }
 
     render() {
@@ -40,7 +40,7 @@ export default class Radio extends Component {
                     onChange={onChange}
                     disabled={disabled} />
 
-                <label className="rainbow-radio__label" htmlFor={this.radioId}>
+                <label className="rainbow-radio-label-container" htmlFor={this.radioId}>
                     <span className="rainbow-radio_faux" />
                     <RenderIf isTrue={!!label}>
                         <span className={this.getLabelClassNames()}>{label}</span>

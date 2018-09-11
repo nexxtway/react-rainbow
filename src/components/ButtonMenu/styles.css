@@ -1,6 +1,8 @@
 .rainbow-button-menu {
   position: relative;
   display: inline-block; }
+  .rainbow-button-menu:hover, .rainbow-button-menu:focus {
+    outline: 0; }
 
 .rainbow-button-menu-dropdown {
   position: absolute;
@@ -29,9 +31,6 @@
   opacity: 1;
   transition: opacity 0.1s linear, visibility 0.1s linear;
   visibility: visible; }
-
-.rainbow-button-menu:hover, .rainbow-button-menu:focus {
-  outline: 0; }
 
 .rainbow-button-menu-dropdown_left {
   left: 0;
