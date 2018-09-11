@@ -159,8 +159,6 @@ Button.defaultProps = {
     children: null,
     variant: 'base',
     shaded: false,
-    iconName: '',
-    iconPosition: 'left',
     title: undefined,
     type: 'button',
     disabled: false,

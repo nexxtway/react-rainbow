@@ -52,25 +52,27 @@ export default class CheckboxToggle extends Component {
 }
 
 CheckboxToggle.propTypes = {
+    /** Text label for the checkbox toggle. */
+    label: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
+    /** The value of the element. */
+    value: PropTypes.bool,
+    /** Specifies that the element should be disabled. This value defaults to false. */
+    disabled: PropTypes.bool,
+    /** The action triggered when a value attribute changes. */
+    onChange: PropTypes.func,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
-    /** Specifies that the element should be disabled. This value defaults to false. */
-    disabled: PropTypes.bool,
-    /** The toggle label */
-    label: PropTypes.node,
-    /** The value of the element. */
-    value: PropTypes.bool,
-    /** The action triggered when a value attribute changes. */
-    onChange: PropTypes.func,
 };
 
 CheckboxToggle.defaultProps = {
-    className: undefined,
-    style: undefined,
-    disabled: false,
     label: null,
+    disabled: false,
     value: false,
     onChange: () => {},
+    className: undefined,
+    style: undefined,
 };

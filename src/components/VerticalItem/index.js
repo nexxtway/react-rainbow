@@ -78,7 +78,9 @@ export default function VerticalItem(props) {
 
 VerticalItem.propTypes = {
     /** The text displayed for the navigation item. */
-    label: PropTypes.string,
+    label: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
     /** A unique identifier for the navigation item. */
     name: PropTypes.string.isRequired,
     /** The icon to show if it is passed. It must be a svg icon or a font icon. */

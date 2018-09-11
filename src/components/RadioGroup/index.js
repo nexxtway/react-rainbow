@@ -75,11 +75,9 @@ export default class RadioGroup extends Component {
 
 RadioGroup.propTypes = {
     /** The radio group label */
-    label: PropTypes.node,
-    /** A CSS class for the outer element, in addition to the component's base classes. */
-    className: PropTypes.string,
-    /** An object with custom style applied for the outer element. */
-    style: PropTypes.object,
+    label: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
     /** The value of the element. */
     value: PropTypes.string,
     /** The action triggered when a value attribute changes. */
@@ -89,13 +87,21 @@ RadioGroup.propTypes = {
     /** An array with the radio options. */
     options: PropTypes.arrayOf(
         PropTypes.shape({
+            label: PropTypes.oneOfType([
+                PropTypes.string, PropTypes.node,
+            ]),
             value: PropTypes.string,
-            label: PropTypes.string,
             disabled: PropTypes.bool,
         }),
     ),
     /** Specifies that an radio group must be filled out before submitting the form. */
-    error: PropTypes.node,
+    error: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
+    /** A CSS class for the outer element, in addition to the component's base classes. */
+    className: PropTypes.string,
+    /** An object with custom style applied for the outer element. */
+    style: PropTypes.object,
 };
 
 RadioGroup.defaultProps = {
