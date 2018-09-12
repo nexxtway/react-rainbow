@@ -1,14 +1,14 @@
 .rainbow-button {
   align-items: center;
   display: inline-flex;
-  font-size: 0.875rem;
+  font-size: 1rem;
   justify-content: center;
   position: relative;
   background: transparent;
   background-clip: border-box;
   border: 1px solid transparent;
   border-radius: 100px;
-  line-height: 2.125rem;
+  line-height: 2.375rem;
   text-decoration: none;
   color: #01b6f5;
   padding: 0;

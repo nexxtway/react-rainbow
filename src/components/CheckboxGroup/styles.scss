@@ -39,8 +39,8 @@
     display: inline-block;
 
     .rainbow-checkbox-faux {
-        width: 1rem;
-        height: 1rem;
+        width: 1.25rem;
+        height: 1.25rem;
         display: inline-block;
         position: relative;
         vertical-align: middle;
@@ -55,6 +55,8 @@
         display: inline;
         vertical-align: middle;
         color: $color-dark-1;
+        font-size: $font-size-text-medium;
+        line-height: 1.65rem;
     }
 
     [type="checkbox"] {
@@ -73,8 +75,8 @@
     [type="checkbox"]:checked + .rainbow-checkbox-label-container .rainbow-checkbox-faux::after {
         display: block;
         content: '';
-        height: 0.25rem;
-        width: 0.5rem;
+        height: 0.4rem;
+        width: 0.65rem;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -87,7 +89,7 @@
     [type="checkbox"]:focus ~ .rainbow-checkbox-faux,
     [type="checkbox"]:focus + .rainbow-checkbox-label-container .rainbow-checkbox-faux {
         content: '';
-        border-color: $color-brand;
+        border: 2px solid $color-brand;
         box-shadow: $shadow-outline;
     }
 

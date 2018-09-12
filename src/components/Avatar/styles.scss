@@ -32,11 +32,11 @@
 }
 
 .rainbow-avatar_medium {
-    @include variant-size(0.8755rem, 2rem);
+    @include variant-size(1rem, 2.5rem);
 }
 
 .rainbow-avatar_large {
-    @include variant-size(1.125rem, 3rem);
+    @include variant-size(1.125rem, 3.2rem);
 
     font-weight: 300;
     line-height: 1.25;

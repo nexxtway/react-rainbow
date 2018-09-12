@@ -53,7 +53,7 @@
 }
 
 .rainbow-card-text-heading_small {
-    @include text-styles($font-size-heading-small, 500, $color-gray-4);
+    @include text-styles($font-size-heading-medium, 500, $color-gray-4);
 }
 
 .rainbow-card-media__figure {
