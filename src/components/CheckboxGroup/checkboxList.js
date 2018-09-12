@@ -1,19 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { uniqueId } from '../../libs/utils';
 import Checkbox from './checkbox';
 
 export default function CheckboxList({ values, options, onChange, describedBy }) {
     const checkIfSelected = option => values.find(value => value === option.value) !== undefined;
 
-    return options.map(option => (
-        <Checkbox
-            {...option}
-            isSelected={checkIfSelected(option)}
-            onChange={onChange}
-            describedBy={describedBy}
-            key={uniqueId('checkbox')} />
-    ));
+    return options.map((option, index) => {
+        const key = `checkbox-${index}`;
+        return (
+            <Checkbox
+                {...option}
+                isSelected={checkIfSelected(option)}
+                onChange={onChange}
+                describedBy={describedBy}
+                key={key} />
+        );
+    });
 }
 
 CheckboxList.propTypes = {
