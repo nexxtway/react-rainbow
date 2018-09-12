@@ -26,8 +26,8 @@
 .rainbow-checkbox {
   display: inline-block; }
   .rainbow-checkbox .rainbow-checkbox-faux {
-    width: 1rem;
-    height: 1rem;
+    width: 1.25rem;
+    height: 1.25rem;
     display: inline-block;
     position: relative;
     vertical-align: middle;
@@ -39,7 +39,9 @@
   .rainbow-checkbox .rainbow-checkbox-label {
     display: inline;
     vertical-align: middle;
-    color: #061c3f; }
+    color: #061c3f;
+    font-size: 0.875rem;
+    line-height: 1.65rem; }
   .rainbow-checkbox [type="checkbox"] {
     width: 1px;
     height: 1px;
@@ -54,8 +56,8 @@
   .rainbow-checkbox [type="checkbox"]:checked + .rainbow-checkbox-label-container .rainbow-checkbox-faux::after {
     display: block;
     content: '';
-    height: 0.25rem;
-    width: 0.5rem;
+    height: 0.4rem;
+    width: 0.65rem;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -66,7 +68,7 @@
   .rainbow-checkbox [type="checkbox"]:focus ~ .rainbow-checkbox-faux,
   .rainbow-checkbox [type="checkbox"]:focus + .rainbow-checkbox-label-container .rainbow-checkbox-faux {
     content: '';
-    border-color: #01b6f5;
+    border: 2px solid #01b6f5;
     box-shadow: 0 0 2px #01b6f5; }
   .rainbow-checkbox [type="checkbox"]:focus:checked > .rainbow-checkbox-faux,
   .rainbow-checkbox [type="checkbox"]:focus:checked ~ .rainbow-checkbox-faux,

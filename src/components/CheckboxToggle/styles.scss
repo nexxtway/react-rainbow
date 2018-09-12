@@ -1,5 +1,7 @@
 /* stylelint-disable no-descending-specificity,max-line-length */
 @import "../../styles/colors";
+@import "../../styles/font-sizes";
+@import "../../styles/margins";
 
 @mixin common-styles($border-color, $background-color, $position: absolute) {
     border-radius: 1rem;
@@ -26,8 +28,8 @@
 
     .rainbow-checkbox-toggle_faux {
         display: block;
-        width: 3.75rem;
-        height: 2rem;
+        width: 2.75rem;
+        height: 1.5rem;
         padding: 0.125rem;
         transition: background-color 0.2s cubic-bezier(0.75, 0, 0.08, 1);
 
@@ -45,8 +47,8 @@
             bottom: 0;
             margin: auto;
             left: 0.015625rem;
-            width: 1.75rem;
-            height: 1.75rem;
+            width: 1.25rem;
+            height: 1.25rem;
             box-shadow: 0 0 2px 0 $color-gray-3;
 
             @include common-styles(transparent, white);
@@ -56,12 +58,11 @@
 
 .rainbow-checkbox-toggle-label {
     color: $color-gray-4;
-    font-size: 0.75rem;
-    margin-left: 0.75rem;
+    font-size: $font-size-text-small;
+    margin-left: $margin-small;
 }
 
 .rainbow-checkbox-toggle [type="checkbox"] + .rainbow-checkbox-toggle_faux_container {
-    font-size: 0.625rem;
     color: $color-gray-2;
 }
 
@@ -97,8 +98,8 @@
     bottom: 0;
     margin: auto;
     right: 0.03125rem;
-    width: 1.75rem;
-    height: 1.75rem;
+    width: 1.25rem;
+    height: 1.25rem;
     transition: transform 0.2s cubic-bezier(0.75, 0, 0.08, 1);
     box-shadow: 0 0 2px 0 $color-gray-4;
 

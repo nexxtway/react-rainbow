@@ -22,8 +22,8 @@
   display: inline-block; }
 
 .rainbow-radio .rainbow-radio_faux {
-  width: 1rem;
-  height: 1rem;
+  width: 1.25rem;
+  height: 1.25rem;
   display: inline-block;
   position: relative;
   vertical-align: middle;
@@ -36,7 +36,8 @@
   display: inline;
   vertical-align: middle;
   font-size: 0.875rem;
-  color: #061c3f; }
+  color: #061c3f;
+  line-height: 1.65rem; }
 
 .rainbow-radio-label-disabled {
   color: #a4a7b5; }
@@ -71,7 +72,7 @@
 .rainbow-radio [type="radio"]:focus + .rainbow-radio_faux,
 .rainbow-radio [type="radio"]:focus ~ .rainbow-radio_faux,
 .rainbow-radio [type="radio"]:focus + .rainbow-radio-label-container .rainbow-radio_faux {
-  border-color: #01b6f5;
+  border: solid 0.09375rem #01b6f5;
   box-shadow: 0 0 2px #01b6f5; }
 
 .rainbow-radio [type="radio"][disabled] {

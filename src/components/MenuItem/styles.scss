@@ -1,4 +1,5 @@
 @import './../../styles/colors.scss';
+@import './../../styles/font-sizes.scss';
 
 .rainbow-menu-item-header {
     padding: 0.5rem 0.75rem;
@@ -12,7 +13,7 @@
 }
 
 .rainbow-text-title_caps {
-    font-size: 0.75rem;
+    font-size: $font-size-text-medium;
     line-height: 1.25;
     color: $color-gray-3;
     font-weight: 100;
@@ -26,7 +27,7 @@
 
 .rainbow-menu-item > a {
     position: relative;
-    font-size: 0.75rem;
+    font-size: $font-size-text-medium;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-pack: justify;

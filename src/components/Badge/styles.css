@@ -10,11 +10,11 @@
   align-content: center;
   -ms-flex-align: center;
   align-items: center;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   line-height: normal;
   text-transform: uppercase;
   letter-spacing: 0.0625em;
-  padding: 0.25rem 0.5rem;
+  padding: 0.25rem 0.75rem;
   border-radius: 12rem; }
 
 .rainbow-badge + .rainbow-badge {

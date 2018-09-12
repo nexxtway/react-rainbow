@@ -8,7 +8,7 @@
   white-space: nowrap; }
 
 .rainbow-text-title_caps {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   line-height: 1.25;
   color: #a4a7b5;
   font-weight: 100;
@@ -20,7 +20,7 @@
 
 .rainbow-menu-item > a {
   position: relative;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: justify;
