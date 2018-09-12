@@ -44,7 +44,7 @@ export default class Select extends Component {
                         {label}
                     </label>
                 </RenderIf>
-                <div className="rainbow-select-inner-container">
+                <div className="rainbow-select-inner-container" disabled={disabled}>
                     <select
                         className="rainbow-select"
                         id={this.selectId}
