@@ -1,13 +1,17 @@
-.rainbow-menu-item-header {
-  padding: 0.5rem 0.75rem; }
-
-.rainbow-truncate {
+.rainbow-menu-item_header {
+  padding: 0.5rem 0.75rem;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap; }
 
-.rainbow-text-title_caps {
+.rainbow-menu-item_icon-container {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
+.rainbow-menu-item_header-label {
   font-size: 0.875rem;
   line-height: 1.25;
   color: #a4a7b5;
@@ -44,16 +48,16 @@
     .rainbow-menu-item > a[aria-disabled="true"]:hover, .rainbow-menu-item > a[aria-disabled="true"]:focus {
       background-color: transparent; }
 
-.rainbow-icon-container {
+.rainbow-menu-item_icon {
   width: 1rem;
   height: 1rem;
   line-height: 1.5;
   fill: white; }
 
-.rainbow-icon-left {
+.rainbow-menu-item_icon--left {
   margin-right: 0.75rem; }
 
-.rainbow-icon-right {
+.rainbow-menu-item_icon--right {
   margin-left: 0.75rem;
   -ms-flex-negative: 0;
   flex-shrink: 0; }

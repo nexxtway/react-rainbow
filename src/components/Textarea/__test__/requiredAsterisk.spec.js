@@ -7,7 +7,7 @@ describe('<TextareaInputRequiredAsterisk/>', () => {
         const component = mount(
             <RequiredAsterisk required />,
         );
-        const asterisk = component.find('abbr[className="rainbow-textarea-required"]');
+        const asterisk = component.find('abbr[className="rainbow-textarea--required"]');
         expect(asterisk.prop('title')).toBe('required');
     });
 });

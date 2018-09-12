@@ -32,7 +32,7 @@ export default class Textarea extends Component {
             className,
             error,
         } = this.props;
-        return classnames('rainbow-textarea-container', { 'rainbow-textarea-has-error': error }, className);
+        return classnames('rainbow-textarea_container', { 'rainbow-textarea--error': error }, className);
     }
 
     getInlineTextLabelId() {
@@ -103,10 +103,10 @@ export default class Textarea extends Component {
                     ref={this.textareaRef} />
 
                 <RenderIf isTrue={!!bottomHelpText}>
-                    <div className="rainbow-textarea-help-error">{bottomHelpText}</div>
+                    <div className="rainbow-textarea_help-error">{bottomHelpText}</div>
                 </RenderIf>
                 <RenderIf isTrue={!!error}>
-                    <div id={this.getErrorMessageId()} className="rainbow-textarea-help-error">{error}</div>
+                    <div id={this.getErrorMessageId()} className="rainbow-textarea_help-error">{error}</div>
                 </RenderIf>
             </div>
         );

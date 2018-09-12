@@ -26,17 +26,17 @@ export default class VerticalSectionOverflow extends Component {
     getContainerClassNames() {
         const { className } = this.props;
         const { isExpanded } = this.state;
-        return classnames('rainbow-nav-vertical-section-overflow-container', {
-            'rainbow-nav-vertical-section-overflow-container-expanded': isExpanded,
+        return classnames('rainbow-vertical-section-overflow_container', {
+            'rainbow-vertical-section-overflow_container--expanded': isExpanded,
         }, className);
     }
 
     getOverflowClassName() {
         const { isExpanded } = this.state;
         if (isExpanded) {
-            return 'rainbow-nav-certical-overflow-show';
+            return 'rainbow-vertical-section-overflow--show';
         }
-        return 'rainbow-nav-certical-overflow-hide';
+        return 'rainbow-vertical-section-overflow--hide';
     }
 
     toggleOverflow() {
@@ -61,18 +61,18 @@ export default class VerticalSectionOverflow extends Component {
         return (
             <div data-id="vertical-overflow-container" className={this.getContainerClassNames()} style={style}>
                 <button
-                    className="rainbow-nav-vertical-section-overflow-button"
+                    className="rainbow-vertical-section-overflow_button"
                     aria-controls={this.searchResultsId}
                     aria-expanded={isExpanded}
                     onClick={this.toggleOverflow}>
 
-                    <div className="rainbow-nav-vertical-overflow__action-text">
-                        <span className="rainbow-nav-vertical-overflow__action-title">{title}</span>
+                    <div className="rainbow-vertical-section-overflow_action-text">
+                        <span className="rainbow-vertical-section-overflow_action-title">{title}</span>
                         <Description isExpanded={isExpanded} description={description} />
                         <AssistiveText text={assistiveText} />
                     </div>
                     <RenderIf isTrue={!!icon}>
-                        <span className="rainbow-nav-vertical-section-overflow__icon rainbow-nav-vertical-section-overflow__icon_right">
+                        <span className="rainbow-vertical-section-overflow_icon rainbow-vertical-section-overflow_icon--right">
                             {icon}
                         </span>
                     </RenderIf>

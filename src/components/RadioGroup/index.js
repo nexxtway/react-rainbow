@@ -19,8 +19,8 @@ export default class RadioGroup extends Component {
     getContainerClassNames() {
         const { className, error } = this.props;
         return classnames(
-            'rainbow-radio-group-container',
-            { 'rainbow-radio-group-has-error': !!error },
+            'rainbow-radio-group_container',
+            { 'rainbow-radio-group--error': !!error },
             className,
         );
     }
@@ -47,14 +47,14 @@ export default class RadioGroup extends Component {
         return (
             <fieldset className={this.getContainerClassNames()} style={style}>
                 <RenderIf isTrue={!!label}>
-                    <legend className="rainbow-radio-group-label">
+                    <legend className="rainbow-radio-group_label">
                         <RenderIf isTrue={required}>
-                            <abbr className="rainbow-radio-group-required" title="required">*</abbr>
+                            <abbr className="rainbow-radio-group--required" title="required">*</abbr>
                         </RenderIf>
                         {label}
                     </legend>
                 </RenderIf>
-                <div className="rainbow-radio-group-inner-container">
+                <div className="rainbow-radio-group_inner-container">
                     <RadioItmes
                         value={value}
                         onChange={onChange}
@@ -64,7 +64,7 @@ export default class RadioGroup extends Component {
 
                 </div>
                 <RenderIf isTrue={!!error}>
-                    <div id={this.getErrorMessageId()} className="rainbow-radio-group-error">
+                    <div id={this.getErrorMessageId()} className="rainbow-radio-group_help">
                         {error}
                     </div>
                 </RenderIf>

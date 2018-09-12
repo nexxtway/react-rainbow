@@ -69,7 +69,7 @@
     margin-left: 0.25rem;
 }
 
-.rainbow-button_neutral {
+.rainbow-button--neutral {
     @include variants-common-styles(white, $color-gray-2, $color-brand);
 
     &:hover,
@@ -83,7 +83,7 @@
     }
 }
 
-.rainbow-button_brand {
+.rainbow-button--brand {
     @include variants-common-styles($color-brand, $color-brand, white);
 
     &:link,
@@ -106,7 +106,7 @@
     }
 }
 
-.rainbow-button_outline-brand {
+.rainbow-button--outline-brand {
     @include variants-common-styles(transparent, $color-brand, $color-brand);
 
     &:hover,
@@ -121,7 +121,7 @@
     }
 }
 
-.rainbow-button_inverse {
+.rainbow-button--inverse {
     @include variants-common-styles(transparent, transparent, white);
 
     padding: 0;
@@ -143,7 +143,7 @@
     }
 }
 
-.rainbow-button_border-inverse {
+.rainbow-button--border-inverse {
     @include variants-common-styles(transparent, white, white);
 
     &:hover,
@@ -165,7 +165,7 @@
     }
 }
 
-.rainbow-button_destructive {
+.rainbow-button--destructive {
     @include variants-common-styles($color-error, $color-error, white);
 
     &:link,
@@ -191,7 +191,7 @@
     }
 }
 
-.rainbow-button_success {
+.rainbow-button--success {
     @include variants-common-styles($color-success, $color-success, white);
 
     &:link,
@@ -215,6 +215,6 @@
     }
 }
 
-.rainbow-button_shaded {
+.rainbow-button--shaded {
     box-shadow: $shadow-1;
 }

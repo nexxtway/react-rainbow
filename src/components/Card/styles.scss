@@ -20,7 +20,7 @@
     box-shadow: $shadow-4;
 }
 
-.rainbow-card__header-container {
+.rainbow-card_header-container {
     display: -ms-flexbox;
     display: flex;
     justify-content: space-between;
@@ -28,13 +28,13 @@
     margin-bottom: $margin-small;
 }
 
-.rainbow-card__header {
+.rainbow-card_header {
     display: inline-flex;
     align-items: center;
     justify-content: center;
 }
 
-.rainbow-card__footer {
+.rainbow-card_footer {
     @include text-styles($font-size-text-medium, normal);
 
     text-align: center;
@@ -43,7 +43,7 @@
     margin-top: $margin-small;
 }
 
-.rainbow-card__header-link {
+.rainbow-card_header-link {
     @include text-styles(inherit, 700);
 
     max-width: 100%;
@@ -52,11 +52,11 @@
     white-space: nowrap;
 }
 
-.rainbow-card-text-heading_small {
+.rainbow-card_title {
     @include text-styles($font-size-heading-medium, 500, $color-gray-4);
 }
 
-.rainbow-card-media__figure {
+.rainbow-card_header-icon {
     -ms-flex-negative: 0;
     flex-shrink: 0;
     margin-right: $margin-small;

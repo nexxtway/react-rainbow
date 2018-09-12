@@ -7,8 +7,8 @@ export default function HeaderTitle({ title }) {
     if (typeof title === 'string') {
         return (
             <h2>
-                <a href="javascript:void(0);" className="rainbow-card__header-link">
-                    <span className="rainbow-card-text-heading_small">{title}</span>
+                <a href="javascript:void(0);" className="rainbow-card_header-link">
+                    <span className="rainbow-card_title">{title}</span>
                 </a>
             </h2>
         );

@@ -5,7 +5,7 @@ import RenderIf from '../RenderIf';
 export default function RequiredAsterisk({ required }) {
     return (
         <RenderIf isTrue={!!required}>
-            <abbr className="rainbow-input-required" title="required">* </abbr>
+            <abbr className="rainbow-input--required" title="required">* </abbr>
         </RenderIf>
     );
 }

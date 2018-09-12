@@ -17,8 +17,8 @@ export default class AvatarContent extends Component {
     getClassNames() {
         const { initialsVariant } = this.props;
         return classnames(
-            'rainbow-avatar__initials',
-            { 'rainbow-avatar__initials_inverse': initialsVariant === 'inverse' },
+            'rainbow-avatar_initials',
+            { 'rainbow-avatar_initials--inverse': initialsVariant === 'inverse' },
         );
     }
 

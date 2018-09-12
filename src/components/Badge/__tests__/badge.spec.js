@@ -31,24 +31,24 @@ describe('<Badge/>', () => {
         const component = mount(
             <Badge label="Badge Label" variant="brand" />,
         );
-        expect(component.find('span').prop('className')).toBe('rainbow-badge rainbow-badge_brand');
+        expect(component.find('span').prop('className')).toBe('rainbow-badge rainbow-badge--brand');
     });
     it('should have the right class names when variant outline-brand', () => {
         const component = mount(
             <Badge label="Badge Label" variant="outline-brand" />,
         );
-        expect(component.find('span').prop('className')).toBe('rainbow-badge rainbow-badge_outline-brand');
+        expect(component.find('span').prop('className')).toBe('rainbow-badge rainbow-badge--outline-brand');
     });
     it('should have the right class names when variant lightest', () => {
         const component = mount(
             <Badge label="Badge Label" variant="lightest" />,
         );
-        expect(component.find('span').prop('className')).toBe('rainbow-badge rainbow-badge_lightest');
+        expect(component.find('span').prop('className')).toBe('rainbow-badge rainbow-badge--lightest');
     });
     it('should have the right class names when variant inverse', () => {
         const component = mount(
             <Badge label="Badge Label" variant="inverse" />,
         );
-        expect(component.find('span').prop('className')).toBe('rainbow-badge rainbow-badge_inverse');
+        expect(component.find('span').prop('className')).toBe('rainbow-badge rainbow-badge--inverse');
     });
 });

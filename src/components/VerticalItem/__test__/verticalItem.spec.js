@@ -7,7 +7,7 @@ describe('<VerticalItem/>', () => {
         const component = mount(
             <VerticalItem label="item 1" name="item1" selectedItem="item1" />,
         );
-        expect(component.find('li').prop('className')).toBe('rainbow-nav-vertical__item rainbow-is-active');
+        expect(component.find('li').prop('className')).toBe('rainbow-vertical-item rainbow-vertical-item--active');
     });
     it('should pass the right props to anchor element', () => {
         const component = mount(
@@ -15,7 +15,7 @@ describe('<VerticalItem/>', () => {
         );
         expect(component.find('a').props()).toEqual(expect.objectContaining({
             href: '/page/to/go',
-            className: 'rainbow-nav-vertical__action',
+            className: 'rainbow-vertical-item_action',
             'aria-current': undefined,
             onClick: expect.any(Function),
         }));

@@ -7,7 +7,7 @@ describe('<InputRequiredAsterisk/>', () => {
         const component = mount(
             <RequiredAsterisk required />,
         );
-        const asterisk = component.find('abbr[className="rainbow-input-required"]');
+        const asterisk = component.find('abbr[className="rainbow-input--required"]');
         expect(asterisk.prop('title')).toBe('required');
     });
 });

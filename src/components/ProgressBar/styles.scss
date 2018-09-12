@@ -15,34 +15,34 @@
     border-radius: 0.5rem;
 }
 
-.rainbow-progress-bar_success {
+.rainbow-progress-bar--success {
     background: $color-success-light;
 }
 
-.rainbow-progress-bar_x-small {
+.rainbow-progress-bar--x-small {
     height: 0.125rem;
 }
 
-.rainbow-progress-bar_small {
+.rainbow-progress-bar--small {
     height: 0.25rem;
 }
 
-.rainbow-progress-bar_medium {
+.rainbow-progress-bar--medium {
     height: 0.625rem;
 }
 
-.rainbow-progress-bar_large {
+.rainbow-progress-bar--large {
     height: 1rem;
 }
 
-.rainbow-progress-bar__value {
+.rainbow-progress-bar_value {
     @include background-height($color-brand, 100%);
 }
 
-.rainbow-progress-bar__value_success {
+.rainbow-progress-bar_value--success {
     background: $color-success;
 }
 
-.rainbow-progress-bar .rainbow-progress-bar__value {
+.rainbow-progress-bar .rainbow-progress-bar_value {
     border-radius: 1rem;
 }

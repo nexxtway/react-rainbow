@@ -18,7 +18,7 @@ export default function Avatar(props) {
     } = props;
     const getContainerClassNames = () => classnames(
         'rainbow-avatar',
-        `rainbow-avatar_${size}`,
+        `rainbow-avatar--${size}`,
         className,
     );
 

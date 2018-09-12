@@ -56,26 +56,27 @@
     }
 }
 
-.rainbow-checkbox-toggle-label {
+.rainbow-checkbox-toggle_label {
     color: $color-gray-4;
     font-size: $font-size-text-small;
     margin-left: $margin-small;
 }
 
-.rainbow-checkbox-toggle [type="checkbox"] + .rainbow-checkbox-toggle_faux_container {
+.rainbow-checkbox-toggle [type="checkbox"] + .rainbow-checkbox-toggle_faux-container {
+    font-size: 0.625rem;
     color: $color-gray-2;
 }
 
 .rainbow-checkbox-toggle [type="checkbox"]:focus + .rainbow-checkbox-toggle_faux,
 .rainbow-checkbox-toggle [type="checkbox"]:focus ~ .rainbow-checkbox-toggle_faux,
-.rainbow-checkbox-toggle [type="checkbox"]:focus + .rainbow-checkbox-toggle_faux_container .rainbow-checkbox-toggle_faux {
+.rainbow-checkbox-toggle [type="checkbox"]:focus + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux {
     background-color: $color-gray-2;
     border-color: #dcdfe7;
 }
 
 .rainbow-checkbox-toggle [type="checkbox"]:checked + .rainbow-checkbox-toggle_faux,
 .rainbow-checkbox-toggle [type="checkbox"]:checked ~ .rainbow-checkbox-toggle_faux,
-.rainbow-checkbox-toggle [type="checkbox"]:checked + .rainbow-checkbox-toggle_faux_container .rainbow-checkbox-toggle_faux {
+.rainbow-checkbox-toggle [type="checkbox"]:checked + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux {
     border-color: $color-brand-2;
     background-color: $color-brand;
 }
@@ -84,15 +85,15 @@
 .rainbow-checkbox-toggle [type="checkbox"]:checked + .rainbow-checkbox-toggle_faux:focus,
 .rainbow-checkbox-toggle [type="checkbox"]:checked ~ .rainbow-checkbox-toggle_faux:hover,
 .rainbow-checkbox-toggle [type="checkbox"]:checked ~ .rainbow-checkbox-toggle_faux:focus,
-.rainbow-checkbox-toggle [type="checkbox"]:checked + .rainbow-checkbox-toggle_faux_container .rainbow-checkbox-toggle_faux:hover,
-.rainbow-checkbox-toggle [type="checkbox"]:checked + .rainbow-checkbox-toggle_faux_container .rainbow-checkbox-toggle_faux:focus {
+.rainbow-checkbox-toggle [type="checkbox"]:checked + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux:hover,
+.rainbow-checkbox-toggle [type="checkbox"]:checked + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux:focus {
     background-color: $color-brand-2;
     border-color: $color-brand-2;
 }
 
 .rainbow-checkbox-toggle [type="checkbox"]:checked + .rainbow-checkbox-toggle_faux::before,
 .rainbow-checkbox-toggle [type="checkbox"]:checked ~ .rainbow-checkbox-toggle_faux::before,
-.rainbow-checkbox-toggle [type="checkbox"]:checked + .rainbow-checkbox-toggle_faux_container .rainbow-checkbox-toggle_faux::before {
+.rainbow-checkbox-toggle [type="checkbox"]:checked + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux::before {
     content: '';
     top: 0;
     bottom: 0;
@@ -108,20 +109,20 @@
 
 .rainbow-checkbox-toggle [type="checkbox"]:checked + .rainbow-checkbox-toggle_faux::after,
 .rainbow-checkbox-toggle [type="checkbox"]:checked ~ .rainbow-checkbox-toggle_faux::after,
-.rainbow-checkbox-toggle [type="checkbox"]:checked + .rainbow-checkbox-toggle_faux_container .rainbow-checkbox-toggle_faux::after {
+.rainbow-checkbox-toggle [type="checkbox"]:checked + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux::after {
     background-color: transparent;
     box-shadow: 0 0 0 0 transparent;
 }
 
 .rainbow-checkbox-toggle [type="checkbox"]:checked:focus + .rainbow-checkbox-toggle_faux,
 .rainbow-checkbox-toggle [type="checkbox"]:checked:focus ~ .rainbow-checkbox-toggle_faux,
-.rainbow-checkbox-toggle [type="checkbox"]:checked:focus + .rainbow-checkbox-toggle_faux_container .rainbow-checkbox-toggle_faux {
+.rainbow-checkbox-toggle [type="checkbox"]:checked:focus + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux {
     background-color: $color-brand;
 }
 
 .rainbow-checkbox-toggle [type="checkbox"][disabled] + .rainbow-checkbox-toggle_faux,
 .rainbow-checkbox-toggle [type="checkbox"][disabled] ~ .rainbow-checkbox-toggle_faux,
-.rainbow-checkbox-toggle [type="checkbox"][disabled] + .rainbow-checkbox-toggle_faux_container .rainbow-checkbox-toggle_faux {
+.rainbow-checkbox-toggle [type="checkbox"][disabled] + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux {
     pointer-events: none;
 
     @include common-styles(rgba(164, 167, 181, 0.1), $color-gray-1, relative);
@@ -129,15 +130,15 @@
 
 .rainbow-checkbox-toggle [type="checkbox"][disabled] + .rainbow-checkbox-toggle_faux::after,
 .rainbow-checkbox-toggle [type="checkbox"][disabled] ~ .rainbow-checkbox-toggle_faux::after,
-.rainbow-checkbox-toggle [type="checkbox"][disabled] + .rainbow-checkbox-toggle_faux_container .rainbow-checkbox-toggle_faux::after {
+.rainbow-checkbox-toggle [type="checkbox"][disabled] + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux::after {
     background-color: #fff;
     box-shadow: 0 0 1px 0 $color-gray-2;
 }
 
-.rainbow-checkbox-toggle [type="checkbox"][disabled]:checked + .rainbow-checkbox-toggle_faux_container .rainbow-checkbox-toggle_faux::before {
+.rainbow-checkbox-toggle [type="checkbox"][disabled]:checked + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux::before {
     background-color: $color-gray-3;
 }
 
-.rainbow-checkbox-toggle [type="checkbox"][disabled]:checked + .rainbow-checkbox-toggle_faux_container .rainbow-checkbox-toggle_faux::after {
+.rainbow-checkbox-toggle [type="checkbox"][disabled]:checked + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux::after {
     background-color: transparent;
 }

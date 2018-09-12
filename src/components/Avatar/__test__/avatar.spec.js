@@ -13,30 +13,30 @@ describe('<Avatar/>', () => {
         const component = mount(
             <Avatar />,
         );
-        expect(component.find('span[className="rainbow-avatar rainbow-avatar_medium"]').exists()).toBe(true);
+        expect(component.find('span[className="rainbow-avatar rainbow-avatar--medium"]').exists()).toBe(true);
     });
     it('should have the right class names when size is small', () => {
         const component = mount(
             <Avatar size="small" />,
         );
-        expect(component.find('span[className="rainbow-avatar rainbow-avatar_small"]').exists()).toBe(true);
+        expect(component.find('span[className="rainbow-avatar rainbow-avatar--small"]').exists()).toBe(true);
     });
     it('should have the right class names when size is x-small', () => {
         const component = mount(
             <Avatar size="x-small" />,
         );
-        expect(component.find('span[className="rainbow-avatar rainbow-avatar_x-small"]').exists()).toBe(true);
+        expect(component.find('span[className="rainbow-avatar rainbow-avatar--x-small"]').exists()).toBe(true);
     });
     it('should have the right class names when size is medium', () => {
         const component = mount(
             <Avatar size="medium" />,
         );
-        expect(component.find('span[className="rainbow-avatar rainbow-avatar_medium"]').exists()).toBe(true);
+        expect(component.find('span[className="rainbow-avatar rainbow-avatar--medium"]').exists()).toBe(true);
     });
     it('should have the right class names when size is large', () => {
         const component = mount(
             <Avatar size="large" />,
         );
-        expect(component.find('span[className="rainbow-avatar rainbow-avatar_large"]').exists()).toBe(true);
+        expect(component.find('span[className="rainbow-avatar rainbow-avatar--large"]').exists()).toBe(true);
     });
 });

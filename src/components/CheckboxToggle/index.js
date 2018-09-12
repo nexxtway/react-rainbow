@@ -41,11 +41,11 @@ export default class CheckboxToggle extends Component {
                     onChange={onChange}
                     disabled={disabled} />
 
-                <span id={this.toggleId} className="rainbow-checkbox-toggle_faux_container" aria-live="assertive">
+                <span id={this.toggleId} className="rainbow-checkbox-toggle_faux-container" aria-live="assertive">
                     <span className="rainbow-checkbox-toggle_faux" />
                 </span>
                 <RenderIf isTrue={!!label} >
-                    <span className="rainbow-checkbox-toggle-label">{label}</span>
+                    <span className="rainbow-checkbox-toggle_label">{label}</span>
                 </RenderIf>
             </label>
         );

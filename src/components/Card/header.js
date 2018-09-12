@@ -7,10 +7,10 @@ import './styles.css';
 export default function Header({ icon, title, actions }) {
     return (
         <RenderIf isTrue={!!(icon || title || actions)}>
-            <div className="rainbow-card__header-container">
-                <header className="rainbow-card__header">
+            <div className="rainbow-card_header-container">
+                <header className="rainbow-card_header">
                     <RenderIf isTrue={!!icon}>
-                        <div className="rainbow-card-media__figure">
+                        <div className="rainbow-card_header-icon">
                             {icon}
                         </div>
                     </RenderIf>

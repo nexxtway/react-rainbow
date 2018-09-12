@@ -25,8 +25,8 @@ function Item(props) {
     } = props;
     const isSelected = name === selectedItem;
 
-    const getContainerClassNames = () => classnames('rainbow-nav-vertical__item', {
-        'rainbow-is-active': isSelected,
+    const getContainerClassNames = () => classnames('rainbow-vertical-item', {
+        'rainbow-vertical-item--active': isSelected,
     }, className);
 
     const getAriaCurrent = () => {
@@ -54,16 +54,15 @@ function Item(props) {
                 href={href}
                 onClick={hanldeOnClick}
                 aria-describedby={entityHeaderId}
-                className="rainbow-nav-vertical__action"
+                className="rainbow-vertical-item_action"
                 aria-current={getAriaCurrent()}
                 tabIndex={resolveTabIndex()}>
-
                 <RenderIf isTrue={!!icon}>
-                    <span className="rainbow-nav-vertical_icon" >{icon}</span>
+                    <span className="rainbow-vertical-item_icon" >{icon}</span>
                 </RenderIf>
                 {label}
                 <RenderIf isTrue={!!notification}>
-                    <span className="rainbow-col_bump-left">{notification}</span>
+                    <span className="rainbow-vertical-item_notification">{notification}</span>
                 </RenderIf>
             </a>
         </li>

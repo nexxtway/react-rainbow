@@ -18,8 +18,8 @@ export default class Select extends Component {
 
     getContainerClassNames() {
         const { classNames, error } = this.props;
-        return classnames('rainbow-select-container', {
-            'rainbow-select-has-error': error,
+        return classnames('rainbow-select_container', {
+            'rainbow-select--error': error,
         }, classNames);
     }
 
@@ -39,12 +39,12 @@ export default class Select extends Component {
         return (
             <div className={this.getContainerClassNames()} style={style}>
                 <RenderIf isTrue={!!label}>
-                    <label className="rainbow-select-label" htmlFor={this.selectId}>
+                    <label className="rainbow-select_label" htmlFor={this.selectId}>
                         <RequiredAsterisk required={isRequiredOrHasError} />
                         {label}
                     </label>
                 </RenderIf>
-                <div className="rainbow-select-inner-container" disabled={disabled}>
+                <div className="rainbow-select_inner-container" disabled={disabled}>
                     <select
                         className="rainbow-select"
                         id={this.selectId}
@@ -57,7 +57,7 @@ export default class Select extends Component {
                     </select>
                 </div>
                 <RenderIf isTrue={!!error}>
-                    <div className="rainbow-select-error">{error}</div>
+                    <div className="rainbow-select_helpl-error">{error}</div>
                 </RenderIf>
             </div>
         );

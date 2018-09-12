@@ -6,19 +6,19 @@
 @import "../../styles/margins";
 @import "../../styles/paddings";
 
-.rainbow-select-container {
+.rainbow-select_container {
     position: relative;
     display: flex;
     flex-direction: column;
 }
 
-.rainbow-select-error {
+.rainbow-select_help-error {
     font-size: $font-size-text-small;
     margin-top: $margin-x-small;
     align-self: center;
 }
 
-.rainbow-select-label {
+.rainbow-select_label {
     color: $color-gray-4;
     font-size: $font-size-text-small;
     line-height: 1.5;
@@ -31,7 +31,7 @@
     }
 }
 
-.rainbow-select-inner-container {
+.rainbow-select_inner-container {
     position: relative;
 
     &::after {
@@ -101,7 +101,7 @@
     }
 }
 
-.rainbow-select-has-error {
+.rainbow-select--error {
     .rainbow-select {
         background-color: white;
         border: 0.125rem $color-error solid;
@@ -114,7 +114,7 @@
         }
     }
 
-    .rainbow-select-error {
+    .rainbow-select_help-error {
         color: $color-error;
     }
 }
