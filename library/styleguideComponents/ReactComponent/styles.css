@@ -1,9 +1,9 @@
 .react-rainbow-component-description-text {
-    font-weight: 300;
     line-height: 1.75;
+    font-family: 'Lato Light';
 }
 
 .react-rainbow-component-title-text {
-    font-weight: 300;
     line-height: 1.25;
+    font-family: 'Lato Light';
 }
