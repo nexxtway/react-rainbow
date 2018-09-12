@@ -2,6 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import VerticalNavigation from './../';
 import VerticalSection from './../../VerticalSection';
+import VerticalSectionOverflow from './../../VerticalSectionOverflow';
 import VerticalItem from './../../VerticalItem';
 
 describe('<VerticalNavigation/>', () => {
@@ -68,5 +69,35 @@ describe('<VerticalNavigation/>', () => {
         const item2 = component.find('VerticalItem[name="item 2"]').find('a');
         item2.simulate('click');
         expect(onSelectMockFn).toHaveBeenCalledWith(expect.any(Object), 'item 2');
+    });
+    it('should set tabIndex 0 in anchor element when use VerticalSection', () => {
+        const component = mount(
+            <VerticalNavigation>
+                <VerticalSection label="header section">
+                    <VerticalItem name="item 1" label="item 1" />
+                </VerticalSection>
+            </VerticalNavigation>,
+        );
+        expect(component.find('a').prop('tabIndex')).toBe(0);
+    });
+    it('should set tabIndex 0 in anchor element when use VerticalSectionOverflow and expanded is true', () => {
+        const component = mount(
+            <VerticalNavigation>
+                <VerticalSectionOverflow expanded>
+                    <VerticalItem name="item 1" label="item 1" />
+                </VerticalSectionOverflow>
+            </VerticalNavigation>,
+        );
+        expect(component.find('a').prop('tabIndex')).toBe(0);
+    });
+    it('should set tabIndex -1 in anchor element when use VerticalSectionOverflow and expanded is false', () => {
+        const component = mount(
+            <VerticalNavigation>
+                <VerticalSectionOverflow expanded={false}>
+                    <VerticalItem name="item 1" label="item 1" />
+                </VerticalSectionOverflow>
+            </VerticalNavigation>,
+        );
+        expect(component.find('a').prop('tabIndex')).toBe(-1);
     });
 });

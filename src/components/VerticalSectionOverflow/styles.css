@@ -28,7 +28,8 @@
   -ms-user-select: none;
   user-select: none; }
   .rainbow-nav-vertical-section-overflow-button:focus {
-    outline: 0; }
+    outline: 0;
+    background-color: #f4f6f9; }
 
 .rainbow-nav-certical-overflow-show {
   transition: all 0.2s ease-out;
