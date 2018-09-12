@@ -2,8 +2,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { Consumer as NavStateConsumer } from '../VerticalNavigation/context';
-import { Consumer as ItemIdConsumer } from '../VerticalSection/context';
+import { Consumer as NavigationConsumer } from '../VerticalNavigation/context';
+import { Consumer as SectionConsumer } from '../VerticalSection/context';
+import { Consumer as SectionOverflowConsumer } from '../VerticalSectionOverflow/context';
 import RenderIf from '../RenderIf';
 import './styles.css';
 
@@ -20,6 +21,7 @@ function Item(props) {
         selectedItem,
         onSelect,
         entityHeaderId,
+        isExpanded,
     } = props;
     const isSelected = name === selectedItem;
 
@@ -39,6 +41,13 @@ function Item(props) {
         onSelect(e, name);
     }
 
+    function resolveTabIndex() {
+        if (isExpanded === false) {
+            return -1;
+        }
+        return 0;
+    }
+
     return (
         <li className={getContainerClassNames()} style={style}>
             <a
@@ -46,7 +55,8 @@ function Item(props) {
                 onClick={hanldeOnClick}
                 aria-describedby={entityHeaderId}
                 className="rainbow-nav-vertical__action"
-                aria-current={getAriaCurrent()}>
+                aria-current={getAriaCurrent()}
+                tabIndex={resolveTabIndex()}>
 
                 <RenderIf isTrue={!!icon}>
                     <span className="rainbow-nav-vertical_icon" >{icon}</span>
@@ -65,15 +75,23 @@ function Item(props) {
  */
 export default function VerticalItem(props) {
     return (
-        <NavStateConsumer>
+        <NavigationConsumer>
             {context => (
-                <ItemIdConsumer>
+                <SectionConsumer>
                     {entityHeaderId => (
-                        <Item {...props} {...context} entityHeaderId={entityHeaderId} />
+                        <SectionOverflowConsumer>
+                            {isExpanded => (
+                                <Item
+                                    {...props}
+                                    {...context}
+                                    entityHeaderId={entityHeaderId}
+                                    isExpanded={isExpanded} />
+                            )}
+                        </SectionOverflowConsumer>
                     ) }
-                </ItemIdConsumer>
+                </SectionConsumer>
             )}
-        </NavStateConsumer>
+        </NavigationConsumer>
     );
 }
 

@@ -5,6 +5,7 @@
     background-color: $color-gray-1;
     color: $color-dark-1;
     text-decoration: none;
+    outline: 0;
 }
 
 .rainbow-nav-vertical__item {
@@ -37,7 +38,8 @@
     white-space: nowrap;
 }
 
-.rainbow-nav-vertical__action:hover {
+.rainbow-nav-vertical__action:hover,
+.rainbow-nav-vertical__action:focus {
     @extend %nav-vertical__action-hover-active;
 }
 

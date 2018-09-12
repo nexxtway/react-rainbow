@@ -1,8 +1,10 @@
-.rainbow-nav-vertical__action:hover, .rainbow-is-active .rainbow-nav-vertical__action,
+.rainbow-nav-vertical__action:hover,
+.rainbow-nav-vertical__action:focus, .rainbow-is-active .rainbow-nav-vertical__action,
 .rainbow-nav-vertical__action:active {
   background-color: #f4f6f9;
   color: #061c3f;
-  text-decoration: none; }
+  text-decoration: none;
+  outline: 0; }
 
 .rainbow-nav-vertical__item {
   position: relative; }

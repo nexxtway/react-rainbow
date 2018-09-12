@@ -6,6 +6,7 @@ import RenderIf from './../RenderIf';
 import { uniqueId } from './../../libs/utils';
 import getMaxHeight from './compute-max-height';
 import Description from './description';
+import { Provider } from './context';
 import './styles.css';
 
 /**
@@ -83,9 +84,11 @@ export default class VerticalSectionOverflow extends Component {
                     className={this.getOverflowClassName()}
                     style={sectionMaxHeight}>
 
-                    <ul>
-                        {children}
-                    </ul>
+                    <Provider value={isExpanded}>
+                        <ul>
+                            {children}
+                        </ul>
+                    </Provider>
                 </div>
             </div>
         );
