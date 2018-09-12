@@ -57,7 +57,7 @@
     outline: 0;
     padding-left: 0.9375rem;
     border: 0.125rem #01b6f5 solid;
-    box-shadow: 0 0 1px 0 #a4a7b5;
+    box-shadow: 0 0 2px #01b6f5;
     line-height: 2rem; }
   .rainbow-select[disabled] {
     -webkit-user-select: none;
@@ -77,7 +77,6 @@
 .rainbow-select--error .rainbow-select {
   background-color: white;
   border: 0.125rem #fe4849 solid;
-  box-shadow: 0 0 2px 0 #a4a7b5;
   background-clip: padding-box;
   padding-left: 1rem; }
   .rainbow-select--error .rainbow-select:focus, .rainbow-select--error .rainbow-select:active {
