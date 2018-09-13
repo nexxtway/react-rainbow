@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { uniqueId } from '../../libs/utils';
 import RenderIf from '../RenderIf';
-import RequiredAsterisk from '../Input/requiredAsterisk';
+import RequiredAsterisk from '../RequiredAsterisk';
 import CheckboxList from './checkboxList';
 import './styles.css';
 
