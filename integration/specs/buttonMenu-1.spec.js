@@ -1,6 +1,6 @@
 const PageButtonMenu = require('./../../src/components/ButtonMenu/pageObject');
 
-const MENU_BTN = '#rsg-root > div > main > section > section > div > div > article > div > article > div > div > div > div > header > div > div > div';
+const MENU_BTN = '#button-menu_integration-test--faCog';
 const REACT_LOGO = 'img[alt="rainbow logo"]';
 const ESCAPE_KEY = '\uE00C';
 const SPACE_KEY = '\uE00D';
