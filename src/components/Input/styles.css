@@ -6,7 +6,7 @@
 
 .rainbow-input_label {
   color: #576574;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   line-height: 1.5;
   margin-right: 0.75rem;
   margin-bottom: 0.125rem;
@@ -49,24 +49,25 @@
   transition: all 0.1s linear;
   display: inline-block;
   padding: 0 1rem 0 1rem;
-  line-height: 2.375rem;
-  height: 2.375rem;
+  line-height: 2.5rem;
+  height: 2.5rem;
   color: #061c3f;
-  font-size: 0.875rem; }
+  font-size: 1rem; }
   .rainbow-input[type="search"]::-ms-clear {
     display: none;
     width: 0;
     height: 0; }
   .rainbow-input:focus, .rainbow-input:active {
     outline: 0;
-    line-height: 2.375rem;
+    line-height: 2.5rem;
     padding-left: 0.9375rem;
     border: 2px #01b6f5 solid;
     background-color: white;
     box-shadow: 0 0 2px #01b6f5; }
   .rainbow-input::placeholder {
     color: #a4a7b5;
-    font-weight: 300; }
+    font-weight: 300;
+    font-size: 1rem; }
   .rainbow-input[readonly] {
     padding-left: 0;
     padding-right: 0;
@@ -99,7 +100,7 @@
   border: 2px #fe4849 solid;
   padding-left: 1rem;
   background-clip: padding-box;
-  line-height: 2.375rem; }
+  line-height: 2.5rem; }
   .rainbow-input--error .rainbow-input:focus {
     box-shadow: 0 0 2px #fe4849; }
 
@@ -134,7 +135,7 @@
   padding-bottom: 0;
   padding-left: 0.75rem;
   color: #061c3f;
-  line-height: 2.375rem; }
+  line-height: 2.5rem; }
   .rainbow-input_bare:focus, .rainbow-input_bare:active {
     outline: 0;
     box-shadow: none; }

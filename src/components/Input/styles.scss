@@ -14,7 +14,7 @@
 
 .rainbow-input_label {
     color: $color-gray-4;
-    font-size: $font-size-text-small;
+    font-size: $font-size-text-medium;
     line-height: 1.5;
     margin-right: 0.75rem;
     margin-bottom: 0.125rem;
@@ -68,10 +68,10 @@
     transition: all 0.1s linear;
     display: inline-block;
     padding: 0 1rem 0 1rem;
-    line-height: 2.375rem;
-    height: 2.375rem;
+    line-height: 2.5rem;
+    height: 2.5rem;
     color: $color-dark-1;
-    font-size: $font-size-text-medium;
+    font-size: $font-size-text-large;
 
     &[type="search"]::-ms-clear {
         display: none;
@@ -82,7 +82,7 @@
     &:focus,
     &:active {
         outline: 0;
-        line-height: 2.375rem;
+        line-height: 2.5rem;
         padding-left: 0.9375rem;
         border: 2px $color-brand solid;
         background-color: white;
@@ -92,6 +92,7 @@
     &::placeholder {
         color: $color-gray-3;
         font-weight: 300;
+        font-size: $font-size-text-large;
     }
 
     &[readonly] {
@@ -137,7 +138,7 @@
         border: 2px $color-error solid;
         padding-left: $padding-medium;
         background-clip: padding-box;
-        line-height: 2.375rem;
+        line-height: 2.5rem;
 
         &:focus {
             box-shadow: $shadow-error;
@@ -182,7 +183,7 @@
     padding-bottom: 0;
     padding-left: 0.75rem;
     color: $color-dark-1;
-    line-height: 2.375rem;
+    line-height: 2.5rem;
 
     &:focus,
     &:active {
