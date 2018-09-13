@@ -7,7 +7,7 @@
         <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
             <ButtonGroup>
                 <ButtonMenu
-                    id="button-menu_integration-test--faCog"
+                    id="button-menu_integration-test"
                     menuAlignment="right"
                     menuSize="x-small"
                     buttonVariant="base"
@@ -108,7 +108,7 @@
             <ButtonGroup className="rainbow-m-right_medium">
                 <ButtonIcon icon={<FontAwesomeIcon icon={faPlus} />} variant="border-filled" disabled />
                 <ButtonMenu
-                    id="button-menu_integration-test--faStore"
+                    id="button-menu_integration-test--firstButton"
                     menuSize="x-small"
                     menuAlignment="right"
                     icon={<FontAwesomeIcon icon={faStore} />}>
@@ -130,7 +130,7 @@
 
                 </ButtonMenu>
                 <ButtonMenu
-                    id="button-menu_integration-test--faEllipsisV"
+                    id="button-menu_integration-test--secondButton"
                     menuAlignment="right"
                     menuSize="x-small"
                     icon={<FontAwesomeIcon icon={faEllipsisV} />}>
