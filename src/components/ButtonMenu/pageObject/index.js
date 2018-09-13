@@ -2,7 +2,7 @@
  * ButtonMenu page object class.
  * @class
  */
-module.exports = class PageButtonMenu {
+class PageButtonMenu {
    /**
     * Create a new ButtonMenu page object.
     * @constructor
@@ -60,4 +60,6 @@ module.exports = class PageButtonMenu {
     hoverItem(itemPosition) {
         browser.moveToObject(`${this.rootElement} li[role="presentation"]:nth-child(${itemPosition + 1}) > a`);
     }
-};
+}
+
+module.exports = PageButtonMenu;
