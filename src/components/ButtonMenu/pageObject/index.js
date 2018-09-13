@@ -26,7 +26,7 @@ class PageButtonMenu {
     * @returns {bool}
     */
     isOpen() {
-        return $(this.rootElement).$('.rainbow-button-menu-dropdown').isVisible();
+        return $(this.rootElement).$('.rainbow-button-menu_dropdown').isVisible();
     }
 
    /**
