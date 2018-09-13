@@ -4,7 +4,7 @@
   .rainbow-button-menu:hover, .rainbow-button-menu:focus {
     outline: 0; }
 
-.rainbow-button-menu-dropdown {
+.rainbow-button-menu_dropdown {
   position: absolute;
   z-index: 7000;
   left: 50%;
@@ -26,42 +26,42 @@
   visibility: hidden;
   top: 100%; }
 
-.rainbow-button-menu.rainbow-button-menu_is-open .rainbow-button-menu-dropdown {
+.rainbow-button-menu.rainbow-button-menu--open .rainbow-button-menu_dropdown {
   display: block;
   opacity: 1;
   transition: opacity 0.1s linear, visibility 0.1s linear;
   visibility: visible; }
 
-.rainbow-button-menu-dropdown_left {
+.rainbow-button-menu_dropdown--left {
   left: 0;
   transform: translateX(0); }
 
-.rainbow-button-menu-dropdown_right {
+.rainbow-button-menu_dropdown--right {
   left: auto;
   right: 0;
   transform: translateX(0); }
 
-.rainbow-button-menu-dropdown_bottom {
+.rainbow-button-menu_dropdown--bottom {
   top: auto;
   bottom: 100%; }
 
-.rainbow-button-menu-dropdown_xx-small {
+.rainbow-button-menu_dropdown--xx-small {
   min-width: 6rem; }
 
-.rainbow-button-menu-dropdown_x-small {
+.rainbow-button-menu_dropdown--x-small {
   min-width: 12rem; }
 
-.rainbow-button-menu-dropdown_small {
+.rainbow-button-menu_dropdown--small {
   min-width: 15rem; }
 
-.rainbow-button-menu-dropdown_medium {
+.rainbow-button-menu_dropdown--medium {
   min-width: 20rem; }
 
-.rainbow-button-menu-dropdown_large {
+.rainbow-button-menu_dropdown--large {
   min-width: 25rem;
   max-width: 512px; }
 
-.rainbow-button-menu-dropdown_loading-box {
+.rainbow-button-menu_dropdown--loading-box {
   padding: 2rem;
   height: 3rem;
   width: 3rem; }

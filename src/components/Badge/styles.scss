@@ -33,18 +33,18 @@
     margin-left: $margin-x-small;
 }
 
-.rainbow-badge_lightest {
+.rainbow-badge--lightest {
     @include colors($color-gray-4, #fff, $color-gray-2);
 }
 
-.rainbow-badge_brand {
+.rainbow-badge--brand {
     @include colors(#fff, $color-brand);
 }
 
-.rainbow-badge_outline-brand {
+.rainbow-badge--outline-brand {
     @include colors($color-brand, transparent, $color-brand);
 }
 
-.rainbow-badge_inverse {
+.rainbow-badge--inverse {
     @include colors(#fff, $color-gray-4);
 }

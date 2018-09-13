@@ -93,12 +93,12 @@ describe('<Textarea/>', () => {
         const component = mount(
             <Textarea />,
         );
-        expect(component.find('div[className="rainbow-textarea-container"]').exists()).toBe(true);
+        expect(component.find('div[className="rainbow-textarea_container"]').exists()).toBe(true);
     });
     it('should have the right class names when error is passed', () => {
         const component = mount(
             <Textarea error="Error text" />,
         );
-        expect(component.find('div[className="rainbow-textarea-container rainbow-textarea-has-error"]').exists()).toBe(true);
+        expect(component.find('div[className="rainbow-textarea_container rainbow-textarea--error"]').exists()).toBe(true);
     });
 });

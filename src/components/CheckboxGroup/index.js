@@ -28,8 +28,8 @@ export default class CheckboxGroup extends Component {
     getCheckboxContainerClassNames() {
         const { error, className } = this.props;
         return classnames(
-            'rainbow-checkbox-group-container',
-            { 'rainbow-checkbox-group-has-error': !!error },
+            'rainbow-checkbox-group_container',
+            { 'rainbow-checkbox-group--error': !!error },
             className,
         );
     }
@@ -49,12 +49,12 @@ export default class CheckboxGroup extends Component {
         return (
             <fieldset className={this.getCheckboxContainerClassNames()} style={style}>
                 <RenderIf isTrue={!!label}>
-                    <legend className="rainbow-checkbox-group-label">
+                    <legend className="rainbow-checkbox-group_label">
                         <RequiredAsterisk required={required} />
                         {label}
                     </legend>
                 </RenderIf>
-                <div className="rainbow-checkbox-group-checkbox-container">
+                <div className="rainbow-checkbox-group_checkbox-container">
                     <CheckboxList
                         values={value}
                         options={options}
@@ -63,7 +63,7 @@ export default class CheckboxGroup extends Component {
 
                 </div>
                 <RenderIf isTrue={!!error}>
-                    <div id={this.getErrorMessageId()} className="rainbow-checkbox-group-error">{error}</div>
+                    <div id={this.getErrorMessageId()} className="rainbow-checkbox-group_help-error">{error}</div>
                 </RenderIf>
             </fieldset>
         );

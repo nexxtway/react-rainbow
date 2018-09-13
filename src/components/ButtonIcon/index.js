@@ -22,7 +22,7 @@ export default class ButtonIcon extends Component {
         if (variant === 'base') {
             return null;
         }
-        return `rainbow-button-icon_${variant}`;
+        return `rainbow-button-icon--${variant}`;
     }
 
     getButtonClassNames() {
@@ -34,8 +34,8 @@ export default class ButtonIcon extends Component {
         );
 
         return classnames('rainbow-button-icon', {
-            'rainbow-button-icon_shaded': isShaded,
-        }, this.getVariantClassName(), `rainbow-button-icon_${size}`, className);
+            'rainbow-button-icon--shaded': isShaded,
+        }, this.getVariantClassName(), `rainbow-button-icon--${size}`, className);
     }
 
     /**

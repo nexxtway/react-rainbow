@@ -5,18 +5,18 @@ exports[`<Card/> should have the right class names 1`] = `
   className="rainbow-card"
 >
   <div
-    className="rainbow-card__header-container"
+    className="rainbow-card_header-container"
   >
     <header
-      className="rainbow-card__header"
+      className="rainbow-card_header"
     >
       <h2>
         <a
-          className="rainbow-card__header-link"
+          className="rainbow-card_header-link"
           href="javascript:void(0);"
         >
           <span
-            className="rainbow-card-text-heading_small"
+            className="rainbow-card_title"
           >
             Card Header
           </span>
@@ -35,7 +35,7 @@ exports[`<Card/> should have the right class names 1`] = `
     </div>
   </div>
   <footer
-    className="rainbow-card__footer"
+    className="rainbow-card_footer"
   >
     Card Footer
   </footer>

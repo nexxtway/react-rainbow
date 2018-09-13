@@ -17,7 +17,7 @@ class VerticalSection extends Component {
 
     getClassNames() {
         const { className } = this.props;
-        return classnames('rainbow-nav-vertical__section', className);
+        return classnames('rainbow-vertical-section', className);
     }
 
     render() {
@@ -30,7 +30,7 @@ class VerticalSection extends Component {
         return (
             <div className={this.getClassNames()} style={style}>
                 <RenderIf isTrue={!!label}>
-                    <h2 id={this.entityHeaderId} className="rainbow-nav-vertical__title">
+                    <h2 id={this.entityHeaderId} className="rainbow-vertical-section_title">
                         {label}
                     </h2>
                 </RenderIf>

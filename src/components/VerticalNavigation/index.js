@@ -24,9 +24,9 @@ export default function VerticalNavigation(props) {
         onSelect,
     };
 
-    const getClassNames = () => classnames('rainbow-nav-vertical', {
-        'rainbow-nav-vertical_compact': compact,
-        'rainbow-nav-vertical_shade': shaded,
+    const getClassNames = () => classnames('rainbow-vertical-navigation', {
+        'rainbow-vertical-navigation_compact': compact,
+        'rainbow-vertical-navigation_shade': shaded,
     }, className);
 
     return (

@@ -20,14 +20,14 @@ export default function ProgressBar(props) {
 
     const getContainerClassNames = () => classnames(
             'rainbow-progress-bar',
-            `rainbow-progress-bar_${size}`,
-            { 'rainbow-progress-bar_success': variant === 'success' },
+            `rainbow-progress-bar--${size}`,
+            { 'rainbow-progress-bar--success': variant === 'success' },
             className,
         );
 
     const getProgressBarClassNames = () => classnames(
-            'rainbow-progress-bar__value',
-            { 'rainbow-progress-bar__value_success': variant === 'success' },
+            'rainbow-progress-bar_value',
+            { 'rainbow-progress-bar_value--success': variant === 'success' },
         );
 
     const normalizedValue = normalizeValue(value);

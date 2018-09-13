@@ -4,8 +4,8 @@ import classnames from 'classnames';
 import RenderIf from './../RenderIf';
 
 export default function Description({ description, isExpanded }) {
-    const getClassNames = () => classnames('rainbow-nav-vertical-overflow__action-description', {
-        'rainbow-nav-vertical-overflow__action-description-expanded': isExpanded,
+    const getClassNames = () => classnames('rainbow-vertical-section-overflow_action-description', {
+        'rainbow-vertical-section-overflow_action-description--expanded': isExpanded,
     });
 
     return (

@@ -22,7 +22,7 @@ export default class Input extends Component {
             className,
             error,
         } = this.props;
-        return classnames('rainbow-input-container', { 'rainbow-input-has-error': error }, className);
+        return classnames('rainbow-input_container', { 'rainbow-input--error': error }, className);
     }
 
     getIconPositionClassNames() {
@@ -31,8 +31,8 @@ export default class Input extends Component {
             iconPosition,
         } = this.props;
         return classnames({
-            'rainbow-input-has-icon': icon,
-            [`rainbow-input-has-icon_${iconPosition}`]: icon,
+            'rainbow-input_icon-container': icon,
+            [`rainbow-input_icon--${iconPosition}`]: icon,
         });
     }
 
@@ -97,7 +97,7 @@ export default class Input extends Component {
 
                 <div className={this.getIconPositionClassNames()}>
                     <RenderIf isTrue={!!icon}>
-                        <span className="rainbow-input__icon">
+                        <span className="rainbow-input_icon">
                             {icon}
                         </span>
                     </RenderIf>
@@ -121,10 +121,10 @@ export default class Input extends Component {
 
                 </div>
                 <RenderIf isTrue={!!bottomHelpText}>
-                    <div className="rainbow-input-help">{bottomHelpText}</div>
+                    <div className="rainbow-input_help">{bottomHelpText}</div>
                 </RenderIf>
                 <RenderIf isTrue={!!error}>
-                    <div id={this.getErrorMessageId()} className="rainbow-input-help">{error}</div>
+                    <div id={this.getErrorMessageId()} className="rainbow-input_help">{error}</div>
                 </RenderIf>
             </div>
         );

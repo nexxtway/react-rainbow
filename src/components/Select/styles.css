@@ -1,27 +1,27 @@
 /* stylelint-disable no-descending-specificity */
-.rainbow-select-container {
+.rainbow-select_container {
   position: relative;
   display: flex;
   flex-direction: column; }
 
-.rainbow-select-error {
+.rainbow-select_help-error {
   font-size: 0.75rem;
   margin-top: 0.5rem;
   align-self: center; }
 
-.rainbow-select-label {
+.rainbow-select_label {
   color: #576574;
   font-size: 0.75rem;
   line-height: 1.5;
   margin-right: 0.75rem;
   margin-bottom: 0.25rem;
   align-self: center; }
-  .rainbow-select-label:empty {
+  .rainbow-select_label:empty {
     margin: 0; }
 
-.rainbow-select-inner-container {
+.rainbow-select_inner-container {
   position: relative; }
-  .rainbow-select-inner-container::after {
+  .rainbow-select_inner-container::after {
     content: '';
     position: absolute;
     display: block;
@@ -35,7 +35,7 @@
     transform: rotate(135deg);
     vertical-align: top;
     color: #061c3f; }
-  .rainbow-select-inner-container[disabled]::after {
+  .rainbow-select_inner-container[disabled]::after {
     color: #e3e5ed; }
 
 .rainbow-select {
@@ -57,7 +57,7 @@
     outline: 0;
     padding-left: 0.9375rem;
     border: 0.125rem #01b6f5 solid;
-    box-shadow: 0 0 1px 0 #a4a7b5;
+    box-shadow: 0 0 2px #01b6f5;
     line-height: 2rem; }
   .rainbow-select[disabled] {
     -webkit-user-select: none;
@@ -74,14 +74,13 @@
       border: 0.0626rem #e3e5ed solid;
       padding-left: 1rem; }
 
-.rainbow-select-has-error .rainbow-select {
+.rainbow-select--error .rainbow-select {
   background-color: white;
   border: 0.125rem #fe4849 solid;
-  box-shadow: 0 0 2px 0 #a4a7b5;
   background-clip: padding-box;
   padding-left: 1rem; }
-  .rainbow-select-has-error .rainbow-select:focus, .rainbow-select-has-error .rainbow-select:active {
+  .rainbow-select--error .rainbow-select:focus, .rainbow-select--error .rainbow-select:active {
     box-shadow: 0 0 2px #fe4849; }
 
-.rainbow-select-has-error .rainbow-select-error {
+.rainbow-select--error .rainbow-select_help-error {
   color: #fe4849; }

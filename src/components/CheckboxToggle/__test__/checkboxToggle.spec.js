@@ -13,7 +13,7 @@ describe('<CheckboxToggle/>', () => {
         const component = mount(
             <CheckboxToggle />,
         );
-        expect(component.find('.rainbow-checkbox-toggle_faux_container').prop('id')).toMatch(/checkbox-toggle/);
+        expect(component.find('.rainbow-checkbox-toggle_faux-container').prop('id')).toMatch(/checkbox-toggle/);
         expect(component.find('input').prop('name')).toMatch(/checkbox-toggle/);
         expect(component.find('input').prop('value')).toMatch(/checkbox-toggle/);
         expect(component.find('input').prop('aria-describedby')).toMatch(/checkbox-toggle/);

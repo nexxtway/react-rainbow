@@ -21,7 +21,7 @@ export default class Button extends Component {
         if (variant === 'base') {
             return null;
         }
-        return `rainbow-button_${variant}`;
+        return `rainbow-button--${variant}`;
     }
 
     getClassNames() {
@@ -34,7 +34,7 @@ export default class Button extends Component {
         );
 
         return classnames('rainbow-button', this.getVariantClassNames(), {
-            'rainbow-button_shaded': isShaded,
+            'rainbow-button--shaded': isShaded,
         }, className);
     }
 

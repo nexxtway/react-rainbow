@@ -7,7 +7,7 @@ describe('<VerticalSection/>', () => {
         const component = mount(
             <VerticalSection />,
         );
-        expect(component.find('div[className="rainbow-nav-vertical__section"]').exists()).toBe(true);
+        expect(component.find('div[className="rainbow-vertical-section"]').exists()).toBe(true);
     });
     it('should render the children passed', () => {
         const component = mount(

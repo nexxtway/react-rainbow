@@ -96,7 +96,7 @@ describe('<Input/>', () => {
         const component = mount(
             <Input error="error message" />,
         );
-        expect(component.find('.rainbow-input-help').prop('id')).toMatch(/error-message/);
+        expect(component.find('.rainbow-input_help').prop('id')).toMatch(/error-message/);
         expect(component.find('input').prop('aria-describedby')).toMatch(/error-message/);
     });
     it('should pass the right props to the Label component', () => {
@@ -120,25 +120,25 @@ describe('<Input/>', () => {
         const component = mount(
             <Input />,
         );
-        expect(component.find('div[className="rainbow-input-container"]').exists()).toBe(true);
+        expect(component.find('div[className="rainbow-input_container"]').exists()).toBe(true);
     });
     it('should have the right class names when icon is passed', () => {
         const component = mount(
             <Input icon={icon} />,
         );
-        expect(component.find('div[className="rainbow-input-has-icon rainbow-input-has-icon_left"]').exists()).toBe(true);
+        expect(component.find('div[className="rainbow-input_icon-container rainbow-input_icon--left"]').exists()).toBe(true);
     });
     it('should have the right class names when icon is passed and iconPosition is right', () => {
         const component = mount(
             <Input icon={icon} iconPosition="right" />,
         );
-        expect(component.find('div[className="rainbow-input-has-icon rainbow-input-has-icon_right"]').exists()).toBe(true);
+        expect(component.find('div[className="rainbow-input_icon-container rainbow-input_icon--right"]').exists()).toBe(true);
     });
     it('should have the right class names when error is passed', () => {
         const component = mount(
             <Input error="Error text" />,
         );
-        expect(component.find('div[className="rainbow-input-container rainbow-input-has-error"]').exists()).toBe(true);
+        expect(component.find('div[className="rainbow-input_container rainbow-input--error"]').exists()).toBe(true);
     });
     it('should have the right class names when isBare', () => {
         const component = mount(

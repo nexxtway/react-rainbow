@@ -6,13 +6,13 @@
 @import "../../styles/margins";
 @import "../../styles/paddings";
 
-.rainbow-input-container {
+.rainbow-input_container {
     position: relative;
     display: flex;
     flex-direction: column;
 }
 
-.rainbow-input-label {
+.rainbow-input_label {
     color: $color-gray-4;
     font-size: $font-size-text-small;
     line-height: 1.5;
@@ -25,25 +25,25 @@
     }
 }
 
-.rainbow-input-label_read-only {
+.rainbow-input_label-read-only {
     align-self: flex-start;
 }
 
-.rainbow-input-help {
+.rainbow-input_help {
     font-size: $font-size-text-small;
     margin-top: $margin-x-small;
     align-self: center;
 }
 
-.rainbow-input-required {
+.rainbow-input--required {
     color: $color-error;
     margin: 0 0.125rem;
 }
 
-.rainbow-input-has-icon {
+.rainbow-input_icon-container {
     position: relative;
 
-    .rainbow-input__icon {
+    .rainbow-input_icon {
         fill: $color-gray-3;
         width: 0.875rem;
         height: 0.875rem;
@@ -55,7 +55,7 @@
         z-index: 2;
     }
 
-    .rainbow-input__icon:not(button) {
+    .rainbow-input_icon:not(button) {
         pointer-events: none;
     }
 }
@@ -131,7 +131,7 @@
     }
 }
 
-.rainbow-input-has-error {
+.rainbow-input--error {
     .rainbow-input {
         background-color: white;
         border: 2px $color-error solid;
@@ -144,16 +144,16 @@
         }
     }
 
-    .rainbow-input-help {
+    .rainbow-input_help {
         color: $color-error;
     }
 
-    .rainbow-input__icon {
+    .rainbow-input_icon {
         fill: $color-error;
         color: $color-error;
     }
 
-    .rainbow-input-has-icon.rainbow-input-has-icon_left {
+    .rainbow-input_icon-container.rainbow-input_icon--left {
         .rainbow-input {
             padding-left: 2.25rem;
         }
@@ -201,8 +201,8 @@
     }
 }
 
-.rainbow-input-has-icon_left {
-    .rainbow-input__icon {
+.rainbow-input_icon--left {
+    .rainbow-input_icon {
         left: 1rem;
     }
 
@@ -217,8 +217,8 @@
     }
 }
 
-.rainbow-input-has-icon_right {
-    .rainbow-input__icon {
+.rainbow-input_icon--right {
+    .rainbow-input_icon {
         right: 1rem;
     }
 

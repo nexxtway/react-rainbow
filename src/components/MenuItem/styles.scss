@@ -1,18 +1,22 @@
 @import './../../styles/colors.scss';
 @import './../../styles/font-sizes.scss';
 
-.rainbow-menu-item-header {
+.rainbow-menu-item_header {
     padding: 0.5rem 0.75rem;
-}
-
-.rainbow-truncate {
     max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-.rainbow-text-title_caps {
+.rainbow-menu-item_icon-container {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rainbow-menu-item_header-label {
     font-size: $font-size-text-medium;
     line-height: 1.25;
     color: $color-gray-3;
@@ -61,18 +65,18 @@
     }
 }
 
-.rainbow-icon-container {
+.rainbow-menu-item_icon {
     width: 1rem;
     height: 1rem;
     line-height: 1.5;
     fill: white;
 }
 
-.rainbow-icon-left {
+.rainbow-menu-item_icon--left {
     margin-right: 0.75rem;
 }
 
-.rainbow-icon-right {
+.rainbow-menu-item_icon--right {
     margin-left: 0.75rem;
     -ms-flex-negative: 0;
     flex-shrink: 0;

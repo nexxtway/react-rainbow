@@ -6,7 +6,7 @@ describe('<ProgressBar/>', () => {
     it('should has set the value passed', () => {
         const component = shallow(<ProgressBar value={25} />);
 
-        expect(component.find('span.rainbow-progress-bar__value').prop('style').width).toBe('25%');
+        expect(component.find('span.rainbow-progress-bar_value').prop('style').width).toBe('25%');
     });
     it('should be accesible', () => {
         const component = shallow(<ProgressBar value={25} />);
@@ -20,8 +20,8 @@ describe('<ProgressBar/>', () => {
         const component = mount(
             <ProgressBar className="custom-class" />,
         );
-        const container = component.find('div.rainbow-progress-bar.rainbow-progress-bar_medium.custom-class');
-        const progressBar = component.find('span.rainbow-progress-bar__value');
+        const container = component.find('div.rainbow-progress-bar.rainbow-progress-bar--medium.custom-class');
+        const progressBar = component.find('span.rainbow-progress-bar_value');
 
         expect(container.exists()).toBe(true);
         expect(progressBar.exists()).toBe(true);
@@ -30,33 +30,33 @@ describe('<ProgressBar/>', () => {
         const component = mount(
             <ProgressBar size="large" />,
         );
-        expect(component.find('div.rainbow-progress-bar.rainbow-progress-bar_large').exists()).toBe(true);
+        expect(component.find('div.rainbow-progress-bar.rainbow-progress-bar--large').exists()).toBe(true);
     });
     it('should have the right class names when size medium', () => {
         const component = mount(
             <ProgressBar size="medium" />,
         );
-        expect(component.find('div.rainbow-progress-bar.rainbow-progress-bar_medium').exists()).toBe(true);
+        expect(component.find('div.rainbow-progress-bar.rainbow-progress-bar--medium').exists()).toBe(true);
     });
     it('should have the right class names when size small', () => {
         const component = mount(
             <ProgressBar size="small" />,
         );
-        expect(component.find('div.rainbow-progress-bar.rainbow-progress-bar_small').exists()).toBe(true);
+        expect(component.find('div.rainbow-progress-bar.rainbow-progress-bar--small').exists()).toBe(true);
     });
     it('should have the right class names when size x-small', () => {
         const component = mount(
             <ProgressBar size="x-small" />,
         );
-        expect(component.find('div.rainbow-progress-bar.rainbow-progress-bar_x-small').exists()).toBe(true);
+        expect(component.find('div.rainbow-progress-bar.rainbow-progress-bar--x-small').exists()).toBe(true);
     });
     it('should have the right class names when varaint success', () => {
         const component = mount(
             <ProgressBar variant="success" />,
         );
 
-        const container = component.find('div.rainbow-progress-bar.rainbow-progress-bar_medium.rainbow-progress-bar_success');
-        const progressBar = component.find('span.rainbow-progress-bar__value.rainbow-progress-bar__value_success');
+        const container = component.find('div.rainbow-progress-bar.rainbow-progress-bar--medium.rainbow-progress-bar--success');
+        const progressBar = component.find('span.rainbow-progress-bar_value.rainbow-progress-bar_value--success');
 
         expect(container.exists()).toBe(true);
         expect(progressBar.exists()).toBe(true);
