@@ -84,13 +84,13 @@
     opacity: 0;
 }
 
-.rainbow-vertical-section-overflow_icon > svg {
-    font-size: $font-size-text-small !important;
-    width: 0.75rem !important;
-    height: 0.75rem !important;
-    color: $color-brand !important;
+.rainbow-vertical-section-overflow_icon {
+    margin-left: 0.5rem;
+    margin-top: 0.625rem;
+    transform: rotate(-90deg);
+    transition: transform 0.15s linear;
 }
 
-.rainbow-vertical-section-overflow_icon--right {
-    margin-left: 0.5rem;
+.rainbow-vertical-section-overflow-icon--expanded {
+    transform: rotate(0deg);
 }
