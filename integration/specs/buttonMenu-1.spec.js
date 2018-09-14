@@ -1,6 +1,6 @@
 const PageButtonMenu = require('./../../src/components/ButtonMenu/pageObject');
 
-const MENU_BTN = '#button-menu_integration-test';
+const MENU_BTN = '#button-menu';
 const REACT_LOGO = 'img[alt="rainbow logo"]';
 const ESCAPE_KEY = '\uE00C';
 const SPACE_KEY = '\uE00D';

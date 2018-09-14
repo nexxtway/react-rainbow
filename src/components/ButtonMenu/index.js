@@ -380,10 +380,7 @@ ButtonMenu.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
-     /**
-     * This prop should not be visible in the documentation.
-     * @ignore
-     */
+    /** The id of the outer element. */
     id: PropTypes.string,
 };
 
