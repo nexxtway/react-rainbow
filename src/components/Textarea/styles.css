@@ -3,6 +3,18 @@
   display: flex;
   flex-direction: column; }
 
+.rainbow-textarea_label {
+  color: #576574;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 0.125rem;
+  align-self: center; }
+  .rainbow-textarea_label:empty {
+    margin: 0; }
+  .rainbow-textarea_label[readonly] {
+    align-self: flex-start;
+    margin-bottom: 0.25rem; }
+
 .rainbow-textarea {
   border-radius: 0.875rem;
   background-color: #fff;
@@ -11,7 +23,7 @@
   width: 100%;
   padding: 0.625rem 1rem;
   resize: none;
-  font-size: 0.875rem;
+  font-size: 1rem;
   line-height: 1.57;
   color: #061c3f; }
   .rainbow-textarea:focus, .rainbow-textarea:active {
@@ -22,7 +34,7 @@
     padding: 0.5625rem 0.9375rem; }
   .rainbow-textarea::placeholder {
     color: #a4a7b5;
-    font-size: 0.875rem; }
+    font-size: 1rem; }
   .rainbow-textarea[disabled] {
     cursor: not-allowed;
     user-select: none;
@@ -43,26 +55,17 @@
       box-shadow: none;
       border: none; }
 
-.rainbow-textarea_label {
-  color: #576574;
-  font-size: 0.75rem;
-  line-height: 1.5;
-  margin-bottom: 0.125rem;
-  align-self: center; }
-  .rainbow-textarea_label:empty {
-    margin: 0; }
-  .rainbow-textarea_label[readonly] {
-    align-self: flex-start;
-    margin-bottom: 0.25rem; }
-
-.rainbow-textarea_help-error {
-  font-size: 0.75rem;
-  color: #576574;
+.rainbow-textarea_bottom-help {
+  color: #061c3f;
+  font-size: 0.875rem;
   margin-top: 0.5rem;
   align-self: center; }
 
 .rainbow-textarea--error .rainbow-textarea_help-error {
-  color: #fe4849; }
+  color: #ea4243;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  align-self: center; }
 
 .rainbow-textarea--error .rainbow-textarea {
   background-color: #fff;

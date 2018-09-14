@@ -30,6 +30,17 @@
     </div>
 
 
+##### textarea with bottom help
+
+    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
+        <Textarea
+            label="Textarea Label Error"
+            bottomHelpText="This is the bottom help"
+            placeholder="Placeholder Text Error"
+            rows={4} />
+    </div>
+
+
 ##### textarea error
 
     <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">

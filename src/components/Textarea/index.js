@@ -103,7 +103,7 @@ export default class Textarea extends Component {
                     ref={this.textareaRef} />
 
                 <RenderIf isTrue={!!bottomHelpText}>
-                    <div className="rainbow-textarea_help-error">{bottomHelpText}</div>
+                    <div className="rainbow-textarea_bottom-help">{bottomHelpText}</div>
                 </RenderIf>
                 <RenderIf isTrue={!!error}>
                     <div id={this.getErrorMessageId()} className="rainbow-textarea_help-error">{error}</div>
