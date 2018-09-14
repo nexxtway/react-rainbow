@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import AssistiveText from './../AssistiveText';
 import { uniqueId } from './../../libs/utils';
+import AssistiveText from './../AssistiveText';
+import { Provider } from './context';
 import getMaxHeight from './compute-max-height';
 import Description from './description';
-import { Provider } from './context';
 import RightArrow from './rightArrow';
 import './styles.css';
 
