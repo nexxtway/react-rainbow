@@ -7,5 +7,6 @@ module.exports = {
     },
     opts: {
         destination: './styleguide/pageObjects',
-    }
+        tutorials: 'tutorials',
+    },
 };
