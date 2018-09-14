@@ -115,7 +115,6 @@ VerticalSectionOverflow.propTypes = {
 };
 
 VerticalSectionOverflow.defaultProps = {
-    icon: null,
     title: '',
     description: '',
     expanded: false,
