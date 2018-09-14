@@ -267,12 +267,14 @@ export default class ButtonMenu extends Component {
             onBlur,
             isLoading,
             children,
+            id,
         } = this.props;
         const { context } = this.state;
         const ariaLabel = title || assistiveText;
 
         return (
             <div
+                id={id}
                 role="presentation"
                 className={this.getContainerClassNames()}
                 style={style}
@@ -378,6 +380,8 @@ ButtonMenu.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The id of the outer element. */
+    id: PropTypes.string,
 };
 
 ButtonMenu.defaultProps = {
@@ -396,4 +400,5 @@ ButtonMenu.defaultProps = {
     onBlur: () => {},
     className: undefined,
     style: undefined,
+    id: undefined,
 };
