@@ -68,13 +68,7 @@
 .rainbow-vertical-section-overflow_action-description--expanded {
   opacity: 0; }
 
-.rainbow-vertical-section-overflow_icon > svg {
-  font-size: 0.75rem !important;
-  width: 0.75rem !important;
-  height: 0.75rem !important;
-  color: #01b6f5 !important; }
-
-.rainbow-vertical-section-overflow_icon--right {
+.rainbow-vertical-section-overflow_icon {
   margin-left: 0.5rem;
   margin-top: 0.625rem;
   transform: rotate(-90deg);
