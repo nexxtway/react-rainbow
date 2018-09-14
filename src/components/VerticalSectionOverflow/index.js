@@ -4,14 +4,15 @@ import AssistiveText from './../AssistiveText';
 import { uniqueId } from './../../libs/utils';
 import Description from './description';
 import Icon from './icon';
+import RightArrow from './rightArrow';
 import './styles.css';
 
 const searchResultsId = uniqueId('search-results');
 
 /**
-* Represents an overflow of items from a preceding VerticalNavigationSection,
-* with the ability to toggle visibility.
-*/
+ * Represents an overflow of items from a preceding VerticalNavigationSection,
+ * with the ability to toggle visibility.
+ */
 export default class VerticalSectionOverflow extends Component {
     constructor(props) {
         super(props);
@@ -39,7 +40,6 @@ export default class VerticalSectionOverflow extends Component {
             title,
             description,
             leftIcon,
-            rightIcon,
             style,
             assistiveText,
             children,
@@ -61,7 +61,7 @@ export default class VerticalSectionOverflow extends Component {
                         <Description isExpanded={isExpanded} description={description} />
                         <AssistiveText text={assistiveText} />
                     </div>
-                    <Icon position="right" icon={rightIcon} />
+                    <RightArrow isExpanded={isExpanded} />
 
                 </button>
                 <div data-id="vertical-overflow" id={searchResultsId} className={this.getOverflowClassName()}>
@@ -76,7 +76,6 @@ export default class VerticalSectionOverflow extends Component {
 
 VerticalSectionOverflow.propTypes = {
     leftIcon: PropTypes.node,
-    rightIcon: PropTypes.node,
     description: PropTypes.string,
     /** The label to show when the section is collapsed. */
     title: PropTypes.string,
@@ -89,15 +88,14 @@ VerticalSectionOverflow.propTypes = {
     /** An object with custom style applied for the outer element. */
     style: PropTypes.object,
     /**
-    * This prop that should not be visible in the documentation.
-    * @ignore
-    */
+     * This prop that should not be visible in the documentation.
+     * @ignore
+     */
     children: PropTypes.node,
 };
 
 VerticalSectionOverflow.defaultProps = {
     leftIcon: null,
-    rightIcon: null,
     title: '',
     description: '',
     expanded: false,

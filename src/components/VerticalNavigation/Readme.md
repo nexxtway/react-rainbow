@@ -243,8 +243,7 @@
                     <VerticalSectionOverflow
                         title="Folders"
                         description="Folders created, shared..."
-                        leftIcon={<FontAwesomeIcon icon={faCog} />}
-                        rightIcon={<FontAwesomeIcon icon={faChevronDown} />}>
+                        leftIcon={<FontAwesomeIcon icon={faCog} />}>
 
                         <VerticalItem name="item-4" label="Folder created by Me" />
                         <VerticalItem name="item-5" label="Folder shared with Me" />

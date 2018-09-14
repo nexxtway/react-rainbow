@@ -52,7 +52,13 @@
   margin-right: 0.5rem; }
 
 .rainbow-nav-vertical-section-overflow__icon_right {
-  margin-left: 0.5rem; }
+  margin-left: 0.5rem;
+  margin-top: 0.625rem;
+  transform: rotate(-90deg);
+  transition: transform 0.15s linear; }
+
+.rainbow-nav-vertical-section-overflow__icon_expanded {
+  transform: rotate(0deg); }
 
 .rainbow-nav-certical-overflow-show .rainbow-nav-vertical__action {
   padding: 0.5rem 0.5rem 0.5rem 2.875rem; }
