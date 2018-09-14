@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import AssistiveText from './../AssistiveText';
-import RenderIf from './../RenderIf';
 import { uniqueId } from './../../libs/utils';
 import getMaxHeight from './compute-max-height';
 import Description from './description';
-import Icon from './icon';
 import { Provider } from './context';
 import RightArrow from './rightArrow';
 import './styles.css';
@@ -50,7 +48,6 @@ export default class VerticalSectionOverflow extends Component {
         const {
             title,
             description,
-            icon,
             style,
             assistiveText,
             children,
@@ -102,8 +99,6 @@ VerticalSectionOverflow.propTypes = {
     description: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
-    /** The icon positioned in the right of the section title. */
-    icon: PropTypes.node,
     /** The state of the overflow. */
     expanded: PropTypes.bool,
     /** A description for assistive sreen readers. */

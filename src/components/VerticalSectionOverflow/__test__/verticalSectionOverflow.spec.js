@@ -46,12 +46,6 @@ describe('<VerticalSectionOverflow/>', () => {
         component.find('button').simulate('click');
         expect(component.find('button').prop('aria-expanded')).toBe(true);
     });
-    it('should render the left icon when a left icon is passed', () => {
-        const component = mount(
-            <VerticalSectionOverflow leftIcon={<svg data-id="left-icon" />} />,
-        );
-        expect(component.find('svg[data-id="left-icon"]').exists()).toBe(true);
-    });
     it('should pass the right props to Description component when use default values', () => {
         const component = mount(
             <VerticalSectionOverflow />,

@@ -75,10 +75,10 @@
   color: #01b6f5 !important; }
 
 .rainbow-vertical-section-overflow_icon--right {
-    margin-left: 0.5rem;
-    margin-top: 0.625rem;
-    transform: rotate(-90deg);
-    transition: transform 0.15s linear; }
+  margin-left: 0.5rem;
+  margin-top: 0.625rem;
+  transform: rotate(-90deg);
+  transition: transform 0.15s linear; }
 
-.rainbow-nav-vertical-section-overflow__icon_expanded {
-    transform: rotate(0deg); }
+.rainbow-vertical-section-overflow-icon--expanded {
+  transform: rotate(0deg); }

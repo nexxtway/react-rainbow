@@ -5,16 +5,16 @@ import arrowIcon from '../../../assets/images/angle-down.svg';
 
 export default function RightArrow({ isExpanded }) {
     const getArrowClassName = () => classnames(
-            'rainbow-nav-vertical-section-overflow__icon',
-            'rainbow-nav-vertical-section-overflow__icon_right',
-            { 'rainbow-nav-vertical-section-overflow__icon_expanded': isExpanded },
+            'rainbow-vertical-section-overflow_icon',
+            'rainbow-vertical-section-overflow_icon--right',
+            { 'rainbow-vertical-section-overflow-icon--expanded': isExpanded },
             );
 
     return (
         <img
             className={getArrowClassName()}
             src={arrowIcon}
-            alt="arrow icon" />
+            alt="right arrow icon" />
     );
 }
 
