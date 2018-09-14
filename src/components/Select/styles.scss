@@ -12,12 +12,6 @@
     flex-direction: column;
 }
 
-.rainbow-select_help-error {
-    font-size: $font-size-text-small;
-    margin-top: $margin-x-small;
-    align-self: center;
-}
-
 .rainbow-select_label {
     color: $color-gray-4;
     font-size: $font-size-text-medium;
@@ -113,7 +107,10 @@
         }
     }
 
-    .rainbow-select_help-error {
+    .rainbow-select_text-error {
+        font-size: $font-size-text-medium;
+        margin-top: $margin-x-small;
+        align-self: center;
         color: $color-error;
     }
 }

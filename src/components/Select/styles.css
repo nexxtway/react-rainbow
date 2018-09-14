@@ -4,11 +4,6 @@
   display: flex;
   flex-direction: column; }
 
-.rainbow-select_help-error {
-  font-size: 0.75rem;
-  margin-top: 0.5rem;
-  align-self: center; }
-
 .rainbow-select_label {
   color: #576574;
   font-size: 0.875rem;
@@ -82,5 +77,8 @@
   .rainbow-select--error .rainbow-select:focus, .rainbow-select--error .rainbow-select:active {
     box-shadow: 0 0 2px #fe4849; }
 
-.rainbow-select--error .rainbow-select_help-error {
+.rainbow-select--error .rainbow-select_text-error {
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  align-self: center;
   color: #fe4849; }

@@ -63,7 +63,7 @@ export default class RadioGroup extends Component {
 
                 </div>
                 <RenderIf isTrue={!!error}>
-                    <div id={this.getErrorMessageId()} className="rainbow-radio-group_help">
+                    <div id={this.getErrorMessageId()} className="rainbow-radio-group_text-error">
                         {error}
                     </div>
                 </RenderIf>

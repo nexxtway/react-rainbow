@@ -57,7 +57,7 @@ export default class Select extends Component {
                     </select>
                 </div>
                 <RenderIf isTrue={!!error}>
-                    <div className="rainbow-select_help-error">{error}</div>
+                    <div className="rainbow-select_text-error">{error}</div>
                 </RenderIf>
             </div>
         );

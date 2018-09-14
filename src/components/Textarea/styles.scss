@@ -97,7 +97,7 @@
 }
 
 .rainbow-textarea--error {
-    .rainbow-textarea_help-error {
+    .rainbow-textarea_text-error {
         @include bottom-message($color-error-active);
     }
 
