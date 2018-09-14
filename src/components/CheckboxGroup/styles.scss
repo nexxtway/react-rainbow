@@ -7,11 +7,11 @@
 @import "../../styles/margins";
 @import "../../styles/paddings";
 
-.rainbow-checkbox-group-container {
+.rainbow-checkbox-group_container {
     position: relative;
 }
 
-.rainbow-checkbox-group-label {
+.rainbow-checkbox-group_label {
     display: inline-block;
     color: $color-gray-4;
     font-size: $font-size-text-small;
@@ -20,14 +20,14 @@
     margin-bottom: $margin-xx-small;
 }
 
-.rainbow-checkbox-group-error {
+.rainbow-checkbox-group_help-error {
     font-size: $font-size-text-small;
     margin-top: $margin-x-small;
     display: block;
     color: $color-error-active;
 }
 
-.rainbow-checkbox-group-checkbox-container {
+.rainbow-checkbox-group_checkbox-container {
     display: -ms-inline-flexbox;
     display: flex;
     flex-direction: column;
@@ -38,9 +38,9 @@
 .rainbow-checkbox {
     display: inline-block;
 
-    .rainbow-checkbox-faux {
-        width: 1rem;
-        height: 1rem;
+    .rainbow-checkbox_faux {
+        width: 1.25rem;
+        height: 1.25rem;
         display: inline-block;
         position: relative;
         vertical-align: middle;
@@ -51,10 +51,12 @@
         transition: border 0.1s linear, background-color 0.1s linear;
     }
 
-    .rainbow-checkbox-label {
+    .rainbow-checkbox_label {
         display: inline;
         vertical-align: middle;
         color: $color-dark-1;
+        font-size: $font-size-text-medium;
+        line-height: 1.65rem;
     }
 
     [type="checkbox"] {
@@ -68,85 +70,89 @@
         position: absolute;
     }
 
-    [type="checkbox"]:checked + .rainbow-checkbox-faux::after,
-    [type="checkbox"]:checked ~ .rainbow-checkbox-faux::after,
-    [type="checkbox"]:checked + .rainbow-checkbox-label-container .rainbow-checkbox-faux::after {
+    [type="checkbox"]:checked + .rainbow-checkbox_faux::after,
+    [type="checkbox"]:checked ~ .rainbow-checkbox_faux::after,
+    [type="checkbox"]:checked + .rainbow-checkbox_label-container .rainbow-checkbox_faux::after {
         display: block;
         content: '';
-        height: 0.25rem;
-        width: 0.5rem;
+        height: 0.4rem;
+        width: 0.65rem;
         position: absolute;
-        top: 50%;
+        top: 46%;
         left: 50%;
         transform: translate3d(-50%, -50%, 0) rotate(-45deg);
         border-bottom: 2px solid $color-brand;
         border-left: 2px solid $color-brand;
     }
 
-    [type="checkbox"]:focus + .rainbow-checkbox-faux,
-    [type="checkbox"]:focus ~ .rainbow-checkbox-faux,
-    [type="checkbox"]:focus + .rainbow-checkbox-label-container .rainbow-checkbox-faux {
+    [type="checkbox"]:focus + .rainbow-checkbox_faux,
+    [type="checkbox"]:focus ~ .rainbow-checkbox_faux,
+    [type="checkbox"]:focus + .rainbow-checkbox_label-container .rainbow-checkbox_faux {
         content: '';
-        border-color: $color-brand;
+        border: 2px solid $color-brand;
         box-shadow: $shadow-outline;
     }
 
-    [type="checkbox"]:focus:checked > .rainbow-checkbox-faux,
-    [type="checkbox"]:focus:checked ~ .rainbow-checkbox-faux,
-    [type="checkbox"]:focus:checked + .rainbow-checkbox-label-container .rainbow-checkbox-faux {
-        border-color: $color-brand-active;
+    [type="checkbox"]:focus:checked > .rainbow-checkbox_faux,
+    [type="checkbox"]:focus:checked ~ .rainbow-checkbox_faux,
+    [type="checkbox"]:focus:checked + .rainbow-checkbox_label-container .rainbow-checkbox_faux {
+        border-color: $color-brand;
         background-color: white;
         box-shadow: $shadow-outline;
     }
 
-    [type="checkbox"][disabled] + .rainbow-checkbox-faux,
-    [type="checkbox"][disabled] ~ .rainbow-checkbox-faux,
-    [type="checkbox"][disabled] + .rainbow-checkbox-label-container .rainbow-checkbox-faux {
+    [type="checkbox"][disabled] + .rainbow-checkbox_faux,
+    [type="checkbox"][disabled] ~ .rainbow-checkbox_faux,
+    [type="checkbox"][disabled] + .rainbow-checkbox_label-container .rainbow-checkbox_faux {
         background-color: $color-gray-1;
         border-color: $color-gray-2;
     }
 
-    [type="checkbox"][disabled] + .rainbow-checkbox-faux::after,
-    [type="checkbox"][disabled] ~ .rainbow-checkbox-faux::after,
-    [type="checkbox"][disabled] + .rainbow-checkbox-label-container .rainbow-checkbox-faux::after {
+    [type="checkbox"][disabled] + .rainbow-checkbox_faux::after,
+    [type="checkbox"][disabled] ~ .rainbow-checkbox_faux::after,
+    [type="checkbox"][disabled] + .rainbow-checkbox_label-container .rainbow-checkbox_faux::after {
         border-color: white;
     }
 }
 
-.rainbow-checkbox-group-has-error {
-    .rainbow-form-element__help {
-        color: $color-error;
-    }
-
-    .rainbow-checkbox [type="checkbox"] + .rainbow-checkbox-faux,
-    .rainbow-checkbox [type="checkbox"] ~ .rainbow-checkbox-faux,
-    .rainbow-checkbox [type="checkbox"] + .rainbow-checkbox-label-container .rainbow-checkbox-faux {
+.rainbow-checkbox-group--error {
+    .rainbow-checkbox [type="checkbox"] + .rainbow-checkbox_faux,
+    .rainbow-checkbox [type="checkbox"] ~ .rainbow-checkbox_faux,
+    .rainbow-checkbox [type="checkbox"] + .rainbow-checkbox_label-container .rainbow-checkbox_faux {
         border: 2px $color-error solid;
     }
 
-    .rainbow-checkbox [type="checkbox"]:checked + .rainbow-checkbox-faux,
-    .rainbow-checkbox [type="checkbox"]:checked ~ .rainbow-checkbox-faux,
-    .rainbow-checkbox [type="checkbox"]:checked + .rainbow-checkbox-label-container .rainbow-checkbox-faux {
-        border-color: $color-error-active;
+    .rainbow-checkbox [type="checkbox"]:focus:checked + .rainbow-checkbox_faux,
+    .rainbow-checkbox [type="checkbox"]:focus:checked ~ .rainbow-checkbox_faux,
+    .rainbow-checkbox [type="checkbox"]:focus:checked + .rainbow-checkbox_label-container .rainbow-checkbox_faux {
+        border-color: $color-error;
         background-color: white;
+        box-shadow: $shadow-error;
     }
 
-    .rainbow-checkbox [type="checkbox"]:checked + .rainbow-checkbox-faux::after,
-    .rainbow-checkbox [type="checkbox"]:checked ~ .rainbow-checkbox-faux::after,
-    .rainbow-checkbox [type="checkbox"]:checked + .rainbow-checkbox-label-container .rainbow-checkbox-faux::after {
-        border-color: $color-error-active;
+    .rainbow-checkbox [type="checkbox"]:focus + .rainbow-checkbox_faux,
+    .rainbow-checkbox [type="checkbox"]:focus ~ .rainbow-checkbox_faux,
+    .rainbow-checkbox [type="checkbox"]:focus + .rainbow-checkbox_label-container .rainbow-checkbox_faux {
+        border-color: $color-error;
+        box-shadow: $shadow-error;
     }
 
-    [type="checkbox"][disabled] + .rainbow-checkbox-faux,
-    [type="checkbox"][disabled] ~ .rainbow-checkbox-faux,
-    [type="checkbox"][disabled] + .rainbow-checkbox-label-container .rainbow-checkbox-faux {
+    .rainbow-checkbox [type="checkbox"]:checked + .rainbow-checkbox_faux::after,
+    .rainbow-checkbox [type="checkbox"]:checked ~ .rainbow-checkbox_faux::after,
+    .rainbow-checkbox [type="checkbox"]:checked + .rainbow-checkbox_label-container .rainbow-checkbox_faux::after {
+        border-color: $color-error;
+    }
+
+    [type="checkbox"][disabled] + .rainbow-checkbox_faux,
+    [type="checkbox"][disabled] ~ .rainbow-checkbox_faux,
+    [type="checkbox"][disabled] + .rainbow-checkbox_label-container .rainbow-checkbox_faux {
         background-color: $color-gray-1;
         border-color: $color-gray-2;
     }
 
-    [type="checkbox"][disabled] + .rainbow-checkbox-faux::after,
-    [type="checkbox"][disabled] ~ .rainbow-checkbox-faux::after,
-    [type="checkbox"][disabled] + .rainbow-checkbox-label-container .rainbow-checkbox-faux::after {
+    [type="checkbox"][disabled] + .rainbow-checkbox_faux::after,
+    [type="checkbox"][disabled] ~ .rainbow-checkbox_faux::after,
+    [type="checkbox"][disabled] + .rainbow-checkbox_label-container .rainbow-checkbox_faux::after {
         border-color: white;
     }
 }

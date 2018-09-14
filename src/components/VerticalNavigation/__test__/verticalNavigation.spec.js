@@ -2,6 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import VerticalNavigation from './../';
 import VerticalSection from './../../VerticalSection';
+import VerticalSectionOverflow from './../../VerticalSectionOverflow';
 import VerticalItem from './../../VerticalItem';
 
 describe('<VerticalNavigation/>', () => {
@@ -9,19 +10,19 @@ describe('<VerticalNavigation/>', () => {
         const component = mount(
             <VerticalNavigation />,
         );
-        expect(component.find('nav').prop('className')).toBe('rainbow-nav-vertical');
+        expect(component.find('nav').prop('className')).toBe('rainbow-vertical-navigation');
     });
     it('should have the right className in the nav element when compact is true', () => {
         const component = mount(
             <VerticalNavigation compact />,
         );
-        expect(component.find('nav').prop('className')).toBe('rainbow-nav-vertical rainbow-nav-vertical_compact');
+        expect(component.find('nav').prop('className')).toBe('rainbow-vertical-navigation rainbow-vertical-navigation_compact');
     });
     it('should have the right className in the nav element when shaded is true', () => {
         const component = mount(
             <VerticalNavigation shaded />,
         );
-        expect(component.find('nav').prop('className')).toBe('rainbow-nav-vertical rainbow-nav-vertical_shade');
+        expect(component.find('nav').prop('className')).toBe('rainbow-vertical-navigation rainbow-vertical-navigation_shade');
     });
     it('should set the ariaLabel passed as aria-label in the nav element', () => {
         const component = mount(
@@ -50,9 +51,9 @@ describe('<VerticalNavigation/>', () => {
         const item1 = component.find('VerticalItem[name="item 1"]').find('li');
         const item2 = component.find('VerticalItem[name="item 2"]').find('li');
         const item3 = component.find('VerticalItem[name="item 3"]').find('li');
-        expect(item1.prop('className')).toBe('rainbow-nav-vertical__item');
-        expect(item2.prop('className')).toBe('rainbow-nav-vertical__item');
-        expect(item3.prop('className')).toBe('rainbow-nav-vertical__item rainbow-is-active');
+        expect(item1.prop('className')).toBe('rainbow-vertical-item');
+        expect(item2.prop('className')).toBe('rainbow-vertical-item');
+        expect(item3.prop('className')).toBe('rainbow-vertical-item rainbow-vertical-item--active');
     });
     it('should call onSelect event with the right data when an item is clicked', () => {
         const onSelectMockFn = jest.fn();
@@ -65,8 +66,38 @@ describe('<VerticalNavigation/>', () => {
                 </VerticalSection>
             </VerticalNavigation>,
         );
-        const item2 = component.find('VerticalItem[name="item 2"]');
+        const item2 = component.find('VerticalItem[name="item 2"]').find('a');
         item2.simulate('click');
         expect(onSelectMockFn).toHaveBeenCalledWith(expect.any(Object), 'item 2');
+    });
+    it('should set tabIndex 0 in anchor element when use VerticalSection', () => {
+        const component = mount(
+            <VerticalNavigation>
+                <VerticalSection label="header section">
+                    <VerticalItem name="item 1" label="item 1" />
+                </VerticalSection>
+            </VerticalNavigation>,
+        );
+        expect(component.find('a').prop('tabIndex')).toBe(0);
+    });
+    it('should set tabIndex 0 in anchor element when use VerticalSectionOverflow and expanded is true', () => {
+        const component = mount(
+            <VerticalNavigation>
+                <VerticalSectionOverflow expanded>
+                    <VerticalItem name="item 1" label="item 1" />
+                </VerticalSectionOverflow>
+            </VerticalNavigation>,
+        );
+        expect(component.find('a').prop('tabIndex')).toBe(0);
+    });
+    it('should set tabIndex -1 in anchor element when use VerticalSectionOverflow and expanded is false', () => {
+        const component = mount(
+            <VerticalNavigation>
+                <VerticalSectionOverflow expanded={false}>
+                    <VerticalItem name="item 1" label="item 1" />
+                </VerticalSectionOverflow>
+            </VerticalNavigation>,
+        );
+        expect(component.find('a').prop('tabIndex')).toBe(-1);
     });
 });

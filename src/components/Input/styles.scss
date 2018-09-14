@@ -6,15 +6,15 @@
 @import "../../styles/margins";
 @import "../../styles/paddings";
 
-.rainbow-input-container {
+.rainbow-input_container {
     position: relative;
     display: flex;
     flex-direction: column;
 }
 
-.rainbow-input-label {
+.rainbow-input_label {
     color: $color-gray-4;
-    font-size: $font-size-text-small;
+    font-size: $font-size-text-medium;
     line-height: 1.5;
     margin-right: 0.75rem;
     margin-bottom: 0.125rem;
@@ -25,20 +25,20 @@
     }
 }
 
-.rainbow-input-label_read-only {
+.rainbow-input_label-read-only {
     align-self: flex-start;
 }
 
-.rainbow-input-help {
-    font-size: $font-size-text-small;
+.rainbow-input_help {
+    font-size: $font-size-text-medium;
     margin-top: $margin-x-small;
     align-self: center;
 }
 
-.rainbow-input-has-icon {
+.rainbow-input_icon-container {
     position: relative;
 
-    .rainbow-input__icon {
+    .rainbow-input_icon {
         fill: $color-gray-3;
         width: 0.875rem;
         height: 0.875rem;
@@ -50,7 +50,7 @@
         z-index: 2;
     }
 
-    .rainbow-input__icon:not(button) {
+    .rainbow-input_icon:not(button) {
         pointer-events: none;
     }
 }
@@ -63,10 +63,10 @@
     transition: all 0.1s linear;
     display: inline-block;
     padding: 0 1rem 0 1rem;
-    line-height: 2.125rem;
-    height: calc(2.125rem + (1px * 2));
+    line-height: 2.5rem;
+    height: 2.5rem;
     color: $color-dark-1;
-    font-size: $font-size-text-medium;
+    font-size: $font-size-text-large;
 
     &[type="search"]::-ms-clear {
         display: none;
@@ -77,7 +77,7 @@
     &:focus,
     &:active {
         outline: 0;
-        line-height: 0.5rem;
+        line-height: 2.5rem;
         padding-left: 0.9375rem;
         border: 2px $color-brand solid;
         background-color: white;
@@ -87,6 +87,7 @@
     &::placeholder {
         color: $color-gray-3;
         font-weight: 300;
+        font-size: $font-size-text-large;
     }
 
     &[readonly] {
@@ -126,29 +127,29 @@
     }
 }
 
-.rainbow-input-has-error {
+.rainbow-input--error {
     .rainbow-input {
         background-color: white;
         border: 2px $color-error solid;
         padding-left: $padding-medium;
         background-clip: padding-box;
-        line-height: 2rem;
+        line-height: 2.5rem;
 
         &:focus {
             box-shadow: $shadow-error;
         }
     }
 
-    .rainbow-input-help {
+    .rainbow-input_help {
         color: $color-error;
     }
 
-    .rainbow-input__icon {
+    .rainbow-input_icon {
         fill: $color-error;
         color: $color-error;
     }
 
-    .rainbow-input-has-icon.rainbow-input-has-icon_left {
+    .rainbow-input_icon-container.rainbow-input_icon--left {
         .rainbow-input {
             padding-left: 2.25rem;
         }
@@ -167,7 +168,7 @@
 .rainbow-input[type="month"]:active,
 .rainbow-input[type="week"]:focus,
 .rainbow-input[type="week"]:active {
-    line-height: 2.125rem;
+    line-height: 2.375rem;
 }
 
 .rainbow-input_bare {
@@ -177,7 +178,7 @@
     padding-bottom: 0;
     padding-left: 0.75rem;
     color: $color-dark-1;
-    line-height: 2.125rem;
+    line-height: 2.5rem;
 
     &:focus,
     &:active {
@@ -196,8 +197,8 @@
     }
 }
 
-.rainbow-input-has-icon_left {
-    .rainbow-input__icon {
+.rainbow-input_icon--left {
+    .rainbow-input_icon {
         left: 1rem;
     }
 
@@ -212,13 +213,14 @@
     }
 }
 
-.rainbow-input-has-icon_right {
-    .rainbow-input__icon {
+.rainbow-input_icon--right {
+    .rainbow-input_icon {
         right: 1rem;
     }
 
     .rainbow-input,
     .rainbow-input_bare {
         right: 1rem;
+        padding-right: 2.25rem;
     }
 }

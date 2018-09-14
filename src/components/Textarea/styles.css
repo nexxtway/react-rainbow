@@ -1,4 +1,4 @@
-.rainbow-textarea-container {
+.rainbow-textarea_container {
   position: relative;
   display: flex;
   flex-direction: column; }
@@ -43,31 +43,31 @@
       box-shadow: none;
       border: none; }
 
-.rainbow-textarea-label {
+.rainbow-textarea_label {
   color: #576574;
   font-size: 0.75rem;
   line-height: 1.5;
   margin-bottom: 0.125rem;
   align-self: center; }
-  .rainbow-textarea-label:empty {
+  .rainbow-textarea_label:empty {
     margin: 0; }
-  .rainbow-textarea-label[readonly] {
+  .rainbow-textarea_label[readonly] {
     align-self: flex-start;
     margin-bottom: 0.25rem; }
 
-.rainbow-textarea-help-error {
+.rainbow-textarea_help-error {
   font-size: 0.75rem;
   color: #576574;
   margin-top: 0.5rem;
   align-self: center; }
 
-.rainbow-textarea-has-error .rainbow-textarea-help-error {
+.rainbow-textarea--error .rainbow-textarea_help-error {
   color: #fe4849; }
 
-.rainbow-textarea-has-error .rainbow-textarea {
+.rainbow-textarea--error .rainbow-textarea {
   background-color: #fff;
   border: solid 2px #fe4849;
   background-clip: padding-box; }
-  .rainbow-textarea-has-error .rainbow-textarea:focus, .rainbow-textarea-has-error .rainbow-textarea:active {
+  .rainbow-textarea--error .rainbow-textarea:focus, .rainbow-textarea--error .rainbow-textarea:active {
     padding: 0.625rem 1rem;
     box-shadow: 0 0 2px #fe4849; }

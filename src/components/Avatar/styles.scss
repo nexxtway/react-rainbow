@@ -23,26 +23,26 @@
     }
 }
 
-.rainbow-avatar_x-small {
+.rainbow-avatar--x-small {
     @include variant-size(0.625rem, 1.25rem);
 }
 
-.rainbow-avatar_small {
+.rainbow-avatar--small {
     @include variant-size(0.625rem, 1.5rem);
 }
 
-.rainbow-avatar_medium {
-    @include variant-size(0.8755rem, 2rem);
+.rainbow-avatar--medium {
+    @include variant-size(1rem, 2.5rem);
 }
 
-.rainbow-avatar_large {
-    @include variant-size(1.125rem, 3rem);
+.rainbow-avatar--large {
+    @include variant-size(1.125rem, 3.2rem);
 
     font-weight: 300;
     line-height: 1.25;
 }
 
-.rainbow-avatar__initials {
+.rainbow-avatar_initials {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-pack: center;
@@ -62,12 +62,12 @@
     }
 }
 
-.rainbow-avatar__initials[title] {
+.rainbow-avatar_initials[title] {
     cursor: default;
     text-decoration: none;
 }
 
-.rainbow-avatar__initials_inverse {
+.rainbow-avatar_initials--inverse {
     background-color: $color-gray-2;
     color: $color-gray-4;
     text-shadow: none;

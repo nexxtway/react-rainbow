@@ -34,7 +34,7 @@ export default function Card(props) {
             </div>
 
             <RenderIf isTrue={footer && !isLoading}>
-                <footer className="rainbow-card__footer">
+                <footer className="rainbow-card_footer">
                     {footer}
                 </footer>
             </RenderIf>

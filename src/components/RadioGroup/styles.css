@@ -1,18 +1,18 @@
 /* stylelint-disable no-descending-specificity,max-line-length */
-.rainbow-radio-group-container {
+.rainbow-radio-group_container {
   position: relative; }
 
-.rainbow-radio-group-label {
+.rainbow-radio-group_label {
   display: inline-block;
   color: #576574;
   font-size: 0.75rem;
   margin-right: 0.75rem;
   margin-bottom: 0.25rem; }
 
-.rainbow-radio-group-inner-container .rainbow-radio {
+.rainbow-radio-group_inner-container .rainbow-radio {
   display: block; }
 
-.rainbow-radio-group-error {
+.rainbow-radio-group_help {
   font-size: 0.75rem;
   margin-top: 0.5rem;
   display: block;
@@ -20,25 +20,25 @@
 
 .rainbow-radio {
   display: inline-block; }
+  .rainbow-radio .rainbow-radio_faux {
+    width: 1.25rem;
+    height: 1.25rem;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    border: 0.0625rem solid #e3e5ed;
+    border-radius: 12rem;
+    background-color: white;
+    transition: border 0.1s linear, background-color 0.1s linear; }
 
-.rainbow-radio .rainbow-radio_faux {
-  width: 1rem;
-  height: 1rem;
-  display: inline-block;
-  position: relative;
-  vertical-align: middle;
-  border: 0.0625rem solid #e3e5ed;
-  border-radius: 12rem;
-  background-color: white;
-  transition: border 0.1s linear, background-color 0.1s linear; }
-
-.rainbow-radio-label {
+.rainbow-radio_label {
   display: inline;
   vertical-align: middle;
   font-size: 0.875rem;
-  color: #061c3f; }
+  color: #061c3f;
+  line-height: 1.65rem; }
 
-.rainbow-radio-label-disabled {
+.rainbow-radio_label--disabled {
   color: #a4a7b5; }
 
 .rainbow-radio [type="radio"] {
@@ -53,11 +53,11 @@
 
 .rainbow-radio [type="radio"]:checked + .rainbow-radio_faux,
 .rainbow-radio [type="radio"]:checked ~ .rainbow-radio_faux,
-.rainbow-radio [type="radio"]:checked + .rainbow-radio-label-container .rainbow-radio_faux {
+.rainbow-radio [type="radio"]:checked + .rainbow-radio_label-container .rainbow-radio_faux {
   background: white; }
   .rainbow-radio [type="radio"]:checked + .rainbow-radio_faux::after,
   .rainbow-radio [type="radio"]:checked ~ .rainbow-radio_faux::after,
-  .rainbow-radio [type="radio"]:checked + .rainbow-radio-label-container .rainbow-radio_faux::after {
+  .rainbow-radio [type="radio"]:checked + .rainbow-radio_label-container .rainbow-radio_faux::after {
     width: 0.5rem;
     height: 0.5rem;
     content: '';
@@ -70,8 +70,8 @@
 
 .rainbow-radio [type="radio"]:focus + .rainbow-radio_faux,
 .rainbow-radio [type="radio"]:focus ~ .rainbow-radio_faux,
-.rainbow-radio [type="radio"]:focus + .rainbow-radio-label-container .rainbow-radio_faux {
-  border-color: #01b6f5;
+.rainbow-radio [type="radio"]:focus + .rainbow-radio_label-container .rainbow-radio_faux {
+  border: solid 0.09375rem #01b6f5;
   box-shadow: 0 0 2px #01b6f5; }
 
 .rainbow-radio [type="radio"][disabled] {
@@ -82,31 +82,29 @@
   user-select: none; }
 
 .rainbow-radio [type="radio"][disabled] ~ .rainbow-radio_faux,
-.rainbow-radio [type="radio"][disabled] + .rainbow-radio-label-container .rainbow-radio_faux {
+.rainbow-radio [type="radio"][disabled] + .rainbow-radio_label-container .rainbow-radio_faux {
   background-color: #f4f6f9;
   border-color: #e3e5ed; }
 
-.rainbow-radio-group-has-error .rainbow-radio [type='radio'] + .rainbow-radio_faux,
-.rainbow-radio-group-has-error .rainbow-radio [type='radio'] ~ .rainbow-radio_faux,
-.rainbow-radio-group-has-error .rainbow-radio [type='radio'] + .rainbow-radio-label-container .rainbow-radio_faux {
+.rainbow-radio-group--error .rainbow-radio [type='radio'] + .rainbow-radio_faux,
+.rainbow-radio-group--error .rainbow-radio [type='radio'] ~ .rainbow-radio_faux,
+.rainbow-radio-group--error .rainbow-radio [type='radio'] + .rainbow-radio_label-container .rainbow-radio_faux {
   border: solid 0.09375rem #fe4849; }
 
-.rainbow-radio-group-has-error .rainbow-radio [type='radio']:focus + .rainbow-radio_faux,
-.rainbow-radio-group-has-error .rainbow-radio [type='radio']:focus ~ .rainbow-radio_faux,
-.rainbow-radio-group-has-error .rainbow-radio [type='radio']:focus + .rainbow-radio-label-container .rainbow-radio_faux {
+.rainbow-radio-group--error .rainbow-radio [type='radio']:focus + .rainbow-radio_faux,
+.rainbow-radio-group--error .rainbow-radio [type='radio']:focus ~ .rainbow-radio_faux,
+.rainbow-radio-group--error .rainbow-radio [type='radio']:focus + .rainbow-radio_label-container .rainbow-radio_faux {
   box-shadow: 0 0 2px #fe4849; }
 
-.rainbow-radio-group-has-error .rainbow-radio [type='radio']:checked + .rainbow-radio_faux,
-.rainbow-radio-group-has-error .rainbow-radio [type='radio']:checked ~ .rainbow-radio_faux,
-.rainbow-radio-group-has-error .rainbow-radio [type='radio']:checked + .rainbow-radio-label-container .rainbow-radio_faux {
+.rainbow-radio-group--error .rainbow-radio [type='radio']:checked + .rainbow-radio_faux,
+.rainbow-radio-group--error .rainbow-radio [type='radio']:checked ~ .rainbow-radio_faux,
+.rainbow-radio-group--error .rainbow-radio [type='radio']:checked + .rainbow-radio_label-container .rainbow-radio_faux {
   background: white; }
-  .rainbow-radio-group-has-error .rainbow-radio [type='radio']:checked + .rainbow-radio_faux::after,
-  .rainbow-radio-group-has-error .rainbow-radio [type='radio']:checked ~ .rainbow-radio_faux::after,
-  .rainbow-radio-group-has-error .rainbow-radio [type='radio']:checked + .rainbow-radio-label-container .rainbow-radio_faux::after {
+  .rainbow-radio-group--error .rainbow-radio [type='radio']:checked + .rainbow-radio_faux::after,
+  .rainbow-radio-group--error .rainbow-radio [type='radio']:checked ~ .rainbow-radio_faux::after,
+  .rainbow-radio-group--error .rainbow-radio [type='radio']:checked + .rainbow-radio_label-container .rainbow-radio_faux::after {
     background: #fe4849;
     border-color: #fe4849; }
 
-.rainbow-radio-form-element .rainbow-radio [type='radio'] + .rainbow-radio_faux,
-.rainbow-radio-form-element .rainbow-radio [type='radio'] ~ .rainbow-radio_faux,
-.rainbow-radio [type='radio'] + .rainbow-radio-label-container .rainbow-radio_faux {
+.rainbow-radio [type='radio'] + .rainbow-radio_label-container .rainbow-radio_faux {
   margin-right: 0.5rem; }

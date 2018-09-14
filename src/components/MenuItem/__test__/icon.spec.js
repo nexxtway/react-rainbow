@@ -7,12 +7,12 @@ describe('<MenuItemIcon/>', () => {
         const component = mount(
             <Icon icon={<svg />} isVisible position="left" />,
         );
-        expect(component.find('span').prop('className')).toBe('rainbow-icon-container rainbow-icon-left');
+        expect(component.find('span').prop('className')).toBe('rainbow-menu-item_icon rainbow-menu-item_icon--left');
     });
     it('should have the right class names when the position is right', () => {
         const component = mount(
             <Icon icon={<svg />} isVisible position="right" />,
         );
-        expect(component.find('span').prop('className')).toBe('rainbow-icon-container rainbow-icon-right');
+        expect(component.find('span').prop('className')).toBe('rainbow-menu-item_icon rainbow-menu-item_icon--right');
     });
 });

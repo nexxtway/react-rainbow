@@ -6,6 +6,7 @@ import RenderIf from './../RenderIf';
 import { uniqueId } from './../../libs/utils';
 import getMaxHeight from './compute-max-height';
 import Description from './description';
+import { Provider } from './context';
 import './styles.css';
 
 /**
@@ -25,17 +26,17 @@ export default class VerticalSectionOverflow extends Component {
     getContainerClassNames() {
         const { className } = this.props;
         const { isExpanded } = this.state;
-        return classnames('rainbow-nav-vertical-section-overflow-container', {
-            'rainbow-nav-vertical-section-overflow-container-expanded': isExpanded,
+        return classnames('rainbow-vertical-section-overflow_container', {
+            'rainbow-vertical-section-overflow_container--expanded': isExpanded,
         }, className);
     }
 
     getOverflowClassName() {
         const { isExpanded } = this.state;
         if (isExpanded) {
-            return 'rainbow-nav-certical-overflow-show';
+            return 'rainbow-vertical-section-overflow--show';
         }
-        return 'rainbow-nav-certical-overflow-hide';
+        return 'rainbow-vertical-section-overflow--hide';
     }
 
     toggleOverflow() {
@@ -60,18 +61,18 @@ export default class VerticalSectionOverflow extends Component {
         return (
             <div data-id="vertical-overflow-container" className={this.getContainerClassNames()} style={style}>
                 <button
-                    className="rainbow-nav-vertical-section-overflow-button"
+                    className="rainbow-vertical-section-overflow_button"
                     aria-controls={this.searchResultsId}
                     aria-expanded={isExpanded}
                     onClick={this.toggleOverflow}>
 
-                    <div className="rainbow-nav-vertical-overflow__action-text">
-                        <span className="rainbow-nav-vertical-overflow__action-title">{title}</span>
+                    <div className="rainbow-vertical-section-overflow_action-text">
+                        <span className="rainbow-vertical-section-overflow_action-title">{title}</span>
                         <Description isExpanded={isExpanded} description={description} />
                         <AssistiveText text={assistiveText} />
                     </div>
                     <RenderIf isTrue={!!icon}>
-                        <span className="rainbow-nav-vertical-section-overflow__icon rainbow-nav-vertical-section-overflow__icon_right">
+                        <span className="rainbow-vertical-section-overflow_icon rainbow-vertical-section-overflow_icon--right">
                             {icon}
                         </span>
                     </RenderIf>
@@ -83,9 +84,11 @@ export default class VerticalSectionOverflow extends Component {
                     className={this.getOverflowClassName()}
                     style={sectionMaxHeight}>
 
-                    <ul>
-                        {children}
-                    </ul>
+                    <Provider value={isExpanded}>
+                        <ul>
+                            {children}
+                        </ul>
+                    </Provider>
                 </div>
             </div>
         );
@@ -93,10 +96,16 @@ export default class VerticalSectionOverflow extends Component {
 }
 
 VerticalSectionOverflow.propTypes = {
+    /** The title to show when the section is collapsed. */
+    title: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
+    /** The description to show when the section is collapsed. */
+    description: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
+    /** The icon positioned in the right of the section title. */
     icon: PropTypes.node,
-    description: PropTypes.string,
-    /** The label to show when the section is collapsed. */
-    title: PropTypes.string,
     /** The state of the overflow. */
     expanded: PropTypes.bool,
     /** A description for assistive sreen readers. */

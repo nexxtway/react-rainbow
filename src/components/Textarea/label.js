@@ -15,10 +15,11 @@ export default function Label(props) {
     return (
         <RenderIf isTrue={!!label}>
             <label
-                className="rainbow-textarea-label"
+                className="rainbow-textarea_label"
                 htmlFor={textareaId}
                 id={id}
                 readOnly={readOnly}>
+
                     <RequiredAsterisk required={required} />
                     {label}
             </label>

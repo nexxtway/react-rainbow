@@ -35,89 +35,89 @@
 .rainbow-button-icon + .rainbow-button-icon {
   margin-left: 0.25rem; }
 
-.rainbow-button-icon_brand {
+.rainbow-button-icon--brand {
   background-color: #01b6f5;
   border: 1px solid #01b6f5;
   color: white; }
-  .rainbow-button-icon_brand:link, .rainbow-button-icon_brand:visited, .rainbow-button-icon_brand:active {
+  .rainbow-button-icon--brand:link, .rainbow-button-icon--brand:visited, .rainbow-button-icon--brand:active {
     color: white; }
-  .rainbow-button-icon_brand:hover, .rainbow-button-icon_brand:focus, .rainbow-button-icon_brand:active {
+  .rainbow-button-icon--brand:hover, .rainbow-button-icon--brand:focus, .rainbow-button-icon--brand:active {
     background-color: #009acf;
     border: 1px solid #009acf;
     color: white; }
-  .rainbow-button-icon_brand[disabled] {
+  .rainbow-button-icon--brand[disabled] {
     background-color: #f4f6f9;
     border: 1px solid #f4f6f9;
     color: #e3e5ed; }
 
-.rainbow-button-icon_success {
+.rainbow-button-icon--success {
   background-color: #1de9b6;
   border: 1px solid #1de9b6;
   color: white; }
-  .rainbow-button-icon_success:link, .rainbow-button-icon_success:visited, .rainbow-button-icon_success:active {
+  .rainbow-button-icon--success:link, .rainbow-button-icon--success:visited, .rainbow-button-icon--success:active {
     color: white; }
-  .rainbow-button-icon_success:hover, .rainbow-button-icon_success:focus, .rainbow-button-icon_success:active {
+  .rainbow-button-icon--success:hover, .rainbow-button-icon--success:focus, .rainbow-button-icon--success:active {
     background-color: #1ad1a3;
     border: 1px solid #1ad1a3;
     color: white; }
-  .rainbow-button-icon_success[disabled] {
+  .rainbow-button-icon--success[disabled] {
     background-color: #f4f6f9;
     border: 1px solid #f4f6f9;
     color: #e3e5ed; }
 
-.rainbow-button-icon_border {
+.rainbow-button-icon--border {
   background-color: transparent;
   border: 1px solid #e3e5ed;
   color: #576574;
   transition: border 0.15s linear; }
-  .rainbow-button-icon_border:hover, .rainbow-button-icon_border:focus, .rainbow-button-icon_border:active {
+  .rainbow-button-icon--border:hover, .rainbow-button-icon--border:focus, .rainbow-button-icon--border:active {
     background-color: transparent;
     border: 1px solid #009acf;
     color: #009acf; }
-  .rainbow-button-icon_border[disabled] {
+  .rainbow-button-icon--border[disabled] {
     background-color: transparent;
     border: 1px solid #e3e5ed;
     color: #e3e5ed; }
 
-.rainbow-button-icon_border-filled {
+.rainbow-button-icon--border-filled {
   background-color: white;
   border: 1px solid #e3e5ed;
   color: #576574;
   transition: border 0.15s linear; }
-  .rainbow-button-icon_border-filled:hover, .rainbow-button-icon_border-filled:focus, .rainbow-button-icon_border-filled:active {
+  .rainbow-button-icon--border-filled:hover, .rainbow-button-icon--border-filled:focus, .rainbow-button-icon--border-filled:active {
     background-color: #f4f6f9; }
-  .rainbow-button-icon_border-filled[disabled] {
+  .rainbow-button-icon--border-filled[disabled] {
     background-color: transparent; }
 
-.rainbow-button-icon_border-inverse {
+.rainbow-button-icon--border-inverse {
   background-color: transparent;
   border: 1px solid white;
   color: white; }
-  .rainbow-button-icon_border-inverse:hover, .rainbow-button-icon_border-inverse:focus, .rainbow-button-icon_border-inverse:active {
+  .rainbow-button-icon--border-inverse:hover, .rainbow-button-icon--border-inverse:focus, .rainbow-button-icon--border-inverse:active {
     border-color: #a4a7b5;
     color: #a4a7b5; }
-  .rainbow-button-icon_border-inverse:focus {
+  .rainbow-button-icon--border-inverse:focus {
     outline: none;
     box-shadow: 0 0 3px #f4f6f9; }
-  .rainbow-button-icon_border-inverse[disabled] {
+  .rainbow-button-icon--border-inverse[disabled] {
     background-color: transparent;
     border-color: #576574;
     color: #576574; }
 
-.rainbow-button-icon_inverse {
+.rainbow-button-icon--inverse {
   background-color: transparent;
   border: 1px solid transparent;
   color: white; }
-  .rainbow-button-icon_inverse:hover, .rainbow-button-icon_inverse:focus, .rainbow-button-icon_inverse:active {
+  .rainbow-button-icon--inverse:hover, .rainbow-button-icon--inverse:focus, .rainbow-button-icon--inverse:active {
     color: #a4a7b5; }
-  .rainbow-button-icon_inverse:focus {
+  .rainbow-button-icon--inverse:focus {
     outline: none;
     box-shadow: 0 0 3px #f4f6f9; }
-  .rainbow-button-icon_inverse[disabled] {
+  .rainbow-button-icon--inverse[disabled] {
     background-color: transparent;
     color: #576574; }
 
-.rainbow-button-icon_shaded {
+.rainbow-button-icon--shaded {
   box-shadow: 0 0 1px 0 #a4a7b5; }
 
 .rainbow-button-icon_xx-small {
@@ -125,44 +125,44 @@
   height: 1rem;
   line-height: 1; }
 
-.rainbow-button-icon_xx-small > svg {
+.rainbow-button-icon--xx-small > svg {
   width: 0.5rem !important;
   height: 0.5rem !important;
   font-size: 0.5rem !important; }
 
-.rainbow-button-icon_x-small {
+.rainbow-button-icon--x-small {
   width: 1.25rem;
   height: 1.25rem;
   line-height: 1; }
 
-.rainbow-button-icon_x-small > svg {
+.rainbow-button-icon--x-small > svg {
   width: 0.75rem !important;
   height: 0.75rem !important;
   font-size: 0.75rem !important; }
 
-.rainbow-button-icon_small {
+.rainbow-button-icon--small {
   width: 1.5rem;
   height: 1.5rem; }
 
-.rainbow-button-icon_small > svg {
+.rainbow-button-icon--small > svg {
   width: 0.875rem !important;
   height: 0.875rem !important;
   font-size: 0.875rem !important; }
 
-.rainbow-button-icon_medium {
-  width: 2.25rem;
-  height: 2.25rem; }
+.rainbow-button-icon--medium {
+  width: 2.475rem;
+  height: 2.475rem; }
 
-.rainbow-button-icon_medium > svg {
+.rainbow-button-icon--medium > svg {
   width: 1rem !important;
   height: 1rem !important;
   font-size: 1rem !important; }
 
-.rainbow-button-icon_large {
+.rainbow-button-icon--large {
   width: 3rem;
   height: 3rem; }
 
-.rainbow-button-icon_large > svg {
+.rainbow-button-icon--large > svg {
   width: 1.5rem !important;
   height: 1.5rem !important;
   font-size: 1.5rem !important; }

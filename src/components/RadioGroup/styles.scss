@@ -12,11 +12,11 @@
     user-select: none;
 }
 
-.rainbow-radio-group-container {
+.rainbow-radio-group_container {
     position: relative;
 }
 
-.rainbow-radio-group-label {
+.rainbow-radio-group_label {
     display: inline-block;
     color: $color-gray-4;
     font-size: $font-size-text-small;
@@ -24,11 +24,13 @@
     margin-bottom: $margin-xx-small;
 }
 
-.rainbow-radio-group-inner-container .rainbow-radio {
-    display: block;
+.rainbow-radio-group_inner-container {
+    .rainbow-radio {
+        display: block;
+    }
 }
 
-.rainbow-radio-group-error {
+.rainbow-radio-group_help {
     font-size: $font-size-text-small;
     margin-top: $margin-x-small;
     display: block;
@@ -37,28 +39,29 @@
 
 .rainbow-radio {
     display: inline-block;
+
+    .rainbow-radio_faux {
+        width: 1.25rem;
+        height: 1.25rem;
+        display: inline-block;
+        position: relative;
+        vertical-align: middle;
+        border: 0.0625rem solid $color-gray-2;
+        border-radius: $border-radius-2;
+        background-color: white;
+        transition: border 0.1s linear, background-color 0.1s linear;
+    }
 }
 
-.rainbow-radio .rainbow-radio_faux {
-    width: 1rem;
-    height: 1rem;
-    display: inline-block;
-    position: relative;
-    vertical-align: middle;
-    border: 0.0625rem solid $color-gray-2;
-    border-radius: $border-radius-2;
-    background-color: white;
-    transition: border 0.1s linear, background-color 0.1s linear;
-}
-
-.rainbow-radio-label {
+.rainbow-radio_label {
     display: inline;
     vertical-align: middle;
     font-size: $font-size-text-medium;
     color: $color-dark-1;
+    line-height: 1.65rem;
 }
 
-.rainbow-radio-label-disabled {
+.rainbow-radio_label--disabled {
     color: $color-gray-3;
 }
 
@@ -75,7 +78,7 @@
 
 .rainbow-radio [type="radio"]:checked + .rainbow-radio_faux,
 .rainbow-radio [type="radio"]:checked ~ .rainbow-radio_faux,
-.rainbow-radio [type="radio"]:checked + .rainbow-radio-label-container .rainbow-radio_faux {
+.rainbow-radio [type="radio"]:checked + .rainbow-radio_label-container .rainbow-radio_faux {
     background: white;
 
     &::after {
@@ -93,8 +96,8 @@
 
 .rainbow-radio [type="radio"]:focus + .rainbow-radio_faux,
 .rainbow-radio [type="radio"]:focus ~ .rainbow-radio_faux,
-.rainbow-radio [type="radio"]:focus + .rainbow-radio-label-container .rainbow-radio_faux {
-    border-color: $color-brand;
+.rainbow-radio [type="radio"]:focus + .rainbow-radio_label-container .rainbow-radio_faux {
+    border: solid 0.09375rem $color-brand;
     box-shadow: $shadow-outline;
 }
 
@@ -105,26 +108,26 @@
 }
 
 .rainbow-radio [type="radio"][disabled] ~ .rainbow-radio_faux,
-.rainbow-radio [type="radio"][disabled] + .rainbow-radio-label-container .rainbow-radio_faux {
+.rainbow-radio [type="radio"][disabled] + .rainbow-radio_label-container .rainbow-radio_faux {
     background-color: $color-gray-1;
     border-color: $color-gray-2;
 }
 
-.rainbow-radio-group-has-error .rainbow-radio [type='radio'] + .rainbow-radio_faux,
-.rainbow-radio-group-has-error .rainbow-radio [type='radio'] ~ .rainbow-radio_faux,
-.rainbow-radio-group-has-error .rainbow-radio [type='radio'] + .rainbow-radio-label-container .rainbow-radio_faux {
+.rainbow-radio-group--error .rainbow-radio [type='radio'] + .rainbow-radio_faux,
+.rainbow-radio-group--error .rainbow-radio [type='radio'] ~ .rainbow-radio_faux,
+.rainbow-radio-group--error .rainbow-radio [type='radio'] + .rainbow-radio_label-container .rainbow-radio_faux {
     border: solid 0.09375rem $color-error;
 }
 
-.rainbow-radio-group-has-error .rainbow-radio [type='radio']:focus + .rainbow-radio_faux,
-.rainbow-radio-group-has-error .rainbow-radio [type='radio']:focus ~ .rainbow-radio_faux,
-.rainbow-radio-group-has-error .rainbow-radio [type='radio']:focus + .rainbow-radio-label-container .rainbow-radio_faux {
+.rainbow-radio-group--error .rainbow-radio [type='radio']:focus + .rainbow-radio_faux,
+.rainbow-radio-group--error .rainbow-radio [type='radio']:focus ~ .rainbow-radio_faux,
+.rainbow-radio-group--error .rainbow-radio [type='radio']:focus + .rainbow-radio_label-container .rainbow-radio_faux {
     box-shadow: $shadow-error;
 }
 
-.rainbow-radio-group-has-error .rainbow-radio [type='radio']:checked + .rainbow-radio_faux,
-.rainbow-radio-group-has-error .rainbow-radio [type='radio']:checked ~ .rainbow-radio_faux,
-.rainbow-radio-group-has-error .rainbow-radio [type='radio']:checked + .rainbow-radio-label-container .rainbow-radio_faux {
+.rainbow-radio-group--error .rainbow-radio [type='radio']:checked + .rainbow-radio_faux,
+.rainbow-radio-group--error .rainbow-radio [type='radio']:checked ~ .rainbow-radio_faux,
+.rainbow-radio-group--error .rainbow-radio [type='radio']:checked + .rainbow-radio_label-container .rainbow-radio_faux {
     background: white;
 
     &::after {
@@ -133,8 +136,6 @@
     }
 }
 
-.rainbow-radio-form-element .rainbow-radio [type='radio'] + .rainbow-radio_faux,
-.rainbow-radio-form-element .rainbow-radio [type='radio'] ~ .rainbow-radio_faux,
-.rainbow-radio [type='radio'] + .rainbow-radio-label-container .rainbow-radio_faux {
+.rainbow-radio [type='radio'] + .rainbow-radio_label-container .rainbow-radio_faux {
     margin-right: $margin-x-small;
 }

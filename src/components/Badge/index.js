@@ -20,7 +20,7 @@ export default function Badge(props) {
         if (variant === 'default') {
             return null;
         }
-        return `rainbow-badge_${variant}`;
+        return `rainbow-badge--${variant}`;
     }
 
     function getClassName() {

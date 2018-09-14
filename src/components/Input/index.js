@@ -22,7 +22,7 @@ export default class Input extends Component {
             className,
             error,
         } = this.props;
-        return classnames('rainbow-input-container', { 'rainbow-input-has-error': error }, className);
+        return classnames('rainbow-input_container', { 'rainbow-input--error': error }, className);
     }
 
     getIconPositionClassNames() {
@@ -31,8 +31,8 @@ export default class Input extends Component {
             iconPosition,
         } = this.props;
         return classnames({
-            'rainbow-input-has-icon': icon,
-            [`rainbow-input-has-icon_${iconPosition}`]: icon,
+            'rainbow-input_icon-container': icon,
+            [`rainbow-input_icon--${iconPosition}`]: icon,
         });
     }
 
@@ -97,7 +97,7 @@ export default class Input extends Component {
 
                 <div className={this.getIconPositionClassNames()}>
                     <RenderIf isTrue={!!icon}>
-                        <span className="rainbow-input__icon">
+                        <span className="rainbow-input_icon">
                             {icon}
                         </span>
                     </RenderIf>
@@ -121,10 +121,10 @@ export default class Input extends Component {
 
                 </div>
                 <RenderIf isTrue={!!bottomHelpText}>
-                    <div className="rainbow-input-help">{bottomHelpText}</div>
+                    <div className="rainbow-input_help">{bottomHelpText}</div>
                 </RenderIf>
                 <RenderIf isTrue={!!error}>
-                    <div id={this.getErrorMessageId()} className="rainbow-input-help">{error}</div>
+                    <div id={this.getErrorMessageId()} className="rainbow-input_help">{error}</div>
                 </RenderIf>
             </div>
         );
@@ -151,8 +151,10 @@ Input.propTypes = {
         'tel',
         'color',
     ]),
-    /** The input label */
-    label: PropTypes.node,
+    /** Text label for the input. */
+    label: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
     placeholder: PropTypes.string,
     /** The icon to show if it is passed. It must be a svg icon or a font icon. */
@@ -167,7 +169,9 @@ Input.propTypes = {
     /** The minimum number of characters allowed in the field. */
     minLength: PropTypes.number,
     /** Shows the help message below the input. */
-    bottomHelpText: PropTypes.node,
+    bottomHelpText: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
     /** Specifies that an input field must be filled out before submitting the form.
     * This value defaults to false. */
     required: PropTypes.bool,
@@ -179,7 +183,9 @@ Input.propTypes = {
     /** Specifies that an input will not have border. This value defaults to false. */
     isBare: PropTypes.bool,
     /** Specifies that an input field must be filled out before submitting the form. */
-    error: PropTypes.node,
+    error: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
     /** Specifies that an input element should be disabled. This value defaults to false. */
     disabled: PropTypes.bool,
     /** Specifies that an input field is read-only. This value defaults to false. */

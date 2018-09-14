@@ -3,7 +3,7 @@ const ITEMS_CONTAINER = '#search-results-6';
 const APPS_ITEM = 'li=Apps';
 const SHARED_ITEM_LINK = 'a=Folder shared with Me';
 const SHARED_ITEM = 'div.rainbow-background-color_white.rainbow-p-top_small.rainbow-p-bottom_x-large > nav > div:nth-child(1) > div > ul > li:nth-child(2)';
-const SELECTED_ITEM_CLASS = 'rainbow-nav-vertical__item rainbow-is-active';
+const SELECTED_ITEM_CLASS = 'rainbow-vertical-item rainbow-vertical-item--active';
 const TAB_KEY = '\uE004';
 const ENTER_KEY = '\uE006';
 

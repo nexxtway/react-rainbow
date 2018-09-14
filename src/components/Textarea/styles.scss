@@ -4,7 +4,7 @@
 @import "../../styles/border-radius.scss";
 @import "../../styles/margins.scss";
 
-.rainbow-textarea-container {
+.rainbow-textarea_container {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -68,7 +68,7 @@
     }
 }
 
-.rainbow-textarea-label {
+.rainbow-textarea_label {
     color: $color-gray-4;
     font-size: $font-size-text-small;
     line-height: 1.5;
@@ -85,15 +85,15 @@
     }
 }
 
-.rainbow-textarea-help-error {
+.rainbow-textarea_help-error {
     font-size: $font-size-text-small;
     color: $color-gray-4;
     margin-top: $margin-x-small;
     align-self: center;
 }
 
-.rainbow-textarea-has-error {
-    .rainbow-textarea-help-error {
+.rainbow-textarea--error {
+    .rainbow-textarea_help-error {
         color: $color-error;
     }
 

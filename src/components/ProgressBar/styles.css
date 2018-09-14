@@ -7,28 +7,28 @@
   position: relative;
   border-radius: 0.5rem; }
 
-.rainbow-progress-bar_success {
+.rainbow-progress-bar--success {
   background: rgba(29, 233, 182, 0.2); }
 
-.rainbow-progress-bar_x-small {
+.rainbow-progress-bar--x-small {
   height: 0.125rem; }
 
-.rainbow-progress-bar_small {
+.rainbow-progress-bar--small {
   height: 0.25rem; }
 
-.rainbow-progress-bar_medium {
+.rainbow-progress-bar--medium {
   height: 0.625rem; }
 
-.rainbow-progress-bar_large {
+.rainbow-progress-bar--large {
   height: 1rem; }
 
-.rainbow-progress-bar__value {
+.rainbow-progress-bar_value {
   display: block;
   background: #01b6f5;
   height: 100%; }
 
-.rainbow-progress-bar__value_success {
+.rainbow-progress-bar_value--success {
   background: #1de9b6; }
 
-.rainbow-progress-bar .rainbow-progress-bar__value {
-  border-radius: 0.5rem; }
+.rainbow-progress-bar .rainbow-progress-bar_value {
+  border-radius: 1rem; }

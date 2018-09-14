@@ -1,30 +1,30 @@
 /* stylelint-disable no-descending-specificity */
-.rainbow-input-container {
+.rainbow-input_container {
   position: relative;
   display: flex;
   flex-direction: column; }
 
-.rainbow-input-label {
+.rainbow-input_label {
   color: #576574;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   line-height: 1.5;
   margin-right: 0.75rem;
   margin-bottom: 0.125rem;
   align-self: center; }
-  .rainbow-input-label:empty {
+  .rainbow-input_label:empty {
     margin: 0; }
 
-.rainbow-input-label_read-only {
+.rainbow-input_label-read-only {
   align-self: flex-start; }
 
-.rainbow-input-help {
-  font-size: 0.75rem;
+.rainbow-input_help {
+  font-size: 0.875rem;
   margin-top: 0.5rem;
   align-self: center; }
 
-.rainbow-input-has-icon {
+.rainbow-input_icon-container {
   position: relative; }
-  .rainbow-input-has-icon .rainbow-input__icon {
+  .rainbow-input_icon-container .rainbow-input_icon {
     fill: #a4a7b5;
     width: 0.875rem;
     height: 0.875rem;
@@ -34,7 +34,7 @@
     line-height: 1;
     border: 0;
     z-index: 2; }
-  .rainbow-input-has-icon .rainbow-input__icon:not(button) {
+  .rainbow-input_icon-container .rainbow-input_icon:not(button) {
     pointer-events: none; }
 
 .rainbow-input {
@@ -45,24 +45,25 @@
   transition: all 0.1s linear;
   display: inline-block;
   padding: 0 1rem 0 1rem;
-  line-height: 2.125rem;
-  height: calc(2.125rem + (1px * 2));
+  line-height: 2.5rem;
+  height: 2.5rem;
   color: #061c3f;
-  font-size: 0.875rem; }
+  font-size: 1rem; }
   .rainbow-input[type="search"]::-ms-clear {
     display: none;
     width: 0;
     height: 0; }
   .rainbow-input:focus, .rainbow-input:active {
     outline: 0;
-    line-height: 0.5rem;
+    line-height: 2.5rem;
     padding-left: 0.9375rem;
     border: 2px #01b6f5 solid;
     background-color: white;
     box-shadow: 0 0 2px #01b6f5; }
   .rainbow-input::placeholder {
     color: #a4a7b5;
-    font-weight: 300; }
+    font-weight: 300;
+    font-size: 1rem; }
   .rainbow-input[readonly] {
     padding-left: 0;
     padding-right: 0;
@@ -90,23 +91,23 @@
       border: 1px #e3e5ed solid;
       padding-left: 1rem; }
 
-.rainbow-input-has-error .rainbow-input {
+.rainbow-input--error .rainbow-input {
   background-color: white;
   border: 2px #fe4849 solid;
   padding-left: 1rem;
   background-clip: padding-box;
-  line-height: 2rem; }
-  .rainbow-input-has-error .rainbow-input:focus {
+  line-height: 2.5rem; }
+  .rainbow-input--error .rainbow-input:focus {
     box-shadow: 0 0 2px #fe4849; }
 
-.rainbow-input-has-error .rainbow-input-help {
+.rainbow-input--error .rainbow-input_help {
   color: #fe4849; }
 
-.rainbow-input-has-error .rainbow-input__icon {
+.rainbow-input--error .rainbow-input_icon {
   fill: #fe4849;
   color: #fe4849; }
 
-.rainbow-input-has-error .rainbow-input-has-icon.rainbow-input-has-icon_left .rainbow-input {
+.rainbow-input--error .rainbow-input_icon-container.rainbow-input_icon--left .rainbow-input {
   padding-left: 2.25rem; }
 
 .rainbow-input[type="datetime"]:focus,
@@ -121,7 +122,7 @@
 .rainbow-input[type="month"]:active,
 .rainbow-input[type="week"]:focus,
 .rainbow-input[type="week"]:active {
-  line-height: 2.125rem; }
+  line-height: 2.375rem; }
 
 .rainbow-input_bare {
   background-color: transparent;
@@ -130,7 +131,7 @@
   padding-bottom: 0;
   padding-left: 0.75rem;
   color: #061c3f;
-  line-height: 2.125rem; }
+  line-height: 2.5rem; }
   .rainbow-input_bare:focus, .rainbow-input_bare:active {
     outline: 0;
     box-shadow: none; }
@@ -141,20 +142,21 @@
   .rainbow-input_counter:focus, .rainbow-input_counter:active {
     padding: 0 3rem; }
 
-.rainbow-input-has-icon_left .rainbow-input__icon {
+.rainbow-input_icon--left .rainbow-input_icon {
   left: 1rem; }
 
-.rainbow-input-has-icon_left .rainbow-input,
-.rainbow-input-has-icon_left .rainbow-input_bare {
+.rainbow-input_icon--left .rainbow-input,
+.rainbow-input_icon--left .rainbow-input_bare {
   padding-left: 2.25rem; }
-  .rainbow-input-has-icon_left .rainbow-input:focus, .rainbow-input-has-icon_left .rainbow-input:active,
-  .rainbow-input-has-icon_left .rainbow-input_bare:focus,
-  .rainbow-input-has-icon_left .rainbow-input_bare:active {
+  .rainbow-input_icon--left .rainbow-input:focus, .rainbow-input_icon--left .rainbow-input:active,
+  .rainbow-input_icon--left .rainbow-input_bare:focus,
+  .rainbow-input_icon--left .rainbow-input_bare:active {
     padding-left: 2.1875rem; }
 
-.rainbow-input-has-icon_right .rainbow-input__icon {
+.rainbow-input_icon--right .rainbow-input_icon {
   right: 1rem; }
 
-.rainbow-input-has-icon_right .rainbow-input,
-.rainbow-input-has-icon_right .rainbow-input_bare {
-  right: 1rem; }
+.rainbow-input_icon--right .rainbow-input,
+.rainbow-input_icon--right .rainbow-input_bare {
+  right: 1rem;
+  padding-right: 2.25rem; }

@@ -28,8 +28,8 @@ export default class CheckboxGroup extends Component {
     getCheckboxContainerClassNames() {
         const { error, className } = this.props;
         return classnames(
-            'rainbow-checkbox-group-container',
-            { 'rainbow-checkbox-group-has-error': !!error },
+            'rainbow-checkbox-group_container',
+            { 'rainbow-checkbox-group--error': !!error },
             className,
         );
     }
@@ -49,21 +49,21 @@ export default class CheckboxGroup extends Component {
         return (
             <fieldset className={this.getCheckboxContainerClassNames()} style={style}>
                 <RenderIf isTrue={!!label}>
-                    <legend className="rainbow-checkbox-group-label">
+                    <legend className="rainbow-checkbox-group_label">
                         <RequiredAsterisk required={required} />
                         {label}
                     </legend>
                 </RenderIf>
-                <div className="rainbow-checkbox-group-checkbox-container">
-
+                <div className="rainbow-checkbox-group_checkbox-container">
                     <CheckboxList
                         values={value}
                         options={options}
                         onChange={this.handleOnChange}
                         describedBy={this.getErrorMessageId()} />
+
                 </div>
                 <RenderIf isTrue={!!error}>
-                    <div id={this.getErrorMessageId()} className="rainbow-checkbox-group-error">{error}</div>
+                    <div id={this.getErrorMessageId()} className="rainbow-checkbox-group_help-error">{error}</div>
                 </RenderIf>
             </fieldset>
         );
@@ -73,19 +73,25 @@ export default class CheckboxGroup extends Component {
 CheckboxGroup.propTypes = {
     /** An Array of checkbox options with label, value and disabled for each checkbox. */
     options: PropTypes.arrayOf(PropTypes.shape({
-        label: PropTypes.string,
+        label: PropTypes.oneOfType([
+            PropTypes.string, PropTypes.node,
+        ]),
         value: PropTypes.string,
         disabled: PropTypes.bool,
     })),
     /** Text label for the checkbox group. */
-    label: PropTypes.string,
+    label: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
     /** The list of selected checkboxes. Each array entry contains the value of a selected checkbox.
     * The value of each checkbox is set in the options attribute. */
     value: PropTypes.arrayOf(PropTypes.string),
     /** Set to true if at least one checkbox must be selected. This value defaults to false. */
     required: PropTypes.bool,
     /** Specifies that an input field must be filled out before submitting the form. */
-    error: PropTypes.node,
+    error: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
     /** Text label for the checkbox group. */
     onChange: PropTypes.func,
     /** A CSS class for the outer element, in addition to the component's base classes. */
@@ -95,13 +101,12 @@ CheckboxGroup.propTypes = {
 };
 
 CheckboxGroup.defaultProps = {
-    value: [],
-    onChange: () => {},
-    label: null,
-    required: false,
     options: [],
+    value: [],
+    label: null,
+    onChange: () => {},
+    required: false,
     error: null,
     className: undefined,
     style: undefined,
 };
-

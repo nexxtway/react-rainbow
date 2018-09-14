@@ -18,8 +18,8 @@ export default class Select extends Component {
 
     getContainerClassNames() {
         const { classNames, error } = this.props;
-        return classnames('rainbow-select-container', {
-            'rainbow-select-has-error': error,
+        return classnames('rainbow-select_container', {
+            'rainbow-select--error': error,
         }, classNames);
     }
 
@@ -39,12 +39,12 @@ export default class Select extends Component {
         return (
             <div className={this.getContainerClassNames()} style={style}>
                 <RenderIf isTrue={!!label}>
-                    <label className="rainbow-select-label" htmlFor={this.selectId}>
+                    <label className="rainbow-select_label" htmlFor={this.selectId}>
                         <RequiredAsterisk required={isRequiredOrHasError} />
                         {label}
                     </label>
                 </RenderIf>
-                <div className="rainbow-select-inner-container">
+                <div className="rainbow-select_inner-container" disabled={disabled}>
                     <select
                         className="rainbow-select"
                         id={this.selectId}
@@ -57,7 +57,7 @@ export default class Select extends Component {
                     </select>
                 </div>
                 <RenderIf isTrue={!!error}>
-                    <div className="rainbow-select-error">{error}</div>
+                    <div className="rainbow-select_helpl-error">{error}</div>
                 </RenderIf>
             </div>
         );
@@ -65,15 +65,19 @@ export default class Select extends Component {
 }
 
 Select.propTypes = {
-    /** The select label */
-    label: PropTypes.string,
+    /** Text label for the select. */
+    label: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
     /** Specifies the selected value. */
     value: PropTypes.string,
     /** The action triggered when a option item is selected. */
     onChange: PropTypes.func,
     /** Specifies that an input field must be filled out before submitting the form.
      * This value defaults to false. */
-    error: PropTypes.node,
+    error: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
     /** Specifies that an input field must be filled out before submitting the form.
      * This value defaults to false. */
     required: PropTypes.bool,
@@ -82,9 +86,11 @@ Select.propTypes = {
     /** The option items to be displayed. */
     options: PropTypes.arrayOf(PropTypes.shape(
         {
+            label: PropTypes.oneOfType([
+                PropTypes.string, PropTypes.node,
+            ]),
             value: PropTypes.string,
-            label: PropTypes.string,
-            disabbled: PropTypes.bool,
+            disabled: PropTypes.bool,
         })),
     /** A CSS class for the outer element, in addition to the component's base classes. */
     classNames: PropTypes.string,

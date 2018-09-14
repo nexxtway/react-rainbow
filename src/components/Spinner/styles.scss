@@ -40,51 +40,51 @@
     animation: ball-spin-clockwise 1s infinite ease-in-out;
 }
 
-.rainbow-spinner_xx-small {
+.rainbow-spinner--xx-small {
     @include width-height(1rem);
 }
 
-.rainbow-spinner_xx-small > div {
+.rainbow-spinner--xx-small > div {
     @include width-height(0.125rem);
 }
 
-.rainbow-spinner_x-small {
+.rainbow-spinner--x-small {
     @include width-height(1.25rem);
 }
 
-.rainbow-spinner_x-small > div {
+.rainbow-spinner--x-small > div {
     @include width-height(0.25rem);
 }
 
-.rainbow-spinner_small {
+.rainbow-spinner--small {
     @include width-height(1.625rem);
 }
 
-.rainbow-spinner_small > div {
+.rainbow-spinner--small > div {
     @include width-height(0.375rem);
 }
 
-.rainbow-spinner_medium {
+.rainbow-spinner--medium {
     @include width-height(2rem);
 }
 
-.rainbow-spinner_medium > div {
+.rainbow-spinner--medium > div {
     @include width-height(0.4375rem);
 }
 
-.rainbow-spinner_large {
+.rainbow-spinner--large {
     @include width-height(3rem);
 }
 
-.rainbow-spinner_large > div {
+.rainbow-spinner--large > div {
     @include width-height(0.5625rem);
 }
 
-.rainbow-spinner_brand > div {
+.rainbow-spinner--brand > div {
     color: $color-brand !important;
 }
 
-.rainbow-spinner_inverse > div {
+.rainbow-spinner--inverse > div {
     color: $color-gray-3 !important;
 }
 

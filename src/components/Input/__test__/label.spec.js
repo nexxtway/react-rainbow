@@ -25,6 +25,6 @@ describe('<InputLabel/>', () => {
         const component = mount(
             <Label label="Input Label" readOnly />,
         );
-        expect(component.find('.rainbow-input-label.rainbow-input-label_read-only').exists()).toBe(true);
+        expect(component.find('.rainbow-input_label.rainbow-input_label-read-only').exists()).toBe(true);
     });
 });
