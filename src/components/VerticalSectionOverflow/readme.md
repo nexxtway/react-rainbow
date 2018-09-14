@@ -1,5 +1,14 @@
 ##### vertical section overflow
 
+    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+    const { faChevronDown, faTh, faFolderOpen } = require('@fortawesome/free-solid-svg-icons');
+
+    const containerStyles = {
+        width: '280px',
+        borderBottomLeftRadius: '0.875rem',
+        borderRight: '1px solid #e3e5ed',
+    };
+    
     class ShadedVerticalNavigation extends React.Component {
         constructor(props) {
             super(props);
@@ -16,22 +25,34 @@
         render() {
             return (
                 <VerticalNavigation selectedItem={this.state.selectedItem} onSelect={this.handleOnSelect}>
-                    <VerticalSection label="REPORTS">
-                        <VerticalItem name="item-1" label="Recent" />
+                    <VerticalSectionOverflow
+                        title="Folders"
+                        description="Folders created, shared..."
+                        icon={<FontAwesomeIcon icon={faChevronDown} />}>
+
+                        <VerticalItem name="item-3" label="Apps" icon={<FontAwesomeIcon icon={faTh} />} />
+                        <VerticalItem name="item-4" label="Folder shared with Me" icon={<FontAwesomeIcon icon={faFolderOpen} />} />
+                    </VerticalSectionOverflow>
+                    
+                    <VerticalSectionOverflow
+                        title="Recents"
+                        description="Folders created, shared..."
+                        icon={<FontAwesomeIcon icon={faChevronDown} />}>
+
+                        <VerticalItem name="item-1" label="Shared with Me" />
                         <VerticalItem name="item-2" label="Created by Me" />
-                    </VerticalSection>
-                    <VerticalSectionOverflow expandedLabel= "FOLDERS" collapsedLabel= "FOLDERS">
-                        <VerticalItem name="item-3" label="Created by Me" />
-                        <VerticalItem name="item-4" label="Shared with Me" />
                     </VerticalSectionOverflow>
-                    <VerticalSectionOverflow expanded expandedLabel= "DOCUMENTS" collapsedLabel= "DOCUMENTS">
-                        <VerticalItem name="item-5" label="Created by Me" />
-                        <VerticalItem name="item-6" label="Shared with Me" />
+
+                    <VerticalSectionOverflow
+                        title="Documents"
+                        description="Document created, shared..."
+                        icon={<FontAwesomeIcon icon={faChevronDown} />}>
+
+                        <VerticalItem name="item-5" label="Recents" />
+                        <VerticalItem name="item-6" label="Folder created by Me" />
+                        <VerticalItem name="item-7" label="Folder shared with Me" />
                     </VerticalSectionOverflow>
-                    <VerticalSection label="COMPONENTS">
-                        <VerticalItem name="item-7" label="VerticalSectionOverflow" href="/#/Components/VerticalSectionOverflow" />
-                        <VerticalItem name="item-8" label="VerticalNavigation" href="/#/Components/VerticalNavigation" />
-                    </VerticalSection>
+                    
                 </VerticalNavigation>
             );
         }
@@ -39,7 +60,7 @@
 
     <div>
         <GlobalHeader />
-        <div className="slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-small-size_1-of-1 slds-color__background_gray-1 slds-p-vertical_medium slds-border_right">
+        <div className="rainbow-background-color_white rainbow-p-top_small rainbow-p-bottom_x-large" style={containerStyles}>
             <ShadedVerticalNavigation />
         </div>
     </div>

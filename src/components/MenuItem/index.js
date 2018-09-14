@@ -30,7 +30,7 @@ class Item extends Component {
 
     getHeaderClassNames() {
         const { className } = this.props;
-        return classnames('rainbow-menu-item-header rainbow-truncate', className);
+        return classnames('rainbow-menu-item_header', className);
     }
 
     getItemClassNames() {
@@ -48,7 +48,10 @@ class Item extends Component {
     }
 
     handleHover(event) {
-        const { privateOnHover } = this.props;
+        const { privateOnHover, disabled } = this.props;
+        if (disabled) {
+            return null;
+        }
         return privateOnHover(event, this.itemRef.current);
     }
 
@@ -70,7 +73,7 @@ class Item extends Component {
         if (variant === 'header') {
             return (
                 <li className={this.getHeaderClassNames()} style={style} title={title} role="separator">
-                    <span className="rainbow-text-title_caps">{label}</span>
+                    <span className="rainbow-menu-item_header-label">{label}</span>
                 </li>
             );
         }
@@ -92,7 +95,7 @@ class Item extends Component {
                     aria-disabled={disabled}
                     ref={this.itemRef}>
 
-                    <span className="rainbow-truncate" title={title}>
+                    <span className="rainbow-menu-item_icon-container" title={title}>
                         <Icon
                             data-id="menu-item-left-icon"
                             icon={icon}
@@ -126,7 +129,9 @@ export default function MenuItem(props) {
 
 MenuItem.propTypes = {
     /** Text of the menu item. */
-    label: PropTypes.node.isRequired,
+    label: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]).isRequired,
     /** The variant changes the type of menu item. Accepted variants include default and header.
     * This value defaults to default. */
     variant: PropTypes.oneOf([

@@ -1,5 +1,11 @@
 ##### vertical section
 
+    const containerStyles = {
+        width: '280px',
+        borderBottomLeftRadius: '0.875rem',
+        borderRight: '1px solid #e3e5ed',
+    };
+
     class SimpleVerticalNavigation extends React.Component {
         constructor(props) {
             super(props);
@@ -34,8 +40,8 @@
     }
 
     <div>
-        <GlobalHeader src="images/avatar2.jpg" />
-        <div className="slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-small-size_1-of-1 slds-color__background_gray-1 slds-p-vertical_medium slds-border_right">
+        <GlobalHeader src="images/user/user3.jpg" />
+        <div className="rainbow-background-color_white rainbow-p-vertical_small" style={containerStyles}>
             <SimpleVerticalNavigation />
         </div>
     </div>

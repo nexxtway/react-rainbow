@@ -6,7 +6,6 @@ import RenderIf from '../RenderIf';
 
 export default function Label(props) {
     const {
-        className,
         label,
         required,
         inputId,
@@ -15,9 +14,8 @@ export default function Label(props) {
     } = props;
 
     const getLabelClassNames = () => classnames(
-        'rainbow-form-element__label',
-        { 'rainbow-form-element__label_read-only': readOnly },
-        className);
+        'rainbow-input_label',
+        { 'rainbow-input_label-read-only': readOnly });
 
     return (
         <RenderIf isTrue={!!label}>
@@ -30,7 +28,6 @@ export default function Label(props) {
 }
 
 Label.propTypes = {
-    className: PropTypes.string,
     label: PropTypes.node,
     required: PropTypes.bool.isRequired,
     inputId: PropTypes.string.isRequired,
@@ -39,7 +36,6 @@ Label.propTypes = {
 };
 
 Label.defaultProps = {
-    className: undefined,
     label: null,
     id: undefined,
 };

@@ -13,6 +13,10 @@
     padding: 0 !important;
 }
 
+.cm-s-base16-light span.cm-comment {
+    color: rgba(255, 255, 255, 0.4) !important;
+}
+
 .CodeMirror {
     background: #061c3f !important;
     background-color: #061c3f !important;

@@ -1,5 +1,4 @@
-.rainbow-spinner,
-.rainbow-spinner > div {
+.rainbow-spinner, .rainbow-spinner > div {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -27,50 +26,50 @@
   border-radius: 100px;
   animation: ball-spin-clockwise 1s infinite ease-in-out; }
 
-.rainbow-spinner_xx-small {
-  height: 1rem;
-  width: 1rem; }
+.rainbow-spinner--xx-small {
+  width: 1rem;
+  height: 1rem; }
 
-.rainbow-spinner_xx-small > div {
+.rainbow-spinner--xx-small > div {
   width: 0.125rem;
   height: 0.125rem; }
 
-.rainbow-spinner_x-small {
-  height: 1.25rem;
-  width: 1.25rem; }
+.rainbow-spinner--x-small {
+  width: 1.25rem;
+  height: 1.25rem; }
 
-.rainbow-spinner_x-small > div {
+.rainbow-spinner--x-small > div {
   width: 0.25rem;
   height: 0.25rem; }
 
-.rainbow-spinner_small {
-  height: 1.625rem;
-  width: 1.625rem; }
+.rainbow-spinner--small {
+  width: 1.625rem;
+  height: 1.625rem; }
 
-.rainbow-spinner_small > div {
+.rainbow-spinner--small > div {
   width: 0.375rem;
   height: 0.375rem; }
 
-.rainbow-spinner_medium {
-  height: 2rem;
-  width: 2rem; }
+.rainbow-spinner--medium {
+  width: 2rem;
+  height: 2rem; }
 
-.rainbow-spinner_medium > div {
+.rainbow-spinner--medium > div {
   width: 0.4375rem;
   height: 0.4375rem; }
 
-.rainbow-spinner_large {
-  height: 3rem;
-  width: 3rem; }
+.rainbow-spinner--large {
+  width: 3rem;
+  height: 3rem; }
 
-.rainbow-spinner_large > div {
+.rainbow-spinner--large > div {
   width: 0.5625rem;
   height: 0.5625rem; }
 
-.rainbow-spinner_brand > div {
+.rainbow-spinner--brand > div {
   color: #01b6f5 !important; }
 
-.rainbow-spinner_inverse > div {
+.rainbow-spinner--inverse > div {
   color: #a4a7b5 !important; }
 
 .rainbow-spinner > div:nth-child(1) {

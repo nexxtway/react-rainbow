@@ -1,33 +1,44 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import AssistiveText from './../AssistiveText';
+import RenderIf from './../RenderIf';
 import { uniqueId } from './../../libs/utils';
+import getMaxHeight from './compute-max-height';
 import Description from './description';
 import Icon from './icon';
+import { Provider } from './context';
 import RightArrow from './rightArrow';
 import './styles.css';
 
-const searchResultsId = uniqueId('search-results');
-
 /**
- * Represents an overflow of items from a preceding VerticalNavigationSection,
- * with the ability to toggle visibility.
- */
+* Represents an overflow of items from a preceding VerticalNavigationSection,
+* with the ability to toggle visibility.
+*/
 export default class VerticalSectionOverflow extends Component {
     constructor(props) {
         super(props);
+        this.searchResultsId = uniqueId('search-results');
         this.state = {
             isExpanded: props.expanded,
         };
         this.toggleOverflow = this.toggleOverflow.bind(this);
     }
 
+    getContainerClassNames() {
+        const { className } = this.props;
+        const { isExpanded } = this.state;
+        return classnames('rainbow-vertical-section-overflow_container', {
+            'rainbow-vertical-section-overflow_container--expanded': isExpanded,
+        }, className);
+    }
+
     getOverflowClassName() {
         const { isExpanded } = this.state;
         if (isExpanded) {
-            return 'rainbow-nav-certical-overflow-show';
+            return 'rainbow-vertical-section-overflow--show';
         }
-        return 'rainbow-nav-certical-overflow-hide';
+        return 'rainbow-vertical-section-overflow--hide';
     }
 
     toggleOverflow() {
@@ -39,35 +50,43 @@ export default class VerticalSectionOverflow extends Component {
         const {
             title,
             description,
-            leftIcon,
+            icon,
             style,
             assistiveText,
             children,
-            className,
         } = this.props;
         const { isExpanded } = this.state;
+        const sectionMaxHeight = {
+            maxHeight: getMaxHeight(children, isExpanded),
+        };
 
         return (
-            <div className={className} style={style}>
+            <div data-id="vertical-overflow-container" className={this.getContainerClassNames()} style={style}>
                 <button
-                    className="rainbow-nav-vertical-section-overflow-button"
-                    aria-controls={searchResultsId}
+                    className="rainbow-vertical-section-overflow_button"
+                    aria-controls={this.searchResultsId}
                     aria-expanded={isExpanded}
                     onClick={this.toggleOverflow}>
 
-                    <Icon position="left" icon={leftIcon} />
-                    <div className="rainbow-nav-vertical-overflow__action-text">
-                        <span className="rainbow-nav-vertical-overflow__action-title">{title}</span>
+                    <div className="rainbow-vertical-section-overflow_action-text">
+                        <span className="rainbow-vertical-section-overflow_action-title">{title}</span>
                         <Description isExpanded={isExpanded} description={description} />
                         <AssistiveText text={assistiveText} />
                     </div>
                     <RightArrow isExpanded={isExpanded} />
 
                 </button>
-                <div data-id="vertical-overflow" id={searchResultsId} className={this.getOverflowClassName()}>
-                    <ul>
-                        {children}
-                    </ul>
+                <div
+                    data-id="vertical-overflow"
+                    id={this.searchResultsId}
+                    className={this.getOverflowClassName()}
+                    style={sectionMaxHeight}>
+
+                    <Provider value={isExpanded}>
+                        <ul>
+                            {children}
+                        </ul>
+                    </Provider>
                 </div>
             </div>
         );
@@ -75,10 +94,16 @@ export default class VerticalSectionOverflow extends Component {
 }
 
 VerticalSectionOverflow.propTypes = {
-    leftIcon: PropTypes.node,
-    description: PropTypes.string,
-    /** The label to show when the section is collapsed. */
-    title: PropTypes.string,
+    /** The title to show when the section is collapsed. */
+    title: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
+    /** The description to show when the section is collapsed. */
+    description: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
+    /** The icon positioned in the right of the section title. */
+    icon: PropTypes.node,
     /** The state of the overflow. */
     expanded: PropTypes.bool,
     /** A description for assistive sreen readers. */
@@ -88,14 +113,14 @@ VerticalSectionOverflow.propTypes = {
     /** An object with custom style applied for the outer element. */
     style: PropTypes.object,
     /**
-     * This prop that should not be visible in the documentation.
-     * @ignore
-     */
+    * This prop that should not be visible in the documentation.
+    * @ignore
+    */
     children: PropTypes.node,
 };
 
 VerticalSectionOverflow.defaultProps = {
-    leftIcon: null,
+    icon: null,
     title: '',
     description: '',
     expanded: false,

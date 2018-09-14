@@ -14,7 +14,7 @@ describe('<MenuItem/>', () => {
         const component = mount(
             <MenuItem title="item title" />,
         );
-        expect(component.find('span[className="rainbow-truncate"]').prop('title')).toBe('item title');
+        expect(component.find('span[className="rainbow-menu-item_icon-container"]').prop('title')).toBe('item title');
     });
     it('should pass the right props to the left and right Icon', () => {
         const component = mount(
@@ -90,7 +90,7 @@ describe('<MenuItem/>', () => {
         const component = mount(
             <MenuItem variant="header" />,
         );
-        expect(component.find('li').prop('className')).toBe('rainbow-menu-item-header rainbow-truncate');
+        expect(component.find('li').prop('className')).toBe('rainbow-menu-item_header');
     });
     it('should have the right class names when variant is not passed', () => {
         const component = mount(

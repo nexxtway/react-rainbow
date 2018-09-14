@@ -125,37 +125,37 @@ describe('<Button/>', () => {
         const component = mount(
             <Button label="Button Label" variant="neutral" className="my-custom-class-name" />,
         );
-        expect(component.find('button').prop('className')).toBe('rainbow-button rainbow-button_neutral my-custom-class-name');
+        expect(component.find('button').prop('className')).toBe('rainbow-button rainbow-button--neutral my-custom-class-name');
     });
     it('should have the right class names when variant brand', () => {
         const component = mount(
             <Button label="Button Label" variant="brand" />,
         );
-        expect(component.find('button').prop('className')).toBe('rainbow-button rainbow-button_brand');
+        expect(component.find('button').prop('className')).toBe('rainbow-button rainbow-button--brand');
     });
     it('should have the right class names when variant outline-brand', () => {
         const component = mount(
             <Button label="Button Label" variant="outline-brand" />,
         );
-        expect(component.find('button').prop('className')).toBe('rainbow-button rainbow-button_outline-brand');
+        expect(component.find('button').prop('className')).toBe('rainbow-button rainbow-button--outline-brand');
     });
     it('should have the right class names when variant destructive', () => {
         const component = mount(
             <Button label="Button Label" variant="destructive" />,
         );
-        expect(component.find('button').prop('className')).toBe('rainbow-button rainbow-button_destructive');
+        expect(component.find('button').prop('className')).toBe('rainbow-button rainbow-button--destructive');
     });
     it('should have the right class names when variant success', () => {
         const component = mount(
             <Button label="Button Label" variant="success" />,
         );
-        expect(component.find('button').prop('className')).toBe('rainbow-button rainbow-button_success');
+        expect(component.find('button').prop('className')).toBe('rainbow-button rainbow-button--success');
     });
     it('should have the right class names when variant inverse', () => {
         const component = mount(
             <Button label="Button Label" variant="inverse" />,
         );
-        expect(component.find('button').prop('className')).toBe('rainbow-button rainbow-button_inverse');
+        expect(component.find('button').prop('className')).toBe('rainbow-button rainbow-button--inverse');
     });
     it('should have the right class names when shaded is true and the valid shaded variants are passed', () => {
         const variants = [
@@ -169,7 +169,7 @@ describe('<Button/>', () => {
                 <Button label="Button Label" variant={variant} shaded />,
             );
             const buttonClassNameProp = component.find('button').prop('className');
-            expect(buttonClassNameProp).toBe(`rainbow-button rainbow-button_${variant} rainbow-button_shaded`);
+            expect(buttonClassNameProp).toBe(`rainbow-button rainbow-button--${variant} rainbow-button--shaded`);
         });
     });
     it('should have the right class names when shaded is true and the invalid shaded variants are passed', () => {
@@ -182,7 +182,7 @@ describe('<Button/>', () => {
                 <Button label="Button Label" variant={variant} shaded />,
             );
             const buttonClassNameProp = component.find('button').prop('className');
-            expect(buttonClassNameProp).toBe(`rainbow-button rainbow-button_${variant}`);
+            expect(buttonClassNameProp).toBe(`rainbow-button rainbow-button--${variant}`);
         });
     });
     it('should have the right class names when shaded is true and variant is base', () => {

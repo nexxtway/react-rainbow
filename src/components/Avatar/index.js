@@ -18,13 +18,13 @@ export default function Avatar(props) {
     } = props;
     const getContainerClassNames = () => classnames(
         'rainbow-avatar',
-        `rainbow-avatar_${size}`,
+        `rainbow-avatar--${size}`,
         className,
     );
 
     return (
         <span className={getContainerClassNames()} style={style}>
-            <AvatarContent {...rest} />
+            <AvatarContent {...rest} assistiveText={assistiveText} />
             <AssistiveText text={assistiveText} />
         </span>
     );
@@ -32,7 +32,7 @@ export default function Avatar(props) {
 
 Avatar.propTypes = {
     /** The URL for the image.
-    It take precedence over the initials and icon. */
+    * It take precedence over the initials and icon. */
     src: PropTypes.string,
     /** If the record name contains two words, like first and last name,
     * use the first capitalized letter of each. For records that only have a single word name,

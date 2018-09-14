@@ -1,23 +1,24 @@
 @import "../../styles/colors";
 
-.rainbow-nav-vertical {
+.rainbow-vertical-navigation {
     position: relative;
 }
 
-.rainbow-nav-vertical_compact .rainbow-nav-vertical__title,
-.rainbow-nav-vertical_compact .rainbow-nav-vertical__action {
-    padding: 0.5rem 1.5rem;
+.rainbow-vertical-navigation_compact {
+    .rainbow-vertical-section_title,
+    .rainbow-vertical-item_action {
+        padding: 0.5rem 1.5rem;
+    }
 }
 
-.rainbow-nav-vertical_shade .rainbow-nav-vertical__action:hover {
-    background-color: $color-gray-1;
+.rainbow-vertical-navigation_shade {
+    .rainbow-vertical-item_action:hover,
+    .rainbow-vertical-item_action:active {
+        background-color: $color-gray-1;
+    }
 }
 
-.rainbow-nav-vertical_shade .rainbow-nav-vertical__action:active {
-    background-color: $color-gray-1;
-}
-
-.rainbow-nav-vertical_shade .rainbow-is-active .rainbow-nav-vertical__action {
+.rainbow-vertical-navigation_shade .rainbow-vertical-item--active .rainbow-vertical-item_action {
     background-color: $color-gray-1;
     border-color: $color-gray-3;
 }

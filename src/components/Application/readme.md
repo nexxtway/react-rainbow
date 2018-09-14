@@ -24,11 +24,11 @@
 
     <Application>
         <section>
-            <header className="rainbow-align-content_space-between rainbow-background-color_white rainbow-p-vertical_x-small react-rainbow-golbal-header">
+            <header className="rainbow-align-content_space-between rainbow-background-color_white rainbow-p-vertical_medium react-rainbow-golbal-header">
                 <img src="images/rainbow-logo.svg" alt="rainbow logo" className="rainbow-m-left_medium react-rainbow-global-header_logo" />
 
                 <article className="rainbow-flex rainbow-align_center">
-                    <ButtonGroup className="rainbow-m-right_medium">
+                    <ButtonGroup>
                         <ButtonIcon variant="border" disabled icon={<FontAwesomeIcon icon={faPencilAlt} />} />
                         <ButtonIcon variant="border" disabled icon={<FontAwesomeIcon icon={faBell} />} />
                         <ButtonMenu 

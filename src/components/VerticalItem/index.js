@@ -2,8 +2,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { Consumer as NavStateConsumer } from '../VerticalNavigation/context';
-import { Consumer as ItemIdConsumer } from '../VerticalSection/context';
+import { Consumer as NavigationConsumer } from '../VerticalNavigation/context';
+import { Consumer as SectionConsumer } from '../VerticalSection/context';
+import { Consumer as SectionOverflowConsumer } from '../VerticalSectionOverflow/context';
 import RenderIf from '../RenderIf';
 import './styles.css';
 
@@ -20,11 +21,12 @@ function Item(props) {
         selectedItem,
         onSelect,
         entityHeaderId,
+        isExpanded,
     } = props;
     const isSelected = name === selectedItem;
 
-    const getContainerClassNames = () => classnames('rainbow-nav-vertical__item', {
-        'rainbow-is-active': isSelected,
+    const getContainerClassNames = () => classnames('rainbow-vertical-item', {
+        'rainbow-vertical-item--active': isSelected,
     }, className);
 
     const getAriaCurrent = () => {
@@ -39,20 +41,28 @@ function Item(props) {
         onSelect(e, name);
     }
 
+    function resolveTabIndex() {
+        if (isExpanded === false) {
+            return -1;
+        }
+        return 0;
+    }
+
     return (
-        <li className={getContainerClassNames()} style={style} role="presentation" onClick={hanldeOnClick}>
+        <li className={getContainerClassNames()} style={style}>
             <a
                 href={href}
+                onClick={hanldeOnClick}
                 aria-describedby={entityHeaderId}
-                className="rainbow-nav-vertical__action"
-                aria-current={getAriaCurrent()}>
-
+                className="rainbow-vertical-item_action"
+                aria-current={getAriaCurrent()}
+                tabIndex={resolveTabIndex()}>
                 <RenderIf isTrue={!!icon}>
-                    <span className="rainbow-nav-vertical_icon" >{icon}</span>
+                    <span className="rainbow-vertical-item_icon" >{icon}</span>
                 </RenderIf>
                 {label}
                 <RenderIf isTrue={!!notification}>
-                    <span className="rainbow-col_bump-left">{notification}</span>
+                    <span className="rainbow-vertical-item_notification">{notification}</span>
                 </RenderIf>
             </a>
         </li>
@@ -64,21 +74,31 @@ function Item(props) {
  */
 export default function VerticalItem(props) {
     return (
-        <NavStateConsumer>
+        <NavigationConsumer>
             {context => (
-                <ItemIdConsumer>
+                <SectionConsumer>
                     {entityHeaderId => (
-                        <Item {...props} {...context} entityHeaderId={entityHeaderId} />
+                        <SectionOverflowConsumer>
+                            {isExpanded => (
+                                <Item
+                                    {...props}
+                                    {...context}
+                                    entityHeaderId={entityHeaderId}
+                                    isExpanded={isExpanded} />
+                            )}
+                        </SectionOverflowConsumer>
                     ) }
-                </ItemIdConsumer>
+                </SectionConsumer>
             )}
-        </NavStateConsumer>
+        </NavigationConsumer>
     );
 }
 
 VerticalItem.propTypes = {
     /** The text displayed for the navigation item. */
-    label: PropTypes.string,
+    label: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
     /** A unique identifier for the navigation item. */
     name: PropTypes.string.isRequired,
     /** The icon to show if it is passed. It must be a svg icon or a font icon. */

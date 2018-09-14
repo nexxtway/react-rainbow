@@ -1,14 +1,14 @@
 .rainbow-button {
   align-items: center;
   display: inline-flex;
-  font-size: 0.875rem;
+  font-size: 1rem;
   justify-content: center;
   position: relative;
   background: transparent;
   background-clip: border-box;
   border: 1px solid transparent;
   border-radius: 100px;
-  line-height: 2.125rem;
+  line-height: 2.375rem;
   text-decoration: none;
   color: #01b6f5;
   padding: 0;
@@ -25,7 +25,7 @@
     color: #009acf; }
   .rainbow-button:focus {
     outline: 0;
-    box-shadow: 0 0 3px #0070d2; }
+    box-shadow: 0 0 2px #01b6f5; }
   .rainbow-button:active {
     color: #009acf; }
   .rainbow-button[disabled] {
@@ -37,7 +37,7 @@
 .rainbow-button + .rainbow-button {
   margin-left: 0.25rem; }
 
-.rainbow-button_neutral {
+.rainbow-button--neutral {
   background-color: white;
   border: 1px solid #e3e5ed;
   color: #01b6f5;
@@ -45,12 +45,12 @@
   text-align: center;
   vertical-align: middle;
   transition: border 0.15s linear; }
-  .rainbow-button_neutral:hover, .rainbow-button_neutral:focus, .rainbow-button_neutral:active {
+  .rainbow-button--neutral:hover, .rainbow-button--neutral:focus, .rainbow-button--neutral:active {
     background-color: #f4f6f9; }
-  .rainbow-button_neutral[disabled] {
+  .rainbow-button--neutral[disabled] {
     background-color: transparent; }
 
-.rainbow-button_brand {
+.rainbow-button--brand {
   background-color: #01b6f5;
   border: 1px solid #01b6f5;
   color: white;
@@ -58,17 +58,17 @@
   text-align: center;
   vertical-align: middle;
   transition: border 0.15s linear; }
-  .rainbow-button_brand:link, .rainbow-button_brand:visited, .rainbow-button_brand:active {
+  .rainbow-button--brand:link, .rainbow-button--brand:visited, .rainbow-button--brand:active {
     color: white; }
-  .rainbow-button_brand:hover, .rainbow-button_brand:focus, .rainbow-button_brand:active {
+  .rainbow-button--brand:hover, .rainbow-button--brand:focus, .rainbow-button--brand:active {
     background-color: #009acf;
     border-color: #009acf;
     color: white; }
-  .rainbow-button_brand[disabled] {
+  .rainbow-button--brand[disabled] {
     background-color: #f4f6f9;
     border-color: #f4f6f9; }
 
-.rainbow-button_outline-brand {
+.rainbow-button--outline-brand {
   background-color: transparent;
   border: 1px solid #01b6f5;
   color: #01b6f5;
@@ -76,13 +76,13 @@
   text-align: center;
   vertical-align: middle;
   transition: border 0.15s linear; }
-  .rainbow-button_outline-brand:hover, .rainbow-button_outline-brand:focus, .rainbow-button_outline-brand:active {
+  .rainbow-button--outline-brand:hover, .rainbow-button--outline-brand:focus, .rainbow-button--outline-brand:active {
     border-color: #009acf; }
-  .rainbow-button_outline-brand[disabled] {
+  .rainbow-button--outline-brand[disabled] {
     background-color: transparent;
     border-color: #e3e5ed; }
 
-.rainbow-button_inverse {
+.rainbow-button--inverse {
   background-color: transparent;
   border: 1px solid transparent;
   color: white;
@@ -91,16 +91,16 @@
   vertical-align: middle;
   transition: border 0.15s linear;
   padding: 0; }
-  .rainbow-button_inverse:hover, .rainbow-button_inverse:focus, .rainbow-button_inverse:active {
+  .rainbow-button--inverse:hover, .rainbow-button--inverse:focus, .rainbow-button--inverse:active {
     color: #a4a7b5; }
-  .rainbow-button_inverse:focus {
+  .rainbow-button--inverse:focus {
     outline: none;
     box-shadow: 0 0 3px #f4f6f9; }
-  .rainbow-button_inverse[disabled] {
+  .rainbow-button--inverse[disabled] {
     background-color: transparent;
     color: #576574; }
 
-.rainbow-button_border-inverse {
+.rainbow-button--border-inverse {
   background-color: transparent;
   border: 1px solid white;
   color: white;
@@ -108,18 +108,18 @@
   text-align: center;
   vertical-align: middle;
   transition: border 0.15s linear; }
-  .rainbow-button_border-inverse:hover, .rainbow-button_border-inverse:focus, .rainbow-button_border-inverse:active {
+  .rainbow-button--border-inverse:hover, .rainbow-button--border-inverse:focus, .rainbow-button--border-inverse:active {
     border-color: #a4a7b5;
     color: #a4a7b5; }
-  .rainbow-button_border-inverse:focus {
+  .rainbow-button--border-inverse:focus {
     outline: none;
     box-shadow: 0 0 3px #f4f6f9; }
-  .rainbow-button_border-inverse[disabled] {
+  .rainbow-button--border-inverse[disabled] {
     background-color: transparent;
     border-color: #576574;
     color: #576574; }
 
-.rainbow-button_destructive {
+.rainbow-button--destructive {
   background-color: #fe4849;
   border: 1px solid #fe4849;
   color: white;
@@ -127,19 +127,19 @@
   text-align: center;
   vertical-align: middle;
   transition: border 0.15s linear; }
-  .rainbow-button_destructive:link, .rainbow-button_destructive:visited, .rainbow-button_destructive:active {
+  .rainbow-button--destructive:link, .rainbow-button--destructive:visited, .rainbow-button--destructive:active {
     color: white; }
-  .rainbow-button_destructive:hover, .rainbow-button_destructive:focus {
+  .rainbow-button--destructive:hover, .rainbow-button--destructive:focus {
     background-color: #ea4243;
     color: white; }
-  .rainbow-button_destructive:active {
+  .rainbow-button--destructive:active {
     background-color: #ea4243;
     border-color: #ea4243; }
-  .rainbow-button_destructive[disabled] {
+  .rainbow-button--destructive[disabled] {
     background-color: #f4f6f9;
     border-color: #f4f6f9; }
 
-.rainbow-button_success {
+.rainbow-button--success {
   background-color: #1de9b6;
   border: 1px solid #1de9b6;
   color: white;
@@ -147,14 +147,14 @@
   text-align: center;
   vertical-align: middle;
   transition: border 0.15s linear; }
-  .rainbow-button_success:link, .rainbow-button_success:visited, .rainbow-button_success:active, .rainbow-button_success:hover, .rainbow-button_success:focus {
+  .rainbow-button--success:link, .rainbow-button--success:visited, .rainbow-button--success:active, .rainbow-button--success:hover, .rainbow-button--success:focus {
     color: white; }
-  .rainbow-button_success:hover, .rainbow-button_success:focus, .rainbow-button_success:active {
+  .rainbow-button--success:hover, .rainbow-button--success:focus, .rainbow-button--success:active {
     background-color: #1ad1a3;
     border-color: #1ad1a3; }
-  .rainbow-button_success[disabled] {
+  .rainbow-button--success[disabled] {
     background-color: #f4f6f9;
     border-color: #f4f6f9; }
 
-.rainbow-button_shaded {
+.rainbow-button--shaded {
   box-shadow: 0 0 2px 0 #a4a7b5; }

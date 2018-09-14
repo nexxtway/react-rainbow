@@ -1,6 +1,6 @@
 {
   "name": "react-rainbow-components",
-  "version": "0.0.2",
+  "version": "0.1.1",
   "description": "React Rainbow Components",
   "keywords": [
     "react",
@@ -8,25 +8,29 @@
     "library"
   ],
   "scripts": {
-    "build:css": "node-sass-chokidar src/components/ -o ./components/",
-    "watch:css": "node-sass-chokidar src/components/ -o src/components/ --watch --recursive",
     "start:library": "./node_modules/.bin/styleguidist server",
-    "start": "npm-run-all -p start:library watch:css",
-    "build:fonts": "npx babel src/components/Application/fonts --out-dir components/Application/fonts --copy-files",
-    "build": "npx babel ./src --out-dir ./ && npx babel index.js --out-dir components && yarn build:css && yarn build:fonts",
+    "watch:css": "node-sass-chokidar src/components/ -o src/components/ --watch --recursive",
+    "start": "run-p start:library watch:css",
     "build:library": "./node_modules/.bin/styleguidist build",
+    "build:components": "npx babel ./src --out-dir ./",
+    "build:index": "npx babel index.js --out-dir components",
+    "build:css": "node-sass-chokidar src/components/ -o ./components/",
+    "build:fonts": "npx babel src/components/Application/fonts --out-dir components/Application/fonts --copy-files",
+    "build": "run-p build:components build:index build:css build:fonts",
     "prepublishOnly": "yarn clean && yarn build",
-    "clean": "rm -Rf components && rm -Rf propTypes && rm -Rf libs",
-    "test": "jest ./src --verbose",
+    "clean": "rm -Rf components && rm -Rf libs",
     "lint:js": "eslint src",
     "lint:scss": "stylelint src",
     "lint": "yarn lint:js && yarn lint:scss",
-    "deploy:library": "yarn build:library && firebase deploy",
-    "test:integration": "wdio"
+    "test": "jest ./src --verbose",
+    "test:integration": "wdio",
+    "generate:pageObjectDocs": "jsdoc -c jsdoc.conf.js",
+    "deploy:library": "yarn build:library && yarn generate:pageObjectDocs && firebase deploy"
   },
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^5.1.0-11",
     "@fortawesome/free-regular-svg-icons": "^5.1.0-11",
+    "autosize": "^4.0.2",
     "classnames": "^2.2.5",
     "clipboard-copy": "^2.0.0",
     "file-loader": "^1.1.11",
@@ -64,6 +68,9 @@
     }
   },
   "devDependencies": {
+    "@babel/core": "^7.0.1",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.4",
     "@fortawesome/free-solid-svg-icons": "^5.3.1",
     "@fortawesome/react-fontawesome": "^0.1.2",
@@ -91,7 +98,10 @@
     "eslint-plugin-react": "^7.1.0",
     "eslint-plugin-webdriverio": "^1.0.1",
     "firebase-tools": "^4.2.1",
+    "glob": "^7.1.3",
     "jest": "^23.4.2",
+    "jest-axe": "^3.1.0",
+    "jsdoc": "^3.5.5",
     "node-sass": "^4.9.3",
     "pre-push": "^0.1.1",
     "react-styleguidist": "^7.2.1",

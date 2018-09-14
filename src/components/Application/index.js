@@ -5,7 +5,7 @@ import './styles/rainbow-styles.css';
 export const { Provider, Consumer } = React.createContext();
 
 /**
- * This component is used to setup the React Lightning context for a tree.
+ * This component is used to setup the React Rainbow context for a tree.
  * Usually, this component will wrap an app's root component so that the entire
  * app will be within the configured context.
  */

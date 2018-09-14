@@ -96,15 +96,14 @@ describe('<Input/>', () => {
         const component = mount(
             <Input error="error message" />,
         );
-        expect(component.find('.rainbow-form-element__help').prop('id')).toMatch(/error-message/);
+        expect(component.find('.rainbow-input_help').prop('id')).toMatch(/error-message/);
         expect(component.find('input').prop('aria-describedby')).toMatch(/error-message/);
     });
     it('should pass the right props to the Label component', () => {
         const component = mount(
-            <Input labelClassName="my-class-name" label="custom label" required />,
+            <Input label="custom label" required />,
         );
         expect(component.find('Label').props()).toEqual({
-            className: 'my-class-name',
             label: 'custom label',
             required: true,
             readOnly: false,
@@ -117,45 +116,29 @@ describe('<Input/>', () => {
         );
         expect(component.find('Label').prop('required')).toBe(true);
     });
-    it('should pass the right props to the Icon component', () => {
-        const component = mount(
-            <Input icon={icon} iconPosition="right" error="error to show" />,
-        );
-        expect(component.find('Icon').props()).toEqual({
-            error: 'error to show',
-            icon,
-            position: 'right',
-        });
-    });
     it('should have the right class name in the container element', () => {
         const component = mount(
             <Input />,
         );
-        expect(component.find('div[className="rainbow-form-element"]').exists()).toBe(true);
+        expect(component.find('div[className="rainbow-input_container"]').exists()).toBe(true);
     });
-    it('should have the right class name in the form element control container', () => {
-        const component = mount(
-            <Input />,
-        );
-        expect(component.find('div[className="rainbow-form-element__control"]').exists()).toBe(true);
-    });
-    it('should have the right class names when iconName is passed', () => {
+    it('should have the right class names when icon is passed', () => {
         const component = mount(
             <Input icon={icon} />,
         );
-        expect(component.find('div[className="rainbow-form-element__control rainbow-input-has-icon rainbow-input-has-icon_left"]').exists()).toBe(true);
+        expect(component.find('div[className="rainbow-input_icon-container rainbow-input_icon--left"]').exists()).toBe(true);
     });
-    it('should have the right class names when iconName is passed and iconPosition is right', () => {
+    it('should have the right class names when icon is passed and iconPosition is right', () => {
         const component = mount(
             <Input icon={icon} iconPosition="right" />,
         );
-        expect(component.find('div[className="rainbow-form-element__control rainbow-input-has-icon rainbow-input-has-icon_right"]').exists()).toBe(true);
+        expect(component.find('div[className="rainbow-input_icon-container rainbow-input_icon--right"]').exists()).toBe(true);
     });
     it('should have the right class names when error is passed', () => {
         const component = mount(
             <Input error="Error text" />,
         );
-        expect(component.find('div[className="rainbow-form-element rainbow-has-error"]').exists()).toBe(true);
+        expect(component.find('div[className="rainbow-input_container rainbow-input--error"]').exists()).toBe(true);
     });
     it('should have the right class names when isBare', () => {
         const component = mount(

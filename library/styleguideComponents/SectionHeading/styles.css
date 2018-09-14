@@ -1,7 +1,7 @@
 .react-rainbow-title-text {
-    font-weight: 300;
     line-height: 1.25;
     margin-left: 64px;
+    font-family: 'Lato Light';
 }
 
 .react-rainbow-github-badge-container {
@@ -12,6 +12,7 @@
     border-color: #061c3f;
     background-color: transparent;
     font-size: 0.8rem;
+    color: #061c3f;
 }
 
 .react-rainbow-heading-container {

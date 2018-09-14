@@ -70,48 +70,48 @@ describe('<ButtonIcon/>', () => {
         const component = mount(
             <ButtonIcon />,
         );
-        expect(component.find('button').prop('className')).toBe('rainbow-button-icon rainbow-button-icon_medium');
+        expect(component.find('button').prop('className')).toBe('rainbow-button-icon rainbow-button-icon--medium');
     });
     it('should have the right class names when variant is border-filled and have a custom class', () => {
         const component = mount(
             <ButtonIcon variant="border-filled" className="my-custom-class-name" />,
         );
-        expect(component.find('button').prop('className')).toBe('rainbow-button-icon rainbow-button-icon_border-filled rainbow-button-icon_medium my-custom-class-name');
+        expect(component.find('button').prop('className')).toBe('rainbow-button-icon rainbow-button-icon--border-filled rainbow-button-icon--medium my-custom-class-name');
     });
     it('should have the right class names when variant is border-inverse and size is small', () => {
         const component = mount(
             <ButtonIcon variant="border-inverse" size="small" />,
         );
-        expect(component.find('button').prop('className')).toBe('rainbow-button-icon rainbow-button-icon_border-inverse rainbow-button-icon_small');
+        expect(component.find('button').prop('className')).toBe('rainbow-button-icon rainbow-button-icon--border-inverse rainbow-button-icon--small');
     });
     it('should have the right class names when variant is border and size is x-small', () => {
         const component = mount(
             <ButtonIcon variant="border" size="x-small" />,
         );
-        expect(component.find('button').prop('className')).toBe('rainbow-button-icon rainbow-button-icon_border rainbow-button-icon_x-small');
+        expect(component.find('button').prop('className')).toBe('rainbow-button-icon rainbow-button-icon--border rainbow-button-icon--x-small');
     });
     it('should have the right class names when variant is brand and size is xx-small', () => {
         const component = mount(
             <ButtonIcon variant="brand" size="xx-small" />,
         );
-        expect(component.find('button').prop('className')).toBe('rainbow-button-icon rainbow-button-icon_brand rainbow-button-icon_xx-small');
+        expect(component.find('button').prop('className')).toBe('rainbow-button-icon rainbow-button-icon--brand rainbow-button-icon--xx-small');
     });
     it('should have the right class names when variant is inverse and size is large', () => {
         const component = mount(
             <ButtonIcon variant="inverse" size="large" />,
         );
-        expect(component.find('button').prop('className')).toBe('rainbow-button-icon rainbow-button-icon_inverse rainbow-button-icon_large');
+        expect(component.find('button').prop('className')).toBe('rainbow-button-icon rainbow-button-icon--inverse rainbow-button-icon--large');
     });
     it('should have the right class names when variant is base and size is xx-small', () => {
         const component = mount(
             <ButtonIcon size="xx-small" />,
         );
-        expect(component.find('button').prop('className')).toBe('rainbow-button-icon rainbow-button-icon_xx-small');
+        expect(component.find('button').prop('className')).toBe('rainbow-button-icon rainbow-button-icon--xx-small');
     });
     it('should have the right class names when shaded is passed and variant is brand', () => {
         const component = mount(
             <ButtonIcon variant="brand" shaded />,
         );
-        expect(component.find('button').prop('className')).toBe('rainbow-button-icon rainbow-button-icon_shaded rainbow-button-icon_brand rainbow-button-icon_medium');
+        expect(component.find('button').prop('className')).toBe('rainbow-button-icon rainbow-button-icon--shaded rainbow-button-icon--brand rainbow-button-icon--medium');
     });
 });

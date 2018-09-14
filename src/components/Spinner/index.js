@@ -21,12 +21,12 @@ export default function Spinner(props) {
         if (variant === 'base') {
             return '';
         }
-        return `rainbow-spinner_${variant}`;
+        return `rainbow-spinner--${variant}`;
     };
 
     const getContainerClassNames = () => classnames(
         'rainbow-spinner',
-        `rainbow-spinner_${size}`,
+        `rainbow-spinner--${size}`,
         getVariantClassNames(),
         className,
     );

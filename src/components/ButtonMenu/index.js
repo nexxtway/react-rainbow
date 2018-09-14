@@ -58,17 +58,17 @@ export default class ButtonMenu extends Component {
         const { className } = this.props;
 
         return classnames('rainbow-button-menu', {
-            'rainbow-button-menu_is-open': isOpen,
+            'rainbow-button-menu--open': isOpen,
         }, className);
     }
 
     getDropdownClassNames() {
         const { menuAlignment, menuSize, isLoading } = this.props;
         return classnames(
-            'rainbow-button-menu-dropdown',
-            `rainbow-button-menu-dropdown_${menuAlignment}`,
-            `rainbow-button-menu-dropdown_${menuSize}`,
-            { 'rainbow-button-menu-dropdown_loading-box': isLoading },
+            'rainbow-button-menu_dropdown',
+            `rainbow-button-menu_dropdown--${menuAlignment}`,
+            `rainbow-button-menu_dropdown--${menuSize}`,
+            { 'rainbow-button-menu_dropdown--loading-box': isLoading },
         );
     }
 

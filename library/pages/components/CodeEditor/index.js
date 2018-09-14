@@ -12,7 +12,7 @@ const configOptions = {
 
 export default function CodeEditor({ code }) {
     return (
-        <div className="rainbow-flex rainbow-flex_column rainbow_vertical-stretch rainbow-m-vertical_medium">
+        <div className="rainbow-flex rainbow-flex_column rainbow_vertical-stretch rainbow-m-top_x-small rainbow-m-bottom_large">
             <Header code={code} />
             <CodeMirror value={code} options={configOptions} />
         </div>

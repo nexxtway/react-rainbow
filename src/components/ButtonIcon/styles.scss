@@ -8,6 +8,11 @@
     color: $color;
 }
 
+@mixin width-height ($size) {
+    width: $size;
+    height: $size;
+}
+
 .rainbow-button-icon {
     display: -ms-inline-flexbox;
     display: inline-flex;
@@ -57,7 +62,7 @@
     margin-left: 0.25rem;
 }
 
-.rainbow-button-icon_brand {
+.rainbow-button-icon--brand {
     @include variants-common-styles($color-brand, $color-brand, white);
 
     &:link,
@@ -77,7 +82,7 @@
     }
 }
 
-.rainbow-button-icon_success {
+.rainbow-button-icon--success {
     @include variants-common-styles($color-success, $color-success, white);
 
     &:link,
@@ -97,7 +102,7 @@
     }
 }
 
-.rainbow-button-icon_border {
+.rainbow-button-icon--border {
     @include variants-common-styles(transparent, $color-gray-2, $color-gray-4);
 
     transition: border 0.15s linear;
@@ -113,7 +118,7 @@
     }
 }
 
-.rainbow-button-icon_border-filled {
+.rainbow-button-icon--border-filled {
     @include variants-common-styles(white, $color-gray-2, $color-gray-4);
 
     transition: border 0.15s linear;
@@ -129,7 +134,7 @@
     }
 }
 
-.rainbow-button-icon_border-inverse {
+.rainbow-button-icon--border-inverse {
     @include variants-common-styles(transparent, white, white);
 
     &:hover,
@@ -151,7 +156,7 @@
     }
 }
 
-.rainbow-button-icon_inverse {
+.rainbow-button-icon--inverse {
     @include variants-common-styles(transparent, transparent, white);
 
     &:hover,
@@ -171,63 +176,60 @@
     }
 }
 
-.rainbow-button-icon_shaded {
+.rainbow-button-icon--shaded {
     box-shadow: $shadow-3;
 }
 
 .rainbow-button-icon_xx-small {
-    width: 1rem;
-    height: 1rem;
+    @include width-height(1rem);
+
     line-height: 1;
 }
 
-.rainbow-button-icon_xx-small > svg {
+.rainbow-button-icon--xx-small > svg {
+    @include width-height(0.5rem !important);
+
     font-size: 0.5rem !important;
-    width: 0.5rem !important;
-    height: 0.5rem !important;
 }
 
-.rainbow-button-icon_x-small {
-    width: 1.25rem;
-    height: 1.25rem;
+.rainbow-button-icon--x-small {
+    @include width-height(1.25rem);
+
     line-height: 1;
 }
 
-.rainbow-button-icon_x-small > svg {
+.rainbow-button-icon--x-small > svg {
+    @include width-height(0.75rem !important);
+
     font-size: 0.75rem !important;
-    width: 0.75rem !important;
-    height: 0.75rem !important;
 }
 
-.rainbow-button-icon_small {
-    width: 1.5rem;
-    height: 1.5rem;
+.rainbow-button-icon--small {
+    @include width-height(1.5rem);
 }
 
-.rainbow-button-icon_small > svg {
+.rainbow-button-icon--small > svg {
+    @include width-height(0.875rem !important);
+
     font-size: 0.875rem !important;
-    width: 0.875rem !important;
-    height: 0.875rem !important;
 }
 
-.rainbow-button-icon_medium {
-    width: 2.25rem;
-    height: 2.25rem;
+.rainbow-button-icon--medium {
+    @include width-height(2.475rem);
 }
 
-.rainbow-button-icon_medium > svg {
+.rainbow-button-icon--medium > svg {
+    @include width-height(1rem !important);
+
     font-size: 1rem !important;
-    width: 1rem !important;
-    height: 1rem !important;
 }
 
-.rainbow-button-icon_large {
-    width: 3rem;
-    height: 3rem;
+.rainbow-button-icon--large {
+    @include width-height(3rem);
 }
 
-.rainbow-button-icon_large > svg {
+.rainbow-button-icon--large > svg {
+    @include width-height(1.5rem !important);
+
     font-size: 1.5rem !important;
-    width: 1.5rem !important;
-    height: 1.5rem !important;
 }
