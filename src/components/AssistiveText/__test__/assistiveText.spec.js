@@ -3,11 +3,11 @@ import { mount } from 'enzyme';
 import AssistiveText from './../index';
 
 describe('<AssistiveText/>', () => {
-    it('should not render the text when is not passed', () => {
+    it('should render the span element when the text is passed', () => {
         const component = mount(
-            <AssistiveText />,
+            <AssistiveText text="for screen readers" />,
         );
-        expect(component.find('.rainbow-assistive-text').length).toBe(0);
+        expect(component.find('span').exists()).toBe(true);
     });
     it('should render the text passed', () => {
         const component = mount(

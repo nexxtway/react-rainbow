@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import RadioItmes from './radioItems';
 import RenderIf from '../RenderIf';
+import RequiredAsterisk from '../RequiredAsterisk';
 import { uniqueId } from '../../libs/utils';
 import './styles.css';
 
@@ -48,9 +49,7 @@ export default class RadioGroup extends Component {
             <fieldset className={this.getContainerClassNames()} style={style}>
                 <RenderIf isTrue={!!label}>
                     <legend className="rainbow-radio-group_label">
-                        <RenderIf isTrue={required}>
-                            <abbr className="rainbow-radio-group--required" title="required">*</abbr>
-                        </RenderIf>
+                        <RequiredAsterisk required={required} />
                         {label}
                     </legend>
                 </RenderIf>

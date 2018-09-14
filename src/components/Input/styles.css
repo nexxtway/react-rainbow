@@ -22,10 +22,6 @@
   margin-top: 0.5rem;
   align-self: center; }
 
-.rainbow-input--required {
-  color: #fe4849;
-  margin: 0 0.125rem; }
-
 .rainbow-input_icon-container {
   position: relative; }
   .rainbow-input_icon-container .rainbow-input_icon {

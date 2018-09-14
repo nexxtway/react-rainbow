@@ -108,7 +108,3 @@
 
 .rainbow-radio [type='radio'] + .rainbow-radio_label-container .rainbow-radio_faux {
   margin-right: 0.5rem; }
-
-.rainbow-radio-group--required {
-  color: #fe4849;
-  margin: 0; }

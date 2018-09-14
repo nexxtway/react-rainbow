@@ -61,10 +61,6 @@
   margin-top: 0.5rem;
   align-self: center; }
 
-.rainbow-textarea--required {
-  color: #fe4849;
-  margin: 0 0.125rem; }
-
 .rainbow-textarea--error .rainbow-textarea_help-error {
   color: #fe4849; }
 
