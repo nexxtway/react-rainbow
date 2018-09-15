@@ -140,7 +140,7 @@ Button.propTypes = {
     disabled: PropTypes.bool,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
     tabIndex: PropTypes.number,
-    /** The action triggered when the button is clicked. */
+    /** The action triggered when the element is clicked. */
     onClick: PropTypes.func,
     /** The action triggered when the element receives focus. */
     onFocus: PropTypes.func,
