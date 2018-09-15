@@ -15,6 +15,10 @@ export default class Input extends Component {
         this.inputId = uniqueId('input');
         this.inlineTextLabelId = uniqueId('inline-text-label');
         this.errorMessageId = uniqueId('error-message');
+        this.inputRef = React.createRef();
+        this.click = this.click.bind(this);
+        this.focus = this.focus.bind(this);
+        this.blur = this.blur.bind(this);
     }
 
     getContainerClassNames() {
@@ -65,6 +69,30 @@ export default class Input extends Component {
         return undefined;
     }
 
+    /**
+     * Sets focus on the element.
+     * @public
+     */
+    focus() {
+        this.inputRef.current.focus();
+    }
+
+    /**
+     * Sets click on the element.
+     * @public
+     */
+    click() {
+        this.inputRef.current.click();
+    }
+
+    /**
+     * Sets blur on the element.
+     * @public
+     */
+    blur() {
+        this.inputRef.current.blur();
+    }
+
     render() {
         const {
             style,
@@ -76,6 +104,9 @@ export default class Input extends Component {
             disabled,
             readOnly,
             tabIndex,
+            onFocus,
+            onBlur,
+            onClick,
             type,
             maxLength,
             minLength,
@@ -111,6 +142,9 @@ export default class Input extends Component {
                         placeholder={placeholder}
                         onChange={onChange}
                         tabIndex={tabIndex}
+                        onFocus={onFocus}
+                        onBlur={onBlur}
+                        onClick={onClick}
                         disabled={disabled}
                         readOnly={readOnly}
                         required={isRequiredOrHasError}
@@ -195,6 +229,12 @@ Input.propTypes = {
     onChange: PropTypes.func,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
     tabIndex: PropTypes.number,
+    /** The action triggered when the input is clicked. */
+    onClick: PropTypes.func,
+    /** The action triggered when the element receives focus. */
+    onFocus: PropTypes.func,
+    /** The action triggered when the element releases focus. */
+    onBlur: PropTypes.func,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
@@ -222,6 +262,9 @@ Input.defaultProps = {
     readOnly: false,
     onChange: () => {},
     tabIndex: undefined,
+    onClick: () => {},
+    onFocus: () => {},
+    onBlur: () => {},
     className: undefined,
     style: undefined,
     id: undefined,
