@@ -43,10 +43,11 @@ export default class RadioGroup extends Component {
             onChange,
             options,
             value,
+            id,
         } = this.props;
 
         return (
-            <fieldset className={this.getContainerClassNames()} style={style}>
+            <fieldset id={id} className={this.getContainerClassNames()} style={style}>
                 <RenderIf isTrue={!!label}>
                     <legend className="rainbow-radio-group_label">
                         <RequiredAsterisk required={required} />
@@ -101,6 +102,8 @@ RadioGroup.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied for the outer element. */
     style: PropTypes.object,
+    /** The id of the outer element. */
+    id: PropTypes.string,
 };
 
 RadioGroup.defaultProps = {
@@ -112,4 +115,5 @@ RadioGroup.defaultProps = {
     required: false,
     options: [],
     error: null,
+    id: undefined,
 };

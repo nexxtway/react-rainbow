@@ -22,6 +22,7 @@
         render() {
             return (
                 <RadioGroup
+                    id="radio-group-component-1"
                     options={options}
                     value={this.state.value}
                     onChange={this.handleOnChange}
