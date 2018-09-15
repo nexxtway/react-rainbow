@@ -21,15 +21,6 @@ class PageCheckboxToggle {
     }
 
     /**
-     * Returns true when the input element has focus.
-     * @method
-     * @returns {bool}
-     */
-    hasFocusInput() {
-        return $(this.rootElement).$('input').hasFocus();
-    }
-
-    /**
      * Returns true when the input element is checked.
      * @method
      * @returns {bool}
