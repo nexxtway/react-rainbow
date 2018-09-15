@@ -24,7 +24,7 @@
   -ms-flex-align: center;
   align-items: center;
   width: 100%;
-  padding: 1rem 1rem 1rem 2rem;
+  padding: 1rem 1rem 1rem 3rem;
   border-radius: 0;
   color: #576574;
   cursor: pointer;
@@ -33,6 +33,9 @@
   text-overflow: ellipsis;
   white-space: nowrap; }
 
+.rainbow-vertical-item_action--icon {
+  padding: 1rem 1rem 1rem 1.25rem; }
+
 .rainbow-vertical-item--active .rainbow-vertical-item_action,
 .rainbow-vertical-item_action:active {
   font-family: "Lato Black", Arial, sans-serif; }
@@ -40,7 +43,7 @@
 .rainbow-vertical-item_icon {
   line-height: 1;
   color: #01b6f5;
-  margin-right: 0.5rem; }
+  margin-right: 0.75rem; }
 
 .rainbow-vertical-item_notification {
   margin-left: auto; }

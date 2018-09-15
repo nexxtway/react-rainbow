@@ -41,6 +41,10 @@
     }
 }
 
+.rainbow-vertical-section-overflow_button--expanded {
+    padding: 1rem 1rem 0 2rem;
+}
+
 .rainbow-vertical-section-overflow--show {
     transition: all 0.2s ease-out;
     -webkit-transition: all 0.2s ease-out;
@@ -70,7 +74,6 @@
 .rainbow-vertical-section-overflow_action-title {
     font-size: 0.9375rem;
     color: $color-brand;
-    text-transform: uppercase;
 }
 
 .rainbow-vertical-section-overflow_action-description {

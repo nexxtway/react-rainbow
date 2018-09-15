@@ -1,5 +1,7 @@
 @import "./../../styles/colors.scss";
 @import "./../../styles/font-sizes.scss";
+@import "./../../styles/margins";
+@import "./../../styles/paddings";
 
 %nav-vertical__action-hover-active {
     background-color: $color-gray-1;
@@ -28,7 +30,7 @@
     -ms-flex-align: center;
     align-items: center;
     width: 100%;
-    padding: 1rem 1rem 1rem 2rem;
+    padding: 1rem 1rem 1rem 3rem;
     border-radius: 0;
     color: $color-gray-4;
     cursor: pointer;
@@ -36,6 +38,10 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.rainbow-vertical-item_action--icon {
+    padding: 1rem 1rem 1rem 1.25rem;
 }
 
 .rainbow-vertical-item_action:hover,
@@ -53,7 +59,7 @@
 .rainbow-vertical-item_icon {
     line-height: 1;
     color: $color-brand;
-    margin-right: 0.5rem;
+    margin-right: 0.75rem;
 }
 
 .rainbow-vertical-item_notification {

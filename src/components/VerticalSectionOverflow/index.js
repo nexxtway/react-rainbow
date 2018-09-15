@@ -31,6 +31,13 @@ export default class VerticalSectionOverflow extends Component {
         }, className);
     }
 
+    getButtonClassNames() {
+        const { isExpanded } = this.state;
+        return classnames('rainbow-vertical-section-overflow_button', {
+            'rainbow-vertical-section-overflow_button--expanded': isExpanded,
+        });
+    }
+
     getOverflowClassName() {
         const { isExpanded } = this.state;
         if (isExpanded) {
@@ -60,7 +67,7 @@ export default class VerticalSectionOverflow extends Component {
         return (
             <div data-id="vertical-overflow-container" className={this.getContainerClassNames()} style={style}>
                 <button
-                    className="rainbow-vertical-section-overflow_button"
+                    className={this.getButtonClassNames()}
                     aria-controls={this.searchResultsId}
                     aria-expanded={isExpanded}
                     onClick={this.toggleOverflow}>

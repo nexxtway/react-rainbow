@@ -29,6 +29,10 @@ function Item(props) {
         'rainbow-vertical-item--active': isSelected,
     }, className);
 
+    const getVerticalItemActionClassNames = () => classnames('rainbow-vertical-item_action', {
+        'rainbow-vertical-item_action--icon': !!icon,
+    }, className);
+
     const getAriaCurrent = () => {
         if (isSelected) {
             return 'page';
@@ -54,7 +58,7 @@ function Item(props) {
                 href={href}
                 onClick={hanldeOnClick}
                 aria-describedby={entityHeaderId}
-                className="rainbow-vertical-item_action"
+                className={getVerticalItemActionClassNames()}
                 aria-current={getAriaCurrent()}
                 tabIndex={resolveTabIndex()}>
                 <RenderIf isTrue={!!icon}>
