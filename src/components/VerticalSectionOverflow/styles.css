@@ -31,12 +31,20 @@
     outline: 0;
     background-color: #f4f6f9; }
 
+.rainbow-vertical-section-overflow_button--expanded {
+  padding: 1rem 1rem 0 2rem; }
+
 .rainbow-vertical-section-overflow--show {
   transition: all 0.2s ease-out;
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
   -ms-transition: all 0.2s ease-out;
   -o-transition: all 0.2s ease-out; }
+  .rainbow-vertical-section-overflow--show .rainbow-vertical-item_action {
+    padding: 0.5rem 0.5rem 0.5rem 3.5rem; }
+  .rainbow-vertical-section-overflow--show .rainbow-vertical-item_icon {
+    top: 0.75rem;
+    left: 2rem; }
 
 .rainbow-vertical-section-overflow--hide {
   max-height: 0;
@@ -56,8 +64,7 @@
 
 .rainbow-vertical-section-overflow_action-title {
   font-size: 0.9375rem;
-  color: #01b6f5;
-  text-transform: uppercase; }
+  color: #01b6f5; }
 
 .rainbow-vertical-section-overflow_action-description {
   font-size: 0.625rem;

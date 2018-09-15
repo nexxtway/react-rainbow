@@ -57,14 +57,14 @@ function Item(props) {
                 className="rainbow-vertical-item_action"
                 aria-current={getAriaCurrent()}
                 tabIndex={resolveTabIndex()}>
-                <RenderIf isTrue={!!icon}>
-                    <span className="rainbow-vertical-item_icon" >{icon}</span>
-                </RenderIf>
                 {label}
                 <RenderIf isTrue={!!notification}>
                     <span className="rainbow-vertical-item_notification">{notification}</span>
                 </RenderIf>
             </a>
+            <RenderIf isTrue={!!icon}>
+                <span className="rainbow-vertical-item_icon" >{icon}</span>
+            </RenderIf>
         </li>
     );
 }

@@ -41,12 +41,25 @@
     }
 }
 
+.rainbow-vertical-section-overflow_button--expanded {
+    padding: 1rem 1rem 0 2rem;
+}
+
 .rainbow-vertical-section-overflow--show {
     transition: all 0.2s ease-out;
     -webkit-transition: all 0.2s ease-out;
     -moz-transition: all 0.2s ease-out;
     -ms-transition: all 0.2s ease-out;
     -o-transition: all 0.2s ease-out;
+
+    .rainbow-vertical-item_action {
+        padding: 0.5rem 0.5rem 0.5rem 3.5rem;
+    }
+
+    .rainbow-vertical-item_icon {
+        top: 0.75rem;
+        left: 2rem;
+    }
 }
 
 .rainbow-vertical-section-overflow--hide {
@@ -70,7 +83,6 @@
 .rainbow-vertical-section-overflow_action-title {
     font-size: 0.9375rem;
     color: $color-brand;
-    text-transform: uppercase;
 }
 
 .rainbow-vertical-section-overflow_action-description {
