@@ -28,10 +28,11 @@ export default class CheckboxToggle extends Component {
             label,
             value,
             onChange,
+            id,
         } = this.props;
 
         return (
-            <label className={this.getClassNames()} style={style}>
+            <label id={id} className={this.getClassNames()} style={style}>
                 <input
                     type="checkbox"
                     name={this.toggleId}
@@ -67,6 +68,8 @@ CheckboxToggle.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The id of the outer element. */
+    id: PropTypes.string,
 };
 
 CheckboxToggle.defaultProps = {
@@ -76,4 +79,5 @@ CheckboxToggle.defaultProps = {
     onChange: () => {},
     className: undefined,
     style: undefined,
+    id: undefined,
 };
