@@ -33,11 +33,12 @@ export default class Select extends Component {
             disabled,
             options,
             style,
+            id,
         } = this.props;
         const isRequiredOrHasError = !!(required || error);
 
         return (
-            <div className={this.getContainerClassNames()} style={style}>
+            <div className={this.getContainerClassNames()} style={style} id={id}>
                 <RenderIf isTrue={!!label}>
                     <label className="rainbow-select_label" htmlFor={this.selectId}>
                         <RequiredAsterisk required={isRequiredOrHasError} />
@@ -96,6 +97,8 @@ Select.propTypes = {
     classNames: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The id of the outer element. */
+    id: PropTypes.string,
 };
 
 Select.defaultProps = {
@@ -108,4 +111,5 @@ Select.defaultProps = {
     options: [],
     classNames: undefined,
     style: undefined,
+    id: undefined,
 };

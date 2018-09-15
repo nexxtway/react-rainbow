@@ -5,7 +5,7 @@
         { value: 'option 3', label: 'Option 3' },
     ];
     <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
-        <Select label="Select Label" options={options} />
+        <Select label="Select Label" options={options} id="select-1"/>
     </div>
 
 
