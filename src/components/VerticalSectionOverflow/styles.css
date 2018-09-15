@@ -71,8 +71,9 @@
 .rainbow-vertical-section-overflow_icon {
   margin-left: 0.5rem;
   margin-top: 0.625rem;
-  transform: rotate(-90deg);
+  transform: rotate(0deg);
   transition: transform 0.15s linear; }
 
 .rainbow-vertical-section-overflow-icon--expanded {
-  transform: rotate(0deg); }
+  transform: rotate(-180deg);
+  transition: transform 0.15s linear; }
