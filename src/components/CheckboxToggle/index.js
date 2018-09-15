@@ -14,11 +14,39 @@ export default class CheckboxToggle extends Component {
     constructor(props) {
         super(props);
         this.toggleId = uniqueId('checkbox-toggle');
+        this.checkboxToggleRef = React.createRef();
+        this.click = this.click.bind(this);
+        this.focus = this.focus.bind(this);
+        this.blur = this.blur.bind(this);
     }
 
     getClassNames() {
         const { className } = this.props;
         return classnames('rainbow-checkbox-toggle', className);
+    }
+
+    /**
+     * Sets focus on the element.
+     * @public
+     */
+    focus() {
+        this.checkboxToggleRef.current.focus();
+    }
+
+    /**
+     * Sets click on the element.
+     * @public
+     */
+    click() {
+        this.checkboxToggleRef.current.click();
+    }
+
+    /**
+     * Sets blur on the element.
+     * @public
+     */
+    blur() {
+        this.checkboxToggleRef.current.blur();
     }
 
     render() {
@@ -28,6 +56,9 @@ export default class CheckboxToggle extends Component {
             label,
             value,
             onChange,
+            onFocus,
+            onBlur,
+            onClick,
             id,
         } = this.props;
 
@@ -40,6 +71,9 @@ export default class CheckboxToggle extends Component {
                     aria-describedby={this.toggleId}
                     checked={value}
                     onChange={onChange}
+                    onFocus={onFocus}
+                    onBlur={onBlur}
+                    onClick={onClick}
                     disabled={disabled} />
 
                 <span id={this.toggleId} className="rainbow-checkbox-toggle_faux-container" aria-live="assertive">
@@ -64,6 +98,12 @@ CheckboxToggle.propTypes = {
     disabled: PropTypes.bool,
     /** The action triggered when a value attribute changes. */
     onChange: PropTypes.func,
+    /** The action triggered when the element is clicked. */
+    onClick: PropTypes.func,
+    /** The action triggered when the element receives focus. */
+    onFocus: PropTypes.func,
+    /** The action triggered when the element releases focus. */
+    onBlur: PropTypes.func,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
@@ -77,6 +117,9 @@ CheckboxToggle.defaultProps = {
     disabled: false,
     value: false,
     onChange: () => {},
+    onClick: () => {},
+    onFocus: () => {},
+    onBlur: () => {},
     className: undefined,
     style: undefined,
     id: undefined,

@@ -2,6 +2,7 @@
 @import "../../styles/colors";
 @import "../../styles/font-sizes";
 @import "../../styles/margins";
+@import "../../styles/shadows";
 
 @mixin common-styles($border-color, $background-color, $position: absolute) {
     border-radius: 1rem;
@@ -72,6 +73,8 @@
 .rainbow-checkbox-toggle [type="checkbox"]:focus + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux {
     background-color: $color-gray-2;
     border-color: #dcdfe7;
+    outline: 0;
+    box-shadow: 0 0 8px $color-brand;
 }
 
 .rainbow-checkbox-toggle [type="checkbox"]:checked + .rainbow-checkbox-toggle_faux,
