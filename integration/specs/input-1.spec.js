@@ -17,9 +17,4 @@ describe('Input base example', () => {
         input.clickLabel();
         expect(input.hasFocusInput()).toBe(true);
     });
-    it('should type in the input element', () => {
-        const input = new PageInput(INPUT);
-        input.setValue('test text');
-        expect(input.getValue()).toBe('test text');
-    });
 });
