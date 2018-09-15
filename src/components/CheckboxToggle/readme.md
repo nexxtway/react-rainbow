@@ -16,6 +16,7 @@
         render() {
             return (
                 <CheckboxToggle
+                    id="checkbox-toggle-component-1"
                     label="Toggle Label"
                     value={this.state.value}
                     onChange={this.handleOnChange} />
