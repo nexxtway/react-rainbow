@@ -14,6 +14,10 @@ export default class Select extends Component {
     constructor(props) {
         super(props);
         this.selectId = uniqueId('select');
+        this.selectRef = React.createRef();
+        this.click = this.click.bind(this);
+        this.focus = this.focus.bind(this);
+        this.blur = this.blur.bind(this);
     }
 
     getContainerClassNames() {
@@ -23,11 +27,38 @@ export default class Select extends Component {
         }, classNames);
     }
 
+    /**
+     * Sets focus on the element.
+     * @public
+     */
+    focus() {
+        this.selectRef.current.focus();
+    }
+
+    /**
+     * Sets click on the element.
+     * @public
+     */
+    click() {
+        this.selectRef.current.click();
+    }
+
+    /**
+     * Sets blur on the element.
+     * @public
+     */
+    blur() {
+        this.selectRef.current.blur();
+    }
+
     render() {
         const {
             label,
             value,
             onChange,
+            onFocus,
+            onBlur,
+            onClick,
             error,
             required,
             disabled,
@@ -50,6 +81,9 @@ export default class Select extends Component {
                         className="rainbow-select"
                         id={this.selectId}
                         onChange={onChange}
+                        onFocus={onFocus}
+                        onBlur={onBlur}
+                        onClick={onClick}
                         value={value}
                         required={isRequiredOrHasError}
                         disabled={disabled}>
@@ -74,6 +108,12 @@ Select.propTypes = {
     value: PropTypes.string,
     /** The action triggered when a option item is selected. */
     onChange: PropTypes.func,
+    /** The action triggered when the element is clicked. */
+    onClick: PropTypes.func,
+    /** The action triggered when the element receives focus. */
+    onFocus: PropTypes.func,
+    /** The action triggered when the element releases focus. */
+    onBlur: PropTypes.func,
     /** Specifies that an input field must be filled out before submitting the form.
      * This value defaults to false. */
     error: PropTypes.oneOfType([
@@ -105,6 +145,9 @@ Select.defaultProps = {
     label: null,
     value: undefined,
     onChange: () => {},
+    onClick: () => {},
+    onFocus: () => {},
+    onBlur: () => {},
     error: null,
     required: false,
     disabled: false,
