@@ -15,6 +15,9 @@ export default class Input extends Component {
         this.inputId = uniqueId('input');
         this.inlineTextLabelId = uniqueId('inline-text-label');
         this.errorMessageId = uniqueId('error-message');
+        this.click = this.click.bind(this);
+        this.focus = this.focus.bind(this);
+        this.blur = this.blur.bind(this);
     }
 
     getContainerClassNames() {
@@ -63,6 +66,30 @@ export default class Input extends Component {
             return this.errorMessageId;
         }
         return undefined;
+    }
+
+    /**
+     * Sets focus on the element.
+     * @public
+     */
+    focus() {
+        this.buttonRef.current.focus();
+    }
+
+    /**
+     * Sets click on the element.
+     * @public
+     */
+    click() {
+        this.buttonRef.current.click();
+    }
+
+    /**
+     * Sets blur on the element.
+     * @public
+     */
+    blur() {
+        this.buttonRef.current.blur();
     }
 
     render() {
