@@ -37,6 +37,20 @@ class PageRadioGroup {
         }
         return false;
     }
+
+    /**
+     * Returns true when the RadioGroup item with item position is checked.
+     * @method
+     * @returns {bool}
+     * @param {number} itemPosition - The base 0 index of the RadioGroup item.
+     */
+    isChecked(itemPosition) {
+        const items = $(this.rootElement).$$('input');
+        if (items[itemPosition]) {
+            return !!items[itemPosition].getAttribute('checked');
+        }
+        return false;
+    }
 }
 
 module.exports = PageRadioGroup;
