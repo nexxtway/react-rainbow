@@ -10,7 +10,8 @@ describe('VerticalNavigation with href example', () => {
 
     it('should go to "avatar page" when click on the "Avatar" item', () => {
         const verticalNavigation = new PageVerticalNavigation(VERTICAL_NAV);
-        verticalNavigation.clickItem(0);
+        const verticalItem = verticalNavigation.getItem(0);
+        verticalItem.click();
         expect(browser.getUrl()).toContain('Components/Avatar');
     });
 });

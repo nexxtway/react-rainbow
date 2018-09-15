@@ -1,3 +1,6 @@
+const PageVerticalItem = require('../../VerticalItem/pageObject');
+const PageVerticalSectionOverflow = require('../../VerticalSectionOverflow/pageObject');
+
 /**
  * VerticalNavigation page object class.
  * @class
@@ -13,79 +16,29 @@ class PageVerticalNavigation {
     }
 
     /**
-     * Clicks the vertical item with item position.
+     * Returns a new VerticalItem page object of the element in item position.
      * @method
      *  @param {number} itemPosition - The base 0 index of the vertical item.
      */
-    clickItem(itemPosition) {
-        const items = $(this.rootElement).$$('.rainbow-vertical-item_action');
-        if (items[itemPosition]) {
-            items[itemPosition].click();
-        }
-    }
-
-    /**
-     * Clicks the vertical section overflow item with item position.
-     * @method
-     *  @param {number} itemPosition - The base 0 index of the vertical item.
-     */
-    clickSectionOverflow(itemPosition) {
-        const items = $(this.rootElement).$$('.rainbow-vertical-section-overflow_button');
-        if (items[itemPosition]) {
-            items[itemPosition].click();
-        }
-    }
-
-    /**
-     * Returns true when the overflow section with item position is visible, false otherwise.
-     * @method
-     * @returns {bool}
-     */
-    isSectionOverflowVisible(itemPosition) {
-        const items = $(this.rootElement).$$('[data-id="vertical-overflow"]');
-        if (items[itemPosition]) {
-            return items[itemPosition].isVisible();
-        }
-        return false;
-    }
-
-    /**
-     * Returns true when the vertical section overflow button with item position has focus.
-     * @method
-     * @returns {bool}
-     */
-    hasFocusSectionOVerflowButton(itemPosition) {
-        const items = $(this.rootElement).$$('.rainbow-vertical-section-overflow_button');
-        if (items[itemPosition]) {
-            return items[itemPosition].hasFocus();
-        }
-        return false;
-    }
-
-    /**
-     * Returns true when the vertical item element with item position has focus.
-     * @method
-     * @returns {bool}
-     */
-    hasFocusItem(itemPosition) {
-        const items = $(this.rootElement).$$('.rainbow-vertical-item_action');
-        if (items[itemPosition]) {
-            return items[itemPosition].hasFocus();
-        }
-        return false;
-    }
-
-    /**
-     * Returns true when the vertical item element with item position is selected.
-     * @method
-     * @returns {bool}
-     */
-    isItemSelected(itemPosition) {
+    getItem(itemPosition) {
         const items = $(this.rootElement).$$('.rainbow-vertical-item');
         if (items[itemPosition]) {
-            return items[itemPosition].getAttribute('class') === 'rainbow-vertical-item rainbow-vertical-item--active';
+            return new PageVerticalItem(`${this.rootElement} .rainbow-vertical-item:nth-child(${itemPosition + 1})`);
         }
-        return false;
+        return null;
+    }
+
+    /**
+     * Returns a new VerticalSectionOverflow page object of the element in item position.
+     * @method
+     *  @param {number} itemPosition - The base 0 index of the vertical section overflow.
+     */
+    getSctionOverflow(itemPosition) {
+        const items = $(this.rootElement).$$('.rainbow-vertical-section-overflow_container');
+        if (items[itemPosition]) {
+            return new PageVerticalSectionOverflow(`${this.rootElement} .rainbow-vertical-section-overflow_container:nth-child(${itemPosition + 1})`);
+        }
+        return null;
     }
 }
 
