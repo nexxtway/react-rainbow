@@ -1,10 +1,10 @@
 /**
- * PageCheckboxGroup page object class.
+ * CheckboxGroup page object class.
  * @class
  */
 class PageCheckboxGroup {
     /**
-     * Create a new PageCheckboxGroup page object.
+     * Create a new CheckboxGroup page object.
      * @constructor
      * @param {string} rootElement - The selector of the CheckboxGroup root element.
      */
@@ -17,7 +17,7 @@ class PageCheckboxGroup {
      * @method
      * @param {number} itemPosition - The base 0 index of the menu item.
      */
-    clickCheckbox(itemPosition) {
+    clickItem(itemPosition) {
         const items = $(this.rootElement).$$('.rainbow-checkbox-group_checkbox-label-container');
         if (items[itemPosition]) {
             items[itemPosition].click();
@@ -30,7 +30,7 @@ class PageCheckboxGroup {
      * @returns {bool}
      * @param {number} itemPosition - The base 0 index of the menu item.
      */
-    hasFocusCheckbox(itemPosition) {
+    hasFocusItem(itemPosition) {
         const items = $(this.rootElement).$$('[type="checkbox"]');
         if (items[itemPosition]) {
             return items[itemPosition].hasFocus();
@@ -44,7 +44,7 @@ class PageCheckboxGroup {
      * @returns {bool}
      * @param {number} itemPosition - The base 0 index of the menu item.
      */
-    isCheckedCheckbox(itemPosition) {
+    isCheckedItem(itemPosition) {
         const items = $(this.rootElement).$$('[type="checkbox"]');
         if (items[itemPosition]) {
             return !!items[itemPosition].getAttribute('checked');
