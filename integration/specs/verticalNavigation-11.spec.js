@@ -42,29 +42,29 @@ describe('VerticalNavigation expandable example', () => {
     it('should select the "Apps" item when click on it', () => {
         const verticalNavigation = new PageVerticalNavigation(VERTICAL_NAV);
         verticalNavigation.clickSectionOverflow(0);
-        verticalNavigation.clickVerticalItem(0);
-        expect(verticalNavigation.isVerticalItemSelected(0)).toBe(true);
+        verticalNavigation.clickItem(0);
+        expect(verticalNavigation.isItemSelected(0)).toBe(true);
     });
     it('should not lost select the "Apps" item when it is selected and press the key "TAB"', () => {
         const verticalNavigation = new PageVerticalNavigation(VERTICAL_NAV);
         verticalNavigation.clickSectionOverflow(0);
-        verticalNavigation.clickVerticalItem(0);
+        verticalNavigation.clickItem(0);
         browser.keys(TAB_KEY);
-        expect(verticalNavigation.isVerticalItemSelected(0)).toBe(true);
+        expect(verticalNavigation.isItemSelected(0)).toBe(true);
     });
-    it('should move to the previous link ("Folder shared with Me" item) when "Apps" item is selected and press "TAB"', () => {
+    it('should move to the next link ("Folder shared with Me" item) when "Apps" item is selected and press "TAB"', () => {
         const verticalNavigation = new PageVerticalNavigation(VERTICAL_NAV);
         verticalNavigation.clickSectionOverflow(0);
-        verticalNavigation.clickVerticalItem(0);
+        verticalNavigation.clickItem(0);
         browser.keys(TAB_KEY);
-        expect(verticalNavigation.hasFocusVerticalItem(1)).toBe(true);
+        expect(verticalNavigation.hasFocusItem(1)).toBe(true);
     });
     it('should select the "SHARED" item when it is focused and press the key "ENTER"', () => {
         const verticalNavigation = new PageVerticalNavigation(VERTICAL_NAV);
         verticalNavigation.clickSectionOverflow(0);
-        verticalNavigation.clickVerticalItem(0);
+        verticalNavigation.clickItem(0);
         browser.keys(TAB_KEY);
         browser.keys(ENTER_KEY);
-        expect(verticalNavigation.isVerticalItemSelected(1)).toBe(true);
+        expect(verticalNavigation.isItemSelected(1)).toBe(true);
     });
 });

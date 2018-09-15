@@ -17,7 +17,7 @@ class PageVerticalNavigation {
      * @method
      *  @param {number} itemPosition - The base 0 index of the vertical item.
      */
-    clickVerticalItem(itemPosition) {
+    clickItem(itemPosition) {
         const items = $(this.rootElement).$$('.rainbow-vertical-item_action');
         if (items[itemPosition]) {
             items[itemPosition].click();
@@ -67,7 +67,7 @@ class PageVerticalNavigation {
      * @method
      * @returns {bool}
      */
-    hasFocusVerticalItem(itemPosition) {
+    hasFocusItem(itemPosition) {
         const items = $(this.rootElement).$$('.rainbow-vertical-item_action');
         if (items[itemPosition]) {
             return items[itemPosition].hasFocus();
@@ -80,7 +80,7 @@ class PageVerticalNavigation {
      * @method
      * @returns {bool}
      */
-    isVerticalItemSelected(itemPosition) {
+    isItemSelected(itemPosition) {
         const items = $(this.rootElement).$$('.rainbow-vertical-item');
         if (items[itemPosition]) {
             return items[itemPosition].getAttribute('class') === 'rainbow-vertical-item rainbow-vertical-item--active';
