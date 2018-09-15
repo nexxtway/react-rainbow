@@ -40,6 +40,11 @@
   -moz-transition: all 0.2s ease-out;
   -ms-transition: all 0.2s ease-out;
   -o-transition: all 0.2s ease-out; }
+  .rainbow-vertical-section-overflow--show .rainbow-vertical-item_action {
+    padding: 0.5rem 0.5rem 0.5rem 3.5rem; }
+  .rainbow-vertical-section-overflow--show .rainbow-vertical-item_icon {
+    top: 0.75rem;
+    left: 2rem; }
 
 .rainbow-vertical-section-overflow--hide {
   max-height: 0;

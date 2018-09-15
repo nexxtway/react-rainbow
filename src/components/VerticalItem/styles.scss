@@ -59,7 +59,10 @@
 .rainbow-vertical-item_icon {
     line-height: 1;
     color: $color-brand;
-    margin-right: 0.75rem;
+    //margin-right: 0.75rem;
+    position: absolute;
+    top: 1.25rem;
+    left: 1rem;
 }
 
 .rainbow-vertical-item_notification {
