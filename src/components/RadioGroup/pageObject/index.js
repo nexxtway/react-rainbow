@@ -44,7 +44,7 @@ class PageRadioGroup {
      * @returns {bool}
      * @param {number} itemPosition - The base 0 index of the RadioGroup item.
      */
-    isChecked(itemPosition) {
+    isCheckedItem(itemPosition) {
         const items = $(this.rootElement).$$('input');
         if (items[itemPosition]) {
             return !!items[itemPosition].getAttribute('checked');

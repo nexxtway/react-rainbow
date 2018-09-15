@@ -19,7 +19,7 @@ describe('RadioGroup base example', () => {
         browser.keys(ARROW_DOWN_KEY);
         expect(radioGroup.hasFocusItem(1)).toBe(false);
     });
-    it('should focus the next item press arrow down', () => {
+    it('should focus the next item when press arrow down', () => {
         const radioGroup = new PageRadioGroup(RADIO_GROUP);
         radioGroup.clickItem(1);
         browser.keys(ARROW_DOWN_KEY);
@@ -28,18 +28,18 @@ describe('RadioGroup base example', () => {
     it('should check the item clicked', () => {
         const radioGroup = new PageRadioGroup(RADIO_GROUP);
         radioGroup.clickItem(1);
-        expect(radioGroup.isChecked(1)).toBe(true);
+        expect(radioGroup.isCheckedItem(1)).toBe(true);
     });
     it('should uncheck the item when press arrow down', () => {
         const radioGroup = new PageRadioGroup(RADIO_GROUP);
         radioGroup.clickItem(1);
         browser.keys(ARROW_DOWN_KEY);
-        expect(radioGroup.isChecked(1)).toBe(false);
+        expect(radioGroup.isCheckedItem(1)).toBe(false);
     });
     it('should check the next item when press arrow down', () => {
         const radioGroup = new PageRadioGroup(RADIO_GROUP);
         radioGroup.clickItem(1);
         browser.keys(ARROW_DOWN_KEY);
-        expect(radioGroup.isChecked(2)).toBe(true);
+        expect(radioGroup.isCheckedItem(2)).toBe(true);
     });
 });
