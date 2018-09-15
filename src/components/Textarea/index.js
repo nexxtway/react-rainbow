@@ -71,11 +71,12 @@ export default class Textarea extends Component {
             bottomHelpText,
             required,
             rows,
+            id,
         } = this.props;
         const isRequiredOrHasError = !!(required || error);
 
         return (
-            <div className={this.getContainerClassNames()} style={style}>
+            <div className={this.getContainerClassNames()} style={style} id={id}>
                 <Label
                     label={label}
                     required={isRequiredOrHasError}
@@ -157,6 +158,8 @@ Textarea.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The id of the outer element. */
+    id: PropTypes.string,
 };
 
 Textarea.defaultProps = {
@@ -178,4 +181,5 @@ Textarea.defaultProps = {
     onPaste: () => {},
     className: undefined,
     style: undefined,
+    id: undefined,
 };
