@@ -9,7 +9,7 @@ describe('Textarea base example', () => {
     });
     it('should put the select focused when clcik on it', () => {
         const select = new PageSelect(SELECT);
-        select.clickSelect();
+        select.click();
         expect(select.hasFocusSelect()).toBe(true);
     });
     it('should put the select focused when click on the label of the select', () => {

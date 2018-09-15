@@ -16,7 +16,7 @@ class PageInput {
      * Clicks the input element.
      * @method
      */
-    clickInput() {
+    click() {
         $(this.rootElement).$('input').click();
     }
 
