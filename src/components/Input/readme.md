@@ -2,6 +2,7 @@
 
     <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
         <Input
+            id="input-component-1"
             label="Input Label"
             placeholder="Placeholder text" />
     </div>

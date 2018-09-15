@@ -96,7 +96,7 @@ describe('<Input/>', () => {
         const component = mount(
             <Input error="error message" />,
         );
-        expect(component.find('.rainbow-input_help').prop('id')).toMatch(/error-message/);
+        expect(component.find('.rainbow-input_error').prop('id')).toMatch(/error-message/);
         expect(component.find('input').prop('aria-describedby')).toMatch(/error-message/);
     });
     it('should pass the right props to the Label component', () => {
