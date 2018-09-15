@@ -20,7 +20,8 @@
 .rainbow-input_help {
   font-size: 0.875rem;
   margin-top: 0.5rem;
-  align-self: center; }
+  align-self: center;
+  color: #061c3f; }
 
 .rainbow-input_icon-container {
   position: relative; }
@@ -91,6 +92,12 @@
       border: 1px #e3e5ed solid;
       padding-left: 1rem; }
 
+.rainbow-input_error {
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  align-self: center;
+  color: #fe4849; }
+
 .rainbow-input--error .rainbow-input {
   background-color: white;
   border: 2px #fe4849 solid;
@@ -99,9 +106,6 @@
   line-height: 2.5rem; }
   .rainbow-input--error .rainbow-input:focus {
     box-shadow: 0 0 2px #fe4849; }
-
-.rainbow-input--error .rainbow-input_help {
-  color: #fe4849; }
 
 .rainbow-input--error .rainbow-input_icon {
   fill: #fe4849;

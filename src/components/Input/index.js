@@ -83,11 +83,12 @@ export default class Input extends Component {
             icon,
             bottomHelpText,
             required,
+            id,
         } = this.props;
         const isRequiredOrHasError = !!(required || error);
 
         return (
-            <div className={this.getContainerClassNames()} style={style}>
+            <div id={id} className={this.getContainerClassNames()} style={style}>
                 <Label
                     label={label}
                     required={isRequiredOrHasError}
@@ -124,7 +125,7 @@ export default class Input extends Component {
                     <div className="rainbow-input_help">{bottomHelpText}</div>
                 </RenderIf>
                 <RenderIf isTrue={!!error}>
-                    <div id={this.getErrorMessageId()} className="rainbow-input_help">{error}</div>
+                    <div id={this.getErrorMessageId()} className="rainbow-input_error">{error}</div>
                 </RenderIf>
             </div>
         );
@@ -198,6 +199,8 @@ Input.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The id of the outer element. */
+    id: PropTypes.string,
 };
 
 Input.defaultProps = {
@@ -221,4 +224,5 @@ Input.defaultProps = {
     tabIndex: undefined,
     className: undefined,
     style: undefined,
+    id: undefined,
 };
