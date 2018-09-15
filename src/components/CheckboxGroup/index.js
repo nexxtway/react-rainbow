@@ -8,8 +8,8 @@ import CheckboxList from './checkboxList';
 import './styles.css';
 
 /**
-* A checkable input that communicates if an option is true, false or indeterminate.
-*/
+ * A checkable input that communicates if an option is true, false or indeterminate.
+ */
 export default class CheckboxGroup extends Component {
     constructor(props) {
         super(props);
@@ -45,9 +45,9 @@ export default class CheckboxGroup extends Component {
     }
 
     render() {
-        const { value, options, required, label, error, style } = this.props;
+        const { id, value, options, required, label, error, style } = this.props;
         return (
-            <fieldset className={this.getCheckboxContainerClassNames()} style={style}>
+            <fieldset id={id} className={this.getCheckboxContainerClassNames()} style={style}>
                 <RenderIf isTrue={!!label}>
                     <legend className="rainbow-checkbox-group_label">
                         <RequiredAsterisk required={required} />
@@ -84,7 +84,7 @@ CheckboxGroup.propTypes = {
         PropTypes.string, PropTypes.node,
     ]),
     /** The list of selected checkboxes. Each array entry contains the value of a selected checkbox.
-    * The value of each checkbox is set in the options attribute. */
+     * The value of each checkbox is set in the options attribute. */
     value: PropTypes.arrayOf(PropTypes.string),
     /** Set to true if at least one checkbox must be selected. This value defaults to false. */
     required: PropTypes.bool,
@@ -98,6 +98,8 @@ CheckboxGroup.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The id of the outer element. */
+    id: PropTypes.string,
 };
 
 CheckboxGroup.defaultProps = {
@@ -109,4 +111,5 @@ CheckboxGroup.defaultProps = {
     error: null,
     className: undefined,
     style: undefined,
+    id: undefined,
 };
