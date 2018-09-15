@@ -4,10 +4,34 @@
 @import "../../styles/border-radius.scss";
 @import "../../styles/margins.scss";
 
+@mixin bottom-message ($text-color) {
+    color: $text-color;
+    font-size: $font-size-text-medium;
+    margin-top: $margin-x-small;
+    align-self: center;
+}
+
 .rainbow-textarea_container {
     position: relative;
     display: flex;
     flex-direction: column;
+}
+
+.rainbow-textarea_label {
+    color: $color-gray-4;
+    font-size: $font-size-text-medium;
+    line-height: 1.5;
+    margin-bottom: 0.125rem;
+    align-self: center;
+
+    &:empty {
+        margin: 0;
+    }
+
+    &[readonly] {
+        align-self: flex-start;
+        margin-bottom: $margin-xx-small;
+    }
 }
 
 .rainbow-textarea {
@@ -18,7 +42,7 @@
     width: 100%;
     padding: 0.625rem 1rem;
     resize: none;
-    font-size: $font-size-text-medium;
+    font-size: $font-size-text-large;
     line-height: 1.57;
     color: $color-dark-1;
 
@@ -33,7 +57,7 @@
 
     &::placeholder {
         color: $color-gray-3;
-        font-size: $font-size-text-medium;
+        font-size: $font-size-text-large;
     }
 
     &[disabled] {
@@ -68,33 +92,13 @@
     }
 }
 
-.rainbow-textarea_label {
-    color: $color-gray-4;
-    font-size: $font-size-text-small;
-    line-height: 1.5;
-    margin-bottom: 0.125rem;
-    align-self: center;
-
-    &:empty {
-        margin: 0;
-    }
-
-    &[readonly] {
-        align-self: flex-start;
-        margin-bottom: $margin-xx-small;
-    }
-}
-
-.rainbow-textarea_help-error {
-    font-size: $font-size-text-small;
-    color: $color-gray-4;
-    margin-top: $margin-x-small;
-    align-self: center;
+.rainbow-textarea_bottom-help {
+    @include bottom-message($color-dark-1);
 }
 
 .rainbow-textarea--error {
-    .rainbow-textarea_help-error {
-        color: $color-error;
+    .rainbow-textarea_text-error {
+        @include bottom-message($color-error-active);
     }
 
     .rainbow-textarea {

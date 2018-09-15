@@ -4,7 +4,7 @@
         <Textarea
             label="Textarea Label"
             rows={4}
-            placeholder="Placeholder text" />
+            placeholder="Placeholder Text" />
     </div>
 
 
@@ -27,6 +27,17 @@
             disabled
             rows={4}
             placeholder="Textarea disabled" />
+    </div>
+
+
+##### textarea with bottom help
+
+    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
+        <Textarea
+            label="Textarea Label Error"
+            bottomHelpText="This is the bottom help"
+            placeholder="Placeholder Text"
+            rows={4} />
     </div>
 
 

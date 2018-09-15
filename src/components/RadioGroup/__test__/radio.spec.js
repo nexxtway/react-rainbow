@@ -58,6 +58,6 @@ describe('<Radio />', () => {
         const component = mount(
             <Radio label="radio label" disabled />,
         );
-        expect(component.find('span[className="rainbow-radio_label rainbow-radio_label--disabled"]').exists()).toBe(true);
+        expect(component.find('span[className="rainbow-radio-group_radio-label rainbow-radio-group_radio-label--disabled"]').exists()).toBe(true);
     });
 });

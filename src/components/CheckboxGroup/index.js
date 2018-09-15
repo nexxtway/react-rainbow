@@ -54,7 +54,7 @@ export default class CheckboxGroup extends Component {
                         {label}
                     </legend>
                 </RenderIf>
-                <div className="rainbow-checkbox-group_checkbox-container">
+                <div className="rainbow-checkbox-group_content-container">
                     <CheckboxList
                         values={value}
                         options={options}
@@ -63,7 +63,7 @@ export default class CheckboxGroup extends Component {
 
                 </div>
                 <RenderIf isTrue={!!error}>
-                    <div id={this.getErrorMessageId()} className="rainbow-checkbox-group_help-error">{error}</div>
+                    <div id={this.getErrorMessageId()} className="rainbow-checkbox-group_text-error">{error}</div>
                 </RenderIf>
             </fieldset>
         );
