@@ -65,7 +65,7 @@
 
         render() {
             return (
-                <VerticalNavigation compact selectedItem={this.state.selectedItem} onSelect={this.handleOnSelect}>
+                <VerticalNavigation id="vertical-navigation" compact selectedItem={this.state.selectedItem} onSelect={this.handleOnSelect}>
                     <VerticalSection>
                         <VerticalItem name="item-1" label="Avatar" href="/#/Components/Avatar" />
                         <VerticalItem name="item-2" label="Button" href="/#/Components/Button" />
@@ -239,7 +239,7 @@
         borderBottomLeftRadius: '0.875rem',
         borderRight: '1px solid #e3e5ed',
     };
-    
+
     class ShadedVerticalNavigation extends React.Component {
         constructor(props) {
             super(props);
@@ -255,7 +255,7 @@
 
         render() {
             return (
-                <VerticalNavigation selectedItem={this.state.selectedItem} onSelect={this.handleOnSelect}>
+                <VerticalNavigation id="vertical-navigation" selectedItem={this.state.selectedItem} onSelect={this.handleOnSelect}>
                     <VerticalSectionOverflow
                         title="Folders"
                         description="Folders created, shared..."
@@ -264,7 +264,7 @@
                         <VerticalItem name="item-3" label="Apps" icon={<FontAwesomeIcon icon={faTh} />} />
                         <VerticalItem name="item-4" label="Folder shared with Me" icon={<FontAwesomeIcon icon={faFolderOpen} />} />
                     </VerticalSectionOverflow>
-                    
+
                     <VerticalSectionOverflow
                         title="Recents"
                         description="Folders created, shared..."
@@ -283,7 +283,7 @@
                         <VerticalItem name="item-6" label="Folder created by Me" />
                         <VerticalItem name="item-7" label="Folder shared with Me" />
                     </VerticalSectionOverflow>
-                    
+
                 </VerticalNavigation>
             );
         }
