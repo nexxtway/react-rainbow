@@ -1,6 +1,7 @@
 /**
  * ButtonMenu page object class.
  * @class
+ * @tutorial buttonMenu
  */
 class PageButtonMenu {
    /**
