@@ -4,7 +4,7 @@
         <Textarea
             label="Textarea Label"
             rows={4}
-            placeholder="Placeholder text" />
+            placeholder="Placeholder Text" />
     </div>
 
 
@@ -36,7 +36,7 @@
         <Textarea
             label="Textarea Label Error"
             bottomHelpText="This is the bottom help"
-            placeholder="Placeholder Text Error"
+            placeholder="Placeholder Text"
             rows={4} />
     </div>
 
