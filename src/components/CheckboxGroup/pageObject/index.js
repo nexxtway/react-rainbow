@@ -37,6 +37,20 @@ class PageCheckboxGroup {
         }
         return false;
     }
+
+    /**
+     * Returns true when the checkbox with item position is checked.
+     * @method
+     * @returns {bool}
+     * @param {number} itemPosition - The base 0 index of the menu item.
+     */
+    isCheckedCheckbox(itemPosition) {
+        const items = $(this.rootElement).$$('[type="checkbox"]');
+        if (items[itemPosition]) {
+            return !!items[itemPosition].getAttribute('checked');
+        }
+        return false;
+    }
 }
 
 module.exports = PageCheckboxGroup;
