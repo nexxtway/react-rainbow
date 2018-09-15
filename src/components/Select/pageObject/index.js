@@ -16,7 +16,7 @@ class PageSelect {
      * Clicks the select element.
      * @method
      */
-    clickSelect() {
+    click() {
         $(this.rootElement).$('select').click();
     }
 

@@ -9,7 +9,7 @@ describe('Input base example', () => {
     });
     it('should put the input element focused when is clicked', () => {
         const input = new PageInput(INPUT);
-        input.clickInput();
+        input.click();
         expect(input.hasFocusInput()).toBe(true);
     });
     it('should put the input element focused when the label element is clicked', () => {
