@@ -16,9 +16,4 @@ describe('Textarea base example', () => {
         textarea.clickLabel();
         expect(textarea.hasFocusTextarea()).toBe(true);
     });
-    it('should allow to type in the textarea', () => {
-        const textarea = new PageTextarea(TEXTAREA);
-        textarea.setValue('testing textarea');
-        expect(textarea.getValue()).toBe('testing textarea');
-    });
 });
