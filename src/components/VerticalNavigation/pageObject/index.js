@@ -1,12 +1,12 @@
 /**
- * ButtonMenu page object class.
+ * VerticalNavigation page object class.
  * @class
  */
 class PageVerticalNavigation {
     /**
-     * Create a new ButtonMenu page object.
+     * Create a new VerticalNavigation page object.
      * @constructor
-     * @param {string} rootElement - The selector of the ButtonMenu root element.
+     * @param {string} rootElement - The selector of the VerticalNavigation root element.
      */
     constructor(rootElement) {
         this.rootElement = rootElement;
