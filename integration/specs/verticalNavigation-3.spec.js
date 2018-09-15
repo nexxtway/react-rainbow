@@ -1,6 +1,6 @@
 const PageVerticalNavigation = require('./../../src/components/VerticalNavigation/pageObject');
 
-const VERTICAL_NAV = '#vertical-navigation';
+const VERTICAL_NAV = '#vertical-navigation-3';
 
 describe('VerticalNavigation with href example', () => {
     beforeEach(() => {

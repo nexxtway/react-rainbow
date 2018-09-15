@@ -65,7 +65,7 @@
 
         render() {
             return (
-                <VerticalNavigation id="vertical-navigation" compact selectedItem={this.state.selectedItem} onSelect={this.handleOnSelect}>
+                <VerticalNavigation id="vertical-navigation-3" compact selectedItem={this.state.selectedItem} onSelect={this.handleOnSelect}>
                     <VerticalSection>
                         <VerticalItem name="item-1" label="Avatar" href="/#/Components/Avatar" />
                         <VerticalItem name="item-2" label="Button" href="/#/Components/Button" />
@@ -255,7 +255,7 @@
 
         render() {
             return (
-                <VerticalNavigation id="vertical-navigation" selectedItem={this.state.selectedItem} onSelect={this.handleOnSelect}>
+                <VerticalNavigation id="vertical-navigation-11" selectedItem={this.state.selectedItem} onSelect={this.handleOnSelect}>
                     <VerticalSectionOverflow
                         title="Folders"
                         description="Folders created, shared..."

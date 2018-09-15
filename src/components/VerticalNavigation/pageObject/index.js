@@ -29,7 +29,7 @@ class PageVerticalNavigation {
      * @method
      *  @param {number} itemPosition - The base 0 index of the vertical item.
      */
-    clickExpandableItem(itemPosition) {
+    clickSectionOverflow(itemPosition) {
         const items = $(this.rootElement).$$('.rainbow-vertical-section-overflow_button');
         if (items[itemPosition]) {
             items[itemPosition].click();
@@ -41,7 +41,7 @@ class PageVerticalNavigation {
      * @method
      * @returns {bool}
      */
-    isOVerflowVisible(itemPosition) {
+    isSectionOverflowVisible(itemPosition) {
         const items = $(this.rootElement).$$('[data-id="vertical-overflow"]');
         if (items[itemPosition]) {
             return items[itemPosition].isVisible();
@@ -54,7 +54,7 @@ class PageVerticalNavigation {
      * @method
      * @returns {bool}
      */
-    hasFocusExpandableItem(itemPosition) {
+    hasFocusSectionOVerflowButton(itemPosition) {
         const items = $(this.rootElement).$$('.rainbow-vertical-section-overflow_button');
         if (items[itemPosition]) {
             return items[itemPosition].hasFocus();
