@@ -13,11 +13,19 @@ class PageInput {
     }
 
     /**
-     * Clicks the input.
+     * Clicks the input element.
      * @method
      */
-    click() {
-        $(this.rootElement).click();
+    clickInput() {
+        $(this.rootElement).$('input').click();
+    }
+
+    /**
+     * Clicks the label element.
+     * @method
+     */
+    clickLabel() {
+        $(this.rootElement).$('label').click();
     }
 
     /**
