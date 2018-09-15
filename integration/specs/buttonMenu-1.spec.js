@@ -83,7 +83,7 @@ describe('ButtonMenu base example', () => {
         browser.keys(ARROW_UP_KEY);
         expect(buttonMenu.hasFocusItem(3)).toBe(true);
     });
-    it('should close the menu when the menu is opened and press the hey "tab"', () => {
+    it('should close the menu when the menu is opened and press the key "tab"', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
         buttonMenu.click();
         browser.keys(TAB_KEY);

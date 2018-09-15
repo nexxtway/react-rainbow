@@ -21,6 +21,7 @@
             return (
                 <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
                     <CheckboxGroup
+                        id="checkbox-group-1"
                         label="Checkbox Group Label"
                         options={options}
                         value={values}
