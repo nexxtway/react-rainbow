@@ -6,6 +6,13 @@
 @import "../../styles/margins";
 @import "../../styles/paddings";
 
+@mixin bottomMessage($color) {
+    font-size: $font-size-text-medium;
+    margin-top: $margin-x-small;
+    align-self: center;
+    color: $color;
+}
+
 .rainbow-input_container {
     position: relative;
     display: flex;
@@ -30,9 +37,7 @@
 }
 
 .rainbow-input_help {
-    font-size: $font-size-text-medium;
-    margin-top: $margin-x-small;
-    align-self: center;
+    @include bottomMessage($color-dark-1);
 }
 
 .rainbow-input_icon-container {
@@ -127,6 +132,10 @@
     }
 }
 
+.rainbow-input_error {
+    @include bottomMessage($color-error);
+}
+
 .rainbow-input--error {
     .rainbow-input {
         background-color: white;
@@ -138,10 +147,6 @@
         &:focus {
             box-shadow: $shadow-error;
         }
-    }
-
-    .rainbow-input_help {
-        color: $color-error;
     }
 
     .rainbow-input_icon {
