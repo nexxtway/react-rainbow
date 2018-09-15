@@ -14,6 +14,9 @@ export default class Textarea extends Component {
     constructor(props) {
         super(props);
         this.textareaRef = React.createRef();
+        this.click = this.click.bind(this);
+        this.focus = this.focus.bind(this);
+        this.blur = this.blur.bind(this);
         this.textareaId = uniqueId('textarea');
         this.inlineTextLabelId = uniqueId('inline-text-label');
         this.errorMessageId = uniqueId('error-message');
@@ -53,10 +56,35 @@ export default class Textarea extends Component {
         return undefined;
     }
 
+    /**
+     * Sets focus on the element.
+     * @public
+     */
+    focus() {
+        this.textareaRef.current.focus();
+    }
+
+    /**
+     * Sets click on the element.
+     * @public
+     */
+    click() {
+        this.textareaRef.current.click();
+    }
+
+    /**
+     * Sets blur on the element.
+     * @public
+     */
+    blur() {
+        this.textareaRef.current.blur();
+    }
+
     render() {
         const {
             style,
             onChange,
+            onClick,
             onFocus,
             onBlur,
             onPaste,
@@ -92,6 +120,7 @@ export default class Textarea extends Component {
                     maxLength={maxLength}
                     minLength={minLength}
                     onChange={onChange}
+                    onClick={onClick}
                     onFocus={onFocus}
                     onBlur={onBlur}
                     onPaste={onPaste}
@@ -147,9 +176,11 @@ Textarea.propTypes = {
     readOnly: PropTypes.bool,
     /** The action triggered when a value attribute changes. */
     onChange: PropTypes.func,
-    /** Event fired when the textarea is focused */
+    /** The action triggered when the element is clicked. */
+    onClick: PropTypes.func,
+    /** The action triggered when the element receives focus. */
     onFocus: PropTypes.func,
-    /** Event fired when the textarea is blured */
+    /** The action triggered when the element releases focus. */
     onBlur: PropTypes.func,
     /** Event fired when the user paste on the textarea */
     onPaste: PropTypes.func,
@@ -173,6 +204,7 @@ Textarea.defaultProps = {
     rows: 3,
     readOnly: false,
     onChange: () => {},
+    onClick: () => {},
     onFocus: () => {},
     onBlur: () => {},
     onPaste: () => {},
