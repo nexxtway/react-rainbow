@@ -18,7 +18,7 @@ class PageVerticalNavigation {
     /**
      * Returns a new VerticalItem page object of the element in item position.
      * @method
-     *  @param {number} itemPosition - The base 0 index of the vertical item.
+     * @param {number} itemPosition - The base 0 index of the vertical item.
      */
     getItem(itemPosition) {
         const items = $(this.rootElement).$$('.rainbow-vertical-item');
@@ -31,9 +31,9 @@ class PageVerticalNavigation {
     /**
      * Returns a new VerticalSectionOverflow page object of the element in item position.
      * @method
-     *  @param {number} itemPosition - The base 0 index of the vertical section overflow.
+     * @param {number} itemPosition - The base 0 index of the vertical section overflow.
      */
-    getSctionOverflow(itemPosition) {
+    getSectionOverflow(itemPosition) {
         const items = $(this.rootElement).$$('.rainbow-vertical-section-overflow_container');
         if (items[itemPosition]) {
             return new PageVerticalSectionOverflow(`${this.rootElement} .rainbow-vertical-section-overflow_container:nth-child(${itemPosition + 1})`);

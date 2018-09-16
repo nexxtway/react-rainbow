@@ -25,8 +25,24 @@ class PageVerticalSectionOverflow {
      * @method
      * @returns {bool}
      */
-    isVerticalOverflowVisible() {
+    isExpanded() {
         return $(this.rootElement).$('[data-id="vertical-overflow"]').isVisible();
+    }
+
+    /**
+     * Waiting until the expand transition has finished.
+     * @method
+     */
+    waitUntilExpand() {
+        browser.waitUntil(() => this.isExpanded());
+    }
+
+    /**
+     * Waiting until the contract transition has finished.
+     * @method
+     */
+    waitUntilCollapse() {
+        browser.waitUntil(() => !this.isExpanded());
     }
 
     /**
