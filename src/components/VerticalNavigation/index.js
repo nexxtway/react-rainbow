@@ -5,11 +5,12 @@ import { Provider } from './context';
 import './styles.css';
 
 /**
-* Navigation represents a list of links that either take the user to another page
-* or parts of the page the user is in.
-*/
+ * Navigation represents a list of links that either take the user to another page
+ * or parts of the page the user is in.
+ */
 export default function VerticalNavigation(props) {
     const {
+        id,
         ariaLabel,
         style,
         selectedItem,
@@ -31,6 +32,7 @@ export default function VerticalNavigation(props) {
 
     return (
         <nav
+            id={id}
             className={getClassNames()}
             style={style}
             aria-label={ariaLabel}>
@@ -46,12 +48,12 @@ VerticalNavigation.propTypes = {
     /** Name of the nagivation item to make active. */
     selectedItem: PropTypes.node,
     /** Action fired when an item is selected.
-    * The event params include the `name` of the selected item. */
+     * The event params include the `name` of the selected item. */
     onSelect: PropTypes.func,
     /** Specify true to reduce spacing between navigation items. This value defaults to false. */
     compact: PropTypes.bool,
     /** Specify true when the vertical navigation is sitting on top of a shaded background.
-    * This value defaults to false. */
+     * This value defaults to false. */
     shaded: PropTypes.bool,
     /** The aria label attribute for the navigation component. */
     ariaLabel: PropTypes.string,
@@ -60,10 +62,12 @@ VerticalNavigation.propTypes = {
     /** An object with custom style applied for the outer element. */
     style: PropTypes.object,
     /**
-    * This prop that should not be visible in the documentation.
-    * @ignore
-    */
+     * This prop that should not be visible in the documentation.
+     * @ignore
+     */
     children: PropTypes.node,
+    /** The id of the outer element. */
+    id: PropTypes.string,
 };
 
 VerticalNavigation.defaultProps = {
@@ -75,4 +79,5 @@ VerticalNavigation.defaultProps = {
     className: undefined,
     style: undefined,
     children: null,
+    id: undefined,
 };
