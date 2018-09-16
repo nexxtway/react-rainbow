@@ -2,6 +2,7 @@
 
     <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
         <Textarea
+            id="textarea-1"
             label="Textarea Label"
             rows={4}
             placeholder="Placeholder Text" />
