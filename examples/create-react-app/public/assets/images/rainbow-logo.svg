@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>rainbow-logo</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="logo" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Pages-V1" transform="translate(-22.000000, -17.000000)" fill-rule="nonzero">
+            <g id="Group-3" transform="translate(-1.000000, 0.000000)">
+                <g id="Group-22" transform="translate(23.000000, 17.000000)">
+                    <g id="Group-17">
+                        <g id="rainbow-logo">
+                            <rect id="Rectangle-path" fill="#323B45" x="1.5936" y="1.5392" width="32.768" height="32.768"></rect>
+                            <rect id="Rectangle-path" fill="#1DE9B6" x="25.3376" y="0.0288" width="10.656" height="10.656" rx="2"></rect>
+                            <rect id="Rectangle-path" fill="#01B6F5" x="12.672" y="0.0288" width="10.656" height="10.656" rx="2"></rect>
+                            <rect id="Rectangle-path" fill="#FE4849" x="0.0992" y="0.0288" width="10.656" height="10.656" rx="2"></rect>
+                            <rect id="Rectangle-path" fill="#F4F6F9" x="25.2672" y="12.5952" width="10.656" height="10.656" rx="2"></rect>
+                            <rect id="Rectangle-path" fill="#FFCC00" x="12.6048" y="12.5952" width="10.656" height="10.656" rx="2"></rect>
+                            <rect id="Rectangle-path" fill="#F8752D" x="0.0288" y="12.5952" width="10.656" height="10.656" rx="2"></rect>
+                            <rect id="Rectangle-path" fill="#01B6F5" x="25.2672" y="25.1584" width="10.656" height="10.656" rx="2"></rect>
+                            <rect id="Rectangle-path" fill="#EA4243" x="12.6048" y="25.1584" width="10.656" height="10.656" rx="2"></rect>
+                            <rect id="Rectangle-path" fill="#1AD1A3" x="0.0288" y="25.1584" width="10.656" height="10.656" rx="2"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
