@@ -1,0 +1,38 @@
+.rainbow-tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2.625rem;
+  min-width: 9.375rem;
+  border-top: transparent 0.125rem solid;
+  border-bottom: #e3e5ed 0.125rem solid;
+  cursor: pointer;
+  background-color: transparent; }
+  .rainbow-tab a {
+    line-height: 1rem;
+    font-size: 0.875rem;
+    font-weight: 900;
+    color: #576574;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; }
+    .rainbow-tab a:hover, .rainbow-tab a:active, .rainbow-tab a:visited, .rainbow-tab a:focus {
+      text-decoration: none; }
+  .rainbow-tab.rainbow-tab--disabled a:focus {
+    outline: none;
+    text-decoration: none; }
+  .rainbow-tab span {
+    margin-left: 0.5rem; }
+
+.rainbow-tab--active {
+  background-color: white;
+  border-top-color: #01b6f5;
+  border-bottom-color: white; }
+  .rainbow-tab--active a {
+    color: #01b6f5; }
+
+.rainbow-tab--disabled a {
+  color: #a4a7b5; }

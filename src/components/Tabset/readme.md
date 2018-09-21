@@ -1,0 +1,31 @@
+##### TabSet
+
+    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+    const { faCog } = require('@fortawesome/free-solid-svg-icons');
+
+    class TabsetExample extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = { selected: 'issues' };
+            this.handleOnSelect = this.handleOnSelect.bind(this);
+        }
+
+        handleOnSelect(selected) {
+            this.setState({ selected });
+        }
+
+        render() {
+            const { selected } = this.state;
+            return (
+                <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
+                    <Tabset id="tabset-1" onSelect={this.handleOnSelect} activeTabName={selected}>
+                        <Tab label="Github Issues" name="issues" icon={<FontAwesomeIcon icon={faCog} />} />
+                        <Tab label="Pull Request" name="pr" />
+                        <Tab label="Merge Request" name="mr" disabled />
+                    </Tabset>
+                </div>
+            );
+        }
+    }
+
+    <TabsetExample />

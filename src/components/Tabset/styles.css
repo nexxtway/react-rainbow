@@ -1,0 +1,8 @@
+.rainbow-tabset {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 41px;
+  overflow-y: visible;
+  border-bottom: #e3e5ed 2px solid;
+  background-color: rgba(0, 0, 0, 0.02); }
