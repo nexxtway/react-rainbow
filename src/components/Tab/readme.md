@@ -1,4 +1,4 @@
-##### TabSet
+##### Tab
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
     const { faCog } = require('@fortawesome/free-solid-svg-icons');
@@ -10,7 +10,7 @@
             this.handleOnSelect = this.handleOnSelect.bind(this);
         }
 
-        handleOnSelect(event, selected) {
+        handleOnSelect(selected) {
             this.setState({ selected });
         }
 

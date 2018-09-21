@@ -9,10 +9,10 @@ describe('<Tabset />', () => {
     it('should render the children passed', () => {
         const component = mount(
             <Tabset>
-                <Tab label="Tab-1" name="tab-1" registerTab={registerTabMockFn} />
+                testing tabset
             </Tabset>,
         );
-        expect(component.find('a').exists()).toBe(true);
+        expect(component.text()).toBe('testing tabset');
     });
     it('should set the rainbow-tab--active class only to the third Tab when activeTabName is tab-3', () => {
         const component = mount(

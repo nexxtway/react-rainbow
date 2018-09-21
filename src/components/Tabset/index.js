@@ -28,7 +28,6 @@ export default class Tabset extends Component {
     }
 
     handleKeyPressed(event) {
-        event.preventDefault();
         if (this.keyHandlerMap[event.keyCode]) {
             return this.keyHandlerMap[event.keyCode]();
         }
@@ -36,22 +35,22 @@ export default class Tabset extends Component {
     }
 
     selectTab(side) {
-        const { activeTabName, onSelect } = this.props;
+        const { activeTabName } = this.props;
         const { tabChildren } = this.state;
-        const tabIndex = tabChildren.findIndex(tab => tab === activeTabName);
+        const tabIndex = tabChildren.findIndex(tab => tab.name === activeTabName);
+
         if (tabIndex === tabChildren.length - 1 && side === RIGHT_SIDE) {
-            onSelect(tabChildren[0]);
+            tabChildren[0].select();
         } else if (tabIndex === 0 && side === LEFT_SIDE) {
-            onSelect(tabChildren[tabChildren.length - 1]);
+            tabChildren[tabChildren.length - 1].select();
         } else {
-            onSelect(tabChildren[tabIndex + side]);
+            tabChildren[tabIndex + side].select();
         }
     }
 
     registerTab(tab) {
         const { tabChildren } = this.state;
-        const newTabChildren = tabChildren;
-        newTabChildren.push(tab);
+        const newTabChildren = tabChildren.concat([tab]);
         this.setState({ tabChildren: newTabChildren });
     }
 
@@ -74,11 +73,21 @@ export default class Tabset extends Component {
 }
 
 Tabset.propTypes = {
+    /** Name of the tab item to make active. */
+    activeTabName: PropTypes.node,
+    /** Action fired when an item is selected.
+     * The event params include the `name` of the selected item. */
     onSelect: PropTypes.func,
-    activeTabName: PropTypes.string,
-    children: PropTypes.node,
+    /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
+    /** An object with custom style applied for the outer element. */
     style: PropTypes.object,
+    /**
+     * This prop that should not be visible in the documentation.
+     * @ignore
+     */
+    children: PropTypes.node,
+    /** The id of the outer element. */
     id: PropTypes.string,
 };
 

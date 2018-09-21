@@ -3,6 +3,7 @@ const PageTabset = require('./../../src/components/Tabset/pageObject');
 const TABSET = '#tabset-1';
 
 const LEFT_ARROW = 'Left arrow';
+const RIGHT_ARROW = 'Right arrow';
 
 describe('Tabset with href example', () => {
     beforeEach(() => {
@@ -16,7 +17,7 @@ describe('Tabset with href example', () => {
         tabItem.click();
         expect(tabItem.isSelected()).toBe(true);
     });
-    it('should select the secound tab when the first has focus and down key is pressed', () => {
+    it('should select the last tab when the first has focus and left arrow key is pressed', () => {
         const tabset = new PageTabset(TABSET);
         const tabItem = tabset.getItem(0);
         tabItem.click();
@@ -24,12 +25,27 @@ describe('Tabset with href example', () => {
         const tabItem2 = tabset.getItem(1);
         expect(tabItem2.isSelected()).toBe(true);
     });
-    it('should select the first tab when the first has focus and down key is pressed twice', () => {
+    it('should select the first tab when the first has focus and right arrow key is pressed twice', () => {
         const tabset = new PageTabset(TABSET);
         const tabItem = tabset.getItem(0);
         tabItem.click();
-        browser.keys(LEFT_ARROW);
-        browser.keys(LEFT_ARROW);
+        browser.keys(RIGHT_ARROW);
+        browser.keys(RIGHT_ARROW);
         expect(tabItem.isSelected()).toBe(true);
+    });
+    it('should loose focus if other tab is selected', () => {
+        const tabset = new PageTabset(TABSET);
+        const tabItem = tabset.getItem(0);
+        const tabItem2 = tabset.getItem(1);
+        tabItem.click();
+        tabItem2.click();
+        expect(tabItem.hasFocus()).toBe(false);
+    });
+    it('should loose focus if other tab is selected by keyboard navigation', () => {
+        const tabset = new PageTabset(TABSET);
+        const tabItem = tabset.getItem(0);
+        tabItem.click();
+        browser.keys(RIGHT_ARROW);
+        expect(tabItem.hasFocus()).toBe(false);
     });
 });
