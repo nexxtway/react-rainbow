@@ -32,9 +32,6 @@
     cursor: default;
     pointer-events: none; }
 
-.rainbow-button-icon + .rainbow-button-icon {
-  margin-left: 0.25rem; }
-
 .rainbow-button-icon--brand {
   background-color: #01b6f5;
   border: 1px solid #01b6f5;

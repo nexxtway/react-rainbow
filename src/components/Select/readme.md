@@ -45,20 +45,6 @@
     </div>
 
 
-##### select with bottom help
-    const options = [
-        { value: 'option 1', label: 'Option with error 1' },
-        { value: 'option 2', label: 'Option with error 2' },
-        { value: 'option 3', label: 'Option with error 3' },
-    ];
-    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
-        <Select 
-            label="Select Label"
-            bottomHelpText="This is the bottom help"
-            options={options} />
-    </div>
-
-
 ##### select controlled example
     const options = [
         { value: 'option 1', label: 'Option controlled 1', disabled: false },
