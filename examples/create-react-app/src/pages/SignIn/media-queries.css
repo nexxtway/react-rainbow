@@ -1,0 +1,6 @@
+@media (max-width: 600px) {
+    .rainbow-sign-in_card-container {
+        width: 100%;
+        border-radius: 0;
+    }
+}

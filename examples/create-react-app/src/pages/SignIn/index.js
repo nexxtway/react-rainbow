@@ -5,12 +5,13 @@ import Input from 'react-rainbow-components/components/Input';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import './styles.css';
+import './media-queries.css';
 
 export default function SignInExample() {
     return (
-        <div className="rainbow-align-content_center rainbow-flex_column">
+        <div className="rainbow-align-content_center rainbow-flex_column rainbow-sign-in_view-port">
             <img
-                className="rainbow-p-vertical_x-large"
+                className="rainbow-m-bottom_x-large rainbow-sign-in_logo"
                 src="assets/images/rainbow-logo.svg"
                 alt="rainbow-logo" />
             <Card className="rainbow-p-around_x-large rainbow-sign-in_card-container">
@@ -23,7 +24,7 @@ export default function SignInExample() {
                     required
                     placeholder="Enter your email address"
                     icon={
-                        <FontAwesomeIcon icon={faEnvelope} size="lg" className="rainbow-color_gray-3" />
+                        <FontAwesomeIcon icon={faEnvelope} className="rainbow-color_gray-3" />
                     } />
                 <Input
                     className="rainbow-m-bottom_large"
@@ -31,7 +32,7 @@ export default function SignInExample() {
                     placeholder="Enter your password"
                     required
                     icon={
-                        <FontAwesomeIcon icon={faLock} size="lg" className="rainbow-color_gray-3" />
+                        <FontAwesomeIcon icon={faLock} className="rainbow-color_gray-3" />
                     } />
 
                 <Button

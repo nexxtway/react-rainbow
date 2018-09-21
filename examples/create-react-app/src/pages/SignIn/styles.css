@@ -10,3 +10,14 @@
 .rainbow-sign-in_button-sign-in {
     width: 100%;
 }
+
+.rainbow-sign-in_logo {
+    width: 48px;
+    height: 48px;
+}
+
+.rainbow-sign-in_view-port {
+    width: 100vw;
+    height: 100vh;
+}
+
