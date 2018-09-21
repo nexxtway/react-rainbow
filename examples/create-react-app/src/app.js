@@ -12,6 +12,7 @@ import Card from './pages/Card';
 import Input from './pages/Input';
 import ProgressBar from './pages/ProgressBar';
 import Spinner from './pages/Spinner';
+import Checkout from './pages/Checkout';
 
 export default function App() {
     return (
@@ -28,6 +29,7 @@ export default function App() {
                 <Route path="/input" component={Input} />
                 <Route path="/progress-bar" component={ProgressBar} />
                 <Route path="/spinner" component={Spinner} />
+                <Route path="/checkout" component={Checkout} />
             </RainbowApplication>
         </Router>
     );

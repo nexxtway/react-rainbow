@@ -1,0 +1,21 @@
+.rainbow-checkout_view-port {
+    height: 100vh;
+}
+
+.rainbow-checkout_card-container {
+    width: 636px;
+}
+
+.rainbow-checkout_logo {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: #ffcc00;
+}
+
+.rainbow-checkout_form-elemnt {
+    width: 50%;
+}
+
+.rainbow-checkout_button {
+    width: 120px;
+}

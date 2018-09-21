@@ -38,6 +38,7 @@ export default class Home extends Component {
                         <VerticalItem name="input" label="Input" href="input" />
                         <VerticalItem name="progress-bar" label="ProgressBar" href="progress-bar" />
                         <VerticalItem name="spinner" label="Spinner" href="spinner" />
+                        <VerticalItem name="checkout" label="Checkout" href="checkout" />
                     </VerticalSection>
                 </VerticalNavigation>
             </div>
