@@ -65,10 +65,6 @@
     }
 }
 
-.rainbow-button + .rainbow-button {
-    margin-left: 0.25rem;
-}
-
 .rainbow-button--neutral {
     @include variants-common-styles(white, $color-gray-2, $color-brand);
 
