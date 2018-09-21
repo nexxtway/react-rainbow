@@ -40,6 +40,6 @@ describe('<Tabset />', () => {
         );
         const item2 = component.find('Tab[name="tab-2"]').find('a');
         item2.simulate('click');
-        expect(onSelectMockFn).toHaveBeenCalledWith('tab-2');
+        expect(onSelectMockFn).toHaveBeenCalledWith(expect.any(Object), 'tab-2');
     });
 });

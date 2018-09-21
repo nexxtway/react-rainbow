@@ -26,7 +26,7 @@ describe('<Tab />', () => {
         const aComponent = component.find('a');
         aComponent.simulate('click');
 
-        expect(onSelectMockFn).toHaveBeenCalledWith('tab-1');
+        expect(onSelectMockFn).toHaveBeenCalledWith(expect.any(Object), 'tab-1');
     });
     it('should not call onSelect when clicked if disabled is passed', () => {
         const onSelectMockFn = jest.fn();
