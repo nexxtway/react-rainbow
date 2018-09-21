@@ -58,10 +58,6 @@
     }
 }
 
-.rainbow-button-icon + .rainbow-button-icon {
-    margin-left: 0.25rem;
-}
-
 .rainbow-button-icon--brand {
     @include variants-common-styles($color-brand, $color-brand, white);
 
