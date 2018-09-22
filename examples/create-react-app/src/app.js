@@ -14,6 +14,8 @@ import ProgressBar from './pages/ProgressBar';
 import Spinner from './pages/Spinner';
 import Checkout from './pages/Checkout';
 import SignIn from './pages/SignIn';
+import Admin from './pages/Admin';
+
 
 export default function App() {
     return (
@@ -32,6 +34,7 @@ export default function App() {
                 <Route path="/spinner" component={Spinner} />
                 <Route path="/checkout" component={Checkout} />
                 <Route path="/sign-in" component={SignIn} />
+                <Route path="/admin" component={Admin} />
             </RainbowApplication>
         </Router>
     );
