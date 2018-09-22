@@ -11,7 +11,9 @@ function getRefIndex(nodes, ref) {
 
 function sortChildren(childrenRefs, nodes) {
     const [...newChildrenRefs] = childrenRefs;
-    newChildrenRefs.sort((refA, refB) => getRefIndex(nodes, refA) - getRefIndex(nodes, refB));
+    newChildrenRefs.sort(
+        (refA, refB) => getRefIndex(nodes, refA.ref) - getRefIndex(nodes, refB.ref),
+    );
     return newChildrenRefs;
 }
 

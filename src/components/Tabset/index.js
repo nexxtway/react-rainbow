@@ -103,8 +103,9 @@ Tabset.propTypes = {
     /** Action fired when an item is selected.
      * The event params include the `name` of the selected item. */
     onSelect: PropTypes.func,
-    /** A CSS class for the outer element, in addition to the component's base classes. */
+    /** If true, the tabs will grow to use all the available space */
     fullWidth: PropTypes.bool,
+    /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied for the outer element. */
     style: PropTypes.object,

@@ -5,7 +5,7 @@ const TABSET = '#tabset-1';
 const LEFT_ARROW = 'Left arrow';
 const RIGHT_ARROW = 'Right arrow';
 
-describe('Tabset with href example', () => {
+describe('Tabset base example', () => {
     beforeEach(() => {
         browser.url('/#!/Tabset/1');
         browser.refresh();

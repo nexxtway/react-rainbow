@@ -6,14 +6,16 @@ import {
 describe('<Tabset/> utils', () => {
     describe('insertChildOrderly', () => {
         it('should insert the child in the right order if the item in the nodes is at middle', () => {
-            const childrenRefs = ['item1', 'item2', 'item4', 'item5'];
+            const childrenRefs = [{ ref: 'item1' }, { ref: 'item2' }, { ref: 'item4' }, { ref: 'item5' }];
             const nodes = ['item1', 'item2', 'item3', 'item4', 'item5'];
-            expect(insertChildOrderly(childrenRefs, 'item3', nodes)).toEqual(nodes);
+            const expectedNodes = [{ ref: 'item1' }, { ref: 'item2' }, { ref: 'item3' }, { ref: 'item4' }, { ref: 'item5' }];
+            expect(insertChildOrderly(childrenRefs, { ref: 'item3' }, nodes)).toEqual(expectedNodes);
         });
         it('should insert the child in the right order if the item in the nodes is at end', () => {
-            const childrenRefs = ['item1', 'item2', 'item3'];
+            const childrenRefs = [{ ref: 'item1' }, { ref: 'item2' }, { ref: 'item3' }];
             const nodes = ['item1', 'item2', 'item3', 'item4'];
-            expect(insertChildOrderly(childrenRefs, 'item4', nodes)).toEqual(nodes);
+            const expectedNodes = [{ ref: 'item1' }, { ref: 'item2' }, { ref: 'item3' }, { ref: 'item4' }];
+            expect(insertChildOrderly(childrenRefs, { ref: 'item4' }, nodes)).toEqual(expectedNodes);
         });
     });
     describe('getChildTabNodes', () => {
