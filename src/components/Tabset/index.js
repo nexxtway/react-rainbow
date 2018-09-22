@@ -10,9 +10,8 @@ const RIGHT_SIDE = 1;
 const LEFT_SIDE = -1;
 
 /**
- * Tabs keeps related content in a single container that is shown and hidden through navigation.
- */
-
+* Tabs keeps related content in a single container that is shown and hidden through navigation.
+*/
 export default class Tabset extends Component {
     constructor(props) {
         super(props);

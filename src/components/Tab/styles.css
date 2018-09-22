@@ -1,11 +1,10 @@
 /* stylelint-disable no-descending-specificity */
 .rainbow-tab {
+  height: 2.5rem;
+  background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 2.5rem;
-  min-width: 9.375rem;
-  background-color: transparent;
   position: relative; }
   .rainbow-tab:hover .rainbow-tab-item {
     cursor: pointer;
@@ -15,7 +14,8 @@
     text-decoration: none; }
 
 .rainbow-tab--full-width {
-  flex: 1; }
+  flex: 1;
+  justify-content: center; }
 
 .rainbow-tab--active {
   background-color: white;
@@ -44,16 +44,15 @@
   line-height: 1rem;
   letter-spacing: 0.5px;
   font-size: 0.875rem;
-  font-weight: 900;
+  font-weight: 600;
   color: #576574;
   height: 100%;
   width: 100%;
+  padding: 0 1rem;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  position: relative;
-  padding: 0 0.75rem; }
+  position: relative; }
   .rainbow-tab-item:hover, .rainbow-tab-item:active, .rainbow-tab-item:visited {
     text-decoration: none;
     outline: 0; }
