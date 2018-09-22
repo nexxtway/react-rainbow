@@ -70,6 +70,10 @@
     }
 }
 
+.rainbow-tab--full-width {
+    flex: 1;
+}
+
 .rainbow-tab--active {
     background-color: white;
     border-bottom-color: white;
