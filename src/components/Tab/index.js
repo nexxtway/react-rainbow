@@ -54,13 +54,12 @@ class TabItem extends Component {
         return (
             <li
                 className={this.getTabClassName()}
-                style={[style, { position: 'relative' }]}
+                style={style}
                 title={title}
                 role="presentation">
                 <a
                     href="javascript:void(0);"
                     role="tab"
-                    style={{ position: 'relative' }}
                     aria-selected={this.isSelected()}
                     onClick={this.handleSelect}
                     tabIndex={this.getTabIndex()}
