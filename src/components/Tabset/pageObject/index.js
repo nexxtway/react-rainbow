@@ -1,14 +1,14 @@
 const PageTab = require('../../Tab/pageObject');
 
 /**
- * Tabs page object class.
+ * Tabset page object class.
  * @class
  */
-class PageTabs {
+class PageTabset {
     /**
-     * Create a new Tabs page object.
+     * Create a new Tabset page object.
      * @constructor
-     * @param {string} rootElement - The selector of the Tabs root element.
+     * @param {string} rootElement - The selector of the Tabset root element.
      */
     constructor(rootElement) {
         this.rootElement = rootElement;
@@ -28,4 +28,4 @@ class PageTabs {
     }
 }
 
-module.exports = PageTabs;
+module.exports = PageTabset;

@@ -13,7 +13,7 @@ const LEFT_SIDE = -1;
  * Tabs keeps related content in a single container that is shown and hidden through navigation.
  */
 
-export default class Tabs extends Component {
+export default class Tabset extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -101,7 +101,7 @@ export default class Tabs extends Component {
     }
 }
 
-Tabs.propTypes = {
+Tabset.propTypes = {
     /** Name of the tab item to make active. */
     activeTabName: PropTypes.node,
     /** Action fired when an item is selected.
@@ -122,7 +122,7 @@ Tabs.propTypes = {
     id: PropTypes.string,
 };
 
-Tabs.defaultProps = {
+Tabset.defaultProps = {
     activeTabName: undefined,
     onSelect: () => {},
     fullWidth: false,

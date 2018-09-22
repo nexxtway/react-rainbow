@@ -15,51 +15,13 @@
     position: relative;
 
     &:hover {
-        a {
+        .rainbow-tab-item {
             cursor: pointer;
             color: $color-brand;
         }
     }
 
-    a {
-        line-height: 1rem;
-        letter-spacing: 0.5px;
-        font-size: $font-size-text-medium;
-        font-weight: 900;
-        color: $color-gray-4;
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        padding: 0 $padding-small;
-
-        &:hover, &:active, &:visited {
-            text-decoration: none;
-            outline: 0;
-        }
-
-        &:focus {
-            text-decoration: none;
-            outline: 0;
-            box-shadow: inset 0 0.125rem 0.125rem $color-brand;
-        }
-
-        div {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 0.125rem;
-            border-bottom-left-radius: 100px;
-            border-bottom-right-radius: 100px;
-            background-color: transparent;
-        }
-    }
-
-    &.rainbow-tab--disabled a:focus {
+    &.rainbow-tab--disabled .rainbow-tab-item:focus {
         outline: none;
         text-decoration: none;
     }
@@ -75,17 +37,17 @@
     box-shadow: inset 0 0.1875rem 0.1875rem 0 $color-gray-2;
     height: 2.6875rem;
 
-    a {
+    .rainbow-tab-item {
         color: $color-brand;
 
-        div {
+        .rainbow-tab-item-selected-indicator {
             background-color: $color-brand;
         }
     }
 }
 
 .rainbow-tab--disabled {
-    a {
+    .rainbow-tab-item {
         color: $color-gray-3;
         cursor: pointer;
         pointer-events: none;
@@ -95,12 +57,50 @@
         box-shadow: none;
         background-color: transparent;
 
-        a {
+        .rainbow-tab-item {
             color: $color-gray-3;
 
-            div {
+            .rainbow-tab-item-selected-indicator {
                 background-color: transparent;
             }
         }
     }
+}
+
+.rainbow-tab-item {
+    line-height: 1rem;
+    letter-spacing: 0.5px;
+    font-size: $font-size-text-medium;
+    font-weight: 900;
+    color: $color-gray-4;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 0 $padding-small;
+
+    &:hover, &:active, &:visited {
+        text-decoration: none;
+        outline: 0;
+    }
+
+    &:focus {
+        text-decoration: none;
+        outline: 0;
+        box-shadow: inset 0 0.125rem 0.125rem $color-brand;
+    }
+}
+
+.rainbow-tab-item-selected-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 0.125rem;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+    background-color: transparent;
 }

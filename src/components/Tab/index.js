@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { Consumer } from '../Tabs/context';
+import { Consumer } from '../Tabset/context';
 import './styles.css';
 
 class TabItem extends Component {
@@ -68,6 +68,7 @@ class TabItem extends Component {
                 <a
                     href="javascript:void(0);"
                     role="tab"
+                    className="rainbow-tab-item"
                     aria-selected={this.isSelected()}
                     onClick={this.handleSelect}
                     tabIndex={this.getTabIndex()}
@@ -75,7 +76,7 @@ class TabItem extends Component {
                     aria-controls={ariaControls}
                     ref={this.tabRef}>
 
-                    <div />
+                    <div className="rainbow-tab-item-selected-indicator" />
                     {label}
                 </a>
             </li>
