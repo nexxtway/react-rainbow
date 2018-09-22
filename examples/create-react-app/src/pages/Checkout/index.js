@@ -9,27 +9,35 @@ import { faEnvelope, faMobileAlt, faArrowRight, faDollarSign } from '@fortawesom
 import './styles.css';
 import './media-queries.css';
 
+const COUNTRY_OPTIONS = [
+    { value: 'option 1', label: 'Cuba' },
+    { value: 'option 2', label: 'United States' },
+    { value: 'option 3', label: 'Mexico' },
+];
+
+const CARD_ICON = (
+    <span className="rainbow-border-radius_circle rainbow-align-content_center rainbow-checkout_logo">
+        <FontAwesomeIcon icon={faDollarSign} size="lg" className="rainbow-color_white" />
+    </span>
+);
+
 export default function CheckoutExample() {
     return (
         <div className="rainbow-align-content_center rainbow-checkout_view-port">
             <Card
                 className="rainbow-checkout_card-container"
-                icon={
-                    <span className="rainbow-border-radius_circle rainbow-align-content_center rainbow-checkout_logo">
-                        <FontAwesomeIcon icon={faDollarSign} size="lg" className="rainbow-color_white" />
-                    </span>
-                }
+                icon={CARD_ICON}
                 title="Checkout">
 
                 <div className="rainbow-p-horizontal_x-large rainbow-p-bottom_large rainbow-checkout_media-styles-container">
                     <div className="rainbow-flex rainbow-checkout_media-styles-inner-container rainbow-m-bottom_large">
                         <Input
-                            className="rainbow-checkout_form-elemnt rainbow-m-right_x-large"
+                            className="rainbow-checkout_form-element rainbow-m-right_x-large"
                             label="First Name"
                             required
                             placeholder="Enter your first name" />
                         <Input
-                            className="rainbow-checkout_form-elemnt"
+                            className="rainbow-checkout_form-element"
                             label="Last Name"
                             placeholder="Enter your email last name"
                             required />
@@ -37,7 +45,7 @@ export default function CheckoutExample() {
 
                     <div className="rainbow-flex rainbow-checkout_media-styles-inner-container rainbow-m-bottom_large">
                         <Input
-                            className="rainbow-checkout_form-elemnt rainbow-m-right_x-large"
+                            className="rainbow-checkout_form-element rainbow-m-right_x-large"
                             label="Email Address"
                             required
                             placeholder="Enter your email address"
@@ -46,12 +54,8 @@ export default function CheckoutExample() {
                             } />
                         <Select
                             label="Country"
-                            className="rainbow-checkout_form-elemnt"
-                            options={[
-                                { value: 'option 1', label: 'Cuba' },
-                                { value: 'option 2', label: 'United States' },
-                                { value: 'option 3', label: 'Mexico' },
-                            ]}
+                            className="rainbow-checkout_form-element"
+                            options={COUNTRY_OPTIONS}
                             required />
                     </div>
 
@@ -62,11 +66,11 @@ export default function CheckoutExample() {
 
                     <div className="rainbow-flex rainbow-checkout_media-styles-inner-container rainbow-m-bottom_large">
                         <Input
-                            className="rainbow-checkout_form-elemnt rainbow-m-right_x-large"
+                            className="rainbow-checkout_form-element rainbow-m-right_x-large"
                             label="Zip Code"
                             placeholder="Enter your zip code" />
                         <Input
-                            className="rainbow-checkout_form-elemnt"
+                            className="rainbow-checkout_form-element"
                             label="Phone Number"
                             placeholder="Enter your phone number"
                             icon={
@@ -78,7 +82,7 @@ export default function CheckoutExample() {
                         label="Save data for the nex time" />
                     <div className="rainbow-flex rainbow-justify_end">
                         <Button variant="brand" className="rainbow-checkout_button">
-                        Next
+                            Next
                             <FontAwesomeIcon icon={faArrowRight} className="rainbow-m-left_small" />
                         </Button>
                     </div>
