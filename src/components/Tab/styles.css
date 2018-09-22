@@ -1,0 +1,73 @@
+/* stylelint-disable no-descending-specificity */
+.rainbow-tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2.5rem;
+  min-width: 9.375rem;
+  background-color: transparent;
+  position: relative; }
+  .rainbow-tab:hover {
+    background-color: white;
+    border-bottom-color: white;
+    box-shadow: inset 0 0.0625rem 0.0625rem #01b6f5;
+    height: 2.6875rem; }
+    .rainbow-tab:hover a {
+      cursor: pointer;
+      color: #01b6f5; }
+      .rainbow-tab:hover a div {
+        background-color: #01b6f5; }
+  .rainbow-tab a {
+    line-height: 1rem;
+    font-size: 0.875rem;
+    font-weight: 900;
+    color: #576574;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative; }
+    .rainbow-tab a:hover, .rainbow-tab a:active, .rainbow-tab a:visited {
+      text-decoration: none;
+      outline: 0; }
+    .rainbow-tab a:focus {
+      text-decoration: none;
+      outline: 0;
+      box-shadow: inset 0 0.125rem 0.125rem #01b6f5; }
+    .rainbow-tab a div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 0.125rem;
+      border-bottom-left-radius: 100px;
+      border-bottom-right-radius: 100px;
+      background-color: transparent; }
+  .rainbow-tab.rainbow-tab--disabled a:focus {
+    outline: none;
+    text-decoration: none; }
+
+.rainbow-tab--active {
+  background-color: white;
+  border-bottom-color: white;
+  box-shadow: inset 0 0.1875rem 0.1875rem 0 #e3e5ed;
+  height: 2.6875rem; }
+  .rainbow-tab--active a {
+    color: #01b6f5; }
+    .rainbow-tab--active a div {
+      background-color: #01b6f5; }
+
+.rainbow-tab--disabled a {
+  color: #a4a7b5;
+  cursor: pointer;
+  pointer-events: none; }
+
+.rainbow-tab--disabled:hover {
+  box-shadow: none;
+  background-color: transparent; }
+  .rainbow-tab--disabled:hover a {
+    color: #a4a7b5; }
+    .rainbow-tab--disabled:hover a div {
+      background-color: transparent; }

@@ -31,7 +31,7 @@ describe('CheckboxGroup base example', () => {
         checkboxGroup.clickItem(0);
         expect(checkboxGroup.isCheckedItem(0)).toBe(true);
     });
-    it('should not lost the checked if another checkbox is clicked', () => {
+    it('should not loose the checked if another checkbox is clicked', () => {
         const checkboxGroup = new PageCheckboxGroup(CHECKBOX_GROUP);
         checkboxGroup.clickItem(0);
         checkboxGroup.clickItem(1);

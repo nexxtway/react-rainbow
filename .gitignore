@@ -30,3 +30,4 @@ errorShots
 allure-results
 junit-results
 *.css.map
+.editorconfig
