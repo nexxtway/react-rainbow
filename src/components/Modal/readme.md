@@ -144,7 +144,7 @@
                        onRequestClose={this.handleOnClose}
                        title="Modal Header"
                        footer={
-                            <div class="rainbow-flex rainbow-justify_end">
+                            <div className="rainbow-flex rainbow-justify_end">
                                 <Button label="Cancel" variant="neutral" />
                                 <Button label="Save" variant="brand" />
                             </div>
@@ -200,7 +200,7 @@
                        onRequestClose={this.handleOnClose}
                        title="Modal Header"
                        footer={
-                            <div class="rainbow-flex rainbow-justify_spread">
+                            <div className="rainbow-flex rainbow-justify_spread">
                                 <Button label="Previous" variant="neutral" />
                                 <Button label="Save" variant="brand" />
                             </div>

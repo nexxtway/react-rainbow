@@ -28,12 +28,16 @@
 
 .rainbow-modal {
     opacity: 0;
-    visibility: hidden;
+    visibility: visible;
     transition: transform 0.1s linear, opacity 0.1s linear;
     position: relative;
     width: 50%;
     max-width: none;
-    min-width: 40rem;
+    min-width: 20rem;
+
+    &:focus {
+        outline: 0;
+    }
 }
 
 .rainbow-modal_container {
@@ -43,22 +47,17 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 100%;
-    padding: 3rem 0;
-    margin: 0 2rem;
     border-radius: $border-radius-1;
 }
 
 .rainbow-modal--large {
     width: 90%;
-    max-width: none;
     min-width: 40rem;
 }
 
 .rainbow-modal--medium {
     width: 70%;
-    max-width: none;
-    min-width: 40rem;
+    min-width: 30rem;
 }
 
 .rainbow-modal_header {
@@ -130,7 +129,7 @@
     width: 2rem;
     height: 2rem;
     position: absolute;
-    top: 3.5rem;
+    top: 0.5rem;
     right: 0.5rem;
     z-index: 90002;
 }
@@ -147,7 +146,6 @@
 }
 
 .rainbow-modal-slide-down {
-    opacity: 1;
-    visibility: visible;
-    transform: translate(0, 1rem);
+    transform: translate(0, 80rem);
+    transition: transform 0.6s linear;
 }

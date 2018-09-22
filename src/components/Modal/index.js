@@ -11,17 +11,15 @@ import { uniqueId } from './../../libs/utils';
 import { ESCAPE_KEY } from './../../libs/constants';
 import './styles.css';
 
-export default function Modal(props) {
-    return createPortal(<ModalComponent {...props} />, document.body);
-}
-
-class ModalComponent extends Component {
+export default class Modal extends Component {
     constructor(props) {
         super(props);
         this.buttonRef = React.createRef();
+        this.modalRef = React.createRef();
         this.modalHeadingId = uniqueId('modal-heading');
         this.modalContentId = uniqueId('modal-content');
         this.handleKeyEscapePressed = this.handleKeyEscapePressed.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     getBackDropClassNames() {
@@ -32,7 +30,6 @@ class ModalComponent extends Component {
     getFocus() {
         const { isOpen } = this.props;
         if (isOpen) {
-            document.getElementById('rsg-root').tabIndex = -1;
             this.buttonRef.current.focus();
         }
     }
@@ -66,6 +63,17 @@ class ModalComponent extends Component {
         return null;
     }
 
+    handleClick(event) {
+        const { isOpen, onRequestClose } = this.props;
+        if (isOpen) {
+            const isClickOutsideModal = !this.modalRef.current.contains(event.target);
+            if (isClickOutsideModal) {
+                return onRequestClose();
+            }
+        }
+        return null;
+    }
+
     render() {
         const {
             title,
@@ -76,45 +84,49 @@ class ModalComponent extends Component {
             onRequestClose,
         } = this.props;
         return (
-            <div
-                onClick={onRequestClose}
-                className={this.getBackDropClassNames()}
-                onKeyDown={this.handleKeyEscapePressed}>
-                <section
-                    role="dialog"
-                    tabIndex="-1"
-                    aria-labelledby={this.modalHeadingId}
-                    aria-modal="true"
-                    aria-hidden={!isOpen}
-                    aria-describedby={this.modalContentId}
-                    className={this.getContainerClassNames()}
-                    style={style}>
-                    <div className="rainbow-modal_container">
-                        <ButtonIcon
-                            className="rainbow-modal_close"
-                            icon={<CloseIcon />}
-                            title="Close"
-                            onClick={onRequestClose}
-                            ref={this.buttonRef} />
-                        <Header
-                            id={this.modalHeadingId}
-                            title={title} />
-                        <div className="rainbow-modal_content rainbow-p-around_medium" id={this.modalContentId}>
-                            {children}
+            createPortal(
+                <div
+                    onClick={this.handleClick}
+                    className={this.getBackDropClassNames()}
+                    onKeyDown={this.handleKeyEscapePressed}>
+                    <section
+                        role="dialog"
+                        tabIndex="-1"
+                        aria-labelledby={this.modalHeadingId}
+                        aria-modal="true"
+                        aria-hidden={!isOpen}
+                        aria-describedby={this.modalContentId}
+                        className={this.getContainerClassNames()}
+                        style={style}
+                        ref={this.modalRef}>
+                        <div className="rainbow-modal_container">
+                            <ButtonIcon
+                                className="rainbow-modal_close"
+                                icon={<CloseIcon />}
+                                title="Close"
+                                onClick={onRequestClose}
+                                ref={this.buttonRef} />
+                            <Header
+                                id={this.modalHeadingId}
+                                title={title} />
+                            <div className="rainbow-modal_content rainbow-p-around_medium" id={this.modalContentId}>
+                                {children}
+                            </div>
+                            <RenderIf isTrue={!!footer}>
+                                <footer className="rainbow-modal_footer">
+                                    {footer}
+                                </footer>
+                            </RenderIf>
                         </div>
-                        <RenderIf isTrue={!!footer}>
-                            <footer className="rainbow-modal_footer">
-                                {footer}
-                            </footer>
-                        </RenderIf>
-                    </div>
-                </section>
-            </div>
+                    </section>
+                </div>,
+                document.body,
+            )
         );
     }
 }
 
-ModalComponent.propTypes = {
+Modal.propTypes = {
     /** Controls whether the Modal is opened or not */
     isOpen: PropTypes.bool,
     /** The title can include text or another component,
@@ -122,7 +134,7 @@ ModalComponent.propTypes = {
     title: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
-    /** The size of the modal. Include medium and large. This value defaults to medium. */
+    /** The size of the modal. Include medium and large. */
     size: PropTypes.oneOf([
         'medium',
         'large',
@@ -142,7 +154,7 @@ ModalComponent.propTypes = {
     onRequestClose: PropTypes.func,
 };
 
-ModalComponent.defaultProps = {
+Modal.defaultProps = {
     isOpen: false,
     title: '',
     size: undefined,
