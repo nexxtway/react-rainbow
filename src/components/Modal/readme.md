@@ -10,7 +10,6 @@
                 isOpen: false,
             };
             this.handleOnClick = this.handleOnClick.bind(this);
-            this.handleKeyEscapePressed = this.handleKeyEscapePressed.bind(this);
             this.handleOnClose = this.handleOnClose.bind(this);
         }
 
@@ -22,23 +21,13 @@
             return this.setState({ isOpen: false });
         }
 
-        handleKeyEscapePressed(event) {
-            const ESCAPE_KEY = 27;
-            const { isOpen } = this.state;
-            if (isOpen && event.keyCode === ESCAPE_KEY) {
-                return this.setState({ isOpen: false });
-            }
-            return null;
-        }
-
         render() {
             return (
-                <div onKeyDown={this.handleKeyEscapePressed}>
+                <div>
                     <ButtonIcon
                         variant="success"
                         icon={<FontAwesomeIcon icon={faCog} />}
-                        onClick={this.handleOnClick}
-                        focus />
+                        onClick={this.handleOnClick} />
                     <Modal
                        isOpen={this.state.isOpen}
                        onRequestClose={this.handleOnClose}>
@@ -78,7 +67,6 @@
                 isOpen: false,
             };
             this.handleOnClick = this.handleOnClick.bind(this);
-            this.handleKeyEscapePressed = this.handleKeyEscapePressed.bind(this);
             this.handleOnClose = this.handleOnClose.bind(this);
         }
 
@@ -90,20 +78,9 @@
             return this.setState({ isOpen: false });
         }
 
-        handleKeyEscapePressed(event) {
-            const ESCAPE_KEY = 27;
-            const { isOpen } = this.state;
-            if (isOpen && event.keyCode === ESCAPE_KEY) {
-                return this.setState({ isOpen: false });
-            }
-            return null;
-        }
-
         render() {
             return (
-                <div
-                    onKeyDown={this.handleKeyEscapePressed}
-                    className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
+                <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
                     <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
                         <ButtonGroup>
                             <ButtonIcon
@@ -140,7 +117,6 @@
                 isOpen: false,
             };
             this.handleOnClick = this.handleOnClick.bind(this);
-            this.handleKeyEscapePressed = this.handleKeyEscapePressed.bind(this);
             this.handleOnClose = this.handleOnClose.bind(this);
         }
 
@@ -152,20 +128,9 @@
             return this.setState({ isOpen: false });
         }
 
-        handleKeyEscapePressed(event) {
-            const ESCAPE_KEY = 27;
-            const { isOpen } = this.state;
-            if (isOpen && event.keyCode === ESCAPE_KEY) {
-                return this.setState({ isOpen: false });
-            }
-            return null;
-        }
-
         render() {
             return (
-                <div
-                    onKeyDown={this.handleKeyEscapePressed}
-                    className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
+                <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
                     <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
                         <ButtonGroup>
                             <ButtonIcon
@@ -208,7 +173,6 @@
                 isOpen: false,
             };
             this.handleOnClick = this.handleOnClick.bind(this);
-            this.handleKeyEscapePressed = this.handleKeyEscapePressed.bind(this);
             this.handleOnClose = this.handleOnClose.bind(this);
         }
 
@@ -220,20 +184,9 @@
             return this.setState({ isOpen: false });
         }
 
-        handleKeyEscapePressed(event) {
-            const ESCAPE_KEY = 27;
-            const { isOpen } = this.state;
-            if (isOpen && event.keyCode === ESCAPE_KEY) {
-                return this.setState({ isOpen: false });
-            }
-            return null;
-        }
-
         render() {
             return (
-                <div
-                    onKeyDown={this.handleKeyEscapePressed}
-                    className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
+                <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
                     <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
                         <ButtonGroup>
                             <ButtonIcon
@@ -286,7 +239,6 @@
             this.handleOnClick = this.handleOnClick.bind(this);
             this.handleOnClickMedium = this.handleOnClickMedium.bind(this);
             this.handleOnClickLarge = this.handleOnClickLarge.bind(this);
-            this.handleKeyEscapePressed = this.handleKeyEscapePressed.bind(this);
             this.handleOnClose = this.handleOnClose.bind(this);
         }
 
@@ -310,24 +262,9 @@
                 });
         }
 
-        handleKeyEscapePressed(event) {
-            const ESCAPE_KEY = 27;
-            const { isOpen, isOpenMedium, isOpenLarge } = this.state;
-            if ((isOpen || isOpenMedium || isOpenLarge ) && event.keyCode === ESCAPE_KEY) {
-                return this.setState({
-                        isOpen: false,
-                        isOpenMedium: false,
-                        isOpenLarge: false,
-                    });
-            }
-            return null;
-        }
-
         render() {
             return (
-                <div
-                    onKeyDown={this.handleKeyEscapePressed}
-                    className="rainbow-m-around_large">
+                <div className="rainbow-m-around_large">
                     <Card
                         icon={
                             <span className="rainbow-background-color_yellow rainbow-border-radius_circle rainbow-align-content_center" style={iconContainerStyles}>

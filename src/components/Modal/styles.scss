@@ -2,30 +2,35 @@
 @import './../../styles/shadows.scss';
 @import './../../styles/border-radius.scss';
 
-.rainbow-backdrop {
-    //transition: opacity 0.4s linear;
+.rainbow-modal_backdrop {
+    transition-duration: 0.4s;
     width: 100%;
     height: 100%;
-    //opacity: 0;
-    visibility: visible;
+    opacity: 0;
+    visibility: hidden;
     position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
     background: rgba(43, 40, 38, 0.6);
-    z-index: 90000;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.rainbow-modal {
-    //opacity: 0;
+.rainbow-modal_backdrop--open {
     visibility: visible;
-    //transition: transform 0.1s linear, opacity 0.1s linear;
+    z-index: 90000;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 1;
+    transition: opacity 0.4s linear;
+}
+
+.rainbow-modal {
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.1s linear, opacity 0.1s linear;
     position: relative;
-    z-index: 90001;
     width: 50%;
     max-width: none;
     min-width: 40rem;
@@ -33,13 +38,14 @@
 
 .rainbow-modal_container {
     position: relative;
-    //transform: translate(0, 0);
-    //transition: transform 0.1s linear, opacity 0.1s linear;
+    transform: translate(0, 0);
+    transition: transform 0.1s linear, opacity 0.1s linear;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 0 2rem;
+    height: 100%;
     padding: 3rem 0;
+    margin: 0 2rem;
     border-radius: $border-radius-1;
 }
 
@@ -124,20 +130,24 @@
     width: 2rem;
     height: 2rem;
     position: absolute;
-    top: 0.5rem;
+    top: 3.5rem;
     right: 0.5rem;
+    z-index: 90002;
 }
 
 .rainbow-modal--fade-in {
-    animation: fade 0.2s linear;
+    opacity: 1;
+    visibility: visible;
+    z-index: 90001;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: opacity 0.1s linear;
 }
 
-@keyframes fade {
-    0% {
-        filter: opacity(0);
-    }
-
-    100% {
-        filter: opacity(1);
-    }
+.rainbow-modal-slide-down {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, 1rem);
 }

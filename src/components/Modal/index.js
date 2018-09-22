@@ -1,24 +1,51 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import classnames from 'classnames';
 import Header from './header';
 import RenderIf from '../RenderIf';
+import CloseIcon from './closeIcon';
+import ButtonIcon from '../ButtonIcon';
 import { uniqueId } from './../../libs/utils';
+import { ESCAPE_KEY } from './../../libs/constants';
 import './styles.css';
 
-export default class Modal extends Component {
+export default function Modal(props) {
+    return createPortal(<ModalComponent {...props} />, document.body);
+}
+
+class ModalComponent extends Component {
     constructor(props) {
         super(props);
+        this.buttonRef = React.createRef();
         this.modalHeadingId = uniqueId('modal-heading');
         this.modalContentId = uniqueId('modal-content');
+        this.handleKeyEscapePressed = this.handleKeyEscapePressed.bind(this);
+    }
+
+    getBackDropClassNames() {
+        const { isOpen } = this.props;
+        return classnames('rainbow-modal_backdrop', { 'rainbow-modal_backdrop--open': isOpen });
+    }
+
+    getFocus() {
+        const { isOpen } = this.props;
+        if (isOpen) {
+            document.getElementById('rsg-root').tabIndex = -1;
+            this.buttonRef.current.focus();
+        }
     }
 
     getContainerClassNames() {
-        const { className } = this.props;
+        const { className, isOpen } = this.props;
+        this.getFocus();
         return classnames(
             'rainbow-modal',
-            'rainbow-modal--fade-in',
+            {
+                'rainbow-modal--fade-in': isOpen,
+                'rainbow-modal-slide-down': !isOpen,
+            },
             this.getSizeClassNames(),
             className);
     }
@@ -27,6 +54,14 @@ export default class Modal extends Component {
         const { size } = this.props;
         if (size) {
             return `rainbow-modal--${size}`;
+        }
+        return null;
+    }
+
+    handleKeyEscapePressed(event) {
+        const { isOpen, onRequestClose } = this.props;
+        if (isOpen && event.keyCode === ESCAPE_KEY) {
+            return onRequestClose();
         }
         return null;
     }
@@ -41,44 +76,49 @@ export default class Modal extends Component {
             onRequestClose,
         } = this.props;
         return (
-            createPortal(
-                <RenderIf isTrue={isOpen}>
-                    <div className="rainbow-backdrop rainbow-modal--fade-in">
-                        <section
-                            role="dialog"
-                            tabIndex="-1"
-                            aria-labelledby={this.modalHeadingId}
-                            aria-modal="true"
-                            aria-hidden={!isOpen}
-                            aria-describedby={this.modalContentId}
-                            className={this.getContainerClassNames()}
-                            style={style}>
-                            <div className="rainbow-modal_container">
-                                <Header
-                                    id={this.modalHeadingId}
-                                    title={title}
-                                    onClick={onRequestClose} />
-                                <div className="rainbow-modal_content rainbow-p-around_medium" id={this.modalContentId}>
-                                    {children}
-                                </div>
-                                <RenderIf isTrue={!!footer}>
-                                    <footer className="rainbow-modal_footer">
-                                        {footer}
-                                    </footer>
-                                </RenderIf>
-                            </div>
-                        </section>
+            <div
+                onClick={onRequestClose}
+                className={this.getBackDropClassNames()}
+                onKeyDown={this.handleKeyEscapePressed}>
+                <section
+                    role="dialog"
+                    tabIndex="-1"
+                    aria-labelledby={this.modalHeadingId}
+                    aria-modal="true"
+                    aria-hidden={!isOpen}
+                    aria-describedby={this.modalContentId}
+                    className={this.getContainerClassNames()}
+                    style={style}>
+                    <div className="rainbow-modal_container">
+                        <ButtonIcon
+                            className="rainbow-modal_close"
+                            icon={<CloseIcon />}
+                            title="Close"
+                            onClick={onRequestClose}
+                            ref={this.buttonRef} />
+                        <Header
+                            id={this.modalHeadingId}
+                            title={title} />
+                        <div className="rainbow-modal_content rainbow-p-around_medium" id={this.modalContentId}>
+                            {children}
+                        </div>
+                        <RenderIf isTrue={!!footer}>
+                            <footer className="rainbow-modal_footer">
+                                {footer}
+                            </footer>
+                        </RenderIf>
                     </div>
-                </RenderIf>,
-                document.body,
-            )
+                </section>
+            </div>
         );
     }
 }
 
-Modal.propTypes = {
+ModalComponent.propTypes = {
+    /** Controls whether the Modal is opened or not */
     isOpen: PropTypes.bool,
-    /** The title . */
+    /** The title can include text or another component,
+     * and is displayed in the header of the component. */
     title: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
@@ -96,12 +136,13 @@ Modal.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The footer of the component. */
     footer: PropTypes.node,
     /** The action triggered when the close button is clicked. */
     onRequestClose: PropTypes.func,
 };
 
-Modal.defaultProps = {
+ModalComponent.defaultProps = {
     isOpen: false,
     title: '',
     size: undefined,
