@@ -7,18 +7,12 @@
   min-width: 9.375rem;
   background-color: transparent;
   position: relative; }
-  .rainbow-tab:hover {
-    background-color: white;
-    border-bottom-color: white;
-    box-shadow: inset 0 0.0625rem 0.0625rem #01b6f5;
-    height: 2.6875rem; }
-    .rainbow-tab:hover a {
-      cursor: pointer;
-      color: #01b6f5; }
-      .rainbow-tab:hover a div {
-        background-color: #01b6f5; }
+  .rainbow-tab:hover a {
+    cursor: pointer;
+    color: #01b6f5; }
   .rainbow-tab a {
     line-height: 1rem;
+    letter-spacing: 0.5px;
     font-size: 0.875rem;
     font-weight: 900;
     color: #576574;
@@ -28,7 +22,8 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    position: relative; }
+    position: relative;
+    padding: 0 0.75rem; }
     .rainbow-tab a:hover, .rainbow-tab a:active, .rainbow-tab a:visited {
       text-decoration: none;
       outline: 0; }

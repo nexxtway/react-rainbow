@@ -10,7 +10,7 @@
             this.handleOnSelect = this.handleOnSelect.bind(this);
         }
 
-        handleOnSelect(selected) {
+        handleOnSelect(event, selected) {
             this.setState({ selected });
         }
 

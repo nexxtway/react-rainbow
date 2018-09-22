@@ -9,7 +9,7 @@ import './styles.css';
 const RIGHT_SIDE = 1;
 const LEFT_SIDE = -1;
 
-export default class Tabset extends Component {
+export default class Tabs extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -97,7 +97,7 @@ export default class Tabset extends Component {
     }
 }
 
-Tabset.propTypes = {
+Tabs.propTypes = {
     /** Name of the tab item to make active. */
     activeTabName: PropTypes.node,
     /** Action fired when an item is selected.
@@ -118,7 +118,7 @@ Tabset.propTypes = {
     id: PropTypes.string,
 };
 
-Tabset.defaultProps = {
+Tabs.defaultProps = {
     activeTabName: undefined,
     onSelect: () => {},
     fullWidth: false,

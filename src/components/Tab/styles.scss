@@ -2,6 +2,8 @@
 @import "../../styles/colors";
 @import "../../styles/shadows";
 @import "../../styles/margins";
+@import "../../styles/paddings";
+@import "../../styles/font-sizes";
 
 .rainbow-tab {
     display: flex;
@@ -13,24 +15,17 @@
     position: relative;
 
     &:hover {
-        background-color: white;
-        border-bottom-color: white;
-        box-shadow: inset 0 0.0625rem 0.0625rem $color-brand;
-        height: 2.6875rem;
 
         a {
             cursor: pointer;
             color: $color-brand;
-
-            div {
-                background-color: $color-brand;
-            }
         }
     }
 
     a {
         line-height: 1rem;
-        font-size: 0.875rem;
+        letter-spacing: 0.5px;
+        font-size: $font-size-text-medium;
         font-weight: 900;
         color: $color-gray-4;
         height: 100%;
@@ -40,6 +35,7 @@
         justify-content: center;
         align-items: center;
         position: relative;
+        padding: 0 $padding-small;
 
         &:hover, &:active, &:visited {
             text-decoration: none;

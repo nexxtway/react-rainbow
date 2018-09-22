@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { Consumer } from '../Tabset/context';
+import { Consumer } from '../Tabs/context';
 import './styles.css';
 
 class TabItem extends Component {
