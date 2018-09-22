@@ -1,6 +1,6 @@
-const PageTabs = require('./../../src/components/Tabset/pageObject');
+const PageTabs = require('./../../src/components/Tabs/pageObject');
 
-const TABS = '#tabset-1';
+const TABS = '#tabs-1';
 
 const LEFT_ARROW = 'Left arrow';
 const RIGHT_ARROW = 'Right arrow';

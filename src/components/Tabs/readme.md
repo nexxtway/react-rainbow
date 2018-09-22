@@ -18,7 +18,7 @@
             const { selected } = this.state;
             return (
                 <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
-                    <Tabs id="tabset-1" onSelect={this.handleOnSelect} activeTabName={selected}>
+                    <Tabs id="tabs-1" onSelect={this.handleOnSelect} activeTabName={selected}>
                         <Tab label={<span><FontAwesomeIcon icon={faCog} /> Github issues</span>} name="issues" />
                         <Tab label="Pull Request" name="pr" />
                         <Tab label="Merge Request" name="mr" disabled />
