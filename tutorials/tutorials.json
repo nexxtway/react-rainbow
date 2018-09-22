@@ -1,5 +1,8 @@
 {
     "buttonMenu": {
         "title": "ButtonMenu page object"
+    },
+    "tabset": {
+        "title": "Tabset page object"
     }
 }

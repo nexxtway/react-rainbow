@@ -20,11 +20,19 @@ class TabItem extends Component {
         return null;
     }
 
+    componentWillUnmount() {
+        const { privateUnRegisterTab, name } = this.props;
+        privateUnRegisterTab(name);
+    }
+
     getTabClassName() {
-        const { disabled, className } = this.props;
+        const { disabled, fullWidth, className } = this.props;
         return classnames('rainbow-tab',
-            { 'rainbow-tab--active': this.isSelected() },
-            { 'rainbow-tab--disabled': disabled },
+            {
+                'rainbow-tab--full-width': fullWidth,
+                'rainbow-tab--active': this.isSelected(),
+                'rainbow-tab--disabled': disabled,
+            },
             className,
         );
     }

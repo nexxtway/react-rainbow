@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Provider } from './context';
 import { LEFT_KEY, RIGHT_KEY } from '../../libs/constants';
+import { getChildTabNodes, insertChildOrderly } from './utils';
 import './styles.css';
 
 const RIGHT_SIDE = 1;
@@ -14,7 +15,9 @@ export default class Tabset extends Component {
         this.state = {
             tabChildren: [],
         };
+        this.containerRef = React.createRef();
         this.registerTab = this.registerTab.bind(this);
+        this.unRegisterTab = this.unRegisterTab.bind(this);
         this.handleKeyPressed = this.handleKeyPressed.bind(this);
         this.keyHandlerMap = {
             [RIGHT_KEY]: () => this.selectTab(RIGHT_SIDE),
@@ -56,21 +59,37 @@ export default class Tabset extends Component {
 
     registerTab(tab) {
         const { tabChildren } = this.state;
-        const newTabChildren = tabChildren.concat([tab]);
+        const [...nodes] = getChildTabNodes(this.containerRef.current);
+        const newChildrenRefs = insertChildOrderly(tabChildren, tab, nodes);
+        this.setState({
+            tabChildren: newChildrenRefs,
+        });
+    }
+
+    unRegisterTab(tabName) {
+        const { tabChildren } = this.state;
+        const newTabChildren = tabChildren.filter(t => t.name !== tabName);
         this.setState({ tabChildren: newTabChildren });
     }
 
     render() {
-        const { id, onSelect, activeTabName, children, style } = this.props;
+        const { id, onSelect, activeTabName, fullWidth, children, style } = this.props;
         return (
             <ul
                 id={id}
                 className={this.getContainerClassName()}
                 style={style}
                 role="tablist"
-                onKeyDown={this.handleKeyPressed}>
+                onKeyDown={this.handleKeyPressed}
+                ref={this.containerRef}>
 
-                <Provider value={{ activeTabName, onSelect, privateRegisterTab: this.registerTab }}>
+                <Provider value={{
+                    activeTabName,
+                    onSelect,
+                    privateRegisterTab: this.registerTab,
+                    privateUnRegisterTab: this.unRegisterTab,
+                    fullWidth,
+                }}>
                     {children}
                 </Provider>
             </ul>
@@ -84,6 +103,8 @@ Tabset.propTypes = {
     /** Action fired when an item is selected.
      * The event params include the `name` of the selected item. */
     onSelect: PropTypes.func,
+    /** If true, the tabs will grow to use all the available space */
+    fullWidth: PropTypes.bool,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied for the outer element. */
@@ -98,10 +119,11 @@ Tabset.propTypes = {
 };
 
 Tabset.defaultProps = {
-    onSelect: () => {},
     activeTabName: undefined,
-    children: null,
+    onSelect: () => {},
+    fullWidth: false,
     className: undefined,
     style: undefined,
+    children: null,
     id: undefined,
 };
