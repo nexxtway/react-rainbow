@@ -27,6 +27,12 @@ export default class Tabset extends Component {
         return classnames('rainbow-tabset', className);
     }
 
+    setAsSelectedTab(tabIndex) {
+        const { tabChildren } = this.state;
+        tabChildren[tabIndex].ref.click();
+        tabChildren[tabIndex].ref.focus();
+    }
+
     handleKeyPressed(event) {
         if (this.keyHandlerMap[event.keyCode]) {
             return this.keyHandlerMap[event.keyCode]();
@@ -40,11 +46,11 @@ export default class Tabset extends Component {
         const tabIndex = tabChildren.findIndex(tab => tab.name === activeTabName);
 
         if (tabIndex === tabChildren.length - 1 && side === RIGHT_SIDE) {
-            tabChildren[0].select();
+            this.setAsSelectedTab(0);
         } else if (tabIndex === 0 && side === LEFT_SIDE) {
-            tabChildren[tabChildren.length - 1].select();
+            this.setAsSelectedTab(tabChildren.length - 1);
         } else {
-            tabChildren[tabIndex + side].select();
+            this.setAsSelectedTab(tabIndex + side);
         }
     }
 
@@ -64,7 +70,7 @@ export default class Tabset extends Component {
                 role="tablist"
                 onKeyDown={this.handleKeyPressed}>
 
-                <Provider value={{ activeTabName, onSelect, registerTab: this.registerTab }}>
+                <Provider value={{ activeTabName, onSelect, privateRegisterTab: this.registerTab }}>
                     {children}
                 </Provider>
             </ul>

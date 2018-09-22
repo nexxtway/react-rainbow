@@ -9,14 +9,13 @@ class TabItem extends Component {
     constructor(props) {
         super(props);
         this.tabRef = React.createRef();
-        this.selectTab = this.selectTab.bind(this);
         this.handleSelect = this.handleSelect.bind(this);
     }
 
     componentDidMount() {
-        const { registerTab, name, disabled } = this.props;
+        const { privateRegisterTab, name, disabled } = this.props;
         if (!disabled) {
-            return setTimeout(() => registerTab({ name, select: this.selectTab }), 0);
+            return setTimeout(() => privateRegisterTab({ name, ref: this.tabRef.current }), 0);
         }
         return null;
     }
@@ -47,11 +46,6 @@ class TabItem extends Component {
     isSelected() {
         const { activeTabName, name } = this.props;
         return activeTabName === name;
-    }
-
-    selectTab() {
-        this.tabRef.current.click();
-        this.tabRef.current.focus();
     }
 
     render() {

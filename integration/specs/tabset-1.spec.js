@@ -25,13 +25,13 @@ describe('Tabset with href example', () => {
         const tabItem2 = tabset.getItem(1);
         expect(tabItem2.isSelected()).toBe(true);
     });
-    it('should select the first tab when the first has focus and right arrow key is pressed twice', () => {
+    it('should select the next tab when the first has focus and right arrow key is pressed', () => {
         const tabset = new PageTabset(TABSET);
         const tabItem = tabset.getItem(0);
+        const tabItem2 = tabset.getItem(1);
         tabItem.click();
         browser.keys(RIGHT_ARROW);
-        browser.keys(RIGHT_ARROW);
-        expect(tabItem.isSelected()).toBe(true);
+        expect(tabItem2.isSelected()).toBe(true);
     });
     it('should loose focus if other tab is selected', () => {
         const tabset = new PageTabset(TABSET);
