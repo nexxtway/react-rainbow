@@ -21,10 +21,10 @@ export default class Select extends Component {
     }
 
     getContainerClassNames() {
-        const { classNames, error } = this.props;
+        const { className, error } = this.props;
         return classnames('rainbow-select_container', {
             'rainbow-select--error': error,
-        }, classNames);
+        }, className);
     }
 
     /**
@@ -134,7 +134,7 @@ Select.propTypes = {
             disabled: PropTypes.bool,
         })),
     /** A CSS class for the outer element, in addition to the component's base classes. */
-    classNames: PropTypes.string,
+    className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
     /** The id of the outer element. */
@@ -152,7 +152,7 @@ Select.defaultProps = {
     required: false,
     disabled: false,
     options: [],
-    classNames: undefined,
+    className: undefined,
     style: undefined,
     id: undefined,
 };
