@@ -85,9 +85,9 @@ export default function Tab(props) {
 }
 
 Tab.propTypes = {
-    /** The text displayed for the navigation item. */
+    /** The text displayed for the tab item. */
     label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
-    /** A unique identifier for the navigation item. */
+    /** A unique identifier for the tab item. */
     name: PropTypes.string,
     /** A title to be passed to the li element */
     title: PropTypes.string,
