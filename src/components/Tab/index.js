@@ -68,7 +68,7 @@ class TabItem extends Component {
                 <a
                     href="javascript:void(0);"
                     role="tab"
-                    className="rainbow-tab-item"
+                    className="rainbow-tab_anchor"
                     aria-selected={this.isSelected()}
                     onClick={this.handleSelect}
                     tabIndex={this.getTabIndex()}
@@ -76,7 +76,7 @@ class TabItem extends Component {
                     aria-controls={ariaControls}
                     ref={this.tabRef}>
 
-                    <div className="rainbow-tab-item-selected-indicator" />
+                    <div className="rainbow-tab_selected-indicator" />
                     {label}
                 </a>
             </li>
