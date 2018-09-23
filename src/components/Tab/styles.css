@@ -3,7 +3,7 @@
   height: 2.5rem;
   background-color: transparent;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   position: relative; }
   .rainbow-tab:hover .rainbow-tab_anchor {
@@ -16,12 +16,15 @@
 .rainbow-tab--full-width {
   flex: 1;
   justify-content: center; }
+  .rainbow-tab--full-width .rainbow-tab_anchor {
+    justify-content: center;
+    padding: 0 1.5rem; }
 
 .rainbow-tab--active {
   background-color: white;
   border-bottom-color: white;
   box-shadow: inset 0 0.1875rem 0.1875rem 0 #e3e5ed;
-  height: 2.6875rem; }
+  height: 2.75rem; }
   .rainbow-tab--active .rainbow-tab_anchor {
     color: #01b6f5; }
     .rainbow-tab--active .rainbow-tab_anchor .rainbow-tab_selected-indicator {
@@ -48,7 +51,7 @@
   color: #576574;
   height: 100%;
   width: 100%;
-  padding: 0 1.5rem;
+  padding: 0 1.5rem 0 2rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;
