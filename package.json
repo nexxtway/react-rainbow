@@ -36,6 +36,7 @@
         "classnames": "^2.2.5",
         "prop-types": "^15.6.2",
         "react": "^16.4.2",
+        "react-dom": "^16.4.2",
         "react-ga": "^2.5.3"
     },
     "main": "components/index.js",

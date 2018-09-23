@@ -1,0 +1,151 @@
+@import './../../styles/colors.scss';
+@import './../../styles/shadows.scss';
+@import './../../styles/border-radius.scss';
+
+.rainbow-modal_backdrop {
+    transition-duration: 0.4s;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    background: rgba(43, 40, 38, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rainbow-modal_backdrop--open {
+    visibility: visible;
+    z-index: 90000;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 1;
+    transition: opacity 0.4s linear;
+}
+
+.rainbow-modal {
+    opacity: 0;
+    visibility: visible;
+    transition: transform 0.1s linear, opacity 0.1s linear;
+    position: relative;
+    width: 50%;
+    max-width: none;
+    min-width: 20rem;
+
+    &:focus {
+        outline: 0;
+    }
+}
+
+.rainbow-modal_container {
+    position: relative;
+    transform: translate(0, 0);
+    transition: transform 0.1s linear, opacity 0.1s linear;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: $border-radius-1;
+}
+
+.rainbow-modal--large {
+    width: 90%;
+    min-width: 40rem;
+}
+
+.rainbow-modal--medium {
+    width: 70%;
+    min-width: 30rem;
+}
+
+.rainbow-modal_header {
+    position: relative;
+    border-top-right-radius: $border-radius-1;
+    border-top-left-radius: $border-radius-1;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: $color-gray-4;
+}
+
+.rainbow-modal_header, .rainbow-modal_content {
+    background-color: #fff;
+}
+
+.rainbow-p-around_medium {
+    padding: 1rem;
+}
+
+.rainbow-modal_header, .rainbow-modal_footer {
+    flex-shrink: 0;
+}
+
+.rainbow-modal_menu {
+    position: relative;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    background-color: #f3f2f2;
+}
+
+.rainbow-modal_header + .rainbow-modal_menu {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.rainbow-modal_header--empty {
+    padding: 0;
+    border-bottom: 0;
+}
+
+.rainbow-modal_content {
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.rainbow-modal_header--empty + .rainbow-modal_content {
+    border-top-right-radius: $border-radius-1;
+    border-top-left-radius: $border-radius-1;
+}
+
+.rainbow-modal_content:last-child {
+    border-bottom-right-radius: $border-radius-1;
+    border-bottom-left-radius: $border-radius-1;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16);
+}
+
+.rainbow-modal_footer {
+    border-top: 2px solid #dddbda;
+    border-bottom-right-radius: $border-radius-1;
+    border-bottom-left-radius: $border-radius-1;
+    padding: 0.75rem 1rem;
+    background-color: $color-gray-1;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16);
+}
+
+.rainbow-modal_close {
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 90002;
+}
+
+.rainbow-modal--fade-in {
+    opacity: 1;
+    visibility: visible;
+    z-index: 90001;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: opacity 0.1s linear;
+}
+
+.rainbow-modal-slide-down {
+    transform: translate(0, 80rem);
+    transition: transform 0.6s linear;
+}
