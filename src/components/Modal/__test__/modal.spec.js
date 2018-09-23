@@ -33,7 +33,7 @@ describe('<Modal/>', () => {
                 <p />
             </Modal>,
         );
-        expect(component.find('section[role="dialog"]').prop('className')).toBe('rainbow-modal rainbow-modal--slide-down');
+        expect(component.find('section[role="dialog"]').prop('className')).toBe('rainbow-modal');
     });
     it('should have the right class names in the section element when the modal is opened', () => {
         const component = mount(
