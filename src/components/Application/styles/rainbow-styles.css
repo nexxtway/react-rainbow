@@ -358,6 +358,16 @@ th,
 td {
   text-align: left; }
 
+.rainbow-align-text-center {
+  text-align: center; }
+
+.rainbow-square-top {
+  border-top-left-radius: unset !important;
+  border-top-right-radius: unset !important; }
+
+.rainbow-payment-card {
+  width: 550px; }
+
 .rainbow-background-color_brand {
   background-color: #01b6f5; }
 
@@ -778,11 +788,6 @@ td {
 .rainbow-m-around_xx-large {
   margin: 3rem; }
 
-.rainbow-m-horizontal_xxx-large {
-    margin-left: 5rem;
-    margin-right: 5rem;
-}
-
 .rainbow-m-top_none {
   margin-top: 0 !important; }
 
@@ -805,6 +810,10 @@ td {
 
 .rainbow-m-around_none {
   margin: 0; }
+
+.rainbow-m-horizontal_xxx-large {
+  margin-left: 5rem;
+  margin-right: 5rem; }
 
 .rainbow-flex {
   display: -ms-flexbox;
@@ -929,12 +938,3 @@ td {
 
 .rainbow-font-size-text_large {
   font-size: 1rem; }
-
-.rainbow-align-text-center {
-    text-align: center;
-}
-
-.rainbow-square-top {
-    border-top-left-radius: unset !important;
-    border-top-right-radius: unset !important;
-}

@@ -34,11 +34,6 @@
 .rainbow-tab--full-width {
     flex: 1;
     justify-content: center;
-
-    .rainbow-tab_anchor {
-        justify-content: center;
-        padding: 0 $padding-large;
-    }
 }
 
 .rainbow-tab--active {
@@ -85,9 +80,9 @@
     color: $color-gray-4;
     height: 100%;
     width: 100%;
-    padding: 0 $padding-large 0 $padding-x-large;
+    padding: 0 $padding-large;
 
-    @include position-tab(flex-start);
+    @include position-tab(center);
 
     &:hover, &:active, &:visited {
         text-decoration: none;

@@ -4,4 +4,10 @@
   align-items: center;
   height: 2.625rem;
   overflow-y: visible;
-  border-bottom: #e3e5ed 0.125rem solid; }
+  border-bottom: #e3e5ed 0.125rem solid;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem; }
+
+.rainbow-tabset--full-width {
+  padding-left: unset;
+  padding-right: unset; }

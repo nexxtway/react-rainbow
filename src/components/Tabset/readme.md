@@ -24,7 +24,7 @@
 
             if (selected === 'primary') {
                 return (
-                    <div aria-labelledby="primary" id="primaryTab" className="rainbow-p-horizontal_large rainbow-p-top_small rainbow-p-bottom_xx-large rainbow-p-bottom_xx-large rainbow-align-text-center">
+                    <div aria-labelledby="primary" id="primaryTab" className="rainbow-p-horizontal_large rainbow-p-top_xx-large rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large rainbow-align-text-center">
                         React Rainbow is a collection of components that will reliably
                         help you build your application in a snap.
                         Give it a hack and let us know what you think.
@@ -32,13 +32,13 @@
                 );
             } else if (selected === 'recents') {
                 return (
-                    <div aria-labelledby="recents" id="recentsTab" className="rainbow-p-horizontal_large rainbow-p-top_small rainbow-p-bottom_xx-large rainbow-p-bottom_xx-large rainbow-align-text-center">
+                    <div aria-labelledby="recents" id="recentsTab" className="rainbow-p-horizontal_large rainbow-p-top_xx-large rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large rainbow-align-text-center">
                         We are excited that you are interested in contributing to this project!
                     </div>
                 );
             }
             return (
-                <div aria-labelledby="shared" id="sharedTab" className="rainbow-p-horizontal_large rainbow-p-top_small rainbow-p-bottom_xx-large rainbow-p-bottom_xx-large rainbow-align-text-center">
+                <div aria-labelledby="shared" id="sharedTab" className="rainbow-p-horizontal_large rainbow-p-top_xx-large rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large rainbow-align-text-center">
                     Pull requests are very welcome, but should be within the scope of the project,
                     and follow the repository's code conventions. Before submitting a pull request,
                     it's always good to file an issue, so we can discuss the details of the PR.
@@ -120,7 +120,7 @@
 
             if (selected === 'primary') {
                 return (
-                    <div aria-labelledby="primary" id="primaryTab" className="rainbow-p-horizontal_large rainbow-p-top_small rainbow-p-bottom_xx-large rainbow-p-bottom_xx-large rainbow-align-text-center">
+                    <div aria-labelledby="primary" id="primaryTab" className="rainbow-p-horizontal_large rainbow-p-top_xx-large rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large rainbow-align-text-center">
                         React Rainbow is a collection of components that will reliably
                         help you build your application in a snap.
                         Give it a hack and let us know what you think.
@@ -128,13 +128,13 @@
                 );
             } else if (selected === 'recents') {
                 return (
-                    <div aria-labelledby="recents" id="recentsTab" className="rainbow-p-horizontal_large rainbow-p-top_small rainbow-p-bottom_xx-large rainbow-p-bottom_xx-large rainbow-align-text-center">
+                    <div aria-labelledby="recents" id="recentsTab" className="rainbow-p-horizontal_large rainbow-p-top_xx-large rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large rainbow-align-text-center">
                         We are excited that you are interested in contributing to this project!
                     </div>
                 );
             }
             return (
-                <div aria-labelledby="shared" id="sharedTab" className="rainbow-p-horizontal_large rainbow-p-top_small rainbow-p-bottom_xx-large rainbow-p-bottom_xx-large rainbow-align-text-center">
+                <div aria-labelledby="shared" id="sharedTab" className="rainbow-p-horizontal_large rainbow-p-top_xx-large rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large rainbow-align-text-center">
                     Pull requests are very welcome, but should be within the scope of the project,
                     and follow the repository's code conventions. Before submitting a pull request,
                     it's always good to file an issue, so we can discuss the details of the PR.
@@ -215,7 +215,7 @@
 
             if (selected === 'primary') {
                 return (
-                    <div aria-labelledby="primary" id="primaryTab" className="rainbow-p-horizontal_large rainbow-p-top_small rainbow-p-bottom_xx-large rainbow-p-bottom_xx-large rainbow-align-text-center">
+                    <div aria-labelledby="primary" id="primaryTab" className="rainbow-p-horizontal_large rainbow-p-top_xx-large rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large rainbow-align-text-center">
                         React Rainbow is a collection of components that will reliably
                         help you build your application in a snap.
                         Give it a hack and let us know what you think.
@@ -223,13 +223,13 @@
                 );
             } else if (selected === 'recents') {
                 return (
-                    <div aria-labelledby="recents" id="recentsTab" className="rainbow-p-horizontal_large rainbow-p-top_small rainbow-p-bottom_xx-large rainbow-p-bottom_xx-large rainbow-align-text-center">
+                    <div aria-labelledby="recents" id="recentsTab" className="rainbow-p-horizontal_large rainbow-p-top_xx-large rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large rainbow-align-text-center">
                         We are excited that you are interested in contributing to this project!
                     </div>
                 );
             }
             return (
-                <div aria-labelledby="shared" id="sharedTab" className="rainbow-p-horizontal_large rainbow-p-top_small rainbow-p-bottom_xx-large rainbow-p-bottom_xx-large rainbow-align-text-center">
+                <div aria-labelledby="shared" id="sharedTab" className="rainbow-p-horizontal_large rainbow-p-top_xx-large rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
                     Pull requests are very welcome, but should be within the scope of the project,
                     and follow the repository's code conventions. Before submitting a pull request,
                     it's always good to file an issue, so we can discuss the details of the PR.
@@ -347,7 +347,7 @@
                 );
             }
             return (
-                <div aria-labelledby="paypalPayment" id="paypalPaymentTab" className="rainbow-flex rainbow-flex_column rainbow-align_center rainbow-justify_center">
+                <div aria-labelledby="paypalPayment" id="paypalPaymentTab" className="rainbow-flex rainbow-flex_column rainbow-align_center rainbow-justify_center rainbow-p-horizontal_large rainbow-p-top_xx-large rainbow-p-bottom_xx-large">
                     <FontAwesomeIcon icon={faPaypal} size="4x" className="rainbow-color_brand rainbow-m-top_large rainbow-m-bottom_medium" />
                     <span className="rainbow-m-bottom_medium rainbow-color_gray-4">You will be redirected to PayPal</span>
                     <Button variant="brand">
@@ -381,21 +381,23 @@
                     <div className="rainbow-m-bottom_x-large rainbow-m-top_x-large rainbow-flex rainbow-frainbow-m-left_x-large rainbow-m-right_largelex-row rainbow-justify_center">
                         <h3 className="rainbow-font-size-heading_medium rainbow-color_brand">Select your favorite payment method</h3>
                     </div>
-                    <Card className="rainbow-p-bottom_large rainbow-m-bottom_large rainbow-m-horizontal_xxx-large rainbow-square-top">
-                        <Tabset id="tabset-4" onSelect={this.handleOnSelect} activeTabName={selected} fullWidth className="rainbow-background-color_gray-1">
-                            <Tab
-                                label={<span><FontAwesomeIcon icon={faCreditCard} /> PAY WITH CARD</span>}
-                                name="card"
-                                id="cardPayment"
-                                ariaControls="CardPaymentTab" />
-                            <Tab
-                                label={<span><FontAwesomeIcon icon={faPaypal} /> PAY WITH PAYPAL</span>}
-                                name="paypal"
-                                id="paypalPayment"
-                                ariaControls="paypalPaymentTab" />
-                       </Tabset>
-                       {this.getPaymentForm()}
-                    </Card>
+                    <div className="rainbow-flex rainbow-flex-column rainbow-justify_center">
+                        <Card className="rainbow-p-bottom_large rainbow-m-bottom_large rainbow-square-top rainbow-payment-card">
+                            <Tabset id="tabset-4" onSelect={this.handleOnSelect} activeTabName={selected} fullWidth className="rainbow-background-color_gray-1">
+                                <Tab
+                                    label={<span><FontAwesomeIcon icon={faCreditCard} /> PAY WITH CARD</span>}
+                                    name="card"
+                                    id="cardPayment"
+                                    ariaControls="CardPaymentTab" />
+                                <Tab
+                                    label={<span><FontAwesomeIcon icon={faPaypal} /> PAY WITH PAYPAL</span>}
+                                    name="paypal"
+                                    id="paypalPayment"
+                                    ariaControls="paypalPaymentTab" />
+                           </Tabset>
+                           {this.getPaymentForm()}
+                        </Card>
+                    </div>
                 </div>
             );
         }

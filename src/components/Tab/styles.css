@@ -16,9 +16,6 @@
 .rainbow-tab--full-width {
   flex: 1;
   justify-content: center; }
-  .rainbow-tab--full-width .rainbow-tab_anchor {
-    justify-content: center;
-    padding: 0 1.5rem; }
 
 .rainbow-tab--active {
   background-color: white;
@@ -51,9 +48,9 @@
   color: #576574;
   height: 100%;
   width: 100%;
-  padding: 0 1.5rem 0 2rem;
+  padding: 0 1.5rem;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   position: relative; }
   .rainbow-tab_anchor:hover, .rainbow-tab_anchor:active, .rainbow-tab_anchor:visited {

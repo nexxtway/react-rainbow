@@ -29,8 +29,8 @@ export default class Tabset extends Component {
     }
 
     getContainerClassName() {
-        const { className } = this.props;
-        return classnames('rainbow-tabset', className);
+        const { className, fullWidth } = this.props;
+        return classnames('rainbow-tabset', { 'rainbow-tabset--full-width': fullWidth }, className);
     }
 
     setAsSelectedTab(tabIndex) {
