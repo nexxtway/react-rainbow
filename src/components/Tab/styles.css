@@ -1,68 +1,33 @@
 /* stylelint-disable no-descending-specificity */
 .rainbow-tab {
+  height: 2.5rem;
+  background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 2.5rem;
-  min-width: 9.375rem;
-  background-color: transparent;
   position: relative; }
-  .rainbow-tab:hover {
-    background-color: white;
-    border-bottom-color: white;
-    box-shadow: inset 0 0.0625rem 0.0625rem #01b6f5;
-    height: 2.6875rem; }
-    .rainbow-tab:hover a {
-      cursor: pointer;
-      color: #01b6f5; }
-      .rainbow-tab:hover a div {
-        background-color: #01b6f5; }
-  .rainbow-tab a {
-    line-height: 1rem;
-    font-size: 0.875rem;
-    font-weight: 900;
-    color: #576574;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    position: relative; }
-    .rainbow-tab a:hover, .rainbow-tab a:active, .rainbow-tab a:visited {
-      text-decoration: none;
-      outline: 0; }
-    .rainbow-tab a:focus {
-      text-decoration: none;
-      outline: 0;
-      box-shadow: inset 0 0.125rem 0.125rem #01b6f5; }
-    .rainbow-tab a div {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 0.125rem;
-      border-bottom-left-radius: 100px;
-      border-bottom-right-radius: 100px;
-      background-color: transparent; }
-  .rainbow-tab.rainbow-tab--disabled a:focus {
+  .rainbow-tab:hover .rainbow-tab_anchor {
+    cursor: pointer;
+    color: #01b6f5; }
+  .rainbow-tab.rainbow-tab--disabled .rainbow-tab_anchor:focus {
     outline: none;
     text-decoration: none; }
 
 .rainbow-tab--full-width {
-  flex: 1; }
+  flex: 1;
+  justify-content: center; }
 
 .rainbow-tab--active {
   background-color: white;
   border-bottom-color: white;
   box-shadow: inset 0 0.1875rem 0.1875rem 0 #e3e5ed;
   height: 2.6875rem; }
-  .rainbow-tab--active a {
+  .rainbow-tab--active .rainbow-tab_anchor {
     color: #01b6f5; }
-    .rainbow-tab--active a div {
+    .rainbow-tab--active .rainbow-tab_anchor .rainbow-tab_selected-indicator {
       background-color: #01b6f5; }
 
-.rainbow-tab--disabled a {
+.rainbow-tab--disabled .rainbow-tab_anchor {
   color: #a4a7b5;
   cursor: pointer;
   pointer-events: none; }
@@ -70,7 +35,38 @@
 .rainbow-tab--disabled:hover {
   box-shadow: none;
   background-color: transparent; }
-  .rainbow-tab--disabled:hover a {
+  .rainbow-tab--disabled:hover .rainbow-tab_anchor {
     color: #a4a7b5; }
-    .rainbow-tab--disabled:hover a div {
+    .rainbow-tab--disabled:hover .rainbow-tab_anchor .rainbow-tab_selected-indicator {
       background-color: transparent; }
+
+.rainbow-tab_anchor {
+  line-height: 1rem;
+  letter-spacing: 0.5px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #576574;
+  height: 100%;
+  width: 100%;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative; }
+  .rainbow-tab_anchor:hover, .rainbow-tab_anchor:active, .rainbow-tab_anchor:visited {
+    text-decoration: none;
+    outline: 0; }
+  .rainbow-tab_anchor:focus {
+    text-decoration: none;
+    outline: 0;
+    box-shadow: inset 0 0.125rem 0.125rem #01b6f5; }
+
+.rainbow-tab_selected-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0.2rem;
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+  background-color: transparent; }

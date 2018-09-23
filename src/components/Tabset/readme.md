@@ -1,4 +1,4 @@
-##### TabSet
+##### Tabset
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
     const { faCog } = require('@fortawesome/free-solid-svg-icons');
