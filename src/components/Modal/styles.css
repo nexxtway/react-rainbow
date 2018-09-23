@@ -1,14 +1,13 @@
 .rainbow-modal_backdrop {
-  transition-duration: 0.4s;
+  transition: opacity 0.6s linear;
   width: 100%;
   height: 100%;
   opacity: 0;
-  visibility: hidden;
-  position: fixed;
-  background: rgba(43, 40, 38, 0.6);
+  background: rgba(227, 229, 237, 0.6);
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  position: fixed; }
 
 .rainbow-modal_backdrop--open {
   visibility: visible;
@@ -17,28 +16,23 @@
   right: 0;
   bottom: 0;
   left: 0;
-  opacity: 1;
-  transition: opacity 0.4s linear; }
+  opacity: 1; }
 
 .rainbow-modal {
   opacity: 0;
-  visibility: visible;
-  transition: transform 0.1s linear, opacity 0.1s linear;
-  position: relative;
   width: 50%;
   max-width: none;
-  min-width: 20rem; }
+  min-width: 20rem;
+  background-color: #fff;
+  border-radius: 0.875rem;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16);
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: normal;
+  position: relative; }
   .rainbow-modal:focus {
     outline: 0; }
-
-.rainbow-modal_container {
-  position: relative;
-  transform: translate(0, 0);
-  transition: transform 0.1s linear, opacity 0.1s linear;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border-radius: 0.875rem; }
 
 .rainbow-modal--large {
   width: 90%;
@@ -50,61 +44,29 @@
 
 .rainbow-modal_header {
   position: relative;
-  border-top-right-radius: 0.875rem;
-  border-top-left-radius: 0.875rem;
   padding: 1rem;
   text-align: center;
   font-size: 1.5rem;
   font-weight: 300;
   color: #576574; }
 
-.rainbow-modal_header, .rainbow-modal_content {
-  background-color: #fff; }
-
-.rainbow-p-around_medium {
-  padding: 1rem; }
+.rainbow-modal_content {
+  padding: 1rem;
+  overflow: hidden;
+  overflow-y: auto; }
 
 .rainbow-modal_header, .rainbow-modal_footer {
   flex-shrink: 0; }
-
-.rainbow-modal_menu {
-  position: relative;
-  border-radius: 0.25rem;
-  padding: 1rem;
-  background-color: #f3f2f2; }
-
-.rainbow-modal_header + .rainbow-modal_menu {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0; }
 
 .rainbow-modal_header--empty {
   padding: 0;
   border-bottom: 0; }
 
-.rainbow-modal_content {
-  overflow: hidden;
-  overflow-y: auto; }
-
-.rainbow-modal_header--empty + .rainbow-modal_content {
-  border-top-right-radius: 0.875rem;
-  border-top-left-radius: 0.875rem; }
-
-.rainbow-modal_content:last-child {
-  border-bottom-right-radius: 0.875rem;
-  border-bottom-left-radius: 0.875rem;
-  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16); }
-
 .rainbow-modal_footer {
-  border-top: 2px solid #dddbda;
-  border-bottom-right-radius: 0.875rem;
-  border-bottom-left-radius: 0.875rem;
-  padding: 0.75rem 1rem;
-  background-color: #f4f6f9;
-  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16); }
+  border-top: 0.0625px solid #e3e5ed;
+  padding: 0.75rem 1rem; }
 
 .rainbow-modal_close {
-  width: 2rem;
-  height: 2rem;
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
@@ -112,14 +74,7 @@
 
 .rainbow-modal--fade-in {
   opacity: 1;
-  visibility: visible;
-  z-index: 90001;
   top: 0;
   right: 0;
   bottom: 0;
-  left: 0;
-  transition: opacity 0.1s linear; }
-
-.rainbow-modal-slide-down {
-  transform: translate(0, 80rem);
-  transition: transform 0.6s linear; }
+  left: 0; }
