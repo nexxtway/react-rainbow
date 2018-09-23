@@ -22,21 +22,27 @@ export default class Modal extends Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
+    componentDidMount() {
+        const { isOpen } = this.props;
+        if (isOpen) {
+            this.modalRef.current.focus();
+        }
+    }
+
+    componentDidUpdate() {
+        const { isOpen } = this.props;
+        if (isOpen) {
+            this.modalRef.current.focus();
+        }
+    }
+
     getBackDropClassNames() {
         const { isOpen } = this.props;
         return classnames('rainbow-modal_backdrop', { 'rainbow-modal_backdrop--open': isOpen });
     }
 
-    getFocus() {
-        const { isOpen } = this.props;
-        if (isOpen) {
-            this.buttonRef.current.focus();
-        }
-    }
-
     getContainerClassNames() {
         const { className, isOpen } = this.props;
-        this.getFocus();
         return classnames(
             'rainbow-modal',
             {
@@ -49,10 +55,10 @@ export default class Modal extends Component {
 
     getSizeClassNames() {
         const { size } = this.props;
-        if (size) {
-            return `rainbow-modal--${size}`;
+        if (size === 'small') {
+            return null;
         }
-        return null;
+        return `rainbow-modal--${size}`;
     }
 
     handleKeyEscapePressed(event) {
@@ -83,12 +89,14 @@ export default class Modal extends Component {
             isOpen,
             onRequestClose,
         } = this.props;
+
         return (
             createPortal(
                 <div
                     onClick={this.handleClick}
                     className={this.getBackDropClassNames()}
                     onKeyDown={this.handleKeyEscapePressed}>
+
                     <section
                         role="dialog"
                         tabIndex="-1"
@@ -99,6 +107,7 @@ export default class Modal extends Component {
                         className={this.getContainerClassNames()}
                         style={style}
                         ref={this.modalRef}>
+
                         <div className="rainbow-modal_container">
                             <ButtonIcon
                                 className="rainbow-modal_close"
@@ -106,12 +115,15 @@ export default class Modal extends Component {
                                 title="Close"
                                 onClick={onRequestClose}
                                 ref={this.buttonRef} />
+
                             <Header
                                 id={this.modalHeadingId}
                                 title={title} />
+
                             <div className="rainbow-modal_content rainbow-p-around_medium" id={this.modalContentId}>
                                 {children}
                             </div>
+
                             <RenderIf isTrue={!!footer}>
                                 <footer className="rainbow-modal_footer">
                                     {footer}
@@ -136,6 +148,7 @@ Modal.propTypes = {
     ]),
     /** The size of the modal. Include medium and large. */
     size: PropTypes.oneOf([
+        'small',
         'medium',
         'large',
     ]),
@@ -156,8 +169,8 @@ Modal.propTypes = {
 
 Modal.defaultProps = {
     isOpen: false,
-    title: '',
-    size: undefined,
+    title: null,
+    size: 'small',
     children: null,
     className: undefined,
     style: undefined,
