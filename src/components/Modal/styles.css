@@ -41,7 +41,7 @@
   width: 70%; }
 
 .rainbow-modal_header {
-  font-family: 'Lato Light';
+  font-family: 'Lato Light', Arial, sans-serif;
   position: relative;
   padding: 1rem;
   text-align: center;
