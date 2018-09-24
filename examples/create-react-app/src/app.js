@@ -16,7 +16,6 @@ import Checkout from './pages/Checkout';
 import SignIn from './pages/SignIn';
 import Admin from './pages/Admin';
 
-
 export default function App() {
     return (
         <Router>
