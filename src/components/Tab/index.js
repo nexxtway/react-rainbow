@@ -94,7 +94,8 @@ export default function Tab(props) {
 
 Tab.propTypes = {
     /** The text displayed for the tab item. */
-    label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+    label: PropTypes.oneOfType([
+        PropTypes.node, PropTypes.string]),
     /** A unique identifier for the tab item. */
     name: PropTypes.string,
     /** Displays tooltip text when the mouse moves over the element. */
