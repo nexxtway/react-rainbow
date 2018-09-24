@@ -184,6 +184,7 @@
 
     <TabsetExample />
 
+
 ##### Tabset disabled
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
