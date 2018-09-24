@@ -101,24 +101,25 @@ export default class Tabset extends Component {
 }
 
 Tabset.propTypes = {
-    /** Name of the tab item to make active. */
+    /** The name of the tab that is selected. It must match the name of the tab. */
     activeTabName: PropTypes.node,
     /** Action fired when an item is selected.
      * The event params include the `name` of the selected item. */
     onSelect: PropTypes.func,
-    /** If true, the tabs will grow to use all the available space */
+    /** If true, the tabs will grow to use all the available space.
+    * This value defaults to false. */
     fullWidth: PropTypes.bool,
+    /** The id of the outer element. */
+    id: PropTypes.string,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied for the outer element. */
     style: PropTypes.object,
     /**
-     * This prop that should not be visible in the documentation.
-     * @ignore
-     */
+    * This prop that should not be visible in the documentation.
+    * @ignore
+    */
     children: PropTypes.node,
-    /** The id of the outer element. */
-    id: PropTypes.string,
 };
 
 Tabset.defaultProps = {

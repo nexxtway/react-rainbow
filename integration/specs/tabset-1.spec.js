@@ -22,7 +22,7 @@ describe('Tabset base example', () => {
         const tabItem = tabset.getItem(0);
         tabItem.click();
         browser.keys(LEFT_ARROW);
-        const tabItem2 = tabset.getItem(1);
+        const tabItem2 = tabset.getItem(2);
         expect(tabItem2.isSelected()).toBe(true);
     });
     it('should select the next tab when the first has focus and right arrow key is pressed', () => {
