@@ -47,7 +47,6 @@ export default class Modal extends Component {
             'rainbow-modal',
             {
                 'rainbow-modal--fade-in': isOpen,
-                'rainbow-modal-slide-down': !isOpen,
             },
             this.getSizeClassNames(),
             className);
@@ -88,11 +87,13 @@ export default class Modal extends Component {
             footer,
             isOpen,
             onRequestClose,
+            id,
         } = this.props;
 
         return (
             createPortal(
                 <div
+                    id={id}
                     onClick={this.handleClick}
                     className={this.getBackDropClassNames()}
                     onKeyDown={this.handleKeyEscapePressed}>
@@ -107,29 +108,26 @@ export default class Modal extends Component {
                         className={this.getContainerClassNames()}
                         style={style}
                         ref={this.modalRef}>
+                        <ButtonIcon
+                            className="rainbow-modal_close"
+                            icon={<CloseIcon />}
+                            title="Close"
+                            onClick={onRequestClose}
+                            ref={this.buttonRef} />
 
-                        <div className="rainbow-modal_container">
-                            <ButtonIcon
-                                className="rainbow-modal_close"
-                                icon={<CloseIcon />}
-                                title="Close"
-                                onClick={onRequestClose}
-                                ref={this.buttonRef} />
+                        <Header
+                            id={this.modalHeadingId}
+                            title={title} />
 
-                            <Header
-                                id={this.modalHeadingId}
-                                title={title} />
-
-                            <div className="rainbow-modal_content rainbow-p-around_medium" id={this.modalContentId}>
-                                {children}
-                            </div>
-
-                            <RenderIf isTrue={!!footer}>
-                                <footer className="rainbow-modal_footer">
-                                    {footer}
-                                </footer>
-                            </RenderIf>
+                        <div className="rainbow-modal_content" id={this.modalContentId}>
+                            {children}
                         </div>
+
+                        <RenderIf isTrue={!!footer}>
+                            <footer className="rainbow-modal_footer">
+                                {footer}
+                            </footer>
+                        </RenderIf>
                     </section>
                 </div>,
                 document.body,
@@ -165,6 +163,8 @@ Modal.propTypes = {
     footer: PropTypes.node,
     /** The action triggered when the close button is clicked. */
     onRequestClose: PropTypes.func,
+    /** The id of the outer element. */
+    id: PropTypes.string,
 };
 
 Modal.defaultProps = {
@@ -176,4 +176,5 @@ Modal.defaultProps = {
     style: undefined,
     footer: null,
     onRequestClose: () => {},
+    id: undefined,
 };

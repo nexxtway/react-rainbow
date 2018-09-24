@@ -51,6 +51,24 @@
     color: $color-error-active;
 }
 
+// yellow color
+.rainbow-background-color_yellow {
+    background-color: $color-yellow-1;
+}
+
+.rainbow-color_yellow {
+    color: $color-yellow-1;
+}
+
+// purple color
+.rainbow-background-color_purple {
+    background-color: $color-purple;
+}
+
+.rainbow-color_purple {
+    color: $color-purple;
+}
+
 // gray colors
 .rainbow-background-color_gray-1 {
     background-color: $color-gray-1;
@@ -100,12 +118,4 @@
 
 .rainbow-color_dark-1 {
     color: $color-dark-1;
-}
-
-.rainbow-background-color_yellow {
-    background-color: $color-yellow-1;
-}
-
-.rainbow-color_yellow {
-    color: $color-yellow-1;
 }

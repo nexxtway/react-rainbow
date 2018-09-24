@@ -29,6 +29,7 @@
                         label="Open Modal"
                         onClick={this.handleOnClick} />
                     <Modal
+                       id="modal-1"
                        isOpen={this.state.isOpen}
                        onRequestClose={this.handleOnClose}>
                        <img
@@ -141,7 +142,7 @@
                        title="Modal Header"
                        footer={
                             <div className="rainbow-flex rainbow-justify_end">
-                                <Button label="Cancel" variant="neutral" />
+                                <Button className="rainbow-m-right_large" label="Cancel" variant="neutral" />
                                 <Button label="Save" variant="brand" />
                             </div>
                        } >
