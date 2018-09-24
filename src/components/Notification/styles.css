@@ -1,0 +1,80 @@
+.rainbow-notification {
+  position: relative;
+  border-radius: 0.875rem;
+  box-shadow: 0 1px 2px 0 #e3e5ed;
+  padding: 0.75rem;
+  background-color: white;
+  width: 20rem;
+  border: solid 1px #f4f6f9;
+  transition-duration: 0.4s;
+  transition-timing-function: ease-in-out;
+  transition-property: margin, max-height, opacity, top; }
+  .rainbow-notification:hover {
+    background-color: #f4f6f9; }
+  .rainbow-notification .rainbow-notification_title {
+    font-size: 1rem;
+    color: #061c3f;
+    padding-right: 1rem;
+    line-height: 1; }
+  .rainbow-notification .rainbow-notification_description {
+    font-size: 0.875rem;
+    font-weight: 300;
+    color: #576574;
+    padding-top: 0.25rem; }
+  .rainbow-notification:hover .rainbow-notification_title {
+    color: #01b6f5; }
+  .rainbow-notification:hover .rainbow-notification_description {
+    color: #01b6f5; }
+
+.rainbow-notification_anchor {
+  text-decoration: none !important;
+  display: flex; }
+
+.rainbow-notification_icon-container {
+  margin-right: 0.75rem;
+  flex-shrink: 0; }
+
+.rainbow-notification_icon--info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 12rem;
+  margin-right: 0.75rem;
+  background-color: #01b6f5; }
+
+.rainbow-notification_icon--success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 12rem;
+  margin-right: 0.75rem;
+  background-color: #1de9b6; }
+
+.rainbow-notification_icon--error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 12rem;
+  margin-right: 0.75rem;
+  background-color: #fe4849; }
+
+.rainbow-notification_icon--warning {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 12rem;
+  margin-right: 0.75rem;
+  background-color: #fc0; }
+
+.rainbow-notification_close {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.5rem; }

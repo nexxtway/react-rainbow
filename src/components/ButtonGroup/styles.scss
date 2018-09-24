@@ -17,12 +17,20 @@
         &:focus {
             z-index: 1;
         }
+
+        &:hover {
+            z-index: 1;
+        }
     }
 
     button.rainbow-button-icon {
         @extend %border-margin;
 
         &:focus {
+            z-index: 1;
+        }
+
+        &:hover {
             z-index: 1;
         }
     }

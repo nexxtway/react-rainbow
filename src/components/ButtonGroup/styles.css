@@ -9,7 +9,11 @@
   display: inline-flex; }
   .rainbow-button-group button.rainbow-button:focus {
     z-index: 1; }
+  .rainbow-button-group button.rainbow-button:hover {
+    z-index: 1; }
   .rainbow-button-group button.rainbow-button-icon:focus {
+    z-index: 1; }
+  .rainbow-button-group button.rainbow-button-icon:hover {
     z-index: 1; }
 
 .rainbow-button-group + .rainbow-button-group {
