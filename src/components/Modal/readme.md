@@ -23,7 +23,7 @@
 
         render() {
             return (
-                <div>
+                <div id="modal-container">
                     <Button
                         variant="neutral"
                         label="Open Modal"
