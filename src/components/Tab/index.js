@@ -95,16 +95,18 @@ export default function Tab(props) {
 Tab.propTypes = {
     /** The text displayed for the tab item. */
     label: PropTypes.oneOfType([
-        PropTypes.node, PropTypes.string]),
-    /** A unique identifier for the tab item. */
+        PropTypes.node, PropTypes.string,
+    ]),
+    /** The name is used during tabset's onSelect
+    * event to determine which tab was clicked. */
     name: PropTypes.string,
     /** Displays tooltip text when the mouse moves over the element. */
     title: PropTypes.string,
     /** Specifies whether this tab should be displayed in a disabled state.
     * Disabled tabs can't be clicked. This value defaults to false. */
     disabled: PropTypes.bool,
-    /** The optional ID is used during tabset's onSelect
-    * event to determine which tab was clicked. */
+    /** This ID is to be associated with the aria-labelledby attribute of the container
+     * that show the content of this tab. */
     id: PropTypes.string,
     /** This prop is associated with the id attribute of the container
     * that show the content of this tab. */

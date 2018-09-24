@@ -295,13 +295,6 @@
             super(props);
             this.state = { selected: 'card' };
             this.handleOnSelect = this.handleOnSelect.bind(this);
-            this.formContainerStyles = {
-                borderRight: '0.0625rem #e3e5ed solid',
-                borderLeft: '0.0625rem #e3e5ed solid',
-                borderBottom: '0.0625rem #e3e5ed solid',
-                borderBottomLeftRadius: '0.875rem',
-                borderBottomRightRadius: '0.875rem'
-            };
         }
 
         handleOnSelect(event, selected) {
@@ -317,7 +310,7 @@
                         <Input
                             className="rainbow-m-top_large"
                             label="First Name"
-                           style={{ color: '#e3e5ed' }} placeholder="Enter your first name"
+                            placeholder="Enter your first name"
                             icon={<FontAwesomeIcon icon={faUser} style={{ color: '#e3e5ed' }} />}
                             required />
                         <Input

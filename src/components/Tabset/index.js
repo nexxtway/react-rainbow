@@ -101,14 +101,13 @@ export default class Tabset extends Component {
 }
 
 Tabset.propTypes = {
-    /** The name of the tab that is selected. It has to match the name of the tab. */
+    /** The name of the tab that is selected. It must match the name of the tab. */
     activeTabName: PropTypes.node,
     /** Action fired when an item is selected.
      * The event params include the `name` of the selected item. */
     onSelect: PropTypes.func,
     /** If true, the tabs will grow to use all the available space.
-    * This value defaults to false.
-    */
+    * This value defaults to false. */
     fullWidth: PropTypes.bool,
     /** The id of the outer element. */
     id: PropTypes.string,

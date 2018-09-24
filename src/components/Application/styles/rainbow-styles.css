@@ -801,10 +801,6 @@ td {
 .rainbow-m-around_none {
   margin: 0; }
 
-.rainbow-m-horizontal_xxx-large {
-  margin-left: 5rem;
-  margin-right: 5rem; }
-
 .rainbow-flex {
   display: -ms-flexbox;
   display: flex; }
