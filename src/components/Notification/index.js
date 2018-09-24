@@ -4,7 +4,9 @@ import classnames from 'classnames';
 import CloseIcon from './closeIcon';
 import ButtonIcon from './../ButtonIcon';
 import RenderIf from '../RenderIf';
-import Icon from './icons/index';
+import Icon from './icons';
+import Title from './title';
+import Description from './description';
 import './styles.css';
 
 /**
@@ -32,10 +34,10 @@ export default function Notification(props) {
                 </RenderIf>
                 <span>
                     <RenderIf isTrue={!!title}>
-                        <h1 className="rainbow-notification_title">{title}</h1>
+                        <Title text={title} />
                     </RenderIf>
                     <RenderIf isTrue={!!description}>
-                        <p className="rainbow-notification_description">{description}</p>
+                        <Description text={description} />
                     </RenderIf>
                 </span>
             </a>
