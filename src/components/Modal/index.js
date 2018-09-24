@@ -11,6 +11,11 @@ import { uniqueId } from './../../libs/utils';
 import { ESCAPE_KEY } from './../../libs/constants';
 import './styles.css';
 
+/**
+* Modals are used to display content in a layer above the app.
+* This is used in cases such as the creation or editing of a record,
+* as well as various types of messaging.
+*/
 export default class Modal extends Component {
     constructor(props) {
         super(props);
@@ -137,34 +142,35 @@ export default class Modal extends Component {
 }
 
 Modal.propTypes = {
-    /** Controls whether the Modal is opened or not */
-    isOpen: PropTypes.bool,
     /** The title can include text or another component,
      * and is displayed in the header of the component. */
     title: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
-    /** The size of the modal. Include medium and large. */
+    /** The size of the Modal. Valid values are small, medium, and large.
+    * This value defaults to small. */
     size: PropTypes.oneOf([
         'small',
         'medium',
         'large',
     ]),
+    /** The footer can include text or another component. */
+    footer: PropTypes.node,
+    /** Controls whether the Modal is opened or not. If true, the modal is open. */
+    isOpen: PropTypes.bool,
+    /** The action triggered when the close button is clicked. */
+    onRequestClose: PropTypes.func,
+    /** The id of the outer element. */
+    id: PropTypes.string,
+    /** A CSS class for the outer element, in addition to the component's base classes. */
+    className: PropTypes.string,
+    /** An object with custom style applied to the outer element. */
+    style: PropTypes.object,
     /**
      * This prop that should not be visible in the documentation.
      * @ignore
      */
     children: PropTypes.node,
-    /** A CSS class for the outer element, in addition to the component's base classes. */
-    className: PropTypes.string,
-    /** An object with custom style applied to the outer element. */
-    style: PropTypes.object,
-    /** The footer of the component. */
-    footer: PropTypes.node,
-    /** The action triggered when the close button is clicked. */
-    onRequestClose: PropTypes.func,
-    /** The id of the outer element. */
-    id: PropTypes.string,
 };
 
 Modal.defaultProps = {
