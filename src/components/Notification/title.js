@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Title(props) {
-    const { text } = props;
+export default function Title({ text }) {
+}
 
     if (typeof text === 'string') {
         return (

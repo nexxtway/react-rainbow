@@ -13,8 +13,8 @@ const iconMap = {
     success: () => <SuccessIcon />,
 };
 
-export default function Icon(props) {
-    const { icon } = props;
+export default function Icon({ icon }) {
+}
 
     function getClassName() {
         return classnames('rainbow-notification_icon-container', {
