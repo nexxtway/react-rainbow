@@ -11,8 +11,6 @@ import {
     faPlug,
     faCheck,
 } from '@fortawesome/free-solid-svg-icons';
-import './styles.css';
-import './media-queries.css';
 
 const ACCOUNT_CARD_ACTIONS = (
     <ButtonGroup>

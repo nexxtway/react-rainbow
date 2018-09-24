@@ -46,6 +46,6 @@
 }
 
 .rainbow-admin_header-actions {
-    width: calc(100vw - 376px);
     justify-content: flex-end;
+    flex-grow: 1;
 }

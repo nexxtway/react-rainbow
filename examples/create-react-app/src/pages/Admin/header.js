@@ -15,9 +15,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import {
     faBell,
+    faUser,
 } from '@fortawesome/free-regular-svg-icons';
-import './styles.css';
-import './media-queries.css';
 
 export default function Header() {
     return (
@@ -38,7 +37,10 @@ export default function Header() {
                     </ButtonMenu>
                 </ButtonGroup>
                 <ButtonIcon className="rainbow-m-horizontal_small" icon={<FontAwesomeIcon icon={faBell} />} />
-                <Avatar src="./assets/images/user/user4.jpg" />
+                <Avatar
+                    icon={<FontAwesomeIcon icon={faUser} />}
+                    assistiveText="user icon"
+                    title="user icon" />
             </section>
         </header>
     );
