@@ -7,18 +7,12 @@ import './media-queries.css';
 
 export default function AdminExample() {
     return (
-        <section className="rainbow-admin_view-port rainbow-background-color_gray-1">
-
+        <main className="rainbow-admin_view-port rainbow-background-color_gray-1">
             <Header />
-
             <SideNavigation />
-
-            <article className="rainbow-admin_work-space">
-
+            <article className="rainbow-admin_main-inner">
                 <AccountPage />
-
             </article>
-
-        </section>
+        </main>
     );
 }

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import Input from 'react-rainbow-components/components/Input';
 import ButtonGroup from 'react-rainbow-components/components/ButtonGroup';
@@ -20,17 +21,13 @@ import './media-queries.css';
 
 export default function Header() {
     return (
-        <header className="rainbow-align-content_space-between rainbow-p-vertical_small rainbow-p-horizontal_large rainbow-admin_header rainbow-background-color_white">
-            <section className="rainbow-flex rainbow-align_center">
-                <img src="./assets/images/rainbow-logo.svg" alt="rainbow logo" className="rainbow-admin_header-logo" />
-                <Input
-                    className="rainbow-m-left_x-large rainbow-admin_header-search"
-                    placeholder="Search"
-                    icon={<FontAwesomeIcon icon={faSearch} className="rainbow-color_gray-3" />} />
-            </section>
-
-            <section className="rainbow-flex rainbow-align_center">
-
+        <header className="rainbow-flex rainbow-align_center rainbow-p-vertical_small rainbow-p-horizontal_large rainbow-admin_header rainbow-background-color_white">
+            <img src="./assets/images/rainbow-logo.svg" alt="rainbow logo" className="rainbow-admin_header-logo" />
+            <Input
+                className="rainbow-m-left_x-large rainbow-admin_header-search"
+                placeholder="Search"
+                icon={<FontAwesomeIcon icon={faSearch} className="rainbow-color_gray-3" />} />
+            <section className="rainbow-flex rainbow-align_center rainbow-admin_header-actions">
                 <ButtonGroup>
                     <ButtonIcon icon={<FontAwesomeIcon icon={faRocket} />} variant="border-filled" disabled />
                     <ButtonIcon icon={<FontAwesomeIcon icon={faBullhorn} />} variant="border-filled" />
@@ -41,7 +38,6 @@ export default function Header() {
                     </ButtonMenu>
                 </ButtonGroup>
                 <ButtonIcon className="rainbow-m-horizontal_small" icon={<FontAwesomeIcon icon={faBell} />} />
-
                 <Avatar src="./assets/images/user/user4.jpg" />
             </section>
         </header>

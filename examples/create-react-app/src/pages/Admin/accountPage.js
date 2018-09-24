@@ -14,14 +14,14 @@ import {
 import './styles.css';
 import './media-queries.css';
 
-const CARD_ONE_ACTIONS = (
+const ACCOUNT_CARD_ACTIONS = (
     <ButtonGroup>
-        <ButtonIcon variant="border" icon={<FontAwesomeIcon icon={faPlus} />} />
-        <ButtonIcon variant="border" icon={<FontAwesomeIcon icon={faPencilAlt} />} />
+        <ButtonIcon variant="border-filled" icon={<FontAwesomeIcon icon={faPlus} />} />
+        <ButtonIcon variant="border-filled" icon={<FontAwesomeIcon icon={faPencilAlt} />} />
     </ButtonGroup>
 );
 
-const CARD_ONE_FOOTER = (
+const ACCOUNT_CARD_FOOTER = (
     <div className="rainbow-align-content_space-between">
         <div className="rainbow-flex">
             <div>
@@ -34,13 +34,11 @@ const CARD_ONE_FOOTER = (
                 <p className="rainbow-color_dark-1 rainbow-font-size-text_medium">$ 100 000</p>
             </div>
         </div>
-        <div>
-            <ButtonIcon icon={<FontAwesomeIcon icon={faAngleDown} />} />
-        </div>
+        <ButtonIcon icon={<FontAwesomeIcon icon={faAngleDown} />} />
     </div>
 );
 
-const CARD_ONE_BODY = (
+const ACCOUNT_CARD_BODY = (
     <div className="rainbow-p-horizontal_medium rainbow-flex rainbow-align_center">
         <h1 className="rainbow-font-size-heading_medium rainbow-color_dark-1">
             Leandro Torres
@@ -48,27 +46,26 @@ const CARD_ONE_BODY = (
         <Badge
             className="rainbow-admin_card-body-badge rainbow-m-left_small"
             variant="inverse">
-            <FontAwesomeIcon icon={faCheck} pull="left" size="lg" />
+            <FontAwesomeIcon icon={faCheck} pull="left" />
             verified
         </Badge>
     </div>
 );
 
-const CARD_TWO_ACTIONS = (
+const IDENTITY_CARD_ACTIONS = (
     <ButtonIcon variant="border" disabled size="medium" icon={<FontAwesomeIcon icon={faPencilAlt} />} />
 );
 
 export default function AccountPage() {
     return (
         <section>
-
             <div>
                 <Card
                     icon={<FontAwesomeIcon icon={faPlug} size="lg" className="rainbow-color_success-active" />}
                     title="Conected account"
-                    actions={CARD_ONE_ACTIONS}
-                    footer={CARD_ONE_FOOTER}>
-                    {CARD_ONE_BODY}
+                    actions={ACCOUNT_CARD_ACTIONS}
+                    footer={ACCOUNT_CARD_FOOTER}>
+                    {ACCOUNT_CARD_BODY}
                 </Card>
             </div>
 
@@ -76,9 +73,8 @@ export default function AccountPage() {
                 <Card
                     isLoading
                     title="Identity"
-                    actions={CARD_TWO_ACTIONS} />
+                    actions={IDENTITY_CARD_ACTIONS} />
             </div>
-
         </section>
     );
 }

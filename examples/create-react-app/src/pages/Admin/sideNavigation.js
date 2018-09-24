@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable import/no-extraneous-dependencies */
+import React, { Component } from 'react';
 import VerticalNavigation from 'react-rainbow-components/components/VerticalNavigation';
 import VerticalSection from 'react-rainbow-components/components/VerticalSection';
 import VerticalSectionOverflow from 'react-rainbow-components/components/VerticalSectionOverflow';
@@ -15,31 +16,45 @@ import {
     faUser,
 } from '@fortawesome/free-regular-svg-icons';
 
-export default function SideNavigation() {
-    return (
-        <aside className="rainbow-admin_vertical-navigation rainbow-p-vertical_medium">
-            <VerticalNavigation>
+export default class SideNavigation extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            selectedItem: 'item-7',
+        };
+        this.handleOnSelect = this.handleOnSelect.bind(this);
+    }
 
-                <VerticalSection>
-                    <VerticalItem name="item-1" label="Dashboard" icon={<FontAwesomeIcon size="lg" icon={faHome} />} />
-                    <VerticalItem name="item-2" label="Orders" icon={<FontAwesomeIcon size="lg" icon={faShoppingCart} />} />
-                    <VerticalItem name="item-3" label="Customers" icon={<FontAwesomeIcon size="lg" icon={faUsers} />} />
-                </VerticalSection>
+    handleOnSelect(e, selectedItem) {
+        return this.setState({ selectedItem });
+    }
 
-                <VerticalSectionOverflow title="Integrations" description="Integrations with ...">
+    render() {
+        return (
+            <aside className="rainbow-admin_vertical-navigation rainbow-p-vertical_medium">
+                <VerticalNavigation
+                    selectedItem={this.state.selectedItem}
+                    onSelect={this.handleOnSelect}>
 
-                    <VerticalItem name="item-4" label="Item 1" />
-                    <VerticalItem name="item-5" label="Item 2" />
-                </VerticalSectionOverflow>
+                    <VerticalSection>
+                        <VerticalItem name="item-1" label="Dashboard" icon={<FontAwesomeIcon size="lg" icon={faHome} />} />
+                        <VerticalItem name="item-2" label="Orders" icon={<FontAwesomeIcon size="lg" icon={faShoppingCart} />} />
+                        <VerticalItem name="item-3" label="Customers" icon={<FontAwesomeIcon size="lg" icon={faUsers} />} />
+                    </VerticalSection>
 
-                <VerticalSectionOverflow title="Connect" description="Connect with ...">
+                    <VerticalSectionOverflow title="Integrations" description="Integrations with ...">
+                        <VerticalItem name="item-4" label="Item 1" />
+                        <VerticalItem name="item-5" label="Item 2" />
+                    </VerticalSectionOverflow>
 
-                    <VerticalItem name="item-6" label="Recents" icon={<FontAwesomeIcon size="lg" icon={faClock} />} />
-                    <VerticalItem name="item-7" label="Accounts" icon={<FontAwesomeIcon size="lg" icon={faUser} />} />
-                    <VerticalItem name="item-8" label="Transfer" icon={<FontAwesomeIcon size="lg" icon={faExchangeAlt} />} />
-                </VerticalSectionOverflow>
+                    <VerticalSectionOverflow expanded title="Connect" description="Recents, Accounts, Transfer ...">
+                        <VerticalItem name="item-6" label="Recents" icon={<FontAwesomeIcon size="lg" icon={faClock} />} />
+                        <VerticalItem name="item-7" label="Accounts" icon={<FontAwesomeIcon size="lg" icon={faUser} />} />
+                        <VerticalItem name="item-8" label="Transfer" icon={<FontAwesomeIcon size="lg" icon={faExchangeAlt} />} />
+                    </VerticalSectionOverflow>
 
-            </VerticalNavigation>
-        </aside>
-    );
+                </VerticalNavigation>
+            </aside>
+        );
+    }
 }
