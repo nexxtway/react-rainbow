@@ -1,0 +1,47 @@
+@media (max-width: 650px) {
+    .rainbow-admin_view-port {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .rainbow-admin_header {
+        flex-direction: column;
+        position: fixed;
+        height: fit-content;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    .rainbow-admin_header-search {
+        width: 100%;
+        margin: 0;
+        padding-top: 0.5rem;
+        order: 2;
+    }
+
+    .rainbow-admin_header-actions {
+        width: 100%;
+        order: 1;
+    }
+
+    .rainbow-admin_header-logo {
+        order: 1;
+        position: absolute;
+        top: 0.75rem;
+        left: 0.5rem;
+    }
+
+    .rainbow-admin_main-inner {
+        width: 100vw;
+        padding: 129px 1rem 1rem 1rem;
+        margin: 0;
+    }
+
+    .rainbow-admin_vertical-navigation {
+        width: 100vw;
+        position: relative;
+        top: 0;
+        height: fit-content;
+        overflow: unset;
+    }
+}

@@ -40,6 +40,7 @@ export default class Home extends Component {
                         <VerticalItem name="spinner" label="Spinner" href="spinner" />
                         <VerticalItem name="checkout" label="Checkout" href="checkout" />
                         <VerticalItem name="sign-in" label="SignIn" href="sign-in" />
+                        <VerticalItem name="admin" label="Admin" href="admin" />
                     </VerticalSection>
                 </VerticalNavigation>
             </div>
