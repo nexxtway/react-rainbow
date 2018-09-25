@@ -1,8 +1,7 @@
-/* eslint-disable class-methods-use-this */
 /**
  * Modal page object class.
  * @class
- * @tutorial buttonMenu
+ * @tutorial modal
  */
 class PageModal {
     /**
@@ -15,19 +14,11 @@ class PageModal {
     }
 
     /**
-     * Open the modal element.
-     * @method
-     */
-    openModal() {
-        $('#modal-container button[data-id="button-icon-element"]').click();
-    }
-
-    /**
-     * Clicks the closeButton element.
+     * Clicks the close button element.
      * @method
      */
     clickCloseButton() {
-        $(this.rootElement).$('.rainbow-modal_close').click();
+        $(this.rootElement).$('.rainbow-modal_close-button').click();
     }
 
     /**
@@ -44,7 +35,7 @@ class PageModal {
      * @returns {bool}
      */
     isOpen() {
-        return $(this.rootElement).$('[role="dialog"]').isVisible();
+        return $(this.rootElement).$('section[role="dialog"]').isVisible();
     }
 
     /**
@@ -53,7 +44,7 @@ class PageModal {
      * @returns {bool}
      */
     hasFocusCloseButton() {
-        return $(this.rootElement).$('.rainbow-modal_close').hasFocus();
+        return $(this.rootElement).$('.rainbow-modal_close-button').hasFocus();
     }
 }
 
