@@ -23,8 +23,9 @@
 
         render() {
             return (
-                <div id="modal-container">
+                <div>
                     <ButtonIcon
+                        id="button-icon-1"
                         variant="success"
                         icon={<FontAwesomeIcon icon={faCog} />}
                         onClick={this.handleOnClick} />
@@ -135,16 +136,18 @@
                     <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
                         <ButtonGroup>
                             <ButtonIcon
+                                id="button-icon-2"
                                 variant="border"
                                 icon={<FontAwesomeIcon icon={faCog} />}
                                 onClick={this.handleOnClick} />
                         </ButtonGroup>
                     </GlobalHeader>
                     <Modal
-                       isOpen={this.state.isOpen}
-                       onRequestClose={this.handleOnClose}
-                       title="Modal Header"
-                       footer={
+                        id="modal-2"
+                        isOpen={this.state.isOpen}
+                        onRequestClose={this.handleOnClose}
+                        title="Modal Header"
+                        footer={
                             <div className="rainbow-flex rainbow-justify_end">
                                 <Button className="rainbow-m-right_large" label="Cancel" variant="neutral" />
                                 <Button label="Save" variant="brand" />
@@ -321,7 +324,5 @@
             );
         }
     }
-
-
 
     <ModalWSize />

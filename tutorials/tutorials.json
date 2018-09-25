@@ -4,5 +4,8 @@
     },
     "tabset": {
         "title": "Tabset page object"
+    },
+    "modal": {
+        "title": "Modal page object"
     }
 }
