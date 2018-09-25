@@ -13,6 +13,13 @@ const iconMap = {
     success: () => <SuccessIcon />,
 };
 
+function VariantIcon({ icon }) {
+    if (iconMap[icon]) {
+        return iconMap[icon]();
+    }
+    return null;
+}
+
 export default function Icon({ icon }) {
     function getClassName() {
         return classnames('rainbow-notification_icon-container', {
@@ -23,7 +30,7 @@ export default function Icon({ icon }) {
     if (typeof icon === 'string') {
         return (
             <div className={getClassName()}>
-                {iconMap[icon]()}
+                <VariantIcon icon={icon} />
             </div>
         );
     }
