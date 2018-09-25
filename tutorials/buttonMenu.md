@@ -1,6 +1,6 @@
 Here is an overview about how to use the ButtonMenu page object:
 
-    const PageButtonMenu = require('./../../src/components/ButtonMenu/pageObject');
+    const PageButtonMenu = require('react-rainbow-components/components/ButtonMenu/pageObject');
 
     const BUTTON_MENU = '#button-menu-1';
 

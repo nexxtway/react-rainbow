@@ -75,11 +75,13 @@ export default class ButtonIcon extends Component {
             type,
             ariaHaspopup,
             assistiveText,
+            id,
         } = this.props;
 
         return (
             <button
                 data-id="button-icon-element"
+                id={id}
                 className={this.getButtonClassNames()}
                 style={style}
                 disabled={disabled}
@@ -155,6 +157,8 @@ ButtonIcon.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The id of the outer element. */
+    id: PropTypes.string,
 };
 
 ButtonIcon.defaultProps = {
@@ -172,4 +176,5 @@ ButtonIcon.defaultProps = {
     ariaHaspopup: false,
     className: undefined,
     style: undefined,
+    id: undefined,
 };

@@ -1,0 +1,51 @@
+.rainbow-admin_view-port {
+    height: 100vh;
+    overflow: auto;
+}
+
+.rainbow-admin_main-inner {
+    margin: 75px 0 0 280px;
+    padding: 3rem;
+}
+
+.rainbow-admin_header {
+    border-bottom: 1px solid #e3e5ed;
+    height: 75px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10000;
+}
+
+.rainbow-admin_header-logo {
+    width: 40px;
+    height: 40px;
+}
+
+.rainbow-admin_header-search {
+    width: 280px;
+}
+
+.rainbow-admin_vertical-navigation {
+    width: 280px;
+    height: calc(100vh - 75px);
+    border-right: 1px solid #e3e5ed;
+    background-color: white;
+    position: fixed;
+    top: 75px;
+    overflow: auto;
+}
+
+.rainbow-admin_card-body-badge {
+    background-color: #1de9b6;
+}
+
+.rainbow-admin_card-footer--divider {
+    border-right: 1px solid #e3e5ed; 
+}
+
+.rainbow-admin_header-actions {
+    justify-content: flex-end;
+    flex-grow: 1;
+}

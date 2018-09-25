@@ -23,8 +23,9 @@
 
         render() {
             return (
-                <div id="modal-container">
+                <div>
                     <Button
+                        id="button-1"
                         variant="neutral"
                         label="Open Modal"
                         onClick={this.handleOnClick} />
@@ -132,15 +133,17 @@
                 <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
                     <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
                         <Button
+                            id="button-2"
                             variant="neutral"
                             label="Modal with footer"
                             onClick={this.handleOnClick} />
                     </GlobalHeader>
                     <Modal
-                       isOpen={this.state.isOpen}
-                       onRequestClose={this.handleOnClose}
-                       title="Modal Header"
-                       footer={
+                        id="modal-2"
+                        isOpen={this.state.isOpen}
+                        onRequestClose={this.handleOnClose}
+                        title="Modal Header"
+                        footer={
                             <div className="rainbow-flex rainbow-justify_end">
                                 <Button className="rainbow-m-right_large" label="Cancel" variant="neutral" />
                                 <Button label="Save" variant="brand" />
@@ -314,7 +317,5 @@
             );
         }
     }
-
-
 
     <ModalWSize />

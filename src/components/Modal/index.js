@@ -3,12 +3,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import classnames from 'classnames';
-import Header from './header';
-import RenderIf from '../RenderIf';
-import CloseIcon from './closeIcon';
-import ButtonIcon from '../ButtonIcon';
+import RenderIf from './../RenderIf';
+import ButtonIcon from './../ButtonIcon';
 import { uniqueId } from './../../libs/utils';
-import { ESCAPE_KEY } from './../../libs/constants';
+import { ESCAPE_KEY, TAB_KEY } from './../../libs/constants';
+import Header from './header';
+import CloseIcon from './closeIcon';
+import manageTab from './manage-tab';
 import './styles.css';
 
 /**
@@ -23,8 +24,9 @@ export default class Modal extends Component {
         this.modalRef = React.createRef();
         this.modalHeadingId = uniqueId('modal-heading');
         this.modalContentId = uniqueId('modal-content');
-        this.handleKeyEscapePressed = this.handleKeyEscapePressed.bind(this);
+        this.handleKeyPressed = this.handleKeyPressed.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
 
     componentDidMount() {
@@ -36,7 +38,10 @@ export default class Modal extends Component {
 
     componentDidUpdate() {
         const { isOpen } = this.props;
+        document.body.style.overflow = 'inherit';
         if (isOpen) {
+            document.body.style.overflow = 'hidden';
+            this.modalTriggerElement = document.activeElement;
             this.modalRef.current.focus();
         }
     }
@@ -50,9 +55,7 @@ export default class Modal extends Component {
         const { className, isOpen } = this.props;
         return classnames(
             'rainbow-modal',
-            {
-                'rainbow-modal--fade-in': isOpen,
-            },
+            { 'rainbow-modal--fade-in': isOpen },
             this.getSizeClassNames(),
             className);
     }
@@ -65,23 +68,32 @@ export default class Modal extends Component {
         return `rainbow-modal--${size}`;
     }
 
-    handleKeyEscapePressed(event) {
-        const { isOpen, onRequestClose } = this.props;
+    handleKeyPressed(event) {
+        const { isOpen } = this.props;
         if (isOpen && event.keyCode === ESCAPE_KEY) {
-            return onRequestClose();
+            this.closeModal();
+        }
+        if (event.keyCode === TAB_KEY) {
+            manageTab(this.modalRef.current, event);
         }
         return null;
     }
 
     handleClick(event) {
-        const { isOpen, onRequestClose } = this.props;
+        const { isOpen } = this.props;
         if (isOpen) {
             const isClickOutsideModal = !this.modalRef.current.contains(event.target);
             if (isClickOutsideModal) {
-                return onRequestClose();
+                return this.closeModal();
             }
         }
         return null;
+    }
+
+    closeModal() {
+        const { onRequestClose } = this.props;
+        this.modalTriggerElement.focus();
+        return onRequestClose();
     }
 
     render() {
@@ -91,7 +103,6 @@ export default class Modal extends Component {
             children,
             footer,
             isOpen,
-            onRequestClose,
             id,
         } = this.props;
 
@@ -101,23 +112,24 @@ export default class Modal extends Component {
                     id={id}
                     onClick={this.handleClick}
                     className={this.getBackDropClassNames()}
-                    onKeyDown={this.handleKeyEscapePressed}>
+                    onKeyDown={this.handleKeyPressed}>
 
                     <section
                         role="dialog"
-                        tabIndex="-1"
+                        tabIndex={-1}
                         aria-labelledby={this.modalHeadingId}
-                        aria-modal="true"
+                        aria-modal
                         aria-hidden={!isOpen}
                         aria-describedby={this.modalContentId}
                         className={this.getContainerClassNames()}
                         style={style}
                         ref={this.modalRef}>
+
                         <ButtonIcon
-                            className="rainbow-modal_close"
+                            className="rainbow-modal_close-button"
                             icon={<CloseIcon />}
                             title="Close"
-                            onClick={onRequestClose}
+                            onClick={this.closeModal}
                             ref={this.buttonRef} />
 
                         <Header
