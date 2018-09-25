@@ -38,9 +38,9 @@ export default function Header() {
                 </ButtonGroup>
                 <ButtonIcon className="rainbow-m-horizontal_small" icon={<FontAwesomeIcon icon={faBell} />} />
                 <Avatar
-                    icon={<FontAwesomeIcon icon={faUser} />}
-                    assistiveText="user icon"
-                    title="user icon" />
+                    src="assets/images/user3.jpg"
+                    assistiveText="Leandro Torres"
+                    title="Leandro Torres" />
             </section>
         </header>
     );
