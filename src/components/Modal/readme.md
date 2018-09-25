@@ -24,10 +24,10 @@
         render() {
             return (
                 <div>
-                    <ButtonIcon
-                        id="button-icon-1"
-                        variant="success"
-                        icon={<FontAwesomeIcon icon={faCog} />}
+                    <Button
+                        id="button-1"
+                        variant="neutral"
+                        label="Open Modal"
                         onClick={this.handleOnClick} />
                     <Modal
                        id="modal-1"
@@ -47,14 +47,14 @@
 
     <div>
         <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
+            <div className="rainbow-m-right_medium">
+                <EmptyModal />
+            </div>
             <ButtonGroup>
                 <ButtonIcon icon={<FontAwesomeIcon icon={faPlus} />} variant="border-filled" disabled />
                 <ButtonIcon icon={<FontAwesomeIcon icon={faEllipsisV} />} variant="border-filled" disabled />
             </ButtonGroup>
         </GlobalHeader>
-        <div className="rainbow-m-horizontal_large rainbow-p-top_xx-large rainbow-m-bottom_large rainbow-grid   rainbow-grid_align-end">
-            <EmptyModal />
-        </div>
     </div>
 
 ##### modal with header
@@ -84,12 +84,10 @@
             return (
                 <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
                     <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
-                        <ButtonGroup>
-                            <ButtonIcon
-                                variant="border"
-                                icon={<FontAwesomeIcon icon={faCog} />}
-                                onClick={this.handleOnClick} />
-                        </ButtonGroup>
+                        <Button
+                            variant="neutral"
+                            label="Modal with header"
+                            onClick={this.handleOnClick} />
                     </GlobalHeader>
                     <Modal
                        isOpen={this.state.isOpen}
@@ -134,13 +132,11 @@
             return (
                 <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
                     <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
-                        <ButtonGroup>
-                            <ButtonIcon
-                                id="button-icon-2"
-                                variant="border"
-                                icon={<FontAwesomeIcon icon={faCog} />}
-                                onClick={this.handleOnClick} />
-                        </ButtonGroup>
+                        <Button
+                            id="button-2"
+                            variant="neutral"
+                            label="Modal with footer"
+                            onClick={this.handleOnClick} />
                     </GlobalHeader>
                     <Modal
                         id="modal-2"
@@ -192,12 +188,10 @@
             return (
                 <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
                     <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
-                        <ButtonGroup>
-                            <ButtonIcon
-                                variant="border"
-                                icon={<FontAwesomeIcon icon={faCog} />}
-                                onClick={this.handleOnClick} />
-                        </ButtonGroup>
+                        <Button
+                            variant="neutral"
+                            label="Modal with footer"
+                            onClick={this.handleOnClick} />
                     </GlobalHeader>
                     <Modal
                        isOpen={this.state.isOpen}
@@ -276,14 +270,13 @@
                             </span>
                         }
                         title="Task"
-                        actions={<Button onClick={this.handleOnClick} variant="neutral" label="Edit" />}
+                        actions={<Button onClick={this.handleOnClick} variant="neutral" label="Modal small" />}
                         footer={
-                            <div className="rainbow-align-content_space-between">
-                                <div className="rainbow-flex">
-                                    <ButtonIcon onClick={this.handleOnClickMedium} icon={<FontAwesomeIcon icon={faHeart} />} className="rainbow-m-right_xx-small" />
-                                    <ButtonIcon onClick={this.handleOnClickLarge} icon={<FontAwesomeIcon icon={faShareAlt} />} />
-                                </div>
-                                <ButtonIcon icon={<FontAwesomeIcon icon={faAngleDown} />} disabled />
+                            <div className="rainbow-align-content_center">
+                                <ButtonGroup>
+                                    <Button onClick={this.handleOnClickMedium} variant="outline-brand" label="Modal medium" />
+                                    <Button onClick={this.handleOnClickLarge} variant="outline-brand" label="Modal large" />
+                                </ButtonGroup>
                             </div>
                         }>
 

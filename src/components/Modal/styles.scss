@@ -48,20 +48,18 @@
 
 .rainbow-modal--large {
     width: 90%;
-    min-width: 40rem;
 }
 
 .rainbow-modal--medium {
     width: 70%;
-    min-width: 30rem;
 }
 
 .rainbow-modal_header {
+    font-family: 'Lato Light', Arial, sans-serif;
     position: relative;
     padding: 1rem;
     text-align: center;
     font-size: 1.5rem;
-    font-weight: 300;
     color: $color-gray-4;
 }
 
@@ -98,4 +96,10 @@
     right: 0;
     bottom: 0;
     left: 0;
+}
+
+@media (max-width: 720px) {
+    .rainbow-modal, .rainbow-modal--medium, .rainbow-modal--large {
+        width: 95%;
+    }
 }
