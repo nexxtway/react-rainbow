@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
@@ -13,19 +14,24 @@ const iconMap = {
     success: () => <SuccessIcon />,
 };
 
-export default function Icon({ icon }) {
+function VariantIcon({ icon }) {
     function getClassName() {
-        return classnames('rainbow-notification_icon-container', {
-            [`rainbow-notification_icon--${icon}`]: typeof icon === 'string',
-        });
+        return classnames('rainbow-notification_icon-container', `rainbow-notification_icon--${icon}`);
     }
 
-    if (typeof icon === 'string') {
+    if (iconMap[icon]) {
         return (
             <div className={getClassName()}>
                 {iconMap[icon]()}
             </div>
         );
+    }
+    return null;
+}
+
+export default function Icon({ icon }) {
+    if (typeof icon === 'string') {
+        return <VariantIcon icon={icon} />;
     }
     return (
         <div className="rainbow-notification_icon-container">
