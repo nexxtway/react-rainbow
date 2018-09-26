@@ -16,9 +16,7 @@ const iconMap = {
 
 function VariantIcon({ icon }) {
     function getClassName() {
-        return classnames('rainbow-notification_icon-container', {
-            [`rainbow-notification_icon--${icon}`]: typeof icon === 'string',
-        });
+        return classnames('rainbow-notification_icon-container', `rainbow-notification_icon--${icon}`);
     }
 
     if (iconMap[icon]) {
