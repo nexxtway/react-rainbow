@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import Notification from './../index';
 
 describe('<Notification/>', () => {
-    it('should call onClick function when someone click over', () => {
+    it('should fire an event when the close button is clicked', () => {
         const onClickFn = jest.fn();
         const component = mount(
             <Notification title="Notification test" onRequestClose={onClickFn} />,
