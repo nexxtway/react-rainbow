@@ -12,9 +12,6 @@ export default class ButtonIcon extends Component {
     constructor(props) {
         super(props);
         this.buttonRef = React.createRef();
-        this.click = this.click.bind(this);
-        this.focus = this.focus.bind(this);
-        this.blur = this.blur.bind(this);
     }
 
     getVariantClassName() {

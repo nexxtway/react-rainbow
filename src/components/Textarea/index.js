@@ -14,9 +14,6 @@ export default class Textarea extends Component {
     constructor(props) {
         super(props);
         this.textareaRef = React.createRef();
-        this.click = this.click.bind(this);
-        this.focus = this.focus.bind(this);
-        this.blur = this.blur.bind(this);
         this.textareaId = uniqueId('textarea');
         this.inlineTextLabelId = uniqueId('inline-text-label');
         this.errorMessageId = uniqueId('error-message');

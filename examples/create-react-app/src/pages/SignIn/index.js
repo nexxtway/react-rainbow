@@ -30,6 +30,7 @@ export default function SignInExample() {
                     className="rainbow-m-bottom_large"
                     label="Password"
                     placeholder="Enter your password"
+                    type="password"
                     required
                     icon={
                         <FontAwesomeIcon icon={faLock} className="rainbow-color_gray-3" />

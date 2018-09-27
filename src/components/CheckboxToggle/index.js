@@ -15,9 +15,6 @@ export default class CheckboxToggle extends Component {
         super(props);
         this.toggleId = uniqueId('checkbox-toggle');
         this.checkboxToggleRef = React.createRef();
-        this.click = this.click.bind(this);
-        this.focus = this.focus.bind(this);
-        this.blur = this.blur.bind(this);
     }
 
     getClassNames() {
@@ -74,7 +71,8 @@ export default class CheckboxToggle extends Component {
                     onFocus={onFocus}
                     onBlur={onBlur}
                     onClick={onClick}
-                    disabled={disabled} />
+                    disabled={disabled}
+                    ref={this.checkboxToggleRef} />
 
                 <span id={this.toggleId} className="rainbow-checkbox-toggle_faux-container" aria-live="assertive">
                     <span className="rainbow-checkbox-toggle_faux" />

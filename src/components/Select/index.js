@@ -15,9 +15,6 @@ export default class Select extends Component {
         super(props);
         this.selectId = uniqueId('select');
         this.selectRef = React.createRef();
-        this.click = this.click.bind(this);
-        this.focus = this.focus.bind(this);
-        this.blur = this.blur.bind(this);
     }
 
     getContainerClassNames() {
@@ -86,7 +83,8 @@ export default class Select extends Component {
                         onClick={onClick}
                         value={value}
                         required={isRequiredOrHasError}
-                        disabled={disabled}>
+                        disabled={disabled}
+                        ref={this.selectRef}>
 
                         <Options options={options} />
                     </select>
