@@ -21,8 +21,9 @@ Here is an overview about how to use the ButtonMenu page object:
         });
         it('should move focus to the item hovered', () => {
             const buttonMenu = new PageButtonMenu(BUTTON_MENU);
+            const menuItem = buttonMenu.getItem(1);
             buttonMenu.click();
-            buttonMenu.hoverItem(1);
-            expect(buttonMenu.hasFocusItem(1)).toBe(true);
+            menuItem.hover();
+            expect(menuItem.hasFocus()).toBe(true);
         });
     });

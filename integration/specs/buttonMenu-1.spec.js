@@ -31,6 +31,13 @@ describe('ButtonMenu base example', () => {
         browser.keys(ESCAPE_KEY);
         expect(buttonMenu.isOpen()).toBe(false);
     });
+    it('should close the menu when the menu is opened and click an element', () => {
+        const buttonMenu = new PageButtonMenu(MENU_BTN);
+        const menuItem = buttonMenu.getItem(1);
+        buttonMenu.click();
+        menuItem.click();
+        expect(buttonMenu.isOpen()).toBe(false);
+    });
     it('should put the menu button focused when the menu is opened and press ESC', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
         buttonMenu.click();
@@ -53,35 +60,40 @@ describe('ButtonMenu base example', () => {
     });
     it('should set the focus to the first menu item when open the menu', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
+        const menuItem = buttonMenu.getItem(0);
         buttonMenu.click();
-        expect(buttonMenu.hasFocusItem(0)).toBe(true);
+        expect(menuItem.hasFocus()).toBe(true);
     });
     it('should move to the next item when press arrow down', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
+        const menuItem = buttonMenu.getItem(1);
         buttonMenu.click();
         browser.keys('ArrowDown');
-        expect(buttonMenu.hasFocusItem(1)).toBe(true);
+        expect(menuItem.hasFocus()).toBe(true);
     });
     it('should move to the previous item when press arrow up', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
+        const menuItem = buttonMenu.getItem(1);
         buttonMenu.click();
         browser.keys(ARROW_DOWN_KEY);
         browser.keys(ARROW_DOWN_KEY);
         browser.keys(ARROW_UP_KEY);
-        expect(buttonMenu.hasFocusItem(1)).toBe(true);
+        expect(menuItem.hasFocus()).toBe(true);
     });
     it('should move to the first item when last item is active and press arrow down', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
+        const menuItem = buttonMenu.getItem(0);
         buttonMenu.click();
         browser.keys(ARROW_UP_KEY);
         browser.keys(ARROW_DOWN_KEY);
-        expect(buttonMenu.hasFocusItem(0)).toBe(true);
+        expect(menuItem.hasFocus()).toBe(true);
     });
     it('should move to the last item when first item is active and press arrow up', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
+        const menuItem = buttonMenu.getItem(3);
         buttonMenu.click();
         browser.keys(ARROW_UP_KEY);
-        expect(buttonMenu.hasFocusItem(3)).toBe(true);
+        expect(menuItem.hasFocus()).toBe(true);
     });
     it('should close the menu when the menu is opened and press the key "tab"', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
@@ -91,8 +103,9 @@ describe('ButtonMenu base example', () => {
     });
     it('should move focus to the item hovered', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
+        const menuItem = buttonMenu.getItem(1);
         buttonMenu.click();
-        buttonMenu.hoverItem(1);
-        expect(buttonMenu.hasFocusItem(1)).toBe(true);
+        menuItem.hover();
+        expect(menuItem.hasFocus()).toBe(true);
     });
 });
