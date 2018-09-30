@@ -1,3 +1,5 @@
+const PageMenuItem = require('../../MenuItem/pageObject');
+
 /**
  * ButtonMenu page object class.
  * @class
@@ -11,6 +13,19 @@ class PageButtonMenu {
     */
     constructor(rootElement) {
         this.rootElement = rootElement;
+    }
+
+    /**
+     * Returns a new MenuItem page object of the element in item position.
+     * @method
+     * @param {number} itemPosition - The base 0 index of the menu item.
+     */
+    getItem(itemPosition) {
+        const items = $(this.rootElement).$$('.rainbow-menu-item');
+        if (items[itemPosition]) {
+            return new PageMenuItem(`${this.rootElement} .rainbow-menu-item:nth-child(${itemPosition + 1})`);
+        }
+        return null;
     }
 
    /**
@@ -37,29 +52,6 @@ class PageButtonMenu {
     */
     hasFocusButton() {
         return $(this.rootElement).$('button').hasFocus();
-    }
-
-   /**
-    * Returns true when the menu item with item position has the focus.
-    * @method
-    * @returns {bool}
-    * @param {number} itemPosition - The base 0 index of the menu item.
-    */
-    hasFocusItem(itemPosition) {
-        const items = $(this.rootElement).$$('[role="menuitem"]');
-        if (items[itemPosition]) {
-            return items[itemPosition].hasFocus();
-        }
-        return false;
-    }
-
-   /**
-    * It moves the pointer over the item with item position.
-    * @method
-    * @param {number} itemPosition - The base 0 index of the menu item.
-    */
-    hoverItem(itemPosition) {
-        browser.moveToObject(`${this.rootElement} li[role="presentation"]:nth-child(${itemPosition + 1}) > a`);
     }
 }
 
