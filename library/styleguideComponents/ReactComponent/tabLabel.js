@@ -7,7 +7,7 @@ export default function TabLabel({ icon, label }) {
     return (
         <span className="react-rainbow-tab-label">
             <FontAwesomeIcon icon={icon} className="rainbow-m-right_x-small" />
-            {label}
+            <span>{label}</span>
         </span>
     );
 }
