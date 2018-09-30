@@ -7,3 +7,26 @@
     line-height: 1.25;
     font-family: 'Lato Light';
 }
+
+.react-rainbow-tab-label {
+    font-size: 0.625rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.react-rainbow-tab-label span {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.react-rainbow-tab-label svg {
+    max-width: 100%;
+}
+
+.react-rainbow-component-top-content {
+    background-color: #f4f6f9;
+}
