@@ -19,7 +19,6 @@
     top: 0;
     height: 68px;
     background-color: #fff;
-    margin-left: -64px;
     width: calc(100vw - 250px);
     z-index: 10000;
     box-shadow: 0 1px 2px 0 #e3e5ed;
