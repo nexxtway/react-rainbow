@@ -4,7 +4,7 @@ Here is an overview about how to use the Select page object:
 
     const SELECT = '#select-1';
 
-    describe('Textarea page object basic usage', () => {
+    describe('Select page object basic usage', () => {
         beforeEach(() => {
             browser.url('/url/to/testing/page');
             browser.refresh();
