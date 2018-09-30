@@ -13,6 +13,14 @@ class PageMenuItem {
     }
 
     /**
+     * Clicks the menu item.
+     * @method
+     */
+    click() {
+        $(this.rootElement).click();
+    }
+
+    /**
      * Returns true when the menu item has focus.
      * @method
      * @returns {bool}
@@ -26,7 +34,7 @@ class PageMenuItem {
      * @method
      */
     hover() {
-        browser.moveToObject(`${this.rootElement}`);
+        browser.moveToObject(`${this.rootElement}>a`);
     }
 }
 

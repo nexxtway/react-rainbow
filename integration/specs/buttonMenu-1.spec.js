@@ -31,6 +31,13 @@ describe('ButtonMenu base example', () => {
         browser.keys(ESCAPE_KEY);
         expect(buttonMenu.isOpen()).toBe(false);
     });
+    it('should close the menu when the menu is opened and click an element', () => {
+        const buttonMenu = new PageButtonMenu(MENU_BTN);
+        const menuItem = buttonMenu.getItem(1);
+        buttonMenu.click();
+        menuItem.click();
+        expect(buttonMenu.isOpen()).toBe(false);
+    });
     it('should put the menu button focused when the menu is opened and press ESC', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
         buttonMenu.click();
