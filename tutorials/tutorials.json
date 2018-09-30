@@ -7,5 +7,26 @@
     },
     "modal": {
         "title": "Modal page object"
+    },
+    "checkboxGroup": {
+        "title": "CheckboxGroup page object"
+    },
+    "checkboxToggle": {
+        "title": "CheckboxToggle page object"
+    },
+    "input": {
+        "title": "Input page object"
+    },
+    "radioGroup": {
+        "title": "RadioGroup page object"
+    },
+    "select": {
+        "title": "Select page object"
+    },
+    "textarea": {
+        "title": "Textarea page object"
+    },
+    "verticalNavigation": {
+        "title": "VerticalNavigation page object"
     }
 }
