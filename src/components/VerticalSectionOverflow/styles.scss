@@ -101,6 +101,7 @@
     font-size: $font-size-text-x-small;
     line-height: 1rem;
     color: $color-gray-3;
+    text-align: left;
 
     @include animation-properties(all 0.15s cubic-bezier(0.23, 1, 0.32, 1) 0ms);
 }

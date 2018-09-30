@@ -33,8 +33,9 @@ export default class VerticalSectionOverflow extends Component {
 
     getButtonClassNames() {
         const { isExpanded } = this.state;
+        const { description } = this.props;
         return classnames('rainbow-vertical-section-overflow_button', {
-            'rainbow-vertical-section-overflow_button--expanded': isExpanded,
+            'rainbow-vertical-section-overflow_button--expanded': isExpanded && description,
         });
     }
 
