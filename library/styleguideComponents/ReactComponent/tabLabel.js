@@ -13,7 +13,7 @@ export default function TabLabel({ icon, label }) {
 }
 
 TabLabel.propTypes = {
-    icon: PropTypes.node,
+    icon: PropTypes.object,
     label: PropTypes.string,
 };
 
