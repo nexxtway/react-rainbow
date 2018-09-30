@@ -15,7 +15,7 @@ Here is an overview about how to use the RadioGroup page object:
             radioGroup.clickItem(1);
             expect(radioGroup.hasFocusItem(1)).toBe(true);
         });
-        it('should lose the focus when press arrow down', () => {
+        it('should lost the focus when press arrow down', () => {
             const radioGroup = new PageRadioGroup(RADIO_GROUP);
             radioGroup.clickItem(1);
             browser.keys(ARROW_DOWN_KEY);
