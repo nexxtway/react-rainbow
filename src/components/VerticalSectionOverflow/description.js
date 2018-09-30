@@ -18,6 +18,10 @@ export default function Description({ description, isExpanded }) {
 }
 
 Description.propTypes = {
-    description: PropTypes.node.isRequired,
+    description: PropTypes.node,
     isExpanded: PropTypes.bool.isRequired,
+};
+
+Description.defaultProps = {
+    description: '',
 };

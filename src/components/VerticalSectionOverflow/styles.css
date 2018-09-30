@@ -83,6 +83,7 @@
   font-size: 0.625rem;
   line-height: 1rem;
   color: #a4a7b5;
+  text-align: left;
   transition: all 0.15s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   -webkit-transition: all 0.15s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   -moz-transition: all 0.15s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
