@@ -7,3 +7,11 @@
     line-height: 1.25;
     font-family: 'Lato Light';
 }
+
+.react-rainbow-tab-label {
+    font-size: 0.625rem;
+}
+
+.react-rainbow-component-top-content {
+    background-color: #f4f6f9;
+}

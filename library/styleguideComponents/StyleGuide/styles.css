@@ -36,11 +36,15 @@
 }
 
 .react-rainbow-main-content {
-    background-color: #f4f6f9;
+    background-color: white;
     min-height: 100vh;
     width: calc(100vw - 250px);
-    padding: 80px 0 24px 0;
+    padding-top: 68px;
     margin-left: 250px;
+}
+
+.rsg--root-3 {
+    margin-bottom: unset !important;
 }
 
 @media (max-width: 800px) {
@@ -49,7 +53,6 @@
     }
     .react-rainbow-main-content {
         width: calc(100vw - 200px);
-        padding: 80px 24px 24px 24px;
         margin-left: 200px;
     }
 }
@@ -64,7 +67,6 @@
     }
     .react-rainbow-main-content {
         width: 100vw;
-        padding: 80px 16px 16px 16px;
         margin-left: 0;
     }
 }

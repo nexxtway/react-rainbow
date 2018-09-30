@@ -7,28 +7,10 @@ import Pathline from 'react-styleguidist/lib/rsg-components/Pathline';
 import Tabset from '../../../src/components/Tabset';
 import Tab from '../../../src/components/Tab';
 import RenderIf from '../../../src/components/RenderIf';
-import Description from './description';
 import Card from './../../../src/components/Card';
+import TabLabel from './tabLabel';
+import Description from './description';
 import './styles.css';
-
-const examplesTabLabel = (
-    <span>
-        <FontAwesomeIcon icon={faFolderOpen} className="rainbow-m-right_x-small" />
-        INTERACTIVE EXAMPLES
-    </span>
-);
-const propertiesTabLabel = (
-    <span>
-        <FontAwesomeIcon icon={faList} className="rainbow-m-right_x-small" />
-        PROPERTIES AND METHODS
-    </span>
-);
-const utilsTabLabel = (
-    <span>
-        <FontAwesomeIcon icon={faWrench} className="rainbow-m-right_x-small" />
-        UTILS
-    </span>
-);
 
 export default class ReactComponent extends Component {
     constructor(props) {
@@ -54,27 +36,29 @@ export default class ReactComponent extends Component {
 
         return (
             <div>
-                {heading}
-                <div className="rainbow-p-horizontal_x-large">
-                    <Description text={descriptionText} />
-                </div>
-                <div className="rainbow-m-vertical_large rainbow-p-horizontal_x-large">
-                    <Pathline name={name}>
-                        {`import ${name} from 'react-rainbow-components/components/${name}'`}
-                    </Pathline>
-                </div>
+                <div className="react-rainbow-component-top-content">
+                    {heading}
+                    <div className="rainbow-p-horizontal_x-large">
+                        <Description text={descriptionText} />
+                    </div>
+                    <div className="rainbow-m-vertical_large rainbow-p-horizontal_x-large">
+                        <Pathline name={name}>
+                            {`import ${name} from 'react-rainbow-components/components/${name}'`}
+                        </Pathline>
+                    </div>
 
-                <Tabset
-                    className="rainbow-p-horizontal_x-large"
-                    activeTabName={activeTabName}
-                    onSelect={this.handleOnSelect}
-                    fullWidth>
+                    <Tabset
+                        className="rainbow-p-horizontal_x-large"
+                        activeTabName={activeTabName}
+                        onSelect={this.handleOnSelect}
+                        fullWidth>
 
-                    <Tab name="examples" label={examplesTabLabel} />
-                    <Tab name="properties" label={propertiesTabLabel} />
-                    <Tab name="utils" label={utilsTabLabel} />
-                </Tabset>
-                <div className="rainbow-p-top_large rainbow-p-horizontal_x-large rainbow-background-color_white">
+                        <Tab name="examples" label={<TabLabel icon={faFolderOpen} label="INTERACTIVE EXAMPLES" />} />
+                        <Tab name="properties" label={<TabLabel icon={faList} label="PROPERTIES AND METHODS" />} />
+                        <Tab name="utils" label={<TabLabel icon={faWrench} label="UTILS" />} />
+                    </Tabset>
+                </div>
+                <div className="rainbow-p-top_large rainbow-p-horizontal_x-large">
                     <RenderIf isTrue={activeTabName === 'examples'}>
                         <div className="rainbow-m-left_x-large rainbow-m-right_xx-large">
                             {examples}
