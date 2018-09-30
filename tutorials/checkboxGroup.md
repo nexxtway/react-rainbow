@@ -1,14 +1,14 @@
 Here is an overview about how to use the CheckboxGroup page object:
 
-    const PageCheckboxGroup = require('./../../src/components/CheckboxGroup/pageObject');
+    const PageCheckboxGroup = require('react-rainbow-components/components/CheckboxGroup/pageObject');
 
     const CHECKBOX_GROUP = '#checkbox-group-1';
     const TAB_KEY = '\uE004';
     const SPACE_KEY = '\uE00D';
 
-    describe('CheckboxGroup base example', () => {
+    describe('CheckboxGroup page object basic usage', () => {
         beforeEach(() => {
-            browser.url('/#!/CheckboxGroup/1');
+            browser.url('/url/to/testing/page');
             browser.refresh();
         });
         it('should set the focus on the checkbox clicked', () => {

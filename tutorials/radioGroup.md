@@ -1,13 +1,13 @@
 Here is an overview about how to use the RadioGroup page object:
 
-    const PageRadioGroup = require('./../../src/components/RadioGroup/pageObject');
+    const PageRadioGroup = require('react-rainbow-components/components/RadioGroup/pageObject');
 
     const RADIO_GROUP = '#radio-group-component-1';
     const ARROW_DOWN_KEY = '\uE015';
 
-    describe('RadioGroup base example', () => {
+    describe('RadioGroup page object basic usage', () => {
         beforeEach(() => {
-            browser.url('/#!/RadioGroup/1');
+            browser.url('/url/to/testing/page');
             browser.refresh();
         });
         it('should focus the item clicked', () => {

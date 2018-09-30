@@ -1,12 +1,12 @@
 Here is an overview about how to use the Input page object:
 
-    const PageInput = require('./../../src/components/Input/pageObject');
+    const PageInput = require('react-rainbow-components/components/Input/pageObject');
 
     const INPUT = '#input-component-1';
 
-    describe('Input base example', () => {
+    describe('Input page object basic uasge', () => {
         beforeEach(() => {
-            browser.url('/#!/Input/1');
+            browser.url('/url/to/testing/page');
             browser.refresh();
         });
         it('should put the input element focused when is clicked', () => {

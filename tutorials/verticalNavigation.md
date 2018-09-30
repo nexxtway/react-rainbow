@@ -1,12 +1,12 @@
 Here is an overview about how to use the VerticalNavigation page object:
 
-    const PageVerticalNavigation = require('./../../src/components/VerticalNavigation/pageObject');
+    const PageVerticalNavigation = require('react-rainbow-components/components/VerticalNavigation/pageObject');
 
     const VERTICAL_NAV = '#vertical-navigation-3';
 
-    describe('VerticalNavigation with href example', () => {
+    describe('VerticalNavigation page object basic usage', () => {
         beforeEach(() => {
-            browser.url('/#!/VerticalNavigation/3');
+            browser.url('/url/to/testing/page');
             browser.refresh();
         });
 
