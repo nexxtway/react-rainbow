@@ -1,3 +1,4 @@
+/* eslint-disable no-script-url, no-console */
 import React from 'react';
 import Card from 'react-rainbow-components/components/Card';
 import SignInForm from './form';
@@ -10,7 +11,7 @@ export default function SignInExample() {
                     Sign in
                 </h1>
                 <SignInForm onSubmit={values => console.log(values)} />
-                <a className="rainbow-font-size-heading_small rainbow-color_brand rainbow-align-content_center">
+                <a href="javascript:void(0);" className="rainbow-font-size-heading_small rainbow-color_brand rainbow-align-content_center">
                     forgot your password?
                 </a>
             </Card>

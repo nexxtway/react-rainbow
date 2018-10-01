@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import withReduxForm from './../../libs/hocs/withReduxForm';
 import { uniqueId } from '../../libs/utils';
 import RenderIf from '../RenderIf';
 import RequiredAsterisk from '../RequiredAsterisk';
@@ -10,7 +11,7 @@ import './styles.css';
 /**
  * A checkable input that communicates if an option is true, false or indeterminate.
  */
-export default class CheckboxGroup extends Component {
+class CheckboxGroup extends Component {
     constructor(props) {
         super(props);
         this.errorMessageId = uniqueId('error-message');
@@ -113,3 +114,5 @@ CheckboxGroup.defaultProps = {
     style: undefined,
     id: undefined,
 };
+
+export default withReduxForm(CheckboxGroup);

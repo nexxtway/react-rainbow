@@ -1,3 +1,4 @@
+/* eslint-disable no-script-url */
 import React from 'react';
 import Card from 'react-rainbow-components/components/Card';
 import Button from 'react-rainbow-components/components/Button';
@@ -40,7 +41,7 @@ export default function SignInExample() {
                     className="rainbow-m-bottom_medium rainbow-sign-in_button-sign-in"
                     label="Sign in"
                     variant="brand" />
-                <a className="rainbow-font-size-heading_small rainbow-color_brand rainbow-align-content_center">
+                <a href="javascript:void(0);" className="rainbow-font-size-heading_small rainbow-color_brand rainbow-align-content_center">
                     forgot your password?
                 </a>
             </Card>

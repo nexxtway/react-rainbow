@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import autosize from 'autosize';
+import withReduxForm from './../../libs/hocs/withReduxForm';
 import { uniqueId } from './../../libs/utils';
 import RenderIf from '../RenderIf';
 import Label from './label';
@@ -10,7 +11,7 @@ import './styles.css';
 /**
  * Textarea inputs are used for freeform data entry.
  */
-export default class Textarea extends Component {
+class Textarea extends Component {
     constructor(props) {
         super(props);
         this.textareaRef = React.createRef();
@@ -212,3 +213,5 @@ Textarea.defaultProps = {
     style: undefined,
     id: undefined,
 };
+
+export default withReduxForm(Textarea);

@@ -4,7 +4,7 @@ export default function withReduxForm(WrappedComponent) {
     return class extends Component {
         constructor(props) {
             super(props);
-            this.inputRef = React.createRef();
+            this.fieldRef = React.createRef();
         }
 
         getErrorMessage() {
@@ -16,11 +16,11 @@ export default function withReduxForm(WrappedComponent) {
             if (meta) {
                 const {
                     touched,
-                    submitted,
+                    submitFailed,
                     error: metaError,
                  } = meta;
 
-                if ((touched || submitted) && metaError) {
+                if ((touched || submitFailed) && metaError) {
                     return metaError;
                 }
             }
@@ -29,18 +29,26 @@ export default function withReduxForm(WrappedComponent) {
         }
 
         focus() {
-            this.inputRef.current.focus();
+            this.fieldRef.current.focus();
+        }
+
+        click() {
+            this.fieldRef.current.click();
+        }
+
+        blur() {
+            this.fieldRef.current.blur();
         }
 
         render() {
-            const { error, input, ...rest } = this.props;
+            const { error, input, meta, ...rest } = this.props;
 
             return (
                 <WrappedComponent
                     {...rest}
                     {...input}
                     error={this.getErrorMessage()}
-                    ref={this.inputRef} />
+                    ref={this.fieldRef} />
             );
         }
     };

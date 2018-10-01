@@ -7,40 +7,54 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import validate from './validate';
 
-function SignInForm({ handleSubmit }) {
-    return (
-        <form onSubmit={handleSubmit}>
-            <Field
-                component={Input}
-                name="email"
-                className="rainbow-m-bottom_large"
-                label="Email Address"
-                required
-                placeholder="Enter your email address"
-                type="text"
-                icon={
-                    <FontAwesomeIcon icon={faEnvelope} className="rainbow-color_gray-3" />
-                } />
+class SignInForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.fieldRef = React.createRef();
+    }
 
-            <Field
-                component={Input}
-                name="password"
-                className="rainbow-m-bottom_large"
-                label="Password"
-                placeholder="Enter your password"
-                type="password"
-                required
-                icon={
-                    <FontAwesomeIcon icon={faLock} className="rainbow-color_gray-3" />
-                } />
+    componentDidMount() {
+        this.fieldRef.current.getRenderedComponent().focus();
+    }
 
-            <Button
-                className="rainbow-m-bottom_medium rainbow-sign-in_button-sign-in"
-                label="Sign in"
-                variant="brand"
-                type="submit" />
-        </form>
-    );
+    render() {
+        const { handleSubmit } = this.props;
+        return (
+            <form onSubmit={handleSubmit}>
+                <Field
+                    component={Input}
+                    name="email"
+                    className="rainbow-m-bottom_large"
+                    label="Email Address"
+                    required
+                    placeholder="Enter your email address"
+                    type="text"
+                    ref={this.fieldRef}
+                    withRef
+                    icon={
+                        <FontAwesomeIcon icon={faEnvelope} className="rainbow-color_gray-3" />
+                    } />
+
+                <Field
+                    component={Input}
+                    name="password"
+                    className="rainbow-m-bottom_large"
+                    label="Password"
+                    placeholder="Enter your password"
+                    type="password"
+                    required
+                    icon={
+                        <FontAwesomeIcon icon={faLock} className="rainbow-color_gray-3" />
+                    } />
+
+                <Button
+                    className="rainbow-m-bottom_medium rainbow-sign-in_button-sign-in"
+                    label="Sign in"
+                    variant="brand"
+                    type="submit" />
+            </form>
+        );
+    }
 }
 
 SignInForm.propTypes = {
