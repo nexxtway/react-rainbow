@@ -38,17 +38,17 @@ export default class ReactComponent extends Component {
             <div>
                 <div className="react-rainbow-component-top-content">
                     {heading}
-                    <div className="rainbow-p-horizontal_x-large">
+                    <div className="rainbow-p-horizontal_xx-large">
                         <Description text={descriptionText} />
                     </div>
-                    <div className="rainbow-m-vertical_large rainbow-p-horizontal_x-large">
+                    <div className="rainbow-m-vertical_large rainbow-p-horizontal_xx-large">
                         <Pathline name={name}>
                             {`import ${name} from 'react-rainbow-components/components/${name}'`}
                         </Pathline>
                     </div>
 
                     <Tabset
-                        className="rainbow-p-horizontal_x-large"
+                        className="rainbow-p-horizontal_xx-large rainbow-m-bottom_xx-large"
                         activeTabName={activeTabName}
                         onSelect={this.handleOnSelect}
                         fullWidth>
@@ -58,7 +58,7 @@ export default class ReactComponent extends Component {
                         <Tab name="utils" label={<TabLabel icon={faWrench} label="UTILS" />} />
                     </Tabset>
                 </div>
-                <div className="rainbow-p-top_large rainbow-p-horizontal_x-large">
+                <div className="rainbow-p-top_small rainbow-p-horizontal_x-large">
                     <RenderIf isTrue={activeTabName === 'examples'}>
                         <div className="rainbow-m-left_x-large rainbow-m-right_xx-large">
                             {examples}
