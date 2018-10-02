@@ -41,6 +41,7 @@ export default class Home extends Component {
                         <VerticalItem name="checkout" label="Checkout" href="checkout" />
                         <VerticalItem name="sign-in" label="SignIn" href="sign-in" />
                         <VerticalItem name="admin" label="Admin" href="admin" />
+                        <VerticalItem name="redux-form" label="ReduxForm" href="redux-form" />
                     </VerticalSection>
                 </VerticalNavigation>
             </div>

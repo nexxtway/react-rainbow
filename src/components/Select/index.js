@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import withReduxForm from './../../libs/hocs/withReduxForm';
 import { uniqueId } from './../../libs/utils';
 import RenderIf from '../RenderIf';
 import RequiredAsterisk from '../RequiredAsterisk';
@@ -10,14 +11,11 @@ import './styles.css';
 /**
 * Select element presents a menu of options.
 */
-export default class Select extends Component {
+class Select extends Component {
     constructor(props) {
         super(props);
         this.selectId = uniqueId('select');
         this.selectRef = React.createRef();
-        this.click = this.click.bind(this);
-        this.focus = this.focus.bind(this);
-        this.blur = this.blur.bind(this);
     }
 
     getContainerClassNames() {
@@ -86,7 +84,8 @@ export default class Select extends Component {
                         onClick={onClick}
                         value={value}
                         required={isRequiredOrHasError}
-                        disabled={disabled}>
+                        disabled={disabled}
+                        ref={this.selectRef}>
 
                         <Options options={options} />
                     </select>
@@ -156,3 +155,5 @@ Select.defaultProps = {
     style: undefined,
     id: undefined,
 };
+
+export default withReduxForm(Select);

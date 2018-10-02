@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import withReduxForm from './../../libs/hocs/withReduxForm';
 import RadioItmes from './radioItems';
 import RenderIf from '../RenderIf';
 import RequiredAsterisk from '../RequiredAsterisk';
@@ -10,7 +11,7 @@ import './styles.css';
 /**
 * A select list that can have a single entry checked at any one time.
 */
-export default class RadioGroup extends Component {
+class RadioGroup extends Component {
     constructor(props) {
         super(props);
         this.errorId = uniqueId('error-message');
@@ -117,3 +118,5 @@ RadioGroup.defaultProps = {
     error: null,
     id: undefined,
 };
+
+export default withReduxForm(RadioGroup);

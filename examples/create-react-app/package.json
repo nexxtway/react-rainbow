@@ -11,9 +11,12 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-rainbow-components": "^0.2.0",
+    "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5",
-    "react-test-renderer": "^16.4.2"
+    "react-test-renderer": "^16.4.2",
+    "redux": "^4.0.0",
+    "redux-form": "^7.4.2"
   },
   "scripts": {
     "start": "react-scripts start",

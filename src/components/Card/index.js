@@ -47,7 +47,7 @@ Card.propTypes = {
     * and is displayed in the header of the component. */
     title: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
-    ]).isRequired,
+    ]),
     /** The icon to show if it is passed. It must be a svg icon or a font icon.
     * It is displayed in the header of the component. */
     icon: PropTypes.node,
@@ -71,6 +71,7 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
+    title: null,
     icon: null,
     actions: null,
     footer: null,

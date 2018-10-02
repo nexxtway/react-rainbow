@@ -27,12 +27,13 @@ export default function Header({ icon, title, actions }) {
 Header.propTypes = {
     title: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
-    ]).isRequired,
+    ]),
     icon: PropTypes.node,
     actions: PropTypes.node,
 };
 
 Header.defaultProps = {
+    title: null,
     icon: null,
     actions: null,
 };

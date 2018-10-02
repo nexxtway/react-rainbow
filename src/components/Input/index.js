@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import withReduxForm from './../../libs/hocs/withReduxForm';
 import { uniqueId } from './../../libs/utils';
 import Label from './label';
 import RenderIf from '../RenderIf';
@@ -9,16 +10,13 @@ import './styles.css';
 /**
  * Text inputs are used for freeform data entry.
  */
-export default class Input extends Component {
+class Input extends Component {
     constructor(props) {
         super(props);
         this.inputId = uniqueId('input');
         this.inlineTextLabelId = uniqueId('inline-text-label');
         this.errorMessageId = uniqueId('error-message');
         this.inputRef = React.createRef();
-        this.click = this.click.bind(this);
-        this.focus = this.focus.bind(this);
-        this.blur = this.blur.bind(this);
     }
 
     getContainerClassNames() {
@@ -152,7 +150,8 @@ export default class Input extends Component {
                         minLength={minLength}
                         pattern={pattern}
                         aria-labelledby={this.getInlineTextLabelId()}
-                        aria-describedby={this.getErrorMessageId()} />
+                        aria-describedby={this.getErrorMessageId()}
+                        ref={this.inputRef} />
 
                 </div>
                 <RenderIf isTrue={!!bottomHelpText}>
@@ -269,3 +268,5 @@ Input.defaultProps = {
     style: undefined,
     id: undefined,
 };
+
+export default withReduxForm(Input);
