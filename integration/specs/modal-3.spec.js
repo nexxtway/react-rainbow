@@ -1,8 +1,8 @@
 const PageModal = require('./../../src/components/Modal/pageObject');
+const { TAB_KEY } = require('./../constants');
 
 const BUTTON = '#button-2';
 const MODAL = '#modal-2';
-const TAB_KEY = '\uE004';
 
 describe('Modal with footer example', () => {
     beforeEach(() => {

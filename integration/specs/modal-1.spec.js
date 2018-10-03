@@ -1,9 +1,8 @@
 const PageModal = require('./../../src/components/Modal/pageObject');
+const { ESCAPE_KEY, TAB_KEY } = require('./../constants');
 
 const BUTTON = '#button-1';
 const MODAL = '#modal-1';
-const ESCAPE_KEY = '\uE00C';
-const TAB_KEY = '\uE004';
 
 describe('Modal base example', () => {
     beforeEach(() => {

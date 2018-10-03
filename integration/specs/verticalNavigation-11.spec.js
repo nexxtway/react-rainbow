@@ -1,8 +1,7 @@
 const PageVerticalNavigation = require('./../../src/components/VerticalNavigation/pageObject');
+const { TAB_KEY, ENTER_KEY } = require('./../constants');
 
 const VERTICAL_NAV = '#vertical-navigation-11';
-const TAB_KEY = '\uE004';
-const ENTER_KEY = '\uE006';
 
 describe('VerticalNavigation expandable example', () => {
     beforeEach(() => {

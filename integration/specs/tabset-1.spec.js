@@ -1,9 +1,7 @@
 const PageTabset = require('./../../src/components/Tabset/pageObject');
+const { ARROW_LEFT_KEY, ARROW_RIGHT_KEY } = require('./../constants');
 
 const TABSET = '#tabset-1';
-
-const LEFT_ARROW = 'Left arrow';
-const RIGHT_ARROW = 'Right arrow';
 
 describe('Tabset base example', () => {
     beforeEach(() => {
@@ -21,7 +19,7 @@ describe('Tabset base example', () => {
         const tabset = new PageTabset(TABSET);
         const tabItem = tabset.getItem(0);
         tabItem.click();
-        browser.keys(LEFT_ARROW);
+        browser.keys(ARROW_LEFT_KEY);
         const tabItem2 = tabset.getItem(2);
         expect(tabItem2.isSelected()).toBe(true);
     });
@@ -30,7 +28,7 @@ describe('Tabset base example', () => {
         const tabItem = tabset.getItem(0);
         const tabItem2 = tabset.getItem(1);
         tabItem.click();
-        browser.keys(RIGHT_ARROW);
+        browser.keys(ARROW_RIGHT_KEY);
         expect(tabItem2.isSelected()).toBe(true);
     });
     it('should loose focus if other tab is selected', () => {
@@ -45,7 +43,7 @@ describe('Tabset base example', () => {
         const tabset = new PageTabset(TABSET);
         const tabItem = tabset.getItem(0);
         tabItem.click();
-        browser.keys(RIGHT_ARROW);
+        browser.keys(ARROW_RIGHT_KEY);
         expect(tabItem.hasFocus()).toBe(false);
     });
 });
