@@ -10,4 +10,7 @@
     font-size: 0.9375rem;
     color: $color-brand;
     text-transform: uppercase;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
