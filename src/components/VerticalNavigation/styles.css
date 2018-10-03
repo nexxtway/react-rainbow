@@ -1,9 +1,8 @@
 .rainbow-vertical-navigation {
   position: relative; }
 
-.rainbow-vertical-navigation_compact .rainbow-vertical-section_title,
 .rainbow-vertical-navigation_compact .rainbow-vertical-item_action {
-  padding: 0.5rem 1.5rem; }
+  padding: 0.5rem 1rem 0.5rem 3rem; }
 
 .rainbow-vertical-navigation_shade .rainbow-vertical-item_action:hover,
 .rainbow-vertical-navigation_shade .rainbow-vertical-item_action:active {
