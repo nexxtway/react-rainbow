@@ -41,11 +41,14 @@
   font-family: "Lato Black", Arial, sans-serif; }
 
 .rainbow-vertical-item_icon {
-  line-height: 1;
+  align-items: center;
   color: #01b6f5;
+  display: flex;
+  line-height: 1;
+  height: 100%;
   position: absolute;
-  top: 1.25rem;
-  left: 1rem; }
+  top: 0;
+  left: 1.25rem; }
 
 .rainbow-vertical-item_notification {
   margin-left: auto; }
