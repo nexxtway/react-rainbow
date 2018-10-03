@@ -1,8 +1,7 @@
 const PageCheckboxGroup = require('./../../src/components/CheckboxGroup/pageObject');
+const { TAB_KEY, SPACE_KEY } = require('./../constants');
 
 const CHECKBOX_GROUP = '#checkbox-group-1';
-const TAB_KEY = '\uE004';
-const SPACE_KEY = '\uE00D';
 
 describe('CheckboxGroup base example', () => {
     beforeEach(() => {

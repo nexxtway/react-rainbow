@@ -1,13 +1,15 @@
 const PageButtonMenu = require('./../../src/components/ButtonMenu/pageObject');
+const {
+    ESCAPE_KEY,
+    SPACE_KEY,
+    ENTER_KEY,
+    ARROW_DOWN_KEY,
+    ARROW_UP_KEY,
+    TAB_KEY,
+} = require('./../constants');
 
 const MENU_BTN = '#button-menu';
 const REACT_LOGO = 'img[alt="rainbow logo"]';
-const ESCAPE_KEY = '\uE00C';
-const SPACE_KEY = '\uE00D';
-const ENTER_KEY = '\uE006';
-const ARROW_DOWN_KEY = '\uE015';
-const ARROW_UP_KEY = '\uE013';
-const TAB_KEY = '\uE004';
 
 describe('ButtonMenu base example', () => {
     beforeEach(() => {
