@@ -9,6 +9,12 @@
     -o-transition: $animation;
 }
 
+%text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .rainbow-vertical-section-overflow_container {
     @include animation-properties(all 0.45s cubic-bezier(0.23, 1, 0.32, 1) 0ms);
 
@@ -85,6 +91,8 @@
 }
 
 .rainbow-vertical-section-overflow_action-text {
+    @extend %text-truncate;
+
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -93,15 +101,21 @@
 }
 
 .rainbow-vertical-section-overflow_action-title {
+    @extend %text-truncate;
+
     font-size: 0.9375rem;
     color: $color-brand;
+    max-width: 100%;
 }
 
 .rainbow-vertical-section-overflow_action-description {
+    @extend %text-truncate;
+
     font-size: $font-size-text-x-small;
     line-height: 1rem;
     color: $color-gray-3;
     text-align: left;
+    max-width: 100%;
 
     @include animation-properties(all 0.15s cubic-bezier(0.23, 1, 0.32, 1) 0ms);
 }

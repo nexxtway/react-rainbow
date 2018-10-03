@@ -35,9 +35,13 @@
     color: $color-gray-4;
     cursor: pointer;
     font-size: $font-size-text-medium;
+}
+
+.rainbow-vertical-item_action-label {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    margin-right: 1rem;
 }
 
 .rainbow-vertical-item_action--icon {

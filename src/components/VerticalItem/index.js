@@ -57,7 +57,7 @@ function Item(props) {
                 className="rainbow-vertical-item_action"
                 aria-current={getAriaCurrent()}
                 tabIndex={resolveTabIndex()}>
-                {label}
+                <span className="rainbow-vertical-item_action-label">{label}</span>
                 <RenderIf isTrue={!!notification}>
                     <span className="rainbow-vertical-item_notification">{notification}</span>
                 </RenderIf>

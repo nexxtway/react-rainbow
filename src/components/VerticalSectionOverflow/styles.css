@@ -1,3 +1,8 @@
+.rainbow-vertical-section-overflow_action-text, .rainbow-vertical-section-overflow_action-title, .rainbow-vertical-section-overflow_action-description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
 .rainbow-vertical-section-overflow_container {
   transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   -webkit-transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
@@ -77,13 +82,15 @@
 
 .rainbow-vertical-section-overflow_action-title {
   font-size: 0.9375rem;
-  color: #01b6f5; }
+  color: #01b6f5;
+  max-width: 100%; }
 
 .rainbow-vertical-section-overflow_action-description {
   font-size: 0.625rem;
   line-height: 1rem;
   color: #a4a7b5;
   text-align: left;
+  max-width: 100%;
   transition: all 0.15s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   -webkit-transition: all 0.15s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   -moz-transition: all 0.15s cubic-bezier(0.23, 1, 0.32, 1) 0ms;

@@ -28,10 +28,13 @@
   border-radius: 0;
   color: #576574;
   cursor: pointer;
-  font-size: 0.875rem;
+  font-size: 0.875rem; }
+
+.rainbow-vertical-item_action-label {
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap; }
+  white-space: nowrap;
+  margin-right: 1rem; }
 
 .rainbow-vertical-item_action--icon {
   padding: 1rem 1rem 1rem 1.25rem; }
