@@ -1,19 +1,40 @@
 /* eslint-disable no-script-url, no-console */
 import React from 'react';
 import Card from 'react-rainbow-components/components/Card';
-import SignInForm from './form';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDollarSign } from '@fortawesome/free-solid-svg-icons';
+import CheckoutForm from './form';
+import './styles.css';
+import './media-queries.css';
+
+const CARD_ICON = (
+    <span className="rainbow-border-radius_circle rainbow-align-content_center rainbow-checkout_logo">
+        <FontAwesomeIcon icon={faDollarSign} size="lg" className="rainbow-color_white" />
+    </span>
+);
+
+const initialValues = {
+    country: 'cuba',
+    saveData: false,
+};
+
+function showAlert(values) {
+    // eslint-disable-next-line no-alert
+    alert(JSON.stringify(values));
+}
 
 export default function SignInExample() {
     return (
-        <div className="rainbow-align-content_center rainbow-flex_column rainbow-sign-in_view-port">
-            <Card className="rainbow-p-around_x-large rainbow-sign-in_card-container">
-                <h1 className="rainbow-font-size-heading_medium rainbow-color_brand rainbow-sign-in_title">
-                    Sign in
-                </h1>
-                <SignInForm onSubmit={values => console.log(values)} />
-                <a href="javascript:void(0);" className="rainbow-font-size-heading_small rainbow-color_brand rainbow-align-content_center">
-                    forgot your password?
-                </a>
+        <div className="rainbow-align-content_center rainbow-checkout_view-port">
+            <Card
+                className="rainbow-checkout_card-container"
+                icon={CARD_ICON}
+                title="Checkout">
+
+                <CheckoutForm
+                    onSubmit={showAlert}
+                    initialValues={initialValues} />
+
             </Card>
         </div>
     );

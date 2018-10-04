@@ -64,13 +64,12 @@ class Select extends Component {
             style,
             id,
         } = this.props;
-        const isRequiredOrHasError = !!(required || error);
 
         return (
             <div className={this.getContainerClassNames()} style={style} id={id}>
                 <RenderIf isTrue={!!label}>
                     <label className="rainbow-select_label" htmlFor={this.selectId}>
-                        <RequiredAsterisk required={isRequiredOrHasError} />
+                        <RequiredAsterisk required={required} />
                         {label}
                     </label>
                 </RenderIf>
@@ -83,7 +82,7 @@ class Select extends Component {
                         onBlur={onBlur}
                         onClick={onClick}
                         value={value}
-                        required={isRequiredOrHasError}
+                        required={required}
                         disabled={disabled}
                         ref={this.selectRef}>
 

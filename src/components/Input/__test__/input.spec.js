@@ -61,12 +61,6 @@ describe('<Input/>', () => {
         );
         expect(component.find('input').prop('required')).toBe(true);
     });
-    it('should set required in the input element if has error', () => {
-        const component = mount(
-            <Input error="invalid name" />,
-        );
-        expect(component.find('input').prop('required')).toBe(true);
-    });
     it('should set the maxLength passed in the Input element', () => {
         const component = mount(
             <Input maxLength={0} />,
@@ -109,12 +103,6 @@ describe('<Input/>', () => {
             readOnly: false,
             inputId: expect.any(String),
         });
-    });
-    it('should set required in the Label component if has error', () => {
-        const component = mount(
-            <Input error="invalid name" />,
-        );
-        expect(component.find('Label').prop('required')).toBe(true);
     });
     it('should have the right class name in the container element', () => {
         const component = mount(

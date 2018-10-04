@@ -38,11 +38,13 @@ class CheckboxGroup extends Component {
     handleOnChange(event) {
         const { value, checked } = event.target;
         const { value: values, onChange } = this.props;
-        if (checked) {
-            onChange(values.concat([value]));
-        } else {
-            onChange(values.filter(valueId => valueId !== value));
+        if (checked && Array.isArray(values)) {
+            return onChange(values.concat([value]));
         }
+        if (checked && !Array.isArray(values)) {
+            return onChange([].concat([value]));
+        }
+        return onChange(values.filter(valueId => valueId !== value));
     }
 
     render() {
@@ -64,7 +66,9 @@ class CheckboxGroup extends Component {
 
                 </div>
                 <RenderIf isTrue={!!error}>
-                    <div id={this.getErrorMessageId()} className="rainbow-checkbox-group_text-error">{error}</div>
+                    <div id={this.getErrorMessageId()} className="rainbow-checkbox-group_text-error">
+                        {error}
+                    </div>
                 </RenderIf>
             </fieldset>
         );
