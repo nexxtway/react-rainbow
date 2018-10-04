@@ -26,12 +26,14 @@ export default class Radio extends Component {
             disabled,
             isChecked,
             name,
+            required,
         } = this.props;
 
         return (
             <span className="rainbow-radio-group_radio">
                 <input
                     type="radio"
+                    required={required}
                     id={this.radioId}
                     name={name}
                     value={value}
@@ -59,6 +61,7 @@ Radio.propTypes = {
     disabled: PropTypes.bool,
     isChecked: PropTypes.bool,
     name: PropTypes.string,
+    required: PropTypes.bool.isRequired,
 };
 
 Radio.defaultProps = {

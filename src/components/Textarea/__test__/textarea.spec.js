@@ -47,12 +47,6 @@ describe('<Textarea/>', () => {
         );
         expect(component.find('textarea').prop('required')).toBe(true);
     });
-    it('should set required in the textarea element if has error', () => {
-        const component = mount(
-            <Textarea error="invalid name" />,
-        );
-        expect(component.find('textarea').prop('required')).toBe(true);
-    });
     it('should set the maxLength passed in the textarea element', () => {
         const component = mount(
             <Textarea maxLength={0} />,
@@ -82,12 +76,6 @@ describe('<Textarea/>', () => {
             readOnly: false,
             textareaId: expect.any(String),
         });
-    });
-    it('should set required in the Label component if has error', () => {
-        const component = mount(
-            <Textarea error="invalid name" />,
-        );
-        expect(component.find('Label').prop('required')).toBe(true);
     });
     it('should have the right class name in the container element', () => {
         const component = mount(

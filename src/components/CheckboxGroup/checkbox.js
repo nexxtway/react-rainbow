@@ -7,6 +7,7 @@ export default class Checkbox extends Component {
         super(props);
         this.inputId = uniqueId('checkboxInput');
     }
+
     render() {
         const {
             value,

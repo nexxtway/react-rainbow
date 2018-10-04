@@ -35,12 +35,6 @@ describe('Select component', () => {
         );
         expect(component.find('select').prop('required')).toBe(true);
     });
-    it('should set the required passed in the select element when there is an error', () => {
-        const component = mount(
-            <Select error="select error" />,
-        );
-        expect(component.find('select').prop('required')).toBe(true);
-    });
     it('should set the required prop passed in the RequiredAsterisk component', () => {
         const component = mount(
             <Select label="Select Label" required />,

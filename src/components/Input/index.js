@@ -114,13 +114,12 @@ class Input extends Component {
             required,
             id,
         } = this.props;
-        const isRequiredOrHasError = !!(required || error);
 
         return (
             <div id={id} className={this.getContainerClassNames()} style={style}>
                 <Label
                     label={label}
-                    required={isRequiredOrHasError}
+                    required={required}
                     inputId={this.inputId}
                     readOnly={readOnly}
                     id={this.getInlineTextLabelId()} />
@@ -145,7 +144,7 @@ class Input extends Component {
                         onClick={onClick}
                         disabled={disabled}
                         readOnly={readOnly}
-                        required={isRequiredOrHasError}
+                        required={required}
                         maxLength={maxLength}
                         minLength={minLength}
                         pattern={pattern}

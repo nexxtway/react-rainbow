@@ -1,16 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Checkbox from './checkbox';
+import isOptionSelected from './is-option-selected';
 
 export default function CheckboxList({ values, options, onChange, describedBy }) {
-    const checkIfSelected = option => values.find(value => value === option.value) !== undefined;
-
     return options.map((option, index) => {
         const key = `checkbox-${index}`;
         return (
             <Checkbox
                 {...option}
-                isSelected={checkIfSelected(option)}
+                isSelected={isOptionSelected(values, option)}
                 onChange={onChange}
                 describedBy={describedBy}
                 key={key} />
@@ -27,7 +26,6 @@ CheckboxList.propTypes = {
 
 CheckboxList.defaultProps = {
     values: [],
-    checkIfSelected: () => {},
     onChange: () => {},
     describedBy: undefined,
 };
