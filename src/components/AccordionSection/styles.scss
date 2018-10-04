@@ -1,6 +1,4 @@
 @import './../../styles/colors.scss';
-@import './../../styles/shadows.scss';
-@import './../../styles/border-radius.scss';
 @import './../../styles/paddings.scss';
 @import './../../styles/margins.scss';
 @import './../../styles/font-sizes.scss';
@@ -33,7 +31,7 @@
     }
 }
 
-.rainbow-accordion_container {
+.rainbow-accordion-section_container {
     border-top: 1px solid $color-gray-2;
     list-style: none;
 
@@ -42,14 +40,14 @@
     }
 }
 
-.rainbow-accordion_summary {
+.rainbow-accordion-section_summary {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0.875rem 1rem;
 }
 
-.rainbow-accordion_summary-heading {
+.rainbow-accordion-section_summary-heading {
     font-size: $font-size-heading-small;
     line-height: 1.25;
     color: $color-dark-1;
@@ -63,64 +61,62 @@
     }
 }
 
-.rainbow-accordion_summary-button-heading {
+.rainbow-accordion-section_summary-button-heading {
     @extend %button;
 
     width: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    text-align: left;
 }
 
-.rainbow-accordion_summary-button {
+.rainbow-accordion-section_summary-button {
     @extend %button;
 }
 
-.rainbow-accordion_content {
+.rainbow-accordion-section_content {
     font-size: 0.875rem;
     font-weight: 500;
     line-height: 1.57;
     color: $color-gray-4;
-    padding-left: 1rem;
-    padding-right: 2rem;
+    padding-left: $padding-medium;
+    padding-right: $padding-x-large;
     padding-bottom: 0.875rem;
 }
 
-.rainbow-accordion_right-icon {
+.rainbow-accordion-section_right-icon {
     transform: rotate(0deg);
+    fill: $color-brand;
 
     @include animation-properties(transform 0.15s linear);
 }
 
-.rainbow-accordion_right-icon--expanded {
+.rainbow-accordion-section_right-icon--expanded {
     transform: rotate(-180deg);
 
     @include animation-properties(transform 0.15s linear);
 }
 
-.rainbow-accordion_container--disabled {
+.rainbow-accordion-section_container--disabled {
     pointer-events: none;
 
-    .rainbow-accordion_summary-button-heading {
+    .rainbow-accordion-section_summary-button-heading {
         &:focus {
             text-decoration-line: none;
             color: unset;
         }
     }
 
-    .rainbow-accordion_summary-heading {
+    .rainbow-accordion-section_summary-heading {
         color: $color-gray-2;
     }
 }
 
-.rainbow-accordion_right-icon-color {
-    fill: $color-brand;
-}
-
-.rainbow-accordion_right-icon-color--disabled {
+.rainbow-accordion-section_right-icon-color--disabled {
     fill: $color-gray-2;
 }
 
-.rainbow-accordion_summary-icon {
-    margin-right: 0.5rem;
+.rainbow-accordion-section_summary-icon {
+    margin-right: $margin-x-small;
 }

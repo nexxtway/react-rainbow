@@ -7,21 +7,21 @@ import { uniqueId } from './../../libs/utils';
 import { Consumer } from './../Accordion/context';
 import ButtonIcon from './../ButtonIcon';
 import RightArrow from './rightArrow';
-import isInArray from './check-is-in-array';
+import isInArray from './is-in-array';
 import './styles.css';
 
 class AccordionItem extends Component {
     constructor(props) {
         super(props);
-        this.accordionDetailsId = uniqueId('accordion-details');
+        this.accordionDetailsId = uniqueId('accordion-section-details');
         this.name = uniqueId('accordion-section');
         this.handleSelect = this.handleSelect.bind(this);
     }
 
     getContainerClassNames() {
         const { className, disabled } = this.props;
-        return classnames('rainbow-accordion_container', {
-            'rainbow-accordion_container--disabled': disabled,
+        return classnames('rainbow-accordion-section_container', {
+            'rainbow-accordion-section_container--disabled': disabled,
         }, className);
     }
 
@@ -33,7 +33,7 @@ class AccordionItem extends Component {
         return undefined;
     }
 
-    resolveNamesWhenMultiple() {
+    resolveActiveNamesWhenMultiple() {
         const { name, activeNames } = this.props;
         const nameToToggle = name || this.name;
 
@@ -46,11 +46,11 @@ class AccordionItem extends Component {
         return activeNames.concat([nameToToggle]);
     }
 
-    resolveNames() {
+    resolveActiveNames() {
         const { name, multiple } = this.props;
         const nameToToggle = name || this.name;
         if (multiple) {
-            return this.resolveNamesWhenMultiple();
+            return this.resolveActiveNamesWhenMultiple();
         }
         return nameToToggle;
     }
@@ -58,7 +58,7 @@ class AccordionItem extends Component {
     handleSelect(event) {
         const { disabled, privateOnToggleSection } = this.props;
         if (!disabled) {
-            privateOnToggleSection(event, this.resolveNames());
+            privateOnToggleSection(event, this.resolveActiveNames());
         }
     }
 
@@ -81,19 +81,21 @@ class AccordionItem extends Component {
             assistiveText,
         } = this.props;
 
+        const isExpanded = this.isExpanded();
+
         return (
             <li className={this.getContainerClassNames()} style={style} disabled={disabled}>
                 <section>
-                    <div className="rainbow-accordion_summary">
-                        <h3 className="rainbow-accordion_summary-heading">
+                    <div className="rainbow-accordion-section_summary">
+                        <h3 className="rainbow-accordion-section_summary-heading">
                             <button
-                                className="rainbow-accordion_summary-button-heading"
+                                className="rainbow-accordion-section_summary-button-heading"
                                 tabIndex={this.getTabIndex()}
                                 aria-controls={this.accordionDetailsId}
-                                aria-expanded={this.isSelected}
+                                aria-expanded={isExpanded}
                                 onClick={this.handleSelect}>
                                 <RenderIf isTrue={!!icon}>
-                                    <span className="rainbow-accordion_summary-icon" aria-hidden="true">
+                                    <span className="rainbow-accordion-section_summary-icon" aria-hidden="true">
                                         {icon}
                                     </span>
                                 </RenderIf>
@@ -106,20 +108,20 @@ class AccordionItem extends Component {
                         </h3>
 
                         <ButtonIcon
-                            className="rainbow-accordion_summary-button"
+                            className="rainbow-accordion-section_summary-button"
                             size="x-small"
                             disabled={disabled}
                             onClick={this.handleSelect}
                             assistiveText={assistiveText}
-                            aria-haspopup="true"
+                            ariaHaspopup
                             icon={
-                                <RightArrow isExpanded={this.isExpanded()} disabled={disabled} />
+                                <RightArrow isExpanded={isExpanded} disabled={disabled} />
                             } />
                     </div>
-                    <RenderIf isTrue={this.isExpanded()}>
+                    <RenderIf isTrue={isExpanded}>
                         <div
-                            aria-hidden={!this.isExpanded()}
-                            className="rainbow-accordion_content"
+                            aria-hidden={!isExpanded}
+                            className="rainbow-accordion-section_content"
                             id={this.accordionDetailsId}>
                             {children}
                         </div>
@@ -138,7 +140,7 @@ export default function AccordionSection(props) {
     );
 }
 
-AccordionItem.propTypes = {
+AccordionSection.propTypes = {
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied for the outer element. */
@@ -151,20 +153,20 @@ AccordionItem.propTypes = {
     * @ignore
     */
     children: PropTypes.node,
-    /** The text to be displayed inside the AccordionSection. */
+    /** The text to be displayed as the AccordionSection's label. */
     label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
-    /** The icon to show at the left in the label. */
+    /** The icon to show at the left of the label. */
     icon: PropTypes.node,
     /** A description for assistive sreen readers. */
     assistiveText: PropTypes.string,
-    /** The name is used during Accordion's onSelect
-    * event to determine which AccordionSection was clicked. */
+    /** The name is used to determine which AccordionSection was clicked.
+    * If `name` is not passed it will be generated. */
     name: PropTypes.string,
 };
 
-AccordionItem.defaultProps = {
+AccordionSection.defaultProps = {
     className: undefined,
     style: undefined,
     assistiveText: undefined,

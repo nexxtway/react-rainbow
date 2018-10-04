@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { Provider } from './context';
 
 /**
@@ -12,7 +11,7 @@ export default class Accordion extends Component {
         this.state = {
             activeNames: props.activeSectionNames,
         };
-        this.handleChangeExpanded = this.handleChangeExpanded.bind(this);
+        this.handleToggleSection = this.handleToggleSection.bind(this);
     }
 
     static getDerivedStateFromProps(props, state) {
@@ -25,12 +24,7 @@ export default class Accordion extends Component {
         return null;
     }
 
-    getContainerClassName() {
-        const { className } = this.props;
-        return classnames(className);
-    }
-
-    handleChangeExpanded(event, name) {
+    handleToggleSection(event, name) {
         const { onToggleSection } = this.props;
         if (typeof onToggleSection === 'function') {
             return onToggleSection(event, name);
@@ -39,19 +33,20 @@ export default class Accordion extends Component {
     }
 
     render() {
-        const { id, children, style, multiple } = this.props;
+        const { id, children, style, multiple, className } = this.props;
         const { activeNames } = this.state;
+        const context = {
+            multiple,
+            activeNames,
+            privateOnToggleSection: this.handleToggleSection,
+        };
         return (
             <ul
                 id={id}
-                className={this.getContainerClassName()}
+                className={className}
                 style={style}>
 
-                <Provider value={{
-                    multiple,
-                    activeNames,
-                    privateOnToggleSection: this.handleChangeExpanded,
-                }}>
+                <Provider value={context}>
                     {children}
                 </Provider>
             </ul>
@@ -77,7 +72,9 @@ Accordion.propTypes = {
     /** Action fired when an AccordionSection is selected.
     * The event params include the `name` of the selected AccordionSection. */
     onToggleSection: PropTypes.func,
-    /** The name of the AccordionSection that is selected.
+    /** It contain the name of the AccordionSection that is expanded.
+    * It can be an array of string when multiple is true,
+    * or a string when when multiple is false.
     * It must match the name of the AccordionSection. */
     activeSectionNames: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.string),
