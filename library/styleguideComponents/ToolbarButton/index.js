@@ -3,8 +3,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExpandArrowsAlt, faCompress } from '@fortawesome/free-solid-svg-icons';
+import ReactGA from './.././../ga';
 import Button from '../../../src/components/Button';
 import './styles.css';
+
+function resolveHref() {
+    const urlArray = window.location.href.split('/');
+    const componentName = urlArray[urlArray.length - 2];
+    return `/#/${componentName}`;
+}
 
 export default function ToolbarButton(props) {
     const {
@@ -14,16 +21,18 @@ export default function ToolbarButton(props) {
     children,
     } = props;
 
-    function resolveHref() {
-        const urlArray = window.location.href.split('/');
-        const componentName = urlArray[urlArray.length - 2];
-        return `/#/${componentName}`;
+    // analytics
+    function trackPageview() {
+        if (href === '/#/') {
+            return ReactGA.pageview(resolveHref());
+        }
+        return ReactGA.pageview(href);
     }
 
     if (href !== undefined && title === 'Open isolated') {
         return (
             <a className="react-rainbow-toolbar-button" href={href} title={title} aria-label={title}>
-                <Button>
+                <Button onClick={trackPageview}>
                     <FontAwesomeIcon icon={faExpandArrowsAlt} className="rainbow-color_gray-4" />
                 </Button>
             </a>
@@ -33,7 +42,7 @@ export default function ToolbarButton(props) {
     if (href !== undefined && title === 'Show all components') {
         return (
             <a className="react-rainbow-toolbar-button" href={resolveHref()} title={title} aria-label={title}>
-                <Button>
+                <Button onClick={trackPageview}>
                     <FontAwesomeIcon icon={faCompress} className="rainbow-color_gray-4" />
                 </Button>
             </a>

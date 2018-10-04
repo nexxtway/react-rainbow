@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import ReactGA from './.././../ga';
 import VerticalNavigation from './../../../src/components/VerticalNavigation';
 import VerticalSectionOverflow from './../../../src/components/VerticalSectionOverflow';
 import VerticalItem from './../../../src/components/VerticalItem';
@@ -7,26 +8,39 @@ import './styles.css';
 
 function renderItems(content) {
     if (content && content.props.items.length) {
-        return content.props.items.map(({ visibleName }) => (
-            <VerticalItem key={visibleName} label={visibleName} name={visibleName} href={`/#/${visibleName}`} />
-        ));
+        return content.props.items.map(({ visibleName }) => {
+            const pathname = `/#/${visibleName}`;
+            return (
+                <VerticalItem
+                    key={visibleName}
+                    label={visibleName}
+                    name={visibleName}
+                    href={pathname}
+                    onClick={() => ReactGA.pageview(pathname)} />
+            );
+        });
     }
     return null;
 }
 
-function getDescription(visibleName){
+function getDescription(visibleName) {
     if (visibleName === 'Getting Started') {
         return 'Overview, Usage, Contribuiting ...';
     }
     return null;
 }
 
-function Sections({ items }) {
+function isExpanded(items, selectedItem) {
+    return items.some(item => item.name === selectedItem);
+}
+
+function Sections({ items, selectedItem }) {
     return items.map(({ heading, visibleName, href, content }) => {
         if (heading) {
             return (
                 <VerticalSectionOverflow
                     key={href}
+                    expanded={isExpanded(content.props.items, selectedItem)}
                     title={visibleName}
                     description={getDescription(visibleName)}>
 
@@ -70,7 +84,7 @@ export default class ComponentsList extends Component {
                 selectedItem={selectedItem}
                 onSelect={this.handleOnSelect}>
 
-                <Sections items={items} />
+                <Sections selectedItem={selectedItem} items={items} />
             </VerticalNavigation>
         );
     }
