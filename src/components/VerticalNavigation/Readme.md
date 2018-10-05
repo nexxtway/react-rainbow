@@ -302,7 +302,7 @@
         borderRight: '1px solid #e3e5ed',
     };
 
-    class VerticalNavigationWithNofifications extends React.Component {
+    class VerticalNavigationWithNotifications extends React.Component {
         constructor(props) {
             super(props);
             this.state = {
