@@ -13,10 +13,7 @@ import {
     faRocket,
     faSearch,
 } from '@fortawesome/free-solid-svg-icons';
-import {
-    faBell,
-    faUser,
-} from '@fortawesome/free-regular-svg-icons';
+import { faBell } from '@fortawesome/free-regular-svg-icons';
 
 export default function Header() {
     return (
