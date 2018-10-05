@@ -8,6 +8,7 @@ import { Consumer } from './../Accordion/context';
 import ButtonIcon from './../ButtonIcon';
 import RightArrow from './rightArrow';
 import isInArray from './is-in-array';
+import removeItemFromArray from './remove-item-from-array';
 import './styles.css';
 
 class AccordionItem extends Component {
@@ -41,16 +42,19 @@ class AccordionItem extends Component {
             return [nameToToggle];
         }
         if (isInArray(activeNames, nameToToggle)) {
-            return activeNames;
+            return removeItemFromArray(activeNames, nameToToggle);
         }
         return activeNames.concat([nameToToggle]);
     }
 
     resolveActiveNames() {
-        const { name, multiple } = this.props;
+        const { name, multiple, activeNames } = this.props;
         const nameToToggle = name || this.name;
         if (multiple) {
             return this.resolveActiveNamesWhenMultiple();
+        }
+        if (nameToToggle === activeNames) {
+            return '';
         }
         return nameToToggle;
     }
