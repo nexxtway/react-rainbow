@@ -26,7 +26,7 @@
             return (
                 <VerticalNavigation selectedItem={this.state.selectedItem} onSelect={this.handleOnSelect}>
                     <VerticalSectionOverflow
-                        title="Folders"
+                        label="Folders"
                         description="Folders created, shared...">
 
                         <VerticalItem name="item-3" label="Apps" icon={<FontAwesomeIcon icon={faTh} />} />
@@ -34,7 +34,7 @@
                     </VerticalSectionOverflow>
 
                     <VerticalSectionOverflow
-                        title="Recents"
+                        label="Recents"
                         description="Folders created, shared...">
 
                         <VerticalItem name="item-1" label="Shared with Me" />
@@ -42,7 +42,7 @@
                     </VerticalSectionOverflow>
 
                     <VerticalSectionOverflow
-                        title="Documents"
+                        label="Documents"
                         description="Document created, shared...">
 
                         <VerticalItem name="item-5" label="Recents" />
