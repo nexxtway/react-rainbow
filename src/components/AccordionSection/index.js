@@ -16,7 +16,7 @@ class AccordionItem extends Component {
         super(props);
         this.accordionDetailsId = uniqueId('accordion-section-details');
         this.name = uniqueId('accordion-section');
-        this.handleSelect = this.handleSelect.bind(this);
+        this.handleToggleSection = this.handleToggleSection.bind(this);
     }
 
     getContainerClassNames() {
@@ -59,7 +59,7 @@ class AccordionItem extends Component {
         return nameToToggle;
     }
 
-    handleSelect(event) {
+    handleToggleSection(event) {
         const { disabled, privateOnToggleSection } = this.props;
         if (!disabled) {
             privateOnToggleSection(event, this.resolveActiveNames());
@@ -97,7 +97,7 @@ class AccordionItem extends Component {
                                 tabIndex={this.getTabIndex()}
                                 aria-controls={this.accordionDetailsId}
                                 aria-expanded={isExpanded}
-                                onClick={this.handleSelect}>
+                                onClick={this.handleToggleSection}>
                                 <RenderIf isTrue={!!icon}>
                                     <span className="rainbow-accordion-section_summary-icon" aria-hidden="true">
                                         {icon}
@@ -115,7 +115,7 @@ class AccordionItem extends Component {
                             className="rainbow-accordion-section_summary-button"
                             size="x-small"
                             disabled={disabled}
-                            onClick={this.handleSelect}
+                            onClick={this.handleToggleSection}
                             assistiveText={assistiveText}
                             ariaHaspopup
                             icon={
