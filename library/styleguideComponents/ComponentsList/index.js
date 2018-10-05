@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ReactGA from './.././../ga';
 import VerticalNavigation from './../../../src/components/VerticalNavigation';
 import VerticalSectionOverflow from './../../../src/components/VerticalSectionOverflow';
 import VerticalItem from './../../../src/components/VerticalItem';
@@ -15,8 +14,7 @@ function renderItems(content) {
                     key={visibleName}
                     label={visibleName}
                     name={visibleName}
-                    href={pathname}
-                    onClick={() => ReactGA.pageview(pathname)} />
+                    href={pathname} />
             );
         });
     }

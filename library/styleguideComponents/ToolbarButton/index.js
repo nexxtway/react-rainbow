@@ -3,7 +3,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExpandArrowsAlt, faCompress } from '@fortawesome/free-solid-svg-icons';
-import ReactGA from './.././../ga';
 import Button from '../../../src/components/Button';
 import './styles.css';
 
@@ -21,18 +20,10 @@ export default function ToolbarButton(props) {
     children,
     } = props;
 
-    // analytics
-    function trackPageview() {
-        if (href === '/#/') {
-            return ReactGA.pageview(resolveHref());
-        }
-        return ReactGA.pageview(href);
-    }
-
     if (href !== undefined && title === 'Open isolated') {
         return (
             <a className="react-rainbow-toolbar-button" href={href} title={title} aria-label={title}>
-                <Button onClick={trackPageview}>
+                <Button>
                     <FontAwesomeIcon icon={faExpandArrowsAlt} className="rainbow-color_gray-4" />
                 </Button>
             </a>
@@ -42,7 +33,7 @@ export default function ToolbarButton(props) {
     if (href !== undefined && title === 'Show all components') {
         return (
             <a className="react-rainbow-toolbar-button" href={resolveHref()} title={title} aria-label={title}>
-                <Button onClick={trackPageview}>
+                <Button>
                     <FontAwesomeIcon icon={faCompress} className="rainbow-color_gray-4" />
                 </Button>
             </a>
