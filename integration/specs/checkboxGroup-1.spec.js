@@ -10,42 +10,42 @@ describe('CheckboxGroup base example', () => {
     });
     it('should set the focus on the checkbox clicked', () => {
         const checkboxGroup = new PageCheckboxGroup(CHECKBOX_GROUP);
-        const checkbox = checkboxGroup.getCheckbox(0);
+        const checkbox = checkboxGroup.getItem(0);
         checkbox.click();
         expect(checkbox.hasFocus()).toBe(true);
     });
     it('should lost the focus if another checkbox is clicked', () => {
         const checkboxGroup = new PageCheckboxGroup(CHECKBOX_GROUP);
-        const checkbox1 = checkboxGroup.getCheckbox(0);
-        const checkbox2 = checkboxGroup.getCheckbox(1);
+        const checkbox1 = checkboxGroup.getItem(0);
+        const checkbox2 = checkboxGroup.getItem(1);
         checkbox1.click();
         checkbox2.click();
         expect(checkbox1.hasFocus()).toBe(false);
     });
     it('should lost the focus when the checkbox is selected and press the key TAB', () => {
         const checkboxGroup = new PageCheckboxGroup(CHECKBOX_GROUP);
-        const checkbox = checkboxGroup.getCheckbox(0);
+        const checkbox = checkboxGroup.getItem(0);
         checkbox.click();
         browser.keys(TAB_KEY);
         expect(checkbox.hasFocus()).toBe(false);
     });
     it('should set the checked on the checkbox clicked', () => {
         const checkboxGroup = new PageCheckboxGroup(CHECKBOX_GROUP);
-        const checkbox = checkboxGroup.getCheckbox(0);
+        const checkbox = checkboxGroup.getItem(0);
         checkbox.click();
         expect(checkbox.isChecked()).toBe(true);
     });
     it('should not loose the checked if another checkbox is clicked', () => {
         const checkboxGroup = new PageCheckboxGroup(CHECKBOX_GROUP);
-        const checkbox1 = checkboxGroup.getCheckbox(0);
-        const checkbox2 = checkboxGroup.getCheckbox(1);
+        const checkbox1 = checkboxGroup.getItem(0);
+        const checkbox2 = checkboxGroup.getItem(1);
         checkbox1.click();
         checkbox2.click();
         expect(checkbox1.isChecked()).toBe(true);
     });
     it('should not lost the checked when the checkbox is selected and select by keyboard other checkbox', () => {
         const checkboxGroup = new PageCheckboxGroup(CHECKBOX_GROUP);
-        const checkbox = checkboxGroup.getCheckbox(0);
+        const checkbox = checkboxGroup.getItem(0);
         checkbox.click();
         browser.keys(TAB_KEY);
         browser.keys(SPACE_KEY);
@@ -53,8 +53,8 @@ describe('CheckboxGroup base example', () => {
     });
     it('should set the checked when the first checkbox is selected and select by keyboard other checkbox', () => {
         const checkboxGroup = new PageCheckboxGroup(CHECKBOX_GROUP);
-        const checkbox1 = checkboxGroup.getCheckbox(0);
-        const checkbox2 = checkboxGroup.getCheckbox(1);
+        const checkbox1 = checkboxGroup.getItem(0);
+        const checkbox2 = checkboxGroup.getItem(1);
         checkbox1.click();
         browser.keys(TAB_KEY);
         browser.keys(SPACE_KEY);

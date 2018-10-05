@@ -26,7 +26,7 @@ class PageCheckbox {
      * @returns {bool}
      */
     hasFocus() {
-        return $(this.rootElement).$('[type="checkbox"]').hasFocus();
+        return $(this.rootElement).$('input[type="checkbox"]').hasFocus();
     }
 
     /**
@@ -35,7 +35,7 @@ class PageCheckbox {
      * @returns {bool}
      */
     isChecked() {
-        return !!$(this.rootElement).$('[type="checkbox"]').getAttribute('checked');
+        return !!$(this.rootElement).$('input[type="checkbox"]').getAttribute('checked');
     }
 }
 
