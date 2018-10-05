@@ -8,10 +8,12 @@ import { Provider } from './context';
 export default class Accordion extends Component {
     constructor(props) {
         super(props);
+        this.handleToggleSection = this.handleToggleSection.bind(this);
         this.state = {
             activeNames: props.activeSectionNames,
+            multiple: props.multiple,
+            privateOnToggleSection: this.handleToggleSection,
         };
-        this.handleToggleSection = this.handleToggleSection.bind(this);
     }
 
     static getDerivedStateFromProps(props, state) {
@@ -33,20 +35,14 @@ export default class Accordion extends Component {
     }
 
     render() {
-        const { id, children, style, multiple, className } = this.props;
-        const { activeNames } = this.state;
-        const context = {
-            multiple,
-            activeNames,
-            privateOnToggleSection: this.handleToggleSection,
-        };
+        const { id, children, style, className } = this.props;
         return (
             <ul
                 id={id}
                 className={className}
                 style={style}>
 
-                <Provider value={context}>
+                <Provider value={this.state}>
                     {children}
                 </Provider>
             </ul>
@@ -73,7 +69,7 @@ Accordion.propTypes = {
     * The event params include the `name` of the selected AccordionSection. */
     onToggleSection: PropTypes.func,
     /** It contain the name of the AccordionSection that is expanded.
-    * It can be an array of string when multiple is true,
+    * It is an array of string when multiple is true,
     * or a string when when multiple is false.
     * It must match the name of the AccordionSection. */
     activeSectionNames: PropTypes.oneOfType([

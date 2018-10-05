@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 export default function RightArrow({ isExpanded, disabled }) {
-    const getArrowClassName = () => classnames(
-        'rainbow-accordion-section_right-icon',
+    const getArrowClassName = () => classnames('rainbow-accordion-section_right-icon',
         { 'rainbow-accordion-section_right-icon--expanded': isExpanded },
         { 'rainbow-accordion-section_right-icon-color--disabled': disabled },
     );
