@@ -1,5 +1,6 @@
 @import '../../styles/colors';
 @import '../../styles/shadows';
+@import '../../styles/border-radius';
 
 .rainbow-carousel {
     display: -ms-flexbox;
@@ -36,14 +37,13 @@
 }
 
 .rainbow-carousel__indicator-action {
-    width: 1rem;
-    height: 1rem;
-    background: white;
-    border: 1px solid #dddbda;
+    width: 0.5rem;
+    height: 0.5rem;
+    background: $color-gray-2;
     border-radius: 50%;
 
     &:hover {
-        background-color: #fafaf9;
+        background-color: $color-gray-3;
     }
 
     &:focus {

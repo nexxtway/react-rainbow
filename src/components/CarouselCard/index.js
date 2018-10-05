@@ -1,4 +1,4 @@
-/* eslint-disable no-script-url */
+/* eslint-disable no-script-url,max-len */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from './context';
@@ -19,7 +19,6 @@ export default class CarouselCard extends Component {
     }
 
     componentDidMount() {
-        // setTimeout(this.startAnimation, 500);
         this.startAnimation();
     }
 
@@ -31,14 +30,18 @@ export default class CarouselCard extends Component {
     }
 
     startAnimation() {
-        return setTimeout(() => {
-            const { childs, activeItem } = this.state;
-            const selectedItemIndex = childs.findIndex(child => child.indicatorID === activeItem);
-            const nextItem = selectedItemIndex === childs.length - 1 ? 0 : selectedItemIndex + 1;
-            this.cardPosition = { transform: `translateX(-${nextItem}00%)` };
-            this.startAnimation();
-            this.setState({ activeItem: childs[nextItem].indicatorID });
-        }, 3000);
+        const { scrollDuration, disableAutoScroll } = this.props;
+        if (!disableAutoScroll) {
+            return setTimeout(() => {
+                const { childs, activeItem } = this.state;
+                const selectedItemIndex = childs.findIndex(child => child.indicatorID === activeItem);
+                const nextItem = selectedItemIndex === childs.length - 1 ? 0 : selectedItemIndex + 1;
+                this.cardPosition = { transform: `translateX(-${nextItem}00%)` };
+                this.startAnimation();
+                this.setState({ activeItem: childs[nextItem].indicatorID });
+            }, scrollDuration);
+        }
+        return undefined;
     }
 
     registerChild(child) {
@@ -71,9 +74,13 @@ export default class CarouselCard extends Component {
 }
 
 CarouselCard.propTypes = {
+    scrollDuration: PropTypes.number,
+    disableAutoScroll: PropTypes.bool,
     children: PropTypes.node,
 };
 
 CarouselCard.defaultProps = {
+    scrollDuration: 5000,
+    disableAutoScroll: false,
     children: null,
 };

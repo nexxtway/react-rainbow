@@ -1,5 +1,6 @@
 @import '../../styles/shadows';
 @import '../../styles/colors';
+@import '../../styles/border-radius';
 
 .rainbow-carousel__panel {
     -ms-flex: 0 0 100%;
@@ -10,7 +11,8 @@
 .rainbow-carousel__panel-action {
     display: block;
     border: 1px solid #dddbda;
-    border-radius: 0.25rem;
+    border-radius: $border-radius-1;
+    overflow: hidden;
 }
 
 .rainbow-carousel__panel-action:focus {

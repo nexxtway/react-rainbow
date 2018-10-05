@@ -28,13 +28,12 @@
   margin: 0 0.25rem; }
 
 .rainbow-carousel__indicator-action {
-  width: 1rem;
-  height: 1rem;
-  background: white;
-  border: 1px solid #dddbda;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: #e3e5ed;
   border-radius: 50%; }
   .rainbow-carousel__indicator-action:hover {
-    background-color: #fafaf9; }
+    background-color: #a4a7b5; }
   .rainbow-carousel__indicator-action:focus {
     outline: 0;
     box-shadow: 0 0 2px #01b6f5;

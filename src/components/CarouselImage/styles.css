@@ -6,7 +6,8 @@
 .rainbow-carousel__panel-action {
   display: block;
   border: 1px solid #dddbda;
-  border-radius: 0.25rem; }
+  border-radius: 0.875rem;
+  overflow: hidden; }
 
 .rainbow-carousel__panel-action:focus {
   outline: 0;
