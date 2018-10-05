@@ -1,3 +1,5 @@
+const PageRadio = require('./radio');
+
 /**
  * RadioGroup page object class.
  * @class
@@ -13,43 +15,16 @@ class PageRadioGroup {
     }
 
     /**
-     * Click the RadioGroup item with item position.
+     * Returns a new Radio page object of the element in item position.
      * @method
-     * @param {number} itemPosition - The base 0 index of the RadioGroup item.
+     * @param {number} itemPosition - The base 0 index of the radio.
      */
-    clickItem(itemPosition) {
-        const items = $(this.rootElement).$$('label');
+    getRadio(itemPosition) {
+        const items = $(this.rootElement).$$('.rainbow-radio-group_radio');
         if (items[itemPosition]) {
-            items[itemPosition].click();
+            return new PageRadio(`${this.rootElement} .rainbow-radio-group_radio:nth-child(${itemPosition + 1})`);
         }
-    }
-
-    /**
-     * Returns true when the RadioGroup item with item position has the focus.
-     * @method
-     * @returns {bool}
-     * @param {number} itemPosition - The base 0 index of the RadioGroup item.
-     */
-    hasFocusItem(itemPosition) {
-        const items = $(this.rootElement).$$('input');
-        if (items[itemPosition]) {
-            return items[itemPosition].hasFocus();
-        }
-        return false;
-    }
-
-    /**
-     * Returns true when the RadioGroup item with item position is checked.
-     * @method
-     * @returns {bool}
-     * @param {number} itemPosition - The base 0 index of the RadioGroup item.
-     */
-    isCheckedItem(itemPosition) {
-        const items = $(this.rootElement).$$('input');
-        if (items[itemPosition]) {
-            return !!items[itemPosition].getAttribute('checked');
-        }
-        return false;
+        return null;
     }
 }
 
