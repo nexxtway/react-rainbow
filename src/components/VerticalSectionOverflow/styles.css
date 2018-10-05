@@ -1,4 +1,4 @@
-.rainbow-vertical-section-overflow_action-text, .rainbow-vertical-section-overflow_action-title, .rainbow-vertical-section-overflow_action-description {
+.rainbow-vertical-section-overflow_action-text, .rainbow-vertical-section-overflow_action-label, .rainbow-vertical-section-overflow_action-description {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap; }
@@ -77,7 +77,7 @@
   align-items: flex-start;
   flex: 1; }
 
-.rainbow-vertical-section-overflow_action-title {
+.rainbow-vertical-section-overflow_action-label {
   font-size: 0.9375rem;
   color: #01b6f5;
   max-width: 100%; }

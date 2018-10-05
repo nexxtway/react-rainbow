@@ -27,7 +27,7 @@ function Sections({ items }) {
             return (
                 <VerticalSectionOverflow
                     key={href}
-                    title={visibleName}
+                    label={visibleName}
                     description={getDescription(visibleName)}>
 
                     {renderItems(content)}

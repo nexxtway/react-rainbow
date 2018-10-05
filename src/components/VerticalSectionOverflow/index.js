@@ -54,7 +54,7 @@ export default class VerticalSectionOverflow extends Component {
 
     render() {
         const {
-            title,
+            label,
             description,
             style,
             assistiveText,
@@ -74,7 +74,7 @@ export default class VerticalSectionOverflow extends Component {
                     onClick={this.toggleOverflow}>
 
                     <div className="rainbow-vertical-section-overflow_action-text">
-                        <span className="rainbow-vertical-section-overflow_action-title">{title}</span>
+                        <span className="rainbow-vertical-section-overflow_action-label">{label}</span>
                         <Description isExpanded={isExpanded} description={description} />
                         <AssistiveText text={assistiveText} />
                     </div>
@@ -99,8 +99,8 @@ export default class VerticalSectionOverflow extends Component {
 }
 
 VerticalSectionOverflow.propTypes = {
-    /** The title to show when the section is collapsed. */
-    title: PropTypes.oneOfType([
+    /** The label to show when the section is collapsed. */
+    label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
     /** The description to show when the section is collapsed. */
@@ -123,7 +123,7 @@ VerticalSectionOverflow.propTypes = {
 };
 
 VerticalSectionOverflow.defaultProps = {
-    title: '',
+    label: '',
     description: '',
     expanded: false,
     className: undefined,
