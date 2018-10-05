@@ -6,6 +6,12 @@ import { faExpandArrowsAlt, faCompress } from '@fortawesome/free-solid-svg-icons
 import Button from '../../../src/components/Button';
 import './styles.css';
 
+function resolveHref() {
+    const urlArray = window.location.href.split('/');
+    const componentName = urlArray[urlArray.length - 2];
+    return `/#/${componentName}`;
+}
+
 export default function ToolbarButton(props) {
     const {
     onClick,
@@ -13,12 +19,6 @@ export default function ToolbarButton(props) {
     title,
     children,
     } = props;
-
-    function resolveHref() {
-        const urlArray = window.location.href.split('/');
-        const componentName = urlArray[urlArray.length - 2];
-        return `/#/${componentName}`;
-    }
 
     if (href !== undefined && title === 'Open isolated') {
         return (
