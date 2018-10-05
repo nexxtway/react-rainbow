@@ -1,0 +1,46 @@
+@import '../../styles/shadows';
+@import '../../styles/colors';
+
+.rainbow-carousel__panel {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.rainbow-carousel__panel-action {
+    display: block;
+    border: 1px solid #dddbda;
+    border-radius: 0.25rem;
+}
+
+.rainbow-carousel__panel-action:focus {
+    outline: 0;
+    box-shadow: $shadow-outline;
+    border-color: $color-brand;
+}
+
+.rainbow-carousel__image {
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    overflow: hidden;
+
+    & > img {
+        width: 100%;
+    }
+}
+
+.rainbow-carousel__content {
+    background: white;
+    padding: 0.75rem;
+    border-bottom-left-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    text-align: center;
+    height: 6.625rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.rainbow-carousel__content-title {
+    font-size: 1rem;
+    font-weight: 600;
+}

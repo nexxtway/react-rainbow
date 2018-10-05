@@ -1,0 +1,51 @@
+.rainbow-carousel {
+  display: -ms-flexbox;
+  display: flex;
+  position: relative; }
+
+.rainbow-carousel__stage {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  overflow: hidden; }
+
+.rainbow-carousel__panels {
+  display: -ms-flexbox;
+  display: flex;
+  transition: transform 250ms ease-in; }
+
+.rainbow-carousel__indicators {
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
+  align-self: center;
+  margin: 0.5rem 0; }
+
+.rainbow-carousel__indicator {
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  margin: 0 0.25rem; }
+
+.rainbow-carousel__indicator-action {
+  width: 1rem;
+  height: 1rem;
+  background: white;
+  border: 1px solid #dddbda;
+  border-radius: 50%; }
+  .rainbow-carousel__indicator-action:hover {
+    background-color: #fafaf9; }
+  .rainbow-carousel__indicator-action:focus {
+    outline: 0;
+    box-shadow: 0 0 2px #01b6f5;
+    border-color: #009acf; }
+
+.rainbow-carousel__indicator-action.rainbow-is-active,
+.rainbow-carousel__indicator-action.rainbow-is-active:hover {
+  background: #01b6f5;
+  border-color: #009acf; }
+
+.rainbow-carousel__autoplay {
+  position: absolute;
+  left: 0;
+  bottom: 0.25rem; }
