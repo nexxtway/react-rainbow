@@ -8,7 +8,8 @@
   border: solid 1px #f4f6f9;
   transition-duration: 0.4s;
   transition-timing-function: ease-in-out;
-  transition-property: margin, max-height, opacity, top; }
+  transition-property: margin, max-height, opacity, top;
+  min-height: 2.625rem; }
   .rainbow-notification:hover {
     background-color: #f4f6f9; }
   .rainbow-notification .rainbow-notification_title {
