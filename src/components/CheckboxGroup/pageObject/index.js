@@ -1,3 +1,5 @@
+const PageCheckbox = require('./checkbox');
+
 /**
  * CheckboxGroup page object class.
  * @class
@@ -13,43 +15,16 @@ class PageCheckboxGroup {
     }
 
     /**
-     * Clicks the checkbox with item position.
+     * Returns a new Checkbox page object of the element in item position.
      * @method
-     * @param {number} itemPosition - The base 0 index of the menu item.
+     * @param {number} itemPosition - The base 0 index of the checkbox.
      */
-    clickItem(itemPosition) {
-        const items = $(this.rootElement).$$('.rainbow-checkbox-group_checkbox-label-container');
+    getItem(itemPosition) {
+        const items = $(this.rootElement).$$('.rainbow-checkbox-group_checkbox');
         if (items[itemPosition]) {
-            items[itemPosition].click();
+            return new PageCheckbox(`${this.rootElement} .rainbow-checkbox-group_checkbox:nth-child(${itemPosition + 1})`);
         }
-    }
-
-    /**
-     * Returns true when the checkbox with item position has the focus.
-     * @method
-     * @returns {bool}
-     * @param {number} itemPosition - The base 0 index of the menu item.
-     */
-    hasFocusItem(itemPosition) {
-        const items = $(this.rootElement).$$('[type="checkbox"]');
-        if (items[itemPosition]) {
-            return items[itemPosition].hasFocus();
-        }
-        return false;
-    }
-
-    /**
-     * Returns true when the checkbox with item position is checked.
-     * @method
-     * @returns {bool}
-     * @param {number} itemPosition - The base 0 index of the menu item.
-     */
-    isCheckedItem(itemPosition) {
-        const items = $(this.rootElement).$$('[type="checkbox"]');
-        if (items[itemPosition]) {
-            return !!items[itemPosition].getAttribute('checked');
-        }
-        return false;
+        return null;
     }
 }
 
