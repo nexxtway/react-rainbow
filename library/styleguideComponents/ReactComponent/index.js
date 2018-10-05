@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faList, faFolderOpen, faWrench } from '@fortawesome/free-solid-svg-icons';
+import { faList, faCode, faWrench } from '@fortawesome/free-solid-svg-icons';
 import Pathline from 'react-styleguidist/lib/rsg-components/Pathline';
 import Tabset from '../../../src/components/Tabset';
 import Tab from '../../../src/components/Tab';
@@ -53,7 +53,7 @@ export default class ReactComponent extends Component {
                         onSelect={this.handleOnSelect}
                         fullWidth>
 
-                        <Tab name="examples" label={<TabLabel icon={faFolderOpen} label="INTERACTIVE EXAMPLES" />} />
+                        <Tab name="examples" label={<TabLabel icon={faCode} label="INTERACTIVE EXAMPLES" />} />
                         <Tab name="properties" label={<TabLabel icon={faList} label="PROPERTIES AND METHODS" />} />
                         <Tab name="utils" label={<TabLabel icon={faWrench} label="UTILS" />} />
                     </Tabset>
