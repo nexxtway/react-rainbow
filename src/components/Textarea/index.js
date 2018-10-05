@@ -99,13 +99,12 @@ class Textarea extends Component {
             rows,
             id,
         } = this.props;
-        const isRequiredOrHasError = !!(required || error);
 
         return (
             <div className={this.getContainerClassNames()} style={style} id={id}>
                 <Label
                     label={label}
-                    required={isRequiredOrHasError}
+                    required={required}
                     textareaId={this.textareaId}
                     readOnly={readOnly}
                     id={this.getInlineTextLabelId()} />
@@ -115,7 +114,7 @@ class Textarea extends Component {
                     className="rainbow-textarea"
                     placeholder={placeholder}
                     disabled={disabled}
-                    required={isRequiredOrHasError}
+                    required={required}
                     maxLength={maxLength}
                     minLength={minLength}
                     onChange={onChange}

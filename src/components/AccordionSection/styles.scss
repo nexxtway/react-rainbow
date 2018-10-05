@@ -1,0 +1,122 @@
+@import './../../styles/colors.scss';
+@import './../../styles/paddings.scss';
+@import './../../styles/margins.scss';
+@import './../../styles/font-sizes.scss';
+
+@mixin animation-properties($animation) {
+    transition: $animation;
+    -webkit-transition: $animation;
+    -moz-transition: $animation;
+    -ms-transition: $animation;
+    -o-transition: $animation;
+}
+
+%button {
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    -webkit-appearance: none;
+    white-space: normal;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    &:focus {
+        outline: 0;
+        text-decoration-line: underline;
+        text-decoration-color: $color-brand-active;
+        color: $color-brand-active;
+    }
+}
+
+.rainbow-accordion-section_container {
+    border-top: 1px solid $color-gray-2;
+    list-style: none;
+
+    &:first-child {
+        border-top: 0;
+    }
+}
+
+.rainbow-accordion-section_summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.875rem 1rem;
+}
+
+.rainbow-accordion-section_summary-heading {
+    font-size: $font-size-heading-small;
+    line-height: 1.25;
+    color: $color-dark-1;
+    width: 100%;
+
+    &:hover {
+        text-decoration-line: underline;
+        text-decoration-color: $color-brand-active;
+        color: $color-brand-active;
+        cursor: pointer;
+    }
+}
+
+.rainbow-accordion-section_summary-button-heading {
+    @extend %button;
+
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: left;
+}
+
+.rainbow-accordion-section_summary-button {
+    @extend %button;
+}
+
+.rainbow-accordion-section_content {
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.57;
+    color: $color-gray-4;
+    padding-left: $padding-medium;
+    padding-right: $padding-x-large;
+    padding-bottom: 0.875rem;
+}
+
+.rainbow-accordion-section_right-icon {
+    transform: rotate(0deg);
+    fill: $color-brand;
+
+    @include animation-properties(transform 0.15s linear);
+}
+
+.rainbow-accordion-section_right-icon--expanded {
+    transform: rotate(-180deg);
+
+    @include animation-properties(transform 0.15s linear);
+}
+
+.rainbow-accordion-section_container--disabled {
+    pointer-events: none;
+
+    .rainbow-accordion-section_summary-button-heading {
+        &:focus {
+            text-decoration-line: none;
+            color: unset;
+        }
+    }
+
+    .rainbow-accordion-section_summary-heading {
+        color: $color-gray-2;
+    }
+}
+
+.rainbow-accordion-section_right-icon-color--disabled {
+    fill: $color-gray-2;
+}
+
+.rainbow-accordion-section_summary-icon {
+    margin-right: $margin-x-small;
+}

@@ -24,7 +24,7 @@ describe('<VerticalNavigation/>', () => {
         expect.assertions(1);
         const html = ReactDOMServer.renderToString(
             <VerticalNavigation>
-                <VerticalSectionOverflow title="Section Title">
+                <VerticalSectionOverflow label="Section Label">
                     <VerticalItem name="item-1" label="Recent" />
                     <VerticalItem name="item-2" label="Projects" />
                 </VerticalSectionOverflow>

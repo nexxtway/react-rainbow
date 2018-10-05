@@ -257,7 +257,7 @@
             return (
                 <VerticalNavigation id="vertical-navigation-11" selectedItem={this.state.selectedItem} onSelect={this.handleOnSelect}>
                     <VerticalSectionOverflow
-                        title="Folders"
+                        label="Folders"
                         description="Folders created, shared..." >
 
                         <VerticalItem name="item-3" label="Apps" icon={<FontAwesomeIcon icon={faTh} />} />
@@ -265,7 +265,7 @@
                     </VerticalSectionOverflow>
 
                     <VerticalSectionOverflow
-                        title="Recents"
+                        label="Recents"
                         description="Folders created, shared..." >
 
                         <VerticalItem name="item-1" label="Shared with Me" />
@@ -273,7 +273,7 @@
                     </VerticalSectionOverflow>
 
                     <VerticalSectionOverflow
-                        title="Documents"
+                        label="Documents"
                         description="Document created, shared..." >
 
                         <VerticalItem name="item-5" label="Recents" />
@@ -302,7 +302,7 @@
         borderRight: '1px solid #e3e5ed',
     };
 
-    class VerticalNavigationWithNofifications extends React.Component {
+    class VerticalNavigationWithNotifications extends React.Component {
         constructor(props) {
             super(props);
             this.state = {
@@ -342,6 +342,6 @@
     <div>
         <GlobalHeader src="images/user/user3.jpg" />
         <div className="rainbow-background-color_white rainbow-p-top_small rainbow-p-bottom_x-large" style={containerStyles}>
-            <VerticalNavigationWithNofifications />
+            <VerticalNavigationWithNotifications />
         </div>
     </div>

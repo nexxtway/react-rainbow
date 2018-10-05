@@ -1,0 +1,25 @@
+@media (max-width: 600px) {
+    .rainbow-checkout_view-port {
+        height: 100%;
+    }
+
+    .rainbow-checkout_card-container {
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .rainbow-checkout_media-styles-container {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+
+    .rainbow-checkout_media-styles-inner-container {
+        display: block;
+        margin-bottom: 0;
+    }
+
+    .rainbow-checkout_form-element {
+        width: 100%;
+        margin-bottom: 1.5rem;
+    }
+}

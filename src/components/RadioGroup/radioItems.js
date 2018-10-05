@@ -9,6 +9,7 @@ export default function RadioItems(props) {
         onChange,
         value,
         name,
+        required,
     } = props;
 
     const isChecked = option => option.value === value;
@@ -18,6 +19,7 @@ export default function RadioItems(props) {
         return (
             <Radio
                 key={key}
+                required={required}
                 onChange={onChange}
                 isChecked={isChecked(option)}
                 ariaDescribedby={ariaDescribedby}
@@ -33,6 +35,7 @@ RadioItems.propTypes = {
     options: PropTypes.array.isRequired,
     onChange: PropTypes.func,
     name: PropTypes.string.isRequired,
+    required: PropTypes.bool.isRequired,
 };
 
 RadioItems.defaultProps = {

@@ -39,7 +39,7 @@ function Sections({ items, selectedItem }) {
                 <VerticalSectionOverflow
                     key={href}
                     expanded={isExpanded(content.props.items, selectedItem)}
-                    title={visibleName}
+                    label={visibleName}
                     description={getDescription(visibleName)}>
 
                     {renderItems(content)}
