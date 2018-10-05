@@ -13,11 +13,12 @@ class Item extends Component {
     }
 
     componentDidMount() {
-        const { privateRegisterChild } = this.props;
+        const { privateRegisterChild, header } = this.props;
         return setTimeout(() => (
             privateRegisterChild({
                 containerID: this.carouselImageID,
                 indicatorID: this.carouselindicatorID,
+                header,
             })), 0);
     }
 
@@ -59,8 +60,8 @@ export default function CarouselImage(props) {
 
 CarouselImage.propTypes = {
     src: PropTypes.string,
-    header: PropTypes.string,
-    description: PropTypes.string,
+    header: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     alternativeText: PropTypes.string,
     href: PropTypes.string,
 };

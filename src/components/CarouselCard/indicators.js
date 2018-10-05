@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import AssistiveText from '../AssistiveText';
 
 export default function Indicators({ carouselChilds, onSelect, selectedItem }) {
     const isSelected = id => selectedItem === id;
@@ -19,7 +20,14 @@ export default function Indicators({ carouselChilds, onSelect, selectedItem }) {
         return -1;
     };
 
-    return carouselChilds.map(({ containerID, indicatorID }) => (
+    const getAssistiveText = (header) => {
+        if (typeof header === 'string') {
+            return `${header} Tab`;
+        }
+        return undefined;
+    };
+
+    return carouselChilds.map(({ containerID, indicatorID, header }) => (
         <li className="rainbow-carousel__indicator" role="presentation" key={indicatorID}>
             <a
                 id={indicatorID}
@@ -30,7 +38,7 @@ export default function Indicators({ carouselChilds, onSelect, selectedItem }) {
                 aria-selected={isSelected(indicatorID)}
                 aria-controls={containerID}
                 onClick={() => onSelect(indicatorID)}>
-                <span className="rainbow-assistive-text">Visit App Exchange tab</span>
+                <AssistiveText text={getAssistiveText(header)} />
             </a>
         </li>
     ));
