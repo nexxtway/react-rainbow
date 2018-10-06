@@ -41,7 +41,7 @@
 
     &:focus {
         outline: 0;
-        box-shadow: $shadow-4;
+        box-shadow: $shadow-outline;
         border-color: $color-brand-active;
     }
 }
