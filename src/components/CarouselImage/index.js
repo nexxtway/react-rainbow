@@ -12,6 +12,7 @@ class Item extends Component {
         super(props);
         this.carouselImageID = uniqueId('carousel-content-id');
         this.carouselIndicatorID = uniqueId('indicator-id');
+        this.itemRef = React.createRef();
     }
 
     componentDidMount() {
@@ -20,13 +21,14 @@ class Item extends Component {
             privateRegisterChild({
                 containerID: this.carouselImageID,
                 indicatorID: this.carouselIndicatorID,
+                ref: this.itemRef,
                 header,
             })), 0);
     }
 
     getContainerClassName() {
         const { className } = this.props;
-        return classnames('rainbow-carousel-image-container', className);
+        return classnames('rainbow-carousel-image_container', className);
     }
 
     getTabIndex() {
@@ -49,14 +51,15 @@ class Item extends Component {
                 <a
                     href={href}
                     className="rainbow-carousel-image"
-                    tabIndex={this.getTabIndex()}>
+                    tabIndex={this.getTabIndex()}
+                    ref={this.itemRef}>
                     <div>
                         <img className="rainbow-carousel-image_image" src={src} alt={assistiveText} />
                     </div>
                     <RenderIf isTrue={header || description}>
-                        <div className="rainbow-carousel-image-content">
+                        <div className="rainbow-carousel-image_content">
                             <RenderIf isTrue={header}>
-                                <h2 className="rainbow-carousel-image-content-title">{header}</h2>
+                                <h2 className="rainbow-carousel-image_content-title">{header}</h2>
                             </RenderIf>
                             <RenderIf isTrue={description}>
                                 <p>{description}</p>

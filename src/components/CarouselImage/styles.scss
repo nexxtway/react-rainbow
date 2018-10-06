@@ -2,7 +2,7 @@
 @import '../../styles/colors';
 @import '../../styles/border-radius';
 
-.rainbow-carousel-image-container {
+.rainbow-carousel-image_container {
     -ms-flex: 0 0 100%;
     flex: 0 0 100%;
     max-width: 100%;
@@ -36,7 +36,7 @@
     width: 100%;
 }
 
-.rainbow-carousel-image-content {
+.rainbow-carousel-image_content {
     background: white;
     padding: 0.75rem;
     text-align: center;
@@ -44,7 +44,7 @@
     overflow-y: auto;
 }
 
-.rainbow-carousel-image-content-title {
+.rainbow-carousel-image_content-title {
     font-size: 1rem;
     font-weight: 600;
 }

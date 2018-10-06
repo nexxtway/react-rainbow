@@ -2,8 +2,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import AssistiveText from '../AssistiveText';
 import { LEFT_KEY, RIGHT_KEY } from '../../libs/constants';
+import AssistiveText from '../AssistiveText';
+import { getSelectedItemIndex } from './utils';
 
 const RIGHT_SIDE = 1;
 const LEFT_SIDE = -1;
@@ -26,8 +27,8 @@ export default class Indicators extends Component {
     }
 
     getIndicatorClassName(id) {
-        return classnames('rainbow-carousel-indicator', {
-            'rainbow-carousel-indicator_active': this.isSelected(id),
+        return classnames('rainbow-carousel_indicator', {
+            'rainbow-carousel_indicator--active': this.isSelected(id),
         });
     }
 
@@ -45,10 +46,7 @@ export default class Indicators extends Component {
 
     selectIndicator(side) {
         const { selectedItem } = this.props;
-        const indicatorIndex = this.indicatorsRefs.findIndex(item => (
-            item.indicatorID === selectedItem
-        ));
-
+        const indicatorIndex = getSelectedItemIndex(this.indicatorsRefs, selectedItem);
         if (indicatorIndex === this.indicatorsRefs.length - 1 && side === RIGHT_SIDE) {
             this.setAsSelectedIndicator(0);
         } else if (indicatorIndex === 0 && side === LEFT_SIDE) {
@@ -80,7 +78,7 @@ export default class Indicators extends Component {
                 ref: indicatorRef,
             });
             return (
-                <li className="rainbow-carousel-indicators-container" role="presentation" key={indicatorID}>
+                <li className="rainbow-carousel_indicators-container" role="presentation" key={indicatorID}>
                     <a
                         id={indicatorID}
                         className={this.getIndicatorClassName(indicatorID)}
@@ -101,7 +99,7 @@ export default class Indicators extends Component {
 
     render() {
         return (
-            <ul className="rainbow-carousel-indicators" role="tablist" onKeyDown={this.handleKeyPressed}>
+            <ul className="rainbow-carousel_indicators" role="tablist" onKeyDown={this.handleKeyPressed}>
                 {this.renderIndicators()}
             </ul>
         );

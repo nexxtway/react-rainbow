@@ -3,11 +3,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Provider } from './context';
-import './styles.css';
 import Indicators from './indicators';
-import PlayIcon from './playIcon';
-import PauseIcon from './pauseIcon';
-import ButtonIcon from '../ButtonIcon';
+import AnimationButton from './animationButton';
+import { getSelectedItemIndex, getChildTabNodes, insertChildOrderly } from './utils';
+import './styles.css';
 
 export default class CarouselCard extends Component {
     constructor(props) {
@@ -18,10 +17,11 @@ export default class CarouselCard extends Component {
         this.state = {
             childrenRegistred: [],
             activeItem: undefined,
-            playAnimation: !this.props.disableAutoScroll,
+            stopAnimation: this.props.disableAutoScroll,
             privateRegisterChild: this.registerChild,
         };
         this.cardPosition = { transform: 'translateX(-0%)' };
+        this.containerRef = React.createRef();
     }
 
     componentDidMount() {
@@ -33,30 +33,9 @@ export default class CarouselCard extends Component {
         return classnames('rainbow-carousel', className);
     }
 
-    getSelectedItemIndex(id) {
-        const { childrenRegistred, activeItem } = this.state;
-        const idToCheck = id || activeItem;
-        return childrenRegistred.findIndex(child => child.indicatorID === idToCheck);
-    }
-
-    getAnimationButtonIcon() {
-        const { playAnimation } = this.state;
-        if (!playAnimation) {
-            return <PlayIcon />;
-        }
-        return <PauseIcon />;
-    }
-
-    getAnimationButtonAssistiveText() {
-        const { playAnimation } = this.state;
-        if (playAnimation) {
-            return 'Stop auto-play';
-        }
-        return 'Start auto-play';
-    }
-
     setActiveItem(id) {
-        const selectedItemIndex = this.getSelectedItemIndex(id);
+        const { childrenRegistred } = this.state;
+        const selectedItemIndex = getSelectedItemIndex(childrenRegistred, id);
         this.cardPosition = { transform: `translateX(-${selectedItemIndex}00%)` };
         this.setState({ activeItem: id });
     }
@@ -64,51 +43,47 @@ export default class CarouselCard extends Component {
     startAnimation() {
         const { scrollDuration, disableAutoRefresh } = this.props;
         setTimeout(() => {
-            const { playAnimation } = this.state;
-            if (playAnimation) {
-                const { childrenRegistred } = this.state;
-                const selectedItemIndex = this.getSelectedItemIndex();
+            const { stopAnimation } = this.state;
+            if (!stopAnimation) {
+                const { childrenRegistred, activeItem } = this.state;
+                const selectedItemIndex = getSelectedItemIndex(childrenRegistred, activeItem);
                 const isLastItem = selectedItemIndex === childrenRegistred.length - 1;
                 const nextItem = isLastItem ? 0 : selectedItemIndex + 1;
-                if (!(isLastItem && disableAutoRefresh)) {
+                if (isLastItem && disableAutoRefresh) {
+                    this.setState({ stopAnimation: true });
+                } else {
                     this.cardPosition = { transform: `translateX(-${nextItem}00%)` };
                     this.startAnimation();
                     this.setState({ activeItem: childrenRegistred[nextItem].indicatorID });
-                } else {
-                    this.setState({ playAnimation: false });
                 }
             }
         }, (scrollDuration * 1000));
     }
 
     handleOnClick() {
-        const { playAnimation } = this.state;
-        if (!playAnimation) {
+        const { stopAnimation } = this.state;
+        if (stopAnimation) {
             this.startAnimation();
         }
-        this.setState({ playAnimation: !playAnimation });
+        this.setState({ stopAnimation: !stopAnimation });
     }
 
     registerChild(child) {
         const { childrenRegistred } = this.state;
-        const newChilds = childrenRegistred.concat([child]);
-        this.setState({ childrenRegistred: newChilds, activeItem: newChilds[0].indicatorID });
+        const [...nodes] = getChildTabNodes(this.containerRef.current);
+        const newChildren = insertChildOrderly(childrenRegistred, child, nodes);
+        this.setState({ childrenRegistred: newChildren, activeItem: newChildren[0].indicatorID });
     }
 
     render() {
         const { children, style } = this.props;
-        const { childrenRegistred, activeItem } = this.state;
+        const { childrenRegistred, activeItem, stopAnimation } = this.state;
         return (
             <div className={this.getContainerClassName()} style={style}>
-                <span className="rainbow-carousel-autoplay">
-                  <ButtonIcon
-                      variant="border"
-                      size="small"
-                      icon={this.getAnimationButtonIcon()}
-                      onClick={this.handleOnClick}
-                      assistiveText={this.getAnimationButtonAssistiveText()} />
+                <span className="rainbow-carousel_autoplay">
+                  <AnimationButton onClick={this.handleOnClick} stopAnimation={stopAnimation} />
                 </span>
-                <div className="rainbow-carousel-images" style={this.cardPosition}>
+                <div className="rainbow-carousel_images" style={this.cardPosition} ref={this.containerRef}>
                     <Provider value={this.state}>
                         {children}
                     </Provider>

@@ -5,40 +5,40 @@
   flex-direction: column;
   overflow: hidden; }
 
-.rainbow-carousel-images {
+.rainbow-carousel_images {
   display: -ms-flexbox;
   display: flex;
   transition: transform 250ms ease-in; }
 
-.rainbow-carousel-indicators {
+.rainbow-carousel_indicators {
   -ms-flex-item-align: center;
   -ms-grid-row-align: center;
   align-self: center;
   margin: 0.5rem 0; }
 
-.rainbow-carousel-indicators-container {
+.rainbow-carousel_indicators-container {
   display: -ms-inline-flexbox;
   display: inline-flex;
   margin: 0 0.25rem; }
 
-.rainbow-carousel-indicator {
+.rainbow-carousel_indicator {
   width: 0.5rem;
   height: 0.5rem;
   background: #e3e5ed;
   border-radius: 50%; }
-  .rainbow-carousel-indicator:hover {
+  .rainbow-carousel_indicator:hover {
     background-color: #a4a7b5; }
-  .rainbow-carousel-indicator:focus {
+  .rainbow-carousel_indicator:focus {
     outline: 0;
-    box-shadow: 0 0 5px red;
-    border-color: red; }
+    box-shadow: 0 1px 2px 0 #e3e5ed;
+    border-color: #009acf; }
 
-.rainbow-carousel-indicator.rainbow-carousel-indicator_active,
-.rainbow-carousel-indicator.rainbow-carousel-indicator_active:hover {
+.rainbow-carousel_indicator.rainbow-carousel_indicator--active,
+.rainbow-carousel_indicator.rainbow-carousel_indicator--active:hover {
   background: #01b6f5;
   border-color: #009acf; }
 
-.rainbow-carousel-autoplay {
+.rainbow-carousel_autoplay {
   position: absolute;
   left: 0;
   bottom: 0.25rem; }
