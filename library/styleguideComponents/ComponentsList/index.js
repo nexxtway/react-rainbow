@@ -21,7 +21,7 @@ function renderItems(content) {
     return null;
 }
 
-function hasComma(content, index) {
+function resolveComma(content, index) {
     if (index === 3 || index === content.props.items.length - 1) {
         return '';
     }
@@ -30,7 +30,7 @@ function hasComma(content, index) {
 
 function getVisibleName(content, index) {
     if (index < content.props.items.length && index < 4) {
-        return `${content.props.items[index].visibleName}${hasComma(content, index)}`;
+        return `${content.props.items[index].visibleName}${resolveComma(content, index)}`;
     }
     return '';
 }
