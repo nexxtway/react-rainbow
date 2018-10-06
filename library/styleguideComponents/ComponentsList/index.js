@@ -21,18 +21,22 @@ function renderItems(content) {
     return null;
 }
 
+function hasComma(content, index) {
+    if (index === 3 || index === content.props.items.length - 1) {
+        return '';
+    }
+    return ',';
+}
+
 function getVisibleName(content, index) {
     if (index < content.props.items.length && index < 4) {
-        if (index === 3 || index === content.props.items.length - 1) {
-            return content.props.items[index].visibleName;
-        }
-        return `${content.props.items[index].visibleName}, `;
+        return `${content.props.items[index].visibleName}${hasComma(content, index)}`;
     }
     return '';
 }
 
 function getDescription(content) {
-    return `${getVisibleName(content, 0)}${getVisibleName(content, 1)}${getVisibleName(content, 2)}${getVisibleName(content, 3)}`;
+    return `${getVisibleName(content, 0)} ${getVisibleName(content, 1)} ${getVisibleName(content, 2)} ${getVisibleName(content, 3)}`;
 }
 
 function isExpanded(items, selectedItem) {
