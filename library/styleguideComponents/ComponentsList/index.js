@@ -21,11 +21,18 @@ function renderItems(content) {
     return null;
 }
 
-function getDescription(visibleName) {
-    if (visibleName === 'Getting Started') {
-        return 'Overview, Usage, Contribuiting ...';
+function getVisibleName(content, index) {
+    if (index < content.props.items.length && index < 4) {
+        if (index === 3 || index === content.props.items.length - 1) {
+            return content.props.items[index].visibleName;
+        }
+        return `${content.props.items[index].visibleName}, `;
     }
-    return null;
+    return '';
+}
+
+function getDescription(content) {
+    return `${getVisibleName(content, 0)}${getVisibleName(content, 1)}${getVisibleName(content, 2)}${getVisibleName(content, 3)}`;
 }
 
 function isExpanded(items, selectedItem) {
@@ -40,7 +47,7 @@ function Sections({ items, selectedItem }) {
                     key={href}
                     expanded={isExpanded(content.props.items, selectedItem)}
                     label={visibleName}
-                    description={getDescription(visibleName)}>
+                    description={getDescription(content)}>
 
                     {renderItems(content)}
                 </VerticalSectionOverflow>
