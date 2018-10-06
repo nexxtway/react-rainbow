@@ -38,17 +38,17 @@ export default class ReactComponent extends Component {
             <div>
                 <div className="react-rainbow-component-top-content">
                     {heading}
-                    <div className="rainbow-p-horizontal_xx-large">
+                    <div className="rainbow-p-horizontal_x-large">
                         <Description text={descriptionText} />
                     </div>
-                    <div className="rainbow-m-vertical_large rainbow-p-horizontal_xx-large">
+                    <div className="rainbow-m-vertical_large rainbow-p-horizontal_x-large">
                         <Pathline name={name}>
                             {`import ${name} from 'react-rainbow-components/components/${name}'`}
                         </Pathline>
                     </div>
 
                     <Tabset
-                        className="rainbow-p-horizontal_xx-large rainbow-m-bottom_xx-large"
+                        className="rainbow-p-horizontal_x-large rainbow-m-bottom_xx-large"
                         activeTabName={activeTabName}
                         onSelect={this.handleOnSelect}
                         fullWidth>
