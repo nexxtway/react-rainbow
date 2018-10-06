@@ -21,22 +21,22 @@ function renderItems(content) {
     return null;
 }
 
-function resolveComma(content, index) {
-    if (index === 3 || index === content.props.items.length - 1) {
+function resolveComma(items, index) {
+    if (index === 3 || index === items.length - 1) {
         return '';
     }
     return ',';
 }
 
-function getVisibleName(content, index) {
-    if (index < content.props.items.length && index < 4) {
-        return `${content.props.items[index].visibleName}${resolveComma(content, index)}`;
+function getVisibleName(items, index) {
+    if (index < items.length && index < 4) {
+        return `${items[index].visibleName}${resolveComma(items, index)}`;
     }
     return '';
 }
 
-function getDescription(content) {
-    return `${getVisibleName(content, 0)} ${getVisibleName(content, 1)} ${getVisibleName(content, 2)} ${getVisibleName(content, 3)}`;
+function getDescription(items) {
+    return `${getVisibleName(items, 0)} ${getVisibleName(items, 1)} ${getVisibleName(items, 2)} ${getVisibleName(items, 3)}`;
 }
 
 function isExpanded(items, selectedItem) {
@@ -51,7 +51,7 @@ function Sections({ items, selectedItem }) {
                     key={href}
                     expanded={isExpanded(content.props.items, selectedItem)}
                     label={visibleName}
-                    description={getDescription(content)}>
+                    description={getDescription(content.props.items)}>
 
                     {renderItems(content)}
                 </VerticalSectionOverflow>
