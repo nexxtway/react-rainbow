@@ -17,7 +17,7 @@ export default function SectionRenderer(props) {
     } = props;
 
     const getSectionClassName = () => {
-        if (name === 'Overview' || name === 'Usage' || name === 'Contribuiting') {
+        if (name === 'Getting Started' || name === 'Overview' || name === 'Usage' || name === 'Contribuiting') {
             return 'rainbow-p-horizontal_x-large';
         }
         return null;
