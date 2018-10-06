@@ -80,10 +80,17 @@ export default function CarouselImage(props) {
 }
 
 CarouselImage.propTypes = {
+    /** The URL for the image. */
     src: PropTypes.string,
+    /** The header can include text or another component,
+     * and is displayed in the top of the content section. */
     header: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /** The header can include text or another component,
+     * and is displayed below the header in the content section. */
     description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /** A description for assistive sreen readers. */
     assistiveText: PropTypes.string,
+    /** The URL of the page that the navigation item goes to. */
     href: PropTypes.string,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
