@@ -18,7 +18,7 @@ export default class Accordion extends Component {
 
     static getDerivedStateFromProps(props, state) {
         const { activeSectionNames } = props;
-        if (activeSectionNames && activeSectionNames !== state.activeNames) {
+        if (activeSectionNames && activeSectionNames !== state.activeNames && typeof onToggleSection === 'function') {
             return {
                 activeNames: activeSectionNames,
             };
