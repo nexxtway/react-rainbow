@@ -2,47 +2,49 @@
 @import '../../styles/colors';
 @import '../../styles/border-radius';
 
-.rainbow-carousel__panel {
+.rainbow-carousel-image-container {
     -ms-flex: 0 0 100%;
     flex: 0 0 100%;
     max-width: 100%;
 }
 
-.rainbow-carousel__panel-action {
+.rainbow-carousel-image {
     display: block;
     border: 1px solid #dddbda;
     border-radius: $border-radius-1;
+    box-shadow: $shadow-4;
     overflow: hidden;
-}
+    cursor: pointer;
+    line-height: inherit;
+    font-size: inherit;
+    color: inherit;
+    text-decoration: inherit;
 
-.rainbow-carousel__panel-action:focus {
-    outline: 0;
-    box-shadow: $shadow-outline;
-    border-color: $color-brand;
-}
+    &:active {
+        outline: none;
+    }
 
-.rainbow-carousel__image {
-    border-top-left-radius: 0.25rem;
-    border-top-right-radius: 0.25rem;
-    overflow: hidden;
-
-    & > img {
-        width: 100%;
+    &:active,
+    &:focus,
+    &:hover {
+        color: inherit;
+        text-decoration: inherit;
     }
 }
 
-.rainbow-carousel__content {
+.rainbow-carousel-image_image {
+    width: 100%;
+}
+
+.rainbow-carousel-image-content {
     background: white;
     padding: 0.75rem;
-    border-bottom-left-radius: 0.25rem;
-    border-bottom-right-radius: 0.25rem;
     text-align: center;
-    height: 6.625rem;
     overflow-x: hidden;
     overflow-y: auto;
 }
 
-.rainbow-carousel__content-title {
+.rainbow-carousel-image-content-title {
     font-size: 1rem;
     font-weight: 600;
 }

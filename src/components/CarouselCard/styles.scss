@@ -6,37 +6,30 @@
     display: -ms-flexbox;
     display: flex;
     position: relative;
-}
-
-.rainbow-carousel__stage {
-    position: relative;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
     flex-direction: column;
     overflow: hidden;
 }
 
-.rainbow-carousel__panels {
+.rainbow-carousel-images {
     display: -ms-flexbox;
     display: flex;
     transition: transform 250ms ease-in;
 }
 
-.rainbow-carousel__indicators {
+.rainbow-carousel-indicators {
     -ms-flex-item-align: center;
     -ms-grid-row-align: center;
     align-self: center;
     margin: 0.5rem 0;
 }
 
-.rainbow-carousel__indicator {
+.rainbow-carousel-indicators-container {
     display: -ms-inline-flexbox;
     display: inline-flex;
     margin: 0 0.25rem;
 }
 
-.rainbow-carousel__indicator-action {
+.rainbow-carousel-indicator {
     width: 0.5rem;
     height: 0.5rem;
     background: $color-gray-2;
@@ -48,18 +41,18 @@
 
     &:focus {
         outline: 0;
-        box-shadow: $shadow-outline;
-        border-color: $color-brand-active;
+        box-shadow: 0 0 5px red;
+        border-color: red;
     }
 }
 
-.rainbow-carousel__indicator-action.rainbow-is-active,
-.rainbow-carousel__indicator-action.rainbow-is-active:hover {
+.rainbow-carousel-indicator.rainbow-carousel-indicator_active,
+.rainbow-carousel-indicator.rainbow-carousel-indicator_active:hover {
     background: $color-brand;
     border-color: $color-brand-active;
 }
 
-.rainbow-carousel__autoplay {
+.rainbow-carousel-autoplay {
     position: absolute;
     left: 0;
     bottom: 0.25rem;
