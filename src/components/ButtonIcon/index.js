@@ -73,6 +73,8 @@ export default class ButtonIcon extends Component {
             ariaHaspopup,
             assistiveText,
             id,
+            ariaControls,
+            ariaExpanded,
         } = this.props;
 
         return (
@@ -89,6 +91,8 @@ export default class ButtonIcon extends Component {
                 title={title}
                 type={type}
                 aria-haspopup={ariaHaspopup}
+                aria-controls={ariaControls}
+                aria-expanded={ariaExpanded}
                 ref={this.buttonRef} >
 
                 {icon}
@@ -148,6 +152,12 @@ ButtonIcon.propTypes = {
     onBlur: PropTypes.func,
     /** A description for assistive sreen readers. */
     assistiveText: PropTypes.string,
+    /** A space-separated list of element IDs that
+    * this button controls the contents or presence of. */
+    ariaControls: PropTypes.string,
+    /** Indicates whether an element the button controls is expanded or collapsed.
+    * Valid values are 'true' or 'false'. */
+    ariaExpanded: PropTypes.bool,
     /** Indicates that the element has a popup context menu or sub-level menu. */
     ariaHaspopup: PropTypes.bool,
     /** A CSS class for the outer element, in addition to the component's base classes. */
@@ -174,4 +184,6 @@ ButtonIcon.defaultProps = {
     className: undefined,
     style: undefined,
     id: undefined,
+    ariaControls: undefined,
+    ariaExpanded: false,
 };

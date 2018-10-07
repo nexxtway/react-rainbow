@@ -60,6 +60,20 @@ describe('<ButtonIcon/>', () => {
 
         expect(component.find('button').prop('aria-haspopup')).toBe(true);
     });
+    it('should set aria-controls to true when it is passed', () => {
+        const component = mount(
+            <ButtonIcon ariaControls />,
+        );
+
+        expect(component.find('button').prop('aria-controls')).toBe(true);
+    });
+    it('should set aria-expanded to true when it is passed', () => {
+        const component = mount(
+            <ButtonIcon ariaExpanded />,
+        );
+
+        expect(component.find('button').prop('aria-expanded')).toBe(true);
+    });
     it('should pass assistiveText to the prop text of AssistiveText component', () => {
         const component = mount(
             <ButtonIcon assistiveText="for screen readers" />,

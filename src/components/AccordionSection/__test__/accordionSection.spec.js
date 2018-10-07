@@ -24,27 +24,12 @@ describe('<AccordionSection />', () => {
 
         expect(component.find('li').prop('className')).toBe('rainbow-accordion-section_container my-custom-class-name');
     });
-    it('should set tabIndex to "-1" in "button element" when disabled is passed', () => {
-        const component = mount(
-            <AccordionSection disabled />,
-        );
-
-        expect(component.find('button.rainbow-accordion-section_summary-button-heading').prop('tabIndex')).toBe(-1);
-    });
-    it('should set tabIndex to "undefined" in "button element" when disabled is not passed', () => {
-        const component = mount(
-            <AccordionSection />,
-        );
-
-        expect(component.find('button.rainbow-accordion-section_summary-button-heading').prop('tabIndex')).toBe(undefined);
-    });
-
     it('should not fire an event when click in the AccordionSection if disabled is passed', () => {
         const handleToggleSectionMockFn = jest.fn();
         const component = mount(
             <AccordionSection onToggleSection={handleToggleSectionMockFn} disabled />,
         );
-        const buttonComponent = component.find('button.rainbow-accordion-section_summary-button-heading');
+        const buttonComponent = component.find('ButtonIcon');
         buttonComponent.simulate('click');
 
         expect(handleToggleSectionMockFn).toHaveBeenCalledTimes(0);
