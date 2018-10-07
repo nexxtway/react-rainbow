@@ -46,6 +46,22 @@ class PageModal {
     hasFocusCloseButton() {
         return $(this.rootElement).$('.rainbow-modal_close-button').hasFocus();
     }
+
+    /**
+     * Waiting until the open modal transition has finished.
+     * @method
+     */
+    waitUntilOpen() {
+        browser.pause(400);
+    }
+
+    /**
+     * Waiting until the close modal transition has finished.
+     * @method
+     */
+    waitUntilClose() {
+        browser.waitUntil(() => !this.isOpen());
+    }
 }
 
 module.exports = PageModal;
