@@ -1,0 +1,59 @@
+@import '../../styles/colors';
+@import '../../styles/shadows';
+@import '../../styles/border-radius';
+
+.rainbow-carousel {
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.rainbow-carousel_images {
+    display: -ms-flexbox;
+    display: flex;
+    transition: transform 250ms ease-in;
+}
+
+.rainbow-carousel_indicators {
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center;
+    margin: 0.5rem 0;
+}
+
+.rainbow-carousel_indicators-container {
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    margin: 0 0.25rem;
+}
+
+.rainbow-carousel_indicator {
+    width: 0.5rem;
+    height: 0.5rem;
+    background: $color-gray-2;
+    border-radius: 50%;
+
+    &:hover {
+        background-color: $color-gray-3;
+    }
+
+    &:focus {
+        outline: 0;
+        box-shadow: $shadow-outline;
+        border-color: $color-brand-active;
+    }
+}
+
+.rainbow-carousel_indicator.rainbow-carousel_indicator--active,
+.rainbow-carousel_indicator.rainbow-carousel_indicator--active:hover {
+    background: $color-brand;
+    border-color: $color-brand-active;
+}
+
+.rainbow-carousel_autoplay {
+    position: absolute;
+    left: 1%;
+    bottom: 0.25rem;
+}

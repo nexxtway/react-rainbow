@@ -1,0 +1,52 @@
+@import '../../styles/shadows';
+@import '../../styles/colors';
+@import '../../styles/border-radius';
+
+.rainbow-carousel-image_container {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+    border-radius: $border-radius-1;
+}
+
+.rainbow-carousel-image {
+    display: block;
+    border: 1px solid #dddbda;
+    border-radius: $border-radius-1;
+    box-shadow: $shadow-4;
+    overflow: hidden;
+    cursor: pointer;
+    line-height: inherit;
+    font-size: inherit;
+    color: inherit;
+    text-decoration: inherit;
+    width: 98%;
+    height: 98%;
+    margin-left: 1%;
+    margin-top: 1%;
+
+    &:active,
+    &:focus {
+        color: inherit;
+        text-decoration: inherit;
+        box-shadow: $shadow-outline-2;
+        outline: none;
+    }
+}
+
+.rainbow-carousel-image_image {
+    width: 100%;
+}
+
+.rainbow-carousel-image_content {
+    background: white;
+    padding: 0.75rem;
+    text-align: center;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.rainbow-carousel-image_content-title {
+    font-size: 1rem;
+    font-weight: 600;
+}
