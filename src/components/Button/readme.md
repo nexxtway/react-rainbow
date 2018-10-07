@@ -2,7 +2,7 @@
 
     <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
         <div className="rainbow-m-horizontal_medium">
-            <Button label="Button Base" />
+            <Button variant="base" label="Button Base" />
         </div>
         <div className="rainbow-m-horizontal_medium">
             <Button label="Button Neutral" variant="neutral" />
@@ -17,13 +17,13 @@
 
     <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
         <div className="rainbow-m-horizontal_medium">
-            <Button 
+            <Button
                 label="Button Brand"
                 onClick={() => alert('clicked!')}
                 variant="brand" />
         </div>
         <div className="rainbow-m-horizontal_medium">
-            <Button 
+            <Button
                 label="Button Success"
                 onBlur={ () => alert('blurred!') }
                 variant="success" />
@@ -38,7 +38,7 @@
 
     <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
         <div className="rainbow-m-horizontal_medium">
-            <Button 
+            <Button
                 shaded
                 label="Button Brand"
                 onClick={() => alert('clicked!')}

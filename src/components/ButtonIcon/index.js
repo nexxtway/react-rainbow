@@ -71,6 +71,7 @@ export default class ButtonIcon extends Component {
             title,
             type,
             ariaHaspopup,
+            ariaPressed,
             assistiveText,
             id,
             ariaControls,
@@ -93,6 +94,7 @@ export default class ButtonIcon extends Component {
                 aria-haspopup={ariaHaspopup}
                 aria-controls={ariaControls}
                 aria-expanded={ariaExpanded}
+                aria-pressed={ariaPressed}
                 ref={this.buttonRef} >
 
                 {icon}
@@ -160,6 +162,8 @@ ButtonIcon.propTypes = {
     ariaExpanded: PropTypes.bool,
     /** Indicates that the element has a popup context menu or sub-level menu. */
     ariaHaspopup: PropTypes.bool,
+    /** Indicates that the element has been pressed. */
+    ariaPressed: PropTypes.bool,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
@@ -182,6 +186,7 @@ ButtonIcon.defaultProps = {
     assistiveText: undefined,
     ariaHaspopup: false,
     className: undefined,
+    ariaPressed: false,
     style: undefined,
     id: undefined,
     ariaControls: undefined,

@@ -41,7 +41,7 @@ describe('<Modal/>', () => {
                 <p />
             </Modal>,
         );
-        expect(component.find('section[role="dialog"]').prop('className')).toBe('rainbow-modal');
+        expect(component.find('section[role="dialog"]').prop('className')).toBe('rainbow-modal rainbow-modal--close');
     });
     it('should have the right class names in the section element when the modal is opened', () => {
         const component = mount(
@@ -49,7 +49,7 @@ describe('<Modal/>', () => {
                 <p />
             </Modal>,
         );
-        expect(component.find('section[role="dialog"]').prop('className')).toBe('rainbow-modal rainbow-modal--fade-in');
+        expect(component.find('section[role="dialog"]').prop('className')).toBe('rainbow-modal rainbow-modal--open');
     });
     it('should have the right class names in the section element when the modal is opened and the size is medium', () => {
         const component = mount(
@@ -57,7 +57,7 @@ describe('<Modal/>', () => {
                 <p />
             </Modal>,
         );
-        expect(component.find('section[role="dialog"]').prop('className')).toBe('rainbow-modal rainbow-modal--fade-in rainbow-modal--medium');
+        expect(component.find('section[role="dialog"]').prop('className')).toBe('rainbow-modal rainbow-modal--open rainbow-modal--medium');
     });
     it('should have the right class names in the section element when the modal is opened and the size is large', () => {
         const component = mount(
@@ -65,7 +65,7 @@ describe('<Modal/>', () => {
                 <p />
             </Modal>,
         );
-        expect(component.find('section[role="dialog"]').prop('className')).toBe('rainbow-modal rainbow-modal--fade-in rainbow-modal--large');
+        expect(component.find('section[role="dialog"]').prop('className')).toBe('rainbow-modal rainbow-modal--open rainbow-modal--large');
     });
     it('should set tabIndex as -1 in section element', () => {
         const component = mount(

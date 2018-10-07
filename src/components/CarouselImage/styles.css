@@ -1,0 +1,40 @@
+.rainbow-carousel-image_container {
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+  max-width: 100%;
+  border-radius: 0.875rem; }
+
+.rainbow-carousel-image {
+  display: block;
+  border: 1px solid #dddbda;
+  border-radius: 0.875rem;
+  box-shadow: 0 1px 2px 0 #e3e5ed;
+  overflow: hidden;
+  cursor: pointer;
+  line-height: inherit;
+  font-size: inherit;
+  color: inherit;
+  text-decoration: inherit;
+  width: 98%;
+  height: 98%;
+  margin-left: 1%;
+  margin-top: 1%; }
+  .rainbow-carousel-image:active, .rainbow-carousel-image:focus {
+    color: inherit;
+    text-decoration: inherit;
+    box-shadow: 0 0 8px #01b6f5;
+    outline: none; }
+
+.rainbow-carousel-image_image {
+  width: 100%; }
+
+.rainbow-carousel-image_content {
+  background: white;
+  padding: 0.75rem;
+  text-align: center;
+  overflow-x: hidden;
+  overflow-y: auto; }
+
+.rainbow-carousel-image_content-title {
+  font-size: 1rem;
+  font-weight: 600; }

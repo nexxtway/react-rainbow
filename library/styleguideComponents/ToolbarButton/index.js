@@ -23,7 +23,7 @@ export default function ToolbarButton(props) {
     if (href !== undefined && title === 'Open isolated') {
         return (
             <a className="react-rainbow-toolbar-button" href={href} title={title} aria-label={title}>
-                <Button>
+                <Button variant="base">
                     <FontAwesomeIcon icon={faExpandArrowsAlt} className="rainbow-color_gray-4" />
                 </Button>
             </a>
@@ -33,7 +33,7 @@ export default function ToolbarButton(props) {
     if (href !== undefined && title === 'Show all components') {
         return (
             <a className="react-rainbow-toolbar-button" href={resolveHref()} title={title} aria-label={title}>
-                <Button>
+                <Button variant="base">
                     <FontAwesomeIcon icon={faCompress} className="rainbow-color_gray-4" />
                 </Button>
             </a>

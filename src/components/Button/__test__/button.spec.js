@@ -119,13 +119,13 @@ describe('<Button/>', () => {
         const component = mount(
             <Button label="Button Label" />,
         );
-        expect(component.find('button').prop('className')).toBe('rainbow-button');
+        expect(component.find('button').prop('className')).toBe('rainbow-button rainbow-button--neutral');
     });
-    it('should have the right class names when variant neutral and have a custom class', () => {
+    it('should have the right class names when variant base and have a custom class', () => {
         const component = mount(
-            <Button label="Button Label" variant="neutral" className="my-custom-class-name" />,
+            <Button label="Button Label" variant="base" className="my-custom-class-name" />,
         );
-        expect(component.find('button').prop('className')).toBe('rainbow-button rainbow-button--neutral my-custom-class-name');
+        expect(component.find('button').prop('className')).toBe('rainbow-button my-custom-class-name');
     });
     it('should have the right class names when variant brand', () => {
         const component = mount(
