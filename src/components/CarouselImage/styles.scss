@@ -6,6 +6,7 @@
     -ms-flex: 0 0 100%;
     flex: 0 0 100%;
     max-width: 100%;
+    overflow-y: hidden;
 }
 
 .rainbow-carousel-image {
@@ -20,13 +21,8 @@
     color: inherit;
     text-decoration: inherit;
 
-    &:active {
-        outline: none;
-    }
-
     &:active,
-    &:focus,
-    &:hover {
+    &:focus {
         color: inherit;
         text-decoration: inherit;
     }
