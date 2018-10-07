@@ -53,12 +53,10 @@ export default class Modal extends Component {
 
     getContainerClassNames() {
         const { className, isOpen } = this.props;
-        return classnames(
-            'rainbow-modal',
-            { 'rainbow-modal--open': isOpen },
-            { 'rainbow-modal--close': !isOpen },
-            this.getSizeClassNames(),
-            className);
+        return classnames('rainbow-modal', {
+            'rainbow-modal--open': isOpen,
+            'rainbow-modal--close': !isOpen,
+        }, this.getSizeClassNames(), className);
     }
 
     getSizeClassNames() {
