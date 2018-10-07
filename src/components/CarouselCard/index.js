@@ -76,10 +76,10 @@ export default class CarouselCard extends Component {
     }
 
     render() {
-        const { children, style } = this.props;
+        const { children, style, id } = this.props;
         const { childrenRegistred, activeItem, isAnimationPaused } = this.state;
         return (
-            <div className={this.getContainerClassName()} style={style}>
+            <div className={this.getContainerClassName()} style={style} id={id}>
                 <span className="rainbow-carousel_autoplay">
                   <AnimationButton onClick={this.handleOnClick} isAnimationPaused={isAnimationPaused} />
                 </span>
@@ -114,6 +114,8 @@ CarouselCard.propTypes = {
      * @ignore
      */
     children: PropTypes.node,
+    /** The id of the outer element. */
+    id: PropTypes.string,
 };
 
 CarouselCard.defaultProps = {
@@ -123,4 +125,5 @@ CarouselCard.defaultProps = {
     className: undefined,
     style: undefined,
     children: null,
+    id: undefined,
 };

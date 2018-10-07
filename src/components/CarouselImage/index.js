@@ -17,13 +17,12 @@ class Item extends Component {
 
     componentDidMount() {
         const { privateRegisterChild, header } = this.props;
-        return setTimeout(() => (
-            privateRegisterChild({
-                containerID: this.carouselImageID,
-                indicatorID: this.carouselIndicatorID,
-                ref: this.itemRef,
-                header,
-            })), 0);
+        return setTimeout(() => privateRegisterChild({
+            containerID: this.carouselImageID,
+            indicatorID: this.carouselIndicatorID,
+            ref: this.itemRef,
+            header,
+        }), 0);
     }
 
     getContainerClassName() {

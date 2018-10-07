@@ -18,7 +18,7 @@
                 </ButtonGroup>
             </GlobalHeader>
             <div className="rainbow-p-around_xx-large rainbow-m-bottom_xx-large rainbow-m-horizontal_xx-large">
-                <CarouselCard>
+                <CarouselCard id="carousel-1">
                         <CarouselImage
                             src="images/illustrations/rainbows-background.svg"
                             header="First Card"
