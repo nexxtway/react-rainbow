@@ -12,6 +12,7 @@ describe('Modal with footer example', () => {
     it('should return focus to the close button when tabbing all elements in modal', () => {
         const modal = new PageModal(MODAL);
         browser.click(BUTTON);
+        modal.waitUntilOpen();
         browser.keys(TAB_KEY);
         browser.keys(TAB_KEY);
         browser.keys(TAB_KEY);
