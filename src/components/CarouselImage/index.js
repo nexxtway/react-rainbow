@@ -39,14 +39,20 @@ class Item extends Component {
         return -1;
     }
 
+    getAriaHidden() {
+        const { activeItem } = this.props;
+        return activeItem !== this.carouselIndicatorID;
+    }
+
     render() {
-        const { assistiveText, description, header, href, src, activeItem } = this.props;
+        const { assistiveText, description, header, href, src } = this.props;
+        const hasContent = !!(header || description);
         return (
             <div
                 id={this.carouselImageID}
                 className={this.getContainerClassName()}
                 role="tabpanel"
-                aria-hidden={activeItem !== this.carouselIndicatorID}
+                aria-hidden={this.getAriaHidden()}
                 aria-labelledby={this.carouselIndicatorID}>
                 <a
                     href={href}
@@ -56,12 +62,12 @@ class Item extends Component {
                     <div>
                         <img className="rainbow-carousel-image_image" src={src} alt={assistiveText} />
                     </div>
-                    <RenderIf isTrue={header || description}>
+                    <RenderIf isTrue={hasContent}>
                         <div className="rainbow-carousel-image_content">
-                            <RenderIf isTrue={header}>
+                            <RenderIf isTrue={!!header}>
                                 <h2 className="rainbow-carousel-image_content-title">{header}</h2>
                             </RenderIf>
-                            <RenderIf isTrue={description}>
+                            <RenderIf isTrue={!!description}>
                                 <p>{description}</p>
                             </RenderIf>
                         </div>
@@ -88,7 +94,7 @@ CarouselImage.propTypes = {
     /** The header can include text or another component,
      * and is displayed in the top of the content section. */
     header: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** The header can include text or another component,
+    /** The description can include text or another component,
      * and is displayed below the header in the content section. */
     description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** A description for assistive sreen readers. */

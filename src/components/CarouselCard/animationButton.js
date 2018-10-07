@@ -4,16 +4,16 @@ import PlayIcon from './playIcon';
 import PauseIcon from './pauseIcon';
 import ButtonIcon from '../ButtonIcon';
 
-export default function AnimationButton({ stopAnimation, onClick }) {
-    const getAnimationButtonIcon = () => {
-        if (stopAnimation) {
+export default function AnimationButton({ isAnimationPaused, onClick }) {
+    const getIcon = () => {
+        if (isAnimationPaused) {
             return <PlayIcon />;
         }
         return <PauseIcon />;
     };
 
-    const getAnimationButtonAssistiveText = () => {
-        if (stopAnimation) {
+    const getAssistiveText = () => {
+        if (isAnimationPaused) {
             return 'Start auto-play';
         }
         return 'Stop auto-play';
@@ -23,18 +23,18 @@ export default function AnimationButton({ stopAnimation, onClick }) {
         <ButtonIcon
             variant="border"
             size="small"
-            icon={getAnimationButtonIcon()}
+            icon={getIcon()}
             onClick={onClick}
-            assistiveText={getAnimationButtonAssistiveText()} />
+            assistiveText={getAssistiveText()} />
     );
 }
 
 AnimationButton.propTypes = {
-    stopAnimation: PropTypes.bool,
+    isAnimationPaused: PropTypes.bool,
     onClick: PropTypes.func,
 };
 
 AnimationButton.defaultProps = {
-    stopAnimation: true,
+    isAnimationPaused: true,
     onClick: () => {},
 };

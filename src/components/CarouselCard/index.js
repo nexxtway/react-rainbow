@@ -17,7 +17,7 @@ export default class CarouselCard extends Component {
         this.state = {
             childrenRegistred: [],
             activeItem: undefined,
-            stopAnimation: this.props.disableAutoScroll,
+            isAnimationPaused: this.props.disableAutoScroll,
             privateRegisterChild: this.registerChild,
         };
         this.cardPosition = { transform: 'translateX(-0%)' };
@@ -37,20 +37,20 @@ export default class CarouselCard extends Component {
         const { childrenRegistred } = this.state;
         const selectedItemIndex = getSelectedItemIndex(childrenRegistred, id);
         this.cardPosition = { transform: `translateX(-${selectedItemIndex}00%)` };
-        this.setState({ activeItem: id });
+        this.setState({ activeItem: id, isAnimationPaused: true });
     }
 
     startAnimation() {
         const { scrollDuration, disableAutoRefresh } = this.props;
         setTimeout(() => {
-            const { stopAnimation } = this.state;
-            if (!stopAnimation) {
+            const { isAnimationPaused } = this.state;
+            if (!isAnimationPaused) {
                 const { childrenRegistred, activeItem } = this.state;
                 const selectedItemIndex = getSelectedItemIndex(childrenRegistred, activeItem);
                 const isLastItem = selectedItemIndex === childrenRegistred.length - 1;
                 const nextItem = isLastItem ? 0 : selectedItemIndex + 1;
                 if (isLastItem && disableAutoRefresh) {
-                    this.setState({ stopAnimation: true });
+                    this.setState({ isAnimationPaused: true });
                 } else {
                     this.cardPosition = { transform: `translateX(-${nextItem}00%)` };
                     this.startAnimation();
@@ -61,11 +61,11 @@ export default class CarouselCard extends Component {
     }
 
     handleOnClick() {
-        const { stopAnimation } = this.state;
-        if (stopAnimation) {
+        const { isAnimationPaused } = this.state;
+        if (isAnimationPaused) {
             this.startAnimation();
         }
-        this.setState({ stopAnimation: !stopAnimation });
+        this.setState({ isAnimationPaused: !isAnimationPaused });
     }
 
     registerChild(child) {
@@ -77,11 +77,11 @@ export default class CarouselCard extends Component {
 
     render() {
         const { children, style } = this.props;
-        const { childrenRegistred, activeItem, stopAnimation } = this.state;
+        const { childrenRegistred, activeItem, isAnimationPaused } = this.state;
         return (
             <div className={this.getContainerClassName()} style={style}>
                 <span className="rainbow-carousel_autoplay">
-                  <AnimationButton onClick={this.handleOnClick} stopAnimation={stopAnimation} />
+                  <AnimationButton onClick={this.handleOnClick} isAnimationPaused={isAnimationPaused} />
                 </span>
                 <div className="rainbow-carousel_images" style={this.cardPosition} ref={this.containerRef}>
                     <Provider value={this.state}>
