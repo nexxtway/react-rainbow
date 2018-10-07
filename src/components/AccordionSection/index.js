@@ -26,14 +26,6 @@ class AccordionItem extends Component {
         }, className);
     }
 
-    getTabIndex() {
-        const { disabled } = this.props;
-        if (disabled) {
-            return -1;
-        }
-        return undefined;
-    }
-
     resolveActiveNamesWhenMultiple() {
         const { name, activeNames } = this.props;
         const nameToToggle = name || this.name;
@@ -92,32 +84,26 @@ class AccordionItem extends Component {
                 <section>
                     <div className="rainbow-accordion-section_summary">
                         <h3 className="rainbow-accordion-section_summary-heading">
-                            <button
-                                className="rainbow-accordion-section_summary-button-heading"
-                                tabIndex={this.getTabIndex()}
-                                aria-controls={this.accordionDetailsId}
-                                aria-expanded={isExpanded}
-                                onClick={this.handleToggleSection}>
-                                <RenderIf isTrue={!!icon}>
-                                    <span className="rainbow-accordion-section_summary-icon" aria-hidden="true">
-                                        {icon}
-                                    </span>
-                                </RenderIf>
-                                <RenderIf isTrue={!!label}>
-                                    <span title="Accordion Label">
-                                        {label}
-                                    </span>
-                                </RenderIf>
-                            </button>
+                            <RenderIf isTrue={!!icon}>
+                                <span className="rainbow-accordion-section_summary-icon">
+                                    {icon}
+                                </span>
+                            </RenderIf>
+                            <RenderIf isTrue={!!label}>
+                                <span title="Accordion Label">
+                                    {label}
+                                </span>
+                            </RenderIf>
                         </h3>
 
                         <ButtonIcon
-                            className="rainbow-accordion-section_summary-button"
                             size="x-small"
                             disabled={disabled}
                             onClick={this.handleToggleSection}
                             assistiveText={assistiveText}
                             ariaHaspopup
+                            ariaControls={this.accordionDetailsId}
+                            ariaExpanded={isExpanded}
                             icon={
                                 <RightArrow isExpanded={isExpanded} disabled={disabled} />
                             } />

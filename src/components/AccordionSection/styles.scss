@@ -11,26 +11,6 @@
     -o-transition: $animation;
 }
 
-%button {
-    background-color: transparent;
-    border: 0;
-    padding: 0;
-    cursor: pointer;
-    -webkit-appearance: none;
-    white-space: normal;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-
-    &:focus {
-        outline: 0;
-        text-decoration-line: underline;
-        text-decoration-color: $color-brand-active;
-        color: $color-brand-active;
-    }
-}
-
 .rainbow-accordion-section_container {
     border-top: 1px solid $color-gray-2;
     list-style: none;
@@ -52,27 +32,6 @@
     line-height: 1.25;
     color: $color-dark-1;
     width: 100%;
-
-    &:hover {
-        text-decoration-line: underline;
-        text-decoration-color: $color-brand-active;
-        color: $color-brand-active;
-        cursor: pointer;
-    }
-}
-
-.rainbow-accordion-section_summary-button-heading {
-    @extend %button;
-
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: left;
-}
-
-.rainbow-accordion-section_summary-button {
-    @extend %button;
 }
 
 .rainbow-accordion-section_content {
