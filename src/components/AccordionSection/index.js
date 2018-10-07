@@ -85,7 +85,7 @@ class AccordionItem extends Component {
                     <div className="rainbow-accordion-section_summary">
                         <h3 className="rainbow-accordion-section_summary-heading">
                             <RenderIf isTrue={!!icon}>
-                                <span className="rainbow-accordion-section_summary-icon" aria-hidden="true">
+                                <span className="rainbow-accordion-section_summary-icon">
                                     {icon}
                                 </span>
                             </RenderIf>
@@ -97,14 +97,13 @@ class AccordionItem extends Component {
                         </h3>
 
                         <ButtonIcon
-                            className="rainbow-accordion-section_summary-button"
                             size="x-small"
                             disabled={disabled}
                             onClick={this.handleToggleSection}
                             assistiveText={assistiveText}
                             ariaHaspopup
-                            aria-controls={this.accordionDetailsId}
-                            aria-expanded={isExpanded}
+                            ariaControls={this.accordionDetailsId}
+                            ariaExpanded={isExpanded}
                             icon={
                                 <RightArrow isExpanded={isExpanded} disabled={disabled} />
                             } />

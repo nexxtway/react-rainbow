@@ -34,26 +34,6 @@
     width: 100%;
 }
 
-.rainbow-accordion-section_summary-button {
-    background-color: transparent;
-    border: 0;
-    padding: 0;
-    cursor: pointer;
-    -webkit-appearance: none;
-    white-space: normal;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-
-    &:focus {
-        outline: 0;
-        text-decoration-line: underline;
-        text-decoration-color: $color-brand-active;
-        color: $color-brand-active;
-    }
-}
-
 .rainbow-accordion-section_content {
     font-size: 0.875rem;
     font-weight: 500;

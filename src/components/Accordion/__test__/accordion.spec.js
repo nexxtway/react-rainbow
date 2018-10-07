@@ -35,6 +35,23 @@ describe('<Accordion />', () => {
 
         expect(component.state('activeNames')).toEqual(['accordion-test-1', 'accordion-test-2']);
     });
+    it('should not fire an event when click in the AccordionSection and disabled is passed', () => {
+        const handleToggleSectionMockFn = jest.fn();
+        const component = mount(
+            <Accordion onToggleSection={handleToggleSectionMockFn}>
+                <AccordionSection
+                    disabled
+                    name="accordion-test-1"
+                    label="Rainbow Accordion">
+                    AccordionSection-1
+                </AccordionSection>
+            </Accordion>,
+        );
+        const buttonComponent = component.find('ButtonIcon');
+        buttonComponent.simulate('click');
+
+        expect(handleToggleSectionMockFn).toHaveBeenCalledTimes(0);
+    });
     it('should fire an event with the right arguments when click in the AccordionSection and multiple is not passed', () => {
         const handleToggleSectionMockFn = jest.fn();
         const component = mount(
@@ -132,7 +149,7 @@ describe('<Accordion />', () => {
 
         expect(handleToggleSectionMockFn.mock.calls[0][1]).toEqual(['accordion-test-2']);
     });
-    it('should set aria-expanded to true in button when the AccordionSection is expanded', () => {
+    it('should set ariaExpanded to true in button when the AccordionSection is expanded', () => {
         const activeNames = 'accordion-test-1';
         const component = mount(
             <Accordion activeSectionNames={activeNames}>
@@ -143,9 +160,9 @@ describe('<Accordion />', () => {
         );
         const button = component.find('ButtonIcon');
 
-        expect(button.prop('aria-expanded')).toBe(true);
+        expect(button.prop('ariaExpanded')).toBe(true);
     });
-    it('should set aria-expanded to false in button when the AccordionSection is collapsed', () => {
+    it('should set ariaExpanded to false in button when the AccordionSection is collapsed', () => {
         const component = mount(
             <Accordion>
                 <AccordionSection label="Rainbow Accordion">
@@ -155,7 +172,7 @@ describe('<Accordion />', () => {
     );
         const button = component.find('ButtonIcon');
 
-        expect(button.prop('aria-expanded')).toBe(false);
+        expect(button.prop('ariaExpanded')).toBe(false);
     });
     it('should set aria-hidden to false in container of the content when the content is expanded', () => {
         const activeNames = 'accordion-test-1';

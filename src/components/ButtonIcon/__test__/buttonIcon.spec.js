@@ -62,10 +62,10 @@ describe('<ButtonIcon/>', () => {
     });
     it('should set aria-controls to true when it is passed', () => {
         const component = mount(
-            <ButtonIcon ariaControls />,
+            <ButtonIcon ariaControls="testing ariaControls" />,
         );
 
-        expect(component.find('button').prop('aria-controls')).toBe(true);
+        expect(component.find('button').prop('aria-controls')).toBe('testing ariaControls');
     });
     it('should set aria-expanded to true when it is passed', () => {
         const component = mount(
