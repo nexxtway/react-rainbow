@@ -158,7 +158,7 @@ Button.propTypes = {
 Button.defaultProps = {
     label: undefined,
     children: null,
-    variant: 'base',
+    variant: 'neutral',
     shaded: false,
     title: undefined,
     type: 'button',

@@ -14,7 +14,7 @@ export default function CodeEditorButton({ onClick, active }) {
     };
 
     return (
-        <Button onClick={onClick}>
+        <Button variant="base" onClick={onClick}>
             <FontAwesomeIcon
                 className="rainbow-font-size-heading_small rainbow-m-right_x-small"
                 icon={faCode} />
