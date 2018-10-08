@@ -11,7 +11,7 @@ describe('<Notification/>', () => {
         component.find('button.rainbow-notification_close').simulate('click');
         expect(onClickFn).toHaveBeenCalledTimes(1);
     });
-    it('should set the prop size as "x-small" in ButtonIcon', () => {
+    it('should set the prop size as "small" in ButtonIcon', () => {
         const component = mount(
             <Notification title="Notification test" />,
         );
