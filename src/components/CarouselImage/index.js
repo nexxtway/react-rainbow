@@ -93,13 +93,17 @@ CarouselImage.propTypes = {
     src: PropTypes.string,
     /** The header can include text or another component,
      * and is displayed in the top of the content section. */
-    header: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    header: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
     /** The description can include text or another component,
      * and is displayed below the header in the content section. */
-    description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    description: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
     /** A description for assistive sreen readers. */
     assistiveText: PropTypes.string,
-    /** The URL of the page that the navigation item goes to. */
+    /** The URL of the page that the card goes to. */
     href: PropTypes.string,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
