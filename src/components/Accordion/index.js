@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from './context';
+import { LEFT_KEY, RIGHT_KEY, DOWN_KEY, UP_KEY } from '../../libs/constants';
+import { getChildAccordionSectionNodes, insertChildOrderly } from './utils';
+
+const RIGHT_SIDE = 1;
+const LEFT_SIDE = -1;
 
 /**
 * Accordions are used for freeform data entry.
@@ -9,10 +14,23 @@ export default class Accordion extends Component {
     constructor(props) {
         super(props);
         this.handleToggleSection = this.handleToggleSection.bind(this);
+
+        this.containerRef = React.createRef();
+        this.registerAccordionSection = this.registerAccordionSection.bind(this);
+        this.unregisterAccordionSection = this.unregisterAccordionSection.bind(this);
+        this.handleKeyPressed = this.handleKeyPressed.bind(this);
+        this.keyHandlerMap = {
+            [RIGHT_KEY]: () => this.selectAccordionSection(RIGHT_SIDE),
+            [LEFT_KEY]: () => this.selectAccordionSection(LEFT_SIDE),
+            [DOWN_KEY]: () => this.selectAccordionSection(RIGHT_SIDE),
+            [UP_KEY]: () => this.selectAccordionSection(LEFT_SIDE),
+        };
+
         this.state = {
             activeNames: props.activeSectionNames,
             multiple: props.multiple,
             privateOnToggleSection: this.handleToggleSection,
+            accordionSection: [],
         };
     }
 
@@ -26,23 +44,75 @@ export default class Accordion extends Component {
         return null;
     }
 
-    handleToggleSection(event, name) {
+    setAsSelectAccordionSection(accordionSectionIndex) {
+        const { accordionSection } = this.state;
+        accordionSection[accordionSectionIndex].ref.focus();
+        this.setState({ currentSection: accordionSection[accordionSectionIndex].name });
+    }
+
+    handleToggleSection(event, name, currentSection) {
         const { onToggleSection } = this.props;
         if (typeof onToggleSection === 'function') {
             return onToggleSection(event, name);
         }
-        return this.setState({ activeNames: name });
+        return this.setState({ activeNames: name, currentSection });
+    }
+
+    handleKeyPressed(event) {
+        if (this.keyHandlerMap[event.keyCode]) {
+            event.preventDefault();
+            return this.keyHandlerMap[event.keyCode]();
+        }
+        return null;
+    }
+
+    selectAccordionSection(side) {
+        const { accordionSection, currentSection } = this.state;
+        const accordionSectionIndex = accordionSection.findIndex(
+            section => section.name === currentSection,
+        );
+        if (accordionSectionIndex === accordionSection.length - 1 && side === RIGHT_SIDE) {
+            this.setAsSelectAccordionSection(0);
+        } else if (accordionSectionIndex === 0 && side === LEFT_SIDE) {
+            this.setAsSelectAccordionSection(accordionSection.length - 1);
+        } else {
+            this.setAsSelectAccordionSection(accordionSectionIndex + side);
+        }
+    }
+
+    registerAccordionSection(section) {
+        const { accordionSection } = this.state;
+        const [...nodes] = getChildAccordionSectionNodes(this.containerRef.current);
+        const newChildrenRefs = insertChildOrderly(accordionSection, section, nodes);
+        this.setState({
+            accordionSection: newChildrenRefs,
+        });
+    }
+
+    unregisterAccordionSection(sectionName) {
+        const { accordionSection } = this.state;
+        const newAccordionSectionChildren = accordionSection.filter(
+            section => section.name !== sectionName,
+        );
+        this.setState({ accordionSection: newAccordionSectionChildren });
     }
 
     render() {
         const { id, children, style, className } = this.props;
         return (
             <ul
+                ref={this.containerRef}
+                onKeyDown={this.handleKeyPressed}
+                role="tablist"
                 id={id}
                 className={className}
                 style={style}>
 
-                <Provider value={this.state}>
+                <Provider value={{
+                    ...this.state,
+                    privateRegisterAccordionSection: this.registerAccordionSection,
+                    privateUnregisterAccordionSection: this.unregisterAccordionSection,
+                }}>
                     {children}
                 </Provider>
             </ul>

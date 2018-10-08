@@ -17,6 +17,26 @@ class AccordionItem extends Component {
         this.accordionDetailsId = uniqueId('accordion-section-details');
         this.name = uniqueId('accordion-section');
         this.handleToggleSection = this.handleToggleSection.bind(this);
+        this.accordionSectionRef = React.createRef();
+    }
+
+    componentDidMount() {
+        const { privateRegisterAccordionSection, name, disabled } = this.props;
+        const currentName = name || this.name;
+        if (!disabled) {
+            return setTimeout(() => privateRegisterAccordionSection(
+                {
+                    name: currentName,
+                    ref: this.accordionSectionRef.current,
+                },
+            ), 0);
+        }
+        return null;
+    }
+
+    componentWillUnmount() {
+        const { privateUnregisterAccordionSection, name } = this.props;
+        privateUnregisterAccordionSection(name);
     }
 
     getContainerClassNames() {
@@ -52,9 +72,10 @@ class AccordionItem extends Component {
     }
 
     handleToggleSection(event) {
-        const { disabled, privateOnToggleSection } = this.props;
+        const { disabled, privateOnToggleSection, name } = this.props;
+        const currentName = name || this.name;
         if (!disabled) {
-            privateOnToggleSection(event, this.resolveActiveNames());
+            privateOnToggleSection(event, this.resolveActiveNames(), currentName);
         }
     }
 
@@ -104,6 +125,7 @@ class AccordionItem extends Component {
                             ariaHaspopup
                             ariaControls={this.accordionDetailsId}
                             ariaExpanded={isExpanded}
+                            ref={this.accordionSectionRef}
                             icon={
                                 <RightArrow isExpanded={isExpanded} disabled={disabled} />
                             } />
