@@ -201,13 +201,13 @@
 }
 
 .rainbow-button-icon--small {
-    @include width-height(1.5rem);
+    @include width-height(1.65rem);
 }
 
 .rainbow-button-icon--small > svg {
-    @include width-height(0.875rem !important);
+    @include width-height(0.6rem !important);
 
-    font-size: 0.875rem !important;
+    font-size: 0.6rem !important;
 }
 
 .rainbow-button-icon--medium {

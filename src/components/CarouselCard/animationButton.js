@@ -21,7 +21,7 @@ export default function AnimationButton({ isAnimationPaused, onClick }) {
 
     return (
         <ButtonIcon
-            variant="border"
+            variant="border-filled"
             size="small"
             icon={getIcon()}
             onClick={onClick}

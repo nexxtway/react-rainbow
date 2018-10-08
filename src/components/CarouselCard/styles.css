@@ -8,7 +8,7 @@
 .rainbow-carousel_images {
   display: -ms-flexbox;
   display: flex;
-  transition: transform 250ms ease-in; }
+  transition: all 0.2s ease-out; }
 
 .rainbow-carousel_indicators {
   -ms-flex-item-align: center;
@@ -19,13 +19,13 @@
 .rainbow-carousel_indicators-container {
   display: -ms-inline-flexbox;
   display: inline-flex;
-  margin: 0 0.25rem; }
+  margin: 0 0.3rem; }
 
 .rainbow-carousel_indicator {
-  width: 0.5rem;
-  height: 0.5rem;
+  width: 0.6rem;
+  height: 0.6rem;
   background: #e3e5ed;
-  border-radius: 50%; }
+  border-radius: 12rem; }
   .rainbow-carousel_indicator:hover {
     background-color: #a4a7b5; }
   .rainbow-carousel_indicator:focus {
@@ -41,4 +41,4 @@
 .rainbow-carousel_autoplay {
   position: absolute;
   left: 1%;
-  bottom: 0.25rem; }
+  bottom: 0.15rem; }
