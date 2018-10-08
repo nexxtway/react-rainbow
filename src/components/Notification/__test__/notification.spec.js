@@ -15,7 +15,7 @@ describe('<Notification/>', () => {
         const component = mount(
             <Notification title="Notification test" />,
         );
-        expect(component.find('ButtonIcon').prop('size')).toBe('x-small');
+        expect(component.find('ButtonIcon').prop('size')).toBe('small');
     });
     it('should have the right class names', () => {
         const component = mount(
