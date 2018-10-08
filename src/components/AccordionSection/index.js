@@ -97,7 +97,7 @@ class AccordionItem extends Component {
                         </h3>
 
                         <ButtonIcon
-                            size="x-small"
+                            size="small"
                             disabled={disabled}
                             onClick={this.handleToggleSection}
                             assistiveText={assistiveText}
