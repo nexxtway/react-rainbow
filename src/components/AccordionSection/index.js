@@ -17,19 +17,19 @@ class AccordionItem extends Component {
         this.accordionDetailsId = uniqueId('accordion-section-details');
         this.name = uniqueId('accordion-section');
         this.handleToggleSection = this.handleToggleSection.bind(this);
-        this.accordionSectionRef = React.createRef();
+        this.handleFocusSection = this.handleFocusSection.bind(this);
+        this.handleKeyPressed = this.handleKeyPressed.bind(this);
+        this.buttonRef = React.createRef();
     }
 
     componentDidMount() {
         const { privateRegisterAccordionSection, name, disabled } = this.props;
         const currentName = name || this.name;
         if (!disabled) {
-            return setTimeout(() => privateRegisterAccordionSection(
-                {
-                    name: currentName,
-                    ref: this.accordionSectionRef.current,
-                },
-            ), 0);
+            return setTimeout(() => privateRegisterAccordionSection({
+                name: currentName,
+                ref: this.buttonRef.current,
+            }), 0);
         }
         return null;
     }
@@ -72,10 +72,24 @@ class AccordionItem extends Component {
     }
 
     handleToggleSection(event) {
-        const { disabled, privateOnToggleSection, name } = this.props;
+        const { disabled, privateOnToggleSection } = this.props;
+        if (!disabled) {
+            privateOnToggleSection(event, this.resolveActiveNames());
+        }
+    }
+
+    handleFocusSection() {
+        const { disabled, privateOnFocusSection, name } = this.props;
         const currentName = name || this.name;
         if (!disabled) {
-            privateOnToggleSection(event, this.resolveActiveNames(), currentName);
+            privateOnFocusSection(currentName);
+        }
+    }
+
+    handleKeyPressed(event) {
+        const { disabled, privateOnKeyPressed } = this.props;
+        if (!disabled) {
+            privateOnKeyPressed(event);
         }
     }
 
@@ -121,11 +135,13 @@ class AccordionItem extends Component {
                             size="x-small"
                             disabled={disabled}
                             onClick={this.handleToggleSection}
+                            onFocus={this.handleFocusSection}
+                            onKeyDown={this.handleKeyPressed}
                             assistiveText={assistiveText}
                             ariaHaspopup
                             ariaControls={this.accordionDetailsId}
                             ariaExpanded={isExpanded}
-                            ref={this.accordionSectionRef}
+                            ref={this.buttonRef}
                             icon={
                                 <RightArrow isExpanded={isExpanded} disabled={disabled} />
                             } />

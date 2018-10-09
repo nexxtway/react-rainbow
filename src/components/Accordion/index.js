@@ -13,9 +13,9 @@ const LEFT_SIDE = -1;
 export default class Accordion extends Component {
     constructor(props) {
         super(props);
-        this.handleToggleSection = this.handleToggleSection.bind(this);
-
         this.containerRef = React.createRef();
+        this.handleToggleSection = this.handleToggleSection.bind(this);
+        this.handleFocusSection = this.handleFocusSection.bind(this);
         this.registerAccordionSection = this.registerAccordionSection.bind(this);
         this.unregisterAccordionSection = this.unregisterAccordionSection.bind(this);
         this.handleKeyPressed = this.handleKeyPressed.bind(this);
@@ -25,12 +25,16 @@ export default class Accordion extends Component {
             [DOWN_KEY]: () => this.selectAccordionSection(RIGHT_SIDE),
             [UP_KEY]: () => this.selectAccordionSection(LEFT_SIDE),
         };
-
         this.state = {
             activeNames: props.activeSectionNames,
             multiple: props.multiple,
             privateOnToggleSection: this.handleToggleSection,
-            accordionSection: [],
+            privateOnFocusSection: this.handleFocusSection,
+            privateRegisterAccordionSection: this.registerAccordionSection,
+            privateUnregisterAccordionSection: this.unregisterAccordionSection,
+            privateOnKeyPressed: this.handleKeyPressed,
+            childrenRegistered: [],
+            currentSection: [],
         };
     }
 
@@ -45,17 +49,21 @@ export default class Accordion extends Component {
     }
 
     setAsSelectAccordionSection(accordionSectionIndex) {
-        const { accordionSection } = this.state;
-        accordionSection[accordionSectionIndex].ref.focus();
-        this.setState({ currentSection: accordionSection[accordionSectionIndex].name });
+        const { childrenRegistered } = this.state;
+        childrenRegistered[accordionSectionIndex].ref.focus();
+        this.setState({ currentSection: childrenRegistered[accordionSectionIndex].name });
     }
 
-    handleToggleSection(event, name, currentSection) {
+    handleToggleSection(event, name) {
         const { onToggleSection } = this.props;
         if (typeof onToggleSection === 'function') {
             return onToggleSection(event, name);
         }
-        return this.setState({ activeNames: name, currentSection });
+        return this.setState({ activeNames: name });
+    }
+
+    handleFocusSection(currentSection) {
+        return this.setState({ currentSection });
     }
 
     handleKeyPressed(event) {
@@ -67,34 +75,34 @@ export default class Accordion extends Component {
     }
 
     selectAccordionSection(side) {
-        const { accordionSection, currentSection } = this.state;
-        const accordionSectionIndex = accordionSection.findIndex(
+        const { childrenRegistered, currentSection } = this.state;
+        const accordionSectionIndex = childrenRegistered.findIndex(
             section => section.name === currentSection,
         );
-        if (accordionSectionIndex === accordionSection.length - 1 && side === RIGHT_SIDE) {
+        if (accordionSectionIndex === childrenRegistered.length - 1 && side === RIGHT_SIDE) {
             this.setAsSelectAccordionSection(0);
         } else if (accordionSectionIndex === 0 && side === LEFT_SIDE) {
-            this.setAsSelectAccordionSection(accordionSection.length - 1);
+            this.setAsSelectAccordionSection(childrenRegistered.length - 1);
         } else {
             this.setAsSelectAccordionSection(accordionSectionIndex + side);
         }
     }
 
     registerAccordionSection(section) {
-        const { accordionSection } = this.state;
+        const { childrenRegistered } = this.state;
         const [...nodes] = getChildAccordionSectionNodes(this.containerRef.current);
-        const newChildrenRefs = insertChildOrderly(accordionSection, section, nodes);
+        const newChildrenRefs = insertChildOrderly(childrenRegistered, section, nodes);
         this.setState({
-            accordionSection: newChildrenRefs,
+            childrenRegistered: newChildrenRefs,
         });
     }
 
     unregisterAccordionSection(sectionName) {
-        const { accordionSection } = this.state;
-        const newAccordionSectionChildren = accordionSection.filter(
+        const { childrenRegistered } = this.state;
+        const newAccordionSectionChildren = childrenRegistered.filter(
             section => section.name !== sectionName,
         );
-        this.setState({ accordionSection: newAccordionSectionChildren });
+        this.setState({ childrenRegistered: newAccordionSectionChildren });
     }
 
     render() {
@@ -102,17 +110,11 @@ export default class Accordion extends Component {
         return (
             <ul
                 ref={this.containerRef}
-                onKeyDown={this.handleKeyPressed}
-                role="tablist"
                 id={id}
                 className={className}
                 style={style}>
 
-                <Provider value={{
-                    ...this.state,
-                    privateRegisterAccordionSection: this.registerAccordionSection,
-                    privateUnregisterAccordionSection: this.unregisterAccordionSection,
-                }}>
+                <Provider value={this.state}>
                     {children}
                 </Provider>
             </ul>
