@@ -1,13 +1,26 @@
-##### accordion base
+##### accordion with input
 
+    const inputContainerStyles = {width: '50%',};
     <div className="rainbow-m-around_xx-large">
         <Card>
             <Accordion>
-                <AccordionSection
-                    label="Rainbow Accordion">
-                    A rainbow is a meteorological phenomenon that is caused by reflection,
-                    refraction and dispersion of light in water droplets resulting in a spectrum
-                    of light appearing in the sky.
+                <AccordionSection label="Rainbow Accordion">
+                    <div className="rainbow-flex rainbow-p-bottom_medium">
+                        <div className="rainbow-p-horizontal_small" style={inputContainerStyles}>
+                            <Input
+                                label="Input Text"
+                                placeholder="Placeholder text"
+                                type="text" />
+
+                        </div>
+                        <div className="rainbow-p-horizontal_small" style={inputContainerStyles}>
+                            <Input
+                                label="Input Paassword"
+                                placeholder="**********"
+                                type="password" />
+
+                        </div>
+                    </div>
                 </AccordionSection>
                 <AccordionSection
                     label="Rainbow Accordion">
@@ -70,10 +83,9 @@
     class AccordionExample extends React.Component {
         constructor(props) {
             super(props);
-            this.state = { activeNames: [
-                'accordion-1',
-                'accordion-2',
-            ] };
+            this.state = {
+                activeNames: ['accordion-1','accordion-2',],
+            };
             this.handleOnSelect = this.handleOnSelect.bind(this);
         }
 
@@ -99,6 +111,7 @@
                                 refraction and dispersion of light in water droplets resulting in a spectrum
                                 of light appearing in the sky.
                             </AccordionSection>
+
                             <AccordionSection
                                 name="accordion-2"
                                 label="Rainbow Accordion">
@@ -106,6 +119,7 @@
                                 refraction and dispersion of light in water droplets resulting in a spectrum
                                 of light appearing in the sky.
                             </AccordionSection>
+
                             <AccordionSection
                                 name="accordion-3"
                                 label="Rainbow Accordion">
