@@ -24,11 +24,10 @@ class AccordionItem extends Component {
     }
 
     componentDidMount() {
-        const { privateRegisterAccordionSection, name, disabled } = this.props;
-        const currentName = name || this.name;
+        const { privateRegisterAccordionSection, disabled } = this.props;
         if (!disabled) {
             return setTimeout(() => privateRegisterAccordionSection({
-                name: currentName,
+                name: this.getCurrentName(),
                 ref: this.containerRef.current,
                 focusButtonIcon: this.buttonRef.current.focus.bind(this),
             }), 0);
@@ -37,9 +36,8 @@ class AccordionItem extends Component {
     }
 
     componentWillUnmount() {
-        const { privateUnregisterAccordionSection, name } = this.props;
-        const currentName = name || this.name;
-        privateUnregisterAccordionSection(currentName);
+        const { privateUnregisterAccordionSection } = this.props;
+        privateUnregisterAccordionSection(this.getCurrentName());
     }
 
     getContainerClassNames() {
@@ -49,9 +47,14 @@ class AccordionItem extends Component {
         }, className);
     }
 
+    getCurrentName() {
+        const { name } = this.props;
+        return name || this.name;
+    }
+
     resolveActiveNamesWhenMultiple() {
-        const { name, activeNames } = this.props;
-        const nameToToggle = name || this.name;
+        const { activeNames } = this.props;
+        const nameToToggle = this.getCurrentName();
 
         if (activeNames === undefined) {
             return [nameToToggle];
@@ -63,8 +66,8 @@ class AccordionItem extends Component {
     }
 
     resolveActiveNames() {
-        const { name, multiple, activeNames } = this.props;
-        const nameToToggle = name || this.name;
+        const { multiple, activeNames } = this.props;
+        const nameToToggle = this.getCurrentName();
         if (multiple) {
             return this.resolveActiveNamesWhenMultiple();
         }
@@ -82,10 +85,9 @@ class AccordionItem extends Component {
     }
 
     handleFocusSection() {
-        const { disabled, privateOnFocusSection, name } = this.props;
-        const currentName = name || this.name;
+        const { disabled, privateOnFocusSection } = this.props;
         if (!disabled) {
-            privateOnFocusSection(currentName);
+            privateOnFocusSection(this.getCurrentName());
         }
     }
 
@@ -97,8 +99,8 @@ class AccordionItem extends Component {
     }
 
     isExpanded() {
-        const { activeNames, name, multiple } = this.props;
-        const currentName = name || this.name;
+        const { activeNames, multiple } = this.props;
+        const currentName = this.getCurrentName();
         if (multiple && Array.isArray(activeNames)) {
             return isInArray(activeNames, currentName);
         }

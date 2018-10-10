@@ -34,7 +34,6 @@ export default class Accordion extends Component {
             privateUnregisterAccordionSection: this.unregisterAccordionSection,
             privateOnKeyPressed: this.handleKeyPressed,
             childrenRegistered: [],
-            currentSection: [],
         };
     }
 
