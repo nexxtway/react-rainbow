@@ -1,4 +1,4 @@
-##### accordion base
+##### accordion with input
 
     const inputContainerStyles = {width: '50%',};
     <div className="rainbow-m-around_xx-large">
@@ -11,14 +11,14 @@
                                 label="Input Text"
                                 placeholder="Placeholder text"
                                 type="text" />
-    
+
                         </div>
                         <div className="rainbow-p-horizontal_small" style={inputContainerStyles}>
                             <Input
                                 label="Input Paassword"
                                 placeholder="**********"
                                 type="password" />
-    
+
                         </div>
                     </div>
                 </AccordionSection>
@@ -83,15 +83,35 @@
     class AccordionExample extends React.Component {
         constructor(props) {
             super(props);
-            this.state = { activeNames: [
-                'accordion-1',
-                'accordion-2',
-            ] };
+            this.state = {
+                activeNames: ['accordion-1','accordion-2',],
+                accordionInserted: false,
+            };
             this.handleOnSelect = this.handleOnSelect.bind(this);
+            this.handleOnClick = this.handleOnClick.bind(this);
+            this.newAccordion = this.newAccordion.bind(this);
         }
 
         handleOnSelect(event, activeNames) {
             this.setState({ activeNames });
+        }
+
+        handleOnClick() {
+            this.setState({ accordionInserted: !this.state.accordionInserted });
+        }
+
+        newAccordion() {
+            const { accordionInserted } = this.state;
+            if (accordionInserted) {
+                return <AccordionSection
+                            name="accordion-4"
+                            label="New Rainbow Accordion">
+                            A rainbow is a meteorological phenomenon that is caused by reflection,
+                            refraction and dispersion of light in water droplets resulting in a spectrum
+                            of light appearing in the sky.
+                        </AccordionSection>;
+            }
+            return null;
         }
 
         render() {
@@ -100,6 +120,19 @@
 
             return (
                 <div className="rainbow-m-around_xx-large">
+
+                    <div className="rainbow-m-bottom_large">
+                        <Card
+                            title="Insert a new item"
+                            actions={
+                                <Button
+                                    onClick={this.handleOnClick}
+                                    variant="neutral"
+                                    label="New"
+                                    variant="outline-brand" />
+                            } />
+                    </div>
+
                     <Card>
                         <Accordion
                             multiple
@@ -112,6 +145,9 @@
                                 refraction and dispersion of light in water droplets resulting in a spectrum
                                 of light appearing in the sky.
                             </AccordionSection>
+
+                            {this.newAccordion()}
+
                             <AccordionSection
                                 name="accordion-2"
                                 label="Rainbow Accordion">
@@ -119,6 +155,7 @@
                                 refraction and dispersion of light in water droplets resulting in a spectrum
                                 of light appearing in the sky.
                             </AccordionSection>
+
                             <AccordionSection
                                 name="accordion-3"
                                 label="Rainbow Accordion">

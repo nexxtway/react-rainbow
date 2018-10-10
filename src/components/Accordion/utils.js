@@ -1,6 +1,6 @@
 export function getChildAccordionSectionNodes(ref) {
     if (ref) {
-        return ref.querySelectorAll('div.rainbow-accordion-section_summary:nth-child(2)');
+        return ref.querySelectorAll('li.rainbow-accordion-section_container');
     }
     return [];
 }

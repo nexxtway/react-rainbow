@@ -50,8 +50,7 @@ export default class Accordion extends Component {
 
     setAsSelectAccordionSection(accordionSectionIndex) {
         const { childrenRegistered } = this.state;
-        childrenRegistered[accordionSectionIndex].ref.focus();
-        this.setState({ currentSection: childrenRegistered[accordionSectionIndex].name });
+        childrenRegistered[accordionSectionIndex].focusButtonIcon();
     }
 
     handleToggleSection(event, name) {
@@ -92,9 +91,7 @@ export default class Accordion extends Component {
         const { childrenRegistered } = this.state;
         const [...nodes] = getChildAccordionSectionNodes(this.containerRef.current);
         const newChildrenRefs = insertChildOrderly(childrenRegistered, section, nodes);
-        this.setState({
-            childrenRegistered: newChildrenRefs,
-        });
+        this.setState({ childrenRegistered: newChildrenRefs });
     }
 
     unregisterAccordionSection(sectionName) {

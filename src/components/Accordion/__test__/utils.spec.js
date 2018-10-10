@@ -25,7 +25,7 @@ describe('<Accordion/> utils', () => {
         };
         it('should call querySelectorAll with "div.rainbow-accordion-section_summary:nth-child(2)"', () => {
             getChildAccordionSectionNodes(ref);
-            expect(ref.querySelectorAll).toHaveBeenCalledWith('div.rainbow-accordion-section_summary:nth-child(2)');
+            expect(ref.querySelectorAll).toHaveBeenCalledWith('li.rainbow-accordion-section_container');
         });
         it('should return the elements resolved by querySelectorAll', () => {
             expect(getChildAccordionSectionNodes(ref)).toEqual(elements);

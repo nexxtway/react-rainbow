@@ -19,6 +19,7 @@ class AccordionItem extends Component {
         this.handleToggleSection = this.handleToggleSection.bind(this);
         this.handleFocusSection = this.handleFocusSection.bind(this);
         this.handleKeyPressed = this.handleKeyPressed.bind(this);
+        this.containerRef = React.createRef();
         this.buttonRef = React.createRef();
     }
 
@@ -28,7 +29,8 @@ class AccordionItem extends Component {
         if (!disabled) {
             return setTimeout(() => privateRegisterAccordionSection({
                 name: currentName,
-                ref: this.buttonRef.current,
+                ref: this.containerRef.current,
+                focusButtonIcon: this.buttonRef.current.focus.bind(this),
             }), 0);
         }
         return null;
@@ -36,7 +38,8 @@ class AccordionItem extends Component {
 
     componentWillUnmount() {
         const { privateUnregisterAccordionSection, name } = this.props;
-        privateUnregisterAccordionSection(name);
+        const currentName = name || this.name;
+        privateUnregisterAccordionSection(currentName);
     }
 
     getContainerClassNames() {
@@ -115,7 +118,11 @@ class AccordionItem extends Component {
         const isExpanded = this.isExpanded();
 
         return (
-            <li className={this.getContainerClassNames()} style={style} disabled={disabled}>
+            <li
+                className={this.getContainerClassNames()}
+                style={style}
+                disabled={disabled}
+                ref={this.containerRef}>
                 <section>
                     <div className="rainbow-accordion-section_summary">
                         <h3 className="rainbow-accordion-section_summary-heading">
@@ -138,7 +145,6 @@ class AccordionItem extends Component {
                             onFocus={this.handleFocusSection}
                             onKeyDown={this.handleKeyPressed}
                             assistiveText={assistiveText}
-                            ariaHaspopup
                             ariaControls={this.accordionDetailsId}
                             ariaExpanded={isExpanded}
                             ref={this.buttonRef}
