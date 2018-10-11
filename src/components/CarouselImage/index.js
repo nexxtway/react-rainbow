@@ -44,7 +44,7 @@ class Item extends Component {
     }
 
     render() {
-        const { assistiveText, description, header, href, src } = this.props;
+        const { assistiveText, description, header, href, src, style } = this.props;
         const hasContent = !!(header || description);
         return (
             <div
@@ -52,7 +52,8 @@ class Item extends Component {
                 className={this.getContainerClassName()}
                 role="tabpanel"
                 aria-hidden={this.getAriaHidden()}
-                aria-labelledby={this.carouselIndicatorID}>
+                aria-labelledby={this.carouselIndicatorID}
+                style={style}>
                 <a
                     href={href}
                     className="rainbow-carousel-image"

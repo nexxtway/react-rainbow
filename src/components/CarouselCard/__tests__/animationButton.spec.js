@@ -15,13 +15,13 @@ describe('<AnimationButtom />', () => {
         expect(component.find('button').prop('aria-pressed')).toBe(true);
     });
 
-    it('should show the right icon', () => {
+    it('should show the play icon', () => {
         const component = mount(<AnimationButtom />);
 
         expect(component.find('PlayIcon').exists()).toBe(true);
     });
 
-    it('should show the right icon', () => {
+    it('should show the pause icon when isAnimationPaused is false', () => {
         const component = mount(<AnimationButtom isAnimationPaused={false} />);
 
         expect(component.find('PauseIcon').exists()).toBe(true);

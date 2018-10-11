@@ -4,7 +4,7 @@ import CarouselCard from '../index';
 import CarouselImage from '../../CarouselImage';
 
 describe('<CarouselCard />', () => {
-    it('shold set the right class names', () => {
+    it('should set the right class names', () => {
         const component = mount(<CarouselCard className="custom-class" />);
         expect(component.find('div.rainbow-carousel.custom-class').exists()).toBe(true);
     });

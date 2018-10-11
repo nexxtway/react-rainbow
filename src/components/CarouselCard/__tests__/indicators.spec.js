@@ -22,12 +22,11 @@ describe('<Indicators />', () => {
         expect(anchorComponent.prop('aria-selected')).toBe(true);
         expect(anchorComponent.prop('tabIndex')).toBe(0);
     });
-    it('should set the assistive text to the anchor element', () => {
+    it('should set the assistive text as title to the anchor element', () => {
         const component = mount(<Indicators carouselChildren={carouselChildren} />);
         const anchorComponent = component.find('a.rainbow-carousel_indicator');
 
         expect(anchorComponent.prop('title')).toBe('Header Tab');
-        expect(anchorComponent.text()).toBe('Header Tab');
     });
     it('should set the right accesivillity props', () => {
         const component = mount(<Indicators carouselChildren={carouselChildren} />);
