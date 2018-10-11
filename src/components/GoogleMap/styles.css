@@ -1,0 +1,23 @@
+.rainbow-google-map {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: auto;
+  background: transparent;
+  display: flex;
+  flex-direction: column; }
+
+.rainbow-google-map_map-container {
+  border-radius: 14px;
+  box-shadow: 0 1px 2px 0 #a4a7b5;
+  height: 100%;
+  width: 100%; }
+
+.rainbow-google-map_header {
+  font-size: 1rem;
+  font-weight: 900;
+  color: #061c3f;
+  margin-top: 1.5rem; }
+
+.rainbow-google-map_coordinates-list {
+  margin-top: 1rem; }
