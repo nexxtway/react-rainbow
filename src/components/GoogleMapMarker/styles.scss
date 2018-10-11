@@ -29,21 +29,19 @@
     background: transparent;
     border: 0;
     text-align: inherit;
+    border-radius: $border-radius-2;
 
     &:hover {
         background-color: $color-gray-1;
-        border-radius: $border-radius-2;
     }
 
     &:focus {
         outline: none;
         background-color: $color-gray-1;
-        border-radius: $border-radius-2;
     }
 
     &[aria-pressed="true"] {
         background-color: $color-gray-2;
-        border-radius: $border-radius-2;
     }
 
     & * {
