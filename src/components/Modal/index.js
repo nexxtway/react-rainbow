@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
@@ -108,6 +107,7 @@ export default class Modal extends Component {
         return (
             createPortal(
                 <div
+                    role="presentation"
                     id={id}
                     onClick={this.handleClick}
                     className={this.getBackDropClassNames()}

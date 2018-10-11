@@ -34,22 +34,24 @@
     height: 0.5rem;
     background: $color-gray-2;
     border-radius: 50%;
+    border: 1px solid $color-gray-2;
 
     &:hover {
         background-color: $color-gray-3;
+        border: 1px solid $color-gray-3;
     }
 
     &:focus {
         outline: 0;
         box-shadow: $shadow-outline;
-        border-color: $color-brand-active;
+        border: 1px solid $color-brand-active;
     }
 }
 
 .rainbow-carousel_indicator.rainbow-carousel_indicator--active,
 .rainbow-carousel_indicator.rainbow-carousel_indicator--active:hover {
     background: $color-brand;
-    border-color: $color-brand-active;
+    border: 1px solid $color-brand;
 }
 
 .rainbow-carousel_autoplay {

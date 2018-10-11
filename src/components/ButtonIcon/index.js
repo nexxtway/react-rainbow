@@ -61,23 +61,31 @@ export default class ButtonIcon extends Component {
 
     render() {
         const {
-            style,
-            icon,
-            disabled,
-            tabIndex,
-            onFocus,
-            onBlur,
-            onClick,
+            variant,
+            size,
+            shaded,
             title,
             type,
-            ariaHaspopup,
-            ariaPressed,
+            disabled,
+            tabIndex,
+            onClick,
+            onFocus,
+            onBlur,
             assistiveText,
+            ariaHaspopup,
+            className,
+            ariaPressed,
+            style,
             id,
+            ariaControls,
+            ariaExpanded,
+            icon,
+            ...rest
         } = this.props;
 
         return (
             <button
+                {...rest}
                 data-id="button-icon-element"
                 id={id}
                 className={this.getButtonClassNames()}
@@ -90,6 +98,8 @@ export default class ButtonIcon extends Component {
                 title={title}
                 type={type}
                 aria-haspopup={ariaHaspopup}
+                aria-controls={ariaControls}
+                aria-expanded={ariaExpanded}
                 aria-pressed={ariaPressed}
                 ref={this.buttonRef} >
 
@@ -150,6 +160,12 @@ ButtonIcon.propTypes = {
     onBlur: PropTypes.func,
     /** A description for assistive sreen readers. */
     assistiveText: PropTypes.string,
+    /** A space-separated list of element IDs that
+    * this button controls the contents or presence of. */
+    ariaControls: PropTypes.string,
+    /** Indicates whether an element the button controls is expanded or collapsed.
+    * Valid values are 'true' or 'false'. */
+    ariaExpanded: PropTypes.bool,
     /** Indicates that the element has a popup context menu or sub-level menu. */
     ariaHaspopup: PropTypes.bool,
     /** Indicates that the element has been pressed. */
@@ -179,4 +195,6 @@ ButtonIcon.defaultProps = {
     ariaPressed: false,
     style: undefined,
     id: undefined,
+    ariaControls: undefined,
+    ariaExpanded: false,
 };

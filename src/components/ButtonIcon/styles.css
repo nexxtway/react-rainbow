@@ -123,28 +123,28 @@
   line-height: 1; }
 
 .rainbow-button-icon--xx-small > svg {
-  width: 0.5rem !important;
-  height: 0.5rem !important;
-  font-size: 0.5rem !important; }
+  width: 0.4rem !important;
+  height: 0.4rem !important;
+  font-size: 0.4rem !important; }
 
 .rainbow-button-icon--x-small {
   width: 1.25rem;
   height: 1.25rem;
-  line-height: 1; }
+  line-height: 1.25; }
 
 .rainbow-button-icon--x-small > svg {
-  width: 0.75rem !important;
-  height: 0.75rem !important;
-  font-size: 0.75rem !important; }
+  width: 0.5rem !important;
+  height: 0.5rem !important;
+  font-size: 0.5rem !important; }
 
 .rainbow-button-icon--small {
-  width: 1.5rem;
-  height: 1.5rem; }
+  width: 1.65rem;
+  height: 1.65rem; }
 
 .rainbow-button-icon--small > svg {
-  width: 0.875rem !important;
-  height: 0.875rem !important;
-  font-size: 0.875rem !important; }
+  width: 0.6rem !important;
+  height: 0.6rem !important;
+  font-size: 0.6rem !important; }
 
 .rainbow-button-icon--medium {
   width: 2.475rem;

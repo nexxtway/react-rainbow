@@ -183,31 +183,31 @@
 }
 
 .rainbow-button-icon--xx-small > svg {
-    @include width-height(0.5rem !important);
+    @include width-height(0.4rem !important);
 
-    font-size: 0.5rem !important;
+    font-size: 0.4rem !important;
 }
 
 .rainbow-button-icon--x-small {
     @include width-height(1.25rem);
 
-    line-height: 1;
+    line-height: 1.25;
 }
 
 .rainbow-button-icon--x-small > svg {
-    @include width-height(0.75rem !important);
+    @include width-height(0.5rem !important);
 
-    font-size: 0.75rem !important;
+    font-size: 0.5rem !important;
 }
 
 .rainbow-button-icon--small {
-    @include width-height(1.5rem);
+    @include width-height(1.65rem);
 }
 
 .rainbow-button-icon--small > svg {
-    @include width-height(0.875rem !important);
+    @include width-height(0.6rem !important);
 
-    font-size: 0.875rem !important;
+    font-size: 0.6rem !important;
 }
 
 .rainbow-button-icon--medium {

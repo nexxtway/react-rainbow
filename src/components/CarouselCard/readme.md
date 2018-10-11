@@ -1,5 +1,9 @@
 ##### CarouselCard
 
+    const carouselContainerStyles = {
+        width: 340,
+    };
+
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
     const {
         faCog,

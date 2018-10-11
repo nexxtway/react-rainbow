@@ -44,7 +44,7 @@ export default function Notification(props) {
             <ButtonIcon
                 className="rainbow-notification_close"
                 icon={<CloseIcon />}
-                size="x-small"
+                size="small"
                 title="Close"
                 onClick={onRequestClose} />
         </div>

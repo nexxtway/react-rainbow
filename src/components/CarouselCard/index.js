@@ -8,6 +8,9 @@ import AnimationButton from './animationButton';
 import { getSelectedItemIndex, getChildTabNodes, insertChildOrderly } from './utils';
 import './styles.css';
 
+/**
+* A carouselCard allows multiple pieces of featured content to occupy an allocated amount of space.
+*/
 export default class CarouselCard extends Component {
     constructor(props) {
         super(props);

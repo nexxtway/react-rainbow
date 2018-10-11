@@ -1,0 +1,78 @@
+@import "./../../styles/margins.scss";
+@import "./../../styles/colors.scss";
+@import "./../../styles/font-sizes.scss";
+@import "./../../styles/border-radius.scss";
+
+.rainbow-google-map-marker_assistive-aria-live {
+    position: absolute !important;
+    margin: -1px !important;
+    border: 0 !important;
+    padding: 0 !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    text-transform: none !important;
+    white-space: nowrap !important;
+}
+
+.rainbow-google-map-marker_button {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0.5rem;
+    width: 100%;
+    font-size: inherit;
+    color: inherit;
+    line-height: inherit;
+    background: transparent;
+    border: 0;
+    text-align: inherit;
+    border-radius: $border-radius-2;
+
+    &:hover {
+        background-color: $color-gray-1;
+    }
+
+    &:focus {
+        outline: none;
+        background-color: $color-gray-1;
+    }
+
+    &[aria-pressed="true"] {
+        background-color: $color-gray-2;
+    }
+
+    & * {
+        pointer-events: none;
+    }
+}
+
+.rainbow-google-map-marker_icon {
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    background-color: $color-purple;
+    background-color: #5c56b6;
+    border-radius: $border-radius-2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: $margin-small;
+    height: 2.125rem;
+    width: 2.125rem;
+}
+
+.rainbow-google-map-marker_text-container {
+    -ms-flex: 1;
+    flex: 1;
+    min-width: 0;
+    font-size: $font-size-text-small;
+    color: $color-gray-4;
+}
+
+.rainbow-google-map-marker_label {
+    font-size: $font-size-text-medium;
+    color: $color-brand;
+    display: block;
+}
