@@ -17,7 +17,6 @@ class PageIndicator {
      * @method
      */
     click() {
-        // $(this.rootElement).click();
         this.rootElement.click();
     }
 
@@ -27,7 +26,6 @@ class PageIndicator {
      * @returns {bool}
      */
     hasFocus() {
-        // return $(this.rootElement).hasFocus();
         return this.rootElement.hasFocus();
     }
 
@@ -37,7 +35,6 @@ class PageIndicator {
      * @returns {bool}
      */
     isSelected() {
-        // return $(this.rootElement).getAttribute('class') === 'rainbow-carousel_indicator rainbow-carousel_indicator--active';
         return this.rootElement.getAttribute('class') === 'rainbow-carousel_indicator rainbow-carousel_indicator--active';
     }
 }
