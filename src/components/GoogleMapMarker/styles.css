@@ -13,16 +13,17 @@
 .rainbow-google-map-marker_button {
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-align: start;
-  align-items: flex-start;
-  padding: 0.5rem 0.2rem;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0.5rem;
   width: 100%;
   font-size: inherit;
   color: inherit;
   line-height: inherit;
   background: transparent;
   border: 0;
-  text-align: inherit; }
+  text-align: inherit;
+  border-radius: 12rem; }
   .rainbow-google-map-marker_button:hover {
     background-color: #f4f6f9; }
   .rainbow-google-map-marker_button:focus {
