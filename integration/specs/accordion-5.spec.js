@@ -2,7 +2,7 @@ const PageAccordion = require('./../../src/components/Accordion/pageObject');
 
 const ACCORDION = '#accordion-multiple-1';
 
-describe('Accordion whend multiple is passed', () => {
+describe('Accordion when multiple is passed', () => {
     beforeEach(() => {
         browser.url('/#!/Accordion/5');
         browser.refresh();

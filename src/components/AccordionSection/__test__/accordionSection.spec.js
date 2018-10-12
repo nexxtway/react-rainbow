@@ -17,4 +17,11 @@ describe('<AccordionSection />', () => {
 
         expect(component.find('li').prop('className')).toBe('rainbow-accordion-section_container rainbow-accordion-section_container--disabled');
     });
+    it('should set the right class names when accordion section is collapsed', () => {
+        const component = mount(
+            <AccordionSection />,
+        );
+
+        expect(component.find('div[className="rainbow-accordion-section_content rainbow-accordion-section_content--collapsed"]').exists()).toBe(true);
+    });
 });

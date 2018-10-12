@@ -13,14 +13,6 @@ class PageAccordionSection {
     }
 
     /**
-     * Clicks the accordion section.
-     * @method
-     */
-    click() {
-        $(this.rootElement).click();
-    }
-
-    /**
     * Clicks the button icon element.
     * @method
     */

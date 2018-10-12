@@ -3,7 +3,7 @@ const PageAccordionSection = require('../../AccordionSection/pageObject');
 /**
  * Accordion page object class.
  * @class
- * @tutorial Accordion
+ * @tutorial accordion
  */
 class PageAccordion {
    /**

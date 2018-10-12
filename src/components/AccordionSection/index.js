@@ -49,10 +49,9 @@ class AccordionItem extends Component {
 
     getCollapsedClassNames() {
         const isExpanded = this.isExpanded();
-        return classnames(
-            'rainbow-accordion-section_content',
-            { 'rainbow-accordion-section_content--collapsed': !isExpanded },
-        );
+        return classnames('rainbow-accordion-section_content', {
+            'rainbow-accordion-section_content--collapsed': !isExpanded,
+        });
     }
 
     getCurrentName() {
