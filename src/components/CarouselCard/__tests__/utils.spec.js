@@ -1,6 +1,7 @@
 import {
     insertChildOrderly,
     getChildTabNodes,
+    getSelectedItemIndex,
 } from './../utils';
 
 describe('<CarouselCard/> utils', () => {
@@ -35,6 +36,25 @@ describe('<CarouselCard/> utils', () => {
         });
         it('should return an empty array if anything is passed', () => {
             expect(getChildTabNodes()).toEqual([]);
+        });
+    });
+
+    describe('getSelectedItemIndex', () => {
+        it('should return the index in the array of the itgem passed', () => {
+            const children = [
+                { indicatorID: 'indicator-1' },
+                { indicatorID: 'indicator-2' },
+                { indicatorID: 'indicator-3' },
+            ];
+            expect(getSelectedItemIndex(children, 'indicator-2')).toBe(1);
+        });
+        it('should return undefined if the item passed is not in the array', () => {
+            const children = [
+                { indicatorID: 'indicator-1' },
+                { indicatorID: 'indicator-2' },
+                { indicatorID: 'indicator-3' },
+            ];
+            expect(getSelectedItemIndex(children, 'indicator-4')).toBe(-1);
         });
     });
 });
