@@ -1,26 +1,15 @@
-##### accordion with input
+##### accordion base
 
-    const inputContainerStyles = {width: '50%',};
     <div className="rainbow-m-around_xx-large">
         <Card>
-            <Accordion>
+            <Accordion id="accordion-1">
                 <AccordionSection label="Rainbow Accordion">
-                    <div className="rainbow-flex rainbow-p-bottom_medium">
-                        <div className="rainbow-p-horizontal_small" style={inputContainerStyles}>
-                            <Input
-                                label="Input Text"
-                                placeholder="Placeholder text"
-                                type="text" />
-
-                        </div>
-                        <div className="rainbow-p-horizontal_small" style={inputContainerStyles}>
-                            <Input
-                                label="Input Paassword"
-                                placeholder="**********"
-                                type="password" />
-
-                        </div>
-                    </div>
+                    <p>
+                        A rainbow is a meteorological phenomenon that is caused by reflection,
+                        refraction and dispersion of light in water droplets resulting in a spectrum
+                        of light appearing in the sky.
+                    </p>
+                    <Input label="Input Text" placeholder="Placeholder text" type="text" />
                 </AccordionSection>
                 <AccordionSection
                     label="Rainbow Accordion">
@@ -101,6 +90,7 @@
                 <div className="rainbow-m-around_xx-large">
                     <Card>
                         <Accordion
+                            id="accordion-multiple-1"
                             multiple
                             activeSectionNames={activeNames}
                             onToggleSection={this.handleOnSelect}>
