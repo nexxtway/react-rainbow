@@ -45,9 +45,10 @@
 
     .rainbow-input_icon {
         fill: $color-gray-3;
-        height: 2.5rem;
+        height: 100%;
+        top: 0;
         position: absolute;
-        line-height: 2.5rem;
+        line-height: 1;
         border: 0;
         z-index: 2;
         display: flex;
