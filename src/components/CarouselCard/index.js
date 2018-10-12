@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Provider } from './context';
-import Indicators from '../CarouselIndicators';
+import Indicators from './indicators';
 import AnimationButton from './animationButton';
 import { getSelectedItemIndex, getChildTabNodes, insertChildOrderly } from './utils';
 import './styles.css';

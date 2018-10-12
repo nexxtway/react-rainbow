@@ -3,8 +3,6 @@ import { mount } from 'enzyme';
 import CarouselCard from '../index';
 import CarouselImage from '../../CarouselImage';
 
-jest.useFakeTimers();
-
 describe('<CarouselCard />', () => {
     it('should set the right class names', () => {
         const component = mount(<CarouselCard className="custom-class" />);

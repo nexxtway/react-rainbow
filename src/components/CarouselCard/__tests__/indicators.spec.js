@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Indicators from '../';
+import Indicators from '../indicators';
 
 const carouselItems = [
     {

@@ -1,5 +1,4 @@
-/* eslint-disable max-len */
-const PageIndicator = require('../../CarouselIndicators/PageObject/indicator');
+const PageIndicator = require('./indicator');
 
 /**
  * CarouselCard page object class.

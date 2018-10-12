@@ -1,14 +1,14 @@
 /* eslint-disable no-script-url */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { LEFT_KEY, RIGHT_KEY } from '../../libs/constants';
-import { getSelectedItemIndex } from '../CarouselCard/utils';
+import { LEFT_KEY, RIGHT_KEY } from '../../../libs/constants';
+import { getSelectedItemIndex } from '../utils';
 import Indicator from './indicator';
 
 const RIGHT_SIDE = 1;
 const LEFT_SIDE = -1;
 
-export default class Index extends Component {
+export default class Indicators extends Component {
     constructor(props) {
         super(props);
         this.handleKeyPressed = this.handleKeyPressed.bind(this);
@@ -60,7 +60,8 @@ export default class Index extends Component {
                     {...child}
                     onSelect={onSelect}
                     selectedItem={selectedItem}
-                    ref={indicatorRef} />
+                    ref={indicatorRef}
+                    key={child.indicatorID} />
             );
         });
     }
@@ -74,13 +75,13 @@ export default class Index extends Component {
     }
 }
 
-Index.propTypes = {
+Indicators.propTypes = {
     carouselChildren: PropTypes.array,
     onSelect: PropTypes.func,
     selectedItem: PropTypes.string,
 };
 
-Index.defaultProps = {
+Indicators.defaultProps = {
     carouselChildren: [],
     onSelect: () => {},
     selectedItem: undefined,

@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import AssistiveText from '../AssistiveText';
+import AssistiveText from '../../AssistiveText';
 
 function getAssistiveText(header) {
     if (typeof header === 'string') {

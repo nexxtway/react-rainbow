@@ -1,13 +1,14 @@
 Here is an overview about how to use the CarouselCard page object:
 
-    const PageCarouselCard = require('./../../src/components/CarouselCard/pageObject');
-    const { ARROW_LEFT_KEY, ARROW_RIGHT_KEY } = require('./../constants');
+    const PageCarouselCard = require('react-rainbow-components/components/CarouselCard/pageObject');
 
     const CAROUSEL = '#carousel-1';
+    const ARROW_RIGHT_KEY: '\uE014';
+    const ARROW_LEFT_KEY: '\uE012';
 
     describe('CarouselCard base example', () => {
         beforeEach(() => {
-            browser.url('/#!/CarouselCard/1');
+            browser.url('/url/to/testing/page');
             browser.refresh();
         });
 
