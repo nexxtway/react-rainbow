@@ -9,6 +9,12 @@ describe('<AnimationButtom />', () => {
         expect(component.find('ButtonIcon').prop('assistiveText')).toBe('Start auto-play');
     });
 
+    it('should set the right assistive text', () => {
+        const component = mount(<AnimationButtom isAnimationPaused={false} />);
+
+        expect(component.find('ButtonIcon').prop('assistiveText')).toBe('Stop auto-play');
+    });
+
     it('should set the right aria-pressed value', () => {
         const component = mount(<AnimationButtom isAnimationPaused />);
 

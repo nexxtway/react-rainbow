@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-const PageIndicator = require('./indicator');
+const PageIndicator = require('../../CarouselIndicators/PageObject/indicator');
 
 /**
  * CarouselCard page object class.
@@ -21,10 +21,9 @@ class PageCarouselCard {
      * @param {number} itemPosition - The base 0 index of the tab item.
      */
     getIndicatorItem(itemPosition) {
-        const items = $(this.rootElement).$$('.rainbow-carousel_indicator');
+        const items = $(this.rootElement).$$('.rainbow-carousel_indicators-container');
         if (items[itemPosition]) {
-            // return new PageIndicator(`${this.rootElement} .rainbow-carousel_indicator:nth-child(${itemPosition + 1})`);
-            return new PageIndicator(items[itemPosition]);
+            return new PageIndicator(`${this.rootElement} .rainbow-carousel_indicators-container:nth-child(${itemPosition + 1})`);
         }
         return null;
     }

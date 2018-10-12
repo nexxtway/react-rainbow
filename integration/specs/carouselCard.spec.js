@@ -31,6 +31,14 @@ describe('CarouselCard base example', () => {
         const indicator2 = carousel.getIndicatorItem(1);
         expect(indicator2.isSelected()).toBe(true);
     });
+    it('should select the first indicator when the last has focus and right arrow key is pressed', () => {
+        const carousel = new PageCarouselCard(CAROUSEL);
+        const indicator = carousel.getIndicatorItem(2);
+        indicator.click();
+        browser.keys(ARROW_RIGHT_KEY);
+        const indicator2 = carousel.getIndicatorItem(0);
+        expect(indicator2.isSelected()).toBe(true);
+    });
     it('should loose focus if other indicator is selected', () => {
         const carousel = new PageCarouselCard(CAROUSEL);
         const indicator = carousel.getIndicatorItem(0);

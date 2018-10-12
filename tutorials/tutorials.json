@@ -28,5 +28,8 @@
     },
     "verticalNavigation": {
         "title": "VerticalNavigation page object"
+    },
+    "carouselCard": {
+        "title": "CarouselCard page object"
     }
 }

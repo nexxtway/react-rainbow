@@ -24,13 +24,13 @@
             <div className="rainbow-p-around_xx-large rainbow-m-bottom_xx-large rainbow-m-horizontal_xx-large">
                 <CarouselCard id="carousel-1">
                         <CarouselImage
-                            src="images/illustrations/rainbows-background.svg"
+                            src="images/illustrations/Illustration-rainbow-4.svg"
                             header="First Card"
                             description="First card description."
                             alternativeText="First card accessible description."
                             href="/" />
                         <CarouselImage
-                            src="images/illustrations/rainbow-background-2.svg"
+                            src="images/illustrations/Illustration-rainbow-5.svg"
                             header="Second Card"
                             description="Second card description."
                             alternativeText="Second card accessible description."
