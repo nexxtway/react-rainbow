@@ -87,21 +87,21 @@
   .rainbow-slider_range:active::-moz-range-thumb {
     background-color: #01b6f5; }
   .rainbow-slider_range[disabled]::-webkit-slider-thumb {
-    background-color: #ecebea;
+    background-color: #e3e5ed;
     cursor: default; }
   .rainbow-slider_range[disabled]::-webkit-slider-runnable-track {
-    background-color: #ecebea;
+    background-color: #e3e5ed;
     cursor: default; }
   .rainbow-slider_range[disabled]::-moz-range-thumb {
-    background-color: #ecebea;
+    background-color: #e3e5ed;
     cursor: default; }
   .rainbow-slider_range[disabled]::-moz-range-track {
-    background-color: #ecebea; }
+    background-color: #e3e5ed; }
   .rainbow-slider_range[disabled]::-ms-thumb {
-    background-color: #ecebea;
+    background-color: #e3e5ed;
     cursor: default; }
   .rainbow-slider_range[disabled]::-ms-track {
-    background-color: #ecebea;
+    background-color: #e3e5ed;
     cursor: default; }
 
 .rainbow-slider_value {
