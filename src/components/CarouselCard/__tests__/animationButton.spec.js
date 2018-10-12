@@ -1,7 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import AnimationButtom from '../animationButton';
-import PauseIcon from '../pauseIcon';
 
 describe('<AnimationButtom />', () => {
     it('should set the right assistive text', () => {
