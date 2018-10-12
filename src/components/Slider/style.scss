@@ -125,31 +125,31 @@
     }
 
     &[disabled]::-webkit-slider-thumb {
-        background-color: #ecebea;
+        background-color: $color-gray-2;
         cursor: default;
     }
 
     &[disabled]::-webkit-slider-runnable-track {
-        background-color: #ecebea;
+        background-color: $color-gray-2;
         cursor: default;
     }
 
     &[disabled]::-moz-range-thumb {
-        background-color: #ecebea;
+        background-color: $color-gray-2;
         cursor: default;
     }
 
     &[disabled]::-moz-range-track {
-        background-color: #ecebea;
+        background-color: $color-gray-2;
     }
 
     &[disabled]::-ms-thumb {
-        background-color: #ecebea;
+        background-color: $color-gray-2;
         cursor: default;
     }
 
     &[disabled]::-ms-track {
-        background-color: #ecebea;
+        background-color: $color-gray-2;
         cursor: default;
     }
 }
