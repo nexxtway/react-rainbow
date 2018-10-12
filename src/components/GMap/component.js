@@ -4,9 +4,10 @@ import classnames from 'classnames';
 import RenderIf from './../RenderIf';
 import Header from './header';
 import { Provider } from './context';
+import getMapContainerStyles from './get-map-container-styles';
 import './styles.css';
 
-const currentInfoWindow = Symbol('infowindow');
+const currentInfoWindow = Symbol('currentInfoWindow');
 
 export default class MapComponent extends Component {
     constructor(props) {
@@ -36,10 +37,13 @@ export default class MapComponent extends Component {
     }
 
     initMap() {
-        const { zoom, center } = this.props;
+        const { zoom, latitude, longitude } = this.props;
 
         const map = new window.google.maps.Map(this.mapContainer.current, {
-            center,
+            center: {
+                lat: latitude,
+                lng: longitude,
+            },
             zoom,
             fullscreenControl: false,
         });
@@ -80,7 +84,11 @@ export default class MapComponent extends Component {
 
         return (
             <div className={this.getContainerClassNames()} style={style}>
-                <div ref={this.mapContainer} className="rainbow-google-map_map-container" />
+                <div
+                    ref={this.mapContainer}
+                    style={getMapContainerStyles(this.mapContainer.current)}
+                    className="rainbow-google-map_map-container" />
+
                 <div className="rainbow-google-map_coordinates-container">
                     <RenderIf isTrue={!!header}>
                         <Header text={header} />
@@ -99,7 +107,8 @@ export default class MapComponent extends Component {
 MapComponent.propTypes = {
     isScriptLoaded: PropTypes.bool.isRequired,
     isScriptLoadSucceed: PropTypes.bool.isRequired,
-    center: PropTypes.object,
+    latitude: PropTypes.number.isRequired,
+    longitude: PropTypes.number.isRequired,
     zoom: PropTypes.number.isRequired,
     header: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
@@ -113,7 +122,6 @@ MapComponent.propTypes = {
 };
 
 MapComponent.defaultProps = {
-    center: undefined,
     header: undefined,
     children: null,
     className: undefined,

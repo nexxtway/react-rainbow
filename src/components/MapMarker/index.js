@@ -1,13 +1,11 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Consumer } from './../GoogleMap/context';
-import AssistiveText from './../AssistiveText';
+import { Consumer } from './../GMap/context';
 import { uniqueId } from './../../libs/utils';
-import MarkerIcon from './icon';
+import Icon from './icon';
 import './styles.css';
 
-const ICON_DESCRIPTION = 'marker icon';
 const marker = Symbol('marker');
 
 class Marker extends Component {
@@ -23,8 +21,12 @@ class Marker extends Component {
     }
 
     componentDidUpdate({ map: prevMap }) {
-        const { map, position, geocoder } = this.props;
-        if (!prevMap && map && position) {
+        const { map, latitude, longitude, geocoder } = this.props;
+        if (!prevMap && map && latitude && longitude) {
+            const position = {
+                lat: latitude,
+                lng: longitude,
+            };
             this[marker] = new window.google.maps.Marker({
                 position,
                 map,
@@ -72,7 +74,11 @@ class Marker extends Component {
     }
 
     handleClick() {
-        const { privateOnClick, position } = this.props;
+        const { privateOnClick, latitude, longitude } = this.props;
+        const position = {
+            lat: latitude,
+            lng: longitude,
+        };
         if (this[marker]) {
             this[marker].setAnimation(null);
             privateOnClick(this.name, position);
@@ -97,10 +103,10 @@ class Marker extends Component {
     }
 
     render() {
-        const { className, style, position } = this.props;
+        const { className, style, latitude, longitude, icon } = this.props;
         const { label, description } = this.state;
 
-        if (position) {
+        if (latitude && longitude) {
             return (
                 <li className={className} style={style}>
                     <span className="rainbow-google-map-marker_assistive-aria-live" aria-live="polite">
@@ -115,10 +121,7 @@ class Marker extends Component {
                         onMouseLeave={this.stopAnimation}
                         onBlur={this.stopAnimation}>
 
-                        <span className="rainbow-google-map-marker_icon" title={ICON_DESCRIPTION}>
-                            <MarkerIcon />
-                            <AssistiveText text={ICON_DESCRIPTION} />
-                        </span>
+                        <Icon icon={icon} />
                         <span className="rainbow-google-map-marker_text-container">
                             <span className="rainbow-google-map-marker_label">{label}</span>
                             <span>{description}</span>
@@ -131,7 +134,7 @@ class Marker extends Component {
     }
 }
 
-export default function GoogleMapMarker(props) {
+export default function MapMarker(props) {
     return (
         <Consumer>
             {context => <Marker {...props} {...context} />}
@@ -139,7 +142,7 @@ export default function GoogleMapMarker(props) {
     );
 }
 
-GoogleMapMarker.propTypes = {
+MapMarker.propTypes = {
     /** The label of the marker. */
     label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
@@ -148,21 +151,22 @@ GoogleMapMarker.propTypes = {
     description: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
-    /** Represent the position of the marker. It's value is an object with the lat and lng keys
-     * that correspond with the coordinates. */
-    position: PropTypes.shape({
-        lat: PropTypes.number,
-        lng: PropTypes.number,
-    }).isRequired,
+    /** The angular distance of a place north or south of the earth's equator. */
+    latitude: PropTypes.number.isRequired,
+    /** The angular distance of a place east or west of the meridian at Greenwich. */
+    longitude: PropTypes.number.isRequired,
+    /** The icon to show if it is passed. If not passed a fallback icon will be showed. */
+    icon: PropTypes.node,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
 };
 
-GoogleMapMarker.defaultProps = {
+MapMarker.defaultProps = {
     label: undefined,
     description: undefined,
+    icon: null,
     className: undefined,
     style: undefined,
 };
