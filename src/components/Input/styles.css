@@ -27,14 +27,13 @@
   position: relative; }
   .rainbow-input_icon-container .rainbow-input_icon {
     fill: #a4a7b5;
-    width: 0.875rem;
-    height: 0.875rem;
+    height: 2.5rem;
     position: absolute;
-    top: 50%;
-    margin-top: -0.4375rem;
-    line-height: 1;
+    line-height: 2.5rem;
     border: 0;
-    z-index: 2; }
+    z-index: 2;
+    display: flex;
+    align-items: center; }
   .rainbow-input_icon-container .rainbow-input_icon:not(button) {
     pointer-events: none; }
 
@@ -147,7 +146,7 @@
     padding: 0 3rem; }
 
 .rainbow-input_icon--left .rainbow-input_icon {
-  left: 1rem; }
+  left: 0.85rem; }
 
 .rainbow-input_icon--left .rainbow-input,
 .rainbow-input_icon--left .rainbow-input_bare {
@@ -158,9 +157,9 @@
     padding-left: 2.1875rem; }
 
 .rainbow-input_icon--right .rainbow-input_icon {
-  right: 1rem; }
+  right: 0.85rem; }
 
 .rainbow-input_icon--right .rainbow-input,
 .rainbow-input_icon--right .rainbow-input_bare {
-  right: 1rem;
+  right: 0.85rem;
   padding-right: 2.25rem; }
