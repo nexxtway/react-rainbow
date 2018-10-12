@@ -45,14 +45,14 @@
 
     .rainbow-input_icon {
         fill: $color-gray-3;
-        width: 0.875rem;
-        height: 0.875rem;
+        height: 100%;
+        top: 0;
         position: absolute;
-        top: 50%;
-        margin-top: -0.4375rem;
         line-height: 1;
         border: 0;
         z-index: 2;
+        display: flex;
+        align-items: center;
     }
 
     .rainbow-input_icon:not(button) {
@@ -204,7 +204,7 @@
 
 .rainbow-input_icon--left {
     .rainbow-input_icon {
-        left: 1rem;
+        left: 0.85rem;
     }
 
     .rainbow-input,
@@ -220,12 +220,12 @@
 
 .rainbow-input_icon--right {
     .rainbow-input_icon {
-        right: 1rem;
+        right: 0.85rem;
     }
 
     .rainbow-input,
     .rainbow-input_bare {
-        right: 1rem;
+        right: 0.85rem;
         padding-right: 2.25rem;
     }
 }
