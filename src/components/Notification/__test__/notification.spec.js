@@ -11,11 +11,11 @@ describe('<Notification/>', () => {
         component.find('button.rainbow-notification_close').simulate('click');
         expect(onClickFn).toHaveBeenCalledTimes(1);
     });
-    it('should set the prop size as "x-small" in ButtonIcon', () => {
+    it('should set the prop size as "small" in ButtonIcon', () => {
         const component = mount(
             <Notification title="Notification test" />,
         );
-        expect(component.find('ButtonIcon').prop('size')).toBe('x-small');
+        expect(component.find('ButtonIcon').prop('size')).toBe('small');
     });
     it('should have the right class names', () => {
         const component = mount(

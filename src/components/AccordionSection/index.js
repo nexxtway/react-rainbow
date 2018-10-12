@@ -17,6 +17,27 @@ class AccordionItem extends Component {
         this.accordionDetailsId = uniqueId('accordion-section-details');
         this.name = uniqueId('accordion-section');
         this.handleToggleSection = this.handleToggleSection.bind(this);
+        this.handleFocusSection = this.handleFocusSection.bind(this);
+        this.handleKeyPressed = this.handleKeyPressed.bind(this);
+        this.containerRef = React.createRef();
+        this.buttonRef = React.createRef();
+    }
+
+    componentDidMount() {
+        const { privateRegisterAccordionSection, disabled } = this.props;
+        if (!disabled) {
+            return setTimeout(() => privateRegisterAccordionSection({
+                name: this.getCurrentName(),
+                ref: this.containerRef.current,
+                focusButtonIcon: this.buttonRef.current.focus.bind(this),
+            }), 0);
+        }
+        return null;
+    }
+
+    componentWillUnmount() {
+        const { privateUnregisterAccordionSection } = this.props;
+        privateUnregisterAccordionSection(this.getCurrentName());
     }
 
     getContainerClassNames() {
@@ -26,17 +47,14 @@ class AccordionItem extends Component {
         }, className);
     }
 
-    getTabIndex() {
-        const { disabled } = this.props;
-        if (disabled) {
-            return -1;
-        }
-        return undefined;
+    getCurrentName() {
+        const { name } = this.props;
+        return name || this.name;
     }
 
     resolveActiveNamesWhenMultiple() {
-        const { name, activeNames } = this.props;
-        const nameToToggle = name || this.name;
+        const { activeNames } = this.props;
+        const nameToToggle = this.getCurrentName();
 
         if (activeNames === undefined) {
             return [nameToToggle];
@@ -48,8 +66,8 @@ class AccordionItem extends Component {
     }
 
     resolveActiveNames() {
-        const { name, multiple, activeNames } = this.props;
-        const nameToToggle = name || this.name;
+        const { multiple, activeNames } = this.props;
+        const nameToToggle = this.getCurrentName();
         if (multiple) {
             return this.resolveActiveNamesWhenMultiple();
         }
@@ -66,9 +84,23 @@ class AccordionItem extends Component {
         }
     }
 
+    handleFocusSection() {
+        const { disabled, privateOnFocusSection } = this.props;
+        if (!disabled) {
+            privateOnFocusSection(this.getCurrentName());
+        }
+    }
+
+    handleKeyPressed(event) {
+        const { disabled, privateOnKeyPressed } = this.props;
+        if (!disabled) {
+            privateOnKeyPressed(event);
+        }
+    }
+
     isExpanded() {
-        const { activeNames, name, multiple } = this.props;
-        const currentName = name || this.name;
+        const { activeNames, multiple } = this.props;
+        const currentName = this.getCurrentName();
         if (multiple && Array.isArray(activeNames)) {
             return isInArray(activeNames, currentName);
         }
@@ -88,36 +120,36 @@ class AccordionItem extends Component {
         const isExpanded = this.isExpanded();
 
         return (
-            <li className={this.getContainerClassNames()} style={style} disabled={disabled}>
+            <li
+                className={this.getContainerClassNames()}
+                style={style}
+                disabled={disabled}
+                ref={this.containerRef}>
                 <section>
                     <div className="rainbow-accordion-section_summary">
                         <h3 className="rainbow-accordion-section_summary-heading">
-                            <button
-                                className="rainbow-accordion-section_summary-button-heading"
-                                tabIndex={this.getTabIndex()}
-                                aria-controls={this.accordionDetailsId}
-                                aria-expanded={isExpanded}
-                                onClick={this.handleToggleSection}>
-                                <RenderIf isTrue={!!icon}>
-                                    <span className="rainbow-accordion-section_summary-icon" aria-hidden="true">
-                                        {icon}
-                                    </span>
-                                </RenderIf>
-                                <RenderIf isTrue={!!label}>
-                                    <span title="Accordion Label">
-                                        {label}
-                                    </span>
-                                </RenderIf>
-                            </button>
+                            <RenderIf isTrue={!!icon}>
+                                <span className="rainbow-accordion-section_summary-icon">
+                                    {icon}
+                                </span>
+                            </RenderIf>
+                            <RenderIf isTrue={!!label}>
+                                <span title="Accordion Label">
+                                    {label}
+                                </span>
+                            </RenderIf>
                         </h3>
 
                         <ButtonIcon
-                            className="rainbow-accordion-section_summary-button"
-                            size="x-small"
+                            size="small"
                             disabled={disabled}
                             onClick={this.handleToggleSection}
+                            onFocus={this.handleFocusSection}
+                            onKeyDown={this.handleKeyPressed}
                             assistiveText={assistiveText}
-                            ariaHaspopup
+                            ariaControls={this.accordionDetailsId}
+                            ariaExpanded={isExpanded}
+                            ref={this.buttonRef}
                             icon={
                                 <RightArrow isExpanded={isExpanded} disabled={disabled} />
                             } />
