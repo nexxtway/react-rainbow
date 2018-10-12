@@ -26,6 +26,9 @@
     "textarea": {
         "title": "Textarea page object"
     },
+    "accordion": {
+        "title": "Accordion page object"
+    },
     "verticalNavigation": {
         "title": "VerticalNavigation page object"
     }

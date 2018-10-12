@@ -3,7 +3,7 @@
     const inputContainerStyles = {width: '50%',};
     <div className="rainbow-m-around_xx-large">
         <Card>
-            <Accordion>
+            <Accordion id="accordion-1">
                 <AccordionSection label="Rainbow Accordion">
                     <div className="rainbow-flex rainbow-p-bottom_medium">
                         <div className="rainbow-p-horizontal_small" style={inputContainerStyles}>
@@ -101,6 +101,7 @@
                 <div className="rainbow-m-around_xx-large">
                     <Card>
                         <Accordion
+                            id="accordion-multiple-1"
                             multiple
                             activeSectionNames={activeNames}
                             onToggleSection={this.handleOnSelect}>

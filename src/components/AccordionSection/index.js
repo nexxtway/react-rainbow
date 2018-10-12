@@ -47,6 +47,14 @@ class AccordionItem extends Component {
         }, className);
     }
 
+    getCollapsedClassNames() {
+        const isExpanded = this.isExpanded();
+        return classnames(
+            'rainbow-accordion-section_content',
+            { 'rainbow-accordion-section_content--collapsed': !isExpanded },
+        );
+    }
+
     getCurrentName() {
         const { name } = this.props;
         return name || this.name;
@@ -154,14 +162,12 @@ class AccordionItem extends Component {
                                 <RightArrow isExpanded={isExpanded} disabled={disabled} />
                             } />
                     </div>
-                    <RenderIf isTrue={isExpanded}>
-                        <div
-                            aria-hidden={!isExpanded}
-                            className="rainbow-accordion-section_content"
-                            id={this.accordionDetailsId}>
-                            {children}
-                        </div>
-                    </RenderIf>
+                    <div
+                        aria-hidden={!isExpanded}
+                        className={this.getCollapsedClassNames()}
+                        id={this.accordionDetailsId}>
+                        {children}
+                    </div>
                 </section>
             </li>
         );
