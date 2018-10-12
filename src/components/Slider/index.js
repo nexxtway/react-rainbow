@@ -11,11 +11,32 @@ export default class Slider extends Component {
         super(props);
         this.sliderId = uniqueId('slider-id');
         this.errorMessageId = uniqueId('error-message');
+        this.sliderRef = React.createRef();
+    }
+
+    getAriaDescribedBy() {
+        const { error } = this.props;
+        if (error) {
+            return this.errorMessageId;
+        }
+        return undefined;
     }
 
     getContainerClassName() {
         const { className } = this.props;
         return classnames('rainbow-slider_container', className);
+    }
+
+    click() {
+        this.sliderRef.current.click();
+    }
+
+    focus() {
+        this.sliderRef.current.focus();
+    }
+
+    blur() {
+        this.sliderRef.current.blur();
     }
 
     render() {
@@ -31,7 +52,8 @@ export default class Slider extends Component {
             onChange,
             onClick,
             onFocus,
-            style } = this.props;
+            style,
+        } = this.props;
         return (
             <div className={this.getContainerClassName()} style={style}>
                 <Label label={label} sliderId={this.sliderId} />
@@ -44,13 +66,15 @@ export default class Slider extends Component {
                         min={min}
                         max={max}
                         step={step}
+                        aria-describedby={this.getAriaDescribedBy()}
                         disabled={disabled}
                         onClick={onClick}
                         onChange={onChange}
                         onBlur={onBlur}
-                        onFocus={onFocus} />
+                        onFocus={onFocus}
+                        ref={this.sliderRef} />
 
-                    <span className="rainbow-slider_value" aria-hidden="true">{value}</span>
+                    <span className="rainbow-slider_value" aria-hidden>{value}</span>
                 </div>
                 <RenderIf isTrue={!!error}>
                     <div id={this.errorMessageId} className="rainbow-slider_error">{error}</div>
