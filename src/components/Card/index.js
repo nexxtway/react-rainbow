@@ -27,11 +27,10 @@ export default function Card(props) {
     return (
         <article className={getContainerClassName()} style={style}>
             <Header actions={actions} title={title} icon={icon} />
-            <div>
-                <CardBoddy isLoading={isLoading}>
-                    {children}
-                </CardBoddy>
-            </div>
+
+            <CardBoddy isLoading={isLoading}>
+                {children}
+            </CardBoddy>
 
             <RenderIf isTrue={footer && !isLoading}>
                 <footer className="rainbow-card_footer">
