@@ -129,7 +129,7 @@ VerticalSectionOverflow.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied for the outer element. */
     style: PropTypes.object,
-    /** Action fired when a VerticalSection is clicked. */
+    /** Action fired when a component is clicked. */
     onToggleSection: PropTypes.func,
     /**
     * This prop that should not be visible in the documentation.

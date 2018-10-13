@@ -118,7 +118,7 @@ describe('<VerticalSectionOverflow/>', () => {
         );
         expect(component.find('ul').text()).toBe('the section children');
     });
-    it('should fire an event when click in the VerticalSection and onToggleSection is a function', () => {
+    it('should fire an event when click in the VerticalSectionOverflow and onToggleSection is a function', () => {
         const handleToggleSectionMockFn = jest.fn();
         const component = mount(
             <VerticalSectionOverflow onToggleSection={handleToggleSectionMockFn}>
