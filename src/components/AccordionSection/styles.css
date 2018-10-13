@@ -25,6 +25,9 @@
   padding-right: 2rem;
   padding-bottom: 0.875rem; }
 
+.rainbow-accordion-section_content--collapsed {
+  display: none; }
+
 .rainbow-accordion-section_right-icon {
   transform: rotate(0deg);
   fill: #01b6f5;

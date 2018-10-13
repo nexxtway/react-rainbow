@@ -9,7 +9,7 @@ describe('<Card/>', () => {
                 title="Card Header"
                 footer="Card Footer"
                 actions={<div>Testing actions node</div>} >
-                    <div>Testing childrens</div>
+                    Testing childrens
             </Card>,
         );
         expect(component).toMatchSnapshot();

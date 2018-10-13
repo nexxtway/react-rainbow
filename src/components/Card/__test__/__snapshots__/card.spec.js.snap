@@ -29,11 +29,7 @@ exports[`<Card/> should have the right class names 1`] = `
       </div>
     </div>
   </div>
-  <div>
-    <div>
-      Testing childrens
-    </div>
-  </div>
+  Testing childrens
   <footer
     className="rainbow-card_footer"
   >
