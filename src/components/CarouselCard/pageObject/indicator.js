@@ -1,7 +1,6 @@
 /**
  * Indicator page object class.
  * @class
- * @tutorial carouselCard
  */
 class PageIndicator {
     /**

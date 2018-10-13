@@ -3,6 +3,7 @@ const PageIndicator = require('./indicator');
 /**
  * CarouselCard page object class.
  * @class
+ * @tutorial carouselCard
  */
 class PageCarouselCard {
     /**
