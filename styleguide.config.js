@@ -27,7 +27,7 @@ module.exports = {
         PlaygroundRenderer: path.join(__dirname, 'library/styleguideComponents/Playground'),
         TabButtonRenderer: path.join(__dirname, 'library/styleguideComponents/CodeEditorButton'),
         ToolbarButtonRenderer: path.join(__dirname, 'library/styleguideComponents/ToolbarButton'),
-        TableOfContentsRenderer: path.join(__dirname, 'library/styleguideComponents/TableOfContents'),
+        TableOfContents: path.join(__dirname, 'library/styleguideComponents/TableOfContents'),
         ComponentsListRenderer: path.join(__dirname, 'library/styleguideComponents/ComponentsList'),
         Editor: path.join(__dirname, 'library/styleguideComponents/Editor'),
         PathlineRenderer: path.join(__dirname, 'library/styleguideComponents/Pathline'),
