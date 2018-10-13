@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import { Provider } from './context';
 import Indicators from './indicators';
 import AnimationButton from './animationButton';
-import { getSelectedItemIndex, getChildTabNodes, insertChildOrderly } from './utils';
+import { getItemIndex, getChildTabNodes, insertChildOrderly } from './utils';
 import './styles.css';
 
 /**
@@ -38,7 +38,7 @@ export default class CarouselCard extends Component {
 
     setActiveItem(id) {
         const { childrenRegistred } = this.state;
-        const selectedItemIndex = getSelectedItemIndex(childrenRegistred, id);
+        const selectedItemIndex = getItemIndex(childrenRegistred, id);
         this.cardPosition = { transform: `translateX(-${selectedItemIndex}00%)` };
         this.setState({ activeItem: id, isAnimationPaused: true });
     }
@@ -49,7 +49,7 @@ export default class CarouselCard extends Component {
             const { isAnimationPaused } = this.state;
             if (!isAnimationPaused) {
                 const { childrenRegistred, activeItem } = this.state;
-                const selectedItemIndex = getSelectedItemIndex(childrenRegistred, activeItem);
+                const selectedItemIndex = getItemIndex(childrenRegistred, activeItem);
                 const isLastItem = selectedItemIndex === childrenRegistred.length - 1;
                 const nextItem = isLastItem ? 0 : selectedItemIndex + 1;
                 if (isLastItem && disableAutoRefresh) {

@@ -22,7 +22,7 @@
             </ButtonGroup>
         </GlobalHeader>
         <div className="rainbow-p-around_xx-large rainbow-m-bottom_xx-large rainbow-m-horizontal_xx-large">
-            <CarouselCard id="carousel-1">
+            <CarouselCard id="carousel-1" disableAutoScroll>
                 <CarouselImage
                     src="images/illustrations/Illustration-rainbow-4.svg"
                     header="First Card"

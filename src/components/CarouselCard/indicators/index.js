@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { LEFT_KEY, RIGHT_KEY } from '../../../libs/constants';
-import { getSelectedItemIndex } from '../utils';
+import { getItemIndex } from '../utils';
 import Indicator from './indicator';
 
 const RIGHT_SIDE = 1;
@@ -12,23 +12,36 @@ export default class Indicators extends Component {
     constructor(props) {
         super(props);
         this.handleKeyPressed = this.handleKeyPressed.bind(this);
+        this.registerIndicator = this.registerIndicator.bind(this);
         this.keyHandlerMap = {
             [RIGHT_KEY]: () => this.selectIndicator(RIGHT_SIDE),
             [LEFT_KEY]: () => this.selectIndicator(LEFT_SIDE),
         };
+        this.state = {
+            indicatorsRefs: [],
+        };
     }
 
     setAsSelectedIndicator(tabIndex) {
-        this.indicatorsRefs[tabIndex].ref.current.select();
+        const { indicatorsRefs } = this.state;
+        indicatorsRefs[tabIndex].ref.current.click();
+        indicatorsRefs[tabIndex].ref.current.focus();
+    }
+
+    registerIndicator(indicator) {
+        const { indicatorsRefs } = this.state;
+        const newRefs = indicatorsRefs.concat([indicator]);
+        this.setState({ indicatorsRefs: newRefs });
     }
 
     selectIndicator(side) {
         const { selectedItem } = this.props;
-        const indicatorIndex = getSelectedItemIndex(this.indicatorsRefs, selectedItem);
-        if (indicatorIndex === this.indicatorsRefs.length - 1 && side === RIGHT_SIDE) {
+        const { indicatorsRefs } = this.state;
+        const indicatorIndex = getItemIndex(indicatorsRefs, selectedItem);
+        if (indicatorIndex === indicatorsRefs.length - 1 && side === RIGHT_SIDE) {
             this.setAsSelectedIndicator(0);
         } else if (indicatorIndex === 0 && side === LEFT_SIDE) {
-            this.setAsSelectedIndicator(this.indicatorsRefs.length - 1);
+            this.setAsSelectedIndicator(indicatorsRefs.length - 1);
         } else {
             this.setAsSelectedIndicator(indicatorIndex + side);
         }
@@ -48,22 +61,14 @@ export default class Indicators extends Component {
 
     renderIndicators() {
         const { carouselChildren, onSelect, selectedItem } = this.props;
-        this.indicatorsRefs = [];
-        return carouselChildren.map((child) => {
-            const indicatorRef = React.createRef();
-            this.indicatorsRefs.push({
-                indicatorID: child.indicatorID,
-                ref: indicatorRef,
-            });
-            return (
+        return carouselChildren.map(child => (
                 <Indicator
                     {...child}
                     onSelect={onSelect}
                     selectedItem={selectedItem}
-                    ref={indicatorRef}
+                    onCreate={this.registerIndicator}
                     key={child.indicatorID} />
-            );
-        });
+            ));
     }
 
     render() {

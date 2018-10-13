@@ -17,6 +17,14 @@ export default class Indicator extends Component {
         this.indicatorRef = React.createRef();
     }
 
+    componentDidMount() {
+        const { onCreate, indicatorID } = this.props;
+        onCreate({
+            indicatorID,
+            ref: this.indicatorRef,
+        });
+    }
+
     getIndicatorClassName(id) {
         return classnames('rainbow-carousel_indicator', {
             'rainbow-carousel_indicator--active': this.isSelected(id),
@@ -33,11 +41,6 @@ export default class Indicator extends Component {
     isSelected(id) {
         const { selectedItem } = this.props;
         return selectedItem === id;
-    }
-
-    select() {
-        this.indicatorRef.current.click();
-        this.indicatorRef.current.focus();
     }
 
     render() {
@@ -68,6 +71,7 @@ Indicator.propTypes = {
     containerID: PropTypes.string,
     header: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     onSelect: PropTypes.func,
+    onCreate: PropTypes.func,
     selectedItem: PropTypes.string,
 };
 
@@ -76,5 +80,6 @@ Indicator.defaultProps = {
     containerID: undefined,
     header: undefined,
     onSelect: () => {},
+    onCreate: () => {},
     selectedItem: undefined,
 };
