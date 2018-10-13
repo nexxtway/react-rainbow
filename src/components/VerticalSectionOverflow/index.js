@@ -23,6 +23,16 @@ export default class VerticalSectionOverflow extends Component {
         this.toggleOverflow = this.toggleOverflow.bind(this);
     }
 
+    static getDerivedStateFromProps(nextProps, state) {
+        const { expanded, onToggleSection } = nextProps;
+        if (expanded !== state.isExpanded && typeof onToggleSection === 'function') {
+            return {
+                isExpanded: expanded,
+            };
+        }
+        return null;
+    }
+
     getContainerClassNames() {
         const { className } = this.props;
         const { isExpanded } = this.state;
@@ -47,9 +57,13 @@ export default class VerticalSectionOverflow extends Component {
         return 'rainbow-vertical-section-overflow--hide';
     }
 
-    toggleOverflow() {
+    toggleOverflow(event) {
         const { isExpanded } = this.state;
-        this.setState({ isExpanded: !isExpanded });
+        const { onToggleSection } = this.props;
+        if (typeof onToggleSection === 'function') {
+            return onToggleSection(event);
+        }
+        return this.setState({ isExpanded: !isExpanded });
     }
 
     render() {
@@ -115,6 +129,8 @@ VerticalSectionOverflow.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied for the outer element. */
     style: PropTypes.object,
+    /** Action fired when a VerticalSection is clicked. */
+    onToggleSection: PropTypes.func,
     /**
     * This prop that should not be visible in the documentation.
     * @ignore
@@ -130,4 +146,5 @@ VerticalSectionOverflow.defaultProps = {
     style: undefined,
     assistiveText: undefined,
     children: null,
+    onToggleSection: undefined,
 };
