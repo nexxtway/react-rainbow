@@ -29,7 +29,7 @@ export default class CopyToClipboard extends Component {
             <ButtonIcon
                 onClick={this.handleCopyToClipboardClick}
                 assistiveText="copy to clipboard"
-                size="small"
+                size="medium"
                 variant={variant}
                 icon={<FontAwesomeIcon icon={icon} />} />
         );

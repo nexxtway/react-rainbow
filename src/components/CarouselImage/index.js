@@ -17,13 +17,12 @@ class Item extends Component {
 
     componentDidMount() {
         const { privateRegisterChild, header } = this.props;
-        return setTimeout(() => (
-            privateRegisterChild({
-                containerID: this.carouselImageID,
-                indicatorID: this.carouselIndicatorID,
-                ref: this.itemRef,
-                header,
-            })), 0);
+        return setTimeout(() => privateRegisterChild({
+            containerID: this.carouselImageID,
+            indicatorID: this.carouselIndicatorID,
+            ref: this.itemRef,
+            header,
+        }), 0);
     }
 
     getContainerClassName() {
@@ -45,7 +44,7 @@ class Item extends Component {
     }
 
     render() {
-        const { assistiveText, description, header, href, src } = this.props;
+        const { assistiveText, description, header, href, src, style } = this.props;
         const hasContent = !!(header || description);
         return (
             <div
@@ -53,7 +52,8 @@ class Item extends Component {
                 className={this.getContainerClassName()}
                 role="tabpanel"
                 aria-hidden={this.getAriaHidden()}
-                aria-labelledby={this.carouselIndicatorID}>
+                aria-labelledby={this.carouselIndicatorID}
+                style={style}>
                 <a
                     href={href}
                     className="rainbow-carousel-image"
