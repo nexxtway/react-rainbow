@@ -72,7 +72,7 @@
 
     <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
         <div className="rainbow-m-horizontal_medium">
-            <Button>
+            <Button variant="base">
                 <FontAwesomeIcon icon={faCoffee} className="rainbow-m-right_medium" />
                 Button base
             </Button>

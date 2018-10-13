@@ -1,0 +1,22 @@
+.rainbow-progress-indicator {
+  position: relative;
+  max-width: 70%;
+  flex: 1 1 auto;
+  margin: auto; }
+
+.rainbow-progress-indicator_list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  position: relative;
+  z-index: 1; }
+
+.rainbow-progress-indicator_bar {
+  position: absolute;
+  top: 50%;
+  margin-top: -0.0625rem;
+  display: block;
+  width: 100%;
+  height: 0.125rem;
+  border: solid 1px #e3e5ed; }
