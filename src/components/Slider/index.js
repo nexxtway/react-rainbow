@@ -27,14 +27,26 @@ export default class Slider extends Component {
         return classnames('rainbow-slider_container', className);
     }
 
+    /**
+     * Sets click on the element.
+     * @public
+     */
     click() {
         this.sliderRef.current.click();
     }
 
+    /**
+     * Sets focus on the element.
+     * @public
+     */
     focus() {
         this.sliderRef.current.focus();
     }
 
+    /**
+     * Sets blur on the element.
+     * @public
+     */
     blur() {
         this.sliderRef.current.blur();
     }
