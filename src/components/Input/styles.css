@@ -28,13 +28,19 @@
   .rainbow-input_icon-container .rainbow-input_icon {
     fill: #a4a7b5;
     height: 100%;
+    width: 22px;
     top: 0;
     position: absolute;
     line-height: 1;
     border: 0;
     z-index: 2;
     display: flex;
-    align-items: center; }
+    align-items: center;
+    justify-content: center; }
+    .rainbow-input_icon-container .rainbow-input_icon svg {
+      width: 16px !important;
+      height: 16px !important;
+      font-size: 16px !important; }
   .rainbow-input_icon-container .rainbow-input_icon:not(button) {
     pointer-events: none; }
 
@@ -112,7 +118,7 @@
   color: #fe4849; }
 
 .rainbow-input--error .rainbow-input_icon-container.rainbow-input_icon--left .rainbow-input {
-  padding-left: 2.25rem; }
+  padding-left: 2.35rem; }
 
 .rainbow-input[type="datetime"]:focus,
 .rainbow-input[type="datetime"]:active,
@@ -147,20 +153,20 @@
     padding: 0 3rem; }
 
 .rainbow-input_icon--left .rainbow-input_icon {
-  left: 0.85rem; }
+  left: 0.8rem; }
 
 .rainbow-input_icon--left .rainbow-input,
 .rainbow-input_icon--left .rainbow-input_bare {
-  padding-left: 2.25rem; }
+  padding-left: 2.35rem; }
   .rainbow-input_icon--left .rainbow-input:focus, .rainbow-input_icon--left .rainbow-input:active,
   .rainbow-input_icon--left .rainbow-input_bare:focus,
   .rainbow-input_icon--left .rainbow-input_bare:active {
-    padding-left: 2.1875rem; }
+    padding-left: 2.2875rem; }
 
 .rainbow-input_icon--right .rainbow-input_icon {
-  right: 0.85rem; }
+  right: 0.8rem; }
 
 .rainbow-input_icon--right .rainbow-input,
 .rainbow-input_icon--right .rainbow-input_bare {
-  right: 0.85rem;
-  padding-right: 2.25rem; }
+  right: 0.8rem;
+  padding-right: 2.35rem; }

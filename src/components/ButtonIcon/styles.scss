@@ -176,56 +176,56 @@
     box-shadow: $shadow-3;
 }
 
-.rainbow-button-icon_xx-small {
+.rainbow-button-icon--xx-small {
     @include width-height(1rem);
 
     line-height: 1;
-}
 
-.rainbow-button-icon--xx-small > svg {
-    @include width-height(0.4rem !important);
+    svg {
+        @include width-height(0.55rem !important);
 
-    font-size: 0.4rem !important;
+        font-size: 0.55rem !important;
+    }
 }
 
 .rainbow-button-icon--x-small {
     @include width-height(1.25rem);
 
     line-height: 1.25;
-}
 
-.rainbow-button-icon--x-small > svg {
-    @include width-height(0.5rem !important);
+    svg {
+        @include width-height(0.6rem !important);
 
-    font-size: 0.5rem !important;
+        font-size: 0.6rem !important;
+    }
 }
 
 .rainbow-button-icon--small {
     @include width-height(1.65rem);
-}
 
-.rainbow-button-icon--small > svg {
-    @include width-height(0.6rem !important);
+    svg {
+        @include width-height(0.65rem !important);
 
-    font-size: 0.6rem !important;
+        font-size: 0.65rem !important;
+    }
 }
 
 .rainbow-button-icon--medium {
     @include width-height(2.475rem);
-}
 
-.rainbow-button-icon--medium > svg {
-    @include width-height(1rem !important);
+    svg {
+        @include width-height(1rem !important);
 
-    font-size: 1rem !important;
+        font-size: 1rem !important;
+    }
 }
 
 .rainbow-button-icon--large {
     @include width-height(3rem);
-}
 
-.rainbow-button-icon--large > svg {
-    @include width-height(1.5rem !important);
+    svg {
+        @include width-height(1.5rem !important);
 
-    font-size: 1.5rem !important;
+        font-size: 1.5rem !important;
+    }
 }
