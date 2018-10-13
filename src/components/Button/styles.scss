@@ -99,6 +99,10 @@
     &[disabled] {
         background-color: $color-gray-1;
         border-color: $color-gray-1;
+
+        &:hover {
+            color: $color-gray-2;
+        }
     }
 }
 
@@ -184,6 +188,10 @@
     &[disabled] {
         background-color: $color-gray-1;
         border-color: $color-gray-1;
+
+        &:hover {
+            color: $color-gray-2;
+        }
     }
 }
 
@@ -208,6 +216,10 @@
     &[disabled] {
         background-color: $color-gray-1;
         border-color: $color-gray-1;
+
+        &:hover {
+            color: $color-gray-2;
+        }
     }
 }
 
