@@ -6,6 +6,8 @@
         faEllipsisV,
     } = require('@fortawesome/free-solid-svg-icons');
 
+    const style = { paddingLeft: '30px', paddingRight: '30px' }
+
     const stepNames = [ 'step-1', 'step-2', 'step-3', 'step-4', 'step-5' ];
 
     const steps = [ 'first', 'second', 'third', 'fourth', 'fifth' ];
@@ -27,7 +29,6 @@
                 return this.setState({ currentStepIndex: nextStepIndex });
             }
             return this.setState({ isNextDisabled: false });
-
         }
 
         handleBackClick() {
@@ -55,11 +56,7 @@
         }
 
         render() {
-            const {
-                currentStepIndex,
-                isBackDisabled,
-                isNextDisabled,
-            } = this.state;
+            const { currentStepIndex } = this.state;
             return (
                 <div className="rainbow-m-bottom_large rainbow-p-bottom_large">
                     <GlobalHeader src="images/user/user3.jpg" className="rainbow-p-bottom_medium rainbow-m-bottom_medium">
@@ -83,7 +80,7 @@
                     <div className="rainbow-m-top_xx-large rainbow-align-content_center rainbow-flex_wrap" >
                         <div className="rainbow-m-horizontal_medium">
                             <Button
-                                style={{paddingLeft: '30px', paddingRight: '30px'}}
+                                style={style}
                                 label="Back"
                                 onClick={this.handleBackClick}
                                 variant="neutral"
@@ -91,7 +88,7 @@
                         </div>
                         <div className="rainbow-m-horizontal_medium">
                             <Button
-                                style={{paddingLeft: '30px', paddingRight: '30px'}}
+                                style={style}
                                 label="Next"
                                 onClick={this.handleNextClick}
                                 variant="brand"
@@ -112,6 +109,8 @@
         faPlus,
         faEllipsisV,
     } = require('@fortawesome/free-solid-svg-icons');
+
+    const style = { paddingLeft: '30px', paddingRight: '30px' }
 
     const stepNames = [ 'step-1', 'step-2', 'step-3', 'step-4', 'step-5' ];
 
@@ -162,11 +161,7 @@
         }
 
         render() {
-            const {
-                currentStepIndex,
-                isBackDisabled,
-                isNextDisabled,
-            } = this.state;
+            const { currentStepIndex } = this.state;
             return (
                 <div className="rainbow-m-bottom_large rainbow-p-bottom_large">
                     <GlobalHeader src="images/user/user3.jpg" className="rainbow-p-bottom_medium rainbow-m-bottom_medium">
@@ -190,7 +185,7 @@
                     <div className="rainbow-m-top_xx-large rainbow-align-content_center rainbow-flex_wrap" >
                         <div className="rainbow-m-horizontal_medium">
                             <Button
-                                style={{paddingLeft: '30px', paddingRight: '30px'}}
+                                style={style}
                                 label="Back"
                                 onClick={this.handleBackClick}
                                 variant="neutral"
@@ -198,7 +193,7 @@
                         </div>
                         <div className="rainbow-m-horizontal_medium">
                             <Button
-                                style={{paddingLeft: '30px', paddingRight: '30px'}}
+                                style={style}
                                 label="Next"
                                 onClick={this.handleNextClick}
                                 variant="brand"
@@ -219,6 +214,8 @@
         faPlus,
         faEllipsisV,
     } = require('@fortawesome/free-solid-svg-icons');
+
+    const style = { paddingLeft: '30px', paddingRight: '30px' }
 
     const stepNames = [ 'step-1', 'step-2', 'step-3', 'step-4', 'step-5' ];
 
@@ -269,11 +266,7 @@
         }
 
         render() {
-            const {
-                currentStepIndex,
-                isBackDisabled,
-                isNextDisabled,
-            } = this.state;
+            const { currentStepIndex } = this.state;
             return (
                 <div className="rainbow-m-bottom_large rainbow-p-bottom_large">
                     <GlobalHeader src="images/user/user3.jpg" className="rainbow-p-bottom_medium rainbow-m-bottom_medium">
@@ -297,7 +290,7 @@
                     <div className="rainbow-m-top_xx-large rainbow-align-content_center rainbow-flex_wrap" >
                         <div className="rainbow-m-horizontal_medium">
                             <Button
-                                style={{paddingLeft: '30px', paddingRight: '30px'}}
+                                style={style}
                                 label="Back"
                                 onClick={this.handleBackClick}
                                 variant="neutral"
@@ -305,7 +298,7 @@
                         </div>
                         <div className="rainbow-m-horizontal_medium">
                             <Button
-                                style={{paddingLeft: '30px', paddingRight: '30px'}}
+                                style={style}
                                 label="Next"
                                 onClick={this.handleNextClick}
                                 variant="brand"
@@ -318,3 +311,57 @@
     }
 
     <ProgressIndicatorWithError />
+
+##### progress indicator with click
+
+    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+    const {
+        faPlus,
+        faEllipsisV,
+    } = require('@fortawesome/free-solid-svg-icons');
+
+    const steps = { 'step-1': 'first' , 'step-2': 'second', 'step-3': 'third', 'step-4': 'fourth', 'step-5': 'fifth' };
+
+    class OnClickProgressIndicator extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                currentStepName: 'step-1',
+            };
+            this.handleOnClick = this.handleOnClick.bind(this);
+        }
+
+        handleOnClick(event, name) {
+            this.setState({ currentStepName: name });
+        }
+
+        render() {
+            const { currentStepName } = this.state;
+            return (
+                <div className="rainbow-m-bottom_large rainbow-p-bottom_large">
+                    <GlobalHeader src="images/user/user3.jpg" className="rainbow-p-bottom_medium rainbow-m-bottom_medium">
+                        <ButtonGroup>
+                            <ButtonIcon icon={<FontAwesomeIcon icon={faPlus} />} variant="border-filled" disabled />
+                            <ButtonIcon icon={<FontAwesomeIcon icon={faEllipsisV} />} variant="border-filled" disabled />
+                        </ButtonGroup>
+                    </GlobalHeader>
+                    <div className="rainbow-m-horizontal_xx-large" >
+                        <ProgressIndicator
+                            currentStepName={currentStepName}
+                            onClick={this.handleOnClick}>
+                            <ProgressStep name="step-1" label="Step 1" />
+                            <ProgressStep name="step-2" label="Step 2" />
+                            <ProgressStep name="step-3" label="Step 3" />
+                            <ProgressStep name="step-4" label="Step 4" />
+                            <ProgressStep name="step-5" label="Step 5" />
+                        </ProgressIndicator>
+                    </div>
+                    <div className="rainbow-m-top_xx-large rainbow-align-content_center rainbow-flex_wrap">
+                        <p>{`This is the ${steps[currentStepName]} step`}</p>
+                    </div>
+                </div>
+            );
+        }
+    }
+
+    <OnClickProgressIndicator />

@@ -1,4 +1,6 @@
 @import "../../styles/colors";
+@import "../../styles/border-radius";
+@import "../../styles/font-sizes";
 
 .rainbow-progress-step {
     display: inline-flex;
@@ -10,25 +12,29 @@
     width: 0.5rem;
     height: 0.5rem;
     position: relative;
-    border-radius: 50%;
+    border-radius: $border-radius-2;
     vertical-align: middle;
     box-shadow: 0 0 1px 0 $color-gray-2;
     background-color: $color-gray-2;
 }
 
 .rainbow-progress-step_label {
-    font-size: 0.625rem;
+    font-size: $font-size-text-x-small;
     color: $color-gray-3;
     position: absolute;
     display: inline-table;
     top: 100%;
 }
 
-.rainbow-progress-step_marker.rainbow-progress-step--is-completed ~ .rainbow-progress-step_label {
+.rainbow-progress-step_marker.rainbow-progress-step--is-active ~ .rainbow-progress-step_label {
     color: $color-brand;
 }
 
-.rainbow-progress-step_error {
+.rainbow-progress-step_marker.rainbow-progress-step--error ~ .rainbow-progress-step_label {
+    color: $color-error-active;
+}
+
+.rainbow-progress-step--error {
     width: 1.25rem;
     height: 1.25rem;
     background-color: $color-error;

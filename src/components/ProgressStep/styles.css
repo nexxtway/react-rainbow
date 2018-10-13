@@ -7,7 +7,7 @@
   width: 0.5rem;
   height: 0.5rem;
   position: relative;
-  border-radius: 50%;
+  border-radius: 12rem;
   vertical-align: middle;
   box-shadow: 0 0 1px 0 #e3e5ed;
   background-color: #e3e5ed; }
@@ -19,10 +19,13 @@
   display: inline-table;
   top: 100%; }
 
-.rainbow-progress-step_marker.rainbow-progress-step--is-completed ~ .rainbow-progress-step_label {
+.rainbow-progress-step_marker.rainbow-progress-step--is-active ~ .rainbow-progress-step_label {
   color: #01b6f5; }
 
-.rainbow-progress-step_error {
+.rainbow-progress-step_marker.rainbow-progress-step--error ~ .rainbow-progress-step_label {
+  color: #ea4243; }
+
+.rainbow-progress-step--error {
   width: 1.25rem;
   height: 1.25rem;
   background-color: #fe4849; }

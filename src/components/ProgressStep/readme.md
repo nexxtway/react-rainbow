@@ -6,6 +6,8 @@
         faEllipsisV,
     } = require('@fortawesome/free-solid-svg-icons');
 
+    const style = { paddingLeft: '30px', paddingRight: '30px' }
+
     const stepNames = [ 'step-1', 'step-2', 'step-3', 'step-4', 'step-5' ];
 
     const steps = [ 'first', 'second', 'third', 'fourth', 'fifth' ];
@@ -83,7 +85,7 @@
                     <div className="rainbow-m-top_xx-large rainbow-align-content_center rainbow-flex_wrap" >
                         <div className="rainbow-m-horizontal_medium">
                             <Button
-                                style={{paddingLeft: '30px', paddingRight: '30px'}}
+                                style={style}
                                 label="Back"
                                 onClick={this.handleBackClick}
                                 variant="neutral"
@@ -91,7 +93,7 @@
                         </div>
                         <div className="rainbow-m-horizontal_medium">
                             <Button
-                                style={{paddingLeft: '30px', paddingRight: '30px'}}
+                                style={style}
                                 label="Next"
                                 onClick={this.handleNextClick}
                                 variant="brand"

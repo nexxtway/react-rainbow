@@ -18,19 +18,10 @@ export default class ProgressIndicator extends Component {
         return classnames('rainbow-progress-indicator', className);
     }
 
-    registerStep(step) {
+    registerStep(name) {
         const { stepChildren } = this.state;
-        const { currentStepName } = this.props;
-        const newChildrenRefs = stepChildren.concat([step]);
-        if (step.name === currentStepName) {
-            return this.setState({
-                stepChildren: newChildrenRefs,
-                activeStepIndex: stepChildren.length,
-            });
-        }
-        return this.setState({
-            stepChildren: newChildrenRefs,
-        });
+        const newChildrenRefs = stepChildren.concat([name]);
+        this.setState({ stepChildren: newChildrenRefs });
     }
 
     render() {
@@ -38,14 +29,14 @@ export default class ProgressIndicator extends Component {
             style,
             children,
             currentStepName,
+            onClick,
         } = this.props;
-        const {
-            stepChildren,
-        } = this.state;
+        const { stepChildren } = this.state;
         const context = {
             currentStepName,
             stepChildren,
             privateRegisterStep: this.registerStep,
+            privateOnClick: onClick,
         };
         return (
             <div className={this.getContainerClassNames()} style={style}>
@@ -61,11 +52,14 @@ export default class ProgressIndicator extends Component {
 }
 
 ProgressIndicator.propTypes = {
+    /** Specifies which step is active */
     currentStepName: PropTypes.string,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The action triggered when the element is clicked. */
+    onClick: PropTypes.func,
     /**
      * This prop that should not be visible in the documentation.
      * @ignore
@@ -77,5 +71,6 @@ ProgressIndicator.defaultProps = {
     currentStepName: '',
     className: undefined,
     style: undefined,
+    onClick: () => {},
     children: null,
 };
