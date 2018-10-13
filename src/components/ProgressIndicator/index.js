@@ -7,10 +7,9 @@ import './styles.css';
 export default class ProgressIndicator extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            stepChildren: [],
-        };
+        this.stepChildren = [];
         this.registerStep = this.registerStep.bind(this);
+        this.setChildrenState = this.setChildrenState.bind(this);
     }
 
     getContainerClassNames() {
@@ -18,10 +17,24 @@ export default class ProgressIndicator extends Component {
         return classnames('rainbow-progress-indicator', className);
     }
 
-    registerStep(name) {
-        const { stepChildren } = this.state;
-        const newChildrenRefs = stepChildren.concat([name]);
-        this.setState({ stepChildren: newChildrenRefs });
+    setChildrenState(step) {
+        const { currentStepName } = this.props;
+        const activeStepIndex = this.stepChildren.findIndex(item => item.name === currentStepName);
+        const currentChildIndex = this.stepChildren.findIndex(item => item.name === step.name);
+
+        if (currentChildIndex === activeStepIndex) {
+            step.onSetStepState('Active');
+        } else if (activeStepIndex === -1 || currentChildIndex < activeStepIndex) {
+            step.onSetStepState('Completed');
+        } else if (currentChildIndex > activeStepIndex) {
+            step.onSetStepState('Inactive');
+        }
+    }
+
+    registerStep(step) {
+        const newChildrenRefs = this.stepChildren.concat([step]);
+        this.stepChildren = newChildrenRefs;
+        this.setChildrenState(step);
     }
 
     render() {
@@ -31,13 +44,13 @@ export default class ProgressIndicator extends Component {
             currentStepName,
             onClick,
         } = this.props;
-        const { stepChildren } = this.state;
         const context = {
             currentStepName,
-            stepChildren,
             privateRegisterStep: this.registerStep,
             privateOnClick: onClick,
+            setChildrenState: this.setChildrenState,
         };
+
         return (
             <div className={this.getContainerClassNames()} style={style}>
                 <ol className="rainbow-progress-indicator_list">

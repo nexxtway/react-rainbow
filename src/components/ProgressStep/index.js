@@ -13,31 +13,36 @@ class StepItem extends Component {
     constructor(props) {
         super(props);
         this.handleOnClick = this.handleOnClick.bind(this);
+        this.setStepState = this.setStepState.bind(this);
+        this.state = {
+            stepState: 'Inactive',
+        };
     }
 
     componentDidMount() {
         const { privateRegisterStep, name } = this.props;
-        return setTimeout(() => privateRegisterStep(name), 0);
+        return setTimeout(() => privateRegisterStep({
+            name,
+            onSetStepState: this.setStepState,
+        }), 0);
     }
 
-    getStepState() {
-        const {
-            name: stepName,
-            stepChildren,
-            currentStepName,
-        } = this.props;
-        let state = null;
-        const activeStepIndex = stepChildren.findIndex(name => name === currentStepName);
-        stepChildren.forEach((name, index) => {
-            if (name === stepName) {
-                if (index === activeStepIndex) {
-                    state = 'Active';
-                } else if (index < activeStepIndex) {
-                    state = 'Completed';
-                }
-            }
-        });
-        return state;
+    componentDidUpdate({ currentStepName: prevCurrentStepName }) {
+        const { currentStepName, name } = this.props;
+        if (prevCurrentStepName !== currentStepName) {
+            this.props.setChildrenState({
+                name,
+                onSetStepState: this.setStepState,
+            });
+        }
+    }
+
+    setStepState(stepState) {
+        const { hasError } = this.props;
+        if (hasError) {
+            return this.setState({ stepState: 'Error' });
+        }
+        return this.setState({ stepState });
     }
 
     getContainerClassNames() {
@@ -46,30 +51,27 @@ class StepItem extends Component {
     }
 
     getButtonClassNames() {
-        const { hasError } = this.props;
-        const stepState = this.getStepState();
+        const { stepState } = this.state;
         return classnames('rainbow-progress-step_marker', {
-            'rainbow-progress-step--is-completed': stepState === 'Completed' && !hasError,
-            'rainbow-progress-step--is-active': stepState === 'Active' && !hasError,
-            'rainbow-progress-step--error': hasError,
+            'rainbow-progress-step--is-completed': stepState === 'Completed',
+            'rainbow-progress-step--is-active': stepState === 'Active',
+            'rainbow-progress-step--error': stepState === 'Error',
         });
     }
 
     getAssistiveText() {
-        const { label, hasError } = this.props;
-        const stepState = this.getStepState();
-        if (hasError) {
-            return `${label} - Error`;
-        } else if (stepState) {
+        const { label } = this.props;
+        const { stepState } = this.state;
+
+        if (stepState !== 'Incative') {
             return `${label} - ${stepState}`;
         }
         return label;
     }
 
     getIcon() {
-        const { hasError } = this.props;
-        const stepState = this.getStepState();
-        if (hasError) {
+        const { stepState } = this.state;
+        if (stepState === 'Error') {
             return <ErrorIcon />;
         } else if (stepState === 'Completed') {
             return <DoneIcon />;
@@ -84,6 +86,7 @@ class StepItem extends Component {
 
     render() {
         const { label } = this.props;
+
         return (
             <li className={this.getContainerClassNames()}>
                 <ButtonIcon
