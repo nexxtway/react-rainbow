@@ -1,4 +1,4 @@
-export function getSelectedItemIndex(children, id) {
+export function getItemIndex(children, id) {
     return children.findIndex(child => child.indicatorID === id);
 }
 
