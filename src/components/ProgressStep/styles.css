@@ -4,8 +4,8 @@
   justify-content: center; }
 
 .rainbow-progress-step_marker {
-  width: 0.5rem;
-  height: 0.5rem;
+  width: 12px;
+  height: 12px;
   position: relative;
   border-radius: 12rem;
   vertical-align: middle;
@@ -27,8 +27,11 @@
 
 .rainbow-progress-step--error {
   width: 1.25rem;
-  height: 1.25rem;
-  background-color: #fe4849; }
+  height: 1.25rem; }
+
+.rainbow-progress-step--error > svg {
+  width: 1.25rem !important;
+  height: 1.25rem !important; }
 
 .rainbow-progress-step--is-active {
   width: 1.25rem;
@@ -38,8 +41,7 @@
 
 .rainbow-progress-step--is-completed {
   width: 1.25rem;
-  height: 1.25rem;
-  background-color: #1de9b6; }
+  height: 1.25rem; }
 
 .rainbow-progress-step--is-completed > svg {
   width: 1.25rem !important;
