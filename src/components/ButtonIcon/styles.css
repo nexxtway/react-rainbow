@@ -9,7 +9,7 @@
   padding: 0;
   background: transparent;
   background-clip: border-box;
-  border: 1px solid transparent;
+  border: 0;
   border-radius: 12rem;
   line-height: 1.875rem;
   text-decoration: none;
