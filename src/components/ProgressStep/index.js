@@ -114,7 +114,8 @@ ProgressStep.propTypes = {
     name: PropTypes.string,
     /** Text label for the ProgressStep. */
     label: PropTypes.node,
-    /** Specifies if the ProgressStep has an error */
+    /** Indicates whether the current step is in error state and displays a warning icon
+    * on the step indicator. This value defaults to false. */
     hasError: PropTypes.bool,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
