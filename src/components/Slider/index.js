@@ -115,7 +115,7 @@ Slider.propTypes = {
     step: PropTypes.string,
     /** Specifies that the slider element must have a value selected before submitting the form. */
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** The disabled value of the slider. This value default to false. */
+    /** Specifies that the slider element should be disabled. This value defaults to false. */
     disabled: PropTypes.bool,
     /** The action triggered when a value attribute changes. */
     onChange: PropTypes.func,
