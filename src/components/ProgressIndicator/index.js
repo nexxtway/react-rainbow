@@ -4,6 +4,9 @@ import classnames from 'classnames';
 import { Provider } from './context';
 import './styles.css';
 
+/**
+* A progress indicator component communicates to the user the progress of a particular process.
+*/
 export default class ProgressIndicator extends Component {
     constructor(props) {
         super(props);
@@ -65,7 +68,8 @@ export default class ProgressIndicator extends Component {
 }
 
 ProgressIndicator.propTypes = {
-    /** Specifies which step is active */
+    /** The current step, which must match the name prop of one of ProgressStep components.
+    * If a step is not provided, the name of the first ProgressStep component is used. */
     currentStepName: PropTypes.string,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,

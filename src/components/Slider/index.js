@@ -6,6 +6,10 @@ import Label from './label';
 import './style.css';
 import RenderIf from '../RenderIf';
 
+/**
+* An input range slider lets the user specify a numeric value which must be between
+* two specified values.
+*/
 export default class Slider extends Component {
     constructor(props) {
         super(props);
@@ -97,15 +101,17 @@ export default class Slider extends Component {
 }
 
 Slider.propTypes = {
-    /** Text label for the slider. */
+    /** The text label for the slider. Provide your own label to describe the slider.
+    * Otherwise, no label is displayed. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** Specifies the value of the slider. */
+    /** The numerical value of the slider. This value defaults to 0. */
     value: PropTypes.string,
-    /** Specifies the minimum value of a specified range */
+    /** The min value of the slider. This value defaults to 0. */
     min: PropTypes.string,
-    /** Specifies the maximum value of a specified range */
+    /** The max value of the slider. This value defaults to 100. */
     max: PropTypes.string,
-    /** Indicates the granularity that is expected by limiting the allowed values */
+    /** The step increment value of the slider. Example steps include 0.1, 1, or 10.
+    * This value defaults to 1. */
     step: PropTypes.string,
     /** Specifies that the slider element must have a value selected before submitting the form. */
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
