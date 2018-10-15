@@ -12,15 +12,16 @@ const currentInfoWindow = Symbol('currentInfoWindow');
 export default class MapComponent extends Component {
     constructor(props) {
         super(props);
+        this.container = React.createRef();
         this.mapContainer = React.createRef();
         this.initMap = this.initMap.bind(this);
         this.selectMarker = this.selectMarker.bind(this);
-        this.toogleInfoWindow = this.toogleInfoWindow.bind(this);
+        this.toggleInfoWindow = this.toggleInfoWindow.bind(this);
         this[currentInfoWindow] = null;
 
         this.state = {
             privateOnClick: this.selectMarker,
-            privateMarkerClick: this.toogleInfoWindow,
+            privateMarkerClick: this.toggleInfoWindow,
         };
     }
 
@@ -53,13 +54,14 @@ export default class MapComponent extends Component {
 
     selectMarker(name, position) {
         const { map } = this.state;
+
         this.setState({
             selectedMarker: name,
         });
         map.panTo(position);
     }
 
-    toogleInfoWindow(infowindow, marker) {
+    toggleInfoWindow(infowindow, marker) {
         const { map } = this.state;
         if (this[currentInfoWindow] === null) {
             this[currentInfoWindow] = infowindow;
@@ -83,10 +85,10 @@ export default class MapComponent extends Component {
         } = this.props;
 
         return (
-            <div className={this.getContainerClassNames()} style={style}>
+            <div className={this.getContainerClassNames()} style={style} ref={this.container}>
                 <div
                     ref={this.mapContainer}
-                    style={getMapContainerStyles(this.mapContainer.current)}
+                    style={getMapContainerStyles(this.container.current)}
                     className="rainbow-google-map_map-container" />
 
                 <div className="rainbow-google-map_coordinates-container">

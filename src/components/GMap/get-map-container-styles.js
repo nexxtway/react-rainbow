@@ -1,7 +1,7 @@
 export default function getMapContainerStyles(ref) {
-    if (ref && ref.parentNode.parentNode) {
-        const parentContainer = ref.parentNode.parentNode;
-        if (parentContainer.style.height === '') {
+    if (ref && ref.parentNode) {
+        const parentHeight = ref.parentNode.style.height;
+        if (!parentHeight) {
             return {
                 minHeight: 300,
             };
