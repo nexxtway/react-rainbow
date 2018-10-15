@@ -18,6 +18,26 @@
     border-radius: $border-radius-1;
     background-clip: padding-box;
     box-shadow: $shadow-4;
+
+    & > .rainbow-google-map {
+        .rainbow-google-map_map-container {
+            border: none;
+            border-radius: $border-radius-1 $border-radius-1 0 0;
+            box-shadow: none;
+            height: 100%;
+            width: 100%;
+        }
+
+        .rainbow-google-map_coordinates-container {
+            margin-bottom: $margin-large;
+            padding: 0 1rem;
+            width: 100%;
+        }
+    }
+}
+
+.rainbow-card--with-header > .rainbow-google-map > .rainbow-google-map_map-container {
+    border-radius: 0;
 }
 
 .rainbow-card_header-container {

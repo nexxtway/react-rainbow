@@ -2,7 +2,7 @@
 
 exports[`<Card/> should have the right class names 1`] = `
 <article
-  className="rainbow-card"
+  className="rainbow-card rainbow-card--with-header"
 >
   <div
     className="rainbow-card_header-container"

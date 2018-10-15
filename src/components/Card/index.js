@@ -22,7 +22,12 @@ export default function Card(props) {
         isLoading,
     } = props;
 
-    const getContainerClassName = () => classnames('rainbow-card', className);
+    const getContainerClassName = () => {
+        const hasHeader = icon || title || actions;
+        return classnames('rainbow-card', {
+            'rainbow-card--with-header': hasHeader,
+        }, className);
+    };
 
     return (
         <article className={getContainerClassName()} style={style}>

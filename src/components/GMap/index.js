@@ -3,20 +3,18 @@ import PropTypes from 'prop-types';
 import scriptLoader from 'react-async-script-loader';
 import MapComponent from './component';
 
-export default function GoogleMap(props) {
+export default function GMap(props) {
     const { apiKey, ...rest } = props;
 
     const Component = scriptLoader(`https://maps.googleapis.com/maps/api/js?key=${apiKey}`)(MapComponent);
     return <Component {...rest} />;
 }
 
-GoogleMap.propTypes = {
-    /** Represent the center of the map. It's value is an object with the lat and lng keys
-     * that correspond with the coordinates. */
-    center: PropTypes.shape({
-        lat: PropTypes.number,
-        lng: PropTypes.number,
-    }),
+GMap.propTypes = {
+    /** The angular distance of a place north or south of the earth's equator. */
+    latitude: PropTypes.number,
+    /** The angular distance of a place east or west of the meridian at Greenwich */
+    longitude: PropTypes.number,
     /** Represent the initial resolution at which to display the map,
      * where zoom 0 corresponds to a map of the Earth fully zoomed out,
      * and larger zoom levels zoom in at a higher resolution.
@@ -41,8 +39,9 @@ GoogleMap.propTypes = {
     style: PropTypes.object,
 };
 
-GoogleMap.defaultProps = {
-    center: { lat: 37.8, lng: -122.5 },
+GMap.defaultProps = {
+    latitude: 37.8,
+    longitude: -122.5,
     zoom: 8,
     header: undefined,
     children: null,

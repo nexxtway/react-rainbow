@@ -46,12 +46,20 @@ export default function SectionRenderer(props) {
 }
 
 SectionRenderer.propTypes = {
-    name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    slug: PropTypes.string.isRequired,
-    content: PropTypes.node.isRequired,
+    name: PropTypes.string,
+    description: PropTypes.string,
+    slug: PropTypes.string,
+    content: PropTypes.node,
     components: PropTypes.node.isRequired,
-    sections: PropTypes.node.isRequired,
+    sections: PropTypes.node,
     depth: PropTypes.number.isRequired,
     pagePerSection: PropTypes.bool.isRequired,
+};
+
+SectionRenderer.defaultProps = {
+    name: undefined,
+    description: undefined,
+    slug: undefined,
+    content: undefined,
+    sections: undefined,
 };
