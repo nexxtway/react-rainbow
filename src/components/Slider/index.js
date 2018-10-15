@@ -101,21 +101,21 @@ export default class Slider extends Component {
 }
 
 Slider.propTypes = {
-    /** The text label for the input range. Provide your own label to describe the slider.
+    /** The text label for the slider. Provide your own label to describe the slider.
     * Otherwise, no label is displayed. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** The numerical value of the input range. This value defaults to 0. */
+    /** The numerical value of the slider. This value defaults to 0. */
     value: PropTypes.string,
-    /** The min value of the input range. This value defaults to 0. */
+    /** The min value of the slider. This value defaults to 0. */
     min: PropTypes.string,
-    /** The max value of the input range. This value defaults to 100. */
+    /** The max value of the slider. This value defaults to 100. */
     max: PropTypes.string,
-    /** The step increment value of the input range. Example steps include 0.1, 1, or 10.
+    /** The step increment value of the slider. Example steps include 0.1, 1, or 10.
     * This value defaults to 1. */
     step: PropTypes.string,
     /** Specifies that the slider element must have a value selected before submitting the form. */
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** The disabled value of the input range. This value default to false. */
+    /** The disabled value of the slider. This value default to false. */
     disabled: PropTypes.bool,
     /** The action triggered when a value attribute changes. */
     onChange: PropTypes.func,
