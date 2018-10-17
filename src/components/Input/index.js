@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import InputBase from './inputBase';
 import InputRadio from './inputRadio';
 import withReduxForm from './../../libs/hocs/withReduxForm';
-import './styles.css';
+
 
 /**
  * Text inputs are used for freeform data entry.
  */
-export function Input({ ...props }) {
-    if (props.type === 'radio') {
+export function Input(props) {
+    const { type } = props;
+    if (type === 'radio') {
         return <InputRadio {...props} />;
     }
     return <InputBase {...props} />;

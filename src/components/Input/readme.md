@@ -17,42 +17,8 @@
             bottomHelpText="ex: (111) 111 1111"
             required
             label="Input Label" />
-
-        <Input
-            type="radio"
-            error="This Field is Required"
-            bottomHelpText="ex: (111) 111 1111"
-            required
-            isCentered
-            label="Input Label" />
-
-        <Input
-            type="radio"
-            label="Input Label" />
-
-        <Input
-            type="radio"
-            label="Input Label" />
-
-        <Input
-            type="radio"
-            label="Input Label" />
-
-        <Input
-            type="radio"
-            disabled
-            label="Input Label" />
     </div>
 
-
-##### input checkbox
-
-    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
-        <Input
-            type="checkbox"
-            label="Input Label"
-            placeholder="Placeholder text" />
-    </div>
 ##### type of the inputs
 
     const inputContainerStyles = {

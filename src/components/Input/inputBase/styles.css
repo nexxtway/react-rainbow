@@ -171,9 +171,6 @@
   right: 0.8rem;
   padding-right: 2.35rem; }
 
-.rainbow-input-radio_container--counter {
-  align-items: center; }
-
 .rainbow-input-radio_help {
   font-size: 0.875rem;
   margin-top: 0.5rem;
@@ -181,26 +178,12 @@
   color: #061c3f;
   align-self: flex-start; }
 
-.rainbow-input-radio_help--counter {
-  font-size: 0.875rem;
-  margin-top: 0.5rem;
-  align-self: center;
-  color: #061c3f;
-  align-self: center; }
-
 .rainbow-input-radio_error-message {
   font-size: 0.875rem;
   margin-top: 0.5rem;
   align-self: center;
   color: #fe4849;
   align-self: flex-start; }
-
-.rainbow-input-radio_error-message--counter {
-  font-size: 0.875rem;
-  margin-top: 0.5rem;
-  align-self: center;
-  color: #fe4849;
-  align-self: center; }
 
 .rainbow-input-radio_inner-container {
   display: inline-block; }
@@ -239,8 +222,7 @@
 .rainbow-input-radio_inner-container [type="radio"]:checked ~ .rainbow-input-radio_faux,
 .rainbow-input-radio_inner-container [type="radio"]:checked + .rainbow-input-radio_label-container .rainbow-input-radio_faux {
   background: white;
-  border: solid 0.09375rem #01b6f5;
-  box-shadow: 0 0 2px #01b6f5; }
+  border: solid 0.09375rem #01b6f5; }
   .rainbow-input-radio_inner-container [type="radio"]:checked + .rainbow-input-radio_faux::after,
   .rainbow-input-radio_inner-container [type="radio"]:checked ~ .rainbow-input-radio_faux::after,
   .rainbow-input-radio_inner-container [type="radio"]:checked + .rainbow-input-radio_label-container .rainbow-input-radio_faux::after {
@@ -285,8 +267,7 @@
 .rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio']:checked + .rainbow-input-radio_faux,
 .rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio']:checked ~ .rainbow-input-radio_faux,
 .rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio']:checked + .rainbow-input-radio_label-container .rainbow-input-radio_faux {
-  background: white;
-  box-shadow: 0 0 2px #fe4849; }
+  background: white; }
   .rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio']:checked + .rainbow-input-radio_faux::after,
   .rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio']:checked ~ .rainbow-input-radio_faux::after,
   .rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio']:checked + .rainbow-input-radio_label-container .rainbow-input-radio_faux::after {

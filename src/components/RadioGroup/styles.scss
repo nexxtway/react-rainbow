@@ -81,7 +81,6 @@
 .rainbow-radio-group_radio [type="radio"]:checked + .rainbow-radio-group_radio-label-container .rainbow-radio-group_radio-faux {
     background: white;
     border: solid 0.09375rem $color-brand;
-    box-shadow: $shadow-outline;
 
     &::after {
         width: 0.5rem;
@@ -131,7 +130,6 @@
 .rainbow-radio-group--error .rainbow-radio-group_radio [type='radio']:checked ~ .rainbow-radio-group_radio-faux,
 .rainbow-radio-group--error .rainbow-radio-group_radio [type='radio']:checked + .rainbow-radio-group_radio-label-container .rainbow-radio-group_radio-faux {
     background: white;
-    box-shadow: $shadow-error;
 
     &::after {
         background: $color-error;
