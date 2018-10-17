@@ -1,167 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import InputBase from './inputBase';
+import InputRadio from './inputRadio';
 import withReduxForm from './../../libs/hocs/withReduxForm';
-import { uniqueId } from './../../libs/utils';
-import Label from './label';
-import RenderIf from '../RenderIf';
 import './styles.css';
 
 /**
  * Text inputs are used for freeform data entry.
  */
-class Input extends Component {
-    constructor(props) {
-        super(props);
-        this.inputId = uniqueId('input');
-        this.inlineTextLabelId = uniqueId('inline-text-label');
-        this.errorMessageId = uniqueId('error-message');
-        this.inputRef = React.createRef();
+export function Input({ ...props }) {
+    if (props.type === 'radio') {
+        return <InputRadio {...props} />;
     }
-
-    getContainerClassNames() {
-        const {
-            className,
-            error,
-        } = this.props;
-        return classnames('rainbow-input_container', { 'rainbow-input--error': error }, className);
-    }
-
-    getIconPositionClassNames() {
-        const {
-            icon,
-            iconPosition,
-        } = this.props;
-        return classnames({
-            'rainbow-input_icon-container': icon,
-            [`rainbow-input_icon--${iconPosition}`]: icon,
-        });
-    }
-
-    getInputClassNames() {
-        const {
-            isBare,
-            isCentered,
-        } = this.props;
-        return classnames('rainbow-input', {
-            'rainbow-input_bare': isBare,
-            'rainbow-input_counter': isCentered,
-        });
-    }
-
-    getInlineTextLabelId() {
-        const {
-            bottomHelpText,
-        } = this.props;
-        if (bottomHelpText) {
-            return this.inlineTextLabelId;
-        }
-        return undefined;
-    }
-
-    getErrorMessageId() {
-        const { error } = this.props;
-        if (error) {
-            return this.errorMessageId;
-        }
-        return undefined;
-    }
-
-    /**
-     * Sets focus on the element.
-     * @public
-     */
-    focus() {
-        this.inputRef.current.focus();
-    }
-
-    /**
-     * Sets click on the element.
-     * @public
-     */
-    click() {
-        this.inputRef.current.click();
-    }
-
-    /**
-     * Sets blur on the element.
-     * @public
-     */
-    blur() {
-        this.inputRef.current.blur();
-    }
-
-    render() {
-        const {
-            style,
-            value,
-            onChange,
-            label,
-            error,
-            placeholder,
-            disabled,
-            readOnly,
-            tabIndex,
-            onFocus,
-            onBlur,
-            onClick,
-            type,
-            maxLength,
-            minLength,
-            pattern,
-            icon,
-            bottomHelpText,
-            required,
-            id,
-        } = this.props;
-
-        return (
-            <div id={id} className={this.getContainerClassNames()} style={style}>
-                <Label
-                    label={label}
-                    required={required}
-                    inputId={this.inputId}
-                    readOnly={readOnly}
-                    id={this.getInlineTextLabelId()} />
-
-                <div className={this.getIconPositionClassNames()}>
-                    <RenderIf isTrue={!!icon}>
-                        <span className="rainbow-input_icon">
-                            {icon}
-                        </span>
-                    </RenderIf>
-
-                    <input
-                        id={this.inputId}
-                        type={type}
-                        className={this.getInputClassNames()}
-                        value={value}
-                        placeholder={placeholder}
-                        onChange={onChange}
-                        tabIndex={tabIndex}
-                        onFocus={onFocus}
-                        onBlur={onBlur}
-                        onClick={onClick}
-                        disabled={disabled}
-                        readOnly={readOnly}
-                        required={required}
-                        maxLength={maxLength}
-                        minLength={minLength}
-                        pattern={pattern}
-                        aria-labelledby={this.getInlineTextLabelId()}
-                        aria-describedby={this.getErrorMessageId()}
-                        ref={this.inputRef} />
-
-                </div>
-                <RenderIf isTrue={!!bottomHelpText}>
-                    <div className="rainbow-input_help">{bottomHelpText}</div>
-                </RenderIf>
-                <RenderIf isTrue={!!error}>
-                    <div id={this.getErrorMessageId()} className="rainbow-input_error">{error}</div>
-                </RenderIf>
-            </div>
-        );
-    }
+    return <InputBase {...props} />;
 }
 
 Input.propTypes = {
@@ -183,6 +34,8 @@ Input.propTypes = {
         'search',
         'tel',
         'color',
+        'radio',
+        'checkbox',
     ]),
     /** Text label for the input. */
     label: PropTypes.oneOfType([
