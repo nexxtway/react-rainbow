@@ -46,9 +46,7 @@ export default class InputBase extends Component {
     }
 
     getInlineTextLabelId() {
-        const {
-            bottomHelpText,
-        } = this.props;
+        const { bottomHelpText } = this.props;
         if (bottomHelpText) {
             return this.inlineTextLabelId;
         }

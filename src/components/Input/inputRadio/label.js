@@ -13,9 +13,9 @@ export default function Label(props) {
         id,
     } = props;
 
-    const getLabelClassNames = () => classnames(
-        'rainbow-input-radio_label',
-        { 'rainbow-input-radio_label--disabled': disabled });
+    const getLabelClassNames = () => classnames('rainbow-input-radio_label', {
+        'rainbow-input-radio_label--disabled': disabled,
+    });
 
     return (
         <RenderIf isTrue={!!label}>
@@ -24,7 +24,7 @@ export default function Label(props) {
                     <RequiredAsterisk required={required} />
                 <span className={getLabelClassNames()}>{label}</span>
             </label>
-    </RenderIf>
+        </RenderIf>
     );
 }
 

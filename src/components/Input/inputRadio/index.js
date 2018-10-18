@@ -17,15 +17,13 @@ export default class InputRadio extends Component {
 
     getContainerClassNames() {
         const { className, error } = this.props;
-        return classnames(
-            'rainbow-input-radio_container',
-            { 'rainbow-input-radio--error': error }, className);
+        return classnames('rainbow-input-radio_container', {
+            'rainbow-input-radio--error': error,
+        }, className);
     }
 
     getInlineTextLabelId() {
-        const {
-            bottomHelpText,
-        } = this.props;
+        const { bottomHelpText } = this.props;
         if (bottomHelpText) {
             return this.inlineTextLabelId;
         }

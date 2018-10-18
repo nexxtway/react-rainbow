@@ -8,7 +8,7 @@ import withReduxForm from './../../libs/hocs/withReduxForm';
 /**
  * Text inputs are used for freeform data entry.
  */
-export function Input(props) {
+function Input(props) {
     const { type } = props;
     if (type === 'radio') {
         return <InputRadio {...props} />;
