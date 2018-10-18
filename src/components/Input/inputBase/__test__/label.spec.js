@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Label from './../label';
 
-describe('<InputLabel/>', () => {
+describe('<InputBaseLabel/>', () => {
     it('should set the inputId passed as the htmlFor prop in the label element', () => {
         const component = mount(
             <Label label="Input Label" inputId="input-213" />,

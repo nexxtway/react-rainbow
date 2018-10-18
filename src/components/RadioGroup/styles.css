@@ -55,8 +55,7 @@
 .rainbow-radio-group_radio [type="radio"]:checked ~ .rainbow-radio-group_radio-faux,
 .rainbow-radio-group_radio [type="radio"]:checked + .rainbow-radio-group_radio-label-container .rainbow-radio-group_radio-faux {
   background: white;
-  border: solid 0.09375rem #01b6f5;
-  box-shadow: 0 0 2px #01b6f5; }
+  border: solid 0.09375rem #01b6f5; }
   .rainbow-radio-group_radio [type="radio"]:checked + .rainbow-radio-group_radio-faux::after,
   .rainbow-radio-group_radio [type="radio"]:checked ~ .rainbow-radio-group_radio-faux::after,
   .rainbow-radio-group_radio [type="radio"]:checked + .rainbow-radio-group_radio-label-container .rainbow-radio-group_radio-faux::after {
@@ -72,7 +71,7 @@
 
 .rainbow-radio-group_radio [type="radio"]:focus + .rainbow-radio-group_radio-faux,
 .rainbow-radio-group_radio [type="radio"]:focus ~ .rainbow-radio-group_radio-faux,
-.rainbow-radio-group_radio [type="radio"]:focus + .rainbow-radiogroup_radio-label-container .rainbow-radio-group_radio-faux {
+.rainbow-radio-group_radio [type="radio"]:focus + .rainbow-radio-group_radio-label-container .rainbow-radio-group_radio-faux {
   border: solid 0.09375rem #01b6f5;
   box-shadow: 0 0 2px #01b6f5; }
 

@@ -1,10 +1,10 @@
 /* stylelint-disable no-descending-specificity */
-@import "../../styles/colors";
-@import "../../styles/shadows";
-@import "../../styles/font-sizes";
-@import "../../styles/border-radius";
-@import "../../styles/margins";
-@import "../../styles/paddings";
+@import "../../../styles/colors";
+@import "../../../styles/shadows";
+@import "../../../styles/font-sizes";
+@import "../../../styles/border-radius";
+@import "../../../styles/margins";
+@import "../../../styles/paddings";
 
 @mixin bottomMessage($color) {
     font-size: $font-size-text-medium;
