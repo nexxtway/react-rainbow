@@ -75,7 +75,6 @@ export default class InputRadio extends Component {
             onBlur,
             onClick,
             bottomHelpText,
-            required,
             id,
         } = this.props;
 
@@ -92,14 +91,12 @@ export default class InputRadio extends Component {
                         onBlur={onBlur}
                         onClick={onClick}
                         disabled={disabled}
-                        required={required}
                         aria-labelledby={this.getInlineTextLabelId()}
                         aria-describedby={this.getErrorMessageId()}
                         ref={this.inputRef} />
                     <Label
                         disabled={disabled}
                         label={label}
-                        required={required}
                         inputId={this.inputId}
                         id={this.getInlineTextLabelId()} />
                 </span>
@@ -122,7 +119,6 @@ InputRadio.propTypes = {
     bottomHelpText: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
-    required: PropTypes.bool,
     error: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
@@ -141,7 +137,6 @@ InputRadio.defaultProps = {
     value: undefined,
     label: null,
     bottomHelpText: null,
-    required: false,
     error: null,
     disabled: false,
     onChange: () => {},

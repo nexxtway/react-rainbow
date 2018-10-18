@@ -35,12 +35,6 @@ describe('<InputRadio/>', () => {
         );
         expect(component.find('input').prop('disabled')).toBe(true);
     });
-    it('should set required in the input element if it is passed', () => {
-        const component = mount(
-            <InputRadio required />,
-        );
-        expect(component.find('input').prop('required')).toBe(true);
-    });
     it('should pass a generated id to the Label component and set the same id to the aria-labelledby for the input when a bottomHelpText is passed', () => {
         const component = mount(
             <InputRadio bottomHelpText="Help text" />,
@@ -57,11 +51,10 @@ describe('<InputRadio/>', () => {
     });
     it('should pass the right props to the Label component', () => {
         const component = mount(
-            <InputRadio label="custom label" required disabled />,
+            <InputRadio label="custom label" disabled />,
         );
         expect(component.find('Label').props()).toEqual({
             label: 'custom label',
-            required: true,
             disabled: true,
             inputId: expect.any(String),
         });

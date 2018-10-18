@@ -15,12 +15,6 @@ describe('<InputRadioLabel/>', () => {
         );
         expect(component.find('label').prop('id')).toBe('label-123');
     });
-    it('should set the required prop passed in the RequiredAsterisk component', () => {
-        const component = mount(
-            <Label label="Input Label" required />,
-        );
-        expect(component.find('RequiredAsterisk').prop('required')).toBe(true);
-    });
     it('should add the right class names when disabled is passed', () => {
         const component = mount(
             <Label label="Input Label" disabled />,
