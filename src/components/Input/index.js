@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import InputBase from './inputBase';
 import InputRadio from './inputRadio';
+import InputCheckbox from './inputCheckbox';
 import withReduxForm from './../../libs/hocs/withReduxForm';
 
 
@@ -12,6 +13,9 @@ function Input(props) {
     const { type } = props;
     if (type === 'radio') {
         return <InputRadio {...props} />;
+    }
+    if (type === 'checkbox') {
+        return <InputCheckbox {...props} />;
     }
     return <InputBase {...props} />;
 }

@@ -8,17 +8,6 @@
     </div>
 
 
-##### input radio
-
-    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
-        <Input
-            type="radio"
-            error="This Field is Required"
-            bottomHelpText="ex: (111) 111 1111"
-            required
-            label="Input Label" />
-    </div>
-
 ##### type of the inputs
 
     const inputContainerStyles = {
@@ -131,6 +120,66 @@
                     type="color" />
 
             </div>
+        </div>
+    </div>
+
+
+##### input radio
+
+    <div className="rainbow-p-around_x-large rainbow-flex rainbow-justify_space-around">
+        <div>
+            <Input
+                className="rainbow-m-bottom_medium"
+                type="radio"
+                label="Input Label" />
+
+            <Input
+                type="radio"
+                error="This Field is Required"
+                label="Input Label" />
+        </div>
+
+        <div>
+            <Input
+                className="rainbow-m-bottom_medium"
+                disabled
+                type="radio"
+                label="Input Label" />
+
+            <Input
+                type="radio"
+                bottomHelpText="ex: (111) 111 1111"
+                label="Input Label" />
+        </div>
+    </div>
+
+
+##### input type checkbox
+
+    <div className="rainbow-p-around_x-large rainbow-flex rainbow-justify_space-around">
+        <div>
+            <Input
+                className="rainbow-m-bottom_medium"
+                type="checkbox"
+                label="Input Label" />
+
+            <Input
+                type="checkbox"
+                error="This Field is Required"
+                label="Input Label" />
+        </div>
+
+        <div>
+            <Input
+                className="rainbow-m-bottom_medium"
+                disabled
+                type="checkbox"
+                label="Input Label" />
+
+            <Input
+                type="checkbox"
+                bottomHelpText="ex: (111) 111 1111"
+                label="Input Label" />
         </div>
     </div>
 
