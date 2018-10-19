@@ -72,6 +72,7 @@ $animation-duration: 700ms;
     transform: translateX(0) !important;
     position: relative;
     animation: slide-in-rtl;
+
     @include animation-properties();
 }
 
@@ -79,6 +80,7 @@ $animation-duration: 700ms;
     0% {
         transform: translateX(100%);
     }
+
     100% {
         transform: translateX(0);
     }
@@ -87,6 +89,7 @@ $animation-duration: 700ms;
 .rainbow-carousel-image--slide-out_rtl {
     transform: translateX(-100%) !important;
     animation: slide-out-rtl;
+
     @include animation-properties();
 }
 
@@ -94,6 +97,7 @@ $animation-duration: 700ms;
     0% {
         transform: translateX(0);
     }
+
     100% {
         transform: translateX(-100%);
     }
@@ -104,6 +108,7 @@ $animation-duration: 700ms;
     transform: translateX(0) !important;
     position: relative;
     animation: slide-in-ltr;
+
     @include animation-properties();
 }
 
@@ -111,6 +116,7 @@ $animation-duration: 700ms;
     0% {
         transform: translateX(-100%);
     }
+
     100% {
         transform: translateX(0);
     }
@@ -119,6 +125,7 @@ $animation-duration: 700ms;
 .rainbow-carousel-image--slide-out_ltr {
     transform: translateX(100%) !important;
     animation: slide-out-ltr;
+
     @include animation-properties();
 }
 
@@ -126,6 +133,7 @@ $animation-duration: 700ms;
     0% {
         transform: translateX(0);
     }
+
     100% {
         transform: translateX(100%);
     }
