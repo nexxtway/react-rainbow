@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PlayIcon from './playIcon';
 import PauseIcon from './pauseIcon';
-import ButtonIcon from '../ButtonIcon';
+import ButtonIcon from '../../ButtonIcon';
 
 export default function AnimationButton({ isAnimationPaused, onClick }) {
     const getIcon = () => {

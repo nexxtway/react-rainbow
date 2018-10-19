@@ -11,9 +11,12 @@
 }
 
 .rainbow-carousel_images {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
     display: -ms-flexbox;
     display: flex;
-    transition: transform 250ms ease-in;
 }
 
 .rainbow-carousel_indicators {
