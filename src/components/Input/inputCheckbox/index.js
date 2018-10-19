@@ -96,6 +96,7 @@ export default class InputCheckbox extends Component {
                         ref={this.inputRef} />
                     <Label
                         label={label}
+                        disabled={disabled}
                         inputId={this.inputId}
                         id={this.getInlineTextLabelId()} />
                 </div>

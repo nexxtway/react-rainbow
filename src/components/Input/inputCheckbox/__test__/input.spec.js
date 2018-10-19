@@ -55,6 +55,7 @@ describe('<InputCheckbox/>', () => {
         );
         expect(component.find('Label').props()).toEqual({
             label: 'custom label',
+            disabled: true,
             inputId: expect.any(String),
         });
     });

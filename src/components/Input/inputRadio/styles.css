@@ -82,8 +82,9 @@
   -ms-user-select: none;
   user-select: none; }
 
+.rainbow-input-radio_inner-container [type="radio"][disabled] + .rainbow-input-radio_faux,
 .rainbow-input-radio_inner-container [type="radio"][disabled] ~ .rainbow-input-radio_faux,
-.rainbow-radio [type="radio"][disabled] + .rainbow-input-radio_label-container .rainbow-input-radio_faux {
+.rainbow-input-radio_inner-container [type="radio"][disabled] + .rainbow-input-radio_label-container .rainbow-input-radio_faux {
   background-color: #f4f6f9;
   border-color: #e3e5ed; }
 
@@ -91,6 +92,11 @@
 .rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio'] ~ .rainbow-input-radio_faux,
 .rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio'] + .rainbow-input-radio_label-container .rainbow-input-radio_faux {
   border: solid 0.09375rem #fe4849; }
+
+.rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio'][disabled] + .rainbow-input-radio_faux,
+.rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio'][disabled] ~ .rainbow-input-radio_faux,
+.rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio'][disabled] + .rainbow-input-radio_label-container .rainbow-input-radio_faux {
+  border-color: #e3e5ed; }
 
 .rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio']:focus + .rainbow-input-radio_faux,
 .rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio']:focus ~ .rainbow-input-radio_faux,
