@@ -15,4 +15,10 @@ describe('<InputCheckboxLabel/>', () => {
         );
         expect(component.find('label').prop('id')).toBe('label-123');
     });
+    it('should add the right class names when disabled is passed', () => {
+        const component = mount(
+            <Label label="Input Label" disabled />,
+        );
+        expect(component.find('.rainbow-input-checkbox_label.rainbow-input-checkbox_label--disabled').exists()).toBe(true);
+    });
 });

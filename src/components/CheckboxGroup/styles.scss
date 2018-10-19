@@ -59,6 +59,10 @@
         line-height: 1.65rem;
     }
 
+    .rainbow-checkbox-group_checkbox-label--disabled {
+        color: $color-gray-3;
+    }
+
     [type="checkbox"] {
         width: 1px;
         height: 1px;
@@ -83,6 +87,12 @@
         transform: translate3d(-50%, -50%, 0) rotate(-45deg);
         border-bottom: 2px solid $color-brand;
         border-left: 2px solid $color-brand;
+    }
+
+    [type="checkbox"]:checked + .rainbow-checkbox-group_checkbox-faux,
+    [type="checkbox"]:checked ~ .rainbow-checkbox-group_checkbox-faux,
+    [type="checkbox"]:checked + .rainbow-checkbox-group_checkbox-label-container .rainbow-checkbox-group_checkbox-faux {
+        border: 2px solid $color-brand;
     }
 
     [type="checkbox"]:focus + .rainbow-checkbox-group_checkbox-faux,

@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import { uniqueId } from '../../libs/utils';
 
 export default class Checkbox extends Component {
     constructor(props) {
         super(props);
         this.inputId = uniqueId('checkboxInput');
+    }
+
+    getLabelClassNames() {
+        const { disabled } = this.props;
+        return classnames('rainbow-checkbox-group_checkbox-label', {
+            'rainbow-checkbox-group_checkbox-label--disabled': disabled,
+        });
     }
 
     render() {
@@ -31,7 +39,7 @@ export default class Checkbox extends Component {
 
                 <label className="rainbow-checkbox-group_checkbox-label-container" htmlFor={this.inputId}>
                     <span className="rainbow-checkbox-group_checkbox-faux" />
-                    <span className="rainbow-checkbox-group_checkbox-label">{label}</span>
+                    <span className={this.getLabelClassNames()}>{label}</span>
                 </label>
             </div>
         );
