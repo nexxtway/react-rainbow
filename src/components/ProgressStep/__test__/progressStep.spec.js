@@ -51,6 +51,20 @@ describe('<ProgressStep />', () => {
         expect(item2.find('div').exists()).toBe(true);
         expect(item3.find('ErrorIcon').exists()).toBe(true);
     });
+    it('should set the right text to the AssistiveText component when currentStepName is step-2 and the step-3 has an error ', () => {
+        const component = mount(
+            <ProgressIndicator currentStepName="step-2">
+                <ProgressStep name="step-1" label="Step 1" />
+                <ProgressStep name="step-2" label="Step 2" />
+                <ProgressStep name="step-3" label="Step 3" hasError />
+            </ProgressIndicator>,
+        );
+        jest.runOnlyPendingTimers();
+        component.setState({ key: 2 });
+        expect(component.find('ProgressStep[name="step-1"]').find('AssistiveText[text="Step 1 - Completed"]').exists()).toBe(true);
+        expect(component.find('ProgressStep[name="step-2"]').find('AssistiveText[text="Step 2 - Active"]').exists()).toBe(true);
+        expect(component.find('ProgressStep[name="step-3"]').find('AssistiveText[text="Step 3 - Error"]').exists()).toBe(true);
+    });
     it('should set the right class names when custom class name is passed', () => {
         const component = mount(
             <ProgressIndicator>

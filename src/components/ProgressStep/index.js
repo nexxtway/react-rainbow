@@ -64,10 +64,15 @@ class StepItem extends Component {
         const { label } = this.props;
         const { stepState } = this.state;
 
-        if (stepState !== 'Incative') {
-            return `${label} - ${stepState}`;
+        if (label) {
+            if (stepState !== 'Incative') {
+                return `${label} - ${stepState}`;
+            }
+            return label;
+        } else if (stepState !== 'Incative') {
+            return stepState;
         }
-        return label;
+        return null;
     }
 
     getIcon() {
@@ -95,9 +100,8 @@ class StepItem extends Component {
                 <ButtonIcon
                     icon={this.getIcon()}
                     className={this.getButtonClassNames()}
-                    onClick={this.handleOnClick}>
-                    <AssistiveText text={this.getAssistiveText()} />
-                </ButtonIcon>
+                    onClick={this.handleOnClick} />
+                <AssistiveText text={this.getAssistiveText()} />
                 <span className="rainbow-progress-step_label">{label}</span>
             </li>
         );
