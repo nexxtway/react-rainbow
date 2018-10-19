@@ -59,6 +59,8 @@ class Item extends Component {
             const activeItemIndex = getItemIndex(childrenRegistred, activeItem);
             const prevItemIndex = getItemIndex(childrenRegistred, prevActiveItem);
             if (activeItemIndex === 0 && prevItemIndex === childrenRegistred.length - 1) {
+                return 'rtl';
+            } else if (prevItemIndex === 0 && activeItemIndex === childrenRegistred.length - 1) {
                 return 'ltr';
             } else if (activeItemIndex > prevItemIndex) {
                 return 'rtl';

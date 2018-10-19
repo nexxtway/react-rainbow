@@ -52,7 +52,7 @@
   position: relative;
   animation: slide-in-rtl;
   animation-timing-function: linear;
-  animation-duration: 700ms; }
+  animation-duration: 250ms; }
 
 @keyframes slide-in-rtl {
   0% {
@@ -64,7 +64,7 @@
   transform: translateX(-100%) !important;
   animation: slide-out-rtl;
   animation-timing-function: linear;
-  animation-duration: 700ms; }
+  animation-duration: 250ms; }
 
 @keyframes slide-out-rtl {
   0% {
@@ -77,7 +77,7 @@
   position: relative;
   animation: slide-in-ltr;
   animation-timing-function: linear;
-  animation-duration: 700ms; }
+  animation-duration: 250ms; }
 
 @keyframes slide-in-ltr {
   0% {
@@ -89,7 +89,7 @@
   transform: translateX(100%) !important;
   animation: slide-out-ltr;
   animation-timing-function: linear;
-  animation-duration: 700ms; }
+  animation-duration: 250ms; }
 
 @keyframes slide-out-ltr {
   0% {
