@@ -17,7 +17,7 @@ describe('<ProgressStep />', () => {
         const item = component.find('ProgressStep[name="step-1"]').find('ButtonIcon');
         expect(item.prop('className')).toBe('rainbow-progress-step--error');
     });
-    it('should set the rainbow-progress-step--is-active class to the second step and the rainbow-progress-step--is-completed class to the first step when currentStepName is step-2', () => {
+    it('should set the rainbow-progress-step--is-active class to the step-2 step and the rainbow-progress-step--is-completed class to the step-1 step when currentStepName is step-2', () => {
         const component = mount(
             <ProgressIndicator currentStepName="step-2">
                 <ProgressStep name="step-1" />
@@ -34,7 +34,7 @@ describe('<ProgressStep />', () => {
         expect(item2.prop('className')).toBe('rainbow-progress-step--is-active');
         expect(item3.prop('className')).toBe('rainbow-progress-step_marker');
     });
-    it('should set', () => {
+    it('should set the right icon when currentStepName is step-2 and the step-3 has an error', () => {
         const component = mount(
             <ProgressIndicator currentStepName="step-2">
                 <ProgressStep name="step-1" />
