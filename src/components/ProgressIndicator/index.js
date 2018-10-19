@@ -46,6 +46,7 @@ export default class ProgressIndicator extends Component {
             children,
             currentStepName,
             onClick,
+            id,
         } = this.props;
         const context = {
             currentStepName,
@@ -55,7 +56,10 @@ export default class ProgressIndicator extends Component {
         };
 
         return (
-            <div className={this.getContainerClassNames()} style={style}>
+            <div
+                id={id}
+                className={this.getContainerClassNames()}
+                style={style}>
                 <ol className="rainbow-progress-indicator_list">
                     <Provider value={context}>
                         { children }
@@ -77,6 +81,8 @@ ProgressIndicator.propTypes = {
     style: PropTypes.object,
     /** The action triggered when the element is clicked. */
     onClick: PropTypes.func,
+    /** The id of the outer element. */
+    id: PropTypes.string,
     /**
      * This prop that should not be visible in the documentation.
      * @ignore
@@ -90,4 +96,5 @@ ProgressIndicator.defaultProps = {
     style: undefined,
     onClick: () => {},
     children: null,
+    id: undefined,
 };

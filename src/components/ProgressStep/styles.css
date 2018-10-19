@@ -4,13 +4,12 @@
   justify-content: center; }
 
 .rainbow-progress-step_marker {
-  width: 12px;
-  height: 12px;
-  position: relative;
-  border-radius: 12rem;
-  vertical-align: middle;
-  box-shadow: 0 0 1px 0 #e3e5ed;
+  width: 0.75rem;
+  height: 0.75rem;
   background-color: #e3e5ed; }
+
+.rainbow-progress-step_marker_icon {
+  border-radius: 12rem; }
 
 .rainbow-progress-step_label {
   font-size: 0.625rem;
@@ -19,10 +18,10 @@
   display: inline-table;
   top: 100%; }
 
-.rainbow-progress-step_marker.rainbow-progress-step--is-active ~ .rainbow-progress-step_label {
+.rainbow-progress-step--is-active ~ .rainbow-progress-step_label {
   color: #01b6f5; }
 
-.rainbow-progress-step_marker.rainbow-progress-step--error ~ .rainbow-progress-step_label {
+.rainbow-progress-step--error ~ .rainbow-progress-step_label {
   color: #ea4243; }
 
 .rainbow-progress-step--error {
@@ -36,7 +35,12 @@
 .rainbow-progress-step--is-active {
   width: 1.25rem;
   height: 1.25rem;
-  background-color: white;
+  background-color: white; }
+
+.rainbow-progress-step--is-active_icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 12rem;
   border: 0.375rem solid #01b6f5; }
 
 .rainbow-progress-step--is-completed {

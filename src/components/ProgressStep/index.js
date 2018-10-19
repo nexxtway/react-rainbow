@@ -52,7 +52,8 @@ class StepItem extends Component {
 
     getButtonClassNames() {
         const { stepState } = this.state;
-        return classnames('rainbow-progress-step_marker', {
+        return classnames({
+            'rainbow-progress-step_marker': stepState === 'Inactive',
             'rainbow-progress-step--is-completed': stepState === 'Completed',
             'rainbow-progress-step--is-active': stepState === 'Active',
             'rainbow-progress-step--error': stepState === 'Error',
@@ -75,8 +76,10 @@ class StepItem extends Component {
             return <ErrorIcon />;
         } else if (stepState === 'Completed') {
             return <DoneIcon />;
+        } else if (stepState === 'Active') {
+            return <div className="rainbow-progress-step--is-active_icon" />;
         }
-        return null;
+        return <div className="rainbow-progress-step_marker_icon" />;
     }
 
     handleOnClick(event) {
