@@ -54,7 +54,7 @@ module.exports = {
                 },
                 {
                     name: 'Testing',
-                    content: 'library/pages/testDocumentation.md',
+                    content: 'library/pages/testing.md',
                 },
             ]
         },
