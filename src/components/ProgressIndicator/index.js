@@ -55,7 +55,9 @@ export default class ProgressIndicator extends Component {
         };
 
         return (
-            <div className={this.getContainerClassNames()} style={style}>
+            <div
+                className={this.getContainerClassNames()}
+                style={style}>
                 <ol className="rainbow-progress-indicator_list">
                     <Provider value={context}>
                         { children }

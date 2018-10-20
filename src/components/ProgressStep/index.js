@@ -2,12 +2,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import AssistiveText from '../AssistiveText';
 import ButtonIcon from '../ButtonIcon';
 import { Consumer } from '../ProgressIndicator/context';
 import DoneIcon from './doneIcon';
 import ErrorIcon from './errorIcon';
 import './styles.css';
+
+const iconMap = {
+    Error: () => <ErrorIcon />,
+    Completed: () => <DoneIcon />,
+    Active: () => <div className="rainbow-progress-step--is-active_icon" />,
+    Inactive: () => <div className="rainbow-progress-step_marker_icon" />,
+};
 
 class StepItem extends Component {
     constructor(props) {
@@ -52,7 +58,8 @@ class StepItem extends Component {
 
     getButtonClassNames() {
         const { stepState } = this.state;
-        return classnames('rainbow-progress-step_marker', {
+        return classnames({
+            'rainbow-progress-step_marker': stepState === 'Inactive',
             'rainbow-progress-step--is-completed': stepState === 'Completed',
             'rainbow-progress-step--is-active': stepState === 'Active',
             'rainbow-progress-step--error': stepState === 'Error',
@@ -63,18 +70,22 @@ class StepItem extends Component {
         const { label } = this.props;
         const { stepState } = this.state;
 
-        if (stepState !== 'Incative') {
+        if (label && stepState !== 'Inactive') {
             return `${label} - ${stepState}`;
         }
-        return label;
+        if (label) {
+            return label;
+        }
+        if (stepState !== 'Inactive') {
+            return stepState;
+        }
+        return '';
     }
 
     getIcon() {
         const { stepState } = this.state;
-        if (stepState === 'Error') {
-            return <ErrorIcon />;
-        } else if (stepState === 'Completed') {
-            return <DoneIcon />;
+        if (iconMap[stepState]) {
+            return iconMap[stepState]();
         }
         return null;
     }
@@ -92,9 +103,8 @@ class StepItem extends Component {
                 <ButtonIcon
                     icon={this.getIcon()}
                     className={this.getButtonClassNames()}
-                    onClick={this.handleOnClick}>
-                    <AssistiveText text={this.getAssistiveText()} />
-                </ButtonIcon>
+                    onClick={this.handleOnClick}
+                    assistiveText={this.getAssistiveText()} />
                 <span className="rainbow-progress-step_label">{label}</span>
             </li>
         );

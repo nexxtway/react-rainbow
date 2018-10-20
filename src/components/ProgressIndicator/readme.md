@@ -346,8 +346,7 @@
                         </ButtonGroup>
                     </GlobalHeader>
                     <div className="rainbow-m-horizontal_xx-large" >
-                        <ProgressIndicator
-                            currentStepName={currentStepName}
+                        <ProgressIndicator currentStepName={currentStepName}
                             onClick={this.handleOnClick}>
                             <ProgressStep name="step-1" label="Step 1" />
                             <ProgressStep name="step-2" label="Step 2" />
