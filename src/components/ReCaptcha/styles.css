@@ -1,0 +1,12 @@
+.rainbow-recaptcha-container {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch; }
+
+.rainbow-recaptcha_error {
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  align-self: center;
+  color: #fe4849; }
