@@ -5,12 +5,12 @@ import CarouselImage from '../../CarouselImage';
 
 describe('<CarouselCard />', () => {
     it('should set the right class names', () => {
-        const component = mount(<CarouselCard className="custom-class" />);
+        const component = mount(<CarouselCard className="custom-class" disableAutoScroll />);
         expect(component.find('div.rainbow-carousel.custom-class').exists()).toBe(true);
     });
     it('should render the children passed', () => {
         const component = mount(
-            <CarouselCard>
+            <CarouselCard disableAutoScroll>
                 <CarouselImage
                     src="images/illustrations/rainbows-background.svg"
                     header="First Card"

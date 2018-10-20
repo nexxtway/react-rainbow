@@ -23,10 +23,17 @@ class Item extends Component {
     static getDerivedStateFromProps(props, state) {
         const { activeItem } = props;
         const { activeItem: stateActiveItem } = state;
-        return {
+        const newState = {
             activeItem,
             prevActiveItem: stateActiveItem,
         };
+        const isNotTheSameActive = state.activeItem !== newState.activeItem;
+        const isNotTheSamePrev = state.prevActiveItem !== newState.prevActiveItem;
+        const isNotTheSameState = isNotTheSameActive || isNotTheSamePrev;
+        if (isNotTheSameState) {
+            return newState;
+        }
+        return null;
     }
 
     componentDidMount() {
@@ -59,15 +66,15 @@ class Item extends Component {
             const activeItemIndex = getItemIndex(childrenRegistred, activeItem);
             const prevItemIndex = getItemIndex(childrenRegistred, prevActiveItem);
             if (activeItemIndex === 0 && prevItemIndex === childrenRegistred.length - 1) {
-                return 'rtl';
+                return 'right-to-left';
             } else if (prevItemIndex === 0 && activeItemIndex === childrenRegistred.length - 1) {
-                return 'ltr';
+                return 'left-to-right';
             } else if (activeItemIndex > prevItemIndex) {
-                return 'rtl';
+                return 'right-to-left';
             }
-            return 'ltr';
+            return 'left-to-right';
         }
-        return 'rtl';
+        return 'right-to-left';
     }
 
 

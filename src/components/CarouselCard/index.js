@@ -23,12 +23,14 @@ export default class CarouselCard extends Component {
             isAnimationPaused: this.props.disableAutoScroll,
             privateRegisterChild: this.registerChild,
         };
-        // this.cardPosition = { transform: 'translateX(-0%)' };
         this.containerRef = React.createRef();
     }
 
     componentDidMount() {
-        this.startAnimation();
+        const { isAnimationPaused } = this.state;
+        if (!isAnimationPaused) {
+            this.startAnimation();
+        }
     }
 
     getContainerClassName() {
