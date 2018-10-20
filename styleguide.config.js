@@ -52,6 +52,10 @@ module.exports = {
                     name: 'Contribuiting',
                     content: 'CONTRIBUTING.md',
                 },
+                {
+                    name: 'Testing',
+                    content: 'library/pages/testDocumentation.md',
+                },
             ]
         },
         {
