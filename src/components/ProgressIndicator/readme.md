@@ -66,9 +66,7 @@
                         </ButtonGroup>
                     </GlobalHeader>
                     <div className="rainbow-m-horizontal_xx-large">
-                        <ProgressIndicator
-                            id="progressindicator-1"
-                            currentStepName={stepNames[currentStepIndex]}>
+                        <ProgressIndicator currentStepName={stepNames[currentStepIndex]}>
                             <ProgressStep name="step-1" />
                             <ProgressStep name="step-2" />
                             <ProgressStep name="step-3" />
@@ -278,9 +276,7 @@
                         </ButtonGroup>
                     </GlobalHeader>
                     <div className="rainbow-m-horizontal_xx-large" >
-                        <ProgressIndicator
-                            id="progressindicator-5"
-                            currentStepName={stepNames[currentStepIndex]}>
+                        <ProgressIndicator currentStepName={stepNames[currentStepIndex]}>
                             <ProgressStep name="step-1" label="Step 1" />
                             <ProgressStep name="step-2" label="Step 2" />
                             <ProgressStep name="step-3" label="Step 3" hasError />
@@ -294,7 +290,6 @@
                     <div className="rainbow-m-top_xx-large rainbow-align-content_center rainbow-flex_wrap" >
                         <div className="rainbow-m-horizontal_medium">
                             <Button
-                                id="backbutton-5"
                                 style={style}
                                 label="Back"
                                 onClick={this.handleBackClick}
@@ -303,7 +298,6 @@
                         </div>
                         <div className="rainbow-m-horizontal_medium">
                             <Button
-                                id="nextbutton-5"
                                 style={style}
                                 label="Next"
                                 onClick={this.handleNextClick}
@@ -352,9 +346,7 @@
                         </ButtonGroup>
                     </GlobalHeader>
                     <div className="rainbow-m-horizontal_xx-large" >
-                        <ProgressIndicator
-                            id="progressindicator-7"
-                            currentStepName={currentStepName}
+                        <ProgressIndicator currentStepName={currentStepName}
                             onClick={this.handleOnClick}>
                             <ProgressStep name="step-1" label="Step 1" />
                             <ProgressStep name="step-2" label="Step 2" />

@@ -2,12 +2,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import AssistiveText from '../AssistiveText';
 import ButtonIcon from '../ButtonIcon';
 import { Consumer } from '../ProgressIndicator/context';
 import DoneIcon from './doneIcon';
 import ErrorIcon from './errorIcon';
 import './styles.css';
+
+const iconMap = {
+    Error: () => <ErrorIcon />,
+    Completed: () => <DoneIcon />,
+    Active: () => <div className="rainbow-progress-step--is-active_icon" />,
+    Inactive: () => <div className="rainbow-progress-step_marker_icon" />,
+};
 
 class StepItem extends Component {
     constructor(props) {
@@ -64,27 +70,24 @@ class StepItem extends Component {
         const { label } = this.props;
         const { stepState } = this.state;
 
+        if (label && stepState !== 'Inactive') {
+            return `${label} - ${stepState}`;
+        }
         if (label) {
-            if (stepState !== 'Incative') {
-                return `${label} - ${stepState}`;
-            }
             return label;
-        } else if (stepState !== 'Incative') {
+        }
+        if (stepState !== 'Inactive') {
             return stepState;
         }
-        return null;
+        return '';
     }
 
     getIcon() {
         const { stepState } = this.state;
-        if (stepState === 'Error') {
-            return <ErrorIcon />;
-        } else if (stepState === 'Completed') {
-            return <DoneIcon />;
-        } else if (stepState === 'Active') {
-            return <div className="rainbow-progress-step--is-active_icon" />;
+        if (iconMap[stepState]) {
+            return iconMap[stepState]();
         }
-        return <div className="rainbow-progress-step_marker_icon" />;
+        return null;
     }
 
     handleOnClick(event) {
@@ -100,8 +103,8 @@ class StepItem extends Component {
                 <ButtonIcon
                     icon={this.getIcon()}
                     className={this.getButtonClassNames()}
-                    onClick={this.handleOnClick} />
-                <AssistiveText text={this.getAssistiveText()} />
+                    onClick={this.handleOnClick}
+                    assistiveText={this.getAssistiveText()} />
                 <span className="rainbow-progress-step_label">{label}</span>
             </li>
         );
