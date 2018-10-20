@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Markdown from 'react-styleguidist/lib/rsg-components/Markdown/Markdown';
 import SectionHeading from '../SectionHeading';
+import isInGettingStarted from './isInGettingStarted';
 
 export default function SectionRenderer(props) {
     const {
@@ -17,7 +18,7 @@ export default function SectionRenderer(props) {
     } = props;
 
     const getSectionClassName = () => {
-        if (name === 'Getting Started' || name === 'Overview' || name === 'Usage' || name === 'Contribuiting') {
+        if (isInGettingStarted(name)) {
             return 'rainbow-p-horizontal_x-large';
         }
         return null;
