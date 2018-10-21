@@ -5,7 +5,7 @@ describe('getUrl function', () => {
         const url = getUrl();
         expect(url).toBe('https://www.google.com/recaptcha/api.js?render=explicit');
     });
-    it('should return the recaptcha url width the lang param', () => {
+    it('should return the recaptcha url with the lang param', () => {
         const url = getUrl('es');
         expect(url).toBe('https://www.google.com/recaptcha/api.js?render=explicit&hl=es');
     });

@@ -13,7 +13,7 @@ describe('<ReCaptchaWrapper />', () => {
             isScriptLoaded: false,
             isScriptLoadSucceed: false,
         });
-        expect(component.children()).toEqual({});
+        expect(component.children().length).toEqual(0);
     });
     it('should not render when isScriptLoaded is true and isScriptLoadSucceed is false', () => {
         const component = mount(<ReCaptchaWrapper />);
@@ -21,7 +21,7 @@ describe('<ReCaptchaWrapper />', () => {
             isScriptLoaded: true,
             isScriptLoadSucceed: false,
         });
-        expect(component.children()).toEqual({});
+        expect(component.children().length).toEqual(0);
     });
     it('should render the ReCaptcha loader with the right props', () => {
         const component = mount(
