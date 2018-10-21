@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { Consumer } from './../ButtonMenu/context';
+import { Consumer } from './../PrimitiveMenu/context';
 import Icon from './icon';
 import './styles.css';
 
