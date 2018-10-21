@@ -1,0 +1,18 @@
+@import "../../styles/colors";
+@import "../../styles/font-sizes";
+@import "../../styles/margins";
+
+.rainbow-recaptcha-container {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+.rainbow-recaptcha_error {
+    font-size: $font-size-text-medium;
+    margin-top: $margin-x-small;
+    align-self: center;
+    color: $color-error;
+}
