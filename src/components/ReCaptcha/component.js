@@ -56,10 +56,9 @@ ReCaptchaComponent.propTypes = {
 };
 
 ReCaptchaComponent.defaultProps = {
-    tabIndex: 0,
     error: undefined,
     onChange: () => {},
     className: undefined,
-    style: {},
+    style: undefined,
 };
 
