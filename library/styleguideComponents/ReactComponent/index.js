@@ -78,7 +78,7 @@ export default class ReactComponent extends Component {
                         </Card>
                     </RenderIf>
                     <RenderIf isTrue={activeTabName === 'utils'}>
-                        <Prismic repo="react-rainbow-utility">
+                        <Prismic repo="rainbow-doc">
                             <div className="react-rainbow-utils_container">
                                 <QueryMulti component={Util} type="page-object">
                                     <QueryAt path="document.type" value="page-object" />
@@ -90,7 +90,7 @@ export default class ReactComponent extends Component {
                                 </QueryMulti>
                             </div>
                             <div className="react-rainbow-utils_container">
-                                <QueryMulti component={Util} type="experience-examples">
+                                <QueryMulti component={Util} type="experience-examples" componentName={name}>
                                     <QueryAt path="document.type" value="experience-examples" />
                                     <QueryAt path="document.tags" value={[name]} />
                                 </QueryMulti>

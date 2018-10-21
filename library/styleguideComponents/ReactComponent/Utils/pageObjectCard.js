@@ -1,12 +1,11 @@
 import React from 'react';
 import Card from '../../../../src/components/Card';
-import './styles.css';
 import PageObjectImage from './pageObjectImage';
 import TutorialImage from './tutorialImage';
 import FlaskIcon from './flaskIcon';
 import GraduationCapIcon from './graduationCapIcon';
 
-export default function IntegrationCard({ results, type }) {
+export default function PageObjectCard({ results, type }) {
     const getTypeText = () => {
         if (type === 'page-object') {
             return 'Page Object';
@@ -29,10 +28,9 @@ export default function IntegrationCard({ results, type }) {
     };
 
     return results.map(({ data, id }) => (
-        <a href={data.url.url} className="react-rainbow-utils-link">
+        <a key={id} href={data.url.url} className="react-rainbow-utils-link">
             <Card
                 className="react-rainbow-utils-item"
-                key={id}
                 footer={(
                     <div className="react-rainbow-utils-item-page-object_content">
                         <FooterIcon />
