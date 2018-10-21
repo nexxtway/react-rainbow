@@ -1,0 +1,40 @@
+@import "../../styles/margins";
+@import "../../styles/colors";
+
+.rainbow-pagination_container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: fit-content;
+}
+
+.rainbow-pagination_pages {
+    margin-left: $margin-x-small;
+    margin-right: $margin-x-small;
+}
+
+.rainbow-pagination_button {
+    color: $color-gray-4;
+    font-weight: bold;
+    height: 2rem;
+    width: 2rem;
+    line-height: unset;
+}
+
+.rainbow-pagination_active-button {
+    background-color: $color-gray-2;
+    color: $color-dark-1
+}
+
+.rainbow-pagination_button-icon {
+    svg {
+        width: 7px !important;
+        height: 10px !important;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+}
