@@ -4,12 +4,16 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faList, faCode, faWrench } from '@fortawesome/free-solid-svg-icons';
 import Pathline from 'react-styleguidist/lib/rsg-components/Pathline';
+import Prismic from 'react-prismic-cms/components/Prismic';
+import QueryMulti from 'react-prismic-cms/components/QueryMulti';
+import QueryAt from 'react-prismic-cms/components/QueryAt';
 import Tabset from '../../../src/components/Tabset';
 import Tab from '../../../src/components/Tab';
 import RenderIf from '../../../src/components/RenderIf';
 import Card from './../../../src/components/Card';
 import TabLabel from './tabLabel';
 import Description from './description';
+import Util from './Utils';
 import './styles.css';
 
 export default class ReactComponent extends Component {
@@ -72,6 +76,26 @@ export default class ReactComponent extends Component {
 
                             {tabBody}
                         </Card>
+                    </RenderIf>
+                    <RenderIf isTrue={activeTabName === 'utils'}>
+                        <Prismic repo="react-rainbow-utility">
+                            <div className="react-rainbow-utils_container">
+                                <QueryMulti component={Util} type="page-object">
+                                    <QueryAt path="document.type" value="page-object" />
+                                    <QueryAt path="document.tags" value={[name]} />
+                                </QueryMulti>
+                                <QueryMulti component={Util} type="tutorials">
+                                    <QueryAt path="document.type" value="tutorials" />
+                                    <QueryAt path="document.tags" value={[name]} />
+                                </QueryMulti>
+                            </div>
+                            <div className="react-rainbow-utils_container">
+                                <QueryMulti component={Util} type="experience-examples">
+                                    <QueryAt path="document.type" value="experience-examples" />
+                                    <QueryAt path="document.tags" value={[name]} />
+                                </QueryMulti>
+                            </div>
+                        </Prismic>
                     </RenderIf>
                 </div>
             </div>
