@@ -1,12 +1,12 @@
 import React from 'react';
-import ReCaptchaLoader from './loader';
+import ReCaptchaComponent from './component';
 
 export default function ReCaptchaWrapper(props) {
     const { isScriptLoaded, isScriptLoadSucceed, ...rest } = props;
     const shouldRender = isScriptLoaded && isScriptLoadSucceed;
 
     if (shouldRender) {
-        return <ReCaptchaLoader {...rest} />;
+        return <ReCaptchaComponent {...rest} />;
     }
     return null;
 }

@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import RenderIf from '../RenderIf';
 import './styles.css';
 
-export default class ReCaptchaLoader extends Component {
+export default class ReCaptchaComponent extends Component {
 
     componentDidMount() {
         window.grecaptcha.ready(() => this.renderReCaptcha());
@@ -16,12 +16,12 @@ export default class ReCaptchaLoader extends Component {
     }
 
     renderReCaptcha() {
-        const { value, theme, size, onChange } = this.props;
-        window.grecaptcha.render('reCaptcha-container', {
-            explicit: true,
+        const { value, theme, size, tabIndex, onChange } = this.props;
+        window.grecaptcha.render('recaptcha-container', {
             sitekey: value,
             theme,
             size,
+            tabIndex,
             callback: onChange,
             'expired-callback': onChange,
             'error-callback': onChange,
@@ -32,8 +32,8 @@ export default class ReCaptchaLoader extends Component {
         const { error, style } = this.props;
         return (
             <div className={this.getContainerClassNames()} style={style}>
-                <div id="reCaptcha-container" />
-                <RenderIf isTrue={error}>
+                <div id="recaptcha-container" />
+                <RenderIf isTrue={!!error}>
                     <div className="rainbow-recaptcha_error">{error}</div>
                 </RenderIf>
             </div>
@@ -41,30 +41,22 @@ export default class ReCaptchaLoader extends Component {
     }
 }
 
-ReCaptchaLoader.propTypes = {
-    /** Specifies the site key for the recaptcha. */
-    value: PropTypes.string,
-    /** The color theme of the widget. */
-    theme: PropTypes.oneOf(['light', 'dark']),
-    /** The size of the widget. */
-    size: PropTypes.oneOf(['normal', 'compact']),
-    /** Specifies that the recaptcha must be completed before submitting the form. */
+ReCaptchaComponent.propTypes = {
+    value: PropTypes.string.isRequired,
+    theme: PropTypes.oneOf(['light', 'dark']).isRequired,
+    size: PropTypes.oneOf(['normal', 'compact']).isRequired,
+    tabIndex: PropTypes.number.isRequired,
     error: PropTypes.oneOfType([
         PropTypes.node,
         PropTypes.string,
     ]),
-    /** The action triggered when the value of the recaptcha changes. */
-    onChange: PropTypes.func,
-    /** A CSS class for the outer element, in addition to the component's base classes. */
+    onChange: PropTypes.func.isRequired,
     className: PropTypes.string,
-    /** An object with custom style applied for the outer element. */
     style: PropTypes.object,
 };
 
-ReCaptchaLoader.defaultProps = {
-    value: undefined,
-    theme: 'light',
-    size: 'normal',
+ReCaptchaComponent.defaultProps = {
+    tabIndex: 0,
     error: undefined,
     onChange: () => {},
     className: undefined,
