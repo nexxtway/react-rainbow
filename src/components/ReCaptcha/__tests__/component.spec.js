@@ -18,22 +18,6 @@ describe('<ReCaptchaComponent />', () => {
         );
         expect(window.grecaptcha.ready).toHaveBeenCalledTimes(1);
     });
-    it('it should call the render function', () => {
-        window.grecaptcha = {
-            ready: callback => callback(),
-            render: jest.fn(),
-        };
-
-        mount(
-            <ReCaptchaComponent
-                value="site-Key"
-                theme="light"
-                size="normal"
-                tabIndex={0}
-                onChange={() => {}} />,
-        );
-        expect(window.grecaptcha.render).toHaveBeenCalledTimes(1);
-    });
     it('it should call the render function with the right params', () => {
         window.grecaptcha = {
             ready: callback => callback(),
