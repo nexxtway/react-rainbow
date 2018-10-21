@@ -3,10 +3,14 @@
 @import '../../styles/border-radius';
 
 .rainbow-carousel-image_container {
-    -ms-flex: 0 0 100%;
-    flex: 0 0 100%;
-    max-width: 100%;
     border-radius: $border-radius-1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: translateX(-100%);
+    width: 100%;
 }
 
 .rainbow-carousel-image {
@@ -49,4 +53,86 @@
 .rainbow-carousel-image_content-title {
     font-size: 1rem;
     font-weight: 600;
+}
+
+$animation-duration: 250ms;
+
+@mixin animation-properties() {
+    animation-timing-function: linear;
+    animation-duration: $animation-duration;
+}
+
+.rainbow-carousel-image--active {
+    transform: translateX(0);
+    position: relative;
+}
+
+.rainbow-carousel-image--slide-in_right-to-left {
+    transform: translateX(0) !important;
+    position: relative;
+    animation: slide-in-right-to-left;
+
+    @include animation-properties();
+}
+
+@keyframes slide-in-right-to-left {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.rainbow-carousel-image--slide-out_right-to-left {
+    transform: translateX(-100%) !important;
+    animation: slide-out-right-to-left;
+
+    @include animation-properties();
+}
+
+@keyframes slide-out-right-to-left {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.rainbow-carousel-image--slide-in_left-to-right {
+    transform: translateX(0) !important;
+    position: relative;
+    animation: slide-in-left-to-right;
+
+    @include animation-properties();
+}
+
+@keyframes slide-in-left-to-right {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.rainbow-carousel-image--slide-out_left-to-right {
+    transform: translateX(100%) !important;
+    animation: slide-out-left-to-right;
+
+    @include animation-properties();
+}
+
+@keyframes slide-out-left-to-right {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
 }

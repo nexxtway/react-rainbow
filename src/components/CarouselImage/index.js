@@ -5,6 +5,7 @@ import classnames from 'classnames';
 import { uniqueId } from '../../libs/utils';
 import RenderIf from '../RenderIf';
 import { Consumer } from '../CarouselCard/context';
+import { getItemIndex } from '../CarouselCard/utils';
 import './styles.css';
 
 class Item extends Component {
@@ -13,6 +14,26 @@ class Item extends Component {
         this.carouselImageID = uniqueId('carousel-content-id');
         this.carouselIndicatorID = uniqueId('indicator-id');
         this.itemRef = React.createRef();
+        this.state = {
+            activeItem: undefined,
+            prevActiveItem: undefined,
+        };
+    }
+
+    static getDerivedStateFromProps(props, state) {
+        const { activeItem } = props;
+        const { activeItem: stateActiveItem } = state;
+        const newState = {
+            activeItem,
+            prevActiveItem: stateActiveItem,
+        };
+        const isNotTheSameActive = state.activeItem !== newState.activeItem;
+        const isNotTheSamePrev = state.prevActiveItem !== newState.prevActiveItem;
+        const isNotTheSameState = isNotTheSameActive || isNotTheSamePrev;
+        if (isNotTheSameState) {
+            return newState;
+        }
+        return null;
     }
 
     componentDidMount() {
@@ -27,8 +48,35 @@ class Item extends Component {
 
     getContainerClassName() {
         const { className } = this.props;
-        return classnames('rainbow-carousel-image_container', className);
+        return classnames(
+            'rainbow-carousel-image_container',
+            {
+                [`rainbow-carousel-image--slide-in_${this.getAnimationDirection()}`]: this.shouldShow(),
+                [`rainbow-carousel-image--slide-out_${this.getAnimationDirection()}`]: this.shouldHide(),
+                'rainbow-carousel-image--active': this.shouldBeActive(),
+            },
+            className,
+        );
     }
+
+    getAnimationDirection() {
+        const { childrenRegistred, isAnimationPaused } = this.props;
+        const { activeItem, prevActiveItem } = this.state;
+        if (isAnimationPaused) {
+            const activeItemIndex = getItemIndex(childrenRegistred, activeItem);
+            const prevItemIndex = getItemIndex(childrenRegistred, prevActiveItem);
+            if (activeItemIndex === 0 && prevItemIndex === childrenRegistred.length - 1) {
+                return 'right-to-left';
+            } else if (prevItemIndex === 0 && activeItemIndex === childrenRegistred.length - 1) {
+                return 'left-to-right';
+            } else if (activeItemIndex > prevItemIndex) {
+                return 'right-to-left';
+            }
+            return 'left-to-right';
+        }
+        return 'right-to-left';
+    }
+
 
     getTabIndex() {
         const { activeItem } = this.props;
@@ -41,6 +89,27 @@ class Item extends Component {
     getAriaHidden() {
         const { activeItem } = this.props;
         return activeItem !== this.carouselIndicatorID;
+    }
+
+    shouldShow() {
+        const { activeItem, prevActiveItem } = this.state;
+        const areTheSame = activeItem === prevActiveItem;
+        if (areTheSame) return false;
+        return activeItem === this.carouselIndicatorID;
+    }
+
+    shouldHide() {
+        const { activeItem, prevActiveItem } = this.state;
+        const isNotActive = activeItem !== this.carouselIndicatorID;
+        const itWasActive = prevActiveItem === this.carouselIndicatorID;
+        return isNotActive && itWasActive;
+    }
+
+    shouldBeActive() {
+        const { activeItem, prevActiveItem } = this.state;
+        const areTheSame = activeItem === prevActiveItem;
+        const isSelected = activeItem === this.carouselIndicatorID;
+        return areTheSame && isSelected;
     }
 
     render() {

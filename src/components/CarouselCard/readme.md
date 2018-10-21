@@ -44,4 +44,3 @@
                 </CarouselCard>
             </div>
         </div>
-        

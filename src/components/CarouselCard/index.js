@@ -23,12 +23,14 @@ export default class CarouselCard extends Component {
             isAnimationPaused: this.props.disableAutoScroll,
             privateRegisterChild: this.registerChild,
         };
-        this.cardPosition = { transform: 'translateX(-0%)' };
         this.containerRef = React.createRef();
     }
 
     componentDidMount() {
-        this.startAnimation();
+        const { isAnimationPaused } = this.state;
+        if (!isAnimationPaused) {
+            this.startAnimation();
+        }
     }
 
     getContainerClassName() {
@@ -37,9 +39,6 @@ export default class CarouselCard extends Component {
     }
 
     setActiveItem(id) {
-        const { childrenRegistred } = this.state;
-        const selectedItemIndex = getItemIndex(childrenRegistred, id);
-        this.cardPosition = { transform: `translateX(-${selectedItemIndex}00%)` };
         this.setState({ activeItem: id, isAnimationPaused: true });
     }
 
@@ -55,14 +54,12 @@ export default class CarouselCard extends Component {
                 if (isLastItem && disableAutoRefresh) {
                     this.setState({ isAnimationPaused: true });
                 } else {
-                    this.cardPosition = { transform: `translateX(-${nextItem}00%)` };
                     this.startAnimation();
                     this.setState({ activeItem: childrenRegistred[nextItem].indicatorID });
                 }
             }
         }, (scrollDuration * 1000));
     }
-
     handleOnClick() {
         const { isAnimationPaused } = this.state;
         if (isAnimationPaused) {
@@ -86,7 +83,7 @@ export default class CarouselCard extends Component {
                 <span className="rainbow-carousel_autoplay">
                   <AnimationButton onClick={this.handleOnClick} isAnimationPaused={isAnimationPaused} />
                 </span>
-                <div className="rainbow-carousel_images" style={this.cardPosition} ref={this.containerRef}>
+                <div className="rainbow-carousel_images" ref={this.containerRef}>
                     <Provider value={this.state}>
                         {children}
                     </Provider>
