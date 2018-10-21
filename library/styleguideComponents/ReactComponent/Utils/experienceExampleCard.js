@@ -4,7 +4,12 @@ import githubLogo from './image/github.svg';
 
 export default function ExperienceExampleCard({ results }) {
     return results.map(({ data, id }) => (
-        <a key={id} href={data['example-url'].url} className="react-rainbow-utils-link">
+        <a
+            key={id}
+            href={data['example-url'].url}
+            className="react-rainbow-utils-link"
+            target="_blank"
+            rel="noopener noreferrer">
             <Card
                 className="react-rainbow-utils-item"
                 actions={(

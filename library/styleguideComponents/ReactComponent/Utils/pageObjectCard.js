@@ -28,7 +28,12 @@ export default function PageObjectCard({ results, type }) {
     };
 
     return results.map(({ data, id }) => (
-        <a key={id} href={data.url.url} className="react-rainbow-utils-link">
+        <a
+            key={id}
+            href={data.url.url}
+            className="react-rainbow-utils-link"
+            target="_blank"
+            rel="noopener noreferrer">
             <Card
                 className="react-rainbow-utils-item"
                 footer={(
