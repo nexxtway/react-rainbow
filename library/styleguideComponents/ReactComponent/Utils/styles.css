@@ -1,0 +1,83 @@
+.react-rainbow-utils-item {
+    margin-bottom: 32px;
+    margin-right: 44px;
+    width: 340px;
+}
+
+.react-rainbow-utils-item_img-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+}
+
+.react-rainbow-utils-item_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.react-rainbow-utils-item-page-object_content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.react-rainbow-utils-item_header {
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 10px;
+    color: #01b6f5;
+    text-align: justify;
+    align-self: center;
+}
+
+.react-rainbow-utils-item-example_header {
+    font-size: 20px;
+    margin: 0;
+    color: #061c3f;
+    text-align: justify;
+    align-self: flex-start;
+}
+
+.react-rainbow-utils-item_description {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #576574;
+    align-self: flex-start;
+    text-align: justify;
+}
+
+.react-rainbow-utils-item_button {
+    border: solid 1px #1ad1a3;
+    color: #1ad1a3;
+    width: 90px;
+}
+
+.react-rainbow-utils-item_button:hover, .react-rainbow-utils-item_button:focus {
+    border: solid 1px #1cb891;
+    color: #1cb891;
+}
+
+.react-rainbow-utils-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.react-rainbow-utils-text_header {
+    font-size: 20px;
+    font-weight: 300;
+    color: #061c3f;
+}
+
+.react-rainbow-utils-text-description {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #576574;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.react-rainbow-utils-link:hover, .react-rainbow-utils-link:focus {
+    text-decoration: none;
+}

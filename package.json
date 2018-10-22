@@ -38,7 +38,8 @@
         "react": "^16.4.2",
         "react-async-script-loader": "^0.3.0",
         "react-dom": "^16.4.2",
-        "react-ga": "^2.5.3"
+        "react-ga": "^2.5.3",
+        "react-prismic-cms": "^0.2.0"
     },
     "main": "components/index.js",
     "files": [
