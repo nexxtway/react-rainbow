@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from '../../../../src/components/Card';
-import githubLogo from './image/github.svg';
+import ButtonIcon from '../../../../src/components/ButtonIcon';
+import GithubIcon from './githubIcon';
 
 export default function ExperienceExampleCard({ results }) {
     return results.map(({ data, id }) => (
@@ -14,9 +15,12 @@ export default function ExperienceExampleCard({ results }) {
             <Card
                 className="react-rainbow-utils-item"
                 actions={(
-                    <a href={data['github-url'].url} target="_blank" rel="noopener noreferrer">
-                        <img src={githubLogo} alt="github logo" />
-                    </a>
+                    <ButtonIcon
+                        href={data['github-url'].url}
+                        target="_blank"
+                        size="large"
+                        assistiveText="github logo"
+                        icon={<GithubIcon />} />
                 )}
                 footer={(
                     <div className="react-rainbow-utils-item_content">
@@ -24,7 +28,7 @@ export default function ExperienceExampleCard({ results }) {
                         <p className="react-rainbow-utils-item_description">{data.description[0].text}</p>
                     </div>
                 )}>
-                <div className="react-rainbow-utils-item_img-container">
+                <div className="react-rainbow-utils-item_example-img-container">
                     <img src={data.image.url} alt={data.title[0].text} />
                 </div>
             </Card>

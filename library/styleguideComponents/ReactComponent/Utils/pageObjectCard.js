@@ -39,7 +39,7 @@ export default function PageObjectCard({ results, type }) {
                 footer={(
                     <div className="react-rainbow-utils-item-page-object_content">
                         <FooterIcon />
-                        <p className="react-rainbow-utils-item_header" >{`Go to ${data.name[0].text} ${getTypeText()}`}</p>
+                        <p className="react-rainbow-utils-item_header" >{`${data.name[0].text} ${getTypeText()}`}</p>
                     </div>
                 )}>
                 <div className="react-rainbow-utils-item_img-container">

@@ -8,7 +8,7 @@ import TabLabel from './tabLabel';
 
 function TabItem({ response }) {
     if (response && response.total_results_size) {
-        return <Tab name="utils" label={<TabLabel icon={faWrench} label="UTILS" />} />;
+        return <Tab name="utils" label={<TabLabel icon={faWrench} label="UTILITIES" />} />;
     }
     return null;
 }
