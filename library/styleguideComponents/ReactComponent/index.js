@@ -2,18 +2,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faList, faCode, faWrench } from '@fortawesome/free-solid-svg-icons';
+import { faList, faCode } from '@fortawesome/free-solid-svg-icons';
 import Pathline from 'react-styleguidist/lib/rsg-components/Pathline';
-import Prismic from 'react-prismic-cms/components/Prismic';
-import QueryMulti from 'react-prismic-cms/components/QueryMulti';
-import QueryAt from 'react-prismic-cms/components/QueryAt';
+import { Prismic } from 'react-prismic-cms';
 import Tabset from '../../../src/components/Tabset';
 import Tab from '../../../src/components/Tab';
 import RenderIf from '../../../src/components/RenderIf';
 import Card from './../../../src/components/Card';
 import TabLabel from './tabLabel';
 import Description from './description';
-import Util from './Utils';
+import UtilsTab from './utilsTab';
+import Query from './query';
 import './styles.css';
 
 export default class ReactComponent extends Component {
@@ -39,7 +38,7 @@ export default class ReactComponent extends Component {
         const { activeTabName } = this.state;
 
         return (
-            <div>
+            <Prismic repo="rainbow-doc">
                 <div className="react-rainbow-component-top-content">
                     {heading}
                     <div className="rainbow-p-horizontal_x-large">
@@ -59,7 +58,7 @@ export default class ReactComponent extends Component {
 
                         <Tab name="examples" label={<TabLabel icon={faCode} label="INTERACTIVE EXAMPLES" />} />
                         <Tab name="properties" label={<TabLabel icon={faList} label="PROPERTIES AND METHODS" />} />
-                        <Tab name="utils" label={<TabLabel icon={faWrench} label="UTILS" />} />
+                        <UtilsTab name={name} />
                     </Tabset>
                 </div>
                 <div className="rainbow-p-top_small rainbow-p-horizontal_x-large">
@@ -78,27 +77,16 @@ export default class ReactComponent extends Component {
                         </Card>
                     </RenderIf>
                     <RenderIf isTrue={activeTabName === 'utils'}>
-                        <Prismic repo="rainbow-doc">
-                            <div className="react-rainbow-utils_container">
-                                <QueryMulti component={Util} type="page-object">
-                                    <QueryAt path="document.type" value="page-object" />
-                                    <QueryAt path="document.tags" value={[name]} />
-                                </QueryMulti>
-                                <QueryMulti component={Util} type="tutorials">
-                                    <QueryAt path="document.type" value="tutorials" />
-                                    <QueryAt path="document.tags" value={[name]} />
-                                </QueryMulti>
-                            </div>
-                            <div className="react-rainbow-utils_container">
-                                <QueryMulti component={Util} type="experience-examples" componentName={name}>
-                                    <QueryAt path="document.type" value="experience-examples" />
-                                    <QueryAt path="document.tags" value={[name]} />
-                                </QueryMulti>
-                            </div>
-                        </Prismic>
+                        <div className="react-rainbow-utils_container">
+                            <Query value="page-object" name={name} />
+                            <Query value="tutorials" name={name} />
+                        </div>
+                        <div className="react-rainbow-utils_container">
+                            <Query value="experience-examples" name={name} />
+                        </div>
                     </RenderIf>
                 </div>
-            </div>
+            </Prismic>
         );
     }
 }

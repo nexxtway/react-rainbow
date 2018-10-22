@@ -10,10 +10,11 @@ export default function ExperienceExampleCard({ results }) {
             className="react-rainbow-utils-link"
             target="_blank"
             rel="noopener noreferrer">
+
             <Card
                 className="react-rainbow-utils-item"
                 actions={(
-                    <a href={data['github-url'].url}>
+                    <a href={data['github-url'].url} target="_blank" rel="noopener noreferrer">
                         <img src={githubLogo} alt="github logo" />
                     </a>
                 )}

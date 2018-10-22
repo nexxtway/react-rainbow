@@ -7,7 +7,7 @@ import './styles.css';
 export default function Util(props) {
     const { response, type, componentName } = props;
 
-    if (response && Array.isArray(response.results)) {
+    if (response && Array.isArray(response.results) && response.results.length) {
         if (type === 'experience-examples') {
             return (
                 <div>

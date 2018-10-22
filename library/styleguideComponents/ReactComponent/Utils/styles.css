@@ -78,6 +78,6 @@
     margin-bottom: 16px;
 }
 
-.react-rainbow-utils-link:hover {
+.react-rainbow-utils-link:hover, .react-rainbow-utils-link:focus {
     text-decoration: none;
 }
