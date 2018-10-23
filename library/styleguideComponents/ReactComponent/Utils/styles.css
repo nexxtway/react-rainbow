@@ -1,7 +1,29 @@
-.react-rainbow-utils-item {
+.react-rainbow-utils-item_example-container {
+    position: relative;
+    margin: 0 32px 32px 32px;
+}
+
+.react-rainbow-utils-item_example-container:hover a {
+    text-decoration: none;
+}
+
+.react-rainbow-utils-item_github-link {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+}
+
+.react-rainbow-utils_link {
+    margin: 0 32px 32px 32px;
+}
+
+.react-rainbow-utils_link:hover, .react-rainbow-utils_link:focus {
+    text-decoration: none;
+}
+
+.react-rainbow-utils-item, .react-rainbow-utils-item_example-container {
     width: 360px;
     transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    position: relative;
 }
 
 .react-rainbow-utils-item:hover {
@@ -21,7 +43,7 @@
 }
 
 .react-rainbow-utils-item_example-img-container {
-    margin-top: -48px;
+    margin-top: 24px;
 }
 
 .react-rainbow-utils-item_content {
@@ -30,7 +52,7 @@
     align-items: center;
 }
 
-.react-rainbow-utils-item-page-object_content {
+.react-rainbow-utils-item_page-object-content {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -43,9 +65,10 @@
     color: #01b6f5;
     text-align: justify;
     align-self: center;
+    text-decoration: none;
 }
 
-.react-rainbow-utils-item-example_header {
+.react-rainbow-utils-item_example-header {
     font-size: 20px;
     margin: 0;
     color: #061c3f;
@@ -61,31 +84,22 @@
     text-align: justify;
 }
 
-.react-rainbow-utils-text {
+.react-rainbow-utils_text {
     display: flex;
     flex-direction: column;
 }
 
-.react-rainbow-utils-text_header {
+.react-rainbow-utils_text-header {
     font-size: 20px;
     font-weight: 300;
     color: #061c3f;
 }
 
-.react-rainbow-utils-text-description {
+.react-rainbow-utils_text-description {
     font-size: 14px;
     line-height: 1.5;
     color: #576574;
     margin: 16px 0 8px 0;
-}
-
-.react-rainbow-utils-link {
-    margin: 0 32px 32px 32px;
-}
-
-.react-rainbow-utils-link:hover, .react-rainbow-utils-link:focus {
-    text-decoration: none;
-    margin: 0 32px 32px 32px;
 }
 
 @media (max-width: 400px) {
@@ -93,7 +107,5 @@
     .react-rainbow-utils-item {
         margin: 0 16px 16px 24px;
         width: 300px;
-        transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-        position: relative;
     }
 }
