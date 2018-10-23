@@ -34,7 +34,7 @@ $ npm install react-rainbow-components --save
 ## Usage
 
 Here is a quick example to get you started, **it's all you need**:
-```
+```js
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Button from 'react-rainbow-components/components/Button';
