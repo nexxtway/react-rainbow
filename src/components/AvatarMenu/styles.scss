@@ -1,0 +1,24 @@
+@import "./../../styles/colors.scss";
+@import "./../../styles/shadows.scss";
+@import "./../../styles/border-radius.scss";
+
+.rainbow-avatar-menu_button-wrapper {
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    border-radius: $border-radius-2;
+    box-shadow: $shadow-6;
+    border: solid 1px $color-gray-2;
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: $color-brand-active;
+    }
+
+    &:focus {
+        outline: 0;
+        box-shadow: $shadow-outline;
+    }
+}
