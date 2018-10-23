@@ -6,6 +6,7 @@ export default function ExperienceExampleCard({ results }) {
     return results.map(({ data, id }) => (
         <section className="react-rainbow-utils-item_example-container">
             <a
+                className="react-rainbow-utils_example-link"
                 key={id}
                 href={data['example-url'].url}
                 target="_blank"

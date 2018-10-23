@@ -3,10 +3,6 @@
     margin: 0 32px 32px 32px;
 }
 
-.react-rainbow-utils-item_example-container:hover a {
-    text-decoration: none;
-}
-
 .react-rainbow-utils-item_github-link {
     position: absolute;
     top: 16px;
@@ -17,9 +13,11 @@
     margin: 0 32px 32px 32px;
 }
 
-.react-rainbow-utils_link:hover, .react-rainbow-utils_link:focus {
+.react-rainbow-utils_link:hover, .react-rainbow-utils_link:focus, .react-rainbow-utils_example-link:hover, .react-rainbow-utils_example-link:focus, {
     text-decoration: none;
 }
+
+
 
 .react-rainbow-utils-item, .react-rainbow-utils-item_example-container {
     width: 360px;
