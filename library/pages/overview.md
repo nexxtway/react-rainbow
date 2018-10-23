@@ -10,6 +10,6 @@ _installing with npm_
 
 _installing with yarn_
 
-    <CodeEditor code="$ yarn add react-rainbow" />
+    <CodeEditor code="$ yarn add react-rainbow-components" />
 
 ##### React Rainbow Components is currently optimized for React 16.4.2
