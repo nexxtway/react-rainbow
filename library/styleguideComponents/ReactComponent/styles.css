@@ -31,6 +31,6 @@
 }
 
 .react-rainbow-utils_container {
-    display: inline-flex;
+    display: flex;
     flex-wrap: wrap;
 }
