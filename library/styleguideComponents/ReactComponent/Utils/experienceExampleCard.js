@@ -4,10 +4,9 @@ import GithubIcon from './githubIcon';
 
 export default function ExperienceExampleCard({ results }) {
     return results.map(({ data, id }) => (
-        <section className="react-rainbow-utils-item_example-container">
+        <section key={id} className="react-rainbow-utils-item_example-container">
             <a
                 className="react-rainbow-utils_example-link"
-                key={id}
                 href={data['example-url'].url}
                 target="_blank"
                 rel="noopener noreferrer">
@@ -27,11 +26,9 @@ export default function ExperienceExampleCard({ results }) {
             </a>
             <a
                 className="react-rainbow-utils-item_github-link"
-                key={id}
                 href={data['github-url'].url}
                 target="_blank"
-                rel="noopener noreferrer"
-                alt="github logo">
+                rel="noopener noreferrer">
 
                 <GithubIcon />
             </a>
