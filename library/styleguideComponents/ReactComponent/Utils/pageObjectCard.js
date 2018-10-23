@@ -31,15 +31,15 @@ export default function PageObjectCard({ results, type }) {
         <a
             key={id}
             href={data.url.url}
-            className="react-rainbow-utils-link"
+            className="react-rainbow-utils_link"
             target="_blank"
             rel="noopener noreferrer">
             <Card
                 className="react-rainbow-utils-item"
                 footer={(
-                    <div className="react-rainbow-utils-item-page-object_content">
+                    <div className="react-rainbow-utils-item_page-object-content">
                         <FooterIcon />
-                        <p className="react-rainbow-utils-item_header" >{`Go to ${data.name[0].text} ${getTypeText()}`}</p>
+                        <p className="react-rainbow-utils-item_header" >{`${data.name[0].text} ${getTypeText()}`}</p>
                     </div>
                 )}>
                 <div className="react-rainbow-utils-item_img-container">

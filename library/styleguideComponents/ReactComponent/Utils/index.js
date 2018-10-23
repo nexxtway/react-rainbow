@@ -11,9 +11,9 @@ export default function Util(props) {
         if (type === 'experience-examples') {
             return (
                 <div>
-                    <div className="react-rainbow-utils-text">
-                        <h1 className="react-rainbow-utils-text_header">Real experience examples</h1>
-                        <p className="react-rainbow-utils-text-description">
+                    <div className="react-rainbow-utils_text rainbow-m-around_medium">
+                        <h1 className="react-rainbow-utils_text-header">Real experience examples</h1>
+                        <p className="react-rainbow-utils_text-description">
                             {`The Real experience examples will help you get
                             started building your app using the ${componentName} Component.`}
                         </p>
@@ -37,4 +37,5 @@ Util.defaultProps = {
     response: null,
     type: undefined,
     name: undefined,
+    componentName: undefined,
 };
