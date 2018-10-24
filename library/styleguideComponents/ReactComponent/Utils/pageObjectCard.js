@@ -10,7 +10,7 @@ export default function PageObjectCard({ results, type }) {
         if (type === 'page-object') {
             return 'Page Object';
         }
-        return 'Tutorial';
+        return 'Page Object Tutorial';
     };
 
     const FooterIcon = () => {
@@ -35,7 +35,7 @@ export default function PageObjectCard({ results, type }) {
             target="_blank"
             rel="noopener noreferrer">
             <Card
-                className="react-rainbow-utils-item"
+                className="react-rainbow-utils-item_page-object"
                 footer={(
                     <div className="react-rainbow-utils-item_page-object-content">
                         <FooterIcon />

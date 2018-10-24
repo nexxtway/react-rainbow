@@ -10,7 +10,7 @@
 }
 
 .react-rainbow-utils_link {
-    margin: 0 32px 32px 32px;
+    margin: 0 16px 20px 16px;
 }
 
 .react-rainbow-utils_link:hover, .react-rainbow-utils_link:focus, .react-rainbow-utils_example-link:hover, .react-rainbow-utils_example-link:focus, {
@@ -22,12 +22,28 @@
     transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
-.react-rainbow-utils-item:hover {
+.react-rainbow-utils-item:hover, .react-rainbow-utils-item_page-object:hover {
     box-shadow: 0 4px 8px 0 #e3e5ed;
     transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
-.react-rainbow-utils-item_img-container, .react-rainbow-utils-item_example-img-container {
+.react-rainbow-utils-item_page-object {
+    width: 240px;
+    transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.react-rainbow-utils-item_img-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+}
+
+.react-rainbow-utils-item_img-container > svg {
+    height: 56px;
+}
+
+.react-rainbow-utils-item_example-img-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,19 +65,27 @@
 }
 
 .react-rainbow-utils-item_page-object-content {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+}
+
+.react-rainbow-utils-item_page-object-content > svg {
+    flex-shrink: 0;
 }
 
 .react-rainbow-utils-item_header {
     font-size: 14px;
     font-weight: 500;
-    margin-left: 10px;
+    margin-left: 8px;
     color: #01b6f5;
-    text-align: justify;
+    text-align: left;
     align-self: center;
     text-decoration: none;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .react-rainbow-utils-item_example-header {
