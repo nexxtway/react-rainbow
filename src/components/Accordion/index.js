@@ -8,7 +8,8 @@ const RIGHT_SIDE = 1;
 const LEFT_SIDE = -1;
 
 /**
-* Accordions are used for freeform data entry.
+* An Accordion is is a collection of vertically stacked sections with multiple content areas.
+* Allows a user to toggle the display of a section of content.
 */
 export default class Accordion extends Component {
     constructor(props) {
