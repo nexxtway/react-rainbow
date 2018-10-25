@@ -5,7 +5,7 @@ import PageObjectCard from './pageObjectCard';
 import './styles.css';
 
 export default function Util(props) {
-    const { response, type, componentName } = props;
+    const { response, type } = props;
 
     if (response && Array.isArray(response.results) && response.results.length) {
         if (type === 'experience-examples') {
@@ -13,10 +13,6 @@ export default function Util(props) {
                 <div>
                     <div className="react-rainbow-utils_text rainbow-m-around_medium">
                         <h1 className="react-rainbow-utils_text-header">Real experience examples</h1>
-                        <p className="react-rainbow-utils_text-description">
-                            {`The Real experience examples will help you get
-                            started building your app using the ${componentName} Component.`}
-                        </p>
                     </div>
                     <ExperienceExampleCard results={response.results} />
                 </div>

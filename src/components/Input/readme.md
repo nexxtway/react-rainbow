@@ -126,61 +126,47 @@
 
 ##### input radio
 
-    <div className="rainbow-p-around_x-large rainbow-flex rainbow-justify_space-around">
-        <div>
-            <Input
-                className="rainbow-m-bottom_medium"
-                type="radio"
-                label="Input Label" />
-
-            <Input
-                type="radio"
-                error="This Field is Required"
-                label="Input Label" />
-        </div>
-
-        <div>
-            <Input
-                className="rainbow-m-bottom_medium"
-                disabled
-                type="radio"
-                label="Input Label" />
-
-            <Input
-                type="radio"
-                bottomHelpText="ex: (111) 111 1111"
-                label="Input Label" />
-        </div>
+    <div className="rainbow-p-around_x-large rainbow-m-top_medium rainbow-flex rainbow-justify_space-around">
+        <Input
+            className="rainbow-m-bottom_medium"
+            type="radio"
+            label="Input Radio Label" />
+        <Input
+            type="radio"
+            error="This Field is Required"
+            label="Input Radio Label" />
+        <Input
+            className="rainbow-m-bottom_medium"
+            disabled
+            type="radio"
+            label="Input Radio Label" />
+        <Input
+            type="radio"
+            bottomHelpText="ex: (111) 111 1111"
+            label="Input Radio Label" />
     </div>
 
 
 ##### input type checkbox
 
-    <div className="rainbow-p-around_x-large rainbow-flex rainbow-justify_space-around">
-        <div>
-            <Input
-                className="rainbow-m-bottom_medium"
-                type="checkbox"
-                label="Input Label" />
-
-            <Input
-                type="checkbox"
-                error="This Field is Required"
-                label="Input Label" />
-        </div>
-
-        <div>
-            <Input
-                className="rainbow-m-bottom_medium"
-                disabled
-                type="checkbox"
-                label="Input Label" />
-
-            <Input
-                type="checkbox"
-                bottomHelpText="ex: (111) 111 1111"
-                label="Input Label" />
-        </div>
+    <div className="rainbow-p-around_x-large rainbow-m-top_medium rainbow-flex rainbow-justify_space-around">
+        <Input
+            className="rainbow-m-bottom_medium"
+            type="checkbox"
+            label="Input Checkbox Label" />
+        <Input
+            type="checkbox"
+            error="This Field is Required"
+            label="Input Checkbox Label" />
+        <Input
+            className="rainbow-m-bottom_medium"
+            disabled
+            type="checkbox"
+            label="Input Checkbox Label" />
+        <Input
+            type="checkbox"
+            bottomHelpText="ex: (111) 111 1111"
+            label="Input Checkbox Label" />
     </div>
 
 

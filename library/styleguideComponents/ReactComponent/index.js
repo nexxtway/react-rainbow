@@ -77,9 +77,6 @@ export default class ReactComponent extends Component {
                         </Card>
                     </RenderIf>
                     <RenderIf isTrue={activeTabName === 'utils'}>
-                        <h1 className="react-rainbow-utils_text-header rainbow-m-horizontal_medium rainbow-m-bottom_medium">
-                            Page Object & Tutorials
-                        </h1>
                         <div className="react-rainbow-utils_container">
                             <Query value="page-object" name={name} />
                             <Query value="tutorials" name={name} />

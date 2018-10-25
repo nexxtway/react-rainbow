@@ -9,6 +9,10 @@
     right: 16px;
 }
 
+.react-rainbow-utils-item_github-link:hover > svg {
+    fill: #009ACF;
+}
+
 .react-rainbow-utils_link {
     margin: 0 16px 20px 16px;
 }
