@@ -13,13 +13,14 @@ export default function PageButtons(props) {
     });
 
     const renderButtons = () => {
-        const firstItem = getFirstItem(pages, activePage);
-        return new Array(5).fill(0).map((item, index) => (
+        const firstItem = pages > 4 ? getFirstItem(pages, activePage) : 1;
+        const buttonsToRender = pages > 4 ? 5 : pages;
+        return Array(buttonsToRender).fill(0).map((item, index) => (
             <Button
                 key={`page-button-${firstItem + index}`}
                 label={firstItem + index}
                 className={getButtonClassName(firstItem + index)}
-                onClick={() => onChange(firstItem + index)} />
+                onClick={(event) => onChange(event, firstItem + index)} />
         ));
     };
 

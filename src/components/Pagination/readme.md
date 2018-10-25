@@ -9,7 +9,7 @@ Pagination base:
             this.handleOnChange = this.handleOnChange.bind(this);
         }
 
-        handleOnChange(page) {
+        handleOnChange(event, page) {
             this.setState({ activePage: page });
         }
 
