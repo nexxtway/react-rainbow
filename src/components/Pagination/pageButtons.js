@@ -20,7 +20,7 @@ export default function PageButtons(props) {
                 key={`page-button-${firstItem + index}`}
                 label={firstItem + index}
                 className={getButtonClassName(firstItem + index)}
-                onClick={(event) => onChange(event, firstItem + index)} />
+                onClick={event => onChange(event, firstItem + index)} />
         ));
     };
 
