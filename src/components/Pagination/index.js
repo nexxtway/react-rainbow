@@ -21,14 +21,14 @@ export default function Pagination(props) {
                 variant="border-filled"
                 className="rainbow-pagination_button rainbow-pagination_button-icon"
                 icon={<LeftArrow />}
-                onClick={() => onChange(activePage - 1)}
+                onClick={event => onChange(event, activePage - 1)}
                 disabled={isFirstItemSelected} />
             <PageButtons onChange={onChange} pages={pages} activePage={activePage} />
             <ButtonIcon
                 variant="border-filled"
                 className="rainbow-pagination_button rainbow-pagination_button-icon"
                 icon={<RightArrow />}
-                onClick={() => onChange(activePage + 1)}
+                onClick={event => onChange(event, activePage + 1)}
                 disabled={isLastItemSelected} />
         </div>
     );
