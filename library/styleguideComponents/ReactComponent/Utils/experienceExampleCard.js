@@ -20,7 +20,10 @@ export default function ExperienceExampleCard({ results }) {
                         </div>
                     )}>
                     <div className="react-rainbow-utils-item_example-img-container">
-                        <img src={data.image.url} alt={data.title[0].text} />
+                        <img
+                            className="react-rainbow-utils-item_example-img"
+                            src={data.image.url}
+                            alt={data.title[0].text} />
                     </div>
                 </Card>
             </a>

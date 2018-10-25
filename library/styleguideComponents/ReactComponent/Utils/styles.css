@@ -1,12 +1,16 @@
 .react-rainbow-utils-item_example-container {
     position: relative;
-    margin: 0 32px 32px 32px;
+    margin: 0 16px 20px 16px;
 }
 
 .react-rainbow-utils-item_github-link {
     position: absolute;
     top: 16px;
     right: 16px;
+}
+
+.react-rainbow-utils-item_github-link:hover > svg {
+    fill: #009ACF;
 }
 
 .react-rainbow-utils_link {
@@ -17,8 +21,8 @@
     text-decoration: none;
 }
 
-.react-rainbow-utils-item, .react-rainbow-utils-item_example-container {
-    width: 360px;
+.react-rainbow-utils-item, .react-rainbow-utils-item_example-container, .react-rainbow-utils-item_page-object {
+    width: 260px;
     transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
@@ -27,12 +31,7 @@
     transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
-.react-rainbow-utils-item_page-object {
-    width: 240px;
-    transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-}
-
-.react-rainbow-utils-item_img-container {
+.react-rainbow-utils-item_img-container, .react-rainbow-utils-item_example-img-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -43,19 +42,12 @@
     height: 56px;
 }
 
-.react-rainbow-utils-item_example-img-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 160px;
+.react-rainbow-utils-item_example-img {
+    height: 80px;
 }
 
-.react-rainbow-utils-item_img-container {
+.react-rainbow-utils-item_img-container, .react-rainbow-utils-item_example-img-container  {
     margin-top: 0.75rem;
-}
-
-.react-rainbow-utils-item_example-img-container {
-    margin-top: 24px;
 }
 
 .react-rainbow-utils-item_content {
@@ -89,7 +81,7 @@
 }
 
 .react-rainbow-utils-item_example-header {
-    font-size: 20px;
+    font-size: 16px;
     margin: 0;
     color: #061c3f;
     text-align: justify;
