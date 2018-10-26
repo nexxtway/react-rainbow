@@ -60,7 +60,7 @@ describe('ButtonMenu with subheaders example', () => {
         browser.keys(ENTER_KEY);
         expect(buttonMenu.isOpen()).toBe(true);
     });
-    it('should set the focus to the first focusable menu item when open the menu and the first item has varaint header', () => {
+    it('should set the focus to the first menu item when open the menu', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
         const menuItem = buttonMenu.getItem(0);
         buttonMenu.click();
@@ -75,20 +75,21 @@ describe('ButtonMenu with subheaders example', () => {
     });
     it('should move to the previous item when press arrow up', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
-        const menuItem = buttonMenu.getItem(1);
+        const secondMenuItem = buttonMenu.getItem(1);
+        const thirdMenuItem = buttonMenu.getItem(2);
         buttonMenu.click();
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ARROW_DOWN_KEY);
+        thirdMenuItem.hover();
         browser.keys(ARROW_UP_KEY);
-        expect(menuItem.hasFocus()).toBe(true);
+        expect(secondMenuItem.hasFocus()).toBe(true);
     });
     it('should move to the first item when last item is active and press arrow down', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
-        const menuItem = buttonMenu.getItem(0);
+        const secondMenuItem = buttonMenu.getItem(1);
+        const thirdMenuItem = buttonMenu.getItem(2);
         buttonMenu.click();
-        browser.keys(ARROW_UP_KEY);
+        secondMenuItem.hover();
         browser.keys(ARROW_DOWN_KEY);
-        expect(menuItem.hasFocus()).toBe(true);
+        expect(thirdMenuItem.hasFocus()).toBe(true);
     });
     it('should move to the last item when first item is active and press arrow up', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
@@ -102,5 +103,12 @@ describe('ButtonMenu with subheaders example', () => {
         buttonMenu.click();
         browser.keys(TAB_KEY);
         expect(buttonMenu.isOpen()).toBe(false);
+    });
+    it('should move focus to the item hovered', () => {
+        const buttonMenu = new PageButtonMenu(MENU_BTN);
+        const thirdMenuItem = buttonMenu.getItem(2);
+        buttonMenu.click();
+        thirdMenuItem.hover();
+        expect(thirdMenuItem.hasFocus()).toBe(true);
     });
 });

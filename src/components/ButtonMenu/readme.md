@@ -39,7 +39,6 @@
                 <ButtonIcon icon={<FontAwesomeIcon icon={faPlus} />} variant="border-filled" disabled />
                 <ButtonIcon icon={<FontAwesomeIcon icon={faPaste} />} variant="border-filled" disabled />
                 <ButtonMenu
-                    id="button-menu-divider"
                     menuAlignment="right"
                     menuSize="x-small"
                     icon={<FontAwesomeIcon icon={faCog} />}>
@@ -270,7 +269,8 @@
                     <MenuItem label="Menu Item One" />
                     <MenuItem disabled label="Menu Item Two" />
                     <MenuItem label="Menu Item Three" />
-                    <MenuItem disabled label="Menu Item Four" />
+                    <MenuItem label="Menu Item Four" />
+                    <MenuItem disabled label="Menu Item Five" />
                 </ButtonMenu>
             </ButtonGroup>
         </GlobalHeader>

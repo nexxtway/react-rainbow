@@ -6,27 +6,28 @@ const {
 
 const MENU_BTN = '#button-menu-disabled-items';
 
-describe('ButtonMenu with disabled items', () => {
+describe('ButtonMenu when the second and last items are disabled', () => {
     beforeEach(() => {
         browser.url('/#!/ButtonMenu/13');
         browser.refresh();
     });
     it('should move to the first item when last focusable item is active and press arrow down', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
-        const menuItem = buttonMenu.getItem(0);
+        const lastFocusableMenuItem = buttonMenu.getItem(3);
+        const firstMenuItem = buttonMenu.getItem(0);
         buttonMenu.click();
-        browser.keys(ARROW_UP_KEY);
+        lastFocusableMenuItem.hover();
         browser.keys(ARROW_DOWN_KEY);
-        expect(menuItem.hasFocus()).toBe(true);
+        expect(firstMenuItem.hasFocus()).toBe(true);
     });
     it('should move to the last focusabled item when first item is active and press arrow up', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
-        const menuItem = buttonMenu.getItem(2);
+        const menuItem = buttonMenu.getItem(3);
         buttonMenu.click();
         browser.keys(ARROW_UP_KEY);
         expect(menuItem.hasFocus()).toBe(true);
     });
-    it('should not move focus to the item hovered whe disabled is passed', () => {
+    it('should not move focus to the item hovered when the item is disabled', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
         const menuItem = buttonMenu.getItem(1);
         buttonMenu.click();
@@ -49,10 +50,11 @@ describe('ButtonMenu with disabled items', () => {
     });
     it('should move to the previous focusabled item when press arrow up', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
-        const menuItem = buttonMenu.getItem(0);
+        const thirdMenuItem = buttonMenu.getItem(2);
+        const fourthMenuItem = buttonMenu.getItem(3);
         buttonMenu.click();
-        browser.keys(ARROW_DOWN_KEY);
+        fourthMenuItem.hover();
         browser.keys(ARROW_UP_KEY);
-        expect(menuItem.hasFocus()).toBe(true);
+        expect(thirdMenuItem.hasFocus()).toBe(true);
     });
 });
