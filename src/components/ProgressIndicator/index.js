@@ -24,11 +24,13 @@ export default class ProgressIndicator extends Component {
         const { currentStepName } = this.props;
         const activeStepIndex = this.stepChildren.findIndex(item => item.name === currentStepName);
         const currentChildIndex = this.stepChildren.findIndex(item => item.name === step.name);
-
-        if (currentChildIndex === activeStepIndex) {
+        if (activeStepIndex === -1 && currentChildIndex === 0) {
             step.onSetStepState('Active');
-        } else if (activeStepIndex === -1 || currentChildIndex < activeStepIndex) {
-            step.onSetStepState('Completed');
+        } else if (activeStepIndex === currentChildIndex) {
+            for (let i = 0; i < activeStepIndex; i += 1) {
+                this.stepChildren[i].onSetStepState('Completed');
+            }
+            step.onSetStepState('Active');
         } else if (currentChildIndex > activeStepIndex) {
             step.onSetStepState('Inactive');
         }

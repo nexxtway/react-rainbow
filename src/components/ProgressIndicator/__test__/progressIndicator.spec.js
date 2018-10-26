@@ -42,6 +42,40 @@ describe('<ProgressIndicator/>', () => {
         expect(item2.prop('className')).toBe('rainbow-progress-step--is-active');
         expect(item3.prop('className')).toBe('rainbow-progress-step_marker');
     });
+    it('should set the rainbow-progress-step--is-active class to the first step when currentStepName is not passed', () => {
+        const component = mount(
+            <ProgressIndicator>
+                <ProgressStep name="step-1" />
+                <ProgressStep name="step-2" />
+                <ProgressStep name="step-3" />
+            </ProgressIndicator>,
+        );
+        jest.runOnlyPendingTimers();
+        component.setState({ key: Date.now() });
+        const item1 = component.find('ProgressStep[name="step-1"]').find('ButtonIcon');
+        const item2 = component.find('ProgressStep[name="step-2"]').find('ButtonIcon');
+        const item3 = component.find('ProgressStep[name="step-3"]').find('ButtonIcon');
+        expect(item1.prop('className')).toBe('rainbow-progress-step--is-active');
+        expect(item2.prop('className')).toBe('rainbow-progress-step_marker');
+        expect(item3.prop('className')).toBe('rainbow-progress-step_marker');
+    });
+    it('should set the rainbow-progress-step--is-active class to the first step when currentStepName passed is not any step name', () => {
+        const component = mount(
+            <ProgressIndicator currentStepName="step-4">
+                <ProgressStep name="step-1" />
+                <ProgressStep name="step-2" />
+                <ProgressStep name="step-3" />
+            </ProgressIndicator>,
+        );
+        jest.runOnlyPendingTimers();
+        component.setState({ key: Date.now() });
+        const item1 = component.find('ProgressStep[name="step-1"]').find('ButtonIcon');
+        const item2 = component.find('ProgressStep[name="step-2"]').find('ButtonIcon');
+        const item3 = component.find('ProgressStep[name="step-3"]').find('ButtonIcon');
+        expect(item1.prop('className')).toBe('rainbow-progress-step--is-active');
+        expect(item2.prop('className')).toBe('rainbow-progress-step_marker');
+        expect(item3.prop('className')).toBe('rainbow-progress-step_marker');
+    });
     it('should set the right icon when currentStepName is step-2 and the step-3 has an error', () => {
         const component = mount(
             <ProgressIndicator currentStepName="step-2">
@@ -62,7 +96,7 @@ describe('<ProgressIndicator/>', () => {
         expect(item3.find('ErrorIcon').exists()).toBe(true);
         expect(item4.find('div.rainbow-progress-step_marker_icon').exists()).toBe(true);
     });
-    it('should set the right assistiveText to the ButtonIcon component when currentStepName is step-2 and the step-3 has an error ', () => {
+    it('should set the right assistiveText to the ButtonIcon component when currentStepName is step-2 and the step-3 has an error', () => {
         const component = mount(
             <ProgressIndicator currentStepName="step-2">
                 <ProgressStep name="step-1" label="Step 1" />
