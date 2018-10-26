@@ -1,5 +1,23 @@
 @import "../../styles/margins";
 @import "../../styles/colors";
+@import "../../styles/shadows";
+@import "../../styles/font-sizes";
+
+@mixin variants-common-styles($background-color, $border-color, $color) {
+    background-color: $background-color;
+    border: 1px solid $border-color;
+    color: $color;
+}
+
+.center-items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rainbow-pagination {
+    width: fit-content;
+}
 
 .rainbow-pagination_container {
     display: flex;
@@ -8,33 +26,80 @@
     width: fit-content;
 }
 
-.rainbow-pagination_pages {
-    margin-left: $margin-x-small;
-    margin-right: $margin-x-small;
+.rainbow-pagination_button {
+    height: 2rem;
+    width: 2rem;
+    @extend .center-items;
+    border: 1px $color-gray-2 solid;
+    margin-left: -1px;
+    background-color: white;
+
+    a {
+        color: $color-gray-4;
+        line-height: unset;
+        width: 100%;
+        height: 100%;
+        @extend .center-items;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: $font-size-text-large;
+    }
 }
 
-.rainbow-pagination_button {
+.rainbow-pagination_button--active {
+    background-color: $color-gray-2;
+
+    a {
+        color: $color-dark-1;
+    }
+}
+
+.rainbow-pagination_button--first {
+    margin-left: $margin-x-small;
+    border-radius: 100px 0 0 100px;
+}
+
+.rainbow-pagination_button--last {
+    margin-right: $margin-x-small;
+    border-radius: 0 100px 100px 0;
+}
+
+.rainbow-pagination_navigation-button {
+    border-radius: 50%;
     color: $color-gray-4;
     font-weight: bold;
     height: 2rem;
     width: 2rem;
     line-height: unset;
-}
+    @extend .center-items;
 
-.rainbow-pagination_active-button {
-    background-color: $color-gray-2;
-    color: $color-dark-1;
-}
+    @include variants-common-styles(white, $color-gray-2, $color-gray-4);
 
-.rainbow-pagination_button-icon {
-    svg {
-        width: 7px !important;
-        height: 10px !important;
-        position: absolute;
-        margin: auto;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
+    &:hover,
+    &:focus,
+    &:active {
+        background-color: $color-gray-1;
     }
+
+    a {
+        position: relative;
+        height: 100%;
+        width: 100%;
+
+        svg {
+            width: 7px !important;
+            height: 10px !important;
+            position: absolute;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    }
+}
+
+.rainbow-pagination_navigation-button--disabled {
+    background-color: transparent;
+    pointer-events: none;
 }
