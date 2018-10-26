@@ -29,20 +29,22 @@
 .rainbow-pagination_button {
     height: 2rem;
     width: 2rem;
-    @extend .center-items;
     border: 1px $color-gray-2 solid;
     margin-left: -1px;
     background-color: white;
+
+    @extend .center-items;
 
     a {
         color: $color-gray-4;
         line-height: unset;
         width: 100%;
         height: 100%;
-        @extend .center-items;
         text-decoration: none;
         font-weight: bold;
         font-size: $font-size-text-large;
+
+        @extend .center-items;
     }
 }
 
@@ -71,6 +73,7 @@
     height: 2rem;
     width: 2rem;
     line-height: unset;
+
     @extend .center-items;
 
     @include variants-common-styles(white, $color-gray-2, $color-gray-4);
