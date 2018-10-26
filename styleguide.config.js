@@ -11,7 +11,19 @@ module.exports = {
     pagePerSection: true,
     version,
     template: {
-        favicon: '/assets/favicon.ico'
+        favicon: '/assets/favicon.ico',
+        head: {
+            meta: [
+                {
+                    name: 'description',
+                    content: 'Meta Description'
+                },
+                {
+                    name: 'robots',
+                    content: 'index,follow'
+                }
+            ],
+        },
     },
     require: [
         path.resolve(__dirname, 'src/components/Application/styles/rainbow-styles.css'),
