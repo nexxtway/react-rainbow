@@ -42,15 +42,14 @@
     color: $color-dark-1;
     white-space: nowrap;
     cursor: pointer;
+    text-decoration: none;
 
     &:focus {
         outline: 0;
-        text-decoration: none;
         background-color: $color-gray-2;
     }
 
     &:active {
-        text-decoration: none;
         background-color: $color-gray-2;
     }
 

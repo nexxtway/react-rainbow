@@ -18,12 +18,16 @@ class PageButtonMenu {
     /**
      * Returns a new MenuItem page object of the element in item position.
      * @method
-     * @param {number} itemPosition - The base 0 index of the menu item.
+     * @param {number} itemPosition - The base 0 index of the MenuItem.
      */
     getItem(itemPosition) {
-        const items = $(this.rootElement).$$('.rainbow-menu-item');
-        if (items[itemPosition]) {
-            return new PageMenuItem(`${this.rootElement} .rainbow-menu-item:nth-child(${itemPosition + 1})`);
+        const menuItems = $(this.rootElement).$$('li.rainbow-menu-item');
+        const buttonMenuItems = $(this.rootElement).$$('ul > *');
+        if (menuItems[itemPosition]) {
+            const indexPosition = buttonMenuItems.findIndex(
+                element => element.ELEMENT === menuItems[itemPosition].ELEMENT,
+            );
+            return new PageMenuItem(`${this.rootElement} li.rainbow-menu-item:nth-child(${indexPosition + 1})`);
         }
         return null;
     }
