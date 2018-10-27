@@ -1,0 +1,83 @@
+.center-items, .rainbow-pagination_button, .rainbow-pagination_button-content, .rainbow-pagination_navigation-button {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.rainbow-pagination {
+  width: fit-content; }
+
+.rainbow-pagination_container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: fit-content; }
+
+.rainbow-pagination_button {
+  height: 2rem;
+  width: 2rem;
+  border: 1px #e3e5ed solid;
+  margin-left: -1px;
+  background-color: white; }
+  .rainbow-pagination_button:hover {
+    background-color: #f4f6f9; }
+
+.rainbow-pagination_button-content {
+  color: #576574;
+  line-height: unset;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.875rem; }
+  .rainbow-pagination_button-content:hover {
+    text-decoration: none;
+    color: #576574; }
+
+.rainbow-pagination_button--active {
+  background-color: #e3e5ed; }
+  .rainbow-pagination_button--active:hover {
+    background-color: #e3e5ed; }
+  .rainbow-pagination_button--active .rainbow-pagination_button-content {
+    font-size: 1rem;
+    color: #061c3f; }
+    .rainbow-pagination_button--active .rainbow-pagination_button-content:hover {
+      color: #061c3f; }
+
+.rainbow-pagination_button:nth-child(2) {
+  margin-left: 0.5rem;
+  border-radius: 100px 0 0 100px; }
+
+.rainbow-pagination_button:nth-last-child(2) {
+  margin-right: 0.5rem;
+  border-radius: 0 100px 100px 0; }
+
+.rainbow-pagination_navigation-button {
+  border-radius: 50%;
+  color: #576574;
+  font-weight: bold;
+  height: 2rem;
+  width: 2rem;
+  line-height: unset;
+  background-color: white;
+  border: 1px solid #e3e5ed;
+  color: #576574; }
+  .rainbow-pagination_navigation-button:hover, .rainbow-pagination_navigation-button:focus, .rainbow-pagination_navigation-button:active {
+    background-color: #f4f6f9; }
+
+.rainbow-pagination_navigation-button-content {
+  position: relative;
+  height: 100%;
+  width: 100%; }
+  .rainbow-pagination_navigation-button-content svg {
+    width: 7px;
+    height: 10px;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0; }
+
+.rainbow-pagination_navigation-button--disabled {
+  background-color: transparent;
+  pointer-events: none; }
