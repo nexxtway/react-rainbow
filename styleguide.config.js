@@ -11,18 +11,26 @@ module.exports = {
     pagePerSection: true,
     version,
     template: {
-        favicon: '/assets/favicon.ico',
+        favicon: 'https://react-rainbow.firebaseapp.com/favicon.ico',
         head: {
             meta: [
                 {
+                    property: 'og:title',
+                    content: 'React Rainbow components'
+                },
+                {
                     name: 'description',
-                    content: 'Meta Description'
+                    content: 'React Rainbow is a collection of components that will reliably help you build your application in a snap. Give it a hack and let us know what you think.'
+                },
+                {
+                    property: 'og:description',
+                    content: 'React Rainbow is a collection of components that will reliably help you build your application in a snap. Give it a hack and let us know what you think.'
                 },
                 {
                     name: 'robots',
                     content: 'index,follow'
                 }
-            ],
+            ]
         },
     },
     require: [
