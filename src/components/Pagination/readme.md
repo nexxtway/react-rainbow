@@ -7,25 +7,46 @@ Pagination base:
                 activePage: 1,
             };
             this.handleOnChange = this.handleOnChange.bind(this);
-            this.content = Array(15).fill(0).map((item, index) => ({
-                title: `Vegetable ${index + 1}`,
-                content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore.",
-            }));
+            this.content = [
+                {
+                    title: 'Carrots',
+                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore.',
+                },
+                {
+                    title: 'Chard',
+                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore.',
+                },
+                {
+                    title: 'Chili Pepper',
+                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore.',
+                },
+                {
+                    title: 'Cucumber',
+                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore.',
+                },
+                {
+                    title: 'Lettuce',
+                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore.',
+                },
+                {
+                    title: 'Nappa Cabbage',
+                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore.',
+                },
+            ];
         }
 
         getContent() {
-                const { activePage } = this.state;
-                const lastPage = activePage * 3;
-                const firstPage = lastPage - 3;
-                return this.content.slice(firstPage, lastPage).map(({ title, content }) => (
-                    <Card
-                        className="rainbow-m-bottom_small"
-                        title={title}
-                        actions={<Button variant="neutral" label="Buy" variant="outline-brand" />}>
-                        <div className="rainbow-p-around_small">{content}</div>
-                        </Card>
-                ));
-            }
+            const { activePage } = this.state;
+            const { title, content } = this.content[activePage - 1];
+            return (
+                <Card
+                    className="rainbow-m-bottom_small"
+                    title={title}
+                    actions={<Button variant="neutral" label="Buy" variant="outline-brand" />}>
+                    <div className="rainbow-p-around_small">{content}</div>
+                </Card>
+            );
+        }
 
         handleOnChange(event, page) {
             this.setState({ activePage: page });
@@ -40,7 +61,7 @@ Pagination base:
                         <div>
                             {this.getContent()}
                         </div>
-                        <Pagination className="rainbow-m_auto" pages={5} activePage={activePage} onChange={this.handleOnChange} />
+                        <Pagination className="rainbow-m_auto" pages={6} activePage={activePage} onChange={this.handleOnChange} />
                     </div>
                 </div>
             );
