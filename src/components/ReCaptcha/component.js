@@ -8,7 +8,8 @@ import { uniqueId } from '../../libs/utils';
 export default class ReCaptchaComponent extends Component {
     constructor(props) {
         super(props);
-        this.recaptchaID = uniqueId('recaptcha-container');
+        this.state = { recaptchaID: uniqueId('recaptcha-container') };
+        // this.recaptchaID = uniqueId('recaptcha-container');
     }
 
     componentDidMount() {
@@ -22,7 +23,8 @@ export default class ReCaptchaComponent extends Component {
 
     renderReCaptcha() {
         const { value, theme, size, tabIndex, onChange } = this.props;
-        window.grecaptcha.render(this.recaptchaID, {
+        const { recaptchaID } = this.state;
+        window.grecaptcha.render(recaptchaID, {
             sitekey: value,
             theme,
             size,
@@ -35,9 +37,10 @@ export default class ReCaptchaComponent extends Component {
 
     render() {
         const { error, style } = this.props;
+        const { recaptchaID } = this.state;
         return (
             <div className={this.getContainerClassNames()} style={style}>
-                <div id={this.recaptchaID} />
+                <div id={recaptchaID} />
                 <RenderIf isTrue={!!error}>
                     <div className="rainbow-recaptcha_error">{error}</div>
                 </RenderIf>
