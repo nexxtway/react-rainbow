@@ -85,6 +85,10 @@
 }
 
 .rainbow-spinner--inverse > div {
+    color: #fff !important;
+}
+
+.rainbow-spinner--neutral > div {
     color: $color-gray-3 !important;
 }
 

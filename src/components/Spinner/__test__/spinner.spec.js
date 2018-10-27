@@ -33,6 +33,12 @@ describe('<Spinner/>', () => {
         );
         expect(component.find('div.rainbow-spinner.rainbow-spinner--inverse.rainbow-spinner--medium').exists()).toBe(true);
     });
+    it('should have the right class names when variant is neutral and size is medium', () => {
+        const component = mount(
+            <Spinner variant="neutral" size="medium" />,
+        );
+        expect(component.find('div.rainbow-spinner.rainbow-spinner--neutral.rainbow-spinner--medium').exists()).toBe(true);
+    });
     it('should have the right class names when size is small', () => {
         const component = mount(
             <Spinner size="small" />,
