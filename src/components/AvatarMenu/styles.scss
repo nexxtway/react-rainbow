@@ -19,4 +19,16 @@
         outline: 0;
         box-shadow: $shadow-outline;
     }
+
+    .rainbow-avatar_initials--inverse {
+        cursor: pointer;
+    }
+
+    .rainbow-avatar_initials[title] {
+        cursor: pointer;
+    }
+
+    .rainbow-avatar_initials {
+        cursor: pointer;
+    }
 }

@@ -10,3 +10,9 @@
   .rainbow-avatar-menu_button-wrapper:focus, .rainbow-avatar-menu_button-wrapper:active {
     outline: 0;
     box-shadow: 0 0 2px #01b6f5; }
+  .rainbow-avatar-menu_button-wrapper .rainbow-avatar_initials--inverse {
+    cursor: pointer; }
+  .rainbow-avatar-menu_button-wrapper .rainbow-avatar_initials[title] {
+    cursor: pointer; }
+  .rainbow-avatar-menu_button-wrapper .rainbow-avatar_initials {
+    cursor: pointer; }

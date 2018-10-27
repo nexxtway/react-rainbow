@@ -1,8 +1,6 @@
 const PageButtonMenu = require('../../src/components/ButtonMenu/pageObject');
 const {
     ESCAPE_KEY,
-    SPACE_KEY,
-    ENTER_KEY,
     ARROW_DOWN_KEY,
     ARROW_UP_KEY,
     TAB_KEY,
@@ -45,20 +43,6 @@ describe('ButtonMenu with subheaders example', () => {
         buttonMenu.click();
         browser.keys(ESCAPE_KEY);
         expect(buttonMenu.hasFocusButton()).toBe(true);
-    });
-    it('should open the menu when the button is focused and press Space', () => {
-        const buttonMenu = new PageButtonMenu(MENU_BTN);
-        buttonMenu.click();
-        browser.keys(ESCAPE_KEY);
-        browser.keys(SPACE_KEY);
-        expect(buttonMenu.isOpen()).toBe(true);
-    });
-    it('should open the menu when the button is focused and press Enter', () => {
-        const buttonMenu = new PageButtonMenu(MENU_BTN);
-        buttonMenu.click();
-        browser.keys(ESCAPE_KEY);
-        browser.keys(ENTER_KEY);
-        expect(buttonMenu.isOpen()).toBe(true);
     });
     it('should set the focus to the first menu item when open the menu', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);

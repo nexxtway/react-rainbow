@@ -1,8 +1,6 @@
 const PageAvatarMenu = require('./../../src/components/AvatarMenu/pageObject');
 const {
     ESCAPE_KEY,
-    SPACE_KEY,
-    ENTER_KEY,
     ARROW_DOWN_KEY,
     ARROW_UP_KEY,
     TAB_KEY,
@@ -40,25 +38,11 @@ describe('AvatarMenu base example', () => {
         menuItem.click();
         expect(avatarMenu.isOpen()).toBe(false);
     });
-    it('should put the menu button focused when the menu is opened and press ESC', () => {
+    it('should put the AvatarMenu button focused when the menu is opened and press ESC', () => {
         const avatarMenu = new PageAvatarMenu(AVATAR_MENU);
         avatarMenu.click();
         browser.keys(ESCAPE_KEY);
         expect(avatarMenu.hasFocusButton()).toBe(true);
-    });
-    it('should open the menu when the button is focused and press Space', () => {
-        const avatarMenu = new PageAvatarMenu(AVATAR_MENU);
-        avatarMenu.click();
-        browser.keys(ESCAPE_KEY);
-        browser.keys(SPACE_KEY);
-        expect(avatarMenu.isOpen()).toBe(true);
-    });
-    it('should open the menu when the button is focused and press Enter', () => {
-        const avatarMenu = new PageAvatarMenu(AVATAR_MENU);
-        avatarMenu.click();
-        browser.keys(ESCAPE_KEY);
-        browser.keys(ENTER_KEY);
-        expect(avatarMenu.isOpen()).toBe(true);
     });
     it('should set the focus to the first menu item when open the menu', () => {
         const avatarMenu = new PageAvatarMenu(AVATAR_MENU);
@@ -93,10 +77,8 @@ describe('AvatarMenu base example', () => {
     });
     it('should move to the last item when first item is active and press arrow up', () => {
         const avatarMenu = new PageAvatarMenu(AVATAR_MENU);
-        const firstMenuItem = avatarMenu.getItem(0);
         const lastMenuItem = avatarMenu.getItem(1);
         avatarMenu.click();
-        firstMenuItem.hover();
         browser.keys(ARROW_UP_KEY);
         expect(lastMenuItem.hasFocus()).toBe(true);
     });
@@ -112,5 +94,11 @@ describe('AvatarMenu base example', () => {
         avatarMenu.click();
         menuItem.hover();
         expect(menuItem.hasFocus()).toBe(true);
+    });
+    it('should not have focus in the trigger AvatarMenu button when the menu is opened and press the tab key', () => {
+        const avatarMenu = new PageAvatarMenu(AVATAR_MENU);
+        avatarMenu.click();
+        browser.keys(TAB_KEY);
+        expect(avatarMenu.hasFocusButton()).toBe(false);
     });
 });
