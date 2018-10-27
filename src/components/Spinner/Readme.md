@@ -1,4 +1,4 @@
-##### list loading using spinner - base - medium
+##### list loading using spinner - base - large
 
     <div>
        <GlobalHeader src="images/user/user3.jpg" />
@@ -10,19 +10,19 @@
     </div>
 
 
-##### full screen loading using spinner - brand - large
+##### full screen loading using spinner - brand - medium
 
-     const ContainerStyles = {
+     const containerStyles = {
         borderRadius: '0.875rem',
     };
 
-    <div className="rainbow-background-color_white rainbow-align-content_center rainbow-position_relative rainbow-p-vertical_xx-large" style={ContainerStyles}>
+    <div className="rainbow-background-color_white rainbow-align-content_center rainbow-position_relative rainbow-p-vertical_xx-large" style={containerStyles}>
         <Spinner variant="brand" size="medium" />
         <h1 className="rainbow-color_brand rainbow-font-size-text_medium rainbow-p-top_xx-large rainbow-m-top_xx-large rainbow-m-bottom_large">Loading…</h1>
     </div>
 
 
-##### lazy loading using spinner - base - small
+##### lazy loading using spinner - neutral - small
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
     const { faTasks } = require('@fortawesome/free-solid-svg-icons');
@@ -35,7 +35,7 @@
     const spinner = (
         <div className="rainbow-align-content_center">
             <div className="rainbow-position_relative">
-                <Spinner size="small" variant="inverse" />
+                <Spinner size="small" variant="neutral" />
             </div>
             <h1 className="rainbow-font-size-text_medium rainbow-m-left_large rainbow-color_gray-4">Loading…</h1>
         </div>
@@ -52,4 +52,21 @@
             actions={<Button variant="neutral" label="Add" />} >
                 <div className="rainbow-p-vertical_xx-large" />
         </Card>
+    </div>
+
+
+##### full screen loading using spinner - inverse - medium
+
+     const containerStyles = {
+        backgroundColor: '#061c3f',
+        borderRadius: '0.875rem',
+    };
+
+    const textStyles = {
+        color: '#fff',
+    };
+
+    <div className="rainbow-background-color_white rainbow-align-content_center rainbow-position_relative rainbow-p-vertical_xx-large" style={containerStyles}>
+        <Spinner variant="inverse" size="medium" />
+        <h1 className="rainbow-font-size-text_medium rainbow-p-top_xx-large rainbow-m-top_xx-large rainbow-m-bottom_large" style={textStyles}>Loading…</h1>
     </div>

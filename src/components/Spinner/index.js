@@ -53,7 +53,7 @@ Spinner.propTypes = {
     /** The variant changes the appearance of the spinner.
     * Accepted variants are base, brand, and inverse. This value defaults to base. */
     variant: PropTypes.oneOf([
-        'base', 'brand', 'inverse',
+        'base', 'brand', 'inverse', 'neutral',
     ]),
     /** The size of the spinner. Accepted sizes are small, medium, and large.
     * This value defaults to medium. */
