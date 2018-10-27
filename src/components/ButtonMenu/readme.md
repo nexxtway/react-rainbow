@@ -7,7 +7,6 @@
         <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
             <ButtonGroup>
                 <ButtonMenu
-                    id="button-menu"
                     menuAlignment="right"
                     menuSize="x-small"
                     buttonVariant="base"
@@ -71,6 +70,7 @@
                 <ButtonIcon icon={<FontAwesomeIcon icon={faPlus} />} variant="border-filled" disabled />
                 <ButtonIcon icon={<FontAwesomeIcon icon={faEdit} />} variant="border-filled" disabled />
                 <ButtonMenu
+                    id="button-menu"
                     menuAlignment="right"
                     menuSize="x-small"
                     icon={<FontAwesomeIcon icon={faEllipsisV} />}>
@@ -251,11 +251,37 @@
     </div>
 
 
+##### button menu with disabled items
+
+    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+    const { faCog } = require('@fortawesome/free-solid-svg-icons');
+
+    <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
+        <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
+            <ButtonGroup>
+                <ButtonMenu
+                    id="button-menu-disabled-items"
+                    menuAlignment="right"
+                    menuSize="x-small"
+                    buttonVariant="base"
+                    icon={<FontAwesomeIcon icon={faCog} />}>
+
+                    <MenuItem label="Menu Item One" />
+                    <MenuItem disabled label="Menu Item Two" />
+                    <MenuItem label="Menu Item Three" />
+                    <MenuItem label="Menu Item Four" />
+                    <MenuItem disabled label="Menu Item Five" />
+                </ButtonMenu>
+            </ButtonGroup>
+        </GlobalHeader>
+    </div>
+
+
 ##### button menu loading
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
     const { faBell } = require('@fortawesome/free-solid-svg-icons');
-    
+
 
     <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
         <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large" src="images/user/user3.jpg">

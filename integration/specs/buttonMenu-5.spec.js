@@ -1,4 +1,4 @@
-const PageButtonMenu = require('./../../src/components/ButtonMenu/pageObject');
+const PageButtonMenu = require('../../src/components/ButtonMenu/pageObject');
 const {
     ESCAPE_KEY,
     SPACE_KEY,
@@ -6,14 +6,14 @@ const {
     ARROW_DOWN_KEY,
     ARROW_UP_KEY,
     TAB_KEY,
-} = require('./../constants');
+} = require('../constants');
 
 const MENU_BTN = '#button-menu';
 const REACT_LOGO = 'img[alt="rainbow logo"]';
 
-describe('ButtonMenu base example', () => {
+describe('ButtonMenu with subheaders example', () => {
     beforeEach(() => {
-        browser.url('/#!/ButtonMenu/1');
+        browser.url('/#!/ButtonMenu/5');
         browser.refresh();
     });
     it('should open the menu when click on the button', () => {
@@ -35,7 +35,7 @@ describe('ButtonMenu base example', () => {
     });
     it('should close the menu when the menu is opened and click an element', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
-        const menuItem = buttonMenu.getItem(1);
+        const menuItem = buttonMenu.getItem(0);
         buttonMenu.click();
         menuItem.click();
         expect(buttonMenu.isOpen()).toBe(false);
@@ -70,29 +70,30 @@ describe('ButtonMenu base example', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
         const menuItem = buttonMenu.getItem(1);
         buttonMenu.click();
-        browser.keys('ArrowDown');
+        browser.keys(ARROW_DOWN_KEY);
         expect(menuItem.hasFocus()).toBe(true);
     });
     it('should move to the previous item when press arrow up', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
-        const menuItem = buttonMenu.getItem(1);
+        const secondMenuItem = buttonMenu.getItem(1);
+        const thirdMenuItem = buttonMenu.getItem(2);
         buttonMenu.click();
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ARROW_DOWN_KEY);
+        thirdMenuItem.hover();
         browser.keys(ARROW_UP_KEY);
-        expect(menuItem.hasFocus()).toBe(true);
+        expect(secondMenuItem.hasFocus()).toBe(true);
     });
     it('should move to the first item when last item is active and press arrow down', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
-        const menuItem = buttonMenu.getItem(0);
+        const secondMenuItem = buttonMenu.getItem(1);
+        const thirdMenuItem = buttonMenu.getItem(2);
         buttonMenu.click();
-        browser.keys(ARROW_UP_KEY);
+        secondMenuItem.hover();
         browser.keys(ARROW_DOWN_KEY);
-        expect(menuItem.hasFocus()).toBe(true);
+        expect(thirdMenuItem.hasFocus()).toBe(true);
     });
     it('should move to the last item when first item is active and press arrow up', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
-        const menuItem = buttonMenu.getItem(3);
+        const menuItem = buttonMenu.getItem(4);
         buttonMenu.click();
         browser.keys(ARROW_UP_KEY);
         expect(menuItem.hasFocus()).toBe(true);
@@ -105,9 +106,9 @@ describe('ButtonMenu base example', () => {
     });
     it('should move focus to the item hovered', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
-        const menuItem = buttonMenu.getItem(1);
+        const thirdMenuItem = buttonMenu.getItem(2);
         buttonMenu.click();
-        menuItem.hover();
-        expect(menuItem.hasFocus()).toBe(true);
+        thirdMenuItem.hover();
+        expect(thirdMenuItem.hasFocus()).toBe(true);
     });
 });
