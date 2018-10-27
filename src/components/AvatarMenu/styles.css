@@ -2,12 +2,11 @@
   background-color: transparent;
   padding: 0;
   margin: 0;
+  border: 0;
   outline: none;
-  border-radius: 12rem;
-  box-shadow: 0 0 2px 0 #e3e5ed;
-  border: solid 1px #e3e5ed; }
-  .rainbow-avatar-menu_button-wrapper:hover, .rainbow-avatar-menu_button-wrapper:focus, .rainbow-avatar-menu_button-wrapper:active {
-    color: #009acf; }
-  .rainbow-avatar-menu_button-wrapper:focus {
+  border-radius: 12rem; }
+  .rainbow-avatar-menu_button-wrapper:hover {
+    box-shadow: 0 0 0 4px #e3e5ed; }
+  .rainbow-avatar-menu_button-wrapper:focus, .rainbow-avatar-menu_button-wrapper:active {
     outline: 0;
     box-shadow: 0 0 2px #01b6f5; }
