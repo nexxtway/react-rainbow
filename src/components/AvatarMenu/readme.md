@@ -22,7 +22,7 @@
                     menuSize="small"
                     avatarSize="large"
                     title="Tahimi Leon">
-                    <div className="rainbow-p-horizontal_small rainbow-align_center rainbow-flex">
+                    <li className="rainbow-p-horizontal_small rainbow-align_center rainbow-flex">
                         <Avatar
                             src="images/user/user2.jpg"
                             assistiveText="Tahimi Leon"
@@ -32,7 +32,7 @@
                             <p className="rainbow-font-size-text_medium rainbow-color_dark-1">Tahimi</p>
                             <p className="rainbow-font-size-text_small rainbow-color_gray-3">janedoe@gmail.com</p>
                         </div>
-                    </div>
+                    </li>
                     <MenuDivider variant="space" />
                     <MenuItem
                         label="Edit Profile"

@@ -6,19 +6,29 @@
     background-color: transparent;
     padding: 0;
     margin: 0;
+    border: 0;
     outline: none;
     border-radius: $border-radius-2;
-    box-shadow: $shadow-6;
-    border: solid 1px $color-gray-2;
 
-    &:hover,
-    &:focus,
-    &:active {
-        color: $color-brand-active;
+    &:hover {
+        box-shadow: 0 0 0 4px $color-gray-2;
     }
 
-    &:focus {
+    &:focus,
+    &:active {
         outline: 0;
         box-shadow: $shadow-outline;
+    }
+
+    .rainbow-avatar_initials--inverse {
+        cursor: pointer;
+    }
+
+    .rainbow-avatar_initials[title] {
+        cursor: pointer;
+    }
+
+    .rainbow-avatar_initials {
+        cursor: pointer;
     }
 }
