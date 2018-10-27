@@ -1,23 +1,54 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import InputBase from './inputBase';
 import InputRadio from './inputRadio';
 import InputCheckbox from './inputCheckbox';
 import withReduxForm from './../../libs/hocs/withReduxForm';
 
-
 /**
  * Text inputs are used for freeform data entry.
  */
-function Input(props) {
-    const { type } = props;
-    if (type === 'radio') {
-        return <InputRadio {...props} />;
+class Input extends Component {
+    constructor(props) {
+        super(props);
+        this.inputRef = React.createRef();
     }
-    if (type === 'checkbox') {
-        return <InputCheckbox {...props} />;
+
+    /**
+     * Sets focus on the element.
+     * @public
+     */
+    focus() {
+        this.inputRef.current.focus();
     }
-    return <InputBase {...props} />;
+
+    /**
+     * Sets click on the element.
+     * @public
+     */
+    click() {
+        this.inputRef.current.click();
+    }
+
+    /**
+     * Sets blur on the element.
+     * @public
+     */
+    blur() {
+        this.inputRef.current.blur();
+    }
+
+    render() {
+        const { type } = this.props;
+
+        if (type === 'radio') {
+            return <InputRadio ref={this.inputRef} {...this.props} />;
+        }
+        if (type === 'checkbox') {
+            return <InputCheckbox ref={this.inputRef} {...this.props} />;
+        }
+        return <InputBase ref={this.inputRef} {...this.props} />;
+    }
 }
 
 Input.propTypes = {
