@@ -4,7 +4,8 @@
   border: 0.0625rem solid #e3e5ed;
   border-radius: 0.875rem;
   background-clip: padding-box;
-  box-shadow: 0 1px 2px 0 #e3e5ed; }
+  box-shadow: 0 1px 2px 0 #e3e5ed;
+  overflow: hidden; }
   .rainbow-card > .rainbow-google-map .rainbow-google-map_map-container {
     border: none;
     border-radius: 0.875rem 0.875rem 0 0;

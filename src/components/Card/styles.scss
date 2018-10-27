@@ -18,6 +18,7 @@
     border-radius: $border-radius-1;
     background-clip: padding-box;
     box-shadow: $shadow-4;
+    overflow: hidden;
 
     & > .rainbow-google-map {
         .rainbow-google-map_map-container {
