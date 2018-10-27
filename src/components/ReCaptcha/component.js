@@ -3,8 +3,13 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import RenderIf from '../RenderIf';
 import './styles.css';
+import { uniqueId } from '../../libs/utils';
 
 export default class ReCaptchaComponent extends Component {
+    constructor(props) {
+        super(props);
+        this.recaptchaID = uniqueId('recaptcha-container');
+    }
 
     componentDidMount() {
         window.grecaptcha.ready(() => this.renderReCaptcha());
@@ -17,7 +22,7 @@ export default class ReCaptchaComponent extends Component {
 
     renderReCaptcha() {
         const { value, theme, size, tabIndex, onChange } = this.props;
-        window.grecaptcha.render('recaptcha-container', {
+        window.grecaptcha.render(this.recaptchaID, {
             sitekey: value,
             theme,
             size,
@@ -32,7 +37,7 @@ export default class ReCaptchaComponent extends Component {
         const { error, style } = this.props;
         return (
             <div className={this.getContainerClassNames()} style={style}>
-                <div id="recaptcha-container" />
+                <div id={this.recaptchaID} />
                 <RenderIf isTrue={!!error}>
                     <div className="rainbow-recaptcha_error">{error}</div>
                 </RenderIf>
