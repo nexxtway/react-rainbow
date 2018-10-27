@@ -74,12 +74,12 @@
     }
 }
 
-.rainbow-pagination_button--first {
+.rainbow-pagination_button:nth-child(2) {
     margin-left: $margin-x-small;
     border-radius: 100px 0 0 100px;
 }
 
-.rainbow-pagination_button--last {
+.rainbow-pagination_button:nth-last-child(2) {
     margin-right: $margin-x-small;
     border-radius: 0 100px 100px 0;
 }

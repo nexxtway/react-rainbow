@@ -43,11 +43,11 @@
     .rainbow-pagination_button--active .rainbow-pagination_button-content:hover {
       color: #061c3f; }
 
-.rainbow-pagination_button--first {
+.rainbow-pagination_button:nth-child(2) {
   margin-left: 0.5rem;
   border-radius: 100px 0 0 100px; }
 
-.rainbow-pagination_button--last {
+.rainbow-pagination_button:nth-last-child(2) {
   margin-right: 0.5rem;
   border-radius: 0 100px 100px 0; }
 

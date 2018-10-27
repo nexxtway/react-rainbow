@@ -6,9 +6,7 @@ import getFirstItem from './get-first-item';
 export default function PageButtons(props) {
     const { pages, activePage, onChange } = props;
 
-    const getButtonClassName = (page, index, buttonsToRender) => classnames('rainbow-pagination_button', {
-        'rainbow-pagination_button--first': index === 0,
-        'rainbow-pagination_button--last': index === buttonsToRender - 1,
+    const getButtonClassName = page => classnames('rainbow-pagination_button', {
         'rainbow-pagination_button--active': activePage === page,
     });
 
@@ -30,7 +28,7 @@ export default function PageButtons(props) {
             return (
                 <li
                     key={key}
-                    className={getButtonClassName(page, index, buttonsToRender)}>
+                    className={getButtonClassName(page)}>
                     <a
                         className="rainbow-pagination_button-content"
                         onClick={event => onChange(event, page)}
