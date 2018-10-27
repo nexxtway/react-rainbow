@@ -19,11 +19,13 @@ export default function Pagination(props) {
         <nav className={getContainerClassNames()} style={style} aria-label="pagination">
             <ul className="rainbow-pagination_container">
                 <NavigationButton
+                    dataId="previous-page-button"
                     icon={<LeftArrow />}
                     onClick={event => onChange(event, activePage - 1)}
                     disabled={isFirstItemSelected} />
                 <PageButtons onChange={onChange} pages={pages} activePage={activePage} />
                 <NavigationButton
+                    dataId="next-page-button"
                     icon={<RightArrow />}
                     onClick={event => onChange(event, activePage + 1)}
                     disabled={isLastItemSelected} />
