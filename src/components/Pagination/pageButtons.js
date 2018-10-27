@@ -3,23 +3,21 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import getFirstItem from './get-first-item';
 
-function getButtonClassName(page, activePage, index, buttonsToRender) {
-    return classnames('rainbow-pagination_button', {
+export default function PageButtons(props) {
+    const { pages, activePage, onChange } = props;
+
+    const getButtonClassName = (page, index, buttonsToRender) => classnames('rainbow-pagination_button', {
         'rainbow-pagination_button--first': index === 0,
         'rainbow-pagination_button--last': index === buttonsToRender - 1,
         'rainbow-pagination_button--active': activePage === page,
     });
-}
 
-function getAriaCurrent(page, activePage) {
-    if (page === activePage) {
-        return 'page';
-    }
-    return undefined;
-}
-
-export default function PageButtons(props) {
-    const { pages, activePage, onChange } = props;
+    const getAriaCurrent = (page) => {
+        if (page === activePage) {
+            return 'page';
+        }
+        return undefined;
+    };
 
     const renderButtons = () => {
         const firstItem = pages > 4 ? getFirstItem(pages, activePage) : 1;
@@ -32,8 +30,9 @@ export default function PageButtons(props) {
             return (
                 <li
                     key={key}
-                    className={getButtonClassName(page, activePage, index, buttonsToRender)}>
+                    className={getButtonClassName(page, index, buttonsToRender)}>
                     <a
+                        className="rainbow-pagination_button-content"
                         onClick={event => onChange(event, page)}
                         aria-current={getAriaCurrent(page)}
                         aria-label={ariaLabel}
