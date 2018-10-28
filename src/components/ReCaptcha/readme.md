@@ -12,15 +12,13 @@ ReCaptcha base:
             super(props);
             this.state = {
                 userName: undefined,
+                userNameError: undefined,
                 email: undefined,
+                emailError: undefined,
                 message: undefined,
+                messageError: undefined,
                 recaptcha: undefined,
-                error: {
-                    userName: undefined,
-                    email: undefined,
-                    message: undefined,
-                    recaptcha: undefined,
-                }
+                recaptchaError: undefined,
             };
 
             this.handleEmailChange = this.handleEmailChange.bind(this);
@@ -31,45 +29,66 @@ ReCaptcha base:
         }
 
         handleUserNameChange(event) {
-            this.setState({ userName: event.target.value });
+            const userName = event.target.value;
+            let error;
+            if (userName === undefined || userName === '') {
+                error = 'the name is required';
+            }
+            this.setState({ userName: event.target.value, userNameError: error });
         }
 
         handleEmailChange(event) {
-            this.setState({ email: event.target.value });
+            const email = event.target.value;
+            let error;
+            if (email === undefined || email === '') {
+                error = 'the email is required';
+            }
+            this.setState({ email: event.target.value, emailError: error });
         }
 
         handleMessageChange(event) {
-            this.setState({ message: event.target.value });
+            const message = event.target.value;
+            let error;
+            if (message === undefined || message === '') {
+                error = 'the message is required';
+            }
+            this.setState({ message: event.target.value, messageError: error });
         }
 
         handleReCaptchaSuccess(token) {
-           this.setState({ recaptcha: token });
+            let error;
+            if (token === undefined) {
+                error = 'the recaptcha needs to be completed';
+            }
+           this.setState({ recaptcha: token, recaptchaError: error });
         }
 
         handleSubmit(event) {
             event.preventDefault();
             const error = {
-                userName: undefined,
-                email: undefined,
-                message: undefined,
-                recaptcha: undefined,
+                userNameError: undefined,
+                emailError: undefined,
+                messageError: undefined,
+                recaptchaError: undefined,
             };
             let reload = false;
             const { userName, email, message, recaptcha } = this.state;
             if (userName === undefined || userName === '') {
-                error.userName = 'the name is required';
+                error.userNameError = 'the name is required';
                 reload = true;
             } if (email === undefined || email === '') {
-                error.email = 'the email is required';
+                error.emailError = 'the email is required';
                 reload = true;
             } if (message === undefined || message === '') {
-                error.message = 'the message is required';
+                error.messageError = 'the message is required';
                 reload = true;
-            } if (recaptcha === undefined) {
-                error.recaptcha = 'the recaptcha needs to be completed';
+            }
+            if (recaptcha === undefined) {
+                error.recaptchaError = 'the recaptcha needs to be completed';
                 reload = true;
-            } if (reload) {
-                this.setState({ error });
+            }
+            if (reload) {
+                this.setState({ ...error });
             } else {
                 alert(JSON.stringify(this.state));
             }
@@ -78,14 +97,12 @@ ReCaptcha base:
         render() {
             const {
                 userName,
+                userNameError,
                 email,
+                emailError,
                 message,
-                error: {
-                   userName: userNameError,
-                   email: emailError,
-                   message: messageError,
-                   recaptcha: recaptchaError,
-                }
+                messageError,
+                recaptchaError,
             } = this.state;
 
             return (
@@ -149,15 +166,13 @@ ReCaptcha dark:
             super(props);
             this.state = {
                 userName: undefined,
+                userNameError: undefined,
                 email: undefined,
+                emailError: undefined,
                 message: undefined,
+                messageError: undefined,
                 recaptcha: undefined,
-                error: {
-                    userName: undefined,
-                    email: undefined,
-                    message: undefined,
-                    recaptcha: undefined,
-                }
+                recaptchaError: undefined,
             };
 
             this.handleEmailChange = this.handleEmailChange.bind(this);
@@ -168,45 +183,66 @@ ReCaptcha dark:
         }
 
         handleUserNameChange(event) {
-            this.setState({ userName: event.target.value });
+            const userName = event.target.value;
+            let error;
+            if (userName === undefined || userName === '') {
+                error = 'the name is required';
+            }
+            this.setState({ userName: event.target.value, userNameError: error });
         }
 
         handleEmailChange(event) {
-            this.setState({ email: event.target.value });
+            const email = event.target.value;
+            let error;
+            if (email === undefined || email === '') {
+                error = 'the email is required';
+            }
+            this.setState({ email: event.target.value, emailError: error });
         }
 
         handleMessageChange(event) {
-            this.setState({ message: event.target.value });
+            const message = event.target.value;
+            let error;
+            if (message === undefined || message === '') {
+                error = 'the message is required';
+            }
+            this.setState({ message: event.target.value, messageError: error });
         }
 
         handleReCaptchaSuccess(token) {
-           this.setState({ recaptcha: token });
+            let error;
+            if (token === undefined) {
+                error = 'the recaptcha needs to be completed';
+            }
+           this.setState({ recaptcha: token, recaptchaError: error });
         }
 
         handleSubmit(event) {
             event.preventDefault();
             const error = {
-                userName: undefined,
-                email: undefined,
-                message: undefined,
-                recaptcha: undefined,
+                userNameError: undefined,
+                emailError: undefined,
+                messageError: undefined,
+                recaptchaError: undefined,
             };
             let reload = false;
             const { userName, email, message, recaptcha } = this.state;
             if (userName === undefined || userName === '') {
-                error.userName = 'the name is required';
+                error.userNameError = 'the name is required';
                 reload = true;
             } if (email === undefined || email === '') {
-                error.email = 'the email is required';
+                error.emailError = 'the email is required';
                 reload = true;
             } if (message === undefined || message === '') {
-                error.message = 'the message is required';
+                error.messageError = 'the message is required';
                 reload = true;
-            } if (recaptcha === undefined) {
-                error.recaptcha = 'the recaptcha needs to be completed';
+            }
+            if (recaptcha === undefined) {
+                error.recaptchaError = 'the recaptcha needs to be completed';
                 reload = true;
-            } if (reload) {
-                this.setState({ error });
+            }
+            if (reload) {
+                this.setState({ ...error });
             } else {
                 alert(JSON.stringify(this.state));
             }
@@ -215,14 +251,12 @@ ReCaptcha dark:
         render() {
             const {
                 userName,
+                userNameError,
                 email,
+                emailError,
                 message,
-                error: {
-                   userName: userNameError,
-                   email: emailError,
-                   message: messageError,
-                   recaptcha: recaptchaError,
-                }
+                messageError,
+                recaptchaError,
             } = this.state;
 
             return (
