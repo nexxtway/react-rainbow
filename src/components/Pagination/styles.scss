@@ -51,7 +51,7 @@
 
     @extend .center-items;
 
-    &:hover {
+    &:hover, &:focus {
         text-decoration: none;
         color: $color-gray-4;
     }

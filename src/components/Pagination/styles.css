@@ -29,7 +29,7 @@
   text-decoration: none;
   font-weight: bold;
   font-size: 0.875rem; }
-  .rainbow-pagination_button-content:hover {
+  .rainbow-pagination_button-content:hover, .rainbow-pagination_button-content:focus {
     text-decoration: none;
     color: #576574; }
 
