@@ -16,8 +16,8 @@ export default function Pagination(props) {
     const isLastItemSelected = activePage === pages;
 
     return (
-        <nav className={getContainerClassNames()} style={style} aria-label="pagination">
-            <ul className="rainbow-pagination_container">
+        <nav aria-label="pagination">
+            <ul className={getContainerClassNames()} style={style} >
                 <NavigationButton
                     dataId="previous-page-button"
                     icon={<LeftArrow />}

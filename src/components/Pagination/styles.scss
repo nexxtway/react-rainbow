@@ -1,6 +1,7 @@
 @import "../../styles/margins";
 @import "../../styles/colors";
 @import "../../styles/shadows";
+@import "../../styles/border-radius";
 @import "../../styles/font-sizes";
 
 @mixin variants-common-styles($background-color, $border-color, $color) {
@@ -9,21 +10,10 @@
     color: $color;
 }
 
-.center-items {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .rainbow-pagination {
-    width: fit-content;
-}
-
-.rainbow-pagination_container {
     display: flex;
-    justify-content: flex-start;
     align-items: center;
-    width: fit-content;
+    justify-content: center;
 }
 
 .rainbow-pagination_button {
@@ -32,45 +22,19 @@
     border: 1px $color-gray-2 solid;
     margin-left: -1px;
     background-color: white;
+    transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 
-    @extend .center-items;
+    @extend .rainbow-pagination;
 
     &:hover {
         background-color: $color-gray-1;
-    }
-}
-
-.rainbow-pagination_button-content {
-    color: $color-gray-4;
-    line-height: unset;
-    width: 100%;
-    height: 100%;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: $font-size-text-medium;
-
-    @extend .center-items;
-
-    &:hover, &:focus {
-        text-decoration: none;
-        color: $color-gray-4;
-    }
-}
-
-.rainbow-pagination_button--active {
-    background-color: $color-gray-2;
-
-    &:hover {
-        background-color: $color-gray-2;
+        transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     }
 
-    .rainbow-pagination_button-content {
-        font-size: $font-size-text-large;
-        color: $color-dark-1;
-
-        &:hover {
-            color: $color-dark-1;
-        }
+    &:focus,
+    &:active {
+        box-shadow: $shadow-outline;
+        z-index: 100;
     }
 }
 
@@ -84,29 +48,69 @@
     border-radius: 0 100px 100px 0;
 }
 
+.rainbow-pagination_button-content {
+    color: $color-gray-4;
+    line-height: 2rem;
+    width: 2rem;
+    height: 2rem;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: $font-size-text-medium;
+
+    @extend .rainbow-pagination;
+
+    &:hover, &:focus {
+        text-decoration: none;
+        color: $color-gray-4;
+    }
+}
+
+.rainbow-pagination_button--active {
+    background-color: $color-gray-2;
+    transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+    &:hover {
+        background-color: $color-gray-2;
+        transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    }
+
+    .rainbow-pagination_button-content {
+        font-size: $font-size-text-large;
+        color: $color-dark-1;
+        transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+        &:hover {
+            color: $color-dark-1;
+        }
+    }
+}
+
 .rainbow-pagination_navigation-button {
-    border-radius: 50%;
+    border-radius: $border-radius-2;
     color: $color-gray-4;
     font-weight: bold;
     height: 2rem;
     width: 2rem;
-    line-height: unset;
+    line-height: 2rem;
 
-    @extend .center-items;
+    @extend .rainbow-pagination;
 
     @include variants-common-styles(white, $color-gray-2, $color-gray-4);
 
-    &:hover,
+    &:hover {
+        background-color: $color-gray-1;
+    }
+
     &:focus,
     &:active {
-        background-color: $color-gray-1;
+        box-shadow: $shadow-outline;
     }
 }
 
 .rainbow-pagination_navigation-button-content {
     position: relative;
-    height: 100%;
-    width: 100%;
+    height: 2rem;
+    width: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -115,4 +119,9 @@
 .rainbow-pagination_navigation-button--disabled {
     background-color: transparent;
     pointer-events: none;
+    transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+    .rainbow-pagination_navigation-button-content > svg {
+        fill: $color-gray-2;
+    }
 }
