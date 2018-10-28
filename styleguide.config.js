@@ -9,9 +9,38 @@ module.exports = {
     assetsDir: path.resolve(__dirname, 'assets'),
     skipComponentsWithoutExample: true,
     pagePerSection: true,
+    title: 'React Rainbow Components',
     version,
     template: {
-        favicon: '/assets/favicon.ico'
+        favicon: 'https://react-rainbow.firebaseapp.com/favicon.ico',
+        head: {
+            meta: [
+                {
+                    name: 'robots',
+                    content: 'index,follow'
+                },
+                {
+                    name: 'description',
+                    content: 'React Rainbow is a collection of components that will reliably help you build your application in a snap. Give it a hack and let us know what you think.'
+                },
+                {
+                    name: 'keywords',
+                    content: 'react, rainbow, components, library'
+                },
+                {
+                    property: 'og:title',
+                    content: 'React Rainbow Components'
+                },
+                {
+                    property: 'og:description',
+                    content: 'React Rainbow is a collection of components that will reliably help you build your application in a snap. Give it a hack and let us know what you think.'
+                },
+                {
+                    property: 'og:image',
+                    content: 'https://react-rainbow.firebaseapp.com/share-image.png'
+                }
+            ]
+        },
     },
     require: [
         path.resolve(__dirname, 'src/components/Application/styles/rainbow-styles.css'),

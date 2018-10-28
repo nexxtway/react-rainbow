@@ -11,9 +11,6 @@ import isInArray from './is-in-array';
 import removeItemFromArray from './remove-item-from-array';
 import './styles.css';
 
-/**
-* An AccordionSection is single section that is nested in the Accordion component.
-*/
 class AccordionItem extends Component {
     constructor(props) {
         super(props);
@@ -176,6 +173,9 @@ class AccordionItem extends Component {
     }
 }
 
+/**
+* An AccordionSection is single section that is nested in the Accordion component.
+*/
 export default function AccordionSection(props) {
     return (
         <Consumer>
