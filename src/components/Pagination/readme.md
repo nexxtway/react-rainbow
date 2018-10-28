@@ -1,5 +1,9 @@
 Pagination base:
 
+    const cardStyles = { width: '32%' };
+    const cardContentStyles = { height: '70%' };
+    const cardImageStyles = { width: '100%', flex: '1' };
+
     class PaginationExample extends React.Component {
         constructor(props) {
             super(props);
@@ -60,10 +64,12 @@ Pagination base:
             const lastItem = activePage * 3;
             const firstItem = lastItem - 3;
             return this.content.slice(firstItem, lastItem).map(({ title, image }) => (
-                <Card className="rainbow-m-bottom_small rainbow-m-right_small" style={{ width: '32%' }}>
-                    <div className="rainbow-flex rainbow-flex_column rainbow_vertical-stretch" style={{ height: '100%' }}>
-                        <img src={image} style={{ width: '100%', flex: '1' }} />
-                        <span className="rainbow-font-size-text_large rainbow-color_dark-1 rainbow-p-bottom_small rainbow-p-top_small" style={{ alignSelf: 'center' }}>{title}</span>
+                <Card
+                    className="rainbow-m-bottom_x-large rainbow-m-right_small"
+                    style={cardStyles}
+                    footer={<span className="rainbow-font-size-text_large rainbow-color_dark-1">{title}</span>}>
+                    <div className="rainbow-flex rainbow-flex_column rainbow_vertical-stretch" style={cardContentStyles}>
+                        <img src={image} style={cardImageStyles} />
                     </div>
                 </Card>
             ));

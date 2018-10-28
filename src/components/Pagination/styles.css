@@ -67,16 +67,10 @@
 .rainbow-pagination_navigation-button-content {
   position: relative;
   height: 100%;
-  width: 100%; }
-  .rainbow-pagination_navigation-button-content svg {
-    width: 7px;
-    height: 10px;
-    position: absolute;
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0; }
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
 
 .rainbow-pagination_navigation-button--disabled {
   background-color: transparent;
