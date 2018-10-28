@@ -1,15 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import scriptLoader from 'react-async-script-loader';
 import withReduxForm from '../../libs/hocs/withReduxForm';
 import getUrl from './get-url';
 import ReCaptchaWrapper from './wrapper';
 
-function ReCaptcha(props) {
-    const { lang, ...rest } = props;
+class ReCaptcha extends Component {
+    componentDidMount() {
+        const { lang } = this.props;
+        this.ReCaptchaComponent = scriptLoader(getUrl(lang))(ReCaptchaWrapper);
+        this.reloadComponent();
+    }
 
-    const ReCaptchaComponent = scriptLoader(getUrl(lang))(ReCaptchaWrapper);
-    return <ReCaptchaComponent {...rest} />;
+    reloadComponent() {
+        this.setState({ key: Date.now() });
+    }
+
+    render() {
+        const ReCaptchaComponent = this.ReCaptchaComponent;
+        return <ReCaptchaComponent {...this.props} />;
+    }
 }
 
 ReCaptcha.propTypes = {
