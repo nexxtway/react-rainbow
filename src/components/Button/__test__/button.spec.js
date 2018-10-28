@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Button from './../index';
+import Spinner from '../../Spinner';
 
 describe('<Button/>', () => {
     it('should call onClick function when someone click over', () => {
@@ -191,5 +192,63 @@ describe('<Button/>', () => {
             );
         const buttonClassNameProp = component.find('button').prop('className');
         expect(buttonClassNameProp).toBe('rainbow-button');
+    });
+    it('should render the Spinner when isLoading is passed', () => {
+        const component = mount(
+            <Button label="Button Label" isLoading />,
+        );
+        expect(component.find(Spinner).exists()).toBe(true);
+    });
+    it('should set disable to true when isLoading is passed', () => {
+        const component = mount(
+            <Button label="my label" isLoading />,
+        );
+
+        expect(component.find('button').prop('disabled')).toBe(true);
+    });
+    it('should have the right class names when isLoading is true', () => {
+        const variants = [
+            'neutral',
+            'brand',
+            'destructive',
+            'success',
+            'inverse',
+            'outline-brand',
+            'border-inverse',
+        ];
+        variants.forEach((variant) => {
+            const component = mount(
+                <Button label="Button Label" variant={variant} isLoading />,
+            );
+            const buttonClassNameProp = component.find('button').prop('className');
+            expect(buttonClassNameProp).toBe(`rainbow-button rainbow-button--${variant} rainbow-button--loading`);
+        });
+    });
+    it('should have the right class names when isLoading is true and variant is base', () => {
+        const component = mount(
+                <Button label="Button Label" variant="base" isLoading />,
+            );
+        const buttonClassNameProp = component.find('button').prop('className');
+        expect(buttonClassNameProp).toBe('rainbow-button');
+    });
+    it('should render the Spinner and label when isLoading and label are passed', () => {
+        const component = mount(
+            <Button label="OK" isLoading />,
+        );
+        expect(component.text()).toBe('OK');
+        expect(component.find(Spinner).exists()).toBe(true);
+    });
+    it('should render the Spinner and children when isLoading, children and label are passed', () => {
+        const component = mount(
+            <Button label="OK" isLoading>Test</Button>,
+        );
+        expect(component.text()).toBe('Test');
+        expect(component.find(Spinner).exists()).toBe(true);
+    });
+    it('should render the children when label and children are passed', () => {
+        const component = mount(
+            <Button label="OK">Test</Button>,
+        );
+        expect(component.text()).toBe('Test');
     });
 });

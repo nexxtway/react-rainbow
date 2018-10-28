@@ -12,6 +12,11 @@
     transition: border 0.15s linear;
 }
 
+@mixin spinner-variants-common-styles($background-color, $border-color) {
+    background-color: $background-color;
+    border: 1px solid $border-color;
+}
+
 .rainbow-button {
     align-items: center;
     display: inline-flex;
@@ -216,4 +221,40 @@
 
 .rainbow-button--shaded {
     box-shadow: $shadow-1;
+}
+
+.rainbow-button--content-hidden {
+    visibility: hidden;
+
+    .rainbow-button--spinner-visible {
+        visibility: visible;
+    }
+}
+
+.rainbow-button--neutral.rainbow-button--loading {
+    @include spinner-variants-common-styles(white, $color-gray-2);
+}
+
+.rainbow-button--brand.rainbow-button--loading {
+    @include spinner-variants-common-styles($color-brand, $color-brand);
+}
+
+.rainbow-button--outline-brand.rainbow-button--loading {
+    @include spinner-variants-common-styles(transparent, $color-brand);
+}
+
+.rainbow-button--destructive.rainbow-button--loading {
+    @include spinner-variants-common-styles($color-error, $color-error);
+}
+
+.rainbow-button--success.rainbow-button--loading {
+    @include spinner-variants-common-styles($color-success, $color-success);
+}
+
+.rainbow-button--inverse.rainbow-button--loading {
+    @include spinner-variants-common-styles(transparent, transparent);
+}
+
+.rainbow-button--border-inverse.rainbow-button--loading {
+    @include spinner-variants-common-styles(transparent, white);
 }

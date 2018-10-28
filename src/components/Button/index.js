@@ -22,7 +22,7 @@ export default class Button extends Component {
     }
 
     getClassNames() {
-        const { className, shaded, variant } = this.props;
+        const { className, shaded, variant, isLoading } = this.props;
         const isShaded = shaded && (
             variant === 'neutral'
             || variant === 'brand'
@@ -32,7 +32,13 @@ export default class Button extends Component {
 
         return classnames('rainbow-button', this.getVariantClassNames(), {
             'rainbow-button--shaded': isShaded,
+            'rainbow-button--loading': isLoading && variant !== 'base',
         }, className);
+    }
+
+    isDisabled() {
+        const { disabled, isLoading } = this.props;
+        return disabled || isLoading;
     }
 
     /**
@@ -64,7 +70,6 @@ export default class Button extends Component {
             style,
             label,
             children,
-            disabled,
             tabIndex,
             onFocus,
             onBlur,
@@ -73,7 +78,11 @@ export default class Button extends Component {
             type,
             ariaHaspopup,
             id,
+            isLoading,
+            variant,
         } = this.props;
+
+        const isDisabled = this.isDisabled();
 
         return (
             <button
@@ -81,7 +90,7 @@ export default class Button extends Component {
                 id={id}
                 className={this.getClassNames()}
                 style={style}
-                disabled={disabled}
+                disabled={isDisabled}
                 tabIndex={tabIndex}
                 onFocus={onFocus}
                 onBlur={onBlur}
@@ -91,7 +100,7 @@ export default class Button extends Component {
                 aria-haspopup={ariaHaspopup}
                 ref={this.buttonRef} >
 
-                <Content label={label}>
+                <Content variant={variant} label={label} isLoading={isLoading}>
                     {children}
                 </Content>
             </button>
@@ -153,6 +162,8 @@ Button.propTypes = {
     style: PropTypes.object,
     /** The id of the outer element. */
     id: PropTypes.string,
+    /** If is set to true, then is showed a loading symbol. */
+    isLoading: PropTypes.bool,
 };
 
 Button.defaultProps = {
@@ -171,4 +182,5 @@ Button.defaultProps = {
     className: undefined,
     style: undefined,
     id: undefined,
+    isLoading: false,
 };
