@@ -32,7 +32,7 @@ describe('<ReCaptchaComponent />', () => {
                 tabIndex={0}
                 onChange={() => {}} />,
         );
-        const { recaptchaID } = component.state();
+        const { recaptchaID } = component.instance();
         expect(component.find(`div#${recaptchaID}`).exists()).toBe(true);
         expect(window.grecaptcha.render).toHaveBeenCalledWith(recaptchaID, {
             sitekey: 'site-key',
