@@ -23,16 +23,18 @@ export default class Star extends Component {
         const {
             onChange,
             value,
+            name,
         } = this.props;
         const assistiveText = `${value} Stars`;
 
         return (
-            <span className="rainbow-rating_star">
+            <span>
                 <input
                     className="rainbow-rating_star-input"
                     type="radio"
                     id={this.starId}
                     value={value}
+                    name={name}
                     onChange={onChange} />
 
                 <label className="rainbow-rating_star-label" htmlFor={this.starId}>
@@ -48,9 +50,11 @@ Star.propTypes = {
     value: PropTypes.number,
     onChange: PropTypes.func,
     filled: PropTypes.bool.isRequired,
+    name: PropTypes.string,
 };
 
 Star.defaultProps = {
     value: 0,
     onChange: () => {},
+    name: undefined,
 };

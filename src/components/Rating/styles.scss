@@ -1,12 +1,21 @@
+.rainbow-rating_container {
+    height: 1.5rem;
+}
+
 .rainbow-rating_star-input {
-    position: absolute !important;
-    margin: 2px !important;
+    position: absolute;
+    margin: 2px;
     opacity: 0;
-    width: 20px !important;
-    height: 20px !important;
+    width: 18px;
+    height: 18px;
     cursor: pointer;
 }
 
 .rainbow-rating_star-label {
     margin-right: 0.25rem;
+}
+
+.rainbow-rating_star-input:hover + .rainbow-rating_star-label svg {
+    width: 1.4rem;
+    height: 1.4rem;
 }

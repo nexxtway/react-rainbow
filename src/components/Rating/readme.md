@@ -17,7 +17,7 @@
         constructor(props) {
             super(props);
             this.state = {
-                value: null,
+                value: '3',
             };
             this.handleOnChange = this.handleOnChange.bind(this);
         }
@@ -56,9 +56,9 @@
                       </div>
                   }>
                <img
-                src="images/illustrations/Illustration-rainbow-4.svg"
-                style={imageStyles}
-                alt="landscape with rainbows" />
+                    src="images/illustrations/Illustration-rainbow-4.svg"
+                    style={imageStyles}
+                    alt="landscape with rainbows" />
             </Card>
         </div>
     </div>
