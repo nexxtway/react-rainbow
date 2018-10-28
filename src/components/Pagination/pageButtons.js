@@ -1,3 +1,4 @@
+/* eslint-disable no-script-url */
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
@@ -34,7 +35,7 @@ export default function PageButtons(props) {
                         onClick={event => onChange(event, page)}
                         aria-current={getAriaCurrent(page)}
                         aria-label={ariaLabel}
-                        role="presentation">
+                        href="javascript:void(0);">
                     <span>
                         {page}
                     </span>

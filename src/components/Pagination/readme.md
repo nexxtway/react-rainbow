@@ -1,5 +1,9 @@
 Pagination base:
 
+    const cardStyles = { width: '32%' };
+    const cardContentStyles = { height: '70%' };
+    const cardImageStyles = { width: '100%', flex: '1' };
+
     class PaginationExample extends React.Component {
         constructor(props) {
             super(props);
@@ -9,43 +13,66 @@ Pagination base:
             this.handleOnChange = this.handleOnChange.bind(this);
             this.content = [
                 {
-                    title: 'Carrots',
-                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore.',
+                    title: 'Rainbow happy',
+                    image: 'images/illustrations/Illustration-rainbow-1.svg',
                 },
                 {
-                    title: 'Chard',
-                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore.',
+                    title: 'The Big Rainbow',
+                    image: 'images/illustrations/Illustration-rainbow-2.svg',
                 },
                 {
-                    title: 'Chili Pepper',
-                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore.',
+                    title: 'Rainbow friendly',
+                    image: 'images/illustrations/Illustration-rainbow-3.svg',
                 },
                 {
-                    title: 'Cucumber',
-                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore.',
+                    title: 'Rainbow 4',
+                    image: 'images/illustrations/Illustration-rainbow-4.svg',
                 },
                 {
-                    title: 'Lettuce',
-                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore.',
+                    title: 'Rainbow 5',
+                    image: 'images/illustrations/Illustration-rainbow-5.svg',
                 },
                 {
-                    title: 'Nappa Cabbage',
-                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore.',
+                    title: 'Rainbow 6',
+                    image: 'images/illustrations/Illustration-rainbow-6.svg',
+                },
+                {
+                    title: 'Rainbow 7',
+                    image: 'images/illustrations/Illustration-rainbow-7.svg',
+                },
+                {
+                    title: 'Rainbow 8',
+                    image: 'images/illustrations/Illustration-rainbow-8.svg',
+                },
+                {
+                    title: 'Rainbow 9',
+                    image: 'images/illustrations/Illustration-rainbow-9.svg',
+                },
+                {
+                    title: 'Rainbow 10',
+                    image: 'images/illustrations/Illustration-rainbow-10.svg',
+                },
+                {
+                    title: 'Rainbow 11',
+                    image: 'images/illustrations/Illustration-rainbow-11.svg',
                 },
             ];
         }
 
         getContent() {
             const { activePage } = this.state;
-            const { title, content } = this.content[activePage - 1];
-            return (
+            const lastItem = activePage * 3;
+            const firstItem = lastItem - 3;
+            return this.content.slice(firstItem, lastItem).map(({ title, image }) => (
                 <Card
-                    className="rainbow-m-bottom_small"
-                    title={title}
-                    actions={<Button variant="neutral" label="Buy" variant="outline-brand" />}>
-                    <div className="rainbow-p-around_small">{content}</div>
+                    className="rainbow-m-bottom_x-large rainbow-m-right_small"
+                    style={cardStyles}
+                    footer={<span className="rainbow-font-size-text_large rainbow-color_dark-1">{title}</span>}>
+                    <div className="rainbow-flex rainbow-flex_column rainbow_vertical-stretch" style={cardContentStyles}>
+                        <img src={image} style={cardImageStyles} />
+                    </div>
                 </Card>
-            );
+            ));
         }
 
         handleOnChange(event, page) {
@@ -58,10 +85,10 @@ Pagination base:
                 <div>
                     <GlobalHeader src="images/user/user3.jpg" />
                     <div className="rainbow-p-around_x-large rainbow-p-around_x-large">
-                        <div>
+                        <div className="rainbow-flex">
                             {this.getContent()}
                         </div>
-                        <Pagination className="rainbow-m_auto" pages={6} activePage={activePage} onChange={this.handleOnChange} />
+                        <Pagination className="rainbow-m_auto" pages={4} activePage={activePage} onChange={this.handleOnChange} />
                     </div>
                 </div>
             );

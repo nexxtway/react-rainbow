@@ -1,3 +1,4 @@
+/* eslint-disable no-script-url */
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
@@ -9,13 +10,19 @@ export default function NavigationButton(props) {
         'rainbow-pagination_navigation-button--disabled': disabled,
     });
 
+    const handleOnClick = (event) => {
+        if (!disabled) {
+            onClick(event);
+        }
+    };
+
     return (
         <li className={getClassName()}>
             <a
                 className="rainbow-pagination_navigation-button-content"
                 data-id={dataId}
-                onClick={onClick}
-                role="presentation"
+                onClick={handleOnClick}
+                href="javascript:void(0);"
                 aria-disabled={!!disabled}>
                 {icon}
             </a>
