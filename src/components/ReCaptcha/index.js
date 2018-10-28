@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import scriptLoader from 'react-async-script-loader';
 import withReduxForm from '../../libs/hocs/withReduxForm';
@@ -8,11 +8,17 @@ import ReCaptchaWrapper from './wrapper';
 /**
 * The reCAPTCHA component is used to protects your website from spam and abuse.
 */
-function ReCaptcha(props) {
-    const { lang, ...rest } = props;
+class ReCaptcha extends Component {
+    constructor(props) {
+        super(props);
+        const { lang } = props;
+        this.ReCaptchaComponent = scriptLoader(getUrl(lang))(ReCaptchaWrapper);
+    }
 
-    const ReCaptchaComponent = scriptLoader(getUrl(lang))(ReCaptchaWrapper);
-    return <ReCaptchaComponent {...rest} />;
+    render() {
+        const ReCaptchaComponent = this.ReCaptchaComponent;
+        return <ReCaptchaComponent {...this.props} />;
+    }
 }
 
 ReCaptcha.propTypes = {

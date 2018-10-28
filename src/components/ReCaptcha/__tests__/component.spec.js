@@ -32,8 +32,9 @@ describe('<ReCaptchaComponent />', () => {
                 tabIndex={0}
                 onChange={() => {}} />,
         );
-        expect(component.find('div#recaptcha-container').exists()).toBe(true);
-        expect(window.grecaptcha.render).toHaveBeenCalledWith('recaptcha-container', {
+        const { recaptchaID } = component.instance();
+        expect(component.find(`div#${recaptchaID}`).exists()).toBe(true);
+        expect(window.grecaptcha.render).toHaveBeenCalledWith(recaptchaID, {
             sitekey: 'site-key',
             theme: 'light',
             size: 'normal',
