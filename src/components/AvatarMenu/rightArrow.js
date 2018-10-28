@@ -3,10 +3,9 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 export default function RightArrow({ isOpen }) {
-    const getArrowClassName = () => classnames(
-        'rainbow-avatar-menu_right-arrow_icon',
-        { 'rainbow-avatar-menu_right-arrow_icon--open': isOpen },
-    );
+    const getArrowClassName = () => classnames('rainbow-avatar-menu_right-arrow_icon', {
+        'rainbow-avatar-menu_right-arrow_icon--open': isOpen,
+    });
 
     return (
         <svg className={getArrowClassName()} width="10px" height="7px" viewBox="0 0 10 7" version="1.1">

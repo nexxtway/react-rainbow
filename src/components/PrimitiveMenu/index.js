@@ -332,7 +332,6 @@ PrimitiveMenu.propTypes = {
     id: PropTypes.string,
     /** The trigger element. */
     trigger: PropTypes.func.isRequired,
-    isOpen: PropTypes.bool,
 };
 
 PrimitiveMenu.defaultProps = {
@@ -345,5 +344,4 @@ PrimitiveMenu.defaultProps = {
     className: undefined,
     style: undefined,
     id: undefined,
-    isOpen: false,
 };
