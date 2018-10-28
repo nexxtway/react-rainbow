@@ -9,7 +9,7 @@ describe('<AvatarButton/>', () => {
             <AvatarButton onClick={onClickMockFn} />,
         );
 
-        component.simulate('click');
+        component.find('button.rainbow-avatar-menu_button').simulate('click');
         expect(onClickMockFn.mock.calls.length).toBe(1);
     });
     it('should call onBlur function when it lost the focus', () => {
@@ -18,7 +18,7 @@ describe('<AvatarButton/>', () => {
             <AvatarButton onBlur={onBlurMockFn} />,
         );
 
-        component.simulate('blur');
+        component.find('button.rainbow-avatar-menu_button').simulate('blur');
         expect(onBlurMockFn.mock.calls.length).toBe(1);
     });
     it('should call onFocus function when it gets the focus', () => {
@@ -27,7 +27,7 @@ describe('<AvatarButton/>', () => {
             <AvatarButton onFocus={onFocusMockFn} />,
         );
 
-        component.simulate('focus');
+        component.find('button.rainbow-avatar-menu_button').simulate('focus');
         expect(onFocusMockFn.mock.calls.length).toBe(1);
     });
     it('should be defined the click method', () => {
@@ -58,7 +58,7 @@ describe('<AvatarButton/>', () => {
 
         component.instance().focus();
         const focusedElementDataId = document.activeElement.getAttribute('data-id');
-        const buttonDataId = component.find('button').prop('data-id');
+        const buttonDataId = component.find('button.rainbow-avatar-menu_button').prop('data-id');
         expect(focusedElementDataId).toBe(buttonDataId);
     });
     it('should blur the AvatarButton when the blur method is called', () => {
@@ -66,7 +66,7 @@ describe('<AvatarButton/>', () => {
             <AvatarButton />,
         );
         const instance = component.instance();
-        const buttonDataId = component.find('button').prop('data-id');
+        const buttonDataId = component.find('button.rainbow-avatar-menu_button').prop('data-id');
 
         instance.focus();
         expect(document.activeElement.getAttribute('data-id')).toBe(buttonDataId);

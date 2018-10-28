@@ -262,7 +262,7 @@ export default class PrimitiveMenu extends Component {
             trigger: Trigger,
             ...rest
         } = this.props;
-        const { context } = this.state;
+        const { context, isOpen } = this.state;
         const ariaLabel = title || assistiveText;
 
         return (
@@ -276,6 +276,7 @@ export default class PrimitiveMenu extends Component {
 
                 <Trigger
                     {...rest}
+                    isOpen={isOpen}
                     title={title}
                     assistiveText={assistiveText}
                     onClick={this.toggleMenu}
