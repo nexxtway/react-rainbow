@@ -5,6 +5,9 @@ import withReduxForm from '../../libs/hocs/withReduxForm';
 import getUrl from './get-url';
 import ReCaptchaWrapper from './wrapper';
 
+/**
+* The reCAPTCHA component is used to protects your website from spam and abuse.
+*/
 function ReCaptcha(props) {
     const { lang, ...rest } = props;
 
