@@ -82,15 +82,13 @@ export default class Button extends Component {
             variant,
         } = this.props;
 
-        const isDisabled = this.isDisabled();
-
         return (
             <button
                 data-id="button-element"
                 id={id}
                 className={this.getClassNames()}
                 style={style}
-                disabled={isDisabled}
+                disabled={this.isDisabled()}
                 tabIndex={tabIndex}
                 onFocus={onFocus}
                 onBlur={onBlur}

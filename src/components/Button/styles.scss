@@ -223,10 +223,10 @@
     box-shadow: $shadow-1;
 }
 
-.rainbow-button--content-hidden {
+.rainbow-button_content--hidden {
     visibility: hidden;
 
-    .rainbow-button--spinner-visible {
+    .rainbow-button_spinner--visible {
         visibility: visible;
     }
 }

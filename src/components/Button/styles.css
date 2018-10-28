@@ -159,9 +159,9 @@
 .rainbow-button--shaded {
   box-shadow: 0 0 2px 0 #a4a7b5; }
 
-.rainbow-button--content-hidden {
+.rainbow-button_content--hidden {
   visibility: hidden; }
-  .rainbow-button--content-hidden .rainbow-button--spinner-visible {
+  .rainbow-button_content--hidden .rainbow-button_spinner--visible {
     visibility: visible; }
 
 .rainbow-button--neutral.rainbow-button--loading {

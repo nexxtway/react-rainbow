@@ -18,12 +18,12 @@ const variantMap = {
 export default function Content({ label, children, variant, isLoading }) {
     if (isLoading) {
         return (
-            <span className="rainbow-button--content-hidden">
+            <span className="rainbow-button_content--hidden">
                 <ButtonContent label={label}>
                     {children}
                 </ButtonContent>
                 <Spinner
-                    className="rainbow-button--spinner-visible"
+                    className="rainbow-button_spinner--visible"
                     isVisible={isLoading}
                     variant={variantMap[variant]}
                     size="small" />
