@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import scriptLoader from 'react-async-script-loader';
 import MapComponent from './component';
 
+/**
+* The GMap component is used to find a location.
+*/
 export default function GMap(props) {
     const { apiKey, ...rest } = props;
 

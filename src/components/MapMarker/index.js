@@ -134,6 +134,10 @@ class Marker extends Component {
     }
 }
 
+/**
+* The MapMarker component is a single section of information that is nested in the GMap component.
+* This component shows you the detailed information of each location that is displayed in the GMap.
+*/
 export default function MapMarker(props) {
     return (
         <Consumer>
