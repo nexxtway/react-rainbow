@@ -9,22 +9,15 @@ import ReCaptchaWrapper from './wrapper';
 * The reCAPTCHA component is used to protects your website from spam and abuse.
 */
 class ReCaptcha extends Component {
-    componentDidMount() {
-        const { lang } = this.props;
+    constructor(props) {
+        super(props);
+        const { lang } = props;
         this.ReCaptchaComponent = scriptLoader(getUrl(lang))(ReCaptchaWrapper);
-        this.reloadComponent();
-    }
-
-    reloadComponent() {
-        this.setState({ key: Date.now() });
     }
 
     render() {
-        if (this.ReCaptchaComponent) {
-            const ReCaptchaComponent = this.ReCaptchaComponent;
-            return <ReCaptchaComponent {...this.props} />;
-        }
-        return null;
+        const ReCaptchaComponent = this.ReCaptchaComponent;
+        return <ReCaptchaComponent {...this.props} />;
     }
 }
 

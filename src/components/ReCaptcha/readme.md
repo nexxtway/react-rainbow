@@ -10,14 +10,11 @@ ReCaptcha base:
     class ReCaptchaExample extends React.Component {
         constructor(props) {
             super(props);
-            this.data = {
+            this.state = {
                 userName: undefined,
                 email: undefined,
                 message: undefined,
                 recaptcha: undefined,
-            };
-
-            this.state = {
                 error: {
                     userName: undefined,
                     email: undefined,
@@ -34,19 +31,19 @@ ReCaptcha base:
         }
 
         handleUserNameChange(event) {
-            this.data.userName = event.target.value;
+            this.setState({ userName: event.target.value });
         }
 
         handleEmailChange(event) {
-            this.data.email = event.target.value;
+            this.setState({ email: event.target.value });
         }
 
         handleMessageChange(event) {
-            this.data.message = event.target.value;
+            this.setState({ message: event.target.value });
         }
 
         handleReCaptchaSuccess(token) {
-           this.data.recaptcha = event.target.value;
+           this.setState({ recaptcha: token });
         }
 
         handleSubmit(event) {
@@ -58,14 +55,14 @@ ReCaptcha base:
                 recaptcha: undefined,
             };
             let reload = false;
-            const { userName, email, message, recaptcha } = this.data;
-            if (userName === undefined) {
+            const { userName, email, message, recaptcha } = this.state;
+            if (userName === undefined || userName === '') {
                 error.userName = 'the name is required';
                 reload = true;
-            } if (email === undefined) {
+            } if (email === undefined || email === '') {
                 error.email = 'the email is required';
                 reload = true;
-            } if (message === undefined) {
+            } if (message === undefined || message === '') {
                 error.message = 'the message is required';
                 reload = true;
             } if (recaptcha === undefined) {
@@ -74,18 +71,23 @@ ReCaptcha base:
             } if (reload) {
                 this.setState({ error });
             } else {
-                alert(JSON.stringify(this.data));
+                alert(JSON.stringify(this.state));
             }
         }
 
         render() {
-            const { userName, email, message } = this.data;
             const {
-                userName: userNameError,
-                email: emailError,
-                message: messageError,
-                recaptcha: recaptchaError,
-            } = this.state.error;
+                userName,
+                email,
+                message,
+                error: {
+                   userName: userNameError,
+                   email: emailError,
+                   message: messageError,
+                   recaptcha: recaptchaError,
+                }
+            } = this.state;
+
             return (
                 <div>
                     <GlobalHeader src="images/user/user3.jpg" />
@@ -145,14 +147,11 @@ ReCaptcha dark:
     class ReCaptchaExample extends React.Component {
         constructor(props) {
             super(props);
-            this.data = {
+            this.state = {
                 userName: undefined,
                 email: undefined,
                 message: undefined,
                 recaptcha: undefined,
-            };
-
-            this.state = {
                 error: {
                     userName: undefined,
                     email: undefined,
@@ -169,19 +168,19 @@ ReCaptcha dark:
         }
 
         handleUserNameChange(event) {
-            this.data.userName = event.target.value;
+            this.setState({ userName: event.target.value });
         }
 
         handleEmailChange(event) {
-            this.data.email = event.target.value;
+            this.setState({ email: event.target.value });
         }
 
         handleMessageChange(event) {
-            this.data.message = event.target.value;
+            this.setState({ message: event.target.value });
         }
 
         handleReCaptchaSuccess(token) {
-           this.data.recaptcha = event.target.value;
+           this.setState({ recaptcha: token });
         }
 
         handleSubmit(event) {
@@ -193,14 +192,14 @@ ReCaptcha dark:
                 recaptcha: undefined,
             };
             let reload = false;
-            const { userName, email, message, recaptcha } = this.data;
-            if (userName === undefined) {
+            const { userName, email, message, recaptcha } = this.state;
+            if (userName === undefined || userName === '') {
                 error.userName = 'the name is required';
                 reload = true;
-            } if (email === undefined) {
+            } if (email === undefined || email === '') {
                 error.email = 'the email is required';
                 reload = true;
-            } if (message === undefined) {
+            } if (message === undefined || message === '') {
                 error.message = 'the message is required';
                 reload = true;
             } if (recaptcha === undefined) {
@@ -209,18 +208,23 @@ ReCaptcha dark:
             } if (reload) {
                 this.setState({ error });
             } else {
-                alert(JSON.stringify(this.data));
+                alert(JSON.stringify(this.state));
             }
         }
 
         render() {
-            const { userName, email, message } = this.data;
             const {
-                userName: userNameError,
-                email: emailError,
-                message: messageError,
-                recaptcha: recaptchaError,
-            } = this.state.error;
+                userName,
+                email,
+                message,
+                error: {
+                   userName: userNameError,
+                   email: emailError,
+                   message: messageError,
+                   recaptcha: recaptchaError,
+                }
+            } = this.state;
+
             return (
                 <div>
                     <GlobalHeader src="images/user/user3.jpg" />
