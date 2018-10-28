@@ -17,8 +17,11 @@ class ReCaptcha extends Component {
     }
 
     render() {
-        const ReCaptchaComponent = this.ReCaptchaComponent;
-        return <ReCaptchaComponent {...this.props} />;
+        if (this.ReCaptchaComponent) {
+            const ReCaptchaComponent = this.ReCaptchaComponent;
+            return <ReCaptchaComponent {...this.props} />;
+        }
+        return null;
     }
 }
 
