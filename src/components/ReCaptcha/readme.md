@@ -6,6 +6,7 @@ ReCaptcha base:
     const inputStyles = { width: '45%' };
     const inputIconStyles = { color: '#01b6f5' };
     const spacerStyles = { flex: '1' };
+    const titleStyles = { textAlign: 'center' };
 
     class ReCaptchaExample extends React.Component {
         constructor(props) {
@@ -108,41 +109,40 @@ ReCaptcha base:
             return (
                 <div>
                     <GlobalHeader src="images/user/user3.jpg" />
-                    <form onSubmit={this.handleSubmit}>
-                        <div className="rainbow-p-around_x-large rainbow-p-around_x-large rainbow-flex rainbow-flex_column">
-                            <div className="rainbow-flex rainbow-justify_spread">
-                                <Input
-                                    label="Name"
-                                    placeholder="Enter your name"
-                                    value={userName}
-                                    error={userNameError}
-                                    onChange={this.handleUserNameChange}
-                                    icon={<FontAwesomeIcon icon={faUser} style={inputIconStyles} />}
-                                    style={inputStyles} />
-                                <Input
-                                    label="Email"
-                                    placeholder="enter your email"
-                                    value={email}
-                                    error={emailError}
-                                    onChange={this.handleEmailChange}
-                                    icon={<FontAwesomeIcon icon={faEnvelope} style={inputIconStyles} />}
-                                    style={inputStyles} />
-                            </div>
-                            <Textarea
-                                label="Message"
-                                placeholder="Enter a message"
-                                value={message}
-                                error={messageError}
-                                onChange={this.handleMessageChange}
-                                className="rainbow-m-top_large" />
-                            <div className="rainbow-m-top_medium rainbow-flex rainbow-align-content_space-between">
-                                <ReCaptcha
-                                    value="6LdV7HUUAAAAAEilnevmAITXH2F2aS-W3200nJH1"
-                                    error={recaptchaError}
-                                    onChange={this.handleReCaptchaSuccess} />
-                                <span style={spacerStyles} />
-                                <Button label="Send" variant="brand" type="submit" />
-                            </div>
+                    <form onSubmit={this.handleSubmit} className="rainbow-p-around_x-large rainbow-p-around_x-large rainbow-flex rainbow-flex_column">
+                        <span className="rainbow-color_brand rainbow-font-size-heading_medium" style={titleStyles}>Contact us</span>
+                        <div className="rainbow-flex rainbow-justify_spread">
+                            <Input
+                                label="Name"
+                                placeholder="Enter your name"
+                                value={userName}
+                                error={userNameError}
+                                onChange={this.handleUserNameChange}
+                                icon={<FontAwesomeIcon icon={faUser} style={inputIconStyles} />}
+                                style={inputStyles} />
+                            <Input
+                                label="Email"
+                                placeholder="enter your email"
+                                value={email}
+                                error={emailError}
+                                onChange={this.handleEmailChange}
+                                icon={<FontAwesomeIcon icon={faEnvelope} style={inputIconStyles} />}
+                                style={inputStyles} />
+                        </div>
+                        <Textarea
+                            label="Message"
+                            placeholder="Enter a message"
+                            value={message}
+                            error={messageError}
+                            onChange={this.handleMessageChange}
+                            className="rainbow-m-top_large" />
+                        <div className="rainbow-m-top_medium rainbow-flex rainbow-align-content_space-between">
+                            <ReCaptcha
+                                value="6LdV7HUUAAAAAEilnevmAITXH2F2aS-W3200nJH1"
+                                error={recaptchaError}
+                                onChange={this.handleReCaptchaSuccess} />
+                            <span style={spacerStyles} />
+                            <Button label="Send" variant="brand" type="submit" />
                         </div>
                     </form>
                 </div>
@@ -160,6 +160,7 @@ ReCaptcha dark:
     const inputStyles = { width: '45%' };
     const inputIconStyles = { color: '#01b6f5' };
     const spacerStyles = { flex: '1' };
+    const titleStyles = { textAlign: 'center' };
 
     class ReCaptchaExample extends React.Component {
         constructor(props) {
@@ -262,42 +263,41 @@ ReCaptcha dark:
             return (
                 <div>
                     <GlobalHeader src="images/user/user3.jpg" />
-                    <form onSubmit={this.handleSubmit}>
-                        <div className="rainbow-p-around_x-large rainbow-p-around_x-large rainbow-flex rainbow-flex_column">
-                            <div className="rainbow-flex rainbow-justify_spread">
-                                <Input
-                                    label="Name"
-                                    placeholder="Enter your name"
-                                    value={userName}
-                                    error={userNameError}
-                                    onChange={this.handleUserNameChange}
-                                    icon={<FontAwesomeIcon icon={faUser} style={inputIconStyles} />}
-                                    style={inputStyles} />
-                                <Input
-                                    label="Email"
-                                    placeholder="enter your email"
-                                    value={email}
-                                    error={emailError}
-                                    onChange={this.handleEmailChange}
-                                    icon={<FontAwesomeIcon icon={faEnvelope} style={inputIconStyles} />}
-                                    style={inputStyles} />
-                            </div>
-                            <Textarea
-                                label="Message"
-                                placeholder="Enter a message"
-                                value={message}
-                                error={messageError}
-                                onChange={this.handleMessageChange}
-                                className="rainbow-m-top_large" />
-                            <div className="rainbow-m-top_medium rainbow-flex rainbow-align-content_space-between">
-                                <ReCaptcha
-                                    theme="dark"
-                                    value="6LdV7HUUAAAAAEilnevmAITXH2F2aS-W3200nJH1"
-                                    error={recaptchaError}
-                                    onChange={this.handleReCaptchaSuccess} />
-                                <span style={spacerStyles} />
-                                <Button label="Send" variant="brand" type="submit" />
-                            </div>
+                    <form onSubmit={this.handleSubmit} className="rainbow-p-around_x-large rainbow-p-around_x-large rainbow-flex rainbow-flex_column">
+                        <span className="rainbow-color_brand rainbow-font-size-heading_medium" style={titleStyles}>Contact us</span>
+                        <div className="rainbow-flex rainbow-justify_spread">
+                            <Input
+                                label="Name"
+                                placeholder="Enter your name"
+                                value={userName}
+                                error={userNameError}
+                                onChange={this.handleUserNameChange}
+                                icon={<FontAwesomeIcon icon={faUser} style={inputIconStyles} />}
+                                style={inputStyles} />
+                            <Input
+                                label="Email"
+                                placeholder="enter your email"
+                                value={email}
+                                error={emailError}
+                                onChange={this.handleEmailChange}
+                                icon={<FontAwesomeIcon icon={faEnvelope} style={inputIconStyles} />}
+                                style={inputStyles} />
+                        </div>
+                        <Textarea
+                            label="Message"
+                            placeholder="Enter a message"
+                            value={message}
+                            error={messageError}
+                            onChange={this.handleMessageChange}
+                            className="rainbow-m-top_large" />
+                        <div className="rainbow-m-top_medium rainbow-flex rainbow-align-content_space-between">
+                            <ReCaptcha
+                                theme="dark"
+                                value="6LdV7HUUAAAAAEilnevmAITXH2F2aS-W3200nJH1"
+                                error={recaptchaError}
+                                onChange={this.handleReCaptchaSuccess} />
+                            <span style={spacerStyles} />
+                            <Button label="Send" variant="brand" type="submit" />
                         </div>
                     </form>
                 </div>
