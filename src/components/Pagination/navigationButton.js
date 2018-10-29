@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 export default function NavigationButton(props) {
-    const { onClick, icon, disabled, dataId } = props;
+    const { onClick, icon, disabled, dataId, ariaLabel } = props;
 
     const getClassName = () => classnames('rainbow-pagination_navigation-button', {
         'rainbow-pagination_navigation-button--disabled': disabled,
@@ -23,7 +23,8 @@ export default function NavigationButton(props) {
                 data-id={dataId}
                 onClick={handleOnClick}
                 href="javascript:void(0);"
-                aria-disabled={!!disabled}>
+                aria-disabled={!!disabled}
+                aria-label={ariaLabel}>
                 {icon}
             </a>
         </li>
@@ -35,9 +36,11 @@ NavigationButton.propTypes = {
     icon: PropTypes.node.isRequired,
     disabled: PropTypes.bool,
     dataId: PropTypes.string,
+    ariaLabel: PropTypes.string,
 };
 
 NavigationButton.defaultProps = {
     disabled: false,
     dataId: undefined,
+    ariaLabel: undefined,
 };

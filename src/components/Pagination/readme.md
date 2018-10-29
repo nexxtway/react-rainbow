@@ -65,6 +65,7 @@ Pagination base:
             const firstItem = lastItem - 3;
             return this.content.slice(firstItem, lastItem).map(({ title, image }) => (
                 <Card
+                    key={title}
                     style={cardStyles}
                     className="rainbow-m-bottom_x-large rainbow-m-right_small"
                     footer={<span className="rainbow-font-size-text_large rainbow-color_dark-1">{title}</span>}>
