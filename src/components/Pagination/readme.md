@@ -1,7 +1,14 @@
 Pagination base:
 
-    const cardImageContainerStyles = { height: 160};
-    const cardImageStyles = { height: '105%'};
+    function getCardImageContainerStyles(src) {
+        return {
+            width: '100%',
+            height: 160,
+            backgroundImage: `url(${src})`,
+            backgroundSize: 'cover',
+        };
+    };
+
     const cardStyles = { width: 240};
 
     class PaginationExample extends React.Component {
@@ -14,47 +21,47 @@ Pagination base:
             this.content = [
                 {
                     title: 'Rainbow',
-                    image: 'images/illustrations/Illustration-rainbow-3.svg',
+                    src: 'images/illustrations/Illustration-rainbow-3.svg',
                 },
                 {
                     title: 'Rainbow friendly',
-                    image: 'images/illustrations/Illustration-rainbow-4.svg',
+                    src: 'images/illustrations/Illustration-rainbow-4.svg',
                 },
                 {
                     title: 'Rainbow happy',
-                    image: 'images/illustrations/Illustration-rainbow-5.svg',
+                    src: 'images/illustrations/Illustration-rainbow-5.svg',
                 },
                 {
                     title: 'Rainbow',
-                    image: 'images/illustrations/Illustration-rainbow-6.svg',
+                    src: 'images/illustrations/Illustration-rainbow-6.svg',
                 },
                 {
                     title: 'Rainbow growing',
-                    image: 'images/illustrations/Illustration-rainbow-7.svg',
+                    src: 'images/illustrations/Illustration-rainbow-7.svg',
                 },
                 {
                     title: 'Rainbow in the rain',
-                    image: 'images/illustrations/Illustration-rainbow-8.svg',
+                    src: 'images/illustrations/Illustration-rainbow-8.svg',
                 },
                 {
                     title: 'Rainbow sad',
-                    image: 'images/illustrations/Illustration-rainbow-9.svg',
+                    src: 'images/illustrations/Illustration-rainbow-9.svg',
                 },
                 {
                     title: 'Rainbow growing',
-                    image: 'images/illustrations/Illustration-rainbow-10.svg',
+                    src: 'images/illustrations/Illustration-rainbow-10.svg',
                 },
                 {
                     title: 'The big Rainbow',
-                    image: 'images/illustrations/Illustration-rainbow-11.svg',
+                    src: 'images/illustrations/Illustration-rainbow-11.svg',
                 },
                 {
                     title: 'Rainbow happy',
-                    image: 'images/illustrations/Illustration-rainbow-1.svg',
+                    src: 'images/illustrations/Illustration-rainbow-1.svg',
                 },
                 {
                     title: 'Rainbow friendly',
-                    image: 'images/illustrations/Illustration-rainbow-2.svg',
+                    src: 'images/illustrations/Illustration-rainbow-2.svg',
                 },
             ];
         }
@@ -63,15 +70,13 @@ Pagination base:
             const { activePage } = this.state;
             const lastItem = activePage * 3;
             const firstItem = lastItem - 3;
-            return this.content.slice(firstItem, lastItem).map(({ title, image }) => (
+            return this.content.slice(firstItem, lastItem).map(({ title, src }) => (
                 <Card
                     key={title}
                     style={cardStyles}
                     className="rainbow-m-bottom_x-large rainbow-m-right_small"
                     footer={<span className="rainbow-font-size-text_large rainbow-color_dark-1">{title}</span>}>
-                    <div className="rainbow-flex rainbow-flex_column rainbow_vertical-stretch" style={cardImageContainerStyles}>
-                        <img src={image} style={cardImageStyles} />
-                    </div>
+                    <div style={getCardImageContainerStyles(src)} />
                 </Card>
             ));
         }
