@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import LeftArrow from './leftArrow';
 import RightArrow from './rightArrow';
 import NavigationButton from './navigationButton';
@@ -10,14 +9,12 @@ import './styles.css';
 export default function Pagination(props) {
     const { pages, activePage, onChange, className, style } = props;
 
-    const getContainerClassNames = () => classnames('rainbow-pagination', className);
-
     const isFirstItemSelected = activePage === 1;
     const isLastItemSelected = activePage === pages;
 
     return (
-        <nav aria-label="pagination">
-            <ul className={getContainerClassNames()} style={style} >
+        <nav className={className} aria-label="pagination" style={style}>
+            <ul className="rainbow-pagination">
                 <NavigationButton
                     dataId="previous-page-button"
                     icon={<LeftArrow />}
