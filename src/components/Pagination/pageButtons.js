@@ -7,8 +7,8 @@ import getFirstItem from './get-first-item';
 export default function PageButtons(props) {
     const { pages, activePage, onChange } = props;
 
-    const getButtonClassName = page => classnames('rainbow-pagination_button', {
-        'rainbow-pagination_button--active': activePage === page,
+    const getButtonClassName = page => classnames('rainbow-pagination_button-content', {
+        'rainbow-pagination_button-content--active': activePage === page,
     });
 
     const getAriaCurrent = (page) => {
@@ -29,9 +29,9 @@ export default function PageButtons(props) {
             return (
                 <li
                     key={key}
-                    className={getButtonClassName(page)}>
+                    className="rainbow-pagination_button">
                     <a
-                        className="rainbow-pagination_button-content"
+                        className={getButtonClassName(page)}
                         onClick={event => onChange(event, page)}
                         aria-current={getAriaCurrent(page)}
                         aria-label={ariaLabel}
