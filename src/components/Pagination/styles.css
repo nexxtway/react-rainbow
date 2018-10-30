@@ -1,81 +1,75 @@
-.rainbow-pagination, .rainbow-pagination_button, .rainbow-pagination_button-content, .rainbow-pagination_navigation-button {
+.rainbow-pagination, .rainbow-pagination_button-content, .rainbow-pagination_navigation-button-content {
   display: flex;
   align-items: center;
   justify-content: center; }
 
-.rainbow-pagination_button {
-  height: 2rem;
-  width: 2rem;
-  border: 1px #e3e5ed solid;
+.rainbow-pagination_button-content {
+  font-size: 0.875rem;
+  font-weight: bold;
+  text-decoration: none;
+  line-height: 2rem;
   margin-left: -1px;
+  width: 2rem;
+  height: 2rem;
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   background-color: white;
-  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; }
-  .rainbow-pagination_button:hover {
+  border: 1px solid #e3e5ed;
+  color: #576574; }
+  .rainbow-pagination_button-content:hover {
+    color: #576574;
+    text-decoration: none;
     background-color: #f4f6f9;
-    transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; }
-  .rainbow-pagination_button:focus, .rainbow-pagination_button:active {
-    box-shadow: 0 0 2px #01b6f5;
     z-index: 100; }
+  .rainbow-pagination_button-content:focus, .rainbow-pagination_button-content:active, .rainbow-pagination_button-content:visited {
+    font-size: 1rem;
+    text-decoration: none;
+    color: #061c3f;
+    background-color: #e3e5ed;
+    z-index: 100;
+    outline: none;
+    transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; }
 
-.rainbow-pagination_button:nth-child(2) {
+.rainbow-pagination_button:nth-child(2) > .rainbow-pagination_button-content {
   margin-left: 0.5rem;
   border-radius: 100px 0 0 100px; }
 
-.rainbow-pagination_button:nth-last-child(2) {
+.rainbow-pagination_button:nth-last-child(2) > .rainbow-pagination_button-content {
   margin-right: 0.5rem;
   border-radius: 0 100px 100px 0; }
 
-.rainbow-pagination_button-content {
-  color: #576574;
-  line-height: 2rem;
-  width: 2rem;
-  height: 2rem;
+.rainbow-pagination_button-content--active {
+  font-size: 1rem;
   text-decoration: none;
-  font-weight: bold;
-  font-size: 0.875rem; }
-  .rainbow-pagination_button-content:hover, .rainbow-pagination_button-content:focus {
-    text-decoration: none;
-    color: #576574; }
-
-.rainbow-pagination_button--active {
+  color: #061c3f;
   background-color: #e3e5ed;
-  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; }
-  .rainbow-pagination_button--active:hover {
-    background-color: #e3e5ed;
-    transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; }
-  .rainbow-pagination_button--active .rainbow-pagination_button-content {
-    font-size: 1rem;
-    color: #061c3f;
-    transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; }
-    .rainbow-pagination_button--active .rainbow-pagination_button-content:hover {
-      color: #061c3f; }
+  z-index: 100; }
 
-.rainbow-pagination_navigation-button {
-  border-radius: 12rem;
-  color: #576574;
-  font-weight: bold;
+.rainbow-pagination_navigation-button-content {
   height: 2rem;
   width: 2rem;
+  border-radius: 12rem;
+  font-weight: bold;
   line-height: 2rem;
   background-color: white;
   border: 1px solid #e3e5ed;
   color: #576574; }
-  .rainbow-pagination_navigation-button:hover {
+  .rainbow-pagination_navigation-button-content:hover {
     background-color: #f4f6f9; }
-  .rainbow-pagination_navigation-button:focus, .rainbow-pagination_navigation-button:active {
-    box-shadow: 0 0 2px #01b6f5; }
+  .rainbow-pagination_navigation-button-content:focus, .rainbow-pagination_navigation-button-content:active {
+    box-shadow: 0 0 2px #01b6f5;
+    background-color: #f4f6f9;
+    outline: none; }
 
-.rainbow-pagination_navigation-button-content {
-  position: relative;
-  height: 2rem;
-  width: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center; }
-
-.rainbow-pagination_navigation-button--disabled {
+.rainbow-pagination_navigation-button-content--disabled {
   background-color: transparent;
   pointer-events: none;
   transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; }
-  .rainbow-pagination_navigation-button--disabled .rainbow-pagination_navigation-button-content > svg {
-    fill: #e3e5ed; }
+  .rainbow-pagination_navigation-button-content--disabled:hover {
+    background-color: transparent;
+    pointer-events: none; }
+  .rainbow-pagination_navigation-button-content--disabled:focus, .rainbow-pagination_navigation-button-content--disabled:active {
+    background-color: transparent;
+    pointer-events: none; }
+
+.rainbow-pagination_navigation-button-content--disabled > svg {
+  fill: #e3e5ed; }

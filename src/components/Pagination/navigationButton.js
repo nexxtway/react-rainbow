@@ -6,8 +6,8 @@ import classnames from 'classnames';
 export default function NavigationButton(props) {
     const { onClick, icon, disabled, dataId } = props;
 
-    const getClassName = () => classnames('rainbow-pagination_navigation-button', {
-        'rainbow-pagination_navigation-button--disabled': disabled,
+    const getClassName = () => classnames('rainbow-pagination_navigation-button-content', {
+        'rainbow-pagination_navigation-button-content--disabled': disabled,
     });
 
     const handleOnClick = (event) => {
@@ -16,14 +16,22 @@ export default function NavigationButton(props) {
         }
     };
 
+    const getTabIndex = () => {
+        if (disabled) {
+            return -1;
+        }
+        return 0;
+    };
+
     return (
-        <li className={getClassName()}>
+        <li className="rainbow-pagination_navigation-button">
             <a
-                className="rainbow-pagination_navigation-button-content"
+                className={getClassName()}
                 data-id={dataId}
                 onClick={handleOnClick}
                 href="javascript:void(0);"
-                aria-disabled={!!disabled}>
+                aria-disabled={!!disabled}
+                tabIndex={getTabIndex()}>
                 {icon}
             </a>
         </li>

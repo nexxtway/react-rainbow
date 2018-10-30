@@ -16,81 +16,61 @@
     justify-content: center;
 }
 
-.rainbow-pagination_button {
-    height: 2rem;
-    width: 2rem;
-    border: 1px $color-gray-2 solid;
+.rainbow-pagination_button-content {
+    font-size: $font-size-text-medium;
+    font-weight: bold;
+    text-decoration: none;
+    line-height: 2rem;
     margin-left: -1px;
-    background-color: white;
+    width: 2rem;
+    height: 2rem;
     transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 
     @extend .rainbow-pagination;
 
+    @include variants-common-styles(white, $color-gray-2, $color-gray-4);
+
     &:hover {
+        color: $color-gray-4;
+        text-decoration: none;
         background-color: $color-gray-1;
-        transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        z-index: 100;
     }
 
-    &:focus,
-    &:active {
-        box-shadow: $shadow-outline;
+    &:focus, &:active, &:visited {
+        font-size: $font-size-text-large;
+        text-decoration: none;
+        color: $color-dark-1;
+        background-color: $color-gray-2;
         z-index: 100;
+        outline: none;
+        transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     }
 }
 
-.rainbow-pagination_button:nth-child(2) {
+.rainbow-pagination_button:nth-child(2) > .rainbow-pagination_button-content {
     margin-left: $margin-x-small;
     border-radius: 100px 0 0 100px;
 }
 
-.rainbow-pagination_button:nth-last-child(2) {
+.rainbow-pagination_button:nth-last-child(2) > .rainbow-pagination_button-content {
     margin-right: $margin-x-small;
     border-radius: 0 100px 100px 0;
 }
 
-.rainbow-pagination_button-content {
-    color: $color-gray-4;
-    line-height: 2rem;
-    width: 2rem;
-    height: 2rem;
+.rainbow-pagination_button-content--active {
+    font-size: $font-size-text-large;
     text-decoration: none;
-    font-weight: bold;
-    font-size: $font-size-text-medium;
-
-    @extend .rainbow-pagination;
-
-    &:hover, &:focus {
-        text-decoration: none;
-        color: $color-gray-4;
-    }
-}
-
-.rainbow-pagination_button--active {
+    color: $color-dark-1;
     background-color: $color-gray-2;
-    transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-
-    &:hover {
-        background-color: $color-gray-2;
-        transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    }
-
-    .rainbow-pagination_button-content {
-        font-size: $font-size-text-large;
-        color: $color-dark-1;
-        transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-
-        &:hover {
-            color: $color-dark-1;
-        }
-    }
+    z-index: 100;
 }
 
-.rainbow-pagination_navigation-button {
-    border-radius: $border-radius-2;
-    color: $color-gray-4;
-    font-weight: bold;
+.rainbow-pagination_navigation-button-content {
     height: 2rem;
     width: 2rem;
+    border-radius: $border-radius-2;
+    font-weight: bold;
     line-height: 2rem;
 
     @extend .rainbow-pagination;
@@ -104,24 +84,28 @@
     &:focus,
     &:active {
         box-shadow: $shadow-outline;
+        background-color: $color-gray-1;
+        outline: none;
     }
 }
 
-.rainbow-pagination_navigation-button-content {
-    position: relative;
-    height: 2rem;
-    width: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.rainbow-pagination_navigation-button--disabled {
+.rainbow-pagination_navigation-button-content--disabled {
     background-color: transparent;
     pointer-events: none;
     transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 
-    .rainbow-pagination_navigation-button-content > svg {
-        fill: $color-gray-2;
+    &:hover {
+        background-color: transparent;
+        pointer-events: none;
     }
+
+    &:focus,
+    &:active {
+        background-color: transparent;
+        pointer-events: none;
+    }
+}
+
+.rainbow-pagination_navigation-button-content--disabled > svg {
+    fill: $color-gray-2;
 }
