@@ -133,3 +133,18 @@
             </Button>
         </div>
     </div>
+
+
+##### buttons loadings
+
+    <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
+        <div className="rainbow-m-horizontal_medium">
+            <Button isLoading label="Button Outline Brand" variant="outline-brand" />
+        </div>
+        <div className="rainbow-m-horizontal_medium">
+            <Button isLoading label="Button Neutral" variant="neutral" />
+        </div>
+        <div className="rainbow-m-horizontal_medium">
+            <Button isLoading label="Button Brand" variant="brand" />
+        </div>
+    </div>

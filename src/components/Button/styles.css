@@ -158,3 +158,36 @@
 
 .rainbow-button--shaded {
   box-shadow: 0 0 2px 0 #a4a7b5; }
+
+.rainbow-button_content--hidden {
+  visibility: hidden; }
+  .rainbow-button_content--hidden .rainbow-button_spinner--visible {
+    visibility: visible; }
+
+.rainbow-button--neutral.rainbow-button--loading {
+  background-color: white;
+  border: 1px solid #e3e5ed; }
+
+.rainbow-button--brand.rainbow-button--loading {
+  background-color: #01b6f5;
+  border: 1px solid #01b6f5; }
+
+.rainbow-button--outline-brand.rainbow-button--loading {
+  background-color: transparent;
+  border: 1px solid #01b6f5; }
+
+.rainbow-button--destructive.rainbow-button--loading {
+  background-color: #fe4849;
+  border: 1px solid #fe4849; }
+
+.rainbow-button--success.rainbow-button--loading {
+  background-color: #1de9b6;
+  border: 1px solid #1de9b6; }
+
+.rainbow-button--inverse.rainbow-button--loading {
+  background-color: transparent;
+  border: 1px solid transparent; }
+
+.rainbow-button--border-inverse.rainbow-button--loading {
+  background-color: transparent;
+  border: 1px solid white; }

@@ -37,7 +37,7 @@ class PageButtonMenu {
     * @method
     */
     click() {
-        $(this.rootElement).$('button').click();
+        $(this.rootElement).$('button.rainbow-avatar-menu_button').click();
     }
 
    /**

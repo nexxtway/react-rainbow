@@ -2,22 +2,38 @@
 @import "./../../styles/shadows.scss";
 @import "./../../styles/border-radius.scss";
 
-.rainbow-avatar-menu_button-wrapper {
+@mixin animation-properties($animation) {
+    transition: $animation;
+    -webkit-transition: $animation;
+    -moz-transition: $animation;
+    -ms-transition: $animation;
+    -o-transition: $animation;
+}
+
+.rainbow-avatar-menu_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rainbow-avatar-menu_button {
     background-color: transparent;
     padding: 0;
     margin: 0;
     border: 0;
     outline: none;
     border-radius: $border-radius-2;
-
-    &:hover {
-        box-shadow: 0 0 0 4px $color-gray-2;
-    }
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 
     &:focus,
     &:active {
         outline: 0;
         box-shadow: 0 0 0 4px $color-gray-2;
+    }
+
+    &:hover {
+        box-shadow: 0 0 0 4px $color-gray-2;
+        transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     }
 
     .rainbow-avatar_initials--inverse {
@@ -31,4 +47,25 @@
     .rainbow-avatar_initials {
         cursor: pointer;
     }
+}
+
+.rainbow-avatar-menu_right-arrow-button {
+    background-color: transparent;
+    padding: 0;
+    margin-left: 0.5rem;
+    border: 0;
+    outline: none;
+    border-radius: $border-radius-2;
+}
+
+.rainbow-avatar-menu_right-arrow_icon {
+    transform: rotate(0deg);
+
+    @include animation-properties(transform 0.15s linear);
+}
+
+.rainbow-avatar-menu_right-arrow_icon--open {
+    transform: rotate(-180deg);
+
+    @include animation-properties(transform 0.15s linear);
 }
