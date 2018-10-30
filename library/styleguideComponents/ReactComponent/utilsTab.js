@@ -14,7 +14,11 @@ function TabItem({ response }) {
 }
 
 TabItem.propTypes = {
-    response: PropTypes.object.isRequired,
+    response: PropTypes.object,
+};
+
+TabItem.defaultProps = {
+    response: undefined,
 };
 
 export default function UtilsTab({ name }) {

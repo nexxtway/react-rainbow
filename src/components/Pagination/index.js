@@ -22,13 +22,17 @@ export default function Pagination(props) {
                     dataId="previous-page-button"
                     icon={<LeftArrow />}
                     onClick={event => onChange(event, activePage - 1)}
-                    disabled={isFirstItemSelected} />
+                    disabled={isFirstItemSelected}
+                    ariaLabel="Goto Previous Page" />
+
                 <PageButtons onChange={onChange} pages={pages} activePage={activePage} />
                 <NavigationButton
                     dataId="next-page-button"
                     icon={<RightArrow />}
                     onClick={event => onChange(event, activePage + 1)}
-                    disabled={isLastItemSelected} />
+                    disabled={isLastItemSelected}
+                    ariaLabel="Goto Next Page" />
+
             </ul>
         </nav>
     );
