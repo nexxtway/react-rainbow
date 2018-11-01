@@ -24,20 +24,22 @@ export default class Star extends Component {
             onChange,
             value,
             name,
+            isChecked,
         } = this.props;
         const assistiveText = `${value} Stars`;
 
         return (
-            <span>
+            <span className="rainbow-rating_star">
                 <input
                     className="rainbow-rating_star-input"
                     type="radio"
                     id={this.starId}
                     value={value}
                     name={name}
+                    checked={isChecked}
                     onChange={onChange} />
 
-                <label className="rainbow-rating_star-label" htmlFor={this.starId}>
+                <label htmlFor={this.starId}>
                     {this.renderStar()}
                     <AssistiveText text={assistiveText} />
                 </label>
@@ -51,10 +53,12 @@ Star.propTypes = {
     onChange: PropTypes.func,
     filled: PropTypes.bool.isRequired,
     name: PropTypes.string,
+    isChecked: PropTypes.bool,
 };
 
 Star.defaultProps = {
     value: 0,
     onChange: () => {},
     name: undefined,
+    isChecked: false,
 };

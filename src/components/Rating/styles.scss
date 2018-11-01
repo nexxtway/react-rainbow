@@ -2,6 +2,10 @@
     height: 1.5rem;
 }
 
+.rainbow-rating_star:not(:last-child) {
+    margin-right: 0.25rem;
+}
+
 .rainbow-rating_star-input {
     position: absolute;
     margin: 2px;
@@ -9,8 +13,4 @@
     width: 18px;
     height: 18px;
     cursor: pointer;
-}
-
-.rainbow-rating_star-label {
-    margin-right: 0.25rem;
 }

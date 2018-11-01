@@ -39,7 +39,7 @@ export default class Rating extends Component {
         const { value } = this.state;
         return (
             <fieldset
-                onMouseEnter={this.handleOnHover}
+                onMouseOver={this.handleOnHover}
                 onMouseLeave={this.handleOnLeave}
                 name={name}
                 className={this.getContainerClassNames()}
@@ -51,10 +51,11 @@ export default class Rating extends Component {
 }
 
 Rating.propTypes = {
-    /** The numerical value of the rating stars. This value defaults to 0. */
+    /** The value of the rating stars. This value defaults to 0. */
     value: PropTypes.string,
     /** The action triggered when a value attribute changes. */
     onChange: PropTypes.func,
+    /** An identifier for the group of radio items. */
     name: PropTypes.string,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
@@ -63,7 +64,7 @@ Rating.propTypes = {
 };
 
 Rating.defaultProps = {
-    value: '',
+    value: '0',
     onChange: () => {},
     name: undefined,
     className: undefined,
