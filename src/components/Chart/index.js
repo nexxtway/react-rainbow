@@ -6,10 +6,15 @@ import { Provider } from './context';
 import resolveOptions from './resolve-options';
 import './styles.css';
 
+const contextValue = Symbol('contextValue');
+const registerDataset = Symbol('registerDataset');
+
 export default class Chart extends Component {
     constructor(props) {
         super(props);
-        this.registerDataset = this.registerDataset.bind(this);
+        this[contextValue] = {
+            privateRegister: this[registerDataset].bind(this),
+        };
         this.chartRef = React.createRef();
         this.datasets = [];
     }
@@ -18,7 +23,7 @@ export default class Chart extends Component {
         this.renderChart();
     }
 
-    registerDataset(datasetValues) {
+    [registerDataset](datasetValues) {
         this.datasets = this.datasets.concat(datasetValues);
     }
 
@@ -58,7 +63,7 @@ export default class Chart extends Component {
         return (
             <div>
                 <span className="rainbow-chart_dataset-container" aria-hidden>
-                    <Provider value={{ privateRegister: this.registerDataset }}>
+                    <Provider value={this[contextValue]}>
                         {children}
                     </Provider>
                 </span>
