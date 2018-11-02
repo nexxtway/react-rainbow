@@ -36,11 +36,24 @@ describe('<Star />', () => {
         component.find('input').simulate('change');
         expect(onChangeFn).toHaveBeenCalledTimes(1);
     });
-    it('should render the right star when the prop filled is true', () => {
+    it('should render the StarFill when the prop filled is true', () => {
         const component = mount(
             <Star filled />,
         );
         component.find('input').simulate('change');
         expect(component.find('StarFill').exists()).toBe(true);
+    });
+    it('should render the StarBordered when the prop filled is false', () => {
+        const component = mount(
+            <Star filled={false} />,
+        );
+        component.find('input').simulate('change');
+        expect(component.find('StarBordered').exists()).toBe(true);
+    });
+    it('should pass the right text to the AssistiveText component', () => {
+        const component = mount(
+            <Star value={1} />,
+        );
+        expect(component.find('AssistiveText').prop('text')).toBe('1 Star');
     });
 });

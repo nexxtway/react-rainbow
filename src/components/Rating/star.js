@@ -11,6 +11,14 @@ export default class Star extends Component {
         this.starId = uniqueId('star');
     }
 
+    getAssitiveText() {
+        const { value } = this.props;
+        if (value === 1) {
+            return `${value} Star`;
+        }
+        return `${value} Stars`;
+    }
+
     renderStar() {
         const { filled } = this.props;
         if (filled) {
@@ -24,9 +32,7 @@ export default class Star extends Component {
             onChange,
             value,
             name,
-            isChecked,
         } = this.props;
-        const assistiveText = `${value} Stars`;
 
         return (
             <span className="rainbow-rating_star">
@@ -36,12 +42,11 @@ export default class Star extends Component {
                     id={this.starId}
                     value={value}
                     name={name}
-                    checked={isChecked}
                     onChange={onChange} />
 
                 <label htmlFor={this.starId}>
                     {this.renderStar()}
-                    <AssistiveText text={assistiveText} />
+                    <AssistiveText text={this.getAssitiveText()} />
                 </label>
             </span>
         );
@@ -53,12 +58,10 @@ Star.propTypes = {
     onChange: PropTypes.func,
     filled: PropTypes.bool.isRequired,
     name: PropTypes.string,
-    isChecked: PropTypes.bool,
 };
 
 Star.defaultProps = {
-    value: 0,
+    value: 1,
     onChange: () => {},
     name: undefined,
-    isChecked: false,
 };

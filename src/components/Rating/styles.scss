@@ -1,5 +1,20 @@
+@import "../../styles/colors";
+@import "../../styles/font-sizes";
+
 .rainbow-rating_container {
     height: 1.5rem;
+}
+
+.rainbow-rating_label {
+    color: $color-gray-4;
+    font-size: $font-size-text-medium;
+    line-height: 1.5;
+    margin-bottom: 0.125rem;
+    align-self: center;
+
+    &:empty {
+        margin: 0;
+    }
 }
 
 .rainbow-rating_star:not(:last-child) {
@@ -8,9 +23,9 @@
 
 .rainbow-rating_star-input {
     position: absolute;
-    margin: 2px;
+    margin-top: 2px;
     opacity: 0;
-    width: 18px;
-    height: 18px;
+    width: 22px;
+    height: 22px;
     cursor: pointer;
 }

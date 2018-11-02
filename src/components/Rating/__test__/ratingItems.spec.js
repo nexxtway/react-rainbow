@@ -8,15 +8,19 @@ describe('<RatingItems />', () => {
             <RatingItems
                 value="1"
                 name="name-1"
-                onChange={() => {}}
-                filled />,
+                onChange={() => {}} />,
         );
         expect(component.childAt(0).props()).toEqual({
             value: 1,
             name: 'name-1',
-            isChecked: false,
             onChange: expect.any(Function),
             filled: true,
         });
+    });
+    it('should render the right amount of Star components', () => {
+        const component = mount(
+            <RatingItems />,
+        );
+        expect(component.children().length).toBe(5);
     });
 });

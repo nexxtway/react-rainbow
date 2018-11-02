@@ -16,7 +16,7 @@ class PageStar {
      * @method
      */
     click() {
-        $(this.rootElement).$('input').click();
+        $(this.rootElement).$('input[type="radio"]').click();
     }
 
     /** Hover the star.

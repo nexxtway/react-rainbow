@@ -9,18 +9,13 @@ describe('<Rating />', () => {
         );
         expect(component.find('fieldset').prop('className')).toBe('rainbow-rating_container my-custom-class');
     });
-    it('should set the value of the star hovered to the state', () => {
-        const component = mount(
-            <Rating />,
-        );
-        component.find('input[value=3]').simulate('mouseover');
-        expect(component.state().value).toBe('3');
-    });
-    it('should set the value passed to the state when the mouse leave the star', () => {
+    it('should set the value of the star hovered to the state and set the value passed to the state when the mouse leave the component', () => {
         const component = mount(
             <Rating value="2" />,
         );
-        component.find('input[value=3]').simulate('mouseleave');
+        component.find('input[value=3]').simulate('mouseover');
+        expect(component.state().value).toBe('3');
+        component.simulate('mouseleave');
         expect(component.state().value).toBe('2');
     });
 });

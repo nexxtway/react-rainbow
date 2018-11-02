@@ -75,7 +75,7 @@
         faImages
     } = require('@fortawesome/free-solid-svg-icons');
 
-    const smallStar = require('./smallStar.svg');
+    const smallStar = require('../../../assets/images/smallStar.svg');
 
     const iconContainerStyles = {
         width: '2rem',

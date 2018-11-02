@@ -12,14 +12,12 @@ export default function RatingItems(props) {
     return Array(5).fill(0).map((item, index) => {
         const key = `star-${index}`;
         const filled = index < value;
-        const isChecked = index === value;
         return (
             <Star
                 key={key}
                 name={name}
                 onChange={onChange}
                 value={index + 1}
-                isChecked={isChecked}
                 filled={filled} />
         );
     });
