@@ -12,8 +12,8 @@ React Rainbow is a collection of components that will reliably help you build yo
 
 <br>
 
-[![CircleCI](https://circleci.com/gh/reiniergs/react-rainbow/tree/master.svg?style=svg)](https://circleci.com/gh/reiniergs/react-rainbow/tree/master)
-[![Coverage Status](https://coveralls.io/repos/github/reiniergs/react-rainbow/badge.svg?branch=master)](https://coveralls.io/github/reiniergs/react-rainbow-components?branch=master)
+[![CircleCI](https://circleci.com/gh/90milesbridge/react-rainbow/tree/master.svg?style=svg)](https://circleci.com/gh/90milesbridge/react-rainbow/tree/master)
+[![Coverage Status](https://coveralls.io/repos/github/90milesbridge/react-rainbow/badge.svg?branch=master)](https://coveralls.io/github/90milesbridge/react-rainbow-components?branch=master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![npm version](https://badge.fury.io/js/react-rainbow-components.svg)](https://badge.fury.io/js/react-rainbow-components)
 
@@ -60,7 +60,7 @@ Yes, it's really all you need to get started as you can see in this live and int
 [![Edit Button](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/24p8n0pnz0?from-embed)
 
 ## Running locally
-1. git clone https://github.com/reiniergs/react-rainbow.git
+1. git clone https://github.com/90milesbridge/react-rainbow.git
 2. cd react-rainbow
 3. yarn install
 4. yarn start
