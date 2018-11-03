@@ -61,9 +61,6 @@ export default class ButtonIcon extends Component {
 
     render() {
         const {
-            variant,
-            size,
-            shaded,
             title,
             type,
             disabled,
@@ -73,19 +70,16 @@ export default class ButtonIcon extends Component {
             onBlur,
             assistiveText,
             ariaHaspopup,
-            className,
             ariaPressed,
             style,
             id,
             ariaControls,
             ariaExpanded,
             icon,
-            ...rest
         } = this.props;
 
         return (
             <button
-                {...rest}
                 data-id="button-icon-element"
                 id={id}
                 className={this.getButtonClassNames()}
