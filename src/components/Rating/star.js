@@ -11,6 +11,14 @@ export default class Star extends Component {
         this.starId = uniqueId('star');
     }
 
+    getAssitiveText() {
+        const { value } = this.props;
+        if (value === 1) {
+            return `${value} Star`;
+        }
+        return `${value} Stars`;
+    }
+
     renderStar() {
         const { filled } = this.props;
         if (filled) {
@@ -25,10 +33,9 @@ export default class Star extends Component {
             value,
             name,
         } = this.props;
-        const assistiveText = `${value} Stars`;
 
         return (
-            <span>
+            <span className="rainbow-rating_star">
                 <input
                     className="rainbow-rating_star-input"
                     type="radio"
@@ -37,9 +44,9 @@ export default class Star extends Component {
                     name={name}
                     onChange={onChange} />
 
-                <label className="rainbow-rating_star-label" htmlFor={this.starId}>
+                <label htmlFor={this.starId}>
                     {this.renderStar()}
-                    <AssistiveText text={assistiveText} />
+                    <AssistiveText text={this.getAssitiveText()} />
                 </label>
             </span>
         );
@@ -54,7 +61,7 @@ Star.propTypes = {
 };
 
 Star.defaultProps = {
-    value: 0,
+    value: 1,
     onChange: () => {},
     name: undefined,
 };
