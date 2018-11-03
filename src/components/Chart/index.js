@@ -26,10 +26,11 @@ export default class Chart extends Component {
     }
 
     updateChart() {
-        const { labels } = this.props;
+        const { labels, type, ...conditions } = this.props;
         this.chartInstance.data = {
             labels,
             datasets: this.datasets,
+            options: resolveOptions({ ...conditions }),
         };
         this.chartInstance.update();
     }
