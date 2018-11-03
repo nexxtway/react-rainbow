@@ -11,16 +11,16 @@ Chart base:
             super(props);
             this.state = {
                 labels: ['A', 'B', 'C', 'D'],
-                dataset1: [23,45,123,56],
-                dataset2: [66,100,30,156],
+                dataset1: [23, 45, 123, 56],
+                dataset2: [66, 100, 30, 156],
             }
         }
 
         handleOnClick() {
             this.setState({
                 labels: ['A', 'B', 'C', 'D', 'E'],
-                dataset1: [23,45,123,56, 180],
-                dataset2: [66,100,30,156, 70],
+                dataset1: [23, 45, 123, 56, 180],
+                dataset2: [66, 100, 30, 156, 70],
             });
         }
 
@@ -37,8 +37,8 @@ Chart base:
                     </GlobalHeader>
                     <div className="rainbow-align-content_center">
                         <Chart labels={labels} type="line">
-                            <Dataset title="Dataset 1" values={dataset1} backgroundColor={'#1de9b6'} />
-                            <Dataset title="Dataset 2" values={dataset2} backgroundColor={'#01b6f5'} />
+                            <Dataset title="Dataset 1" values={dataset1} borderColor={'#1de9b6'} />
+                            <Dataset title="Dataset 2" values={dataset2} borderColor={'#01b6f5'} />
                         </Chart>
                     </div>
                 </div>
