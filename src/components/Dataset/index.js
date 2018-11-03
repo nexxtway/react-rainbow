@@ -1,46 +1,7 @@
-/* eslint-disable react/prop-types */
-import React, { Component } from 'react';
+/* eslint-disable react/prop-types,react/no-unused-prop-types */
 import PropTypes from 'prop-types';
-import { Consumer } from '../Chart/context';
 
-class DatasetItem extends Component {
-    componentDidMount() {
-        const {
-            privateRegister,
-            type,
-            values,
-            title,
-            backgroundColor,
-            borderColor,
-            fill,
-            stack,
-        } = this.props;
-
-        const lineColor = borderColor || backgroundColor;
-
-        privateRegister({
-            type,
-            data: values,
-            label: title,
-            backgroundColor,
-            borderColor: lineColor,
-            fill,
-            stack,
-        });
-    }
-
-    render() {
-        return null;
-    }
-}
-
-export default function Dataset(props) {
-    return (
-        <Consumer>
-            {value => <DatasetItem {...props} {...value} />}
-        </Consumer>
-    );
-}
+export default function Dataset() {}
 
 Dataset.propTypes = {
     type: PropTypes.oneOf([

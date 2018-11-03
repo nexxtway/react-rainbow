@@ -1,6 +1,4 @@
-.react-rainbow-chart {
-  position: relative; }
-
-.rainbow-chart_dataset-container {
-  display: none;
-  visibility: hidden; }
+.rainbow-chart {
+  position: relative;
+  width: 100%;
+  height: 100%; }

@@ -1,10 +1,13 @@
-export default function resolveOptions(
-    disableAnimation,
-    disableLines,
-    disableCurves,
-    showLegend,
-    legendPosition,
-    showStacked) {
+export default function resolveOptions(conditions) {
+    const {
+        disableAnimation,
+        disableLines,
+        disableCurves,
+        showLegend,
+        legendPosition,
+        showStacked,
+    } = conditions;
+
     let options = {
         legend: {
             display: showLegend,
@@ -41,7 +44,6 @@ export default function resolveOptions(
             },
         };
     }
-
     if (showStacked) {
         options = {
             ...options,

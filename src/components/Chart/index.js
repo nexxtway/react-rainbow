@@ -2,74 +2,56 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ChartJS from 'chart.js';
-import { Provider } from './context';
 import resolveOptions from './resolve-options';
+import resolveDatasets from './resolve-datasets';
 import './styles.css';
-
-const contextValue = Symbol('contextValue');
-const registerDataset = Symbol('registerDataset');
 
 export default class Chart extends Component {
     constructor(props) {
         super(props);
-        this[contextValue] = {
-            privateRegister: this[registerDataset].bind(this),
-        };
         this.chartRef = React.createRef();
         this.datasets = [];
     }
 
     componentDidMount() {
+        const { children } = this.props;
+        this.datasets = resolveDatasets(children);
         this.renderChart();
     }
 
-    [registerDataset](datasetValues) {
-        this.datasets = this.datasets.concat(datasetValues);
+    componentDidUpdate() {
+        const { children } = this.props;
+        this.datasets = resolveDatasets(children);
+        this.updateChart();
+    }
+
+    updateChart() {
+        const { labels } = this.props;
+        this.chartInstance.data = {
+            labels,
+            datasets: this.datasets,
+        };
+        this.chartInstance.update();
     }
 
     renderChart() {
-        const {
-            type,
-            labels,
-            disableAnimation,
-            disableLines,
-            disableCurves,
-            showLegend,
-            legendPosition,
-            showStacked,
-        } = this.props;
+        const { type, labels, ...conditions } = this.props;
         const node = this.chartRef.current;
-        const datasets = this.datasets;
 
-        new ChartJS(node, {
+        this.chartInstance = new ChartJS(node, {
             type,
             data: {
                 labels,
-                datasets,
+                datasets: this.datasets,
             },
-            options: resolveOptions(
-                disableAnimation,
-                disableLines,
-                disableCurves,
-                showLegend,
-                legendPosition,
-                showStacked,
-            ),
+            options: resolveOptions({ ...conditions }),
         });
     }
 
     render() {
-        const { children } = this.props;
         return (
-            <div>
-                <span className="rainbow-chart_dataset-container" aria-hidden>
-                    <Provider value={this[contextValue]}>
-                        {children}
-                    </Provider>
-                </span>
-                <div className="rainbow-chart">
-                    <canvas ref={this.chartRef} />
-                </div>
+            <div className="rainbow-chart" >
+                <canvas ref={this.chartRef} />
             </div>
         );
     }
