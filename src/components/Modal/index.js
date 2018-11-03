@@ -104,51 +104,54 @@ export default class Modal extends Component {
             id,
         } = this.props;
 
-        return (
-            createPortal(
-                <div
-                    role="presentation"
-                    id={id}
-                    onClick={this.handleClick}
-                    className={this.getBackDropClassNames()}
-                    onKeyDown={this.handleKeyPressed}>
+        if (isOpen) {
+            return (
+                createPortal(
+                    <div
+                        role="presentation"
+                        id={id}
+                        onClick={this.handleClick}
+                        className={this.getBackDropClassNames()}
+                        onKeyDown={this.handleKeyPressed}>
 
-                    <section
-                        role="dialog"
-                        tabIndex={-1}
-                        aria-labelledby={this.modalHeadingId}
-                        aria-modal
-                        aria-hidden={!isOpen}
-                        aria-describedby={this.modalContentId}
-                        className={this.getContainerClassNames()}
-                        style={style}
-                        ref={this.modalRef}>
+                        <section
+                            role="dialog"
+                            tabIndex={-1}
+                            aria-labelledby={this.modalHeadingId}
+                            aria-modal
+                            aria-hidden={!isOpen}
+                            aria-describedby={this.modalContentId}
+                            className={this.getContainerClassNames()}
+                            style={style}
+                            ref={this.modalRef}>
 
-                        <ButtonIcon
-                            className="rainbow-modal_close-button"
-                            icon={<CloseIcon />}
-                            title="Close"
-                            onClick={this.closeModal}
-                            ref={this.buttonRef} />
+                            <ButtonIcon
+                                className="rainbow-modal_close-button"
+                                icon={<CloseIcon />}
+                                title="Close"
+                                onClick={this.closeModal}
+                                ref={this.buttonRef} />
 
-                        <Header
-                            id={this.modalHeadingId}
-                            title={title} />
+                            <Header
+                                id={this.modalHeadingId}
+                                title={title} />
 
-                        <div className="rainbow-modal_content" id={this.modalContentId}>
-                            {children}
-                        </div>
+                            <div className="rainbow-modal_content" id={this.modalContentId}>
+                                {children}
+                            </div>
 
-                        <RenderIf isTrue={!!footer}>
-                            <footer className="rainbow-modal_footer">
-                                {footer}
-                            </footer>
-                        </RenderIf>
-                    </section>
-                </div>,
-                document.body,
-            )
-        );
+                            <RenderIf isTrue={!!footer}>
+                                <footer className="rainbow-modal_footer">
+                                    {footer}
+                                </footer>
+                            </RenderIf>
+                        </section>
+                    </div>,
+                    document.body,
+                )
+            );
+        }
+        return null;
     }
 }
 

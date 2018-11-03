@@ -1,4 +1,3 @@
-/* eslint-disable class-methods-use-this */
 /**
  * Modal page object class.
  * @class
@@ -36,7 +35,10 @@ class PageModal {
      * @returns {bool}
      */
     isOpen() {
-        return $(this.rootElement).$('section[role="dialog"]').isVisible();
+        if ($(this.rootElement).isVisible()) {
+            return $(this.rootElement).$('section[role="dialog"]').isVisible() && $(this.rootElement).$('.rainbow-modal_close-button').isVisible();
+        }
+        return false;
     }
 
     /**
@@ -53,7 +55,7 @@ class PageModal {
      * @method
      */
     waitUntilOpen() {
-        browser.pause(400);
+        browser.waitUntil(() => this.isOpen());
     }
 
     /**

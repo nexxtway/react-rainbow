@@ -5,7 +5,7 @@ import Modal from './../';
 describe('<Modal/>', () => {
     it('should render the children passed', () => {
         const component = mount(
-            <Modal>
+            <Modal isOpen>
                 <p data-id="modal-children">modal content</p>
             </Modal>,
         );
@@ -13,19 +13,11 @@ describe('<Modal/>', () => {
     });
     it('should render the footer passed', () => {
         const component = mount(
-            <Modal footer="modal footer">
+            <Modal isOpen footer="modal footer">
                 <p />
             </Modal>,
         );
         expect(component.find('footer').text()).toBe('modal footer');
-    });
-    it('should have the right class names in the backdrop element', () => {
-        const component = mount(
-            <Modal>
-                <p />
-            </Modal>,
-        );
-        expect(component.find('div[className="rainbow-modal_backdrop"]').exists()).toBe(true);
     });
     it('should have the right class names in the backdrop element when the modal is opened', () => {
         const component = mount(
@@ -34,14 +26,6 @@ describe('<Modal/>', () => {
             </Modal>,
         );
         expect(component.find('div[className="rainbow-modal_backdrop rainbow-modal_backdrop--open"]').exists()).toBe(true);
-    });
-    it('should have the right class names in the section element', () => {
-        const component = mount(
-            <Modal>
-                <p />
-            </Modal>,
-        );
-        expect(component.find('section[role="dialog"]').prop('className')).toBe('rainbow-modal rainbow-modal--close');
     });
     it('should have the right class names in the section element when the modal is opened', () => {
         const component = mount(
@@ -100,14 +84,6 @@ describe('<Modal/>', () => {
             </Modal>,
         );
         expect(component.find('section[role="dialog"]').prop('aria-modal')).toBe(true);
-    });
-    it('should set aria-hidden to true in section element when modal is closed', () => {
-        const component = mount(
-            <Modal isOpen={false}>
-                <p />
-            </Modal>,
-        );
-        expect(component.find('section[role="dialog"]').prop('aria-hidden')).toBe(true);
     });
     it('should set aria-hidden to false in section element when modal is open', () => {
         const component = mount(
