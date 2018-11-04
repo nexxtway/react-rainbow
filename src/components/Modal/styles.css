@@ -54,6 +54,7 @@
 
 .rainbow-modal_content {
   padding: 1rem;
+  max-height: calc(80vh - 140px);
   overflow: hidden;
   overflow-y: auto; }
 

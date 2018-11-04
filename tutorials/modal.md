@@ -8,9 +8,12 @@ Here is an overview about how to use the Modal page object:
     const TAB_KEY = '\uE004';
 
     describe('Modal page object basic usage', () => {
-        beforeEach(() => {
+        beforeAll(() => {
             browser.url('/url/to/testing/page');
+        });
+        beforeEach(() => {
             browser.refresh();
+            browser.waitForExist(BUTTON_ICON);
         });
         it('should open the modal', () => {
             const modal = new PageModal(MODAL);
@@ -47,6 +50,7 @@ Here is an overview about how to use the Modal page object:
             browser.click(BUTTON_ICON);
             modal.waitUntilOpen();
             modal.clickCloseButton();
+            modal.waitUntilClose();
             expect(browser.hasFocus(BUTTON_ICON)).toBe(true);
         });
         it('should focus the close button when the modal is opened and press TAB', () => {

@@ -319,3 +319,134 @@
     }
 
     <ModalWSize />
+
+##### modal with redux form
+
+    const { Field, reduxForm } = require('redux-form');
+    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+    const { faCog } = require('@fortawesome/free-solid-svg-icons');
+
+    const styles = {
+        textarea: {
+            margin: '24px 0',
+        },
+        modalFooter: {
+            display: 'flex',
+            justifyContent: 'flex-end',
+            marginTop: 32,
+        },
+        cancelButton: {
+            marginRight: 24,
+        },
+    };
+
+    function SimpleForm(props) {
+        const {
+            handleSubmit,
+            onRequestClose,
+            reset,
+            onSubmit,
+        } = props;
+
+        const submit = (values) => {
+            onSubmit(values);
+            reset();
+        };
+
+        return (
+            <form noValidate onSubmit={handleSubmit(submit)}>
+                <Field
+                    component={Input}
+                    name="subject"
+                    required
+                    label="Title"
+                    placeholder="Enter title" />
+
+                <Field
+                    component={Textarea}
+                    name="description"
+                    style={styles.textarea}
+                    label="Description"
+                    placeholder="Enter description" />
+
+                <div style={styles.modalFooter}>
+                    <Button style={styles.cancelButton} label="Cancel" onClick={onRequestClose} />
+
+                    <Button label="Save" variant="brand" type="submit" />
+                </div>
+            </form>
+        );
+    }
+
+    function validate(values) {
+        const { subject } = values;
+        const errors = {};
+        if (!subject) {
+            errors.subject = 'Title is a required field';
+        }
+        return errors;
+    }
+
+    const Form = reduxForm({
+        form: 'create-issue-form',
+        validate,
+        touchOnBlur: false,
+    })(SimpleForm);
+
+    class FormModal extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                isOpen: false,
+                initialValues: {
+                    subject: 'Fix modal bug',
+                    description: 'The modal present a bug...',
+                },
+            };
+            this.handleOnClick = this.handleOnClick.bind(this);
+            this.handleOnClose = this.handleOnClose.bind(this);
+        }
+
+        handleOnClick() {
+            return this.setState({ isOpen: true });
+        }
+
+        handleOnClose() {
+            return this.setState({ isOpen: false });
+        }
+
+        render() {
+            const { isOpen, initialValues } = this.state;
+            return (
+                <div>
+                    <Button
+                        id="button-3"
+                        variant="neutral"
+                        label="Open Modal"
+                        onClick={this.handleOnClick} />
+                    <Modal
+                       id="modal-3"
+                       title="Create Issue"
+                       isOpen={isOpen}
+                       onRequestClose={this.handleOnClose}>
+
+                       <Form onSubmit={values => console.log(values)} onRequestClose={this.handleOnClose} initialValues={initialValues} />
+                    </Modal>
+                </div>
+            );
+        }
+    }
+
+    const { faPlus, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');
+
+    <div>
+        <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
+            <div className="rainbow-m-right_medium">
+                <FormModal />
+            </div>
+            <ButtonGroup>
+                <ButtonIcon icon={<FontAwesomeIcon icon={faPlus} />} variant="border-filled" disabled />
+                <ButtonIcon icon={<FontAwesomeIcon icon={faEllipsisV} />} variant="border-filled" disabled />
+            </ButtonGroup>
+        </GlobalHeader>
+    </div>

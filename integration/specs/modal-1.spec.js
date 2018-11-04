@@ -5,9 +5,12 @@ const BUTTON = '#button-1';
 const MODAL = '#modal-1';
 
 describe('Modal base example', () => {
-    beforeEach(() => {
+    beforeAll(() => {
         browser.url('/#!/Modal/1');
+    });
+    beforeEach(() => {
         browser.refresh();
+        browser.waitForExist(BUTTON);
     });
     it('should open the modal', () => {
         const modal = new PageModal(MODAL);
