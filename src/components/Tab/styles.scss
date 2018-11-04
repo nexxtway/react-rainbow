@@ -12,46 +12,102 @@
     position: relative;
 }
 
+@mixin border-tab($rotate) {
+    content: '';
+    background: transparent;
+    position: absolute;
+    bottom: -15px;
+    height: 56px;
+    width: 56px;
+    border-radius: 100%;
+    border-width: 16px;
+    border-style: solid;
+    border-color: transparent white transparent transparent;
+    -webkit-transform: rotate($rotate);
+}
+
 .rainbow-tab {
     height: 2.75rem;
     background-color: transparent;
 
-    @include position-tab(flex-start);
-
-    &:hover {
-        .rainbow-tab_anchor {
-            cursor: pointer;
-            color: $color-brand;
-        }
-    }
-
-    &.rainbow-tab--disabled .rainbow-tab_anchor:focus {
-        outline: none;
-        text-decoration: none;
-    }
+    @include position-tab(center);
 }
 
-.rainbow-tab--full-width {
-    flex: 1;
-    justify-content: center;
+.rainbow-tab:nth-child(1) > .rainbow-tab_anchor::after {
+    background-color: transparent;
+}
+
+.rainbow-tab_anchor {
+    height: 100%;
+    padding: 0 $padding-large;
+    background-color: transparent;
+    border-radius: 14px 14px 0 0;
+    line-height: 1rem;
+    letter-spacing: 1px;
+    font-size: $font-size-text-small;
+    font-weight: 600;
+    color: $color-gray-4;
+    z-index: 0;
+
+    @include position-tab(center);
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: -2px;
+        height: 20px;
+        width: 1px;
+        background-color: $color-gray-3;
+    }
+
+    &:hover::after {
+        background-color: transparent;
+    }
+
+    &:hover, &:active, &:visited {
+        text-decoration: none;
+        outline: 0;
+        cursor: pointer;
+    }
+
+    &:hover {
+        background-color: #f9fafc;
+        color: $color-gray-4;
+    }
+
+    &:focus {
+        text-decoration: none;
+        outline: 0;
+        border-radius: 14px 14px 0 0;
+    }
 }
 
 .rainbow-tab--active {
     background-color: white;
-    border-bottom-color: white;
-    box-shadow: inset 0 0.1875rem 0.1875rem 0 $color-gray-2;
+    color: $color-brand;
+    border-radius: 14px 14px 0 0;
+    z-index: 1;
 
-    .rainbow-tab_anchor {
+    &::after {
+        left: -40px;
+
+        @include border-tab(50deg);
+    }
+
+    &::before {
+        right: -40px;
+
+        @include border-tab(155deg);
+    }
+
+    &:hover, &:active, &:visited, &:focus {
         color: $color-brand;
-
-        .rainbow-tab_selected-indicator {
-            background-color: $color-brand;
-        }
+        background-color: white;
     }
 }
 
 .rainbow-tab--disabled {
-    .rainbow-tab_anchor {
+    &.rainbow-tab_anchor {
         color: $color-gray-3;
         cursor: pointer;
         pointer-events: none;
@@ -63,45 +119,16 @@
 
         .rainbow-tab_anchor {
             color: $color-gray-3;
-
-            .rainbow-tab_selected-indicator {
-                background-color: transparent;
-            }
         }
     }
 }
 
-.rainbow-tab_anchor {
-    line-height: 1rem;
-    letter-spacing: 0.5px;
-    font-size: $font-size-text-small;
-    font-weight: 600;
-    color: $color-gray-4;
-    height: 100%;
-    width: 100%;
-    padding: 0 $padding-large;
-
-    @include position-tab(center);
-
-    &:hover, &:active, &:visited {
-        text-decoration: none;
-        outline: 0;
-    }
-
-    &:focus {
-        text-decoration: none;
-        outline: 0;
-        box-shadow: inset 0 0.125rem 0.125rem $color-brand;
-    }
+.rainbow-tab--disabled .rainbow-tab_anchor:focus {
+    outline: none;
+    text-decoration: none;
 }
 
-.rainbow-tab_selected-indicator {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 0.2rem;
-    border-bottom-left-radius: 100px;
-    border-bottom-right-radius: 100px;
-    background-color: transparent;
+.rainbow-tab--full-width {
+    flex-grow: 1;
+    justify-content: center;
 }
