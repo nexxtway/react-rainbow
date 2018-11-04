@@ -3,23 +3,6 @@ import Dataset from '../../Dataset';
 import resolveDatasets from '../resolve-datasets';
 
 describe('resolveDatasets function', () => {
-    it('should return the dataset array with the right data', () => {
-        const children = [
-            <Dataset values={[34, 23, 46]} title="Dataset 1" />,
-        ];
-        const datasets = resolveDatasets(children);
-        expect(datasets).toEqual([
-            {
-                data: [34, 23, 46],
-                label: 'Dataset 1',
-                type: undefined,
-                backgroundColor: undefined,
-                borderColor: undefined,
-                stack: undefined,
-                fill: false,
-            },
-        ]);
-    });
     it('should return the dataset array with all the data', () => {
         const children = [
             <Dataset

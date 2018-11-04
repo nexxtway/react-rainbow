@@ -40,61 +40,53 @@ Bar chart vertical:
         }
 
         addDataset() {
-            if (this.titles.length > 0) {
-                const { labels, datasets } = this.state;
-                const newValues = labels.map(label => Math.round(Math.random() * 100));
-                const newDatasets = datasets.concat({
-                    title: this.titles.shift(),
-                    values: newValues,
-                    backgroundColor: this.colors.shift(),
-                });
-                this.setState({ datasets: newDatasets });
-            }
+            const { labels, datasets } = this.state;
+            const newValues = labels.map(label => Math.round(Math.random() * 100));
+            const newDatasets = datasets.concat({
+                title: this.titles.shift(),
+                values: newValues,
+                backgroundColor: this.colors.shift(),
+            });
+            this.setState({ datasets: newDatasets });
         }
 
         removeDataset() {
             const { datasets } = this.state;
-            if (datasets.length > 0) {
-                const dataset = datasets[datasets.length - 1];
-                this.titles.unshift(dataset.title);
-                this.colors.unshift(dataset.backgroundColor);
-                const newDatasets = datasets.filter(d => d.title !== dataset.title);
-                this.setState({ datasets: newDatasets });
-            }
+            const dataset = datasets[datasets.length - 1];
+            this.titles.unshift(dataset.title);
+            this.colors.unshift(dataset.backgroundColor);
+            const newDatasets = datasets.filter(d => d.title !== dataset.title);
+            this.setState({ datasets: newDatasets });
         }
 
         addMonth() {
-            if (this.months.length > 0) {
-                const { labels, datasets } = this.state;
-                const newlabels = labels.concat(this.months.shift());
-                const newDatasets = datasets.map(dataset => {
-                    const { values, ...rest } = dataset;
-                    const newValues = values.concat(Math.round(Math.random() * 100));
-                    return {
-                        ...rest,
-                        values: newValues,
-                    };
-                });
-                this.setState({ labels: newlabels, datasets: newDatasets });
-            }
+            const { labels, datasets } = this.state;
+            const newlabels = labels.concat(this.months.shift());
+            const newDatasets = datasets.map(dataset => {
+                const { values, ...rest } = dataset;
+                const newValues = values.concat(Math.round(Math.random() * 100));
+                return {
+                    ...rest,
+                    values: newValues,
+                };
+            });
+            this.setState({ labels: newlabels, datasets: newDatasets });
         }
 
         removeMonth() {
             const { labels, datasets } = this.state;
-            if (labels.length > 0) {
-                const label = labels[labels.length - 1];
-                this.months.unshift(label);
-                const newLabels = labels.filter(l => l !== label);
-                const newDatasets = datasets.map(dataset => {
-                    const { values, ...rest } = dataset;
-                    const newValues = values.slice(0, values.length -1);
-                    return {
-                        ...rest,
-                        values: newValues,
-                    };
-                });
-                this.setState({ labels: newLabels, datasets: newDatasets });
-            }
+            const label = labels[labels.length - 1];
+            this.months.unshift(label);
+            const newLabels = labels.filter(l => l !== label);
+            const newDatasets = datasets.map(dataset => {
+                const { values, ...rest } = dataset;
+                const newValues = values.slice(0, values.length -1);
+                return {
+                    ...rest,
+                    values: newValues,
+                };
+            });
+            this.setState({ labels: newLabels, datasets: newDatasets });
         }
 
         renderDatasets() {
@@ -105,22 +97,27 @@ Bar chart vertical:
         }
 
         render() {
-            const { labels } = this.state;
+            const { labels, datasets } = this.state;
+
+            const noMoreTitles = this.titles.length === 0;
+            const noMoreDatasets = datasets.length === 0;
+            const noMoreMonths = this.months.length === 0;
+            const noMoreLabels = labels.length === 0;
 
             return (
                 <div className="rainbow-p-bottom_xx-large">
                     <div className="rainbow-flex rainbow-flex_row rainbow-justify_end">
                         <ButtonGroup className="rainbow-m-top_large rainbow-m-bottom_large rainbow-m-right_small">
-                            <Button onClick={() => this.addDataset()}>
+                            <Button onClick={() => this.addDataset()} disabled={noMoreTitles}>
                                 <FontAwesomeIcon icon={faPlus} className="rainbow-m-right_x-small" /> Add Data
                             </Button>
-                            <Button onClick={() => this.removeDataset()}>
+                            <Button onClick={() => this.removeDataset()} disabled={noMoreDatasets}>
                                 <FontAwesomeIcon icon={faMinus} className="rainbow-m-right_x-small" /> Remove Data
                             </Button>
-                            <Button onClick={() => this.addMonth()}>
+                            <Button onClick={() => this.addMonth()} disabled={noMoreMonths}>
                                 <FontAwesomeIcon icon={faPlus} className="rainbow-m-right_x-small" /> Add Month
                             </Button>
-                            <Button onClick={() => this.removeMonth()}>
+                            <Button onClick={() => this.removeMonth()} disabled={noMoreLabels}>
                                 <FontAwesomeIcon icon={faMinus} className="rainbow-m-right_x-small" /> Remove Month
                             </Button>
                         </ButtonGroup>
@@ -169,61 +166,53 @@ Line chart basic:
         }
 
         addDataset() {
-            if (this.titles.length > 0) {
-                const { labels, datasets } = this.state;
-                const newValues = labels.map(label => Math.round(Math.random() * 100));
-                const newDatasets = datasets.concat({
-                    title: this.titles.shift(),
-                    values: newValues,
-                    borderColor: this.colors.shift(),
-                });
-                this.setState({ datasets: newDatasets });
-            }
+            const { labels, datasets } = this.state;
+            const newValues = labels.map(label => Math.round(Math.random() * 100));
+            const newDatasets = datasets.concat({
+                title: this.titles.shift(),
+                values: newValues,
+                borderColor: this.colors.shift(),
+            });
+            this.setState({ datasets: newDatasets });
         }
 
         removeDataset() {
             const { datasets } = this.state;
-            if (datasets.length > 0) {
-                const dataset = datasets[datasets.length - 1];
-                this.titles.unshift(dataset.title);
-                this.colors.unshift(dataset.borderColor);
-                const newDatasets = datasets.filter(d => d.title !== dataset.title);
-                this.setState({ datasets: newDatasets });
-            }
+            const dataset = datasets[datasets.length - 1];
+            this.titles.unshift(dataset.title);
+            this.colors.unshift(dataset.borderColor);
+            const newDatasets = datasets.filter(d => d.title !== dataset.title);
+            this.setState({ datasets: newDatasets });
         }
 
         addMonth() {
-            if (this.months.length > 0) {
-                const { labels, datasets } = this.state;
-                const newlabels = labels.concat(this.months.shift());
-                const newDatasets = datasets.map(dataset => {
-                    const { values, ...rest } = dataset;
-                    const newValues = values.concat(Math.round(Math.random() * 100));
-                    return {
-                        ...rest,
-                        values: newValues,
-                    };
-                });
-                this.setState({ labels: newlabels, datasets: newDatasets });
-            }
+            const { labels, datasets } = this.state;
+            const newlabels = labels.concat(this.months.shift());
+            const newDatasets = datasets.map(dataset => {
+                const { values, ...rest } = dataset;
+                const newValues = values.concat(Math.round(Math.random() * 100));
+                return {
+                    ...rest,
+                    values: newValues,
+                };
+            });
+            this.setState({ labels: newlabels, datasets: newDatasets });
         }
 
         removeMonth() {
             const { labels, datasets } = this.state;
-            if (labels.length > 0) {
-                const label = labels[labels.length - 1];
-                this.months.unshift(label);
-                const newLabels = labels.filter(l => l !== label);
-                const newDatasets = datasets.map(dataset => {
-                    const { values, ...rest } = dataset;
-                    const newValues = values.slice(0, values.length -1);
-                    return {
-                        ...rest,
-                        values: newValues,
-                    };
-                });
-                this.setState({ labels: newLabels, datasets: newDatasets });
-            }
+            const label = labels[labels.length - 1];
+            this.months.unshift(label);
+            const newLabels = labels.filter(l => l !== label);
+            const newDatasets = datasets.map(dataset => {
+                const { values, ...rest } = dataset;
+                const newValues = values.slice(0, values.length -1);
+                return {
+                    ...rest,
+                    values: newValues,
+                };
+            });
+            this.setState({ labels: newLabels, datasets: newDatasets });
         }
 
         renderDatasets() {
@@ -238,22 +227,27 @@ Line chart basic:
         }
 
         render() {
-            const { labels } = this.state;
+            const { labels, datasets } = this.state;
+
+            const noMoreTitles = this.titles.length === 0;
+            const noMoreDatasets = datasets.length === 0;
+            const noMoreMonths = this.months.length === 0;
+            const noMoreLabels = labels.length === 0;
 
             return (
                 <div className="rainbow-p-bottom_xx-large">
                     <div className="rainbow-flex rainbow-flex_row rainbow-justify_end">
                         <ButtonGroup className="rainbow-m-top_large rainbow-m-bottom_large rainbow-m-right_small">
-                            <Button onClick={() => this.addDataset()}>
+                            <Button onClick={() => this.addDataset()} disabled={noMoreTitles}>
                                 <FontAwesomeIcon icon={faPlus} className="rainbow-m-right_x-small" /> Add Data
                             </Button>
-                            <Button onClick={() => this.removeDataset()}>
+                            <Button onClick={() => this.removeDataset()} disabled={noMoreDatasets}>
                                 <FontAwesomeIcon icon={faMinus} className="rainbow-m-right_x-small" /> Remove Data
                             </Button>
-                            <Button onClick={() => this.addMonth()}>
+                            <Button onClick={() => this.addMonth()} disabled={noMoreMonths}>
                                 <FontAwesomeIcon icon={faPlus} className="rainbow-m-right_x-small" /> Add Month
                             </Button>
-                            <Button onClick={() => this.removeMonth()}>
+                            <Button onClick={() => this.removeMonth()} disabled={noMoreLabels}>
                                 <FontAwesomeIcon icon={faMinus} className="rainbow-m-right_x-small" /> Remove Month
                             </Button>
                         </ButtonGroup>
@@ -284,6 +278,14 @@ Line chart fill:
             super(props);
             this.titles = ['Data-Red', 'Data-Yellow', 'Data-Green', 'Data-Orange', 'Data-Purple', 'Data-Dark'];
             this.colors = ['#fe4849','#ffcc00', '#1ad1a3', '#ff6837', '#663398', '#061c3f'];
+            this.backgrounds = [
+                'rgba(254, 72, 73, 0.80)',
+                'rgba(255, 204, 0, 0.80)',
+                'rgba(26, 209, 163, 0.80)',
+                'rgba(255, 104, 55, 0.80)',
+                undefined,
+                undefined,
+            ];
             this.months = ['July','August', 'September', 'October', 'November', 'December'];
             this.state = {
                 labels: ['January', 'February', 'March', 'April', 'May', 'June'],
@@ -291,7 +293,7 @@ Line chart fill:
                     {
                         title: 'Data-Blue',
                         borderColor: '#01b6f5',
-                        backgroundColor: 'rgba(1, 182, 245, 0.6)',
+                        backgroundColor: 'rgba(1, 182, 245, 0.80)',
                         values: [37, 18, 90, 56, 80, 14],
                     },
                 ],
@@ -299,16 +301,15 @@ Line chart fill:
         }
 
         addDataset() {
-            if (this.titles.length > 0) {
-                const { labels, datasets } = this.state;
-                const newValues = labels.map(label => Math.round(Math.random() * 100));
-                const newDatasets = datasets.concat({
-                    title: this.titles.shift(),
-                    values: newValues,
-                    borderColor: this.colors.shift(),
-                });
-                this.setState({ datasets: newDatasets });
-            }
+            const { labels, datasets } = this.state;
+            const newValues = labels.map(label => Math.round(Math.random() * 100));
+            const newDatasets = datasets.concat({
+                title: this.titles.shift(),
+                values: newValues,
+                borderColor: this.colors.shift(),
+                backgroundColor: this.backgrounds.shift(),
+            });
+            this.setState({ datasets: newDatasets });
         }
 
         removeDataset() {
@@ -317,43 +318,40 @@ Line chart fill:
                 const dataset = datasets[datasets.length - 1];
                 this.titles.unshift(dataset.title);
                 this.colors.unshift(dataset.borderColor);
+                this.backgrounds.unshift(dataset.backgroundColor);
                 const newDatasets = datasets.filter(d => d.title !== dataset.title);
                 this.setState({ datasets: newDatasets });
             }
         }
 
         addMonth() {
-            if (this.months.length > 0) {
-                const { labels, datasets } = this.state;
-                const newlabels = labels.concat(this.months.shift());
-                const newDatasets = datasets.map(dataset => {
-                    const { values, ...rest } = dataset;
-                    const newValues = values.concat(Math.round(Math.random() * 100));
-                    return {
-                        ...rest,
-                        values: newValues,
-                    };
-                });
-                this.setState({ labels: newlabels, datasets: newDatasets });
-            }
+            const { labels, datasets } = this.state;
+            const newlabels = labels.concat(this.months.shift());
+            const newDatasets = datasets.map(dataset => {
+                const { values, ...rest } = dataset;
+                const newValues = values.concat(Math.round(Math.random() * 100));
+                return {
+                    ...rest,
+                    values: newValues,
+                };
+            });
+            this.setState({ labels: newlabels, datasets: newDatasets });
         }
 
         removeMonth() {
             const { labels, datasets } = this.state;
-            if (labels.length > 0) {
-                const label = labels[labels.length - 1];
-                this.months.unshift(label);
-                const newLabels = labels.filter(l => l !== label);
-                const newDatasets = datasets.map(dataset => {
-                    const { values, ...rest } = dataset;
-                    const newValues = values.slice(0, values.length -1);
-                    return {
-                        ...rest,
-                        values: newValues,
-                    };
-                });
-                this.setState({ labels: newLabels, datasets: newDatasets });
-            }
+            const label = labels[labels.length - 1];
+            this.months.unshift(label);
+            const newLabels = labels.filter(l => l !== label);
+            const newDatasets = datasets.map(dataset => {
+                const { values, ...rest } = dataset;
+                const newValues = values.slice(0, values.length -1);
+                return {
+                    ...rest,
+                    values: newValues,
+                };
+            });
+            this.setState({ labels: newLabels, datasets: newDatasets });
         }
 
         renderDatasets() {
@@ -369,22 +367,27 @@ Line chart fill:
         }
 
         render() {
-            const { labels } = this.state;
+            const { labels, datasets } = this.state;
+
+            const noMoreTitles = this.titles.length === 0;
+            const noMoreDatasets = datasets.length === 0;
+            const noMoreMonths = this.months.length === 0;
+            const noMoreLabels = labels.length === 0;
 
             return (
                 <div className="rainbow-p-bottom_xx-large">
                     <div className="rainbow-flex rainbow-flex_row rainbow-justify_end">
                         <ButtonGroup className="rainbow-m-top_large rainbow-m-bottom_large rainbow-m-right_small">
-                            <Button onClick={() => this.addDataset()}>
+                            <Button onClick={() => this.addDataset()} disabled={noMoreTitles}>
                                 <FontAwesomeIcon icon={faPlus} className="rainbow-m-right_x-small" /> Add Data
                             </Button>
-                            <Button onClick={() => this.removeDataset()}>
+                            <Button onClick={() => this.removeDataset()} disabled={noMoreDatasets}>
                                 <FontAwesomeIcon icon={faMinus} className="rainbow-m-right_x-small" /> Remove Data
                             </Button>
-                            <Button onClick={() => this.addMonth()}>
+                            <Button onClick={() => this.addMonth()} disabled={noMoreMonths}>
                                 <FontAwesomeIcon icon={faPlus} className="rainbow-m-right_x-small" /> Add Month
                             </Button>
-                            <Button onClick={() => this.removeMonth()}>
+                            <Button onClick={() => this.removeMonth()} disabled={noMoreLabels}>
                                 <FontAwesomeIcon icon={faMinus} className="rainbow-m-right_x-small" /> Remove Month
                             </Button>
                         </ButtonGroup>
@@ -438,28 +441,24 @@ Pie chart:
         }
 
         addData() {
-            if (this.titles.length > 0) {
-                const {labels, dataset} = this.state;
-                const newLabels = labels.concat(this.titles.shift());
-                const newDataset = dataset.concat({
-                    value: Math.round(Math.random() * 100),
-                    color: this.colors.shift()
-                });
-                this.setState({ labels: newLabels, dataset: newDataset });
-            }
+            const {labels, dataset} = this.state;
+            const newLabels = labels.concat(this.titles.shift());
+            const newDataset = dataset.concat({
+                value: Math.round(Math.random() * 100),
+                color: this.colors.shift()
+            });
+            this.setState({ labels: newLabels, dataset: newDataset });
         }
 
         removeData() {
             const { labels, dataset } = this.state;
-            if (labels.length > 0) {
-                const lastLabel = labels[labels.length - 1];
-                this.titles.unshift(lastLabel);
-                const newLabels = labels.filter(l => l !== lastLabel);
-                const lastData = dataset[dataset.length - 1];
-                this.colors.unshift(lastData.color);
-                const newDataset = dataset.slice(0, dataset.length - 1);
-                this.setState({ labels: newLabels, dataset: newDataset });
-            }
+            const lastLabel = labels[labels.length - 1];
+            this.titles.unshift(lastLabel);
+            const newLabels = labels.filter(l => l !== lastLabel);
+            const lastData = dataset[dataset.length - 1];
+            this.colors.unshift(lastData.color);
+            const newDataset = dataset.slice(0, dataset.length - 1);
+            this.setState({ labels: newLabels, dataset: newDataset });
         }
 
         renderDataset() {
@@ -475,7 +474,10 @@ Pie chart:
         }
 
         render() {
-            const { labels, dataset } = this.state;
+            const { labels } = this.state;
+
+            const noMoreTitles = this.titles.length === 0;
+            const noMoreLabels = labels.length === 0;
 
             return (
                 <div className="rainbow-p-bottom_xx-large">
@@ -491,10 +493,10 @@ Pie chart:
                     </div>
                     <div className="rainbow-align-content_center">
                         <ButtonGroup className="rainbow-m-top_large rainbow-m-bottom_large">
-                            <Button onClick={() => this.addData()}>
+                            <Button onClick={() => this.addData()} disabled={noMoreTitles}>
                                 <FontAwesomeIcon icon={faPlus} className="rainbow-m-right_x-small" /> Add Data
                             </Button>
-                            <Button onClick={() => this.removeData()}>
+                            <Button onClick={() => this.removeData()} disabled={noMoreLabels}>
                                 <FontAwesomeIcon icon={faMinus} className="rainbow-m-right_x-small" /> Remove Data
                             </Button>
                         </ButtonGroup>
@@ -539,28 +541,24 @@ Doughnut chart:
         }
 
         addData() {
-            if (this.titles.length > 0) {
-                const {labels, dataset} = this.state;
-                const newLabels = labels.concat(this.titles.shift());
-                const newDataset = dataset.concat({
-                    value: Math.round(Math.random() * 100),
-                    color: this.colors.shift()
-                });
-                this.setState({ labels: newLabels, dataset: newDataset });
-            }
+            const {labels, dataset} = this.state;
+            const newLabels = labels.concat(this.titles.shift());
+            const newDataset = dataset.concat({
+                value: Math.round(Math.random() * 100),
+                color: this.colors.shift()
+            });
+            this.setState({ labels: newLabels, dataset: newDataset });
         }
 
         removeData() {
             const { labels, dataset } = this.state;
-            if (labels.length > 0) {
-                const lastLabel = labels[labels.length - 1];
-                this.titles.unshift(lastLabel);
-                const newLabels = labels.filter(l => l !== lastLabel);
-                const lastData = dataset[dataset.length - 1];
-                this.colors.unshift(lastData.color);
-                const newDataset = dataset.slice(0, dataset.length - 1);
-                this.setState({ labels: newLabels, dataset: newDataset });
-            }
+            const lastLabel = labels[labels.length - 1];
+            this.titles.unshift(lastLabel);
+            const newLabels = labels.filter(l => l !== lastLabel);
+            const lastData = dataset[dataset.length - 1];
+            this.colors.unshift(lastData.color);
+            const newDataset = dataset.slice(0, dataset.length - 1);
+            this.setState({ labels: newLabels, dataset: newDataset });
         }
 
         renderDataset() {
@@ -576,7 +574,10 @@ Doughnut chart:
         }
 
         render() {
-            const { labels, dataset1 } = this.state;
+            const { labels } = this.state;
+
+            const noMoreTitles = this.titles.length === 0;
+            const noMoreLabels = labels.length === 0;
 
             return (
                 <div className="rainbow-p-bottom_xx-large">
@@ -592,10 +593,10 @@ Doughnut chart:
                     </div>
                     <div className="rainbow-align-content_center">
                         <ButtonGroup className="rainbow-m-top_large rainbow-m-bottom_large">
-                            <Button onClick={() => this.addData()}>
+                            <Button onClick={() => this.addData()} disabled={noMoreTitles}>
                                 <FontAwesomeIcon icon={faPlus} className="rainbow-m-right_x-small" /> Add Data
                             </Button>
-                            <Button onClick={() => this.removeData()}>
+                            <Button onClick={() => this.removeData()} disabled={noMoreLabels}>
                                 <FontAwesomeIcon icon={faMinus} className="rainbow-m-right_x-small" /> Remove Data
                             </Button>
                         </ButtonGroup>
