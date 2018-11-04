@@ -2,6 +2,4 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  height: 2.625rem;
-  overflow-y: visible;
-  border-bottom: #e3e5ed 0.125rem solid; }
+  overflow-y: visible; }

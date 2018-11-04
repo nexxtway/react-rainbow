@@ -22,12 +22,12 @@ describe('<Tabset />', () => {
                 <Tab label="Tab-3" name="tab-3" registerTab={registerTabMockFn} />
             </Tabset>,
         );
-        const item1 = component.find('Tab[name="tab-1"]').find('li');
-        const item2 = component.find('Tab[name="tab-2"]').find('li');
-        const item3 = component.find('Tab[name="tab-3"]').find('li');
-        expect(item1.prop('className')).toBe('rainbow-tab');
-        expect(item2.prop('className')).toBe('rainbow-tab');
-        expect(item3.prop('className')).toBe('rainbow-tab rainbow-tab--active');
+        const item1 = component.find('Tab[name="tab-1"]').find('a');
+        const item2 = component.find('Tab[name="tab-2"]').find('a');
+        const item3 = component.find('Tab[name="tab-3"]').find('a');
+        expect(item1.prop('className')).toBe('rainbow-tab_anchor');
+        expect(item2.prop('className')).toBe('rainbow-tab_anchor');
+        expect(item3.prop('className')).toBe('rainbow-tab_anchor rainbow-tab--active');
     });
     it('should call onSelect event with the right data when an item is clicked', () => {
         const onSelectMockFn = jest.fn();

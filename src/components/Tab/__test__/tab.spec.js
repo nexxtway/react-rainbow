@@ -7,12 +7,12 @@ describe('<Tab />', () => {
     it('should set the right class names when activeTaName is tab-1', () => {
         const component = mount(<Tab name="tab-1" activeTabName="tab-1" />);
 
-        expect(component.find('li.rainbow-tab.rainbow-tab--active').exists()).toBe(true);
+        expect(component.find('a.rainbow-tab_anchor.rainbow-tab--active').exists()).toBe(true);
     });
     it('should set the right class names when disabled is passed', () => {
         const component = mount(<Tab name="tab-1" disabled />);
 
-        expect(component.find('li.rainbow-tab.rainbow-tab--disabled').exists()).toBe(true);
+        expect(component.find('a.rainbow-tab_anchor.rainbow-tab--disabled').exists()).toBe(true);
     });
     it('should set the right class names when custom class name is passed', () => {
         const component = mount(<Tab name="tab-1" className="custom-class-name" />);

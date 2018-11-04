@@ -25,15 +25,19 @@ class TabItem extends Component {
         privateUnRegisterTab(name);
     }
 
+    getContainerClassName() {
+        const { className } = this.props;
+        return classnames('rainbow-tab', className);
+    }
+
     getTabClassName() {
-        const { disabled, fullWidth, className } = this.props;
-        return classnames('rainbow-tab',
+        const { disabled, fullWidth } = this.props;
+        return classnames('rainbow-tab_anchor',
             {
-                'rainbow-tab--full-width': fullWidth,
                 'rainbow-tab--active': this.isSelected(),
                 'rainbow-tab--disabled': disabled,
+                'rainbow-tab--full-width': fullWidth,
             },
-            className,
         );
     }
 
@@ -61,14 +65,14 @@ class TabItem extends Component {
 
         return (
             <li
-                className={this.getTabClassName()}
+                className={this.getContainerClassName()}
                 style={style}
                 title={title}
                 role="presentation">
                 <a
                     href="javascript:void(0);"
                     role="tab"
-                    className="rainbow-tab_anchor"
+                    className={this.getTabClassName()}
                     aria-selected={this.isSelected()}
                     onClick={this.handleSelect}
                     tabIndex={this.getTabIndex()}
@@ -76,7 +80,6 @@ class TabItem extends Component {
                     aria-controls={ariaControls}
                     ref={this.tabRef}>
 
-                    <div className="rainbow-tab_selected-indicator" />
                     {label}
                 </a>
             </li>
