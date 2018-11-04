@@ -27,7 +27,7 @@ describe('<Tabset />', () => {
         const item3 = component.find('Tab[name="tab-3"]').find('li');
         expect(item1.prop('className')).toBe('rainbow-tab');
         expect(item2.prop('className')).toBe('rainbow-tab');
-        expect(item3.prop('className')).toBe('rainbow-tab rainbow-tab--active');
+        expect(item3.prop('className')).toBe('rainbow-tab_anchor rainbow-tab--active');
     });
     it('should call onSelect event with the right data when an item is clicked', () => {
         const onSelectMockFn = jest.fn();
