@@ -93,7 +93,7 @@ Chart.propTypes = {
     /** Determines whether it should perform animations when rendering the chart,
      * this would improve general performance
      * and is recommended for high data volumes charts */
-    disableAnimation: PropTypes.bool,
+    disableAnimations: PropTypes.bool,
     /** Determines whether to draw the lines that join the dots in a line chart,
      * is recommended for high data volumes charts */
     disableLines: PropTypes.bool,
@@ -115,7 +115,7 @@ Chart.defaultProps = {
     showStacked: false,
     showLegend: true,
     legendPosition: 'bottom',
-    disableAnimation: false,
+    disableAnimations: false,
     disableLines: false,
     disableCurves: false,
     className: undefined,

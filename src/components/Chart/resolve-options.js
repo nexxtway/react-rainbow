@@ -1,6 +1,6 @@
 export default function resolveOptions(conditions) {
     const {
-        disableAnimation,
+        disableAnimations,
         disableLines,
         disableCurves,
         showLegend,
@@ -13,10 +13,13 @@ export default function resolveOptions(conditions) {
             display: showLegend,
             position: legendPosition,
             fullWidth: true,
+            labels: {
+                usePointStyle: true,
+            },
         },
     };
 
-    if (disableAnimation) {
+    if (disableAnimations) {
         options = {
             ...options,
             animation: {

@@ -1,7 +1,10 @@
 /* eslint-disable react/no-unused-prop-types */
+import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Dataset() {}
+export default function Dataset() {
+    return <div />;
+}
 
 Dataset.propTypes = {
     /** The type of chart for the specific dataset, it can be different than the chart type */
