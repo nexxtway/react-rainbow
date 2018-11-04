@@ -92,7 +92,7 @@ Bar chart vertical:
         renderDatasets() {
             const { datasets } = this.state;
             return datasets.map(({ title, values, backgroundColor }) => (
-                <Dataset title={title} values={values} backgroundColor={backgroundColor} />
+                <Dataset key={title} title={title} values={values} backgroundColor={backgroundColor} />
             ));
         }
 
@@ -219,6 +219,7 @@ Line chart basic:
             const { datasets } = this.state;
             return datasets.map(({ title, values, borderColor }) => (
                 <Dataset
+                    key={title}
                     title={title}
                     values={values}
                     borderColor={borderColor}
@@ -358,6 +359,7 @@ Line chart fill:
             const { datasets } = this.state;
             return datasets.map(({ title, values, borderColor, backgroundColor }) => (
                 <Dataset
+                    key={title}
                     title={title}
                     values={values}
                     borderColor={borderColor}
