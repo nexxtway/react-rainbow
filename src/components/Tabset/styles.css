@@ -2,5 +2,4 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  overflow-y: visible;
-  flex-flow: row wrap; }
+  overflow-y: visible; }
