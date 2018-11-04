@@ -4,11 +4,13 @@ const { ARROW_LEFT_KEY, ARROW_RIGHT_KEY } = require('./../constants');
 const TABSET = '#tabset-1';
 
 describe('Tabset base example', () => {
-    beforeEach(() => {
+    beforeAll(() => {
         browser.url('/#!/Tabset/1');
+        browser.waitForExists(TABSET);
+    });
+    beforeEach(() => {
         browser.refresh();
     });
-
     it('should select the first tab when selected', () => {
         const tabset = new PageTabset(TABSET);
         const tabItem = tabset.getItem(0);

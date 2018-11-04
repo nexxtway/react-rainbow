@@ -35,7 +35,7 @@ class PageTab {
      * @returns {bool}
      */
     isSelected() {
-        return $(this.rootElement).getAttribute('class') === 'rainbow-tab rainbow-tab--active';
+        return $(this.rootElement).$('a').getAttribute('class') === 'rainbow-tab_anchor rainbow-tab--active';
     }
 }
 
