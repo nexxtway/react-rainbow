@@ -492,7 +492,7 @@ Pie chart:
                             </Button>
                         </ButtonGroup>
                     </div>
-                    <div className="rainbow-align-content_center rainbow-m-around_xx-large">
+                    <div className="rainbow-align-content_center rainbow-m-around_xx-large rainbow-p-around_xx-large">
                         <Chart
                             labels={labels}
                             type="pie"
@@ -591,7 +591,7 @@ Doughnut chart:
                             </Button>
                         </ButtonGroup>
                     </div>
-                    <div  className="rainbow-align-content_center rainbow-m-around_xx-large">
+                    <div  className="rainbow-align-content_center rainbow-m-around_xx-large rainbow-p-around_xx-large">
                         <Chart
                             labels={labels}
                             type="doughnut"
