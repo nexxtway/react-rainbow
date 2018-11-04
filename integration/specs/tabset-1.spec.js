@@ -6,7 +6,7 @@ const TABSET = '#tabset-1';
 describe('Tabset base example', () => {
     beforeAll(() => {
         browser.url('/#!/Tabset/1');
-        browser.waitForExists(TABSET);
+        browser.waitForExist(TABSET);
     });
     beforeEach(() => {
         browser.refresh();
