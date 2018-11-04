@@ -56,27 +56,27 @@
     content: '';
     background: transparent;
     position: absolute;
-    bottom: -15px;
+    bottom: -16px;
     height: 56px;
     width: 56px;
     border-radius: 100%;
     border-width: 16px;
     border-style: solid;
     border-color: transparent white transparent transparent;
-    -webkit-transform: rotate(50deg); }
+    -webkit-transform: rotate(45deg); }
   .rainbow-tab--active::before {
     right: -40px;
     content: '';
     background: transparent;
     position: absolute;
-    bottom: -15px;
+    bottom: -16px;
     height: 56px;
     width: 56px;
     border-radius: 100%;
     border-width: 16px;
     border-style: solid;
     border-color: transparent white transparent transparent;
-    -webkit-transform: rotate(155deg); }
+    -webkit-transform: rotate(145deg); }
   .rainbow-tab--active:hover, .rainbow-tab--active:active, .rainbow-tab--active:visited, .rainbow-tab--active:focus {
     color: #01b6f5;
     background-color: white; }

@@ -16,7 +16,7 @@
     content: '';
     background: transparent;
     position: absolute;
-    bottom: -15px;
+    bottom: -16px;
     height: 56px;
     width: 56px;
     border-radius: 100%;
@@ -91,13 +91,13 @@
     &::after {
         left: -40px;
 
-        @include border-tab(50deg);
+        @include border-tab(45deg);
     }
 
     &::before {
         right: -40px;
 
-        @include border-tab(155deg);
+        @include border-tab(145deg);
     }
 
     &:hover, &:active, &:visited, &:focus {
