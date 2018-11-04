@@ -123,7 +123,7 @@ Bar chart vertical:
                         </ButtonGroup>
                     </div>
                     <div className="rainbow-align-content_center">
-                        <Chart labels={labels} type="bar" className="rainbow-m-right_small rainbow-m-left_x-large">
+                        <Chart labels={labels} type="bar" className="rainbow-m-horizontal_xx-large">
                             {this.renderDatasets()}
                         </Chart>
                     </div>
@@ -254,7 +254,7 @@ Line chart basic:
                         </ButtonGroup>
                     </div>
                     <div className="rainbow-align-content_center">
-                        <Chart labels={labels} type="line" className="rainbow-m-right_small rainbow-m-left_x-large">
+                        <Chart labels={labels} type="line" className="rainbow-m-horizontal_xx-large">
                             {this.renderDatasets()}
                         </Chart>
                     </div>
@@ -399,7 +399,7 @@ Line chart fill:
                             labels={labels}
                             type="line"
                             disableCurves
-                            className="rainbow-m-right_small rainbow-m-left_x-large">
+                            className="rainbow-m-horizontal_xx-large">
                             {this.renderDatasets()}
                         </Chart>
                     </div>
@@ -489,7 +489,7 @@ Pie chart:
                             type="pie"
                             legendPosition="right"
                             disableCurves
-                            className="rainbow-m-right_small rainbow-m-left_x-large rainbow-m-top_x-large">
+                            className="rainbow-m-horizontal_xx-large rainbow-m-top_x-large">
                             {this.renderDataset()}
                         </Chart>
                     </div>
@@ -589,7 +589,7 @@ Doughnut chart:
                             type="doughnut"
                             legendPosition="right"
                             disableCurves
-                            className="rainbow-m-right_small rainbow-m-left_x-large rainbow-m-top_x-large">
+                            className="rainbow-m-horizontal_xx-large rainbow-m-top_x-large">
                             {this.renderDataset()}
                         </Chart>
                     </div>
