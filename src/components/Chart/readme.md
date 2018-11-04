@@ -105,9 +105,9 @@ Bar chart vertical:
             const noMoreLabels = labels.length === 0;
 
             return (
-                <div className="rainbow-p-bottom_xx-large">
+                <div className="rainbow-p-vertical_large">
                     <div className="rainbow-flex rainbow-flex_row rainbow-justify_end">
-                        <ButtonGroup className="rainbow-m-top_large rainbow-m-bottom_large rainbow-m-right_small">
+                        <ButtonGroup className="rainbow-m-around_large">
                             <Button onClick={() => this.addDataset()} disabled={noMoreTitles}>
                                 <FontAwesomeIcon icon={faPlus} className="rainbow-m-right_x-small" /> Add Data
                             </Button>
@@ -122,8 +122,8 @@ Bar chart vertical:
                             </Button>
                         </ButtonGroup>
                     </div>
-                    <div className="rainbow-align-content_center">
-                        <Chart labels={labels} type="bar" className="rainbow-m-horizontal_xx-large">
+                    <div className="rainbow-align-content_center rainbow-m-horizontal_xx-large rainbow-m-vertical_large">
+                        <Chart labels={labels} type="bar">
                             {this.renderDatasets()}
                         </Chart>
                     </div>
@@ -134,7 +134,7 @@ Bar chart vertical:
 
     <BarChartExample />
 
-Line chart basic:
+Line chart:
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
     const {
@@ -236,9 +236,9 @@ Line chart basic:
             const noMoreLabels = labels.length === 0;
 
             return (
-                <div className="rainbow-p-bottom_xx-large">
+                <div className="rainbow-p-vertical_large rainbow-m-bottom_large">
                     <div className="rainbow-flex rainbow-flex_row rainbow-justify_end">
-                        <ButtonGroup className="rainbow-m-top_large rainbow-m-bottom_large rainbow-m-right_small">
+                        <ButtonGroup className="rainbow-m-around_large">
                             <Button onClick={() => this.addDataset()} disabled={noMoreTitles}>
                                 <FontAwesomeIcon icon={faPlus} className="rainbow-m-right_x-small" /> Add Data
                             </Button>
@@ -253,8 +253,8 @@ Line chart basic:
                             </Button>
                         </ButtonGroup>
                     </div>
-                    <div className="rainbow-align-content_center">
-                        <Chart labels={labels} type="line" className="rainbow-m-horizontal_xx-large">
+                    <div className="rainbow-align-content_center rainbow-m-horizontal_xx-large rainbow-m-vertical_large">
+                        <Chart labels={labels} type="line">
                             {this.renderDatasets()}
                         </Chart>
                     </div>
@@ -377,9 +377,9 @@ Line chart fill:
             const noMoreLabels = labels.length === 0;
 
             return (
-                <div className="rainbow-p-bottom_xx-large">
+                <div className="rainbow-p-vertical_large rainbow-m-bottom_x-large">
                     <div className="rainbow-flex rainbow-flex_row rainbow-justify_end">
-                        <ButtonGroup className="rainbow-m-top_large rainbow-m-bottom_large rainbow-m-right_small">
+                        <ButtonGroup className="rainbow-m-around_large rainbow-p-bottom_large">
                             <Button onClick={() => this.addDataset()} disabled={noMoreTitles}>
                                 <FontAwesomeIcon icon={faPlus} className="rainbow-m-right_x-small" /> Add Data
                             </Button>
@@ -394,12 +394,11 @@ Line chart fill:
                             </Button>
                         </ButtonGroup>
                     </div>
-                    <div className="rainbow-align-content_center">
+                    <div className="rainbow-align-content_center rainbow-m-horizontal_xx-large rainbow-m-vertical_large">
                         <Chart
                             labels={labels}
                             type="line"
-                            disableCurves
-                            className="rainbow-m-horizontal_xx-large">
+                            disableCurves>
                             {this.renderDatasets()}
                         </Chart>
                     </div>
@@ -482,19 +481,9 @@ Pie chart:
             const noMoreLabels = labels.length === 0;
 
             return (
-                <div className="rainbow-p-bottom_xx-large">
-                    <div className="rainbow-align-content_center">
-                        <Chart
-                            labels={labels}
-                            type="pie"
-                            legendPosition="right"
-                            disableCurves
-                            className="rainbow-m-horizontal_xx-large rainbow-m-top_x-large">
-                            {this.renderDataset()}
-                        </Chart>
-                    </div>
-                    <div className="rainbow-align-content_center">
-                        <ButtonGroup className="rainbow-m-top_large rainbow-m-bottom_large">
+                <div className="rainbow-p-around_xx-large">
+                    <div>
+                        <ButtonGroup className="rainbow-m-vertical_large">
                             <Button onClick={() => this.addData()} disabled={noMoreTitles}>
                                 <FontAwesomeIcon icon={faPlus} className="rainbow-m-right_x-small" /> Add Data
                             </Button>
@@ -502,6 +491,15 @@ Pie chart:
                                 <FontAwesomeIcon icon={faMinus} className="rainbow-m-right_x-small" /> Remove Data
                             </Button>
                         </ButtonGroup>
+                    </div>
+                    <div className="rainbow-align-content_center rainbow-m-around_xx-large">
+                        <Chart
+                            labels={labels}
+                            type="pie"
+                            legendPosition="right"
+                            disableCurves>
+                            {this.renderDataset()}
+                        </Chart>
                     </div>
                 </div>
             );
@@ -582,19 +580,9 @@ Doughnut chart:
             const noMoreLabels = labels.length === 0;
 
             return (
-                <div className="rainbow-p-bottom_xx-large">
-                    <div className="rainbow-align-content_center">
-                        <Chart
-                            labels={labels}
-                            type="doughnut"
-                            legendPosition="right"
-                            disableCurves
-                            className="rainbow-m-horizontal_xx-large rainbow-m-top_x-large">
-                            {this.renderDataset()}
-                        </Chart>
-                    </div>
-                    <div className="rainbow-align-content_center">
-                        <ButtonGroup className="rainbow-m-top_large rainbow-m-bottom_large">
+                <div className="rainbow-p-around_xx-large">
+                    <div>
+                        <ButtonGroup className="rainbow-m-vertical_large">
                             <Button onClick={() => this.addData()} disabled={noMoreTitles}>
                                 <FontAwesomeIcon icon={faPlus} className="rainbow-m-right_x-small" /> Add Data
                             </Button>
@@ -602,6 +590,15 @@ Doughnut chart:
                                 <FontAwesomeIcon icon={faMinus} className="rainbow-m-right_x-small" /> Remove Data
                             </Button>
                         </ButtonGroup>
+                    </div>
+                    <div  className="rainbow-align-content_center rainbow-m-around_xx-large">
+                        <Chart
+                            labels={labels}
+                            type="doughnut"
+                            legendPosition="right"
+                            disableCurves>
+                            {this.renderDataset()}
+                        </Chart>
                     </div>
                 </div>
             );
