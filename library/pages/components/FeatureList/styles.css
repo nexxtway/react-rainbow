@@ -1,14 +1,13 @@
 .react-rainbow-feature-list {
-    display: flex;
-    justify-content: space-between;
+    display: inline-flex;
     flex-wrap: wrap;
     padding-top: 48px;
 }
 
 .react-rainbow-feature-list_item {
-    width: 240px;
+    width: 250px;
     padding-bottom: 64px;
-    margin-right: 24px;
+    margin: 0 32px;
 }
 
 .react-rainbow-feature-list_item-image {
@@ -32,14 +31,13 @@
 
 @media (max-width: 1024px) {
     .react-rainbow-feature-list_item {
-        width: 50%;
+        width: 40%;
         padding-bottom: 64px;
-        margin-right: 0;
-        padding-right: 24px;
+        margin: 0 24px;
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     .react-rainbow-feature-list {
         display: flex;
         justify-content: center;
