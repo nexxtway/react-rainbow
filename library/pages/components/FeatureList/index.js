@@ -5,7 +5,7 @@ import Item from './item';
 import Components from './images/components';
 import InteractiveExamples from './images/interactive-examples';
 import Testing from './images/testing';
-import Internacionalization from './images/internacionalization';
+import Internationalization from './images/internationalization';
 import Accesibility from './images/accesibility';
 import PageObject from './images/page-object';
 import ReduxForm from './images/redux-form';
@@ -41,8 +41,8 @@ export default function FeatureList(props) {
 
             <Item
                 className="react-rainbow-feature-list_item"
-                image={<Internacionalization />}
-                title="Internacionalization"
+                image={<Internationalization />}
+                title="Internationalization"
                 description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore." />
 
             <Item
