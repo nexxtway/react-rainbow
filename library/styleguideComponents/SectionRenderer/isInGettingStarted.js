@@ -1,6 +1,7 @@
 const NAMES = [
     'Getting Started',
     'Overview',
+    'Installation',
     'Usage',
     'Contribuiting',
     'Testing',

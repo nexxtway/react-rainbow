@@ -74,6 +74,10 @@ module.exports = {
                     content: 'library/pages/overview.md',
                 },
                 {
+                    name: 'Installation',
+                    content: 'library/pages/installation.md',
+                },
+                {
                     name: 'Usage',
                     content: 'library/pages/usage.md',
                 },
