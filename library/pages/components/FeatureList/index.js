@@ -48,7 +48,7 @@ export default function FeatureList(props) {
             <Item
                 className="react-rainbow-feature-list_item"
                 image={<Accesibility />}
-                title="40 Components"
+                title="Accesibility"
                 description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore." />
 
             <Item
