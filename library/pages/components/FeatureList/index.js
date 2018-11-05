@@ -36,7 +36,7 @@ export default function FeatureList(props) {
             <Item
                 className="react-rainbow-feature-list_item"
                 image={<Testing />}
-                title="Well Testing"
+                title="100% Testing"
                 description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore." />
 
             <Item
