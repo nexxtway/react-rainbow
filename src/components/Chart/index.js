@@ -6,6 +6,9 @@ import resolveOptions from './resolve-options';
 import resolveDatasets from './resolve-datasets';
 import './styles.css';
 
+/**
+* The Chart components are based on Charts.js an open source HTML5 based charting library.
+*/
 export default class Chart extends Component {
     constructor(props) {
         super(props);
@@ -66,7 +69,7 @@ export default class Chart extends Component {
 }
 
 Chart.propTypes = {
-    /** The type of chart to draw */
+    /** The type of chart to draw. */
     type: PropTypes.oneOf([
         'bar',
         'horizontalBar',
@@ -77,13 +80,13 @@ Chart.propTypes = {
         'polarArea',
         'bubble',
     ]).isRequired,
-    /** Defines the names of the sections for the corresponding values */
+    /** Defines the names of the sections for the corresponding values. */
     labels: PropTypes.arrayOf(PropTypes.string).isRequired,
-    /** Determines whether to show the stacked bars in a bar chart */
+    /** Determines whether to show the stacked bars in a bar chart. */
     showStacked: PropTypes.bool,
-    /** Defines if the legend is shown */
+    /** Defines if the legend is shown. */
     showLegend: PropTypes.bool,
-    /** The position of the legend */
+    /** The position of the legend. */
     legendPosition: PropTypes.oneOf([
         'top',
         'bottom',
@@ -92,13 +95,13 @@ Chart.propTypes = {
     ]),
     /** Determines whether it should perform animations when rendering the chart,
      * this would improve general performance
-     * and is recommended for high data volumes charts */
+     * and is recommended for high data volumes charts. */
     disableAnimations: PropTypes.bool,
     /** Determines whether to draw the lines that join the dots in a line chart,
-     * is recommended for high data volumes charts */
+     * is recommended for high data volumes charts. */
     disableLines: PropTypes.bool,
     /** Determines whether the lines that join the dots in a
-     * line chart should be curved or straight  */
+     * line chart should be curved or straight.  */
     disableCurves: PropTypes.bool,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,

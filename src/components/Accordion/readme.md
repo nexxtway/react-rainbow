@@ -1,10 +1,5 @@
 ##### accordion base
 
-    <FeatureList />
-    
-
-##### accordion base
-
     <div className="rainbow-m-around_xx-large">
         <Card>
             <Accordion id="accordion-1">
