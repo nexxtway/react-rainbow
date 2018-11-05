@@ -1,0 +1,60 @@
+.react-rainbow-feature-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-top: 48px;
+}
+
+.react-rainbow-feature-list_item {
+    width: 240px;
+    padding-bottom: 64px;
+    margin-right: 24px;
+}
+
+.react-rainbow-feature-list_item-image {
+    height: 100px;
+}
+
+.react-rainbow-feature-list_item-title {
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    color: #061c3f;
+    padding-top: 32px;
+}
+
+.react-rainbow-feature-list_item-description {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.5;
+    color: #576574;
+    padding-top: 12px;
+}
+
+@media (max-width: 1024px) {
+    .react-rainbow-feature-list_item {
+        width: 50%;
+        padding-bottom: 64px;
+        margin-right: 0;
+        padding-right: 24px;
+    }
+}
+
+@media (max-width: 600px) {
+    .react-rainbow-feature-list {
+        display: flex;
+        justify-content: center;
+        padding-top: 24px;
+    }
+
+    .react-rainbow-feature-list_item {
+        width: 100%;
+        padding: 0 16px 48px 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .react-rainbow-feature-list_item-title, .react-rainbow-feature-list_item-description {
+        text-align: center;
+    }
+}
