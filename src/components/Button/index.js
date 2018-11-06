@@ -158,7 +158,7 @@ Button.propTypes = {
     tabIndex: PropTypes.number,
     /** The action triggered when the element is clicked. */
     onClick: PropTypes.func,
-    /** The action that will be run when a keyboard key is pressed. */
+    /** The action triggered when a keyboard key is pressed. */
     onKeyDown: PropTypes.func,
     /** The action triggered when the element receives focus. */
     onFocus: PropTypes.func,
@@ -174,7 +174,7 @@ Button.propTypes = {
     ariaExpanded: PropTypes.bool,
     /** Indicates that the element has been pressed. */
     ariaPressed: PropTypes.bool,
-    /** Indicates the id associated to the form element. */
+    /** It must be the id attribute of a form element that the button is associated */
     form: PropTypes.string,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
