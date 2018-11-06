@@ -111,15 +111,15 @@ Button.propTypes = {
     label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
-    /** The content of the button. Used to render icon or text elements inside the button.
-    * Children takes precedence over label. */
+    /** The content of the button, used to render icon or text elements inside the button.
+    * Children take precedence over label. */
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
         PropTypes.object,
     ]),
     /** The variant changes the appearance of the button.
     * Accepted variants include base, neutral, brand, outline-brand, destructive,
-    * success, inverse and border-inverse. This value defaults to base. */
+    * success, inverse and border-inverse. */
     variant: PropTypes.oneOf([
         'base',
         'neutral',
@@ -130,19 +130,17 @@ Button.propTypes = {
         'inverse',
         'border-inverse',
     ]),
-    /** Specify true when the button has a shadow around it.
-    * This value defaults to false.
+    /** Specifies true when the button has a shadow around it.
     * Only neutral, brand, destructive and success variant can be shaded. */
     shaded: PropTypes.bool,
     /** Displays tooltip text when the mouse moves over the element. */
     title: PropTypes.string,
-    /** Specifies the type of button. Valid values are button, reset, and submit.
-    * This value defaults to button. */
+    /** Specifies the type of button. Valid values are button, reset, and submit. */
     type: PropTypes.oneOf([
         'button', 'submit', 'reset',
     ]),
     /** Specifies whether this button should be displayed in a disabled state.
-    * Disabled buttons can't be clicked. This value defaults to false. */
+    * Disabled buttons can't be clicked. */
     disabled: PropTypes.bool,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
     tabIndex: PropTypes.number,
@@ -160,7 +158,7 @@ Button.propTypes = {
     style: PropTypes.object,
     /** The id of the outer element. */
     id: PropTypes.string,
-    /** If is set to true, then is showed a loading symbol. */
+    /** If it is set to true, then a loading symbol is displayed. */
     isLoading: PropTypes.bool,
 };
 
