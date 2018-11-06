@@ -4,53 +4,11 @@ import Button from './../index';
 import Spinner from '../../Spinner';
 
 describe('<Button/>', () => {
-    it('should call onClick function when someone click over', () => {
-        const onClickMockFn = jest.fn();
+    it('should be focusable', () => {
         const component = mount(
-            <Button label="Button label" onClick={onClickMockFn} />,
+            <Button label="button label" />,
         );
-
-        component.simulate('click');
-        expect(onClickMockFn.mock.calls.length).toBe(1);
-    });
-    it('should call onBlur function when it lost the focus', () => {
-        const onBlurMockFn = jest.fn();
-        const component = mount(
-            <Button label="Button label" onBlur={onBlurMockFn} />,
-        );
-
-        component.simulate('blur');
-        expect(onBlurMockFn.mock.calls.length).toBe(1);
-    });
-    it('should call onFocus function when it gets the focus', () => {
-        const onFocusMockFn = jest.fn();
-        const component = mount(
-            <Button label="Button label" onFocus={onFocusMockFn} />,
-        );
-
-        component.simulate('focus');
-        expect(onFocusMockFn.mock.calls.length).toBe(1);
-    });
-    it('should be defined the click method', () => {
-        const component = mount(
-            <Button label="OK" />,
-        );
-
-        expect(typeof component.instance().click).toBe('function');
-    });
-    it('should be defined the focus method', () => {
-        const component = mount(
-            <Button label="OK" />,
-        );
-
-        expect(typeof component.instance().focus).toBe('function');
-    });
-    it('should be defined the blur method', () => {
-        const component = mount(
-            <Button label="OK" />,
-        );
-
-        expect(typeof component.instance().blur).toBe('function');
+        expect(component).toBeFocusable();
     });
     it('should focus the button when the focus method is called', () => {
         const component = mount(
