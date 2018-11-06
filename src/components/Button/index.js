@@ -80,6 +80,11 @@ export default class Button extends Component {
             id,
             isLoading,
             variant,
+            ariaPressed,
+            ariaControls,
+            ariaExpanded,
+            onKeyDown,
+            form,
         } = this.props;
 
         return (
@@ -96,6 +101,11 @@ export default class Button extends Component {
                 title={title}
                 type={type}
                 aria-haspopup={ariaHaspopup}
+                aria-controls={ariaControls}
+                aria-expanded={ariaExpanded}
+                aria-pressed={ariaPressed}
+                onKeyDown={onKeyDown}
+                form={form}
                 ref={this.buttonRef} >
 
                 <Content variant={variant} label={label} isLoading={isLoading}>
@@ -146,12 +156,24 @@ Button.propTypes = {
     tabIndex: PropTypes.number,
     /** The action triggered when the element is clicked. */
     onClick: PropTypes.func,
+    /** The action triggered when a keyboard key is pressed. */
+    onKeyDown: PropTypes.func,
     /** The action triggered when the element receives focus. */
     onFocus: PropTypes.func,
     /** The action triggered when the element releases focus. */
     onBlur: PropTypes.func,
     /** Indicates that the element has a popup context menu or sub-level menu. */
     ariaHaspopup: PropTypes.bool,
+    /** A space-separated list of element IDs that
+    * this button controls the contents or presence of. */
+    ariaControls: PropTypes.string,
+    /** Indicates whether an element the button controls is expanded or collapsed.
+    * Valid values are 'true' or 'false'. */
+    ariaExpanded: PropTypes.bool,
+    /** Indicates that the element has been pressed. */
+    ariaPressed: PropTypes.bool,
+    /** It must be the id attribute of a form element that the button is associated with. */
+    form: PropTypes.string,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
@@ -172,6 +194,7 @@ Button.defaultProps = {
     disabled: false,
     tabIndex: undefined,
     onClick: () => {},
+    onKeyDown: () => {},
     onFocus: () => {},
     onBlur: () => {},
     ariaHaspopup: false,
@@ -179,4 +202,8 @@ Button.defaultProps = {
     style: undefined,
     id: undefined,
     isLoading: false,
+    ariaPressed: false,
+    ariaControls: undefined,
+    ariaExpanded: false,
+    form: undefined,
 };
