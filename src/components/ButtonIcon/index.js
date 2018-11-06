@@ -76,6 +76,8 @@ export default class ButtonIcon extends Component {
             ariaControls,
             ariaExpanded,
             icon,
+            onKeyDown,
+            form,
         } = this.props;
 
         return (
@@ -95,6 +97,8 @@ export default class ButtonIcon extends Component {
                 aria-controls={ariaControls}
                 aria-expanded={ariaExpanded}
                 aria-pressed={ariaPressed}
+                onKeyDown={onKeyDown}
+                form={form}
                 ref={this.buttonRef} >
 
                 {icon}
@@ -148,6 +152,8 @@ ButtonIcon.propTypes = {
     tabIndex: PropTypes.number,
     /** The action that will be run when the button is clicked. */
     onClick: PropTypes.func,
+    /** The action that will be run when a keyboard key is pressed. */
+    onKeyDown: PropTypes.func,
     /** The action triggered when the element receives focus. */
     onFocus: PropTypes.func,
     /** The action triggered when the element releases focus. */
@@ -164,6 +170,8 @@ ButtonIcon.propTypes = {
     ariaHaspopup: PropTypes.bool,
     /** Indicates that the element has been pressed. */
     ariaPressed: PropTypes.bool,
+    /** Indicates the id associated to the form element. */
+    form: PropTypes.string,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
@@ -181,6 +189,7 @@ ButtonIcon.defaultProps = {
     disabled: false,
     tabIndex: undefined,
     onClick: () => {},
+    onKeyDown: () => {},
     onFocus: () => {},
     onBlur: () => {},
     assistiveText: undefined,
@@ -191,4 +200,5 @@ ButtonIcon.defaultProps = {
     id: undefined,
     ariaControls: undefined,
     ariaExpanded: false,
+    form: undefined,
 };
