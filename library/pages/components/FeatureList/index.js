@@ -24,44 +24,44 @@ export default function FeatureList(props) {
             <Item
                 className="react-rainbow-feature-list_item"
                 image={<Components />}
-                title="40+ Components"
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore." />
+                title="40+ components"
+                description="More than 40 components build on top of React." />
 
             <Item
                 className="react-rainbow-feature-list_item"
                 image={<InteractiveExamples />}
-                title="Interactive Examples"
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore." />
+                title="Interactive examples"
+                description="Proper documentation based on interactive examples to help you understand the features of each component." />
 
             <Item
                 className="react-rainbow-feature-list_item"
                 image={<Testing />}
-                title="100% Testing"
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore." />
+                title="First class testing"
+                description="Our components are test infected. We like to test our components as much as possible." />
 
             <Item
                 className="react-rainbow-feature-list_item"
                 image={<Internationalization />}
                 title="Internationalization"
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore." />
+                description="We designed each component with i19n in mind. Any new component or feature we may add in the future, have to be able to work fully in different locales." />
 
             <Item
                 className="react-rainbow-feature-list_item"
                 image={<Accesibility />}
                 title="Accesibility"
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore." />
+                description="Accessibility is part of our definition of done. It's a must have for each component." />
 
             <Item
                 className="react-rainbow-feature-list_item"
                 image={<PageObject />}
-                title="Page Object Integration"
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore." />
+                title="Wdio page objects"
+                description="We know how important for you is to test your UI. Our npm package provides webdrive.io page object for almost every component." />
 
             <Item
                 className="react-rainbow-feature-list_item"
                 image={<ReduxForm />}
-                title="Redux-Form Integration"
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore." />
+                title="Redux-Form integration"
+                description="Our inputable components work seamlessly with redux-form." />
         </div>
     );
 }
