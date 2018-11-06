@@ -1,6 +1,6 @@
 {
     "name": "react-rainbow-components",
-    "version": "0.6.1",
+    "version": "0.7.0",
     "description": "React Rainbow Components",
     "keywords": [
         "react",
@@ -38,9 +38,7 @@
         "prop-types": "^15.6.2",
         "react": "^16.4.2",
         "react-async-script-loader": "^0.3.0",
-        "react-dom": "^16.4.2",
-        "react-ga": "^2.5.3",
-        "react-prismic-cms": "^0.2.0"
+        "react-dom": "^16.4.2"
     },
     "main": "components/index.js",
     "files": [
@@ -130,7 +128,9 @@
         "wdio-selenium-standalone-service": "0.0.10",
         "wdio-spec-reporter": "^0.1.5",
         "webdriverio": "^4.13.2",
-        "webpack": "^4.16.5"
+        "webpack": "^4.16.5",
+        "react-ga": "^2.5.3",
+        "react-prismic-cms": "^0.2.0"
     },
     "pre-push": [
         "lint",
