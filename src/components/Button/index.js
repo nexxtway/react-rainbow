@@ -174,7 +174,7 @@ Button.propTypes = {
     ariaExpanded: PropTypes.bool,
     /** Indicates that the element has been pressed. */
     ariaPressed: PropTypes.bool,
-    /** It must be the id attribute of a form element that the button is associated */
+    /** It must be the id attribute of a form element that the button is associated with. */
     form: PropTypes.string,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
