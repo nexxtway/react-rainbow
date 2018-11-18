@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Avatar from './../Avatar';
-import RightArrow from './rightArrow';
 import './styles.css';
 
 export default class AvatarButton extends Component {
@@ -49,49 +48,33 @@ export default class AvatarButton extends Component {
             icon,
             avatarSize,
             initialsVariant,
-            isOpen,
         } = this.props;
 
         return (
-            <div className="rainbow-avatar-menu_wrapper">
-                <button
-                    className="rainbow-avatar-menu_button"
-                    data-id="rainbow-avatar-menu_button"
-                    tabIndex={tabIndex}
-                    onFocus={onFocus}
-                    onBlur={onBlur}
-                    disabled={disabled}
-                    onClick={onClick}
-                    title={title}
-                    aria-haspopup={ariaHaspopup}
-                    ref={this.avatarButtonRef} >
+            <button
+                className="rainbow-avatar-menu_button"
+                data-id="rainbow-avatar-menu_button"
+                tabIndex={tabIndex}
+                onFocus={onFocus}
+                onBlur={onBlur}
+                disabled={disabled}
+                onClick={onClick}
+                title={title}
+                aria-haspopup={ariaHaspopup}
+                ref={this.avatarButtonRef} >
 
-                    <Avatar
-                        src={src}
-                        icon={icon}
-                        initials={initials}
-                        size={avatarSize}
-                        initialsVariant={initialsVariant}
-                        title={title}
-                        assistiveText={assistiveText}
-                        ariaHaspopup
-                        onFocus={onFocus}
-                        onBlur={onBlur} />
-                </button>
-                <button
-                    className="rainbow-avatar-menu_right-arrow-button"
-                    data-id="rainbow-avatar-menu_right-arrow-button"
-                    tabIndex={-1}
-                    onFocus={onFocus}
-                    onBlur={onBlur}
-                    disabled={disabled}
-                    onClick={onClick}
+                <Avatar
+                    src={src}
+                    icon={icon}
+                    initials={initials}
+                    size={avatarSize}
+                    initialsVariant={initialsVariant}
                     title={title}
-                    aria-haspopup={ariaHaspopup} >
-
-                    <RightArrow isOpen={isOpen} />
-                </button>
-            </div>
+                    assistiveText={assistiveText}
+                    ariaHaspopup
+                    onFocus={onFocus}
+                    onBlur={onBlur} />
+            </button>
         );
     }
 }
@@ -117,7 +100,6 @@ AvatarButton.propTypes = {
     initialsVariant: PropTypes.oneOf([
         'default', 'inverse',
     ]),
-    isOpen: PropTypes.bool,
 };
 
 AvatarButton.defaultProps = {
@@ -134,5 +116,4 @@ AvatarButton.defaultProps = {
     icon: null,
     avatarSize: 'medium',
     initialsVariant: 'default',
-    isOpen: false,
 };
