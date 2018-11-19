@@ -10,12 +10,6 @@
     -o-transition: $animation;
 }
 
-.rainbow-avatar-menu_wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .rainbow-avatar-menu_button {
     background-color: transparent;
     padding: 0;
@@ -47,25 +41,4 @@
     .rainbow-avatar_initials {
         cursor: pointer;
     }
-}
-
-.rainbow-avatar-menu_right-arrow-button {
-    background-color: transparent;
-    padding: 0;
-    margin-left: 0.5rem;
-    border: 0;
-    outline: none;
-    border-radius: $border-radius-2;
-}
-
-.rainbow-avatar-menu_right-arrow_icon {
-    transform: rotate(0deg);
-
-    @include animation-properties(transform 0.15s linear);
-}
-
-.rainbow-avatar-menu_right-arrow_icon--open {
-    transform: rotate(-180deg);
-
-    @include animation-properties(transform 0.15s linear);
 }
