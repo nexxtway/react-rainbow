@@ -47,6 +47,10 @@ export default class Modal extends Component {
         }
     }
 
+    componentWillUnmount() {
+        document.body.style.overflow = 'inherit';
+    }
+
     getBackDropClassNames() {
         const { isOpen } = this.props;
         return classnames('rainbow-modal_backdrop', { 'rainbow-modal_backdrop--open': isOpen });

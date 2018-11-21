@@ -123,4 +123,21 @@ describe('<Modal/>', () => {
         component.find('div[role="presentation"]').simulate('keyDown', { keyCode: 27 });
         expect(closeMockFn).toHaveBeenCalledTimes(1);
     });
+    it('should set body overflow style to hidden when modal is open', () => {
+        mount(
+            <Modal isOpen>
+                <p />
+            </Modal>,
+        );
+        expect(document.body.style.overflow).toBe('hidden');
+    });
+    it('should set body overflow style to inherit when component unmounts', () => {
+        const component = mount(
+            <Modal isOpen>
+                <p />
+            </Modal>,
+        );
+        component.unmount();
+        expect(document.body.style.overflow).toBe('inherit');
+    });
 });
