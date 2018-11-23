@@ -136,6 +136,7 @@ Input.defaultProps = {
     value: undefined,
     type: 'text',
     label: null,
+    name: undefined,
     placeholder: null,
     icon: undefined,
     iconPosition: 'left',
