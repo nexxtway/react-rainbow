@@ -4,12 +4,6 @@ import Button from './../index';
 import Spinner from '../../Spinner';
 
 describe('<Button/>', () => {
-    it('should be focusable', () => {
-        const component = mount(
-            <Button label="button label" />,
-        );
-        expect(component).toBeFocusable();
-    });
     it('should focus the button when the focus method is called', () => {
         const component = mount(
             <Button label="OK" />,
