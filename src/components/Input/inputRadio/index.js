@@ -76,6 +76,7 @@ export default class InputRadio extends Component {
             onClick,
             bottomHelpText,
             id,
+            name,
         } = this.props;
 
         return (
@@ -83,6 +84,7 @@ export default class InputRadio extends Component {
                 <span className="rainbow-input-radio_inner-container">
                     <input
                         id={this.inputId}
+                        name={name}
                         type="radio"
                         value={value}
                         onChange={onChange}
@@ -116,6 +118,7 @@ InputRadio.propTypes = {
     label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
+    name: PropTypes.string,
     bottomHelpText: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
@@ -136,6 +139,7 @@ InputRadio.propTypes = {
 InputRadio.defaultProps = {
     value: undefined,
     label: null,
+    name: undefined,
     bottomHelpText: null,
     error: null,
     disabled: false,
