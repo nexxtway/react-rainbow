@@ -15,7 +15,7 @@ class RadioGroup extends Component {
     constructor(props) {
         super(props);
         this.errorId = uniqueId('error-message');
-        this.groupNameId = uniqueId('options');
+        this.groupNameId = props.name || uniqueId('options');
     }
 
     getContainerClassNames() {
@@ -80,6 +80,8 @@ RadioGroup.propTypes = {
     label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
+    /** The name of the radio group */
+    name: PropTypes.string,
     /** The value of the element. */
     value: PropTypes.string,
     /** The action triggered when a value attribute changes. */
@@ -110,6 +112,7 @@ RadioGroup.propTypes = {
 
 RadioGroup.defaultProps = {
     label: null,
+    name: PropTypes.string,
     className: undefined,
     style: undefined,
     value: undefined,

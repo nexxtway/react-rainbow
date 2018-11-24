@@ -59,6 +59,7 @@ export default class Slider extends Component {
         const {
             label,
             value,
+            name,
             min,
             max,
             step,
@@ -78,6 +79,7 @@ export default class Slider extends Component {
                         id={this.sliderId}
                         className="rainbow-slider_range"
                         type="range"
+                        name={name}
                         value={value}
                         min={min}
                         max={max}
@@ -106,6 +108,7 @@ Slider.propTypes = {
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The numerical value of the slider. This value defaults to 0. */
     value: PropTypes.string,
+    name: PropTypes.string,
     /** The min value of the slider. This value defaults to 0. */
     min: PropTypes.string,
     /** The max value of the slider. This value defaults to 100. */
@@ -134,6 +137,7 @@ Slider.propTypes = {
 Slider.defaultProps = {
     label: null,
     value: undefined,
+    name: undefined,
     min: 0,
     max: 100,
     step: 1,

@@ -107,6 +107,7 @@ export default class InputBase extends Component {
             bottomHelpText,
             required,
             id,
+            name,
         } = this.props;
 
         return (
@@ -127,6 +128,7 @@ export default class InputBase extends Component {
 
                     <input
                         id={this.inputId}
+                        name={name}
                         type={type}
                         className={this.getInputClassNames()}
                         value={value}
@@ -160,6 +162,7 @@ export default class InputBase extends Component {
 
 InputBase.propTypes = {
     value: PropTypes.string,
+    name: PropTypes.string,
     type: PropTypes.oneOf([
         'text',
         'password',
@@ -210,6 +213,7 @@ InputBase.propTypes = {
 
 InputBase.defaultProps = {
     value: undefined,
+    name: undefined,
     type: 'text',
     label: null,
     placeholder: null,
