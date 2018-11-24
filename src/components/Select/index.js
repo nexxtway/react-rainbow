@@ -63,6 +63,7 @@ class Select extends Component {
             options,
             style,
             id,
+            name,
         } = this.props;
 
         return (
@@ -77,6 +78,7 @@ class Select extends Component {
                     <select
                         className="rainbow-select"
                         id={this.selectId}
+                        name={name}
                         onChange={onChange}
                         onFocus={onFocus}
                         onBlur={onBlur}
@@ -102,6 +104,8 @@ Select.propTypes = {
     label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
+    /** The name of the select */
+    name: PropTypes.string,
     /** Specifies the selected value. */
     value: PropTypes.string,
     /** The action triggered when a option item is selected. */
@@ -142,6 +146,7 @@ Select.propTypes = {
 Select.defaultProps = {
     label: null,
     value: undefined,
+    name: undefined,
     onChange: () => {},
     onClick: () => {},
     onFocus: () => {},

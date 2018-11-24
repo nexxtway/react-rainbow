@@ -93,4 +93,51 @@ describe('<Modal/>', () => {
         );
         expect(component.find('section[role="dialog"]').prop('aria-hidden')).toBe(false);
     });
+    it('should fire an event when the close button is clicked and the modal is open', () => {
+        const closeMockFn = jest.fn();
+        const component = mount(
+            <Modal isOpen onRequestClose={closeMockFn}>
+                <p />
+            </Modal>,
+        );
+        component.find('ButtonIcon').simulate('click');
+        expect(closeMockFn).toHaveBeenCalledTimes(1);
+    });
+    it('should fire an event when the modal backdrop is clicked and the modal is open', () => {
+        const closeMockFn = jest.fn();
+        const component = mount(
+            <Modal isOpen onRequestClose={closeMockFn}>
+                <p />
+            </Modal>,
+        );
+        component.find('div[role="presentation"]').simulate('click');
+        expect(closeMockFn).toHaveBeenCalledTimes(1);
+    });
+    it('should fire an event when the ESC key is pressed and the modal is open', () => {
+        const closeMockFn = jest.fn();
+        const component = mount(
+            <Modal isOpen onRequestClose={closeMockFn}>
+                <p />
+            </Modal>,
+        );
+        component.find('div[role="presentation"]').simulate('keyDown', { keyCode: 27 });
+        expect(closeMockFn).toHaveBeenCalledTimes(1);
+    });
+    it('should set body overflow style to hidden when modal is open', () => {
+        mount(
+            <Modal isOpen>
+                <p />
+            </Modal>,
+        );
+        expect(document.body.style.overflow).toBe('hidden');
+    });
+    it('should set body overflow style to inherit when component unmounts', () => {
+        const component = mount(
+            <Modal isOpen>
+                <p />
+            </Modal>,
+        );
+        component.unmount();
+        expect(document.body.style.overflow).toBe('inherit');
+    });
 });

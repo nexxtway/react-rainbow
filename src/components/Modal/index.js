@@ -31,6 +31,8 @@ export default class Modal extends Component {
     componentDidMount() {
         const { isOpen } = this.props;
         if (isOpen) {
+            document.body.style.overflow = 'hidden';
+            this.modalTriggerElement = document.activeElement;
             this.modalRef.current.focus();
         }
     }
@@ -43,6 +45,10 @@ export default class Modal extends Component {
             this.modalTriggerElement = document.activeElement;
             this.modalRef.current.focus();
         }
+    }
+
+    componentWillUnmount() {
+        document.body.style.overflow = 'inherit';
     }
 
     getBackDropClassNames() {
@@ -90,7 +96,9 @@ export default class Modal extends Component {
 
     closeModal() {
         const { onRequestClose } = this.props;
-        this.modalTriggerElement.focus();
+        if (this.modalTriggerElement) {
+            this.modalTriggerElement.focus();
+        }
         return onRequestClose();
     }
 
