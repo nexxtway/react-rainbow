@@ -130,6 +130,9 @@ Input.propTypes = {
     style: PropTypes.object,
     /** The id of the outer element. */
     id: PropTypes.string,
+    /** A string indicating the type of autocomplete functionality.
+    * If any, to allow on the input. */
+    autoComplete: PropTypes.string,
 };
 
 Input.defaultProps = {
@@ -158,6 +161,7 @@ Input.defaultProps = {
     className: undefined,
     style: undefined,
     id: undefined,
+    autoComplete: 'on',
 };
 
 export default withReduxForm(Input);

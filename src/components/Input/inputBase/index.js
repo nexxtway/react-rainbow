@@ -107,6 +107,7 @@ export default class InputBase extends Component {
             bottomHelpText,
             required,
             id,
+            autoComplete,
             name,
         } = this.props;
 
@@ -144,6 +145,7 @@ export default class InputBase extends Component {
                         maxLength={maxLength}
                         minLength={minLength}
                         pattern={pattern}
+                        autoComplete={autoComplete}
                         aria-labelledby={this.getInlineTextLabelId()}
                         aria-describedby={this.getErrorMessageId()}
                         ref={this.inputRef} />
@@ -209,6 +211,7 @@ InputBase.propTypes = {
     className: PropTypes.string,
     style: PropTypes.object,
     id: PropTypes.string,
+    autoComplete: PropTypes.string,
 };
 
 InputBase.defaultProps = {
@@ -237,4 +240,5 @@ InputBase.defaultProps = {
     className: undefined,
     style: undefined,
     id: undefined,
+    autoComplete: 'on',
 };
