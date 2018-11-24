@@ -80,7 +80,7 @@ CheckboxGroup.propTypes = {
     options: PropTypes.arrayOf(PropTypes.shape({
         label: PropTypes.oneOfType([
             PropTypes.string, PropTypes.node,
-        ]),
+        ]).isRequired,
         value: PropTypes.string,
         disabled: PropTypes.bool,
     })),

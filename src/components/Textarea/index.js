@@ -98,12 +98,14 @@ class Textarea extends Component {
             required,
             rows,
             id,
+            hideLabel,
         } = this.props;
 
         return (
             <div className={this.getContainerClassNames()} style={style} id={id}>
                 <Label
                     label={label}
+                    hideLabel={hideLabel}
                     required={required}
                     textareaId={this.textareaId}
                     readOnly={readOnly}
@@ -144,7 +146,9 @@ Textarea.propTypes = {
     /** Text that describes the desired textarea input. */
     label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
-    ]),
+    ]).isRequired,
+    /** A boolean to hide the textarea label */
+    hideLabel: PropTypes.bool,
     /** The value of the textarea, also used as the default value during init. */
     value: PropTypes.string,
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
@@ -191,7 +195,6 @@ Textarea.propTypes = {
 };
 
 Textarea.defaultProps = {
-    label: null,
     value: undefined,
     placeholder: null,
     maxLength: undefined,
@@ -211,6 +214,7 @@ Textarea.defaultProps = {
     className: undefined,
     style: undefined,
     id: undefined,
+    hideLabel: false,
 };
 
 export default withReduxForm(Textarea);

@@ -78,7 +78,9 @@ Input.propTypes = {
     /** Text label for the input. */
     label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
-    ]),
+    ]).isRequired,
+    /** A boolean to hide the input label. */
+    hideLabel: PropTypes.bool,
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
     placeholder: PropTypes.string,
     /** The icon to show if it is passed. It must be a svg icon or a font icon. */
@@ -138,7 +140,6 @@ Input.propTypes = {
 Input.defaultProps = {
     value: undefined,
     type: 'text',
-    label: null,
     name: undefined,
     placeholder: null,
     icon: undefined,
@@ -162,6 +163,7 @@ Input.defaultProps = {
     style: undefined,
     id: undefined,
     autoComplete: 'on',
+    hideLabel: false,
 };
 
 export default withReduxForm(Input);

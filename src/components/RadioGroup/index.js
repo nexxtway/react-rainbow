@@ -93,7 +93,7 @@ RadioGroup.propTypes = {
         PropTypes.shape({
             label: PropTypes.oneOfType([
                 PropTypes.string, PropTypes.node,
-            ]),
+            ]).isRequired,
             value: PropTypes.string,
             disabled: PropTypes.bool,
         }),
@@ -112,7 +112,7 @@ RadioGroup.propTypes = {
 
 RadioGroup.defaultProps = {
     label: null,
-    name: PropTypes.string,
+    name: null,
     className: undefined,
     style: undefined,
     value: undefined,

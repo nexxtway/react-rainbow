@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import RenderIf from '../../RenderIf';
 
 export default function Label(props) {
     const {
@@ -16,23 +15,20 @@ export default function Label(props) {
     });
 
     return (
-        <RenderIf isTrue={!!label}>
-            <label className="rainbow-input-radio_label-container" htmlFor={inputId} id={id}>
-                <span className="rainbow-input-radio_faux" />
-                <span className={getLabelClassNames()}>{label}</span>
-            </label>
-        </RenderIf>
+        <label className="rainbow-input-radio_label-container" htmlFor={inputId} id={id}>
+            <span className="rainbow-input-radio_faux" />
+            <span className={getLabelClassNames()}>{label}</span>
+        </label>
     );
 }
 
 Label.propTypes = {
-    label: PropTypes.node,
+    label: PropTypes.node.isRequired,
     inputId: PropTypes.string.isRequired,
     disabled: PropTypes.bool.isRequired,
     id: PropTypes.string,
 };
 
 Label.defaultProps = {
-    label: null,
     id: undefined,
 };

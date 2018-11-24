@@ -74,6 +74,8 @@
                     actions={<Button variant="neutral" label="New" />} >
                         <div className="rainbow-p-bottom_large">
                             <Input
+                                label="aplication component search"
+                                hideLabel
                                 placeholder="Search"
                                 icon={<FontAwesomeIcon icon={faSearch} className="rainbow-color_gray-3" />}
                                 type="search"

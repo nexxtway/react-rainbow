@@ -117,7 +117,7 @@ InputCheckbox.propTypes = {
     value: PropTypes.string,
     label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
-    ]),
+    ]).isRequired,
     name: PropTypes.string,
     bottomHelpText: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
@@ -138,7 +138,6 @@ InputCheckbox.propTypes = {
 
 InputCheckbox.defaultProps = {
     value: undefined,
-    label: null,
     name: undefined,
     bottomHelpText: null,
     error: null,
