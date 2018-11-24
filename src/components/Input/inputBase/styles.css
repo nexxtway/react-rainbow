@@ -119,6 +119,18 @@
 .rainbow-input--error .rainbow-input_icon-container.rainbow-input_icon--left .rainbow-input {
   padding-left: 2.35rem; }
 
+.rainbow-input_label--hide-label {
+  position: absolute !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  text-transform: none !important;
+  white-space: nowrap !important; }
+
 .rainbow-input[type="datetime"]:focus,
 .rainbow-input[type="datetime"]:active,
 .rainbow-input[type="date"]:focus,

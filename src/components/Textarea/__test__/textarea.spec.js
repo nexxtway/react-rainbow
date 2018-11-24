@@ -74,6 +74,7 @@ describe('<Textarea/>', () => {
             label: 'custom label',
             required: true,
             readOnly: false,
+            hideLabel: false,
             textareaId: expect.any(String),
         });
     });

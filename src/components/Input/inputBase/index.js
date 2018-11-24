@@ -109,12 +109,14 @@ export default class InputBase extends Component {
             id,
             autoComplete,
             name,
+            hideLabel,
         } = this.props;
 
         return (
             <div id={id} className={this.getContainerClassNames()} style={style}>
                 <Label
                     label={label}
+                    hideLabel={hideLabel}
                     required={required}
                     inputId={this.inputId}
                     readOnly={readOnly}
@@ -183,7 +185,7 @@ InputBase.propTypes = {
     ]),
     label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
-    ]),
+    ]).isRequired,
     placeholder: PropTypes.string,
     icon: PropTypes.node,
     iconPosition: PropTypes.oneOf([
@@ -212,13 +214,13 @@ InputBase.propTypes = {
     style: PropTypes.object,
     id: PropTypes.string,
     autoComplete: PropTypes.string,
+    hideLabel: PropTypes.bool,
 };
 
 InputBase.defaultProps = {
     value: undefined,
     name: undefined,
     type: 'text',
-    label: null,
     placeholder: null,
     icon: undefined,
     iconPosition: 'left',
@@ -241,4 +243,5 @@ InputBase.defaultProps = {
     style: undefined,
     id: undefined,
     autoComplete: 'on',
+    hideLabel: false,
 };

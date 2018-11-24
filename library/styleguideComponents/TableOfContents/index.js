@@ -61,6 +61,8 @@ export default class TableOfContents extends Component {
             <div>
                 <div className="rainbow-p-top_large rainbow-p-bottom_medium rainbow-p-horizontal_large">
                     <Input
+                        label="components filter"
+                        hideLabel
                         iconName="utility:search"
                         value={searchTerm}
                         placeholder="Filter by name"

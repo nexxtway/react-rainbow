@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import RequiredAsterisk from '../RequiredAsterisk';
-import RenderIf from '../RenderIf';
 
 export default function Label(props) {
     const {
@@ -10,33 +10,36 @@ export default function Label(props) {
         textareaId,
         id,
         readOnly,
+        hideLabel,
     } = props;
 
-    return (
-        <RenderIf isTrue={!!label}>
-            <label
-                className="rainbow-textarea_label"
-                htmlFor={textareaId}
-                id={id}
-                readOnly={readOnly}>
+    const getLabelClassNames = () => classnames('rainbow-textarea_label', {
+        'rainbow-textarea_label--hide-label': hideLabel,
+    });
 
-                    <RequiredAsterisk required={required} />
-                    {label}
-            </label>
-        </RenderIf>
+    return (
+        <label
+            className={getLabelClassNames()}
+            htmlFor={textareaId}
+            id={id}
+            readOnly={readOnly}>
+                <RequiredAsterisk required={required} />
+                {label}
+        </label>
     );
 }
 
 Label.propTypes = {
-    label: PropTypes.node,
+    label: PropTypes.node.isRequired,
     required: PropTypes.bool.isRequired,
     textareaId: PropTypes.string.isRequired,
     id: PropTypes.string,
     readOnly: PropTypes.bool,
+    hideLabel: PropTypes.bool,
 };
 
 Label.defaultProps = {
-    label: null,
     id: undefined,
     readOnly: false,
+    hideLabel: false,
 };

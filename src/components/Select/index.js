@@ -25,6 +25,13 @@ class Select extends Component {
         }, className);
     }
 
+    getLabelClassNames() {
+        const { hideLabel } = this.props;
+        return classnames('rainbow-select_label', {
+            'rainbow-select_label--hide-label': hideLabel,
+        });
+    }
+
     /**
      * Sets focus on the element.
      * @public
@@ -68,12 +75,10 @@ class Select extends Component {
 
         return (
             <div className={this.getContainerClassNames()} style={style} id={id}>
-                <RenderIf isTrue={!!label}>
-                    <label className="rainbow-select_label" htmlFor={this.selectId}>
-                        <RequiredAsterisk required={required} />
-                        {label}
-                    </label>
-                </RenderIf>
+                <label className={this.getLabelClassNames()} htmlFor={this.selectId}>
+                    <RequiredAsterisk required={required} />
+                    {label}
+                </label>
                 <div className="rainbow-select_inner-container" disabled={disabled}>
                     <select
                         className="rainbow-select"
@@ -103,7 +108,7 @@ Select.propTypes = {
     /** Text label for the select. */
     label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
-    ]),
+    ]).isRequired,
     /** The name of the select */
     name: PropTypes.string,
     /** Specifies the selected value. */
@@ -127,24 +132,24 @@ Select.propTypes = {
     /** Specifies that an input element should be disabled. This value defaults to false. */
     disabled: PropTypes.bool,
     /** The option items to be displayed. */
-    options: PropTypes.arrayOf(PropTypes.shape(
-        {
-            label: PropTypes.oneOfType([
-                PropTypes.string, PropTypes.node,
-            ]),
-            value: PropTypes.string,
-            disabled: PropTypes.bool,
-        })),
+    options: PropTypes.arrayOf(PropTypes.shape({
+        label: PropTypes.oneOfType([
+            PropTypes.string, PropTypes.node,
+        ]).isRequired,
+        value: PropTypes.string,
+        disabled: PropTypes.bool,
+    })),
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
     /** The id of the outer element. */
     id: PropTypes.string,
+    /** The id of the outer element. */
+    hideLabel: PropTypes.bool,
 };
 
 Select.defaultProps = {
-    label: null,
     value: undefined,
     name: undefined,
     onChange: () => {},
@@ -158,6 +163,7 @@ Select.defaultProps = {
     className: undefined,
     style: undefined,
     id: undefined,
+    hideLabel: false,
 };
 
 export default withReduxForm(Select);

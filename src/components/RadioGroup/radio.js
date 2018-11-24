@@ -54,7 +54,7 @@ export default class Radio extends Component {
 }
 
 Radio.propTypes = {
-    label: PropTypes.node,
+    label: PropTypes.node.isRequired,
     value: PropTypes.string,
     onChange: PropTypes.func,
     ariaDescribedby: PropTypes.string,
@@ -65,7 +65,6 @@ Radio.propTypes = {
 };
 
 Radio.defaultProps = {
-    label: null,
     value: undefined,
     onChange: () => {},
     ariaDescribedby: undefined,

@@ -101,6 +101,7 @@ describe('<InputBase/>', () => {
             label: 'custom label',
             required: true,
             readOnly: false,
+            hideLabel: false,
             inputId: expect.any(String),
         });
     });
