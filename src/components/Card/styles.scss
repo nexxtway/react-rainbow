@@ -20,6 +20,10 @@
     box-shadow: $shadow-4;
     overflow: hidden;
 
+    &:hover {
+        box-shadow: $shadow-2;
+    }
+
     & > .rainbow-google-map {
         .rainbow-google-map_map-container {
             border: none;
