@@ -20,6 +20,10 @@
     box-shadow: $shadow-4;
     overflow: hidden;
 
+    .rainbow-carousel-image {
+        box-shadow: none;
+    }
+
     & > .rainbow-google-map {
         .rainbow-google-map_map-container {
             border: none;
@@ -39,10 +43,6 @@
 
 .rainbow-card--with-header > .rainbow-google-map > .rainbow-google-map_map-container {
     border-radius: 0;
-}
-
-.rainbow-card .rainbow-carousel-image {
-    box-shadow: none;
 }
 
 .rainbow-card_header-container {
