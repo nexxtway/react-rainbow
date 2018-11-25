@@ -330,20 +330,11 @@
         textarea: {
             margin: '24px 0',
         },
-        modalFooter: {
-            display: 'flex',
-            justifyContent: 'flex-end',
-            marginTop: 32,
-        },
-        cancelButton: {
-            marginRight: 24,
-        },
     };
 
     function SimpleForm(props) {
         const {
             handleSubmit,
-            onRequestClose,
             reset,
             onSubmit,
         } = props;
@@ -354,7 +345,7 @@
         };
 
         return (
-            <form noValidate onSubmit={handleSubmit(submit)}>
+            <form id="redux-form-id" noValidate onSubmit={handleSubmit(submit)}>
                 <Field
                     component={Input}
                     name="subject"
@@ -368,12 +359,6 @@
                     style={styles.textarea}
                     label="Description"
                     placeholder="Enter description" />
-
-                <div style={styles.modalFooter}>
-                    <Button style={styles.cancelButton} label="Cancel" onClick={onRequestClose} />
-
-                    <Button label="Save" variant="brand" type="submit" />
-                </div>
             </form>
         );
     }
@@ -399,8 +384,8 @@
             this.state = {
                 isOpen: false,
                 initialValues: {
-                    subject: 'Fix modal bug',
-                    description: 'The modal present a bug...',
+                    subject: 'React Rainbow',
+                    description: 'React Rainbow is a collection of components that will reliably help you build your application in a snap.',
                 },
             };
             this.handleOnClick = this.handleOnClick.bind(this);
@@ -426,11 +411,17 @@
                         onClick={this.handleOnClick} />
                     <Modal
                        id="modal-3"
-                       title="Create Issue"
+                       title="Modal Header"
                        isOpen={isOpen}
-                       onRequestClose={this.handleOnClose}>
+                       onRequestClose={this.handleOnClose}
+                       footer={
+                            <div className="rainbow-flex rainbow-justify_end">
+                                <Button  form="redux-form-id" className="rainbow-m-right_large" label="Cancel" variant="neutral" onClick={this.handleOnClose} />
+                                <Button form="redux-form-id" label="Save" variant="brand" type="submit" />
+                            </div>
+                       }>
 
-                       <Form onSubmit={values => console.log(values)} onRequestClose={this.handleOnClose} initialValues={initialValues} />
+                       <Form onSubmit={values => console.log(values)} initialValues={initialValues} />
                     </Modal>
                 </div>
             );

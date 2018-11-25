@@ -8,6 +8,8 @@
   overflow: hidden; }
   .rainbow-card:hover {
     box-shadow: 0 4px 8px 0 #e3e5ed; }
+  .rainbow-card .rainbow-carousel-image {
+    box-shadow: none; }
   .rainbow-card > .rainbow-google-map .rainbow-google-map_map-container {
     border: none;
     border-radius: 0.875rem 0.875rem 0 0;
@@ -21,9 +23,6 @@
 
 .rainbow-card--with-header > .rainbow-google-map > .rainbow-google-map_map-container {
   border-radius: 0; }
-
-.rainbow-card .rainbow-carousel-image {
-  box-shadow: none; }
 
 .rainbow-card_header-container {
   display: -ms-flexbox;

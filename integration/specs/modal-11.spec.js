@@ -17,6 +17,6 @@ describe('Modal with redux form example', () => {
         modal.waitUntilClose();
         browser.click(BUTTON);
         modal.waitUntilOpen();
-        expect(browser.getValue(TITLE_INPUT)).toBe('Fix modal bug');
+        expect(browser.getValue(TITLE_INPUT)).toBe('React Rainbow');
     });
 });
