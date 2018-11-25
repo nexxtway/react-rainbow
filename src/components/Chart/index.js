@@ -7,8 +7,9 @@ import resolveDatasets from './resolve-datasets';
 import './styles.css';
 
 /**
-* The Chart components are based on Charts.js an open source HTML5 based charting library.
-*/
+ * The Chart components are based on Charts.js an open source HTML5 based charting library.
+ * You can learn more about it here:
+ */
 export default class Chart extends Component {
     constructor(props) {
         super(props);

@@ -12,6 +12,7 @@ import Card from './../../../src/components/Card';
 import TabLabel from './tabLabel';
 import Description from './description';
 import UtilsTab from './utilsTab';
+import DescriptionLink from './descriptionLink';
 import Query from './query';
 import './styles.css';
 
@@ -41,8 +42,9 @@ export default class ReactComponent extends Component {
             <Prismic repo="rainbow-doc">
                 <div className="react-rainbow-component-top-content">
                     {heading}
-                    <div className="rainbow-p-horizontal_x-large">
+                    <div className="rainbow-p-horizontal_x-large rainbow-p-top_medium">
                         <Description text={descriptionText} />
+                        <DescriptionLink name={name} />
                     </div>
                     <div className="rainbow-p-vertical_large rainbow-p-horizontal_x-large">
                         <Pathline name={name}>
