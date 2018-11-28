@@ -1,6 +1,5 @@
 import Accordion from './Accordion';
 import AccordionSection from './AccordionSection';
-import AssistiveText from './AssistiveText';
 import Avatar from './Avatar';
 import AvatarMenu from './AvatarMenu';
 import Badge from './Badge';
@@ -30,7 +29,6 @@ import ProgressStep from './ProgressStep';
 import RadioGroup from './RadioGroup';
 import Rating from './Rating';
 import ReCaptcha from './ReCaptcha';
-import RenderIf from './RenderIf';
 import Select from './Select';
 import Slider from './Slider';
 import Spinner from './Spinner';
@@ -45,7 +43,6 @@ import VerticalSectionOverflow from './VerticalSectionOverflow';
 export {
     Accordion,
     AccordionSection,
-    AssistiveText,
     Avatar,
     AvatarMenu,
     Badge,
@@ -75,7 +72,6 @@ export {
     RadioGroup,
     Rating,
     ReCaptcha,
-    RenderIf,
     Select,
     Slider,
     Spinner,
