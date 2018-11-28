@@ -20,6 +20,10 @@
     box-shadow: $shadow-4;
     overflow: hidden;
 
+    &:hover {
+        box-shadow: $shadow-5;
+    }
+
     .rainbow-carousel-image {
         box-shadow: none;
     }
