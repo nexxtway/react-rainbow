@@ -42,6 +42,7 @@ export default class CarouselCard extends Component {
         const { style } = this.props;
         const carouselCardContainerStyles = {
             height: 340,
+            width: 340,
         };
         return Object.assign({}, carouselCardContainerStyles, style);
     }
