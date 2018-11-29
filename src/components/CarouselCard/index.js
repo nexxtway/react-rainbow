@@ -38,6 +38,14 @@ export default class CarouselCard extends Component {
         return classnames('rainbow-carousel', className);
     }
 
+    getContainerStyle() {
+        const { style } = this.props;
+        const carouselCardContainerStyles = {
+            height: 340,
+        };
+        return Object.assign({}, carouselCardContainerStyles, style);
+    }
+
     setActiveItem(id) {
         this.setState({ activeItem: id, isAnimationPaused: true });
     }
@@ -76,10 +84,10 @@ export default class CarouselCard extends Component {
     }
 
     render() {
-        const { children, style, id } = this.props;
+        const { children, id } = this.props;
         const { childrenRegistred, activeItem, isAnimationPaused } = this.state;
         return (
-            <div className={this.getContainerClassName()} style={style} id={id}>
+            <div className={this.getContainerClassName()} style={this.getContainerStyle()} id={id}>
                 <span className="rainbow-carousel_autoplay">
                   <AnimationButton onClick={this.handleOnClick} isAnimationPaused={isAnimationPaused} />
                 </span>
