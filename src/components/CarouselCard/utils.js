@@ -25,3 +25,22 @@ export function insertChildOrderly(childrenRefs, childRef, nodes) {
     const newChildrenRefs = childrenRefs.concat([childRef]);
     return sortChildren(newChildrenRefs, nodes);
 }
+export function carouselCardContainerStyles(ref) {
+    if (ref && ref.parentNode) {
+        const style = {
+            width: 340,
+            height: 340,
+        };
+        const parentHeight = ref.parentNode.style.height;
+        const parentWidth = ref.parentNode.style.width;
+
+        if (parentHeight) {
+            style.height = parentHeight;
+        }
+        if (parentWidth) {
+            style.width = parentWidth;
+        }
+        return style;
+    }
+    return null;
+}

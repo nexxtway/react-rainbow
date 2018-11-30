@@ -2,6 +2,7 @@ import {
     insertChildOrderly,
     getChildTabNodes,
     getItemIndex,
+    carouselCardContainerStyles,
 } from './../utils';
 
 describe('<CarouselCard/> utils', () => {
@@ -55,6 +56,39 @@ describe('<CarouselCard/> utils', () => {
                 { indicatorID: 'indicator-3' },
             ];
             expect(getItemIndex(children, 'indicator-4')).toBe(-1);
+        });
+    });
+
+    describe('carouselCardContainerStyles', () => {
+        it('should return null if a ref is not passed', () => {
+            expect(carouselCardContainerStyles()).toBeNull();
+        });
+        it('should return an object with the parent witdh and default height when the parentNode of the ref passed does not have an height set', () => {
+            const ref = {
+                parentNode: {
+                    style: {
+                        width: 100,
+                    },
+                },
+            };
+            const carouselCardSize = { height: 340, width: 100 };
+            expect(carouselCardContainerStyles(ref)).toEqual(carouselCardSize);
+        });
+        it('should return an object with the parent height and default width when the parentNode of the ref passed does not have an width set', () => {
+            const ref = {
+                parentNode: {
+                    style: {
+                        height: 100,
+                    },
+                },
+            };
+            const carouselCardSize = { height: 100, width: 340 };
+            expect(carouselCardContainerStyles(ref)).toEqual(carouselCardSize);
+        });
+        it('should return an object with the default height and width when the parentNode of the ref passed does not have an height and width set', () => {
+            const ref = { parentNode: { style: {} } };
+            const carouselCardSize = { height: 340, width: 340 };
+            expect(carouselCardContainerStyles(ref)).toEqual(carouselCardSize);
         });
     });
 });
