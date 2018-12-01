@@ -74,7 +74,7 @@ describe('<CarouselCard/> utils', () => {
             const carouselCardSize = { height: 340, width: 100 };
             expect(carouselCardContainerStyles(ref)).toEqual(carouselCardSize);
         });
-        it('should return an object with the parent height and default width when the parentNode of the ref passed does not have an width set', () => {
+        it('should return an object with the parent height when the parentNode of the ref passed does not have an width set', () => {
             const ref = {
                 parentNode: {
                     style: {
@@ -82,12 +82,12 @@ describe('<CarouselCard/> utils', () => {
                     },
                 },
             };
-            const carouselCardSize = { height: 100, width: 340 };
+            const carouselCardSize = { height: 100 };
             expect(carouselCardContainerStyles(ref)).toEqual(carouselCardSize);
         });
-        it('should return an object with the default height and width when the parentNode of the ref passed does not have an height and width set', () => {
+        it('should return an object with the default height when the parentNode of the ref passed does not have an height and width set', () => {
             const ref = { parentNode: { style: {} } };
-            const carouselCardSize = { height: 340, width: 340 };
+            const carouselCardSize = { height: 340 };
             expect(carouselCardContainerStyles(ref)).toEqual(carouselCardSize);
         });
     });

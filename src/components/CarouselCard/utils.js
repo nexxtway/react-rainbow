@@ -28,7 +28,6 @@ export function insertChildOrderly(childrenRefs, childRef, nodes) {
 export function carouselCardContainerStyles(ref) {
     if (ref && ref.parentNode) {
         const style = {
-            width: 340,
             height: 340,
         };
         const parentHeight = ref.parentNode.style.height;
