@@ -17,7 +17,7 @@
                 <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faEllipsisV} />} />
             </ButtonGroup>
         </GlobalHeader>
-        <CarouselCard>
+        <CarouselCard className="rainbow-m-horizontal_medium">
             <CarouselImage
                 src = "images/illustrations/Illustration-rainbow-4.svg"
                 header = "First Card"

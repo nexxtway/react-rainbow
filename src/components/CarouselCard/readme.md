@@ -17,7 +17,7 @@
                 <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faEllipsisV} />} />
             </ButtonGroup>
         </GlobalHeader>
-        <CarouselCard id="carousel-1" disableAutoScroll>
+        <CarouselCard className="rainbow-m-horizontal_medium" id="carousel-1">
             <CarouselImage
                 src="images/illustrations/Illustration-rainbow-4.svg"
                 header="First Card"

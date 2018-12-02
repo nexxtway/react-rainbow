@@ -25,10 +25,7 @@
     font-size: inherit;
     color: inherit;
     text-decoration: inherit;
-    width: 98%;
-    height: 98%;
-    margin-left: 1%;
-    margin-top: 1%;
+    height: calc(100% - 0.75rem);
 
     &:active,
     &:focus {
