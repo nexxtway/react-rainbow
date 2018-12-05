@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { uniqueId } from '../../libs/utils';
 import RenderIf from '../RenderIf';
+import AssistiveText from '../AssistiveText';
 import { Consumer } from '../CarouselCard/context';
 import { getItemIndex } from '../CarouselCard/utils';
 import './styles.css';
@@ -136,7 +137,8 @@ class Item extends Component {
                     tabIndex={this.getTabIndex()}
                     ref={this.itemRef}>
                     <div className="rainbow-carousel-image_content-image-container">
-                        <div className="rainbow-carousel-image_image" style={this.getImageSrc()} alt={assistiveText} />
+                        <div className="rainbow-carousel-image_image" style={this.getImageSrc()} />
+                        <AssistiveText text={assistiveText} />
                         <RenderIf isTrue={hasContent}>
                             <div className="rainbow-carousel-image_content">
                                 <RenderIf isTrue={!!header}>

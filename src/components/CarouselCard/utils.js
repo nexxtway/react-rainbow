@@ -26,7 +26,7 @@ export function insertChildOrderly(childrenRefs, childRef, nodes) {
     return sortChildren(newChildrenRefs, nodes);
 }
 
-export function carouselCardContainerStyles(ref) {
+export function getCarouselCardContainerStyles(ref) {
     if (ref && ref.parentNode) {
         const parentHeight = ref.parentNode.style.height;
         if (!parentHeight) {

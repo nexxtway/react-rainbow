@@ -2,7 +2,7 @@ import {
     insertChildOrderly,
     getChildTabNodes,
     getItemIndex,
-    carouselCardContainerStyles,
+    getCarouselCardContainerStyles,
 } from './../utils';
 
 describe('<CarouselCard/> utils', () => {
@@ -59,15 +59,15 @@ describe('<CarouselCard/> utils', () => {
         });
     });
 
-    describe('carouselCardContainerStyles', () => {
+    describe('getCarouselCardContainerStyles', () => {
         it('should return null if a ref is not passed', () => {
-            expect(carouselCardContainerStyles()).toBeNull();
+            expect(getCarouselCardContainerStyles()).toBeNull();
         });
         it('should return null if ref passed does not have a parentNode', () => {
             const ref = {};
-            expect(carouselCardContainerStyles(ref)).toBeNull();
+            expect(getCarouselCardContainerStyles(ref)).toBeNull();
         });
-        it('should return an object with a heght of 100% if the parentNode the ref passed has an height set', () => {
+        it('should return an object with a height of 100% if the parentNode the ref passed has an height set', () => {
             const ref = {
                 parentNode: {
                     style: {
@@ -75,11 +75,11 @@ describe('<CarouselCard/> utils', () => {
                     },
                 },
             };
-            expect(carouselCardContainerStyles(ref)).toEqual({
+            expect(getCarouselCardContainerStyles(ref)).toEqual({
                 height: '100%',
             });
         });
-        it('should return an object with a heght of 340 if the parentNode of the ref passed does not have an height set', () => {
+        it('should return an object with a height of 340 if the parentNode of the ref passed does not have an height set', () => {
             const ref = {
                 parentNode: {
                     style: {
@@ -87,7 +87,7 @@ describe('<CarouselCard/> utils', () => {
                     },
                 },
             };
-            expect(carouselCardContainerStyles(ref)).toEqual({
+            expect(getCarouselCardContainerStyles(ref)).toEqual({
                 height: 340,
             });
         });

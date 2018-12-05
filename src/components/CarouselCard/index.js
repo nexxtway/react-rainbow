@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import { Provider } from './context';
 import Indicators from './indicators';
 import AnimationButton from './animationButton';
-import { getItemIndex, getChildTabNodes, insertChildOrderly, carouselCardContainerStyles } from './utils';
+import { getItemIndex, getChildTabNodes, insertChildOrderly, getCarouselCardContainerStyles } from './utils';
 import './styles.css';
 
 /**
@@ -41,7 +41,7 @@ export default class CarouselCard extends Component {
 
     getContainerStyle() {
         const { style } = this.props;
-        return Object.assign({}, carouselCardContainerStyles(this.container.current), style);
+        return Object.assign({}, getCarouselCardContainerStyles(this.container.current), style);
     }
 
     setActiveItem(id) {
