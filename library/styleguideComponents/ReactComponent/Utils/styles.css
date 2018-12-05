@@ -42,12 +42,16 @@
     height: 56px;
 }
 
-.react-rainbow-utils-item_example-img {
-    height: 80px;
+.react-rainbow-utils-item_img-container {
+    margin-top: 0.75rem;
 }
 
-.react-rainbow-utils-item_img-container, .react-rainbow-utils-item_example-img-container  {
-    margin-top: 0.75rem;
+.react-rainbow-utils-item_example-img-container {
+    margin: 1.2rem 0.75rem;
+}
+
+.react-rainbow-utils-item_example-img {
+    height: 80px;
 }
 
 .react-rainbow-utils-item_content {
@@ -101,7 +105,7 @@
 .react-rainbow-utils-item_description::before {
     content:'...';
     position: absolute;
-    top: 10.6875rem;
+    bottom: 0.75rem;
     right: 0.375rem;
 }
 
