@@ -67,23 +67,8 @@
     font-style: italic;
 }
 
-.react-rainbow-getting-started_top-container-tab a {
-    font-size: 0.625rem;
-}
-
-@media only screen and (max-width: 425px) {
+@media (max-width: 650px) {
     .react-rainbow-getting-started_top-container-tabset {
         padding-left: 0.5rem;
-    }
-
-    .react-rainbow-getting-started_top-container-tab a {
-        padding: 0 1.15rem;
-    }
-}
-
-@media only screen and (max-width: 375px) {
-
-    .react-rainbow-getting-started_top-container-tab a {
-        padding: 0 0.75rem;
     }
 }
