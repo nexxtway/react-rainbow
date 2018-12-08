@@ -1,3 +1,20 @@
+.react-rainbow-getting-started_top-container {
+    padding-top: 40px;
+    background-color: whitesmoke;
+    margin-left: -2rem;
+    margin-right: -2rem;
+}
+
+.react-rainbow-getting-started_top-container-tabset {
+    padding-left: 24px;
+}
+
+.react-rainbow-getting-started_container {
+    background-color: white;
+    padding: 1.25rem 2rem 0 2rem;
+}
+
+
 .section-heading {
     font-size: 1rem;
     line-height: 1.5;
@@ -34,8 +51,39 @@
     margin-top: 4px;
     margin-bottom: 4px;
     color: #333;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-family: -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Roboto",
+    "Oxygen",
+    "Ubuntu",
+    "Cantarell",
+    "Fira Sans",
+    "Droid Sans",
+    "Helvetica Neue",
+    sans-serif;
     font-size: inherit;
     line-height: 1.5;
     font-style: italic;
+}
+
+.react-rainbow-getting-started_top-container-tab a {
+    font-size: 0.625rem;
+}
+
+@media only screen and (max-width: 425px) {
+    .react-rainbow-getting-started_top-container-tabset {
+        padding-left: 0.5rem;
+    }
+
+    .react-rainbow-getting-started_top-container-tab a {
+        padding: 0 1.15rem;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+
+    .react-rainbow-getting-started_top-container-tab a {
+        padding: 0 0.75rem;
+    }
 }

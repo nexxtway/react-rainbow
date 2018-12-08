@@ -4,7 +4,7 @@ import Tab from '../../../../src/components/Tab';
 import RenderIf from '../../../../src/components/RenderIf';
 import FeatureList from '../FeatureList';
 import CodeEditor from '../CodeEditor';
-import './styles.css'
+import './styles.css';
 
 const HelloWorldExample =
     `import React from 'react';
@@ -32,12 +32,7 @@ export default class GettingStartedPage extends Component {
         super(props);
         this.state = { activeTabName: 'overview' };
         this.handleTabChange = this.handleTabChange.bind(this);
-        this.topContainerStyles = {
-            paddingTop: '40px',
-            backgroundColor: 'whitesmoke',
-            marginLeft: '-2rem',
-            marginRight: '-2rem',
-        };
+        this.sampleStyles = { width: '100%', height: 350, border: 0 };
     }
 
     handleTabChange(e, tabName) {
@@ -47,14 +42,28 @@ export default class GettingStartedPage extends Component {
     render() {
         const { activeTabName } = this.state;
         return (
-            <div style={this.topContainerStyles}>
-                <Tabset style={{ paddingLeft: '24px' }} activeTabName={activeTabName} onSelect={this.handleTabChange}>
-                    <Tab name="overview" label="OVERVIEW" />
-                    <Tab name="installation" label="INSTALLATION" />
-                    <Tab name="usage" label="USAGE" />
-                    <Tab name="contribuiting" label="CONTRIBUITING" />
+            <div className="react-rainbow-getting-started_top-container">
+                <Tabset className="react-rainbow-getting-started_top-container-tabset"
+                        activeTabName={activeTabName}
+                        onSelect={this.handleTabChange}>
+                    <Tab
+                        name="overview"
+                        label="OVERVIEW"
+                        className="react-rainbow-getting-started_top-container-tab" />
+                    <Tab
+                        name="installation"
+                        label="INSTALLATION"
+                        className="react-rainbow-getting-started_top-container-tab" />
+                    <Tab
+                        name="usage"
+                        label="USAGE"
+                        className="react-rainbow-getting-started_top-container-tab" />
+                    <Tab
+                        name="contribuiting"
+                        label="CONTRIBUITING"
+                        className="react-rainbow-getting-started_top-container-tab" />
                 </Tabset>
-                <section style={{ backgroundColor: 'white', padding: '1.25rem 2rem 0 2rem' }}>
+                <section className="react-rainbow-getting-started_container">
                     <RenderIf isTrue={activeTabName === 'overview'}>
                         <h3 className="section-heading">
                             React Rainbow is a collection of components that will
@@ -94,7 +103,7 @@ export default class GettingStartedPage extends Component {
                         <iframe
                             title="codesandbox example"
                             src="https://codesandbox.io/embed/24p8n0pnz0?hidenavigation=1&fontsize=14&view=preview"
-                            style={{ width: '100%', height: 350, border: 0 }}
+                            style={this.sampleStyles}
                         />
                     </RenderIf>
                     <RenderIf isTrue={activeTabName === 'contribuiting'}>
