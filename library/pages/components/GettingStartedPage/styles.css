@@ -71,4 +71,8 @@
     .react-rainbow-getting-started_top-container-tabset {
         padding-left: 0.5rem;
     }
+    .react-rainbow-getting-started_top-container-tab a {
+        padding: 0 12px;
+    }
 }
+ 
