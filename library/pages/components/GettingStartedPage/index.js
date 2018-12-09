@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React, { Component } from 'react';
 import Tabset from '../../../../src/components/Tabset';
 import Tab from '../../../../src/components/Tab';
