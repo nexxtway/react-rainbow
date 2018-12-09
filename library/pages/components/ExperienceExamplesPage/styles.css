@@ -1,0 +1,22 @@
+.react-rainbow-experience-examples-view-port {
+    background-color: #f4f6f9;
+    height: calc(100vh - 68px);
+}
+
+.react-rainbow-experience-examples-header-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Lato;
+    font-size: 32px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    color: #061c3f;
+    padding: 36px 0;
+}
+
+.react-rainbow-experience-examples-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 30px;
+}
