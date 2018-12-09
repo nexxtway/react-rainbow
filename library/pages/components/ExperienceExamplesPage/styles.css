@@ -20,3 +20,10 @@
     flex-wrap: wrap;
     padding: 0 30px;
 }
+
+@media (max-width: 600px) {
+
+    .react-rainbow-experience-examples-container {
+        justify-content: center;
+    }
+}
