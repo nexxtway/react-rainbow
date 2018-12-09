@@ -45,7 +45,7 @@
 
     const { faPlus, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');
 
-    <div>
+    <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
         <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
             <div className="rainbow-m-right_medium">
                 <EmptyModal />
@@ -430,7 +430,7 @@
 
     const { faPlus, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');
 
-    <div>
+    <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
         <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
             <div className="rainbow-m-right_medium">
                 <FormModal />
