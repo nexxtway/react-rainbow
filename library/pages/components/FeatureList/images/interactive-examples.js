@@ -22,7 +22,11 @@ const InteractiveExamples = (props) => {
 };
 
 InteractiveExamples.propTypes = {
-    className: PropTypes.string.isRequired,
+    className: PropTypes.string,
+};
+
+InteractiveExamples.defaultProps = {
+    className: undefined,
 };
 
 export default InteractiveExamples;

@@ -53,7 +53,7 @@ export default class GettingStartedPage extends Component {
                     <Tab
                         name="installation"
                         label="INSTALLATION"
-                        className="react-rainbow-getting-started_top-container-tab" />
+                        className="react-rainbow-getting-started_top-container-tab react-rainbow-getting-started_top-container-tab_shortened" />
                     <Tab
                         name="usage"
                         label="USAGE"
@@ -61,7 +61,7 @@ export default class GettingStartedPage extends Component {
                     <Tab
                         name="contribuiting"
                         label="CONTRIBUITING"
-                        className="react-rainbow-getting-started_top-container-tab" />
+                        className="react-rainbow-getting-started_top-container-tab react-rainbow-getting-started_top-container-tab_shortened" />
                 </Tabset>
                 <section className="react-rainbow-getting-started_container">
                     <RenderIf isTrue={activeTabName === 'overview'}>

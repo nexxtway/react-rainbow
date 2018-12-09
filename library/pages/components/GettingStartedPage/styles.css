@@ -67,6 +67,10 @@
     font-style: italic;
 }
 
+.react-rainbow-getting-started_top-container-tab {
+    overflow: unset;
+}
+
 .react-rainbow-getting-started_top-container-tab a {
     font-size: 0.625rem;
 }
@@ -85,5 +89,11 @@
 
     .react-rainbow-getting-started_top-container-tab a {
         padding: 0 0.75rem;
+    }
+}
+
+@media only screen and (max-width: 325px) {
+    .react-rainbow-getting-started_top-container-tab_shortened {
+        overflow: hidden;
     }
 }

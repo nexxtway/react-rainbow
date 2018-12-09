@@ -28,7 +28,11 @@ const Internationalization = (props) => {
 };
 
 Internationalization.propTypes = {
-    className: PropTypes.string.isRequired,
+    className: PropTypes.string,
+};
+
+Internationalization.defaultProps = {
+    className: undefined,
 };
 
 export default Internationalization;
