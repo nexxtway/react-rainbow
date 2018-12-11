@@ -95,8 +95,14 @@ module.exports = {
         },
         {
             name: 'Experiences',
+            sectionDepth: 1,
             content: 'library/pages/experiencesExamples.md',
-            sectionDepth: 0,
+            sections: [
+                {
+                    name: 'Experiences',
+                    content: 'library/pages/experiencesExamples.md',
+                },
+            ]
         },
     ],
     webpackConfig: {

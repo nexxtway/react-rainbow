@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import VerticalSectionOverflow from './../../../src/components/VerticalSectionOverflow';
+import VerticalSection from './../../../src/components/VerticalSection';
 import VerticalItem from './../../../src/components/VerticalItem';
 
 function renderItems(items) {
@@ -61,6 +62,13 @@ export default class Section extends Component {
         const { label, description, items } = this.props;
         const { isExpanded } = this.state;
 
+        if (items[0].visibleName === 'Experiences') {
+            return (
+            <VerticalSection>
+                {renderItems(items)}
+            </VerticalSection>
+            );
+        }
 
         return (
             <VerticalSectionOverflow
