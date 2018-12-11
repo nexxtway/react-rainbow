@@ -84,9 +84,6 @@
     .section-heading {
         text-align: center;
     }
-}
-
-@media only screen and (max-width: 325px) {
     .react-rainbow-getting-started_top-container-tab_shortened {
         overflow: hidden;
     }
