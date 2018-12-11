@@ -69,10 +69,6 @@
     overflow: unset;
 }
 
-.react-rainbow-getting-started_top-container-tab a {
-    font-size: 0.625rem;
-}
-
 @media (max-width: 650px) {
     .react-rainbow-getting-started_top-container-tabset {
         padding-left: 0.5rem;
@@ -80,6 +76,7 @@
     }
     .react-rainbow-getting-started_top-container-tab a {
         padding: 0 12px;
+        font-size: 0.725rem;
     }
     .react-rainbow-getting-started_container {
         padding: 1rem 1rem 0 1rem;
