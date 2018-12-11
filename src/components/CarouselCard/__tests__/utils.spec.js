@@ -2,6 +2,7 @@ import {
     insertChildOrderly,
     getChildTabNodes,
     getItemIndex,
+    getCarouselCardContainerStyles,
 } from './../utils';
 
 describe('<CarouselCard/> utils', () => {
@@ -55,6 +56,40 @@ describe('<CarouselCard/> utils', () => {
                 { indicatorID: 'indicator-3' },
             ];
             expect(getItemIndex(children, 'indicator-4')).toBe(-1);
+        });
+    });
+
+    describe('getCarouselCardContainerStyles', () => {
+        it('should return null if a ref is not passed', () => {
+            expect(getCarouselCardContainerStyles()).toBeNull();
+        });
+        it('should return null if ref passed does not have a parentNode', () => {
+            const ref = {};
+            expect(getCarouselCardContainerStyles(ref)).toBeNull();
+        });
+        it('should return an object with a height of 100% if the parentNode the ref passed has an height set', () => {
+            const ref = {
+                parentNode: {
+                    style: {
+                        height: 100,
+                    },
+                },
+            };
+            expect(getCarouselCardContainerStyles(ref)).toEqual({
+                height: '100%',
+            });
+        });
+        it('should return an object with a height of 340 if the parentNode of the ref passed does not have an height set', () => {
+            const ref = {
+                parentNode: {
+                    style: {
+                        height: '',
+                    },
+                },
+            };
+            expect(getCarouselCardContainerStyles(ref)).toEqual({
+                height: 340,
+            });
         });
     });
 });

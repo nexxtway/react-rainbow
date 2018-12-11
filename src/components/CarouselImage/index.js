@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { uniqueId } from '../../libs/utils';
 import RenderIf from '../RenderIf';
+import AssistiveText from '../AssistiveText';
 import { Consumer } from '../CarouselCard/context';
 import { getItemIndex } from '../CarouselCard/utils';
 import './styles.css';
@@ -91,6 +92,13 @@ class Item extends Component {
         return activeItem !== this.carouselIndicatorID;
     }
 
+    getImageSrc() {
+        const { src } = this.props;
+        return {
+            backgroundImage: `url(${src})`,
+        };
+    }
+
     shouldShow() {
         const { activeItem, prevActiveItem } = this.state;
         const areTheSame = activeItem === prevActiveItem;
@@ -113,7 +121,7 @@ class Item extends Component {
     }
 
     render() {
-        const { assistiveText, description, header, href, src, style } = this.props;
+        const { assistiveText, description, header, href, style } = this.props;
         const hasContent = !!(header || description);
         return (
             <div
@@ -128,19 +136,20 @@ class Item extends Component {
                     className="rainbow-carousel-image"
                     tabIndex={this.getTabIndex()}
                     ref={this.itemRef}>
-                    <div>
-                        <img className="rainbow-carousel-image_image" src={src} alt={assistiveText} />
+                    <div className="rainbow-carousel-image_content-image-container">
+                        <div className="rainbow-carousel-image_image" style={this.getImageSrc()} />
+                        <AssistiveText text={assistiveText} />
+                        <RenderIf isTrue={hasContent}>
+                            <div className="rainbow-carousel-image_content">
+                                <RenderIf isTrue={!!header}>
+                                    <h2 className="rainbow-carousel-image_content-title">{header}</h2>
+                                </RenderIf>
+                                <RenderIf isTrue={!!description}>
+                                    <p>{description}</p>
+                                </RenderIf>
+                            </div>
+                        </RenderIf>
                     </div>
-                    <RenderIf isTrue={hasContent}>
-                        <div className="rainbow-carousel-image_content">
-                            <RenderIf isTrue={!!header}>
-                                <h2 className="rainbow-carousel-image_content-title">{header}</h2>
-                            </RenderIf>
-                            <RenderIf isTrue={!!description}>
-                                <p>{description}</p>
-                            </RenderIf>
-                        </div>
-                    </RenderIf>
                 </a>
             </div>
         );

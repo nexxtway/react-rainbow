@@ -1,9 +1,5 @@
 ##### CarouselImage
 
-    const carouselContainerStyles = {
-        width: 340,
-    };
-
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
     const {
         faCog,
@@ -21,14 +17,12 @@
                 <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faEllipsisV} />} />
             </ButtonGroup>
         </GlobalHeader>
-        <div className="rainbow-align-content_center">
-            <CarouselCard style={carouselContainerStyles}>
-                <CarouselImage
-                    src = "images/illustrations/Illustration-rainbow-4.svg"
-                    header = "First Card"
-                    description = "First card description."
-                    alternativeText = "First card accessible description."
-                    href="/" />
-                </CarouselCard>
-            </div>
-        </div>
+        <CarouselCard className="rainbow-m-horizontal_medium">
+            <CarouselImage
+                src = "images/illustrations/Illustration-rainbow-4.svg"
+                header = "First Card"
+                description = "First card description."
+                alternativeText = "First card accessible description."
+                href="/" />
+        </CarouselCard>
+    </div>
