@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './styles.css';
 
+// const pages = [];
+
 export default function PlaygroundRenderer(props) {
     const {
         name,

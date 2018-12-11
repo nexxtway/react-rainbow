@@ -7,7 +7,7 @@ import VerticalItem from '../../../src/components/VerticalItem';
 import VerticalSection from '../../../src/components/VerticalSection';
 
 function resolveCurrentUrl() {
-    return window.location.href.split('#/')[1] || 'GettingStarted';
+    return window.location.href.split('#/')[1] || 'Getting Started';
 }
 
 export default class ComponentsList extends Component {
@@ -39,10 +39,10 @@ export default class ComponentsList extends Component {
                 onSelect={this.handleOnSelect}>
                 <VerticalSection>
                     <VerticalItem
-                        name="GettingStarted"
+                        name="Getting Started"
                         selectedItem={selectedItem}
                         label="Getting Started"
-                        href="/#/GettingStarted" />
+                        href="/#/Getting Started" />
                 </VerticalSection>
                 <Sections selectedItem={selectedItem} items={items} searchTerm={searchTerm} />
             </VerticalNavigation>

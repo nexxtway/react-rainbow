@@ -65,27 +65,8 @@ module.exports = {
     },
     sections: [
         {
-            name: 'GettingStarted',
-            // sectionDepth: 1,
+            name: 'Getting Started',
             content: 'library/pages/overview.md',
-            // sections: [
-            //     {
-            //         name: 'Overview',
-            //         content: 'library/pages/overview.md',
-            //     },
-                // {
-                //     name: 'Installation',
-                //     content: 'library/pages/installation.md',
-                // },
-                // {
-                //     name: 'Usage',
-                //     content: 'library/pages/usage.md',
-                // },
-                // {
-                //     name: 'Contribuiting',
-                //     content: 'CONTRIBUTING.md',
-                // },
-            // ]
         },
         {
             name: 'Components',
