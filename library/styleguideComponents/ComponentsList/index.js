@@ -16,7 +16,6 @@ export default class ComponentsList extends Component {
         this.state = {
             selectedItem: resolveCurrentUrl(),
         };
-        console.log(this.state.selectedItem);
         this.handleOnSelect = this.handleOnSelect.bind(this);
     }
 
@@ -40,7 +39,7 @@ export default class ComponentsList extends Component {
                 onSelect={this.handleOnSelect}>
                 <VerticalSection>
                     <VerticalItem
-                        name="Getting Started"
+                        name="GettingStarted"
                         selectedItem={selectedItem}
                         label="Getting Started"
                         href="/#/GettingStarted" />
