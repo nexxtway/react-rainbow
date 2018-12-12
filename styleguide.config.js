@@ -66,7 +66,7 @@ module.exports = {
     sections: [
         {
             name: 'GettingStarted',
-            content: 'library/pages/overview.md',
+            content: 'library/pages/gettingStarted.md',
         },
         {
             name: 'Components',

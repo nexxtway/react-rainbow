@@ -13,7 +13,7 @@ export default class StyleGuide extends React.Component {
     componentDidMount() {
         // analytics
         if (window.location.hash === '') {
-            ReactGA.pageview('/#/Overview');
+            ReactGA.pageview('/#/GettingStarted');
         } else {
             ReactGA.pageview(window.location.hash);
         }
