@@ -1,0 +1,72 @@
+.react-rainbow-component-example-card-item_example-container {
+    position: relative;
+    margin: 0 16px 20px 16px;
+    width: 260px;
+    transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.react-rainbow-component-example-card_example-link:hover, .react-rainbow-component-example-card_example-link:focus, {
+    text-decoration: none;
+}
+
+.react-rainbow-component-example-card-item {
+    width: 260px;
+    transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.react-rainbow-component-example-card-item:hover {
+    box-shadow: 0 4px 8px 0 #e3e5ed;
+    transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.react-rainbow-component-example-card-item_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.react-rainbow-component-example-card-item_example-header {
+    font-size: 16px;
+    margin: 0;
+    color: #061c3f;
+    text-align: justify;
+    align-self: flex-start;
+}
+
+.react-rainbow-component-example-card-item_description {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #576574;
+    align-self: flex-start;
+    text-align: justify;
+}
+
+.react-rainbow-component-example-card-item_img-container, .react-rainbow-component-example-card-item_example-img-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    margin-top: 0.75rem;
+}
+
+.react-rainbow-component-example-card-item_example-img {
+    height: 80px;
+}
+
+.react-rainbow-component-example-card-item_github-link {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+}
+
+.react-rainbow-component-example-card-item_github-link:hover > svg {
+    fill: #009ACF;
+}
+
+@media (max-width: 400px) {
+
+    .react-rainbow-component-example-card-item {
+        margin: 0 16px 16px 24px;
+        width: 300px;
+    }
+}

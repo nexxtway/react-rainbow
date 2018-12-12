@@ -1,27 +1,12 @@
-.react-rainbow-utils-item_example-container {
-    position: relative;
-    margin: 0 16px 20px 16px;
-}
-
-.react-rainbow-utils-item_github-link {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-}
-
-.react-rainbow-utils-item_github-link:hover > svg {
-    fill: #009ACF;
-}
-
 .react-rainbow-utils_link {
     margin: 0 16px 20px 16px;
 }
 
-.react-rainbow-utils_link:hover, .react-rainbow-utils_link:focus, .react-rainbow-utils_example-link:hover, .react-rainbow-utils_example-link:focus, {
+.react-rainbow-utils_link:hover, .react-rainbow-utils_link:focus, {
     text-decoration: none;
 }
 
-.react-rainbow-utils-item, .react-rainbow-utils-item_example-container, .react-rainbow-utils-item_page-object {
+.react-rainbow-utils-item_page-object {
     width: 260px;
     transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
@@ -31,7 +16,7 @@
     transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
-.react-rainbow-utils-item_img-container, .react-rainbow-utils-item_example-img-container {
+.react-rainbow-utils-item_img-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,18 +27,8 @@
     height: 56px;
 }
 
-.react-rainbow-utils-item_example-img {
-    height: 80px;
-}
-
-.react-rainbow-utils-item_img-container, .react-rainbow-utils-item_example-img-container  {
+.react-rainbow-utils-item_img-container  {
     margin-top: 0.75rem;
-}
-
-.react-rainbow-utils-item_content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .react-rainbow-utils-item_page-object-content {
@@ -80,22 +55,6 @@
     text-overflow: ellipsis;
 }
 
-.react-rainbow-utils-item_example-header {
-    font-size: 16px;
-    margin: 0;
-    color: #061c3f;
-    text-align: justify;
-    align-self: flex-start;
-}
-
-.react-rainbow-utils-item_description {
-    font-size: 14px;
-    line-height: 1.5;
-    color: #576574;
-    align-self: flex-start;
-    text-align: justify;
-}
-
 .react-rainbow-utils_text {
     display: flex;
     flex-direction: column;
@@ -112,12 +71,4 @@
     line-height: 1.5;
     color: #576574;
     margin: 16px 0 8px 0;
-}
-
-@media (max-width: 400px) {
-
-    .react-rainbow-utils-item {
-        margin: 0 16px 16px 24px;
-        width: 300px;
-    }
 }

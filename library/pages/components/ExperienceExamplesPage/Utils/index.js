@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ExperienceExampleCard from './experienceExampleCard';
-import './styles.css';
+import ComponentExampleCard from './../../../../styleguideComponents/ComponentExampleCard';
 
 export default function Util(props) {
     const { response, type } = props;
 
     if (response && Array.isArray(response.results) && response.results.length) {
         if (type === 'experience-examples') {
-            return <ExperienceExampleCard results={response.results} />;
+            return <ComponentExampleCard results={response.results} />;
         }
         return null;
     }

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ExperienceExampleCard from './experienceExampleCard';
+import ComponentExampleCard from './../../ComponentExampleCard';
 import PageObjectCard from './pageObjectCard';
 import './styles.css';
 
@@ -14,7 +14,7 @@ export default function Util(props) {
                     <div className="react-rainbow-utils_text rainbow-m-around_medium">
                         <h1 className="react-rainbow-utils_text-header">Real experience examples</h1>
                     </div>
-                    <ExperienceExampleCard results={response.results} />
+                    <ComponentExampleCard results={response.results} />
                 </div>
             );
         }
@@ -26,12 +26,10 @@ export default function Util(props) {
 Util.propTypes = {
     response: PropTypes.object,
     type: PropTypes.string,
-    componentName: PropTypes.string,
 };
 
 Util.defaultProps = {
     response: null,
     type: undefined,
     name: undefined,
-    componentName: undefined,
 };

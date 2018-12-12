@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import VerticalNavigation from './../../../src/components/VerticalNavigation';
 import Sections from './sections';
+import VerticalItem from '../../../src/components/VerticalItem';
+import VerticalSection from '../../../src/components/VerticalSection';
 import './styles.css';
 
 function resolveCurrentUrl() {
@@ -37,6 +39,14 @@ export default class ComponentsList extends Component {
                 onSelect={this.handleOnSelect}>
 
                 <Sections selectedItem={selectedItem} items={items} searchTerm={searchTerm} />
+
+                <VerticalSection>
+                    <VerticalItem
+                        name="Experiences"
+                        selectedItem={selectedItem}
+                        label="Experiences"
+                        href="/#/Experiences" />
+                </VerticalSection>
             </VerticalNavigation>
         );
     }
