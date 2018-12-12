@@ -151,8 +151,9 @@ Textarea.propTypes = {
     ]).isRequired,
     /** A boolean to hide the textarea label */
     hideLabel: PropTypes.bool,
-    /** The value of the textarea, also used as the default value during init. */
+    /** The name of th input */
     name: PropTypes.string,
+    /** The value of the textarea, also used as the default value during init. */
     value: PropTypes.string,
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
     placeholder: PropTypes.string,
