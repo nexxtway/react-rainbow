@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ComponentExampleCard from './../../../../styleguideComponents/ComponentExampleCard';
+import ComponentExampleCard from '../../../styleguideComponents/ComponentExampleCard';
 
 export default function Util(props) {
     const { response, type } = props;
@@ -22,5 +22,4 @@ Util.propTypes = {
 Util.defaultProps = {
     response: null,
     type: undefined,
-    name: undefined,
 };

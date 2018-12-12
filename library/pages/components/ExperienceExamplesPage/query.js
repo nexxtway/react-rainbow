@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { QueryAt, QueryMulti } from 'react-prismic-cms';
-import Util from './Utils';
+import Util from './util';
 
 export default function Query({ value }) {
     return (
