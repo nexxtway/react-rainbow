@@ -2,13 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './styles.css';
 
-const pages = [
-    'GettingStarted',
-    'Overview',
-    'Usage',
-    'Installation',
-];
-
 export default function PlaygroundRenderer(props) {
     const {
         name,
@@ -20,7 +13,7 @@ export default function PlaygroundRenderer(props) {
     } = props;
     const { ...rest } = previewProps;
 
-    if (pages.some(p => p === name)) {
+    if (name === 'GettingStarted') {
         return (
             <div className="rainbow-position_relative">
                 {preview}
