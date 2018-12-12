@@ -80,7 +80,7 @@ class TabItem extends Component {
                     aria-controls={ariaControls}
                     ref={this.tabRef}>
 
-                    {label}
+                    <span className="rainbow-tab_anchor-inner-text">{label}</span>
                 </a>
             </li>
         );

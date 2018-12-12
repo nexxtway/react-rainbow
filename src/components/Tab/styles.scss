@@ -29,6 +29,7 @@
 .rainbow-tab {
     height: 2.75rem;
     background-color: transparent;
+    overflow: hidden;
 
     @include position-tab(center);
 }
@@ -48,6 +49,7 @@
     font-weight: 600;
     color: $color-gray-4;
     z-index: 0;
+    overflow: hidden;
 
     @include position-tab(center);
 
@@ -121,6 +123,12 @@
             color: $color-gray-3;
         }
     }
+}
+
+.rainbow-tab_anchor-inner-text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .rainbow-tab--disabled .rainbow-tab_anchor:focus {
