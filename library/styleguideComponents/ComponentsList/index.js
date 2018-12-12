@@ -5,6 +5,8 @@ import Sections from './sections';
 import VerticalItem from '../../../src/components/VerticalItem';
 import VerticalSection from '../../../src/components/VerticalSection';
 import './styles.css';
+import VerticalItem from '../../../src/components/VerticalItem';
+import VerticalSection from '../../../src/components/VerticalSection';
 
 function resolveCurrentUrl() {
     return window.location.href.split('#/')[1] || 'GettingStarted';

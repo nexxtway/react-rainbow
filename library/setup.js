@@ -9,4 +9,3 @@ global.CodeEditor = CodeEditor;
 global.FeatureList = FeatureList;
 global.ExperienceExamplesPage = ExperienceExamplesPage;
 global.GettingStartedPage = GettingStartedPage;
-
