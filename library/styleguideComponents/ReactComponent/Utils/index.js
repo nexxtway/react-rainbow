@@ -34,5 +34,4 @@ Util.propTypes = {
 Util.defaultProps = {
     response: null,
     type: undefined,
-    name: undefined,
 };

@@ -1,7 +1,7 @@
 ##### CarouselCard
 
     const carouselContainerStyles = {
-        width: 340,
+        width: 380,
     };
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
@@ -21,26 +21,24 @@
                 <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faEllipsisV} />} />
             </ButtonGroup>
         </GlobalHeader>
-        <div className="rainbow-align-content_center">
-            <CarouselCard id="carousel-1" disableAutoScroll style={carouselContainerStyles}>
-                <CarouselImage
-                    src="images/illustrations/Illustration-rainbow-4.svg"
-                    header="First Card"
-                    description="First card description."
-                    alternativeText="First card accessible description."
-                    href="/" />
-                <CarouselImage
-                    src="images/illustrations/Illustration-rainbow-3.svg"
-                    header="Second Card"
-                    description="Second card description."
-                    alternativeText="Second card accessible description."
-                    href="/" />
-                <CarouselImage
-                    src="images/illustrations/Illustration-rainbow-5.svg"
-                    header="Third Card"
-                    description="Third card description."
-                    alternativeText="Third card accessible description."
-                    href="/" />
-                </CarouselCard>
-            </div>
-        </div>
+        <CarouselCard style={carouselContainerStyles} className="rainbow-align-content_center rainbow-m_auto" id="carousel-1">
+            <CarouselImage
+                src="images/illustrations/Illustration-rainbow-4.svg"
+                header="First Card"
+                description="First card description."
+                alternativeText="First card accessible description."
+                href="/" />
+            <CarouselImage
+                src="images/illustrations/Illustration-rainbow-3.svg"
+                header="Second Card"
+                description="Second card description."
+                alternativeText="Second card accessible description."
+                href="/" />
+            <CarouselImage
+                src="images/illustrations/Illustration-rainbow-5.svg"
+                header="Third Card"
+                description="Third card description."
+                alternativeText="Third card accessible description."
+                href="/" />
+        </CarouselCard>
+    </div>

@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import { Provider } from './context';
 import Indicators from './indicators';
 import AnimationButton from './animationButton';
-import { getItemIndex, getChildTabNodes, insertChildOrderly } from './utils';
+import { getItemIndex, getChildTabNodes, insertChildOrderly, getCarouselCardContainerStyles } from './utils';
 import './styles.css';
 
 /**
@@ -14,6 +14,7 @@ import './styles.css';
 export default class CarouselCard extends Component {
     constructor(props) {
         super(props);
+        this.container = React.createRef();
         this.registerChild = this.registerChild.bind(this);
         this.setActiveItem = this.setActiveItem.bind(this);
         this.handleOnClick = this.handleOnClick.bind(this);
@@ -36,6 +37,11 @@ export default class CarouselCard extends Component {
     getContainerClassName() {
         const { className } = this.props;
         return classnames('rainbow-carousel', className);
+    }
+
+    getContainerStyle() {
+        const { style } = this.props;
+        return Object.assign({}, getCarouselCardContainerStyles(this.container.current), style);
     }
 
     setActiveItem(id) {
@@ -76,10 +82,10 @@ export default class CarouselCard extends Component {
     }
 
     render() {
-        const { children, style, id } = this.props;
+        const { children, id } = this.props;
         const { childrenRegistred, activeItem, isAnimationPaused } = this.state;
         return (
-            <div className={this.getContainerClassName()} style={style} id={id}>
+            <div className={this.getContainerClassName()} style={this.getContainerStyle()} id={id} ref={this.container}>
                 <span className="rainbow-carousel_autoplay">
                   <AnimationButton onClick={this.handleOnClick} isAnimationPaused={isAnimationPaused} />
                 </span>

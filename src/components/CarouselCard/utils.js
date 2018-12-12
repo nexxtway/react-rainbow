@@ -25,3 +25,18 @@ export function insertChildOrderly(childrenRefs, childRef, nodes) {
     const newChildrenRefs = childrenRefs.concat([childRef]);
     return sortChildren(newChildrenRefs, nodes);
 }
+
+export function getCarouselCardContainerStyles(ref) {
+    if (ref && ref.parentNode) {
+        const parentHeight = ref.parentNode.style.height;
+        if (!parentHeight) {
+            return {
+                height: 340,
+            };
+        }
+        return {
+            height: '100%',
+        };
+    }
+    return null;
+}
