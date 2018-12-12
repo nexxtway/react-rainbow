@@ -14,7 +14,7 @@
 }
 
 
-.section-heading {
+.react-rainbow-getting-started_section-heading {
     font-size: 1rem;
     line-height: 1.5;
     color: #061c3f;
@@ -22,7 +22,7 @@
     margin-top: 1rem;
 }
 
-.section-heading-2 {
+.react-rainbow-getting-started_section-heading-2 {
     font-size: 1.25rem;
     line-height: 1.25;
     color: #061c3f;
@@ -31,7 +31,7 @@
     margin-top: 1.75rem;
 }
 
-.section-heading-5 {
+.react-rainbow-getting-started_section-heading-5 {
     font-size: 0.88rem;
     font-weight: bold;
     line-height: 1.5;
@@ -39,14 +39,14 @@
     font-family: Lato Light;
 }
 
-.section-link {
+.react-rainbow-getting-started_section-link {
     margin-left: 3px;
     font-size: inherit;
     color: #009acf;
     text-decoration: none;
 }
 
-.section-italic {
+.react-rainbow-getting-started_section-italic {
     margin-top: 4px;
     margin-bottom: 4px;
     color: #333;
@@ -69,6 +69,12 @@
     overflow: unset;
 }
 
+.react-rainbow-getting-started_example {
+    width: 100%;
+    height: 350px;
+    border: 0;
+}
+
 @media (max-width: 650px) {
     .react-rainbow-getting-started_top-container-tabset {
         padding-left: 0.5rem;
@@ -81,7 +87,7 @@
     .react-rainbow-getting-started_container {
         padding: 1rem 1rem 0 1rem;
     }
-    .section-heading {
+    .react-rainbow-getting-started_section-heading {
         text-align: center;
     }
     .react-rainbow-getting-started_top-container-tab_shortened {

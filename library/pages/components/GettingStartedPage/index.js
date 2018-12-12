@@ -33,7 +33,6 @@ export default class GettingStartedPage extends Component {
         super(props);
         this.state = { activeTabName: 'overview' };
         this.handleTabChange = this.handleTabChange.bind(this);
-        this.sampleStyles = { width: '100%', height: 350, border: 0 };
     }
 
     handleTabChange(e, tabName) {
@@ -66,7 +65,7 @@ export default class GettingStartedPage extends Component {
                 </Tabset>
                 <section className="react-rainbow-getting-started_container">
                     <RenderIf isTrue={activeTabName === 'overview'}>
-                        <h3 className="section-heading">
+                        <h3 className="react-rainbow-getting-started_section-heading">
                             React Rainbow is a collection of components that will
                             reliably help you build your application in a snap.
                             Give it a hack and let us know what you think.
@@ -75,28 +74,28 @@ export default class GettingStartedPage extends Component {
                     </RenderIf>
                     <RenderIf isTrue={activeTabName === 'installation'}>
                         <div className="rainbow-flex rainbow-flex_column">
-                            <h3 className="section-heading">
+                            <h3 className="react-rainbow-getting-started_section-heading">
                                 React Rainbow Components is currently optimized for React 16.4.2
                             </h3>
-                            <h2 className="section-heading-2">Install</h2>
-                            <h5 className="section-heading-5">
+                            <h2 className="react-rainbow-getting-started_section-heading-2">Install</h2>
+                            <h5 className="react-rainbow-getting-started_section-heading-5">
                                 React Rainbow Components is available as an
                                 <a
-                                    className="section-link"
+                                    className="react-rainbow-getting-started_section-link"
                                     href="https://www.npmjs.com/package/react-rainbow-components"
                                     rel="noopener noreferrer"
                                     target="_blank">
                                     npm package
                                 </a>
                             </h5>
-                            <span className="section-italic">installing with npm</span>
+                            <span className="react-rainbow-getting-started_section-italic">installing with npm</span>
                             <CodeEditor code="$ npm install react-rainbow-components --save" />
-                            <span className="section-italic">installing with yarn</span>
+                            <span className="react-rainbow-getting-started_section-italic">installing with yarn</span>
                             <CodeEditor code="$ yarn add react-rainbow-components" />
                         </div>
                     </RenderIf>
                     <RenderIf isTrue={activeTabName === 'usage'}>
-                        <h3 className="section-heading">
+                        <h3 className="react-rainbow-getting-started_section-heading">
                             There are several runnable examples in this Git repo,
                             but here's a Hello World one:
                         </h3>
@@ -104,27 +103,27 @@ export default class GettingStartedPage extends Component {
                         <iframe
                             title="codesandbox example"
                             src="https://codesandbox.io/embed/24p8n0pnz0?hidenavigation=1&fontsize=14&view=preview"
-                            style={this.sampleStyles}
+                            className="react-rainbow-getting-started_example"
                         />
                     </RenderIf>
                     <RenderIf isTrue={activeTabName === 'contribuiting'}>
                         <div className="rainbow-flex rainbow-flex_column">
-                            <h3 className="section-heading">
+                            <h3 className="react-rainbow-getting-started_section-heading">
                                 We are excited that you are interested in
                                 contributing to this project!
                             </h3>
-                            <h2 className="section-heading-2"> Get your git on</h2>
-                            <h5 className="section-heading-5">
+                            <h2 className="react-rainbow-getting-started_section-heading-2"> Get your git on</h2>
+                            <h5 className="react-rainbow-getting-started_section-heading-5">
                                 Pull requests are very welcome,
                                 but should be within the scope of the project,
                                 and follow the repository's code conventions.
                                 Before submitting a pull request, it's always good to file an issue,
                                 so we can discuss the details of the PR.
                             </h5>
-                            <h5 className="section-heading-5 rainbow-m-top_x-small">
+                            <h5 className="react-rainbow-getting-started_section-heading-5 rainbow-m-top_x-small">
                                 Feel free to contribuite in rainbow-components available in
                                 <a
-                                    className="section-link"
+                                    className="react-rainbow-getting-started_section-link"
                                     href="https://github.com/90milesbridge/react-rainbow"
                                     rel="noopener noreferrer"
                                     target="_blank">
@@ -138,7 +137,3 @@ export default class GettingStartedPage extends Component {
         );
     }
 }
-
-GettingStartedPage.propTypes = {};
-
-GettingStartedPage.defaultProps = {};
