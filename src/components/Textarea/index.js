@@ -99,6 +99,7 @@ class Textarea extends Component {
             rows,
             id,
             hideLabel,
+            name,
         } = this.props;
 
         return (
@@ -114,6 +115,7 @@ class Textarea extends Component {
                 <textarea
                     id={this.textareaId}
                     className="rainbow-textarea"
+                    name={name}
                     placeholder={placeholder}
                     disabled={disabled}
                     required={required}
@@ -150,6 +152,7 @@ Textarea.propTypes = {
     /** A boolean to hide the textarea label */
     hideLabel: PropTypes.bool,
     /** The value of the textarea, also used as the default value during init. */
+    name: PropTypes.string,
     value: PropTypes.string,
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
     placeholder: PropTypes.string,
@@ -196,6 +199,7 @@ Textarea.propTypes = {
 
 Textarea.defaultProps = {
     value: undefined,
+    name: undefined,
     placeholder: null,
     maxLength: undefined,
     minLength: undefined,
