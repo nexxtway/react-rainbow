@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ComponentExampleCard from './../../ComponentExampleCard';
+import ExperienceExampleCards from './../../ExperienceExampleCards';
 import PageObjectCard from './pageObjectCard';
 import './styles.css';
 
@@ -16,7 +16,7 @@ export default function Util(props) {
                     </div>
 
                     <div className="react-rainbow-utils_examples-card-container">
-                        <ComponentExampleCard results={response.results} />
+                        <ExperienceExampleCards results={response.results} />
                     </div>
                 </div>
             );

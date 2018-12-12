@@ -1,0 +1,96 @@
+.react-rainbow-getting-started_top-container {
+    padding-top: 40px;
+    background-color: #f4f6f9;
+}
+
+.react-rainbow-getting-started_top-container-tabset {
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.react-rainbow-getting-started_container {
+    background-color: white;
+    padding: 1.25rem 2rem 0 2rem;
+}
+
+
+.react-rainbow-getting-started_section-heading {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #061c3f;
+    font-family: Lato Light;
+    margin-top: 1rem;
+}
+
+.react-rainbow-getting-started_section-heading-2 {
+    font-size: 1.25rem;
+    line-height: 1.25;
+    color: #061c3f;
+    font-family: Lato Light;
+    margin-bottom: 1rem;
+    margin-top: 1.75rem;
+}
+
+.react-rainbow-getting-started_section-heading-5 {
+    font-size: 0.88rem;
+    font-weight: bold;
+    line-height: 1.5;
+    color: #576574;
+    font-family: Lato Light;
+}
+
+.react-rainbow-getting-started_section-link {
+    margin-left: 3px;
+    font-size: inherit;
+    color: #009acf;
+    text-decoration: none;
+}
+
+.react-rainbow-getting-started_section-italic {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    color: #333;
+    font-family: -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Roboto",
+    "Oxygen",
+    "Ubuntu",
+    "Cantarell",
+    "Fira Sans",
+    "Droid Sans",
+    "Helvetica Neue",
+    sans-serif;
+    font-size: inherit;
+    line-height: 1.5;
+    font-style: italic;
+}
+.react-rainbow-getting-started_top-container-tab {
+    overflow: unset;
+}
+
+.react-rainbow-getting-started_example {
+    width: 100%;
+    height: 350px;
+    border: 0;
+}
+
+@media (max-width: 650px) {
+    .react-rainbow-getting-started_top-container-tabset {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    .react-rainbow-getting-started_top-container-tab a {
+        padding: 0 12px;
+        font-size: 0.725rem;
+    }
+    .react-rainbow-getting-started_container {
+        padding: 1rem 1rem 0 1rem;
+    }
+    .react-rainbow-getting-started_section-heading {
+        text-align: center;
+    }
+    .react-rainbow-getting-started_top-container-tab_shortened {
+        overflow: hidden;
+    }
+}

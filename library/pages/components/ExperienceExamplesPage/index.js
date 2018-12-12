@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import { Prismic } from 'react-prismic-cms';
-import Query from './query';
+import { Prismic, QueryAt, QueryMulti } from 'react-prismic-cms';
+import ExperienceExample from './experienceExample';
 import './styles.css';
 
 export default function ExperienceExamplesPage() {
@@ -12,7 +12,9 @@ export default function ExperienceExamplesPage() {
                     Experience examples
                 </h1>
                 <div className="react-rainbow-experience-examples-container">
-                    <Query value="experience-examples" />
+                    <QueryMulti component={ExperienceExample} type="experience-examples">
+                        <QueryAt path="document.type" value="experience-examples" />
+                    </QueryMulti>
                 </div>
             </div>
         </Prismic>

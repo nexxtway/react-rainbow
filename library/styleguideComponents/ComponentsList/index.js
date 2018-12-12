@@ -7,7 +7,7 @@ import VerticalSection from '../../../src/components/VerticalSection';
 import './styles.css';
 
 function resolveCurrentUrl() {
-    return window.location.href.split('#/')[1] || 'Overview';
+    return window.location.href.split('#/')[1] || 'GettingStarted';
 }
 
 export default class ComponentsList extends Component {
@@ -37,13 +37,17 @@ export default class ComponentsList extends Component {
                 className="rainbow-p-bottom_large react-rainbow-vertical-navigation"
                 selectedItem={selectedItem}
                 onSelect={this.handleOnSelect}>
-
+                <VerticalSection>
+                    <VerticalItem
+                        name="GettingStarted"
+                        label="Getting Started"
+                        href="/#/GettingStarted" />
+                </VerticalSection>
                 <Sections selectedItem={selectedItem} items={items} searchTerm={searchTerm} />
 
                 <VerticalSection>
                     <VerticalItem
                         name="Experiences"
-                        selectedItem={selectedItem}
                         label="Experiences"
                         href="/#/Experiences" />
                 </VerticalSection>

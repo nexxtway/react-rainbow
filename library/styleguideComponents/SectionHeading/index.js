@@ -16,8 +16,8 @@ const GithubStarsBadge = GithubStars(({ stars }) => (
 ));
 
 function resolveTitle(title) {
-    if (title === 'Getting Started') {
-        return 'Overview';
+    if (title === 'GettingStarted') {
+        return 'Getting Started';
     }
     return title;
 }
