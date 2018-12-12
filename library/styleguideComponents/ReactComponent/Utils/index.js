@@ -14,7 +14,10 @@ export default function Util(props) {
                     <div className="react-rainbow-utils_text rainbow-m-around_medium">
                         <h1 className="react-rainbow-utils_text-header">Real experience examples</h1>
                     </div>
-                    <ComponentExampleCard results={response.results} />
+
+                    <div className="react-rainbow-utils_examples-card-container">
+                        <ComponentExampleCard results={response.results} />
+                    </div>
                 </div>
             );
         }
