@@ -5,8 +5,6 @@ import Sections from './sections';
 import VerticalItem from '../../../src/components/VerticalItem';
 import VerticalSection from '../../../src/components/VerticalSection';
 import './styles.css';
-import VerticalItem from '../../../src/components/VerticalItem';
-import VerticalSection from '../../../src/components/VerticalSection';
 
 function resolveCurrentUrl() {
     return window.location.href.split('#/')[1] || 'GettingStarted';
@@ -44,15 +42,12 @@ export default class ComponentsList extends Component {
                         name="GettingStarted"
                         label="Getting Started"
                         href="/#/GettingStarted" />
-                </VerticalSection>
-                <Sections selectedItem={selectedItem} items={items} searchTerm={searchTerm} />
-
-                <VerticalSection>
                     <VerticalItem
                         name="Experiences"
                         label="Experiences"
                         href="/#/Experiences" />
                 </VerticalSection>
+                <Sections selectedItem={selectedItem} items={items} searchTerm={searchTerm} />
             </VerticalNavigation>
         );
     }
