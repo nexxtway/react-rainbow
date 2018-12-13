@@ -74,6 +74,10 @@ module.exports = {
             sectionDepth: 1,
             usageMode: 'expand',
         },
+        {
+            name: 'Experiences',
+            content: 'library/pages/experiencesExamples.md',
+        },
     ],
     webpackConfig: {
         module: {

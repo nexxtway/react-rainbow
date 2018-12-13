@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import VerticalNavigation from './../../../src/components/VerticalNavigation';
 import Sections from './sections';
-import './styles.css';
 import VerticalItem from '../../../src/components/VerticalItem';
 import VerticalSection from '../../../src/components/VerticalSection';
+import './styles.css';
 
 function resolveCurrentUrl() {
     return window.location.href.split('#/')[1] || 'GettingStarted';
@@ -40,9 +40,12 @@ export default class ComponentsList extends Component {
                 <VerticalSection>
                     <VerticalItem
                         name="GettingStarted"
-                        selectedItem={selectedItem}
                         label="Getting Started"
                         href="/#/GettingStarted" />
+                    <VerticalItem
+                        name="Experiences"
+                        label="Experiences"
+                        href="/#/Experiences" />
                 </VerticalSection>
                 <Sections selectedItem={selectedItem} items={items} searchTerm={searchTerm} />
             </VerticalNavigation>

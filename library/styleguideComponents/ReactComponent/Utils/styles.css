@@ -1,27 +1,12 @@
-.react-rainbow-utils-item_example-container {
-    position: relative;
-    margin: 0 16px 20px 16px;
-}
-
-.react-rainbow-utils-item_github-link {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-}
-
-.react-rainbow-utils-item_github-link:hover > svg {
-    fill: #009ACF;
-}
-
 .react-rainbow-utils_link {
     margin: 0 16px 20px 16px;
 }
 
-.react-rainbow-utils_link:hover, .react-rainbow-utils_link:focus, .react-rainbow-utils_example-link:hover, .react-rainbow-utils_example-link:focus {
+.react-rainbow-utils_link:hover, .react-rainbow-utils_link:focus, {
     text-decoration: none;
 }
 
-.react-rainbow-utils-item, .react-rainbow-utils-item_example-container, .react-rainbow-utils-item_page-object {
+.react-rainbow-utils-item_page-object {
     width: 260px;
     transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
@@ -31,7 +16,7 @@
     transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
-.react-rainbow-utils-item_img-container, .react-rainbow-utils-item_example-img-container {
+.react-rainbow-utils-item_img-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,22 +27,8 @@
     height: 56px;
 }
 
-.react-rainbow-utils-item_img-container {
+.react-rainbow-utils-item_img-container  {
     margin-top: 0.75rem;
-}
-
-.react-rainbow-utils-item_example-img-container {
-    margin: 1.2rem 0.75rem;
-}
-
-.react-rainbow-utils-item_example-img {
-    height: 80px;
-}
-
-.react-rainbow-utils-item_content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .react-rainbow-utils-item_page-object-content {
@@ -79,50 +50,9 @@
     text-align: left;
     align-self: center;
     text-decoration: none;
-    white-space: nowrap;
+    white-space: nowrap; 
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-.react-rainbow-utils-item_example-header {
-    font-size: 16px;
-    margin: 0;
-    color: #061c3f;
-    text-align: justify;
-    align-self: flex-start;
-}
-
-.react-rainbow-utils-item_description {
-    font-size: 14px;
-    line-height: 1.5;
-    color: #576574;
-    align-self: flex-start;
-    text-align: justify;
-    overflow: hidden;
-    max-height: 4rem;
-}
-
-.react-rainbow-utils-item_description::before {
-    content:'...';
-    position: absolute;
-    bottom: 0.75rem;
-    right: 0.375rem;
-}
-
-.react-rainbow-utils-item_description::after {
-    content: '';
-    position: absolute;
-    width: 4rem;
-    height: 1rem;
-    background-color: white;
-}
-
-.react-rainbow-utils-item_description:hover {
-    max-height: 100%;
-}
-
-.react-rainbow-utils-item_description:hover::before {
-    content: '';
 }
 
 .react-rainbow-utils_text {
@@ -147,12 +77,4 @@
     display: flex;
     flex-wrap: wrap;
     margin: 1.2rem 0;
-}
-
-@media (max-width: 400px) {
-
-    .react-rainbow-utils-item {
-        margin: 0 16px 16px 24px;
-        width: 300px;
-    }
 }

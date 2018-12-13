@@ -13,7 +13,7 @@ export default function PlaygroundRenderer(props) {
     } = props;
     const { ...rest } = previewProps;
 
-    if (name === 'GettingStarted') {
+    if (name === 'GettingStarted' || name === 'Experiences') {
         return (
             <div className="rainbow-position_relative">
                 {preview}

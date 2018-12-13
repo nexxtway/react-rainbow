@@ -61,7 +61,6 @@ export default class Section extends Component {
         const { label, description, items } = this.props;
         const { isExpanded } = this.state;
 
-
         return (
             <VerticalSectionOverflow
                 expanded={isExpanded}
