@@ -89,6 +89,7 @@ CheckboxGroup.propTypes = {
     label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
+    /** The name of the checkbox group */
     name: PropTypes.string,
     /** The list of selected checkboxes. Each array entry contains the value of a selected checkbox.
      * The value of each checkbox is set in the options attribute. */
