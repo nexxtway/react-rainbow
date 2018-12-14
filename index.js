@@ -13,6 +13,7 @@ import CarouselImage from './CarouselImage';
 import Chart from './Chart';
 import CheckboxGroup from './CheckboxGroup';
 import CheckboxToggle from './CheckboxToggle';
+import Column from './Column';
 import Dataset from './Dataset';
 import GMap from './GMap';
 import Input from './Input';
@@ -34,6 +35,7 @@ import Slider from './Slider';
 import Spinner from './Spinner';
 import Tab from './Tab';
 import Tabset from './Tabset';
+import Table from './Table';
 import Textarea from './Textarea';
 import VerticalItem from './VerticalItem';
 import VerticalNavigation from './VerticalNavigation';
@@ -54,6 +56,7 @@ export {
     CarouselCard,
     CarouselImage,
     Chart,
+    Column,
     CheckboxGroup,
     CheckboxToggle,
     Dataset,
@@ -77,6 +80,7 @@ export {
     Spinner,
     Tab,
     Tabset,
+    Table,
     Textarea,
     VerticalItem,
     VerticalNavigation,
