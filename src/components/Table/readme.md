@@ -1,4 +1,4 @@
-#Basic Table
+#### simple Table
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
     const {

@@ -7,18 +7,17 @@ export default function Column() {
 }
 
 Column.propTypes = {
+    /* The header of the column */
     header: PropTypes.oneOfType([
         PropTypes.node,
         PropTypes.string,
     ]),
+    /** The component with wich to render the content of each cell */
     component: PropTypes.node.isRequired,
+    /** The field to display */
     field: PropTypes.string.isRequired,
-    sortable: PropTypes.bool,
-    onSort: PropTypes.func,
 };
 
 Column.defaultProps = {
     header: undefined,
-    sortable: false,
-    onSort: () => {},
 };

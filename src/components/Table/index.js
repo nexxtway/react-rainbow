@@ -5,6 +5,8 @@ import Rows from './body';
 import Headers from './head';
 import './styles.css';
 
+/** Data tables display information in a way that’s easy to scan,
+ * so that users can look for patterns and insights. */
 export default class Table extends Component {
     constructor(props) {
         super(props);
@@ -28,12 +30,12 @@ export default class Table extends Component {
         return (
             <table className={className} style={style}>
                 <thead className="rainbow-table_head">
-                    <tr className="rainbow-table_header-row">
-                        <Headers columns={this.columns} />
-                    </tr>
+                <tr className="rainbow-table_header-row">
+                    <Headers columns={this.columns} />
+                </tr>
                 </thead>
                 <tbody className="rainbow-table_body">
-                    <Rows data={data} columns={this.columns} />
+                <Rows data={data} columns={this.columns} />
                 </tbody>
             </table>
         );
@@ -41,9 +43,16 @@ export default class Table extends Component {
 }
 
 Table.propTypes = {
+    /** An array containing the objects to be displayed */
     data: PropTypes.array.isRequired,
+    /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
+    /** An object with custom style applied for the outer element. */
     style: PropTypes.object,
+    /**
+     * This prop that should not be visible in the documentation.
+     * @ignore
+     */
     children: PropTypes.node,
 };
 
