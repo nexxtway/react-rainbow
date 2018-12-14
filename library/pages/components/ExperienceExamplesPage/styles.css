@@ -12,17 +12,24 @@
     font-weight: 300;
     letter-spacing: 0.5px;
     color: #061c3f;
-    padding: 36px 0;
+    padding: 2.25rem 0;
 }
 
 .react-rainbow-experience-examples-container {
     display: flex;
     flex-wrap: wrap;
-    padding: 0 30px;
+    padding: 0 2rem;
+}
+
+@media (max-width: 800px) {
+    .react-rainbow-experience-examples-container {
+        justify-content: center;
+    }
 }
 
 @media (max-width: 600px) {
-    .react-rainbow-experience-examples-container {
-        justify-content: center;
+    .react-rainbow-experience-examples-view-port {
+        height: unset;
+        padding-bottom: 1.5rem;
     }
 }

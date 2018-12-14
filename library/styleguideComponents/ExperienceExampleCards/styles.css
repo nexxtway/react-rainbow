@@ -91,10 +91,3 @@
 .react-rainbow-experience-example-cards_github-link:hover > svg {
     fill: #009ACF;
 }
-
-@media (max-width: 400px) {
-    .react-rainbow-experience-example-cards {
-        margin: 0 16px 16px 24px;
-        width: 300px;
-    }
-}
