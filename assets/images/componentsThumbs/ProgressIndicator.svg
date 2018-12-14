@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="140" height="12" viewBox="0 0 140 12">
+    <defs>
+        <filter id="a" width="150%" height="150%" x="-25%" y="-25%" filterUnits="objectBoundingBox">
+            <feOffset in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation=".5"/>
+            <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0.890196078 0 0 0 0 0.898039216 0 0 0 0 0.929411765 0 0 0 1 0"/>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+        <circle id="c" cx="2" cy="2" r="2"/>
+        <filter id="b" width="175%" height="175%" x="-37.5%" y="-37.5%" filterUnits="objectBoundingBox">
+            <feOffset in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation=".5"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.890196078 0 0 0 0 0.898039216 0 0 0 0 0.929411765 0 0 0 1 0"/>
+        </filter>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g fill="#E3E5ED" fill-rule="nonzero">
+            <path d="M4 7V6h132.489v1z"/>
+            <path d="M104 9a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zM137 9a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zM68 9a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/>
+        </g>
+        <g fill-rule="nonzero" transform="translate(0 1)">
+            <circle cx="4.99" cy="4.99" r="4.99" fill="#1DE9B6"/>
+            <path fill="#1AD1A3" d="M9.98 4.99a5.005 5.005 0 0 1-4.99 4.99c-1.59 0-2.994-.717-3.898-1.87A4.923 4.923 0 0 0 4.21 9.2 5.005 5.005 0 0 0 9.2 4.21a4.923 4.923 0 0 0-1.092-3.118C9.263 1.996 9.981 3.4 9.981 4.99z"/>
+            <path fill="#FFF" d="M8.033 3.367c-.118-.303-.357-.255-.617-.204-.155.032-.844.234-1.934 1.384a9.22 9.22 0 0 0-.948 1.148 6.032 6.032 0 0 0-.402-.45 5.819 5.819 0 0 0-.96-.762.442.442 0 0 0-.461.753c.004.003.43.266.797.634.374.374.714.881.717.886a.442.442 0 0 0 .797-.138c0-.004.176-.488 1.1-1.463.746-.786 1.243-1.036 1.415-1.105l.005-.001.016-.007a.527.527 0 0 1 .046-.016l-.013.003v-.002l.232-.1c.225-.092.298-.334.21-.56z"/>
+        </g>
+        <g filter="url(#a)" transform="translate(32 1)">
+            <circle cx="4.99" cy="4.99" r="4.99" fill="#01B6F5" fill-rule="nonzero"/>
+            <g transform="translate(3 3)">
+                <use fill="#000" filter="url(#b)" xlink:href="#c"/>
+                <use fill="#FFF" xlink:href="#c"/>
+            </g>
+        </g>
+    </g>
+</svg>
