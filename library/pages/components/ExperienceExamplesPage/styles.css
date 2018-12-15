@@ -30,6 +30,14 @@
 @media (max-width: 600px) {
     .react-rainbow-experience-examples-view-port {
         height: unset;
-        padding-bottom: 1.5rem;
+        padding: 0 2.25rem 1.5rem 2.25rem;
+    }
+
+    .react-rainbow-experience-examples-header-title {
+        font-size: 28px;
+    }
+
+    .react-rainbow-experience-examples-container {
+        padding: 0;
     }
 }
