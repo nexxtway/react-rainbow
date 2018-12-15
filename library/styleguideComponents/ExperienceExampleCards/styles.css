@@ -54,7 +54,7 @@
     content: '';
     position: absolute;
     width: 4rem;
-    height: 1rem;
+    height: 1.5rem;
     background-color: white;
 }
 
@@ -92,9 +92,20 @@
     fill: #009ACF;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 600px) {
     .react-rainbow-experience-example-cards {
-        margin: 0 16px 16px 24px;
-        width: 300px;
+        width: 100%;
+    }
+
+    .react-rainbow-experience-example-cards_example-container {
+        margin: 0 0 20px 0;
+        width: 100%;
+    }
+
+    .react-rainbow-experience-example-cards_description {
+        max-height: 100%;
+    }
+    .react-rainbow-experience-example-cards_description::before {
+        content:'';
     }
 }
