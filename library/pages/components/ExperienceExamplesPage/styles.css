@@ -21,7 +21,7 @@
     padding: 0 2rem;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1024px) {
     .react-rainbow-experience-examples-container {
         justify-content: center;
     }
@@ -35,9 +35,20 @@
 
     .react-rainbow-experience-examples-header-title {
         font-size: 28px;
+        padding: 1.5rem 0 1rem 0;
     }
 
     .react-rainbow-experience-examples-container {
         padding: 0;
+    }
+}
+
+@media (max-width: 340px) {
+    .react-rainbow-experience-examples-view-port {
+        padding: 0 1rem 1rem 1rem;
+    }
+
+    .react-rainbow-experience-examples-header-title {
+        font-size: 20px;
     }
 }
