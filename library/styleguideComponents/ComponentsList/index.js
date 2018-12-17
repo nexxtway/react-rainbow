@@ -46,6 +46,10 @@ export default class ComponentsList extends Component {
                         name="Experiences"
                         label="Experiences"
                         href="/#/Experiences" />
+                    <VerticalItem
+                        name="ComponentsPage"
+                        label="ComponentsPage"
+                        href="/#/ComponentsPage" />
                 </VerticalSection>
                 <Sections selectedItem={selectedItem} items={items} searchTerm={searchTerm} />
             </VerticalNavigation>
