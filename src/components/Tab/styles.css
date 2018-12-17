@@ -2,7 +2,6 @@
 .rainbow-tab {
   height: 2.75rem;
   background-color: transparent;
-  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,7 +21,6 @@
   font-weight: 600;
   color: #576574;
   z-index: 0;
-  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
