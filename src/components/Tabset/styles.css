@@ -2,5 +2,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  overflow-y: visible;
-  overflow-x: hidden; }
+  overflow: hidden; }
+
+.rainbow-tabset--full-width {
+  justify-content: space-around; }
