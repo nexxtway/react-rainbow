@@ -3,13 +3,10 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import rainbowLogo from '../../../assets/images/rainbow-logo.svg';
 import RenderIf from '../RenderIf';
-import {
-    UP_KEY,
-    DOWN_KEY,
-    ESCAPE_KEY,
-} from './../../libs/constants';
+import { DOWN_KEY, ESCAPE_KEY, UP_KEY, } from './../../libs/constants';
 import RightArrow from './rightArrow';
 import './styles.css';
+import MenuDivider from '../MenuDivider';
 
 export default class ProjectSelector extends Component {
     constructor(props) {
@@ -119,7 +116,7 @@ export default class ProjectSelector extends Component {
                     <RightArrow className="react-rainbow-selector_selected-item-section_arrow" />
                 </li>
                 <RenderIf isTrue={isOpen}>
-                    <li className="react-rainbow-selector_divider" />
+                    <MenuDivider className="react-rainbow-selector_divider" />
                     <li>
                         <a
                             href="javascript:void(0);"

@@ -1,6 +1,6 @@
 .react-rainbow-selector {
     border-radius: 22px;
-    background-color: #fff;
+    background-color: transparent;
     transition: height 350ms linear;
     width: 295px;
     height: 57px;
@@ -16,8 +16,6 @@
     box-shadow: 0 2px 4px 0 #e3e5ed;
     border-color: #e3e5ed;
     z-index: 100;
-    /*position: fixed;*/
-    /*top: 5px;*/
     height: unset;
     background-color: #fff;
 }
@@ -41,9 +39,7 @@
 }
 
 .react-rainbow-selector_divider {
-    height: 2px;
     margin: 2px 16px;
-    background-color: #e3e5ed;
 }
 
 .react-rainbow-selector_item {
