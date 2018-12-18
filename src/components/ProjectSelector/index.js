@@ -2,11 +2,11 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import rainbowLogo from '../../../assets/images/rainbow-logo.svg';
+import { DOWN_KEY, ESCAPE_KEY, UP_KEY } from '../../libs/constants';
 import RenderIf from '../RenderIf';
-import { DOWN_KEY, ESCAPE_KEY, UP_KEY, } from './../../libs/constants';
+import MenuDivider from '../MenuDivider';
 import RightArrow from './rightArrow';
 import './styles.css';
-import MenuDivider from '../MenuDivider';
 
 export default class ProjectSelector extends Component {
     constructor(props) {
