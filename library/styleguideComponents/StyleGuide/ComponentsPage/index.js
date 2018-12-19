@@ -70,7 +70,7 @@ export default class ComponentsPage extends Component {
     }
 
     handleOnError(event) {
-        event.target.src = 'images/componentsThumbs/not-found.svg';
+        event.target.src = 'images/componentsThumbs/default-image.svg';
     }
 
     renderCategoryTitle(components, title) {
