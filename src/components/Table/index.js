@@ -10,32 +10,37 @@ import './styles.css';
 export default class Table extends Component {
     constructor(props) {
         super(props);
-        this.columns = undefined;
+        this.state = { columns: [] };
     }
 
     componentDidMount() {
         if (!this.columns) {
-            this.getColumns();
+            this.resolveColumnsFomChilren();
         }
     }
 
-    getColumns() {
+    componentDidUpdate() {
+        this.resolveColumnsFomChilren();
+    }
+
+    resolveColumnsFomChilren() {
         const { children } = this.props;
-        this.columns = resolveColumns(children);
-        this.setState({ key: Date.now() });
+        const columns = resolveColumns(children);
+        this.setState({ columns });
     }
 
     render() {
         const { data, className, style } = this.props;
+        const { columns } = this.state;
         return (
             <table className={className} style={style}>
                 <thead className="rainbow-table_head">
                 <tr className="rainbow-table_header-row">
-                    <Headers columns={this.columns} />
+                    <Headers columns={columns} />
                 </tr>
                 </thead>
                 <tbody className="rainbow-table_body">
-                <Rows data={data} columns={this.columns} />
+                <Rows data={data} columns={columns} />
                 </tbody>
             </table>
         );
