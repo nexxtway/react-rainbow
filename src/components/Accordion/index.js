@@ -10,6 +10,7 @@ const LEFT_SIDE = -1;
 /**
 * An Accordion is a collection of vertically stacked sections with multiple content areas.
 * Allows a user to toggle the display of a section of content.
+* @category Layout
 */
 export default class Accordion extends Component {
     constructor(props) {

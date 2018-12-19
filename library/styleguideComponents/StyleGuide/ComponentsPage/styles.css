@@ -7,10 +7,22 @@
     margin-top: 2.375rem;
 }
 
-.react-rainbow-components-page_card-container {
+.react-rainbow-components-page_cards-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 4.4375rem;
+}
+
+.react-rainbow-components-page_card-group-container {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 4.4375rem;
+}
+
+.react-rainbow-components-page_category-title {
+    font-family: Lato;
+    font-size: 20px;
+    font-weight: 300;
+    color: #576574;
 }
 
 .react-rainbow-components-page_card {

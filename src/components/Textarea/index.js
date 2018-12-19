@@ -10,6 +10,7 @@ import './styles.css';
 
 /**
  * Textarea inputs are used for freeform data entry.
+ * @category Form
  */
 class Textarea extends Component {
     constructor(props) {

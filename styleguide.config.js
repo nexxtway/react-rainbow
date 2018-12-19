@@ -69,10 +69,7 @@ module.exports = {
             content: 'library/pages/gettingStarted.md',
         },
         {
-            name: 'Components',
             components: 'src/components/**/index.js',
-            sectionDepth: 1,
-            usageMode: 'expand',
         },
         {
             name: 'Experiences',

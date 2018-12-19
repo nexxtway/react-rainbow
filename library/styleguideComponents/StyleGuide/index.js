@@ -42,10 +42,10 @@ export default class StyleGuide extends React.Component {
                     {toc}
                 </aside>
                 <main className="react-rainbow-main-content">
-                    <RenderIf isTrue={window.location.hash !== '#/ComponentsPage'}>
+                    <RenderIf isTrue={window.location.hash !== '#/Components'}>
                         {children}
                     </RenderIf>
-                    <RenderIf isTrue={window.location.hash === '#/ComponentsPage'}>
+                    <RenderIf isTrue={window.location.hash === '#/Components'}>
                         <ComponentsPage components={components} />
                     </RenderIf>
                 </main>

@@ -11,6 +11,7 @@ const LEFT_SIDE = -1;
 
 /**
 * Tabs make it easy to explore and switch between different views.
+* @category Layout
 */
 export default class Tabset extends Component {
     constructor(props) {

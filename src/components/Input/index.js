@@ -7,6 +7,7 @@ import withReduxForm from './../../libs/hocs/withReduxForm';
 
 /**
  * Text inputs are used for freeform data entry.
+ * @category Form
  */
 class Input extends Component {
     constructor(props) {
