@@ -51,11 +51,16 @@
     cursor: pointer;
     text-decoration: none !important;
 }
-.react-rainbow-selector_item:hover, .react-rainbow-selector_item:focus {
+.react-rainbow-selector_item:focus {
     background-color: #f4f6f9;
+    outline: none !important;
 }
 .react-rainbow-selector_selected-item-section .react-rainbow-selector_item {
     width: 100%;
+}
+.react-rainbow-selector_selected-item-section .react-rainbow-selector_item:focus,
+.react-rainbow-selector_selected-item-section .react-rainbow-selector_item:hover {
+    background-color: #fff;
 }
 
 .react-rainbow-selector_item-text {

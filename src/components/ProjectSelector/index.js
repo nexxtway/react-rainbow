@@ -1,8 +1,8 @@
 /* eslint-disable no-script-url */
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import rainbowLogo from '../../../assets/images/rainbow-logo.svg';
 import { DOWN_KEY, ESCAPE_KEY, UP_KEY } from '../../libs/constants';
+import rainbowLogo from '../../../assets/images/rainbow-logo.svg';
 import RenderIf from '../RenderIf';
 import MenuDivider from '../MenuDivider';
 import RightArrow from './rightArrow';
@@ -24,12 +24,20 @@ export default class ProjectSelector extends Component {
             [ESCAPE_KEY]: () => this.closeMenu(),
         };
         this.containerRef = React.createRef();
-        this.references = Array(3).fill(0).map(() => React.createRef());
+        this.references = Array(2).fill(0).map(() => React.createRef());
     }
 
     getContainerClassNames() {
         const { isOpen } = this.state;
         return classnames('react-rainbow-selector', { 'react-rainbow-selector--open': isOpen });
+    }
+
+    getTabIndex() {
+        const { isOpen } = this.state;
+        if (isOpen) {
+            return -1;
+        }
+        return 0;
     }
 
     handleKeyPressed(event) {
@@ -106,7 +114,7 @@ export default class ProjectSelector extends Component {
                     className="react-rainbow-selector_selected-item-section"
                     onClick={this.toggleMenu}
                     role="menuitem">
-                    <a href="javascript:void(0);" ref={this.references[0]} className="react-rainbow-selector_item">
+                    <a href="javascript:void(0);" className="react-rainbow-selector_item" tabIndex={this.getTabIndex()}>
                         <img src={rainbowLogo} alt="react-rainbow" />
                         <div className="react-rainbow-selector_item-text">
                             <span className="react-rainbow-selector_item-text_header">react-rainbow components</span>
@@ -121,7 +129,8 @@ export default class ProjectSelector extends Component {
                         <a
                             href="javascript:void(0);"
                             role="menuitem"
-                            ref={this.references[1]}
+                            ref={this.references[0]}
+                            onMouseEnter={() => this.focusChild(0)}
                             className="react-rainbow-selector_item">
                             <img src={rainbowLogo} alt="react-rainbow" />
                             <div className="react-rainbow-selector_item-text">
@@ -134,7 +143,8 @@ export default class ProjectSelector extends Component {
                         <a
                             href="javascript:void(0);"
                             role="menuitem"
-                            ref={this.references[2]}
+                            ref={this.references[1]}
+                            onMouseEnter={() => this.focusChild(1)}
                             className="react-rainbow-selector_item">
                             <img src={rainbowLogo} alt="react-rainbow" />
                             <div className="react-rainbow-selector_item-text">
