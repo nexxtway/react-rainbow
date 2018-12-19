@@ -22,6 +22,7 @@
     font-family: Lato;
     font-size: 20px;
     font-weight: 300;
+    margin-left: 1.5rem;
     color: #576574;
 }
 
@@ -44,9 +45,6 @@
     font-family: Lato;
     font-size: 2rem;
     font-weight: 300;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
     letter-spacing: 0.03125rem;
     color: #061c3f;
 }
