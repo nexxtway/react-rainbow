@@ -22,6 +22,8 @@
             email: 'b@gmail.com',
         }
     ];
+    
+    const CellComponent = ({ value }) => <Badge label={value} variant="inverse" />;
 
     const tableStyles = { paddingBottom: '46px' };
 
@@ -35,6 +37,6 @@
         <Table data={tableData} style={tableStyles}>
             <Column header="Name" field="name" />
             <Column header="Company" field="company" />
-            <Column header="email" field="email" />
+            <Column header="email" field="email" component={CellComponent} />
         </Table>
     </div>

@@ -13,11 +13,12 @@ Column.propTypes = {
         PropTypes.string,
     ]),
     /** The component with wich to render the content of each cell */
-    component: PropTypes.node.isRequired,
+    component: PropTypes.node,
     /** The field to display */
     field: PropTypes.string.isRequired,
 };
 
 Column.defaultProps = {
     header: undefined,
+    component: undefined,
 };

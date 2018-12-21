@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import resolveColumns from './resolve-columns';
+import areDifferentColumns from './are-different-columns';
 import Rows from './body';
 import Headers from './head';
 import './styles.css';
@@ -14,9 +15,7 @@ export default class Table extends Component {
     }
 
     componentDidMount() {
-        if (!this.columns) {
-            this.resolveColumnsFomChilren();
-        }
+        this.resolveColumnsFomChilren();
     }
 
     componentDidUpdate() {
@@ -25,8 +24,11 @@ export default class Table extends Component {
 
     resolveColumnsFomChilren() {
         const { children } = this.props;
-        const columns = resolveColumns(children);
-        this.setState({ columns });
+        const { columns } = this.state;
+        const newColumns = resolveColumns(children);
+        if (!columns || areDifferentColumns(columns, newColumns)) {
+            this.setState({ columns: newColumns });
+        }
     }
 
     render() {
@@ -40,7 +42,7 @@ export default class Table extends Component {
                 </tr>
                 </thead>
                 <tbody className="rainbow-table_body">
-                <Rows data={data} columns={columns} />
+                    <Rows data={data} columns={columns} />
                 </tbody>
             </table>
         );

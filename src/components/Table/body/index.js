@@ -6,7 +6,7 @@ export default function Rows(props) {
     const { data, columns } = props;
     if (Array.isArray(data) && Array.isArray(columns)) {
         return data.map(item => (
-            <Row data={item} colums={columns} />
+            <Row data={item} columns={columns} />
         ));
     }
     return null;

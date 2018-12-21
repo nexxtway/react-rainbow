@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import Cell from './cell';
 
 export default function Row(props) {
-    const { data, colums } = props;
-    const cells = colums.map(({ component, field }) => (
+    const { data, columns } = props;
+    const cells = columns.map(({ component, field }) => (
         <Cell component={component} value={data[field]} />
     ));
     return (
@@ -16,10 +16,10 @@ export default function Row(props) {
 
 Row.propTypes = {
     data: PropTypes.object,
-    colums: PropTypes.array,
+    columns: PropTypes.array,
 };
 
 Row.defaultProps = {
     data: [],
-    colums: [],
+    columns: [],
 };
