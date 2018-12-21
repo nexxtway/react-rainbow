@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactGA from './.././../ga';
-import Logo from './../Logo';
 import './styles.css';
+import ProjectSelector from '../ProjectSelector';
 
 // analytics
 function trackPageview() {
@@ -27,15 +27,13 @@ export default class StyleGuide extends React.Component {
     render() {
         const {
             children,
-            title,
             toc,
-            version,
         } = this.props;
 
         return (
             <div className="react-rainbow-styleguide-container rainbow-position-align_start">
                 <aside className="react-rainbow-sidebar">
-                    <Logo title={title} version={version} />
+                    <ProjectSelector />
                     {toc}
                 </aside>
                 <main className="react-rainbow-main-content">

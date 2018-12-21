@@ -1,10 +1,10 @@
 /* eslint-disable no-script-url */
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import { DOWN_KEY, ESCAPE_KEY, UP_KEY } from '../../libs/constants';
+import { DOWN_KEY, ESCAPE_KEY, UP_KEY } from '../../../src/libs/constants';
 import rainbowLogo from '../../../assets/images/rainbow-logo.svg';
-import RenderIf from '../RenderIf';
-import MenuDivider from '../MenuDivider';
+import RenderIf from '../../../src/components/RenderIf';
+import MenuDivider from '../../../src/components/MenuDivider';
 import RightArrow from './rightArrow';
 import './styles.css';
 

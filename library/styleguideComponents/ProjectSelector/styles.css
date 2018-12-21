@@ -7,6 +7,9 @@
     overflow: hidden;
     border: transparent 1px solid;
     list-style: none;
+    position: absolute;
+    top: 2px;
+    left: 2px;
 }
 .react-rainbow-selector:hover {
     background-color: #f4f6f9;

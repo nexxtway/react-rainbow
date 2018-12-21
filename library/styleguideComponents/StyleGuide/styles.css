@@ -28,7 +28,7 @@
 }
 
 .react-rainbow-sidebar {
-    width: 250px;
+    width: 300px;
     height: 100%;
     position: fixed;
     z-index: 11000;
@@ -40,7 +40,11 @@
     min-height: 100vh;
     width: calc(100vw - 250px);
     padding-top: 68px;
-    margin-left: 250px;
+    margin-left: 300px;
+}
+
+.react-reainbow-toc-top-wrapper {
+    margin-top: 50px;
 }
 
 .rsg--root-3 {

@@ -58,7 +58,7 @@ export default class TableOfContents extends Component {
         const { searchTerm } = this.state;
 
         return (
-            <div>
+            <div className="react-reainbow-toc-top-wrapper">
                 <div className="rainbow-p-top_large rainbow-p-bottom_medium rainbow-p-horizontal_large">
                     <Input
                         label="components filter"
