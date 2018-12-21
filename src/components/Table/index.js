@@ -37,9 +37,9 @@ export default class Table extends Component {
         return (
             <table className={className} style={style}>
                 <thead className="rainbow-table_head">
-                <tr className="rainbow-table_header-row">
-                    <Headers columns={columns} />
-                </tr>
+                    <tr className="rainbow-table_header-row">
+                        <Headers columns={columns} />
+                    </tr>
                 </thead>
                 <tbody className="rainbow-table_body">
                     <Rows data={data} columns={columns} />
@@ -51,7 +51,7 @@ export default class Table extends Component {
 
 Table.propTypes = {
     /** An array containing the objects to be displayed */
-    data: PropTypes.array.isRequired,
+    data: PropTypes.arrayOf(Object).isRequired,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied for the outer element. */
