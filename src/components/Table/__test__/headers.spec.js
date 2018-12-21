@@ -14,8 +14,8 @@ describe('<Headers />', () => {
         const headers = component.find('th');
 
         expect(headers.length).toBe(2);
-        expect(headers[0].props.className).toBe('rainbow-table_header');
-        expect(headers[0].props.children).toBe('header');
+        expect(headers.get(0).props.className).toBe('rainbow-table_header');
+        expect(headers.get(0).props.children).toBe('header');
     });
     it('should return null if no columns is passed', () => {
         const component = mount(<Headers />);

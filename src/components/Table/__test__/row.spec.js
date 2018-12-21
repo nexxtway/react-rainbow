@@ -13,12 +13,12 @@ const columns = [
 
 describe('<Row />', () => {
     it('should return a tr element with no children', () => {
-        const component = mount(<Row data={data} colums={undefined} />);
+        const component = mount(<Row data={data} columns={undefined} />);
 
         expect(component.find('tr').children().length).toBe(0);
     });
     it('should return a tr element with a Cell component', () => {
-        const component = mount(<Row data={data} colums={columns} />);
+        const component = mount(<Row data={data} columns={columns} />);
         const trElement = component.find('tr');
 
         expect(trElement.children().length).toBe(1);
