@@ -15,7 +15,7 @@ export default function Cell(props) {
 }
 
 Cell.propTypes = {
-    component: PropTypes.any,
+    component: PropTypes.func,
     value: PropTypes.any,
 };
 
