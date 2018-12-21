@@ -121,7 +121,7 @@ export default class ProjectSelector extends Component {
                             <span className="react-rainbow-selector_item-text_subheader">version 0.8.20</span>
                         </div>
                     </a>
-                    <RightArrow className="react-rainbow-selector_selected-item-section_arrow" />
+                    <RightArrow isExpanded={isOpen} />
                 </li>
                 <RenderIf isTrue={isOpen}>
                     <MenuDivider className="react-rainbow-selector_divider" />

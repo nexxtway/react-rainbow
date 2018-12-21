@@ -35,7 +35,13 @@
 
 .react-rainbow-selector_selected-item-section_arrow {
     position: absolute;
-    right: 16px
+    right: 16px;
+    transition: transform 0.15s linear;
+    transform: rotate(0deg);
+}
+
+.react-rainbow-selector_selected-item-section_arrow--expanded {
+    transform: rotate(-180deg);
 }
 
 .react-rainbow-selector_divider {
