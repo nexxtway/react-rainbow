@@ -41,14 +41,17 @@ export default class ComponentsList extends Component {
                         name="GettingStarted"
                         label="Getting Started"
                         href="/#/GettingStarted" />
-                    <VerticalItem
-                        name="Experiences"
-                        label="Experiences"
-                        href="/#/Experiences" />
+
                     <VerticalItem
                         name="Components"
                         label="Components"
                         href="/#/Components" />
+
+                    <VerticalItem
+                        name="Experiences"
+                        label="Experiences"
+                        href="/#/Experiences" />
+
                 </VerticalSection>
             </VerticalNavigation>
         );

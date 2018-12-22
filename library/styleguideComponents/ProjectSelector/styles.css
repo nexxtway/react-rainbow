@@ -1,0 +1,96 @@
+.react-rainbow-selector {
+    border-radius: 22px;
+    background-color: transparent;
+    transition: height 350ms linear;
+    width: 295px;
+    height: 57px;
+    overflow: hidden;
+    border: transparent 1px solid;
+    list-style: none;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+}
+.react-rainbow-selector:hover {
+    background-color: #f4f6f9;
+}
+
+.react-rainbow-selector--open {
+    box-shadow: 0 2px 4px 0 #e3e5ed;
+    border-color: #e3e5ed;
+    z-index: 100;
+    height: unset;
+    background-color: #fff;
+}
+.react-rainbow-selector--open:hover {
+    background-color: #fff;
+}
+
+.react-rainbow-selector_selected-item-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+.react-rainbow-selector_selected-item-section:hover {
+    background-color: #f4f6f9;
+}
+
+.react-rainbow-selector_selected-item-section_arrow {
+    position: absolute;
+    right: 16px;
+    transition: transform 0.15s linear;
+    transform: rotate(0deg);
+}
+
+.react-rainbow-selector_selected-item-section_arrow--expanded {
+    transform: rotate(-180deg);
+}
+
+.react-rainbow-selector_divider {
+    margin: 2px 16px;
+}
+
+.react-rainbow-selector_item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 57px;
+    padding: 0 16px;
+    cursor: pointer;
+    text-decoration: none !important;
+}
+.react-rainbow-selector_item:focus {
+    background-color: #f4f6f9;
+    outline: none !important;
+}
+.react-rainbow-selector_selected-item-section .react-rainbow-selector_item {
+    width: 100%;
+}
+.react-rainbow-selector_selected-item-section .react-rainbow-selector_item:focus,
+.react-rainbow-selector_selected-item-section .react-rainbow-selector_item:hover {
+    background-color: #f4f6f9;
+}
+
+.react-rainbow-selector--open .react-rainbow-selector_selected-item-section .react-rainbow-selector_item:focus,
+.react-rainbow-selector--open .react-rainbow-selector_selected-item-section .react-rainbow-selector_item:hover {
+    background-color: #fff;
+}
+
+.react-rainbow-selector_item-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 10px;
+}
+
+.react-rainbow-selector_item-text_header {
+    font-size: 15px;
+    color: #061c3f;
+}
+
+.react-rainbow-selector_item-text_subheader {
+    font-size: 10px;
+    font-weight: 300;
+    color: #576574;
+}
