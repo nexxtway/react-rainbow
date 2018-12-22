@@ -45,9 +45,9 @@
 
     const badgeStyles = { color: '#1de9b6' };
     
-    const Email = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
+    const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
 
-    const tableStyles = { paddingBottom: '46px' };
+    const tableStyles = { paddingBottom: 46 };
 
     <div className="rainbow-p-bottom_xx-large">
         <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
@@ -58,7 +58,7 @@
         </GlobalHeader>
         <Table data={data} style={tableStyles}>
             <Column header="Name" field="name" />
-            <Column header="Status" field="status" component={Email} />
+            <Column header="Status" field="status" component={StatusBadge} />
             <Column header="Company" field="company" />
             <Column header="Email" field="email" />
         </Table>
