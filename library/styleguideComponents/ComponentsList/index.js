@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import VerticalNavigation from './../../../src/components/VerticalNavigation';
-import Sections from './sections';
 import VerticalItem from '../../../src/components/VerticalItem';
 import VerticalSection from '../../../src/components/VerticalSection';
 import './styles.css';
@@ -24,7 +23,7 @@ export default class ComponentsList extends Component {
     }
 
     render() {
-        const { items, searchTerm } = this.props;
+        const { items } = this.props;
         const { selectedItem } = this.state;
 
         if (!items.length) {
@@ -46,8 +45,11 @@ export default class ComponentsList extends Component {
                         name="Experiences"
                         label="Experiences"
                         href="/#/Experiences" />
+                    <VerticalItem
+                        name="Components"
+                        label="Components"
+                        href="/#/Components" />
                 </VerticalSection>
-                <Sections selectedItem={selectedItem} items={items} searchTerm={searchTerm} />
             </VerticalNavigation>
         );
     }
@@ -55,5 +57,4 @@ export default class ComponentsList extends Component {
 
 ComponentsList.propTypes = {
     items: PropTypes.array.isRequired,
-    searchTerm: PropTypes.string.isRequired,
 };
