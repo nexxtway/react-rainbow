@@ -1,4 +1,4 @@
-#### simple Table
+##### simple Table
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
     const {
@@ -12,18 +12,40 @@
 
     const tableData = [
         {
-            name: 'A',
-            company: 'Google',
-            email: 'a@gmail.com',
+            name: 'Leandro Torres',
+            company: '90milesbridge',
+            email: 'leandro@gmail.com',
+            status: 'verified',
         },
         {
-            name: 'B',
-            company: 'Facebook',
-            email: 'b@gmail.com',
-        }
+            name: 'Jose Torres',
+            company: 'Google',
+            email: 'jose@gmail.com',
+            status: 'verified',
+        },
+        {
+            name: 'Reinier',
+            company: '90milesbridge',
+            email: 'reinier@gmail.com',
+            status: 'verified',
+        },
+        {
+            name: 'Sara',
+            company: '90milesbridge',
+            email: 'sara@gmail.com',
+            status: 'verified',
+        },
+        {
+            name: 'Tahimi',
+            company: '90milesbridge',
+            email: 'tahimi@gmail.com',
+            status: 'verified',
+        },
     ];
+
+    const badgeStyles = { color: '#1de9b6' };
     
-    const CellComponent = ({ value }) => <Badge label={value} variant="inverse" />;
+    const CellComponent = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
 
     const tableStyles = { paddingBottom: '46px' };
 
@@ -36,7 +58,8 @@
         </GlobalHeader>
         <Table data={tableData} style={tableStyles}>
             <Column header="Name" field="name" />
+            <Column header="Status" field="status" component={CellComponent} />
             <Column header="Company" field="company" />
-            <Column header="email" field="email" component={CellComponent} />
+            <Column header="Email" field="email" />
         </Table>
     </div>
