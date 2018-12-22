@@ -148,7 +148,7 @@ export default class ProjectSelector extends Component {
                     <MenuDivider className="react-rainbow-selector_divider" />
                     <li>
                         <a
-                            href="https://github.com/reiniergs/react-prismic-cms"
+                            href=" https://react-prismic-cms.firebaseapp.com/"
                             role="menuitem"
                             ref={this.references[0]}
                             onMouseEnter={() => this.focusChild(0)}
