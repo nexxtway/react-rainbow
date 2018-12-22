@@ -10,6 +10,7 @@ import './styles.css';
 
 /**
  * A checkable input that communicates if an option is true, false or indeterminate.
+ * @category Form
  */
 class CheckboxGroup extends Component {
     constructor(props) {

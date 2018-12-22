@@ -10,6 +10,7 @@ import './styles.css';
 /**
 * Checkbox toggle is a checkable input that communicates if an option is true,
 * false or indeterminate.
+* @category Form
 */
 class CheckboxToggle extends Component {
     constructor(props) {

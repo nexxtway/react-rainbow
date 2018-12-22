@@ -6,6 +6,7 @@ import './styles.css';
 import { uniqueId } from '../../libs/utils';
 import RenderIf from '../RenderIf';
 
+/** @category Form */
 export default class Rating extends Component {
     constructor(props) {
         super(props);

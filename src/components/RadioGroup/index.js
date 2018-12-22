@@ -10,6 +10,7 @@ import './styles.css';
 
 /**
 * A select list that can have a single entry checked at any one time.
+* @category Form
 */
 class RadioGroup extends Component {
     constructor(props) {

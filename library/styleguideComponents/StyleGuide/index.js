@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactGA from './.././../ga';
 import Logo from './../Logo';
+import RenderIf from './../../../src/components/RenderIf';
+import ComponentsPage from './ComponentsPage';
 import './styles.css';
 
 // analytics
@@ -31,6 +33,7 @@ export default class StyleGuide extends React.Component {
             toc,
             version,
         } = this.props;
+        const components = toc.props.sections[1].components;
 
         return (
             <div className="react-rainbow-styleguide-container rainbow-position-align_start">
@@ -39,7 +42,12 @@ export default class StyleGuide extends React.Component {
                     {toc}
                 </aside>
                 <main className="react-rainbow-main-content">
-                    {children}
+                    <RenderIf isTrue={window.location.hash !== '#/Components'}>
+                        {children}
+                    </RenderIf>
+                    <RenderIf isTrue={window.location.hash === '#/Components'}>
+                        <ComponentsPage components={components} />
+                    </RenderIf>
                 </main>
             </div>
         );

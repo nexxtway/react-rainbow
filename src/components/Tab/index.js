@@ -89,6 +89,7 @@ class TabItem extends Component {
     }
 }
 
+/** @category Layout */
 export default function Tab(props) {
     return (
         <Consumer>
