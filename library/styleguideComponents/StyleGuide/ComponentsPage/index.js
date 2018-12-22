@@ -19,6 +19,10 @@ const GithubStarsBadge = GithubStars(({ stars }) => (
     </Badge>
 ));
 
+function handleOnError(event) {
+    event.target.src = 'images/componentsThumbs/default-image.svg';
+}
+
 export default class ComponentsPage extends Component {
     constructor(props) {
         super(props);
@@ -44,7 +48,7 @@ export default class ComponentsPage extends Component {
                         footer={component.name}>
                         <img
                             src={src}
-                            onError={this.handleOnError}
+                            onError={handleOnError}
                             className="react-rainbow-components-page_card-image"
                             alt={`Component ${component.name}`} />
                     </Card>
@@ -68,10 +72,6 @@ export default class ComponentsPage extends Component {
 
     handleOnChange(event) {
         this.setState({ searchTerm: event.target.value });
-    }
-
-    handleOnError(event) {
-        event.target.src = 'images/componentsThumbs/default-image.svg';
     }
 
     renderCards() {

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import VerticalNavigation from './../../../src/components/VerticalNavigation';
 import VerticalItem from '../../../src/components/VerticalItem';
