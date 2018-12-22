@@ -10,6 +10,7 @@ import './styles.css';
 
 /**
 * Select element presents a menu of options.
+* @category Form
 */
 class Select extends Component {
     constructor(props) {

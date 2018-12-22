@@ -26,8 +26,10 @@ class TabItem extends Component {
     }
 
     getContainerClassName() {
-        const { className } = this.props;
-        return classnames('rainbow-tab', className);
+        const { className, fullWidth } = this.props;
+        return classnames('rainbow-tab', {
+            'rainbow-tab--full-width': fullWidth,
+        }, className);
     }
 
     getTabClassName() {
@@ -87,6 +89,7 @@ class TabItem extends Component {
     }
 }
 
+/** @category Layout */
 export default function Tab(props) {
     return (
         <Consumer>

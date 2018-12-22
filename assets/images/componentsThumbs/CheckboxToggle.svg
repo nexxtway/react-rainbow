@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="113" height="66" viewBox="0 0 113 66">
+    <defs>
+        <circle id="b" cx="33" cy="13" r="12"/>
+        <filter id="a" width="125%" height="125%" x="-12.5%" y="-12.5%" filterUnits="objectBoundingBox">
+            <feOffset in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.643254082 0 0 0 0 0.656386854 0 0 0 0 0.708917942 0 0 0 1 0"/>
+        </filter>
+        <circle id="d" cx="33" cy="13" r="12"/>
+        <filter id="c" width="125%" height="125%" x="-12.5%" y="-12.5%" filterUnits="objectBoundingBox">
+            <feOffset in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.643254082 0 0 0 0 0.656386854 0 0 0 0 0.708917942 0 0 0 1 0"/>
+        </filter>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <path fill="#E3E5ED" fill-rule="nonzero" d="M47 14c0-7.18-5.826-13-12.997-13H13.997C6.82 1 1 6.819 1 14c0 7.18 5.826 13 12.997 13h20.006C41.18 27 47 21.181 47 14z"/>
+        <path fill="#A4A7B5" fill-opacity=".1" fill-rule="nonzero" d="M46 14c0 6.628-5.37 12-11.997 12H13.997C7.376 26 2 20.625 2 14 2 7.372 7.37 2 13.997 2h20.006C40.624 2 46 7.375 46 14zm1 0c0-7.18-5.826-13-12.997-13H13.997C6.82 1 1 6.819 1 14c0 7.18 5.826 13 12.997 13h20.006C41.18 27 47 21.181 47 14z"/>
+        <g transform="matrix(-1 0 0 1 47 1)">
+            <use fill="#000" filter="url(#a)" xlink:href="#b"/>
+            <use fill="#FFF" xlink:href="#b"/>
+        </g>
+        <g>
+            <path fill="#01B6F5" fill-rule="nonzero" d="M66 52c0-7.18 5.826-13 12.997-13h20.006C106.18 39 112 44.819 112 52c0 7.18-5.826 13-12.997 13H78.997C71.82 65 66 59.181 66 52z"/>
+            <path fill="#009ACF" fill-rule="nonzero" d="M67 52c0 6.628 5.37 12 11.997 12h20.006C105.624 64 111 58.625 111 52c0-6.628-5.37-12-11.997-12H78.997C72.376 40 67 45.375 67 52zm-1 0c0-7.18 5.826-13 12.997-13h20.006C106.18 39 112 44.819 112 52c0 7.18-5.826 13-12.997 13H78.997C71.82 65 66 59.181 66 52z"/>
+            <g transform="translate(66 39)">
+                <use fill="#000" filter="url(#c)" xlink:href="#d"/>
+                <use fill="#FFF" xlink:href="#d"/>
+            </g>
+        </g>
+    </g>
+</svg>

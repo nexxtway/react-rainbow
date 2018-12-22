@@ -15,6 +15,7 @@ import './styles.css';
 * Modals are used to display content in a layer above the app.
 * This is used in cases such as the creation or editing of a record,
 * as well as various types of messaging.
+* @category Layout
 */
 export default class Modal extends Component {
     constructor(props) {

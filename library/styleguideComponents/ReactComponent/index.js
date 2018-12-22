@@ -55,8 +55,7 @@ export default class ReactComponent extends Component {
                     <Tabset
                         className="rainbow-p-horizontal_x-large rainbow-m-bottom_xx-large"
                         activeTabName={activeTabName}
-                        onSelect={this.handleOnSelect}
-                        fullWidth>
+                        onSelect={this.handleOnSelect}>
 
                         <Tab name="examples" label={<TabLabel icon={faCode} label="INTERACTIVE EXAMPLES" />} />
                         <Tab name="properties" label={<TabLabel icon={faList} label="PROPERTIES AND METHODS" />} />
