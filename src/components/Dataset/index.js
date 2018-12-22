@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/** @category DataView */
 export default function Dataset() {
     return <div />;
 }

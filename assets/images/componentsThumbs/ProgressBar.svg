@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="135px" height="35px" viewBox="0 0 135 35" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>ProgressBar</title>
+    <desc>Created with Sketch.</desc>
+    <g id="re-design-layout" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="re-design-layout-componentes-V2" transform="translate(-165.000000, -1940.000000)" fill-rule="nonzero">
+            <g id="Group-98" transform="translate(133.000000, 860.000000)">
+                <g id="Group-95" transform="translate(0.000000, 434.000000)">
+                    <g id="ProgressBar" transform="translate(32.000000, 646.000000)">
+                        <g id="Group-6" transform="translate(0.000000, 29.248110)">
+                            <path d="M2.5,-1.41531231e-12 L132.5,-1.4117596e-12 C133.880712,-1.41201323e-12 135,1.11928813 135,2.5 C135,3.88071187 133.880712,5 132.5,5 L2.5,5 C1.11928813,5 1.69088438e-16,3.88071187 0,2.5 C-1.69088438e-16,1.11928813 1.11928813,-1.41505868e-12 2.5,-1.41531231e-12 Z" id="Rectangle-Copy" fill="#CCF0FD"></path>
+                            <g id="z-embedded-/-Color-Tokens-/-MALIBU" fill="#01B6F5">
+                                <path d="M2.5,-1.33670852e-13 L70.5,-1.47437618e-13 C71.8807119,-1.40333339e-13 73,1.11928813 73,2.5 C73,3.88071187 71.8807119,5 70.5,5 L2.5,5 C1.11928813,5 1.69088438e-16,3.88071187 0,2.5 C-1.69088438e-16,1.11928813 1.11928813,-1.3341722e-13 2.5,-1.33670852e-13 Z" id="Rectangle"></path>
+                            </g>
+                        </g>
+                        <g id="Group-6">
+                            <path d="M2.5,-1.41531231e-12 L132.5,-1.4117596e-12 C133.880712,-1.41201323e-12 135,1.11928813 135,2.5 C135,3.88071187 133.880712,5 132.5,5 L2.5,5 C1.11928813,5 1.69088438e-16,3.88071187 0,2.5 C-1.69088438e-16,1.11928813 1.11928813,-1.41505868e-12 2.5,-1.41531231e-12 Z" id="Rectangle-Copy" fill="#D1F6ED"></path>
+                            <g id="z-embedded-/-Color-Tokens-/-MALIBU" fill="#1AD1A3">
+                                <path d="M2.5,-1.83408844e-13 L47.5,-1.74527059e-13 C48.8807119,-1.78459648e-13 50,1.11928813 50,2.5 C50,3.88071187 48.8807119,5 47.5,5 L2.5,5 C1.11928813,5 1.69088438e-16,3.88071187 0,2.5 C-1.69088438e-16,1.11928813 1.11928813,-1.83155211e-13 2.5,-1.83408844e-13 Z" id="Rectangle"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

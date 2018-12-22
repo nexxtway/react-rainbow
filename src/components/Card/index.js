@@ -9,6 +9,7 @@ import './styles.css';
 /**
 * Cards are used to apply a container around a
 * related grouping of information.
+* @category Layout
 */
 export default function Card(props) {
     const {

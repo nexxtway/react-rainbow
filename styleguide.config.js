@@ -71,8 +71,6 @@ module.exports = {
         {
             name: 'Components',
             components: 'src/components/**/index.js',
-            sectionDepth: 1,
-            usageMode: 'expand',
         },
         {
             name: 'Experiences',
