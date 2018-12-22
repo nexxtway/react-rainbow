@@ -9,7 +9,10 @@ import ButtonMenu from '../ButtonMenu';
 import { uniqueId } from '../../libs/utils';
 import './styles.css';
 
-/** @category Layout */
+/**
+* An item in the hierarchy path of the page the user is on.
+* @category Layout
+*/
 export default function Breadcrumb(props) {
     const {
         href,

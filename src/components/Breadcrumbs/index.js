@@ -2,7 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './styles.css';
 
-/** @category Layout */
+/**
+* Breadcrumbs are used to note the path of a record and help
+* the user to navigate back to the parent.
+* @category Layout
+*/
 export default function Breadcrumbs(props) {
     const {
         children,
