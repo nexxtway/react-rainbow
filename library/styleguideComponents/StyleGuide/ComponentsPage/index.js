@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 import filterSectionsByName from 'react-styleguidist/lib/utils/filterSectionsByName';
 import Card from './../../../../src/components/Card';
 import Input from './../../../../src/components/Input';
@@ -10,6 +10,7 @@ import GithubStars from '../../SectionHeading/GithubStarsWrapper';
 import Badge from '../../../../src/components/Badge';
 import RenderIf from '../../../../src/components/RenderIf';
 import githublogo from '../../SectionHeading/image/github.svg';
+import SearchIcon from './searchIcon';
 import './styles.css';
 
 const GithubStarsBadge = GithubStars(({ stars }) => (
@@ -138,16 +139,14 @@ export default class ComponentsPage extends Component {
                     <h1 className="react-rainbow-components-page_title">More than 40 components</h1>
                     <Input
                         className="react-rainbow-components-page_search"
-                        label="components filter"
+                        label="Find Components"
+                        type="search"
                         hideLabel
-                        iconName="utility:search"
                         value={searchTerm}
-                        placeholder="Filter by name"
-                        aria-label="Filter by name"
+                        placeholder="Find Components"
+                        aria-label="Find Components"
                         onChange={this.handleOnChange}
-                        icon={
-                            <FontAwesomeIcon icon={faSearch} className="rainbow-color_gray-3" />
-                        } />
+                        icon={<SearchIcon />} />
                         {this.renderCards()}
                 </div>
             </div>
