@@ -1,5 +1,5 @@
 ---
-name: ":bug: Bug report"
+name: "\U0001F41BBug report"
 about: Create a bug report to help us improve React Rainbow Components
 title: ''
 labels: bug
