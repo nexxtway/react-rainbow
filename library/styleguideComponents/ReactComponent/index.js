@@ -68,7 +68,7 @@ export default class ReactComponent extends Component {
                             <div className="react-rainbow-component_example-edit-link-container">
                                 <a
                                     className="rainbow-link"
-                                    href={`https://github.com/90milesbridge/react-rainbow/blob/master/src/components/${name}/Readme.md`}
+                                    href={`https://github.com/90milesbridge/react-rainbow/blob/master/src/components/${name}/readme.md`}
                                     target="_blank"
                                     rel="noopener noreferrer">
                                     <FontAwesomeIcon icon={faPencilAlt} className="rainbow-m-right_small" />
