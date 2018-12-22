@@ -1,0 +1,15 @@
+.rainbow-breadcrumb > a {
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    color: #576574;
+}
+
+.rainbow-breadcrumb-disabled > a {
+    color: #d2d4de !important;
+    pointer-events: none;
+}
+
+.rainbow-breadcrumb > a:hover {
+    color: #01b6f5;
+}
