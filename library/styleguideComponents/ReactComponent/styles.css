@@ -45,16 +45,8 @@
     margin-right: 26px;
 }
 
-.react-rainbow-component_tab-edit-link:hover {
-    text-decoration: none;
-}
-
 .react-rainbow-component_example-edit-link-container {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 4px;
-}
-
-.react-rainbow-component_example-edit-link:hover {
-    text-decoration: none;
 }

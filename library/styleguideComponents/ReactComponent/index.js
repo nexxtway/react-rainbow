@@ -9,7 +9,6 @@ import Tabset from '../../../src/components/Tabset';
 import Tab from '../../../src/components/Tab';
 import RenderIf from '../../../src/components/RenderIf';
 import Card from './../../../src/components/Card';
-import Button from './../../../src/components/Button';
 import TabLabel from './tabLabel';
 import Description from './description';
 import UtilsTab from './utilsTab';
@@ -68,14 +67,12 @@ export default class ReactComponent extends Component {
                         <div className="rainbow-m-left_x-large rainbow-m-right_xx-large">
                             <div className="react-rainbow-component_example-edit-link-container">
                                 <a
-                                    className="react-rainbow-component_example-edit-link"
+                                    className="rainbow-link"
                                     href={`https://github.com/90milesbridge/react-rainbow/blob/master/src/components/${name}/Readme.md`}
                                     target="_blank"
                                     rel="noopener noreferrer">
-                                    <Button variant="base">
-                                        <FontAwesomeIcon icon={faPencilAlt} className="rainbow-m-right_small" />
-                                        Edit Interactive Examples
-                                    </Button>
+                                    <FontAwesomeIcon icon={faPencilAlt} className="rainbow-m-right_small" />
+                                    Edit Interactive Examples
                                 </a>
                             </div>
                             {examples}
@@ -87,14 +84,12 @@ export default class ReactComponent extends Component {
                             icon={<FontAwesomeIcon icon={faList} size="lg" className="rainbow-color_brand" />}
                             actions={
                                 <a
-                                    className="react-rainbow-component_tab-edit-link"
+                                    className="rainbow-link react-rainbow-component_tab-edit-link"
                                     href={`https://github.com/90milesbridge/react-rainbow/blob/master/src/components/${name}/index.js`}
                                     target="_blank"
                                     rel="noopener noreferrer">
-                                    <Button variant="base">
-                                        <FontAwesomeIcon icon={faPencilAlt} className="rainbow-m-right_small" />
-                                        Edit
-                                    </Button>
+                                    <FontAwesomeIcon icon={faPencilAlt} className="rainbow-m-right_small" />
+                                    Edit
                                 </a>
                             }
                             title="Properties & Methods details">
