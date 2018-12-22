@@ -36,21 +36,11 @@ export default function Sidebar(props) {
 }
 
 Sidebar.propTypes = {
-    /** Name of the sidebar item to make active. */
     selectedItem: PropTypes.node,
-    /** Action fired when an item is selected.
-     * The event params include the `name` of the selected item. */
     onSelect: PropTypes.func,
-    /** The aria label attribute for the navigation component. */
     ariaLabel: PropTypes.string,
-    /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
-    /** An object with custom style applied for the outer element. */
     style: PropTypes.object,
-    /**
-     * This prop that should not be visible in the documentation.
-     * @ignore
-     */
     children: PropTypes.node,
 };
 

@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { Consumer as NavigationConsumer } from '../Sidebar/context';
+import { Consumer as NavigationConsumer } from './context';
 import RenderIf from '../RenderIf';
 import './styles.css';
 
@@ -52,9 +52,6 @@ function Item(props) {
     );
 }
 
-/**
- * A text-only link within Sidebar
- */
 export default function SidebarItem(props) {
     return (
         <NavigationConsumer>
@@ -68,21 +65,14 @@ export default function SidebarItem(props) {
 }
 
 SidebarItem.propTypes = {
-    /** The text displayed for the sidebar item. */
     label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
-    /** A unique identifier for the sidebar item. */
     name: PropTypes.string.isRequired,
-    /** The icon to show if it is passed. It must be a svg icon or a font icon. */
     icon: PropTypes.node.isRequired,
-    /** The URL of the page that the sidebar item goes to. */
     href: PropTypes.string,
-    /** Event fired when the item is clicked. */
     onClick: PropTypes.func,
-    /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
-    /** An object with custom style applied for the outer element. */
     style: PropTypes.object,
 };
 

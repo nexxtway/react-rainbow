@@ -1,3 +1,6 @@
+.rainbow-sidebar {
+  position: relative; }
+
 .rainbow-sidebar-item--active .rainbow-sidebar-item_icon, .rainbow-sidebar-item_action:hover .rainbow-sidebar-item_icon,
 .rainbow-sidebar-item_action:active .rainbow-sidebar-item_icon,
 .rainbow-sidebar-item_action:focus .rainbow-sidebar-item_icon {
@@ -52,3 +55,4 @@
 .rainbow-sidebar-item_action:focus {
   text-decoration: none;
   outline: 0; }
+  
