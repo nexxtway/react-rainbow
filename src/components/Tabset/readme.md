@@ -34,10 +34,16 @@
                         Rainbows caused by sunlight always appear in the section of sky directly opposite the sun.
                     </div>
                 );
-            }
+            } else if (selected === 'shared') {
             return (
                 <div aria-labelledby="shared" id="sharedTab" className="rainbow-p-around_xx-large rainbow-m-bottom_xx-large rainbow-font-size-text_large rainbow-align-text-center rainbow-color_gray-3">
                     Rainbows can be full circles. However, the observer normally sees only an arc formed by illuminated droplets above the ground, and centered on a line from the sun to the observer's eye.
+                </div>
+            );
+        }
+        return (
+                <div aria-labelledby="locked" id="sharedTab" className="rainbow-p-around_xx-large rainbow-m-bottom_xx-large rainbow-font-size-text_large rainbow-align-text-center rainbow-color_gray-3">
+                    In a primary rainbow, the arc shows red on the outer part and violet on the inner side. This rainbow is caused by light being refracted when entering a droplet of water, then reflected inside on the back of the droplet and refracted again when leaving it.
                 </div>
             );
         }
@@ -82,6 +88,12 @@
                                     id="shared"
                                     ariaControls="sharedTab" />
 
+                                <Tab
+                                    label="LOCKED"
+                                    name="locked"
+                                    id="locked"
+                                    ariaControls="sharedTab" />
+
                         </Tabset>
                         {this.getTabContent()}
                     </div>
@@ -96,7 +108,7 @@
 ##### Tabset fullWidth
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-    const { faCog, faEllipsisV, faFolderOpen } = require('@fortawesome/free-solid-svg-icons');
+    const { faCog, faEllipsisV, faFolderOpen, faLock } = require('@fortawesome/free-solid-svg-icons');
     const {
         faClock,
         faStar,
@@ -133,10 +145,16 @@
                         Rainbows caused by sunlight always appear in the section of sky directly opposite the sun.
                     </div>
                 );
-            }
+            } else if (selected === 'shared') {
             return (
                 <div aria-labelledby="shared" id="sharedTab" className="rainbow-p-around_xx-large rainbow-m-bottom_xx-large rainbow-font-size-text_large rainbow-align-text-center rainbow-color_gray-3">
                     Rainbows can be full circles. However, the observer normally sees only an arc formed by illuminated droplets above the ground, and centered on a line from the sun to the observer's eye.
+                </div>
+            );
+        }
+        return (
+                <div aria-labelledby="locked" id="sharedTab" className="rainbow-p-around_xx-large rainbow-m-bottom_xx-large rainbow-font-size-text_large rainbow-align-text-center rainbow-color_gray-3">
+                    In a primary rainbow, the arc shows red on the outer part and violet on the inner side. This rainbow is caused by light being refracted when entering a droplet of water, then reflected inside on the back of the droplet and refracted again when leaving it.
                 </div>
             );
         }
@@ -175,6 +193,9 @@
                                     name="shared"
                                     label={<span><FontAwesomeIcon icon={faStar} /> SHARED</span>} />
 
+                                <Tab
+                                    name="locked"
+                                    label={<span><FontAwesomeIcon icon={faLock} /> LOCKED</span>} />
                         </Tabset>
                         {this.getTabContent()}
                     </div>
