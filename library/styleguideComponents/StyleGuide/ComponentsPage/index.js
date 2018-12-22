@@ -8,6 +8,7 @@ import Card from './../../../../src/components/Card';
 import Input from './../../../../src/components/Input';
 import GithubStars from '../../SectionHeading/GithubStarsWrapper';
 import Badge from '../../../../src/components/Badge';
+import RenderIf from '../../../../src/components/RenderIf';
 import githublogo from '../../SectionHeading/image/github.svg';
 import './styles.css';
 
@@ -73,34 +74,39 @@ export default class ComponentsPage extends Component {
         event.target.src = 'images/componentsThumbs/default-image.svg';
     }
 
-    renderCategoryTitle(components, title) {
-        if (components.length) {
-            return (
-                <h1 className="react-rainbow-components-page_category-title">
-                    {title}
-                </h1>
-            );
-        }
-        return null;
-    }
-
     renderCards() {
         const { forms, dataViews, layouts, miscellaneous } = this.getComponentsByCategory();
         return (
             <div className="react-rainbow-components-page_cards-container">
-                {this.renderCategoryTitle(layouts, 'Layout Components')}
+                <RenderIf isTrue={!!layouts.length}>
+                    <h1 className="react-rainbow-components-page_category-title">
+                        Layout Components
+                    </h1>
+                </RenderIf>
                 <div className="react-rainbow-components-page_card-group-container">
                     {layouts}
                 </div>
-                {this.renderCategoryTitle(forms, 'Forms')}
+                <RenderIf isTrue={!!forms.length}>
+                    <h1 className="react-rainbow-components-page_category-title">
+                        Forms
+                    </h1>
+                </RenderIf>
                 <div className="react-rainbow-components-page_card-group-container">
                     {forms}
                 </div>
-                {this.renderCategoryTitle(miscellaneous, 'Miscellaneous')}
+                <RenderIf isTrue={!!miscellaneous.length}>
+                    <h1 className="react-rainbow-components-page_category-title">
+                        Miscellaneous
+                    </h1>
+                </RenderIf>
                 <div className="react-rainbow-components-page_card-group-container">
                     {miscellaneous}
                 </div>
-                {this.renderCategoryTitle(dataViews, 'Data View')}
+                <RenderIf isTrue={!!dataViews.length}>
+                    <h1 className="react-rainbow-components-page_category-title">
+                        Data View
+                    </h1>
+                </RenderIf>
                 <div className="react-rainbow-components-page_card-group-container">
                     {dataViews}
                 </div>
