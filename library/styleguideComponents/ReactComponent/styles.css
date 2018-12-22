@@ -40,3 +40,13 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.react-rainbow-component_tab-edit-link {
+    margin-right: 26px;
+}
+
+.react-rainbow-component_example-edit-link-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 4px;
+}

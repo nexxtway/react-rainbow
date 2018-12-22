@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faList, faCode } from '@fortawesome/free-solid-svg-icons';
+import { faList, faCode, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import Pathline from 'react-styleguidist/lib/rsg-components/Pathline';
 import { Prismic } from 'react-prismic-cms';
 import Tabset from '../../../src/components/Tabset';
@@ -65,6 +65,16 @@ export default class ReactComponent extends Component {
                 <div className="rainbow-p-top_small rainbow-p-horizontal_x-large">
                     <RenderIf isTrue={activeTabName === 'examples'}>
                         <div className="rainbow-m-left_x-large rainbow-m-right_xx-large">
+                            <div className="react-rainbow-component_example-edit-link-container">
+                                <a
+                                    className="rainbow-link"
+                                    href={`https://github.com/90milesbridge/react-rainbow/blob/master/src/components/${name}/readme.md`}
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+                                    <FontAwesomeIcon icon={faPencilAlt} className="rainbow-m-right_small" />
+                                    Edit Interactive Examples
+                                </a>
+                            </div>
                             {examples}
                         </div>
                     </RenderIf>
@@ -72,6 +82,16 @@ export default class ReactComponent extends Component {
                         <Card
                             className="rainbow-m-bottom_x-large rainbow-m-left_xx-large rainbow-m-right_x-large"
                             icon={<FontAwesomeIcon icon={faList} size="lg" className="rainbow-color_brand" />}
+                            actions={
+                                <a
+                                    className="rainbow-link react-rainbow-component_tab-edit-link"
+                                    href={`https://github.com/90milesbridge/react-rainbow/blob/master/src/components/${name}/index.js`}
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+                                    <FontAwesomeIcon icon={faPencilAlt} className="rainbow-m-right_small" />
+                                    Edit
+                                </a>
+                            }
                             title="Properties & Methods details">
 
                             {tabBody}

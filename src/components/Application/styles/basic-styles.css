@@ -287,3 +287,14 @@ caption,
 th,
 td {
   text-align: left; }
+
+.rainbow-link {
+  font-size: 13px;
+  line-height: 2.46;
+  color: #01b6f5; }
+
+.rainbow-link:hover,
+.rainbow-link:focus,
+.rainbow-link:active,
+.rainbow-link:visited {
+  color: #009acf; }
