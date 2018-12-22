@@ -69,6 +69,11 @@
 }
 .react-rainbow-selector_selected-item-section .react-rainbow-selector_item:focus,
 .react-rainbow-selector_selected-item-section .react-rainbow-selector_item:hover {
+    background-color: #f4f6f9;
+}
+
+.react-rainbow-selector--open .react-rainbow-selector_selected-item-section .react-rainbow-selector_item:focus,
+.react-rainbow-selector--open .react-rainbow-selector_selected-item-section .react-rainbow-selector_item:hover {
     background-color: #fff;
 }
 
