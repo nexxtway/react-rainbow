@@ -6,6 +6,7 @@
     align-items: center;
     padding-top: 2.375rem;
     padding-bottom: 2.375rem;
+    background-color: #f4f6f9;
 }
 
 .react-rainbow-components-page_cards-container {
@@ -22,7 +23,7 @@
 .react-rainbow-components-page_category-title {
     font-family: Lato;
     font-size: 20px;
-    font-weight: 300;
+    font-weight: 400;
     color: #576574;
     margin-top: 2.5rem;
     margin-left: 0.8rem;
