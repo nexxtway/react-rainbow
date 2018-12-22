@@ -3,10 +3,12 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import { DOWN_KEY, ESCAPE_KEY, UP_KEY } from '../../../src/libs/constants';
 import rainbowLogo from '../../../assets/images/rainbow-logo.svg';
+import reactPrismicLogo from '../../../assets/images/react-prismic.svg';
 import RenderIf from '../../../src/components/RenderIf';
 import MenuDivider from '../../../src/components/MenuDivider';
 import RightArrow from './rightArrow';
 import './styles.css';
+import getLibraryVersion from './get-library-version';
 
 export default class ProjectSelector extends Component {
     constructor(props) {
@@ -14,6 +16,8 @@ export default class ProjectSelector extends Component {
         this.state = {
             isOpen: false,
             childFocusedIndex: 0,
+            componentLibraryVersion: '0.0',
+            prismicLibraryVersion: '0.0',
         };
         this.toggleMenu = this.toggleMenu.bind(this);
         this.handleClick = this.handleClick.bind(this);
@@ -25,6 +29,15 @@ export default class ProjectSelector extends Component {
         };
         this.containerRef = React.createRef();
         this.references = Array(2).fill(0).map(() => React.createRef());
+    }
+
+    componentDidMount() {
+        getLibraryVersion('https://api.github.com/repos/90milesbridge/react-rainbow/contents/package.json').then((version) => {
+            this.setState({ componentLibraryVersion: version });
+        });
+        getLibraryVersion('https://api.github.com/repos/reiniergs/react-prismic-cms/contents/package.json').then((version) => {
+            this.setState({ prismicLibraryVersion: version });
+        });
     }
 
     getContainerClassNames() {
@@ -104,6 +117,7 @@ export default class ProjectSelector extends Component {
 
     render() {
         const { isOpen } = this.state;
+        const { componentLibraryVersion, prismicLibraryVersion } = this.state;
         return (
             <ul
                 className={this.getContainerClassNames()}
@@ -114,11 +128,18 @@ export default class ProjectSelector extends Component {
                     className="react-rainbow-selector_selected-item-section"
                     onClick={this.toggleMenu}
                     role="menuitem">
-                    <a href="javascript:void(0);" className="react-rainbow-selector_item" tabIndex={this.getTabIndex()}>
+                    <a
+                        href="javascript:void(0);"
+                        className="react-rainbow-selector_item"
+                        tabIndex={this.getTabIndex()}>
                         <img src={rainbowLogo} alt="react-rainbow" />
                         <div className="react-rainbow-selector_item-text">
-                            <span className="react-rainbow-selector_item-text_header">react-rainbow components</span>
-                            <span className="react-rainbow-selector_item-text_subheader">version 0.8.20</span>
+                            <span className="react-rainbow-selector_item-text_header">
+                                react-rainbow components
+                            </span>
+                            <span className="react-rainbow-selector_item-text_subheader">
+                                version {componentLibraryVersion}
+                            </span>
                         </div>
                     </a>
                     <RightArrow isExpanded={isOpen} />
@@ -132,24 +153,14 @@ export default class ProjectSelector extends Component {
                             ref={this.references[0]}
                             onMouseEnter={() => this.focusChild(0)}
                             className="react-rainbow-selector_item">
-                            <img src={rainbowLogo} alt="react-rainbow" />
+                            <img src={reactPrismicLogo} alt="react-rainbow" />
                             <div className="react-rainbow-selector_item-text">
-                                <span className="react-rainbow-selector_item-text_header">react-prismic cms</span>
-                                <span className="react-rainbow-selector_item-text_subheader">version 0.2.20</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            href="javascript:void(0);"
-                            role="menuitem"
-                            ref={this.references[1]}
-                            onMouseEnter={() => this.focusChild(1)}
-                            className="react-rainbow-selector_item">
-                            <img src={rainbowLogo} alt="react-rainbow" />
-                            <div className="react-rainbow-selector_item-text">
-                                <span className="react-rainbow-selector_item-text_header">react-rainbow-styleguide</span>
-                                <span className="react-rainbow-selector_item-text_subheader">version 0.1.20</span>
+                                <span className="react-rainbow-selector_item-text_header">
+                                    react-prismic cms
+                                </span>
+                                <span className="react-rainbow-selector_item-text_subheader">
+                                    version {prismicLibraryVersion}
+                                </span>
                             </div>
                         </a>
                     </li>
