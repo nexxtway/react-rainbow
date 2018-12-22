@@ -1,0 +1,40 @@
+@import "../../styles/colors";
+@import "../../styles/font-sizes";
+
+.rainbow-table_head {
+    background-color: $color-gray-1;
+}
+
+.rainbow-table_header {
+    text-transform: uppercase;
+    font-size: $font-size-text-medium;
+    font-weight: 900;
+    color: $color-gray-4;
+    height: 44px;
+}
+
+.rainbow-table_header:first-of-type {
+    padding-left: 18px;
+}
+
+.rainbow-table_header-row {
+    box-shadow: 0 1px 0.3px 0 #e3e5ed, 0 -1px 0.3px 0 #e3e5ed;
+}
+
+.rainbow-table_body {
+    background-color: #fff;
+}
+
+.rainbow-table_body-row {
+    box-shadow: 0 1px 0 0 #e3e5ed;
+}
+
+.rainbow-table_cell {
+    font-size: $font-size-text-medium;
+    color: $color-gray-4;
+    height: 40px;
+}
+
+.rainbow-table_cell:first-of-type {
+    padding-left: 18px;
+}
