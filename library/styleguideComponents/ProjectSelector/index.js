@@ -28,7 +28,7 @@ export default class ProjectSelector extends Component {
             [ESCAPE_KEY]: () => this.closeMenu(),
         };
         this.containerRef = React.createRef();
-        this.references = Array(2).fill(0).map(() => React.createRef());
+        this.references = Array(1).fill(0).map(() => React.createRef());
     }
 
     componentDidMount() {
@@ -62,20 +62,22 @@ export default class ProjectSelector extends Component {
 
     handleKeyUp() {
         const { childFocusedIndex } = this.state;
-        if (childFocusedIndex === 0) {
-            this.focusChild(this.references.length - 1);
-        } else {
-            this.focusChild(childFocusedIndex - 1);
+        if (this.references.length < 2) {
+            return null;
+        } else if (childFocusedIndex === 0) {
+            return this.focusChild(this.references.length - 1);
         }
+        return this.focusChild(childFocusedIndex - 1);
     }
 
     handleKeyDown() {
         const { childFocusedIndex } = this.state;
-        if (childFocusedIndex === this.references.length - 1) {
-            this.focusChild(0);
-        } else {
-            this.focusChild(childFocusedIndex + 1);
+        if (this.references.length < 2) {
+            return null;
+        } else if (childFocusedIndex === this.references.length - 1) {
+            return this.focusChild(0);
         }
+        return this.focusChild(childFocusedIndex + 1);
     }
 
     focusChild(index) {
