@@ -7,6 +7,7 @@ import Column from '../../Column';
 const data = [
     {
         name: 'a',
+        number: 23,
     },
 ];
 
@@ -26,7 +27,7 @@ describe('<Table />', () => {
         expect(header.text()).toBe('Name');
         expect(cell.text()).toBe('a');
     });
-    it('should renders the component set for the column', () => {
+    it('should render the component passed to the column', () => {
         const component = mount(
             <Table data={data}>
                 <Column field="name" header="Name" component={CellComponent} />
@@ -34,5 +35,24 @@ describe('<Table />', () => {
         );
 
         expect(component.find(CellComponent).exists()).toBe(true);
+    });
+    it('should add a column', () => {
+        const component = mount(
+            <Table data={data}>
+                <Column field="name" header="Name" />
+            </Table>,
+        );
+
+        expect(component.find('td').text()).toBe('a');
+        component.setProps({
+            children: [
+                <Column field="name" header="Name" />,
+                <Column field="number" />,
+            ],
+        });
+        component.update();
+
+        expect(component.find('td').at(0).text()).toBe('a');
+        expect(component.find('td').at(1).text()).toBe('23');
     });
 });

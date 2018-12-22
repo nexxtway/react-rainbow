@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import resolveColumns from './resolve-columns';
-import areDifferentColumns from './are-different-columns';
-import Rows from './body';
-import Headers from './head';
+import Body from './body';
+import Head from './head';
 import './styles.css';
 
 /** Data tables display information in a way that’s easy to scan,
@@ -11,38 +10,35 @@ import './styles.css';
 export default class Table extends Component {
     constructor(props) {
         super(props);
-        this.state = { columns: [] };
+        this.state = { columns: resolveColumns(props.children) };
     }
 
-    componentDidMount() {
-        this.resolveColumnsFomChilren();
-    }
-
-    componentDidUpdate() {
-        this.resolveColumnsFomChilren();
+    componentDidUpdate({ children: prevChildren }) {
+        const { children: currentChildren } = this.props;
+        if (prevChildren !== currentChildren) {
+            this.resolveColumnsFomChilren();
+        }
     }
 
     resolveColumnsFomChilren() {
         const { children } = this.props;
-        const { columns } = this.state;
         const newColumns = resolveColumns(children);
-        if (!columns || areDifferentColumns(columns, newColumns)) {
-            this.setState({ columns: newColumns });
-        }
+        this.setState({ columns: newColumns });
     }
 
     render() {
         const { data, className, style } = this.props;
         const { columns } = this.state;
+
         return (
             <table className={className} style={style}>
                 <thead className="rainbow-table_head">
                     <tr className="rainbow-table_header-row">
-                        <Headers columns={columns} />
+                        <Head columns={columns} />
                     </tr>
                 </thead>
                 <tbody className="rainbow-table_body">
-                    <Rows data={data} columns={columns} />
+                    <Body data={data} columns={columns} />
                 </tbody>
             </table>
         );

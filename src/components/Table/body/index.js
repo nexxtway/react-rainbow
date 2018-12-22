@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Row from './row';
 import { uniqueId } from '../../../libs/utils';
 
-export default function Rows(props) {
+export default function Body(props) {
     const { data, columns } = props;
     if (Array.isArray(data) && Array.isArray(columns)) {
         return data.map(item => (
@@ -13,12 +13,12 @@ export default function Rows(props) {
     return null;
 }
 
-Rows.propTypes = {
+Body.propTypes = {
     data: PropTypes.array,
     columns: PropTypes.array,
 };
 
-Rows.defaultProps = {
+Body.defaultProps = {
     data: [],
     columns: [],
 };

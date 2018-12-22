@@ -1,15 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Cell(props) {
-    const { component: CellComponent, value } = props;
-    let cellValue = value;
+function CellValue({ component: CellComponent, value }) {
     if (CellComponent) {
-        cellValue = <CellComponent value={value} />;
+        return <CellComponent value={value} />;
     }
+    return <span>{value}</span>;
+}
+
+CellValue.propTypes = {
+    component: PropTypes.func,
+    value: PropTypes.any,
+};
+
+CellValue.defaultProps = {
+    component: undefined,
+    value: undefined,
+};
+
+export default function Cell({ component, value }) {
     return (
         <td className="rainbow-table_cell">
-            {cellValue}
+            <CellValue component={component} value={value} />
         </td>
     );
 }
