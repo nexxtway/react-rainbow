@@ -9,7 +9,7 @@
     list-style: none;
     position: absolute;
     top: 2px;
-    left: 2px;
+    left: 10px;
 }
 .react-rainbow-selector:hover {
     background-color: #f4f6f9;

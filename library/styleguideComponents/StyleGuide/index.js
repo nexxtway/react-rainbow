@@ -4,7 +4,6 @@ import ReactGA from './.././../ga';
 import RenderIf from './../../../src/components/RenderIf';
 import ComponentsPage from './ComponentsPage';
 import './styles.css';
-import ProjectSelector from '../ProjectSelector';
 
 // analytics
 function trackPageview() {
@@ -35,8 +34,7 @@ export default class StyleGuide extends React.Component {
 
         return (
             <div className="react-rainbow-styleguide-container rainbow-position-align_start">
-                <aside className="react-rainbow-sidebar">
-                    <ProjectSelector />
+                <aside className="react-rainbow-styleguide-sidebar">
                     {toc}
                 </aside>
                 <main className="react-rainbow-main-content">
@@ -54,11 +52,5 @@ export default class StyleGuide extends React.Component {
 
 StyleGuide.propTypes = {
     children: PropTypes.node.isRequired,
-    title: PropTypes.string.isRequired,
     toc: PropTypes.object.isRequired,
-    version: PropTypes.string,
-};
-
-StyleGuide.defaultProps = {
-    version: '',
 };

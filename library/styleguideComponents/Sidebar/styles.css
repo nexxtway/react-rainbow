@@ -9,7 +9,7 @@
 
 .rainbow-sidebar-item {
   position: relative;
-  margin-bottom: 2.125rem;
+  margin-bottom: 1.375rem;
   padding-bottom: 0.75rem;
   padding-top: 0.75rem; }
 
@@ -44,7 +44,8 @@
   color: #a4a7b5; }
 
 .rainbow-sidebar-item_icon {
-  padding: 0.7rem;
+  height: 32px;
+  width: 32px;
   display: flex;
   justify-content: center;
   align-items: center;

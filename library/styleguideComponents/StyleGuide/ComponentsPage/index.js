@@ -1,24 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies,no-param-reassign */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
 import filterSectionsByName from 'react-styleguidist/lib/utils/filterSectionsByName';
 import Card from './../../../../src/components/Card';
 import Input from './../../../../src/components/Input';
-import GithubStars from '../../SectionHeading/GithubStarsWrapper';
-import Badge from '../../../../src/components/Badge';
 import RenderIf from '../../../../src/components/RenderIf';
-import githublogo from '../../SectionHeading/image/github.svg';
 import SearchIcon from './searchIcon';
 import './styles.css';
-
-const GithubStarsBadge = GithubStars(({ stars }) => (
-    <Badge className="react-rainbow-github-badge rainbow-color_dark-1 rainbow-m-right_medium" variant="lightest">
-        <FontAwesomeIcon color="#061c3f" icon={faStar} pull="left" />
-        {stars}
-    </Badge>
-));
+import SectionHeading from '../../SectionHeading';
 
 function handleOnError(event) {
     event.target.src = 'images/componentsThumbs/default-image.svg';
@@ -119,22 +108,7 @@ export default class ComponentsPage extends Component {
         const { searchTerm } = this.state;
         return (
             <div>
-                <header className="react-rainbow-heading-container rainbow-align-content_space-between rainbow-position_fixed">
-                    <h1 className="react-rainbow-title-text rainbow-color_dark-1 rainbow-font-size-heading_large">
-                        Components
-                    </h1>
-                    <div className="rainbow-align-content_center react-rainbow-github-badge-container">
-                        <div>
-                            <GithubStarsBadge />
-                        </div>
-                        <a
-                            href="https://github.com/reiniergs/react-rainbow"
-                            target="_blank"
-                            rel="noopener noreferrer">
-                            <img src={githublogo} alt="github logo" />
-                        </a>
-                    </div>
-                </header>
+                <SectionHeading />
                 <div className="react-rainbow-components-page_container">
                     <h1 className="react-rainbow-components-page_title">More than 40 components</h1>
                     <Input

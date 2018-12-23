@@ -27,24 +27,21 @@
     flex-wrap: wrap;
 }
 
-.react-rainbow-sidebar {
-    width: 300px;
-    height: 100%;
+.react-rainbow-styleguide-sidebar {
+    width: 87px;
+    height: calc(100vh - 68px);
     position: fixed;
-    z-index: 11000;
-    box-shadow: 0 1px 2px 0 #e3e5ed;
+    margin-top: 68px;
+    box-shadow: 1px 0 12px 0 #f4f6f9;
+    padding-top: 24px;
 }
 
 .react-rainbow-main-content {
     background-color: white;
-    min-height: 100vh;
-    width: calc(100vw - 250px);
-    padding-top: 68px;
-    margin-left: 300px;
-}
-
-.react-reainbow-toc-top-wrapper {
-    margin-top: 50px;
+    min-height: calc(100vh - 68px);
+    width: calc(100vw - 87px);
+    margin-top: 68px;
+    margin-left: 87px;
 }
 
 .rsg--root-3 {
@@ -52,12 +49,9 @@
 }
 
 @media (max-width: 800px) {
-    .react-rainbow-sidebar {
-        width: 200px;
-    }
     .react-rainbow-main-content {
-        width: calc(100vw - 200px);
-        margin-left: 200px;
+        width: calc(100vw - 87px);
+        margin-left: 87px;
     }
 }
 
@@ -65,7 +59,7 @@
     .react-rainbow-styleguide-container {
         flex-direction: column-reverse;
     }
-    .react-rainbow-sidebar {
+    .react-rainbow-styleguide-sidebar {
         width: 100vw;
         position: initial;
     }
