@@ -47,7 +47,6 @@ describe('Modal base example', () => {
         browser.click(BUTTON);
         modal.waitUntilOpen();
         browser.keys(ESCAPE_KEY);
-        modal.waitUntilClose();
         expect(browser.hasFocus(BUTTON)).toBe(true);
     });
     it('should return focus to trigger element when close modal by clicking outside of the modal', () => {
@@ -55,7 +54,6 @@ describe('Modal base example', () => {
         browser.click(BUTTON);
         modal.waitUntilOpen();
         modal.clickOutside();
-        modal.waitUntilClose();
         expect(browser.hasFocus(BUTTON)).toBe(true);
     });
     it('should return focus to trigger element when close modal with close button', () => {
@@ -63,7 +61,6 @@ describe('Modal base example', () => {
         browser.click(BUTTON);
         modal.waitUntilOpen();
         modal.clickCloseButton();
-        modal.waitUntilClose();
         expect(browser.hasFocus(BUTTON)).toBe(true);
     });
     it('should focus the close button when the modal is opened and press TAB', () => {
