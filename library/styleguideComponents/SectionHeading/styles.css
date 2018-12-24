@@ -16,6 +16,7 @@
     background-color: #fff;
     width: 100vw;
     z-index: 10000;
+    border-bottom: 1px solid #f4f6f9;
 }
 
 @media (max-width: 800px) {
