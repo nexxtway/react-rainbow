@@ -64,7 +64,7 @@
                         </ButtonGroup>
                     </div>
                     <div className="rainbow-flex rainbow-flex_column rainbow_vertical-stretch">
-                        <Tabset 
+                        <Tabset
                             id="tabset-1"
                             onSelect={this.handleOnSelect}
                             activeTabName={selected}
