@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faList, faCode, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { faList, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import Pathline from 'react-styleguidist/lib/rsg-components/Pathline';
 import { Prismic } from 'react-prismic-cms';
 import Tabset from '../../../src/components/Tabset';
@@ -11,6 +11,8 @@ import RenderIf from '../../../src/components/RenderIf';
 import Card from './../../../src/components/Card';
 import TabLabel from './tabLabel';
 import Description from './description';
+import InteractiveExampleIcon from './icons/interactiveExampleIcon';
+import ListIcon from './icons/listIcon';
 import UtilsTab from './utilsTab';
 import DescriptionLink from './descriptionLink';
 import Query from './query';
@@ -57,8 +59,8 @@ export default class ReactComponent extends Component {
                         activeTabName={activeTabName}
                         onSelect={this.handleOnSelect}>
 
-                        <Tab name="examples" label={<TabLabel icon={faCode} label="INTERACTIVE EXAMPLES" />} />
-                        <Tab name="properties" label={<TabLabel icon={faList} label="PROPERTIES AND METHODS" />} />
+                        <Tab name="examples" label={<TabLabel icon={<InteractiveExampleIcon className="rainbow-m-right_x-small" />} label="INTERACTIVE EXAMPLES" />} />
+                        <Tab name="properties" label={<TabLabel icon={<ListIcon className="rainbow-m-right_x-small" />} label="PROPERTIES AND METHODS" />} />
                         <UtilsTab name={name} />
                     </Tabset>
                 </div>
