@@ -33,7 +33,6 @@
     position: fixed;
     z-index: 999999;
     margin-top: 68px;
-    box-shadow: 1px 0 12px 0 #f4f6f9;
     padding-top: 24px;
     border-right: 1px solid #f4f6f9;
 }
