@@ -8,7 +8,7 @@ describe('<Breadcrumbs/>', () => {
     it('should be accessible', async () => {
         expect.assertions(1);
         const html = ReactDOMServer.renderToString(
-            <Breadcrumbs activeTabName="tab-1">
+            <Breadcrumbs>
                 <Breadcrumb label="tab 1" />
                 <Breadcrumb label="tab 2" />
                 <Breadcrumb label="tab 3" />
