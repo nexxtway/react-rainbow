@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ReactGA from './.././../ga';
 import RenderIf from './../../../src/components/RenderIf';
 import ComponentsPage from './ComponentsPage';
+import ProjectSelector from '../ProjectSelector';
 import './styles.css';
 
 // analytics
@@ -38,6 +39,7 @@ export default class StyleGuide extends React.Component {
                     {toc}
                 </aside>
                 <main className="react-rainbow-main-content">
+                    <ProjectSelector />
                     <RenderIf isTrue={window.location.hash !== '#/Components'}>
                         {children}
                     </RenderIf>

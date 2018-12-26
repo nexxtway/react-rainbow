@@ -1,6 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faList, faCode, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import Pathline from 'react-styleguidist/lib/rsg-components/Pathline';
@@ -27,6 +29,13 @@ export default class ReactComponent extends Component {
         this.setState({ activeTabName: tab });
     }
 
+    editLinkClassName() {
+        const isExpanded = window.location.href.includes('/#!/');
+        return classnames('react-rainbow-component_example-edit-link-container', {
+            'react-rainbow-component_example-edit-link-container--compress': isExpanded,
+        });
+    }
+
     render() {
         const {
             name,
@@ -40,8 +49,11 @@ export default class ReactComponent extends Component {
 
         return (
             <Prismic repo="rainbow-doc">
-                <div className="react-rainbow-component-top-content">
+                <div className="react-rainbow-component_top-content">
                     {heading}
+                    <p className="react-rainbow-component_component-name">
+                        {name}
+                    </p>
                     <div className="rainbow-p-horizontal_x-large rainbow-p-top_medium">
                         <Description text={descriptionText} />
                         <DescriptionLink name={name} />
@@ -65,7 +77,7 @@ export default class ReactComponent extends Component {
                 <div className="rainbow-p-top_small rainbow-p-horizontal_x-large">
                     <RenderIf isTrue={activeTabName === 'examples'}>
                         <div className="rainbow-m-left_x-large rainbow-m-right_xx-large">
-                            <div className="react-rainbow-component_example-edit-link-container">
+                            <div className={this.editLinkClassName()}>
                                 <a
                                     className="rainbow-link"
                                     href={`https://github.com/90milesbridge/react-rainbow/blob/master/src/components/${name}/readme.md`}

@@ -7,9 +7,11 @@
     overflow: hidden;
     border: transparent 1px solid;
     list-style: none;
-    position: absolute;
+    position: fixed;
     top: 2px;
     left: 10px;
+    z-index: 999999;
+
 }
 .react-rainbow-selector:hover {
     background-color: #f4f6f9;
@@ -18,7 +20,7 @@
 .react-rainbow-selector--open {
     box-shadow: 0 2px 4px 0 #e3e5ed;
     border-color: #e3e5ed;
-    z-index: 100;
+    z-index: 999999;
     height: unset;
     background-color: #fff;
 }

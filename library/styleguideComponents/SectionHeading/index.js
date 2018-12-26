@@ -5,7 +5,6 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 import GithubStars from './GithubStarsWrapper';
 import githublogo from './image/github.svg';
 import Badge from '../../../src/components/Badge';
-import ProjectSelector from '../ProjectSelector';
 import './styles.css';
 
 const GithubStarsBadge = GithubStars(({ stars }) => (
@@ -17,10 +16,7 @@ const GithubStarsBadge = GithubStars(({ stars }) => (
 
 export default function SectionHeading() {
     return (
-        <header className="react-rainbow-heading-container rainbow-align-content_space-between rainbow-position_fixed">
-            <div>
-                <ProjectSelector />
-            </div>
+        <header className="react-rainbow-heading-container rainbow-flex rainbow-justify_end rainbow-align_center rainbow-position_fixed">
             <div className="rainbow-align-content_center react-rainbow-github-badge-container">
                 <div>
                     <GithubStarsBadge />
