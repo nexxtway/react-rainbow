@@ -3,6 +3,8 @@ import AccordionSection from './AccordionSection';
 import Avatar from './Avatar';
 import AvatarMenu from './AvatarMenu';
 import Badge from './Badge';
+import Breadcrumb from './Breadcrumb';
+import Breadcrumbs from './Breadcrumbs';
 import Button from './Button';
 import ButtonGroup from './ButtonGroup';
 import ButtonIcon from './ButtonIcon';
@@ -48,6 +50,8 @@ export {
     Avatar,
     AvatarMenu,
     Badge,
+    Breadcrumb,
+    Breadcrumbs,
     Button,
     ButtonGroup,
     ButtonIcon,

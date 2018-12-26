@@ -32,11 +32,14 @@ Breadcrumbs.propTypes = {
     * This prop that should not be visible in the documentation.
     * @ignore
     */
-    children: PropTypes.node,
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.object,
+    ]),
 };
 
 Breadcrumbs.defaultProps = {
     className: undefined,
     style: undefined,
-    children: null,
+    children: [],
 };
