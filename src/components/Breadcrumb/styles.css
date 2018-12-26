@@ -1,12 +1,12 @@
-.rainbow-breadcrumb > a {
+.rainbow-breadcrumb-anchor {
   text-decoration: none;
   font-size: 14px;
   letter-spacing: 0.3px;
   color: #576574; }
 
-.rainbow-breadcrumb-disabled > a {
+.rainbow-breadcrumb--disabled > .rainbow-breadcrumb-anchor {
   color: #d2d4de;
   pointer-events: none; }
 
-.rainbow-breadcrumb > a:hover {
+.rainbow-breadcrumb-anchor:hover {
   color: #01b6f5; }
