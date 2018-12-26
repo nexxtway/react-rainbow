@@ -22,7 +22,7 @@ describe('Tabset base example', () => {
         const tabItem = tabset.getItem(0);
         tabItem.click();
         browser.keys(ARROW_LEFT_KEY);
-        const tabItem2 = tabset.getItem(2);
+        const tabItem2 = tabset.getItem(3);
         expect(tabItem2.isSelected()).toBe(true);
     });
     it('should select the next tab when the first has focus and right arrow key is pressed', () => {
@@ -33,7 +33,7 @@ describe('Tabset base example', () => {
         browser.keys(ARROW_RIGHT_KEY);
         expect(tabItem2.isSelected()).toBe(true);
     });
-    it('should loose focus if other tab is selected', () => {
+    it('should lost focus if other tab is selected', () => {
         const tabset = new PageTabset(TABSET);
         const tabItem = tabset.getItem(0);
         const tabItem2 = tabset.getItem(1);
@@ -41,7 +41,7 @@ describe('Tabset base example', () => {
         tabItem2.click();
         expect(tabItem.hasFocus()).toBe(false);
     });
-    it('should loose focus if other tab is selected by keyboard navigation', () => {
+    it('should lost focus if other tab is selected by keyboard navigation', () => {
         const tabset = new PageTabset(TABSET);
         const tabItem = tabset.getItem(0);
         tabItem.click();

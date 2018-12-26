@@ -26,8 +26,10 @@ class TabItem extends Component {
     }
 
     getContainerClassName() {
-        const { className } = this.props;
-        return classnames('rainbow-tab', className);
+        const { className, fullWidth } = this.props;
+        return classnames('rainbow-tab', {
+            'rainbow-tab--full-width': fullWidth,
+        }, className);
     }
 
     getTabClassName() {
@@ -80,13 +82,14 @@ class TabItem extends Component {
                     aria-controls={ariaControls}
                     ref={this.tabRef}>
 
-                    {label}
+                    <span className="rainbow-tab_anchor-inner-text">{label}</span>
                 </a>
             </li>
         );
     }
 }
 
+/** @category Layout */
 export default function Tab(props) {
     return (
         <Consumer>

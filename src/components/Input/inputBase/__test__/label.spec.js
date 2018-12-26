@@ -27,4 +27,10 @@ describe('<InputBaseLabel/>', () => {
         );
         expect(component.find('.rainbow-input_label.rainbow-input_label-read-only').exists()).toBe(true);
     });
+    it('should add the right class names when hideLabel is passed', () => {
+        const component = mount(
+            <Label label="Input Label" hideLabel />,
+        );
+        expect(component.find('.rainbow-input_label.rainbow-input_label--hide-label').exists()).toBe(true);
+    });
 });

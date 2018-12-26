@@ -10,12 +10,13 @@ import './styles.css';
 
 /**
 * A select list that can have a single entry checked at any one time.
+* @category Form
 */
 class RadioGroup extends Component {
     constructor(props) {
         super(props);
         this.errorId = uniqueId('error-message');
-        this.groupNameId = uniqueId('options');
+        this.groupNameId = props.name || uniqueId('options');
     }
 
     getContainerClassNames() {
@@ -80,6 +81,8 @@ RadioGroup.propTypes = {
     label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
+    /** The name of the radio group */
+    name: PropTypes.string,
     /** The value of the element. */
     value: PropTypes.string,
     /** The action triggered when a value attribute changes. */
@@ -91,7 +94,7 @@ RadioGroup.propTypes = {
         PropTypes.shape({
             label: PropTypes.oneOfType([
                 PropTypes.string, PropTypes.node,
-            ]),
+            ]).isRequired,
             value: PropTypes.string,
             disabled: PropTypes.bool,
         }),
@@ -110,6 +113,7 @@ RadioGroup.propTypes = {
 
 RadioGroup.defaultProps = {
     label: null,
+    name: null,
     className: undefined,
     style: undefined,
     value: undefined,

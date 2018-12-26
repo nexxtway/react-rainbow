@@ -24,6 +24,7 @@ export default class Checkbox extends Component {
             isSelected,
             onChange,
             describedBy,
+            name,
         } = this.props;
 
         return (
@@ -35,7 +36,8 @@ export default class Checkbox extends Component {
                     checked={isSelected}
                     disabled={disabled}
                     onChange={onChange}
-                    aria-describedby={describedBy} />
+                    aria-describedby={describedBy}
+                    name={name} />
 
                 <label className="rainbow-checkbox-group_checkbox-label-container" htmlFor={this.inputId}>
                     <span className="rainbow-checkbox-group_checkbox-faux" />
@@ -48,11 +50,12 @@ export default class Checkbox extends Component {
 
 Checkbox.propTypes = {
     value: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
+    label: PropTypes.node.isRequired,
     disabled: PropTypes.bool,
     isSelected: PropTypes.bool,
     onChange: PropTypes.func,
     describedBy: PropTypes.string,
+    name: PropTypes.string,
 };
 
 Checkbox.defaultProps = {
@@ -60,4 +63,5 @@ Checkbox.defaultProps = {
     isSelected: false,
     onChange: () => {},
     describedBy: undefined,
+    name: undefined,
 };

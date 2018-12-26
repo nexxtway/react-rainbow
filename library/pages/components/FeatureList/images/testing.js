@@ -48,7 +48,11 @@ const Testing = (props) => {
 };
 
 Testing.propTypes = {
-    className: PropTypes.string.isRequired,
+    className: PropTypes.string,
+};
+
+Testing.defaultProps = {
+    className: undefined,
 };
 
 export default Testing;

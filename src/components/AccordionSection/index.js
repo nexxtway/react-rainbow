@@ -175,6 +175,7 @@ class AccordionItem extends Component {
 
 /**
 * An AccordionSection is single section that is nested in the Accordion component.
+* @category Layout
 */
 export default function AccordionSection(props) {
     return (

@@ -107,12 +107,16 @@ export default class InputBase extends Component {
             bottomHelpText,
             required,
             id,
+            autoComplete,
+            name,
+            hideLabel,
         } = this.props;
 
         return (
             <div id={id} className={this.getContainerClassNames()} style={style}>
                 <Label
                     label={label}
+                    hideLabel={hideLabel}
                     required={required}
                     inputId={this.inputId}
                     readOnly={readOnly}
@@ -127,6 +131,7 @@ export default class InputBase extends Component {
 
                     <input
                         id={this.inputId}
+                        name={name}
                         type={type}
                         className={this.getInputClassNames()}
                         value={value}
@@ -142,6 +147,7 @@ export default class InputBase extends Component {
                         maxLength={maxLength}
                         minLength={minLength}
                         pattern={pattern}
+                        autoComplete={autoComplete}
                         aria-labelledby={this.getInlineTextLabelId()}
                         aria-describedby={this.getErrorMessageId()}
                         ref={this.inputRef} />
@@ -160,6 +166,7 @@ export default class InputBase extends Component {
 
 InputBase.propTypes = {
     value: PropTypes.string,
+    name: PropTypes.string,
     type: PropTypes.oneOf([
         'text',
         'password',
@@ -178,7 +185,7 @@ InputBase.propTypes = {
     ]),
     label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
-    ]),
+    ]).isRequired,
     placeholder: PropTypes.string,
     icon: PropTypes.node,
     iconPosition: PropTypes.oneOf([
@@ -206,12 +213,14 @@ InputBase.propTypes = {
     className: PropTypes.string,
     style: PropTypes.object,
     id: PropTypes.string,
+    autoComplete: PropTypes.string,
+    hideLabel: PropTypes.bool,
 };
 
 InputBase.defaultProps = {
     value: undefined,
+    name: undefined,
     type: 'text',
-    label: null,
     placeholder: null,
     icon: undefined,
     iconPosition: 'left',
@@ -233,4 +242,6 @@ InputBase.defaultProps = {
     className: undefined,
     style: undefined,
     id: undefined,
+    autoComplete: 'on',
+    hideLabel: false,
 };

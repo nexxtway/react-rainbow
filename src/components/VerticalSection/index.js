@@ -8,6 +8,7 @@ import './styles.css';
 
 /**
  * Represents a section within a VerticalNavigation.
+ * @category Layout
  */
 class VerticalSection extends Component {
     constructor(props) {

@@ -10,6 +10,7 @@ import './styles.css';
 
 /**
  * A checkable input that communicates if an option is true, false or indeterminate.
+ * @category Form
  */
 class CheckboxGroup extends Component {
     constructor(props) {
@@ -48,7 +49,7 @@ class CheckboxGroup extends Component {
     }
 
     render() {
-        const { id, value, options, required, label, error, style } = this.props;
+        const { id, value, options, required, label, error, style, name } = this.props;
         return (
             <fieldset id={id} className={this.getCheckboxContainerClassNames()} style={style}>
                 <RenderIf isTrue={!!label}>
@@ -62,7 +63,8 @@ class CheckboxGroup extends Component {
                         values={value}
                         options={options}
                         onChange={this.handleOnChange}
-                        describedBy={this.getErrorMessageId()} />
+                        describedBy={this.getErrorMessageId()}
+                        name={name} />
 
                 </div>
                 <RenderIf isTrue={!!error}>
@@ -80,7 +82,7 @@ CheckboxGroup.propTypes = {
     options: PropTypes.arrayOf(PropTypes.shape({
         label: PropTypes.oneOfType([
             PropTypes.string, PropTypes.node,
-        ]),
+        ]).isRequired,
         value: PropTypes.string,
         disabled: PropTypes.bool,
     })),
@@ -88,6 +90,8 @@ CheckboxGroup.propTypes = {
     label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
+    /** The name of the checkbox group */
+    name: PropTypes.string,
     /** The list of selected checkboxes. Each array entry contains the value of a selected checkbox.
      * The value of each checkbox is set in the options attribute. */
     value: PropTypes.arrayOf(PropTypes.string),
@@ -111,6 +115,7 @@ CheckboxGroup.defaultProps = {
     options: [],
     value: [],
     label: null,
+    name: undefined,
     onChange: () => {},
     required: false,
     error: null,

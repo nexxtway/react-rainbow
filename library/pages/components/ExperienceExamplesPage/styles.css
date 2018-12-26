@@ -1,0 +1,54 @@
+.react-rainbow-experience-examples-view-port {
+    background-color: #f4f6f9;
+    height: calc(100vh - 68px);
+}
+
+.react-rainbow-experience-examples-header-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Lato Light';
+    font-size: 32px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    color: #061c3f;
+    padding: 2.25rem 0;
+}
+
+.react-rainbow-experience-examples-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 2rem;
+}
+
+@media (max-width: 1024px) {
+    .react-rainbow-experience-examples-container {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .react-rainbow-experience-examples-view-port {
+        height: unset;
+        padding: 0 2.25rem 1.5rem 2.25rem;
+    }
+
+    .react-rainbow-experience-examples-header-title {
+        font-size: 28px;
+        padding: 1.5rem 0 1rem 0;
+    }
+
+    .react-rainbow-experience-examples-container {
+        padding: 0;
+    }
+}
+
+@media (max-width: 340px) {
+    .react-rainbow-experience-examples-view-port {
+        padding: 0 1rem 1rem 1rem;
+    }
+
+    .react-rainbow-experience-examples-header-title {
+        font-size: 20px;
+    }
+}

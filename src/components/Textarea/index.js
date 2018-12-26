@@ -10,6 +10,7 @@ import './styles.css';
 
 /**
  * Textarea inputs are used for freeform data entry.
+ * @category Form
  */
 class Textarea extends Component {
     constructor(props) {
@@ -98,12 +99,15 @@ class Textarea extends Component {
             required,
             rows,
             id,
+            hideLabel,
+            name,
         } = this.props;
 
         return (
             <div className={this.getContainerClassNames()} style={style} id={id}>
                 <Label
                     label={label}
+                    hideLabel={hideLabel}
                     required={required}
                     textareaId={this.textareaId}
                     readOnly={readOnly}
@@ -112,6 +116,7 @@ class Textarea extends Component {
                 <textarea
                     id={this.textareaId}
                     className="rainbow-textarea"
+                    name={name}
                     placeholder={placeholder}
                     disabled={disabled}
                     required={required}
@@ -144,7 +149,11 @@ Textarea.propTypes = {
     /** Text that describes the desired textarea input. */
     label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
-    ]),
+    ]).isRequired,
+    /** A boolean to hide the textarea label */
+    hideLabel: PropTypes.bool,
+    /** The name of the textarea */
+    name: PropTypes.string,
     /** The value of the textarea, also used as the default value during init. */
     value: PropTypes.string,
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
@@ -191,8 +200,8 @@ Textarea.propTypes = {
 };
 
 Textarea.defaultProps = {
-    label: null,
     value: undefined,
+    name: undefined,
     placeholder: null,
     maxLength: undefined,
     minLength: undefined,
@@ -211,6 +220,7 @@ Textarea.defaultProps = {
     className: undefined,
     style: undefined,
     id: undefined,
+    hideLabel: false,
 };
 
 export default withReduxForm(Textarea);

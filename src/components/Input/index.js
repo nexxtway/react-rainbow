@@ -7,6 +7,7 @@ import withReduxForm from './../../libs/hocs/withReduxForm';
 
 /**
  * Text inputs are used for freeform data entry.
+ * @category Form
  */
 class Input extends Component {
     constructor(props) {
@@ -54,6 +55,8 @@ class Input extends Component {
 Input.propTypes = {
     /** Specifies the value of an input element. */
     value: PropTypes.string,
+    /** The name of th input */
+    name: PropTypes.string,
     /** The type of the input. This value defaults to text. */
     type: PropTypes.oneOf([
         'text',
@@ -76,7 +79,9 @@ Input.propTypes = {
     /** Text label for the input. */
     label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
-    ]),
+    ]).isRequired,
+    /** A boolean to hide the input label. */
+    hideLabel: PropTypes.bool,
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
     placeholder: PropTypes.string,
     /** The icon to show if it is passed. It must be a svg icon or a font icon. */
@@ -128,12 +133,15 @@ Input.propTypes = {
     style: PropTypes.object,
     /** The id of the outer element. */
     id: PropTypes.string,
+    /** A string indicating the type of autocomplete functionality.
+    * If any, to allow on the input. */
+    autoComplete: PropTypes.string,
 };
 
 Input.defaultProps = {
     value: undefined,
     type: 'text',
-    label: null,
+    name: undefined,
     placeholder: null,
     icon: undefined,
     iconPosition: 'left',
@@ -155,6 +163,8 @@ Input.defaultProps = {
     className: undefined,
     style: undefined,
     id: undefined,
+    autoComplete: 'on',
+    hideLabel: false,
 };
 
 export default withReduxForm(Input);

@@ -40,7 +40,8 @@
     cursor: pointer; }
   .rainbow-tab_anchor:hover {
     background-color: #f9fafc;
-    color: #576574; }
+    color: #576574;
+    z-index: 1; }
   .rainbow-tab_anchor:focus {
     text-decoration: none;
     outline: 0;
@@ -50,7 +51,7 @@
   background-color: white;
   color: #01b6f5;
   border-radius: 14px 14px 0 0;
-  z-index: 1; }
+  z-index: 2; }
   .rainbow-tab--active::after {
     left: -40px;
     content: '';
@@ -92,10 +93,14 @@
   .rainbow-tab--disabled:hover .rainbow-tab_anchor {
     color: #a4a7b5; }
 
+.rainbow-tab_anchor-inner-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
+
 .rainbow-tab--disabled .rainbow-tab_anchor:focus {
   outline: none;
   text-decoration: none; }
 
 .rainbow-tab--full-width {
-  flex-grow: 1;
-  justify-content: center; }
+  flex-grow: 1; }

@@ -59,6 +59,7 @@ export default class Slider extends Component {
         const {
             label,
             value,
+            name,
             min,
             max,
             step,
@@ -69,15 +70,17 @@ export default class Slider extends Component {
             onClick,
             onFocus,
             style,
+            hideLabel,
         } = this.props;
         return (
             <div className={this.getContainerClassName()} style={style}>
-                <Label label={label} sliderId={this.sliderId} />
+                <Label label={label} hideLabel={hideLabel} sliderId={this.sliderId} />
                 <div className="rainbow-slider">
                     <input
                         id={this.sliderId}
                         className="rainbow-slider_range"
                         type="range"
+                        name={name}
                         value={value}
                         min={min}
                         max={max}
@@ -103,16 +106,29 @@ export default class Slider extends Component {
 Slider.propTypes = {
     /** The text label for the slider. Provide your own label to describe the slider.
     * Otherwise, no label is displayed. */
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    label: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]).isRequired,
+    /** A boolean to hide the slider label */
+    hideLabel: PropTypes.bool,
     /** The numerical value of the slider. This value defaults to 0. */
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.number,
+    ]),
+    name: PropTypes.string,
     /** The min value of the slider. This value defaults to 0. */
-    min: PropTypes.string,
+    min: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.number,
+    ]),
     /** The max value of the slider. This value defaults to 100. */
-    max: PropTypes.string,
+    max: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.number,
+    ]),
     /** The step increment value of the slider. Example steps include 0.1, 1, or 10.
     * This value defaults to 1. */
-    step: PropTypes.string,
+    step: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.number,
+    ]),
     /** Specifies that the slider element must have a value selected before submitting the form. */
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies that the slider element should be disabled. This value defaults to false. */
@@ -134,6 +150,7 @@ Slider.propTypes = {
 Slider.defaultProps = {
     label: null,
     value: undefined,
+    name: undefined,
     min: 0,
     max: 100,
     step: 1,
@@ -145,4 +162,5 @@ Slider.defaultProps = {
     onBlur: () => {},
     className: undefined,
     style: null,
+    hideLabel: false,
 };

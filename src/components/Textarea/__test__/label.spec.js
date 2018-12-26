@@ -21,4 +21,16 @@ describe('<TextareaLabel/>', () => {
         );
         expect(component.find('RequiredAsterisk').prop('required')).toBe(true);
     });
+    it('should add the right class names', () => {
+        const component = mount(
+            <Label label="Textarea Label" />,
+        );
+        expect(component.find('.rainbow-textarea_label').exists()).toBe(true);
+    });
+    it('should add the right class names when hideLabel is passed', () => {
+        const component = mount(
+            <Label label="Textarea Label" hideLabel />,
+        );
+        expect(component.find('.rainbow-textarea_label.rainbow-textarea_label--hide-label').exists()).toBe(true);
+    });
 });

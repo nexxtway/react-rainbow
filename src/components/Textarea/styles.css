@@ -74,3 +74,15 @@
   .rainbow-textarea--error .rainbow-textarea:focus, .rainbow-textarea--error .rainbow-textarea:active {
     padding: 0.625rem 1rem;
     box-shadow: 0 0 2px #fe4849; }
+
+.rainbow-textarea_label--hide-label {
+  position: absolute !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  text-transform: none !important;
+  white-space: nowrap !important; }

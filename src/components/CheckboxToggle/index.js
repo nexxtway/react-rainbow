@@ -10,12 +10,13 @@ import './styles.css';
 /**
 * Checkbox toggle is a checkable input that communicates if an option is true,
 * false or indeterminate.
+* @category Form
 */
 class CheckboxToggle extends Component {
     constructor(props) {
         super(props);
-        this.toggleId = uniqueId('checkbox-toggle');
         this.checkboxToggleRef = React.createRef();
+        this.inputIndentifier = props.name || uniqueId('checkbox-toggle');
     }
 
     getClassNames() {
@@ -64,9 +65,9 @@ class CheckboxToggle extends Component {
             <label id={id} className={this.getClassNames()} style={style}>
                 <input
                     type="checkbox"
-                    name={this.toggleId}
-                    value={this.toggleId}
-                    aria-describedby={this.toggleId}
+                    name={this.inputIndentifier}
+                    value={this.inputIndentifier}
+                    aria-describedby={this.inputIndentifier}
                     checked={value}
                     onChange={onChange}
                     onFocus={onFocus}
@@ -75,7 +76,7 @@ class CheckboxToggle extends Component {
                     disabled={disabled}
                     ref={this.checkboxToggleRef} />
 
-                <span id={this.toggleId} className="rainbow-checkbox-toggle_faux-container" aria-live="assertive">
+                <span id={this.inputIndentifier} className="rainbow-checkbox-toggle_faux-container" aria-live="assertive">
                     <span className="rainbow-checkbox-toggle_faux" />
                 </span>
                 <RenderIf isTrue={!!label} >
@@ -91,6 +92,8 @@ CheckboxToggle.propTypes = {
     label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
+    /** The name of the input */
+    name: PropTypes.string,
     /** The value of the element. */
     value: PropTypes.bool,
     /** Specifies that the element should be disabled. This value defaults to false. */
@@ -115,6 +118,7 @@ CheckboxToggle.defaultProps = {
     label: null,
     disabled: false,
     value: false,
+    name: undefined,
     onChange: () => {},
     onClick: () => {},
     onFocus: () => {},

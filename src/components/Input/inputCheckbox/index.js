@@ -76,6 +76,7 @@ export default class InputCheckbox extends Component {
             onClick,
             bottomHelpText,
             id,
+            name,
         } = this.props;
 
         return (
@@ -83,6 +84,7 @@ export default class InputCheckbox extends Component {
                 <div className="rainbow-input-checkbox_inner-container">
                     <input
                         id={this.inputId}
+                        name={name}
                         type="checkbox"
                         value={value}
                         onChange={onChange}
@@ -115,7 +117,8 @@ InputCheckbox.propTypes = {
     value: PropTypes.string,
     label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
-    ]),
+    ]).isRequired,
+    name: PropTypes.string,
     bottomHelpText: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
@@ -135,7 +138,7 @@ InputCheckbox.propTypes = {
 
 InputCheckbox.defaultProps = {
     value: undefined,
-    label: null,
+    name: undefined,
     bottomHelpText: null,
     error: null,
     disabled: false,
