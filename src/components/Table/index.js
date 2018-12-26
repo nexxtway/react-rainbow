@@ -5,8 +5,11 @@ import Body from './body';
 import Head from './head';
 import './styles.css';
 
-/** Data tables display information in a way that’s easy to scan,
- * so that users can look for patterns and insights. */
+/**
+* Data tables display information in a way that’s easy to scan,
+* so that users can look for patterns and insights.
+* @category DataView
+*/
 export default class Table extends Component {
     constructor(props) {
         super(props);
