@@ -1,5 +1,4 @@
 /* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
@@ -18,6 +17,13 @@ import DescriptionLink from './descriptionLink';
 import Query from './query';
 import './styles.css';
 
+const getEditLinkClassName = () => {
+    const isExpanded = window.location.href.includes('/#!/');
+    return classnames('react-rainbow-component_example-edit-link-container', {
+        'react-rainbow-component_example-edit-link-container--compress': isExpanded,
+    });
+};
+
 export default class ReactComponent extends Component {
     constructor(props) {
         super(props);
@@ -27,13 +33,6 @@ export default class ReactComponent extends Component {
 
     handleOnSelect(event, tab) {
         this.setState({ activeTabName: tab });
-    }
-
-    editLinkClassName() {
-        const isExpanded = window.location.href.includes('/#!/');
-        return classnames('react-rainbow-component_example-edit-link-container', {
-            'react-rainbow-component_example-edit-link-container--compress': isExpanded,
-        });
     }
 
     render() {
@@ -77,7 +76,7 @@ export default class ReactComponent extends Component {
                 <div className="rainbow-p-top_small rainbow-p-horizontal_x-large">
                     <RenderIf isTrue={activeTabName === 'examples'}>
                         <div className="rainbow-m-left_x-large rainbow-m-right_xx-large">
-                            <div className={this.editLinkClassName()}>
+                            <div className={getEditLinkClassName()}>
                                 <a
                                     className="rainbow-link"
                                     href={`https://github.com/90milesbridge/react-rainbow/blob/master/src/components/${name}/readme.md`}

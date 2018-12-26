@@ -35,11 +35,11 @@ export default class StyleGuide extends React.Component {
 
         return (
             <div className="react-rainbow-styleguide-container rainbow-position-align_start">
+                <ProjectSelector />
                 <aside className="react-rainbow-styleguide-sidebar">
                     {toc}
                 </aside>
                 <main className="react-rainbow-main-content">
-                    <ProjectSelector />
                     <RenderIf isTrue={window.location.hash !== '#/Components'}>
                         {children}
                     </RenderIf>
