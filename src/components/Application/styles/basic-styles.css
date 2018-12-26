@@ -289,9 +289,12 @@ td {
   text-align: left; }
 
 .rainbow-link {
-  font-size: 13px;
+  font-size: 15px;
   line-height: 2.46;
-  color: #01b6f5; }
+  color: #01b6f5;
+  align-items: center;
+  display: inline-flex;
+  justify-content: center; }
 
 .rainbow-link:hover,
 .rainbow-link:focus,

@@ -18,7 +18,7 @@ Column.propTypes = {
     /**
     * The component class or function that is going to be use to render
     * the content of each cell on this column. By default the cell is
-    * going to render the computed value(data[rowIndex][field]) for each cell.
+    * going to render the computed value(`data[rowIndex][field]`) for each cell.
     */
     component: PropTypes.func,
     /**

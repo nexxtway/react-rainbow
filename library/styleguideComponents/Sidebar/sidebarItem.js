@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Consumer as NavigationConsumer } from './context';
-import RenderIf from '../RenderIf';
+import RenderIf from '../../../src/components/RenderIf';
 import './styles.css';
 
 function Item(props) {

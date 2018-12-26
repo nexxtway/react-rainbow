@@ -1,11 +1,5 @@
-.react-rainbow-title-text {
-    line-height: 1.25;
-    margin-left: 2rem;
-    font-family: 'Lato Light';
-}
-
 .react-rainbow-github-badge-container {
-    margin-right: 2rem;
+    margin-right: 32px;
 }
 
 .react-rainbow-github-badge {
@@ -17,20 +11,15 @@
 
 .react-rainbow-heading-container {
     top: 0;
+    left: 0;
     height: 68px;
     background-color: #fff;
-    width: calc(100vw - 300px);
+    width: 100vw;
     z-index: 10000;
-    box-shadow: 0 1px 2px 0 #e3e5ed;
+    border-bottom: 1px solid #f4f6f9;
 }
 
 @media (max-width: 800px) {
-    .react-rainbow-heading-container {
-        width: calc(100vw - 200px);
-    }
-    .react-rainbow-title-text {
-        margin-left: 24px;
-    }
     .react-rainbow-github-badge-container {
         margin-right: 24px;
     }
@@ -39,9 +28,6 @@
 @media (max-width: 600px) {
     .react-rainbow-heading-container {
         width: 100vw;
-    }
-    .react-rainbow-title-text {
-        margin-left: 16px;
     }
     .react-rainbow-github-badge-container {
         margin-right: 16px;
