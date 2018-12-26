@@ -46,7 +46,7 @@ export default class Table extends Component {
 }
 
 Table.propTypes = {
-    /** An array containing the objects to be displayed */
+    /** An array containing the objects(rows) to be displayed */
     data: PropTypes.arrayOf(Object).isRequired,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,

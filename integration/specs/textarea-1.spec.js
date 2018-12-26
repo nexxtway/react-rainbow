@@ -1,6 +1,6 @@
 const PageTextarea = require('./../../src/components/Textarea/pageObject');
 
-const TEXTAREA = '#textarea-1';
+const TEXTAREA = '#example-textarea-1';
 
 describe('Textarea base example', () => {
     beforeEach(() => {

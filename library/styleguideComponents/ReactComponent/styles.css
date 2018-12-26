@@ -32,11 +32,32 @@
     max-width: 100%;
 }
 
-.react-rainbow-component-top-content {
+.react-rainbow-component_top-content {
     background-color: #f4f6f9;
+}
+
+.react-rainbow-component_component-name {
+    font-size: 24px;
+    color: #061c3f;
+    padding-top: 24px;
+    padding-left: 32px;
 }
 
 .react-rainbow-utils_container {
     display: flex;
     flex-wrap: wrap;
+}
+
+.react-rainbow-component_tab-edit-link {
+    margin-right: 26px;
+}
+
+.react-rainbow-component_example-edit-link-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 4px;
+}
+
+.react-rainbow-component_example-edit-link-container--compress {
+    margin-bottom: 33px;
 }
