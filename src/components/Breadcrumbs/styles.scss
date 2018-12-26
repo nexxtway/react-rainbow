@@ -1,0 +1,20 @@
+.rainbow-breadcrumbs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.rainbow-breadcrumbs > .rainbow-breadcrumb:last-child {
+    font-weight: 900;
+    color: #061c3f;
+    pointer-events: none;
+}
+
+.rainbow-breadcrumbs > .rainbow-breadcrumb:not(:last-child)::after {
+    margin: 0 10px;
+    content: '>';
+
+    :hover {
+        color: #576574;
+    }
+}
