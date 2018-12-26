@@ -18,6 +18,7 @@ class PageModal {
      * @method
      */
     clickCloseButton() {
+        browser.waitUntil(() => $(this.rootElement).$('.rainbow-modal_close-button').isVisible());
         $(this.rootElement).$('.rainbow-modal_close-button').click();
     }
 
