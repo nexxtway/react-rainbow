@@ -19,13 +19,14 @@ export default function Breadcrumb(props) {
     } = props;
     const getClassNames = () => classnames(
         'rainbow-breadcrumb',
-        { 'rainbow-breadcrumb-disabled': disabled },
+        { 'rainbow-breadcrumb--disabled': disabled },
         className,
     );
 
     return (
         <li className={getClassNames()} style={style}>
             <a
+                className="rainbow-breadcrumb-anchor"
                 href={href}
                 onClick={onClick}
                 aria-disabled={!!disabled}>

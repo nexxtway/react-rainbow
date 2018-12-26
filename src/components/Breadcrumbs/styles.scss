@@ -4,7 +4,7 @@
     align-items: center;
 }
 
-.rainbow-breadcrumbs > .rainbow-breadcrumb:last-child {
+.rainbow-breadcrumbs > .rainbow-breadcrumb:last-child > .rainbow-breadcrumb-anchor {
     font-weight: 900;
     color: #061c3f;
     pointer-events: none;
