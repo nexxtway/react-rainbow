@@ -17,6 +17,7 @@ export default function Breadcrumb(props) {
         className,
         style,
     } = props;
+
     const getClassNames = () => classnames(
         'rainbow-breadcrumb',
         { 'rainbow-breadcrumb--disabled': disabled },

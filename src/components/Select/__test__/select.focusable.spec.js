@@ -1,11 +1,11 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Button from '../index';
+import Select from './../';
 
-describe('<Button />', () => {
+describe('<Select/>', () => {
     it('should be focusable', () => {
         const component = mount(
-            <Button label="button label" />,
+            <Select label="Select Label" />,
         );
         expect(component).toBeFocusable();
     });

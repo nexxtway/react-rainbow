@@ -6,6 +6,8 @@ function isMountedByEnzyme(component) {
         && typeof component.instance === 'function';
 }
 
+const focusables = ['button', 'input', 'select', 'textarea'];
+
 export default function toBeFocusable(component) {
     if (component && isMountedByEnzyme(component)) {
         const onClickMockFn = jest.fn();
@@ -18,9 +20,14 @@ export default function toBeFocusable(component) {
             onFocus: onFocusMockFn,
         });
 
-        component.simulate('click');
-        component.simulate('blur');
-        component.simulate('focus');
+        const focusableElement = focusables.find(element => component.find(element).exists());
+        if (focusableElement) {
+            const element = component.find(focusableElement);
+            element.simulate('click');
+            element.simulate('blur');
+            element.simulate('focus');
+        }
+
         const instance = component.instance();
 
         const results = [
