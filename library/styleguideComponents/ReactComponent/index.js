@@ -10,6 +10,8 @@ import Tabset from '../../../src/components/Tabset';
 import Tab from '../../../src/components/Tab';
 import RenderIf from '../../../src/components/RenderIf';
 import Card from './../../../src/components/Card';
+import Breadcrumbs from '../../../src/components/Breadcrumbs';
+import Breadcrumb from '../../../src/components/Breadcrumb';
 import TabLabel from './tabLabel';
 import Description from './description';
 import InteractiveExampleIcon from './icons/interactiveExampleIcon';
@@ -52,6 +54,12 @@ export default class ReactComponent extends Component {
             <Prismic repo="rainbow-doc">
                 <div className="react-rainbow-component_top-content">
                     {heading}
+                    <div className="rainbow-p-top_medium rainbow-p-left_x-large">
+                        <Breadcrumbs>
+                            <Breadcrumb label="Components" href="/#/Components" />
+                            <Breadcrumb label={name} />
+                        </Breadcrumbs>
+                    </div>
                     <p className="react-rainbow-component_component-name">
                         {name}
                     </p>
