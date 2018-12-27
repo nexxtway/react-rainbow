@@ -10,9 +10,6 @@ export default function RightArrow({ isExpanded }) {
 
     return (
         <svg className={getArrowClassName()} width="10px" height="7px" viewBox="0 0 10 7" version="1.1">
-            <title>angle-down</title>
-            <desc>Created with Sketch.</desc>
-            <defs />
             <g id="examples" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g id="angle-down" transform="translate(-7.000000, -9.000000)" fillRule="nonzero">
                     <rect id="shape" x="0" y="0" width="24" height="24" />
