@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 .rainbow-table {
   table-layout: fixed; }
 
@@ -31,6 +32,13 @@
     background-color: #009acf !important;
     z-index: 1000; }
 
+.rainbow-table_header--sortable {
+  cursor: pointer; }
+  .rainbow-table_header--sortable:hover .rainbow-table_header-content {
+    background-color: #fff; }
+  .rainbow-table_header--sortable:hover .rainbow-table_header-resize-bar {
+    background-color: #e3e5ed; }
+
 .rainbow-table_header--selected {
   color: #01b6f5; }
   .rainbow-table_header--selected .rainbow-table_header-content {
@@ -48,13 +56,6 @@
   position: relative; }
   .rainbow-table_header:first-of-type .rainbow-table_header-content {
     padding-left: 18px; }
-
-.rainbow-table_header--sortable {
-  cursor: pointer; }
-  .rainbow-table_header--sortable:hover .rainbow-table_header-content {
-    background-color: #fff; }
-  .rainbow-table_header--sortable:hover .rainbow-table_header-resize-bar {
-    background-color: #e3e5ed; }
 
 .rainbow-table_header-arrow {
   margin-left: 4px; }

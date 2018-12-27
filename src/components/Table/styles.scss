@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 @import "../../styles/colors";
 @import "../../styles/font-sizes";
 
@@ -43,6 +44,20 @@
     }
 }
 
+.rainbow-table_header--sortable {
+    cursor: pointer;
+
+    &:hover {
+        .rainbow-table_header-content {
+            background-color: #fff;
+        }
+
+        .rainbow-table_header-resize-bar {
+            background-color: $color-gray-2;
+        }
+    }
+}
+
 .rainbow-table_header--selected {
     color: $color-brand;
 
@@ -66,20 +81,6 @@
 
     &:first-of-type .rainbow-table_header-content {
         padding-left: 18px;
-    }
-}
-
-.rainbow-table_header--sortable {
-    cursor: pointer;
-
-    &:hover {
-        .rainbow-table_header-content {
-            background-color: #fff;
-        }
-
-        .rainbow-table_header-resize-bar {
-            background-color: $color-gray-2;
-        }
     }
 }
 
