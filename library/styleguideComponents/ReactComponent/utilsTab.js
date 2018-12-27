@@ -1,14 +1,14 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { faWrench } from '@fortawesome/free-solid-svg-icons';
 import { QueryAt } from 'react-prismic-cms';
 import Tab from '../../../src/components/Tab';
 import TabLabel from './tabLabel';
+import RelatedIcon from './icons/relatedIcon';
 
 function TabItem({ response }) {
     if (response && response.total_results_size) {
-        return <Tab name="utils" label={<TabLabel icon={faWrench} label="UTILITIES" />} />;
+        return <Tab name="utils" label={<TabLabel icon={<RelatedIcon className="rainbow-m-right_x-small" />} label="RELATED" />} />;
     }
     return null;
 }
