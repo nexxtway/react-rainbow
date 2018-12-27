@@ -30,8 +30,8 @@
         </header>
         <div className="rainbow-p-around_large rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
             <Breadcrumbs>
-                <Breadcrumb label="Breadcrumb Parent" />
-                <Breadcrumb label="Breadcrumb" disabled/>
+                <Breadcrumb label="Breadcrumb Parent" disabled />
+                <Breadcrumb label="Breadcrumb" />
                 <Breadcrumb label="Breadcrumb" />
             </Breadcrumbs>
         </div>
