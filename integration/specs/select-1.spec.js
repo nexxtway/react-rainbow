@@ -1,6 +1,6 @@
 const PageSelect = require('./../../src/components/Select/pageObject');
 
-const SELECT = '#select-1';
+const SELECT = '#example-select-1';
 
 describe('Textarea base example', () => {
     beforeEach(() => {

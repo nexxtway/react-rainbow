@@ -3,7 +3,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExpandArrowsAlt, faCompress } from '@fortawesome/free-solid-svg-icons';
-import Button from '../../../src/components/Button';
 import './styles.css';
 
 function resolveHref() {
@@ -22,20 +21,16 @@ export default function ToolbarButton(props) {
 
     if (href !== undefined && title === 'Open isolated') {
         return (
-            <a className="react-rainbow-toolbar-button" href={href} title={title} aria-label={title}>
-                <Button variant="base">
-                    <FontAwesomeIcon icon={faExpandArrowsAlt} className="rainbow-color_gray-4" />
-                </Button>
+            <a className="rainbow-link react-rainbow-toolbar-button" href={href} title={title} aria-label={title}>
+                <FontAwesomeIcon icon={faExpandArrowsAlt} className="rainbow-color_gray-4" />
             </a>
         );
     }
 
     if (href !== undefined && title === 'Show all components') {
         return (
-            <a className="react-rainbow-toolbar-button" href={resolveHref()} title={title} aria-label={title}>
-                <Button variant="base">
-                    <FontAwesomeIcon icon={faCompress} className="rainbow-color_gray-4" />
-                </Button>
+            <a className="rainbow-link react-rainbow-toolbar-button" href={resolveHref()} title={title} aria-label={title}>
+                <FontAwesomeIcon icon={faCompress} className="rainbow-color_gray-4" />
             </a>
         );
     }
