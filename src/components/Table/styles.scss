@@ -13,6 +13,49 @@
     box-shadow: 0 1px 0.3px 0 #e3e5ed, 0 -1px 0.3px 0 #e3e5ed;
 }
 
+.rainbow-table_header-content {
+    height: 100%;
+    padding-left: 4px;
+    border: 1px transparent solid;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rainbow-table_header-resize-bar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 4px;
+    background-color: transparent;
+
+    &:hover {
+        background-color: $color-brand !important;
+        cursor: col-resize;
+    }
+
+    &:active {
+        background-color: $color-brand-active !important;
+        z-index: 1000;
+    }
+}
+
+.rainbow-table_header--selected {
+    color: $color-brand;
+
+    .rainbow-table_header-content {
+        background-color: #fff;
+        border-color: $color-brand;
+    }
+
+    .rainbow-table_header-resize-bar, &:hover .rainbow-table_header-resize-bar {
+        background-color: $color-brand;
+    }
+}
+
 .rainbow-table_header {
     text-transform: uppercase;
     font-size: $font-size-text-medium;
@@ -33,34 +76,11 @@
         .rainbow-table_header-content {
             background-color: #fff;
         }
+
         .rainbow-table_header-resize-bar {
             background-color: $color-gray-2;
         }
     }
-}
-
-.rainbow-table_header--selected {
-    color: $color-brand;
-
-    .rainbow-table_header-content {
-        background-color: #fff;
-        border-color: $color-brand;
-    }
-
-    .rainbow-table_header-resize-bar, &:hover .rainbow-table_header-resize-bar {
-        background-color: $color-brand;
-    }
-}
-
-.rainbow-table_header-content {
-    height: 100%;
-    padding-left: 4px;
-    border: 1px transparent solid;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
 .rainbow-table_header-arrow {
@@ -69,25 +89,6 @@
 
 .rainbow-table_header-arrow--asc {
     transform: rotate(-180deg);
-}
-
-.rainbow-table_header-resize-bar {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    width: 4px;
-    background-color: transparent;
-
-    &:hover {
-        background-color: $color-brand !important;
-        cursor: col-resize;
-    }
-
-    &:active {
-        background-color: $color-brand-active !important;
-        z-index: 1000;
-    }
 }
 
 .rainbow-table_body-wrapper {
