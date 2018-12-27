@@ -13,6 +13,8 @@ describe('resolveColumns', () => {
             field: 'a',
             header: 'header',
             component: <span />,
+            sortable: true,
+            width: undefined,
         }]);
     });
 });

@@ -29,10 +29,12 @@ describe('<Row />', () => {
         expect(cell.get(0).props).toEqual({
             component: undefined,
             value: 'a',
+            width: 'unset',
         });
         expect(cell.get(1).props).toEqual({
             component: undefined,
             value: 26,
+            width: 'unset',
         });
     });
 });
