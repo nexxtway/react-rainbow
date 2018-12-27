@@ -28,9 +28,14 @@ Column.propTypes = {
     * for a column that want to represent names on a collection of people.
     */
     field: PropTypes.string.isRequired,
+    /** Sets whether the column should control the sorting order of the data */
+    sortable: PropTypes.bool,
+    width: PropTypes.string,
 };
 
 Column.defaultProps = {
     header: undefined,
     component: undefined,
+    sortable: true,
+    width: undefined,
 };

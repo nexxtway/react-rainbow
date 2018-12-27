@@ -18,9 +18,9 @@ CellValue.defaultProps = {
     value: undefined,
 };
 
-export default function Cell({ component, value }) {
+export default function Cell({ component, value, width }) {
     return (
-        <td className="rainbow-table_cell">
+        <td className="rainbow-table_cell" style={{ width }}>
             <CellValue component={component} value={value} />
         </td>
     );
@@ -29,9 +29,11 @@ export default function Cell({ component, value }) {
 Cell.propTypes = {
     component: PropTypes.func,
     value: PropTypes.any,
+    width: PropTypes.string,
 };
 
 Cell.defaultProps = {
     component: undefined,
     value: undefined,
+    width: 'unset',
 };

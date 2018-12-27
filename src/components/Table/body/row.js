@@ -5,8 +5,8 @@ import Cell from './cell';
 
 export default function Row(props) {
     const { data, columns } = props;
-    const cells = columns.map(({ component, field }) => (
-        <Cell key={uniqueId('cell')} component={component} value={data[field]} />
+    const cells = columns.map(({ component, field, width }) => (
+        <Cell key={uniqueId('cell')} component={component} value={data[field]} width={width} />
     ));
     return (
         <tr className="rainbow-table_body-row">
