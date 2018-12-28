@@ -1,6 +1,7 @@
 /* stylelint-disable no-descending-specificity */
 @import "../../styles/colors";
 @import "../../styles/font-sizes";
+@import "../../styles/paddings";
 
 .rainbow-table {
     table-layout: fixed;
@@ -14,15 +15,20 @@
     box-shadow: 0 1px 0.3px 0 #e3e5ed, 0 -1px 0.3px 0 #e3e5ed;
 }
 
-.rainbow-table_header-content {
+.rainbow-table_header-content-wrapper {
     height: 100%;
-    padding-left: 4px;
+    padding-left: $padding-x-small;
     border: 1px transparent solid;
     display: flex;
     align-items: center;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.rainbow-table_header-content {
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .rainbow-table_header-resize-bar {
@@ -70,7 +76,7 @@
     cursor: pointer;
 
     &:hover {
-        .rainbow-table_header-content {
+        .rainbow-table_header-content-wrapper {
             background-color: #fff;
         }
 
@@ -83,7 +89,7 @@
 .rainbow-table_header--selected {
     color: $color-brand;
 
-    .rainbow-table_header-content {
+    .rainbow-table_header-content-wrapper {
         background-color: #fff;
         border-color: $color-brand;
     }
@@ -101,7 +107,7 @@
     height: 44px;
     position: relative;
 
-    &:first-of-type .rainbow-table_header-content {
+    &:first-of-type .rainbow-table_header-content-wrapper {
         padding-left: 18px;
     }
 }
@@ -131,7 +137,7 @@
     font-size: $font-size-text-medium;
     color: $color-gray-4;
     height: 40px;
-    padding-left: 4px;
+    padding-left: $padding-x-small;
     padding-right: 4px;
     overflow: hidden;
     text-overflow: ellipsis;

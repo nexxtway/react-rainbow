@@ -8,15 +8,19 @@
 .rainbow-table_header-row {
   box-shadow: 0 1px 0.3px 0 #e3e5ed, 0 -1px 0.3px 0 #e3e5ed; }
 
-.rainbow-table_header-content {
+.rainbow-table_header-content-wrapper {
   height: 100%;
-  padding-left: 4px;
+  padding-left: 0.5rem;
   border: 1px transparent solid;
   display: flex;
   align-items: center;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap; }
+
+.rainbow-table_header-content {
+  overflow: hidden;
+  text-overflow: ellipsis; }
 
 .rainbow-table_header-resize-bar {
   position: absolute;
@@ -49,14 +53,14 @@
 
 .rainbow-table_header--sortable {
   cursor: pointer; }
-  .rainbow-table_header--sortable:hover .rainbow-table_header-content {
+  .rainbow-table_header--sortable:hover .rainbow-table_header-content-wrapper {
     background-color: #fff; }
   .rainbow-table_header--sortable:hover .rainbow-table_header-resize-bar {
     background-color: #e3e5ed; }
 
 .rainbow-table_header--selected {
   color: #01b6f5; }
-  .rainbow-table_header--selected .rainbow-table_header-content {
+  .rainbow-table_header--selected .rainbow-table_header-content-wrapper {
     background-color: #fff;
     border-color: #01b6f5; }
   .rainbow-table_header--selected .rainbow-table_header-resize-bar, .rainbow-table_header--selected:hover .rainbow-table_header-resize-bar {
@@ -69,7 +73,7 @@
   color: #576574;
   height: 44px;
   position: relative; }
-  .rainbow-table_header:first-of-type .rainbow-table_header-content {
+  .rainbow-table_header:first-of-type .rainbow-table_header-content-wrapper {
     padding-left: 18px; }
 
 .rainbow-table_header-arrow {
@@ -92,7 +96,7 @@
   font-size: 0.875rem;
   color: #576574;
   height: 40px;
-  padding-left: 4px;
+  padding-left: 0.5rem;
   padding-right: 4px;
   overflow: hidden;
   text-overflow: ellipsis;

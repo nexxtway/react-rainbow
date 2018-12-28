@@ -59,8 +59,9 @@ export default class Header extends Component {
         this.parentHeader = document.getElementById(`rainbow-table-header-${this.headerId}`).getBoundingClientRect();
         const resizeBarRect = this.resizeBar.getBoundingClientRect();
         this.startX = dragEvent.clientX;
-        this.rightEdge = resizeBarRect.right - headerContainer.right;
-        this.leftEdge = resizeBarRect.left - headerContainer.left;
+        const { columns } = this.props;
+        this.rightEdge = resizeBarRect.right - (headerContainer.right - (columns * 9));
+        this.leftEdge = resizeBarRect.left - (this.parentHeader.left + 40);
         this.resizeBar.style.zIndex = '100';
 
         document.addEventListener('mousemove', this.onMouseMove);
@@ -84,8 +85,8 @@ export default class Header extends Component {
                 onClick={this.handleClick}
                 style={headerStyles}>
                 <div
-                    className="rainbow-table_header-content">
-                    {content}
+                    className="rainbow-table_header-content-wrapper">
+                    <span className="rainbow-table_header-content">{content}</span>
                     <RenderIf isTrue={isSelected}>
                         <ArrowDown direction={sortDirection} />
                     </RenderIf>
@@ -118,6 +119,7 @@ Header.propTypes = {
     columnIndex: PropTypes.number,
     onResize: PropTypes.func,
     width: PropTypes.string,
+    columns: PropTypes.number,
 };
 
 Header.defaultProps = {
@@ -129,4 +131,5 @@ Header.defaultProps = {
     columnIndex: undefined,
     onResize: () => {},
     width: 'unset',
+    columns: undefined,
 };

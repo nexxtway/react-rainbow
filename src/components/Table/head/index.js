@@ -21,7 +21,8 @@ export default class Head extends Component {
                         columnIndex={index}
                         onColumnSelect={onColumnSelect}
                         onResize={onResize}
-                        width={width} />
+                        width={width}
+                        columns={columns.length} />
                 );
             });
         }
