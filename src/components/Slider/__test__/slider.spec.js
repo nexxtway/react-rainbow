@@ -11,14 +11,6 @@ describe('<Slider />', () => {
         component.find('input').simulate('change');
         expect(onChangeFn).toHaveBeenCalledTimes(1);
     });
-    it('should fire an event when the user clik the input', () => {
-        const onClickFn = jest.fn();
-        const component = mount(
-            <Slider onClick={onClickFn} />,
-        );
-        component.find('input').simulate('click');
-        expect(onClickFn).toHaveBeenCalledTimes(1);
-    });
     it('should set the value passed in the input element', () => {
         const component = mount(
             <Slider value="50" />,

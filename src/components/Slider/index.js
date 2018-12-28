@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { uniqueId } from './../../libs/utils';
+import RenderIf from '../RenderIf';
 import Label from './label';
 import './style.css';
-import RenderIf from '../RenderIf';
 
 /**
 * An input range slider lets the user specify a numeric value which must be between

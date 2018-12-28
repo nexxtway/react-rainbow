@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import VerticalNavigation from './../../../src/components/VerticalNavigation';
-import VerticalItem from '../../../src/components/VerticalItem';
-import VerticalSection from '../../../src/components/VerticalSection';
-import './styles.css';
+import Sidebar from '../Sidebar';
+import SidebarItem from '../Sidebar/sidebarItem';
+import ExperiencesIcon from './icons/experiencesIcon';
+import PuzzleIcon from './icons/puzzleIcon';
+import StartupIcon from './icons/startupIcon';
 
 function resolveCurrentUrl() {
     return window.location.href.split('#/')[1] || 'GettingStarted';
@@ -23,41 +23,29 @@ export default class ComponentsList extends Component {
     }
 
     render() {
-        const { items } = this.props;
         const { selectedItem } = this.state;
 
-        if (!items.length) {
-            return null;
-        }
-
         return (
-            <VerticalNavigation
-                compact
-                className="rainbow-p-bottom_large react-rainbow-vertical-navigation"
+            <Sidebar
                 selectedItem={selectedItem}
                 onSelect={this.handleOnSelect}>
-                <VerticalSection>
-                    <VerticalItem
-                        name="GettingStarted"
-                        label="Getting Started"
-                        href="/#/GettingStarted" />
-
-                    <VerticalItem
-                        name="Components"
-                        label="Components"
-                        href="/#/Components" />
-
-                    <VerticalItem
-                        name="Experiences"
-                        label="Experiences"
-                        href="/#/Experiences" />
-
-                </VerticalSection>
-            </VerticalNavigation>
+                <SidebarItem
+                    icon={<StartupIcon />}
+                    name="GettingStarted"
+                    label="Getting Started"
+                    href="/#/GettingStarted" />
+                <SidebarItem
+                    icon={<PuzzleIcon />}
+                    name="Components"
+                    label="Components"
+                    href="/#/Components" />
+                <SidebarItem
+                    icon={<ExperiencesIcon />}
+                    name="Experiences"
+                    label="Experiences"
+                    href="/#/Experiences" />
+            </Sidebar>
         );
     }
 }
 
-ComponentsList.propTypes = {
-    items: PropTypes.array.isRequired,
-};

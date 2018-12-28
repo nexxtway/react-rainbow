@@ -19,32 +19,32 @@ export default function ProgressBar(props) {
      } = props;
 
     const getContainerClassNames = () => classnames(
-            'rainbow-progress-bar',
-            `rainbow-progress-bar--${size}`,
-            { 'rainbow-progress-bar--success': variant === 'success' },
-            className,
-        );
+        'rainbow-progress-bar',
+        `rainbow-progress-bar--${size}`,
+        { 'rainbow-progress-bar--success': variant === 'success' },
+        className,
+    );
 
     const getProgressBarClassNames = () => classnames(
-            'rainbow-progress-bar_value',
-            { 'rainbow-progress-bar_value--success': variant === 'success' },
-        );
+        'rainbow-progress-bar_value',
+        { 'rainbow-progress-bar_value--success': variant === 'success' },
+    );
 
     const normalizedValue = normalizeValue(value);
     const WIDTH = { width: `${normalizedValue}%` };
 
     return (
-            <div className={getContainerClassNames()}
-                 aria-valuemin="0"
-                 aria-valuemax="100"
-                 aria-valuenow={normalizedValue}
-                 role="progressbar"
-                 style={style}>
+        <div className={getContainerClassNames()}
+             aria-valuemin="0"
+             aria-valuemax="100"
+             aria-valuenow={normalizedValue}
+             role="progressbar"
+             style={style}>
 
-                <span className={getProgressBarClassNames()} style={WIDTH}>
-                    <AsistiveText text={assistiveText} />
-                </span>
-            </div>
+            <span className={getProgressBarClassNames()} style={WIDTH}>
+                <AsistiveText text={assistiveText} />
+            </span>
+        </div>
     );
 }
 

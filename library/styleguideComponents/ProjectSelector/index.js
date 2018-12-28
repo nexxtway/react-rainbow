@@ -137,7 +137,7 @@ export default class ProjectSelector extends Component {
                         <img src={rainbowLogo} alt="react-rainbow" />
                         <div className="react-rainbow-selector_item-text">
                             <span className="react-rainbow-selector_item-text_header">
-                                react-rainbow components
+                                react-rainbow-components
                             </span>
                             <span className="react-rainbow-selector_item-text_subheader">
                                 version {componentLibraryVersion}
@@ -158,7 +158,7 @@ export default class ProjectSelector extends Component {
                             <img src={reactPrismicLogo} alt="react-rainbow" />
                             <div className="react-rainbow-selector_item-text">
                                 <span className="react-rainbow-selector_item-text_header">
-                                    react-prismic cms
+                                    react-prismic-cms
                                 </span>
                                 <span className="react-rainbow-selector_item-text_subheader">
                                     version {prismicLibraryVersion}
