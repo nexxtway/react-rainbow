@@ -30,17 +30,39 @@
     top: 0;
     bottom: 0;
     right: 0;
-    width: 4px;
+    width: 3px;
+    border-radius: 100px;
     background-color: transparent;
 
     &:hover {
         background-color: $color-brand !important;
         cursor: col-resize;
+
+        & .rainbow-table_header-resize-bar_table-guideline {
+            background-color: $color-brand;
+        }
     }
 
     &:active {
         background-color: $color-brand-active !important;
         z-index: 1000;
+    }
+}
+
+.rainbow-table_header-resize-bar_table-guideline {
+    height: 100vh;
+    background-color: transparent;
+    width: 1px;
+    position: absolute;
+    right: 1px;
+    left: 1px;
+
+    &:hover {
+        background-color: $color-brand;
+    }
+
+    &:active {
+        background-color: $color-brand-active;
     }
 }
 

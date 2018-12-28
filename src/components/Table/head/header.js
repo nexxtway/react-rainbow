@@ -27,6 +27,7 @@ export default class Header extends Component {
         this.dragResizeDiv = this.dragResizeDiv.bind(this);
         this.onMouseMove = this.onMouseMove.bind(this);
         this.onMouseUp = this.onMouseUp.bind(this);
+        this.headerId = uniqueId('header');
     }
 
     onMouseUp(event) {
@@ -54,8 +55,8 @@ export default class Header extends Component {
     dragResizeDiv(dragEvent) {
         dragEvent.preventDefault();
         const headerContainer = document.getElementById('header-container').getBoundingClientRect();
-        this.resizeBar = dragEvent.target;
-        this.parentHeader = dragEvent.target.parentElement.getBoundingClientRect();
+        this.resizeBar = document.getElementById(`rainbow-table_resize-bar-${this.headerId}`);
+        this.parentHeader = document.getElementById(`rainbow-table-header-${this.headerId}`).getBoundingClientRect();
         const resizeBarRect = this.resizeBar.getBoundingClientRect();
         this.startX = dragEvent.clientX;
         this.rightEdge = resizeBarRect.right - headerContainer.right;
@@ -75,13 +76,13 @@ export default class Header extends Component {
 
     render() {
         const { content, isSelected, sortable, sortDirection, width } = this.props;
-        const styles = { width };
+        const headerStyles = { width };
         return (
             <th
-                key={uniqueId('header')}
+                id={`rainbow-table-header-${this.headerId}`}
                 className={getClassName(sortable, isSelected)}
                 onClick={this.handleClick}
-                style={styles}>
+                style={headerStyles}>
                 <div
                     className="rainbow-table_header-content">
                     {content}
@@ -91,10 +92,18 @@ export default class Header extends Component {
                 </div>
                 <div
                     className="rainbow-table_header-resize-bar"
+                    id={`rainbow-table_resize-bar-${this.headerId}`}
                     role="presentation"
                     draggable
                     onMouseDown={this.dragResizeDiv}
-                    onDragStart={prevetDefaultDrag} />
+                    onDragStart={prevetDefaultDrag}>
+                    <div
+                        className="rainbow-table_header-resize-bar_table-guideline"
+                        role="presentation"
+                        draggable
+                        onMouseDown={this.dragResizeDiv}
+                        onDragStart={prevetDefaultDrag} />
+                </div>
             </th>
         );
     }
