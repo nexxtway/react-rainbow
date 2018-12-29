@@ -15,8 +15,8 @@ export default function GMap(props) {
 
 GMap.propTypes = {
     /** The application's API key. To use the Google Maps JavaScript API,
-     * you must get an apiKey. See https://console.cloud.google.com/google/maps-apis/overview
-     * to get an apiKey. */
+     * you must get an API Key. See https://console.cloud.google.com/google/maps-apis/overview
+     * to get an API Key. */
     apiKey: PropTypes.string.isRequired,
     /** The angular distance of a place north or south of the earth's equator. */
     latitude: PropTypes.number,
