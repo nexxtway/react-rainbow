@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import resolveColumns from './resolve-columns';
 import Body from './body';
 import Head from './head';
 import './styles.css';
 
 /**
-* Data tables display information in a way that’s easy to scan,
-* so that users can look for patterns and insights.
-* @category DataView
-*/
+ * Data tables display information in a way that’s easy to scan,
+ * so that users can look for patterns and insights.
+ * @category DataView
+ */
 export default class Table extends Component {
     constructor(props) {
         super(props);
@@ -31,6 +32,11 @@ export default class Table extends Component {
         this.setState({ selectedColumn: columnIndex });
     }
 
+    getContainerClassNames() {
+        const { className } = this.props;
+        return classnames('rainbow-table-wrapper', className);
+    }
+
     resolveColumnsFomChilren() {
         const { children } = this.props;
         const newColumns = resolveColumns(children);
@@ -46,27 +52,27 @@ export default class Table extends Component {
     }
 
     render() {
-        const { data, sortDirection, className, style } = this.props;
+        const { data, sortDirection, style } = this.props;
         const { columns, selectedColumn } = this.state;
 
         return (
-            <div className={className} style={style} id="rainbow-table-wrapper">
+            <div className={this.getContainerClassNames()} style={style} id="rainbow-table-wrapper">
                 <table className="rainbow-table">
                     <thead className="rainbow-table_head">
-                        <tr className="rainbow-table_header-row" id="header-container">
-                            <Head
-                                columns={columns}
-                                selectedColumn={selectedColumn}
-                                onColumnSelect={this.onColumnSelect}
-                                sortDirection={sortDirection}
-                                onResize={this.resize} />
-                        </tr>
+                    <tr className="rainbow-table_header-row" id="header-container">
+                        <Head
+                            columns={columns}
+                            selectedColumn={selectedColumn}
+                            onColumnSelect={this.onColumnSelect}
+                            sortDirection={sortDirection}
+                            onResize={this.resize} />
+                    </tr>
                     </thead>
                 </table>
                 <div className="rainbow-table_body-wrapper">
                     <table className="rainbow-table">
                         <tbody className="rainbow-table_body">
-                            <Body data={data} columns={columns} />
+                        <Body data={data} columns={columns} />
                         </tbody>
                     </table>
                 </div>

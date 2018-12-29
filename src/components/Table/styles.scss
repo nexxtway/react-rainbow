@@ -3,6 +3,10 @@
 @import "../../styles/font-sizes";
 @import "../../styles/paddings";
 
+.rainbow-table-wrapper {
+    overflow: hidden;
+}
+
 .rainbow-table {
     table-layout: fixed;
 }
@@ -137,7 +141,7 @@
     font-size: $font-size-text-medium;
     color: $color-gray-4;
     height: 40px;
-    padding-left: $padding-x-small;
+    padding-left: $padding-medium;
     padding-right: 4px;
     overflow: hidden;
     text-overflow: ellipsis;
