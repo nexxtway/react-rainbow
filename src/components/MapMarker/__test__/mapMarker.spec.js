@@ -16,6 +16,7 @@ global.google = {
         Animation: {
             BOUNCE: 'bounce animation',
         },
+        InfoWindow: jest.fn(),
     },
 };
 
@@ -27,6 +28,14 @@ const newContext = {
 };
 
 describe('<MapMarker/>', () => {
+    it('should set aria-pressed to true in marker button when it is selected', () => {
+        marker.setAnimation.mockReset();
+        // here actually selectedMarker is injected via context, not props
+        const component = mount(
+            <MapMarker latitude={5} longitude={10} selectedMarker="marker-1" />,
+        );
+        expect(component.find('.rainbow-google-map-marker_button').prop('aria-pressed')).toBe(true);
+    });
     it('should not retrun anything when latitude and longitude are not passed', () => {
         const component = mount(
             <MapMarker />,
@@ -86,7 +95,7 @@ describe('<MapMarker/>', () => {
         component.setProps(newContext);
         expect(marker.addListener).toHaveBeenCalledWith('click', expect.any(Function));
     });
-    it('should call geocoder.geocode with the right data', () => {
+    it('should call geocoder.geocode with the right data when label and description are not passed', () => {
         const component = mount(
             <MapMarker latitude={5} longitude={10} />,
         );
@@ -97,6 +106,48 @@ describe('<MapMarker/>', () => {
             lng: 10,
         } }, expect.any(Function));
     });
+    it('should not call geocoder.geocode when label is passed', () => {
+        newContext.geocoder.geocode.mockReset();
+        const component = mount(
+            <MapMarker latitude={5} longitude={10} label="my label" />,
+        );
+        // this actually is context not props
+        component.setProps(newContext);
+        expect(newContext.geocoder.geocode).not.toHaveBeenCalled();
+    });
+    it('should not call geocoder.geocode when description is passed', () => {
+        newContext.geocoder.geocode.mockReset();
+        const component = mount(
+            <MapMarker latitude={5} longitude={10} description="my description" />,
+        );
+        // this actually is context not props
+        component.setProps(newContext);
+        expect(newContext.geocoder.geocode).not.toHaveBeenCalled();
+    });
+    it('should call global.google.maps.InfoWindow with the description is passed', () => {
+        global.google.maps.InfoWindow.mockReset();
+        const component = mount(
+            <MapMarker latitude={5} longitude={10} description="my description" />,
+        );
+        // this actually is context not props
+        component.setProps(newContext);
+        expect(global.google.maps.InfoWindow).toHaveBeenCalledWith({
+            content: 'my description',
+        });
+    });
+    it('should call global.google.maps.InfoWindow with the label is passed', () => {
+        global.google.maps.InfoWindow.mockReset();
+        const component = mount(
+            <MapMarker latitude={5} longitude={10} label="my label" />,
+        );
+        // this actually is context not props
+        component.setProps(newContext);
+        expect(global.google.maps.InfoWindow).toHaveBeenCalledWith({
+            content: 'my label',
+        });
+    });
+
+
     it('should call google.maps.event.removeListener when unmount the component', () => {
         const component = mount(
             <MapMarker latitude={5} longitude={10} />,
@@ -165,13 +216,5 @@ describe('<MapMarker/>', () => {
             <MapMarker latitude={5} longitude={10} />,
         );
         expect(component.find('.rainbow-google-map-marker_button').prop('aria-pressed')).toBe(false);
-    });
-    it('should set aria-pressed to true in marker button when it is selected', () => {
-        marker.setAnimation.mockReset();
-        // here actually selectedMarker is injected via context, not props
-        const component = mount(
-            <MapMarker latitude={5} longitude={10} selectedMarker="marker-16" />,
-        );
-        expect(component.find('.rainbow-google-map-marker_button').prop('aria-pressed')).toBe(true);
     });
 });

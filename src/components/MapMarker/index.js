@@ -17,11 +17,24 @@ class Marker extends Component {
         this.startAnimation = this.startAnimation.bind(this);
         this.stopAnimation = this.stopAnimation.bind(this);
         this.name = uniqueId('marker');
-        this.state = {};
+
+        const { label, description } = props;
+        this.state = {
+            label,
+            description,
+        };
     }
 
     componentDidUpdate({ map: prevMap }) {
-        const { map, latitude, longitude, geocoder } = this.props;
+        const {
+            map,
+            latitude,
+            longitude,
+            geocoder,
+            label,
+            description,
+        } = this.props;
+
         if (!prevMap && map && latitude && longitude) {
             const position = {
                 lat: latitude,
@@ -32,7 +45,11 @@ class Marker extends Component {
                 map,
             });
             this.markerListener = this[marker].addListener('click', this.handleMarkerClick);
-            geocoder.geocode({ location: position }, this.getLocationInfo);
+            if (!label && !description) {
+                geocoder.geocode({ location: position }, this.getLocationInfo);
+            } else if (!this.state.infowindow) {
+                this.setInfoWindow();
+            }
         }
     }
 
@@ -42,19 +59,26 @@ class Marker extends Component {
 
     getLocationInfo(results, status) {
         if (status === 'OK' && results[0]) {
-            const { label, description } = this.props;
             const geoLabel = results[0].address_components[0].long_name;
             const geoDescription = results[0].formatted_address;
-            const currentDescription = description || geoDescription;
             const infowindow = new window.google.maps.InfoWindow({
-                content: currentDescription,
+                content: geoDescription,
             });
             this.setState({
-                label: label || geoLabel,
-                description: currentDescription,
+                label: geoLabel,
+                description: geoDescription,
                 infowindow,
             });
         }
+    }
+
+    setInfoWindow() {
+        const { description, label } = this.props;
+        this.setState({
+            infowindow: new window.google.maps.InfoWindow({
+                content: description || label,
+            }),
+        });
     }
 
     getAssistiveAriaLiveText() {
