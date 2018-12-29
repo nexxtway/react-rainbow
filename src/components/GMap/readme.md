@@ -15,6 +15,7 @@ map base:
                     longitude={151.2042969}
                     label="Botany Bay"
                     description=" Botany, New South Wales, Australia" />
+
                 <MapMarker
                     latitude={-33.940004}
                     longitude={151.094593}
@@ -53,7 +54,8 @@ map inside a card:
                     longitude={151.2042969}
                     label="Botany Bay"
                     description=" Botany, New South Wales, Australia" />
-                <MapMarker 
+
+                <MapMarker
                     latitude={-33.940004}
                     longitude={151.094593}
                     label="Garema"
