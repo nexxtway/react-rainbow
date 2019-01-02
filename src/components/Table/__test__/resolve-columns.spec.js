@@ -13,7 +13,7 @@ describe('resolveColumns', () => {
             field: 'a',
             header: 'header',
             component: <span />,
-            sortable: true,
+            sortable: false,
             width: undefined,
         }]);
     });

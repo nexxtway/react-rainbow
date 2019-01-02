@@ -41,8 +41,7 @@ export default class Head extends Component {
                         isSelected={isSelected}
                         columnIndex={index}
                         onResize={this.resize}
-                        width={width}
-                        columns={columns.length} />
+                        width={width} />
                 );
             });
         }

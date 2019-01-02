@@ -18,13 +18,12 @@ describe('<Head />', () => {
             isSelected: false,
             sortDirection: 'asc',
             columnIndex: 0,
-            onColumnSelect: expect.any(Function),
-            onResize: expect.any(Function),
+            onResize: component.instance().resize,
             width: 'unset',
         });
     });
     it('should return null if no columns is passed', () => {
-        const component = mount(<Head />);
+        const component = mount(<Head columns={[]} />);
         expect(component.children().length).toBe(0);
     });
 });
