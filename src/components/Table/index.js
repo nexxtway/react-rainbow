@@ -16,7 +16,6 @@ export default class Table extends Component {
         super(props);
         this.state = { columns: resolveColumns(props.children), selectedColumn: undefined };
         this.onColumnSelect = this.onColumnSelect.bind(this);
-        this.resize = this.resize.bind(this);
     }
 
     componentDidUpdate({ children: prevChildren }) {
@@ -43,14 +42,6 @@ export default class Table extends Component {
         this.setState({ columns: newColumns });
     }
 
-    resize(event, columnIndex, width) {
-        const { columns } = this.state;
-        const resizedColumn = Object.assign({}, columns[columnIndex]);
-        resizedColumn.width = width;
-        columns[columnIndex] = resizedColumn;
-        this.setState({ columns });
-    }
-
     render() {
         const { data, sortDirection, style } = this.props;
         const { columns, selectedColumn } = this.state;
@@ -59,23 +50,18 @@ export default class Table extends Component {
             <div className={this.getContainerClassNames()} style={style} id="rainbow-table-wrapper">
                 <table className="rainbow-table">
                     <thead className="rainbow-table_head">
-                    <tr className="rainbow-table_header-row" id="header-container">
-                        <Head
-                            columns={columns}
-                            selectedColumn={selectedColumn}
-                            onColumnSelect={this.onColumnSelect}
-                            sortDirection={sortDirection}
-                            onResize={this.resize} />
-                    </tr>
+                        <tr className="rainbow-table_header-row" id="header-container">
+                            <Head
+                                columns={columns}
+                                selectedColumn={selectedColumn}
+                                onColumnSelect={this.onColumnSelect}
+                                sortDirection={sortDirection} />
+                        </tr>
                     </thead>
-                </table>
-                <div className="rainbow-table_body-wrapper">
-                    <table className="rainbow-table">
-                        <tbody className="rainbow-table_body">
+                    <tbody className="rainbow-table_body">
                         <Body data={data} columns={columns} />
-                        </tbody>
-                    </table>
-                </div>
+                    </tbody>
+                </table>
             </div>
         );
     }
