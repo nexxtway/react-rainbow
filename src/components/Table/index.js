@@ -64,8 +64,6 @@ Table.propTypes = {
     data: PropTypes.arrayOf(Object).isRequired,
     /** Specifies the sorting direction, valid options are 'asc' or 'desc'. */
     sortDirection: PropTypes.oneOf(['asc', 'desc']),
-    /** The action trigger when a sortable column header is clicked */
-    onSort: PropTypes.func,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied for the outer element. */
@@ -79,7 +77,6 @@ Table.propTypes = {
 
 Table.defaultProps = {
     sortDirection: 'asc',
-    onSort: () => {},
     className: undefined,
     style: undefined,
     children: undefined,
