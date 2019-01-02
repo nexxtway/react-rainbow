@@ -35,7 +35,6 @@ export default class Head extends Component {
                         sortDirection={sortDirection}
                         isSelected={isSelected}
                         columnIndex={index}
-                        onColumnSelect={onColumnSelect}
                         onResize={this.resize}
                         width={width}
                         columns={columns.length} />

@@ -15,7 +15,6 @@ export default class Table extends Component {
     constructor(props) {
         super(props);
         this.state = { columns: resolveColumns(props.children), selectedColumn: undefined };
-        this.onColumnSelect = this.onColumnSelect.bind(this);
     }
 
     componentDidUpdate({ children: prevChildren }) {
@@ -23,12 +22,6 @@ export default class Table extends Component {
         if (prevChildren !== currentChildren) {
             this.resolveColumnsFomChilren();
         }
-    }
-
-    onColumnSelect(e, columnIndex) {
-        const { onSort } = this.props;
-        onSort(e, this.state.columns[columnIndex].field);
-        this.setState({ selectedColumn: columnIndex });
     }
 
     getContainerClassNames() {
@@ -47,16 +40,15 @@ export default class Table extends Component {
         const { columns, selectedColumn } = this.state;
 
         return (
-            <div className={this.getContainerClassNames()} style={style} id="rainbow-table-wrapper">
+            <div className={this.getContainerClassNames()} style={style}>
                 <table className="rainbow-table">
                     <thead className="rainbow-table_head">
-                        <tr className="rainbow-table_header-row" id="header-container">
-                            <Head
-                                columns={columns}
-                                selectedColumn={selectedColumn}
-                                onColumnSelect={this.onColumnSelect}
-                                sortDirection={sortDirection} />
-                        </tr>
+                    <tr className="rainbow-table_header-row">
+                        <Head
+                            columns={columns}
+                            selectedColumn={selectedColumn}
+                            sortDirection={sortDirection} />
+                    </tr>
                     </thead>
                     <tbody className="rainbow-table_body">
                         <Body data={data} columns={columns} />

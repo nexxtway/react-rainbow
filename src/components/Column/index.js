@@ -39,6 +39,6 @@ Column.propTypes = {
 Column.defaultProps = {
     header: undefined,
     component: undefined,
-    sortable: true,
+    sortable: false,
     width: undefined,
 };

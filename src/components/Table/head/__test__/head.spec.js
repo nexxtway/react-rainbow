@@ -21,7 +21,6 @@ describe('<Head />', () => {
             onColumnSelect: expect.any(Function),
             onResize: expect.any(Function),
             width: 'unset',
-            columns: 2,
         });
     });
     it('should return null if no columns is passed', () => {

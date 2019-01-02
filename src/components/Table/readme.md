@@ -44,7 +44,7 @@
     ];
 
     const badgeStyles = { color: '#1de9b6' };
-    
+
     const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
 
     <div className="rainbow-p-bottom_xx-large">
