@@ -32,15 +32,16 @@
   right: 0;
   width: 3px;
   border-radius: 100px;
-  background-color: transparent; }
+  background-color: transparent;
+  will-change: transform;
+  z-index: 5000; }
   .rainbow-table_header-resize-bar:hover {
     background-color: #01b6f5 !important;
     cursor: col-resize; }
     .rainbow-table_header-resize-bar:hover .rainbow-table_header-resize-bar_table-guideline {
       background-color: #01b6f5; }
   .rainbow-table_header-resize-bar:active {
-    background-color: #009acf !important;
-    z-index: 1000; }
+    background-color: #009acf !important; }
 
 .rainbow-table_header-resize-bar_table-guideline {
   height: 100vh;

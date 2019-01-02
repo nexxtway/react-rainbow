@@ -16,56 +16,45 @@ function getClassName(sortable, selected) {
     );
 }
 
-function prevetDefaultDrag() {
-    return false;
-}
-
 export default class Header extends Component {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
-        this.dragResizeDiv = this.dragResizeDiv.bind(this);
-        this.onMouseMove = this.onMouseMove.bind(this);
-        this.onMouseUp = this.onMouseUp.bind(this);
+        this.handleMouseDown = this.handleMouseDown.bind(this);
+        this.handleMouseMove = this.handleMouseMove.bind(this);
+        this.handleMouseUp = this.handleMouseUp.bind(this);
         this.headerId = uniqueId('header');
+        this.headerContainer = React.createRef();
+        this.resizeBar = React.createRef();
     }
 
-    onMouseUp(event) {
-        document.removeEventListener('mouseup', this.onMouseUp);
-        document.removeEventListener('mousemove', this.onMouseMove);
-        const resizeBarRect = this.resizeBar.getBoundingClientRect();
-        const width = `${resizeBarRect.left - this.parentHeader.left}px`;
-        this.resizeBar.style.zIndex = '0';
+    getHeaderTitle() {
+        const { content } = this.props;
+        if (typeof content === 'string') {
+            return content;
+        }
+        return null;
+    }
+
+    handleMouseUp(event) {
+        document.removeEventListener('mouseup', this.handleMouseUp);
+        document.removeEventListener('mousemove', this.handleMouseMove);
+        const headerContainerWidth = this.headerContainer.current.getBoundingClientRect().width;
+        const width = `${headerContainerWidth + this.newXPosition}px`;
         const { columnIndex, onResize } = this.props;
         onResize(event, columnIndex, width);
     }
 
-    onMouseMove(event) {
-        const newX = event.clientX;
-        let newRight = this.startX - newX;
-
-        if (newRight < this.rightEdge) {
-            newRight = this.rightEdge;
-        } else if (newRight > this.leftEdge) {
-            newRight = this.leftEdge;
-        }
-        this.resizeBar.style.right = `${newRight}px`;
+    handleMouseMove(event) {
+        this.newXPosition = event.clientX - this.startXPosition;
+        this.resizeBar.current.style.transform = `translateX(${this.newXPosition}px)`;
     }
 
-    dragResizeDiv(dragEvent) {
+    handleMouseDown(dragEvent) {
         dragEvent.preventDefault();
-        const headerContainer = document.getElementById('header-container').getBoundingClientRect();
-        this.resizeBar = document.getElementById(`rainbow-table_resize-bar-${this.headerId}`);
-        this.parentHeader = document.getElementById(`rainbow-table-header-${this.headerId}`).getBoundingClientRect();
-        const resizeBarRect = this.resizeBar.getBoundingClientRect();
-        this.startX = dragEvent.clientX;
-        const { columns } = this.props;
-        this.rightEdge = resizeBarRect.right - (headerContainer.right - (columns * 9));
-        this.leftEdge = resizeBarRect.left - (this.parentHeader.left + 40);
-        this.resizeBar.style.zIndex = '100';
-
-        document.addEventListener('mousemove', this.onMouseMove);
-        document.addEventListener('mouseup', this.onMouseUp);
+        this.startXPosition = dragEvent.clientX;
+        document.addEventListener('mousemove', this.handleMouseMove);
+        document.addEventListener('mouseup', this.handleMouseUp);
     }
 
     handleClick(event) {
@@ -80,30 +69,30 @@ export default class Header extends Component {
         const headerStyles = { width };
         return (
             <th
-                id={`rainbow-table-header-${this.headerId}`}
                 className={getClassName(sortable, isSelected)}
+                style={headerStyles}
+                scope="col"
                 onClick={this.handleClick}
-                style={headerStyles}>
-                <div
-                    className="rainbow-table_header-content-wrapper">
-                    <span className="rainbow-table_header-content">{content}</span>
+                ref={this.headerContainer}>
+
+                <div className="rainbow-table_header-content-wrapper">
+                    <span title={this.getHeaderTitle()} className="rainbow-table_header-content">{content}</span>
                     <RenderIf isTrue={isSelected}>
                         <ArrowDown direction={sortDirection} />
                     </RenderIf>
                 </div>
                 <div
                     className="rainbow-table_header-resize-bar"
-                    id={`rainbow-table_resize-bar-${this.headerId}`}
                     role="presentation"
                     draggable
-                    onMouseDown={this.dragResizeDiv}
-                    onDragStart={prevetDefaultDrag}>
+                    onMouseDown={this.handleMouseDown}
+                    ref={this.resizeBar}>
+
                     <div
                         className="rainbow-table_header-resize-bar_table-guideline"
                         role="presentation"
                         draggable
-                        onMouseDown={this.dragResizeDiv}
-                        onDragStart={prevetDefaultDrag} />
+                        onMouseDown={this.handleMouseDown} />
                 </div>
             </th>
         );
@@ -119,7 +108,6 @@ Header.propTypes = {
     columnIndex: PropTypes.number,
     onResize: PropTypes.func,
     width: PropTypes.string,
-    columns: PropTypes.number,
 };
 
 Header.defaultProps = {
@@ -131,5 +119,4 @@ Header.defaultProps = {
     columnIndex: undefined,
     onResize: () => {},
     width: 'unset',
-    columns: undefined,
 };

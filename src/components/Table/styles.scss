@@ -43,6 +43,8 @@
     width: 3px;
     border-radius: 100px;
     background-color: transparent;
+    will-change: transform;
+    z-index: 5000;
 
     &:hover {
         background-color: $color-brand !important;
@@ -55,7 +57,6 @@
 
     &:active {
         background-color: $color-brand-active !important;
-        z-index: 1000;
     }
 }
 

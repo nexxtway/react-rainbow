@@ -56,10 +56,10 @@ export default class Table extends Component {
         const { columns, selectedColumn } = this.state;
 
         return (
-            <div className={this.getContainerClassNames()} style={style} id="rainbow-table-wrapper">
+            <div className={this.getContainerClassNames()} style={style}>
                 <table className="rainbow-table">
                     <thead className="rainbow-table_head">
-                    <tr className="rainbow-table_header-row" id="header-container">
+                    <tr className="rainbow-table_header-row">
                         <Head
                             columns={columns}
                             selectedColumn={selectedColumn}
