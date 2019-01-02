@@ -12,14 +12,19 @@ export default class Head extends Component {
         this.resize = this.resize.bind(this);
     }
 
-    resize(event, columnIndex, width) {
+    resize(event, columnIndex, newWidth) {
         const { columnWidths } = this.state;
-        columnWidths[columnIndex] = width;
-        this.setState({ columnWidths });
+        const newColumnWidths = columnWidths.map((width, index) => {
+            if (index === columnIndex) {
+                return newWidth;
+            }
+            return width;
+        });
+        this.setState({ columnWidths: newColumnWidths });
     }
 
     render() {
-        const { columns, selectedColumn, onColumnSelect, sortDirection } = this.props;
+        const { columns, selectedColumn, sortDirection } = this.props;
 
         if (columns) {
             const { columnWidths } = this.state;
@@ -49,12 +54,10 @@ Head.propTypes = {
     columns: PropTypes.array,
     sortDirection: PropTypes.string,
     selectedColumn: PropTypes.number,
-    onColumnSelect: PropTypes.func,
 };
 
 Head.defaultProps = {
     columns: undefined,
     sortDirection: 'asc',
     selectedColumn: undefined,
-    onColumnSelect: () => {},
 };

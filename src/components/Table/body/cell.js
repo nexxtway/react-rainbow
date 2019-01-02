@@ -19,8 +19,10 @@ CellValue.defaultProps = {
 };
 
 export default function Cell({ component, value, width }) {
+    const cellStyle = { width };
+
     return (
-        <td className="rainbow-table_cell" style={{ width }}>
+        <td className="rainbow-table_cell" style={cellStyle}>
             <CellValue component={component} value={value} />
         </td>
     );
