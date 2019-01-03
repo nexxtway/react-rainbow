@@ -211,7 +211,7 @@
 }
 
 .rainbow-button-icon--medium {
-    @include width-height(2.475rem);
+    @include width-height(2.5rem);
 
     svg {
         @include width-height(1rem !important);
