@@ -9,6 +9,7 @@ import './style.css';
 /**
 * An input range slider lets the user specify a numeric value which must be between
 * two specified values.
+* @category Form
 */
 export default class Slider extends Component {
     constructor(props) {

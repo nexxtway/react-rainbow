@@ -12,6 +12,7 @@ import './styles.css';
 /**
 * Represents an overflow of items from a preceding VerticalNavigationSection,
 * with the ability to toggle visibility.
+* @category Layout
 */
 export default class VerticalSectionOverflow extends Component {
     constructor(props) {
