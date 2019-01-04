@@ -6,6 +6,9 @@ import NavigationButton from './navigationButton';
 import PageButtons from './pageButtons';
 import './styles.css';
 
+/**
+* @category Layout
+*/
 export default function Pagination(props) {
     const { pages, activePage, onChange, className, style } = props;
 
