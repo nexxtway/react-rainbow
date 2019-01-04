@@ -10,7 +10,7 @@
     position: fixed;
     top: 5px;
     left: 10px;
-    z-index: 999999;
+    z-index: 3050;
 }
 
 .react-rainbow-selector:hover {
@@ -20,7 +20,7 @@
 .react-rainbow-selector--open {
     box-shadow: 0 2px 4px 0 #e3e5ed;
     border-color: #e3e5ed;
-    z-index: 1000000;
+    z-index: 3055;
     height: unset;
     background-color: #fff;
 }

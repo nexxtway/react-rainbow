@@ -31,7 +31,7 @@
     width: 87px;
     height: calc(100vh - 68px);
     position: fixed;
-    z-index: 999999;
+    z-index: 3000;
     margin-top: 68px;
     padding-top: 24px;
     border-right: 1px solid #f4f6f9;

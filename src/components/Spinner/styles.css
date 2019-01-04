@@ -5,7 +5,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  z-index: 9051;
+  z-index: 2000;
   transform: translate(-50%, -50%) rotate(90deg); }
 
 .rainbow-spinner {
