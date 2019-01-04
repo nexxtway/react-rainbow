@@ -36,19 +36,28 @@ export default class Table extends Component {
     }
 
     render() {
-        const { data, sortDirection, style } = this.props;
+        const {
+            data,
+            sortDirection,
+            resizeColumnDisabled,
+            minColumnWidth,
+            maxColumnWidth,
+            style } = this.props;
         const { columns, selectedColumn } = this.state;
 
         return (
             <div className={this.getContainerClassNames()} style={style}>
                 <table className="rainbow-table">
                     <thead className="rainbow-table_head">
-                    <tr className="rainbow-table_header-row">
-                        <Head
-                            columns={columns}
-                            selectedColumn={selectedColumn}
-                            sortDirection={sortDirection} />
-                    </tr>
+                        <tr className="rainbow-table_header-row">
+                            <Head
+                                columns={columns}
+                                selectedColumn={selectedColumn}
+                                sortDirection={sortDirection}
+                                resizeColumnDisabled={resizeColumnDisabled}
+                                minColumnWidth={minColumnWidth}
+                                maxColumnWidth={maxColumnWidth} />
+                        </tr>
                     </thead>
                     <tbody className="rainbow-table_body">
                         <Body data={data} columns={columns} />
@@ -64,6 +73,9 @@ Table.propTypes = {
     data: PropTypes.arrayOf(Object).isRequired,
     /** Specifies the sorting direction, valid options are 'asc' or 'desc'. */
     sortDirection: PropTypes.oneOf(['asc', 'desc']),
+    resizeColumnDisabled: PropTypes.bool,
+    minColumnWidth: PropTypes.number,
+    maxColumnWidth: PropTypes.number,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied for the outer element. */
@@ -77,6 +89,9 @@ Table.propTypes = {
 
 Table.defaultProps = {
     sortDirection: 'asc',
+    resizeColumnDisabled: false,
+    minColumnWidth: 50,
+    maxColumnWidth: 1000,
     className: undefined,
     style: undefined,
     children: undefined,

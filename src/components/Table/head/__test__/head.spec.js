@@ -17,9 +17,10 @@ describe('<Head />', () => {
             sortable: false,
             isSelected: false,
             sortDirection: 'asc',
-            columnIndex: 0,
-            onResize: component.instance().resize,
-            width: 'unset',
+            resizeColumnDisabled: false,
+            minColumnWidth: 50,
+            maxColumnWidth: 1000,
+            width: undefined,
         });
     });
     it('should return null if no columns is passed', () => {

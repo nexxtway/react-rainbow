@@ -1,0 +1,123 @@
+/* stylelint-disable no-descending-specificity */
+@import "../../../styles/colors";
+@import "../../../styles/font-sizes";
+@import "../../../styles/paddings";
+
+.rainbow-table_header-content-wrapper {
+    height: 100%;
+    padding-left: $padding-x-small;
+    border: 1px transparent solid;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rainbow-table_header-content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rainbow-table_header-resize-bar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 3px;
+    border-radius: 100px;
+    background-color: transparent;
+    will-change: transform;
+    z-index: 5000;
+
+    &:hover {
+        background-color: $color-brand !important;
+        cursor: col-resize;
+
+        & .rainbow-table_header-resize-bar_table-guideline {
+            background-color: $color-brand;
+        }
+    }
+
+    &:active {
+        background-color: $color-brand-active !important;
+    }
+}
+
+.rainbow-table_header-resize-bar_table-guideline {
+    height: 100vh;
+    background-color: transparent;
+    width: 1px;
+    position: absolute;
+    right: 1px;
+    left: 1px;
+
+    &:hover {
+        background-color: $color-brand;
+    }
+
+    &:active {
+        background-color: $color-brand-active;
+    }
+}
+
+.rainbow-table_header-resize-bar_input {
+    position: absolute !important;
+    margin: -1px !important;
+    border: 0 !important;
+    padding: 0 !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    text-transform: none !important;
+    white-space: nowrap !important;
+}
+
+.rainbow-table_header--sortable {
+    cursor: pointer;
+
+    &:hover {
+        .rainbow-table_header-content-wrapper {
+            background-color: #fff;
+        }
+
+        .rainbow-table_header-resize-bar {
+            background-color: $color-gray-2;
+        }
+    }
+}
+
+.rainbow-table_header--selected {
+    color: $color-brand;
+
+    .rainbow-table_header-content-wrapper {
+        background-color: #fff;
+        border-color: $color-brand;
+    }
+
+    .rainbow-table_header-resize-bar, &:hover .rainbow-table_header-resize-bar {
+        background-color: $color-brand;
+    }
+}
+
+.rainbow-table_header {
+    text-transform: uppercase;
+    font-size: $font-size-text-medium;
+    font-weight: 900;
+    color: $color-gray-4;
+    height: 44px;
+    position: relative;
+
+    &:first-of-type .rainbow-table_header-content-wrapper {
+        padding-left: 18px;
+    }
+}
+
+.rainbow-table_header-arrow {
+    margin-left: 4px;
+}
+
+.rainbow-table_header-arrow--asc {
+    transform: rotate(-180deg);
+}

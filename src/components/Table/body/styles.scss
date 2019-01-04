@@ -1,0 +1,22 @@
+@import "../../../styles/colors";
+@import "../../../styles/font-sizes";
+@import "../../../styles/paddings";
+
+.rainbow-table_body-row {
+    box-shadow: 0 1px 0 0 #e3e5ed;
+}
+
+.rainbow-table_cell {
+    font-size: $font-size-text-medium;
+    color: $color-gray-4;
+    height: 40px;
+    padding-left: $padding-medium;
+    padding-right: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rainbow-table_cell:first-of-type {
+    padding-left: 18px;
+}

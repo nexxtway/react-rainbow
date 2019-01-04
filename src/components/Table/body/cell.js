@@ -18,11 +18,16 @@ CellValue.defaultProps = {
     value: undefined,
 };
 
-export default function Cell({ component, value, width }) {
-    const cellStyle = { width };
-
+export default function Cell({ component, value, isFirst }) {
+    if (isFirst) {
+        return (
+            <th className="rainbow-table_cell">
+                <CellValue component={component} value={value} />
+            </th>
+        );
+    }
     return (
-        <td className="rainbow-table_cell" style={cellStyle}>
+        <td className="rainbow-table_cell">
             <CellValue component={component} value={value} />
         </td>
     );
@@ -31,11 +36,11 @@ export default function Cell({ component, value, width }) {
 Cell.propTypes = {
     component: PropTypes.func,
     value: PropTypes.any,
-    width: PropTypes.string,
+    isFirst: PropTypes.bool,
 };
 
 Cell.defaultProps = {
     component: undefined,
     value: undefined,
-    width: 'unset',
+    isFirst: false,
 };

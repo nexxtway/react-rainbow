@@ -13,6 +13,21 @@ export default class Header extends Component {
         this.handleMouseUp = this.handleMouseUp.bind(this);
         this.headerContainer = React.createRef();
         this.resizeBar = React.createRef();
+        this.state = {
+            width: this.props.width,
+        };
+    }
+
+    componentDidUpdate() {
+        const { width } = this.state;
+        const { width: newWidth } = this.props;
+        if (width !== newWidth) {
+            this.setColumnWdith(newWidth);
+        }
+    }
+
+    setColumnWdith(width) {
+        this.setState({ width });
     }
 
     getClassName() {
@@ -34,30 +49,57 @@ export default class Header extends Component {
         return null;
     }
 
-    handleMouseUp(event) {
+    handleMouseUp() {
         document.removeEventListener('mouseup', this.handleMouseUp);
         document.removeEventListener('mousemove', this.handleMouseMove);
         const headerContainerWidth = this.headerContainer.current.getBoundingClientRect().width;
-        const width = `${headerContainerWidth + this.newXPosition}px`;
-        const { columnIndex, onResize } = this.props;
-        onResize(event, columnIndex, width);
+        this.resizeBar.current.style.transform = 'unset';
+        const { minColumnWidth, maxColumnWidth } = this.props;
+        const width = headerContainerWidth + this.newXPosition;
+        if (width < minColumnWidth) {
+            this.setColumnWdith(minColumnWidth);
+        } else if (width > maxColumnWidth) {
+            this.setColumnWdith(maxColumnWidth);
+        } else {
+            this.setColumnWdith(width);
+        }
     }
 
     handleMouseMove(event) {
+        const { minColumnWidth, maxColumnWidth } = this.props;
         this.newXPosition = event.clientX - this.startXPosition;
+        const { width } = this.headerContainer.current.getBoundingClientRect();
+        const minXPosition = minColumnWidth - width;
+        const maxXPosition = maxColumnWidth - width;
+        if (this.newXPosition < minXPosition) {
+            this.newXPosition = minXPosition;
+        } else if (this.newXPosition > maxXPosition) {
+            this.newXPosition = maxXPosition;
+        }
         this.resizeBar.current.style.transform = `translateX(${this.newXPosition}px)`;
     }
 
     handleMouseDown(dragEvent) {
         dragEvent.preventDefault();
-        this.startXPosition = dragEvent.clientX;
-        document.addEventListener('mousemove', this.handleMouseMove);
-        document.addEventListener('mouseup', this.handleMouseUp);
+        const { resizeColumnDisabled } = this.props;
+        const isResizable = !resizeColumnDisabled || this.state.width === undefined;
+        if (isResizable) {
+            this.startXPosition = dragEvent.clientX;
+            document.addEventListener('mousemove', this.handleMouseMove);
+            document.addEventListener('mouseup', this.handleMouseUp);
+        }
     }
 
     render() {
-        const { content, isSelected, sortDirection, width } = this.props;
-        const headerStyles = { width };
+        const { width } = this.state;
+        const {
+            content,
+            isSelected,
+            sortDirection,
+            minColumnWidth,
+            maxColumnWidth,
+        } = this.props;
+        const headerStyles = { width: `${width}px` };
         return (
             <th
                 className={this.getClassName()}
@@ -77,6 +119,11 @@ export default class Header extends Component {
                     draggable
                     onMouseDown={this.handleMouseDown}
                     ref={this.resizeBar}>
+                    <input
+                        type="range"
+                        min={minColumnWidth}
+                        max={maxColumnWidth}
+                        className="rainbow-table_header-resize-bar_input" />
 
                     <div
                         className="rainbow-table_header-resize-bar_table-guideline"
@@ -94,9 +141,10 @@ Header.propTypes = {
     isSelected: PropTypes.bool,
     sortable: PropTypes.bool,
     sortDirection: PropTypes.string,
-    columnIndex: PropTypes.number,
-    onResize: PropTypes.func,
     width: PropTypes.string,
+    resizeColumnDisabled: PropTypes.bool,
+    minColumnWidth: PropTypes.number,
+    maxColumnWidth: PropTypes.number,
 };
 
 Header.defaultProps = {
@@ -104,7 +152,8 @@ Header.defaultProps = {
     isSelected: false,
     sortable: false,
     sortDirection: 'asc',
-    columnIndex: undefined,
-    onResize: () => {},
-    width: 'unset',
+    width: undefined,
+    resizeColumnDisabled: undefined,
+    minColumnWidth: undefined,
+    maxColumnWidth: undefined,
 };

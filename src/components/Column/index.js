@@ -33,7 +33,8 @@ Column.propTypes = {
     field: PropTypes.string.isRequired,
     /** Sets whether the column should control the sorting order of the data */
     sortable: PropTypes.bool,
-    width: PropTypes.string,
+    /** Specifies the width of a column in pixels and make the column non-resizable */
+    width: PropTypes.number,
 };
 
 Column.defaultProps = {
