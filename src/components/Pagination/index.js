@@ -9,7 +9,6 @@ import './styles.css';
 /**
 * @category Layout
 */
-
 export default function Pagination(props) {
     const { pages, activePage, onChange, className, style } = props;
 
