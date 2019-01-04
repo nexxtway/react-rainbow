@@ -112,6 +112,10 @@
     &:first-of-type .rainbow-table_header-content-wrapper {
         padding-left: 18px;
     }
+
+    &:focus {
+        outline: none;
+    }
 }
 
 .rainbow-table_header-arrow {

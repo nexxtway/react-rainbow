@@ -42,7 +42,8 @@ export default class Table extends Component {
             resizeColumnDisabled,
             minColumnWidth,
             maxColumnWidth,
-            style } = this.props;
+            style,
+        } = this.props;
         const { columns, selectedColumn } = this.state;
 
         return (
@@ -69,12 +70,15 @@ export default class Table extends Component {
 }
 
 Table.propTypes = {
-    /** An array containing the objects(rows) to be displayed */
+    /** An array containing the objects(rows) to be displayed. */
     data: PropTypes.arrayOf(Object).isRequired,
     /** Specifies the sorting direction, valid options are 'asc' or 'desc'. */
     sortDirection: PropTypes.oneOf(['asc', 'desc']),
+    /** Specifies whether column resizing is disabled. The default is false. */
     resizeColumnDisabled: PropTypes.bool,
+    /** The minimum width for all columns. The default is 50px. */
     minColumnWidth: PropTypes.number,
+    /** The maximum width for all columns. The default is 1000px. */
     maxColumnWidth: PropTypes.number,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,

@@ -79,6 +79,8 @@
   position: relative; }
   .rainbow-table_header:first-of-type .rainbow-table_header-content-wrapper {
     padding-left: 18px; }
+  .rainbow-table_header:focus {
+    outline: none; }
 
 .rainbow-table_header-arrow {
   margin-left: 4px; }

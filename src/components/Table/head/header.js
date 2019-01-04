@@ -14,16 +14,8 @@ export default class Header extends Component {
         this.headerContainer = React.createRef();
         this.resizeBar = React.createRef();
         this.state = {
-            width: this.props.width,
+            width: props.width,
         };
-    }
-
-    componentDidUpdate() {
-        const { width } = this.state;
-        const { width: newWidth } = this.props;
-        if (width !== newWidth) {
-            this.setColumnWdith(newWidth);
-        }
     }
 
     setColumnWdith(width) {
@@ -81,9 +73,10 @@ export default class Header extends Component {
 
     handleMouseDown(dragEvent) {
         dragEvent.preventDefault();
-        const { resizeColumnDisabled } = this.props;
-        const isResizable = !resizeColumnDisabled || this.state.width === undefined;
+        const { resizeColumnDisabled, width } = this.props;
+        const isResizable = !resizeColumnDisabled && width === undefined;
         if (isResizable) {
+            this.newXPosition = 0;
             this.startXPosition = dragEvent.clientX;
             document.addEventListener('mousemove', this.handleMouseMove);
             document.addEventListener('mouseup', this.handleMouseUp);
@@ -99,12 +92,15 @@ export default class Header extends Component {
             minColumnWidth,
             maxColumnWidth,
         } = this.props;
-        const headerStyles = { width: `${width}px` };
+        const headerStyles = { width };
+
         return (
             <th
                 className={this.getClassName()}
                 style={headerStyles}
                 scope="col"
+                tabIndex={-1}
+                aria-label={this.getHeaderTitle()}
                 ref={this.headerContainer}>
 
                 <div className="rainbow-table_header-content-wrapper">
@@ -119,10 +115,13 @@ export default class Header extends Component {
                     draggable
                     onMouseDown={this.handleMouseDown}
                     ref={this.resizeBar}>
+
                     <input
                         type="range"
                         min={minColumnWidth}
                         max={maxColumnWidth}
+                        aria-label={this.getHeaderTitle()}
+                        tabIndex={-1}
                         className="rainbow-table_header-resize-bar_input" />
 
                     <div
@@ -130,6 +129,7 @@ export default class Header extends Component {
                         role="presentation"
                         draggable
                         onMouseDown={this.handleMouseDown} />
+
                 </div>
             </th>
         );
