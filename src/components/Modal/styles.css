@@ -16,7 +16,7 @@
 
 .rainbow-modal_backdrop--open {
   visibility: visible;
-  z-index: 90000;
+  z-index: 1000000;
   opacity: 1; }
 
 .rainbow-modal {
@@ -73,7 +73,7 @@
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
-  z-index: 90002; }
+  z-index: 1000002; }
 
 .rainbow-modal--open {
   animation: slide-up-in 0.2s linear;
