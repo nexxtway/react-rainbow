@@ -38,7 +38,12 @@ export default class Header extends Component {
         if (typeof content === 'string') {
             return content;
         }
-        return null;
+        return undefined;
+    }
+
+    isResizable() {
+        const { resizeColumnDisabled, width } = this.props;
+        return !resizeColumnDisabled && width === undefined;
     }
 
     handleMouseUp() {
@@ -73,9 +78,7 @@ export default class Header extends Component {
 
     handleMouseDown(dragEvent) {
         dragEvent.preventDefault();
-        const { resizeColumnDisabled, width } = this.props;
-        const isResizable = !resizeColumnDisabled && width === undefined;
-        if (isResizable) {
+        if (this.isResizable()) {
             this.newXPosition = 0;
             this.startXPosition = dragEvent.clientX;
             document.addEventListener('mousemove', this.handleMouseMove);
@@ -109,28 +112,31 @@ export default class Header extends Component {
                         <ArrowDown direction={sortDirection} />
                     </RenderIf>
                 </div>
-                <div
-                    className="rainbow-table_header-resize-bar"
-                    role="presentation"
-                    draggable
-                    onMouseDown={this.handleMouseDown}
-                    ref={this.resizeBar}>
 
-                    <input
-                        type="range"
-                        min={minColumnWidth}
-                        max={maxColumnWidth}
-                        aria-label={this.getHeaderTitle()}
-                        tabIndex={-1}
-                        className="rainbow-table_header-resize-bar_input" />
-
+                <RenderIf isTrue={this.isResizable()}>
                     <div
-                        className="rainbow-table_header-resize-bar_table-guideline"
+                        className="rainbow-table_header-resize-bar"
                         role="presentation"
                         draggable
-                        onMouseDown={this.handleMouseDown} />
+                        onMouseDown={this.handleMouseDown}
+                        ref={this.resizeBar}>
 
-                </div>
+                        <input
+                            type="range"
+                            min={minColumnWidth}
+                            max={maxColumnWidth}
+                            aria-label={this.getHeaderTitle()}
+                            tabIndex={-1}
+                            className="rainbow-table_header-resize-bar_input" />
+
+                        <div
+                            className="rainbow-table_header-resize-bar_table-guideline"
+                            role="presentation"
+                            draggable
+                            onMouseDown={this.handleMouseDown} />
+
+                    </div>
+                </RenderIf>
             </th>
         );
     }

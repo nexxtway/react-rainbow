@@ -72,7 +72,10 @@ export default class Table extends Component {
 Table.propTypes = {
     /** An array containing the objects(rows) to be displayed. */
     data: PropTypes.arrayOf(Object).isRequired,
-    /** Specifies the sorting direction, valid options are 'asc' or 'desc'. */
+    /**
+     * Specifies the sorting direction, valid options are 'asc' or 'desc'.
+     * @ignore
+     */
     sortDirection: PropTypes.oneOf(['asc', 'desc']),
     /** Specifies whether column resizing is disabled. The default is false. */
     resizeColumnDisabled: PropTypes.bool,

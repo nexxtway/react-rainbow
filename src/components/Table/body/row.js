@@ -5,15 +5,16 @@ import Cell from './cell';
 
 export default function Row(props) {
     const { data, columns } = props;
-    const cells = columns.map(({ component, field }, index) => (
+    const cells = columns.map(({ header, component, field }, index) => (
         <Cell
             key={uniqueId('cell')}
+            header={header}
             component={component}
             value={data[field]}
             isFirst={index === 0} />
     ));
     return (
-        <tr className="rainbow-table_body-row">
+        <tr tabIndex={-1} aria-selected={false} className="rainbow-table_body-row">
             {cells}
         </tr>
     );
