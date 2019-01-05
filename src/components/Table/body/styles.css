@@ -11,5 +11,9 @@
   text-overflow: ellipsis;
   white-space: nowrap; }
 
+.rainbow-table_cell:focus {
+  border: 1px solid #01b6f5;
+  outline: none; }
+
 .rainbow-table_cell:first-of-type {
   padding-left: 18px; }
