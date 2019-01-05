@@ -17,6 +17,11 @@
     white-space: nowrap;
 }
 
+.rainbow-table_cell:focus {
+    border: 1px solid $color-brand;
+    outline: none;
+}
+
 .rainbow-table_cell:first-of-type {
     padding-left: 18px;
 }
