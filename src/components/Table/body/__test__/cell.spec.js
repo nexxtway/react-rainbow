@@ -16,4 +16,9 @@ describe('<Cell />', () => {
         const td = component.find('td');
         expect(td.find('h1').text()).toBe('cell-2');
     });
+    it('should render a th component with text "cell-1" if isFrist is passed ', () => {
+        const component = mount(<Cell value="cell-1" isFirst />);
+        const th = component.find('th');
+        expect(th.text()).toBe('cell-1');
+    });
 });

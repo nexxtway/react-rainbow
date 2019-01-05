@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Row from './row';
 import { uniqueId } from '../../../libs/utils';
+import './styles.css';
 
 export default function Body(props) {
     const { data, columns } = props;

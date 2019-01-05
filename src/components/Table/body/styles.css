@@ -1,0 +1,15 @@
+.rainbow-table_body-row {
+  box-shadow: 0 1px 0 0 #e3e5ed; }
+
+.rainbow-table_cell {
+  font-size: 0.875rem;
+  color: #576574;
+  height: 40px;
+  padding-left: 1rem;
+  padding-right: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
+.rainbow-table_cell:first-of-type {
+  padding-left: 18px; }

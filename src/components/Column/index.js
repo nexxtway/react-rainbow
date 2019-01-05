@@ -31,9 +31,18 @@ Column.propTypes = {
     * for a column that want to represent names on a collection of people.
     */
     field: PropTypes.string.isRequired,
+    /**
+     * Sets whether the column should control the sorting order of the data
+     * @ignore
+     */
+    sortable: PropTypes.bool,
+    /** Specifies the width of a column in pixels and make the column non-resizable */
+    width: PropTypes.number,
 };
 
 Column.defaultProps = {
     header: undefined,
     component: undefined,
+    sortable: false,
+    width: undefined,
 };

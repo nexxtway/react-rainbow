@@ -21,8 +21,8 @@ describe('<Table />', () => {
             </Table>,
         );
 
-        const header = component.find('th');
-        const cell = component.find('td');
+        const header = component.find('th.rainbow-table_header');
+        const cell = component.find('th.rainbow-table_cell');
 
         expect(header.text()).toBe('Name');
         expect(cell.text()).toBe('a');
@@ -43,7 +43,7 @@ describe('<Table />', () => {
             </Table>,
         );
 
-        expect(component.find('td').text()).toBe('a');
+        expect(component.find('th.rainbow-table_cell').text()).toBe('a');
         component.setProps({
             children: [
                 <Column field="name" header="Name" />,
@@ -52,7 +52,7 @@ describe('<Table />', () => {
         });
         component.update();
 
-        expect(component.find('td').at(0).text()).toBe('a');
-        expect(component.find('td').at(1).text()).toBe('23');
+        expect(component.find('th.rainbow-table_cell').text()).toBe('a');
+        expect(component.find('td.rainbow-table_cell').text()).toBe('23');
     });
 });
