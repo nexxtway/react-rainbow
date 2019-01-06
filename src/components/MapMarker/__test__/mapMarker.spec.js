@@ -64,14 +64,6 @@ describe('<MapMarker/>', () => {
         component.setProps(newContext);
         expect(global.google.maps.Marker).not.toHaveBeenCalled();
     });
-    it('should not call google.maps.Marker when latitude and longitude are passed but map already exists', () => {
-        const component = mount(
-            <MapMarker latitude={10} longitude={15} map={{}} />,
-        );
-        // this actually is context not props
-        component.setProps(newContext);
-        expect(global.google.maps.Marker).not.toHaveBeenCalled();
-    });
     it('should call google.maps.Marker with the right data', () => {
         const component = mount(
             <MapMarker latitude={5} longitude={10} />,
