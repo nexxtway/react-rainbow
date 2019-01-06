@@ -25,7 +25,29 @@ class Marker extends Component {
         };
     }
 
-    componentDidUpdate({ map: prevMap }) {
+    componentDidMount() {
+        if (this.props.map) {
+            this.setMarker();
+        }
+    }
+
+    componentDidUpdate() {
+        const {
+            map,
+            latitude,
+            longitude,
+        } = this.props;
+
+        if (!this[marker] && map && latitude && longitude) {
+            this.setMarker();
+        }
+    }
+
+    componentWillUnmount() {
+        window.google.maps.event.removeListener(this.markerListener);
+    }
+
+    setMarker() {
         const {
             map,
             latitude,
@@ -35,26 +57,20 @@ class Marker extends Component {
             description,
         } = this.props;
 
-        if (!prevMap && map && latitude && longitude) {
-            const position = {
-                lat: latitude,
-                lng: longitude,
-            };
-            this[marker] = new window.google.maps.Marker({
-                position,
-                map,
-            });
-            this.markerListener = this[marker].addListener('click', this.handleMarkerClick);
-            if (!label && !description) {
-                geocoder.geocode({ location: position }, this.getLocationInfo);
-            } else if (!this.state.infowindow) {
-                this.setInfoWindow();
-            }
+        const position = {
+            lat: latitude,
+            lng: longitude,
+        };
+        this[marker] = new window.google.maps.Marker({
+            position,
+            map,
+        });
+        this.markerListener = this[marker].addListener('click', this.handleMarkerClick);
+        if (!label && !description) {
+            geocoder.geocode({ location: position }, this.getLocationInfo);
+        } else if (!this.state.infowindow) {
+            this.setInfoWindow();
         }
-    }
-
-    componentWillUnmount() {
-        window.google.maps.event.removeListener(this.markerListener);
     }
 
     getLocationInfo(results, status) {
