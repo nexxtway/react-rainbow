@@ -80,7 +80,6 @@ SidebarItem.defaultProps = {
     label: '',
     href: 'javascript:void(0);',
     onClick: () => {},
-    notification: null,
     className: undefined,
     style: undefined,
 };
