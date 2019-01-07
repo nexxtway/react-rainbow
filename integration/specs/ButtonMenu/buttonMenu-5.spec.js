@@ -1,10 +1,10 @@
-const PageButtonMenu = require('../../src/components/ButtonMenu/pageObject');
+const PageButtonMenu = require('../../../src/components/ButtonMenu/pageObject');
 const {
     ESCAPE_KEY,
     ARROW_DOWN_KEY,
     ARROW_UP_KEY,
     TAB_KEY,
-} = require('../constants');
+} = require('../../constants');
 
 const MENU_BTN = '#button-menu';
 const REACT_LOGO = 'img[alt="rainbow logo"]';

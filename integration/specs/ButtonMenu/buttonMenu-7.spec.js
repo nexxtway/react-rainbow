@@ -1,5 +1,5 @@
-const PageButtonMenu = require('./../../src/components/ButtonMenu/pageObject');
-const { TAB_KEY } = require('./../constants');
+const PageButtonMenu = require('../../../src/components/ButtonMenu/pageObject');
+const { TAB_KEY } = require('../../constants');
 
 const FIRST_MENU_BTN = '#button-menu-1';
 const SECOND_MENU_BTN = '#button-menu-2';

@@ -1,5 +1,5 @@
-const PageModal = require('./../../src/components/Modal/pageObject');
-const { ESCAPE_KEY, TAB_KEY } = require('./../constants');
+const PageModal = require('../../../src/components/Modal/pageObject');
+const { ESCAPE_KEY, TAB_KEY } = require('../../constants');
 
 const BUTTON = '#button-1';
 const MODAL = '#modal-1';

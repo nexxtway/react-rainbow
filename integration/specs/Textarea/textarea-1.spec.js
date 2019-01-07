@@ -1,4 +1,4 @@
-const PageTextarea = require('./../../src/components/Textarea/pageObject');
+const PageTextarea = require('../../../src/components/Textarea/pageObject');
 
 const TEXTAREA = '#example-textarea-1';
 

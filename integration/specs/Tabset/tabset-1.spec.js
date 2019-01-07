@@ -1,5 +1,5 @@
-const PageTabset = require('./../../src/components/Tabset/pageObject');
-const { ARROW_LEFT_KEY, ARROW_RIGHT_KEY } = require('./../constants');
+const PageTabset = require('../../../src/components/Tabset/pageObject');
+const { ARROW_LEFT_KEY, ARROW_RIGHT_KEY } = require('../../constants');
 
 const TABSET = '#tabset-1';
 

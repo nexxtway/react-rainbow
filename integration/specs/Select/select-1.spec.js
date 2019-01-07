@@ -1,4 +1,4 @@
-const PageSelect = require('./../../src/components/Select/pageObject');
+const PageSelect = require('../../../src/components/Select/pageObject');
 
 const SELECT = '#example-select-1';
 

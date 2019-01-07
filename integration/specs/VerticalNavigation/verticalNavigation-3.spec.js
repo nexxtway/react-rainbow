@@ -1,4 +1,4 @@
-const PageVerticalNavigation = require('./../../src/components/VerticalNavigation/pageObject');
+const PageVerticalNavigation = require('../../../src/components/VerticalNavigation/pageObject');
 
 const VERTICAL_NAV = '#vertical-navigation-3';
 

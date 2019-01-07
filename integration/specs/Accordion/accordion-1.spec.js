@@ -1,10 +1,10 @@
-const PageAccordion = require('./../../src/components/Accordion/pageObject');
+const PageAccordion = require('../../../src/components/Accordion/pageObject');
 const {
     ARROW_DOWN_KEY,
     ARROW_UP_KEY,
     ARROW_LEFT_KEY,
     ARROW_RIGHT_KEY,
-} = require('./../constants');
+} = require('../../constants');
 
 const ACCORDION = '#accordion-1';
 

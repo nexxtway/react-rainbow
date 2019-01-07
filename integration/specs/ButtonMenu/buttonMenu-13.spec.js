@@ -1,8 +1,8 @@
-const PageButtonMenu = require('../../src/components/ButtonMenu/pageObject');
+const PageButtonMenu = require('../../../src/components/ButtonMenu/pageObject');
 const {
     ARROW_DOWN_KEY,
     ARROW_UP_KEY,
-} = require('../constants');
+} = require('../../constants');
 
 const MENU_BTN = '#button-menu-disabled-items';
 
