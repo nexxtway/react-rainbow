@@ -1,4 +1,4 @@
-const PageAccordion = require('./../../src/components/Accordion/pageObject');
+const PageAccordion = require('../../../src/components/Accordion/pageObject');
 
 const ACCORDION = '#accordion-multiple-1';
 

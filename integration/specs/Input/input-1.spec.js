@@ -1,4 +1,4 @@
-const PageInput = require('./../../src/components/Input/pageObject');
+const PageInput = require('../../../src/components/Input/pageObject');
 
 const INPUT = '#input-component-1';
 

@@ -1,4 +1,4 @@
-const PageModal = require('./../../src/components/Modal/pageObject');
+const PageModal = require('../../../src/components/Modal/pageObject');
 
 const BUTTON = '#button-3';
 const MODAL = '#modal-3';

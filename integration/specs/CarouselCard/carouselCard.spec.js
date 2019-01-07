@@ -1,5 +1,5 @@
-const PageCarouselCard = require('./../../src/components/CarouselCard/pageObject');
-const { ARROW_LEFT_KEY, ARROW_RIGHT_KEY } = require('./../constants');
+const PageCarouselCard = require('../../../src/components/CarouselCard/pageObject');
+const { ARROW_LEFT_KEY, ARROW_RIGHT_KEY } = require('../../constants');
 
 const CAROUSEL = '#carousel-1';
 

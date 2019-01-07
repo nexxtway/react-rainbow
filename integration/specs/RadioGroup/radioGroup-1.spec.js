@@ -1,5 +1,5 @@
-const PageRadioGroup = require('./../../src/components/RadioGroup/pageObject');
-const { ARROW_DOWN_KEY } = require('./../constants');
+const PageRadioGroup = require('../../../src/components/RadioGroup/pageObject');
+const { ARROW_DOWN_KEY } = require('../../constants');
 
 const RADIO_GROUP = '#radio-group-component-1';
 

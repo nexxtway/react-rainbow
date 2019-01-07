@@ -1,10 +1,10 @@
-const PageAvatarMenu = require('./../../src/components/AvatarMenu/pageObject');
+const PageAvatarMenu = require('../../../src/components/AvatarMenu/pageObject');
 const {
     ESCAPE_KEY,
     ARROW_DOWN_KEY,
     ARROW_UP_KEY,
     TAB_KEY,
-} = require('./../constants');
+} = require('../../constants');
 
 const AVATAR_MENU = '#avatar-menu';
 const REACT_LOGO = 'img[alt="rainbow logo"]';

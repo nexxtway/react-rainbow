@@ -1,5 +1,5 @@
-const PageCheckboxGroup = require('./../../src/components/CheckboxGroup/pageObject');
-const { TAB_KEY, SPACE_KEY } = require('./../constants');
+const PageCheckboxGroup = require('../../../src/components/CheckboxGroup/pageObject');
+const { TAB_KEY, SPACE_KEY } = require('../../constants');
 
 const CHECKBOX_GROUP = '#checkbox-group-1';
 

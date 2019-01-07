@@ -1,4 +1,4 @@
-const PageCheckboxToggle = require('./../../src/components/CheckboxToggle/pageObject');
+const PageCheckboxToggle = require('../../../src/components/CheckboxToggle/pageObject');
 
 const CHECKBOX_TOGGLE = '#checkbox-toggle-component-1';
 
