@@ -47,11 +47,8 @@ Sidebar.propTypes = {
 Sidebar.defaultProps = {
     selectedItem: null,
     onSelect: () => {},
-    compact: false,
-    shaded: false,
     ariaLabel: undefined,
     className: undefined,
     style: undefined,
     children: null,
-    id: undefined,
 };
