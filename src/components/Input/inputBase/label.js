@@ -15,7 +15,7 @@ export default function Label(props) {
 
     const getLabelClassNames = () => classnames('rainbow-input_label', {
         'rainbow-input_label-read-only': readOnly,
-        'rainbow-input_label--hide-label': hideLabel,
+        'rainbow-input_label--hide': hideLabel,
     });
 
     return (

@@ -31,6 +31,6 @@ describe('<InputBaseLabel/>', () => {
         const component = mount(
             <Label label="Input Label" hideLabel />,
         );
-        expect(component.find('.rainbow-input_label.rainbow-input_label--hide-label').exists()).toBe(true);
+        expect(component.find('.rainbow-input_label.rainbow-input_label--hide').exists()).toBe(true);
     });
 });
