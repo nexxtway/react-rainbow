@@ -1,5 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencilAlt, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import Tabset from '../../../../src/components/Tabset';
 import Tab from '../../../../src/components/Tab';
 import RenderIf from '../../../../src/components/RenderIf';
@@ -59,8 +61,8 @@ export default class GettingStartedPage extends Component {
                         label="USAGE"
                         className="react-rainbow-getting-started_top-container-tab" />
                     <Tab
-                        name="contribuiting"
-                        label="CONTRIBUITING"
+                        name="contributing"
+                        label="CONTRIBUTING"
                         className="react-rainbow-getting-started_top-container-tab react-rainbow-getting-started_top-container-tab_shortened" />
                 </Tabset>
                 <section className="react-rainbow-getting-started_container">
@@ -106,7 +108,7 @@ export default class GettingStartedPage extends Component {
                             className="react-rainbow-getting-started_example"
                         />
                     </RenderIf>
-                    <RenderIf isTrue={activeTabName === 'contribuiting'}>
+                    <RenderIf isTrue={activeTabName === 'contributing'}>
                         <div className="rainbow-flex rainbow-flex_column">
                             <h3 className="react-rainbow-getting-started_section-heading">
                                 We are excited that you are interested in
@@ -114,22 +116,40 @@ export default class GettingStartedPage extends Component {
                             </h3>
                             <h2 className="react-rainbow-getting-started_section-heading-2"> Get your git on</h2>
                             <h5 className="react-rainbow-getting-started_section-heading-5">
-                                Pull requests are very welcome,
-                                but should be within the scope of the project,
-                                and follow the repository's code conventions.
-                                Before submitting a pull request, it's always good to file an issue,
-                                so we can discuss the details of the PR.
+                                You can help us improve React Rainbow Components, the first step to begin
+                                collaborate is to create an issue before submitting a pull request, it's always
+                                good to file an issue, so we can discuss the details of your approach or suggestion.
+                                After you can write the code an submit the PR.
                             </h5>
-                            <h5 className="react-rainbow-getting-started_section-heading-5 rainbow-m-top_x-small">
+                            <a
+                                className="rainbow-link rainbow-m-left_xx-small react-rainbow-getting-started_issue-link"
+                                href="https://github.com/90milesbridge/react-rainbow/issues/new/choose"
+                                rel="noopener noreferrer"
+                                target="_blank">
+                                <FontAwesomeIcon icon={faPencilAlt} className="rainbow-m-right_small" />
+                                Create an Issue Here
+                            </a>
+                            <h5 className="react-rainbow-getting-started_section-heading-5">
+                                Pull requests are very welcome, but should be within the scope of the project.
+                            </h5>
+                            <h5 className="react-rainbow-getting-started_section-heading-5">
                                 Feel free to contribuite in rainbow-components available in
                                 <a
-                                    className="react-rainbow-getting-started_section-link"
+                                    className="rainbow-link rainbow-m-left_xx-small"
                                     href="https://github.com/90milesbridge/react-rainbow"
                                     rel="noopener noreferrer"
                                     target="_blank">
                                     our repository in github
                                 </a>
                             </h5>
+                            <a
+                                className="rainbow-link rainbow-m-left_xx-small react-rainbow-getting-started_issue-link"
+                                href="https://github.com/90milesbridge/react-rainbow/blob/master/CONTRIBUTING.md"
+                                rel="noopener noreferrer"
+                                target="_blank">
+                                See more details about how to collaborate?
+                                <FontAwesomeIcon icon={faArrowRight} className="rainbow-m-left_small" />
+                            </a>
                         </div>
                     </RenderIf>
                 </section>
