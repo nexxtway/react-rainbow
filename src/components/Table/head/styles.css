@@ -5,7 +5,7 @@
 
 .rainbow-table_header-container {
   height: 100%;
-  padding-left: 0.5rem;
+  padding: 0 0.5rem;
   border: 1px transparent solid;
   display: flex;
   align-items: center;
@@ -16,7 +16,8 @@
 
 .rainbow-table_header-content {
   overflow: hidden;
-  text-overflow: ellipsis; }
+  text-overflow: ellipsis;
+  flex: 1; }
 
 .rainbow-table_header-resize-bar {
   height: 100%;
@@ -63,14 +64,21 @@
     background-color: #fff; }
   .rainbow-table_header--sortable:hover .rainbow-table_header-resize-bar {
     background-color: #e3e5ed; }
+  .rainbow-table_header--sortable:hover .rainbow-table_header-container {
+    border-color: #e3e5ed; }
 
-.rainbow-table_header--selected {
+.rainbow-table_header--selected .rainbow-table_header-container {
+  background-color: #fff;
+  border-color: #01b6f5; }
+
+.rainbow-table_header--selected .rainbow-table_header-content {
   color: #01b6f5; }
-  .rainbow-table_header--selected .rainbow-table_header-wrapper {
-    background-color: #fff;
-    border-color: #01b6f5; }
-  .rainbow-table_header--selected .rainbow-table_header-resize-bar, .rainbow-table_header--selected:hover .rainbow-table_header-resize-bar {
-    background-color: #01b6f5; }
+
+.rainbow-table_header--selected .rainbow-table_header-resize-bar, .rainbow-table_header--selected:hover .rainbow-table_header-resize-bar {
+  background-color: #01b6f5; }
+
+.rainbow-table_header--selected:hover .rainbow-table_header-container {
+  border-color: #01b6f5; }
 
 .rainbow-table_header {
   text-transform: uppercase;

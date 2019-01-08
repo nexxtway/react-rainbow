@@ -10,7 +10,7 @@
 
 .rainbow-table_header-container {
     height: 100%;
-    padding-left: $padding-x-small;
+    padding: 0 $padding-x-small;
     border: 1px transparent solid;
     display: flex;
     align-items: center;
@@ -23,6 +23,7 @@
 .rainbow-table_header-content {
     overflow: hidden;
     text-overflow: ellipsis;
+    flex: 1;
 }
 
 .rainbow-table_header-resize-bar {
@@ -88,19 +89,29 @@
         .rainbow-table_header-resize-bar {
             background-color: $color-gray-2;
         }
+
+        .rainbow-table_header-container {
+            border-color: $color-gray-2;
+        }
     }
 }
 
 .rainbow-table_header--selected {
-    color: $color-brand;
-
-    .rainbow-table_header-wrapper {
+    .rainbow-table_header-container {
         background-color: #fff;
         border-color: $color-brand;
     }
 
+    .rainbow-table_header-content {
+        color: $color-brand;
+    }
+
     .rainbow-table_header-resize-bar, &:hover .rainbow-table_header-resize-bar {
         background-color: $color-brand;
+    }
+
+    &:hover .rainbow-table_header-container {
+        border-color: $color-brand;
     }
 }
 
