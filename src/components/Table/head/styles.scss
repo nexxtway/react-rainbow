@@ -3,7 +3,12 @@
 @import "../../../styles/font-sizes";
 @import "../../../styles/paddings";
 
-.rainbow-table_header-content-wrapper {
+.rainbow-table_header-wrapper {
+    height: 100%;
+    display: flex;
+}
+
+.rainbow-table_header-container {
     height: 100%;
     padding-left: $padding-x-small;
     border: 1px transparent solid;
@@ -12,6 +17,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    flex: 1;
 }
 
 .rainbow-table_header-content {
@@ -20,10 +26,7 @@
 }
 
 .rainbow-table_header-resize-bar {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
+    height: 100%;
     width: 3px;
     border-radius: 100px;
     background-color: transparent;
@@ -91,7 +94,7 @@
 .rainbow-table_header--selected {
     color: $color-brand;
 
-    .rainbow-table_header-content-wrapper {
+    .rainbow-table_header-wrapper {
         background-color: #fff;
         border-color: $color-brand;
     }

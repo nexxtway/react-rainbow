@@ -8,7 +8,19 @@ describe('<Head />', () => {
             { header: 'header' },
             { header: 'header-2' },
         ];
-        const component = mount(<Head columns={columns} />);
+        const columnsWidths = [
+            undefined,
+            undefined,
+        ];
+        const onResizeMock = jest.mock();
+        const onColumnSelectMock = jest.mock();
+        const component = mount(
+            <Head
+                columns={columns}
+                columnsWidths={columnsWidths}
+                onResize={onResizeMock}
+                onColumnSelect={onColumnSelectMock} />,
+        );
         const head = component.find('Header');
 
         expect(head.length).toBe(2);
@@ -16,11 +28,14 @@ describe('<Head />', () => {
             content: 'header',
             sortable: false,
             isSelected: false,
+            isResizable: true,
             sortDirection: 'asc',
-            resizeColumnDisabled: false,
             minColumnWidth: 50,
             maxColumnWidth: 1000,
             width: undefined,
+            onResize: onResizeMock,
+            onColumnSelect: onColumnSelectMock,
+            columnIndex: 0,
         });
     });
     it('should return null if no columns is passed', () => {

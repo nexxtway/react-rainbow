@@ -14,7 +14,10 @@ import './styles.css';
 export default class Table extends Component {
     constructor(props) {
         super(props);
+        this.handleColumnSelect = this.handleColumnSelect.bind(this);
+        this.onColumnResize = this.onColumnResize.bind(this);
         this.state = { columns: resolveColumns(props.children), selectedColumn: undefined };
+        this.columnsWidths = this.state.columns.map(col => col.width);
     }
 
     componentDidUpdate({ children: prevChildren }) {
@@ -22,6 +25,15 @@ export default class Table extends Component {
         if (prevChildren !== currentChildren) {
             this.resolveColumnsFomChilren();
         }
+    }
+
+    onColumnResize(columnIndex, newWidth) {
+        this.columnsWidths = this.columnsWidths.map((width, index) => {
+            if (index === columnIndex) {
+                return newWidth;
+            }
+            return width;
+        });
     }
 
     getContainerClassNames() {
@@ -33,6 +45,14 @@ export default class Table extends Component {
         const { children } = this.props;
         const newColumns = resolveColumns(children);
         this.setState({ columns: newColumns });
+    }
+
+    handleColumnSelect(event, columnIndex) {
+        const { onSort } = this.props;
+        const { columns } = this.state;
+        const { field } = columns[columnIndex];
+        onSort(event, field);
+        this.setState({ selectedColumn: columnIndex });
     }
 
     render() {
@@ -53,11 +73,14 @@ export default class Table extends Component {
                         <tr className="rainbow-table_header-row">
                             <Head
                                 columns={columns}
+                                columnsWidths={this.columnsWidths}
                                 selectedColumn={selectedColumn}
                                 sortDirection={sortDirection}
                                 resizeColumnDisabled={resizeColumnDisabled}
                                 minColumnWidth={minColumnWidth}
-                                maxColumnWidth={maxColumnWidth} />
+                                maxColumnWidth={maxColumnWidth}
+                                onColumnSelect={this.handleColumnSelect}
+                                onResize={this.onColumnResize} />
                         </tr>
                     </thead>
                     <tbody className="rainbow-table_body">
@@ -74,9 +97,10 @@ Table.propTypes = {
     data: PropTypes.arrayOf(Object).isRequired,
     /**
      * Specifies the sorting direction, valid options are 'asc' or 'desc'.
-     * @ignore
      */
     sortDirection: PropTypes.oneOf(['asc', 'desc']),
+    /** Action triggered when a column header is clicked */
+    onSort: PropTypes.func,
     /** Specifies whether column resizing is disabled. The default is false. */
     resizeColumnDisabled: PropTypes.bool,
     /** The minimum width for all columns. The default is 50px. */
@@ -96,6 +120,7 @@ Table.propTypes = {
 
 Table.defaultProps = {
     sortDirection: 'asc',
+    onSort: () => {},
     resizeColumnDisabled: false,
     minColumnWidth: 50,
     maxColumnWidth: 1000,

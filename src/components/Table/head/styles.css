@@ -1,5 +1,9 @@
 /* stylelint-disable no-descending-specificity */
-.rainbow-table_header-content-wrapper {
+.rainbow-table_header-wrapper {
+  height: 100%;
+  display: flex; }
+
+.rainbow-table_header-container {
   height: 100%;
   padding-left: 0.5rem;
   border: 1px transparent solid;
@@ -7,17 +11,15 @@
   align-items: center;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap; }
+  white-space: nowrap;
+  flex: 1; }
 
 .rainbow-table_header-content {
   overflow: hidden;
   text-overflow: ellipsis; }
 
 .rainbow-table_header-resize-bar {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
+  height: 100%;
   width: 3px;
   border-radius: 100px;
   background-color: transparent;
@@ -64,7 +66,7 @@
 
 .rainbow-table_header--selected {
   color: #01b6f5; }
-  .rainbow-table_header--selected .rainbow-table_header-content-wrapper {
+  .rainbow-table_header--selected .rainbow-table_header-wrapper {
     background-color: #fff;
     border-color: #01b6f5; }
   .rainbow-table_header--selected .rainbow-table_header-resize-bar, .rainbow-table_header--selected:hover .rainbow-table_header-resize-bar {

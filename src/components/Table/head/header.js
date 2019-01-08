@@ -11,6 +11,7 @@ export default class Header extends Component {
         this.handleMouseDown = this.handleMouseDown.bind(this);
         this.handleMouseMove = this.handleMouseMove.bind(this);
         this.handleMouseUp = this.handleMouseUp.bind(this);
+        this.handleColumnSelect = this.handleColumnSelect.bind(this);
         this.headerContainer = React.createRef();
         this.resizeBar = React.createRef();
         this.state = {
@@ -19,6 +20,8 @@ export default class Header extends Component {
     }
 
     setColumnWdith(width) {
+        const { columnIndex, onResize } = this.props;
+        onResize(columnIndex, width);
         this.setState({ width });
     }
 
@@ -41,28 +44,27 @@ export default class Header extends Component {
         return undefined;
     }
 
-    isResizable() {
-        const { resizeColumnDisabled, width } = this.props;
-        return !resizeColumnDisabled && width === undefined;
-    }
-
-    handleMouseUp() {
-        document.removeEventListener('mouseup', this.handleMouseUp);
-        document.removeEventListener('mousemove', this.handleMouseMove);
-        const headerContainerWidth = this.headerContainer.current.getBoundingClientRect().width;
-        this.resizeBar.current.style.transform = 'unset';
-        const { minColumnWidth, maxColumnWidth } = this.props;
-        const width = headerContainerWidth + this.newXPosition;
-        if (width < minColumnWidth) {
-            this.setColumnWdith(minColumnWidth);
-        } else if (width > maxColumnWidth) {
-            this.setColumnWdith(maxColumnWidth);
-        } else {
-            this.setColumnWdith(width);
+    handleMouseUp(event) {
+        event.preventDefault();
+        if (this.headerContainer.current !== null) {
+            document.removeEventListener('mouseup', this.handleMouseUp);
+            document.removeEventListener('mousemove', this.handleMouseMove);
+            const headerContainerWidth = this.headerContainer.current.getBoundingClientRect().width;
+            this.resizeBar.current.style.transform = 'unset';
+            const { minColumnWidth, maxColumnWidth } = this.props;
+            const width = headerContainerWidth + this.newXPosition;
+            if (width < minColumnWidth) {
+                this.setColumnWdith(minColumnWidth);
+            } else if (width > maxColumnWidth) {
+                this.setColumnWdith(maxColumnWidth);
+            } else {
+                this.setColumnWdith(width);
+            }
         }
     }
 
     handleMouseMove(event) {
+        event.preventDefault();
         const { minColumnWidth, maxColumnWidth } = this.props;
         this.newXPosition = event.clientX - this.startXPosition;
         const { width } = this.headerContainer.current.getBoundingClientRect();
@@ -78,11 +80,19 @@ export default class Header extends Component {
 
     handleMouseDown(dragEvent) {
         dragEvent.preventDefault();
-        if (this.isResizable()) {
+        const { isResizable } = this.props;
+        if (isResizable) {
             this.newXPosition = 0;
             this.startXPosition = dragEvent.clientX;
             document.addEventListener('mousemove', this.handleMouseMove);
             document.addEventListener('mouseup', this.handleMouseUp);
+        }
+    }
+
+    handleColumnSelect(event) {
+        const { onColumnSelect, columnIndex, sortable } = this.props;
+        if (sortable) {
+            onColumnSelect(event, columnIndex);
         }
     }
 
@@ -91,6 +101,7 @@ export default class Header extends Component {
         const {
             content,
             isSelected,
+            isResizable,
             sortDirection,
             minColumnWidth,
             maxColumnWidth,
@@ -105,38 +116,39 @@ export default class Header extends Component {
                 tabIndex={-1}
                 aria-label={this.getHeaderTitle()}
                 ref={this.headerContainer}>
+                <div className="rainbow-table_header-wrapper">
+                    <div className="rainbow-table_header-container" role="presentation" onClick={this.handleColumnSelect}>
+                        <span title={this.getHeaderTitle()} className="rainbow-table_header-content">{content}</span>
+                        <RenderIf isTrue={isSelected}>
+                            <ArrowDown direction={sortDirection} />
+                        </RenderIf>
+                    </div>
 
-                <div className="rainbow-table_header-content-wrapper">
-                    <span title={this.getHeaderTitle()} className="rainbow-table_header-content">{content}</span>
-                    <RenderIf isTrue={isSelected}>
-                        <ArrowDown direction={sortDirection} />
-                    </RenderIf>
-                </div>
-
-                <RenderIf isTrue={this.isResizable()}>
-                    <div
-                        className="rainbow-table_header-resize-bar"
-                        role="presentation"
-                        draggable
-                        onMouseDown={this.handleMouseDown}
-                        ref={this.resizeBar}>
-
-                        <input
-                            type="range"
-                            min={minColumnWidth}
-                            max={maxColumnWidth}
-                            aria-label={this.getHeaderTitle()}
-                            tabIndex={-1}
-                            className="rainbow-table_header-resize-bar_input" />
-
+                    <RenderIf isTrue={isResizable}>
                         <div
-                            className="rainbow-table_header-resize-bar_table-guideline"
+                            className="rainbow-table_header-resize-bar"
                             role="presentation"
                             draggable
-                            onMouseDown={this.handleMouseDown} />
+                            onMouseDown={this.handleMouseDown}
+                            ref={this.resizeBar}>
 
-                    </div>
-                </RenderIf>
+                            <input
+                                type="range"
+                                min={minColumnWidth}
+                                max={maxColumnWidth}
+                                aria-label={this.getHeaderTitle()}
+                                tabIndex={-1}
+                                className="rainbow-table_header-resize-bar_input" />
+
+                            <div
+                                className="rainbow-table_header-resize-bar_table-guideline"
+                                role="presentation"
+                                draggable
+                                onMouseDown={this.handleMouseDown} />
+
+                        </div>
+                    </RenderIf>
+                </div>
             </th>
         );
     }
@@ -147,10 +159,13 @@ Header.propTypes = {
     isSelected: PropTypes.bool,
     sortable: PropTypes.bool,
     sortDirection: PropTypes.string,
-    width: PropTypes.string,
-    resizeColumnDisabled: PropTypes.bool,
+    onColumnSelect: PropTypes.func,
+    width: PropTypes.number,
     minColumnWidth: PropTypes.number,
     maxColumnWidth: PropTypes.number,
+    columnIndex: PropTypes.number,
+    onResize: PropTypes.func,
+    isResizable: PropTypes.bool,
 };
 
 Header.defaultProps = {
@@ -158,8 +173,11 @@ Header.defaultProps = {
     isSelected: false,
     sortable: false,
     sortDirection: 'asc',
+    onColumnSelect: () => {},
     width: undefined,
-    resizeColumnDisabled: undefined,
     minColumnWidth: undefined,
     maxColumnWidth: undefined,
+    columnIndex: undefined,
+    onResize: () => {},
+    isResizable: true,
 };
