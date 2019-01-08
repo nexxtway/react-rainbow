@@ -77,6 +77,10 @@ module.exports = {
             name: 'Experiences',
             content: 'library/pages/experiencesExamples.md',
         },
+        {
+            name: 'Designs',
+            content: 'library/pages/designs.md',
+        },
     ],
     webpackConfig: {
         module: {
