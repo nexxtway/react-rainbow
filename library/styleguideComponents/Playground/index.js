@@ -8,8 +8,8 @@ const pages = [
     'Designs',
 ];
 
-function isComponentsPage(name) {
-    return pages.some(page => page !== name);
+function isNotComponentPage(name) {
+    return pages.some(page => page === name);
 }
 
 export default function PlaygroundRenderer(props) {
@@ -23,22 +23,22 @@ export default function PlaygroundRenderer(props) {
     } = props;
     const { ...rest } = previewProps;
 
-    if (isComponentsPage(name)) {
+    if (isNotComponentPage(name)) {
         return (
-            <div className="rainbow-position_relative rainbow-m-bottom_large">
-                {toolbar}
-                <article {...rest} className="react-rainbow-playground" data-preview={name}>
-                    {preview}
-                </article>
-                <div className="rainbow-flex rainbow-justify_end rainbow-p-vertical_xx-small">{tabButtons}</div>
-                <div>{tabBody}</div>
+            <div className="rainbow-position_relative">
+                {preview}
             </div>
         );
     }
 
     return (
-        <div className="rainbow-position_relative">
-            {preview}
+        <div className="rainbow-position_relative rainbow-m-bottom_large">
+            {toolbar}
+            <article {...rest} className="react-rainbow-playground" data-preview={name}>
+                {preview}
+            </article>
+            <div className="rainbow-flex rainbow-justify_end rainbow-p-vertical_xx-small">{tabButtons}</div>
+            <div>{tabBody}</div>
         </div>
     );
 }
