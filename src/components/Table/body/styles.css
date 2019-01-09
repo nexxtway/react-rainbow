@@ -5,7 +5,7 @@
 .rainbow-table_cell-container:focus {
   outline: none; }
   .rainbow-table_cell-container:focus .rainbow-table_cell-content {
-    border: 1px solid #01b6f5; }
+    border-color: #01b6f5; }
 
 .rainbow-table_cell-content {
   display: flex;
@@ -17,7 +17,8 @@
   padding-right: 4px;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap; }
+  white-space: nowrap;
+  border: 1px solid transparent; }
 
 .rainbow-table_cell-content:first-of-type {
   padding-left: 18px; }

@@ -11,7 +11,7 @@
     outline: none;
 
     .rainbow-table_cell-content {
-        border: 1px solid $color-brand;
+        border-color: $color-brand;
     }
 }
 
@@ -26,6 +26,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    border: 1px solid transparent;
 }
 
 .rainbow-table_cell-content:first-of-type {
