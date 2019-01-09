@@ -1,16 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import isNotComponentPage from './../utils';
 import './styles.css';
-
-const pages = [
-    'GettingStarted',
-    'Experiences',
-    'Designs',
-];
-
-function isNotComponentPage(name) {
-    return pages.some(page => page === name);
-}
 
 export default function PlaygroundRenderer(props) {
     const {
