@@ -19,16 +19,19 @@ export default function Head(props) {
 
     const isResizable = columnWidth => !resizeColumnDisabled && columnWidth === undefined;
 
-    const getColumnWidth = (columnWidth, width) => {
-        if (columnWidth === undefined) {
-            return width;
+    const getColumnWidth = (width, defaultWidth, innerWidth) => {
+        if (width === undefined) {
+            if (defaultWidth === undefined) {
+                return innerWidth;
+            }
+            return defaultWidth;
         }
-        return columnWidth;
+        return width;
     };
 
     if (columns) {
         return columns.map((column, index) => {
-            const { header, sortable, width: columnDataWidth } = column;
+            const { header, sortable, width, defaultWidth } = column;
             const isSelected = index === selectedColumn;
             const innerWidth = columnsWidths[index];
             return (
@@ -40,8 +43,8 @@ export default function Head(props) {
                     onColumnSelect={onColumnSelect}
                     onResize={onResize}
                     isSelected={isSelected}
-                    isResizable={isResizable(columnDataWidth)}
-                    width={getColumnWidth(columnDataWidth, innerWidth)}
+                    isResizable={isResizable(width)}
+                    width={getColumnWidth(width, defaultWidth, innerWidth)}
                     minColumnWidth={minColumnWidth}
                     maxColumnWidth={maxColumnWidth}
                     columnIndex={index} />

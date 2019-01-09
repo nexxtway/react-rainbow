@@ -17,7 +17,12 @@ export default class Table extends Component {
         this.handleColumnSelect = this.handleColumnSelect.bind(this);
         this.onColumnResize = this.onColumnResize.bind(this);
         this.state = { columns: resolveColumns(props.children), selectedColumn: undefined };
-        this.columnsWidths = this.state.columns.map(col => col.width);
+        this.columnsWidths = this.state.columns.map((col) => {
+            if (col.width) {
+                return col.width;
+            }
+            return col.defaultWidth;
+        });
     }
 
     componentDidUpdate({ children: prevChildren }) {

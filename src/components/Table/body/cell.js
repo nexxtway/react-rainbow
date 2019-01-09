@@ -31,24 +31,28 @@ export default function Cell(props) {
     if (isFirst) {
         return (
             <th
-                className="rainbow-table_cell"
+                className="rainbow-table_cell-container"
                 scope="row"
                 tabIndex={-1}
                 data-label={getHeaderLabel()}>
 
-                <CellValue component={component} value={value} />
+                <div className="rainbow-table_cell-content">
+                    <CellValue component={component} value={value} />
+                </div>
             </th>
         );
     }
 
     return (
         <td
-            className="rainbow-table_cell"
+            className="rainbow-table_cell-container"
             role="gridcell"
             tabIndex={-1}
             data-label={getHeaderLabel()}>
 
-            <CellValue component={component} value={value} />
+            <div className="rainbow-table_cell-content" role="presentation">
+                <CellValue component={component} value={value} />
+            </div>
         </td>
     );
 }

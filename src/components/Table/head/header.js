@@ -119,9 +119,7 @@ export default class Header extends Component {
                 <div className="rainbow-table_header-wrapper">
                     <div className="rainbow-table_header-container" role="presentation" onClick={this.handleColumnSelect}>
                         <span title={this.getHeaderTitle()} className="rainbow-table_header-content">{content}</span>
-                        <RenderIf isTrue={isSelected}>
-                            <ArrowDown direction={sortDirection} />
-                        </RenderIf>
+                        <ArrowDown direction={sortDirection} />
                     </div>
 
                     <RenderIf isTrue={isResizable}>

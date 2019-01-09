@@ -38,6 +38,8 @@ Column.propTypes = {
     sortable: PropTypes.bool,
     /** Specifies the width of a column in pixels and make the column non-resizable */
     width: PropTypes.number,
+    /** Specifies the width of a column in pixels and allows the column to be resizable */
+    defaultWidth: PropTypes.number,
 };
 
 Column.defaultProps = {
@@ -45,4 +47,5 @@ Column.defaultProps = {
     component: undefined,
     sortable: false,
     width: undefined,
+    defaultWidth: undefined,
 };

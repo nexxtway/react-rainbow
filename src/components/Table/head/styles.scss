@@ -30,6 +30,7 @@
     height: 100%;
     width: 3px;
     border-radius: 100px;
+    margin-left: -1px;
     background-color: transparent;
     will-change: transform;
     z-index: 5000;
@@ -53,8 +54,7 @@
     background-color: transparent;
     width: 1px;
     position: absolute;
-    right: 1px;
-    left: 1px;
+    right: 0;
 
     &:hover {
         background-color: $color-brand;
@@ -82,7 +82,7 @@
     cursor: pointer;
 
     &:hover {
-        .rainbow-table_header-content-wrapper {
+        .rainbow-table_header-wrapper {
             background-color: #fff;
         }
 
@@ -92,6 +92,11 @@
 
         .rainbow-table_header-container {
             border-color: $color-gray-2;
+            border-right-color: transparent;
+        }
+
+        .rainbow-table_header-arrow {
+            visibility: visible;
         }
     }
 }
@@ -104,6 +109,10 @@
 
     .rainbow-table_header-content {
         color: $color-brand;
+    }
+
+    .rainbow-table_header-arrow {
+        visibility: visible;
     }
 
     .rainbow-table_header-resize-bar, &:hover .rainbow-table_header-resize-bar {
@@ -133,7 +142,7 @@
 }
 
 .rainbow-table_header-arrow {
-    margin-left: 4px;
+    visibility: hidden;
 }
 
 .rainbow-table_header-arrow--asc {

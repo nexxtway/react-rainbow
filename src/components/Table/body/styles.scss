@@ -6,7 +6,17 @@
     box-shadow: 0 1px 0 0 #e3e5ed;
 }
 
-.rainbow-table_cell {
+.rainbow-table_cell-container:focus {
+    outline: none;
+
+    .rainbow-table_cell-content {
+        border: 1px solid $color-brand;
+    }
+}
+
+.rainbow-table_cell-content {
+    display: flex;
+    align-items: center;
     font-size: $font-size-text-medium;
     color: $color-gray-4;
     height: 40px;
@@ -17,11 +27,11 @@
     white-space: nowrap;
 }
 
-.rainbow-table_cell:focus {
-    border: 1px solid $color-brand;
-    outline: none;
-}
+//.rainbow-table_cell-content:focus {
+//    border: 1px solid $color-brand;
+//    outline: none !important;
+//}
 
-.rainbow-table_cell:first-of-type {
+.rainbow-table_cell-content:first-of-type {
     padding-left: 18px;
 }
