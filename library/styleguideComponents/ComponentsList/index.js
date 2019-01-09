@@ -4,13 +4,14 @@ import SidebarItem from '../Sidebar/sidebarItem';
 import ExperiencesIcon from './icons/experiencesIcon';
 import PuzzleIcon from './icons/puzzleIcon';
 import StartupIcon from './icons/startupIcon';
+import { isComponentPage, isNotComponentPage } from './../utils';
 
 const url = window.location.href.split('#/')[1];
 
 function resolveCurrentUrl() {
-    if ((url === 'GettingStarted') || (url === 'Components') || (url === 'Experiences')) {
+    if (isNotComponentPage(url)) {
         return url;
-    } else if (url && ((url !== 'GettingStarted') || (url !== 'Components') || (url !== 'Experiences'))) {
+    } else if (url && (isComponentPage(url))) {
         return 'Components';
     }
     return 'GettingStarted';
