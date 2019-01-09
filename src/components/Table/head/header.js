@@ -100,7 +100,6 @@ export default class Header extends Component {
         const { width } = this.state;
         const {
             content,
-            isSelected,
             isResizable,
             sortDirection,
             minColumnWidth,
