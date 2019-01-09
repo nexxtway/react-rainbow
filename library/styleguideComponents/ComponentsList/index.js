@@ -4,14 +4,14 @@ import SidebarItem from '../Sidebar/sidebarItem';
 import ExperiencesIcon from './icons/experiencesIcon';
 import PuzzleIcon from './icons/puzzleIcon';
 import StartupIcon from './icons/startupIcon';
-import { isComponentPage, isNotComponentPage } from './../utils';
+import isNotComponentPage from './../utils';
 
-const url = window.location.href.split('#/')[1];
+const pageName = window.location.href.split('#/')[1];
 
 function resolveCurrentUrl() {
-    if (isNotComponentPage(url)) {
-        return url;
-    } else if (url && (isComponentPage(url))) {
+    if (isNotComponentPage(pageName)) {
+        return pageName;
+    } else if (pageName) {
         return 'Components';
     }
     return 'GettingStarted';

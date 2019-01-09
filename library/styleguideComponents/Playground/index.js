@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { isNotComponentPage } from './../utils';
+import isNotComponentPage from './../utils';
 import './styles.css';
 
 export default function PlaygroundRenderer(props) {
