@@ -1,12 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencilAlt, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import Tabset from '../../../../src/components/Tabset';
 import Tab from '../../../../src/components/Tab';
 import RenderIf from '../../../../src/components/RenderIf';
 import FeatureList from '../FeatureList';
 import CodeEditor from '../CodeEditor';
+import githublogo from './github.svg';
 import './styles.css';
 
 const HelloWorldExample =
@@ -119,21 +120,17 @@ export default class GettingStartedPage extends Component {
                                 You can help us improve React Rainbow Components, the first step to begin
                                 collaborate is to create an issue before submitting a pull request, it's always
                                 good to file an issue, so we can discuss the details of your approach or suggestion.
-                                After you can write the code an submit the PR.
                             </h5>
                             <a
                                 className="rainbow-link rainbow-m-left_xx-small react-rainbow-getting-started_issue-link"
                                 href="https://github.com/90milesbridge/react-rainbow/issues/new/choose"
                                 rel="noopener noreferrer"
                                 target="_blank">
-                                <FontAwesomeIcon icon={faPencilAlt} className="rainbow-m-right_small" />
+                                <img src={githublogo} alt="github logo" className="react-rainbow-getting-started_github-icon rainbow-m-right_x-small" />
                                 Create an Issue Here
                             </a>
                             <h5 className="react-rainbow-getting-started_section-heading-5">
-                                Pull requests are very welcome, but should be within the scope of the project.
-                            </h5>
-                            <h5 className="react-rainbow-getting-started_section-heading-5">
-                                Feel free to contribuite in rainbow-components available in
+                                Feel free to contribute in rainbow-components available in
                                 <a
                                     className="rainbow-link rainbow-m-left_xx-small"
                                     href="https://github.com/90milesbridge/react-rainbow"
@@ -141,6 +138,16 @@ export default class GettingStartedPage extends Component {
                                     target="_blank">
                                     our repository in github
                                 </a>
+                            </h5>
+                            <h5 className="react-rainbow-getting-started_section-heading-5 rainbow-m-top_small">
+                                Pull requests are very welcome, but should be within the scope of the project. Before making your contribution go through the following steps:
+                            </h5>
+                            <h5 className="react-rainbow-getting-started_section-heading-5 rainbow-m-vertical_small rainbow-m-left_small">
+                                1. Fork the React Rainbow Components repository on Github. <br />
+                                2. Clone your fork to your local machine <span className="react-rainbow-font-code">git clone git@github.com:[yourname]/react-rainbow.git</span> <br />
+                                3. Create a branch <span className="react-rainbow-font-code"> git checkout -b my-topic-branch </span> <br />
+                                4. Make your changes, lint, then push to GitHub with <span className="react-rainbow-font-code">git push origin my-topic-branch </span> <br />
+                                5. Visit GitHub and make your pull request.
                             </h5>
                             <a
                                 className="rainbow-link rainbow-m-left_xx-small react-rainbow-getting-started_issue-link"

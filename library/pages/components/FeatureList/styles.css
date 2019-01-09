@@ -29,6 +29,17 @@
     padding-top: 12px;
 }
 
+.react-rainbow-font-code {
+    font-family: Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 13px;
+    color: #061c3f;
+    margin-left: 8px;
+}
+
+.react-rainbow-getting-started_github-icon {
+    width: 15px;
+}
+
 @media (max-width: 1024px) {
     .react-rainbow-feature-list_item {
         width: 40%;
