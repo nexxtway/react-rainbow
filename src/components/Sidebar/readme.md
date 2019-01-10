@@ -3,6 +3,11 @@
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
     const { faClock, faCog, faFolderOpen } = require('@fortawesome/free-solid-svg-icons');
 
+    const sidebarContainerStyles ={
+        width: '88px',
+        borderBottomLeftRadius: '0.875rem',
+    }
+
     class SimpleSidebar extends React.Component {
         constructor(props) {
             super(props);
@@ -45,5 +50,11 @@
             );
         }
     }
-
-    <SimpleSidebar />
+    
+    <div>
+      <GlobalHeader src="images/user/user3.jpg" />
+      <div className="rainbow-background-color_white rainbow-p-top_small rainbow-p-bottom_medium"
+      style={sidebarContainerStyles} >
+      <SimpleSidebar />
+      </div>
+    </div>
