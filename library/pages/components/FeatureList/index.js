@@ -55,7 +55,7 @@ export default function FeatureList(props) {
                 className="react-rainbow-feature-list_item"
                 image={<PageObject />}
                 title="Wdio page objects"
-                description="We know how important for you is to test your UI. Our npm package provides webdrive.io page object for almost every component." />
+                description="We know how important for you is to test your UI. Our npm package provides webdriver.io page object for almost every component." />
 
             <Item
                 className="react-rainbow-feature-list_item"
