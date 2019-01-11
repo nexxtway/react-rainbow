@@ -1,13 +1,14 @@
-/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/no-unescaped-entities, import/no-extraneous-dependencies */
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import Tabset from '../../../../src/components/Tabset';
-import Tab from '../../../../src/components/Tab';
-import RenderIf from '../../../../src/components/RenderIf';
-import FeatureList from '../FeatureList';
-import CodeEditor from '../CodeEditor';
+import Tabset from '../../../src/components/Tabset';
+import Tab from '../../../src/components/Tab';
+import RenderIf from '../../../src/components/RenderIf';
+import FeatureList from '../components/FeatureList';
+import CodeEditor from '../components/CodeEditor';
 import githublogo from './github.svg';
+
 import './styles.css';
 
 const HelloWorldExample =

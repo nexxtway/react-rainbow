@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import isNotComponentPage from './../utils';
 import './styles.css';
 
 export default function PlaygroundRenderer(props) {
@@ -13,7 +14,7 @@ export default function PlaygroundRenderer(props) {
     } = props;
     const { ...rest } = previewProps;
 
-    if (name === 'GettingStarted' || name === 'Experiences') {
+    if (isNotComponentPage(name)) {
         return (
             <div className="rainbow-position_relative">
                 {preview}

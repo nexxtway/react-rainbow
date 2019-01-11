@@ -2,12 +2,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import filterSectionsByName from 'react-styleguidist/lib/utils/filterSectionsByName';
-import Card from './../../../../src/components/Card';
-import Input from './../../../../src/components/Input';
-import RenderIf from '../../../../src/components/RenderIf';
+import Card from '../../../src/components/Card';
+import Input from '../../../src/components/Input';
+import RenderIf from '../../../src/components/RenderIf';
 import SearchIcon from './searchIcon';
+import SectionHeading from '../../styleguideComponents/SectionHeading';
 import './styles.css';
-import SectionHeading from '../../SectionHeading';
 
 function handleOnError(event) {
     event.target.src = 'images/componentsThumbs/default-image.svg';

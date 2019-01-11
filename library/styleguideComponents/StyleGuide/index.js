@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactGA from './.././../ga';
-import RenderIf from './../../../src/components/RenderIf';
-import ComponentsPage from './ComponentsPage';
+import ReactGA from '.././../ga';
+import RenderIf from '../../../src/components/RenderIf';
+import ComponentsPage from '../../pages/ComponentsPage';
 import ProjectSelector from '../ProjectSelector';
 import './styles.css';
 
