@@ -4,6 +4,11 @@ import classnames from 'classnames';
 import { Provider } from './context';
 import './styles.css';
 
+/**
+ * Sidebar represents a list of links that either take the user to another
+ * page or parts of the page the user is in.
+ * @category Layout
+ */
 export default function Sidebar(props) {
     const {
         ariaLabel,
@@ -41,13 +46,26 @@ export default function Sidebar(props) {
 }
 
 Sidebar.propTypes = {
+    /** The id of the outer element. */
     id: PropTypes.string,
+    /** The activeColor changes the color of the line that appears when
+     * a SodebarItem is active. */
     activeColor: PropTypes.string,
+    /** Name of the nagivation item to make active. */
     selectedItem: PropTypes.node,
+    /** Action fired when an item is selected.
+     * The event params include the `name` of the selected item. */
     onSelect: PropTypes.func,
+    /** The aria label attribute for the navigation component. */
     ariaLabel: PropTypes.string,
+    /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
+    /** An object with custom style applied for the outer element. */
     style: PropTypes.object,
+    /**
+     * This prop that should not be visible in the documentation.
+     * @ignore
+     */
     children: PropTypes.node,
 };
 
@@ -55,8 +73,6 @@ Sidebar.defaultProps = {
     activeColor: '#01b6f5',
     selectedItem: null,
     onSelect: () => {},
-    compact: false,
-    shaded: false,
     ariaLabel: undefined,
     className: undefined,
     style: undefined,

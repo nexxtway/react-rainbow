@@ -57,6 +57,9 @@ function Item(props) {
     );
 }
 
+/**
+ * @category Layout
+ */
 export default function SidebarItem(props) {
     return (
         <NavigationConsumer>
@@ -70,14 +73,21 @@ export default function SidebarItem(props) {
 }
 
 SidebarItem.propTypes = {
+    /** A unique identifier for the navigation item. */
+    name: PropTypes.string.isRequired,
+    /** The text to show if it is passed. The text displayed for the SidebarItem. */
     label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
-    name: PropTypes.string.isRequired,
+    /** The icon displayed for the SidebarItem. It must be a svg icon or a font icon. */
     icon: PropTypes.node.isRequired,
+    /** The URL of the page that the navigation item goes to. */
     href: PropTypes.string,
+    /** Event fired when the item is clicked. */
     onClick: PropTypes.func,
+    /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
+    /** An object with custom style applied for the outer element. */
     style: PropTypes.object,
 };
 
