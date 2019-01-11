@@ -4,7 +4,7 @@ import SidebarItem from '../Sidebar/sidebarItem';
 import ExperiencesIcon from './icons/experiencesIcon';
 import PuzzleIcon from './icons/puzzleIcon';
 import StartupIcon from './icons/startupIcon';
-// import DesignIcon from './icons/designIcon';
+import DesignIcon from './icons/designIcon';
 import isNotComponentPage from './../utils';
 
 const name = window.location.href.split('#/')[1];
@@ -54,11 +54,11 @@ export default class ComponentsList extends Component {
                     name="Experiences"
                     label="Experiences"
                     href="/#/Experiences" />
-                {/* <SidebarItem
+                <SidebarItem
                     icon={<DesignIcon />}
                     name="Designs"
                     label="Designs"
-                    href="/#/Designs" /> */}
+                    href="/#/Designs" />
             </Sidebar>
         );
     }
