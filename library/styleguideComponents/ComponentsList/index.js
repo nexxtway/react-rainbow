@@ -7,7 +7,7 @@ import StartupIcon from './icons/startupIcon';
 import DesignIcon from './icons/designIcon';
 import isNotComponentPage from './../utils';
 
-const pageName = window.location.href.split('#/')[1];
+const pageName = window.location.href.split('#/')[1].split('/')[0];
 
 function resolveCurrentUrl() {
     if (isNotComponentPage(pageName)) {

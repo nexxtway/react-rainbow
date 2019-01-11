@@ -2,7 +2,9 @@ const pages = [
     'GettingStarted',
     'Experiences',
     'Designs',
-    'DesignDetails',
+    'Admin',
+    'Authetication',
+    'RainbowComponents',
 ];
 
 export default function isNotComponentPage(name) {
