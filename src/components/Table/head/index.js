@@ -1,6 +1,6 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { uniqueId } from '../../../libs/utils';
 import Header from './header';
 import './styles.css';
 
@@ -15,6 +15,7 @@ export default function Head(props) {
         maxColumnWidth,
         columnsWidths,
         onResize,
+        resizeGuideLineHeight,
     } = props;
 
     const isResizable = columnWidth => !resizeColumnDisabled && columnWidth === undefined;
@@ -36,7 +37,7 @@ export default function Head(props) {
             const innerWidth = columnsWidths[index];
             return (
                 <Header
-                    key={uniqueId('header')}
+                    key={`header-${index}`}
                     content={header}
                     sortable={sortable}
                     sortDirection={sortDirection}
@@ -47,7 +48,8 @@ export default function Head(props) {
                     width={getColumnWidth(width, defaultWidth, innerWidth)}
                     minColumnWidth={minColumnWidth}
                     maxColumnWidth={maxColumnWidth}
-                    columnIndex={index} />
+                    columnIndex={index}
+                    resizeGuideLineHeight={resizeGuideLineHeight} />
             );
         });
     }
@@ -64,6 +66,7 @@ Head.propTypes = {
     minColumnWidth: PropTypes.number,
     maxColumnWidth: PropTypes.number,
     onResize: PropTypes.func,
+    resizeGuideLineHeight: PropTypes.number,
 };
 
 Head.defaultProps = {
@@ -76,4 +79,5 @@ Head.defaultProps = {
     minColumnWidth: 50,
     maxColumnWidth: 1000,
     onResize: () => {},
+    resizeGuideLineHeight: 0,
 };

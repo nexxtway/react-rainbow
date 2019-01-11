@@ -1,13 +1,13 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { uniqueId } from '../../../libs/utils';
 import Cell from './cell';
 
 export default function Row(props) {
     const { data, columns } = props;
     const cells = columns.map(({ header, component, field }, index) => (
         <Cell
-            key={uniqueId('cell')}
+            key={`cell-${index}`}
             header={header}
             component={component}
             value={data[field]}

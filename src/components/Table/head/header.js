@@ -14,15 +14,26 @@ export default class Header extends Component {
         this.handleColumnSelect = this.handleColumnSelect.bind(this);
         this.headerContainer = React.createRef();
         this.resizeBar = React.createRef();
-        this.state = {
-            width: props.width,
-        };
+    }
+
+    componentDidMount() {
+        const { width } = this.props;
+        if (width === undefined) {
+            const { width: computedWidth } = window.getComputedStyle(this.headerContainer.current);
+            const headerWidth = parseInt(
+                computedWidth
+                    .toString()
+                    .substring(0, computedWidth.length - 2),
+                10,
+            );
+            const { columnIndex, onResize } = this.props;
+            onResize(columnIndex, headerWidth);
+        }
     }
 
     setColumnWdith(width) {
         const { columnIndex, onResize } = this.props;
         onResize(columnIndex, width);
-        this.setState({ width });
     }
 
     getClassName() {
@@ -97,15 +108,17 @@ export default class Header extends Component {
     }
 
     render() {
-        const { width } = this.state;
         const {
             content,
             isResizable,
             sortDirection,
             minColumnWidth,
             maxColumnWidth,
+            width,
+            resizeGuideLineHeight,
         } = this.props;
         const headerStyles = { width };
+        const resizeGuideLineStyles = { height: resizeGuideLineHeight };
 
         return (
             <th
@@ -139,6 +152,7 @@ export default class Header extends Component {
 
                             <div
                                 className="rainbow-table_header-resize-bar_table-guideline"
+                                style={resizeGuideLineStyles}
                                 role="presentation"
                                 draggable
                                 onMouseDown={this.handleMouseDown} />
@@ -163,6 +177,7 @@ Header.propTypes = {
     columnIndex: PropTypes.number,
     onResize: PropTypes.func,
     isResizable: PropTypes.bool,
+    resizeGuideLineHeight: PropTypes.number,
 };
 
 Header.defaultProps = {
@@ -177,4 +192,5 @@ Header.defaultProps = {
     columnIndex: undefined,
     onResize: () => {},
     isResizable: true,
+    resizeGuideLineHeight: 0,
 };

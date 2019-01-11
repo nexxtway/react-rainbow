@@ -16,13 +16,21 @@ export default class Table extends Component {
         super(props);
         this.handleColumnSelect = this.handleColumnSelect.bind(this);
         this.onColumnResize = this.onColumnResize.bind(this);
-        this.state = { columns: resolveColumns(props.children), selectedColumn: undefined };
+        this.state = {
+            columns: resolveColumns(props.children),
+            selectedColumn: undefined,
+            tableWidth: undefined,
+        };
         this.columnsWidths = this.state.columns.map((col) => {
             if (col.width) {
                 return col.width;
             }
             return col.defaultWidth;
         });
+    }
+
+    componentDidMount() {
+        this.initialWidthRenderCompleted();
     }
 
     componentDidUpdate({ children: prevChildren }) {
@@ -39,11 +47,29 @@ export default class Table extends Component {
             }
             return width;
         });
+        this.setTableWidth();
     }
 
     getContainerClassNames() {
         const { className } = this.props;
         return classnames('rainbow-table-wrapper', className);
+    }
+
+    setTableWidth() {
+        const width = this.columnsWidths.reduce((prev, actual) => {
+            if (actual) {
+                return prev + actual;
+            }
+            return prev;
+        }, 0);
+        this.setState({ tableWidth: width });
+    }
+
+    initialWidthRenderCompleted() {
+        const { tableWidth } = this.state;
+        if (tableWidth === undefined) {
+            this.setTableWidth();
+        }
     }
 
     resolveColumnsFomChilren() {
@@ -69,11 +95,13 @@ export default class Table extends Component {
             maxColumnWidth,
             style,
         } = this.props;
-        const { columns, selectedColumn } = this.state;
+        const { columns, selectedColumn, tableWidth } = this.state;
+        const tableStyles = { width: tableWidth };
+        const resizeGuideLineHeight = (data.length * 40) + 44;
 
         return (
             <div className={this.getContainerClassNames()} style={style}>
-                <table className="rainbow-table">
+                <table className="rainbow-table" style={tableStyles}>
                     <thead className="rainbow-table_head">
                         <tr className="rainbow-table_header-row">
                             <Head
@@ -85,7 +113,8 @@ export default class Table extends Component {
                                 minColumnWidth={minColumnWidth}
                                 maxColumnWidth={maxColumnWidth}
                                 onColumnSelect={this.handleColumnSelect}
-                                onResize={this.onColumnResize} />
+                                onResize={this.onColumnResize}
+                                resizeGuideLineHeight={resizeGuideLineHeight} />
                         </tr>
                     </thead>
                     <tbody className="rainbow-table_body">

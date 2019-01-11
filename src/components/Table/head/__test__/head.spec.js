@@ -12,8 +12,8 @@ describe('<Head />', () => {
             undefined,
             undefined,
         ];
-        const onResizeMock = jest.mock();
-        const onColumnSelectMock = jest.mock();
+        const onResizeMock = jest.fn();
+        const onColumnSelectMock = jest.fn();
         const component = mount(
             <Head
                 columns={columns}
@@ -36,6 +36,7 @@ describe('<Head />', () => {
             onResize: onResizeMock,
             onColumnSelect: onColumnSelectMock,
             columnIndex: 0,
+            resizeGuideLineHeight: 0,
         });
     });
     it('should return null if no columns is passed', () => {
