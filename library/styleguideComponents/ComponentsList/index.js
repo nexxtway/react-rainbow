@@ -4,9 +4,11 @@ import SidebarItem from '../Sidebar/sidebarItem';
 import ExperiencesIcon from './icons/experiencesIcon';
 import PuzzleIcon from './icons/puzzleIcon';
 import StartupIcon from './icons/startupIcon';
+// import DesignIcon from './icons/designIcon';
 import isNotComponentPage from './../utils';
 
-const pageName = window.location.href.split('#/')[1];
+const name = window.location.href.split('#/')[1];
+const pageName = name && name.split('/')[0];
 
 function resolveCurrentUrl() {
     if (isNotComponentPage(pageName)) {
@@ -52,8 +54,12 @@ export default class ComponentsList extends Component {
                     name="Experiences"
                     label="Experiences"
                     href="/#/Experiences" />
+                {/* <SidebarItem
+                    icon={<DesignIcon />}
+                    name="Designs"
+                    label="Designs"
+                    href="/#/Designs" /> */}
             </Sidebar>
         );
     }
 }
-

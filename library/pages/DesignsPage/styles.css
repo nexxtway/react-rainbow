@@ -1,0 +1,38 @@
+.react-rainbow-designs_view-port {
+    background-color: #f4f6f9;
+    height: calc(100vh - 68px);
+}
+
+.react-rainbow-designs_header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Lato Light';
+    font-size: 32px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    color: #061c3f;
+    padding: 2.25rem 0;
+}
+
+@media (max-width: 600px) {
+    .react-rainbow-designs_view-port {
+        height: unset;
+        padding: 0 2.25rem 1.5rem 2.25rem;
+    }
+
+    .react-rainbow-designs_header {
+        font-size: 28px;
+        padding: 1.5rem 0 1rem 0;
+    }
+}
+
+@media (max-width: 340px) {
+    .react-rainbow-designs_view-port {
+        padding: 0 1rem 1rem 1rem;
+    }
+
+    .react-rainbow-designs_header {
+        font-size: 20px;
+    }
+}

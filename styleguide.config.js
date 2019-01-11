@@ -77,6 +77,26 @@ module.exports = {
             name: 'Experiences',
             content: 'library/pages/experiencesExamples.md',
         },
+        {
+            name: 'Designs',
+            content: 'library/pages/designs.md',
+            usageMode: 'expand',
+            sectionDepth: 1,
+            sections: [
+                {
+                    name: 'RainbowComponents',
+                    content: 'library/pages/rainbowComponentsDesigns.md',
+                },
+                {
+                    name: 'Admin',
+                    content: 'library/pages/adminDesigns.md',
+                },
+                {
+                    name: 'Authentication',
+                    content: 'library/pages/authenticationDesigns.md',
+                },
+            ],
+        },
     ],
     webpackConfig: {
         module: {

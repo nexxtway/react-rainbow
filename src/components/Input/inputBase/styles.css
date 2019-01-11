@@ -119,7 +119,7 @@
 .rainbow-input--error .rainbow-input_icon-container.rainbow-input_icon--left .rainbow-input {
   padding-left: 2.35rem; }
 
-.rainbow-input_label--hide-label {
+.rainbow-input_label--hide {
   position: absolute !important;
   margin: -1px !important;
   border: 0 !important;
