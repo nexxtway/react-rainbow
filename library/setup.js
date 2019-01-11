@@ -1,9 +1,9 @@
 import GlobalHeader from './../library/exampleComponents/GlobalHeader';
 import CodeEditor from './pages/components/CodeEditor';
 import FeatureList from './pages/components/FeatureList';
-import ExperienceExamplesPage from './pages/components/ExperienceExamplesPage';
-import GettingStartedPage from './pages/components/GettingStartedPage';
-import DesignsPage from './pages/components/DesignsPage';
+import ExperienceExamplesPage from './pages/ExperienceExamplesPage';
+import GettingStartedPage from './pages/GettingStartedPage';
+import DesignsPage from './pages/DesignsPage';
 
 global.GlobalHeader = GlobalHeader;
 global.CodeEditor = CodeEditor;

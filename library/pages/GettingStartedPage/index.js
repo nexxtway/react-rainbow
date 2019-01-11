@@ -1,10 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { Component } from 'react';
-import Tabset from '../../../../src/components/Tabset';
-import Tab from '../../../../src/components/Tab';
-import RenderIf from '../../../../src/components/RenderIf';
-import FeatureList from '../FeatureList';
-import CodeEditor from '../CodeEditor';
+import Tabset from '../../../src/components/Tabset';
+import Tab from '../../../src/components/Tab';
+import RenderIf from '../../../src/components/RenderIf';
+import FeatureList from '../components/FeatureList';
+import CodeEditor from '../components/CodeEditor';
 import './styles.css';
 
 const HelloWorldExample =

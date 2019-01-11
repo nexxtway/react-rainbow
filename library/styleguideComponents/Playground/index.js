@@ -1,16 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import isNotComponentPage from './../utils';
 import './styles.css';
-
-const pages = [
-    'GettingStarted',
-    'Experiences',
-    'Designs',
-];
-
-function isComponentsPage(name) {
-    return pages.some(page => page !== name);
-}
 
 export default function PlaygroundRenderer(props) {
     const {
@@ -23,22 +14,22 @@ export default function PlaygroundRenderer(props) {
     } = props;
     const { ...rest } = previewProps;
 
-    if (isComponentsPage(name)) {
+    if (isNotComponentPage(name)) {
         return (
-            <div className="rainbow-position_relative rainbow-m-bottom_large">
-                {toolbar}
-                <article {...rest} className="react-rainbow-playground" data-preview={name}>
-                    {preview}
-                </article>
-                <div className="rainbow-flex rainbow-justify_end rainbow-p-vertical_xx-small">{tabButtons}</div>
-                <div>{tabBody}</div>
+            <div className="rainbow-position_relative">
+                {preview}
             </div>
         );
     }
 
     return (
-        <div className="rainbow-position_relative">
-            {preview}
+        <div className="rainbow-position_relative rainbow-m-bottom_large">
+            {toolbar}
+            <article {...rest} className="react-rainbow-playground" data-preview={name}>
+                {preview}
+            </article>
+            <div className="rainbow-flex rainbow-justify_end rainbow-p-vertical_xx-small">{tabButtons}</div>
+            <div>{tabBody}</div>
         </div>
     );
 }

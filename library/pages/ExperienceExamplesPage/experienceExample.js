@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ExperienceExampleCards from '../../../styleguideComponents/ExperienceExampleCards';
+import ExperienceExampleCards from '../../styleguideComponents/ExperienceExampleCards';
 
 export default function ExperienceExample({ response }) {
     if (response && Array.isArray(response.results) && response.results.length) {
