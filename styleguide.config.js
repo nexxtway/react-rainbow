@@ -6,15 +6,16 @@ const dotenv = require('dotenv');
 const version = require("./package.json").version;
 const styles = require('./library/styles');
 
-const env = dotenv.config().parsed;
-
+const env = dotenv.config();
 let envKeys;
 
-if (env) {
-    envKeys = Object.keys(env).reduce((prev, next) => {
-        prev[`process.env.${next}`] = JSON.stringify(env[next]);
+if (env.parsed && !env.error) {
+    envKeys = Object.keys(env.parsed).reduce((prev, next) => {
+        prev[`process.env.${next}`] = JSON.stringify(env.parsed[next]);
         return prev;
     }, {});
+} else {
+    envKeys = {};
 }
 
 module.exports = {
