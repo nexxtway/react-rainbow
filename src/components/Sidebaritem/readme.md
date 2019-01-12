@@ -5,42 +5,12 @@
     const messages = require('../../../assets/icons/messages.svg');
     const charts = require('../../../assets/icons/charts.svg');
     const puzzle = require('../../../assets/icons/puzzle.svg');
-
-    const sidebarContainerStyles ={
+    
+    const sidebarContainerStyles = {
         width: '88px',
         borderBottomLeftRadius: '0.875rem',
-    }
-
-    const DashboardIcon = ()=>{
-        return(
-            <img src={dashboard} />
-        );
-    };
-
-    const ApplicationIcon = ()=>{
-        return(
-            <img src={application} />
-        );
-    };
-
-    const PuzzleIcon = () => {
-        return(
-            <img src={puzzle} />
-        );
-    };
-
-    const MessagesIcon = () => {
-        return(
-            <img src={messages} />
-        );
     };
     
-    const ChartsIcon = () => {
-         return(
-            <img src={charts} />
-        );
-    }
-
     class SimpleSidebar extends React.Component {
         constructor(props) {
             super(props);
@@ -49,54 +19,48 @@
             };
             this.handleOnSelect = this.handleOnSelect.bind(this);
         }
-
+    
         handleOnSelect(e, selectedItem) {
             return this.setState({ selectedItem });
         }
-
+    
         render() {
             const { selectedItem } = this.state;
-
+    
             return (
                 <Sidebar
                     selectedItem={selectedItem}
                     onSelect={this.handleOnSelect}
-                    id="sidebar-1"
-                    >
-
+                    id="sidebar-1">
                     <SidebarItem
-                        icon={<DashboardIcon />}
+                        icon={<img src={dashboard} />}
                         name="Dashboard"
                         label="Dashboard" />
-
                     <SidebarItem
-                        icon={<ApplicationIcon />}
+                        icon={<img src={application} />}
                         name="Aplications"
                         label="Aplications" />
-
                     <SidebarItem
-                        icon={<PuzzleIcon />}
+                        icon={<img src={puzzle} />}
                         name="Components"
                         label="Components" />
                     <SidebarItem
-                        icon={<MessagesIcon />}
+                        icon={<img src={messages} />}
                         name="Messages"
                         label="Messages" />
                     <SidebarItem
-                        icon={<ChartsIcon />}
+                        icon={<img src={charts} />}
                         name="Charts"
                         label="Charts" />
-
                 </Sidebar>
             );
         }
     }
     
     <div>
-      <GlobalHeader src="images/user/user3.jpg" />
-      <div className="rainbow-background-color_white rainbow-p-top_small rainbow-p-bottom_medium"
-      style={sidebarContainerStyles} >
-      <SimpleSidebar />
-      </div>
+        <GlobalHeader src="images/user/user3.jpg" />
+        <div className="rainbow-background-color_white rainbow-p-top_small rainbow-p-bottom_medium"
+          style={sidebarContainerStyles} >
+           <SimpleSidebar />
+        </div>
     </div>
-    
