@@ -21,7 +21,7 @@ class PageSidebarItem {
     }
 
     /**
-     * Return true when the sitebar item is active
+     * Return true when the sidebar item is active
      * @method
      * @returns {bool}
      */

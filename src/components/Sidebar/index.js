@@ -49,7 +49,7 @@ Sidebar.propTypes = {
     /** The id of the outer element. */
     id: PropTypes.string,
     /** The activeColor changes the color of the line that appears when
-     * a SodebarItem is active. */
+     * a SidebarItem is active. */
     activeColor: PropTypes.string,
     /** Name of the nagivation item to make active. */
     selectedItem: PropTypes.node,

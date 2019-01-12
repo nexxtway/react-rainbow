@@ -9,34 +9,30 @@ describe('<SidebarItem />', () => {
     it('should add className rainbow-sidebar-item--active if isSelected ', () => {
         const component = mount(
             <Sidebar selectedItem="item-1">
-             <SidebarItem
-             icon={<FontAwesomeIcon icon={faClock} />}
-             name="item-1"
-             label="item-1"
-            />
-            <SidebarItem
-             icon={<FontAwesomeIcon icon={faCog} />}
-             name="item-2"
-             label="item-2"
-            />
-               <SidebarItem
-               icon={<FontAwesomeIcon icon={faFolderOpen} />}
-             name="item-3"
-             label="item-3"
-            />
+                <SidebarItem
+                    icon={<FontAwesomeIcon icon={faClock} />}
+                    name="item-1"
+                    label="item-1" />
+                <SidebarItem
+                    icon={<FontAwesomeIcon icon={faCog} />}
+                    name="item-2"
+                    label="item-2" />
+                <SidebarItem
+                    icon={<FontAwesomeIcon icon={faFolderOpen} />}
+                    name="item-3"
+                    label="item-3" />
             </Sidebar>,
         );
         expect(component.find('li[className="rainbow-sidebar-item rainbow-sidebar-item--active"]').exists()).toBe(true);
     });
     it('should have aria-current of page if isSelected', () => {
         const component = mount(
-        <Sidebar selectedItem="sidebaritem-test-2">
-        <SidebarItem
-        icon={<FontAwesomeIcon icon={faClock} />}
-        name="sidebaritem-test-2"
-        label="sidebaritem-test-2"
-       />
-       </Sidebar>,
+            <Sidebar selectedItem="sidebaritem-test-2">
+                <SidebarItem
+                    icon={<FontAwesomeIcon icon={faClock} />}
+                    name="sidebaritem-test-2"
+                    label="sidebaritem-test-2" />
+            </Sidebar>,
        );
         expect(component.find('a').prop('aria-current')).toBe('page');
     });
@@ -44,12 +40,11 @@ describe('<SidebarItem />', () => {
         const handleOnClickMockFn = jest.fn();
         const component = mount(
             <Sidebar selectedItem="sidebaritem-test-3">
-            <SidebarItem
-            icon={<FontAwesomeIcon icon={faClock} />}
-            name="sidebaritem-test-3"
-            label="sidebaritem-test-3"
-            onClick={handleOnClickMockFn}
-           />
+                <SidebarItem
+                    icon={<FontAwesomeIcon icon={faClock} />}
+                    name="sidebaritem-test-3"
+                    label="sidebaritem-test-3"
+                    onClick={handleOnClickMockFn} />
            </Sidebar>,
            );
         const sidebarLink = component.find('a');

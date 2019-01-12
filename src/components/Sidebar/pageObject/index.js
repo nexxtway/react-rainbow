@@ -1,4 +1,4 @@
-const PageSidebarItem = require('../../Sidebaritem/pageObject');
+const PageSidebarItem = require('../../SidebarItem/pageObject');
 
 /**
  * Sidebar page object class

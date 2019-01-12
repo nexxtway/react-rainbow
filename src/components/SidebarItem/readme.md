@@ -60,7 +60,7 @@
     <div>
         <GlobalHeader src="images/user/user3.jpg" />
         <div className="rainbow-background-color_white rainbow-p-top_small rainbow-p-bottom_medium"
-          style={sidebarContainerStyles} >
-           <SimpleSidebar />
+            style={sidebarContainerStyles} >
+            <SimpleSidebar />
         </div>
     </div>

@@ -34,7 +34,7 @@ import Rating from './Rating';
 import ReCaptcha from './ReCaptcha';
 import Select from './Select';
 import Sidebar from './Sidebar';
-import SidebarItem from './Sidebaritem';
+import SidebarItem from './SidebarItem';
 import Slider from './Slider';
 import Spinner from './Spinner';
 import Tab from './Tab';
