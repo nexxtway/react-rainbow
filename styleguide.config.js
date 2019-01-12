@@ -8,10 +8,14 @@ const styles = require('./library/styles');
 
 const env = dotenv.config().parsed;
 
-const envKeys = Object.keys(env).reduce((prev, next) => {
-    prev[`process.env.${next}`] = JSON.stringify(env[next]);
-    return prev;
-}, {});
+let envKeys;
+
+if (env) {
+    envKeys = Object.keys(env).reduce((prev, next) => {
+        prev[`process.env.${next}`] = JSON.stringify(env[next]);
+        return prev;
+    }, {});
+}
 
 module.exports = {
     ignore: ['**/__tests__/**', '/node_modules/**'],
