@@ -33,9 +33,9 @@ function Item(props) {
         return undefined;
     };
 
-    function hanldeOnClick(e) {
-        onClick(e);
-        onSelect(e, name);
+    function hanldeOnClick(event) {
+        onClick(event);
+        onSelect(event, name);
     }
 
     return (
