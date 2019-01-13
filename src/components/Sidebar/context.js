@@ -1,3 +1,20 @@
 import React from 'react';
 
-export const { Provider, Consumer } = React.createContext();
+const { Provider, Consumer } = React.createContext();
+
+function withContext(Component) {
+    return props => (
+            <Consumer>
+                {context => (
+                    <Component
+                        {...props}
+                        {...context} />
+                )}
+            </Consumer>
+        );
+}
+
+export {
+    Provider,
+    withContext,
+};

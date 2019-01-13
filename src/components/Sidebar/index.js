@@ -17,14 +17,12 @@ export default function Sidebar(props) {
         onSelect,
         className,
         children,
-        activeColor,
         id,
     } = props;
 
     const context = {
         selectedItem,
         onSelect,
-        activeColor,
     };
 
     const getClassNames = () => classnames('rainbow-sidebar', className);
@@ -48,9 +46,6 @@ export default function Sidebar(props) {
 Sidebar.propTypes = {
     /** The id of the outer element. */
     id: PropTypes.string,
-    /** The activeColor changes the color of the line that appears when
-     * a SidebarItem is active. */
-    activeColor: PropTypes.string,
     /** Name of the nagivation item to make active. */
     selectedItem: PropTypes.node,
     /** Action fired when an item is selected.
@@ -70,7 +65,6 @@ Sidebar.propTypes = {
 };
 
 Sidebar.defaultProps = {
-    activeColor: '#01b6f5',
     selectedItem: null,
     onSelect: () => {},
     ariaLabel: undefined,

@@ -2,11 +2,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { Consumer as NavigationConsumer } from '../Sidebar/context';
+import { withContext } from '../Sidebar/context';
 import RenderIf from '../RenderIf';
 import './styles.css';
 
-function Item(props) {
+/**
+ * @category Layout
+ */
+function SidebarItem(props) {
     const {
         label,
         icon,
@@ -17,10 +20,8 @@ function Item(props) {
         style,
         selectedItem,
         onSelect,
-        activeColor,
     } = props;
     const isSelected = name === selectedItem;
-    const activeLineStyles = { backgroundColor: activeColor };
 
     const getContainerClassNames = () => classnames('rainbow-sidebar-item', {
         'rainbow-sidebar-item--active': isSelected,
@@ -40,9 +41,6 @@ function Item(props) {
 
     return (
         <li className={getContainerClassNames()} style={style}>
-            <RenderIf isTrue={isSelected}>
-                <div className="rainbow-sidebar-item-line--active" style={activeLineStyles} />
-            </RenderIf>
             <a
                 href={href}
                 onClick={hanldeOnClick}
@@ -54,21 +52,6 @@ function Item(props) {
                 </RenderIf>
             </a>
         </li>
-    );
-}
-
-/**
- * @category Layout
- */
-export default function SidebarItem(props) {
-    return (
-        <NavigationConsumer>
-            {context => (
-                <Item
-                    {...props}
-                    {...context} />
-            )}
-        </NavigationConsumer>
     );
 }
 
@@ -98,3 +81,5 @@ SidebarItem.defaultProps = {
     className: undefined,
     style: undefined,
 };
+
+export default withContext(SidebarItem);

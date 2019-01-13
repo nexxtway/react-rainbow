@@ -22,7 +22,8 @@
 .rainbow-sidebar-item:last-child {
   margin-bottom: 0; }
 
-.rainbow-sidebar-item-line--active {
+.rainbow-sidebar-item--active::before {
+  content: "";
   width: 0.25rem;
   right: 0;
   top: 0;
