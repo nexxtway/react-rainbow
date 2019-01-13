@@ -11,4 +11,4 @@ global.FeatureList = FeatureList;
 global.ExperienceExamplesPage = ExperienceExamplesPage;
 global.GettingStartedPage = GettingStartedPage;
 global.DesignsPage = DesignsPage;
-global.REACT_APP_GOOGLE_MAPS_APIKEY = process.env.REACT_APP_GOOGLE_MAPS_APIKEY;
+global.LIBRARY_GOOGLE_MAPS_APIKEY = process.env.REACT_APP_GOOGLE_MAPS_APIKEY;
