@@ -2,11 +2,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { Consumer as NavigationConsumer } from './context';
-import RenderIf from '../../../src/components/RenderIf';
+import { withContext } from '../Sidebar/context';
+import RenderIf from '../RenderIf';
 import './styles.css';
 
-function Item(props) {
+/**
+ * @category Layout
+ */
+function SidebarItem(props) {
     const {
         label,
         icon,
@@ -31,9 +34,9 @@ function Item(props) {
         return undefined;
     };
 
-    function hanldeOnClick(e) {
-        onClick(e);
-        onSelect(e, name);
+    function hanldeOnClick(event) {
+        onClick(event);
+        onSelect(event, name);
     }
 
     return (
@@ -52,27 +55,22 @@ function Item(props) {
     );
 }
 
-export default function SidebarItem(props) {
-    return (
-        <NavigationConsumer>
-            {context => (
-                <Item
-                    {...props}
-                    {...context} />
-            )}
-        </NavigationConsumer>
-    );
-}
-
 SidebarItem.propTypes = {
+    /** A unique identifier for the navigation item. */
+    name: PropTypes.string.isRequired,
+    /** The text to show if it is passed. The text displayed for the SidebarItem. */
     label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
-    name: PropTypes.string.isRequired,
+    /** The icon displayed for the SidebarItem. It must be a svg icon or a font icon. */
     icon: PropTypes.node.isRequired,
+    /** The URL of the page that the navigation item goes to. */
     href: PropTypes.string,
+    /** Event fired when the item is clicked. */
     onClick: PropTypes.func,
+    /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
+    /** An object with custom style applied for the outer element. */
     style: PropTypes.object,
 };
 
@@ -83,3 +81,5 @@ SidebarItem.defaultProps = {
     className: undefined,
     style: undefined,
 };
+
+export default withContext(SidebarItem);
