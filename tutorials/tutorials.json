@@ -34,5 +34,8 @@
     },
     "carouselCard": {
         "title": "CarouselCard page object"
+    },
+    "sidebar": {
+        "title": "Sidebar page object"
     }
 }
