@@ -61,8 +61,8 @@
             <Column header="Email" field="email" />
         </Table>
     </div>
-    
-    
+
+
 ##### Table with sorting
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
@@ -74,11 +74,11 @@
         faBell,
         faEllipsisV,
     } = require('@fortawesome/free-solid-svg-icons');
-    
+
     const badgeStyles = { color: '#1de9b6' };
-    
+
     const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
-    
+
     class TableExample extends React.Component {
         constructor(props) {
             super(props);
@@ -89,39 +89,39 @@
                     {
                         name: 'Leandro Torres',
                         company: '90milesbridge',
-                        email: 'leandro@gmail.com',
+                        email: 'a@gmail.com',
                         status: 'verified',
                     },
                     {
                         name: 'Reinier',
                         company: '90milesbridge',
-                        email: 'reinier@gmail.com',
+                        email: 'b@gmail.com',
                         status: 'verified',
                     },
                     {
                         name: 'Jose Torres',
                         company: 'Google',
-                        email: 'jose@gmail.com',
+                        email: 'e@gmail.com',
                         status: 'verified',
                     },
                     {
                         name: 'Sara',
                         company: '90milesbridge',
-                        email: 'sara@gmail.com',
+                        email: 'c@gmail.com',
                         status: 'verified',
                     },
                     {
                         name: 'Tahimi',
                         company: '90milesbridge',
-                        email: 'tahimi@gmail.com',
+                        email: 'd@gmail.com',
                         status: 'verified',
                     },
                 ],
             };
             this.handleOnSort = this.handleOnSort.bind(this);
         }
-    
-        handleOnSort(event, field) {
+
+        handleOnSort(event, field, nextSortDirection) {
             const { data, sortedBy, sortDirection } = this.state;
             let newSortDirection;
             if (field === sortedBy) {
@@ -133,15 +133,21 @@
             } else {
                 newSortDirection = 'asc';
             }
-            const sortedData = data.sort((a, b) => {
-                if (newSortDirection === 'asc') {
-                    return a[field] > b[field];
-                }
-                return a[field] < b[field];
+
+            let newData = [...data];
+
+            const key = (x) => x[field];
+            const reverse = newSortDirection === 'asc' ? 1 : -1;;
+
+            const sortedData = newData.sort((a, b) => {
+                a = key(a);
+                b = key(b);
+                return reverse * ((a > b) - (b > a));
             });
+
             this.setState({ data: sortedData, sortedBy: field, sortDirection: newSortDirection });
         }
-    
+
         render() {
             const { data, sortDirection } = this.state;
             return (
@@ -162,5 +168,5 @@
             );
         }
     }
-    
+
     <TableExample />
