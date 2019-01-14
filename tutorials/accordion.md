@@ -2,9 +2,8 @@ Here is an overview about how to use the Accordion page object:
 
     const PageAccordion = require('react-rainbow-components/components/Accordion/pageObject');
 
-    const { ARROW_LEFT_KEY } = require('react-rainbow-components/integration/constants');
-
     const ACCORDION = '#accordion-1';
+    const ARROW_LEFT_KEY = '\uE012';
 
     describe('Accordion page object basic usage', () => {
         beforeEach(() => {

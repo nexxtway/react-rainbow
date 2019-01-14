@@ -1,4 +1,5 @@
 Here is an overview about how to use the Tabset page object:
+
     const PageTabset = require('react-rainbow-components/components/Tabset/pageObject');
 
     const TABSET = '#tabset-1';
