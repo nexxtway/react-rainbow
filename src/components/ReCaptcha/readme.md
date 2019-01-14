@@ -137,7 +137,7 @@ ReCaptcha base:
                             className="rainbow-m-vertical_large" />
                         <div className="rainbow-flex rainbow-align-content_space-between">
                             <ReCaptcha
-                                value="6LdV7HUUAAAAAEilnevmAITXH2F2aS-W3200nJH1"
+                                value={LIBRARY_RECAPTCHA_APIKEY}
                                 error={recaptchaError}
                                 onChange={this.handleReCaptchaSuccess} />
                             <Button label="Send" variant="brand" type="submit" />
@@ -290,7 +290,7 @@ ReCaptcha dark:
                         <div className="rainbow-flex rainbow-align-content_space-between">
                             <ReCaptcha
                                 theme="dark"
-                                value="6LdV7HUUAAAAAEilnevmAITXH2F2aS-W3200nJH1"
+                                value={LIBRARY_RECAPTCHA_APIKEY}
                                 error={recaptchaError}
                                 onChange={this.handleReCaptchaSuccess} />
                             <Button label="Send" variant="brand" type="submit" />

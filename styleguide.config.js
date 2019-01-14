@@ -6,16 +6,17 @@ const dotenv = require('dotenv');
 const version = require("./package.json").version;
 const styles = require('./library/styles');
 
-const env = dotenv.config();
 let envKeys;
 
-if (env.parsed && !env.error) {
-    envKeys = Object.keys(env.parsed).reduce((prev, next) => {
-        prev[`process.env.${next}`] = JSON.stringify(env.parsed[next]);
-        return prev;
-    }, {});
-} else {
-    envKeys = {};
+if (process.env.NODE_ENV !== 'production') {
+    const env = dotenv.config();
+
+    if (env.parsed && !env.error) {
+        envKeys = Object.keys(env.parsed).reduce((prev, next) => {
+            prev[`process.env.${next}`] = JSON.stringify(env.parsed[next]);
+            return prev;
+        }, {});
+    }
 }
 
 module.exports = {
@@ -146,7 +147,7 @@ module.exports = {
             new CopyWebpackPlugin([
                 { from: './assets/' },
             ]),
-            new webpack.DefinePlugin(envKeys),
+            envKeys ? new webpack.DefinePlugin(envKeys): undefined,
         ],
     },
 };
