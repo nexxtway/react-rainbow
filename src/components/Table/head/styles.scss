@@ -3,29 +3,38 @@
 @import "../../../styles/font-sizes";
 @import "../../../styles/paddings";
 
-.rainbow-table_header-content-wrapper {
+.rainbow-table_header-wrapper {
     height: 100%;
-    padding-left: $padding-x-small;
+    display: flex;
+}
+
+.rainbow-table_header-container {
+    height: 100%;
+    padding: 0 $padding-x-small;
     border: 1px transparent solid;
     display: flex;
     align-items: center;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    flex: 1;
+}
+
+th:first-of-type .rainbow-table_header-container {
+    padding-left: 18px;
 }
 
 .rainbow-table_header-content {
     overflow: hidden;
     text-overflow: ellipsis;
+    flex: 1;
 }
 
 .rainbow-table_header-resize-bar {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
+    height: 100%;
     width: 3px;
     border-radius: 100px;
+    margin-left: -1px;
     background-color: transparent;
     will-change: transform;
     z-index: 5000;
@@ -49,8 +58,7 @@
     background-color: transparent;
     width: 1px;
     position: absolute;
-    right: 1px;
-    left: 1px;
+    right: 0;
 
     &:hover {
         background-color: $color-brand;
@@ -78,26 +86,45 @@
     cursor: pointer;
 
     &:hover {
-        .rainbow-table_header-content-wrapper {
+        .rainbow-table_header-wrapper {
             background-color: #fff;
         }
 
         .rainbow-table_header-resize-bar {
             background-color: $color-gray-2;
         }
+
+        .rainbow-table_header-container {
+            border-color: $color-gray-2;
+            border-right-color: transparent;
+        }
+
+        .rainbow-table_header-arrow {
+            visibility: visible;
+        }
     }
 }
 
 .rainbow-table_header--selected {
-    color: $color-brand;
-
-    .rainbow-table_header-content-wrapper {
+    .rainbow-table_header-container {
         background-color: #fff;
         border-color: $color-brand;
     }
 
+    .rainbow-table_header-content {
+        color: $color-brand;
+    }
+
+    .rainbow-table_header-arrow {
+        visibility: visible;
+    }
+
     .rainbow-table_header-resize-bar, &:hover .rainbow-table_header-resize-bar {
         background-color: $color-brand;
+    }
+
+    &:hover .rainbow-table_header-container {
+        border-color: $color-brand;
     }
 }
 
@@ -119,7 +146,7 @@
 }
 
 .rainbow-table_header-arrow {
-    margin-left: 4px;
+    visibility: hidden;
 }
 
 .rainbow-table_header-arrow--asc {

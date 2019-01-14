@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 @import "../../../styles/colors";
 @import "../../../styles/font-sizes";
 @import "../../../styles/paddings";
@@ -6,7 +7,17 @@
     box-shadow: 0 1px 0 0 #e3e5ed;
 }
 
-.rainbow-table_cell {
+.rainbow-table_cell-container:focus {
+    outline: none;
+
+    .rainbow-table_cell-content {
+        border-color: $color-brand;
+    }
+}
+
+.rainbow-table_cell-content {
+    display: flex;
+    align-items: center;
     font-size: $font-size-text-medium;
     color: $color-gray-4;
     height: 40px;
@@ -15,13 +26,9 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    border: 1px solid transparent;
 }
 
-.rainbow-table_cell:focus {
-    border: 1px solid $color-brand;
-    outline: none;
-}
-
-.rainbow-table_cell:first-of-type {
+th:first-of-type .rainbow-table_cell-content {
     padding-left: 18px;
 }
