@@ -20,6 +20,10 @@
     flex: 1;
 }
 
+th:first-of-type .rainbow-table_header-container {
+    padding-left: 18px;
+}
+
 .rainbow-table_header-content {
     overflow: hidden;
     text-overflow: ellipsis;
