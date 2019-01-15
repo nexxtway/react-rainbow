@@ -1,0 +1,31 @@
+.react-rainbow-donwload-button_anchor {
+    margin-right: 32px;
+    box-shadow: 0 0 2px 0 #e3e5ed;
+    border-radius: 100%;
+    position: relative;
+}
+
+.react-rainbow-donwload-button_button--hover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    height: 48px;
+    width: 48px;
+    border-radius: 100%;
+    position: absolute;
+    top: -14px;
+    left: 0;
+}
+
+.react-rainbow-donwload-button_button--hover:hover {
+    background-color: rgba(6, 28, 63, 0.5);
+}
+
+.react-rainbow-donwload-button_icon {
+    width: 0;
+}
+
+.react-rainbow-donwload-button_button--hover:hover > .react-rainbow-donwload-button_icon {
+    width: auto;
+}

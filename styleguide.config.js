@@ -85,15 +85,15 @@ module.exports = {
             sections: [
                 {
                     name: 'RainbowComponents',
-                    content: 'library/pages/rainbowComponentsDesigns.md',
+                    content: 'library/pages/Designs/rainbowComponents.md',
                 },
                 {
                     name: 'Admin',
-                    content: 'library/pages/adminDesigns.md',
+                    content: 'library/pages/Designs/admin.md',
                 },
                 {
                     name: 'Authentication',
-                    content: 'library/pages/authenticationDesigns.md',
+                    content: 'library/pages/Designs/authentication.md',
                 },
             ],
         },
@@ -123,7 +123,7 @@ module.exports = {
                     },
                 },
                 {
-                    test: /\.svg$/,
+                    test: /\.(svg|png)$/,
                     loader: 'file-loader',
                 },
             ],

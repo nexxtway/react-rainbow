@@ -1,1 +1,1 @@
-    <DesignsPage />
+    <Designs />

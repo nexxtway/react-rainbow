@@ -3,7 +3,7 @@ const pages = [
     'Experiences',
     'Designs',
     'Admin',
-    'Authetication',
+    'Authentication',
     'RainbowComponents',
 ];
 
