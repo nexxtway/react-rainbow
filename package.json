@@ -89,6 +89,7 @@
         "copy-webpack-plugin": "^4.0.1",
         "coveralls": "^2.13.1",
         "css-loader": "^0.26.0",
+        "dotenv": "^6.2.0",
         "enzyme": "^3.3.0",
         "enzyme-adapter-react-16": "^1.1.1",
         "eslint": "^3.19.0",
@@ -112,6 +113,8 @@
         "pre-push": "^0.1.1",
         "react-codemirror2": "^5.1.0",
         "react-dom": "^16.4.2",
+        "react-ga": "^2.5.3",
+        "react-prismic-cms": "^0.2.0",
         "react-redux": "^5.1.0",
         "react-styleguidist": "^7.2.1",
         "react-test-renderer": "^16.4.2",
@@ -128,9 +131,7 @@
         "wdio-selenium-standalone-service": "0.0.10",
         "wdio-spec-reporter": "^0.1.5",
         "webdriverio": "^4.13.2",
-        "webpack": "^4.16.5",
-        "react-ga": "^2.5.3",
-        "react-prismic-cms": "^0.2.0"
+        "webpack": "^4.16.5"
     },
     "pre-push": [
         "lint",

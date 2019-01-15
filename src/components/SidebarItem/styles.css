@@ -1,7 +1,13 @@
-.rainbow-sidebar {
-  position: relative; }
+.rainbow-sidebar-item_icon {
+  height: 32px;
+  width: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%; }
 
-.rainbow-sidebar-item--active .rainbow-sidebar-item_icon, .rainbow-sidebar-item_action:hover .rainbow-sidebar-item_icon,
+.rainbow-sidebar-item--active .rainbow-sidebar-item_icon,
+.rainbow-sidebar-item_action:hover .rainbow-sidebar-item_icon,
 .rainbow-sidebar-item_action:active .rainbow-sidebar-item_icon,
 .rainbow-sidebar-item_action:focus .rainbow-sidebar-item_icon {
   background-color: #e3e5ed;
@@ -43,17 +49,8 @@
   text-align: center;
   color: #a4a7b5; }
 
-.rainbow-sidebar-item_icon {
-  height: 32px;
-  width: 32px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 100%; }
-
 .rainbow-sidebar-item_action:hover,
 .rainbow-sidebar-item_action:active,
 .rainbow-sidebar-item_action:focus {
   text-decoration: none;
   outline: 0; }
-  

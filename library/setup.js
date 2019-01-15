@@ -17,3 +17,5 @@ global.Designs = Designs;
 global.RainbowComponents = RainbowComponents;
 global.Administration = Administration;
 global.Authentication = Authentication;
+global.LIBRARY_GOOGLE_MAPS_APIKEY = process.env.REACT_APP_GOOGLE_MAPS_APIKEY;
+global.LIBRARY_RECAPTCHA_APIKEY = process.env.REACT_APP_RECAPTCHA_APIKEY;

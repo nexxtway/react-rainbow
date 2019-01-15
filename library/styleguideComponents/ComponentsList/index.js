@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Sidebar from '../Sidebar';
-import SidebarItem from '../Sidebar/sidebarItem';
+import Sidebar from '../../../src/components/Sidebar';
+import SidebarItem from '../../../src/components/SidebarItem';
 import ExperiencesIcon from './icons/experiencesIcon';
 import PuzzleIcon from './icons/puzzleIcon';
 import StartupIcon from './icons/startupIcon';

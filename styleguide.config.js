@@ -1,8 +1,22 @@
 /* eslint-disable */
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack');
+const dotenv = require('dotenv');
 const version = require("./package.json").version;
 const styles = require('./library/styles');
+
+const env = dotenv.config();
+let envKeys;
+
+if (env.parsed && !env.error) {
+    envKeys = Object.keys(env.parsed).reduce((prev, next) => {
+        prev[`process.env.${next}`] = JSON.stringify(env.parsed[next]);
+        return prev;
+    }, {});
+} else {
+    envKeys = {};
+}
 
 module.exports = {
     ignore: ['**/__tests__/**', '/node_modules/**'],
@@ -132,6 +146,7 @@ module.exports = {
             new CopyWebpackPlugin([
                 { from: './assets/' },
             ]),
+            new webpack.DefinePlugin(envKeys),
         ],
     },
 };

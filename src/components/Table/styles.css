@@ -1,6 +1,6 @@
 /* stylelint-disable no-descending-specificity */
 .rainbow-table-wrapper {
-  overflow: hidden; }
+  overflow-x: auto; }
 
 .rainbow-table {
   table-layout: fixed; }
