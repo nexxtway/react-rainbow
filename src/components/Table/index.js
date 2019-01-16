@@ -5,6 +5,7 @@ import resolveColumns from './resolve-columns';
 import Body from './body';
 import Head from './head';
 import './styles.css';
+import { uniqueId } from '../../libs/utils';
 
 /**
  * Data tables display information in a way that’s easy to scan,
@@ -18,7 +19,6 @@ export default class Table extends Component {
         this.onColumnResize = this.onColumnResize.bind(this);
         this.state = {
             columns: resolveColumns(props.children),
-            selectedColumn: undefined,
             tableWidth: undefined,
         };
         this.columnsWidths = this.state.columns.map((col) => {
@@ -27,10 +27,11 @@ export default class Table extends Component {
             }
             return col.defaultWidth;
         });
+        this.tableId = uniqueId('table');
     }
 
     componentDidMount() {
-        this.initialWidthRenderCompleted();
+        this.initialRenderCompleted();
     }
 
     componentDidUpdate({ children: prevChildren }) {
@@ -65,9 +66,13 @@ export default class Table extends Component {
         this.setState({ tableWidth: width });
     }
 
-    initialWidthRenderCompleted() {
+    initialRenderCompleted() {
         const { tableWidth } = this.state;
         if (tableWidth === undefined) {
+            const fakeHeaders = document.querySelectorAll(`th[data-id="${this.tableId}-fake-header"]`);
+            fakeHeaders.forEach((header, index) => {
+                this.columnsWidths[index] = header.getBoundingClientRect().width;
+            });
             this.setTableWidth();
         }
     }
@@ -79,48 +84,70 @@ export default class Table extends Component {
     }
 
     handleColumnSelect(event, columnIndex) {
-        const { onSort } = this.props;
+        const { onSort, sortBy, sortDirection } = this.props;
         const { columns } = this.state;
         const { field } = columns[columnIndex];
-        onSort(event, field);
-        this.setState({ selectedColumn: columnIndex });
+        let newSortDirection;
+        if (field === sortBy) {
+            if (sortDirection === 'asc') {
+                newSortDirection = 'desc';
+            } else {
+                newSortDirection = 'asc';
+            }
+        } else {
+            newSortDirection = 'asc';
+        }
+        onSort(event, field, newSortDirection);
     }
 
     render() {
         const {
             data,
             sortDirection,
+            defaultSortDirection,
             resizeColumnDisabled,
             minColumnWidth,
             maxColumnWidth,
             style,
         } = this.props;
-        const { columns, selectedColumn, tableWidth } = this.state;
+        const { columns, sortBy, tableWidth } = this.state;
         const tableStyles = { width: tableWidth };
         const resizeGuideLineHeight = (data.length * 40) + 44;
+        const fakeHeaders = this.columnsWidths.map((colWidth, index) => {
+            const headerStyle = { width: colWidth };
+            const id = `${this.tableId}-fake-header`;
+            const key = `${id}-${index}`;
+            return <th style={headerStyle} key={key} data-id={id} />;
+        });
 
         return (
             <div className={this.getContainerClassNames()} style={style}>
-                <table className="rainbow-table" style={tableStyles}>
-                    <thead className="rainbow-table_head">
-                        <tr className="rainbow-table_header-row">
-                            <Head
-                                columns={columns}
-                                columnsWidths={this.columnsWidths}
-                                selectedColumn={selectedColumn}
-                                sortDirection={sortDirection}
-                                resizeColumnDisabled={resizeColumnDisabled}
-                                minColumnWidth={minColumnWidth}
-                                maxColumnWidth={maxColumnWidth}
-                                onColumnSelect={this.handleColumnSelect}
-                                onResize={this.onColumnResize}
-                                resizeGuideLineHeight={resizeGuideLineHeight} />
-                        </tr>
-                    </thead>
-                    <tbody className="rainbow-table_body">
-                        <Body data={data} columns={columns} />
-                    </tbody>
-                </table>
+                <div className="rainbow-table_fixed-header" style={tableStyles}>
+                    <Head
+                        columns={columns}
+                        columnsWidths={this.columnsWidths}
+                        selectedColumn={sortBy}
+                        sortDirection={sortDirection}
+                        defaultSortDirection={defaultSortDirection}
+                        resizeColumnDisabled={resizeColumnDisabled}
+                        minColumnWidth={minColumnWidth}
+                        maxColumnWidth={maxColumnWidth}
+                        onColumnSelect={this.handleColumnSelect}
+                        onResize={this.onColumnResize}
+                        resizeGuideLineHeight={resizeGuideLineHeight} />
+                </div>
+               <div className="rainbow-table-container" style={tableStyles}>
+                   <table className="rainbow-table" style={tableStyles}>
+                       <thead className="rainbow-table_head">
+                       <tr className="rainbow-table_header-row">
+                           {fakeHeaders}
+                       </tr>
+                       </thead>
+                       <tbody className="rainbow-table_body">
+                       <Body data={data} columns={columns} />
+                       </tbody>
+                   </table>
+               </div>
             </div>
         );
     }
@@ -129,11 +156,19 @@ export default class Table extends Component {
 Table.propTypes = {
     /** An array containing the objects(rows) to be displayed. */
     data: PropTypes.arrayOf(Object).isRequired,
+    /** The column fieldName that controls the sorting order.
+     * Sort the data using the onsort event handler. */
+    sortBy: PropTypes.string,
     /**
      * Specifies the sorting direction, valid options are 'asc' or 'desc'.
      */
     sortDirection: PropTypes.oneOf(['asc', 'desc']),
-    /** Action triggered when a column header is clicked */
+    /** Specifies the default sorting direction on an unsorted column.
+     * Valid options include 'asc' and 'desc'.
+     * The default is 'asc' for sorting in ascending order. */
+    defaultSortDirection: PropTypes.oneOf(['asc', 'desc']),
+    /** Action triggered when a column is sorted.
+     * Receive the event object, field and sortDirection. */
     onSort: PropTypes.func,
     /** Specifies whether column resizing is disabled. The default is false. */
     resizeColumnDisabled: PropTypes.bool,
@@ -153,7 +188,9 @@ Table.propTypes = {
 };
 
 Table.defaultProps = {
-    sortDirection: 'asc',
+    sortBy: undefined,
+    sortDirection: undefined,
+    defaultSortDirection: 'asc',
     onSort: () => {},
     resizeColumnDisabled: false,
     minColumnWidth: 50,

@@ -21,7 +21,7 @@ describe('<Table />', () => {
             </Table>,
         );
 
-        const header = component.find('th.rainbow-table_header');
+        const header = component.find('div.rainbow-table_header');
         const cell = component.find('th .rainbow-table_cell-content');
 
         expect(header.text()).toBe('Name');

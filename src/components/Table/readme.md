@@ -123,21 +123,11 @@
 
         handleOnSort(event, field, nextSortDirection) {
             const { data, sortedBy, sortDirection } = this.state;
-            let newSortDirection;
-            if (field === sortedBy) {
-                if (sortDirection === 'asc') {
-                    newSortDirection = 'desc';
-                } else {
-                    newSortDirection = 'asc';
-                }
-            } else {
-                newSortDirection = 'asc';
-            }
 
             let newData = [...data];
 
             const key = (x) => x[field];
-            const reverse = newSortDirection === 'asc' ? 1 : -1;;
+            const reverse = nextSortDirection === 'asc' ? 1 : -1;;
 
             const sortedData = newData.sort((a, b) => {
                 a = key(a);
@@ -145,7 +135,7 @@
                 return reverse * ((a > b) - (b > a));
             });
 
-            this.setState({ data: sortedData, sortedBy: field, sortDirection: newSortDirection });
+            this.setState({ data: sortedData, sortedBy: field, sortDirection: nextSortDirection });
         }
 
         render() {

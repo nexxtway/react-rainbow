@@ -1,4 +1,3 @@
-/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Header from './header';
@@ -9,6 +8,7 @@ export default function Head(props) {
         columns,
         selectedColumn,
         sortDirection,
+        defaultSortDirection,
         onColumnSelect,
         resizeColumnDisabled,
         minColumnWidth,
@@ -30,20 +30,34 @@ export default function Head(props) {
         return width;
     };
 
+    const resolveSortDirection = (isSelected) => {
+        if (isSelected) {
+            return sortDirection;
+        }
+        return defaultSortDirection;
+    };
+
+    const isSelected = (field) => {
+        if (field) {
+            return field === selectedColumn;
+        }
+        return false;
+    };
+
     if (columns) {
         return columns.map((column, index) => {
-            const { header, sortable, width, defaultWidth } = column;
-            const isSelected = index === selectedColumn;
+            const { header, field, sortable, width, defaultWidth } = column;
             const innerWidth = columnsWidths[index];
+            const key = `header-${index}`;
             return (
                 <Header
-                    key={`header-${index}`}
+                    key={key}
                     content={header}
                     sortable={sortable}
-                    sortDirection={sortDirection}
+                    sortDirection={resolveSortDirection(isSelected(field))}
                     onColumnSelect={onColumnSelect}
                     onResize={onResize}
-                    isSelected={isSelected}
+                    isSelected={isSelected(field)}
                     isResizable={isResizable(width)}
                     width={getColumnWidth(width, defaultWidth, innerWidth)}
                     minColumnWidth={minColumnWidth}
@@ -60,6 +74,7 @@ Head.propTypes = {
     columns: PropTypes.array,
     columnsWidths: PropTypes.array,
     sortDirection: PropTypes.string,
+    defaultSortDirection: PropTypes.string,
     onColumnSelect: PropTypes.func,
     selectedColumn: PropTypes.number,
     resizeColumnDisabled: PropTypes.bool,
@@ -72,7 +87,8 @@ Head.propTypes = {
 Head.defaultProps = {
     columns: undefined,
     columnsWidths: undefined,
-    sortDirection: 'asc',
+    sortDirection: undefined,
+    defaultSortDirection: 'asc',
     onColumnSelect: () => {},
     selectedColumn: undefined,
     resizeColumnDisabled: false,
