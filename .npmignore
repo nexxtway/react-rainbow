@@ -4,3 +4,4 @@ library
 styleguide
 assets
 integration
+.env

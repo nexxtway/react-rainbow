@@ -87,6 +87,14 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
+      - run:
+          name: Create .env file
+          command: |
+            touch .env;
+            echo REACT_APP_GA_ID=$REACT_APP_GA_ID >> .env;
+            echo REACT_APP_GOOGLE_MAPS_APIKEY=$REACT_APP_GOOGLE_MAPS_APIKEY >> .env;
+            echo REACT_APP_RECAPTCHA_APIKEY=$REACT_APP_RECAPTCHA_APIKEY >> .env;
+
       - run: yarn install
       - run: yarn deploy:library --token=$FIREBASE_TOKEN
 
