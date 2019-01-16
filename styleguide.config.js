@@ -109,6 +109,10 @@ module.exports = {
                     name: 'Authentication',
                     content: 'library/pages/Designs/authentication.md',
                 },
+                {
+                    name: 'Chat',
+                    content: 'library/pages/Designs/chat.md',
+                },
             ],
         },
     ],
