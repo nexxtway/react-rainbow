@@ -21,13 +21,13 @@ export default function Head(props) {
     const isResizable = columnWidth => !resizeColumnDisabled && columnWidth === undefined;
 
     const getColumnWidth = (width, defaultWidth, innerWidth) => {
-        if (width === undefined) {
+        if (innerWidth === undefined) {
             if (defaultWidth === undefined) {
-                return innerWidth;
+                return width;
             }
             return defaultWidth;
         }
-        return width;
+        return innerWidth;
     };
 
     const resolveSortDirection = (isSelected) => {
