@@ -2,7 +2,8 @@
 .rainbow-table-wrapper {
   position: relative;
   overflow-x: auto;
-  overflow-y: hidden; }
+  overflow-y: hidden;
+  height: 100%; }
 
 .rainbow-table {
   table-layout: fixed; }

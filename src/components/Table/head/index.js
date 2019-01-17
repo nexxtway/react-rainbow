@@ -3,6 +3,16 @@ import PropTypes from 'prop-types';
 import Header from './header';
 import './styles.css';
 
+function getColumnWidth(width, defaultWidth, innerWidth) {
+    if (innerWidth === undefined) {
+        if (defaultWidth === undefined) {
+            return width;
+        }
+        return defaultWidth;
+    }
+    return innerWidth;
+}
+
 export default function Head(props) {
     const {
         columns,
@@ -19,16 +29,6 @@ export default function Head(props) {
     } = props;
 
     const isResizable = columnWidth => !resizeColumnDisabled && columnWidth === undefined;
-
-    const getColumnWidth = (width, defaultWidth, innerWidth) => {
-        if (innerWidth === undefined) {
-            if (defaultWidth === undefined) {
-                return width;
-            }
-            return defaultWidth;
-        }
-        return innerWidth;
-    };
 
     const resolveSortDirection = (isSelected) => {
         if (isSelected) {
@@ -76,7 +76,7 @@ Head.propTypes = {
     sortDirection: PropTypes.string,
     defaultSortDirection: PropTypes.string,
     onColumnSelect: PropTypes.func,
-    selectedColumn: PropTypes.number,
+    selectedColumn: PropTypes.string,
     resizeColumnDisabled: PropTypes.bool,
     minColumnWidth: PropTypes.number,
     maxColumnWidth: PropTypes.number,

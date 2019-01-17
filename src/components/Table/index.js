@@ -84,25 +84,26 @@ export default class Table extends Component {
     }
 
     handleColumnSelect(event, columnIndex) {
-        const { onSort, sortBy, sortDirection } = this.props;
+        const { onSort, sortedBy, sortDirection } = this.props;
         const { columns } = this.state;
         const { field } = columns[columnIndex];
-        let newSortDirection;
-        if (field === sortBy) {
+        let nextSortDirection;
+        if (field === sortedBy) {
             if (sortDirection === 'asc') {
-                newSortDirection = 'desc';
+                nextSortDirection = 'desc';
             } else {
-                newSortDirection = 'asc';
+                nextSortDirection = 'asc';
             }
         } else {
-            newSortDirection = 'asc';
+            nextSortDirection = 'asc';
         }
-        onSort(event, field, newSortDirection);
+        onSort(event, field, nextSortDirection);
     }
 
     render() {
         const {
             data,
+            sortedBy,
             sortDirection,
             defaultSortDirection,
             resizeColumnDisabled,
@@ -110,7 +111,7 @@ export default class Table extends Component {
             maxColumnWidth,
             style,
         } = this.props;
-        const { columns, sortBy, tableWidth } = this.state;
+        const { columns, tableWidth } = this.state;
         const tableStyles = { width: tableWidth };
         const resizeGuideLineHeight = (data.length * 40) + 44;
         const fakeHeaders = this.columnsWidths.map((colWidth, index) => {
@@ -126,7 +127,7 @@ export default class Table extends Component {
                     <Head
                         columns={columns}
                         columnsWidths={this.columnsWidths}
-                        selectedColumn={sortBy}
+                        selectedColumn={sortedBy}
                         sortDirection={sortDirection}
                         defaultSortDirection={defaultSortDirection}
                         resizeColumnDisabled={resizeColumnDisabled}
@@ -158,7 +159,7 @@ Table.propTypes = {
     data: PropTypes.arrayOf(Object).isRequired,
     /** The column fieldName that controls the sorting order.
      * Sort the data using the onsort event handler. */
-    sortBy: PropTypes.string,
+    sortedBy: PropTypes.string,
     /**
      * Specifies the sorting direction, valid options are 'asc' or 'desc'.
      */
@@ -188,7 +189,7 @@ Table.propTypes = {
 };
 
 Table.defaultProps = {
-    sortBy: undefined,
+    sortedBy: undefined,
     sortDirection: undefined,
     defaultSortDirection: 'asc',
     onSort: () => {},

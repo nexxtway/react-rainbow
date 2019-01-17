@@ -139,7 +139,7 @@
         }
 
         render() {
-            const { data, sortDirection } = this.state;
+            const { data, sortDirection, sortedBy } = this.state;
             return (
                 <div className="rainbow-p-bottom_xx-large">
                     <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
@@ -148,12 +148,19 @@
                             <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faEllipsisV} />} />
                         </ButtonGroup>
                     </GlobalHeader>
-                    <Table data={data} onSort={this.handleOnSort} sortDirection={sortDirection}>
-                        <Column header="Name" field="name" sortable />
-                        <Column header="Status" field="status" component={StatusBadge} />
-                        <Column header="Company" field="company" />
-                        <Column header="Email" field="email" sortable />
-                    </Table>
+                    <div>
+                        <Table 
+                            data={data} 
+                            onSort={this.handleOnSort} 
+                            sortDirection={sortDirection} 
+                            sortedBy={sortedBy}>
+                            
+                            <Column header="Name" field="name" sortable />
+                            <Column header="Status" field="status" component={StatusBadge} />
+                            <Column header="Company" field="company" />
+                            <Column header="Email" field="email" sortable />
+                        </Table>
+                    </div>
                 </div>
             );
         }
