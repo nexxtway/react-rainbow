@@ -1,0 +1,59 @@
+.react-rainbow-designs_view-port {
+    padding: 0 0 0 1rem;
+}
+
+.react-rainbow-designs_header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Lato Light';
+    font-size: 32px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    color: #061c3f;
+    padding: 2.25rem 0 1rem 0;
+}
+
+.react-rainbow-designs_category {
+    padding: 0 2rem;
+}
+
+.react-rainbow-designs_cards-container {
+    display: flex;
+}
+
+.react-rainbow-designs_sub-header {
+    font-family: Lato;
+    font-size: 20px;
+    font-weight: 300;
+    color: #576574;
+    padding: 20px 0 12px 0;
+}
+
+.react-rainbow-designs_card {
+    font-size: 16px;
+    font-weight: 500;
+    color: #061c3f;
+    width: 260px;
+}
+
+.react-rainbow-designs_card-image {
+    height: 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.react-rainbow-designs_image {
+    height: 5rem;
+}
+
+.react-rainbow-designs_image-websites {
+    width: 100%;
+    max-width: 100%;
+}
+
+.react-rainbow-designs_anchor {
+    margin: 0 32px 32px 0;
+}

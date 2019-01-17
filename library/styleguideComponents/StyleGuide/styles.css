@@ -38,7 +38,7 @@
 }
 
 .react-rainbow-main-content {
-    background-color: white;
+    background-color: #f4f6f9;
     min-height: calc(100vh - 68px);
     width: calc(100vw - 87px);
     margin-top: 68px;

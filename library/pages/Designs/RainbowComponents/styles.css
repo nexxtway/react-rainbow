@@ -1,0 +1,28 @@
+.react-rainbow-rainbow-components_list {
+    list-style: decimal;
+    margin: 12px 0 12px 32px;
+    font-family: Lato;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #576574;
+}
+
+.react-rainbow-rainbow-components_list-element {
+    margin-bottom: 8px;
+}
+
+.react-rainbow-rainbow-components_subtitle {
+    font-family: Lato;
+    font-size: 20px;
+    font-weight: 300;
+    color: #061c3f;
+    margin: 32px 0 12px 0;
+}
+
+.react-rainbow-rainbow-components_description {
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #576574;
+}

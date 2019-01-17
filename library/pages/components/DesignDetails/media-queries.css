@@ -1,0 +1,41 @@
+@media (max-width: 1024px) {
+    .react-rainbow-design-detail_img-container {
+        width: 60%;
+    }
+    
+    .react-rainbow-design-detail_img {
+        height: 500px;
+    }
+
+    .react-rainbow-design-detail_info-container {
+        width: 40%;
+    }
+}
+
+@media (max-width: 600px) {
+    .react-rainbow-design-detail_content {
+        flex-wrap: wrap;
+    }
+    
+    .react-rainbow-design-detail_img-container, .react-rainbow-design-detail_img, .react-rainbow-design-detail_info-container {
+        width: 100%;
+    }
+
+    .react-rainbow-design-detail_img-container {
+        margin-right: 0;
+    }
+
+    .react-rainbow-design-detail_img {
+        height: 300px;
+    }
+
+    .react-rainbow-design-detail_subtitle {
+        margin-top: 16px;
+    }
+}
+
+@media (max-width: 340px) {
+    .react-rainbow-designs_view-port {
+        padding: 0 1rem 1rem 1rem;
+    }
+}

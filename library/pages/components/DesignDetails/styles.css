@@ -1,0 +1,101 @@
+.react-rainbow-design-detail_content {
+    margin-bottom: 40px;
+}
+
+.react-rainbow-design-detail_title {
+    font-family: 'Lato';
+    font-size: 24px;
+    color: #061c3f;
+    margin: 24px 0 20px 0;
+}
+
+.react-rainbow-design-detail_count {
+    font-family: Lato;
+    font-size: 14px;
+    color: #a4a7b5;
+    margin-bottom: 8px;
+}
+
+.react-rainbow-design-detail_img-container {
+    width: 50%;
+    margin-right: 12px;
+}
+
+.react-rainbow-design-detail_img {
+    height: 560px;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.react-rainbow-design-detail_inner-img {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.react-rainbow-design-detail_inner-img:hover {
+    background-color: rgba(6, 28, 63, 0.4);
+    cursor: pointer;
+}
+
+.react-rainbow-design-detail_img-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    width: 48px;
+    border-radius: 100%;
+    background-color: white;
+    box-shadow: 0 0px 2px 0 rgba(6, 28, 63, 0.4);
+    margin: 0 12px;
+}
+
+.react-rainbow-design-detail_img-icon:hover {
+    background-color: #f4f6f9;
+}
+
+.react-rainbow-design-detail_info-container {
+    width: 50%;
+    margin-left: 12px;
+}
+
+.react-rainbow-design-detail_donwload-buttons-container {
+    margin-top: 32px;
+}
+
+.react-rainbow-design-detail_preview-link {
+    height: 36px;
+    font-family: Lato;
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 1.75;
+    text-align: center;
+    color: #ffffff;
+}
+
+.react-rainbow-design-detail_preview-link:hover {
+    color: #ffffff;
+}
+
+.react-rainbow-design-detail_subtitle {
+    font-family: Lato;
+    font-size: 20px;
+    font-weight: 300;
+    color: #061c3f;
+    margin: 32px 0 12px 0;
+}
+
+.react-rainbow-design-detail_description {
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #576574;
+}
+
+.react-rainbow-design-detail_category {
+    flex-wrap: wrap;
+}

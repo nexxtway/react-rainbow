@@ -3,8 +3,9 @@ const pages = [
     'Experiences',
     'Designs',
     'Admin',
-    'Authetication',
+    'Authentication',
     'RainbowComponents',
+    'Chat',
 ];
 
 export default function isNotComponentPage(name) {
