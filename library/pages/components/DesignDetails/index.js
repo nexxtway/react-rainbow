@@ -46,8 +46,8 @@ export default function DesignDetails(props) {
         illustratorUrl,
         photoshopUrl,
         liveUrl,
-        viewsAmount,
-        donwloadsAmount,
+        // viewsAmount,
+        // downloadsAmount,
         imageSrc,
         previewUrl,
     } = props;
@@ -66,11 +66,11 @@ export default function DesignDetails(props) {
             </header>
             <section className="react-rainbow-design-detail_content rainbow-m-top_x-small rainbow-flex">
                 <article className="react-rainbow-design-detail_img-container">
-                    <h3 className="react-rainbow-design-detail_count">
+                    {/* <h3 className="react-rainbow-design-detail_count">
                         <span> {viewsAmount} views </span>
                         •
-                        <span> {donwloadsAmount} downloads </span>
-                    </h3>
+                        <span> {downloadsAmount} downloads </span>
+                    </h3> */}
                     <Card className="react-rainbow-design-detail_img" style={cardStyles}>
                         <InnerImg
                             liveUrl={liveUrl}
@@ -112,14 +112,14 @@ DesignDetails.propTypes = {
     title: PropTypes.string,
     description: PropTypes.string,
     children: PropTypes.node,
-    viewsAmount: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.string,
-    ]),
-    donwloadsAmount: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.string,
-    ]),
+    // viewsAmount: PropTypes.oneOfType([
+    //     PropTypes.number,
+    //     PropTypes.string,
+    // ]),
+    // downloadsAmount: PropTypes.oneOfType([
+    //     PropTypes.number,
+    //     PropTypes.string,
+    // ]),
     liveUrl: PropTypes.string,
     previewUrl: PropTypes.string,
     imageSrc: PropTypes.string,
@@ -130,7 +130,7 @@ DesignDetails.defaultProps = {
     description: undefined,
     children: null,
     viewsAmount: 0,
-    donwloadsAmount: 0,
+    downloadsAmount: 0,
     liveUrl: undefined,
     previewUrl: undefined,
     imageSrc: undefined,

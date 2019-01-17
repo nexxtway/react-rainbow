@@ -7,7 +7,7 @@ export default function Administration() {
             category="websites"
             title="Rainbow Administration"
             viewsAmount="20"
-            donwloadsAmount="333"
+            downloadsAmount="333"
             imageSrc="/images/designsImages/admin.png"
             previewUrl="/images/designsImages/admin.png"
             liveUrl="https://react-rainbow-admin.firebaseapp.com/dashboard"

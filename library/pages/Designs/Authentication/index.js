@@ -7,7 +7,7 @@ export default function Authentication() {
             category="websites"
             title="Rainbow Authentication"
             viewsAmount="20"
-            donwloadsAmount="333"
+            downloadsAmount="333"
             imageSrc="/images/designsImages/authentication.png"
             previewUrl="/images/designsImages/authentication.png"
             liveUrl="https://react-rainbow-firebase-auth.firebaseapp.com/home/signin"

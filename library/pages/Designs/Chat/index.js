@@ -7,7 +7,7 @@ export default function Chat() {
             category="websites"
             title="Rainbow Chat"
             viewsAmount="20"
-            donwloadsAmount="333"
+            downloadsAmount="333"
             imageSrc="/images/designsImages/chat.png"
             previewUrl="/images/designsImages/chat.png"
             sketchUrl="https://firebasestorage.googleapis.com/v0/b/react-rainbow-admin.appspot.com/o/rainbow-chat.sketch?alt=media&token=2a7e446a-212f-433d-8105-d99f919ef760"
