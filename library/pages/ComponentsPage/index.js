@@ -32,7 +32,7 @@ export default class ComponentsPage extends Component {
             const src = `images/componentsThumbs/${component.name}.svg`;
             const href = `/#/${component.name}`;
             const card = (
-                <a href={href} key={key}>
+                <a href={href} key={key} className="react-rainbow-components-page_card-container">
                     <Card
                         className="react-rainbow-components-page_card"
                         footer={component.name}>
