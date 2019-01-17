@@ -112,8 +112,14 @@ DesignDetails.propTypes = {
     title: PropTypes.string,
     description: PropTypes.string,
     children: PropTypes.node,
-    viewsAmount: PropTypes.number,
-    donwloadsAmount: PropTypes.number,
+    viewsAmount: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string,
+    ]),
+    donwloadsAmount: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string,
+    ]),
     liveUrl: PropTypes.string,
     previewUrl: PropTypes.string,
     imageSrc: PropTypes.string,

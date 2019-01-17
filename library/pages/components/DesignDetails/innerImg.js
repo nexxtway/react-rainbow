@@ -33,7 +33,7 @@ export default class InnerImg extends Component {
                 onMouseLeave={this.handleMouseLeave}>
 
                 <RenderIf isTrue={!!(isVisible && liveUrl)}>
-                    <a className="react-rainbow-design-detail_img-icon" href={liveUrl}>
+                    <a className="react-rainbow-design-detail_img-icon" href={liveUrl} target="_blank" rel="noopener noreferrer">
                         <img src={LiveIcon} alt="live icon" />
                     </a>
                     <a className="react-rainbow-design-detail_img-icon" href={previewUrl} target="_blank" rel="noopener noreferrer">
