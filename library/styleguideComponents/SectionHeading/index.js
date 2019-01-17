@@ -8,7 +8,7 @@ import Badge from '../../../src/components/Badge';
 import './styles.css';
 
 const GithubStarsBadge = GithubStars(({ stars }) => (
-    <Badge className="react-rainbow-github-badge rainbow-color_dark-1 rainbow-m-right_large" variant="lightest">
+    <Badge className="react-rainbow-github-badge rainbow-color_dark-1 rainbow-m-right_small" variant="lightest">
         <FontAwesomeIcon color="#061c3f" icon={faStar} pull="left" />
         {stars}
     </Badge>
