@@ -62,12 +62,12 @@ export default class Indicators extends Component {
     renderIndicators() {
         const { carouselChildren, onSelect, selectedItem } = this.props;
         return carouselChildren.map(child => (
-                <Indicator
-                    {...child}
-                    onSelect={onSelect}
-                    selectedItem={selectedItem}
-                    onCreate={this.registerIndicator}
-                    key={child.indicatorID} />
+            <Indicator
+                {...child}
+                onSelect={onSelect}
+                selectedItem={selectedItem}
+                onCreate={this.registerIndicator}
+                key={child.indicatorID} />
             ));
     }
 

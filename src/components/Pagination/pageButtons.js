@@ -36,9 +36,9 @@ export default function PageButtons(props) {
                         aria-current={getAriaCurrent(page)}
                         aria-label={ariaLabel}
                         href="javascript:void(0);">
-                    <span>
-                        {page}
-                    </span>
+                        <span>
+                            {page}
+                        </span>
                     </a>
                 </li>
             );

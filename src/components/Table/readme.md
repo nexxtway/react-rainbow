@@ -76,6 +76,7 @@
     } = require('@fortawesome/free-solid-svg-icons');
 
     const badgeStyles = { color: '#1de9b6' };
+    const tableContainerStyles = { height: 200 };
 
     const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
 
@@ -116,6 +117,24 @@
                         email: 'd@gmail.com',
                         status: 'verified',
                     },
+                    {
+                        name: 'Alejandro',
+                        company: 'Google',
+                        email: 'h@gmail.com',
+                        status: 'verified',
+                    },
+                    {
+                        name: 'Carlos',
+                        company: 'Oracle',
+                        email: 'x@gmail.com',
+                        status: 'verified',
+                    },
+                    {
+                        name: 'Luis',
+                        company: 'Google',
+                        email: 'n@gmail.com',
+                        status: 'verified',
+                    },
                 ],
             };
             this.handleOnSort = this.handleOnSort.bind(this);
@@ -148,13 +167,13 @@
                             <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faEllipsisV} />} />
                         </ButtonGroup>
                     </GlobalHeader>
-                    <div>
-                        <Table 
-                            data={data} 
-                            onSort={this.handleOnSort} 
-                            sortDirection={sortDirection} 
+                    <div style={tableContainerStyles}>
+                        <Table
+                            data={data}
+                            onSort={this.handleOnSort}
+                            sortDirection={sortDirection}
                             sortedBy={sortedBy}>
-                            
+
                             <Column header="Name" field="name" sortable />
                             <Column header="Status" field="status" component={StatusBadge} />
                             <Column header="Company" field="company" />

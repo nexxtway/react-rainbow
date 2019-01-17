@@ -137,18 +137,18 @@ export default class Table extends Component {
                         onResize={this.onColumnResize}
                         resizeGuideLineHeight={resizeGuideLineHeight} />
                 </div>
-               <div className="rainbow-table-container" style={tableStyles}>
-                   <table className="rainbow-table" style={tableStyles}>
-                       <thead className="rainbow-table_head">
-                       <tr className="rainbow-table_header-row">
-                           {fakeHeaders}
-                       </tr>
-                       </thead>
-                       <tbody className="rainbow-table_body">
-                       <Body data={data} columns={columns} />
-                       </tbody>
-                   </table>
-               </div>
+                <div className="rainbow-table-container" style={tableStyles}>
+                    <table className="rainbow-table" style={tableStyles}>
+                        <thead className="rainbow-table_head">
+                            <tr className="rainbow-table_header-row">
+                                {fakeHeaders}
+                            </tr>
+                        </thead>
+                        <tbody className="rainbow-table_body">
+                            <Body data={data} columns={columns} />
+                        </tbody>
+                    </table>
+                </div>
             </div>
         );
     }

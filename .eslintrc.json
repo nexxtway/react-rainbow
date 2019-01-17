@@ -9,11 +9,11 @@
         "webdriverio"
     ],
     "rules": {
-        "indent": [2, 4],
+        "indent": ["error", 4],
+        "react/jsx-indent": ["error", 4],
+        "react/jsx-indent-props": ["error", 4],
         "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx"] }],
-        "react/jsx-indent": "off",
         "react/jsx-first-prop-new-line": "off",
-        "react/jsx-indent-props": "off",
         "react/jsx-closing-bracket-location": "off",
         "react/forbid-prop-types": "off"
     },

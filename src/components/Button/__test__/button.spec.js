@@ -140,8 +140,8 @@ describe('<Button/>', () => {
     });
     it('should have the right class names when shaded is true and variant is base', () => {
         const component = mount(
-                <Button label="Button Label" variant="base" shaded />,
-            );
+            <Button label="Button Label" variant="base" shaded />,
+        );
         const buttonClassNameProp = component.find('button').prop('className');
         expect(buttonClassNameProp).toBe('rainbow-button');
     });
@@ -178,8 +178,8 @@ describe('<Button/>', () => {
     });
     it('should have the right class names when isLoading is true and variant is base', () => {
         const component = mount(
-                <Button label="Button Label" variant="base" isLoading />,
-            );
+            <Button label="Button Label" variant="base" isLoading />,
+        );
         const buttonClassNameProp = component.find('button').prop('className');
         expect(buttonClassNameProp).toBe('rainbow-button');
     });

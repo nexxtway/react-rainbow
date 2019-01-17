@@ -6,7 +6,7 @@ import Breadcrumb from './../../Breadcrumb/index';
 describe('<Breadcrumbs/>', () => {
     it('should have a aria-label attribute for accessibility', () => {
         const component = mount(
-           <Breadcrumbs>
+            <Breadcrumbs>
                 <Breadcrumb label="Parent entity" />
             </Breadcrumbs>,
         );
