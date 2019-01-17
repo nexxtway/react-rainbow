@@ -3,6 +3,7 @@ import React from 'react';
 import Card from './../../../src/components/Card';
 import { libraryPages, websitePages } from '../components/DesignDetails/pagesData';
 import './styles.css';
+import './media-queries.css';
 
 function CategoryCards({ pages }) {
     return pages.map((page, index) => {

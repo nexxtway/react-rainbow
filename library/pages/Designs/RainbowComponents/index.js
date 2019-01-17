@@ -26,14 +26,13 @@ export default function RainbowComponents() {
                 </li>
                 <li className="react-rainbow-rainbow-components_list-element">
                     Add the Sketch document from Sketch Cloud as a Shared Library
-                    <a
-                        className="rainbow-p-horizontal_x-small"
-                        href="https://sketch.cloud/s/14L3p"
-                        rel="noopener noreferrer"
-                        target="_blank">
-                        https://sketch.cloud/s/14L3p
-                    </a>
                 </li>
+                <a
+                    href="https://sketch.cloud/s/14L3p"
+                    rel="noopener noreferrer"
+                    target="_blank">
+                    https://sketch.cloud/s/14L3p
+                </a>
             </ol>
         </DesignDetails>
     );

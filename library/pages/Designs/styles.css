@@ -1,6 +1,4 @@
 .react-rainbow-designs_view-port {
-    background-color: #f4f6f9;
-    height: 100%;
     padding: 0 0 0 1rem;
 }
 
@@ -40,7 +38,6 @@
 }
 
 .react-rainbow-designs_card-image {
-    padding: 1rem;
     height: 8rem;
     display: flex;
     justify-content: center;
@@ -53,36 +50,10 @@
 }
 
 .react-rainbow-designs_image-websites {
-    width: 260px;
-    max-width: 260px;
+    width: 100%;
+    max-width: 100%;
 }
 
 .react-rainbow-designs_anchor {
     margin: 0 32px 32px 0;
-}
-
-@media (max-width: 600px) {
-    .react-rainbow-designs_view-port {
-        height: unset;
-        padding: 0 2.25rem 1.5rem 2.25rem;
-    }
-
-    .react-rainbow-designs_header {
-        font-size: 28px;
-        padding: 1.5rem 0 1rem 0;
-    }
-}
-
-@media (max-width: 340px) {
-    .react-rainbow-designs_view-port {
-        padding: 0 1rem 1rem 1rem;
-    }
-
-    .react-rainbow-designs_header {
-        font-size: 20px;
-    }
-
-    .react-rainbow-designs_sub-header {
-        font-size: 16px;
-    }
 }

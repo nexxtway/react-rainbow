@@ -9,6 +9,7 @@ import DonwloadDesignButtons from './../DonwloadDesignButtons';
 import RenderIf from './../../../../src/components/RenderIf';
 import { libraryPages, websitePages } from './pagesData';
 import './styles.css';
+import './media-queries.css';
 
 function getCategoryPages(category) {
     if (category === 'library') {
@@ -53,7 +54,7 @@ export default function DesignDetails(props) {
     const cardStyles = { backgroundImage: `url("${imageSrc}")` };
 
     return (
-        <section className="rainbow-p-vertical_medium rainbow-p-horizontal_x-large rainbow-background-color_gray-1">
+        <section className="react-rainbow-design-detail_viewport rainbow-p-vertical_medium rainbow-p-horizontal_x-large rainbow-background-color_gray-1">
             <header>
                 <Breadcrumbs>
                     <Breadcrumb label="Designs" href="/#/Designs/" />
@@ -63,7 +64,7 @@ export default function DesignDetails(props) {
                     {title}
                 </h1>
             </header>
-            <section className="rainbow-m-top_x-small rainbow-flex">
+            <section className="react-rainbow-design-detail_content rainbow-m-top_x-small rainbow-flex">
                 <article className="react-rainbow-design-detail_img-container">
                     <h3 className="react-rainbow-design-detail_count">
                         <span> {viewsAmount} views </span>
@@ -98,7 +99,7 @@ export default function DesignDetails(props) {
                     <h2 className="react-rainbow-design-detail_subtitle rainbow-align-content_center">
                         More like this
                     </h2>
-                    <div className="rainbow-flex">
+                    <div className="react-rainbow-design-detail_category rainbow-flex">
                         <CategoryCards category={category} title={title} />
                     </div>
                 </RenderIf>
