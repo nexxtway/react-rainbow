@@ -26,7 +26,7 @@ describe('<ReCaptchaComponent />', () => {
 
         const component = mount(
             <ReCaptchaComponent
-                value="site-key"
+                siteKey="site-key"
                 theme="light"
                 size="normal"
                 tabIndex={0}
