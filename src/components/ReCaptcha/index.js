@@ -23,7 +23,7 @@ class ReCaptcha extends Component {
 
 ReCaptcha.propTypes = {
     /** Specifies the site key for the recaptcha. */
-    value: PropTypes.string.isRequired,
+    siteKey: PropTypes.string.isRequired,
     /** Forces the widget to render in a specific language.
      * Auto-detects the user's language if unspecified. */
     lang: PropTypes.string,
@@ -40,7 +40,9 @@ ReCaptcha.propTypes = {
         PropTypes.node,
         PropTypes.string,
     ]),
-    /** The action triggered when the value of the recaptcha changes. */
+    /** The action triggered when the value of the recaptcha changes. It receive the
+     * recaptcha token when is fired.
+     */
     onChange: PropTypes.func,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
