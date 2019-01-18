@@ -12,7 +12,6 @@ export default class Header extends Component {
         this.handleMouseMove = this.handleMouseMove.bind(this);
         this.handleMouseUp = this.handleMouseUp.bind(this);
         this.handleColumnSelect = this.handleColumnSelect.bind(this);
-        this.headerContainer = React.createRef();
         this.resizeBar = React.createRef();
     }
 
@@ -42,28 +41,24 @@ export default class Header extends Component {
 
     handleMouseUp(event) {
         event.preventDefault();
-        if (this.headerContainer.current !== null) {
-            document.removeEventListener('mouseup', this.handleMouseUp);
-            document.removeEventListener('mousemove', this.handleMouseMove);
-            const headerContainerWidth = this.headerContainer.current.getBoundingClientRect().width;
-            this.resizeBar.current.style.transform = 'unset';
-            const { minColumnWidth, maxColumnWidth } = this.props;
-            const width = headerContainerWidth + this.newXPosition;
-            if (width < minColumnWidth) {
-                this.setColumnWdith(minColumnWidth);
-            } else if (width > maxColumnWidth) {
-                this.setColumnWdith(maxColumnWidth);
-            } else {
-                this.setColumnWdith(width);
-            }
+        document.removeEventListener('mouseup', this.handleMouseUp);
+        document.removeEventListener('mousemove', this.handleMouseMove);
+        const { minColumnWidth, maxColumnWidth, width } = this.props;
+        this.resizeBar.current.style.transform = 'unset';
+        const newWidth = width + this.newXPosition;
+        if (newWidth < minColumnWidth) {
+            this.setColumnWdith(minColumnWidth);
+        } else if (newWidth > maxColumnWidth) {
+            this.setColumnWdith(maxColumnWidth);
+        } else {
+            this.setColumnWdith(newWidth);
         }
     }
 
     handleMouseMove(event) {
         event.preventDefault();
-        const { minColumnWidth, maxColumnWidth } = this.props;
+        const { minColumnWidth, maxColumnWidth, width } = this.props;
         this.newXPosition = event.clientX - this.startXPosition;
-        const { width } = this.headerContainer.current.getBoundingClientRect();
         const minXPosition = minColumnWidth - width;
         const maxXPosition = maxColumnWidth - width;
         if (this.newXPosition < minXPosition) {
@@ -86,9 +81,9 @@ export default class Header extends Component {
     }
 
     handleColumnSelect(event) {
-        const { onColumnSelect, columnIndex, sortable } = this.props;
+        const { onColumnSelect, columnIndex, sortable, sortDirection } = this.props;
         if (sortable) {
-            onColumnSelect(event, columnIndex);
+            onColumnSelect(event, columnIndex, sortDirection);
         }
     }
 
@@ -110,8 +105,7 @@ export default class Header extends Component {
                 className={this.getClassName()}
                 style={headerStyles}
                 tabIndex={-1}
-                aria-label={this.getHeaderTitle()}
-                ref={this.headerContainer}>
+                aria-label={this.getHeaderTitle()}>
                 <div className="rainbow-table_header-wrapper">
                     <div className="rainbow-table_header-container" role="presentation" onClick={this.handleColumnSelect}>
                         <span title={this.getHeaderTitle()} className="rainbow-table_header-content">{content}</span>
@@ -168,7 +162,7 @@ Header.defaultProps = {
     content: null,
     isSelected: false,
     sortable: false,
-    sortDirection: 'asc',
+    sortDirection: undefined,
     onColumnSelect: () => {},
     width: undefined,
     minColumnWidth: undefined,
