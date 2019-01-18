@@ -21,9 +21,9 @@ export default class ReCaptchaComponent extends Component {
     }
 
     renderReCaptcha() {
-        const { value, theme, size, tabIndex, onChange } = this.props;
+        const { siteKey, theme, size, tabIndex, onChange } = this.props;
         window.grecaptcha.render(this.recaptchaID, {
-            sitekey: value,
+            sitekey: siteKey,
             theme,
             size,
             tabIndex,
@@ -47,7 +47,7 @@ export default class ReCaptchaComponent extends Component {
 }
 
 ReCaptchaComponent.propTypes = {
-    value: PropTypes.string.isRequired,
+    siteKey: PropTypes.string.isRequired,
     theme: PropTypes.oneOf(['light', 'dark']).isRequired,
     size: PropTypes.oneOf(['normal', 'compact']).isRequired,
     tabIndex: PropTypes.number.isRequired,
