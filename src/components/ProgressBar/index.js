@@ -35,11 +35,11 @@ export default function ProgressBar(props) {
 
     return (
         <div className={getContainerClassNames()}
-             aria-valuemin="0"
-             aria-valuemax="100"
-             aria-valuenow={normalizedValue}
-             role="progressbar"
-             style={style}>
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow={normalizedValue}
+            role="progressbar"
+            style={style}>
 
             <span className={getProgressBarClassNames()} style={WIDTH}>
                 <AsistiveText text={assistiveText} />

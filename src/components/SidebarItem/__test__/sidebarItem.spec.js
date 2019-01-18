@@ -45,8 +45,8 @@ describe('<SidebarItem />', () => {
                     name="sidebaritem-test-3"
                     label="sidebaritem-test-3"
                     onClick={handleOnClickMockFn} />
-           </Sidebar>,
-           );
+            </Sidebar>,
+        );
         const sidebarLink = component.find('a');
         sidebarLink.simulate('click');
         expect(handleOnClickMockFn).toHaveBeenCalledTimes(1);

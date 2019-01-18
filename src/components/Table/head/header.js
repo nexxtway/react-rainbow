@@ -16,21 +16,6 @@ export default class Header extends Component {
         this.resizeBar = React.createRef();
     }
 
-    componentDidMount() {
-        const { width } = this.props;
-        if (width === undefined) {
-            const { width: computedWidth } = window.getComputedStyle(this.headerContainer.current);
-            const headerWidth = parseInt(
-                computedWidth
-                    .toString()
-                    .substring(0, computedWidth.length - 2),
-                10,
-            );
-            const { columnIndex, onResize } = this.props;
-            onResize(columnIndex, headerWidth);
-        }
-    }
-
     setColumnWdith(width) {
         const { columnIndex, onResize } = this.props;
         onResize(columnIndex, width);
@@ -121,10 +106,9 @@ export default class Header extends Component {
         const resizeGuideLineStyles = { height: resizeGuideLineHeight };
 
         return (
-            <th
+            <div
                 className={this.getClassName()}
                 style={headerStyles}
-                scope="col"
                 tabIndex={-1}
                 aria-label={this.getHeaderTitle()}
                 ref={this.headerContainer}>
@@ -160,7 +144,7 @@ export default class Header extends Component {
                         </div>
                     </RenderIf>
                 </div>
-            </th>
+            </div>
         );
     }
 }

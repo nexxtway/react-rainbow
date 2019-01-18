@@ -5,8 +5,8 @@ import Head from '../';
 describe('<Head />', () => {
     it('should return an array of Header elements', () => {
         const columns = [
-            { header: 'header' },
-            { header: 'header-2' },
+            { header: 'header', field: 'name' },
+            { header: 'header-2', field: 'email' },
         ];
         const columnsWidths = [
             undefined,

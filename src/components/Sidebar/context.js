@@ -4,14 +4,14 @@ const { Provider, Consumer } = React.createContext();
 
 function withContext(Component) {
     return props => (
-            <Consumer>
-                {context => (
-                    <Component
-                        {...props}
-                        {...context} />
+        <Consumer>
+            {context => (
+                <Component
+                    {...props}
+                    {...context} />
                 )}
-            </Consumer>
-        );
+        </Consumer>
+    );
 }
 
 export {

@@ -76,6 +76,7 @@
     } = require('@fortawesome/free-solid-svg-icons');
 
     const badgeStyles = { color: '#1de9b6' };
+    const tableContainerStyles = { height: 200 };
 
     const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
 
@@ -116,6 +117,24 @@
                         email: 'd@gmail.com',
                         status: 'verified',
                     },
+                    {
+                        name: 'Alejandro',
+                        company: 'Google',
+                        email: 'h@gmail.com',
+                        status: 'verified',
+                    },
+                    {
+                        name: 'Carlos',
+                        company: 'Oracle',
+                        email: 'x@gmail.com',
+                        status: 'verified',
+                    },
+                    {
+                        name: 'Luis',
+                        company: 'Google',
+                        email: 'n@gmail.com',
+                        status: 'verified',
+                    },
                 ],
             };
             this.handleOnSort = this.handleOnSort.bind(this);
@@ -123,21 +142,11 @@
 
         handleOnSort(event, field, nextSortDirection) {
             const { data, sortedBy, sortDirection } = this.state;
-            let newSortDirection;
-            if (field === sortedBy) {
-                if (sortDirection === 'asc') {
-                    newSortDirection = 'desc';
-                } else {
-                    newSortDirection = 'asc';
-                }
-            } else {
-                newSortDirection = 'asc';
-            }
 
             let newData = [...data];
 
             const key = (x) => x[field];
-            const reverse = newSortDirection === 'asc' ? 1 : -1;;
+            const reverse = nextSortDirection === 'asc' ? 1 : -1;;
 
             const sortedData = newData.sort((a, b) => {
                 a = key(a);
@@ -145,11 +154,11 @@
                 return reverse * ((a > b) - (b > a));
             });
 
-            this.setState({ data: sortedData, sortedBy: field, sortDirection: newSortDirection });
+            this.setState({ data: sortedData, sortedBy: field, sortDirection: nextSortDirection });
         }
 
         render() {
-            const { data, sortDirection } = this.state;
+            const { data, sortDirection, sortedBy } = this.state;
             return (
                 <div className="rainbow-p-bottom_xx-large">
                     <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
@@ -158,12 +167,19 @@
                             <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faEllipsisV} />} />
                         </ButtonGroup>
                     </GlobalHeader>
-                    <Table data={data} onSort={this.handleOnSort} sortDirection={sortDirection}>
-                        <Column header="Name" field="name" sortable />
-                        <Column header="Status" field="status" component={StatusBadge} />
-                        <Column header="Company" field="company" />
-                        <Column header="Email" field="email" sortable />
-                    </Table>
+                    <div style={tableContainerStyles}>
+                        <Table
+                            data={data}
+                            onSort={this.handleOnSort}
+                            sortDirection={sortDirection}
+                            sortedBy={sortedBy}>
+
+                            <Column header="Name" field="name" sortable />
+                            <Column header="Status" field="status" component={StatusBadge} />
+                            <Column header="Company" field="company" />
+                            <Column header="Email" field="email" sortable />
+                        </Table>
+                    </div>
                 </div>
             );
         }

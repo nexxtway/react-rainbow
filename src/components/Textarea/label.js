@@ -23,8 +23,9 @@ export default function Label(props) {
             htmlFor={textareaId}
             id={id}
             readOnly={readOnly}>
-                <RequiredAsterisk required={required} />
-                {label}
+
+            <RequiredAsterisk required={required} />
+            {label}
         </label>
     );
 }

@@ -87,7 +87,7 @@ export default class CarouselCard extends Component {
         return (
             <div className={this.getContainerClassName()} style={this.getContainerStyle()} id={id} ref={this.container}>
                 <span className="rainbow-carousel_autoplay">
-                  <AnimationButton onClick={this.handleOnClick} isAnimationPaused={isAnimationPaused} />
+                    <AnimationButton onClick={this.handleOnClick} isAnimationPaused={isAnimationPaused} />
                 </span>
                 <div className="rainbow-carousel_images" ref={this.containerRef}>
                     <Provider value={this.state}>
