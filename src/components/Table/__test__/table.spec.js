@@ -54,7 +54,7 @@ describe('<Table />', () => {
         expect(component.find('td .rainbow-table_cell-content').text()).toBe('23');
     });
 
-    it('should call onSort with the event, the field as "mane" and the sortDireciton as "asc"', () => {
+    it('should call onSort with the event, the field as "name" and the sortDireciton as "asc"', () => {
         const onSortMock = jest.fn();
         const component = mount(
             <Table data={data} onSort={onSortMock}>
@@ -66,7 +66,7 @@ describe('<Table />', () => {
         expect(onSortMock).toHaveBeenCalledWith(expect.any(Object), 'name', 'asc');
     });
 
-    it('should call onSort with the event, the field as "mane" and the sortDireciton as "asc" if clicked twice', () => {
+    it('should call onSort with the event, the field as "name" and the sortDireciton as "asc" if clicked twice', () => {
         let sortedBy;
         let sortDirection;
         const onSortMock = jest.fn((event, field, nextSortDirection) => {
