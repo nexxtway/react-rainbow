@@ -6,9 +6,11 @@ export default function resolveOptions(conditions) {
         showLegend,
         legendPosition,
         showStacked,
+        maintainAspectRatio,
     } = conditions;
 
     let options = {
+        maintainAspectRatio,
         legend: {
             display: showLegend,
             position: legendPosition,

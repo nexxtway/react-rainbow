@@ -105,6 +105,8 @@ Chart.propTypes = {
     /** Determines whether the lines that join the dots in a
      * line chart should be curved or straight.  */
     disableCurves: PropTypes.bool,
+    /** Maintain the original canvas aspect ratio. */
+    maintainAspectRatio: PropTypes.bool,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied for the outer element. */
@@ -123,6 +125,7 @@ Chart.defaultProps = {
     disableAnimations: false,
     disableLines: false,
     disableCurves: false,
+    maintainAspectRatio: true,
     className: undefined,
     style: undefined,
     children: undefined,
