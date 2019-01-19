@@ -54,7 +54,7 @@ export default function DesignDetails(props) {
     const cardStyles = { backgroundImage: `url("${imageSrc}")` };
 
     return (
-        <section className="react-rainbow-design-detail_viewport rainbow-p-vertical_medium rainbow-p-horizontal_x-large rainbow-background-color_gray-1">
+        <section className="react-rainbow-designs-details_view-port rainbow-p-vertical_medium rainbow-p-horizontal_x-large rainbow-background-color_gray-1">
             <header>
                 <Breadcrumbs>
                     <Breadcrumb label="Designs" href="/#/Designs/" />

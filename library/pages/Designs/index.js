@@ -37,7 +37,7 @@ function CategorySection({ title, pages }) {
 
 export default function Designs() {
     return (
-        <div className="react-rainbow-designs_view-port">
+        <div className="react-rainbow-designs_view-port rainbow-background-color_gray-1">
             <h1 className="react-rainbow-designs_header">
                 Discover our designs
             </h1>
