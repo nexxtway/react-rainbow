@@ -4,6 +4,12 @@
     display: inline;
 }
 
+.react-rainbow-component-description-text {
+    line-height: 1.75;
+    font-family: 'Lato Light';
+    display: inline;
+}
+
 .react-rainbow-component-description-link {
     line-height: 1.75;
     font-family: 'Lato Light';

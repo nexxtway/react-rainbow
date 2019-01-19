@@ -78,3 +78,12 @@
     flex-wrap: wrap;
     margin: 1.2rem 0;
 }
+
+@media (max-width: 700px) {
+    .react-rainbow-utils_link, .react-rainbow-utils-item_page-object {
+        width: 100%;
+    }
+    .react-rainbow-utils-item_img-container {
+        height: 120px;
+    }
+}

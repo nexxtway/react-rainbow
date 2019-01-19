@@ -1,0 +1,20 @@
+@media (max-width: 700px) {
+    .react-rainbow-component_tabset {
+        margin-bottom: 16px;
+    }
+    .react-rainbow-component_container {
+        padding: 0;
+    }
+    .react-rainbow-component_interactive-example {
+        margin: 0 12px;
+    }
+    .react-rainbow-component_properties-table {
+        margin: 0 12px;
+    }
+    .react-rainbow-component_tab-edit-link {
+        margin-right: 0;
+    }
+    .react-rainbow-utils_container {
+        margin-top: 24px;
+    }
+}
