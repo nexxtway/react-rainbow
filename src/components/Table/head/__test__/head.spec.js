@@ -19,6 +19,7 @@ describe('<Head />', () => {
                 columns={columns}
                 columnsWidths={columnsWidths}
                 onResize={onResizeMock}
+                defaultSortDirection="asc"
                 onColumnSelect={onColumnSelectMock} />,
         );
         const head = component.find('Header');

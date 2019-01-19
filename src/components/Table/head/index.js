@@ -88,7 +88,7 @@ Head.defaultProps = {
     columns: undefined,
     columnsWidths: undefined,
     sortDirection: undefined,
-    defaultSortDirection: 'asc',
+    defaultSortDirection: undefined,
     onColumnSelect: () => {},
     selectedColumn: undefined,
     resizeColumnDisabled: false,

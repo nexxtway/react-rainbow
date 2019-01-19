@@ -83,8 +83,8 @@ export default class Table extends Component {
         this.setState({ columns: newColumns });
     }
 
-    handleColumnSelect(event, columnIndex) {
-        const { onSort, sortedBy, sortDirection } = this.props;
+    handleColumnSelect(event, columnIndex, sortDirection) {
+        const { onSort, sortedBy } = this.props;
         const { columns } = this.state;
         const { field } = columns[columnIndex];
         let nextSortDirection;
@@ -95,7 +95,7 @@ export default class Table extends Component {
                 nextSortDirection = 'asc';
             }
         } else {
-            nextSortDirection = 'asc';
+            nextSortDirection = sortDirection;
         }
         onSort(event, field, nextSortDirection);
     }

@@ -53,4 +53,42 @@ describe('<Table />', () => {
         expect(component.find('th .rainbow-table_cell-content').text()).toBe('a');
         expect(component.find('td .rainbow-table_cell-content').text()).toBe('23');
     });
+
+    it('should call onSort with the event, the field as "name" and the sortDireciton as "asc"', () => {
+        const onSortMock = jest.fn();
+        const component = mount(
+            <Table data={data} onSort={onSortMock}>
+                <Column field="name" header="Name" sortable />
+            </Table>,
+        );
+        const tableHeader = component.find('.rainbow-table_header-container');
+        tableHeader.simulate('click');
+        expect(onSortMock).toHaveBeenCalledWith(expect.any(Object), 'name', 'asc');
+    });
+
+    it('should call onSort with the event, the field as "name" and the sortDireciton as "asc" if clicked twice', () => {
+        let sortedBy;
+        let sortDirection;
+        const onSortMock = jest.fn((event, field, nextSortDirection) => {
+            sortedBy = field;
+            sortDirection = nextSortDirection;
+        });
+        const component = mount(
+            <Table
+                data={data}
+                onSort={onSortMock}
+                defaultSortDirection="desc"
+                sortDirection={sortDirection}
+                sortedBy={sortedBy}>
+
+                <Column field="name" header="Name" sortable />
+            </Table>,
+        );
+        const tableHeader = component.find('.rainbow-table_header-container');
+        tableHeader.simulate('click');
+        expect(onSortMock).toHaveBeenCalledWith(expect.any(Object), 'name', 'desc');
+        component.setProps({ sortedBy, sortDirection });
+        tableHeader.simulate('click');
+        expect(onSortMock).toHaveBeenCalledWith(expect.any(Object), 'name', 'asc');
+    });
 });
