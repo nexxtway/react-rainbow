@@ -1,6 +1,6 @@
 .react-rainbow-designs_view-port {
     padding: 0 0 0 1rem;
-    min-height: calc(100vh - 68px);
+    min-height: 100vh;
 }
 
 .react-rainbow-designs_header {
