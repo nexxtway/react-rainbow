@@ -1,5 +1,5 @@
 .react-rainbow-designs-detail_view-port {
-    min-height: calc(100vh - 68px);
+    min-height: 100vh;
 }
 
 .react-rainbow-design-detail_content {
