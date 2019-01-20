@@ -1,11 +1,11 @@
 import React from 'react';
-import RainbowLogo from './../../../../assets/images/rainbow-logo.svg';
+import RainbowLibraryImage from './../../../../assets/images/designsImages/rainbow-library.svg';
 import AdminImage from './../../../../assets/images/designsImages/admin.svg';
 import AuthenticationImage from './../../../../assets/images/designsImages/authentication.svg';
 import ChatImage from './../../../../assets/images/designsImages/chat.svg';
 
 export const libraryPages = [
-    { name: 'Rainbow Components', icon: <img alt="raibow logo" className="react-rainbow-designs_image" src={RainbowLogo} />, href: '/#/Designs/RainbowComponents' },
+    { name: 'Rainbow Components', icon: <img alt="raibow logo" className="react-rainbow-designs_image" src={RainbowLibraryImage} />, href: '/#/Designs/RainbowComponents' },
 ];
 
 export const websitePages = [
