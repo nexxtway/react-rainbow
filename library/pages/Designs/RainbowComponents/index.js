@@ -7,7 +7,7 @@ export default function RainbowComponents() {
         <DesignDetails
             category="library"
             title="Rainbow Components"
-            description="Rainbow Components is a library very easy to use and customizable with more than 40 components."
+            description="Rainbow Components is a customizable and very easy to use library with more than 40 fully tested components."
             viewsAmount="20"
             downloadsAmount="333"
             imageSrc="/images/designsImages/rainbow-components.png"
@@ -15,17 +15,17 @@ export default function RainbowComponents() {
             previewUrl="/images/designsImages/rainbow-components.png">
 
             <h2 className="react-rainbow-rainbow-components_subtitle">
-                How begin to use this library?
+                How to begin using this library?
             </h2>
             <p className="react-rainbow-rainbow-components_description">
-                Begin to use Rainbow Component is simple. You can do it in two different ways:
+                Start using the Rainbow Components is simple. There are two ways:
             </p>
             <ol className="react-rainbow-rainbow-components_list">
                 <li className="react-rainbow-rainbow-components_list-element">
-                    Donwload the file, save in your local computer and follow the instructions in the Instruction section of the file.
+                    Download the file, save in your local computer and follow the instructions in the file's Instructions section.
                 </li>
                 <li className="react-rainbow-rainbow-components_list-element">
-                    Add the Sketch document from Sketch Cloud as a Shared Library
+                    Add the Sketch document from Sketch Cloud as a Shared Library.
                 </li>
                 <a
                     href="https://sketch.cloud/s/14L3p"
