@@ -30,7 +30,7 @@
     line-height: 2.375rem;
     text-decoration: none;
     color: $color-brand;
-    padding: 0;
+    padding: 0 1rem;
     cursor: pointer;
     -webkit-appearance: none;
     white-space: normal;
@@ -127,8 +127,6 @@
 
 .rainbow-button--inverse {
     @include variants-common-styles(transparent, transparent, white);
-
-    padding: 0;
 
     &:hover,
     &:focus,
