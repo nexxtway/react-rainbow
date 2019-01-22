@@ -21,20 +21,4 @@ describe('Table with sorting example', () => {
         tableHeader.click();
         expect(tableHeader.isSelected()).toBe(false);
     });
-
-    it('should resize the first header when it`s resizeBar is moved', () => {
-        const table = new PageTable(TABLE);
-        const tableHeader = table.getHeaderItem(0);
-        const initialWidth = tableHeader.getSize().width;
-        browser.actions()
-            .mouseMove(tableHeader.getResizeBar())
-            .mouseDown()
-            .moveMove(table.getHeaderItem(2))
-            .mouseUp()
-            .perform();
-        browser.pause(8000);
-        const newWidth = tableHeader.getSize.width;
-        console.log('widths: ', initialWidth, newWidth);
-        expect(newWidth).toBe(initialWidth);
-    });
 });
