@@ -5,6 +5,10 @@
 
 .rainbow-table_body-row {
     box-shadow: 0 1px 0 0 #e3e5ed;
+
+    &:hover {
+        background-color: $color-gray-1;
+    }
 }
 
 .rainbow-table_cell-container:focus {
