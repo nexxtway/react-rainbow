@@ -43,6 +43,11 @@
         color: $color-brand-active;
     }
 
+    &:active {
+        transform: scale(0.9);
+        transition: all 0.2s ease;
+    }
+
     &:focus {
         outline: 0;
         box-shadow: $shadow-outline;
