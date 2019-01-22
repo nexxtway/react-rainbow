@@ -58,6 +58,8 @@
 
     &:active {
         color: $color-brand-active;
+        transform: scale(0.95);
+        transition: all 0.2s ease;
     }
 
     &[disabled] {
