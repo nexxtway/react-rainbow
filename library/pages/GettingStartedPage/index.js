@@ -48,8 +48,8 @@ export default class GettingStartedPage extends Component {
         return (
             <div className="react-rainbow-getting-started_top-container">
                 <Tabset className="react-rainbow-getting-started_top-container-tabset"
-                        activeTabName={activeTabName}
-                        onSelect={this.handleTabChange}>
+                    activeTabName={activeTabName}
+                    onSelect={this.handleTabChange}>
                     <Tab
                         name="overview"
                         label="OVERVIEW"
@@ -119,7 +119,7 @@ export default class GettingStartedPage extends Component {
                             <h2 className="react-rainbow-getting-started_section-heading-2"> Get your git on</h2>
                             <h5 className="react-rainbow-getting-started_section-heading-5">
                                 You can help us improve React Rainbow Components, the first step to begin
-                                collaborate is to create an issue before submitting a pull request, it's always
+                                collaborating is to create an issue before submitting a pull request, it's always
                                 good to file an issue, so we can discuss the details of your approach or suggestion.
                             </h5>
                             <a
