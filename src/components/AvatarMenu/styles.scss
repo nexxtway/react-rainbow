@@ -25,6 +25,11 @@
         box-shadow: 0 0 0 4px $color-gray-2;
     }
 
+    &:active {
+        transform: scale(0.97);
+        transition: all 0.2s ease;
+    }
+
     &:hover {
         box-shadow: 0 0 0 4px $color-gray-2;
         transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
