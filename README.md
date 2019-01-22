@@ -65,3 +65,12 @@ Yes, it's really all you need to get started as you can see in this live and int
 3. yarn install
 4. yarn start
 5. navigate to http://localhost:6060/
+
+
+## Contributing
+We are excited that you are interested in contributing to this project!
+
+You can help us improve React Rainbow Components, the first step to begin collaborate is to create an issue before submitting a pull request, it's always good to file an issue, so we can discuss the details of your approach or suggestion.
+
+[See more details about how to collaborate?](https://github.com/90milesbridge/react-rainbow/blob/master/CONTRIBUTING.md)
+
