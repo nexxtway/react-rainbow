@@ -1,6 +1,8 @@
 /* stylelint-disable no-descending-specificity */
 .rainbow-table_body-row {
   box-shadow: 0 1px 0 0 #e3e5ed; }
+  .rainbow-table_body-row:hover {
+    background-color: #f4f6f9; }
 
 .rainbow-table_cell-container:focus {
   outline: none; }
