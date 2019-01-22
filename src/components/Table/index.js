@@ -110,19 +110,20 @@ export default class Table extends Component {
             minColumnWidth,
             maxColumnWidth,
             style,
+            id,
         } = this.props;
         const { columns, tableWidth } = this.state;
         const tableStyles = { width: tableWidth };
         const resizeGuideLineHeight = (data.length * 40) + 44;
         const fakeHeaders = this.columnsWidths.map((colWidth, index) => {
             const headerStyle = { width: colWidth };
-            const id = `${this.tableId}-fake-header`;
+            const headerId = `${this.tableId}-fake-header`;
             const key = `${id}-${index}`;
-            return <th style={headerStyle} key={key} data-id={id} />;
+            return <th style={headerStyle} key={key} data-id={headerId} />;
         });
 
         return (
-            <div className={this.getContainerClassNames()} style={style}>
+            <div className={this.getContainerClassNames()} style={style} id={id}>
                 <div className="rainbow-table_fixed-header" style={tableStyles}>
                     <Head
                         columns={columns}
@@ -186,6 +187,8 @@ Table.propTypes = {
      * @ignore
      */
     children: PropTypes.node,
+    /** The id of the outer element. */
+    id: PropTypes.string,
 };
 
 Table.defaultProps = {
@@ -199,4 +202,5 @@ Table.defaultProps = {
     className: undefined,
     style: undefined,
     children: undefined,
+    id: undefined,
 };

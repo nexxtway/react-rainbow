@@ -169,6 +169,7 @@
                     </GlobalHeader>
                     <div style={tableContainerStyles}>
                         <Table
+                            id="table-2"
                             data={data}
                             onSort={this.handleOnSort}
                             sortDirection={sortDirection}
