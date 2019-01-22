@@ -19,7 +19,7 @@ class PageTable {
      * @method
      * @param {number} itemPosition - The base 0 index of the header.
      */
-    getItem(itemPosition) {
+    getHeaderItem(itemPosition) {
         const items = $(this.rootElement).$$('.rainbow-table_header');
         if (items[itemPosition]) {
             return new PageHeader(`${this.rootElement} .rainbow-table_header:nth-child(${itemPosition + 1})`);

@@ -38,20 +38,23 @@ class PageHeader {
         return $(this.rootElement).getAttribute('class') === 'rainbow-table_header rainbow-table_header--sortable rainbow-table_header--selected';
     }
 
-    getSortDirection() {
-        const headerArrowClassName = $(this.rootElement).$('.rainbow-table_header-arrow').getAttribute('class');
-        if (headerArrowClassName === 'rainbow-table_header-arrow rainbow-table_header-arrow--asc') {
-            return 'asc';
-        }
-        return 'desc';
+    dragAndDrop(xOffset, yOffset) {
+        // $(this.rootElement)
+        // .dragAndDrop(`${this.rootElement} .rainbow-table_header-resize-bar`, destination);
+        const resizeBar = $(`${this.rootElement} .rainbow-table_header-resize-bar`);
+        resizeBar.moveTo(xOffset, yOffset);
     }
 
-    dragAndDrop(destination) {
-        $(this.rootElement).dragAndDrop(destination, `${this.rootElement} .rainbow-table_header-resize-bar`);
+    getSize() {
+        return $(this.rootElement).getElementSize();
     }
 
     getSelector() {
         return this.rootElement;
+    }
+
+    getResizeBar() {
+        return $(`${this.rootElement} .rainbow-table_header-resize-bar`);
     }
 }
 

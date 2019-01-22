@@ -10,39 +10,31 @@ describe('Table with sorting example', () => {
 
     it('should select the first header when clicked', () => {
         const table = new PageTable(TABLE);
-        const tableHeader = table.getItem(0);
+        const tableHeader = table.getHeaderItem(0);
         tableHeader.click();
         expect(tableHeader.isSelected()).toBe(true);
     });
 
-    it('should not select the second header when clicked', () => {
+    it('should not select the second header when clicked if it is not sortable', () => {
         const table = new PageTable(TABLE);
-        const tableHeader = table.getItem(1);
+        const tableHeader = table.getHeaderItem(1);
         tableHeader.click();
         expect(tableHeader.isSelected()).toBe(false);
-    });
-
-    it('should set sortDirection to "asc" when clicked once', () => {
-        const table = new PageTable(TABLE);
-        const tableHeader = table.getItem(1);
-        tableHeader.click();
-        expect(tableHeader.getSortDirection()).toBe('asc');
-    });
-
-    it('should change the sortDirection when clicked twice', () => {
-        const table = new PageTable(TABLE);
-        const tableHeader = table.getItem(0);
-        tableHeader.click();
-        const firstSortDirection = tableHeader.getSortDirection();
-        tableHeader.click();
-        const secondSortDirection = tableHeader.getSortDirection();
-        expect(firstSortDirection === secondSortDirection).toBe(false);
     });
 
     it('should resize the first header when it`s resizeBar is moved', () => {
         const table = new PageTable(TABLE);
-        const tableHeader = table.getItem(0);
-        tableHeader.dragAndDrop(table.getItem(2).getSelector());
-        expect(tableHeader.isSelected()).toBe(false);
+        const tableHeader = table.getHeaderItem(0);
+        const initialWidth = tableHeader.getSize().width;
+        browser.actions()
+            .mouseMove(tableHeader.getResizeBar())
+            .mouseDown()
+            .moveMove(table.getHeaderItem(2))
+            .mouseUp()
+            .perform();
+        browser.pause(8000);
+        const newWidth = tableHeader.getSize.width;
+        console.log('widths: ', initialWidth, newWidth);
+        expect(newWidth).toBe(initialWidth);
     });
 });
