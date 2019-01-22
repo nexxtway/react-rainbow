@@ -66,7 +66,7 @@
     content: '';
 }
 
-.react-rainbow-experience-example-cards_img-container, .react-rainbow-experience-example-cards_example-img-container {
+.react-rainbow-experience-example-cards_example-img-container {
     display: flex;
     align-items: center;
     justify-content: center;

@@ -27,7 +27,7 @@
     border: 0;
     box-shadow: rgba(0, 0, 0, 0.16) 0 2px 3px;
     cursor: pointer;
-    transition: background 0.15s ease-in-out;
+    transition: all 0.3s ease 0s;
     margin-top: calc(((1rem / 2) - (4px / 2)) * -1); }
   .rainbow-slider_range::-webkit-slider-runnable-track {
     width: 100%;
@@ -80,7 +80,9 @@
     background-color: #01b6f5;
     box-shadow: 0 0 2px #01b6f5; }
   .rainbow-slider_range:active::-webkit-slider-thumb {
-    background-color: #01b6f5; }
+    background-color: #01b6f5;
+    transition: all 0.3s ease 0s;
+    transform: scale3d(1.5, 1.5, 1); }
   .rainbow-slider_range:focus::-moz-range-thumb {
     background-color: #01b6f5;
     box-shadow: 0 0 2px #01b6f5; }

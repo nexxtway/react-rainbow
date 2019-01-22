@@ -22,6 +22,8 @@ export default function Header() {
             <Input
                 className="rainbow-m-left_x-large rainbow-admin_header-search"
                 placeholder="Search"
+                label="header search"
+                hideLabel
                 icon={<FontAwesomeIcon icon={faSearch} className="rainbow-color_gray-3" />} />
             <section className="rainbow-flex rainbow-align_center rainbow-admin_header-actions">
                 <ButtonGroup>
