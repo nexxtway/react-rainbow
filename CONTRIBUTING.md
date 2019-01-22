@@ -85,13 +85,17 @@ Let’s say you want to add a new Interactive Example for buttons component, the
 1. Edit the component `readme.md` file.
 In this case,  edit the readme.md file to the following directory:
 `src/components/Button/readme.md`
-2. Add the code in the readme.md file.
-`#####Brand buttons
+2. Add the code in the `readme.md` file.
+
+```sh
+#####Brand buttons
 Sometimes, you need a Brand button to make your app looks **Brand**. Yea ...
 <Button 
   label="Button Brand"
   onClick={() => alert('clicked!')}
-  variant="brand" />`
+  variant="brand" />
+```
+
 3. Submit the PR with the code of the new Interactive Example.
 4. You are done 🎉!
 
