@@ -107,24 +107,25 @@ Sometimes, you need a Brand button to make your app looks **Brand**. Yea ...
 It is simple. Only have to go through the following steps:
 
 1. Following this directory `src/components/` create a folder with the component name. The component folder has to follow this convention `[ComponentName]` in camelcase.
-  - Create all basic files for  the components:
-      - `index.js` This is the file where is the main logic of the component, props and methods showed in the documentation.
-      - `styles.scss` This is the styles file in SASS.
-      - `readme.md` The have the Interactive Example for the component.
-  - Depending on the functionality and complexity of the component it will be necessary also to add:
-      - `_test_` In this folder will be the files `componentName.spec.js` with the tests of the component.
-      - `pageObject` In this folder will be the file index.js with the Page Object of the component.(If the component need integrationTest)
+      - Create all basic files for  the components:
+            - `index.js` This is the file where is the main logic of the component, props and methods showed in the documentation.
+            - `styles.scss` This is the styles file in SASS.
+            - `readme.md` The have the Interactive Example for the component.
+      - Depending on the functionality and complexity of the component it will be necessary also to add:
+            - `_test_` In this folder will be the files `componentName.spec.js` with the tests of the component.
+            - `pageObject` In this folder will be the file index.js with the Page Object of the component.(If the component need integrationTest)
 
 2. If the component needs Integration Test then follow this directory `integration/specs/`, create a folder with the component name. The component folder has to follow this convention `[ComponentName]` in camelcase.
-  - Create all necessary files and update the tutorial.json file for the components integration test:
-      - `[componentName]-[number].spec.js` .The `[number]` is the assigned number to the Interactive Example to be tested. Numbers are assigned to the Interactive Example in consecutive odd numbers. I.e 1, 3, 5 etc.
-      - Update the tutorial.json file. Add this code:
-           `"componentName": {`
-           `"title": "ComponentName page object"`
-          `}`
-          
+      - Create all necessary files and update the tutorial.json file for the components integration test:
+            - `[componentName]-[number].spec.js` .The `[number]` is the assigned number to the Interactive Example to be tested. Numbers are assigned to the Interactive Example in consecutive odd numbers. I.e 1, 3, 5 etc.
+            - Update the tutorial.json file. Add this code:
+                  ```sh
+                  "componentName": {
+                  "title": "ComponentName page object"
+                  }
+                  ```
 3. If the component needs Tutorial then following this directory `tutorial/` create a file with the component name. The component name has to follow this convention `[componentName]` in camelcase.
-  - `componentName.md`
+      - `componentName.md`
   
 4. Add the code to the files
 5. Submit the PR with the code of the new example
