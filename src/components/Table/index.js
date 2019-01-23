@@ -82,7 +82,6 @@ export default class Table extends Component {
         const columns = resolveColumns(children);
         let privateColumns = [];
         if (showRowNumberColumn) {
-            console.log('adding numerable row');
             privateColumns = privateColumns.concat([{
                 _meta: { type: 'numerable' },
                 header: '',
@@ -90,7 +89,6 @@ export default class Table extends Component {
                 width: 50,
             }]);
         }
-        console.log(privateColumns);
         return privateColumns.concat(columns);
     }
 

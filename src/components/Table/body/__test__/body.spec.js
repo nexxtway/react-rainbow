@@ -16,7 +16,7 @@ const data = [
     },
 ];
 
-describe('<Rowx />', () => {
+describe('<Rows />', () => {
     it('should return an empty component if no data and columns are passed', () => {
         const component = mount(<Body />);
         expect(component.children().length).toBe(0);
@@ -37,12 +37,16 @@ describe('<Rowx />', () => {
                 name: 'a',
             },
             columns,
+            id: 'row-0',
+            number: 0,
         });
         expect(rows.get(1).props).toEqual({
             data: {
                 name: 'b',
             },
             columns,
+            id: 'row-1',
+            number: 1,
         });
     });
 });
