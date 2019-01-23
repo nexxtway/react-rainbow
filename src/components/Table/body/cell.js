@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 function CellValue({ component: CellComponent, value }) {
     if (CellComponent) {
@@ -28,6 +29,13 @@ export default function Cell(props) {
         return undefined;
     };
 
+    const getCellContentClassName = () => classnames(
+        'rainbow-table_cell-content',
+        {
+            'rainbow-table_cell-content--first': isFirst,
+        },
+        );
+
     if (isFirst) {
         return (
             <th
@@ -36,7 +44,7 @@ export default function Cell(props) {
                 tabIndex={-1}
                 data-label={getHeaderLabel()}>
 
-                <div className="rainbow-table_cell-content">
+                <div className={getCellContentClassName()}>
                     <CellValue component={component} value={value} />
                 </div>
             </th>

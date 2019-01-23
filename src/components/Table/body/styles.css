@@ -20,5 +20,5 @@
   white-space: nowrap;
   border: 1px solid transparent; }
 
-th:first-of-type .rainbow-table_cell-content {
+.rainbow-table_cell-content--first {
   padding-left: 18px; }

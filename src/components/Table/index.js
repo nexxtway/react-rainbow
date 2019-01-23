@@ -18,7 +18,7 @@ export default class Table extends Component {
         this.handleColumnSelect = this.handleColumnSelect.bind(this);
         this.onColumnResize = this.onColumnResize.bind(this);
         this.state = {
-            columns: resolveColumns(props.children),
+            columns: this.resolveColumnDefinitions(),
             tableWidth: undefined,
         };
         this.columnsWidths = this.state.columns.map((col) => {
@@ -77,9 +77,25 @@ export default class Table extends Component {
         }
     }
 
+    resolveColumnDefinitions() {
+        const { showRowNumberColumn, children } = this.props;
+        const columns = resolveColumns(children);
+        let privateColumns = [];
+        if (showRowNumberColumn) {
+            console.log('adding numerable row');
+            privateColumns = privateColumns.concat([{
+                _meta: { type: 'numerable' },
+                header: '',
+                sortable: false,
+                width: 50,
+            }]);
+        }
+        console.log(privateColumns);
+        return privateColumns.concat(columns);
+    }
+
     resolveColumnsFomChilren() {
-        const { children } = this.props;
-        const newColumns = resolveColumns(children);
+        const newColumns = this.resolveColumnDefinitions();
         this.setState({ columns: newColumns });
     }
 
@@ -177,6 +193,7 @@ Table.propTypes = {
     minColumnWidth: PropTypes.number,
     /** The maximum width for all columns. The default is 1000px. */
     maxColumnWidth: PropTypes.number,
+    showRowNumberColumn: PropTypes.bool,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied for the outer element. */
@@ -196,6 +213,7 @@ Table.defaultProps = {
     resizeColumnDisabled: false,
     minColumnWidth: 50,
     maxColumnWidth: 1000,
+    showRowNumberColumn: false,
     className: undefined,
     style: undefined,
     children: undefined,

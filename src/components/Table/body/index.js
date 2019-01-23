@@ -9,7 +9,7 @@ export default function Body(props) {
         return data.map((item, index) => {
             const key = `row-${index}`;
             return (
-                <Row key={key} data={item} columns={columns} />
+                <Row key={key} id={key} number={index} data={item} columns={columns} />
             );
         });
     }

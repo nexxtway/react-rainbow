@@ -3,16 +3,26 @@ import PropTypes from 'prop-types';
 import Cell from './cell';
 
 export default function Row(props) {
-    const { data, columns } = props;
-    const cells = columns.map(({ header, component, field }, index) => {
-        const key = `cell-${index}`;
+    const { data, columns, id, number } = props;
+    const cells = columns.map(({ header, component, field, _meta }, index) => {
+        const key = `${id}-cell-${index}`;
+        let value;
+        if (_meta !== undefined) {
+            if (_meta.type === 'numerable') {
+                value = number + 1;
+            }
+        } else {
+            value = data[field];
+        }
+        const isFirst = index === 0 && _meta === undefined;
+
         return (
             <Cell
                 key={key}
                 header={header}
                 component={component}
-                value={data[field]}
-                isFirst={index === 0} />
+                value={value}
+                isFirst={isFirst} />
         );
     });
     return (
@@ -23,11 +33,15 @@ export default function Row(props) {
 }
 
 Row.propTypes = {
+    id: PropTypes.string,
+    number: PropTypes.number,
     data: PropTypes.object,
     columns: PropTypes.array,
 };
 
 Row.defaultProps = {
+    id: undefined,
+    number: undefined,
     data: [],
     columns: [],
 };
