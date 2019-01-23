@@ -20,7 +20,7 @@ CellValue.defaultProps = {
 };
 
 export default function Cell(props) {
-    const { header, component, value, isFirst } = props;
+    const { header, component, value, isFirst, isRowNumberCell } = props;
 
     const getHeaderLabel = () => {
         if (typeof header === 'string') {
@@ -33,6 +33,7 @@ export default function Cell(props) {
         'rainbow-table_cell-content',
         {
             'rainbow-table_cell-content--first': isFirst,
+            'rainbow-table_cell-content--row-number': isRowNumberCell,
         },
         );
 
@@ -58,7 +59,7 @@ export default function Cell(props) {
             tabIndex={-1}
             data-label={getHeaderLabel()}>
 
-            <div className="rainbow-table_cell-content" role="presentation">
+            <div className={getCellContentClassName()} role="presentation">
                 <CellValue component={component} value={value} />
             </div>
         </td>
@@ -73,6 +74,7 @@ Cell.propTypes = {
     component: PropTypes.func,
     value: PropTypes.any,
     isFirst: PropTypes.bool,
+    isRowNumberCell: PropTypes.bool,
 };
 
 Cell.defaultProps = {
@@ -80,4 +82,5 @@ Cell.defaultProps = {
     component: undefined,
     value: undefined,
     isFirst: false,
+    isRowNumberCell: false,
 };

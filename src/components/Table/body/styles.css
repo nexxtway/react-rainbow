@@ -22,3 +22,6 @@
 
 .rainbow-table_cell-content--first {
   padding-left: 18px; }
+
+.rainbow-table_cell-content--row-number {
+  color: #a4a7b5; }

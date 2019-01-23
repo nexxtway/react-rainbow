@@ -7,8 +7,10 @@ export default function Row(props) {
     const cells = columns.map(({ header, component, field, _meta }, index) => {
         const key = `${id}-cell-${index}`;
         let value;
+        let isRowNumberCell = false;
         if (_meta !== undefined) {
             if (_meta.type === 'numerable') {
+                isRowNumberCell = true;
                 value = number + 1;
             }
         } else {
@@ -22,7 +24,8 @@ export default function Row(props) {
                 header={header}
                 component={component}
                 value={value}
-                isFirst={isFirst} />
+                isFirst={isFirst}
+                isRowNumberCell={isRowNumberCell} />
         );
     });
     return (
