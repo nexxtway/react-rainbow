@@ -57,7 +57,7 @@
     <div className="rainbow-p-vertical_x-large rainbow-p-left_medium">
         <div className="rainbow-m-horizontal_medium">
             <Avatar
-                icon={<FontAwesomeIcon icon={faUser} size="lg" />}
+                icon={<img src="icons/user.svg" alt="icon"  />}
                 assistiveText="user icon"
                 title="user icon" />
 
