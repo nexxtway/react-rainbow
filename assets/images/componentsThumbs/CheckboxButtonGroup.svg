@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="168px" height="74px" viewBox="0 0 168 74" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>CheckboxButtonGroup</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-9.9%" y="-50.0%" width="119.8%" height="200.0%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.0235294118   0 0 0 0 0.109803922   0 0 0 0 0.247058824  0 0 0 0.217985734 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <filter x="-5.0%" y="-25.0%" width="110.0%" height="150.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.00392156863   0 0 0 0 0.71372549   0 0 0 0 0.960784314  0 0 0 1 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="componentes-V2" transform="translate(-823.000000, -1295.000000)" fill-rule="nonzero">
+            <g id="CheckboxButtonGroup" transform="translate(824.000000, 1299.000000)">
+                <g id="Group-55" transform="translate(44.000000, 0.000000)">
+                    <g id="radio-button-group" transform="translate(-0.000000, 0.000000)">
+                        <rect id="Rectangle" stroke="#E3E5ED" fill-opacity="0.403221241" fill="#E3E5ED" x="0.5" y="0.5" width="117" height="15" rx="7.5"></rect>
+                        <g id="Group-19" transform="translate(38.000000, 0.000000)" fill="#FFFFFF" stroke="#FFFFFF">
+                            <g id="Group-13" filter="url(#filter-1)" transform="translate(0.000000, 0.000000)">
+                                <rect id="Rectangle" x="0.790752351" y="0.5" width="79.3977273" height="15" rx="7.5"></rect>
+                            </g>
+                        </g>
+                    </g>
+                    <path d="M11.2,9.6 C10.3163444,9.6 9.6,8.8836556 9.6,8 C9.6,7.1163444 10.3163444,6.4 11.2,6.4 L26.8,6.4 C27.6836556,6.4 28.4,7.1163444 28.4,8 C28.4,8.8836556 27.6836556,9.6 26.8,9.6 L11.2,9.6 Z" id="Line-12" fill="#A4A7B5"></path>
+                    <path d="M50.6,9.7 C49.7163444,9.7 49,8.9836556 49,8.1 C49,7.2163444 49.7163444,6.5 50.6,6.5 L71.4,6.5 C72.2836556,6.5 73,7.2163444 73,8.1 C73,8.9836556 72.2836556,9.7 71.4,9.7 L50.6,9.7 Z M89.6,9.7 C88.7163444,9.7 88,8.9836556 88,8.1 C88,7.2163444 88.7163444,6.5 89.6,6.5 L106.4,6.5 C107.283656,6.5 108,7.2163444 108,8.1 C108,8.9836556 107.283656,9.7 106.4,9.7 L89.6,9.7 Z" id="Line-12-Copy" fill="#576574"></path>
+                </g>
+                <g id="radio-button-group" transform="translate(0.000000, 52.000000)">
+                    <rect id="Rectangle" stroke="#E3E5ED" fill="#F0F0F5" x="2.5" y="0.5" width="116.6" height="15" rx="7.5"></rect>
+                    <g id="Group-19" transform="translate(0.400000, 0.000000)" fill="#01B6F5" stroke="#01B6F5">
+                        <g id="Group-13" filter="url(#filter-2)" transform="translate(0.600000, 0.000000)">
+                            <rect id="Rectangle" x="0.938871473" y="0.5" width="78.0909091" height="15" rx="7.5"></rect>
+                        </g>
+                    </g>
+                    <g id="RadioButtonGroup-Copy" transform="translate(11.000000, 6.000000)">
+                        <path d="M2.2,3.6 C1.3163444,3.6 0.6,2.8836556 0.6,2 C0.6,1.1163444 1.3163444,0.4 2.2,0.4 L21.8,0.4 C22.6836556,0.4 23.4,1.1163444 23.4,2 C23.4,2.8836556 22.6836556,3.6 21.8,3.6 L2.2,3.6 Z" id="Line-12" fill="#FFFFFF"></path>
+                        <path d="M41.4,3.6 C40.5163444,3.6 39.8,2.8836556 39.8,2 C39.8,1.1163444 40.5163444,0.4 41.4,0.4 L58.2,0.4 C59.0836556,0.4 59.8,1.1163444 59.8,2 C59.8,2.8836556 59.0836556,3.6 58.2,3.6 L41.4,3.6 Z" id="Line-12-Copy" fill="#FFFFFF"></path>
+                        <path d="M81.4,3.6 C80.5163444,3.6 79.8,2.8836556 79.8,2 C79.8,1.1163444 80.5163444,0.4 81.4,0.4 L98.2,0.4 C99.0836556,0.4 99.8,1.1163444 99.8,2 C99.8,2.8836556 99.0836556,3.6 98.2,3.6 L81.4,3.6 Z" id="Line-12-Copy-2" fill="#A4A7B5"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
