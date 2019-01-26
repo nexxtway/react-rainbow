@@ -11,8 +11,6 @@ const data = [
     },
 ];
 
-const CellComponent = ({ value }) => <span>{value}</span>;
-
 describe('<Table />', () => {
     it('should return a table with one column', () => {
         const component = mount(
@@ -21,20 +19,23 @@ describe('<Table />', () => {
             </Table>,
         );
 
-        const header = component.find('div.rainbow-table_header');
+        const header = component.find('th.rainbow-table_header');
         const cell = component.find('th .rainbow-table_cell-content');
 
         expect(header.text()).toBe('Name');
         expect(cell.text()).toBe('a');
     });
     it('should render the component passed to the column', () => {
+        const CellComponent = ({ value }) => <span>{value}</span>;
         const component = mount(
             <Table data={data}>
                 <Column field="name" header="Name" component={CellComponent} />
             </Table>,
         );
 
-        expect(component.find(CellComponent).exists()).toBe(true);
+        const columnComponent = component.find(CellComponent);
+        expect(columnComponent.exists()).toBe(true);
+        expect(columnComponent.text()).toBe('a');
     });
     it('should add a column', () => {
         const component = mount(
@@ -53,20 +54,31 @@ describe('<Table />', () => {
         expect(component.find('th .rainbow-table_cell-content').text()).toBe('a');
         expect(component.find('td .rainbow-table_cell-content').text()).toBe('23');
     });
-
-    it('should call onSort with the event, the field as "name" and the sortDireciton as "asc"', () => {
+    it('should call onSort with the event, the field as "name" and the sortDireciton as "asc" when a sortable column header is clicked', () => {
         const onSortMock = jest.fn();
         const component = mount(
             <Table data={data} onSort={onSortMock}>
                 <Column field="name" header="Name" sortable />
+                <Column field="number" header="Number" />,
             </Table>,
         );
         const tableHeader = component.find('.rainbow-table_header-container');
-        tableHeader.simulate('click');
+        tableHeader.at(0).simulate('click');
         expect(onSortMock).toHaveBeenCalledWith(expect.any(Object), 'name', 'asc');
     });
-
-    it('should call onSort with the event, the field as "name" and the sortDireciton as "asc" if clicked twice', () => {
+    it('should not call onSort when a non sortable column header is clicked', () => {
+        const onSortMock = jest.fn();
+        const component = mount(
+            <Table data={data} onSort={onSortMock}>
+                <Column field="name" header="Name" sortable />
+                <Column field="number" header="Number" />,
+            </Table>,
+        );
+        const tableHeader = component.find('.rainbow-table_header-container');
+        tableHeader.at(1).simulate('click');
+        expect(onSortMock).not.toHaveBeenCalled();
+    });
+    it('should call onSort the first time with sortDireciton as "desc" and the second time as "asc" when defaultSortDirection is set to "desc"', () => {
         let sortedBy;
         let sortDirection;
         const onSortMock = jest.fn((event, field, nextSortDirection) => {

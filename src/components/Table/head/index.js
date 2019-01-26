@@ -1,81 +1,68 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Header from './header';
 import './styles.css';
 
-function getColumnWidth(width, defaultWidth, innerWidth) {
-    if (innerWidth === undefined) {
-        if (defaultWidth === undefined) {
-            return width;
-        }
-        return defaultWidth;
-    }
-    return innerWidth;
-}
-
-export default function Head(props) {
-    const {
-        columns,
-        selectedColumn,
-        sortDirection,
-        defaultSortDirection,
-        onColumnSelect,
-        resizeColumnDisabled,
-        minColumnWidth,
-        maxColumnWidth,
-        columnsWidths,
-        onResize,
-        resizeGuideLineHeight,
-    } = props;
-
-    const isResizable = columnWidth => !resizeColumnDisabled && columnWidth === undefined;
-
-    const resolveSortDirection = (isSelected) => {
-        if (isSelected) {
+export default class Head extends PureComponent {
+    resolveSortDirection(field) {
+        const { sortDirection, defaultSortDirection } = this.props;
+        if (this.isSelected(field)) {
             return sortDirection;
         }
         return defaultSortDirection;
-    };
+    }
 
-    const isSelected = (field) => {
+    isSelected(field) {
+        const { selectedColumn } = this.props;
         if (field) {
             return field === selectedColumn;
         }
         return false;
-    };
-
-    if (columns) {
-        return columns.map((column, index) => {
-            const { header, field, sortable, width, defaultWidth } = column;
-            const innerWidth = columnsWidths[index];
-            const key = `header-${index}`;
-            return (
-                <Header
-                    key={key}
-                    content={header}
-                    sortable={sortable}
-                    sortDirection={resolveSortDirection(isSelected(field))}
-                    onColumnSelect={onColumnSelect}
-                    onResize={onResize}
-                    isSelected={isSelected(field)}
-                    isResizable={isResizable(width)}
-                    width={getColumnWidth(width, defaultWidth, innerWidth)}
-                    minColumnWidth={minColumnWidth}
-                    maxColumnWidth={maxColumnWidth}
-                    columnIndex={index}
-                    resizeGuideLineHeight={resizeGuideLineHeight} />
-            );
-        });
     }
-    return null;
+
+    render() {
+        const {
+            columns,
+            onSort,
+            resizeColumnDisabled,
+            minColumnWidth,
+            maxColumnWidth,
+            onResize,
+            resizeGuideLineHeight,
+        } = this.props;
+
+        if (columns) {
+            return columns.map((column, index) => {
+                const { header, field, sortable, width, defaultWidth } = column;
+                const key = `header-${index}`;
+                return (
+                    <Header
+                        key={key}
+                        content={header}
+                        sortable={sortable}
+                        sortDirection={this.resolveSortDirection(field)}
+                        onSort={onSort}
+                        onResize={onResize}
+                        isSelected={this.isSelected(field)}
+                        width={width}
+                        defaultWidth={defaultWidth}
+                        resizeColumnDisabled={resizeColumnDisabled}
+                        minColumnWidth={minColumnWidth}
+                        maxColumnWidth={maxColumnWidth}
+                        columnIndex={index}
+                        resizeGuideLineHeight={resizeGuideLineHeight} />
+                );
+            });
+        }
+        return null;
+    }
 }
 
 Head.propTypes = {
     columns: PropTypes.array,
-    columnsWidths: PropTypes.array,
     sortDirection: PropTypes.string,
     defaultSortDirection: PropTypes.string,
-    onColumnSelect: PropTypes.func,
+    onSort: PropTypes.func,
     selectedColumn: PropTypes.string,
     resizeColumnDisabled: PropTypes.bool,
     minColumnWidth: PropTypes.number,
@@ -86,10 +73,9 @@ Head.propTypes = {
 
 Head.defaultProps = {
     columns: undefined,
-    columnsWidths: undefined,
     sortDirection: undefined,
     defaultSortDirection: undefined,
-    onColumnSelect: () => {},
+    onSort: () => {},
     selectedColumn: undefined,
     resizeColumnDisabled: false,
     minColumnWidth: 50,

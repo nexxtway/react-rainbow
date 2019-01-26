@@ -1,4 +1,14 @@
 /* stylelint-disable no-descending-specificity */
+.rainbow-table_header {
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  font-weight: 900;
+  color: #576574;
+  height: 44px;
+  position: relative; }
+  .rainbow-table_header:focus {
+    outline: none; }
+
 .rainbow-table_header-wrapper {
   height: 100%;
   display: flex; }
@@ -28,7 +38,6 @@ th:first-of-type .rainbow-table_header-container {
   border-radius: 100px;
   margin-left: -1px;
   background-color: transparent;
-  will-change: transform;
   z-index: 5000; }
   .rainbow-table_header-resize-bar:hover {
     background-color: #01b6f5 !important;
@@ -37,9 +46,10 @@ th:first-of-type .rainbow-table_header-container {
       background-color: #01b6f5; }
   .rainbow-table_header-resize-bar:active {
     background-color: #009acf !important; }
+    .rainbow-table_header-resize-bar:active .rainbow-table_header-resize-bar_table-guideline {
+      background-color: #009acf; }
 
 .rainbow-table_header-resize-bar_table-guideline {
-  height: 100vh;
   background-color: transparent;
   width: 1px;
   position: absolute;
@@ -88,18 +98,6 @@ th:first-of-type .rainbow-table_header-container {
 
 .rainbow-table_header--selected:hover .rainbow-table_header-container {
   border-color: #01b6f5; }
-
-.rainbow-table_header {
-  text-transform: uppercase;
-  font-size: 0.875rem;
-  font-weight: 900;
-  color: #576574;
-  height: 44px;
-  position: relative; }
-  .rainbow-table_header:first-of-type .rainbow-table_header-content-wrapper {
-    padding-left: 18px; }
-  .rainbow-table_header:focus {
-    outline: none; }
 
 .rainbow-table_header-arrow {
   visibility: hidden; }

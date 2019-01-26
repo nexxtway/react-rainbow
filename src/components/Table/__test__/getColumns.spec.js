@@ -1,14 +1,14 @@
 import React from 'react';
 import Column from '../../Column';
-import resolveColumns from '../resolve-columns';
+import getColumns from '../getColumns';
 
-describe('resolveColumns', () => {
+describe('getColumns', () => {
     it('should return an array with the columns props', () => {
         const children = [
             <Column field="a" header="header" component={<span />} />,
         ];
 
-        const columns = resolveColumns(children);
+        const columns = getColumns(children);
         expect(columns).toEqual([{
             field: 'a',
             header: 'header',

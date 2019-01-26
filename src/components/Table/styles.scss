@@ -5,8 +5,7 @@
 
 .rainbow-table-wrapper {
     position: relative;
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow: auto;
     height: 100%;
 }
 
@@ -20,19 +19,6 @@
 
 .rainbow-table_header-row {
     box-shadow: 0 1px 0.3px 0 #e3e5ed, 0 -1px 0.3px 0 #e3e5ed;
-}
-
-.rainbow-table_fixed-header {
-    position: sticky;
-    top: 0;
-    display: flex;
-    background-color: $color-gray-1;
-}
-
-.rainbow-table-container {
-    overflow-y: auto;
-    overflow-x: hidden;
-    height: calc(100% - 44px);
 }
 
 .rainbow-table_body {

@@ -3,6 +3,19 @@
 @import "../../../styles/font-sizes";
 @import "../../../styles/paddings";
 
+.rainbow-table_header {
+    text-transform: uppercase;
+    font-size: $font-size-text-medium;
+    font-weight: 900;
+    color: $color-gray-4;
+    height: 44px;
+    position: relative;
+
+    &:focus {
+        outline: none;
+    }
+}
+
 .rainbow-table_header-wrapper {
     height: 100%;
     display: flex;
@@ -36,7 +49,6 @@ th:first-of-type .rainbow-table_header-container {
     border-radius: 100px;
     margin-left: -1px;
     background-color: transparent;
-    will-change: transform;
     z-index: 5000;
 
     &:hover {
@@ -50,11 +62,14 @@ th:first-of-type .rainbow-table_header-container {
 
     &:active {
         background-color: $color-brand-active !important;
+
+        & .rainbow-table_header-resize-bar_table-guideline {
+            background-color: $color-brand-active;
+        }
     }
 }
 
 .rainbow-table_header-resize-bar_table-guideline {
-    height: 100vh;
     background-color: transparent;
     width: 1px;
     position: absolute;
@@ -125,23 +140,6 @@ th:first-of-type .rainbow-table_header-container {
 
     &:hover .rainbow-table_header-container {
         border-color: $color-brand;
-    }
-}
-
-.rainbow-table_header {
-    text-transform: uppercase;
-    font-size: $font-size-text-medium;
-    font-weight: 900;
-    color: $color-gray-4;
-    height: 44px;
-    position: relative;
-
-    &:first-of-type .rainbow-table_header-content-wrapper {
-        padding-left: 18px;
-    }
-
-    &:focus {
-        outline: none;
     }
 }
 

@@ -1,19 +1,21 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Row from './row';
 import './styles.css';
 
-export default function Body(props) {
-    const { data, columns } = props;
-    if (Array.isArray(data) && Array.isArray(columns)) {
-        return data.map((item, index) => {
-            const key = `row-${index}`;
-            return (
-                <Row key={key} data={item} columns={columns} />
-            );
-        });
+export default class Body extends PureComponent {
+    render() {
+        const { data, columns } = this.props;
+        if (Array.isArray(data) && Array.isArray(columns)) {
+            return data.map((item, index) => {
+                const key = `row-${index}`;
+                return (
+                    <Row key={key} data={item} columns={columns} />
+                );
+            });
+        }
+        return null;
     }
-    return null;
 }
 
 Body.propTypes = {
