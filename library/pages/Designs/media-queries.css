@@ -4,10 +4,6 @@
         padding: 1.5rem 0 1rem 0;
     }
 
-    .react-rainbow-designs_cards-container {
-        flex-wrap: wrap;
-    }
-
     .react-rainbow-designs_anchor:last-child {
         margin: 0 0 32px 0;
     }
