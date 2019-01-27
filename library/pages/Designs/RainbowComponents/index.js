@@ -11,7 +11,7 @@ export default function RainbowComponents() {
             viewsAmount="20"
             downloadsAmount="333"
             imageSrc="/images/designsImages/rainbow-components.png"
-            sketchUrl="https://firebasestorage.googleapis.com/v0/b/react-rainbow-admin.appspot.com/o/rainbow-components-library.sketch?alt=media&token=ba00be00-2cc1-4998-b8d7-c6c2cdbe24ef"
+            sketchUrl="https://firebasestorage.googleapis.com/v0/b/react-rainbow-admin.appspot.com/o/rainbow-components-library.sketch?alt=media&token=bd59d932-5151-4069-bfd0-8be311eff1d6"
             previewUrl="/images/designsImages/rainbow-components.png">
 
             <h2 className="react-rainbow-rainbow-components_subtitle">

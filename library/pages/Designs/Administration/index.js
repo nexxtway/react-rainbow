@@ -11,7 +11,7 @@ export default function Administration() {
             imageSrc="/images/designsImages/admin.png"
             previewUrl="/images/designsImages/admin.png"
             liveUrl="https://react-rainbow-admin.firebaseapp.com/dashboard"
-            sketchUrl="https://firebasestorage.googleapis.com/v0/b/react-rainbow-admin.appspot.com/o/rainbow-admin.sketch?alt=media&token=9928b302-82e1-4d4c-96ae-4fe58e6a7086"
+            sketchUrl="https://firebasestorage.googleapis.com/v0/b/react-rainbow-admin.appspot.com/o/rainbow-admin.sketch?alt=media&token=8d15736f-e763-4da8-a804-fc875953044a"
             description="If you are looking for a tool to manage and visualise data about your business, it is the thing for you. We made it our priority to not add things that you don't need,
              so the Rainbow Administration comes with just enough features for you to easily use.">
 
