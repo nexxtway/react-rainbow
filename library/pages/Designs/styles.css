@@ -21,6 +21,7 @@
 
 .react-rainbow-designs_cards-container {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .react-rainbow-designs_sub-header {

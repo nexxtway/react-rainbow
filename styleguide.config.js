@@ -113,6 +113,14 @@ module.exports = {
                     name: 'Chat',
                     content: 'library/pages/Designs/chat.md',
                 },
+                {
+                    name: 'ComingSoon',
+                    content: 'library/pages/Designs/comingSoon.md',
+                },
+                {
+                    name: 'CreateProfile',
+                    content: 'library/pages/Designs/createProfile.md',
+                },
             ],
         },
     ],

@@ -8,6 +8,8 @@ import RainbowComponents from './pages/Designs/RainbowComponents';
 import Administration from './pages/Designs/Administration';
 import Authentication from './pages/Designs/Authentication';
 import Chat from './pages/Designs/Chat';
+import ComingSoon from './pages/Designs/ComingSoon';
+import CreateProfile from './pages/Designs/CreateProfile';
 
 global.GlobalHeader = GlobalHeader;
 global.CodeEditor = CodeEditor;
@@ -19,5 +21,7 @@ global.RainbowComponents = RainbowComponents;
 global.Administration = Administration;
 global.Authentication = Authentication;
 global.Chat = Chat;
+global.ComingSoon = ComingSoon;
+global.CreateProfile = CreateProfile;
 global.LIBRARY_GOOGLE_MAPS_APIKEY = process.env.REACT_APP_GOOGLE_MAPS_APIKEY;
 global.LIBRARY_RECAPTCHA_APIKEY = process.env.REACT_APP_RECAPTCHA_APIKEY;
