@@ -28,7 +28,6 @@ export default class Head extends PureComponent {
             minColumnWidth,
             maxColumnWidth,
             onResize,
-            resizeGuideLineHeight,
         } = this.props;
 
         if (columns) {
@@ -49,8 +48,7 @@ export default class Head extends PureComponent {
                         resizeColumnDisabled={resizeColumnDisabled}
                         minColumnWidth={minColumnWidth}
                         maxColumnWidth={maxColumnWidth}
-                        columnIndex={index}
-                        resizeGuideLineHeight={resizeGuideLineHeight} />
+                        field={field} />
                 );
             });
         }
@@ -68,18 +66,16 @@ Head.propTypes = {
     minColumnWidth: PropTypes.number,
     maxColumnWidth: PropTypes.number,
     onResize: PropTypes.func,
-    resizeGuideLineHeight: PropTypes.number,
 };
 
 Head.defaultProps = {
     columns: undefined,
     sortDirection: undefined,
-    defaultSortDirection: undefined,
+    defaultSortDirection: 'asc',
     onSort: () => {},
     selectedColumn: undefined,
     resizeColumnDisabled: false,
     minColumnWidth: 50,
     maxColumnWidth: 1000,
     onResize: () => {},
-    resizeGuideLineHeight: 0,
 };

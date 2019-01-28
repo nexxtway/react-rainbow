@@ -6,13 +6,15 @@ export default function Row(props) {
     const { data, columns } = props;
     const cells = columns.map(({ header, component, field }, index) => {
         const key = `cell-${index}`;
+        const value = data[field] || null;
+        const isFirst = index === 0;
         return (
             <Cell
                 key={key}
                 header={header}
                 component={component}
-                value={data[field]}
-                isFirst={index === 0} />
+                value={value}
+                isFirst={isFirst} />
         );
     });
     return (

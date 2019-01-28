@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import ArrowDown from './arrowDown';
+import SortArrowIcon from './sortArrowIcon';
 import ResizeBar from './resizeBar';
+import RenderIf from '../../RenderIf';
 
 export default class Header extends Component {
     constructor(props) {
@@ -16,6 +17,20 @@ export default class Header extends Component {
         this.headerRef = React.createRef();
     }
 
+    componentDidMount() {
+        const { width, defaultWidth } = this.props;
+        const hasWidthSet = width || defaultWidth;
+        if (!hasWidthSet && this.headerRef.current) {
+            this.setInitialWidth();
+        }
+    }
+
+    setInitialWidth() {
+        this.setState({
+            width: this.headerRef.current.getBoundingClientRect().width,
+        });
+    }
+
     getClassName() {
         const { sortable, isSelected } = this.props;
         return classnames('rainbow-table_header', {
@@ -24,7 +39,15 @@ export default class Header extends Component {
         });
     }
 
-    getHeaderTitle() {
+    getTabIndex() {
+        const { isSelected } = this.props;
+        if (isSelected) {
+            return 0;
+        }
+        return -1;
+    }
+
+    getHeaderContent() {
         const { content } = this.props;
         if (typeof content === 'string') {
             return content;
@@ -39,14 +62,14 @@ export default class Header extends Component {
 
     handleResize(width, newXPosition) {
         const { onResize } = this.props;
-        this.setState({ width });
         onResize(newXPosition);
+        this.setState({ width });
     }
 
     handleSort(event) {
-        const { onSort, columnIndex, sortable, sortDirection } = this.props;
+        const { onSort, field, sortable, sortDirection } = this.props;
         if (sortable) {
-            onSort(event, columnIndex, sortDirection);
+            onSort(event, field, sortDirection);
         }
     }
 
@@ -56,7 +79,7 @@ export default class Header extends Component {
             sortDirection,
             minColumnWidth,
             maxColumnWidth,
-            resizeGuideLineHeight,
+            sortable,
         } = this.props;
         const { width } = this.state;
         const headerStyles = {
@@ -67,25 +90,25 @@ export default class Header extends Component {
             <th
                 className={this.getClassName()}
                 style={headerStyles}
-                tabIndex={-1}
-                aria-label={this.getHeaderTitle()}
+                scope="col"
+                tabIndex={this.getTabIndex()}
+                aria-label={this.getHeaderContent()}
                 ref={this.headerRef}>
 
-                <div className="rainbow-table_header-wrapper">
+                <div className="rainbow-table_header-wrapper" style={headerStyles}>
                     <div className="rainbow-table_header-container" role="presentation" onClick={this.handleSort}>
-                        <span title={this.getHeaderTitle()} className="rainbow-table_header-content">{content}</span>
-                        <ArrowDown direction={sortDirection} />
+                        <span title={this.getHeaderContent()} className="rainbow-table_header-content">{content}</span>
+                        <RenderIf isTrue={sortable}>
+                            <SortArrowIcon direction={sortDirection} />
+                        </RenderIf>
                     </div>
                     <ResizeBar
                         minColumnWidth={minColumnWidth}
                         maxColumnWidth={maxColumnWidth}
-                        resizeGuideLineHeight={resizeGuideLineHeight}
                         isResizable={this.isResizable()}
-                        ariaLabel={this.getHeaderTitle()}
+                        ariaLabel={this.getHeaderContent()}
                         onResize={this.handleResize}
-                        headerWidth={width}
-                        headerRef={this.headerRef} />
-
+                        headerWidth={width} />
                 </div>
             </th>
         );
@@ -102,10 +125,9 @@ Header.propTypes = {
     defaultWidth: PropTypes.number,
     minColumnWidth: PropTypes.number,
     maxColumnWidth: PropTypes.number,
-    columnIndex: PropTypes.number,
     onResize: PropTypes.func,
-    resizeGuideLineHeight: PropTypes.number,
     resizeColumnDisabled: PropTypes.bool,
+    field: PropTypes.string,
 };
 
 Header.defaultProps = {
@@ -118,8 +140,7 @@ Header.defaultProps = {
     defaultWidth: undefined,
     minColumnWidth: undefined,
     maxColumnWidth: undefined,
-    columnIndex: undefined,
     onResize: () => {},
-    resizeGuideLineHeight: 0,
     resizeColumnDisabled: false,
+    field: undefined,
 };

@@ -4,44 +4,50 @@
   font-size: 0.875rem;
   font-weight: 900;
   color: #576574;
-  height: 44px;
-  position: relative; }
+  line-height: normal;
+  white-space: nowrap;
+  position: static;
+  padding: 0;
+  border-top: 0; }
   .rainbow-table_header:focus {
     outline: none; }
 
 .rainbow-table_header-wrapper {
-  height: 100%;
-  display: flex; }
+  background-color: #f4f6f9;
+  outline: none;
+  position: absolute;
+  top: 0;
+  height: 44px; }
 
 .rainbow-table_header-container {
-  height: 100%;
-  padding: 0 0.5rem;
   border: 1px transparent solid;
   display: flex;
   align-items: center;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  flex: 1; }
+  justify-content: space-between;
+  height: 44px;
+  padding: 0 0.5rem; }
 
 th:first-of-type .rainbow-table_header-container {
   padding-left: 18px; }
 
 .rainbow-table_header-content {
+  max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
-  flex: 1; }
+  white-space: nowrap; }
 
 .rainbow-table_header-resize-bar {
-  height: 100%;
-  width: 3px;
-  border-radius: 100px;
-  margin-left: -1px;
   background-color: transparent;
-  z-index: 5000; }
+  border-radius: 100px;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 3px;
+  z-index: 5000;
+  cursor: col-resize; }
   .rainbow-table_header-resize-bar:hover {
-    background-color: #01b6f5 !important;
-    cursor: col-resize; }
+    background-color: #01b6f5 !important; }
     .rainbow-table_header-resize-bar:hover .rainbow-table_header-resize-bar_table-guideline {
       background-color: #01b6f5; }
   .rainbow-table_header-resize-bar:active {
@@ -51,9 +57,10 @@ th:first-of-type .rainbow-table_header-container {
 
 .rainbow-table_header-resize-bar_table-guideline {
   background-color: transparent;
-  width: 1px;
+  height: 100vh;
   position: absolute;
-  right: 0; }
+  right: 0;
+  width: 1px; }
   .rainbow-table_header-resize-bar_table-guideline:hover {
     background-color: #01b6f5; }
   .rainbow-table_header-resize-bar_table-guideline:active {
@@ -62,7 +69,10 @@ th:first-of-type .rainbow-table_header-container {
 .rainbow-table_header-resize-bar_input {
   position: absolute !important;
   margin: -1px !important;
-  border: 0 !important;
+  border-width: 0 !important;
+  border-style: initial !important;
+  border-color: initial !important;
+  border-image: initial !important;
   padding: 0 !important;
   width: 1px !important;
   height: 1px !important;
@@ -100,6 +110,7 @@ th:first-of-type .rainbow-table_header-container {
   border-color: #01b6f5; }
 
 .rainbow-table_header-arrow {
+  flex-shrink: 0;
   visibility: hidden; }
 
 .rainbow-table_header-arrow--asc {

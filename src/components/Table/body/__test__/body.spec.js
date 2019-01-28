@@ -21,12 +21,10 @@ describe('<Rowx />', () => {
         const component = mount(<Body />);
         expect(component.children().length).toBe(0);
     });
-
     it('should return an empty component if data or columns are not arrays', () => {
         const component = mount(<Body columns={{}} data={[]} />);
         expect(component.children().length).toBe(0);
     });
-
     it('should return an array of Row components', () => {
         const component = mount(<Body data={data} columns={columns} />);
         const rows = component.find('Row');

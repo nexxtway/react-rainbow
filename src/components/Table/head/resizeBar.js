@@ -17,28 +17,22 @@ export default class ResizeBar extends Component {
 
     handleMouseUp(event) {
         event.preventDefault();
-        const { minColumnWidth, maxColumnWidth, onResize } = this.props;
+        const { headerWidth, onResize } = this.props;
         document.removeEventListener('mouseup', this.handleMouseUp);
         document.removeEventListener('mousemove', this.handleMouseMove);
-        const newWidth = this.headerWidth + this.newXPosition;
+        const newWidth = headerWidth + this.newXPosition;
+        onResize(newWidth, this.newXPosition);
         this.setState({
             resizeBarStyle: { willChange: 'transform' },
         });
-        if (newWidth < minColumnWidth) {
-            onResize(minColumnWidth, this.newXPosition);
-        } else if (newWidth > maxColumnWidth) {
-            onResize(maxColumnWidth, this.newXPosition);
-        } else {
-            onResize(newWidth, this.newXPosition);
-        }
     }
 
     handleMouseMove(event) {
         event.preventDefault();
-        const { minColumnWidth, maxColumnWidth } = this.props;
+        const { minColumnWidth, maxColumnWidth, headerWidth } = this.props;
         this.newXPosition = event.clientX - this.startXPosition;
-        const minXPosition = minColumnWidth - this.headerWidth;
-        const maxXPosition = maxColumnWidth - this.headerWidth;
+        const minXPosition = minColumnWidth - headerWidth;
+        const maxXPosition = maxColumnWidth - headerWidth;
         if (this.newXPosition < minXPosition) {
             this.newXPosition = minXPosition;
         } else if (this.newXPosition > maxXPosition) {
@@ -52,12 +46,10 @@ export default class ResizeBar extends Component {
         });
     }
 
-    handleMouseDown(dragEvent) {
-        dragEvent.preventDefault();
-        const { headerWidth, headerRef } = this.props;
-        this.headerWidth = headerWidth || headerRef.current.getBoundingClientRect().width;
+    handleMouseDown(event) {
+        event.preventDefault();
         this.newXPosition = 0;
-        this.startXPosition = dragEvent.clientX;
+        this.startXPosition = event.clientX;
         document.addEventListener('mousemove', this.handleMouseMove);
         document.addEventListener('mouseup', this.handleMouseUp);
     }
@@ -66,25 +58,13 @@ export default class ResizeBar extends Component {
         const {
             minColumnWidth,
             maxColumnWidth,
-            resizeGuideLineHeight,
             isResizable,
             ariaLabel,
         } = this.props;
         const { resizeBarStyle } = this.state;
-        const resizeGuideLineStyles = {
-            height: resizeGuideLineHeight,
-        };
 
         return (
             <RenderIf isTrue={isResizable}>
-                <input
-                    type="range"
-                    min={minColumnWidth}
-                    max={maxColumnWidth}
-                    aria-label={ariaLabel}
-                    tabIndex={-1}
-                    className="rainbow-table_header-resize-bar_input" />
-
                 <span
                     className="rainbow-table_header-resize-bar"
                     role="presentation"
@@ -92,9 +72,16 @@ export default class ResizeBar extends Component {
                     onMouseDown={this.handleMouseDown}
                     style={resizeBarStyle}>
 
+                    <input
+                        type="range"
+                        min={minColumnWidth}
+                        max={maxColumnWidth}
+                        aria-label={ariaLabel}
+                        tabIndex={-1}
+                        className="rainbow-table_header-resize-bar_input" />
+
                     <span
                         className="rainbow-table_header-resize-bar_table-guideline"
-                        style={resizeGuideLineStyles}
                         role="presentation"
                         draggable
                         onMouseDown={this.handleMouseDown} />
@@ -108,20 +95,16 @@ export default class ResizeBar extends Component {
 ResizeBar.propTypes = {
     minColumnWidth: PropTypes.number,
     maxColumnWidth: PropTypes.number,
-    resizeGuideLineHeight: PropTypes.number,
     isResizable: PropTypes.bool.isRequired,
     ariaLabel: PropTypes.string,
     onResize: PropTypes.func,
-    headerRef: PropTypes.object,
     headerWidth: PropTypes.number,
 };
 
 ResizeBar.defaultProps = {
     minColumnWidth: undefined,
     maxColumnWidth: undefined,
-    resizeGuideLineHeight: 0,
     ariaLabel: undefined,
     onResize: () => {},
-    headerRef: null,
-    headerWidth: undefined,
+    headerWidth: 0,
 };

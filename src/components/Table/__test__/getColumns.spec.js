@@ -7,7 +7,6 @@ describe('getColumns', () => {
         const children = [
             <Column field="a" header="header" component={<span />} />,
         ];
-
         const columns = getColumns(children);
         expect(columns).toEqual([{
             field: 'a',

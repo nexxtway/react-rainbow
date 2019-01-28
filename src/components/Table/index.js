@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import getColumns from './getColumns';
-import getResizeGuideLineHeight from './getResizeGuideLineHeight';
 import Body from './body';
 import Head from './head';
+import getColumns from './getColumns';
+import getNextSortDirection from './getNextSortDirection';
 import './styles.css';
 
 /**
@@ -22,7 +22,6 @@ export default class Table extends Component {
         this.handleSort = this.handleSort.bind(this);
         this.handleResize = this.handleResize.bind(this);
         this.tableRef = React.createRef();
-        this.resizeGuideLineHeight = getResizeGuideLineHeight(props.data.length);
     }
 
     componentDidUpdate({ children: prevChildren }) {
@@ -34,7 +33,7 @@ export default class Table extends Component {
 
     getContainerClassNames() {
         const { className } = this.props;
-        return classnames('rainbow-table-wrapper', className);
+        return classnames('rainbow-table_wrapper', className);
     }
 
     getUpdatedColumns() {
@@ -56,20 +55,9 @@ export default class Table extends Component {
         });
     }
 
-    handleSort(event, columnIndex, sortDirection) {
+    handleSort(event, field, sortDirection) {
         const { onSort, sortedBy } = this.props;
-        const { columns } = this.state;
-        const { field } = columns[columnIndex];
-        let nextSortDirection;
-        if (field === sortedBy) {
-            if (sortDirection === 'asc') {
-                nextSortDirection = 'desc';
-            } else {
-                nextSortDirection = 'asc';
-            }
-        } else {
-            nextSortDirection = sortDirection;
-        }
+        const nextSortDirection = getNextSortDirection(field, sortedBy, sortDirection);
         onSort(event, field, nextSortDirection);
     }
 
@@ -91,26 +79,29 @@ export default class Table extends Component {
 
         return (
             <div className={this.getContainerClassNames()} style={style}>
-                <table className="rainbow-table" style={tableStyles} ref={this.tableRef}>
-                    <thead className="rainbow-table_head">
-                        <tr className="rainbow-table_header-row">
-                            <Head
-                                columns={columns}
-                                selectedColumn={sortedBy}
-                                sortDirection={sortDirection}
-                                defaultSortDirection={defaultSortDirection}
-                                resizeColumnDisabled={resizeColumnDisabled}
-                                minColumnWidth={minColumnWidth}
-                                maxColumnWidth={maxColumnWidth}
-                                onSort={this.handleSort}
-                                onResize={this.handleResize}
-                                resizeGuideLineHeight={this.resizeGuideLineHeight} />
-                        </tr>
-                    </thead>
-                    <tbody className="rainbow-table_body">
-                        <Body data={data} columns={columns} />
-                    </tbody>
-                </table>
+                <div className="rainbow-table_container--scrollable-x">
+                    <div className="rainbow-table_container--scrollable-y" style={tableStyles}>
+                        <table className="rainbow-table" style={tableStyles} ref={this.tableRef}>
+                            <thead>
+                                <tr>
+                                    <Head
+                                        columns={columns}
+                                        selectedColumn={sortedBy}
+                                        sortDirection={sortDirection}
+                                        defaultSortDirection={defaultSortDirection}
+                                        resizeColumnDisabled={resizeColumnDisabled}
+                                        minColumnWidth={minColumnWidth}
+                                        maxColumnWidth={maxColumnWidth}
+                                        onSort={this.handleSort}
+                                        onResize={this.handleResize} />
+                                </tr>
+                            </thead>
+                            <tbody className="rainbow-table_body">
+                                <Body data={data} columns={columns} />
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         );
     }

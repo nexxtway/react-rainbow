@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { mount } from 'enzyme';
 import Table from '../index';
@@ -11,6 +10,12 @@ const data = [
     },
 ];
 
+const eventMap = {};
+document.addEventListener = jest.fn((event, cb) => {
+    eventMap[event] = cb;
+});
+const preventDefault = jest.fn();
+
 describe('<Table />', () => {
     it('should return a table with one column', () => {
         const component = mount(
@@ -20,22 +25,10 @@ describe('<Table />', () => {
         );
 
         const header = component.find('th.rainbow-table_header');
-        const cell = component.find('th .rainbow-table_cell-content');
+        const cell = component.find('th.rainbow-table_cell-container');
 
         expect(header.text()).toBe('Name');
         expect(cell.text()).toBe('a');
-    });
-    it('should render the component passed to the column', () => {
-        const CellComponent = ({ value }) => <span>{value}</span>;
-        const component = mount(
-            <Table data={data}>
-                <Column field="name" header="Name" component={CellComponent} />
-            </Table>,
-        );
-
-        const columnComponent = component.find(CellComponent);
-        expect(columnComponent.exists()).toBe(true);
-        expect(columnComponent.text()).toBe('a');
     });
     it('should add a column', () => {
         const component = mount(
@@ -43,7 +36,8 @@ describe('<Table />', () => {
                 <Column field="name" header="Name" />
             </Table>,
         );
-        expect(component.find('th .rainbow-table_cell-content').text()).toBe('a');
+        expect(component.find('.rainbow-table_cell-container').length).toBe(1);
+        expect(component.find('th.rainbow-table_cell-container').text()).toBe('a');
         component.setProps({
             children: [
                 <Column field="name" header="Name" />,
@@ -51,10 +45,98 @@ describe('<Table />', () => {
             ],
         });
         component.update();
-        expect(component.find('th .rainbow-table_cell-content').text()).toBe('a');
-        expect(component.find('td .rainbow-table_cell-content').text()).toBe('23');
+        expect(component.find('.rainbow-table_cell-container').length).toBe(2);
+        expect(component.find('th.rainbow-table_cell-container').text()).toBe('a');
+        expect(component.find('td.rainbow-table_cell-container').text()).toBe('23');
     });
-    it('should call onSort with the event, the field as "name" and the sortDireciton as "asc" when a sortable column header is clicked', () => {
+    it('should update the columns state when add a column', () => {
+        const component = mount(
+            <Table data={data}>
+                <Column field="name" header="Name" />
+            </Table>,
+        );
+        expect(component.state().columns).toEqual([{
+            field: 'name',
+            header: 'Name',
+            sortable: false,
+        }]);
+        component.setProps({
+            children: [
+                <Column field="name" header="Name" />,
+                <Column field="number" sortable />,
+            ],
+        });
+        component.update();
+        expect(component.state().columns).toEqual([{
+            field: 'name',
+            header: 'Name',
+            sortable: false,
+        }, {
+            field: 'number',
+            sortable: true,
+        }]);
+    });
+    it('should not update the columns state when the props changed are others than children', () => {
+        const columnsState = [{
+            field: 'name',
+            header: 'Name',
+            sortable: false,
+        }];
+        const component = mount(
+            <Table data={data}>
+                <Column field="name" header="Name" />
+            </Table>,
+        );
+        expect(component.state().columns).toEqual(columnsState);
+        component.setProps({
+            data: [{ email: 'john.doe@gmail.com' }],
+            sortedBy: 'email',
+            sortDirection: 'asc',
+        });
+        component.update();
+        expect(component.state().columns).toEqual(columnsState);
+    });
+    it('should set the right table width when resize for first time', () => {
+        const component = mount(
+            <Table data={data}>
+                <Column field="name" header="Name" />
+                <Column field="number" header="Number" />
+            </Table>,
+        );
+
+        const { tableRef } = component.instance();
+        tableRef.current.getBoundingClientRect = jest.fn(() => ({ width: 45 }));
+        const resizeBar = component.find('.rainbow-table_header-resize-bar');
+        expect(component.state().tableWidth).toBe(undefined);
+        resizeBar.at(0).simulate('mousedown', { clientX: 100 });
+
+        eventMap.mousemove({ clientX: 232, preventDefault });
+        eventMap.mouseup({ preventDefault });
+        expect(component.state().tableWidth).toBe(177);
+    });
+    it('should set the right table width when resize for second time', () => {
+        const component = mount(
+            <Table data={data}>
+                <Column field="name" header="Name" />
+                <Column field="number" header="Number" />
+            </Table>,
+        );
+        const { tableRef } = component.instance();
+        tableRef.current.getBoundingClientRect = jest.fn(() => ({ width: 130 }));
+        const resizeBar = component.find('.rainbow-table_header-resize-bar');
+        expect(component.state().tableWidth).toBe(undefined);
+
+        resizeBar.at(0).simulate('mousedown', { clientX: 60 });
+        eventMap.mousemove({ clientX: 120, preventDefault });
+        eventMap.mouseup({ preventDefault });
+        expect(component.state().tableWidth).toBe(190);
+
+        resizeBar.at(0).simulate('mousedown', { clientX: 120 });
+        eventMap.mousemove({ clientX: -10, preventDefault });
+        eventMap.mouseup({ preventDefault });
+        expect(component.state().tableWidth).toBe(180);
+    });
+    it('should call onSort with the right data when a sortable column header is clicked', () => {
         const onSortMock = jest.fn();
         const component = mount(
             <Table data={data} onSort={onSortMock}>
