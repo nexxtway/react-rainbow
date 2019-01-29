@@ -1,87 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="46px" height="42px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
     <title>Sketch</title>
     <desc>Created with Sketch.</desc>
     <defs>
-        <polygon id="path-1" points="6.27893428 0.857423936 14.3892266 0 22.4995188 0.857423936 28.7784567 9.28634224 14.3892266 26.0424458 0 9.28634224"></polygon>
-        <polygon id="path-3" points="5.82836249 0.48634224 14.3892266 17.2424458 0 0.48634224"></polygon>
-        <polygon id="path-5" points="9.35009056 0.48634224 0.78922656 17.2424458 15.1784567 0.48634224"></polygon>
-        <polygon id="path-7" points="0.228362488 0.48634224 17.3500906 0.48634224 8.78922656 17.2424458"></polygon>
-        <polygon id="path-9" points="8.78922656 0 0.67893428 0.857423936 0.228362488 9.28634224"></polygon>
-        <polygon id="path-11" points="0.78922656 0 8.8995188 0.857423936 9.35009056 9.28634224"></polygon>
-        <polygon id="path-13" points="6.37845672 8.48634224 0.0995188 0.057423936 0.55009056 8.48634224"></polygon>
-        <polygon id="path-15" points="0 8.48634224 6.27893428 0.057423936 5.82836249 8.48634224"></polygon>
-        <polygon id="path-17" points="8.78922656 0 0.228362488 9.28634224 17.3500906 9.28634224"></polygon>
+        <polygon id="path-1" points="10.0462948 1.3718783 23.0227625 0 35.9992301 1.3718783 46.0455308 14.8581476 23.0227625 41.6679132 0 14.8581476"></polygon>
+        <polygon id="path-3" points="9.32537998 0.778147584 23.0227625 27.5879132 0 0.778147584"></polygon>
+        <polygon id="path-5" points="14.9601449 0.778147584 1.2627625 27.5879132 24.2855308 0.778147584"></polygon>
+        <polygon id="path-7" points="0.365379981 0.778147584 27.7601449 0.778147584 14.0627625 27.5879132"></polygon>
+        <polygon id="path-9" points="14.0627625 0 1.08629485 1.3718783 0.365379981 14.8581476"></polygon>
+        <polygon id="path-11" points="1.2627625 0 14.2392301 1.3718783 14.9601449 14.8581476"></polygon>
+        <polygon id="path-13" points="10.2055308 13.5781476 0.15923008 0.0918782976 0.880144896 13.5781476"></polygon>
+        <polygon id="path-15" points="0 13.5781476 10.0462948 0.0918782976 9.32537998 13.5781476"></polygon>
+        <polygon id="path-17" points="14.0627625 0 0.365379981 14.8581476 27.7601449 14.8581476"></polygon>
     </defs>
     <g id="designs-page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="library-details" transform="translate(-704.000000, -217.000000)">
-            <g id="Sketch" transform="translate(704.000000, 217.000000)">
-                <circle id="Oval" fill="#FFFFFF" fill-rule="nonzero" cx="24" cy="24" r="24"></circle>
-                <g id="sketch-symbol" transform="translate(9.600000, 12.800000)">
-                    <g id="Fill-4-Clipped">
-                        <mask id="mask-2" fill="white">
-                            <use xlink:href="#path-1"></use>
-                        </mask>
-                        <g id="path-1"></g>
-                        <polygon id="Fill-4" fill="#FDB300" fill-rule="nonzero" mask="url(#mask-2)" points="-0.365946633 26.4083924 29.1444034 26.4083924 29.1444034 -0.365946633 -0.365946633 -0.365946633"></polygon>
-                    </g>
-                    <g id="Fill-7-Clipped" transform="translate(0.000000, 8.800000)">
-                        <mask id="mask-4" fill="white">
-                            <use xlink:href="#path-3"></use>
-                        </mask>
-                        <g id="path-3"></g>
-                        <polygon id="Fill-7" fill="#EA6C00" fill-rule="nonzero" mask="url(#mask-4)" points="-0.365946633 17.6083924 14.7551732 17.6083924 14.7551732 0.1203956 -0.365946633 0.1203956"></polygon>
-                    </g>
-                    <g id="Fill-10-Clipped" transform="translate(13.600000, 8.800000)">
-                        <mask id="mask-6" fill="white">
-                            <use xlink:href="#path-5"></use>
-                        </mask>
-                        <g id="path-5"></g>
-                        <polygon id="Fill-10" fill="#EA6C00" fill-rule="nonzero" mask="url(#mask-6)" points="0.42327992 17.6083924 15.5443997 17.6083924 15.5443997 0.1203956 0.42327992 0.1203956"></polygon>
-                    </g>
-                    <g id="Fill-13-Clipped" transform="translate(5.600000, 8.800000)">
-                        <mask id="mask-8" fill="white">
-                            <use xlink:href="#path-7"></use>
-                        </mask>
-                        <g id="path-7"></g>
-                        <polygon id="Fill-13" fill="#FDAD00" fill-rule="nonzero" mask="url(#mask-8)" points="-0.137584144 17.6083924 17.7160372 17.6083924 17.7160372 0.1203956 -0.137584144 0.1203956"></polygon>
-                    </g>
-                    <g id="Fill-16-Clipped" transform="translate(5.600000, 0.000000)">
-                        <mask id="mask-10" fill="white">
-                            <use xlink:href="#path-9"></use>
-                        </mask>
-                        <g id="path-9"></g>
-                        <polygon id="Fill-16" fill="#FDD231" fill-rule="nonzero" mask="url(#mask-10)" points="-0.137584144 9.65228888 9.1551732 9.65228888 9.1551732 -0.365946633 -0.137584144 -0.365946633"></polygon>
-                    </g>
-                    <g id="Fill-19-Clipped" transform="translate(13.600000, 0.000000)">
-                        <mask id="mask-12" fill="white">
-                            <use xlink:href="#path-11"></use>
-                        </mask>
-                        <g id="path-11"></g>
-                        <polygon id="Fill-19" fill="#FDD231" fill-rule="nonzero" mask="url(#mask-12)" points="0.42327992 9.65228888 9.7160372 9.65228888 9.7160372 -0.365946633 0.42327992 -0.365946633"></polygon>
-                    </g>
-                    <g id="Fill-22-Clipped" transform="translate(22.400000, 0.800000)">
-                        <mask id="mask-14" fill="white">
-                            <use xlink:href="#path-13"></use>
-                        </mask>
-                        <g id="path-13"></g>
-                        <polygon id="Fill-22" fill="#FDAD00" fill-rule="nonzero" mask="url(#mask-14)" points="-0.26642784 8.85228888 6.74439968 8.85228888 6.74439968 -0.308522694 -0.26642784 -0.308522694"></polygon>
-                    </g>
-                    <g id="Fill-25-Clipped" transform="translate(0.000000, 0.800000)">
-                        <mask id="mask-16" fill="white">
-                            <use xlink:href="#path-15"></use>
-                        </mask>
-                        <g id="path-15"></g>
-                        <polygon id="Fill-25" fill="#FDAD00" fill-rule="nonzero" mask="url(#mask-16)" points="-0.365946633 8.85228888 6.64488091 8.85228888 6.64488091 -0.308522694 -0.365946633 -0.308522694"></polygon>
-                    </g>
-                    <g id="Fill-28-Clipped" transform="translate(5.600000, 0.000000)">
-                        <mask id="mask-18" fill="white">
-                            <use xlink:href="#path-17"></use>
-                        </mask>
-                        <g id="path-17"></g>
-                        <polygon id="Fill-28" fill="#FEEEB7" fill-rule="nonzero" mask="url(#mask-18)" points="-0.137584144 9.65228888 17.7160372 9.65228888 17.7160372 -0.365946633 -0.137584144 -0.365946633"></polygon>
-                    </g>
+        <g id="Sketch" transform="translate(-1.000000, -1.000000)">
+            <g id="sketch-symbol" transform="translate(0.960000, 1.280000)">
+                <g id="Fill-4-Clipped">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="path-1"></g>
+                    <polygon id="Fill-4" fill="#FDB300" fill-rule="nonzero" mask="url(#mask-2)" points="-0.585514612 42.2534278 46.6310454 42.2534278 46.6310454 -0.585514612 -0.585514612 -0.585514612"></polygon>
+                </g>
+                <g id="Fill-7-Clipped" transform="translate(0.000000, 14.080000)">
+                    <mask id="mask-4" fill="white">
+                        <use xlink:href="#path-3"></use>
+                    </mask>
+                    <g id="path-3"></g>
+                    <polygon id="Fill-7" fill="#EA6C00" fill-rule="nonzero" mask="url(#mask-4)" points="-0.585514612 28.1734278 23.6082771 28.1734278 23.6082771 0.19263296 -0.585514612 0.19263296"></polygon>
+                </g>
+                <g id="Fill-10-Clipped" transform="translate(21.760000, 14.080000)">
+                    <mask id="mask-6" fill="white">
+                        <use xlink:href="#path-5"></use>
+                    </mask>
+                    <g id="path-5"></g>
+                    <polygon id="Fill-10" fill="#EA6C00" fill-rule="nonzero" mask="url(#mask-6)" points="0.677247872 28.1734278 24.8710395 28.1734278 24.8710395 0.19263296 0.677247872 0.19263296"></polygon>
+                </g>
+                <g id="Fill-13-Clipped" transform="translate(8.960000, 14.080000)">
+                    <mask id="mask-8" fill="white">
+                        <use xlink:href="#path-7"></use>
+                    </mask>
+                    <g id="path-7"></g>
+                    <polygon id="Fill-13" fill="#FDAD00" fill-rule="nonzero" mask="url(#mask-8)" points="-0.22013463 28.1734278 28.3456595 28.1734278 28.3456595 0.19263296 -0.22013463 0.19263296"></polygon>
+                </g>
+                <g id="Fill-16-Clipped" transform="translate(8.960000, 0.000000)">
+                    <mask id="mask-10" fill="white">
+                        <use xlink:href="#path-9"></use>
+                    </mask>
+                    <g id="path-9"></g>
+                    <polygon id="Fill-16" fill="#FDD231" fill-rule="nonzero" mask="url(#mask-10)" points="-0.22013463 15.4436622 14.6482771 15.4436622 14.6482771 -0.585514612 -0.22013463 -0.585514612"></polygon>
+                </g>
+                <g id="Fill-19-Clipped" transform="translate(21.760000, 0.000000)">
+                    <mask id="mask-12" fill="white">
+                        <use xlink:href="#path-11"></use>
+                    </mask>
+                    <g id="path-11"></g>
+                    <polygon id="Fill-19" fill="#FDD231" fill-rule="nonzero" mask="url(#mask-12)" points="0.677247872 15.4436622 15.5456595 15.4436622 15.5456595 -0.585514612 0.677247872 -0.585514612"></polygon>
+                </g>
+                <g id="Fill-22-Clipped" transform="translate(35.840000, 1.280000)">
+                    <mask id="mask-14" fill="white">
+                        <use xlink:href="#path-13"></use>
+                    </mask>
+                    <g id="path-13"></g>
+                    <polygon id="Fill-22" fill="#FDAD00" fill-rule="nonzero" mask="url(#mask-14)" points="-0.426284544 14.1636622 10.7910395 14.1636622 10.7910395 -0.49363631 -0.426284544 -0.49363631"></polygon>
+                </g>
+                <g id="Fill-25-Clipped" transform="translate(0.000000, 1.280000)">
+                    <mask id="mask-16" fill="white">
+                        <use xlink:href="#path-15"></use>
+                    </mask>
+                    <g id="path-15"></g>
+                    <polygon id="Fill-25" fill="#FDAD00" fill-rule="nonzero" mask="url(#mask-16)" points="-0.585514612 14.1636622 10.6318095 14.1636622 10.6318095 -0.49363631 -0.585514612 -0.49363631"></polygon>
+                </g>
+                <g id="Fill-28-Clipped" transform="translate(8.960000, 0.000000)">
+                    <mask id="mask-18" fill="white">
+                        <use xlink:href="#path-17"></use>
+                    </mask>
+                    <g id="path-17"></g>
+                    <polygon id="Fill-28" fill="#FEEEB7" fill-rule="nonzero" mask="url(#mask-18)" points="-0.22013463 15.4436622 28.3456595 15.4436622 28.3456595 -0.585514612 -0.22013463 -0.585514612"></polygon>
                 </g>
             </g>
         </g>

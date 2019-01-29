@@ -1,31 +1,38 @@
 .react-rainbow-donwload-button_anchor {
     margin-right: 32px;
     box-shadow: 0 0 2px 0 #e3e5ed;
-    border-radius: 100%;
+    border-radius: 100px;
     position: relative;
-}
-
-.react-rainbow-donwload-button_button--hover {
-    display: flex;
-    justify-content: center;
+    background-color: white;
+    display: inline-flex;
     align-items: center;
-    background-color: transparent;
-    height: 48px;
-    width: 48px;
-    border-radius: 100%;
-    position: absolute;
-    top: -14px;
-    left: 0;
+    justify-content: center;
+    padding: 0 24px 0 16px;
+    line-height: 44px;
+    border: solid 1px #e3e5ed;
 }
 
-.react-rainbow-donwload-button_button--hover:hover {
-    background-color: rgba(6, 28, 63, 0.5);
+.react-rainbow-donwload-button_anchor:hover {
+    background-color: #f9f9f9;
+    text-decoration: none;
+}
+
+.react-rainbow-donwload-button_anchor:focus {
+    box-shadow: 0 0 2px 0 #01b6f5;
+}
+
+.react-rainbow-donwload-button_anchor:active {
+    transform: scale(0.95);
+    transition: all 0.2s ease;
+}
+
+.react-rainbow-donwload-button_text {
+    font-size: 16px;
+    color: #01b6f5;
 }
 
 .react-rainbow-donwload-button_icon {
-    width: 0;
-}
-
-.react-rainbow-donwload-button_button--hover:hover > .react-rainbow-donwload-button_icon {
-    width: auto;
+    width: 24px;
+    margin-right: 12px;
+    flex-shrink: 0;
 }

@@ -71,11 +71,13 @@ export default function DesignDetails(props) {
                         •
                         <span> {downloadsAmount} downloads </span>
                     </h3> */}
-                    <Card className="react-rainbow-design-detail_img" style={cardStyles}>
-                        <InnerImg
-                            liveUrl={liveUrl}
-                            previewUrl={previewUrl} />
-                    </Card>
+                    <a href={previewUrl} target="_blank" rel="noopener noreferrer">
+                        <Card className="react-rainbow-design-detail_img" style={cardStyles}>
+                            <InnerImg
+                                liveUrl={liveUrl}
+                                previewUrl={previewUrl} />
+                        </Card>
+                    </a>
                 </article>
                 <article className="react-rainbow-design-detail_info-container">
                     <DonwloadDesignButtons
