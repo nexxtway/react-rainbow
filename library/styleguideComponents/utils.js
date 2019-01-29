@@ -8,6 +8,7 @@ const pages = [
     'Chat',
     'ComingSoon',
     'CreateProfile',
+    'Team',
 ];
 
 export default function isNotComponentPage(name) {
