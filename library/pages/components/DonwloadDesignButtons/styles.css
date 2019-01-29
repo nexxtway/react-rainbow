@@ -19,12 +19,13 @@
 
 .react-rainbow-donwload-button_anchor:focus {
     box-shadow: 0 0 2px 0 #01b6f5;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .react-rainbow-donwload-button_anchor:active {
     transform: scale(0.95);
     transition: all 0.2s ease;
+    text-decoration: none;
 }
 
 .react-rainbow-donwload-button_text {
