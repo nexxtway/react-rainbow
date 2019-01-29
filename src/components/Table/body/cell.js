@@ -5,7 +5,7 @@ function CellValue({ component: CellComponent, value }) {
     if (CellComponent) {
         return <CellComponent value={value} />;
     }
-    return <span>{value}</span>;
+    return value;
 }
 
 CellValue.propTypes = {

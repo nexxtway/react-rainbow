@@ -1,37 +1,53 @@
-/* eslint-disable no-param-reassign,class-methods-use-this */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import SortArrowIcon from './sortArrowIcon';
+import ResizeBar from './resizeBar';
 import RenderIf from '../../RenderIf';
-import ArrowDown from './arrowDown';
 
 export default class Header extends Component {
     constructor(props) {
         super(props);
-        this.handleMouseDown = this.handleMouseDown.bind(this);
-        this.handleMouseMove = this.handleMouseMove.bind(this);
-        this.handleMouseUp = this.handleMouseUp.bind(this);
-        this.handleColumnSelect = this.handleColumnSelect.bind(this);
-        this.resizeBar = React.createRef();
+        const { width, defaultWidth } = props;
+        this.state = {
+            width: defaultWidth || width,
+        };
+        this.handleSort = this.handleSort.bind(this);
+        this.handleResize = this.handleResize.bind(this);
+        this.headerRef = React.createRef();
     }
 
-    setColumnWdith(width) {
-        const { columnIndex, onResize } = this.props;
-        onResize(columnIndex, width);
+    componentDidMount() {
+        const { width, defaultWidth } = this.props;
+        const hasWidthSet = width || defaultWidth;
+        if (!hasWidthSet && this.headerRef.current) {
+            this.setInitialWidth();
+        }
+    }
+
+    setInitialWidth() {
+        this.setState({
+            width: this.headerRef.current.getBoundingClientRect().width,
+        });
     }
 
     getClassName() {
         const { sortable, isSelected } = this.props;
-        return classnames(
-            'rainbow-table_header',
-            {
-                'rainbow-table_header--sortable': sortable,
-                'rainbow-table_header--selected': isSelected,
-            },
-        );
+        return classnames('rainbow-table_header', {
+            'rainbow-table_header--sortable': sortable,
+            'rainbow-table_header--selected': isSelected,
+        });
     }
 
-    getHeaderTitle() {
+    getTabIndex() {
+        const { isSelected } = this.props;
+        if (isSelected) {
+            return 0;
+        }
+        return -1;
+    }
+
+    getHeaderContent() {
         const { content } = this.props;
         if (typeof content === 'string') {
             return content;
@@ -39,106 +55,62 @@ export default class Header extends Component {
         return undefined;
     }
 
-    handleMouseUp(event) {
-        event.preventDefault();
-        document.removeEventListener('mouseup', this.handleMouseUp);
-        document.removeEventListener('mousemove', this.handleMouseMove);
-        const { minColumnWidth, maxColumnWidth, width } = this.props;
-        this.resizeBar.current.style.transform = 'unset';
-        const newWidth = width + this.newXPosition;
-        if (newWidth < minColumnWidth) {
-            this.setColumnWdith(minColumnWidth);
-        } else if (newWidth > maxColumnWidth) {
-            this.setColumnWdith(maxColumnWidth);
-        } else {
-            this.setColumnWdith(newWidth);
-        }
+    isResizable() {
+        const { resizeColumnDisabled, width } = this.props;
+        return !resizeColumnDisabled && width === undefined;
     }
 
-    handleMouseMove(event) {
-        event.preventDefault();
-        const { minColumnWidth, maxColumnWidth, width } = this.props;
-        this.newXPosition = event.clientX - this.startXPosition;
-        const minXPosition = minColumnWidth - width;
-        const maxXPosition = maxColumnWidth - width;
-        if (this.newXPosition < minXPosition) {
-            this.newXPosition = minXPosition;
-        } else if (this.newXPosition > maxXPosition) {
-            this.newXPosition = maxXPosition;
-        }
-        this.resizeBar.current.style.transform = `translateX(${this.newXPosition}px)`;
+    handleResize(width, newXPosition) {
+        const { onResize } = this.props;
+        onResize(newXPosition);
+        this.setState({ width });
     }
 
-    handleMouseDown(dragEvent) {
-        dragEvent.preventDefault();
-        const { isResizable } = this.props;
-        if (isResizable) {
-            this.newXPosition = 0;
-            this.startXPosition = dragEvent.clientX;
-            document.addEventListener('mousemove', this.handleMouseMove);
-            document.addEventListener('mouseup', this.handleMouseUp);
-        }
-    }
-
-    handleColumnSelect(event) {
-        const { onColumnSelect, columnIndex, sortable, sortDirection } = this.props;
+    handleSort(event) {
+        const { onSort, field, sortable, sortDirection } = this.props;
         if (sortable) {
-            onColumnSelect(event, columnIndex, sortDirection);
+            onSort(event, field, sortDirection);
         }
     }
 
     render() {
         const {
             content,
-            isResizable,
             sortDirection,
             minColumnWidth,
             maxColumnWidth,
-            width,
-            resizeGuideLineHeight,
+            sortable,
         } = this.props;
-        const headerStyles = { width };
-        const resizeGuideLineStyles = { height: resizeGuideLineHeight };
+        const { width } = this.state;
+        const headerStyles = {
+            width,
+        };
 
         return (
-            <div
+            <th
                 className={this.getClassName()}
                 style={headerStyles}
-                tabIndex={-1}
-                aria-label={this.getHeaderTitle()}>
-                <div className="rainbow-table_header-wrapper">
-                    <div className="rainbow-table_header-container" role="presentation" onClick={this.handleColumnSelect}>
-                        <span title={this.getHeaderTitle()} className="rainbow-table_header-content">{content}</span>
-                        <ArrowDown direction={sortDirection} />
+                scope="col"
+                tabIndex={this.getTabIndex()}
+                aria-label={this.getHeaderContent()}
+                ref={this.headerRef}>
+
+                <div className="rainbow-table_header-wrapper" style={headerStyles}>
+                    <div className="rainbow-table_header-container" role="presentation" onClick={this.handleSort}>
+                        <span title={this.getHeaderContent()} className="rainbow-table_header-content">{content}</span>
+                        <RenderIf isTrue={sortable}>
+                            <SortArrowIcon direction={sortDirection} />
+                        </RenderIf>
                     </div>
-
-                    <RenderIf isTrue={isResizable}>
-                        <div
-                            className="rainbow-table_header-resize-bar"
-                            role="presentation"
-                            draggable
-                            onMouseDown={this.handleMouseDown}
-                            ref={this.resizeBar}>
-
-                            <input
-                                type="range"
-                                min={minColumnWidth}
-                                max={maxColumnWidth}
-                                aria-label={this.getHeaderTitle()}
-                                tabIndex={-1}
-                                className="rainbow-table_header-resize-bar_input" />
-
-                            <div
-                                className="rainbow-table_header-resize-bar_table-guideline"
-                                style={resizeGuideLineStyles}
-                                role="presentation"
-                                draggable
-                                onMouseDown={this.handleMouseDown} />
-
-                        </div>
-                    </RenderIf>
+                    <ResizeBar
+                        minColumnWidth={minColumnWidth}
+                        maxColumnWidth={maxColumnWidth}
+                        isResizable={this.isResizable()}
+                        ariaLabel={this.getHeaderContent()}
+                        onResize={this.handleResize}
+                        headerWidth={width} />
                 </div>
-            </div>
+            </th>
         );
     }
 }
@@ -148,14 +120,14 @@ Header.propTypes = {
     isSelected: PropTypes.bool,
     sortable: PropTypes.bool,
     sortDirection: PropTypes.string,
-    onColumnSelect: PropTypes.func,
+    onSort: PropTypes.func,
     width: PropTypes.number,
+    defaultWidth: PropTypes.number,
     minColumnWidth: PropTypes.number,
     maxColumnWidth: PropTypes.number,
-    columnIndex: PropTypes.number,
     onResize: PropTypes.func,
-    isResizable: PropTypes.bool,
-    resizeGuideLineHeight: PropTypes.number,
+    resizeColumnDisabled: PropTypes.bool,
+    field: PropTypes.string,
 };
 
 Header.defaultProps = {
@@ -163,12 +135,12 @@ Header.defaultProps = {
     isSelected: false,
     sortable: false,
     sortDirection: undefined,
-    onColumnSelect: () => {},
+    onSort: () => {},
     width: undefined,
+    defaultWidth: undefined,
     minColumnWidth: undefined,
     maxColumnWidth: undefined,
-    columnIndex: undefined,
     onResize: () => {},
-    isResizable: true,
-    resizeGuideLineHeight: 0,
+    resizeColumnDisabled: false,
+    field: undefined,
 };

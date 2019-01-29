@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-export default function ArrowDown({ direction }) {
-    const getClassName = () => classnames(
-        'rainbow-table_header-arrow',
-        { 'rainbow-table_header-arrow--asc': direction === 'asc' },
-    );
+export default function SortArrowIcon({ direction }) {
+    const getClassName = () => classnames('rainbow-table_header-arrow', {
+        'rainbow-table_header-arrow--asc': direction === 'asc',
+    });
+
     return (
         <svg className={getClassName()} width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg">
             <g id="components" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
@@ -26,10 +26,10 @@ export default function ArrowDown({ direction }) {
     );
 }
 
-ArrowDown.propTypes = {
+SortArrowIcon.propTypes = {
     direction: PropTypes.oneOf(['asc', 'desc']),
 };
 
-ArrowDown.defaultProps = {
-    direction: 'desc',
+SortArrowIcon.defaultProps = {
+    direction: 'asc',
 };

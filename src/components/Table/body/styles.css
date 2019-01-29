@@ -10,17 +10,16 @@
     border-color: #01b6f5; }
 
 .rainbow-table_cell-content {
-  display: flex;
-  align-items: center;
-  font-size: 0.875rem;
+  border: 1px solid transparent;
   color: #576574;
+  font-size: 0.875rem;
   height: 40px;
-  padding-left: 1rem;
-  padding-right: 4px;
+  line-height: 40px;
+  padding: 0 0.5rem;
+  max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
-  border: 1px solid transparent; }
+  white-space: nowrap; }
 
 th:first-of-type .rainbow-table_cell-content {
   padding-left: 18px; }

@@ -1,29 +1,22 @@
 /* stylelint-disable no-descending-specificity */
-.rainbow-table-wrapper {
+.rainbow-table_wrapper {
   position: relative;
-  overflow-x: auto;
-  overflow-y: hidden;
   height: 100%; }
 
+.rainbow-table_container--scrollable-x {
+  height: 100%;
+  max-width: 100%;
+  overflow: auto hidden;
+  position: relative;
+  padding-top: 44px; }
+
+.rainbow-table_container--scrollable-y {
+  max-height: 100%;
+  overflow: hidden auto; }
+
 .rainbow-table {
-  table-layout: fixed; }
-
-.rainbow-table_head {
-  background-color: #f4f6f9; }
-
-.rainbow-table_header-row {
-  box-shadow: 0 1px 0.3px 0 #e3e5ed, 0 -1px 0.3px 0 #e3e5ed; }
-
-.rainbow-table_fixed-header {
-  position: sticky;
-  top: 0;
-  display: flex;
-  background-color: #f4f6f9; }
-
-.rainbow-table-container {
-  overflow-y: auto;
-  overflow-x: hidden;
-  height: calc(100% - 44px); }
+  table-layout: fixed;
+  border-collapse: separate; }
 
 .rainbow-table_body {
   background-color: #fff; }

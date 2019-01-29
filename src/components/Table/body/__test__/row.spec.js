@@ -22,8 +22,7 @@ describe('<Row />', () => {
     });
     it('should return the amount of Cell components that correspond with the columns', () => {
         const component = mount(<Row data={data} columns={columns} />);
-        const trElement = component.find('tr');
-        const cell = trElement.find('Cell');
+        const cell = component.find('Cell');
 
         expect(cell.length).toBe(2);
         expect(cell.get(0).props).toEqual({
@@ -36,5 +35,19 @@ describe('<Row />', () => {
             value: 26,
             isFirst: false,
         });
+    });
+    it('should set the right value to isFirst prop in Cell component', () => {
+        const component = mount(<Row data={data} columns={columns} />);
+        const cell = component.find('Cell');
+        expect(cell.at(0).prop('isFirst')).toBe(true);
+        expect(cell.at(1).prop('isFirst')).toBe(false);
+    });
+    it('should set null to value prop in Cell component when the column field does not exists', () => {
+        const wrongColumns = [{
+            field: 'wrong field',
+        }];
+        const component = mount(<Row data={data} columns={wrongColumns} />);
+        const cell = component.find('Cell');
+        expect(cell.at(0).prop('value')).toBe(null);
     });
 });
