@@ -9002,9 +9002,9 @@ react-lifecycles-compat@^3.0.0, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
 
-react-prismic-cms@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/react-prismic-cms/-/react-prismic-cms-0.2.0.tgz#9a3c7a6e201e3e2d9c793ad36894d839dfc91f05"
+react-prismic-cms@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/react-prismic-cms/-/react-prismic-cms-0.3.1.tgz#63357769076514b51f2429bd31f1baaf81057e7a"
   dependencies:
     classnames "^2.2.6"
     prismic-javascript "^1.5.0"
