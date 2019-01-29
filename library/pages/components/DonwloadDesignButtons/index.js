@@ -3,7 +3,6 @@ import React from 'react';
 import SketchLogo from './sketch.svg';
 import IllustratorLogo from './illustrator.svg';
 import PhotoshopLogo from './photoshop.svg';
-import DonwloadIcon from './cloud-arrow-donwload.svg';
 import RenderIf from './../../../../src/components/RenderIf';
 import './styles.css';
 
@@ -11,10 +10,8 @@ function AnchorIcon({ logo, href, alt }) {
     return (
         <RenderIf isTrue={!!href}>
             <a className="react-rainbow-donwload-button_anchor" href={href}>
-                <img src={logo} alt={alt} />
-                <div className="react-rainbow-donwload-button_button--hover">
-                    <img className="react-rainbow-donwload-button_icon" src={DonwloadIcon} alt="donwload icon" />
-                </div>
+                <img className="react-rainbow-donwload-button_icon" src={logo} alt={alt} />
+                <p className="react-rainbow-donwload-button_text">Download</p>
             </a>
         </RenderIf>
     );
