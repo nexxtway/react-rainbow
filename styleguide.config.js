@@ -125,6 +125,10 @@ module.exports = {
                     name: 'Team',
                     content: 'library/pages/Designs/team.md',
                 },
+                {
+                    name: 'SocialIconsSet',
+                    content: 'library/pages/Designs/socialIconsSet.md',
+                },
             ],
         },
     ],

@@ -9,6 +9,7 @@ const pages = [
     'ComingSoon',
     'CreateProfile',
     'Team',
+    'SocialIconsSet',
 ];
 
 export default function isNotComponentPage(name) {

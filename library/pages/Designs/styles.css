@@ -48,7 +48,8 @@
 }
 
 .react-rainbow-designs_image {
-    height: 7rem;
+    width: 100%;
+    max-width: 100%;
 }
 
 .react-rainbow-designs_image-websites {
