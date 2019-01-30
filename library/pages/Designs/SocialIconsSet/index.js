@@ -17,7 +17,7 @@ export default function SocialIconsSet() {
                 How to begin using this library?
             </h2>
             <p className="react-rainbow-rainbow-components_description">
-                Start using the Rainbow social icons set is simple. There are two ways:
+                Start using the Rainbow Social Icons set is simple. There are two ways:
             </p>
             <ol className="react-rainbow-rainbow-components_list">
                 <li className="react-rainbow-rainbow-components_list-element">
