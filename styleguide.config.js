@@ -121,6 +121,10 @@ module.exports = {
                     name: 'CreateProfile',
                     content: 'library/pages/Designs/createProfile.md',
                 },
+                {
+                    name: 'Team',
+                    content: 'library/pages/Designs/team.md',
+                },
             ],
         },
     ],

@@ -5,6 +5,7 @@ import AuthenticationImage from './../../../../assets/images/designsImages/authe
 import ChatImage from './../../../../assets/images/designsImages/chat.svg';
 import ComingSoonImage from './../../../../assets/images/designsImages/coming-soon.svg';
 import CreateProfileImage from './../../../../assets/images/designsImages/create-profile.svg';
+import TeamImage from './../../../../assets/images/designsImages/team.svg';
 
 export const libraryPages = [
     { name: 'Rainbow Components', icon: <img alt="raibow logo" className="react-rainbow-designs_image" src={RainbowLibraryImage} />, href: '/#/Designs/RainbowComponents' },
@@ -16,4 +17,5 @@ export const websitePages = [
     { name: 'Rainbow Chat', icon: <img alt="Chat" className="react-rainbow-designs_image-websites" src={ChatImage} />, href: '/#/Designs/Chat' },
     { name: 'Rainbow Coming soon', icon: <img alt="Coming Soon" className="react-rainbow-designs_image-websites" src={ComingSoonImage} />, href: '/#/Designs/ComingSoon' },
     { name: 'Rainbow Create Profile', icon: <img alt="Create Profile" className="react-rainbow-designs_image-websites" src={CreateProfileImage} />, href: '/#/Designs/CreateProfile' },
+    { name: 'Rainbow Team', icon: <img alt="Team" className="react-rainbow-designs_image-websites" src={TeamImage} />, href: '/#/Designs/Team' },
 ];
