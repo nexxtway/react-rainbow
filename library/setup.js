@@ -11,6 +11,8 @@ import Chat from './pages/Designs/Chat';
 import ComingSoon from './pages/Designs/ComingSoon';
 import CreateProfile from './pages/Designs/CreateProfile';
 import Team from './pages/Designs/Team';
+import SocialIconsSet from './pages/Designs/SocialIconsSet';
+
 
 global.GlobalHeader = GlobalHeader;
 global.CodeEditor = CodeEditor;
@@ -25,5 +27,6 @@ global.Chat = Chat;
 global.ComingSoon = ComingSoon;
 global.CreateProfile = CreateProfile;
 global.Team = Team;
+global.SocialIconsSet = SocialIconsSet;
 global.LIBRARY_GOOGLE_MAPS_APIKEY = process.env.REACT_APP_GOOGLE_MAPS_APIKEY;
 global.LIBRARY_RECAPTCHA_APIKEY = process.env.REACT_APP_RECAPTCHA_APIKEY;
