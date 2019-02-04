@@ -24,8 +24,8 @@
   .rainbow-button-icon:hover, .rainbow-button-icon:focus, .rainbow-button-icon:active {
     color: #009acf; }
   .rainbow-button-icon:active {
-    transform: scale(0.9);
-    transition: all 0.2s ease; }
+    transform: scale(0.7);
+    transition: all 0.3s ease; }
   .rainbow-button-icon:focus {
     outline: 0;
     box-shadow: 0 0 2px #01b6f5; }
