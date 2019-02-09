@@ -27,6 +27,14 @@ class CheckboxGroup extends Component {
         return undefined;
     }
 
+    getValue() {
+        const { value } = this.props;
+        if (typeof value === 'string') {
+            return [];
+        }
+        return value;
+    }
+
     getCheckboxContainerClassNames() {
         const { error, className } = this.props;
         return classnames(
@@ -49,7 +57,7 @@ class CheckboxGroup extends Component {
     }
 
     render() {
-        const { id, value, options, required, label, error, style, name } = this.props;
+        const { id, options, required, label, error, style, name } = this.props;
         return (
             <fieldset id={id} className={this.getCheckboxContainerClassNames()} style={style}>
                 <RenderIf isTrue={!!label}>
@@ -60,7 +68,7 @@ class CheckboxGroup extends Component {
                 </RenderIf>
                 <div className="rainbow-checkbox-group_content-container">
                     <CheckboxList
-                        values={value}
+                        values={this.getValue()}
                         options={options}
                         onChange={this.handleOnChange}
                         describedBy={this.getErrorMessageId()}
@@ -94,7 +102,10 @@ CheckboxGroup.propTypes = {
     name: PropTypes.string,
     /** The list of selected checkboxes. Each array entry contains the value of a selected checkbox.
      * The value of each checkbox is set in the options attribute. */
-    value: PropTypes.arrayOf(PropTypes.string),
+    value: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.string),
+        PropTypes.string,
+    ]),
     /** Set to true if at least one checkbox must be selected. This value defaults to false. */
     required: PropTypes.bool,
     /** Specifies that an input field must be filled out before submitting the form. */
