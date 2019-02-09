@@ -29,7 +29,7 @@ class CheckboxGroup extends Component {
 
     getValue() {
         const { value } = this.props;
-        if (typeof (value) === 'string') {
+        if (typeof value === 'string') {
             return [];
         }
         return value;
