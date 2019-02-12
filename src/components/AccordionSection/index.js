@@ -7,8 +7,8 @@ import { uniqueId } from './../../libs/utils';
 import { Consumer } from './../Accordion/context';
 import ButtonIcon from './../ButtonIcon';
 import RightArrow from './rightArrow';
-import isInArray from './is-in-array';
-import removeItemFromArray from './remove-item-from-array';
+import isInArray from './isInArray';
+import removeItemFromArray from './removeItemFromArray';
 import './styles.css';
 
 class AccordionItem extends Component {

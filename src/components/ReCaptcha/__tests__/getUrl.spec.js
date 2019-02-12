@@ -1,4 +1,4 @@
-import getUrl from '../get-url';
+import getUrl from '../getUrl';
 
 describe('getUrl function', () => {
     it('should return the recaptcha url without the lang param', () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import Dataset from '../../Dataset';
-import resolveDatasets from '../resolve-datasets';
+import resolveDatasets from '../resolveDatasets';
 
 describe('resolveDatasets function', () => {
     it('should return the dataset array with all the data', () => {

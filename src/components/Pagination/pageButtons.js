@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import getFirstItem from './get-first-item';
+import getFirstItem from './getFirstItem';
 
 export default function PageButtons(props) {
     const { pages, activePage, onChange } = props;

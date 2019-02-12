@@ -1,4 +1,4 @@
-import getFirstItem from '../get-first-item';
+import getFirstItem from '../getFirstItem';
 
 const pages = 7;
 

@@ -1,4 +1,4 @@
-import resolveOptions from '../resolve-options';
+import resolveOptions from '../resolveOptions';
 
 const baseOptions = {
     legend: {

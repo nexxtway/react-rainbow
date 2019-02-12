@@ -1,4 +1,4 @@
-import isInArray from './../is-in-array';
+import isInArray from '../isInArray';
 
 const arrayContainer = ['onion', 'carrot', 'tomato', 'chard'];
 const itemToMatch = 'chard';

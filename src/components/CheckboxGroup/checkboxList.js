@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Checkbox from './checkbox';
-import isOptionSelected from './is-option-selected';
+import isOptionSelected from './isOptionSelected';
 
 export default function CheckboxList({ values, options, onChange, describedBy, name }) {
     return options.map((option, index) => {

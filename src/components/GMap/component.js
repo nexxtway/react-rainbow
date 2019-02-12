@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import RenderIf from './../RenderIf';
 import Header from './header';
 import { Provider } from './context';
-import getMapContainerStyles from './get-map-container-styles';
+import getMapContainerStyles from './getMapContainerStyles';
 import './styles.css';
 
 const currentInfoWindow = Symbol('currentInfoWindow');

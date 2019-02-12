@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import scriptLoader from 'react-async-script-loader';
 import withReduxForm from '../../libs/hocs/withReduxForm';
-import getUrl from './get-url';
+import getUrl from './getUrl';
 import ReCaptchaWrapper from './wrapper';
 
 /**

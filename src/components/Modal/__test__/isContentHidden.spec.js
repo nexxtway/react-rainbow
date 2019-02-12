@@ -1,4 +1,4 @@
-import isContentHidden from './../is-content-hidden';
+import isContentHidden from '../isContentHidden';
 
 window.getComputedStyle = element => ({
     getPropertyValue: property => element.style[property],

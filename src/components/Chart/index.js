@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import ChartJS from 'chart.js';
-import resolveOptions from './resolve-options';
-import resolveDatasets from './resolve-datasets';
+import resolveOptions from './resolveOptions';
+import resolveDatasets from './resolveDatasets';
 import './styles.css';
 
 /**
