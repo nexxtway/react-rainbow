@@ -1,4 +1,4 @@
-import isContentHidden from './is-content-hidden';
+import isContentHidden from './isContentHidden';
 
 const tabbableNode = /input|select|textarea|button|object/;
 

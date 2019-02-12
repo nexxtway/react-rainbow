@@ -8,7 +8,7 @@ import { uniqueId } from './../../libs/utils';
 import { ESCAPE_KEY, TAB_KEY } from './../../libs/constants';
 import Header from './header';
 import CloseIcon from './closeIcon';
-import manageTab from './manage-tab';
+import manageTab from './manageTab';
 import './styles.css';
 
 /**

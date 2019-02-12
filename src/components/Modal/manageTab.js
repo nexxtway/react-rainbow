@@ -1,4 +1,4 @@
-import findTabbableElements from './find-tabbable-elements';
+import findTabbableElements from './findTabbableElements';
 
 export default function manageTab(node, event) {
     const tabbable = findTabbableElements(node);

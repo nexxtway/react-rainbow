@@ -1,4 +1,4 @@
-import removeItemFromArray from '../remove-item-from-array';
+import removeItemFromArray from '../removeItemFromArray';
 
 const oldArray = ['onion', 'carrot', 'tomato', 'chard'];
 const itemToRemove = 'chard';

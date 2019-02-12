@@ -1,4 +1,4 @@
-import getMaxHeight from './../compute-max-height';
+import getMaxHeight from './../getMaxHeight';
 
 describe('getMaxHeight', () => {
     it('should return the right height when is expanded and children has length of 3', () => {

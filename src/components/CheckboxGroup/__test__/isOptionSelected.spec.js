@@ -1,4 +1,4 @@
-import isOptionSelected from './../is-option-selected';
+import isOptionSelected from './../isOptionSelected';
 
 const option = {
     value: 'value-1',

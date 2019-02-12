@@ -1,4 +1,4 @@
-import getMapContainerStyles from './../get-map-container-styles';
+import getMapContainerStyles from './../getMapContainerStyles';
 
 describe('getMapContainerStyles', () => {
     it('should return null if a ref is not passed', () => {
