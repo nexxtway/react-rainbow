@@ -202,6 +202,7 @@ export default class PrimitiveMenu extends Component {
 
     openMenu() {
         window.addEventListener('click', this.handleClick);
+        window.addEventListener('touchstart', this.handleClick);
         setTimeout(() => this.focusChild(0), 0);
         return this.setState({
             isOpen: true,
@@ -210,6 +211,7 @@ export default class PrimitiveMenu extends Component {
 
     closeMenu() {
         window.removeEventListener('click', this.handleClick);
+        window.removeEventListener('touchstart', this.handleClick);
         return this.setState({
             isOpen: false,
             childFocusedIndex: -1,
