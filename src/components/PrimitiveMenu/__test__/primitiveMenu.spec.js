@@ -110,6 +110,42 @@ describe('<PrimitiveMenu/>', () => {
         const dropdown = component.find('ul[role="menu"]').parent();
         expect(dropdown.prop('className')).toBe('rainbow-primitive-menu_dropdown rainbow-primitive-menu_dropdown--right rainbow-primitive-menu_dropdown--xx-small');
     });
+    it('should have the right class names when menuAlignment is center', () => {
+        const component = mount(
+            <PrimitiveMenu trigger={ButtonIcon} menuAlignment="center">
+                <span />
+            </PrimitiveMenu>,
+        );
+        const dropdown = component.find('ul[role="menu"]').parent();
+        expect(dropdown.prop('className')).toBe('rainbow-primitive-menu_dropdown rainbow-primitive-menu_dropdown--center rainbow-primitive-menu_dropdown--xx-small');
+    });
+    it('should have the right class names when menuAlignment is bottom', () => {
+        const component = mount(
+            <PrimitiveMenu trigger={ButtonIcon} menuAlignment="bottom">
+                <span />
+            </PrimitiveMenu>,
+        );
+        const dropdown = component.find('ul[role="menu"]').parent();
+        expect(dropdown.prop('className')).toBe('rainbow-primitive-menu_dropdown rainbow-primitive-menu_dropdown--bottom rainbow-primitive-menu_dropdown--xx-small');
+    });
+    it('should have the right class names when menuAlignment is bottom-right', () => {
+        const component = mount(
+            <PrimitiveMenu trigger={ButtonIcon} menuAlignment="bottom-right">
+                <span />
+            </PrimitiveMenu>,
+        );
+        const dropdown = component.find('ul[role="menu"]').parent();
+        expect(dropdown.prop('className')).toBe('rainbow-primitive-menu_dropdown rainbow-primitive-menu_dropdown--bottom-right rainbow-primitive-menu_dropdown--xx-small');
+    });
+    it('should have the right class names when menuAlignment is bottom-left', () => {
+        const component = mount(
+            <PrimitiveMenu trigger={ButtonIcon} menuAlignment="bottom-left">
+                <span />
+            </PrimitiveMenu>,
+        );
+        const dropdown = component.find('ul[role="menu"]').parent();
+        expect(dropdown.prop('className')).toBe('rainbow-primitive-menu_dropdown rainbow-primitive-menu_dropdown--bottom-left rainbow-primitive-menu_dropdown--xx-small');
+    });
     it('should have the right class names when menuSize is x-small', () => {
         const component = mount(
             <PrimitiveMenu trigger={ButtonIcon} menuSize="x-small">

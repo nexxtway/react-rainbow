@@ -83,10 +83,15 @@ AvatarMenu.propTypes = {
         'large',
     ]),
     /** Determines the alignment of the menu relative to the AvatarMenu.
-    * Available options are: left, center, right, bottom-left, bottom-center, bottom-right.
+    * Available options are: left, center, right, bottom, bottom-left, bottom-right.
     * This value defaults to left. */
     menuAlignment: PropTypes.oneOf([
-        'left', 'right', 'bottom',
+        'left',
+        'right',
+        'bottom',
+        'center',
+        'bottom-right',
+        'bottom-left',
     ]),
     /** If is set to true, then is showed a loading symbol. */
     isLoading: PropTypes.bool,

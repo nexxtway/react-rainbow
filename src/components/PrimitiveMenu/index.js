@@ -306,7 +306,7 @@ PrimitiveMenu.propTypes = {
         PropTypes.object,
     ]),
     /** The size of the menu. Options include xx-small, x-small, medium, or large.
-    * This value defaults to small. */
+    * This value defaults to xx-small. */
     menuSize: PropTypes.oneOf([
         'xx-small',
         'x-small',
@@ -315,10 +315,16 @@ PrimitiveMenu.propTypes = {
         'large',
     ]),
     /** Determines the alignment of the menu relative to the trigger element.
-    * Available options are: left, center, right, bottom-left, bottom-center, bottom-right.
+    * Available options are: left, center, right, bottom, bottom-left, bottom-right.
     * This value defaults to left. */
     menuAlignment: PropTypes.oneOf([
-        'left', 'right', 'bottom',
+        'left',
+        'right',
+        'bottom',
+        'center',
+        'bottom-right',
+        'bottom-left',
+
     ]),
     /** If is set to true, then is showed a loading symbol. */
     isLoading: PropTypes.bool,
