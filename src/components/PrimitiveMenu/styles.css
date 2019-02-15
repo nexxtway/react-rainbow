@@ -45,6 +45,19 @@
   top: auto;
   bottom: 100%; }
 
+.rainbow-primitive-menu_dropdown--bottom-right {
+  top: auto;
+  bottom: 100%;
+  left: auto;
+  right: 0;
+  transform: translateX(0); }
+
+.rainbow-primitive-menu_dropdown--bottom-left {
+  top: auto;
+  bottom: 100%;
+  left: 0;
+  transform: translateX(0); }
+
 .rainbow-primitive-menu_dropdown--xx-small {
   min-width: 6rem; }
 

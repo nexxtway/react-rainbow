@@ -87,10 +87,15 @@ ButtonMenu.propTypes = {
         'large',
     ]),
     /** Determines the alignment of the menu relative to the button.
-    * Available options are: left, center, right, bottom-left, bottom-center, bottom-right.
+    * Available options are: left, center, right, bottom, bottom-left, bottom-right.
     * This value defaults to left. */
     menuAlignment: PropTypes.oneOf([
-        'left', 'right', 'bottom',
+        'left',
+        'right',
+        'bottom',
+        'center',
+        'bottom-right',
+        'bottom-left',
     ]),
     /** If true, the menu is disabled. Disabling the menu prevents users from opening it.
     * This value defaults to false. */
