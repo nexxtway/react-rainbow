@@ -256,8 +256,8 @@
     .rainbow-input[type="time"],
     .rainbow-input[type="week"],
     .rainbow-input[type="month"] {
-        -webkit-appearance: none;
-        -moz-appearance: none;
+        -webkit-appearance: textfield;
+        -moz-appearance: textfield;
         position: relative;
 
         &::after {

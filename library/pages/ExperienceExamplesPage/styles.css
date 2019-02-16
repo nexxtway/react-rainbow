@@ -1,6 +1,6 @@
 .react-rainbow-experience-examples-view-port {
     background-color: #f4f6f9;
-    height: calc(100vh - 68px);
+    min-height: calc(100vh - 68px);
 }
 
 .react-rainbow-experience-examples-header-title {
