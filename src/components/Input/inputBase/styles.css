@@ -181,3 +181,37 @@
 .rainbow-input_icon--right .rainbow-input_bare {
   right: 0.8rem;
   padding-right: 2.35rem; }
+
+@supports (-webkit-overflow-scrolling: touch) {
+  .rainbow-input[type="date"],
+  .rainbow-input[type="datetime-local"],
+  .rainbow-input[type="time"],
+  .rainbow-input[type="week"],
+  .rainbow-input[type="month"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative; }
+    .rainbow-input[type="date"]::after,
+    .rainbow-input[type="datetime-local"]::after,
+    .rainbow-input[type="time"]::after,
+    .rainbow-input[type="week"]::after,
+    .rainbow-input[type="month"]::after {
+      content: '';
+      position: absolute;
+      display: block;
+      right: 1rem;
+      bottom: 45%;
+      pointer-events: none;
+      width: 0.45rem;
+      height: 0.45rem;
+      border-style: solid;
+      border-width: 0.15em 0.15em 0 0;
+      transform: rotate(135deg);
+      vertical-align: top;
+      color: #061c3f; }
+    .rainbow-input[type="date"][disabled]::after,
+    .rainbow-input[type="datetime-local"][disabled]::after,
+    .rainbow-input[type="time"][disabled]::after,
+    .rainbow-input[type="week"][disabled]::after,
+    .rainbow-input[type="month"][disabled]::after {
+      color: #e3e5ed; } }

@@ -249,3 +249,35 @@
         padding-right: 2.35rem;
     }
 }
+
+@supports (-webkit-overflow-scrolling: touch) {
+    .rainbow-input[type="date"],
+    .rainbow-input[type="datetime-local"],
+    .rainbow-input[type="time"],
+    .rainbow-input[type="week"],
+    .rainbow-input[type="month"] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            display: block;
+            right: 1rem;
+            bottom: 45%;
+            pointer-events: none;
+            width: 0.45rem;
+            height: 0.45rem;
+            border-style: solid;
+            border-width: 0.15em 0.15em 0 0;
+            transform: rotate(135deg);
+            vertical-align: top;
+            color: $color-dark-1;
+        }
+
+        &[disabled]::after {
+            color: $color-gray-2;
+        }
+    }
+}
