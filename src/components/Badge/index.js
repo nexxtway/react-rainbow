@@ -33,7 +33,7 @@ export default function Badge(props) {
 
     return (
         <span className={getClassName()} style={style}>
-            <Content label={label}>
+            <Content className="rainbow-badge_content--truncate" label={label}>
                 {children}
             </Content>
         </span>

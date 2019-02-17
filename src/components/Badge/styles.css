@@ -15,7 +15,8 @@
   text-transform: uppercase;
   letter-spacing: 0.0625em;
   padding: 0.25rem 0.75rem;
-  border-radius: 12rem; }
+  border-radius: 12rem;
+  overflow: hidden; }
 
 .rainbow-badge + .rainbow-badge {
   margin-left: 0.5rem; }
@@ -39,3 +40,8 @@
   color: #fff;
   background-color: #576574;
   border: 1px solid transparent; }
+
+.rainbow-badge_content--truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
