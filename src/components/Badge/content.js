@@ -3,20 +3,19 @@ import PropTypes from 'prop-types';
 
 export default function Content(props) {
     const {
-        className,
         label,
         children,
     } = props;
 
-    if (children !== null && children !== undefined) {
+    if (children || children === 0) {
         return (
-            <span className={className}>
+            <span className="rainbow-badge_content--truncate">
                 {children}
             </span>
         );
     }
     return (
-        <span className={className}>
+        <span className="rainbow-badge_content--truncate">
             {label}
         </span>
     );
@@ -26,16 +25,11 @@ Content.propTypes = {
     label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
-    children: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.node),
-        PropTypes.object,
-    ]),
-    className: PropTypes.string,
+    children: PropTypes.node,
 };
 
 Content.defaultProps = {
     label: null,
     children: null,
-    className: undefined,
 };
 

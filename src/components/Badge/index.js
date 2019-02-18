@@ -33,7 +33,7 @@ export default function Badge(props) {
 
     return (
         <span className={getClassName()} style={style}>
-            <Content className="rainbow-badge_content--truncate" label={label}>
+            <Content label={label}>
                 {children}
             </Content>
         </span>
@@ -47,10 +47,7 @@ Badge.propTypes = {
     ]),
     /** The content of the badge. Used to render icon or text elements inside the badge.
     * Children takes precedence over label. */
-    children: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.node),
-        PropTypes.object,
-    ]),
+    children: PropTypes.node,
     /** The variant changes the appearance of the badge. Accepted variants include default,
     * inverse, lightest, brand and outline-brand. This value defaults to default. */
     variant: PropTypes.oneOf([
