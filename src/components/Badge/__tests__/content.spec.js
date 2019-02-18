@@ -17,13 +17,13 @@ describe('<Content/>', () => {
         );
         expect(component.find('span').text()).toBe('Label in Content');
     });
-    falsyValues.forEach((falsyValue) => {
-        it(`should return the label when children is ${falsyValue}`, () => {
+    it('should return the label when children is a falsy value other than zero', () => {
+        falsyValues.forEach((falsyValue) => {
             const component = mount(
                 <Content label="Label in Content">
                     {falsyValue}
                 </Content>,
-        );
+            );
             expect(component.find('span').text()).toBe('Label in Content');
         });
     });

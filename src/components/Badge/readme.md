@@ -2,16 +2,10 @@
 
     <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
         <div className="rainbow-m-horizontal_medium">
-            <Badge label={"0"} />
+            <Badge label="Lightest Badge" variant="lightest" />
         </div>
         <div className="rainbow-m-horizontal_medium">
-            <Badge label={0} />
-        </div>
-        <div className="rainbow-m-horizontal_medium">
-            <Badge>{"0"}</Badge>
-        </div>
-        <div className="rainbow-m-horizontal_medium">
-            <Badge>{0}</Badge>
+            <Badge label="Outline Badge" variant="outline-brand" />
         </div>
     </div>
 
