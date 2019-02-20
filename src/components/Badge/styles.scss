@@ -27,6 +27,7 @@
     letter-spacing: 0.0625em;
     padding: $padding-xx-small $padding-small;
     border-radius: $border-radius-2;
+    overflow: hidden;
 }
 
 .rainbow-badge + .rainbow-badge {
@@ -47,4 +48,10 @@
 
 .rainbow-badge--inverse {
     @include colors(#fff, $color-gray-4);
+}
+
+.rainbow-badge_content--truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

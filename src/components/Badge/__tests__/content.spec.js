@@ -1,27 +1,55 @@
+import React from 'react';
+import { mount } from 'enzyme';
 import Content from './../content';
+
+const falsyValues = [
+    false,
+    null,
+    undefined,
+    NaN,
+    '',
+];
 
 describe('<Content/>', () => {
     it('should return the label when there are not children', () => {
-        const label = 'Label in Content';
-        expect(Content({ label })).toBe(label);
+        const component = mount(
+            <Content label="Label in Content" />,
+        );
+        expect(component.find('span').text()).toBe('Label in Content');
     });
-    it('should return the label when children is null', () => {
-        const label = 'Label in Content';
-        const children = null;
-        expect(Content({ label, children })).toBe(label);
+    it('should return the label when children is a falsy value other than zero', () => {
+        falsyValues.forEach((falsyValue) => {
+            const component = mount(
+                <Content label="Label in Content">
+                    {falsyValue}
+                </Content>,
+            );
+            expect(component.find('span').text()).toBe('Label in Content');
+        });
     });
-    it('should return the label when children is undefined', () => {
-        const label = 'Label in Content';
-        const children = undefined;
-        expect(Content({ label, children })).toBe(label);
+    it('should return the 0 when children is 0', () => {
+        const zero = 0;
+        const component = mount(
+            <Content label="Label in Content">
+                {zero}
+            </Content>,
+        );
+        expect(component.find('span').text()).toBe('0');
     });
     it('should return children when label and children are passed', () => {
-        const label = 'Label in Content';
-        const children = 'Children in Content';
-        expect(Content({ label, children })).toBe(children);
+        const component = mount(
+            <Content label="Label in Content">
+                Children in Content
+            </Content>,
+        );
+        expect(component.find('span').text()).toBe('Children in Content');
     });
     it('should return children when label is not passed', () => {
-        const children = 'Children in Content';
-        expect(Content({ children })).toBe(children);
+        const component = mount(
+            <Content>
+                Children in Content
+            </Content>,
+        );
+        expect(component.find('span').text()).toBe('Children in Content');
     });
 });
