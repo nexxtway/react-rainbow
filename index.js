@@ -1,5 +1,6 @@
 import Accordion from './Accordion';
 import AccordionSection from './AccordionSection';
+import Application from './Application';
 import Avatar from './Avatar';
 import AvatarMenu from './AvatarMenu';
 import Badge from './Badge';
@@ -49,6 +50,7 @@ import VerticalSectionOverflow from './VerticalSectionOverflow';
 export {
     Accordion,
     AccordionSection,
+    Application,
     Avatar,
     AvatarMenu,
     Badge,
