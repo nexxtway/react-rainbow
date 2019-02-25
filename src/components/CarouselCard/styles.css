@@ -11,13 +11,21 @@
   overflow: hidden;
   position: relative;
   display: -ms-flexbox;
-  display: flex; }
+  display: flex;
+  border-radius: 0.875rem;
+  border: 1px solid #dddbda;
+  box-shadow: 0 1px 2px 0 #e3e5ed; }
+  .rainbow-carousel_images:active, .rainbow-carousel_images:focus {
+    color: inherit;
+    text-decoration: inherit;
+    box-shadow: 0 0 8px #01b6f5;
+    outline: none; }
 
 .rainbow-carousel_indicators {
   -ms-flex-item-align: center;
   -ms-grid-row-align: center;
   align-self: center;
-  margin: 0.5rem 0; }
+  margin: 1.5rem 0 0.5rem 0; }
 
 .rainbow-carousel_indicators-container {
   display: -ms-inline-flexbox;

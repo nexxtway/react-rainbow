@@ -16,24 +16,14 @@
 
 .rainbow-carousel-image {
     display: block;
-    border: 1px solid #dddbda;
     border-radius: $border-radius-1;
-    box-shadow: $shadow-4;
     overflow: hidden;
     cursor: pointer;
     line-height: inherit;
     font-size: inherit;
     color: inherit;
     text-decoration: inherit;
-    height: calc(100% - 0.75rem);
-
-    &:active,
-    &:focus {
-        color: inherit;
-        text-decoration: inherit;
-        box-shadow: $shadow-outline-2;
-        outline: none;
-    }
+    height: 100%;
 }
 
 .rainbow-carousel-image_content-image-container {
@@ -62,7 +52,7 @@
     font-weight: 600;
 }
 
-$animation-duration: 250ms;
+$animation-duration: 550ms;
 
 @mixin animation-properties() {
     animation-timing-function: linear;

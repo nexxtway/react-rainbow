@@ -1,7 +1,4 @@
-.rainbow-badge {
-  color: #576574;
-  background-color: #e3e5ed;
-  border: 1px solid transparent;
+.rainbow-badge, .rainbow-badge_content--truncate {
   display: -ms-inline-flexbox;
   display: inline-flex;
   -ms-flex-pack: center;
@@ -9,7 +6,12 @@
   -ms-flex-line-pack: center;
   align-content: center;
   -ms-flex-align: center;
-  align-items: center;
+  align-items: center; }
+
+.rainbow-badge {
+  color: #576574;
+  background-color: #e3e5ed;
+  border: 1px solid transparent;
   font-size: 0.75rem;
   line-height: normal;
   text-transform: uppercase;

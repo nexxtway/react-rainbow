@@ -10,9 +10,7 @@
     border: 1px solid $border-color;
 }
 
-.rainbow-badge {
-    @include colors($color-gray-4, $color-gray-2);
-
+%common-styles {
     display: -ms-inline-flexbox;
     display: inline-flex;
     -ms-flex-pack: center;
@@ -21,6 +19,13 @@
     align-content: center;
     -ms-flex-align: center;
     align-items: center;
+}
+
+.rainbow-badge {
+    @include colors($color-gray-4, $color-gray-2);
+
+    @extend %common-styles;
+
     font-size: $font-size-text-small;
     line-height: normal;
     text-transform: uppercase;
@@ -51,6 +56,8 @@
 }
 
 .rainbow-badge_content--truncate {
+    @extend %common-styles;
+
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
