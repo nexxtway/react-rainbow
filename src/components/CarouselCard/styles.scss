@@ -17,13 +17,24 @@
     position: relative;
     display: -ms-flexbox;
     display: flex;
+    border-radius: $border-radius-1;
+    border: 1px solid #dddbda;
+    box-shadow: $shadow-4;
+
+    &:active,
+    &:focus {
+        color: inherit;
+        text-decoration: inherit;
+        box-shadow: $shadow-outline-2;
+        outline: none;
+    }
 }
 
 .rainbow-carousel_indicators {
     -ms-flex-item-align: center;
     -ms-grid-row-align: center;
     align-self: center;
-    margin: 0.5rem 0;
+    margin: 1.5rem 0 0.5rem 0;
 }
 
 .rainbow-carousel_indicators-container {
