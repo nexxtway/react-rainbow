@@ -9,6 +9,7 @@ import { ESCAPE_KEY, TAB_KEY } from './../../libs/constants';
 import Header from './header';
 import CloseIcon from './closeIcon';
 import manageTab from './manageTab';
+import { disableScroll, enableScroll } from './scrollController';
 import './styles.css';
 
 /**
@@ -33,6 +34,7 @@ export default class Modal extends Component {
         const { isOpen } = this.props;
         if (isOpen) {
             document.body.style.overflow = 'hidden';
+            disableScroll();
             this.modalTriggerElement = document.activeElement;
             this.modalRef.current.focus();
         }
@@ -41,8 +43,10 @@ export default class Modal extends Component {
     componentDidUpdate() {
         const { isOpen } = this.props;
         document.body.style.overflow = 'inherit';
+        enableScroll();
         if (isOpen) {
             document.body.style.overflow = 'hidden';
+            disableScroll();
             this.modalTriggerElement = document.activeElement;
             this.modalRef.current.focus();
         }
@@ -50,6 +54,7 @@ export default class Modal extends Component {
 
     componentWillUnmount() {
         document.body.style.overflow = 'inherit';
+        enableScroll();
     }
 
     getBackDropClassNames() {
