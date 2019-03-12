@@ -57,7 +57,7 @@ ReactDOM.render(
 
 Yes, it's really all you need to get started as you can see in this live and interactive demo:
 
-[![Edit Button](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/24p8n0pnz0?from-embed)
+[![Edit Button](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/24p8n0pnz0?from-embed) [![Join the chat at https://gitter.im/react-rainbow/community](https://badges.gitter.im/react-rainbow/community.svg)](https://gitter.im/react-rainbow/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## Running locally
 1. git clone https://github.com/90milesbridge/react-rainbow.git
