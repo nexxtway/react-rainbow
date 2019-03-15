@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactGA from '.././../ga';
 import RenderIf from '../../../src/components/RenderIf';
-import Button from '../../../src/components/Button';
+import ButtonIcon from '../../../src/components/ButtonIcon';
 import ComponentsPage from '../../pages/ComponentsPage';
 import ProjectSelector from '../ProjectSelector';
 import GitterChat from '../GitterChat';
+import chat from './../../../assets/icons/chat.svg';
 import './styles.css';
 
 // analytics
@@ -49,7 +50,12 @@ export default class StyleGuide extends React.Component {
                         <ComponentsPage components={components} />
                     </RenderIf>
                 </main>
-                <Button label="Open Chat" className="react-rainbow-styleguide-open-chat-button" />
+                <ButtonIcon
+                    className="react-rainbow-styleguide-open-chat-button"
+                    shaded
+                    variant="brand"
+                    size="large"
+                    icon={<img src={chat} alt="chat icon" />} />
                 <GitterChat room="react-rainbow-components/community" activationElement=".react-rainbow-styleguide-open-chat-button" />
             </div>
         );

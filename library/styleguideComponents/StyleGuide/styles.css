@@ -55,14 +55,20 @@
 
 .react-rainbow-styleguide-open-chat-button {
     position: fixed;
-    bottom: 10px;
-    right: 10px;
+    bottom: 24px;
+    right: 24px;
+    width: 64px;
+    height: 64px;
 }
 
 @media (max-width: 800px) {
     .react-rainbow-main-content {
         width: calc(100vw - 87px);
         margin-left: 87px;
+    }
+    .react-rainbow-styleguide-open-chat-button {
+        bottom: 12px;
+        right: 12px;
     }
 }
 
