@@ -50,7 +50,7 @@ export default class StyleGuide extends React.Component {
                     </RenderIf>
                 </main>
                 <Button label="Open Chat" className="react-rainbow-styleguide-open-chat-button" />
-                <GitterChat room="react-rainbow-components" activationElement=".react-rainbow-styleguide-open-chat-button" />
+                <GitterChat room="react-rainbow-components/community" activationElement=".react-rainbow-styleguide-open-chat-button" />
             </div>
         );
     }
