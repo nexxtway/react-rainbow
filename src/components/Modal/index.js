@@ -39,13 +39,15 @@ export default class Modal extends Component {
         }
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps) {
         const { isOpen } = this.props;
-        enableScroll();
-        if (isOpen) {
+        const { isOpen: prevIsOpen } = prevProps;
+        if (isOpen && !prevIsOpen) {
             disableScroll();
             this.modalTriggerElement = document.activeElement;
             this.modalRef.current.focus();
+        } else if (!isOpen && prevIsOpen) {
+            enableScroll();
         }
     }
 
