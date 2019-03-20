@@ -1,0 +1,66 @@
+@import "../../styles/colors";
+@import "../../styles/font-sizes";
+@import "../../styles/border-radius";
+@import "../../styles/shadows";
+
+.rainbow-date-picker_container {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.rainbow-date-picker_label {
+    color: $color-gray-4;
+    font-size: $font-size-text-medium;
+    line-height: 1.5;
+    margin-bottom: 0.125rem;
+    align-self: center;
+
+    &:empty {
+        margin: 0;
+    }
+}
+
+.rainbow-date-picker_input-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.rainbow-date-picker_input {
+    background-color: white;
+    border: 1px solid $color-gray-3;
+    border-radius: $border-radius-2;
+    width: 100%;
+    transition: all 0.1s linear;
+    display: inline-block;
+    padding: 0 3rem 0 1rem;
+    line-height: 2.5rem;
+    height: 2.5rem;
+    color: $color-dark-1;
+    font-size: $font-size-text-large;
+
+    &:focus,
+    &:active {
+        outline: 0;
+        line-height: 2.5rem;
+        padding-left: 0.9375rem;
+        border: 2px $color-brand solid;
+        background-color: white;
+        box-shadow: $shadow-outline;
+    }
+
+    &::placeholder {
+        color: $color-gray-3;
+        font-weight: 300;
+        font-size: $font-size-text-large;
+    }
+}
+
+.rainbow-date-picker_icon {
+    position: absolute;
+    right: 16px;
+}
