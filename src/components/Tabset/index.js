@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Provider } from './context';
+import ButtonGroup from './../ButtonGroup';
+import ButtonIcon from './../ButtonIcon';
 import { LEFT_KEY, RIGHT_KEY } from '../../libs/constants';
 import { getChildTabNodes, insertChildOrderly } from './utils';
+import RightThinChevron from './rightThinChevron';
+import LeftThinChevron from './leftThinChevron';
 import './styles.css';
 
 const RIGHT_SIDE = 1;
@@ -23,6 +27,10 @@ export default class Tabset extends Component {
         this.registerTab = this.registerTab.bind(this);
         this.unRegisterTab = this.unRegisterTab.bind(this);
         this.handleKeyPressed = this.handleKeyPressed.bind(this);
+        this.isFirstTab = this.isFirstTab.bind(this);
+        this.isLastTab = this.isLastTab.bind(this);
+        this.handleSelectPrevTab = this.handleSelectPrevTab.bind(this);
+        this.handleSelectNextTab = this.handleSelectNextTab.bind(this);
         this.keyHandlerMap = {
             [RIGHT_KEY]: () => this.selectTab(RIGHT_SIDE),
             [LEFT_KEY]: () => this.selectTab(LEFT_SIDE),
@@ -63,6 +71,35 @@ export default class Tabset extends Component {
         }
     }
 
+    isFirstTab() {
+        const { activeTabName } = this.props;
+        const { tabChildren } = this.state;
+        const tabIndex = tabChildren.findIndex(tab => tab.name === activeTabName);
+        if (tabIndex === 0) {
+            return true;
+        }
+        return false;
+    }
+
+    isLastTab() {
+        const { activeTabName } = this.props;
+        const { tabChildren } = this.state;
+        const lastTab = tabChildren.length - 1;
+        const tabIndex = tabChildren.findIndex(tab => tab.name === activeTabName);
+        if (lastTab === tabIndex) {
+            return true;
+        }
+        return false;
+    }
+
+    handleSelectNextTab() {
+        return this.selectTab(RIGHT_SIDE);
+    }
+
+    handleSelectPrevTab() {
+        return this.selectTab(LEFT_SIDE);
+    }
+
     registerTab(tab) {
         const { tabChildren } = this.state;
         const [...nodes] = getChildTabNodes(this.containerRef.current);
@@ -98,6 +135,19 @@ export default class Tabset extends Component {
                 }}>
                     {children}
                 </Provider>
+
+                <ButtonGroup className="rainbow-tabset_button-group">
+                    <ButtonIcon
+                        icon={<LeftThinChevron className="rainbow-tabset_button-icon" />}
+                        disabled={this.isFirstTab()}
+                        onClick={this.handleSelectPrevTab}
+                        variant="border" />
+                    <ButtonIcon
+                        icon={<RightThinChevron className="rainbow-tabset_button-icon" />}
+                        disabled={this.isLastTab()}
+                        onClick={this.handleSelectNextTab}
+                        variant="border" />
+                </ButtonGroup>
             </ul>
         );
     }

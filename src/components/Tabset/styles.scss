@@ -8,5 +8,25 @@
 }
 
 .rainbow-tabset--full-width {
-    justify-content: space-around;
+    justify-content: space-between;
+}
+
+.rainbow-tabset_button-group {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .rainbow-tabset {
+        border-bottom: solid 1px $color-gray-1;
+    }
+
+    .rainbow-tabset_button-group {
+        display: inherit;
+        margin-left: 1rem;
+    }
+
+    .rainbow-tabset_button-icon {
+        fill: $color-gray-1;
+        color: $color-gray-1;
+    }
 }

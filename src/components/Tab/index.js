@@ -29,6 +29,7 @@ class TabItem extends Component {
         const { className, fullWidth } = this.props;
         return classnames('rainbow-tab', {
             'rainbow-tab--full-width': fullWidth,
+            'rainbow-tab--active': this.isSelected(),
         }, className);
     }
 

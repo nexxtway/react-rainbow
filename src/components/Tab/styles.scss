@@ -138,3 +138,78 @@
 .rainbow-tab--full-width {
     flex-grow: 1;
 }
+
+@media (max-width: 600px) {
+    .rainbow-tab {
+        height: 3.5rem;
+        width: 0;
+
+        @include position-tab(flex-start);
+
+        position: absolute;
+    }
+
+    .rainbow-tab_anchor.rainbow-tab--active {
+        width: 100%;
+    }
+
+    .rainbow-tab_anchor {
+        height: 100%;
+        width: 100%;
+        border-radius: 0;
+        padding: 0 1rem 0 1rem;
+        color: $color-brand;
+
+        @include position-tab(flex-start);
+
+        &::after {
+            content: unset;
+            position: unset;
+            left: unset;
+            height: unset;
+            width: unset;
+            background-color: unset;
+        }
+
+        &:focus {
+            border-radius: 0;
+        }
+    }
+
+    .rainbow-tab--active {
+        border-radius: 0;
+        position: relative;
+        width: calc(100% - 94px);
+
+        &::after {
+            left: unset;
+            content: unset;
+            background: unset;
+            position: unset;
+            bottom: unset;
+            height: unset;
+            width: unset;
+            border-radius: unset;
+            border-width: unset;
+            border-style: unset;
+            border-color: unset;
+            -webkit-transform: unset;
+        }
+
+        &::before {
+            background: unset;
+            border-width: unset;
+            border-style: unset;
+            border-color: unset;
+            -webkit-transform: unset;
+            content: "";
+            height: 0.125rem;
+            width: 100%;
+            left: 0;
+            bottom: 0;
+            position: absolute;
+            background-color: #01b6f5;
+            border-radius: 100px;
+        }
+    }
+}
