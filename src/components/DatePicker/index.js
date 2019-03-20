@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import RequiredAsterisk from '../RequiredAsterisk';
 import CalendarIcon from './calendarIcon';
+import Modal from './../Modal';
 import './styles.css';
 
 /**
@@ -12,6 +13,21 @@ import './styles.css';
 
 // eslint-disable-next-line react/prefer-stateless-function
 export default class DatePicker extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isOpen: false,
+        };
+    }
+
+    openModal() {
+        this.setState({ isOpen: true });
+    }
+
+    closeModal() {
+        this.setState({ isOpen: false });
+    }
+
     render() {
         const {
             value,
@@ -24,6 +40,9 @@ export default class DatePicker extends Component {
             style,
             className,
         } = this.props;
+        const {
+            isOpen,
+        } = this.state;
 
         const getContainerClassNames = () => classnames('rainbow-date-picker_container', className);
 
@@ -43,10 +62,14 @@ export default class DatePicker extends Component {
                         className="rainbow-date-picker_input"
                         placeholder={placeholder}
                         value={value.toString()}
+                        onClick={() => this.openModal()}
                         readOnly />
 
-                    <CalendarIcon className="rainbow-date-picker_icon" />
+                    <CalendarIcon className="rainbow-date-picker_icon" onClick={() => this.openModal()} />
                 </div>
+                <Modal isOpen={isOpen} onRequestClose={() => this.closeModal()}>
+                    OK
+                </Modal>
             </div>
         );
     }
