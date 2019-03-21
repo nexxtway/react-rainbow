@@ -149,14 +149,15 @@
 
 .rainbow-date-picker_calendar-details-day {
   text-align: center;
-  font-size: 72px;
+  font-size: 86px;
   line-height: 1.2;
   color: #01b6f5;
   font-weight: 200; }
 
 .rainbow-date-picker_calendar-details-week {
   text-align: center;
-  font-size: 0.875rem;
+  font-size: 1rem;
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 2px;
   color: #01b6f5; }

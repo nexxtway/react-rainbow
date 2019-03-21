@@ -189,7 +189,7 @@
 
 .rainbow-date-picker_calendar-details-day {
     text-align: center;
-    font-size: 72px;
+    font-size: 86px;
     line-height: 1.2;
     color: $color-brand;
     font-weight: 200;
@@ -197,7 +197,8 @@
 
 .rainbow-date-picker_calendar-details-week {
     text-align: center;
-    font-size: $font-size-text-medium;
+    font-size: $font-size-heading-small;
+    font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 2px;
     color: $color-brand;
