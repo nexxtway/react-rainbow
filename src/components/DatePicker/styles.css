@@ -93,6 +93,7 @@
   outline: none;
   transition: all 0.2s ease;
   background-color: white;
+  border-radius: 48px;
   line-height: 36px;
   height: 36px;
   width: 36px;
@@ -100,12 +101,13 @@
   .rainbow-date-picker_calendar-day-button:hover {
     transition: all 0.2s ease;
     background-color: #e3e5ed;
-    border-radius: 48px;
     height: 36px;
     line-height: 36px; }
   .rainbow-date-picker_calendar-day-button:active {
     transform: scale(0.85);
     transition: all 0.2s ease; }
+  .rainbow-date-picker_calendar-day-button:focus, .rainbow-date-picker_calendar-day-button:active {
+    box-shadow: 0 0 2px #01b6f5; }
 
 .rainbow-date-picker_calendar-day-button--selected {
   color: white;

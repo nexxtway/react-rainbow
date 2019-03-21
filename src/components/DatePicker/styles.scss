@@ -119,6 +119,7 @@
     outline: none;
     transition: all 0.2s ease;
     background-color: white;
+    border-radius: 48px;
     line-height: 36px;
     height: 36px;
     width: 36px;
@@ -127,7 +128,6 @@
     &:hover {
         transition: all 0.2s ease;
         background-color: $color-gray-2;
-        border-radius: 48px;
         height: 36px;
         line-height: 36px;
     }
@@ -135,6 +135,11 @@
     &:active {
         transform: scale(0.85);
         transition: all 0.2s ease;
+    }
+
+    &:focus,
+    &:active {
+        box-shadow: $shadow-outline;
     }
 }
 
