@@ -5,4 +5,15 @@
   overflow: hidden; }
 
 .rainbow-tabset--full-width {
-  justify-content: space-around; }
+  justify-content: space-between; }
+
+.rainbow-tabset_button-group {
+  display: none; }
+
+@media (max-width: 600px) {
+  .rainbow-tabset {
+    border-bottom: solid 1px #f4f6f9;
+    background-color: white; }
+  .rainbow-tabset_button-group {
+    display: inherit;
+    margin-left: 1rem; } }

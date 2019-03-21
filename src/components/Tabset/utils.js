@@ -21,3 +21,7 @@ export function insertChildOrderly(childrenRefs, childRef, nodes) {
     const newChildrenRefs = childrenRefs.concat([childRef]);
     return sortChildren(newChildrenRefs, nodes);
 }
+
+export function getActiveTabIndex(tabChildren, activeTabName) {
+    return tabChildren.findIndex(tab => tab.name === activeTabName);
+}
