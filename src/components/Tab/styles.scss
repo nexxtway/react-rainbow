@@ -44,7 +44,7 @@
     border-radius: 14px 14px 0 0;
     line-height: 1rem;
     letter-spacing: 1px;
-    font-size: $font-size-text-medium;
+    font-size: $font-size-text-small;
     font-weight: 600;
     color: $color-gray-4;
     z-index: 0;
@@ -159,6 +159,7 @@
         border-radius: 0;
         padding: 0 1rem 0 1rem;
         color: $color-brand;
+        font-size: $font-size-text-medium;
 
         @include position-tab(flex-start);
 
