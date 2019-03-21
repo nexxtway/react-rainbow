@@ -18,6 +18,7 @@
 @media (max-width: 600px) {
     .rainbow-tabset {
         border-bottom: solid 1px $color-gray-1;
+        background-color: white;
     }
 
     .rainbow-tabset_button-group {
@@ -26,7 +27,6 @@
     }
 
     .rainbow-tabset_button-icon {
-        fill: $color-gray-1;
-        color: $color-gray-1;
+        fill: $color-brand;
     }
 }

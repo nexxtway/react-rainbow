@@ -12,10 +12,10 @@
 
 @media (max-width: 600px) {
   .rainbow-tabset {
-    border-bottom: solid 1px #f4f6f9; }
+    border-bottom: solid 1px #f4f6f9;
+    background-color: white; }
   .rainbow-tabset_button-group {
     display: inherit;
     margin-left: 1rem; }
   .rainbow-tabset_button-icon {
-    fill: #f4f6f9;
-    color: #f4f6f9; } }
+    fill: #01b6f5; } }
