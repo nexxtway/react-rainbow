@@ -60,6 +60,9 @@
     &[disabled] * {
         cursor: default;
         pointer-events: none;
+    }
+
+    &[disabled] svg {
         fill: $color-gray-2;
     }
 }

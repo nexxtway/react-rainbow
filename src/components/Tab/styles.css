@@ -17,7 +17,7 @@
   border-radius: 14px 14px 0 0;
   line-height: 1rem;
   letter-spacing: 1px;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 600;
   color: #576574;
   z-index: 0;
@@ -107,7 +107,7 @@
 
 @media (max-width: 600px) {
   .rainbow-tab {
-    height: 3.5rem;
+    height: 4rem;
     width: 0;
     display: flex;
     justify-content: flex-start;
