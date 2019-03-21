@@ -138,12 +138,14 @@ export default class Tabset extends Component {
 
                 <ButtonGroup className="rainbow-tabset_button-group">
                     <ButtonIcon
-                        icon={<LeftThinChevron className="rainbow-tabset_button-icon" />}
+                        className="rainbow-tabset_button-icon"
+                        icon={<LeftThinChevron />}
                         disabled={this.isFirstTab()}
                         onClick={this.handleSelectPrevTab}
                         variant="border-filled" />
                     <ButtonIcon
-                        icon={<RightThinChevron className="rainbow-tabset_button-icon" />}
+                        className="rainbow-tabset_button-icon"
+                        icon={<RightThinChevron />}
                         disabled={this.isLastTab()}
                         onClick={this.handleSelectNextTab}
                         variant="border-filled" />
