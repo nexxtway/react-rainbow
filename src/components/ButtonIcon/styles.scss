@@ -235,6 +235,6 @@
     }
 }
 
-.rainbow-button-icon &[disabled] svg {
+.rainbow-button-icon[disabled] svg {
     fill: $color-gray-2;
 }
