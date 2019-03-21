@@ -25,12 +25,4 @@
         display: inherit;
         margin-left: 1rem;
     }
-
-    .rainbow-tabset_button-icon > svg {
-        fill: $color-brand;
-    }
-
-    .rainbow-tabset_button-icon--disabled > svg {
-        fill: $color-gray-1;
-    }
 }

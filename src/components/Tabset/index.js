@@ -5,7 +5,7 @@ import { Provider } from './context';
 import ButtonGroup from './../ButtonGroup';
 import ButtonIcon from './../ButtonIcon';
 import { LEFT_KEY, RIGHT_KEY } from '../../libs/constants';
-import { getChildTabNodes, insertChildOrderly } from './utils';
+import { getChildTabNodes, insertChildOrderly, getActiveTabIndex } from './utils';
 import RightThinChevron from './rightThinChevron';
 import LeftThinChevron from './leftThinChevron';
 import './styles.css';
@@ -27,8 +27,6 @@ export default class Tabset extends Component {
         this.registerTab = this.registerTab.bind(this);
         this.unRegisterTab = this.unRegisterTab.bind(this);
         this.handleKeyPressed = this.handleKeyPressed.bind(this);
-        this.isFirstTab = this.isFirstTab.bind(this);
-        this.isLastTab = this.isLastTab.bind(this);
         this.handleSelectPrevTab = this.handleSelectPrevTab.bind(this);
         this.handleSelectNextTab = this.handleSelectNextTab.bind(this);
         this.keyHandlerMap = {
@@ -60,22 +58,22 @@ export default class Tabset extends Component {
     selectTab(side) {
         const { activeTabName } = this.props;
         const { tabChildren } = this.state;
-        const tabIndex = tabChildren.findIndex(tab => tab.name === activeTabName);
+        const activeTabIndex = getActiveTabIndex(tabChildren, activeTabName);
 
-        if (tabIndex === tabChildren.length - 1 && side === RIGHT_SIDE) {
+        if (activeTabIndex === tabChildren.length - 1 && side === RIGHT_SIDE) {
             this.setAsSelectedTab(0);
-        } else if (tabIndex === 0 && side === LEFT_SIDE) {
+        } else if (activeTabIndex === 0 && side === LEFT_SIDE) {
             this.setAsSelectedTab(tabChildren.length - 1);
         } else {
-            this.setAsSelectedTab(tabIndex + side);
+            this.setAsSelectedTab(activeTabIndex + side);
         }
     }
 
     isFirstTab() {
         const { activeTabName } = this.props;
         const { tabChildren } = this.state;
-        const tabIndex = tabChildren.findIndex(tab => tab.name === activeTabName);
-        if (tabIndex === 0) {
+        const activeTabIndex = getActiveTabIndex(tabChildren, activeTabName);
+        if (activeTabIndex === 0) {
             return true;
         }
         return false;
@@ -84,9 +82,9 @@ export default class Tabset extends Component {
     isLastTab() {
         const { activeTabName } = this.props;
         const { tabChildren } = this.state;
-        const lastTab = tabChildren.length - 1;
-        const tabIndex = tabChildren.findIndex(tab => tab.name === activeTabName);
-        if (lastTab === tabIndex) {
+        const lastTabIndex = tabChildren.length - 1;
+        const activeTabIndex = getActiveTabIndex(tabChildren, activeTabName);
+        if (lastTabIndex === activeTabIndex) {
             return true;
         }
         return false;
@@ -138,16 +136,16 @@ export default class Tabset extends Component {
 
                 <ButtonGroup className="rainbow-tabset_button-group">
                     <ButtonIcon
-                        className="rainbow-tabset_button-icon"
                         icon={<LeftThinChevron />}
                         disabled={this.isFirstTab()}
                         onClick={this.handleSelectPrevTab}
+                        assistiveText="previus tab button"
                         variant="border-filled" />
                     <ButtonIcon
-                        className="rainbow-tabset_button-icon"
                         icon={<RightThinChevron />}
                         disabled={this.isLastTab()}
                         onClick={this.handleSelectNextTab}
+                        assistiveText="next tab button"
                         variant="border-filled" />
                 </ButtonGroup>
             </ul>

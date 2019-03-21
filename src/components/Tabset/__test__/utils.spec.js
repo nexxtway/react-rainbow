@@ -1,6 +1,7 @@
 import {
     insertChildOrderly,
     getChildTabNodes,
+    getActiveTabIndex,
 } from './../utils';
 
 describe('<Tabset/> utils', () => {
@@ -35,6 +36,24 @@ describe('<Tabset/> utils', () => {
         });
         it('should return an empty array if anything is passed', () => {
             expect(getChildTabNodes()).toEqual([]);
+        });
+    });
+
+
+    describe('getActiveTabIndex', () => {
+        it('should return the right index', () => {
+            const tabChildren = [
+                { name: 'tab-1' },
+                { name: 'tab-2' },
+                { name: 'tab-3' },
+                { name: 'tab-4' },
+                { name: 'tab-5' },
+            ];
+            const tabNames = ['tab-1', 'tab-2', 'tab-3', 'tab-4', 'tab-5'];
+
+            tabNames.forEach((activeTabName, index) => {
+                expect(getActiveTabIndex(tabChildren, activeTabName)).toBe(index);
+            });
         });
     });
 });

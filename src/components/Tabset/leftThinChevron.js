@@ -7,7 +7,7 @@ export default function LeftThinChevron(props) {
         style,
     } = props;
     return (
-        <svg className={className} style={style} fill="inherit" width="8px" height="15px" viewBox="0 0 8 15">
+        <svg className={className} style={style} width="8px" height="15px" viewBox="0 0 8 15" fill="#01b6f5">
             <g transform="translate(-304.000000, -289.000000)">
                 <g transform="translate(-12.000000, 268.000000)">
                     <g transform="translate(300.000000, 10.000000)">

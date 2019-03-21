@@ -30,70 +30,60 @@
     outline: 0;
     box-shadow: 0 0 2px #01b6f5; }
   .rainbow-button-icon[disabled] {
-    color: #e3e5ed;
-    fill: #e3e5ed; }
+    color: #e3e5ed; }
   .rainbow-button-icon[disabled] * {
     cursor: default;
-    pointer-events: none; }
+    pointer-events: none;
+    fill: #e3e5ed; }
 
 .rainbow-button-icon--brand {
   background-color: #01b6f5;
   border: 1px solid #01b6f5;
-  color: white;
-  fill: white; }
+  color: white; }
   .rainbow-button-icon--brand:link, .rainbow-button-icon--brand:visited, .rainbow-button-icon--brand:active {
     color: white; }
   .rainbow-button-icon--brand:hover, .rainbow-button-icon--brand:focus, .rainbow-button-icon--brand:active {
     background-color: #009acf;
     border: 1px solid #009acf;
-    color: white;
-    fill: white; }
+    color: white; }
   .rainbow-button-icon--brand[disabled] {
     background-color: #f4f6f9;
     border: 1px solid #f4f6f9;
-    color: #e3e5ed;
-    fill: #e3e5ed; }
+    color: #e3e5ed; }
 
 .rainbow-button-icon--success {
   background-color: #1de9b6;
   border: 1px solid #1de9b6;
-  color: white;
-  fill: white; }
+  color: white; }
   .rainbow-button-icon--success:link, .rainbow-button-icon--success:visited, .rainbow-button-icon--success:active {
     color: white; }
   .rainbow-button-icon--success:hover, .rainbow-button-icon--success:focus, .rainbow-button-icon--success:active {
     background-color: #1ad1a3;
     border: 1px solid #1ad1a3;
-    color: white;
-    fill: white; }
+    color: white; }
   .rainbow-button-icon--success[disabled] {
     background-color: #f4f6f9;
     border: 1px solid #f4f6f9;
-    color: #e3e5ed;
-    fill: #e3e5ed; }
+    color: #e3e5ed; }
 
 .rainbow-button-icon--border {
   background-color: transparent;
   border: 1px solid #e3e5ed;
   color: #576574;
-  fill: #576574;
   transition: border 0.15s linear; }
   .rainbow-button-icon--border:hover, .rainbow-button-icon--border:focus, .rainbow-button-icon--border:active {
     background-color: transparent;
     border: 1px solid #009acf;
-    color: #009acf;
-    fill: #009acf; }
+    color: #009acf; }
   .rainbow-button-icon--border[disabled] {
     background-color: transparent;
     border: 1px solid #e3e5ed;
-    color: #e3e5ed;
-    fill: #e3e5ed; }
+    color: #e3e5ed; }
 
 .rainbow-button-icon--border-filled {
   background-color: white;
   border: 1px solid #e3e5ed;
   color: #576574;
-  fill: #576574;
   transition: border 0.15s linear; }
   .rainbow-button-icon--border-filled:hover, .rainbow-button-icon--border-filled:focus, .rainbow-button-icon--border-filled:active {
     background-color: #f4f6f9; }
@@ -103,8 +93,7 @@
 .rainbow-button-icon--border-inverse {
   background-color: transparent;
   border: 1px solid white;
-  color: white;
-  fill: white; }
+  color: white; }
   .rainbow-button-icon--border-inverse:hover, .rainbow-button-icon--border-inverse:focus, .rainbow-button-icon--border-inverse:active {
     border-color: #a4a7b5;
     color: #a4a7b5; }
@@ -119,8 +108,7 @@
 .rainbow-button-icon--inverse {
   background-color: transparent;
   border: 1px solid transparent;
-  color: white;
-  fill: white; }
+  color: white; }
   .rainbow-button-icon--inverse:hover, .rainbow-button-icon--inverse:focus, .rainbow-button-icon--inverse:active {
     color: #a4a7b5; }
   .rainbow-button-icon--inverse:focus {

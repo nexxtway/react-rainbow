@@ -16,8 +16,4 @@
     background-color: white; }
   .rainbow-tabset_button-group {
     display: inherit;
-    margin-left: 1rem; }
-  .rainbow-tabset_button-icon > svg {
-    fill: #01b6f5; }
-  .rainbow-tabset_button-icon--disabled > svg {
-    fill: #f4f6f9; } }
+    margin-left: 1rem; } }
