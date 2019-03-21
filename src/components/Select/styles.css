@@ -29,7 +29,7 @@
     border-width: 0.15em 0.15em 0 0;
     transform: rotate(135deg);
     vertical-align: top;
-    color: #061c3f; }
+    color: #01b6f5; }
   .rainbow-select_inner-container[disabled]::after {
     color: #e3e5ed; }
 
