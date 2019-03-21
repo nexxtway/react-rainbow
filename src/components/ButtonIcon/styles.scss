@@ -61,10 +61,6 @@
         cursor: default;
         pointer-events: none;
     }
-
-    &[disabled] svg {
-        fill: $color-gray-2;
-    }
 }
 
 .rainbow-button-icon--brand {
@@ -237,4 +233,8 @@
 
         font-size: 1.5rem !important;
     }
+}
+
+.rainbow-button-icon &[disabled] svg {
+    fill: $color-gray-2;
 }
