@@ -129,7 +129,7 @@
     transform: scale(0.85);
     transition: all 0.2s ease; }
 
-.rainbow-date-picker_calendar-day-button--disabled {
+.rainbow-date-picker_calendar-day-adjacent {
   background-color: white;
   color: #e3e5ed;
   text-align: center;
