@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Select from './../Select';
 import ButtonIcon from './../ButtonIcon';
 import RightIcon from './icons/rightArrow';
@@ -17,7 +18,7 @@ const options = [
 export default class Calendar extends Component {
     constructor(props) {
         super(props);
-        const { 
+        const {
             value,
         } = props;
         const today = new Date();
@@ -25,7 +26,7 @@ export default class Calendar extends Component {
             currentMonth: getFirstDayMonth(value || today),
         };
     }
-    
+
     nextMonth() {
         this.setState({
             currentMonth: addMonths(this.state.currentMonth, 1),
@@ -72,8 +73,8 @@ export default class Calendar extends Component {
                         <h1 className="rainbow-date-picker_calendar-details-day">
                             16
                         </h1>
-                        <h2 className="rainbow-date-picker_calendar-details-week">
-                            Monday
+                        <h2 className="rainbow-date-picker_calendar-details-month">
+                            Month
                         </h2>
                     </div>
                     <Select className="rainbow-date-picker_calendar-select-year" options={options} />
@@ -82,3 +83,13 @@ export default class Calendar extends Component {
         );
     }
 }
+
+Calendar.propTypes = {
+    value: PropTypes.instanceOf(Date),
+    onChange: PropTypes.func,
+};
+
+Calendar.defaultProps = {
+    value: undefined,
+    onChange: () => {},
+};

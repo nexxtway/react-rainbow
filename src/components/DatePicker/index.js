@@ -21,20 +21,20 @@ export default class DatePicker extends Component {
         };
     }
 
-    openModal() {
-        this.setState({ isOpen: true });
-    }
-
-    closeModal() {
-        this.setState({ isOpen: false });
-    }
-
     onChange(...args) {
         const { onChange } = this.props;
         this.setState({
             isOpen: false,
         });
         onChange(...args);
+    }
+
+    openModal() {
+        this.setState({ isOpen: true });
+    }
+
+    closeModal() {
+        this.setState({ isOpen: false });
     }
 
     render() {
@@ -59,7 +59,7 @@ export default class DatePicker extends Component {
             'rainbow-date-picker_label--hide': hideLabel,
         });
         const formattedDate = Intl.DateTimeFormat().format(value);
-        
+
         return (
             <div className={getContainerClassNames()} style={style}>
                 <label className={getLabelClassNames()} htmlFor={this.inputId}>
@@ -77,7 +77,7 @@ export default class DatePicker extends Component {
 
                     <CalendarIcon className="rainbow-date-picker_icon" onClick={() => this.openModal()} />
                 </div>
-                <Modal isOpen={isOpen} onRequestClose={() => this.closeModal()}>
+                <Modal className="rainbow-date-picker_modal" isOpen={isOpen} onRequestClose={() => this.closeModal()}>
                     <Calendar
                         value={value}
                         minDate={minDate}

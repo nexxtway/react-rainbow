@@ -74,15 +74,20 @@
     cursor: pointer;
 }
 
+.rainbow-date-picker_modal {
+    width: auto;
+}
+
 .rainbow-date-picker_modal-container {
     display: flex;
+    height: 416px;
 }
 
 .rainbow-date-picker_calendar-container {
-    width: 60%;
+    width: 380px;
     border-right: 0.5px solid $color-gray-2;
     padding: 0 24px 0 16px;
-    margin: 16px 0;
+    margin: 16px 0 0 0;
 }
 
 .rainbow-date-picker_calendar-month-container {
@@ -176,7 +181,7 @@
 }
 
 .rainbow-date-picker_calendar-details-container {
-    width: 40%;
+    width: 260px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -195,7 +200,7 @@
     font-weight: 200;
 }
 
-.rainbow-date-picker_calendar-details-week {
+.rainbow-date-picker_calendar-details-month {
     text-align: center;
     font-size: $font-size-heading-small;
     font-weight: 400;
