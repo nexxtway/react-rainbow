@@ -109,6 +109,10 @@
   .rainbow-date-picker_calendar-day-button:focus, .rainbow-date-picker_calendar-day-button:active {
     box-shadow: 0 0 2px #01b6f5; }
 
+.rainbow-date-picker_calendar-day-adjacent {
+  color: #eee;
+}    
+
 .rainbow-date-picker_calendar-day-button--selected {
   color: white;
   background-color: #01b6f5;
