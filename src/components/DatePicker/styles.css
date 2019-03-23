@@ -57,25 +57,51 @@
 .rainbow-date-picker_modal {
   width: auto; }
 
+.rainbow-date-picker_modal > .rainbow-modal_content {
+  max-height: none; }
+
 .rainbow-date-picker_modal-container {
+  margin: -16px; }
+
+.rainbow-date-picker_modal > button > svg {
+  fill: white; }
+
+.rainbow-date-picker_calendar-details-header {
+  background-color: #01b6f5;
+  height: 72px;
+  border-radius: 0.875rem 0.875rem 0 0;
   display: flex;
-  height: 416px; }
+  align-items: center;
+  padding: 0 48px 0 24px; }
+
+.rainbow-date-picker_calendar-date--selected {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 300; }
 
 .rainbow-date-picker_calendar-container {
-  width: 380px;
-  border-right: 0.5px solid #e3e5ed;
-  padding: 0 24px 0 16px;
-  margin: 16px 0 0 0; }
+  width: 460px;
+  height: 400px;
+  padding: 0 24px;
+  margin: 20px 0 0 0; }
+
+.rainbow-date-picker_calendar-controls-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0 8px 0; }
 
 .rainbow-date-picker_calendar-month-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 0 24px 0; }
+  flex-grow: 1;
+  margin-right: 16px; }
 
 .rainbow-date-picker_calendar-month-text {
-  font-size: 1.5rem;
-  color: #01b6f5; }
+  font-size: 1.25rem;
+  color: #061c3f;
+  font-weight: 500; }
 
 .rainbow-date-picker_calendar-header {
   text-align: center;
@@ -136,38 +162,4 @@
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 48px;
-  height: 48px;
-  border: none;
-  outline: none;
-  cursor: auto; }
-
-.rainbow-date-picker_calendar-details-container {
-  width: 260px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; }
-
-.rainbow-date-picker_calendar-details-text-container {
-  margin-bottom: 72px; }
-
-.rainbow-date-picker_calendar-details-day {
-  text-align: center;
-  font-size: 86px;
-  line-height: 1.2;
-  color: #01b6f5;
-  font-weight: 200; }
-
-.rainbow-date-picker_calendar-details-month {
-  text-align: center;
-  font-size: 1rem;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: #01b6f5; }
-
-.rainbow-date-picker_calendar-select-year {
-  width: 96px;
-  margin: 0 auto;
-  position: absolute;
-  bottom: 32px; }
+  height: 48px; }

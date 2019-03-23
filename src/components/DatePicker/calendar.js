@@ -47,19 +47,27 @@ export default class Calendar extends Component {
         const formattedMonth = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(currentMonth);
         return (
             <section className="rainbow-date-picker_modal-container">
+                <header className="rainbow-date-picker_calendar-details-header">
+                    <h2 className="rainbow-date-picker_calendar-date--selected">
+                        Tue, October 2, 2019
+                    </h2>
+                </header>
                 <article className="rainbow-date-picker_calendar-container">
-                    <div className="rainbow-date-picker_calendar-month-container">
-                        <ButtonIcon
-                            onClick={() => this.previousMonth()}
-                            size="medium"
-                            icon={<LeftIcon />} />
-                        <h3 className="rainbow-date-picker_calendar-month-text">
-                            {formattedMonth}
-                        </h3>
-                        <ButtonIcon
-                            onClick={() => this.nextMonth()}
-                            size="medium"
-                            icon={<RightIcon />} />
+                    <div className="rainbow-date-picker_calendar-controls-container">
+                        <div className="rainbow-date-picker_calendar-month-container">
+                            <ButtonIcon
+                                onClick={() => this.previousMonth()}
+                                size="medium"
+                                icon={<LeftIcon />} />
+                            <h3 className="rainbow-date-picker_calendar-month-text">
+                                {formattedMonth}
+                            </h3>
+                            <ButtonIcon
+                                onClick={() => this.nextMonth()}
+                                size="medium"
+                                icon={<RightIcon />} />
+                        </div>
+                        <Select className="rainbow-date-picker_calendar-select-year" options={options} />
                     </div>
                     <table>
                         <DaysOfWeek />
@@ -67,17 +75,6 @@ export default class Calendar extends Component {
                             firstDayMonth={this.state.currentMonth}
                             onChange={onChange} />
                     </table>
-                </article>
-                <article className="rainbow-date-picker_calendar-details-container">
-                    <div className="rainbow-date-picker_calendar-details-text-container">
-                        <h1 className="rainbow-date-picker_calendar-details-day">
-                            16
-                        </h1>
-                        <h2 className="rainbow-date-picker_calendar-details-month">
-                            Month
-                        </h2>
-                    </div>
-                    <Select className="rainbow-date-picker_calendar-select-year" options={options} />
                 </article>
             </section>
         );
