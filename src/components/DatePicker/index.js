@@ -5,8 +5,9 @@ import RequiredAsterisk from '../RequiredAsterisk';
 import CalendarIcon from './icons/calendarIcon';
 import Modal from './../Modal';
 import Calendar from './calendar';
-import './styles.css';
 import { uniqueId } from '../../libs/utils';
+import './styles.css';
+import './media-queries.css';
 
 /**
  * A datepicker is a text input to capture a date.
