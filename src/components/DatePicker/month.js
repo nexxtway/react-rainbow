@@ -1,70 +1,12 @@
 import React from 'react';
-import classnames from 'classnames';
+import PropTypes from 'prop-types';
 import getLastDayMonth from './helpers/get-last-day-month';
 import addDays from './helpers/add-days';
-import isSameDay from './helpers/is-same-day';
-
-function Day({ date, firstDayMonth, onChange, isSelected }) {
-    const day = date.getDate();
-    const isAdjacentDate = date.getMonth() !== firstDayMonth.getMonth();
-    if (isAdjacentDate) {
-        return (
-            <td className="rainbow-date-picker_calendar-day">
-                <span className="rainbow-date-picker_calendar-day-adjacent">{day}</span>
-            </td>
-        );
-    }
-    const buttonClassNames = classnames({
-        'rainbow-date-picker_calendar-day-button': true,
-        'rainbow-date-picker_calendar-day-button--selected': isSelected,
-    });
-    return (
-        <td className="rainbow-date-picker_calendar-day">
-            <button
-                onClick={() => onChange(new Date(date))}
-                className={buttonClassNames}>
-                {day}
-            </button>
-        </td>
-    );
-}
-
-function Week(props) {
-    const {
-        value,
-        startDate,
-        endDate,
-        firstDayMonth,
-        onChange,
-    } = props;
-    function Days() {
-        let date = new Date(startDate);
-        const days = [];
-
-        while (date <= endDate) {
-            days.push(
-                <Day date={date}
-                    firstDayMonth={firstDayMonth}
-                    key={date.getDate()}
-                    onChange={onChange}
-                    isSelected={isSameDay(date, value)}
-                />,
-            );
-            date = addDays(date, 1);
-        }
-        return days;
-    }
-
-    return (
-        <tr>
-            <Days />
-        </tr>
-    );
-}
+import Week from './week';
 
 export default function Month(props) {
     const {
-        firstDayMonth = new Date(2019, 2, 1),
+        firstDayMonth,
         value,
         onChange,
     } = props;
@@ -99,3 +41,15 @@ export default function Month(props) {
         </tbody>
     );
 }
+
+Month.propTypes = {
+    firstDayMonth: PropTypes.instanceOf(Date),
+    value: PropTypes.instanceOf(Date),
+    onChange: PropTypes.func,
+};
+
+Month.defaultProps = {
+    firstDayMonth: new Date(2019, 2, 1),
+    value: undefined,
+    onChange: () => {},
+};

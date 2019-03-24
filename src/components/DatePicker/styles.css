@@ -131,9 +131,7 @@
   margin: 6px 0; }
   .rainbow-date-picker_calendar-day-button:hover {
     transition: all 0.2s ease;
-    background-color: #e3e5ed;
-    height: 36px;
-    line-height: 36px; }
+    background-color: #e3e5ed; }
   .rainbow-date-picker_calendar-day-button:active {
     transform: scale(0.85);
     transition: all 0.2s ease; }
@@ -155,6 +153,8 @@
   .rainbow-date-picker_calendar-day-button--selected:active {
     transform: scale(0.85);
     transition: all 0.2s ease; }
+  .rainbow-date-picker_calendar-day-button--selected:hover {
+    background-color: #01b6f5; }
 
 .rainbow-date-picker_calendar-day-adjacent {
   background-color: white;
