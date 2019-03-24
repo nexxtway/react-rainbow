@@ -44,12 +44,13 @@ export default class Calendar extends Component {
             currentMonth,
         } = this.state;
         const { onChange, value } = this.props;
+        const formattedDate = Intl.DateTimeFormat().format(value);
         const formattedMonth = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(currentMonth);
         return (
             <section className="rainbow-date-picker_modal-container">
                 <header className="rainbow-date-picker_calendar-details-header">
                     <h2 className="rainbow-date-picker_calendar-date--selected">
-                        Tue, October 2, 2019
+                        {formattedDate}
                     </h2>
                 </header>
                 <article className="rainbow-date-picker_calendar-container">
