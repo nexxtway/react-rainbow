@@ -34,8 +34,6 @@
   .rainbow-button-icon[disabled] * {
     cursor: default;
     pointer-events: none; }
-  .rainbow-button-icon[disabled] svg {
-    fill: #e3e5ed; }
 
 .rainbow-button-icon--brand {
   background-color: #01b6f5;

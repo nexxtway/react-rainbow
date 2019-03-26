@@ -1,18 +1,38 @@
 @import "../../styles/colors";
 
-.rainbow-tabset {
+%common-styles {
     display: flex;
-    justify-content: flex-start;
     align-items: center;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
+    justify-content: flex-start;
+    width: 100%;
 }
 
-.rainbow-tabset--full-width {
+.rainbow-tabset {
+    @extend %common-styles;
+}
+
+.rainbow-tabset_inner-container {
+    @extend %common-styles;
+}
+
+.rainbow-tabset_inner-container--full-width {
     justify-content: space-between;
 }
 
 .rainbow-tabset_button-group {
     display: none;
+}
+
+.rainbow-tabset_button-icon:disabled {
+    background-color: white;
+}
+
+.rainbow-tabset_button-group--visible {
+    display: inherit;
+    z-index: 4;
+    padding-left: 1rem;
 }
 
 @media (max-width: 600px) {
@@ -24,5 +44,10 @@
     .rainbow-tabset_button-group {
         display: inherit;
         margin-left: 1rem;
+        padding-left: 0;
+    }
+
+    .rainbow-tabset_button-icon:disabled {
+        background-color: inherit;
     }
 }

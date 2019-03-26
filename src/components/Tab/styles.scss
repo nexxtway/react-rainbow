@@ -180,7 +180,7 @@
     .rainbow-tab--active {
         border-radius: 0;
         position: relative;
-        width: calc(100% - 94px);
+        width: 100%;
 
         &::after {
             left: unset;
