@@ -68,6 +68,7 @@ export default class DatePicker extends Component {
                     {label}
                 </label>
                 <div className="rainbow-date-picker_input-container">
+                    <CalendarIcon className="rainbow-date-picker_icon" />
                     <input
                         id={this.inputId}
                         className="rainbow-date-picker_input"
@@ -75,16 +76,13 @@ export default class DatePicker extends Component {
                         value={formattedDate}
                         onClick={() => this.openModal()}
                         readOnly />
-
-                    <CalendarIcon className="rainbow-date-picker_icon" onClick={() => this.openModal()} />
                 </div>
                 <Modal className="rainbow-date-picker_modal" isOpen={isOpen} onRequestClose={() => this.closeModal()}>
                     <Calendar
                         value={value}
                         minDate={minDate}
                         maxDate={maxDate}
-                        onChange={(...args) => this.onChange(...args)}
-                    />
+                        onChange={(...args) => this.onChange(...args)} />
                 </Modal>
             </div>
         );

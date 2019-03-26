@@ -52,8 +52,10 @@
 
 .rainbow-date-picker_icon {
   position: absolute;
-  right: 16px;
-  cursor: pointer; }
+  right: 16px; }
+
+.rainbow-date-picker_icon:not(button) {
+  pointer-events: none; }
 
 .rainbow-date-picker_modal {
   width: auto; }
