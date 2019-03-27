@@ -161,3 +161,6 @@
     width: 1.5rem !important;
     height: 1.5rem !important;
     font-size: 1.5rem !important; }
+
+.rainbow-button-icon[disabled] svg {
+  fill: #e3e5ed; }
