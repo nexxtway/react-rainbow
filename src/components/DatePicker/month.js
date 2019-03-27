@@ -8,6 +8,8 @@ export default function Month(props) {
     const {
         firstDayMonth,
         value,
+        minDate,
+        maxDate,
         onChange,
     } = props;
     const lastDayMonth = getLastDayMonth(firstDayMonth);
@@ -25,6 +27,8 @@ export default function Month(props) {
                     value={value}
                     startDate={startDate}
                     endDate={endDate}
+                    minDate={minDate}
+                    maxDate={maxDate}
                     firstDayMonth={firstDayMonth}
                     key={date.getDate()}
                     onChange={onChange}

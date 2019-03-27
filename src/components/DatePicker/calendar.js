@@ -7,13 +7,11 @@ import LeftIcon from './icons/leftArrow';
 import DaysOfWeek from './daysOfWeek';
 import Month from './month';
 import getFirstDayMonth from './helpers/get-first-day-month';
+import getLastDayMonth from './helpers/get-last-day-month';
 import addMonths from './helpers/addMonths';
-
-const options = [
-    { value: '2018', label: '2018' },
-    { value: '2019', label: '2019' },
-    { value: '2020', label: '2020' },
-];
+import formatDate from './helpers/format-date';
+import getYearsRange from './helpers/get-years-range';
+import getFormattedMonth from './helpers/get-formatted-month';
 
 export default class Calendar extends Component {
     constructor(props) {
@@ -39,13 +37,31 @@ export default class Calendar extends Component {
         });
     }
 
+    handleYearChange(event) {
+        const year = +event.target.value;
+        const newMonth = new Date(this.state.currentMonth);
+        newMonth.setFullYear(year);
+        this.setState({
+            currentMonth: newMonth,
+        });
+    }
+
     render() {
         const {
             currentMonth,
         } = this.state;
-        const { onChange, value } = this.props;
-        const formattedDate = Intl.DateTimeFormat().format(value);
-        const formattedMonth = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(currentMonth);
+        const {
+            onChange,
+            value,
+            minDate,
+            maxDate,
+            formatStyle,
+        } = this.props;
+        const formattedDate = formatDate(value, formatStyle);
+        const formattedMonth = getFormattedMonth(currentMonth);
+        const currentYear = this.state.currentMonth.getFullYear();
+        const disableNextMonth = addMonths(currentMonth, 1) > maxDate;
+        const disablePreviousMonth = getLastDayMonth(addMonths(currentMonth, -1)) < minDate;
         return (
             <section className="rainbow-date-picker_modal-container">
                 <header className="rainbow-date-picker_calendar-details-header">
@@ -59,6 +75,7 @@ export default class Calendar extends Component {
                             <ButtonIcon
                                 onClick={() => this.previousMonth()}
                                 size="medium"
+                                disabled={disablePreviousMonth}
                                 icon={<LeftIcon />} />
                             <h3 className="rainbow-date-picker_calendar-month-text">
                                 {formattedMonth}
@@ -66,14 +83,22 @@ export default class Calendar extends Component {
                             <ButtonIcon
                                 onClick={() => this.nextMonth()}
                                 size="medium"
+                                disabled={disableNextMonth}
                                 icon={<RightIcon />} />
                         </div>
-                        <Select className="rainbow-date-picker_calendar-select-year" options={options} />
+                        <Select
+                            className="rainbow-date-picker_calendar-select-year"
+                            value={currentYear}
+                            options={getYearsRange({ minDate, maxDate })}
+                            onChange={event => this.handleYearChange(event)}
+                        />
                     </div>
                     <table>
                         <DaysOfWeek />
                         <Month value={value}
                             firstDayMonth={this.state.currentMonth}
+                            minDate={minDate}
+                            maxDate={maxDate}
                             onChange={onChange} />
                     </table>
                 </article>
@@ -84,10 +109,16 @@ export default class Calendar extends Component {
 
 Calendar.propTypes = {
     value: PropTypes.instanceOf(Date),
+    minDate: PropTypes.instanceOf(Date),
+    maxDate: PropTypes.instanceOf(Date),
+    formatStyle: PropTypes.oneOf(['small', 'medium', 'large']),
     onChange: PropTypes.func,
 };
 
 Calendar.defaultProps = {
     value: undefined,
+    minDate: undefined,
+    maxDate: undefined,
+    formatStyle: 'medium',
     onChange: () => {},
 };

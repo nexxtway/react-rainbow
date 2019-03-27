@@ -9,6 +9,8 @@ export default function Week(props) {
         value,
         startDate,
         endDate,
+        minDate,
+        maxDate,
         firstDayMonth,
         onChange,
     } = props;
@@ -21,6 +23,8 @@ export default function Week(props) {
                 <Day date={date}
                     firstDayMonth={firstDayMonth}
                     key={date.getDate()}
+                    minDate={minDate}
+                    maxDate={maxDate}
                     onChange={onChange}
                     isSelected={isSameDay(date, value)}
                 />,

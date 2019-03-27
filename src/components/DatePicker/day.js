@@ -7,12 +7,14 @@ export default function Day(props) {
         date,
         firstDayMonth,
         isSelected,
+        minDate,
+        maxDate,
         onChange,
     } = props;
-
     const day = date.getDate();
     const isAdjacentDate = date.getMonth() !== firstDayMonth.getMonth();
-    if (isAdjacentDate) {
+    const isDisabled = date > maxDate || date < minDate;
+    if (isAdjacentDate || isDisabled) {
         return (
             <td className="rainbow-date-picker_calendar-day">
                 <span className="rainbow-date-picker_calendar-day-adjacent">{day}</span>

@@ -6,6 +6,7 @@ import CalendarIcon from './icons/calendarIcon';
 import Modal from './../Modal';
 import Calendar from './calendar';
 import { uniqueId } from '../../libs/utils';
+import formatDate from './helpers/format-date';
 import './styles.css';
 import './media-queries.css';
 
@@ -49,6 +50,7 @@ export default class DatePicker extends Component {
             required,
             style,
             className,
+            formatStyle,
         } = this.props;
         const {
             isOpen,
@@ -59,8 +61,7 @@ export default class DatePicker extends Component {
         const getLabelClassNames = () => classnames('rainbow-date-picker_label', {
             'rainbow-date-picker_label--hide': hideLabel,
         });
-        const formattedDate = Intl.DateTimeFormat().format(value);
-
+        const formattedDate = formatDate(value, formatStyle);
         return (
             <div className={getContainerClassNames()} style={style}>
                 <label className={getLabelClassNames()} htmlFor={this.inputId}>
@@ -82,6 +83,7 @@ export default class DatePicker extends Component {
                         value={value}
                         minDate={minDate}
                         maxDate={maxDate}
+                        formatStyle={formatStyle}
                         onChange={(...args) => this.onChange(...args)} />
                 </Modal>
             </div>
@@ -93,6 +95,7 @@ DatePicker.propTypes = {
     value: PropTypes.instanceOf(Date),
     minDate: PropTypes.instanceOf(Date),
     maxDate: PropTypes.instanceOf(Date),
+    formatStyle: PropTypes.oneOf(['small', 'medium', 'large']),
     onChange: PropTypes.func,
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
     placeholder: PropTypes.string,
@@ -115,6 +118,7 @@ DatePicker.defaultProps = {
     value: undefined,
     minDate: undefined,
     maxDate: undefined,
+    formatStyle: 'medium',
     onChange: () => {},
     placeholder: null,
     required: false,
