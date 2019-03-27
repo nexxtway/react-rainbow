@@ -39,6 +39,8 @@ export default function Day(props) {
 Day.propTypes = {
     date: PropTypes.instanceOf(Date),
     firstDayMonth: PropTypes.instanceOf(Date),
+    minDate: PropTypes.instanceOf(Date),
+    maxDate: PropTypes.instanceOf(Date),
     isSelected: PropTypes.bool,
     onChange: PropTypes.func,
 };
@@ -46,6 +48,8 @@ Day.propTypes = {
 Day.defaultProps = {
     date: undefined,
     firstDayMonth: undefined,
+    minDate: undefined,
+    maxDate: undefined,
     isSelected: false,
     onChange: () => {},
 };

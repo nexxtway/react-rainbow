@@ -43,6 +43,8 @@ export default function Week(props) {
 
 Week.propTypes = {
     firstDayMonth: PropTypes.instanceOf(Date),
+    minDate: PropTypes.instanceOf(Date),
+    maxDate: PropTypes.instanceOf(Date),
     startDate: PropTypes.instanceOf(Date),
     endDate: PropTypes.instanceOf(Date),
     value: PropTypes.instanceOf(Date),
@@ -51,6 +53,8 @@ Week.propTypes = {
 
 Week.defaultProps = {
     firstDayMonth: new Date(2019, 2, 1),
+    minDate: undefined,
+    maxDate: undefined,
     startDate: undefined,
     endDate: undefined,
     value: undefined,

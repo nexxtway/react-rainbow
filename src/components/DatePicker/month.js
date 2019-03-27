@@ -48,12 +48,16 @@ export default function Month(props) {
 
 Month.propTypes = {
     firstDayMonth: PropTypes.instanceOf(Date),
+    minDate: PropTypes.instanceOf(Date),
+    maxDate: PropTypes.instanceOf(Date),
     value: PropTypes.instanceOf(Date),
     onChange: PropTypes.func,
 };
 
 Month.defaultProps = {
     firstDayMonth: new Date(2019, 2, 1),
+    minDate: undefined,
+    maxDate: undefined,
     value: undefined,
     onChange: () => {},
 };
