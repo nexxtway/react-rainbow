@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import RequiredAsterisk from '../RequiredAsterisk';
-import CalendarIcon from './icons/calendarIcon';
+import CalendarIcon from './calendarIcon';
 import Modal from './../Modal';
-import Calendar from './calendar';
+import Calendar from './../Calendar';
 import { uniqueId } from '../../libs/utils';
 import formatDate from './helpers/format-date';
 import './styles.css';
@@ -79,12 +79,18 @@ export default class DatePicker extends Component {
                         readOnly />
                 </div>
                 <Modal className="rainbow-date-picker_modal" isOpen={isOpen} onRequestClose={() => this.closeModal()}>
+                    <header className="rainbow-date-picker_calendar-details-header">
+                        <h2 className="rainbow-date-picker_calendar-date--selected">
+                            {formattedDate}
+                        </h2>
+                    </header>
                     <Calendar
                         value={value}
                         minDate={minDate}
                         maxDate={maxDate}
                         formatStyle={formatStyle}
-                        onChange={(...args) => this.onChange(...args)} />
+                        onChange={(...args) => this.onChange(...args)}
+                        className="rainbow-date-picker_calendar-container" />
                 </Modal>
             </div>
         );
@@ -96,6 +102,7 @@ DatePicker.propTypes = {
     minDate: PropTypes.instanceOf(Date),
     maxDate: PropTypes.instanceOf(Date),
     formatStyle: PropTypes.oneOf(['small', 'medium', 'large']),
+    /** The action triggered when a value attribute changes. */
     onChange: PropTypes.func,
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
     placeholder: PropTypes.string,

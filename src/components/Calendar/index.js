@@ -9,9 +9,9 @@ import Month from './month';
 import getFirstDayMonth from './helpers/get-first-day-month';
 import getLastDayMonth from './helpers/get-last-day-month';
 import addMonths from './helpers/addMonths';
-import formatDate from './helpers/format-date';
 import getYearsRange from './helpers/get-years-range';
 import getFormattedMonth from './helpers/get-formatted-month';
+import './styles.css';
 
 export default class Calendar extends Component {
     constructor(props) {
@@ -55,53 +55,47 @@ export default class Calendar extends Component {
             value,
             minDate,
             maxDate,
-            formatStyle,
+            className,
+            style,
         } = this.props;
-        const formattedDate = formatDate(value, formatStyle);
+
         const formattedMonth = getFormattedMonth(currentMonth);
         const currentYear = this.state.currentMonth.getFullYear();
         const disableNextMonth = addMonths(currentMonth, 1) > maxDate;
         const disablePreviousMonth = getLastDayMonth(addMonths(currentMonth, -1)) < minDate;
         return (
-            <section className="rainbow-date-picker_modal-container">
-                <header className="rainbow-date-picker_calendar-details-header">
-                    <h2 className="rainbow-date-picker_calendar-date--selected">
-                        {formattedDate}
-                    </h2>
-                </header>
-                <article className="rainbow-date-picker_calendar-container">
-                    <div className="rainbow-date-picker_calendar-controls-container">
-                        <div className="rainbow-date-picker_calendar-month-container">
-                            <ButtonIcon
-                                onClick={() => this.previousMonth()}
-                                size="medium"
-                                disabled={disablePreviousMonth}
-                                icon={<LeftIcon />} />
-                            <h3 className="rainbow-date-picker_calendar-month-text">
-                                {formattedMonth}
-                            </h3>
-                            <ButtonIcon
-                                onClick={() => this.nextMonth()}
-                                size="medium"
-                                disabled={disableNextMonth}
-                                icon={<RightIcon />} />
-                        </div>
-                        <Select
-                            className="rainbow-date-picker_calendar-select-year"
-                            value={currentYear}
-                            options={getYearsRange({ minDate, maxDate })}
-                            onChange={event => this.handleYearChange(event)}
-                        />
+            <section className={className} style={style}>
+                <div className="rainbow-calendar_controls-container">
+                    <div className="rainbow-calendar_month-container">
+                        <ButtonIcon
+                            onClick={() => this.previousMonth()}
+                            size="medium"
+                            disabled={disablePreviousMonth}
+                            icon={<LeftIcon />} />
+                        <h3 className="rainbow-calendar_month-text">
+                            {formattedMonth}
+                        </h3>
+                        <ButtonIcon
+                            onClick={() => this.nextMonth()}
+                            size="medium"
+                            disabled={disableNextMonth}
+                            icon={<RightIcon />} />
                     </div>
-                    <table>
-                        <DaysOfWeek />
-                        <Month value={value}
-                            firstDayMonth={this.state.currentMonth}
-                            minDate={minDate}
-                            maxDate={maxDate}
-                            onChange={onChange} />
-                    </table>
-                </article>
+                    <Select
+                        className="rainbow-calendar_select-year"
+                        value={currentYear}
+                        options={getYearsRange({ minDate, maxDate })}
+                        onChange={event => this.handleYearChange(event)}
+                        />
+                </div>
+                <table>
+                    <DaysOfWeek />
+                    <Month value={value}
+                        firstDayMonth={this.state.currentMonth}
+                        minDate={minDate}
+                        maxDate={maxDate}
+                        onChange={onChange} />
+                </table>
             </section>
         );
     }
@@ -111,14 +105,19 @@ Calendar.propTypes = {
     value: PropTypes.instanceOf(Date),
     minDate: PropTypes.instanceOf(Date),
     maxDate: PropTypes.instanceOf(Date),
-    formatStyle: PropTypes.oneOf(['small', 'medium', 'large']),
+    /** The action triggered when a value attribute changes. */
     onChange: PropTypes.func,
+    /** A CSS class for the outer element, in addition to the component's base classes. */
+    className: PropTypes.string,
+    /** An object with custom style applied to the outer element. */
+    style: PropTypes.object,
 };
 
 Calendar.defaultProps = {
     value: undefined,
     minDate: undefined,
     maxDate: undefined,
-    formatStyle: 'medium',
     onChange: () => {},
+    className: undefined,
+    style: undefined,
 };

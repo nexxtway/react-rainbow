@@ -16,17 +16,17 @@ export default function Day(props) {
     const isDisabled = date > maxDate || date < minDate;
     if (isAdjacentDate || isDisabled) {
         return (
-            <td className="rainbow-date-picker_calendar-day">
-                <span className="rainbow-date-picker_calendar-day-adjacent">{day}</span>
+            <td className="rainbow-calendar_day">
+                <span className="rainbow-calendar_day-adjacent">{day}</span>
             </td>
         );
     }
     const buttonClassNames = classnames({
-        'rainbow-date-picker_calendar-day-button': true,
-        'rainbow-date-picker_calendar-day-button--selected': isSelected,
+        'rainbow-calendar_day-button': true,
+        'rainbow-calendar_day-button--selected': isSelected,
     });
     return (
-        <td className="rainbow-date-picker_calendar-day">
+        <td className="rainbow-calendar_day">
             <button
                 onClick={() => onChange(new Date(date))}
                 className={buttonClassNames}>

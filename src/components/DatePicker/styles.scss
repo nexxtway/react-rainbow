@@ -84,6 +84,7 @@
 
 .rainbow-date-picker_modal > .rainbow-modal_content {
     max-height: none;
+    padding: 0;
 }
 
 .rainbow-date-picker_modal-container {
@@ -114,102 +115,4 @@
     height: 400px;
     padding: 0 24px;
     margin: 20px 0 0 0;
-}
-
-.rainbow-date-picker_calendar-controls-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 0 8px 0;
-}
-
-.rainbow-date-picker_calendar-month-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-grow: 1;
-    margin-right: 16px;
-}
-
-.rainbow-date-picker_calendar-month-text {
-    font-size: $font-size-heading-medium;
-    color: $color-dark-1;
-    font-weight: 500;
-}
-
-.rainbow-date-picker_calendar-header {
-    text-align: center;
-    color: $color-gray-3;
-    font-size: $font-size-text-small;
-    font-weight: 400;
-    line-height: 48px;
-    height: 48px;
-}
-
-.rainbow-date-picker_calendar-day {
-    text-align: center;
-    color: $color-dark-1;
-    font-size: $font-size-text-medium;
-    font-weight: 400;
-    border-radius: 100%;
-}
-
-.rainbow-date-picker_calendar-day-button {
-    border: none;
-    outline: none;
-    transition: all 0.2s ease;
-    background-color: white;
-    border-radius: 48px;
-    line-height: 36px;
-    height: 36px;
-    width: 36px;
-    margin: 6px 0;
-
-    &:hover {
-        transition: all 0.2s ease;
-        background-color: $color-gray-2;
-    }
-
-    &:active {
-        transform: scale(0.85);
-        transition: all 0.2s ease;
-    }
-
-    &:focus,
-    &:active {
-        box-shadow: $shadow-outline;
-    }
-}
-
-.rainbow-date-picker_calendar-day-button--selected {
-    color: white;
-    background-color: $color-brand;
-    text-align: center;
-    font-size: $font-size-text-medium;
-    font-weight: 500;
-    border-radius: 48px;
-    line-height: 36px;
-    height: 36px;
-    width: 36px;
-    border: none;
-    outline: none;
-
-    &:active {
-        transform: scale(0.85);
-        transition: all 0.2s ease;
-    }
-
-    &:hover {
-        background-color: $color-brand;
-    }
-}
-
-.rainbow-date-picker_calendar-day-adjacent {
-    background-color: white;
-    color: $color-gray-2;
-    text-align: center;
-    font-size: $font-size-text-medium;
-    font-weight: 400;
-    line-height: 48px;
-    height: 48px;
 }
