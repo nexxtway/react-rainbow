@@ -14,6 +14,7 @@ export default function Day(props) {
     const day = date.getDate();
     const isAdjacentDate = date.getMonth() !== firstDayMonth.getMonth();
     const isDisabled = date > maxDate || date < minDate;
+
     if (isAdjacentDate || isDisabled) {
         return (
             <td className="rainbow-calendar_day">
@@ -21,10 +22,11 @@ export default function Day(props) {
             </td>
         );
     }
-    const buttonClassNames = classnames({
-        'rainbow-calendar_day-button': true,
+
+    const buttonClassNames = classnames('rainbow-calendar_day-button', {
         'rainbow-calendar_day-button--selected': isSelected,
     });
+
     return (
         <td className="rainbow-calendar_day">
             <button

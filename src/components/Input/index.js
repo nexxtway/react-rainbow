@@ -57,7 +57,7 @@ Input.propTypes = {
     value: PropTypes.oneOfType([
         PropTypes.string, PropTypes.bool,
     ]),
-    /** The name of th input */
+    /** The name of the input */
     name: PropTypes.string,
     /** The type of the input. This value defaults to text. */
     type: PropTypes.oneOf([

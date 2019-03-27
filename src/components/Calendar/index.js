@@ -23,6 +23,9 @@ export default class Calendar extends Component {
         this.state = {
             currentMonth: getFirstDayMonth(value || today),
         };
+        this.previousMonth = this.previousMonth.bind(this);
+        this.nextMonth = this.nextMonth.bind(this);
+        this.handleYearChange = this.handleYearChange.bind(this);
     }
 
     nextMonth() {
@@ -58,17 +61,18 @@ export default class Calendar extends Component {
             className,
             style,
         } = this.props;
-
         const formattedMonth = getFormattedMonth(currentMonth);
         const currentYear = this.state.currentMonth.getFullYear();
         const disableNextMonth = addMonths(currentMonth, 1) > maxDate;
         const disablePreviousMonth = getLastDayMonth(addMonths(currentMonth, -1)) < minDate;
+        const yearsRange = getYearsRange({ minDate, maxDate });
+
         return (
             <section className={className} style={style}>
                 <div className="rainbow-calendar_controls-container">
                     <div className="rainbow-calendar_month-container">
                         <ButtonIcon
-                            onClick={() => this.previousMonth()}
+                            onClick={this.previousMonth}
                             size="medium"
                             disabled={disablePreviousMonth}
                             icon={<LeftIcon />} />
@@ -76,21 +80,23 @@ export default class Calendar extends Component {
                             {formattedMonth}
                         </h3>
                         <ButtonIcon
-                            onClick={() => this.nextMonth()}
+                            onClick={this.nextMonth}
                             size="medium"
                             disabled={disableNextMonth}
                             icon={<RightIcon />} />
                     </div>
                     <Select
+                        label="select year"
+                        hideLabel
                         className="rainbow-calendar_select-year"
                         value={currentYear}
-                        options={getYearsRange({ minDate, maxDate })}
-                        onChange={event => this.handleYearChange(event)}
-                        />
+                        options={yearsRange}
+                        onChange={this.handleYearChange} />
                 </div>
                 <table>
                     <DaysOfWeek />
-                    <Month value={value}
+                    <Month
+                        value={value}
                         firstDayMonth={this.state.currentMonth}
                         minDate={minDate}
                         maxDate={maxDate}

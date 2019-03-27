@@ -55,7 +55,7 @@ Month.propTypes = {
 };
 
 Month.defaultProps = {
-    firstDayMonth: new Date(2019, 2, 1),
+    firstDayMonth: undefined,
     minDate: undefined,
     maxDate: undefined,
     value: undefined,

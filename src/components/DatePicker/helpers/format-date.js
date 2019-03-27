@@ -5,6 +5,9 @@ const FORMATS = {
 };
 
 export default function formatDate(date, formatStyle = 'medium') {
-    const options = FORMATS[formatStyle] || FORMATS.medium;
-    return new Intl.DateTimeFormat('en-US', options).format(date);
+    if (date) {
+        const options = FORMATS[formatStyle] || FORMATS.medium;
+        return new Intl.DateTimeFormat('en-US', options).format(date);
+    }
+    return undefined;
 }

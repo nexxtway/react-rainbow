@@ -6,6 +6,7 @@ export default function CalendarIcon(props) {
         className,
         style,
     } = props;
+
     return (
         <svg className={className} style={style} width="20px" height="20px" viewBox="0 0 20 20">
             <g transform="translate(-899.000000, -597.000000)">

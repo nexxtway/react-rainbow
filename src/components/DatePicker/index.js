@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import RequiredAsterisk from '../RequiredAsterisk';
 import CalendarIcon from './calendarIcon';
+import Input from '../Input';
 import Modal from './../Modal';
 import Calendar from './../Calendar';
-import { uniqueId } from '../../libs/utils';
 import formatDate from './helpers/format-date';
+import withReduxForm from './../../libs/hocs/withReduxForm';
 import './styles.css';
 import './media-queries.css';
 
@@ -14,16 +13,19 @@ import './media-queries.css';
  * A datepicker is a text input to capture a date.
  * @category Form
  */
-export default class DatePicker extends Component {
+class DatePicker extends Component {
     constructor(props) {
         super(props);
-        this.inputId = uniqueId('datepicker');
         this.state = {
             isOpen: false,
         };
+        this.inputRef = React.createRef();
+        this.handleChange = this.handleChange.bind(this);
+        this.openModal = this.openModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
 
-    onChange(...args) {
+    handleChange(...args) {
         const { onChange } = this.props;
         this.setState({
             isOpen: false,
@@ -31,12 +33,38 @@ export default class DatePicker extends Component {
         onChange(...args);
     }
 
-    openModal() {
+    openModal(event) {
+        const { onClick } = this.props;
         this.setState({ isOpen: true });
+        onClick(event);
     }
 
     closeModal() {
         this.setState({ isOpen: false });
+    }
+
+    /**
+     * Sets focus on the element.
+     * @public
+     */
+    focus() {
+        this.inputRef.current.focus();
+    }
+
+    /**
+     * Sets click on the element.
+     * @public
+     */
+    click() {
+        this.inputRef.current.click();
+    }
+
+    /**
+     * Sets blur on the element.
+     * @public
+     */
+    blur() {
+        this.inputRef.current.blur();
     }
 
     render() {
@@ -46,39 +74,50 @@ export default class DatePicker extends Component {
             maxDate,
             placeholder,
             label,
-            hideLabel,
             required,
-            style,
             className,
+            style,
             formatStyle,
+            hideLabel,
+            name,
+            bottomHelpText,
+            isCentered,
+            error,
+            disabled,
+            readOnly,
+            tabIndex,
+            onFocus,
+            onBlur,
+            id,
         } = this.props;
         const {
             isOpen,
         } = this.state;
-
-        const getContainerClassNames = () => classnames('rainbow-date-picker_container', className);
-
-        const getLabelClassNames = () => classnames('rainbow-date-picker_label', {
-            'rainbow-date-picker_label--hide': hideLabel,
-        });
         const formattedDate = formatDate(value, formatStyle);
+
         return (
-            <div className={getContainerClassNames()} style={style}>
-                <label className={getLabelClassNames()} htmlFor={this.inputId}>
-                    <RequiredAsterisk required={required} />
-                    {label}
-                </label>
-                <div className="rainbow-date-picker_input-container">
-                    <CalendarIcon className="rainbow-date-picker_icon" />
-                    <input
-                        id={this.inputId}
-                        className="rainbow-date-picker_input"
-                        placeholder={placeholder}
-                        value={formattedDate}
-                        onClick={() => this.openModal()}
-                        readOnly />
-                </div>
-                <Modal className="rainbow-date-picker_modal" isOpen={isOpen} onRequestClose={() => this.closeModal()}>
+            <div id={id} className={className} style={style}>
+                <Input
+                    ref={this.inputRef}
+                    className="rainbow-date-picker_input"
+                    label={label}
+                    placeholder={placeholder}
+                    icon={<CalendarIcon />}
+                    iconPosition="right"
+                    required={required}
+                    value={formattedDate}
+                    onClick={this.openModal}
+                    onFocus={onFocus}
+                    onBlur={onBlur}
+                    hideLabel={hideLabel}
+                    name={name}
+                    bottomHelpText={bottomHelpText}
+                    isCentered={isCentered}
+                    error={error}
+                    disabled={disabled}
+                    readOnly={readOnly}
+                    tabIndex={tabIndex} />
+                <Modal className="rainbow-date-picker_modal" isOpen={isOpen} onRequestClose={this.closeModal}>
                     <header className="rainbow-date-picker_calendar-details-header">
                         <h2 className="rainbow-date-picker_calendar-date--selected">
                             {formattedDate}
@@ -89,7 +128,7 @@ export default class DatePicker extends Component {
                         minDate={minDate}
                         maxDate={maxDate}
                         formatStyle={formatStyle}
-                        onChange={(...args) => this.onChange(...args)}
+                        onChange={this.handleChange}
                         className="rainbow-date-picker_calendar-container" />
                 </Modal>
             </div>
@@ -115,6 +154,32 @@ DatePicker.propTypes = {
     /** Specifies that an input field must be filled out before submitting the form.
     * This value defaults to false. */
     required: PropTypes.bool,
+    /** The name of the input */
+    name: PropTypes.string,
+    /** Shows the help message below the input. */
+    bottomHelpText: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
+    /** Specifies that an input text will be centered. This value defaults to false. */
+    isCentered: PropTypes.bool,
+    /** Specifies that an input field must be filled out before submitting the form. */
+    error: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
+    /** Specifies that an input element should be disabled. This value defaults to false. */
+    disabled: PropTypes.bool,
+    /** Specifies that an input field is read-only. This value defaults to false. */
+    readOnly: PropTypes.bool,
+    /** Specifies the tab order of an element (when the tab button is used for navigating). */
+    tabIndex: PropTypes.number,
+    /** The action triggered when the element is clicked. */
+    onClick: PropTypes.func,
+    /** The action triggered when the element receives focus. */
+    onFocus: PropTypes.func,
+    /** The action triggered when the element releases focus. */
+    onBlur: PropTypes.func,
+    /** The id of the outer element. */
+    id: PropTypes.string,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
@@ -128,9 +193,21 @@ DatePicker.defaultProps = {
     formatStyle: 'medium',
     onChange: () => {},
     placeholder: null,
-    required: false,
     hideLabel: false,
+    required: false,
+    name: undefined,
+    bottomHelpText: null,
+    isCentered: false,
+    error: null,
+    disabled: false,
+    readOnly: false,
+    tabIndex: undefined,
+    onClick: () => {},
+    onFocus: () => {},
+    onBlur: () => {},
     id: undefined,
     className: undefined,
     style: undefined,
 };
+
+export default withReduxForm(DatePicker);

@@ -14,13 +14,15 @@ export default function Week(props) {
         firstDayMonth,
         onChange,
     } = props;
+
     function Days() {
         let date = new Date(startDate);
         const days = [];
 
         while (date <= endDate) {
             days.push(
-                <Day date={date}
+                <Day
+                    date={date}
                     firstDayMonth={firstDayMonth}
                     key={date.getDate()}
                     minDate={minDate}
@@ -52,7 +54,7 @@ Week.propTypes = {
 };
 
 Week.defaultProps = {
-    firstDayMonth: new Date(2019, 2, 1),
+    firstDayMonth: undefined,
     minDate: undefined,
     maxDate: undefined,
     startDate: undefined,
