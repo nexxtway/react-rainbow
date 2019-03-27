@@ -25,3 +25,7 @@ export function insertChildOrderly(childrenRefs, childRef, nodes) {
 export function getActiveTabIndex(tabChildren, activeTabName) {
     return tabChildren.findIndex(tab => tab.name === activeTabName);
 }
+
+export function getTabsetChildrenTotalWidth(tabsetChildrenWidth) {
+    return tabsetChildrenWidth.reduce((prev, curr) => prev + curr);
+}

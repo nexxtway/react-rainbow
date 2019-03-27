@@ -4,8 +4,9 @@ import classnames from 'classnames';
 import { Provider } from './context';
 import ButtonGroup from './../ButtonGroup';
 import ButtonIcon from './../ButtonIcon';
+import RenderIf from './../RenderIf';
 import { LEFT_KEY, RIGHT_KEY } from '../../libs/constants';
-import { getChildTabNodes, insertChildOrderly, getActiveTabIndex } from './utils';
+import { getChildTabNodes, insertChildOrderly, getActiveTabIndex, getTabsetChildrenTotalWidth } from './utils';
 import RightThinChevron from './rightThinChevron';
 import LeftThinChevron from './leftThinChevron';
 import './styles.css';
@@ -22,7 +23,7 @@ export default class Tabset extends Component {
         super(props);
         this.state = {
             tabChildren: [],
-            isTabsetButtonsVisible: undefined,
+            isTabsetButtonsVisible: false,
             tabsetPosition: undefined,
             screenWidth: undefined,
             tabsetScrollLeft: undefined,
@@ -46,12 +47,10 @@ export default class Tabset extends Component {
     componentDidMount() {
         this.updateTabsetButtonsVisibility();
         window.addEventListener('resize', this.updateTabsetButtonsVisibility);
-        this.tabsetRef.current.addEventListener('scroll', this.updateTabsetButtonsVisibility);
     }
 
     componentWillUnmount() {
         window.removeEventListener('resize', this.updateTabsetButtonsVisibility);
-        this.tabsetRef.current.removeEventListener('scroll', this.updateTabsetButtonsVisibility);
     }
 
     getContainerClassName() {
@@ -66,20 +65,6 @@ export default class Tabset extends Component {
         });
     }
 
-    getTabButtonClassName() {
-        const { isTabsetButtonsVisible } = this.state;
-        return classnames('rainbow-tabset_button-group', {
-            'rainbow-tabset_button-group--visible': isTabsetButtonsVisible,
-        });
-    }
-
-    getTabsetStyles() {
-        const { isTabsetButtonsVisible } = this.state;
-        if (isTabsetButtonsVisible) {
-            return ({ overflowX: 'auto' });
-        } return ({ overflowX: 'hidden' });
-    }
-
     setAsSelectedTab(tabIndex) {
         const { tabChildren } = this.state;
         tabChildren[tabIndex].ref.click();
@@ -88,30 +73,27 @@ export default class Tabset extends Component {
 
     updateTabsetButtonsVisibility() {
         const tabset = this.tabsetRef.current;
-        const tabsetScrollWidth = tabset.scrollWidth;
-        const tabsetScrollLeft = tabset.scrollLeft;
+        const {
+            scrollWidth: tabsetScrollWidth,
+            scrollLeft: tabsetScrollLeft,
+            offsetLeft: tabsetPosition,
+            offsetWidth: tabsetWidth,
+            children: tabsetChildren,
+        } = tabset;
         const screenWidth = window.innerWidth;
-        const tabsetPosition = tabset.offsetLeft;
-        const tabsetWidth = tabset.offsetWidth;
         const tabsetMaxScroll = tabsetScrollWidth - tabsetWidth;
-        const tabsetChildren = tabset.children;
         const tabsetChildrenArray = [].slice.call(tabsetChildren, 0);
         const tabsetChildrenWidth = tabsetChildrenArray.map(child => child.offsetWidth);
-        const tabsetChildrenTotalWidth = tabsetChildrenWidth.reduce(
-            (prev, curr) => prev + curr,
-            );
-        this.setState({ tabsetPosition });
-        this.setState({ screenWidth });
-        this.setState({ tabsetScrollLeft });
-        this.setState({ tabsetMaxScroll });
-        this.setState({ tabsetWidth });
-        if (tabsetWidth >= tabsetChildrenTotalWidth) {
-            this.setState({ isTabsetButtonsVisible: false });
-        } else {
-            this.setState({ isTabsetButtonsVisible: true });
-        }
-        console.log(tabsetWidth);
-        console.log(tabsetChildrenTotalWidth);
+        const tabsetChildrenTotalWidth = getTabsetChildrenTotalWidth(tabsetChildrenWidth);
+        const showButtons = tabsetChildrenTotalWidth > tabsetWidth;
+        this.setState({
+            tabsetPosition,
+            screenWidth,
+            tabsetScrollLeft,
+            tabsetMaxScroll,
+            tabsetWidth,
+            isTabsetButtonsVisible: showButtons,
+        });
     }
 
     handleKeyPressed(event) {
@@ -139,6 +121,7 @@ export default class Tabset extends Component {
         const { activeTabName } = this.props;
         const { tabChildren, screenWidth, tabsetScrollLeft } = this.state;
         const activeTabIndex = getActiveTabIndex(tabChildren, activeTabName);
+
         if (screenWidth < 600 && activeTabIndex === 0) {
             return true;
         } if (screenWidth > 600 && tabsetScrollLeft === 0) {
@@ -152,6 +135,7 @@ export default class Tabset extends Component {
         const { tabChildren, screenWidth, tabsetScrollLeft, tabsetMaxScroll } = this.state;
         const lastTabIndex = tabChildren.length - 1;
         const activeTabIndex = getActiveTabIndex(tabChildren, activeTabName);
+
         if (screenWidth < 600 && lastTabIndex === activeTabIndex) {
             return true;
         } if (screenWidth > 600 && tabsetScrollLeft === tabsetMaxScroll) {
@@ -163,9 +147,7 @@ export default class Tabset extends Component {
     handleRightButtonClick() {
         const { screenWidth, tabsetWidth, tabsetScrollLeft } = this.state;
         if (screenWidth > 600) {
-            this.tabsetRef.current.scrollLeft = tabsetScrollLeft + tabsetWidth;
-            this.updateTabsetButtonsVisibility();
-            return null;
+            return this.tabsetRef.current.scrollTo(tabsetScrollLeft + tabsetWidth, 0);
         }
         return this.selectTab(RIGHT_SIDE);
     }
@@ -173,9 +155,7 @@ export default class Tabset extends Component {
     handleLeftButtonClick() {
         const { screenWidth, tabsetWidth, tabsetScrollLeft } = this.state;
         if (screenWidth > 600) {
-            this.tabsetRef.current.scrollLeft = tabsetScrollLeft - tabsetWidth;
-            this.updateTabsetButtonsVisibility();
-            return null;
+            return this.tabsetRef.current.scrollTo(tabsetScrollLeft - tabsetWidth, 0);
         }
         return this.selectTab(LEFT_SIDE);
     }
@@ -197,6 +177,9 @@ export default class Tabset extends Component {
 
     render() {
         const { id, onSelect, activeTabName, fullWidth, children, style } = this.props;
+        const { isTabsetButtonsVisible, screenWidth } = this.state;
+        const privateRegisterTab = this.registerTab;
+        const privateUnRegisterTab = this.unRegisterTab;
         return (
             <div
                 className={this.getContainerClassName()}
@@ -206,38 +189,39 @@ export default class Tabset extends Component {
                 <ul
                     className={this.getInnerContainerClassName()}
                     role="tablist"
-                    style={this.getTabsetStyles()}
                     onKeyDown={this.handleKeyPressed}
+                    onScroll={this.updateTabsetButtonsVisibility}
                     ref={this.tabsetRef}>
 
                     <Provider value={{
                         activeTabName,
                         onSelect,
-                        privateRegisterTab: this.registerTab,
-                        privateUnRegisterTab: this.unRegisterTab,
+                        privateRegisterTab,
+                        privateUnRegisterTab,
                         fullWidth,
                     }}>
                         {children}
                     </Provider>
 
                 </ul>
-                <ButtonGroup
-                    className={this.getTabButtonClassName()}>
-                    <ButtonIcon
-                        className="rainbow-tabset_button-icon"
-                        icon={<LeftThinChevron />}
-                        disabled={this.isLeftButtonDisabled()}
-                        onClick={this.handleLeftButtonClick}
-                        assistiveText="previus tab button"
-                        variant="border-filled" />
-                    <ButtonIcon
-                        className="rainbow-tabset_button-icon"
-                        icon={<RightThinChevron />}
-                        disabled={this.isRightButtonDisabled()}
-                        onClick={this.handleRightButtonClick}
-                        assistiveText="next tab button"
-                        variant="border-filled" />
-                </ButtonGroup>
+                <RenderIf isTrue={isTabsetButtonsVisible || screenWidth < 600}>
+                    <ButtonGroup className="rainbow-tabset_button-group">
+                        <ButtonIcon
+                            className="rainbow-tabset_button-icon"
+                            icon={<LeftThinChevron />}
+                            disabled={this.isLeftButtonDisabled()}
+                            onClick={this.handleLeftButtonClick}
+                            assistiveText="previus tab button"
+                            variant="border-filled" />
+                        <ButtonIcon
+                            className="rainbow-tabset_button-icon"
+                            icon={<RightThinChevron />}
+                            disabled={this.isRightButtonDisabled()}
+                            onClick={this.handleRightButtonClick}
+                            assistiveText="next tab button"
+                            variant="border-filled" />
+                    </ButtonGroup>
+                </RenderIf>
             </div>
         );
     }

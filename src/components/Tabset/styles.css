@@ -10,22 +10,17 @@
   justify-content: space-between; }
 
 .rainbow-tabset_button-group {
-  display: none; }
+  z-index: 4;
+  padding-left: 1rem; }
 
 .rainbow-tabset_button-icon:disabled {
   background-color: white; }
-
-.rainbow-tabset_button-group--visible {
-  display: inherit;
-  z-index: 4;
-  padding-left: 1rem; }
 
 @media (max-width: 600px) {
   .rainbow-tabset {
     border-bottom: solid 1px #f4f6f9;
     background-color: white; }
   .rainbow-tabset_button-group {
-    display: inherit;
     margin-left: 1rem;
     padding-left: 0; }
   .rainbow-tabset_button-icon:disabled {
