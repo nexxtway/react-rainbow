@@ -75,7 +75,8 @@ export default class Calendar extends Component {
         const maxSelectableDate = maxDate || new Date(lastYearItem.value + 1, 0, 1);
         const disableNextMonth = addMonths(currentMonth, 1) > maxSelectableDate;
         const minSelectableDate = minDate || new Date(yearsRange[0].value, 0, 1);
-        const disablePreviousMonth = getLastDayMonth(addMonths(currentMonth, -1)) < minSelectableDate;
+        const lastCurrentDayMonth = getLastDayMonth(addMonths(currentMonth, -1));
+        const disablePreviousMonth = lastCurrentDayMonth < minSelectableDate;
 
         return (
             <section className={className} style={style}>
