@@ -9,7 +9,7 @@
     </div>
 
 
-##### DatePicker with dates contrains:
+##### DatePicker with date constraints:
 
     initialState = { date: new Date() };
     <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
@@ -22,7 +22,7 @@
     </div>
 
 
-##### DatePicker with different dates formats:
+##### DatePicker with different date formats:
 
     initialState = { date: new Date() };
     <div className="rainbow-flex rainbow-p-vertical_large rainbow-m-horizontal_xx-large">
