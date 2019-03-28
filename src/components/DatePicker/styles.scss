@@ -3,9 +3,17 @@
 @import "../../styles/border-radius";
 @import "../../styles/shadows";
 
+.rainbow-date-picker_input-container {
+    width: 100%;
+}
+
 .rainbow-date-picker_input input {
     &:hover {
         cursor: pointer;
+    }
+
+    &[disabled] {
+        text-shadow: none;
     }
 
     &:hover[disabled] {

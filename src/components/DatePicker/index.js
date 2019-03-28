@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import CalendarIcon from './calendarIcon';
 import Input from '../Input';
 import Modal from './../Modal';
@@ -84,7 +85,6 @@ class DatePicker extends Component {
             isCentered,
             error,
             disabled,
-            readOnly,
             tabIndex,
             onFocus,
             onBlur,
@@ -93,10 +93,15 @@ class DatePicker extends Component {
         const {
             isOpen,
         } = this.state;
+
         const formattedDate = formatDate(value, formatStyle);
 
+        function getContainerClassName() {
+            return classnames('rainbow-date-picker_input-container', className);
+        }
+
         return (
-            <div id={id} className={className} style={style}>
+            <div id={id} className={getContainerClassName()} style={style}>
                 <Input
                     ref={this.inputRef}
                     className="rainbow-date-picker_input"
@@ -115,8 +120,8 @@ class DatePicker extends Component {
                     isCentered={isCentered}
                     error={error}
                     disabled={disabled}
-                    readOnly={readOnly}
-                    tabIndex={tabIndex} />
+                    tabIndex={tabIndex}
+                    autoComplete="off" />
                 <Modal className="rainbow-date-picker_modal" isOpen={isOpen} onRequestClose={this.closeModal}>
                     <header className="rainbow-date-picker_calendar-details-header">
                         <h2 className="rainbow-date-picker_calendar-date--selected">
@@ -137,9 +142,16 @@ class DatePicker extends Component {
 }
 
 DatePicker.propTypes = {
+    /** Sets the date for the Date Picker programmatically. */
     value: PropTypes.instanceOf(Date),
-    minDate: PropTypes.instanceOf(Date),
+    /** The ending of a range of valid dates. The range includes the endDate.
+     * The default value is current date + 100 years. */
     maxDate: PropTypes.instanceOf(Date),
+    /** The beginning of a range of valid dates. The range includes the startDate.
+     * The default value is current date - 100 years. */
+    minDate: PropTypes.instanceOf(Date),
+    /** This function is called to format the date displayed in the input field.
+     * Valid values are small, medium, and large. */
     formatStyle: PropTypes.oneOf(['small', 'medium', 'large']),
     /** The action triggered when a value attribute changes. */
     onChange: PropTypes.func,
@@ -168,8 +180,6 @@ DatePicker.propTypes = {
     ]),
     /** Specifies that an input element should be disabled. This value defaults to false. */
     disabled: PropTypes.bool,
-    /** Specifies that an input field is read-only. This value defaults to false. */
-    readOnly: PropTypes.bool,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
     tabIndex: PropTypes.number,
     /** The action triggered when the element is clicked. */
@@ -200,7 +210,6 @@ DatePicker.defaultProps = {
     isCentered: false,
     error: null,
     disabled: false,
-    readOnly: false,
     tabIndex: undefined,
     onClick: () => {},
     onFocus: () => {},

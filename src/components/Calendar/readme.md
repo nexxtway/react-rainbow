@@ -1,4 +1,4 @@
-##### basic example:
+##### Calendar base:
     initialState = { date: new Date() };
     const calendarContainerStyles = {
         width: '28rem',
@@ -14,7 +14,7 @@
                     variant="circle" />
             </div>
         </header>
-        <div className="rainbow-align-content_center rainbow-p-around_xx-large rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
+        <div className="rainbow-align-content_center rainbow-p-vertical_xx-large rainbow-p-horizontal_medium">
             <Card style={calendarContainerStyles} className="rainbow-p-around_large">
                 <Calendar
                     value={state.date}
@@ -25,7 +25,7 @@
     </div>
 
 
-##### Using dates contrains:
+##### Calendar using dates contrains:
     initialState = { date: new Date() };
     const calendarContainerStyles = {
         width: '28rem',
@@ -41,7 +41,7 @@
                     variant="circle" />
             </div>
         </header>
-        <div className="rainbow-align-content_center rainbow-p-around_xx-large rainbow-p-bottom_xx-large">
+        <div className="rainbow-align-content_center rainbow-p-vertical_xx-large rainbow-p-horizontal_medium">
             <Card style={calendarContainerStyles} className="rainbow-p-around_large">
                 <Calendar
                     value={state.date}

@@ -1,8 +1,13 @@
+.rainbow-date-picker_input-container {
+  width: 100%; }
+
 .rainbow-date-picker_input input {
   color: transparent;
   text-shadow: 0 0 0 #061c3f; }
   .rainbow-date-picker_input input:hover {
     cursor: pointer; }
+  .rainbow-date-picker_input input[disabled] {
+    text-shadow: none; }
   .rainbow-date-picker_input input:hover[disabled] {
     cursor: not-allowed; }
 
