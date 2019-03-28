@@ -25,7 +25,7 @@
     </div>
 
 
-##### Calendar using dates contrains:
+##### Calendar with dates contrains:
     initialState = { date: new Date() };
     const calendarContainerStyles = {
         width: '28rem',
