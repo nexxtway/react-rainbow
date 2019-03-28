@@ -4,7 +4,7 @@
     <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
         <DatePicker
             value={state.date}
-            label="DatePicker Label" 
+            label="DatePicker Label"
             onChange={ value => setState({ date: value }) } />
     </div>
 
@@ -19,7 +19,7 @@
             maxDate={new Date(2020, 0, 4)}
             label="DatePicker Label"
             onChange={ value => setState({ date: value }) } />
-    </div>    
+    </div>
 
 
 ##### DatePicker with different dates formats:
@@ -29,21 +29,21 @@
         <DatePicker
             formatStyle="small"
             value={state.date}
-            label="DatePicker Label" 
+            label="DatePicker Label"
             onChange={ value => setState({ date: value }) }
             className="rainbow-m-horizontal_small" />
 
         <DatePicker
             formatStyle="medium"
             value={state.date}
-            label="DatePicker Label" 
+            label="DatePicker Label"
             onChange={ value => setState({ date: value }) }
             className="rainbow-m-horizontal_small" />
 
         <DatePicker
             formatStyle="large"
             value={state.date}
-            label="DatePicker Label" 
+            label="DatePicker Label"
             onChange={ value => setState({ date: value }) }
             className="rainbow-m-horizontal_small" />
     </div>
@@ -63,13 +63,14 @@
 
 ##### DatePicker with error:
 
-    initialState = { date: new Date() };
+    initialState = { date: undefined };
     <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
         <DatePicker
             required
-            error
+            error="Select a date"
+            placeholder="Select a date"
             value={state.date}
-            label="DatePicker Label" 
+            label="DatePicker Label"
             onChange={ value => setState({ date: value }) } />
     </div>
 

@@ -24,7 +24,7 @@ export default function Week(props) {
                 <Day
                     date={date}
                     firstDayMonth={firstDayMonth}
-                    key={date.getDate()}
+                    key={date.getTime()}
                     minDate={minDate}
                     maxDate={maxDate}
                     onChange={onChange}

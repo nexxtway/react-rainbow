@@ -1,5 +1,15 @@
+function isDisabled(params) {
+    const { minDate, maxDate, currentMonth, year } = params;
+    if (maxDate && maxDate.getFullYear() === year && maxDate.getMonth() < currentMonth) {
+        return true;
+    }
+    if (minDate && minDate.getFullYear() === year && minDate.getMonth() > currentMonth) {
+        return true;
+    }
+    return false;
+}
 
-export default function getYearsRange({ minDate, maxDate }) {
+export default function getYearsRange({ minDate, maxDate, currentMonth }) {
     const todayYear = new Date().getFullYear();
     let from;
     let to;
@@ -18,6 +28,12 @@ export default function getYearsRange({ minDate, maxDate }) {
         range.push({
             value: i,
             label: i,
+            disabled: isDisabled({
+                minDate,
+                maxDate,
+                currentMonth,
+                year: i,
+            }),
         });
     }
     return range;
