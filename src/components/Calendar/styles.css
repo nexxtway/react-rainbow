@@ -1,0 +1,85 @@
+.rainbow-calendar_controls-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0 8px 0; }
+
+.rainbow-calendar_month-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+  margin-right: 16px; }
+
+.rainbow-calendar_month-text {
+  font-size: 1.25rem;
+  color: #061c3f;
+  font-weight: 500; }
+
+.rainbow-calendar_header-days {
+  text-align: center;
+  color: #a4a7b5;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 48px;
+  height: 48px; }
+
+.rainbow-calendar_header-days abbr {
+  cursor: default; }
+
+.rainbow-calendar_day {
+  text-align: center;
+  color: #061c3f;
+  font-size: 0.875rem;
+  font-weight: 400;
+  border-radius: 100%; }
+
+.rainbow-calendar_day-button {
+  border: none;
+  outline: none;
+  transition: all 0.2s ease;
+  background-color: transparent;
+  border-radius: 48px;
+  line-height: 36px;
+  height: 36px;
+  width: 36px;
+  margin: 6px 0; }
+  .rainbow-calendar_day-button:hover {
+    transition: all 0.2s ease;
+    background-color: #e3e5ed; }
+  .rainbow-calendar_day-button:active {
+    transform: scale(0.85);
+    transition: all 0.2s ease; }
+  .rainbow-calendar_day-button:focus, .rainbow-calendar_day-button:active {
+    box-shadow: 0 0 2px #01b6f5; }
+
+.rainbow-calendar_day-button--selected {
+  color: white;
+  background-color: #01b6f5;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 48px;
+  line-height: 36px;
+  height: 36px;
+  width: 36px;
+  border: none;
+  outline: none; }
+  .rainbow-calendar_day-button--selected:active {
+    transform: scale(0.85);
+    transition: all 0.2s ease; }
+  .rainbow-calendar_day-button--selected:hover {
+    background-color: #01b6f5; }
+
+.rainbow-calendar_day-adjacent {
+  background-color: transparent;
+  color: #e3e5ed;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 48px;
+  height: 48px;
+  cursor: not-allowed;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-drag: none; }

@@ -41,7 +41,7 @@
         border-width: 0.15em 0.15em 0 0;
         transform: rotate(135deg);
         vertical-align: top;
-        color: $color-dark-1;
+        color: $color-brand;
     }
 
     &[disabled]::after {
@@ -57,7 +57,7 @@
     height: 2.5rem;
     border: 1px solid $color-gray-3;
     border-radius: $border-radius-2;
-    padding: 0 $padding-medium 0 $padding-medium;
+    padding: 0 1.8rem 0 $padding-medium;
     background-color: white;
     color: $color-dark-1;
     font-size: $font-size-text-large;
@@ -70,6 +70,7 @@
     &:focus, &:active, &:visited {
         outline: 0;
         padding-left: 0.9375rem;
+        padding-right: 1.7375rem;
         border: 0.125rem $color-brand solid;
         box-shadow: $shadow-outline;
         line-height: 2rem;
@@ -91,6 +92,7 @@
             background-color: $color-gray-1;
             border: 0.0626rem $color-gray-2 solid;
             padding-left: $padding-medium;
+            padding-right: 1.8rem;
         }
     }
 }
@@ -101,6 +103,7 @@
         border: 0.125rem $color-error solid;
         background-clip: padding-box;
         padding-left: $padding-medium;
+        padding-right: 1.8rem;
 
         &:focus, &:active {
             box-shadow: $shadow-error;

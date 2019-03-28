@@ -113,7 +113,10 @@ Select.propTypes = {
     /** The name of the select */
     name: PropTypes.string,
     /** Specifies the selected value. */
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+    ]),
     /** The action triggered when a option item is selected. */
     onChange: PropTypes.func,
     /** The action triggered when the element is clicked. */
@@ -137,7 +140,9 @@ Select.propTypes = {
         label: PropTypes.oneOfType([
             PropTypes.string, PropTypes.node,
         ]).isRequired,
-        value: PropTypes.string,
+        value: PropTypes.oneOfType([
+            PropTypes.string, PropTypes.node,
+        ]),
         disabled: PropTypes.bool,
     })),
     /** A CSS class for the outer element, in addition to the component's base classes. */

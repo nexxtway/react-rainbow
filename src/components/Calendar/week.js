@@ -1,0 +1,64 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import addDays from './helpers/add-days';
+import isSameDay from './helpers/is-same-day';
+import Day from './day';
+
+export default function Week(props) {
+    const {
+        value,
+        startDate,
+        endDate,
+        minDate,
+        maxDate,
+        firstDayMonth,
+        onChange,
+    } = props;
+
+    function Days() {
+        let date = new Date(startDate);
+        const days = [];
+
+        while (date <= endDate) {
+            days.push(
+                <Day
+                    date={date}
+                    firstDayMonth={firstDayMonth}
+                    key={date.getDate()}
+                    minDate={minDate}
+                    maxDate={maxDate}
+                    onChange={onChange}
+                    isSelected={isSameDay(date, value)}
+                />,
+            );
+            date = addDays(date, 1);
+        }
+        return days;
+    }
+
+    return (
+        <tr>
+            <Days />
+        </tr>
+    );
+}
+
+Week.propTypes = {
+    firstDayMonth: PropTypes.instanceOf(Date),
+    minDate: PropTypes.instanceOf(Date),
+    maxDate: PropTypes.instanceOf(Date),
+    startDate: PropTypes.instanceOf(Date),
+    endDate: PropTypes.instanceOf(Date),
+    value: PropTypes.instanceOf(Date),
+    onChange: PropTypes.func,
+};
+
+Week.defaultProps = {
+    firstDayMonth: undefined,
+    minDate: undefined,
+    maxDate: undefined,
+    startDate: undefined,
+    endDate: undefined,
+    value: undefined,
+    onChange: () => {},
+};
