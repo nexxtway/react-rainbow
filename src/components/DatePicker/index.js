@@ -11,7 +11,7 @@ import './styles.css';
 import './media-queries.css';
 
 /**
- * A datepicker is a text input to capture a date.
+ * A DatePicker is a text input to capture a date.
  * @category Form
  */
 class DatePicker extends Component {
