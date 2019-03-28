@@ -67,7 +67,7 @@
     <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
         <DatePicker
             required
-            error="Select a date"
+            error="Select a date is Required"
             placeholder="Select a date"
             value={state.date}
             label="DatePicker Label"
