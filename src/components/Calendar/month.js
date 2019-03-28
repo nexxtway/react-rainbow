@@ -30,7 +30,7 @@ export default function Month(props) {
                     minDate={minDate}
                     maxDate={maxDate}
                     firstDayMonth={firstDayMonth}
-                    key={date.getDate()}
+                    key={date.getTime()}
                     onChange={onChange}
                 />,
             );

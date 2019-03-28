@@ -26,6 +26,11 @@ class DatePicker extends Component {
         this.closeModal = this.closeModal.bind(this);
     }
 
+    getContainerClassName() {
+        const { className } = this.props;
+        return classnames('rainbow-date-picker_input-container', className);
+    }
+
     handleChange(...args) {
         const { onChange } = this.props;
         this.setState({
@@ -76,7 +81,6 @@ class DatePicker extends Component {
             placeholder,
             label,
             required,
-            className,
             style,
             formatStyle,
             hideLabel,
@@ -96,12 +100,8 @@ class DatePicker extends Component {
 
         const formattedDate = formatDate(value, formatStyle);
 
-        function getContainerClassName() {
-            return classnames('rainbow-date-picker_input-container', className);
-        }
-
         return (
-            <div id={id} className={getContainerClassName()} style={style}>
+            <div id={id} className={this.getContainerClassName()} style={style}>
                 <Input
                     ref={this.inputRef}
                     className="rainbow-date-picker_input"
