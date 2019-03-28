@@ -13,6 +13,9 @@ import getYearsRange from './helpers/get-years-range';
 import getFormattedMonth from './helpers/get-formatted-month';
 import './styles.css';
 
+/**
+ * Calendar provide a simple way to select a single date.
+ */
 export default class Calendar extends Component {
     constructor(props) {
         super(props);
