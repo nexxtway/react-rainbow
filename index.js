@@ -10,6 +10,7 @@ import Button from './Button';
 import ButtonGroup from './ButtonGroup';
 import ButtonIcon from './ButtonIcon';
 import ButtonMenu from './ButtonMenu';
+import Calendar from './Calendar';
 import Card from './Card';
 import CarouselCard from './CarouselCard';
 import CarouselImage from './CarouselImage';
@@ -18,6 +19,7 @@ import CheckboxGroup from './CheckboxGroup';
 import CheckboxToggle from './CheckboxToggle';
 import Column from './Column';
 import Dataset from './Dataset';
+import DatePicker from './DatePicker';
 import GMap from './GMap';
 import Input from './Input';
 import MapMarker from './MapMarker';
@@ -60,6 +62,7 @@ export {
     ButtonGroup,
     ButtonIcon,
     ButtonMenu,
+    Calendar,
     Card,
     CarouselCard,
     CarouselImage,
@@ -68,6 +71,7 @@ export {
     CheckboxGroup,
     CheckboxToggle,
     Dataset,
+    DatePicker,
     GMap,
     Input,
     MapMarker,
