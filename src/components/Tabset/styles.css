@@ -6,6 +6,9 @@
   justify-content: flex-start;
   width: 100%; }
 
+.rainbow-tabset_inner-container {
+  padding: 0 0.75rem; }
+
 .rainbow-tabset_inner-container--full-width {
   justify-content: space-between; }
 
