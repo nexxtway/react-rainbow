@@ -31,9 +31,6 @@
     font-weight: 400;
     line-height: 48px;
     height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .rainbow-calendar_header-days abbr {
@@ -46,9 +43,6 @@
     font-size: $font-size-text-medium;
     font-weight: 400;
     border-radius: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .rainbow-calendar_day-button {
@@ -56,9 +50,6 @@
     outline: none;
     transition: all 0.2s ease;
     background-color: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border-radius: 48px;
     line-height: 36px;
     height: 36px;
@@ -87,9 +78,6 @@
     text-align: center;
     font-size: $font-size-text-medium;
     font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border-radius: 48px;
     line-height: 36px;
     height: 36px;
@@ -112,9 +100,6 @@
     color: $color-gray-2;
     text-align: center;
     font-size: $font-size-text-medium;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     font-weight: 400;
     line-height: 36px;
     height: 36px;
