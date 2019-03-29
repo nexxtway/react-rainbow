@@ -54,7 +54,7 @@
     line-height: 36px;
     height: 36px;
     width: 36px;
-    margin: 6px 0;
+    margin: 6px auto;
 
     &:hover {
         transition: all 0.2s ease;
@@ -82,6 +82,7 @@
     line-height: 36px;
     height: 36px;
     width: 36px;
+    margin: auto;
     border: none;
     outline: none;
 
@@ -103,6 +104,7 @@
     font-weight: 400;
     line-height: 36px;
     height: 36px;
+    margin: auto;
     cursor: not-allowed;
     -webkit-user-select: none;
     -webkit-tap-highlight-color: transparent;
