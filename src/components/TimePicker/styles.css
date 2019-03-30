@@ -42,8 +42,7 @@
   border-radius: 4px;
   height: 100%;
   padding: 0 0.25rem;
-  text-align: center;
-  -webkit-appearance: none; }
+  text-align: center; }
   .rainbow-time-picker_time-select-value:focus, .rainbow-time-picker_time-select-value:active {
     color: white;
     background-color: #01b6f5;
@@ -60,8 +59,11 @@
   .rainbow-time-picker_time-select-value::selection {
     color: white;
     background: #009acf; }
-  .rainbow-time-picker_time-select-value[type=number]::-webkit-inner-spin-button, .rainbow-time-picker_time-select-value[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none; }
+  .rainbow-time-picker_time-select-value[type=number]::-webkit-inner-spin-button, .rainbow-time-picker_time-select-value[type=number]::-webkit-outer-spin-button, .rainbow-time-picker_time-select-value[type=time]::-webkit-inner-spin-button, .rainbow-time-picker_time-select-value[type=time]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; }
 
 .rainbow-time-picker_dots {
   font-size: 32px;

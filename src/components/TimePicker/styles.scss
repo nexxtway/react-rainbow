@@ -62,7 +62,6 @@
     height: 100%;
     padding: 0 $padding-xx-small;
     text-align: center;
-    -webkit-appearance: none;
 
     &:focus,
     &:active {
@@ -90,8 +89,13 @@
     }
 
     &[type=number]::-webkit-inner-spin-button,
-    &[type=number]::-webkit-outer-spin-button {
+    &[type=number]::-webkit-outer-spin-button,
+    &[type=time]::-webkit-inner-spin-button,
+    &[type=time]::-webkit-outer-spin-button {
         -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        margin: 0;
     }
 }
 
