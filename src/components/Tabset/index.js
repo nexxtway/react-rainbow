@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
@@ -6,7 +7,13 @@ import ButtonGroup from './../ButtonGroup';
 import ButtonIcon from './../ButtonIcon';
 import RenderIf from './../RenderIf';
 import { LEFT_KEY, RIGHT_KEY } from '../../libs/constants';
-import { getChildTabNodes, insertChildOrderly, getActiveTabIndex, getChildrenTotalWidth } from './utils';
+import {
+    getChildTabNodes,
+    insertChildOrderly,
+    getActiveTabIndex,
+    getChildrenTotalWidth,
+    // getChildrenTotalWidthWhenTabClicked,
+} from './utils';
 import RightThinChevron from './rightThinChevron';
 import LeftThinChevron from './leftThinChevron';
 import './styles.css';
@@ -33,6 +40,7 @@ export default class Tabset extends Component {
         this.handleLeftButtonClick = this.handleLeftButtonClick.bind(this);
         this.handleRightButtonClick = this.handleRightButtonClick.bind(this);
         this.updateButtonsVisibility = this.updateButtonsVisibility.bind(this);
+        this.handleSelect = this.handleSelect.bind(this);
         this.keyHandlerMap = {
             [RIGHT_KEY]: () => this.selectTab(RIGHT_SIDE),
             [LEFT_KEY]: () => this.selectTab(LEFT_SIDE),
@@ -67,14 +75,14 @@ export default class Tabset extends Component {
     }
 
     updateButtonsVisibility() {
+        const { tabChildren } = this.state;
         const tabset = this.tabsetRef.current;
         const {
             scrollWidth,
             scrollLeft,
             offsetWidth: tabsetWidth,
-            children,
         } = tabset;
-        const childrenTotalWidth = getChildrenTotalWidth(children);
+        const childrenTotalWidth = getChildrenTotalWidth(tabChildren);
         const showButtons = childrenTotalWidth > tabsetWidth;
         this.screenWidth = window.innerWidth;
         this.scrollLeft = scrollLeft;
@@ -170,14 +178,45 @@ export default class Tabset extends Component {
         this.setState({ tabChildren: newTabChildren });
     }
 
+    handleSelect(e, name) {
+        const { onSelect } = this.props;
+        const { tabChildren } = this.state;
+        const tabset = this.tabsetRef.current;
+        const {
+            scrollLeft,
+            offsetWidth: tabsetWidth,
+        } = tabset;
+        const tabIndex = tabChildren.findIndex(child => child.name === name);
+        const isFirstTab = tabIndex === 0;
+
+        if (isFirstTab) {
+            this.tabsetRef.current.scrollTo(0, 0);
+        } else {
+            const totalWidthUpToCurrentTab = getChildrenTotalWidth(tabChildren, tabIndex + 1);
+            const tabsetWidthUpToCurrentTab = tabsetWidth + scrollLeft;
+            const isCurrentTabVisibleOnRightSide = tabsetWidthUpToCurrentTab - 20 >= totalWidthUpToCurrentTab;
+            const totalWidthUpToPrevTab = getChildrenTotalWidth(tabChildren, tabIndex);
+            const isCurrentTabVisibleOnLeftSide = scrollLeft > totalWidthUpToPrevTab;
+            if (isCurrentTabVisibleOnLeftSide) {
+                const moveScroll = scrollLeft - totalWidthUpToPrevTab;
+                this.tabsetRef.current.scrollTo(scrollLeft - moveScroll, 0);
+            }
+            if (!isCurrentTabVisibleOnRightSide) {
+                const moveScroll = (totalWidthUpToCurrentTab - tabsetWidthUpToCurrentTab) + 20;
+                this.tabsetRef.current.scrollTo(scrollLeft + moveScroll, 0);
+            }
+        }
+        onSelect(e, name);
+    }
+
     render() {
-        const { id, onSelect, activeTabName, fullWidth, children, style } = this.props;
+        const { id, activeTabName, fullWidth, children, style } = this.props;
         const { areButtonsVisible } = this.state;
         const { screenWidth } = this;
         const showButtons = areButtonsVisible || screenWidth < 600;
         const context = {
             activeTabName,
-            onSelect,
+            onSelect: this.handleSelect,
             privateRegisterTab: this.registerTab,
             privateUnRegisterTab: this.unRegisterTab,
             fullWidth,

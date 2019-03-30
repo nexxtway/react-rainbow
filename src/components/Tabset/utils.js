@@ -26,8 +26,8 @@ export function getActiveTabIndex(tabChildren, activeTabName) {
     return tabChildren.findIndex(tab => tab.name === activeTabName);
 }
 
-export function getChildrenTotalWidth(children) {
-    const childrenArray = [].slice.call(children, 0);
-    const childrenWidth = childrenArray.map(child => child.offsetWidth);
-    return childrenWidth.reduce((prev, curr) => prev + curr);
+export function getChildrenTotalWidth(children, index) {
+    const childrenArray = children.slice(0, index);
+    const childrenWidth = childrenArray.map(child => child.ref.offsetWidth);
+    return childrenWidth.reduce((prev, curr) => prev + curr, 0);
 }

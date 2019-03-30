@@ -38,6 +38,7 @@ describe('<Tabset />', () => {
                 <Tab label="Tab-3" name="tab-3" registerTab={registerTabMockFn} />
             </Tabset>,
         );
+        component.instance().tabsetRef.current.scrollTo = jest.fn();
         const item2 = component.find('Tab[name="tab-2"]').find('a');
         item2.simulate('click');
         expect(onSelectMockFn).toHaveBeenCalledWith(expect.any(Object), 'tab-2');
