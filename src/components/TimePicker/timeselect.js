@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ButtonIcon from '../ButtonIcon';
 import Button from '../Button';
+import AmPmSelect from './ampmSelect';
 import UpIcon from './icons/upArrow';
 import DownIcon from './icons/downArrow';
 
@@ -38,42 +39,31 @@ export default class TimeSelect extends Component {
 
     render() {
         const { hour, minutes, ampm } = this.state;
-        const { onCloseModal, value } = this.props;
+        const { onCloseModal } = this.props;
         return (
             <article>
-                <div className="rainbow-time-picker_time-content">
+                <div className="rainbow-time-picker_time-select-content">
                     <input
-                        className="rainbow-time-picker_time-input--hidden"
-                        type="time"
-                        value={value} />
-                    <span className="rainbow-time-picker_time-input-container">
-                        <input
-                            className="rainbow-time-picker_time-input"
-                            type="number"
-                            value={hour}
-                            min="1"
-                            max="12"
-                            placeholder="--"
-                            onChange={this.handleChangeHour} />
-                    </span>
-                    <span className="rainbow-time-picker_time-dots">:</span>
-                    <span className="rainbow-time-picker_time-input-container">
-                        <input
-                            className="rainbow-time-picker_time-input"
-                            type="number"
-                            value={minutes}
-                            min="0"
-                            max="60"
-                            placeholder="--"
-                            onChange={this.handleChangeMinutes} />
-                    </span>
-                    <span className="rainbow-time-picker_time-input-container">
-                        <input
-                            className="rainbow-time-picker_time-input"
-                            value={ampm}
-                            placeholder="--"
-                            onChange={this.handleChangeAmPm} />
-                    </span>
+                        className="rainbow-time-picker_time-select-value"
+                        type="number"
+                        value={hour}
+                        min="1"
+                        max="12"
+                        placeholder="--"
+                        onChange={this.handleChangeHour} />
+                    <span className="rainbow-time-picker_dots">:</span>
+                    <input
+                        className="rainbow-time-picker_time-select-value"
+                        type="number"
+                        value={minutes}
+                        min="0"
+                        max="60"
+                        placeholder="--"
+                        onChange={this.handleChangeMinutes} />
+                    <AmPmSelect
+                        value={ampm}
+                        onChange={this.handleChangeAmPm} />
+
                     <div className="rainbow-time-picker_icon-button-container">
                         <ButtonIcon
                             variant="border-filled"
@@ -85,6 +75,7 @@ export default class TimeSelect extends Component {
                             size="small" />
                     </div>
                 </div>
+
                 <footer className="rainbow-time-picker_footer">
                     <Button
                         className="rainbow-time-picker_button"
@@ -104,13 +95,9 @@ export default class TimeSelect extends Component {
 }
 
 TimeSelect.propTypes = {
-    value: PropTypes.object,
-    onChange: PropTypes.func,
     onCloseModal: PropTypes.func,
 };
 
 TimeSelect.defaultProps = {
-    value: undefined,
-    onChange: () => {},
     onCloseModal: () => {},
 };
