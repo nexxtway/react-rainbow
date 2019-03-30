@@ -34,8 +34,8 @@
 }
 
 .rainbow-time-picker_time-content {
-    height: 82px;
-    width: 300px;
+    height: 92px;
+    width: 360px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -63,7 +63,7 @@
     text-transform: uppercase;
     color: $color-brand;
     border: none;
-    width: 64px;
+    width: 76px;
     background-color: transparent;
     border-radius: 4px;
     height: 100%;
@@ -78,8 +78,15 @@
         box-shadow: $shadow-outline;
     }
 
+    [placeholder]:focus::-webkit-input-placeholder {
+        color: white;
+    }
+
     &::placeholder {
         color: $color-brand;
+        font-size: 36px;
+        font-weight: 200;
+        text-transform: uppercase;
     }
 }
 
@@ -88,7 +95,7 @@
     font-weight: 200;
     height: 100%;
     color: $color-brand;
-    margin: auto $padding-medium;
+    margin: auto $padding-small;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -97,7 +104,8 @@
 .rainbow-time-picker_icon-button-container {
     display: flex;
     flex-direction: column;
-    margin-left: $margin-medium;
+    margin-left: $margin-small;
+    margin-right: $margin-x-small;
 }
 
 .rainbow-time-picker_icon-button-container > :first-child {

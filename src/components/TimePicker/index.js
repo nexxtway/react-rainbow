@@ -5,7 +5,7 @@ import ClockIcon from './clockIcon';
 import Input from '../Input';
 import Modal from './../Modal';
 import withReduxForm from './../../libs/hocs/withReduxForm';
-import Timeselect from './timeselect';
+import Timeselect from './timeSelect';
 import './styles.css';
 
 /**
@@ -117,7 +117,7 @@ class TimePicker extends Component {
                     autoComplete="off" />
 
                 <Modal className="rainbow-time-picker_modal" isOpen={isOpen} onRequestClose={this.closeModal}>
-                    <Timeselect />
+                    <Timeselect onCloseModal={this.closeModal} />
                 </Modal>
             </div>
         );
