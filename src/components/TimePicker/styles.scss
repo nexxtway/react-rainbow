@@ -34,7 +34,7 @@
 }
 
 .rainbow-time-picker_time-content {
-    height: 92px;
+    height: 100px;
     width: 360px;
     display: flex;
     align-items: center;
@@ -53,21 +53,33 @@
     color: $color-brand;
 }
 
-.rainbow-time-picker_time {
+.rainbow-time-picker_time-input-container {
     height: 100%;
 }
 
+.rainbow-time-picker_time-input--hidden {
+    visibility: hidden;
+    position: absolute !important;
+    margin: -1px !important;
+    border: 0 !important;
+    padding: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+}
+
 .rainbow-time-picker_time-input {
-    font-size: 36px;
+    font-size: 44px;
     font-weight: 200;
     text-transform: uppercase;
     color: $color-brand;
     border: none;
-    width: 76px;
+    width: 82px;
     background-color: transparent;
     border-radius: 4px;
     height: 100%;
-    padding: 0 8px;
+    padding: 0 $padding-xx-small;
     text-align: center;
 
     &:focus,
@@ -78,15 +90,25 @@
         box-shadow: $shadow-outline;
     }
 
-    [placeholder]:focus::-webkit-input-placeholder {
+    &[placeholder]:focus::-webkit-input-placeholder {
         color: white;
     }
 
     &::placeholder {
         color: $color-brand;
-        font-size: 36px;
+        font-size: 44px;
         font-weight: 200;
         text-transform: uppercase;
+    }
+
+    &::selection {
+        color: white;
+        background: $color-brand-active;
+    }
+
+    &[type=number]::-webkit-inner-spin-button,
+    &[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
     }
 }
 
@@ -95,7 +117,7 @@
     font-weight: 200;
     height: 100%;
     color: $color-brand;
-    margin: auto $padding-small;
+    margin: auto $padding-xx-small;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -104,8 +126,7 @@
 .rainbow-time-picker_icon-button-container {
     display: flex;
     flex-direction: column;
-    margin-left: $margin-small;
-    margin-right: $margin-x-small;
+    margin: 0 $margin-xx-small 0 $margin-x-small;
 }
 
 .rainbow-time-picker_icon-button-container > :first-child {

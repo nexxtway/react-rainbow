@@ -19,7 +19,7 @@
   width: auto; }
 
 .rainbow-time-picker_time-content {
-  height: 92px;
+  height: 100px;
   width: 360px;
   display: flex;
   align-items: center;
@@ -36,40 +36,56 @@
   text-transform: uppercase;
   color: #01b6f5; }
 
-.rainbow-time-picker_time {
+.rainbow-time-picker_time-input-container {
   height: 100%; }
 
+.rainbow-time-picker_time-input--hidden {
+  visibility: hidden;
+  position: absolute !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important; }
+
 .rainbow-time-picker_time-input {
-  font-size: 36px;
+  font-size: 44px;
   font-weight: 200;
   text-transform: uppercase;
   color: #01b6f5;
   border: none;
-  width: 76px;
+  width: 82px;
   background-color: transparent;
   border-radius: 4px;
   height: 100%;
-  padding: 0 8px;
+  padding: 0 0.25rem;
   text-align: center; }
   .rainbow-time-picker_time-input:focus, .rainbow-time-picker_time-input:active {
     outline: 0;
     color: white;
     background-color: #01b6f5;
     box-shadow: 0 0 2px #01b6f5; }
-  .rainbow-time-picker_time-input [placeholder]:focus::-webkit-input-placeholder {
+  .rainbow-time-picker_time-input[placeholder]:focus::-webkit-input-placeholder {
     color: white; }
   .rainbow-time-picker_time-input::placeholder {
     color: #01b6f5;
-    font-size: 36px;
+    font-size: 44px;
     font-weight: 200;
     text-transform: uppercase; }
+  .rainbow-time-picker_time-input::selection {
+    color: white;
+    background: #009acf; }
+  .rainbow-time-picker_time-input[type=number]::-webkit-inner-spin-button, .rainbow-time-picker_time-input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none; }
 
 .rainbow-time-picker_time-dots {
   font-size: 32px;
   font-weight: 200;
   height: 100%;
   color: #01b6f5;
-  margin: auto 0.75rem;
+  margin: auto 0.25rem;
   display: flex;
   align-items: center;
   justify-content: center; }
@@ -77,8 +93,7 @@
 .rainbow-time-picker_icon-button-container {
   display: flex;
   flex-direction: column;
-  margin-left: 0.75rem;
-  margin-right: 0.5rem; }
+  margin: 0 0.25rem 0 0.5rem; }
 
 .rainbow-time-picker_icon-button-container > :first-child {
   border-radius: 24px 24px 0 0; }
