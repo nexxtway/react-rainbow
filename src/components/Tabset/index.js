@@ -12,7 +12,9 @@ import {
     insertChildOrderly,
     getActiveTabIndex,
     getChildrenTotalWidth,
-    // getChildrenTotalWidthWhenTabClicked,
+    getChildrenTotalWidthUpToClickedTab,
+    childrenNamesComparate,
+    getNewTabsetChildren,
 } from './utils';
 import RightThinChevron from './rightThinChevron';
 import LeftThinChevron from './leftThinChevron';
@@ -29,13 +31,15 @@ export default class Tabset extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            tabChildren: [],
+            tabsetChildren: [],
             areButtonsVisible: false,
         };
+        this.isFirstTime = true;
         this.containerRef = React.createRef();
         this.tabsetRef = React.createRef();
         this.registerTab = this.registerTab.bind(this);
         this.unRegisterTab = this.unRegisterTab.bind(this);
+        this.updateTab = this.updateTab.bind(this);
         this.handleKeyPressed = this.handleKeyPressed.bind(this);
         this.handleLeftButtonClick = this.handleLeftButtonClick.bind(this);
         this.handleRightButtonClick = this.handleRightButtonClick.bind(this);
@@ -48,8 +52,22 @@ export default class Tabset extends Component {
     }
 
     componentDidMount() {
-        this.updateButtonsVisibility();
         window.addEventListener('resize', this.updateButtonsVisibility);
+    }
+
+    componentDidUpdate(prevProp) {
+        const { tabsetChildren } = this.state;
+        const { isFirstTime } = this;
+        const { children } = this.props;
+        const isAllChildrenRegistered = tabsetChildren.length > 0 && children.length === tabsetChildren.length;
+        const areThereNewChildren = childrenNamesComparate(children, prevProp.children);
+        if (areThereNewChildren) {
+            this.updateButtonsVisibility();
+        }
+        if (isAllChildrenRegistered && isFirstTime) {
+            this.updateButtonsVisibility();
+            this.isFirstTime = false;
+        }
     }
 
     componentWillUnmount() {
@@ -69,20 +87,20 @@ export default class Tabset extends Component {
     }
 
     setAsSelectedTab(tabIndex) {
-        const { tabChildren } = this.state;
-        tabChildren[tabIndex].ref.click();
-        tabChildren[tabIndex].ref.focus();
+        const { tabsetChildren } = this.state;
+        tabsetChildren[tabIndex].ref.click();
+        tabsetChildren[tabIndex].ref.focus();
     }
 
     updateButtonsVisibility() {
-        const { tabChildren } = this.state;
+        const { tabsetChildren } = this.state;
         const tabset = this.tabsetRef.current;
         const {
             scrollWidth,
             scrollLeft,
             offsetWidth: tabsetWidth,
         } = tabset;
-        const childrenTotalWidth = getChildrenTotalWidth(tabChildren);
+        const childrenTotalWidth = getChildrenTotalWidth(tabsetChildren);
         const showButtons = childrenTotalWidth > tabsetWidth;
         this.screenWidth = window.innerWidth;
         this.scrollLeft = scrollLeft;
@@ -100,13 +118,13 @@ export default class Tabset extends Component {
 
     selectTab(side) {
         const { activeTabName } = this.props;
-        const { tabChildren } = this.state;
-        const activeTabIndex = getActiveTabIndex(tabChildren, activeTabName);
+        const { tabsetChildren } = this.state;
+        const activeTabIndex = getActiveTabIndex(tabsetChildren, activeTabName);
 
-        if (activeTabIndex === tabChildren.length - 1 && side === RIGHT_SIDE) {
+        if (activeTabIndex === tabsetChildren.length - 1 && side === RIGHT_SIDE) {
             this.setAsSelectedTab(0);
         } else if (activeTabIndex === 0 && side === LEFT_SIDE) {
-            this.setAsSelectedTab(tabChildren.length - 1);
+            this.setAsSelectedTab(tabsetChildren.length - 1);
         } else {
             this.setAsSelectedTab(activeTabIndex + side);
         }
@@ -114,9 +132,9 @@ export default class Tabset extends Component {
 
     isLeftButtonDisabled() {
         const { activeTabName } = this.props;
-        const { tabChildren } = this.state;
+        const { tabsetChildren } = this.state;
         const { screenWidth, scrollLeft } = this;
-        const activeTabIndex = getActiveTabIndex(tabChildren, activeTabName);
+        const activeTabIndex = getActiveTabIndex(tabsetChildren, activeTabName);
         const isFirstTabActive = activeTabIndex === 0;
         const isFirstTabVisible = scrollLeft === 0;
 
@@ -131,10 +149,10 @@ export default class Tabset extends Component {
 
     isRightButtonDisabled() {
         const { activeTabName } = this.props;
-        const { tabChildren } = this.state;
+        const { tabsetChildren } = this.state;
         const { screenWidth, scrollLeft, maxScroll } = this;
-        const lastTabIndex = tabChildren.length - 1;
-        const activeTabIndex = getActiveTabIndex(tabChildren, activeTabName);
+        const lastTabIndex = tabsetChildren.length - 1;
+        const activeTabIndex = getActiveTabIndex(tabsetChildren, activeTabName);
         const isLastTabActive = lastTabIndex === activeTabIndex;
         const isLastTabVisible = scrollLeft === maxScroll;
 
@@ -163,39 +181,42 @@ export default class Tabset extends Component {
         return this.selectTab(LEFT_SIDE);
     }
 
+    updateTab(tab, nameToUpdate) {
+        const { tabsetChildren } = this.state;
+        const newTabsetChildren = getNewTabsetChildren(tabsetChildren, tab, nameToUpdate);
+        this.setState({ tabsetChildren: newTabsetChildren });
+    }
+
     registerTab(tab) {
-        const { tabChildren } = this.state;
+        const { tabsetChildren } = this.state;
         const [...nodes] = getChildTabNodes(this.tabsetRef.current);
-        const newChildrenRefs = insertChildOrderly(tabChildren, tab, nodes);
-        this.setState({
-            tabChildren: newChildrenRefs,
-        });
+        const newChildrenRefs = insertChildOrderly(tabsetChildren, tab, nodes);
+        this.setState({ tabsetChildren: newChildrenRefs });
     }
 
     unRegisterTab(tabName) {
-        const { tabChildren } = this.state;
-        const newTabChildren = tabChildren.filter(t => t.name !== tabName);
-        this.setState({ tabChildren: newTabChildren });
+        const { tabsetChildren } = this.state;
+        const newTabsetChildren = tabsetChildren.filter(t => t.name !== tabName);
+        this.setState({ tabsetChildren: newTabsetChildren });
     }
 
-    handleSelect(e, name) {
-        const { onSelect } = this.props;
-        const { tabChildren } = this.state;
+    scrollToSelectedTab(name) {
+        const { tabsetChildren } = this.state;
         const tabset = this.tabsetRef.current;
         const {
             scrollLeft,
             offsetWidth: tabsetWidth,
         } = tabset;
-        const tabIndex = tabChildren.findIndex(child => child.name === name);
+        const tabIndex = tabsetChildren.findIndex(child => child.name === name);
         const isFirstTab = tabIndex === 0;
 
         if (isFirstTab) {
             this.tabsetRef.current.scrollTo(0, 0);
         } else {
-            const totalWidthUpToCurrentTab = getChildrenTotalWidth(tabChildren, tabIndex + 1);
+            const totalWidthUpToCurrentTab = getChildrenTotalWidthUpToClickedTab(tabsetChildren, tabIndex + 1);
+            const totalWidthUpToPrevTab = getChildrenTotalWidthUpToClickedTab(tabsetChildren, tabIndex);
             const tabsetWidthUpToCurrentTab = tabsetWidth + scrollLeft;
             const isCurrentTabVisibleOnRightSide = tabsetWidthUpToCurrentTab - 20 >= totalWidthUpToCurrentTab;
-            const totalWidthUpToPrevTab = getChildrenTotalWidth(tabChildren, tabIndex);
             const isCurrentTabVisibleOnLeftSide = scrollLeft > totalWidthUpToPrevTab;
             if (isCurrentTabVisibleOnLeftSide) {
                 const moveScroll = scrollLeft - totalWidthUpToPrevTab;
@@ -206,6 +227,11 @@ export default class Tabset extends Component {
                 this.tabsetRef.current.scrollTo(scrollLeft + moveScroll, 0);
             }
         }
+    }
+
+    handleSelect(e, name) {
+        const { onSelect } = this.props;
+        this.scrollToSelectedTab(name);
         onSelect(e, name);
     }
 
@@ -219,6 +245,7 @@ export default class Tabset extends Component {
             onSelect: this.handleSelect,
             privateRegisterTab: this.registerTab,
             privateUnRegisterTab: this.unRegisterTab,
+            privateUpdateTab: this.updateTab,
             fullWidth,
         };
 
