@@ -7,6 +7,7 @@ import Modal from '../Modal';
 import withReduxForm from './../../libs/hocs/withReduxForm';
 import TimeSelect from './timeselect';
 import './styles.css';
+import './media-queries.css';
 
 /**
  * A TimePicker is an autocomplete text input to capture a time.
@@ -98,7 +99,6 @@ class TimePicker extends Component {
                 <Input
                     ref={this.inputRef}
                     className="rainbow-time-picker_input"
-                    type="time"
                     label={label}
                     placeholder={placeholder}
                     icon={<ClockIcon className="rainbow-time-picker_input-icon" />}
