@@ -26,8 +26,37 @@ export function getActiveTabIndex(tabChildren, activeTabName) {
     return tabChildren.findIndex(tab => tab.name === activeTabName);
 }
 
+function getTotalWidth(children) {
+    let totalWidth = 0;
+    children.forEach((child) => {
+        totalWidth += child.ref.offsetWidth;
+    });
+    return totalWidth;
+}
+
 export function getChildrenTotalWidth(children) {
-    const childrenArray = [].slice.call(children, 0);
-    const childrenWidth = childrenArray.map(child => child.offsetWidth);
-    return childrenWidth.reduce((prev, curr) => prev + curr);
+    return getTotalWidth(children);
+}
+
+export function getChildrenTotalWidthUpToClickedTab(children, index) {
+    const childrenUpToClickedTab = children.slice(0, index);
+    return getTotalWidth(childrenUpToClickedTab);
+}
+
+export function isNotSameChildren(children, prevChildren) {
+    return children.some((child, index) => {
+        if (child && prevChildren[index]) {
+            return child.props.name !== prevChildren[index].props.name;
+        }
+        return false;
+    });
+}
+
+export function getUpdatedTabsetChildren(tabsetChildren, tab, nameToUpdate) {
+    return tabsetChildren.map((child) => {
+        if (child.name === nameToUpdate) {
+            return tab;
+        }
+        return child;
+    });
 }
