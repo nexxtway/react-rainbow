@@ -13,8 +13,8 @@ import {
     getActiveTabIndex,
     getChildrenTotalWidth,
     getChildrenTotalWidthUpToClickedTab,
-    childrenNamesComparate,
-    getNewTabsetChildren,
+    isNotSameChildren,
+    getUpdatedTabsetChildren,
 } from './utils';
 import RightThinChevron from './rightThinChevron';
 import LeftThinChevron from './leftThinChevron';
@@ -59,12 +59,11 @@ export default class Tabset extends Component {
         const { tabsetChildren } = this.state;
         const { isFirstTime } = this;
         const { children } = this.props;
-        const isAllChildrenRegistered = tabsetChildren.length > 0 && children.length === tabsetChildren.length;
-        const areThereNewChildren = childrenNamesComparate(children, prevProp.children);
-        if (areThereNewChildren) {
+        const areAllChildrenRegistered = children.length === tabsetChildren.length;
+        if (isNotSameChildren(children, prevProp.children)) {
             this.updateButtonsVisibility();
         }
-        if (isAllChildrenRegistered && isFirstTime) {
+        if (areAllChildrenRegistered && isFirstTime) {
             this.updateButtonsVisibility();
             this.isFirstTime = false;
         }
@@ -183,7 +182,7 @@ export default class Tabset extends Component {
 
     updateTab(tab, nameToUpdate) {
         const { tabsetChildren } = this.state;
-        const newTabsetChildren = getNewTabsetChildren(tabsetChildren, tab, nameToUpdate);
+        const newTabsetChildren = getUpdatedTabsetChildren(tabsetChildren, tab, nameToUpdate);
         this.setState({ tabsetChildren: newTabsetChildren });
     }
 
@@ -196,7 +195,7 @@ export default class Tabset extends Component {
 
     unRegisterTab(tabName) {
         const { tabsetChildren } = this.state;
-        const newTabsetChildren = tabsetChildren.filter(t => t.name !== tabName);
+        const newTabsetChildren = tabsetChildren.filter(tab => tab.name !== tabName);
         this.setState({ tabsetChildren: newTabsetChildren });
     }
 
@@ -216,13 +215,13 @@ export default class Tabset extends Component {
             const totalWidthUpToCurrentTab = getChildrenTotalWidthUpToClickedTab(tabsetChildren, tabIndex + 1);
             const totalWidthUpToPrevTab = getChildrenTotalWidthUpToClickedTab(tabsetChildren, tabIndex);
             const tabsetWidthUpToCurrentTab = tabsetWidth + scrollLeft;
-            const isCurrentTabVisibleOnRightSide = tabsetWidthUpToCurrentTab - 20 >= totalWidthUpToCurrentTab;
-            const isCurrentTabVisibleOnLeftSide = scrollLeft > totalWidthUpToPrevTab;
-            if (isCurrentTabVisibleOnLeftSide) {
+            const isCurrentTabOutOfViewOnRightSide = totalWidthUpToCurrentTab >= tabsetWidthUpToCurrentTab - 20;
+            const isCurrentTabOutOfViewOnLeftSide = scrollLeft > totalWidthUpToPrevTab;
+            if (isCurrentTabOutOfViewOnLeftSide) {
                 const moveScroll = scrollLeft - totalWidthUpToPrevTab;
                 this.tabsetRef.current.scrollTo(scrollLeft - moveScroll, 0);
             }
-            if (!isCurrentTabVisibleOnRightSide) {
+            if (isCurrentTabOutOfViewOnRightSide) {
                 const moveScroll = (totalWidthUpToCurrentTab - tabsetWidthUpToCurrentTab) + 20;
                 this.tabsetRef.current.scrollTo(scrollLeft + moveScroll, 0);
             }

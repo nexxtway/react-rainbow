@@ -27,8 +27,11 @@ export function getActiveTabIndex(tabChildren, activeTabName) {
 }
 
 function getTotalWidth(children) {
-    const childrenWidth = children.map(child => child.ref.offsetWidth);
-    return childrenWidth.reduce((prev, curr) => prev + curr, 0);
+    let totalWidth = 0;
+    children.forEach((child) => {
+        totalWidth += child.ref.offsetWidth;
+    });
+    return totalWidth;
 }
 
 export function getChildrenTotalWidth(children) {
@@ -40,7 +43,7 @@ export function getChildrenTotalWidthUpToClickedTab(children, index) {
     return getTotalWidth(childrenUpToClickedTab);
 }
 
-export function childrenNamesComparate(children, prevChildren) {
+export function isNotSameChildren(children, prevChildren) {
     return children.some((child, index) => {
         if (child && prevChildren[index]) {
             return child.props.name !== prevChildren[index].props.name;
@@ -49,7 +52,7 @@ export function childrenNamesComparate(children, prevChildren) {
     });
 }
 
-export function getNewTabsetChildren(tabsetChildren, tab, nameToUpdate) {
+export function getUpdatedTabsetChildren(tabsetChildren, tab, nameToUpdate) {
     return tabsetChildren.map((child) => {
         if (child.name === nameToUpdate) {
             return tab;
