@@ -32,14 +32,14 @@ export default class AmPmSelect extends Component {
                         type="radio"
                         id="am"
                         name="options"
-                        value="am" />
+                        checked
+                        onChange={() => {}} />
                     <label className="rainbow-time-picker_select-option" htmlFor="am"> am </label>
                     <input
                         className="rainbow-time-picker_time-input--hidden"
                         type="radio"
                         id="pm"
-                        name="options"
-                        value="pm" />
+                        name="options" />
                     <label className="rainbow-time-picker_select-option" htmlFor="pm"> pm </label>
                 </fieldset>
             );

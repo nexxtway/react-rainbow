@@ -89,6 +89,9 @@ class TimePicker extends Component {
             onFocus,
             onBlur,
             id,
+            hours24,
+            cancelLabel,
+            okLabel,
         } = this.props;
         const {
             isOpen,
@@ -117,8 +120,15 @@ class TimePicker extends Component {
                     tabIndex={tabIndex}
                     autoComplete="off" />
 
-                <Modal className="rainbow-time-picker_modal" isOpen={isOpen} onRequestClose={this.closeModal}>
-                    <TimeSelect onCloseModal={this.closeModal} />
+                <Modal
+                    className="rainbow-time-picker_modal"
+                    isOpen={isOpen}
+                    onRequestClose={this.closeModal}>
+                    <TimeSelect
+                        onCloseModal={this.closeModal}
+                        hours24={hours24}
+                        cancelLabel={cancelLabel}
+                        okLabel={okLabel} />
                 </Modal>
             </div>
         );
@@ -126,8 +136,18 @@ class TimePicker extends Component {
 }
 
 TimePicker.propTypes = {
-    /** Sets the date for the Date Picker programmatically. */
+    /** Sets the date for the TimePicker programmatically. */
     value: PropTypes.instanceOf(Date),
+    /** Tells the component to display the picker in 24hr format. */
+    hours24: PropTypes.bool,
+    /** Override the label of the 'OK' button. */
+    cancelLabel: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
+    /** Override the label of the 'Cancel' button. */
+    okLabel: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
     /** The action triggered when a value attribute changes. */
     onChange: PropTypes.func,
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
@@ -173,6 +193,9 @@ TimePicker.propTypes = {
 
 TimePicker.defaultProps = {
     value: undefined,
+    hours24: false,
+    cancelLabel: 'Cancel',
+    okLabel: 'OK',
     onChange: () => {},
     placeholder: null,
     hideLabel: false,

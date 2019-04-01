@@ -5,6 +5,7 @@ import Button from '../Button';
 import AmPmSelect from './ampmSelect';
 import UpIcon from './icons/upArrow';
 import DownIcon from './icons/downArrow';
+import RenderIf from '../RenderIf';
 
 export default class TimeSelect extends Component {
     constructor(props) {
@@ -14,9 +15,16 @@ export default class TimeSelect extends Component {
             minutes: undefined,
             ampm: undefined,
         };
+        this.hourInputRef = React.createRef();
         this.handleChangeHour = this.handleChangeHour.bind(this);
         this.handleChangeMinutes = this.handleChangeMinutes.bind(this);
         this.handleChangeAmPm = this.handleChangeAmPm.bind(this);
+    }
+
+    componentDidMount() {
+        if (this.hourInputRef) {
+            this.hourInputRef.current.focus();
+        }
     }
 
     handleChangeHour(event) {
@@ -39,7 +47,7 @@ export default class TimeSelect extends Component {
 
     render() {
         const { hour, minutes, ampm } = this.state;
-        const { onCloseModal } = this.props;
+        const { onCloseModal, cancelLabel, okLabel, hours24 } = this.props;
         return (
             <article>
                 <div className="rainbow-time-picker_time-select-content">
@@ -50,7 +58,8 @@ export default class TimeSelect extends Component {
                         min="1"
                         max="12"
                         placeholder="--"
-                        onChange={this.handleChangeHour} />
+                        onChange={this.handleChangeHour}
+                        ref={this.hourInputRef} />
                     <span className="rainbow-time-picker_dots">:</span>
                     <input
                         className="rainbow-time-picker_time-select-value"
@@ -60,9 +69,12 @@ export default class TimeSelect extends Component {
                         max="60"
                         placeholder="--"
                         onChange={this.handleChangeMinutes} />
-                    <AmPmSelect
-                        value={ampm}
-                        onChange={this.handleChangeAmPm} />
+
+                    <RenderIf isTrue={!hours24}>
+                        <AmPmSelect
+                            value={ampm}
+                            onChange={this.handleChangeAmPm} />
+                    </RenderIf>
 
                     <div className="rainbow-time-picker_icon-button-container">
                         <ButtonIcon
@@ -80,13 +92,13 @@ export default class TimeSelect extends Component {
                     <Button
                         className="rainbow-time-picker_button"
                         variant="base"
-                        label="Cancel"
+                        label={cancelLabel}
                         onClick={onCloseModal} />
 
                     <Button
                         className="rainbow-time-picker_button"
                         variant="brand"
-                        label="OK"
+                        label={okLabel}
                         onClick={() => {}} />
                 </footer>
             </article>
@@ -96,8 +108,18 @@ export default class TimeSelect extends Component {
 
 TimeSelect.propTypes = {
     onCloseModal: PropTypes.func,
+    hours24: PropTypes.bool,
+    cancelLabel: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
+    okLabel: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
 };
 
 TimeSelect.defaultProps = {
     onCloseModal: () => {},
+    hours24: false,
+    cancelLabel: 'Cancel',
+    okLabel: 'OK',
 };

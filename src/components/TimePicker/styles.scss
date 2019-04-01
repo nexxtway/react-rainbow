@@ -145,18 +145,18 @@
         cursor: pointer;
         color: white;
     }
+}
 
-    &:focus,
-    &:active,
-    &:checked {
-        font-weight: 300;
-        color: white;
-        outline: none;
-        -webkit-user-select: none;
-        -webkit-tap-highlight-color: transparent;
-        -webkit-user-drag: none;
-        user-select: none;
-    }
+.rainbow-time-picker_time-input--hidden:checked + .rainbow-time-picker_select-option,
+.rainbow-time-picker_time-input--hidden:active + .rainbow-time-picker_select-option,
+.rainbow-time-picker_time-input--hidden:focus + .rainbow-time-picker_select-option {
+    font-weight: 300;
+    color: white;
+    outline: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-drag: none;
+    user-select: none;
 }
 
 .rainbow-time-picker_icon-button-container {
