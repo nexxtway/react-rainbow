@@ -6,6 +6,8 @@ import {
     getChildrenTotalWidthUpToClickedTab,
     isNotSameChildren,
     getUpdatedTabsetChildren,
+    getLeftButtonDisabledState,
+    getRightButtonDisabledState,
 } from './../utils';
 
 describe('<Tabset/> utils', () => {
@@ -155,6 +157,112 @@ describe('<Tabset/> utils', () => {
             ];
             expect(getUpdatedTabsetChildren(tabsetChildren, tab, nameToUpdate))
             .toEqual(tabsetChildren);
+        });
+    });
+    describe('getLeftButtonDisabledState', () => {
+        it('should return true when screen width is less than 600px and first tab is active', () => {
+            const activeTabName = 'pizza';
+            const tabsetChildren = [
+                { name: 'pizza', ref: {} },
+                { name: 'onion', ref: {} },
+                { name: 'tomato', ref: {} },
+            ];
+            const screenWidth = 599;
+            const scrollLeft = 0;
+            expect(getLeftButtonDisabledState({
+                activeTabName,
+                tabsetChildren,
+                screenWidth,
+                scrollLeft,
+            })).toBe(true);
+        });
+        it('should return true when screen width is more than 600px and first tab is visible', () => {
+            const activeTabName = 'onion';
+            const tabsetChildren = [
+                { name: 'pizza', ref: {} },
+                { name: 'onion', ref: {} },
+                { name: 'tomato', ref: {} },
+            ];
+            const screenWidth = 601;
+            const scrollLeft = 0;
+            expect(getLeftButtonDisabledState({
+                activeTabName,
+                tabsetChildren,
+                screenWidth,
+                scrollLeft,
+            })).toBe(true);
+        });
+        it('should return false when screen width is more than 600px and first tab is not visible', () => {
+            const activeTabName = 'onion';
+            const tabsetChildren = [
+                { name: 'pizza', ref: {} },
+                { name: 'onion', ref: {} },
+                { name: 'tomato', ref: {} },
+            ];
+            const screenWidth = 601;
+            const scrollLeft = 1;
+            expect(getLeftButtonDisabledState({
+                activeTabName,
+                tabsetChildren,
+                screenWidth,
+                scrollLeft,
+            })).toBe(false);
+        });
+    });
+    describe('getRightButtonDisabledState', () => {
+        it('should return true when screen width is less than 600px and last tab is active', () => {
+            const activeTabName = 'tomato';
+            const tabsetChildren = [
+                { name: 'pizza', ref: {} },
+                { name: 'onion', ref: {} },
+                { name: 'tomato', ref: {} },
+            ];
+            const screenWidth = 599;
+            const scrollLeft = 0;
+            const maxScroll = 0;
+            expect(getRightButtonDisabledState({
+                activeTabName,
+                tabsetChildren,
+                screenWidth,
+                scrollLeft,
+                maxScroll,
+            })).toBe(true);
+        });
+        it('should return true when screen width is more than 600px and last tab is visible', () => {
+            const activeTabName = 'pizza';
+            const tabsetChildren = [
+                { name: 'pizza', ref: {} },
+                { name: 'onion', ref: {} },
+                { name: 'tomato', ref: {} },
+            ];
+            const screenWidth = 601;
+            const scrollLeft = 200;
+            const maxScroll = 200;
+            expect(getRightButtonDisabledState({
+                activeTabName,
+                tabsetChildren,
+                screenWidth,
+                scrollLeft,
+                maxScroll,
+            })).toBe(true);
+        });
+        it('should return false when screen width is more than 600px and last tab is not visible', () => {
+            const activeTabName = 'pizza';
+            const tabsetChildren = [
+                { name: 'pizza', ref: {} },
+                { name: 'onion', ref: {} },
+                { name: 'tomato', ref: {} },
+            ];
+            const screenWidth = 601;
+            const scrollLeft = 0;
+            const maxScroll = 200;
+            expect(getRightButtonDisabledState({
+                activeTabName,
+                tabsetChildren,
+                screenWidth,
+                scrollLeft,
+                maxScroll,
+            })).toBe(false);
         });
     });
 });

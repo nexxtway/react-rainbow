@@ -15,6 +15,8 @@ import {
     getChildrenTotalWidthUpToClickedTab,
     isNotSameChildren,
     getUpdatedTabsetChildren,
+    getRightButtonDisabledState,
+    getLeftButtonDisabledState,
 } from './utils';
 import RightThinChevron from './rightThinChevron';
 import LeftThinChevron from './leftThinChevron';
@@ -133,35 +135,25 @@ export default class Tabset extends Component {
         const { activeTabName } = this.props;
         const { tabsetChildren } = this.state;
         const { screenWidth, scrollLeft } = this;
-        const activeTabIndex = getActiveTabIndex(tabsetChildren, activeTabName);
-        const isFirstTabActive = activeTabIndex === 0;
-        const isFirstTabVisible = scrollLeft === 0;
-
-        if (screenWidth < 600 && isFirstTabActive) {
-            return true;
-        }
-        if (screenWidth > 600 && isFirstTabVisible) {
-            return true;
-        }
-        return false;
+        return getLeftButtonDisabledState({
+            activeTabName,
+            tabsetChildren,
+            screenWidth,
+            scrollLeft,
+        });
     }
 
     isRightButtonDisabled() {
         const { activeTabName } = this.props;
         const { tabsetChildren } = this.state;
         const { screenWidth, scrollLeft, maxScroll } = this;
-        const lastTabIndex = tabsetChildren.length - 1;
-        const activeTabIndex = getActiveTabIndex(tabsetChildren, activeTabName);
-        const isLastTabActive = lastTabIndex === activeTabIndex;
-        const isLastTabVisible = scrollLeft === maxScroll;
-
-        if (screenWidth < 600 && isLastTabActive) {
-            return true;
-        }
-        if (screenWidth > 600 && isLastTabVisible) {
-            return true;
-        }
-        return false;
+        return getRightButtonDisabledState({
+            activeTabName,
+            tabsetChildren,
+            screenWidth,
+            scrollLeft,
+            maxScroll,
+        });
     }
 
     handleRightButtonClick() {
