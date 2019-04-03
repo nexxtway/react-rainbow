@@ -10,7 +10,7 @@ import { LEFT_KEY, RIGHT_KEY } from '../../libs/constants';
 import {
     getChildTabNodes,
     insertChildOrderly,
-    getActiveTabIndex,
+    getTabIndex,
     getChildrenTotalWidth,
     getChildrenTotalWidthUpToClickedTab,
     isNotSameChildren,
@@ -120,7 +120,7 @@ export default class Tabset extends Component {
     selectTab(side) {
         const { activeTabName } = this.props;
         const { tabsetChildren } = this.state;
-        const activeTabIndex = getActiveTabIndex(tabsetChildren, activeTabName);
+        const activeTabIndex = getTabIndex(tabsetChildren, activeTabName);
 
         if (activeTabIndex === tabsetChildren.length - 1 && side === RIGHT_SIDE) {
             this.setAsSelectedTab(0);
@@ -198,7 +198,7 @@ export default class Tabset extends Component {
             scrollLeft,
             offsetWidth: tabsetWidth,
         } = tabset;
-        const tabIndex = tabsetChildren.findIndex(child => child.name === name);
+        const tabIndex = getTabIndex(tabsetChildren, name);
         const isFirstTab = tabIndex === 0;
 
         if (isFirstTab) {
@@ -207,11 +207,10 @@ export default class Tabset extends Component {
             const totalWidthUpToCurrentTab = getChildrenTotalWidthUpToClickedTab(tabsetChildren, tabIndex + 1);
             const totalWidthUpToPrevTab = getChildrenTotalWidthUpToClickedTab(tabsetChildren, tabIndex);
             const tabsetWidthUpToCurrentTab = tabsetWidth + scrollLeft;
-            const isCurrentTabOutOfViewOnRightSide = totalWidthUpToCurrentTab >= tabsetWidthUpToCurrentTab - 20;
+            const isCurrentTabOutOfViewOnRightSide = totalWidthUpToCurrentTab > tabsetWidthUpToCurrentTab - 20;
             const isCurrentTabOutOfViewOnLeftSide = scrollLeft > totalWidthUpToPrevTab;
             if (isCurrentTabOutOfViewOnLeftSide) {
-                const moveScroll = scrollLeft - totalWidthUpToPrevTab;
-                this.tabsetRef.current.scrollTo(scrollLeft - moveScroll, 0);
+                this.tabsetRef.current.scrollTo(totalWidthUpToPrevTab, 0);
             }
             if (isCurrentTabOutOfViewOnRightSide) {
                 const moveScroll = (totalWidthUpToCurrentTab - tabsetWidthUpToCurrentTab) + 20;

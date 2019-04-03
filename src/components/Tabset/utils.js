@@ -22,8 +22,8 @@ export function insertChildOrderly(childrenRefs, childRef, nodes) {
     return sortChildren(newChildrenRefs, nodes);
 }
 
-export function getActiveTabIndex(tabChildren, activeTabName) {
-    return tabChildren.findIndex(tab => tab.name === activeTabName);
+export function getTabIndex(tabChildren, name) {
+    return tabChildren.findIndex(tab => tab.name === name);
 }
 
 function getTotalWidth(children) {
@@ -68,7 +68,7 @@ export function getLeftButtonDisabledState(params) {
         screenWidth,
         scrollLeft,
     } = params;
-    const activeTabIndex = getActiveTabIndex(tabsetChildren, activeTabName);
+    const activeTabIndex = getTabIndex(tabsetChildren, activeTabName);
     const isFirstTabActive = activeTabIndex === 0;
     const isFirstTabVisible = scrollLeft === 0;
 
@@ -90,7 +90,7 @@ export function getRightButtonDisabledState(params) {
         maxScroll,
     } = params;
     const lastTabIndex = tabsetChildren.length - 1;
-    const activeTabIndex = getActiveTabIndex(tabsetChildren, activeTabName);
+    const activeTabIndex = getTabIndex(tabsetChildren, activeTabName);
     const isLastTabActive = lastTabIndex === activeTabIndex;
     const isLastTabVisible = scrollLeft === maxScroll;
 

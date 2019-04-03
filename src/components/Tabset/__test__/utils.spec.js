@@ -1,7 +1,7 @@
 import {
     insertChildOrderly,
     getChildTabNodes,
-    getActiveTabIndex,
+    getTabIndex,
     getChildrenTotalWidth,
     getChildrenTotalWidthUpToClickedTab,
     isNotSameChildren,
@@ -44,7 +44,7 @@ describe('<Tabset/> utils', () => {
             expect(getChildTabNodes()).toEqual([]);
         });
     });
-    describe('getActiveTabIndex', () => {
+    describe('getTabIndex', () => {
         it('should return the right index', () => {
             const tabChildren = [
                 { name: 'tab-1' },
@@ -56,7 +56,7 @@ describe('<Tabset/> utils', () => {
             const tabNames = ['tab-1', 'tab-2', 'tab-3', 'tab-4', 'tab-5'];
 
             tabNames.forEach((activeTabName, index) => {
-                expect(getActiveTabIndex(tabChildren, activeTabName)).toBe(index);
+                expect(getTabIndex(tabChildren, activeTabName)).toBe(index);
             });
         });
     });
