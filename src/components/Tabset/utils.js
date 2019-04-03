@@ -22,8 +22,8 @@ export function insertChildOrderly(childrenRefs, childRef, nodes) {
     return sortChildren(newChildrenRefs, nodes);
 }
 
-export function getActiveTabIndex(tabChildren, activeTabName) {
-    return tabChildren.findIndex(tab => tab.name === activeTabName);
+export function getTabIndexFromName(tabChildren, name) {
+    return tabChildren.findIndex(tab => tab.name === name);
 }
 
 function getTotalWidth(children) {
@@ -59,4 +59,46 @@ export function getUpdatedTabsetChildren(tabsetChildren, tab, nameToUpdate) {
         }
         return child;
     });
+}
+
+export function getLeftButtonDisabledState(params) {
+    const {
+        activeTabName,
+        tabsetChildren,
+        screenWidth,
+        scrollLeft,
+    } = params;
+    const activeTabIndex = getTabIndexFromName(tabsetChildren, activeTabName);
+    const isFirstTabActive = activeTabIndex === 0;
+    const isFirstTabVisible = scrollLeft === 0;
+
+    if (screenWidth < 600 && isFirstTabActive) {
+        return true;
+    }
+    if (screenWidth > 600 && isFirstTabVisible) {
+        return true;
+    }
+    return false;
+}
+
+export function getRightButtonDisabledState(params) {
+    const {
+        activeTabName,
+        tabsetChildren,
+        screenWidth,
+        scrollLeft,
+        maxScroll,
+    } = params;
+    const lastTabIndex = tabsetChildren.length - 1;
+    const activeTabIndex = getTabIndexFromName(tabsetChildren, activeTabName);
+    const isLastTabActive = lastTabIndex === activeTabIndex;
+    const isLastTabVisible = scrollLeft === maxScroll;
+
+    if (screenWidth < 600 && isLastTabActive) {
+        return true;
+    }
+    if (screenWidth > 600 && isLastTabVisible) {
+        return true;
+    }
+    return false;
 }

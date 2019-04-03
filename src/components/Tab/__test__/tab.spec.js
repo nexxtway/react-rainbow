@@ -83,4 +83,25 @@ describe('<Tab />', () => {
 
         expect(anchor.prop('aria-controls')).toBe('tab-content-1');
     });
+    it('should call privateUpdateTab function with right data when a tab is changed', () => {
+        const privateUpdateTabMockFn = jest.fn();
+        const component = mount(
+            <Tab label="Tab-1" name="tab-1" privateUpdateTab={privateUpdateTabMockFn} />,
+        );
+        component.setProps({ name: 'tab-2' });
+        const newData = {
+            name: 'tab-2',
+            ref: expect.any(Object),
+        };
+        const prevName = 'tab-1';
+        expect(privateUpdateTabMockFn).toHaveBeenCalledWith(newData, prevName);
+    });
+    it('should not call privateUpdateTab function if any tab is changed', () => {
+        const privateUpdateTabMockFn = jest.fn();
+        const component = mount(
+            <Tab label="Tab-1" name="tab-1" privateUpdateTab={privateUpdateTabMockFn} />,
+        );
+        component.setProps({ name: 'tab-1' });
+        expect(privateUpdateTabMockFn).toHaveBeenCalledTimes(0);
+    });
 });
