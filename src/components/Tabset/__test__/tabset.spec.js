@@ -8,7 +8,7 @@ import {
     isNotSameChildren,
     getChildrenTotalWidth,
     getChildrenTotalWidthUpToClickedTab,
-    getTabIndex,
+    getTabIndexFromName,
 } from './../utils';
 
 jest.mock('./../utils.js', () => ({
@@ -21,7 +21,7 @@ jest.mock('./../utils.js', () => ({
     getChildrenTotalWidthUpToClickedTab: jest.fn(() => 0),
     isNotSameChildren: jest.fn(() => false),
     getUpdatedTabsetChildren: jest.fn(() => []),
-    getTabIndex: jest.fn(() => 0),
+    getTabIndexFromName: jest.fn(() => 0),
 }));
 
 const registerTabMockFn = jest.fn();
@@ -134,7 +134,6 @@ describe('<Tabset />', () => {
             </Tabset>,
         );
         component.instance().updateButtonsVisibility = jest.fn();
-        component.instance().isFirstTime = true;
         component.setState({
             tabsetChildren: [
                 <Tab label="Tab-1" name="tab-1" registerTab={registerTabMockFn} />,
@@ -142,7 +141,6 @@ describe('<Tabset />', () => {
                 <Tab label="Tab-3" name="tab-3" registerTab={registerTabMockFn} />,
             ],
         });
-        component.setProps();
         expect(component.instance().updateButtonsVisibility).toHaveBeenCalledTimes(1);
         expect(component.instance().isFirstTime).toBe(false);
     });
@@ -192,10 +190,9 @@ describe('<Tabset />', () => {
                 <Tab label="Tab-3" name="tab-3" registerTab={registerTabMockFn} />,
             ],
         });
-        component.setProps();
         expect(component.state().areButtonsVisible).toBe(true);
     });
-    it('should set the areButtonsVisible to false when children total width is less than tbaset width', () => {
+    it('should set the areButtonsVisible to false when children total width is less than tabset width', () => {
         isNotSameChildren.mockReset();
         getChildrenTotalWidth.mockReturnValue(500);
         const component = mount(
@@ -217,8 +214,8 @@ describe('<Tabset />', () => {
         expect(component.state().areButtonsVisible).toBe(false);
     });
     it('should set the right scroll motion when click on the first tab', () => {
-        getTabIndex.mockReset();
-        getTabIndex.mockReturnValue(0);
+        getTabIndexFromName.mockReset();
+        getTabIndexFromName.mockReturnValue(0);
         const onSelectMockFn = jest.fn();
         const component = mount(
             <Tabset onSelect={onSelectMockFn} activeTabName="tab-1">
@@ -235,8 +232,8 @@ describe('<Tabset />', () => {
     it('should set the right scroll motion when click on a tab that is out of view on the left side', () => {
         getChildrenTotalWidthUpToClickedTab.mockReset();
         getChildrenTotalWidthUpToClickedTab.mockReturnValue(400);
-        getTabIndex.mockReset();
-        getTabIndex.mockReturnValue(2);
+        getTabIndexFromName.mockReset();
+        getTabIndexFromName.mockReturnValue(2);
         const onSelectMockFn = jest.fn();
         const component = mount(
             <Tabset onSelect={onSelectMockFn}>
@@ -250,15 +247,15 @@ describe('<Tabset />', () => {
             offsetWidth: 600,
         };
         component.instance().tabsetRef.current.scrollTo = jest.fn();
-        const item3 = component.find('Tab[name="tab-3"]').find('a');
-        item3.simulate('click');
+        const item2 = component.find('Tab[name="tab-2"]').find('a');
+        item2.simulate('click');
         expect(component.instance().tabsetRef.current.scrollTo).toHaveBeenCalledWith(400, 0);
     });
     it('should set the right scroll motion when click on a tab that is out of view on the right side', () => {
         getChildrenTotalWidthUpToClickedTab.mockReset();
         getChildrenTotalWidthUpToClickedTab.mockReturnValue(500);
-        getTabIndex.mockReset();
-        getTabIndex.mockReturnValue(2);
+        getTabIndexFromName.mockReset();
+        getTabIndexFromName.mockReturnValue(2);
         const onSelectMockFn = jest.fn();
         const component = mount(
             <Tabset onSelect={onSelectMockFn}>

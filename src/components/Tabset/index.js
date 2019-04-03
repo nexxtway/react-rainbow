@@ -10,7 +10,7 @@ import { LEFT_KEY, RIGHT_KEY } from '../../libs/constants';
 import {
     getChildTabNodes,
     insertChildOrderly,
-    getTabIndex,
+    getTabIndexFromName,
     getChildrenTotalWidth,
     getChildrenTotalWidthUpToClickedTab,
     isNotSameChildren,
@@ -120,7 +120,7 @@ export default class Tabset extends Component {
     selectTab(side) {
         const { activeTabName } = this.props;
         const { tabsetChildren } = this.state;
-        const activeTabIndex = getTabIndex(tabsetChildren, activeTabName);
+        const activeTabIndex = getTabIndexFromName(tabsetChildren, activeTabName);
 
         if (activeTabIndex === tabsetChildren.length - 1 && side === RIGHT_SIDE) {
             this.setAsSelectedTab(0);
@@ -198,7 +198,7 @@ export default class Tabset extends Component {
             scrollLeft,
             offsetWidth: tabsetWidth,
         } = tabset;
-        const tabIndex = getTabIndex(tabsetChildren, name);
+        const tabIndex = getTabIndexFromName(tabsetChildren, name);
         const isFirstTab = tabIndex === 0;
 
         if (isFirstTab) {
