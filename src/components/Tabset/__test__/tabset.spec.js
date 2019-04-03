@@ -134,6 +134,7 @@ describe('<Tabset />', () => {
             </Tabset>,
         );
         component.instance().updateButtonsVisibility = jest.fn();
+        expect(component.instance().isFirstTime).toBe(true);
         component.setState({
             tabsetChildren: [
                 <Tab label="Tab-1" name="tab-1" registerTab={registerTabMockFn} />,
