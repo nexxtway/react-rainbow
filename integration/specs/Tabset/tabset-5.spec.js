@@ -2,7 +2,7 @@ const PageTabset = require('../../../src/components/Tabset/pageObject');
 
 const TABSET = '#tabset-3';
 
-describe('Tabset with multy Tabs', () => {
+describe('Tabset with multi Tabs', () => {
     beforeAll(() => {
         browser.url('/#!/Tabset/5');
         browser.waitForExist(TABSET);
@@ -29,7 +29,7 @@ describe('Tabset with multy Tabs', () => {
         lastTab.click();
         expect(lastTab.isVisibleWithinViewport()).toBe(true);
     });
-    it('should set the first tab to visible if it was not visible on viewport whe it is clicked', () => {
+    it('should set the first tab to visible if it was not visible on viewport when it is clicked', () => {
         const tabset = new PageTabset(TABSET);
         const firstTab = tabset.getItem(0);
         const lastTab = tabset.getItem(13);
@@ -42,28 +42,28 @@ describe('Tabset with multy Tabs', () => {
         const tabset = new PageTabset(TABSET);
         const lastTab = tabset.getItem(13);
         expect(lastTab.isVisibleWithinViewport()).toBe(false);
-        tabset.clickToRightButton();
+        tabset.clickRightButton();
         expect(lastTab.isVisibleWithinViewport()).toBe(true);
     });
     it('should set visible a tab out of view on the left side whe click on the left button', () => {
         const tabset = new PageTabset(TABSET);
         const firstTab = tabset.getItem(0);
-        tabset.clickToRightButton();
+        tabset.clickRightButton();
         expect(firstTab.isVisibleWithinViewport()).toBe(false);
-        tabset.clickToLeftButton();
+        tabset.clickLeftButton();
         expect(firstTab.isVisibleWithinViewport()).toBe(true);
     });
     it('should be disabled the right button when the last tab is visible', () => {
         const tabset = new PageTabset(TABSET);
         const lastTab = tabset.getItem(13);
-        tabset.clickToRightButton();
+        tabset.clickRightButton();
         expect(lastTab.isVisibleWithinViewport()).toBe(true);
         expect(tabset.isRightButtonEnabled()).toBe(false);
     });
     it('should be enabled the left button when the last tab is visible', () => {
         const tabset = new PageTabset(TABSET);
         const lastTab = tabset.getItem(13);
-        tabset.clickToRightButton();
+        tabset.clickRightButton();
         expect(lastTab.isVisibleWithinViewport()).toBe(true);
         expect(tabset.isLeftButtonEnabled()).toBe(true);
     });

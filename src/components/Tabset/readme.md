@@ -207,7 +207,7 @@
     <TabsetExample />
 
 
-##### Tabset with multy Tabs
+##### Tabset with multi Tabs
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
     const { faCog, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');

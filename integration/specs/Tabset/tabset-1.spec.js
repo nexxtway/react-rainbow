@@ -48,18 +48,18 @@ describe('Tabset base example', () => {
         browser.keys(ARROW_RIGHT_KEY);
         expect(tabItem.hasFocus()).toBe(false);
     });
-    it('should set the left buttons visible when the screen size is resized', () => {
+    it('should set the left button visible when the screen size is resized', () => {
         const tabset = new PageTabset(TABSET);
         browser.windowHandleSize({ width: 1920, height: 1080 });
-        expect(tabset.isLeftButtonExisting()).toBe(false);
+        expect(tabset.isLeftButtonVisible()).toBe(false);
         browser.windowHandleSize({ width: 705, height: 705 });
-        expect(tabset.isLeftButtonExisting()).toBe(true);
+        expect(tabset.isLeftButtonVisible()).toBe(true);
     });
-    it('should set the right buttons visible when the screen size is resized', () => {
+    it('should set the right button visible when the screen size is resized', () => {
         const tabset = new PageTabset(TABSET);
         browser.windowHandleSize({ width: 1920, height: 1080 });
-        expect(tabset.isRightButtonExisting()).toBe(false);
+        expect(tabset.isRightButtonVisible()).toBe(false);
         browser.windowHandleSize({ width: 705, height: 705 });
-        expect(tabset.isRightButtonExisting()).toBe(true);
+        expect(tabset.isRightButtonVisible()).toBe(true);
     });
 });

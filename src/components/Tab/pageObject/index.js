@@ -30,7 +30,7 @@ class PageTab {
     }
 
     /**
-     * Returns true when the vertical item is selected.
+     * Returns true when the tab item is selected.
      * @method
      * @returns {bool}
      */
@@ -39,7 +39,7 @@ class PageTab {
     }
 
     /**
-     * Returns true when the vertical item is visible in the viewport.
+     * Returns true when the tab item is visible in the viewport.
      * @method
      * @returns {bool}
      */

@@ -1,5 +1,7 @@
 const PageTab = require('../../Tab/pageObject');
 
+const BUTTON_SELECTOR = '.rainbow-tabset_button-icon';
+
 /**
  * Tabset page object class.
  * @class
@@ -28,21 +30,21 @@ class PageTabset {
     }
 
     /**
-     * Returns true when the left button existing.
+     * Returns true when the left button is visible.
      * @method
      * @returns {bool}
      */
-    isLeftButtonExisting() {
-        return !!$(this.rootElement).$$('.rainbow-tabset_button-icon')[0];
+    isLeftButtonVisible() {
+        return !!$(this.rootElement).$$(BUTTON_SELECTOR)[0];
     }
 
     /**
-     * Returns true when the right button existing.
+     * Returns true when the right button is visible.
      * @method
      * @returns {bool}
      */
-    isRightButtonExisting() {
-        return !!$(this.rootElement).$$('.rainbow-tabset_button-icon')[1];
+    isRightButtonVisible() {
+        return !!$(this.rootElement).$$(BUTTON_SELECTOR)[1];
     }
 
     /**
@@ -51,7 +53,7 @@ class PageTabset {
      * @returns {bool}
      */
     isLeftButtonEnabled() {
-        return $(this.rootElement).$$('.rainbow-tabset_button-icon')[0].isEnabled();
+        return $(this.rootElement).$$(BUTTON_SELECTOR)[0].isEnabled();
     }
 
     /**
@@ -60,7 +62,7 @@ class PageTabset {
      * @returns {bool}
      */
     isRightButtonEnabled() {
-        return $(this.rootElement).$$('.rainbow-tabset_button-icon')[1].isEnabled();
+        return $(this.rootElement).$$(BUTTON_SELECTOR)[1].isEnabled();
     }
 
     /**
@@ -68,8 +70,8 @@ class PageTabset {
      * @method
      * @returns {bool}
      */
-    clickToLeftButton() {
-        return $(this.rootElement).$$('.rainbow-tabset_button-icon')[0].click();
+    clickLeftButton() {
+        return $(this.rootElement).$$(BUTTON_SELECTOR)[0].click();
     }
 
     /**
@@ -77,8 +79,8 @@ class PageTabset {
      * @method
      * @returns {bool}
      */
-    clickToRightButton() {
-        return $(this.rootElement).$$('.rainbow-tabset_button-icon')[1].click();
+    clickRightButton() {
+        return $(this.rootElement).$$(BUTTON_SELECTOR)[1].click();
     }
 }
 
