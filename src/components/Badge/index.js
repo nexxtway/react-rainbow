@@ -12,6 +12,7 @@ export default function Badge(props) {
         className,
         style,
         label,
+        title,
         children,
         variant,
     } = props;
@@ -32,7 +33,7 @@ export default function Badge(props) {
     }
 
     return (
-        <span className={getClassName()} style={style}>
+        <span className={getClassName()} style={style} title={title}>
             <Content label={label}>
                 {children}
             </Content>
@@ -45,6 +46,8 @@ Badge.propTypes = {
     label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
+    /** Displays tooltip text when the mouse moves over the element. */
+    title: PropTypes.string,
     /** The content of the badge. Used to render icon or text elements inside the badge.
     * Children takes precedence over label. */
     children: PropTypes.node,
@@ -61,6 +64,7 @@ Badge.propTypes = {
 
 Badge.defaultProps = {
     label: null,
+    title: undefined,
     children: null,
     variant: 'default',
     className: undefined,
