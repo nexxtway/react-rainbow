@@ -2,10 +2,10 @@
 
     <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
         <div className="rainbow-m-horizontal_medium">
-            <Badge label="Lightest Badge" variant="lightest" />
+            <Badge label="Lightest Badge" variant="lightest" title="the badge title" />
         </div>
         <div className="rainbow-m-horizontal_medium">
-            <Badge label="Outline Badge" variant="outline-brand" />
+            <Badge label="Outline Badge" variant="outline-brand" title="the badge title" />
         </div>
     </div>
 
@@ -13,13 +13,13 @@
 
     <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
         <div className="rainbow-m-horizontal_medium">
-            <Badge label="Default Badge" />
+            <Badge label="Default Badge" title="the badge title" />
         </div>
         <div className="rainbow-m-horizontal_medium">
-            <Badge label="Darker Badge" variant="inverse" />
+            <Badge label="Darker Badge" variant="inverse" title="the badge title" />
         </div>
         <div className="rainbow-m-horizontal_medium">
-            <Badge label="Brand Badge" variant="brand" />
+            <Badge label="Brand Badge" variant="brand" title="the badge title" />
         </div>
     </div>
 
@@ -30,19 +30,19 @@
 
     <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
         <div className="rainbow-m-horizontal_medium">
-            <Badge variant="inverse">
+            <Badge variant="inverse" title="the badge title">
                 <FontAwesomeIcon icon={faStar} pull="left" size="lg" />
                 112 005
             </Badge>
         </div>
         <div className="rainbow-m-horizontal_medium">
-            <Badge variant="lightest">
+            <Badge variant="lightest" title="the badge title">
                 <FontAwesomeIcon icon={faStar} pull="left" size="lg" />
                 212 002
             </Badge>
         </div>
         <div className="rainbow-m-horizontal_medium">
-            <Badge variant="lightest">
+            <Badge variant="lightest" title="the badge title">
                 <FontAwesomeIcon icon={faStar} size="lg" />
             </Badge>
         </div>
