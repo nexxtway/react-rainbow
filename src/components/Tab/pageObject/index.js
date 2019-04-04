@@ -37,6 +37,15 @@ class PageTab {
     isSelected() {
         return $(this.rootElement).$('a').getAttribute('class') === 'rainbow-tab_anchor rainbow-tab--active';
     }
+
+    /**
+     * Returns true when the vertical item is visible in the viewport.
+     * @method
+     * @returns {bool}
+     */
+    isVisibleWithinViewport() {
+        return $(this.rootElement).$('a').isVisibleWithinViewport();
+    }
 }
 
 module.exports = PageTab;

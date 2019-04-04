@@ -70,7 +70,7 @@
                             activeTabName={selected}
                             className="rainbow-background-color_gray-1 rainbow-p-horizontal_x-large">
 
-                                <Tab 
+                                <Tab
                                     label="PRIMARY"
                                     name="primary"
                                     id="primary"
@@ -174,13 +174,13 @@
                         </ButtonGroup>
                     </div>
                     <div className="rainbow-flex rainbow-flex_column rainbow_vertical-stretch">
-                        <Tabset 
+                        <Tabset
                             fullWidth
                             id="tabset-2"
                             onSelect={this.handleOnSelect}
                             activeTabName={selected}
                             className="rainbow-background-color_gray-1 rainbow-p-horizontal_x-large">
-                            
+
                                 <Tab
                                     name="primary"
                                     label={<span><FontAwesomeIcon icon={faFolderOpen} /> PRIMARY</span>} />
@@ -316,12 +316,12 @@
                     </div>
                     <div className="rainbow-flex rainbow-flex_column rainbow_vertical-stretch">
                         <Tabset
-                            id="tabset-1"
+                            id="tabset-3"
                             onSelect={this.handleOnSelect}
                             activeTabName={selected}
                             className="rainbow-background-color_gray-1 rainbow-p-horizontal_x-large">
 
-                                <Tab 
+                                <Tab
                                     label="PRIMARY"
                                     name="primary"
                                     id="primary"

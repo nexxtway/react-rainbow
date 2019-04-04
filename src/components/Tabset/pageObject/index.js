@@ -26,6 +26,60 @@ class PageTabset {
         }
         return null;
     }
+
+    /**
+     * Returns true when the left button existing.
+     * @method
+     * @returns {bool}
+     */
+    isLeftButtonExisting() {
+        return !!$(this.rootElement).$$('.rainbow-tabset_button-icon')[0];
+    }
+
+    /**
+     * Returns true when the right button existing.
+     * @method
+     * @returns {bool}
+     */
+    isRightButtonExisting() {
+        return !!$(this.rootElement).$$('.rainbow-tabset_button-icon')[1];
+    }
+
+    /**
+     * Returns true when the left button is enabled.
+     * @method
+     * @returns {bool}
+     */
+    isLeftButtonEnabled() {
+        return $(this.rootElement).$$('.rainbow-tabset_button-icon')[0].isEnabled();
+    }
+
+    /**
+     * Returns true when the right button is enabled.
+     * @method
+     * @returns {bool}
+     */
+    isRightButtonEnabled() {
+        return $(this.rootElement).$$('.rainbow-tabset_button-icon')[1].isEnabled();
+    }
+
+    /**
+     * Click the left button.
+     * @method
+     * @returns {bool}
+     */
+    clickToLeftButton() {
+        return $(this.rootElement).$$('.rainbow-tabset_button-icon')[0].click();
+    }
+
+    /**
+     * Click the right button.
+     * @method
+     * @returns {bool}
+     */
+    clickToRightButton() {
+        return $(this.rootElement).$$('.rainbow-tabset_button-icon')[1].click();
+    }
 }
 
 module.exports = PageTabset;
