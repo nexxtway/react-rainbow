@@ -1,4 +1,6 @@
 @import "../../styles/colors";
+@import "../../styles/margins";
+@import "../../styles/paddings";
 
 %common-styles {
     display: flex;
@@ -16,7 +18,7 @@
 .rainbow-tabset_inner-container {
     @extend %common-styles;
 
-    padding: 0 0.75rem;
+    padding: 0 $padding-small;
 }
 
 .rainbow-tabset_inner-container--full-width {
@@ -43,7 +45,7 @@
     }
 
     .rainbow-tabset_button-group {
-        margin-left: 1rem;
+        margin-left: $margin-medium;
         padding-left: 0;
     }
 

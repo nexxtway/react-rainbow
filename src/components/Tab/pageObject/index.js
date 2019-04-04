@@ -30,12 +30,21 @@ class PageTab {
     }
 
     /**
-     * Returns true when the vertical item is selected.
+     * Returns true when the tab item is selected.
      * @method
      * @returns {bool}
      */
     isSelected() {
         return $(this.rootElement).$('a').getAttribute('class') === 'rainbow-tab_anchor rainbow-tab--active';
+    }
+
+    /**
+     * Returns true when the tab item is visible in the viewport.
+     * @method
+     * @returns {bool}
+     */
+    isVisibleWithinViewport() {
+        return $(this.rootElement).$('a').isVisibleWithinViewport();
     }
 }
 

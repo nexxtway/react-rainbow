@@ -1,5 +1,7 @@
 const PageTab = require('../../Tab/pageObject');
 
+const BUTTON_SELECTOR = '.rainbow-tabset_button-icon';
+
 /**
  * Tabset page object class.
  * @class
@@ -25,6 +27,60 @@ class PageTabset {
             return new PageTab(`${this.rootElement} .rainbow-tab:nth-child(${itemPosition + 1})`);
         }
         return null;
+    }
+
+    /**
+     * Returns true when the left button is visible.
+     * @method
+     * @returns {bool}
+     */
+    isLeftButtonVisible() {
+        return !!$(this.rootElement).$$(BUTTON_SELECTOR)[0];
+    }
+
+    /**
+     * Returns true when the right button is visible.
+     * @method
+     * @returns {bool}
+     */
+    isRightButtonVisible() {
+        return !!$(this.rootElement).$$(BUTTON_SELECTOR)[1];
+    }
+
+    /**
+     * Returns true when the left button is enabled.
+     * @method
+     * @returns {bool}
+     */
+    isLeftButtonEnabled() {
+        return $(this.rootElement).$$(BUTTON_SELECTOR)[0].isEnabled();
+    }
+
+    /**
+     * Returns true when the right button is enabled.
+     * @method
+     * @returns {bool}
+     */
+    isRightButtonEnabled() {
+        return $(this.rootElement).$$(BUTTON_SELECTOR)[1].isEnabled();
+    }
+
+    /**
+     * Click the left button.
+     * @method
+     * @returns {bool}
+     */
+    clickLeftButton() {
+        return $(this.rootElement).$$(BUTTON_SELECTOR)[0].click();
+    }
+
+    /**
+     * Click the right button.
+     * @method
+     * @returns {bool}
+     */
+    clickRightButton() {
+        return $(this.rootElement).$$(BUTTON_SELECTOR)[1].click();
     }
 }
 
