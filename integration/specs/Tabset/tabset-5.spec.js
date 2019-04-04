@@ -6,6 +6,7 @@ describe('Tabset with multi Tabs', () => {
     beforeAll(() => {
         browser.url('/#!/Tabset/5');
         browser.waitForExist(TABSET);
+        browser.windowHandleSize({ width: 1280, height: 1280 });
     });
     beforeEach(() => {
         browser.refresh();
