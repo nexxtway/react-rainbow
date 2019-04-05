@@ -171,32 +171,33 @@ TimePicker.propTypes = {
     ]),
     /** The action triggered when a value attribute changes. */
     onChange: PropTypes.func,
-    /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
+    /** Text that is displayed when the TimePicker is empty,
+     * to prompt the user for a valid entry. */
     placeholder: PropTypes.string,
-    /** Text label for the input. */
+    /** Text label for the TimePicker. */
     label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]).isRequired,
-    /** A boolean to hide the input label. */
+    /** A boolean to hide the TimePicker label. */
     hideLabel: PropTypes.bool,
-    /** Specifies that an input field must be filled out before submitting the form.
+    /** Specifies that the TimePicker must be filled out before submitting the form.
     * This value defaults to false. */
     required: PropTypes.bool,
-    /** The name of the input */
+    /** The name of the TimePicker. */
     name: PropTypes.string,
-    /** Shows the help message below the input. */
+    /** Shows the help message below the TimePicker. */
     bottomHelpText: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
-    /** Specifies that an input text will be centered. This value defaults to false. */
+    /** Specifies that the TimePicker text will be centered. This value defaults to false. */
     isCentered: PropTypes.bool,
-    /** Specifies that an input field must be filled out before submitting the form. */
+    /** Specifies that the TimePicker must be filled out before submitting the form. */
     error: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
-    /** Specifies that the DatePicker is read-only. This value defaults to false. */
+    /** Specifies that the TimePicker is read-only. This value defaults to false. */
     readOnly: PropTypes.bool,
-    /** Specifies that an input element should be disabled. This value defaults to false. */
+    /** Specifies that the TimePicker element should be disabled. This value defaults to false. */
     disabled: PropTypes.bool,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
     tabIndex: PropTypes.oneOfType([

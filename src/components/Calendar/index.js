@@ -121,7 +121,7 @@ export default class Calendar extends Component {
 }
 
 Calendar.propTypes = {
-    /** Sets the date for the Date Picker programmatically. */
+    /** Sets the date for the Calendar programmatically. */
     value: PropTypes.instanceOf(Date),
     /** The ending of a range of valid dates. The range includes the endDate.
      * The default value is current date + 100 years. */
