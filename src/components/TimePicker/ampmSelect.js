@@ -53,6 +53,7 @@ export default class AmPmSelect extends PureComponent {
         if (!value) {
             onChange('AM');
         }
+        this.setState({ isFocused: false });
     }
 
     handlePmClick() {
@@ -61,6 +62,7 @@ export default class AmPmSelect extends PureComponent {
         if (!value) {
             onChange('PM');
         }
+        this.setState({ isFocused: false });
     }
 
     handleKeyDown(event) {

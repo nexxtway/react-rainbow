@@ -101,7 +101,7 @@ class TimePicker extends Component {
             onFocus,
             onBlur,
             id,
-            hours24,
+            // hours24,
             cancelLabel,
             okLabel,
             onChange,
@@ -144,7 +144,7 @@ class TimePicker extends Component {
                     <TimeSelect
                         onCloseModal={this.closeModal}
                         onChange={onChange}
-                        hours24={hours24}
+                        // hours24={hours24}
                         cancelLabel={cancelLabel}
                         okLabel={okLabel}
                         value={value}
@@ -158,8 +158,8 @@ class TimePicker extends Component {
 TimePicker.propTypes = {
     /** Sets the date for the TimePicker programmatically. */
     value: PropTypes.string,
-    /** Tells the component to display the picker in 24hr format. */
-    hours24: PropTypes.bool,
+    // /** Tells the component to display the picker in 24hr format. */
+    // hours24: PropTypes.bool,
     /** Override the label of the 'OK' button. */
     cancelLabel: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
@@ -216,7 +216,7 @@ TimePicker.propTypes = {
 
 TimePicker.defaultProps = {
     value: undefined,
-    hours24: false,
+    // hours24: false,
     cancelLabel: 'Cancel',
     okLabel: 'OK',
     onChange: () => {},
