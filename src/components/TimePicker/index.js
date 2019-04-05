@@ -11,7 +11,7 @@ import './styles.css';
 import './media-queries.css';
 
 /**
- * A TimePicker is an autocomplete text input to capture a time.
+ * A TimePicker is used to input a time by displaying an interface the user can interact with.
  * @category Form
  */
 class TimePicker extends Component {
