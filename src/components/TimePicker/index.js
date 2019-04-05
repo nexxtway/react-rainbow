@@ -52,9 +52,11 @@ class TimePicker extends Component {
     }
 
     openModal(event) {
-        const { onClick } = this.props;
-        this.setState({ isOpen: true });
-        onClick(event);
+        const { onClick, readOnly } = this.props;
+        if (!readOnly) {
+            this.setState({ isOpen: true });
+            onClick(event);
+        }
     }
 
     closeModal() {

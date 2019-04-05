@@ -29,10 +29,14 @@ export default class AmPmSelect extends PureComponent {
     }
 
     handleFocus() {
+        const { onChange, defaultValue, value } = this.props;
         this.setState({
             isFocused: true,
         });
         setTimeout(() => this.fieldsetRef.current.focus(), 0);
+        if (!value) {
+            onChange(defaultValue || 'AM');
+        }
     }
 
     handleBlur() {
