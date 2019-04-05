@@ -371,7 +371,8 @@ export default class TimeSelect extends Component {
                             icon={<UpIcon />}
                             size="small"
                             onClick={this.incrementHandler}
-                            onFocus={this.handleButtonsFocus} />
+                            onFocus={this.handleButtonsFocus}
+                            assistiveText="Previous value" />
 
                         <ButtonIcon
                             tabIndex="-1"
@@ -379,7 +380,8 @@ export default class TimeSelect extends Component {
                             icon={<DownIcon />}
                             size="small"
                             onClick={this.decrementHandler}
-                            onFocus={this.handleButtonsFocus} />
+                            onFocus={this.handleButtonsFocus}
+                            assistiveText="Next value" />
 
                     </div>
                 </div>

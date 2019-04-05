@@ -86,15 +86,17 @@ export default class Calendar extends Component {
                             onClick={this.previousMonth}
                             size="medium"
                             disabled={disablePreviousMonth}
-                            icon={<LeftIcon />} />
-                        <h3 className="rainbow-calendar_month-text">
+                            icon={<LeftIcon />}
+                            assistiveText="Previous Month" />
+                        <h3 className="rainbow-calendar_month-text" id="month">
                             {formattedMonth}
                         </h3>
                         <ButtonIcon
                             onClick={this.nextMonth}
                             size="medium"
                             disabled={disableNextMonth}
-                            icon={<RightIcon />} />
+                            icon={<RightIcon />}
+                            assistiveText="Next Month" />
                     </div>
                     <Select
                         label="select year"
