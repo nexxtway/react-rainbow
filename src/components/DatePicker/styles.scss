@@ -20,6 +20,10 @@
         cursor: not-allowed;
     }
 
+    &[readonly] {
+        cursor: text;
+    }
+
     color: transparent;
     text-shadow: 0 0 0 #061c3f;
 }
@@ -31,10 +35,6 @@
 .rainbow-date-picker_modal > .rainbow-modal_content {
     max-height: none;
     padding: 0;
-}
-
-.rainbow-date-picker_modal-container {
-    margin: -16px;
 }
 
 .rainbow-date-picker_modal > button > svg {

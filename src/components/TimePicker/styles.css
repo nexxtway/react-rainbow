@@ -1,0 +1,140 @@
+.rainbow-time-picker_input-container {
+  width: 100%; }
+
+.rainbow-time-picker_input input {
+  color: transparent;
+  text-shadow: 0 0 0 #061c3f; }
+  .rainbow-time-picker_input input:hover {
+    cursor: pointer; }
+  .rainbow-time-picker_input input[disabled] {
+    text-shadow: none; }
+  .rainbow-time-picker_input input:hover[disabled] {
+    cursor: not-allowed; }
+  .rainbow-time-picker_input input[readonly] {
+    cursor: text; }
+  .rainbow-time-picker_input input[type=time]::-webkit-inner-spin-button, .rainbow-time-picker_input input[type=time]::-webkit-outer-spin-button {
+    -webkit-appearance: none; }
+
+.rainbow-time-picker_input .rainbow-input_icon--right svg {
+  width: 32px !important;
+  height: 32px !important; }
+
+.rainbow-time-picker_modal {
+  width: auto; }
+
+.rainbow-time-picker_time-select-content {
+  height: 100px;
+  width: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f4f6f9;
+  border-radius: 8px;
+  margin: 48px 12px 32px 12px;
+  padding: 0.5rem; }
+
+.rainbow-time-picker_time-select-value {
+  font-size: 44px;
+  font-weight: 200;
+  text-transform: uppercase;
+  color: #01b6f5;
+  border: none;
+  width: 82px;
+  background-color: transparent;
+  border-radius: 4px;
+  height: 100%;
+  text-align: center; }
+  .rainbow-time-picker_time-select-value:focus, .rainbow-time-picker_time-select-value:active {
+    color: white;
+    background-color: #01b6f5;
+    box-shadow: 0 0 2px #01b6f5;
+    outline: none;
+    caret-color: transparent; }
+  .rainbow-time-picker_time-select-value[placeholder]:focus::-webkit-input-placeholder {
+    color: white; }
+  .rainbow-time-picker_time-select-value::placeholder {
+    color: #01b6f5;
+    font-size: 44px;
+    font-weight: 200;
+    text-transform: uppercase; }
+  .rainbow-time-picker_time-select-value::selection {
+    color: white;
+    background: #009acf; }
+  .rainbow-time-picker_time-select-value[type=number]::-webkit-inner-spin-button, .rainbow-time-picker_time-select-value[type=number]::-webkit-outer-spin-button, .rainbow-time-picker_time-select-value[type=time]::-webkit-inner-spin-button, .rainbow-time-picker_time-select-value[type=time]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; }
+
+.rainbow-time-picker_dots {
+  font-size: 32px;
+  font-weight: 200;
+  height: 100%;
+  color: #01b6f5;
+  margin: auto 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.rainbow-time-picker_select-ampm {
+  display: flex;
+  flex-direction: column; }
+
+.rainbow-time-picker_time-input--hidden {
+  visibility: hidden;
+  position: absolute !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important; }
+
+.rainbow-time-picker_select-option {
+  font-size: 24px;
+  font-weight: 200;
+  text-transform: uppercase;
+  color: rgba(244, 246, 249, 0.4);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50%; }
+  .rainbow-time-picker_select-option:hover {
+    cursor: pointer;
+    background-color: rgba(0, 154, 207, 0.2);
+    border-radius: 4px; }
+
+.rainbow-time-picker_time-input--hidden:checked + .rainbow-time-picker_select-option,
+.rainbow-time-picker_time-input--hidden:active + .rainbow-time-picker_select-option,
+.rainbow-time-picker_time-input--hidden:focus + .rainbow-time-picker_select-option {
+  font-weight: 300;
+  color: white;
+  outline: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-drag: none;
+  user-select: none; }
+
+.rainbow-time-picker_icon-button-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0.25rem 0 0.5rem; }
+
+.rainbow-time-picker_icon-button-container > :first-child {
+  border-radius: 24px 24px 0 0; }
+
+.rainbow-time-picker_icon-button-container > :last-child {
+  border-radius: 0 0 24px 24px;
+  margin-top: -1px; }
+
+.rainbow-time-picker_footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.rainbow-time-picker_button {
+  margin: 0 12px;
+  width: 84px; }

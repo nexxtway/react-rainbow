@@ -143,7 +143,7 @@
 .rainbow-input[type="month"]:active,
 .rainbow-input[type="week"]:focus,
 .rainbow-input[type="week"]:active {
-  line-height: 2.375rem; }
+  line-height: 2.5rem; }
 
 .rainbow-input_bare {
   background-color: transparent;

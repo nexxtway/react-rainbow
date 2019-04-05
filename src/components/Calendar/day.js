@@ -17,7 +17,7 @@ export default function Day(props) {
 
     if (isAdjacentDate || isDisabled) {
         return (
-            <td className="rainbow-calendar_day">
+            <td className="rainbow-calendar_day" role="gridcell" aria-selected="false">
                 <span className="rainbow-calendar_day-adjacent">{day}</span>
             </td>
         );
@@ -28,7 +28,7 @@ export default function Day(props) {
     });
 
     return (
-        <td className="rainbow-calendar_day">
+        <td className="rainbow-calendar_day" role="gridcell">
             <button
                 onClick={() => onChange(new Date(date))}
                 className={buttonClassNames}>

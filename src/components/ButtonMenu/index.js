@@ -107,7 +107,10 @@ ButtonMenu.propTypes = {
     /** A description for assistive sreen readers. */
     assistiveText: PropTypes.string,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
-    tabIndex: PropTypes.number,
+    tabIndex: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string,
+    ]),
     /** The action triggered when the element receives focus. */
     onFocus: PropTypes.func,
     /** The action triggered when the element releases focus. */

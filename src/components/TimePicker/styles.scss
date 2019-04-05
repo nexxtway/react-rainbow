@@ -1,0 +1,188 @@
+@import "../../styles/colors";
+@import "../../styles/shadows";
+@import "../../styles/paddings";
+@import "../../styles/margins";
+
+.rainbow-time-picker_input-container {
+    width: 100%;
+}
+
+.rainbow-time-picker_input input {
+    &:hover {
+        cursor: pointer;
+    }
+
+    &[disabled] {
+        text-shadow: none;
+    }
+
+    &:hover[disabled] {
+        cursor: not-allowed;
+    }
+
+    &[readonly] {
+        cursor: text;
+    }
+
+    color: transparent;
+    text-shadow: 0 0 0 #061c3f;
+
+    &[type=time]::-webkit-inner-spin-button,
+    &[type=time]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+    }
+}
+
+.rainbow-time-picker_input .rainbow-input_icon--right svg {
+    width: 32px !important;
+    height: 32px !important;
+}
+
+.rainbow-time-picker_modal {
+    width: auto;
+}
+
+.rainbow-time-picker_time-select-content {
+    height: 100px;
+    width: 360px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $color-gray-1;
+    border-radius: 8px;
+    margin: 48px 12px 32px 12px;
+    padding: $padding-x-small;
+}
+
+.rainbow-time-picker_time-select-value {
+    font-size: 44px;
+    font-weight: 200;
+    text-transform: uppercase;
+    color: $color-brand;
+    border: none;
+    width: 82px;
+    background-color: transparent;
+    border-radius: 4px;
+    height: 100%;
+    text-align: center;
+
+    &:focus,
+    &:active {
+        color: white;
+        background-color: $color-brand;
+        box-shadow: $shadow-outline;
+        outline: none;
+        caret-color: transparent;
+    }
+
+    &[placeholder]:focus::-webkit-input-placeholder {
+        color: white;
+    }
+
+    &::placeholder {
+        color: $color-brand;
+        font-size: 44px;
+        font-weight: 200;
+        text-transform: uppercase;
+    }
+
+    &::selection {
+        color: white;
+        background: $color-brand-active;
+    }
+
+    &[type=number]::-webkit-inner-spin-button,
+    &[type=number]::-webkit-outer-spin-button,
+    &[type=time]::-webkit-inner-spin-button,
+    &[type=time]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        margin: 0;
+    }
+}
+
+.rainbow-time-picker_dots {
+    font-size: 32px;
+    font-weight: 200;
+    height: 100%;
+    color: $color-brand;
+    margin: auto $padding-xx-small;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rainbow-time-picker_select-ampm {
+    display: flex;
+    flex-direction: column;
+}
+
+.rainbow-time-picker_time-input--hidden {
+    visibility: hidden;
+    position: absolute !important;
+    margin: -1px !important;
+    border: 0 !important;
+    padding: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+}
+
+.rainbow-time-picker_select-option {
+    font-size: 24px;
+    font-weight: 200;
+    text-transform: uppercase;
+    color: $color-gray-transparent-1;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(0, 154, 207, 0.2);
+        border-radius: 4px;
+    }
+}
+
+.rainbow-time-picker_time-input--hidden:checked + .rainbow-time-picker_select-option,
+.rainbow-time-picker_time-input--hidden:active + .rainbow-time-picker_select-option,
+.rainbow-time-picker_time-input--hidden:focus + .rainbow-time-picker_select-option {
+    font-weight: 300;
+    color: white;
+    outline: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+.rainbow-time-picker_icon-button-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 $margin-xx-small 0 $margin-x-small;
+}
+
+.rainbow-time-picker_icon-button-container > :first-child {
+    border-radius: 24px 24px 0 0;
+}
+
+.rainbow-time-picker_icon-button-container > :last-child {
+    border-radius: 0 0 24px 24px;
+    margin-top: -1px;
+}
+
+.rainbow-time-picker_footer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rainbow-time-picker_button {
+    margin: 0 12px;
+    width: 84px;
+}

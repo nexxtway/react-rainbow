@@ -1,42 +1,54 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import CalendarIcon from './calendarIcon';
+import ClockIcon from './icons/clock';
 import Input from '../Input';
-import Modal from './../Modal';
-import Calendar from './../Calendar';
-import formatDate from './helpers/format-date';
+import Modal from '../Modal';
+import TimeSelect from './timeSelect';
+import get12HourTime from './helpers/get12HourTime';
 import withReduxForm from './../../libs/hocs/withReduxForm';
 import './styles.css';
 import './media-queries.css';
 
 /**
- * A DatePicker is a text input to capture a date.
+ * A TimePicker is used to input a time by displaying an interface the user can interact with.
  * @category Form
  */
-class DatePicker extends Component {
+class TimePicker extends Component {
     constructor(props) {
         super(props);
         this.state = {
             isOpen: false,
+            value: get12HourTime(props.value),
         };
         this.inputRef = React.createRef();
-        this.handleChange = this.handleChange.bind(this);
+        this.timeSelectRef = React.createRef();
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
+        this.setFocusToHourInput = this.setFocusToHourInput.bind(this);
+    }
+
+    componentDidUpdate({ value: prevValue }) {
+        const { value } = this.props;
+        if (prevValue !== value) {
+            this.updateValue();
+        }
     }
 
     getContainerClassName() {
         const { className } = this.props;
-        return classnames('rainbow-date-picker_input-container', className);
+        return classnames('rainbow-time-picker_input-container', className);
     }
 
-    handleChange(...args) {
-        const { onChange } = this.props;
+    setFocusToHourInput() {
+        this.timeSelectRef.current.focusHourInput();
+    }
+
+    updateValue() {
+        const { value } = this.props;
         this.setState({
-            isOpen: false,
+            value: get12HourTime(value),
         });
-        onChange(...args);
     }
 
     openModal(event) {
@@ -77,14 +89,10 @@ class DatePicker extends Component {
 
     render() {
         const {
-            value,
-            minDate,
-            maxDate,
             placeholder,
             label,
             required,
             style,
-            formatStyle,
             hideLabel,
             name,
             bottomHelpText,
@@ -96,24 +104,27 @@ class DatePicker extends Component {
             onFocus,
             onBlur,
             id,
+            cancelLabel,
+            okLabel,
+            onChange,
         } = this.props;
         const {
             isOpen,
+            value,
         } = this.state;
-
-        const formattedDate = formatDate(value, formatStyle);
+        const inputValue = value || '--:-- --';
 
         return (
             <div id={id} className={this.getContainerClassName()} style={style}>
                 <Input
                     ref={this.inputRef}
-                    className="rainbow-date-picker_input"
+                    className="rainbow-time-picker_input"
                     label={label}
                     placeholder={placeholder}
-                    icon={<CalendarIcon />}
+                    icon={<ClockIcon className="rainbow-time-picker_input-icon" />}
                     iconPosition="right"
                     required={required}
-                    value={formattedDate}
+                    value={inputValue}
                     onClick={this.openModal}
                     onFocus={onFocus}
                     onBlur={onBlur}
@@ -126,66 +137,67 @@ class DatePicker extends Component {
                     disabled={disabled}
                     tabIndex={tabIndex}
                     autoComplete="off" />
-                <Modal className="rainbow-date-picker_modal" isOpen={isOpen} onRequestClose={this.closeModal}>
-                    <header className="rainbow-date-picker_calendar-details-header">
-                        <h2 className="rainbow-date-picker_calendar-date--selected">
-                            {formattedDate}
-                        </h2>
-                    </header>
-                    <Calendar
+
+                <Modal
+                    className="rainbow-time-picker_modal"
+                    isOpen={isOpen}
+                    onRequestClose={this.closeModal}
+                    onOpened={this.setFocusToHourInput}>
+
+                    <TimeSelect
+                        onCloseModal={this.closeModal}
+                        onChange={onChange}
+                        // hours24={hours24}
+                        cancelLabel={cancelLabel}
+                        okLabel={okLabel}
                         value={value}
-                        minDate={minDate}
-                        maxDate={maxDate}
-                        formatStyle={formatStyle}
-                        onChange={this.handleChange}
-                        className="rainbow-date-picker_calendar-container" />
+                        ref={this.timeSelectRef} />
                 </Modal>
             </div>
         );
     }
 }
 
-DatePicker.propTypes = {
-    /** Sets the date for the DatePicker programmatically. */
-    value: PropTypes.instanceOf(Date),
-    /** The ending of a range of valid dates. The range includes the endDate.
-     * The default value is current date + 100 years. */
-    maxDate: PropTypes.instanceOf(Date),
-    /** The beginning of a range of valid dates. The range includes the startDate.
-     * The default value is current date - 100 years. */
-    minDate: PropTypes.instanceOf(Date),
-    /** This function is called to format the date displayed in the input field.
-     * Valid values are small, medium, and large. */
-    formatStyle: PropTypes.oneOf(['small', 'medium', 'large']),
+TimePicker.propTypes = {
+    /** Sets the date for the TimePicker programmatically. */
+    value: PropTypes.string,
+    /** Override the label of the 'Cancel' button. */
+    cancelLabel: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
+    /** Override the label of the 'OK' button. */
+    okLabel: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
     /** The action triggered when a value attribute changes. */
     onChange: PropTypes.func,
-    /** Text that is displayed when the DatePicker is empty,
+    /** Text that is displayed when the TimePicker is empty,
      * to prompt the user for a valid entry. */
     placeholder: PropTypes.string,
-    /** Text label for the DatePicker. */
+    /** Text label for the TimePicker. */
     label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]).isRequired,
-    /** A boolean to hide the DatePicker label. */
+    /** A boolean to hide the TimePicker label. */
     hideLabel: PropTypes.bool,
-    /** Specifies that the DatePicker field must be filled out before submitting the form.
+    /** Specifies that the TimePicker must be filled out before submitting the form.
     * This value defaults to false. */
     required: PropTypes.bool,
-    /** The name of the DatePicker. */
+    /** The name of the TimePicker. */
     name: PropTypes.string,
-    /** Shows the help message below the DatePicker. */
+    /** Shows the help message below the TimePicker. */
     bottomHelpText: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
-    /** Specifies that the DatePicker text will be centered. This value defaults to false. */
+    /** Specifies that the TimePicker text will be centered. This value defaults to false. */
     isCentered: PropTypes.bool,
-    /** Specifies that the DatePicker must be filled out before submitting the form. */
+    /** Specifies that the TimePicker must be filled out before submitting the form. */
     error: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
-    /** Specifies that the DatePicker is read-only. This value defaults to false. */
+    /** Specifies that the TimePicker is read-only. This value defaults to false. */
     readOnly: PropTypes.bool,
-    /** Specifies that the DatePicker element should be disabled. This value defaults to false. */
+    /** Specifies that the TimePicker element should be disabled. This value defaults to false. */
     disabled: PropTypes.bool,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
     tabIndex: PropTypes.oneOfType([
@@ -206,11 +218,10 @@ DatePicker.propTypes = {
     style: PropTypes.object,
 };
 
-DatePicker.defaultProps = {
+TimePicker.defaultProps = {
     value: undefined,
-    minDate: undefined,
-    maxDate: undefined,
-    formatStyle: 'medium',
+    cancelLabel: 'Cancel',
+    okLabel: 'OK',
     onChange: () => {},
     placeholder: null,
     hideLabel: false,
@@ -230,4 +241,4 @@ DatePicker.defaultProps = {
     style: undefined,
 };
 
-export default withReduxForm(DatePicker);
+export default withReduxForm(TimePicker);

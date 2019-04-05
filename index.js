@@ -44,6 +44,7 @@ import Tab from './Tab';
 import Tabset from './Tabset';
 import Table from './Table';
 import Textarea from './Textarea';
+import TimePicker from './TimePicker';
 import VerticalItem from './VerticalItem';
 import VerticalNavigation from './VerticalNavigation';
 import VerticalSection from './VerticalSection';
@@ -96,6 +97,7 @@ export {
     Tabset,
     Table,
     Textarea,
+    TimePicker,
     VerticalItem,
     VerticalNavigation,
     VerticalSection,
