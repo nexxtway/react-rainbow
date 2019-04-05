@@ -20,6 +20,10 @@
         cursor: not-allowed;
     }
 
+    &[readonly] {
+        cursor: text;
+    }
+
     color: transparent;
     text-shadow: 0 0 0 #061c3f;
 
@@ -60,7 +64,6 @@
     background-color: transparent;
     border-radius: 4px;
     height: 100%;
-    padding: 0 $padding-xx-small;
     text-align: center;
 
     &:focus,
@@ -111,7 +114,6 @@
 }
 
 .rainbow-time-picker_select-ampm {
-    padding: $padding-xx-small;
     display: flex;
     flex-direction: column;
 }
@@ -134,11 +136,15 @@
     text-transform: uppercase;
     color: $color-gray-transparent-1;
     text-align: center;
-    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
 
     &:hover {
         cursor: pointer;
-        color: white;
+        background-color: rgba(0, 154, 207, 0.2);
+        border-radius: 4px;
     }
 }
 

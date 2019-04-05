@@ -20,6 +20,10 @@
         cursor: not-allowed;
     }
 
+    &[readonly] {
+        cursor: text;
+    }
+
     color: transparent;
     text-shadow: 0 0 0 #061c3f;
 }

@@ -10,6 +10,8 @@
     text-shadow: none; }
   .rainbow-date-picker_input input:hover[disabled] {
     cursor: not-allowed; }
+  .rainbow-date-picker_input input[readonly] {
+    cursor: text; }
 
 .rainbow-date-picker_modal {
   width: auto; }

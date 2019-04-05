@@ -104,7 +104,7 @@ export default class Calendar extends Component {
                         options={yearsRange}
                         onChange={this.handleYearChange} />
                 </div>
-                <table>
+                <table role="grid" aria-labelledby="month">
                     <DaysOfWeek />
                     <Month
                         value={value}

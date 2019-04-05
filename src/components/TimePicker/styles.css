@@ -10,6 +10,8 @@
     text-shadow: none; }
   .rainbow-time-picker_input input:hover[disabled] {
     cursor: not-allowed; }
+  .rainbow-time-picker_input input[readonly] {
+    cursor: text; }
   .rainbow-time-picker_input input[type=time]::-webkit-inner-spin-button, .rainbow-time-picker_input input[type=time]::-webkit-outer-spin-button {
     -webkit-appearance: none; }
 
@@ -41,7 +43,6 @@
   background-color: transparent;
   border-radius: 4px;
   height: 100%;
-  padding: 0 0.25rem;
   text-align: center; }
   .rainbow-time-picker_time-select-value:focus, .rainbow-time-picker_time-select-value:active {
     color: white;
@@ -76,7 +77,6 @@
   justify-content: center; }
 
 .rainbow-time-picker_select-ampm {
-  padding: 0.25rem;
   display: flex;
   flex-direction: column; }
 
@@ -97,10 +97,14 @@
   text-transform: uppercase;
   color: rgba(244, 246, 249, 0.4);
   text-align: center;
-  height: auto; }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50%; }
   .rainbow-time-picker_select-option:hover {
     cursor: pointer;
-    color: white; }
+    background-color: rgba(0, 154, 207, 0.2);
+    border-radius: 4px; }
 
 .rainbow-time-picker_time-input--hidden:checked + .rainbow-time-picker_select-option,
 .rainbow-time-picker_time-input--hidden:active + .rainbow-time-picker_select-option,

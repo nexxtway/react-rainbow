@@ -96,12 +96,12 @@ class TimePicker extends Component {
             bottomHelpText,
             isCentered,
             error,
+            readOnly,
             disabled,
             tabIndex,
             onFocus,
             onBlur,
             id,
-            // hours24,
             cancelLabel,
             okLabel,
             onChange,
@@ -131,6 +131,7 @@ class TimePicker extends Component {
                     bottomHelpText={bottomHelpText}
                     isCentered={isCentered}
                     error={error}
+                    readOnly={readOnly}
                     disabled={disabled}
                     tabIndex={tabIndex}
                     autoComplete="off" />
@@ -158,13 +159,11 @@ class TimePicker extends Component {
 TimePicker.propTypes = {
     /** Sets the date for the TimePicker programmatically. */
     value: PropTypes.string,
-    // /** Tells the component to display the picker in 24hr format. */
-    // hours24: PropTypes.bool,
-    /** Override the label of the 'OK' button. */
+    /** Override the label of the 'Cancel' button. */
     cancelLabel: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
-    /** Override the label of the 'Cancel' button. */
+    /** Override the label of the 'OK' button. */
     okLabel: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
@@ -193,6 +192,8 @@ TimePicker.propTypes = {
     error: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
+    /** Specifies that the DatePicker is read-only. This value defaults to false. */
+    readOnly: PropTypes.bool,
     /** Specifies that an input element should be disabled. This value defaults to false. */
     disabled: PropTypes.bool,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
@@ -216,7 +217,6 @@ TimePicker.propTypes = {
 
 TimePicker.defaultProps = {
     value: undefined,
-    // hours24: false,
     cancelLabel: 'Cancel',
     okLabel: 'OK',
     onChange: () => {},
@@ -227,6 +227,7 @@ TimePicker.defaultProps = {
     bottomHelpText: null,
     isCentered: false,
     error: null,
+    readOnly: false,
     disabled: false,
     tabIndex: undefined,
     onClick: () => {},

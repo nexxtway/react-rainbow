@@ -88,6 +88,7 @@ class DatePicker extends Component {
             bottomHelpText,
             isCentered,
             error,
+            readOnly,
             disabled,
             tabIndex,
             onFocus,
@@ -119,6 +120,7 @@ class DatePicker extends Component {
                     bottomHelpText={bottomHelpText}
                     isCentered={isCentered}
                     error={error}
+                    readOnly={readOnly}
                     disabled={disabled}
                     tabIndex={tabIndex}
                     autoComplete="off" />
@@ -178,6 +180,8 @@ DatePicker.propTypes = {
     error: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
+    /** Specifies that the DatePicker is read-only. This value defaults to false. */
+    readOnly: PropTypes.bool,
     /** Specifies that an input element should be disabled. This value defaults to false. */
     disabled: PropTypes.bool,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
@@ -212,6 +216,7 @@ DatePicker.defaultProps = {
     bottomHelpText: null,
     isCentered: false,
     error: null,
+    readOnly: false,
     disabled: false,
     tabIndex: undefined,
     onClick: () => {},
