@@ -40,12 +40,13 @@ export default class Modal extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        const { isOpen } = this.props;
+        const { isOpen, onOpened } = this.props;
         const { isOpen: prevIsOpen } = prevProps;
         if (isOpen && !prevIsOpen) {
             disableScroll();
             this.modalTriggerElement = document.activeElement;
             this.modalRef.current.focus();
+            onOpened();
         } else if (!isOpen && prevIsOpen) {
             enableScroll();
         }
@@ -186,6 +187,10 @@ Modal.propTypes = {
     isOpen: PropTypes.bool,
     /** The action triggered when the close button is clicked. */
     onRequestClose: PropTypes.func,
+    /** A callback triggered when the modal is opened. This is usefull for example to set focus
+     * to an element inside the modal content after it is opened.
+     */
+    onOpened: PropTypes.func,
     /** The id of the outer element. */
     id: PropTypes.string,
     /** A CSS class for the outer element, in addition to the component's base classes. */
@@ -208,5 +213,6 @@ Modal.defaultProps = {
     style: undefined,
     footer: null,
     onRequestClose: () => {},
+    onOpened: () => {},
     id: undefined,
 };

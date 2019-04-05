@@ -81,7 +81,10 @@ export default class AvatarButton extends Component {
 
 AvatarButton.propTypes = {
     title: PropTypes.string,
-    tabIndex: PropTypes.number,
+    tabIndex: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string,
+    ]),
     onClick: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,

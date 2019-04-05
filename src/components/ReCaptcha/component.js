@@ -50,7 +50,10 @@ ReCaptchaComponent.propTypes = {
     siteKey: PropTypes.string.isRequired,
     theme: PropTypes.oneOf(['light', 'dark']).isRequired,
     size: PropTypes.oneOf(['normal', 'compact']).isRequired,
-    tabIndex: PropTypes.number.isRequired,
+    tabIndex: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string,
+    ]).isRequired,
     error: PropTypes.oneOfType([
         PropTypes.node,
         PropTypes.string,

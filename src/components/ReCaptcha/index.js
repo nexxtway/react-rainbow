@@ -34,7 +34,10 @@ ReCaptcha.propTypes = {
     /** The tabindex of the widget and challenge.
      * If other elements in your page use tabindex,
      * it should be set to make user navigation easier. */
-    tabIndex: PropTypes.number,
+    tabIndex: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string,
+    ]),
     /** Specifies that the recaptcha must be completed before submitting the form. */
     error: PropTypes.oneOfType([
         PropTypes.node,

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import ClockIcon from './clockIcon';
+import ClockIcon from './icons/clock';
 import Input from '../Input';
 import Modal from '../Modal';
+import TimeSelect from './timeSelect';
+import get12HourTime from './helpers/get12HourTime';
 import withReduxForm from './../../libs/hocs/withReduxForm';
-import TimeSelect from './timeselect';
 import './styles.css';
 import './media-queries.css';
 
@@ -18,11 +19,20 @@ class TimePicker extends Component {
         super(props);
         this.state = {
             isOpen: false,
+            value: get12HourTime(props.value),
         };
         this.inputRef = React.createRef();
-        this.handleChange = this.handleChange.bind(this);
+        this.timeSelectRef = React.createRef();
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
+        this.setFocusToHourInput = this.setFocusToHourInput.bind(this);
+    }
+
+    componentDidUpdate({ value: prevValue }) {
+        const { value } = this.props;
+        if (prevValue !== value) {
+            this.updateValue();
+        }
     }
 
     getContainerClassName() {
@@ -30,12 +40,15 @@ class TimePicker extends Component {
         return classnames('rainbow-time-picker_input-container', className);
     }
 
-    handleChange(...args) {
-        const { onChange } = this.props;
+    setFocusToHourInput() {
+        this.timeSelectRef.current.focusHourInput();
+    }
+
+    updateValue() {
+        const { value } = this.props;
         this.setState({
-            isOpen: false,
+            value: get12HourTime(value),
         });
-        onChange(...args);
     }
 
     openModal(event) {
@@ -74,7 +87,6 @@ class TimePicker extends Component {
 
     render() {
         const {
-            value,
             placeholder,
             label,
             required,
@@ -92,10 +104,13 @@ class TimePicker extends Component {
             hours24,
             cancelLabel,
             okLabel,
+            onChange,
         } = this.props;
         const {
             isOpen,
+            value,
         } = this.state;
+        const inputValue = value || '--:-- --';
 
         return (
             <div id={id} className={this.getContainerClassName()} style={style}>
@@ -107,7 +122,7 @@ class TimePicker extends Component {
                     icon={<ClockIcon className="rainbow-time-picker_input-icon" />}
                     iconPosition="right"
                     required={required}
-                    value={value}
+                    value={inputValue}
                     onClick={this.openModal}
                     onFocus={onFocus}
                     onBlur={onBlur}
@@ -123,12 +138,17 @@ class TimePicker extends Component {
                 <Modal
                     className="rainbow-time-picker_modal"
                     isOpen={isOpen}
-                    onRequestClose={this.closeModal}>
+                    onRequestClose={this.closeModal}
+                    onOpened={this.setFocusToHourInput}>
+
                     <TimeSelect
                         onCloseModal={this.closeModal}
+                        onChange={onChange}
                         hours24={hours24}
                         cancelLabel={cancelLabel}
-                        okLabel={okLabel} />
+                        okLabel={okLabel}
+                        value={value}
+                        ref={this.timeSelectRef} />
                 </Modal>
             </div>
         );
@@ -137,7 +157,7 @@ class TimePicker extends Component {
 
 TimePicker.propTypes = {
     /** Sets the date for the TimePicker programmatically. */
-    value: PropTypes.instanceOf(Date),
+    value: PropTypes.string,
     /** Tells the component to display the picker in 24hr format. */
     hours24: PropTypes.bool,
     /** Override the label of the 'OK' button. */
@@ -176,7 +196,10 @@ TimePicker.propTypes = {
     /** Specifies that an input element should be disabled. This value defaults to false. */
     disabled: PropTypes.bool,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
-    tabIndex: PropTypes.number,
+    tabIndex: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string,
+    ]),
     /** The action triggered when the element is clicked. */
     onClick: PropTypes.func,
     /** The action triggered when the element receives focus. */

@@ -106,7 +106,10 @@ AvatarMenu.propTypes = {
     /** The id of the outer element. */
     id: PropTypes.string,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
-    tabIndex: PropTypes.number,
+    tabIndex: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string,
+    ]),
     /** If true, the menu is disabled. Disabling the menu prevents users from opening it.
     * This value defaults to false. */
     disabled: PropTypes.bool,

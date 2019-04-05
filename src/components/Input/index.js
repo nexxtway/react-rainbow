@@ -122,7 +122,10 @@ Input.propTypes = {
     /** The action triggered when a value attribute changes. */
     onChange: PropTypes.func,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
-    tabIndex: PropTypes.number,
+    tabIndex: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string,
+    ]),
     /** The action triggered when the element is clicked. */
     onClick: PropTypes.func,
     /** The action triggered when the element receives focus. */

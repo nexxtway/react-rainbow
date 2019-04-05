@@ -206,7 +206,10 @@ InputBase.propTypes = {
     disabled: PropTypes.bool,
     readOnly: PropTypes.bool,
     onChange: PropTypes.func,
-    tabIndex: PropTypes.number,
+    tabIndex: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string,
+    ]),
     onClick: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,

@@ -149,7 +149,10 @@ ButtonIcon.propTypes = {
     * Disabled buttons can't be clicked. This value defaults to false. */
     disabled: PropTypes.bool,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
-    tabIndex: PropTypes.number,
+    tabIndex: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string,
+    ]),
     /** The action that will be run when the button is clicked. */
     onClick: PropTypes.func,
     /** The action triggered when a keyboard key is pressed. */

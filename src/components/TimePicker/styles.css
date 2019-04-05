@@ -76,11 +76,6 @@
   justify-content: center; }
 
 .rainbow-time-picker_select-ampm {
-  width: 82px;
-  background-color: #01b6f5;
-  box-shadow: 0 0 2px #01b6f5;
-  border-radius: 4px;
-  height: 100%;
   padding: 0.25rem;
   display: flex;
   flex-direction: column; }

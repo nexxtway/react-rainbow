@@ -1,21 +1,19 @@
 ##### TimePicker base:
 
-    initialState = { date: new Date() };
     <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
         <TimePicker
-            value={state.date}
+            value={state.time}
             label="TimePicker Label"
-            onChange={ value => setState({ date: value }) } />
+            onChange={ value => setState({ time: value }) } />
     </div>
 
 
-##### TimePicker 24-hours format:
+##### TimePicker with inital value:
 
-    initialState = { date: new Date() };
+    initialState = { time: '13:32' };
     <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
         <TimePicker
-            value={state.date}
+            value={state.time}
             label="TimePicker Label"
-            onChange={ value => setState({ date: value }) }
-            hours24 />
+            onChange={ value => setState({ time: value }) } />
     </div>
