@@ -50,7 +50,10 @@ Month.propTypes = {
     firstDayMonth: PropTypes.instanceOf(Date),
     minDate: PropTypes.instanceOf(Date),
     maxDate: PropTypes.instanceOf(Date),
-    value: PropTypes.instanceOf(Date),
+    value: PropTypes.oneOfType([
+        PropTypes.instanceOf(Date),
+        PropTypes.string,
+    ]),
     onChange: PropTypes.func,
 };
 

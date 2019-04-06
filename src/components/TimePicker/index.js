@@ -40,6 +40,15 @@ class TimePicker extends Component {
         return classnames('rainbow-time-picker_input-container', className);
     }
 
+    getTriggerInputValue() {
+        const { value } = this.state;
+        const { placeholder } = this.props;
+        if (!value && placeholder) {
+            return '';
+        }
+        return value || '--:-- --';
+    }
+
     setFocusToHourInput() {
         this.timeSelectRef.current.focusHourInput();
     }
@@ -112,7 +121,6 @@ class TimePicker extends Component {
             isOpen,
             value,
         } = this.state;
-        const inputValue = value || '--:-- --';
 
         return (
             <div id={id} className={this.getContainerClassName()} style={style}>
@@ -124,7 +132,7 @@ class TimePicker extends Component {
                     icon={<ClockIcon className="rainbow-time-picker_input-icon" />}
                     iconPosition="right"
                     required={required}
-                    value={inputValue}
+                    value={this.getTriggerInputValue()}
                     onClick={this.openModal}
                     onFocus={onFocus}
                     onBlur={onBlur}
@@ -147,7 +155,6 @@ class TimePicker extends Component {
                     <TimeSelect
                         onCloseModal={this.closeModal}
                         onChange={onChange}
-                        // hours24={hours24}
                         cancelLabel={cancelLabel}
                         okLabel={okLabel}
                         value={value}

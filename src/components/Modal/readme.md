@@ -327,8 +327,8 @@
     const { faCog } = require('@fortawesome/free-solid-svg-icons');
 
     const styles = {
-        textarea: {
-            margin: '24px 0',
+        input: {
+            marginTop: 24,
         },
     };
 
@@ -354,20 +354,42 @@
                     placeholder="Enter title" />
 
                 <Field
+                    style={styles.input}
+                    component={DatePicker}
+                    name="date"
+                    required
+                    label="Select a Date"
+                    placeholder="Select a date" />
+
+                <Field
+                    style={styles.input}
+                    component={TimePicker}
+                    name="time"
+                    required
+                    label="Select a Time" />
+
+                <Field
+                    style={styles.input}
                     component={Textarea}
                     name="description"
-                    style={styles.textarea}
                     label="Description"
                     placeholder="Enter description" />
+
             </form>
         );
     }
 
     function validate(values) {
-        const { subject } = values;
+        const { subject, date, time } = values;
         const errors = {};
         if (!subject) {
             errors.subject = 'Title is a required field';
+        }
+        if (!date) {
+            errors.date = 'Date is a required field';
+        }
+        if (!time) {
+            errors.time = 'Time is a required field';
         }
         return errors;
     }
@@ -386,6 +408,8 @@
                 initialValues: {
                     subject: 'React Rainbow',
                     description: 'React Rainbow is a collection of components that will reliably help you build your application in a snap.',
+                    date: new Date(),
+                    time: '00:00',
                 },
             };
             this.handleOnClick = this.handleOnClick.bind(this);

@@ -1,3 +1,8 @@
+function is12HourTimeAlready(value) {
+    const values = value.split(' ');
+    return values[0].length === 5 && (values[1] === 'AM' || values[1] === 'PM');
+}
+
 function get12Hour(hour) {
     const hourNumber = Number(hour);
     if (hourNumber === 0) {
@@ -22,6 +27,9 @@ function getAmPmValue(hour) {
 
 export default function get12HourTime(value) {
     if (value && typeof value === 'string') {
+        if (is12HourTimeAlready(value)) {
+            return value;
+        }
         const values = value.split(':');
         const hour = values[0];
         const minutes = values[1];
