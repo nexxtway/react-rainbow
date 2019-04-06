@@ -15,6 +15,7 @@ import getPrevMinute from './helpers/getPrevMinute';
 import getNextAmPmValue from './helpers/getNextAmPmValue';
 import get24HourTime from './helpers/get24HourTime';
 import getSingleNewTypedValue from './helpers/getSingleNewTypedValue';
+import isNumber from './helpers/isNumber';
 import {
     LEFT_KEY,
     RIGHT_KEY,
@@ -65,6 +66,7 @@ export default class TimeSelect extends Component {
         this.hasPropValue = !!props.value;
         this.handleChangeHour = this.handleChangeHour.bind(this);
         this.handleFocusHour = this.handleFocusHour.bind(this);
+        this.handleBlurHour = this.handleBlurHour.bind(this);
         this.handleChangeMinutes = this.handleChangeMinutes.bind(this);
         this.handleFocusMinutes = this.handleFocusMinutes.bind(this);
         this.handleAmPmChange = this.handleAmPmChange.bind(this);
@@ -89,30 +91,33 @@ export default class TimeSelect extends Component {
         const { value } = event.target;
         let normalizedValue;
 
-        if (Number(value) > 19 || this.isUpOrDownKeyPressed || this.hasPropValue) {
-            const newTypedValue = getSingleNewTypedValue(hour, value);
-            normalizedValue = normalizeHour(newTypedValue);
-            this.setState({
-                hour: normalizedValue,
-            });
-        } else {
-            normalizedValue = normalizeHour(value);
-            const numberValue = Number(value);
-            this.defaultAmPM = numberValue > 11 && numberValue < 20 ? 'PM' : 'AM';
-            this.setState({
-                hour: normalizedValue,
-            });
-        }
+        if (isNumber(value)) {
+            this.value = value;
+            if (Number(value) > 19 || this.isUpOrDownKeyPressed || this.hasPropValue) {
+                const newTypedValue = getSingleNewTypedValue(hour, value);
+                normalizedValue = normalizeHour(newTypedValue);
+                this.setState({
+                    hour: normalizedValue,
+                });
+            } else {
+                normalizedValue = normalizeHour(value);
+                const numberValue = Number(value);
+                this.defaultAmPM = numberValue > 11 && numberValue < 20 ? 'PM' : 'AM';
+                this.setState({
+                    hour: normalizedValue,
+                });
+            }
 
-        const shouldNotFocusNextInput = Number(normalizedValue) < 2
-            && (!hour || this.isUpOrDownKeyPressed || this.hasPropValue);
+            const shouldNotFocusNextInput = Number(normalizedValue) < 2
+                && (!hour || this.isUpOrDownKeyPressed || this.hasPropValue);
 
-        if (shouldNotFocusNextInput) {
-            this.isUpOrDownKeyPressed = false;
-            this.hasPropValue = false;
-            return;
+            if (shouldNotFocusNextInput) {
+                this.isUpOrDownKeyPressed = false;
+                this.hasPropValue = false;
+                return;
+            }
+            this.minutesInputRef.current.focus();
         }
-        this.minutesInputRef.current.focus();
     }
 
     handleFocusHour() {
@@ -124,32 +129,43 @@ export default class TimeSelect extends Component {
         });
     }
 
+    handleBlurHour() {
+        const { hour } = this.state;
+        if (hour === '00' && this.value === '0') {
+            this.setState({
+                hour: '12',
+            });
+        }
+    }
+
     handleChangeMinutes(event) {
         const { minutes } = this.state;
         const { value } = event.target;
         let normalizedValue;
 
-        if (Number(value) > 60 || this.isUpOrDownKeyPressed) {
-            const newTypedValue = getSingleNewTypedValue(minutes, value);
-            normalizedValue = normalizeMinutes(newTypedValue);
-            this.setState({
-                minutes: normalizedValue,
-            });
-        } else {
-            normalizedValue = normalizeMinutes(value);
-            this.setState({
-                minutes: normalizedValue,
-            });
-        }
+        if (isNumber(value)) {
+            if (Number(value) > 60 || this.isUpOrDownKeyPressed) {
+                const newTypedValue = getSingleNewTypedValue(minutes, value);
+                normalizedValue = normalizeMinutes(newTypedValue);
+                this.setState({
+                    minutes: normalizedValue,
+                });
+            } else {
+                normalizedValue = normalizeMinutes(value);
+                this.setState({
+                    minutes: normalizedValue,
+                });
+            }
 
-        const shouldNotFocusNextInput = Number(normalizedValue) < 6
-            && (!minutes || this.isUpOrDownKeyPressed);
+            const shouldNotFocusNextInput = Number(normalizedValue) < 6
+                && (!minutes || this.isUpOrDownKeyPressed);
 
-        if (shouldNotFocusNextInput) {
-            this.isUpOrDownKeyPressed = false;
-            return;
+            if (shouldNotFocusNextInput) {
+                this.isUpOrDownKeyPressed = false;
+                return;
+            }
+            this.amPmInputRef.current.focus();
         }
-        this.amPmInputRef.current.focus();
     }
 
     handleFocusMinutes() {
@@ -336,6 +352,7 @@ export default class TimeSelect extends Component {
                         placeholder={hourPlaceholder}
                         onChange={this.handleChangeHour}
                         onFocus={this.handleFocusHour}
+                        onBlur={this.handleBlurHour}
                         pattern="\d*"
                         ref={this.hourInputRef} />
 

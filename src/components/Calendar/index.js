@@ -122,7 +122,10 @@ export default class Calendar extends Component {
 
 Calendar.propTypes = {
     /** Sets the date for the Calendar programmatically. */
-    value: PropTypes.instanceOf(Date),
+    value: PropTypes.oneOfType([
+        PropTypes.instanceOf(Date),
+        PropTypes.string,
+    ]),
     /** The ending of a range of valid dates. The range includes the endDate.
      * The default value is current date + 100 years. */
     maxDate: PropTypes.instanceOf(Date),

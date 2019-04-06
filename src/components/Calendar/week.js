@@ -49,7 +49,10 @@ Week.propTypes = {
     maxDate: PropTypes.instanceOf(Date),
     startDate: PropTypes.instanceOf(Date),
     endDate: PropTypes.instanceOf(Date),
-    value: PropTypes.instanceOf(Date),
+    value: PropTypes.oneOfType([
+        PropTypes.instanceOf(Date),
+        PropTypes.string,
+    ]),
     onChange: PropTypes.func,
 };
 

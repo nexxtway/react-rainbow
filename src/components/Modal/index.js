@@ -89,6 +89,7 @@ export default class Modal extends Component {
     }
 
     handleClick(event) {
+        event.stopPropagation();
         const { isOpen } = this.props;
         if (isOpen) {
             const isClickOutsideModal = !this.modalRef.current.contains(event.target);
