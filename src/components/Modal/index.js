@@ -48,6 +48,9 @@ export default class Modal extends Component {
             this.modalRef.current.focus();
             onOpened();
         } else if (!isOpen && prevIsOpen) {
+            if (this.modalTriggerElement) {
+                this.modalTriggerElement.focus();
+            }
             enableScroll();
         }
     }
@@ -78,6 +81,7 @@ export default class Modal extends Component {
     }
 
     handleKeyPressed(event) {
+        event.stopPropagation();
         const { isOpen } = this.props;
         if (isOpen && event.keyCode === ESCAPE_KEY) {
             this.closeModal();
@@ -102,9 +106,6 @@ export default class Modal extends Component {
 
     closeModal() {
         const { onRequestClose } = this.props;
-        if (this.modalTriggerElement) {
-            this.modalTriggerElement.focus();
-        }
         return onRequestClose();
     }
 
