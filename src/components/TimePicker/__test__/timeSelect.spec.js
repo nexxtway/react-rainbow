@@ -72,4 +72,14 @@ describe('TimeSelect', () => {
         hourInput.simulate('change', { target: { value: '2' } });
         expect(component.instance().state.hour).toBe('02');
     });
+    it('should set hour state to "12" when type 0 and then blur the hour input', () => {
+        const component = mount(
+            <TimeSelect />,
+        );
+        const hourInput = component.find('input').at(0);
+        hourInput.simulate('focus');
+        hourInput.simulate('change', { target: { value: '0' } });
+        hourInput.simulate('blur');
+        expect(component.instance().state.hour).toBe('12');
+    });
 });
