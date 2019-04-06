@@ -1,5 +1,5 @@
-function preventDefault(e) {
-    e.preventDefault();
+function preventDefault(event) {
+    event.preventDefault();
 }
 
 export function disableScroll() {
