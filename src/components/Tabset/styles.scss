@@ -15,6 +15,11 @@
     @extend %common-styles;
 }
 
+.rainbow-tabset-width-observer {
+    width: 100%;
+    height: 0;
+}
+
 .rainbow-tabset_inner-container {
     @extend %common-styles;
 

@@ -20,6 +20,8 @@ import {
 } from './utils';
 import RightThinChevron from './rightThinChevron';
 import LeftThinChevron from './leftThinChevron';
+import ResizeSensor from '../../libs/ResizeSensor';
+import debounce from '../../libs/debounce';
 import './styles.css';
 
 const RIGHT_SIDE = 1;
@@ -37,8 +39,8 @@ export default class Tabset extends Component {
             areButtonsVisible: false,
         };
         this.isFirstTime = true;
-        this.containerRef = React.createRef();
         this.tabsetRef = React.createRef();
+        this.resizeTarget = React.createRef();
         this.registerTab = this.registerTab.bind(this);
         this.unRegisterTab = this.unRegisterTab.bind(this);
         this.updateTab = this.updateTab.bind(this);
@@ -54,7 +56,10 @@ export default class Tabset extends Component {
     }
 
     componentDidMount() {
-        window.addEventListener('resize', this.updateButtonsVisibility);
+        this.widthObserver = new ResizeSensor(
+            this.resizeTarget.current,
+            debounce(this.updateButtonsVisibility, 100),
+        );
     }
 
     componentDidUpdate(prevProp) {
@@ -72,12 +77,7 @@ export default class Tabset extends Component {
     }
 
     componentWillUnmount() {
-        window.removeEventListener('resize', this.updateButtonsVisibility);
-    }
-
-    getContainerClassName() {
-        const { className } = this.props;
-        return classnames('rainbow-tabset', className);
+        this.widthObserver.detach(this.resizeTarget.current);
     }
 
     getInnerContainerClassName() {
@@ -226,7 +226,14 @@ export default class Tabset extends Component {
     }
 
     render() {
-        const { id, activeTabName, fullWidth, children, style } = this.props;
+        const {
+            activeTabName,
+            fullWidth,
+            children,
+            className,
+            style,
+            id,
+        } = this.props;
         const { areButtonsVisible } = this.state;
         const { screenWidth } = this;
         const showButtons = areButtonsVisible || screenWidth < 600;
@@ -240,41 +247,40 @@ export default class Tabset extends Component {
         };
 
         return (
-            <div
-                className={this.getContainerClassName()}
-                style={style}
-                id={id}
-                ref={this.containerRef}>
-                <ul
-                    className={this.getInnerContainerClassName()}
-                    role="tablist"
-                    onKeyDown={this.handleKeyPressed}
-                    onScroll={this.updateButtonsVisibility}
-                    ref={this.tabsetRef}>
+            <div className={className} style={style} id={id}>
+                <div className="rainbow-tabset-width-observer" ref={this.resizeTarget} />
+                <div className="rainbow-tabset">
+                    <ul
+                        className={this.getInnerContainerClassName()}
+                        role="tablist"
+                        onKeyDown={this.handleKeyPressed}
+                        onScroll={this.updateButtonsVisibility}
+                        ref={this.tabsetRef}>
 
-                    <Provider value={context}>
-                        {children}
-                    </Provider>
+                        <Provider value={context}>
+                            {children}
+                        </Provider>
 
-                </ul>
-                <RenderIf isTrue={showButtons}>
-                    <ButtonGroup className="rainbow-tabset_button-group">
-                        <ButtonIcon
-                            className="rainbow-tabset_button-icon"
-                            icon={<LeftThinChevron />}
-                            disabled={this.isLeftButtonDisabled()}
-                            onClick={this.handleLeftButtonClick}
-                            assistiveText="previus tab button"
-                            variant="border-filled" />
-                        <ButtonIcon
-                            className="rainbow-tabset_button-icon"
-                            icon={<RightThinChevron />}
-                            disabled={this.isRightButtonDisabled()}
-                            onClick={this.handleRightButtonClick}
-                            assistiveText="next tab button"
-                            variant="border-filled" />
-                    </ButtonGroup>
-                </RenderIf>
+                    </ul>
+                    <RenderIf isTrue={showButtons}>
+                        <ButtonGroup className="rainbow-tabset_button-group">
+                            <ButtonIcon
+                                className="rainbow-tabset_button-icon"
+                                icon={<LeftThinChevron />}
+                                disabled={this.isLeftButtonDisabled()}
+                                onClick={this.handleLeftButtonClick}
+                                assistiveText="previus tab button"
+                                variant="border-filled" />
+                            <ButtonIcon
+                                className="rainbow-tabset_button-icon"
+                                icon={<RightThinChevron />}
+                                disabled={this.isRightButtonDisabled()}
+                                onClick={this.handleRightButtonClick}
+                                assistiveText="next tab button"
+                                variant="border-filled" />
+                        </ButtonGroup>
+                    </RenderIf>
+                </div>
             </div>
         );
     }
