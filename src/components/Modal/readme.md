@@ -330,6 +330,10 @@
         input: {
             marginTop: 24,
         },
+        inputColumn: {
+            width: '48%',
+            marginTop: 24,
+        },
     };
 
     function SimpleForm(props) {
@@ -353,20 +357,22 @@
                     label="Title"
                     placeholder="Enter title" />
 
-                <Field
-                    style={styles.input}
-                    component={DatePicker}
-                    name="date"
-                    required
-                    label="Select a Date"
-                    placeholder="Select a date" />
+                <div className="rainbow-flex rainbow-justify_spread">
+                    <Field
+                        style={styles.inputColumn}
+                        component={DatePicker}
+                        name="date"
+                        required
+                        label="Select a Date"
+                        placeholder="Select a date" />
 
-                <Field
-                    style={styles.input}
-                    component={TimePicker}
-                    name="time"
-                    required
-                    label="Select a Time" />
+                    <Field
+                        style={styles.inputColumn}
+                        component={TimePicker}
+                        name="time"
+                        required
+                        label="Select a Time" />
+                </div>
 
                 <Field
                     style={styles.input}
