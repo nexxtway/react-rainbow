@@ -6,6 +6,10 @@
   justify-content: flex-start;
   width: 100%; }
 
+.rainbow-tabset-width-observer {
+  width: 100%;
+  height: 0; }
+
 .rainbow-tabset_inner-container {
   padding: 0 0.75rem; }
 
