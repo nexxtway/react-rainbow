@@ -35,14 +35,6 @@ describe('<Tabset />', () => {
         );
         expect(component.find('p').text()).toBe('testing tabset');
     });
-    it('should have the right class names', () => {
-        const component = mount(
-            <Tabset className="my-custom-class-name">
-                <Tab label="Tab-1" name="tab-1" registerTab={registerTabMockFn} />
-            </Tabset>,
-        );
-        expect(component.find('.rainbow-tabset.my-custom-class-name').exists()).toBe(true);
-    });
     it('should have the right class names when fullWidth prop is passed', () => {
         const component = mount(
             <Tabset fullWidth>
