@@ -6,3 +6,4 @@ export const ESCAPE_KEY = 27;
 export const TAB_KEY = 9;
 export const ENTER_KEY = 13;
 export const DELETE_KEY = 8;
+export const SPACE_KEY = 32;
