@@ -1,36 +1,62 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="140" height="12" viewBox="0 0 140 12">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="140px" height="12px" viewBox="0 0 140 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>progress-indicator</title>
+    <desc>Created with Sketch.</desc>
     <defs>
-        <filter id="a" width="150%" height="150%" x="-25%" y="-25%" filterUnits="objectBoundingBox">
-            <feOffset in="SourceAlpha" result="shadowOffsetOuter1"/>
-            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation=".5"/>
-            <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0.890196078 0 0 0 0 0.898039216 0 0 0 0 0.929411765 0 0 0 1 0"/>
+        <filter x="-25.0%" y="-25.0%" width="150.0%" height="150.0%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.890196078   0 0 0 0 0.898039216   0 0 0 0 0.929411765  0 0 0 1 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
             <feMerge>
-                <feMergeNode in="shadowMatrixOuter1"/>
-                <feMergeNode in="SourceGraphic"/>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
             </feMerge>
         </filter>
-        <circle id="c" cx="2" cy="2" r="2"/>
-        <filter id="b" width="175%" height="175%" x="-37.5%" y="-37.5%" filterUnits="objectBoundingBox">
-            <feOffset in="SourceAlpha" result="shadowOffsetOuter1"/>
-            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation=".5"/>
-            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.890196078 0 0 0 0 0.898039216 0 0 0 0 0.929411765 0 0 0 1 0"/>
+        <circle id="path-2" cx="2" cy="2" r="2"></circle>
+        <filter x="-37.5%" y="-37.5%" width="175.0%" height="175.0%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.890196078   0 0 0 0 0.898039216   0 0 0 0 0.929411765  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
         </filter>
     </defs>
-    <g fill="none" fill-rule="evenodd">
-        <g fill="#E3E5ED" fill-rule="nonzero">
-            <path d="M4 7V6h132.489v1z"/>
-            <path d="M104 9a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zM137 9a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zM68 9a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/>
-        </g>
-        <g fill-rule="nonzero" transform="translate(0 1)">
-            <circle cx="4.99" cy="4.99" r="4.99" fill="#1DE9B6"/>
-            <path fill="#1AD1A3" d="M9.98 4.99a5.005 5.005 0 0 1-4.99 4.99c-1.59 0-2.994-.717-3.898-1.87A4.923 4.923 0 0 0 4.21 9.2 5.005 5.005 0 0 0 9.2 4.21a4.923 4.923 0 0 0-1.092-3.118C9.263 1.996 9.981 3.4 9.981 4.99z"/>
-            <path fill="#FFF" d="M8.033 3.367c-.118-.303-.357-.255-.617-.204-.155.032-.844.234-1.934 1.384a9.22 9.22 0 0 0-.948 1.148 6.032 6.032 0 0 0-.402-.45 5.819 5.819 0 0 0-.96-.762.442.442 0 0 0-.461.753c.004.003.43.266.797.634.374.374.714.881.717.886a.442.442 0 0 0 .797-.138c0-.004.176-.488 1.1-1.463.746-.786 1.243-1.036 1.415-1.105l.005-.001.016-.007a.527.527 0 0 1 .046-.016l-.013.003v-.002l.232-.1c.225-.092.298-.334.21-.56z"/>
-        </g>
-        <g filter="url(#a)" transform="translate(32 1)">
-            <circle cx="4.99" cy="4.99" r="4.99" fill="#01B6F5" fill-rule="nonzero"/>
-            <g transform="translate(3 3)">
-                <use fill="#000" filter="url(#b)" xlink:href="#c"/>
-                <use fill="#FFF" xlink:href="#c"/>
+    <g id="pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="componentes-V2" transform="translate(-611.000000, -2319.000000)">
+            <g id="progressIndicator" transform="translate(581.000000, 2260.000000)">
+                <g id="progress-indicator" transform="translate(30.000000, 60.000000)">
+                    <g id="Group-36" transform="translate(3.500000, 3.000000)" fill="#E3E5ED" fill-rule="nonzero">
+                        <g id="Group-33">
+                            <g id="Group-66">
+                                <g id="Group-14" transform="translate(0.000000, 1.500000)">
+                                    <polygon id="Line-2-Copy" points="0.5 1.5 0.5 0.5 132.988729 0.5 132.988729 1.5"></polygon>
+                                </g>
+                                <path d="M100.5,5 C99.1192881,5 98,3.88071187 98,2.5 C98,1.11928813 99.1192881,0 100.5,0 C101.880712,0 103,1.11928813 103,2.5 C103,3.88071187 101.880712,5 100.5,5 Z" id="medium"></path>
+                                <path d="M133.5,5 C132.119288,5 131,3.88071187 131,2.5 C131,1.11928813 132.119288,0 133.5,0 C134.880712,0 136,1.11928813 136,2.5 C136,3.88071187 134.880712,5 133.5,5 Z" id="medium-copy"></path>
+                                <g id="Group-14-Copy-7" transform="translate(62.000000, 0.000000)">
+                                    <g id="step">
+                                        <path d="M2.5,5 C1.11928813,5 0,3.88071187 0,2.5 C0,1.11928813 1.11928813,0 2.5,0 C3.88071187,0 5,1.11928813 5,2.5 C5,3.88071187 3.88071187,5 2.5,5 Z" id="medium"></path>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                    <g id="done" fill-rule="nonzero">
+                        <circle id="Oval" fill="#01B6F5" cx="4.99026316" cy="4.99026316" r="4.99026316"></circle>
+                        <path d="M9.98050439,4.99026316 C9.98050439,7.73491228 7.73489035,9.98052632 4.99024123,9.98052632 C3.39960526,9.98052632 1.99609649,9.26317982 1.09160088,8.1091886 C1.93370614,8.79535088 3.02532895,9.2008114 4.21050439,9.2008114 C6.95515351,9.2008114 9.20076754,6.95519737 9.20076754,4.21054825 C9.20076754,3.02537281 8.79530702,1.93375 8.10914474,1.09164474 C9.26315789,1.99609649 9.98050439,3.39960526 9.98050439,4.99026316 Z" id="Shape" fill="#01ADE9"></path>
+                        <path d="M8.03281529,3.36677454 C7.91531026,3.06377655 7.67587364,3.11160352 7.4164169,3.16301197 C7.2614672,3.19530573 6.57229215,3.39703611 5.4818495,4.54685502 C5.02933441,5.02405824 4.73082334,5.4045009 4.53428411,5.69464174 C4.41422374,5.54723732 4.27667847,5.38953108 4.13223179,5.24502404 C3.68800644,4.80091941 3.19261409,4.49592947 3.17178914,4.48311257 C2.96390181,4.35603007 2.69251348,4.42142243 2.56506881,4.62914879 C2.43778511,4.83687514 2.50297626,5.10870613 2.71054165,5.23627152 C2.71478712,5.23894758 3.1401996,5.50196569 3.50770463,5.86957132 C3.88249336,6.2444003 4.22207083,6.7513017 4.22541087,6.75621116 C4.30808692,6.880517 4.4468998,6.95305221 4.59293602,6.95305221 C4.61800644,6.95305221 4.64331831,6.95093953 4.66850946,6.94657333 C4.84086358,6.9166337 4.97931429,6.78776046 5.02152757,6.61796166 C5.02259396,6.61387716 5.19770463,6.12991337 6.12273481,5.15464174 C6.86778511,4.3688671 7.36464628,4.11912867 7.5367992,4.04985301 C7.5384491,4.04957132 7.53963622,4.0494506 7.54186962,4.04898782 C7.54104467,4.04918903 7.54744306,4.04623128 7.55782535,4.04156327 C7.5873827,4.03047675 7.60321771,4.02623128 7.60412314,4.02600995 C7.59563219,4.02812263 7.59122576,4.02864577 7.59122576,4.02864577 L7.59094407,4.02711659 C7.67060201,3.9923681 7.81973682,3.92820311 7.82299638,3.9268349 C8.04754366,3.83458138 8.12056177,3.59305221 8.03281529,3.36677454 Z" id="Shape" fill="#FFFFFF"></path>
+                    </g>
+                    <g id="Group-16" filter="url(#filter-1)" transform="translate(32.000000, 0.000000)">
+                        <g id="cancel" fill="#01B6F5" fill-rule="nonzero">
+                            <circle id="Oval" cx="4.99026316" cy="4.99026316" r="4.99026316"></circle>
+                        </g>
+                        <g id="step" transform="translate(3.000000, 3.000000)">
+                            <g id="medium">
+                                <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-2"></use>
+                            </g>
+                        </g>
+                    </g>
+                </g>
             </g>
         </g>
     </g>

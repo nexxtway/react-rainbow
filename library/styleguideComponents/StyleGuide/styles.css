@@ -59,6 +59,7 @@
     right: 24px;
     width: 64px;
     height: 64px;
+    z-index: 6000;
 }
 
 @media (max-width: 800px) {

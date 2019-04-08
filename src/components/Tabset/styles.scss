@@ -11,6 +11,10 @@
     width: 100%;
 }
 
+.rainbow-tabset_container {
+    width: 100%;
+}
+
 .rainbow-tabset {
     @extend %common-styles;
 }
@@ -40,7 +44,7 @@
 }
 
 @media (max-width: 600px) {
-    .rainbow-tabset {
+    .rainbow-tabset_container {
         border-bottom: solid 1px $color-gray-1;
         background-color: white;
     }
