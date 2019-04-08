@@ -80,6 +80,11 @@ export default class Tabset extends Component {
         this.widthObserver.detach(this.resizeTarget.current);
     }
 
+    getContainerClassName() {
+        const { className } = this.props;
+        return classnames('rainbow-tabset_container', className);
+    }
+
     getInnerContainerClassName() {
         const { fullWidth } = this.props;
         return classnames('rainbow-tabset_inner-container', {
@@ -230,7 +235,6 @@ export default class Tabset extends Component {
             activeTabName,
             fullWidth,
             children,
-            className,
             style,
             id,
         } = this.props;
@@ -247,7 +251,7 @@ export default class Tabset extends Component {
         };
 
         return (
-            <div className={className} style={style} id={id}>
+            <div className={this.getContainerClassName()} style={style} id={id}>
                 <div className="rainbow-tabset-width-observer" ref={this.resizeTarget} />
                 <div className="rainbow-tabset">
                     <ul
