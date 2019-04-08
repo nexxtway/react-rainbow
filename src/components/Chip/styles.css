@@ -1,0 +1,26 @@
+.rainbow-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 12rem;
+  padding: 0 2px 0 0;
+  background-color: #e3e5ed;
+  border: solid 1px #e3e5ed;
+  transition-duration: 0.4s;
+  transition-timing-function: ease-in-out;
+  transition-property: margin, max-height, opacity, top;
+  height: 2rem;
+  line-height: 2rem; }
+
+.rainbow-chip_anchor {
+  text-decoration: none !important;
+  display: flex; }
+
+.rainbow-chip_label {
+  font-size: 0.875rem;
+  margin: 0 0.75rem;
+  line-height: 2rem;
+  color: #576574; }
+
+.rainbow-chip_icon-container {
+  fill: #576574; }
