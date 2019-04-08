@@ -10,6 +10,7 @@ import Header from './header';
 import CloseIcon from './closeIcon';
 import manageTab from './manageTab';
 import { disableScroll, enableScroll } from './scrollController';
+import CounterManager from './counterManager';
 import './styles.css';
 
 /**
@@ -33,6 +34,7 @@ export default class Modal extends Component {
     componentDidMount() {
         const { isOpen } = this.props;
         if (isOpen) {
+            CounterManager.increment();
             disableScroll();
             this.modalTriggerElement = document.activeElement;
             this.modalRef.current.focus();
@@ -43,20 +45,27 @@ export default class Modal extends Component {
         const { isOpen, onOpened } = this.props;
         const { isOpen: prevIsOpen } = prevProps;
         if (isOpen && !prevIsOpen) {
+            CounterManager.increment();
             disableScroll();
             this.modalTriggerElement = document.activeElement;
             this.modalRef.current.focus();
             onOpened();
         } else if (!isOpen && prevIsOpen) {
+            CounterManager.decrement();
             if (this.modalTriggerElement) {
                 this.modalTriggerElement.focus();
             }
-            enableScroll();
+            if (!CounterManager.hasModalsOpen()) {
+                enableScroll();
+            }
         }
     }
 
     componentWillUnmount() {
-        enableScroll();
+        CounterManager.decrement();
+        if (!CounterManager.hasModalsOpen()) {
+            enableScroll();
+        }
     }
 
     getBackDropClassNames() {

@@ -1,6 +1,13 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Modal from './../';
+import CounterManager from '../counterManager';
+import Modal from '../';
+
+jest.mock('../counterManager', () => ({
+    increment: jest.fn(),
+    decrement: jest.fn(),
+    hasModalsOpen: jest.fn(() => false),
+}));
 
 describe('<Modal/>', () => {
     it('should render the children passed', () => {
@@ -131,7 +138,8 @@ describe('<Modal/>', () => {
         );
         expect(document.body.style.overflow).toBe('hidden');
     });
-    it('should set body overflow style to inherit when component unmounts', () => {
+    it('should set body overflow style to inherit when component unmounts and there is not another modal open', () => {
+        CounterManager.hasModalsOpen.mockReturnValue(false);
         const component = mount(
             <Modal isOpen>
                 <p />
@@ -139,5 +147,39 @@ describe('<Modal/>', () => {
         );
         component.unmount();
         expect(document.body.style.overflow).toBe('inherit');
+    });
+    it('should not set body overflow style to inherit when component unmounts and there is another modal open', () => {
+        CounterManager.hasModalsOpen.mockReturnValue(true);
+        const component = mount(
+            <Modal isOpen>
+                <p />
+            </Modal>,
+        );
+        component.unmount();
+        expect(document.body.style.overflow).toBe('hidden');
+    });
+    it('should set body overflow style to inherit when close modal and there is not another modal open', () => {
+        CounterManager.hasModalsOpen.mockReturnValue(false);
+        const component = mount(
+            <Modal isOpen>
+                <p />
+            </Modal>,
+        );
+        component.setProps({
+            isOpen: false,
+        });
+        expect(document.body.style.overflow).toBe('inherit');
+    });
+    it('should not set body overflow style to inherit when close modal and there is another modal open', () => {
+        CounterManager.hasModalsOpen.mockReturnValue(true);
+        const component = mount(
+            <Modal isOpen>
+                <p />
+            </Modal>,
+        );
+        component.setProps({
+            isOpen: false,
+        });
+        expect(document.body.style.overflow).toBe('hidden');
     });
 });
