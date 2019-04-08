@@ -6,7 +6,8 @@ import Input from '../Input';
 import Modal from '../Modal';
 import TimeSelect from './timeSelect';
 import get12HourTime from './helpers/get12HourTime';
-import withReduxForm from './../../libs/hocs/withReduxForm';
+import withReduxForm from '../../libs/hocs/withReduxForm';
+import { ENTER_KEY, SPACE_KEY } from '../../libs/constants';
 import './styles.css';
 import './media-queries.css';
 
@@ -23,7 +24,8 @@ class TimePicker extends Component {
         };
         this.inputRef = React.createRef();
         this.timeSelectRef = React.createRef();
-        this.openModal = this.openModal.bind(this);
+        this.handleKeyDown = this.handleKeyDown.bind(this);
+        this.handleClick = this.handleClick.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.setFocusToHourInput = this.setFocusToHourInput.bind(this);
     }
@@ -60,7 +62,16 @@ class TimePicker extends Component {
         });
     }
 
-    openModal(event) {
+    handleKeyDown(event) {
+        const { keyCode } = event;
+        const { readOnly } = this.props;
+        const shouldOpenModal = (keyCode === ENTER_KEY || keyCode === SPACE_KEY) && !readOnly;
+        if (shouldOpenModal) {
+            this.setState({ isOpen: true });
+        }
+    }
+
+    handleClick(event) {
         const { onClick, readOnly } = this.props;
         if (!readOnly) {
             this.setState({ isOpen: true });
@@ -133,7 +144,8 @@ class TimePicker extends Component {
                     iconPosition="right"
                     required={required}
                     value={this.getTriggerInputValue()}
-                    onClick={this.openModal}
+                    onKeyDown={this.handleKeyDown}
+                    onClick={this.handleClick}
                     onFocus={onFocus}
                     onBlur={onBlur}
                     hideLabel={hideLabel}
