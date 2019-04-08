@@ -1,0 +1,43 @@
+.rainbow-lookup_input-container {
+  width: 100%;
+  position: relative; }
+
+.rainbow-lookup_input:focus {
+  z-index: 0; }
+
+.rainbow-lookup_menu-container {
+  width: 100%;
+  position: relative;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0 2px 4px 0 #e3e5ed;
+  border: solid 1px #e3e5ed;
+  z-index: 5;
+  margin-top: -41px;
+  padding: 12px 0 8px 0;
+  min-height: 400px; }
+
+.rainbow-lookup_menu-input-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 0 14px 8px 14px; }
+
+.rainbow-lookup_menu-input {
+  border: none;
+  background-color: transparent;
+  width: 100%;
+  border-bottom: 1px solid #e3e5ed;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 28px 8px 4px;
+  font-size: 16px;
+  color: #061c3f;
+  caret-color: #009acf; }
+  .rainbow-lookup_menu-input:focus {
+    outline: none; }
+
+.rainbow-lookup_menu-input-icon {
+  position: absolute;
+  right: 0;
+  top: 2px; }

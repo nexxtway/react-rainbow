@@ -1,20 +1,36 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import withReduxForm from '../../libs/hocs/withReduxForm';
 import SearchIcon from './icons/searchIcon';
 import Input from '../Input';
-import withReduxForm from './../../libs/hocs/withReduxForm';
+import RenderIf from '../RenderIf';
+import Menu from './menu';
 import './styles.css';
 
 /**
- * A Lookups is
+ * A Lookup is
  * @category Form
  */
-class Lookups extends Component {
+class Lookup extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            value: '',
+        };
+        this.handleChange = this.handleChange.bind(this);
+    }
 
     getContainerClassName() {
         const { className } = this.props;
-        return classnames('rainbow-lookups_input-container', className);
+        return classnames('rainbow-lookup_input-container', className);
+    }
+
+    handleChange(event) {
+        const { value } = event.target;
+        this.setState({
+            value,
+        });
     }
 
     /**
@@ -43,7 +59,7 @@ class Lookups extends Component {
 
     render() {
         const {
-            value,
+            // value,
             placeholder,
             label,
             required,
@@ -59,12 +75,13 @@ class Lookups extends Component {
             onBlur,
             id,
         } = this.props;
+        const { value } = this.state;
 
         return (
             <div id={id} className={this.getContainerClassName()} style={style}>
                 <Input
                     ref={this.inputRef}
-                    className="rainbow-lookups_input"
+                    className="rainbow-lookup_input"
                     label={label}
                     placeholder={placeholder}
                     icon={<SearchIcon />}
@@ -74,6 +91,7 @@ class Lookups extends Component {
                     onClick={this.openModal}
                     onFocus={onFocus}
                     onBlur={onBlur}
+                    onChange={this.handleChange}
                     hideLabel={hideLabel}
                     name={name}
                     bottomHelpText={bottomHelpText}
@@ -82,39 +100,44 @@ class Lookups extends Component {
                     disabled={disabled}
                     tabIndex={tabIndex}
                     autoComplete="off" />
+
+                <RenderIf isTrue={value}>
+                    <Menu />
+                </RenderIf>
+
             </div>
         );
     }
 }
 
-Lookups.propTypes = {
-    /** Sets the date for the Lookups programmatically. */
+Lookup.propTypes = {
+    /** Sets the date for the Lookup programmatically. */
     value: PropTypes.object,
-    /** Text that is displayed when the Lookups is empty,
+    /** Text that is displayed when the Lookup is empty,
      * to prompt the user for a valid entry. */
     placeholder: PropTypes.string,
-    /** Text label for the Lookups. */
+    /** Text label for the Lookup. */
     label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]).isRequired,
-    /** A boolean to hide the Lookups label. */
+    /** A boolean to hide the Lookup label. */
     hideLabel: PropTypes.bool,
-    /** Specifies that the Lookups field must be filled out before submitting the form.
+    /** Specifies that the Lookup field must be filled out before submitting the form.
     * This value defaults to false. */
     required: PropTypes.bool,
-    /** The name of the Lookups. */
+    /** The name of the Lookup. */
     name: PropTypes.string,
-    /** Shows the help message below the Lookups. */
+    /** Shows the help message below the Lookup. */
     bottomHelpText: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
-    /** Specifies that the Lookups text will be centered. This value defaults to false. */
+    /** Specifies that the Lookup text will be centered. This value defaults to false. */
     isCentered: PropTypes.bool,
-    /** Specifies that the Lookups must be filled out before submitting the form. */
+    /** Specifies that the Lookup must be filled out before submitting the form. */
     error: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
-    /** Specifies that the Lookups element should be disabled. This value defaults to false. */
+    /** Specifies that the Lookup element should be disabled. This value defaults to false. */
     disabled: PropTypes.bool,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
     tabIndex: PropTypes.oneOfType([
@@ -133,7 +156,7 @@ Lookups.propTypes = {
     style: PropTypes.object,
 };
 
-Lookups.defaultProps = {
+Lookup.defaultProps = {
     value: undefined,
     placeholder: null,
     hideLabel: false,
@@ -152,4 +175,4 @@ Lookups.defaultProps = {
     style: undefined,
 };
 
-export default withReduxForm(Lookups);
+export default withReduxForm(Lookup);
