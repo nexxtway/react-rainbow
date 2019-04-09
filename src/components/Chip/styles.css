@@ -13,15 +13,27 @@
   border: 1px solid #e3e5ed; }
   .rainbow-chip .rainbow-chip_label {
     font-size: 0.875rem;
-    margin: 0 0.75rem;
+    margin: 0 0.5rem;
     line-height: 2rem;
     color: #576574; }
-  .rainbow-chip .rainbow-chip_icon-container {
+  .rainbow-chip .rainbow-chip_label--with-icon {
+    margin: 0 0.5rem 0 2px; }
+  .rainbow-chip .rainbow-chip_button-container {
     fill: #576574; }
 
 .rainbow-chip_anchor {
   text-decoration: none !important;
-  display: flex; }
+  display: flex;
+  align-items: center; }
+
+.rainbow-chip_icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12rem;
+  margin-left: -1px; }
 
 .rainbow-chip--neutral {
   background-color: white;
@@ -32,7 +44,7 @@
   border: 1px solid #01b6f5; }
   .rainbow-chip--outline-brand .rainbow-chip_label {
     color: #01b6f5; }
-  .rainbow-chip--outline-brand .rainbow-chip_icon-container {
+  .rainbow-chip--outline-brand .rainbow-chip_button-container {
     fill: #01b6f5; }
 
 .rainbow-chip--brand {
@@ -40,5 +52,5 @@
   border: 1px solid #01b6f5; }
   .rainbow-chip--brand .rainbow-chip_label {
     color: white; }
-  .rainbow-chip--brand .rainbow-chip_icon-container {
+  .rainbow-chip--brand .rainbow-chip_button-container {
     fill: white; }

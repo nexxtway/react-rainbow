@@ -24,25 +24,44 @@
 
 ##### Chip with icon
 
+    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+    const { faStar } = require('@fortawesome/free-solid-svg-icons');
+
     <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
         <Chip
             className="rainbow-m-horizontal_medium"
-            label="Chip base" />
+            label="Chip base"
+            icon={
+                <FontAwesomeIcon icon={faStar} className="rainbow-color_gray-4" />
+            }
+        />
 
         <Chip
             className="rainbow-m-horizontal_medium"
             label="Chip Neutral"
-            variant="neutral" />
+            variant="neutral"
+            icon={
+                <FontAwesomeIcon icon={faStar} className="rainbow-color_gray-4" />
+            }
+        />
 
         <Chip
             className="rainbow-m-horizontal_medium"
             label="Chip Neutral"
-            variant="outline-brand" />
+            variant="outline-brand"
+            icon={
+                <FontAwesomeIcon icon={faStar} className="rainbow-color_brand" />
+            }
+        />
 
         <Chip
             className="rainbow-m-horizontal_medium"
             label="Chip Brand"
-            variant="brand" />
+            variant="brand"
+            icon={
+                <FontAwesomeIcon icon={faStar} className="rainbow-color_white" />
+            }
+        />
     </div>
 
 

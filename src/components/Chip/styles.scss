@@ -26,12 +26,16 @@
 
     .rainbow-chip_label {
         font-size: $font-size-text-medium;
-        margin: 0 $margin-small;
+        margin: 0 $margin-x-small;
         line-height: 2rem;
         color: #576574;
     }
 
-    .rainbow-chip_icon-container {
+    .rainbow-chip_label--with-icon {
+        margin: 0 $margin-x-small 0 2px;
+    }
+
+    .rainbow-chip_button-container {
         fill: #576574;
     }
 }
@@ -39,6 +43,17 @@
 .rainbow-chip_anchor {
     text-decoration: none !important;
     display: flex;
+    align-items: center;
+}
+
+.rainbow-chip_icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $border-radius-2;
+    margin-left: -1px;
 }
 
 .rainbow-chip--neutral {
@@ -52,7 +67,7 @@
         color: $color-brand;
     }
 
-    .rainbow-chip_icon-container {
+    .rainbow-chip_button-container {
         fill: $color-brand;
     }
 }
@@ -64,7 +79,7 @@
         color: white;
     }
 
-    .rainbow-chip_icon-container {
+    .rainbow-chip_button-container {
         fill: white;
     }
 }

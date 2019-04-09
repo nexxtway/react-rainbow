@@ -8,6 +8,7 @@ import './styles.css';
 
 /**
 * Chips are compact elements that represent an input, attribute, or action.
+*  Allow users to enter information, make selections, filter content, or trigger actions.
 */
 export default function Chip(props) {
     const {
@@ -26,23 +27,36 @@ export default function Chip(props) {
         return `rainbow-chip--${variant}`;
     }
 
-    function getClassName() {
+    function getLabelPaddingClassNames() {
+        if (icon) {
+            return 'rainbow-chip_label--with-icon';
+        }
+        return null;
+    }
+
+    function getContainerClassName() {
         return classnames('rainbow-chip', getVariantClassNames(), className);
     }
 
+    function getLabelClassName() {
+        return classnames('rainbow-chip_label', getLabelPaddingClassNames(), className);
+    }
+
     return (
-        <span className={getClassName()} style={style}>
+        <span className={getContainerClassName()} style={style}>
             <a className="rainbow-chip_anchor">
                 <RenderIf isTrue={!!icon}>
-                    {icon}
+                    <span className="rainbow-chip_icon">
+                        {icon}
+                    </span>
                 </RenderIf>
-                <span className="rainbow-chip_label">
+                <span className={getLabelClassName()}>
                     {label}
                 </span>
             </a>
             <RenderIf isTrue={!!onDelete}>
                 <ButtonIcon
-                    className="rainbow-chip_icon-container"
+                    className="rainbow-chip_button-container"
                     icon={<CloseIcon />}
                     size="small"
                     title="Close"
