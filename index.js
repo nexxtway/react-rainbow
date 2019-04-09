@@ -22,6 +22,7 @@ import Dataset from './Dataset';
 import DatePicker from './DatePicker';
 import GMap from './GMap';
 import Input from './Input';
+import Lookup from './Lookup';
 import MapMarker from './MapMarker';
 import MenuDivider from './MenuDivider';
 import MenuItem from './MenuItem';
@@ -75,6 +76,7 @@ export {
     DatePicker,
     GMap,
     Input,
+    Lookup,
     MapMarker,
     MenuDivider,
     MenuItem,
