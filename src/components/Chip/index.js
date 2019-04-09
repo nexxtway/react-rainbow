@@ -20,27 +20,23 @@ export default function Chip(props) {
         style,
     } = props;
 
-    function getVariantClassNames() {
+    const getVariantClassNames = () => {
         if (variant === 'base') {
             return null;
         }
         return `rainbow-chip--${variant}`;
-    }
+    };
 
-    function getLabelPaddingClassNames() {
+    const getLabelPaddingClassNames = () => {
         if (icon) {
             return 'rainbow-chip_label--with-icon';
         }
         return null;
-    }
+    };
 
-    function getContainerClassName() {
-        return classnames('rainbow-chip', getVariantClassNames(), className);
-    }
+    const getContainerClassName = () => classnames('rainbow-chip', getVariantClassNames(), className);
 
-    function getLabelClassName() {
-        return classnames('rainbow-chip_label', getLabelPaddingClassNames(), className);
-    }
+    const getLabelClassName = () => classnames('rainbow-chip_label', getLabelPaddingClassNames(), className);
 
     return (
         <span className={getContainerClassName()} style={style}>
@@ -93,7 +89,7 @@ Chip.defaultProps = {
     icon: null,
     label: null,
     variant: 'base',
-    onDelete: () => {},
+    onDelete: undefined,
     className: undefined,
     style: undefined,
 };
