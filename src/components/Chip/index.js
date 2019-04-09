@@ -11,19 +11,27 @@ import './styles.css';
 */
 export default function Chip(props) {
     const {
-        className,
-        style,
         icon,
         label,
         onDelete,
+        variant,
+        className,
+        style,
     } = props;
 
+    function getVariantClassNames() {
+        if (variant === 'base') {
+            return null;
+        }
+        return `rainbow-chip--${variant}`;
+    }
+
     function getClassName() {
-        return classnames('rainbow-chip', className);
+        return classnames('rainbow-chip', getVariantClassNames(), className);
     }
 
     return (
-        <div className={getClassName()} style={style}>
+        <span className={getClassName()} style={style}>
             <a className="rainbow-chip_anchor">
                 <RenderIf isTrue={!!icon}>
                     {icon}
@@ -32,7 +40,7 @@ export default function Chip(props) {
                     {label}
                 </span>
             </a>
-            <RenderIf isTrue={!onDelete}>
+            <RenderIf isTrue={!!onDelete}>
                 <ButtonIcon
                     className="rainbow-chip_icon-container"
                     icon={<CloseIcon />}
@@ -40,7 +48,7 @@ export default function Chip(props) {
                     title="Close"
                     onClick={onDelete} />
             </RenderIf>
-        </div>
+        </span>
     );
 }
 
@@ -53,6 +61,11 @@ Chip.propTypes = {
     label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
+        /** The variant changes the appearance of the badge. Accepted variants include base,
+    * neutral, brand and outline-brand. This value defaults to default. */
+    variant: PropTypes.oneOf([
+        'base', 'neutral', 'outline-brand', 'brand',
+    ]),
     /** The action triggered when the close button is clicked. */
     onDelete: PropTypes.func,
     /** A CSS class for the outer element, in addition to the component's base classes. */
@@ -64,6 +77,7 @@ Chip.propTypes = {
 Chip.defaultProps = {
     icon: null,
     label: null,
+    variant: 'base',
     onDelete: () => {},
     className: undefined,
     style: undefined,

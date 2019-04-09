@@ -5,19 +5,35 @@
 @import './../../styles/border-radius.scss';
 @import './../../styles/shadows.scss';
 
+@mixin variants-common-styles($background-color, $border-color) {
+    background-color: $background-color;
+    border: 1px solid $border-color;
+}
+
 .rainbow-chip {
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
     border-radius: $border-radius-2;
     padding: 0 2px 0 0;
-    background-color: $color-gray-2;
-    border: solid 1px $color-gray-2;
     transition-duration: 0.4s;
     transition-timing-function: ease-in-out;
     transition-property: margin, max-height, opacity, top;
     height: 2rem;
     line-height: 2rem;
+
+    @include variants-common-styles($color-gray-2, $color-gray-2);
+
+    .rainbow-chip_label {
+        font-size: $font-size-text-medium;
+        margin: 0 $margin-small;
+        line-height: 2rem;
+        color: #576574;
+    }
+
+    .rainbow-chip_icon-container {
+        fill: #576574;
+    }
 }
 
 .rainbow-chip_anchor {
@@ -25,13 +41,30 @@
     display: flex;
 }
 
-.rainbow-chip_label {
-    font-size: $font-size-text-medium;
-    margin: 0 $margin-small;
-    line-height: 2rem;
-    color: #576574;
+.rainbow-chip--neutral {
+    @include variants-common-styles(white, $color-gray-2);
 }
 
-.rainbow-chip_icon-container {
-    fill: #576574;
+.rainbow-chip--outline-brand {
+    @include variants-common-styles(transparent, $color-brand);
+
+    .rainbow-chip_label {
+        color: $color-brand;
+    }
+
+    .rainbow-chip_icon-container {
+        fill: $color-brand;
+    }
+}
+
+.rainbow-chip--brand {
+    @include variants-common-styles($color-brand, $color-brand);
+
+    .rainbow-chip_label {
+        color: white;
+    }
+
+    .rainbow-chip_icon-container {
+        fill: white;
+    }
 }
