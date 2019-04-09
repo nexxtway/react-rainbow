@@ -9,5 +9,17 @@
   .rainbow-time-picker_time-select-content {
     width: 100%;
     margin: 56px 0 40px 0; }
-  .rainbow-time-picker_time-select-value, .rainbow-time-picker_select-ampm {
-    width: 25%; } }
+  .rainbow-time-picker_time-select-value {
+    width: 24%;
+    font-size: 34px;
+    font-weight: 100; }
+    .rainbow-time-picker_time-select-value::placeholder {
+      font-size: 34px;
+      font-weight: 100; }
+  .rainbow-time-picker_select-ampm {
+    width: 24%;
+    font-size: 34px; }
+  .rainbow-time-picker_dots {
+    margin: 0; }
+  .rainbow-time-picker_icon-button-container {
+    margin-left: 0; } }

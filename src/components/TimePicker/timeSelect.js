@@ -207,7 +207,7 @@ export default class TimeSelect extends Component {
             this.resetState();
         }
         if (keyCode === ENTER_KEY) {
-            this.handleChangeTime();
+            this.handleChangeTime(event);
         }
     }
 
@@ -314,7 +314,9 @@ export default class TimeSelect extends Component {
         });
     }
 
-    handleChangeTime() {
+    handleChangeTime(event) {
+        event.preventDefault();
+        event.stopPropagation();
         const { hour, minutes, ampm } = this.state;
         const { onChange, onCloseModal } = this.props;
         const currentHour = hour || this.prevHour;
