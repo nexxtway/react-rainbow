@@ -9,7 +9,8 @@ import Menu from './menu';
 import './styles.css';
 
 /**
- * A Lookup is
+ * A Lookup is an autocomplete text input that will search against a database object,
+ * it is enhanced by a panel of suggested options.
  * @category Form
  */
 class Lookup extends Component {
