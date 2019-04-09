@@ -60,7 +60,8 @@ export default function Chip(props) {
                     icon={<CloseIcon />}
                     size="small"
                     title="Close"
-                    onClick={onDelete} />
+                    onClick={onDelete}
+                    assistiveText="Remove" />
             </RenderIf>
         </span>
     );
