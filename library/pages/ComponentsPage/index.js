@@ -110,7 +110,7 @@ export default class ComponentsPage extends Component {
             <div>
                 <SectionHeading />
                 <div className="react-rainbow-components-page_container">
-                    <h1 className="react-rainbow-components-page_title">More than 40 components</h1>
+                    <h1 className="react-rainbow-components-page_title">More than 50 components</h1>
                     <Input
                         className="react-rainbow-components-page_search"
                         label="Find Components"
@@ -121,7 +121,7 @@ export default class ComponentsPage extends Component {
                         aria-label="Find Components"
                         onChange={this.handleOnChange}
                         icon={<SearchIcon />} />
-                        {this.renderCards()}
+                    {this.renderCards()}
                 </div>
             </div>
         );
