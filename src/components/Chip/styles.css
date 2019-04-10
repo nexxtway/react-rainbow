@@ -1,8 +1,8 @@
 .rainbow-chip {
   display: inline-flex;
   align-items: center;
-  user-select: none;
   justify-content: space-between;
+  user-select: none;
   border-radius: 12rem;
   padding: 0 0.75rem;
   transition-duration: 0.4s;
@@ -39,3 +39,8 @@
   color: white; }
   .rainbow-chip--brand .rainbow-chip_button-container {
     fill: white; }
+
+.rainbow-chip_content--truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }

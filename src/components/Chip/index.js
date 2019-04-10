@@ -31,7 +31,9 @@ export default function Chip(props) {
 
     return (
         <span className={getContainerClassName()} style={style} title={title}>
-            {label}
+            <span className="rainbow-chip_content--truncate">
+                {label}
+            </span>
             <RenderIf isTrue={!!onDelete}>
                 <ButtonIcon
                     className="rainbow-chip_button-container"
