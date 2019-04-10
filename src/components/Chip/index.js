@@ -7,12 +7,10 @@ import RenderIf from '../RenderIf';
 import './styles.css';
 
 /**
-* Chips are compact elements that represent an input, attribute, or action.
-*  Allow users to enter information, make selections, filter content, or trigger actions.
+* A Chip displays a label that can be removed from view.
 */
 export default function Chip(props) {
     const {
-        icon,
         label,
         onDelete,
         variant,
@@ -27,29 +25,12 @@ export default function Chip(props) {
         return `rainbow-chip--${variant}`;
     };
 
-    const getLabelPaddingClassNames = () => {
-        if (icon) {
-            return 'rainbow-chip_label--with-icon';
-        }
-        return null;
-    };
-
     const getContainerClassName = () => classnames('rainbow-chip', getVariantClassNames(), className);
 
-    const getLabelClassName = () => classnames('rainbow-chip_label', getLabelPaddingClassNames(), className);
 
     return (
         <span className={getContainerClassName()} style={style}>
-            <a className="rainbow-chip_anchor">
-                <RenderIf isTrue={!!icon}>
-                    <span className="rainbow-chip_icon">
-                        {icon}
-                    </span>
-                </RenderIf>
-                <span className={getLabelClassName()}>
-                    {label}
-                </span>
-            </a>
+            {label}
             <RenderIf isTrue={!!onDelete}>
                 <ButtonIcon
                     className="rainbow-chip_button-container"
@@ -64,16 +45,12 @@ export default function Chip(props) {
 }
 
 Chip.propTypes = {
-    /** The icon to show if it is passed. It is displayed in the left of the component.
-    * It must be one of this values info, success, warning, error,
-    * or any svg icon. */
-    icon: PropTypes.node,
-    /** The title that appears in the notification. */
+    /** The title that appears in the Chip. */
     label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
-        /** The variant changes the appearance of the badge. Accepted variants include base,
-    * neutral, brand and outline-brand. This value defaults to default. */
+    /** The variant changes the appearance of the Chip. Accepted variants include base,
+    * neutral, outline-brand and brand. This value defaults to base. */
     variant: PropTypes.oneOf([
         'base', 'neutral', 'outline-brand', 'brand',
     ]),
@@ -86,7 +63,6 @@ Chip.propTypes = {
 };
 
 Chip.defaultProps = {
-    icon: null,
     label: null,
     variant: 'base',
     onDelete: undefined,

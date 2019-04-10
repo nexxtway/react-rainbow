@@ -5,67 +5,43 @@
 @import './../../styles/border-radius.scss';
 @import './../../styles/shadows.scss';
 
-@mixin variants-common-styles($background-color, $border-color) {
+@mixin variants-common-styles($background-color, $border-color, $color) {
     background-color: $background-color;
     border: 1px solid $border-color;
+    color: $color;
 }
 
 .rainbow-chip {
     display: inline-flex;
     align-items: center;
+    user-select: none;
     justify-content: space-between;
     border-radius: $border-radius-2;
-    padding: 0 2px 0 0;
+    padding: 0 $padding-small;
     transition-duration: 0.4s;
     transition-timing-function: ease-in-out;
     transition-property: margin, max-height, opacity, top;
     height: 2rem;
     line-height: 2rem;
+    font-size: $font-size-text-medium;
+    letter-spacing: 0.5;
 
-    @include variants-common-styles($color-gray-2, $color-gray-2);
-
-    .rainbow-chip_label {
-        font-size: $font-size-text-medium;
-        margin: 0 $margin-x-small;
-        line-height: 2rem;
-        color: #576574;
-    }
-
-    .rainbow-chip_label--with-icon {
-        margin: 0 $margin-x-small 0 2px;
-    }
+    @include variants-common-styles($color-gray-2, $color-gray-2, $color-gray-4);
 
     .rainbow-chip_button-container {
-        fill: #576574;
+        margin-right: -0.6rem;
+        margin-left: $margin-xx-small;
+        fill: $color-gray-4;
+        flex-shrink: 0;
     }
-}
-
-.rainbow-chip_anchor {
-    text-decoration: none !important;
-    display: flex;
-    align-items: center;
-}
-
-.rainbow-chip_icon {
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: $border-radius-2;
-    margin-left: -1px;
 }
 
 .rainbow-chip--neutral {
-    @include variants-common-styles(white, $color-gray-2);
+    @include variants-common-styles(white, $color-gray-2, $color-gray-4);
 }
 
 .rainbow-chip--outline-brand {
-    @include variants-common-styles(transparent, $color-brand);
-
-    .rainbow-chip_label {
-        color: $color-brand;
-    }
+    @include variants-common-styles(transparent, $color-brand, $color-brand);
 
     .rainbow-chip_button-container {
         fill: $color-brand;
@@ -73,11 +49,7 @@
 }
 
 .rainbow-chip--brand {
-    @include variants-common-styles($color-brand, $color-brand);
-
-    .rainbow-chip_label {
-        color: white;
-    }
+    @include variants-common-styles($color-brand, $color-brand, white);
 
     .rainbow-chip_button-container {
         fill: white;

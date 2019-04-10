@@ -22,49 +22,6 @@
     </div>
 
 
-##### Chip with icon
-
-    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-    const { faStar } = require('@fortawesome/free-solid-svg-icons');
-
-    <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
-        <Chip
-            className="rainbow-m-horizontal_medium"
-            label="Chip base"
-            icon={
-                <FontAwesomeIcon icon={faStar} className="rainbow-color_gray-4" />
-            }
-        />
-
-        <Chip
-            className="rainbow-m-horizontal_medium"
-            label="Chip Neutral"
-            variant="neutral"
-            icon={
-                <FontAwesomeIcon icon={faStar} className="rainbow-color_gray-4" />
-            }
-        />
-
-        <Chip
-            className="rainbow-m-horizontal_medium"
-            label="Chip Neutral"
-            variant="outline-brand"
-            icon={
-                <FontAwesomeIcon icon={faStar} className="rainbow-color_brand" />
-            }
-        />
-
-        <Chip
-            className="rainbow-m-horizontal_medium"
-            label="Chip Brand"
-            variant="brand"
-            icon={
-                <FontAwesomeIcon icon={faStar} className="rainbow-color_white" />
-            }
-        />
-    </div>
-
-
 ##### Deletable Chip
 
     <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
@@ -81,7 +38,7 @@
 
         <Chip
             className="rainbow-m-horizontal_medium"
-            label="Chip Neutral"
+            label="Chip Outline Brand"
             variant="outline-brand"
             onDelete />
 
@@ -90,4 +47,47 @@
             label="Chip Brand"
             variant="brand"
             onDelete />
+
+    </div>
+
+
+##### Chip with icon
+
+    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+    const { faStar } = require('@fortawesome/free-solid-svg-icons');
+
+    <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
+        <Chip
+            className="rainbow-m-horizontal_medium"
+            label={
+                <span><FontAwesomeIcon icon={faStar} className="rainbow-color_gray-4 rainbow-m-right_xx-small" /> Chip base </span>
+            }
+        />
+
+        <Chip
+            className="rainbow-m-horizontal_medium"
+            variant="neutral"
+            onDelete
+            label={
+                <span><FontAwesomeIcon icon={faStar} className="rainbow-color_gray-4 rainbow-m-right_xx-small" /> Chip Neutral </span>
+            }
+        />
+
+        <Chip
+            className="rainbow-m-horizontal_medium"
+            variant="outline-brand"
+            label={
+                <span><FontAwesomeIcon icon={faStar} className="rainbow-color_brand rainbow-m-right_xx-small" /> Chip Outline Brand </span>
+            }
+        />
+
+        <Chip
+            className="rainbow-m-horizontal_medium"
+            variant="brand"
+            onDelete
+            label={
+                <span><FontAwesomeIcon icon={faStar} className="rainbow-color_white rainbow-m-right_xx-small" /> Chip Brand </span>
+            }
+        />
+
     </div>
