@@ -14,6 +14,7 @@ export default function Chip(props) {
         label,
         onDelete,
         variant,
+        title,
         className,
         style,
     } = props;
@@ -29,7 +30,7 @@ export default function Chip(props) {
 
 
     return (
-        <span className={getContainerClassName()} style={style}>
+        <span className={getContainerClassName()} style={style} title={title}>
             {label}
             <RenderIf isTrue={!!onDelete}>
                 <ButtonIcon
@@ -45,10 +46,12 @@ export default function Chip(props) {
 }
 
 Chip.propTypes = {
-    /** The title that appears in the Chip. */
+    /** The content to be displayed inside the Chip. */
     label: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
+    /** Displays tooltip text when the mouse moves over the element. */
+    title: PropTypes.string,
     /** The variant changes the appearance of the Chip. Accepted variants include base,
     * neutral, outline-brand and brand. This value defaults to base. */
     variant: PropTypes.oneOf([
@@ -64,6 +67,7 @@ Chip.propTypes = {
 
 Chip.defaultProps = {
     label: null,
+    title: undefined,
     variant: 'base',
     onDelete: undefined,
     className: undefined,
