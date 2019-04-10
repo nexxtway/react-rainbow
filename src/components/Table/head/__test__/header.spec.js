@@ -72,12 +72,6 @@ describe('<Header />', () => {
             );
         expect(component.find('ResizeBar').prop('isResizable')).toBe(false);
     });
-    it('should set isResizable to false in ResizeBar component when width is passed', () => {
-        const component = mount(
-            <Header sortDirection="asc" width={250} />,
-            );
-        expect(component.find('ResizeBar').prop('isResizable')).toBe(false);
-    });
     it('should call onSort with the right data when the header is clicked and sortable is passed', () => {
         const onSortMockFn = jest.fn();
         const component = mount(
@@ -107,40 +101,13 @@ describe('<Header />', () => {
         const component = mount(
             <Header
                 sortDirection="asc"
+                colIndex={2}
                 onResize={onResizeMockFn} />,
         );
         const resizeBar = component.find('.rainbow-table_header-resize-bar');
         resizeBar.simulate('mousedown', { clientX: 100 });
         eventMap.mousemove({ clientX: 133, preventDefault });
         eventMap.mouseup({ preventDefault });
-        expect(onResizeMockFn).toHaveBeenCalledWith(33);
-    });
-    it('should set the right state when resize the column', () => {
-        const component = mount(
-            <Header sortDirection="asc" />,
-        );
-        const resizeBar = component.find('.rainbow-table_header-resize-bar');
-        resizeBar.simulate('mousedown', { clientX: 50 });
-        eventMap.mousemove({ clientX: 133, preventDefault });
-        eventMap.mouseup({ preventDefault });
-        expect(component.state()).toEqual({ width: 83 });
-    });
-    it('should set the right initial state when width is passed', () => {
-        const component = mount(
-            <Header sortDirection="asc" width={53} />,
-        );
-        expect(component.state()).toEqual({ width: 53 });
-    });
-    it('should set the right initial state when defaultWidth is passed', () => {
-        const component = mount(
-            <Header sortDirection="asc" defaultWidth={105} />,
-        );
-        expect(component.state()).toEqual({ width: 105 });
-    });
-    it('should set the right initial state when defaultWidth and width are not passed', () => {
-        const component = mount(
-            <Header sortDirection="asc" />,
-        );
-        expect(component.state()).toEqual({ width: 0 });
+        expect(onResizeMockFn).toHaveBeenCalledWith(33, 2);
     });
 });
