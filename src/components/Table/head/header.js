@@ -8,27 +8,9 @@ import RenderIf from '../../RenderIf';
 export default class Header extends Component {
     constructor(props) {
         super(props);
-        const { width, defaultWidth } = props;
-        this.state = {
-            width: defaultWidth || width,
-        };
         this.handleSort = this.handleSort.bind(this);
         this.handleResize = this.handleResize.bind(this);
         this.headerRef = React.createRef();
-    }
-
-    componentDidMount() {
-        const { width, defaultWidth } = this.props;
-        const hasWidthSet = width || defaultWidth;
-        if (!hasWidthSet && this.headerRef.current) {
-            this.setInitialWidth();
-        }
-    }
-
-    setInitialWidth() {
-        this.setState({
-            width: this.headerRef.current.getBoundingClientRect().width,
-        });
     }
 
     getClassName() {
@@ -56,14 +38,13 @@ export default class Header extends Component {
     }
 
     isResizable() {
-        const { resizeColumnDisabled, width } = this.props;
-        return !resizeColumnDisabled && width === undefined;
+        const { resizeColumnDisabled } = this.props;
+        return !resizeColumnDisabled;
     }
 
-    handleResize(width, newXPosition) {
-        const { onResize } = this.props;
-        onResize(newXPosition);
-        this.setState({ width });
+    handleResize(widthDelta) {
+        const { onResize, colIndex } = this.props;
+        onResize(widthDelta, colIndex);
     }
 
     handleSort(event) {
@@ -80,10 +61,10 @@ export default class Header extends Component {
             minColumnWidth,
             maxColumnWidth,
             sortable,
+            computedWidth,
         } = this.props;
-        const { width } = this.state;
         const headerStyles = {
-            width,
+            width: computedWidth,
         };
 
         return (
@@ -108,7 +89,7 @@ export default class Header extends Component {
                         isResizable={this.isResizable()}
                         ariaLabel={this.getHeaderContent()}
                         onResize={this.handleResize}
-                        headerWidth={width} />
+                        headerWidth={computedWidth} />
                 </div>
             </th>
         );
@@ -117,17 +98,17 @@ export default class Header extends Component {
 
 Header.propTypes = {
     content: PropTypes.any,
+    colIndex: PropTypes.number.isRequired,
     isSelected: PropTypes.bool,
     sortable: PropTypes.bool,
     sortDirection: PropTypes.string,
     onSort: PropTypes.func,
-    width: PropTypes.number,
-    defaultWidth: PropTypes.number,
     minColumnWidth: PropTypes.number,
     maxColumnWidth: PropTypes.number,
     onResize: PropTypes.func,
     resizeColumnDisabled: PropTypes.bool,
     field: PropTypes.string,
+    computedWidth: PropTypes.number,
 };
 
 Header.defaultProps = {
@@ -136,11 +117,10 @@ Header.defaultProps = {
     sortable: false,
     sortDirection: undefined,
     onSort: () => {},
-    width: undefined,
-    defaultWidth: undefined,
     minColumnWidth: undefined,
     maxColumnWidth: undefined,
     onResize: () => {},
     resizeColumnDisabled: false,
     field: undefined,
+    computedWidth: 0,
 };

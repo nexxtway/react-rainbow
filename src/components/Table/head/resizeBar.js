@@ -17,11 +17,10 @@ export default class ResizeBar extends Component {
 
     handleMouseUp(event) {
         event.preventDefault();
-        const { headerWidth, onResize } = this.props;
+        const { onResize } = this.props;
         document.removeEventListener('mouseup', this.handleMouseUp);
         document.removeEventListener('mousemove', this.handleMouseMove);
-        const newWidth = headerWidth + this.newXPosition;
-        onResize(newWidth, this.newXPosition);
+        onResize(this.newXPosition);
         this.setState({
             resizeBarStyle: { willChange: 'transform' },
         });
@@ -98,7 +97,7 @@ ResizeBar.propTypes = {
     isResizable: PropTypes.bool.isRequired,
     ariaLabel: PropTypes.string,
     onResize: PropTypes.func,
-    headerWidth: PropTypes.number,
+    headerWidth: PropTypes.number.isRequired,
 };
 
 ResizeBar.defaultProps = {
@@ -106,5 +105,4 @@ ResizeBar.defaultProps = {
     maxColumnWidth: undefined,
     ariaLabel: undefined,
     onResize: () => {},
-    headerWidth: 0,
 };
