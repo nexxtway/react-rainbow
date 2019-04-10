@@ -6,7 +6,8 @@ import Input from '../Input';
 import Modal from './../Modal';
 import Calendar from './../Calendar';
 import formatDate from './helpers/format-date';
-import withReduxForm from './../../libs/hocs/withReduxForm';
+import withReduxForm from '../../libs/hocs/withReduxForm';
+import { ENTER_KEY, SPACE_KEY } from '../../libs/constants';
 import './styles.css';
 import './media-queries.css';
 
@@ -22,6 +23,7 @@ class DatePicker extends Component {
         };
         this.inputRef = React.createRef();
         this.handleChange = this.handleChange.bind(this);
+        this.handleKeyDown = this.handleKeyDown.bind(this);
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
     }
@@ -37,6 +39,15 @@ class DatePicker extends Component {
             isOpen: false,
         });
         onChange(...args);
+    }
+
+    handleKeyDown(event) {
+        const { keyCode } = event;
+        const { readOnly } = this.props;
+        const shouldOpenModal = (keyCode === ENTER_KEY || keyCode === SPACE_KEY) && !readOnly;
+        if (shouldOpenModal) {
+            this.setState({ isOpen: true });
+        }
     }
 
     openModal(event) {
@@ -114,6 +125,7 @@ class DatePicker extends Component {
                     iconPosition="right"
                     required={required}
                     value={formattedDate}
+                    onKeyDown={this.handleKeyDown}
                     onClick={this.openModal}
                     onFocus={onFocus}
                     onBlur={onBlur}

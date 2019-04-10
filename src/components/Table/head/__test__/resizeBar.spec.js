@@ -120,7 +120,7 @@ describe('<ResizeBar />', () => {
         eventMap.mousemove({ clientX: 150, preventDefault });
         eventMap.mouseup({ preventDefault });
 
-        expect(onResizeMock).toHaveBeenCalledWith(250, 50);
+        expect(onResizeMock).toHaveBeenCalledWith(50);
     });
     it('should set the right state when handle onMouseUp event', () => {
         const component = mount(

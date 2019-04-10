@@ -59,6 +59,7 @@ describe('<Table />', () => {
             field: 'name',
             header: 'Name',
             sortable: false,
+            computedWidth: 50,
         }]);
         component.setProps({
             children: [
@@ -71,9 +72,11 @@ describe('<Table />', () => {
             field: 'name',
             header: 'Name',
             sortable: false,
+            computedWidth: 50,
         }, {
             field: 'number',
             sortable: true,
+            computedWidth: 50,
         }]);
     });
     it('should not update the columns state when the props changed are others than children', () => {
@@ -81,6 +84,7 @@ describe('<Table />', () => {
             field: 'name',
             header: 'Name',
             sortable: false,
+            computedWidth: 50,
         }];
         const component = mount(
             <Table data={data}>
@@ -103,16 +107,55 @@ describe('<Table />', () => {
                 <Column field="number" header="Number" />
             </Table>,
         );
-
-        const { tableRef } = component.instance();
-        tableRef.current.getBoundingClientRect = jest.fn(() => ({ width: 45 }));
         const resizeBar = component.find('.rainbow-table_header-resize-bar');
-        expect(component.state().tableWidth).toBe(undefined);
+        expect(component.state().tableWidth).toBe(0);
         resizeBar.at(0).simulate('mousedown', { clientX: 100 });
 
         eventMap.mousemove({ clientX: 232, preventDefault });
         eventMap.mouseup({ preventDefault });
-        expect(component.state().tableWidth).toBe(177);
+        expect(component.state().tableWidth).toBe(132);
+    });
+    it('should store the right columns in state when resize a column', () => {
+        const component = mount(
+            <Table data={data}>
+                <Column field="name" header="Name" />
+                <Column field="number" header="Number" />
+            </Table>,
+        );
+        const resizeBar = component.find('.rainbow-table_header-resize-bar');
+        expect(component.state().columns).toEqual([
+            {
+                field: 'name',
+                header: 'Name',
+                computedWidth: 50,
+                sortable: false,
+            },
+            {
+                field: 'number',
+                header: 'Number',
+                computedWidth: 50,
+                sortable: false,
+            },
+        ]);
+        resizeBar.at(0).simulate('mousedown', { clientX: 100 });
+
+        eventMap.mousemove({ clientX: 232, preventDefault });
+        eventMap.mouseup({ preventDefault });
+        expect(component.state().columns).toEqual([
+            {
+                field: 'name',
+                header: 'Name',
+                computedWidth: 182,
+                isResized: true,
+                sortable: false,
+            },
+            {
+                field: 'number',
+                header: 'Number',
+                computedWidth: 50,
+                sortable: false,
+            },
+        ]);
     });
     it('should set the right table width when resize for second time', () => {
         const component = mount(
@@ -121,20 +164,18 @@ describe('<Table />', () => {
                 <Column field="number" header="Number" />
             </Table>,
         );
-        const { tableRef } = component.instance();
-        tableRef.current.getBoundingClientRect = jest.fn(() => ({ width: 130 }));
         const resizeBar = component.find('.rainbow-table_header-resize-bar');
-        expect(component.state().tableWidth).toBe(undefined);
+        expect(component.state().tableWidth).toBe(0);
 
         resizeBar.at(0).simulate('mousedown', { clientX: 60 });
         eventMap.mousemove({ clientX: 120, preventDefault });
         eventMap.mouseup({ preventDefault });
-        expect(component.state().tableWidth).toBe(190);
+        expect(component.state().tableWidth).toBe(60);
 
         resizeBar.at(0).simulate('mousedown', { clientX: 120 });
         eventMap.mousemove({ clientX: -10, preventDefault });
         eventMap.mouseup({ preventDefault });
-        expect(component.state().tableWidth).toBe(180);
+        expect(component.state().tableWidth).toBe(0);
     });
     it('should call onSort with the right data when a sortable column header is clicked', () => {
         const onSortMock = jest.fn();

@@ -17,6 +17,7 @@ import CarouselImage from './CarouselImage';
 import Chart from './Chart';
 import CheckboxGroup from './CheckboxGroup';
 import CheckboxToggle from './CheckboxToggle';
+import Chip from './Chip';
 import Column from './Column';
 import Dataset from './Dataset';
 import DatePicker from './DatePicker';
@@ -69,9 +70,10 @@ export {
     CarouselCard,
     CarouselImage,
     Chart,
-    Column,
     CheckboxGroup,
     CheckboxToggle,
+    Chip,
+    Column,
     Dataset,
     DatePicker,
     GMap,

@@ -32,19 +32,24 @@ export default class Head extends PureComponent {
 
         if (columns) {
             return columns.map((column, index) => {
-                const { header, field, sortable, width, defaultWidth } = column;
+                const {
+                    header,
+                    field,
+                    sortable,
+                    computedWidth,
+                } = column;
                 const key = `header-${index}`;
                 return (
                     <Header
                         key={key}
+                        colIndex={index}
                         content={header}
                         sortable={sortable}
                         sortDirection={this.resolveSortDirection(field)}
                         onSort={onSort}
                         onResize={onResize}
                         isSelected={this.isSelected(field)}
-                        width={width}
-                        defaultWidth={defaultWidth}
+                        computedWidth={computedWidth}
                         resizeColumnDisabled={resizeColumnDisabled}
                         minColumnWidth={minColumnWidth}
                         maxColumnWidth={maxColumnWidth}

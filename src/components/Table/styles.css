@@ -1,18 +1,23 @@
 /* stylelint-disable no-descending-specificity */
-.rainbow-table_wrapper {
+.rainbow-table_container {
   position: relative;
   height: 100%; }
 
 .rainbow-table_container--scrollable-x {
+  background-color: #f4f6f9;
   height: 100%;
   max-width: 100%;
-  overflow: auto hidden;
+  overflow: hidden;
+  overflow-x: auto;
+  padding-top: 44px;
   position: relative;
-  padding-top: 44px; }
+  -webkit-overflow-scrolling: touch; }
 
 .rainbow-table_container--scrollable-y {
   max-height: 100%;
-  overflow: hidden auto; }
+  overflow: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; }
 
 .rainbow-table {
   table-layout: fixed;

@@ -99,6 +99,7 @@ export default class InputBase extends Component {
             onFocus,
             onBlur,
             onClick,
+            onKeyDown,
             type,
             maxLength,
             minLength,
@@ -141,6 +142,7 @@ export default class InputBase extends Component {
                         onFocus={onFocus}
                         onBlur={onBlur}
                         onClick={onClick}
+                        onKeyDown={onKeyDown}
                         disabled={disabled}
                         readOnly={readOnly}
                         required={required}
@@ -213,6 +215,7 @@ InputBase.propTypes = {
     onClick: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
+    onKeyDown: PropTypes.func,
     className: PropTypes.string,
     style: PropTypes.object,
     id: PropTypes.string,
@@ -242,6 +245,7 @@ InputBase.defaultProps = {
     onClick: () => {},
     onFocus: () => {},
     onBlur: () => {},
+    onKeyDown: () => {},
     className: undefined,
     style: undefined,
     id: undefined,

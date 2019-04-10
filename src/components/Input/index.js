@@ -132,6 +132,8 @@ Input.propTypes = {
     onFocus: PropTypes.func,
     /** The action triggered when the element releases focus. */
     onBlur: PropTypes.func,
+    /** The action triggered when a key is pressed on the element. */
+    onKeyDown: PropTypes.func,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
@@ -165,6 +167,7 @@ Input.defaultProps = {
     onClick: () => {},
     onFocus: () => {},
     onBlur: () => {},
+    onKeyDown: () => {},
     className: undefined,
     style: undefined,
     id: undefined,
