@@ -47,7 +47,16 @@
     <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
         <TimePicker
             disabled
-            value={state.time}
-            label="TimePicker Label"
-            onChange={ value => setState({ time: value }) } />
+            value="-- : -- --"
+            label="TimePicker Label" />
+    </div>
+
+
+##### TimePicker readOnly:
+
+    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
+        <TimePicker
+            readOnly
+            value="13:32"
+            label="TimePicker Label" />
     </div>

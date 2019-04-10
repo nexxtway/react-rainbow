@@ -77,11 +77,19 @@
 
 ##### DatePicker disabled:
 
-    initialState = { date: new Date() };
     <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
         <DatePicker
             disabled
-            value={state.date}
-            label="DatePicker Label" 
-            onChange={ value => setState({ date: value }) } />
+            value={Date.now()}
+            label="DatePicker Label" />
+    </div>
+
+
+##### DatePicker readOnly:
+
+    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
+        <DatePicker
+            readOnly
+            value={Date.now()}
+            label="DatePicker Label" />
     </div>
