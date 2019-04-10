@@ -1,0 +1,246 @@
+/* stylelint-disable no-descending-specificity */
+@import "../../../styles/colors";
+@import "../../../styles/shadows";
+@import "../../../styles/font-sizes";
+@import "../../../styles/border-radius";
+@import "../../../styles/margins";
+@import "../../../styles/paddings";
+
+@mixin bottomMessage($color) {
+    font-size: $font-size-text-medium;
+    margin-top: $margin-x-small;
+    align-self: center;
+    color: $color;
+}
+
+.rainbow-time-picker_input-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.rainbow-time-picker_input-label {
+    color: $color-gray-4;
+    font-size: $font-size-text-medium;
+    line-height: 1.5;
+    margin-bottom: 0.125rem;
+    align-self: center;
+
+    &:empty {
+        margin: 0;
+    }
+}
+
+.rainbow-time-picker_input-label--readonly {
+    align-self: flex-start;
+}
+
+.rainbow-time-picker_input--help {
+    @include bottomMessage($color-dark-1);
+}
+
+.rainbow-time-picker_input-icon-container {
+    position: relative;
+
+    .rainbow-time-picker_input-icon {
+        fill: $color-gray-3;
+        height: 100%;
+        width: 22px;
+        top: 0;
+        position: absolute;
+        line-height: 1;
+        border: 0;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+            width: 16px !important;
+            height: 16px !important;
+            font-size: 16px !important;
+        }
+    }
+
+    .rainbow-time-picker_input-icon:not(button) {
+        pointer-events: none;
+    }
+}
+
+.rainbow-time-picker_input {
+    background-color: white;
+    border: 1px solid $color-gray-3;
+    border-radius: $border-radius-2;
+    width: 100%;
+    transition: all 0.1s linear;
+    display: inline-block;
+    padding: 0 1rem 0 1rem;
+    line-height: 2.5rem;
+    height: 2.5rem;
+    color: $color-dark-1;
+    font-size: $font-size-text-large;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &[type="search"]::-ms-clear {
+        display: none;
+        width: 0;
+        height: 0;
+    }
+
+    &:focus,
+    &:active {
+        outline: 0;
+        line-height: 2.5rem;
+        padding-left: 0.9375rem;
+        border: 2px $color-brand solid;
+        background-color: white;
+        box-shadow: $shadow-outline;
+    }
+
+    &::placeholder {
+        color: $color-gray-3;
+        font-weight: 300;
+        font-size: $font-size-text-large;
+    }
+
+    &[disabled] {
+        background-color: $color-gray-1;
+        border-color: $color-gray-2;
+        color: $color-gray-2;
+        cursor: not-allowed;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+
+        &:focus,
+        &:active {
+            box-shadow: none;
+            background-color: $color-gray-1;
+            border: 1px $color-gray-2 solid;
+            padding-left: $padding-medium;
+        }
+    }
+}
+
+.rainbow-time-picker_input--readonly {
+    padding-left: 0;
+    padding-right: 0;
+    border-color: transparent;
+    background-color: transparent;
+    font-size: $font-size-text-medium;
+    color: $color-dark-1;
+    font-weight: 400;
+
+    &:hover {
+        cursor: text;
+    }
+
+    &:focus,
+    &:active {
+        box-shadow: none;
+        border: 1px transparent solid;
+        padding-right: 0;
+        padding-left: 0;
+        background-color: transparent;
+    }
+}
+
+.rainbow-time-picker_input-error {
+    @include bottomMessage($color-error);
+}
+
+.rainbow-time-picker_input--error {
+    .rainbow-time-picker_input {
+        background-color: white;
+        border: 2px $color-error solid;
+        padding-left: $padding-medium;
+        background-clip: padding-box;
+        line-height: 2.5rem;
+
+        &:focus {
+            box-shadow: $shadow-error;
+        }
+    }
+
+    .rainbow-time-picker_input-icon {
+        fill: $color-error;
+        color: $color-error;
+    }
+
+    .rainbow-time-picker_input-icon-container.rainbow-time-picker_input-icon--left {
+        .rainbow-time-picker_input {
+            padding-left: 2.35rem;
+        }
+    }
+}
+
+.rainbow-time-picker_input-label--hide {
+    position: absolute !important;
+    margin: -1px !important;
+    border: 0 !important;
+    padding: 0 !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    text-transform: none !important;
+    white-space: nowrap !important;
+}
+
+.rainbow-time-picker_input--bare {
+    background-color: transparent;
+    border: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 0.75rem;
+    color: $color-dark-1;
+    line-height: 2.5rem;
+
+    &:focus,
+    &:active {
+        outline: 0;
+        box-shadow: none;
+    }
+}
+
+.rainbow-time-picker_input--counter {
+    text-align: center;
+    padding: 0 3rem;
+
+    &:focus,
+    &:active {
+        padding: 0 3rem;
+    }
+}
+
+.rainbow-time-picker_input-icon--left {
+    .rainbow-time-picker_input-icon {
+        left: 0.8rem;
+    }
+
+    .rainbow-time-picker_input,
+    .rainbow-time-picker_input--bare {
+        padding-left: 2.35rem;
+
+        &:focus,
+        &:active {
+            padding-left: 2.2875rem;
+        }
+    }
+}
+
+.rainbow-time-picker_input-icon--right {
+    .rainbow-time-picker_input-icon {
+        right: 0.8rem;
+    }
+
+    .rainbow-time-picker_input,
+    .rainbow-time-picker_input--bare {
+        right: 0.8rem;
+        padding-right: 2.35rem;
+    }
+}
