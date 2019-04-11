@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import CalendarIcon from './calendarIcon';
-import Input from '../Input';
 import Modal from './../Modal';
 import Calendar from './../Calendar';
+import Input from './input';
 import formatDate from './helpers/format-date';
 import withReduxForm from '../../libs/hocs/withReduxForm';
 import { ENTER_KEY, SPACE_KEY } from '../../libs/constants';
@@ -30,7 +30,7 @@ class DatePicker extends Component {
 
     getContainerClassName() {
         const { className } = this.props;
-        return classnames('rainbow-date-picker_input-container', className);
+        return classnames('rainbow-date-picker_container', className);
     }
 
     handleChange(...args) {
@@ -118,7 +118,6 @@ class DatePicker extends Component {
             <div id={id} className={this.getContainerClassName()} style={style}>
                 <Input
                     ref={this.inputRef}
-                    className="rainbow-date-picker_input"
                     label={label}
                     placeholder={placeholder}
                     icon={<CalendarIcon />}
@@ -138,6 +137,7 @@ class DatePicker extends Component {
                     disabled={disabled}
                     tabIndex={tabIndex}
                     autoComplete="off" />
+
                 <Modal className="rainbow-date-picker_modal" isOpen={isOpen} onRequestClose={this.closeModal}>
                     <header className="rainbow-date-picker_calendar-details-header">
                         <h2 className="rainbow-date-picker_calendar-date--selected">
@@ -151,6 +151,7 @@ class DatePicker extends Component {
                         formatStyle={formatStyle}
                         onChange={this.handleChange}
                         className="rainbow-date-picker_calendar-container" />
+
                 </Modal>
             </div>
         );

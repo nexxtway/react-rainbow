@@ -3,29 +3,8 @@
 @import "../../styles/border-radius";
 @import "../../styles/shadows";
 
-.rainbow-date-picker_input-container {
+.rainbow-date-picker_container {
     width: 100%;
-}
-
-.rainbow-date-picker_input input {
-    &:hover {
-        cursor: pointer;
-    }
-
-    &[disabled] {
-        text-shadow: none;
-    }
-
-    &:hover[disabled] {
-        cursor: not-allowed;
-    }
-
-    &[readonly] {
-        cursor: text;
-    }
-
-    color: transparent;
-    text-shadow: 0 0 0 #061c3f;
 }
 
 .rainbow-date-picker_modal {

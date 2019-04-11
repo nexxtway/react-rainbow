@@ -3,39 +3,8 @@
 @import "../../styles/paddings";
 @import "../../styles/margins";
 
-.rainbow-time-picker_input-container {
+.rainbow-time-picker_container {
     width: 100%;
-}
-
-.rainbow-time-picker_input input {
-    &:hover {
-        cursor: pointer;
-    }
-
-    &[disabled] {
-        text-shadow: none;
-    }
-
-    &:hover[disabled] {
-        cursor: not-allowed;
-    }
-
-    &[readonly] {
-        cursor: text;
-    }
-
-    color: transparent;
-    text-shadow: 0 0 0 #061c3f;
-
-    &[type=time]::-webkit-inner-spin-button,
-    &[type=time]::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-    }
-}
-
-.rainbow-time-picker_input .rainbow-input_icon--right svg {
-    width: 32px !important;
-    height: 32px !important;
 }
 
 .rainbow-time-picker_modal {
@@ -89,16 +58,6 @@
     &::selection {
         color: white;
         background: $color-brand-active;
-    }
-
-    &[type=number]::-webkit-inner-spin-button,
-    &[type=number]::-webkit-outer-spin-button,
-    &[type=time]::-webkit-inner-spin-button,
-    &[type=time]::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        margin: 0;
     }
 }
 

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import ClockIcon from './icons/clock';
-import Input from '../Input';
 import Modal from '../Modal';
+import Input from './input';
 import TimeSelect from './timeSelect';
 import get12HourTime from './helpers/get12HourTime';
 import withReduxForm from '../../libs/hocs/withReduxForm';
@@ -39,7 +39,7 @@ class TimePicker extends Component {
 
     getContainerClassName() {
         const { className } = this.props;
-        return classnames('rainbow-time-picker_input-container', className);
+        return classnames('rainbow-time-picker_container', className);
     }
 
     getTriggerInputValue() {
@@ -137,10 +137,9 @@ class TimePicker extends Component {
             <div id={id} className={this.getContainerClassName()} style={style}>
                 <Input
                     ref={this.inputRef}
-                    className="rainbow-time-picker_input"
                     label={label}
                     placeholder={placeholder}
-                    icon={<ClockIcon className="rainbow-time-picker_input-icon" />}
+                    icon={<ClockIcon />}
                     iconPosition="right"
                     required={required}
                     value={this.getTriggerInputValue()}
