@@ -282,7 +282,7 @@
     </div>
 
 
-##### Table with limited the number of Selectable Rows
+##### Table with a limited number of Selectable Rows
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
     const {
