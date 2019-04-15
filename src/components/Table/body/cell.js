@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { SELECTABLE_CHECKBOX } from '../helpers/columns';
+import SelectableCell from './selectableCell';
 
 function CellValue({ component: CellComponent, value }) {
     if (CellComponent) {
@@ -19,7 +21,14 @@ CellValue.defaultProps = {
 };
 
 export default function Cell(props) {
-    const { header, component, value, isFirst } = props;
+    const {
+        header,
+        component,
+        value,
+        columnType,
+        isFirst,
+        ...rest
+    } = props;
 
     const getHeaderLabel = () => {
         if (typeof header === 'string') {
@@ -27,6 +36,12 @@ export default function Cell(props) {
         }
         return undefined;
     };
+
+    if (columnType === SELECTABLE_CHECKBOX) {
+        return (
+            <SelectableCell {...rest} />
+        );
+    }
 
     if (isFirst) {
         return (
@@ -50,7 +65,7 @@ export default function Cell(props) {
             tabIndex={-1}
             data-label={getHeaderLabel()}>
 
-            <div className="rainbow-table_cell-content" role="presentation">
+            <div className="rainbow-table_cell-content">
                 <CellValue component={component} value={value} />
             </div>
         </td>
@@ -65,6 +80,7 @@ Cell.propTypes = {
     component: PropTypes.func,
     value: PropTypes.any,
     isFirst: PropTypes.bool,
+    columnType: PropTypes.string,
 };
 
 Cell.defaultProps = {
@@ -72,4 +88,5 @@ Cell.defaultProps = {
     component: undefined,
     value: undefined,
     isFirst: false,
+    columnType: undefined,
 };

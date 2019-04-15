@@ -16,30 +16,35 @@
             company: '90milesbridge',
             email: 'leandro@gmail.com',
             status: 'verified',
+            id: '1234qwerty',
         },
         {
             name: 'Jose Torres',
             company: 'Google',
             email: 'jose@gmail.com',
             status: 'verified',
+            id: '1234asdfgh',
         },
         {
             name: 'Reinier',
             company: '90milesbridge',
             email: 'reinier@gmail.com',
             status: 'verified',
+            id: '1234zxcvbn',
         },
         {
             name: 'Sara',
             company: '90milesbridge',
             email: 'sara@gmail.com',
             status: 'verified',
+            id: '5678qwerty',
         },
         {
             name: 'Tahimi',
             company: '90milesbridge',
             email: 'tahimi@gmail.com',
             status: 'verified',
+            id: '5678asdfgh',
         },
     ];
 
@@ -54,7 +59,7 @@
                 <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faEllipsisV} />} />
             </ButtonGroup>
         </GlobalHeader>
-        <Table data={data}>
+        <Table keyField="name" data={data} maxRowSelection={3} selectedRows={['Leandro Torres', 'Reinier']} onRowSelection={(data) => console.log(data)}>
             <Column header="Name" field="name" />
             <Column header="Status" field="status" component={StatusBadge} />
             <Column header="Company" field="company" />
@@ -92,48 +97,56 @@
                         company: '90milesbridge',
                         email: 'a@gmail.com',
                         status: 'verified',
+                        id: '1234qwerty',
                     },
                     {
                         name: 'Reinier',
                         company: '90milesbridge',
                         email: 'b@gmail.com',
                         status: 'verified',
+                        id: '1234asdfgh',
                     },
                     {
                         name: 'Jose Torres',
                         company: 'Google',
                         email: 'e@gmail.com',
                         status: 'verified',
+                        id: '1234zxcvbn',
                     },
                     {
                         name: 'Sara',
                         company: '90milesbridge',
                         email: 'c@gmail.com',
                         status: 'verified',
+                        id: '5678qwerty',
                     },
                     {
                         name: 'Tahimi',
                         company: '90milesbridge',
                         email: 'd@gmail.com',
                         status: 'verified',
+                        id: '5678asdfgh',
                     },
                     {
                         name: 'Alejandro',
                         company: 'Google',
                         email: 'h@gmail.com',
                         status: 'verified',
+                        id: '5678zxcvbn',
                     },
                     {
                         name: 'Carlos',
                         company: 'Oracle',
                         email: 'x@gmail.com',
                         status: 'verified',
+                        id: '9012qwerty',
                     },
                     {
                         name: 'Luis',
                         company: 'Google',
                         email: 'n@gmail.com',
                         status: 'verified',
+                        id: '9012asdfgh',
                     },
                 ],
             };
@@ -169,9 +182,11 @@
                     </GlobalHeader>
                     <div style={tableContainerStyles}>
                         <Table
+                            keyField="id"
                             data={data}
                             onSort={this.handleOnSort}
                             sortDirection={sortDirection}
+                            hideCheckboxColumn
                             sortedBy={sortedBy}>
 
                             <Column header="Name" field="name" sortable />

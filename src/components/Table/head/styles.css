@@ -18,6 +18,14 @@
   top: 0;
   height: 44px; }
 
+.rainbow-table_header-checkbox-container {
+  align-items: center;
+  display: flex;
+  padding: 0 15px;
+  border: 1px solid transparent;
+  height: 40px;
+  line-height: 40px; }
+
 .rainbow-table_header-container {
   border: 1px transparent solid;
   display: flex;
