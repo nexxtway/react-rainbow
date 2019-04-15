@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import RenderIf from '../../RenderIf';
+import { SELECTABLE_CHECKBOX } from './../helpers/columns';
 import SortArrowIcon from './sortArrowIcon';
 import ResizeBar from './resizeBar';
-import RenderIf from '../../RenderIf';
+import SelectableHeader from './selectableHeader';
 
 export default class Header extends Component {
     constructor(props) {
         super(props);
         this.handleSort = this.handleSort.bind(this);
         this.handleResize = this.handleResize.bind(this);
-        this.headerRef = React.createRef();
     }
 
     getClassName() {
@@ -62,10 +63,28 @@ export default class Header extends Component {
             maxColumnWidth,
             sortable,
             computedWidth,
+            type,
+            onSelectAllRows,
+            onDeselectAllRows,
+            tableId,
+            maxRowSelection,
+            bulkSelection,
         } = this.props;
         const headerStyles = {
             width: computedWidth,
         };
+
+        if (type === SELECTABLE_CHECKBOX) {
+            return (
+                <SelectableHeader
+                    onSelectAllRows={onSelectAllRows}
+                    onDeselectAllRows={onDeselectAllRows}
+                    tableId={tableId}
+                    maxRowSelection={maxRowSelection}
+                    bulkSelection={bulkSelection}
+                    style={headerStyles} />
+            );
+        }
 
         return (
             <th
@@ -73,8 +92,7 @@ export default class Header extends Component {
                 style={headerStyles}
                 scope="col"
                 tabIndex={this.getTabIndex()}
-                aria-label={this.getHeaderContent()}
-                ref={this.headerRef}>
+                aria-label={this.getHeaderContent()}>
 
                 <div className="rainbow-table_header-wrapper" style={headerStyles}>
                     <div className="rainbow-table_header-container" role="presentation" onClick={this.handleSort}>
@@ -109,6 +127,14 @@ Header.propTypes = {
     resizeColumnDisabled: PropTypes.bool,
     field: PropTypes.string,
     computedWidth: PropTypes.number,
+    type: PropTypes.string,
+    onSelectAllRows: PropTypes.func,
+    onDeselectAllRows: PropTypes.func,
+    tableId: PropTypes.string.isRequired,
+    maxRowSelection: PropTypes.number,
+    bulkSelection: PropTypes.oneOf([
+        'none', 'some', 'all',
+    ]),
 };
 
 Header.defaultProps = {
@@ -123,4 +149,9 @@ Header.defaultProps = {
     resizeColumnDisabled: false,
     field: undefined,
     computedWidth: 0,
+    type: undefined,
+    onSelectAllRows: () => {},
+    onDeselectAllRows: () => {},
+    maxRowSelection: undefined,
+    bulkSelection: 'none',
 };

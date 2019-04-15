@@ -15,6 +15,19 @@ export default class InputCheckbox extends Component {
         this.inputRef = React.createRef();
     }
 
+    componentDidMount() {
+        const { indeterminate } = this.props;
+        this.inputRef.current.indeterminate = indeterminate;
+    }
+
+    componentDidUpdate(prevProps) {
+        const { indeterminate: prevIndeterminate } = prevProps;
+        const { indeterminate } = this.props;
+        if (prevIndeterminate !== indeterminate) {
+            this.inputRef.current.indeterminate = indeterminate;
+        }
+    }
+
     getContainerClassNames() {
         const { className, error } = this.props;
         return classnames('rainbow-input-checkbox_container', {
@@ -74,9 +87,12 @@ export default class InputCheckbox extends Component {
             onFocus,
             onBlur,
             onClick,
+            onKeyDown,
             bottomHelpText,
             id,
             name,
+            checked,
+            hideLabel,
         } = this.props;
 
         return (
@@ -92,15 +108,20 @@ export default class InputCheckbox extends Component {
                         onFocus={onFocus}
                         onBlur={onBlur}
                         onClick={onClick}
+                        onKeyDown={onKeyDown}
                         disabled={disabled}
+                        checked={checked}
                         aria-labelledby={this.getInlineTextLabelId()}
                         aria-describedby={this.getErrorMessageId()}
                         ref={this.inputRef} />
+
                     <Label
                         label={label}
+                        hideLabel={hideLabel}
                         disabled={disabled}
                         inputId={this.inputId}
                         id={this.getInlineTextLabelId()} />
+
                 </div>
                 <RenderIf isTrue={!!bottomHelpText}>
                     <div className="rainbow-input-checkbox_help">{bottomHelpText}</div>
@@ -136,13 +157,17 @@ InputCheckbox.propTypes = {
     onClick: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
+    onKeyDown: PropTypes.func,
+    checked: PropTypes.bool,
+    hideLabel: PropTypes.bool,
+    indeterminate: PropTypes.bool,
     className: PropTypes.string,
     style: PropTypes.object,
     id: PropTypes.string,
 };
 
 InputCheckbox.defaultProps = {
-    value: false,
+    value: undefined,
     name: undefined,
     bottomHelpText: null,
     error: null,
@@ -152,6 +177,10 @@ InputCheckbox.defaultProps = {
     onClick: () => {},
     onFocus: () => {},
     onBlur: () => {},
+    onKeyDown: () => {},
+    checked: undefined,
+    hideLabel: false,
+    indeterminate: undefined,
     className: undefined,
     style: undefined,
     id: undefined,

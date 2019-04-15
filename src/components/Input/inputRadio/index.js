@@ -74,9 +74,12 @@ export default class InputRadio extends Component {
             onFocus,
             onBlur,
             onClick,
+            onKeyDown,
             bottomHelpText,
             id,
             name,
+            checked,
+            hideLabel,
         } = this.props;
 
         return (
@@ -92,15 +95,20 @@ export default class InputRadio extends Component {
                         onFocus={onFocus}
                         onBlur={onBlur}
                         onClick={onClick}
+                        onKeyDown={onKeyDown}
                         disabled={disabled}
+                        checked={checked}
                         aria-labelledby={this.getInlineTextLabelId()}
                         aria-describedby={this.getErrorMessageId()}
                         ref={this.inputRef} />
+
                     <Label
                         disabled={disabled}
                         label={label}
+                        hideLabel={hideLabel}
                         inputId={this.inputId}
                         id={this.getInlineTextLabelId()} />
+
                 </span>
                 <RenderIf isTrue={!!bottomHelpText}>
                     <div className="rainbow-input-radio_help">{bottomHelpText}</div>
@@ -134,6 +142,9 @@ InputRadio.propTypes = {
     onClick: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
+    onKeyDown: PropTypes.func,
+    checked: PropTypes.bool,
+    hideLabel: PropTypes.bool,
     className: PropTypes.string,
     style: PropTypes.object,
     id: PropTypes.string,
@@ -150,6 +161,9 @@ InputRadio.defaultProps = {
     onClick: () => {},
     onFocus: () => {},
     onBlur: () => {},
+    onKeyDown: () => {},
+    checked: undefined,
+    hideLabel: false,
     className: undefined,
     style: undefined,
     id: undefined,

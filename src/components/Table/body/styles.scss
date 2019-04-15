@@ -11,6 +11,14 @@
     }
 }
 
+.rainbow-table_body-row-selected {
+    background-color: $color-gray-transparent-1;
+}
+
+.rainbow-table_cell-container:first-child > .rainbow-table_cell-content {
+    padding-left: 18px;
+}
+
 .rainbow-table_cell-container:focus {
     outline: none;
 
@@ -32,6 +40,11 @@
     white-space: nowrap;
 }
 
-th:first-of-type .rainbow-table_cell-content {
-    padding-left: 18px;
+.rainbow-table_cell-checkbox-container {
+    align-items: center;
+    display: flex;
+    padding: 0 15px;
+    border: 1px solid transparent;
+    height: 40px;
+    line-height: 40px;
 }

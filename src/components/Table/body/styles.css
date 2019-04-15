@@ -4,6 +4,12 @@
   .rainbow-table_body-row:hover {
     background-color: rgba(244, 246, 249, 0.4); }
 
+.rainbow-table_body-row-selected {
+  background-color: rgba(244, 246, 249, 0.4); }
+
+.rainbow-table_cell-container:first-child > .rainbow-table_cell-content {
+  padding-left: 18px; }
+
 .rainbow-table_cell-container:focus {
   outline: none; }
   .rainbow-table_cell-container:focus .rainbow-table_cell-content {
@@ -21,5 +27,10 @@
   text-overflow: ellipsis;
   white-space: nowrap; }
 
-th:first-of-type .rainbow-table_cell-content {
-  padding-left: 18px; }
+.rainbow-table_cell-checkbox-container {
+  align-items: center;
+  display: flex;
+  padding: 0 15px;
+  border: 1px solid transparent;
+  height: 40px;
+  line-height: 40px; }
