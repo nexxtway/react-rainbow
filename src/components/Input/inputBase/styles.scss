@@ -107,7 +107,6 @@
         padding-right: 0;
         border-color: transparent;
         background-color: transparent;
-        font-size: $font-size-text-medium;
         color: $color-dark-1;
         font-weight: 400;
 
@@ -236,6 +235,24 @@
             padding-left: 2.2875rem;
         }
     }
+
+    .rainbow-input[readonly] {
+        padding-left: 1.75rem;
+    }
+}
+
+.rainbow-input--read-only.rainbow-input--error > .rainbow-input_icon--left {
+    .rainbow-input[readonly] {
+        padding-left: 2.35rem;
+    }
+}
+
+.rainbow-input--read-only > .rainbow-input_icon--left > .rainbow-input_icon {
+    left: 0;
+}
+
+.rainbow-input--read-only.rainbow-input--error > .rainbow-input_icon--left > .rainbow-input_icon {
+    left: 0.8rem;
 }
 
 .rainbow-input_icon--right {

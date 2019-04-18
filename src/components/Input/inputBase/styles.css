@@ -75,7 +75,6 @@
     padding-right: 0;
     border-color: transparent;
     background-color: transparent;
-    font-size: 0.875rem;
     color: #061c3f;
     font-weight: 400; }
     .rainbow-input[readonly]:focus, .rainbow-input[readonly]:active {
@@ -173,6 +172,18 @@
   .rainbow-input_icon--left .rainbow-input_bare:focus,
   .rainbow-input_icon--left .rainbow-input_bare:active {
     padding-left: 2.2875rem; }
+
+.rainbow-input_icon--left .rainbow-input[readonly] {
+  padding-left: 1.75rem; }
+
+.rainbow-input--read-only.rainbow-input--error > .rainbow-input_icon--left .rainbow-input[readonly] {
+  padding-left: 2.35rem; }
+
+.rainbow-input--read-only > .rainbow-input_icon--left > .rainbow-input_icon {
+  left: 0; }
+
+.rainbow-input--read-only.rainbow-input--error > .rainbow-input_icon--left > .rainbow-input_icon {
+  left: 0.8rem; }
 
 .rainbow-input_icon--right .rainbow-input_icon {
   right: 0.8rem; }
