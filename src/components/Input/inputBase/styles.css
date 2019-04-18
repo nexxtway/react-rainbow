@@ -73,14 +73,13 @@
   .rainbow-input[readonly] {
     padding-left: 0;
     padding-right: 0;
-    border-color: transparent;
+    border: 2px transparent solid;
     background-color: transparent;
     color: #061c3f;
     font-weight: 400; }
     .rainbow-input[readonly]:focus, .rainbow-input[readonly]:active {
       box-shadow: none;
-      border: 1px transparent solid;
-      padding-right: 0; }
+      border: 2px transparent solid; }
   .rainbow-input[disabled] {
     background-color: #f4f6f9;
     border-color: #e3e5ed;
@@ -110,6 +109,14 @@
   line-height: 2.5rem; }
   .rainbow-input--error .rainbow-input:focus {
     box-shadow: 0 0 2px #fe4849; }
+  .rainbow-input--error .rainbow-input[readonly] {
+    border-color: transparent;
+    background-color: transparent;
+    padding: 0; }
+    .rainbow-input--error .rainbow-input[readonly]:focus, .rainbow-input--error .rainbow-input[readonly]:active {
+      box-shadow: none;
+      border: 2px transparent solid;
+      padding: 0; }
 
 .rainbow-input--error .rainbow-input_icon {
   fill: #fe4849;
@@ -177,13 +184,10 @@
   padding-left: 1.75rem; }
 
 .rainbow-input--read-only.rainbow-input--error > .rainbow-input_icon--left .rainbow-input[readonly] {
-  padding-left: 2.35rem; }
+  padding-left: 1.75rem; }
 
 .rainbow-input--read-only > .rainbow-input_icon--left > .rainbow-input_icon {
   left: 0; }
-
-.rainbow-input--read-only.rainbow-input--error > .rainbow-input_icon--left > .rainbow-input_icon {
-  left: 0.8rem; }
 
 .rainbow-input_icon--right .rainbow-input_icon {
   right: 0.8rem; }

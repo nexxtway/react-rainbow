@@ -21,7 +21,10 @@ export default class InputBase extends Component {
             error,
             readOnly,
         } = this.props;
-        return classnames('rainbow-input_container', { 'rainbow-input--read-only': readOnly }, { 'rainbow-input--error': error }, className);
+        return classnames('rainbow-input_container', {
+            'rainbow-input--read-only': readOnly,
+            'rainbow-input--error': error,
+        }, className);
     }
 
     getIconPositionClassNames() {
