@@ -105,17 +105,15 @@
     &[readonly] {
         padding-left: 0;
         padding-right: 0;
-        border-color: transparent;
+        border: 2px transparent solid;
         background-color: transparent;
-        font-size: $font-size-text-medium;
         color: $color-dark-1;
         font-weight: 400;
 
         &:focus,
         &:active {
             box-shadow: none;
-            border: 1px transparent solid;
-            padding-right: 0;
+            border: 2px transparent solid;
         }
     }
 
@@ -153,6 +151,19 @@
 
         &:focus {
             box-shadow: $shadow-error;
+        }
+
+        &[readonly] {
+            border-color: transparent;
+            background-color: transparent;
+            padding: 0;
+
+            &:focus,
+            &:active {
+                box-shadow: none;
+                border: 2px transparent solid;
+                padding: 0;
+            }
         }
     }
 
@@ -236,6 +247,20 @@
             padding-left: 2.2875rem;
         }
     }
+
+    .rainbow-input[readonly] {
+        padding-left: 1.75rem;
+    }
+}
+
+.rainbow-input--read-only.rainbow-input--error > .rainbow-input_icon--left {
+    .rainbow-input[readonly] {
+        padding-left: 1.75rem;
+    }
+}
+
+.rainbow-input--read-only > .rainbow-input_icon--left > .rainbow-input_icon {
+    left: 0;
 }
 
 .rainbow-input_icon--right {

@@ -263,10 +263,34 @@
 
 
 ##### input read only
+    
+    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+    const {
+        faStar,
+    } = require('@fortawesome/free-solid-svg-icons');
 
-    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
-        <Input
-            label="Input Label"
-            readOnly
-            value="Read Only" />
+    const inputContainerStyles = {
+        width: '50%',
+    };
+
+    <div className="rainbow-p-around_x-large">
+        <div className="rainbow-flex rainbow-p-bottom_medium">
+            <div className="rainbow-p-horizontal_small" style={inputContainerStyles}>
+                <Input
+                    label="Input Label"
+                    readOnly
+                    value="Read Only" />
+
+            </div>
+            <div className="rainbow-p-horizontal_small" style={inputContainerStyles}>
+                <Input
+                    label="Input Label"
+                    readOnly
+                    value="Read Only with icon left"
+                    icon={
+                        <FontAwesomeIcon icon={faStar} />
+                    } />
+
+            </div>
+        </div>
     </div>
