@@ -56,7 +56,7 @@
                 <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faEllipsisV} />} />
             </ButtonGroup>
         </GlobalHeader>
-        <Table data={data} style={tableStyles}>
+        <Table data={data} style={tableStyles} keyField="name">
             <Column header="Name" field="name" />
             <Column header="Status" field="status" component={StatusBadge} />
             <Column header="Company" field="company" />

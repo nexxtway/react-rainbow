@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Row from '../row';
+import { SELECTABLE_CHECKBOX } from '../../helpers/columns';
 
 const data = { name: 'a', number: 26 };
 
@@ -29,11 +30,13 @@ describe('<Row />', () => {
             component: undefined,
             value: 'a',
             isFirst: true,
+            isSelected: false,
         });
         expect(cell.get(1).props).toEqual({
             component: undefined,
             value: 26,
             isFirst: false,
+            isSelected: false,
         });
     });
     it('should set the right value to isFirst prop in Cell component', () => {
@@ -49,5 +52,44 @@ describe('<Row />', () => {
         const component = mount(<Row data={data} columns={wrongColumns} />);
         const cell = component.find('Cell');
         expect(cell.at(0).prop('value')).toBe(null);
+    });
+    it('should set the right class names in tr element when the row is selected', () => {
+        const component = mount(
+            <Row data={data} columns={columns} isSelected />,
+        );
+        expect(component.find('tr').prop('className')).toBe('rainbow-table_body-row rainbow-table_body-row-selected');
+    });
+    it('should set aria-selected in tr element to false when the row is not selected', () => {
+        const component = mount(
+            <Row data={data} columns={columns} />,
+        );
+        expect(component.find('tr').prop('aria-selected')).toBe(false);
+    });
+    it('should set aria-selected in tr element to true when the row is selected', () => {
+        const component = mount(
+            <Row data={data} columns={columns} isSelected />,
+        );
+        expect(component.find('tr').prop('aria-selected')).toBe(true);
+    });
+    it('should set the right value to isFirst prop in Cell component when the firs column is selectable checkbox', () => {
+        const columnsWithSelectable = [
+            {
+                type: SELECTABLE_CHECKBOX,
+            },
+            {
+                component: undefined,
+                field: 'number',
+            },
+            {
+                field: 'name',
+            },
+        ];
+        const component = mount(
+            <Row data={data} columns={columnsWithSelectable} />,
+        );
+        const cell = component.find('Cell');
+        expect(cell.at(0).prop('isFirst')).toBe(false);
+        expect(cell.at(1).prop('isFirst')).toBe(true);
+        expect(cell.at(2).prop('isFirst')).toBe(false);
     });
 });

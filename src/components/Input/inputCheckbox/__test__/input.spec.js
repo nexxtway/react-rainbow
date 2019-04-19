@@ -55,6 +55,7 @@ describe('<InputCheckbox/>', () => {
         );
         expect(component.find('Label').props()).toEqual({
             label: 'custom label',
+            hideLabel: false,
             disabled: true,
             inputId: expect.any(String),
         });
@@ -70,5 +71,11 @@ describe('<InputCheckbox/>', () => {
             <InputCheckbox error="Error text" />,
         );
         expect(component.find('div[className="rainbow-input-checkbox_container rainbow-input-checkbox--error"]').exists()).toBe(true);
+    });
+    it('should set checked prop passed in input element', () => {
+        const component = mount(
+            <InputCheckbox checked />,
+        );
+        expect(component.find('input').prop('checked')).toBe(true);
     });
 });

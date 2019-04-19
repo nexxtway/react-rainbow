@@ -134,6 +134,8 @@ Input.propTypes = {
     onBlur: PropTypes.func,
     /** The action triggered when a key is pressed on the element. */
     onKeyDown: PropTypes.func,
+    /** Set the input to checked state when true. It is used only for input type checkbox. */
+    checked: PropTypes.bool,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
@@ -168,6 +170,7 @@ Input.defaultProps = {
     onFocus: () => {},
     onBlur: () => {},
     onKeyDown: () => {},
+    checked: undefined,
     className: undefined,
     style: undefined,
     id: undefined,

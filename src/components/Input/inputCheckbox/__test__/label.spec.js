@@ -21,4 +21,10 @@ describe('<InputCheckboxLabel/>', () => {
         );
         expect(component.find('.rainbow-input-checkbox_label.rainbow-input-checkbox_label--disabled').exists()).toBe(true);
     });
+    it('should add the right class names when hideLabel is passed', () => {
+        const component = mount(
+            <Label label="Input Label" hideLabel />,
+        );
+        expect(component.find('.rainbow-input-checkbox_label.rainbow-input-checkbox_label--hide').exists()).toBe(true);
+    });
 });

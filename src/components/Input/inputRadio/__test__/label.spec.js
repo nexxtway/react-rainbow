@@ -21,4 +21,10 @@ describe('<InputRadioLabel/>', () => {
         );
         expect(component.find('.rainbow-input-radio_label.rainbow-input-radio_label--disabled').exists()).toBe(true);
     });
+    it('should add the right class names when hideLabel is passed', () => {
+        const component = mount(
+            <Label label="Input Label" hideLabel />,
+        );
+        expect(component.find('.rainbow-input-radio_label.rainbow-input-radio_label--hide').exists()).toBe(true);
+    });
 });
