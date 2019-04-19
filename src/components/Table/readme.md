@@ -54,7 +54,7 @@
                 <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faEllipsisV} />} />
             </ButtonGroup>
         </GlobalHeader>
-        <Table data={data} keyField="name" hideCheckboxColumn>
+        <Table data={data} hideCheckboxColumn>
             <Column header="Name" field="name" />
             <Column header="Status" field="status" component={StatusBadge} />
             <Column header="Company" field="company" />
@@ -251,14 +251,14 @@
             company: 'nexxtway',
             email: 'leo@gmail.com',
             status: 'verified',
-            id: '90123asdfgh',
+            id: '5678zxcvbn',
         },
         {
             name: 'Tahimi Leon',
             company: 'nexxtway',
             email: 'leon@nexxtway.com',
             status: 'verified',
-            id: '1234asdfgh',
+            id: '9012qwerty',
         },
     ];
 
@@ -273,7 +273,7 @@
                 <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faEllipsisV} />} />
             </ButtonGroup>
         </GlobalHeader>
-        <Table keyField="name" data={data} onRowSelection={(data) => console.log(data)}>
+        <Table keyField="id" data={data} onRowSelection={(data) => console.log(data)}>
             <Column header="Name" field="name" />
             <Column header="Status" field="status" component={StatusBadge} />
             <Column header="Company" field="company" />
@@ -335,14 +335,14 @@
             company: 'nexxtway',
             email: 'leo@gmail.com',
             status: 'verified',
-            id: '90123asdfgh',
+            id: '5678zxcvbn',
         },
         {
             name: 'Tahimi Leon',
             company: 'nexxtway',
             email: 'leon@nexxtway.com',
             status: 'verified',
-            id: '1234asdfgh',
+            id: '9012qwerty',
         },
     ];
 
@@ -357,7 +357,7 @@
                 <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faEllipsisV} />} />
             </ButtonGroup>
         </GlobalHeader>
-        <Table keyField="name" data={data} maxRowSelection={4} selectedRows={['Leandro Torres', 'Reinier']} onRowSelection={(data) => console.log(data)}>
+        <Table keyField="id" data={data} maxRowSelection={4} selectedRows={['1234qwerty', '1234zxcvbn']} onRowSelection={(data) => console.log(data)}>
             <Column header="Name" field="name" />
             <Column header="Status" field="status" component={StatusBadge} />
             <Column header="Company" field="company" />
