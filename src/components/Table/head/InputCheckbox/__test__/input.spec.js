@@ -46,7 +46,7 @@ describe('<InputCheckbox/>', () => {
         const component = mount(
             <InputCheckbox error="error message" />,
         );
-        expect(component.find('.rainbow-input-checkbox_error-message').prop('id')).toMatch(/error-message/);
+        expect(component.find('.rainbow-table-input-checkbox_error-message').prop('id')).toMatch(/error-message/);
         expect(component.find('input').prop('aria-describedby')).toMatch(/error-message/);
     });
     it('should pass the right props to the Label component', () => {
@@ -64,13 +64,28 @@ describe('<InputCheckbox/>', () => {
         const component = mount(
             <InputCheckbox />,
         );
-        expect(component.find('div[className="rainbow-input-checkbox_container"]').exists()).toBe(true);
+        expect(component.find('div[className="rainbow-table-input-checkbox_container"]').exists()).toBe(true);
     });
     it('should have the right class names when error is passed', () => {
         const component = mount(
             <InputCheckbox error="Error text" />,
         );
-        expect(component.find('div[className="rainbow-input-checkbox_container rainbow-input-checkbox--error"]').exists()).toBe(true);
+        expect(component.find('div[className="rainbow-table-input-checkbox_container rainbow-table-input-checkbox--error"]').exists()).toBe(true);
+    });
+    it('should set indeterminate prop to true in input reference when it is passed', () => {
+        const component = mount(
+            <InputCheckbox indeterminate />,
+        );
+        expect(component.instance().inputRef.current.indeterminate).toBe(true);
+    });
+    it('should set indeterminate prop to true in input reference when it is passed later the component is mounted', () => {
+        const component = mount(
+            <InputCheckbox />,
+        );
+        component.setProps({
+            indeterminate: true,
+        });
+        expect(component.instance().inputRef.current.indeterminate).toBe(true);
     });
     it('should set checked prop passed in input element', () => {
         const component = mount(

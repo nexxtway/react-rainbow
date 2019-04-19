@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Header from '../header';
+import { SELECTABLE_CHECKBOX } from '../../helpers/columns';
 
 const eventMap = {};
 document.addEventListener = jest.fn((event, cb) => {
@@ -109,5 +110,9 @@ describe('<Header />', () => {
         eventMap.mousemove({ clientX: 133, preventDefault });
         eventMap.mouseup({ preventDefault });
         expect(onResizeMockFn).toHaveBeenCalledWith(33, 2);
+    });
+    it('should render SelectableHeader component when type passed is "SELECTABLE_CHECKBOX"', () => {
+        const component = mount(<Header type={SELECTABLE_CHECKBOX} />);
+        expect(component.find('SelectableHeader').exists()).toBe(true);
     });
 });

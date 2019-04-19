@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Label from './../label';
 
-describe('<InputRadioLabel/>', () => {
+describe('<InputCheckboxLabel/>', () => {
     it('should set the inputId passed as the htmlFor prop in the label element', () => {
         const component = mount(
             <Label label="Input Label" inputId="input-213" />,
@@ -19,12 +19,12 @@ describe('<InputRadioLabel/>', () => {
         const component = mount(
             <Label label="Input Label" disabled />,
         );
-        expect(component.find('.rainbow-input-radio_label.rainbow-input-radio_label--disabled').exists()).toBe(true);
+        expect(component.find('.rainbow-table-input-checkbox_label.rainbow-table-input-checkbox_label--disabled').exists()).toBe(true);
     });
     it('should add the right class names when hideLabel is passed', () => {
         const component = mount(
             <Label label="Input Label" hideLabel />,
         );
-        expect(component.find('.rainbow-input-radio_label.rainbow-input-radio_label--hide').exists()).toBe(true);
+        expect(component.find('.rainbow-table-input-checkbox_label.rainbow-table-input-checkbox_label--hide').exists()).toBe(true);
     });
 });

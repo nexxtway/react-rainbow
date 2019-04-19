@@ -1,11 +1,17 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Body from '../';
+import { SELECTABLE_CHECKBOX } from '../../helpers/columns';
 
-const columns = [{
-    component: undefined,
-    field: 'name',
-}];
+const columns = [
+    {
+        type: SELECTABLE_CHECKBOX,
+    },
+    {
+        component: undefined,
+        field: 'name',
+    },
+];
 
 const data = [
     {
@@ -15,8 +21,18 @@ const data = [
         name: 'b',
     },
 ];
+const rows = [
+    {
+        key: 'row-1',
+        inputType: 'checkbox',
+    },
+    {
+        key: 'row-2',
+        inputType: 'checkbox',
+    },
+];
 
-describe('<Rowx />', () => {
+describe('<Body />', () => {
     it('should return an empty component if no data and columns are passed', () => {
         const component = mount(<Body />);
         expect(component.children().length).toBe(0);
@@ -26,21 +42,21 @@ describe('<Rowx />', () => {
         expect(component.children().length).toBe(0);
     });
     it('should return an array of Row components', () => {
-        const component = mount(<Body data={data} columns={columns} />);
-        const rows = component.find('Row');
+        const component = mount(<Body data={data} columns={columns} rows={rows} />);
+        const rowElements = component.find('Row');
 
-        expect(rows.length).toBe(2);
-        expect(rows.get(0).props).toEqual({
+        expect(rowElements.length).toBe(2);
+        expect(rowElements.get(0).props).toEqual(expect.objectContaining({
             data: {
                 name: 'a',
             },
             columns,
-        });
-        expect(rows.get(1).props).toEqual({
+        }));
+        expect(rowElements.get(1).props).toEqual(expect.objectContaining({
             data: {
                 name: 'b',
             },
             columns,
-        });
+        }));
     });
 });

@@ -3,7 +3,7 @@ import getCurrentSelectionLength from './getCurrentSelectionLength';
 import getRowIntervalIndexes from './getRowIntervalIndexes';
 import isSelectedRow from './isSelectedRow';
 
-export default function getUpdatedRowsWhenDeselect(params) {
+export default function getUpdatedRowsWhenDeselect(params = {}) {
     const {
         maxRowSelection,
         rows = [],
@@ -29,6 +29,7 @@ export default function getUpdatedRowsWhenDeselect(params) {
     const rowsWithSelection = rows.map((row, index) => {
         const currentSelectionLength = getCurrentSelectionLength(selectedRowsKeys);
         const maxSelectionReached = currentSelectionLength > maxRowSelection;
+
         if (index >= start && index <= end && !maxSelectionReached) {
             selectedRowsKeys[row.key] = false;
             return {

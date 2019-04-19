@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Body from './body';
 import Head from './head';
-import getNextSortDirection from './getNextSortDirection';
+import { getNextSortDirection } from './helpers/sort';
 import { getColumns, isNotSameColumns } from './helpers/columns';
 import { getUpdatedColumns, getResizedColumns } from './helpers/resizer';
 import { getRows, getIndexes } from './helpers/rows';
@@ -14,6 +14,7 @@ import {
     getUpdatedRowsWhenDeselectAll,
     getBulkSelectionState,
     getRowsWithInitalSelectedRows,
+    isValidMaxRowSelection,
 } from './helpers/selector';
 import ResizeSensor from '../../libs/ResizeSensor';
 import debounce from '../../libs/debounce';
@@ -42,7 +43,7 @@ export default class Table extends Component {
             rows: getRows({
                 keyField,
                 rows: data,
-                maxRowSelection,
+                maxRowSelection: Number(maxRowSelection),
                 selectedRowsKeys: {},
             }),
             bulkSelection: 'none',
@@ -112,39 +113,41 @@ export default class Table extends Component {
         return 0;
     }
 
-    getSelectedRows() {
-        const { data, keyField } = this.props;
-        return data.filter(item => this.selectedRowsKeys[item[keyField]]);
+    getSelectedRows(rows) {
+        const { data } = this.props;
+        return data.filter((item, index) => rows[index].isSelected);
     }
 
     getMaxRowSelection() {
         const { maxRowSelection } = this.props;
         const { rows } = this.state;
         const rowsLength = rows.length;
-        if (maxRowSelection === undefined || maxRowSelection > rowsLength) {
+        const maxRowSelectionNumber = Number(maxRowSelection);
+
+        if (!isValidMaxRowSelection(maxRowSelection, rowsLength)) {
             return rowsLength;
         }
-        return maxRowSelection;
+        return maxRowSelectionNumber;
     }
 
     updateRows() {
         const {
             keyField,
-            data,
             selectedRows,
         } = this.props;
+        const { rows } = this.state;
         const maxRowSelection = this.getMaxRowSelection();
         this.selectedRowsKeys = {};
-        const rows = getRows({
+        const newRows = getRows({
             keyField,
-            rows: data,
+            rows,
             maxRowSelection,
             selectedRowsKeys: this.selectedRowsKeys,
         });
 
         this.setState({
             rows: getRowsWithInitalSelectedRows({
-                rows,
+                rows: newRows,
                 selectedRows,
                 maxRowSelection,
                 indexes: this.indexes,
@@ -195,7 +198,7 @@ export default class Table extends Component {
             rows: updatedRows,
             bulkSelection,
         });
-        onRowSelection(this.getSelectedRows());
+        onRowSelection(this.getSelectedRows(updatedRows));
     }
 
     handleDeselectAllRows() {
@@ -212,7 +215,7 @@ export default class Table extends Component {
             rows: updatedRows,
             bulkSelection,
         });
-        onRowSelection(this.getSelectedRows());
+        onRowSelection(this.getSelectedRows(updatedRows));
     }
 
     handleSelectRow(event, isMultiple, rowKeyValue) {
@@ -239,6 +242,7 @@ export default class Table extends Component {
                 rows: updatedRows,
                 bulkSelection,
             });
+            onRowSelection(this.getSelectedRows(updatedRows));
         } else {
             this.selectedRowsKeys = {};
             this.selectedRowsKeys[rowKeyValue] = true;
@@ -251,10 +255,10 @@ export default class Table extends Component {
             this.setState({
                 rows: updatedRows,
             });
+            onRowSelection(this.getSelectedRows(updatedRows));
         }
 
         this.lastSelectedRowKey = rowKeyValue;
-        onRowSelection(this.getSelectedRows());
     }
 
     handleDeselectRow(event, isMultiple, rowKeyValue) {
@@ -281,7 +285,7 @@ export default class Table extends Component {
             bulkSelection,
         });
         this.lastSelectedRowKey = rowKeyValue;
-        onRowSelection(this.getSelectedRows());
+        onRowSelection(this.getSelectedRows(updatedRows));
     }
 
     hasFlexibleColumns() {
@@ -307,7 +311,6 @@ export default class Table extends Component {
 
     render() {
         const {
-            keyField,
             data,
             sortedBy,
             sortDirection,
@@ -328,50 +331,47 @@ export default class Table extends Component {
         };
         const maxRowSelection = this.getMaxRowSelection();
 
-        if (keyField) {
-            return (
-                <div className={this.getContainerClassNames()} style={style}>
-                    <div className="rainbow-table-width-observer" ref={this.resizeTarget} />
-                    <div className="rainbow-table_container">
-                        <div className="rainbow-table_container--scrollable-x" ref={this.tableContainerRef}>
-                            <div className="rainbow-table_container--scrollable-y" style={tableStyles}>
-                                <table className="rainbow-table" style={tableStyles}>
-                                    <thead>
-                                        <tr>
-                                            <Head
-                                                columns={columns}
-                                                selectedColumn={sortedBy}
-                                                sortDirection={sortDirection}
-                                                defaultSortDirection={defaultSortDirection}
-                                                resizeColumnDisabled={resizeColumnDisabled}
-                                                minColumnWidth={minColumnWidth}
-                                                maxColumnWidth={maxColumnWidth}
-                                                onSort={this.handleSort}
-                                                onResize={this.handleResize}
-                                                onSelectAllRows={this.handleSelectAllRows}
-                                                onDeselectAllRows={this.handleDeselectAllRows}
-                                                tableId={this.tableId}
-                                                maxRowSelection={maxRowSelection}
-                                                bulkSelection={bulkSelection} />
-                                        </tr>
-                                    </thead>
-                                    <tbody className="rainbow-table_body">
-                                        <Body
-                                            data={data}
+        return (
+            <div className={this.getContainerClassNames()} style={style}>
+                <div className="rainbow-table-width-observer" ref={this.resizeTarget} />
+                <div className="rainbow-table_container">
+                    <div className="rainbow-table_container--scrollable-x" ref={this.tableContainerRef}>
+                        <div className="rainbow-table_container--scrollable-y" style={tableStyles}>
+                            <table className="rainbow-table" style={tableStyles}>
+                                <thead>
+                                    <tr>
+                                        <Head
                                             columns={columns}
-                                            rows={rows}
+                                            selectedColumn={sortedBy}
+                                            sortDirection={sortDirection}
+                                            defaultSortDirection={defaultSortDirection}
+                                            resizeColumnDisabled={resizeColumnDisabled}
+                                            minColumnWidth={minColumnWidth}
+                                            maxColumnWidth={maxColumnWidth}
+                                            onSort={this.handleSort}
+                                            onResize={this.handleResize}
+                                            onSelectAllRows={this.handleSelectAllRows}
+                                            onDeselectAllRows={this.handleDeselectAllRows}
                                             tableId={this.tableId}
-                                            onSelectRow={this.handleSelectRow}
-                                            onDeselectRow={this.handleDeselectRow} />
-                                    </tbody>
-                                </table>
-                            </div>
+                                            maxRowSelection={maxRowSelection}
+                                            bulkSelection={bulkSelection} />
+                                    </tr>
+                                </thead>
+                                <tbody className="rainbow-table_body">
+                                    <Body
+                                        data={data}
+                                        columns={columns}
+                                        rows={rows}
+                                        tableId={this.tableId}
+                                        onSelectRow={this.handleSelectRow}
+                                        onDeselectRow={this.handleDeselectRow} />
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-            );
-        }
-        return null;
+            </div>
+        );
     }
 }
 
@@ -405,11 +405,14 @@ Table.propTypes = {
     onRowSelection: PropTypes.func,
     /** The maximum number of rows that can be selected. When the value is
      * 1 the selection is made by radio buttons, otherwise with checkboxes. */
-    maxRowSelection: PropTypes.number,
+    maxRowSelection: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string,
+    ]),
     /** An array with a list of keyField values of the selected rows. */
     selectedRows: PropTypes.array,
     /** It is required for associate each row with a unique ID. Must be one of the data key. */
-    keyField: PropTypes.string.isRequired,
+    keyField: PropTypes.string,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied for the outer element. */
@@ -433,6 +436,7 @@ Table.defaultProps = {
     onRowSelection: () => {},
     maxRowSelection: undefined,
     selectedRows: undefined,
+    keyField: undefined,
     className: undefined,
     style: undefined,
     children: undefined,

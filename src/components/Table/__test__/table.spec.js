@@ -30,9 +30,9 @@ describe('<Table />', () => {
         expect(header.text()).toBe('Name');
         expect(cell.text()).toBe('a');
     });
-    it('should add a column', () => {
+    it('should add a column when hideCheckboxColumn is passed', () => {
         const component = mount(
-            <Table data={data}>
+            <Table data={data} hideCheckboxColumn>
                 <Column field="name" header="Name" />
             </Table>,
         );
@@ -49,9 +49,25 @@ describe('<Table />', () => {
         expect(component.find('th.rainbow-table_cell-container').text()).toBe('a');
         expect(component.find('td.rainbow-table_cell-container').text()).toBe('23');
     });
-    it('should update the columns state when add a column', () => {
+    it('should add a column when hideCheckboxColumn is not passed', () => {
         const component = mount(
             <Table data={data}>
+                <Column field="name" header="Name" />
+            </Table>,
+        );
+        expect(component.find('.rainbow-table_cell-container').length).toBe(2);
+        component.setProps({
+            children: [
+                <Column field="name" header="Name" />,
+                <Column field="number" />,
+            ],
+        });
+        component.update();
+        expect(component.find('.rainbow-table_cell-container').length).toBe(3);
+    });
+    it('should update the columns state when add a column and hideCheckboxColumn is passed', () => {
+        const component = mount(
+            <Table data={data} hideCheckboxColumn>
                 <Column field="name" header="Name" />
             </Table>,
         );
@@ -79,6 +95,50 @@ describe('<Table />', () => {
             computedWidth: 50,
         }]);
     });
+    it('should update the columns state when add a column and hideCheckboxColumn is not passed', () => {
+        const component = mount(
+            <Table data={data}>
+                <Column field="name" header="Name" />
+            </Table>,
+        );
+        expect(component.state().columns).toEqual([
+            {
+                computedWidth: 52,
+                type: 'SELECTABLE_CHECKBOX',
+                width: 52,
+            },
+            {
+                field: 'name',
+                header: 'Name',
+                sortable: false,
+                computedWidth: 50,
+            },
+        ]);
+        component.setProps({
+            children: [
+                <Column field="name" header="Name" />,
+                <Column field="number" sortable />,
+            ],
+        });
+        component.update();
+        expect(component.state().columns).toEqual([
+            {
+                computedWidth: 52,
+                type: 'SELECTABLE_CHECKBOX',
+                width: 52,
+            },
+            {
+                field: 'name',
+                header: 'Name',
+                sortable: false,
+                computedWidth: 50,
+            }, {
+                field: 'number',
+                sortable: true,
+                computedWidth: 50,
+            },
+        ]);
+    });
     it('should not update the columns state when the props changed are others than children', () => {
         const columnsState = [{
             field: 'name',
@@ -87,7 +147,7 @@ describe('<Table />', () => {
             computedWidth: 50,
         }];
         const component = mount(
-            <Table data={data}>
+            <Table data={data} hideCheckboxColumn>
                 <Column field="name" header="Name" />
             </Table>,
         );
@@ -117,7 +177,7 @@ describe('<Table />', () => {
     });
     it('should store the right columns in state when resize a column', () => {
         const component = mount(
-            <Table data={data}>
+            <Table data={data} hideCheckboxColumn>
                 <Column field="name" header="Name" />
                 <Column field="number" header="Number" />
             </Table>,

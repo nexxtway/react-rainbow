@@ -1,7 +1,9 @@
-export default function getIndexes(rows) {
+export default function getIndexes(rows = []) {
     const indexes = {};
-    rows.forEach((row, rowIndex) => {
-        indexes[row.key] = { rowIndex };
-    });
+    if (Array.isArray(rows)) {
+        rows.forEach((row, rowIndex) => {
+            indexes[row.key] = { rowIndex };
+        });
+    }
     return indexes;
 }

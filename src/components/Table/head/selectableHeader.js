@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Input from '../../Input';
+import InputCheckbox from './InputCheckbox';
 
 export default function SelectableHeader(props) {
     const {
@@ -36,7 +36,7 @@ export default function SelectableHeader(props) {
                 className="rainbow-table_header-checkbox-container rainbow-table_header-wrapper"
                 style={style}>
 
-                <Input
+                <InputCheckbox
                     name={name}
                     label="select all rows"
                     hideLabel

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { uniqueId } from './../../../libs/utils';
-import RenderIf from './../../RenderIf';
+import { uniqueId } from '../../../../libs/utils';
+import RenderIf from '../../../RenderIf';
 import Label from './label';
 import './styles.css';
 
@@ -15,10 +15,23 @@ export default class InputCheckbox extends Component {
         this.inputRef = React.createRef();
     }
 
+    componentDidMount() {
+        const { indeterminate } = this.props;
+        this.inputRef.current.indeterminate = indeterminate;
+    }
+
+    componentDidUpdate(prevProps) {
+        const { indeterminate: prevIndeterminate } = prevProps;
+        const { indeterminate } = this.props;
+        if (prevIndeterminate !== indeterminate) {
+            this.inputRef.current.indeterminate = indeterminate;
+        }
+    }
+
     getContainerClassNames() {
         const { className, error } = this.props;
-        return classnames('rainbow-input-checkbox_container', {
-            'rainbow-input-checkbox--error': error,
+        return classnames('rainbow-table-input-checkbox_container', {
+            'rainbow-table-input-checkbox--error': error,
         }, className);
     }
 
@@ -84,7 +97,7 @@ export default class InputCheckbox extends Component {
 
         return (
             <div id={id} className={this.getContainerClassNames()} style={style}>
-                <div className="rainbow-input-checkbox_inner-container">
+                <div className="rainbow-table-input-checkbox_inner-container">
                     <input
                         id={this.inputId}
                         name={name}
@@ -111,10 +124,10 @@ export default class InputCheckbox extends Component {
 
                 </div>
                 <RenderIf isTrue={!!bottomHelpText}>
-                    <div className="rainbow-input-checkbox_help">{bottomHelpText}</div>
+                    <div className="rainbow-table-input-checkbox_help">{bottomHelpText}</div>
                 </RenderIf>
                 <RenderIf isTrue={!!error}>
-                    <div id={this.getErrorMessageId()} className="rainbow-input-checkbox_error-message">{error}</div>
+                    <div id={this.getErrorMessageId()} className="rainbow-table-input-checkbox_error-message">{error}</div>
                 </RenderIf>
             </div>
         );
@@ -147,6 +160,7 @@ InputCheckbox.propTypes = {
     onKeyDown: PropTypes.func,
     checked: PropTypes.bool,
     hideLabel: PropTypes.bool,
+    indeterminate: PropTypes.bool,
     className: PropTypes.string,
     style: PropTypes.object,
     id: PropTypes.string,
@@ -166,6 +180,7 @@ InputCheckbox.defaultProps = {
     onKeyDown: () => {},
     checked: undefined,
     hideLabel: false,
+    indeterminate: undefined,
     className: undefined,
     style: undefined,
     id: undefined,

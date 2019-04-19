@@ -10,16 +10,16 @@ function filterValidKeys(indexes, keys) {
     return keys.filter(key => rowKeyExists(indexes, key));
 }
 
-export default function getRowsWithInitalSelectedRows(params) {
+export default function getRowsWithInitalSelectedRows(params = {}) {
     const {
-        rows,
+        rows = [],
         selectedRows,
         maxRowSelection,
         indexes,
         selectedRowsKeys = {},
     } = params;
 
-    if (Array.isArray(selectedRows) && maxRowSelection > 1) {
+    if (Array.isArray(selectedRows) && maxRowSelection > 0) {
         const previousSelectionLength = getCurrentSelectionLength(selectedRowsKeys);
         let validSelectedRowsKeys = filterValidKeys(indexes, selectedRows);
         if (validSelectedRowsKeys.length > maxRowSelection) {
@@ -45,10 +45,8 @@ export default function getRowsWithInitalSelectedRows(params) {
                 };
             });
         }
-        if (
-            selectedRows.length < maxRowSelection &&
-            previousSelectionLength === maxRowSelection
-        ) {
+        if (selectedRows.length < maxRowSelection &&
+            previousSelectionLength === maxRowSelection) {
             return rows.map(row => ({
                 ...row,
                 isDisabled: false,

@@ -55,6 +55,7 @@ describe('<InputRadio/>', () => {
         );
         expect(component.find('Label').props()).toEqual({
             label: 'custom label',
+            hideLabel: false,
             disabled: true,
             inputId: expect.any(String),
         });
@@ -70,5 +71,11 @@ describe('<InputRadio/>', () => {
             <InputRadio error="Error text" />,
         );
         expect(component.find('div[className="rainbow-input-radio_container rainbow-input-radio--error"]').exists()).toBe(true);
+    });
+    it('should set checked prop passed in input element', () => {
+        const component = mount(
+            <InputRadio checked />,
+        );
+        expect(component.find('input').prop('checked')).toBe(true);
     });
 });

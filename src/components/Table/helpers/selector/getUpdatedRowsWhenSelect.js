@@ -3,7 +3,7 @@ import getCurrentSelectionLength from './getCurrentSelectionLength';
 import getRowIntervalIndexes from './getRowIntervalIndexes';
 import isSelectedRow from './isSelectedRow';
 
-export default function getUpdatedRowsWhenSelect(params) {
+export default function getUpdatedRowsWhenSelect(params = {}) {
     const {
         maxRowSelection,
         rows = [],

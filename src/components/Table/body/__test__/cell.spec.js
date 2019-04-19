@@ -36,6 +36,10 @@ describe('<Cell /> when isFirst is not passed', () => {
         const td = component.find('td');
         expect(td.prop('data-label')).toBe(undefined);
     });
+    it('should render the SelectableCell component when columnType is "SELECTABLE_CHECKBOX"', () => {
+        const component = mount(<Cell value="cell-1" columnType="SELECTABLE_CHECKBOX" />);
+        expect(component.find('SelectableCell').exists()).toBe(true);
+    });
 });
 
 describe('<Cell /> when isFirst is passed', () => {
@@ -68,5 +72,9 @@ describe('<Cell /> when isFirst is passed', () => {
         const component = mount(<Cell value="cell-1" isFirst header={<span />} />);
         const th = component.find('th');
         expect(th.prop('data-label')).toBe(undefined);
+    });
+    it('should render the SelectableCell component when columnType is "SELECTABLE_CHECKBOX"', () => {
+        const component = mount(<Cell value="cell-1" isFirst columnType="SELECTABLE_CHECKBOX" />);
+        expect(component.find('SelectableCell').exists()).toBe(true);
     });
 });

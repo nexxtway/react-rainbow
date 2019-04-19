@@ -1,11 +1,11 @@
 import isSelectedRow from './isSelectedRow';
 import getCurrentSelectionLength from './getCurrentSelectionLength';
 
-export default function isDisabledRow(params) {
+export default function isDisabledRow(params = {}) {
     const {
         rowKeyValue,
         maxRowSelection,
-        selectedRowsKeys,
+        selectedRowsKeys = {},
     } = params;
     if (!isSelectedRow(rowKeyValue, selectedRowsKeys)) {
         return maxRowSelection !== 1

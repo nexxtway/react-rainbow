@@ -1,9 +1,9 @@
 import getCurrentSelectionLength from './getCurrentSelectionLength';
 
-export default function getBulkSelectionState(params) {
+export default function getBulkSelectionState(params = {}) {
     const {
         maxRowSelection,
-        selectedRowsKeys,
+        selectedRowsKeys = {},
     } = params;
     const selected = getCurrentSelectionLength(selectedRowsKeys);
 

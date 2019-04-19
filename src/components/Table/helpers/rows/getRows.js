@@ -1,24 +1,25 @@
+import getRowSelectionInputType from './getRowSelectionInputType';
 import computeUniqueRowKey from './computeUniqueRowKey';
 import isSelectedRow from '../selector/isSelectedRow';
 import isDisabledRow from '../selector/isDisabledRow';
 
-function getRowSelectionInputType(maxRowSelection) {
-    if (maxRowSelection === 1) {
-        return 'radio';
+function getKey(row, keyField) {
+    if (row.key) {
+        return row.key;
     }
-    return 'checkbox';
+    return computeUniqueRowKey(row, keyField);
 }
 
-export default function getRows(params) {
+export default function getRows(params = {}) {
     const {
-        rows,
+        rows = [],
         maxRowSelection,
         keyField,
         selectedRowsKeys,
     } = params;
     const inputType = getRowSelectionInputType(maxRowSelection);
     return rows.map((row) => {
-        const key = computeUniqueRowKey(row, keyField);
+        const key = getKey(row, keyField);
         return {
             key,
             inputType,
