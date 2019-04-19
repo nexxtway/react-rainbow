@@ -16,35 +16,30 @@
             company: '90milesbridge',
             email: 'leandro@gmail.com',
             status: 'verified',
-            id: '1234qwerty',
         },
         {
             name: 'Jose Torres',
             company: 'Google',
             email: 'jose@gmail.com',
             status: 'verified',
-            id: '1234asdfgh',
         },
         {
             name: 'Reinier',
             company: '90milesbridge',
             email: 'reinier@gmail.com',
             status: 'verified',
-            id: '1234zxcvbn',
         },
         {
             name: 'Sara',
             company: '90milesbridge',
             email: 'sara@gmail.com',
             status: 'verified',
-            id: '5678qwerty',
         },
         {
             name: 'Tahimi',
             company: '90milesbridge',
             email: 'tahimi@gmail.com',
             status: 'verified',
-            id: '5678asdfgh',
         },
     ];
 
@@ -59,7 +54,7 @@
                 <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faEllipsisV} />} />
             </ButtonGroup>
         </GlobalHeader>
-        <Table keyField="name" data={data} maxRowSelection={3} selectedRows={['Leandro Torres', 'Reinier']} onRowSelection={(data) => console.log(data)}>
+        <Table data={data} keyField="name" hideCheckboxColumn>
             <Column header="Name" field="name" />
             <Column header="Status" field="status" component={StatusBadge} />
             <Column header="Company" field="company" />
@@ -81,7 +76,7 @@
     } = require('@fortawesome/free-solid-svg-icons');
 
     const badgeStyles = { color: '#1de9b6' };
-    const tableContainerStyles = { height: 200 };
+    const tableContainerStyles = { height: 300 };
 
     const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
 
@@ -95,56 +90,56 @@
                     {
                         name: 'Leandro Torres',
                         company: '90milesbridge',
-                        email: 'a@gmail.com',
+                        email: 'leandro@gmail.com',
                         status: 'verified',
                         id: '1234qwerty',
                     },
                     {
                         name: 'Reinier',
                         company: '90milesbridge',
-                        email: 'b@gmail.com',
+                        email: 'reinier@gmail.com',
                         status: 'verified',
                         id: '1234asdfgh',
                     },
                     {
                         name: 'Jose Torres',
                         company: 'Google',
-                        email: 'e@gmail.com',
+                        email: 'jose@gmail.com',
                         status: 'verified',
                         id: '1234zxcvbn',
                     },
                     {
                         name: 'Sara',
                         company: '90milesbridge',
-                        email: 'c@gmail.com',
+                        email: 'sara@gmail.com',
                         status: 'verified',
                         id: '5678qwerty',
                     },
                     {
                         name: 'Tahimi',
                         company: '90milesbridge',
-                        email: 'd@gmail.com',
+                        email: 'tahimi@gmail.com',
                         status: 'verified',
                         id: '5678asdfgh',
                     },
                     {
                         name: 'Alejandro',
                         company: 'Google',
-                        email: 'h@gmail.com',
+                        email: 'alejandro@gmail.com',
                         status: 'verified',
                         id: '5678zxcvbn',
                     },
                     {
                         name: 'Carlos',
                         company: 'Oracle',
-                        email: 'x@gmail.com',
+                        email: 'carlos@gmail.com',
                         status: 'verified',
                         id: '9012qwerty',
                     },
                     {
                         name: 'Luis',
                         company: 'Google',
-                        email: 'n@gmail.com',
+                        email: 'luis@gmail.com',
                         status: 'verified',
                         id: '9012asdfgh',
                     },
@@ -201,3 +196,171 @@
     }
 
     <TableExample />
+
+
+##### Table with Selectable Rows
+
+    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+    const {
+        faCog,
+        faPencilAlt,
+        faStore,
+        faPlus,
+        faBell,
+        faEllipsisV,
+    } = require('@fortawesome/free-solid-svg-icons');
+
+    const data = [
+        {
+            name: 'Leandro Torres',
+            company: 'nexxtway',
+            email: 'leandro@gmail.com',
+            status: 'verified',
+            id: '1234qwerty',
+        },
+        {
+            name: 'Jose Torres',
+            company: 'Google',
+            email: 'jose@gmail.com',
+            status: 'verified',
+            id: '1234asdfgh',
+        },
+        {
+            name: 'Reinier',
+            company: '90milesbridge',
+            email: 'reinier@gmail.com',
+            status: 'verified',
+            id: '1234zxcvbn',
+        },
+        {
+            name: 'Sara',
+            company: '90milesbridge',
+            email: 'sara@gmail.com',
+            status: 'verified',
+            id: '5678qwerty',
+        },
+        {
+            name: 'Tahimi',
+            company: 'nexxtway',
+            email: 'tahimi@gmail.com',
+            status: 'verified',
+            id: '5678asdfgh',
+        },
+        {
+            name: 'Leo',
+            company: 'nexxtway',
+            email: 'leo@gmail.com',
+            status: 'verified',
+            id: '90123asdfgh',
+        },
+        {
+            name: 'Tahimi Leon',
+            company: 'nexxtway',
+            email: 'leon@nexxtway.com',
+            status: 'verified',
+            id: '1234asdfgh',
+        },
+    ];
+
+    const badgeStyles = { color: '#1de9b6' };
+
+    const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
+
+    <div className="rainbow-p-bottom_xx-large">
+        <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
+            <ButtonGroup className="rainbow-m-right_medium">
+                <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
+                <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faEllipsisV} />} />
+            </ButtonGroup>
+        </GlobalHeader>
+        <Table keyField="name" data={data} onRowSelection={(data) => console.log(data)}>
+            <Column header="Name" field="name" />
+            <Column header="Status" field="status" component={StatusBadge} />
+            <Column header="Company" field="company" />
+            <Column header="Email" field="email" />
+        </Table>
+    </div>
+
+
+##### Table with a limited number of Selectable Rows
+
+    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+    const {
+        faCog,
+        faPencilAlt,
+        faStore,
+        faPlus,
+        faBell,
+        faEllipsisV,
+    } = require('@fortawesome/free-solid-svg-icons');
+
+    const data = [
+        {
+            name: 'Leandro Torres',
+            company: 'nexxtway',
+            email: 'leandro@gmail.com',
+            status: 'verified',
+            id: '1234qwerty',
+        },
+        {
+            name: 'Jose Torres',
+            company: 'Google',
+            email: 'jose@gmail.com',
+            status: 'verified',
+            id: '1234asdfgh',
+        },
+        {
+            name: 'Reinier',
+            company: '90milesbridge',
+            email: 'reinier@gmail.com',
+            status: 'verified',
+            id: '1234zxcvbn',
+        },
+        {
+            name: 'Sara',
+            company: '90milesbridge',
+            email: 'sara@gmail.com',
+            status: 'verified',
+            id: '5678qwerty',
+        },
+        {
+            name: 'Tahimi',
+            company: 'nexxtway',
+            email: 'tahimi@gmail.com',
+            status: 'verified',
+            id: '5678asdfgh',
+        },
+        {
+            name: 'Leo',
+            company: 'nexxtway',
+            email: 'leo@gmail.com',
+            status: 'verified',
+            id: '90123asdfgh',
+        },
+        {
+            name: 'Tahimi Leon',
+            company: 'nexxtway',
+            email: 'leon@nexxtway.com',
+            status: 'verified',
+            id: '1234asdfgh',
+        },
+    ];
+
+    const badgeStyles = { color: '#1de9b6' };
+
+    const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
+
+    <div className="rainbow-p-bottom_xx-large">
+        <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
+            <ButtonGroup className="rainbow-m-right_medium">
+                <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
+                <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faEllipsisV} />} />
+            </ButtonGroup>
+        </GlobalHeader>
+        <Table keyField="name" data={data} maxRowSelection={4} selectedRows={['Leandro Torres', 'Reinier']} onRowSelection={(data) => console.log(data)}>
+            <Column header="Name" field="name" />
+            <Column header="Status" field="status" component={StatusBadge} />
+            <Column header="Company" field="company" />
+            <Column header="Email" field="email" />
+        </Table>
+    </div>

@@ -18,7 +18,6 @@
             <Card style={calendarContainerStyles} className="rainbow-p-around_large">
                 <Calendar
                     value={state.date}
-                    label="DatePicker Label"
                     onChange={ value => setState({ date: value }) } />
             </Card>
         </div>
@@ -47,7 +46,6 @@
                     value={state.date}
                     minDate={new Date(2018, 0, 4)}
                     maxDate={new Date(2020, 0, 4)}
-                    label="DatePicker Label"
                     onChange={ value => setState({ date: value }) } />
             </Card>
         </div>
