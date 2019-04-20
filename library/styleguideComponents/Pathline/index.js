@@ -9,12 +9,12 @@ export default function CustomPathline(props) {
 
     return (
         <div className="rainbow-flex rainbow-align_center">
-                <span>
-                    <span className="react-rainbow-text-color-violet">import </span>
-                    <span className="react-rainbow-text-color-gray">{name}</span>
-                    <span className="react-rainbow-text-color-violet"> from </span>
-                    <span className="react-rainbow-text-color-green">{`'react-rainbow-components/components/${name}';`}</span>
-                </span>
+            <span>
+                <span className="react-rainbow-text-color-violet">import </span>
+                <span className="react-rainbow-text-color-gray">{`{ ${name} }`}</span>
+                <span className="react-rainbow-text-color-violet"> from </span>
+                <span className="react-rainbow-text-color-green">{'\'react-rainbow-components\';'}</span>
+            </span>
             <CopyToClipboard text={children} variant="base" />
         </div>
     );

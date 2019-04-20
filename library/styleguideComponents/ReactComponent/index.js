@@ -70,7 +70,7 @@ export default class ReactComponent extends Component {
                     </div>
                     <div className="rainbow-p-vertical_large rainbow-p-horizontal_x-large">
                         <Pathline name={name}>
-                            {`import ${name} from 'react-rainbow-components/components/${name}'`}
+                            {`import { ${name} } from 'react-rainbow-components';`}
                         </Pathline>
                     </div>
 
