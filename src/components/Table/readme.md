@@ -54,7 +54,7 @@
                 <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faEllipsisV} />} />
             </ButtonGroup>
         </GlobalHeader>
-        <Table data={data} hideCheckboxColumn>
+        <Table data={data}>
             <Column header="Name" field="name" />
             <Column header="Status" field="status" component={StatusBadge} />
             <Column header="Company" field="company" />
@@ -181,7 +181,6 @@
                             data={data}
                             onSort={this.handleOnSort}
                             sortDirection={sortDirection}
-                            hideCheckboxColumn
                             sortedBy={sortedBy}>
 
                             <Column header="Name" field="name" sortable />
@@ -273,7 +272,7 @@
                 <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faEllipsisV} />} />
             </ButtonGroup>
         </GlobalHeader>
-        <Table keyField="id" data={data} onRowSelection={(data) => console.log(data)}>
+        <Table id="table-5" keyField="id" showCheckboxColumn data={data} onRowSelection={(data) => console.log(data)}>
             <Column header="Name" field="name" />
             <Column header="Status" field="status" component={StatusBadge} />
             <Column header="Company" field="company" />
@@ -357,7 +356,7 @@
                 <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faEllipsisV} />} />
             </ButtonGroup>
         </GlobalHeader>
-        <Table keyField="id" data={data} maxRowSelection={4} selectedRows={['1234qwerty', '1234zxcvbn']} onRowSelection={(data) => console.log(data)}>
+        <Table keyField="id" showCheckboxColumn data={data} maxRowSelection={4} selectedRows={['1234qwerty', '1234zxcvbn']} onRowSelection={(data) => console.log(data)}>
             <Column header="Name" field="name" />
             <Column header="Status" field="status" component={StatusBadge} />
             <Column header="Company" field="company" />

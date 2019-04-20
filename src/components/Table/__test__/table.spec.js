@@ -45,9 +45,9 @@ describe('<Table />', () => {
         expect(header.text()).toBe('Name');
         expect(cell.text()).toBe('a');
     });
-    it('should add a column when hideCheckboxColumn is passed', () => {
+    it('should add a column when showCheckboxColumn is not passed', () => {
         const component = mount(
-            <Table data={data} hideCheckboxColumn>
+            <Table data={data}>
                 <Column field="name" header="Name" />
             </Table>,
         );
@@ -64,9 +64,9 @@ describe('<Table />', () => {
         expect(component.find('th.rainbow-table_cell-container').text()).toBe('a');
         expect(component.find('td.rainbow-table_cell-container').text()).toBe('23');
     });
-    it('should add a column when hideCheckboxColumn is not passed', () => {
+    it('should add a column when showCheckboxColumn is passed', () => {
         const component = mount(
-            <Table data={data}>
+            <Table data={data} showCheckboxColumn>
                 <Column field="name" header="Name" />
             </Table>,
         );
@@ -80,9 +80,9 @@ describe('<Table />', () => {
         component.update();
         expect(component.find('.rainbow-table_cell-container').length).toBe(3);
     });
-    it('should update the columns state when add a column and hideCheckboxColumn is passed', () => {
+    it('should update the columns state when add a column and showCheckboxColumn is not passed', () => {
         const component = mount(
-            <Table data={data} hideCheckboxColumn>
+            <Table data={data}>
                 <Column field="name" header="Name" />
             </Table>,
         );
@@ -110,9 +110,9 @@ describe('<Table />', () => {
             computedWidth: 50,
         }]);
     });
-    it('should update the columns state when add a column and hideCheckboxColumn is not passed', () => {
+    it('should update the columns state when add a column and showCheckboxColumn is passed', () => {
         const component = mount(
-            <Table data={data}>
+            <Table data={data} showCheckboxColumn>
                 <Column field="name" header="Name" />
             </Table>,
         );
@@ -162,7 +162,7 @@ describe('<Table />', () => {
             computedWidth: 50,
         }];
         const component = mount(
-            <Table data={data} hideCheckboxColumn>
+            <Table data={data}>
                 <Column field="name" header="Name" />
             </Table>,
         );
@@ -192,7 +192,7 @@ describe('<Table />', () => {
     });
     it('should store the right columns in state when resize a column', () => {
         const component = mount(
-            <Table data={data} hideCheckboxColumn>
+            <Table data={data}>
                 <Column field="name" header="Name" />
                 <Column field="number" header="Number" />
             </Table>,
@@ -303,7 +303,7 @@ describe('<Table />', () => {
     });
     it('should set the right rows initially', () => {
         const component = mount(
-            <Table data={tableData} keyField="id">
+            <Table data={tableData} keyField="id" showCheckboxColumn>
                 <Column field="name" header="Name" />
             </Table>,
         );
@@ -334,6 +334,7 @@ describe('<Table />', () => {
                 data={tableData}
                 selectedRows={['5678asdfgh', '9012zxcvbn']}
                 maxRowSelection={2}
+                showCheckboxColumn
                 keyField="id">
 
                 <Column field="name" header="Name" />
@@ -365,6 +366,7 @@ describe('<Table />', () => {
             <Table
                 data={tableData}
                 maxRowSelection={1}
+                showCheckboxColumn
                 keyField="id">
 
                 <Column field="name" header="Name" />
@@ -395,6 +397,7 @@ describe('<Table />', () => {
         const component = mount(
             <Table
                 data={tableData}
+                showCheckboxColumn
                 keyField="id">
 
                 <Column field="name" header="Name" />
@@ -407,6 +410,7 @@ describe('<Table />', () => {
             <Table
                 data={tableData}
                 selectedRows={['1234qwerty']}
+                showCheckboxColumn
                 keyField="id">
 
                 <Column field="name" header="Name" />
@@ -419,6 +423,7 @@ describe('<Table />', () => {
             <Table
                 data={tableData}
                 selectedRows={['1234qwerty', '5678asdfgh', '9012zxcvbn']}
+                showCheckboxColumn
                 keyField="id">
 
                 <Column field="name" header="Name" />
@@ -431,6 +436,7 @@ describe('<Table />', () => {
             <Table
                 data={tableData}
                 maxRowSelection={2}
+                showCheckboxColumn
                 selectedRows={['1234qwerty', '5678asdfgh']}
                 keyField="id">
 
@@ -487,6 +493,7 @@ describe('<Table />', () => {
         const component = mount(
             <Table
                 data={tableData}
+                showCheckboxColumn
                 selectedRows={['1234qwerty']}
                 keyField="id">
 
@@ -544,6 +551,7 @@ describe('<Table />', () => {
         const component = mount(
             <Table
                 data={tableData}
+                showCheckboxColumn
                 selectedRows={['1234qwerty']}
                 onRowSelection={onRowSelectionMockFn}
                 keyField="id">
@@ -600,6 +608,7 @@ describe('<Table />', () => {
         const component = mount(
             <Table
                 data={tableData}
+                showCheckboxColumn
                 onRowSelection={onRowSelectionMockFn}
                 keyField="id">
 
@@ -668,6 +677,7 @@ describe('<Table />', () => {
         const component = mount(
             <Table
                 data={tableData}
+                showCheckboxColumn
                 selectedRows={['1234qwerty']}
                 onRowSelection={onRowSelectionMockFn}
                 keyField="id">
@@ -713,6 +723,7 @@ describe('<Table />', () => {
         const component = mount(
             <Table
                 data={tableData}
+                showCheckboxColumn
                 onRowSelection={onRowSelectionMockFn}
                 keyField="id">
 
@@ -766,6 +777,7 @@ describe('<Table />', () => {
         const component = mount(
             <Table
                 data={tableData}
+                showCheckboxColumn
                 maxRowSelection={1}
                 onRowSelection={onRowSelectionMockFn}
                 keyField="id">
@@ -805,6 +817,7 @@ describe('<Table />', () => {
         const component = mount(
             <Table
                 data={tableData}
+                showCheckboxColumn
                 selectedRows={['1234qwerty', '5678asdfgh']}
                 onRowSelection={onRowSelectionMockFn}
                 keyField="id">

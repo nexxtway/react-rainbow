@@ -1,7 +1,7 @@
 import React from 'react';
 import { SELECTABLE_CHECKBOX } from './';
 
-export default function getColumns(columns, hideCheckboxColumn) {
+export default function getColumns(columns, showCheckboxColumn) {
     const columnsData = React.Children.map(columns, (column) => {
         if (column) {
             return column.props;
@@ -9,14 +9,14 @@ export default function getColumns(columns, hideCheckboxColumn) {
         return null;
     }, null);
 
-    if (hideCheckboxColumn) {
-        return columnsData;
+    if (showCheckboxColumn) {
+        return [
+            {
+                type: SELECTABLE_CHECKBOX,
+                width: 52,
+            },
+            ...columnsData,
+        ];
     }
-    return [
-        {
-            type: SELECTABLE_CHECKBOX,
-            width: 52,
-        },
-        ...columnsData,
-    ];
+    return columnsData;
 }

@@ -3,22 +3,22 @@ import Column from '../../../../Column';
 import getColumns from '../getColumns';
 
 describe('getColumns', () => {
-    it('should return null when columns is null and hideCheckboxColumn is true', () => {
+    it('should return null when columns is null and showCheckboxColumn is false', () => {
         const columns = null;
-        const hideCheckboxColumn = true;
-        expect(getColumns(columns, hideCheckboxColumn)).toBeNull();
+        const showCheckboxColumn = false;
+        expect(getColumns(columns, showCheckboxColumn)).toBeNull();
     });
-    it('should return an empty array when columns is an array with falsy values and hideCheckboxColumn is true', () => {
+    it('should return an empty array when columns is an array with falsy values and showCheckboxColumn is false', () => {
         const columns = [null, undefined];
-        const hideCheckboxColumn = true;
-        expect(getColumns(columns, hideCheckboxColumn)).toEqual([]);
+        const showCheckboxColumn = false;
+        expect(getColumns(columns, showCheckboxColumn)).toEqual([]);
     });
-    it('should return an array with the columns props when hideCheckboxColumn is true', () => {
+    it('should return an array with the columns props when showCheckboxColumn is false', () => {
         const columns = [
             <Column field="a" header="header" component={<span />} />,
         ];
-        const hideCheckboxColumn = true;
-        expect(getColumns(columns, hideCheckboxColumn)).toEqual([{
+        const showCheckboxColumn = false;
+        expect(getColumns(columns, showCheckboxColumn)).toEqual([{
             field: 'a',
             header: 'header',
             component: <span />,
@@ -26,12 +26,12 @@ describe('getColumns', () => {
             width: undefined,
         }]);
     });
-    it('should return an array with the columns props plus the selectable column when hideCheckboxColumn is false', () => {
+    it('should return an array with the columns props plus the selectable column when showCheckboxColumn is true', () => {
         const columns = [
             <Column field="a" header="header" component={<span />} />,
         ];
-        const hideCheckboxColumn = false;
-        expect(getColumns(columns, hideCheckboxColumn)).toEqual([
+        const showCheckboxColumn = true;
+        expect(getColumns(columns, showCheckboxColumn)).toEqual([
             {
                 type: 'SELECTABLE_CHECKBOX',
                 width: 52,
