@@ -31,14 +31,14 @@ export default class Table extends Component {
         super(props);
         const {
             children,
-            hideCheckboxColumn,
+            showCheckboxColumn,
             keyField,
             data,
             maxRowSelection,
         } = props;
 
         this.state = {
-            columns: getColumns(children, hideCheckboxColumn),
+            columns: getColumns(children, showCheckboxColumn),
             tableWidth: undefined,
             rows: getRows({
                 keyField,
@@ -76,18 +76,18 @@ export default class Table extends Component {
     componentDidUpdate(prevProps) {
         const {
             children: prevChildren,
-            hideCheckboxColumn: prevHideCheckboxColumn,
+            showCheckboxColumn: prevShowCheckboxColumn,
             maxRowSelection: prevMaxRowSelection,
             selectedRows: prevSelectedRows,
         } = prevProps;
         const {
             children,
-            hideCheckboxColumn,
+            showCheckboxColumn,
             maxRowSelection,
             selectedRows,
         } = this.props;
-        const prevColumns = getColumns(prevChildren, prevHideCheckboxColumn);
-        const currentColumns = getColumns(children, hideCheckboxColumn);
+        const prevColumns = getColumns(prevChildren, prevShowCheckboxColumn);
+        const currentColumns = getColumns(children, showCheckboxColumn);
         if (isNotSameColumns(prevColumns, currentColumns)) {
             this.updateColumnsAndTableWidth(currentColumns);
         }
@@ -319,6 +319,7 @@ export default class Table extends Component {
             minColumnWidth,
             maxColumnWidth,
             style,
+            id,
         } = this.props;
         const {
             columns,
@@ -332,7 +333,7 @@ export default class Table extends Component {
         const maxRowSelection = this.getMaxRowSelection();
 
         return (
-            <div className={this.getContainerClassNames()} style={style}>
+            <div id={id} className={this.getContainerClassNames()} style={style}>
                 <div className="rainbow-table-width-observer" ref={this.resizeTarget} />
                 <div className="rainbow-table_container">
                     <div className="rainbow-table_container--scrollable-x" ref={this.tableContainerRef}>
@@ -398,9 +399,9 @@ Table.propTypes = {
     minColumnWidth: PropTypes.number,
     /** The maximum width for all columns. The default is 1000px. */
     maxColumnWidth: PropTypes.number,
-    /** Show or hide the checkbox column for row selection. To hide set
-     * hideCheckboxColumn to true. The default value is false. */
-    hideCheckboxColumn: PropTypes.bool,
+    /** Show or hide the checkbox column for row selection. To show set
+     * showCheckboxColumn to true. The default value is false. */
+    showCheckboxColumn: PropTypes.bool,
     /** The action triggered when a row is selected. Receive the selectedRows array. */
     onRowSelection: PropTypes.func,
     /** The maximum number of rows that can be selected. When the value is
@@ -413,6 +414,8 @@ Table.propTypes = {
     selectedRows: PropTypes.array,
     /** It is required for associate each row with a unique ID. Must be one of the data key. */
     keyField: PropTypes.string,
+    /** The id of the outer element. */
+    id: PropTypes.string,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied for the outer element. */
@@ -432,11 +435,12 @@ Table.defaultProps = {
     resizeColumnDisabled: false,
     minColumnWidth: 50,
     maxColumnWidth: 1000,
-    hideCheckboxColumn: false,
+    showCheckboxColumn: false,
     onRowSelection: () => {},
     maxRowSelection: undefined,
     selectedRows: undefined,
     keyField: undefined,
+    id: undefined,
     className: undefined,
     style: undefined,
     children: undefined,
