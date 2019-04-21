@@ -17,7 +17,7 @@ describe('<Header />', () => {
                 isSelected
                 sortDirection="asc" />,
         );
-        expect(component.find('th').prop('className')).toBe('rainbow-table_header rainbow-table_header--sortable rainbow-table_header--selected');
+        expect(component.find('th').prop('className')).toBe('rainbow-table_header rainbow-table_header--resizable rainbow-table_header--sortable rainbow-table_header--selected');
     });
     it('should set scope="col" in th element', () => {
         const component = mount(
