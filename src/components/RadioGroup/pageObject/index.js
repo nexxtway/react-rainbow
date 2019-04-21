@@ -1,4 +1,4 @@
-const PageRadio = require('./radio');
+const PageRadioItem = require('./radio');
 
 /**
  * RadioGroup page object class.
@@ -22,7 +22,7 @@ class PageRadioGroup {
     getItem(itemPosition) {
         const items = $(this.rootElement).$$('.rainbow-radio-group_radio');
         if (items[itemPosition]) {
-            return new PageRadio(`${this.rootElement} .rainbow-radio-group_radio:nth-child(${itemPosition + 1})`);
+            return new PageRadioItem(`${this.rootElement} .rainbow-radio-group_radio:nth-child(${itemPosition + 1})`);
         }
         return null;
     }

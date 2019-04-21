@@ -2,7 +2,7 @@
  * Star page object class.
  * @class
  */
-class PageStar {
+class PageRatingStar {
     /**
      * Create a new Star page object.
      * @constructor
@@ -36,4 +36,4 @@ class PageStar {
     }
 }
 
-module.exports = PageStar;
+module.exports = PageRatingStar;

@@ -2,7 +2,7 @@
  * Checkbox page object class.
  * @class
  */
-class PageCheckbox {
+class PageCheckboxItem {
     /**
      * Create a new Checkbox page object.
      * @constructor
@@ -39,4 +39,4 @@ class PageCheckbox {
     }
 }
 
-module.exports = PageCheckbox;
+module.exports = PageCheckboxItem;
