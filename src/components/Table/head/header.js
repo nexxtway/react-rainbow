@@ -17,6 +17,7 @@ export default class Header extends Component {
     getClassName() {
         const { sortable, isSelected } = this.props;
         return classnames('rainbow-table_header', {
+            'rainbow-table_header--resizable': this.isResizable(),
             'rainbow-table_header--sortable': sortable,
             'rainbow-table_header--selected': isSelected,
         });

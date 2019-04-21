@@ -19,7 +19,7 @@
   border: 1px solid transparent;
   color: #576574;
   font-size: 0.875rem;
-  height: 40px;
+  height: 42px;
   line-height: 40px;
   padding: 0 0.5rem;
   max-width: 100%;
@@ -31,6 +31,4 @@
   align-items: center;
   display: flex;
   padding: 0 15px;
-  border: 1px solid transparent;
-  height: 40px;
-  line-height: 40px; }
+  border: 1px solid transparent; }

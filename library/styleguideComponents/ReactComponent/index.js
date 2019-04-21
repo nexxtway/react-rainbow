@@ -75,7 +75,7 @@ export default class ReactComponent extends Component {
                     </div>
 
                     <Tabset
-                        className="rainbow-p-horizontal_x-large rainbow-m-bottom_xx-large react-rainbow-component_tabset"
+                        className="rainbow-p-horizontal_x-large rainbow-m-bottom_x-large react-rainbow-component_tabset"
                         activeTabName={activeTabName}
                         onSelect={this.handleOnSelect}>
 
@@ -86,7 +86,7 @@ export default class ReactComponent extends Component {
                 </div>
                 <div className="rainbow-p-top_small rainbow-p-horizontal_x-large react-rainbow-component_container">
                     <RenderIf isTrue={activeTabName === 'examples'}>
-                        <div className="rainbow-m-left_x-large rainbow-m-right_xx-large react-rainbow-component_interactive-example">
+                        <div className="rainbow-m-left_x-large rainbow-m-right_x-large react-rainbow-component_interactive-example">
                             <div className={getEditLinkClassName()}>
                                 <a
                                     className="rainbow-link"
@@ -102,7 +102,7 @@ export default class ReactComponent extends Component {
                     </RenderIf>
                     <RenderIf isTrue={activeTabName === 'properties'}>
                         <Card
-                            className="rainbow-m-bottom_x-large rainbow-m-left_xx-large rainbow-m-right_x-large react-rainbow-component_properties-table"
+                            className="rainbow-m-bottom_x-large rainbow-m-left_x-large rainbow-m-right_x-large react-rainbow-component_properties-table"
                             icon={<FontAwesomeIcon icon={faList} size="lg" className="rainbow-color_brand" />}
                             actions={
                                 <a
