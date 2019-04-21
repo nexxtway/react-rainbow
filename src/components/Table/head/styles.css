@@ -97,8 +97,7 @@ th:first-of-type .rainbow-table_header-container {
   .rainbow-table_header--sortable:hover .rainbow-table_header-resize-bar {
     background-color: #e3e5ed; }
   .rainbow-table_header--sortable:hover .rainbow-table_header-container {
-    border-color: #e3e5ed;
-    border-right-color: transparent; }
+    border-color: #e3e5ed; }
   .rainbow-table_header--sortable:hover .rainbow-table_header-arrow {
     visibility: visible; }
 
