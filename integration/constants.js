@@ -7,4 +7,5 @@ module.exports = {
     ARROW_UP_KEY: '\uE013',
     ARROW_RIGHT_KEY: '\uE014',
     ARROW_DOWN_KEY: '\uE015',
+    SHIFT_KEY: '\uE008',
 };

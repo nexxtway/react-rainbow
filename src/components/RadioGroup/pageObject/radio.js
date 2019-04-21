@@ -2,7 +2,7 @@
  * Radio page object class.
  * @class
  */
-class PageRadio {
+class PageRadioItem {
     /**
      * Create a new Radio page object.
      * @constructor
@@ -38,4 +38,4 @@ class PageRadio {
     }
 }
 
-module.exports = PageRadio;
+module.exports = PageRadioItem;

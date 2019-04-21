@@ -1,4 +1,4 @@
-const PageIndicator = require('./indicator');
+const PageCarouselCardIndicator = require('./indicator');
 
 /**
  * CarouselCard page object class.
@@ -23,7 +23,7 @@ class PageCarouselCard {
     getIndicatorItem(itemPosition) {
         const items = $(this.rootElement).$$('.rainbow-carousel_indicators-container');
         if (items[itemPosition]) {
-            return new PageIndicator(`${this.rootElement} .rainbow-carousel_indicators-container:nth-child(${itemPosition + 1})`);
+            return new PageCarouselCardIndicator(`${this.rootElement} .rainbow-carousel_indicators-container:nth-child(${itemPosition + 1})`);
         }
         return null;
     }

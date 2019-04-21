@@ -2,7 +2,7 @@
  * Indicator page object class.
  * @class
  */
-class PageIndicator {
+class PageCarouselCardIndicator {
     /**
      * Create a new Indicator page object.
      * @constructor
@@ -39,4 +39,4 @@ class PageIndicator {
     }
 }
 
-module.exports = PageIndicator;
+module.exports = PageCarouselCardIndicator;

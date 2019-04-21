@@ -1,4 +1,4 @@
-const PageCheckbox = require('./checkbox');
+const PageCheckboxItem = require('./checkbox');
 
 /**
  * CheckboxGroup page object class.
@@ -22,7 +22,7 @@ class PageCheckboxGroup {
     getItem(itemPosition) {
         const items = $(this.rootElement).$$('.rainbow-checkbox-group_checkbox');
         if (items[itemPosition]) {
-            return new PageCheckbox(`${this.rootElement} .rainbow-checkbox-group_checkbox:nth-child(${itemPosition + 1})`);
+            return new PageCheckboxItem(`${this.rootElement} .rainbow-checkbox-group_checkbox:nth-child(${itemPosition + 1})`);
         }
         return null;
     }
