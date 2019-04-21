@@ -34,7 +34,7 @@ class PageSelect {
      * @returns {bool}
      */
     hasFocusSelect() {
-        return $(this.rootElement).$('select').hasFocus();
+        return $(this.rootElement).$('select').isFocused();
     }
 
     /**

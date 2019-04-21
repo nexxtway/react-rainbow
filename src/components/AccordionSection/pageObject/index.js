@@ -26,7 +26,7 @@ class PageAccordionSection {
      * @returns {bool}
      */
     hasFocusButtonIcon() {
-        return $(this.rootElement).$('.rainbow-accordion-section_summary > button').hasFocus();
+        return $(this.rootElement).$('.rainbow-accordion-section_summary > button').isFocused();
     }
 
     /**
@@ -35,7 +35,7 @@ class PageAccordionSection {
     * @returns {bool}
     */
     isExpanded() {
-        return $(this.rootElement).$('.rainbow-accordion-section_content').isVisible();
+        return $(this.rootElement).$('.rainbow-accordion-section_content').isDisplayed();
     }
 }
 

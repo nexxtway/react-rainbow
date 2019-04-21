@@ -6,11 +6,13 @@ const TABSET = '#tabset-1';
 describe('Tabset base example', () => {
     beforeAll(() => {
         browser.url('/#!/Tabset/1');
-        browser.waitForExist(TABSET);
     });
     beforeEach(() => {
         browser.refresh();
+        const component = $(TABSET);
+        component.waitForExist();
     });
+
     it('should select the first tab when selected', () => {
         const tabset = new PageTabset(TABSET);
         const tabItem = tabset.getItem(0);
@@ -50,16 +52,16 @@ describe('Tabset base example', () => {
     });
     it('should set the left button visible when the screen size is resized', () => {
         const tabset = new PageTabset(TABSET);
-        browser.windowHandleSize({ width: 1920, height: 1080 });
+        browser.setWindowSize(1920, 1080);
         expect(tabset.isLeftButtonVisible()).toBe(false);
-        browser.windowHandleSize({ width: 705, height: 705 });
+        browser.setWindowSize(705, 705);
         expect(tabset.isLeftButtonVisible()).toBe(true);
     });
     it('should set the right button visible when the screen size is resized', () => {
         const tabset = new PageTabset(TABSET);
-        browser.windowHandleSize({ width: 1920, height: 1080 });
+        browser.setWindowSize(1920, 1080);
         expect(tabset.isRightButtonVisible()).toBe(false);
-        browser.windowHandleSize({ width: 705, height: 705 });
+        browser.setWindowSize(705, 705);
         expect(tabset.isRightButtonVisible()).toBe(true);
     });
 });

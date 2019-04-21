@@ -63,7 +63,7 @@ jobs:
           
       - run: sleep 10
           
-      - run: yarn test:integration --headless
+      - run: yarn test:integration
 
       - store_test_results:
           path: ./junit-results

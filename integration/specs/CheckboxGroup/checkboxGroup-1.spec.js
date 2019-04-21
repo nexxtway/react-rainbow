@@ -4,10 +4,15 @@ const { TAB_KEY, SPACE_KEY } = require('../../constants');
 const CHECKBOX_GROUP = '#checkbox-group-1';
 
 describe('CheckboxGroup base example', () => {
-    beforeEach(() => {
+    beforeAll(() => {
         browser.url('/#!/CheckboxGroup/1');
-        browser.refresh();
     });
+    beforeEach(() => {
+        browser.refresh();
+        const component = $(CHECKBOX_GROUP);
+        component.waitForExist();
+    });
+
     it('should set the focus on the checkbox clicked', () => {
         const checkboxGroup = new PageCheckboxGroup(CHECKBOX_GROUP);
         const checkbox = checkboxGroup.getItem(0);

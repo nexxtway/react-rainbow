@@ -4,9 +4,13 @@ const { ARROW_LEFT_KEY, ARROW_RIGHT_KEY } = require('../../constants');
 const CAROUSEL = '#carousel-1';
 
 describe('CarouselCard base example', () => {
-    beforeEach(() => {
+    beforeAll(() => {
         browser.url('/#!/CarouselCard/1');
+    });
+    beforeEach(() => {
         browser.refresh();
+        const component = $(CAROUSEL);
+        component.waitForExist();
     });
 
     it('should select the first indicator when selected', () => {

@@ -5,12 +5,14 @@ const TABSET = '#tabset-3';
 describe('Tabset with multi Tabs', () => {
     beforeAll(() => {
         browser.url('/#!/Tabset/5');
-        browser.waitForExist(TABSET);
-        browser.windowHandleSize({ width: 1280, height: 1280 });
+        browser.setWindowSize(1280, 1280);
     });
     beforeEach(() => {
         browser.refresh();
+        const component = $(TABSET);
+        component.waitForExist();
     });
+
     it('should be disabled the left button when the first tab is visible', () => {
         const tabset = new PageTabset(TABSET);
         const firstTab = tabset.getItem(0);

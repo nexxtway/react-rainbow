@@ -10,10 +10,15 @@ const MENU_BTN = '#button-menu';
 const REACT_LOGO = 'img[alt="rainbow logo"]';
 
 describe('ButtonMenu with subheaders example', () => {
-    beforeEach(() => {
+    beforeAll(() => {
         browser.url('/#!/ButtonMenu/5');
-        browser.refresh();
     });
+    beforeEach(() => {
+        browser.refresh();
+        const component = $(MENU_BTN);
+        component.waitForExist();
+    });
+
     it('should open the menu when click on the button', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
         buttonMenu.click();
@@ -22,7 +27,8 @@ describe('ButtonMenu with subheaders example', () => {
     it('should close the menu when the menu is opened and click outside of the menu', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
         buttonMenu.click();
-        browser.click(REACT_LOGO);
+        const logoElement = $(REACT_LOGO);
+        logoElement.click();
         expect(buttonMenu.isOpen()).toBe(false);
     });
     it('should close the menu when the menu is opened and press ESC', () => {

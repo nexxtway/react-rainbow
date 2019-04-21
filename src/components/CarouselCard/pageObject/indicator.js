@@ -26,7 +26,7 @@ class PageCarouselCardIndicator {
      * @returns {bool}
      */
     hasFocus() {
-        return $(this.rootElement).$('a').hasFocus();
+        return $(this.rootElement).$('a').isFocused();
     }
 
     /**

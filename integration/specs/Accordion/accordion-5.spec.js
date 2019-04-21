@@ -3,10 +3,15 @@ const PageAccordion = require('../../../src/components/Accordion/pageObject');
 const ACCORDION = '#accordion-multiple-1';
 
 describe('Accordion when multiple is passed', () => {
-    beforeEach(() => {
+    beforeAll(() => {
         browser.url('/#!/Accordion/5');
-        browser.refresh();
     });
+    beforeEach(() => {
+        browser.refresh();
+        const component = $(ACCORDION);
+        component.waitForExist();
+    });
+
     it('should collapse the accordion section when the accordion section is expanded and click on the button icon', () => {
         const accordion = new PageAccordion(ACCORDION);
         const accordionSection = accordion.getItem(0);

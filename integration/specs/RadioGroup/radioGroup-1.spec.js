@@ -4,10 +4,15 @@ const { ARROW_DOWN_KEY } = require('../../constants');
 const RADIO_GROUP = '#radio-group-component-1';
 
 describe('RadioGroup base example', () => {
-    beforeEach(() => {
+    beforeAll(() => {
         browser.url('/#!/RadioGroup/1');
-        browser.refresh();
     });
+    beforeEach(() => {
+        browser.refresh();
+        const component = $(RADIO_GROUP);
+        component.waitForExist();
+    });
+
     it('should focus the item clicked', () => {
         const radioGroup = new PageRadioGroup(RADIO_GROUP);
         const radio = radioGroup.getItem(1);

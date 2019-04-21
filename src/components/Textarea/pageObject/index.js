@@ -34,7 +34,7 @@ class PageTextarea {
     * @returns {bool}
     */
     hasFocusTextarea() {
-        return $(this.rootElement).$('textarea').hasFocus();
+        return $(this.rootElement).$('textarea').isFocused();
     }
 
    /**

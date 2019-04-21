@@ -46,7 +46,7 @@ class PageButtonMenu {
     * @returns {bool}
     */
     isOpen() {
-        return $(this.rootElement).$('.rainbow-primitive-menu_dropdown').isVisible();
+        return $(this.rootElement).$('.rainbow-primitive-menu_dropdown').isDisplayed();
     }
 
    /**
@@ -55,7 +55,7 @@ class PageButtonMenu {
     * @returns {bool}
     */
     hasFocusButton() {
-        return $(this.rootElement).$('button').hasFocus();
+        return $(this.rootElement).$('button').isFocused();
     }
 }
 

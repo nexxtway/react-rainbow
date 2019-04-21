@@ -9,7 +9,8 @@ describe('Table with selected rows', () => {
     });
     beforeEach(() => {
         browser.refresh();
-        browser.waitForExist(TABLE);
+        const component = $(TABLE);
+        component.waitForExist();
     });
     it('should have the right rows selected initially', () => {
         const table = new PageTable(TABLE);

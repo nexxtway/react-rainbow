@@ -26,7 +26,7 @@ class PageVerticalSectionOverflow {
      * @returns {bool}
      */
     isExpanded() {
-        return $(this.rootElement).$('[data-id="vertical-overflow"]').isVisible();
+        return $(this.rootElement).$('[data-id="vertical-overflow"]').isDisplayed();
     }
 
     /**
@@ -51,7 +51,7 @@ class PageVerticalSectionOverflow {
      * @returns {bool}
      */
     hasFocusButton() {
-        return $(this.rootElement).$('.rainbow-vertical-section-overflow_button').hasFocus();
+        return $(this.rootElement).$('.rainbow-vertical-section-overflow_button').isFocused();
     }
 }
 

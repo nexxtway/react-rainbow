@@ -34,7 +34,7 @@ class PageInput {
      * @returns {bool}
      */
     hasFocusInput() {
-        return $(this.rootElement).$('input').hasFocus();
+        return $(this.rootElement).$('input').isFocused();
     }
 
     /**

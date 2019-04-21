@@ -26,7 +26,7 @@ class PageTab {
      * @returns {bool}
      */
     hasFocus() {
-        return $(this.rootElement).$('a').hasFocus();
+        return $(this.rootElement).$('a').isFocused();
     }
 
     /**
@@ -44,7 +44,7 @@ class PageTab {
      * @returns {bool}
      */
     isVisibleWithinViewport() {
-        return $(this.rootElement).$('a').isVisibleWithinViewport();
+        return $(this.rootElement).$('a').isDisplayedInViewport();
     }
 }
 

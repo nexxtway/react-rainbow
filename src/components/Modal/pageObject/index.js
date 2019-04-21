@@ -18,7 +18,7 @@ class PageModal {
      * @method
      */
     clickCloseButton() {
-        browser.waitUntil(() => $(this.rootElement).$('.rainbow-modal_close-button').isVisible());
+        browser.waitUntil(() => $(this.rootElement).$('.rainbow-modal_close-button').isDisplayed());
         $(this.rootElement).$('.rainbow-modal_close-button').click();
     }
 
@@ -26,9 +26,7 @@ class PageModal {
      * Clicks the backdrop element.
      * @method
      */
-    clickOutside() {
-        $(this.rootElement).leftClick(1, 1);
-    }
+    // clickOutside() {}
 
     /**
      * Returns true when the modal is open, false otherwise.
@@ -36,8 +34,8 @@ class PageModal {
      * @returns {bool}
      */
     isOpen() {
-        if ($(this.rootElement).isVisible()) {
-            return $(this.rootElement).$('section[role="dialog"]').isVisible() && $(this.rootElement).$('.rainbow-modal_close-button').isVisible();
+        if ($(this.rootElement).isDisplayed()) {
+            return $(this.rootElement).$('section[role="dialog"]').isDisplayed() && $(this.rootElement).$('.rainbow-modal_close-button').isDisplayed();
         }
         return false;
     }
@@ -48,7 +46,7 @@ class PageModal {
      * @returns {bool}
      */
     hasFocusCloseButton() {
-        return $(this.rootElement).$('.rainbow-modal_close-button').hasFocus();
+        return $(this.rootElement).$('.rainbow-modal_close-button').isFocused();
     }
 
     /**

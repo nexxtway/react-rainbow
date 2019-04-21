@@ -8,7 +8,8 @@ describe('Table with radio buttons selection', () => {
     });
     beforeEach(() => {
         browser.refresh();
-        browser.waitForExist(TABLE);
+        const component = $(TABLE);
+        component.waitForExist();
     });
     it('should select a row', () => {
         const table = new PageTable(TABLE);

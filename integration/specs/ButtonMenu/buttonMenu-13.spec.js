@@ -7,10 +7,15 @@ const {
 const MENU_BTN = '#button-menu-disabled-items';
 
 describe('ButtonMenu when the second and last items are disabled', () => {
-    beforeEach(() => {
+    beforeAll(() => {
         browser.url('/#!/ButtonMenu/13');
-        browser.refresh();
     });
+    beforeEach(() => {
+        browser.refresh();
+        const component = $(MENU_BTN);
+        component.waitForExist();
+    });
+
     it('should move to the first item when last focusable item is active and press arrow down', () => {
         const buttonMenu = new PageButtonMenu(MENU_BTN);
         const lastFocusableMenuItem = buttonMenu.getItem(3);
