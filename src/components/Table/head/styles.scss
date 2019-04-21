@@ -31,8 +31,8 @@
     display: flex;
     padding: 0 15px;
     border: 1px solid transparent;
-    height: 40px;
-    line-height: 40px;
+    border-top: 1px solid #e3e5ed;
+    border-bottom: 1px solid #e3e5ed;
 }
 
 .rainbow-table_header-container {
@@ -42,6 +42,8 @@
     justify-content: space-between;
     height: 44px;
     padding: 0 $padding-x-small;
+    border-top: 1px solid #e3e5ed;
+    border-bottom: 1px solid #e3e5ed;
 }
 
 th:first-of-type .rainbow-table_header-container {
@@ -158,6 +160,25 @@ th:first-of-type .rainbow-table_header-container {
 
     &:hover .rainbow-table_header-container {
         border-color: $color-brand;
+    }
+}
+
+.rainbow-table_header--resizable {
+    cursor: pointer;
+
+    &:hover {
+        .rainbow-table_header-wrapper {
+            background-color: #fff;
+        }
+
+        .rainbow-table_header-resize-bar {
+            background-color: $color-gray-2;
+        }
+
+        .rainbow-table_header-container {
+            border-color: $color-gray-2;
+            border-right-color: transparent;
+        }
     }
 }
 
