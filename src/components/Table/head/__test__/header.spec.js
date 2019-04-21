@@ -10,7 +10,7 @@ document.addEventListener = jest.fn((event, cb) => {
 const preventDefault = jest.fn();
 
 describe('<Header />', () => {
-    it('should set the right class names in th element when sortable, isSelected, and is resizable are passed', () => {
+    it('should set the right class names in th element when sortable and isSelected are passed and is resizable', () => {
         const component = mount(
             <Header
                 sortable
