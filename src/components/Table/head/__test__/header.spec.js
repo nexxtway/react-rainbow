@@ -10,7 +10,7 @@ document.addEventListener = jest.fn((event, cb) => {
 const preventDefault = jest.fn();
 
 describe('<Header />', () => {
-    it('should set the right class names in th element when sortable and isSelected are passed', () => {
+    it('should set the right class names in th element when sortable, isSelected, and is resizable are passed', () => {
         const component = mount(
             <Header
                 sortable
@@ -18,6 +18,12 @@ describe('<Header />', () => {
                 sortDirection="asc" />,
         );
         expect(component.find('th').prop('className')).toBe('rainbow-table_header rainbow-table_header--resizable rainbow-table_header--sortable rainbow-table_header--selected');
+    });
+    it('should set the right class names in th element when resizeColumnDisabled is passed', () => {
+        const component = mount(
+            <Header resizeColumnDisabled />,
+        );
+        expect(component.find('th').prop('className')).toBe('rainbow-table_header');
     });
     it('should set scope="col" in th element', () => {
         const component = mount(
