@@ -33,7 +33,7 @@ jobs:
 
   integration_tests:
     docker:
-      - image: circleci/node:8.9.4-stretch-browsers
+      - image: circleci/node:11.8.0-stretch-browsers
 
     working_directory: ~/repo
 
@@ -73,7 +73,7 @@ jobs:
 
   deploy_firebase:
     docker:
-      - image: circleci/node:8.9.4-stretch-browsers
+      - image: circleci/node:11.8.0-stretch-browsers
 
     working_directory: ~/repo
 

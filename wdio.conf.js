@@ -52,6 +52,15 @@ exports.config = {
         maxInstances: 5,
         //
         browserName: 'chrome',
+        'goog:chromeOptions': {
+            // (see https://developers.google.com/web/updates/2017/04/headless-chrome)
+            args: (() => {
+                if (process.argv.indexOf('--headless') !== -1) {
+                    return ['disable-gpu', 'no-sandbox', 'headless'];
+                }
+                return ['disable-gpu', 'no-sandbox'];
+            })(),
+        },
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
