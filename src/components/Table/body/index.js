@@ -1,7 +1,21 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Row from './row';
+import Loading from './loading';
+import Empty from './empty';
 import './styles.css';
+
+function getData(data = [], isLoading = false) {
+    let newData;
+    if (isLoading) {
+        newData = [
+            ...data,
+            { type: 'LOADING' },
+        ];
+    }
+    newData = data;
+    return newData;
+}
 
 export default class Body extends PureComponent {
     render() {
@@ -12,10 +26,21 @@ export default class Body extends PureComponent {
             tableId,
             onSelectRow,
             onDeselectRow,
+            isLoading,
         } = this.props;
+        const hasData = Array.isArray(data) && data.length > 0;
 
-        if (Array.isArray(data) && Array.isArray(columns)) {
-            return data.map((item, index) => {
+        if (!hasData && isLoading) {
+            return <Loading columnsLength={columns.length} />;
+        }
+
+        if (!hasData && !isLoading) {
+            return <Empty />;
+        }
+
+        if (hasData && Array.isArray(columns)) {
+            const newData = getData(data, isLoading);
+            return newData.map((item, index) => {
                 const row = rows[index];
                 const rowKeyValue = rows[index].key;
 

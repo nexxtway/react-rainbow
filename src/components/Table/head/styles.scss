@@ -30,9 +30,7 @@
     align-items: center;
     display: flex;
     padding: 0 15px;
-    border: 1px solid transparent;
-    border-top: 1px solid #e3e5ed;
-    border-bottom: 1px solid #e3e5ed;
+    border: 1px solid $color-gray-1;
 }
 
 .rainbow-table_header-container {
@@ -42,8 +40,6 @@
     justify-content: space-between;
     height: 44px;
     padding: 0 $padding-x-small;
-    border-top: 1px solid #e3e5ed;
-    border-bottom: 1px solid #e3e5ed;
 }
 
 th:first-of-type .rainbow-table_header-container {
@@ -175,7 +171,7 @@ th:first-of-type .rainbow-table_header-container {
         }
 
         .rainbow-table_header-container {
-            border-color: $color-gray-2;
+            border-color: transparent;
             border-right-color: transparent;
         }
     }

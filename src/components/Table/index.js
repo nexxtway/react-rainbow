@@ -311,6 +311,7 @@ export default class Table extends Component {
 
     render() {
         const {
+            id,
             data,
             sortedBy,
             sortDirection,
@@ -319,7 +320,10 @@ export default class Table extends Component {
             minColumnWidth,
             maxColumnWidth,
             style,
-            id,
+            isLoading,
+            iconMessageEmpty,
+            titleMessageEmpty,
+            descriptionMessageEmpty,
         } = this.props;
         const {
             columns,
@@ -364,6 +368,10 @@ export default class Table extends Component {
                                         columns={columns}
                                         rows={rows}
                                         tableId={this.tableId}
+                                        isLoading={isLoading}
+                                        iconMessageEmpty={iconMessageEmpty}
+                                        titleMessageEmpty={titleMessageEmpty}
+                                        descriptionMessageEmpty={descriptionMessageEmpty}
                                         onSelectRow={this.handleSelectRow}
                                         onDeselectRow={this.handleDeselectRow} />
                                 </tbody>
@@ -414,6 +422,18 @@ Table.propTypes = {
     selectedRows: PropTypes.array,
     /** It is required for associate each row with a unique ID. Must be one of the data key. */
     keyField: PropTypes.string,
+    /** Specifies whether more data is being loaded. The default is false. */
+    isLoading: PropTypes.bool,
+    /** The icon that appears in the message of the Table when it is empty. */
+    iconMessageEmpty: PropTypes.node,
+    /** The title that appears in the message of the Table when it is empty. */
+    titleMessageEmpty: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
+    /** The description that appears in the message of the Table when it is empty. */
+    descriptionMessageEmpty: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
     /** The id of the outer element. */
     id: PropTypes.string,
     /** A CSS class for the outer element, in addition to the component's base classes. */
@@ -440,6 +460,10 @@ Table.defaultProps = {
     maxRowSelection: undefined,
     selectedRows: undefined,
     keyField: undefined,
+    isLoading: false,
+    iconMessageEmpty: undefined,
+    titleMessageEmpty: 'Title empty',
+    descriptionMessageEmpty: 'Description of the empty message',
     id: undefined,
     className: undefined,
     style: undefined,

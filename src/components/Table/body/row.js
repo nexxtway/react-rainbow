@@ -43,6 +43,11 @@ export default function Row(props) {
                 isSelected={isSelected} />
         );
     });
+
+    if (data.type === 'LOADING') {
+        return 'loading row';
+    }
+
     return (
         <tr tabIndex={-1} aria-selected={isSelected} className={getClassName()}>
             {cells}

@@ -17,6 +17,7 @@
     padding-top: 44px;
     position: relative;
     -webkit-overflow-scrolling: touch;
+    border-top: 1px solid #e3e5ed;
 }
 
 .rainbow-table_container--scrollable-y {
@@ -24,11 +25,13 @@
     overflow: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    border-top: 1px solid #e3e5ed;
 }
 
 .rainbow-table {
     table-layout: fixed;
     border-collapse: separate;
+    background-color: #fff;
 }
 
 .rainbow-table_body {
