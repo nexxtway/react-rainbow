@@ -6,7 +6,7 @@ version: 2
 jobs:
   build_and_test:
     docker:
-      - image: circleci/node:8.9.4-stretch-browsers
+      - image: circleci/node:11.8.0-stretch-browsers
 
     working_directory: ~/repo
 
@@ -56,14 +56,14 @@ jobs:
             sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
             sudo apt-get update
             sudo apt-get -y install google-chrome-stable
-            
+
       - run:
           command: yarn start
           background: true
-          
+
       - run: sleep 10
           
-      - run: yarn test:integration
+      - run: yarn test:integration --headless
 
       - store_test_results:
           path: ./junit-results
