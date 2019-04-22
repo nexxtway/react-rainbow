@@ -8,6 +8,7 @@ exports.config = {
     // on a remote machine).
     runner: 'local',
     //
+    outputDir: `${__dirname}/junit-results`,
     // ==================
     // Specify Test Files
     // ==================
@@ -137,10 +138,7 @@ exports.config = {
     // see also: https://webdriver.io/docs/dot-reporter.html
     reporters: [
         'spec',
-        [
-            'junit',
-            { outputDir: `${__dirname}/junit-results` },
-        ],
+        'junit',
     ],
 
     //
