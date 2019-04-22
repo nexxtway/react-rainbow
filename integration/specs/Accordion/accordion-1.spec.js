@@ -9,10 +9,15 @@ const {
 const ACCORDION = '#accordion-1';
 
 describe('Accordion whend multiple is not passed', () => {
-    beforeEach(() => {
+    beforeAll(() => {
         browser.url('/#!/Accordion/1');
-        browser.refresh();
     });
+    beforeEach(() => {
+        browser.refresh();
+        const component = $(ACCORDION);
+        component.waitForExist();
+    });
+
     it('should expand the accordion section when its button icon is clicked', () => {
         const accordion = new PageAccordion(ACCORDION);
         const accordionSection = accordion.getItem(0);

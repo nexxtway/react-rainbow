@@ -7,9 +7,11 @@ const MODAL = '#modal-2';
 describe('Modal with footer example', () => {
     it('should return focus to the close button when tabbing all elements in modal', () => {
         browser.url('/#!/Modal/5');
-        browser.waitForExist(BUTTON);
+        const triggerButton = $(BUTTON);
+        triggerButton.waitForExist();
+
         const modal = new PageModal(MODAL);
-        browser.click(BUTTON);
+        triggerButton.click();
         modal.waitUntilOpen();
         browser.keys(TAB_KEY);
         browser.keys(TAB_KEY);

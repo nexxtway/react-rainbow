@@ -3,9 +3,15 @@ const PageTextarea = require('../../../src/components/Textarea/pageObject');
 const TEXTAREA = '#example-textarea-1';
 
 describe('Textarea base example', () => {
-    beforeEach(() => {
+    beforeAll(() => {
         browser.url('/#!/Textarea/1');
     });
+    beforeEach(() => {
+        browser.refresh();
+        const component = $(TEXTAREA);
+        component.waitForExist();
+    });
+
     it('should put the textarea focused when clcik on it', () => {
         const textarea = new PageTextarea(TEXTAREA);
         textarea.click();

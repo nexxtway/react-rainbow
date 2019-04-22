@@ -4,10 +4,15 @@ const { TAB_KEY, ENTER_KEY } = require('../../constants');
 const SIDEBAR = '#sidebar-1';
 
 describe('Sidebar with multiple items', () => {
-    beforeEach(() => {
+    beforeAll(() => {
         browser.url('/#!/Sidebar/1');
-        browser.refresh();
     });
+    beforeEach(() => {
+        browser.refresh();
+        const component = $(SIDEBAR);
+        component.waitForExist();
+    });
+
     it('should make componet active on click event', () => {
         const sidebar = new PageSidebar(SIDEBAR);
         const sidebarItem = sidebar.getItem(1);

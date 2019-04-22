@@ -3,10 +3,15 @@ const PageSelect = require('../../../src/components/Select/pageObject');
 const SELECT = '#example-select-1';
 
 describe('Textarea base example', () => {
-    beforeEach(() => {
+    beforeAll(() => {
         browser.url('/#!/Select/1');
-        browser.refresh();
     });
+    beforeEach(() => {
+        browser.refresh();
+        const component = $(SELECT);
+        component.waitForExist();
+    });
+
     it('should put the select focused when clcik on it', () => {
         const select = new PageSelect(SELECT);
         select.click();

@@ -3,10 +3,15 @@ const PageInput = require('../../../src/components/Input/pageObject');
 const INPUT = '#input-component-1';
 
 describe('Input base example', () => {
-    beforeEach(() => {
+    beforeAll(() => {
         browser.url('/#!/Input/1');
-        browser.refresh();
     });
+    beforeEach(() => {
+        browser.refresh();
+        const component = $(INPUT);
+        component.waitForExist();
+    });
+
     it('should put the input element focused when is clicked', () => {
         const input = new PageInput(INPUT);
         input.click();

@@ -4,9 +4,13 @@ const { TAB_KEY, ENTER_KEY } = require('../../constants');
 const VERTICAL_NAV = '#vertical-navigation-11';
 
 describe('VerticalNavigation expandable example', () => {
-    beforeEach(() => {
+    beforeAll(() => {
         browser.url('/#!/VerticalNavigation/11');
+    });
+    beforeEach(() => {
         browser.refresh();
+        const component = $(VERTICAL_NAV);
+        component.waitForExist();
     });
 
     it('should expand the menu when click on its button', () => {

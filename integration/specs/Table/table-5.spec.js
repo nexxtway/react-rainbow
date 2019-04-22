@@ -9,7 +9,8 @@ describe('Table with selection', () => {
     });
     beforeEach(() => {
         browser.refresh();
-        browser.waitForExist(TABLE);
+        const component = $(TABLE);
+        component.waitForExist();
     });
     it('should select and then deselect a row', () => {
         const table = new PageTable(TABLE);

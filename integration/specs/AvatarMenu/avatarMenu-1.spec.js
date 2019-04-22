@@ -10,10 +10,15 @@ const AVATAR_MENU = '#avatar-menu';
 const REACT_LOGO = 'img[alt="rainbow logo"]';
 
 describe('AvatarMenu base example', () => {
-    beforeEach(() => {
+    beforeAll(() => {
         browser.url('/#!/AvatarMenu/1');
-        browser.refresh();
     });
+    beforeEach(() => {
+        browser.refresh();
+        const component = $(AVATAR_MENU);
+        component.waitForExist();
+    });
+
     it('should open the menu when click on the AvatarMenu', () => {
         const avatarMenu = new PageAvatarMenu(AVATAR_MENU);
         avatarMenu.click();
@@ -22,7 +27,8 @@ describe('AvatarMenu base example', () => {
     it('should close the menu when the menu is opened and click outside of the menu', () => {
         const avatarMenu = new PageAvatarMenu(AVATAR_MENU);
         avatarMenu.click();
-        browser.click(REACT_LOGO);
+        const logoElement = $(REACT_LOGO);
+        logoElement.click();
         expect(avatarMenu.isOpen()).toBe(false);
     });
     it('should close the menu when the menu is opened and press ESC', () => {

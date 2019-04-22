@@ -26,7 +26,7 @@ class PageCheckboxToggle {
      * @returns {bool}
      */
     isChecked() {
-        return !!$(this.rootElement).$('input').getAttribute('checked');
+        return !!$(this.rootElement).$('input').isSelected();
     }
 }
 

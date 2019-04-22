@@ -25,7 +25,7 @@ class PageRadioItem {
      * @returns {bool}
      */
     hasFocus() {
-        return $(this.rootElement).$('input[type="radio"]').hasFocus();
+        return $(this.rootElement).$('input[type="radio"]').isFocused();
     }
 
     /**
@@ -34,7 +34,7 @@ class PageRadioItem {
      * @returns {bool}
      */
     isChecked() {
-        return !!$(this.rootElement).$('input[type="radio"]').getAttribute('checked');
+        return !!$(this.rootElement).$('input[type="radio"]').isSelected();
     }
 }
 

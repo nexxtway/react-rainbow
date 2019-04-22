@@ -26,7 +26,7 @@ class PageVerticalItem {
      * @returns {bool}
      */
     hasFocus() {
-        return $(this.rootElement).$('.rainbow-vertical-item_action').hasFocus();
+        return $(this.rootElement).$('.rainbow-vertical-item_action').isFocused();
     }
 
     /**

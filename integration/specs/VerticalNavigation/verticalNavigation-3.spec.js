@@ -3,12 +3,12 @@ const PageVerticalNavigation = require('../../../src/components/VerticalNavigati
 const VERTICAL_NAV = '#vertical-navigation-3';
 
 describe('VerticalNavigation with href example', () => {
-    beforeEach(() => {
+    it('should go to "avatar page" when click on the "Avatar" item', () => {
         browser.url('/#!/VerticalNavigation/3');
         browser.refresh();
-    });
+        const component = $(VERTICAL_NAV);
+        component.waitForExist();
 
-    it('should go to "avatar page" when click on the "Avatar" item', () => {
         const verticalNavigation = new PageVerticalNavigation(VERTICAL_NAV);
         const verticalItem = verticalNavigation.getItem(0);
         verticalItem.click();
