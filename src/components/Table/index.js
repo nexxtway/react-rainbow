@@ -19,6 +19,7 @@ import {
 import ResizeSensor from '../../libs/ResizeSensor';
 import debounce from '../../libs/debounce';
 import { uniqueId } from '../../libs/utils';
+import Icon from './body/emptyIcon';
 import './styles.css';
 
 /**
@@ -321,9 +322,9 @@ export default class Table extends Component {
             maxColumnWidth,
             style,
             isLoading,
-            iconMessageEmpty,
-            titleMessageEmpty,
-            descriptionMessageEmpty,
+            emptyIcon,
+            emptyTitle,
+            emptyDescription,
         } = this.props;
         const {
             columns,
@@ -369,9 +370,9 @@ export default class Table extends Component {
                                         rows={rows}
                                         tableId={this.tableId}
                                         isLoading={isLoading}
-                                        iconMessageEmpty={iconMessageEmpty}
-                                        titleMessageEmpty={titleMessageEmpty}
-                                        descriptionMessageEmpty={descriptionMessageEmpty}
+                                        emptyIcon={emptyIcon}
+                                        emptyTitle={emptyTitle}
+                                        emptyDescription={emptyDescription}
                                         onSelectRow={this.handleSelectRow}
                                         onDeselectRow={this.handleDeselectRow} />
                                 </tbody>
@@ -425,13 +426,13 @@ Table.propTypes = {
     /** Specifies whether more data is being loaded. The default is false. */
     isLoading: PropTypes.bool,
     /** The icon that appears in the message of the Table when it is empty. */
-    iconMessageEmpty: PropTypes.node,
+    emptyIcon: PropTypes.node,
     /** The title that appears in the message of the Table when it is empty. */
-    titleMessageEmpty: PropTypes.oneOfType([
+    emptyTitle: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
     /** The description that appears in the message of the Table when it is empty. */
-    descriptionMessageEmpty: PropTypes.oneOfType([
+    emptyDescription: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
     /** The id of the outer element. */
@@ -461,9 +462,9 @@ Table.defaultProps = {
     selectedRows: undefined,
     keyField: undefined,
     isLoading: false,
-    iconMessageEmpty: undefined,
-    titleMessageEmpty: 'Title empty',
-    descriptionMessageEmpty: 'Description of the empty message',
+    emptyIcon: <Icon />,
+    emptyTitle: 'Title empty',
+    emptyDescription: 'Description of the empty message',
     id: undefined,
     className: undefined,
     style: undefined,

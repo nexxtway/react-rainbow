@@ -1,42 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import EmptyIcon from './emptyIcon';
+import Icon from './emptyIcon';
 
 export default function Empty(props) {
     const {
-        iconMessageEmpty,
-        titleMessageEmpty,
-        descriptionMessageEmpty,
+        emptyIcon,
+        emptyTitle,
+        emptyDescription,
     } = props;
 
     return (
         <td className="rainbow-table_body--empty-container">
             <span className="rainbow-table_body--empty-icon">
-                {iconMessageEmpty}
-                <EmptyIcon />
+                {emptyIcon}
             </span>
             <h1 className="rainbow-table_body--empty-title">
-                {titleMessageEmpty}
+                {emptyTitle}
             </h1>
             <h2 className="rainbow-table_body--empty-description">
-                {descriptionMessageEmpty}
+                {emptyDescription}
             </h2>
         </td>
     );
 }
 
 Empty.propTypes = {
-    iconMessageEmpty: PropTypes.node,
-    titleMessageEmpty: PropTypes.oneOfType([
+    emptyIcon: PropTypes.node,
+    emptyTitle: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
-    descriptionMessageEmpty: PropTypes.oneOfType([
+    emptyDescription: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
 };
 
 Empty.defaultProps = {
-    iconMessageEmpty: undefined,
-    titleMessageEmpty: 'Title empty',
-    descriptionMessageEmpty: 'Description of the empty message',
+    emptyIcon: <Icon />,
+    emptyTitle: 'Title empty',
+    emptyDescription: 'Description of the empty message',
 };
