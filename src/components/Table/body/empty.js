@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import EmptyIcon from './emptyIcon';
 
-export default function Loading(props) {
+export default function Empty(props) {
     const {
         iconMessageEmpty,
         titleMessageEmpty,
@@ -25,7 +25,7 @@ export default function Loading(props) {
     );
 }
 
-Loading.propTypes = {
+Empty.propTypes = {
     iconMessageEmpty: PropTypes.node,
     titleMessageEmpty: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
@@ -35,7 +35,7 @@ Loading.propTypes = {
     ]),
 };
 
-Loading.defaultProps = {
+Empty.defaultProps = {
     iconMessageEmpty: undefined,
     titleMessageEmpty: 'Title empty',
     descriptionMessageEmpty: 'Description of the empty message',
