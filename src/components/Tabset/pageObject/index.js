@@ -30,21 +30,16 @@ class PageTabset {
     }
 
     /**
-     * Returns true when the left button is visible.
+     * Returns true when buttons are visible.
      * @method
      * @returns {bool}
      */
-    isLeftButtonVisible() {
-        return !!$(this.rootElement).$$(BUTTON_SELECTOR)[0];
-    }
-
-    /**
-     * Returns true when the right button is visible.
-     * @method
-     * @returns {bool}
-     */
-    isRightButtonVisible() {
-        return !!$(this.rootElement).$$(BUTTON_SELECTOR)[1];
+    isButtonsVisible() {
+        const buttons = $(this.rootElement).$$(BUTTON_SELECTOR);
+        if (buttons && buttons.length) {
+            return buttons[0].isDisplayed() && buttons[1].isDisplayed();
+        }
+        return false;
     }
 
     /**

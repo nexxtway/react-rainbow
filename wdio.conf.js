@@ -73,7 +73,7 @@ exports.config = {
     // Define all options that are relevant for the WebdriverIO instance here
     sync: true,
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'silent',
+    // logLevel: 'silent',
     //
     // Set specific log levels per logger
     // loggers:
@@ -84,10 +84,10 @@ exports.config = {
     // - wdio-sumologic-reporter
     // - wdio-cli, wdio-config, wdio-sync, wdio-utils
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    // logLevels: {
-        // webdriver: 'info',
-        // 'wdio-applitools-service': 'info'
-    // },
+    logLevels: {
+        webdriver: 'silent',
+        'wdio-local-runner': 'silent',
+    },
     //
     // Enables colors for log output.
     coloredLogs: true,
