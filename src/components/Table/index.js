@@ -423,7 +423,7 @@ Table.propTypes = {
     selectedRows: PropTypes.array,
     /** It is required for associate each row with a unique ID. Must be one of the data key. */
     keyField: PropTypes.string,
-    /** Specifies whether more data is being loaded. The default is false. */
+    /** Specifies whether data is being loaded. The default is false. */
     isLoading: PropTypes.bool,
     /** The icon that appears in the message of the Table when is empty. */
     emptyIcon: PropTypes.node,
