@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { SELECTABLE_CHECKBOX } from '../helpers/columns';
 import Cell from './cell';
+import { LoadingCells } from './loading';
 
 function isFirstAndNoSelectable(index, type) {
     if (index === 0 && type !== SELECTABLE_CHECKBOX) {
@@ -45,7 +46,11 @@ export default function Row(props) {
     });
 
     if (data.type === 'LOADING') {
-        return 'loading row';
+        return (
+            <tr>
+                <LoadingCells value={columns.length} />
+            </tr>
+        );
     }
 
     return (

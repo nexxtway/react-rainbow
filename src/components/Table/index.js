@@ -387,7 +387,7 @@ export default class Table extends Component {
 
 Table.propTypes = {
     /** An array containing the objects(rows) to be displayed. */
-    data: PropTypes.arrayOf(Object).isRequired,
+    data: PropTypes.arrayOf(Object),
     /** The column fieldName that controls the sorting order.
      * Sort the data using the onsort event handler. */
     sortedBy: PropTypes.string,
@@ -449,6 +449,7 @@ Table.propTypes = {
 };
 
 Table.defaultProps = {
+    data: [],
     sortedBy: undefined,
     sortDirection: undefined,
     defaultSortDirection: 'asc',

@@ -12,8 +12,9 @@ function getData(data = [], isLoading = false) {
             ...data,
             { type: 'LOADING' },
         ];
+    } else {
+        newData = data;
     }
-    newData = data;
     return newData;
 }
 
@@ -27,27 +28,39 @@ export default class Body extends PureComponent {
             onSelectRow,
             onDeselectRow,
             isLoading,
+            emptyIcon,
+            emptyTitle,
+            emptyDescription,
         } = this.props;
         const hasData = Array.isArray(data) && data.length > 0;
         const isEmpty = data.length === 0;
+        const columnsLength = columns.length;
 
         if (isEmpty && isLoading) {
-            return <Loading columnsLength={columns.length} />;
+            return <Loading columnsLength={columnsLength} />;
         }
 
         if (isEmpty && !isLoading) {
-            return <Empty />;
+            return (
+                <Empty
+                    columnsLength={columnsLength}
+                    emptyIcon={emptyIcon}
+                    emptyTitle={emptyTitle}
+                    emptyDescription={emptyDescription} />
+            );
         }
 
         if (hasData && Array.isArray(columns)) {
             const newData = getData(data, isLoading);
             return newData.map((item, index) => {
                 const row = rows[index];
-                const rowKeyValue = rows[index].key;
+                const rowKeyValue = rows[index] && rows[index].key;
+                const key = rowKeyValue || `row-${index + 1}`;
 
                 return (
                     <Row
                         {...row}
+                        key={key}
                         data={item}
                         columns={columns}
                         tableId={tableId}
@@ -75,12 +88,22 @@ Body.propTypes = {
     tableId: PropTypes.string.isRequired,
     onSelectRow: PropTypes.func,
     onDeselectRow: PropTypes.func,
+    emptyIcon: PropTypes.node,
+    emptyTitle: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
+    emptyDescription: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
 };
 
 Body.defaultProps = {
     data: [],
     columns: [],
     rows: [],
+    emptyIcon: undefined,
+    emptyTitle: undefined,
+    emptyDescription: undefined,
     onSelectRow: () => {},
     onDeselectRow: () => {},
 };

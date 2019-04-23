@@ -7,12 +7,8 @@ function getRandomWidth() {
     return widths[Math.floor(Math.random() * widths.length)];
 }
 
-export default function Loading(props) {
-    const {
-        columnsLength,
-    } = props;
-
-    const Cells = ({ value }) => Array(value).fill().map((item, index) => {
+export function LoadingCells({ value }) {
+    return Array(value).fill().map((item, index) => {
         const key = `loading-cell-${index}`;
         const styles = {
             width: getRandomWidth(),
@@ -26,20 +22,22 @@ export default function Loading(props) {
             </td>
         );
     });
+}
 
+export default function Loading({ columnsLength }) {
     return (
         <Fragment>
             <tr>
-                <Cells value={columnsLength} />
+                <LoadingCells value={columnsLength} />
             </tr>
             <tr>
-                <Cells value={columnsLength} />
+                <LoadingCells value={columnsLength} />
             </tr>
             <tr>
-                <Cells value={columnsLength - 1} />
+                <LoadingCells value={columnsLength - 1} />
             </tr>
             <tr>
-                <Cells value={columnsLength - 3} />
+                <LoadingCells value={columnsLength - 3} />
             </tr>
         </Fragment>
     );

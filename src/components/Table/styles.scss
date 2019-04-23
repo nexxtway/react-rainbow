@@ -15,7 +15,6 @@
     overflow: hidden;
     overflow-x: auto;
     padding-top: 44px;
-    z-index: 0;
     position: relative;
     -webkit-overflow-scrolling: touch;
     border-top: 1px solid $color-gray-2;
@@ -25,7 +24,6 @@
     height: 100%;
     overflow: hidden;
     overflow-y: auto;
-    z-index: 1;
     -webkit-overflow-scrolling: touch;
     border-top: 1px solid $color-gray-2;
     background-color: white;

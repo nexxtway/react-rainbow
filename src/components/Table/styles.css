@@ -10,7 +10,6 @@
   overflow: hidden;
   overflow-x: auto;
   padding-top: 44px;
-  z-index: 0;
   position: relative;
   -webkit-overflow-scrolling: touch;
   border-top: 1px solid #e3e5ed; }
@@ -19,7 +18,6 @@
   height: 100%;
   overflow: hidden;
   overflow-y: auto;
-  z-index: 1;
   -webkit-overflow-scrolling: touch;
   border-top: 1px solid #e3e5ed;
   background-color: white; }
