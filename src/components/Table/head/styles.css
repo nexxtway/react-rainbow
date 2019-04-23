@@ -16,7 +16,8 @@
   outline: none;
   position: absolute;
   top: 0;
-  height: 44px; }
+  height: 44px;
+  background-color: #f4f6f9; }
 
 .rainbow-table_header-checkbox-container {
   align-items: center;

@@ -29,12 +29,13 @@ export default class Body extends PureComponent {
             isLoading,
         } = this.props;
         const hasData = Array.isArray(data) && data.length > 0;
+        const isEmpty = data.length === 0;
 
-        if (!hasData && isLoading) {
+        if (isEmpty && isLoading) {
             return <Loading columnsLength={columns.length} />;
         }
 
-        if (!hasData && !isLoading) {
+        if (isEmpty && !isLoading) {
             return <Empty />;
         }
 

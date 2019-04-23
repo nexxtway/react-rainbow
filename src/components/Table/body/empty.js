@@ -10,7 +10,7 @@ export default function Empty(props) {
     } = props;
 
     return (
-        <td className="rainbow-table_body--empty-container">
+        <div className="rainbow-table_body--empty-container">
             <span className="rainbow-table_body--empty-icon">
                 {emptyIcon}
             </span>
@@ -20,7 +20,7 @@ export default function Empty(props) {
             <h2 className="rainbow-table_body--empty-description">
                 {emptyDescription}
             </h2>
-        </td>
+        </div>
     );
 }
 
@@ -36,6 +36,6 @@ Empty.propTypes = {
 
 Empty.defaultProps = {
     emptyIcon: <Icon />,
-    emptyTitle: 'Title empty',
-    emptyDescription: 'Description of the empty message',
+    emptyTitle: 'It’s empty here',
+    emptyDescription: 'Our robots did not find any match...',
 };

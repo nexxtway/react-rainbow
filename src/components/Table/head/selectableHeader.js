@@ -26,7 +26,11 @@ export default function SelectableHeader(props) {
 
     if (isRadio) {
         return (
-            <th style={style} scope="col" tabIndex={-1} />
+            <th
+                className="rainbow-table_header-wrapper"
+                style={style}
+                scope="col"
+                tabIndex={-1} />
         );
     }
 

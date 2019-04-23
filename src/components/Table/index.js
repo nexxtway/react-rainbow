@@ -425,13 +425,13 @@ Table.propTypes = {
     keyField: PropTypes.string,
     /** Specifies whether more data is being loaded. The default is false. */
     isLoading: PropTypes.bool,
-    /** The icon that appears in the message of the Table when it is empty. */
+    /** The icon that appears in the message of the Table when is empty. */
     emptyIcon: PropTypes.node,
-    /** The title that appears in the message of the Table when it is empty. */
+    /** The title that appears in the message of the Table when is empty. */
     emptyTitle: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
-    /** The description that appears in the message of the Table when it is empty. */
+    /** The description that appears in the message of the Table when is empty. */
     emptyDescription: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
@@ -463,8 +463,8 @@ Table.defaultProps = {
     keyField: undefined,
     isLoading: false,
     emptyIcon: <Icon />,
-    emptyTitle: 'Title empty',
-    emptyDescription: 'Description of the empty message',
+    emptyTitle: 'It’s empty here',
+    emptyDescription: 'Our robots did not find any match...',
     id: undefined,
     className: undefined,
     style: undefined,
