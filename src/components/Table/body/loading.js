@@ -1,28 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-
-const widths = ['40%', '60%', '70%', '85%', '95%'];
-
-function getRandomWidth() {
-    return widths[Math.floor(Math.random() * widths.length)];
-}
-
-export function LoadingCells({ value }) {
-    return Array(value).fill().map((item, index) => {
-        const key = `loading-cell-${index}`;
-        const styles = {
-            width: getRandomWidth(),
-        };
-
-        return (
-            <td key={key}>
-                <div className="rainbow-table_body--loading">
-                    <div className="rainbow-table_body-element--loading" style={styles} />
-                </div>
-            </td>
-        );
-    });
-}
+import LoadingCells from './loadingCells';
 
 export default function Loading({ columnsLength }) {
     return (
