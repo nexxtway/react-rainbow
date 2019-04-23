@@ -19,6 +19,7 @@ import {
 import ResizeSensor from '../../libs/ResizeSensor';
 import debounce from '../../libs/debounce';
 import { uniqueId } from '../../libs/utils';
+import Icon from './body/emptyIcon';
 import './styles.css';
 
 /**
@@ -311,6 +312,7 @@ export default class Table extends Component {
 
     render() {
         const {
+            id,
             data,
             sortedBy,
             sortDirection,
@@ -319,7 +321,10 @@ export default class Table extends Component {
             minColumnWidth,
             maxColumnWidth,
             style,
-            id,
+            isLoading,
+            emptyIcon,
+            emptyTitle,
+            emptyDescription,
         } = this.props;
         const {
             columns,
@@ -364,6 +369,10 @@ export default class Table extends Component {
                                         columns={columns}
                                         rows={rows}
                                         tableId={this.tableId}
+                                        isLoading={isLoading}
+                                        emptyIcon={emptyIcon}
+                                        emptyTitle={emptyTitle}
+                                        emptyDescription={emptyDescription}
                                         onSelectRow={this.handleSelectRow}
                                         onDeselectRow={this.handleDeselectRow} />
                                 </tbody>
@@ -378,7 +387,7 @@ export default class Table extends Component {
 
 Table.propTypes = {
     /** An array containing the objects(rows) to be displayed. */
-    data: PropTypes.arrayOf(Object).isRequired,
+    data: PropTypes.arrayOf(Object),
     /** The column fieldName that controls the sorting order.
      * Sort the data using the onsort event handler. */
     sortedBy: PropTypes.string,
@@ -414,6 +423,18 @@ Table.propTypes = {
     selectedRows: PropTypes.array,
     /** It is required for associate each row with a unique ID. Must be one of the data key. */
     keyField: PropTypes.string,
+    /** Specifies whether more data is being loaded. The default is false. */
+    isLoading: PropTypes.bool,
+    /** The icon that appears in the message of the Table when is empty. */
+    emptyIcon: PropTypes.node,
+    /** The title that appears in the message of the Table when is empty. */
+    emptyTitle: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
+    /** The description that appears in the message of the Table when is empty. */
+    emptyDescription: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
     /** The id of the outer element. */
     id: PropTypes.string,
     /** A CSS class for the outer element, in addition to the component's base classes. */
@@ -428,6 +449,7 @@ Table.propTypes = {
 };
 
 Table.defaultProps = {
+    data: [],
     sortedBy: undefined,
     sortDirection: undefined,
     defaultSortDirection: 'asc',
@@ -440,6 +462,10 @@ Table.defaultProps = {
     maxRowSelection: undefined,
     selectedRows: undefined,
     keyField: undefined,
+    isLoading: false,
+    emptyIcon: <Icon />,
+    emptyTitle: 'It’s empty here',
+    emptyDescription: 'Our robots did not find any match...',
     id: undefined,
     className: undefined,
     style: undefined,

@@ -1,7 +1,22 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Row from './row';
+import Loading from './loading';
+import Empty from './empty';
 import './styles.css';
+
+function getData(data = [], isLoading = false) {
+    let newData;
+    if (isLoading) {
+        newData = [
+            ...data,
+            { type: 'LOADING' },
+        ];
+    } else {
+        newData = data;
+    }
+    return newData;
+}
 
 export default class Body extends PureComponent {
     render() {
@@ -12,16 +27,40 @@ export default class Body extends PureComponent {
             tableId,
             onSelectRow,
             onDeselectRow,
+            isLoading,
+            emptyIcon,
+            emptyTitle,
+            emptyDescription,
         } = this.props;
+        const hasData = Array.isArray(data) && data.length > 0;
+        const isEmpty = data.length === 0;
+        const columnsLength = columns.length;
 
-        if (Array.isArray(data) && Array.isArray(columns)) {
-            return data.map((item, index) => {
+        if (isEmpty && isLoading) {
+            return <Loading columnsLength={columnsLength} />;
+        }
+
+        if (isEmpty && !isLoading) {
+            return (
+                <Empty
+                    columnsLength={columnsLength}
+                    emptyIcon={emptyIcon}
+                    emptyTitle={emptyTitle}
+                    emptyDescription={emptyDescription} />
+            );
+        }
+
+        if (hasData && Array.isArray(columns)) {
+            const newData = getData(data, isLoading);
+            return newData.map((item, index) => {
                 const row = rows[index];
-                const rowKeyValue = rows[index].key;
+                const rowKeyValue = rows[index] && rows[index].key;
+                const key = rowKeyValue || `row-${index + 1}`;
 
                 return (
                     <Row
                         {...row}
+                        key={key}
                         data={item}
                         columns={columns}
                         tableId={tableId}
@@ -49,12 +88,22 @@ Body.propTypes = {
     tableId: PropTypes.string.isRequired,
     onSelectRow: PropTypes.func,
     onDeselectRow: PropTypes.func,
+    emptyIcon: PropTypes.node,
+    emptyTitle: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
+    emptyDescription: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
 };
 
 Body.defaultProps = {
     data: [],
     columns: [],
     rows: [],
+    emptyIcon: undefined,
+    emptyTitle: undefined,
+    emptyDescription: undefined,
     onSelectRow: () => {},
     onDeselectRow: () => {},
 };

@@ -433,3 +433,123 @@
             <Column header="Email" field="email" />
         </Table>
     </div>
+
+
+##### Table Loading
+
+    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+    const {
+        faCog,
+        faPencilAlt,
+        faStore,
+        faPlus,
+        faBell,
+        faEllipsisV,
+    } = require('@fortawesome/free-solid-svg-icons');
+
+    const data = [
+
+    ];
+
+    const badgeStyles = { color: '#1de9b6' };
+
+    const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
+
+    <div className="rainbow-p-bottom_xx-large">
+        <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
+            <ButtonGroup className="rainbow-m-right_medium">
+                <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
+                <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faEllipsisV} />} />
+            </ButtonGroup>
+        </GlobalHeader>
+        <Table isLoading data={data}>
+            <Column header="Name" field="name" />
+            <Column header="Status" field="status" component={StatusBadge} />
+            <Column header="Company" field="company" />
+            <Column header="Email" field="email" />
+        </Table>
+    </div>
+
+
+##### Table Loading more data
+
+    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+    const {
+        faCog,
+        faPencilAlt,
+        faStore,
+        faPlus,
+        faBell,
+        faEllipsisV,
+    } = require('@fortawesome/free-solid-svg-icons');
+
+    const data = [
+        {
+            name: 'Leandro Torres',
+            company: '90milesbridge',
+            email: 'leandro@gmail.com',
+        },
+        {
+            name: 'Jose Torres',
+            company: 'Google',
+            email: 'jose@gmail.com',
+        },
+        {
+            name: 'Reinier',
+            company: '90milesbridge',
+            email: 'reinier@gmail.com',
+        },
+        {
+            name: 'Sara',
+            company: '90milesbridge',
+            email: 'sara@gmail.com',
+        },
+        {
+            name: 'Tahimi',
+            company: '90milesbridge',
+            email: 'tahimi@gmail.com',
+        },
+    ];
+
+    <div className="rainbow-p-bottom_xx-large">
+        <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
+            <ButtonGroup className="rainbow-m-right_medium">
+                <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
+                <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faEllipsisV} />} />
+            </ButtonGroup>
+        </GlobalHeader>
+        <Table isLoading data={data}>
+            <Column header="Name" field="name" />
+            <Column header="Company" field="company" />
+            <Column header="Email" field="email" />
+        </Table>
+    </div>
+
+
+##### Table Empty
+
+    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+    const {
+        faCog,
+        faPencilAlt,
+        faStore,
+        faPlus,
+        faBell,
+        faEllipsisV,
+    } = require('@fortawesome/free-solid-svg-icons');
+
+
+    <div className="rainbow-p-bottom_xx-large">
+        <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
+            <ButtonGroup className="rainbow-m-right_medium">
+                <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
+                <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faEllipsisV} />} />
+            </ButtonGroup>
+        </GlobalHeader>
+        <Table>
+            <Column header="Name" field="name" />
+            <Column header="Company" field="company" />
+            <Column header="Email" field="email" />
+        </Table>
+    </div>
+

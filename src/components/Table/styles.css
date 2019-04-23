@@ -11,17 +11,21 @@
   overflow-x: auto;
   padding-top: 44px;
   position: relative;
-  -webkit-overflow-scrolling: touch; }
+  -webkit-overflow-scrolling: touch;
+  border-top: 1px solid #e3e5ed; }
 
 .rainbow-table_container--scrollable-y {
-  max-height: 100%;
+  height: 100%;
   overflow: hidden;
   overflow-y: auto;
-  -webkit-overflow-scrolling: touch; }
+  -webkit-overflow-scrolling: touch;
+  border-top: 1px solid #e3e5ed;
+  background-color: white; }
 
 .rainbow-table {
   table-layout: fixed;
-  border-collapse: separate; }
+  border-collapse: separate;
+  background-color: #fff; }
 
 .rainbow-table_body {
   background-color: #fff; }
