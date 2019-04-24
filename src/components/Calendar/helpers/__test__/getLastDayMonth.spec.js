@@ -1,6 +1,6 @@
-import getLastDayMonth from './../get-last-day-month';
+import getLastDayMonth from './../getLastDayMonth';
 
-describe('get-last-day-month', () => {
+describe('getLastDayMonth', () => {
     it('should return a Date of 2019/03/31 when 2019/03/01', () => {
         const date = new Date(2019, 2, 1);
         expect(getLastDayMonth(date).getDate()).toBe(31);

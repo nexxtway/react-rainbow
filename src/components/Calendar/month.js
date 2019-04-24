@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import getLastDayMonth from './helpers/get-last-day-month';
-import addDays from './helpers/add-days';
+import {
+    addDays,
+    getLastDayMonth,
+} from './helpers';
 import Week from './week';
 
 export default function Month(props) {

@@ -5,6 +5,7 @@ const FORMATS = {
 };
 
 export default function formatDate(date, formatStyle = 'medium') {
+    const value = typeof date === 'string' ? new Date(date) : date;
     const options = FORMATS[formatStyle] || FORMATS.medium;
-    return new Intl.DateTimeFormat('en-US', options).format(date);
+    return new Intl.DateTimeFormat('en-US', options).format(value);
 }
