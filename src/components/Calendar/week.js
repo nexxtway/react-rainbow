@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import addDays from './helpers/add-days';
-import isSameDay from './helpers/is-same-day';
+import {
+    addDays,
+    isSameDay,
+} from './helpers';
 import Day from './day';
 
 export default function Week(props) {

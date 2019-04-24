@@ -1,6 +1,6 @@
-import getFirstDayMonth from './../get-first-day-month';
+import getFirstDayMonth from './../getFirstDayMonth';
 
-describe('get-first-day-month', () => {
+describe('getFirstDayMonth', () => {
     it('should return a 2019/03/01 when 2019/03/21', () => {
         const date = new Date(2019, 2, 21);
         expect(getFirstDayMonth(date).getUTCFullYear()).toBe(2019);

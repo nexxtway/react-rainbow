@@ -1,5 +1,3 @@
-
-
 export default function getLastDayMonth(value) {
     const date = new Date(value);
     date.setMonth(date.getMonth() + 1);

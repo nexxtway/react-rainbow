@@ -6,11 +6,14 @@ import RightIcon from './icons/rightArrow';
 import LeftIcon from './icons/leftArrow';
 import DaysOfWeek from './daysOfWeek';
 import Month from './month';
-import getFirstDayMonth from './helpers/get-first-day-month';
-import getLastDayMonth from './helpers/get-last-day-month';
-import addMonths from './helpers/addMonths';
-import getYearsRange from './helpers/get-years-range';
-import getFormattedMonth from './helpers/get-formatted-month';
+import {
+    addMonths,
+    formatDate,
+    getFirstDayMonth,
+    getFormattedMonth,
+    getLastDayMonth,
+    getYearsRange,
+} from './helpers';
 import './styles.css';
 
 /**
@@ -19,16 +22,26 @@ import './styles.css';
 export default class Calendar extends Component {
     constructor(props) {
         super(props);
-        const {
-            value,
-        } = props;
-        const today = new Date();
         this.state = {
-            currentMonth: getFirstDayMonth(value || today),
+            currentMonth: getFirstDayMonth(props.value),
         };
         this.previousMonth = this.previousMonth.bind(this);
         this.nextMonth = this.nextMonth.bind(this);
         this.handleYearChange = this.handleYearChange.bind(this);
+    }
+
+    componentDidUpdate(prevProps) {
+        const { value: prevValue } = prevProps;
+        const { value } = this.props;
+        if (formatDate(prevValue) !== formatDate(value)) {
+            this.updateCurrentMonth(value);
+        }
+    }
+
+    updateCurrentMonth(value) {
+        this.setState({
+            currentMonth: getFirstDayMonth(value),
+        });
     }
 
     nextMonth() {
@@ -53,9 +66,7 @@ export default class Calendar extends Component {
     }
 
     render() {
-        const {
-            currentMonth,
-        } = this.state;
+        const { currentMonth } = this.state;
         const {
             onChange,
             value,
@@ -65,7 +76,7 @@ export default class Calendar extends Component {
             style,
         } = this.props;
         const formattedMonth = getFormattedMonth(currentMonth);
-        const currentYear = this.state.currentMonth.getFullYear();
+        const currentYear = currentMonth.getFullYear();
         const yearsRange = getYearsRange({
             minDate,
             maxDate,
@@ -88,15 +99,18 @@ export default class Calendar extends Component {
                             disabled={disablePreviousMonth}
                             icon={<LeftIcon />}
                             assistiveText="Previous Month" />
+
                         <h3 className="rainbow-calendar_month-text" id="month">
                             {formattedMonth}
                         </h3>
+
                         <ButtonIcon
                             onClick={this.nextMonth}
                             size="medium"
                             disabled={disableNextMonth}
                             icon={<RightIcon />}
                             assistiveText="Next Month" />
+
                     </div>
                     <Select
                         label="select year"
@@ -105,15 +119,17 @@ export default class Calendar extends Component {
                         value={currentYear}
                         options={yearsRange}
                         onChange={this.handleYearChange} />
+
                 </div>
                 <table role="grid" aria-labelledby="month">
                     <DaysOfWeek />
                     <Month
                         value={value}
-                        firstDayMonth={this.state.currentMonth}
+                        firstDayMonth={currentMonth}
                         minDate={minDate}
                         maxDate={maxDate}
                         onChange={onChange} />
+
                 </table>
             </section>
         );
@@ -141,7 +157,7 @@ Calendar.propTypes = {
 };
 
 Calendar.defaultProps = {
-    value: undefined,
+    value: new Date(),
     minDate: undefined,
     maxDate: undefined,
     onChange: () => {},

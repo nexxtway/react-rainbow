@@ -5,7 +5,7 @@ import CalendarIcon from './calendarIcon';
 import Modal from './../Modal';
 import Calendar from './../Calendar';
 import Input from './input';
-import formatDate from './helpers/format-date';
+import formatDate from './helpers/formatDate';
 import withReduxForm from '../../libs/hocs/withReduxForm';
 import { ENTER_KEY, SPACE_KEY } from '../../libs/constants';
 import './styles.css';
