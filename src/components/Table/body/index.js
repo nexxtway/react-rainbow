@@ -36,7 +36,7 @@ export default class Body extends PureComponent {
         const columnsLength = columns.length;
 
         if (isEmpty && isLoading) {
-            return <Loading columnsLength={columnsLength} />;
+            return <Loading columns={columns} />;
         }
 
         if (isEmpty && !isLoading) {

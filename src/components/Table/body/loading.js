@@ -2,29 +2,30 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import LoadingCells from './loadingCells';
 
-export default function Loading({ columnsLength }) {
+export default function Loading({ columns }) {
+    const columnsLength = columns.length;
     return (
         <Fragment>
             <tr>
-                <LoadingCells value={columnsLength} />
+                <LoadingCells columns={columns} value={columnsLength} />
             </tr>
             <tr>
-                <LoadingCells value={columnsLength} />
+                <LoadingCells columns={columns} value={columnsLength} />
             </tr>
             <tr>
-                <LoadingCells value={columnsLength - 1} />
+                <LoadingCells columns={columns} value={columnsLength - 1} />
             </tr>
             <tr>
-                <LoadingCells value={columnsLength - 3} />
+                <LoadingCells columns={columns} value={columnsLength - 3} />
             </tr>
         </Fragment>
     );
 }
 
 Loading.propTypes = {
-    columnsLength: PropTypes.number,
+    columns: PropTypes.array,
 };
 
 Loading.defaultProps = {
-    columnsLength: 0,
+    columns: [],
 };
