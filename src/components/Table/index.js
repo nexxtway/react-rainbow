@@ -16,6 +16,7 @@ import {
     getRowsWithInitalSelectedRows,
     isValidMaxRowSelection,
 } from './helpers/selector';
+import { normalizeData } from './helpers/data';
 import ResizeSensor from '../../libs/ResizeSensor';
 import debounce from '../../libs/debounce';
 import { uniqueId } from '../../libs/utils';
@@ -43,7 +44,7 @@ export default class Table extends Component {
             tableWidth: undefined,
             rows: getRows({
                 keyField,
-                rows: data,
+                rows: normalizeData(data),
                 maxRowSelection: maxRowSelection && Number(maxRowSelection),
                 selectedRowsKeys: {},
             }),
@@ -101,7 +102,7 @@ export default class Table extends Component {
         if (data !== prevData) {
             const rows = getRows({
                 keyField,
-                rows: data,
+                rows: normalizeData(data),
                 maxRowSelection: this.getMaxRowSelection(),
                 selectedRowsKeys: {},
             });
@@ -129,12 +130,12 @@ export default class Table extends Component {
 
     getSelectedRows(rows) {
         const { data } = this.props;
-        return data.filter((item, index) => rows[index].isSelected);
+        return normalizeData(data).filter((item, index) => rows[index].isSelected);
     }
 
     getMaxRowSelection() {
         const { maxRowSelection, data } = this.props;
-        const rowsLength = data.length;
+        const rowsLength = normalizeData(data).length;
         const maxRowSelectionNumber = Number(maxRowSelection);
 
         if (!isValidMaxRowSelection(maxRowSelection, rowsLength)) {
@@ -377,7 +378,7 @@ export default class Table extends Component {
                                 </thead>
                                 <tbody className="rainbow-table_body">
                                     <Body
-                                        data={data}
+                                        data={normalizeData(data)}
                                         columns={columns}
                                         rows={rows}
                                         tableId={this.tableId}

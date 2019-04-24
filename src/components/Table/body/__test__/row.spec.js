@@ -92,4 +92,11 @@ describe('<Row />', () => {
         expect(cell.at(1).prop('isFirst')).toBe(true);
         expect(cell.at(2).prop('isFirst')).toBe(false);
     });
+    it('should render LoadingCells component when data type is LOADING', () => {
+        const rowData = { type: 'LOADING' };
+        const component = mount(
+            <Row data={rowData} columns={columns} />,
+        );
+        expect(component.find('LoadingCells').exists()).toBe(true);
+    });
 });
