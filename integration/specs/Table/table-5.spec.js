@@ -14,6 +14,7 @@ describe('Table with selection', () => {
     });
     it('should select and then deselect a row', () => {
         const table = new PageTable(TABLE);
+        table.waitUntilDataIsLoaded();
         const row5 = table.getRow(4);
         expect(row5.isRowSelected()).toBe(false);
         row5.selectRow();
@@ -23,6 +24,7 @@ describe('Table with selection', () => {
     });
     it('should select all rows', () => {
         const table = new PageTable(TABLE);
+        table.waitUntilDataIsLoaded();
         const row1 = table.getRow(0);
         const row2 = table.getRow(1);
         const row3 = table.getRow(2);
@@ -48,6 +50,7 @@ describe('Table with selection', () => {
     });
     it('should deselect all rows', () => {
         const table = new PageTable(TABLE);
+        table.waitUntilDataIsLoaded();
         const row1 = table.getRow(0);
         const row2 = table.getRow(1);
         const row3 = table.getRow(2);
@@ -67,6 +70,7 @@ describe('Table with selection', () => {
     });
     it('should select the second and fifth row', () => {
         const table = new PageTable(TABLE);
+        table.waitUntilDataIsLoaded();
         const row1 = table.getRow(0);
         const row2 = table.getRow(1);
         const row3 = table.getRow(2);
@@ -86,6 +90,7 @@ describe('Table with selection', () => {
     });
     it('should deselect all rows when the second and fifth row are selected and then deselect all rows', () => {
         const table = new PageTable(TABLE);
+        table.waitUntilDataIsLoaded();
         const row1 = table.getRow(0);
         const row2 = table.getRow(1);
         const row3 = table.getRow(2);
@@ -106,6 +111,7 @@ describe('Table with selection', () => {
     });
     it('should select all rows between selected rows while press shift key', () => {
         const table = new PageTable(TABLE);
+        table.waitUntilDataIsLoaded();
         const row1 = table.getRow(0);
         const row2 = table.getRow(1);
         const row3 = table.getRow(2);
@@ -127,6 +133,7 @@ describe('Table with selection', () => {
     });
     it('should deselect all rows between the two rows deselected while press shift key', () => {
         const table = new PageTable(TABLE);
+        table.waitUntilDataIsLoaded();
         const row1 = table.getRow(0);
         const row2 = table.getRow(1);
         const row3 = table.getRow(2);

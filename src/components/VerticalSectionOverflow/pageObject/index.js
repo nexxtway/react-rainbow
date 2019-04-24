@@ -30,7 +30,7 @@ class PageVerticalSectionOverflow {
     }
 
     /**
-     * Waiting until the expand transition has finished.
+     * Wait until the expand transition has finished.
      * @method
      */
     waitUntilExpand() {
@@ -38,7 +38,7 @@ class PageVerticalSectionOverflow {
     }
 
     /**
-     * Waiting until the contract transition has finished.
+     * Wait until the contract transition has finished.
      * @method
      */
     waitUntilCollapse() {

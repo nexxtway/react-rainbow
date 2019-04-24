@@ -44,7 +44,7 @@ export default class Table extends Component {
             rows: getRows({
                 keyField,
                 rows: data,
-                maxRowSelection: Number(maxRowSelection),
+                maxRowSelection: maxRowSelection && Number(maxRowSelection),
                 selectedRowsKeys: {},
             }),
             bulkSelection: 'none',
@@ -80,12 +80,15 @@ export default class Table extends Component {
             showCheckboxColumn: prevShowCheckboxColumn,
             maxRowSelection: prevMaxRowSelection,
             selectedRows: prevSelectedRows,
+            data: prevData,
         } = prevProps;
         const {
             children,
             showCheckboxColumn,
             maxRowSelection,
             selectedRows,
+            data,
+            keyField,
         } = this.props;
         const prevColumns = getColumns(prevChildren, prevShowCheckboxColumn);
         const currentColumns = getColumns(children, showCheckboxColumn);
@@ -94,6 +97,16 @@ export default class Table extends Component {
         }
         if (prevMaxRowSelection !== maxRowSelection || prevSelectedRows !== selectedRows) {
             this.updateRows();
+        }
+        if (data !== prevData) {
+            const rows = getRows({
+                keyField,
+                rows: data,
+                maxRowSelection: this.getMaxRowSelection(),
+                selectedRowsKeys: {},
+            });
+            this.indexes = getIndexes(rows);
+            this.updateRows(rows);
         }
     }
 
@@ -120,9 +133,8 @@ export default class Table extends Component {
     }
 
     getMaxRowSelection() {
-        const { maxRowSelection } = this.props;
-        const { rows } = this.state;
-        const rowsLength = rows.length;
+        const { maxRowSelection, data } = this.props;
+        const rowsLength = data.length;
         const maxRowSelectionNumber = Number(maxRowSelection);
 
         if (!isValidMaxRowSelection(maxRowSelection, rowsLength)) {
@@ -131,7 +143,7 @@ export default class Table extends Component {
         return maxRowSelectionNumber;
     }
 
-    updateRows() {
+    updateRows(updatedRows) {
         const {
             keyField,
             selectedRows,
@@ -141,7 +153,7 @@ export default class Table extends Component {
         this.selectedRowsKeys = {};
         const newRows = getRows({
             keyField,
-            rows,
+            rows: updatedRows || rows,
             maxRowSelection,
             selectedRowsKeys: this.selectedRowsKeys,
         });

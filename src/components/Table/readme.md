@@ -209,6 +209,8 @@
         faEllipsisV,
     } = require('@fortawesome/free-solid-svg-icons');
 
+    const badgeStyles = { color: '#1de9b6' };
+    const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
     const data = [
         {
             name: 'Leandro Torres',
@@ -261,24 +263,44 @@
         },
     ];
 
-    const badgeStyles = { color: '#1de9b6' };
+    class TableExample extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                data: [],
+                isLoading: true,
+            };
+        }
 
-    const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
+        componentDidMount() {
+            setTimeout(() => this.setState({
+                isLoading: false,
+                data,
+            }), 2000);
+        }
 
-    <div className="rainbow-p-bottom_xx-large">
-        <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
-            <ButtonGroup className="rainbow-m-right_medium">
-                <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
-                <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faEllipsisV} />} />
-            </ButtonGroup>
-        </GlobalHeader>
-        <Table id="table-5" keyField="id" showCheckboxColumn data={data} onRowSelection={(data) => console.log(data)}>
-            <Column header="Name" field="name" />
-            <Column header="Status" field="status" component={StatusBadge} />
-            <Column header="Company" field="company" />
-            <Column header="Email" field="email" />
-        </Table>
-    </div>
+        render() {
+            const { data, isLoading } = this.state;
+            return (
+                <div className="rainbow-p-bottom_xx-large">
+                    <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
+                        <ButtonGroup className="rainbow-m-right_medium">
+                            <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
+                            <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faEllipsisV} />} />
+                        </ButtonGroup>
+                    </GlobalHeader>
+                    <Table id="table-5" keyField="id" showCheckboxColumn isLoading={isLoading} data={data} onRowSelection={(data) => console.log(data)}>
+                        <Column header="Name" field="name" />
+                        <Column header="Status" field="status" component={StatusBadge} />
+                        <Column header="Company" field="company" />
+                        <Column header="Email" field="email" />
+                    </Table>
+                </div>
+            );
+        }
+    }
+
+    <TableExample />
 
 
 ##### Table with a limited number of Selectable Rows

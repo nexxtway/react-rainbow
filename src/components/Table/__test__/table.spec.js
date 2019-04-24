@@ -853,4 +853,66 @@ describe('<Table />', () => {
         }]);
         expect(component.instance().lastSelectedRowKey).toBe('1234qwerty');
     });
+    it('should set the right indexes when data prop changes', () => {
+        const component = mount(
+            <Table
+                data={[]}
+                showCheckboxColumn
+                keyField="id">
+
+                <Column field="name" header="Name" />
+            </Table>,
+        );
+        component.setProps({
+            data: tableData,
+        });
+        expect(component.instance().indexes).toEqual({
+            '1234qwerty': { rowIndex: 0 },
+            '5678asdfgh': { rowIndex: 1 },
+            '9012zxcvbn': { rowIndex: 2 },
+        });
+    });
+    it('should set the right state when data prop changes', () => {
+        const component = mount(
+            <Table
+                data={[]}
+                showCheckboxColumn
+                keyField="id">
+
+                <Column field="name" header="Name" />
+            </Table>,
+        );
+        component.setProps({
+            data: tableData,
+        });
+        const { state } = component.instance();
+        expect(state.rows).toEqual([
+            { inputType: 'checkbox', isDisabled: false, isSelected: false, key: '1234qwerty' },
+            { inputType: 'checkbox', isDisabled: false, isSelected: false, key: '5678asdfgh' },
+            { inputType: 'checkbox', isDisabled: false, isSelected: false, key: '9012zxcvbn' },
+        ]);
+        expect(state.bulkSelection).toBe('none');
+    });
+    it('should set the right state when data prop changes and have selected rows', () => {
+        const component = mount(
+            <Table
+                data={[]}
+                showCheckboxColumn
+                selectedRows={['5678asdfgh']}
+                keyField="id">
+
+                <Column field="name" header="Name" />
+            </Table>,
+        );
+        component.setProps({
+            data: tableData,
+        });
+        const { state } = component.instance();
+        expect(state.rows).toEqual([
+            { inputType: 'checkbox', isDisabled: false, isSelected: false, key: '1234qwerty' },
+            { inputType: 'checkbox', isDisabled: false, isSelected: true, key: '5678asdfgh' },
+            { inputType: 'checkbox', isDisabled: false, isSelected: false, key: '9012zxcvbn' },
+        ]);
+        expect(state.bulkSelection).toBe('some');
+    });
 });
