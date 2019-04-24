@@ -124,7 +124,7 @@ export default class Table extends Component {
         const { data, isLoading } = this.props;
         const isEmpty = data.length === 0;
         return classnames('rainbow-table_container--scrollable-y', {
-            'rainbow-align-content_center': isEmpty && !isLoading,
+            'rainbow-table_container--scrollable-y-align-content': isEmpty && !isLoading,
         });
     }
 
