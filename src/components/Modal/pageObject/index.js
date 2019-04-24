@@ -50,7 +50,7 @@ class PageModal {
     }
 
     /**
-     * Waiting until the open modal transition has finished.
+     * Wait until the open modal transition has finished.
      * @method
      */
     waitUntilOpen() {
@@ -58,7 +58,7 @@ class PageModal {
     }
 
     /**
-     * Waiting until the close modal transition has finished.
+     * Wait until the close modal transition has finished.
      * @method
      */
     waitUntilClose() {

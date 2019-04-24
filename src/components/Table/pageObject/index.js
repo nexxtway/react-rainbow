@@ -28,7 +28,7 @@ class PageTable {
         }
     }
 
-        /**
+    /**
      * Clicks the head checkbox to deselect all selected rows.
      * @method
      */
@@ -50,6 +50,15 @@ class PageTable {
             return new PageTableRow(`${this.rootElement} tr.rainbow-table_body-row:nth-child(${rowPosition + 1})`);
         }
         return null;
+    }
+
+    /**
+     * Wait until the data is loaded.
+     * @method
+     */
+    waitUntilDataIsLoaded() {
+        browser.waitUntil(() => !$(this.rootElement).$('.rainbow-table_body--loading').isDisplayed()
+            && $(this.rootElement).$('.rainbow-table_body-row').isDisplayed());
     }
 }
 

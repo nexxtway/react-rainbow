@@ -33,13 +33,21 @@ const rows = [
 ];
 
 describe('<Body />', () => {
-    it('should return an empty component if data and columns are not passed and is not loading', () => {
+    it('should return an empty component when data and columns are not passed and is not loading', () => {
         const component = mount(<Body isLoading={false} />);
         expect(component.find('Empty').exists()).toBe(true);
     });
-    it('should return an empty component if data or columns are not arrays and is not loading', () => {
-        const component = mount(<Body columns={{}} data={[]} isLoading={false} />);
+    it('should return an empty component when there is not data and is not loading', () => {
+        const component = mount(<Body columns={[{}]} data={[]} isLoading={false} />);
         expect(component.find('Empty').exists()).toBe(true);
+    });
+    it('should return a loading component when there is not data and is loading', () => {
+        const component = mount(<Body columns={[{}]} data={[]} isLoading />);
+        expect(component.find('Loading').exists()).toBe(true);
+    });
+    it('should return one row more when there is data and is loading', () => {
+        const component = mount(<Body columns={columns} data={data} isLoading />);
+        expect(component.children().length).toBe(3);
     });
     it('should return an array of Row components', () => {
         const component = mount(<Body data={data} columns={columns} rows={rows} />);

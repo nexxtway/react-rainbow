@@ -32,7 +32,6 @@ export default class Body extends PureComponent {
             emptyTitle,
             emptyDescription,
         } = this.props;
-        const hasData = Array.isArray(data) && data.length > 0;
         const isEmpty = data.length === 0;
         const columnsLength = columns.length;
 
@@ -50,34 +49,31 @@ export default class Body extends PureComponent {
             );
         }
 
-        if (hasData && Array.isArray(columns)) {
-            const newData = getData(data, isLoading);
-            return newData.map((item, index) => {
-                const row = rows[index];
-                const rowKeyValue = rows[index] && rows[index].key;
-                const key = rowKeyValue || `row-${index + 1}`;
+        const newData = getData(data, isLoading);
+        return newData.map((item, index) => {
+            const row = rows[index];
+            const rowKeyValue = rows[index] && rows[index].key;
+            const key = rowKeyValue || `row-${index + 1}`;
 
-                return (
-                    <Row
-                        {...row}
-                        key={key}
-                        data={item}
-                        columns={columns}
-                        tableId={tableId}
-                        onSelectRow={(event, isMultiple) => onSelectRow(
+            return (
+                <Row
+                    {...row}
+                    key={key}
+                    data={item}
+                    columns={columns}
+                    tableId={tableId}
+                    onSelectRow={(event, isMultiple) => onSelectRow(
                             event,
                             isMultiple,
                             rowKeyValue,
                         )}
-                        onDeselectRow={(event, isMultiple) => onDeselectRow(
+                    onDeselectRow={(event, isMultiple) => onDeselectRow(
                             event,
                             isMultiple,
                             rowKeyValue,
                         )} />
-                );
-            });
-        }
-        return null;
+            );
+        });
     }
 }
 

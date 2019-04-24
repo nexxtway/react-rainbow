@@ -8,6 +8,11 @@ describe('getColumns', () => {
         const showCheckboxColumn = false;
         expect(getColumns(columns, showCheckboxColumn)).toBeNull();
     });
+    it('should return an empty array when columns is not passed', () => {
+        const columns = undefined;
+        const showCheckboxColumn = false;
+        expect(getColumns(columns, showCheckboxColumn)).toEqual([]);
+    });
     it('should return an empty array when columns is an array with falsy values and showCheckboxColumn is false', () => {
         const columns = [null, undefined];
         const showCheckboxColumn = false;

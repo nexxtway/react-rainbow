@@ -16,6 +16,7 @@ import {
     getRowsWithInitalSelectedRows,
     isValidMaxRowSelection,
 } from './helpers/selector';
+import { normalizeData } from './helpers/data';
 import ResizeSensor from '../../libs/ResizeSensor';
 import debounce from '../../libs/debounce';
 import { uniqueId } from '../../libs/utils';
@@ -43,8 +44,8 @@ export default class Table extends Component {
             tableWidth: undefined,
             rows: getRows({
                 keyField,
-                rows: data,
-                maxRowSelection: Number(maxRowSelection),
+                rows: normalizeData(data),
+                maxRowSelection: maxRowSelection && Number(maxRowSelection),
                 selectedRowsKeys: {},
             }),
             bulkSelection: 'none',
@@ -80,12 +81,15 @@ export default class Table extends Component {
             showCheckboxColumn: prevShowCheckboxColumn,
             maxRowSelection: prevMaxRowSelection,
             selectedRows: prevSelectedRows,
+            data: prevData,
         } = prevProps;
         const {
             children,
             showCheckboxColumn,
             maxRowSelection,
             selectedRows,
+            data,
+            keyField,
         } = this.props;
         const prevColumns = getColumns(prevChildren, prevShowCheckboxColumn);
         const currentColumns = getColumns(children, showCheckboxColumn);
@@ -94,6 +98,16 @@ export default class Table extends Component {
         }
         if (prevMaxRowSelection !== maxRowSelection || prevSelectedRows !== selectedRows) {
             this.updateRows();
+        }
+        if (data !== prevData) {
+            const rows = getRows({
+                keyField,
+                rows: normalizeData(data),
+                maxRowSelection: this.getMaxRowSelection(),
+                selectedRowsKeys: {},
+            });
+            this.indexes = getIndexes(rows);
+            this.updateRows(rows);
         }
     }
 
@@ -116,13 +130,12 @@ export default class Table extends Component {
 
     getSelectedRows(rows) {
         const { data } = this.props;
-        return data.filter((item, index) => rows[index].isSelected);
+        return normalizeData(data).filter((item, index) => rows[index].isSelected);
     }
 
     getMaxRowSelection() {
-        const { maxRowSelection } = this.props;
-        const { rows } = this.state;
-        const rowsLength = rows.length;
+        const { maxRowSelection, data } = this.props;
+        const rowsLength = normalizeData(data).length;
         const maxRowSelectionNumber = Number(maxRowSelection);
 
         if (!isValidMaxRowSelection(maxRowSelection, rowsLength)) {
@@ -131,7 +144,7 @@ export default class Table extends Component {
         return maxRowSelectionNumber;
     }
 
-    updateRows() {
+    updateRows(updatedRows) {
         const {
             keyField,
             selectedRows,
@@ -141,7 +154,7 @@ export default class Table extends Component {
         this.selectedRowsKeys = {};
         const newRows = getRows({
             keyField,
-            rows,
+            rows: updatedRows || rows,
             maxRowSelection,
             selectedRowsKeys: this.selectedRowsKeys,
         });
@@ -365,7 +378,7 @@ export default class Table extends Component {
                                 </thead>
                                 <tbody className="rainbow-table_body">
                                     <Body
-                                        data={data}
+                                        data={normalizeData(data)}
                                         columns={columns}
                                         rows={rows}
                                         tableId={this.tableId}
