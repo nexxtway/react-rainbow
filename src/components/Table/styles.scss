@@ -29,6 +29,17 @@
     background-color: white;
 }
 
+.rainbow-table_container--scrollable-y-align-content {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
 .rainbow-table {
     table-layout: fixed;
     border-collapse: separate;
