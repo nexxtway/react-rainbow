@@ -120,6 +120,14 @@ export default class Table extends Component {
         return classnames('rainbow-table_container', className);
     }
 
+    getScrollableYClassNames() {
+        const { data, isLoading } = this.props;
+        const isEmpty = data.length === 0;
+        return classnames('rainbow-table_container--scrollable-y', {
+            'rainbow-align-content_center': isEmpty && !isLoading,
+        });
+    }
+
     getTableWidthFromDom() {
         const containerElement = this.tableContainerRef.current;
         if (containerElement) {
@@ -355,7 +363,7 @@ export default class Table extends Component {
                 <div className="rainbow-table-width-observer" ref={this.resizeTarget} />
                 <div className="rainbow-table_container">
                     <div className="rainbow-table_container--scrollable-x" ref={this.tableContainerRef}>
-                        <div className="rainbow-table_container--scrollable-y" style={tableStyles}>
+                        <div className={this.getScrollableYClassNames()} style={tableStyles}>
                             <table className="rainbow-table" style={tableStyles}>
                                 <thead>
                                     <tr>
