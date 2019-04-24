@@ -11,7 +11,7 @@ describe('<LoadingCells />', () => {
     });
     it('should render the amount of children that match with the value passed', () => {
         const component = mount(
-            <LoadingCells value={3} />,
+            <LoadingCells value={3} columns={[{}, {}, {}]} />,
         );
         expect(component.children().length).toBe(3);
     });
