@@ -83,3 +83,18 @@ td:first-of-type .rainbow-table_body--loading {
   text-align: center;
   color: #576574;
   margin-top: 0.5rem; }
+
+.rainbow-table_actions-cell-container:focus {
+  outline: none;
+  border: 1px solid #01b6f5; }
+
+.rainbow-table_actions-cell {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: auto; }

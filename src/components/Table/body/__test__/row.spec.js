@@ -18,29 +18,33 @@ const columns = [
 
 describe('<Row />', () => {
     it('should return a tr element with no children when columns is not passed', () => {
-        const component = mount(<Row data={data} columns={undefined} />);
+        const component = mount(<Row rowData={data} columns={undefined} />);
         expect(component.find('tr').children().length).toBe(0);
     });
     it('should return the amount of Cell components that correspond with the columns', () => {
-        const component = mount(<Row data={data} columns={columns} />);
+        const component = mount(<Row rowData={data} columns={columns} />);
         const cell = component.find('Cell');
 
         expect(cell.length).toBe(2);
-        expect(cell.get(0).props).toEqual({
-            component: undefined,
+        expect(cell.get(0).props).toEqual(expect.objectContaining({
             value: 'a',
             isFirst: true,
-            isSelected: false,
-        });
-        expect(cell.get(1).props).toEqual({
-            component: undefined,
+            rowData: {
+                name: 'a',
+                number: 26,
+            },
+        }));
+        expect(cell.get(1).props).toEqual(expect.objectContaining({
             value: 26,
             isFirst: false,
-            isSelected: false,
-        });
+            rowData: {
+                name: 'a',
+                number: 26,
+            },
+        }));
     });
     it('should set the right value to isFirst prop in Cell component', () => {
-        const component = mount(<Row data={data} columns={columns} />);
+        const component = mount(<Row rowData={data} columns={columns} />);
         const cell = component.find('Cell');
         expect(cell.at(0).prop('isFirst')).toBe(true);
         expect(cell.at(1).prop('isFirst')).toBe(false);
@@ -49,25 +53,25 @@ describe('<Row />', () => {
         const wrongColumns = [{
             field: 'wrong field',
         }];
-        const component = mount(<Row data={data} columns={wrongColumns} />);
+        const component = mount(<Row rowData={data} columns={wrongColumns} />);
         const cell = component.find('Cell');
         expect(cell.at(0).prop('value')).toBe(null);
     });
     it('should set the right class names in tr element when the row is selected', () => {
         const component = mount(
-            <Row data={data} columns={columns} isSelected />,
+            <Row rowData={data} columns={columns} isSelected />,
         );
         expect(component.find('tr').prop('className')).toBe('rainbow-table_body-row rainbow-table_body-row-selected');
     });
     it('should set aria-selected in tr element to false when the row is not selected', () => {
         const component = mount(
-            <Row data={data} columns={columns} />,
+            <Row rowData={data} columns={columns} />,
         );
         expect(component.find('tr').prop('aria-selected')).toBe(false);
     });
     it('should set aria-selected in tr element to true when the row is selected', () => {
         const component = mount(
-            <Row data={data} columns={columns} isSelected />,
+            <Row rowData={data} columns={columns} isSelected />,
         );
         expect(component.find('tr').prop('aria-selected')).toBe(true);
     });
@@ -85,7 +89,7 @@ describe('<Row />', () => {
             },
         ];
         const component = mount(
-            <Row data={data} columns={columnsWithSelectable} />,
+            <Row rowData={data} columns={columnsWithSelectable} />,
         );
         const cell = component.find('Cell');
         expect(cell.at(0).prop('isFirst')).toBe(false);
@@ -95,7 +99,7 @@ describe('<Row />', () => {
     it('should render LoadingCells component when data type is LOADING', () => {
         const rowData = { type: 'LOADING' };
         const component = mount(
-            <Row data={rowData} columns={columns} />,
+            <Row rowData={rowData} columns={columns} />,
         );
         expect(component.find('LoadingCells').exists()).toBe(true);
     });

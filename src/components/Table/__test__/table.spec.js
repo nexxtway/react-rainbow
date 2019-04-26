@@ -91,6 +91,7 @@ describe('<Table />', () => {
             header: 'Name',
             sortable: false,
             computedWidth: 50,
+            type: 'text',
         }]);
         component.setProps({
             children: [
@@ -104,10 +105,12 @@ describe('<Table />', () => {
             header: 'Name',
             sortable: false,
             computedWidth: 50,
+            type: 'text',
         }, {
             field: 'number',
             sortable: true,
             computedWidth: 50,
+            type: 'text',
         }]);
     });
     it('should update the columns state when add a column and showCheckboxColumn is passed', () => {
@@ -127,6 +130,7 @@ describe('<Table />', () => {
                 header: 'Name',
                 sortable: false,
                 computedWidth: 50,
+                type: 'text',
             },
         ]);
         component.setProps({
@@ -147,10 +151,12 @@ describe('<Table />', () => {
                 header: 'Name',
                 sortable: false,
                 computedWidth: 50,
+                type: 'text',
             }, {
                 field: 'number',
                 sortable: true,
                 computedWidth: 50,
+                type: 'text',
             },
         ]);
     });
@@ -160,6 +166,7 @@ describe('<Table />', () => {
             header: 'Name',
             sortable: false,
             computedWidth: 50,
+            type: 'text',
         }];
         const component = mount(
             <Table data={data}>
@@ -204,12 +211,14 @@ describe('<Table />', () => {
                 header: 'Name',
                 computedWidth: 50,
                 sortable: false,
+                type: 'text',
             },
             {
                 field: 'number',
                 header: 'Number',
                 computedWidth: 50,
                 sortable: false,
+                type: 'text',
             },
         ]);
         resizeBar.at(0).simulate('mousedown', { clientX: 100 });
@@ -223,12 +232,14 @@ describe('<Table />', () => {
                 computedWidth: 182,
                 isResized: true,
                 sortable: false,
+                type: 'text',
             },
             {
                 field: 'number',
                 header: 'Number',
                 computedWidth: 50,
                 sortable: false,
+                type: 'text',
             },
         ]);
     });

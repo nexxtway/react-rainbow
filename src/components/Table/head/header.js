@@ -40,8 +40,8 @@ export default class Header extends Component {
     }
 
     isResizable() {
-        const { resizeColumnDisabled } = this.props;
-        return !resizeColumnDisabled;
+        const { resizeColumnDisabled, type } = this.props;
+        return !resizeColumnDisabled && type !== 'action';
     }
 
     handleResize(widthDelta) {

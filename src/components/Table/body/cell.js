@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { SELECTABLE_CHECKBOX } from '../helpers/columns';
 import SelectableCell from './selectableCell';
+import ActionsCell from './actionsCell';
 
 function CellValue({ component: CellComponent, value }) {
     if (CellComponent) {
@@ -27,7 +28,16 @@ export default function Cell(props) {
         value,
         columnType,
         isFirst,
-        ...rest
+        columnChildren,
+        rowIndex,
+        rowsLength,
+        rowData,
+        isSelected,
+        isDisabled,
+        tableId,
+        onSelectRow,
+        onDeselectRow,
+        inputType,
     } = props;
 
     const getHeaderLabel = () => {
@@ -37,9 +47,25 @@ export default function Cell(props) {
         return undefined;
     };
 
+    if (columnType === 'action') {
+        return (
+            <ActionsCell
+                columnChildren={columnChildren}
+                rowIndex={rowIndex}
+                rowsLength={rowsLength}
+                rowData={rowData} />
+        );
+    }
+
     if (columnType === SELECTABLE_CHECKBOX) {
         return (
-            <SelectableCell {...rest} />
+            <SelectableCell
+                isSelected={isSelected}
+                isDisabled={isDisabled}
+                tableId={tableId}
+                onSelectRow={onSelectRow}
+                onDeselectRow={onDeselectRow}
+                inputType={inputType} />
         );
     }
 
@@ -81,6 +107,19 @@ Cell.propTypes = {
     value: PropTypes.any,
     isFirst: PropTypes.bool,
     columnType: PropTypes.string,
+    isSelected: PropTypes.bool,
+    isDisabled: PropTypes.bool,
+    tableId: PropTypes.string.isRequired,
+    onSelectRow: PropTypes.func,
+    onDeselectRow: PropTypes.func,
+    inputType: PropTypes.string,
+    columnChildren: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.object,
+    ]),
+    rowsLength: PropTypes.number,
+    rowIndex: PropTypes.number,
+    rowData: PropTypes.object,
 };
 
 Cell.defaultProps = {
@@ -89,4 +128,13 @@ Cell.defaultProps = {
     value: undefined,
     isFirst: false,
     columnType: undefined,
+    isSelected: false,
+    isDisabled: false,
+    onSelectRow: () => {},
+    onDeselectRow: () => {},
+    inputType: 'checkbox',
+    columnChildren: undefined,
+    rowsLength: undefined,
+    rowIndex: undefined,
+    rowData: {},
 };

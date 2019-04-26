@@ -20,7 +20,7 @@ import { normalizeData } from './helpers/data';
 import ResizeSensor from '../../libs/ResizeSensor';
 import debounce from '../../libs/debounce';
 import { uniqueId } from '../../libs/utils';
-import Icon from './body/emptyIcon';
+import EmptyIcon from './body/icons/empty';
 import './styles.css';
 
 /**
@@ -484,7 +484,7 @@ Table.defaultProps = {
     selectedRows: undefined,
     keyField: undefined,
     isLoading: false,
-    emptyIcon: <Icon />,
+    emptyIcon: <EmptyIcon />,
     emptyTitle: 'It’s empty here',
     emptyDescription: 'Our robots did not find any match...',
     id: undefined,

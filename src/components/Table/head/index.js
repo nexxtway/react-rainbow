@@ -31,24 +31,20 @@ export default class Head extends PureComponent {
                 const {
                     header,
                     field,
-                    sortable,
-                    computedWidth,
-                    type,
+                    ...columnRest
                 } = column;
                 const key = `header-${index}`;
 
                 return (
                     <Header
                         {...rest}
+                        {...columnRest}
                         key={key}
                         colIndex={index}
                         content={header}
-                        sortable={sortable}
                         sortDirection={this.resolveSortDirection(field)}
                         isSelected={this.isSelected(field)}
-                        computedWidth={computedWidth}
-                        field={field}
-                        type={type} />
+                        field={field} />
                 );
             });
         }

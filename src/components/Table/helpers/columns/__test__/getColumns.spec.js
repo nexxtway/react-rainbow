@@ -28,6 +28,7 @@ describe('getColumns', () => {
             header: 'header',
             component: <span />,
             sortable: false,
+            type: 'text',
             width: undefined,
         }]);
     });
@@ -46,6 +47,7 @@ describe('getColumns', () => {
                 header: 'header',
                 component: <span />,
                 sortable: false,
+                type: 'text',
                 width: undefined,
             },
         ]);

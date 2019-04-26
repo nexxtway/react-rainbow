@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ErrorIcon() {
+export default function Empty() {
     return (
         <svg width="227px" height="60px" viewBox="0 0 227 60">
             <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">

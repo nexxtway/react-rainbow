@@ -30,7 +30,7 @@ Column.propTypes = {
     * e.g data = [{ name: 'Max', ... }, {...}]; field could be 'name'
     * for a column that want to represent names on a collection of people.
     */
-    field: PropTypes.string.isRequired,
+    field: PropTypes.string,
     /**
      * Sets whether the column should control the sorting order of the data
      * @ignore
@@ -40,12 +40,18 @@ Column.propTypes = {
     width: PropTypes.number,
     /** Specifies the width of a column in pixels and allows the column to be resizable */
     defaultWidth: PropTypes.number,
+    /** The data type to be used for data formatting in cell. */
+    type: PropTypes.oneOf([
+        'text', 'action',
+    ]),
 };
 
 Column.defaultProps = {
     header: undefined,
     component: undefined,
+    field: undefined,
     sortable: false,
     width: undefined,
     defaultWidth: undefined,
+    type: 'text',
 };

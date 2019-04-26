@@ -20,7 +20,8 @@
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none; }
+  user-select: none;
+  vertical-align: middle; }
   .rainbow-button-icon:hover, .rainbow-button-icon:focus, .rainbow-button-icon:active {
     color: #009acf; }
   .rainbow-button-icon:active {
