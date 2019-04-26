@@ -1,0 +1,56 @@
+@import "../../styles/colors";
+@import "../../styles/font-sizes";
+@import "../../styles/border-radius";
+@import "../../styles/shadows";
+
+.rainbow-lookup_input-container {
+    width: 100%;
+    position: relative;
+}
+
+.rainbow-lookup_input:focus {
+    z-index: 0;
+}
+
+.rainbow-lookup_menu-container {
+    width: 100%;
+    position: relative;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0 2px 4px 0 $color-gray-2;
+    border: solid 1px $color-gray-2;
+    z-index: 5;
+    margin-top: -41px;
+    padding: 12px 0 8px 0;
+    min-height: 200px;
+}
+
+.rainbow-lookup_menu-input-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: 0 14px 8px 14px;
+}
+
+.rainbow-lookup_menu-input {
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    border-bottom: 1px solid $color-gray-2;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 28px 8px 4px;
+    font-size: 16px;
+    color: $color-dark-1;
+    caret-color: $color-brand-active;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.rainbow-lookup_menu-input-icon {
+    position: absolute;
+    right: 0;
+    top: 2px;
+}
