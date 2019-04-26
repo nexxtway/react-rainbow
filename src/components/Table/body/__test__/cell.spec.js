@@ -40,6 +40,10 @@ describe('<Cell /> when isFirst is not passed', () => {
         const component = mount(<Cell value="cell-1" columnType="SELECTABLE_CHECKBOX" />);
         expect(component.find('SelectableCell').exists()).toBe(true);
     });
+    it('should render the ActionsCell component when columnType is "action"', () => {
+        const component = mount(<Cell value="cell-1" columnType="action" />);
+        expect(component.find('ActionsCell').exists()).toBe(true);
+    });
 });
 
 describe('<Cell /> when isFirst is passed', () => {

@@ -14,7 +14,7 @@ function isFirstAndNoSelectable(index, type) {
 
 export default function Row(props) {
     const {
-        data,
+        rowData,
         columns,
         isSelected,
         ...rest
@@ -26,9 +26,15 @@ export default function Row(props) {
 
     let isFirstColumn;
     const cells = columns.map((column, index) => {
-        const { header, component, field, type: columnType } = column;
+        const {
+            header,
+            component,
+            field,
+            type: columnType,
+            children,
+        } = column;
         const key = `cell-${index}`;
-        const value = data[field] || null;
+        const value = rowData[field] || null;
         isFirstColumn = !isFirstColumn
             && (isFirstAndNoSelectable(index, columnType) || index === 1);
 
@@ -36,16 +42,18 @@ export default function Row(props) {
             <Cell
                 {...rest}
                 key={key}
+                rowData={rowData}
                 header={header}
                 component={component}
                 value={value}
                 columnType={columnType}
                 isFirst={isFirstColumn}
-                isSelected={isSelected} />
+                isSelected={isSelected}
+                columnChildren={children} />
         );
     });
 
-    if (data.type === 'LOADING') {
+    if (rowData.type === 'LOADING') {
         return (
             <tr>
                 <LoadingCells columns={columns} value={columns.length} />
@@ -61,13 +69,13 @@ export default function Row(props) {
 }
 
 Row.propTypes = {
-    data: PropTypes.object,
+    rowData: PropTypes.object,
     columns: PropTypes.array,
     isSelected: PropTypes.bool,
 };
 
 Row.defaultProps = {
-    data: [],
+    rowData: {},
     columns: [],
     isSelected: false,
 };

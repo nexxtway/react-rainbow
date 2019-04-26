@@ -50,7 +50,7 @@ th:first-of-type .rainbow-table_header-container {
   right: 0;
   top: 0;
   width: 3px;
-  z-index: 5000;
+  z-index: 1000;
   cursor: col-resize; }
   .rainbow-table_header-resize-bar:hover {
     background-color: #01b6f5 !important; }

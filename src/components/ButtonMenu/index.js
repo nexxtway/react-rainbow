@@ -32,11 +32,11 @@ export default function ButtonMenu(props) {
             tabIndex={tabIndex}
             variant={buttonVariant}
             shaded={buttonShaded}
-            ariaHaspopup
             title={title}
             onFocus={onFocus}
             onBlur={onBlur}
             trigger={ButtonIcon}>
+
             {children}
         </PrimitiveMenu>
     );

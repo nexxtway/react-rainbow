@@ -55,16 +55,20 @@ describe('<Body />', () => {
 
         expect(rowElements.length).toBe(2);
         expect(rowElements.get(0).props).toEqual(expect.objectContaining({
-            data: {
+            rowData: {
                 name: 'a',
             },
             columns,
+            rowIndex: 0,
+            rowsLength: 2,
         }));
         expect(rowElements.get(1).props).toEqual(expect.objectContaining({
-            data: {
+            rowData: {
                 name: 'b',
             },
             columns,
+            rowIndex: 1,
+            rowsLength: 2,
         }));
     });
 });

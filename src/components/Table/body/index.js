@@ -52,6 +52,7 @@ export default class Body extends PureComponent {
         const newData = getData(data, isLoading);
         return newData.map((item, index) => {
             const row = rows[index];
+            const rowsLength = rows.length;
             const rowKeyValue = rows[index] && rows[index].key;
             const key = rowKeyValue || `row-${index + 1}`;
 
@@ -59,9 +60,11 @@ export default class Body extends PureComponent {
                 <Row
                     {...row}
                     key={key}
-                    data={item}
+                    rowData={item}
                     columns={columns}
                     tableId={tableId}
+                    rowIndex={index}
+                    rowsLength={rowsLength}
                     onSelectRow={(event, isMultiple) => onSelectRow(
                             event,
                             isMultiple,

@@ -72,7 +72,7 @@ export default class PrimitiveMenu extends Component {
         const { isLoading } = this.props;
         const { childrenRefs } = this.state;
 
-        if (isLoading) {
+        if (isLoading || !childrenRefs[index]) {
             return null;
         }
         this.setState({ childFocusedIndex: index });
@@ -280,6 +280,8 @@ export default class PrimitiveMenu extends Component {
                     {...rest}
                     isOpen={isOpen}
                     title={title}
+                    ariaExpanded={isOpen}
+                    ariaHaspopup
                     assistiveText={assistiveText}
                     onClick={this.toggleMenu}
                     ref={this.triggerRef} />

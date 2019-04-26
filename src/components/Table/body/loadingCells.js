@@ -12,8 +12,11 @@ export default function LoadingCells({ value, columns }) {
     if (value > 0) {
         return Array(value).fill().map((item, index) => {
             const key = `loading-cell-${index}`;
+            const { type } = columns[index];
+            const isActionOrSelectable = type === SELECTABLE_CHECKBOX
+                || type === 'action';
             const styles = {
-                width: columns[index].type === SELECTABLE_CHECKBOX ? '100%' : getRandomWidth(),
+                width: isActionOrSelectable ? '100%' : getRandomWidth(),
             };
 
             return (
