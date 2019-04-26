@@ -52,4 +52,26 @@ describe('getColumns', () => {
             },
         ]);
     });
+    it('should return an array with the right columns props when one column is type "action"', () => {
+        const columns = [
+            <Column field="a" header="header" component={<span />} />,
+            <Column type="action" />,
+        ];
+        const showCheckboxColumn = false;
+        expect(getColumns(columns, showCheckboxColumn)).toEqual([
+            {
+                field: 'a',
+                header: 'header',
+                component: <span />,
+                sortable: false,
+                type: 'text',
+                width: undefined,
+            },
+            {
+                sortable: false,
+                type: 'action',
+                width: 50,
+            },
+        ]);
+    });
 });

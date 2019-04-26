@@ -79,6 +79,12 @@ describe('<Header />', () => {
             );
         expect(component.find('ResizeBar').prop('isResizable')).toBe(false);
     });
+    it('should set isResizable to false in ResizeBar component when type is "action"', () => {
+        const component = mount(
+            <Header sortDirection="asc" type="action" />,
+            );
+        expect(component.find('ResizeBar').prop('isResizable')).toBe(false);
+    });
     it('should call onSort with the right data when the header is clicked and sortable is passed', () => {
         const onSortMockFn = jest.fn();
         const component = mount(
