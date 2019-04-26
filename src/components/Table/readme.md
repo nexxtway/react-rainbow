@@ -525,7 +525,7 @@
                 <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faEllipsisV} />} />
             </ButtonGroup>
         </GlobalHeader>
-        <Table keyField="id" data={[]} isLoading>
+        <Table keyField="id" data={data}>
             <Column header="Name" field="name" />
             <Column header="Status" field="status" component={StatusBadge} />
             <Column header="Company" field="company" />
