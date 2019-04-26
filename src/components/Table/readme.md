@@ -457,71 +457,6 @@
     </div>
 
 
-##### Table Loading
-
-    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-    const {
-        faCog,
-        faPencilAlt,
-        faStore,
-        faPlus,
-        faBell,
-        faEllipsisV,
-    } = require('@fortawesome/free-solid-svg-icons');
-
-    const data = [
-
-    ];
-
-    const badgeStyles = { color: '#1de9b6' };
-
-    const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
-
-    <div className="rainbow-p-bottom_xx-large">
-        <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
-            <ButtonGroup className="rainbow-m-right_medium">
-                <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
-                <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faEllipsisV} />} />
-            </ButtonGroup>
-        </GlobalHeader>
-        <Table isLoading data={data}>
-            <Column header="Name" field="name" />
-            <Column header="Status" field="status" component={StatusBadge} />
-            <Column header="Company" field="company" />
-            <Column header="Email" field="email" />
-        </Table>
-    </div>
-
-
-##### Table Empty
-
-    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-    const {
-        faCog,
-        faPencilAlt,
-        faStore,
-        faPlus,
-        faBell,
-        faEllipsisV,
-    } = require('@fortawesome/free-solid-svg-icons');
-
-    const tableContainerStyles = { height: 300 };
-
-    <div className="rainbow-p-bottom_xx-large">
-        <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
-            <ButtonGroup className="rainbow-m-right_medium">
-                <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
-                <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faEllipsisV} />} />
-            </ButtonGroup>
-        </GlobalHeader>
-        <Table style={tableContainerStyles}>
-            <Column header="Name" field="name" />
-            <Column header="Company" field="company" />
-            <Column header="Email" field="email" />
-        </Table>
-    </div>
-
-
 ##### Table with row actions
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
@@ -590,7 +525,7 @@
                 <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faEllipsisV} />} />
             </ButtonGroup>
         </GlobalHeader>
-        <Table keyField="id" data={data}>
+        <Table keyField="id" data={[]} isLoading>
             <Column header="Name" field="name" />
             <Column header="Status" field="status" component={StatusBadge} />
             <Column header="Company" field="company" />
@@ -599,5 +534,70 @@
                 <MenuItem label="Edit" onClick={(e, data) => console.log(`Edit ${data.name}`)} />
                 <MenuItem label="Delete" onClick={(e, data) => console.log(`Delete ${data.name}`)} />
             </Column>
+        </Table>
+    </div>
+
+
+##### Table Loading
+
+    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+    const {
+        faCog,
+        faPencilAlt,
+        faStore,
+        faPlus,
+        faBell,
+        faEllipsisV,
+    } = require('@fortawesome/free-solid-svg-icons');
+
+    const data = [
+
+    ];
+
+    const badgeStyles = { color: '#1de9b6' };
+
+    const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
+
+    <div className="rainbow-p-bottom_xx-large">
+        <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
+            <ButtonGroup className="rainbow-m-right_medium">
+                <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
+                <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faEllipsisV} />} />
+            </ButtonGroup>
+        </GlobalHeader>
+        <Table isLoading data={data}>
+            <Column header="Name" field="name" />
+            <Column header="Status" field="status" component={StatusBadge} />
+            <Column header="Company" field="company" />
+            <Column header="Email" field="email" />
+        </Table>
+    </div>
+
+
+##### Table Empty
+
+    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+    const {
+        faCog,
+        faPencilAlt,
+        faStore,
+        faPlus,
+        faBell,
+        faEllipsisV,
+    } = require('@fortawesome/free-solid-svg-icons');
+
+    const tableContainerStyles = { height: 300 };
+
+    <div className="rainbow-p-bottom_xx-large">
+        <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
+            <ButtonGroup className="rainbow-m-right_medium">
+                <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
+                <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faEllipsisV} />} />
+            </ButtonGroup>
+        </GlobalHeader>
+        <Table style={tableContainerStyles}>
+            <Column header="Name" field="name" />
+            <Column header="Company" field="company" />
+            <Column header="Email" field="email" />
         </Table>
     </div>
