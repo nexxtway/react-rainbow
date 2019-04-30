@@ -1,0 +1,92 @@
+@import "../../../styles/colors";
+
+.rainbow-lookup_options-container {
+    padding: 8px 0;
+    overflow: auto;
+}
+
+.rainbow-lookup_options-divider {
+    background-color: $color-gray-2;
+    height: 1px;
+    padding: 0 1rem 0 1rem;
+}
+
+.rainbow-lookup_options-container--empty {
+    align-items: center;
+    color: #a4a7b5;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    justify-content: center;
+    height: 140px;
+    letter-spacing: normal;
+    line-height: 1.43;
+    text-align: center;
+}
+
+.rainbow-lookup_options-empty-message_search-icon {
+    height: 36px;
+    width: 36px;
+}
+
+.rainbow-lookup_options-empty-message {
+    margin-top: 14px;
+    width: 188px;
+}
+
+.rainbow-lookup_options-empty-message_match-value {
+    color: $color-dark-1;
+    font-family: "Lato Black", Arial, sans-serif;
+}
+
+.rainbow-lookup_menu-item > a {
+    align-items: center;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    height: 40px;
+    padding: 0 1rem 0 1rem;
+    position: relative;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+
+    &:focus {
+        outline: 0;
+        background-color: $color-gray-2;
+    }
+
+    &:active {
+        background-color: $color-gray-2;
+    }
+}
+
+.rainbow-lookup_menu-item_icon-container {
+    margin-right: 12px;
+}
+
+.rainbow-lookup_menu-item_label-container {
+    font-size: 14px;
+    font-weight: 500;
+    color: $color-dark-1;
+    display: flex;
+    flex-direction: column;
+}
+
+.rainbow-lookup_menu-item_description {
+    font-size: 10px;
+    font-weight: normal;
+    color: $color-gray-4;
+}
+
+.rainbow-lookup_menu-item_header {
+    align-items: center;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    color: $color-gray-3;
+    font-size: 12px;
+    font-weight: normal;
+    height: 32px;
+    padding: 0 1rem 0 1rem;
+}

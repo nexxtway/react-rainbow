@@ -1,18 +1,79 @@
+/* stylelint-disable no-descending-specificity */
 @import "../../styles/colors";
+@import "../../styles/shadows";
 @import "../../styles/font-sizes";
 @import "../../styles/border-radius";
-@import "../../styles/shadows";
+@import "../../styles/margins";
+@import "../../styles/paddings";
+
+@mixin bottomMessage($color) {
+    font-size: $font-size-text-medium;
+    margin-top: $margin-x-small;
+    align-self: center;
+    color: $color;
+}
+
+.rainbow-lookup_container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.rainbow-lookup_input-label {
+    color: $color-gray-4;
+    font-size: $font-size-text-medium;
+    line-height: 1.5;
+    margin-bottom: 0.125rem;
+    align-self: center;
+
+    &:empty {
+        margin: 0;
+    }
+}
+
+.rainbow-lookup_input-label-read-only {
+    align-self: flex-start;
+}
+
+.rainbow-lookup_input-help {
+    @include bottomMessage($color-dark-1);
+}
 
 .rainbow-lookup_input-container {
-    width: 100%;
     position: relative;
+
+    .rainbow-lookup_input-icon {
+        fill: $color-gray-3;
+        height: 100%;
+        width: 22px;
+        position: absolute;
+        top: 0;
+        right: 0.8rem;
+        line-height: 1;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+            width: 16px !important;
+            height: 16px !important;
+            font-size: 16px !important;
+        }
+    }
+
+    .rainbow-lookup_input-icon:not(button) {
+        pointer-events: none;
+    }
+
+    .rainbow-lookup_input,
+    .rainbow-lookup_input-bare {
+        right: 0.8rem;
+        padding-right: 2.35rem;
+    }
 }
 
-.rainbow-lookup_input:focus {
-    z-index: 0;
-}
-
-.rainbow-lookup_menu-container {
+.rainbow-lookup_input-container--menu-opened {
     width: 100%;
     position: relative;
     border-radius: 20px;
@@ -20,26 +81,154 @@
     box-shadow: 0 2px 4px 0 $color-gray-2;
     border: solid 1px $color-gray-2;
     z-index: 5;
-    margin-top: -41px;
-    padding: 12px 0 8px 0;
-    min-height: 200px;
+
+    .rainbow-lookup_input-close-button-container {
+        height: 40px;
+    }
 }
 
-.rainbow-lookup_menu-input-container {
-    display: flex;
-    align-items: center;
-    position: relative;
-    margin: 0 14px 8px 14px;
+.rainbow-lookup_input {
+    background-color: white;
+    border: 1px solid $color-gray-3;
+    border-radius: $border-radius-2;
+    width: 100%;
+    transition: all 0.1s linear;
+    display: inline-block;
+    padding: 0 1rem 0 1rem;
+    line-height: 2.5rem;
+    height: 2.5rem;
+    color: $color-dark-1;
+    font-size: $font-size-text-large;
+
+    &[type="search"]::-ms-clear {
+        display: none;
+        width: 0;
+        height: 0;
+    }
+
+    &:focus,
+    &:active {
+        outline: 0;
+        line-height: 2.5rem;
+        padding-left: 0.9375rem;
+        border: 2px $color-brand solid;
+        background-color: white;
+        box-shadow: $shadow-outline;
+        z-index: 0;
+    }
+
+    &::placeholder {
+        color: $color-gray-3;
+        font-weight: 300;
+        font-size: $font-size-text-large;
+    }
+
+    &[readonly] {
+        padding-left: 0;
+        padding-right: 0;
+        border-color: transparent;
+        background-color: transparent;
+        font-size: $font-size-text-medium;
+        color: $color-dark-1;
+        font-weight: 400;
+
+        &:focus,
+        &:active {
+            box-shadow: none;
+            border: 1px transparent solid;
+            padding-right: 0;
+        }
+    }
+
+    &[disabled] {
+        background-color: $color-gray-1;
+        border-color: $color-gray-2;
+        color: $color-gray-2;
+        cursor: not-allowed;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+
+        &:focus,
+        &:active {
+            box-shadow: none;
+            background-color: $color-gray-1;
+            border: 1px $color-gray-2 solid;
+            padding-left: $padding-medium;
+        }
+    }
 }
 
-.rainbow-lookup_menu-input {
+.rainbow-lookup_input-error {
+    @include bottomMessage($color-error);
+}
+
+.rainbow-lookup_container--error {
+    .rainbow-lookup_input {
+        background-color: white;
+        border: 2px $color-error solid;
+        padding-left: $padding-medium;
+        background-clip: padding-box;
+        line-height: 2.5rem;
+
+        &:focus {
+            box-shadow: $shadow-error;
+        }
+    }
+
+    .rainbow-lookup_input-icon {
+        fill: $color-error;
+        color: $color-error;
+    }
+}
+
+.rainbow-lookup_input-label--hide {
+    position: absolute !important;
+    margin: -1px !important;
+    border: 0 !important;
+    padding: 0 !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    text-transform: none !important;
+    white-space: nowrap !important;
+}
+
+.rainbow-lookup_input-bare {
+    background-color: transparent;
+    border: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 0.75rem;
+    color: $color-dark-1;
+    line-height: 2.5rem;
+
+    &:focus,
+    &:active {
+        outline: 0;
+        box-shadow: none;
+    }
+}
+
+.rainbow-lookup_input-counter {
+    text-align: center;
+    padding: 0 3rem;
+
+    &:focus,
+    &:active {
+        padding: 0 3rem;
+    }
+}
+
+.rainbow-lookup_input--menu-opened {
     border: none;
     background-color: transparent;
     width: 100%;
-    border-bottom: 1px solid $color-gray-2;
     height: 40px;
     line-height: 40px;
-    padding: 0 28px 8px 4px;
+    padding: 0 2.35rem 0 1rem;
     font-size: 16px;
     color: $color-dark-1;
     caret-color: $color-brand-active;
@@ -49,8 +238,50 @@
     }
 }
 
-.rainbow-lookup_menu-input-icon {
+.rainbow-lookup_input--loading {
+    padding-right: 5rem;
+}
+
+.rainbow-lookup_input-close-button-container {
+    height: 100%;
+    top: 0;
+    right: 0.8rem;
     position: absolute;
-    right: 0;
-    top: 2px;
+    line-height: 1;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rainbow-lookup_spinner {
+    left: unset;
+    right: 2.5rem;
+    top: 1.4rem;
+}
+
+.rainbow-lookup_chip-content_container {
+    background-color: white;
+    border: 1px solid $color-gray-3;
+    border-radius: $border-radius-2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.5rem;
+    width: 100%;
+}
+
+.rainbow-lookup_chip {
+    width: 99%;
+}
+
+.rainbow-lookup_chip-content {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 2.29;
+    color: $color-dark-1;
+}
+
+.rainbow-lookup_chip-content_icon-container {
+    margin-right: 12px;
 }

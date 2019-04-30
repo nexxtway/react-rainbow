@@ -28,7 +28,6 @@ export default function Chip(props) {
 
     const getContainerClassName = () => classnames('rainbow-chip', getVariantClassNames(), className);
 
-
     return (
         <span className={getContainerClassName()} style={style} title={title}>
             {label}
