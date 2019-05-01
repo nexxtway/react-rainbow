@@ -146,7 +146,7 @@ MenuItem.propTypes = {
     ]),
     /** If true the menu item is not actionable and is shown as disabled. */
     disabled: PropTypes.bool,
-    /** The action triggered when the breadcrumb is clicked. */
+    /** The action triggered when the menu item is clicked. */
     onClick: PropTypes.func,
     /** Displays tooltip text when the mouse moves over the element. */
     title: PropTypes.string,
