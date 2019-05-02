@@ -23,33 +23,18 @@ class Lookup extends Component {
         super(props);
         this.state = {
             searchValue: '',
-            isMenuOpen: false,
-            isLoading: props.isLoading,
+            isFocused: false,
         };
         this.inputId = uniqueId('lookup-input');
-        this.inlineTextLabelId = uniqueId('inline-text-label');
         this.errorMessageId = uniqueId('error-message');
         this.containerRef = React.createRef();
         this.inputRef = React.createRef();
         this.handlesSearch = this.handlesSearch.bind(this);
         this.clearInput = this.clearInput.bind(this);
-        this.focus = this.focus.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleFocus = this.handleFocus.bind(this);
-    }
-
-    componentDidUpdate(prevProps) {
-        const { value: prevValue, isLoading: prevIsLoading } = prevProps;
-        const { value, isLoading } = this.props;
-        if (prevValue && !value) {
-            this.focus();
-        }
-        if (prevIsLoading !== isLoading) {
-            this.setState({
-                isLoading,
-            });
-        }
+        this.handleRemoveValue = this.handleRemoveValue.bind(this);
     }
 
     getContainerClassNames() {
@@ -63,37 +48,20 @@ class Lookup extends Component {
     }
 
     getInputContainerClassNames() {
-        const { searchValue } = this.state;
-        const {
-            className,
-        } = this.props;
+        const { className } = this.props;
         return classnames('rainbow-lookup_input-container', {
-            'rainbow-lookup_input-container--menu-opened': !!searchValue,
+            'rainbow-lookup_input-container--menu-opened': this.isMenuOpen(),
         }, className);
     }
 
     getInputClassNames() {
-        const {
-            isBare,
-            isCentered,
-            isLoading,
-        } = this.props;
-        const { searchValue } = this.state;
+        const { isLoading } = this.props;
+        const isOpen = this.isMenuOpen();
         return classnames({
-            'rainbow-lookup_input': !searchValue,
-            'rainbow-lookup_input--menu-opened': !!searchValue,
+            'rainbow-lookup_input': !isOpen,
+            'rainbow-lookup_input--menu-opened': isOpen,
             'rainbow-lookup_input--loading': isLoading,
-            'rainbow-lookup_input rainbow-lookup_input-bare': isBare,
-            'rainbow-lookup_input rainbow-lookup_input-counter': isCentered,
         });
-    }
-
-    getInlineTextLabelId() {
-        const { bottomHelpText } = this.props;
-        if (bottomHelpText) {
-            return this.inlineTextLabelId;
-        }
-        return undefined;
     }
 
     getErrorMessageId() {
@@ -105,7 +73,8 @@ class Lookup extends Component {
     }
 
     handleClick(event) {
-        const isClickInsideLookup = this.containerRef.current.contains(event.target);
+        const ref = this.containerRef.current;
+        const isClickInsideLookup = ref && ref.contains(event.target);
         if (isClickInsideLookup) {
             return null;
         }
@@ -124,62 +93,56 @@ class Lookup extends Component {
         const { value } = event.target;
         this.setState({
             searchValue: value,
-            isLoading: true,
         });
-        if (value) {
-            this.openMenu();
-        } else {
-            this.closeMenu();
-        }
         this.fireSearch(value);
     }
 
     handleFocus(event) {
-        const { onFocus, options } = this.props;
-        const { searchValue } = this.state;
-        if (options.length && searchValue) {
-            this.openMenu();
-        }
+        const { onFocus } = this.props;
+        this.openMenu();
         onFocus(event);
+    }
+
+    handleRemoveValue() {
+        const { onChange, onSearch } = this.props;
+        onChange(null);
+        onSearch('');
+        setTimeout(() => this.focus(), 0);
     }
 
     fireSearch(value) {
         const { onSearch, debounce } = this.props;
-        const { timeout } = this.state;
-        if (debounce) {
-            clearTimeout(timeout);
-            this.setState({
-                timeout: setTimeout(() => {
-                    this.setState({
-                        isLoading: false,
-                    });
-                    onSearch(value);
-                }, 1000),
-            });
+        if (debounce && value) {
+            this.resetTimeout();
+            this.timeout = setTimeout(() => {
+                onSearch(value);
+            }, 500);
         } else {
+            this.resetTimeout();
             onSearch(value);
         }
     }
 
     clearInput() {
-        const { onSearch, debounce } = this.props;
-        const { timeout } = this.state;
         const searchValue = '';
-        this.closeMenu();
-        if (debounce) {
-            clearTimeout(timeout);
-        }
         this.setState({
             searchValue,
         });
-        onSearch(searchValue);
+        this.fireSearch(searchValue);
+        setTimeout(() => this.focus(), 0);
+    }
+
+    resetTimeout() {
+        if (this.timeout) {
+            clearTimeout(this.timeout);
+        }
     }
 
     openMenu() {
         window.addEventListener('click', this.handleClick);
         window.addEventListener('touchstart', this.handleClick);
         return this.setState({
-            isMenuOpen: true,
+            isFocused: true,
         });
     }
 
@@ -187,9 +150,16 @@ class Lookup extends Component {
         window.removeEventListener('click', this.handleClick);
         window.removeEventListener('touchstart', this.handleClick);
         return this.setState({
-            isMenuOpen: false,
-            isLoading: false,
+            isFocused: false,
         });
+    }
+
+    isMenuOpen() {
+        const { searchValue, isFocused } = this.state;
+        const { options } = this.props;
+        const isMenuEmpty = isFocused && !!searchValue && Array.isArray(options) && options.length === 0;
+        const isOpen = isFocused && Array.isArray(options) && !!options.length;
+        return isOpen || isMenuEmpty;
     }
 
     /**
@@ -228,31 +198,32 @@ class Lookup extends Component {
             tabIndex,
             onBlur,
             onClick,
-            onChange,
-            bottomHelpText,
             required,
             id,
             name,
             hideLabel,
             options,
+            isLoading,
         } = this.props;
-        const { searchValue, isMenuOpen, isLoading } = this.state;
-        const showMenu = isMenuOpen && !isLoading;
+        const { searchValue } = this.state;
+        const styles = {
+            marginBottom: value ? 0 : 40,
+        };
+        const containerStyles = Object.assign({}, styles, style);
+        const chipOnDelete = (disabled || readOnly) ? undefined : this.handleRemoveValue;
 
         return (
             <div
                 id={id}
                 className={this.getContainerClassNames()}
-                style={style}
-                ref={this.containerRef}>
+                style={containerStyles}>
 
                 <Label
                     label={label}
                     hideLabel={hideLabel}
                     required={required}
                     inputId={this.inputId}
-                    readOnly={readOnly}
-                    id={this.getInlineTextLabelId()} />
+                    readOnly={readOnly} />
 
                 <RenderIf isTrue={!!value}>
                     <div className="rainbow-lookup_chip-content_container">
@@ -260,16 +231,15 @@ class Lookup extends Component {
                             className="rainbow-lookup_chip"
                             label={<ChipContent {...value} />}
                             variant="neutral"
-                            onDelete={() => onChange(null)} />
+                            onDelete={chipOnDelete} />
                     </div>
                 </RenderIf>
 
                 <RenderIf isTrue={!value}>
-                    <div className={this.getInputContainerClassNames()}>
+                    <div className={this.getInputContainerClassNames()} ref={this.containerRef}>
                         <RightElement
                             showCloseButton={!!searchValue}
-                            onClear={this.clearInput}
-                            onFocus={this.focus} />
+                            onClear={this.clearInput} />
 
                         <Spinner
                             isVisible={isLoading}
@@ -293,22 +263,17 @@ class Lookup extends Component {
                             readOnly={readOnly}
                             required={required}
                             autoComplete="off"
-                            aria-labelledby={this.getInlineTextLabelId()}
                             aria-describedby={this.getErrorMessageId()}
                             ref={this.inputRef} />
 
-                        <RenderIf isTrue={showMenu}>
+                        <RenderIf isTrue={this.isMenuOpen()}>
                             <div className="rainbow-lookup_options-divider" />
                             <Options
                                 items={options}
                                 value={searchValue}
                                 onSelectOption={this.handleChange} />
+
                         </RenderIf>
-                    </div>
-                </RenderIf>
-                <RenderIf isTrue={!!bottomHelpText}>
-                    <div className="rainbow-lookup_input-help">
-                        {bottomHelpText}
                     </div>
                 </RenderIf>
                 <RenderIf isTrue={!!error}>
@@ -332,12 +297,7 @@ Lookup.propTypes = {
         PropTypes.string, PropTypes.node,
     ]).isRequired,
     placeholder: PropTypes.string,
-    bottomHelpText: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
     required: PropTypes.bool,
-    isCentered: PropTypes.bool,
-    isBare: PropTypes.bool,
     error: PropTypes.oneOfType([
         PropTypes.string, PropTypes.node,
     ]),
@@ -371,10 +331,7 @@ Lookup.defaultProps = {
     value: undefined,
     name: undefined,
     placeholder: null,
-    bottomHelpText: null,
     required: false,
-    isCentered: false,
-    isBare: false,
     error: null,
     disabled: false,
     readOnly: false,
@@ -388,7 +345,7 @@ Lookup.defaultProps = {
     id: undefined,
     hideLabel: false,
     isLoading: false,
-    options: [],
+    options: undefined,
     onSearch: () => {},
     debounce: false,
 };

@@ -14,9 +14,9 @@
 }
 
 .rainbow-lookup_container {
-    position: relative;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .rainbow-lookup_input-label {
@@ -35,12 +35,11 @@
     align-self: flex-start;
 }
 
-.rainbow-lookup_input-help {
-    @include bottomMessage($color-dark-1);
-}
-
 .rainbow-lookup_input-container {
-    position: relative;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    z-index: 1000;
 
     .rainbow-lookup_input-icon {
         fill: $color-gray-3;
@@ -66,23 +65,20 @@
         pointer-events: none;
     }
 
-    .rainbow-lookup_input,
-    .rainbow-lookup_input-bare {
+    .rainbow-lookup_input {
         right: 0.8rem;
         padding-right: 2.35rem;
     }
 }
 
 .rainbow-lookup_input-container--menu-opened {
-    width: 100%;
-    position: relative;
     border-radius: 20px;
     background-color: white;
     box-shadow: 0 2px 4px 0 $color-gray-2;
     border: solid 1px $color-gray-2;
-    z-index: 5;
 
-    .rainbow-lookup_input-close-button-container {
+    .rainbow-lookup_input-close-button-container,
+    .rainbow-lookup_input-icon {
         height: 40px;
     }
 }
@@ -194,32 +190,6 @@
     clip: rect(0 0 0 0) !important;
     text-transform: none !important;
     white-space: nowrap !important;
-}
-
-.rainbow-lookup_input-bare {
-    background-color: transparent;
-    border: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    padding-left: 0.75rem;
-    color: $color-dark-1;
-    line-height: 2.5rem;
-
-    &:focus,
-    &:active {
-        outline: 0;
-        box-shadow: none;
-    }
-}
-
-.rainbow-lookup_input-counter {
-    text-align: center;
-    padding: 0 3rem;
-
-    &:focus,
-    &:active {
-        padding: 0 3rem;
-    }
 }
 
 .rainbow-lookup_input--menu-opened {

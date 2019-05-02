@@ -5,7 +5,7 @@
 .rainbow-lookup_options-divider {
   background-color: #e3e5ed;
   height: 1px;
-  padding: 0 1rem 0 1rem; }
+  margin: 0 1rem 0 1rem; }
 
 .rainbow-lookup_options-container--empty {
   align-items: center;
