@@ -157,7 +157,8 @@ class Lookup extends Component {
     isMenuOpen() {
         const { searchValue, isFocused } = this.state;
         const { options } = this.props;
-        const isMenuEmpty = isFocused && !!searchValue && Array.isArray(options) && options.length === 0;
+        const isMenuEmpty = isFocused && !!searchValue
+            && Array.isArray(options) && options.length === 0;
         const isOpen = isFocused && Array.isArray(options) && !!options.length;
         return isOpen || isMenuEmpty;
     }
