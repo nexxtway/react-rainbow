@@ -42,7 +42,7 @@
             setTimeout(() => setState({
                 options: filter(value, options),
                 isLoading: false,
-            }), 1000);
+            }), 500);
         } else {
             setState({
                 isLoading: false,
@@ -54,8 +54,9 @@
 
     initialState = { options: null };
 
-    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large" style={{ height: 300 }}>
+    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
         <Lookup
+            className="rainbow-m-bottom_large"
             label="Lookup Label"
             placeholder="Find"
             options={state.options}
