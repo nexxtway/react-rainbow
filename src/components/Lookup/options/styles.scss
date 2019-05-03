@@ -50,15 +50,10 @@
     text-decoration: none;
     white-space: nowrap;
     cursor: pointer;
+}
 
-    &:focus {
-        outline: 0;
-        background-color: $color-gray-2;
-    }
-
-    &:active {
-        background-color: $color-gray-2;
-    }
+.rainbow-lookup_menu-item--active > a {
+    background-color: $color-gray-2;
 }
 
 .rainbow-lookup_menu-item_icon-container {

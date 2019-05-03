@@ -9,7 +9,9 @@ import Label from './label';
 import RightElement from './rightElement';
 import Options from './options';
 import ChipContent from './chipContent';
+import isNavigationKey from './isNavigationKey';
 import { uniqueId } from '../../libs/utils';
+import { UP_KEY, DOWN_KEY, ENTER_KEY } from '../../libs/constants';
 import withReduxForm from '../../libs/hocs/withReduxForm';
 import './styles.css';
 
@@ -24,6 +26,7 @@ class Lookup extends Component {
         this.state = {
             searchValue: '',
             isFocused: false,
+            focusedItemIndex: 0,
         };
         this.inputId = uniqueId('lookup-input');
         this.errorMessageId = uniqueId('error-message');
@@ -35,6 +38,17 @@ class Lookup extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleFocus = this.handleFocus.bind(this);
         this.handleRemoveValue = this.handleRemoveValue.bind(this);
+
+        this.handleHover = this.handleHover.bind(this);
+        this.handleKeyDown = this.handleKeyDown.bind(this);
+        this.handleKeyUpPressed = this.handleKeyUpPressed.bind(this);
+        this.handleKeyDownPressed = this.handleKeyDownPressed.bind(this);
+        this.handleKeyEnterPressed = this.handleKeyEnterPressed.bind(this);
+        this.keyHandlerMap = {
+            [UP_KEY]: this.handleKeyUpPressed,
+            [DOWN_KEY]: this.handleKeyDownPressed,
+            [ENTER_KEY]: this.handleKeyEnterPressed,
+        };
     }
 
     getContainerClassNames() {
@@ -163,6 +177,52 @@ class Lookup extends Component {
         return isOpen || isMenuEmpty;
     }
 
+    handleHover(index) {
+        this.setState({
+            focusedItemIndex: index,
+        });
+    }
+
+    handleKeyDown(event) {
+        const { keyCode } = event;
+        if (isNavigationKey(keyCode)) {
+            event.preventDefault();
+            if (this.keyHandlerMap[keyCode]) {
+                this.keyHandlerMap[keyCode]();
+            }
+        }
+    }
+
+    handleKeyUpPressed() {
+        const { focusedItemIndex } = this.state;
+        if (focusedItemIndex > 0) {
+            this.setState({
+                focusedItemIndex: focusedItemIndex - 1,
+            });
+        }
+    }
+
+    handleKeyDownPressed() {
+        const { focusedItemIndex } = this.state;
+        const { options } = this.props;
+        if (focusedItemIndex < options.length - 1) {
+            this.setState({
+                focusedItemIndex: focusedItemIndex + 1,
+            });
+        }
+    }
+
+    handleKeyEnterPressed() {
+        const { onChange, options } = this.props;
+        const { focusedItemIndex } = this.state;
+        const value = options.find((option, index) => index === focusedItemIndex);
+        this.setState({
+            searchValue: '',
+            focusedItemIndex: 0,
+        });
+        onChange(value);
+    }
+
     /**
      * Sets focus on the element.
      * @public
@@ -206,7 +266,7 @@ class Lookup extends Component {
             options,
             isLoading,
         } = this.props;
-        const { searchValue } = this.state;
+        const { searchValue, focusedItemIndex } = this.state;
         const styles = {
             marginBottom: value ? 0 : 40,
         };
@@ -217,7 +277,9 @@ class Lookup extends Component {
             <div
                 id={id}
                 className={this.getContainerClassNames()}
-                style={containerStyles}>
+                style={containerStyles}
+                role="presentation"
+                onKeyDown={this.handleKeyDown}>
 
                 <Label
                     label={label}
@@ -272,7 +334,9 @@ class Lookup extends Component {
                             <Options
                                 items={options}
                                 value={searchValue}
-                                onSelectOption={this.handleChange} />
+                                onSelectOption={this.handleChange}
+                                focusedItemIndex={focusedItemIndex}
+                                onHoverOption={this.handleHover} />
 
                         </RenderIf>
                     </div>
