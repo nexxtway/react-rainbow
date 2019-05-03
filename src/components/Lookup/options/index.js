@@ -66,7 +66,7 @@ export default function Options(props) {
             <div className="rainbow-lookup_options-container rainbow-lookup_options-container--empty">
                 <SearchIcon className="rainbow-lookup_options-empty-message_search-icon" />
                 <span className="rainbow-lookup_options-empty-message">
-                        Our robots did not find any match for
+                        Our robots did not find any <br /> match for
                     <span className="rainbow-lookup_options-empty-message_match-value">
                         {` "${value}"`}
                     </span>

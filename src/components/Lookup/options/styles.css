@@ -14,7 +14,7 @@
   flex-direction: column;
   font-size: 14px;
   justify-content: center;
-  height: 140px;
+  padding: 32px 16px;
   letter-spacing: normal;
   line-height: 1.43;
   text-align: center; }
@@ -25,11 +25,13 @@
 
 .rainbow-lookup_options-empty-message {
   margin-top: 14px;
-  width: 188px; }
+  width: 90%;
+  padding: 0 48px; }
 
 .rainbow-lookup_options-empty-message_match-value {
   color: #061c3f;
-  font-family: "Lato Black", Arial, sans-serif; }
+  font-family: "Lato Black", Arial, sans-serif;
+  display: block; }
 
 .rainbow-lookup_menu-item > a {
   align-items: center;
@@ -47,7 +49,10 @@
   background-color: #e3e5ed; }
 
 .rainbow-lookup_menu-item_icon-container {
-  margin-right: 12px; }
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .rainbow-lookup_menu-item_label-container {
   font-size: 14px;
