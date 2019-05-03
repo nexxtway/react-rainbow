@@ -358,11 +358,13 @@ Lookup.propTypes = {
     ]).isRequired,
     /** A boolean to hide the Lookup label. */
     hideLabel: PropTypes.bool,
+    /** Specifies the selected value of the Lookup. */
     value: PropTypes.shape({
         label: PropTypes.string,
         description: PropTypes.string,
         icon: PropTypes.node,
     }),
+    /** An array of matched options to show in a menu. */
     options: PropTypes.arrayOf(
         PropTypes.shape({
             label: PropTypes.string,
@@ -372,6 +374,7 @@ Lookup.propTypes = {
     ),
     /** The name of the Lookup. */
     name: PropTypes.string,
+    /** If set to true the onSearch event is sent when the customer finish typing. */
     debounce: PropTypes.bool,
     /** If is set to true, then is showed a loading symbol. */
     isLoading: PropTypes.bool,
@@ -393,6 +396,9 @@ Lookup.propTypes = {
         PropTypes.number,
         PropTypes.string,
     ]),
+    /** The action triggered for every key stroke when the customer is typing in the input.
+     * It sent the value/query of the input. This value is normally used for filter/search
+     * for more options. */
     onSearch: PropTypes.func,
     /**  The action triggered when click/select an option. */
     onChange: PropTypes.func,
