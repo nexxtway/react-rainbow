@@ -352,35 +352,19 @@ class Lookup extends Component {
 }
 
 Lookup.propTypes = {
+    /** Text label for the Lookup. */
+    label: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]).isRequired,
+    /** A boolean to hide the Lookup label. */
+    hideLabel: PropTypes.bool,
+    /** Specifies the selected value of the Lookup. */
     value: PropTypes.shape({
         label: PropTypes.string,
         description: PropTypes.string,
         icon: PropTypes.node,
     }),
-    name: PropTypes.string,
-    label: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]).isRequired,
-    placeholder: PropTypes.string,
-    required: PropTypes.bool,
-    error: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
-    disabled: PropTypes.bool,
-    readOnly: PropTypes.bool,
-    onChange: PropTypes.func,
-    tabIndex: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.string,
-    ]),
-    onClick: PropTypes.func,
-    onFocus: PropTypes.func,
-    onBlur: PropTypes.func,
-    className: PropTypes.string,
-    style: PropTypes.object,
-    id: PropTypes.string,
-    hideLabel: PropTypes.bool,
-    isLoading: PropTypes.bool,
+    /** An array of matched options to show in a menu. */
     options: PropTypes.arrayOf(
         PropTypes.shape({
             label: PropTypes.string,
@@ -388,8 +372,48 @@ Lookup.propTypes = {
             icon: PropTypes.node,
         }),
     ),
-    onSearch: PropTypes.func,
+    /** The name of the Lookup. */
+    name: PropTypes.string,
+    /** If set to true the onSearch event is sent when the customer finish typing. */
     debounce: PropTypes.bool,
+    /** If is set to true, then is showed a loading symbol. */
+    isLoading: PropTypes.bool,
+    /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
+    placeholder: PropTypes.string,
+    /** Specifies that the Lookup must be filled out before submitting the form.
+    * This value defaults to false. */
+    required: PropTypes.bool,
+    /** Specifies that the Lookup must be filled out before submitting the form. */
+    error: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.node,
+    ]),
+    /** Specifies that the Lookup element should be disabled. This value defaults to false. */
+    disabled: PropTypes.bool,
+    /** Specifies that the Lookup is read-only. This value defaults to false. */
+    readOnly: PropTypes.bool,
+    /** Specifies the tab order of an element (when the tab button is used for navigating). */
+    tabIndex: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string,
+    ]),
+    /** The action triggered for every key stroke when the customer is typing in the input.
+     * It sent the value/query of the input. This value is normally used for filter/search
+     * for more options. */
+    onSearch: PropTypes.func,
+    /**  The action triggered when click/select an option. */
+    onChange: PropTypes.func,
+    /** The action triggered when the element is clicked. */
+    onClick: PropTypes.func,
+    /** The action triggered when the element receives focus. */
+    onFocus: PropTypes.func,
+    /** The action triggered when the element releases focus. */
+    onBlur: PropTypes.func,
+    /** The id of the outer element. */
+    id: PropTypes.string,
+    /** A CSS class for the outer element, in addition to the component's base classes. */
+    className: PropTypes.string,
+    /** An object with custom style applied to the outer element. */
+    style: PropTypes.object,
 };
 
 Lookup.defaultProps = {
