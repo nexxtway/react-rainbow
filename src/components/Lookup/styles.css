@@ -85,7 +85,7 @@
     padding-right: 0;
     border-color: transparent;
     background-color: transparent;
-    font-size: 0.875rem;
+    font-size: 1rem;
     color: #061c3f;
     font-weight: 400; }
     .rainbow-lookup_input[readonly]:focus, .rainbow-lookup_input[readonly]:active {
@@ -142,12 +142,16 @@
   border: none;
   background-color: transparent;
   width: 100%;
-  height: 40px;
-  line-height: 40px;
+  height: 2.5rem;
+  line-height: 2.5rem;
   padding: 0 2.35rem 0 1rem;
   font-size: 16px;
   color: #061c3f;
   caret-color: #009acf; }
+  .rainbow-lookup_input--menu-opened::placeholder {
+    color: #a4a7b5;
+    font-weight: 300;
+    font-size: 1rem; }
   .rainbow-lookup_input--menu-opened:focus {
     outline: none; }
 
@@ -181,7 +185,8 @@
   width: 100%; }
 
 .rainbow-lookup_chip {
-  width: 99%; }
+  width: 100%;
+  margin: 0 3px; }
 
 .rainbow-lookup_chip-content {
   font-size: 14px;

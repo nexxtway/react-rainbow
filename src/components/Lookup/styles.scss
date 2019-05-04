@@ -124,7 +124,7 @@
         padding-right: 0;
         border-color: transparent;
         background-color: transparent;
-        font-size: $font-size-text-medium;
+        font-size: $font-size-text-large;
         color: $color-dark-1;
         font-weight: 400;
 
@@ -196,12 +196,18 @@
     border: none;
     background-color: transparent;
     width: 100%;
-    height: 40px;
-    line-height: 40px;
+    height: 2.5rem;
+    line-height: 2.5rem;
     padding: 0 2.35rem 0 1rem;
     font-size: 16px;
     color: $color-dark-1;
     caret-color: $color-brand-active;
+
+    &::placeholder {
+        color: $color-gray-3;
+        font-weight: 300;
+        font-size: $font-size-text-large;
+    }
 
     &:focus {
         outline: none;
@@ -242,7 +248,8 @@
 }
 
 .rainbow-lookup_chip {
-    width: 99%;
+    width: 100%;
+    margin: 0 3px;
 }
 
 .rainbow-lookup_chip-content {
