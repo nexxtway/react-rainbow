@@ -1,29 +1,50 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import RequiredAsterisk from '../RequiredAsterisk';
 
-export default function Label(props) {
-    const {
-        label,
-        required,
-        inputId,
-        readOnly,
-        id,
-        hideLabel,
-    } = props;
+export default class Label extends Component {
+    constructor(props) {
+        super(props);
+        this.labelRef = React.createRef();
+    }
 
-    const getLabelClassNames = () => classnames('rainbow-lookup_input-label', {
-        'rainbow-lookup_input-label-read-only': readOnly,
-        'rainbow-lookup_input-label--hide': hideLabel,
-    });
+    getLabelClassNames() {
+        const { readOnly, hideLabel } = this.props;
+        return classnames('rainbow-lookup_input-label', {
+            'rainbow-lookup_input-label-read-only': readOnly,
+            'rainbow-lookup_input-label--hide': hideLabel,
+        });
+    }
 
-    return (
-        <label className={getLabelClassNames()} htmlFor={inputId} id={id}>
-            <RequiredAsterisk required={required} />
-            {label}
-        </label>
-    );
+    getHeight() {
+        const labelElement = this.labelRef.current;
+        if (labelElement) {
+            return labelElement.clientHeight;
+        }
+        return undefined;
+    }
+
+    render() {
+        const {
+            label,
+            required,
+            inputId,
+            id,
+        } = this.props;
+
+        return (
+            <label
+                className={this.getLabelClassNames()}
+                htmlFor={inputId}
+                id={id}
+                ref={this.labelRef}>
+
+                <RequiredAsterisk required={required} />
+                {label}
+            </label>
+        );
+    }
 }
 
 Label.propTypes = {
