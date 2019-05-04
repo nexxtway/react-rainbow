@@ -6,6 +6,7 @@ import getFormattedMonth from './getFormattedMonth';
 import getLastDayMonth from './getLastDayMonth';
 import getYearsRange from './getYearsRange';
 import isSameDay from './isSameDay';
+import normalizeDate from './normalizeDate';
 
 export {
     addDays,
@@ -16,4 +17,5 @@ export {
     getLastDayMonth,
     getYearsRange,
     isSameDay,
+    normalizeDate,
 };

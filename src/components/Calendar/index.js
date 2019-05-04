@@ -7,6 +7,7 @@ import LeftIcon from './icons/leftArrow';
 import DaysOfWeek from './daysOfWeek';
 import Month from './month';
 import {
+    normalizeDate,
     addMonths,
     formatDate,
     getFirstDayMonth,
@@ -23,7 +24,7 @@ export default class Calendar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentMonth: getFirstDayMonth(props.value),
+            currentMonth: getFirstDayMonth(normalizeDate(props.value)),
         };
         this.previousMonth = this.previousMonth.bind(this);
         this.nextMonth = this.nextMonth.bind(this);
@@ -33,8 +34,9 @@ export default class Calendar extends Component {
     componentDidUpdate(prevProps) {
         const { value: prevValue } = prevProps;
         const { value } = this.props;
-        if (formatDate(prevValue) !== formatDate(value)) {
-            this.updateCurrentMonth(value);
+        const normalizedDate = normalizeDate(value);
+        if (formatDate(normalizeDate(prevValue)) !== formatDate(normalizedDate)) {
+            this.updateCurrentMonth(normalizedDate);
         }
     }
 
@@ -124,7 +126,7 @@ export default class Calendar extends Component {
                 <table role="grid" aria-labelledby="month">
                     <DaysOfWeek />
                     <Month
-                        value={value}
+                        value={normalizeDate(value)}
                         firstDayMonth={currentMonth}
                         minDate={minDate}
                         maxDate={maxDate}

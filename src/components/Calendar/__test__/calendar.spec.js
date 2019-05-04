@@ -3,6 +3,15 @@ import { mount } from 'enzyme';
 import Calendar from '../';
 
 describe('Calendar', () => {
+    it('should render the component when pass falsy values', () => {
+        const values = ['', undefined, null, 0];
+        values.forEach((value) => {
+            const component = mount(
+                <Calendar value={value} />,
+            );
+            expect(component.exists()).toBe(true);
+        });
+    });
     it('should render the right month', () => {
         const value = new Date('04/24/2019');
         const component = mount(
