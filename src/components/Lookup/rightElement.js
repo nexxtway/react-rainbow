@@ -4,16 +4,16 @@ import SearchIcon from './icons/searchIcon';
 import ButtonIcon from '../ButtonIcon';
 import CloseIcon from './icons/closeIcon';
 
-export default function RightElement({ showCloseButton, onClear, onFocus }) {
+export default function RightElement({ showCloseButton, onClear }) {
     if (showCloseButton) {
         return (
             <span className="rainbow-lookup_input-close-button-container">
                 <ButtonIcon
+                    assistiveText="close"
                     size="small"
                     tabIndex={-1}
                     icon={<CloseIcon />}
-                    onClick={onClear}
-                    onFocus={onFocus} />
+                    onClick={onClear} />
             </span>
         );
     }
@@ -27,11 +27,9 @@ export default function RightElement({ showCloseButton, onClear, onFocus }) {
 RightElement.propTypes = {
     showCloseButton: PropTypes.bool,
     onClear: PropTypes.func,
-    onFocus: PropTypes.func,
 };
 
 RightElement.defaultProps = {
     showCloseButton: false,
     onClear: () => {},
-    onFocus: () => {},
 };

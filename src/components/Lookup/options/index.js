@@ -19,7 +19,7 @@ function MenuItems(props) {
             description,
             icon,
             type,
-            options,
+            options = [],
         } = item;
         const isActive = index === focusedItemIndex;
 

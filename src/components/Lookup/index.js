@@ -99,6 +99,7 @@ class Lookup extends Component {
         const { onChange } = this.props;
         this.setState({
             searchValue: '',
+            focusedItemIndex: 0,
         });
         onChange(value);
     }
