@@ -250,26 +250,28 @@
 
     const options = [
         {
-        type: 'section',
-        label: 'Europe Cities',
-        options: [
-            { label: 'Paris', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
-            { label: 'Madrid', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
-            { label: 'London', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
-            { label: 'Barcelona', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
-        ],},
+            type: 'section',
+            label: 'Europe Cities',
+            options: [
+                { label: 'Paris', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
+                { label: 'Madrid', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
+                { label: 'London', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
+                { label: 'Barcelona', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
+            ],
+        },
         {
-        type: 'section',
-        label: 'American Cities',
-        options: [
-            { label: 'New York', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
-            { label: 'San Fransisco', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
-            { label: 'Miami', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
-            { label: 'La Habana', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
-            { label: 'Buenos Aires', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
-            { label: 'Sao Paulo', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
-            { label: 'Toronto', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
-        ],}
+            type: 'section',
+            label: 'American Cities',
+            options: [
+                { label: 'New York', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
+                { label: 'San Fransisco', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
+                { label: 'Miami', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
+                { label: 'La Habana', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
+                { label: 'Buenos Aires', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
+                { label: 'Sao Paulo', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
+                { label: 'Toronto', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
+            ],
+        }
     ];
 
     function filter(query, options) {
