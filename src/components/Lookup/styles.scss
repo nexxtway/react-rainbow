@@ -14,16 +14,16 @@
 }
 
 .rainbow-lookup_container {
+    position: relative;
     display: flex;
     flex-direction: column;
-    position: relative;
 }
 
 .rainbow-lookup_input-label {
     color: $color-gray-4;
     font-size: $font-size-text-medium;
     line-height: 1.5;
-    margin-bottom: 0.125rem;
+    padding-bottom: 0.125rem;
     align-self: center;
 
     &:empty {
@@ -37,9 +37,7 @@
 
 .rainbow-lookup_input-container {
     position: absolute;
-    top: 100%;
     width: 100%;
-    z-index: 1000;
 
     .rainbow-lookup_input-icon {
         fill: $color-gray-3;
@@ -76,6 +74,7 @@
     background-color: white;
     box-shadow: 0 2px 4px 0 $color-gray-2;
     border: solid 1px $color-gray-2;
+    z-index: 2000;
 
     .rainbow-lookup_input-close-button-container,
     .rainbow-lookup_input-icon {
@@ -261,4 +260,10 @@
 
 .rainbow-lookup_chip-content_icon-container {
     margin-right: 12px;
+}
+
+.rainbow-lookup_inner-div {
+    height: 40px;
+    visibility: hidden;
+    z-index: -1;
 }

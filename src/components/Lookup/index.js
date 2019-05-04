@@ -1,4 +1,4 @@
-/* eslint-disable react/no-did-update-set-state */
+/* eslint-disable react/no-did-update-set-state, react/no-did-mount-set-state */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
@@ -30,6 +30,7 @@ class Lookup extends Component {
         };
         this.inputId = uniqueId('lookup-input');
         this.errorMessageId = uniqueId('error-message');
+        this.labelRef = React.createRef();
         this.containerRef = React.createRef();
         this.inputRef = React.createRef();
         this.handlesSearch = this.handlesSearch.bind(this);
@@ -51,6 +52,12 @@ class Lookup extends Component {
         };
     }
 
+    componentDidMount() {
+        this.setState({
+            labelHeight: this.labelRef.current.getHeight(),
+        });
+    }
+
     getContainerClassNames() {
         const {
             className,
@@ -66,6 +73,16 @@ class Lookup extends Component {
         return classnames('rainbow-lookup_input-container', {
             'rainbow-lookup_input-container--menu-opened': this.isMenuOpen(),
         }, className);
+    }
+
+    getInputContainerStyle() {
+        const { labelHeight } = this.state;
+        if (labelHeight) {
+            return {
+                top: labelHeight,
+            };
+        }
+        return undefined;
     }
 
     getInputClassNames() {
@@ -99,6 +116,7 @@ class Lookup extends Component {
         const { onChange } = this.props;
         this.setState({
             searchValue: '',
+            focusedItemIndex: 0,
         });
         onChange(value);
     }
@@ -267,17 +285,13 @@ class Lookup extends Component {
             isLoading,
         } = this.props;
         const { searchValue, focusedItemIndex } = this.state;
-        const styles = {
-            marginBottom: value ? 0 : 40,
-        };
-        const containerStyles = Object.assign({}, styles, style);
         const chipOnDelete = (disabled || readOnly) ? undefined : this.handleRemoveValue;
 
         return (
             <div
                 id={id}
                 className={this.getContainerClassNames()}
-                style={containerStyles}
+                style={style}
                 role="presentation"
                 onKeyDown={this.handleKeyDown}>
 
@@ -286,7 +300,8 @@ class Lookup extends Component {
                     hideLabel={hideLabel}
                     required={required}
                     inputId={this.inputId}
-                    readOnly={readOnly} />
+                    readOnly={readOnly}
+                    ref={this.labelRef} />
 
                 <RenderIf isTrue={!!value}>
                     <div className="rainbow-lookup_chip-content_container">
@@ -299,7 +314,11 @@ class Lookup extends Component {
                 </RenderIf>
 
                 <RenderIf isTrue={!value}>
-                    <div className={this.getInputContainerClassNames()} ref={this.containerRef}>
+                    <div
+                        className={this.getInputContainerClassNames()}
+                        style={this.getInputContainerStyle()}
+                        ref={this.containerRef}>
+
                         <RightElement
                             showCloseButton={!!searchValue}
                             onClear={this.clearInput} />
@@ -345,6 +364,9 @@ class Lookup extends Component {
                     <div id={this.getErrorMessageId()} className="rainbow-lookup_input-error">
                         {error}
                     </div>
+                </RenderIf>
+                <RenderIf isTrue={!value}>
+                    <div className="rainbow-lookup_inner-div" />
                 </RenderIf>
             </div>
         );
