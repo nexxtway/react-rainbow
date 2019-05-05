@@ -412,7 +412,7 @@
     </div>
 
 
-##### Required Lookup with error:
+##### Lookup required with error:
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
     const { faCity } = require('@fortawesome/free-solid-svg-icons');
