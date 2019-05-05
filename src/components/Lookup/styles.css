@@ -173,6 +173,10 @@
   right: 2.5rem;
   top: 1.4rem; }
 
+.rainbow-lookup_chip-content {
+  display: flex;
+  align-items: center; }
+
 .rainbow-lookup_chip-content_container {
   background-color: white;
   border: 1px solid #a4a7b5;
@@ -185,16 +189,18 @@
 
 .rainbow-lookup_chip {
   width: 100%;
-  margin: 0 3px; }
+  margin: 0 3px;
+  padding-left: 0; }
 
-.rainbow-lookup_chip-content {
-  font-size: 14px;
-  font-weight: normal;
-  line-height: 2.29;
-  color: #061c3f; }
+.rainbow-lookup_chip-content_label {
+  margin-left: 8px; }
 
-.rainbow-lookup_chip-content_icon-container {
-  margin-right: 12px; }
+.rainbow-lookup_chip-content_icon {
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .rainbow-lookup_inner-div {
   height: 40px;

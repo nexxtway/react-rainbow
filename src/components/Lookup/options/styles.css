@@ -34,11 +34,12 @@
   display: block; }
 
 .rainbow-lookup_menu-item > a {
+  box-sizing: border-box;
   align-items: center;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
-  height: 40px;
+  height: 48px;
   padding: 0 1rem 0 1rem;
   position: relative;
   text-decoration: none;

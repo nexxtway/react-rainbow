@@ -57,8 +57,8 @@ export default function Options(props) {
         focusedItemIndex,
     } = props;
     const resultContainerStyles = {
-        height: (40 * items.length) + 17,
-        maxHeight: 216,
+        height: (48 * items.length) + 17,
+        maxHeight: 258,
     };
 
     if (items.length === 0) {
