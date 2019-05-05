@@ -8,7 +8,7 @@
 .rainbow-lookup_options-divider {
     background-color: $color-gray-2;
     height: 1px;
-    margin: 0 1rem 0 1rem;
+    margin: 4px 16px 0 16px;
 }
 
 .rainbow-lookup_options-container--empty {
@@ -42,12 +42,13 @@
 }
 
 .rainbow-lookup_menu-item > a {
+    box-sizing: border-box;
     align-items: center;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-align: center;
-    height: 40px;
-    padding: 0 1rem 0 1rem;
+    height: 48px;
+    padding: 0 1.15rem 0 1.15rem;
     position: relative;
     text-decoration: none;
     white-space: nowrap;

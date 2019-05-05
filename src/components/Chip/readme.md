@@ -64,7 +64,6 @@
 
     const ChipContainer = {
         paddingLeft: 0,
-        marginLeft: '-2px',
     };
 
     <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">

@@ -69,10 +69,9 @@ class Lookup extends Component {
     }
 
     getInputContainerClassNames() {
-        const { className } = this.props;
         return classnames('rainbow-lookup_input-container', {
             'rainbow-lookup_input-container--menu-opened': this.isMenuOpen(),
-        }, className);
+        });
     }
 
     getInputContainerStyle() {
@@ -360,13 +359,13 @@ class Lookup extends Component {
                         </RenderIf>
                     </div>
                 </RenderIf>
+                <RenderIf isTrue={!value}>
+                    <div className="rainbow-lookup_inner-div" />
+                </RenderIf>
                 <RenderIf isTrue={!!error}>
                     <div id={this.getErrorMessageId()} className="rainbow-lookup_input-error">
                         {error}
                     </div>
-                </RenderIf>
-                <RenderIf isTrue={!value}>
-                    <div className="rainbow-lookup_inner-div" />
                 </RenderIf>
             </div>
         );
