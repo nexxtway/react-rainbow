@@ -22,7 +22,7 @@ describe('<Options />', () => {
             [{}, {}, {}, {}],
             [{}, {}, {}, {}, {}, {}],
         ];
-        const expects = [57, 97, 177, 257];
+        const expects = [65, 105, 185, 265];
         values.forEach((items, index) => {
             const component = mount(
                 <Options items={items} />,
