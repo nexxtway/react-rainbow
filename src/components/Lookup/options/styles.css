@@ -5,7 +5,7 @@
 .rainbow-lookup_options-divider {
   background-color: #e3e5ed;
   height: 1px;
-  margin: 0 1rem 0 1rem; }
+  margin: 4px 16px 0 16px; }
 
 .rainbow-lookup_options-container--empty {
   align-items: center;
@@ -40,7 +40,7 @@
   display: flex;
   -ms-flex-align: center;
   height: 48px;
-  padding: 0 1rem 0 1rem;
+  padding: 0 1.15rem 0 1.15rem;
   position: relative;
   text-decoration: none;
   white-space: nowrap;

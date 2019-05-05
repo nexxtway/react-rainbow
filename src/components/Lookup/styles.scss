@@ -74,7 +74,9 @@
     background-color: white;
     box-shadow: 0 2px 4px 0 $color-gray-2;
     border: solid 1px $color-gray-2;
+    overflow-y: hidden;
     z-index: 2000;
+    padding-top: 4px;
 
     .rainbow-lookup_input-close-button-container,
     .rainbow-lookup_input-icon {
@@ -219,7 +221,6 @@
 
 .rainbow-lookup_input-close-button-container {
     height: 100%;
-    top: 0;
     right: 0.8rem;
     position: absolute;
     line-height: 1;
@@ -262,7 +263,7 @@
 }
 
 .rainbow-lookup_chip-content_icon {
-    height: 30px;
+    height: 100%;
     width: 30px;
     display: flex;
     align-items: center;

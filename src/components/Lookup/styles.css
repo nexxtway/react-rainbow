@@ -46,7 +46,9 @@
   background-color: white;
   box-shadow: 0 2px 4px 0 #e3e5ed;
   border: solid 1px #e3e5ed;
-  z-index: 2000; }
+  overflow-y: hidden;
+  z-index: 2000;
+  padding-top: 4px; }
   .rainbow-lookup_input-container--menu-opened .rainbow-lookup_input-close-button-container,
   .rainbow-lookup_input-container--menu-opened .rainbow-lookup_input-icon {
     height: 40px; }
@@ -159,7 +161,6 @@
 
 .rainbow-lookup_input-close-button-container {
   height: 100%;
-  top: 0;
   right: 0.8rem;
   position: absolute;
   line-height: 1;
@@ -196,7 +197,7 @@
   margin-left: 8px; }
 
 .rainbow-lookup_chip-content_icon {
-  height: 30px;
+  height: 100%;
   width: 30px;
   display: flex;
   align-items: center;

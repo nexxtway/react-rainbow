@@ -58,7 +58,7 @@ export default function Options(props) {
     } = props;
     const resultContainerStyles = {
         height: (48 * items.length) + 17,
-        maxHeight: 258,
+        maxHeight: 248,
     };
 
     if (items.length === 0) {
