@@ -263,7 +263,7 @@
     </div>
 
 
-##### Lookup with agrouped options:
+##### Lookup with options type section:
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
     const { faCity } = require('@fortawesome/free-solid-svg-icons');
