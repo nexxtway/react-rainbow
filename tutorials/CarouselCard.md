@@ -3,13 +3,17 @@ Here is an overview about how to use the CarouselCard page object:
     const PageCarouselCard = require('react-rainbow-components/components/CarouselCard/pageObject');
 
     const CAROUSEL = '#carousel-1';
-    const ARROW_RIGHT_KEY: '\uE014';
-    const ARROW_LEFT_KEY: '\uE012';
+    const ARROW_RIGHT_KEY = '\uE014';
+    const ARROW_LEFT_KEY = '\uE012';
 
     describe('CarouselCard base example', () => {
-        beforeEach(() => {
+        beforeAll(() => {
             browser.url('/url/to/testing/page');
+        });
+        beforeEach(() => {
             browser.refresh();
+            const component = $(CAROUSEL);
+            component.waitForExist();
         });
 
         it('should select the first indicator when selected', () => {

@@ -11,6 +11,7 @@ export default function RightElement({ showCloseButton, onClear }) {
                 <ButtonIcon
                     assistiveText="close"
                     size="small"
+                    title="close"
                     tabIndex={-1}
                     icon={<CloseIcon />}
                     onClick={onClear} />

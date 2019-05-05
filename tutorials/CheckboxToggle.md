@@ -7,6 +7,9 @@ Here is an overview about how to use the CheckboxToggle page object:
     describe('CheckboxToggle page object basic usage', () => {
         it('should check the input element when click on the button', () => {
             browser.url('/url/to/testing/page');
+            const component = $(CHECKBOX_TOGGLE);
+            component.waitForExist();
+
             const checkboxToggle = new PageCheckboxToggle(CHECKBOX_TOGGLE);
             checkboxToggle.click();
             expect(checkboxToggle.isChecked()).toBe(true);

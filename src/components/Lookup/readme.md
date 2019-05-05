@@ -56,6 +56,7 @@
 
     <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
         <Lookup
+            id="lookup-1"
             label="Lookup Label"
             placeholder="Find"
             options={state.options}

@@ -5,10 +5,15 @@ Here is an overview about how to use the ButtonMenu page object:
     const BUTTON_MENU = '#button-menu-1';
 
     describe('ButtonMenu page object basic usage', () => {
-        beforeEach(() => {
+        beforeAll(() => {
             browser.url('/url/to/testing/page');
-            browser.refresh();
         });
+        beforeEach(() => {
+            browser.refresh();
+            const component = $(BUTTON_MENU);
+            component.waitForExist();
+        });
+
         it('should open the menu when click on the button', () => {
             const buttonMenu = new PageButtonMenu(BUTTON_MENU);
             buttonMenu.click();
@@ -16,8 +21,9 @@ Here is an overview about how to use the ButtonMenu page object:
         });
         it('should set the focus to the first menu item when open the menu', () => {
             const buttonMenu = new PageButtonMenu(BUTTON_MENU);
+            const menuItem = buttonMenu.getItem(0);
             buttonMenu.click();
-            expect(buttonMenu.hasFocusItem(0)).toBe(true);
+            expect(menuItem.hasFocus()).toBe(true);
         });
         it('should move focus to the item hovered', () => {
             const buttonMenu = new PageButtonMenu(BUTTON_MENU);

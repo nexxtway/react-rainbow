@@ -5,9 +5,15 @@ Here is an overview about how to use the Textarea page object:
     const TEXTAREA = '#textarea-1';
 
     describe('Textarea page object basic usage', () => {
-        beforeEach(() => {
+        beforeAll(() => {
             browser.url('/url/to/testing/page');
         });
+        beforeEach(() => {
+            browser.refresh();
+            const component = $(TEXTAREA);
+            component.waitForExist();
+        });
+
         it('should put the textarea focused when clcik on it', () => {
             const textarea = new PageTextarea(TEXTAREA);
             textarea.click();

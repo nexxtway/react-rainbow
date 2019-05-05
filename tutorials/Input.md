@@ -5,10 +5,15 @@ Here is an overview about how to use the Input page object:
     const INPUT = '#input-component-1';
 
     describe('Input page object basic uasge', () => {
-        beforeEach(() => {
+        beforeAll(() => {
             browser.url('/url/to/testing/page');
-            browser.refresh();
         });
+        beforeEach(() => {
+            browser.refresh();
+            const component = $(INPUT);
+            component.waitForExist();
+        });
+
         it('should put the input element focused when is clicked', () => {
             const input = new PageInput(INPUT);
             input.click();

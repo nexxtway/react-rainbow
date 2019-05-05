@@ -13,33 +13,30 @@ Here is an overview about how to use the Modal page object:
         });
         beforeEach(() => {
             browser.refresh();
-            browser.waitForExist(BUTTON_ICON);
+            const component = $(BUTTON_ICON);
+            component.waitForExist();
         });
+
         it('should open the modal', () => {
             const modal = new PageModal(MODAL);
-            browser.click(BUTTON_ICON);
+            const triggerButton = $(BUTTON_ICON);
+            triggerButton.click();
             modal.waitUntilOpen();
             expect(modal.isOpen()).toBe(true);
         });
         it('should close the modal when is opened and press ESC', () => {
             const modal = new PageModal(MODAL);
-            browser.click(BUTTON_ICON);
+            const triggerButton = $(BUTTON_ICON);
+            triggerButton.click();
             modal.waitUntilOpen();
             browser.keys(ESCAPE_KEY);
             modal.waitUntilClose();
             expect(modal.isOpen()).toBe(false);
         });
-        it('should close the modal when is opened and click outside of the modal', () => {
-            const modal = new PageModal(MODAL);
-            browser.click(BUTTON_ICON);
-            modal.waitUntilOpen();
-            modal.clickOutside();
-            modal.waitUntilClose();
-            expect(modal.isOpen()).toBe(false);
-        });
         it('should close the modal when is opened and click the closeButton', () => {
             const modal = new PageModal(MODAL);
-            browser.click(BUTTON_ICON);
+            const triggerButton = $(BUTTON_ICON);
+            triggerButton.click();
             modal.waitUntilOpen();
             modal.clickCloseButton();
             modal.waitUntilClose();
@@ -47,7 +44,8 @@ Here is an overview about how to use the Modal page object:
         });
         it('should return focus to trigger element when close modal', () => {
             const modal = new PageModal(MODAL);
-            browser.click(BUTTON_ICON);
+            const triggerButton = $(BUTTON_ICON);
+            triggerButton.click();
             modal.waitUntilOpen();
             modal.clickCloseButton();
             modal.waitUntilClose();
@@ -55,7 +53,8 @@ Here is an overview about how to use the Modal page object:
         });
         it('should focus the close button when the modal is opened and press TAB', () => {
             const modal = new PageModal(MODAL);
-            browser.click(BUTTON_ICON);
+            const triggerButton = $(BUTTON_ICON);
+            triggerButton.click();
             modal.waitUntilOpen();
             browser.keys(TAB_KEY);
             expect(modal.hasFocusCloseButton()).toBe(true);
