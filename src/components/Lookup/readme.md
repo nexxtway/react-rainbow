@@ -297,10 +297,23 @@
 
     function filter(query, options) {
         if (query) {
-            return options.filter((item) => {
-                const regex = new RegExp(query, 'i');
-                return regex.test(item.label);
+            const filteredOptions = options.map((item) => {
+                if (item.type === 'section') {
+                    const sectionOptions = item.options.filter((item) => {
+                        const regex = new RegExp(query, 'i');
+                        return regex.test(item.label);
+                    });
+                    if (sectionOptions.length) {
+                        return {
+                            ...item,
+                            options: sectionOptions,
+                        };
+                    }
+                    return null;
+                }
+                return item;
             });
+            return filteredOptions.filter(item => !!item);
         }
         return [];
     }
@@ -333,6 +346,7 @@
 
     <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
         <Lookup
+            id="lookup-7"
             label="Lookup Label"
             placeholder="Find"
             options={state.options}
