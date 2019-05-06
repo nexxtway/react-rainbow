@@ -272,7 +272,7 @@
     const options = [
         {
             type: 'section',
-            label: 'Europe Cities',
+            label: 'European Cities',
             options: [
                 { label: 'Paris', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
                 { label: 'Madrid', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
