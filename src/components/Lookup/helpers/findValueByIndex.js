@@ -1,4 +1,4 @@
-export default function findValueByIndex(options, focusedItemIndex) {
+export default function findValueByIndex(options = [], focusedItemIndex) {
     let optionIndex = 0;
     return options.find((option) => {
         if (option.type !== 'header') {

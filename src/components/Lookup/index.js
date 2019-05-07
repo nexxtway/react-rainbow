@@ -9,10 +9,12 @@ import Label from './label';
 import RightElement from './rightElement';
 import Options from './options';
 import ChipContent from './chipContent';
-import isNavigationKey from './isNavigationKey';
-import getNormalizedOptions from './getNormalizedOptions';
-import getOptionsLength from './getOptionsLength';
-import findValueByIndex from './findValueByIndex';
+import {
+    isNavigationKey,
+    getNormalizedOptions,
+    getOptionsLength,
+    findValueByIndex,
+} from './helpers';
 import { uniqueId } from '../../libs/utils';
 import { UP_KEY, DOWN_KEY, ENTER_KEY } from '../../libs/constants';
 import withReduxForm from '../../libs/hocs/withReduxForm';
