@@ -9,7 +9,12 @@ import Label from './label';
 import RightElement from './rightElement';
 import Options from './options';
 import ChipContent from './chipContent';
-import isNavigationKey from './isNavigationKey';
+import {
+    isNavigationKey,
+    getNormalizedOptions,
+    getOptionsLength,
+    findValueByIndex,
+} from './helpers';
 import { uniqueId } from '../../libs/utils';
 import { UP_KEY, DOWN_KEY, ENTER_KEY } from '../../libs/constants';
 import withReduxForm from '../../libs/hocs/withReduxForm';
@@ -27,7 +32,9 @@ class Lookup extends Component {
             searchValue: '',
             isFocused: false,
             focusedItemIndex: 0,
+            options: getNormalizedOptions(props.options || []),
         };
+        this.optionsLength = getOptionsLength(this.state.options);
         this.inputId = uniqueId('lookup-input');
         this.errorMessageId = uniqueId('error-message');
         this.labelRef = React.createRef();
@@ -56,6 +63,19 @@ class Lookup extends Component {
         this.setState({
             labelHeight: this.labelRef.current.getHeight(),
         });
+    }
+
+    componentDidUpdate(prevProps) {
+        const { options: prevOptions } = prevProps;
+        const { options } = this.props;
+        if (prevOptions !== options) {
+            const normalizedOptions = getNormalizedOptions(options);
+            this.setState({
+                options: normalizedOptions,
+                focusedItemIndex: 0,
+            });
+            this.optionsLength = getOptionsLength(normalizedOptions);
+        }
     }
 
     getContainerClassNames() {
@@ -221,8 +241,7 @@ class Lookup extends Component {
 
     handleKeyDownPressed() {
         const { focusedItemIndex } = this.state;
-        const { options } = this.props;
-        if (focusedItemIndex < options.length - 1) {
+        if (focusedItemIndex < this.optionsLength - 1) {
             this.setState({
                 focusedItemIndex: focusedItemIndex + 1,
             });
@@ -230,9 +249,10 @@ class Lookup extends Component {
     }
 
     handleKeyEnterPressed() {
-        const { onChange, options } = this.props;
+        const { onChange } = this.props;
         const { focusedItemIndex } = this.state;
-        const value = options.find((option, index) => index === focusedItemIndex);
+        const { options } = this.state;
+        const value = findValueByIndex(options, focusedItemIndex);
         this.setState({
             searchValue: '',
             focusedItemIndex: 0,
@@ -280,10 +300,9 @@ class Lookup extends Component {
             id,
             name,
             hideLabel,
-            options,
             isLoading,
         } = this.props;
-        const { searchValue, focusedItemIndex } = this.state;
+        const { searchValue, focusedItemIndex, options } = this.state;
         const chipOnDelete = (disabled || readOnly) ? undefined : this.handleRemoveValue;
 
         return (

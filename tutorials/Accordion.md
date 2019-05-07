@@ -6,10 +6,15 @@ Here is an overview about how to use the Accordion page object:
     const ARROW_LEFT_KEY = '\uE012';
 
     describe('Accordion page object basic usage', () => {
-        beforeEach(() => {
+        beforeAll(() => {
             browser.url('/url/to/testing/page');
-            browser.refresh();
         });
+        beforeEach(() => {
+            browser.refresh();
+            const component = $(ACCORDION);
+            component.waitForExist();
+        });
+
         it('should expand the accordion section when its button icon is clicked', () => {
             const accordion = new PageAccordion(ACCORDION);
             const accordionSection = accordion.getItem(0);

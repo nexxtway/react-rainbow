@@ -5,9 +5,13 @@ Here is an overview about how to use the VerticalNavigation page object:
     const VERTICAL_NAV = '#vertical-navigation-3';
 
     describe('VerticalNavigation page object basic usage', () => {
-        beforeEach(() => {
+        beforeAll(() => {
             browser.url('/url/to/testing/page');
+        });
+        beforeEach(() => {
             browser.refresh();
+            const component = $(VERTICAL_NAV);
+            component.waitForExist();
         });
 
         it('should expand the menu when click on its button', () => {

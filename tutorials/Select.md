@@ -5,10 +5,15 @@ Here is an overview about how to use the Select page object:
     const SELECT = '#select-1';
 
     describe('Select page object basic usage', () => {
-        beforeEach(() => {
+        beforeAll(() => {
             browser.url('/url/to/testing/page');
-            browser.refresh();
         });
+        beforeEach(() => {
+            browser.refresh();
+            const component = $(SELECT);
+            component.waitForExist();
+        });
+
         it('should put the select focused when clcik on it', () => {
             const select = new PageSelect(SELECT);
             select.click();

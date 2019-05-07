@@ -44,9 +44,9 @@ describe('<Options />', () => {
         expect(component.find('MenuItem').at(1).prop('isActive')).toBe(true);
         expect(component.find('MenuItem').at(2).prop('isActive')).toBe(false);
     });
-    it('should render a header item when has type "section"', () => {
+    it('should render a header item when has type "header"', () => {
         const items = [{
-            type: 'section',
+            type: 'header',
             label: 'header item',
         }];
         const component = mount(
@@ -54,16 +54,6 @@ describe('<Options />', () => {
         );
         expect(component.find('li.rainbow-lookup_menu-item_header').exists()).toBe(true);
         expect(component.find('li.rainbow-lookup_menu-item_header').text()).toBe('header item');
-    });
-    it('should render the amount of options passed in an item of type "section"', () => {
-        const items = [{
-            type: 'section',
-            options: [{}, {}],
-        }];
-        const component = mount(
-            <Options items={items} />,
-        );
-        expect(component.find('MenuItem').children().length).toBe(2);
     });
     it('should fire an event with the right data when click an item', () => {
         const items = [

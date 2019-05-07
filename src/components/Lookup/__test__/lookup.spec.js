@@ -251,4 +251,57 @@ describe('<Lookup />', () => {
         );
         expect(component.find('Chip').prop('onDelete')).toBeUndefined();
     });
+    it('should set the right options and reset the focusedItemIndex when the options changes', () => {
+        const options = [
+            {
+                type: 'section',
+                label: 'European Cities',
+                options: [
+                    { label: 'Paris', description: 'An awesome city' },
+                    { label: 'Madrid' },
+                ],
+            },
+            {
+                type: 'section',
+                label: 'American Cities',
+                options: [
+                    { label: 'New York' },
+                    { label: 'San Fransisco' },
+                    { label: 'Miami' },
+                ],
+            },
+        ];
+        const component = mount(
+            <Lookup label="custom label" options={options} />,
+        );
+        component.find('input').simulate('focus');
+        component.find('Options').find('li').at(2).simulate('mouseEnter');
+        expect(component.find('Options').prop('focusedItemIndex')).toBe(1);
+        component.setProps({
+            options: [
+                {
+                    type: 'section',
+                    label: 'European Cities',
+                    options: [
+                        { label: 'Madrid' },
+                    ],
+                },
+                {
+                    type: 'section',
+                    label: 'American Cities',
+                    options: [
+                        { label: 'Miami' },
+                    ],
+                },
+            ],
+        });
+        component.update();
+        expect(component.find('Options').prop('focusedItemIndex')).toBe(0);
+        expect(component.find('Options').prop('items')).toEqual([
+            { label: 'European Cities', type: 'header' },
+            { label: 'Madrid' },
+            { label: 'American Cities', type: 'header' },
+            { label: 'Miami' },
+        ]);
+    });
 });

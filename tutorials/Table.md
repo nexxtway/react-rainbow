@@ -5,10 +5,15 @@ Here is an overview about how to use the Table page object:
     const TABLE = '#table-1';
 
     describe('Table page object basic usage', () => {
-         beforeEach(() => {
+        beforeAll(() => {
             browser.url('/url/to/testing/page');
-            browser.refresh();
         });
+        beforeEach(() => {
+            browser.refresh();
+            const component = $(TABLE);
+            component.waitForExist();
+        });
+
         it('should select and then deselect a row', () => {
             const table = new PageTable(TABLE);
             const row5 = table.getRow(4);

@@ -8,9 +8,13 @@ Here is an overview about how to use the Tabset page object:
     const RIGHT_ARROW = 'Right arrow';
 
     describe('Tabset page object basic usage', () => {
-        beforeEach(() => {
+        beforeAll(() => {
             browser.url('/url/to/testing/page');
+        });
+        beforeEach(() => {
             browser.refresh();
+            const component = $(TABSET);
+            component.waitForExist();
         });
 
         it('should select the first tab when selected', () => {

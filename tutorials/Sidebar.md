@@ -7,10 +7,15 @@ Here is an overview about how to use the Sidebar page object:
     const ENTER_KEY = '\uE006';
 
     describe('Sidebar page object basic usage', () => {
-        beforeEach(() => {
-            browser.url('/#!/Sidebar/1');
-            browser.refresh();
+        beforeAll(() => {
+            browser.url('/url/to/testing/page');
         });
+        beforeEach(() => {
+            browser.refresh();
+            const component = $(SIDEBAR);
+            component.waitForExist();
+        });
+
         it('should make componet active on click event', () => {
             const sidebar = new PageSidebar(SIDEBAR);
             const sidebarItem = sidebar.getItem(1);

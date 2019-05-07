@@ -1,4 +1,4 @@
-import { UP_KEY, DOWN_KEY, ENTER_KEY } from '../../libs/constants';
+import { UP_KEY, DOWN_KEY, ENTER_KEY } from '../../../libs/constants';
 
 const KEYS = [
     UP_KEY,

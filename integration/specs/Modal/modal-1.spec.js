@@ -30,15 +30,6 @@ describe('Modal base example', () => {
         modal.waitUntilClose();
         expect(modal.isOpen()).toBe(false);
     });
-    // it('should close the modal when is opened and click outside of the modal', () => {
-    //     const modal = new PageModal(MODAL);
-    //     const triggerButton = $(BUTTON);
-    //     triggerButton.click();
-    //     modal.waitUntilOpen();
-    //     modal.clickOutside();
-    //     modal.waitUntilClose();
-    //     expect(modal.isOpen()).toBe(false);
-    // });
     it('should close the modal when is opened and click the closeButton', () => {
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);
@@ -56,15 +47,6 @@ describe('Modal base example', () => {
         browser.keys(ESCAPE_KEY);
         expect(triggerButton.isFocused()).toBe(true);
     });
-    /* eslint-disable max-len */
-    // it('should return focus to trigger element when close modal by clicking outside of the modal', () => {
-    //     const modal = new PageModal(MODAL);
-    //     const triggerButton = $(BUTTON);
-    //     triggerButton.click();
-    //     modal.waitUntilOpen();
-    //     modal.clickOutside();
-    //     expect(triggerButton.isFocused()).toBe(true);
-    // });
     it('should return focus to trigger element when close modal with close button', () => {
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);
