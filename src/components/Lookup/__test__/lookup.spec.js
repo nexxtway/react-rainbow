@@ -76,7 +76,7 @@ describe('<Lookup />', () => {
         expect(component.find('input').prop('value')).toBe('abc');
         expect(component.find('Options').exists()).toBe(true);
     });
-    it('should call onChange with the right data and reset focusedItemIndex when select an option', () => {
+    it('should call onChange with the right data when select an option', () => {
         const options = [
             { label: 'San Francisco' },
             { label: 'New York', description: 'awesome city' },
@@ -93,7 +93,6 @@ describe('<Lookup />', () => {
             label: 'New York',
             description: 'awesome city',
         });
-        expect(component.find('Options').prop('focusedItemIndex')).toBe(0);
     });
     it('should reset input value when select an option', () => {
         const options = [
@@ -211,7 +210,6 @@ describe('<Lookup />', () => {
             label: 'New York',
             description: 'awesome city',
         });
-        expect(component.find('Options').prop('focusedItemIndex')).toBe(0);
     });
     it('should call onChange with the right data when press down, up and enter key with the options menu open', () => {
         const options = [
@@ -253,6 +251,34 @@ describe('<Lookup />', () => {
     });
     it('should set the right options and reset the focusedItemIndex when the options changes', () => {
         const options = [
+            { label: 'Paris', description: 'An awesome city' },
+            { label: 'Madrid' },
+            { label: 'New York' },
+            { label: 'San Fransisco' },
+        ];
+        const component = mount(
+            <Lookup label="custom label" options={options} />,
+        );
+        component.find('input').simulate('focus');
+        component.find('Options').find('li').at(2).simulate('mouseEnter');
+        expect(component.find('Options').prop('focusedItemIndex')).toBe(2);
+        component.setProps({
+            options: [
+                { label: 'Paris', description: 'An awesome city' },
+                { label: 'Madrid' },
+                { label: 'New York' },
+            ],
+        });
+        component.update();
+        expect(component.find('Options').prop('focusedItemIndex')).toBe(0);
+        expect(component.find('Options').prop('items')).toEqual([
+            { label: 'Paris', description: 'An awesome city' },
+            { label: 'Madrid' },
+            { label: 'New York' },
+        ]);
+    });
+    it('should set the right options and reset the focusedItemIndex when the options changes and are type "section"', () => {
+        const options = [
             {
                 type: 'section',
                 label: 'European Cities',
@@ -275,7 +301,7 @@ describe('<Lookup />', () => {
             <Lookup label="custom label" options={options} />,
         );
         component.find('input').simulate('focus');
-        component.find('Options').find('li').at(2).simulate('mouseEnter');
+        component.find('Options').find('li').at(1).simulate('mouseEnter');
         expect(component.find('Options').prop('focusedItemIndex')).toBe(1);
         component.setProps({
             options: [
@@ -296,7 +322,7 @@ describe('<Lookup />', () => {
             ],
         });
         component.update();
-        expect(component.find('Options').prop('focusedItemIndex')).toBe(0);
+        expect(component.find('Options').prop('focusedItemIndex')).toBe(1);
         expect(component.find('Options').prop('items')).toEqual([
             { label: 'European Cities', type: 'header' },
             { label: 'Madrid' },

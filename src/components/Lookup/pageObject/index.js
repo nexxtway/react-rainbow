@@ -44,7 +44,7 @@ class PageLookup {
      * @method
      * @param {string} value - The value to type in the input element.
      */
-    setValue(value) {
+    setQuery(value) {
         $(this.rootElement).$('input[type="search"]').setValue(value);
     }
 
@@ -52,7 +52,7 @@ class PageLookup {
      * Clear the input element.
      * @method
      */
-    clearValue() {
+    clearQuery() {
         $(this.rootElement).$('input[type="search"]').clearValue();
     }
 
@@ -61,7 +61,7 @@ class PageLookup {
      * @method
      * @returns {string}
      */
-    getValue() {
+    getQuery() {
         return $(this.rootElement).$('input[type="search"]').getValue();
     }
 
@@ -70,7 +70,7 @@ class PageLookup {
      * @method
      * @returns {number}
      */
-    getMatchedOptionsAmount() {
+    getOptionsLength() {
         return $(this.rootElement).$$('li.rainbow-lookup_menu-item').length;
     }
 
@@ -79,7 +79,7 @@ class PageLookup {
      * @method
      * @param {number} itemPosition - The base 0 index of the LookupMenuItem.
      */
-    getItem(itemPosition) {
+    getOption(itemPosition) {
         const items = $(this.rootElement).$$('li.rainbow-lookup_menu-item');
         if (items[itemPosition]) {
             return new PageLookupMenuItem(`${this.rootElement} li.rainbow-lookup_menu-item:nth-child(${itemPosition + 1})`);
@@ -87,6 +87,11 @@ class PageLookup {
         return null;
     }
 
+    /**
+     * Get the label of the selected option.
+     * @method
+     * @returns {string}
+     */
     getSelectedOptionLabel() {
         const content = $(this.rootElement).$('.rainbow-lookup_chip-content_label');
         if (content) {

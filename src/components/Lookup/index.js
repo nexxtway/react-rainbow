@@ -12,8 +12,7 @@ import ChipContent from './chipContent';
 import {
     isNavigationKey,
     getNormalizedOptions,
-    getOptionsLength,
-    findValueByIndex,
+    getInitialFocusedIndex,
 } from './helpers';
 import { uniqueId } from '../../libs/utils';
 import { UP_KEY, DOWN_KEY, ENTER_KEY } from '../../libs/constants';
@@ -28,19 +27,19 @@ import './styles.css';
 class Lookup extends Component {
     constructor(props) {
         super(props);
+        const normalizedOptions = getNormalizedOptions(props.options || []);
         this.state = {
             searchValue: '',
             isFocused: false,
-            focusedItemIndex: 0,
-            options: getNormalizedOptions(props.options || []),
+            options: normalizedOptions,
+            focusedItemIndex: getInitialFocusedIndex(normalizedOptions),
         };
-        this.optionsLength = getOptionsLength(this.state.options);
         this.inputId = uniqueId('lookup-input');
         this.errorMessageId = uniqueId('error-message');
         this.labelRef = React.createRef();
         this.containerRef = React.createRef();
         this.inputRef = React.createRef();
-        this.handlesSearch = this.handlesSearch.bind(this);
+        this.handleSearch = this.handleSearch.bind(this);
         this.clearInput = this.clearInput.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -72,9 +71,8 @@ class Lookup extends Component {
             const normalizedOptions = getNormalizedOptions(options);
             this.setState({
                 options: normalizedOptions,
-                focusedItemIndex: 0,
+                focusedItemIndex: getInitialFocusedIndex(normalizedOptions),
             });
-            this.optionsLength = getOptionsLength(normalizedOptions);
         }
     }
 
@@ -135,12 +133,11 @@ class Lookup extends Component {
         const { onChange } = this.props;
         this.setState({
             searchValue: '',
-            focusedItemIndex: 0,
         });
         onChange(value);
     }
 
-    handlesSearch(event) {
+    handleSearch(event) {
         const { value } = event.target;
         this.setState({
             searchValue: value,
@@ -231,20 +228,29 @@ class Lookup extends Component {
     }
 
     handleKeyUpPressed() {
-        const { focusedItemIndex } = this.state;
+        const { focusedItemIndex, options } = this.state;
         if (focusedItemIndex > 0) {
-            this.setState({
-                focusedItemIndex: focusedItemIndex - 1,
-            });
+            const prevIndex = focusedItemIndex - 1;
+            const prevFocusedIndex = options[prevIndex].type === 'header' ? focusedItemIndex - 2 : prevIndex;
+            if (prevFocusedIndex >= 0) {
+                this.setState({
+                    focusedItemIndex: prevFocusedIndex,
+                });
+            }
         }
     }
 
     handleKeyDownPressed() {
-        const { focusedItemIndex } = this.state;
-        if (focusedItemIndex < this.optionsLength - 1) {
-            this.setState({
-                focusedItemIndex: focusedItemIndex + 1,
-            });
+        const { focusedItemIndex, options } = this.state;
+        const lastIndex = options.length - 1;
+        if (focusedItemIndex < lastIndex) {
+            const nextIndex = focusedItemIndex + 1;
+            const nextFocusedIndex = options[nextIndex].type === 'header' ? focusedItemIndex + 2 : nextIndex;
+            if (nextFocusedIndex <= lastIndex) {
+                this.setState({
+                    focusedItemIndex: nextFocusedIndex,
+                });
+            }
         }
     }
 
@@ -252,10 +258,9 @@ class Lookup extends Component {
         const { onChange } = this.props;
         const { focusedItemIndex } = this.state;
         const { options } = this.state;
-        const value = findValueByIndex(options, focusedItemIndex);
+        const value = options[focusedItemIndex];
         this.setState({
             searchValue: '',
-            focusedItemIndex: 0,
         });
         onChange(value);
     }
@@ -304,6 +309,7 @@ class Lookup extends Component {
         } = this.props;
         const { searchValue, focusedItemIndex, options } = this.state;
         const chipOnDelete = (disabled || readOnly) ? undefined : this.handleRemoveValue;
+        const isOpenMenu = this.isMenuOpen();
 
         return (
             <div
@@ -354,7 +360,7 @@ class Lookup extends Component {
                             className={this.getInputClassNames()}
                             value={searchValue}
                             placeholder={placeholder}
-                            onChange={this.handlesSearch}
+                            onChange={this.handleSearch}
                             tabIndex={tabIndex}
                             onFocus={this.handleFocus}
                             onBlur={onBlur}
@@ -366,7 +372,7 @@ class Lookup extends Component {
                             aria-describedby={this.getErrorMessageId()}
                             ref={this.inputRef} />
 
-                        <RenderIf isTrue={this.isMenuOpen()}>
+                        <RenderIf isTrue={isOpenMenu}>
                             <div className="rainbow-lookup_options-divider" />
                             <Options
                                 items={options}

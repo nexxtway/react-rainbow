@@ -12,16 +12,15 @@ function MenuItems(props) {
         focusedItemIndex,
         onHover,
     } = props;
-    let optionIndex = 0;
 
-    return items.map((item) => {
+    return items.map((item, index) => {
         const {
             label,
             description,
             icon,
             type,
         } = item;
-        const isActive = optionIndex === focusedItemIndex;
+        const isActive = index === focusedItemIndex;
 
         if (type === 'header') {
             return (
@@ -35,19 +34,17 @@ function MenuItems(props) {
             );
         }
 
-        const menuItem = (
+        return (
             <MenuItem
                 key={uniqueId('lookup-item')}
                 label={label}
                 description={description}
                 icon={icon}
                 isActive={isActive}
-                index={optionIndex}
+                index={index}
                 onHover={onHover}
                 onClick={onClick} />
         );
-        optionIndex += 1;
-        return menuItem;
     });
 }
 

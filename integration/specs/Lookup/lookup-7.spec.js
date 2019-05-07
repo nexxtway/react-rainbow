@@ -20,14 +20,14 @@ describe('Lookup with options type section example', () => {
     it('should render the right amount of matches', () => {
         const lookup = new PageLookup(LOOKUP);
         lookup.click();
-        lookup.setValue('l');
+        lookup.setQuery('l');
         lookup.waitUntilOpen();
-        expect(lookup.getMatchedOptionsAmount()).toBe(4);
+        expect(lookup.getOptionsLength()).toBe(4);
     });
     it('should select La Habana with keyboard', () => {
         const lookup = new PageLookup(LOOKUP);
         lookup.click();
-        lookup.setValue('l');
+        lookup.setQuery('l');
         lookup.waitUntilOpen();
         browser.keys(ARROW_DOWN_KEY);
         browser.keys(ARROW_DOWN_KEY);
@@ -37,7 +37,7 @@ describe('Lookup with options type section example', () => {
     it('should select Barcelona with keyboard', () => {
         const lookup = new PageLookup(LOOKUP);
         lookup.click();
-        lookup.setValue('l');
+        lookup.setQuery('l');
         lookup.waitUntilOpen();
         browser.keys(ARROW_DOWN_KEY);
         browser.keys(ARROW_DOWN_KEY);

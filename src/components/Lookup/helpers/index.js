@@ -1,11 +1,9 @@
 import isNavigationKey from './isNavigationKey';
-import getOptionsLength from './getOptionsLength';
 import getNormalizedOptions from './getNormalizedOptions';
-import findValueByIndex from './findValueByIndex';
+import getInitialFocusedIndex from './getInitialFocusedIndex';
 
 export {
     isNavigationKey,
-    getOptionsLength,
     getNormalizedOptions,
-    findValueByIndex,
+    getInitialFocusedIndex,
 };

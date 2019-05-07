@@ -45,4 +45,15 @@ describe('getNormalizedOptions', () => {
             { label: 'Miami' },
         ]);
     });
+    it('should return only the header option when deep options is not an array', () => {
+        const options = [{
+            type: 'section',
+            label: 'European Cities',
+            options: {},
+        }];
+        expect(getNormalizedOptions(options)).toEqual([{
+            label: 'European Cities',
+            type: 'header',
+        }]);
+    });
 });
