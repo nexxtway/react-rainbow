@@ -36,8 +36,7 @@
 }
 
 .rainbow-lookup_input-container {
-    position: absolute;
-    width: 100%;
+    position: relative;
 
     .rainbow-lookup_input-icon {
         fill: $color-gray-3;
@@ -67,20 +66,9 @@
         right: 0.8rem;
         padding-right: 2.35rem;
     }
-}
 
-.rainbow-lookup_input-container--menu-opened {
-    border-radius: 20px;
-    background-color: white;
-    box-shadow: 0 2px 4px 0 $color-gray-2;
-    border: solid 1px $color-gray-2;
-    overflow-y: hidden;
-    z-index: 2000;
-    padding-top: 4px;
-
-    .rainbow-lookup_input-close-button-container,
-    .rainbow-lookup_input-icon {
-        height: 40px;
+    .rainbow-lookup_input--loading {
+        padding-right: 5rem;
     }
 }
 
@@ -157,6 +145,25 @@
     }
 }
 
+.rainbow-lookup_options-menu {
+    position: absolute;
+    width: 100%;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 0 2px 4px 0 $color-gray-2;
+    border: solid 1px $color-gray-2;
+    overflow: hidden;
+    margin-top: 0.2rem;
+    z-index: 2000;
+    transition: all 0.1s linear;
+
+    .rainbow-lookup_input-close-button-container,
+    .rainbow-lookup_input-icon {
+        height: 100%;
+        transition: all 0.1s linear;
+    }
+}
+
 .rainbow-lookup_input-error {
     @include bottomMessage($color-error);
 }
@@ -193,32 +200,6 @@
     white-space: nowrap !important;
 }
 
-.rainbow-lookup_input--menu-opened {
-    border: none;
-    background-color: transparent;
-    width: 100%;
-    height: 2.5rem;
-    line-height: 2.5rem;
-    padding: 0 2.35rem 0 1rem;
-    font-size: 16px;
-    color: $color-dark-1;
-    caret-color: $color-brand-active;
-
-    &::placeholder {
-        color: $color-gray-3;
-        font-weight: 300;
-        font-size: $font-size-text-large;
-    }
-
-    &:focus {
-        outline: none;
-    }
-}
-
-.rainbow-lookup_input--loading {
-    padding-right: 5rem;
-}
-
 .rainbow-lookup_input-close-button-container {
     height: 100%;
     right: 0.8rem;
@@ -236,15 +217,11 @@
     top: 1.4rem;
 }
 
-.rainbow-lookup_chip-content {
-    display: flex;
-    align-items: center;
-}
-
 .rainbow-lookup_chip-content_container {
     background-color: white;
     border: 1px solid $color-gray-3;
     border-radius: $border-radius-2;
+    transition: all 0.1s linear;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -256,10 +233,12 @@
     width: 100%;
     margin: 0 3px;
     padding-left: 0;
+    transition: all 0.1s linear;
 }
 
-.rainbow-lookup_chip-content_label {
-    margin-left: 8px;
+.rainbow-lookup_chip-content {
+    display: flex;
+    align-items: center;
 }
 
 .rainbow-lookup_chip-content_icon {
@@ -270,8 +249,6 @@
     justify-content: center;
 }
 
-.rainbow-lookup_inner-div {
-    height: 40px;
-    visibility: hidden;
-    z-index: -1;
+.rainbow-lookup_chip-content_label {
+    margin-left: 8px;
 }

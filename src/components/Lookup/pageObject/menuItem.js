@@ -21,6 +21,15 @@ class PageLookupMenuItem {
     }
 
     /**
+     * It moves the pointer over the menu item.
+     * @method
+     */
+    hover() {
+        const itemElement = $(`${this.rootElement} > a`);
+        itemElement.moveTo();
+    }
+
+    /**
      * Returns true when the menu item is active.
      * @method
      * @returns {bool}
@@ -33,12 +42,12 @@ class PageLookupMenuItem {
     }
 
     /**
-     * It moves the pointer over the menu item.
+     * Returns true when the menu item is visible inside the menu container.
      * @method
+     * @returns {bool}
      */
-    hover() {
-        const itemElement = $(`${this.rootElement} > a`);
-        itemElement.moveTo();
+    isVisible() {
+        return $(this.rootElement).isDisplayedInViewport();
     }
 }
 

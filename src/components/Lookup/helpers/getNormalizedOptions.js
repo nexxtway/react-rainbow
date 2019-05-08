@@ -1,20 +1,19 @@
 export default function getNormalizedOptions(options) {
-    if (options && Array.isArray(options)) {
-        const arr = [];
-        options.forEach(item => {
+    const isArray = Array.isArray;
+    if (isArray(options)) {
+        return options.reduce((arr, item) => {
             if (item.type === 'section') {
                 arr.push({
                     label: item.label,
                     type: 'header',
                 });
-                item.options.forEach(option => {
-                    arr.push(option);
-                });
-            } else {
-                arr.push(item);
+                return arr.concat(
+                    isArray(item.options) ? item.options : [],
+                );
             }
-        });
-        return arr;
+            arr.push(item);
+            return arr;
+        }, []);
     }
     return [];
 }

@@ -15,7 +15,7 @@ describe('<Options />', () => {
         const values = [[{}], [{}, {}], [{}, {}, {}, {}], [{}, {}, {}, {}, {}, {}]];
         const expects = [65, 113, 209, 305];
         values.forEach((items, index) => {
-            const component = mount(<Options items={items} />);
+            const component = mount(<Options items={items} itemHeight={48} />);
             expect(component.find('ul').prop('style').height).toBe(expects[index]);
         });
     });

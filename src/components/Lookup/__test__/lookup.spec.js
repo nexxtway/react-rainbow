@@ -32,25 +32,12 @@ describe('<Lookup />', () => {
             component.find('div.rainbow-lookup_container.rainbow-lookup_container--error').exists(),
         ).toBe(true);
     });
-    it('should set the right class names in the input container element when the menu is open', () => {
-        const component = mount(<Lookup label="custom label" options={[{}]} />);
+    it('should set the right class names in the input element when isLoading is passed', () => {
+        const component = mount(
+            <Lookup label="custom label" options={[{}]} isLoading />,
+        );
         component.find('input').simulate('focus');
-        expect(
-            component
-                .find(
-                    'div.rainbow-lookup_input-container.rainbow-lookup_input-container--menu-opened',
-                )
-                .exists(),
-        ).toBe(true);
-    });
-    it('should set the right class names in the input element when the menu is open and isLoading', () => {
-        const component = mount(<Lookup label="custom label" options={[{}]} isLoading />);
-        component.find('input').simulate('focus');
-        expect(
-            component
-                .find('input.rainbow-lookup_input--menu-opened.rainbow-lookup_input--loading')
-                .exists(),
-        ).toBe(true);
+        expect(component.find('input.rainbow-lookup_input.rainbow-lookup_input--loading').exists()).toBe(true);
     });
     it('should render the Options menu when there are options and the input is focused', () => {
         const component = mount(<Lookup label="custom label" options={[{}]} />);
@@ -70,7 +57,7 @@ describe('<Lookup />', () => {
         expect(component.find('input').prop('value')).toBe('abc');
         expect(component.find('Options').exists()).toBe(true);
     });
-    it('should call onChange with the right data and reset focusedItemIndex when select an option', () => {
+    it('should call onChange with the right data when select an option', () => {
         const options = [
             { label: 'San Francisco' },
             { label: 'New York', description: 'awesome city' },
@@ -95,7 +82,6 @@ describe('<Lookup />', () => {
             label: 'New York',
             description: 'awesome city',
         });
-        expect(component.find('Options').prop('focusedItemIndex')).toBe(0);
     });
     it('should reset input value when select an option', () => {
         const options = [
@@ -130,6 +116,16 @@ describe('<Lookup />', () => {
             },
         });
         expect(onSearchMockFn).toHaveBeenCalledWith('london');
+    });
+    it('should not render a Chip component when value passed is other than object', () => {
+        const values = ['', 'my value', 123, undefined, null, NaN, [], () => {}];
+        values.forEach(value => {
+            const component = mount(
+                <Lookup label="custom label" value={value} />,
+            );
+            expect(component.find('Chip').exists()).toBe(false);
+            expect(component.find('input[type="search"]').exists()).toBe(true);
+        });
     });
     it('should render a Chip component when value is passed', () => {
         const value = { label: 'New York', description: 'awesome city' };
@@ -221,7 +217,6 @@ describe('<Lookup />', () => {
             label: 'New York',
             description: 'awesome city',
         });
-        expect(component.find('Options').prop('focusedItemIndex')).toBe(0);
     });
     it('should call onChange with the right data when press down, up and enter key with the options menu open', () => {
         const options = [
@@ -257,6 +252,34 @@ describe('<Lookup />', () => {
     });
     it('should set the right options and reset the focusedItemIndex when the options changes', () => {
         const options = [
+            { label: 'Paris', description: 'An awesome city' },
+            { label: 'Madrid' },
+            { label: 'New York' },
+            { label: 'San Fransisco' },
+        ];
+        const component = mount(
+            <Lookup label="custom label" options={options} />,
+        );
+        component.find('input').simulate('focus');
+        component.find('Options').find('li').at(2).simulate('mouseEnter');
+        expect(component.find('Options').prop('focusedItemIndex')).toBe(2);
+        component.setProps({
+            options: [
+                { label: 'Paris', description: 'An awesome city' },
+                { label: 'Madrid' },
+                { label: 'New York' },
+            ],
+        });
+        component.update();
+        expect(component.find('Options').prop('focusedItemIndex')).toBe(0);
+        expect(component.find('Options').prop('items')).toEqual([
+            { label: 'Paris', description: 'An awesome city' },
+            { label: 'Madrid' },
+            { label: 'New York' },
+        ]);
+    });
+    it('should set the right options and reset the focusedItemIndex when the options changes and are type "section"', () => {
+        const options = [
             {
                 type: 'section',
                 label: 'European Cities',
@@ -273,7 +296,7 @@ describe('<Lookup />', () => {
         component
             .find('Options')
             .find('li')
-            .at(2)
+            .at(1)
             .simulate('mouseEnter');
         expect(component.find('Options').prop('focusedItemIndex')).toBe(1);
         component.setProps({
@@ -291,7 +314,7 @@ describe('<Lookup />', () => {
             ],
         });
         component.update();
-        expect(component.find('Options').prop('focusedItemIndex')).toBe(0);
+        expect(component.find('Options').prop('focusedItemIndex')).toBe(1);
         expect(component.find('Options').prop('items')).toEqual([
             { label: 'European Cities', type: 'header' },
             { label: 'Madrid' },

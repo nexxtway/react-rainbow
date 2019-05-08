@@ -12,13 +12,15 @@ import ChipContent from './chipContent';
 import {
     isNavigationKey,
     getNormalizedOptions,
-    getOptionsLength,
-    findValueByIndex,
+    getInitialFocusedIndex,
+    isOptionVisible,
 } from './helpers';
 import { uniqueId } from '../../libs/utils';
 import { UP_KEY, DOWN_KEY, ENTER_KEY } from '../../libs/constants';
 import withReduxForm from '../../libs/hocs/withReduxForm';
 import './styles.css';
+
+const OPTION_HEIGHT = 48;
 
 /**
  * A Lookup is an autocomplete text input that will search against a database object,
@@ -28,19 +30,19 @@ import './styles.css';
 class Lookup extends Component {
     constructor(props) {
         super(props);
+        const normalizedOptions = getNormalizedOptions(props.options || []);
         this.state = {
             searchValue: '',
             isFocused: false,
-            focusedItemIndex: 0,
-            options: getNormalizedOptions(props.options || []),
+            options: normalizedOptions,
+            focusedItemIndex: getInitialFocusedIndex(normalizedOptions),
         };
-        this.optionsLength = getOptionsLength(this.state.options);
         this.inputId = uniqueId('lookup-input');
         this.errorMessageId = uniqueId('error-message');
-        this.labelRef = React.createRef();
         this.containerRef = React.createRef();
         this.inputRef = React.createRef();
-        this.handlesSearch = this.handlesSearch.bind(this);
+        this.menuRef = React.createRef();
+        this.handleSearch = this.handleSearch.bind(this);
         this.clearInput = this.clearInput.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -59,12 +61,6 @@ class Lookup extends Component {
         };
     }
 
-    componentDidMount() {
-        this.setState({
-            labelHeight: this.labelRef.current.getHeight(),
-        });
-    }
-
     componentDidUpdate(prevProps) {
         const { options: prevOptions } = prevProps;
         const { options } = this.props;
@@ -72,9 +68,8 @@ class Lookup extends Component {
             const normalizedOptions = getNormalizedOptions(options);
             this.setState({
                 options: normalizedOptions,
-                focusedItemIndex: 0,
+                focusedItemIndex: getInitialFocusedIndex(normalizedOptions),
             });
-            this.optionsLength = getOptionsLength(normalizedOptions);
         }
     }
 
@@ -89,30 +84,19 @@ class Lookup extends Component {
         );
     }
 
-    getInputContainerClassNames() {
-        return classnames('rainbow-lookup_input-container', {
-            'rainbow-lookup_input-container--menu-opened': this.isMenuOpen(),
-        });
-    }
-
-    getInputContainerStyle() {
-        const { labelHeight } = this.state;
-        if (labelHeight) {
-            return {
-                top: labelHeight,
-            };
-        }
-        return undefined;
-    }
-
     getInputClassNames() {
         const { isLoading } = this.props;
-        const isOpen = this.isMenuOpen();
-        return classnames({
-            'rainbow-lookup_input': !isOpen,
-            'rainbow-lookup_input--menu-opened': isOpen,
+        return classnames('rainbow-lookup_input', {
             'rainbow-lookup_input--loading': isLoading,
         });
+    }
+
+    getValue() {
+        const { value } = this.props;
+        if (typeof value === 'object' && !Array.isArray(value)) {
+            return value;
+        }
+        return undefined;
     }
 
     getErrorMessageId() {
@@ -136,12 +120,11 @@ class Lookup extends Component {
         const { onChange } = this.props;
         this.setState({
             searchValue: '',
-            focusedItemIndex: 0,
         });
         onChange(value);
     }
 
-    handlesSearch(event) {
+    handleSearch(event) {
         const { value } = event.target;
         this.setState({
             searchValue: value,
@@ -199,10 +182,12 @@ class Lookup extends Component {
     }
 
     closeMenu() {
+        const { options } = this.state;
         window.removeEventListener('click', this.handleClick);
         window.removeEventListener('touchstart', this.handleClick);
         return this.setState({
             isFocused: false,
+            focusedItemIndex: getInitialFocusedIndex(options),
         });
     }
 
@@ -223,7 +208,7 @@ class Lookup extends Component {
 
     handleKeyDown(event) {
         const { keyCode } = event;
-        if (isNavigationKey(keyCode)) {
+        if (isNavigationKey(keyCode) && this.isMenuOpen()) {
             event.preventDefault();
             if (this.keyHandlerMap[keyCode]) {
                 this.keyHandlerMap[keyCode]();
@@ -232,20 +217,52 @@ class Lookup extends Component {
     }
 
     handleKeyUpPressed() {
-        const { focusedItemIndex } = this.state;
+        const { focusedItemIndex, options } = this.state;
         if (focusedItemIndex > 0) {
-            this.setState({
-                focusedItemIndex: focusedItemIndex - 1,
-            });
+            const prevIndex = focusedItemIndex - 1;
+            const prevFocusedIndex = options[prevIndex].type === 'header' ? focusedItemIndex - 2 : prevIndex;
+            if (prevFocusedIndex >= 0) {
+                this.setState({
+                    focusedItemIndex: prevFocusedIndex,
+                });
+            }
+            this.scrollUp(prevFocusedIndex);
+        }
+    }
+
+    scrollUp(prevFocusedIndex) {
+        const { options } = this.state;
+        const menu = this.menuRef.current.getRef();
+        const prevIndex = prevFocusedIndex >= 0 ? prevFocusedIndex : 0;
+        const prevFocusedOption = menu.childNodes[prevIndex];
+
+        if (options.length > 5 && !isOptionVisible(prevFocusedOption, menu)) {
+            this.menuRef.current.scrollTo(OPTION_HEIGHT * (prevIndex));
         }
     }
 
     handleKeyDownPressed() {
-        const { focusedItemIndex } = this.state;
-        if (focusedItemIndex < this.optionsLength - 1) {
-            this.setState({
-                focusedItemIndex: focusedItemIndex + 1,
-            });
+        const { focusedItemIndex, options } = this.state;
+        const lastIndex = options.length - 1;
+        if (focusedItemIndex < lastIndex) {
+            const nextIndex = focusedItemIndex + 1;
+            const nextFocusedIndex = options[nextIndex].type === 'header' ? focusedItemIndex + 2 : nextIndex;
+            if (nextFocusedIndex <= lastIndex) {
+                this.setState({
+                    focusedItemIndex: nextFocusedIndex,
+                });
+                this.scrollDown(nextFocusedIndex);
+            }
+        }
+    }
+
+    scrollDown(nextFocusedIndex) {
+        const { options } = this.state;
+        const menu = this.menuRef.current.getRef();
+        const nextFocusedOption = menu.childNodes[nextFocusedIndex];
+
+        if (options.length > 5 && !isOptionVisible(nextFocusedOption, menu)) {
+            this.menuRef.current.scrollTo(OPTION_HEIGHT * (nextFocusedIndex - 4));
         }
     }
 
@@ -253,10 +270,9 @@ class Lookup extends Component {
         const { onChange } = this.props;
         const { focusedItemIndex } = this.state;
         const { options } = this.state;
-        const value = findValueByIndex(options, focusedItemIndex);
+        const value = options[focusedItemIndex];
         this.setState({
             searchValue: '',
-            focusedItemIndex: 0,
         });
         onChange(value);
     }
@@ -288,7 +304,6 @@ class Lookup extends Component {
     render() {
         const {
             style,
-            value,
             label,
             error,
             placeholder,
@@ -305,6 +320,9 @@ class Lookup extends Component {
         } = this.props;
         const { searchValue, focusedItemIndex, options } = this.state;
         const chipOnDelete = disabled || readOnly ? undefined : this.handleRemoveValue;
+        const isOpenMenu = this.isMenuOpen();
+        const errorMessageId = this.getErrorMessageId();
+        const currentValue = this.getValue();
 
         return (
             <div
@@ -314,34 +332,32 @@ class Lookup extends Component {
                 role="presentation"
                 onKeyDown={this.handleKeyDown}
             >
+
                 <Label
                     label={label}
                     hideLabel={hideLabel}
                     required={required}
                     inputId={this.inputId}
                     readOnly={readOnly}
-                    ref={this.labelRef}
                 />
 
-                <RenderIf isTrue={!!value}>
+                <RenderIf isTrue={!!currentValue}>
                     <div className="rainbow-lookup_chip-content_container">
                         <Chip
                             className="rainbow-lookup_chip"
-                            label={<ChipContent {...value} />}
+                            label={<ChipContent {...currentValue} />}
                             variant="neutral"
                             onDelete={chipOnDelete}
                         />
                     </div>
                 </RenderIf>
 
-                <RenderIf isTrue={!value}>
+                <RenderIf isTrue={!currentValue}>
                     <div
-                        className={this.getInputContainerClassNames()}
-                        style={this.getInputContainerStyle()}
-                        ref={this.containerRef}
-                    >
-                        <RightElement showCloseButton={!!searchValue} onClear={this.clearInput} />
+                        className="rainbow-lookup_input-container"
+                        ref={this.containerRef}>
 
+                        <RightElement showCloseButton={!!searchValue} onClear={this.clearInput} />
                         <Spinner
                             isVisible={isLoading}
                             className="rainbow-lookup_spinner"
@@ -356,7 +372,7 @@ class Lookup extends Component {
                             className={this.getInputClassNames()}
                             value={searchValue}
                             placeholder={placeholder}
-                            onChange={this.handlesSearch}
+                            onChange={this.handleSearch}
                             tabIndex={tabIndex}
                             onFocus={this.handleFocus}
                             onBlur={onBlur}
@@ -365,27 +381,27 @@ class Lookup extends Component {
                             readOnly={readOnly}
                             required={required}
                             autoComplete="off"
-                            aria-describedby={this.getErrorMessageId()}
+                            aria-describedby={errorMessageId}
                             ref={this.inputRef}
                         />
 
-                        <RenderIf isTrue={this.isMenuOpen()}>
-                            <div className="rainbow-lookup_options-divider" />
-                            <Options
-                                items={options}
-                                value={searchValue}
-                                onSelectOption={this.handleChange}
-                                focusedItemIndex={focusedItemIndex}
-                                onHoverOption={this.handleHover}
-                            />
+                        <RenderIf isTrue={isOpenMenu}>
+                            <div className="rainbow-lookup_options-menu">
+                                <Options
+                                    items={options}
+                                    value={searchValue}
+                                    onSelectOption={this.handleChange}
+                                    focusedItemIndex={focusedItemIndex}
+                                    onHoverOption={this.handleHover}
+                                    itemHeight={OPTION_HEIGHT}
+                                    ref={this.menuRef}
+                                />
+                            </div>
                         </RenderIf>
                     </div>
                 </RenderIf>
-                <RenderIf isTrue={!value}>
-                    <div className="rainbow-lookup_inner-div" />
-                </RenderIf>
                 <RenderIf isTrue={!!error}>
-                    <div id={this.getErrorMessageId()} className="rainbow-lookup_input-error">
+                    <div id={errorMessageId} className="rainbow-lookup_input-error">
                         {error}
                     </div>
                 </RenderIf>
@@ -400,11 +416,14 @@ Lookup.propTypes = {
     /** A boolean to hide the Lookup label. */
     hideLabel: PropTypes.bool,
     /** Specifies the selected value of the Lookup. */
-    value: PropTypes.shape({
-        label: PropTypes.string,
-        description: PropTypes.string,
-        icon: PropTypes.node,
-    }),
+    value: PropTypes.oneOfType([
+        PropTypes.shape({
+            label: PropTypes.string,
+            description: PropTypes.string,
+            icon: PropTypes.node,
+        }),
+        PropTypes.string,
+    ]),
     /** An array of matched options to show in a menu. */
     options: PropTypes.arrayOf(
         PropTypes.shape({
