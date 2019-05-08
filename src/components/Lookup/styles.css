@@ -105,8 +105,7 @@
   box-shadow: 0 2px 4px 0 #e3e5ed;
   border: solid 1px #e3e5ed;
   overflow-y: hidden;
-  padding-top: 4px;
-  margin-top: 0.3rem;
+  margin-top: 0.2rem;
   z-index: 2000; }
   .rainbow-lookup_options-menu .rainbow-lookup_input-close-button-container,
   .rainbow-lookup_options-menu .rainbow-lookup_input-icon {
