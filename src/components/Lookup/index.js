@@ -90,6 +90,14 @@ class Lookup extends Component {
         });
     }
 
+    getValue() {
+        const { value } = this.props;
+        if (typeof value === 'object' && !Array.isArray(value)) {
+            return value;
+        }
+        return undefined;
+    }
+
     getErrorMessageId() {
         const { error } = this.props;
         if (error) {
@@ -295,7 +303,6 @@ class Lookup extends Component {
     render() {
         const {
             style,
-            value,
             label,
             error,
             placeholder,
@@ -314,6 +321,7 @@ class Lookup extends Component {
         const chipOnDelete = (disabled || readOnly) ? undefined : this.handleRemoveValue;
         const isOpenMenu = this.isMenuOpen();
         const errorMessageId = this.getErrorMessageId();
+        const currentValue = this.getValue();
 
         return (
             <div
@@ -330,17 +338,17 @@ class Lookup extends Component {
                     inputId={this.inputId}
                     readOnly={readOnly} />
 
-                <RenderIf isTrue={!!value}>
+                <RenderIf isTrue={!!currentValue}>
                     <div className="rainbow-lookup_chip-content_container">
                         <Chip
                             className="rainbow-lookup_chip"
-                            label={<ChipContent {...value} />}
+                            label={<ChipContent {...currentValue} />}
                             variant="neutral"
                             onDelete={chipOnDelete} />
                     </div>
                 </RenderIf>
 
-                <RenderIf isTrue={!value}>
+                <RenderIf isTrue={!currentValue}>
                     <div
                         className="rainbow-lookup_input-container"
                         ref={this.containerRef}>
@@ -406,11 +414,14 @@ Lookup.propTypes = {
     /** A boolean to hide the Lookup label. */
     hideLabel: PropTypes.bool,
     /** Specifies the selected value of the Lookup. */
-    value: PropTypes.shape({
-        label: PropTypes.string,
-        description: PropTypes.string,
-        icon: PropTypes.node,
-    }),
+    value: PropTypes.oneOfType([
+        PropTypes.shape({
+            label: PropTypes.string,
+            description: PropTypes.string,
+            icon: PropTypes.node,
+        }),
+        PropTypes.string,
+    ]),
     /** An array of matched options to show in a menu. */
     options: PropTypes.arrayOf(
         PropTypes.shape({

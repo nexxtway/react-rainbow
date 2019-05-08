@@ -5,12 +5,12 @@ const {
     ENTER_KEY,
 } = require('../../constants');
 
-const LOOKUP = '#lookup-7';
+const LOOKUP = '#lookup-5';
 const REACT_LOGO = 'img[alt="react-rainbow"]';
 
 describe('Lookup with options type section example', () => {
     beforeAll(() => {
-        browser.url('/#!/Lookup/7');
+        browser.url('/#!/Lookup/5');
     });
     beforeEach(() => {
         browser.refresh();

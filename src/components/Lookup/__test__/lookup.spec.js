@@ -119,6 +119,16 @@ describe('<Lookup />', () => {
         });
         expect(onSearchMockFn).toHaveBeenCalledWith('london');
     });
+    it('should not render a Chip component when value passed is other than object', () => {
+        const values = ['', 'my value', 123, undefined, null, NaN, [], () => {}];
+        values.forEach((value) => {
+            const component = mount(
+                <Lookup label="custom label" value={value} />,
+            );
+            expect(component.find('Chip').exists()).toBe(false);
+            expect(component.find('input[type="search"]').exists()).toBe(true);
+        });
+    });
     it('should render a Chip component when value is passed', () => {
         const value = { label: 'New York', description: 'awesome city' };
         const onChangeMockFn = jest.fn();

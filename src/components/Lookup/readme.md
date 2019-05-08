@@ -36,16 +36,14 @@
             });
         } else if (value) {
             setState({
-                isLoading: true,
                 value,
             });
             setState({
                 options: filter(value, options),
-                isLoading: false,
+                value,
             });
         } else {
             setState({
-                isLoading: false,
                 value: '',
                 options: null,
             });
@@ -62,7 +60,6 @@
             options={state.options}
             value={state.option}
             onChange={(option) => setState({ option })}
-            isLoading={state.isLoading}
             onSearch={search} />
     </div>
 
@@ -84,62 +81,62 @@
     };
 
     const options = [
-        { 
+        {
             label: 'Paris',
             description: 'This is an awesome city',
             icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
         },
-        { 
+        {
             label: 'New York',
             description: 'This is an awesome city',
             icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
         },
-        { 
+        {
             label: 'San Fransisco',
             description: 'This is an awesome city',
-            icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span> 
+            icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
         },
-        { 
+        {
             label: 'Madrid',
             description: 'This is an awesome city',
             icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
         },
-        { 
+        {
             label: 'Miami',
             description: 'This is an awesome city',
             icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
         },
-        { 
+        {
             label: 'London',
             description: 'This is an awesome city',
             icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
         },
-        { 
+        {
             label: 'Tokyo',
             description: 'This is an awesome city',
             icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
         },
-        { 
+        {
             label: 'Barcelona',
             description: 'This is an awesome city',
             icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
         },
-        { 
+        {
             label: 'La Habana',
             description: 'This is an awesome city',
             icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
         },
-        { 
+        {
             label: 'Buenos Aires',
             description: 'This is an awesome city',
             icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
         },
-        { 
+        {
             label: 'Sao Paulo',
             description: 'This is an awesome city',
             icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
         },
-        { 
+        {
             label: 'Toronto',
             description: 'This is an awesome city',
             icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
@@ -277,7 +274,7 @@
 
     <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
         <Lookup
-            id="lookup-7"
+            id="lookup-5"
             label="Lookup Label"
             placeholder="Find"
             options={state.options}
@@ -426,4 +423,3 @@
             isLoading={state.isLoading}
             onSearch={search} />
     </div>
-
