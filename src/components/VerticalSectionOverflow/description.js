@@ -4,15 +4,14 @@ import classnames from 'classnames';
 import RenderIf from './../RenderIf';
 
 export default function Description({ description, isExpanded }) {
-    const getClassNames = () => classnames('rainbow-vertical-section-overflow_action-description', {
-        'rainbow-vertical-section-overflow_action-description--expanded': isExpanded,
-    });
+    const getClassNames = () =>
+        classnames('rainbow-vertical-section-overflow_action-description', {
+            'rainbow-vertical-section-overflow_action-description--expanded': isExpanded,
+        });
 
     return (
         <RenderIf isTrue={!!description}>
-            <span className={getClassNames()}>
-                {description}
-            </span>
+            <span className={getClassNames()}>{description}</span>
         </RenderIf>
     );
 }

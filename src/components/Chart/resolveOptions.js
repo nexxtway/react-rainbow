@@ -53,12 +53,16 @@ export default function resolveOptions(conditions) {
         options = {
             ...options,
             scales: {
-                xAxes: [{
-                    stacked: true,
-                }],
-                yAxes: [{
-                    stacked: true,
-                }],
+                xAxes: [
+                    {
+                        stacked: true,
+                    },
+                ],
+                yAxes: [
+                    {
+                        stacked: true,
+                    },
+                ],
             },
         };
     }

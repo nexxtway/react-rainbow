@@ -45,9 +45,9 @@ export default function manageTab(node, event) {
     // as the 'chrome/version' and later the 'safari/version'.
     const checkSafari = /(\bChrome\b|\bSafari\b)\//.exec(navigator.userAgent);
     const isSafariDesktop =
-    checkSafari != null &&
-    checkSafari[1] !== 'Chrome' &&
-    /\biPod\b|\biPad\b/g.exec(navigator.userAgent) == null;
+        checkSafari != null &&
+        checkSafari[1] !== 'Chrome' &&
+        /\biPod\b|\biPad\b/g.exec(navigator.userAgent) == null;
 
     if (!isSafariDesktop) return;
 

@@ -19,23 +19,21 @@ describe('getColumns', () => {
         expect(getColumns(columns, showCheckboxColumn)).toEqual([]);
     });
     it('should return an array with the columns props when showCheckboxColumn is false', () => {
-        const columns = [
-            <Column field="a" header="header" component={<span />} />,
-        ];
+        const columns = [<Column field="a" header="header" component={<span />} />];
         const showCheckboxColumn = false;
-        expect(getColumns(columns, showCheckboxColumn)).toEqual([{
-            field: 'a',
-            header: 'header',
-            component: <span />,
-            sortable: false,
-            type: 'text',
-            width: undefined,
-        }]);
+        expect(getColumns(columns, showCheckboxColumn)).toEqual([
+            {
+                field: 'a',
+                header: 'header',
+                component: <span />,
+                sortable: false,
+                type: 'text',
+                width: undefined,
+            },
+        ]);
     });
     it('should return an array with the columns props plus the selectable column when showCheckboxColumn is true', () => {
-        const columns = [
-            <Column field="a" header="header" component={<span />} />,
-        ];
+        const columns = [<Column field="a" header="header" component={<span />} />];
         const showCheckboxColumn = true;
         expect(getColumns(columns, showCheckboxColumn)).toEqual([
             {

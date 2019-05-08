@@ -7,8 +7,8 @@ import PageButtons from './pageButtons';
 import './styles.css';
 
 /**
-* @category Layout
-*/
+ * @category Layout
+ */
 export default function Pagination(props) {
     const { pages, activePage, onChange, className, style } = props;
 
@@ -23,7 +23,8 @@ export default function Pagination(props) {
                     icon={<LeftArrow />}
                     onClick={event => onChange(event, activePage - 1)}
                     disabled={isFirstItemSelected}
-                    ariaLabel="Goto Previous Page" />
+                    ariaLabel="Goto Previous Page"
+                />
 
                 <PageButtons onChange={onChange} pages={pages} activePage={activePage} />
                 <NavigationButton
@@ -31,8 +32,8 @@ export default function Pagination(props) {
                     icon={<RightArrow />}
                     onClick={event => onChange(event, activePage + 1)}
                     disabled={isLastItemSelected}
-                    ariaLabel="Goto Next Page" />
-
+                    ariaLabel="Goto Next Page"
+                />
             </ul>
         </nav>
     );

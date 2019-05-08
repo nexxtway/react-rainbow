@@ -6,11 +6,7 @@ describe('getOptionsLength', () => {
         expect(getOptionsLength([])).toBe(0);
     });
     it('should return the right length when there is not type "header"', () => {
-        const options = [
-            { label: 'Paris' },
-            { label: 'New York' },
-            { label: 'San Fransisco' },
-        ];
+        const options = [{ label: 'Paris' }, { label: 'New York' }, { label: 'San Fransisco' }];
         expect(getOptionsLength(options)).toBe(3);
     });
     it('should return the right length when there is type "header"', () => {

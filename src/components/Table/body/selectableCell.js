@@ -4,24 +4,17 @@ import Input from '../../Input';
 import { LEFT_KEY, RIGHT_KEY } from '../../../libs/constants';
 
 export default function SelectableCell(props) {
-    const {
-        isSelected,
-        isDisabled,
-        tableId,
-        onSelectRow,
-        onDeselectRow,
-        inputType,
-    } = props;
+    const { isSelected, isDisabled, tableId, onSelectRow, onDeselectRow, inputType } = props;
     const name = `${tableId}-options`;
     const isRadio = inputType === 'radio';
 
-    const handleMouseDown = (event) => {
+    const handleMouseDown = event => {
         if (event.shiftKey) {
             event.preventDefault();
         }
     };
 
-    const handleClick = (event) => {
+    const handleClick = event => {
         const isMultipleSelection = !isRadio && event.shiftKey;
         if (isRadio && isSelected) {
             return;
@@ -33,7 +26,7 @@ export default function SelectableCell(props) {
         }
     };
 
-    const handleKeyDown = (event) => {
+    const handleKeyDown = event => {
         const { keyCode } = event;
         if (isRadio && (keyCode === LEFT_KEY || keyCode === RIGHT_KEY)) {
             event.preventDefault();
@@ -41,16 +34,12 @@ export default function SelectableCell(props) {
     };
 
     return (
-        <td
-            className="rainbow-table_cell-container"
-            role="gridcell"
-            tabIndex={-1}>
-
+        <td className="rainbow-table_cell-container" role="gridcell" tabIndex={-1}>
             <div
                 className="rainbow-table_cell-checkbox-container"
                 role="presentation"
-                onMouseDown={handleMouseDown}>
-
+                onMouseDown={handleMouseDown}
+            >
                 <Input
                     className="rainbow-table_cell-checkbox"
                     name={name}
@@ -61,8 +50,8 @@ export default function SelectableCell(props) {
                     checked={isSelected}
                     disabled={isDisabled}
                     onClick={handleClick}
-                    onKeyDown={handleKeyDown} />
-
+                    onKeyDown={handleKeyDown}
+                />
             </div>
         </td>
     );

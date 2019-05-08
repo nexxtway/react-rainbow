@@ -5,12 +5,12 @@
     const messages = require('../../../assets/icons/messages.svg');
     const charts = require('../../../assets/icons/charts.svg');
     const puzzle = require('../../../assets/icons/puzzle.svg');
-    
+
     const sidebarContainerStyles = {
         width: '88px',
         borderBottomLeftRadius: '0.875rem',
     };
-    
+
     class SimpleSidebar extends React.Component {
         constructor(props) {
             super(props);
@@ -19,14 +19,14 @@
             };
             this.handleOnSelect = this.handleOnSelect.bind(this);
         }
-    
+
         handleOnSelect(e, selectedItem) {
             return this.setState({ selectedItem });
         }
-    
+
         render() {
             const { selectedItem } = this.state;
-    
+
             return (
                 <Sidebar
                     selectedItem={selectedItem}
@@ -56,7 +56,7 @@
             );
         }
     }
-    
+
     <div>
         <GlobalHeader src="images/user/user3.jpg" />
         <div className="rainbow-background-color_white rainbow-p-top_small rainbow-p-bottom_medium"

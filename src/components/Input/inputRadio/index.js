@@ -17,9 +17,13 @@ export default class InputRadio extends Component {
 
     getContainerClassNames() {
         const { className, error } = this.props;
-        return classnames('rainbow-input-radio_container', {
-            'rainbow-input-radio--error': error,
-        }, className);
+        return classnames(
+            'rainbow-input-radio_container',
+            {
+                'rainbow-input-radio--error': error,
+            },
+            className,
+        );
     }
 
     getInlineTextLabelId() {
@@ -100,21 +104,27 @@ export default class InputRadio extends Component {
                         checked={checked}
                         aria-labelledby={this.getInlineTextLabelId()}
                         aria-describedby={this.getErrorMessageId()}
-                        ref={this.inputRef} />
+                        ref={this.inputRef}
+                    />
 
                     <Label
                         disabled={disabled}
                         label={label}
                         hideLabel={hideLabel}
                         inputId={this.inputId}
-                        id={this.getInlineTextLabelId()} />
-
+                        id={this.getInlineTextLabelId()}
+                    />
                 </span>
                 <RenderIf isTrue={!!bottomHelpText}>
                     <div className="rainbow-input-radio_help">{bottomHelpText}</div>
                 </RenderIf>
                 <RenderIf isTrue={!!error}>
-                    <div id={this.getErrorMessageId()} className="rainbow-input-radio_error-message">{error}</div>
+                    <div
+                        id={this.getErrorMessageId()}
+                        className="rainbow-input-radio_error-message"
+                    >
+                        {error}
+                    </div>
                 </RenderIf>
             </div>
         );
@@ -123,22 +133,13 @@ export default class InputRadio extends Component {
 
 InputRadio.propTypes = {
     value: PropTypes.string,
-    label: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
     name: PropTypes.string,
-    bottomHelpText: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
-    error: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     disabled: PropTypes.bool,
     onChange: PropTypes.func,
-    tabIndex: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.string,
-    ]),
+    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     onClick: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,

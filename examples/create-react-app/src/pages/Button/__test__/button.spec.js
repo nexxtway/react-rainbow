@@ -5,9 +5,7 @@ import ButtonExample from './../';
 
 describe('<ButtonExample/>', () => {
     it('should render the Button', () => {
-        const component = shallow(
-            <ButtonExample />,
-        );
+        const component = shallow(<ButtonExample />);
         expect(component.find(Button).exists()).toBe(true);
     });
 });

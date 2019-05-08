@@ -28,7 +28,7 @@ export function getTabIndexFromName(tabChildren, name) {
 
 function getTotalWidth(children) {
     let totalWidth = 0;
-    children.forEach((child) => {
+    children.forEach(child => {
         totalWidth += child.ref.offsetWidth;
     });
     return totalWidth;
@@ -53,7 +53,7 @@ export function isNotSameChildren(children, prevChildren) {
 }
 
 export function getUpdatedTabsetChildren(tabsetChildren, tab, nameToUpdate) {
-    return tabsetChildren.map((child) => {
+    return tabsetChildren.map(child => {
         if (child.name === nameToUpdate) {
             return tab;
         }
@@ -62,12 +62,7 @@ export function getUpdatedTabsetChildren(tabsetChildren, tab, nameToUpdate) {
 }
 
 export function getLeftButtonDisabledState(params) {
-    const {
-        activeTabName,
-        tabsetChildren,
-        screenWidth,
-        scrollLeft,
-    } = params;
+    const { activeTabName, tabsetChildren, screenWidth, scrollLeft } = params;
     const activeTabIndex = getTabIndexFromName(tabsetChildren, activeTabName);
     const isFirstTabActive = activeTabIndex === 0;
     const isFirstTabVisible = scrollLeft === 0;
@@ -82,13 +77,7 @@ export function getLeftButtonDisabledState(params) {
 }
 
 export function getRightButtonDisabledState(params) {
-    const {
-        activeTabName,
-        tabsetChildren,
-        screenWidth,
-        scrollLeft,
-        maxScroll,
-    } = params;
+    const { activeTabName, tabsetChildren, screenWidth, scrollLeft, maxScroll } = params;
     const lastTabIndex = tabsetChildren.length - 1;
     const activeTabIndex = getTabIndexFromName(tabsetChildren, activeTabName);
     const isLastTabActive = lastTabIndex === activeTabIndex;

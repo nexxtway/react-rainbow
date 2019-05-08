@@ -4,28 +4,20 @@ import Lookup from '../';
 
 describe('<Lookup />', () => {
     it('should set an id in the input element', () => {
-        const component = mount(
-            <Lookup />,
-        );
+        const component = mount(<Lookup />);
         expect(component.find('input').prop('id')).toMatch(/lookup-input/);
     });
     it('should set type "search" in the input element', () => {
-        const component = mount(
-            <Lookup />,
-        );
+        const component = mount(<Lookup />);
         expect(component.find('input').prop('type')).toBe('search');
     });
     it('should pass a generated id to the Error element and set the same id to the aria-describedby for the input when a error is passed', () => {
-        const component = mount(
-            <Lookup error="error message" />,
-        );
+        const component = mount(<Lookup error="error message" />);
         expect(component.find('.rainbow-lookup_input-error').prop('id')).toMatch(/error-message/);
         expect(component.find('input').prop('aria-describedby')).toMatch(/error-message/);
     });
     it('should pass the right props to the Label component', () => {
-        const component = mount(
-            <Lookup label="custom label" required />,
-        );
+        const component = mount(<Lookup label="custom label" required />);
         expect(component.find('Label').props()).toEqual({
             label: 'custom label',
             required: true,
@@ -35,37 +27,39 @@ describe('<Lookup />', () => {
         });
     });
     it('should set the right class names in the container element when pass an error', () => {
-        const component = mount(
-            <Lookup label="custom label" error="some error" />,
-        );
-        expect(component.find('div.rainbow-lookup_container.rainbow-lookup_container--error').exists()).toBe(true);
+        const component = mount(<Lookup label="custom label" error="some error" />);
+        expect(
+            component.find('div.rainbow-lookup_container.rainbow-lookup_container--error').exists(),
+        ).toBe(true);
     });
     it('should set the right class names in the input container element when the menu is open', () => {
-        const component = mount(
-            <Lookup label="custom label" options={[{}]} />,
-        );
+        const component = mount(<Lookup label="custom label" options={[{}]} />);
         component.find('input').simulate('focus');
-        expect(component.find('div.rainbow-lookup_input-container.rainbow-lookup_input-container--menu-opened').exists()).toBe(true);
+        expect(
+            component
+                .find(
+                    'div.rainbow-lookup_input-container.rainbow-lookup_input-container--menu-opened',
+                )
+                .exists(),
+        ).toBe(true);
     });
     it('should set the right class names in the input element when the menu is open and isLoading', () => {
-        const component = mount(
-            <Lookup label="custom label" options={[{}]} isLoading />,
-        );
+        const component = mount(<Lookup label="custom label" options={[{}]} isLoading />);
         component.find('input').simulate('focus');
-        expect(component.find('input.rainbow-lookup_input--menu-opened.rainbow-lookup_input--loading').exists()).toBe(true);
+        expect(
+            component
+                .find('input.rainbow-lookup_input--menu-opened.rainbow-lookup_input--loading')
+                .exists(),
+        ).toBe(true);
     });
     it('should render the Options menu when there are options and the input is focused', () => {
-        const component = mount(
-            <Lookup label="custom label" options={[{}]} />,
-        );
+        const component = mount(<Lookup label="custom label" options={[{}]} />);
         expect(component.find('Options').exists()).toBe(false);
         component.find('input').simulate('focus');
         expect(component.find('Options').exists()).toBe(true);
     });
     it('should render the Options menu when there are not options but the input has value typed and is focused', () => {
-        const component = mount(
-            <Lookup label="custom label" options={[]} />,
-        );
+        const component = mount(<Lookup label="custom label" options={[]} />);
         expect(component.find('Options').exists()).toBe(false);
         component.find('input').simulate('focus');
         component.find('input').simulate('change', {
@@ -86,9 +80,17 @@ describe('<Lookup />', () => {
             <Lookup label="custom label" options={options} onChange={onChangeMockFn} />,
         );
         component.find('input').simulate('focus');
-        component.find('Options').find('li').at(1).simulate('mouseEnter');
+        component
+            .find('Options')
+            .find('li')
+            .at(1)
+            .simulate('mouseEnter');
         expect(component.find('Options').prop('focusedItemIndex')).toBe(1);
-        component.find('Options').find('li').at(1).simulate('click');
+        component
+            .find('Options')
+            .find('li')
+            .at(1)
+            .simulate('click');
         expect(onChangeMockFn).toHaveBeenCalledWith({
             label: 'New York',
             description: 'awesome city',
@@ -111,14 +113,16 @@ describe('<Lookup />', () => {
             },
         });
         expect(component.find('input').prop('value')).toBe('abc');
-        component.find('Options').find('li').at(0).simulate('click');
+        component
+            .find('Options')
+            .find('li')
+            .at(0)
+            .simulate('click');
         expect(component.find('input').prop('value')).toBe('');
     });
     it('should call onSearch with the right value when type in the input', () => {
         const onSearchMockFn = jest.fn();
-        const component = mount(
-            <Lookup label="custom label" onSearch={onSearchMockFn} />,
-        );
+        const component = mount(<Lookup label="custom label" onSearch={onSearchMockFn} />);
         component.find('input').simulate('focus');
         component.find('input').simulate('change', {
             target: {
@@ -136,7 +140,8 @@ describe('<Lookup />', () => {
                 label="custom label"
                 value={value}
                 onChange={onChangeMockFn}
-                onSearch={onSearchMockFn} />,
+                onSearch={onSearchMockFn}
+            />,
         );
         expect(component.find('Chip').exists()).toBe(true);
     });
@@ -149,17 +154,19 @@ describe('<Lookup />', () => {
                 label="custom label"
                 value={value}
                 onChange={onChangeMockFn}
-                onSearch={onSearchMockFn} />,
+                onSearch={onSearchMockFn}
+            />,
         );
-        component.find('Chip').find('ButtonIcon').simulate('click');
+        component
+            .find('Chip')
+            .find('ButtonIcon')
+            .simulate('click');
         expect(onChangeMockFn).toHaveBeenCalledWith(null);
         expect(onSearchMockFn).toHaveBeenCalledWith('');
     });
     it('should reset the input value when click the close button', () => {
         const onSearchMockFn = jest.fn();
-        const component = mount(
-            <Lookup label="custom label" onSearch={onSearchMockFn} />,
-        );
+        const component = mount(<Lookup label="custom label" onSearch={onSearchMockFn} />);
         component.find('input').simulate('focus');
         component.find('input').simulate('change', {
             target: {
@@ -167,7 +174,10 @@ describe('<Lookup />', () => {
             },
         });
         expect(component.find('input').prop('value')).toBe('london');
-        component.find('RightElement').find('ButtonIcon').simulate('click');
+        component
+            .find('RightElement')
+            .find('ButtonIcon')
+            .simulate('click');
         expect(component.find('input').prop('value')).toBe('');
         expect(onSearchMockFn.mock.calls[0][0]).toBe('london');
         expect(onSearchMockFn.mock.calls[1][0]).toBe('');
@@ -232,23 +242,17 @@ describe('<Lookup />', () => {
     });
     it('should pass a function to onDelete prop in Chip component', () => {
         const value = { label: 'New York', description: 'awesome city' };
-        const component = mount(
-            <Lookup label="custom label" value={value} />,
-        );
+        const component = mount(<Lookup label="custom label" value={value} />);
         expect(component.find('Chip').prop('onDelete')).toEqual(expect.any(Function));
     });
     it('should not set the onDelete prop in Chip component when pass disabled', () => {
         const value = { label: 'New York', description: 'awesome city' };
-        const component = mount(
-            <Lookup label="custom label" value={value} disabled />,
-        );
+        const component = mount(<Lookup label="custom label" value={value} disabled />);
         expect(component.find('Chip').prop('onDelete')).toBeUndefined();
     });
     it('should not set the onDelete prop in Chip component when pass readOnly', () => {
         const value = { label: 'New York', description: 'awesome city' };
-        const component = mount(
-            <Lookup label="custom label" value={value} readOnly />,
-        );
+        const component = mount(<Lookup label="custom label" value={value} readOnly />);
         expect(component.find('Chip').prop('onDelete')).toBeUndefined();
     });
     it('should set the right options and reset the focusedItemIndex when the options changes', () => {
@@ -256,42 +260,33 @@ describe('<Lookup />', () => {
             {
                 type: 'section',
                 label: 'European Cities',
-                options: [
-                    { label: 'Paris', description: 'An awesome city' },
-                    { label: 'Madrid' },
-                ],
+                options: [{ label: 'Paris', description: 'An awesome city' }, { label: 'Madrid' }],
             },
             {
                 type: 'section',
                 label: 'American Cities',
-                options: [
-                    { label: 'New York' },
-                    { label: 'San Fransisco' },
-                    { label: 'Miami' },
-                ],
+                options: [{ label: 'New York' }, { label: 'San Fransisco' }, { label: 'Miami' }],
             },
         ];
-        const component = mount(
-            <Lookup label="custom label" options={options} />,
-        );
+        const component = mount(<Lookup label="custom label" options={options} />);
         component.find('input').simulate('focus');
-        component.find('Options').find('li').at(2).simulate('mouseEnter');
+        component
+            .find('Options')
+            .find('li')
+            .at(2)
+            .simulate('mouseEnter');
         expect(component.find('Options').prop('focusedItemIndex')).toBe(1);
         component.setProps({
             options: [
                 {
                     type: 'section',
                     label: 'European Cities',
-                    options: [
-                        { label: 'Madrid' },
-                    ],
+                    options: [{ label: 'Madrid' }],
                 },
                 {
                     type: 'section',
                     label: 'American Cities',
-                    options: [
-                        { label: 'Miami' },
-                    ],
+                    options: [{ label: 'Miami' }],
                 },
             ],
         });

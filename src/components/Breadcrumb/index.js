@@ -5,24 +5,14 @@ import classnames from 'classnames';
 import './styles.css';
 
 /**
-* An item in the hierarchy path of the page the user is on.
-* @category Layout
-*/
+ * An item in the hierarchy path of the page the user is on.
+ * @category Layout
+ */
 export default function Breadcrumb(props) {
-    const {
-        href,
-        label,
-        onClick,
-        disabled,
-        className,
-        style,
-    } = props;
+    const { href, label, onClick, disabled, className, style } = props;
 
-    const getClassNames = () => classnames(
-        'rainbow-breadcrumb',
-        { 'rainbow-breadcrumb--disabled': disabled },
-        className,
-    );
+    const getClassNames = () =>
+        classnames('rainbow-breadcrumb', { 'rainbow-breadcrumb--disabled': disabled }, className);
 
     return (
         <li className={getClassNames()} style={style}>
@@ -30,7 +20,8 @@ export default function Breadcrumb(props) {
                 className="rainbow-breadcrumb-anchor"
                 href={href}
                 onClick={onClick}
-                aria-disabled={!!disabled}>
+                aria-disabled={!!disabled}
+            >
                 {label}
             </a>
         </li>
@@ -39,9 +30,7 @@ export default function Breadcrumb(props) {
 
 Breadcrumb.propTypes = {
     /** The text label for the breadcrumb. */
-    label: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
     /** The URL of the page that the breadcrumb goes to. */
     href: PropTypes.string,
     /** The action triggered when the breadcrumb is clicked. */

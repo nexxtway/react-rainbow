@@ -30,17 +30,16 @@ class Textarea extends Component {
     }
 
     getContainerClassNames() {
-        const {
+        const { className, error } = this.props;
+        return classnames(
+            'rainbow-textarea_container',
+            { 'rainbow-textarea--error': error },
             className,
-            error,
-        } = this.props;
-        return classnames('rainbow-textarea_container', { 'rainbow-textarea--error': error }, className);
+        );
     }
 
     getInlineTextLabelId() {
-        const {
-            bottomHelpText,
-        } = this.props;
+        const { bottomHelpText } = this.props;
         if (bottomHelpText) {
             return this.inlineTextLabelId;
         }
@@ -111,7 +110,8 @@ class Textarea extends Component {
                     required={required}
                     textareaId={this.textareaId}
                     readOnly={readOnly}
-                    id={this.getInlineTextLabelId()} />
+                    id={this.getInlineTextLabelId()}
+                />
 
                 <textarea
                     id={this.textareaId}
@@ -132,13 +132,16 @@ class Textarea extends Component {
                     value={value}
                     aria-labelledby={this.getInlineTextLabelId()}
                     aria-describedby={this.getErrorMessageId()}
-                    ref={this.textareaRef} />
+                    ref={this.textareaRef}
+                />
 
                 <RenderIf isTrue={!!bottomHelpText}>
                     <div className="rainbow-textarea_bottom-help">{bottomHelpText}</div>
                 </RenderIf>
                 <RenderIf isTrue={!!error}>
-                    <div id={this.getErrorMessageId()} className="rainbow-textarea_text-error">{error}</div>
+                    <div id={this.getErrorMessageId()} className="rainbow-textarea_text-error">
+                        {error}
+                    </div>
                 </RenderIf>
             </div>
         );
@@ -147,9 +150,7 @@ class Textarea extends Component {
 
 Textarea.propTypes = {
     /** Text that describes the desired textarea input. */
-    label: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
     /** A boolean to hide the textarea label */
     hideLabel: PropTypes.bool,
     /** The name of the textarea */
@@ -165,16 +166,12 @@ Textarea.propTypes = {
     /** This make to textarea grow. This value defaults to false. */
     grow: PropTypes.bool,
     /** Shows the help message below the textarea. */
-    bottomHelpText: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies that the textarea field must be filled out before submitting the form.
-    * This value defaults to false. */
+     * This value defaults to false. */
     required: PropTypes.bool,
     /** Specifies that the textarea field must be filled out before submitting the form. */
-    error: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies that the textarea element should be disabled. This value defaults to false. */
     disabled: PropTypes.bool,
     /** The number of visible text lines for the control. The value by default is 3. */

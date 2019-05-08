@@ -128,10 +128,7 @@ class TimePicker extends Component {
             okLabel,
             onChange,
         } = this.props;
-        const {
-            isOpen,
-            value,
-        } = this.state;
+        const { isOpen, value } = this.state;
 
         return (
             <div id={id} className={this.getContainerClassName()} style={style}>
@@ -155,21 +152,23 @@ class TimePicker extends Component {
                     readOnly={readOnly}
                     disabled={disabled}
                     tabIndex={tabIndex}
-                    autoComplete="off" />
+                    autoComplete="off"
+                />
 
                 <Modal
                     className="rainbow-time-picker_modal"
                     isOpen={isOpen}
                     onRequestClose={this.closeModal}
-                    onOpened={this.setFocusToHourInput}>
-
+                    onOpened={this.setFocusToHourInput}
+                >
                     <TimeSelect
                         onCloseModal={this.closeModal}
                         onChange={onChange}
                         cancelLabel={cancelLabel}
                         okLabel={okLabel}
                         value={value}
-                        ref={this.timeSelectRef} />
+                        ref={this.timeSelectRef}
+                    />
                 </Modal>
             </div>
         );
@@ -180,48 +179,35 @@ TimePicker.propTypes = {
     /** Sets the date for the TimePicker programmatically. */
     value: PropTypes.string,
     /** Override the label of the 'Cancel' button. */
-    cancelLabel: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    cancelLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Override the label of the 'OK' button. */
-    okLabel: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    okLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The action triggered when a value attribute changes. */
     onChange: PropTypes.func,
     /** Text that is displayed when the TimePicker is empty,
      * to prompt the user for a valid entry. */
     placeholder: PropTypes.string,
     /** Text label for the TimePicker. */
-    label: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
     /** A boolean to hide the TimePicker label. */
     hideLabel: PropTypes.bool,
     /** Specifies that the TimePicker must be filled out before submitting the form.
-    * This value defaults to false. */
+     * This value defaults to false. */
     required: PropTypes.bool,
     /** The name of the TimePicker. */
     name: PropTypes.string,
     /** Shows the help message below the TimePicker. */
-    bottomHelpText: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies that the TimePicker text will be centered. This value defaults to false. */
     isCentered: PropTypes.bool,
     /** Specifies that the TimePicker must be filled out before submitting the form. */
-    error: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies that the TimePicker is read-only. This value defaults to false. */
     readOnly: PropTypes.bool,
     /** Specifies that the TimePicker element should be disabled. This value defaults to false. */
     disabled: PropTypes.bool,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
-    tabIndex: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.string,
-    ]),
+    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** The action triggered when the element is clicked. */
     onClick: PropTypes.func,
     /** The action triggered when the element receives focus. */

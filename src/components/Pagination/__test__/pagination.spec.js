@@ -32,4 +32,3 @@ describe('<Pagination />', () => {
         expect(onChangeMockFn).toHaveBeenCalledWith(expect.any(Object), 2);
     });
 });
-

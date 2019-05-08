@@ -17,7 +17,9 @@ class PageVerticalItem {
      * @method
      */
     click() {
-        $(this.rootElement).$('.rainbow-vertical-item_action').click();
+        $(this.rootElement)
+            .$('.rainbow-vertical-item_action')
+            .click();
     }
 
     /**
@@ -26,7 +28,9 @@ class PageVerticalItem {
      * @returns {bool}
      */
     hasFocus() {
-        return $(this.rootElement).$('.rainbow-vertical-item_action').isFocused();
+        return $(this.rootElement)
+            .$('.rainbow-vertical-item_action')
+            .isFocused();
     }
 
     /**
@@ -35,7 +39,10 @@ class PageVerticalItem {
      * @returns {bool}
      */
     isSelected() {
-        return $(this.rootElement).getAttribute('class') === 'rainbow-vertical-item rainbow-vertical-item--active';
+        return (
+            $(this.rootElement).getAttribute('class') ===
+            'rainbow-vertical-item rainbow-vertical-item--active'
+        );
     }
 }
 

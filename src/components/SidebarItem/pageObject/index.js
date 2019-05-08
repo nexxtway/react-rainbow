@@ -3,7 +3,7 @@
  * @class
  */
 class PageSidebarItem {
-      /**
+    /**
      * Create a new SidebarItem page object.
      * @constructor
      * @param {string} rootElement - The selector of the SidebarItem root element.
@@ -13,11 +13,13 @@ class PageSidebarItem {
     }
 
     /**
-    * Clicks the sidebar a element.
-    * @method
-    */
+     * Clicks the sidebar a element.
+     * @method
+     */
     click() {
-        $(this.rootElement).$('a').click();
+        $(this.rootElement)
+            .$('a')
+            .click();
     }
 
     /**
@@ -26,9 +28,11 @@ class PageSidebarItem {
      * @returns {bool}
      */
     isActive() {
-        return $(this.rootElement).getAttribute('class') === 'rainbow-sidebar-item rainbow-sidebar-item--active';
+        return (
+            $(this.rootElement).getAttribute('class') ===
+            'rainbow-sidebar-item rainbow-sidebar-item--active'
+        );
     }
-
 }
 
 module.exports = PageSidebarItem;

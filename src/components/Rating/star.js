@@ -28,11 +28,7 @@ export default class Star extends Component {
     }
 
     render() {
-        const {
-            onChange,
-            value,
-            name,
-        } = this.props;
+        const { onChange, value, name } = this.props;
 
         return (
             <span className="rainbow-rating_star">
@@ -42,7 +38,8 @@ export default class Star extends Component {
                     id={this.starId}
                     value={value}
                     name={name}
-                    onChange={onChange} />
+                    onChange={onChange}
+                />
 
                 <label htmlFor={this.starId}>
                     {this.renderStar()}

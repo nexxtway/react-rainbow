@@ -4,9 +4,7 @@ import Textarea from './../';
 
 describe('<Textarea/>', () => {
     it('should be focusable', () => {
-        const component = mount(
-            <Textarea label="Textarea Label" />,
-        );
+        const component = mount(<Textarea label="Textarea Label" />);
         expect(component).toBeFocusable();
     });
 });

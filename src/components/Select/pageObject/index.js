@@ -17,15 +17,19 @@ class PageSelect {
      * @method
      */
     click() {
-        $(this.rootElement).$('select').click();
+        $(this.rootElement)
+            .$('select')
+            .click();
     }
 
-     /**
-      * Clicks the label element.
-      * @method
-      */
+    /**
+     * Clicks the label element.
+     * @method
+     */
     clickLabel() {
-        $(this.rootElement).$('label').click();
+        $(this.rootElement)
+            .$('label')
+            .click();
     }
 
     /**
@@ -34,15 +38,17 @@ class PageSelect {
      * @returns {bool}
      */
     hasFocusSelect() {
-        return $(this.rootElement).$('select').isFocused();
+        return $(this.rootElement)
+            .$('select')
+            .isFocused();
     }
 
     /**
-    * Returns true when the select item with item position is selected.
-    * @method
-    * @returns {bool}
-    * @param {number} itemPosition - The base 0 index of the select item.
-    */
+     * Returns true when the select item with item position is selected.
+     * @method
+     * @returns {bool}
+     * @param {number} itemPosition - The base 0 index of the select item.
+     */
     isSelectedItem(itemPosition) {
         const items = $(this.rootElement).$$('option');
         if (items[itemPosition]) {
@@ -50,6 +56,6 @@ class PageSelect {
         }
         return false;
     }
- }
+}
 
 module.exports = PageSelect;

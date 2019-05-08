@@ -6,21 +6,11 @@ import { uniqueId } from '../../../libs/utils';
 import './styles.css';
 
 function MenuItems(props) {
-    const {
-        items,
-        onClick,
-        focusedItemIndex,
-        onHover,
-    } = props;
+    const { items, onClick, focusedItemIndex, onHover } = props;
     let optionIndex = 0;
 
-    return items.map((item) => {
-        const {
-            label,
-            description,
-            icon,
-            type,
-        } = item;
+    return items.map(item => {
+        const { label, description, icon, type } = item;
         const isActive = optionIndex === focusedItemIndex;
 
         if (type === 'header') {
@@ -28,8 +18,8 @@ function MenuItems(props) {
                 <li
                     key={uniqueId('lookup-item')}
                     className="rainbow-lookup_menu-item_header"
-                    role="separator">
-
+                    role="separator"
+                >
                     <span className="rainbow-lookup_menu-item_header-label">{label}</span>
                 </li>
             );
@@ -44,7 +34,8 @@ function MenuItems(props) {
                 isActive={isActive}
                 index={optionIndex}
                 onHover={onHover}
-                onClick={onClick} />
+                onClick={onClick}
+            />
         );
         optionIndex += 1;
         return menuItem;
@@ -52,13 +43,7 @@ function MenuItems(props) {
 }
 
 export default function Options(props) {
-    const {
-        items,
-        value,
-        onSelectOption,
-        onHoverOption,
-        focusedItemIndex,
-    } = props;
+    const { items, value, onSelectOption, onHoverOption, focusedItemIndex } = props;
 
     if (items.length === 0) {
         return (
@@ -75,20 +60,18 @@ export default function Options(props) {
     }
 
     const resultContainerStyles = {
-        height: (48 * items.length) + 17,
+        height: 48 * items.length + 17,
         maxHeight: 248,
     };
 
     return (
-        <ul
-            className="rainbow-lookup_options-container"
-            style={resultContainerStyles}>
-
+        <ul className="rainbow-lookup_options-container" style={resultContainerStyles}>
             <MenuItems
                 items={items}
                 focusedItemIndex={focusedItemIndex}
                 onClick={onSelectOption}
-                onHover={onHoverOption} />
+                onHover={onHoverOption}
+            />
         </ul>
     );
 }

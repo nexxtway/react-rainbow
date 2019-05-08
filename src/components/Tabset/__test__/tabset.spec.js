@@ -41,7 +41,9 @@ describe('<Tabset />', () => {
                 <Tab label="Tab-1" name="tab-1" registerTab={registerTabMockFn} />
             </Tabset>,
         );
-        expect(component.find('ul[role="tablist"]').prop('className')).toBe('rainbow-tabset_inner-container rainbow-tabset_inner-container--full-width');
+        expect(component.find('ul[role="tablist"]').prop('className')).toBe(
+            'rainbow-tabset_inner-container rainbow-tabset_inner-container--full-width',
+        );
     });
     it('should set the rainbow-tab--active class only to the third Tab when activeTabName is tab-3', () => {
         const component = mount(

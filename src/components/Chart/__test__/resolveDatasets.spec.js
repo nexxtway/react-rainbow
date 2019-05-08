@@ -12,7 +12,8 @@ describe('resolveDatasets function', () => {
                 backgroundColor="red"
                 borderColor="blue"
                 stack="A"
-                fill />,
+                fill
+            />,
         ];
         const datasets = resolveDatasets(children);
         expect(datasets).toEqual([

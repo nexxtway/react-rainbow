@@ -6,9 +6,7 @@ import Textarea from './../';
 describe('<Textarea/>', () => {
     it('should be accessible when label is passed', async () => {
         expect.assertions(1);
-        const html = ReactDOMServer.renderToString(
-            <Textarea label="Textarea Label" />,
-        );
+        const html = ReactDOMServer.renderToString(<Textarea label="Textarea Label" />);
         const results = await axe(html);
         expect(results).toHaveNoViolations();
     });

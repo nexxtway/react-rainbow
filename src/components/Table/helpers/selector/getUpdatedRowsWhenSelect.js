@@ -40,10 +40,9 @@ export default function getUpdatedRowsWhenSelect(params = {}) {
             return row;
         });
 
-        return rowsWithSelection.map((row) => {
-            const maxSelectionReached = getCurrentSelectionLength(
-                selectedRowsKeys,
-            ) === maxRowSelection;
+        return rowsWithSelection.map(row => {
+            const maxSelectionReached =
+                getCurrentSelectionLength(selectedRowsKeys) === maxRowSelection;
 
             if (maxSelectionReached && !isSelectedRow(selectedRowsKeys, row.key)) {
                 return {
@@ -55,7 +54,7 @@ export default function getUpdatedRowsWhenSelect(params = {}) {
         });
     }
 
-    return rows.map((row) => {
+    return rows.map(row => {
         if (selectedRowsKeys[row.key]) {
             return {
                 ...row,

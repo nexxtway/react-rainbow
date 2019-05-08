@@ -17,7 +17,9 @@ class PageVerticalSectionOverflow {
      * @method
      */
     click() {
-        $(this.rootElement).$('.rainbow-vertical-section-overflow_button').click();
+        $(this.rootElement)
+            .$('.rainbow-vertical-section-overflow_button')
+            .click();
     }
 
     /**
@@ -26,7 +28,9 @@ class PageVerticalSectionOverflow {
      * @returns {bool}
      */
     isExpanded() {
-        return $(this.rootElement).$('[data-id="vertical-overflow"]').isDisplayed();
+        return $(this.rootElement)
+            .$('[data-id="vertical-overflow"]')
+            .isDisplayed();
     }
 
     /**
@@ -51,7 +55,9 @@ class PageVerticalSectionOverflow {
      * @returns {bool}
      */
     hasFocusButton() {
-        return $(this.rootElement).$('.rainbow-vertical-section-overflow_button').isFocused();
+        return $(this.rootElement)
+            .$('.rainbow-vertical-section-overflow_button')
+            .isFocused();
     }
 }
 

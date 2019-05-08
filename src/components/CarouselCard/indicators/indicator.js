@@ -47,7 +47,11 @@ export default class Indicator extends Component {
         const { indicatorID, containerID, header, onSelect } = this.props;
         const assistiveText = getAssistiveText(header);
         return (
-            <li className="rainbow-carousel_indicators-container" role="presentation" key={indicatorID}>
+            <li
+                className="rainbow-carousel_indicators-container"
+                role="presentation"
+                key={indicatorID}
+            >
                 <a
                     id={indicatorID}
                     className={this.getIndicatorClassName(indicatorID)}
@@ -58,7 +62,8 @@ export default class Indicator extends Component {
                     aria-controls={containerID}
                     title={assistiveText}
                     onClick={() => onSelect(indicatorID)}
-                    ref={this.indicatorRef}>
+                    ref={this.indicatorRef}
+                >
                     <AssistiveText text={assistiveText} />
                 </a>
             </li>

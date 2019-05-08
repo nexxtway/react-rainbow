@@ -4,12 +4,14 @@ import scriptLoader from 'react-async-script-loader';
 import MapComponent from './component';
 
 /**
-* The GMap component is used to find a location.
-*/
+ * The GMap component is used to find a location.
+ */
 export default function GMap(props) {
     const { apiKey, ...rest } = props;
 
-    const Component = scriptLoader(`https://maps.googleapis.com/maps/api/js?key=${apiKey}`)(MapComponent);
+    const Component = scriptLoader(`https://maps.googleapis.com/maps/api/js?key=${apiKey}`)(
+        MapComponent,
+    );
     return <Component {...rest} />;
 }
 
@@ -28,18 +30,13 @@ GMap.propTypes = {
      * Specify zoom level as an integer. This value defaults to 8. */
     zoom: PropTypes.number,
     /** The header can include text or another component,
-    * and is displayed below the map and above the markers. */
-    header: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+     * and is displayed below the map and above the markers. */
+    header: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /**
      * This prop that should not be visible in the documentation.
      * @ignore
      */
-    children: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.node),
-        PropTypes.object,
-    ]),
+    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */

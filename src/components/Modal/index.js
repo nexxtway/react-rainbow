@@ -14,11 +14,11 @@ import CounterManager from './counterManager';
 import './styles.css';
 
 /**
-* Modals are used to display content in a layer above the app.
-* This is used in cases such as the creation or editing of a record,
-* as well as various types of messaging.
-* @category Layout
-*/
+ * Modals are used to display content in a layer above the app.
+ * This is used in cases such as the creation or editing of a record,
+ * as well as various types of messaging.
+ * @category Layout
+ */
 export default class Modal extends Component {
     constructor(props) {
         super(props);
@@ -70,15 +70,22 @@ export default class Modal extends Component {
 
     getBackDropClassNames() {
         const { isOpen } = this.props;
-        return classnames('rainbow-modal_backdrop', { 'rainbow-modal_backdrop--open': isOpen });
+        return classnames('rainbow-modal_backdrop', {
+            'rainbow-modal_backdrop--open': isOpen,
+        });
     }
 
     getContainerClassNames() {
         const { className, isOpen } = this.props;
-        return classnames('rainbow-modal', {
-            'rainbow-modal--open': isOpen,
-            'rainbow-modal--close': !isOpen,
-        }, this.getSizeClassNames(), className);
+        return classnames(
+            'rainbow-modal',
+            {
+                'rainbow-modal--open': isOpen,
+                'rainbow-modal--close': !isOpen,
+            },
+            this.getSizeClassNames(),
+            className,
+        );
     }
 
     getSizeClassNames() {
@@ -121,60 +128,48 @@ export default class Modal extends Component {
     }
 
     render() {
-        const {
-            title,
-            style,
-            children,
-            footer,
-            isOpen,
-            id,
-        } = this.props;
+        const { title, style, children, footer, isOpen, id } = this.props;
 
         if (isOpen) {
-            return (
-                createPortal(
-                    <div
-                        role="presentation"
-                        id={id}
-                        onClick={this.handleClick}
-                        className={this.getBackDropClassNames()}
-                        onKeyDown={this.handleKeyPressed}>
+            return createPortal(
+                <div
+                    role="presentation"
+                    id={id}
+                    onClick={this.handleClick}
+                    className={this.getBackDropClassNames()}
+                    onKeyDown={this.handleKeyPressed}
+                >
+                    <section
+                        role="dialog"
+                        tabIndex={-1}
+                        aria-labelledby={this.modalHeadingId}
+                        aria-modal
+                        aria-hidden={!isOpen}
+                        aria-describedby={this.modalContentId}
+                        className={this.getContainerClassNames()}
+                        style={style}
+                        ref={this.modalRef}
+                    >
+                        <ButtonIcon
+                            className="rainbow-modal_close-button"
+                            icon={<CloseIcon />}
+                            title="Close"
+                            onClick={this.closeModal}
+                            ref={this.buttonRef}
+                        />
 
-                        <section
-                            role="dialog"
-                            tabIndex={-1}
-                            aria-labelledby={this.modalHeadingId}
-                            aria-modal
-                            aria-hidden={!isOpen}
-                            aria-describedby={this.modalContentId}
-                            className={this.getContainerClassNames()}
-                            style={style}
-                            ref={this.modalRef}>
+                        <Header id={this.modalHeadingId} title={title} />
 
-                            <ButtonIcon
-                                className="rainbow-modal_close-button"
-                                icon={<CloseIcon />}
-                                title="Close"
-                                onClick={this.closeModal}
-                                ref={this.buttonRef} />
+                        <div className="rainbow-modal_content" id={this.modalContentId}>
+                            {children}
+                        </div>
 
-                            <Header
-                                id={this.modalHeadingId}
-                                title={title} />
-
-                            <div className="rainbow-modal_content" id={this.modalContentId}>
-                                {children}
-                            </div>
-
-                            <RenderIf isTrue={!!footer}>
-                                <footer className="rainbow-modal_footer">
-                                    {footer}
-                                </footer>
-                            </RenderIf>
-                        </section>
-                    </div>,
-                    document.body,
-                )
+                        <RenderIf isTrue={!!footer}>
+                            <footer className="rainbow-modal_footer">{footer}</footer>
+                        </RenderIf>
+                    </section>
+                </div>,
+                document.body,
             );
         }
         return null;
@@ -184,16 +179,10 @@ export default class Modal extends Component {
 Modal.propTypes = {
     /** The title can include text or another component,
      * and is displayed in the header of the component. */
-    title: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The size of the Modal. Valid values are small, medium, and large.
-    * This value defaults to small. */
-    size: PropTypes.oneOf([
-        'small',
-        'medium',
-        'large',
-    ]),
+     * This value defaults to small. */
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
     /** The footer can include text or another component. */
     footer: PropTypes.node,
     /** Controls whether the Modal is opened or not. If true, the modal is open. */

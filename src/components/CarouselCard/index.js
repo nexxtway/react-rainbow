@@ -5,12 +5,17 @@ import classnames from 'classnames';
 import { Provider } from './context';
 import Indicators from './indicators';
 import AnimationButton from './animationButton';
-import { getItemIndex, getChildTabNodes, insertChildOrderly, getCarouselCardContainerStyles } from './utils';
+import {
+    getItemIndex,
+    getChildTabNodes,
+    insertChildOrderly,
+    getCarouselCardContainerStyles,
+} from './utils';
 import './styles.css';
 
 /**
-* A carouselCard allows multiple pieces of featured content to occupy an allocated amount of space.
-*/
+ * A carouselCard allows multiple pieces of featured content to occupy an allocated amount of space.
+ */
 export default class CarouselCard extends Component {
     constructor(props) {
         super(props);
@@ -61,10 +66,12 @@ export default class CarouselCard extends Component {
                     this.setState({ isAnimationPaused: true });
                 } else {
                     this.startAnimation();
-                    this.setState({ activeItem: childrenRegistred[nextItem].indicatorID });
+                    this.setState({
+                        activeItem: childrenRegistred[nextItem].indicatorID,
+                    });
                 }
             }
-        }, (scrollDuration * 1000));
+        }, scrollDuration * 1000);
     }
     handleOnClick() {
         const { isAnimationPaused } = this.state;
@@ -78,26 +85,36 @@ export default class CarouselCard extends Component {
         const { childrenRegistred } = this.state;
         const [...nodes] = getChildTabNodes(this.containerRef.current);
         const newChildren = insertChildOrderly(childrenRegistred, child, nodes);
-        this.setState({ childrenRegistred: newChildren, activeItem: newChildren[0].indicatorID });
+        this.setState({
+            childrenRegistred: newChildren,
+            activeItem: newChildren[0].indicatorID,
+        });
     }
 
     render() {
         const { children, id } = this.props;
         const { childrenRegistred, activeItem, isAnimationPaused } = this.state;
         return (
-            <div className={this.getContainerClassName()} style={this.getContainerStyle()} id={id} ref={this.container}>
+            <div
+                className={this.getContainerClassName()}
+                style={this.getContainerStyle()}
+                id={id}
+                ref={this.container}
+            >
                 <span className="rainbow-carousel_autoplay">
-                    <AnimationButton onClick={this.handleOnClick} isAnimationPaused={isAnimationPaused} />
+                    <AnimationButton
+                        onClick={this.handleOnClick}
+                        isAnimationPaused={isAnimationPaused}
+                    />
                 </span>
                 <div className="rainbow-carousel_images" ref={this.containerRef}>
-                    <Provider value={this.state}>
-                        {children}
-                    </Provider>
+                    <Provider value={this.state}>{children}</Provider>
                 </div>
                 <Indicators
                     carouselChildren={childrenRegistred}
                     onSelect={this.setActiveItem}
-                    selectedItem={activeItem} />
+                    selectedItem={activeItem}
+                />
             </div>
         );
     }

@@ -4,26 +4,15 @@ import classnames from 'classnames';
 import RequiredAsterisk from '../RequiredAsterisk';
 
 export default function Label(props) {
-    const {
-        label,
-        required,
-        textareaId,
-        id,
-        readOnly,
-        hideLabel,
-    } = props;
+    const { label, required, textareaId, id, readOnly, hideLabel } = props;
 
-    const getLabelClassNames = () => classnames('rainbow-textarea_label', {
-        'rainbow-textarea_label--hide-label': hideLabel,
-    });
+    const getLabelClassNames = () =>
+        classnames('rainbow-textarea_label', {
+            'rainbow-textarea_label--hide-label': hideLabel,
+        });
 
     return (
-        <label
-            className={getLabelClassNames()}
-            htmlFor={textareaId}
-            id={id}
-            readOnly={readOnly}>
-
+        <label className={getLabelClassNames()} htmlFor={textareaId} id={id} readOnly={readOnly}>
             <RequiredAsterisk required={required} />
             {label}
         </label>

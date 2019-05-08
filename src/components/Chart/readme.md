@@ -282,7 +282,6 @@ Line chart:
 
     <LineChartExample />
 
-
 Line chart fill:
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');

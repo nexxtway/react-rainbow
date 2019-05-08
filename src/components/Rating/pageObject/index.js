@@ -22,7 +22,9 @@ class PageRating {
     getItem(itemPosition) {
         const items = $(this.rootElement).$$('.rainbow-rating_star');
         if (items[itemPosition]) {
-            return new PageRatingStar(`${this.rootElement} .rainbow-rating_star:nth-child(${itemPosition + 1})`);
+            return new PageRatingStar(
+                `${this.rootElement} .rainbow-rating_star:nth-child(${itemPosition + 1})`,
+            );
         }
         return null;
     }

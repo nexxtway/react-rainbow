@@ -7,10 +7,10 @@ import Label from './label';
 import './style.css';
 
 /**
-* An input range slider lets the user specify a numeric value which must be between
-* two specified values.
-* @category Form
-*/
+ * An input range slider lets the user specify a numeric value which must be between
+ * two specified values.
+ * @category Form
+ */
 export default class Slider extends Component {
     constructor(props) {
         super(props);
@@ -92,12 +92,17 @@ export default class Slider extends Component {
                         onChange={onChange}
                         onBlur={onBlur}
                         onFocus={onFocus}
-                        ref={this.sliderRef} />
+                        ref={this.sliderRef}
+                    />
 
-                    <span className="rainbow-slider_value" aria-hidden>{value}</span>
+                    <span className="rainbow-slider_value" aria-hidden>
+                        {value}
+                    </span>
                 </div>
                 <RenderIf isTrue={!!error}>
-                    <div id={this.errorMessageId} className="rainbow-slider_error">{error}</div>
+                    <div id={this.errorMessageId} className="rainbow-slider_error">
+                        {error}
+                    </div>
                 </RenderIf>
             </div>
         );
@@ -106,30 +111,20 @@ export default class Slider extends Component {
 
 Slider.propTypes = {
     /** The text label for the slider. Provide your own label to describe the slider.
-    * Otherwise, no label is displayed. */
-    label: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]).isRequired,
+     * Otherwise, no label is displayed. */
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
     /** A boolean to hide the slider label */
     hideLabel: PropTypes.bool,
     /** The numerical value of the slider. This value defaults to 0. */
-    value: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.number,
-    ]),
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     name: PropTypes.string,
     /** The min value of the slider. This value defaults to 0. */
-    min: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.number,
-    ]),
+    min: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     /** The max value of the slider. This value defaults to 100. */
-    max: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.number,
-    ]),
+    max: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     /** The step increment value of the slider. Example steps include 0.1, 1, or 10.
-    * This value defaults to 1. */
-    step: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.number,
-    ]),
+     * This value defaults to 1. */
+    step: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     /** Specifies that the slider element must have a value selected before submitting the form. */
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies that the slider element should be disabled. This value defaults to false. */

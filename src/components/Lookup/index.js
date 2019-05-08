@@ -79,13 +79,14 @@ class Lookup extends Component {
     }
 
     getContainerClassNames() {
-        const {
+        const { className, error } = this.props;
+        return classnames(
+            'rainbow-lookup_container',
+            {
+                'rainbow-lookup_container--error': error,
+            },
             className,
-            error,
-        } = this.props;
-        return classnames('rainbow-lookup_container', {
-            'rainbow-lookup_container--error': error,
-        }, className);
+        );
     }
 
     getInputContainerClassNames() {
@@ -208,8 +209,8 @@ class Lookup extends Component {
     isMenuOpen() {
         const { searchValue, isFocused } = this.state;
         const { options } = this.props;
-        const isMenuEmpty = isFocused && !!searchValue
-            && Array.isArray(options) && options.length === 0;
+        const isMenuEmpty =
+            isFocused && !!searchValue && Array.isArray(options) && options.length === 0;
         const isOpen = isFocused && Array.isArray(options) && !!options.length;
         return isOpen || isMenuEmpty;
     }
@@ -303,7 +304,7 @@ class Lookup extends Component {
             isLoading,
         } = this.props;
         const { searchValue, focusedItemIndex, options } = this.state;
-        const chipOnDelete = (disabled || readOnly) ? undefined : this.handleRemoveValue;
+        const chipOnDelete = disabled || readOnly ? undefined : this.handleRemoveValue;
 
         return (
             <div
@@ -311,15 +312,16 @@ class Lookup extends Component {
                 className={this.getContainerClassNames()}
                 style={style}
                 role="presentation"
-                onKeyDown={this.handleKeyDown}>
-
+                onKeyDown={this.handleKeyDown}
+            >
                 <Label
                     label={label}
                     hideLabel={hideLabel}
                     required={required}
                     inputId={this.inputId}
                     readOnly={readOnly}
-                    ref={this.labelRef} />
+                    ref={this.labelRef}
+                />
 
                 <RenderIf isTrue={!!value}>
                     <div className="rainbow-lookup_chip-content_container">
@@ -327,7 +329,8 @@ class Lookup extends Component {
                             className="rainbow-lookup_chip"
                             label={<ChipContent {...value} />}
                             variant="neutral"
-                            onDelete={chipOnDelete} />
+                            onDelete={chipOnDelete}
+                        />
                     </div>
                 </RenderIf>
 
@@ -335,17 +338,16 @@ class Lookup extends Component {
                     <div
                         className={this.getInputContainerClassNames()}
                         style={this.getInputContainerStyle()}
-                        ref={this.containerRef}>
-
-                        <RightElement
-                            showCloseButton={!!searchValue}
-                            onClear={this.clearInput} />
+                        ref={this.containerRef}
+                    >
+                        <RightElement showCloseButton={!!searchValue} onClear={this.clearInput} />
 
                         <Spinner
                             isVisible={isLoading}
                             className="rainbow-lookup_spinner"
                             size="x-small"
-                            assistiveText="searching" />
+                            assistiveText="searching"
+                        />
 
                         <input
                             id={this.inputId}
@@ -364,7 +366,8 @@ class Lookup extends Component {
                             required={required}
                             autoComplete="off"
                             aria-describedby={this.getErrorMessageId()}
-                            ref={this.inputRef} />
+                            ref={this.inputRef}
+                        />
 
                         <RenderIf isTrue={this.isMenuOpen()}>
                             <div className="rainbow-lookup_options-divider" />
@@ -373,8 +376,8 @@ class Lookup extends Component {
                                 value={searchValue}
                                 onSelectOption={this.handleChange}
                                 focusedItemIndex={focusedItemIndex}
-                                onHoverOption={this.handleHover} />
-
+                                onHoverOption={this.handleHover}
+                            />
                         </RenderIf>
                     </div>
                 </RenderIf>
@@ -393,9 +396,7 @@ class Lookup extends Component {
 
 Lookup.propTypes = {
     /** Text label for the Lookup. */
-    label: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
     /** A boolean to hide the Lookup label. */
     hideLabel: PropTypes.bool,
     /** Specifies the selected value of the Lookup. */
@@ -421,21 +422,16 @@ Lookup.propTypes = {
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
     placeholder: PropTypes.string,
     /** Specifies that the Lookup must be filled out before submitting the form.
-    * This value defaults to false. */
+     * This value defaults to false. */
     required: PropTypes.bool,
     /** Specifies that the Lookup must be filled out before submitting the form. */
-    error: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies that the Lookup element should be disabled. This value defaults to false. */
     disabled: PropTypes.bool,
     /** Specifies that the Lookup is read-only. This value defaults to false. */
     readOnly: PropTypes.bool,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
-    tabIndex: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.string,
-    ]),
+    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** The action triggered for every key stroke when the customer is typing in the input.
      * It sent the value/query of the input. This value is normally used for filter/search
      * for more options. */

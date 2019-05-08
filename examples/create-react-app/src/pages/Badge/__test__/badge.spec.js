@@ -5,9 +5,7 @@ import BadgeExample from './../';
 
 describe('<BadgeExample/>', () => {
     it('should render the badge', () => {
-        const component = shallow(
-            <BadgeExample />,
-        );
+        const component = shallow(<BadgeExample />);
         expect(component.find(Badge).exists()).toBe(true);
     });
 });

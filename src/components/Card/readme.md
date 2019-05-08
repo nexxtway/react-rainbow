@@ -2,13 +2,12 @@
 
     <div className="rainbow-p-around_large">
         <Card>
-           <img 
+           <img
             src="images/illustrations/Illustration-rainbow-1.svg"
             className="rainbow-p-vertical_x-large rainbow-m_auto rainbow-align-content_center"
             alt="landscape with rainbows, birds and colorful balloons" />
         </Card>
     </div>
-
 
 ##### card-with header and button
 
@@ -21,7 +20,6 @@
             title="Contact details"
             actions={<Button variant="neutral" label="New" variant="outline-brand" />} />
     </div>
-
 
 ##### card-with header and spinner
 
@@ -46,7 +44,6 @@
                 </ButtonGroup>
             } />
     </div>
-
 
 ##### card with header and illustration
 

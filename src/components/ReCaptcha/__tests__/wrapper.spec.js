@@ -33,22 +33,21 @@ describe('<ReCaptchaWrapper />', () => {
                 error="error"
                 tabIndex={0}
                 isScriptLoaded
-                isScriptLoadSucceed />,
+                isScriptLoadSucceed
+            />,
         );
         const loader = component.find('ReCaptchaComponent');
 
         expect(loader.exists()).toBe(true);
-        expect(loader.props()).toEqual(
-            {
-                onChange: expect.any(Function),
-                value: 'site-key',
-                theme: 'dark',
-                size: 'normal',
-                error: 'error',
-                tabIndex: 0,
-                className: undefined,
-                style: undefined,
-            },
-        );
+        expect(loader.props()).toEqual({
+            onChange: expect.any(Function),
+            value: 'site-key',
+            theme: 'dark',
+            size: 'normal',
+            error: 'error',
+            tabIndex: 0,
+            className: undefined,
+            style: undefined,
+        });
     });
 });

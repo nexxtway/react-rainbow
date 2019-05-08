@@ -11,13 +11,7 @@ function filterValidKeys(indexes, keys) {
 }
 
 export default function getRowsWithInitalSelectedRows(params = {}) {
-    const {
-        rows = [],
-        selectedRows,
-        maxRowSelection,
-        indexes,
-        selectedRowsKeys = {},
-    } = params;
+    const { rows = [], selectedRows, maxRowSelection, indexes, selectedRowsKeys = {} } = params;
 
     if (Array.isArray(selectedRows) && maxRowSelection > 0) {
         const previousSelectionLength = getCurrentSelectionLength(selectedRowsKeys);
@@ -27,12 +21,12 @@ export default function getRowsWithInitalSelectedRows(params = {}) {
             exceeds the limit defined by maxRowSelection.`);
             validSelectedRowsKeys = validSelectedRowsKeys.slice(0, maxRowSelection);
         }
-        validSelectedRowsKeys.forEach((item) => {
+        validSelectedRowsKeys.forEach(item => {
             selectedRowsKeys[item] = true;
         });
 
         if (validSelectedRowsKeys.length === maxRowSelection && maxRowSelection > 1) {
-            return rows.map((row) => {
+            return rows.map(row => {
                 if (!isSelectedRow(selectedRowsKeys, row.key)) {
                     return {
                         ...row,
@@ -45,8 +39,7 @@ export default function getRowsWithInitalSelectedRows(params = {}) {
                 };
             });
         }
-        if (selectedRows.length < maxRowSelection &&
-            previousSelectionLength === maxRowSelection) {
+        if (selectedRows.length < maxRowSelection && previousSelectionLength === maxRowSelection) {
             return rows.map(row => ({
                 ...row,
                 isDisabled: false,

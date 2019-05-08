@@ -27,8 +27,8 @@
         </Card>
     </div>
 
-
 ##### accordion with icons
+
     // more details about how to use react-font-awesome
     // visit https://github.com/FortAwesome/react-fontawesome
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
@@ -65,7 +65,6 @@
             </Accordion>
         </Card>
     </div>
-
 
 ##### accordion with multiple sections opened
 
@@ -125,7 +124,6 @@
     }
 
     <AccordionExample />
-
 
 ##### accordions disabled
 

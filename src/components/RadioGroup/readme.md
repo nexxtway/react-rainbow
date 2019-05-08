@@ -35,7 +35,6 @@
         <SimpleRadioGroup />
     </div>
 
-
 ##### radio group disabled
 
     const options = [
@@ -71,7 +70,6 @@
     <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
         <DisabledRadioGroup />
     </div>
-
 
 ##### radio group required
 
@@ -109,7 +107,6 @@
     <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
         <RequiredRadioGroup />
     </div>
-
 
 ##### radio group error
 

@@ -5,9 +5,7 @@ import SpinnerExample from './../';
 
 describe('<SpinnerExample/>', () => {
     it('should render the Spinner', () => {
-        const component = shallow(
-            <SpinnerExample />,
-        );
+        const component = shallow(<SpinnerExample />);
         expect(component.find(Spinner).exists()).toBe(true);
     });
 });

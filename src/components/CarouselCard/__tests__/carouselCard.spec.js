@@ -16,19 +16,22 @@ describe('<CarouselCard />', () => {
                     header="First Card"
                     description="First card description."
                     alternativeText="First card accessible description."
-                    href="/" />
+                    href="/"
+                />
                 <CarouselImage
                     src="images/illustrations/rainbow-background-2.svg"
                     header="Second Card"
                     description="Second card description."
                     alternativeText="Second card accessible description."
-                    href="/" />
+                    href="/"
+                />
                 <CarouselImage
                     src="images/illustrations/Illustration-rainbow-1.svg"
                     header="Third Card"
                     description="Third card description."
                     alternativeText="Third card accessible description."
-                    href="/" />
+                    href="/"
+                />
             </CarouselCard>,
         );
         expect(component.find('a.rainbow-carousel-image').length).toBe(3);

@@ -26,11 +26,15 @@ class AccordionItem extends Component {
     componentDidMount() {
         const { privateRegisterAccordionSection, disabled } = this.props;
         if (!disabled) {
-            return setTimeout(() => privateRegisterAccordionSection({
-                name: this.getCurrentName(),
-                ref: this.containerRef.current,
-                focusButtonIcon: this.buttonRef.current.focus.bind(this),
-            }), 0);
+            return setTimeout(
+                () =>
+                    privateRegisterAccordionSection({
+                        name: this.getCurrentName(),
+                        ref: this.containerRef.current,
+                        focusButtonIcon: this.buttonRef.current.focus.bind(this),
+                    }),
+                0,
+            );
         }
         return null;
     }
@@ -42,9 +46,13 @@ class AccordionItem extends Component {
 
     getContainerClassNames() {
         const { className, disabled } = this.props;
-        return classnames('rainbow-accordion-section_container', {
-            'rainbow-accordion-section_container--disabled': disabled,
-        }, className);
+        return classnames(
+            'rainbow-accordion-section_container',
+            {
+                'rainbow-accordion-section_container--disabled': disabled,
+            },
+            className,
+        );
     }
 
     getCollapsedClassNames() {
@@ -115,14 +123,7 @@ class AccordionItem extends Component {
     }
 
     render() {
-        const {
-            style,
-            disabled,
-            children,
-            label,
-            icon,
-            assistiveText,
-        } = this.props;
+        const { style, disabled, children, label, icon, assistiveText } = this.props;
 
         const isExpanded = this.isExpanded();
 
@@ -131,7 +132,8 @@ class AccordionItem extends Component {
                 className={this.getContainerClassNames()}
                 style={style}
                 disabled={disabled}
-                ref={this.containerRef}>
+                ref={this.containerRef}
+            >
                 <section>
                     <div className="rainbow-accordion-section_summary">
                         <h3 className="rainbow-accordion-section_summary-heading">
@@ -141,9 +143,7 @@ class AccordionItem extends Component {
                                 </span>
                             </RenderIf>
                             <RenderIf isTrue={!!label}>
-                                <span title="Accordion Label">
-                                    {label}
-                                </span>
+                                <span title="Accordion Label">{label}</span>
                             </RenderIf>
                         </h3>
 
@@ -157,14 +157,14 @@ class AccordionItem extends Component {
                             ariaControls={this.accordionDetailsId}
                             ariaExpanded={isExpanded}
                             ref={this.buttonRef}
-                            icon={
-                                <RightArrow isExpanded={isExpanded} disabled={disabled} />
-                            } />
+                            icon={<RightArrow isExpanded={isExpanded} disabled={disabled} />}
+                        />
                     </div>
                     <div
                         aria-hidden={!isExpanded}
                         className={this.getCollapsedClassNames()}
-                        id={this.accordionDetailsId}>
+                        id={this.accordionDetailsId}
+                    >
                         {children}
                     </div>
                 </section>
@@ -174,15 +174,11 @@ class AccordionItem extends Component {
 }
 
 /**
-* An AccordionSection is single section that is nested in the Accordion component.
-* @category Layout
-*/
+ * An AccordionSection is single section that is nested in the Accordion component.
+ * @category Layout
+ */
 export default function AccordionSection(props) {
-    return (
-        <Consumer>
-            {context => <AccordionItem {...props} {...context} />}
-        </Consumer>
-    );
+    return <Consumer>{context => <AccordionItem {...props} {...context} />}</Consumer>;
 }
 
 AccordionSection.propTypes = {
@@ -191,23 +187,21 @@ AccordionSection.propTypes = {
     /** An object with custom style applied for the outer element. */
     style: PropTypes.object,
     /** Specifies that the AccordionSection element should be disabled.
-    * This value defaults to false. */
+     * This value defaults to false. */
     disabled: PropTypes.bool,
     /**
-    * This prop that should not be visible in the documentation.
-    * @ignore
-    */
+     * This prop that should not be visible in the documentation.
+     * @ignore
+     */
     children: PropTypes.node,
     /** The text to be displayed as the AccordionSection's label. */
-    label: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The icon to show at the left of the label. */
     icon: PropTypes.node,
     /** A description for assistive sreen readers. */
     assistiveText: PropTypes.string,
     /** The name is used to determine which AccordionSection was clicked.
-    * If `name` is not passed it will be generated. */
+     * If `name` is not passed it will be generated. */
     name: PropTypes.string,
 };
 

@@ -26,7 +26,8 @@ export default function AnimationButton({ isAnimationPaused, onClick }) {
             icon={getIcon()}
             onClick={onClick}
             ariaPressed={isAnimationPaused}
-            assistiveText={getAssistiveText()} />
+            assistiveText={getAssistiveText()}
+        />
     );
 }
 

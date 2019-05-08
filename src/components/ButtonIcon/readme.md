@@ -25,8 +25,8 @@
         <ButtonIcon size="xx-small" icon={<FontAwesomeIcon icon={faTimes} />} />
     </div>
 
-
 ##### button icon border
+
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
     const { faStar } = require('@fortawesome/free-regular-svg-icons');
     const {
@@ -51,7 +51,6 @@
         </div>
         <ButtonIcon variant="border" size="xx-small" icon={<FontAwesomeIcon icon={faArrowDown} />} />
     </div>
-
 
 ##### button icon filled
 
@@ -83,7 +82,6 @@
         <ButtonIcon shaded variant="success" icon={<FontAwesomeIcon icon={faStar} />} />
     </div>
 
-
 ##### button icon disabled
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
@@ -98,7 +96,6 @@
         </div>
         <ButtonIcon disabled icon={<FontAwesomeIcon icon={faStar} />} />
     </div>
-
 
 ##### button icon inverse
 

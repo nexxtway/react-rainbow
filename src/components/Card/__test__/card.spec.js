@@ -8,8 +8,9 @@ describe('<Card/>', () => {
             <Card
                 title="Card Header"
                 footer="Card Footer"
-                actions={<div>Testing actions node</div>} >
-                    Testing childrens
+                actions={<div>Testing actions node</div>}
+            >
+                Testing childrens
             </Card>,
         );
         expect(component).toMatchSnapshot();

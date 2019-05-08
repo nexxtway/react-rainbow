@@ -43,27 +43,19 @@ export default class Rating extends Component {
     }
 
     render() {
-        const {
-            style,
-            onChange,
-            label,
-        } = this.props;
+        const { style, onChange, label } = this.props;
         const { value } = this.state;
         return (
             <fieldset
                 onMouseOver={this.handleOnHover}
                 onMouseLeave={this.handleOnLeave}
                 className={this.getContainerClassNames()}
-                style={style}>
+                style={style}
+            >
                 <RenderIf isTrue={!!label}>
-                    <legend className="rainbow-rating_label">
-                        {label}
-                    </legend>
+                    <legend className="rainbow-rating_label">{label}</legend>
                 </RenderIf>
-                <RatingItems
-                    onChange={onChange}
-                    value={value}
-                    name={this.getName()} />
+                <RatingItems onChange={onChange} value={value} name={this.getName()} />
             </fieldset>
         );
     }
@@ -77,9 +69,7 @@ Rating.propTypes = {
     /** An identifier for the group of radio items. */
     name: PropTypes.string,
     /** The rating label */
-    label: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied for the outer element. */

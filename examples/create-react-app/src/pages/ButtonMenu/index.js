@@ -18,8 +18,8 @@ export default function ButtonMenuExample() {
             <ButtonMenu
                 className="rainbow-m-horizontal_medium"
                 menuSize="x-small"
-                icon={<FontAwesomeIcon icon={faCaretDown} />}>
-
+                icon={<FontAwesomeIcon icon={faCaretDown} />}
+            >
                 <MenuItem label="Menu Item One" />
                 <MenuItem label="Menu Item Two" />
                 <MenuItem label="Menu Item Three" />
@@ -29,8 +29,8 @@ export default function ButtonMenuExample() {
             <ButtonMenu
                 className="rainbow-m-horizontal_medium"
                 menuSize="x-small"
-                icon={<FontAwesomeIcon icon={faUser} />}>
-
+                icon={<FontAwesomeIcon icon={faUser} />}
+            >
                 <MenuItem label="Menu header" variant="header" />
                 <MenuItem label="Menu Item One" />
                 <MenuItem label="Menu Item Two" />
@@ -42,23 +42,25 @@ export default function ButtonMenuExample() {
             <ButtonMenu
                 className="rainbow-m-horizontal_medium"
                 menuSize="x-small"
-                icon={<FontAwesomeIcon icon={faCog} />}>
-
+                icon={<FontAwesomeIcon icon={faCog} />}
+            >
                 <MenuItem
                     label="Right Icon"
                     icon={<FontAwesomeIcon icon={faTable} />}
-                    iconPosition="right" />
+                    iconPosition="right"
+                />
 
                 <MenuItem
                     label="Right Icon"
                     icon={<FontAwesomeIcon icon={faCogs} />}
-                    iconPosition="right" />
+                    iconPosition="right"
+                />
 
                 <MenuItem
                     label="Right Icon"
                     icon={<FontAwesomeIcon icon={faAddressBook} />}
-                    iconPosition="right" />
-
+                    iconPosition="right"
+                />
             </ButtonMenu>
         </div>
     );

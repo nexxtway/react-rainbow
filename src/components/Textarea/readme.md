@@ -8,7 +8,6 @@
             placeholder="Placeholder Text" />
     </div>
 
-
 ##### textarea required
 
     <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
@@ -18,7 +17,6 @@
             rows={4}
             placeholder="Placeholder Text Required" />
     </div>
-
 
 ##### textarea disabled
 
@@ -30,7 +28,6 @@
             placeholder="Textarea disabled" />
     </div>
 
-
 ##### textarea with bottom help
 
     <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
@@ -41,7 +38,6 @@
             rows={4} />
     </div>
 
-
 ##### textarea error
 
     <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
@@ -51,7 +47,6 @@
             rows={4}
             placeholder="Placeholder Text Error" />
     </div>
-
 
 ##### textarea read only
 

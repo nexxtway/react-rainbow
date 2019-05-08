@@ -4,27 +4,26 @@ import ButtonMenu from '../../ButtonMenu';
 import MoreIcon from './icons/more';
 
 function MenuItems({ children, rowData }) {
-    return React.Children.map(children, (child) => {
-        if (isValidElement(child)) {
-            return {
-                ...child,
-                props: {
-                    ...child.props,
-                    onClick: event => child.props.onClick(event, rowData),
-                },
-            };
-        }
-        return null;
-    }, null);
+    return React.Children.map(
+        children,
+        child => {
+            if (isValidElement(child)) {
+                return {
+                    ...child,
+                    props: {
+                        ...child.props,
+                        onClick: event => child.props.onClick(event, rowData),
+                    },
+                };
+            }
+            return null;
+        },
+        null,
+    );
 }
 
 export default function ActionsCell(props) {
-    const {
-        columnChildren,
-        rowsLength,
-        rowIndex,
-        rowData,
-    } = props;
+    const { columnChildren, rowsLength, rowIndex, rowData } = props;
 
     if (columnChildren) {
         const getMenuAlignment = () => {
@@ -50,11 +49,9 @@ export default function ActionsCell(props) {
                         tabIndex={-1}
                         icon={<MoreIcon />}
                         menuAlignment={getMenuAlignment()}
-                        buttonSize="small">
-
-                        <MenuItems rowData={rowData}>
-                            {columnChildren}
-                        </MenuItems>
+                        buttonSize="small"
+                    >
+                        <MenuItems rowData={rowData}>{columnChildren}</MenuItems>
                     </ButtonMenu>
                 </div>
             </td>
@@ -64,10 +61,7 @@ export default function ActionsCell(props) {
 }
 
 ActionsCell.propTypes = {
-    columnChildren: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.node),
-        PropTypes.object,
-    ]),
+    columnChildren: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
     rowsLength: PropTypes.number,
     rowIndex: PropTypes.number,
     rowData: PropTypes.object,

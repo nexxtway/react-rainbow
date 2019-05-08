@@ -10,9 +10,7 @@ const InputComponent = withReduxForm(Input);
 
 describe('withReduxForm', () => {
     it('should be focusable', () => {
-        const component = mount(
-            <InputComponent />,
-        );
+        const component = mount(<InputComponent />);
         expect(component).toBeFocusable();
     });
 });

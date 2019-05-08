@@ -31,7 +31,7 @@
                     <ButtonGroup>
                         <ButtonIcon variant="border" disabled icon={<FontAwesomeIcon icon={faPencilAlt} />} />
                         <ButtonIcon variant="border" disabled icon={<FontAwesomeIcon icon={faBell} />} />
-                        <ButtonMenu 
+                        <ButtonMenu
                             menuSize="x-small"
                             menuAlignment="right"
                             icon={<FontAwesomeIcon icon={faAngleDown} />}>
@@ -82,7 +82,7 @@
                                 className="rainbow-p-around_small"
                                 style={inputStyles}  />
                             <div className="rainbow-p-vertical_large rainbow-flex_column rainbow-align-content_center">
-                                <img 
+                                <img
                                     src="images/illustrations/Illustration-rainbow-1.svg"
                                     className="rainbow-p-vertical_x-large rainbow-align_absolute-center"
                                     alt="the rainbow" />

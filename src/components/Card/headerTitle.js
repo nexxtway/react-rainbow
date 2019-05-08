@@ -17,9 +17,7 @@ export default function HeaderTitle({ title }) {
 }
 
 HeaderTitle.propTypes = {
-    title: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 };
 HeaderTitle.defaultProps = {
     title: null,

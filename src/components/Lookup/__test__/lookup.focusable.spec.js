@@ -4,9 +4,7 @@ import Lookup from './../';
 
 describe('<Lookup/>', () => {
     it('should be focusable', () => {
-        const component = mount(
-            <Lookup label="Lookup Label" />,
-        );
+        const component = mount(<Lookup label="Lookup Label" />);
         expect(component).toBeFocusable();
     });
 });

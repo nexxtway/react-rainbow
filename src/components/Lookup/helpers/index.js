@@ -3,9 +3,4 @@ import getOptionsLength from './getOptionsLength';
 import getNormalizedOptions from './getNormalizedOptions';
 import findValueByIndex from './findValueByIndex';
 
-export {
-    isNavigationKey,
-    getOptionsLength,
-    getNormalizedOptions,
-    findValueByIndex,
-};
+export { isNavigationKey, getOptionsLength, getNormalizedOptions, findValueByIndex };

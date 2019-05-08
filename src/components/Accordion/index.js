@@ -8,10 +8,10 @@ const RIGHT_SIDE = 1;
 const LEFT_SIDE = -1;
 
 /**
-* An Accordion is a collection of vertically stacked sections with multiple content areas.
-* Allows a user to toggle the display of a section of content.
-* @category Layout
-*/
+ * An Accordion is a collection of vertically stacked sections with multiple content areas.
+ * Allows a user to toggle the display of a section of content.
+ * @category Layout
+ */
 export default class Accordion extends Component {
     constructor(props) {
         super(props);
@@ -41,7 +41,11 @@ export default class Accordion extends Component {
 
     static getDerivedStateFromProps(props, state) {
         const { activeSectionNames, onToggleSection } = props;
-        if (activeSectionNames && activeSectionNames !== state.activeNames && typeof onToggleSection === 'function') {
+        if (
+            activeSectionNames &&
+            activeSectionNames !== state.activeNames &&
+            typeof onToggleSection === 'function'
+        ) {
             return {
                 activeNames: activeSectionNames,
             };
@@ -106,15 +110,8 @@ export default class Accordion extends Component {
     render() {
         const { id, children, style, className } = this.props;
         return (
-            <ul
-                ref={this.containerRef}
-                id={id}
-                className={className}
-                style={style}>
-
-                <Provider value={this.state}>
-                    {children}
-                </Provider>
+            <ul ref={this.containerRef} id={id} className={className} style={style}>
+                <Provider value={this.state}>{children}</Provider>
             </ul>
         );
     }
@@ -128,20 +125,20 @@ Accordion.propTypes = {
     /** An object with custom style applied for the outer element. */
     style: PropTypes.object,
     /**
-    * This prop that should not be visible in the documentation.
-    * @ignore
-    */
+     * This prop that should not be visible in the documentation.
+     * @ignore
+     */
     children: PropTypes.node,
     /** If true, expands multiples AccordionSections.
-    * This value defaults to false. */
+     * This value defaults to false. */
     multiple: PropTypes.bool,
     /** Action fired when an AccordionSection is selected.
-    * The event params include the `name` of the selected AccordionSection. */
+     * The event params include the `name` of the selected AccordionSection. */
     onToggleSection: PropTypes.func,
     /** It contain the name of the AccordionSection that is expanded.
-    * It is an array of string when multiple is true,
-    * or a string when when multiple is false.
-    * It must match the name of the AccordionSection. */
+     * It is an array of string when multiple is true,
+     * or a string when when multiple is false.
+     * It must match the name of the AccordionSection. */
     activeSectionNames: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.string),
         PropTypes.string,

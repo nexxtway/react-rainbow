@@ -16,14 +16,7 @@ import getNextAmPmValue from './helpers/getNextAmPmValue';
 import get24HourTime from './helpers/get24HourTime';
 import getSingleNewTypedValue from './helpers/getSingleNewTypedValue';
 import isNumber from './helpers/isNumber';
-import {
-    LEFT_KEY,
-    RIGHT_KEY,
-    UP_KEY,
-    DOWN_KEY,
-    DELETE_KEY,
-    ENTER_KEY,
-} from '../../libs/constants';
+import { LEFT_KEY, RIGHT_KEY, UP_KEY, DOWN_KEY, DELETE_KEY, ENTER_KEY } from '../../libs/constants';
 
 function getHour(value) {
     if (value) {
@@ -108,8 +101,9 @@ export default class TimeSelect extends Component {
                 });
             }
 
-            const shouldNotFocusNextInput = Number(normalizedValue) < 2
-                && (!hour || this.isUpOrDownKeyPressed || this.hasPropValue);
+            const shouldNotFocusNextInput =
+                Number(normalizedValue) < 2 &&
+                (!hour || this.isUpOrDownKeyPressed || this.hasPropValue);
 
             if (shouldNotFocusNextInput) {
                 this.isUpOrDownKeyPressed = false;
@@ -157,8 +151,8 @@ export default class TimeSelect extends Component {
                 });
             }
 
-            const shouldNotFocusNextInput = Number(normalizedValue) < 6
-                && (!minutes || this.isUpOrDownKeyPressed);
+            const shouldNotFocusNextInput =
+                Number(normalizedValue) < 6 && (!minutes || this.isUpOrDownKeyPressed);
 
             if (shouldNotFocusNextInput) {
                 this.isUpOrDownKeyPressed = false;
@@ -344,8 +338,8 @@ export default class TimeSelect extends Component {
                 <div
                     role="presentation"
                     className="rainbow-time-picker_time-select-content"
-                    onKeyDown={this.handleKeyDown}>
-
+                    onKeyDown={this.handleKeyDown}
+                >
                     <input
                         data-id="hour"
                         className="rainbow-time-picker_time-select-value"
@@ -356,7 +350,8 @@ export default class TimeSelect extends Component {
                         onFocus={this.handleFocusHour}
                         onBlur={this.handleBlurHour}
                         pattern="\d*"
-                        ref={this.hourInputRef} />
+                        ref={this.hourInputRef}
+                    />
 
                     <span className="rainbow-time-picker_dots">:</span>
 
@@ -370,7 +365,8 @@ export default class TimeSelect extends Component {
                         onChange={this.handleChangeMinutes}
                         onFocus={this.handleFocusMinutes}
                         pattern="\d*"
-                        ref={this.minutesInputRef} />
+                        ref={this.minutesInputRef}
+                    />
 
                     <RenderIf isTrue={!hours24}>
                         <AmPmSelect
@@ -379,8 +375,8 @@ export default class TimeSelect extends Component {
                             defaultValue={this.defaultAmPM}
                             onFocus={this.hanldeFocusAmPm}
                             onChange={this.handleAmPmChange}
-                            ref={this.amPmInputRef} />
-
+                            ref={this.amPmInputRef}
+                        />
                     </RenderIf>
 
                     <div className="rainbow-time-picker_icon-button-container">
@@ -391,7 +387,8 @@ export default class TimeSelect extends Component {
                             size="small"
                             onClick={this.incrementHandler}
                             onFocus={this.handleButtonsFocus}
-                            assistiveText="Previous value" />
+                            assistiveText="Previous value"
+                        />
 
                         <ButtonIcon
                             tabIndex="-1"
@@ -400,8 +397,8 @@ export default class TimeSelect extends Component {
                             size="small"
                             onClick={this.decrementHandler}
                             onFocus={this.handleButtonsFocus}
-                            assistiveText="Next value" />
-
+                            assistiveText="Next value"
+                        />
                     </div>
                 </div>
 
@@ -410,14 +407,15 @@ export default class TimeSelect extends Component {
                         className="rainbow-time-picker_button"
                         variant="base"
                         label={cancelLabel}
-                        onClick={onCloseModal} />
+                        onClick={onCloseModal}
+                    />
 
                     <Button
                         className="rainbow-time-picker_button"
                         variant="brand"
                         label={okLabel}
-                        onClick={this.handleChangeTime} />
-
+                        onClick={this.handleChangeTime}
+                    />
                 </footer>
             </article>
         );
@@ -427,12 +425,8 @@ export default class TimeSelect extends Component {
 TimeSelect.propTypes = {
     onCloseModal: PropTypes.func,
     hours24: PropTypes.bool,
-    cancelLabel: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
-    okLabel: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    cancelLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    okLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     onChange: PropTypes.func,
     value: PropTypes.string,
 };

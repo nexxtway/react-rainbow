@@ -16,14 +16,18 @@ class PageRatingStar {
      * @method
      */
     click() {
-        $(this.rootElement).$('input[type="radio"]').click();
+        $(this.rootElement)
+            .$('input[type="radio"]')
+            .click();
     }
 
     /** Hover the star.
      * @method
      */
     hover() {
-        return $(this.rootElement).$('input[type="radio"]').hover();
+        return $(this.rootElement)
+            .$('input[type="radio"]')
+            .hover();
     }
 
     /**
@@ -32,7 +36,9 @@ class PageRatingStar {
      * @returns {bool}
      */
     isChecked() {
-        return !!$(this.rootElement).$('input[type="radio"]').getAttribute('checked');
+        return !!$(this.rootElement)
+            .$('input[type="radio"]')
+            .getAttribute('checked');
     }
 }
 

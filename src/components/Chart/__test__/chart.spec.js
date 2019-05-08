@@ -45,9 +45,7 @@ describe('<Chart />', () => {
         );
         const chartInstance = component.instance().chartInstance;
         component.setProps({
-            children: [
-                <Dataset values={[34, 345, 234, 234, 90]} title="Dataset 1" />,
-            ],
+            children: [<Dataset values={[34, 345, 234, 234, 90]} title="Dataset 1" />],
         });
         expect(chartInstance.update).toHaveBeenCalledTimes(1);
     });

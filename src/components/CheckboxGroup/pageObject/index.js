@@ -22,7 +22,10 @@ class PageCheckboxGroup {
     getItem(itemPosition) {
         const items = $(this.rootElement).$$('.rainbow-checkbox-group_checkbox');
         if (items[itemPosition]) {
-            return new PageCheckboxItem(`${this.rootElement} .rainbow-checkbox-group_checkbox:nth-child(${itemPosition + 1})`);
+            return new PageCheckboxItem(
+                `${this.rootElement} .rainbow-checkbox-group_checkbox:nth-child(${itemPosition +
+                    1})`,
+            );
         }
         return null;
     }

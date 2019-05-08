@@ -10,9 +10,7 @@ const InputComponent = withReduxForm(Input);
 
 describe('withReduxForm', () => {
     it('should render an input element with the right props', () => {
-        const component = mount(
-            <InputComponent error="my error" value="some text" type="email" />,
-        );
+        const component = mount(<InputComponent error="my error" value="some text" type="email" />);
         expect(component.find('Input').props()).toEqual({
             error: 'my error',
             value: 'some text',
@@ -30,7 +28,13 @@ describe('withReduxForm', () => {
             valid: false,
         };
         const component = mount(
-            <InputComponent input={input} meta={meta} error="my error" value="some text" type="email" />,
+            <InputComponent
+                input={input}
+                meta={meta}
+                error="my error"
+                value="some text"
+                type="email"
+            />,
         );
         expect(component.find('Input').props()).toEqual({
             error: 'my error',
@@ -45,9 +49,7 @@ describe('withReduxForm', () => {
             touched: false,
             submitFailed: false,
         };
-        const component = mount(
-            <InputComponent meta={meta} error="my error" />,
-        );
+        const component = mount(<InputComponent meta={meta} error="my error" />);
         expect(component.find('Input').prop('error')).toBe('my error');
     });
     it('should pass the right error when redux form meta object is passed and touched is true', () => {
@@ -56,9 +58,7 @@ describe('withReduxForm', () => {
             touched: true,
             submitFailed: false,
         };
-        const component = mount(
-            <InputComponent meta={meta} error="my error" />,
-        );
+        const component = mount(<InputComponent meta={meta} error="my error" />);
         expect(component.find('Input').prop('error')).toBe('redux form error from meta');
     });
     it('should pass the right error when redux form meta object is passed and submitFailed is true', () => {
@@ -67,9 +67,7 @@ describe('withReduxForm', () => {
             touched: false,
             submitFailed: true,
         };
-        const component = mount(
-            <InputComponent meta={meta} error="my error" />,
-        );
+        const component = mount(<InputComponent meta={meta} error="my error" />);
         expect(component.find('Input').prop('error')).toBe('redux form error from meta');
     });
 });

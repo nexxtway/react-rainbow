@@ -17,7 +17,9 @@ class PageCarouselCardIndicator {
      * @method
      */
     click() {
-        $(this.rootElement).$('a').click();
+        $(this.rootElement)
+            .$('a')
+            .click();
     }
 
     /**
@@ -26,7 +28,9 @@ class PageCarouselCardIndicator {
      * @returns {bool}
      */
     hasFocus() {
-        return $(this.rootElement).$('a').isFocused();
+        return $(this.rootElement)
+            .$('a')
+            .isFocused();
     }
 
     /**
@@ -35,7 +39,12 @@ class PageCarouselCardIndicator {
      * @returns {bool}
      */
     isSelected() {
-        return $(this.rootElement).$('a').getAttribute('class') === 'rainbow-carousel_indicator rainbow-carousel_indicator--active';
+        return (
+            $(this.rootElement)
+                .$('a')
+                .getAttribute('class') ===
+            'rainbow-carousel_indicator rainbow-carousel_indicator--active'
+        );
     }
 }
 

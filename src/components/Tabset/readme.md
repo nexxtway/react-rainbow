@@ -104,7 +104,6 @@
 
     <TabsetExample />
 
-
 ##### Tabset fullWidth
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
@@ -205,7 +204,6 @@
     }
 
     <TabsetExample />
-
 
 ##### Tabset with multi Tabs
 

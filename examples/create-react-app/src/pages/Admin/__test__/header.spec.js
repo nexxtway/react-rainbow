@@ -10,9 +10,7 @@ import Header from './../header';
 
 describe('<Header in AdminExample/>', () => {
     it('should render the Header', () => {
-        const component = shallow(
-            <Header />,
-        );
+        const component = shallow(<Header />);
         expect(component.find(Input).exists()).toBe(true);
         expect(component.find(ButtonGroup).exists()).toBe(true);
         expect(component.find(ButtonIcon).exists()).toBe(true);

@@ -20,12 +20,7 @@ export default class MenuItem extends Component {
     }
 
     handleClick() {
-        const {
-            label,
-            description,
-            icon,
-            onClick,
-        } = this.props;
+        const { label, description, icon, onClick } = this.props;
         const option = {
             label,
             description,
@@ -40,28 +35,18 @@ export default class MenuItem extends Component {
     }
 
     render() {
-        const {
-            label,
-            description,
-            icon,
-        } = this.props;
+        const { label, description, icon } = this.props;
 
         return (
             <li
                 className={this.getContainerClassNames()}
                 role="presentation"
                 onClick={this.handleClick}
-                onMouseEnter={this.handleHover}>
-
-                <a
-                    href="javascript:void(0);"
-                    role="menuitem"
-                    ref={this.itemRef}>
-
+                onMouseEnter={this.handleHover}
+            >
+                <a href="javascript:void(0);" role="menuitem" ref={this.itemRef}>
                     <RenderIf isTrue={!!icon}>
-                        <span className="rainbow-lookup_menu-item_icon-container">
-                            {icon}
-                        </span>
+                        <span className="rainbow-lookup_menu-item_icon-container">{icon}</span>
                     </RenderIf>
                     <span className="rainbow-lookup_menu-item_label-container">
                         {label}
@@ -78,10 +63,7 @@ export default class MenuItem extends Component {
 }
 
 MenuItem.propTypes = {
-    label: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.node,
-    ]),
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     description: PropTypes.string,
     icon: PropTypes.node,
     onClick: PropTypes.func,

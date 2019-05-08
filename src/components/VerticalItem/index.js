@@ -25,9 +25,14 @@ function Item(props) {
     } = props;
     const isSelected = name === selectedItem;
 
-    const getContainerClassNames = () => classnames('rainbow-vertical-item', {
-        'rainbow-vertical-item--active': isSelected,
-    }, className);
+    const getContainerClassNames = () =>
+        classnames(
+            'rainbow-vertical-item',
+            {
+                'rainbow-vertical-item--active': isSelected,
+            },
+            className,
+        );
 
     const getAriaCurrent = () => {
         if (isSelected) {
@@ -56,14 +61,15 @@ function Item(props) {
                 aria-describedby={entityHeaderId}
                 className="rainbow-vertical-item_action"
                 aria-current={getAriaCurrent()}
-                tabIndex={resolveTabIndex()}>
+                tabIndex={resolveTabIndex()}
+            >
                 <span className="rainbow-vertical-item_action-label">{label}</span>
                 <RenderIf isTrue={!!notification}>
                     <span className="rainbow-vertical-item_notification">{notification}</span>
                 </RenderIf>
             </a>
             <RenderIf isTrue={!!icon}>
-                <span className="rainbow-vertical-item_icon" >{icon}</span>
+                <span className="rainbow-vertical-item_icon">{icon}</span>
             </RenderIf>
         </li>
     );
@@ -85,10 +91,11 @@ export default function VerticalItem(props) {
                                     {...props}
                                     {...context}
                                     entityHeaderId={entityHeaderId}
-                                    isExpanded={isExpanded} />
+                                    isExpanded={isExpanded}
+                                />
                             )}
                         </SectionOverflowConsumer>
-                    ) }
+                    )}
                 </SectionConsumer>
             )}
         </NavigationConsumer>
@@ -97,9 +104,7 @@ export default function VerticalItem(props) {
 
 VerticalItem.propTypes = {
     /** The text displayed for the navigation item. */
-    label: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** A unique identifier for the navigation item. */
     name: PropTypes.string.isRequired,
     /** The icon to show if it is passed. It must be a svg icon or a font icon. */

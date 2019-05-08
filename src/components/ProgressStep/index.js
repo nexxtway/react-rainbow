@@ -27,10 +27,14 @@ class StepItem extends Component {
 
     componentDidMount() {
         const { privateRegisterStep, name } = this.props;
-        return setTimeout(() => privateRegisterStep({
-            name,
-            onSetStepState: this.setStepState,
-        }), 0);
+        return setTimeout(
+            () =>
+                privateRegisterStep({
+                    name,
+                    onSetStepState: this.setStepState,
+                }),
+            0,
+        );
     }
 
     componentDidUpdate({ currentStepName: prevCurrentStepName }) {
@@ -104,7 +108,8 @@ class StepItem extends Component {
                     icon={this.getIcon()}
                     className={this.getButtonClassNames()}
                     onClick={this.handleOnClick}
-                    assistiveText={this.getAssistiveText()} />
+                    assistiveText={this.getAssistiveText()}
+                />
                 <span className="rainbow-progress-step_label">{label}</span>
             </li>
         );
@@ -112,11 +117,7 @@ class StepItem extends Component {
 }
 
 export default function ProgressStep(props) {
-    return (
-        <Consumer>
-            {context => <StepItem {...props} {...context} />}
-        </Consumer>
-    );
+    return <Consumer>{context => <StepItem {...props} {...context} />}</Consumer>;
 }
 
 ProgressStep.propTypes = {
@@ -125,7 +126,7 @@ ProgressStep.propTypes = {
     /** Text label for the ProgressStep. */
     label: PropTypes.node,
     /** Indicates whether the current step is in error state and displays a warning icon
-    * on the step indicator. This value defaults to false. */
+     * on the step indicator. This value defaults to false. */
     hasError: PropTypes.bool,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,

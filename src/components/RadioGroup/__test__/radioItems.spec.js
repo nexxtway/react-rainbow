@@ -9,9 +9,7 @@ describe('<RadioItems />', () => {
             { value: 'user', label: 'User' },
             { value: 'anonymous', label: 'Anonymous' },
         ];
-        const component = mount(
-            <RadioItems options={options} />,
-        );
+        const component = mount(<RadioItems options={options} />);
         expect(component.children().length).toBe(3);
     });
     it('should pass the right props to the Radio component', () => {
@@ -21,7 +19,8 @@ describe('<RadioItems />', () => {
                 options={option}
                 name="name-1"
                 ariaDescribedby="error-1"
-                onChange={() => {}} />,
+                onChange={() => {}}
+            />,
         );
         expect(component.find('Radio').props()).toEqual({
             value: option[0].value,

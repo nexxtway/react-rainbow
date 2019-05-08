@@ -4,9 +4,7 @@ import InputRadio from './../';
 
 describe('<InputRadio/>', () => {
     it('should be focusable', () => {
-        const component = mount(
-            <InputRadio label="Input Label" />,
-        );
+        const component = mount(<InputRadio label="Input Label" />);
         expect(component).toBeFocusable();
     });
 });

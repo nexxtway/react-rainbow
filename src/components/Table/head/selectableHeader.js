@@ -17,7 +17,7 @@ export default function SelectableHeader(props) {
     const isIndeterminate = bulkSelection === 'some';
     const isAllSelected = bulkSelection === 'all';
 
-    const handleClick = (event) => {
+    const handleClick = event => {
         if (bulkSelection === 'none') {
             return onSelectAllRows(event);
         }
@@ -26,11 +26,7 @@ export default function SelectableHeader(props) {
 
     if (isRadio) {
         return (
-            <th
-                className="rainbow-table_header-wrapper"
-                style={style}
-                scope="col"
-                tabIndex={-1} />
+            <th className="rainbow-table_header-wrapper" style={style} scope="col" tabIndex={-1} />
         );
     }
 
@@ -38,8 +34,8 @@ export default function SelectableHeader(props) {
         <th style={style} scope="col" tabIndex={-1}>
             <div
                 className="rainbow-table_header-checkbox-container rainbow-table_header-wrapper"
-                style={style}>
-
+                style={style}
+            >
                 <InputCheckbox
                     name={name}
                     label="select all rows"
@@ -49,7 +45,8 @@ export default function SelectableHeader(props) {
                     checked={isAllSelected}
                     indeterminate={isIndeterminate}
                     disabled={isDisabled}
-                    onClick={handleClick} />
+                    onClick={handleClick}
+                />
             </div>
         </th>
     );
@@ -60,9 +57,7 @@ SelectableHeader.propTypes = {
     onDeselectAllRows: PropTypes.func,
     tableId: PropTypes.string.isRequired,
     maxRowSelection: PropTypes.number,
-    bulkSelection: PropTypes.oneOf([
-        'none', 'some', 'all',
-    ]),
+    bulkSelection: PropTypes.oneOf(['none', 'some', 'all']),
     style: PropTypes.object,
 };
 
