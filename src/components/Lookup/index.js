@@ -13,11 +13,14 @@ import {
     isNavigationKey,
     getNormalizedOptions,
     getInitialFocusedIndex,
+    isOptionVisible,
 } from './helpers';
 import { uniqueId } from '../../libs/utils';
 import { UP_KEY, DOWN_KEY, ENTER_KEY } from '../../libs/constants';
 import withReduxForm from '../../libs/hocs/withReduxForm';
 import './styles.css';
+
+const OPTION_HEIGHT = 48;
 
 /**
  * A Lookup is an autocomplete text input that will search against a database object,
@@ -38,6 +41,7 @@ class Lookup extends Component {
         this.errorMessageId = uniqueId('error-message');
         this.containerRef = React.createRef();
         this.inputRef = React.createRef();
+        this.menuRef = React.createRef();
         this.handleSearch = this.handleSearch.bind(this);
         this.clearInput = this.clearInput.bind(this);
         this.handleClick = this.handleClick.bind(this);
@@ -169,10 +173,12 @@ class Lookup extends Component {
     }
 
     closeMenu() {
+        const { options } = this.state;
         window.removeEventListener('click', this.handleClick);
         window.removeEventListener('touchstart', this.handleClick);
         return this.setState({
             isFocused: false,
+            focusedItemIndex: getInitialFocusedIndex(options),
         });
     }
 
@@ -193,7 +199,7 @@ class Lookup extends Component {
 
     handleKeyDown(event) {
         const { keyCode } = event;
-        if (isNavigationKey(keyCode)) {
+        if (isNavigationKey(keyCode) && this.isMenuOpen()) {
             event.preventDefault();
             if (this.keyHandlerMap[keyCode]) {
                 this.keyHandlerMap[keyCode]();
@@ -211,6 +217,18 @@ class Lookup extends Component {
                     focusedItemIndex: prevFocusedIndex,
                 });
             }
+            this.scrollUp(prevFocusedIndex);
+        }
+    }
+
+    scrollUp(prevFocusedIndex) {
+        const { options } = this.state;
+        const menu = this.menuRef.current.getRef();
+        const prevIndex = prevFocusedIndex >= 0 ? prevFocusedIndex : 0;
+        const prevFocusedOption = menu.childNodes[prevIndex];
+
+        if (options.length > 5 && !isOptionVisible(prevFocusedOption, menu)) {
+            this.menuRef.current.scrollTo(OPTION_HEIGHT * (prevIndex));
         }
     }
 
@@ -224,7 +242,18 @@ class Lookup extends Component {
                 this.setState({
                     focusedItemIndex: nextFocusedIndex,
                 });
+                this.scrollDown(nextFocusedIndex);
             }
+        }
+    }
+
+    scrollDown(nextFocusedIndex) {
+        const { options } = this.state;
+        const menu = this.menuRef.current.getRef();
+        const nextFocusedOption = menu.childNodes[nextFocusedIndex];
+
+        if (options.length > 5 && !isOptionVisible(nextFocusedOption, menu)) {
+            this.menuRef.current.scrollTo(OPTION_HEIGHT * (nextFocusedIndex - 4));
         }
     }
 
@@ -352,7 +381,9 @@ class Lookup extends Component {
                                     value={searchValue}
                                     onSelectOption={this.handleChange}
                                     focusedItemIndex={focusedItemIndex}
-                                    onHoverOption={this.handleHover} />
+                                    onHoverOption={this.handleHover}
+                                    itemHeight={OPTION_HEIGHT}
+                                    ref={this.menuRef} />
                             </div>
                         </RenderIf>
                     </div>

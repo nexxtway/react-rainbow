@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MenuItem from './menuItem';
 import SearchIcon from '../icons/searchIcon';
-import { uniqueId } from '../../../libs/utils';
 import './styles.css';
 
 function MenuItems(props) {
@@ -21,11 +20,12 @@ function MenuItems(props) {
             type,
         } = item;
         const isActive = index === focusedItemIndex;
+        const key = `lookup-item-${index}`;
 
         if (type === 'header') {
             return (
                 <li
-                    key={uniqueId('lookup-item')}
+                    key={key}
                     className="rainbow-lookup_menu-item_header"
                     role="separator">
 
@@ -36,7 +36,7 @@ function MenuItems(props) {
 
         return (
             <MenuItem
-                key={uniqueId('lookup-item')}
+                key={key}
                 label={label}
                 description={description}
                 icon={icon}
@@ -48,46 +48,63 @@ function MenuItems(props) {
     });
 }
 
-export default function Options(props) {
-    const {
-        items,
-        value,
-        onSelectOption,
-        onHoverOption,
-        focusedItemIndex,
-    } = props;
-
-    if (items.length === 0) {
-        return (
-            <div className="rainbow-lookup_options-container rainbow-lookup_options-container--empty">
-                <SearchIcon className="rainbow-lookup_options-empty-message_search-icon" />
-                <span className="rainbow-lookup_options-empty-message">
-                    Our robots did not find any match for
-                    <span className="rainbow-lookup_options-empty-message_match-value">
-                        {` "${value}"`}
-                    </span>
-                </span>
-            </div>
-        );
+export default class Options extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        this.containerRef = React.createRef();
     }
 
-    const resultContainerStyles = {
-        height: (48 * items.length) + 17,
-        maxHeight: 248,
-    };
+    getRef() {
+        return this.containerRef.current;
+    }
 
-    return (
-        <ul
-            className="rainbow-lookup_options-container"
-            style={resultContainerStyles}>
+    scrollTo(offset) {
+        this.containerRef.current.scrollTo(0, offset);
+    }
 
-            <MenuItems
-                items={items}
-                focusedItemIndex={focusedItemIndex}
-                onClick={onSelectOption}
-                onHover={onHoverOption} />
-        </ul>
-    );
+    render() {
+        const {
+            items,
+            value,
+            onSelectOption,
+            onHoverOption,
+            focusedItemIndex,
+            itemHeight,
+        } = this.props;
+
+        if (items.length === 0) {
+            return (
+                <div className="rainbow-lookup_options-container rainbow-lookup_options-container--empty">
+                    <SearchIcon className="rainbow-lookup_options-empty-message_search-icon" />
+                    <span className="rainbow-lookup_options-empty-message">
+                        Our robots did not find any match for
+                        <span className="rainbow-lookup_options-empty-message_match-value">
+                            {` "${value}"`}
+                        </span>
+                    </span>
+                </div>
+            );
+        }
+
+        const resultContainerStyles = {
+            height: (itemHeight * items.length) + 17,
+            maxHeight: 256,
+        };
+
+        return (
+            <ul
+                className="rainbow-lookup_options-container"
+                style={resultContainerStyles}
+                ref={this.containerRef}>
+
+                <MenuItems
+                    items={items}
+                    focusedItemIndex={focusedItemIndex}
+                    onClick={onSelectOption}
+                    onHover={onHoverOption} />
+            </ul>
+        );
+    }
 }
 
 Options.propTypes = {
@@ -96,6 +113,7 @@ Options.propTypes = {
     onSelectOption: PropTypes.func,
     onHoverOption: PropTypes.func,
     focusedItemIndex: PropTypes.number,
+    itemHeight: PropTypes.number.isRequired,
 };
 
 Options.defaultProps = {
