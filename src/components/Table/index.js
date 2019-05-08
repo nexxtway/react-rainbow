@@ -31,13 +31,7 @@ import './styles.css';
 export default class Table extends Component {
     constructor(props) {
         super(props);
-        const {
-            children,
-            showCheckboxColumn,
-            keyField,
-            data,
-            maxRowSelection,
-        } = props;
+        const { children, showCheckboxColumn, keyField, data, maxRowSelection } = props;
 
         this.state = {
             columns: getColumns(children, showCheckboxColumn),
@@ -153,10 +147,7 @@ export default class Table extends Component {
     }
 
     updateRows(updatedRows) {
-        const {
-            keyField,
-            selectedRows,
-        } = this.props;
+        const { keyField, selectedRows } = this.props;
         const { rows } = this.state;
         const maxRowSelection = this.getMaxRowSelection();
         this.selectedRowsKeys = {};
@@ -347,12 +338,7 @@ export default class Table extends Component {
             emptyTitle,
             emptyDescription,
         } = this.props;
-        const {
-            columns,
-            tableWidth,
-            rows,
-            bulkSelection,
-        } = this.state;
+        const { columns, tableWidth, rows, bulkSelection } = this.state;
         const tableStyles = {
             width: tableWidth,
         };
@@ -362,7 +348,10 @@ export default class Table extends Component {
             <div id={id} className={this.getContainerClassNames()} style={style}>
                 <div className="rainbow-table-width-observer" ref={this.resizeTarget} />
                 <div className="rainbow-table_container">
-                    <div className="rainbow-table_container--scrollable-x" ref={this.tableContainerRef}>
+                    <div
+                        className="rainbow-table_container--scrollable-x"
+                        ref={this.tableContainerRef}
+                    >
                         <div className={this.getScrollableYClassNames()} style={tableStyles}>
                             <table className="rainbow-table" style={tableStyles}>
                                 <thead>
@@ -381,7 +370,8 @@ export default class Table extends Component {
                                             onDeselectAllRows={this.handleDeselectAllRows}
                                             tableId={this.tableId}
                                             maxRowSelection={maxRowSelection}
-                                            bulkSelection={bulkSelection} />
+                                            bulkSelection={bulkSelection}
+                                        />
                                     </tr>
                                 </thead>
                                 <tbody className="rainbow-table_body">
@@ -395,7 +385,8 @@ export default class Table extends Component {
                                         emptyTitle={emptyTitle}
                                         emptyDescription={emptyDescription}
                                         onSelectRow={this.handleSelectRow}
-                                        onDeselectRow={this.handleDeselectRow} />
+                                        onDeselectRow={this.handleDeselectRow}
+                                    />
                                 </tbody>
                             </table>
                         </div>
@@ -436,10 +427,7 @@ Table.propTypes = {
     onRowSelection: PropTypes.func,
     /** The maximum number of rows that can be selected. When the value is
      * 1 the selection is made by radio buttons, otherwise with checkboxes. */
-    maxRowSelection: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.string,
-    ]),
+    maxRowSelection: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** An array with a list of keyField values of the selected rows. */
     selectedRows: PropTypes.array,
     /** It is required for associate each row with a unique ID. Must be one of the data key. */
@@ -449,13 +437,9 @@ Table.propTypes = {
     /** The icon that appears in the message of the Table when is empty. */
     emptyIcon: PropTypes.node,
     /** The title that appears in the message of the Table when is empty. */
-    emptyTitle: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    emptyTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The description that appears in the message of the Table when is empty. */
-    emptyDescription: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    emptyDescription: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The id of the outer element. */
     id: PropTypes.string,
     /** A CSS class for the outer element, in addition to the component's base classes. */

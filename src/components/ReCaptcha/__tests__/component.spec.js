@@ -14,7 +14,8 @@ describe('<ReCaptchaComponent />', () => {
                 theme="light"
                 size="normal"
                 tabIndex={0}
-                onChange={() => {}} />,
+                onChange={() => {}}
+            />,
         );
         expect(window.grecaptcha.ready).toHaveBeenCalledTimes(1);
     });
@@ -30,7 +31,8 @@ describe('<ReCaptchaComponent />', () => {
                 theme="light"
                 size="normal"
                 tabIndex={0}
-                onChange={() => {}} />,
+                onChange={() => {}}
+            />,
         );
         const { recaptchaID } = component.instance();
         expect(component.find(`div#${recaptchaID}`).exists()).toBe(true);

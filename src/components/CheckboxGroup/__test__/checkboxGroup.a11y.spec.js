@@ -13,9 +13,7 @@ describe('<CheckboxGroup/>', () => {
     it('should be accessible when all options have a label passed', async () => {
         expect.assertions(1);
         const html = ReactDOMServer.renderToString(
-            <CheckboxGroup
-                label="Checkbox Group Label"
-                options={options} />,
+            <CheckboxGroup label="Checkbox Group Label" options={options} />,
         );
         const results = await axe(html);
         expect(results).toHaveNoViolations();

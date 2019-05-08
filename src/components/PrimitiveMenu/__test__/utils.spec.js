@@ -20,15 +20,27 @@ describe('<ButtonMenu/> utils', () => {
     });
     describe('findItemByKey', () => {
         it('should find the item matched with the key passed', () => {
-            const childrenRefs = [{ innerText: 'Julio' }, { innerText: 'Luis' }, { innerText: 'Pepe' }];
+            const childrenRefs = [
+                { innerText: 'Julio' },
+                { innerText: 'Luis' },
+                { innerText: 'Pepe' },
+            ];
             expect(findItemByKey('L', childrenRefs)).toEqual({ innerText: 'Luis' });
         });
         it('should find the item matched with the key passed altought the key is in lower case and the item innerText is in upper case', () => {
-            const childrenRefs = [{ innerText: 'Julio' }, { innerText: 'Luis' }, { innerText: 'Pepe' }];
+            const childrenRefs = [
+                { innerText: 'Julio' },
+                { innerText: 'Luis' },
+                { innerText: 'Pepe' },
+            ];
             expect(findItemByKey('l', childrenRefs)).toEqual({ innerText: 'Luis' });
         });
         it('should return undefined if nothing match', () => {
-            const childrenRefs = [{ innerText: 'Julio' }, { innerText: 'Luis' }, { innerText: 'Pepe' }];
+            const childrenRefs = [
+                { innerText: 'Julio' },
+                { innerText: 'Luis' },
+                { innerText: 'Pepe' },
+            ];
             expect(findItemByKey('d', childrenRefs)).toBeUndefined();
         });
     });

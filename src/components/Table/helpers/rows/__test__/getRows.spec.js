@@ -10,16 +10,15 @@ describe('getRows', () => {
         expect(getRows()).toEqual([]);
     });
     it('should return the right rows', () => {
-        const data = [
-            { name: 'John' },
-            { name: 'Pepe' },
-        ];
-        expect(getRows({
-            rows: data,
-            maxRowSelection: 5,
-            keyField: 'id',
-            selectedRowsKeys: {},
-        })).toEqual([
+        const data = [{ name: 'John' }, { name: 'Pepe' }];
+        expect(
+            getRows({
+                rows: data,
+                maxRowSelection: 5,
+                keyField: 'id',
+                selectedRowsKeys: {},
+            }),
+        ).toEqual([
             {
                 key: 'row-1',
                 inputType: 'checkbox',

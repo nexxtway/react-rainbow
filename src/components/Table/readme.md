@@ -62,7 +62,6 @@
         </Table>
     </div>
 
-
 ##### Table with sorting
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
@@ -196,7 +195,6 @@
 
     <TableExample />
 
-
 ##### Table with Selectable Rows
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
@@ -302,7 +300,6 @@
 
     <TableExample />
 
-
 ##### Table with a limited number of Selectable Rows
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
@@ -386,7 +383,6 @@
         </Table>
     </div>
 
-
 ##### Table with Selectable Rows by radio buttons
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
@@ -455,7 +451,6 @@
             <Column header="Email" field="email" />
         </Table>
     </div>
-
 
 ##### Table with row actions
 
@@ -537,7 +532,6 @@
         </Table>
     </div>
 
-
 ##### Table Loading
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
@@ -572,7 +566,6 @@
             <Column header="Email" field="email" />
         </Table>
     </div>
-
 
 ##### Table Empty
 

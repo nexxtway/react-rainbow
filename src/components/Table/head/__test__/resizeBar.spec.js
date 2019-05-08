@@ -13,9 +13,7 @@ const preventDefault = jest.fn();
 
 describe('<ResizeBar />', () => {
     it('should set isResizable passed to isTrue in RenderIf component', () => {
-        const component = mount(
-            <ResizeBar isResizable />,
-        );
+        const component = mount(<ResizeBar isResizable />);
         expect(component.find('RenderIf').prop('isTrue')).toBe(true);
     });
     it('should pass the right props to input element', () => {
@@ -24,20 +22,21 @@ describe('<ResizeBar />', () => {
                 isResizable
                 ariaLabel="resize bar aria label"
                 minColumnWidth={30}
-                maxColumnWidth={120} />,
+                maxColumnWidth={120}
+            />,
         );
-        expect(component.find('input').props()).toEqual(expect.objectContaining({
-            type: 'range',
-            min: 30,
-            max: 120,
-            'aria-label': 'resize bar aria label',
-            tabIndex: -1,
-        }));
+        expect(component.find('input').props()).toEqual(
+            expect.objectContaining({
+                type: 'range',
+                min: 30,
+                max: 120,
+                'aria-label': 'resize bar aria label',
+                tabIndex: -1,
+            }),
+        );
     });
     it('should handle onMouseDown event', () => {
-        const component = mount(
-            <ResizeBar isResizable headerWidth={350} />,
-        );
+        const component = mount(<ResizeBar isResizable headerWidth={350} />);
         const resizeBar = component.find(resizeBarSelector);
         resizeBar.simulate('mousedown', { clientX: 230 });
 
@@ -45,11 +44,7 @@ describe('<ResizeBar />', () => {
     });
     it('should handle onMouseMove event', () => {
         const component = mount(
-            <ResizeBar
-                isResizable
-                headerWidth={200}
-                minColumnWidth={50}
-                maxColumnWidth={1000} />,
+            <ResizeBar isResizable headerWidth={200} minColumnWidth={50} maxColumnWidth={1000} />,
         );
         const resizeBar = component.find(resizeBarSelector);
         resizeBar.simulate('mousedown', { clientX: 120 });
@@ -59,11 +54,7 @@ describe('<ResizeBar />', () => {
     });
     it('should handle onMouseMove event and set newXposition to 800 if the new width is bigger than 1000', () => {
         const component = mount(
-            <ResizeBar
-                isResizable
-                headerWidth={200}
-                minColumnWidth={50}
-                maxColumnWidth={1000} />,
+            <ResizeBar isResizable headerWidth={200} minColumnWidth={50} maxColumnWidth={1000} />,
         );
         const resizeBar = component.find(resizeBarSelector);
         resizeBar.simulate('mousedown', { clientX: 100 });
@@ -73,11 +64,7 @@ describe('<ResizeBar />', () => {
     });
     it('should handle onMouseMove event and set newXposition to -150 if the new width is smaller than 50', () => {
         const component = mount(
-            <ResizeBar
-                isResizable
-                headerWidth={200}
-                minColumnWidth={50}
-                maxColumnWidth={1000} />,
+            <ResizeBar isResizable headerWidth={200} minColumnWidth={50} maxColumnWidth={1000} />,
         );
         const resizeBar = component.find(resizeBarSelector);
         resizeBar.simulate('mousedown', { clientX: 100 });
@@ -87,14 +74,12 @@ describe('<ResizeBar />', () => {
     });
     it('should set the right state when handle onMouseMove event', () => {
         const component = mount(
-            <ResizeBar
-                isResizable
-                headerWidth={200}
-                minColumnWidth={50}
-                maxColumnWidth={1000} />,
+            <ResizeBar isResizable headerWidth={200} minColumnWidth={50} maxColumnWidth={1000} />,
         );
         const resizeBar = component.find(resizeBarSelector);
-        expect(component.state()).toEqual({ resizeBarStyle: { willChange: 'transform' } });
+        expect(component.state()).toEqual({
+            resizeBarStyle: { willChange: 'transform' },
+        });
         resizeBar.simulate('mousedown', { clientX: 100 });
         eventMap.mousemove({ clientX: 150, preventDefault });
 
@@ -113,7 +98,8 @@ describe('<ResizeBar />', () => {
                 onResize={onResizeMock}
                 headerWidth={200}
                 minColumnWidth={50}
-                maxColumnWidth={1000} />,
+                maxColumnWidth={1000}
+            />,
         );
         const resizeBar = component.find(resizeBarSelector);
         resizeBar.simulate('mousedown', { clientX: 100 });
@@ -124,17 +110,15 @@ describe('<ResizeBar />', () => {
     });
     it('should set the right state when handle onMouseUp event', () => {
         const component = mount(
-            <ResizeBar
-                isResizable
-                headerWidth={200}
-                minColumnWidth={50}
-                maxColumnWidth={1000} />,
+            <ResizeBar isResizable headerWidth={200} minColumnWidth={50} maxColumnWidth={1000} />,
         );
         const resizeBar = component.find(resizeBarSelector);
         resizeBar.simulate('mousedown', { clientX: 100 });
         eventMap.mousemove({ clientX: 150, preventDefault });
         eventMap.mouseup({ preventDefault });
 
-        expect(component.state()).toEqual({ resizeBarStyle: { willChange: 'transform' } });
+        expect(component.state()).toEqual({
+            resizeBarStyle: { willChange: 'transform' },
+        });
     });
 });

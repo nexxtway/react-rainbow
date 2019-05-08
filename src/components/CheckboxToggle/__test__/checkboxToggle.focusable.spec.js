@@ -4,9 +4,7 @@ import CheckboxToggle from './../';
 
 describe('<CheckboxToggle/>', () => {
     it('should be focusable', () => {
-        const component = mount(
-            <CheckboxToggle label="Toggle label" />,
-        );
+        const component = mount(<CheckboxToggle label="Toggle label" />);
         expect(component).toBeFocusable();
     });
 });

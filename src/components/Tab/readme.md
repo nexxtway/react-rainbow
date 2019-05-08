@@ -95,7 +95,6 @@
 
     <TabExample />
 
-
 ##### Tab with icon
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
@@ -186,7 +185,6 @@
     }
 
     <TabExample />
-
 
 ##### Tab disabled
 

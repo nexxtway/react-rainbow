@@ -5,9 +5,7 @@ import CardExample from './../';
 
 describe('<CardExample/>', () => {
     it('should render the Card', () => {
-        const component = shallow(
-            <CardExample />,
-        );
+        const component = shallow(<CardExample />);
         expect(component.find(Card).exists()).toBe(true);
     });
 });

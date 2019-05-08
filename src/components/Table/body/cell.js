@@ -53,7 +53,8 @@ export default function Cell(props) {
                 columnChildren={columnChildren}
                 rowIndex={rowIndex}
                 rowsLength={rowsLength}
-                rowData={rowData} />
+                rowData={rowData}
+            />
         );
     }
 
@@ -65,7 +66,8 @@ export default function Cell(props) {
                 tableId={tableId}
                 onSelectRow={onSelectRow}
                 onDeselectRow={onDeselectRow}
-                inputType={inputType} />
+                inputType={inputType}
+            />
         );
     }
 
@@ -75,8 +77,8 @@ export default function Cell(props) {
                 className="rainbow-table_cell-container"
                 scope="row"
                 tabIndex={-1}
-                data-label={getHeaderLabel()}>
-
+                data-label={getHeaderLabel()}
+            >
                 <div className="rainbow-table_cell-content">
                     <CellValue component={component} value={value} />
                 </div>
@@ -89,8 +91,8 @@ export default function Cell(props) {
             className="rainbow-table_cell-container"
             role="gridcell"
             tabIndex={-1}
-            data-label={getHeaderLabel()}>
-
+            data-label={getHeaderLabel()}
+        >
             <div className="rainbow-table_cell-content">
                 <CellValue component={component} value={value} />
             </div>
@@ -99,10 +101,7 @@ export default function Cell(props) {
 }
 
 Cell.propTypes = {
-    header: PropTypes.oneOfType([
-        PropTypes.node,
-        PropTypes.string,
-    ]),
+    header: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
     component: PropTypes.func,
     value: PropTypes.any,
     isFirst: PropTypes.bool,
@@ -113,10 +112,7 @@ Cell.propTypes = {
     onSelectRow: PropTypes.func,
     onDeselectRow: PropTypes.func,
     inputType: PropTypes.string,
-    columnChildren: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.node),
-        PropTypes.object,
-    ]),
+    columnChildren: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
     rowsLength: PropTypes.number,
     rowIndex: PropTypes.number,
     rowData: PropTypes.object,

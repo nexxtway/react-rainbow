@@ -15,11 +15,11 @@
                 <MenuItem label="Menu Item Base" />
                 <MenuItem label="Menu Item Disabled" disabled />
                 <MenuDivider variant="space" />
-                <MenuItem 
+                <MenuItem
                     label="Menu Item with Icon"
                     icon={<FontAwesomeIcon icon={faAlignCenter} />}
                     iconPosition="left" />
-                <MenuItem 
+                <MenuItem
                     label="Menu Item with Icon"
                     icon={<FontAwesomeIcon icon={faAlignRight} />}
                     iconPosition="left" />

@@ -5,8 +5,8 @@ import Content from './content';
 import './styles.css';
 
 /**
-* Buttons are clickable items used to perform an action.
-*/
+ * Buttons are clickable items used to perform an action.
+ */
 export default class Button extends Component {
     constructor(props) {
         super(props);
@@ -23,17 +23,22 @@ export default class Button extends Component {
 
     getClassNames() {
         const { className, shaded, variant, isLoading } = this.props;
-        const isShaded = shaded && (
-            variant === 'neutral'
-            || variant === 'brand'
-            || variant === 'destructive'
-            || variant === 'success'
-        );
+        const isShaded =
+            shaded &&
+            (variant === 'neutral' ||
+                variant === 'brand' ||
+                variant === 'destructive' ||
+                variant === 'success');
 
-        return classnames('rainbow-button', this.getVariantClassNames(), {
-            'rainbow-button--shaded': isShaded,
-            'rainbow-button--loading': isLoading && variant !== 'base',
-        }, className);
+        return classnames(
+            'rainbow-button',
+            this.getVariantClassNames(),
+            {
+                'rainbow-button--shaded': isShaded,
+                'rainbow-button--loading': isLoading && variant !== 'base',
+            },
+            className,
+        );
     }
 
     isDisabled() {
@@ -42,25 +47,25 @@ export default class Button extends Component {
     }
 
     /**
-    * Sets focus on the element.
-    * @public
-    */
+     * Sets focus on the element.
+     * @public
+     */
     focus() {
         this.buttonRef.current.focus();
     }
 
     /**
-    * Sets click on the element.
-    * @public
-    */
+     * Sets click on the element.
+     * @public
+     */
     click() {
         this.buttonRef.current.click();
     }
 
     /**
-    * Sets blur on the element.
-    * @public
-    */
+     * Sets blur on the element.
+     * @public
+     */
     blur() {
         this.buttonRef.current.blur();
     }
@@ -106,8 +111,8 @@ export default class Button extends Component {
                 aria-pressed={ariaPressed}
                 onKeyDown={onKeyDown}
                 form={form}
-                ref={this.buttonRef} >
-
+                ref={this.buttonRef}
+            >
                 <Content variant={variant} label={label} isLoading={isLoading}>
                     {children}
                 </Content>
@@ -118,18 +123,13 @@ export default class Button extends Component {
 
 Button.propTypes = {
     /** The text to be displayed inside the button. */
-    label: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The content of the button, used to render icon or text elements inside the button.
-    * Children take precedence over label. */
-    children: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.node),
-        PropTypes.object,
-    ]),
+     * Children take precedence over label. */
+    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
     /** The variant changes the appearance of the button.
-    * Accepted variants include base, neutral, brand, outline-brand, destructive,
-    * success, inverse and border-inverse. */
+     * Accepted variants include base, neutral, brand, outline-brand, destructive,
+     * success, inverse and border-inverse. */
     variant: PropTypes.oneOf([
         'base',
         'neutral',
@@ -141,22 +141,17 @@ Button.propTypes = {
         'border-inverse',
     ]),
     /** Specifies true when the button has a shadow around it.
-    * Only neutral, brand, destructive and success variant can be shaded. */
+     * Only neutral, brand, destructive and success variant can be shaded. */
     shaded: PropTypes.bool,
     /** Displays tooltip text when the mouse moves over the element. */
     title: PropTypes.string,
     /** Specifies the type of button. Valid values are button, reset, and submit. */
-    type: PropTypes.oneOf([
-        'button', 'submit', 'reset',
-    ]),
+    type: PropTypes.oneOf(['button', 'submit', 'reset']),
     /** Specifies whether this button should be displayed in a disabled state.
-    * Disabled buttons can't be clicked. */
+     * Disabled buttons can't be clicked. */
     disabled: PropTypes.bool,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
-    tabIndex: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.string,
-    ]),
+    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** The action triggered when the element is clicked. */
     onClick: PropTypes.func,
     /** The action triggered when a keyboard key is pressed. */
@@ -168,10 +163,10 @@ Button.propTypes = {
     /** Indicates that the element has a popup context menu or sub-level menu. */
     ariaHaspopup: PropTypes.bool,
     /** A space-separated list of element IDs that
-    * this button controls the contents or presence of. */
+     * this button controls the contents or presence of. */
     ariaControls: PropTypes.string,
     /** Indicates whether an element the button controls is expanded or collapsed.
-    * Valid values are 'true' or 'false'. */
+     * Valid values are 'true' or 'false'. */
     ariaExpanded: PropTypes.bool,
     /** Indicates that the element has been pressed. */
     ariaPressed: PropTypes.bool,

@@ -17,44 +17,36 @@ React Rainbow is a collection of components that will reliably help you build yo
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![npm version](https://badge.fury.io/js/react-rainbow-components.svg)](https://badge.fury.io/js/react-rainbow-components)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/react-rainbow-components/community?source=orgpage)
-
+[![Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io/)
 
 ## Installation
 
-React Rainbow components  is available as an [npm package](https://www.npmjs.com/package/react-rainbow-components).
+React Rainbow components is available as an [npm package](https://www.npmjs.com/package/react-rainbow-components).
 
 ```bash
 $ yarn add react-rainbow-components
 ```
- ##### or
+
+##### or
 
 ```bash
 $ npm install react-rainbow-components --save
 ```
 
-
 ## Usage
 
 Here is a quick example to get you started, **it's all you need**:
+
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Button from 'react-rainbow-components/components/Button';
 
 function App() {
-    return (
-        <Button
-            label="Hello World!"
-            variant="brand"
-            onClick={() => alert('Hello World!')}
-        />
-    );
+    return <Button label="Hello World!" variant="brand" onClick={() => alert('Hello World!')} />;
 }
 
-ReactDOM.render(
-    <App />,
-    document.getElementById('container')
-);
+ReactDOM.render(<App />, document.getElementById('container'));
 ```
 
 Yes, it's really all you need to get started as you can see in this live and interactive demo:
@@ -62,17 +54,17 @@ Yes, it's really all you need to get started as you can see in this live and int
 [![Edit Button](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/24p8n0pnz0?from-embed) [![Join the chat at https://gitter.im/react-rainbow/community](https://badges.gitter.im/react-rainbow/community.svg)](https://gitter.im/react-rainbow-components/community?source=orgpage)
 
 ## Running locally
+
 1. git clone https://github.com/90milesbridge/react-rainbow.git
 2. cd react-rainbow
 3. yarn install
 4. yarn start
 5. navigate to http://localhost:6060/
 
-
 ## Contributing
+
 We are excited that you are interested in contributing to this project!
 
 You can help us improve React Rainbow Components, the first step to begin collaborate is to create an issue before submitting a pull request, it's always good to file an issue, so we can discuss the details of your approach or suggestion.
 
 [See more details about how to collaborate?](https://github.com/90milesbridge/react-rainbow/blob/master/CONTRIBUTING.md)
-

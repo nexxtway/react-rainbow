@@ -60,19 +60,16 @@ class Item extends Component {
     }
 
     render() {
-        const {
-            style,
-            label,
-            title,
-            variant,
-            icon,
-            iconPosition,
-            disabled,
-        } = this.props;
+        const { style, label, title, variant, icon, iconPosition, disabled } = this.props;
 
         if (variant === 'header') {
             return (
-                <li className={this.getHeaderClassNames()} style={style} title={title} role="separator">
+                <li
+                    className={this.getHeaderClassNames()}
+                    style={style}
+                    title={title}
+                    role="separator"
+                >
                     <span className="rainbow-menu-item_header-label">{label}</span>
                 </li>
             );
@@ -87,20 +84,21 @@ class Item extends Component {
                 style={style}
                 role="presentation"
                 onClick={this.handleClick}
-                onMouseEnter={this.handleHover}>
-
+                onMouseEnter={this.handleHover}
+            >
                 <a
                     href="javascript:void(0);"
                     role="menuitem"
                     aria-disabled={disabled}
-                    ref={this.itemRef}>
-
+                    ref={this.itemRef}
+                >
                     <span className="rainbow-menu-item_icon-container" title={title}>
                         <Icon
                             data-id="menu-item-left-icon"
                             icon={icon}
                             isVisible={hasLeftIcon}
-                            position={iconPosition} />
+                            position={iconPosition}
+                        />
 
                         {label}
                     </span>
@@ -108,8 +106,8 @@ class Item extends Component {
                         data-id="menu-item-right-icon"
                         icon={icon}
                         isVisible={hasRightIcon}
-                        position={iconPosition} />
-
+                        position={iconPosition}
+                    />
                 </a>
             </li>
         );
@@ -117,33 +115,23 @@ class Item extends Component {
 }
 
 /**
-* Represents a list item in a menu.
-*/
+ * Represents a list item in a menu.
+ */
 export default function MenuItem(props) {
-    return (
-        <Consumer>
-            {values => <Item {...props} {...values} />}
-        </Consumer>
-    );
+    return <Consumer>{values => <Item {...props} {...values} />}</Consumer>;
 }
 
 MenuItem.propTypes = {
     /** Text of the menu item. */
-    label: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
     /** The variant changes the type of menu item. Accepted variants include default and header.
-    * This value defaults to default. */
-    variant: PropTypes.oneOf([
-        'default', 'header',
-    ]),
+     * This value defaults to default. */
+    variant: PropTypes.oneOf(['default', 'header']),
     /** The icon to show if it is passed. It must be a svg icon or a font icon. */
     icon: PropTypes.node,
     /** Describes the position of the icon with respect to body. Options include left and right.
-    * This value defaults to left. */
-    iconPosition: PropTypes.oneOf([
-        'left', 'right',
-    ]),
+     * This value defaults to left. */
+    iconPosition: PropTypes.oneOf(['left', 'right']),
     /** If true the menu item is not actionable and is shown as disabled. */
     disabled: PropTypes.bool,
     /** The action triggered when the menu item is clicked. */

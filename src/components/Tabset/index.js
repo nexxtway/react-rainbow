@@ -28,9 +28,9 @@ const RIGHT_SIDE = 1;
 const LEFT_SIDE = -1;
 
 /**
-* Tabs make it easy to explore and switch between different views.
-* @category Layout
-*/
+ * Tabs make it easy to explore and switch between different views.
+ * @category Layout
+ */
 export default class Tabset extends Component {
     constructor(props) {
         super(props);
@@ -101,11 +101,7 @@ export default class Tabset extends Component {
     updateButtonsVisibility() {
         const { tabsetChildren } = this.state;
         const tabset = this.tabsetRef.current;
-        const {
-            scrollWidth,
-            scrollLeft,
-            offsetWidth: tabsetWidth,
-        } = tabset;
+        const { scrollWidth, scrollLeft, offsetWidth: tabsetWidth } = tabset;
         const childrenTotalWidth = getChildrenTotalWidth(tabsetChildren);
         const showButtons = childrenTotalWidth > tabsetWidth;
         this.screenWidth = window.innerWidth;
@@ -199,26 +195,30 @@ export default class Tabset extends Component {
     scrollToSelectedTab(name) {
         const { tabsetChildren } = this.state;
         const tabset = this.tabsetRef.current;
-        const {
-            scrollLeft,
-            offsetWidth: tabsetWidth,
-        } = tabset;
+        const { scrollLeft, offsetWidth: tabsetWidth } = tabset;
         const tabIndex = getTabIndexFromName(tabsetChildren, name);
         const isFirstTab = tabIndex === 0;
 
         if (isFirstTab) {
             this.tabsetRef.current.scrollTo(0, 0);
         } else {
-            const totalWidthUpToCurrentTab = getChildrenTotalWidthUpToClickedTab(tabsetChildren, tabIndex + 1);
-            const totalWidthUpToPrevTab = getChildrenTotalWidthUpToClickedTab(tabsetChildren, tabIndex);
+            const totalWidthUpToCurrentTab = getChildrenTotalWidthUpToClickedTab(
+                tabsetChildren,
+                tabIndex + 1,
+            );
+            const totalWidthUpToPrevTab = getChildrenTotalWidthUpToClickedTab(
+                tabsetChildren,
+                tabIndex,
+            );
             const tabsetWidthUpToCurrentTab = tabsetWidth + scrollLeft;
-            const isCurrentTabOutOfViewOnRightSide = totalWidthUpToCurrentTab > tabsetWidthUpToCurrentTab - 20;
+            const isCurrentTabOutOfViewOnRightSide =
+                totalWidthUpToCurrentTab > tabsetWidthUpToCurrentTab - 20;
             const isCurrentTabOutOfViewOnLeftSide = scrollLeft > totalWidthUpToPrevTab;
             if (isCurrentTabOutOfViewOnLeftSide) {
                 this.tabsetRef.current.scrollTo(totalWidthUpToPrevTab, 0);
             }
             if (isCurrentTabOutOfViewOnRightSide) {
-                const moveScroll = (totalWidthUpToCurrentTab - tabsetWidthUpToCurrentTab) + 20;
+                const moveScroll = totalWidthUpToCurrentTab - tabsetWidthUpToCurrentTab + 20;
                 this.tabsetRef.current.scrollTo(scrollLeft + moveScroll, 0);
             }
         }
@@ -231,13 +231,7 @@ export default class Tabset extends Component {
     }
 
     render() {
-        const {
-            activeTabName,
-            fullWidth,
-            children,
-            style,
-            id,
-        } = this.props;
+        const { activeTabName, fullWidth, children, style, id } = this.props;
         const { areButtonsVisible } = this.state;
         const { screenWidth } = this;
         const showButtons = areButtonsVisible || screenWidth < 600;
@@ -259,12 +253,9 @@ export default class Tabset extends Component {
                         role="tablist"
                         onKeyDown={this.handleKeyPressed}
                         onScroll={this.updateButtonsVisibility}
-                        ref={this.tabsetRef}>
-
-                        <Provider value={context}>
-                            {children}
-                        </Provider>
-
+                        ref={this.tabsetRef}
+                    >
+                        <Provider value={context}>{children}</Provider>
                     </ul>
                     <RenderIf isTrue={showButtons}>
                         <ButtonGroup className="rainbow-tabset_button-group">
@@ -274,14 +265,16 @@ export default class Tabset extends Component {
                                 disabled={this.isLeftButtonDisabled()}
                                 onClick={this.handleLeftButtonClick}
                                 assistiveText="previus tab button"
-                                variant="border-filled" />
+                                variant="border-filled"
+                            />
                             <ButtonIcon
                                 className="rainbow-tabset_button-icon"
                                 icon={<RightThinChevron />}
                                 disabled={this.isRightButtonDisabled()}
                                 onClick={this.handleRightButtonClick}
                                 assistiveText="next tab button"
-                                variant="border-filled" />
+                                variant="border-filled"
+                            />
                         </ButtonGroup>
                     </RenderIf>
                 </div>
@@ -297,7 +290,7 @@ Tabset.propTypes = {
      * The event params include the `name` of the selected item. */
     onSelect: PropTypes.func,
     /** If true, the tabs will grow to use all the available space.
-    * This value defaults to false. */
+     * This value defaults to false. */
     fullWidth: PropTypes.bool,
     /** The id of the outer element. */
     id: PropTypes.string,
@@ -306,9 +299,9 @@ Tabset.propTypes = {
     /** An object with custom style applied for the outer element. */
     style: PropTypes.object,
     /**
-    * This prop that should not be visible in the documentation.
-    * @ignore
-    */
+     * This prop that should not be visible in the documentation.
+     * @ignore
+     */
     children: PropTypes.node,
 };
 

@@ -13,11 +13,13 @@ class PageAccordionSection {
     }
 
     /**
-    * Clicks the button icon element.
-    * @method
-    */
+     * Clicks the button icon element.
+     * @method
+     */
     clickButtonIcon() {
-        $(this.rootElement).$('.rainbow-accordion-section_summary > button').click();
+        $(this.rootElement)
+            .$('.rainbow-accordion-section_summary > button')
+            .click();
     }
 
     /**
@@ -26,16 +28,20 @@ class PageAccordionSection {
      * @returns {bool}
      */
     hasFocusButtonIcon() {
-        return $(this.rootElement).$('.rainbow-accordion-section_summary > button').isFocused();
+        return $(this.rootElement)
+            .$('.rainbow-accordion-section_summary > button')
+            .isFocused();
     }
 
     /**
-    * Returns true when the accordion section is expanded, false otherwise.
-    * @method
-    * @returns {bool}
-    */
+     * Returns true when the accordion section is expanded, false otherwise.
+     * @method
+     * @returns {bool}
+     */
     isExpanded() {
-        return $(this.rootElement).$('.rainbow-accordion-section_content').isDisplayed();
+        return $(this.rootElement)
+            .$('.rainbow-accordion-section_content')
+            .isDisplayed();
     }
 }
 

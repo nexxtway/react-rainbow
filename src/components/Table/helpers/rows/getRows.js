@@ -11,14 +11,9 @@ function getKey(row, keyField) {
 }
 
 export default function getRows(params = {}) {
-    const {
-        rows = [],
-        maxRowSelection,
-        keyField,
-        selectedRowsKeys,
-    } = params;
+    const { rows = [], maxRowSelection, keyField, selectedRowsKeys } = params;
     const inputType = getRowSelectionInputType(maxRowSelection);
-    return rows.map((row) => {
+    return rows.map(row => {
         const key = getKey(row, keyField);
         return {
             key,

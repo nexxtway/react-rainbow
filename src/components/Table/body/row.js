@@ -13,30 +13,20 @@ function isFirstAndNoSelectable(index, type) {
 }
 
 export default function Row(props) {
-    const {
-        rowData,
-        columns,
-        isSelected,
-        ...rest
-    } = props;
+    const { rowData, columns, isSelected, ...rest } = props;
 
-    const getClassName = () => classnames('rainbow-table_body-row', {
-        'rainbow-table_body-row-selected': isSelected,
-    });
+    const getClassName = () =>
+        classnames('rainbow-table_body-row', {
+            'rainbow-table_body-row-selected': isSelected,
+        });
 
     let isFirstColumn;
     const cells = columns.map((column, index) => {
-        const {
-            header,
-            component,
-            field,
-            type: columnType,
-            children,
-        } = column;
+        const { header, component, field, type: columnType, children } = column;
         const key = `cell-${index}`;
         const value = rowData[field] || null;
-        isFirstColumn = !isFirstColumn
-            && (isFirstAndNoSelectable(index, columnType) || index === 1);
+        isFirstColumn =
+            !isFirstColumn && (isFirstAndNoSelectable(index, columnType) || index === 1);
 
         return (
             <Cell
@@ -49,7 +39,8 @@ export default function Row(props) {
                 columnType={columnType}
                 isFirst={isFirstColumn}
                 isSelected={isSelected}
-                columnChildren={children} />
+                columnChildren={children}
+            />
         );
     });
 

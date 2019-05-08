@@ -8,9 +8,7 @@ import SideNavigation from './../sideNavigation';
 
 describe('<Side Navigation in AdminExample/>', () => {
     it('should render the SideNavigation', () => {
-        const component = shallow(
-            <SideNavigation />,
-        );
+        const component = shallow(<SideNavigation />);
         expect(component.find(VerticalItem).exists()).toBe(true);
         expect(component.find(VerticalNavigation).exists()).toBe(true);
         expect(component.find(VerticalSection).exists()).toBe(true);

@@ -23,16 +23,12 @@ const carouselItems = [
 
 describe('<Indicators />', () => {
     it('should render the right amount of indicators', () => {
-        const component = mount(
-            <Indicators carouselChildren={carouselItems} />,
-        );
+        const component = mount(<Indicators carouselChildren={carouselItems} />);
 
         expect(component.find('li').length).toBe(2);
     });
     it('should set the role as tablist in ul element', () => {
-        const component = mount(
-            <Indicators carouselChildren={carouselItems} />,
-        );
+        const component = mount(<Indicators carouselChildren={carouselItems} />);
 
         expect(component.find('ul').prop('role')).toBe('tablist');
     });

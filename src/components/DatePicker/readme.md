@@ -8,7 +8,6 @@
             onChange={ value => setState({ date: value }) } />
     </div>
 
-
 ##### DatePicker with date constraints:
 
     initialState = { date: new Date() };
@@ -20,7 +19,6 @@
             label="DatePicker Label"
             onChange={ value => setState({ date: value }) } />
     </div>
-
 
 ##### DatePicker with different date formats:
 
@@ -48,7 +46,6 @@
             className="rainbow-m-horizontal_small" />
     </div>
 
-
 ##### DatePicker required:
 
     initialState = { date: new Date() };
@@ -59,7 +56,6 @@
             label="DatePicker Label"
             onChange={ value => setState({ date: value }) } />
     </div>
-
 
 ##### DatePicker with error:
 
@@ -74,7 +70,6 @@
             onChange={ value => setState({ date: value }) } />
     </div>
 
-
 ##### DatePicker disabled:
 
     <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
@@ -83,7 +78,6 @@
             value={Date.now()}
             label="DatePicker Label" />
     </div>
-
 
 ##### DatePicker readOnly:
 

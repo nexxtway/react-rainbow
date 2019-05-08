@@ -10,9 +10,7 @@ export default function Header({ icon, title, actions }) {
             <div className="rainbow-card_header-container">
                 <header className="rainbow-card_header">
                     <RenderIf isTrue={!!icon}>
-                        <div className="rainbow-card_header-icon">
-                            {icon}
-                        </div>
+                        <div className="rainbow-card_header-icon">{icon}</div>
                     </RenderIf>
                     <HeaderTitle title={title} />
                 </header>
@@ -25,9 +23,7 @@ export default function Header({ icon, title, actions }) {
 }
 
 Header.propTypes = {
-    title: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     icon: PropTypes.node,
     actions: PropTypes.node,
 };

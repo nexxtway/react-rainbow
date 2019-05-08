@@ -4,12 +4,7 @@ import getExpectedFlexibleColumnWidth from './getExpectedFlexibleColumnWidth';
 import getColumnWidthFromDef from './getColumnWidthFromDef';
 
 export default function getUpdatedColumns(params) {
-    const {
-        columns,
-        domTableWidth,
-        minColumnWidth,
-        maxColumnWidth,
-    } = params;
+    const { columns, domTableWidth, minColumnWidth, maxColumnWidth } = params;
     const widthsMeta = getTotalWidthsMetadata({
         columns,
         minColumnWidth,

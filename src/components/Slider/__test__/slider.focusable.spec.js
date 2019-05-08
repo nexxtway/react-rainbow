@@ -4,9 +4,7 @@ import Slider from './../';
 
 describe('<Slider/>', () => {
     it('should be focusable', () => {
-        const component = mount(
-            <Slider label="Slider Label" />,
-        );
+        const component = mount(<Slider label="Slider Label" />);
         expect(component).toBeFocusable();
     });
 });

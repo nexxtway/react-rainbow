@@ -40,10 +40,9 @@ export default function getUpdatedRowsWhenDeselect(params = {}) {
         return row;
     });
 
-    return rowsWithSelection.map((row) => {
-        const maxSelectionReached = getCurrentSelectionLength(
-                selectedRowsKeys,
-            ) <= maxRowSelection - 1;
+    return rowsWithSelection.map(row => {
+        const maxSelectionReached =
+            getCurrentSelectionLength(selectedRowsKeys) <= maxRowSelection - 1;
 
         if (maxSelectionReached && !isSelectedRow(selectedRowsKeys, row.key)) {
             return {

@@ -108,9 +108,7 @@ class DatePicker extends Component {
             onBlur,
             id,
         } = this.props;
-        const {
-            isOpen,
-        } = this.state;
+        const { isOpen } = this.state;
 
         const formattedDate = formatDate(value, formatStyle);
 
@@ -136,9 +134,14 @@ class DatePicker extends Component {
                     readOnly={readOnly}
                     disabled={disabled}
                     tabIndex={tabIndex}
-                    autoComplete="off" />
+                    autoComplete="off"
+                />
 
-                <Modal className="rainbow-date-picker_modal" isOpen={isOpen} onRequestClose={this.closeModal}>
+                <Modal
+                    className="rainbow-date-picker_modal"
+                    isOpen={isOpen}
+                    onRequestClose={this.closeModal}
+                >
                     <header className="rainbow-date-picker_calendar-details-header">
                         <h2 className="rainbow-date-picker_calendar-date--selected">
                             {formattedDate}
@@ -150,8 +153,8 @@ class DatePicker extends Component {
                         maxDate={maxDate}
                         formatStyle={formatStyle}
                         onChange={this.handleChange}
-                        className="rainbow-date-picker_calendar-container" />
-
+                        className="rainbow-date-picker_calendar-container"
+                    />
                 </Modal>
             </div>
         );
@@ -160,10 +163,7 @@ class DatePicker extends Component {
 
 DatePicker.propTypes = {
     /** Sets the date for the DatePicker programmatically. */
-    value: PropTypes.oneOfType([
-        PropTypes.instanceOf(Date),
-        PropTypes.string,
-    ]),
+    value: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
     /** The ending of a range of valid dates. The range includes the endDate.
      * The default value is current date + 100 years. */
     maxDate: PropTypes.instanceOf(Date),
@@ -179,35 +179,26 @@ DatePicker.propTypes = {
      * to prompt the user for a valid entry. */
     placeholder: PropTypes.string,
     /** Text label for the DatePicker. */
-    label: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
     /** A boolean to hide the DatePicker label. */
     hideLabel: PropTypes.bool,
     /** Specifies that the DatePicker field must be filled out before submitting the form.
-    * This value defaults to false. */
+     * This value defaults to false. */
     required: PropTypes.bool,
     /** The name of the DatePicker. */
     name: PropTypes.string,
     /** Shows the help message below the DatePicker. */
-    bottomHelpText: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies that the DatePicker text will be centered. This value defaults to false. */
     isCentered: PropTypes.bool,
     /** Specifies that the DatePicker must be filled out before submitting the form. */
-    error: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies that the DatePicker is read-only. This value defaults to false. */
     readOnly: PropTypes.bool,
     /** Specifies that the DatePicker element should be disabled. This value defaults to false. */
     disabled: PropTypes.bool,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
-    tabIndex: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.string,
-    ]),
+    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** The action triggered when the element is clicked. */
     onClick: PropTypes.func,
     /** The action triggered when the element receives focus. */

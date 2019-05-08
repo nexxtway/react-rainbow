@@ -26,7 +26,9 @@ class PageMenuItem {
      * @returns {bool}
      */
     hasFocus() {
-        return $(this.rootElement).$('[role="menuitem"]').isFocused();
+        return $(this.rootElement)
+            .$('[role="menuitem"]')
+            .isFocused();
     }
 
     /**

@@ -5,9 +5,7 @@ import ButtonIconExample from './../';
 
 describe('<ButtonIconExample/>', () => {
     it('should render the ButtonIcon', () => {
-        const component = shallow(
-            <ButtonIconExample />,
-        );
+        const component = shallow(<ButtonIconExample />);
         expect(component.find(ButtonIcon).exists()).toBe(true);
     });
 });

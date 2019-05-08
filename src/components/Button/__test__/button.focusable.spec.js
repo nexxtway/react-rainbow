@@ -4,9 +4,7 @@ import Button from '../';
 
 describe('<Button />', () => {
     it('should be focusable', () => {
-        const component = mount(
-            <Button label="button label" />,
-        );
+        const component = mount(<Button label="button label" />);
         expect(component).toBeFocusable();
     });
 });

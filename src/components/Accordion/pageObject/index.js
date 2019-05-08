@@ -6,11 +6,11 @@ const PageAccordionSection = require('../../AccordionSection/pageObject');
  * @tutorial accordion
  */
 class PageAccordion {
-   /**
-    * Create a new Accordion page object.
-    * @constructor
-    * @param {string} rootElement - The selector of the Accordion root element.
-    */
+    /**
+     * Create a new Accordion page object.
+     * @constructor
+     * @param {string} rootElement - The selector of the Accordion root element.
+     */
     constructor(rootElement) {
         this.rootElement = rootElement;
     }
@@ -23,7 +23,10 @@ class PageAccordion {
     getItem(itemPosition) {
         const items = $(this.rootElement).$$('.rainbow-accordion-section_container');
         if (items[itemPosition]) {
-            return new PageAccordionSection(`${this.rootElement} .rainbow-accordion-section_container:nth-child(${itemPosition + 1})`);
+            return new PageAccordionSection(
+                `${this.rootElement} .rainbow-accordion-section_container:nth-child(${itemPosition +
+                    1})`,
+            );
         }
         return null;
     }

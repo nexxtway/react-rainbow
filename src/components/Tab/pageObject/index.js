@@ -17,7 +17,9 @@ class PageTab {
      * @method
      */
     click() {
-        $(this.rootElement).$('a').click();
+        $(this.rootElement)
+            .$('a')
+            .click();
     }
 
     /**
@@ -26,7 +28,9 @@ class PageTab {
      * @returns {bool}
      */
     hasFocus() {
-        return $(this.rootElement).$('a').isFocused();
+        return $(this.rootElement)
+            .$('a')
+            .isFocused();
     }
 
     /**
@@ -35,7 +39,11 @@ class PageTab {
      * @returns {bool}
      */
     isSelected() {
-        return $(this.rootElement).$('a').getAttribute('class') === 'rainbow-tab_anchor rainbow-tab--active';
+        return (
+            $(this.rootElement)
+                .$('a')
+                .getAttribute('class') === 'rainbow-tab_anchor rainbow-tab--active'
+        );
     }
 
     /**
@@ -44,7 +52,9 @@ class PageTab {
      * @returns {bool}
      */
     isVisibleWithinViewport() {
-        return $(this.rootElement).$('a').isDisplayedInViewport();
+        return $(this.rootElement)
+            .$('a')
+            .isDisplayedInViewport();
     }
 }
 

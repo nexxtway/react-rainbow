@@ -35,8 +35,10 @@ class PageLookupMenuItem {
      * @returns {bool}
      */
     isActive() {
-        return $(this.rootElement)
-            .getAttribute('class') === 'rainbow-lookup_menu-item rainbow-lookup_menu-item--active';
+        return (
+            $(this.rootElement).getAttribute('class') ===
+            'rainbow-lookup_menu-item rainbow-lookup_menu-item--active'
+        );
     }
 
     /**

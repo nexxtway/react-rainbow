@@ -5,8 +5,8 @@ import { Provider } from './context';
 import './styles.css';
 
 /**
-* A progress indicator component communicates to the user the progress of a particular process.
-*/
+ * A progress indicator component communicates to the user the progress of a particular process.
+ */
 export default class ProgressIndicator extends Component {
     constructor(props) {
         super(props);
@@ -41,12 +41,7 @@ export default class ProgressIndicator extends Component {
     }
 
     render() {
-        const {
-            style,
-            children,
-            currentStepName,
-            onClick,
-        } = this.props;
+        const { style, children, currentStepName, onClick } = this.props;
         const context = {
             currentStepName,
             privateRegisterStep: this.registerStep,
@@ -55,13 +50,9 @@ export default class ProgressIndicator extends Component {
         };
 
         return (
-            <div
-                className={this.getContainerClassNames()}
-                style={style}>
+            <div className={this.getContainerClassNames()} style={style}>
                 <ol className="rainbow-progress-indicator_list">
-                    <Provider value={context}>
-                        { children }
-                    </Provider>
+                    <Provider value={context}>{children}</Provider>
                 </ol>
                 <div className="rainbow-progress-indicator_bar" />
             </div>

@@ -1,7 +1,5 @@
 function getSelectedRowsKeys(selectedRowsKeys) {
-    return Object.keys(selectedRowsKeys).filter(
-        key => selectedRowsKeys[key],
-    );
+    return Object.keys(selectedRowsKeys).filter(key => selectedRowsKeys[key]);
 }
 
 export default function getCurrentSelectionLength(selectedRowsKeys) {

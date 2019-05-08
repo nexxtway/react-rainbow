@@ -8,10 +8,7 @@ import './styles.css';
 function getData(data = [], isLoading = false) {
     let newData;
     if (isLoading) {
-        newData = [
-            ...data,
-            { type: 'LOADING' },
-        ];
+        newData = [...data, { type: 'LOADING' }];
     } else {
         newData = data;
     }
@@ -45,7 +42,8 @@ export default class Body extends PureComponent {
                     columnsLength={columnsLength}
                     emptyIcon={emptyIcon}
                     emptyTitle={emptyTitle}
-                    emptyDescription={emptyDescription} />
+                    emptyDescription={emptyDescription}
+                />
             );
         }
 
@@ -65,16 +63,11 @@ export default class Body extends PureComponent {
                     tableId={tableId}
                     rowIndex={index}
                     rowsLength={rowsLength}
-                    onSelectRow={(event, isMultiple) => onSelectRow(
-                            event,
-                            isMultiple,
-                            rowKeyValue,
-                        )}
-                    onDeselectRow={(event, isMultiple) => onDeselectRow(
-                            event,
-                            isMultiple,
-                            rowKeyValue,
-                        )} />
+                    onSelectRow={(event, isMultiple) => onSelectRow(event, isMultiple, rowKeyValue)}
+                    onDeselectRow={(event, isMultiple) =>
+                        onDeselectRow(event, isMultiple, rowKeyValue)
+                    }
+                />
             );
         });
     }
@@ -88,12 +81,8 @@ Body.propTypes = {
     onSelectRow: PropTypes.func,
     onDeselectRow: PropTypes.func,
     emptyIcon: PropTypes.node,
-    emptyTitle: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
-    emptyDescription: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    emptyTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    emptyDescription: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 };
 
 Body.defaultProps = {

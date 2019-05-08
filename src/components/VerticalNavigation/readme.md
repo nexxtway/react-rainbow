@@ -41,7 +41,6 @@
         </div>
     </div>
 
-
 ##### compact vertical navigation with href
 
     const verticalNavigationContainerStyles = {
@@ -84,7 +83,6 @@
             <CompactVerticalNavigation />
         </div>
     </div>
-
 
 ##### vertical navigation with headers
 
@@ -131,7 +129,6 @@
         </div>
     </div>
 
-
 ##### vertical navigation with icons
 
     const verticalNavigationContainerStyles = {
@@ -177,7 +174,6 @@
             <VerticalNavigationWithIcons />
         </div>
     </div>
-
 
 ##### vertical navigation with header and icons
 
@@ -227,7 +223,6 @@
             <VerticalNavigationWithIcons />
         </div>
     </div>
-
 
 ##### vertical navigation expandable
 
@@ -292,7 +287,6 @@
             <ShadedVerticalNavigation />
         </div>
     </div>
-
 
 ##### vertical navigation with notifications
 

@@ -9,7 +9,6 @@
             </div>
     </div>
 
-
 ##### full screen loading using spinner - brand - medium
 
      const containerStyles = {
@@ -20,7 +19,6 @@
         <Spinner variant="brand" size="medium" />
         <h1 className="rainbow-color_brand rainbow-font-size-text_medium rainbow-p-top_xx-large rainbow-m-top_xx-large rainbow-m-bottom_large">Loading…</h1>
     </div>
-
 
 ##### lazy loading using spinner - neutral - small
 
@@ -53,7 +51,6 @@
                 <div className="rainbow-p-vertical_xx-large" />
         </Card>
     </div>
-
 
 ##### full screen loading using spinner - inverse - medium
 

@@ -11,13 +11,15 @@ export default function AvatarExample() {
                 src="assets/images/user4.jpg"
                 assistiveText="Jose Leandro"
                 title="Jose Leandro"
-                size="large" />
+                size="large"
+            />
 
             <Avatar
                 className="rainbow-m-horizontal_medium"
                 assistiveText="Jose Leandro"
                 title="Jose Leandro"
-                icon={<FontAwesomeIcon icon={faUser} />} />
+                icon={<FontAwesomeIcon icon={faUser} />}
+            />
 
             <Avatar
                 className="rainbow-m-horizontal_medium"
@@ -25,7 +27,8 @@ export default function AvatarExample() {
                 assistiveText="Jane Doe"
                 initials="JD"
                 title="Jane Doe"
-                size="small" />
+                size="small"
+            />
 
             <Avatar
                 className="rainbow-m-horizontal_medium"
@@ -33,8 +36,8 @@ export default function AvatarExample() {
                 initials="JD"
                 title="Jane Doe"
                 initialsVariant="inverse"
-                size="x-small" />
-
+                size="x-small"
+            />
         </div>
     );
 }

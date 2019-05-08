@@ -13,7 +13,7 @@ describe('<RenderIf/>', () => {
     });
     it('should render the children when isTrue is true', () => {
         const component = mount(
-            <RenderIf isTrue >
+            <RenderIf isTrue>
                 <svg />
             </RenderIf>,
         );

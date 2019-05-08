@@ -7,13 +7,9 @@ export default function ChipContent(props) {
     return (
         <span className="rainbow-lookup_chip-content">
             <RenderIf isTrue={!!icon}>
-                <span className="rainbow-lookup_chip-content_icon">
-                    {icon}
-                </span>
+                <span className="rainbow-lookup_chip-content_icon">{icon}</span>
             </RenderIf>
-            <span className="rainbow-lookup_chip-content_label">
-                {label}
-            </span>
+            <span className="rainbow-lookup_chip-content_label">{label}</span>
         </span>
     );
 }

@@ -24,15 +24,9 @@ Dataset.propTypes = {
     /** The label for the dataset which appears in the legend and tooltips. */
     title: PropTypes.string,
     /** The fill color under the line. */
-    backgroundColor: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.arrayOf(PropTypes.string),
-    ]),
+    backgroundColor: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
     /** The color of the line, if left undefined, the backgroundColor is used */
-    borderColor: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.arrayOf(PropTypes.string),
-    ]),
+    borderColor: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
     /** The ID of the group to which this dataset belongs to
      * (when stacked, each group will be a separate stack) */
     stack: PropTypes.string,

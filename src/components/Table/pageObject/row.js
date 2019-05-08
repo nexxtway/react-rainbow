@@ -21,7 +21,9 @@ class PageTableRow {
      */
     selectRow() {
         if (!this.isRowSelected()) {
-            $(this.rootElement).$(CHECKBOX_LABEL_SELECTOR).click();
+            $(this.rootElement)
+                .$(CHECKBOX_LABEL_SELECTOR)
+                .click();
         }
     }
 
@@ -31,7 +33,9 @@ class PageTableRow {
      */
     deselectRow() {
         if (this.isRowSelected()) {
-            $(this.rootElement).$(CHECKBOX_LABEL_SELECTOR).click();
+            $(this.rootElement)
+                .$(CHECKBOX_LABEL_SELECTOR)
+                .click();
         }
     }
 
@@ -41,7 +45,9 @@ class PageTableRow {
      * @returns {bool}
      */
     isRowSelected() {
-        return $(this.rootElement).$(CHECKBOX_INPUT_SELECTOR).isSelected();
+        return $(this.rootElement)
+            .$(CHECKBOX_INPUT_SELECTOR)
+            .isSelected();
     }
 
     /**
@@ -50,7 +56,9 @@ class PageTableRow {
      * @returns {bool}
      */
     isRowSelectionDisabled() {
-        return !$(this.rootElement).$(CHECKBOX_INPUT_SELECTOR).isEnabled();
+        return !$(this.rootElement)
+            .$(CHECKBOX_INPUT_SELECTOR)
+            .isEnabled();
     }
 }
 

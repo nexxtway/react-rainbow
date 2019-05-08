@@ -54,12 +54,7 @@ export default class ResizeBar extends Component {
     }
 
     render() {
-        const {
-            minColumnWidth,
-            maxColumnWidth,
-            isResizable,
-            ariaLabel,
-        } = this.props;
+        const { minColumnWidth, maxColumnWidth, isResizable, ariaLabel } = this.props;
         const { resizeBarStyle } = this.state;
 
         return (
@@ -69,22 +64,23 @@ export default class ResizeBar extends Component {
                     role="presentation"
                     draggable
                     onMouseDown={this.handleMouseDown}
-                    style={resizeBarStyle}>
-
+                    style={resizeBarStyle}
+                >
                     <input
                         type="range"
                         min={minColumnWidth}
                         max={maxColumnWidth}
                         aria-label={ariaLabel}
                         tabIndex={-1}
-                        className="rainbow-table_header-resize-bar_input" />
+                        className="rainbow-table_header-resize-bar_input"
+                    />
 
                     <span
                         className="rainbow-table_header-resize-bar_table-guideline"
                         role="presentation"
                         draggable
-                        onMouseDown={this.handleMouseDown} />
-
+                        onMouseDown={this.handleMouseDown}
+                    />
                 </span>
             </RenderIf>
         );

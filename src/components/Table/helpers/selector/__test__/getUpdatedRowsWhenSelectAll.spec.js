@@ -19,11 +19,13 @@ describe('getUpdatedRowsWhenSelectAll', () => {
     });
     it('should the right rows when maxRowSelection is 1', () => {
         const selectedRowsKeys = {};
-        expect(getUpdatedRowsWhenSelectAll({
-            rows,
-            maxRowSelection: 1,
-            selectedRowsKeys,
-        })).toEqual([
+        expect(
+            getUpdatedRowsWhenSelectAll({
+                rows,
+                maxRowSelection: 1,
+                selectedRowsKeys,
+            }),
+        ).toEqual([
             { key: 'row-1', isSelected: true, isDisabled: false },
             { key: 'row-2', isSelected: false, isDisabled: true },
             { key: 'row-3', isSelected: false, isDisabled: true },
@@ -34,11 +36,13 @@ describe('getUpdatedRowsWhenSelectAll', () => {
     });
     it('should the right rows when maxRowSelection is 2', () => {
         const selectedRowsKeys = {};
-        expect(getUpdatedRowsWhenSelectAll({
-            rows,
-            maxRowSelection: 2,
-            selectedRowsKeys,
-        })).toEqual([
+        expect(
+            getUpdatedRowsWhenSelectAll({
+                rows,
+                maxRowSelection: 2,
+                selectedRowsKeys,
+            }),
+        ).toEqual([
             { key: 'row-1', isSelected: true, isDisabled: false },
             { key: 'row-2', isSelected: true, isDisabled: false },
             { key: 'row-3', isSelected: false, isDisabled: true },
@@ -50,11 +54,13 @@ describe('getUpdatedRowsWhenSelectAll', () => {
     });
     it('should the right rows when maxRowSelection is 3', () => {
         const selectedRowsKeys = {};
-        expect(getUpdatedRowsWhenSelectAll({
-            rows,
-            maxRowSelection: 3,
-            selectedRowsKeys,
-        })).toEqual([
+        expect(
+            getUpdatedRowsWhenSelectAll({
+                rows,
+                maxRowSelection: 3,
+                selectedRowsKeys,
+            }),
+        ).toEqual([
             { key: 'row-1', isSelected: true, isDisabled: false },
             { key: 'row-2', isSelected: true, isDisabled: false },
             { key: 'row-3', isSelected: true, isDisabled: false },

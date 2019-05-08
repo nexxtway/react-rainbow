@@ -78,27 +78,22 @@ export default class MapComponent extends Component {
     }
 
     render() {
-        const {
-            header,
-            children,
-            style,
-        } = this.props;
+        const { header, children, style } = this.props;
 
         return (
             <div className={this.getContainerClassNames()} style={style} ref={this.container}>
                 <div
                     ref={this.mapContainer}
                     style={getMapContainerStyles(this.container.current)}
-                    className="rainbow-google-map_map-container" />
+                    className="rainbow-google-map_map-container"
+                />
 
                 <div className="rainbow-google-map_coordinates-container">
                     <RenderIf isTrue={!!header}>
                         <Header text={header} />
                     </RenderIf>
                     <ul>
-                        <Provider value={this.state}>
-                            {children}
-                        </Provider>
+                        <Provider value={this.state}>{children}</Provider>
                     </ul>
                 </div>
             </div>
@@ -112,13 +107,8 @@ MapComponent.propTypes = {
     latitude: PropTypes.number.isRequired,
     longitude: PropTypes.number.isRequired,
     zoom: PropTypes.number.isRequired,
-    header: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
-    children: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.node),
-        PropTypes.object,
-    ]),
+    header: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
     className: PropTypes.string,
     style: PropTypes.object,
 };

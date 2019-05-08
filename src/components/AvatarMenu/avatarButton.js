@@ -10,25 +10,25 @@ export default class AvatarButton extends Component {
     }
 
     /**
-    * Sets focus on the element.
-    * @public
-    */
+     * Sets focus on the element.
+     * @public
+     */
     focus() {
         this.avatarButtonRef.current.focus();
     }
 
     /**
-    * Sets click on the element.
-    * @public
-    */
+     * Sets click on the element.
+     * @public
+     */
     click() {
         this.avatarButtonRef.current.click();
     }
 
     /**
-    * Sets blur on the element.
-    * @public
-    */
+     * Sets blur on the element.
+     * @public
+     */
     blur() {
         this.avatarButtonRef.current.blur();
     }
@@ -61,8 +61,8 @@ export default class AvatarButton extends Component {
                 onClick={onClick}
                 title={title}
                 aria-haspopup={ariaHaspopup}
-                ref={this.avatarButtonRef} >
-
+                ref={this.avatarButtonRef}
+            >
                 <Avatar
                     src={src}
                     icon={icon}
@@ -73,7 +73,8 @@ export default class AvatarButton extends Component {
                     assistiveText={assistiveText}
                     ariaHaspopup
                     onFocus={onFocus}
-                    onBlur={onBlur} />
+                    onBlur={onBlur}
+                />
             </button>
         );
     }
@@ -81,10 +82,7 @@ export default class AvatarButton extends Component {
 
 AvatarButton.propTypes = {
     title: PropTypes.string,
-    tabIndex: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.string,
-    ]),
+    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     onClick: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
@@ -94,15 +92,8 @@ AvatarButton.propTypes = {
     src: PropTypes.string,
     initials: PropTypes.string,
     icon: PropTypes.node,
-    avatarSize: PropTypes.oneOf([
-        'x-small',
-        'small',
-        'medium',
-        'large',
-    ]),
-    initialsVariant: PropTypes.oneOf([
-        'default', 'inverse',
-    ]),
+    avatarSize: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
+    initialsVariant: PropTypes.oneOf(['default', 'inverse']),
 };
 
 AvatarButton.defaultProps = {

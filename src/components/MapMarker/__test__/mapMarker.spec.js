@@ -37,37 +37,27 @@ describe('<MapMarker/>', () => {
         expect(component.find('.rainbow-google-map-marker_button').prop('aria-pressed')).toBe(true);
     });
     it('should not retrun anything when latitude and longitude are not passed', () => {
-        const component = mount(
-            <MapMarker />,
-        );
+        const component = mount(<MapMarker />);
         expect(component.find('li').exists()).toBe(false);
     });
     it('should render the marker when latitude and longitude are passed', () => {
-        const component = mount(
-            <MapMarker latitude={5} longitude={10} />,
-        );
+        const component = mount(<MapMarker latitude={5} longitude={10} />);
         expect(component.find('li').exists()).toBe(true);
     });
     it('should not call google.maps.Marker when latitude is not passed', () => {
-        const component = mount(
-            <MapMarker longitude={10} />,
-        );
+        const component = mount(<MapMarker longitude={10} />);
         // this actually is context not props
         component.setProps(newContext);
         expect(global.google.maps.Marker).not.toHaveBeenCalled();
     });
     it('should not call google.maps.Marker when longitude is not passed', () => {
-        const component = mount(
-            <MapMarker latitude={10} />,
-        );
+        const component = mount(<MapMarker latitude={10} />);
         // this actually is context not props
         component.setProps(newContext);
         expect(global.google.maps.Marker).not.toHaveBeenCalled();
     });
     it('should call google.maps.Marker with the right data', () => {
-        const component = mount(
-            <MapMarker latitude={5} longitude={10} />,
-        );
+        const component = mount(<MapMarker latitude={5} longitude={10} />);
         // this actually is context not props
         component.setProps(newContext);
         expect(global.google.maps.Marker).toHaveBeenCalledWith({
@@ -80,29 +70,28 @@ describe('<MapMarker/>', () => {
     });
     it('should call addListener on marker with the right data', () => {
         marker.addListener.mockReset();
-        const component = mount(
-            <MapMarker latitude={5} longitude={10} />,
-        );
+        const component = mount(<MapMarker latitude={5} longitude={10} />);
         // this actually is context not props
         component.setProps(newContext);
         expect(marker.addListener).toHaveBeenCalledWith('click', expect.any(Function));
     });
     it('should call geocoder.geocode with the right data when label and description are not passed', () => {
-        const component = mount(
-            <MapMarker latitude={5} longitude={10} />,
-        );
+        const component = mount(<MapMarker latitude={5} longitude={10} />);
         // this actually is context not props
         component.setProps(newContext);
-        expect(newContext.geocoder.geocode).toHaveBeenCalledWith({ location: {
-            lat: 5,
-            lng: 10,
-        } }, expect.any(Function));
+        expect(newContext.geocoder.geocode).toHaveBeenCalledWith(
+            {
+                location: {
+                    lat: 5,
+                    lng: 10,
+                },
+            },
+            expect.any(Function),
+        );
     });
     it('should not call geocoder.geocode when label is passed', () => {
         newContext.geocoder.geocode.mockReset();
-        const component = mount(
-            <MapMarker latitude={5} longitude={10} label="my label" />,
-        );
+        const component = mount(<MapMarker latitude={5} longitude={10} label="my label" />);
         // this actually is context not props
         component.setProps(newContext);
         expect(newContext.geocoder.geocode).not.toHaveBeenCalled();
@@ -129,9 +118,7 @@ describe('<MapMarker/>', () => {
     });
     it('should call global.google.maps.InfoWindow with the label is passed', () => {
         global.google.maps.InfoWindow.mockReset();
-        const component = mount(
-            <MapMarker latitude={5} longitude={10} label="my label" />,
-        );
+        const component = mount(<MapMarker latitude={5} longitude={10} label="my label" />);
         // this actually is context not props
         component.setProps(newContext);
         expect(global.google.maps.InfoWindow).toHaveBeenCalledWith({
@@ -139,20 +126,15 @@ describe('<MapMarker/>', () => {
         });
     });
 
-
     it('should call google.maps.event.removeListener when unmount the component', () => {
-        const component = mount(
-            <MapMarker latitude={5} longitude={10} />,
-        );
+        const component = mount(<MapMarker latitude={5} longitude={10} />);
         // this actually is context not props
         component.setProps(newContext);
         component.unmount();
         expect(global.google.maps.event.removeListener).toHaveBeenCalled();
     });
     it('should call setAnimation on marker with null when the marker button is clicked', () => {
-        const component = mount(
-            <MapMarker latitude={5} longitude={10} />,
-        );
+        const component = mount(<MapMarker latitude={5} longitude={10} />);
         const context = {
             ...newContext,
             privateOnClick: jest.fn(),
@@ -164,9 +146,7 @@ describe('<MapMarker/>', () => {
     });
     it('should call setAnimation on marker with the bounce animation when mouseover event occurs on marker button', () => {
         marker.setAnimation.mockReset();
-        const component = mount(
-            <MapMarker latitude={5} longitude={10} />,
-        );
+        const component = mount(<MapMarker latitude={5} longitude={10} />);
         // this actually is context not props
         component.setProps(newContext);
         component.find('.rainbow-google-map-marker_button').simulate('mouseover');
@@ -174,9 +154,7 @@ describe('<MapMarker/>', () => {
     });
     it('should call setAnimation on marker with the bounce animation when the marker button is focused', () => {
         marker.setAnimation.mockReset();
-        const component = mount(
-            <MapMarker latitude={5} longitude={10} />,
-        );
+        const component = mount(<MapMarker latitude={5} longitude={10} />);
         // this actually is context not props
         component.setProps(newContext);
         component.find('.rainbow-google-map-marker_button').simulate('focus');
@@ -184,9 +162,7 @@ describe('<MapMarker/>', () => {
     });
     it('should call setAnimation on marker with null when mouseleave event occurs on marker button', () => {
         marker.setAnimation.mockReset();
-        const component = mount(
-            <MapMarker latitude={5} longitude={10} />,
-        );
+        const component = mount(<MapMarker latitude={5} longitude={10} />);
         // this actually is context not props
         component.setProps(newContext);
         component.find('.rainbow-google-map-marker_button').simulate('mouseleave');
@@ -194,9 +170,7 @@ describe('<MapMarker/>', () => {
     });
     it('should call setAnimation on marker with null when the marker button is blurred', () => {
         marker.setAnimation.mockReset();
-        const component = mount(
-            <MapMarker latitude={5} longitude={10} />,
-        );
+        const component = mount(<MapMarker latitude={5} longitude={10} />);
         // this actually is context not props
         component.setProps(newContext);
         component.find('.rainbow-google-map-marker_button').simulate('blur');
@@ -204,9 +178,9 @@ describe('<MapMarker/>', () => {
     });
     it('should set aria-pressed to false in marker button when it is not selected', () => {
         marker.setAnimation.mockReset();
-        const component = mount(
-            <MapMarker latitude={5} longitude={10} />,
+        const component = mount(<MapMarker latitude={5} longitude={10} />);
+        expect(component.find('.rainbow-google-map-marker_button').prop('aria-pressed')).toBe(
+            false,
         );
-        expect(component.find('.rainbow-google-map-marker_button').prop('aria-pressed')).toBe(false);
     });
 });

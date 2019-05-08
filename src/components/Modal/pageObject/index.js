@@ -18,8 +18,14 @@ class PageModal {
      * @method
      */
     clickCloseButton() {
-        browser.waitUntil(() => $(this.rootElement).$('.rainbow-modal_close-button').isDisplayed());
-        $(this.rootElement).$('.rainbow-modal_close-button').click();
+        browser.waitUntil(() =>
+            $(this.rootElement)
+                .$('.rainbow-modal_close-button')
+                .isDisplayed(),
+        );
+        $(this.rootElement)
+            .$('.rainbow-modal_close-button')
+            .click();
     }
 
     /**
@@ -35,7 +41,14 @@ class PageModal {
      */
     isOpen() {
         if ($(this.rootElement).isDisplayed()) {
-            return $(this.rootElement).$('section[role="dialog"]').isDisplayed() && $(this.rootElement).$('.rainbow-modal_close-button').isDisplayed();
+            return (
+                $(this.rootElement)
+                    .$('section[role="dialog"]')
+                    .isDisplayed() &&
+                $(this.rootElement)
+                    .$('.rainbow-modal_close-button')
+                    .isDisplayed()
+            );
         }
         return false;
     }
@@ -46,7 +59,9 @@ class PageModal {
      * @returns {bool}
      */
     hasFocusCloseButton() {
-        return $(this.rootElement).$('.rainbow-modal_close-button').isFocused();
+        return $(this.rootElement)
+            .$('.rainbow-modal_close-button')
+            .isFocused();
     }
 
     /**

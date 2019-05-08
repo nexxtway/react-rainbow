@@ -23,7 +23,8 @@ export default function Label(props) {
         <label
             className={getLabelClassNames()}
             htmlFor={inputId}
-            id={id}>
+            id={id}
+        >
 
             <RequiredAsterisk required={required} />
             {label}

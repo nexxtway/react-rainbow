@@ -103,12 +103,16 @@ describe('resolveOptions function', () => {
         expect(options).toEqual({
             ...baseOptions,
             scales: {
-                xAxes: [{
-                    stacked: true,
-                }],
-                yAxes: [{
-                    stacked: true,
-                }],
+                xAxes: [
+                    {
+                        stacked: true,
+                    },
+                ],
+                yAxes: [
+                    {
+                        stacked: true,
+                    },
+                ],
             },
         });
     });
@@ -140,12 +144,16 @@ describe('resolveOptions function', () => {
                 },
             },
             scales: {
-                xAxes: [{
-                    stacked: true,
-                }],
-                yAxes: [{
-                    stacked: true,
-                }],
+                xAxes: [
+                    {
+                        stacked: true,
+                    },
+                ],
+                yAxes: [
+                    {
+                        stacked: true,
+                    },
+                ],
             },
         });
     });

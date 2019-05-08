@@ -2,7 +2,6 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Tab from '../';
 
-
 describe('<Tab />', () => {
     it('should set the right class names when activeTaName is tab-1', () => {
         const component = mount(<Tab name="tab-1" activeTabName="tab-1" />);

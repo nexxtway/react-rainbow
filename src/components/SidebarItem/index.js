@@ -10,22 +10,17 @@ import './styles.css';
  * @category Layout
  */
 function SidebarItem(props) {
-    const {
-        label,
-        icon,
-        name,
-        href,
-        onClick,
-        className,
-        style,
-        selectedItem,
-        onSelect,
-    } = props;
+    const { label, icon, name, href, onClick, className, style, selectedItem, onSelect } = props;
     const isSelected = name === selectedItem;
 
-    const getContainerClassNames = () => classnames('rainbow-sidebar-item', {
-        'rainbow-sidebar-item--active': isSelected,
-    }, className);
+    const getContainerClassNames = () =>
+        classnames(
+            'rainbow-sidebar-item',
+            {
+                'rainbow-sidebar-item--active': isSelected,
+            },
+            className,
+        );
 
     const getAriaCurrent = () => {
         if (isSelected) {
@@ -45,10 +40,11 @@ function SidebarItem(props) {
                 href={href}
                 onClick={hanldeOnClick}
                 className="rainbow-sidebar-item_action"
-                aria-current={getAriaCurrent()}>
-                <div className="rainbow-sidebar-item_icon" >{icon}</div>
+                aria-current={getAriaCurrent()}
+            >
+                <div className="rainbow-sidebar-item_icon">{icon}</div>
                 <RenderIf isTrue={!!label}>
-                    <span className="rainbow-sidebar-item_label" >{label}</span>
+                    <span className="rainbow-sidebar-item_label">{label}</span>
                 </RenderIf>
             </a>
         </li>
@@ -59,9 +55,7 @@ SidebarItem.propTypes = {
     /** A unique identifier for the navigation item. */
     name: PropTypes.string.isRequired,
     /** The text to show if it is passed. The text displayed for the SidebarItem. */
-    label: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The icon displayed for the SidebarItem. It must be a svg icon or a font icon. */
     icon: PropTypes.node.isRequired,
     /** The URL of the page that the navigation item goes to. */

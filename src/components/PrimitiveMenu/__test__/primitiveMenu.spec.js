@@ -5,9 +5,7 @@ import ButtonIcon from '../../ButtonIcon';
 
 describe('<PrimitiveMenu/>', () => {
     it('should focus the button when the focus method is called', () => {
-        const component = mount(
-            <PrimitiveMenu trigger={ButtonIcon} />,
-        );
+        const component = mount(<PrimitiveMenu trigger={ButtonIcon} />);
 
         component.instance().focus();
         const focusedElementDataId = document.activeElement.getAttribute('data-id');
@@ -15,9 +13,7 @@ describe('<PrimitiveMenu/>', () => {
         expect(focusedElementDataId).toBe(buttonDataId);
     });
     it('should blur the button when the blur method is called', () => {
-        const component = mount(
-            <PrimitiveMenu trigger={ButtonIcon} />,
-        );
+        const component = mount(<PrimitiveMenu trigger={ButtonIcon} />);
         const instance = component.instance();
         const buttonDataId = component.find('button').prop('data-id');
 
@@ -52,7 +48,11 @@ describe('<PrimitiveMenu/>', () => {
     });
     it('should set the title passed as the aria-label in the ul element', () => {
         const component = mount(
-            <PrimitiveMenu trigger={ButtonIcon} title="button title" assistiveText="assistive description">
+            <PrimitiveMenu
+                trigger={ButtonIcon}
+                title="button title"
+                assistiveText="assistive description"
+            >
                 <span />
             </PrimitiveMenu>,
         );
@@ -72,7 +72,9 @@ describe('<PrimitiveMenu/>', () => {
                 <span />
             </PrimitiveMenu>,
         );
-        expect(component.find('div[role="presentation"]').prop('className')).toBe('rainbow-primitive-menu');
+        expect(component.find('div[role="presentation"]').prop('className')).toBe(
+            'rainbow-primitive-menu',
+        );
     });
     it('should have the right class names in the container element when the menu is opened', () => {
         const component = mount(
@@ -81,7 +83,9 @@ describe('<PrimitiveMenu/>', () => {
             </PrimitiveMenu>,
         );
         component.find('button').simulate('click');
-        expect(component.find('div[role="presentation"]').prop('className')).toBe('rainbow-primitive-menu rainbow-primitive-menu--open');
+        expect(component.find('div[role="presentation"]').prop('className')).toBe(
+            'rainbow-primitive-menu rainbow-primitive-menu--open',
+        );
     });
     it('should have the right class names in the menu dropdown element', () => {
         const component = mount(
@@ -90,7 +94,9 @@ describe('<PrimitiveMenu/>', () => {
             </PrimitiveMenu>,
         );
         const dropdown = component.find('ul[role="menu"]').parent();
-        expect(dropdown.prop('className')).toBe('rainbow-primitive-menu_dropdown rainbow-primitive-menu_dropdown--left rainbow-primitive-menu_dropdown--xx-small');
+        expect(dropdown.prop('className')).toBe(
+            'rainbow-primitive-menu_dropdown rainbow-primitive-menu_dropdown--left rainbow-primitive-menu_dropdown--xx-small',
+        );
     });
     it('should have the right class names when menuAlignment is left and isLoading is true', () => {
         const component = mount(
@@ -99,7 +105,9 @@ describe('<PrimitiveMenu/>', () => {
             </PrimitiveMenu>,
         );
         const dropdown = component.find('ul[role="menu"]').parent();
-        expect(dropdown.prop('className')).toBe('rainbow-primitive-menu_dropdown rainbow-primitive-menu_dropdown--left rainbow-primitive-menu_dropdown--xx-small rainbow-primitive-menu_dropdown--loading-box');
+        expect(dropdown.prop('className')).toBe(
+            'rainbow-primitive-menu_dropdown rainbow-primitive-menu_dropdown--left rainbow-primitive-menu_dropdown--xx-small rainbow-primitive-menu_dropdown--loading-box',
+        );
     });
     it('should have the right class names when menuAlignment is right and menuSize is xx-small', () => {
         const component = mount(
@@ -108,7 +116,9 @@ describe('<PrimitiveMenu/>', () => {
             </PrimitiveMenu>,
         );
         const dropdown = component.find('ul[role="menu"]').parent();
-        expect(dropdown.prop('className')).toBe('rainbow-primitive-menu_dropdown rainbow-primitive-menu_dropdown--right rainbow-primitive-menu_dropdown--xx-small');
+        expect(dropdown.prop('className')).toBe(
+            'rainbow-primitive-menu_dropdown rainbow-primitive-menu_dropdown--right rainbow-primitive-menu_dropdown--xx-small',
+        );
     });
     it('should have the right class names when menuAlignment is center', () => {
         const component = mount(
@@ -117,7 +127,9 @@ describe('<PrimitiveMenu/>', () => {
             </PrimitiveMenu>,
         );
         const dropdown = component.find('ul[role="menu"]').parent();
-        expect(dropdown.prop('className')).toBe('rainbow-primitive-menu_dropdown rainbow-primitive-menu_dropdown--center rainbow-primitive-menu_dropdown--xx-small');
+        expect(dropdown.prop('className')).toBe(
+            'rainbow-primitive-menu_dropdown rainbow-primitive-menu_dropdown--center rainbow-primitive-menu_dropdown--xx-small',
+        );
     });
     it('should have the right class names when menuAlignment is bottom', () => {
         const component = mount(
@@ -126,7 +138,9 @@ describe('<PrimitiveMenu/>', () => {
             </PrimitiveMenu>,
         );
         const dropdown = component.find('ul[role="menu"]').parent();
-        expect(dropdown.prop('className')).toBe('rainbow-primitive-menu_dropdown rainbow-primitive-menu_dropdown--bottom rainbow-primitive-menu_dropdown--xx-small');
+        expect(dropdown.prop('className')).toBe(
+            'rainbow-primitive-menu_dropdown rainbow-primitive-menu_dropdown--bottom rainbow-primitive-menu_dropdown--xx-small',
+        );
     });
     it('should have the right class names when menuAlignment is bottom-right', () => {
         const component = mount(
@@ -135,7 +149,9 @@ describe('<PrimitiveMenu/>', () => {
             </PrimitiveMenu>,
         );
         const dropdown = component.find('ul[role="menu"]').parent();
-        expect(dropdown.prop('className')).toBe('rainbow-primitive-menu_dropdown rainbow-primitive-menu_dropdown--bottom-right rainbow-primitive-menu_dropdown--xx-small');
+        expect(dropdown.prop('className')).toBe(
+            'rainbow-primitive-menu_dropdown rainbow-primitive-menu_dropdown--bottom-right rainbow-primitive-menu_dropdown--xx-small',
+        );
     });
     it('should have the right class names when menuAlignment is bottom-left', () => {
         const component = mount(
@@ -144,7 +160,9 @@ describe('<PrimitiveMenu/>', () => {
             </PrimitiveMenu>,
         );
         const dropdown = component.find('ul[role="menu"]').parent();
-        expect(dropdown.prop('className')).toBe('rainbow-primitive-menu_dropdown rainbow-primitive-menu_dropdown--bottom-left rainbow-primitive-menu_dropdown--xx-small');
+        expect(dropdown.prop('className')).toBe(
+            'rainbow-primitive-menu_dropdown rainbow-primitive-menu_dropdown--bottom-left rainbow-primitive-menu_dropdown--xx-small',
+        );
     });
     it('should have the right class names when menuSize is x-small', () => {
         const component = mount(
@@ -153,7 +171,9 @@ describe('<PrimitiveMenu/>', () => {
             </PrimitiveMenu>,
         );
         const dropdown = component.find('ul[role="menu"]').parent();
-        expect(dropdown.prop('className')).toBe('rainbow-primitive-menu_dropdown rainbow-primitive-menu_dropdown--left rainbow-primitive-menu_dropdown--x-small');
+        expect(dropdown.prop('className')).toBe(
+            'rainbow-primitive-menu_dropdown rainbow-primitive-menu_dropdown--left rainbow-primitive-menu_dropdown--x-small',
+        );
     });
     it('should have the right class names when menuSize is small', () => {
         const component = mount(
@@ -162,7 +182,9 @@ describe('<PrimitiveMenu/>', () => {
             </PrimitiveMenu>,
         );
         const dropdown = component.find('ul[role="menu"]').parent();
-        expect(dropdown.prop('className')).toBe('rainbow-primitive-menu_dropdown rainbow-primitive-menu_dropdown--left rainbow-primitive-menu_dropdown--small');
+        expect(dropdown.prop('className')).toBe(
+            'rainbow-primitive-menu_dropdown rainbow-primitive-menu_dropdown--left rainbow-primitive-menu_dropdown--small',
+        );
     });
     it('should have the right class names when menuSize is medium', () => {
         const component = mount(
@@ -171,7 +193,9 @@ describe('<PrimitiveMenu/>', () => {
             </PrimitiveMenu>,
         );
         const dropdown = component.find('ul[role="menu"]').parent();
-        expect(dropdown.prop('className')).toBe('rainbow-primitive-menu_dropdown rainbow-primitive-menu_dropdown--left rainbow-primitive-menu_dropdown--medium');
+        expect(dropdown.prop('className')).toBe(
+            'rainbow-primitive-menu_dropdown rainbow-primitive-menu_dropdown--left rainbow-primitive-menu_dropdown--medium',
+        );
     });
     it('should have the right class names when menuSize is large', () => {
         const component = mount(
@@ -180,6 +204,8 @@ describe('<PrimitiveMenu/>', () => {
             </PrimitiveMenu>,
         );
         const dropdown = component.find('ul[role="menu"]').parent();
-        expect(dropdown.prop('className')).toBe('rainbow-primitive-menu_dropdown rainbow-primitive-menu_dropdown--left rainbow-primitive-menu_dropdown--large');
+        expect(dropdown.prop('className')).toBe(
+            'rainbow-primitive-menu_dropdown rainbow-primitive-menu_dropdown--left rainbow-primitive-menu_dropdown--large',
+        );
     });
 });

@@ -5,9 +5,7 @@ import './styles.css';
 
 export default function CardBoddy({ isLoading, children }) {
     if (isLoading) {
-        return (
-            <Spinner isVisible={isLoading} size="small" />
-        );
+        return <Spinner isVisible={isLoading} size="small" />;
     }
     return children;
 }

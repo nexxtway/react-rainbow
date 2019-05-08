@@ -10,15 +10,7 @@ import './styles.css';
  * @category Layout
  */
 export default function Sidebar(props) {
-    const {
-        ariaLabel,
-        style,
-        selectedItem,
-        onSelect,
-        className,
-        children,
-        id,
-    } = props;
+    const { ariaLabel, style, selectedItem, onSelect, className, children, id } = props;
 
     const context = {
         selectedItem,
@@ -28,16 +20,9 @@ export default function Sidebar(props) {
     const getClassNames = () => classnames('rainbow-sidebar', className);
 
     return (
-        <nav
-            id={id}
-            className={getClassNames()}
-            style={style}
-            aria-label={ariaLabel}>
-
+        <nav id={id} className={getClassNames()} style={style} aria-label={ariaLabel}>
             <Provider value={context}>
-                <ul>
-                    {children}
-                </ul>
+                <ul>{children}</ul>
             </Provider>
         </nav>
     );

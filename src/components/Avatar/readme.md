@@ -35,7 +35,6 @@
         </div>
     </div>
 
-
 ##### fallback user initials
 
     <div className="rainbow-p-vertical_x-large rainbow-p-left_medium">
@@ -47,7 +46,6 @@
 
         </div>
     </div>
-
 
 ##### fallback user icon
 
@@ -63,7 +61,6 @@
 
         </div>
     </div>
-
 
 ##### fallback user initials inverse
 
@@ -81,4 +78,3 @@
 
         </div>
     </div>
-    

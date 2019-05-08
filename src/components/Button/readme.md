@@ -12,7 +12,6 @@
         </div>
     </div>
 
-
 ##### button variants
 
     <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
@@ -32,7 +31,6 @@
             <Button label="Button Destructive" variant="destructive" />
         </div>
     </div>
-
 
 ##### button shaded
 
@@ -59,8 +57,8 @@
         </div>
     </div>
 
-
 ##### buttons with icon
+
     // more details about how to use react-font-awesome
     // visit https://github.com/FortAwesome/react-fontawesome
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
@@ -93,7 +91,6 @@
         </div>
     </div>
 
-
 ##### disabled buttons
 
     <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
@@ -107,7 +104,6 @@
             <Button label="Button Brand Disabled" variant="brand" disabled />
         </div>
     </div>
-
 
 ##### buttons inverse
 
@@ -133,7 +129,6 @@
             </Button>
         </div>
     </div>
-
 
 ##### buttons loadings
 

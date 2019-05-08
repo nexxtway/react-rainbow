@@ -67,13 +67,18 @@ export default class Indicators extends Component {
                 onSelect={onSelect}
                 selectedItem={selectedItem}
                 onCreate={this.registerIndicator}
-                key={child.indicatorID} />
-            ));
+                key={child.indicatorID}
+            />
+        ));
     }
 
     render() {
         return (
-            <ul className="rainbow-carousel_indicators" role="tablist" onKeyDown={this.handleKeyPressed}>
+            <ul
+                className="rainbow-carousel_indicators"
+                role="tablist"
+                onKeyDown={this.handleKeyPressed}
+            >
                 {this.renderIndicators()}
             </ul>
         );

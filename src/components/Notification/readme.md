@@ -9,7 +9,6 @@
         </div>
     </div>
 
-
 ##### notification with icon
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
@@ -33,7 +32,6 @@
                 } />
         </div>
     </div>
-
 
 ##### notification with icon variants
 

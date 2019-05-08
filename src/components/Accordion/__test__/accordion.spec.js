@@ -39,10 +39,7 @@ describe('<Accordion />', () => {
         const handleToggleSectionMockFn = jest.fn();
         const component = mount(
             <Accordion onToggleSection={handleToggleSectionMockFn}>
-                <AccordionSection
-                    disabled
-                    name="accordion-test-1"
-                    label="Rainbow Accordion">
+                <AccordionSection disabled name="accordion-test-1" label="Rainbow Accordion">
                     AccordionSection-1
                 </AccordionSection>
             </Accordion>,
@@ -64,7 +61,10 @@ describe('<Accordion />', () => {
         const buttonComponent = component.find('ButtonIcon');
         buttonComponent.simulate('click');
 
-        expect(handleToggleSectionMockFn).toHaveBeenCalledWith(expect.any(Object), 'accordion-test-1');
+        expect(handleToggleSectionMockFn).toHaveBeenCalledWith(
+            expect.any(Object),
+            'accordion-test-1',
+        );
     });
     it('should fire an event with the right arguments when click in the second AccordionSection and multiple is passed', () => {
         const handleToggleSectionMockFn = jest.fn();
@@ -73,7 +73,8 @@ describe('<Accordion />', () => {
             <Accordion
                 multiple
                 activeSectionNames={activeNames}
-                onToggleSection={handleToggleSectionMockFn}>
+                onToggleSection={handleToggleSectionMockFn}
+            >
                 <AccordionSection name="accordion-test-1" label="Rainbow Accordion">
                     AccordionSection-1
                 </AccordionSection>
@@ -86,15 +87,16 @@ describe('<Accordion />', () => {
         const secondAccordionSectionButton = secondAccordionSection.find('ButtonIcon');
         secondAccordionSectionButton.simulate('click');
 
-        expect(handleToggleSectionMockFn).toHaveBeenCalledWith(expect.any(Object), ['accordion-test-1', 'accordion-test-2']);
+        expect(handleToggleSectionMockFn).toHaveBeenCalledWith(expect.any(Object), [
+            'accordion-test-1',
+            'accordion-test-2',
+        ]);
     });
     it('should fire an event with the right arguments when click in the expanded first AccordionSection', () => {
         const handleToggleSectionMockFn = jest.fn();
         const activeNames = 'accordion-test-1';
         const component = mount(
-            <Accordion
-                activeSectionNames={activeNames}
-                onToggleSection={handleToggleSectionMockFn}>
+            <Accordion activeSectionNames={activeNames} onToggleSection={handleToggleSectionMockFn}>
                 <AccordionSection name="accordion-test-1" label="Rainbow Accordion">
                     AccordionSection-1
                 </AccordionSection>
@@ -116,7 +118,8 @@ describe('<Accordion />', () => {
             <Accordion
                 multiple
                 activeSectionNames={activeNames}
-                onToggleSection={handleToggleSectionMockFn}>
+                onToggleSection={handleToggleSectionMockFn}
+            >
                 <AccordionSection name="accordion-test-1" label="Rainbow Accordion">
                     AccordionSection-1
                 </AccordionSection>
@@ -165,11 +168,9 @@ describe('<Accordion />', () => {
     it('should set ariaExpanded to false in button when the AccordionSection is collapsed', () => {
         const component = mount(
             <Accordion>
-                <AccordionSection label="Rainbow Accordion">
-                    AccordionSection-1
-                </AccordionSection>
+                <AccordionSection label="Rainbow Accordion">AccordionSection-1</AccordionSection>
             </Accordion>,
-    );
+        );
         const button = component.find('ButtonIcon');
 
         expect(button.prop('ariaExpanded')).toBe(false);

@@ -63,7 +63,6 @@
             onSearch={search} />
     </div>
 
-
 ##### Lookup with icon and description:
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
@@ -191,7 +190,6 @@
             onSearch={search} />
     </div>
 
-
 ##### Lookup with options type section:
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
@@ -285,7 +283,6 @@
             onSearch={search} />
     </div>
 
-
 ##### Lookup disabled:
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
@@ -353,7 +350,6 @@
             isLoading={state.isLoading}
             onSearch={search} />
     </div>
-
 
 ##### Lookup required with error:
 

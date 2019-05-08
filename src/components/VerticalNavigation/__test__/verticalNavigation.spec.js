@@ -7,27 +7,23 @@ import VerticalItem from './../../VerticalItem';
 
 describe('<VerticalNavigation/>', () => {
     it('should have the right className in the nav element', () => {
-        const component = mount(
-            <VerticalNavigation />,
-        );
+        const component = mount(<VerticalNavigation />);
         expect(component.find('nav').prop('className')).toBe('rainbow-vertical-navigation');
     });
     it('should have the right className in the nav element when compact is true', () => {
-        const component = mount(
-            <VerticalNavigation compact />,
+        const component = mount(<VerticalNavigation compact />);
+        expect(component.find('nav').prop('className')).toBe(
+            'rainbow-vertical-navigation rainbow-vertical-navigation_compact',
         );
-        expect(component.find('nav').prop('className')).toBe('rainbow-vertical-navigation rainbow-vertical-navigation_compact');
     });
     it('should have the right className in the nav element when shaded is true', () => {
-        const component = mount(
-            <VerticalNavigation shaded />,
+        const component = mount(<VerticalNavigation shaded />);
+        expect(component.find('nav').prop('className')).toBe(
+            'rainbow-vertical-navigation rainbow-vertical-navigation_shade',
         );
-        expect(component.find('nav').prop('className')).toBe('rainbow-vertical-navigation rainbow-vertical-navigation_shade');
     });
     it('should set the ariaLabel passed as aria-label in the nav element', () => {
-        const component = mount(
-            <VerticalNavigation ariaLabel="my aria label" />,
-        );
+        const component = mount(<VerticalNavigation ariaLabel="my aria label" />);
         expect(component.find('nav').prop('aria-label')).toBe('my aria label');
     });
     it('should render the children passed', () => {

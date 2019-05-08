@@ -3,14 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 export default function Day(props) {
-    const {
-        date,
-        firstDayMonth,
-        isSelected,
-        minDate,
-        maxDate,
-        onChange,
-    } = props;
+    const { date, firstDayMonth, isSelected, minDate, maxDate, onChange } = props;
     const day = date.getDate();
     const isAdjacentDate = date.getMonth() !== firstDayMonth.getMonth();
     const isDisabled = date > maxDate || date < minDate;
@@ -29,9 +22,7 @@ export default function Day(props) {
 
     return (
         <td className="rainbow-calendar_day" role="gridcell">
-            <button
-                onClick={() => onChange(new Date(date))}
-                className={buttonClassNames}>
+            <button onClick={() => onChange(new Date(date))} className={buttonClassNames}>
                 {day}
             </button>
         </td>

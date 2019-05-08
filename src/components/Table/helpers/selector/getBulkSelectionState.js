@@ -1,10 +1,7 @@
 import getCurrentSelectionLength from './getCurrentSelectionLength';
 
 export default function getBulkSelectionState(params = {}) {
-    const {
-        maxRowSelection,
-        selectedRowsKeys = {},
-    } = params;
+    const { maxRowSelection, selectedRowsKeys = {} } = params;
     const selected = getCurrentSelectionLength(selectedRowsKeys);
 
     if (selected === 0) {

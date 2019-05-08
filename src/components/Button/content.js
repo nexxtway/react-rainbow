@@ -19,32 +19,22 @@ export default function Content({ label, children, variant, isLoading }) {
     if (isLoading) {
         return (
             <span className="rainbow-button_content--hidden">
-                <ButtonContent label={label}>
-                    {children}
-                </ButtonContent>
+                <ButtonContent label={label}>{children}</ButtonContent>
                 <Spinner
                     className="rainbow-button_spinner--visible"
                     isVisible={isLoading}
                     variant={variantMap[variant]}
-                    size="small" />
+                    size="small"
+                />
             </span>
         );
     }
-    return (
-        <ButtonContent label={label}>
-            {children}
-        </ButtonContent>
-    );
+    return <ButtonContent label={label}>{children}</ButtonContent>;
 }
 
 Content.propTypes = {
-    label: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
-    children: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.node),
-        PropTypes.object,
-    ]),
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
     variant: PropTypes.oneOf([
         'base',
         'neutral',

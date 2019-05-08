@@ -38,12 +38,8 @@ const ACCOUNT_CARD_FOOTER = (
 
 const ACCOUNT_CARD_BODY = (
     <div className="rainbow-p-horizontal_medium rainbow-flex rainbow-align_center">
-        <h1 className="rainbow-font-size-heading_medium rainbow-color_dark-1">
-            Leandro Torres
-        </h1>
-        <Badge
-            className="rainbow-admin_card-body-badge rainbow-m-left_small"
-            variant="inverse">
+        <h1 className="rainbow-font-size-heading_medium rainbow-color_dark-1">Leandro Torres</h1>
+        <Badge className="rainbow-admin_card-body-badge rainbow-m-left_small" variant="inverse">
             <FontAwesomeIcon icon={faCheck} pull="left" />
             verified
         </Badge>
@@ -51,7 +47,12 @@ const ACCOUNT_CARD_BODY = (
 );
 
 const IDENTITY_CARD_ACTIONS = (
-    <ButtonIcon variant="border" disabled size="medium" icon={<FontAwesomeIcon icon={faPencilAlt} />} />
+    <ButtonIcon
+        variant="border"
+        disabled
+        size="medium"
+        icon={<FontAwesomeIcon icon={faPencilAlt} />}
+    />
 );
 
 export default function AccountPage() {
@@ -59,19 +60,23 @@ export default function AccountPage() {
         <section>
             <div>
                 <Card
-                    icon={<FontAwesomeIcon icon={faPlug} size="lg" className="rainbow-color_success-active" />}
+                    icon={
+                        <FontAwesomeIcon
+                            icon={faPlug}
+                            size="lg"
+                            className="rainbow-color_success-active"
+                        />
+                    }
                     title="Conected account"
                     actions={ACCOUNT_CARD_ACTIONS}
-                    footer={ACCOUNT_CARD_FOOTER}>
+                    footer={ACCOUNT_CARD_FOOTER}
+                >
                     {ACCOUNT_CARD_BODY}
                 </Card>
             </div>
 
             <div className="rainbow-m-top_large">
-                <Card
-                    isLoading
-                    title="Identity"
-                    actions={IDENTITY_CARD_ACTIONS} />
+                <Card isLoading title="Identity" actions={IDENTITY_CARD_ACTIONS} />
             </div>
         </section>
     );

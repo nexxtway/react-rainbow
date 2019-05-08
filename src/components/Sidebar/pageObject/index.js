@@ -22,7 +22,9 @@ class PageSidebar {
     getItem(itemPosition) {
         const items = $(this.rootElement).$$('.rainbow-sidebar-item');
         if (items[itemPosition]) {
-            return new PageSidebarItem(`${this.rootElement} .rainbow-sidebar-item:nth-child(${itemPosition + 1})`);
+            return new PageSidebarItem(
+                `${this.rootElement} .rainbow-sidebar-item:nth-child(${itemPosition + 1})`,
+            );
         }
         return null;
     }

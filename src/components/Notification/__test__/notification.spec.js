@@ -12,21 +12,19 @@ describe('<Notification/>', () => {
         expect(onClickFn).toHaveBeenCalledTimes(1);
     });
     it('should set the prop size as "small" in ButtonIcon', () => {
-        const component = mount(
-            <Notification title="Notification test" />,
-        );
+        const component = mount(<Notification title="Notification test" />);
         expect(component.find('ButtonIcon').prop('size')).toBe('small');
     });
     it('should have the right class names', () => {
-        const component = mount(
-            <Notification title="Notification test" />,
-        );
+        const component = mount(<Notification title="Notification test" />);
         expect(component.find('div').prop('className')).toBe('rainbow-notification');
     });
     it('should have the right class names when have a custom class', () => {
         const component = mount(
             <Notification title="Notification test" className="my-custom-class-name" />,
         );
-        expect(component.find('div').prop('className')).toBe('rainbow-notification my-custom-class-name');
+        expect(component.find('div').prop('className')).toBe(
+            'rainbow-notification my-custom-class-name',
+        );
     });
 });

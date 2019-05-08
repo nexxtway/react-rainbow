@@ -3,14 +3,7 @@ import PropTypes from 'prop-types';
 import Radio from './radio';
 
 export default function RadioItems(props) {
-    const {
-        options,
-        ariaDescribedby,
-        onChange,
-        value,
-        name,
-        required,
-    } = props;
+    const { options, ariaDescribedby, onChange, value, name, required } = props;
 
     const isChecked = option => option.value === value;
 
@@ -24,7 +17,8 @@ export default function RadioItems(props) {
                 isChecked={isChecked(option)}
                 ariaDescribedby={ariaDescribedby}
                 name={name}
-                {...option} />
+                {...option}
+            />
         );
     });
 }

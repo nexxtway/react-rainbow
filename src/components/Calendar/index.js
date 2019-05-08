@@ -69,14 +69,7 @@ export default class Calendar extends Component {
 
     render() {
         const { currentMonth } = this.state;
-        const {
-            onChange,
-            value,
-            minDate,
-            maxDate,
-            className,
-            style,
-        } = this.props;
+        const { onChange, value, minDate, maxDate, className, style } = this.props;
         const formattedMonth = getFormattedMonth(currentMonth);
         const currentYear = currentMonth.getFullYear();
         const yearsRange = getYearsRange({
@@ -100,7 +93,8 @@ export default class Calendar extends Component {
                             size="medium"
                             disabled={disablePreviousMonth}
                             icon={<LeftIcon />}
-                            assistiveText="Previous Month" />
+                            assistiveText="Previous Month"
+                        />
 
                         <h3 className="rainbow-calendar_month-text" id="month">
                             {formattedMonth}
@@ -111,8 +105,8 @@ export default class Calendar extends Component {
                             size="medium"
                             disabled={disableNextMonth}
                             icon={<RightIcon />}
-                            assistiveText="Next Month" />
-
+                            assistiveText="Next Month"
+                        />
                     </div>
                     <Select
                         label="select year"
@@ -120,8 +114,8 @@ export default class Calendar extends Component {
                         className="rainbow-calendar_select-year"
                         value={currentYear}
                         options={yearsRange}
-                        onChange={this.handleYearChange} />
-
+                        onChange={this.handleYearChange}
+                    />
                 </div>
                 <table role="grid" aria-labelledby="month">
                     <DaysOfWeek />
@@ -130,8 +124,8 @@ export default class Calendar extends Component {
                         firstDayMonth={currentMonth}
                         minDate={minDate}
                         maxDate={maxDate}
-                        onChange={onChange} />
-
+                        onChange={onChange}
+                    />
                 </table>
             </section>
         );
@@ -140,10 +134,7 @@ export default class Calendar extends Component {
 
 Calendar.propTypes = {
     /** Sets the date for the Calendar programmatically. */
-    value: PropTypes.oneOfType([
-        PropTypes.instanceOf(Date),
-        PropTypes.string,
-    ]),
+    value: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
     /** The ending of a range of valid dates. The range includes the endDate.
      * The default value is current date + 100 years. */
     maxDate: PropTypes.instanceOf(Date),

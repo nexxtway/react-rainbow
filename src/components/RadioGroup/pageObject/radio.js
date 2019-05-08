@@ -16,7 +16,9 @@ class PageRadioItem {
      * @method
      */
     click() {
-        $(this.rootElement).$('label').click();
+        $(this.rootElement)
+            .$('label')
+            .click();
     }
 
     /**
@@ -25,7 +27,9 @@ class PageRadioItem {
      * @returns {bool}
      */
     hasFocus() {
-        return $(this.rootElement).$('input[type="radio"]').isFocused();
+        return $(this.rootElement)
+            .$('input[type="radio"]')
+            .isFocused();
     }
 
     /**
@@ -34,7 +38,9 @@ class PageRadioItem {
      * @returns {bool}
      */
     isChecked() {
-        return !!$(this.rootElement).$('input[type="radio"]').isSelected();
+        return !!$(this.rootElement)
+            .$('input[type="radio"]')
+            .isSelected();
     }
 }
 

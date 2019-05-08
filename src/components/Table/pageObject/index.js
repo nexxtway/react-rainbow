@@ -22,9 +22,14 @@ class PageTable {
      * @method
      */
     selectAllRows() {
-        const headCheckbox = $(this.rootElement).$('thead').$(HEAD_CHECKBOX_INPUT_SELECTOR);
+        const headCheckbox = $(this.rootElement)
+            .$('thead')
+            .$(HEAD_CHECKBOX_INPUT_SELECTOR);
         if (!headCheckbox.isSelected() && !headCheckbox.getAttribute('indeterminate')) {
-            $(this.rootElement).$('thead').$(HEAD_CHECKBOX_LABEL_SELECTOR).click();
+            $(this.rootElement)
+                .$('thead')
+                .$(HEAD_CHECKBOX_LABEL_SELECTOR)
+                .click();
         }
     }
 
@@ -33,9 +38,14 @@ class PageTable {
      * @method
      */
     deselectAllRows() {
-        const headCheckbox = $(this.rootElement).$('thead').$(HEAD_CHECKBOX_INPUT_SELECTOR);
+        const headCheckbox = $(this.rootElement)
+            .$('thead')
+            .$(HEAD_CHECKBOX_INPUT_SELECTOR);
         if (headCheckbox.isSelected() || headCheckbox.getAttribute('indeterminate')) {
-            $(this.rootElement).$('thead').$(HEAD_CHECKBOX_LABEL_SELECTOR).click();
+            $(this.rootElement)
+                .$('thead')
+                .$(HEAD_CHECKBOX_LABEL_SELECTOR)
+                .click();
         }
     }
 
@@ -47,7 +57,9 @@ class PageTable {
     getRow(rowPosition) {
         const rows = $(this.rootElement).$$('tbody > tr.rainbow-table_body-row');
         if (rows[rowPosition]) {
-            return new PageTableRow(`${this.rootElement} tr.rainbow-table_body-row:nth-child(${rowPosition + 1})`);
+            return new PageTableRow(
+                `${this.rootElement} tr.rainbow-table_body-row:nth-child(${rowPosition + 1})`,
+            );
         }
         return null;
     }
@@ -57,8 +69,15 @@ class PageTable {
      * @method
      */
     waitUntilDataIsLoaded() {
-        browser.waitUntil(() => !$(this.rootElement).$('.rainbow-table_body--loading').isDisplayed()
-            && $(this.rootElement).$('.rainbow-table_body-row').isDisplayed());
+        browser.waitUntil(
+            () =>
+                !$(this.rootElement)
+                    .$('.rainbow-table_body--loading')
+                    .isDisplayed() &&
+                $(this.rootElement)
+                    .$('.rainbow-table_body-row')
+                    .isDisplayed(),
+        );
     }
 }
 

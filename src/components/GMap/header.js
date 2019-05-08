@@ -9,9 +9,7 @@ export default function Header({ text }) {
 }
 
 Header.propTypes = {
-    text: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    text: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 };
 
 Header.defaultProps = {

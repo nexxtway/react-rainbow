@@ -6,21 +6,12 @@ import AssistiveText from './../AssistiveText';
 import './styles.css';
 
 /**
-* An avatar component represents an object or entity
-*/
+ * An avatar component represents an object or entity
+ */
 export default function Avatar(props) {
-    const {
-        className,
-        style,
-        size,
-        assistiveText,
-        ...rest
-    } = props;
-    const getContainerClassNames = () => classnames(
-        'rainbow-avatar',
-        `rainbow-avatar--${size}`,
-        className,
-    );
+    const { className, style, size, assistiveText, ...rest } = props;
+    const getContainerClassNames = () =>
+        classnames('rainbow-avatar', `rainbow-avatar--${size}`, className);
 
     return (
         <span className={getContainerClassNames()} style={style}>
@@ -32,27 +23,20 @@ export default function Avatar(props) {
 
 Avatar.propTypes = {
     /** The URL for the image.
-    * It take precedence over the initials and icon. */
+     * It take precedence over the initials and icon. */
     src: PropTypes.string,
     /** If the record name contains two words, like first and last name,
-    * use the first capitalized letter of each. For records that only have a single word name,
-    * use the first two letters of that word using one capital and one lower case letter. */
+     * use the first capitalized letter of each. For records that only have a single word name,
+     * use the first two letters of that word using one capital and one lower case letter. */
     initials: PropTypes.string,
     /** The fallback icon to show when src and initials are not passed. */
     icon: PropTypes.node,
     /** The size of the avatar. Valid values are x-small, small, medium, and large.
-    * It take precedence over the icon.
-    * This value defaults to medium. */
-    size: PropTypes.oneOf([
-        'x-small',
-        'small',
-        'medium',
-        'large',
-    ]),
+     * It take precedence over the icon.
+     * This value defaults to medium. */
+    size: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
     /** The variant of the initials. Only make sense when initials is used. */
-    initialsVariant: PropTypes.oneOf([
-        'default', 'inverse',
-    ]),
+    initialsVariant: PropTypes.oneOf(['default', 'inverse']),
     /** Displays tooltip text when the mouse moves over the element. */
     title: PropTypes.string,
     /** A description for assistive sreen readers. */

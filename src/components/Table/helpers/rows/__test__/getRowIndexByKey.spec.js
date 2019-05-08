@@ -7,7 +7,7 @@ describe('getRowIndexByKey', () => {
     it('should return undefined when the key passed does not exists in indexes', () => {
         const keys = ['', 'abcd', 123, undefined, null, [], {}, () => {}];
         const indexes = {};
-        keys.forEach((key) => {
+        keys.forEach(key => {
             expect(getRowIndexByKey(indexes, key)).toBeUndefined();
         });
     });

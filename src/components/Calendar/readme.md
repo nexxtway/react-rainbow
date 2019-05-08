@@ -1,4 +1,5 @@
 ##### Calendar base:
+
     initialState = { date: new Date() };
     const calendarContainerStyles = {
         width: '28rem',
@@ -23,8 +24,8 @@
         </div>
     </div>
 
-
 ##### Calendar with dates contrains:
+
     initialState = { date: new Date() };
     const calendarContainerStyles = {
         width: '28rem',

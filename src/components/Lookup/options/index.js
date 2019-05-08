@@ -27,8 +27,8 @@ function MenuItems(props) {
                 <li
                     key={key}
                     className="rainbow-lookup_menu-item_header"
-                    role="separator">
-
+                    role="separator"
+                >
                     <span className="rainbow-lookup_menu-item_header-label">{label}</span>
                 </li>
             );
@@ -43,7 +43,8 @@ function MenuItems(props) {
                 isActive={isActive}
                 index={index}
                 onHover={onHover}
-                onClick={onClick} />
+                onClick={onClick}
+            />
         );
     });
 }

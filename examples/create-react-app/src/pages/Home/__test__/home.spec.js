@@ -7,9 +7,7 @@ import Home from './../';
 
 describe('<Home/>', () => {
     it('should render the VerticalNavigation', () => {
-        const component = shallow(
-            <Home />,
-        );
+        const component = shallow(<Home />);
         expect(component.find(VerticalNavigation).exists()).toBe(true);
         expect(component.find(VerticalSection).exists()).toBe(true);
         expect(component.find(VerticalItem).exists()).toBe(true);

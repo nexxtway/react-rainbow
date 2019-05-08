@@ -9,9 +9,7 @@ import CheckoutExample from '..';
 
 describe('<CheckoutExample/>', () => {
     it('should render the Checkout', () => {
-        const component = shallow(
-            <CheckoutExample />,
-        );
+        const component = shallow(<CheckoutExample />);
         expect(component.find(Card).exists()).toBe(true);
         expect(component.find(Button).exists()).toBe(true);
         expect(component.find(Input).exists()).toBe(true);

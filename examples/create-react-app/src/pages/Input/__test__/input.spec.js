@@ -5,9 +5,7 @@ import InputExample from './../';
 
 describe('<InputExample/>', () => {
     it('should render the Input', () => {
-        const component = shallow(
-            <InputExample />,
-        );
+        const component = shallow(<InputExample />);
         expect(component.find(Input).exists()).toBe(true);
     });
 });

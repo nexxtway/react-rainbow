@@ -21,18 +21,11 @@ export default class Head extends PureComponent {
     }
 
     render() {
-        const {
-            columns,
-            ...rest
-        } = this.props;
+        const { columns, ...rest } = this.props;
 
         if (columns) {
             return columns.map((column, index) => {
-                const {
-                    header,
-                    field,
-                    ...columnRest
-                } = column;
+                const { header, field, ...columnRest } = column;
                 const key = `header-${index}`;
 
                 return (
@@ -44,7 +37,8 @@ export default class Head extends PureComponent {
                         content={header}
                         sortDirection={this.resolveSortDirection(field)}
                         isSelected={this.isSelected(field)}
-                        field={field} />
+                        field={field}
+                    />
                 );
             });
         }

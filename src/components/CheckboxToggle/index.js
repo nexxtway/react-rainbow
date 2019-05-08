@@ -8,10 +8,10 @@ import RenderIf from '../RenderIf';
 import './styles.css';
 
 /**
-* Checkbox toggle is a checkable input that communicates if an option is true,
-* false or indeterminate.
-* @category Form
-*/
+ * Checkbox toggle is a checkable input that communicates if an option is true,
+ * false or indeterminate.
+ * @category Form
+ */
 class CheckboxToggle extends Component {
     constructor(props) {
         super(props);
@@ -74,12 +74,17 @@ class CheckboxToggle extends Component {
                     onBlur={onBlur}
                     onClick={onClick}
                     disabled={disabled}
-                    ref={this.checkboxToggleRef} />
+                    ref={this.checkboxToggleRef}
+                />
 
-                <span id={this.inputIndentifier} className="rainbow-checkbox-toggle_faux-container" aria-live="assertive">
+                <span
+                    id={this.inputIndentifier}
+                    className="rainbow-checkbox-toggle_faux-container"
+                    aria-live="assertive"
+                >
                     <span className="rainbow-checkbox-toggle_faux" />
                 </span>
-                <RenderIf isTrue={!!label} >
+                <RenderIf isTrue={!!label}>
                     <span className="rainbow-checkbox-toggle_label">{label}</span>
                 </RenderIf>
             </label>
@@ -89,9 +94,7 @@ class CheckboxToggle extends Component {
 
 CheckboxToggle.propTypes = {
     /** Text label for the checkbox toggle. */
-    label: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The name of the input */
     name: PropTypes.string,
     /** The value of the element. */

@@ -17,7 +17,9 @@ class PageCheckboxItem {
      * @method
      */
     click() {
-        $(this.rootElement).$('.rainbow-checkbox-group_checkbox-label-container').click();
+        $(this.rootElement)
+            .$('.rainbow-checkbox-group_checkbox-label-container')
+            .click();
     }
 
     /**
@@ -26,7 +28,9 @@ class PageCheckboxItem {
      * @returns {bool}
      */
     hasFocus() {
-        return $(this.rootElement).$('input[type="checkbox"]').isFocused();
+        return $(this.rootElement)
+            .$('input[type="checkbox"]')
+            .isFocused();
     }
 
     /**
@@ -35,7 +39,9 @@ class PageCheckboxItem {
      * @returns {bool}
      */
     isChecked() {
-        return $(this.rootElement).$('input[type="checkbox"]').isSelected();
+        return $(this.rootElement)
+            .$('input[type="checkbox"]')
+            .isSelected();
     }
 }
 

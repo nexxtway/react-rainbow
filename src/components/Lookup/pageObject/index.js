@@ -19,7 +19,9 @@ class PageLookup {
      * @method
      */
     click() {
-        $(this.rootElement).$('input[type="search"]').click();
+        $(this.rootElement)
+            .$('input[type="search"]')
+            .click();
     }
 
     /**
@@ -27,7 +29,9 @@ class PageLookup {
      * @method
      */
     clickCloseButton() {
-        $(this.rootElement).$('button[title="close"]').click();
+        $(this.rootElement)
+            .$('button[title="close"]')
+            .click();
     }
 
     /**
@@ -36,7 +40,9 @@ class PageLookup {
      * @returns {bool}
      */
     hasFocusInput() {
-        return $(this.rootElement).$('input[type="search"]').isFocused();
+        return $(this.rootElement)
+            .$('input[type="search"]')
+            .isFocused();
     }
 
     /**
@@ -45,7 +51,9 @@ class PageLookup {
      * @param {string} value - The value to type in the input element.
      */
     setQuery(value) {
-        $(this.rootElement).$('input[type="search"]').setValue(value);
+        $(this.rootElement)
+            .$('input[type="search"]')
+            .setValue(value);
     }
 
     /**
@@ -53,7 +61,9 @@ class PageLookup {
      * @method
      */
     clearQuery() {
-        $(this.rootElement).$('input[type="search"]').clearValue();
+        $(this.rootElement)
+            .$('input[type="search"]')
+            .clearValue();
     }
 
     /**
@@ -62,7 +72,9 @@ class PageLookup {
      * @returns {string}
      */
     getQuery() {
-        return $(this.rootElement).$('input[type="search"]').getValue();
+        return $(this.rootElement)
+            .$('input[type="search"]')
+            .getValue();
     }
 
     /**
@@ -82,7 +94,9 @@ class PageLookup {
     getOption(itemPosition) {
         const items = $(this.rootElement).$$('li.rainbow-lookup_menu-item');
         if (items[itemPosition]) {
-            return new PageLookupMenuItem(`${this.rootElement} li.rainbow-lookup_menu-item:nth-child(${itemPosition + 1})`);
+            return new PageLookupMenuItem(
+                `${this.rootElement} li.rainbow-lookup_menu-item:nth-child(${itemPosition + 1})`,
+            );
         }
         return null;
     }
@@ -101,21 +115,25 @@ class PageLookup {
     }
 
     /**
-    * Returns true when the options menu is open, false otherwise.
-    * @method
-    * @returns {bool}
-    */
+     * Returns true when the options menu is open, false otherwise.
+     * @method
+     * @returns {bool}
+     */
     isMenuOpen() {
-        return $(this.rootElement).$('.rainbow-lookup_options-container').isDisplayed();
+        return $(this.rootElement)
+            .$('.rainbow-lookup_options-container')
+            .isDisplayed();
     }
 
     /**
-    * Returns true when the empty message is displayed, false otherwise.
-    * @method
-    * @returns {bool}
-    */
+     * Returns true when the empty message is displayed, false otherwise.
+     * @method
+     * @returns {bool}
+     */
     isMenuEmpty() {
-        return $(this.rootElement).$('.rainbow-lookup_options-container--empty').isDisplayed();
+        return $(this.rootElement)
+            .$('.rainbow-lookup_options-container--empty')
+            .isDisplayed();
     }
 
     /**
