@@ -2,13 +2,9 @@ import getInitialFocusedIndex from '../getInitialFocusedIndex';
 
 describe('getInitialFocusedIndex', () => {
     it('should return 0', () => {
-        const options = [
-            { label: 'Paris' },
-            { label: 'New York' },
-            { label: 'San Fransisco' },
-        ];
+        const options = [{ label: 'Paris' }, { label: 'New York' }, { label: 'San Fransisco' }];
         const values = [undefined, [], options];
-        values.forEach((value) => {
+        values.forEach(value => {
             expect(getInitialFocusedIndex(value)).toBe(0);
         });
     });
