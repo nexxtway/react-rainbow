@@ -104,14 +104,14 @@
   background-color: white;
   box-shadow: 0 2px 4px 0 #e3e5ed;
   border: solid 1px #e3e5ed;
-  overflow-y: hidden;
+  overflow: hidden;
   margin-top: 0.2rem;
   z-index: 2000;
-  transition: all 1s linear; }
+  transition: all 0.1s linear; }
   .rainbow-lookup_options-menu .rainbow-lookup_input-close-button-container,
   .rainbow-lookup_options-menu .rainbow-lookup_input-icon {
     height: 100%;
-    transition: all 1s linear; }
+    transition: all 0.1s linear; }
 
 .rainbow-lookup_input-error {
   font-size: 0.875rem;
@@ -174,7 +174,7 @@
   width: 100%;
   margin: 0 3px;
   padding-left: 0;
-  transition: all 0.7s linear; }
+  transition: all 0.1s linear; }
 
 .rainbow-lookup_chip-content {
   display: flex;
