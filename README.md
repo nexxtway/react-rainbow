@@ -40,7 +40,7 @@ Here is a quick example to get you started, **it's all you need**:
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Button from 'react-rainbow-components/components/Button';
+import { Button } from 'react-rainbow-components';
 
 function App() {
     return <Button label="Hello World!" variant="brand" onClick={() => alert('Hello World!')} />;
