@@ -47,12 +47,10 @@
     text-decoration: none;
     white-space: nowrap;
     cursor: pointer;
-    transition: background-color 0.1s linear;
 }
 
 .rainbow-lookup_menu-item--active > a {
     background-color: $color-gray-2;
-    transition: background-color 0.1s linear;
 }
 
 .rainbow-lookup_menu-item_icon-container {
