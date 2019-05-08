@@ -40,19 +40,12 @@ describe('<Lookup />', () => {
         );
         expect(component.find('div.rainbow-lookup_container.rainbow-lookup_container--error').exists()).toBe(true);
     });
-    it('should set the right class names in the input container element when the menu is open', () => {
-        const component = mount(
-            <Lookup label="custom label" options={[{}]} />,
-        );
-        component.find('input').simulate('focus');
-        expect(component.find('div.rainbow-lookup_input-container.rainbow-lookup_input-container--menu-opened').exists()).toBe(true);
-    });
-    it('should set the right class names in the input element when the menu is open and isLoading', () => {
+    it('should set the right class names in the input element when isLoading is passed', () => {
         const component = mount(
             <Lookup label="custom label" options={[{}]} isLoading />,
         );
         component.find('input').simulate('focus');
-        expect(component.find('input.rainbow-lookup_input--menu-opened.rainbow-lookup_input--loading').exists()).toBe(true);
+        expect(component.find('input.rainbow-lookup_input.rainbow-lookup_input--loading').exists()).toBe(true);
     });
     it('should render the Options menu when there are options and the input is focused', () => {
         const component = mount(

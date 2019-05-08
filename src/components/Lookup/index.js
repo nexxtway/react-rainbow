@@ -36,7 +36,6 @@ class Lookup extends Component {
         };
         this.inputId = uniqueId('lookup-input');
         this.errorMessageId = uniqueId('error-message');
-        this.labelRef = React.createRef();
         this.containerRef = React.createRef();
         this.inputRef = React.createRef();
         this.handleSearch = this.handleSearch.bind(this);
@@ -56,12 +55,6 @@ class Lookup extends Component {
             [DOWN_KEY]: this.handleKeyDownPressed,
             [ENTER_KEY]: this.handleKeyEnterPressed,
         };
-    }
-
-    componentDidMount() {
-        this.setState({
-            labelHeight: this.labelRef.current.getHeight(),
-        });
     }
 
     componentDidUpdate(prevProps) {
@@ -86,28 +79,9 @@ class Lookup extends Component {
         }, className);
     }
 
-    getInputContainerClassNames() {
-        return classnames('rainbow-lookup_input-container', {
-            'rainbow-lookup_input-container--menu-opened': this.isMenuOpen(),
-        });
-    }
-
-    getInputContainerStyle() {
-        const { labelHeight } = this.state;
-        if (labelHeight) {
-            return {
-                top: labelHeight,
-            };
-        }
-        return undefined;
-    }
-
     getInputClassNames() {
         const { isLoading } = this.props;
-        const isOpen = this.isMenuOpen();
-        return classnames({
-            'rainbow-lookup_input': !isOpen,
-            'rainbow-lookup_input--menu-opened': isOpen,
+        return classnames('rainbow-lookup_input', {
             'rainbow-lookup_input--loading': isLoading,
         });
     }
@@ -310,6 +284,7 @@ class Lookup extends Component {
         const { searchValue, focusedItemIndex, options } = this.state;
         const chipOnDelete = (disabled || readOnly) ? undefined : this.handleRemoveValue;
         const isOpenMenu = this.isMenuOpen();
+        const errorMessageId = this.getErrorMessageId();
 
         return (
             <div
@@ -324,8 +299,7 @@ class Lookup extends Component {
                     hideLabel={hideLabel}
                     required={required}
                     inputId={this.inputId}
-                    readOnly={readOnly}
-                    ref={this.labelRef} />
+                    readOnly={readOnly} />
 
                 <RenderIf isTrue={!!value}>
                     <div className="rainbow-lookup_chip-content_container">
@@ -339,8 +313,7 @@ class Lookup extends Component {
 
                 <RenderIf isTrue={!value}>
                     <div
-                        className={this.getInputContainerClassNames()}
-                        style={this.getInputContainerStyle()}
+                        className="rainbow-lookup_input-container"
                         ref={this.containerRef}>
 
                         <RightElement
@@ -369,26 +342,23 @@ class Lookup extends Component {
                             readOnly={readOnly}
                             required={required}
                             autoComplete="off"
-                            aria-describedby={this.getErrorMessageId()}
+                            aria-describedby={errorMessageId}
                             ref={this.inputRef} />
 
                         <RenderIf isTrue={isOpenMenu}>
-                            <div className="rainbow-lookup_options-divider" />
-                            <Options
-                                items={options}
-                                value={searchValue}
-                                onSelectOption={this.handleChange}
-                                focusedItemIndex={focusedItemIndex}
-                                onHoverOption={this.handleHover} />
-
+                            <div className="rainbow-lookup_options-menu">
+                                <Options
+                                    items={options}
+                                    value={searchValue}
+                                    onSelectOption={this.handleChange}
+                                    focusedItemIndex={focusedItemIndex}
+                                    onHoverOption={this.handleHover} />
+                            </div>
                         </RenderIf>
                     </div>
                 </RenderIf>
-                <RenderIf isTrue={!value}>
-                    <div className="rainbow-lookup_inner-div" />
-                </RenderIf>
                 <RenderIf isTrue={!!error}>
-                    <div id={this.getErrorMessageId()} className="rainbow-lookup_input-error">
+                    <div id={errorMessageId} className="rainbow-lookup_input-error">
                         {error}
                     </div>
                 </RenderIf>
