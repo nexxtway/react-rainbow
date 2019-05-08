@@ -6,41 +6,36 @@ import normalizeValue from './normalizeValue';
 import './styles.css';
 
 /**
-* Progress bar component communicates to the user the progress of a particular process.
-*/
+ * Progress bar component communicates to the user the progress of a particular process.
+ */
 export default function ProgressBar(props) {
-    const {
-        className,
-        style,
-        assistiveText,
-        value,
-        size,
-        variant,
-     } = props;
+    const { className, style, assistiveText, value, size, variant } = props;
 
-    const getContainerClassNames = () => classnames(
-        'rainbow-progress-bar',
-        `rainbow-progress-bar--${size}`,
-        { 'rainbow-progress-bar--success': variant === 'success' },
-        className,
-    );
+    const getContainerClassNames = () =>
+        classnames(
+            'rainbow-progress-bar',
+            `rainbow-progress-bar--${size}`,
+            { 'rainbow-progress-bar--success': variant === 'success' },
+            className,
+        );
 
-    const getProgressBarClassNames = () => classnames(
-        'rainbow-progress-bar_value',
-        { 'rainbow-progress-bar_value--success': variant === 'success' },
-    );
+    const getProgressBarClassNames = () =>
+        classnames('rainbow-progress-bar_value', {
+            'rainbow-progress-bar_value--success': variant === 'success',
+        });
 
     const normalizedValue = normalizeValue(value);
     const WIDTH = { width: `${normalizedValue}%` };
 
     return (
-        <div className={getContainerClassNames()}
+        <div
+            className={getContainerClassNames()}
             aria-valuemin="0"
             aria-valuemax="100"
             aria-valuenow={normalizedValue}
             role="progressbar"
-            style={style}>
-
+            style={style}
+        >
             <span className={getProgressBarClassNames()} style={WIDTH}>
                 <AsistiveText text={assistiveText} />
             </span>
@@ -52,17 +47,10 @@ ProgressBar.propTypes = {
     /** The percentage value of the progress bar. It must be between 0 and 100. */
     value: PropTypes.number,
     /** The size of the progress bar. Valid values are x-small, small, medium, and large.
-    * The default value is medium. */
-    size: PropTypes.oneOf([
-        'x-small',
-        'small',
-        'medium',
-        'large',
-    ]),
+     * The default value is medium. */
+    size: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
     /** The variant of the progress bar. Valid values are brand and success. */
-    variant: PropTypes.oneOf([
-        'brand', 'success',
-    ]),
+    variant: PropTypes.oneOf(['brand', 'success']),
     /** A description for assistive sreen readers. */
     assistiveText: PropTypes.string,
     /** A CSS class for the outer element, in addition to the component's base classes. */

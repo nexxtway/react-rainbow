@@ -17,9 +17,13 @@ export default class InputCheckbox extends Component {
 
     getContainerClassNames() {
         const { className, error } = this.props;
-        return classnames('rainbow-input-checkbox_container', {
-            'rainbow-input-checkbox--error': error,
-        }, className);
+        return classnames(
+            'rainbow-input-checkbox_container',
+            {
+                'rainbow-input-checkbox--error': error,
+            },
+            className,
+        );
     }
 
     getInlineTextLabelId() {
@@ -100,21 +104,27 @@ export default class InputCheckbox extends Component {
                         checked={checked}
                         aria-labelledby={this.getInlineTextLabelId()}
                         aria-describedby={this.getErrorMessageId()}
-                        ref={this.inputRef} />
+                        ref={this.inputRef}
+                    />
 
                     <Label
                         label={label}
                         hideLabel={hideLabel}
                         disabled={disabled}
                         inputId={this.inputId}
-                        id={this.getInlineTextLabelId()} />
-
+                        id={this.getInlineTextLabelId()}
+                    />
                 </div>
                 <RenderIf isTrue={!!bottomHelpText}>
                     <div className="rainbow-input-checkbox_help">{bottomHelpText}</div>
                 </RenderIf>
                 <RenderIf isTrue={!!error}>
-                    <div id={this.getErrorMessageId()} className="rainbow-input-checkbox_error-message">{error}</div>
+                    <div
+                        id={this.getErrorMessageId()}
+                        className="rainbow-input-checkbox_error-message"
+                    >
+                        {error}
+                    </div>
                 </RenderIf>
             </div>
         );
@@ -122,25 +132,14 @@ export default class InputCheckbox extends Component {
 }
 
 InputCheckbox.propTypes = {
-    value: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.bool,
-    ]),
-    label: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]).isRequired,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
     name: PropTypes.string,
-    bottomHelpText: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
-    error: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     disabled: PropTypes.bool,
     onChange: PropTypes.func,
-    tabIndex: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.string,
-    ]),
+    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     onClick: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,

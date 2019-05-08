@@ -26,20 +26,15 @@ export default class Label extends Component {
     }
 
     render() {
-        const {
-            label,
-            required,
-            inputId,
-            id,
-        } = this.props;
+        const { label, required, inputId, id } = this.props;
 
         return (
             <label
                 className={this.getLabelClassNames()}
                 htmlFor={inputId}
                 id={id}
-                ref={this.labelRef}>
-
+                ref={this.labelRef}
+            >
                 <RequiredAsterisk required={required} />
                 {label}
             </label>

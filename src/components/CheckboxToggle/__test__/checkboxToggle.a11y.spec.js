@@ -6,9 +6,7 @@ import CheckboxToggle from './../';
 describe('<CheckboxToggle/>', () => {
     it('should be accessible when label is passed', async () => {
         expect.assertions(1);
-        const html = ReactDOMServer.renderToString(
-            <CheckboxToggle label="Toggle label" />,
-        );
+        const html = ReactDOMServer.renderToString(<CheckboxToggle label="Toggle label" />);
         const results = await axe(html);
         expect(results).toHaveNoViolations();
     });

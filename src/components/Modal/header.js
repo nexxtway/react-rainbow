@@ -14,9 +14,7 @@ export default function Header({ title, id }) {
 
 Header.propTypes = {
     id: PropTypes.string,
-    title: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 };
 
 Header.defaultProps = {

@@ -11,11 +11,7 @@ export const { Provider, Consumer } = React.createContext();
  * @category Layout
  */
 export default function Application(props) {
-    const {
-      children,
-      className,
-      style,
-    } = props;
+    const { children, className, style } = props;
 
     return (
         <Provider>
@@ -31,10 +27,7 @@ Application.propTypes = {
      * This prop should not be visible in the documentation.
      * @ignore
      */
-    children: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.node),
-        PropTypes.object,
-    ]),
+    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */

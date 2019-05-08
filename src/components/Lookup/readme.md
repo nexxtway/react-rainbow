@@ -66,7 +66,6 @@
             onSearch={search} />
     </div>
 
-
 ##### Lookup with icon:
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
@@ -135,7 +134,6 @@
             onSearch={search} />
     </div>
 
-
 ##### Lookup with icon and description:
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
@@ -153,62 +151,62 @@
     };
 
     const options = [
-        { 
+        {
             label: 'Paris',
             description: 'This is an awesome city',
             icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
         },
-        { 
+        {
             label: 'New York',
             description: 'This is an awesome city',
             icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
         },
-        { 
+        {
             label: 'San Fransisco',
             description: 'This is an awesome city',
-            icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span> 
+            icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
         },
-        { 
+        {
             label: 'Madrid',
             description: 'This is an awesome city',
             icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
         },
-        { 
+        {
             label: 'Miami',
             description: 'This is an awesome city',
             icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
         },
-        { 
+        {
             label: 'London',
             description: 'This is an awesome city',
             icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
         },
-        { 
+        {
             label: 'Tokyo',
             description: 'This is an awesome city',
             icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
         },
-        { 
+        {
             label: 'Barcelona',
             description: 'This is an awesome city',
             icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
         },
-        { 
+        {
             label: 'La Habana',
             description: 'This is an awesome city',
             icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
         },
-        { 
+        {
             label: 'Buenos Aires',
             description: 'This is an awesome city',
             icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
         },
-        { 
+        {
             label: 'Sao Paulo',
             description: 'This is an awesome city',
             icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
         },
-        { 
+        {
             label: 'Toronto',
             description: 'This is an awesome city',
             icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
@@ -262,7 +260,6 @@
             isLoading={state.isLoading}
             onSearch={search} />
     </div>
-
 
 ##### Lookup with options type section:
 
@@ -357,7 +354,6 @@
             onSearch={search} />
     </div>
 
-
 ##### Lookup disabled:
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
@@ -425,7 +421,6 @@
             isLoading={state.isLoading}
             onSearch={search} />
     </div>
-
 
 ##### Lookup required with error:
 
@@ -495,4 +490,3 @@
             isLoading={state.isLoading}
             onSearch={search} />
     </div>
-

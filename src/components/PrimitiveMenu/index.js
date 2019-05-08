@@ -3,19 +3,8 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import MenuContent from './menuContent';
 import { Provider } from './context';
-import {
-    findItemByKey,
-    findItemIndex,
-    insertChildOrderly,
-    getChildMenuItemNodes,
-} from './utils';
-import {
-    UP_KEY,
-    DOWN_KEY,
-    ESCAPE_KEY,
-    TAB_KEY,
-    ENTER_KEY,
-} from './../../libs/constants';
+import { findItemByKey, findItemIndex, insertChildOrderly, getChildMenuItemNodes } from './utils';
+import { UP_KEY, DOWN_KEY, ESCAPE_KEY, TAB_KEY, ENTER_KEY } from './../../libs/constants';
 import './styles.css';
 
 export default class PrimitiveMenu extends Component {
@@ -53,9 +42,13 @@ export default class PrimitiveMenu extends Component {
         const { isOpen } = this.state;
         const { className } = this.props;
 
-        return classnames('rainbow-primitive-menu', {
-            'rainbow-primitive-menu--open': isOpen,
-        }, className);
+        return classnames(
+            'rainbow-primitive-menu',
+            {
+                'rainbow-primitive-menu--open': isOpen,
+            },
+            className,
+        );
     }
 
     getDropdownClassNames() {
@@ -227,25 +220,25 @@ export default class PrimitiveMenu extends Component {
     }
 
     /**
-    * Sets focus on the element.
-    * @public
-    */
+     * Sets focus on the element.
+     * @public
+     */
     focus() {
         this.triggerRef.current.focus();
     }
 
     /**
-    * Sets click on the element.
-    * @public
-    */
+     * Sets click on the element.
+     * @public
+     */
     click() {
         this.triggerRef.current.click();
     }
 
     /**
-    * Sets blur on the element.
-    * @public
-    */
+     * Sets blur on the element.
+     * @public
+     */
     blur() {
         this.triggerRef.current.blur();
     }
@@ -274,8 +267,8 @@ export default class PrimitiveMenu extends Component {
                 className={this.getContainerClassNames()}
                 style={style}
                 onKeyDown={this.handleKeyPressed}
-                ref={this.containerRef}>
-
+                ref={this.containerRef}
+            >
                 <Trigger
                     {...rest}
                     isOpen={isOpen}
@@ -284,14 +277,13 @@ export default class PrimitiveMenu extends Component {
                     ariaHaspopup
                     assistiveText={assistiveText}
                     onClick={this.toggleMenu}
-                    ref={this.triggerRef} />
+                    ref={this.triggerRef}
+                />
 
                 <div className={this.getDropdownClassNames()}>
                     <ul role="menu" aria-label={ariaLabel}>
                         <MenuContent isLoading={isLoading}>
-                            <Provider value={context}>
-                                {children}
-                            </Provider>
+                            <Provider value={context}>{children}</Provider>
                         </MenuContent>
                     </ul>
                 </div>
@@ -302,23 +294,14 @@ export default class PrimitiveMenu extends Component {
 
 PrimitiveMenu.propTypes = {
     /** The content of the PrimitiveMenu. Used to render the menuItem elements
-    * when the PrimitiveMenu is open. */
-    children: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.node),
-        PropTypes.object,
-    ]),
+     * when the PrimitiveMenu is open. */
+    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
     /** The size of the menu. Options include xx-small, x-small, medium, or large.
-    * This value defaults to xx-small. */
-    menuSize: PropTypes.oneOf([
-        'xx-small',
-        'x-small',
-        'small',
-        'medium',
-        'large',
-    ]),
+     * This value defaults to xx-small. */
+    menuSize: PropTypes.oneOf(['xx-small', 'x-small', 'small', 'medium', 'large']),
     /** Determines the alignment of the menu relative to the trigger element.
-    * Available options are: left, center, right, bottom, bottom-left, bottom-right.
-    * This value defaults to left. */
+     * Available options are: left, center, right, bottom, bottom-left, bottom-right.
+     * This value defaults to left. */
     menuAlignment: PropTypes.oneOf([
         'left',
         'right',
@@ -326,7 +309,6 @@ PrimitiveMenu.propTypes = {
         'center',
         'bottom-right',
         'bottom-left',
-
     ]),
     /** If is set to true, then is showed a loading symbol. */
     isLoading: PropTypes.bool,

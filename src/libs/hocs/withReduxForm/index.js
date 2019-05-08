@@ -8,17 +8,10 @@ export default function withReduxForm(WrappedComponent) {
         }
 
         getErrorMessage() {
-            const {
-                meta,
-                error,
-            } = this.props;
+            const { meta, error } = this.props;
 
             if (meta) {
-                const {
-                    touched,
-                    submitFailed,
-                    error: metaError,
-                 } = meta;
+                const { touched, submitFailed, error: metaError } = meta;
 
                 if ((touched || submitFailed) && metaError) {
                     return metaError;
@@ -48,7 +41,8 @@ export default function withReduxForm(WrappedComponent) {
                     {...rest}
                     {...input}
                     error={this.getErrorMessage()}
-                    ref={this.fieldRef} />
+                    ref={this.fieldRef}
+                />
             );
         }
     };

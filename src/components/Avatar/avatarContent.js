@@ -16,10 +16,9 @@ export default class AvatarContent extends Component {
 
     getClassNames() {
         const { initialsVariant } = this.props;
-        return classnames(
-            'rainbow-avatar_initials',
-            { 'rainbow-avatar_initials--inverse': initialsVariant === 'inverse' },
-        );
+        return classnames('rainbow-avatar_initials', {
+            'rainbow-avatar_initials--inverse': initialsVariant === 'inverse',
+        });
     }
 
     handleImageError() {
@@ -27,38 +26,22 @@ export default class AvatarContent extends Component {
     }
 
     render() {
-        const {
-            src,
-            initials,
-            title,
-            icon,
-            assistiveText,
-        } = this.props;
+        const { src, initials, title, icon, assistiveText } = this.props;
 
         const { imageFailed } = this.state;
         if (src && !imageFailed) {
             return (
-                <img
-                    src={src}
-                    onError={this.handleImageError}
-                    title={title}
-                    alt={assistiveText} />
+                <img src={src} onError={this.handleImageError} title={title} alt={assistiveText} />
             );
         } else if (initials) {
             return (
-                <abbr
-                    className={this.getClassNames()}
-                    title={title}>
-
+                <abbr className={this.getClassNames()} title={title}>
                     {normalizeInitials(initials)}
                 </abbr>
             );
         } else if (icon) {
             return (
-                <span
-                    className={this.getClassNames()}
-                    title={title}>
-
+                <span className={this.getClassNames()} title={title}>
                     {icon}
                 </span>
             );

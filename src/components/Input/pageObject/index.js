@@ -17,7 +17,9 @@ class PageInput {
      * @method
      */
     click() {
-        $(this.rootElement).$('input').click();
+        $(this.rootElement)
+            .$('input')
+            .click();
     }
 
     /**
@@ -25,7 +27,9 @@ class PageInput {
      * @method
      */
     clickLabel() {
-        $(this.rootElement).$('label').click();
+        $(this.rootElement)
+            .$('label')
+            .click();
     }
 
     /**
@@ -34,7 +38,9 @@ class PageInput {
      * @returns {bool}
      */
     hasFocusInput() {
-        return $(this.rootElement).$('input').isFocused();
+        return $(this.rootElement)
+            .$('input')
+            .isFocused();
     }
 
     /**
@@ -43,7 +49,9 @@ class PageInput {
      * @param {string} value - The value to type in the input element.
      */
     setValue(value) {
-        $(this.rootElement).$('input').setValue(value);
+        $(this.rootElement)
+            .$('input')
+            .setValue(value);
     }
 
     /**
@@ -52,9 +60,10 @@ class PageInput {
      * @returns {string}
      */
     getValue() {
-        return $(this.rootElement).$('input').getValue();
+        return $(this.rootElement)
+            .$('input')
+            .getValue();
     }
-
 }
 
 module.exports = PageInput;

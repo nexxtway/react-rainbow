@@ -10,10 +10,10 @@ import RightArrow from './rightArrow';
 import './styles.css';
 
 /**
-* Represents an overflow of items from a preceding VerticalNavigationSection,
-* with the ability to toggle visibility.
-* @category Layout
-*/
+ * Represents an overflow of items from a preceding VerticalNavigationSection,
+ * with the ability to toggle visibility.
+ * @category Layout
+ */
 export default class VerticalSectionOverflow extends Component {
     constructor(props) {
         super(props);
@@ -37,9 +37,13 @@ export default class VerticalSectionOverflow extends Component {
     getContainerClassNames() {
         const { className } = this.props;
         const { isExpanded } = this.state;
-        return classnames('rainbow-vertical-section-overflow_container', {
-            'rainbow-vertical-section-overflow_container--expanded': isExpanded,
-        }, className);
+        return classnames(
+            'rainbow-vertical-section-overflow_container',
+            {
+                'rainbow-vertical-section-overflow_container--expanded': isExpanded,
+            },
+            className,
+        );
     }
 
     getButtonClassNames() {
@@ -68,44 +72,41 @@ export default class VerticalSectionOverflow extends Component {
     }
 
     render() {
-        const {
-            label,
-            description,
-            style,
-            assistiveText,
-            children,
-        } = this.props;
+        const { label, description, style, assistiveText, children } = this.props;
         const { isExpanded } = this.state;
         const sectionMaxHeight = {
             maxHeight: getMaxHeight(children, isExpanded),
         };
 
         return (
-            <div data-id="vertical-overflow-container" className={this.getContainerClassNames()} style={style}>
+            <div
+                data-id="vertical-overflow-container"
+                className={this.getContainerClassNames()}
+                style={style}
+            >
                 <button
                     className={this.getButtonClassNames()}
                     aria-controls={this.searchResultsId}
                     aria-expanded={isExpanded}
-                    onClick={this.toggleOverflow}>
-
+                    onClick={this.toggleOverflow}
+                >
                     <div className="rainbow-vertical-section-overflow_action-text">
-                        <span className="rainbow-vertical-section-overflow_action-label">{label}</span>
+                        <span className="rainbow-vertical-section-overflow_action-label">
+                            {label}
+                        </span>
                         <Description isExpanded={isExpanded} description={description} />
                         <AssistiveText text={assistiveText} />
                     </div>
                     <RightArrow isExpanded={isExpanded} />
-
                 </button>
                 <div
                     data-id="vertical-overflow"
                     id={this.searchResultsId}
                     className={this.getOverflowClassName()}
-                    style={sectionMaxHeight}>
-
+                    style={sectionMaxHeight}
+                >
                     <Provider value={isExpanded}>
-                        <ul>
-                            {children}
-                        </ul>
+                        <ul>{children}</ul>
                     </Provider>
                 </div>
             </div>
@@ -115,13 +116,9 @@ export default class VerticalSectionOverflow extends Component {
 
 VerticalSectionOverflow.propTypes = {
     /** The label to show when the section is collapsed. */
-    label: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The description to show when the section is collapsed. */
-    description: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The state of the overflow. */
     expanded: PropTypes.bool,
     /** A description for assistive sreen readers. */
@@ -133,9 +130,9 @@ VerticalSectionOverflow.propTypes = {
     /** Action fired when a component is clicked. */
     onToggleSection: PropTypes.func,
     /**
-    * This prop that should not be visible in the documentation.
-    * @ignore
-    */
+     * This prop that should not be visible in the documentation.
+     * @ignore
+     */
     children: PropTypes.node,
 };
 

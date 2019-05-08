@@ -89,15 +89,11 @@ function attachResizeEvent(element, resizeListener) {
     element.resizeSensor = resizeSensor;
     element.appendChild(resizeSensor);
 
-    const position = (
-        window.getComputedStyle(element) || element.style
-    ).getPropertyValue('position');
+    const position = (window.getComputedStyle(element) || element.style).getPropertyValue(
+        'position',
+    );
 
-    if (
-        position !== 'absolute' &&
-        position !== 'relative' &&
-        position !== 'fixed'
-    ) {
+    if (position !== 'absolute' && position !== 'relative' && position !== 'fixed') {
         element.style.position = 'relative';
     }
 

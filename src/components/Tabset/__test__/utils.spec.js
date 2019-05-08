@@ -13,16 +13,36 @@ import {
 describe('<Tabset/> utils', () => {
     describe('insertChildOrderly', () => {
         it('should insert the child in the right order if the item in the nodes is at middle', () => {
-            const childrenRefs = [{ ref: 'item1' }, { ref: 'item2' }, { ref: 'item4' }, { ref: 'item5' }];
+            const childrenRefs = [
+                { ref: 'item1' },
+                { ref: 'item2' },
+                { ref: 'item4' },
+                { ref: 'item5' },
+            ];
             const nodes = ['item1', 'item2', 'item3', 'item4', 'item5'];
-            const expectedNodes = [{ ref: 'item1' }, { ref: 'item2' }, { ref: 'item3' }, { ref: 'item4' }, { ref: 'item5' }];
-            expect(insertChildOrderly(childrenRefs, { ref: 'item3' }, nodes)).toEqual(expectedNodes);
+            const expectedNodes = [
+                { ref: 'item1' },
+                { ref: 'item2' },
+                { ref: 'item3' },
+                { ref: 'item4' },
+                { ref: 'item5' },
+            ];
+            expect(insertChildOrderly(childrenRefs, { ref: 'item3' }, nodes)).toEqual(
+                expectedNodes,
+            );
         });
         it('should insert the child in the right order if the item in the nodes is at end', () => {
             const childrenRefs = [{ ref: 'item1' }, { ref: 'item2' }, { ref: 'item3' }];
             const nodes = ['item1', 'item2', 'item3', 'item4'];
-            const expectedNodes = [{ ref: 'item1' }, { ref: 'item2' }, { ref: 'item3' }, { ref: 'item4' }];
-            expect(insertChildOrderly(childrenRefs, { ref: 'item4' }, nodes)).toEqual(expectedNodes);
+            const expectedNodes = [
+                { ref: 'item1' },
+                { ref: 'item2' },
+                { ref: 'item3' },
+                { ref: 'item4' },
+            ];
+            expect(insertChildOrderly(childrenRefs, { ref: 'item4' }, nodes)).toEqual(
+                expectedNodes,
+            );
         });
     });
     describe('getChildTabNodes', () => {
@@ -144,8 +164,9 @@ describe('<Tabset/> utils', () => {
                 { name: 'onion', ref: {} },
                 { name: 'mushroom', ref: {} },
             ];
-            expect(getUpdatedTabsetChildren(tabsetChildren, tab, nameToUpdate))
-            .toEqual(newTabsetChildren);
+            expect(getUpdatedTabsetChildren(tabsetChildren, tab, nameToUpdate)).toEqual(
+                newTabsetChildren,
+            );
         });
         it('should return the same tabset when a name to update do not exist in the tabset children', () => {
             const tab = { name: 'mushroom', ref: {} };
@@ -155,8 +176,9 @@ describe('<Tabset/> utils', () => {
                 { name: 'onion', ref: {} },
                 { name: 'tomato', ref: {} },
             ];
-            expect(getUpdatedTabsetChildren(tabsetChildren, tab, nameToUpdate))
-            .toEqual(tabsetChildren);
+            expect(getUpdatedTabsetChildren(tabsetChildren, tab, nameToUpdate)).toEqual(
+                tabsetChildren,
+            );
         });
     });
     describe('getLeftButtonDisabledState', () => {
@@ -169,12 +191,14 @@ describe('<Tabset/> utils', () => {
             ];
             const screenWidth = 599;
             const scrollLeft = 0;
-            expect(getLeftButtonDisabledState({
-                activeTabName,
-                tabsetChildren,
-                screenWidth,
-                scrollLeft,
-            })).toBe(true);
+            expect(
+                getLeftButtonDisabledState({
+                    activeTabName,
+                    tabsetChildren,
+                    screenWidth,
+                    scrollLeft,
+                }),
+            ).toBe(true);
         });
         it('should return true when screen width is more than 600px and first tab is visible', () => {
             const activeTabName = 'onion';
@@ -185,12 +209,14 @@ describe('<Tabset/> utils', () => {
             ];
             const screenWidth = 601;
             const scrollLeft = 0;
-            expect(getLeftButtonDisabledState({
-                activeTabName,
-                tabsetChildren,
-                screenWidth,
-                scrollLeft,
-            })).toBe(true);
+            expect(
+                getLeftButtonDisabledState({
+                    activeTabName,
+                    tabsetChildren,
+                    screenWidth,
+                    scrollLeft,
+                }),
+            ).toBe(true);
         });
         it('should return false when screen width is more than 600px and first tab is not visible', () => {
             const activeTabName = 'onion';
@@ -201,12 +227,14 @@ describe('<Tabset/> utils', () => {
             ];
             const screenWidth = 601;
             const scrollLeft = 1;
-            expect(getLeftButtonDisabledState({
-                activeTabName,
-                tabsetChildren,
-                screenWidth,
-                scrollLeft,
-            })).toBe(false);
+            expect(
+                getLeftButtonDisabledState({
+                    activeTabName,
+                    tabsetChildren,
+                    screenWidth,
+                    scrollLeft,
+                }),
+            ).toBe(false);
         });
     });
     describe('getRightButtonDisabledState', () => {
@@ -220,13 +248,15 @@ describe('<Tabset/> utils', () => {
             const screenWidth = 599;
             const scrollLeft = 0;
             const maxScroll = 0;
-            expect(getRightButtonDisabledState({
-                activeTabName,
-                tabsetChildren,
-                screenWidth,
-                scrollLeft,
-                maxScroll,
-            })).toBe(true);
+            expect(
+                getRightButtonDisabledState({
+                    activeTabName,
+                    tabsetChildren,
+                    screenWidth,
+                    scrollLeft,
+                    maxScroll,
+                }),
+            ).toBe(true);
         });
         it('should return true when screen width is more than 600px and last tab is visible', () => {
             const activeTabName = 'pizza';
@@ -238,13 +268,15 @@ describe('<Tabset/> utils', () => {
             const screenWidth = 601;
             const scrollLeft = 200;
             const maxScroll = 200;
-            expect(getRightButtonDisabledState({
-                activeTabName,
-                tabsetChildren,
-                screenWidth,
-                scrollLeft,
-                maxScroll,
-            })).toBe(true);
+            expect(
+                getRightButtonDisabledState({
+                    activeTabName,
+                    tabsetChildren,
+                    screenWidth,
+                    scrollLeft,
+                    maxScroll,
+                }),
+            ).toBe(true);
         });
         it('should return false when screen width is more than 600px and last tab is not visible', () => {
             const activeTabName = 'pizza';
@@ -256,13 +288,15 @@ describe('<Tabset/> utils', () => {
             const screenWidth = 601;
             const scrollLeft = 0;
             const maxScroll = 200;
-            expect(getRightButtonDisabledState({
-                activeTabName,
-                tabsetChildren,
-                screenWidth,
-                scrollLeft,
-                maxScroll,
-            })).toBe(false);
+            expect(
+                getRightButtonDisabledState({
+                    activeTabName,
+                    tabsetChildren,
+                    screenWidth,
+                    scrollLeft,
+                    maxScroll,
+                }),
+            ).toBe(false);
         });
     });
 });

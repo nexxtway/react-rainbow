@@ -1,10 +1,6 @@
 /* eslint-disable no-param-reassign */
 export default function getTotalWidthsMetadata(params) {
-    const {
-        columns,
-        minColumnWidth,
-        maxColumnWidth,
-    } = params;
+    const { columns, minColumnWidth, maxColumnWidth } = params;
     const initial = {
         totalFixedWidth: 0,
         totalFixedColumns: 0,

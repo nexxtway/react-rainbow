@@ -50,14 +50,8 @@ ReCaptchaComponent.propTypes = {
     siteKey: PropTypes.string.isRequired,
     theme: PropTypes.oneOf(['light', 'dark']).isRequired,
     size: PropTypes.oneOf(['normal', 'compact']).isRequired,
-    tabIndex: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.string,
-    ]).isRequired,
-    error: PropTypes.oneOfType([
-        PropTypes.node,
-        PropTypes.string,
-    ]),
+    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+    error: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
     onChange: PropTypes.func.isRequired,
     className: PropTypes.string,
     style: PropTypes.object,
@@ -69,4 +63,3 @@ ReCaptchaComponent.defaultProps = {
     className: undefined,
     style: undefined,
 };
-

@@ -10,17 +10,10 @@ import Description from './description';
 import './styles.css';
 
 /**
-* Notifications serve as a confirmation mechanism & feedback that comes into the page at the top.
-*/
+ * Notifications serve as a confirmation mechanism & feedback that comes into the page at the top.
+ */
 export default function Notification(props) {
-    const {
-        className,
-        style,
-        icon,
-        title,
-        description,
-        onRequestClose,
-    } = props;
+    const { className, style, icon, title, description, onRequestClose } = props;
 
     function getClassName() {
         return classnames('rainbow-notification', className);
@@ -46,32 +39,24 @@ export default function Notification(props) {
                 icon={<CloseIcon />}
                 size="small"
                 title="Close"
-                onClick={onRequestClose} />
+                onClick={onRequestClose}
+            />
         </div>
     );
 }
 
 Notification.propTypes = {
     /** The icon to show if it is passed. It is displayed in the left of the component.
-    * It must be one of this values info, success, warning, error,
-    * or any svg icon. */
+     * It must be one of this values info, success, warning, error,
+     * or any svg icon. */
     icon: PropTypes.oneOfType([
         PropTypes.node,
-        PropTypes.oneOf([
-            'info',
-            'success',
-            'warning',
-            'error',
-        ]),
+        PropTypes.oneOf(['info', 'success', 'warning', 'error']),
     ]),
     /** The title that appears in the notification. */
-    title: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The description that appears in the notification. */
-    description: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The action triggered when the close button is clicked. */
     onRequestClose: PropTypes.func,
     /** A CSS class for the outer element, in addition to the component's base classes. */

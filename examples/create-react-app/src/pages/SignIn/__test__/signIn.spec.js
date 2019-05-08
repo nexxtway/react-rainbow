@@ -5,12 +5,9 @@ import Button from 'react-rainbow-components/components/Button';
 import Input from 'react-rainbow-components/components/Input';
 import SignInExample from './../';
 
-
 describe('<SignInExample/>', () => {
     it('should render the SignIn', () => {
-        const component = shallow(
-            <SignInExample />,
-        );
+        const component = shallow(<SignInExample />);
         expect(component.find(Card).exists()).toBe(true);
         expect(component.find(Button).exists()).toBe(true);
         expect(component.find(Input).exists()).toBe(true);

@@ -4,9 +4,7 @@ import AvatarButton from '../avatarButton';
 
 describe('<AvatarButton/>', () => {
     it('should be focusable', () => {
-        const component = mount(
-            <AvatarButton label="AvatarButton label" />,
-        );
+        const component = mount(<AvatarButton label="AvatarButton label" />);
         expect(component).toBeFocusable();
     });
 });

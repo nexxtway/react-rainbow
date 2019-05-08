@@ -23,7 +23,9 @@ class PageVerticalNavigation {
     getItem(itemPosition) {
         const items = $(this.rootElement).$$('.rainbow-vertical-item');
         if (items[itemPosition]) {
-            return new PageVerticalItem(`${this.rootElement} .rainbow-vertical-item:nth-child(${itemPosition + 1})`);
+            return new PageVerticalItem(
+                `${this.rootElement} .rainbow-vertical-item:nth-child(${itemPosition + 1})`,
+            );
         }
         return null;
     }
@@ -36,7 +38,11 @@ class PageVerticalNavigation {
     getSectionOverflow(itemPosition) {
         const items = $(this.rootElement).$$('.rainbow-vertical-section-overflow_container');
         if (items[itemPosition]) {
-            return new PageVerticalSectionOverflow(`${this.rootElement} .rainbow-vertical-section-overflow_container:nth-child(${itemPosition + 1})`);
+            return new PageVerticalSectionOverflow(
+                `${
+                    this.rootElement
+                } .rainbow-vertical-section-overflow_container:nth-child(${itemPosition + 1})`,
+            );
         }
         return null;
     }

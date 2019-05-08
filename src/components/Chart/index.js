@@ -89,12 +89,7 @@ Chart.propTypes = {
     /** Defines if the legend is shown. */
     showLegend: PropTypes.bool,
     /** The position of the legend. */
-    legendPosition: PropTypes.oneOf([
-        'top',
-        'bottom',
-        'right',
-        'left',
-    ]),
+    legendPosition: PropTypes.oneOf(['top', 'bottom', 'right', 'left']),
     /** Determines whether it should perform animations when rendering the chart,
      * this would improve general performance
      * and is recommended for high data volumes charts. */

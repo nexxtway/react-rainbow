@@ -4,7 +4,8 @@ import classnames from 'classnames';
 import RenderIf from '../RenderIf';
 
 export default function Icon({ icon, isVisible, position }) {
-    const getIconClassNames = () => classnames('rainbow-menu-item_icon', `rainbow-menu-item_icon--${position}`);
+    const getIconClassNames = () =>
+        classnames('rainbow-menu-item_icon', `rainbow-menu-item_icon--${position}`);
 
     return (
         <RenderIf isTrue={isVisible}>

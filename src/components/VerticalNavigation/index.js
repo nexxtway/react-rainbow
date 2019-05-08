@@ -26,21 +26,19 @@ export default function VerticalNavigation(props) {
         onSelect,
     };
 
-    const getClassNames = () => classnames('rainbow-vertical-navigation', {
-        'rainbow-vertical-navigation_compact': compact,
-        'rainbow-vertical-navigation_shade': shaded,
-    }, className);
+    const getClassNames = () =>
+        classnames(
+            'rainbow-vertical-navigation',
+            {
+                'rainbow-vertical-navigation_compact': compact,
+                'rainbow-vertical-navigation_shade': shaded,
+            },
+            className,
+        );
 
     return (
-        <nav
-            id={id}
-            className={getClassNames()}
-            style={style}
-            aria-label={ariaLabel}>
-
-            <Provider value={context}>
-                {children}
-            </Provider>
+        <nav id={id} className={getClassNames()} style={style} aria-label={ariaLabel}>
+            <Provider value={context}>{children}</Provider>
         </nav>
     );
 }

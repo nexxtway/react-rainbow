@@ -6,9 +6,7 @@ import Rating from './../';
 describe('<Rating/>', () => {
     it('should be accessible', async () => {
         expect.assertions(1);
-        const html = ReactDOMServer.renderToString(
-            <Rating label="Rating Label" />,
-        );
+        const html = ReactDOMServer.renderToString(<Rating label="Rating Label" />);
         const results = await axe(html);
         expect(results).toHaveNoViolations();
     });

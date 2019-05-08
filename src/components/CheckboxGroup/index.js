@@ -72,11 +72,14 @@ class CheckboxGroup extends Component {
                         options={options}
                         onChange={this.handleOnChange}
                         describedBy={this.getErrorMessageId()}
-                        name={name} />
-
+                        name={name}
+                    />
                 </div>
                 <RenderIf isTrue={!!error}>
-                    <div id={this.getErrorMessageId()} className="rainbow-checkbox-group_text-error">
+                    <div
+                        id={this.getErrorMessageId()}
+                        className="rainbow-checkbox-group_text-error"
+                    >
                         {error}
                     </div>
                 </RenderIf>
@@ -87,31 +90,24 @@ class CheckboxGroup extends Component {
 
 CheckboxGroup.propTypes = {
     /** An Array of checkbox options with label, value and disabled for each checkbox. */
-    options: PropTypes.arrayOf(PropTypes.shape({
-        label: PropTypes.oneOfType([
-            PropTypes.string, PropTypes.node,
-        ]).isRequired,
-        value: PropTypes.string,
-        disabled: PropTypes.bool,
-    })),
+    options: PropTypes.arrayOf(
+        PropTypes.shape({
+            label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+            value: PropTypes.string,
+            disabled: PropTypes.bool,
+        }),
+    ),
     /** Text label for the checkbox group. */
-    label: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The name of the checkbox group */
     name: PropTypes.string,
     /** The list of selected checkboxes. Each array entry contains the value of a selected checkbox.
      * The value of each checkbox is set in the options attribute. */
-    value: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.string),
-        PropTypes.string,
-    ]),
+    value: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.string]),
     /** Set to true if at least one checkbox must be selected. This value defaults to false. */
     required: PropTypes.bool,
     /** Specifies that an input field must be filled out before submitting the form. */
-    error: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Text label for the checkbox group. */
     onChange: PropTypes.func,
     /** A CSS class for the outer element, in addition to the component's base classes. */

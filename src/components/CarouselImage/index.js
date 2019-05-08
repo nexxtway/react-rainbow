@@ -39,12 +39,16 @@ class Item extends Component {
 
     componentDidMount() {
         const { privateRegisterChild, header } = this.props;
-        return setTimeout(() => privateRegisterChild({
-            containerID: this.carouselImageID,
-            indicatorID: this.carouselIndicatorID,
-            ref: this.itemRef,
-            header,
-        }), 0);
+        return setTimeout(
+            () =>
+                privateRegisterChild({
+                    containerID: this.carouselImageID,
+                    indicatorID: this.carouselIndicatorID,
+                    ref: this.itemRef,
+                    header,
+                }),
+            0,
+        );
     }
 
     getContainerClassName() {
@@ -77,7 +81,6 @@ class Item extends Component {
         }
         return 'right-to-left';
     }
-
 
     getTabIndex() {
         const { activeItem } = this.props;
@@ -130,19 +133,23 @@ class Item extends Component {
                 role="tabpanel"
                 aria-hidden={this.getAriaHidden()}
                 aria-labelledby={this.carouselIndicatorID}
-                style={style}>
+                style={style}
+            >
                 <a
                     href={href}
                     className="rainbow-carousel-image"
                     tabIndex={this.getTabIndex()}
-                    ref={this.itemRef}>
+                    ref={this.itemRef}
+                >
                     <div className="rainbow-carousel-image_content-image-container">
                         <div className="rainbow-carousel-image_image" style={this.getImageSrc()} />
                         <AssistiveText text={assistiveText} />
                         <RenderIf isTrue={hasContent}>
                             <div className="rainbow-carousel-image_content">
                                 <RenderIf isTrue={!!header}>
-                                    <h2 className="rainbow-carousel-image_content-title">{header}</h2>
+                                    <h2 className="rainbow-carousel-image_content-title">
+                                        {header}
+                                    </h2>
                                 </RenderIf>
                                 <RenderIf isTrue={!!description}>
                                     <p>{description}</p>
@@ -157,13 +164,7 @@ class Item extends Component {
 }
 
 export default function CarouselImage(props) {
-    return (
-        <Consumer>
-            {value => (
-                <Item {...props} {...value} />
-            )}
-        </Consumer>
-    );
+    return <Consumer>{value => <Item {...props} {...value} />}</Consumer>;
 }
 
 CarouselImage.propTypes = {
@@ -171,14 +172,10 @@ CarouselImage.propTypes = {
     src: PropTypes.string,
     /** The header can include text or another component,
      * and is displayed in the top of the content section. */
-    header: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    header: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The description can include text or another component,
      * and is displayed below the header in the content section. */
-    description: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** A description for assistive sreen readers. */
     assistiveText: PropTypes.string,
     /** The URL of the page that the card goes to. */

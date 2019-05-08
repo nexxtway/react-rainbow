@@ -26,15 +26,8 @@ function showAlert(values) {
 export default function SignInExample() {
     return (
         <div className="rainbow-align-content_center rainbow-checkout_view-port">
-            <Card
-                className="rainbow-checkout_card-container"
-                icon={CARD_ICON}
-                title="Checkout">
-
-                <CheckoutForm
-                    onSubmit={showAlert}
-                    initialValues={initialValues} />
-
+            <Card className="rainbow-checkout_card-container" icon={CARD_ICON} title="Checkout">
+                <CheckoutForm onSubmit={showAlert} initialValues={initialValues} />
             </Card>
         </div>
     );

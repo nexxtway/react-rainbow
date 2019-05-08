@@ -7,41 +7,32 @@ import RenderIf from '../RenderIf';
 import './styles.css';
 
 /**
-* Cards are used to apply a container around a
-* related grouping of information.
-* @category Layout
-*/
+ * Cards are used to apply a container around a
+ * related grouping of information.
+ * @category Layout
+ */
 export default function Card(props) {
-    const {
-        className,
-        style,
-        actions,
-        children,
-        footer,
-        title,
-        icon,
-        isLoading,
-    } = props;
+    const { className, style, actions, children, footer, title, icon, isLoading } = props;
 
     const getContainerClassName = () => {
         const hasHeader = icon || title || actions;
-        return classnames('rainbow-card', {
-            'rainbow-card--with-header': hasHeader,
-        }, className);
+        return classnames(
+            'rainbow-card',
+            {
+                'rainbow-card--with-header': hasHeader,
+            },
+            className,
+        );
     };
 
     return (
         <article className={getContainerClassName()} style={style}>
             <Header actions={actions} title={title} icon={icon} />
 
-            <CardBoddy isLoading={isLoading}>
-                {children}
-            </CardBoddy>
+            <CardBoddy isLoading={isLoading}>{children}</CardBoddy>
 
             <RenderIf isTrue={footer && !isLoading}>
-                <footer className="rainbow-card_footer">
-                    {footer}
-                </footer>
+                <footer className="rainbow-card_footer">{footer}</footer>
             </RenderIf>
         </article>
     );
@@ -49,24 +40,17 @@ export default function Card(props) {
 
 Card.propTypes = {
     /** The title can include text or another component,
-    * and is displayed in the header of the component. */
-    title: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+     * and is displayed in the header of the component. */
+    title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The icon to show if it is passed. It must be a svg icon or a font icon.
-    * It is displayed in the header of the component. */
+     * It is displayed in the header of the component. */
     icon: PropTypes.node,
     /** Actions are components such as button or buttonIcon. Actions are displayed in the header. */
     actions: PropTypes.node,
     /** The footer can include text or another component. */
-    footer: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    footer: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The content of the Card. */
-    children: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.node),
-        PropTypes.object,
-    ]),
+    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
     /** If is set to true, then is showed a loading symbol. */
     isLoading: PropTypes.bool,
     /** A CSS class for the outer element, in addition to the component's base classes. */

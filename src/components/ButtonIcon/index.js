@@ -5,9 +5,9 @@ import AssistiveText from './../AssistiveText';
 import './styles.css';
 
 /**
-* Buttons Icons provide the user with visual iconography that
-* is typically used to invoke an event or action.
-*/
+ * Buttons Icons provide the user with visual iconography that
+ * is typically used to invoke an event or action.
+ */
 export default class ButtonIcon extends Component {
     constructor(props) {
         super(props);
@@ -24,37 +24,40 @@ export default class ButtonIcon extends Component {
 
     getButtonClassNames() {
         const { className, shaded, variant, size } = this.props;
-        const isShaded = shaded && (
-            variant === 'border-filled'
-            || variant === 'brand'
-            || variant === 'success'
-        );
+        const isShaded =
+            shaded && (variant === 'border-filled' || variant === 'brand' || variant === 'success');
 
-        return classnames('rainbow-button-icon', {
-            'rainbow-button-icon--shaded': isShaded,
-        }, this.getVariantClassName(), `rainbow-button-icon--${size}`, className);
+        return classnames(
+            'rainbow-button-icon',
+            {
+                'rainbow-button-icon--shaded': isShaded,
+            },
+            this.getVariantClassName(),
+            `rainbow-button-icon--${size}`,
+            className,
+        );
     }
 
     /**
-    * Sets focus on the element.
-    * @public
-    */
+     * Sets focus on the element.
+     * @public
+     */
     focus() {
         this.buttonRef.current.focus();
     }
 
     /**
-    * Sets click on the element.
-    * @public
-    */
+     * Sets click on the element.
+     * @public
+     */
     click() {
         this.buttonRef.current.click();
     }
 
     /**
-    * Sets blur on the element.
-    * @public
-    */
+     * Sets blur on the element.
+     * @public
+     */
     blur() {
         this.buttonRef.current.blur();
     }
@@ -99,8 +102,8 @@ export default class ButtonIcon extends Component {
                 aria-pressed={ariaPressed}
                 onKeyDown={onKeyDown}
                 form={form}
-                ref={this.buttonRef} >
-
+                ref={this.buttonRef}
+            >
                 {icon}
                 <AssistiveText text={assistiveText} />
             </button>
@@ -110,11 +113,11 @@ export default class ButtonIcon extends Component {
 
 ButtonIcon.propTypes = {
     /** The icon to show if it is passed.
-    * It must be a svg icon or a font icon. It is a required value. */
+     * It must be a svg icon or a font icon. It is a required value. */
     icon: PropTypes.node.isRequired,
     /** The variant changes the appearance of buttonIcon. Accepted variants include base,
-    *  brand, success, border, border-filled, border-inverse and inverse.
-    * This value defaults to base. */
+     *  brand, success, border, border-filled, border-inverse and inverse.
+     * This value defaults to base. */
     variant: PropTypes.oneOf([
         'base',
         'brand',
@@ -125,34 +128,23 @@ ButtonIcon.propTypes = {
         'inverse',
     ]),
     /** The size of the buttonIcon. For the base variant, options include x-small, small, medium,
-    * and large. For non-base variants, options include xx-small, x-small, small, and medium.
-    * This value defaults to medium. */
-    size: PropTypes.oneOf([
-        'xx-small',
-        'x-small',
-        'small',
-        'medium',
-        'large',
-    ]),
+     * and large. For non-base variants, options include xx-small, x-small, small, and medium.
+     * This value defaults to medium. */
+    size: PropTypes.oneOf(['xx-small', 'x-small', 'small', 'medium', 'large']),
     /** Specify true when the button has a shadow around it.
-    * This value defaults to false.
-    * Only border-filled, brand, and success variant can be shaded. */
+     * This value defaults to false.
+     * Only border-filled, brand, and success variant can be shaded. */
     shaded: PropTypes.bool,
     /** Displays tooltip text when the mouse moves over the element. */
     title: PropTypes.string,
     /** Specifies the type of button. Valid values are button, reset, and submit.
-    * This value defaults to button. */
-    type: PropTypes.oneOf([
-        'button', 'submit', 'reset',
-    ]),
+     * This value defaults to button. */
+    type: PropTypes.oneOf(['button', 'submit', 'reset']),
     /** Specifies whether this button should be displayed in a disabled state.
-    * Disabled buttons can't be clicked. This value defaults to false. */
+     * Disabled buttons can't be clicked. This value defaults to false. */
     disabled: PropTypes.bool,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
-    tabIndex: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.string,
-    ]),
+    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** The action that will be run when the button is clicked. */
     onClick: PropTypes.func,
     /** The action triggered when a keyboard key is pressed. */
@@ -164,10 +156,10 @@ ButtonIcon.propTypes = {
     /** A description for assistive sreen readers. */
     assistiveText: PropTypes.string,
     /** A space-separated list of element IDs that
-    * this button controls the contents or presence of. */
+     * this button controls the contents or presence of. */
     ariaControls: PropTypes.string,
     /** Indicates whether an element the button controls is expanded or collapsed.
-    * Valid values are 'true' or 'false'. */
+     * Valid values are 'true' or 'false'. */
     ariaExpanded: PropTypes.bool,
     /** Indicates that the element has a popup context menu or sub-level menu. */
     ariaHaspopup: PropTypes.bool,

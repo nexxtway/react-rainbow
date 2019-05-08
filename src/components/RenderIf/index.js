@@ -9,10 +9,7 @@ export default function RenderIf({ isTrue, children }) {
 
 RenderIf.propTypes = {
     isTrue: PropTypes.bool,
-    children: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.node),
-        PropTypes.object,
-    ]),
+    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
 };
 
 RenderIf.defaultProps = {

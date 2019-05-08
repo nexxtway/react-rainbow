@@ -1,19 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-    addDays,
-    getLastDayMonth,
-} from './helpers';
+import { addDays, getLastDayMonth } from './helpers';
 import Week from './week';
 
 export default function Month(props) {
-    const {
-        firstDayMonth,
-        value,
-        minDate,
-        maxDate,
-        onChange,
-    } = props;
+    const { firstDayMonth, value, minDate, maxDate, onChange } = props;
     const lastDayMonth = getLastDayMonth(firstDayMonth);
     let date = new Date(firstDayMonth);
 
@@ -52,10 +43,7 @@ Month.propTypes = {
     firstDayMonth: PropTypes.instanceOf(Date),
     minDate: PropTypes.instanceOf(Date),
     maxDate: PropTypes.instanceOf(Date),
-    value: PropTypes.oneOfType([
-        PropTypes.instanceOf(Date),
-        PropTypes.string,
-    ]),
+    value: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
     onChange: PropTypes.func,
 };
 

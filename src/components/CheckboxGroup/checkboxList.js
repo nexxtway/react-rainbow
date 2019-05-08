@@ -13,7 +13,8 @@ export default function CheckboxList({ values, options, onChange, describedBy, n
                 onChange={onChange}
                 describedBy={describedBy}
                 key={key}
-                name={name} />
+                name={name}
+            />
         );
     });
 }

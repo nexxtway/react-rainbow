@@ -22,7 +22,6 @@
         </div>
     </div>
 
-
 ##### button group with overflow menu icon
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
@@ -44,7 +43,6 @@
             </ButtonMenu>
         </ButtonGroup>
     </div>
-
 
 ##### button group with icon
 
@@ -135,7 +133,6 @@
             </ButtonGroup>
         </div>
     </div>
-
 
 ##### buttons group with button inverse
 

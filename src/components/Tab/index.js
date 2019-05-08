@@ -33,21 +33,23 @@ class TabItem extends Component {
 
     getContainerClassName() {
         const { className, fullWidth } = this.props;
-        return classnames('rainbow-tab', {
-            'rainbow-tab--full-width': fullWidth,
-            'rainbow-tab--active': this.isSelected(),
-        }, className);
+        return classnames(
+            'rainbow-tab',
+            {
+                'rainbow-tab--full-width': fullWidth,
+                'rainbow-tab--active': this.isSelected(),
+            },
+            className,
+        );
     }
 
     getTabClassName() {
         const { disabled, fullWidth } = this.props;
-        return classnames('rainbow-tab_anchor',
-            {
-                'rainbow-tab--active': this.isSelected(),
-                'rainbow-tab--disabled': disabled,
-                'rainbow-tab--full-width': fullWidth,
-            },
-        );
+        return classnames('rainbow-tab_anchor', {
+            'rainbow-tab--active': this.isSelected(),
+            'rainbow-tab--disabled': disabled,
+            'rainbow-tab--full-width': fullWidth,
+        });
     }
 
     getTabIndex() {
@@ -77,7 +79,8 @@ class TabItem extends Component {
                 className={this.getContainerClassName()}
                 style={style}
                 title={title}
-                role="presentation">
+                role="presentation"
+            >
                 <a
                     href="javascript:void(0);"
                     role="tab"
@@ -87,8 +90,8 @@ class TabItem extends Component {
                     tabIndex={this.getTabIndex()}
                     id={id}
                     aria-controls={ariaControls}
-                    ref={this.tabRef}>
-
+                    ref={this.tabRef}
+                >
                     <span className="rainbow-tab_anchor-inner-text">{label}</span>
                 </a>
             </li>
@@ -98,31 +101,25 @@ class TabItem extends Component {
 
 /** @category Layout */
 export default function Tab(props) {
-    return (
-        <Consumer>
-            {context => <TabItem {...props} {...context} />}
-        </Consumer>
-    );
+    return <Consumer>{context => <TabItem {...props} {...context} />}</Consumer>;
 }
 
 Tab.propTypes = {
     /** The text displayed for the tab item. */
-    label: PropTypes.oneOfType([
-        PropTypes.node, PropTypes.string,
-    ]),
+    label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
     /** The name is used during tabset's onSelect
-    * event to determine which tab was clicked. */
+     * event to determine which tab was clicked. */
     name: PropTypes.string.isRequired,
     /** Displays tooltip text when the mouse moves over the element. */
     title: PropTypes.string,
     /** Specifies whether this tab should be displayed in a disabled state.
-    * Disabled tabs can't be clicked. This value defaults to false. */
+     * Disabled tabs can't be clicked. This value defaults to false. */
     disabled: PropTypes.bool,
     /** This ID is to be associated with the aria-labelledby attribute of the container
      * that show the content of this tab. */
     id: PropTypes.string,
     /** This prop is associated with the id attribute of the container
-    * that show the content of this tab. */
+     * that show the content of this tab. */
     ariaControls: PropTypes.string,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,

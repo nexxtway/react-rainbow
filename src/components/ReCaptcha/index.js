@@ -6,8 +6,8 @@ import getUrl from './getUrl';
 import ReCaptchaWrapper from './wrapper';
 
 /**
-* The reCAPTCHA component is used to protects your website from spam and abuse.
-*/
+ * The reCAPTCHA component is used to protects your website from spam and abuse.
+ */
 class ReCaptcha extends Component {
     constructor(props) {
         super(props);
@@ -34,15 +34,9 @@ ReCaptcha.propTypes = {
     /** The tabindex of the widget and challenge.
      * If other elements in your page use tabindex,
      * it should be set to make user navigation easier. */
-    tabIndex: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.string,
-    ]),
+    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** Specifies that the recaptcha must be completed before submitting the form. */
-    error: PropTypes.oneOfType([
-        PropTypes.node,
-        PropTypes.string,
-    ]),
+    error: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
     /** The action triggered when the value of the recaptcha changes. It receive the
      * recaptcha token when is fired.
      */

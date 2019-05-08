@@ -2,10 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import getNextAmPmValue from './helpers/getNextAmPmValue';
 import { uniqueId } from './../../libs/utils';
-import {
-    UP_KEY,
-    DOWN_KEY,
-} from '../../libs/constants';
+import { UP_KEY, DOWN_KEY } from '../../libs/constants';
 
 function handleAmPmBlur(event) {
     event.stopPropagation();
@@ -107,8 +104,8 @@ export default class AmPmSelect extends PureComponent {
                     onBlur={this.handleBlur}
                     onFocus={onFocus}
                     onKeyDown={this.handleKeyDown}
-                    ref={this.fieldsetRef}>
-
+                    ref={this.fieldsetRef}
+                >
                     <input
                         className="rainbow-time-picker_time-input--hidden"
                         type="radio"
@@ -118,7 +115,8 @@ export default class AmPmSelect extends PureComponent {
                         checked={this.isChecked('AM')}
                         onChange={this.handleOnChange}
                         onClick={this.handleAmClick}
-                        onBlur={handleAmPmBlur} />
+                        onBlur={handleAmPmBlur}
+                    />
 
                     <label className="rainbow-time-picker_select-option" htmlFor={this.inputAmId}>
                         am
@@ -132,7 +130,8 @@ export default class AmPmSelect extends PureComponent {
                         checked={this.isChecked('PM')}
                         onChange={this.handleOnChange}
                         onClick={this.handlePmClick}
-                        onBlur={handleAmPmBlur} />
+                        onBlur={handleAmPmBlur}
+                    />
 
                     <label className="rainbow-time-picker_select-option" htmlFor={this.inputPmId}>
                         pm
@@ -147,7 +146,8 @@ export default class AmPmSelect extends PureComponent {
                 onFocus={this.handleFocus}
                 placeholder="--"
                 defaultValue={value}
-                ref={this.fieldsetRef} />
+                ref={this.fieldsetRef}
+            />
         );
     }
 }

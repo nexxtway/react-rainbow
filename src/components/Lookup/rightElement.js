@@ -14,15 +14,12 @@ export default function RightElement({ showCloseButton, onClear }) {
                     title="close"
                     tabIndex={-1}
                     icon={<CloseIcon />}
-                    onClick={onClear} />
+                    onClick={onClear}
+                />
             </span>
         );
     }
-    return (
-        <span className="rainbow-lookup_input-icon">
-            {<SearchIcon />}
-        </span>
-    );
+    return <span className="rainbow-lookup_input-icon">{<SearchIcon />}</span>;
 }
 
 RightElement.propTypes = {

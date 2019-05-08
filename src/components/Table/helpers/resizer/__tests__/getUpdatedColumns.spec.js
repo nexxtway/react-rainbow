@@ -14,10 +14,7 @@ describe('resizer helper', () => {
         });
         it('should return the right columns', () => {
             const params = {
-                columns: [
-                    { label: 'Name', field: 'name' },
-                    { label: 'Email', field: 'email' },
-                ],
+                columns: [{ label: 'Name', field: 'name' }, { label: 'Email', field: 'email' }],
                 columnsMetaData: [],
                 domTableWidth: 600,
                 minColumnWidth: 50,
@@ -40,7 +37,12 @@ describe('resizer helper', () => {
             const params = {
                 columns: [
                     { label: 'Name', field: 'name', computedWidth: 35, isResized: true },
-                    { label: 'Email', field: 'email', computedWidth: 123, isResized: false },
+                    {
+                        label: 'Email',
+                        field: 'email',
+                        computedWidth: 123,
+                        isResized: false,
+                    },
                 ],
                 domTableWidth: 600,
                 minColumnWidth: 50,

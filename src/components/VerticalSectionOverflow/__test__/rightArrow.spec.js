@@ -11,6 +11,12 @@ describe('<RightArrow />', () => {
     it('should set the right className when isExpanded is passed', () => {
         const component = mount(<RightArrow isExpanded />);
 
-        expect(component.find('svg.rainbow-vertical-section-overflow_icon.rainbow-vertical-section-overflow-icon--expanded').exists()).toBe(true);
+        expect(
+            component
+                .find(
+                    'svg.rainbow-vertical-section-overflow_icon.rainbow-vertical-section-overflow-icon--expanded',
+                )
+                .exists(),
+        ).toBe(true);
     });
 });

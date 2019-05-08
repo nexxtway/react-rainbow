@@ -7,6 +7,6 @@ export default function isContentHidden(element) {
     // Otherwise we need to check some styles
     const style = window.getComputedStyle(element);
     return zeroSize
-    ? style.getPropertyValue('overflow') !== 'visible'
-    : style.getPropertyValue('display') === 'none';
+        ? style.getPropertyValue('overflow') !== 'visible'
+        : style.getPropertyValue('display') === 'none';
 }

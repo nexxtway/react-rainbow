@@ -4,9 +4,7 @@ import AvatarButton from '../avatarButton';
 
 describe('<AvatarButton/>', () => {
     it('should focus the AvatarButton when the focus method is called', () => {
-        const component = mount(
-            <AvatarButton />,
-        );
+        const component = mount(<AvatarButton />);
 
         component.instance().focus();
         const focusedElementDataId = document.activeElement.getAttribute('data-id');
@@ -14,9 +12,7 @@ describe('<AvatarButton/>', () => {
         expect(focusedElementDataId).toBe(buttonDataId);
     });
     it('should blur the AvatarButton when the blur method is called', () => {
-        const component = mount(
-            <AvatarButton />,
-        );
+        const component = mount(<AvatarButton />);
         const instance = component.instance();
         const buttonDataId = component.find('button.rainbow-avatar-menu_button').prop('data-id');
 

@@ -10,23 +10,24 @@ function getRandomWidth() {
 
 export default function LoadingCells({ value, columns }) {
     if (value > 0) {
-        return Array(value).fill().map((item, index) => {
-            const key = `loading-cell-${index}`;
-            const { type } = columns[index];
-            const isActionOrSelectable = type === SELECTABLE_CHECKBOX
-                || type === 'action';
-            const styles = {
-                width: isActionOrSelectable ? '100%' : getRandomWidth(),
-            };
+        return Array(value)
+            .fill()
+            .map((item, index) => {
+                const key = `loading-cell-${index}`;
+                const { type } = columns[index];
+                const isActionOrSelectable = type === SELECTABLE_CHECKBOX || type === 'action';
+                const styles = {
+                    width: isActionOrSelectable ? '100%' : getRandomWidth(),
+                };
 
-            return (
-                <td key={key}>
-                    <div className="rainbow-table_body--loading">
-                        <div className="rainbow-table_body-element--loading" style={styles} />
-                    </div>
-                </td>
-            );
-        });
+                return (
+                    <td key={key}>
+                        <div className="rainbow-table_body--loading">
+                            <div className="rainbow-table_body-element--loading" style={styles} />
+                        </div>
+                    </td>
+                );
+            });
     }
     return null;
 }

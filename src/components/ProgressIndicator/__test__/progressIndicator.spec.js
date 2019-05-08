@@ -7,11 +7,7 @@ jest.useFakeTimers();
 
 describe('<ProgressIndicator/>', () => {
     it('should render the children passed', () => {
-        const component = mount(
-            <ProgressIndicator>
-                ProgressStep
-            </ProgressIndicator>,
-        );
+        const component = mount(<ProgressIndicator>ProgressStep</ProgressIndicator>);
         expect(component.text()).toBe('ProgressStep');
     });
     it('should set the rainbow-progress-step--error class to the step when has an error', () => {
@@ -85,19 +81,22 @@ describe('<ProgressIndicator/>', () => {
     it('should fire an event with the right data when the step is clicked', () => {
         const onClickMockFn = jest.fn();
         const component = mount(
-            <ProgressIndicator currentStepName="step-1" onClick={onClickMockFn} >
+            <ProgressIndicator currentStepName="step-1" onClick={onClickMockFn}>
                 <ProgressStep name="step-1" />
                 <ProgressStep name="step-2" />
                 <ProgressStep name="step-3" />
             </ProgressIndicator>,
         );
-        component.find('ProgressStep[name="step-2"]').find('ButtonIcon').simulate('click');
+        component
+            .find('ProgressStep[name="step-2"]')
+            .find('ButtonIcon')
+            .simulate('click');
         expect(onClickMockFn).toHaveBeenCalledWith(expect.any(Object), 'step-2');
     });
     it('should have the right class names when a custom class is passed', () => {
-        const component = mount(
-            <ProgressIndicator className="my-custom-class-name" />,
+        const component = mount(<ProgressIndicator className="my-custom-class-name" />);
+        expect(component.find('div.rainbow-progress-indicator.my-custom-class-name').exists()).toBe(
+            true,
         );
-        expect(component.find('div.rainbow-progress-indicator.my-custom-class-name').exists()).toBe(true);
     });
 });

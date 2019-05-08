@@ -25,8 +25,8 @@ export default class Home extends Component {
             <div style={styles}>
                 <VerticalNavigation
                     selectedItem={this.state.selectedItem}
-                    onSelect={this.handleOnSelect}>
-
+                    onSelect={this.handleOnSelect}
+                >
                     <VerticalSection label="COMPONENTS">
                         <VerticalItem name="avatar" label="Avatar" href="avatar" />
                         <VerticalItem name="badge" label="Badge" href="badge" />

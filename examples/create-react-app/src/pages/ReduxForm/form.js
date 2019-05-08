@@ -17,10 +17,7 @@ const COUNTRY_OPTIONS = [
     { value: 'mexico', label: 'Mexico' },
 ];
 
-const GENDER_OPTIONS = [
-    { value: 'male', label: 'Male' },
-    { value: 'female', label: 'Female' },
-];
+const GENDER_OPTIONS = [{ value: 'male', label: 'Male' }, { value: 'female', label: 'Female' }];
 
 const VALUES_OPTIONS = [
     { value: 'value-1', label: 'value-1' },
@@ -44,8 +41,8 @@ class CheckoutForm extends React.Component {
             <form
                 className="rainbow-p-horizontal_x-large rainbow-p-bottom_large rainbow-checkout_media-styles-container"
                 noValidate
-                onSubmit={handleSubmit}>
-
+                onSubmit={handleSubmit}
+            >
                 <div className="rainbow-flex rainbow-checkout_media-styles-inner-container rainbow-m-bottom_large">
                     <Field
                         component={Input}
@@ -56,7 +53,8 @@ class CheckoutForm extends React.Component {
                         placeholder="Enter your first name"
                         type="text"
                         withRef
-                        ref={this.fieldRef} />
+                        ref={this.fieldRef}
+                    />
 
                     <Field
                         component={Input}
@@ -65,8 +63,8 @@ class CheckoutForm extends React.Component {
                         label="Last Name"
                         required
                         placeholder="Enter your last name"
-                        type="text" />
-
+                        type="text"
+                    />
                 </div>
 
                 <div className="rainbow-flex rainbow-checkout_media-styles-inner-container rainbow-m-bottom_large">
@@ -80,7 +78,8 @@ class CheckoutForm extends React.Component {
                         type="email"
                         icon={
                             <FontAwesomeIcon icon={faEnvelope} className="rainbow-color_gray-3" />
-                        } />
+                        }
+                    />
 
                     <Field
                         component={Select}
@@ -88,8 +87,8 @@ class CheckoutForm extends React.Component {
                         className="rainbow-checkout_form-element"
                         label="Country"
                         options={COUNTRY_OPTIONS}
-                        required />
-
+                        required
+                    />
                 </div>
 
                 <Field
@@ -98,7 +97,8 @@ class CheckoutForm extends React.Component {
                     className="rainbow-m-bottom_large"
                     label="Address"
                     placeholder="Enter your address"
-                    type="text" />
+                    type="text"
+                />
 
                 <div className="rainbow-flex rainbow-checkout_media-styles-inner-container rainbow-m-bottom_large">
                     <Field
@@ -107,7 +107,8 @@ class CheckoutForm extends React.Component {
                         className="rainbow-checkout_form-element rainbow-m-right_x-large"
                         label="Zip Code"
                         placeholder="Enter your zip code"
-                        type="number" />
+                        type="number"
+                    />
 
                     <Field
                         component={Input}
@@ -117,9 +118,13 @@ class CheckoutForm extends React.Component {
                         placeholder="Enter your phone number"
                         type="number"
                         icon={
-                            <FontAwesomeIcon icon={faMobileAlt} size="lg" className="rainbow-color_gray-3" />
-                        } />
-
+                            <FontAwesomeIcon
+                                icon={faMobileAlt}
+                                size="lg"
+                                className="rainbow-color_gray-3"
+                            />
+                        }
+                    />
                 </div>
                 <div className="rainbow-flex rainbow-m-bottom_large">
                     <Field
@@ -128,13 +133,15 @@ class CheckoutForm extends React.Component {
                         className="rainbow-m-right_x-large"
                         label="Gender"
                         options={GENDER_OPTIONS}
-                        required />
+                        required
+                    />
 
                     <Field
                         component={CheckboxGroup}
                         name="values"
                         label="Values"
-                        options={VALUES_OPTIONS} />
+                        options={VALUES_OPTIONS}
+                    />
                 </div>
 
                 <div className="rainbow-flex rainbow-justify_spread">
@@ -142,7 +149,8 @@ class CheckoutForm extends React.Component {
                         component={CheckboxToggle}
                         name="saveData"
                         className="rainbow-m-bottom_large"
-                        label="Save data for the nex time" />
+                        label="Save data for the nex time"
+                    />
 
                     <Button type="submit" variant="brand">
                         Next

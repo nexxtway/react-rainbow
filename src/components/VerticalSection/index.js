@@ -7,9 +7,9 @@ import RenderIf from '../RenderIf';
 import './styles.css';
 
 /**
-* Represents a section within a VerticalNavigation.
-* @category Layout
-*/
+ * Represents a section within a VerticalNavigation.
+ * @category Layout
+ */
 class VerticalSection extends Component {
     constructor(props) {
         super(props);
@@ -22,11 +22,7 @@ class VerticalSection extends Component {
     }
 
     render() {
-        const {
-            label,
-            style,
-            children,
-        } = this.props;
+        const { label, style, children } = this.props;
 
         return (
             <div className={this.getClassNames()} style={style}>
@@ -36,9 +32,7 @@ class VerticalSection extends Component {
                     </h2>
                 </RenderIf>
                 <Provider value={this.entityHeaderId}>
-                    <ul>
-                        {children}
-                    </ul>
+                    <ul>{children}</ul>
                 </Provider>
             </div>
         );
@@ -47,17 +41,15 @@ class VerticalSection extends Component {
 
 VerticalSection.propTypes = {
     /** The heading text for this section. */
-    label: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied for the outer element. */
     style: PropTypes.object,
     /**
-    * This prop that should not be visible in the documentation.
-    * @ignore
-    */
+     * This prop that should not be visible in the documentation.
+     * @ignore
+     */
     children: PropTypes.node,
 };
 

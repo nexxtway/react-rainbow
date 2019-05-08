@@ -15,7 +15,9 @@ describe('<CheckboxList />', () => {
     });
 
     it('should pass the right props to the Checkbox component', () => {
-        const component = mount(<CheckboxList options={[{ value: 'admin', label: 'Admin', disabled: false }]} />);
+        const component = mount(
+            <CheckboxList options={[{ value: 'admin', label: 'Admin', disabled: false }]} />,
+        );
         const checkbox = component.find('Checkbox');
         expect(checkbox.prop('value')).toBe('admin');
         expect(checkbox.prop('label')).toBe('Admin');

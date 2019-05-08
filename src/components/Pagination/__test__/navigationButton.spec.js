@@ -2,7 +2,6 @@ import React from 'react';
 import { mount } from 'enzyme';
 import NavigationButton from '../navigationButton';
 
-
 describe('<NavigationButton />', () => {
     it('should call the onClick function when clicked', () => {
         const onCkickMockFn = jest.fn();

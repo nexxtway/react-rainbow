@@ -4,8 +4,8 @@ import PrimitiveMenu from '../PrimitiveMenu';
 import AvatarButton from './avatarButton';
 
 /**
-* A Avatar Menu offers a list of actions or functions that a user can access.
-*/
+ * A Avatar Menu offers a list of actions or functions that a user can access.
+ */
 export default function AvatarMenu(props) {
     const {
         src,
@@ -38,7 +38,8 @@ export default function AvatarMenu(props) {
             ariaHaspopup
             onFocus={onFocus}
             onBlur={onBlur}
-            trigger={AvatarButton}>
+            trigger={AvatarButton}
+        >
             {children}
         </PrimitiveMenu>
     );
@@ -46,45 +47,29 @@ export default function AvatarMenu(props) {
 
 AvatarMenu.propTypes = {
     /** The URL for the image.
-    * It take precedence over the initials and icon. */
+     * It take precedence over the initials and icon. */
     src: PropTypes.string,
     /** If the record name contains two words, like first and last name,
-    * use the first capitalized letter of each. For records that only have a single word name,
-    * use the first two letters of that word using one capital and one lower case letter. */
+     * use the first capitalized letter of each. For records that only have a single word name,
+     * use the first two letters of that word using one capital and one lower case letter. */
     initials: PropTypes.string,
     /** The fallback icon to show when src and initials are not passed. */
     icon: PropTypes.node,
     /** The size of the avatar. Valid values are x-small, small, medium, and large.
-    * It take precedence over the icon.
-    * This value defaults to medium. */
-    avatarSize: PropTypes.oneOf([
-        'x-small',
-        'small',
-        'medium',
-        'large',
-    ]),
+     * It take precedence over the icon.
+     * This value defaults to medium. */
+    avatarSize: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
     /** The variant of the initials. Only make sense when initials is used. */
-    initialsVariant: PropTypes.oneOf([
-        'default', 'inverse',
-    ]),
+    initialsVariant: PropTypes.oneOf(['default', 'inverse']),
     /** The content of the AvatarMenu. Used to render the menuItem elements
-    * when the AvatarMenu is open. */
-    children: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.node),
-        PropTypes.object,
-    ]),
+     * when the AvatarMenu is open. */
+    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
     /** The size of the menu. Options include xx-small, x-small, medium, or large.
-    * This value defaults to small. */
-    menuSize: PropTypes.oneOf([
-        'xx-small',
-        'x-small',
-        'small',
-        'medium',
-        'large',
-    ]),
+     * This value defaults to small. */
+    menuSize: PropTypes.oneOf(['xx-small', 'x-small', 'small', 'medium', 'large']),
     /** Determines the alignment of the menu relative to the AvatarMenu.
-    * Available options are: left, center, right, bottom, bottom-left, bottom-right.
-    * This value defaults to left. */
+     * Available options are: left, center, right, bottom, bottom-left, bottom-right.
+     * This value defaults to left. */
     menuAlignment: PropTypes.oneOf([
         'left',
         'right',
@@ -106,12 +91,9 @@ AvatarMenu.propTypes = {
     /** The id of the outer element. */
     id: PropTypes.string,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
-    tabIndex: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.string,
-    ]),
+    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** If true, the menu is disabled. Disabling the menu prevents users from opening it.
-    * This value defaults to false. */
+     * This value defaults to false. */
     disabled: PropTypes.bool,
 };
 

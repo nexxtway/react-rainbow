@@ -3,18 +3,13 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 export default function Label(props) {
-    const {
-        label,
-        inputId,
-        disabled,
-        hideLabel,
-        id,
-    } = props;
+    const { label, inputId, disabled, hideLabel, id } = props;
 
-    const getLabelClassNames = () => classnames('rainbow-table-input-checkbox_label', {
-        'rainbow-table-input-checkbox_label--disabled': disabled,
-        'rainbow-table-input-checkbox_label--hide': hideLabel,
-    });
+    const getLabelClassNames = () =>
+        classnames('rainbow-table-input-checkbox_label', {
+            'rainbow-table-input-checkbox_label--disabled': disabled,
+            'rainbow-table-input-checkbox_label--hide': hideLabel,
+        });
 
     return (
         <label className="rainbow-table-input-checkbox_label-container" htmlFor={inputId} id={id}>

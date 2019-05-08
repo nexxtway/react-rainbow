@@ -9,9 +9,12 @@ describe('<Indicator />', () => {
                 selectedItem="indicator-1"
                 indicatorID="indicator-1"
                 containerID="container-1"
-                header="Header" />,
+                header="Header"
+            />,
         );
-        const anchorComponent = component.find('a.rainbow-carousel_indicator.rainbow-carousel_indicator--active');
+        const anchorComponent = component.find(
+            'a.rainbow-carousel_indicator.rainbow-carousel_indicator--active',
+        );
 
         expect(anchorComponent.exists()).toBe(true);
         expect(anchorComponent.prop('aria-selected')).toBe(true);
@@ -23,7 +26,8 @@ describe('<Indicator />', () => {
                 selectedItem="indicator-2"
                 indicatorID="indicator-1"
                 containerID="container-1"
-                header="Header" />,
+                header="Header"
+            />,
         );
         const anchorComponent = component.find('a.rainbow-carousel_indicator');
 
@@ -36,7 +40,8 @@ describe('<Indicator />', () => {
                 selectedItem="indicator-1"
                 indicatorID="indicator-1"
                 containerID="container-1"
-                header="Header" />,
+                header="Header"
+            />,
         );
         const anchorComponent = component.find('a.rainbow-carousel_indicator');
 
@@ -49,7 +54,8 @@ describe('<Indicator />', () => {
                 selectedItem="indicator-1"
                 indicatorID="indicator-1"
                 containerID="container-1"
-                header={<span>Header</span>} />,
+                header={<span>Header</span>}
+            />,
         );
         const anchorComponent = component.find('a.rainbow-carousel_indicator');
 
@@ -62,7 +68,8 @@ describe('<Indicator />', () => {
                 selectedItem="indicator-1"
                 indicatorID="indicator-1"
                 containerID="container-1"
-                header={<span>Header</span>} />,
+                header={<span>Header</span>}
+            />,
         );
         const anchorComponent = component.find('a.rainbow-carousel_indicator');
 
@@ -74,7 +81,8 @@ describe('<Indicator />', () => {
                 selectedItem="indicator-1"
                 indicatorID="indicator-1"
                 containerID="container-1"
-                header="Header" />,
+                header="Header"
+            />,
         );
         const anchorComponent = component.find('a.rainbow-carousel_indicator');
 
@@ -89,7 +97,8 @@ describe('<Indicator />', () => {
                 indicatorID="indicator-1"
                 containerID="container-1"
                 header="Header"
-                onSelect={onSelectMockFn} />,
+                onSelect={onSelectMockFn}
+            />,
         );
         const anchorComponent = component.find('a.rainbow-carousel_indicator');
         anchorComponent.simulate('click');

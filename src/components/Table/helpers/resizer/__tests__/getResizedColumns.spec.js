@@ -2,10 +2,7 @@ import getResizedColumns from '../getResizedColumns';
 
 describe('getResizedColumns', () => {
     it('should return the same columns passed', () => {
-        const columns = [
-            { label: 'Name', field: 'name' },
-            { label: 'Email', field: 'email' },
-        ];
+        const columns = [{ label: 'Name', field: 'name' }, { label: 'Email', field: 'email' }];
         expect(getResizedColumns({ columns })).toEqual([
             { label: 'Name', field: 'name' },
             { label: 'Email', field: 'email' },

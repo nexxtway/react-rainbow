@@ -83,7 +83,8 @@ export default class Header extends Component {
                     tableId={tableId}
                     maxRowSelection={maxRowSelection}
                     bulkSelection={bulkSelection}
-                    style={headerStyles} />
+                    style={headerStyles}
+                />
             );
         }
 
@@ -93,11 +94,20 @@ export default class Header extends Component {
                 style={headerStyles}
                 scope="col"
                 tabIndex={this.getTabIndex()}
-                aria-label={this.getHeaderContent()}>
-
+                aria-label={this.getHeaderContent()}
+            >
                 <div className="rainbow-table_header-wrapper" style={headerStyles}>
-                    <div className="rainbow-table_header-container" role="presentation" onClick={this.handleSort}>
-                        <span title={this.getHeaderContent()} className="rainbow-table_header-content">{content}</span>
+                    <div
+                        className="rainbow-table_header-container"
+                        role="presentation"
+                        onClick={this.handleSort}
+                    >
+                        <span
+                            title={this.getHeaderContent()}
+                            className="rainbow-table_header-content"
+                        >
+                            {content}
+                        </span>
                         <RenderIf isTrue={sortable}>
                             <SortArrowIcon direction={sortDirection} />
                         </RenderIf>
@@ -108,7 +118,8 @@ export default class Header extends Component {
                         isResizable={this.isResizable()}
                         ariaLabel={this.getHeaderContent()}
                         onResize={this.handleResize}
-                        headerWidth={computedWidth} />
+                        headerWidth={computedWidth}
+                    />
                 </div>
             </th>
         );
@@ -133,9 +144,7 @@ Header.propTypes = {
     onDeselectAllRows: PropTypes.func,
     tableId: PropTypes.string.isRequired,
     maxRowSelection: PropTypes.number,
-    bulkSelection: PropTypes.oneOf([
-        'none', 'some', 'all',
-    ]),
+    bulkSelection: PropTypes.oneOf(['none', 'some', 'all']),
 };
 
 Header.defaultProps = {

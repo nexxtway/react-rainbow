@@ -2,7 +2,7 @@
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
     const { faCog } = require('@fortawesome/free-solid-svg-icons');
-    
+
     <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
         <GlobalHeader src="images/user/user2.jpg" className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
             <ButtonMenu menuAlignment="right" menuSize="small" label="Divider" icon={<FontAwesomeIcon icon={faCog} />}>

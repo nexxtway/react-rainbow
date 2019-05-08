@@ -15,7 +15,7 @@ describe('computeUniqueRowKey', () => {
     });
     it('should return the right key when a valid keyField is passed', () => {
         const keyFields = ['name', 'id'];
-        keyFields.forEach((keyField) => {
+        keyFields.forEach(keyField => {
             expect(computeUniqueRowKey(row, keyField)).toBe(row[keyField]);
         });
     });

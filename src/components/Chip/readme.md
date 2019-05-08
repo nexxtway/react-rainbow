@@ -21,7 +21,6 @@
             variant="brand" />
     </div>
 
-
 ##### Deletable Chip
 
     <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
@@ -49,7 +48,6 @@
             onDelete={() => alert('Delete Chip!')} />
 
     </div>
-
 
 ##### Chip with Icon and Avatar
 
@@ -79,7 +77,7 @@
                         assistiveText="Tahimi"
                         title="Tahimi"
                         size="medium" />
-                        
+
                     Chip Base with Avatar
                 </span>
             }
@@ -99,7 +97,7 @@
                         assistiveText="Tahimi"
                         title="Tahimi"
                         size="medium" />
-                        
+
                     Chip Neutral with Avatar
                 </span>
             }

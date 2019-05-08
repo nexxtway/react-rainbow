@@ -7,7 +7,6 @@
             placeholder="Placeholder text" />
     </div>
 
-
 ##### type of the inputs
 
     const inputContainerStyles = {
@@ -123,7 +122,6 @@
         </div>
     </div>
 
-
 ##### input radio
 
     <div className="rainbow-p-around_x-large rainbow-m-top_medium rainbow-flex rainbow-justify_space-around">
@@ -146,7 +144,6 @@
             label="Input Radio Label" />
     </div>
 
-
 ##### input type checkbox
 
     <div className="rainbow-p-around_x-large rainbow-m-top_medium rainbow-flex rainbow-justify_space-around">
@@ -168,7 +165,6 @@
             bottomHelpText="ex: (111) 111 1111"
             label="Input Checkbox Label" />
     </div>
-
 
 ##### input with icons
 
@@ -195,7 +191,6 @@
             } />
     </div>
 
-
 ##### input with help
 
     <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
@@ -206,7 +201,6 @@
 
     </div>
 
-
 ##### input required
 
     <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
@@ -215,7 +209,6 @@
             placeholder="Input required"
             required />
     </div>
-
 
 ##### input disabled
 
@@ -226,7 +219,6 @@
             disabled />
     </div>
 
-
 ##### input centered
 
     <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
@@ -235,7 +227,6 @@
             placeholder="center"
             isCentered />
     </div>
-
 
 ##### input error
 
@@ -261,9 +252,8 @@
             } />
     </div>
 
-
 ##### input read only
-    
+
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
     const {
         faStar,

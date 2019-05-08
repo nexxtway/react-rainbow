@@ -1,13 +1,6 @@
 {
     "extends": "airbnb",
-    "plugins": [
-        "babel",
-        "react",
-        "jest",
-        "jsx-a11y",
-        "import",
-        "webdriverio"
-    ],
+    "plugins": ["babel", "react", "jest", "jsx-a11y", "import", "webdriverio"],
     "rules": {
         "indent": ["error", 4],
         "react/jsx-indent": ["error", 4],
@@ -15,7 +8,9 @@
         "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx"] }],
         "react/jsx-first-prop-new-line": "off",
         "react/jsx-closing-bracket-location": "off",
-        "react/forbid-prop-types": "off"
+        "react/forbid-prop-types": "off",
+        "no-mixed-operators": "off",
+        "arrow-parens": ["error", "as-needed"]
     },
     "env": {
         "es6": true,

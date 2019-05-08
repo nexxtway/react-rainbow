@@ -16,20 +16,18 @@ export default class Input extends Component {
     }
 
     getContainerClassNames() {
-        const {
+        const { className, error } = this.props;
+        return classnames(
+            'rainbow-time-picker_input-container',
+            {
+                'rainbow-time-picker_input--error': error,
+            },
             className,
-            error,
-        } = this.props;
-        return classnames('rainbow-time-picker_input-container', {
-            'rainbow-time-picker_input--error': error,
-        }, className);
+        );
     }
 
     getIconPositionClassNames() {
-        const {
-            icon,
-            iconPosition,
-        } = this.props;
+        const { icon, iconPosition } = this.props;
         return classnames({
             'rainbow-time-picker_input-icon-container': icon,
             [`rainbow-time-picker_input-icon--${iconPosition}`]: icon,
@@ -37,11 +35,7 @@ export default class Input extends Component {
     }
 
     getInputClassNames() {
-        const {
-            isBare,
-            isCentered,
-            readOnly,
-        } = this.props;
+        const { isBare, isCentered, readOnly } = this.props;
         return classnames('rainbow-time-picker_input', {
             'rainbow-time-picker_input--bare': isBare,
             'rainbow-time-picker_input--counter': isCentered,
@@ -125,13 +119,12 @@ export default class Input extends Component {
                     required={required}
                     inputId={this.inputId}
                     readOnly={readOnly}
-                    id={this.getInlineTextLabelId()} />
+                    id={this.getInlineTextLabelId()}
+                />
 
                 <div className={this.getIconPositionClassNames()}>
                     <RenderIf isTrue={!!icon}>
-                        <span className="rainbow-time-picker_input-icon">
-                            {icon}
-                        </span>
+                        <span className="rainbow-time-picker_input-icon">{icon}</span>
                     </RenderIf>
 
                     <input
@@ -156,14 +149,16 @@ export default class Input extends Component {
                         autoComplete={autoComplete}
                         aria-labelledby={this.getInlineTextLabelId()}
                         aria-describedby={this.getErrorMessageId()}
-                        ref={this.inputRef} />
-
+                        ref={this.inputRef}
+                    />
                 </div>
                 <RenderIf isTrue={!!bottomHelpText}>
                     <div className="rainbow-time-picker_input--help">{bottomHelpText}</div>
                 </RenderIf>
                 <RenderIf isTrue={!!error}>
-                    <div id={this.getErrorMessageId()} className="rainbow-time-picker_input-error">{error}</div>
+                    <div id={this.getErrorMessageId()} className="rainbow-time-picker_input-error">
+                        {error}
+                    </div>
                 </RenderIf>
             </div>
         );
@@ -189,33 +184,22 @@ Input.propTypes = {
         'tel',
         'color',
     ]),
-    label: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
     placeholder: PropTypes.string,
     icon: PropTypes.node,
-    iconPosition: PropTypes.oneOf([
-        'left', 'right',
-    ]),
+    iconPosition: PropTypes.oneOf(['left', 'right']),
     maxLength: PropTypes.number,
     minLength: PropTypes.number,
-    bottomHelpText: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     required: PropTypes.bool,
     pattern: PropTypes.string,
     isCentered: PropTypes.bool,
     isBare: PropTypes.bool,
-    error: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     disabled: PropTypes.bool,
     readOnly: PropTypes.bool,
     onChange: PropTypes.func,
-    tabIndex: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.string,
-    ]),
+    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     onClick: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,

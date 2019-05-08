@@ -4,9 +4,7 @@ import HeaderTitle from './../headerTitle';
 
 describe('<HeaderTitle/>', () => {
     it('should set the title passed', () => {
-        const component = mount(
-            <HeaderTitle title="my title" />,
-        );
+        const component = mount(<HeaderTitle title="my title" />);
         expect(component.find('.rainbow-card_title').text()).toBe('my title');
     });
 });

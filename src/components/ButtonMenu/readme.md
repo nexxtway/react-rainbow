@@ -21,7 +21,6 @@
         </GlobalHeader>
     </div>
 
-
 ##### button menu with divider
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
@@ -54,7 +53,6 @@
         </GlobalHeader>
     </div>
 
-
 ##### button menu with subheaders
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
@@ -86,7 +84,6 @@
             </ButtonGroup>
         </GlobalHeader>
     </div>
-
 
 ##### button menu with icons
 
@@ -154,7 +151,6 @@
         </GlobalHeader>
     </div>
 
-
 ##### button menu position variants
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
@@ -196,7 +192,6 @@
             </ButtonMenu>
         </div>
     </div>
-
 
 ##### button menu width variants
 
@@ -250,7 +245,6 @@
         </div>
     </div>
 
-
 ##### button menu with disabled items
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
@@ -275,7 +269,6 @@
             </ButtonGroup>
         </GlobalHeader>
     </div>
-
 
 ##### button menu loading
 

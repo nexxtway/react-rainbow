@@ -1,4 +1,5 @@
 ##### Checkbox Group basic
+
     const options = [
         { value: 'checkboxOne', label: 'Checkbox One', disabled: false },
         { value: 'checkboxTwo', label: 'Checkbox Two', disabled: false },
@@ -33,8 +34,8 @@
 
     <CheckboxGroupTry />
 
-
 ##### Checkbox Group disabled
+
     const options = [
         { value: 'checkboxOne', label: 'Checkbox One', disabled: true },
         { value: 'checkboxTwo', label: 'Checkbox Two', disabled: true },
@@ -68,8 +69,8 @@
 
     <CheckboxGroupTry />
 
-
 ##### Checkbox Group required
+
     const options = [
         { value: 'checkboxOne', label: 'Checkbox One', disabled: false },
         { value: 'checkboxTwo', label: 'Checkbox Two', disabled: false },
@@ -104,8 +105,8 @@
 
     <CheckboxGroupTry />
 
-
 ##### Checkbox Group error
+
     const options = [
         { value: 'checkboxOne', label: 'Checkbox One', disabled: false },
         { value: 'checkboxTwo', label: 'Checkbox Two', disabled: false },

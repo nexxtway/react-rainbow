@@ -7,7 +7,6 @@
             onChange={ value => setState({ time: value }) } />
     </div>
 
-
 ##### TimePicker with inital value:
 
     initialState = { time: '13:32' };
@@ -18,7 +17,6 @@
             onChange={ value => setState({ time: value }) } />
     </div>
 
-
 ##### TimePicker required:
 
     <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
@@ -28,7 +26,6 @@
             label="TimePicker Label"
             onChange={ value => setState({ time: value }) } />
     </div>
-
 
 ##### TimePicker with error:
 
@@ -41,7 +38,6 @@
             onChange={ value => setState({ time: value }) } />
     </div>
 
-
 ##### TimePicker disabled:
 
     <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
@@ -50,7 +46,6 @@
             value="-- : -- --"
             label="TimePicker Label" />
     </div>
-
 
 ##### TimePicker readOnly:
 

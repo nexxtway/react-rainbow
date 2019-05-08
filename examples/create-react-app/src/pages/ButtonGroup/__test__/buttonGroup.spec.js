@@ -6,9 +6,7 @@ import ButtonGroupExample from './../';
 
 describe('<ButtonGroupExample/>', () => {
     it('should render the ButtonGroup', () => {
-        const component = shallow(
-            <ButtonGroupExample />,
-        );
+        const component = shallow(<ButtonGroupExample />);
         expect(component.find(ButtonGroup).exists()).toBe(true);
         expect(component.find(Button).exists()).toBe(true);
     });

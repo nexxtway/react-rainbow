@@ -15,8 +15,7 @@ export function insertChildOrderly(childrenRefs, childRef, nodes) {
 }
 
 export function findItemByKey(key, childrenRefs) {
-    return childrenRefs
-        .find(child => child.innerText[0].toLowerCase() === key.toLowerCase());
+    return childrenRefs.find(child => child.innerText[0].toLowerCase() === key.toLowerCase());
 }
 
 export function findItemIndex(childrenRefs, item) {

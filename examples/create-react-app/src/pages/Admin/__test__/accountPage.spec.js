@@ -8,9 +8,7 @@ import AccountPage from './../accountPage';
 
 describe('<Account Page in AdminExample/>', () => {
     it('should render the AccountPage', () => {
-        const component = mount(
-            <AccountPage />,
-        );
+        const component = mount(<AccountPage />);
         expect(component.find(Card).exists()).toBe(true);
         expect(component.find(Badge).exists()).toBe(true);
         expect(component.find(ButtonGroup).exists()).toBe(true);

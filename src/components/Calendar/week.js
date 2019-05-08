@@ -1,21 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-    addDays,
-    isSameDay,
-} from './helpers';
+import { addDays, isSameDay } from './helpers';
 import Day from './day';
 
 export default function Week(props) {
-    const {
-        value,
-        startDate,
-        endDate,
-        minDate,
-        maxDate,
-        firstDayMonth,
-        onChange,
-    } = props;
+    const { value, startDate, endDate, minDate, maxDate, firstDayMonth, onChange } = props;
 
     function Days() {
         let date = new Date(startDate);
@@ -51,10 +40,7 @@ Week.propTypes = {
     maxDate: PropTypes.instanceOf(Date),
     startDate: PropTypes.instanceOf(Date),
     endDate: PropTypes.instanceOf(Date),
-    value: PropTypes.oneOfType([
-        PropTypes.instanceOf(Date),
-        PropTypes.string,
-    ]),
+    value: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
     onChange: PropTypes.func,
 };
 

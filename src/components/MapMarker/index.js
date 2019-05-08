@@ -32,11 +32,7 @@ class Marker extends Component {
     }
 
     componentDidUpdate() {
-        const {
-            map,
-            latitude,
-            longitude,
-        } = this.props;
+        const { map, latitude, longitude } = this.props;
 
         if (!this[marker] && map && latitude && longitude) {
             this.setMarker();
@@ -48,14 +44,7 @@ class Marker extends Component {
     }
 
     setMarker() {
-        const {
-            map,
-            latitude,
-            longitude,
-            geocoder,
-            label,
-            description,
-        } = this.props;
+        const { map, latitude, longitude, geocoder, label, description } = this.props;
 
         const position = {
             lat: latitude,
@@ -149,7 +138,10 @@ class Marker extends Component {
         if (latitude && longitude) {
             return (
                 <li className={className} style={style}>
-                    <span className="rainbow-google-map-marker_assistive-aria-live" aria-live="polite">
+                    <span
+                        className="rainbow-google-map-marker_assistive-aria-live"
+                        aria-live="polite"
+                    >
                         {this.getAssistiveAriaLiveText()}
                     </span>
                     <button
@@ -159,8 +151,8 @@ class Marker extends Component {
                         onMouseOver={this.startAnimation}
                         onFocus={this.startAnimation}
                         onMouseLeave={this.stopAnimation}
-                        onBlur={this.stopAnimation}>
-
+                        onBlur={this.stopAnimation}
+                    >
                         <Icon icon={icon} />
                         <span className="rainbow-google-map-marker_text-container">
                             <span className="rainbow-google-map-marker_label">{label}</span>
@@ -175,26 +167,18 @@ class Marker extends Component {
 }
 
 /**
-* The MapMarker component is a single section of information that is nested in the GMap component.
-* This component shows you the detailed information of each location that is displayed in the GMap.
-*/
+ * The MapMarker component is a single section of information that is nested in the GMap component.
+ * This component shows you the detailed information of each location that is displayed in the GMap.
+ */
 export default function MapMarker(props) {
-    return (
-        <Consumer>
-            {context => <Marker {...props} {...context} />}
-        </Consumer>
-    );
+    return <Consumer>{context => <Marker {...props} {...context} />}</Consumer>;
 }
 
 MapMarker.propTypes = {
     /** The label of the marker. */
-    label: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The description of the marker. */
-    description: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The angular distance of a place north or south of the earth's equator. */
     latitude: PropTypes.number.isRequired,
     /** The angular distance of a place east or west of the meridian at Greenwich. */

@@ -48,7 +48,9 @@ class PageTabset {
      * @returns {bool}
      */
     isLeftButtonEnabled() {
-        return $(this.rootElement).$$(BUTTON_SELECTOR)[0].isEnabled();
+        return $(this.rootElement)
+            .$$(BUTTON_SELECTOR)[0]
+            .isEnabled();
     }
 
     /**
@@ -57,7 +59,9 @@ class PageTabset {
      * @returns {bool}
      */
     isRightButtonEnabled() {
-        return $(this.rootElement).$$(BUTTON_SELECTOR)[1].isEnabled();
+        return $(this.rootElement)
+            .$$(BUTTON_SELECTOR)[1]
+            .isEnabled();
     }
 
     /**
@@ -66,7 +70,9 @@ class PageTabset {
      * @returns {bool}
      */
     clickLeftButton() {
-        return $(this.rootElement).$$(BUTTON_SELECTOR)[0].click();
+        return $(this.rootElement)
+            .$$(BUTTON_SELECTOR)[0]
+            .click();
     }
 
     /**
@@ -75,7 +81,9 @@ class PageTabset {
      * @returns {bool}
      */
     clickRightButton() {
-        return $(this.rootElement).$$(BUTTON_SELECTOR)[1].click();
+        return $(this.rootElement)
+            .$$(BUTTON_SELECTOR)[1]
+            .click();
     }
 }
 

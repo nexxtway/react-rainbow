@@ -33,13 +33,11 @@
 
     <ProgressBarInAction />
 
-
 ##### progressBar success
 
     <div className="rainbow-p-around_x-large" >
         <ProgressBar value={50} variant="success" />
     </div>
-
 
 ##### descriptive progressBar
 
@@ -52,7 +50,6 @@
         </div>
         <ProgressBar value={25} />
     </div>
-
 
 ##### progressBar with size variants
 

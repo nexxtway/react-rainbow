@@ -7,11 +7,12 @@ import getFirstItem from './getFirstItem';
 export default function PageButtons(props) {
     const { pages, activePage, onChange } = props;
 
-    const getButtonClassName = page => classnames('rainbow-pagination_button-content', {
-        'rainbow-pagination_button-content--active': activePage === page,
-    });
+    const getButtonClassName = page =>
+        classnames('rainbow-pagination_button-content', {
+            'rainbow-pagination_button-content--active': activePage === page,
+        });
 
-    const getAriaCurrent = (page) => {
+    const getAriaCurrent = page => {
         if (page === activePage) {
             return 'page';
         }
@@ -21,28 +22,27 @@ export default function PageButtons(props) {
     const renderButtons = () => {
         const firstItem = pages > 4 ? getFirstItem(pages, activePage) : 1;
         const buttonsToRender = pages > 4 ? 5 : pages;
-        return Array(buttonsToRender).fill(0).map((item, index) => {
-            const page = firstItem + index;
-            const key = `page-button-${page}`;
-            const ariaLabel = `Goto Page ${page}`;
+        return Array(buttonsToRender)
+            .fill(0)
+            .map((item, index) => {
+                const page = firstItem + index;
+                const key = `page-button-${page}`;
+                const ariaLabel = `Goto Page ${page}`;
 
-            return (
-                <li
-                    key={key}
-                    className="rainbow-pagination_button">
-                    <a
-                        className={getButtonClassName(page)}
-                        onClick={event => onChange(event, page)}
-                        aria-current={getAriaCurrent(page)}
-                        aria-label={ariaLabel}
-                        href="javascript:void(0);">
-                        <span>
-                            {page}
-                        </span>
-                    </a>
-                </li>
-            );
-        });
+                return (
+                    <li key={key} className="rainbow-pagination_button">
+                        <a
+                            className={getButtonClassName(page)}
+                            onClick={event => onChange(event, page)}
+                            aria-current={getAriaCurrent(page)}
+                            aria-label={ariaLabel}
+                            href="javascript:void(0);"
+                        >
+                            <span>{page}</span>
+                        </a>
+                    </li>
+                );
+            });
     };
 
     return renderButtons();

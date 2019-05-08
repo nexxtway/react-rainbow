@@ -6,18 +6,16 @@ describe('Day', () => {
     it('should render the right day', () => {
         const date = new Date('04/24/2019');
         const firstDayMonth = new Date('04/01/2019');
-        const component = mount(
-            <Day date={date} firstDayMonth={firstDayMonth} />,
-        );
+        const component = mount(<Day date={date} firstDayMonth={firstDayMonth} />);
         expect(component.find('button').text()).toBe('24');
     });
     it('should set the right class names in button element when is selected', () => {
         const date = new Date('04/24/2019');
         const firstDayMonth = new Date('04/01/2019');
-        const component = mount(
-            <Day date={date} firstDayMonth={firstDayMonth} isSelected />,
+        const component = mount(<Day date={date} firstDayMonth={firstDayMonth} isSelected />);
+        expect(component.find('button').prop('className')).toBe(
+            'rainbow-calendar_day-button rainbow-calendar_day-button--selected',
         );
-        expect(component.find('button').prop('className')).toBe('rainbow-calendar_day-button rainbow-calendar_day-button--selected');
     });
     it('should call onChange with the right date when click the button', () => {
         const date = new Date('04/24/2019');
@@ -32,9 +30,7 @@ describe('Day', () => {
     it('should render the right day when is adjacent', () => {
         const date = new Date('03/29/2019');
         const firstDayMonth = new Date('04/01/2019');
-        const component = mount(
-            <Day date={date} firstDayMonth={firstDayMonth} />,
-        );
+        const component = mount(<Day date={date} firstDayMonth={firstDayMonth} />);
         expect(component.find('td').prop('aria-selected')).toBe('false');
         expect(component.find('td').text()).toBe('29');
     });

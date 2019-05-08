@@ -2,10 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function CloseIcon(props) {
-    const {
-        className,
-        style,
-    } = props;
+    const { className, style } = props;
 
     return (
         <svg className={className} style={style} width="16px" height="16px" viewBox="0 0 16 16">

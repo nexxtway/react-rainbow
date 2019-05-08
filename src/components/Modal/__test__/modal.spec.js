@@ -32,7 +32,11 @@ describe('<Modal/>', () => {
                 <p />
             </Modal>,
         );
-        expect(component.find('div[className="rainbow-modal_backdrop rainbow-modal_backdrop--open"]').exists()).toBe(true);
+        expect(
+            component
+                .find('div[className="rainbow-modal_backdrop rainbow-modal_backdrop--open"]')
+                .exists(),
+        ).toBe(true);
     });
     it('should have the right class names in the section element when the modal is opened', () => {
         const component = mount(
@@ -40,7 +44,9 @@ describe('<Modal/>', () => {
                 <p />
             </Modal>,
         );
-        expect(component.find('section[role="dialog"]').prop('className')).toBe('rainbow-modal rainbow-modal--open');
+        expect(component.find('section[role="dialog"]').prop('className')).toBe(
+            'rainbow-modal rainbow-modal--open',
+        );
     });
     it('should have the right class names in the section element when the modal is opened and the size is medium', () => {
         const component = mount(
@@ -48,7 +54,9 @@ describe('<Modal/>', () => {
                 <p />
             </Modal>,
         );
-        expect(component.find('section[role="dialog"]').prop('className')).toBe('rainbow-modal rainbow-modal--open rainbow-modal--medium');
+        expect(component.find('section[role="dialog"]').prop('className')).toBe(
+            'rainbow-modal rainbow-modal--open rainbow-modal--medium',
+        );
     });
     it('should have the right class names in the section element when the modal is opened and the size is large', () => {
         const component = mount(
@@ -56,7 +64,9 @@ describe('<Modal/>', () => {
                 <p />
             </Modal>,
         );
-        expect(component.find('section[role="dialog"]').prop('className')).toBe('rainbow-modal rainbow-modal--open rainbow-modal--large');
+        expect(component.find('section[role="dialog"]').prop('className')).toBe(
+            'rainbow-modal rainbow-modal--open rainbow-modal--large',
+        );
     });
     it('should set tabIndex as -1 in section element', () => {
         const component = mount(
@@ -72,7 +82,9 @@ describe('<Modal/>', () => {
                 <p />
             </Modal>,
         );
-        expect(component.find('section[role="dialog"]').prop('aria-labelledby')).toMatch(/modal-heading/);
+        expect(component.find('section[role="dialog"]').prop('aria-labelledby')).toMatch(
+            /modal-heading/,
+        );
         expect(component.find('Header').prop('id')).toMatch(/modal-heading/);
     });
     it('should set the same generated id to section as aria-describedby and to children container as id', () => {
@@ -81,8 +93,12 @@ describe('<Modal/>', () => {
                 <p />
             </Modal>,
         );
-        expect(component.find('section[role="dialog"]').prop('aria-describedby')).toMatch(/modal-content/);
-        expect(component.find('div[className="rainbow-modal_content"]').prop('id')).toMatch(/modal-content/);
+        expect(component.find('section[role="dialog"]').prop('aria-describedby')).toMatch(
+            /modal-content/,
+        );
+        expect(component.find('div[className="rainbow-modal_content"]').prop('id')).toMatch(
+            /modal-content/,
+        );
     });
     it('should set aria-modal to true in section element', () => {
         const component = mount(

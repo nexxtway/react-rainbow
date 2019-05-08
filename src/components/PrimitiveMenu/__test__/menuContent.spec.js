@@ -17,11 +17,13 @@ describe('<MenuContent/>', () => {
                 <span />
             </MenuContent>,
         );
-        expect(component.find('Spinner').props()).toEqual(expect.objectContaining({
-            assistiveText: 'loading menu',
-            isVisible: true,
-            size: 'small',
-        }));
+        expect(component.find('Spinner').props()).toEqual(
+            expect.objectContaining({
+                assistiveText: 'loading menu',
+                isVisible: true,
+                size: 'small',
+            }),
+        );
     });
     it('should render the children passed when isLoading is false', () => {
         const component = mount(

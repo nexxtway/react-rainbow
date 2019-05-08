@@ -9,9 +9,9 @@ import { uniqueId } from '../../libs/utils';
 import './styles.css';
 
 /**
-* A select list that can have a single entry checked at any one time.
-* @category Form
-*/
+ * A select list that can have a single entry checked at any one time.
+ * @category Form
+ */
 class RadioGroup extends Component {
     constructor(props) {
         super(props);
@@ -37,16 +37,7 @@ class RadioGroup extends Component {
     }
 
     render() {
-        const {
-            style,
-            label,
-            required,
-            error,
-            onChange,
-            options,
-            value,
-            id,
-        } = this.props;
+        const { style, label, required, error, onChange, options, value, id } = this.props;
 
         return (
             <fieldset id={id} className={this.getContainerClassNames()} style={style}>
@@ -63,8 +54,8 @@ class RadioGroup extends Component {
                         options={options}
                         name={this.groupNameId}
                         required={required}
-                        ariaDescribedby={this.getErrorMessageId()} />
-
+                        ariaDescribedby={this.getErrorMessageId()}
+                    />
                 </div>
                 <RenderIf isTrue={!!error}>
                     <div id={this.getErrorMessageId()} className="rainbow-radio-group_text-error">
@@ -78,9 +69,7 @@ class RadioGroup extends Component {
 
 RadioGroup.propTypes = {
     /** The radio group label */
-    label: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The name of the radio group */
     name: PropTypes.string,
     /** The value of the element. */
@@ -92,17 +81,13 @@ RadioGroup.propTypes = {
     /** An array with the radio options. */
     options: PropTypes.arrayOf(
         PropTypes.shape({
-            label: PropTypes.oneOfType([
-                PropTypes.string, PropTypes.node,
-            ]).isRequired,
+            label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
             value: PropTypes.string,
             disabled: PropTypes.bool,
         }),
     ),
     /** Specifies that an radio group must be filled out before submitting the form. */
-    error: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.node,
-    ]),
+    error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied for the outer element. */

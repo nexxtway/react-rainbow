@@ -12,9 +12,7 @@ describe('<Sidebar>', () => {
         expect(component.find('p').text()).toBe('Test Child');
     });
     it('should set the ariaLabel passed as aria-label in the nav element', () => {
-        const component = mount(
-            <Sidebar ariaLabel="my label" />,
-        );
+        const component = mount(<Sidebar ariaLabel="my label" />);
         expect(component.find('nav').prop('aria-label')).toBe('my label');
     });
 });

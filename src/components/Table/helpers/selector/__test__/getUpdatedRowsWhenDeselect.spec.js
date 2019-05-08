@@ -24,15 +24,17 @@ describe('getUpdatedRowsWhenDeselect', () => {
     });
     it('should return the right rows when maxRowSelection is 0', () => {
         const selectedRowsKeys = {};
-        expect(getUpdatedRowsWhenDeselect({
-            maxRowSelection: 0,
-            rows,
-            indexes,
-            isMultiple: false,
-            rowKeyValue: 'row-2',
-            lastSelectedRowKey: undefined,
-            selectedRowsKeys,
-        })).toEqual([
+        expect(
+            getUpdatedRowsWhenDeselect({
+                maxRowSelection: 0,
+                rows,
+                indexes,
+                isMultiple: false,
+                rowKeyValue: 'row-2',
+                lastSelectedRowKey: undefined,
+                selectedRowsKeys,
+            }),
+        ).toEqual([
             { key: 'row-1', isSelected: true, isDisabled: false },
             { key: 'row-2', isSelected: false, isDisabled: false },
             { key: 'row-3', isDisabled: false },
@@ -43,17 +45,19 @@ describe('getUpdatedRowsWhenDeselect', () => {
     });
     it('should return the right rows when maxRowSelection is greater than 0', () => {
         const values = [1, 2, 3, 4, 5];
-        values.forEach((value) => {
+        values.forEach(value => {
             const selectedRowsKeys = {};
-            expect(getUpdatedRowsWhenDeselect({
-                maxRowSelection: value,
-                rows,
-                indexes,
-                isMultiple: false,
-                rowKeyValue: 'row-2',
-                lastSelectedRowKey: undefined,
-                selectedRowsKeys,
-            })).toEqual([
+            expect(
+                getUpdatedRowsWhenDeselect({
+                    maxRowSelection: value,
+                    rows,
+                    indexes,
+                    isMultiple: false,
+                    rowKeyValue: 'row-2',
+                    lastSelectedRowKey: undefined,
+                    selectedRowsKeys,
+                }),
+            ).toEqual([
                 { key: 'row-1', isSelected: true, isDisabled: false },
                 { key: 'row-2', isSelected: false, isDisabled: false },
                 { key: 'row-3', isDisabled: false },
@@ -69,15 +73,17 @@ describe('getUpdatedRowsWhenDeselect', () => {
             'row-2': true,
             'row-3': false,
         };
-        expect(getUpdatedRowsWhenDeselect({
-            maxRowSelection: 4,
-            rows,
-            indexes,
-            isMultiple: true,
-            rowKeyValue: 'row-2',
-            lastSelectedRowKey: undefined,
-            selectedRowsKeys,
-        })).toEqual([
+        expect(
+            getUpdatedRowsWhenDeselect({
+                maxRowSelection: 4,
+                rows,
+                indexes,
+                isMultiple: true,
+                rowKeyValue: 'row-2',
+                lastSelectedRowKey: undefined,
+                selectedRowsKeys,
+            }),
+        ).toEqual([
             { key: 'row-1', isSelected: true, isDisabled: false },
             { key: 'row-2', isSelected: false, isDisabled: false },
             { key: 'row-3', isDisabled: false },
@@ -94,19 +100,21 @@ describe('getUpdatedRowsWhenDeselect', () => {
             'row-2': true,
             'row-3': true,
         };
-        expect(getUpdatedRowsWhenDeselect({
-            maxRowSelection: 4,
-            rows: [
-                { key: 'row-1', isSelected: true, isDisabled: false },
-                { key: 'row-2', isSelected: true, isDisabled: false },
-                { key: 'row-3', isSelected: true, isDisabled: false },
-            ],
-            indexes,
-            isMultiple: true,
-            rowKeyValue: 'row-3',
-            lastSelectedRowKey: 'row-1',
-            selectedRowsKeys,
-        })).toEqual([
+        expect(
+            getUpdatedRowsWhenDeselect({
+                maxRowSelection: 4,
+                rows: [
+                    { key: 'row-1', isSelected: true, isDisabled: false },
+                    { key: 'row-2', isSelected: true, isDisabled: false },
+                    { key: 'row-3', isSelected: true, isDisabled: false },
+                ],
+                indexes,
+                isMultiple: true,
+                rowKeyValue: 'row-3',
+                lastSelectedRowKey: 'row-1',
+                selectedRowsKeys,
+            }),
+        ).toEqual([
             { key: 'row-1', isSelected: false, isDisabled: false },
             { key: 'row-2', isSelected: false, isDisabled: false },
             { key: 'row-3', isSelected: false, isDisabled: false },

@@ -4,19 +4,13 @@ import classnames from 'classnames';
 import RequiredAsterisk from '../../RequiredAsterisk';
 
 export default function Label(props) {
-    const {
-        label,
-        required,
-        inputId,
-        readOnly,
-        id,
-        hideLabel,
-    } = props;
+    const { label, required, inputId, readOnly, id, hideLabel } = props;
 
-    const getLabelClassNames = () => classnames('rainbow-time-picker_input-label', {
-        'rainbow-time-picker_input-label--readonly': readOnly,
-        'rainbow-time-picker_input-label--hide': hideLabel,
-    });
+    const getLabelClassNames = () =>
+        classnames('rainbow-time-picker_input-label', {
+            'rainbow-time-picker_input-label--readonly': readOnly,
+            'rainbow-time-picker_input-label--hide': hideLabel,
+        });
 
     return (
         <label className={getLabelClassNames()} htmlFor={inputId} id={id}>
