@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-export default function SortArrowIcon({ direction }) {
+export default function SortArrowIcon({ direction, color }) {
     const getClassName = () =>
         classnames('rainbow-table_header-arrow', {
             'rainbow-table_header-arrow--asc': direction === 'asc',
@@ -17,11 +17,10 @@ export default function SortArrowIcon({ direction }) {
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
         >
-            <g id="components" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+            <g id="components" stroke="none" strokeWidth="1" fill={color} fillRule="evenodd">
                 <g
                     id="Components-Data-Table-V2"
                     transform="translate(-355.000000, -1997.000000)"
-                    fill="#01B6F5"
                     fillRule="nonzero"
                 >
                     <g id="Group-34" transform="translate(282.000000, 1336.000000)">
@@ -44,8 +43,10 @@ export default function SortArrowIcon({ direction }) {
 
 SortArrowIcon.propTypes = {
     direction: PropTypes.oneOf(['asc', 'desc']),
+    color: PropTypes.string,
 };
 
 SortArrowIcon.defaultProps = {
     direction: 'asc',
+    color: '#01B6F5',
 };

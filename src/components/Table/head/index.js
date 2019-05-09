@@ -6,16 +6,16 @@ import './styles.css';
 export default class Head extends PureComponent {
     resolveSortDirection(field) {
         const { sortDirection, defaultSortDirection } = this.props;
-        if (this.isSelected(field)) {
+        if (this.isSorted(field)) {
             return sortDirection;
         }
         return defaultSortDirection;
     }
 
-    isSelected(field) {
-        const { selectedColumn } = this.props;
+    isSorted(field) {
+        const { sortedBy } = this.props;
         if (field) {
-            return field === selectedColumn;
+            return field === sortedBy;
         }
         return false;
     }
@@ -36,7 +36,7 @@ export default class Head extends PureComponent {
                         colIndex={index}
                         content={header}
                         sortDirection={this.resolveSortDirection(field)}
-                        isSelected={this.isSelected(field)}
+                        isSorted={this.isSorted(field)}
                         field={field}
                     />
                 );
@@ -50,12 +50,12 @@ Head.propTypes = {
     columns: PropTypes.array,
     sortDirection: PropTypes.string,
     defaultSortDirection: PropTypes.string,
-    selectedColumn: PropTypes.string,
+    sortedBy: PropTypes.string,
 };
 
 Head.defaultProps = {
     columns: undefined,
     sortDirection: undefined,
     defaultSortDirection: 'asc',
-    selectedColumn: undefined,
+    sortedBy: undefined,
 };

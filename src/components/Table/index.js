@@ -358,7 +358,7 @@ export default class Table extends Component {
                                     <tr>
                                         <Head
                                             columns={columns}
-                                            selectedColumn={sortedBy}
+                                            sortedBy={sortedBy}
                                             sortDirection={sortDirection}
                                             defaultSortDirection={defaultSortDirection}
                                             resizeColumnDisabled={resizeColumnDisabled}

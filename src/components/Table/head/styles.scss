@@ -1,7 +1,7 @@
 /* stylelint-disable no-descending-specificity */
-@import "../../../styles/colors";
-@import "../../../styles/font-sizes";
-@import "../../../styles/paddings";
+@import '../../../styles/colors';
+@import '../../../styles/font-sizes';
+@import '../../../styles/paddings';
 
 .rainbow-table_header {
     text-transform: uppercase;
@@ -15,7 +15,27 @@
     border-top: 0;
 
     &:focus {
-        outline: none;
+        .rainbow-table_header-container {
+            background-color: #fff;
+            border-color: $color-brand;
+        }
+
+        .rainbow-table_header-content {
+            color: $color-brand;
+        }
+
+        .rainbow-table_header-arrow {
+            visibility: visible;
+        }
+
+        .rainbow-table_header-resize-bar,
+        &:hover .rainbow-table_header-resize-bar {
+            background-color: $color-brand;
+        }
+
+        &:hover .rainbow-table_header-container {
+            border-color: $color-brand;
+        }
     }
 }
 
@@ -136,26 +156,19 @@ th:first-of-type .rainbow-table_header-container {
     }
 }
 
-.rainbow-table_header--selected {
-    .rainbow-table_header-container {
-        background-color: #fff;
-        border-color: $color-brand;
-    }
-
-    .rainbow-table_header-content {
-        color: $color-brand;
-    }
-
+.rainbow-table_header--sorted {
     .rainbow-table_header-arrow {
         visibility: visible;
     }
 
-    .rainbow-table_header-resize-bar, &:hover .rainbow-table_header-resize-bar {
-        background-color: $color-brand;
+    .rainbow-table_header-arrow > g {
+        fill: #576574;
     }
 
-    &:hover .rainbow-table_header-container {
-        border-color: $color-brand;
+    &:focus {
+        .rainbow-table_header-arrow > g {
+            fill: #01b6f5;
+        }
     }
 }
 
