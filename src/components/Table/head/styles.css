@@ -130,12 +130,12 @@ th:first-of-type .rainbow-table_header-container {
 }
 .rainbow-table_header--sortable:hover .rainbow-table_header-arrow {
     visibility: visible;
-    margin-left: 1rem;
+    margin-left: 12px;
 }
 
 .rainbow-table_header--sorted .rainbow-table_header-arrow {
     visibility: visible;
-    margin-left: 1rem;
+    margin-left: 12px;
 }
 
 .rainbow-table_header--sorted .rainbow-table_header-arrow > g {
