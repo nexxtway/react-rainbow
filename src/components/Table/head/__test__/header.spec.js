@@ -10,10 +10,10 @@ document.addEventListener = jest.fn((event, cb) => {
 const preventDefault = jest.fn();
 
 describe('<Header />', () => {
-    it('should set the right class names in th element when sortable and isSelected are passed and is resizable', () => {
-        const component = mount(<Header sortable isSelected sortDirection="asc" />);
+    it('should set the right class names in th element when sortable and isSorted are passed and is resizable', () => {
+        const component = mount(<Header sortable isSorted sortDirection="asc" />);
         expect(component.find('th').prop('className')).toBe(
-            'rainbow-table_header rainbow-table_header--resizable rainbow-table_header--sortable rainbow-table_header--selected',
+            'rainbow-table_header rainbow-table_header--resizable rainbow-table_header--sortable rainbow-table_header--sorted',
         );
     });
     it('should set the right class names in th element when resizeColumnDisabled is passed', () => {
@@ -24,11 +24,11 @@ describe('<Header />', () => {
         const component = mount(<Header sortDirection="asc" />);
         expect(component.find('th').prop('scope')).toBe('col');
     });
-    it('should set tabIndex={0} in th element when isSelected is passed', () => {
-        const component = mount(<Header sortDirection="asc" isSelected />);
+    it('should set tabIndex={0} in th element when isSorted is passed', () => {
+        const component = mount(<Header sortDirection="asc" isSorted />);
         expect(component.find('th').prop('tabIndex')).toBe(0);
     });
-    it('should set tabIndex={-1} in th element when isSelected is not passed', () => {
+    it('should set tabIndex={-1} in th element when isSorted is not passed', () => {
         const component = mount(<Header sortDirection="asc" />);
         expect(component.find('th').prop('tabIndex')).toBe(-1);
     });

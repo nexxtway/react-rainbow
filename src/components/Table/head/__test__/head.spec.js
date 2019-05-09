@@ -27,26 +27,26 @@ describe('<Head />', () => {
         const header = component.find('Header');
         expect(header.at(0).prop('sortDirection')).toBe('desc');
     });
-    it('should set the right sortDirection in Header component when sortDirection is passed and selectedColumn match with the column field', () => {
+    it('should set the right sortDirection in Header component when sortDirection is passed and sortedBy match with the column field', () => {
         const component = mount(
             <Head
                 columns={columns}
                 defaultSortDirection="desc"
                 sortDirection="asc"
-                selectedColumn="name"
+                sortedBy="name"
             />,
         );
         const header = component.find('Header');
         expect(header.at(0).prop('sortDirection')).toBe('asc');
     });
-    it('should set isSelected to true in Header component when the selectedColumn passed match with the column field', () => {
-        const component = mount(<Head columns={columns} selectedColumn="name" />);
+    it('should set isSorted to true in Header component when the sortedBy passed match with the column field', () => {
+        const component = mount(<Head columns={columns} sortedBy="name" />);
         const header = component.find('Header');
-        expect(header.at(0).prop('isSelected')).toBe(true);
+        expect(header.at(0).prop('isSorted')).toBe(true);
     });
-    it('should set isSelected to false in Header component when the selectedColumn passed does not match with the column field', () => {
-        const component = mount(<Head columns={columns} selectedColumn="other field" />);
+    it('should set isSorted to false in Header component when the sortedBy passed does not match with the column field', () => {
+        const component = mount(<Head columns={columns} sortedBy="other field" />);
         const header = component.find('Header');
-        expect(header.at(0).prop('isSelected')).toBe(false);
+        expect(header.at(0).prop('isSorted')).toBe(false);
     });
 });

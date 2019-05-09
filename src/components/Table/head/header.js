@@ -15,17 +15,17 @@ export default class Header extends Component {
     }
 
     getClassName() {
-        const { sortable, isSelected } = this.props;
+        const { sortable, isSorted } = this.props;
         return classnames('rainbow-table_header', {
             'rainbow-table_header--resizable': this.isResizable(),
             'rainbow-table_header--sortable': sortable,
-            'rainbow-table_header--selected': isSelected,
+            'rainbow-table_header--sorted': isSorted,
         });
     }
 
     getTabIndex() {
-        const { isSelected } = this.props;
-        if (isSelected) {
+        const { isSorted } = this.props;
+        if (isSorted) {
             return 0;
         }
         return -1;
@@ -129,7 +129,7 @@ export default class Header extends Component {
 Header.propTypes = {
     content: PropTypes.any,
     colIndex: PropTypes.number.isRequired,
-    isSelected: PropTypes.bool,
+    isSorted: PropTypes.bool,
     sortable: PropTypes.bool,
     sortDirection: PropTypes.string,
     onSort: PropTypes.func,
@@ -149,7 +149,7 @@ Header.propTypes = {
 
 Header.defaultProps = {
     content: null,
-    isSelected: false,
+    isSorted: false,
     sortable: false,
     sortDirection: undefined,
     onSort: () => {},
