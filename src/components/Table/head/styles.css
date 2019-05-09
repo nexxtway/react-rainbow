@@ -47,7 +47,6 @@
     border: 1px transparent solid;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     height: 44px;
     padding: 0 0.5rem;
 }
@@ -135,6 +134,7 @@ th:first-of-type .rainbow-table_header-container {
 
 .rainbow-table_header--sorted .rainbow-table_header-arrow {
     visibility: visible;
+    margin-left: 1rem;
 }
 
 .rainbow-table_header--sorted .rainbow-table_header-arrow > g {
