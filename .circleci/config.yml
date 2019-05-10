@@ -4,112 +4,136 @@
 #
 version: 2
 jobs:
-  build_and_test:
-    docker:
-      - image: circleci/node:11.8.0-stretch-browsers
+    build_and_test:
+        docker:
+            - image: circleci/node:11.8.0-stretch-browsers
 
-    working_directory: ~/repo
+        working_directory: ~/repo
 
-    steps:
-      - checkout
+        steps:
+            - checkout
 
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "yarn.lock" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+            # Download and cache dependencies
+            - restore_cache:
+                  keys:
+                      - v1-dependencies-{{ checksum "yarn.lock" }}
+                      # fallback to using the latest cache if no exact match is found
+                      - v1-dependencies-
 
-      - run: yarn install
+            - run: yarn install
 
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "yarn.lock" }}
+            - save_cache:
+                  paths:
+                      - node_modules
+                  key: v1-dependencies-{{ checksum "yarn.lock" }}
 
-      - run: yarn lint
+            - run: yarn lint
 
-      - run: yarn test --ci --maxWorkers=2 --coverage --coverageReporters=text-lcov | ./node_modules/coveralls/bin/coveralls.js
+            - run: yarn test --ci --maxWorkers=2 --coverage --coverageReporters=text-lcov | ./node_modules/coveralls/bin/coveralls.js
 
-  integration_tests:
-    docker:
-      - image: circleci/node:11.8.0-stretch-browsers
+    integration_tests:
+        docker:
+            - image: circleci/node:11.8.0-stretch-browsers
 
-    working_directory: ~/repo
+        working_directory: ~/repo
 
-    steps:
-      - checkout
+        steps:
+            - checkout
 
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "yarn.lock" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+            # Download and cache dependencies
+            - restore_cache:
+                  keys:
+                      - v1-dependencies-{{ checksum "yarn.lock" }}
+                      # fallback to using the latest cache if no exact match is found
+                      - v1-dependencies-
 
-      - run: yarn install
+            - run: yarn install
 
-      - run:
-          name: Install Chrome
-          command: |
-            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-            sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-            sudo apt-get update
-            sudo apt-get -y install google-chrome-stable
+            - run:
+                  name: Install Chrome
+                  command: |
+                      wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+                      sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+                      sudo apt-get update
+                      sudo apt-get -y install google-chrome-stable
 
-      - run:
-          command: yarn start
-          background: true
+            - run:
+                  command: yarn start
+                  background: true
 
-      - run: sleep 10
-          
-      - run: yarn test:integration --headless
+            - run: sleep 10
 
-      - store_test_results:
-          path: ./junit-results
+            - run: yarn test:integration --headless
 
-      - store_artifacts:
-          path: ./errorShots
+            - store_test_results:
+                  path: ./junit-results
 
-  deploy_firebase:
-    docker:
-      - image: circleci/node:11.8.0-stretch-browsers
+            - store_artifacts:
+                  path: ./errorShots
 
-    working_directory: ~/repo
+    publish_canary:
+        docker:
+            - image: circleci/node:11.8.0-stretch-browsers
 
-    steps:
-      - checkout
+        working_directory: ~/repo
 
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "yarn.lock" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+        steps:
+            - checkout
+            # Download and cache dependencies
+            - restore_cache:
+                  keys:
+                      - v1-dependencies-{{ checksum "yarn.lock" }}
+                      # fallback to using the latest cache if no exact match is found
+                      - v1-dependencies-
+            - yarn install
+            - yarn publish:canary
 
-      - run:
-          name: Create .env file
-          command: |
-            touch .env;
-            echo REACT_APP_GA_ID=$REACT_APP_GA_ID >> .env;
-            echo REACT_APP_GOOGLE_MAPS_APIKEY=$REACT_APP_GOOGLE_MAPS_APIKEY >> .env;
-            echo REACT_APP_RECAPTCHA_APIKEY=$REACT_APP_RECAPTCHA_APIKEY >> .env;
+    deploy_firebase:
+        docker:
+            - image: circleci/node:11.8.0-stretch-browsers
 
-      - run: yarn install
-      - run: yarn deploy:library --token=$FIREBASE_TOKEN
+        working_directory: ~/repo
+
+        steps:
+            - checkout
+
+            # Download and cache dependencies
+            - restore_cache:
+                  keys:
+                      - v1-dependencies-{{ checksum "yarn.lock" }}
+                      # fallback to using the latest cache if no exact match is found
+                      - v1-dependencies-
+
+            - run:
+                  name: Create .env file
+                  command: |
+                      touch .env;
+                      echo REACT_APP_GA_ID=$REACT_APP_GA_ID >> .env;
+                      echo REACT_APP_GOOGLE_MAPS_APIKEY=$REACT_APP_GOOGLE_MAPS_APIKEY >> .env;
+                      echo REACT_APP_RECAPTCHA_APIKEY=$REACT_APP_RECAPTCHA_APIKEY >> .env;
+
+            - run: yarn install
+            - run: yarn deploy:library --token=$FIREBASE_TOKEN
 
 workflows:
-  version: 2
-  build_and_test:
-    jobs:
-      - build_and_test
-      - integration_tests:
-          requires:
+    version: 2
+    build_and_test:
+        jobs:
             - build_and_test
-      - deploy_firebase:
-          requires:
-            - build_and_test
-            - integration_tests
-          filters:
-            branches:
-              only: master
+            - integration_tests:
+                  requires:
+                      - build_and_test
+            - deploy_firebase:
+                  requires:
+                      - build_and_test
+                      - integration_tests
+                  filters:
+                      branches:
+                          only: master
+            - publish_canary:
+                  requires:
+                      - build_and_test
+                      - integration_tests
+                  filters:
+                      branches:
+                          only: master
