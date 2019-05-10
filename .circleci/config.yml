@@ -85,8 +85,8 @@ jobs:
                       - v1-dependencies-{{ checksum "yarn.lock" }}
                       # fallback to using the latest cache if no exact match is found
                       - v1-dependencies-
-            - yarn install
-            - yarn publish:canary
+            - run: yarn install
+            - run: yarn publish:canary
 
     deploy_firebase:
         docker:
