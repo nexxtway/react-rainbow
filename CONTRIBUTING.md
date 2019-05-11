@@ -18,7 +18,7 @@ When you write the issue title please follow this convention: `type: [descriptio
 
 React Rainbow Components is a community project, so pull requests are always welcome, but, before working on a large change, it is best to open an issue first to discuss it.
 When in doubt, keep your pull requests small. To give a PR the best chance of getting accepted, don't bundle more than one feature or bug fix per pull request. It's always best to create two smaller PRs than one big one.
-As with issues, please begin the title with `type: [ imperative commit message ]`.[How to Write a Git Commit Message](https://www.conventionalcommits.org/en/v1.0.0-beta.2/) for a great explanation.
+As with issues, please begin the title with `type: [ imperative commit message ]`.[How to Write a Git Commit Message](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#commits) for a great explanation.
 
 When adding new features or modifying existing ones, please attempt to include all necessary tests to confirm the new behavior.
 
