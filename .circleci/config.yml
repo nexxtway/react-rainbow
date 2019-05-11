@@ -89,11 +89,10 @@ jobs:
             - run: git config --global user.name "TheAdmin"
             - run: yarn install
             - run:
-                  name: Create .npmrc file
-                  command: |
-                      touch .npmrc;
-                      echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
-            - run: yarn publish:canary
+                  name: Auth with registry
+                  command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
+            - run: yarn prepare:canary
+            - run: yarn publish --tag next
 
     deploy_firebase:
         docker:

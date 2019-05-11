@@ -1,6 +1,6 @@
 {
     "name": "react-rainbow-components",
-    "version": "2.5.5",
+    "version": "1.2.0",
     "description": "React Rainbow Components",
     "keywords": [
         "react",
@@ -31,7 +31,7 @@
         "generate:pageObjectDocs": "jsdoc -c jsdoc.conf.js",
         "deploy:library": "yarn build:library && yarn generate:pageObjectDocs && firebase deploy",
         "format": "prettier --write '{src,examples, library, tutorials}/**/*.{js,json,md}'",
-        "publish:canary": "node scripts/publish-canary.js"
+        "prepare:canary": "node scripts/prepare-canary.js"
     },
     "dependencies": {
         "autosize": "^4.0.2",
