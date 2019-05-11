@@ -30,7 +30,8 @@
         "test:integration": "wdio",
         "generate:pageObjectDocs": "jsdoc -c jsdoc.conf.js",
         "deploy:library": "yarn build:library && yarn generate:pageObjectDocs && firebase deploy",
-        "format": "prettier --write '{src,examples, library, tutorials}/**/*.{js,json,md}'"
+        "format": "prettier --write '{src,examples, library, tutorials}/**/*.{js,json,md}'",
+        "publish:canary": "node scripts/publish-canary.js"
     },
     "dependencies": {
         "autosize": "^4.0.2",
@@ -132,6 +133,7 @@
         "redux": "^4.0.1",
         "redux-form": "^7.4.2",
         "sass-loader": "^7.1.0",
+        "shelljs": "^0.8.3",
         "style-loader": "^0.22.1",
         "stylelint": "^9.5.0",
         "stylelint-config-standard": "^18.2.0",
