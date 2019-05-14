@@ -41,6 +41,10 @@
         transition: opacity 0.1s linear, visibility 0.1s linear;
         visibility: visible;
     }
+
+    .rainbow-button-icon {
+        box-shadow: 0 0 2px #01b6f5;
+    }
 }
 
 .rainbow-primitive-menu_dropdown--left {
