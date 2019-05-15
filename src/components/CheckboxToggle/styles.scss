@@ -1,8 +1,8 @@
 /* stylelint-disable no-descending-specificity,max-line-length */
-@import "../../styles/colors";
-@import "../../styles/font-sizes";
-@import "../../styles/margins";
-@import "../../styles/shadows";
+@import '../../styles/colors';
+@import '../../styles/font-sizes';
+@import '../../styles/margins';
+@import '../../styles/shadows';
 
 @mixin common-styles($border-color, $background-color, $position: absolute) {
     border-radius: 1rem;
@@ -16,7 +16,7 @@
     display: inline-flex;
     align-items: center;
 
-    [type="checkbox"] {
+    [type='checkbox'] {
         width: 0.0625rem;
         height: 0.0625rem;
         border: 0;
@@ -32,7 +32,7 @@
         width: 2.75rem;
         height: 1.5rem;
         padding: 0.125rem;
-        transition: background-color 0.2s cubic-bezier(0.75, 0, 0.08, 1);
+        transition: all 0.3s cubic-bezier(0.75, 0, 0.08, 1);
 
         @include common-styles(#dcdfe7, $color-gray-2, relative);
 
@@ -51,6 +51,7 @@
             width: 1.25rem;
             height: 1.25rem;
             box-shadow: 0 0 2px 0 $color-gray-3;
+            transition: all 0.3s cubic-bezier(0.75, 0, 0.08, 1);
 
             @include common-styles(transparent, white);
         }
@@ -63,85 +64,78 @@
     margin-left: $margin-small;
 }
 
-.rainbow-checkbox-toggle [type="checkbox"] + .rainbow-checkbox-toggle_faux-container {
+.rainbow-checkbox-toggle [type='checkbox'] + .rainbow-checkbox-toggle_faux-container {
     font-size: 0.625rem;
     color: $color-gray-2;
 }
 
-.rainbow-checkbox-toggle [type="checkbox"]:focus + .rainbow-checkbox-toggle_faux,
-.rainbow-checkbox-toggle [type="checkbox"]:focus ~ .rainbow-checkbox-toggle_faux,
-.rainbow-checkbox-toggle [type="checkbox"]:focus + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux {
+/* prettier-ignore */
+.rainbow-checkbox-toggle [type='checkbox']:focus + .rainbow-checkbox-toggle_faux,
+.rainbow-checkbox-toggle [type='checkbox']:focus ~ .rainbow-checkbox-toggle_faux,
+.rainbow-checkbox-toggle [type='checkbox']:focus + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux {
     background-color: $color-gray-2;
     border-color: #dcdfe7;
     outline: 0;
-    box-shadow: 0 0 8px $color-brand;
+    box-shadow: 0 0 4px $color-brand;
 }
 
-.rainbow-checkbox-toggle [type="checkbox"]:checked + .rainbow-checkbox-toggle_faux,
-.rainbow-checkbox-toggle [type="checkbox"]:checked ~ .rainbow-checkbox-toggle_faux,
-.rainbow-checkbox-toggle [type="checkbox"]:checked + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux {
+/* prettier-ignore */
+.rainbow-checkbox-toggle [type='checkbox']:checked + .rainbow-checkbox-toggle_faux,
+.rainbow-checkbox-toggle [type='checkbox']:checked ~ .rainbow-checkbox-toggle_faux,
+.rainbow-checkbox-toggle [type='checkbox']:checked + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux {
     border-color: $color-brand-2;
     background-color: $color-brand;
 }
 
-.rainbow-checkbox-toggle [type="checkbox"]:checked + .rainbow-checkbox-toggle_faux:hover,
-.rainbow-checkbox-toggle [type="checkbox"]:checked + .rainbow-checkbox-toggle_faux:focus,
-.rainbow-checkbox-toggle [type="checkbox"]:checked ~ .rainbow-checkbox-toggle_faux:hover,
-.rainbow-checkbox-toggle [type="checkbox"]:checked ~ .rainbow-checkbox-toggle_faux:focus,
-.rainbow-checkbox-toggle [type="checkbox"]:checked + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux:hover,
-.rainbow-checkbox-toggle [type="checkbox"]:checked + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux:focus {
+/* prettier-ignore */
+.rainbow-checkbox-toggle [type='checkbox']:checked + .rainbow-checkbox-toggle_faux:hover,
+.rainbow-checkbox-toggle [type='checkbox']:checked + .rainbow-checkbox-toggle_faux:focus,
+.rainbow-checkbox-toggle [type='checkbox']:checked ~ .rainbow-checkbox-toggle_faux:hover,
+.rainbow-checkbox-toggle [type='checkbox']:checked ~ .rainbow-checkbox-toggle_faux:focus,
+.rainbow-checkbox-toggle [type='checkbox']:checked + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux:hover,
+.rainbow-checkbox-toggle [type='checkbox']:checked + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux:focus {
     background-color: $color-brand-2;
     border-color: $color-brand-2;
 }
 
-.rainbow-checkbox-toggle [type="checkbox"]:checked + .rainbow-checkbox-toggle_faux::before,
-.rainbow-checkbox-toggle [type="checkbox"]:checked ~ .rainbow-checkbox-toggle_faux::before,
-.rainbow-checkbox-toggle [type="checkbox"]:checked + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux::before {
-    content: '';
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    right: 0.03125rem;
-    width: 1.25rem;
-    height: 1.25rem;
-    transition: transform 0.2s cubic-bezier(0.75, 0, 0.08, 1);
-    box-shadow: 0 0 2px 0 $color-gray-4;
-
-    @include common-styles(transparent, white);
-}
-
-.rainbow-checkbox-toggle [type="checkbox"]:checked + .rainbow-checkbox-toggle_faux::after,
-.rainbow-checkbox-toggle [type="checkbox"]:checked ~ .rainbow-checkbox-toggle_faux::after,
-.rainbow-checkbox-toggle [type="checkbox"]:checked + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux::after {
-    background-color: transparent;
+/* prettier-ignore */
+.rainbow-checkbox-toggle [type='checkbox']:checked + .rainbow-checkbox-toggle_faux::after,
+.rainbow-checkbox-toggle [type='checkbox']:checked ~ .rainbow-checkbox-toggle_faux::after,
+.rainbow-checkbox-toggle [type='checkbox']:checked + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux::after {
     box-shadow: 0 0 0 0 transparent;
+    transition: all 0.3s cubic-bezier(0.75, 0, 0.08, 1);
+    webkit-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
 }
 
-.rainbow-checkbox-toggle [type="checkbox"]:checked:focus + .rainbow-checkbox-toggle_faux,
-.rainbow-checkbox-toggle [type="checkbox"]:checked:focus ~ .rainbow-checkbox-toggle_faux,
-.rainbow-checkbox-toggle [type="checkbox"]:checked:focus + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux {
+/* prettier-ignore */
+.rainbow-checkbox-toggle [type='checkbox']:checked:focus + .rainbow-checkbox-toggle_faux,
+.rainbow-checkbox-toggle [type='checkbox']:checked:focus ~ .rainbow-checkbox-toggle_faux,
+.rainbow-checkbox-toggle [type='checkbox']:checked:focus + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux {
     background-color: $color-brand;
 }
 
-.rainbow-checkbox-toggle [type="checkbox"][disabled] + .rainbow-checkbox-toggle_faux,
-.rainbow-checkbox-toggle [type="checkbox"][disabled] ~ .rainbow-checkbox-toggle_faux,
-.rainbow-checkbox-toggle [type="checkbox"][disabled] + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux {
+/* prettier-ignore */
+.rainbow-checkbox-toggle [type='checkbox'][disabled] + .rainbow-checkbox-toggle_faux,
+.rainbow-checkbox-toggle [type='checkbox'][disabled] ~ .rainbow-checkbox-toggle_faux,
+.rainbow-checkbox-toggle [type='checkbox'][disabled] + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux {
     pointer-events: none;
 
     @include common-styles(rgba(164, 167, 181, 0.1), $color-gray-1, relative);
 }
 
-.rainbow-checkbox-toggle [type="checkbox"][disabled] + .rainbow-checkbox-toggle_faux::after,
-.rainbow-checkbox-toggle [type="checkbox"][disabled] ~ .rainbow-checkbox-toggle_faux::after,
-.rainbow-checkbox-toggle [type="checkbox"][disabled] + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux::after {
+/* prettier-ignore */
+.rainbow-checkbox-toggle [type='checkbox'][disabled] + .rainbow-checkbox-toggle_faux::after,
+.rainbow-checkbox-toggle [type='checkbox'][disabled] ~ .rainbow-checkbox-toggle_faux::after,
+.rainbow-checkbox-toggle [type='checkbox'][disabled] + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux::after {
     background-color: #fff;
     box-shadow: 0 0 1px 0 $color-gray-2;
 }
 
-.rainbow-checkbox-toggle [type="checkbox"][disabled]:checked + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux::before {
-    background-color: $color-gray-3;
-}
-
-.rainbow-checkbox-toggle [type="checkbox"][disabled]:checked + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux::after {
+.rainbow-checkbox-toggle
+    [type='checkbox'][disabled]:checked
+    + .rainbow-checkbox-toggle_faux-container
+    .rainbow-checkbox-toggle_faux::after {
     background-color: transparent;
 }
