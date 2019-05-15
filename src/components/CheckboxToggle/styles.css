@@ -89,7 +89,7 @@
 .rainbow-checkbox-toggle [type='checkbox']:checked + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux::after {
   box-shadow: 0 0 0 0 transparent;
   transition: all 0.3s cubic-bezier(0.75, 0, 0.08, 1);
-  webkit-transform: translateX(20px);
+  -webkit-transform: translateX(20px);
   -ms-transform: translateX(20px);
   transform: translateX(20px); }
 
@@ -116,9 +116,6 @@
   background-color: #fff;
   box-shadow: 0 0 1px 0 #e3e5ed; }
 
-.rainbow-checkbox-toggle
-    [type='checkbox'][disabled]:checked
-    + .rainbow-checkbox-toggle_faux-container
-    .rainbow-checkbox-toggle_faux::after {
-    background-color: transparent;
-}
+/* prettier-ignore */
+.rainbow-checkbox-toggle [type='checkbox'][disabled]:checked + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux::after {
+  background-color: transparent; }

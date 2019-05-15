@@ -59,12 +59,9 @@
     position: absolute;
 }
 
-.rainbow-input-radio_inner-container
-    [type='radio']
-    + .rainbow-input-radio_label-container
-    .rainbow-input-radio_faux {
-    margin-right: 0.5rem;
-}
+/* prettier-ignore */
+.rainbow-input-radio_inner-container [type='radio'] + .rainbow-input-radio_label-container .rainbow-input-radio_faux {
+  margin-right: 0.5rem; }
 .rainbow-input-radio_inner-container
     [type='radio']
     + .rainbow-input-radio_label-container
@@ -83,15 +80,12 @@
     transition: all 0.2s ease-in;
 }
 
+/* prettier-ignore */
 .rainbow-input-radio_inner-container [type='radio']:checked + .rainbow-input-radio_faux,
 .rainbow-input-radio_inner-container [type='radio']:checked ~ .rainbow-input-radio_faux,
-.rainbow-input-radio_inner-container
-    [type='radio']:checked
-    + .rainbow-input-radio_label-container
-    .rainbow-input-radio_faux {
-    background: white;
-    border: solid 0.09375rem #01b6f5;
-}
+.rainbow-input-radio_inner-container [type='radio']:checked + .rainbow-input-radio_label-container .rainbow-input-radio_faux {
+  background: white;
+  border: solid 0.09375rem #01b6f5; }
 .rainbow-input-radio_inner-container [type='radio']:checked + .rainbow-input-radio_faux::after,
 .rainbow-input-radio_inner-container [type='radio']:checked ~ .rainbow-input-radio_faux::after,
 .rainbow-input-radio_inner-container
@@ -104,15 +98,12 @@
     transition: all 0.2s ease-in;
 }
 
+/* prettier-ignore */
 .rainbow-input-radio_inner-container [type='radio']:focus + .rainbow-input-radio_faux,
 .rainbow-input-radio_inner-container [type='radio']:focus ~ .rainbow-input-radio_faux,
-.rainbow-input-radio_inner-container
-    [type='radio']:focus
-    + .rainbow-input-radio_label-container
-    .rainbow-input-radio_faux {
-    border: solid 0.09375rem #01b6f5;
-    box-shadow: 0 0 2px #01b6f5;
-}
+.rainbow-input-radio_inner-container [type='radio']:focus + .rainbow-input-radio_label-container .rainbow-input-radio_faux {
+  border: solid 0.09375rem #01b6f5;
+  box-shadow: 0 0 2px #01b6f5; }
 
 .rainbow-input-radio_inner-container [type='radio'][disabled] {
     cursor: not-allowed;
@@ -122,79 +113,36 @@
     user-select: none;
 }
 
+/* prettier-ignore */
 .rainbow-input-radio_inner-container [type='radio'][disabled] + .rainbow-input-radio_faux,
 .rainbow-input-radio_inner-container [type='radio'][disabled] ~ .rainbow-input-radio_faux,
-.rainbow-input-radio_inner-container
-    [type='radio'][disabled]
-    + .rainbow-input-radio_label-container
-    .rainbow-input-radio_faux {
-    background-color: #f4f6f9;
-    border-color: #e3e5ed;
-}
+.rainbow-input-radio_inner-container [type='radio'][disabled] + .rainbow-input-radio_label-container .rainbow-input-radio_faux {
+  background-color: #f4f6f9;
+  border-color: #e3e5ed; }
 
-.rainbow-input-radio--error
-    .rainbow-input-radio_inner-container
-    [type='radio']
-    + .rainbow-input-radio_faux,
-.rainbow-input-radio--error
-    .rainbow-input-radio_inner-container
-    [type='radio']
-    ~ .rainbow-input-radio_faux,
-.rainbow-input-radio--error
-    .rainbow-input-radio_inner-container
-    [type='radio']
-    + .rainbow-input-radio_label-container
-    .rainbow-input-radio_faux {
-    border: solid 0.09375rem #fe4849;
-}
+/* prettier-ignore */
+.rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio'] + .rainbow-input-radio_faux,
+.rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio'] ~ .rainbow-input-radio_faux,
+.rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio'] + .rainbow-input-radio_label-container .rainbow-input-radio_faux {
+  border: solid 0.09375rem #fe4849; }
 
-.rainbow-input-radio--error
-    .rainbow-input-radio_inner-container
-    [type='radio'][disabled]
-    + .rainbow-input-radio_faux,
-.rainbow-input-radio--error
-    .rainbow-input-radio_inner-container
-    [type='radio'][disabled]
-    ~ .rainbow-input-radio_faux,
-.rainbow-input-radio--error
-    .rainbow-input-radio_inner-container
-    [type='radio'][disabled]
-    + .rainbow-input-radio_label-container
-    .rainbow-input-radio_faux {
-    border-color: #e3e5ed;
-}
+/* prettier-ignore */
+.rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio'][disabled] + .rainbow-input-radio_faux,
+.rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio'][disabled] ~ .rainbow-input-radio_faux,
+.rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio'][disabled] + .rainbow-input-radio_label-container .rainbow-input-radio_faux {
+  border-color: #e3e5ed; }
 
-.rainbow-input-radio--error
-    .rainbow-input-radio_inner-container
-    [type='radio']:focus
-    + .rainbow-input-radio_faux,
-.rainbow-input-radio--error
-    .rainbow-input-radio_inner-container
-    [type='radio']:focus
-    ~ .rainbow-input-radio_faux,
-.rainbow-input-radio--error
-    .rainbow-input-radio_inner-container
-    [type='radio']:focus
-    + .rainbow-input-radio_label-container
-    .rainbow-input-radio_faux {
-    box-shadow: 0 0 2px #fe4849;
-}
+/* prettier-ignore */
+.rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio']:focus + .rainbow-input-radio_faux,
+.rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio']:focus ~ .rainbow-input-radio_faux,
+.rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio']:focus + .rainbow-input-radio_label-container .rainbow-input-radio_faux {
+  box-shadow: 0 0 2px #fe4849; }
 
-.rainbow-input-radio--error
-    .rainbow-input-radio_inner-container
-    [type='radio']:checked
-    + .rainbow-input-radio_faux,
-.rainbow-input-radio--error
-    .rainbow-input-radio_inner-container
-    [type='radio']:checked
-    ~ .rainbow-input-radio_faux,
-.rainbow-input-radio--error
-    .rainbow-input-radio_inner-container
-    [type='radio']:checked
-    + .rainbow-input-radio_label-container
-    .rainbow-input-radio_faux {
-    background: white;
-}
+/* prettier-ignore */
+.rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio']:checked + .rainbow-input-radio_faux,
+.rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio']:checked ~ .rainbow-input-radio_faux,
+.rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio']:checked + .rainbow-input-radio_label-container .rainbow-input-radio_faux {
+  background: white; }
 .rainbow-input-radio--error
     .rainbow-input-radio_inner-container
     [type='radio']:checked
