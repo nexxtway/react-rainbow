@@ -348,14 +348,29 @@
             reset();
         };
 
+        const options = [
+            { label: 'Paris' },
+            { label: 'New York' },
+            { label: 'San Fransisco' },
+            { label: 'Madrid' },
+            { label: 'Miami' },
+            { label: 'London' },
+            { label: 'Tokyo' },
+            { label: 'Barcelona' },
+            { label: 'La Habana' },
+            { label: 'Buenos Aires' },
+            { label: 'Sao Paulo' },
+            { label: 'Toronto' },
+        ];
+
         return (
             <form id="redux-form-id" noValidate onSubmit={handleSubmit(submit)}>
                 <Field
                     component={Input}
                     name="subject"
                     required
-                    label="Title"
-                    placeholder="Enter title" />
+                    label="Company"
+                    placeholder="Enter company name" />
 
                 <div className="rainbow-flex rainbow-justify_spread">
                     <Field
@@ -375,6 +390,15 @@
                 </div>
 
                 <Field
+                    style={styles.input}
+                    component={Lookup}
+                    name="location"
+                    label="Location"
+                    placeholder="Enter location"
+                    options={options} />
+
+                <Field
+                    className="rainbow-m-bottom_medium"
                     style={styles.input}
                     component={Textarea}
                     name="description"
