@@ -1,8 +1,5 @@
 ##### Lookup base:
 
-    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-    const { faCity } = require('@fortawesome/free-solid-svg-icons');
-
     const options = [
         { label: 'Paris' },
         { label: 'New York' },
@@ -66,7 +63,7 @@
 ##### Lookup with icon and description:
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-    const { faCity } = require('@fortawesome/free-solid-svg-icons');
+    const { faBuilding } = require('@fortawesome/free-regular-svg-icons');
 
     const IconStyles = {
         height: 30,
@@ -83,62 +80,62 @@
         {
             label: 'Paris',
             description: 'This is an awesome city',
-            icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
+            icon: <span style={IconStyles}> <FontAwesomeIcon icon={faBuilding} /> </span>
         },
         {
             label: 'New York',
             description: 'This is an awesome city',
-            icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
+            icon: <span style={IconStyles}> <FontAwesomeIcon icon={faBuilding} /> </span>
         },
         {
             label: 'San Fransisco',
             description: 'This is an awesome city',
-            icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
+            icon: <span style={IconStyles}> <FontAwesomeIcon icon={faBuilding} /> </span>
         },
         {
             label: 'Madrid',
             description: 'This is an awesome city',
-            icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
+            icon: <span style={IconStyles}> <FontAwesomeIcon icon={faBuilding} /> </span>
         },
         {
             label: 'Miami',
             description: 'This is an awesome city',
-            icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
+            icon: <span style={IconStyles}> <FontAwesomeIcon icon={faBuilding} /> </span>
         },
         {
             label: 'London',
             description: 'This is an awesome city',
-            icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
+            icon: <span style={IconStyles}> <FontAwesomeIcon icon={faBuilding} /> </span>
         },
         {
             label: 'Tokyo',
             description: 'This is an awesome city',
-            icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
+            icon: <span style={IconStyles}> <FontAwesomeIcon icon={faBuilding} /> </span>
         },
         {
             label: 'Barcelona',
             description: 'This is an awesome city',
-            icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
+            icon: <span style={IconStyles}> <FontAwesomeIcon icon={faBuilding} /> </span>
         },
         {
             label: 'La Habana',
             description: 'This is an awesome city',
-            icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
+            icon: <span style={IconStyles}> <FontAwesomeIcon icon={faBuilding} /> </span>
         },
         {
             label: 'Buenos Aires',
             description: 'This is an awesome city',
-            icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
+            icon: <span style={IconStyles}> <FontAwesomeIcon icon={faBuilding} /> </span>
         },
         {
             label: 'Sao Paulo',
             description: 'This is an awesome city',
-            icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
+            icon: <span style={IconStyles}> <FontAwesomeIcon icon={faBuilding} /> </span>
         },
         {
             label: 'Toronto',
             description: 'This is an awesome city',
-            icon: <span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>
+            icon: <span style={IconStyles}> <FontAwesomeIcon icon={faBuilding} /> </span>
         },
     ];
 
@@ -193,30 +190,30 @@
 ##### Lookup with options type section:
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-    const { faCity } = require('@fortawesome/free-solid-svg-icons');
+    const { faBuilding } = require('@fortawesome/free-solid-svg-icons');
 
     const options = [
         {
             type: 'section',
             label: 'European Cities',
             options: [
-                { label: 'Paris', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
-                { label: 'Madrid', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
-                { label: 'London', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
-                { label: 'Barcelona', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
+                { label: 'Paris', icon: <FontAwesomeIcon icon={faBuilding} className="rainbow-color_brand" /> },
+                { label: 'Madrid', icon: <FontAwesomeIcon icon={faBuilding} className="rainbow-color_brand" /> },
+                { label: 'London', icon: <FontAwesomeIcon icon={faBuilding} className="rainbow-color_brand" /> },
+                { label: 'Barcelona', icon: <FontAwesomeIcon icon={faBuilding} className="rainbow-color_brand" /> },
             ],
         },
         {
             type: 'section',
             label: 'American Cities',
             options: [
-                { label: 'New York', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
-                { label: 'San Fransisco', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
-                { label: 'Miami', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
-                { label: 'La Habana', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
-                { label: 'Buenos Aires', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
-                { label: 'Sao Paulo', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
-                { label: 'Toronto', icon: <FontAwesomeIcon icon={faCity} className="rainbow-color_brand" /> },
+                { label: 'New York', icon: <FontAwesomeIcon icon={faBuilding} className="rainbow-color_brand" /> },
+                { label: 'San Fransisco', icon: <FontAwesomeIcon icon={faBuilding} className="rainbow-color_brand" /> },
+                { label: 'Miami', icon: <FontAwesomeIcon icon={faBuilding} className="rainbow-color_brand" /> },
+                { label: 'La Habana', icon: <FontAwesomeIcon icon={faBuilding} className="rainbow-color_brand" /> },
+                { label: 'Buenos Aires', icon: <FontAwesomeIcon icon={faBuilding} className="rainbow-color_brand" /> },
+                { label: 'Sao Paulo', icon: <FontAwesomeIcon icon={faBuilding} className="rainbow-color_brand" /> },
+                { label: 'Toronto', icon: <FontAwesomeIcon icon={faBuilding} className="rainbow-color_brand" /> },
             ],
         }
     ];
