@@ -7,6 +7,7 @@ const pages = [
     'Authentication',
     'Chat',
     'ComingSoon',
+    'NotFound404',
     'CreateProfile',
     'Team',
     'SocialIconsSet',

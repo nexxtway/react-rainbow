@@ -3,7 +3,7 @@ const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 const dotenv = require('dotenv');
-const version = require("./package.json").version;
+const version = require('./package.json').version;
 const styles = require('./library/styles');
 
 const env = dotenv.config();
@@ -31,29 +31,31 @@ module.exports = {
             meta: [
                 {
                     name: 'robots',
-                    content: 'index,follow'
+                    content: 'index,follow',
                 },
                 {
                     name: 'description',
-                    content: 'React Rainbow is a collection of components that will reliably help you build your application in a snap. Give it a hack and let us know what you think.'
+                    content:
+                        'React Rainbow is a collection of components that will reliably help you build your application in a snap. Give it a hack and let us know what you think.',
                 },
                 {
                     name: 'keywords',
-                    content: 'react, rainbow, components, library'
+                    content: 'react, rainbow, components, library',
                 },
                 {
                     property: 'og:title',
-                    content: 'React Rainbow Components'
+                    content: 'React Rainbow Components',
                 },
                 {
                     property: 'og:description',
-                    content: 'React Rainbow is a collection of components that will reliably help you build your application in a snap. Give it a hack and let us know what you think.'
+                    content:
+                        'React Rainbow is a collection of components that will reliably help you build your application in a snap. Give it a hack and let us know what you think.',
                 },
                 {
                     property: 'og:image',
-                    content: 'https://react-rainbow.firebaseapp.com/share-image.png'
-                }
-            ]
+                    content: 'https://react-rainbow.firebaseapp.com/share-image.png',
+                },
+            ],
         },
     },
     require: [
@@ -118,6 +120,10 @@ module.exports = {
                     content: 'library/pages/Designs/comingSoon.md',
                 },
                 {
+                    name: 'NotFound404',
+                    content: 'library/pages/Designs/notFound404.md',
+                },
+                {
                     name: 'CreateProfile',
                     content: 'library/pages/Designs/createProfile.md',
                 },
@@ -163,9 +169,7 @@ module.exports = {
             ],
         },
         plugins: [
-            new CopyWebpackPlugin([
-                { from: './assets/' },
-            ]),
+            new CopyWebpackPlugin([{ from: './assets/' }]),
             new webpack.DefinePlugin(envKeys),
         ],
     },
