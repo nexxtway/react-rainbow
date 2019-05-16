@@ -17,7 +17,7 @@
     font-family: Lato;
     font-size: 14px;
     color: #a4a7b5;
-    margin-bottom: 8px;
+    margin-bottom: 38px;
 }
 
 .react-rainbow-design-detail_img-container {
@@ -64,10 +64,6 @@
 .react-rainbow-design-detail_info-container {
     width: 50%;
     margin-left: 12px;
-}
-
-.react-rainbow-design-detail_donwload-buttons-container {
-    margin-top: 32px;
 }
 
 .react-rainbow-design-detail_preview-link {

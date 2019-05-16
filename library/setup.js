@@ -9,10 +9,10 @@ import Administration from './pages/Designs/Administration';
 import Authentication from './pages/Designs/Authentication';
 import Chat from './pages/Designs/Chat';
 import ComingSoon from './pages/Designs/ComingSoon';
+import NotFound404 from './pages/Designs/NotFound404';
 import CreateProfile from './pages/Designs/CreateProfile';
 import Team from './pages/Designs/Team';
 import SocialIconsSet from './pages/Designs/SocialIconsSet';
-
 
 global.GlobalHeader = GlobalHeader;
 global.CodeEditor = CodeEditor;
@@ -25,6 +25,7 @@ global.Administration = Administration;
 global.Authentication = Authentication;
 global.Chat = Chat;
 global.ComingSoon = ComingSoon;
+global.NotFound404 = NotFound404;
 global.CreateProfile = CreateProfile;
 global.Team = Team;
 global.SocialIconsSet = SocialIconsSet;
