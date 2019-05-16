@@ -16,7 +16,7 @@ import {
     isOptionVisible,
 } from './helpers';
 import { uniqueId } from '../../libs/utils';
-import { UP_KEY, DOWN_KEY, ENTER_KEY } from '../../libs/constants';
+import { UP_KEY, DOWN_KEY, ENTER_KEY, ESCAPE_KEY } from '../../libs/constants';
 import withReduxForm from '../../libs/hocs/withReduxForm';
 import './styles.css';
 
@@ -208,8 +208,12 @@ class Lookup extends Component {
 
     handleKeyDown(event) {
         const { keyCode } = event;
+        if (keyCode === ESCAPE_KEY) {
+            event.stopPropagation();
+        }
         if (isNavigationKey(keyCode) && this.isMenuOpen()) {
             event.preventDefault();
+            event.stopPropagation();
             if (this.keyHandlerMap[keyCode]) {
                 this.keyHandlerMap[keyCode]();
             }
@@ -220,7 +224,8 @@ class Lookup extends Component {
         const { focusedItemIndex, options } = this.state;
         if (focusedItemIndex > 0) {
             const prevIndex = focusedItemIndex - 1;
-            const prevFocusedIndex = options[prevIndex].type === 'header' ? focusedItemIndex - 2 : prevIndex;
+            const prevFocusedIndex =
+                options[prevIndex].type === 'header' ? focusedItemIndex - 2 : prevIndex;
             if (prevFocusedIndex >= 0) {
                 this.setState({
                     focusedItemIndex: prevFocusedIndex,
@@ -237,7 +242,7 @@ class Lookup extends Component {
         const prevFocusedOption = menu.childNodes[prevIndex];
 
         if (options.length > 5 && !isOptionVisible(prevFocusedOption, menu)) {
-            this.menuRef.current.scrollTo(OPTION_HEIGHT * (prevIndex));
+            this.menuRef.current.scrollTo(OPTION_HEIGHT * prevIndex);
         }
     }
 
@@ -246,7 +251,8 @@ class Lookup extends Component {
         const lastIndex = options.length - 1;
         if (focusedItemIndex < lastIndex) {
             const nextIndex = focusedItemIndex + 1;
-            const nextFocusedIndex = options[nextIndex].type === 'header' ? focusedItemIndex + 2 : nextIndex;
+            const nextFocusedIndex =
+                options[nextIndex].type === 'header' ? focusedItemIndex + 2 : nextIndex;
             if (nextFocusedIndex <= lastIndex) {
                 this.setState({
                     focusedItemIndex: nextFocusedIndex,
@@ -332,7 +338,6 @@ class Lookup extends Component {
                 role="presentation"
                 onKeyDown={this.handleKeyDown}
             >
-
                 <Label
                     label={label}
                     hideLabel={hideLabel}
@@ -353,10 +358,7 @@ class Lookup extends Component {
                 </RenderIf>
 
                 <RenderIf isTrue={!currentValue}>
-                    <div
-                        className="rainbow-lookup_input-container"
-                        ref={this.containerRef}>
-
+                    <div className="rainbow-lookup_input-container" ref={this.containerRef}>
                         <RightElement showCloseButton={!!searchValue} onClear={this.clearInput} />
                         <Spinner
                             isVisible={isLoading}
