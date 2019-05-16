@@ -3,7 +3,7 @@ const { ESCAPE_KEY, ENTER_KEY } = require('../../constants');
 
 const BUTTON = '#button-3';
 const MODAL = '#modal-3';
-const TITLE_INPUT = '#modal-3 input[placeholder="Enter title"]';
+const TITLE_INPUT = '#modal-3 input[placeholder="Enter location"]';
 const DATE_PICKER_INPUT = '#modal-3 input[placeholder="Select a date"]';
 const TIME_PICKER_INPUT = '#modal-3 input[name="time"]';
 
