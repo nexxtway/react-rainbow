@@ -33,11 +33,11 @@ describe('<Lookup />', () => {
         ).toBe(true);
     });
     it('should set the right class names in the input element when isLoading is passed', () => {
-        const component = mount(
-            <Lookup label="custom label" options={[{}]} isLoading />,
-        );
+        const component = mount(<Lookup label="custom label" options={[{}]} isLoading />);
         component.find('input').simulate('focus');
-        expect(component.find('input.rainbow-lookup_input.rainbow-lookup_input--loading').exists()).toBe(true);
+        expect(
+            component.find('input.rainbow-lookup_input.rainbow-lookup_input--loading').exists(),
+        ).toBe(true);
     });
     it('should render the Options menu when there are options and the input is focused', () => {
         const component = mount(<Lookup label="custom label" options={[{}]} />);
@@ -120,9 +120,7 @@ describe('<Lookup />', () => {
     it('should not render a Chip component when value passed is other than object', () => {
         const values = ['', 'my value', 123, undefined, null, NaN, [], () => {}];
         values.forEach(value => {
-            const component = mount(
-                <Lookup label="custom label" value={value} />,
-            );
+            const component = mount(<Lookup label="custom label" value={value} />);
             expect(component.find('Chip').exists()).toBe(false);
             expect(component.find('input[type="search"]').exists()).toBe(true);
         });
@@ -257,11 +255,13 @@ describe('<Lookup />', () => {
             { label: 'New York' },
             { label: 'San Fransisco' },
         ];
-        const component = mount(
-            <Lookup label="custom label" options={options} />,
-        );
+        const component = mount(<Lookup label="custom label" options={options} />);
         component.find('input').simulate('focus');
-        component.find('Options').find('li').at(2).simulate('mouseEnter');
+        component
+            .find('Options')
+            .find('li')
+            .at(2)
+            .simulate('mouseEnter');
         expect(component.find('Options').prop('focusedItemIndex')).toBe(2);
         component.setProps({
             options: [
@@ -321,5 +321,21 @@ describe('<Lookup />', () => {
             { label: 'American Cities', type: 'header' },
             { label: 'Miami' },
         ]);
+    });
+
+    it('should not call event.stopPropagation when press esc key and the input has value typed', () => {
+        const stopPropagationMockFn = jest.fn();
+        const component = mount(<Lookup label="custom label" />);
+        component.find('input').simulate('focus');
+        component.find('input').simulate('change', {
+            target: {
+                value: 'test',
+            },
+        });
+        component.find('input').simulate('keyDown', {
+            keyCode: 27,
+            stopPropagation: stopPropagationMockFn,
+        });
+        expect(stopPropagationMockFn).toHaveBeenCalledTimes(1);
     });
 });

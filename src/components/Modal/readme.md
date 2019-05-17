@@ -336,32 +336,45 @@
         },
     };
 
+    const options = [
+        { label: 'Paris' },
+        { label: 'New York' },
+        { label: 'San Fransisco' },
+        { label: 'Madrid' },
+        { label: 'Miami' },
+        { label: 'London' },
+        { label: 'Tokyo' },
+        { label: 'Barcelona' },
+        { label: 'La Habana' },
+        { label: 'Buenos Aires' },
+        { label: 'Sao Paulo' },
+        { label: 'Toronto' },
+    ];
+
+    function filter(query, options) {
+        if (query) {
+            return options.filter((item) => {
+                const regex = new RegExp(query, 'i');
+                return regex.test(item.label);
+            });
+        }
+        return [];
+    }
+
     function SimpleForm(props) {
         const {
             handleSubmit,
             reset,
             onSubmit,
+            onSearch,
+            options,
+            isLoading,
         } = props;
 
         const submit = (values) => {
             onSubmit(values);
             reset();
         };
-
-        const options = [
-            { label: 'Paris' },
-            { label: 'New York' },
-            { label: 'San Fransisco' },
-            { label: 'Madrid' },
-            { label: 'Miami' },
-            { label: 'London' },
-            { label: 'Tokyo' },
-            { label: 'Barcelona' },
-            { label: 'La Habana' },
-            { label: 'Buenos Aires' },
-            { label: 'Sao Paulo' },
-            { label: 'Toronto' },
-        ];
 
         return (
             <form id="redux-form-id" noValidate onSubmit={handleSubmit(submit)}>
@@ -390,6 +403,9 @@
                 </div>
 
                 <Field
+                    debounce
+                    isLoading={isLoading}
+                    onSearch={onSearch}
                     style={styles.input}
                     component={Lookup}
                     name="location"
@@ -435,6 +451,7 @@
             super(props);
             this.state = {
                 isOpen: false,
+                options: null,
                 initialValues: {
                     subject: 'React Rainbow',
                     description: 'React Rainbow is a collection of components that will reliably help you build your application in a snap.',
@@ -444,6 +461,7 @@
             };
             this.handleOnClick = this.handleOnClick.bind(this);
             this.handleOnClose = this.handleOnClose.bind(this);
+            this.search = this.search.bind(this);
         }
 
         handleOnClick() {
@@ -454,8 +472,32 @@
             return this.setState({ isOpen: false });
         }
 
+        search(value) {
+            if (this.state.options && this.state.value && (value.length > this.state.value.length)) {
+                this.setState({
+                    options: filter(value, this.state.options),
+                    value,
+                });
+            } else if (value) {
+                this.setState({
+                    isLoading: true,
+                    value,
+                });
+                setTimeout(() => this.setState({
+                    options: filter(value, options),
+                    isLoading: false,
+                }), 3500);
+            } else {
+                this.setState({
+                    isLoading: false,
+                    value: '',
+                    options: null,
+                });
+            }
+        }
+
         render() {
-            const { isOpen, initialValues } = this.state;
+            const { isOpen, initialValues, isLoading, options } = this.state;
             return (
                 <div>
                     <Button
@@ -475,7 +517,12 @@
                             </div>
                        }>
 
-                       <Form onSubmit={values => console.log(values)} initialValues={initialValues} />
+                       <Form
+                            onSubmit={values => console.log(values)}
+                            onSearch={this.search}
+                            isLoading={isLoading}
+                            options={options}
+                            initialValues={initialValues} />
                     </Modal>
                 </div>
             );
