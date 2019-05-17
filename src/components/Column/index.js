@@ -23,19 +23,22 @@ Column.propTypes = {
     component: PropTypes.func,
     /**
      * The field value is used to compute/map the value is going to be render
-     * for each cell. it's the name of a property in the data objects.
-     * e.g data = [{ name: 'Max', ... }, {...}]; field could be 'name'
-     * for a column that want to represent names on a collection of people.
+     * for each cell. it's the name of a property in the data objects. <br />
+     * e.g `data = [{ name: 'Max', ... }, {...}]`; <br />
+     * field could be 'name' for a column that want to represent names on a collection of people.
      */
     field: PropTypes.string,
     /**
-     * Sets whether the column should control the sorting order of the data
+     * Sets whether the column should control the sorting order of the data.
      * @ignore
      */
     sortable: PropTypes.bool,
-    /** Specifies the width of a column in pixels and make the column non-resizable */
+    /** Specifies the width of a column in pixels and make the column non-resizable. <br />
+     * e.g  `width={100}` */
     width: PropTypes.number,
-    /** Specifies the width of a column in pixels and allows the column to be resizable */
+    /** Specifies the width of a column in pixels and allows the column to be resizable. <br />
+     * e.g  `defaultWidth={100}`
+     */
     defaultWidth: PropTypes.number,
     /** The data type to be used for data formatting in cell. */
     type: PropTypes.oneOf(['text', 'action']),
