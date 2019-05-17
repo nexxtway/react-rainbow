@@ -76,7 +76,6 @@
     position: absolute;
 }
 
-/* prettier-ignore */
 .rainbow-input-radio_inner-container [type='radio'] + .rainbow-input-radio_label-container .rainbow-input-radio_faux {
     margin-right: $margin-x-small;
 
@@ -96,7 +95,6 @@
     }
 }
 
-/* prettier-ignore */
 .rainbow-input-radio_inner-container [type='radio']:checked + .rainbow-input-radio_faux,
 .rainbow-input-radio_inner-container [type='radio']:checked ~ .rainbow-input-radio_faux,
 .rainbow-input-radio_inner-container [type='radio']:checked + .rainbow-input-radio_label-container .rainbow-input-radio_faux {
@@ -111,7 +109,6 @@
     }
 }
 
-/* prettier-ignore */
 .rainbow-input-radio_inner-container [type='radio']:focus + .rainbow-input-radio_faux,
 .rainbow-input-radio_inner-container [type='radio']:focus ~ .rainbow-input-radio_faux,
 .rainbow-input-radio_inner-container [type='radio']:focus + .rainbow-input-radio_label-container .rainbow-input-radio_faux {
@@ -125,7 +122,6 @@
     @include user-select();
 }
 
-/* prettier-ignore */
 .rainbow-input-radio_inner-container [type='radio'][disabled] + .rainbow-input-radio_faux,
 .rainbow-input-radio_inner-container [type='radio'][disabled] ~ .rainbow-input-radio_faux,
 .rainbow-input-radio_inner-container [type='radio'][disabled] + .rainbow-input-radio_label-container .rainbow-input-radio_faux {
@@ -133,28 +129,24 @@
     border-color: $color-gray-2;
 }
 
-/* prettier-ignore */
 .rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio'] + .rainbow-input-radio_faux,
 .rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio'] ~ .rainbow-input-radio_faux,
 .rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio'] + .rainbow-input-radio_label-container .rainbow-input-radio_faux {
     border: solid 0.09375rem $color-error;
 }
 
-/* prettier-ignore */
 .rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio'][disabled] + .rainbow-input-radio_faux,
 .rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio'][disabled] ~ .rainbow-input-radio_faux,
 .rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio'][disabled] + .rainbow-input-radio_label-container .rainbow-input-radio_faux {
     border-color: $color-gray-2;
 }
 
-/* prettier-ignore */
 .rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio']:focus + .rainbow-input-radio_faux,
 .rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio']:focus ~ .rainbow-input-radio_faux,
 .rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio']:focus + .rainbow-input-radio_label-container .rainbow-input-radio_faux {
     box-shadow: $shadow-error;
 }
 
-/* prettier-ignore */
 .rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio']:checked + .rainbow-input-radio_faux,
 .rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio']:checked ~ .rainbow-input-radio_faux,
 .rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio']:checked + .rainbow-input-radio_label-container .rainbow-input-radio_faux {

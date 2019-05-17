@@ -9,6 +9,8 @@
 
     &:hover {
         background-color: $color-gray-transparent-1;
+        box-shadow: 0 1px 1px 0 $color-gray-2, 0 0 1px 0 $color-gray-2;
+        transition: all 0.25s ease-out;
     }
 }
 
