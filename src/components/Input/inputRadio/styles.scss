@@ -41,12 +41,12 @@
     display: inline-block;
 
     .rainbow-input-radio_faux {
-        width: 1.25rem;
-        height: 1.25rem;
+        width: 20px;
+        height: 20px;
         display: inline-block;
         position: relative;
         vertical-align: middle;
-        border: 0.0625rem solid $color-gray-2;
+        border: 1px solid $color-gray-2;
         border-radius: $border-radius-2;
         background-color: white;
         transition: border 0.1s linear, background-color 0.1s linear;
@@ -66,11 +66,11 @@
 }
 
 .rainbow-input-radio_inner-container [type='radio'] {
-    width: 0.0625rem;
-    height: 0.0625rem;
+    width: 1px;
+    height: 1px;
     border: 0;
     clip: rect(0 0 0 0);
-    margin: -0.0625rem;
+    margin: -1px;
     overflow: hidden;
     padding: 0;
     position: absolute;
@@ -81,14 +81,14 @@
     margin-right: $margin-x-small;
 
     &::after {
-        width: 75%;
-        height: 75%;
+        width: 12px;
+        height: 12px;
         content: '';
         position: absolute;
-        top: 12.5%;
-        left: 12.5%;
+        top: 2px;
+        left: 2px;
         border-radius: $border-radius-2;
-        background: $color-brand;
+        background: transparent;
         opacity: 0;
         -webkit-transform: scale(0.1, 0.1);
         transform: scale(0.1, 0.1);
@@ -101,13 +101,14 @@
 .rainbow-input-radio_inner-container [type='radio']:checked ~ .rainbow-input-radio_faux,
 .rainbow-input-radio_inner-container [type='radio']:checked + .rainbow-input-radio_label-container .rainbow-input-radio_faux {
     background: white;
-    border: solid 0.09375rem $color-brand;
+    border: solid 2px $color-brand;
 
     &::after {
         opacity: 1;
         -webkit-transform: scale(1, 1);
         transform: scale(1, 1);
         transition: all 0.2s ease-in;
+        background: $color-brand;
     }
 }
 
@@ -115,7 +116,7 @@
 .rainbow-input-radio_inner-container [type='radio']:focus + .rainbow-input-radio_faux,
 .rainbow-input-radio_inner-container [type='radio']:focus ~ .rainbow-input-radio_faux,
 .rainbow-input-radio_inner-container [type='radio']:focus + .rainbow-input-radio_label-container .rainbow-input-radio_faux {
-    border: solid 0.09375rem $color-brand;
+    border: solid 2px $color-brand;
     box-shadow: $shadow-outline;
 }
 
@@ -137,7 +138,7 @@
 .rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio'] + .rainbow-input-radio_faux,
 .rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio'] ~ .rainbow-input-radio_faux,
 .rainbow-input-radio--error .rainbow-input-radio_inner-container [type='radio'] + .rainbow-input-radio_label-container .rainbow-input-radio_faux {
-    border: solid 0.09375rem $color-error;
+    border: solid 2px $color-error;
 }
 
 /* prettier-ignore */
