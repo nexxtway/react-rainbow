@@ -322,8 +322,7 @@ describe('<Lookup />', () => {
             { label: 'Miami' },
         ]);
     });
-
-    it('should not call event.stopPropagation when press esc key and the input has value typed', () => {
+    it('should call event.stopPropagation when press esc key and the input has value typed', () => {
         const stopPropagationMockFn = jest.fn();
         const component = mount(<Lookup label="custom label" />);
         component.find('input').simulate('focus');
@@ -337,5 +336,15 @@ describe('<Lookup />', () => {
             stopPropagation: stopPropagationMockFn,
         });
         expect(stopPropagationMockFn).toHaveBeenCalledTimes(1);
+    });
+    it('should not call event.stopPropagation when press esc key and the input has not value typed', () => {
+        const stopPropagationMockFn = jest.fn();
+        const component = mount(<Lookup label="custom label" />);
+        component.find('input').simulate('focus');
+        component.find('input').simulate('keyDown', {
+            keyCode: 27,
+            stopPropagation: stopPropagationMockFn,
+        });
+        expect(stopPropagationMockFn).not.toHaveBeenCalled();
     });
 });

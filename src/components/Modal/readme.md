@@ -403,6 +403,7 @@
                 </div>
 
                 <Field
+                    id="lookup-modal"
                     debounce
                     isLoading={isLoading}
                     onSearch={onSearch}
@@ -486,7 +487,7 @@
                 setTimeout(() => this.setState({
                     options: filter(value, options),
                     isLoading: false,
-                }), 3500);
+                }), 500);
             } else {
                 this.setState({
                     isLoading: false,

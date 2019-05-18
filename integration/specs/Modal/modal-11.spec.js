@@ -1,11 +1,13 @@
 const PageModal = require('../../../src/components/Modal/pageObject');
+const PageLookup = require('../../../src/components/Lookup/pageObject');
 const { ESCAPE_KEY, ENTER_KEY } = require('../../constants');
 
 const BUTTON = '#button-3';
 const MODAL = '#modal-3';
-const TITLE_INPUT = '#modal-3 input[placeholder="Enter location"]';
+const TITLE_INPUT = '#modal-3 input[placeholder="Enter company name"]';
 const DATE_PICKER_INPUT = '#modal-3 input[placeholder="Select a date"]';
 const TIME_PICKER_INPUT = '#modal-3 input[name="time"]';
+const LOOKUP_MODAL = '#lookup-modal';
 
 describe('Modal with redux form example', () => {
     beforeAll(() => {
@@ -67,5 +69,35 @@ describe('Modal with redux form example', () => {
         browser.keys('0');
         browser.keys(ENTER_KEY);
         expect(timePickerInput.isFocused()).toBe(true);
+    });
+    it('should not close the modal when is opened and press ESC if the lookup has value typed', () => {
+        const modal = new PageModal(MODAL);
+        const triggerButton = $(BUTTON);
+        triggerButton.click();
+        modal.waitUntilOpen();
+        const component = $(LOOKUP_MODAL);
+        component.waitForExist();
+        const lookup = new PageLookup(LOOKUP_MODAL);
+        lookup.click();
+        lookup.setQuery('qwerty');
+        lookup.waitUntilOpen();
+        browser.keys(ESCAPE_KEY);
+        expect(modal.isOpen()).toBe(true);
+    });
+    it('should close the modal when is opened and press ESC if the lookup value typed was clear', () => {
+        const modal = new PageModal(MODAL);
+        const triggerButton = $(BUTTON);
+        triggerButton.click();
+        modal.waitUntilOpen();
+        const component = $(LOOKUP_MODAL);
+        component.waitForExist();
+        const lookup = new PageLookup(LOOKUP_MODAL);
+        lookup.click();
+        lookup.setQuery('qwerty');
+        lookup.waitUntilOpen();
+        browser.keys(ESCAPE_KEY);
+        expect(lookup.getQuery()).toBe('');
+        browser.keys(ESCAPE_KEY);
+        expect(modal.isOpen()).toBe(false);
     });
 });
