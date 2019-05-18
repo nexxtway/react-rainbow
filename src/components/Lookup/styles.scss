@@ -1,10 +1,10 @@
 /* stylelint-disable no-descending-specificity */
-@import "../../styles/colors";
-@import "../../styles/shadows";
-@import "../../styles/font-sizes";
-@import "../../styles/border-radius";
-@import "../../styles/margins";
-@import "../../styles/paddings";
+@import '../../styles/colors';
+@import '../../styles/shadows';
+@import '../../styles/font-sizes';
+@import '../../styles/border-radius';
+@import '../../styles/margins';
+@import '../../styles/paddings';
 
 @mixin bottomMessage($color) {
     font-size: $font-size-text-medium;
@@ -17,6 +17,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    outline: none;
 }
 
 .rainbow-lookup_input-label {
@@ -85,7 +86,7 @@
     color: $color-dark-1;
     font-size: $font-size-text-large;
 
-    &[type="search"]::-ms-clear {
+    &[type='search']::-ms-clear {
         display: none;
         width: 0;
         height: 0;

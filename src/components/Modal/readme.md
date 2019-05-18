@@ -336,11 +336,39 @@
         },
     };
 
+    const options = [
+        { label: 'Paris' },
+        { label: 'New York' },
+        { label: 'San Fransisco' },
+        { label: 'Madrid' },
+        { label: 'Miami' },
+        { label: 'London' },
+        { label: 'Tokyo' },
+        { label: 'Barcelona' },
+        { label: 'La Habana' },
+        { label: 'Buenos Aires' },
+        { label: 'Sao Paulo' },
+        { label: 'Toronto' },
+    ];
+
+    function filter(query, options) {
+        if (query) {
+            return options.filter((item) => {
+                const regex = new RegExp(query, 'i');
+                return regex.test(item.label);
+            });
+        }
+        return [];
+    }
+
     function SimpleForm(props) {
         const {
             handleSubmit,
             reset,
             onSubmit,
+            onSearch,
+            options,
+            isLoading,
         } = props;
 
         const submit = (values) => {
@@ -354,8 +382,8 @@
                     component={Input}
                     name="subject"
                     required
-                    label="Title"
-                    placeholder="Enter title" />
+                    label="Company"
+                    placeholder="Enter company name" />
 
                 <div className="rainbow-flex rainbow-justify_spread">
                     <Field
@@ -375,6 +403,19 @@
                 </div>
 
                 <Field
+                    id="modal-lookup-11"
+                    debounce
+                    isLoading={isLoading}
+                    onSearch={onSearch}
+                    style={styles.input}
+                    component={Lookup}
+                    name="location"
+                    label="Location"
+                    placeholder="Enter location"
+                    options={options} />
+
+                <Field
+                    className="rainbow-m-bottom_medium"
                     style={styles.input}
                     component={Textarea}
                     name="description"
@@ -411,6 +452,7 @@
             super(props);
             this.state = {
                 isOpen: false,
+                options: null,
                 initialValues: {
                     subject: 'React Rainbow',
                     description: 'React Rainbow is a collection of components that will reliably help you build your application in a snap.',
@@ -420,6 +462,7 @@
             };
             this.handleOnClick = this.handleOnClick.bind(this);
             this.handleOnClose = this.handleOnClose.bind(this);
+            this.search = this.search.bind(this);
         }
 
         handleOnClick() {
@@ -430,17 +473,41 @@
             return this.setState({ isOpen: false });
         }
 
+        search(value) {
+            if (this.state.options && this.state.value && (value.length > this.state.value.length)) {
+                this.setState({
+                    options: filter(value, this.state.options),
+                    value,
+                });
+            } else if (value) {
+                this.setState({
+                    isLoading: true,
+                    value,
+                });
+                setTimeout(() => this.setState({
+                    options: filter(value, options),
+                    isLoading: false,
+                }), 500);
+            } else {
+                this.setState({
+                    isLoading: false,
+                    value: '',
+                    options: null,
+                });
+            }
+        }
+
         render() {
-            const { isOpen, initialValues } = this.state;
+            const { isOpen, initialValues, isLoading, options } = this.state;
             return (
                 <div>
                     <Button
-                        id="button-3"
+                        id="button-11"
                         variant="neutral"
                         label="Open Modal"
                         onClick={this.handleOnClick} />
                     <Modal
-                       id="modal-3"
+                       id="modal-11"
                        title="Modal Header"
                        isOpen={isOpen}
                        onRequestClose={this.handleOnClose}
@@ -451,7 +518,12 @@
                             </div>
                        }>
 
-                       <Form onSubmit={values => console.log(values)} initialValues={initialValues} />
+                       <Form
+                            onSubmit={values => console.log(values)}
+                            onSearch={this.search}
+                            isLoading={isLoading}
+                            options={options}
+                            initialValues={initialValues} />
                     </Modal>
                 </div>
             );

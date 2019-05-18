@@ -40,6 +40,7 @@ class Lookup extends Component {
         this.inputId = uniqueId('lookup-input');
         this.errorMessageId = uniqueId('error-message');
         this.containerRef = React.createRef();
+        this.innerContainerRef = React.createRef();
         this.inputRef = React.createRef();
         this.menuRef = React.createRef();
         this.handleSearch = this.handleSearch.bind(this);
@@ -108,7 +109,7 @@ class Lookup extends Component {
     }
 
     handleClick(event) {
-        const ref = this.containerRef.current;
+        const ref = this.innerContainerRef.current;
         const isClickInsideLookup = ref && ref.contains(event.target);
         if (isClickInsideLookup) {
             return null;
@@ -122,6 +123,7 @@ class Lookup extends Component {
             searchValue: '',
         });
         onChange(value);
+        this.containerRef.current.focus();
     }
 
     handleSearch(event) {
@@ -207,8 +209,9 @@ class Lookup extends Component {
     }
 
     handleKeyDown(event) {
+        const { searchValue } = this.state;
         const { keyCode } = event;
-        if (keyCode === ESCAPE_KEY) {
+        if (keyCode === ESCAPE_KEY && !!searchValue) {
             event.stopPropagation();
         }
         if (isNavigationKey(keyCode) && this.isMenuOpen()) {
@@ -337,6 +340,8 @@ class Lookup extends Component {
                 style={style}
                 role="presentation"
                 onKeyDown={this.handleKeyDown}
+                ref={this.containerRef}
+                tabIndex={-1}
             >
                 <Label
                     label={label}
@@ -358,7 +363,7 @@ class Lookup extends Component {
                 </RenderIf>
 
                 <RenderIf isTrue={!currentValue}>
-                    <div className="rainbow-lookup_input-container" ref={this.containerRef}>
+                    <div className="rainbow-lookup_input-container" ref={this.innerContainerRef}>
                         <RightElement showCloseButton={!!searchValue} onClear={this.clearInput} />
                         <Spinner
                             isVisible={isLoading}
