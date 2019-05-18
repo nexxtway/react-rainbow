@@ -2,12 +2,12 @@ const PageModal = require('../../../src/components/Modal/pageObject');
 const PageLookup = require('../../../src/components/Lookup/pageObject');
 const { ESCAPE_KEY, ENTER_KEY } = require('../../constants');
 
-const BUTTON = '#button-3';
-const MODAL = '#modal-3';
-const TITLE_INPUT = '#modal-3 input[placeholder="Enter company name"]';
-const DATE_PICKER_INPUT = '#modal-3 input[placeholder="Select a date"]';
-const TIME_PICKER_INPUT = '#modal-3 input[name="time"]';
-const LOOKUP_MODAL = '#lookup-modal';
+const BUTTON = '#button-11';
+const MODAL = '#modal-11';
+const TITLE_INPUT = '#modal-11 input[placeholder="Enter company name"]';
+const DATE_PICKER_INPUT = '#modal-11 input[placeholder="Select a date"]';
+const TIME_PICKER_INPUT = '#modal-11 input[name="time"]';
+const MODAL_LOOKUP = '#modal-lookup-11';
 
 describe('Modal with redux form example', () => {
     beforeAll(() => {
@@ -75,9 +75,7 @@ describe('Modal with redux form example', () => {
         const triggerButton = $(BUTTON);
         triggerButton.click();
         modal.waitUntilOpen();
-        const component = $(LOOKUP_MODAL);
-        component.waitForExist();
-        const lookup = new PageLookup(LOOKUP_MODAL);
+        const lookup = new PageLookup(MODAL_LOOKUP);
         lookup.click();
         lookup.setQuery('qwerty');
         lookup.waitUntilOpen();
@@ -89,9 +87,7 @@ describe('Modal with redux form example', () => {
         const triggerButton = $(BUTTON);
         triggerButton.click();
         modal.waitUntilOpen();
-        const component = $(LOOKUP_MODAL);
-        component.waitForExist();
-        const lookup = new PageLookup(LOOKUP_MODAL);
+        const lookup = new PageLookup(MODAL_LOOKUP);
         lookup.click();
         lookup.setQuery('qwerty');
         lookup.waitUntilOpen();

@@ -403,7 +403,7 @@
                 </div>
 
                 <Field
-                    id="lookup-modal"
+                    id="modal-lookup-11"
                     debounce
                     isLoading={isLoading}
                     onSearch={onSearch}
@@ -502,12 +502,12 @@
             return (
                 <div>
                     <Button
-                        id="button-3"
+                        id="button-11"
                         variant="neutral"
                         label="Open Modal"
                         onClick={this.handleOnClick} />
                     <Modal
-                       id="modal-3"
+                       id="modal-11"
                        title="Modal Header"
                        isOpen={isOpen}
                        onRequestClose={this.handleOnClose}
