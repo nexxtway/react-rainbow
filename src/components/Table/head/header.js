@@ -40,8 +40,8 @@ export default class Header extends Component {
     }
 
     isResizable() {
-        const { resizeColumnDisabled, type } = this.props;
-        return !resizeColumnDisabled && type !== 'action';
+        const { resizeColumnDisabled, width } = this.props;
+        return !resizeColumnDisabled && width === undefined;
     }
 
     handleResize(widthDelta) {
@@ -138,6 +138,7 @@ Header.propTypes = {
     onResize: PropTypes.func,
     resizeColumnDisabled: PropTypes.bool,
     field: PropTypes.string,
+    width: PropTypes.number,
     computedWidth: PropTypes.number,
     type: PropTypes.string,
     onSelectAllRows: PropTypes.func,
@@ -158,6 +159,7 @@ Header.defaultProps = {
     onResize: () => {},
     resizeColumnDisabled: false,
     field: undefined,
+    width: undefined,
     computedWidth: 0,
     type: undefined,
     onSelectAllRows: () => {},

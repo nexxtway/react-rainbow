@@ -186,12 +186,12 @@ describe('<Table />', () => {
             </Table>,
         );
         const resizeBar = component.find('.rainbow-table_header-resize-bar');
-        expect(component.state().tableWidth).toBe(0);
+        expect(component.state().tableWidth).toBe(100);
         resizeBar.at(0).simulate('mousedown', { clientX: 100 });
 
         eventMap.mousemove({ clientX: 232, preventDefault });
         eventMap.mouseup({ preventDefault });
-        expect(component.state().tableWidth).toBe(132);
+        expect(component.state().tableWidth).toBe(232);
     });
     it('should store the right columns in state when resize a column', () => {
         const component = mount(
@@ -247,17 +247,17 @@ describe('<Table />', () => {
             </Table>,
         );
         const resizeBar = component.find('.rainbow-table_header-resize-bar');
-        expect(component.state().tableWidth).toBe(0);
+        expect(component.state().tableWidth).toBe(100);
 
         resizeBar.at(0).simulate('mousedown', { clientX: 60 });
         eventMap.mousemove({ clientX: 120, preventDefault });
         eventMap.mouseup({ preventDefault });
-        expect(component.state().tableWidth).toBe(60);
+        expect(component.state().tableWidth).toBe(160);
 
         resizeBar.at(0).simulate('mousedown', { clientX: 120 });
         eventMap.mousemove({ clientX: -10, preventDefault });
         eventMap.mouseup({ preventDefault });
-        expect(component.state().tableWidth).toBe(0);
+        expect(component.state().tableWidth).toBe(100);
     });
     it('should call onSort with the right data when a sortable column header is clicked', () => {
         const onSortMock = jest.fn();

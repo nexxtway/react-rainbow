@@ -1,7 +1,8 @@
 export default function getColumnWidthFromDef(column) {
+    const { isResized, computedWidth, width, defaultWidth } = column;
     let resizedWidth;
-    if (column.isResized) {
-        resizedWidth = column.computedWidth;
+    if (isResized) {
+        resizedWidth = computedWidth;
     }
-    return column.width || resizedWidth || column.defaultWidth;
+    return width || resizedWidth || defaultWidth;
 }

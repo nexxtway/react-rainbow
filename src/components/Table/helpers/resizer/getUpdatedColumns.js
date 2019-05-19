@@ -7,8 +7,8 @@ export default function getUpdatedColumns(params) {
     const { columns, domTableWidth, minColumnWidth, maxColumnWidth } = params;
     const widthsMeta = getTotalWidthsMetadata({
         columns,
-        minColumnWidth,
-        maxColumnWidth,
+        minColumnWidth: Number(minColumnWidth),
+        maxColumnWidth: Number(maxColumnWidth),
     });
     const expectedTableWidth = getExpectedTableWidth(domTableWidth, widthsMeta);
     const expectedFlexibleColumnWidth = getExpectedFlexibleColumnWidth(

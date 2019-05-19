@@ -72,4 +72,36 @@ describe('getColumns', () => {
             },
         ]);
     });
+    it('should return an array with the right columns props when defaultWidth and width are passed', () => {
+        const columns = [
+            <Column
+                field="a"
+                header="header a"
+                defaultWidth={160}
+                width={30}
+                component={<span />}
+            />,
+            <Column field="b" header="header b" defaultWidth={30} />,
+        ];
+        const showCheckboxColumn = false;
+        const minColumnWidth = 150;
+        expect(getColumns(columns, showCheckboxColumn, minColumnWidth)).toEqual([
+            {
+                field: 'a',
+                header: 'header a',
+                component: <span />,
+                sortable: false,
+                type: 'text',
+                defaultWidth: 160,
+                width: 30,
+            },
+            {
+                field: 'b',
+                header: 'header b',
+                sortable: false,
+                type: 'text',
+                defaultWidth: 150,
+            },
+        ]);
+    });
 });

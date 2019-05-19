@@ -37,12 +37,13 @@ Column.propTypes = {
     /** Specifies the width of a column in pixels and make the column non-resizable.
      *
      * e.g  `width={100}` */
-    width: PropTypes.number,
-    /** Specifies the width of a column in pixels and allows the column to be resizable.
+    width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    /** Specifies the inital width of a column in pixels and allows the column to be resizable.
+     * It must be within the minColumnWidth and maxColumnWidth values passed to Table.
      *
      * e.g  `defaultWidth={100}`
      */
-    defaultWidth: PropTypes.number,
+    defaultWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** The data type to be used for data formatting in cell. */
     type: PropTypes.oneOf(['text', 'action']),
 };
