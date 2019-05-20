@@ -5,6 +5,19 @@ import { SELECTABLE_CHECKBOX } from '../helpers/columns';
 import Cell from './cell';
 import LoadingCells from './loadingCells';
 
+function getValue(obj, field) {
+    if (typeof field === 'string') {
+        return field.split('.').reduce((acc, item) => {
+            const value = acc[item];
+            if (value !== undefined) {
+                return value;
+            }
+            return '';
+        }, obj);
+    }
+    return '';
+}
+
 function isFirstAndNoSelectable(index, type) {
     if (index === 0 && type !== SELECTABLE_CHECKBOX) {
         return true;
@@ -24,7 +37,7 @@ export default function Row(props) {
     const cells = columns.map((column, index) => {
         const { header, component, field, type: columnType, children } = column;
         const key = `cell-${index}`;
-        const value = rowData[field] || null;
+        const value = getValue(rowData, field);
         isFirstColumn =
             !isFirstColumn && (isFirstAndNoSelectable(index, columnType) || index === 1);
 

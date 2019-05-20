@@ -53,15 +53,58 @@ describe('<Row />', () => {
         expect(cell.at(0).prop('isFirst')).toBe(true);
         expect(cell.at(1).prop('isFirst')).toBe(false);
     });
-    it('should set null to value prop in Cell component when the column field does not exists', () => {
-        const wrongColumns = [
+    it('should set empty string to value prop in Cell component when the column field does not exists', () => {
+        const values = [
+            [
+                {},
+                {
+                    field: 'wrong field',
+                },
+            ],
+            [
+                {
+                    field: 'wrong.field',
+                },
+            ],
+            [
+                {
+                    field: 'name.field',
+                },
+            ],
+            [
+                {
+                    field: 'name.asd.qwerty',
+                },
+            ],
+        ];
+        values.forEach(value => {
+            const component = mount(<Row rowData={data} columns={value} />);
+            const cell = component.find('Cell');
+            expect(cell.at(0).prop('value')).toBe('');
+        });
+    });
+    it('should set the right value prop in Cell component when use dot notation in field', () => {
+        const rowData = {
+            id: 'qwerty1234',
+            data: {
+                name: 'a',
+                number: 0,
+            },
+        };
+        const rowColumns = [
             {
-                field: 'wrong field',
+                component: undefined,
+                field: 'data.name',
+            },
+            {
+                component: undefined,
+                field: 'data.number',
             },
         ];
-        const component = mount(<Row rowData={data} columns={wrongColumns} />);
+        const component = mount(<Row rowData={rowData} columns={rowColumns} />);
         const cell = component.find('Cell');
-        expect(cell.at(0).prop('value')).toBe(null);
+        expect(cell.at(0).prop('value')).toBe('a');
+        expect(cell.at(1).prop('value')).toBe(0);
     });
     it('should set the right class names in tr element when the row is selected', () => {
         const component = mount(<Row rowData={data} columns={columns} isSelected />);
