@@ -19,4 +19,26 @@ describe('computeUniqueRowKey', () => {
             expect(computeUniqueRowKey(row, keyField)).toBe(row[keyField]);
         });
     });
+    it('should return the right key when keyField use dot notation', () => {
+        const rowData = {
+            type: 'regular',
+            data: {
+                name: 'Pepe',
+                id: 'qwerty1234',
+            },
+        };
+        const keyField = 'data.id';
+        expect(computeUniqueRowKey(rowData, keyField)).toBe('qwerty1234');
+    });
+    it('should return the right key when data is nested and keyField does not use dot notation', () => {
+        const rowData = {
+            type: 'regular',
+            data: {
+                name: 'Pepe',
+                id: 'qwerty1234',
+            },
+        };
+        const keyField = 'data';
+        expect(computeUniqueRowKey(rowData, keyField)).toBe('row-3');
+    });
 });
