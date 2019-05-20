@@ -21,15 +21,15 @@
 .rainbow-radio-group_radio {
   display: inline-block; }
   .rainbow-radio-group_radio .rainbow-radio-group_radio-faux {
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 20px;
+    height: 20px;
     display: inline-block;
     position: relative;
     vertical-align: middle;
     border: 1px solid #e3e5ed;
     border-radius: 12rem;
     background-color: white;
-    transition: all 0.1s linear; }
+    transition: border 0.1s linear, background-color 0.1s linear; }
 
 .rainbow-radio-group_radio-label {
   display: inline;
@@ -42,11 +42,11 @@
   color: #a4a7b5; }
 
 .rainbow-radio-group_radio [type='radio'] {
-  width: 0.0625rem;
-  height: 0.0625rem;
+  width: 1px;
+  height: 1px;
   border: 0;
   clip: rect(0 0 0 0);
-  margin: -0.0625rem;
+  margin: -1px;
   overflow: hidden;
   padding: 0;
   position: absolute; }
@@ -54,8 +54,8 @@
 .rainbow-radio-group_radio [type='radio'] + .rainbow-radio-group_radio-label-container .rainbow-radio-group_radio-faux {
   margin-right: 0.5rem; }
   .rainbow-radio-group_radio [type='radio'] + .rainbow-radio-group_radio-label-container .rainbow-radio-group_radio-faux::after {
-    width: 75%;
-    height: 75%;
+    width: 12px;
+    height: 12px;
     content: '';
     position: absolute;
     top: 2px;
@@ -71,14 +71,15 @@
 .rainbow-radio-group_radio [type='radio']:checked ~ .rainbow-radio-group_radio-faux,
 .rainbow-radio-group_radio [type='radio']:checked + .rainbow-radio-group_radio-label-container .rainbow-radio-group_radio-faux {
   background: white;
-  border: solid 0.09375rem #01b6f5; }
+  border: solid 2px #01b6f5; }
   .rainbow-radio-group_radio [type='radio']:checked + .rainbow-radio-group_radio-faux::after,
   .rainbow-radio-group_radio [type='radio']:checked ~ .rainbow-radio-group_radio-faux::after,
   .rainbow-radio-group_radio [type='radio']:checked + .rainbow-radio-group_radio-label-container .rainbow-radio-group_radio-faux::after {
     opacity: 1;
     -webkit-transform: scale(1, 1);
     transform: scale(1, 1);
-    transition: all 0.2s ease-in; }
+    transition: all 0.2s ease-in;
+    background: #01b6f5; }
 
 .rainbow-radio-group_radio [type='radio']:focus + .rainbow-radio-group_radio-faux,
 .rainbow-radio-group_radio [type='radio']:focus ~ .rainbow-radio-group_radio-faux,

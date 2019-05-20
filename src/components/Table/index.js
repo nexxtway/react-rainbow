@@ -5,7 +5,7 @@ import Body from './body';
 import Head from './head';
 import { getNextSortDirection } from './helpers/sort';
 import { getColumns, isNotSameColumns } from './helpers/columns';
-import { getUpdatedColumns, getResizedColumns } from './helpers/resizer';
+import { getUpdatedColumns, getResizedColumns, getTableWidth } from './helpers/resizer';
 import { getRows, getIndexes } from './helpers/rows';
 import {
     getUpdatedRowsWhenSelect,
@@ -31,10 +31,23 @@ import './styles.css';
 export default class Table extends Component {
     constructor(props) {
         super(props);
-        const { children, showCheckboxColumn, keyField, data, maxRowSelection } = props;
+        const {
+            children,
+            showCheckboxColumn,
+            keyField,
+            data,
+            maxRowSelection,
+            minColumnWidth,
+            maxColumnWidth,
+        } = props;
 
         this.state = {
-            columns: getColumns(children, showCheckboxColumn),
+            columns: getColumns({
+                children,
+                showCheckboxColumn,
+                minColumnWidth,
+                maxColumnWidth,
+            }),
             tableWidth: undefined,
             rows: getRows({
                 keyField,
@@ -76,6 +89,8 @@ export default class Table extends Component {
             maxRowSelection: prevMaxRowSelection,
             selectedRows: prevSelectedRows,
             data: prevData,
+            minColumnWidth: prevMinColumnWidth,
+            maxColumnWidth: prevMaxColumnWidth,
         } = prevProps;
         const {
             children,
@@ -84,9 +99,21 @@ export default class Table extends Component {
             selectedRows,
             data,
             keyField,
+            minColumnWidth,
+            maxColumnWidth,
         } = this.props;
-        const prevColumns = getColumns(prevChildren, prevShowCheckboxColumn);
-        const currentColumns = getColumns(children, showCheckboxColumn);
+        const prevColumns = getColumns({
+            children: prevChildren,
+            showCheckboxColumn: prevShowCheckboxColumn,
+            minColumnWidth: prevMinColumnWidth,
+            maxColumnWidth: prevMaxColumnWidth,
+        });
+        const currentColumns = getColumns({
+            children,
+            showCheckboxColumn,
+            minColumnWidth,
+            maxColumnWidth,
+        });
         if (isNotSameColumns(prevColumns, currentColumns)) {
             this.updateColumnsAndTableWidth(currentColumns);
         }
@@ -177,17 +204,20 @@ export default class Table extends Component {
         const { columns } = this.state;
         const { minColumnWidth, maxColumnWidth } = this.props;
         const domTableWidth = this.getTableWidthFromDom();
+        const minColWidth = Number(minColumnWidth) || 50;
+        const maxColWidth = Number(maxColumnWidth) || 1000;
+        const updatedColumns = getUpdatedColumns({
+            columns: newColumns || columns,
+            domTableWidth,
+            minColumnWidth: minColWidth,
+            maxColumnWidth: maxColWidth,
+        });
         this.setState({
-            columns: getUpdatedColumns({
-                columns: newColumns || columns,
-                domTableWidth,
-                minColumnWidth,
-                maxColumnWidth,
-            }),
+            columns: updatedColumns,
         });
         if (this.hasFlexibleColumns()) {
             this.setState({
-                tableWidth: domTableWidth,
+                tableWidth: getTableWidth(updatedColumns),
             });
         }
     }
@@ -343,6 +373,8 @@ export default class Table extends Component {
             width: tableWidth,
         };
         const maxRowSelection = this.getMaxRowSelection();
+        const minColWidth = Number(minColumnWidth) || 50;
+        const maxColWidth = Number(maxColumnWidth) || 1000;
 
         return (
             <div id={id} className={this.getContainerClassNames()} style={style}>
@@ -362,8 +394,8 @@ export default class Table extends Component {
                                             sortDirection={sortDirection}
                                             defaultSortDirection={defaultSortDirection}
                                             resizeColumnDisabled={resizeColumnDisabled}
-                                            minColumnWidth={minColumnWidth}
-                                            maxColumnWidth={maxColumnWidth}
+                                            minColumnWidth={minColWidth}
+                                            maxColumnWidth={maxColWidth}
                                             onSort={this.handleSort}
                                             onResize={this.handleResize}
                                             onSelectAllRows={this.handleSelectAllRows}
@@ -416,10 +448,10 @@ Table.propTypes = {
     onSort: PropTypes.func,
     /** Specifies whether column resizing is disabled. The default is false. */
     resizeColumnDisabled: PropTypes.bool,
-    /** The minimum width for all columns. The default is 50px. */
-    minColumnWidth: PropTypes.number,
-    /** The maximum width for all columns. The default is 1000px. */
-    maxColumnWidth: PropTypes.number,
+    /** The minimum width for all columns. The default value is 50px. */
+    minColumnWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    /** The maximum width for all columns. The default value is 1000px. */
+    maxColumnWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** Show or hide the checkbox column for row selection. To show set
      * showCheckboxColumn to true. The default value is false. */
     showCheckboxColumn: PropTypes.bool,
