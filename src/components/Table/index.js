@@ -448,9 +448,9 @@ Table.propTypes = {
     onSort: PropTypes.func,
     /** Specifies whether column resizing is disabled. The default is false. */
     resizeColumnDisabled: PropTypes.bool,
-    /** The minimum width for all columns. The default is 50px. */
+    /** The minimum width for all columns. The default value is 50px. */
     minColumnWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    /** The maximum width for all columns. The default is 1000px. */
+    /** The maximum width for all columns. The default value is 1000px. */
     maxColumnWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** Show or hide the checkbox column for row selection. To show set
      * showCheckboxColumn to true. The default value is false. */

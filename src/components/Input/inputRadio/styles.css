@@ -21,8 +21,8 @@
 .rainbow-input-radio_inner-container {
   display: inline-block; }
   .rainbow-input-radio_inner-container .rainbow-input-radio_faux {
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 20px;
+    height: 20px;
     display: inline-block;
     position: relative;
     vertical-align: middle;
@@ -42,11 +42,11 @@
   color: #a4a7b5; }
 
 .rainbow-input-radio_inner-container [type='radio'] {
-  width: 0.0625rem;
-  height: 0.0625rem;
+  width: 1px;
+  height: 1px;
   border: 0;
   clip: rect(0 0 0 0);
-  margin: -0.0625rem;
+  margin: -1px;
   overflow: hidden;
   padding: 0;
   position: absolute; }
@@ -54,8 +54,8 @@
 .rainbow-input-radio_inner-container [type='radio'] + .rainbow-input-radio_label-container .rainbow-input-radio_faux {
   margin-right: 0.5rem; }
   .rainbow-input-radio_inner-container [type='radio'] + .rainbow-input-radio_label-container .rainbow-input-radio_faux::after {
-    width: 75%;
-    height: 75%;
+    width: 12px;
+    height: 12px;
     content: '';
     position: absolute;
     top: 2px;
@@ -71,14 +71,15 @@
 .rainbow-input-radio_inner-container [type='radio']:checked ~ .rainbow-input-radio_faux,
 .rainbow-input-radio_inner-container [type='radio']:checked + .rainbow-input-radio_label-container .rainbow-input-radio_faux {
   background: white;
-  border: solid 0.09375rem #01b6f5; }
+  border: solid 2px #01b6f5; }
   .rainbow-input-radio_inner-container [type='radio']:checked + .rainbow-input-radio_faux::after,
   .rainbow-input-radio_inner-container [type='radio']:checked ~ .rainbow-input-radio_faux::after,
   .rainbow-input-radio_inner-container [type='radio']:checked + .rainbow-input-radio_label-container .rainbow-input-radio_faux::after {
     opacity: 1;
     -webkit-transform: scale(1, 1);
     transform: scale(1, 1);
-    transition: all 0.2s ease-in; }
+    transition: all 0.2s ease-in;
+    background: #01b6f5; }
 
 .rainbow-input-radio_inner-container [type='radio']:focus + .rainbow-input-radio_faux,
 .rainbow-input-radio_inner-container [type='radio']:focus ~ .rainbow-input-radio_faux,

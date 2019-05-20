@@ -6,11 +6,11 @@
 
 .rainbow-table_body-row {
     box-shadow: 0 1px 0 0 $color-gray-2;
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 
     &:hover {
         background-color: $color-gray-transparent-1;
         box-shadow: 0 1px 1px 0 $color-gray-2, 0 0 1px 0 $color-gray-2;
-        transition: all 0.25s ease-out;
     }
 }
 
