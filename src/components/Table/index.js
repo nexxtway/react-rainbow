@@ -38,10 +38,16 @@ export default class Table extends Component {
             data,
             maxRowSelection,
             minColumnWidth,
+            maxColumnWidth,
         } = props;
 
         this.state = {
-            columns: getColumns(children, showCheckboxColumn, minColumnWidth),
+            columns: getColumns({
+                children,
+                showCheckboxColumn,
+                minColumnWidth,
+                maxColumnWidth,
+            }),
             tableWidth: undefined,
             rows: getRows({
                 keyField,
@@ -84,6 +90,7 @@ export default class Table extends Component {
             selectedRows: prevSelectedRows,
             data: prevData,
             minColumnWidth: prevMinColumnWidth,
+            maxColumnWidth: prevMaxColumnWidth,
         } = prevProps;
         const {
             children,
@@ -93,9 +100,20 @@ export default class Table extends Component {
             data,
             keyField,
             minColumnWidth,
+            maxColumnWidth,
         } = this.props;
-        const prevColumns = getColumns(prevChildren, prevShowCheckboxColumn, prevMinColumnWidth);
-        const currentColumns = getColumns(children, showCheckboxColumn, minColumnWidth);
+        const prevColumns = getColumns({
+            children: prevChildren,
+            showCheckboxColumn: prevShowCheckboxColumn,
+            minColumnWidth: prevMinColumnWidth,
+            maxColumnWidth: prevMaxColumnWidth,
+        });
+        const currentColumns = getColumns({
+            children,
+            showCheckboxColumn,
+            minColumnWidth,
+            maxColumnWidth,
+        });
         if (isNotSameColumns(prevColumns, currentColumns)) {
             this.updateColumnsAndTableWidth(currentColumns);
         }
