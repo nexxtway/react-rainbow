@@ -284,6 +284,7 @@ class Lookup extends Component {
             searchValue: '',
         });
         onChange(value);
+        setTimeout(() => this.containerRef.current.focus(), 0);
     }
 
     /**
