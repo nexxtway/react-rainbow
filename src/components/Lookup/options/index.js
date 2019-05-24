@@ -5,30 +5,16 @@ import SearchIcon from '../icons/searchIcon';
 import './styles.css';
 
 function MenuItems(props) {
-    const {
-        items,
-        onClick,
-        focusedItemIndex,
-        onHover,
-    } = props;
+    const { items, onClick, focusedItemIndex, onHover } = props;
 
     return items.map((item, index) => {
-        const {
-            label,
-            description,
-            icon,
-            type,
-        } = item;
+        const { label, description, icon, type } = item;
         const isActive = index === focusedItemIndex;
         const key = `lookup-item-${index}`;
 
         if (type === 'header') {
             return (
-                <li
-                    key={key}
-                    className="rainbow-lookup_menu-item_header"
-                    role="separator"
-                >
+                <li key={key} className="rainbow-lookup_menu-item_header" role="separator">
                     <span className="rainbow-lookup_menu-item_header-label">{label}</span>
                 </li>
             );
@@ -43,7 +29,7 @@ function MenuItems(props) {
                 isActive={isActive}
                 index={index}
                 onHover={onHover}
-                onClick={onClick}
+                onClick={() => onClick(item)}
             />
         );
     });
@@ -88,7 +74,7 @@ export default class Options extends React.PureComponent {
         }
 
         const resultContainerStyles = {
-            height: (itemHeight * items.length) + 17,
+            height: itemHeight * items.length + 17,
             maxHeight: 256,
         };
 
@@ -96,13 +82,14 @@ export default class Options extends React.PureComponent {
             <ul
                 className="rainbow-lookup_options-container"
                 style={resultContainerStyles}
-                ref={this.containerRef}>
-
+                ref={this.containerRef}
+            >
                 <MenuItems
                     items={items}
                     focusedItemIndex={focusedItemIndex}
                     onClick={onSelectOption}
-                    onHover={onHoverOption} />
+                    onHover={onHoverOption}
+                />
             </ul>
         );
     }

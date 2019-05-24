@@ -466,11 +466,16 @@
         }
 
         handleOnClick() {
-            return this.setState({ isOpen: true });
+            return this.setState({
+                isOpen: true,
+            });
         }
 
         handleOnClose() {
-            return this.setState({ isOpen: false });
+            return this.setState({
+                isOpen: false,
+                options: null,
+            });
         }
 
         search(value) {

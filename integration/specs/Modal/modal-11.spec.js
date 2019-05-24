@@ -1,6 +1,6 @@
 const PageModal = require('../../../src/components/Modal/pageObject');
 const PageLookup = require('../../../src/components/Lookup/pageObject');
-const { ESCAPE_KEY, ENTER_KEY } = require('../../constants');
+const { ESCAPE_KEY, ENTER_KEY, ARROW_DOWN_KEY } = require('../../constants');
 
 const BUTTON = '#button-11';
 const MODAL = '#modal-11';
@@ -42,19 +42,9 @@ describe('Modal with redux form example', () => {
         datePickerInput.click();
         modal.waitUntilOpen();
         browser.keys(ESCAPE_KEY);
+        browser.waitUntil(() => !$('.rainbow-date-picker_modal').isDisplayed());
         expect(datePickerInput.isFocused()).toBe(true);
     });
-    // it('should return focus to date picker input when both modals are opened and click outside the modals', () => {
-    //     const modal = new PageModal(MODAL);
-    //     const triggerButton = $(BUTTON);
-    //     triggerButton.click();
-    //     modal.waitUntilOpen();
-    //     const datePickerInput = $(DATE_PICKER_INPUT);
-    //     datePickerInput.click();
-    //     modal.waitUntilOpen();
-    //     modal.clickOutside();
-    //     expect(datePickerInput.isFocused()).toBe(true);
-    // });
     it('should return focus to time picker input when both modals are opened and select a time', () => {
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);
@@ -68,6 +58,7 @@ describe('Modal with redux form example', () => {
         browser.keys('0');
         browser.keys('0');
         browser.keys(ENTER_KEY);
+        browser.waitUntil(() => !$('.rainbow-time-picker_modal').isDisplayed());
         expect(timePickerInput.isFocused()).toBe(true);
     });
     it('should not close the modal when is opened and press ESC if the lookup has value typed', () => {
@@ -93,6 +84,36 @@ describe('Modal with redux form example', () => {
         lookup.waitUntilOpen();
         browser.keys(ESCAPE_KEY);
         expect(lookup.getQuery()).toBe('');
+        browser.keys(ESCAPE_KEY);
+        expect(modal.isOpen()).toBe(false);
+    });
+    it('should close the modal when select an option and then press ESC', () => {
+        const modal = new PageModal(MODAL);
+        const triggerButton = $(BUTTON);
+        triggerButton.click();
+        modal.waitUntilOpen();
+        const lookup = new PageLookup(MODAL_LOOKUP);
+        lookup.click();
+        lookup.setQuery('l');
+        lookup.waitUntilOpen();
+        const option3 = lookup.getOption(2);
+        option3.click();
+        expect(lookup.getSelectedOptionLabel()).toBe('La Habana');
+        browser.keys(ESCAPE_KEY);
+        expect(modal.isOpen()).toBe(false);
+    });
+    it('should close the modal when select an option with keyboard and then press ESC', () => {
+        const modal = new PageModal(MODAL);
+        const triggerButton = $(BUTTON);
+        triggerButton.click();
+        modal.waitUntilOpen();
+        const lookup = new PageLookup(MODAL_LOOKUP);
+        lookup.click();
+        lookup.setQuery('l');
+        lookup.waitUntilOpen();
+        browser.keys(ARROW_DOWN_KEY);
+        browser.keys(ENTER_KEY);
+        expect(lookup.getSelectedOptionLabel()).toBe('Barcelona');
         browser.keys(ESCAPE_KEY);
         expect(modal.isOpen()).toBe(false);
     });

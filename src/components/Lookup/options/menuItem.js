@@ -8,7 +8,6 @@ export default class MenuItem extends Component {
     constructor(props) {
         super(props);
         this.itemRef = React.createRef();
-        this.handleClick = this.handleClick.bind(this);
         this.handleHover = this.handleHover.bind(this);
     }
 
@@ -19,29 +18,19 @@ export default class MenuItem extends Component {
         });
     }
 
-    handleClick() {
-        const { label, description, icon, onClick } = this.props;
-        const option = {
-            label,
-            description,
-            icon,
-        };
-        onClick(option);
-    }
-
     handleHover() {
         const { onHover, index } = this.props;
         onHover(index);
     }
 
     render() {
-        const { label, description, icon } = this.props;
+        const { label, description, icon, onClick } = this.props;
 
         return (
             <li
                 className={this.getContainerClassNames()}
                 role="presentation"
-                onClick={this.handleClick}
+                onClick={onClick}
                 onMouseEnter={this.handleHover}
             >
                 <a href="javascript:void(0);" role="menuitem" ref={this.itemRef}>
