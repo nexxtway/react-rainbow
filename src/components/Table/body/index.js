@@ -24,6 +24,7 @@ export default class Body extends PureComponent {
             tableId,
             onSelectRow,
             onDeselectRow,
+            // eslint-disable-next-line react/prop-types
             isLoading,
             emptyIcon,
             emptyTitle,

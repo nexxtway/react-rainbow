@@ -8,6 +8,7 @@ export default function withReduxForm(WrappedComponent) {
         }
 
         getErrorMessage() {
+            // eslint-disable-next-line react/prop-types
             const { meta, error } = this.props;
 
             if (meta) {
@@ -34,6 +35,7 @@ export default function withReduxForm(WrappedComponent) {
         }
 
         render() {
+            // eslint-disable-next-line react/prop-types
             const { error, input, meta, ...rest } = this.props;
 
             return (

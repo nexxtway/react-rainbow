@@ -17,7 +17,9 @@ export default function AvatarMenu(props) {
         assistiveText,
         disabled,
         tabIndex,
+        // eslint-disable-next-line react/prop-types
         onFocus,
+        // eslint-disable-next-line react/prop-types
         onBlur,
         children,
         ...rest
