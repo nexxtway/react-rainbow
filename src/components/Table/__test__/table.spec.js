@@ -32,9 +32,20 @@ document.addEventListener = jest.fn((event, cb) => {
 const preventDefault = jest.fn();
 
 describe('<Table />', () => {
+    it('should not render anything if a string keyField is not passed', () => {
+        const values = [undefined, null, '', 0, 123, {}, []];
+        values.forEach(value => {
+            const component = mount(
+                <Table data={data} keyField={value}>
+                    <Column field="name" header="Name" />
+                </Table>,
+            );
+            expect(component.children().length).toBe(0);
+        });
+    });
     it('should return a table with one column', () => {
         const component = mount(
-            <Table data={data}>
+            <Table data={data} keyField="name">
                 <Column field="name" header="Name" />
             </Table>,
         );
@@ -47,7 +58,7 @@ describe('<Table />', () => {
     });
     it('should add a column when showCheckboxColumn is not passed', () => {
         const component = mount(
-            <Table data={data}>
+            <Table data={data} keyField="name">
                 <Column field="name" header="Name" />
             </Table>,
         );
@@ -63,7 +74,7 @@ describe('<Table />', () => {
     });
     it('should add a column when showCheckboxColumn is passed', () => {
         const component = mount(
-            <Table data={data} showCheckboxColumn>
+            <Table data={data} keyField="name" showCheckboxColumn>
                 <Column field="name" header="Name" />
             </Table>,
         );
@@ -76,7 +87,7 @@ describe('<Table />', () => {
     });
     it('should update the columns state when add a column and showCheckboxColumn is not passed', () => {
         const component = mount(
-            <Table data={data}>
+            <Table data={data} keyField="name">
                 <Column field="name" header="Name" />
             </Table>,
         );
@@ -111,7 +122,7 @@ describe('<Table />', () => {
     });
     it('should update the columns state when add a column and showCheckboxColumn is passed', () => {
         const component = mount(
-            <Table data={data} showCheckboxColumn>
+            <Table data={data} keyField="name" showCheckboxColumn>
                 <Column field="name" header="Name" />
             </Table>,
         );
@@ -165,7 +176,7 @@ describe('<Table />', () => {
             },
         ];
         const component = mount(
-            <Table data={data}>
+            <Table data={data} keyField="name">
                 <Column field="name" header="Name" />
             </Table>,
         );
@@ -180,7 +191,7 @@ describe('<Table />', () => {
     });
     it('should set the right table width when resize for first time', () => {
         const component = mount(
-            <Table data={data}>
+            <Table data={data} keyField="name">
                 <Column field="name" header="Name" />
                 <Column field="number" header="Number" />
             </Table>,
@@ -195,7 +206,7 @@ describe('<Table />', () => {
     });
     it('should store the right columns in state when resize a column', () => {
         const component = mount(
-            <Table data={data}>
+            <Table data={data} keyField="name">
                 <Column field="name" header="Name" />
                 <Column field="number" header="Number" />
             </Table>,
@@ -241,7 +252,7 @@ describe('<Table />', () => {
     });
     it('should set the right table width when resize for second time', () => {
         const component = mount(
-            <Table data={data}>
+            <Table data={data} keyField="name">
                 <Column field="name" header="Name" />
                 <Column field="number" header="Number" />
             </Table>,
@@ -262,7 +273,7 @@ describe('<Table />', () => {
     it('should call onSort with the right data when a sortable column header is clicked', () => {
         const onSortMock = jest.fn();
         const component = mount(
-            <Table data={data} onSort={onSortMock}>
+            <Table data={data} keyField="name" onSort={onSortMock}>
                 <Column field="name" header="Name" sortable />
                 <Column field="number" header="Number" />,
             </Table>,
@@ -274,7 +285,7 @@ describe('<Table />', () => {
     it('should not call onSort when a non sortable column header is clicked', () => {
         const onSortMock = jest.fn();
         const component = mount(
-            <Table data={data} onSort={onSortMock}>
+            <Table data={data} keyField="name" onSort={onSortMock}>
                 <Column field="name" header="Name" sortable />
                 <Column field="number" header="Number" />,
             </Table>,
@@ -293,6 +304,7 @@ describe('<Table />', () => {
         const component = mount(
             <Table
                 data={data}
+                keyField="name"
                 onSort={onSortMock}
                 defaultSortDirection="desc"
                 sortDirection={sortDirection}
@@ -533,6 +545,34 @@ describe('<Table />', () => {
             },
         ]);
         expect(component.state().bulkSelection).toBe('some');
+    });
+    it('should fire onRowSelection with new selected data when change the selectedRows', () => {
+        const onRowSelectionMockFn = jest.fn();
+        const component = mount(
+            <Table
+                data={tableData}
+                showCheckboxColumn
+                onRowSelection={onRowSelectionMockFn}
+                selectedRows={['1234qwerty']}
+                keyField="id"
+            >
+                <Column field="name" header="Name" />
+            </Table>,
+        );
+        expect(component.instance().selectedRowsKeys).toEqual({
+            '1234qwerty': true,
+        });
+        component.setProps({
+            selectedRows: ['1234qwerty', '9012zxcvbn'],
+        });
+        expect(component.instance().selectedRowsKeys).toEqual({
+            '1234qwerty': true,
+            '9012zxcvbn': true,
+        });
+        expect(onRowSelectionMockFn).toHaveBeenCalledWith([
+            { id: '1234qwerty', name: 'Pepe' },
+            { id: '9012zxcvbn', name: 'Josep' },
+        ]);
     });
     it('should call onRowSelection with the right data when select all rows and there are selected rows', () => {
         const onRowSelectionMockFn = jest.fn();
@@ -938,5 +978,147 @@ describe('<Table />', () => {
             },
         ]);
         expect(state.bulkSelection).toBe('some');
+    });
+    it('should set the initial selectedRowsKeys to empty object when not pass selectedRows', () => {
+        const component = mount(
+            <Table data={tableData} showCheckboxColumn keyField="id">
+                <Column field="name" header="Name" />
+                <Column field="id" header="ID" />
+            </Table>,
+        );
+        expect(component.instance().selectedRowsKeys).toEqual({});
+    });
+    it('should set the right initial selectedRowsKeys when pass selectedRows', () => {
+        const component = mount(
+            <Table
+                data={tableData}
+                showCheckboxColumn
+                keyField="id"
+                selectedRows={['1234qwerty', '5678asdfgh', 'wrong-key']}
+            >
+                <Column field="name" header="Name" />
+                <Column field="id" header="ID" />
+            </Table>,
+        );
+        expect(component.instance().selectedRowsKeys).toEqual({
+            '1234qwerty': true,
+            '5678asdfgh': true,
+        });
+    });
+    it('should not reset selectedRowsKeys state when pass new data prop', () => {
+        const component = mount(
+            <Table data={tableData} showCheckboxColumn keyField="id">
+                <Column field="name" header="Name" />
+                <Column field="id" header="ID" />
+            </Table>,
+        );
+        const checkbox = component
+            .find('Input[label="select row"]')
+            .find('input')
+            .at(1);
+        checkbox.simulate('click');
+        expect(component.instance().selectedRowsKeys).toEqual({
+            '5678asdfgh': true,
+        });
+        component.setProps({
+            data: [
+                {
+                    name: 'Pepe',
+                    id: '1234qwerty',
+                },
+                {
+                    name: 'John',
+                    id: '5678asdfgh',
+                },
+                {
+                    name: 'Josep',
+                    id: '9012zxcvbn',
+                },
+            ],
+        });
+        expect(component.instance().selectedRowsKeys).toEqual({
+            '5678asdfgh': true,
+        });
+    });
+    it('should fire onRowSelection when pass new data prop that does not contains prev selected data', () => {
+        const onRowSelectionMockFn = jest.fn();
+        const component = mount(
+            <Table
+                data={tableData}
+                showCheckboxColumn
+                onRowSelection={onRowSelectionMockFn}
+                keyField="id"
+            >
+                <Column field="name" header="Name" />
+                <Column field="id" header="ID" />
+            </Table>,
+        );
+        const checkbox2 = component
+            .find('Input[label="select row"]')
+            .find('input')
+            .at(1);
+        checkbox2.simulate('click');
+        expect(component.instance().selectedRowsKeys).toEqual({
+            '5678asdfgh': true,
+        });
+        expect(onRowSelectionMockFn.mock.calls[0][0]).toEqual([
+            {
+                id: '5678asdfgh',
+                name: 'John',
+            },
+        ]);
+        component.setProps({
+            data: [
+                {
+                    name: 'Pepe',
+                    id: '1234qwerty',
+                },
+                {
+                    name: 'Josep',
+                    id: '9012zxcvbn',
+                },
+            ],
+        });
+        expect(component.instance().selectedRowsKeys).toEqual({});
+        expect(onRowSelectionMockFn.mock.calls[1][0]).toEqual([]);
+    });
+    it('should not change bulkSelection state when select all rows and then pass new data prop that remove one row', () => {
+        const onRowSelectionMockFn = jest.fn();
+        const component = mount(
+            <Table
+                data={tableData}
+                showCheckboxColumn
+                onRowSelection={onRowSelectionMockFn}
+                keyField="id"
+            >
+                <Column field="name" header="Name" />
+                <Column field="id" header="ID" />
+            </Table>,
+        );
+        const headCheckbox = component.find('InputCheckbox[label="select all rows"]').find('input');
+        headCheckbox.simulate('click');
+        expect(component.state('bulkSelection')).toBe('all');
+        expect(component.instance().selectedRowsKeys).toEqual({
+            '1234qwerty': true,
+            '5678asdfgh': true,
+            '9012zxcvbn': true,
+        });
+        component.setProps({
+            data: [
+                {
+                    name: 'Pepe',
+                    id: '1234qwerty',
+                },
+                {
+                    name: 'Josep',
+                    id: '9012zxcvbn',
+                },
+            ],
+        });
+        expect(component.state('bulkSelection')).toBe('all');
+        expect(component.instance().selectedRowsKeys).toEqual({
+            '1234qwerty': true,
+            '9012zxcvbn': true,
+        });
     });
 });

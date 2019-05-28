@@ -5,6 +5,8 @@ import getUpdatedRowsWhenDeselectAll from './getUpdatedRowsWhenDeselectAll';
 import getBulkSelectionState from './getBulkSelectionState';
 import getRowsWithInitalSelectedRows from './getRowsWithInitalSelectedRows';
 import isValidMaxRowSelection from './isValidMaxRowSelection';
+import getSelectedRowKeys from './getSelectedRowKeys';
+import getSelectedRowKeysFromSelectedRows from './getSelectedRowKeysFromSelectedRows';
 
 export {
     getUpdatedRowsWhenSelect,
@@ -14,4 +16,6 @@ export {
     getBulkSelectionState,
     getRowsWithInitalSelectedRows,
     isValidMaxRowSelection,
+    getSelectedRowKeys,
+    getSelectedRowKeysFromSelectedRows,
 };
