@@ -1,0 +1,75 @@
+/* stylelint-disable no-descending-specificity,max-line-length */
+.rainbow-radio-button-group_inner-container .rainbow-radio-button-group_radio, .rainbow-radio-button-group_indicator {
+  border-radius: 0;
+  border-width: 1px;
+  margin-left: -1px; }
+
+.rainbow-radio-button-group_container {
+  position: relative; }
+
+.rainbow-radio-button-group_label {
+  display: inline-block;
+  color: #576574;
+  font-size: 0.875rem;
+  margin-right: 0.75rem;
+  margin-bottom: 0.25rem; }
+
+.rainbow-radio-button-group_inner-container {
+  border-radius: 100px;
+  border: solid 1px #e3e5ed;
+  background-color: rgba(227, 229, 237, 0.4);
+  display: -ms-inline-flexbox;
+  display: inline-flex; }
+  .rainbow-radio-button-group_inner-container .rainbow-radio-button-group_radio {
+    border-radius: 20px;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    z-index: 0; }
+    .rainbow-radio-button-group_inner-container .rainbow-radio-button-group_radio:not(.rainbow-radio-button-group_radio--disabled) {
+      transition: all 0.3s cubic-bezier(0.75, 0, 0.08, 1); }
+      .rainbow-radio-button-group_inner-container .rainbow-radio-button-group_radio:not(.rainbow-radio-button-group_radio--disabled):hover:not(.rainbow-radio-button-group_radio--checked) {
+        z-index: 1;
+        background: rgba(227, 229, 237, 0.5); }
+
+.rainbow-radio-button-group_radio--checked {
+  z-index: 1;
+  box-shadow: 0 0 2px 0 #a4a7b5;
+  background: white;
+  border-color: white; }
+
+.rainbow-radio-button-group_text-error {
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  display: block;
+  color: #ea4243; }
+
+.rainbow-radio-button-group_radio {
+  display: inline-block; }
+
+.rainbow-radio-button-group_radio-label {
+  display: inline;
+  vertical-align: middle;
+  font-size: 1rem;
+  color: #061c3f;
+  line-height: 1.65rem; }
+
+.rainbow-radio-button-group_radio-label--disabled {
+  color: #a4a7b5; }
+
+.rainbow-radio-button-group_radio [type='radio'] {
+  width: 1px;
+  height: 1px;
+  border: 0;
+  clip: rect(0 0 0 0);
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute; }
+
+.rainbow-radio-button-group_indicator {
+  display: inline-block;
+  border-radius: 100px;
+  margin-top: -1px;
+  margin-left: -1px;
+  position: absolute;
+  background: #f00; }
