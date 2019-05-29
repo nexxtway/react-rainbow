@@ -45,6 +45,7 @@ export default class RadioButton extends Component {
         return (
             <span className={this.getContainerClassNames()}>
                 <input
+                    ref={this.ref}
                     type="radio"
                     required={required}
                     id={this.radioId}
