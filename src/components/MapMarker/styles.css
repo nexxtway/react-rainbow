@@ -37,7 +37,7 @@
 .rainbow-google-map-marker_icon {
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  background-color: #5c56b6;
+  background-color: rgba(82, 95, 127, 0.1);
   border-radius: 12rem;
   display: flex;
   align-items: center;
