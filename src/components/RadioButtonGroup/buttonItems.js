@@ -7,25 +7,39 @@ export default function ButtonItems(props) {
 
     const isChecked = option => option.value === value;
 
-    return (
-        <div className="rainbow-radio-button-group_buttons-list">
-            <div className="rainbow-radio-button-group_indicator" />
-            {options.map((option, index) => {
-                const key = `radio-${index}`;
-                return (
-                    <RadioButton
-                        key={key}
-                        required={required}
-                        onChange={onChange}
-                        isChecked={isChecked(option)}
-                        ariaDescribedby={ariaDescribedby}
-                        name={name}
-                        {...option}
-                    />
-                );
-            })}
-        </div>
-    );
+    return options.map((option, index) => {
+        const key = `radiobutton-${index}`;
+        return (
+            <RadioButton
+                key={key}
+                required={required}
+                onChange={onChange}
+                isChecked={isChecked(option)}
+                ariaDescribedby={ariaDescribedby}
+                name={name}
+                {...option}
+            />
+        );
+    });
+    // return (
+    //     <div className="rainbow-radio-button-group_buttons-list">
+    //         <div className="rainbow-radio-button-group_indicator" />
+    //         {options.map((option, index) => {
+    //             const key = `radiobutton-${index}`;
+    //             return (
+    //                 <RadioButton
+    //                     key={key}
+    //                     required={required}
+    //                     onChange={onChange}
+    //                     isChecked={isChecked(option)}
+    //                     ariaDescribedby={ariaDescribedby}
+    //                     name={name}
+    //                     {...option}
+    //                 />
+    //             );
+    //         })}
+    //     </div>
+    // );
 }
 
 ButtonItems.propTypes = {

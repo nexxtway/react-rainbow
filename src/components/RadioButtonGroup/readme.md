@@ -1,9 +1,10 @@
 ##### radiobuttongroup base
 
     const options = [
-        { value: 'radioOne', label: 'Radio One' },
-        { value: 'radioTwo', label: 'Radio Two' },
-        { value: 'radioThree', label: 'Radio Three' },
+        { value: 'off', label: 'Off' },
+        { value: 'parking', label: 'Parking' },
+        { value: 'auto', label: 'Auto' },
+        { value: 'on', label: 'On' },
     ]
 
     class SimpleRadioButtonGroup extends React.Component {
@@ -38,9 +39,10 @@
 ##### radiobuttongroup disabled
 
     const options = [
-        { value: 'radioOne', label: 'Radio One', disabled: true },
-        { value: 'radioTwo', label: 'Radio Two', disabled: true },
-        { value: 'radioThree', label: 'Radio Three', disabled: true },
+        { value: 'off', label: 'Off', disabled: true },
+        { value: 'parking', label: 'Parking', disabled: true },
+        { value: 'auto', label: 'Auto', disabled: true },
+        { value: 'on', label: 'On', disabled: true },
     ]
 
     class DisabledRadioButtonGroup extends React.Component {
@@ -74,9 +76,10 @@
 ##### radiobuttongroup required
 
     const options = [
-       { value: 'radioOne', label: 'Radio One' },
-        { value: 'radioTwo', label: 'Radio Two' },
-        { value: 'radioThree', label: 'Radio Three' },
+        { value: 'off', label: 'Off' },
+        { value: 'parking', label: 'Parking' },
+        { value: 'auto', label: 'Auto' },
+        { value: 'on', label: 'On' },
     ]
 
     class RequiredRadioButtonGroup extends React.Component {
@@ -111,9 +114,10 @@
 ##### radiobutton group error
 
     const options = [
-        { value: 'radioOne', label: 'Radio One' },
-        { value: 'radioTwo', label: 'Radio Two' },
-        { value: 'radioThree', label: 'Radio Three' },
+        { value: 'off', label: 'Off' },
+        { value: 'parking', label: 'Parking' },
+        { value: 'auto', label: 'Auto' },
+        { value: 'on', label: 'On' },
     ]
 
     class ErrorRadioButtonGroup extends React.Component {

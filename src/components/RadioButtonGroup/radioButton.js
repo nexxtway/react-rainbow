@@ -7,7 +7,7 @@ import { uniqueId } from '../../libs/utils';
 export default class RadioButton extends Component {
     constructor(props) {
         super(props);
-        this.radioId = uniqueId('radio');
+        this.radioId = uniqueId('radiobutton');
     }
 
     getContainerClassNames() {
