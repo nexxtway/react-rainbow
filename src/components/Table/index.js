@@ -495,11 +495,16 @@ Table.propTypes = {
     keyField: PropTypes.string.isRequired,
     /** Specifies whether data is being loaded. The default is false. */
     isLoading: PropTypes.bool,
-    /** The icon that appears in the message of the Table when is empty. */
+    /** The icon that appears in the message of the Table when is empty.
+     * If not passed a fallback icon will be showed. */
     emptyIcon: PropTypes.node,
-    /** The title that appears in the message of the Table when is empty. */
+    /** The title that appears in the message of the Table when is empty.
+     *  If not passed a fallback title will be showed.
+     */
     emptyTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** The description that appears in the message of the Table when is empty. */
+    /** The description that appears in the message of the Table when is empty.
+     *  If not passed a fallback description will be showed.
+     */
     emptyDescription: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The id of the outer element. */
     id: PropTypes.string,
