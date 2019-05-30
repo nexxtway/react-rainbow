@@ -1,21 +1,21 @@
 const PageRadioButtonItem = require('./radioButton');
 
 /**
- * RadioGroup page object class.
+ * RadioButtonGroup page object class.
  * @class
  */
 class PageRadioButtonGroup {
     /**
-     * Create a new RadioGroup page object.
+     * Create a new RadioButtonGroup page object.
      * @constructor
-     * @param {string} rootElement - The selector of the RadioGroup root element.
+     * @param {string} rootElement - The selector of the RadioButtonGroup root element.
      */
     constructor(rootElement) {
         this.rootElement = rootElement;
     }
 
     /**
-     * Returns a new Radio page object of the element in item position.
+     * Returns a new RadioButton page object of the element in item position.
      * @method
      * @param {number} itemPosition - The base 0 index of the radio.
      */

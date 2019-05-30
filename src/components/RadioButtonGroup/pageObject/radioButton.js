@@ -1,5 +1,5 @@
 /**
- * Radio page object class.
+ * RadioButton page object class.
  * @class
  */
 class PageRadioButtonItem {
@@ -12,7 +12,7 @@ class PageRadioButtonItem {
         this.rootElement = rootElement;
     }
 
-    /** Click the radio.
+    /** Click the radiobutton.
      * @method
      */
     click() {
@@ -22,7 +22,7 @@ class PageRadioButtonItem {
     }
 
     /**
-     * Returns true when the radio has the focus.
+     * Returns true when the radiobutton has the focus.
      * @method
      * @returns {bool}
      */

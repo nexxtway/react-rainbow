@@ -9,11 +9,11 @@ const options = [
     { value: 'radioThree', label: 'Radio Three' },
 ];
 
-describe('<RadioGroup/>', () => {
+describe('<RadioButtonGroup/>', () => {
     it('should be accessible when both all options and the group have a label', async () => {
         expect.assertions(1);
         const html = ReactDOMServer.renderToString(
-            <RadioButtonGroup label="RadioButton Group Label" options={options} />,
+            <RadioButtonGroup label="RadioButtonGroup Label" options={options} />,
         );
         const results = await axe(html);
         expect(results).toHaveNoViolations();
