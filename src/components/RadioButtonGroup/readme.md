@@ -11,7 +11,7 @@
         constructor(props) {
             super(props);
             this.state = {
-                value: undefined,
+                value: 'auto',
             };
             this.handleOnChange = this.handleOnChange.bind(this);
         }
@@ -26,6 +26,44 @@
                     id="radio-button-group-component-1"
                     options={options}
                     value={this.state.value}
+                    onChange={this.handleOnChange} />
+            );
+        }
+    }
+
+    <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
+        <SimpleRadioButtonGroup />
+    </div>
+
+##### radiobuttongroup brand with label
+
+    const options = [
+        { value: 'off', label: 'Off' },
+        { value: 'parking', label: 'Parking' },
+        { value: 'auto', label: 'Auto' },
+        { value: 'on', label: 'On' },
+    ]
+
+    class LabeledBrandRadioButtonGroup extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                value: 'auto',
+            };
+            this.handleOnChange = this.handleOnChange.bind(this);
+        }
+
+        handleOnChange(event) {
+            return this.setState({ value: event.target.value });
+        }
+
+        render() {
+            return (
+                <RadioButtonGroup
+                    id="radio-button-group-component-1"
+                    options={options}
+                    value={this.state.value}
+                    variant="brand"
                     onChange={this.handleOnChange}
                     label="RadioButtonGroup Label" />
             );
@@ -33,7 +71,45 @@
     }
 
     <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
-        <SimpleRadioButtonGroup />
+        <LabeledBrandRadioButtonGroup />
+    </div>
+
+##### radiobuttongroup inverse
+
+    const options = [
+        { value: 'off', label: 'Off' },
+        { value: 'parking', label: 'Parking' },
+        { value: 'auto', label: 'Auto' },
+        { value: 'on', label: 'On' },
+    ]
+
+    class RadioButtonGroupInverse extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                value: 'auto',
+            };
+            this.handleOnChange = this.handleOnChange.bind(this);
+        }
+
+        handleOnChange(event) {
+            return this.setState({ value: event.target.value });
+        }
+
+        render() {
+            return (
+                <RadioButtonGroup
+                    id="radio-button-group-component-1"
+                    options={options}
+                    value={this.state.value}
+                    variant="inverse"
+                    onChange={this.handleOnChange} />
+            );
+        }
+    }
+
+    <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
+        <RadioButtonGroupInverse />
     </div>
 
 ##### radiobuttongroup disabled
