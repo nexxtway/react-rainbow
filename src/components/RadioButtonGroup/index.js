@@ -56,10 +56,7 @@ class RadioButtonGroup extends Component {
                         {label}
                     </legend>
                 </RenderIf>
-                <div
-                    className="rainbow-radio-button-group_inner-container"
-                    styles={{ '--checkedSize': 10 }}
-                >
+                <div className="rainbow-radio-button-group_inner-container">
                     <ButtonItems
                         value={value}
                         onChange={onChange}
@@ -89,7 +86,7 @@ RadioButtonGroup.propTypes = {
     name: PropTypes.string,
     /** The value of the element. */
     value: PropTypes.string,
-    /** The variant changes the appearance of the badge. Accepted variants include default,
+    /** The variant changes the appearance of the radio button. Accepted variants include default,
      * brand and inverse. This value defaults to default. */
     variant: PropTypes.oneOf(['default', 'inverse', 'brand']),
     /** The action triggered when a value attribute changes. */
