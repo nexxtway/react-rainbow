@@ -1,74 +1,166 @@
 /* stylelint-disable no-descending-specificity,max-line-length */
-@import '../../styles/colors';
-@import '../../styles/shadows';
-@import '../../styles/margins';
-@import '../../styles/paddings';
-@import '../../styles/font-sizes';
-@import '../../styles/border-radius';
+@import "./../../styles/colors.scss";
+@import '../../styles/shadow.scsss';
+@import '../../styles/margins.scss';
+@import '../../styles/paddings.scss';
+@import '../../styles/font-sizes.scss';
+@import '../../styles/border-radius.scss';
 
-%border {
-    border-radius: 0;
-    border-width: 1px;
-}
-
-@mixin user-select() {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+%center-content {
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
 }
 
 .rainbow-radio-button-group_container {
+    @extend %center-content;
+
     position: relative;
-    text-align: center;
 }
 
 .rainbow-radio-button-group_label {
-    display: block;
-    text-align: center;
+    display: inline-block;
     color: $color-gray-4;
     font-size: $font-size-text-medium;
-    margin-left: auto;
-    margin-right: auto;
+    line-height: 1.5;
+    margin: 0 auto 0.125rem auto;
 }
 
 .rainbow-radio-button-group_inner-container {
-    border-radius: 1.25rem;
+    @extend %center-content;
+
+    border-radius: $border-radius-2;
     border: solid 1px #e3e5ed;
     background-color: rgba(227, 229, 237, 0.4);
+    line-height: 2.5rem;
     height: 2.5rem;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
 
     .rainbow-radio-button-group_radio {
+        @extend %center-content;
+
+        height: 2.5rem;
+        border-radius: $border-radius-2;
+        border: solid 1px transparent;
+        transition: all 0.3s cubic-bezier(0.75, 0, 0.08, 1);
+        z-index: 0;
+
+        &:first-child {
+            margin-left: -1px;
+        }
+
+        &:last-child {
+            margin-right: -1px;
+        }
+
+        &:hover {
+            background-color: rgba(227, 229, 237, 0.4);
+        }
+
         .rainbow-radio-button-group_radio-label-container {
-            @extend %border;
+            @extend %center-content;
 
-            display: block;
-            border-radius: 1.25rem;
-            height: 2.5rem;
-            padding-right: $padding-large;
-            padding-left: $padding-large;
-            z-index: 0;
-            margin-top: -1px;
-
-            span {
-                padding-top: calc(0.75rem + 3px);
+            .rainbow-radio-button-group_radio-label {
                 transition: all 0.3s cubic-bezier(0.75, 0, 0.08, 1);
+                font-size: $font-size-text-large;
+                color: $color-gray-3;
+                padding: 0 $padding-large;
+                font-weight: 400;
+            }
+        }
+    }
+
+    .rainbow-radio-button-group_radio--checked {
+        background-color: white;
+        border-color: white;
+        box-shadow: 0 0 2px 0 #a4a7b5;
+        z-index: 2;
+
+        &:hover {
+            background-color: white;
+            border-color: white;
+        }
+
+        .rainbow-radio-button-group_radio-label-container {
+            .rainbow-radio-button-group_radio-label {
+                color: $color-dark-1;
+            }
+        }
+    }
+
+    .rainbow-radio-button-group_radio--disabled {
+        cursor: not-allowed;
+
+        &:hover {
+            background-color: transparent;
+        }
+
+        .rainbow-radio-button-group_radio-label-container {
+            .rainbow-radio-button-group_radio-label--disabled {
+                color: $color-gray-2;
+            }
+        }
+    }
+}
+
+.rainbow-radio-button-group--brand {
+    .rainbow-radio-button-group_inner-container .rainbow-radio-button-group_radio--checked {
+        background-color: $color-brand;
+        border-color: #01aae5;
+
+        .rainbow-radio-button-group_radio-label-container {
+            .rainbow-radio-button-group_radio-label {
+                color: white;
+            }
+        }
+    }
+}
+
+.rainbow-radio-button-group--inverse {
+    .rainbow-radio-button-group_label {
+        color: white;
+    }
+
+    .rainbow-radio-button-group_inner-container {
+        border-color: rgba(0, 0, 0, 0.4);
+        background-color:rgba(0, 0, 0, 0.4);
+
+        .rainbow-radio-button-group_radio {
+            .rainbow-radio-button-group_radio-label-container {
+                .rainbow-radio-button-group_radio-label {
+                    color: white;
+                }
+            }
+
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.8);
             }
         }
 
-        &:not(.rainbow-radio-button-group_radio--disabled) {
-            .rainbow-radio-button-group_radio-label-container {
-                transition: all 0.3s cubic-bezier(0.75, 0, 0.08, 1);
-            }
+        .rainbow-radio-button-group_radio--checked {
+            box-shadow: 0 0 2px 0 #029bd3;
+            background-color: #029bd3;
+            border: solid 1px #009acf;
 
-            &:hover:not(.rainbow-radio-button-group_radio--checked) {
-                .rainbow-radio-button-group_radio-label-container {
-                    z-index: 1;
-                    background-color: $color-gray-2;
-                }
+            &:hover {
+                background-color: #029bd3;
             }
+        }
+    }
+}
+
+.rainbow-radio-button-group--inverse .rainbow-radio-button-group_inner-container .rainbow-radio-button-group_radio--disabled {
+    &:hover {
+        background-color: transparent;
+    }
+
+    .rainbow-radio-button-group_radio-label-container {
+        .rainbow-radio-button-group_radio-label--disabled {
+            background-color: transparent;
+            border-color: $color-gray-4;
+            color: $color-gray-4;
         }
     }
 }
@@ -78,22 +170,7 @@
     margin-top: $margin-x-small;
     display: block;
     color: $color-error-active;
-}
-
-.rainbow-radio-button-group_radio {
-    display: inline-block;
-}
-
-.rainbow-radio-button-group_radio-label {
-    display: inline;
-    vertical-align: middle;
-    font-size: $font-size-text-large;
-    color: $color-dark-1;
-    line-height: 1.65rem;
-}
-
-.rainbow-radio-button-group_radio-label--disabled {
-    color: $color-gray-3;
+    text-align: center;
 }
 
 .rainbow-radio-button-group_radio [type='radio'] {
@@ -105,69 +182,4 @@
     overflow: hidden;
     padding: 0;
     position: absolute;
-}
-
-.rainbow-radio-button-group_radio--checked {
-    .rainbow-radio-button-group_radio-label-container {
-        z-index: 2;
-        box-shadow: 0 0 2px 0 #a4a7b5;
-    }
-}
-
-.rainbow-radio-button-group_radio--checked > .rainbow-radio-button-group_radio-label-container {
-    background-color: white;
-    border-color: white;
-
-    span {
-        color: $color-dark-1;
-    }
-}
-
-.rainbow-radio-button-group--brand {
-    .rainbow-radio-button-group_radio--checked > .rainbow-radio-button-group_radio-label-container {
-        background-color: $color-brand;
-        border-color: #01aae5;
-
-        span {
-            color: white;
-        }
-    }
-}
-
-.rainbow-radio-button-group--inverse {
-    .rainbow-radio-button-group_inner-container {
-        border-color: rgba(227, 229, 237, 0) !important;
-        background-color: #031025;
-
-        .rainbow-radio-button-group_radio {
-            &:first-child {
-                margin-left: -1px;
-            }
-
-            &:last-child {
-                margin-right: -1px;
-            }
-
-            .rainbow-radio-button-group_radio-label-container {
-                span {
-                    color: white;
-                }
-            }
-
-            &:not(.rainbow-radio-button-group_radio--disabled) {
-                &:hover:not(.rainbow-radio-button-group_radio--checked) {
-                    .rainbow-radio-button-group_radio-label-container {
-                        background-color: $color-dark-1;
-                    }
-                }
-            }
-        }
-
-        .rainbow-radio-button-group_radio--checked {
-            .rainbow-radio-button-group_radio-label-container {
-                box-shadow: 0 0 2px 0 #029bd3;
-                background-color: #029bd3;
-            }
-        }
-    }
 }

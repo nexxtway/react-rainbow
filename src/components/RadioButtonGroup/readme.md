@@ -31,7 +31,7 @@
         }
     }
 
-    <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
+    <div className="rainbow-p-around_x-large rainbow-align-content_center">
         <SimpleRadioButtonGroup />
     </div>
 
@@ -70,7 +70,7 @@
         }
     }
 
-    <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
+    <div className="rainbow-p-around_x-large rainbow-align-content_center">
         <LabeledBrandRadioButtonGroup />
     </div>
 
@@ -82,6 +82,11 @@
         { value: 'auto', label: 'Auto' },
         { value: 'on', label: 'On' },
     ]
+
+    const buttonsContainerStyles = {
+        backgroundColor: '#061c3f',
+        borderRadius: '0.875rem',
+    };
 
     class RadioButtonGroupInverse extends React.Component {
         constructor(props) {
@@ -108,7 +113,7 @@
         }
     }
 
-    <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
+    <div className="rainbow-p-around_x-large rainbow-align-content_center" style={buttonsContainerStyles}>
         <RadioButtonGroupInverse />
     </div>
 
@@ -145,7 +150,7 @@
         }
     }
 
-    <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
+    <div className="rainbow-p-around_x-large rainbow-align-content_center">
         <DisabledRadioButtonGroup />
     </div>
 
@@ -183,7 +188,7 @@
         }
     }
 
-    <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
+    <div className="rainbow-p-around_x-large rainbow-align-content_center">
         <RequiredRadioButtonGroup />
     </div>
 
@@ -221,6 +226,6 @@
         }
     }
 
-    <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
+    <div className="rainbow-p-around_x-large rainbow-align-content_center">
         <ErrorRadioButtonGroup />
     </div>
