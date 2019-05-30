@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity,max-line-length */
-.rainbow-radio-button-group_container, .rainbow-radio-button-group_inner-container, .rainbow-radio-button-group_inner-container .rainbow-radio-button-group_radio, .rainbow-radio-button-group_inner-container .rainbow-radio-button-group_radio .rainbow-radio-button-group_radio-label-container {
+.rainbow-radio-button-group_container, .rainbow-radio-button-group_inner-container, .rainbow-radio-button-group_inner-container .rainbow-radio-button-group_radio {
   display: -ms-inline-flexbox;
   display: inline-flex;
   -ms-flex-pack: center;
@@ -18,14 +18,14 @@
   margin: 0 auto 0.125rem auto; }
 
 .rainbow-radio-button-group_inner-container {
-  border-radius: 1.25rem;
+  border-radius: 12rem;
   border: solid 1px #e3e5ed;
   background-color: rgba(227, 229, 237, 0.4);
   line-height: 2.5rem;
   height: 2.5rem; }
   .rainbow-radio-button-group_inner-container .rainbow-radio-button-group_radio {
     height: 2.5rem;
-    border-radius: 1.25rem;
+    border-radius: 12rem;
     border: solid 1px transparent;
     transition: all 0.3s cubic-bezier(0.75, 0, 0.08, 1);
     z-index: 0; }
@@ -35,7 +35,7 @@
       margin-right: -1px; }
     .rainbow-radio-button-group_inner-container .rainbow-radio-button-group_radio:hover {
       background-color: rgba(227, 229, 237, 0.4); }
-    .rainbow-radio-button-group_inner-container .rainbow-radio-button-group_radio .rainbow-radio-button-group_radio-label-container .rainbow-radio-button-group_radio-label {
+    .rainbow-radio-button-group_inner-container .rainbow-radio-button-group_radio .rainbow-radio-button-group_radio-label {
       transition: all 0.3s cubic-bezier(0.75, 0, 0.08, 1);
       font-size: 1rem;
       color: #a4a7b5;
@@ -49,19 +49,19 @@
     .rainbow-radio-button-group_inner-container .rainbow-radio-button-group_radio--checked:hover {
       background-color: white;
       border-color: white; }
-    .rainbow-radio-button-group_inner-container .rainbow-radio-button-group_radio--checked .rainbow-radio-button-group_radio-label-container .rainbow-radio-button-group_radio-label {
+    .rainbow-radio-button-group_inner-container .rainbow-radio-button-group_radio--checked .rainbow-radio-button-group_radio-label {
       color: #061c3f; }
   .rainbow-radio-button-group_inner-container .rainbow-radio-button-group_radio--disabled {
     cursor: not-allowed; }
     .rainbow-radio-button-group_inner-container .rainbow-radio-button-group_radio--disabled:hover {
       background-color: transparent; }
-    .rainbow-radio-button-group_inner-container .rainbow-radio-button-group_radio--disabled .rainbow-radio-button-group_radio-label-container .rainbow-radio-button-group_radio-label--disabled {
+    .rainbow-radio-button-group_inner-container .rainbow-radio-button-group_radio--disabled .rainbow-radio-button-group_radio-label--disabled {
       color: #e3e5ed; }
 
 .rainbow-radio-button-group--brand .rainbow-radio-button-group_inner-container .rainbow-radio-button-group_radio--checked {
   background-color: #01b6f5;
   border-color: #01aae5; }
-  .rainbow-radio-button-group--brand .rainbow-radio-button-group_inner-container .rainbow-radio-button-group_radio--checked .rainbow-radio-button-group_radio-label-container .rainbow-radio-button-group_radio-label {
+  .rainbow-radio-button-group--brand .rainbow-radio-button-group_inner-container .rainbow-radio-button-group_radio--checked .rainbow-radio-button-group_radio-label {
     color: white; }
 
 .rainbow-radio-button-group--inverse .rainbow-radio-button-group_label {
@@ -70,7 +70,7 @@
 .rainbow-radio-button-group--inverse .rainbow-radio-button-group_inner-container {
   border-color: rgba(0, 0, 0, 0.4);
   background-color: rgba(0, 0, 0, 0.4); }
-  .rainbow-radio-button-group--inverse .rainbow-radio-button-group_inner-container .rainbow-radio-button-group_radio .rainbow-radio-button-group_radio-label-container .rainbow-radio-button-group_radio-label {
+  .rainbow-radio-button-group--inverse .rainbow-radio-button-group_inner-container .rainbow-radio-button-group_radio .rainbow-radio-button-group_radio-label {
     color: white; }
   .rainbow-radio-button-group--inverse .rainbow-radio-button-group_inner-container .rainbow-radio-button-group_radio:hover {
     background-color: rgba(0, 0, 0, 0.8); }

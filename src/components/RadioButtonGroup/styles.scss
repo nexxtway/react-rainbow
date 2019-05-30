@@ -1,6 +1,5 @@
 /* stylelint-disable no-descending-specificity,max-line-length */
 @import "./../../styles/colors.scss";
-@import '../../styles/shadow.scsss';
 @import '../../styles/margins.scss';
 @import '../../styles/paddings.scss';
 @import '../../styles/font-sizes.scss';
@@ -59,16 +58,12 @@
             background-color: rgba(227, 229, 237, 0.4);
         }
 
-        .rainbow-radio-button-group_radio-label-container {
-            @extend %center-content;
-
-            .rainbow-radio-button-group_radio-label {
-                transition: all 0.3s cubic-bezier(0.75, 0, 0.08, 1);
-                font-size: $font-size-text-large;
-                color: $color-gray-3;
-                padding: 0 $padding-large;
-                font-weight: 400;
-            }
+        .rainbow-radio-button-group_radio-label {
+            transition: all 0.3s cubic-bezier(0.75, 0, 0.08, 1);
+            font-size: $font-size-text-large;
+            color: $color-gray-3;
+            padding: 0 $padding-large;
+            font-weight: 400;
         }
     }
 
@@ -83,10 +78,8 @@
             border-color: white;
         }
 
-        .rainbow-radio-button-group_radio-label-container {
-            .rainbow-radio-button-group_radio-label {
-                color: $color-dark-1;
-            }
+        .rainbow-radio-button-group_radio-label {
+            color: $color-dark-1;
         }
     }
 
@@ -97,10 +90,8 @@
             background-color: transparent;
         }
 
-        .rainbow-radio-button-group_radio-label-container {
-            .rainbow-radio-button-group_radio-label--disabled {
-                color: $color-gray-2;
-            }
+        .rainbow-radio-button-group_radio-label--disabled {
+            color: $color-gray-2;
         }
     }
 }
@@ -110,10 +101,8 @@
         background-color: $color-brand;
         border-color: #01aae5;
 
-        .rainbow-radio-button-group_radio-label-container {
-            .rainbow-radio-button-group_radio-label {
-                color: white;
-            }
+        .rainbow-radio-button-group_radio-label {
+            color: white;
         }
     }
 }
@@ -128,10 +117,8 @@
         background-color: rgba(0, 0, 0, 0.4);
 
         .rainbow-radio-button-group_radio {
-            .rainbow-radio-button-group_radio-label-container {
-                .rainbow-radio-button-group_radio-label {
-                    color: white;
-                }
+            .rainbow-radio-button-group_radio-label {
+                color: white;
             }
 
             &:hover {
