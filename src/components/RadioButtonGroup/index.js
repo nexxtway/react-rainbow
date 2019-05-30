@@ -19,10 +19,19 @@ class RadioButtonGroup extends Component {
         this.groupNameId = props.name || uniqueId('options');
     }
 
+    getVariantClassNames() {
+        const { variant } = this.props;
+        if (variant === 'default') {
+            return null;
+        }
+        return `rainbow-radio-button-group--${variant}`;
+    }
+
     getContainerClassNames() {
         const { className, error } = this.props;
         return classnames(
             'rainbow-radio-button-group_container',
+            this.getVariantClassNames(),
             { 'rainbow-radio-button-group--error': !!error },
             className,
         );
@@ -42,12 +51,15 @@ class RadioButtonGroup extends Component {
         return (
             <fieldset id={id} className={this.getContainerClassNames()} style={style}>
                 <RenderIf isTrue={!!label}>
-                    <legend className="rainbow-radio-button-group_label">
+                    <div className="rainbow-radio-button-group_label">
                         <RequiredAsterisk required={required} />
                         {label}
-                    </legend>
+                    </div>
                 </RenderIf>
-                <div className="rainbow-radio-button-group_inner-container">
+                <div
+                    className="rainbow-radio-button-group_inner-container"
+                    styles={{ '--checkedSize': 10 }}
+                >
                     <ButtonItems
                         value={value}
                         onChange={onChange}
@@ -77,6 +89,9 @@ RadioButtonGroup.propTypes = {
     name: PropTypes.string,
     /** The value of the element. */
     value: PropTypes.string,
+    /** The variant changes the appearance of the badge. Accepted variants include default,
+     * brand and inverse. This value defaults to default. */
+    variant: PropTypes.oneOf(['default', 'inverse', 'lightest', 'outline-brand', 'brand']),
     /** The action triggered when a value attribute changes. */
     onChange: PropTypes.func,
     /** If is set to true the radio group is required. This value defaults to false. */
@@ -105,6 +120,7 @@ RadioButtonGroup.defaultProps = {
     className: undefined,
     style: undefined,
     value: undefined,
+    variant: 'default',
     onChange: () => {},
     required: false,
     options: [],

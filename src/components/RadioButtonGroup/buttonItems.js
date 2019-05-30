@@ -21,25 +21,6 @@ export default function ButtonItems(props) {
             />
         );
     });
-    // return (
-    //     <div className="rainbow-radio-button-group_buttons-list">
-    //         <div className="rainbow-radio-button-group_indicator" />
-    //         {options.map((option, index) => {
-    //             const key = `radiobutton-${index}`;
-    //             return (
-    //                 <RadioButton
-    //                     key={key}
-    //                     required={required}
-    //                     onChange={onChange}
-    //                     isChecked={isChecked(option)}
-    //                     ariaDescribedby={ariaDescribedby}
-    //                     name={name}
-    //                     {...option}
-    //                 />
-    //             );
-    //         })}
-    //     </div>
-    // );
 }
 
 ButtonItems.propTypes = {

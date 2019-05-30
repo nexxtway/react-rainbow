@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import RenderIf from '../RenderIf';
 import { uniqueId } from '../../libs/utils';
 
 export default class RadioButton extends Component {
@@ -12,15 +11,10 @@ export default class RadioButton extends Component {
 
     getContainerClassNames() {
         const { isChecked, disabled } = this.props;
-        return classnames(
-            'rainbow-radio-button-group_radio',
-            {
-                'rainbow-radio-button-group_radio--checked': isChecked,
-            },
-            {
-                'rainbow-radio-button-group_radio--disabled': disabled,
-            },
-        );
+        return classnames('rainbow-radio-button-group_radio', {
+            'rainbow-radio-button-group_radio--checked': isChecked,
+            'rainbow-radio-button-group_radio--disabled': disabled,
+        });
     }
 
     getLabelClassNames() {
@@ -45,7 +39,6 @@ export default class RadioButton extends Component {
         return (
             <span className={this.getContainerClassNames()}>
                 <input
-                    ref={this.ref}
                     type="radio"
                     required={required}
                     id={this.radioId}
@@ -61,9 +54,7 @@ export default class RadioButton extends Component {
                     className="rainbow-radio-button-group_radio-label-container"
                     htmlFor={this.radioId}
                 >
-                    <RenderIf isTrue={!!label}>
-                        <span className={this.getLabelClassNames()}>{label}</span>
-                    </RenderIf>
+                    <span className={this.getLabelClassNames()}>{label}</span>
                 </label>
             </span>
         );
