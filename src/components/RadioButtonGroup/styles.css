@@ -12,8 +12,8 @@
   text-align: center;
   color: #576574;
   font-size: 0.875rem;
-  margin-right: 0.75rem;
-  margin-bottom: 0.25rem; }
+  margin-left: auto;
+  margin-right: auto; }
 
 .rainbow-radio-button-group_inner-container {
   border-radius: 1.25rem;

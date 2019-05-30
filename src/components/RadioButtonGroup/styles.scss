@@ -28,12 +28,11 @@
     text-align: center;
     color: $color-gray-4;
     font-size: $font-size-text-medium;
-    margin-right: $margin-small;
-    margin-bottom: $margin-xx-small;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .rainbow-radio-button-group_inner-container {
-    // display: inline-block;
     border-radius: 1.25rem;
     border: solid 1px #e3e5ed;
     background-color: rgba(227, 229, 237, 0.4);
