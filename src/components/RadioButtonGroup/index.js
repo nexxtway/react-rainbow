@@ -51,10 +51,10 @@ class RadioButtonGroup extends Component {
         return (
             <fieldset id={id} className={this.getContainerClassNames()} style={style}>
                 <RenderIf isTrue={!!label}>
-                    <div className="rainbow-radio-button-group_label">
+                    <legend className="rainbow-radio-button-group_label">
                         <RequiredAsterisk required={required} />
                         {label}
-                    </div>
+                    </legend>
                 </RenderIf>
                 <div
                     className="rainbow-radio-button-group_inner-container"
