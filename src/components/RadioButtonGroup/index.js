@@ -91,7 +91,7 @@ RadioButtonGroup.propTypes = {
     value: PropTypes.string,
     /** The variant changes the appearance of the badge. Accepted variants include default,
      * brand and inverse. This value defaults to default. */
-    variant: PropTypes.oneOf(['default', 'inverse', 'lightest', 'outline-brand', 'brand']),
+    variant: PropTypes.oneOf(['default', 'inverse', 'brand']),
     /** The action triggered when a value attribute changes. */
     onChange: PropTypes.func,
     /** If is set to true the radio group is required. This value defaults to false. */
