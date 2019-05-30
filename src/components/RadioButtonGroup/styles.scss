@@ -1,0 +1,173 @@
+/* stylelint-disable no-descending-specificity,max-line-length */
+@import '../../styles/colors';
+@import '../../styles/shadows';
+@import '../../styles/margins';
+@import '../../styles/paddings';
+@import '../../styles/font-sizes';
+@import '../../styles/border-radius';
+
+%border {
+    border-radius: 0;
+    border-width: 1px;
+}
+
+@mixin user-select() {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.rainbow-radio-button-group_container {
+    position: relative;
+    text-align: center;
+}
+
+.rainbow-radio-button-group_label {
+    display: block;
+    text-align: center;
+    color: $color-gray-4;
+    font-size: $font-size-text-medium;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.rainbow-radio-button-group_inner-container {
+    border-radius: 1.25rem;
+    border: solid 1px #e3e5ed;
+    background-color: rgba(227, 229, 237, 0.4);
+    height: 2.5rem;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+
+    .rainbow-radio-button-group_radio {
+        .rainbow-radio-button-group_radio-label-container {
+            @extend %border;
+
+            display: block;
+            border-radius: 1.25rem;
+            height: 2.5rem;
+            padding-right: $padding-large;
+            padding-left: $padding-large;
+            z-index: 0;
+            margin-top: -1px;
+
+            span {
+                padding-top: calc(0.75rem + 3px);
+                transition: all 0.3s cubic-bezier(0.75, 0, 0.08, 1);
+            }
+        }
+
+        &:not(.rainbow-radio-button-group_radio--disabled) {
+            .rainbow-radio-button-group_radio-label-container {
+                transition: all 0.3s cubic-bezier(0.75, 0, 0.08, 1);
+            }
+
+            &:hover:not(.rainbow-radio-button-group_radio--checked) {
+                .rainbow-radio-button-group_radio-label-container {
+                    z-index: 1;
+                    background-color: $color-gray-2;
+                }
+            }
+        }
+    }
+}
+
+.rainbow-radio-button-group_text-error {
+    font-size: $font-size-text-medium;
+    margin-top: $margin-x-small;
+    display: block;
+    color: $color-error-active;
+}
+
+.rainbow-radio-button-group_radio {
+    display: inline-block;
+}
+
+.rainbow-radio-button-group_radio-label {
+    display: inline;
+    vertical-align: middle;
+    font-size: $font-size-text-large;
+    color: $color-dark-1;
+    line-height: 1.65rem;
+}
+
+.rainbow-radio-button-group_radio-label--disabled {
+    color: $color-gray-3;
+}
+
+.rainbow-radio-button-group_radio [type='radio'] {
+    width: 1px;
+    height: 1px;
+    border: 0;
+    clip: rect(0 0 0 0);
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+}
+
+.rainbow-radio-button-group_radio--checked {
+    .rainbow-radio-button-group_radio-label-container {
+        z-index: 2;
+        box-shadow: 0 0 2px 0 #a4a7b5;
+    }
+}
+
+.rainbow-radio-button-group_radio--checked > .rainbow-radio-button-group_radio-label-container {
+    background-color: white;
+    border-color: white;
+
+    span {
+        color: $color-dark-1;
+    }
+}
+
+.rainbow-radio-button-group--brand {
+    .rainbow-radio-button-group_radio--checked > .rainbow-radio-button-group_radio-label-container {
+        background-color: $color-brand;
+        border-color: #01aae5;
+
+        span {
+            color: white;
+        }
+    }
+}
+
+.rainbow-radio-button-group--inverse {
+    .rainbow-radio-button-group_inner-container {
+        border-color: rgba(227, 229, 237, 0) !important;
+        background-color: #031025;
+
+        .rainbow-radio-button-group_radio {
+            &:first-child {
+                margin-left: -1px;
+            }
+
+            &:last-child {
+                margin-right: -1px;
+            }
+
+            .rainbow-radio-button-group_radio-label-container {
+                span {
+                    color: white;
+                }
+            }
+
+            &:not(.rainbow-radio-button-group_radio--disabled) {
+                &:hover:not(.rainbow-radio-button-group_radio--checked) {
+                    .rainbow-radio-button-group_radio-label-container {
+                        background-color: $color-dark-1;
+                    }
+                }
+            }
+        }
+
+        .rainbow-radio-button-group_radio--checked {
+            .rainbow-radio-button-group_radio-label-container {
+                box-shadow: 0 0 2px 0 #029bd3;
+                background-color: #029bd3;
+            }
+        }
+    }
+}
