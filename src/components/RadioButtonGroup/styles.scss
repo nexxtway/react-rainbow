@@ -52,7 +52,6 @@
             padding-left: $padding-large;
             z-index: 0;
             margin-top: -1px;
-            // margin-left: -2px;
 
             span {
                 padding-top: calc(0.75rem + 3px);
@@ -72,19 +71,6 @@
                 }
             }
         }
-
-        &:first-child {
-            .rainbow-radio-button-group_radio-label-container {
-                margin-left: -3px;
-            }
-        }
-
-        &:last-child {
-            .rainbow-radio-button-group_radio-label-container {
-                margin-right: -3px;
-            }
-        }
-
     }
 }
 
@@ -151,10 +137,24 @@
 
 .rainbow-radio-button-group--inverse {
     .rainbow-radio-button-group_inner-container {
-        border-color: #031025;
+        border-color: rgba(227, 229, 237, 0) !important;
         background-color: #031025;
 
         .rainbow-radio-button-group_radio {
+            &:first-child {
+                margin-left: -1px;
+            }
+
+            &:last-child {
+                margin-right: -1px;
+            }
+
+            .rainbow-radio-button-group_radio-label-container {
+                span {
+                    color: white;
+                }
+            }
+
             &:not(.rainbow-radio-button-group_radio--disabled) {
                 &:hover:not(.rainbow-radio-button-group_radio--checked) {
                     .rainbow-radio-button-group_radio-label-container {
@@ -163,16 +163,12 @@
                 }
             }
         }
-    }
 
-    .rainbow-radio-button-group_radio-label-container {
-        span {
-            color: white;
+        .rainbow-radio-button-group_radio--checked {
+            .rainbow-radio-button-group_radio-label-container {
+                box-shadow: 0 0 2px 0 #029bd3;
+                background-color: #029bd3;
+            }
         }
-    }
-
-    .rainbow-radio-button-group_radio--checked > .rainbow-radio-button-group_radio-label-container {
-        box-shadow: 0 0 2px 0 #029bd3;
-        background-color: #029bd3;
     }
 }
