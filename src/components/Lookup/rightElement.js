@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ButtonIcon from '../ButtonIcon';
 import CloseIcon from './icons/closeIcon';
-import RenderIf from '../RenderIf';
+import SearchIcon from './icons/searchIcon';
 
 export default function RightElement({ showCloseButton, onClear, closeIcon, searchIcon }) {
     if (showCloseButton) {
@@ -19,11 +19,7 @@ export default function RightElement({ showCloseButton, onClear, closeIcon, sear
             </span>
         );
     }
-    return (
-        <RenderIf isTrue={searchIcon}>
-            <span className="rainbow-lookup_input-icon">{searchIcon}</span>
-        </RenderIf>
-    );
+    return <span className="rainbow-lookup_input-icon">{searchIcon || <SearchIcon />}</span>;
 }
 
 RightElement.propTypes = {
