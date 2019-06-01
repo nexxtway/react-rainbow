@@ -26,6 +26,8 @@ class DatePicker extends Component {
         this.handleKeyDown = this.handleKeyDown.bind(this);
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
+        this.handleBlur = this.handleBlur.bind(this);
+        this.handleFocus = this.handleFocus.bind(this);
     }
 
     getContainerClassName() {
@@ -39,6 +41,16 @@ class DatePicker extends Component {
             isOpen: false,
         });
         onChange(...args);
+    }
+
+    handleBlur() {
+        const { onBlur, value } = this.props;
+        onBlur(value);
+    }
+
+    handleFocus() {
+        const { onFocus, value } = this.props;
+        onFocus(value);
     }
 
     handleKeyDown(event) {
@@ -104,8 +116,6 @@ class DatePicker extends Component {
             readOnly,
             disabled,
             tabIndex,
-            onFocus,
-            onBlur,
             id,
         } = this.props;
         const { isOpen } = this.state;
@@ -124,8 +134,8 @@ class DatePicker extends Component {
                     value={formattedDate}
                     onKeyDown={this.handleKeyDown}
                     onClick={this.openModal}
-                    onFocus={onFocus}
-                    onBlur={onBlur}
+                    onFocus={this.handleFocus}
+                    onBlur={this.handleBlur}
                     hideLabel={hideLabel}
                     name={name}
                     bottomHelpText={bottomHelpText}

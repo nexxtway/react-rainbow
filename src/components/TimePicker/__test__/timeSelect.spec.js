@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import TimeSelect from '../timeSelect';
 
-describe('TimeSelect', () => {
+describe('<TimeSelect/>', () => {
     it('should set hour state to "01" when press up key', () => {
         const component = mount(<TimeSelect />);
         const hourInput = component.find('input').at(0);
