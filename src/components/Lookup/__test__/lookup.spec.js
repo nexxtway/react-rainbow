@@ -347,4 +347,11 @@ describe('<Lookup />', () => {
         });
         expect(stopPropagationMockFn).not.toHaveBeenCalled();
     });
+    it('should fire onBlur with null', () => {
+        const onBlurMockFn = jest.fn();
+        const component = mount(<Lookup label="custom label" onBlur={onBlurMockFn} />);
+        component.find('input').simulate('focus');
+        component.find('input').simulate('blur');
+        expect(onBlurMockFn).toHaveBeenCalledWith(null);
+    });
 });
