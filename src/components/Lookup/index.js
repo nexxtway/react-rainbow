@@ -482,7 +482,7 @@ Lookup.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
-    /** The icon to show when search is empty element. */
+    /** The icon to show when search is empty. */
     searchIcon: PropTypes.object,
 };
 
@@ -507,6 +507,7 @@ Lookup.defaultProps = {
     options: undefined,
     onSearch: () => {},
     debounce: false,
+    searchIcon: undefined,
 };
 
 export default withReduxForm(Lookup);
