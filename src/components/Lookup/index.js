@@ -18,6 +18,7 @@ import {
 import { uniqueId } from '../../libs/utils';
 import { UP_KEY, DOWN_KEY, ENTER_KEY, ESCAPE_KEY } from '../../libs/constants';
 import withReduxForm from '../../libs/hocs/withReduxForm';
+import SearchIcon from './icons/searchIcon';
 import './styles.css';
 
 const OPTION_HEIGHT = 48;
@@ -334,6 +335,7 @@ class Lookup extends Component {
             name,
             hideLabel,
             isLoading,
+            icon,
         } = this.props;
         const { searchValue, focusedItemIndex, options } = this.state;
         const chipOnDelete = disabled || readOnly ? undefined : this.handleRemoveValue;
@@ -372,7 +374,11 @@ class Lookup extends Component {
 
                 <RenderIf isTrue={!currentValue}>
                     <div className="rainbow-lookup_input-container" ref={this.innerContainerRef}>
-                        <RightElement showCloseButton={!!searchValue} onClear={this.clearInput} />
+                        <RightElement
+                            showCloseButton={!!searchValue}
+                            onClear={this.clearInput}
+                            icon={icon}
+                        />
                         <Spinner
                             isVisible={isLoading}
                             className="rainbow-lookup_spinner"
@@ -484,6 +490,8 @@ Lookup.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The icon to show when search is empty. */
+    icon: PropTypes.node,
 };
 
 Lookup.defaultProps = {
@@ -507,6 +515,7 @@ Lookup.defaultProps = {
     options: undefined,
     onSearch: () => {},
     debounce: false,
+    icon: <SearchIcon />,
 };
 
 export default withReduxForm(Lookup);
