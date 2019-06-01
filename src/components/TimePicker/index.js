@@ -28,6 +28,8 @@ class TimePicker extends Component {
         this.handleClick = this.handleClick.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.setFocusToHourInput = this.setFocusToHourInput.bind(this);
+        this.handleBlur = this.handleBlur.bind(this);
+        this.handleFocus = this.handleFocus.bind(this);
     }
 
     componentDidUpdate({ value: prevValue }) {
@@ -79,6 +81,16 @@ class TimePicker extends Component {
         }
     }
 
+    handleBlur() {
+        const { onBlur, value } = this.props;
+        onBlur(value);
+    }
+
+    handleFocus() {
+        const { onFocus, value } = this.props;
+        onFocus(value);
+    }
+
     closeModal() {
         this.setState({ isOpen: false });
     }
@@ -121,8 +133,6 @@ class TimePicker extends Component {
             readOnly,
             disabled,
             tabIndex,
-            onFocus,
-            onBlur,
             id,
             cancelLabel,
             okLabel,
@@ -142,8 +152,8 @@ class TimePicker extends Component {
                     value={this.getTriggerInputValue()}
                     onKeyDown={this.handleKeyDown}
                     onClick={this.handleClick}
-                    onFocus={onFocus}
-                    onBlur={onBlur}
+                    onFocus={this.handleFocus}
+                    onBlur={this.handleBlur}
                     hideLabel={hideLabel}
                     name={name}
                     bottomHelpText={bottomHelpText}
