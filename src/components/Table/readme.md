@@ -16,30 +16,35 @@
             company: '90milesbridge',
             email: 'leandro@gmail.com',
             status: 'verified',
+            id: '1234qwerty',
         },
         {
             name: 'Jose Torres',
             company: 'Google',
             email: 'jose@gmail.com',
             status: 'verified',
+            id: '1234asdfgh',
         },
         {
             name: 'Reinier',
             company: '90milesbridge',
             email: 'reinier@gmail.com',
             status: 'verified',
+            id: '1234zxcvbn',
         },
         {
             name: 'Sara',
             company: '90milesbridge',
             email: 'sara@gmail.com',
             status: 'verified',
+            id: '5678qwerty',
         },
         {
             name: 'Tahimi',
             company: '90milesbridge',
             email: 'tahimi@gmail.com',
             status: 'verified',
+            id: '5678asdfgh',
         },
     ];
 
@@ -54,7 +59,7 @@
                 <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faEllipsisV} />} />
             </ButtonGroup>
         </GlobalHeader>
-        <Table data={data}>
+        <Table data={data} keyField="id">
             <Column header="Name" field="name" />
             <Column header="Status" field="status" component={StatusBadge} />
             <Column header="Company" field="company" />
@@ -559,7 +564,7 @@
                 <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faEllipsisV} />} />
             </ButtonGroup>
         </GlobalHeader>
-        <Table isLoading data={data}>
+        <Table isLoading data={data} keyField="id">
             <Column header="Name" field="name" />
             <Column header="Status" field="status" component={StatusBadge} />
             <Column header="Company" field="company" />
@@ -588,7 +593,7 @@
                 <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faEllipsisV} />} />
             </ButtonGroup>
         </GlobalHeader>
-        <Table style={tableContainerStyles}>
+        <Table style={tableContainerStyles} keyField="id">
             <Column header="Name" field="name" />
             <Column header="Company" field="company" />
             <Column header="Email" field="email" />
