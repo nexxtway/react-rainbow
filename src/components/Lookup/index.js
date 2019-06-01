@@ -327,6 +327,7 @@ class Lookup extends Component {
             name,
             hideLabel,
             isLoading,
+            searchIcon,
         } = this.props;
         const { searchValue, focusedItemIndex, options } = this.state;
         const chipOnDelete = disabled || readOnly ? undefined : this.handleRemoveValue;
@@ -365,7 +366,11 @@ class Lookup extends Component {
 
                 <RenderIf isTrue={!currentValue}>
                     <div className="rainbow-lookup_input-container" ref={this.innerContainerRef}>
-                        <RightElement showCloseButton={!!searchValue} onClear={this.clearInput} />
+                        <RightElement
+                            showCloseButton={!!searchValue}
+                            onClear={this.clearInput}
+                            searchIcon={searchIcon}
+                        />
                         <Spinner
                             isVisible={isLoading}
                             className="rainbow-lookup_spinner"
@@ -477,6 +482,8 @@ Lookup.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The icon to show when search is empty element. */
+    searchIcon: PropTypes.object,
 };
 
 Lookup.defaultProps = {
