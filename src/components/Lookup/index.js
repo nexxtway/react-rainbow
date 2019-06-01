@@ -372,7 +372,7 @@ class Lookup extends Component {
                         <RightElement
                             showCloseButton={!!searchValue}
                             onClear={this.clearInput}
-                            searchIcon={icon}
+                            icon={icon}
                             closeIcon={closeIcon}
                         />
                         <Spinner
@@ -487,9 +487,9 @@ Lookup.propTypes = {
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
     /** The icon to show when search is empty. */
-    icon: PropTypes.object,
+    icon: PropTypes.node,
     /** The icon to show when value is not empty. */
-    closeIcon: PropTypes.object,
+    closeIcon: PropTypes.node,
 };
 
 Lookup.defaultProps = {

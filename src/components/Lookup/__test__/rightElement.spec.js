@@ -20,7 +20,7 @@ describe('<RightElement />', () => {
         expect(onClearMockFn).toHaveBeenCalledTimes(1);
     });
     it('should render an icon container with custom icon', () => {
-        const component = mount(<RightElement searchIcon={<CloseIcon />} />);
+        const component = mount(<RightElement icon={<CloseIcon />} />);
         expect(component.find('span.rainbow-lookup_input-icon').exists()).toBe(true);
     });
     it('should render an icon container with custom closeIcon', () => {
