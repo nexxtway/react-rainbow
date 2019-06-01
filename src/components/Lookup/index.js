@@ -490,7 +490,8 @@ Lookup.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
-    /** The icon to show when search is empty. */
+    /** The icon that appears in the Lookup when the input search is empty.
+     * If not passed by default a search icon will be showed. */
     icon: PropTypes.node,
 };
 
