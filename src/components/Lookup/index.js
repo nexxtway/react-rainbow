@@ -49,6 +49,7 @@ class Lookup extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleFocus = this.handleFocus.bind(this);
         this.handleRemoveValue = this.handleRemoveValue.bind(this);
+        this.handleBlur = this.handleBlur.bind(this);
 
         this.handleHover = this.handleHover.bind(this);
         this.handleKeyDown = this.handleKeyDown.bind(this);
@@ -134,10 +135,17 @@ class Lookup extends Component {
         this.fireSearch(value);
     }
 
-    handleFocus(event) {
-        const { onFocus } = this.props;
+    handleFocus() {
+        const { onFocus, value } = this.props;
         this.openMenu();
-        onFocus(event);
+        const eventValue = value || null;
+        onFocus(eventValue);
+    }
+
+    handleBlur() {
+        const { onBlur, value } = this.props;
+        const eventValue = value || null;
+        onBlur(eventValue);
     }
 
     handleRemoveValue() {
@@ -320,7 +328,6 @@ class Lookup extends Component {
             disabled,
             readOnly,
             tabIndex,
-            onBlur,
             onClick,
             required,
             id,
@@ -383,7 +390,7 @@ class Lookup extends Component {
                             onChange={this.handleSearch}
                             tabIndex={tabIndex}
                             onFocus={this.handleFocus}
-                            onBlur={onBlur}
+                            onBlur={this.handleBlur}
                             onClick={onClick}
                             disabled={disabled}
                             readOnly={readOnly}
