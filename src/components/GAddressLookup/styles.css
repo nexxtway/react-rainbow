@@ -1,0 +1,28 @@
+/* stylelint-disable no-descending-specificity */
+.rainbow-google-address-lookup_container .rainbow-lookup_input-icon svg {
+  width: 24px !important;
+  height: 24px !important;
+  font-size: 24px !important; }
+
+.rainbow-google-address-lookup_container .rainbow-lookup_chip-content_icon {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
+.rainbow-google-address-lookup_container .rainbow-google-address-poweredby_container {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: end;
+  justify-content: end;
+  -ms-flex-align: end;
+  align-items: flex-end; }
+  .rainbow-google-address-lookup_container .rainbow-google-address-poweredby_container img {
+    margin-top: 0.25rem;
+    margin-right: 0.5rem;
+    height: 0.625rem; }
+
+.rainbow-google-address-lookup_container .rainbow-lookup_menu-item--active a {
+  background-color: #f4f6f9; }
