@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SearchIcon from './icons/searchIcon';
 import ButtonIcon from '../ButtonIcon';
 import CloseIcon from './icons/closeIcon';
+import RenderIf from '../RenderIf';
 
-export default function RightElement({ showCloseButton, onClear, searchIcon }) {
+export default function RightElement({ showCloseButton, onClear, closeIcon, searchIcon }) {
     if (showCloseButton) {
         return (
             <span className="rainbow-lookup_input-close-button-container">
@@ -13,23 +13,29 @@ export default function RightElement({ showCloseButton, onClear, searchIcon }) {
                     size="small"
                     title="close"
                     tabIndex={-1}
-                    icon={<CloseIcon />}
+                    icon={closeIcon || <CloseIcon />}
                     onClick={onClear}
                 />
             </span>
         );
     }
-    return <span className="rainbow-lookup_input-icon">{searchIcon}</span>;
+    return (
+        <RenderIf isTrue={searchIcon}>
+            <span className="rainbow-lookup_input-icon">{searchIcon}</span>
+        </RenderIf>
+    );
 }
 
 RightElement.propTypes = {
     searchIcon: PropTypes.node,
+    closeIcon: PropTypes.node,
     showCloseButton: PropTypes.bool,
     onClear: PropTypes.func,
 };
 
 RightElement.defaultProps = {
-    searchIcon: <SearchIcon />,
+    searchIcon: undefined,
+    closeIcon: undefined,
     showCloseButton: false,
     onClear: () => {},
 };
