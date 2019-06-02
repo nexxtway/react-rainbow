@@ -1121,4 +1121,18 @@ describe('<Table />', () => {
             '9012zxcvbn': true,
         });
     });
+    it('should not fire onRowSelection when set data and selectedRows after mount the component', () => {
+        const onRowSelectionMockFn = jest.fn();
+        const component = mount(
+            <Table data={[]} showCheckboxColumn onRowSelection={onRowSelectionMockFn} keyField="id">
+                <Column field="name" header="Name" />
+                <Column field="id" header="ID" />
+            </Table>,
+        );
+        component.setProps({
+            data: tableData,
+            selectedRows: ['1234qwerty', '5678asdfgh', '9012zxcvbn'],
+        });
+        expect(onRowSelectionMockFn).not.toHaveBeenCalled();
+    });
 });
