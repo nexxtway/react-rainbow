@@ -118,6 +118,11 @@ export default class Table extends Component {
             minColumnWidth,
             maxColumnWidth,
         });
+        const isNotSameMaxRowSelection = prevMaxRowSelection !== maxRowSelection;
+        const isNotSameData = data !== prevData;
+        if (isNotSameMaxRowSelection || isNotSameData) {
+            this.updateRows();
+        }
         if (isNotSameColumns(prevColumns, currentColumns)) {
             this.updateColumnsAndTableWidth(currentColumns);
         }
@@ -138,11 +143,6 @@ export default class Table extends Component {
                 onRowSelection(this.getSelectedRows(updatedRows));
                 this.updateRows();
             }
-        }
-        const isNotSameMaxRowSelection = prevMaxRowSelection !== maxRowSelection;
-        const isNotSameData = data !== prevData;
-        if (isNotSameMaxRowSelection || isNotSameData) {
-            this.updateRows();
         }
     }
 
