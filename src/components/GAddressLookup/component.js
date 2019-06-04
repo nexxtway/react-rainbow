@@ -89,10 +89,7 @@ class PlacesLookupComponent extends Component {
     handleSearch(value) {
         if (value && this.state.searchValue !== value) {
             this.setState({ searchValue: value });
-            this.searchGoogleMaps(value).then(
-                results => this.processSearchResults(results),
-                // error => this.handleError(error),
-            );
+            this.searchGoogleMaps(value).then(results => this.processSearchResults(results));
         } else if (!value) {
             this.clear();
         }
@@ -144,9 +141,6 @@ class PlacesLookupComponent extends Component {
             suggestions: [],
         });
     }
-
-    // handleError(error) {
-    // }
 
     render() {
         const {
