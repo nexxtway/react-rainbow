@@ -11,6 +11,33 @@ import { uniqueId } from '../../libs/utils';
 import poweredByGoogleColored from '../../../assets/images/google/powered_by_google_on_white.png';
 import './styles.css';
 
+function formatSuggestionItem(suggestion) {
+    let formattedLabel;
+
+    suggestion.structured_formatting.main_text_matched_substrings.forEach(match => {
+        const matchedTerm = suggestion.structured_formatting.main_text.slice(
+            match.offset,
+            match.length,
+        );
+        formattedLabel = suggestion.structured_formatting.main_text.replace(
+            matchedTerm,
+            `{b}${matchedTerm}{/b}`,
+        );
+
+        formattedLabel = formattedLabel.replace(/{/g, '<').replace(/}/g, '>');
+
+        formattedLabel = React.createElement('span', {
+            dangerouslySetInnerHTML: { __html: formattedLabel },
+        });
+    });
+
+    return {
+        label: formattedLabel,
+        description: suggestion.structured_formatting.secondary_text,
+        icon: <LocationItemIcon />,
+    };
+}
+
 class PlacesLookupComponent extends Component {
     constructor(props) {
         super(props);
@@ -27,11 +54,6 @@ class PlacesLookupComponent extends Component {
             suggestions: [],
             userValue: props.value,
             selectedPlace: null,
-            // value: {
-            //     label: 'Bla Bla',
-            //     description: 'asdfsdf dsfs',
-            //     icon: <SelectedLocationIcon />,
-            // },
         };
     }
 
@@ -100,21 +122,18 @@ class PlacesLookupComponent extends Component {
     }
 
     processSearchResults(results) {
-        console.log(JSON.stringify(results));
         this.setState({
             places: results,
             suggestions: [
                 {
-                    label: this.state.searchValue,
+                    label: (
+                        <span>
+                            Search for: <b>&lsquo;{this.state.searchValue}&rsquo;</b>
+                        </span>
+                    ),
                     icon: <SearchValueIcon />,
                 },
-            ].concat(
-                results.map(place => ({
-                    label: place.label,
-                    description: place.description,
-                    icon: <LocationItemIcon />,
-                })),
-            ),
+            ].concat(results.map(place => formatSuggestionItem(place))),
         });
     }
 
