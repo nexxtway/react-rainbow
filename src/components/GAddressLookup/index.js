@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import scriptLoader from 'react-async-script-loader';
 import PlacesLookupComponent from './component';
-
 /**
  * The GAddressLookup component is used to find a location.
  */
@@ -60,7 +59,7 @@ GAddressLookup.propTypes = {
 };
 
 GAddressLookup.defaultProps = {
-    apiKey: 'AIzaSyAw4HF5sbo6D6sDmRvPeKrKtn4ZpwUvvSA',
+    apiKey: undefined,
     value: undefined,
     name: undefined,
     placeholder: null,
