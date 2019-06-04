@@ -11,6 +11,15 @@ import { uniqueId } from '../../libs/utils';
 import poweredByGoogleColored from '../../../assets/images/google/powered_by_google_on_white.png';
 import './styles.css';
 
+function formatSuggestionLabel(suggestion) {
+    const label = suggestion.label;
+    return (
+        <span>
+            <b>{label}</b>
+        </span>
+    );
+}
+
 class PlacesLookupComponent extends Component {
     constructor(props) {
         super(props);
@@ -100,17 +109,20 @@ class PlacesLookupComponent extends Component {
     }
 
     processSearchResults(results) {
-        console.log(JSON.stringify(results));
         this.setState({
             places: results,
             suggestions: [
                 {
-                    label: this.state.searchValue,
+                    label: (
+                        <span>
+                            Search for: <b>&lsquo;{this.state.searchValue}&rsquo;</b>
+                        </span>
+                    ),
                     icon: <SearchValueIcon />,
                 },
             ].concat(
                 results.map(place => ({
-                    label: place.label,
+                    label: formatSuggestionLabel(place),
                     description: place.description,
                     icon: <LocationItemIcon />,
                 })),
