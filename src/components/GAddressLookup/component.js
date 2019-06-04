@@ -6,7 +6,7 @@ import Lookup from '../Lookup';
 import LocationIcon from './icons/locationIcon';
 import LocationItemIcon from './icons/locationItemIcon';
 // import SelectedLocationIcon from './icons/selectedLocationIcon';
-// import SearchValueIcon from './icons/searchValueIcon';
+import SearchValueIcon from './icons/searchValueIcon';
 import { uniqueId } from '../../libs/utils';
 import poweredByGoogleColored from '../../../assets/images/google/powered_by_google_on_white.png';
 import './styles.css';
@@ -100,13 +100,21 @@ class PlacesLookupComponent extends Component {
     }
 
     processSearchResults(results) {
+        console.log(JSON.stringify(results));
         this.setState({
             places: results,
-            suggestions: results.map(place => ({
-                label: place.label,
-                description: place.description,
-                icon: <LocationItemIcon />,
-            })),
+            suggestions: [
+                {
+                    label: this.state.searchValue,
+                    icon: <SearchValueIcon />,
+                },
+            ].concat(
+                results.map(place => ({
+                    label: place.label,
+                    description: place.description,
+                    icon: <LocationItemIcon />,
+                })),
+            ),
         });
     }
 
