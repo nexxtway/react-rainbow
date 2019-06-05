@@ -86,7 +86,6 @@ class PlacesLookupComponent extends Component {
                 value: null,
                 selectedPlace: option,
             });
-
             onChange(option);
             return;
         }
