@@ -5,36 +5,40 @@ import withReduxForm from '../../libs/hocs/withReduxForm';
 import Lookup from '../Lookup';
 import LocationIcon from './icons/locationIcon';
 import LocationItemIcon from './icons/locationItemIcon';
-// import SelectedLocationIcon from './icons/selectedLocationIcon';
+import SelectedLocationIcon from './icons/selectedLocationIcon';
 import SearchValueIcon from './icons/searchValueIcon';
 import { uniqueId } from '../../libs/utils';
 import poweredByGoogleColored from '../../../assets/images/google/powered_by_google_on_white.png';
 import './styles.css';
 
-function formatSuggestionItem(suggestion) {
+function formatSuggestionItem(suggestion, highlightMatch, icon) {
     let formattedLabel;
 
-    suggestion.structured_formatting.main_text_matched_substrings.forEach(match => {
-        const matchedTerm = suggestion.structured_formatting.main_text.slice(
-            match.offset,
-            match.length,
-        );
-        formattedLabel = suggestion.structured_formatting.main_text.replace(
-            matchedTerm,
-            `{b}${matchedTerm}{/b}`,
-        );
+    if (highlightMatch) {
+        suggestion.structured_formatting.main_text_matched_substrings.forEach(match => {
+            const matchedTerm = suggestion.structured_formatting.main_text.slice(
+                match.offset,
+                match.length,
+            );
+            formattedLabel = suggestion.structured_formatting.main_text.replace(
+                matchedTerm,
+                `{b}${matchedTerm}{/b}`,
+            );
 
-        formattedLabel = formattedLabel.replace(/{/g, '<').replace(/}/g, '>');
+            formattedLabel = formattedLabel.replace(/{/g, '<').replace(/}/g, '>');
 
-        formattedLabel = React.createElement('span', {
-            dangerouslySetInnerHTML: { __html: formattedLabel },
+            formattedLabel = React.createElement('span', {
+                dangerouslySetInnerHTML: { __html: formattedLabel },
+            });
         });
-    });
+    } else {
+        formattedLabel = suggestion.description;
+    }
 
     return {
         label: formattedLabel,
         description: suggestion.structured_formatting.secondary_text,
-        icon: <LocationItemIcon />,
+        icon,
     };
 }
 
@@ -79,7 +83,7 @@ class PlacesLookupComponent extends Component {
         const value = places[suggestions.indexOf(option)];
         this.setState({
             value,
-            selectedPlace: option,
+            selectedPlace: formatSuggestionItem(value, false, <SelectedLocationIcon />),
         });
 
         const { onChange } = this.props;
@@ -87,6 +91,9 @@ class PlacesLookupComponent extends Component {
     }
 
     handleSearch(value) {
+        const { initialized } = this.state;
+        if (!initialized) return;
+
         if (value && this.state.searchValue !== value) {
             this.setState({ searchValue: value });
             this.searchGoogleMaps(value).then(results => this.processSearchResults(results));
@@ -130,7 +137,7 @@ class PlacesLookupComponent extends Component {
                     ),
                     icon: <SearchValueIcon />,
                 },
-            ].concat(results.map(place => formatSuggestionItem(place))),
+            ].concat(results.map(place => formatSuggestionItem(place, true, <LocationItemIcon />))),
         });
     }
 
