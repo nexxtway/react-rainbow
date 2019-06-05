@@ -79,14 +79,29 @@ class PlacesLookupComponent extends Component {
     }
 
     handleChange(option) {
+        const { onChange } = this.props;
+
+        if (!option) {
+            this.setState({
+                value: null,
+                selectedPlace: option,
+            });
+            onChange(option);
+            return;
+        }
+
         const { places, suggestions } = this.state;
-        const value = places[suggestions.indexOf(option)];
+        const value = places.length > 0 ? places[suggestions.indexOf(option)] : option;
+
         this.setState({
             value,
-            selectedPlace: formatSuggestionItem(value, false, <SelectedLocationIcon />),
+            selectedPlace: {
+                label: option.label,
+                description: option.description,
+                icon: <SelectedLocationIcon />,
+            },
         });
 
-        const { onChange } = this.props;
         onChange(value);
     }
 
@@ -96,7 +111,10 @@ class PlacesLookupComponent extends Component {
 
         if (value && this.state.searchValue !== value) {
             this.setState({ searchValue: value });
-            this.searchGoogleMaps(value).then(results => this.processSearchResults(results));
+            this.searchGoogleMaps(value).then(
+                results => this.processSearchResults(results),
+                () => this.handleError(),
+            );
         } else if (!value) {
             this.clear();
         }
@@ -138,6 +156,22 @@ class PlacesLookupComponent extends Component {
                     icon: <SearchValueIcon />,
                 },
             ].concat(results.map(place => formatSuggestionItem(place, true, <LocationItemIcon />))),
+        });
+    }
+
+    handleError() {
+        this.setState({
+            places: [],
+            suggestions: [
+                {
+                    label: (
+                        <span>
+                            Search for: <b>&lsquo;{this.state.searchValue}&rsquo;</b>
+                        </span>
+                    ),
+                    icon: <SearchValueIcon />,
+                },
+            ],
         });
     }
 
