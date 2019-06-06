@@ -49,8 +49,8 @@
     cursor: pointer;
 }
 
-.rainbow-lookup_menu-item--active > a {
-    background-color: $color-gray-2;
+.rainbow-lookup_menu-item--active > .rainbow-lookup_menu-item-link {
+    background-color: $color-gray-1;
 }
 
 .rainbow-lookup_menu-item_icon-container {
