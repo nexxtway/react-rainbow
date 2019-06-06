@@ -70,7 +70,8 @@ GoogleAddressLookup.propTypes = {
             }),
         ),
         /**
-         * Information about individual terms in the above description, from most to least specific.
+         * Information about individual terms in the above description,
+         * from most to least specific.
          * For example, "Taco Bell", "Willitis", and "CA".
          */
         terms: PropTypes.arrayOf(
@@ -80,7 +81,8 @@ GoogleAddressLookup.propTypes = {
             }),
         ),
         /**
-         * An array of types that the prediction belongs to, for example 'establishment' or 'geocode'.
+         * An array of types that the prediction belongs to,
+         * for example 'establishment' or 'geocode'.
          */
         types: PropTypes.arrayOf(PropTypes.string),
     }),

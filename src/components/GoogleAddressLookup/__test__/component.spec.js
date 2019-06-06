@@ -43,15 +43,9 @@ describe('<PlacesLookupComponent/>', () => {
         });
         expect(global.google.maps.places.AutocompleteService).not.toHaveBeenCalled();
     });
-    it('should not call google.maps.places.AutocompleteService when isScriptLoaded and isScriptLoadSucceed are true but previous isScriptLoaded was true', () => {
+    it('should not call AutocompleteService when isScriptLoaded and isScriptLoadSucceed are true but previous isScriptLoaded was true', () => {
         const component = mount(<PlacesLookupComponent className="some-class" isScriptLoaded />);
         component.setProps(nextProps);
         expect(global.google.maps.places.AutocompleteService).not.toHaveBeenCalled();
     });
-    // it('should set the right state after isScriptLoaded and isScriptLoadSucceed are set to true', () => {
-    //     const component = mount(<PlacesLookupComponent />);
-    //     expect(component.initialized).toBeUndefined();
-    //     component.setProps(nextProps);
-    //     expect(component.autocompleteService).toEqual(expect.any(Object));
-    // });
 });
