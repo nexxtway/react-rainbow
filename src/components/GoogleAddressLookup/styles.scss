@@ -1,5 +1,6 @@
 /* stylelint-disable no-descending-specificity */
 @import '../../styles/margins.scss';
+@import '../../styles/paddings.scss';
 
 .rainbow-google-address-lookup_container {
     .rainbow-lookup_input-icon {
@@ -11,9 +12,16 @@
     }
 
     .rainbow-google-address-poweredby_container {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-pack: end;
+        justify-content: end;
+        -ms-flex-align: end;
+        align-items: flex-end;
+        padding-top: $padding-xx-small;
+        padding-right: $padding-x-small;
+
         img {
-            margin-top: $margin-xx-small;
-            margin-right: $margin-x-small;
             height: 0.625rem;
         }
     }
