@@ -7,30 +7,25 @@ import LocationIcon from './icons/locationIcon';
 import LocationItemIcon from './icons/locationItemIcon';
 import SelectedLocationIcon from './icons/selectedLocationIcon';
 import SearchValueIcon from './icons/searchValueIcon';
+import PoweredByGoogleLogo from './icons/poweredByGoogle';
 import { uniqueId } from '../../libs/utils';
-import poweredByGoogleColored from '../../../assets/images/google/powered_by_google_on_white.png';
 import './styles.css';
 
 function formatSuggestionItem(suggestion, highlightMatch, icon) {
     let formattedLabel;
 
     if (highlightMatch) {
-        suggestion.structured_formatting.main_text_matched_substrings.forEach(match => {
-            const matchedTerm = suggestion.structured_formatting.main_text.slice(
-                match.offset,
-                match.length,
-            );
-            formattedLabel = suggestion.structured_formatting.main_text.replace(
-                matchedTerm,
-                `{b}${matchedTerm}{/b}`,
-            );
+        formattedLabel = suggestion.structured_formatting.main_text_matched_substrings.reduceRight(
+            (previousText, currentMatch) => {
+                const matchedTerm = previousText.slice(currentMatch.offset, currentMatch.length);
 
-            formattedLabel = formattedLabel.replace(/{/g, '<').replace(/}/g, '>');
-
-            formattedLabel = React.createElement('span', {
-                dangerouslySetInnerHTML: { __html: formattedLabel },
-            });
-        });
+                return suggestion.structured_formatting.main_text.replace(
+                    matchedTerm,
+                    `<b>${matchedTerm}</b>`,
+                );
+            },
+            suggestion.structured_formatting.main_text,
+        );
     } else {
         formattedLabel = suggestion.description;
     }
@@ -46,17 +41,16 @@ class PlacesLookupComponent extends Component {
     constructor(props) {
         super(props);
         this.lookupId = uniqueId('gaddrlookup-input');
-
+        this.initialized = false;
         this.handleChange = this.handleChange.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
 
         this.state = {
             initialized: false,
             isSearching: false,
-            searchValue: '',
+            searchValue: props.value,
             places: [],
             suggestions: [],
-            userValue: props.value,
             selectedPlace: null,
         };
     }
@@ -75,17 +69,13 @@ class PlacesLookupComponent extends Component {
 
     initComponent() {
         this.autocompleteService = new window.google.maps.places.AutocompleteService();
-        this.setState({ initialized: true });
+        this.initialized = true;
     }
 
     handleChange(option) {
         const { onChange } = this.props;
 
         if (!option) {
-            this.setState({
-                value: null,
-                selectedPlace: option,
-            });
             onChange(option);
             return;
         }
@@ -106,8 +96,7 @@ class PlacesLookupComponent extends Component {
     }
 
     handleSearch(value) {
-        const { initialized } = this.state;
-        if (!initialized) return;
+        if (!this.initialized) return;
 
         if (value && this.state.searchValue !== value) {
             this.setState({ searchValue: value });
@@ -218,7 +207,7 @@ class PlacesLookupComponent extends Component {
                     icon={<LocationIcon />}
                 />
                 <div className="rainbow-google-address-poweredby_container">
-                    <img src={poweredByGoogleColored} alt="powered by Google" />
+                    <PoweredByGoogleLogo />
                 </div>
             </div>
         );

@@ -19,10 +19,9 @@
   justify-content: end;
   -ms-flex-align: end;
   align-items: flex-end; }
-  .rainbow-google-address-lookup_container .rainbow-google-address-poweredby_container img {
+  .rainbow-google-address-lookup_container .rainbow-google-address-poweredby_container svg {
     margin-top: 0.25rem;
-    margin-right: 0.5rem;
-    height: 0.625rem; }
+    margin-right: 0.5rem; }
 
 .rainbow-google-address-lookup_container .rainbow-lookup_menu-item--active a {
   background-color: #f4f6f9; }
