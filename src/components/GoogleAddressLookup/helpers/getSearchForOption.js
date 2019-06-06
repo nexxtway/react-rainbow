@@ -8,6 +8,7 @@ export default function getSearchForOption(searchValue) {
                 Search for: <b>&lsquo;{searchValue}&rsquo;</b>
             </span>
         ),
+        data: searchValue,
         icon: <SearchValueIcon />,
     };
 }

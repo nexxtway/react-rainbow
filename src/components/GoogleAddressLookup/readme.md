@@ -5,10 +5,14 @@
         margin: 'auto',
     };
 
+    initialState = { value: null };
+
     <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large" style={styles}>
         <GoogleAddressLookup
             id="gaddresslookup-1"
             label="GoogleAddressLookup label"
+            onChange={(value) => setState({ value })}
+            value={state.value}
             placeholder="Enter location"
             apiKey={LIBRARY_GOOGLE_MAPS_APIKEY}
         />
@@ -21,10 +25,14 @@
         margin: 'auto',
     };
 
+    initialState = { value: null };
+
     <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large" style={styles}>
         <GoogleAddressLookup
             id="gaddresslookup-2"
             label="GoogleAddressLookup label"
+            onChange={(value) => setState({ value })}
+            value={state.value}
             placeholder="Enter location"
             apiKey={LIBRARY_GOOGLE_MAPS_APIKEY}
             disabled
@@ -38,11 +46,15 @@
         margin: 'auto',
     };
 
+    initialState = { value: null };
+
     <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large" style={styles}>
         <GoogleAddressLookup
             id="gaddresslookup-3"
             label="GoogleAddressLookup label"
             placeholder="Enter location"
+            onChange={(value) => setState({ value })}
+            value={state.value}
             apiKey={LIBRARY_GOOGLE_MAPS_APIKEY}
             searchOptions={{
                 bounds: {
@@ -67,11 +79,15 @@
         margin: 'auto',
     };
 
+    initialState = { value: null };
+
     <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large" style={styles}>
         <GoogleAddressLookup
             id="gaddresslookup-4"
             label="GoogleAddressLookup label"
             placeholder="Enter location"
+            onChange={(value) => setState({ value })}
+            value={state.value}
             apiKey={LIBRARY_GOOGLE_MAPS_APIKEY}
             searchOptions={{
                 location: {
@@ -92,12 +108,16 @@
         margin: 'auto',
     };
 
+    initialState = { value: null };
+
     <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large" style={styles}>
         <GoogleAddressLookup
             id="gaddresslookup-5"
             required
             label="GoogleAddressLookup label"
             placeholder="Enter location"
+            onChange={(value) => setState({ value })}
+            value={state.value}
             apiKey={LIBRARY_GOOGLE_MAPS_APIKEY}
             error="This field is required"
         />

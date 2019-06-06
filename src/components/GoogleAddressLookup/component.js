@@ -52,10 +52,11 @@ class PlacesLookupComponent extends Component {
             return onChange(null);
         }
 
-        const { places, suggestions } = this.state;
-        const suggestionIndx = suggestions.indexOf(option);
-        const value =
-            places.length > 0 ? places[suggestionIndx > 0 ? suggestionIndx - 1 : 0] : option;
+        const { places } = this.state;
+        let value = places.find(place => place.place_id === option.id);
+        if (!value) {
+            value = option.data;
+        }
 
         return onChange(value);
     }
@@ -224,37 +225,40 @@ PlacesLookupComponent.propTypes = {
     }),
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
     hideLabel: PropTypes.bool,
-    value: PropTypes.shape({
-        description: PropTypes.string,
-        id: PropTypes.string,
-        matched_substrings: PropTypes.arrayOf(
-            PropTypes.shape({
-                length: PropTypes.number,
-                offset: PropTypes.number,
-            }),
-        ),
-        place_id: PropTypes.string,
-        reference: PropTypes.string,
-        structured_formatting: PropTypes.arrayOf(
-            PropTypes.shape({
-                main_text: PropTypes.string,
-                main_text_matched_substrings: PropTypes.arrayOf(
-                    PropTypes.shape({
-                        length: PropTypes.number,
-                        offset: PropTypes.number,
-                    }),
-                ),
-                secondary_text: PropTypes.string,
-            }),
-        ),
-        terms: PropTypes.arrayOf(
-            PropTypes.shape({
-                offset: PropTypes.number,
-                value: PropTypes.string,
-            }),
-        ),
-        types: PropTypes.arrayOf(PropTypes.string),
-    }),
+    value: PropTypes.oneOfType([
+        PropTypes.shape({
+            description: PropTypes.string,
+            id: PropTypes.string,
+            matched_substrings: PropTypes.arrayOf(
+                PropTypes.shape({
+                    length: PropTypes.number,
+                    offset: PropTypes.number,
+                }),
+            ),
+            place_id: PropTypes.string,
+            reference: PropTypes.string,
+            structured_formatting: PropTypes.arrayOf(
+                PropTypes.shape({
+                    main_text: PropTypes.string,
+                    main_text_matched_substrings: PropTypes.arrayOf(
+                        PropTypes.shape({
+                            length: PropTypes.number,
+                            offset: PropTypes.number,
+                        }),
+                    ),
+                    secondary_text: PropTypes.string,
+                }),
+            ),
+            terms: PropTypes.arrayOf(
+                PropTypes.shape({
+                    offset: PropTypes.number,
+                    value: PropTypes.string,
+                }),
+            ),
+            types: PropTypes.arrayOf(PropTypes.string),
+        }),
+        PropTypes.string,
+    ]),
     name: PropTypes.string,
     placeholder: PropTypes.string,
     required: PropTypes.bool,

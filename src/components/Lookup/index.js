@@ -439,8 +439,8 @@ Lookup.propTypes = {
     /** Specifies the selected value of the Lookup. */
     value: PropTypes.oneOfType([
         PropTypes.shape({
-            label: PropTypes.oneOfType(PropTypes.node, PropTypes.string),
-            description: PropTypes.oneOfType(PropTypes.node, PropTypes.string),
+            label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+            description: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
             icon: PropTypes.node,
         }),
         PropTypes.string,
@@ -448,8 +448,8 @@ Lookup.propTypes = {
     /** An array of matched options to show in a menu. */
     options: PropTypes.arrayOf(
         PropTypes.shape({
-            label: PropTypes.oneOfType(PropTypes.node, PropTypes.string),
-            description: PropTypes.oneOfType(PropTypes.node, PropTypes.string),
+            label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+            description: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
             icon: PropTypes.node,
         }),
     ),

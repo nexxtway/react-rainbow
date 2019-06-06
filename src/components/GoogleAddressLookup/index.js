@@ -25,67 +25,70 @@ GoogleAddressLookup.propTypes = {
     /** A boolean to hide the component label. */
     hideLabel: PropTypes.bool,
     /** Specifies the selected value of the component. */
-    value: PropTypes.shape({
-        /**
-         * This is the unformatted version of the query suggested by Google Places service.
-         */
-        description: PropTypes.string,
-        /**
-         * A stable ID for this place, intended to be interoperable with those returned by
-         * the place search service. Note: This has been deprecated in favor of place_id.
-         */
-        id: PropTypes.string,
-        /**
-         * A set of substrings in the place's description that match elements in the user's
-         * input, suitable for use in highlighting those substrings. Each substring is
-         * identified by an offset and a length, expressed in unicode characters.
-         */
-        matched_substrings: PropTypes.arrayOf(
-            PropTypes.shape({
-                length: PropTypes.number,
-                offset: PropTypes.number,
-            }),
-        ),
-        /**
-         * A place ID that can be used to retrieve details about this place using the place
-         * details service (see PlacesService.getDetails()).
-         */
-        place_id: PropTypes.string,
-        /**
-         * A reference that can be used to retrieve details about this place using the place
-         * details service (see PlacesService.getDetails()). Note: This has been deprecated
-         * in favor of place_id.
-         */
-        reference: PropTypes.string,
-        structured_formatting: PropTypes.arrayOf(
-            PropTypes.shape({
-                main_text: PropTypes.string,
-                main_text_matched_substrings: PropTypes.arrayOf(
-                    PropTypes.shape({
-                        length: PropTypes.number,
-                        offset: PropTypes.number,
-                    }),
-                ),
-                secondary_text: PropTypes.string,
-            }),
-        ),
-        /**
-         * Information about individual terms in the above description,
-         * from most to least specific.
-         * For example, "Taco Bell", "Willitis", and "CA".
-         */
-        terms: PropTypes.arrayOf(
-            PropTypes.shape({
-                offset: PropTypes.number,
-                value: PropTypes.string,
-            }),
-        ),
-        /**
-         * An array of types that the prediction belongs to,
-         * for example 'establishment' or 'geocode'.
-         */
-        types: PropTypes.arrayOf(PropTypes.string),
-    }),
+    value: PropTypes.oneOfType([
+        PropTypes.shape({
+            /**
+             * This is the unformatted version of the query suggested by Google Places service.
+             */
+            description: PropTypes.string,
+            /**
+             * A stable ID for this place, intended to be interoperable with those returned by
+             * the place search service. Note: This has been deprecated in favor of place_id.
+             */
+            id: PropTypes.string,
+            /**
+             * A set of substrings in the place's description that match elements in the user's
+             * input, suitable for use in highlighting those substrings. Each substring is
+             * identified by an offset and a length, expressed in unicode characters.
+             */
+            matched_substrings: PropTypes.arrayOf(
+                PropTypes.shape({
+                    length: PropTypes.number,
+                    offset: PropTypes.number,
+                }),
+            ),
+            /**
+             * A place ID that can be used to retrieve details about this place using the place
+             * details service (see PlacesService.getDetails()).
+             */
+            place_id: PropTypes.string,
+            /**
+             * A reference that can be used to retrieve details about this place using the place
+             * details service (see PlacesService.getDetails()). Note: This has been deprecated
+             * in favor of place_id.
+             */
+            reference: PropTypes.string,
+            structured_formatting: PropTypes.arrayOf(
+                PropTypes.shape({
+                    main_text: PropTypes.string,
+                    main_text_matched_substrings: PropTypes.arrayOf(
+                        PropTypes.shape({
+                            length: PropTypes.number,
+                            offset: PropTypes.number,
+                        }),
+                    ),
+                    secondary_text: PropTypes.string,
+                }),
+            ),
+            /**
+             * Information about individual terms in the above description,
+             * from most to least specific.
+             * For example, "Taco Bell", "Willitis", and "CA".
+             */
+            terms: PropTypes.arrayOf(
+                PropTypes.shape({
+                    offset: PropTypes.number,
+                    value: PropTypes.string,
+                }),
+            ),
+            /**
+             * An array of types that the prediction belongs to,
+             * for example 'establishment' or 'geocode'.
+             */
+            types: PropTypes.arrayOf(PropTypes.string),
+        }),
+        PropTypes.string,
+    ]),
     /** The name of the component. */
     name: PropTypes.string,
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
