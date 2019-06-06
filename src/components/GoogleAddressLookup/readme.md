@@ -84,3 +84,21 @@
             }}
         />
     </div>
+
+##### GoogleAddressLookup required with error
+
+    const styles = {
+        width: 600,
+        margin: 'auto',
+    };
+
+    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large" style={styles}>
+        <GoogleAddressLookup
+            id="gaddresslookup-5"
+            required
+            label="GoogleAddressLookup label"
+            placeholder="Enter location"
+            apiKey={LIBRARY_GOOGLE_MAPS_APIKEY}
+            error="This field is required"
+        />
+    </div>
