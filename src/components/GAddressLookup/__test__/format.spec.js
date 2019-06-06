@@ -1,6 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import { formatSuggestionItem } from '../functions';
+import formatSuggestionItem from '../helpers/formatSuggestionItem';
 import SelectedLocationIcon from '../icons/selectedLocationIcon';
 
 const suggestion = {

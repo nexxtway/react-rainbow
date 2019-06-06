@@ -1,5 +1,4 @@
-// eslint-disable-next-line import/prefer-default-export
-export function formatSuggestionItem(suggestion, highlightMatch, icon) {
+export default function formatSuggestionItem(suggestion, highlightMatch, icon) {
     let formattedLabel;
 
     if (highlightMatch) {

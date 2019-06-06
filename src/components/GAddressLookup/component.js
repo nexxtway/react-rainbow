@@ -9,7 +9,7 @@ import SelectedLocationIcon from './icons/selectedLocationIcon';
 import SearchValueIcon from './icons/searchValueIcon';
 import PoweredByGoogleLogo from './icons/poweredByGoogle';
 import { uniqueId } from '../../libs/utils';
-import { formatSuggestionItem } from './functions';
+import formatSuggestionItem from './helpers/formatSuggestionItem';
 import './styles.css';
 
 class PlacesLookupComponent extends Component {
