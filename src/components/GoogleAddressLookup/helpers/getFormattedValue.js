@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default function getFormattedValue(value, highlightMatch, icon) {
     if (!value) return null;
 
@@ -10,7 +12,7 @@ export default function getFormattedValue(value, highlightMatch, icon) {
 
                 return value.structured_formatting.main_text.replace(
                     matchedTerm,
-                    `<b>${matchedTerm}</b>`,
+                    <b>{matchedTerm}</b>,
                 );
             },
             value.structured_formatting.main_text,
