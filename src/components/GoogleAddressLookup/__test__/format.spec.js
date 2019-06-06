@@ -1,5 +1,5 @@
 import React from 'react';
-import formatSuggestionItem from '../helpers/formatSuggestionItem';
+import getFormattedValue from '../helpers/getFormattedValue';
 import SelectedLocationIcon from '../icons/selectedLocationIcon';
 
 const suggestion = {
@@ -25,7 +25,7 @@ const suggestion = {
 
 describe('formatSuggestionItem', () => {
     it('should return the item formated', () => {
-        expect(formatSuggestionItem(suggestion, true, <SelectedLocationIcon />)).toEqual({
+        expect(getFormattedValue(suggestion, true, <SelectedLocationIcon />)).toEqual({
             label: '<b>Cub</b>bon Park',
             description: 'Sampangi Rama Nagara, Bengaluru, Karnataka, India',
             icon: <SelectedLocationIcon />,

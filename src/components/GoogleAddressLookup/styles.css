@@ -25,3 +25,8 @@
 
 .rainbow-google-address-lookup_container .rainbow-lookup_menu-item--active a {
   background-color: #f4f6f9; }
+
+.rainbow-google-address-lookup_container .rainbow-google-address-lookup_search-option-label {
+  color: #a4a7b5; }
+  .rainbow-google-address-lookup_container .rainbow-google-address-lookup_search-option-label b {
+    color: #061c3f; }
