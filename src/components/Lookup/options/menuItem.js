@@ -33,7 +33,12 @@ export default class MenuItem extends Component {
                 onClick={onClick}
                 onMouseEnter={this.handleHover}
             >
-                <a href="javascript:void(0);" role="menuitem" ref={this.itemRef}>
+                <a
+                    className="rainbow-lookup_menu-item-link"
+                    href="javascript:void(0);"
+                    role="menuitem"
+                    ref={this.itemRef}
+                >
                     <RenderIf isTrue={!!icon}>
                         <span className="rainbow-lookup_menu-item_icon-container">{icon}</span>
                     </RenderIf>

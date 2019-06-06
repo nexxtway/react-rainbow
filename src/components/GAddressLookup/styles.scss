@@ -10,33 +10,11 @@
         }
     }
 
-    .rainbow-lookup_chip-content_icon {
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-pack: center;
-        justify-content: center;
-        -ms-flex-align: center;
-        align-items: center;
-    }
-
     .rainbow-google-address-poweredby_container {
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-pack: end;
-        justify-content: end;
-        -ms-flex-align: end;
-        align-items: flex-end;
-
         img {
             margin-top: $margin-xx-small;
             margin-right: $margin-x-small;
             height: 0.625rem;
-        }
-    }
-
-    .rainbow-lookup_menu-item--active {
-        a {
-            background-color: #f4f6f9;
         }
     }
 }
