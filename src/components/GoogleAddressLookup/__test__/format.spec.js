@@ -3,14 +3,14 @@ import getFormattedValue from '../helpers/getFormattedValue';
 import SelectedLocationIcon from '../icons/selectedLocationIcon';
 
 const suggestion = {
-    description: 'Cubbon Cubbon Park, Sampangi Rama Nagara, Bengaluru, Karnataka, India',
+    description: 'Cubbon Park, Sampangi Rama Nagara, Bengaluru, Karnataka, India',
     id: 'f334fb17a44b740132f72d59a7d90ab9a81300ac',
-    matched_substrings: [{ length: 3, offset: 0 }, { length: 3, offset: 7 }],
+    matched_substrings: [{ length: 3, offset: 0 }],
     place_id: 'ChIJL2fQ53MWrjsRuN9D6aalLMY',
     reference: 'ChIJL2fQ53MWrjsRuN9D6aalLMY',
     structured_formatting: {
-        main_text: 'Cubbon Cubbon Park',
-        main_text_matched_substrings: [{ length: 3, offset: 0 }, { length: 3, offset: 7 }],
+        main_text: 'Cubbon Park',
+        main_text_matched_substrings: [{ length: 3, offset: 0 }],
         secondary_text: 'Sampangi Rama Nagara, Bengaluru, Karnataka, India',
     },
     terms: [
@@ -24,11 +24,21 @@ const suggestion = {
 };
 
 describe('formatSuggestionItem', () => {
-    it('should return the item formated', () => {
-        expect(getFormattedValue(suggestion, true, <SelectedLocationIcon />)).toEqual({
-            label: '<b>Cub</b>bon <b>Cub</b>bon Park',
+    it('should return the item formated without highligth', () => {
+        expect(getFormattedValue(suggestion, false, <SelectedLocationIcon />)).toEqual({
+            id: 'ChIJL2fQ53MWrjsRuN9D6aalLMY',
+            label: 'Cubbon Park, Sampangi Rama Nagara, Bengaluru, Karnataka, India',
             description: 'Sampangi Rama Nagara, Bengaluru, Karnataka, India',
             icon: <SelectedLocationIcon />,
         });
     });
+
+    // it('should return the item formated with hightligh', () => {
+    //     expect(getFormattedValue(suggestion, true, <SelectedLocationIcon />)).toEqual({
+    //         id: 'ChIJL2fQ53MWrjsRuN9D6aalLMY',
+    //         label: <span><b>Cub</b>bon Park</span>,
+    //         description: 'Sampangi Rama Nagara, Bengaluru, Karnataka, India',
+    //         icon: <SelectedLocationIcon />,
+    //     });
+    // });
 });

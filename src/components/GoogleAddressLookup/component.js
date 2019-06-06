@@ -182,7 +182,7 @@ class PlacesLookupComponent extends Component {
                     required={required}
                     tabIndex={tabIndex}
                     disabled={disabled}
-                    value={getFormattedValue(value, true, <SelectedLocationIcon />)}
+                    value={getFormattedValue(value, false, <SelectedLocationIcon />)}
                     onChange={this.handleChange}
                     onSearch={this.handleSearch}
                     onClick={onClick}
