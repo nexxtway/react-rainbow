@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import PlacesLookupComponent from './../component';
+import PlacesLookupComponent from '../component';
 
 global.google = {
     maps: {
@@ -8,9 +8,6 @@ global.google = {
             AutocompleteService: jest.fn(() => ({
                 getPlacePredictions: jest.fn(),
             })),
-            // PlacesServiceStatus: jest.{
-            //     OK: 'OK',
-            // },
         },
     },
 };
