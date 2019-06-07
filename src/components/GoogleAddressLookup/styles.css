@@ -1,0 +1,18 @@
+/* stylelint-disable no-descending-specificity */
+.rainbow-google-address-lookup_container .rainbow-lookup_input-icon svg {
+  width: 24px !important;
+  height: 24px !important;
+  font-size: 24px !important; }
+
+.rainbow-google-address-lookup_container .rainbow-google-address-lookup_powered-by-google-container {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 0.25rem; }
+  .rainbow-google-address-lookup_container .rainbow-google-address-lookup_powered-by-google-container .rainbow-google-address-lookup_powered-by-google-logo {
+    height: 0.725rem; }
+
+.rainbow-google-address-lookup_container .rainbow-google-address-lookup_search-option-label {
+  color: #a4a7b5; }
+  .rainbow-google-address-lookup_container .rainbow-google-address-lookup_search-option-label .rainbow-google-address-lookup_search-option-typing {
+    color: #061c3f;
+    font-weight: 900; }

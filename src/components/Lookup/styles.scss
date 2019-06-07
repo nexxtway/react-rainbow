@@ -245,9 +245,12 @@
 .rainbow-lookup_chip-content_icon {
     height: 100%;
     width: 30px;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
 }
 
 .rainbow-lookup_chip-content_label {

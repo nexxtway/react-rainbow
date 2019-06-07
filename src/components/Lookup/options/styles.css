@@ -41,8 +41,8 @@
   white-space: nowrap;
   cursor: pointer; }
 
-.rainbow-lookup_menu-item--active > a {
-  background-color: #e3e5ed; }
+.rainbow-lookup_menu-item--active > .rainbow-lookup_menu-item-link {
+  background-color: #f4f6f9; }
 
 .rainbow-lookup_menu-item_icon-container {
   margin-right: 12px;

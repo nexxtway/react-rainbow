@@ -22,6 +22,7 @@ import Column from './Column';
 import Dataset from './Dataset';
 import DatePicker from './DatePicker';
 import GMap from './GMap';
+import GoogleAddressLookup from './GoogleAddressLookup';
 import Input from './Input';
 import Lookup from './Lookup';
 import MapMarker from './MapMarker';
@@ -77,6 +78,7 @@ export {
     Dataset,
     DatePicker,
     GMap,
+    GoogleAddressLookup,
     Input,
     Lookup,
     MapMarker,
