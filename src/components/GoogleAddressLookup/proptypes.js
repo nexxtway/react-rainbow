@@ -18,10 +18,13 @@ export const searchOptionsShape = PropTypes.shape({
         }),
     }),
     /**
-     * The country in ISO 3166-1 Alpha-2 country code (case insensitive).
-     * E.g. 'us', 'br'
+     * The country restrictions in ISO 3166-1 Alpha-2 country code (case insensitive).
+     * Up to five countries
+     * E.g.
+     *      ['us', 'ca'] to search places within United States and Canada only
+     *      'us' to search places within United States only
      */
-    country: PropTypes.string,
+    country: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.string]),
     /**
      * Location for prediction biasing. Predictions will be biased
      * towards the given location and radius. Alternatively, bounds
