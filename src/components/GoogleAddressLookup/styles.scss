@@ -11,17 +11,16 @@
         }
     }
 
-    .rainbow-google-address-poweredby_container {
-        display: -ms-flexbox;
+    .rainbow-google-address-lookup_poweredby-container {
         display: flex;
-        -ms-flex-pack: end;
-        justify-content: end;
-        -ms-flex-align: end;
-        align-items: flex-end;
+        flex-wrap: wrap;
+        align-content: flex-start;
         padding-top: $padding-xx-small;
         padding-right: $padding-x-small;
 
-        img {
+        .rainbow-google-address-lookup_poweredby-logo {
+            align-self: flex-end;
+            margin-left: auto;
             height: 0.625rem;
         }
     }

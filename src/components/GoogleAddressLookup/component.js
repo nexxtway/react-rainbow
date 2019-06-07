@@ -192,8 +192,8 @@ class PlacesLookupComponent extends Component {
                     icon={<LocationIcon />}
                 />
                 {!error && (
-                    <div className="rainbow-google-address-poweredby_container">
-                        <PoweredByGoogleLogo />
+                    <div className="rainbow-google-address-lookup_poweredby-container">
+                        <PoweredByGoogleLogo className="rainbow-google-address-lookup_poweredby-logo" />
                     </div>
                 )}
             </div>

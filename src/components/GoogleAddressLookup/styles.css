@@ -4,16 +4,15 @@
   height: 24px !important;
   font-size: 24px !important; }
 
-.rainbow-google-address-lookup_container .rainbow-google-address-poweredby_container {
-  display: -ms-flexbox;
+.rainbow-google-address-lookup_container .rainbow-google-address-lookup_poweredby-container {
   display: flex;
-  -ms-flex-pack: end;
-  justify-content: end;
-  -ms-flex-align: end;
-  align-items: flex-end;
+  flex-wrap: wrap;
+  align-content: flex-start;
   padding-top: 0.25rem;
   padding-right: 0.5rem; }
-  .rainbow-google-address-lookup_container .rainbow-google-address-poweredby_container img {
+  .rainbow-google-address-lookup_container .rainbow-google-address-lookup_poweredby-container .rainbow-google-address-lookup_poweredby-logo {
+    align-self: flex-end;
+    margin-left: auto;
     height: 0.625rem; }
 
 .rainbow-google-address-lookup_container .rainbow-google-address-lookup_search-option-label {
