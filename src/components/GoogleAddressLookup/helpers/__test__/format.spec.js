@@ -1,6 +1,6 @@
 import React from 'react';
-import getFormattedValue from '../helpers/getFormattedValue';
-import SelectedLocationIcon from '../icons/selectedLocationIcon';
+import getFormattedValue from '../getFormattedValue';
+import SelectedLocationIcon from '../../icons/selectedLocationIcon';
 
 const suggestion = {
     description: 'Cubbon Park, Sampangi Rama Nagara, Bengaluru, Karnataka, India',
@@ -32,13 +32,4 @@ describe('formatSuggestionItem', () => {
             icon: <SelectedLocationIcon />,
         });
     });
-
-    // it('should return the item formated with hightligh', () => {
-    //     expect(getFormattedValue(suggestion, true, <SelectedLocationIcon />)).toEqual({
-    //         id: 'ChIJL2fQ53MWrjsRuN9D6aalLMY',
-    //         label: <span><b>Cub</b>bon Park</span>,
-    //         description: 'Sampangi Rama Nagara, Bengaluru, Karnataka, India',
-    //         icon: <SelectedLocationIcon />,
-    //     });
-    // });
 });
