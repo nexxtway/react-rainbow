@@ -6,6 +6,7 @@ import * as CustomPropTypes from './proptypes';
 
 /**
  * The GoogleAddressLookup component is used to find a location.
+ * @category Form
  */
 export default function GoogleAddressLookup(props) {
     const { apiKey, ...rest } = props;

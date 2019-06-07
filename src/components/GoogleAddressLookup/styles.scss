@@ -13,23 +13,20 @@
 
     .rainbow-google-address-lookup_powered-by-google-container {
         display: flex;
-        flex-wrap: wrap;
-        align-content: flex-start;
+        justify-content: flex-end;
         padding-top: $padding-xx-small;
-        padding-right: $padding-x-small;
 
         .rainbow-google-address-lookup_powered-by-google-logo {
-            align-self: flex-end;
-            margin-left: auto;
-            height: 0.625rem;
+            height: 0.725rem;
         }
     }
 
     .rainbow-google-address-lookup_search-option-label {
         color: #a4a7b5;
 
-        b {
+        .rainbow-google-address-lookup_search-option-typing {
             color: #061c3f;
+            font-weight: 900;
         }
     }
 }

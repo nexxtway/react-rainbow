@@ -1,13 +1,8 @@
 ##### GoogleAddressLookup base
 
-    const styles = {
-        width: 600,
-        margin: 'auto',
-    };
-
     initialState = { value: null };
 
-    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large" style={styles}>
+    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
         <GoogleAddressLookup
             id="gaddresslookup-1"
             label="GoogleAddressLookup label"
@@ -20,14 +15,9 @@
 
 ##### GoogleAddressLookup disabled
 
-    const styles = {
-        width: 600,
-        margin: 'auto',
-    };
-
     initialState = { value: null };
 
-    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large" style={styles}>
+    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
         <GoogleAddressLookup
             id="gaddresslookup-2"
             label="GoogleAddressLookup label"
@@ -41,14 +31,9 @@
 
 ##### GoogleAddressLookup with custom search params (bounds, types)
 
-    const styles = {
-        width: 600,
-        margin: 'auto',
-    };
-
     initialState = { value: null };
 
-    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large" style={styles}>
+    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
         <GoogleAddressLookup
             id="gaddresslookup-3"
             label="GoogleAddressLookup label"
@@ -74,14 +59,9 @@
 
 ##### GoogleAddressLookup with custom search params (location, radius, types, country)
 
-    const styles = {
-        width: 600,
-        margin: 'auto',
-    };
-
     initialState = { value: null };
 
-    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large" style={styles}>
+    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
         <GoogleAddressLookup
             id="gaddresslookup-4"
             label="GoogleAddressLookup label"
@@ -103,14 +83,9 @@
 
 ##### GoogleAddressLookup required with error
 
-    const styles = {
-        width: 600,
-        margin: 'auto',
-    };
-
     initialState = { value: null };
 
-    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large" style={styles}>
+    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
         <GoogleAddressLookup
             id="gaddresslookup-5"
             required
