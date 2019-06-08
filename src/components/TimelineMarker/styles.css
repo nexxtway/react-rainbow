@@ -1,0 +1,51 @@
+.rainbow-timeline-marker_container {
+    position: relative;
+    min-height: 60px;
+}
+
+.rainbow-timeline-marker_container:before {
+    content: "";
+    background: #dddbda;
+    height: 100%;
+    width: 2px;
+    position: absolute;
+    left: 0.7rem;
+    top: 0;
+    bottom: 0;
+    margin-left: 1px;
+}
+
+
+.rainbow-timeline-marker_icon-container {
+    margin-right: 1.25rem;
+    border: 2px solid #fff;
+    display: inline-block;
+    border-radius: .25rem;
+    z-index: 1;
+    width: 1.6rem;
+    height: 1.6rem;
+    overflow: hidden;
+    background-color: #ccc;
+}
+
+.rainbow-timeline-marker_header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.rainbow-timeline-marker_label {
+    color: #006dcc;
+}
+
+.rainbow-timeline-marker_description {
+    margin-left: 2.8rem; 
+}
+
+.rainbow-timeline-marker_body {
+    margin-left: 2.8rem; 
+    padding-bottom: 1rem;
+}
+
+
+
