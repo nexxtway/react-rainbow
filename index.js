@@ -35,6 +35,7 @@ import PrimitiveMenu from './PrimitiveMenu';
 import ProgressBar from './ProgressBar';
 import ProgressIndicator from './ProgressIndicator';
 import ProgressStep from './ProgressStep';
+import RadioButtonGroup from './RadioButtonGroup';
 import RadioGroup from './RadioGroup';
 import Rating from './Rating';
 import ReCaptcha from './ReCaptcha';
@@ -91,6 +92,7 @@ export {
     ProgressBar,
     ProgressIndicator,
     ProgressStep,
+    RadioButtonGroup,
     RadioGroup,
     Rating,
     ReCaptcha,
