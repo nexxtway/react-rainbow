@@ -1135,4 +1135,14 @@ describe('<Table />', () => {
         });
         expect(onRowSelectionMockFn).not.toHaveBeenCalled();
     });
+    it('should set input type to "checkbox" when there is only one row', () => {
+        const singleData = [{ name: 'John Doe' }];
+        const component = mount(
+            <Table keyField="id" data={singleData} showCheckboxColumn>
+                <Column field="name" header="Name" />
+            </Table>,
+        );
+        const input = component.find('Input[label="select row"]').find('input');
+        expect(input.prop('type')).toBe('checkbox');
+    });
 });

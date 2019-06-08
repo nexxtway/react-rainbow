@@ -12,7 +12,7 @@ function getKey(row, keyField) {
 
 export default function getRows(params = {}) {
     const { rows = [], maxRowSelection, keyField, selectedRowsKeys } = params;
-    const inputType = getRowSelectionInputType(maxRowSelection);
+    const inputType = getRowSelectionInputType(maxRowSelection, rows.length);
     return rows.map(row => {
         const key = getKey(row, keyField);
         return {
