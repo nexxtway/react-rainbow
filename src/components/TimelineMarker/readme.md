@@ -2,7 +2,7 @@ TimeLineMarker base:
 
     <div className="rainbow-m-around_xx-large">
         <TimelineMarker
-            label="Mobile conversation on Monday"
+            label="TimelineMarker label"
             datetime="Yesterday" />
     </div>
 
@@ -10,7 +10,7 @@ TimeLineMarker with content and description:
 
     <div className="rainbow-m-around_xx-large">
         <TimelineMarker
-            label="Mobile conversation on Monday"
+            label="TimelineMarker label"
             datetime="Yesterday"
             description="A rainbow is a meteorological phenomenon that is caused by reflection.">
             <Card title="Inside Content">

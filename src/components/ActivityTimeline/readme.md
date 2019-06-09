@@ -3,12 +3,12 @@ ActivityTimeline base:
     <div className="rainbow-m-around_xx-large">
         <ActivityTimeline>
             <TimelineMarker
-                label="Mobile conversation on Monday"
+                label="TimelineMarker label"
                 datetime="Today"
                 description="A rainbow is a meteorological phenomenon that is caused by reflection, refraction and dispersion of light in water droplets resulting in a spectrum of light appearing in the sky."
             />
             <TimelineMarker
-                label="Mobile conversation on Monday"
+                label="TimelineMarker label"
                 datetime="Yesterday"
                 description="A rainbow is a meteorological phenomenon that is caused by reflection."
             >
@@ -20,6 +20,6 @@ ActivityTimeline base:
                 </Card>
             </TimelineMarker>
             <TimelineMarker
-                label="Mobile conversation on Monday"/>
+                label="TimelineMarker label"/>
         </ActivityTimeline>
     </div>
