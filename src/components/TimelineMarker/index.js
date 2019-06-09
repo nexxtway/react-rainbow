@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import CalendarIcon from './calendarIcon';
 import './styles.css';
 
@@ -8,10 +9,12 @@ import './styles.css';
  * @category Layout
  */
 export default function TimelineMarker(props) {
-    const { icon, label, description, datetime, children } = props;
+    const { icon, label, description, datetime, children, className, style } = props;
+
+    const getContainerClassName = () => classnames('rainbow-timeline-marker_container', className);
 
     return (
-        <li className="rainbow-timeline-marker_container">
+        <li className={getContainerClassName()} style={style}>
             <div className="rainbow-timeline-marker_column-left">
                 <span className="rainbow-timeline-marker_icon-container">{icon}</span>
             </div>
@@ -30,24 +33,32 @@ export default function TimelineMarker(props) {
 }
 
 TimelineMarker.propTypes = {
-    /** The title of the content to be displayed inside the TimelineMarker. */
+    /** The text to be displayed as the TimelineMarker's label. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** The title of the content to be displayed inside the TimelineMarker. */
+    /** The text to be displayed as the TimelineMarker's description. */
     description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** The content of the TimelineMarker, used to render differents
-     * content type inside TimelineMarker. */
-    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
-    /** The title of the content to be displayed inside the TimelineMarker. */
+    /** The text to show at the right of the TimelineMarker. */
     datetime: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** The icon displayed for the TimelineMarker.
+    /** The icon to show at the left of the TimelineMarker.
      * If not passed by default a calendar icon will be showed.  */
     icon: PropTypes.node,
+    /**
+     * This prop that should not be visible in the documentation.
+     * @ignore
+     */
+    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
+    /** A CSS class for the outer element, in addition to the component's base classes. */
+    className: PropTypes.string,
+    /** An object with custom style applied to the outer element. */
+    style: PropTypes.object,
 };
 
 TimelineMarker.defaultProps = {
     label: null,
     description: null,
-    children: null,
     datetime: null,
     icon: <CalendarIcon />,
+    children: null,
+    className: undefined,
+    style: undefined,
 };
