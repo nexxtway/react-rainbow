@@ -1,5 +1,6 @@
 import Accordion from './Accordion';
 import AccordionSection from './AccordionSection';
+import ActivityTimeline from './ActivityTimeline';
 import Application from './Application';
 import Avatar from './Avatar';
 import AvatarMenu from './AvatarMenu';
@@ -48,6 +49,7 @@ import Tab from './Tab';
 import Tabset from './Tabset';
 import Table from './Table';
 import Textarea from './Textarea';
+import TimelineMarker from './TimelineMarker';
 import TimePicker from './TimePicker';
 import VerticalItem from './VerticalItem';
 import VerticalNavigation from './VerticalNavigation';
@@ -57,6 +59,7 @@ import VerticalSectionOverflow from './VerticalSectionOverflow';
 export {
     Accordion,
     AccordionSection,
+    ActivityTimeline,
     Application,
     Avatar,
     AvatarMenu,
@@ -105,6 +108,7 @@ export {
     Tabset,
     Table,
     Textarea,
+    TimelineMarker,
     TimePicker,
     VerticalItem,
     VerticalNavigation,

@@ -1,0 +1,41 @@
+.rainbow-timeline-marker_container {
+  display: flex; }
+  .rainbow-timeline-marker_container .rainbow-timeline-marker_column-left {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative; }
+    .rainbow-timeline-marker_container .rainbow-timeline-marker_column-left::before {
+      content: "";
+      background-color: rgba(82, 95, 127, 0.15);
+      height: 100%;
+      width: 1px;
+      position: absolute;
+      right: 50%;
+      left: 50%; }
+    .rainbow-timeline-marker_container .rainbow-timeline-marker_column-left .rainbow-timeline-marker_icon-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+      min-width: 2rem; }
+  .rainbow-timeline-marker_container .rainbow-timeline-marker_content {
+    width: 100%;
+    margin: 0 0 1rem 1rem; }
+    .rainbow-timeline-marker_container .rainbow-timeline-marker_content .rainbow-timeline-marker_content-header .rainbow-timeline-marker_content-header-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
+      .rainbow-timeline-marker_container .rainbow-timeline-marker_content .rainbow-timeline-marker_content-header .rainbow-timeline-marker_content-header-title .rainbow-timeline-marker_label {
+        color: #061c3f;
+        font-size: 1rem; }
+      .rainbow-timeline-marker_container .rainbow-timeline-marker_content .rainbow-timeline-marker_content-header .rainbow-timeline-marker_content-header-title .rainbow-timeline-marker_datetime {
+        color: #a4a7b5;
+        font-size: 0.875rem;
+        margin-left: 0.75rem; }
+    .rainbow-timeline-marker_container .rainbow-timeline-marker_content .rainbow-timeline-marker_content-header .rainbow-timeline-marker_description {
+      font-size: 0.875rem;
+      color: #576574;
+      padding: 0.5rem 0; }
+    .rainbow-timeline-marker_container .rainbow-timeline-marker_content .rainbow-timeline-marker_body {
+      margin: 0.5rem 0; }
