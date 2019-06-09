@@ -2,8 +2,6 @@
 @import './../../styles/paddings.scss';
 @import './../../styles/margins.scss';
 @import './../../styles/font-sizes.scss';
-@import './../../styles/border-radius.scss';
-@import './../../styles/shadows.scss';
 
 .rainbow-timeline-marker_container {
     display: flex;
@@ -51,14 +49,14 @@
                 .rainbow-timeline-marker_datetime {
                     color: $color-gray-3;
                     font-size: $font-size-text-medium;
-                    margin-left: 8px;
+                    margin-left: $margin-small;
                 }
             }
 
             .rainbow-timeline-marker_description {
                 font-size: $font-size-text-medium;
                 color: $color-gray-4;
-                padding: 8px 0;
+                padding: $padding-x-small 0;
             }
         }
 
