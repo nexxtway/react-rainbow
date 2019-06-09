@@ -13,6 +13,9 @@ import NotFound404 from './pages/Designs/NotFound404';
 import CreateProfile from './pages/Designs/CreateProfile';
 import Team from './pages/Designs/Team';
 import SocialIconsSet from './pages/Designs/SocialIconsSet';
+import UserSignUpIcon from './../library/exampleComponents/icons/user-signup';
+import UserVerifiedIcon from './../library/exampleComponents/icons/user-phone-verified';
+import UserFirstPostIcon from './../library/exampleComponents/icons/user-first-post';
 
 global.GlobalHeader = GlobalHeader;
 global.CodeEditor = CodeEditor;
@@ -31,3 +34,6 @@ global.Team = Team;
 global.SocialIconsSet = SocialIconsSet;
 global.LIBRARY_GOOGLE_MAPS_APIKEY = process.env.REACT_APP_GOOGLE_MAPS_APIKEY;
 global.LIBRARY_RECAPTCHA_APIKEY = process.env.REACT_APP_RECAPTCHA_APIKEY;
+global.UserSignUpIcon = UserSignUpIcon;
+global.UserVerifiedIcon = UserVerifiedIcon;
+global.UserFirstPostIcon = UserFirstPostIcon;

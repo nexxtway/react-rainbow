@@ -1,0 +1,69 @@
+@import './../../styles/colors.scss';
+@import './../../styles/paddings.scss';
+@import './../../styles/margins.scss';
+@import './../../styles/font-sizes.scss';
+@import './../../styles/border-radius.scss';
+@import './../../styles/shadows.scss';
+
+.rainbow-timeline-marker_container {
+    display: flex;
+
+    .rainbow-timeline-marker_column-left {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        position: relative;
+
+        &::before {
+            content: "";
+            background-color: $color-gray-transparent-3;
+            height: 100%;
+            width: 1px;
+            position: absolute;
+            right: 50%;
+            left: 50%;
+        }
+
+        .rainbow-timeline-marker_icon-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+            min-width: 2rem;
+        }
+    }
+
+    .rainbow-timeline-marker_content {
+        width: 100%;
+        margin: 0 0 1rem 1rem;
+
+        .rainbow-timeline-marker_content-header {
+            .rainbow-timeline-marker_content-header-title {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .rainbow-timeline-marker_label {
+                    color: $color-dark-1;
+                    font-size: $font-size-heading-small;
+                }
+
+                .rainbow-timeline-marker_datetime {
+                    color: $color-gray-3;
+                    font-size: $font-size-text-medium;
+                    margin-left: 8px;
+                }
+            }
+
+            .rainbow-timeline-marker_description {
+                font-size: $font-size-text-medium;
+                color: $color-gray-4;
+                padding: 8px 0;
+            }
+        }
+
+        .rainbow-timeline-marker_body {
+            margin: 0.5rem 0;
+        }
+    }
+}
