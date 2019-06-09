@@ -1,51 +1,41 @@
 .rainbow-timeline-marker_container {
-    position: relative;
-    min-height: 60px;
-}
-
-.rainbow-timeline-marker_container:before {
-    content: "";
-    background: #dddbda;
-    height: 100%;
-    width: 2px;
-    position: absolute;
-    left: 0.7rem;
-    top: 0;
-    bottom: 0;
-    margin-left: 1px;
-}
-
-
-.rainbow-timeline-marker_icon-container {
-    margin-right: 1.25rem;
-    border: 2px solid #fff;
-    display: inline-block;
-    border-radius: .25rem;
-    z-index: 1;
-    width: 1.6rem;
-    height: 1.6rem;
-    overflow: hidden;
-    background-color: #ccc;
-}
-
-.rainbow-timeline-marker_header {
+  display: flex; }
+  .rainbow-timeline-marker_container .rainbow-timeline-marker_column-left {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.rainbow-timeline-marker_label {
-    color: #006dcc;
-}
-
-.rainbow-timeline-marker_description {
-    margin-left: 2.8rem; 
-}
-
-.rainbow-timeline-marker_body {
-    margin-left: 2.8rem; 
-    padding-bottom: 1rem;
-}
-
-
-
+    justify-content: center;
+    align-items: flex-start;
+    position: relative; }
+    .rainbow-timeline-marker_container .rainbow-timeline-marker_column-left::before {
+      content: "";
+      background-color: rgba(82, 95, 127, 0.15);
+      height: 100%;
+      width: 1px;
+      position: absolute;
+      right: 50%;
+      left: 50%; }
+    .rainbow-timeline-marker_container .rainbow-timeline-marker_column-left .rainbow-timeline-marker_icon-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+      min-width: 2rem; }
+  .rainbow-timeline-marker_container .rainbow-timeline-marker_content {
+    width: 100%;
+    margin: 0 0 1rem 1rem; }
+    .rainbow-timeline-marker_container .rainbow-timeline-marker_content .rainbow-timeline-marker_content-header .rainbow-timeline-marker_content-header-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
+      .rainbow-timeline-marker_container .rainbow-timeline-marker_content .rainbow-timeline-marker_content-header .rainbow-timeline-marker_content-header-title .rainbow-timeline-marker_label {
+        color: #061c3f;
+        font-size: 1rem; }
+      .rainbow-timeline-marker_container .rainbow-timeline-marker_content .rainbow-timeline-marker_content-header .rainbow-timeline-marker_content-header-title .rainbow-timeline-marker_datetime {
+        color: #a4a7b5;
+        font-size: 0.875rem;
+        margin-left: 8px; }
+    .rainbow-timeline-marker_container .rainbow-timeline-marker_content .rainbow-timeline-marker_content-header .rainbow-timeline-marker_description {
+      font-size: 0.875rem;
+      color: #576574;
+      padding: 8px 0; }
+    .rainbow-timeline-marker_container .rainbow-timeline-marker_content .rainbow-timeline-marker_body {
+      margin: 0.5rem 0; }

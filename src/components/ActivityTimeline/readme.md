@@ -1,14 +1,16 @@
-Basic example:
+ActivityTimeline base:
 
     <div className="rainbow-m-around_xx-large">
         <ActivityTimeline>
             <TimelineMarker
                 label="Mobile conversation on Monday"
-                description="When the user interacts with the button to open the details section, aria-expanded on the button should be true and aria-hidden on the details section should be false. When the user interacts with the button to close the details section, aria-expanded on the button should be false and aria-hidden on the details section should be true."
+                datetime="Today"
+                description="A rainbow is a meteorological phenomenon that is caused by reflection, refraction and dispersion of light in water droplets resulting in a spectrum of light appearing in the sky."
             />
             <TimelineMarker
                 label="Mobile conversation on Monday"
-                description="When the user interacts with the button to open the details section, aria-expanded on the button should be true and aria-hidden on the details section should be false. When the user interacts with the button to close the details section, aria-expanded on the button should be false and aria-hidden on the details section should be true."
+                datetime="Yesterday"
+                description="A rainbow is a meteorological phenomenon that is caused by reflection."
             >
                 <Card title="Inside Content">
                     <img
@@ -17,6 +19,7 @@ Basic example:
                         alt="landscape with rainbows, birds and colorful balloons" />
                 </Card>
             </TimelineMarker>
-            <TimelineMarker label="Mobile conversation on Monday"/>
+            <TimelineMarker
+                label="Mobile conversation on Monday"/>
         </ActivityTimeline>
     </div>
