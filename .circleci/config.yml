@@ -126,9 +126,9 @@ workflows:
     build_and_test:
         jobs:
             - build_and_test
-            - integration_tests:
-                  requires:
-                      - build_and_test
+#            - integration_tests:
+#                  requires:
+#                      - build_and_test
             - deploy_firebase:
                   requires:
                       - build_and_test
@@ -139,7 +139,7 @@ workflows:
             - publish_canary:
                   requires:
                       - build_and_test
-                      - integration_tests
+#                      - integration_tests
                   filters:
                       branches:
                           only: master
