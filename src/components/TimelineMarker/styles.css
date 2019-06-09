@@ -32,10 +32,10 @@
       .rainbow-timeline-marker_container .rainbow-timeline-marker_content .rainbow-timeline-marker_content-header .rainbow-timeline-marker_content-header-title .rainbow-timeline-marker_datetime {
         color: #a4a7b5;
         font-size: 0.875rem;
-        margin-left: 8px; }
+        margin-left: 0.75rem; }
     .rainbow-timeline-marker_container .rainbow-timeline-marker_content .rainbow-timeline-marker_content-header .rainbow-timeline-marker_description {
       font-size: 0.875rem;
       color: #576574;
-      padding: 8px 0; }
+      padding: 0.5rem 0; }
     .rainbow-timeline-marker_container .rainbow-timeline-marker_content .rainbow-timeline-marker_body {
       margin: 0.5rem 0; }
