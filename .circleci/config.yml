@@ -132,7 +132,7 @@ workflows:
             - deploy_firebase:
                   requires:
                       - build_and_test
-                      - integration_tests
+#                      - integration_tests
                   filters:
                       branches:
                           only: master
