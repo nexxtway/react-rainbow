@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import CalendarIcon from './calendarIcon';
 import './styles.css';
@@ -7,27 +7,26 @@ import './styles.css';
  * The TimelineMarker displays each of the user’s upcoming, current, and past activities.
  * @category Layout
  */
-export default class TimelineMarker extends Component {
-    render() {
-        const { icon, label, description, datetime, children } = this.props;
-        return (
-            <li className="rainbow-timeline-marker_container">
-                <div className="rainbow-timeline-marker_column-left">
-                    <span className="rainbow-timeline-marker_icon-container">{icon}</span>
-                </div>
-                <div className="rainbow-timeline-marker_content">
-                    <div className="rainbow-timeline-marker_content-header">
-                        <div className="rainbow-timeline-marker_content-header-title">
-                            <h1 className="rainbow-timeline-marker_label">{label}</h1>
-                            <p className="rainbow-timeline-marker_datetime">{datetime}</p>
-                        </div>
-                        <p className="rainbow-timeline-marker_description">{description}</p>
+export default function TimelineMarker(props) {
+    const { icon, label, description, datetime, children } = props;
+
+    return (
+        <li className="rainbow-timeline-marker_container">
+            <div className="rainbow-timeline-marker_column-left">
+                <span className="rainbow-timeline-marker_icon-container">{icon}</span>
+            </div>
+            <div className="rainbow-timeline-marker_content">
+                <div className="rainbow-timeline-marker_content-header">
+                    <div className="rainbow-timeline-marker_content-header-title">
+                        <h1 className="rainbow-timeline-marker_label">{label}</h1>
+                        <p className="rainbow-timeline-marker_datetime">{datetime}</p>
                     </div>
-                    <div className="rainbow-timeline-marker_body">{children}</div>
+                    <p className="rainbow-timeline-marker_description">{description}</p>
                 </div>
-            </li>
-        );
-    }
+                <div className="rainbow-timeline-marker_body">{children}</div>
+            </div>
+        </li>
+    );
 }
 
 TimelineMarker.propTypes = {
