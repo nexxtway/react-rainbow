@@ -13,9 +13,9 @@ import NotFound404 from './pages/Designs/NotFound404';
 import CreateProfile from './pages/Designs/CreateProfile';
 import Team from './pages/Designs/Team';
 import SocialIconsSet from './pages/Designs/SocialIconsSet';
-import UserSignUpIcon from './../library/exampleComponents/icons/user-signup';
-import UserVerifiedIcon from './../library/exampleComponents/icons/user-phone-verified';
-import UserFirstPostIcon from './../library/exampleComponents/icons/user-first-post';
+import UserSignUpIcon from './exampleComponents/Icons/userSignup';
+import UserVerifiedIcon from './exampleComponents/Icons/userPhoneVerified';
+import UserFirstPostIcon from './exampleComponents/Icons/userFirstPost';
 
 global.GlobalHeader = GlobalHeader;
 global.CodeEditor = CodeEditor;
