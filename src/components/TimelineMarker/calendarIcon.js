@@ -5,7 +5,6 @@ export default function CalendarIcon(props) {
     const { className, style } = props;
     return (
         <svg className={className} style={style} width="32px" height="32px" viewBox="0 0 32 32">
-            <desc>Created with Sketch.</desc>
             <g
                 id="marketing-influencer-home"
                 stroke="none"

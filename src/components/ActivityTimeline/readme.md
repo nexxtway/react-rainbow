@@ -1,25 +1,31 @@
-ActivityTimeline base:
+ActivityTimeline base example:
 
+    const iconStyles = { width: 32, height: 32 };
     <div className="rainbow-m-around_xx-large">
         <ActivityTimeline>
             <TimelineMarker
-                label="TimelineMarker label"
-                datetime="Today"
-                description="A rainbow is a meteorological phenomenon that is caused by reflection, refraction and dispersion of light in water droplets resulting in a spectrum of light appearing in the sky."
+                label="User Sign Up."
+                icon={<UserSignUpIcon  style={iconStyles} />}
+                datetime="Yesterday"
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua."
             />
             <TimelineMarker
-                label="TimelineMarker label"
-                datetime="Yesterday"
-                description="A rainbow is a meteorological phenomenon that is caused by reflection."
-            >
+                label="User phone verified."
+                icon={<UserVerifiedIcon  style={iconStyles} />}
+                datetime="Today"
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            />
+            <TimelineMarker
+                label="User first post."
+                icon={<UserFirstPostIcon  style={iconStyles} />}
+                datetime="3 hours ago"
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.">
                 <Card title="Inside Content">
                     <img
-                        src="images/illustrations/Illustration-rainbow-1.svg"
-                        className="rainbow-p-vertical_x-large rainbow-m_auto rainbow-align-content_center"
+                        src="images/illustrations/Illustration-chef.svg"
+                        className="rainbow-m_auto rainbow-align-content_center"
                         alt="landscape with rainbows, birds and colorful balloons" />
                 </Card>
             </TimelineMarker>
-            <TimelineMarker
-                label="TimelineMarker label"/>
         </ActivityTimeline>
     </div>

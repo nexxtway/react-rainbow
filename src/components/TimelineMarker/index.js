@@ -5,7 +5,7 @@ import CalendarIcon from './calendarIcon';
 import './styles.css';
 
 /**
- * The TimelineMarker displays each of the user’s upcoming, current, and past activities.
+ * The TimelineMarker displays one event of an item timeline.
  * @category Layout
  */
 export default function TimelineMarker(props) {
@@ -37,7 +37,7 @@ TimelineMarker.propTypes = {
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The text to be displayed as the TimelineMarker's description. */
     description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** The text to show at the right of the TimelineMarker. */
+    /** The text with the formatted datetime of the event. */
     datetime: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The icon to show at the left of the TimelineMarker.
      * If not passed by default a calendar icon will be showed.  */

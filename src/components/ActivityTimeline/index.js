@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 /**
- * The ActivityTimeline displays each of the user’s upcoming, current, and past activities.
+ * The ActivityTimeline displays each of any item upcoming, current, and past activities.
  * @category Layout
  */
 export default function ActivityTimeline(props) {
