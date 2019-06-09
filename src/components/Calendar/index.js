@@ -120,7 +120,7 @@ export default class Calendar extends Component {
                 <table role="grid" aria-labelledby="month">
                     <DaysOfWeek />
                     <Month
-                        value={normalizeDate(value)}
+                        value={value}
                         firstDayMonth={currentMonth}
                         minDate={minDate}
                         maxDate={maxDate}
@@ -150,7 +150,7 @@ Calendar.propTypes = {
 };
 
 Calendar.defaultProps = {
-    value: new Date(),
+    value: undefined,
     minDate: undefined,
     maxDate: undefined,
     onChange: () => {},
