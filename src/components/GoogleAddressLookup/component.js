@@ -134,7 +134,6 @@ class PlacesLookupComponent extends Component {
             value,
             hideLabel,
             onClick,
-            onFocus,
             onBlur,
         } = this.props;
         const { isSearching, suggestions } = this.state;
@@ -158,7 +157,6 @@ class PlacesLookupComponent extends Component {
                     onChange={this.handleChange}
                     onSearch={this.handleSearch}
                     onClick={onClick}
-                    onFocus={onFocus}
                     onBlur={onBlur}
                     error={error}
                     icon={<LocationIcon />}
@@ -192,7 +190,6 @@ PlacesLookupComponent.propTypes = {
     style: PropTypes.object,
     onChange: PropTypes.func,
     onClick: PropTypes.func,
-    onFocus: PropTypes.func,
     onBlur: PropTypes.func,
 };
 
@@ -207,7 +204,6 @@ PlacesLookupComponent.defaultProps = {
     disabled: false,
     onChange: () => {},
     onClick: () => {},
-    onFocus: () => {},
     onBlur: () => {},
     tabIndex: undefined,
     label: undefined,
