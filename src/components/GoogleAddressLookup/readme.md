@@ -50,7 +50,7 @@
                     ne: {
                         latitude: 63.941264,
                         longitude: -151.2042969,
-                    }
+                    },
                 },
                 types: ['address'],
             }}
