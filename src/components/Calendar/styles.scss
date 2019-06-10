@@ -43,6 +43,7 @@
     font-size: $font-size-text-medium;
     font-weight: 400;
     border-radius: 100%;
+    width: 36px;
 }
 
 .rainbow-calendar_day-button {
@@ -98,6 +99,7 @@
 }
 
 .rainbow-calendar_day-adjacent {
+    display: inline-block;
     background-color: transparent;
     color: $color-gray-2;
     text-align: center;
@@ -105,7 +107,7 @@
     font-weight: 400;
     line-height: 36px;
     height: 36px;
-    margin: auto;
+    margin: 6px auto;
     cursor: not-allowed;
     -webkit-user-select: none;
     -webkit-tap-highlight-color: transparent;

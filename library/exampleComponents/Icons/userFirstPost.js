@@ -12,7 +12,6 @@ export default function UserFirstPost(props) {
             viewBox="0 0 512 512"
             version="1.1"
         >
-            <desc>Created with Sketch.</desc>
             <g id="pages" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g id="attach" fillRule="nonzero">
                     <path

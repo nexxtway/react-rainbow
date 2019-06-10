@@ -127,12 +127,12 @@ workflows:
         jobs:
             - build_and_test
             - integration_tests:
-                 requires:
-                     - build_and_test
+                  requires:
+                      - build_and_test
             - deploy_firebase:
                   requires:
                       - build_and_test
-                     - integration_tests
+                      - integration_tests
                   filters:
                       branches:
                           only: master
