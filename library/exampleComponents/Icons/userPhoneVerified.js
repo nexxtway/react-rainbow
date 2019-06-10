@@ -12,7 +12,6 @@ export default function UserPhoneVerified(props) {
             viewBox="0 0 512 512"
             version="1.1"
         >
-            <desc>Created with Sketch.</desc>
             <g id="pages" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g id="Group-126" fillRule="nonzero">
                     <circle id="Oval" fill="#00C8C8" cx="256" cy="256" r="256" />
