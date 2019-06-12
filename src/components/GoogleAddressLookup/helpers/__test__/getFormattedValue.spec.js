@@ -33,6 +33,7 @@ describe('getFormattedValue', () => {
             icon: <SelectedLocationIcon />,
         });
     });
+
     it('should return the item formated with search term highlighted', () => {
         const { id, label, description, icon } = getFormattedValue(
             suggestion,
@@ -52,5 +53,20 @@ describe('getFormattedValue', () => {
             description: 'Sampangi Rama Nagara, Bengaluru, Karnataka, India',
             icon: <SelectedLocationIcon />,
         });
+    });
+
+    it('should return the item formated without highligth when values is string', () => {
+        expect(getFormattedValue('Cubbon Cubbon Park', true, <SelectedLocationIcon />)).toEqual({
+            label: 'Cubbon Cubbon Park',
+            icon: <SelectedLocationIcon />,
+        });
+    });
+
+    it('should return null when value is empty', () => {
+        expect(getFormattedValue('', true, <SelectedLocationIcon />)).toEqual(null);
+    });
+
+    it('should return null when value is null', () => {
+        expect(getFormattedValue(null, true, <SelectedLocationIcon />)).toEqual(null);
     });
 });
