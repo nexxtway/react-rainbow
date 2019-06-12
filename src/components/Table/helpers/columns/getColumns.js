@@ -27,7 +27,7 @@ export default function getColumns(params) {
                 if (type === 'action') {
                     return {
                         ...column.props,
-                        width: widthNumber || 50,
+                        width: widthNumber || 75,
                     };
                 }
                 return {
