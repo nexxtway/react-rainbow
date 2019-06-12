@@ -68,7 +68,7 @@ describe('getColumns', () => {
             {
                 sortable: false,
                 type: 'action',
-                width: 50,
+                width: 75,
             },
         ]);
     });
