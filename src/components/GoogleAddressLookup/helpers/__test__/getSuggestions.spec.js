@@ -1,8 +1,4 @@
-import React from 'react';
-import ReactDOMServer from 'react-dom/server';
 import getSuggestions from '../getSuggestions';
-import LocationItemIcon from '../../icons/locationItemIcon';
-import SearchValueIcon from '../../icons/searchValueIcon';
 
 const suggestions = [
     {
@@ -81,54 +77,57 @@ const suggestions = [
     },
 ];
 
+jest.mock('../getFormattedValue', () => {
+    const result = {
+        label: '<span><b>Cub</b>bon Park</span>',
+        description: 'Sampangi Rama Nagara, Bengaluru, Karnataka, India',
+        icon: '<LocationItemIcon />',
+    };
+
+    return jest.fn(() => result);
+});
+
+jest.mock('../getSearchForOption', () => {
+    const result = {
+        data: 'Cub',
+        label:
+            '<span class="rainbow-google-address-lookup_search-option-label">Search for:<span class="rainbow-google-address-lookup_search-option-typing">‘Cub’</span></span>',
+        icon: '<SearchValueIcon />',
+    };
+
+    return jest.fn(() => result);
+});
+
 describe('getSuggestions', () => {
     it('should return the suggestions list formated as options list for Lookup (with search term highlighted)', () => {
         const result = getSuggestions(suggestions, 'Cub');
 
-        const reformattedResult = result.map(item => ({
-            data: item.data,
-            id: item.id,
-            label: ReactDOMServer.renderToStaticMarkup(item.label),
-            description: item.description,
-            icon: item.icon,
-        }));
-
-        expect(reformattedResult).toEqual([
+        expect(result).toEqual([
             {
                 data: 'Cub',
-                id: undefined,
-                description: undefined,
                 label:
                     '<span class="rainbow-google-address-lookup_search-option-label">Search for:<span class="rainbow-google-address-lookup_search-option-typing">‘Cub’</span></span>',
-                icon: <SearchValueIcon />,
+                icon: '<SearchValueIcon />',
             },
             {
-                data: undefined,
-                id: 'ChIJ36Fj3eq3lzMRLMMPSCyg9qY',
-                label: '<span><b>Cub</b>ao</span>',
-                description: 'Quezon City, Metro Manila, Philippines',
-                icon: <LocationItemIcon />,
-            },
-            {
-                data: undefined,
-                id: 'ChIJs25tvMe3lzMRiavmdqLkHg8',
-                label: '<span><b>Cub</b>ao, Bus Terminal</span>',
-                description: 'Aurora Boulevard, Cubao, Quezon City, Metro Manila, Philippines',
-                icon: <LocationItemIcon />,
-            },
-            {
-                data: undefined,
-                id: 'ChIJtUx6DwdJzYgRGqQQkVL3jHk',
-                label: '<span><b>Cub</b>a</span>',
-                description: undefined,
-                icon: <LocationItemIcon />,
-            },
-            {
-                data: undefined,
-                id: 'ChIJL2fQ53MWrjsRuN9D6aalLMY',
                 label: '<span><b>Cub</b>bon Park</span>',
                 description: 'Sampangi Rama Nagara, Bengaluru, Karnataka, India',
-                icon: <LocationItemIcon />,
+                icon: '<LocationItemIcon />',
+            },
+            {
+                label: '<span><b>Cub</b>bon Park</span>',
+                description: 'Sampangi Rama Nagara, Bengaluru, Karnataka, India',
+                icon: '<LocationItemIcon />',
+            },
+            {
+                label: '<span><b>Cub</b>bon Park</span>',
+                description: 'Sampangi Rama Nagara, Bengaluru, Karnataka, India',
+                icon: '<LocationItemIcon />',
+            },
+            {
+                label: '<span><b>Cub</b>bon Park</span>',
+                description: 'Sampangi Rama Nagara, Bengaluru, Karnataka, India',
+                icon: '<LocationItemIcon />',
             },
         ]);
     });

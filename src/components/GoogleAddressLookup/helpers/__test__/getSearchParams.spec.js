@@ -1,58 +1,89 @@
 import getSearchParams from '../getSearchParams';
 
-global.google = {
-    maps: {
-        LatLng: jest.fn(() => ({})),
-        LatLngBounds: jest.fn(() => ({})),
-    },
+const setupGoogleMapsMock = () => {
+    const google = {
+        maps: {
+            LatLng: class {
+                constructor(lat, lng) {
+                    return { lat, lng };
+                }
+            },
+            LatLngBounds: class {
+                constructor(se, ne) {
+                    return { se, ne };
+                }
+            },
+        },
+    };
+
+    global.window.google = google;
 };
 
-const searchOptions = [
-    {
-        bounds: {
-            sw: {
-                latitude: -63.941264,
-                longitude: 151.2042969,
-            },
-            ne: {
-                latitude: 63.941264,
-                longitude: -151.2042969,
-            },
-        },
-        types: ['address'],
-    },
-    {
-        location: {
-            latitude: -33.941264,
-            longitude: 151.2042969,
-        },
-        country: 'us',
-        radius: 150000,
-        types: ['address'],
-    },
-    {
-        country: ['us', 'ca'],
-    },
-];
+beforeAll(() => {
+    setupGoogleMapsMock();
+});
 
 describe('getSearchParams', () => {
-    it('should convert searchOptions into google.maps.places.AutocompleteRequest search options', () => {
-        expect(getSearchParams(searchOptions[0])).toEqual({
-            bounds: global.google.maps.LatLngBounds(
-                global.google.maps.LatLng(-63.941264, 151.2042969),
-                global.google.maps.LatLng(63.941264, -151.2042969),
-            ),
+    it('should convert searchOptions (with bounds and types) into google.maps.places.AutocompleteRequest search options', () => {
+        const searchOptions = {
+            bounds: {
+                sw: {
+                    latitude: -63.941264,
+                    longitude: 151.2042969,
+                },
+                ne: {
+                    latitude: 63.941264,
+                    longitude: -151.2042969,
+                },
+            },
+            types: ['address'],
+        };
+
+        expect(getSearchParams(searchOptions)).toEqual({
+            bounds: {
+                se: {
+                    lat: -63.941264,
+                    lng: 151.2042969,
+                },
+                ne: {
+                    lat: 63.941264,
+                    lng: -151.2042969,
+                },
+            },
             types: ['address'],
         });
-        expect(getSearchParams(searchOptions[1])).toEqual({
-            location: global.google.maps.LatLng(-33.941264, 151.2042969),
+    });
+
+    it('should convert searchOptions (with location, radiusn types and country) into google.maps.places.AutocompleteRequest search options', () => {
+        const searchOptions = {
+            location: {
+                latitude: -33.941264,
+                longitude: 151.2042969,
+            },
+            country: 'us',
+            radius: 150000,
+            types: ['address'],
+        };
+
+        expect(getSearchParams(searchOptions)).toEqual({
+            location: {
+                lat: -33.941264,
+                lng: 151.2042969,
+            },
             componentRestrictions: {
                 country: 'us',
             },
             radius: 150000,
             types: ['address'],
         });
-        expect(getSearchParams(searchOptions[2])).toEqual({
+    });
+
+    it('should convert searchOptions (several countries) into google.maps.places.AutocompleteRequest search options', () => {
+        const searchOptions = {
+            country: ['us', 'ca'],
+        };
+
+        expect(getSearchParams(searchOptions)).toEqual({
             componentRestrictions: {
                 country: ['us', 'ca'],
             },
