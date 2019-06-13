@@ -1,16 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import PlacesLookupComponent from '../component';
-
-// global.google = {
-//     maps: {
-//         places: {
-//             AutocompleteService: jest.fn(() => ({
-//                 getPlacePredictions: jest.fn(),
-//             })),
-//         },
-//     },
-// };
+import { Component as PlacesLookupComponent } from '../component';
 
 const setupGoogleMapsMock = () => {
     const google = {
@@ -73,10 +63,8 @@ describe('<PlacesLookupComponent/>', () => {
 
     it('should be intialized after isScriptLoaded and isScriptLoadSucceed are set to true', () => {
         const component = mount(<PlacesLookupComponent />);
-        expect(component.instance().fieldRef.current.initialized).toBe(false);
+        expect(component.instance().initialized).toBe(false);
         component.setProps(nextProps);
-        expect(component.instance().fieldRef.current.initialized).toBe(true);
+        expect(component.instance().initialized).toBe(true);
     });
-
-    it('should call onChange with the right data when select an option', () => {});
 });

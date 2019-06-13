@@ -218,3 +218,5 @@ PlacesLookupComponent.defaultProps = {
 };
 
 export default withReduxForm(PlacesLookupComponent);
+
+export { PlacesLookupComponent as Component };
