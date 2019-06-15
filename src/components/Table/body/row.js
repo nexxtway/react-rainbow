@@ -23,7 +23,19 @@ export default function Row(props) {
 
     let isFirstColumn;
     const cells = columns.map((column, index) => {
-        const { header, component, field, type: columnType, children } = column;
+        const {
+            header,
+            component,
+            field,
+            sortable,
+            width,
+            defaultWidth,
+            computedWidth,
+            isResized,
+            type: columnType,
+            children,
+            ...restColumnProps
+        } = column;
         const key = `cell-${index}`;
         const value = getFieldValue(rowData, field);
         isFirstColumn =
@@ -32,6 +44,7 @@ export default function Row(props) {
         return (
             <Cell
                 {...rest}
+                restColumnProps={restColumnProps}
                 key={key}
                 rowData={rowData}
                 header={header}
