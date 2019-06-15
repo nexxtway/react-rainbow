@@ -44,6 +44,31 @@ describe('<Cell /> when isFirst is not passed', () => {
         const component = mount(<Cell value="cell-1" columnType="action" />);
         expect(component.find('ActionsCell').exists()).toBe(true);
     });
+    it('should pass the row data and other columns props to cell component', () => {
+        const rowData = {
+            name: 'John',
+            emai: 'john@gmail.com',
+        };
+        const columnProps = {
+            otherData: 'qwerty1234',
+        };
+        const component = mount(
+            <Cell
+                value="cell-1"
+                rowData={rowData}
+                restColumnProps={columnProps}
+                component={CellComponent}
+            />,
+        );
+        expect(component.find('CellComponent').props()).toEqual({
+            otherData: 'qwerty1234',
+            row: {
+                emai: 'john@gmail.com',
+                name: 'John',
+            },
+            value: 'cell-1',
+        });
+    });
 });
 
 describe('<Cell /> when isFirst is passed', () => {

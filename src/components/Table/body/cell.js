@@ -4,9 +4,11 @@ import { SELECTABLE_CHECKBOX } from '../helpers/columns';
 import SelectableCell from './selectableCell';
 import ActionsCell from './actionsCell';
 
-function CellValue({ component: CellComponent, value }) {
+function CellValue(props) {
+    const { component: CellComponent, value, rowData, restColumnProps } = props;
+
     if (CellComponent) {
-        return <CellComponent value={value} />;
+        return <CellComponent {...restColumnProps} value={value} row={rowData} />;
     }
     return value;
 }
@@ -14,11 +16,14 @@ function CellValue({ component: CellComponent, value }) {
 CellValue.propTypes = {
     component: PropTypes.func,
     value: PropTypes.any,
+    rowData: PropTypes.object,
+    restColumnProps: PropTypes.object.isRequired,
 };
 
 CellValue.defaultProps = {
     component: undefined,
     value: undefined,
+    rowData: {},
 };
 
 export default function Cell(props) {
@@ -38,6 +43,7 @@ export default function Cell(props) {
         onSelectRow,
         onDeselectRow,
         inputType,
+        restColumnProps,
     } = props;
 
     const getHeaderLabel = () => {
@@ -80,7 +86,12 @@ export default function Cell(props) {
                 data-label={getHeaderLabel()}
             >
                 <div className="rainbow-table_cell-content">
-                    <CellValue component={component} value={value} />
+                    <CellValue
+                        component={component}
+                        value={value}
+                        rowData={rowData}
+                        restColumnProps={restColumnProps}
+                    />
                 </div>
             </th>
         );
@@ -94,7 +105,12 @@ export default function Cell(props) {
             data-label={getHeaderLabel()}
         >
             <div className="rainbow-table_cell-content">
-                <CellValue component={component} value={value} />
+                <CellValue
+                    component={component}
+                    value={value}
+                    rowData={rowData}
+                    restColumnProps={restColumnProps}
+                />
             </div>
         </td>
     );
@@ -116,6 +132,7 @@ Cell.propTypes = {
     rowsLength: PropTypes.number,
     rowIndex: PropTypes.number,
     rowData: PropTypes.object,
+    restColumnProps: PropTypes.object.isRequired,
 };
 
 Cell.defaultProps = {
