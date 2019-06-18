@@ -1,4 +1,4 @@
-ActivityTimeline base example:
+##### ActivityTimeline base example:
 
     const iconStyles = { width: 32, height: 32 };
     <div className="rainbow-m-around_xx-large">
