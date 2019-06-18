@@ -1,4 +1,4 @@
-TimeLineMarker base:
+##### TimeLineMarker base:
 
     const iconStyles = { width: 32, height: 32 };
     <div className="rainbow-m-around_xx-large">
@@ -10,7 +10,7 @@ TimeLineMarker base:
             />
     </div>
 
-TimeLineMarker with content and description:
+##### TimeLineMarker with content and description:
 
     const iconStyles = { width: 32, height: 32 };
     <div className="rainbow-m-around_xx-large">
