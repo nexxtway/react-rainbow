@@ -1,7 +1,7 @@
 ##### A table with pagination made in the client side:
 
     const badgeStyles = { color: '#1de9b6' };
-    const containerStyles = { height: 320, backgroundColor: '#f4f6f9', };
+    const containerStyles = { height: 312, backgroundColor: '#f4f6f9', };
     const containerTableStyles = { height: 256 } ;
     const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
 
@@ -23,7 +23,7 @@
 ##### A table with fixed height and pagination made in the client side:
 
     const badgeStyles = { color: '#1de9b6' };
-    const containerStyles = { height: 320, backgroundColor: '#f4f6f9', };
+    const containerStyles = { height: 312, backgroundColor: '#f4f6f9', };
     const containerTableStyles = { height: 256 } ;
     const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
 
@@ -45,7 +45,7 @@
 ##### A table with pagination aling to the right made in the client side:
 
     const badgeStyles = { color: '#1de9b6' };
-    const containerStyles = { height: 320, backgroundColor: '#f4f6f9', };
+    const containerStyles = { height: 312, backgroundColor: '#f4f6f9', };
     const containerTableStyles = { height: 256 } ;
     const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
 
