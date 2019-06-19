@@ -55,6 +55,7 @@ import VerticalItem from './VerticalItem';
 import VerticalNavigation from './VerticalNavigation';
 import VerticalSection from './VerticalSection';
 import VerticalSectionOverflow from './VerticalSectionOverflow';
+import WithBrowserPagination from './WithBrowserPagination';
 
 export {
     Accordion,
@@ -114,4 +115,5 @@ export {
     VerticalNavigation,
     VerticalSection,
     VerticalSectionOverflow,
+    WithBrowserPagination,
 };

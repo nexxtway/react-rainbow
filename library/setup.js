@@ -16,6 +16,7 @@ import SocialIconsSet from './pages/Designs/SocialIconsSet';
 import UserSignUpIcon from './exampleComponents/Icons/userSignup';
 import UserVerifiedIcon from './exampleComponents/Icons/userPhoneVerified';
 import UserFirstPostIcon from './exampleComponents/Icons/userFirstPost';
+import Users from './data/users';
 
 global.GlobalHeader = GlobalHeader;
 global.CodeEditor = CodeEditor;
@@ -37,3 +38,4 @@ global.LIBRARY_RECAPTCHA_APIKEY = process.env.REACT_APP_RECAPTCHA_APIKEY;
 global.UserSignUpIcon = UserSignUpIcon;
 global.UserVerifiedIcon = UserVerifiedIcon;
 global.UserFirstPostIcon = UserFirstPostIcon;
+global.Users = Users;
