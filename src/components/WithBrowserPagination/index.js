@@ -86,6 +86,7 @@ export default class WithBrowserPagination extends React.Component {
         } = this.props;
         const { activePage, pageItems } = this.state;
         const pages = Math.ceil(data.length / pageSize);
+        const showPagination = pages > 1;
 
         function renderComponent() {
             if (children) {
@@ -100,7 +101,7 @@ export default class WithBrowserPagination extends React.Component {
         return (
             <div className={className} style={style}>
                 {renderComponent()}
-                <RenderIf isTrue={pages > 0}>
+                <RenderIf isTrue={showPagination}>
                     <Pagination
                         className={this.getPaginationContainerClassNames()}
                         pages={pages}
