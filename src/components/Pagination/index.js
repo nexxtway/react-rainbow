@@ -40,7 +40,7 @@ export default function Pagination(props) {
 }
 
 Pagination.propTypes = {
-    /** The total number of pages. e.g. if your collection has 120 items and the page 
+    /** The total number of pages. e.g. if your collection has 120 items and the page
     size is 50 then pages={Math.ceil(120/50)}/pages={3} */
     pages: PropTypes.number.isRequired,
     /** The number of the page that is selected. */
