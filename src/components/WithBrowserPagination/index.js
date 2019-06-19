@@ -42,8 +42,8 @@ export default class WithBrowserPagination extends React.Component {
         const { paginationAlignment } = this.props;
 
         return classnames(
-            'with-browser-pagination_pagination-container',
-            `with-browser-pagination_pagination--${paginationAlignment}`,
+            'rainbow-with-browser-pagination_pagination-container',
+            `rainbow-with-browser-pagination_pagination--${paginationAlignment}`,
         );
     }
 

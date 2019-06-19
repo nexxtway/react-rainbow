@@ -1,15 +1,15 @@
 @import "../../styles/margins";
 
-.with-browser-pagination_pagination-container {
+.rainbow-with-browser-pagination_pagination-container {
     margin: $margin-medium;
 }
 
-.with-browser-pagination_pagination--right {
+.rainbow-with-browser-pagination_pagination--right {
     display: flex;
     justify-content: flex-end;
 }
 
-.with-browser-pagination_pagination--left {
+.rainbow-with-browser-pagination_pagination--left {
     display: flex;
     justify-content: flex-start;
 }
