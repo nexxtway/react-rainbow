@@ -120,8 +120,9 @@ WithBrowserPagination.propTypes = {
     paginationAlignment: PropTypes.oneOf(['center', 'left', 'right']),
     /** The component that is going to be use to render the paginated data. */
     component: PropTypes.func,
-    /** The total number of pages. e.g. if your collection has 120 items and the page size is 50 then pages={Math.ceil(120/50)}/pages={3}  */
+    /** Indicates the amount of data that will be showed per page. */
     pageSize: PropTypes.number,
+    /** An array containing the objects(rows) to be displayed. */
     data: PropTypes.array,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
