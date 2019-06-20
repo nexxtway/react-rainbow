@@ -10,7 +10,7 @@ function CellValue(props) {
     if (CellComponent) {
         return <CellComponent {...restColumnProps} value={value} row={rowData} />;
     }
-    return value;
+    return <span title={value}>{value}</span>;
 }
 
 CellValue.propTypes = {
