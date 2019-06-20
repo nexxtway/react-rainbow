@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Pagination from '../Pagination';
+import Table from '../Table';
 import RenderIf from '../RenderIf';
 import './styles.css';
 
@@ -14,10 +15,27 @@ function computedPageItems({ data, activePage, pageSize }) {
     return data.slice(start, end);
 }
 
+function Options({ pages, activePage }) {
+    const options = [];
+    let count = 1;
+    while (count <= pages) {
+        options.push(
+            <option selected={count === activePage} key={count}>
+                {count}
+            </option>,
+        );
+        count += 1;
+    }
+    return options;
+}
+
 /**
+ * It implement a client side pagination experience. It basically wire up the Table and
+ * the Pagination component in a compose manner and keep the internal state of the active page
+ * based on a new prop `pageSize`.
  * @category Layout
  */
-export default class WithBrowserPagination extends React.Component {
+export default class TableWithBrowserPagination extends React.Component {
     constructor(props) {
         super(props);
         const { data, pageSize } = props;
@@ -30,6 +48,8 @@ export default class WithBrowserPagination extends React.Component {
             }),
         };
         this.handleChange = this.handleChange.bind(this);
+        this.handleSelectChange = this.handleSelectChange.bind(this);
+        this.table = React.createRef();
     }
 
     componentDidUpdate(prevProps) {
@@ -42,8 +62,8 @@ export default class WithBrowserPagination extends React.Component {
         const { paginationAlignment } = this.props;
 
         return classnames(
-            'rainbow-with-browser-pagination_pagination-container',
-            `rainbow-with-browser-pagination_pagination--${paginationAlignment}`,
+            'rainbow-table-with-browser-pagination_pagination-container',
+            `rainbow-table-with-browser-pagination_pagination--${paginationAlignment}`,
         );
     }
 
@@ -61,7 +81,7 @@ export default class WithBrowserPagination extends React.Component {
         });
     }
 
-    handleChange(event, page) {
+    moveToPage(page) {
         const { data, pageSize } = this.props;
         this.setState({
             activePage: page,
@@ -71,6 +91,16 @@ export default class WithBrowserPagination extends React.Component {
                 pageSize,
             }),
         });
+        this.table.current.scrollTop();
+    }
+
+    handleChange(event, page) {
+        this.moveToPage(page);
+    }
+
+    handleSelectChange(event) {
+        const page = Number(event.target.value);
+        this.moveToPage(page);
     }
 
     render() {
@@ -78,7 +108,6 @@ export default class WithBrowserPagination extends React.Component {
             style,
             className,
             paginationAlignment,
-            component: Component,
             pageSize,
             data,
             children,
@@ -88,39 +117,40 @@ export default class WithBrowserPagination extends React.Component {
         const pages = Math.ceil(data.length / pageSize);
         const showPagination = pages > 1;
 
-        function renderComponent() {
-            if (children) {
-                return (
-                    <Component data={pageItems} {...rest}>
-                        {children}
-                    </Component>
-                );
-            }
-            return <Component data={pageItems} {...rest} />;
-        }
         return (
             <div className={className} style={style}>
-                {renderComponent()}
+                <Table data={pageItems} {...rest} ref={this.table}>
+                    {children}
+                </Table>
                 <RenderIf isTrue={showPagination}>
-                    <Pagination
-                        className={this.getPaginationContainerClassNames()}
-                        pages={pages}
-                        activePage={activePage}
-                        onChange={this.handleChange}
-                    />
+                    <div className={this.getPaginationContainerClassNames()}>
+                        <Pagination
+                            pages={pages}
+                            activePage={activePage}
+                            onChange={this.handleChange}
+                        />
+                        <RenderIf isTrue={pages > 6}>
+                            <div className="rainbow-table-with-browser-pagination_select-container">
+                                <select
+                                    className="rainbow-table-with-browser-pagination_select"
+                                    onChange={this.handleSelectChange}
+                                >
+                                    <Options pages={pages} activePage={activePage} />
+                                </select>
+                            </div>
+                        </RenderIf>
+                    </div>
                 </RenderIf>
             </div>
         );
     }
 }
 
-WithBrowserPagination.propTypes = {
+TableWithBrowserPagination.propTypes = {
     /** Determines the alignment of the pagination relative to the container.
      * Available options are: center, left, and right.
      * This value defaults to center. */
     paginationAlignment: PropTypes.oneOf(['center', 'left', 'right']),
-    /** The component that is going to be use to render the paginated data. */
-    component: PropTypes.func,
     /** Indicates the amount of data that will be showed per page. */
     pageSize: PropTypes.number,
     /** An array containing the objects(rows) to be displayed. */
@@ -131,11 +161,10 @@ WithBrowserPagination.propTypes = {
     style: PropTypes.object,
 };
 
-WithBrowserPagination.defaultProps = {
+TableWithBrowserPagination.defaultProps = {
     paginationAlignment: 'center',
     className: undefined,
     style: undefined,
     pageSize: Infinity,
     data: [],
-    component: () => {},
 };

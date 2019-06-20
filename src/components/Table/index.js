@@ -74,6 +74,8 @@ export default class Table extends Component {
         this.handleDeselectRow = this.handleDeselectRow.bind(this);
         this.handleSelectAllRows = this.handleSelectAllRows.bind(this);
         this.handleDeselectAllRows = this.handleDeselectAllRows.bind(this);
+
+        this.scrollableY = React.createRef();
     }
 
     componentDidMount() {
@@ -185,6 +187,13 @@ export default class Table extends Component {
             return rowsLength;
         }
         return maxRowSelectionNumber;
+    }
+    /**
+     * It will scroll to the top of the Y scrollable container.
+     * @public
+     */
+    scrollTop() {
+        this.scrollableY.current.scrollTop = 0;
     }
 
     updateRows() {
@@ -408,7 +417,11 @@ export default class Table extends Component {
                             className="rainbow-table_container--scrollable-x"
                             ref={this.tableContainerRef}
                         >
-                            <div className={this.getScrollableYClassNames()} style={tableStyles}>
+                            <div
+                                ref={this.scrollableY}
+                                className={this.getScrollableYClassNames()}
+                                style={tableStyles}
+                            >
                                 <table className="rainbow-table" style={tableStyles}>
                                     <thead>
                                         <tr>
