@@ -33,7 +33,7 @@ function Options({ pages, activePage }) {
  * It implement a client side pagination experience. It basically wire up the Table and
  * the Pagination component in a compose manner and keep the internal state of the active page
  * based on a new prop `pageSize`.
- * @category Layout
+ * @category DataView
  */
 export default class TableWithBrowserPagination extends React.Component {
     constructor(props) {

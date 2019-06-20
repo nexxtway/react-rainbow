@@ -130,7 +130,8 @@ th:first-of-type .rainbow-table_header-container {
 
 .rainbow-table_header-arrow {
   flex-shrink: 0;
-  visibility: hidden; }
+  visibility: hidden;
+  margin-left: 12px; }
 
 .rainbow-table_header-arrow--asc {
   transform: rotate(-180deg); }
