@@ -73,3 +73,6 @@ Notification.defaultProps = {
     className: undefined,
     style: undefined,
 };
+
+export { default as showNotification } from './showNotification';
+export { default as NotificationsContainer } from './container';

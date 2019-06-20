@@ -79,3 +79,13 @@
   position: absolute;
   top: 0.3rem;
   right: 0.5rem; }
+
+.rainbow-notifications-container {
+  box-sizing: border-box;
+  position: fixed;
+  top: 0.25rem;
+  right: 0.25rem;
+  z-index: 999999 !important;
+  padding: 0.25rem 0.75rem;
+  overflow-x: hidden;
+  overflow-y: auto; }

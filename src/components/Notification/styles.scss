@@ -87,3 +87,15 @@
     top: 0.3rem;
     right: 0.5rem;
 }
+
+.rainbow-notifications-container {
+    box-sizing: border-box;
+    position: fixed;
+    top: $padding-xx-small;
+    right: $padding-xx-small;
+    z-index: 999999 !important;
+    padding: $padding-xx-small $padding-small;
+    // max-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}

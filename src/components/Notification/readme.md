@@ -66,3 +66,25 @@
 
         </div>
     </div>
+
+##### showNotification
+
+    const { NotificationsContainer, showNotification } = require('./');
+    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+    const {
+        faBell,
+        faSlidersH,
+    } = require('@fortawesome/free-solid-svg-icons');
+
+    <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
+        <GlobalHeader src="images/user/user3.jpg" className="rainbow-p-bottom_small" />
+        <div id="notificationManager" className="rainbow-p-right_small rainbow-flex rainbow-flex_column rainbow-align_end">
+        </div>
+        <div className="rainbow-m-horizontal_large rainbow-p-top_xx-large  rainbow-m-bottom_large rainbow-grid rainbow-grid_align-end">
+            <ButtonIcon shaded variant="brand" icon={<FontAwesomeIcon icon={faBell} />} onClick={() => showNotification(<Notification
+                    title="Notification with info icon"
+                    description="This notification can be used to display information about anything."
+                    icon="info" />, { timeOut: 1000, })} />
+        </div>
+        <NotificationsContainer container='notificationManager' />
+    </div>
