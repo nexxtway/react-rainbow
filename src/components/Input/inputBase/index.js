@@ -13,7 +13,6 @@ export default class InputBase extends Component {
         this.inlineTextLabelId = uniqueId('inline-text-label');
         this.errorMessageId = uniqueId('error-message');
         this.inputRef = React.createRef();
-        this.handleChange = this.handleChange.bind(this);
     }
 
     getContainerClassNames() {
@@ -60,26 +59,6 @@ export default class InputBase extends Component {
         return undefined;
     }
 
-    handleChange(event) {
-        const { debounce, onChange, type } = this.props;
-        event.persist();
-        if (debounce && type === 'search' && event.target.value) {
-            this.resetTimeout();
-            this.timeout = setTimeout(() => {
-                onChange(event);
-            }, 500);
-        } else {
-            this.resetTimeout();
-            onChange(event);
-        }
-    }
-
-    resetTimeout() {
-        if (this.timeout) {
-            clearTimeout(this.timeout);
-        }
-    }
-
     /**
      * Sets focus on the element.
      * @public
@@ -111,6 +90,7 @@ export default class InputBase extends Component {
             label,
             error,
             placeholder,
+            onChange,
             disabled,
             readOnly,
             tabIndex,
@@ -154,7 +134,7 @@ export default class InputBase extends Component {
                         className={this.getInputClassNames()}
                         value={value}
                         placeholder={placeholder}
-                        onChange={this.handleChange}
+                        onChange={onChange}
                         tabIndex={tabIndex}
                         onFocus={onFocus}
                         onBlur={onBlur}
@@ -229,7 +209,6 @@ InputBase.propTypes = {
     id: PropTypes.string,
     autoComplete: PropTypes.string,
     hideLabel: PropTypes.bool,
-    debounce: PropTypes.bool,
 };
 
 InputBase.defaultProps = {
@@ -260,5 +239,4 @@ InputBase.defaultProps = {
     id: undefined,
     autoComplete: 'on',
     hideLabel: false,
-    debounce: false,
 };
