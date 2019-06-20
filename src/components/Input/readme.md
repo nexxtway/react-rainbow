@@ -101,6 +101,7 @@
                 <Input
                     label="Input Search"
                     placeholder="Search"
+                    debounce
                     type="search" />
 
             </div>

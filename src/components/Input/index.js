@@ -123,6 +123,10 @@ Input.propTypes = {
     onKeyDown: PropTypes.func,
     /** Set the input to checked state when true. It is used only for input type checkbox. */
     checked: PropTypes.bool,
+    /** If set to true the onChange event will be sent when the customer finish typing.
+     * Only for the input type search.
+     */
+    debounce: PropTypes.bool,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
@@ -158,6 +162,7 @@ Input.defaultProps = {
     onBlur: () => {},
     onKeyDown: () => {},
     checked: undefined,
+    debounce: false,
     className: undefined,
     style: undefined,
     id: undefined,
