@@ -119,7 +119,12 @@ export default class TableWithBrowserPagination extends React.Component {
 
         return (
             <div className={className} style={style}>
-                <Table data={pageItems} {...rest} ref={this.table}>
+                <Table
+                    className="rainbow-table-with-browser-pagination_table"
+                    data={pageItems}
+                    {...rest}
+                    ref={this.table}
+                >
                     {children}
                 </Table>
                 <RenderIf isTrue={showPagination}>

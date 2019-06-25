@@ -7,6 +7,9 @@
   align-items: center;
   justify-content: center; }
 
+.rainbow-table-with-browser-pagination_table {
+  height: 100%; }
+
 .rainbow-table-with-browser-pagination_select-container {
   flex-shrink: 0;
   height: 100%;

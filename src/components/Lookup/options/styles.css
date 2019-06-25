@@ -3,11 +3,11 @@
   overflow-y: auto; }
 
 .rainbow-lookup_options-container--empty {
-  align-items: center;
+  font-size: 14px;
   color: #a4a7b5;
   display: flex;
   flex-direction: column;
-  font-size: 14px;
+  align-items: center;
   justify-content: center;
   padding: 32px 16px;
   letter-spacing: normal;
@@ -20,8 +20,7 @@
 
 .rainbow-lookup_options-empty-message {
   margin-top: 14px;
-  width: 90%;
-  padding: 0 48px; }
+  width: 90%; }
 
 .rainbow-lookup_options-empty-message_match-value {
   color: #061c3f;
