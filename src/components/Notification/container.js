@@ -9,18 +9,25 @@ export default class NotificationsContainer extends Component {
         super(props);
 
         this.state = {
-            notifications: [],
+            notifyList: [],
+            visibleToasts: [],
         };
 
-        this.handleStoreChange = this.handleStoreChange.bind(this);
+        this.handleNewNotification = this.handleNewNotification.bind(this);
+        this.handleRemoveNotification = this.handleRemoveNotification.bind(this);
+        // this.handleStoreChange = this.handleStoreChange.bind(this);
     }
 
     componentDidMount() {
-        NotificationsManager.addChangeListener(this.handleStoreChange);
+        NotificationsManager.addOnNotifyListener(this.handleNewNotification);
+        NotificationsManager.addOnRemoveListener(this.handleRemoveNotification);
+        // NotificationsManager.addChangeListener(this.handleStoreChange);
     }
 
     componentWillUnmount() {
-        NotificationsManager.removeChangeListener(this.handleStoreChange);
+        NotificationsManager.removeOnNotifyListener(this.handleNewNotification);
+        NotificationsManager.removeOnRemoveListener(this.handleRemoveNotification);
+        // NotificationsManager.removeChangeListener(this.handleStoreChange);
     }
 
     getContainerClassNames() {
@@ -33,36 +40,58 @@ export default class NotificationsContainer extends Component {
         return classnames('rainbow-notifications-container', className);
     }
 
-    handleStoreChange(notifications) {
+    handleNewNotification(notification) {
         const { maxVisible } = this.props;
+        let { notifyList } = this.state;
+
+        notifyList = [notification, ...notifyList];
+
         this.setState({
-            notifications: notifications.slice(0, maxVisible),
+            notifyList,
+            visibleToasts: notifyList.slice(0, maxVisible),
         });
     }
+
+    handleRemoveNotification(notification) {
+        const { maxVisible } = this.props;
+        let { notifyList } = this.state;
+        notifyList = notifyList.filter(toast => toast.key !== notification.key);
+
+        this.setState({
+            notifyList,
+            visibleToasts: notifyList.slice(0, maxVisible),
+        });
+    }
+
+    // handleStoreChange(notifications) {
+    // const { maxVisible } = this.props;
+    // this.setState({
+    //     notifyList: notifications.slice(0, maxVisible),
+    // });
+    // }
 
     // eslint-disable-next-line class-methods-use-this
     handleHideNotification(notification) {
         // console.log(notification);
+        // setTimeout(() => {
         NotificationsManager.remove(notification);
+        // }, 400);
     }
 
     render() {
-        const { notifications } = this.state;
+        const { visibleToasts } = this.state;
         const { container } = this.props;
         return createPortal(
             <div className={this.getContainerClassNames()}>
-                {notifications.map((notification, index, notifyList) => {
+                {visibleToasts.map(notification => {
                     const notify = React.cloneElement(notification.prototype, {
+                        key: notification.key,
                         onRequestClose: () => {
                             this.handleHideNotification(notification);
                         },
                     });
 
-                    if (index < notifyList.length - 1) {
-                        return <div className="rainbow-p-bottom_x-small">{notify}</div>;
-                    }
-
-                    return notify;
+                    return <div className="rainbow-p-bottom_x-small">{notify}</div>;
                 })}
             </div>,
             document.getElementById(container) || document.body,

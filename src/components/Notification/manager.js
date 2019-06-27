@@ -4,7 +4,7 @@ import { uniqueId } from '../../libs/utils';
 class NotificationsManager extends EventEmitter {
     constructor() {
         super();
-        this.listNotify = [];
+        this.notifications = [];
     }
 
     create(notification, properties) {
@@ -13,21 +13,26 @@ class NotificationsManager extends EventEmitter {
             prototype: notification,
             timeOut: 5000,
         };
-        if (properties.priority) {
-            this.listNotify.unshift(Object.assign(defaultProps, properties));
-        } else {
-            this.listNotify.push(Object.assign(defaultProps, properties));
-        }
+
+        const notice = Object.assign(defaultProps, properties);
+
+        // if (properties.priority) {
+        this.notifications.unshift(notice);
+        // } else {
+        // this.notifications.push(notice);
+        // }
+        this.emitOnNotify(notice);
         this.emitChange();
     }
 
     remove(notification) {
-        this.listNotify = this.listNotify.filter(n => notification.key !== n.key);
+        this.notifications = this.notifications.filter(n => notification.key !== n.key);
+        this.emitOnRemove(notification);
         this.emitChange();
     }
 
     emitChange() {
-        this.emit('change', this.listNotify);
+        this.emit('change', this.notifications);
     }
 
     addChangeListener(callback) {
@@ -36,6 +41,30 @@ class NotificationsManager extends EventEmitter {
 
     removeChangeListener(callback) {
         this.removeListener('change', callback);
+    }
+
+    emitOnNotify(notification) {
+        this.emit('toastCreated', notification);
+    }
+
+    addOnNotifyListener(callback) {
+        this.addListener('toastCreated', callback);
+    }
+
+    removeOnNotifyListener(callback) {
+        this.removeListener('toastCreated', callback);
+    }
+
+    emitOnRemove(notification) {
+        this.emit('toastRemoved', notification);
+    }
+
+    addOnRemoveListener(callback) {
+        this.addListener('toastRemoved', callback);
+    }
+
+    removeOnRemoveListener(callback) {
+        this.removeListener('toastRemoved', callback);
     }
 }
 
