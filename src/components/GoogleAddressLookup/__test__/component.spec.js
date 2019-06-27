@@ -41,7 +41,6 @@ describe('<PlacesLookupComponent/>', () => {
         });
         expect(component.instance().autocompleteService).toBe(undefined);
         expect(component.instance().placesService).toBe(undefined);
-        // expect(global.google.maps.places.PlacesService).not.toHaveBeenCalled();
     });
 
     it('should not call any google.maps.places service when isScriptLoaded is true and isScriptLoadSucceed is false', () => {

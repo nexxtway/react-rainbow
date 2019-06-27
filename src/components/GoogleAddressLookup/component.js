@@ -65,7 +65,7 @@ class PlacesLookupComponent extends Component {
     initComponent() {
         this.autocompleteService = new window.google.maps.places.AutocompleteService();
         this.placesService = new window.google.maps.places.PlacesService(
-            document.getElementById(`service-helper_${this.placesServiceId}`),
+            document.getElementById(this.placesServiceId),
         );
         this.initialized = true;
     }
