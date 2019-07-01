@@ -325,6 +325,7 @@ class Lookup extends Component {
             style,
             label,
             error,
+            size,
             placeholder,
             disabled,
             readOnly,
@@ -416,6 +417,7 @@ class Lookup extends Component {
                                     onHoverOption={this.handleHover}
                                     itemHeight={OPTION_HEIGHT}
                                     ref={this.menuRef}
+                                    size={size}
                                 />
                             </div>
                         </RenderIf>
@@ -470,6 +472,12 @@ Lookup.propTypes = {
     disabled: PropTypes.bool,
     /** Specifies that the Lookup is read-only. This value defaults to false. */
     readOnly: PropTypes.bool,
+    /** The icon that appears in the Lookup when the input search is empty.
+     * If not passed by default a search icon will be showed. */
+    icon: PropTypes.node,
+    /** The size of the Lookup menu. Options include small, medium, or large.
+     * This value defaults to medium. */
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
     tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** The action triggered for every key stroke when the customer is typing in the input.
@@ -490,9 +498,6 @@ Lookup.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
-    /** The icon that appears in the Lookup when the input search is empty.
-     * If not passed by default a search icon will be showed. */
-    icon: PropTypes.node,
 };
 
 Lookup.defaultProps = {
@@ -503,6 +508,8 @@ Lookup.defaultProps = {
     error: null,
     disabled: false,
     readOnly: false,
+    icon: <SearchIcon />,
+    size: 'medium',
     onChange: () => {},
     tabIndex: undefined,
     onClick: () => {},
@@ -516,7 +523,6 @@ Lookup.defaultProps = {
     options: undefined,
     onSearch: () => {},
     debounce: false,
-    icon: <SearchIcon />,
 };
 
 export default withReduxForm(Lookup);

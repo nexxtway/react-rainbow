@@ -7,7 +7,8 @@
   color: #576574;
   font-size: 0.875rem;
   margin-right: 0.75rem;
-  margin-bottom: 0.25rem; }
+  margin-bottom: 0.25rem;
+  width: 100%; }
 
 .rainbow-radio-group_inner-container .rainbow-radio-group_radio {
   display: block; }

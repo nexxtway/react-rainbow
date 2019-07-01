@@ -35,10 +35,21 @@ function MenuItems(props) {
     });
 }
 
+const sizeMap = {
+    small: 160,
+    medium: 256,
+    large: 400,
+};
+
 export default class Options extends React.PureComponent {
     constructor(props) {
         super(props);
         this.containerRef = React.createRef();
+    }
+
+    getMaxHeight() {
+        const { size } = this.props;
+        return sizeMap[size] || sizeMap.medium;
     }
 
     getRef() {
@@ -75,7 +86,7 @@ export default class Options extends React.PureComponent {
 
         const resultContainerStyles = {
             height: itemHeight * items.length + 17,
-            maxHeight: 256,
+            maxHeight: this.getMaxHeight(),
         };
 
         return (
@@ -102,6 +113,7 @@ Options.propTypes = {
     onHoverOption: PropTypes.func,
     focusedItemIndex: PropTypes.number,
     itemHeight: PropTypes.number.isRequired,
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
 Options.defaultProps = {
@@ -110,4 +122,5 @@ Options.defaultProps = {
     onSelectOption: () => {},
     onHoverOption: () => {},
     focusedItemIndex: undefined,
+    size: 'medium',
 };
