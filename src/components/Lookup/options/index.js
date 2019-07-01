@@ -68,7 +68,6 @@ export default class Options extends React.PureComponent {
             onHoverOption,
             focusedItemIndex,
             itemHeight,
-            size,
         } = this.props;
 
         if (items.length === 0) {
@@ -95,7 +94,6 @@ export default class Options extends React.PureComponent {
                 className="rainbow-lookup_options-container"
                 style={resultContainerStyles}
                 ref={this.containerRef}
-                size={size}
             >
                 <MenuItems
                     items={items}
