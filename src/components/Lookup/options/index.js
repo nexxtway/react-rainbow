@@ -49,7 +49,7 @@ export default class Options extends React.PureComponent {
 
     getMaxHeight() {
         const { size } = this.props;
-        return sizeMap[size] || 256;
+        return sizeMap[size] || sizeMap.medium;
     }
 
     getRef() {
