@@ -22,6 +22,11 @@ import SearchIcon from './icons/searchIcon';
 import './styles.css';
 
 const OPTION_HEIGHT = 48;
+const visibleOptionsMap = {
+    small: 3,
+    medium: 5,
+    large: 8,
+};
 
 /**
  * A Lookup is an autocomplete text input that will search against a database object,
@@ -249,11 +254,13 @@ class Lookup extends Component {
 
     scrollUp(prevFocusedIndex) {
         const { options } = this.state;
+        const { size } = this.props;
         const menu = this.menuRef.current.getRef();
         const prevIndex = prevFocusedIndex >= 0 ? prevFocusedIndex : 0;
         const prevFocusedOption = menu.childNodes[prevIndex];
+        const visibleOptionsAmount = visibleOptionsMap[size] || visibleOptionsMap.medium;
 
-        if (options.length > 5 && !isOptionVisible(prevFocusedOption, menu)) {
+        if (options.length > visibleOptionsAmount && !isOptionVisible(prevFocusedOption, menu)) {
             this.menuRef.current.scrollTo(OPTION_HEIGHT * prevIndex);
         }
     }
@@ -276,11 +283,15 @@ class Lookup extends Component {
 
     scrollDown(nextFocusedIndex) {
         const { options } = this.state;
+        const { size } = this.props;
         const menu = this.menuRef.current.getRef();
         const nextFocusedOption = menu.childNodes[nextFocusedIndex];
+        const visibleOptionsAmount = visibleOptionsMap[size] || visibleOptionsMap.medium;
 
-        if (options.length > 5 && !isOptionVisible(nextFocusedOption, menu)) {
-            this.menuRef.current.scrollTo(OPTION_HEIGHT * (nextFocusedIndex - 4));
+        if (options.length > visibleOptionsAmount && !isOptionVisible(nextFocusedOption, menu)) {
+            this.menuRef.current.scrollTo(
+                OPTION_HEIGHT * (nextFocusedIndex - (visibleOptionsAmount - 1)),
+            );
         }
     }
 
