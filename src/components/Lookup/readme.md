@@ -60,7 +60,7 @@
             onSearch={search} />
     </div>
 
-##### Lookup with icon and description:
+##### Lookup small with icon and description:
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
     const { faBuilding } = require('@fortawesome/free-regular-svg-icons');
@@ -177,8 +177,10 @@
 
     <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
         <Lookup
+            id="lookup-3"
             label="Lookup Label"
             placeholder="Find"
+            size="small"
             options={state.options}
             value={state.option}
             onChange={(option) => setState({ option })}

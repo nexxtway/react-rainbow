@@ -11,13 +11,33 @@ describe('<Options />', () => {
         const component = mount(<Options items={[{}]} />);
         expect(component.find('ul').exists()).toBe(true);
     });
-    it('should pass the right height to the ul element', () => {
+    it('should set the right height to the ul element', () => {
         const values = [[{}], [{}, {}], [{}, {}, {}, {}], [{}, {}, {}, {}, {}, {}]];
         const expects = [65, 113, 209, 305];
         values.forEach((items, index) => {
             const component = mount(<Options items={items} itemHeight={48} />);
             expect(component.find('ul').prop('style').height).toBe(expects[index]);
         });
+    });
+    it('should set the right max height to the ul element when size is not passed', () => {
+        const component = mount(<Options items={[{}]} />);
+        expect(component.find('ul').prop('style').maxHeight).toBe(256);
+    });
+    it('should set the right max height to the ul element when size is small', () => {
+        const component = mount(<Options items={[{}]} size="small" />);
+        expect(component.find('ul').prop('style').maxHeight).toBe(160);
+    });
+    it('should set the right max height to the ul element when size is medium', () => {
+        const component = mount(<Options items={[{}]} size="medium" />);
+        expect(component.find('ul').prop('style').maxHeight).toBe(256);
+    });
+    it('should set the right max height to the ul element when size is large', () => {
+        const component = mount(<Options items={[{}]} size="large" />);
+        expect(component.find('ul').prop('style').maxHeight).toBe(400);
+    });
+    it('should set the right max height to the ul element when a wrong size is passed', () => {
+        const component = mount(<Options items={[{}]} size="wrong size" />);
+        expect(component.find('ul').prop('style').maxHeight).toBe(256);
     });
     it('should render the amount of menu items passed as items', () => {
         const component = mount(<Options items={[{}, {}, {}]} />);
