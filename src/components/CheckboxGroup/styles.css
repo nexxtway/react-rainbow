@@ -24,7 +24,8 @@
   justify-content: flex-start; }
 
 .rainbow-checkbox-group_checkbox {
-  display: inline-block; }
+  display: inline-block;
+  margin-bottom: 2px; }
   .rainbow-checkbox-group_checkbox .rainbow-checkbox-group_checkbox-faux {
     width: 20px;
     height: 20px;
