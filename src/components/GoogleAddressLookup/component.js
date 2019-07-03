@@ -22,15 +22,20 @@ class PlacesLookupComponent extends Component {
         this.initialized = false;
         this.handleChange = this.handleChange.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
+        this.placesServiceRef = React.createRef();
 
         this.state = {
             isSearching: false,
+            // TODO: remove
             places: [],
             suggestions: [],
         };
     }
 
     componentDidUpdate({ isScriptLoaded: prevIsScriptLoaded }) {
+        // TODO: change this please, keep isInitialized as an state and don't
+        // render anything until the
+        // component is initialized
         const { isScriptLoaded, isScriptLoadSucceed } = this.props;
         if (!prevIsScriptLoaded && isScriptLoaded && isScriptLoadSucceed) {
             this.initComponent();
@@ -42,8 +47,30 @@ class PlacesLookupComponent extends Component {
         return classnames('rainbow-google-address-lookup_container', className);
     }
 
+    getPlaceInfo(placeId) {
+        this.setState({ isSearching: true });
+
+        return new Promise((resolve, reject) => {
+            this.placesService.getDetails(
+                {
+                    placeId,
+                },
+                (details, status) => {
+                    this.setState({ isSearching: false });
+                    if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+                        return resolve(details);
+                    }
+                    return reject(status);
+                },
+            );
+        });
+    }
+
     initComponent() {
         this.autocompleteService = new window.google.maps.places.AutocompleteService();
+        this.placesService = new window.google.maps.places.PlacesService(
+            this.placesServiceRef.current,
+        );
         this.initialized = true;
     }
 
@@ -54,13 +81,24 @@ class PlacesLookupComponent extends Component {
             return onChange(null);
         }
 
-        const { places } = this.state;
-        let value = places.find(place => place.place_id === option.id);
-        if (!value) {
-            value = option.data;
+        if (!option.id) {
+            return onChange(option.data);
         }
 
-        return onChange(value);
+        const { places } = this.state;
+        const placePrediction = places.find(place => place.place_id === option.id);
+
+        return this.getPlaceInfo(option.id)
+            .then(result => {
+                const resultValue = Object.assign(result, {
+                    predictionInfo: placePrediction,
+                });
+                return onChange(resultValue);
+            })
+            .catch(() => {
+                const resultValue = placePrediction;
+                return onChange(resultValue);
+            });
     }
 
     handleSearch(value) {
@@ -168,6 +206,7 @@ class PlacesLookupComponent extends Component {
                         <PoweredByGoogleLogo className="rainbow-google-address-lookup_powered-by-google-logo" />
                     </div>
                 </RenderIf>
+                <div ref={this.placesServiceRef} />
             </div>
         );
     }
@@ -180,7 +219,11 @@ PlacesLookupComponent.propTypes = {
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
     hideLabel: PropTypes.bool,
     readOnly: PropTypes.bool,
-    value: PropTypes.oneOfType([CustomPropTypes.valueShape, PropTypes.string]),
+    value: PropTypes.oneOfType([
+        CustomPropTypes.predictionShape,
+        CustomPropTypes.placeDetailsShape,
+        PropTypes.string,
+    ]),
     name: PropTypes.string,
     placeholder: PropTypes.string,
     required: PropTypes.bool,

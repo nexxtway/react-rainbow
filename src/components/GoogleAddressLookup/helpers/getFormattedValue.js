@@ -10,10 +10,12 @@ export default function getFormattedValue(value, highlightMatch, icon) {
         };
     }
 
+    const prediction = value.predictionInfo ? value.predictionInfo : value;
+
     let formattedLabel;
 
     if (highlightMatch) {
-        formattedLabel = value.structured_formatting.main_text_matched_substrings.reduceRight(
+        formattedLabel = prediction.structured_formatting.main_text_matched_substrings.reduceRight(
             (prev, currentMatch, index) => {
                 const matchedTerm = prev.head.slice(
                     currentMatch.offset,
@@ -45,19 +47,19 @@ export default function getFormattedValue(value, highlightMatch, icon) {
                 );
             },
             {
-                head: value.structured_formatting.main_text,
-                fullText: value.structured_formatting.main_text,
+                head: prediction.structured_formatting.main_text,
+                fullText: prediction.structured_formatting.main_text,
                 tail: '',
             },
         );
     } else {
-        formattedLabel = value.description;
+        formattedLabel = prediction.description;
     }
 
     return {
-        id: value.place_id,
+        id: prediction.place_id,
         label: formattedLabel,
-        description: value.structured_formatting.secondary_text,
+        description: prediction.structured_formatting.secondary_text,
         icon,
     };
 }

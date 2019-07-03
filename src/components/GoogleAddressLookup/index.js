@@ -28,7 +28,11 @@ GoogleAddressLookup.propTypes = {
     /** A boolean to hide the component label. */
     hideLabel: PropTypes.bool,
     /** Specifies the selected value of the component. */
-    value: PropTypes.oneOfType([CustomPropTypes.valueShape, PropTypes.string]),
+    value: PropTypes.oneOfType([
+        CustomPropTypes.predictionShape,
+        CustomPropTypes.placeDetailsShape,
+        PropTypes.string,
+    ]),
     /** The name of the component. */
     name: PropTypes.string,
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
