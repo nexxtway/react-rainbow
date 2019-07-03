@@ -19,10 +19,10 @@ class PlacesLookupComponent extends Component {
     constructor(props) {
         super(props);
         this.lookupId = uniqueId('gaddrlookup-input');
-        this.placesServiceId = uniqueId('gaddrlookup-places-service-helper');
         this.initialized = false;
         this.handleChange = this.handleChange.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
+        this.placesServiceRef = React.createRef();
 
         this.state = {
             isSearching: false,
@@ -69,8 +69,7 @@ class PlacesLookupComponent extends Component {
     initComponent() {
         this.autocompleteService = new window.google.maps.places.AutocompleteService();
         this.placesService = new window.google.maps.places.PlacesService(
-            // TODO: use a ref
-            document.getElementById(this.placesServiceId),
+            this.placesServiceRef.current,
         );
         this.initialized = true;
     }
@@ -207,7 +206,7 @@ class PlacesLookupComponent extends Component {
                         <PoweredByGoogleLogo className="rainbow-google-address-lookup_powered-by-google-logo" />
                     </div>
                 </RenderIf>
-                <div id={this.placesServiceId} />
+                <div ref={this.placesServiceRef} />
             </div>
         );
     }
