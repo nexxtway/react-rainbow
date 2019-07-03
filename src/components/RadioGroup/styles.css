@@ -20,7 +20,8 @@
   color: #ea4243; }
 
 .rainbow-radio-group_radio {
-  display: inline-block; }
+  display: inline-block;
+  margin-bottom: 2px; }
   .rainbow-radio-group_radio .rainbow-radio-group_radio-faux {
     width: 20px;
     height: 20px;
