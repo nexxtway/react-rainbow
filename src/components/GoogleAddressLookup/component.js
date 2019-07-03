@@ -26,12 +26,16 @@ class PlacesLookupComponent extends Component {
 
         this.state = {
             isSearching: false,
+            // TODO: remove
             places: [],
             suggestions: [],
         };
     }
 
     componentDidUpdate({ isScriptLoaded: prevIsScriptLoaded }) {
+        // TODO: change this please, keep isInitialized as an state and don't
+        // render anything until the
+        // component is initialized
         const { isScriptLoaded, isScriptLoadSucceed } = this.props;
         if (!prevIsScriptLoaded && isScriptLoaded && isScriptLoadSucceed) {
             this.initComponent();
@@ -53,10 +57,10 @@ class PlacesLookupComponent extends Component {
                 },
                 (details, status) => {
                     this.setState({ isSearching: false });
-                    if (status !== window.google.maps.places.PlacesServiceStatus.OK) {
-                        return reject(status);
+                    if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+                        return resolve(details);
                     }
-                    return resolve(details);
+                    return reject(status);
                 },
             );
         });
@@ -65,6 +69,7 @@ class PlacesLookupComponent extends Component {
     initComponent() {
         this.autocompleteService = new window.google.maps.places.AutocompleteService();
         this.placesService = new window.google.maps.places.PlacesService(
+            // TODO: use a ref
             document.getElementById(this.placesServiceId),
         );
         this.initialized = true;
@@ -202,7 +207,7 @@ class PlacesLookupComponent extends Component {
                         <PoweredByGoogleLogo className="rainbow-google-address-lookup_powered-by-google-logo" />
                     </div>
                 </RenderIf>
-                <div id={`service-helper_${this.placesServiceId}`} />
+                <div id={this.placesServiceId} />
             </div>
         );
     }
