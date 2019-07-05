@@ -11,16 +11,17 @@ class NotificationsManager extends EventEmitter {
         const defaultProps = {
             key: uniqueId('rainbow-notification'),
             prototype: notification,
-            timeOut: 5000,
+            timeout: 5000,
         };
 
         const notice = Object.assign(defaultProps, properties);
 
-        // if (properties.priority) {
-        this.notifications.unshift(notice);
-        // } else {
-        // this.notifications.push(notice);
-        // }
+        if (properties.priority) {
+            this.notifications.unshift(notice);
+        } else {
+            this.notifications.push(notice);
+        }
+
         this.emitOnNotify(notice);
         this.emitChange();
     }

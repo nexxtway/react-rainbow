@@ -87,5 +87,11 @@
   right: 0.25rem;
   z-index: 999999 !important;
   padding: 0.25rem 0.75rem;
+  max-height: 100vh;
   overflow-x: hidden;
-  overflow-y: auto; }
+  overflow-y: hidden; }
+
+.rainbow-notification-item-container {
+  position: relative;
+  padding-bottom: 0.5rem;
+  left: 0%; }

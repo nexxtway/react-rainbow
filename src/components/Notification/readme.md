@@ -85,19 +85,19 @@
                 <Button variant="neutral" onClick={() => showNotification(<Notification
                     title="Notification with info icon"
                     description="This notification can be used to display information about anything."
-                    icon="info" />, { timeOut: 1000, })} label="Info" />
+                    icon="info" />, { timeout: 5000, })} label="Info" />
                 <Button variant="neutral" onClick={() => showNotification(<Notification
                     title="Notification with success icon"
                     description="This task was successfully completed."
-                    icon="success" />, { timeOut: 1000, })} label="Success" />
+                    icon="success" />, { timeout: 5000, })} label="Success" />
                 <Button variant="neutral" onClick={() => showNotification(<Notification
                     title="Notification with warning icon"
                     description="This can be a risky situation."
-                    icon="warning" />, { timeOut: 1000, })} label="Warning"/>
+                    icon="warning" />, { timeout: 5000, })} label="Warning"/>
                 <Button variant="neutral" onClick={() => showNotification(<Notification
                     title="Notification with error icon"
                     description="Alarm, there is a bug in the system."
-                    icon="error" />, { timeOut: 1000, priority: true, })} label="Error" />
+                    icon="error" />, { timeout: 5000, priority: true, })} label="Error" />
             </ButtonGroup>
         </div>
         <NotificationsContainer />

@@ -3,18 +3,19 @@ import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import classnames from 'classnames';
 import NotificationsManager from './manager';
+import TimedToast from './timedtoast';
 
 export default class NotificationsContainer extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            notifyList: [],
-            visibleToasts: [],
+            toastsList: [],
         };
 
         this.handleNewNotification = this.handleNewNotification.bind(this);
         this.handleRemoveNotification = this.handleRemoveNotification.bind(this);
+        this.handleHideNotification = this.handleHideNotification.bind(this);
         // this.handleStoreChange = this.handleStoreChange.bind(this);
     }
 
@@ -41,58 +42,52 @@ export default class NotificationsContainer extends Component {
     }
 
     handleNewNotification(notification) {
-        const { maxVisible } = this.props;
-        let { notifyList } = this.state;
+        let { toastsList } = this.state;
 
-        notifyList = [notification, ...notifyList];
+        if (notification.priority) {
+            toastsList = [notification, ...toastsList];
+        } else {
+            toastsList = [...toastsList, notification];
+        }
 
         this.setState({
-            notifyList,
-            visibleToasts: notifyList.slice(0, maxVisible),
+            toastsList,
         });
+
+        this.showToast(notification);
     }
 
     handleRemoveNotification(notification) {
-        const { maxVisible } = this.props;
-        let { notifyList } = this.state;
-        notifyList = notifyList.filter(toast => toast.key !== notification.key);
+        let { toastsList } = this.state;
+        toastsList = toastsList.filter(toast => toast.key !== notification.key);
 
         this.setState({
-            notifyList,
-            visibleToasts: notifyList.slice(0, maxVisible),
+            toastsList,
         });
     }
 
-    // handleStoreChange(notifications) {
-    // const { maxVisible } = this.props;
-    // this.setState({
-    //     notifyList: notifications.slice(0, maxVisible),
-    // });
-    // }
+    handleHideNotification(notification) {
+        this.removeToast(notification);
+    }
 
     // eslint-disable-next-line class-methods-use-this
-    handleHideNotification(notification) {
-        // console.log(notification);
-        // setTimeout(() => {
-        NotificationsManager.remove(notification);
-        // }, 400);
+    removeToast(toast) {
+        NotificationsManager.remove(toast);
     }
 
     render() {
-        const { visibleToasts } = this.state;
+        const { toastsList } = this.state;
         const { container } = this.props;
         return createPortal(
             <div className={this.getContainerClassNames()}>
-                {visibleToasts.map(notification => {
-                    const notify = React.cloneElement(notification.prototype, {
-                        key: notification.key,
-                        onRequestClose: () => {
-                            this.handleHideNotification(notification);
-                        },
-                    });
-
-                    return <div className="rainbow-p-bottom_x-small">{notify}</div>;
-                })}
+                {toastsList.map(notification => (
+                    <TimedToast
+                        key={notification.key}
+                        protoType={notification.prototype}
+                        timeout={notification.timeout}
+                        onRemove={() => this.handleHideNotification(notification)}
+                    />
+                ))}
             </div>,
             document.getElementById(container) || document.body,
         );
@@ -101,12 +96,12 @@ export default class NotificationsContainer extends Component {
 
 NotificationsContainer.propTypes = {
     container: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-    maxVisible: PropTypes.number,
+    // maxVisible: PropTypes.number,
     className: PropTypes.string,
 };
 
 NotificationsContainer.defaultProps = {
     container: document.body,
     className: undefined,
-    maxVisible: 5,
+    // maxVisible: 5,
 };

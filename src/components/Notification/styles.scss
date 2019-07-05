@@ -95,7 +95,13 @@
     right: $padding-xx-small;
     z-index: 999999 !important;
     padding: $padding-xx-small $padding-small;
-    // max-height: 100vh;
+    max-height: 100vh;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: hidden;
+}
+
+.rainbow-notification-item-container {
+    position: relative;
+    padding-bottom: 0.5rem;
+    left: 0%;
 }
