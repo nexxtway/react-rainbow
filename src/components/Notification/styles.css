@@ -94,4 +94,22 @@
 .rainbow-notification-item-container {
   position: relative;
   padding-bottom: 0.5rem;
-  left: 0%; }
+  left: 105%; }
+  .rainbow-notification-item-container.show {
+    animation: showToast 0.4s; }
+  .rainbow-notification-item-container.visible {
+    left: 0%; }
+  .rainbow-notification-item-container.hide {
+    animation: hideToast 0.4s; }
+
+@keyframes showToast {
+  from {
+    left: 105%; }
+  to {
+    left: 0; } }
+
+@keyframes hideToast {
+  from {
+    left: 0; }
+  to {
+    left: 105%; } }

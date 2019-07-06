@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 export default class TimedToast extends Component {
-    // constructor(props) {
-    //     super(props);
-    // }
+    constructor(props) {
+        super(props);
+
+        this.onAnimationEnd = this.onAnimationEnd.bind(this);
+        this.timer = null;
+        this.animationState = null;
+    }
 
     componentDidMount() {
         const { timeout } = this.props;
@@ -21,8 +26,32 @@ export default class TimedToast extends Component {
         }
     }
 
+    onAnimationEnd() {
+        if (this.animationState === null) {
+            this.animationState = 1;
+            this.forceUpdate();
+        } else if (this.animationState === 2) {
+            this.props.onRemove();
+        }
+    }
+
+    getContainerClassNames() {
+        let classModifier = '';
+
+        if (this.animationState === null) {
+            classModifier = 'show';
+        } else if (this.animationState === 1) {
+            classModifier = 'visible';
+        } else if (this.animationState === 2) {
+            classModifier = 'hide';
+        }
+
+        return classnames('rainbow-notification-item-container', classModifier);
+    }
+
     requestHide() {
-        this.props.onRemove();
+        this.animationState = 2;
+        this.forceUpdate();
     }
 
     render() {
@@ -33,7 +62,11 @@ export default class TimedToast extends Component {
             },
         });
 
-        return <div className="rainbow-notification-item-container">{notify}</div>;
+        return (
+            <div className={this.getContainerClassNames()} onAnimationEnd={this.onAnimationEnd}>
+                {notify}
+            </div>
+        );
     }
 }
 

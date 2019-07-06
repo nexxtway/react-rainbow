@@ -16,19 +16,16 @@ export default class NotificationsContainer extends Component {
         this.handleNewNotification = this.handleNewNotification.bind(this);
         this.handleRemoveNotification = this.handleRemoveNotification.bind(this);
         this.handleHideNotification = this.handleHideNotification.bind(this);
-        // this.handleStoreChange = this.handleStoreChange.bind(this);
     }
 
     componentDidMount() {
         NotificationsManager.addOnNotifyListener(this.handleNewNotification);
         NotificationsManager.addOnRemoveListener(this.handleRemoveNotification);
-        // NotificationsManager.addChangeListener(this.handleStoreChange);
     }
 
     componentWillUnmount() {
         NotificationsManager.removeOnNotifyListener(this.handleNewNotification);
         NotificationsManager.removeOnRemoveListener(this.handleRemoveNotification);
-        // NotificationsManager.removeChangeListener(this.handleStoreChange);
     }
 
     getContainerClassNames() {
@@ -53,8 +50,6 @@ export default class NotificationsContainer extends Component {
         this.setState({
             toastsList,
         });
-
-        this.showToast(notification);
     }
 
     handleRemoveNotification(notification) {
@@ -96,12 +91,10 @@ export default class NotificationsContainer extends Component {
 
 NotificationsContainer.propTypes = {
     container: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-    // maxVisible: PropTypes.number,
     className: PropTypes.string,
 };
 
 NotificationsContainer.defaultProps = {
     container: document.body,
     className: undefined,
-    // maxVisible: 5,
 };
