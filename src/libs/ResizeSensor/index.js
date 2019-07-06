@@ -78,12 +78,12 @@ function attachResizeEvent(element, resizeListener) {
         return;
     }
     if (element.resizedAttached) {
-        element.resizedAttached.add(resizeListener);
+        element.resizedAttached.add(() => resizeListener());
         return;
     }
 
     element.resizedAttached = new EventQueue();
-    element.resizedAttached.add(resizeListener);
+    element.resizedAttached.add(() => resizeListener());
 
     const resizeSensor = createResizeSensor();
     element.resizeSensor = resizeSensor;

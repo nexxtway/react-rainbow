@@ -15,15 +15,11 @@ function computedPageItems({ data, activePage, pageSize }) {
     return data.slice(start, end);
 }
 
-function Options({ pages, activePage }) {
+function Options({ pages }) {
     const options = [];
     let count = 1;
     while (count <= pages) {
-        options.push(
-            <option selected={count === activePage} key={count}>
-                {count}
-            </option>,
-        );
+        options.push(<option key={count}>{count}</option>);
         count += 1;
     }
     return options;
@@ -139,8 +135,9 @@ export default class TableWithBrowserPagination extends React.Component {
                                 <select
                                     className="rainbow-table-with-browser-pagination_select"
                                     onChange={this.handleSelectChange}
+                                    value={activePage}
                                 >
-                                    <Options pages={pages} activePage={activePage} />
+                                    <Options pages={pages} />
                                 </select>
                             </div>
                         </RenderIf>

@@ -56,6 +56,7 @@ import VerticalNavigation from './VerticalNavigation';
 import VerticalSection from './VerticalSection';
 import VerticalSectionOverflow from './VerticalSectionOverflow';
 import TableWithBrowserPagination from './TableWithBrowserPagination';
+import withDebounce from '../libs/hocs/withDebounce';
 
 export {
     Accordion,
@@ -116,4 +117,5 @@ export {
     VerticalSection,
     VerticalSectionOverflow,
     TableWithBrowserPagination,
+    withDebounce,
 };
