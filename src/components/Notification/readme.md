@@ -78,26 +78,24 @@
 
     <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
         <GlobalHeader src="images/user/user3.jpg" className="rainbow-p-bottom_small" />
-        <div id="notificationManager" className="rainbow-p-right_small rainbow-flex rainbow-flex_column rainbow-align_end">
-        </div>
         <div className="rainbow-p-vertical_large rainbow-p-left_x-large rainbow-flex rainbow-align_center">
             <ButtonGroup>
                 <Button variant="neutral" onClick={() => showNotification(<Notification
                     title="Notification with info icon"
                     description="This notification can be used to display information about anything."
-                    icon="info" />, { timeout: 5000, })} label="Info" />
+                    icon="info" />, { timeout: 2000, })} label="Info" />
                 <Button variant="neutral" onClick={() => showNotification(<Notification
                     title="Notification with success icon"
                     description="This task was successfully completed."
-                    icon="success" />, { timeout: 5000, })} label="Success" />
+                    icon="success" />, { timeout: 2000, })} label="Success" />
                 <Button variant="neutral" onClick={() => showNotification(<Notification
                     title="Notification with warning icon"
                     description="This can be a risky situation."
-                    icon="warning" />, { timeout: 5000, })} label="Warning"/>
+                    icon="warning" />, { timeout: 2000, })} label="Warning"/>
                 <Button variant="neutral" onClick={() => showNotification(<Notification
                     title="Notification with error icon"
                     description="Alarm, there is a bug in the system."
-                    icon="error" />, { timeout: 5000, priority: true, })} label="Error" />
+                    icon="error" />, { timeout: 2000, priority: true, })} label="Error" />
             </ButtonGroup>
         </div>
         <NotificationsContainer />

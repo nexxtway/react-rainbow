@@ -96,19 +96,19 @@
   padding-bottom: 0.5rem;
   left: 105%; }
   .rainbow-notification-item-container.show {
-    animation: showToast 0.4s; }
+    animation: easeIn 0.4s; }
   .rainbow-notification-item-container.visible {
     left: 0%; }
   .rainbow-notification-item-container.hide {
-    animation: hideToast 0.4s; }
+    animation: easeOut 0.4s; }
 
-@keyframes showToast {
+@keyframes easeIn {
   from {
     left: 105%; }
   to {
     left: 0; } }
 
-@keyframes hideToast {
+@keyframes easeOut {
   from {
     left: 0; }
   to {

@@ -11,7 +11,7 @@ class NotificationsManager extends EventEmitter {
         const defaultProps = {
             key: uniqueId('rainbow-notification'),
             prototype: notification,
-            timeout: 5000,
+            timeout: 3000,
         };
 
         const notice = Object.assign(defaultProps, properties);

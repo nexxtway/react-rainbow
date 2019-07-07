@@ -106,7 +106,7 @@
     left: 105%;
 
     &.show {
-        animation: showToast 0.4s;
+        animation: easeIn 0.4s;
     }
 
     &.visible {
@@ -114,11 +114,11 @@
     }
 
     &.hide {
-        animation: hideToast 0.4s;
+        animation: easeOut 0.4s;
     }
 }
 
-@keyframes showToast {
+@keyframes easeIn {
     from {
         left: 105%;
     }
@@ -128,7 +128,7 @@
     }
 }
 
-@keyframes hideToast {
+@keyframes easeOut {
     from {
         left: 0;
     }
