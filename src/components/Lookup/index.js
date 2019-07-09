@@ -131,6 +131,9 @@ class Lookup extends Component {
         });
         onChange(value);
         this.containerRef.current.focus();
+        setTimeout(() => {
+            this.inputRef.current.focus();
+        }, 0);
     }
 
     handleSearch(event) {
@@ -376,7 +379,9 @@ class Lookup extends Component {
                 <RenderIf isTrue={!!currentValue}>
                     <div className="rainbow-lookup_chip-content_container">
                         <input
+                            id={this.inputId}
                             type="search"
+                            name={name}
                             ref={this.inputRef}
                             className={this.getInputClassNames()}
                             style={{ position: 'absolute', zIndex: 0 }}
