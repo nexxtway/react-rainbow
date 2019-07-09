@@ -71,6 +71,13 @@ class Lookup extends Component {
         };
     }
 
+    componentDidMount() {
+        if (window) {
+            window.addEventListener('click', this.handleWindowClick, false);
+            window.addEventListener('touchstart', this.handleWindowClick, false);
+        }
+    }
+
     componentDidUpdate(prevProps) {
         const { options: prevOptions } = prevProps;
         const { options } = this.props;
@@ -80,13 +87,6 @@ class Lookup extends Component {
                 options: normalizedOptions,
                 focusedItemIndex: getInitialFocusedIndex(normalizedOptions),
             });
-        }
-    }
-
-    componentDidMount() {
-        if (window) {
-            window.addEventListener('click', this.handleWindowClick, false);
-            window.addEventListener('touchstart', this.handleWindowClick, false);
         }
     }
 
