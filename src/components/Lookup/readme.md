@@ -47,7 +47,7 @@
         }
     }
 
-    initialState = { options: null };
+    initialState = { option: { label: 'Paris' }, options: null };
 
     <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
         <Lookup

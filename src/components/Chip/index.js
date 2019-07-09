@@ -29,6 +29,7 @@ export default function Chip(props) {
                 <ButtonIcon
                     className="rainbow-chip_button-container"
                     icon={<CloseIcon />}
+                    tabIndex={-1}
                     size="small"
                     title="Close"
                     onClick={onDelete}

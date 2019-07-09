@@ -375,6 +375,15 @@ class Lookup extends Component {
 
                 <RenderIf isTrue={!!currentValue}>
                     <div className="rainbow-lookup_chip-content_container">
+                        <input
+                            type="search"
+                            ref={this.inputRef}
+                            className={this.getInputClassNames()}
+                            style={{ position: 'absolute', zIndex: 0 }}
+                            onFocus={this.handleFocus}
+                            onBlur={this.handleBlur}
+                            tabIndex={tabIndex}
+                        />
                         <Chip
                             className="rainbow-lookup_chip"
                             label={<ChipContent {...currentValue} />}
@@ -405,8 +414,8 @@ class Lookup extends Component {
                             className={this.getInputClassNames()}
                             value={searchValue}
                             placeholder={placeholder}
-                            onChange={this.handleSearch}
                             tabIndex={tabIndex}
+                            onChange={this.handleSearch}
                             onFocus={this.handleFocus}
                             onBlur={this.handleBlur}
                             onClick={onClick}
