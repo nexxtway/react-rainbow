@@ -49,9 +49,11 @@ class Lookup extends Component {
         this.innerContainerRef = React.createRef();
         this.inputRef = React.createRef();
         this.menuRef = React.createRef();
+        this.chipRef = React.createRef();
         this.handleSearch = this.handleSearch.bind(this);
         this.clearInput = this.clearInput.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.handleWindowClick = this.handleWindowClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleFocus = this.handleFocus.bind(this);
         this.handleRemoveValue = this.handleRemoveValue.bind(this);
@@ -79,6 +81,18 @@ class Lookup extends Component {
                 focusedItemIndex: getInitialFocusedIndex(normalizedOptions),
             });
         }
+    }
+
+    componentDidMount() {
+        if (window) {
+            window.addEventListener('click', this.handleWindowClick, false);
+            window.addEventListener('touchstart', this.handleWindowClick, false);
+        }
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('click', this.handleWindowClick, false);
+        window.removeEventListener('touchstart', this.handleWindowClick, false);
     }
 
     getContainerClassNames() {
@@ -142,6 +156,16 @@ class Lookup extends Component {
             searchValue: value,
         });
         this.fireSearch(value);
+    }
+
+    handleWindowClick(event) {
+        const ref = this.chipRef.current;
+        const isClickInsideChip = ref && ref.contains(event.target);
+        if (isClickInsideChip) {
+            setTimeout(() => {
+                this.inputRef.current.focus();
+            }, 0);
+        }
     }
 
     handleFocus() {
@@ -377,7 +401,7 @@ class Lookup extends Component {
                 />
 
                 <RenderIf isTrue={!!currentValue}>
-                    <div className="rainbow-lookup_chip-content_container">
+                    <div className="rainbow-lookup_chip-content_container" ref={this.chipRef}>
                         <input
                             id={this.inputId}
                             type="search"
