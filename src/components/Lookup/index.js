@@ -95,6 +95,11 @@ class Lookup extends Component {
         window.removeEventListener('touchstart', this.handleWindowClick, false);
     }
 
+    // eslint-disable-next-line class-methods-use-this
+    getChipInputClassNames() {
+        return classnames('rainbow-lookup_input', 'rainbow-lookup_input-hidden-caret');
+    }
+
     getContainerClassNames() {
         const { className, error } = this.props;
         return classnames(
@@ -407,8 +412,7 @@ class Lookup extends Component {
                             type="search"
                             name={name}
                             ref={this.inputRef}
-                            className={this.getInputClassNames()}
-                            style={{ position: 'absolute', zIndex: 0 }}
+                            className={this.getChipInputClassNames()}
                             onFocus={this.handleFocus}
                             onBlur={this.handleBlur}
                             tabIndex={tabIndex}

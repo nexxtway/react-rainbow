@@ -228,6 +228,12 @@
     align-items: center;
     height: 2.5rem;
     width: 100%;
+
+    .rainbow-lookup_input.rainbow-lookup_input-hidden-caret {
+        position: absolute;
+        z-index: 0;
+        caret-color: transparent;
+    }
 }
 
 .rainbow-lookup_chip {
