@@ -172,7 +172,7 @@ class PlacesLookupComponent extends Component {
             value,
             hideLabel,
             onClick,
-            onFocus,
+            // onFocus,
             onBlur,
         } = this.props;
         const { isSearching, suggestions } = this.state;
@@ -196,7 +196,8 @@ class PlacesLookupComponent extends Component {
                     onChange={this.handleChange}
                     onSearch={this.handleSearch}
                     onClick={onClick}
-                    onFocus={onFocus}
+                    // fix focus problem when used with redux form
+                    // onFocus={onFocus}
                     onBlur={onBlur}
                     error={error}
                     icon={<LocationIcon />}
@@ -235,7 +236,7 @@ PlacesLookupComponent.propTypes = {
     style: PropTypes.object,
     onChange: PropTypes.func,
     onClick: PropTypes.func,
-    onFocus: PropTypes.func,
+    // onFocus: PropTypes.func,
     onBlur: PropTypes.func,
 };
 
