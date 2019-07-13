@@ -211,7 +211,8 @@ export default class PrimitiveMenu extends Component {
         });
     }
 
-    toggleMenu() {
+    toggleMenu(event) {
+        event.stopPropagation();
         const { isOpen } = this.state;
         if (isOpen) {
             return this.closeMenu();
