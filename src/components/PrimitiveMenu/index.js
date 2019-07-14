@@ -21,6 +21,7 @@ export default class PrimitiveMenu extends Component {
         this.handleClick = this.handleClick.bind(this);
         this.closeMenu = this.closeMenu.bind(this);
         this.hoverChild = this.hoverChild.bind(this);
+        this.handleTriggerClick = this.handleTriggerClick.bind(this);
 
         this.registerChild = this.registerChild.bind(this);
         this.unregisterChild = this.unregisterChild.bind(this);
@@ -211,7 +212,15 @@ export default class PrimitiveMenu extends Component {
         });
     }
 
-    toggleMenu(event) {
+    toggleMenu() {
+        const { isOpen } = this.state;
+        if (isOpen) {
+            return this.closeMenu();
+        }
+        return this.openMenu();
+    }
+
+    handleTriggerClick(event) {
         event.stopPropagation();
         const { isOpen } = this.state;
         if (isOpen) {
@@ -277,7 +286,7 @@ export default class PrimitiveMenu extends Component {
                     ariaExpanded={isOpen}
                     ariaHaspopup
                     assistiveText={assistiveText}
-                    onClick={this.toggleMenu}
+                    onClick={this.handleTriggerClick}
                     ref={this.triggerRef}
                 />
 
