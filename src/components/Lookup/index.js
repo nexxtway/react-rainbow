@@ -3,12 +3,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import RenderIf from '../RenderIf';
-import Chip from '../Chip';
 import Spinner from '../Spinner';
 import Label from './label';
 import RightElement from './rightElement';
 import Options from './options';
-import ChipContent from './chipContent';
 import {
     isNavigationKey,
     getNormalizedOptions,
@@ -16,10 +14,11 @@ import {
     isOptionVisible,
 } from './helpers';
 import { uniqueId } from '../../libs/utils';
-import { UP_KEY, DOWN_KEY, ENTER_KEY, ESCAPE_KEY } from '../../libs/constants';
+import { UP_KEY, DOWN_KEY, ENTER_KEY, ESCAPE_KEY, TAB_KEY } from '../../libs/constants';
 import withReduxForm from '../../libs/hocs/withReduxForm';
 import SearchIcon from './icons/searchIcon';
 import './styles.css';
+import LeftElement from './leftElement';
 
 const OPTION_HEIGHT = 48;
 const visibleOptionsMap = {
@@ -49,33 +48,27 @@ class Lookup extends Component {
         this.innerContainerRef = React.createRef();
         this.inputRef = React.createRef();
         this.menuRef = React.createRef();
-        this.chipRef = React.createRef();
-        this.handleSearch = this.handleSearch.bind(this);
-        this.clearInput = this.clearInput.bind(this);
-        this.handleClick = this.handleClick.bind(this);
-        this.handleWindowClick = this.handleWindowClick.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-        this.handleFocus = this.handleFocus.bind(this);
-        this.handleRemoveValue = this.handleRemoveValue.bind(this);
-        this.handleBlur = this.handleBlur.bind(this);
 
+        this.handleChange = this.handleChange.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+        this.handleFocus = this.handleFocus.bind(this);
+        this.handleBlur = this.handleBlur.bind(this);
+        this.handleSearch = this.handleSearch.bind(this);
+        this.handleRemoveValue = this.handleRemoveValue.bind(this);
+        this.clearInput = this.clearInput.bind(this);
         this.handleHover = this.handleHover.bind(this);
         this.handleKeyDown = this.handleKeyDown.bind(this);
         this.handleKeyUpPressed = this.handleKeyUpPressed.bind(this);
         this.handleKeyDownPressed = this.handleKeyDownPressed.bind(this);
         this.handleKeyEnterPressed = this.handleKeyEnterPressed.bind(this);
+        this.handleKeyTabPressed = this.handleKeyTabPressed.bind(this);
+
         this.keyHandlerMap = {
             [UP_KEY]: this.handleKeyUpPressed,
             [DOWN_KEY]: this.handleKeyDownPressed,
             [ENTER_KEY]: this.handleKeyEnterPressed,
+            [TAB_KEY]: this.handleKeyTabPressed,
         };
-    }
-
-    componentDidMount() {
-        if (window) {
-            window.addEventListener('click', this.handleWindowClick, false);
-            window.addEventListener('touchstart', this.handleWindowClick, false);
-        }
     }
 
     componentDidUpdate(prevProps) {
@@ -90,16 +83,6 @@ class Lookup extends Component {
         }
     }
 
-    componentWillUnmount() {
-        window.removeEventListener('click', this.handleWindowClick, false);
-        window.removeEventListener('touchstart', this.handleWindowClick, false);
-    }
-
-    // eslint-disable-next-line class-methods-use-this
-    getChipInputClassNames() {
-        return classnames('rainbow-lookup_input', 'rainbow-lookup_input-hidden-caret');
-    }
-
     getContainerClassNames() {
         const { className, error } = this.props;
         return classnames(
@@ -112,17 +95,23 @@ class Lookup extends Component {
     }
 
     getInputClassNames() {
+        const { value } = this.props;
         const { isLoading } = this.props;
         return classnames('rainbow-lookup_input', {
             'rainbow-lookup_input--loading': isLoading,
+            'rainbow-lookup_input--value': !!value,
+            'rainbow-lookup_input--value-w-icon': !!value && !!value.icon,
         });
     }
 
     getValue() {
         const { value } = this.props;
-        if (typeof value === 'object' && !Array.isArray(value)) {
-            return value;
+        if (value !== null && typeof value === 'object' && !Array.isArray(value)) {
+            return typeof value === 'string'
+                ? { valueIcon: null, inputValue: value }
+                : { valueIcon: value.icon, inputValue: value.label };
         }
+
         return undefined;
     }
 
@@ -134,6 +123,24 @@ class Lookup extends Component {
         return undefined;
     }
 
+    clearInput() {
+        const searchValue = '';
+        this.setState({
+            searchValue,
+        });
+        this.fireSearch(searchValue);
+        setTimeout(() => this.focus(), 0);
+    }
+
+    handleChange(value) {
+        const { onChange } = this.props;
+        this.setState({
+            searchValue: '',
+        });
+        onChange(value);
+        this.focus();
+    }
+
     handleClick(event) {
         const ref = this.innerContainerRef.current;
         const isClickInsideLookup = ref && ref.contains(event.target);
@@ -143,16 +150,34 @@ class Lookup extends Component {
         return this.closeMenu();
     }
 
-    handleChange(value) {
-        const { onChange } = this.props;
-        this.setState({
-            searchValue: '',
-        });
-        onChange(value);
-        this.containerRef.current.focus();
+    handleBlur() {
+        const { onBlur, value } = this.props;
+        const eventValue = value || null;
+        onBlur(eventValue);
+    }
+
+    handleFocus() {
+        const { onFocus, value } = this.props;
+        this.openMenu();
+        const eventValue = value || null;
+        onFocus(eventValue);
         setTimeout(() => {
-            this.inputRef.current.focus();
+            const textSize = this.inputRef.current.value.length;
+            this.inputRef.current.setSelectionRange(textSize, textSize);
         }, 0);
+    }
+
+    handleHover(index) {
+        this.setState({
+            focusedItemIndex: index,
+        });
+    }
+
+    handleRemoveValue() {
+        const { onChange, onSearch } = this.props;
+        onChange(null);
+        onSearch('');
+        setTimeout(() => this.focus(), 0);
     }
 
     handleSearch(event) {
@@ -161,36 +186,6 @@ class Lookup extends Component {
             searchValue: value,
         });
         this.fireSearch(value);
-    }
-
-    handleWindowClick(event) {
-        const ref = this.chipRef.current;
-        const isClickInsideChip = ref && ref.contains(event.target);
-        if (isClickInsideChip) {
-            setTimeout(() => {
-                this.inputRef.current.focus();
-            }, 0);
-        }
-    }
-
-    handleFocus() {
-        const { onFocus, value } = this.props;
-        this.openMenu();
-        const eventValue = value || null;
-        onFocus(eventValue);
-    }
-
-    handleBlur() {
-        const { onBlur, value } = this.props;
-        const eventValue = value || null;
-        onBlur(eventValue);
-    }
-
-    handleRemoveValue() {
-        const { onChange, onSearch } = this.props;
-        onChange(null);
-        onSearch('');
-        setTimeout(() => this.focus(), 0);
     }
 
     fireSearch(value) {
@@ -204,15 +199,6 @@ class Lookup extends Component {
             this.resetTimeout();
             onSearch(value);
         }
-    }
-
-    clearInput() {
-        const searchValue = '';
-        this.setState({
-            searchValue,
-        });
-        this.fireSearch(searchValue);
-        setTimeout(() => this.focus(), 0);
     }
 
     resetTimeout() {
@@ -241,17 +227,12 @@ class Lookup extends Component {
 
     isMenuOpen() {
         const { searchValue, isFocused } = this.state;
-        const { options } = this.props;
+        const { value, options } = this.props;
+        const isValueEmpty = !value;
         const isMenuEmpty =
             isFocused && !!searchValue && Array.isArray(options) && options.length === 0;
-        const isOpen = isFocused && Array.isArray(options) && !!options.length;
+        const isOpen = isFocused && Array.isArray(options) && !!options.length && isValueEmpty;
         return isOpen || isMenuEmpty;
-    }
-
-    handleHover(index) {
-        this.setState({
-            focusedItemIndex: index,
-        });
     }
 
     handleKeyDown(event) {
@@ -263,6 +244,12 @@ class Lookup extends Component {
         if (isNavigationKey(keyCode) && this.isMenuOpen()) {
             event.preventDefault();
             event.stopPropagation();
+            if (this.keyHandlerMap[keyCode]) {
+                this.keyHandlerMap[keyCode]();
+            }
+        }
+
+        if (keyCode === TAB_KEY && this.isMenuOpen()) {
             if (this.keyHandlerMap[keyCode]) {
                 this.keyHandlerMap[keyCode]();
             }
@@ -339,6 +326,17 @@ class Lookup extends Component {
         setTimeout(() => this.containerRef.current.focus(), 0);
     }
 
+    handleKeyTabPressed() {
+        const { onChange } = this.props;
+        const { focusedItemIndex } = this.state;
+        const { options } = this.state;
+        const value = options[focusedItemIndex];
+        this.setState({
+            searchValue: '',
+        });
+        onChange(value);
+    }
+
     /**
      * Sets focus on the element.
      * @public
@@ -382,10 +380,12 @@ class Lookup extends Component {
             icon,
         } = this.props;
         const { searchValue, focusedItemIndex, options } = this.state;
-        const chipOnDelete = disabled || readOnly ? undefined : this.handleRemoveValue;
+        const onDeleteValue = disabled || readOnly ? undefined : this.handleRemoveValue;
         const isOpenMenu = this.isMenuOpen();
         const errorMessageId = this.getErrorMessageId();
         const currentValue = this.getValue();
+        const { valueIcon, inputValue } =
+            currentValue !== undefined ? currentValue : { inputValue: searchValue };
 
         return (
             <div
@@ -404,30 +404,14 @@ class Lookup extends Component {
                     inputId={this.inputId}
                     readOnly={readOnly}
                 />
-
-                <RenderIf isTrue={!!currentValue}>
-                    <div className="rainbow-lookup_chip-content_container" ref={this.chipRef}>
-                        <input
-                            id={this.inputId}
-                            type="search"
-                            name={name}
-                            ref={this.inputRef}
-                            className={this.getChipInputClassNames()}
-                            onFocus={this.handleFocus}
-                            onBlur={this.handleBlur}
-                            tabIndex={tabIndex}
-                        />
-                        <Chip
-                            className="rainbow-lookup_chip"
-                            label={<ChipContent {...currentValue} />}
-                            variant="neutral"
-                            onDelete={chipOnDelete}
-                        />
-                    </div>
-                </RenderIf>
-
-                <RenderIf isTrue={!currentValue}>
-                    <div className="rainbow-lookup_input-container" ref={this.innerContainerRef}>
+                <div className="rainbow-lookup_input-container" ref={this.innerContainerRef}>
+                    <RenderIf isTrue={!!currentValue}>
+                        <RenderIf isTrue={!!valueIcon}>
+                            <LeftElement icon={valueIcon} />
+                        </RenderIf>
+                        <RightElement showCloseButton onClear={onDeleteValue} />
+                    </RenderIf>
+                    <RenderIf isTrue={!currentValue}>
                         <RightElement
                             showCloseButton={!!searchValue}
                             onClear={this.clearInput}
@@ -439,43 +423,41 @@ class Lookup extends Component {
                             size="x-small"
                             assistiveText="searching"
                         />
-
-                        <input
-                            id={this.inputId}
-                            name={name}
-                            type="search"
-                            className={this.getInputClassNames()}
-                            value={searchValue}
-                            placeholder={placeholder}
-                            tabIndex={tabIndex}
-                            onChange={this.handleSearch}
-                            onFocus={this.handleFocus}
-                            onBlur={this.handleBlur}
-                            onClick={onClick}
-                            disabled={disabled}
-                            readOnly={readOnly}
-                            required={required}
-                            autoComplete="off"
-                            aria-describedby={errorMessageId}
-                            ref={this.inputRef}
-                        />
-
-                        <RenderIf isTrue={isOpenMenu}>
-                            <div className="rainbow-lookup_options-menu">
-                                <Options
-                                    items={options}
-                                    value={searchValue}
-                                    onSelectOption={this.handleChange}
-                                    focusedItemIndex={focusedItemIndex}
-                                    onHoverOption={this.handleHover}
-                                    itemHeight={OPTION_HEIGHT}
-                                    ref={this.menuRef}
-                                    size={size}
-                                />
-                            </div>
-                        </RenderIf>
-                    </div>
-                </RenderIf>
+                    </RenderIf>
+                    <input
+                        id={this.inputId}
+                        name={name}
+                        type="search"
+                        className={this.getInputClassNames()}
+                        value={inputValue}
+                        placeholder={placeholder}
+                        tabIndex={tabIndex}
+                        onChange={this.handleSearch}
+                        onFocus={this.handleFocus}
+                        onBlur={this.handleBlur}
+                        onClick={onClick}
+                        disabled={disabled}
+                        readOnly={readOnly}
+                        required={required}
+                        autoComplete="off"
+                        aria-describedby={errorMessageId}
+                        ref={this.inputRef}
+                    />
+                    <RenderIf isTrue={isOpenMenu}>
+                        <div className="rainbow-lookup_options-menu">
+                            <Options
+                                items={options}
+                                value={searchValue}
+                                onSelectOption={this.handleChange}
+                                focusedItemIndex={focusedItemIndex}
+                                onHoverOption={this.handleHover}
+                                itemHeight={OPTION_HEIGHT}
+                                ref={this.menuRef}
+                                size={size}
+                            />
+                        </div>
+                    </RenderIf>
+                </div>
                 <RenderIf isTrue={!!error}>
                     <div id={errorMessageId} className="rainbow-lookup_input-error">
                         {error}
@@ -579,3 +561,5 @@ Lookup.defaultProps = {
 };
 
 export default withReduxForm(Lookup);
+// export const LookupNew = withReduxForm(Lookup);
+// export { default as Lookup } from './lookup';

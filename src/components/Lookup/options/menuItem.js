@@ -38,6 +38,7 @@ export default class MenuItem extends Component {
                     href="javascript:void(0);"
                     role="menuitem"
                     ref={this.itemRef}
+                    tabIndex={-1}
                 >
                     <RenderIf isTrue={!!icon}>
                         <span className="rainbow-lookup_menu-item_icon-container">{icon}</span>

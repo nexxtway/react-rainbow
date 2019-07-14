@@ -94,6 +94,7 @@ export default class Options extends React.PureComponent {
                 className="rainbow-lookup_options-container"
                 style={resultContainerStyles}
                 ref={this.containerRef}
+                tabIndex={-1}
             >
                 <MenuItems
                     items={items}
