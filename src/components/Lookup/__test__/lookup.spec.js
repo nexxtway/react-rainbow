@@ -77,7 +77,7 @@ describe('<Lookup />', () => {
             .find('Options')
             .find('li')
             .at(1)
-            .simulate('click');
+            .simulate('mousedown');
         expect(onChangeMockFn).toHaveBeenCalledWith({
             label: 'New York',
             description: 'awesome city',
@@ -103,7 +103,7 @@ describe('<Lookup />', () => {
             .find('Options')
             .find('li')
             .at(0)
-            .simulate('click');
+            .simulate('mousedown');
         expect(component.find('input').prop('value')).toBe('');
     });
     it('should call onSearch with the right value when type in the input', () => {
