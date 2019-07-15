@@ -51,7 +51,6 @@ class Lookup extends Component {
         this.menuRef = React.createRef();
         this.handleSearch = this.handleSearch.bind(this);
         this.clearInput = this.clearInput.bind(this);
-        this.handleClick = this.handleClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleFocus = this.handleFocus.bind(this);
         this.handleRemoveValue = this.handleRemoveValue.bind(this);
@@ -115,15 +114,6 @@ class Lookup extends Component {
         return undefined;
     }
 
-    handleClick(event) {
-        const ref = this.innerContainerRef.current;
-        const isClickInsideLookup = ref && ref.contains(event.target);
-        if (isClickInsideLookup) {
-            return null;
-        }
-        return this.closeMenu();
-    }
-
     handleChange(value) {
         const { onChange } = this.props;
         this.setState({
@@ -150,6 +140,7 @@ class Lookup extends Component {
 
     handleBlur() {
         const { onBlur, value } = this.props;
+        this.closeMenu();
         const eventValue = value || null;
         onBlur(eventValue);
     }
@@ -190,8 +181,6 @@ class Lookup extends Component {
     }
 
     openMenu() {
-        window.addEventListener('click', this.handleClick);
-        window.addEventListener('touchstart', this.handleClick);
         return this.setState({
             isFocused: true,
         });
@@ -199,8 +188,6 @@ class Lookup extends Component {
 
     closeMenu() {
         const { options } = this.state;
-        window.removeEventListener('click', this.handleClick);
-        window.removeEventListener('touchstart', this.handleClick);
         return this.setState({
             isFocused: false,
             focusedItemIndex: getInitialFocusedIndex(options),

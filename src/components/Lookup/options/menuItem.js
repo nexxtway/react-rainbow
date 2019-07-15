@@ -30,10 +30,11 @@ export default class MenuItem extends Component {
             <li
                 className={this.getContainerClassNames()}
                 role="presentation"
-                onClick={onClick}
+                onMouseDown={onClick}
                 onMouseEnter={this.handleHover}
             >
                 <a
+                    tabIndex={-1}
                     className="rainbow-lookup_menu-item-link"
                     href="javascript:void(0);"
                     role="menuitem"
