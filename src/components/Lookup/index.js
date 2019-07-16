@@ -121,11 +121,11 @@ class Lookup extends Component {
 
     handleChange(value) {
         const { onChange } = this.props;
+        this.containerRef.current.focus();
         this.setState({
             searchValue: '',
         });
         onChange(value);
-        this.containerRef.current.focus();
     }
 
     handleSearch(event) {
@@ -292,11 +292,11 @@ class Lookup extends Component {
         const { focusedItemIndex } = this.state;
         const { options } = this.state;
         const value = options[focusedItemIndex];
+        this.containerRef.current.focus();
         this.setState({
             searchValue: '',
         });
         onChange(value);
-        setTimeout(() => this.containerRef.current.focus(), 0);
     }
 
     /**
