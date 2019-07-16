@@ -59,6 +59,31 @@
         }
     }
 
+    .rainbow-lookup_input-left-icon {
+        fill: $color-gray-3;
+        height: 100%;
+        // width: 22px;
+        position: absolute;
+        top: 0;
+        left: 5px;
+        line-height: 1;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+
+        svg {
+            width: 16px !important;
+            height: 16px !important;
+            font-size: 16px !important;
+        }
+
+        & > svg {
+            margin-left: 0.8rem;
+        }
+    }
+
     .rainbow-lookup_input-icon:not(button) {
         pointer-events: none;
     }
@@ -203,11 +228,11 @@
 
 .rainbow-lookup_input-close-button-container {
     height: 100%;
-    right: 0.5rem;
+    right: 0.45rem;
     position: absolute;
     line-height: 1;
     z-index: 2;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
 }
@@ -230,29 +255,32 @@
     width: 100%;
 }
 
-.rainbow-lookup_chip {
-    width: 100%;
-    margin: 0 3px;
-    padding-left: 0;
-    transition: all 0.1s linear;
+.rainbow-lookup_input.rainbow-lookup_input--value {
+    box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 4px #dddbda;
+    caret-color: transparent;
+    background-color: white;
+    border: 1px solid $color-gray-3;
+    border-radius: $border-radius-2;
+    color: $color-dark-1;
+
+    &:focus,
+    &:active {
+        outline: 0;
+        border: 2px $color-brand solid;
+        background-color: white;
+        z-index: 0;
+        box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 4px #dddbda;
+    }
+
+    &[readonly] {
+        padding-left: 1rem;
+    }
 }
 
-.rainbow-lookup_chip-content {
-    display: flex;
-    align-items: center;
-}
+.rainbow-lookup_input.rainbow-lookup_input--value-w-icon {
+    padding-left: 2.5rem;
 
-.rainbow-lookup_chip-content_icon {
-    height: 100%;
-    width: 30px;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -ms-flex-align: center;
-    align-items: center;
-}
-
-.rainbow-lookup_chip-content_label {
-    margin-left: 8px;
+    &[readonly] {
+        padding-left: 2.5rem;
+    }
 }

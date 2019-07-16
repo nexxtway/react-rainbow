@@ -3,12 +3,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import RenderIf from '../RenderIf';
-import Chip from '../Chip';
 import Spinner from '../Spinner';
 import Label from './label';
 import RightElement from './rightElement';
 import Options from './options';
-import ChipContent from './chipContent';
 import {
     isNavigationKey,
     getNormalizedOptions,
@@ -20,6 +18,9 @@ import { UP_KEY, DOWN_KEY, ENTER_KEY, ESCAPE_KEY } from '../../libs/constants';
 import withReduxForm from '../../libs/hocs/withReduxForm';
 import SearchIcon from './icons/searchIcon';
 import './styles.css';
+import LeftElement from './leftElement';
+import CloseIcon from './icons/closeIcon';
+import CloseIconDark from './icons/closeIconDark';
 
 const OPTION_HEIGHT = 48;
 const visibleOptionsMap = {
@@ -92,16 +93,20 @@ class Lookup extends Component {
     }
 
     getInputClassNames() {
-        const { isLoading } = this.props;
+        const { value, isLoading } = this.props;
         return classnames('rainbow-lookup_input', {
             'rainbow-lookup_input--loading': isLoading,
+            'rainbow-lookup_input--value': !!value,
+            'rainbow-lookup_input--value-w-icon': !!value && !!value.icon,
         });
     }
 
     getValue() {
         const { value } = this.props;
-        if (typeof value === 'object' && !Array.isArray(value)) {
-            return value;
+        if (value !== null && typeof value === 'object' && !Array.isArray(value)) {
+            return typeof value === 'string'
+                ? { valueIcon: null, inputValue: value }
+                : { valueIcon: value.icon, inputValue: value.label };
         }
         return undefined;
     }
@@ -337,10 +342,12 @@ class Lookup extends Component {
             icon,
         } = this.props;
         const { searchValue, focusedItemIndex, options } = this.state;
-        const chipOnDelete = disabled || readOnly ? undefined : this.handleRemoveValue;
+        const onDeleteValue = disabled || readOnly ? undefined : this.handleRemoveValue;
         const isOpenMenu = this.isMenuOpen();
         const errorMessageId = this.getErrorMessageId();
         const currentValue = this.getValue();
+        const { valueIcon, inputValue } =
+            currentValue !== undefined ? currentValue : { inputValue: searchValue };
 
         return (
             <div
@@ -361,30 +368,43 @@ class Lookup extends Component {
                 />
 
                 <RenderIf isTrue={!!currentValue}>
-                    <div className="rainbow-lookup_chip-content_container">
-                        <Chip
-                            className="rainbow-lookup_chip"
-                            label={<ChipContent {...currentValue} />}
-                            variant="neutral"
-                            onDelete={chipOnDelete}
+                    <div className="rainbow-lookup_input-container" ref={this.innerContainerRef}>
+                        <RenderIf isTrue={!!valueIcon}>
+                            <LeftElement icon={valueIcon} />
+                        </RenderIf>
+                        <input
+                            id={this.inputId}
+                            name={name}
+                            type="text"
+                            className={this.getInputClassNames()}
+                            value={inputValue}
+                            tabIndex={tabIndex}
+                            onFocus={this.handleFocus}
+                            onBlur={this.handleBlur}
+                            onClick={onClick}
+                            disabled={disabled}
+                            readOnly
+                            required={required}
+                            aria-describedby={errorMessageId}
+                            ref={this.inputRef}
+                        />
+                        <RightElement
+                            showCloseButton
+                            closeIcon={<CloseIconDark />}
+                            onClear={onDeleteValue}
+                            tabIndex="auto"
                         />
                     </div>
                 </RenderIf>
 
                 <RenderIf isTrue={!currentValue}>
                     <div className="rainbow-lookup_input-container" ref={this.innerContainerRef}>
-                        <RightElement
-                            showCloseButton={!!searchValue}
-                            onClear={this.clearInput}
-                            icon={icon}
-                        />
                         <Spinner
                             isVisible={isLoading}
                             className="rainbow-lookup_spinner"
                             size="x-small"
                             assistiveText="searching"
                         />
-
                         <input
                             id={this.inputId}
                             name={name}
@@ -404,7 +424,13 @@ class Lookup extends Component {
                             aria-describedby={errorMessageId}
                             ref={this.inputRef}
                         />
-
+                        <RightElement
+                            showCloseButton={!!searchValue}
+                            onClear={this.clearInput}
+                            icon={icon}
+                            closeIcon={<CloseIcon />}
+                            tabIndex={-1}
+                        />
                         <RenderIf isTrue={isOpenMenu}>
                             <div className="rainbow-lookup_options-menu">
                                 <Options
