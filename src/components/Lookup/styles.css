@@ -191,7 +191,7 @@
     padding: 0 2.35rem 0 1rem;
     line-height: 2.5rem;
     height: 2.5rem;
-    font-size: 1rem;
+    font-size: 0.875rem;
     text-overflow: ellipsis; }
     .rainbow-lookup_selected-value .rainbow-lookup_selected-value-input[type='search']::-ms-clear {
       display: none;
