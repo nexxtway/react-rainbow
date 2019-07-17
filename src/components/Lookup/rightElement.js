@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ButtonIcon from '../ButtonIcon';
+import CloseIcon from './icons/closeIcon';
 
-export default function RightElement({ showCloseButton, onClear, icon, closeIcon, ...rest }) {
+export default function RightElement({ showCloseButton, onClear, icon }) {
     if (showCloseButton) {
         return (
             <span className="rainbow-lookup_input-close-button-container">
@@ -10,9 +11,9 @@ export default function RightElement({ showCloseButton, onClear, icon, closeIcon
                     assistiveText="close"
                     size="small"
                     title="close"
-                    icon={closeIcon}
+                    tabIndex={-1}
+                    icon={<CloseIcon />}
                     onClick={onClear}
-                    {...rest}
                 />
             </span>
         );

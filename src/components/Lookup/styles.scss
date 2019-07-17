@@ -59,31 +59,6 @@
         }
     }
 
-    .rainbow-lookup_input-left-icon {
-        fill: $color-gray-3;
-        height: 100%;
-        // width: 22px;
-        position: absolute;
-        top: 0;
-        left: 5px;
-        line-height: 1;
-        z-index: 2;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        pointer-events: none;
-
-        svg {
-            width: 16px !important;
-            height: 16px !important;
-            font-size: 16px !important;
-        }
-
-        & > svg {
-            margin-left: 0.8rem;
-        }
-    }
-
     .rainbow-lookup_input-icon:not(button) {
         pointer-events: none;
     }
@@ -228,11 +203,11 @@
 
 .rainbow-lookup_input-close-button-container {
     height: 100%;
-    right: 0.45rem;
+    right: 0.5rem;
     position: absolute;
     line-height: 1;
     z-index: 2;
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
 }
@@ -243,44 +218,101 @@
     top: 1.4rem;
 }
 
-.rainbow-lookup_chip-content_container {
-    background-color: white;
-    border: 1px solid $color-gray-3;
-    border-radius: $border-radius-2;
-    transition: all 0.1s linear;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 2.5rem;
-    width: 100%;
+.rainbow-lookup_input-selected-value-container {
+    position: relative;
+
+    .rainbow-lookup_selected-value-icon {
+        fill: $color-gray-3;
+        width: 2.5rem;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        line-height: 1;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+            width: 16px !important;
+            height: 16px !important;
+            font-size: 16px !important;
+        }
+    }
+
+    .rainbow-lookup_selected-value-icon:not(button) {
+        pointer-events: none;
+    }
+
+    .rainbow-lookup_selected-value-input-w-icon {
+        padding-left: 2.35rem;
+    }
 }
 
-.rainbow-lookup_input.rainbow-lookup_input--value {
+.rainbow-lookup_selected-value-input {
     box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 4px #dddbda;
     caret-color: transparent;
     background-color: white;
     border: 1px solid $color-gray-3;
     border-radius: $border-radius-2;
     color: $color-dark-1;
+    width: 100%;
+    transition: all 0.1s linear;
+    display: inline-block;
+    padding: 0 1rem 0 1rem;
+    line-height: 2.5rem;
+    height: 2.5rem;
+    font-size: $font-size-text-large;
+
+    &[type='search']::-ms-clear {
+        display: none;
+        width: 0;
+        height: 0;
+    }
 
     &:focus,
     &:active {
         outline: 0;
+        line-height: 2.5rem;
+        box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 4px #dddbda;
         border: 2px $color-brand solid;
         background-color: white;
         z-index: 0;
-        box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 4px #dddbda;
     }
 
-    &[readonly] {
-        padding-left: 1rem;
+    &::placeholder {
+        color: $color-gray-3;
+        font-weight: 300;
+        font-size: $font-size-text-large;
+    }
+
+    &[disabled] {
+        background-color: $color-gray-1;
+        border-color: $color-gray-2;
+        color: $color-gray-2;
+        cursor: not-allowed;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+
+        &:focus,
+        &:active {
+            box-shadow: none;
+            background-color: $color-gray-1;
+            border: 1px $color-gray-2 solid;
+            padding-left: $padding-medium;
+        }
     }
 }
 
-.rainbow-lookup_input.rainbow-lookup_input--value-w-icon {
-    padding-left: 2.5rem;
-
-    &[readonly] {
-        padding-left: 2.5rem;
-    }
+.rainbow-lookup_selected-value-clear-button-container {
+    height: 100%;
+    right: 0.5rem;
+    position: absolute;
+    line-height: 1;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
