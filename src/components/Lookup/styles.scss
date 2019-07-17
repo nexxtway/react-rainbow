@@ -40,7 +40,6 @@
     position: relative;
 
     .rainbow-lookup_input-icon {
-        fill: $color-gray-3;
         height: 100%;
         width: 22px;
         position: absolute;
@@ -53,9 +52,9 @@
         justify-content: center;
 
         svg {
-            width: 16px !important;
-            height: 16px !important;
-            font-size: 16px !important;
+            width: 16px;
+            height: 16px;
+            font-size: 16px;
         }
     }
 
@@ -117,6 +116,7 @@
         font-size: $font-size-text-large;
         color: $color-dark-1;
         font-weight: 400;
+        box-sizing: border-box;
 
         &:focus,
         &:active {
@@ -222,7 +222,6 @@
     position: relative;
 
     .rainbow-lookup_selected-value-icon {
-        fill: $color-gray-3;
         width: 2.5rem;
         height: 100%;
         position: absolute;
@@ -255,11 +254,11 @@
     background-color: white;
     border: 1px solid $color-gray-3;
     border-radius: $border-radius-2;
-    color: $color-dark-1;
+    color: $color-gray-4;
     width: 100%;
     transition: all 0.1s linear;
     display: inline-block;
-    padding: 0 1rem 0 1rem;
+    padding: 0 2.35rem 0 1rem;
     line-height: 2.5rem;
     height: 2.5rem;
     font-size: $font-size-text-large;
@@ -274,8 +273,9 @@
     &:active {
         outline: 0;
         line-height: 2.5rem;
-        box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 4px #dddbda;
+        box-shadow: inset 0 0 0 2px #fff, inset 0 0 0 3px #dddbda, $shadow-outline;
         border: 2px $color-brand solid;
+        padding: 0 2.35rem 0 0.9375rem;
         background-color: white;
         z-index: 0;
     }
@@ -315,4 +315,5 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    fill: $color-gray-4;
 }

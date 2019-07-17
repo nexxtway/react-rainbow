@@ -25,7 +25,10 @@
 .rainbow-lookup_options-empty-message_match-value {
   color: #061c3f;
   font-family: "Lato Black", Arial, sans-serif;
-  display: block; }
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
 
 .rainbow-lookup_menu-item > a {
   box-sizing: border-box;
