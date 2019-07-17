@@ -1,21 +1,16 @@
 import formatValue from '../formatValue';
 
 describe('formatValue', () => {
-    it('should return empty {label,icon}', () => {
-        const values = [undefined, null, [], {}, 12, { data: '' }];
+    it('should return empty object', () => {
+        const values = [undefined, null, [], {}, 12];
         values.forEach(value => {
-            expect(formatValue(value)).toEqual({ label: undefined, value: undefined });
+            expect(formatValue(value)).toEqual({});
         });
     });
     it('should return fomatted values', () => {
-        const unformattedValues = [
-            'Paris',
-            { label: 'Paris' },
-            { label: 'New York', icon: 'theIcon' },
-        ];
+        const unformattedValues = [{ label: 'Paris' }, { label: 'New York', icon: 'theIcon' }];
 
         const formattedValues = [
-            { label: 'Paris', icon: undefined },
             { label: 'Paris', icon: undefined },
             { label: 'New York', icon: 'theIcon' },
         ];

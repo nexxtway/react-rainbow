@@ -45,7 +45,6 @@ class Lookup extends Component {
         this.inputId = uniqueId('lookup-input');
         this.errorMessageId = uniqueId('error-message');
         this.containerRef = React.createRef();
-        this.innerContainerRef = React.createRef();
         this.inputRef = React.createRef();
         this.menuRef = React.createRef();
         this.handleSearch = this.handleSearch.bind(this);
@@ -360,21 +359,16 @@ class Lookup extends Component {
                 />
 
                 <RenderIf isTrue={!!currentValue}>
-                    <div
-                        className="rainbow-lookup_input-selected-value-container"
-                        ref={this.innerContainerRef}
-                    >
+                    <div className="rainbow-lookup_input-selected-value-container">
                         <SelectedValue
                             id={this.inputId}
                             name={name}
-                            type="text"
                             value={currentValue}
                             tabIndex={tabIndex}
                             onClick={onClick}
                             disabled={disabled}
-                            readOnly
                             required={required}
-                            aria-describedby={errorMessageId}
+                            errorMessageId={errorMessageId}
                             ref={this.inputRef}
                             onClearValue={onDeleteValue}
                         />
@@ -382,7 +376,7 @@ class Lookup extends Component {
                 </RenderIf>
 
                 <RenderIf isTrue={!currentValue}>
-                    <div className="rainbow-lookup_input-container" ref={this.innerContainerRef}>
+                    <div className="rainbow-lookup_input-container">
                         <Spinner
                             isVisible={isLoading}
                             className="rainbow-lookup_spinner"

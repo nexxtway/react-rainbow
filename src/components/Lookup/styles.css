@@ -178,7 +178,7 @@
       font-size: 16px !important; }
   .rainbow-lookup_input-selected-value-container .rainbow-lookup_selected-value-icon:not(button) {
     pointer-events: none; }
-  .rainbow-lookup_input-selected-value-container .rainbow-lookup_selected-value-input-w-icon {
+  .rainbow-lookup_input-selected-value-container .rainbow-lookup_selected-value-input-with-icon {
     padding-left: 2.35rem; }
 
 .rainbow-lookup_selected-value-input {
@@ -194,7 +194,8 @@
   padding: 0 2.35rem 0 1rem;
   line-height: 2.5rem;
   height: 2.5rem;
-  font-size: 1rem; }
+  font-size: 1rem;
+  text-overflow: ellipsis; }
   .rainbow-lookup_selected-value-input[type='search']::-ms-clear {
     display: none;
     width: 0;

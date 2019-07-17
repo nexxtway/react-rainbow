@@ -2,14 +2,14 @@ import React from 'react';
 import { mount } from 'enzyme';
 import SelectedValue from '../selectedValue';
 
-const value = 'this is a test';
+const value = { label: 'this is a test' };
 const valueWithIcon = { label: 'this is a test', icon: 'ok' };
 
 describe('<SelectedValue />', () => {
     it('should render an input container', () => {
-        const component = mount(<SelectedValue value={value} />);
+        const component = mount(<SelectedValue value={valueWithIcon} />);
         expect(component.find('input').prop('type')).toBe('text');
-        expect(component.find('input').prop('value')).toBe(value);
+        expect(component.find('input').prop('value')).toBe('this is a test');
     });
     it('should set the id passed as the id prop in the input element', () => {
         const component = mount(<SelectedValue id="label-123" />);
