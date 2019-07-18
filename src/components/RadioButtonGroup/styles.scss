@@ -30,7 +30,7 @@
     text-align: center;
 }
 
-.rainbow-radio-button-group_inner-container {
+.rainbow-radio-button-group_items-container {
     @extend %center-content;
 
     border-radius: $border-radius-2;
@@ -74,16 +74,18 @@
     }
 
     .rainbow-radio-button-group_radio--checked {
-        background-color: white;
-        border-color: white;
-        box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
-        transition: transform 600ms cubic-bezier(0.02, 0.94, 0.09, 0.97), all 300ms cubic-bezier(0.17, 0.67, 0.14, 1.03);
-        transform: translate3d(0, 0, 0);
-        height: 2.6rem;
+        background-color: transparent;
+        // background-color: white;
+        // border-color: white;
+        // box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
+        // transition: transform 600ms cubic-bezier(0.02, 0.94, 0.09, 0.97), all 300ms cubic-bezier(0.17, 0.67, 0.14, 1.03);
+        // transform: translate3d(0, 0, 0);
+        // height: 2.6rem;
 
         &:hover {
-            background-color: white;
-            border-color: white;
+            background-color: transparent;
+            // background-color: white;
+            // border-color: white;
         }
 
         .rainbow-radio-button-group_radio-label {
@@ -107,7 +109,7 @@
 }
 
 .rainbow-radio-button-group--brand {
-    .rainbow-radio-button-group_inner-container .rainbow-radio-button-group_radio--checked {
+    .rainbow-radio-button-group_items-container .rainbow-radio-button-group_radio--checked {
         background-color: $color-brand;
         border-color: #01aae5;
         transition: transform 600ms cubic-bezier(0.02, 0.94, 0.09, 0.97), all 300ms cubic-bezier(0.17, 0.67, 0.14, 1.03);
@@ -125,7 +127,7 @@
         color: white;
     }
 
-    .rainbow-radio-button-group_inner-container {
+    .rainbow-radio-button-group_items-container {
         border-color: rgba(0, 0, 0, 0.4);
         background-color: rgba(0, 0, 0, 0.4);
 
@@ -140,20 +142,22 @@
         }
 
         .rainbow-radio-button-group_radio--checked {
-            box-shadow: 0 0 4px 0 #029bd3;
-            background-color: #029bd3;
-            border: solid 1px #009acf;
-            transition: transform 600ms cubic-bezier(0.02, 0.94, 0.09, 0.97), all 300ms cubic-bezier(0.17, 0.67, 0.14, 1.03);
-            transform: translate3d(0, 0, 0);
+            background-color: transparent;
+            // box-shadow: 0 0 4px 0 #029bd3;
+            // background-color: #029bd3;
+            // border: solid 1px #009acf;
+            // transition: transform 600ms cubic-bezier(0.02, 0.94, 0.09, 0.97), all 300ms cubic-bezier(0.17, 0.67, 0.14, 1.03);
+            // transform: translate3d(0, 0, 0);
 
             &:hover {
-                background-color: #029bd3;
+                background-color: transparent;
+                // background-color: #029bd3;
             }
         }
     }
 }
 
-.rainbow-radio-button-group--inverse .rainbow-radio-button-group_inner-container .rainbow-radio-button-group_radio--disabled {
+.rainbow-radio-button-group--inverse .rainbow-radio-button-group_items-container .rainbow-radio-button-group_radio--disabled {
     &:hover {
         background-color: transparent;
     }
@@ -184,3 +188,51 @@
     padding: 0;
     position: absolute;
 }
+
+.rainbow-radio-button-group_marker {
+    @extend %center-content;
+
+    position: absolute;
+    width: 100%;
+    line-height: 2.5rem;
+    height: 2.5rem;
+
+    svg {
+        position: absolute;
+        background: white;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        height: 2.6rem;
+        margin-top: -0.05rem;
+        border-color: white;
+        border-radius: $border-radius-2;
+        border: solid 1px transparent;
+        box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
+        transition: all 200ms linear;
+    }
+
+    // &::after {
+    //     content: '';
+    //     height: 2.6rem;
+    //     position: absolute;
+    //     top: 0;
+    //     bottom: 0;
+    //     left: 0;
+    //     margin: auto;
+    //     width: 0;
+    //     background-color: white;
+    //     transition: transform 600ms cubic-bezier(0.02, 0.94, 0.09, 0.97), all 300ms cubic-bezier(0.17, 0.67, 0.14, 1.03);
+    //     transform: translate3d(0, 0, 0);
+    // }
+}
+
+// .rainbow-radio-button-group_active-marker-visible {
+//     &::after {
+//         border-color: white;
+//         border-radius: $border-radius-2;
+//         border: solid 1px transparent;
+//         box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
+//     }
+// }
+

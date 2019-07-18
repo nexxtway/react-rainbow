@@ -12,6 +12,7 @@ export default function ButtonItems(props) {
         return (
             <RadioButton
                 key={key}
+                itemRef={option.optionRef}
                 required={required}
                 onChange={onChange}
                 isChecked={isChecked(option)}
