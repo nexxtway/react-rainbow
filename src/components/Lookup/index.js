@@ -114,7 +114,7 @@ class Lookup extends Component {
 
     handleChange(value) {
         const { onChange } = this.props;
-        this.containerRef.current.focus();
+        setTimeout(() => this.containerRef.current.focus(), 0);
         this.setState({
             searchValue: '',
         });
