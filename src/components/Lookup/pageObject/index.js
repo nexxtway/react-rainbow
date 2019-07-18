@@ -107,9 +107,9 @@ class PageLookup {
      * @returns {string}
      */
     getSelectedOptionLabel() {
-        const content = $(this.rootElement).$('.rainbow-lookup_chip-content_label');
+        const content = $(this.rootElement).$('input[type="text"]');
         if (content) {
-            return content.getText();
+            return content.getValue();
         }
         return '';
     }
