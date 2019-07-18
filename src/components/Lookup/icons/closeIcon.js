@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function CloseIcon(props) {
-    const { className, style } = props;
+    const { className, style, color } = props;
     return (
         <svg
             className={className}
             style={style}
-            fill="#01b6f5"
+            fill={color}
             width="1rem"
             height="1rem"
             viewBox="0 0 16 16"
@@ -20,9 +20,11 @@ export default function CloseIcon(props) {
 CloseIcon.propTypes = {
     className: PropTypes.string,
     style: PropTypes.object,
+    color: PropTypes.string,
 };
 
 CloseIcon.defaultProps = {
     className: undefined,
     style: undefined,
+    color: '#01b6f5',
 };

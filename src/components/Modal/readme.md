@@ -462,6 +462,7 @@
             };
             this.handleOnClick = this.handleOnClick.bind(this);
             this.handleOnClose = this.handleOnClose.bind(this);
+            this.handleSubmit = this.handleSubmit.bind(this);
             this.search = this.search.bind(this);
         }
 
@@ -474,6 +475,13 @@
         handleOnClose() {
             return this.setState({
                 isOpen: false,
+                options: null,
+            });
+        }
+
+        handleSubmit(values) {
+            console.log(values);
+            this.setState({
                 options: null,
             });
         }
@@ -524,7 +532,7 @@
                        }>
 
                        <Form
-                            onSubmit={values => console.log(values)}
+                            onSubmit={this.handleSubmit}
                             onSearch={this.search}
                             isLoading={isLoading}
                             options={options}

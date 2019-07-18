@@ -32,6 +32,9 @@
     color: $color-dark-1;
     font-family: "Lato Black", Arial, sans-serif;
     display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .rainbow-lookup_menu-item > a {

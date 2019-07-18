@@ -77,7 +77,7 @@ describe('<Lookup />', () => {
             .find('Options')
             .find('li')
             .at(1)
-            .simulate('click');
+            .simulate('mousedown');
         expect(onChangeMockFn).toHaveBeenCalledWith({
             label: 'New York',
             description: 'awesome city',
@@ -103,7 +103,7 @@ describe('<Lookup />', () => {
             .find('Options')
             .find('li')
             .at(0)
-            .simulate('click');
+            .simulate('mousedown');
         expect(component.find('input').prop('value')).toBe('');
     });
     it('should call onSearch with the right value when type in the input', () => {
@@ -117,15 +117,15 @@ describe('<Lookup />', () => {
         });
         expect(onSearchMockFn).toHaveBeenCalledWith('london');
     });
-    it('should not render a Chip component when value passed is other than object', () => {
+    it('should not render a SelectedValue component when value passed is other than object', () => {
         const values = ['', 'my value', 123, undefined, null, NaN, [], () => {}];
         values.forEach(value => {
             const component = mount(<Lookup label="custom label" value={value} />);
-            expect(component.find('Chip').exists()).toBe(false);
+            expect(component.find('SelectedValue').exists()).toBe(false);
             expect(component.find('input[type="search"]').exists()).toBe(true);
         });
     });
-    it('should render a Chip component when value is passed', () => {
+    it('should render a SelectedValue component when value is passed', () => {
         const value = { label: 'New York', description: 'awesome city' };
         const onChangeMockFn = jest.fn();
         const onSearchMockFn = jest.fn();
@@ -137,7 +137,7 @@ describe('<Lookup />', () => {
                 onSearch={onSearchMockFn}
             />,
         );
-        expect(component.find('Chip').exists()).toBe(true);
+        expect(component.find('SelectedValue').exists()).toBe(true);
     });
     it('should call onChange and onSearch with the right values when remove the value selected', () => {
         const value = { label: 'New York', description: 'awesome city' };
@@ -152,7 +152,7 @@ describe('<Lookup />', () => {
             />,
         );
         component
-            .find('Chip')
+            .find('SelectedValue')
             .find('ButtonIcon')
             .simulate('click');
         expect(onChangeMockFn).toHaveBeenCalledWith(null);
@@ -233,20 +233,20 @@ describe('<Lookup />', () => {
             label: 'San Francisco',
         });
     });
-    it('should pass a function to onDelete prop in Chip component', () => {
+    it('should pass a function to onClearValue prop in SelectedValue component', () => {
         const value = { label: 'New York', description: 'awesome city' };
         const component = mount(<Lookup label="custom label" value={value} />);
-        expect(component.find('Chip').prop('onDelete')).toEqual(expect.any(Function));
+        expect(component.find('SelectedValue').prop('onClearValue')).toEqual(expect.any(Function));
     });
-    it('should not set the onDelete prop in Chip component when pass disabled', () => {
+    it('should not set the onClearValue prop in SelectedValue component when pass disabled', () => {
         const value = { label: 'New York', description: 'awesome city' };
         const component = mount(<Lookup label="custom label" value={value} disabled />);
-        expect(component.find('Chip').prop('onDelete')).toBeUndefined();
+        expect(component.find('SelectedValue').prop('onClearValue')).toBeUndefined();
     });
-    it('should not set the onDelete prop in Chip component when pass readOnly', () => {
+    it('should not set the onClearValue prop in SelectedValue component when pass readOnly', () => {
         const value = { label: 'New York', description: 'awesome city' };
         const component = mount(<Lookup label="custom label" value={value} readOnly />);
-        expect(component.find('Chip').prop('onDelete')).toBeUndefined();
+        expect(component.find('SelectedValue').prop('onClearValue')).toBeUndefined();
     });
     it('should set the right options and reset the focusedItemIndex when the options changes', () => {
         const options = [

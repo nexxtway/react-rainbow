@@ -82,7 +82,7 @@ describe('<Options />', () => {
         component
             .find('li[role="presentation"]')
             .at(1)
-            .simulate('click');
+            .simulate('mousedown');
         expect(onSelectOptionMockFn).toHaveBeenCalledWith({ label: 'Moscow' });
     });
     it('should fire an event with the right data when hover an item', () => {

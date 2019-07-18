@@ -3,12 +3,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import RenderIf from '../RenderIf';
-import Chip from '../Chip';
 import Spinner from '../Spinner';
 import Label from './label';
 import RightElement from './rightElement';
+import SelectedValue from './selectedValue';
 import Options from './options';
-import ChipContent from './chipContent';
 import {
     isNavigationKey,
     getNormalizedOptions,
@@ -46,12 +45,10 @@ class Lookup extends Component {
         this.inputId = uniqueId('lookup-input');
         this.errorMessageId = uniqueId('error-message');
         this.containerRef = React.createRef();
-        this.innerContainerRef = React.createRef();
         this.inputRef = React.createRef();
         this.menuRef = React.createRef();
         this.handleSearch = this.handleSearch.bind(this);
         this.clearInput = this.clearInput.bind(this);
-        this.handleClick = this.handleClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleFocus = this.handleFocus.bind(this);
         this.handleRemoveValue = this.handleRemoveValue.bind(this);
@@ -115,22 +112,13 @@ class Lookup extends Component {
         return undefined;
     }
 
-    handleClick(event) {
-        const ref = this.innerContainerRef.current;
-        const isClickInsideLookup = ref && ref.contains(event.target);
-        if (isClickInsideLookup) {
-            return null;
-        }
-        return this.closeMenu();
-    }
-
     handleChange(value) {
         const { onChange } = this.props;
+        setTimeout(() => this.containerRef.current.focus(), 0);
         this.setState({
             searchValue: '',
         });
         onChange(value);
-        this.containerRef.current.focus();
     }
 
     handleSearch(event) {
@@ -150,6 +138,7 @@ class Lookup extends Component {
 
     handleBlur() {
         const { onBlur, value } = this.props;
+        this.closeMenu();
         const eventValue = value || null;
         onBlur(eventValue);
     }
@@ -190,8 +179,6 @@ class Lookup extends Component {
     }
 
     openMenu() {
-        window.addEventListener('click', this.handleClick);
-        window.addEventListener('touchstart', this.handleClick);
         return this.setState({
             isFocused: true,
         });
@@ -199,8 +186,6 @@ class Lookup extends Component {
 
     closeMenu() {
         const { options } = this.state;
-        window.removeEventListener('click', this.handleClick);
-        window.removeEventListener('touchstart', this.handleClick);
         return this.setState({
             isFocused: false,
             focusedItemIndex: getInitialFocusedIndex(options),
@@ -300,11 +285,11 @@ class Lookup extends Component {
         const { focusedItemIndex } = this.state;
         const { options } = this.state;
         const value = options[focusedItemIndex];
+        this.containerRef.current.focus();
         this.setState({
             searchValue: '',
         });
         onChange(value);
-        setTimeout(() => this.containerRef.current.focus(), 0);
     }
 
     /**
@@ -350,7 +335,7 @@ class Lookup extends Component {
             icon,
         } = this.props;
         const { searchValue, focusedItemIndex, options } = this.state;
-        const chipOnDelete = disabled || readOnly ? undefined : this.handleRemoveValue;
+        const onDeleteValue = disabled || readOnly ? undefined : this.handleRemoveValue;
         const isOpenMenu = this.isMenuOpen();
         const errorMessageId = this.getErrorMessageId();
         const currentValue = this.getValue();
@@ -374,30 +359,33 @@ class Lookup extends Component {
                 />
 
                 <RenderIf isTrue={!!currentValue}>
-                    <div className="rainbow-lookup_chip-content_container">
-                        <Chip
-                            className="rainbow-lookup_chip"
-                            label={<ChipContent {...currentValue} />}
-                            variant="neutral"
-                            onDelete={chipOnDelete}
-                        />
-                    </div>
+                    <SelectedValue
+                        id={this.inputId}
+                        name={name}
+                        value={currentValue}
+                        tabIndex={tabIndex}
+                        onClick={onClick}
+                        disabled={disabled}
+                        required={required}
+                        errorMessageId={errorMessageId}
+                        ref={this.inputRef}
+                        onClearValue={onDeleteValue}
+                    />
                 </RenderIf>
 
                 <RenderIf isTrue={!currentValue}>
-                    <div className="rainbow-lookup_input-container" ref={this.innerContainerRef}>
-                        <RightElement
-                            showCloseButton={!!searchValue}
-                            onClear={this.clearInput}
-                            icon={icon}
-                        />
+                    <div className="rainbow-lookup_input-container">
                         <Spinner
                             isVisible={isLoading}
                             className="rainbow-lookup_spinner"
                             size="x-small"
                             assistiveText="searching"
                         />
-
+                        <RightElement
+                            showCloseButton={!!searchValue}
+                            onClear={this.clearInput}
+                            icon={icon}
+                        />
                         <input
                             id={this.inputId}
                             name={name}
@@ -417,7 +405,6 @@ class Lookup extends Component {
                             aria-describedby={errorMessageId}
                             ref={this.inputRef}
                         />
-
                         <RenderIf isTrue={isOpenMenu}>
                             <div className="rainbow-lookup_options-menu">
                                 <Options
