@@ -359,20 +359,18 @@ class Lookup extends Component {
                 />
 
                 <RenderIf isTrue={!!currentValue}>
-                    <div className="rainbow-lookup_input-selected-value-container">
-                        <SelectedValue
-                            id={this.inputId}
-                            name={name}
-                            value={currentValue}
-                            tabIndex={tabIndex}
-                            onClick={onClick}
-                            disabled={disabled}
-                            required={required}
-                            errorMessageId={errorMessageId}
-                            ref={this.inputRef}
-                            onClearValue={onDeleteValue}
-                        />
-                    </div>
+                    <SelectedValue
+                        id={this.inputId}
+                        name={name}
+                        value={currentValue}
+                        tabIndex={tabIndex}
+                        onClick={onClick}
+                        disabled={disabled}
+                        required={required}
+                        errorMessageId={errorMessageId}
+                        ref={this.inputRef}
+                        onClearValue={onDeleteValue}
+                    />
                 </RenderIf>
 
                 <RenderIf isTrue={!currentValue}>
