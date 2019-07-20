@@ -167,15 +167,11 @@
     height: 100%;
     position: absolute;
     top: 0;
-    line-height: 1;
+    line-height: 2.5rem;
     z-index: 2;
     display: flex;
     align-items: center;
     justify-content: center; }
-    .rainbow-lookup_selected-value .rainbow-lookup_selected-value-icon svg {
-      width: 16px !important;
-      height: 16px !important;
-      font-size: 16px !important; }
   .rainbow-lookup_selected-value .rainbow-lookup_selected-value-icon:not(button) {
     pointer-events: none; }
   .rainbow-lookup_selected-value .rainbow-lookup_selected-value-input {
