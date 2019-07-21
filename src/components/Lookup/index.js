@@ -13,6 +13,7 @@ import {
     getNormalizedOptions,
     getInitialFocusedIndex,
     isOptionVisible,
+    getOptionsHightlighted,
 } from './helpers';
 import { uniqueId } from '../../libs/utils';
 import { UP_KEY, DOWN_KEY, ENTER_KEY, ESCAPE_KEY } from '../../libs/constants';
@@ -69,8 +70,9 @@ class Lookup extends Component {
     componentDidUpdate(prevProps) {
         const { options: prevOptions } = prevProps;
         const { options } = this.props;
+        const { searchValue } = this.state;
         if (prevOptions !== options) {
-            const normalizedOptions = getNormalizedOptions(options);
+            const normalizedOptions = getOptionsHightlighted(options, searchValue);
             this.setState({
                 options: normalizedOptions,
                 focusedItemIndex: getInitialFocusedIndex(normalizedOptions),
