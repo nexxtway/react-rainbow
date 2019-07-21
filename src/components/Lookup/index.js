@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 /* eslint-disable react/no-did-update-set-state, react/no-did-mount-set-state */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -13,7 +14,7 @@ import {
     getNormalizedOptions,
     getInitialFocusedIndex,
     isOptionVisible,
-    getOptionsHightlighted,
+    getOptionsHighlighted,
 } from './helpers';
 import { uniqueId } from '../../libs/utils';
 import { UP_KEY, DOWN_KEY, ENTER_KEY, ESCAPE_KEY } from '../../libs/constants';
@@ -72,7 +73,7 @@ class Lookup extends Component {
         const { options } = this.props;
         const { searchValue } = this.state;
         if (prevOptions !== options) {
-            const normalizedOptions = getOptionsHightlighted(options, searchValue);
+            const normalizedOptions = getOptionsHighlighted(options, searchValue);
             this.setState({
                 options: normalizedOptions,
                 focusedItemIndex: getInitialFocusedIndex(normalizedOptions),
@@ -120,7 +121,15 @@ class Lookup extends Component {
         this.setState({
             searchValue: '',
         });
-        onChange(value);
+
+        const { label, labelOrig, ...otherProps } = value;
+        const resultValue = !labelOrig
+            ? value
+            : {
+                  label: labelOrig,
+                  ...otherProps,
+              };
+        onChange(resultValue);
     }
 
     handleSearch(event) {

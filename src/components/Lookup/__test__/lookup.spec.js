@@ -2,26 +2,6 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Lookup from '../';
 
-// jest.mock('../getOptionsHighlighted', () => {
-//     const result = {
-//         label: '<span><b>Cub</b>bon Park</span>',
-//         description: 'Sampangi Rama Nagara, Bengaluru, Karnataka, India',
-//         icon: '<LocationItemIcon />',
-//     };
-
-//     return jest.fn(() => result);
-// });
-
-// jest.mock('../getStringHighlighted', () => {
-//     const result = {
-//         label: '<span><b>Cub</b>bon Park</span>',
-//         description: 'Sampangi Rama Nagara, Bengaluru, Karnataka, India',
-//         icon: '<LocationItemIcon />',
-//     };
-
-//     return jest.fn(() => result);
-// });
-
 describe('<Lookup />', () => {
     it('should set an id in the input element', () => {
         const component = mount(<Lookup />);
@@ -268,7 +248,7 @@ describe('<Lookup />', () => {
         const component = mount(<Lookup label="custom label" value={value} readOnly />);
         expect(component.find('SelectedValue').prop('onClearValue')).toBeUndefined();
     });
-    it.skip('should set the right options and reset the focusedItemIndex when the options changes', () => {
+    it('should set the right options and reset the focusedItemIndex when the options changes', () => {
         const options = [
             { label: 'Paris', description: 'An awesome city' },
             { label: 'Madrid' },
@@ -298,7 +278,7 @@ describe('<Lookup />', () => {
             { label: 'New York' },
         ]);
     });
-    it.skip('should set the right options and reset the focusedItemIndex when the options changes and are type "section"', () => {
+    it('should set the right options and reset the focusedItemIndex when the options changes and are type "section"', () => {
         const options = [
             {
                 type: 'section',

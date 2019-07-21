@@ -1,11 +1,11 @@
 /* eslint-disable indent */
 import getNormalizedOptions from './getNormalizedOptions';
-import getStringHightlighted from './getStringHighlighted';
+import getStringHighlighted from './getStringHighlighted';
 
-export default function getOptionsHightlighted(options, searchValue) {
+export default function getOptionsHighlighted(options, searchValue) {
     const optionsList = getNormalizedOptions(options);
 
-    if (searchValue in [null, undefined, '']) {
+    if (typeof searchValue !== 'string' || !searchValue) {
         return optionsList;
     }
 
@@ -15,7 +15,8 @@ export default function getOptionsHightlighted(options, searchValue) {
         const result =
             typeof label === 'string'
                 ? {
-                      label: getStringHightlighted(label, searchValue),
+                      label: getStringHighlighted(label, searchValue),
+                      labelOrig: label,
                       ...otherProps,
                   }
                 : option;

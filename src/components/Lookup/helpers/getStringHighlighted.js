@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default function getStringHightlighted(stringValue, highlightValue) {
-    if (highlightValue in [null, undefined, '']) {
+export default function getStringHighlighted(stringValue, highlightValue) {
+    if (typeof highlightValue !== 'string' || !highlightValue) {
         return stringValue;
     }
 
