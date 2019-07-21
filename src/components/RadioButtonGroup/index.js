@@ -30,7 +30,9 @@ class RadioButtonGroup extends Component {
     }
 
     componentDidMount() {
-        this.updateMarker();
+        setTimeout(() => {
+            this.updateMarker();
+        }, 0);
     }
 
     getVariantClassNames() {
@@ -71,12 +73,16 @@ class RadioButtonGroup extends Component {
     }
 
     addRefsToOptions(options) {
-        return options.reduce((list, option, index) => {
-            const enhancedOption = Object.assign(option, {
-                optionRef: this.optionsRefs[index],
-            });
-            return [...list, enhancedOption];
-        }, []);
+        return options.reduce(
+            (list, option, index) => [
+                ...list,
+                {
+                    optionRef: this.optionsRefs[index],
+                    ...option,
+                },
+            ],
+            [],
+        );
     }
 
     isMarkerActive() {
@@ -99,7 +105,10 @@ class RadioButtonGroup extends Component {
         if (activeOptionRef !== null) {
             this.setState({
                 markerLeft: activeOptionRef.current.offsetLeft,
-                markerWidth: activeOptionRef.current.clientWidth,
+                markerWidth: Math.max(
+                    activeOptionRef.current.offsetWidth,
+                    activeOptionRef.current.clientWidth,
+                ),
             });
         }
     }
@@ -118,15 +127,13 @@ class RadioButtonGroup extends Component {
                     </legend>
                 </RenderIf>
                 <div className="rainbow-radio-button-group_inner-container">
-                    <div className="rainbow-radio-button-group_marker">
-                        <Marker
-                            isVisible={this.isMarkerActive()}
-                            style={{
-                                left: markerLeft,
-                                width: markerWidth,
-                            }}
-                        />
-                    </div>
+                    <Marker
+                        isVisible={this.isMarkerActive()}
+                        style={{
+                            left: markerLeft,
+                            width: markerWidth,
+                        }}
+                    />
                     <div className="rainbow-radio-button-group_items-container">
                         <ButtonItems
                             value={value}
