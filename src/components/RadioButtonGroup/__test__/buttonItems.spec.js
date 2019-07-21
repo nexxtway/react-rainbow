@@ -13,7 +13,7 @@ describe('<ButtonItems />', () => {
         expect(component.children().length).toBe(3);
     });
     it('should pass the right props to the RadioButton component', () => {
-        const option = [{ value: 'admin', label: 'Admin', disabled: true }];
+        const option = [{ optionRef: '000', value: 'admin', label: 'Admin', disabled: true }];
         const component = mount(
             <ButtonItems
                 options={option}
@@ -23,6 +23,8 @@ describe('<ButtonItems />', () => {
             />,
         );
         expect(component.find('RadioButton').props()).toEqual({
+            optionRef: option[0].optionRef,
+            itemRef: option[0].optionRef,
             value: option[0].value,
             label: option[0].label,
             disabled: option[0].disabled,
@@ -30,6 +32,7 @@ describe('<ButtonItems />', () => {
             name: 'name-1',
             onChange: expect.any(Function),
             isChecked: false,
+            required: undefined,
         });
     });
 });
