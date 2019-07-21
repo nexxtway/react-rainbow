@@ -367,6 +367,7 @@ class Lookup extends Component {
                         onClick={onClick}
                         disabled={disabled}
                         required={required}
+                        readOnly={readOnly}
                         errorMessageId={errorMessageId}
                         ref={this.inputRef}
                         onClearValue={onDeleteValue}

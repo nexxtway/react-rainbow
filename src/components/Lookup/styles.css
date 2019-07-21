@@ -233,3 +233,64 @@
     align-items: center;
     justify-content: center;
     fill: #576574; }
+
+.rainbow-lookup_selected-value--readonly {
+  display: flex; }
+  .rainbow-lookup_selected-value--readonly .rainbow-lookup_selected-value-icon {
+    fill: #a4a7b5;
+    height: 100%;
+    width: 22px;
+    top: 0;
+    position: absolute;
+    line-height: 1;
+    border: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .rainbow-lookup_selected-value--readonly .rainbow-lookup_selected-value-icon svg {
+      width: 16px;
+      height: 16px;
+      font-size: 16px; }
+  .rainbow-lookup_selected-value--readonly .rainbow-lookup_selected-value-icon:not(button) {
+    pointer-events: none; }
+  .rainbow-lookup_selected-value--readonly .rainbow-lookup_selected-value-input {
+    box-shadow: none;
+    caret-color: transparent;
+    background-color: transparent;
+    border: 1px solid transparent;
+    font-size: 1rem;
+    font-weight: 400;
+    display: inline-block; }
+    .rainbow-lookup_selected-value--readonly .rainbow-lookup_selected-value-input[type='text']::-ms-clear {
+      display: none;
+      width: 0;
+      height: 0; }
+    .rainbow-lookup_selected-value--readonly .rainbow-lookup_selected-value-input:focus, .rainbow-lookup_selected-value--readonly .rainbow-lookup_selected-value-input:active {
+      outline: 0;
+      border: 1px solid transparent;
+      box-shadow: none;
+      border-color: transparent;
+      background-color: transparent; }
+    .rainbow-lookup_selected-value--readonly .rainbow-lookup_selected-value-input::placeholder {
+      color: #a4a7b5; }
+    .rainbow-lookup_selected-value--readonly .rainbow-lookup_selected-value-input[readonly] {
+      outline: 0;
+      background-color: transparent;
+      border: 2px solid transparent;
+      color: #061c3f;
+      cursor: not-allowed;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      padding-left: 0;
+      padding-right: 0; }
+      .rainbow-lookup_selected-value--readonly .rainbow-lookup_selected-value-input[readonly]:focus, .rainbow-lookup_selected-value--readonly .rainbow-lookup_selected-value-input[readonly]:active {
+        outline: 0;
+        box-shadow: none;
+        border: 2px transparent solid; }
+  .rainbow-lookup_selected-value--readonly .rainbow-lookup_selected-value-input-with-icon[readonly] {
+    padding-left: 1.75rem; }
+    .rainbow-lookup_selected-value--readonly .rainbow-lookup_selected-value-input-with-icon[readonly]:focus, .rainbow-lookup_selected-value--readonly .rainbow-lookup_selected-value-input-with-icon[readonly]:active {
+      padding-left: 1.75rem; }
