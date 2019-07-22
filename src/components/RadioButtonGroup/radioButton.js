@@ -71,7 +71,7 @@ RadioButton.propTypes = {
     isChecked: PropTypes.bool,
     name: PropTypes.string,
     required: PropTypes.bool.isRequired,
-    itemRef: PropTypes.any,
+    itemRef: PropTypes.any.isRequired,
 };
 
 RadioButton.defaultProps = {

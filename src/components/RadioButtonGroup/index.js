@@ -19,11 +19,10 @@ class RadioButtonGroup extends Component {
         super(props);
         this.errorId = uniqueId('error-message');
         this.groupNameId = props.name || uniqueId('options');
-        this.handleChange = this.handleChange.bind(this);
-        this.isMarkerActive = this.isMarkerActive.bind(this);
         this.optionsRefs = this.generateRefsForOptions();
 
         this.state = {
+            options: this.addRefsToOptions(props.options),
             markerLeft: 0,
             markerWidth: 0,
         };
@@ -33,6 +32,12 @@ class RadioButtonGroup extends Component {
         setTimeout(() => {
             this.updateMarker();
         }, 0);
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.value !== this.props.value) {
+            this.updateMarker();
+        }
     }
 
     getVariantClassNames() {
@@ -69,35 +74,22 @@ class RadioButtonGroup extends Component {
 
     generateRefsForOptions() {
         const { options } = this.props;
-        return options.reduce(list => [...list, React.createRef()], []);
+        return options.map(() => React.createRef());
     }
 
     addRefsToOptions(options) {
-        return options.reduce(
-            (list, option, index) => [
-                ...list,
-                {
-                    optionRef: this.optionsRefs[index],
-                    ...option,
-                },
-            ],
-            [],
+        return options.map(
+            (option, index) => ({
+                optionRef: this.optionsRefs[index],
+                ...option,
+            }),
+            this,
         );
     }
 
     isMarkerActive() {
         const { value, options } = this.props;
-        const reducer = (accumulator, option) => accumulator || isOptionChecked(option, value);
-
-        return options.reduce(reducer, false);
-    }
-
-    handleChange(event) {
-        const { onChange } = this.props;
-        onChange(event);
-        setTimeout(() => {
-            this.updateMarker();
-        }, 0);
+        return options.some(option => !option.disabled && option.value === value);
     }
 
     updateMarker() {
@@ -114,9 +106,12 @@ class RadioButtonGroup extends Component {
     }
 
     render() {
-        const { style, label, required, options, error, value, id } = this.props;
-        const optionsWithRefs = this.addRefsToOptions(options);
-        const { markerLeft, markerWidth } = this.state;
+        const { style, label, required, error, value, id, onChange } = this.props;
+        const { options, markerLeft, markerWidth } = this.state;
+        const markerStyle = {
+            left: markerLeft,
+            width: markerWidth,
+        };
 
         return (
             <fieldset id={id} className={this.getContainerClassNames()} style={style}>
@@ -127,18 +122,12 @@ class RadioButtonGroup extends Component {
                     </legend>
                 </RenderIf>
                 <div className="rainbow-radio-button-group_inner-container">
-                    <Marker
-                        isVisible={this.isMarkerActive()}
-                        style={{
-                            left: markerLeft,
-                            width: markerWidth,
-                        }}
-                    />
+                    <Marker isVisible={this.isMarkerActive()} style={markerStyle} />
                     <div className="rainbow-radio-button-group_items-container">
                         <ButtonItems
                             value={value}
-                            onChange={this.handleChange}
-                            options={optionsWithRefs}
+                            onChange={onChange}
+                            options={options}
                             name={this.groupNameId}
                             required={required}
                             ariaDescribedby={this.getErrorMessageId()}
