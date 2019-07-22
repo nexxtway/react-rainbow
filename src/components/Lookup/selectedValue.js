@@ -13,8 +13,9 @@ export default class SelectedValue extends Component {
     }
 
     getContainerClassNames() {
-        const { readOnly } = this.props;
+        const { disabled, readOnly } = this.props;
         return classnames('rainbow-lookup_selected-value', {
+            'rainbow-lookup_selected-value--disabled': disabled,
             'rainbow-lookup_selected-value--readonly': readOnly,
         });
     }
@@ -84,7 +85,7 @@ export default class SelectedValue extends Component {
                     required={required}
                     ref={this.inputRef}
                 />
-                <RenderIf isTrue={!readOnly}>
+                <RenderIf isTrue={!(readOnly || disabled)}>
                     <span className="rainbow-lookup_selected-value-clear-button-container">
                         <ButtonIcon
                             assistiveText="clear"

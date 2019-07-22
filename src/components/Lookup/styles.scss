@@ -406,3 +406,91 @@
         }
     }
 }
+
+.rainbow-lookup_selected-value--disabled {
+    .rainbow-lookup_selected-value-icon {
+        width: 2.5rem;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        line-height: 2.5rem;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        fill: $color-gray-3;
+    }
+
+    .rainbow-lookup_selected-value-icon:not(button) {
+        pointer-events: none;
+    }
+
+    .rainbow-lookup_selected-value-input {
+        caret-color: transparent;
+        box-shadow: none;
+        background-color: $color-gray-1;
+        border: 1px $color-gray-2 solid;
+        padding: 0 2.35rem 0 1rem;
+        border-radius: $border-radius-2;
+        color: $color-gray-3;
+        width: 100%;
+        display: inline-block;
+        line-height: 2.5rem;
+        height: 2.5rem;
+        font-size: $font-size-text-medium;
+        text-overflow: ellipsis;
+        cursor: not-allowed;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+
+        &[type='text']::-ms-clear {
+            display: none;
+            width: 0;
+            height: 0;
+        }
+
+        &:focus,
+        &:active {
+            box-shadow: none;
+            background-color: $color-gray-1;
+            border: 1px $color-gray-2 solid;
+            padding-left: $padding-medium;
+        }
+
+        &::placeholder {
+            color: $color-gray-3;
+        }
+
+        &[disabled] {
+            background-color: $color-gray-1;
+            border-color: $color-gray-2;
+            color: $color-gray-3;
+            cursor: not-allowed;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+
+            &:focus,
+            &:active {
+                box-shadow: none;
+                background-color: $color-gray-1;
+                border: 1px $color-gray-2 solid;
+                padding-left: $padding-medium;
+            }
+        }
+    }
+
+    .rainbow-lookup_selected-value-input-with-icon {
+        &[readonly] {
+            padding-left: 2.35rem;
+
+            &:focus,
+            &:active {
+                padding-left: 2.35rem;
+            }
+        }
+    }
+}
