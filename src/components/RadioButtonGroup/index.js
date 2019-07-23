@@ -79,8 +79,8 @@ class RadioButtonGroup extends Component {
 
     addRefsToOptions(options) {
         return options.map((option, index) => ({
-            optionRef: this.optionsRefs[index],
             ...option,
+            optionRef: this.optionsRefs[index],
         }));
     }
 
