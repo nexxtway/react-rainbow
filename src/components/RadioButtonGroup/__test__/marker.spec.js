@@ -17,6 +17,6 @@ describe('<Marker />', () => {
     it('should set the right position and size', () => {
         const style = { left: 10, width: 100 };
         const component = mount(<Marker isVisible style={style} />);
-        expect(component.find('span').prop('style')).toEqual(style);
+        expect(component.find('span').prop('style')).toEqual({ ...style, opacity: 1 });
     });
 });

@@ -71,7 +71,7 @@ RadioButton.propTypes = {
     isChecked: PropTypes.bool,
     name: PropTypes.string,
     required: PropTypes.bool.isRequired,
-    itemRef: PropTypes.any.isRequired,
+    itemRef: PropTypes.object.isRequired,
 };
 
 RadioButton.defaultProps = {
@@ -81,5 +81,4 @@ RadioButton.defaultProps = {
     disabled: false,
     isChecked: false,
     name: undefined,
-    itemRef: React.createRef(),
 };
