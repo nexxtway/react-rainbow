@@ -26,6 +26,7 @@ export default class RadioButton extends Component {
 
     render() {
         const {
+            itemRef,
             label,
             ariaDescribedby,
             onChange,
@@ -37,7 +38,7 @@ export default class RadioButton extends Component {
         } = this.props;
 
         return (
-            <span className={this.getContainerClassNames()}>
+            <span ref={itemRef} className={this.getContainerClassNames()}>
                 <input
                     type="radio"
                     required={required}
@@ -70,6 +71,7 @@ RadioButton.propTypes = {
     isChecked: PropTypes.bool,
     name: PropTypes.string,
     required: PropTypes.bool.isRequired,
+    itemRef: PropTypes.object.isRequired,
 };
 
 RadioButton.defaultProps = {
