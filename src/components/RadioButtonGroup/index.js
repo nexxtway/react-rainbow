@@ -35,6 +35,10 @@ class RadioButtonGroup extends Component {
     }
 
     componentDidUpdate(prevProps) {
+        if (prevProps.options !== this.props.options) {
+            this.updateRefs();
+        }
+
         if (prevProps.value !== this.props.value) {
             this.updateMarker();
         }
@@ -91,7 +95,7 @@ class RadioButtonGroup extends Component {
 
     updateMarker() {
         const activeOptionRef = this.getCheckedOptionRef();
-        if (activeOptionRef !== null) {
+        if (activeOptionRef && activeOptionRef.current) {
             this.setState({
                 markerLeft: activeOptionRef.current.offsetLeft,
                 markerWidth: Math.max(
@@ -100,6 +104,16 @@ class RadioButtonGroup extends Component {
                 ),
             });
         }
+    }
+
+    updateRefs() {
+        this.optionsRefs = this.generateRefsForOptions();
+        this.setState({
+            options: this.addRefsToOptions(this.props.options),
+        });
+        setTimeout(() => {
+            this.updateMarker();
+        }, 0);
     }
 
     render() {
