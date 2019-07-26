@@ -277,9 +277,10 @@
         }
 
         &[disabled] {
-            background-color: $color-gray-1;
+            box-shadow: none;
             border-color: $color-gray-2;
-            color: $color-gray-2;
+            background-color: $color-gray-1;
+            color: $color-gray-3;
             cursor: not-allowed;
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -302,6 +303,13 @@
         &:focus,
         &:active {
             padding-left: 2.2875rem;
+        }
+
+        &[disabled] {
+            &:focus,
+            &:active {
+                padding-left: 2.35rem;
+            }
         }
     }
 
@@ -349,10 +357,19 @@
         box-shadow: none;
         caret-color: transparent;
         background-color: transparent;
-        border: 1px solid transparent;
+        border: 2px solid transparent;
         font-size: $font-size-text-large;
         font-weight: 400;
         display: inline-block;
+        outline: 0;
+        color: $color-dark-1;
+        cursor: not-allowed;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        padding-left: 0;
+        padding-right: 0;
 
         &[type='text']::-ms-clear {
             display: none;
@@ -362,8 +379,9 @@
 
         &:focus,
         &:active {
+            padding-left: 0;
+            padding-right: 0;
             outline: 0;
-            border: 1px solid transparent;
             box-shadow: none;
             border-color: transparent;
             background-color: transparent;
@@ -372,125 +390,14 @@
         &::placeholder {
             color: $color-gray-3;
         }
-
-        &[readonly] {
-            outline: 0;
-            background-color: transparent;
-            border: 2px solid transparent;
-            color: $color-dark-1;
-            cursor: not-allowed;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            padding-left: 0;
-            padding-right: 0;
-
-            &:focus,
-            &:active {
-                outline: 0;
-                box-shadow: none;
-                border: 2px transparent solid;
-            }
-        }
     }
 
     .rainbow-lookup_selected-value-input-with-icon {
-        &[readonly] {
-            padding-left: 1.75rem;
-
-            &:focus,
-            &:active {
-                padding-left: 1.75rem;
-            }
-        }
-    }
-}
-
-.rainbow-lookup_selected-value--disabled {
-    .rainbow-lookup_selected-value-icon {
-        width: 2.5rem;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        line-height: 2.5rem;
-        z-index: 2;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        fill: $color-gray-3;
-    }
-
-    .rainbow-lookup_selected-value-icon:not(button) {
-        pointer-events: none;
-    }
-
-    .rainbow-lookup_selected-value-input {
-        caret-color: transparent;
-        box-shadow: none;
-        background-color: $color-gray-1;
-        border: 1px $color-gray-2 solid;
-        padding: 0 2.35rem 0 1rem;
-        border-radius: $border-radius-2;
-        color: $color-gray-3;
-        width: 100%;
-        display: inline-block;
-        line-height: 2.5rem;
-        height: 2.5rem;
-        font-size: $font-size-text-medium;
-        text-overflow: ellipsis;
-        cursor: not-allowed;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-
-        &[type='text']::-ms-clear {
-            display: none;
-            width: 0;
-            height: 0;
-        }
+        padding-left: 1.75rem;
 
         &:focus,
         &:active {
-            box-shadow: none;
-            background-color: $color-gray-1;
-            border: 1px $color-gray-2 solid;
-            padding-left: $padding-medium;
-        }
-
-        &::placeholder {
-            color: $color-gray-3;
-        }
-
-        &[disabled] {
-            background-color: $color-gray-1;
-            border-color: $color-gray-2;
-            color: $color-gray-3;
-            cursor: not-allowed;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-
-            &:focus,
-            &:active {
-                box-shadow: none;
-                background-color: $color-gray-1;
-                border: 1px $color-gray-2 solid;
-                padding-left: $padding-medium;
-            }
-        }
-    }
-
-    .rainbow-lookup_selected-value-input-with-icon {
-        &[readonly] {
-            padding-left: 2.35rem;
-
-            &:focus,
-            &:active {
-                padding-left: 2.35rem;
-            }
+            padding-left: 1.75rem;
         }
     }
 }

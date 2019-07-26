@@ -13,9 +13,8 @@ export default class SelectedValue extends Component {
     }
 
     getContainerClassNames() {
-        const { disabled, readOnly } = this.props;
+        const { readOnly } = this.props;
         return classnames('rainbow-lookup_selected-value', {
-            'rainbow-lookup_selected-value--disabled': disabled,
             'rainbow-lookup_selected-value--readonly': readOnly,
         });
     }
