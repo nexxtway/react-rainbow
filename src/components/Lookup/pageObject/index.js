@@ -35,6 +35,31 @@ class PageLookup {
     }
 
     /**
+     * Clicks the value input element.
+     * @method
+     */
+    clickValueLabel() {
+        $(this.rootElement)
+            .$('input[type="text"]')
+            .click();
+    }
+
+    clickInputLabel() {
+        $(this.rootElement)
+            .$('label.rainbow-lookup_input-label')
+            .click();
+    }
+    /**
+     * Clicks the close button element.
+     * @method
+     */
+    clickClearButton() {
+        $(this.rootElement)
+            .$('button[title="clear"]')
+            .click();
+    }
+
+    /**
      * Returns true when the input element has focus.
      * @method
      * @returns {bool}
@@ -42,6 +67,28 @@ class PageLookup {
     hasFocusInput() {
         return $(this.rootElement)
             .$('input[type="search"]')
+            .isFocused();
+    }
+
+    /**
+     * Returns true when the value input element has focus.
+     * @method
+     * @returns {bool}
+     */
+    hasFocusValueInput() {
+        return $(this.rootElement)
+            .$('input[type="text"]')
+            .isFocused();
+    }
+
+    /**
+     * Returns true when the clearValue button has focus.
+     * @method
+     * @returns {bool}
+     */
+    hasFocusClearValueButton() {
+        return $(this.rootElement)
+            .$('button[title="clear"]')
             .isFocused();
     }
 

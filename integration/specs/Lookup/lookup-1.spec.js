@@ -1,10 +1,5 @@
 const PageLookup = require('../../../src/components/Lookup/pageObject');
-const {
-    ESCAPE_KEY,
-    ARROW_DOWN_KEY,
-    ARROW_UP_KEY,
-    ENTER_KEY,
-} = require('../../constants');
+const { ESCAPE_KEY, ARROW_DOWN_KEY, ARROW_UP_KEY, ENTER_KEY } = require('../../constants');
 
 const LOOKUP = '#lookup-1';
 const REACT_LOGO = 'img[alt="react-rainbow"]';
@@ -143,4 +138,27 @@ describe('Lookup base example', () => {
         browser.keys(ARROW_UP_KEY);
         expect(option1.isVisible()).toBe(true);
     });
+    it('should set focus on input when it has an option selected and clicks the label', () => {
+        const lookup = new PageLookup(LOOKUP);
+        lookup.click();
+        lookup.setQuery('a');
+        lookup.waitUntilOpen();
+        const option1 = lookup.getOption(0);
+        option1.click();
+        expect(lookup.hasFocusValueInput()).toBe(false);
+        lookup.clickValueLabel();
+        expect(lookup.hasFocusValueInput()).toBe(true);
+    });
+    it('should set focus on input when it has an option selected and clicks the input', () => {
+        const lookup = new PageLookup(LOOKUP);
+        lookup.click();
+        lookup.setQuery('a');
+        lookup.waitUntilOpen();
+        const option1 = lookup.getOption(0);
+        option1.click();
+        expect(lookup.hasFocusValueInput()).toBe(false);
+        lookup.clickLabel();
+        expect(lookup.hasFocusValueInput()).toBe(true);
+    });
+    it('should set focus on clear button when it has an option selected and press tab key', () => {});
 });
