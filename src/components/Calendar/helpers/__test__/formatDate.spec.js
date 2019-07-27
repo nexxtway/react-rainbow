@@ -1,6 +1,16 @@
 import formatDate from '../formatDate';
 
 describe('formatDate', () => {
+    it('should return an empty string when pass falsy values', () => {
+        const values = [undefined, null, '', 0];
+        values.forEach(value => {
+            expect(formatDate(value)).toBe('');
+        });
+    });
+    it('should return an empty string when pass an invalid date', () => {
+        expect(formatDate('29-08-2003')).toBe('');
+        expect(formatDate('wrong date')).toBe('');
+    });
     it('should return the right formatted date', () => {
         expect(formatDate(new Date(2019, 3, 24))).toBe('04/24/2019');
         expect(formatDate(new Date('04/24/2019'))).toBe('04/24/2019');
