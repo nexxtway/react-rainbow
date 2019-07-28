@@ -1,5 +1,12 @@
 const PageLookup = require('../../../src/components/Lookup/pageObject');
-const { ESCAPE_KEY, ARROW_DOWN_KEY, ARROW_UP_KEY, ENTER_KEY } = require('../../constants');
+const {
+    ESCAPE_KEY,
+    ARROW_DOWN_KEY,
+    ARROW_UP_KEY,
+    ENTER_KEY,
+    SHIFT_KEY,
+    TAB_KEY,
+} = require('../../constants');
 
 const LOOKUP = '#lookup-1';
 const REACT_LOGO = 'img[alt="react-rainbow"]';
@@ -146,7 +153,7 @@ describe('Lookup base example', () => {
         const option1 = lookup.getOption(0);
         option1.click();
         expect(lookup.hasFocusValueInput()).toBe(false);
-        lookup.clickValueLabel();
+        lookup.clickLabel();
         expect(lookup.hasFocusValueInput()).toBe(true);
     });
     it('should set focus on input when it has an option selected and clicks the input', () => {
@@ -157,8 +164,26 @@ describe('Lookup base example', () => {
         const option1 = lookup.getOption(0);
         option1.click();
         expect(lookup.hasFocusValueInput()).toBe(false);
-        lookup.clickLabel();
+        lookup.clickValueLabel();
         expect(lookup.hasFocusValueInput()).toBe(true);
     });
-    it('should set focus on clear button when it has an option selected and press tab key', () => {});
+    it('should set focus on clear button when it has an option selected and press tab key', () => {
+        const lookup = new PageLookup(LOOKUP);
+        lookup.click();
+        lookup.setQuery('a');
+        lookup.waitUntilOpen();
+        const option1 = lookup.getOption(0);
+        option1.click();
+        expect(lookup.hasFocusValueInput()).toBe(false);
+        browser.keys(TAB_KEY);
+        expect(lookup.hasFocusValueInput()).toBe(true);
+        expect(lookup.hasFocusClearValueButton()).toBe(false);
+        browser.keys(TAB_KEY);
+        expect(lookup.hasFocusClearValueButton()).toBe(true);
+        browser.keys(TAB_KEY);
+        expect(lookup.hasFocusValueInput()).toBe(false);
+        expect(lookup.hasFocusClearValueButton()).toBe(false);
+        browser.keys([SHIFT_KEY, TAB_KEY]);
+        expect(lookup.hasFocusClearValueButton()).toBe(true);
+    });
 });
