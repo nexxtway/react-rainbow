@@ -153,7 +153,7 @@ describe('Lookup base example', () => {
         const option1 = lookup.getOption(0);
         option1.click();
         expect(lookup.hasFocusValueInput()).toBe(false);
-        lookup.clickLabel();
+        lookup.clickInputLabel();
         expect(lookup.hasFocusValueInput()).toBe(true);
     });
     it('should set focus on input when it has an option selected and clicks the input', () => {
