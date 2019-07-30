@@ -277,9 +277,10 @@
         }
 
         &[disabled] {
-            background-color: $color-gray-1;
+            box-shadow: none;
             border-color: $color-gray-2;
-            color: $color-gray-2;
+            background-color: $color-gray-1;
+            color: $color-gray-3;
             cursor: not-allowed;
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -303,6 +304,13 @@
         &:active {
             padding-left: 2.2875rem;
         }
+
+        &[disabled] {
+            &:focus,
+            &:active {
+                padding-left: 2.35rem;
+            }
+        }
     }
 
     .rainbow-lookup_selected-value-clear-button-container {
@@ -315,5 +323,81 @@
         align-items: center;
         justify-content: center;
         fill: $color-gray-4;
+    }
+}
+
+.rainbow-lookup_selected-value--readonly {
+    display: flex;
+
+    .rainbow-lookup_selected-value-icon {
+        fill: #a4a7b5;
+        height: 100%;
+        width: 22px;
+        top: 0;
+        position: absolute;
+        line-height: 1;
+        border: 0;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+            width: 16px;
+            height: 16px;
+            font-size: 16px;
+        }
+    }
+
+    .rainbow-lookup_selected-value-icon:not(button) {
+        pointer-events: none;
+    }
+
+    .rainbow-lookup_selected-value-input {
+        box-shadow: none;
+        caret-color: transparent;
+        background-color: transparent;
+        border: 2px solid transparent;
+        font-size: $font-size-text-large;
+        font-weight: 400;
+        display: inline-block;
+        outline: 0;
+        color: $color-dark-1;
+        cursor: not-allowed;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        padding-left: 0;
+        padding-right: 0;
+
+        &[type='text']::-ms-clear {
+            display: none;
+            width: 0;
+            height: 0;
+        }
+
+        &:focus,
+        &:active {
+            padding-left: 0;
+            padding-right: 0;
+            outline: 0;
+            box-shadow: none;
+            border-color: transparent;
+            background-color: transparent;
+        }
+
+        &::placeholder {
+            color: $color-gray-3;
+        }
+    }
+
+    .rainbow-lookup_selected-value-input-with-icon {
+        padding-left: 1.75rem;
+
+        &:focus,
+        &:active {
+            padding-left: 1.75rem;
+        }
     }
 }

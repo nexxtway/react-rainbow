@@ -7,6 +7,8 @@ import RenderIf from '../RenderIf';
 import RequiredAsterisk from '../RequiredAsterisk';
 import { uniqueId } from '../../libs/utils';
 import './styles.css';
+import Marker from './marker';
+import isOptionChecked from './helpers/isOptionChecked';
 
 /**
  * A button list that can have a single entry checked at any one time.
@@ -17,6 +19,29 @@ class RadioButtonGroup extends Component {
         super(props);
         this.errorId = uniqueId('error-message');
         this.groupNameId = props.name || uniqueId('options');
+        this.optionsRefs = this.generateRefsForOptions();
+
+        this.state = {
+            options: this.addRefsToOptions(props.options),
+            markerLeft: 0,
+            markerWidth: 0,
+        };
+    }
+
+    componentDidMount() {
+        setTimeout(() => {
+            this.updateMarker();
+        }, 0);
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.options !== this.props.options) {
+            this.updateRefs();
+        }
+
+        if (prevProps.value !== this.props.value) {
+            this.updateMarker();
+        }
     }
 
     getVariantClassNames() {
@@ -45,8 +70,59 @@ class RadioButtonGroup extends Component {
         return undefined;
     }
 
+    getCheckedOptionRef() {
+        const { value, options } = this.props;
+        const currentOptionIndex = options.findIndex(option => isOptionChecked(option, value));
+        return currentOptionIndex !== -1 ? this.optionsRefs[currentOptionIndex] : null;
+    }
+
+    generateRefsForOptions() {
+        const { options } = this.props;
+        return options.map(() => React.createRef());
+    }
+
+    addRefsToOptions(options) {
+        return options.map((option, index) => ({
+            ...option,
+            optionRef: this.optionsRefs[index],
+        }));
+    }
+
+    isMarkerActive() {
+        const { value, options } = this.props;
+        return options.some(option => !option.disabled && option.value === value);
+    }
+
+    updateMarker() {
+        const activeOptionRef = this.getCheckedOptionRef();
+        if (activeOptionRef && activeOptionRef.current) {
+            this.setState({
+                markerLeft: activeOptionRef.current.offsetLeft,
+                markerWidth: Math.max(
+                    activeOptionRef.current.offsetWidth,
+                    activeOptionRef.current.clientWidth,
+                ),
+            });
+        }
+    }
+
+    updateRefs() {
+        this.optionsRefs = this.generateRefsForOptions();
+        this.setState({
+            options: this.addRefsToOptions(this.props.options),
+        });
+        setTimeout(() => {
+            this.updateMarker();
+        }, 0);
+    }
+
     render() {
-        const { style, label, required, error, onChange, options, value, id } = this.props;
+        const { style, label, required, error, value, id, onChange } = this.props;
+        const { options, markerLeft, markerWidth } = this.state;
+        const markerStyle = {
+            left: markerLeft,
+            width: markerWidth,
+        };
 
         return (
             <fieldset id={id} className={this.getContainerClassNames()} style={style}>
@@ -57,14 +133,17 @@ class RadioButtonGroup extends Component {
                     </legend>
                 </RenderIf>
                 <div className="rainbow-radio-button-group_inner-container">
-                    <ButtonItems
-                        value={value}
-                        onChange={onChange}
-                        options={options}
-                        name={this.groupNameId}
-                        required={required}
-                        ariaDescribedby={this.getErrorMessageId()}
-                    />
+                    <Marker isVisible={this.isMarkerActive()} style={markerStyle} />
+                    <div className="rainbow-radio-button-group_items-container">
+                        <ButtonItems
+                            value={value}
+                            onChange={onChange}
+                            options={options}
+                            name={this.groupNameId}
+                            required={required}
+                            ariaDescribedby={this.getErrorMessageId()}
+                        />
+                    </div>
                 </div>
                 <RenderIf isTrue={!!error}>
                     <div
