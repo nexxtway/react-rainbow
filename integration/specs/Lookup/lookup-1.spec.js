@@ -152,9 +152,9 @@ describe('Lookup base example', () => {
         lookup.waitUntilOpen();
         const option1 = lookup.getOption(0);
         option1.click();
-        expect(lookup.hasFocusValueInput()).toBe(false);
-        lookup.clickInputLabel();
-        expect(lookup.hasFocusValueInput()).toBe(true);
+        expect(lookup.hasFocusSelectedOptionInput()).toBe(false);
+        lookup.clickLabel();
+        expect(lookup.hasFocusSelectedOptionInput()).toBe(true);
     });
     it('should set focus on input when it has an option selected and clicks the input', () => {
         const lookup = new PageLookup(LOOKUP);
@@ -163,27 +163,27 @@ describe('Lookup base example', () => {
         lookup.waitUntilOpen();
         const option1 = lookup.getOption(0);
         option1.click();
-        expect(lookup.hasFocusValueInput()).toBe(false);
-        lookup.clickValueLabel();
-        expect(lookup.hasFocusValueInput()).toBe(true);
+        expect(lookup.hasFocusSelectedOptionInput()).toBe(false);
+        lookup.clickSelectedOptionInput();
+        expect(lookup.hasFocusSelectedOptionInput()).toBe(true);
     });
-    it('should set focus on clear button when it has an option selected and press tab key', () => {
+    it('should set focus on remove selected option button when it has an option selected and press tab key', () => {
         const lookup = new PageLookup(LOOKUP);
         lookup.click();
         lookup.setQuery('a');
         lookup.waitUntilOpen();
         const option1 = lookup.getOption(0);
         option1.click();
-        expect(lookup.hasFocusValueInput()).toBe(false);
+        expect(lookup.hasFocusSelectedOptionInput()).toBe(false);
         browser.keys(TAB_KEY);
-        expect(lookup.hasFocusValueInput()).toBe(true);
-        expect(lookup.hasFocusClearValueButton()).toBe(false);
+        expect(lookup.hasFocusSelectedOptionInput()).toBe(true);
+        expect(lookup.hasFocusRemoveSelectedOptionButton()).toBe(false);
         browser.keys(TAB_KEY);
-        expect(lookup.hasFocusClearValueButton()).toBe(true);
+        expect(lookup.hasFocusRemoveSelectedOptionButton()).toBe(true);
         browser.keys(TAB_KEY);
-        expect(lookup.hasFocusValueInput()).toBe(false);
-        expect(lookup.hasFocusClearValueButton()).toBe(false);
+        expect(lookup.hasFocusSelectedOptionInput()).toBe(false);
+        expect(lookup.hasFocusRemoveSelectedOptionButton()).toBe(false);
         browser.keys([SHIFT_KEY, TAB_KEY]);
-        expect(lookup.hasFocusClearValueButton()).toBe(true);
+        expect(lookup.hasFocusRemoveSelectedOptionButton()).toBe(true);
     });
 });

@@ -35,25 +35,29 @@ class PageLookup {
     }
 
     /**
-     * Clicks the value input element.
+     * Clicks the input with a selected option.
      * @method
      */
-    clickValueLabel() {
+    clickSelectedOptionInput() {
         $(this.rootElement)
             .$('input[type="text"]')
             .click();
     }
 
-    clickInputLabel() {
+    /**
+     * Clicks the lookup label
+     * @method
+     */
+    clickLabel() {
         $(this.rootElement)
             .$('label.rainbow-lookup_input-label')
             .click();
     }
     /**
-     * Clicks the close button element.
+     * Remove selected option.
      * @method
      */
-    clickClearButton() {
+    RemoveSelectedOption() {
         $(this.rootElement)
             .$('button[title="clear"]')
             .click();
@@ -71,22 +75,22 @@ class PageLookup {
     }
 
     /**
-     * Returns true when the value input element has focus.
+     * Returns true when the selected option input element has focus.
      * @method
      * @returns {bool}
      */
-    hasFocusValueInput() {
+    hasFocusSelectedOptionInput() {
         return $(this.rootElement)
             .$('input[type="text"]')
             .isFocused();
     }
 
     /**
-     * Returns true when the clearValue button has focus.
+     * Returns true when the remove selected option button has focus.
      * @method
      * @returns {bool}
      */
-    hasFocusClearValueButton() {
+    hasFocusRemoveSelectedOptionButton() {
         return $(this.rootElement)
             .$('button[title="clear"]')
             .isFocused();
