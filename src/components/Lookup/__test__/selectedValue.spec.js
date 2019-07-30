@@ -27,10 +27,22 @@ describe('<SelectedValue />', () => {
         const component = mount(<SelectedValue />);
         expect(component.find('ButtonIcon').exists()).toBe(true);
     });
-    it('should fire an event when click the button', () => {
+    it('should fire an event when the close button is clicked', () => {
         const onClearMockFn = jest.fn();
         const component = mount(<SelectedValue onClearValue={onClearMockFn} />);
         component.find('ButtonIcon').simulate('click');
         expect(onClearMockFn).toHaveBeenCalledTimes(1);
+    });
+    it('should set the right class names when readOnly is passed', () => {
+        const component = mount(<SelectedValue readOnly />);
+        expect(component.find('div.rainbow-lookup_selected-value--readonly').exists()).toBe(true);
+    });
+    it('should not render the close button when readOnly is passed', () => {
+        const component = mount(<SelectedValue readOnly />);
+        expect(component.find('ButtonIcon').exists()).toBe(false);
+    });
+    it('should not render the close button when disabled is passed', () => {
+        const component = mount(<SelectedValue disabled />);
+        expect(component.find('ButtonIcon').exists()).toBe(false);
     });
 });

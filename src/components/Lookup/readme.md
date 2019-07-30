@@ -1,4 +1,4 @@
-##### Lookup base:
+##### Lookup base
 
     const options = [
         { label: 'Paris' },
@@ -60,7 +60,7 @@
             onSearch={search} />
     </div>
 
-##### Lookup small with icon and description:
+##### Lookup small with icon and description
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
     const { faBuilding } = require('@fortawesome/free-regular-svg-icons');
@@ -189,7 +189,7 @@
             onSearch={search} />
     </div>
 
-##### Lookup with options type section:
+##### Lookup with options type section
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
     const { faBuilding } = require('@fortawesome/free-solid-svg-icons');
@@ -282,7 +282,7 @@
             onSearch={search} />
     </div>
 
-##### Lookup disabled:
+##### Lookup disabled
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
     const { faCity } = require('@fortawesome/free-solid-svg-icons');
@@ -350,7 +350,7 @@
             onSearch={search} />
     </div>
 
-##### Lookup required with error:
+##### Lookup required with error
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
     const { faCity } = require('@fortawesome/free-solid-svg-icons');
@@ -417,4 +417,31 @@
             error="This field is required"
             isLoading={state.isLoading}
             onSearch={search} />
+    </div>
+
+##### Lookup readonly
+
+    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+    const { faStar } = require('@fortawesome/free-solid-svg-icons');
+    const inputContainerStyles = {
+        width: '50%',
+    };
+
+    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
+        <div className="rainbow-flex rainbow-p-bottom_medium">
+            <div className="rainbow-p-horizontal_small" style={inputContainerStyles}>
+                <Lookup
+                    label="Lookup Label"
+                    value={{ label: "Read Only" }}
+                    readOnly />
+
+            </div>
+            <div className="rainbow-p-horizontal_small" style={inputContainerStyles}>
+                <Lookup
+                    label="Lookup Label"
+                    readOnly
+                    value={{ label: "Read Only with icon left", icon: <FontAwesomeIcon icon={faStar} /> }} />
+
+            </div>
+        </div>
     </div>

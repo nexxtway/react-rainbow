@@ -12,6 +12,13 @@ export default class SelectedValue extends Component {
         this.inputRef = React.createRef();
     }
 
+    getContainerClassNames() {
+        const { readOnly } = this.props;
+        return classnames('rainbow-lookup_selected-value', {
+            'rainbow-lookup_selected-value--readonly': readOnly,
+        });
+    }
+
     getInputClassNames() {
         const { value } = this.props;
         const { icon } = formatValue(value);
@@ -51,6 +58,7 @@ export default class SelectedValue extends Component {
             value,
             disabled,
             tabIndex,
+            readOnly,
             required,
             onClick,
             onClearValue,
@@ -58,7 +66,7 @@ export default class SelectedValue extends Component {
         } = this.props;
         const { label, icon } = formatValue(value);
         return (
-            <div className="rainbow-lookup_selected-value">
+            <div className={this.getContainerClassNames()}>
                 <RenderIf isTrue={!!icon}>
                     <span className="rainbow-lookup_selected-value-icon">{icon}</span>
                 </RenderIf>
@@ -76,15 +84,17 @@ export default class SelectedValue extends Component {
                     required={required}
                     ref={this.inputRef}
                 />
-                <span className="rainbow-lookup_selected-value-clear-button-container">
-                    <ButtonIcon
-                        assistiveText="clear"
-                        size="small"
-                        title="clear"
-                        icon={<CloseIcon color="#576574" />}
-                        onClick={onClearValue}
-                    />
-                </span>
+                <RenderIf isTrue={!(readOnly || disabled)}>
+                    <span className="rainbow-lookup_selected-value-clear-button-container">
+                        <ButtonIcon
+                            assistiveText="clear"
+                            size="small"
+                            title="clear"
+                            icon={<CloseIcon color="#576574" />}
+                            onClick={onClearValue}
+                        />
+                    </span>
+                </RenderIf>
             </div>
         );
     }
@@ -103,6 +113,7 @@ SelectedValue.propTypes = {
     name: PropTypes.string,
     disabled: PropTypes.bool,
     required: PropTypes.bool,
+    readOnly: PropTypes.bool,
     tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     onClick: PropTypes.func,
     onClearValue: PropTypes.func,
@@ -115,6 +126,7 @@ SelectedValue.defaultProps = {
     id: undefined,
     disabled: false,
     required: false,
+    readOnly: false,
     tabIndex: undefined,
     onClick: () => {},
     onClearValue: undefined,
