@@ -50,6 +50,9 @@
     border: solid 2px #01b6f5;
     box-shadow: 0 2px 4px 0 rgba(136, 152, 170, 0.5);
     position: relative; }
+  .rainbow-visual-picker-option_content-container .rainbow-visual-picker-option_input:focus ~ .rainbow-visual-picker-option_content > .rainbow-visual-picker-option {
+    border: solid 2px #01b6f5;
+    box-shadow: 0 2px 4px 0 rgba(136, 152, 170, 0.5), 0 0 2px #01b6f5; }
   .rainbow-visual-picker-option_content-container .rainbow-visual-picker-option_input[disabled] ~ .rainbow-visual-picker-option_content > .rainbow-visual-picker-option {
     border: solid 1.5px #e3e5ed;
     box-shadow: 0 0 0 0 transparent;
