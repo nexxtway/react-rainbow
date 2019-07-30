@@ -35,6 +35,36 @@ class PageLookup {
     }
 
     /**
+     * Clicks the input with a selected option.
+     * @method
+     */
+    clickSelectedOptionInput() {
+        $(this.rootElement)
+            .$('input[type="text"]')
+            .click();
+    }
+
+    /**
+     * Clicks the lookup label
+     * @method
+     */
+    clickLabel() {
+        $(this.rootElement)
+            .$('label.rainbow-lookup_input-label')
+            .click();
+    }
+
+    /**
+     * Clicks the remove selected option button.
+     * @method
+     */
+    clickRemoveSelectedOptionButton() {
+        $(this.rootElement)
+            .$('button[title="Remove selected option"]')
+            .click();
+    }
+
+    /**
      * Returns true when the input element has focus.
      * @method
      * @returns {bool}
@@ -42,6 +72,28 @@ class PageLookup {
     hasFocusInput() {
         return $(this.rootElement)
             .$('input[type="search"]')
+            .isFocused();
+    }
+
+    /**
+     * Returns true when the selected option input element has focus.
+     * @method
+     * @returns {bool}
+     */
+    hasFocusSelectedOptionInput() {
+        return $(this.rootElement)
+            .$('input[type="text"]')
+            .isFocused();
+    }
+
+    /**
+     * Returns true when the remove selected option button has focus.
+     * @method
+     * @returns {bool}
+     */
+    hasFocusRemoveSelectedOptionButton() {
+        return $(this.rootElement)
+            .$('button[title="Remove selected option"]')
             .isFocused();
     }
 

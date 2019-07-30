@@ -89,7 +89,7 @@ export default class SelectedValue extends Component {
                         <ButtonIcon
                             assistiveText="clear"
                             size="small"
-                            title="clear"
+                            title="Remove selected option"
                             icon={<CloseIcon color="#576574" />}
                             onClick={onClearValue}
                         />
