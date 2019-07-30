@@ -18,7 +18,7 @@
             What are you doing?
         </h1>
         <VisualPicker label="Select Option">
-            <VisualPickerOption isChecked>
+            <VisualPickerOption>
                 <DesignIcon />
                 <h2 style={textStyles}>
                     Design
@@ -58,13 +58,13 @@
             What are you doing?
         </h1>
         <VisualPicker label="Select Option">
-            <VisualPickerOption isChecked>
+            <VisualPickerOption>
                 <DesignIcon />
                 <h2 style={textStyles}>
                     Design
                 </h2>
             </VisualPickerOption>
-            <VisualPickerOption isChecked>
+            <VisualPickerOption>
                 <PhotographerIcon />
                 <h2 style={textStyles}>
                     Photographer
@@ -118,7 +118,6 @@
                 </h3>
             </VisualPickerOption>
             <VisualPickerOption
-                isChecked
                 footer={
                     <VisualPickerOptionFooter
                         label="Rainbow Basic"

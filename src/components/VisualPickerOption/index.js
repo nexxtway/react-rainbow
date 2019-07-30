@@ -21,48 +21,41 @@ export default class VisualPickerOption extends Component {
         return classnames('rainbow-visual-picker-option_content-container', className);
     }
 
-    getType() {
-        const { multiple } = this.props;
-        if (multiple) {
-            return 'checkbox';
-        }
-        return 'radio';
+    // this need to be discussed with reinier, so not touch it for now.
+    // getType() {
+    //     const { multiple } = this.props;
+    //     if (multiple) {
+    //         return 'checkbox';
+    //     }
+    //     return 'radio';
+    // }
+
+    isChecked() {
+        // here goes logic to determine if it is checked
+        return false;
     }
 
     render() {
-        const {
-            ariaDescribedby,
-            onChange,
-            value,
-            disabled,
-            name,
-            children,
-            required,
-            id,
-            footer,
-            style,
-            // this is a test, it is not a prop
-            isChecked,
-        } = this.props;
+        const { disabled, name, children, footer, style } = this.props;
 
         return (
-            <span id={id} className={this.getContainerClassNames()} style={style}>
+            <span className={this.getContainerClassNames()} style={style}>
                 <input
                     className="rainbow-visual-picker-option_input"
-                    type={this.getType()}
-                    required={required}
+                    // type={this.getType()}
                     id={this.inputId}
-                    name={name}
-                    value={value}
-                    checked={isChecked}
-                    aria-describedby={ariaDescribedby}
-                    onChange={onChange}
+                    // here goes what is in this.groupNameId in the VisualPicker parent
+                    // name={name}
+                    // checked={this.isChecked()}
+                    // here goes what returns getErrorMessageId from parent component
+                    // aria-describedby={ariaDescribedby}
+                    // onChange={onChange}
                     disabled={disabled}
                 />
 
                 <label className="rainbow-visual-picker-option_content" htmlFor={this.inputId}>
                     <span className="rainbow-visual-picker-option">
-                        <RenderIf isTrue={!!isChecked}>
+                        <RenderIf isTrue={!!this.isChecked()}>
                             <span className="rainbow-visual-picker-option_selected-element" />
                             <CheckmarkIcon className="rainbow-visual-picker-option_checkmark-icon" />
                         </RenderIf>
@@ -79,27 +72,18 @@ export default class VisualPickerOption extends Component {
 }
 
 VisualPickerOption.propTypes = {
-    /** The value of the element. */
-    value: PropTypes.string,
-    /** The name of the radio group */
+    /** It is a unitque value the identifies the picker option. */
     name: PropTypes.string,
-    /** The id of the outer element. */
-    id: PropTypes.string,
-    /** If is set to true the radio group is required. This value defaults to false. */
-    required: PropTypes.bool,
     /** It is what will be displayed at the bottom of the component. It is a function that
     take the iteration item as argument and return an element */
     footer: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
+    /** Specifies that an VisualPickerOption element should be disabled.
+     * This value defaults to false. */
+    disabled: PropTypes.bool,
     /** The class name of the root element. */
     className: PropTypes.string,
     /** It is an object with custom style applied to the root element. */
     style: PropTypes.object,
-
-    onChange: PropTypes.func,
-    ariaDescribedby: PropTypes.string,
-    disabled: PropTypes.bool,
-    isChecked: PropTypes.bool,
-
     /**
      * This prop that should not be visible in the documentation.
      * @ignore
@@ -108,17 +92,11 @@ VisualPickerOption.propTypes = {
 };
 
 VisualPickerOption.defaultProps = {
-    value: undefined,
     name: undefined,
-    id: undefined,
-    required: false,
     footer: undefined,
-    children: [],
+    disabled: false,
     className: undefined,
     style: undefined,
-
-    onChange: () => {},
+    children: [],
     ariaDescribedby: undefined,
-    disabled: false,
-    isChecked: false,
 };

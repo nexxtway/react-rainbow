@@ -39,9 +39,9 @@ class VisualPicker extends Component {
             error,
             id,
             children,
+            onChange,
+            value,
             // multiple,
-            // onChange,
-            // value,
         } = this.props;
 
         return (
@@ -64,42 +64,42 @@ class VisualPicker extends Component {
 }
 
 VisualPicker.propTypes = {
-    /** The name of the radio group */
+    /** The name of VisualPicker. */
     name: PropTypes.string,
+    /** The value of the element. */
+    value: PropTypes.string,
     /** The id of the outer element. */
     id: PropTypes.string,
-    /** If is set to true the radio group is required. This value defaults to false. */
+    /** The action triggered when a value attribute changes. */
+    onChange: PropTypes.func,
+    /** If is set to true the VisualPicker is required. This value defaults to false. */
     required: PropTypes.bool,
-    /** The title at the top of the component. */
+    /** The title at the top of the VisualPicker component. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** Specifies that an radio group must be filled out before submitting the form. */
+    /** Specifies that an VisualPicker must be filled out before submitting the form. */
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** The callback fired when a item is selected */
     /** The class name of the root element. */
     className: PropTypes.string,
     /** It is an object with custom style applied to the root element. */
     style: PropTypes.object,
-    onChange: PropTypes.func,
-    /** If true then a multiple selection is allowed */
-    multiple: PropTypes.bool,
-    /** The value of the element. */
-    value: PropTypes.string,
     /**
      * This prop that should not be visible in the documentation.
      * @ignore
      */
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
+
+    // /** If true then a multiple selection is allowed */
+    // multiple: PropTypes.bool,
 };
 
 VisualPicker.defaultProps = {
-    value: undefined,
     name: null,
-    label: '',
-    error: null,
-    multiple: false,
+    value: undefined,
+    id: undefined,
     onChange: () => {},
     required: false,
-    id: undefined,
+    label: '',
+    error: null,
     className: undefined,
     style: undefined,
     children: [],
