@@ -186,4 +186,15 @@ describe('Lookup base example', () => {
         browser.keys([SHIFT_KEY, TAB_KEY]);
         expect(lookup.hasFocusRemoveSelectedOptionButton()).toBe(true);
     });
+    it('should clear input value when click remove selected option button', () => {
+        const lookup = new PageLookup(LOOKUP);
+        lookup.click();
+        lookup.setQuery('a');
+        lookup.waitUntilOpen();
+        const option1 = lookup.getOption(0);
+        option1.click();
+        lookup.clickRemoveSelectedOptionButton();
+        expect(lookup.hasFocusInput()).toBe(true);
+        expect(lookup.getQuery()).toBe('');
+    });
 });

@@ -53,13 +53,14 @@ class PageLookup {
             .$('label.rainbow-lookup_input-label')
             .click();
     }
+
     /**
-     * Remove selected option.
+     * Clicks the remove selected option button.
      * @method
      */
-    removeSelectedOption() {
+    clickRemoveSelectedOptionButton() {
         $(this.rootElement)
-            .$('button[title="clear"]')
+            .$('button[title="Remove selected option"]')
             .click();
     }
 
@@ -92,7 +93,7 @@ class PageLookup {
      */
     hasFocusRemoveSelectedOptionButton() {
         return $(this.rootElement)
-            .$('button[title="clear"]')
+            .$('button[title="Remove selected option"]')
             .isFocused();
     }
 
