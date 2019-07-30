@@ -57,7 +57,7 @@ class PageLookup {
      * Remove selected option.
      * @method
      */
-    RemoveSelectedOption() {
+    removeSelectedOption() {
         $(this.rootElement)
             .$('button[title="clear"]')
             .click();
