@@ -35,16 +35,14 @@ describe('<SelectedValue />', () => {
     });
     it('should set the right class names when readOnly is passed', () => {
         const component = mount(<SelectedValue readOnly />);
-        expect(component.find('div.rainbow-lookup_selected-value--readonly').exists()).toEqual(
-            true,
-        );
+        expect(component.find('div.rainbow-lookup_selected-value--readonly').exists()).toBe(true);
     });
     it('should not render the close button when readOnly is passed', () => {
         const component = mount(<SelectedValue readOnly />);
-        expect(component.find('ButtonIcon').exists()).toEqual(false);
+        expect(component.find('ButtonIcon').exists()).toBe(false);
     });
     it('should not render the close button when disabled is passed', () => {
         const component = mount(<SelectedValue disabled />);
-        expect(component.find('ButtonIcon').exists()).toEqual(false);
+        expect(component.find('ButtonIcon').exists()).toBe(false);
     });
 });
