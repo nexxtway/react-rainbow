@@ -330,37 +330,14 @@
     display: flex;
 
     .rainbow-lookup_selected-value-icon {
-        fill: #a4a7b5;
-        height: 100%;
-        width: 22px;
-        top: 0;
-        position: absolute;
-        line-height: 1;
-        border: 0;
-        z-index: 2;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        svg {
-            width: 16px;
-            height: 16px;
-            font-size: 16px;
-        }
-    }
-
-    .rainbow-lookup_selected-value-icon:not(button) {
-        pointer-events: none;
+        width: 24px;
     }
 
     .rainbow-lookup_selected-value-input {
         box-shadow: none;
-        caret-color: transparent;
         background-color: transparent;
         border: 2px solid transparent;
         font-size: $font-size-text-large;
-        font-weight: 400;
-        display: inline-block;
         outline: 0;
         color: $color-dark-1;
         cursor: not-allowed;
@@ -370,12 +347,6 @@
         user-select: none;
         padding-left: 0;
         padding-right: 0;
-
-        &[type='text']::-ms-clear {
-            display: none;
-            width: 0;
-            height: 0;
-        }
 
         &:focus,
         &:active {
