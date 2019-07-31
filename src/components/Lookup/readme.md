@@ -419,28 +419,27 @@
             onSearch={search} />
     </div>
 
-##### Lookup readonly
+##### Lookup with value selected
 
     const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-    const { faStar } = require('@fortawesome/free-solid-svg-icons');
+    const { faBuilding } = require('@fortawesome/free-solid-svg-icons');
     const inputContainerStyles = {
         width: '50%',
     };
 
-    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
+    <div className="rainbow-p-horizontal_xx-large rainbow-m-around_x-large">
         <div className="rainbow-flex rainbow-p-bottom_medium">
             <div className="rainbow-p-horizontal_small" style={inputContainerStyles}>
                 <Lookup
-                    label="Lookup Label"
-                    value={{ label: "Read Only" }}
-                    readOnly />
+                    label="Place of Birth"
+                    value={{ label: 'London', icon: <FontAwesomeIcon icon={faBuilding} className="rainbow-color_brand" /> }} />
 
             </div>
             <div className="rainbow-p-horizontal_small" style={inputContainerStyles}>
                 <Lookup
-                    label="Lookup Label"
+                    label="Place of Birth"
                     readOnly
-                    value={{ label: "Read Only with icon left", icon: <FontAwesomeIcon icon={faStar} /> }} />
+                    value={{ label: 'London', icon: <FontAwesomeIcon icon={faBuilding} className="rainbow-color_brand" /> }} />
 
             </div>
         </div>

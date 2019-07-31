@@ -240,31 +240,12 @@
 .rainbow-lookup_selected-value--readonly {
   display: flex; }
   .rainbow-lookup_selected-value--readonly .rainbow-lookup_selected-value-icon {
-    fill: #a4a7b5;
-    height: 100%;
-    width: 22px;
-    top: 0;
-    position: absolute;
-    line-height: 1;
-    border: 0;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center; }
-    .rainbow-lookup_selected-value--readonly .rainbow-lookup_selected-value-icon svg {
-      width: 16px;
-      height: 16px;
-      font-size: 16px; }
-  .rainbow-lookup_selected-value--readonly .rainbow-lookup_selected-value-icon:not(button) {
-    pointer-events: none; }
+    width: 24px; }
   .rainbow-lookup_selected-value--readonly .rainbow-lookup_selected-value-input {
     box-shadow: none;
-    caret-color: transparent;
     background-color: transparent;
     border: 2px solid transparent;
     font-size: 1rem;
-    font-weight: 400;
-    display: inline-block;
     outline: 0;
     color: #061c3f;
     cursor: not-allowed;
@@ -274,10 +255,6 @@
     user-select: none;
     padding-left: 0;
     padding-right: 0; }
-    .rainbow-lookup_selected-value--readonly .rainbow-lookup_selected-value-input[type='text']::-ms-clear {
-      display: none;
-      width: 0;
-      height: 0; }
     .rainbow-lookup_selected-value--readonly .rainbow-lookup_selected-value-input:focus, .rainbow-lookup_selected-value--readonly .rainbow-lookup_selected-value-input:active {
       padding-left: 0;
       padding-right: 0;
