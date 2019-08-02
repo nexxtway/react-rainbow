@@ -17,20 +17,20 @@
         <h1 style={titleStyles} className="rainbow-m-bottom_medium">
             What are you doing?
         </h1>
-        <VisualPicker label="Select Option">
-            <VisualPickerOption>
+        <VisualPicker label="Select Option" value="option-2">
+            <VisualPickerOption name="option-1">
                 <DesignIcon />
                 <h2 style={textStyles}>
                     Design
                 </h2>
             </VisualPickerOption>
-            <VisualPickerOption>
+            <VisualPickerOption name="option-2">
                 <PhotographerIcon />
                 <h2 style={textStyles}>
                     Photographer
                 </h2>
             </VisualPickerOption>
-            <VisualPickerOption>
+            <VisualPickerOption name="option-3">
                 <CodeIcon />
                 <h2 style={textStyles}>
                     Programmer
@@ -39,7 +39,7 @@
         </VisualPicker>
     </div>
 
-##### VisualPicker with multiple option selected:
+##### VisualPicker with multiple option selected
 
     const titleStyles = {
         fontSize: 24,
@@ -57,20 +57,20 @@
         <h1 style={titleStyles} className="rainbow-m-bottom_medium">
             What are you doing?
         </h1>
-        <VisualPicker label="Select Option">
-            <VisualPickerOption>
+        <VisualPicker label="Select Option" multiple value={['option-1', 'option-3']}>
+            <VisualPickerOption name="option-1">
                 <DesignIcon />
                 <h2 style={textStyles}>
                     Design
                 </h2>
             </VisualPickerOption>
-            <VisualPickerOption>
+            <VisualPickerOption name="option-2">
                 <PhotographerIcon />
                 <h2 style={textStyles}>
                     Photographer
                 </h2>
             </VisualPickerOption>
-            <VisualPickerOption>
+            <VisualPickerOption name="option-3">
                 <CodeIcon />
                 <h2 style={textStyles}>
                     Programmer
@@ -79,7 +79,7 @@
         </VisualPicker>
     </div>
 
-##### VisualPicker with footer:
+##### VisualPicker with footer
 
     const headerStyles = {
         fontSize: 24,
@@ -89,7 +89,7 @@
 
     const titleStyles = {
         fontSize: 36,
-        color: '#061c3f;',
+        color: '#061c3f',
         fontWeight: 200,
     };
 
@@ -105,6 +105,7 @@
         </h1>
         <VisualPicker label="Our Rainbow Options">
             <VisualPickerOption
+                name="option-1"
                 footer={
                     <VisualPickerOptionFooter
                         label="Rainbow Basic"
@@ -118,6 +119,7 @@
                 </h3>
             </VisualPickerOption>
             <VisualPickerOption
+                name="option-2"
                 footer={
                     <VisualPickerOptionFooter
                         label="Rainbow Basic"
@@ -131,6 +133,7 @@
                 </h3>
             </VisualPickerOption>
             <VisualPickerOption
+                name="option-3"
                 footer={
                     <VisualPickerOptionFooter
                         label="Rainbow Basic"

@@ -1,19 +1,19 @@
+/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { isArray, isString } from 'util';
+import { Consumer as VisualPickerConsumer } from '../VisualPicker/context';
 import { uniqueId } from '../../libs/utils';
 import RenderIf from '../RenderIf';
 import CheckmarkIcon from './checkmark';
 import './styles.css';
 
-/**
- * A VisualPickerOption.
- * @category Form
- */
-export default class VisualPickerOption extends Component {
+class PickerOption extends Component {
     constructor(props) {
         super(props);
         this.inputId = uniqueId('radio');
+        this.handleChange = this.handleChange.bind(this);
     }
 
     getContainerClassNames() {
@@ -21,35 +21,37 @@ export default class VisualPickerOption extends Component {
         return classnames('rainbow-visual-picker-option_content-container', className);
     }
 
-    // this need to be discussed with reinier, so not touch it for now.
-    // getType() {
-    //     const { multiple } = this.props;
-    //     if (multiple) {
-    //         return 'checkbox';
-    //     }
-    //     return 'radio';
-    // }
+    getType() {
+        const { multiple } = this.props;
+        return multiple ? 'checkbox' : 'radio';
+    }
 
     isChecked() {
-        // here goes logic to determine if it is checked
-        return false;
+        const { multiple, name, value } = this.props;
+        return multiple
+            ? isArray(value) && value.includes(name)
+            : isString(value) && value !== '' && name === value;
+    }
+
+    handleChange() {
+        const { name, privateOnChange } = this.props;
+        privateOnChange(name);
     }
 
     render() {
-        const { disabled, name, children, footer, style } = this.props;
+        const { disabled, children, footer, style } = this.props;
+        const { groupName, ariaDescribedby } = this.props;
 
         return (
             <span className={this.getContainerClassNames()} style={style}>
                 <input
                     className="rainbow-visual-picker-option_input"
-                    // type={this.getType()}
+                    type={this.getType()}
                     id={this.inputId}
-                    // here goes what is in this.groupNameId in the VisualPicker parent
-                    // name={name}
-                    // checked={this.isChecked()}
-                    // here goes what returns getErrorMessageId from parent component
-                    // aria-describedby={ariaDescribedby}
-                    // onChange={onChange}
+                    name={groupName}
+                    checked={this.isChecked()}
+                    aria-describedby={ariaDescribedby}
+                    onChange={this.handleChange}
                     disabled={disabled}
                 />
 
@@ -59,7 +61,6 @@ export default class VisualPickerOption extends Component {
                             <span className="rainbow-visual-picker-option_selected-element" />
                             <CheckmarkIcon className="rainbow-visual-picker-option_checkmark-icon" />
                         </RenderIf>
-
                         {children}
                     </span>
                     <RenderIf isTrue={!!footer}>
@@ -71,9 +72,21 @@ export default class VisualPickerOption extends Component {
     }
 }
 
+/**
+ * A VisualPickerOption.
+ * @category Form
+ */
+export default function VisualPickerOption(props) {
+    return (
+        <VisualPickerConsumer>
+            {context => <PickerOption {...props} {...context} />}
+        </VisualPickerConsumer>
+    );
+}
+
 VisualPickerOption.propTypes = {
     /** It is a unitque value the identifies the picker option. */
-    name: PropTypes.string,
+    name: PropTypes.string.isRequired,
     /** It is what will be displayed at the bottom of the component. It is a function that
     take the iteration item as argument and return an element */
     footer: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),

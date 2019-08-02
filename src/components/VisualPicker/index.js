@@ -5,6 +5,7 @@ import withReduxForm from './../../libs/hocs/withReduxForm';
 import RenderIf from '../RenderIf';
 import RequiredAsterisk from '../RequiredAsterisk';
 import { uniqueId } from './../../libs/utils';
+import { Provider } from './context';
 import './styles.css';
 
 /**
@@ -16,6 +17,7 @@ class VisualPicker extends Component {
         super(props);
         this.errorId = uniqueId('error-message');
         this.groupNameId = props.name || uniqueId('visual-picker');
+        this.handleChange = this.handleChange.bind(this);
     }
 
     getContainerClassNames() {
@@ -31,6 +33,12 @@ class VisualPicker extends Component {
         return undefined;
     }
 
+    handleChange(optionName) {
+        const { onChange, multiple, value } = this.props;
+        const currentValue = multiple ? [...value, optionName] : optionName;
+        onChange(currentValue);
+    }
+
     render() {
         const {
             style,
@@ -39,10 +47,18 @@ class VisualPicker extends Component {
             error,
             id,
             children,
-            onChange,
+            // onChange,
             value,
-            // multiple,
+            multiple,
         } = this.props;
+
+        const context = {
+            ariaDescribedby: this.getErrorMessageId(),
+            groupName: this.groupNameId,
+            privateOnChange: this.handleChange,
+            value,
+            multiple,
+        };
 
         return (
             <fieldset id={id} className={this.getContainerClassNames()} style={style}>
@@ -52,7 +68,9 @@ class VisualPicker extends Component {
                         {label}
                     </legend>
                 </RenderIf>
-                <div className="rainbow-visual-picker_options-container">{children}</div>
+                <div className="rainbow-visual-picker_options-container">
+                    <Provider value={context}>{children}</Provider>
+                </div>
                 <RenderIf isTrue={!!error}>
                     <div id={this.getErrorMessageId()} className="rainbow-visual-picker_text-error">
                         {error}
@@ -67,7 +85,7 @@ VisualPicker.propTypes = {
     /** The name of VisualPicker. */
     name: PropTypes.string,
     /** The value of the element. */
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
     /** The id of the outer element. */
     id: PropTypes.string,
     /** The action triggered when a value attribute changes. */
@@ -87,9 +105,8 @@ VisualPicker.propTypes = {
      * @ignore
      */
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
-
     // /** If true then a multiple selection is allowed */
-    // multiple: PropTypes.bool,
+    multiple: PropTypes.bool,
 };
 
 VisualPicker.defaultProps = {
@@ -103,6 +120,7 @@ VisualPicker.defaultProps = {
     className: undefined,
     style: undefined,
     children: [],
+    multiple: false,
 };
 
 export default withReduxForm(VisualPicker);
