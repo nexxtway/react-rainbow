@@ -1,0 +1,85 @@
+@import "./../../styles/colors.scss";
+@import '../../styles/font-sizes.scss';
+@import './../../styles/shadows.scss';
+@import './../../styles/border-radius.scss';
+
+.rainbow-visual-picker-option_content-container {
+    .rainbow-visual-picker-option_content {
+        display: flex;
+        flex-direction: column;
+        width: 142px;
+
+        .rainbow-visual-picker-option {
+            height: 142px;
+            width: 100%;
+            border-radius: 22px;
+            box-shadow: 0 1px 2px 0 rgba(136, 152, 170, 0.5);
+            border: solid 2px $color-gray-2;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+
+            &:hover {
+                cursor: pointer;
+                border: solid 2px $color-brand;
+                box-shadow: 0 2px 4px 0 rgba(136, 152, 170, 0.5);
+            }
+
+            .rainbow-visual-picker-option_selected-element {
+                position: absolute;
+                top: -1px;
+                right: -1px;
+                border: 1.5rem solid transparent;
+                border-radius: 0 20px 0 0;
+                border-right-color: $color-brand;
+                border-top-color: $color-brand;
+                margin: 0;
+                padding: 0;
+            }
+
+            .rainbow-visual-picker-option_checkmark-icon {
+                position: absolute;
+                top: 8px;
+                right: 8px;
+                fill: white;
+            }
+        }
+
+        .rainbow-visual-picker-option_footer {
+            width: 100%;
+            padding-top: 0.5rem;
+        }
+    }
+
+    .rainbow-visual-picker-option_input {
+        width: 1px;
+        height: 1px;
+        border: 0;
+        clip: rect(0 0 0 0);
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+
+        &:checked ~ .rainbow-visual-picker-option_content > .rainbow-visual-picker-option {
+            border: solid 2px $color-brand;
+            box-shadow: 0 2px 4px 0 rgba(136, 152, 170, 0.5);
+            position: relative;
+        }
+
+        &:focus ~ .rainbow-visual-picker-option_content > .rainbow-visual-picker-option {
+            border: solid 2px $color-brand;
+            box-shadow: 0 2px 4px 0 rgba(136, 152, 170, 0.5), $shadow-outline;
+        }
+
+        &[disabled] ~ .rainbow-visual-picker-option_content > .rainbow-visual-picker-option {
+            border: solid 1.5px $color-gray-2;
+            box-shadow: 0 0 0 0 transparent;
+            background-color: $color-gray-1;
+            cursor: not-allowed;
+        }
+    }
+}

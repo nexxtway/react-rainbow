@@ -48,6 +48,7 @@ import Spinner from './Spinner';
 import Tab from './Tab';
 import Tabset from './Tabset';
 import Table from './Table';
+import TableWithBrowserPagination from './TableWithBrowserPagination';
 import Textarea from './Textarea';
 import TimelineMarker from './TimelineMarker';
 import TimePicker from './TimePicker';
@@ -55,7 +56,9 @@ import VerticalItem from './VerticalItem';
 import VerticalNavigation from './VerticalNavigation';
 import VerticalSection from './VerticalSection';
 import VerticalSectionOverflow from './VerticalSectionOverflow';
-import TableWithBrowserPagination from './TableWithBrowserPagination';
+import VisualPicker from './VisualPicker';
+import VisualPickerOption from './VisualPickerOption';
+import VisualPickerOptionFooter from './VisualPickerOptionFooter';
 import withDebounce from '../libs/hocs/withDebounce';
 
 export {
@@ -109,6 +112,7 @@ export {
     Tab,
     Tabset,
     Table,
+    TableWithBrowserPagination,
     Textarea,
     TimelineMarker,
     TimePicker,
@@ -116,6 +120,8 @@ export {
     VerticalNavigation,
     VerticalSection,
     VerticalSectionOverflow,
-    TableWithBrowserPagination,
+    VisualPicker,
+    VisualPickerOption,
+    VisualPickerOptionFooter,
     withDebounce,
 };

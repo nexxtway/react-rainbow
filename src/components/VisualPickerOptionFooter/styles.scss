@@ -1,0 +1,22 @@
+@import "./../../styles/colors.scss";
+@import '../../styles/font-sizes.scss';
+
+.rainbow-visual-picker-option-footer_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.rainbow-visual-picker-option-footer_label {
+    font-size: $font-size-heading-small;
+    color: $color-dark-1;
+    text-align: center;
+    font-weight: 300;
+}
+
+.rainbow-visual-picker-option-footer_description {
+    font-size: $font-size-text-small;
+    color: $color-gray-3;
+    text-align: center;
+}
