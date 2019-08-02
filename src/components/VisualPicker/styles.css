@@ -9,11 +9,10 @@
     text-align: center; }
   .rainbow-visual-picker_container .rainbow-visual-picker_options-container {
     display: flex; }
+    .rainbow-visual-picker_container .rainbow-visual-picker_options-container .rainbow-visual-picker-option_content-container:not(:last-child) {
+      margin-right: 1rem; }
   .rainbow-visual-picker_container .rainbow-visual-picker_text-error {
     text-align: center;
     font-size: 0.875rem;
     margin-top: 0.5rem;
     color: #fe4849; }
-
-.rainbow-visual-picker_options-container > .rainbow-visual-picker-option_content-container:not(:last-child) {
-  margin-right: 1rem; }
