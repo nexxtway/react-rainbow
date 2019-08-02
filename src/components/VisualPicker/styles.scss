@@ -19,6 +19,10 @@
 
     .rainbow-visual-picker_options-container {
         display: flex;
+
+        .rainbow-visual-picker-option_content-container:not(:last-child) {
+            margin-right: 1rem;
+        }
     }
 
     .rainbow-visual-picker_text-error {
@@ -27,8 +31,4 @@
         margin-top: $margin-x-small;
         color: $color-error;
     }
-}
-
-.rainbow-visual-picker_options-container > .rainbow-visual-picker-option_content-container:not(:last-child) {
-    margin-right: 1rem;
 }
