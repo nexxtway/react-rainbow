@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { isArray, isString } from 'util';
 import { Consumer as VisualPickerConsumer } from '../VisualPicker/context';
 import { uniqueId } from '../../libs/utils';
 import RenderIf from '../RenderIf';
@@ -23,19 +22,24 @@ class PickerOption extends Component {
 
     getType() {
         const { multiple } = this.props;
-        return multiple ? 'checkbox' : 'radio';
+        if (multiple) {
+            return 'checkbox';
+        }
+        return 'radio';
     }
 
     isChecked() {
         const { multiple, name, value } = this.props;
-        return multiple
-            ? isArray(value) && value.includes(name)
-            : isString(value) && value !== '' && name === value;
+        if (multiple) {
+            return Array.isArray(value) && value.includes(name);
+        }
+
+        return typeof value === 'string' && name === value;
     }
 
-    handleChange() {
+    handleChange(event) {
         const { name, privateOnChange } = this.props;
-        privateOnChange(name);
+        privateOnChange(name, event.target.checked);
     }
 
     render() {
@@ -85,7 +89,7 @@ export default function VisualPickerOption(props) {
 }
 
 VisualPickerOption.propTypes = {
-    /** It is a unitque value the identifies the picker option. */
+    /** It is a unique value the identifies the picker option. */
     name: PropTypes.string.isRequired,
     /** It is what will be displayed at the bottom of the component. It is a function that
     take the iteration item as argument and return an element */
