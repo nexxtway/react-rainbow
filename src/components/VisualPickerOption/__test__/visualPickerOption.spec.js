@@ -24,4 +24,19 @@ describe('<VisualPickerOption/>', () => {
         expect(component1.find('input').prop('checked')).toBe(true);
         expect(component2.find('input').prop('checked')).toBe(true);
     });
+    it('should mark the input element as checked when is not multiple', () => {
+        const value = 'option1';
+        const component = mount(<VisualPickerOption name="option1" value={value} />);
+        expect(component.find('input').prop('checked')).toBe(true);
+    });
+    it('should mark the input element as checked when is multiple', () => {
+        const value = ['option1'];
+        const component = mount(<VisualPickerOption name="option1" multiple value={value} />);
+        expect(component.find('input').prop('checked')).toBe(true);
+    });
+    it('should not mark the input element as checked when is multiple and value passed is not an array', () => {
+        const value = 'option1';
+        const component = mount(<VisualPickerOption name="option1" multiple value={value} />);
+        expect(component.find('input').prop('checked')).toBe(false);
+    });
 });
