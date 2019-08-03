@@ -45,18 +45,7 @@ class VisualPicker extends Component {
     }
 
     render() {
-        const {
-            style,
-            label,
-            required,
-            error,
-            id,
-            children,
-            // onChange,
-            value,
-            multiple,
-        } = this.props;
-
+        const { style, label, required, error, id, children, value, multiple } = this.props;
         const context = {
             ariaDescribedby: this.getErrorMessageId(),
             groupName: this.groupNameId,
@@ -110,7 +99,7 @@ VisualPicker.propTypes = {
      * @ignore
      */
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
-    // /** If true then a multiple selection is allowed */
+    /** If true then a multiple selection is allowed */
     multiple: PropTypes.bool,
 };
 

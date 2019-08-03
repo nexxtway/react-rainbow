@@ -198,4 +198,24 @@ describe('<Modal/>', () => {
         });
         expect(document.body.style.overflow).toBe('hidden');
     });
+    it('should call CounterManager.decrement when the component unmount and it is open', () => {
+        CounterManager.decrement.mockReset();
+        const component = mount(
+            <Modal isOpen>
+                <p />
+            </Modal>,
+        );
+        component.unmount();
+        expect(CounterManager.decrement).toHaveBeenCalledTimes(1);
+    });
+    it('should not call CounterManager.decrement when the component unmount and it is not open', () => {
+        CounterManager.decrement.mockReset();
+        const component = mount(
+            <Modal isOpen={false}>
+                <p />
+            </Modal>,
+        );
+        component.unmount();
+        expect(CounterManager.decrement).not.toHaveBeenCalled();
+    });
 });
