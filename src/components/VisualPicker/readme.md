@@ -29,6 +29,7 @@
         render() {
             return (
                 <VisualPicker
+                    id="visual-picker-component-1"
                     label="Select Option"
                     value={this.state.value}
                     onChange={this.handleOnChange}
@@ -93,6 +94,7 @@
         render() {
             return (
                 <VisualPicker
+                    id="visual-picker-component-3"
                     label="Select Options"
                     multiple
                     value={this.state.value}
@@ -164,6 +166,7 @@
         render() {
             return (
                 <VisualPicker
+                    id="visual-picker-component-5"
                     label="Our Rainbow Options"
                     value={this.state.value}
                     onChange={this.handleOnChange}
