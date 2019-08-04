@@ -121,6 +121,7 @@ export default function ImportRecordsFlow(props) {
         setFileType('');
         setData([]);
         setColumns([]);
+        setFieldsMap({});
     };
 
     const assignField = (databaseFieldToAssign, fileFieldsToAssign) => {
