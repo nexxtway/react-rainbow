@@ -62,7 +62,10 @@ export default class Modal extends Component {
     }
 
     componentWillUnmount() {
-        CounterManager.decrement();
+        const { isOpen } = this.props;
+        if (isOpen) {
+            CounterManager.decrement();
+        }
         if (!CounterManager.hasModalsOpen()) {
             enableScroll();
         }

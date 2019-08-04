@@ -61,7 +61,7 @@ class PickerOption extends Component {
 
                 <label className="rainbow-visual-picker-option_content" htmlFor={this.inputId}>
                     <span className="rainbow-visual-picker-option">
-                        <RenderIf isTrue={!!this.isChecked()}>
+                        <RenderIf isTrue={this.isChecked()}>
                             <span className="rainbow-visual-picker-option_selected-element" />
                             <CheckmarkIcon className="rainbow-visual-picker-option_checkmark-icon" />
                         </RenderIf>
@@ -89,10 +89,9 @@ export default function VisualPickerOption(props) {
 }
 
 VisualPickerOption.propTypes = {
-    /** It is a unique value the identifies the picker option. */
+    /** It is a unique value that identifies the picker option. */
     name: PropTypes.string.isRequired,
-    /** It is what will be displayed at the bottom of the component. It is a function that
-    take the iteration item as argument and return an element */
+    /** It is what will be displayed at the bottom of the component. */
     footer: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
     /** Specifies that an VisualPickerOption element should be disabled.
      * This value defaults to false. */

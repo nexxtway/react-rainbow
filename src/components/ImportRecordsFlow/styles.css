@@ -1,0 +1,13 @@
+.rainbow-import-records-flow_table {
+  margin: 0 -16px; }
+
+.rainbow-import-records-flow_footer {
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: space-between; }
+
+.rainbow-import-records-flow_footer-back-button {
+  margin-right: 3rem; }
+
+.rainbow-import-records-flow_footer-next-button {
+  margin-left: 3rem; }
