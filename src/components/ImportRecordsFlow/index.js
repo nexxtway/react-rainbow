@@ -131,6 +131,12 @@ export default function ImportRecordsFlow(props) {
         });
     };
 
+    const handleCloseModal = () => {
+        setCurrentStepIndex(0);
+        removeFile();
+        onRequestClose();
+    };
+
     return (
         <Modal
             className={className}
@@ -138,7 +144,7 @@ export default function ImportRecordsFlow(props) {
             title={getModalTitle()}
             size="medium"
             isOpen={isOpen}
-            onRequestClose={onRequestClose}
+            onRequestClose={handleCloseModal}
             footer={
                 <Footer
                     onBack={goBackStep}
