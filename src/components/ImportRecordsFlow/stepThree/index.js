@@ -9,11 +9,12 @@ import AssignFieldModal from './assignFieldModal';
 import './styles.css';
 
 export default function StepThree(props) {
-    const { schemaFields, columns, onAssignField, fieldsMap } = props;
+    const { schemaFields, columns, onAssignField, fieldsMap, data } = props;
+    const previewData = data.slice(0, 3);
 
-    const [data, setData] = useState([]);
+    const [assignData, setAssignData] = useState([]);
     useEffect(() => {
-        setData(getAssignFieldsData(schemaFields, fieldsMap));
+        setAssignData(getAssignFieldsData(schemaFields, fieldsMap));
     }, [schemaFields, fieldsMap]);
 
     const [isAssignFieldModalOpen, setAssignFieldModalState] = useState(false);
@@ -29,7 +30,7 @@ export default function StepThree(props) {
 
     return (
         <div>
-            <Table className="rainbow-import-records-flow_table" keyField="id" data={data}>
+            <Table className="rainbow-import-records-flow_table" keyField="id" data={assignData}>
                 <Column
                     header="Modify"
                     field="fileField"
@@ -47,6 +48,7 @@ export default function StepThree(props) {
                 databaseFieldToAssign={databaseFieldToAssign}
                 onAssignField={onAssignField}
                 fieldsMap={fieldsMap}
+                data={previewData}
             />
         </div>
     );
@@ -56,10 +58,12 @@ StepThree.propTypes = {
     schemaFields: PropTypes.array,
     onAssignField: PropTypes.func,
     fieldsMap: PropTypes.object,
+    data: PropTypes.array,
 };
 
 StepThree.defaultProps = {
     schemaFields: [],
     onAssignField: () => {},
     fieldsMap: {},
+    data: [],
 };

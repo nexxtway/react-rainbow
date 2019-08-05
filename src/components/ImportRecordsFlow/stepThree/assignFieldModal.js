@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import Modal from '../../Modal';
 import Select from '../../Select';
 import getFileFieldsOptions from '../helpers/getFileFieldsOptions';
 import AssignFieldModalFooter from './assignFieldModalFooter';
 import SelectedFieldsToAssign from './selectedFieldsToAssign';
+import Preview from './preview';
 
 export default function AssignFieldModal(props) {
     const {
@@ -14,6 +16,7 @@ export default function AssignFieldModal(props) {
         databaseFieldToAssign,
         onAssignField,
         fieldsMap,
+        data,
     } = props;
     const modalTitle = `Assign to the field: ${databaseFieldToAssign}`;
 
@@ -59,6 +62,11 @@ export default function AssignFieldModal(props) {
         setFileFieldsToAssign(fileFieldsToAssign.filter(field => field !== value));
     };
 
+    const getModalContainerClassNames = () =>
+        classnames({
+            'rainbow-import-records-flow_step-three-assign-field-modal-content': !fileFieldsToAssign.length,
+        });
+
     return (
         <Modal
             title={modalTitle}
@@ -73,7 +81,7 @@ export default function AssignFieldModal(props) {
                 />
             }
         >
-            <div className="rainbow-import-records-flow_step-three-assign-field-modal-content">
+            <div className={getModalContainerClassNames()}>
                 <Select
                     className="rainbow-import-records-flow_step-three-field-select"
                     label="Select Field"
@@ -82,6 +90,11 @@ export default function AssignFieldModal(props) {
                     value="default"
                 />
                 <SelectedFieldsToAssign values={fileFieldsToAssign} onDelete={deleteFileField} />
+                <Preview
+                    field={databaseFieldToAssign}
+                    fileFields={fileFieldsToAssign}
+                    data={data}
+                />
             </div>
         </Modal>
     );
@@ -94,6 +107,7 @@ AssignFieldModal.propTypes = {
     databaseFieldToAssign: PropTypes.string,
     onAssignField: PropTypes.func,
     fieldsMap: PropTypes.object,
+    data: PropTypes.array,
 };
 
 AssignFieldModal.defaultProps = {
@@ -103,4 +117,5 @@ AssignFieldModal.defaultProps = {
     databaseFieldToAssign: '',
     onAssignField: () => {},
     fieldsMap: {},
+    data: [],
 };
