@@ -59,9 +59,5 @@
             <div className="rainbow-m-right_medium">
                 <ImportRecordsFlowModal />
             </div>
-            <ButtonGroup>
-                <ButtonIcon icon={<FontAwesomeIcon icon={faPlus} />} variant="border-filled" disabled />
-                <ButtonIcon icon={<FontAwesomeIcon icon={faEllipsisV} />} variant="border-filled" disabled />
-            </ButtonGroup>
         </GlobalHeader>
     </div>
