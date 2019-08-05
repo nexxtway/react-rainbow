@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import UploadFileButton from './uploadFileButton';
 import Preview from './preview';
 import './styles.css';
@@ -21,13 +22,33 @@ export default function StepTwo(props) {
         fileType,
     } = props;
 
+    const [isDragOver, setIsDragOver] = useState(false);
+
+    const getContainerClassNames = () =>
+        classnames('rainbow-import-records-flow_step-two-container', {
+            'rainbow-import-records-flow_step-two-container-drag-over': isDragOver,
+        });
+
     const handleChange = event => {
         onProcessFile(event.target.files[0]);
     };
 
+    const handleDragLeave = () => {
+        setIsDragOver(false);
+    };
+
+    const handleDragOver = event => {
+        preventDefault(event);
+        setIsDragOver(true);
+    };
+
     const handleDrop = event => {
         preventDefault(event);
-        onProcessFile(event.dataTransfer.files[0]);
+        setIsDragOver(false);
+        const { files } = event.dataTransfer;
+        if (files.length === 1 && files[0].type === 'text/csv') {
+            onProcessFile(files[0]);
+        }
     };
 
     if (hasFileSelected) {
@@ -45,10 +66,12 @@ export default function StepTwo(props) {
 
     return (
         <div
-            className="rainbow-import-records-flow_step-two-container"
+            className={getContainerClassNames()}
             onDragEnter={preventDefault}
-            onDragOver={preventDefault}
+            onDragLeave={handleDragLeave}
+            onDragOver={handleDragOver}
             onDrop={handleDrop}
+            draggable
         >
             <UploadFileButton onChange={handleChange} />
             <h1 className="rainbow-import-records-flow_step-two-text">

@@ -134,6 +134,8 @@ export default function ImportRecordsFlow(props) {
     const handleCloseModal = () => {
         setCurrentStepIndex(0);
         removeFile();
+        setActionOption('');
+        setMatchField('default');
         onRequestClose();
     };
 
