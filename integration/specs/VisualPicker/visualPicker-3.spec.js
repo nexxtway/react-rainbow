@@ -20,9 +20,9 @@ describe('VisualPicker with multiple option selection', () => {
     it('should loose focus if another option is clicked', () => {
         const visualPicker = new PageVisualPicker(VISUAL_PICKER);
         const option1 = visualPicker.getItem(0);
-        const option2 = visualPicker.getItem(1);
+        const option3 = visualPicker.getItem(2);
         option1.click();
-        option2.click();
+        option3.click();
         expect(option1.hasFocus()).toBe(false);
     });
     it('should set checked on the option when clicked', () => {
@@ -34,9 +34,10 @@ describe('VisualPicker with multiple option selection', () => {
     it('should not loose the checked if another option is clicked', () => {
         const visualPicker = new PageVisualPicker(VISUAL_PICKER);
         const option1 = visualPicker.getItem(0);
-        const option2 = visualPicker.getItem(1);
+        const option3 = visualPicker.getItem(2);
         option1.click();
-        option2.click();
+        option3.click();
         expect(option1.isChecked()).toBe(true);
+        expect(option3.isChecked()).toBe(true);
     });
 });

@@ -15,9 +15,9 @@ class PageVisualPicker {
     }
 
     /**
-     * Returns a new Checkbox page object of the element in item position.
+     * Returns a new VisualPickerOption page object of the element in item position.
      * @method
-     * @param {number} itemPosition - The base 0 index of the checkbox.
+     * @param {number} itemPosition - The base 0 index of the VisualPickerOption.
      */
     getItem(itemPosition) {
         const items = $(this.rootElement).$$('.rainbow-visual-picker-option_content-container');

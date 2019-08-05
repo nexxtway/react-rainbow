@@ -1,5 +1,7 @@
 const PageVisualPicker = require('../../../src/components/VisualPicker/pageObject');
 
+const { ARROW_LEFT_KEY, ARROW_RIGHT_KEY } = require('../../constants');
+
 const VISUAL_PICKER = '#visual-picker-component-1';
 
 describe('VisualPicker with single option selection', () => {
@@ -38,5 +40,23 @@ describe('VisualPicker with single option selection', () => {
         option1.click();
         option2.click();
         expect(option1.isChecked()).toBe(false);
+    });
+    it(' should check the next option when press left arrow key', () => {
+        const visualPicker = new PageVisualPicker(VISUAL_PICKER);
+        const option1 = visualPicker.getItem(0);
+        const option2 = visualPicker.getItem(1);
+        option2.click();
+        browser.keys(ARROW_LEFT_KEY);
+        expect(option1.isChecked()).toBe(true);
+        expect(option2.isChecked()).toBe(false);
+    });
+    it(' should check the next option when press right arrow key', () => {
+        const visualPicker = new PageVisualPicker(VISUAL_PICKER);
+        const option1 = visualPicker.getItem(0);
+        const option2 = visualPicker.getItem(1);
+        option1.click();
+        browser.keys(ARROW_RIGHT_KEY);
+        expect(option1.isChecked()).toBe(false);
+        expect(option2.isChecked()).toBe(true);
     });
 });
