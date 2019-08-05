@@ -2,7 +2,8 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center; }
+  justify-content: center;
+  margin: 0 0 16px 0; }
 
 .rainbow-import-records-flow_step-one-visual-picker {
-  padding: 24px; }
+  margin: 0 24px 16px 24px; }
