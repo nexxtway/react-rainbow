@@ -5,6 +5,7 @@ import Modal from '../Modal';
 import getDataFromWorkbook from './helpers/getDataFromWorkbook';
 import getHeaderRowFromWorkbook from './helpers/getHeaderRowFromWorkbook';
 import getDataToImport from './helpers/getDataToImport';
+import isStepThreeNextButtonDisabled from './helpers/isStepThreeNextButtonDisabled';
 import Footer from './footer';
 import StepOne from './stepOne';
 import StepTwo from './stepTwo';
@@ -32,7 +33,10 @@ function EmptyComponent() {
     return null;
 }
 
-export default function ImportRecordsFlow(props) {
+const ADD_RECORDS = Symbol('add-records');
+const MERGE_RECORDS = Symbol('merge-records');
+
+function ImportRecordsFlow(props) {
     const { className, style, isOpen, onRequestClose, schema, onComplete } = props;
     const [currentStepIndex, setCurrentStepIndex] = useState(0);
     const [actionOption, setActionOption] = useState('');
@@ -45,7 +49,6 @@ export default function ImportRecordsFlow(props) {
     const [data, setData] = useState([]);
     const [fieldsMap, setFieldsMap] = useState({});
     const [schemaFields, setSchemaFields] = useState([]);
-    const [dataToImport, setDataToImport] = useState([]);
 
     const isBackButtonDisabled = currentStepIndex === 0;
     const currentStep = stepNames[currentStepIndex];
@@ -53,13 +56,7 @@ export default function ImportRecordsFlow(props) {
 
     useEffect(() => {
         setSchemaFields(Object.keys(schema.attributes));
-    }, [schema]);
-
-    useEffect(() => {
-        if (currentStepIndex === 3) {
-            setDataToImport(getDataToImport(data, fieldsMap));
-        }
-    }, [currentStepIndex, data, fieldsMap]);
+    }, [schema.attributes]);
 
     const getModalTitle = () => {
         if (currentStepIndex === 1 && hasFileSelected) {
@@ -77,7 +74,15 @@ export default function ImportRecordsFlow(props) {
 
     const goNextStep = () => {
         if (currentStepIndex === 3) {
-            onComplete(dataToImport);
+            onComplete(
+                getDataToImport({
+                    data,
+                    fieldsMap,
+                    schema,
+                    actionOption,
+                    matchField,
+                }),
+            );
         }
         if (currentStepIndex < stepNames.length - 1) {
             const nextStepIndex = currentStepIndex + 1;
@@ -93,7 +98,11 @@ export default function ImportRecordsFlow(props) {
             return !hasFileSelected || isLoading;
         }
         if (currentStepIndex === 2) {
-            return !schemaFields.some(field => fieldsMap[field]);
+            return isStepThreeNextButtonDisabled({
+                fieldsMap,
+                attributes: schema.attributes,
+                matchField,
+            });
         }
         return false;
     };
@@ -107,7 +116,7 @@ export default function ImportRecordsFlow(props) {
         const reader = new FileReader();
         reader.onload = event => {
             const uInt8ArrayData = new Uint8Array(event.target.result);
-            const workbook = XLSX.read(uInt8ArrayData, { type: 'array' });
+            const workbook = XLSX.read(uInt8ArrayData, { type: 'array', raw: true });
             setColumns(getHeaderRowFromWorkbook(workbook));
             setData(getDataFromWorkbook(workbook));
             setIsLoading(false);
@@ -134,6 +143,8 @@ export default function ImportRecordsFlow(props) {
     const handleCloseModal = () => {
         setCurrentStepIndex(0);
         removeFile();
+        setActionOption('');
+        setMatchField('default');
         onRequestClose();
     };
 
@@ -157,6 +168,7 @@ export default function ImportRecordsFlow(props) {
         >
             <StepComponent
                 schemaFields={schemaFields}
+                attributes={schema.attributes}
                 actionOption={actionOption}
                 onChangeAction={setActionOption}
                 matchField={matchField}
@@ -171,7 +183,6 @@ export default function ImportRecordsFlow(props) {
                 onRemoveFile={removeFile}
                 onAssignField={assignField}
                 fieldsMap={fieldsMap}
-                dataToImport={dataToImport}
             />
         </Modal>
     );
@@ -197,3 +208,8 @@ ImportRecordsFlow.defaultProps = {
     onComplete: () => {},
     schema: {},
 };
+
+ImportRecordsFlow.MERGE_RECORDS = MERGE_RECORDS;
+ImportRecordsFlow.ADD_RECORDS = ADD_RECORDS;
+
+export default ImportRecordsFlow;

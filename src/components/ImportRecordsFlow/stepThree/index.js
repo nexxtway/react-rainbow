@@ -5,16 +5,24 @@ import Column from '../../Column';
 import getAssignFieldsData from '../helpers/getAssignFieldsData';
 import ModifyCell from './modifyCell';
 import FileFieldCell from './fileFieldCell';
+import DatabaseFieldCell from './databaseFieldCell';
 import AssignFieldModal from './assignFieldModal';
 import './styles.css';
 
 export default function StepThree(props) {
-    const { schemaFields, columns, onAssignField, fieldsMap } = props;
+    const { attributes, columns, onAssignField, fieldsMap, data, matchField } = props;
+    const previewData = data.slice(0, 3);
 
-    const [data, setData] = useState([]);
+    const [assignData, setAssignData] = useState([]);
     useEffect(() => {
-        setData(getAssignFieldsData(schemaFields, fieldsMap));
-    }, [schemaFields, fieldsMap]);
+        setAssignData(
+            getAssignFieldsData({
+                fieldsMap,
+                attributes,
+                matchField,
+            }),
+        );
+    }, [fieldsMap, attributes, matchField]);
 
     const [isAssignFieldModalOpen, setAssignFieldModalState] = useState(false);
     const [databaseFieldToAssign, setDatabaseFieldToAssign] = useState('');
@@ -29,7 +37,7 @@ export default function StepThree(props) {
 
     return (
         <div>
-            <Table className="rainbow-import-records-flow_table" keyField="id" data={data}>
+            <Table className="rainbow-import-records-flow_table" keyField="id" data={assignData}>
                 <Column
                     header="Modify"
                     field="fileField"
@@ -37,29 +45,37 @@ export default function StepThree(props) {
                         <ModifyCell {...rowProps} onClick={openAssignFieldModal} />
                     )}
                 />
-                <Column header="CSV titles" component={FileFieldCell} field="fileField" />
-                <Column header="Database fields" field="databaseField" />
+                <Column header="CSV titles" field="fileField" component={FileFieldCell} />
+                <Column
+                    header="Database fields"
+                    field="databaseField"
+                    component={DatabaseFieldCell}
+                />
             </Table>
             <AssignFieldModal
+                attributes={attributes}
                 isAssignFieldModalOpen={isAssignFieldModalOpen}
                 onRequestClose={closeAssignFieldModal}
                 columns={columns}
                 databaseFieldToAssign={databaseFieldToAssign}
                 onAssignField={onAssignField}
                 fieldsMap={fieldsMap}
+                data={previewData}
             />
         </div>
     );
 }
 
 StepThree.propTypes = {
-    schemaFields: PropTypes.array,
     onAssignField: PropTypes.func,
     fieldsMap: PropTypes.object,
+    data: PropTypes.array,
+    attributes: PropTypes.object,
 };
 
 StepThree.defaultProps = {
-    schemaFields: [],
     onAssignField: () => {},
     fieldsMap: {},
+    data: [],
+    attributes: {},
 };

@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Table from '../../Table';
 import Column from '../../Column';
+import getPreviewDataToImport from '../helpers/getPreviewDataToImport';
 
 export default function StepFour(props) {
-    const { schemaFields, dataToImport } = props;
-    const previewData = dataToImport.slice(0, 5);
+    const { schemaFields, data, fieldsMap, attributes } = props;
+    const previewData = getPreviewDataToImport(data.slice(0, 5), fieldsMap, attributes);
 
     return (
         <Table className="rainbow-import-records-flow_table" keyField="id" data={previewData}>
@@ -19,10 +20,14 @@ export default function StepFour(props) {
 
 StepFour.propTypes = {
     schemaFields: PropTypes.array,
-    dataToImport: PropTypes.array,
+    data: PropTypes.array,
+    fieldsMap: PropTypes.object,
+    attributes: PropTypes.object,
 };
 
 StepFour.defaultProps = {
     schemaFields: [],
-    dataToImport: [],
+    data: [],
+    fieldsMap: {},
+    attributes: {},
 };
