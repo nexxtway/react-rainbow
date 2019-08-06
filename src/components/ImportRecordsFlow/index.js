@@ -112,7 +112,7 @@ export default function ImportRecordsFlow(props) {
         const reader = new FileReader();
         reader.onload = event => {
             const uInt8ArrayData = new Uint8Array(event.target.result);
-            const workbook = XLSX.read(uInt8ArrayData, { type: 'array' });
+            const workbook = XLSX.read(uInt8ArrayData, { type: 'array', raw: true });
             setColumns(getHeaderRowFromWorkbook(workbook));
             setData(getDataFromWorkbook(workbook));
             setIsLoading(false);
