@@ -1,3 +1,5 @@
+import ImportRecordsFlow from '../';
+
 function getDateValue(value) {
     const date = new Date(value);
     const isValidDate = !isNaN(date.getTime());
@@ -33,17 +35,31 @@ function getNormalizedFieldValue(value, attributeDef) {
     return value || '';
 }
 
-export default function getDataToImport(data, fieldsMap, attributes) {
-    return data.map(item => ({
-        ...Object.keys(fieldsMap).reduce((acc, field) => {
-            const keys = fieldsMap[field].split(',');
-            const value =
-                keys.reduce((accumulator, key) => `${accumulator} ${item[key] || ''}`.trim(), '') ||
-                attributes[field].defaultTo;
-            return {
-                ...acc,
-                [field]: getNormalizedFieldValue(value, attributes[field]),
-            };
-        }, {}),
-    }));
+export default function getDataToImport(params) {
+    const actionTypeMap = {
+        'add-records': ImportRecordsFlow.ADD_RECORDS,
+        'merge-records': ImportRecordsFlow.MERGE_RECORDS,
+    };
+    const { data, fieldsMap, schema, actionOption, matchField } = params;
+
+    return {
+        collection: schema.collection,
+        actionType: actionTypeMap[actionOption],
+        mergeByKey: matchField === 'default' ? '' : matchField,
+        data: data.map(item => ({
+            ...Object.keys(fieldsMap).reduce((acc, field) => {
+                const keys = fieldsMap[field].split(',');
+                const schemaField = schema.attributes[field];
+                const value =
+                    keys.reduce(
+                        (accumulator, key) => `${accumulator} ${item[key] || ''}`.trim(),
+                        '',
+                    ) || schemaField.defaultTo;
+                return {
+                    ...acc,
+                    [field]: getNormalizedFieldValue(value, schemaField),
+                };
+            }, {}),
+        })),
+    };
 }

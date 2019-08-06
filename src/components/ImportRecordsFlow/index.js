@@ -33,7 +33,10 @@ function EmptyComponent() {
     return null;
 }
 
-export default function ImportRecordsFlow(props) {
+const ADD_RECORDS = Symbol('add-records');
+const MERGE_RECORDS = Symbol('merge-records');
+
+function ImportRecordsFlow(props) {
     const { className, style, isOpen, onRequestClose, schema, onComplete } = props;
     const [currentStepIndex, setCurrentStepIndex] = useState(0);
     const [actionOption, setActionOption] = useState('');
@@ -71,7 +74,15 @@ export default function ImportRecordsFlow(props) {
 
     const goNextStep = () => {
         if (currentStepIndex === 3) {
-            onComplete(getDataToImport(data, fieldsMap, schema.attributes));
+            onComplete(
+                getDataToImport({
+                    data,
+                    fieldsMap,
+                    schema,
+                    actionOption,
+                    matchField,
+                }),
+            );
         }
         if (currentStepIndex < stepNames.length - 1) {
             const nextStepIndex = currentStepIndex + 1;
@@ -197,3 +208,8 @@ ImportRecordsFlow.defaultProps = {
     onComplete: () => {},
     schema: {},
 };
+
+ImportRecordsFlow.MERGE_RECORDS = MERGE_RECORDS;
+ImportRecordsFlow.ADD_RECORDS = ADD_RECORDS;
+
+export default ImportRecordsFlow;

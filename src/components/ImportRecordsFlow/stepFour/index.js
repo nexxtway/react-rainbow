@@ -22,12 +22,12 @@ StepFour.propTypes = {
     schemaFields: PropTypes.array,
     data: PropTypes.array,
     fieldsMap: PropTypes.object,
-    attributes: PropTypes.array,
+    attributes: PropTypes.object,
 };
 
 StepFour.defaultProps = {
     schemaFields: [],
     data: [],
     fieldsMap: {},
-    attributes: [],
+    attributes: {},
 };
