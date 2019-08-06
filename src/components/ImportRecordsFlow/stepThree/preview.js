@@ -5,8 +5,8 @@ import Column from '../../Column';
 import getFieldAssignedPreviewData from '../helpers/getFieldAssignedPreviewData';
 
 export default function Preview(props) {
-    const { field, fileFields, data } = props;
-    const mappedData = getFieldAssignedPreviewData(data, field, fileFields);
+    const { field, fileFields, data, attributes } = props;
+    const mappedData = getFieldAssignedPreviewData(data, field, fileFields, attributes);
 
     if (fileFields.length) {
         const fieldsToAssing = fileFields.join(',');
@@ -41,6 +41,7 @@ Preview.propTypes = {
     field: PropTypes.string,
     fileFields: PropTypes.array,
     data: PropTypes.array,
+    attributes: PropTypes.object.isRequired,
 };
 
 Preview.defaultProps = {

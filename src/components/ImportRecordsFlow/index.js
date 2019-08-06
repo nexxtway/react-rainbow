@@ -5,6 +5,7 @@ import Modal from '../Modal';
 import getDataFromWorkbook from './helpers/getDataFromWorkbook';
 import getHeaderRowFromWorkbook from './helpers/getHeaderRowFromWorkbook';
 import getDataToImport from './helpers/getDataToImport';
+import isStepThreeNextButtonDisabled from './helpers/isStepThreeNextButtonDisabled';
 import Footer from './footer';
 import StepOne from './stepOne';
 import StepTwo from './stepTwo';
@@ -53,13 +54,13 @@ export default function ImportRecordsFlow(props) {
 
     useEffect(() => {
         setSchemaFields(Object.keys(schema.attributes));
-    }, [schema]);
+    }, [schema.attributes]);
 
     useEffect(() => {
         if (currentStepIndex === 3) {
-            setDataToImport(getDataToImport(data, fieldsMap));
+            setDataToImport(getDataToImport(data, fieldsMap, schema.attributes));
         }
-    }, [currentStepIndex, data, fieldsMap]);
+    }, [currentStepIndex, data, fieldsMap, schema.attributes]);
 
     const getModalTitle = () => {
         if (currentStepIndex === 1 && hasFileSelected) {
@@ -93,7 +94,11 @@ export default function ImportRecordsFlow(props) {
             return !hasFileSelected || isLoading;
         }
         if (currentStepIndex === 2) {
-            return !schemaFields.some(field => fieldsMap[field]);
+            return isStepThreeNextButtonDisabled({
+                fieldsMap,
+                attributes: schema.attributes,
+                matchField,
+            });
         }
         return false;
     };
@@ -159,6 +164,7 @@ export default function ImportRecordsFlow(props) {
         >
             <StepComponent
                 schemaFields={schemaFields}
+                attributes={schema.attributes}
                 actionOption={actionOption}
                 onChangeAction={setActionOption}
                 matchField={matchField}

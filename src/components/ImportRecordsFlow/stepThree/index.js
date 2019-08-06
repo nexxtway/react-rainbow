@@ -5,17 +5,24 @@ import Column from '../../Column';
 import getAssignFieldsData from '../helpers/getAssignFieldsData';
 import ModifyCell from './modifyCell';
 import FileFieldCell from './fileFieldCell';
+import DatabaseFieldCell from './databaseFieldCell';
 import AssignFieldModal from './assignFieldModal';
 import './styles.css';
 
 export default function StepThree(props) {
-    const { schemaFields, columns, onAssignField, fieldsMap, data } = props;
+    const { attributes, columns, onAssignField, fieldsMap, data, matchField } = props;
     const previewData = data.slice(0, 3);
 
     const [assignData, setAssignData] = useState([]);
     useEffect(() => {
-        setAssignData(getAssignFieldsData(schemaFields, fieldsMap));
-    }, [schemaFields, fieldsMap]);
+        setAssignData(
+            getAssignFieldsData({
+                fieldsMap,
+                attributes,
+                matchField,
+            }),
+        );
+    }, [fieldsMap, attributes, matchField]);
 
     const [isAssignFieldModalOpen, setAssignFieldModalState] = useState(false);
     const [databaseFieldToAssign, setDatabaseFieldToAssign] = useState('');
@@ -38,10 +45,15 @@ export default function StepThree(props) {
                         <ModifyCell {...rowProps} onClick={openAssignFieldModal} />
                     )}
                 />
-                <Column header="CSV titles" component={FileFieldCell} field="fileField" />
-                <Column header="Database fields" field="databaseField" />
+                <Column header="CSV titles" field="fileField" component={FileFieldCell} />
+                <Column
+                    header="Database fields"
+                    field="databaseField"
+                    component={DatabaseFieldCell}
+                />
             </Table>
             <AssignFieldModal
+                attributes={attributes}
                 isAssignFieldModalOpen={isAssignFieldModalOpen}
                 onRequestClose={closeAssignFieldModal}
                 columns={columns}
@@ -55,15 +67,15 @@ export default function StepThree(props) {
 }
 
 StepThree.propTypes = {
-    schemaFields: PropTypes.array,
     onAssignField: PropTypes.func,
     fieldsMap: PropTypes.object,
     data: PropTypes.array,
+    attributes: PropTypes.object,
 };
 
 StepThree.defaultProps = {
-    schemaFields: [],
     onAssignField: () => {},
     fieldsMap: {},
     data: [],
+    attributes: {},
 };

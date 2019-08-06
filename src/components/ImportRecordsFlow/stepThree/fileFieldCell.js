@@ -15,9 +15,5 @@ export default function FileFieldCell({ value }) {
 }
 
 FileFieldCell.propTypes = {
-    value: PropTypes.string,
-};
-
-FileFieldCell.defaultProps = {
-    value: '',
+    value: PropTypes.string.isRequired,
 };

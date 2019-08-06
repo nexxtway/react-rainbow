@@ -17,6 +17,7 @@ export default function AssignFieldModal(props) {
         onAssignField,
         fieldsMap,
         data,
+        attributes,
     } = props;
     const modalTitle = `Assign to the field: ${databaseFieldToAssign}`;
 
@@ -94,6 +95,7 @@ export default function AssignFieldModal(props) {
                     field={databaseFieldToAssign}
                     fileFields={fileFieldsToAssign}
                     data={data}
+                    attributes={attributes}
                 />
             </div>
         </Modal>
@@ -108,6 +110,7 @@ AssignFieldModal.propTypes = {
     onAssignField: PropTypes.func,
     fieldsMap: PropTypes.object,
     data: PropTypes.array,
+    attributes: PropTypes.object.isRequired,
 };
 
 AssignFieldModal.defaultProps = {
