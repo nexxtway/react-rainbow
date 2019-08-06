@@ -85,7 +85,7 @@ export default function AssignFieldModal(props) {
             <div className={getModalContainerClassNames()}>
                 <Select
                     className="rainbow-import-records-flow_step-three-field-select"
-                    label="Select Field"
+                    label="Select Field To Assign"
                     options={fileFieldsOptions}
                     onChange={selectFileField}
                     value="default"
