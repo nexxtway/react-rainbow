@@ -46,7 +46,6 @@ export default function ImportRecordsFlow(props) {
     const [data, setData] = useState([]);
     const [fieldsMap, setFieldsMap] = useState({});
     const [schemaFields, setSchemaFields] = useState([]);
-    const [dataToImport, setDataToImport] = useState([]);
 
     const isBackButtonDisabled = currentStepIndex === 0;
     const currentStep = stepNames[currentStepIndex];
@@ -55,12 +54,6 @@ export default function ImportRecordsFlow(props) {
     useEffect(() => {
         setSchemaFields(Object.keys(schema.attributes));
     }, [schema.attributes]);
-
-    useEffect(() => {
-        if (currentStepIndex === 3) {
-            setDataToImport(getDataToImport(data, fieldsMap, schema.attributes));
-        }
-    }, [currentStepIndex, data, fieldsMap, schema.attributes]);
 
     const getModalTitle = () => {
         if (currentStepIndex === 1 && hasFileSelected) {
@@ -78,7 +71,7 @@ export default function ImportRecordsFlow(props) {
 
     const goNextStep = () => {
         if (currentStepIndex === 3) {
-            onComplete(dataToImport);
+            onComplete(getDataToImport(data, fieldsMap, schema.attributes));
         }
         if (currentStepIndex < stepNames.length - 1) {
             const nextStepIndex = currentStepIndex + 1;
@@ -179,7 +172,6 @@ export default function ImportRecordsFlow(props) {
                 onRemoveFile={removeFile}
                 onAssignField={assignField}
                 fieldsMap={fieldsMap}
-                dataToImport={dataToImport}
             />
         </Modal>
     );

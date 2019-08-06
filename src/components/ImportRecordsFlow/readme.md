@@ -8,9 +8,16 @@
     const schema = {
         collection: 'users',
         attributes: {
-            name: {},
-            email: {},
-            phone: {},
+            name: {
+                type: String,
+                required: true,
+            },
+            email: String,
+            driver: {
+                type: Number,
+                defaultTo: 0,
+            },
+            date: Date,
         },
     };
 

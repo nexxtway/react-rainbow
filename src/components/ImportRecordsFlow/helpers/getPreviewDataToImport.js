@@ -33,13 +33,17 @@ function getNormalizedFieldValue(value, attributeDef) {
     return value || '';
 }
 
-export default function getFieldAssignedPreviewData(data, field, fileFields, attributes) {
-    return data.map(item => {
-        const value =
-            fileFields.reduce((acc, fileField) => `${acc} ${item[fileField] || ''}`.trim(), '') ||
-            attributes[field].defaultTo;
-        return {
-            [field]: getNormalizedFieldValue(value, attributes[field]),
-        };
-    });
+export default function getPreviewDataToImport(data, fieldsMap, attributes) {
+    return data.map(item => ({
+        ...Object.keys(fieldsMap).reduce((acc, field) => {
+            const keys = fieldsMap[field].split(',');
+            const value =
+                keys.reduce((accumulator, key) => `${accumulator} ${item[key] || ''}`.trim(), '') ||
+                attributes[field].defaultTo;
+            return {
+                ...acc,
+                [field]: getNormalizedFieldValue(value, attributes[field]),
+            };
+        }, {}),
+    }));
 }
