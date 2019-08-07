@@ -24,6 +24,7 @@ import Dataset from './Dataset';
 import DatePicker from './DatePicker';
 import GMap from './GMap';
 import GoogleAddressLookup from './GoogleAddressLookup';
+import ImportRecordsFlow from './ImportRecordsFlow';
 import Input from './Input';
 import Lookup from './Lookup';
 import MapMarker from './MapMarker';
@@ -88,6 +89,7 @@ export {
     DatePicker,
     GMap,
     GoogleAddressLookup,
+    ImportRecordsFlow,
     Input,
     Lookup,
     MapMarker,
