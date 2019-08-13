@@ -4,10 +4,8 @@ import classnames from 'classnames';
 import withReduxForm from '../../libs/hocs/withReduxForm';
 import RenderIf from '../RenderIf';
 import { UP_KEY, DOWN_KEY, ESCAPE_KEY, TAB_KEY, ENTER_KEY } from '../../libs/constants';
-import getChildrenNames from './helpers/get-children-names';
 import { Provider } from './context';
 import MenuContent from './menuContent';
-// import { insertChildOrderly, getChildMenuItemNodes } from './utils';
 import './styles.css';
 
 class Picklist extends Component {
@@ -19,20 +17,22 @@ class Picklist extends Component {
         this.handleBlur = this.handleBlur.bind(this);
         this.handleKeyPressed = this.handleKeyPressed.bind(this);
         this.hoverChild = this.hoverChild.bind(this);
+        this.handleOptionClick = this.handleOptionClick.bind(this);
 
-        // this.registerChild = this.registerChild.bind(this);
-        // this.unregisterChild = this.unregisterChild.bind(this);
-        this.selectOption = this.selectOption.bind(this);
+        this.registerChild = this.registerChild.bind(this);
+        this.unregisterChild = this.unregisterChild.bind(this);
 
-        this.names = getChildrenNames(props.children);
+        this.names = [];
+        this.nonHeaderChilds = [];
+        this.currentOption = null;
         this.state = {
             isOpen: false,
             activeOptionIndex: -1,
-            activeOptionName: this.names[0],
+            activeOptionName: null,
             context: {
-                privateOnClick: this.selectOption,
-                // privateRegisterChild: this.registerChild,
-                // privateUnregisterChild: this.unregisterChild,
+                privateOnClick: this.handleOptionClick,
+                privateRegisterChild: this.registerChild,
+                privateUnregisterChild: this.unregisterChild,
                 privateOnHover: this.hoverChild,
             },
         };
@@ -44,14 +44,6 @@ class Picklist extends Component {
             [TAB_KEY]: this.closeMenu.bind(this),
             [ENTER_KEY]: this.handleKeyEnterPressed.bind(this),
         };
-    }
-
-    componentDidUpdate(prevProps) {
-        const { children: prevChildren } = prevProps;
-        const { children } = this.props;
-        if (prevChildren !== children) {
-            this.names = getChildrenNames(children);
-        }
     }
 
     getContainerClassNames() {
@@ -113,11 +105,10 @@ class Picklist extends Component {
     }
 
     handleKeyEnterPressed() {
-        const { children, onChange } = this.props;
         const { activeOptionIndex } = this.state;
-        const { label, name, icon, value } = children[activeOptionIndex].props;
+        const { label, name, icon, value } = this.nonHeaderChilds[activeOptionIndex];
         this.closeMenu();
-        return onChange({
+        return this.selectOption({
             label,
             name,
             icon,
@@ -136,24 +127,41 @@ class Picklist extends Component {
         return null;
     }
 
-    // registerChild(childRef) {
-    //     const { childrenRefs } = this.state;
-    //     const [...nodes] = getChildMenuItemNodes(this.containerRef.current);
-    //     const newChildrenRefs = insertChildOrderly(childrenRefs, childRef, nodes);
-    //     this.setState({
-    //         childrenRefs: newChildrenRefs,
-    //     });
-    // }
+    registerChild(childProps) {
+        const { activeOptionIndex } = this.state;
+        const { value } = this.props;
 
-    // unregisterChild(childRef) {
-    //     const { childrenRefs } = this.state;
-    //     const newChildrenRefs = childrenRefs.filter(child => child !== childRef);
-    //     this.setState({
-    //         childrenRefs: newChildrenRefs,
-    //     });
-    // }
+        if (this.currentOption === null && childProps.name === value.name) {
+            this.currentOption = {
+                index: this.names.length,
+                optionProps: childProps,
+            };
+            return;
+        }
 
-    // hoverChild(event, ref) {
+        this.names = [...this.names, childProps.name];
+        this.nonHeaderChilds = [...this.nonHeaderChilds, childProps];
+
+        if (activeOptionIndex === -1 && childProps.name !== value.name) {
+            this.setState({
+                activeOptionIndex: 0,
+                activeOptionName: childProps.name,
+            });
+        }
+    }
+
+    unregisterChild(childName) {
+        this.names = this.names.filter(item => item !== childName);
+        this.nonHeaderChilds = this.nonHeaderChilds.filter(child => child.name !== childName);
+        if (this.names.length === 0) {
+            this.currentOption = null;
+            this.setState({
+                activeOptionIndex: -1,
+                activeOptionName: null,
+            });
+        }
+    }
+
     hoverChild(event, name) {
         this.setState({
             activeOptionName: name,
@@ -191,8 +199,26 @@ class Picklist extends Component {
         return onBlur(event);
     }
 
-    selectOption(event, option) {
+    handleOptionClick(event, option) {
+        return this.selectOption(option);
+    }
+
+    selectOption(option) {
         const { onChange } = this.props;
+        if (this.currentOption !== null) {
+            const { index, optionProps } = this.currentOption;
+            this.names.splice(index, 0, optionProps.name);
+            this.nonHeaderChilds.splice(index, 0, optionProps);
+        }
+
+        this.currentOption = {
+            index: this.names.indexOf(option.name),
+            optionProps: option,
+        };
+
+        this.names.splice(this.currentOption.index, 1);
+        this.nonHeaderChilds.splice(this.currentOption.index, 1);
+
         return onChange(option);
     }
 

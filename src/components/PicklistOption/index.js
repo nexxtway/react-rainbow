@@ -14,19 +14,28 @@ class Option extends Component {
         this.handleHover = this.handleHover.bind(this);
     }
 
-    // componentDidMount() {
-    //     const { privateRegisterChild, disabled, variant } = this.props;
-    //     const isHeader = variant === 'header';
-    //     if (disabled || isHeader) {
-    //         return null;
-    //     }
-    //     return setTimeout(() => privateRegisterChild(this.itemRef.current), 0);
-    // }
+    componentDidMount() {
+        const { privateRegisterChild, disabled, variant, label, name, icon, value } = this.props;
+        const isHeader = variant === 'header';
+        if (disabled || isHeader || typeof name !== 'string') {
+            return null;
+        }
+        return setTimeout(
+            () =>
+                privateRegisterChild({
+                    label,
+                    name,
+                    icon,
+                    value,
+                }),
+            0,
+        );
+    }
 
-    // componentWillUnmount() {
-    // const { privateUnregisterChild } = this.props;
-    // return privateUnregisterChild(this.itemRef.current);
-    // }
+    componentWillUnmount() {
+        const { privateUnregisterChild, name } = this.props;
+        return privateUnregisterChild(name);
+    }
 
     getHeaderClassNames() {
         const { className } = this.props;
@@ -35,12 +44,10 @@ class Option extends Component {
 
     getItemClassNames() {
         const { className, activeOptionName, name } = this.props;
-        // const { className, activeOptionRef } = this.props;
         return classnames(
             'rainbow-picklist-option',
             {
                 'rainbow-picklist-option_active': activeOptionName === name,
-                // 'rainbow-picklist-option_active': activeOptionRef === this.itemRef,
             },
             className,
         );
@@ -62,11 +69,9 @@ class Option extends Component {
 
     handleHover(event) {
         const { privateOnHover, disabled, name } = this.props;
-        // const { privateOnHover, disabled } = this.props;
         if (disabled) {
             return null;
         }
-        // return privateOnHover(event, this.itemRef);
         return privateOnHover(event, name);
     }
 
