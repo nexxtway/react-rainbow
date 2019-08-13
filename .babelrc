@@ -1,4 +1,4 @@
 {
   "presets" : ["env", "react"],
-  "plugins": ["transform-object-rest-spread", "add-react-displayname"]
+  "plugins": ["transform-object-rest-spread"]
 }
