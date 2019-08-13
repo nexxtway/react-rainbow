@@ -14,19 +14,19 @@ class Option extends Component {
         this.handleHover = this.handleHover.bind(this);
     }
 
-    componentDidMount() {
-        const { privateRegisterChild, disabled, variant } = this.props;
-        const isHeader = variant === 'header';
-        if (disabled || isHeader) {
-            return null;
-        }
-        return setTimeout(() => privateRegisterChild(this.itemRef.current), 0);
-    }
+    // componentDidMount() {
+    //     const { privateRegisterChild, disabled, variant } = this.props;
+    //     const isHeader = variant === 'header';
+    //     if (disabled || isHeader) {
+    //         return null;
+    //     }
+    //     return setTimeout(() => privateRegisterChild(this.itemRef.current), 0);
+    // }
 
-    componentWillUnmount() {
-        const { privateUnregisterChild } = this.props;
-        return privateUnregisterChild(this.itemRef.current);
-    }
+    // componentWillUnmount() {
+    // const { privateUnregisterChild } = this.props;
+    // return privateUnregisterChild(this.itemRef.current);
+    // }
 
     getHeaderClassNames() {
         const { className } = this.props;
@@ -35,17 +35,19 @@ class Option extends Component {
 
     getItemClassNames() {
         const { className, activeOptionName, name } = this.props;
+        // const { className, activeOptionRef } = this.props;
         return classnames(
             'rainbow-picklist-option',
             {
                 'rainbow-picklist-option_active': activeOptionName === name,
+                // 'rainbow-picklist-option_active': activeOptionRef === this.itemRef,
             },
             className,
         );
     }
 
     handleClick(event) {
-        const { disabled, privateOnClick, label, name, icon } = this.props;
+        const { disabled, privateOnClick, label, name, icon, value } = this.props;
 
         if (disabled) {
             return null;
@@ -54,14 +56,17 @@ class Option extends Component {
             label,
             name,
             icon,
+            value,
         });
     }
 
     handleHover(event) {
         const { privateOnHover, disabled, name } = this.props;
+        // const { privateOnHover, disabled } = this.props;
         if (disabled) {
             return null;
         }
+        // return privateOnHover(event, this.itemRef);
         return privateOnHover(event, name);
     }
 
@@ -71,6 +76,7 @@ class Option extends Component {
 
     render() {
         const { style, label, title, variant, icon, iconPosition, disabled } = this.props;
+        const { currentValueName, name } = this.props;
 
         if (variant === 'header') {
             return (
@@ -83,6 +89,10 @@ class Option extends Component {
                     <span className="rainbow-picklist-option_header-label">{label}</span>
                 </li>
             );
+        }
+
+        if (currentValueName === name) {
+            return null;
         }
 
         const hasLeftIcon = !!(icon && iconPosition === 'left');
@@ -152,6 +162,7 @@ PicklistOption.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    value: PropTypes.object,
 };
 
 PicklistOption.defaultProps = {
@@ -163,4 +174,5 @@ PicklistOption.defaultProps = {
     title: undefined,
     className: undefined,
     style: undefined,
+    value: undefined,
 };

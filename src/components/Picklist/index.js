@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import withReduxForm from '../../libs/hocs/withReduxForm';
 import RenderIf from '../RenderIf';
 import { UP_KEY, DOWN_KEY, ESCAPE_KEY, TAB_KEY, ENTER_KEY } from '../../libs/constants';
 import getChildrenNames from './helpers/get-children-names';
 import { Provider } from './context';
 import MenuContent from './menuContent';
-import { insertChildOrderly, getChildMenuItemNodes } from './utils';
+// import { insertChildOrderly, getChildMenuItemNodes } from './utils';
 import './styles.css';
 
-export default class Picklist extends Component {
+class Picklist extends Component {
     constructor(props) {
         super(props);
         this.containerRef = React.createRef();
@@ -19,20 +20,19 @@ export default class Picklist extends Component {
         this.handleKeyPressed = this.handleKeyPressed.bind(this);
         this.hoverChild = this.hoverChild.bind(this);
 
-        this.registerChild = this.registerChild.bind(this);
-        this.unregisterChild = this.unregisterChild.bind(this);
+        // this.registerChild = this.registerChild.bind(this);
+        // this.unregisterChild = this.unregisterChild.bind(this);
         this.selectOption = this.selectOption.bind(this);
 
         this.names = getChildrenNames(props.children);
         this.state = {
             isOpen: false,
-            childrenRefs: [],
-            activeOptionIndex: 0,
+            activeOptionIndex: -1,
             activeOptionName: this.names[0],
             context: {
                 privateOnClick: this.selectOption,
-                privateRegisterChild: this.registerChild,
-                privateUnregisterChild: this.unregisterChild,
+                // privateRegisterChild: this.registerChild,
+                // privateUnregisterChild: this.unregisterChild,
                 privateOnHover: this.hoverChild,
             },
         };
@@ -75,13 +75,10 @@ export default class Picklist extends Component {
     }
 
     getDropdownClassNames() {
-        const { menuAlignment, menuSize, isLoading } = this.props;
-        return classnames(
-            'rainbow-picklist_dropdown',
-            `rainbow-picklist_dropdown--${menuAlignment}`,
-            `rainbow-picklist_dropdown--${menuSize}`,
-            { 'rainbow-picklist_dropdown--loading-box': isLoading },
-        );
+        const { isLoading } = this.props;
+        return classnames('rainbow-picklist_dropdown', {
+            'rainbow-picklist_dropdown--loading-box': isLoading,
+        });
     }
 
     getValue() {
@@ -118,12 +115,13 @@ export default class Picklist extends Component {
     handleKeyEnterPressed() {
         const { children, onChange } = this.props;
         const { activeOptionIndex } = this.state;
-        const { label, name, icon } = children[activeOptionIndex].props;
+        const { label, name, icon, value } = children[activeOptionIndex].props;
         this.closeMenu();
         return onChange({
             label,
             name,
             icon,
+            value,
         });
     }
 
@@ -138,23 +136,24 @@ export default class Picklist extends Component {
         return null;
     }
 
-    registerChild(childRef) {
-        const { childrenRefs } = this.state;
-        const [...nodes] = getChildMenuItemNodes(this.containerRef.current);
-        const newChildrenRefs = insertChildOrderly(childrenRefs, childRef, nodes);
-        this.setState({
-            childrenRefs: newChildrenRefs,
-        });
-    }
+    // registerChild(childRef) {
+    //     const { childrenRefs } = this.state;
+    //     const [...nodes] = getChildMenuItemNodes(this.containerRef.current);
+    //     const newChildrenRefs = insertChildOrderly(childrenRefs, childRef, nodes);
+    //     this.setState({
+    //         childrenRefs: newChildrenRefs,
+    //     });
+    // }
 
-    unregisterChild(childRef) {
-        const { childrenRefs } = this.state;
-        const newChildrenRefs = childrenRefs.filter(child => child !== childRef);
-        this.setState({
-            childrenRefs: newChildrenRefs,
-        });
-    }
+    // unregisterChild(childRef) {
+    //     const { childrenRefs } = this.state;
+    //     const newChildrenRefs = childrenRefs.filter(child => child !== childRef);
+    //     this.setState({
+    //         childrenRefs: newChildrenRefs,
+    //     });
+    // }
 
+    // hoverChild(event, ref) {
     hoverChild(event, name) {
         this.setState({
             activeOptionName: name,
@@ -192,9 +191,9 @@ export default class Picklist extends Component {
         return onBlur(event);
     }
 
-    selectOption(event, value) {
+    selectOption(event, option) {
         const { onChange } = this.props;
-        return onChange(value);
+        return onChange(option);
     }
 
     /**
@@ -236,10 +235,11 @@ export default class Picklist extends Component {
         } = this.props;
         const { context, activeOptionName } = this.state;
         const ariaLabel = title || assistiveText;
-        const { label, icon } = this.getValue();
+        const { label, icon, name: currentValueName } = this.getValue();
         const providerContext = {
             ...context,
             activeOptionName,
+            currentValueName,
         };
         const value = label || '';
 
@@ -288,20 +288,6 @@ Picklist.propTypes = {
     /** The content of the Picklist. Used to render the menuItem elements
      * when the Picklist is open. */
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
-    /** The size of the menu. Options include xx-small, x-small, medium, or large.
-     * This value defaults to xx-small. */
-    menuSize: PropTypes.oneOf(['xx-small', 'x-small', 'small', 'medium', 'large']),
-    /** Determines the alignment of the menu relative to the trigger element.
-     * Available options are: left, center, right, bottom, bottom-left, bottom-right.
-     * This value defaults to left. */
-    menuAlignment: PropTypes.oneOf([
-        'left',
-        'right',
-        'bottom',
-        'center',
-        'bottom-right',
-        'bottom-left',
-    ]),
     /** If is set to true, then is showed a loading symbol. */
     isLoading: PropTypes.bool,
     /** Displays tooltip text when the mouse moves over the element. */
@@ -326,8 +312,6 @@ Picklist.propTypes = {
 
 Picklist.defaultProps = {
     children: null,
-    menuSize: 'xx-small',
-    menuAlignment: 'left',
     isLoading: false,
     title: undefined,
     assistiveText: undefined,
@@ -343,3 +327,5 @@ Picklist.defaultProps = {
     style: undefined,
     id: undefined,
 };
+
+export default withReduxForm(Picklist);

@@ -12,8 +12,7 @@
   z-index: 2000;
   left: 50%;
   float: left;
-  min-width: 6rem;
-  max-width: 20rem;
+  width: 100%;
   max-height: 286px;
   overflow: auto;
   margin-top: 0.125rem;
