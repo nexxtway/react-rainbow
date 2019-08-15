@@ -59,6 +59,10 @@
     background-color: $color-gray-2;
 }
 
+.rainbow-picklist-option_selected {
+    display: none;
+}
+
 .rainbow-picklist-option_icon {
     width: 1rem;
     height: 1rem;

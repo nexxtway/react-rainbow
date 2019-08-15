@@ -6,7 +6,9 @@ import RenderIf from '../RenderIf';
 import { UP_KEY, DOWN_KEY, ESCAPE_KEY, TAB_KEY, ENTER_KEY } from '../../libs/constants';
 import { Provider } from './context';
 import MenuContent from './menuContent';
+import { insertChildOrderly, getChildMenuItemNodes } from './utils';
 import './styles.css';
+import isEmpty from './helpers/isEmpty';
 
 class Picklist extends Component {
     constructor(props) {
@@ -18,15 +20,16 @@ class Picklist extends Component {
         this.handleKeyPressed = this.handleKeyPressed.bind(this);
         this.hoverChild = this.hoverChild.bind(this);
         this.handleOptionClick = this.handleOptionClick.bind(this);
+        this.selectOption = this.selectOption.bind(this);
 
         this.registerChild = this.registerChild.bind(this);
         this.unregisterChild = this.unregisterChild.bind(this);
 
-        this.names = [];
-        this.nonHeaderChilds = [];
         this.currentOption = null;
+        this.activeChildren = [];
         this.state = {
             isOpen: false,
+            childrenRefs: [],
             activeOptionIndex: -1,
             activeOptionName: null,
             context: {
@@ -44,6 +47,14 @@ class Picklist extends Component {
             [TAB_KEY]: this.closeMenu.bind(this),
             [ENTER_KEY]: this.handleKeyEnterPressed.bind(this),
         };
+    }
+
+    componentDidUpdate(prevProps) {
+        const { value: prevValue } = prevProps;
+        const { value } = this.props;
+        if (prevValue !== value) {
+            this.selectOption(value);
+        }
     }
 
     getContainerClassNames() {
@@ -85,30 +96,31 @@ class Picklist extends Component {
         const { activeOptionIndex } = this.state;
         let nextActiveIndex;
         if (activeOptionIndex < 1) {
-            nextActiveIndex = this.names.length - 1;
+            nextActiveIndex = this.activeChildren.length - 1;
         } else {
-            nextActiveIndex = (activeOptionIndex - 1) % this.names.length;
+            nextActiveIndex = (activeOptionIndex - 1) % this.activeChildren.length;
         }
         this.setState({
             activeOptionIndex: nextActiveIndex,
-            activeOptionName: this.names[nextActiveIndex],
+            activeOptionName: this.activeChildren[nextActiveIndex].name,
         });
     }
 
     handleKeyDownPressed() {
         const { activeOptionIndex } = this.state;
-        const nextActiveIndex = (activeOptionIndex + 1) % this.names.length;
+        const nextActiveIndex = (activeOptionIndex + 1) % this.activeChildren.length;
         this.setState({
             activeOptionIndex: nextActiveIndex,
-            activeOptionName: this.names[nextActiveIndex],
+            activeOptionName: this.activeChildren[nextActiveIndex].name,
         });
     }
 
     handleKeyEnterPressed() {
+        const { onChange } = this.props;
         const { activeOptionIndex } = this.state;
         const { label, name, icon, value } = this.nonHeaderChilds[activeOptionIndex];
         this.closeMenu();
-        return this.selectOption({
+        return onChange({
             label,
             name,
             icon,
@@ -127,45 +139,72 @@ class Picklist extends Component {
         return null;
     }
 
-    registerChild(childProps) {
-        const { activeOptionIndex } = this.state;
+    registerChild(childRef, childProps) {
+        const { childrenRefs } = this.state;
+        const [...nodes] = getChildMenuItemNodes(this.containerRef.current);
+        const newChildrenRefs = insertChildOrderly(childrenRefs, childRef, nodes);
+        const refIndex = newChildrenRefs.indexOf(childRef);
+        const extendedChildProps = {
+            ...childProps,
+            ref: childRef,
+        };
         const { value } = this.props;
-
-        if (this.currentOption === null && childProps.name === value.name) {
-            this.currentOption = {
-                index: this.names.length,
-                optionProps: childProps,
-            };
-            return;
+        if (!isEmpty(value)) {
+            if (isEmpty(this.currentOption) && childProps.name === value.name) {
+                this.currentOption = {
+                    index: refIndex,
+                    optionProps: extendedChildProps,
+                };
+            } else if (!isEmpty(this.currentOption)) {
+                const { index, optionProps } = this.currentOption;
+                this.activeChildren.splice(index, 0, optionProps);
+                this.activeChildren.splice(refIndex, 0, extendedChildProps);
+                const currentOptionIndex = this.activeChildren.findIndex(
+                    child => child.name === value.name,
+                );
+                this.currentOption = {
+                    index: currentOptionIndex,
+                    optionProps: this.activeChildren[currentOptionIndex],
+                };
+                this.activeChildren.splice(currentOptionIndex, 1);
+            } else {
+                this.activeChildren.splice(refIndex, 0, extendedChildProps);
+            }
+        } else {
+            this.activeChildren.splice(refIndex, 0, extendedChildProps);
         }
 
-        this.names = [...this.names, childProps.name];
-        this.nonHeaderChilds = [...this.nonHeaderChilds, childProps];
-
-        if (activeOptionIndex === -1 && childProps.name !== value.name) {
-            this.setState({
-                activeOptionIndex: 0,
-                activeOptionName: childProps.name,
-            });
-        }
+        this.setState({
+            childrenRefs: newChildrenRefs,
+        });
     }
 
-    unregisterChild(childName) {
-        this.names = this.names.filter(item => item !== childName);
-        this.nonHeaderChilds = this.nonHeaderChilds.filter(child => child.name !== childName);
-        if (this.names.length === 0) {
-            this.currentOption = null;
-            this.setState({
-                activeOptionIndex: -1,
-                activeOptionName: null,
-            });
+    unregisterChild(childRef) {
+        const { childrenRefs } = this.state;
+        const refIndex = childrenRefs.indexOf(childRef);
+        const newChildrenRefs = childrenRefs.filter(child => child !== childRef);
+
+        if (!isEmpty(this.currentOption)) {
+            const { index, optionProps } = this.currentOption;
+            this.activeChildren.splice(index, 0, optionProps);
+            this.activeChildren.splice(refIndex, 1);
+
+            const newIndex = newChildrenRefs.indexOf(optionProps.ref);
+            this.currentOption.index = newIndex;
+            this.activeChildren.splice(newIndex, 1);
+        } else {
+            this.activeChildren.splice(refIndex, 1);
         }
+
+        this.setState({
+            childrenRefs: newChildrenRefs,
+        });
     }
 
     hoverChild(event, name) {
         this.setState({
             activeOptionName: name,
-            activeOptionIndex: this.names.indexOf(name),
+            activeOptionIndex: this.activeChildren.findIndex(child => child.name === name),
         });
     }
 
@@ -179,7 +218,7 @@ class Picklist extends Component {
         return this.setState({
             isOpen: false,
             activeOptionIndex: 0,
-            activeOptionName: this.names[0],
+            activeOptionName: this.activeChildren[0].name,
         });
     }
 
@@ -200,26 +239,32 @@ class Picklist extends Component {
     }
 
     handleOptionClick(event, option) {
-        return this.selectOption(option);
+        const { onChange } = this.props;
+        return onChange(option);
     }
 
     selectOption(option) {
-        const { onChange } = this.props;
-        if (this.currentOption !== null) {
-            const { index, optionProps } = this.currentOption;
-            this.names.splice(index, 0, optionProps.name);
-            this.nonHeaderChilds.splice(index, 0, optionProps);
+        console.log(`selectOption: ${JSON.stringify(option)}`);
+        const { childrenRefs } = this.state;
+
+        if (!isEmpty(this.currentOption)) {
+            const { optionProps } = this.currentOption;
+            const realIndex = childrenRefs.findIndex(childRef => childRef === optionProps.ref);
+            this.activeChildren.splice(realIndex, 0, optionProps);
         }
 
-        this.currentOption = {
-            index: this.names.indexOf(option.name),
-            optionProps: option,
-        };
-
-        this.names.splice(this.currentOption.index, 1);
-        this.nonHeaderChilds.splice(this.currentOption.index, 1);
-
-        return onChange(option);
+        if (!isEmpty(option)) {
+            const currentOptionIndex = this.activeChildren.findIndex(
+                child => child.name === option.name,
+            );
+            this.currentOption = {
+                index: currentOptionIndex,
+                optionProps: this.activeChildren[currentOptionIndex],
+            };
+            this.activeChildren.splice(currentOptionIndex, 1);
+        } else {
+            this.currentOption = null;
+        }
     }
 
     /**
@@ -351,7 +396,7 @@ Picklist.defaultProps = {
     name: undefined,
     className: undefined,
     style: undefined,
+
     id: undefined,
 };
-
 export default withReduxForm(Picklist);

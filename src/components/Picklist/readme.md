@@ -1,13 +1,22 @@
 Example:
-  
- initialState = { value: { name: 'option 1', label: 'Option 1' }, };
+
+    const RenderIf = require('../../components/RenderIf').default;
+    const option = { name: 'option 3', label: 'Option 3' };
+    initialState = { showOption2: false, value: null, };
 
     <div className="rainbow-p-around_x-large">
+        <Button label="Toggle Option 2" onClick={() => setState({ showOption2: !state.showOption2 })} />
+        <Button label="Set Value" onClick={() => setState({ value: option })} />
+        <Button label="Clear Value" onClick={() => setState({ value: null })} />
         <Picklist menuSize="large" onChange={(value) => setState({ value })} value={state.value}>
             <PicklistOption name="header 1" label="Header 1" variant="header" />
             <PicklistOption name="option 1" label="Option 1" />
+            <RenderIf isTrue={state.showOption2}>
+                <PicklistOption name="option 2" label="Option 2" />
+            </RenderIf>
             <PicklistOption name="header 2" label="Header 2" variant="header" />
-            <PicklistOption name="option 2" label="Option 2" />
             <PicklistOption name="option 3" label="Option 3" />
+            <PicklistOption name="option 4" label="Option 4" />
         </Picklist>
+        <div style={{ height:200 }} />
     </div>

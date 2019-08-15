@@ -22,7 +22,7 @@ class Option extends Component {
         }
         return setTimeout(
             () =>
-                privateRegisterChild({
+                privateRegisterChild(this.itemRef.current, {
                     label,
                     name,
                     icon,
@@ -33,8 +33,8 @@ class Option extends Component {
     }
 
     componentWillUnmount() {
-        const { privateUnregisterChild, name } = this.props;
-        return privateUnregisterChild(name);
+        const { privateUnregisterChild } = this.props;
+        return privateUnregisterChild(this.itemRef.current);
     }
 
     getHeaderClassNames() {
@@ -43,10 +43,11 @@ class Option extends Component {
     }
 
     getItemClassNames() {
-        const { className, activeOptionName, name } = this.props;
+        const { className, activeOptionName, name, currentValueName } = this.props;
         return classnames(
             'rainbow-picklist-option',
             {
+                'rainbow-picklist-option_selected': currentValueName === name,
                 'rainbow-picklist-option_active': activeOptionName === name,
             },
             className,
@@ -81,7 +82,6 @@ class Option extends Component {
 
     render() {
         const { style, label, title, variant, icon, iconPosition, disabled } = this.props;
-        const { currentValueName, name } = this.props;
 
         if (variant === 'header') {
             return (
@@ -94,10 +94,6 @@ class Option extends Component {
                     <span className="rainbow-picklist-option_header-label">{label}</span>
                 </li>
             );
-        }
-
-        if (currentValueName === name) {
-            return null;
         }
 
         const hasLeftIcon = !!(icon && iconPosition === 'left');
