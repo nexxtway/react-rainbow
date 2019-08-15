@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import XLSX from 'xlsx';
 import Modal from '../Modal';
@@ -54,9 +54,29 @@ function ImportRecordsFlow(props) {
     const currentStep = stepNames[currentStepIndex];
     const StepComponent = stepsMap[currentStep] || EmptyComponent;
 
+    const removeFile = () => {
+        setHasFileSelected(false);
+        setFileName('');
+        setFileType('');
+        setData([]);
+        setColumns([]);
+        setFieldsMap({});
+    };
+
     useEffect(() => {
         setSchemaFields(Object.keys(schema.attributes));
     }, [schema.attributes]);
+
+    const prevIsOpen = useRef(isOpen);
+    useEffect(() => {
+        if (prevIsOpen.current && !isOpen) {
+            setCurrentStepIndex(0);
+            removeFile();
+            setActionOption('');
+            setMatchField('default');
+        }
+        prevIsOpen.current = isOpen;
+    }, [isOpen]);
 
     const getModalTitle = () => {
         if (currentStepIndex === 1 && hasFileSelected) {
@@ -124,28 +144,11 @@ function ImportRecordsFlow(props) {
         reader.readAsArrayBuffer(file);
     };
 
-    const removeFile = () => {
-        setHasFileSelected(false);
-        setFileName('');
-        setFileType('');
-        setData([]);
-        setColumns([]);
-        setFieldsMap({});
-    };
-
     const assignField = (databaseFieldToAssign, fileFieldsToAssign) => {
         setFieldsMap({
             ...fieldsMap,
             [databaseFieldToAssign]: fileFieldsToAssign.join(','),
         });
-    };
-
-    const handleCloseModal = () => {
-        setCurrentStepIndex(0);
-        removeFile();
-        setActionOption('');
-        setMatchField('default');
-        onRequestClose();
     };
 
     return (
@@ -155,7 +158,7 @@ function ImportRecordsFlow(props) {
             title={getModalTitle()}
             size="medium"
             isOpen={isOpen}
-            onRequestClose={handleCloseModal}
+            onRequestClose={onRequestClose}
             footer={
                 <Footer
                     onBack={goBackStep}
