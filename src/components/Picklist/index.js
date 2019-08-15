@@ -364,7 +364,7 @@ Picklist.propTypes = {
     title: PropTypes.string,
     /** A description for assistive sreen readers. */
     assistiveText: PropTypes.string,
-    value: PropTypes.object,
+    value: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     onChange: PropTypes.func,
     onClick: PropTypes.func,
     onFocus: PropTypes.func,
