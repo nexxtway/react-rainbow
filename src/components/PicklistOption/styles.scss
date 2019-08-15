@@ -1,0 +1,81 @@
+@import './../../styles/colors.scss';
+@import './../../styles/font-sizes.scss';
+
+.rainbow-picklist-option_header {
+    padding: 0.5rem 0.75rem;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rainbow-picklist-option_icon-container {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rainbow-picklist-option_header-label {
+    font-size: $font-size-text-medium;
+    line-height: 1.25;
+    color: $color-gray-3;
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: 0.0625rem;
+}
+
+.rainbow-picklist-option {
+    line-height: 1.5;
+}
+
+.rainbow-picklist-option > a {
+    position: relative;
+    font-size: $font-size-text-medium;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0.75rem 0.75rem;
+    color: $color-dark-1;
+    white-space: nowrap;
+    cursor: pointer;
+    text-decoration: none;
+
+    &[aria-disabled="true"] {
+        color: $color-gray-2;
+        cursor: default;
+
+        &:hover,
+        &:focus {
+            background-color: transparent;
+        }
+    }
+}
+
+.rainbow-picklist-option_active {
+    background-color: $color-gray-2;
+}
+
+.rainbow-picklist-option_selected {
+    display: none;
+}
+
+.rainbow-picklist-option_icon {
+    width: 1rem;
+    height: 1rem;
+    line-height: 1.5;
+    fill: white;
+}
+
+.rainbow-picklist-option_icon--left {
+    margin-right: 0.75rem;
+}
+
+.rainbow-picklist-option_icon--right {
+    margin-left: 0.75rem;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+}
