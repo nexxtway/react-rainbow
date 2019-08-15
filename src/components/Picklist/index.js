@@ -118,7 +118,7 @@ class Picklist extends Component {
     handleKeyEnterPressed() {
         const { onChange } = this.props;
         const { activeOptionIndex } = this.state;
-        const { label, name, icon, value } = this.nonHeaderChilds[activeOptionIndex];
+        const { label, name, icon, value } = this.activeChildren[activeOptionIndex];
         this.closeMenu();
         return onChange({
             label,
