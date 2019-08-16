@@ -56,6 +56,19 @@ class Picklist extends Component {
         );
     }
 
+    getContext() {
+        const { activeOptionName } = this.state;
+        const { name } = this.getValue();
+        return {
+            privateOnClick: this.handleOptionClick,
+            privateRegisterChild: this.registerChild,
+            privateUnregisterChild: this.unregisterChild,
+            privateOnHover: this.hoverChild,
+            activeOptionName,
+            currentValueName: name,
+        };
+    }
+
     getInputClassNames() {
         const { icon } = this.getValue();
         return classnames('rainbow-picklist_input', {
@@ -248,17 +261,8 @@ class Picklist extends Component {
             placeholder,
             name,
         } = this.props;
-        const { activeOptionName } = this.state;
         const ariaLabel = title || assistiveText;
-        const { label: valueLabel, icon, name: currentValueName } = this.getValue();
-        const providerContext = {
-            privateOnClick: this.handleOptionClick,
-            privateRegisterChild: this.registerChild,
-            privateUnregisterChild: this.unregisterChild,
-            privateOnHover: this.hoverChild,
-            activeOptionName,
-            currentValueName,
-        };
+        const { label: valueLabel, icon } = this.getValue();
         const value = valueLabel || '';
 
         return (
@@ -297,7 +301,7 @@ class Picklist extends Component {
                 <div role="listbox" className={this.getDropdownClassNames()}>
                     <ul role="presentation" aria-label={ariaLabel}>
                         <MenuContent isLoading={isLoading}>
-                            <Provider value={providerContext}>{children}</Provider>
+                            <Provider value={this.getContext()}>{children}</Provider>
                         </MenuContent>
                     </ul>
                 </div>
