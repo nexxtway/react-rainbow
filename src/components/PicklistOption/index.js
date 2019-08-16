@@ -32,6 +32,28 @@ class Option extends Component {
         );
     }
 
+    componentDidUpdate(prevProps) {
+        const { privateRegisterChild, privateUnregisterChild } = this.props;
+        const { currentValueName: prevCurrentValueName } = prevProps;
+        const { currentValueName, label, name, icon, value } = this.props;
+        if (prevCurrentValueName !== currentValueName) {
+            if (prevCurrentValueName === name && currentValueName !== name) {
+                setTimeout(
+                    () =>
+                        privateRegisterChild(this.itemRef.current, {
+                            label,
+                            name,
+                            icon,
+                            value,
+                        }),
+                    0,
+                );
+            } else if (prevCurrentValueName !== name && currentValueName === name) {
+                setTimeout(() => privateUnregisterChild(this.itemRef.current), 0);
+            }
+        }
+    }
+
     componentWillUnmount() {
         const { privateUnregisterChild } = this.props;
         return privateUnregisterChild(this.itemRef.current);

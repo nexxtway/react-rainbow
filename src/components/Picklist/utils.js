@@ -2,15 +2,17 @@ function getRefIndex(nodes, ref) {
     return nodes.indexOf(ref);
 }
 
-function sortChildren(childrenRefs, nodes) {
-    const [...newChildrenRefs] = childrenRefs;
-    newChildrenRefs.sort((refA, refB) => getRefIndex(nodes, refA) - getRefIndex(nodes, refB));
-    return newChildrenRefs;
+function sortChildren(children, nodes) {
+    const [...newChildren] = children;
+    newChildren.sort(
+        (childA, childB) => getRefIndex(nodes, childA.ref) - getRefIndex(nodes, childB.ref),
+    );
+    return newChildren;
 }
 
-export function insertChildOrderly(childrenRefs, childRef, nodes) {
-    const newChildrenRefs = childrenRefs.concat([childRef]);
-    const sortedChildren = sortChildren(newChildrenRefs, nodes);
+export function insertChildOrderly(children, child, nodes) {
+    const newChildren = children.concat([child]);
+    const sortedChildren = sortChildren(newChildren, nodes);
     return sortedChildren;
 }
 

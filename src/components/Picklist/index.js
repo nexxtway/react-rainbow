@@ -8,7 +8,6 @@ import { Provider } from './context';
 import MenuContent from './menuContent';
 import { insertChildOrderly, getChildMenuItemNodes } from './utils';
 import './styles.css';
-import isEmpty from './helpers/isEmpty';
 
 class Picklist extends Component {
     constructor(props) {
@@ -20,24 +19,15 @@ class Picklist extends Component {
         this.handleKeyPressed = this.handleKeyPressed.bind(this);
         this.hoverChild = this.hoverChild.bind(this);
         this.handleOptionClick = this.handleOptionClick.bind(this);
-        this.selectOption = this.selectOption.bind(this);
 
         this.registerChild = this.registerChild.bind(this);
         this.unregisterChild = this.unregisterChild.bind(this);
 
-        this.currentOption = null;
-        this.activeChildren = [];
         this.state = {
             isOpen: false,
-            childrenRefs: [],
+            activeChildren: [],
             activeOptionIndex: -1,
             activeOptionName: null,
-            context: {
-                privateOnClick: this.handleOptionClick,
-                privateRegisterChild: this.registerChild,
-                privateUnregisterChild: this.unregisterChild,
-                privateOnHover: this.hoverChild,
-            },
         };
 
         this.keyHandlerMap = {
@@ -47,14 +37,6 @@ class Picklist extends Component {
             [TAB_KEY]: this.closeMenu.bind(this),
             [ENTER_KEY]: this.handleKeyEnterPressed.bind(this),
         };
-    }
-
-    componentDidUpdate(prevProps) {
-        const { value: prevValue } = prevProps;
-        const { value } = this.props;
-        if (prevValue !== value) {
-            this.selectOption(value);
-        }
     }
 
     getContainerClassNames() {
@@ -93,32 +75,32 @@ class Picklist extends Component {
     }
 
     handleKeyUpPressed() {
-        const { activeOptionIndex } = this.state;
+        const { activeChildren, activeOptionIndex } = this.state;
         let nextActiveIndex;
         if (activeOptionIndex < 1) {
-            nextActiveIndex = this.activeChildren.length - 1;
+            nextActiveIndex = activeChildren.length - 1;
         } else {
-            nextActiveIndex = (activeOptionIndex - 1) % this.activeChildren.length;
+            nextActiveIndex = (activeOptionIndex - 1) % activeChildren.length;
         }
         this.setState({
             activeOptionIndex: nextActiveIndex,
-            activeOptionName: this.activeChildren[nextActiveIndex].name,
+            activeOptionName: activeChildren[nextActiveIndex].name,
         });
     }
 
     handleKeyDownPressed() {
-        const { activeOptionIndex } = this.state;
-        const nextActiveIndex = (activeOptionIndex + 1) % this.activeChildren.length;
+        const { activeChildren, activeOptionIndex } = this.state;
+        const nextActiveIndex = (activeOptionIndex + 1) % activeChildren.length;
         this.setState({
             activeOptionIndex: nextActiveIndex,
-            activeOptionName: this.activeChildren[nextActiveIndex].name,
+            activeOptionName: activeChildren[nextActiveIndex].name,
         });
     }
 
     handleKeyEnterPressed() {
         const { onChange } = this.props;
-        const { activeOptionIndex } = this.state;
-        const { label, name, icon, value } = this.activeChildren[activeOptionIndex];
+        const { activeChildren, activeOptionIndex } = this.state;
+        const { label, name, icon, value } = activeChildren[activeOptionIndex];
         this.closeMenu();
         return onChange({
             label,
@@ -139,72 +121,44 @@ class Picklist extends Component {
         return null;
     }
 
-    registerChild(childRef, childProps) {
-        const { childrenRefs } = this.state;
-        const [...nodes] = getChildMenuItemNodes(this.containerRef.current);
-        const newChildrenRefs = insertChildOrderly(childrenRefs, childRef, nodes);
-        const refIndex = newChildrenRefs.indexOf(childRef);
-        const extendedChildProps = {
-            ...childProps,
-            ref: childRef,
-        };
-        const { value } = this.props;
-        if (!isEmpty(value)) {
-            if (isEmpty(this.currentOption) && childProps.name === value.name) {
-                this.currentOption = {
-                    index: refIndex,
-                    optionProps: extendedChildProps,
-                };
-            } else if (!isEmpty(this.currentOption)) {
-                const { index, optionProps } = this.currentOption;
-                this.activeChildren.splice(index, 0, optionProps);
-                this.activeChildren.splice(refIndex, 0, extendedChildProps);
-                const currentOptionIndex = this.activeChildren.findIndex(
-                    child => child.name === value.name,
-                );
-                this.currentOption = {
-                    index: currentOptionIndex,
-                    optionProps: this.activeChildren[currentOptionIndex],
-                };
-                this.activeChildren.splice(currentOptionIndex, 1);
-            } else {
-                this.activeChildren.splice(refIndex, 0, extendedChildProps);
-            }
-        } else {
-            this.activeChildren.splice(refIndex, 0, extendedChildProps);
-        }
+    isChildRegistered(childRef) {
+        const { activeChildren } = this.state;
+        return activeChildren.findIndex(child => child.ref === childRef) !== -1;
+    }
 
+    registerChild(childRef, childProps) {
+        if (this.isChildRegistered(childRef)) return;
+
+        const { activeChildren } = this.state;
+        const [...nodes] = getChildMenuItemNodes(this.containerRef.current);
+        const newActiveChildren = insertChildOrderly(
+            activeChildren,
+            {
+                ref: childRef,
+                ...childProps,
+            },
+            nodes,
+        );
         this.setState({
-            childrenRefs: newChildrenRefs,
+            activeChildren: newActiveChildren,
         });
     }
 
     unregisterChild(childRef) {
-        const { childrenRefs } = this.state;
-        const refIndex = childrenRefs.indexOf(childRef);
-        const newChildrenRefs = childrenRefs.filter(child => child !== childRef);
+        if (!this.isChildRegistered(childRef)) return;
 
-        if (!isEmpty(this.currentOption)) {
-            const { index, optionProps } = this.currentOption;
-            this.activeChildren.splice(index, 0, optionProps);
-            this.activeChildren.splice(refIndex, 1);
-
-            const newIndex = newChildrenRefs.indexOf(optionProps.ref);
-            this.currentOption.index = newIndex;
-            this.activeChildren.splice(newIndex, 1);
-        } else {
-            this.activeChildren.splice(refIndex, 1);
-        }
-
+        const { activeChildren } = this.state;
+        const newActiveChildren = activeChildren.filter(child => child.ref !== childRef);
         this.setState({
-            childrenRefs: newChildrenRefs,
+            activeChildren: newActiveChildren,
         });
     }
 
     hoverChild(event, name) {
+        const { activeChildren } = this.state;
         this.setState({
             activeOptionName: name,
-            activeOptionIndex: this.activeChildren.findIndex(child => child.name === name),
+            activeOptionIndex: activeChildren.findIndex(child => child.name === name),
         });
     }
 
@@ -215,10 +169,11 @@ class Picklist extends Component {
     }
 
     closeMenu() {
+        // const { activeChildren } = this.state;
         return this.setState({
             isOpen: false,
-            activeOptionIndex: 0,
-            activeOptionName: this.activeChildren[0].name,
+            activeOptionIndex: -1,
+            activeOptionName: null,
         });
     }
 
@@ -241,29 +196,6 @@ class Picklist extends Component {
     handleOptionClick(event, option) {
         const { onChange } = this.props;
         return onChange(option);
-    }
-
-    selectOption(option) {
-        const { childrenRefs } = this.state;
-
-        if (!isEmpty(this.currentOption)) {
-            const { optionProps } = this.currentOption;
-            const realIndex = childrenRefs.findIndex(childRef => childRef === optionProps.ref);
-            this.activeChildren.splice(realIndex, 0, optionProps);
-        }
-
-        if (!isEmpty(option)) {
-            const currentOptionIndex = this.activeChildren.findIndex(
-                child => child.name === option.name,
-            );
-            this.currentOption = {
-                index: currentOptionIndex,
-                optionProps: this.activeChildren[currentOptionIndex],
-            };
-            this.activeChildren.splice(currentOptionIndex, 1);
-        } else {
-            this.currentOption = null;
-        }
     }
 
     /**
@@ -303,11 +235,14 @@ class Picklist extends Component {
             onFocus,
             name,
         } = this.props;
-        const { context, activeOptionName } = this.state;
+        const { activeOptionName } = this.state;
         const ariaLabel = title || assistiveText;
         const { label, icon, name: currentValueName } = this.getValue();
         const providerContext = {
-            ...context,
+            privateOnClick: this.handleOptionClick,
+            privateRegisterChild: this.registerChild,
+            privateUnregisterChild: this.unregisterChild,
+            privateOnHover: this.hoverChild,
             activeOptionName,
             currentValueName,
         };
