@@ -15,6 +15,7 @@ class Picklist extends Component {
         this.containerRef = React.createRef();
         this.triggerRef = React.createRef();
         this.handleInputClick = this.handleInputClick.bind(this);
+        this.handleFocus = this.handleFocus.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
         this.handleKeyPressed = this.handleKeyPressed.bind(this);
         this.hoverChild = this.hoverChild.bind(this);
@@ -187,10 +188,17 @@ class Picklist extends Component {
         return this.openMenu();
     }
 
-    handleBlur(event) {
-        const { onBlur } = this.props;
+    handleFocus() {
+        const { onFocus, value } = this.props;
+        const eventValue = value || null;
+        onFocus(eventValue);
+    }
+
+    handleBlur() {
+        const { onBlur, value } = this.props;
         this.closeMenu();
-        return onBlur(event);
+        const eventValue = value || null;
+        onBlur(eventValue);
     }
 
     handleOptionClick(event, option) {
@@ -232,7 +240,6 @@ class Picklist extends Component {
             id,
             tabIndex,
             placeholder,
-            onFocus,
             name,
         } = this.props;
         const { activeOptionName } = this.state;
@@ -268,7 +275,7 @@ class Picklist extends Component {
                         name={name}
                         value={value}
                         onClick={this.handleInputClick}
-                        onFocus={onFocus}
+                        onFocus={this.handleFocus}
                         onBlur={this.handleBlur}
                         placeholder={placeholder}
                         tabIndex={tabIndex}
