@@ -5,10 +5,7 @@ Example:
     initialState = { showOption2: false, value: null, };
 
     <div className="rainbow-p-around_x-large">
-        <Button label="Toggle Option 2" onClick={() => setState({ showOption2: !state.showOption2 })} />
-        <Button label="Set Value" onClick={() => setState({ value: option })} />
-        <Button label="Clear Value" onClick={() => setState({ value: null })} />
-        <Picklist onChange={(value) => setState({ value })} value={state.value}>
+        <Picklist label="Picklist label" onChange={(value) => setState({ value })} value={state.value}>
             <PicklistOption name="header 1" label="Header 1" variant="header" />
             <PicklistOption name="option 1" label="Option 1" />
             <RenderIf isTrue={state.showOption2}>
@@ -18,6 +15,10 @@ Example:
             <PicklistOption name="option 3" label="Option 3" />
             <PicklistOption name="option 4" label="Option 4" />
         </Picklist>
+        <br/>
+        <Button label="Toggle Option 2" onClick={() => setState({ showOption2: !state.showOption2 })} />
+        <Button label="Set Value" onClick={() => setState({ value: option })} />
+        <Button label="Clear Value" onClick={() => setState({ value: null })} />
         <div style={{ height:200 }} />
     </div>
 

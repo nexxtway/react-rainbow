@@ -3,15 +3,18 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import withReduxForm from '../../libs/hocs/withReduxForm';
 import RenderIf from '../RenderIf';
-import { UP_KEY, DOWN_KEY, ESCAPE_KEY, TAB_KEY, ENTER_KEY } from '../../libs/constants';
+import { UP_KEY, DOWN_KEY, ESCAPE_KEY, TAB_KEY, SPACE_KEY, ENTER_KEY } from '../../libs/constants';
 import { Provider } from './context';
 import MenuContent from './menuContent';
 import { insertChildOrderly, getChildMenuItemNodes } from './utils';
+import Label from './label';
 import './styles.css';
+import { uniqueId } from '../../libs/utils';
 
 class Picklist extends Component {
     constructor(props) {
         super(props);
+        this.inputId = uniqueId('picklist-input');
         this.containerRef = React.createRef();
         this.triggerRef = React.createRef();
         this.handleInputClick = this.handleInputClick.bind(this);
@@ -114,10 +117,12 @@ class Picklist extends Component {
     handleKeyPressed(event) {
         const { isOpen } = this.state;
         if (isOpen) {
-            if (event.keyCode === UP_KEY || event.keyCode === DOWN_KEY) event.preventDefault();
+            if ([UP_KEY, DOWN_KEY, SPACE_KEY].includes(event.keyCode)) event.preventDefault();
             if (this.keyHandlerMap[event.keyCode]) {
                 return this.keyHandlerMap[event.keyCode]();
             }
+        } else if ([UP_KEY, DOWN_KEY, SPACE_KEY, ENTER_KEY].includes(event.keyCode)) {
+            this.openMenu();
         }
         return null;
     }
@@ -170,7 +175,6 @@ class Picklist extends Component {
     }
 
     closeMenu() {
-        // const { activeChildren } = this.state;
         return this.setState({
             isOpen: false,
             activeOptionIndex: -1,
@@ -232,6 +236,8 @@ class Picklist extends Component {
 
     render() {
         const {
+            label: pickListLabel,
+            hideLabel,
             style,
             title,
             assistiveText,
@@ -244,7 +250,7 @@ class Picklist extends Component {
         } = this.props;
         const { activeOptionName } = this.state;
         const ariaLabel = title || assistiveText;
-        const { label, icon, name: currentValueName } = this.getValue();
+        const { label: valueLabel, icon, name: currentValueName } = this.getValue();
         const providerContext = {
             privateOnClick: this.handleOptionClick,
             privateRegisterChild: this.registerChild,
@@ -253,7 +259,7 @@ class Picklist extends Component {
             activeOptionName,
             currentValueName,
         };
-        const value = label || '';
+        const value = valueLabel || '';
 
         return (
             <div
@@ -264,6 +270,10 @@ class Picklist extends Component {
                 onKeyDown={this.handleKeyPressed}
                 ref={this.containerRef}
             >
+                <RenderIf isTrue={!!pickListLabel}>
+                    <Label label={pickListLabel} hideLabel={hideLabel} inputId={this.inputId} />
+                </RenderIf>
+
                 <div className="rainbow-picklist_inner-container">
                     <RenderIf isTrue={!!icon}>
                         <span className="rainbow-picklist_icon">{icon}</span>
@@ -297,6 +307,10 @@ class Picklist extends Component {
 }
 
 Picklist.propTypes = {
+    /** Text label for the PickList. */
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /** A boolean to hide the PickList label. */
+    hideLabel: PropTypes.bool,
     /** The content of the Picklist. Used to render the menuItem elements
      * when the Picklist is open. */
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
@@ -335,9 +349,10 @@ Picklist.defaultProps = {
     tabIndex: undefined,
     placeholder: undefined,
     name: undefined,
+    label: null,
+    hideLabel: false,
     className: undefined,
     style: undefined,
-
     id: undefined,
 };
 export default withReduxForm(Picklist);
