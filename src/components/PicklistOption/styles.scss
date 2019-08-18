@@ -7,6 +7,10 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+
+    &:hover {
+        cursor: default;
+    }
 }
 
 .rainbow-picklist-option_icon-container {

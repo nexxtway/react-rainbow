@@ -10,6 +10,14 @@ import { insertChildOrderly, getChildMenuItemNodes } from './utils';
 import Label from './label';
 import './styles.css';
 import { uniqueId } from '../../libs/utils';
+import MenuArrowButton from './menuArrowButton';
+import isOptionVisible from './helpers/isOptionVisible';
+
+const sizeMap = {
+    small: 135,
+    medium: 225,
+    large: 360,
+};
 
 class Picklist extends Component {
     constructor(props) {
@@ -17,12 +25,14 @@ class Picklist extends Component {
         this.inputId = uniqueId('picklist-input');
         this.containerRef = React.createRef();
         this.triggerRef = React.createRef();
+        this.menuRef = React.createRef();
         this.handleInputClick = this.handleInputClick.bind(this);
         this.handleFocus = this.handleFocus.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
         this.handleKeyPressed = this.handleKeyPressed.bind(this);
         this.hoverChild = this.hoverChild.bind(this);
         this.handleOptionClick = this.handleOptionClick.bind(this);
+        this.handleScroll = this.handleScroll.bind(this);
 
         this.registerChild = this.registerChild.bind(this);
         this.unregisterChild = this.unregisterChild.bind(this);
@@ -32,6 +42,8 @@ class Picklist extends Component {
             activeChildren: [],
             activeOptionIndex: -1,
             activeOptionName: null,
+            showScrollUpArrow: false,
+            showScrollDownArrow: false,
         };
 
         this.keyHandlerMap = {
@@ -45,11 +57,12 @@ class Picklist extends Component {
 
     getContainerClassNames() {
         const { isOpen } = this.state;
-        const { className } = this.props;
+        const { className, readOnly } = this.props;
 
         return classnames(
             'rainbow-picklist',
             {
+                'rainbow-picklist--readonly': readOnly,
                 'rainbow-picklist--open': isOpen,
             },
             className,
@@ -67,6 +80,11 @@ class Picklist extends Component {
             activeOptionName,
             currentValueName: name,
         };
+    }
+
+    // eslint-disable-next-line class-methods-use-this
+    getMenuMaxHeight() {
+        return sizeMap.medium;
     }
 
     getInputClassNames() {
@@ -93,25 +111,33 @@ class Picklist extends Component {
 
     handleKeyUpPressed() {
         const { activeChildren, activeOptionIndex } = this.state;
-        let nextActiveIndex;
-        if (activeOptionIndex < 1) {
-            nextActiveIndex = activeChildren.length - 1;
-        } else {
-            nextActiveIndex = (activeOptionIndex - 1) % activeChildren.length;
+        const nextActiveIndex =
+            (activeChildren.length + activeOptionIndex - 1) % activeChildren.length;
+
+        if (nextActiveIndex < activeOptionIndex) {
+            this.setState({
+                activeOptionIndex: nextActiveIndex,
+                activeOptionName: activeChildren[nextActiveIndex].name,
+            });
+
+            if (nextActiveIndex === 0) {
+                this.scrollTo(0);
+            } else {
+                this.scrollToOption(nextActiveIndex);
+            }
         }
-        this.setState({
-            activeOptionIndex: nextActiveIndex,
-            activeOptionName: activeChildren[nextActiveIndex].name,
-        });
     }
 
     handleKeyDownPressed() {
         const { activeChildren, activeOptionIndex } = this.state;
         const nextActiveIndex = (activeOptionIndex + 1) % activeChildren.length;
-        this.setState({
-            activeOptionIndex: nextActiveIndex,
-            activeOptionName: activeChildren[nextActiveIndex].name,
-        });
+        if (nextActiveIndex > 0) {
+            this.setState({
+                activeOptionIndex: nextActiveIndex,
+                activeOptionName: activeChildren[nextActiveIndex].name,
+            });
+            this.scrollToOption(nextActiveIndex);
+        }
     }
 
     handleKeyEnterPressed() {
@@ -165,7 +191,6 @@ class Picklist extends Component {
 
     unregisterChild(childRef) {
         if (!this.isChildRegistered(childRef)) return;
-
         const { activeChildren } = this.state;
         const newActiveChildren = activeChildren.filter(child => child.ref !== childRef);
         this.setState({
@@ -182,8 +207,18 @@ class Picklist extends Component {
     }
 
     openMenu() {
+        const { activeChildren } = this.state;
+        const firstOptionIndex = activeChildren.length > 0 ? 0 : -1;
+        const firstOptionName = activeChildren.length > 0 ? activeChildren[0].name : null;
+
+        setTimeout(() => {
+            this.scrollTo(0);
+        }, 0);
+
         return this.setState({
             isOpen: true,
+            activeOptionIndex: firstOptionIndex,
+            activeOptionName: firstOptionName,
         });
     }
 
@@ -223,6 +258,38 @@ class Picklist extends Component {
         return onChange(option);
     }
 
+    // isScrollUpArrowVisible() {
+    //     return this.menuRef.current && this.menuRef.current.scrollTop > 0;
+    // }
+
+    // isScrollDownArrowVisible() {
+    //     const menu = this.menuRef.current;
+    //     if (!menu) return false;
+    //     return menu.scrollHeight - menu.scrollTop !== menu.clientHeight;
+    // }
+
+    scrollToOption(nextFocusedIndex) {
+        const { activeChildren } = this.state;
+        const nextFocusedOptionRef = activeChildren[nextFocusedIndex].ref;
+        if (!isOptionVisible(nextFocusedOptionRef, this.menuRef.current)) {
+            this.scrollTo(nextFocusedOptionRef.offsetTop);
+        }
+    }
+
+    scrollTo(offset) {
+        this.menuRef.current.scrollTo(0, offset);
+    }
+
+    handleScroll() {
+        const menu = this.menuRef.current;
+        const showScrollUpArrow = menu.scrollTop > 0;
+        const showScrollDownArrow = menu.scrollHeight - menu.scrollTop !== menu.clientHeight;
+        this.setState({
+            showScrollUpArrow,
+            showScrollDownArrow,
+        });
+    }
+
     /**
      * Sets focus on the element.
      * @public
@@ -255,6 +322,9 @@ class Picklist extends Component {
             title,
             assistiveText,
             isLoading,
+            disabled,
+            readOnly,
+            required,
             children,
             id,
             tabIndex,
@@ -265,6 +335,12 @@ class Picklist extends Component {
         const { label: valueLabel, icon } = this.getValue();
         const value = valueLabel || '';
 
+        const menuContainerStyles = {
+            // height: 48 * items.length + 17,
+            maxHeight: this.getMenuMaxHeight(),
+        };
+
+        const { showScrollUpArrow, showScrollDownArrow } = this.state;
         return (
             <div
                 id={id}
@@ -275,7 +351,13 @@ class Picklist extends Component {
                 ref={this.containerRef}
             >
                 <RenderIf isTrue={!!pickListLabel}>
-                    <Label label={pickListLabel} hideLabel={hideLabel} inputId={this.inputId} />
+                    <Label
+                        label={pickListLabel}
+                        hideLabel={hideLabel}
+                        required={required}
+                        inputId={this.inputId}
+                        readOnly={readOnly}
+                    />
                 </RenderIf>
 
                 <div className="rainbow-picklist_inner-container">
@@ -294,16 +376,30 @@ class Picklist extends Component {
                         placeholder={placeholder}
                         tabIndex={tabIndex}
                         readOnly
+                        disabled={disabled}
+                        required={required}
                         autoComplete="off"
                         ref={this.triggerRef}
                     />
                 </div>
                 <div role="listbox" className={this.getDropdownClassNames()}>
-                    <ul role="presentation" aria-label={ariaLabel}>
+                    <RenderIf isTrue={showScrollUpArrow}>
+                        <MenuArrowButton arrow="up" />
+                    </RenderIf>
+                    <ul
+                        role="presentation"
+                        onScroll={this.handleScroll}
+                        aria-label={ariaLabel}
+                        ref={this.menuRef}
+                        style={menuContainerStyles}
+                    >
                         <MenuContent isLoading={isLoading}>
                             <Provider value={this.getContext()}>{children}</Provider>
                         </MenuContent>
                     </ul>
+                    <RenderIf isTrue={showScrollDownArrow}>
+                        <MenuArrowButton arrow="down" />
+                    </RenderIf>
                 </div>
             </div>
         );
@@ -338,6 +434,13 @@ Picklist.propTypes = {
     style: PropTypes.object,
     /** The id of the outer element. */
     id: PropTypes.string,
+    /** Specifies that the Lookup must be filled out before submitting the form.
+     * This value defaults to false. */
+    required: PropTypes.bool,
+    /** Specifies that the PickList element should be disabled. This value defaults to false. */
+    disabled: PropTypes.bool,
+    /** Specifies that the PickList is read-only. This value defaults to false. */
+    readOnly: PropTypes.bool,
 };
 
 Picklist.defaultProps = {
@@ -358,5 +461,8 @@ Picklist.defaultProps = {
     className: undefined,
     style: undefined,
     id: undefined,
+    disabled: false,
+    readOnly: false,
+    required: false,
 };
 export default withReduxForm(Picklist);

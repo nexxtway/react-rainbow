@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-// import RequiredAsterisk from '../RequiredAsterisk';
+import RequiredAsterisk from '../RequiredAsterisk';
 
 export default function Label(props) {
-    const { label, inputId, id } = props;
+    const { label, required, inputId, id } = props;
 
     const getLabelClassNames = () => {
-        const { hideLabel } = props;
-        return classnames('rainbow-picklist_input-label', {
+        const { readOnly, hideLabel } = props;
+        return classnames('rainbow-lookup_input-label', {
+            'rainbow-lookup_input-label-read-only': readOnly,
             'rainbow-picklist_input-label--hide': hideLabel,
         });
     };
@@ -17,7 +18,7 @@ export default function Label(props) {
 
     return (
         <label className={getLabelClassNames()} htmlFor={inputId} id={id}>
-            {/* <RequiredAsterisk required={required} /> */}
+            <RequiredAsterisk required={required} />
             {label}
         </label>
     );
@@ -25,7 +26,9 @@ export default function Label(props) {
 
 Label.propTypes = {
     label: PropTypes.node,
+    required: PropTypes.bool.isRequired,
     inputId: PropTypes.string.isRequired,
+    readOnly: PropTypes.bool.isRequired,
     id: PropTypes.string,
     hideLabel: PropTypes.bool,
 };

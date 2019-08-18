@@ -4,6 +4,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap; }
+  .rainbow-picklist-option_header:hover {
+    cursor: default; }
 
 .rainbow-picklist-option_icon-container {
   max-width: 100%;

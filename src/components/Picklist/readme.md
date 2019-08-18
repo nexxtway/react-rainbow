@@ -14,6 +14,8 @@ Example:
             <PicklistOption name="header 2" label="Header 2" variant="header" />
             <PicklistOption name="option 3" label="Option 3" />
             <PicklistOption name="option 4" label="Option 4" />
+            <PicklistOption name="option 5" label="Option 5" />
+            <PicklistOption name="option 6" label="Option 6" />
         </Picklist>
         <br/>
         <Button label="Toggle Option 2" onClick={() => setState({ showOption2: !state.showOption2 })} />
