@@ -36,6 +36,12 @@ function EmptyComponent() {
 const ADD_RECORDS = Symbol('add-records');
 const MERGE_RECORDS = Symbol('merge-records');
 
+/**
+ * An Accordion is a collection of vertically stacked sections with multiple content areas.
+ * Allows a user to toggle the display of a section of content.
+ * @category Experiences
+ */
+
 function ImportRecordsFlow(props) {
     const { className, style, isOpen, onRequestClose, schema, onComplete } = props;
     const [currentStepIndex, setCurrentStepIndex] = useState(0);
