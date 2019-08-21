@@ -222,6 +222,7 @@
   height: 1.125rem;
   position: fixed;
   width: 100%;
+  z-index: 10;
   background: white; }
   .rainbow-picklist_dropdown-arrow-button::after {
     content: '';
