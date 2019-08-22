@@ -447,7 +447,7 @@ class Picklist extends Component {
 
 Picklist.propTypes = {
     /** Text label for the PickList. */
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
     /** A boolean to hide the PickList label. */
     hideLabel: PropTypes.bool,
     /** The content of the Picklist. Used to render the menuItem elements
@@ -494,7 +494,6 @@ Picklist.defaultProps = {
     tabIndex: undefined,
     placeholder: undefined,
     name: undefined,
-    label: null,
     hideLabel: false,
     className: undefined,
     style: undefined,
@@ -503,4 +502,5 @@ Picklist.defaultProps = {
     readOnly: false,
     required: false,
 };
+
 export default withReduxForm(Picklist);

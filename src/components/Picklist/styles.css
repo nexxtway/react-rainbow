@@ -41,48 +41,6 @@
 .rainbow-picklist.rainbow-picklist--open .rainbow-button-icon {
   box-shadow: 0 0 2px #01b6f5; }
 
-.rainbow-picklist_dropdown--left {
-  left: 0;
-  transform: translateX(0); }
-
-.rainbow-picklist_dropdown--right {
-  left: auto;
-  right: 0;
-  transform: translateX(0); }
-
-.rainbow-picklist_dropdown--bottom {
-  top: auto;
-  bottom: 100%; }
-
-.rainbow-picklist_dropdown--bottom-right {
-  top: auto;
-  bottom: 100%;
-  left: auto;
-  right: 0;
-  transform: translateX(0); }
-
-.rainbow-picklist_dropdown--bottom-left {
-  top: auto;
-  bottom: 100%;
-  left: 0;
-  transform: translateX(0); }
-
-.rainbow-picklist_dropdown--xx-small {
-  min-width: 6rem; }
-
-.rainbow-picklist_dropdown--x-small {
-  min-width: 12rem; }
-
-.rainbow-picklist_dropdown--small {
-  min-width: 15rem; }
-
-.rainbow-picklist_dropdown--medium {
-  min-width: 20rem; }
-
-.rainbow-picklist_dropdown--large {
-  min-width: 25rem;
-  max-width: 512px; }
-
 .rainbow-picklist_dropdown--loading-box {
   padding: 2rem;
   height: 3rem;
