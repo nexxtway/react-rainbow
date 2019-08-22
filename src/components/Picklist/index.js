@@ -476,7 +476,8 @@ Picklist.propTypes = {
     style: PropTypes.object,
     /** The id of the outer element. */
     id: PropTypes.string,
-    /** Specifies that an option must be selected before submitting the form. This value defaults to false. */
+    /** Specifies that an option must be selected before submitting the form.
+     * This value defaults to false. */
     required: PropTypes.bool,
     /** Specifies that the PickList element should be disabled. This value defaults to false. */
     disabled: PropTypes.bool,
