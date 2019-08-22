@@ -16,6 +16,10 @@ Example:
             <PicklistOption name="option 4" label="Option 4" />
             <PicklistOption name="option 5" label="Option 5" />
             <PicklistOption name="option 6" label="Option 6" />
+            <PicklistOption name="option 7" label="Option 7" />
+            <PicklistOption name="option 8" label="Option 8" />
+            <PicklistOption name="option 9" label="Option 9" />
+            <PicklistOption name="option 10" label="Option 10" />
         </Picklist>
         <br/>
         <Button label="Toggle Option 2" onClick={() => setState({ showOption2: !state.showOption2 })} />

@@ -33,6 +33,9 @@ class Picklist extends Component {
         this.hoverChild = this.hoverChild.bind(this);
         this.handleOptionClick = this.handleOptionClick.bind(this);
         this.handleScroll = this.handleScroll.bind(this);
+        this.handleScrollUpArrowHover = this.handleScrollUpArrowHover.bind(this);
+        this.handleScrollDownArrowHover = this.handleScrollDownArrowHover.bind(this);
+        this.handleStopArrowScoll = this.handleStopArrowScoll.bind(this);
 
         this.registerChild = this.registerChild.bind(this);
         this.unregisterChild = this.unregisterChild.bind(this);
@@ -42,8 +45,8 @@ class Picklist extends Component {
             activeChildren: [],
             activeOptionIndex: -1,
             activeOptionName: null,
-            showScrollUpArrow: false,
-            showScrollDownArrow: false,
+            showScrollUpArrow: undefined,
+            showScrollDownArrow: undefined,
         };
 
         this.keyHandlerMap = {
@@ -53,6 +56,15 @@ class Picklist extends Component {
             [TAB_KEY]: this.closeMenu.bind(this),
             [ENTER_KEY]: this.handleKeyEnterPressed.bind(this),
         };
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        const { isOpen: wasOpen } = prevState;
+        const { isOpen } = this.state;
+        if (!wasOpen && isOpen) {
+            this.scrollTo(0);
+            this.updateScrollingArrows();
+        }
     }
 
     getContainerClassNames() {
@@ -211,10 +223,6 @@ class Picklist extends Component {
         const firstOptionIndex = activeChildren.length > 0 ? 0 : -1;
         const firstOptionName = activeChildren.length > 0 ? activeChildren[0].name : null;
 
-        setTimeout(() => {
-            this.scrollTo(0);
-        }, 0);
-
         return this.setState({
             isOpen: true,
             activeOptionIndex: firstOptionIndex,
@@ -258,16 +266,6 @@ class Picklist extends Component {
         return onChange(option);
     }
 
-    // isScrollUpArrowVisible() {
-    //     return this.menuRef.current && this.menuRef.current.scrollTop > 0;
-    // }
-
-    // isScrollDownArrowVisible() {
-    //     const menu = this.menuRef.current;
-    //     if (!menu) return false;
-    //     return menu.scrollHeight - menu.scrollTop !== menu.clientHeight;
-    // }
-
     scrollToOption(nextFocusedIndex) {
         const { activeChildren } = this.state;
         const nextFocusedOptionRef = activeChildren[nextFocusedIndex].ref;
@@ -280,7 +278,7 @@ class Picklist extends Component {
         this.menuRef.current.scrollTo(0, offset);
     }
 
-    handleScroll() {
+    updateScrollingArrows() {
         const menu = this.menuRef.current;
         const showScrollUpArrow = menu.scrollTop > 0;
         const showScrollDownArrow = menu.scrollHeight - menu.scrollTop !== menu.clientHeight;
@@ -288,6 +286,40 @@ class Picklist extends Component {
             showScrollUpArrow,
             showScrollDownArrow,
         });
+    }
+
+    handleScroll() {
+        this.updateScrollingArrows();
+    }
+
+    handleScrollUpArrowHover() {
+        if (this.scrollingTimer) clearInterval(this.scrollingTimer);
+
+        const menu = this.menuRef.current;
+        this.scrollingTimer = setInterval(() => {
+            if (menu.scrollTop > 0) {
+                menu.scrollBy(0, -45);
+            } else {
+                clearInterval(this.scrollingTimer);
+            }
+        }, 400);
+    }
+
+    handleScrollDownArrowHover() {
+        if (this.scrollingTimer) clearInterval(this.scrollingTimer);
+
+        const menu = this.menuRef.current;
+        this.scrollingTimer = setInterval(() => {
+            if (menu.scrollHeight - menu.scrollTop !== menu.clientHeight) {
+                menu.scrollBy(0, 45);
+            } else {
+                clearInterval(this.scrollingTimer);
+            }
+        }, 400);
+    }
+
+    handleStopArrowScoll() {
+        if (this.scrollingTimer) clearInterval(this.scrollingTimer);
     }
 
     /**
@@ -336,7 +368,6 @@ class Picklist extends Component {
         const value = valueLabel || '';
 
         const menuContainerStyles = {
-            // height: 48 * items.length + 17,
             maxHeight: this.getMenuMaxHeight(),
         };
 
@@ -384,7 +415,11 @@ class Picklist extends Component {
                 </div>
                 <div role="listbox" className={this.getDropdownClassNames()}>
                     <RenderIf isTrue={showScrollUpArrow}>
-                        <MenuArrowButton arrow="up" />
+                        <MenuArrowButton
+                            arrow="up"
+                            onMouseEnter={this.handleScrollUpArrowHover}
+                            onMouseLeave={this.handleStopArrowScoll}
+                        />
                     </RenderIf>
                     <ul
                         role="presentation"
@@ -398,7 +433,11 @@ class Picklist extends Component {
                         </MenuContent>
                     </ul>
                     <RenderIf isTrue={showScrollDownArrow}>
-                        <MenuArrowButton arrow="down" />
+                        <MenuArrowButton
+                            arrow="down"
+                            onMouseEnter={this.handleScrollDownArrowHover}
+                            onMouseLeave={this.handleStopArrowScoll}
+                        />
                     </RenderIf>
                 </div>
             </div>
@@ -434,8 +473,7 @@ Picklist.propTypes = {
     style: PropTypes.object,
     /** The id of the outer element. */
     id: PropTypes.string,
-    /** Specifies that the Lookup must be filled out before submitting the form.
-     * This value defaults to false. */
+    /** Specifies that an option must be selected before submitting the form. This value defaults to false. */
     required: PropTypes.bool,
     /** Specifies that the PickList element should be disabled. This value defaults to false. */
     disabled: PropTypes.bool,
