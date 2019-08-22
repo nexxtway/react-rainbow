@@ -173,6 +173,9 @@ class Picklist extends Component {
                 return this.keyHandlerMap[event.keyCode]();
             }
         } else if ([UP_KEY, DOWN_KEY, SPACE_KEY, ENTER_KEY].includes(event.keyCode)) {
+            if (event.keyCode === ESCAPE_KEY) {
+                event.preventDefault();
+            }
             this.openMenu();
         }
         return null;
