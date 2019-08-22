@@ -3,16 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import withReduxForm from '../../libs/hocs/withReduxForm';
 import RenderIf from '../RenderIf';
-import {
-    UP_KEY,
-    DOWN_KEY,
-    LEFT_KEY,
-    RIGHT_KEY,
-    ESCAPE_KEY,
-    TAB_KEY,
-    SPACE_KEY,
-    ENTER_KEY,
-} from '../../libs/constants';
+import { UP_KEY, DOWN_KEY, ESCAPE_KEY, TAB_KEY, SPACE_KEY, ENTER_KEY } from '../../libs/constants';
 import { Provider } from './context';
 import MenuContent from './menuContent';
 import { insertChildOrderly, getChildMenuItemNodes } from './utils';
@@ -181,9 +172,7 @@ class Picklist extends Component {
             if (this.keyHandlerMap[event.keyCode]) {
                 return this.keyHandlerMap[event.keyCode]();
             }
-        } else if (
-            [LEFT_KEY, RIGHT_KEY, UP_KEY, DOWN_KEY, SPACE_KEY, ENTER_KEY].includes(event.keyCode)
-        ) {
+        } else if (shouldOpenMenu(event.keyCode)) {
             event.preventDefault();
             this.openMenu();
         }
