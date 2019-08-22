@@ -301,11 +301,11 @@ class Picklist extends Component {
         const menu = this.menuRef.current;
         this.scrollingTimer = setInterval(() => {
             if (menu.scrollTop > 0) {
-                menu.scrollBy(0, -45);
+                menu.scrollBy(0, -1);
             } else {
                 clearInterval(this.scrollingTimer);
             }
-        }, 400);
+        }, 10);
     }
 
     handleScrollDownArrowHover() {
@@ -314,11 +314,11 @@ class Picklist extends Component {
         const menu = this.menuRef.current;
         this.scrollingTimer = setInterval(() => {
             if (menu.scrollHeight - menu.scrollTop !== menu.clientHeight) {
-                menu.scrollBy(0, 45);
+                menu.scrollBy(0, 1);
             } else {
                 clearInterval(this.scrollingTimer);
             }
-        }, 400);
+        }, 10);
     }
 
     handleStopArrowScoll() {
