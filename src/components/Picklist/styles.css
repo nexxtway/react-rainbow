@@ -111,7 +111,7 @@
     padding-right: 2.35rem; }
   .rainbow-picklist_inner-container .rainbow-picklist_input-dropdown-indicator {
     height: 100%;
-    right: 0.5rem;
+    right: 1rem;
     position: absolute;
     line-height: 1;
     z-index: 2;
@@ -122,7 +122,6 @@
       content: '';
       position: absolute;
       display: block;
-      right: 1rem;
       bottom: 45%;
       pointer-events: none;
       width: 0.45rem;
