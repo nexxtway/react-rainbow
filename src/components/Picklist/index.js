@@ -12,6 +12,7 @@ import './styles.css';
 import { uniqueId } from '../../libs/utils';
 import MenuArrowButton from './menuArrowButton';
 import isOptionVisible from './helpers/isOptionVisible';
+import shouldOpenMenu from './helpers/shouldOpenMenu';
 
 const sizeMap = {
     small: 135,
