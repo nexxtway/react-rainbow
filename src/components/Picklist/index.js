@@ -76,7 +76,7 @@ class Picklist extends Component {
             'rainbow-picklist',
             {
                 'rainbow-picklist--readonly': readOnly,
-                'rainbow-picklist--open': isOpen,
+                'rainbow-picklist--open': isOpen && !readOnly,
             },
             className,
         );
