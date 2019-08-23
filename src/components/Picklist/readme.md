@@ -1,4 +1,4 @@
-Example:
+## Example
 
     const RenderIf = require('../../components/RenderIf').default;
     const option = { name: 'option 3', label: 'Option 3' };
@@ -25,10 +25,29 @@ Example:
         <Button label="Toggle Option 2" onClick={() => setState({ showOption2: !state.showOption2 })} />
         <Button label="Set Value" onClick={() => setState({ value: option })} />
         <Button label="Clear Value" onClick={() => setState({ value: null })} />
-        <div style={{ height:200 }} />
     </div>
 
-Example with redux form:
+## PickList disabled
+
+    <div className="rainbow-p-around_x-large">
+        <Picklist
+            disabled
+            label="Picklist label"
+            value={{ name: 'option 3', label: 'Option 3' }}
+        />
+    </div>
+
+## PickList readonly
+
+    <div className="rainbow-p-around_x-large">
+        <Picklist
+            readOnly
+            label="Picklist label"
+            value={{ name: 'option 3', label: 'Option 3' }}
+        />
+    </div>
+
+## Example with redux form
 
     const { Field, reduxForm } = require('redux-form');
 
@@ -38,6 +57,7 @@ Example with redux form:
                 <Field
                     component={Picklist}
                     name="option"
+                    label="Picklist label"
                 >
                     <PicklistOption name="option 1" label="Option 1" />
                     <PicklistOption name="option 2" label="Option 2" />

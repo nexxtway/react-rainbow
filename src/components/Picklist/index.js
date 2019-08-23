@@ -397,6 +397,9 @@ class Picklist extends Component {
                     <RenderIf isTrue={!!icon}>
                         <span className="rainbow-picklist_icon">{icon}</span>
                     </RenderIf>
+                    <RenderIf isTrue={!readOnly}>
+                        <span className="rainbow-picklist_input-dropdown-indicator" />
+                    </RenderIf>
                     <input
                         className={this.getInputClassNames()}
                         id={this.inputId}
