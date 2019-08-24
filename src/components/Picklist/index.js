@@ -70,11 +70,12 @@ class Picklist extends Component {
 
     getContainerClassNames() {
         const { isOpen } = this.state;
-        const { className, readOnly } = this.props;
+        const { className, readOnly, error } = this.props;
 
         return classnames(
             'rainbow-picklist',
             {
+                'rainbow-picklist--error': error,
                 'rainbow-picklist--readonly': readOnly,
                 'rainbow-picklist--open': isOpen && !readOnly,
             },
@@ -427,33 +428,33 @@ class Picklist extends Component {
                         autoComplete="off"
                         ref={this.triggerRef}
                     />
-                </div>
-                <div role="listbox" className={this.getDropdownClassNames()}>
-                    <RenderIf isTrue={showScrollUpArrow}>
-                        <MenuArrowButton
-                            arrow="up"
-                            onMouseEnter={this.handleScrollUpArrowHover}
-                            onMouseLeave={this.handleStopArrowScoll}
-                        />
-                    </RenderIf>
-                    <ul
-                        role="presentation"
-                        onScroll={this.handleScroll}
-                        aria-label={ariaLabel}
-                        ref={this.menuRef}
-                        style={menuContainerStyles}
-                    >
-                        <MenuContent isLoading={isLoading}>
-                            <Provider value={this.getContext()}>{children}</Provider>
-                        </MenuContent>
-                    </ul>
-                    <RenderIf isTrue={showScrollDownArrow}>
-                        <MenuArrowButton
-                            arrow="down"
-                            onMouseEnter={this.handleScrollDownArrowHover}
-                            onMouseLeave={this.handleStopArrowScoll}
-                        />
-                    </RenderIf>
+                    <div role="listbox" className={this.getDropdownClassNames()}>
+                        <RenderIf isTrue={showScrollUpArrow}>
+                            <MenuArrowButton
+                                arrow="up"
+                                onMouseEnter={this.handleScrollUpArrowHover}
+                                onMouseLeave={this.handleStopArrowScoll}
+                            />
+                        </RenderIf>
+                        <ul
+                            role="presentation"
+                            onScroll={this.handleScroll}
+                            aria-label={ariaLabel}
+                            ref={this.menuRef}
+                            style={menuContainerStyles}
+                        >
+                            <MenuContent isLoading={isLoading}>
+                                <Provider value={this.getContext()}>{children}</Provider>
+                            </MenuContent>
+                        </ul>
+                        <RenderIf isTrue={showScrollDownArrow}>
+                            <MenuArrowButton
+                                arrow="down"
+                                onMouseEnter={this.handleScrollDownArrowHover}
+                                onMouseLeave={this.handleStopArrowScoll}
+                            />
+                        </RenderIf>
+                    </div>
                 </div>
                 <RenderIf isTrue={!!error}>
                     <div id={errorMessageId} className="rainbow-picklist_input-error">

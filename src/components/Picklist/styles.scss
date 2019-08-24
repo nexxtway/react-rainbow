@@ -1,7 +1,17 @@
+/* stylelint-disable no-descending-specificity */
 @import '../../styles/colors';
 @import '../../styles/font-sizes';
 @import '../../styles/border-radius';
 @import '../../styles/shadows';
+@import '../../styles/margins';
+@import '../../styles/paddings';
+
+@mixin bottomMessage($color) {
+    font-size: $font-size-text-medium;
+    margin-top: $margin-x-small;
+    align-self: center;
+    color: $color;
+}
 
 .rainbow-picklist_dropdown {
     position: absolute;
@@ -83,6 +93,7 @@
     border: 1px solid $color-gray-3;
     border-radius: $border-radius-2;
     transition: all 0.1s linear;
+    transition: padding 0ms;
     display: inline-block;
     padding: 0 2rem 0 1rem;
     width: 100%;
@@ -135,16 +146,15 @@
     position: relative;
 
     .rainbow-picklist_icon {
+        width: 2.5rem;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        line-height: 2.5rem;
         z-index: 2;
         display: flex;
         align-items: center;
         justify-content: center;
-
-        svg {
-            width: 16px !important;
-            height: 16px !important;
-            font-size: 16px !important;
-        }
     }
 
     .rainbow-picklist_input--icon {
@@ -295,5 +305,28 @@
         &::placeholder {
             color: $color-gray-3;
         }
+    }
+}
+
+.rainbow-picklist_input-error {
+    @include bottomMessage($color-error);
+}
+
+.rainbow-picklist--error {
+    .rainbow-picklist_input {
+        background-color: white;
+        border: 2px $color-error solid;
+        padding-left: $padding-medium;
+        background-clip: padding-box;
+        line-height: 2.5rem;
+
+        &:focus {
+            box-shadow: $shadow-error;
+        }
+    }
+
+    .rainbow-picklist_icon {
+        fill: $color-error;
+        color: $color-error;
     }
 }

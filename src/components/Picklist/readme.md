@@ -1,4 +1,4 @@
-## Example
+##### Example
 
     const RenderIf = require('../../components/RenderIf').default;
     const option = { name: 'option 3', label: 'Option 3' };
@@ -27,7 +27,33 @@
         <Button label="Clear Value" onClick={() => setState({ value: null })} />
     </div>
 
-## PickList disabled
+##### PickList with icons
+
+    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+    const { faBuilding } = require('@fortawesome/free-regular-svg-icons');
+    const IconStyles = {
+        height: 30,
+        width: 30,
+        backgroundColor: '#01b6f5',
+        borderRadius: 40,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: 'white',
+    };
+
+    const option = { name: 'option 3', label: 'Option 3', icon: <span style={IconStyles}> <FontAwesomeIcon icon={faBuilding} /> </span> };
+    initialState = { value: null, };
+
+    <div className="rainbow-p-around_x-large">
+        <Picklist label="Picklist label" onChange={(value) => setState({ value })} value={state.value}>
+            <PicklistOption name="option 1" label="Option 1" icon={<FontAwesomeIcon icon={faBuilding} className="rainbow-color_brand" />} />
+            <PicklistOption name="option 2" label="Option 2" icon={<FontAwesomeIcon icon={faBuilding} className="rainbow-color_brand" />} />
+            <PicklistOption name="option 3" label="Option 3" icon={<FontAwesomeIcon icon={faBuilding} className="rainbow-color_brand" />} />
+        </Picklist>
+    </div>
+
+##### PickList disabled
 
     <div className="rainbow-p-around_x-large">
         <Picklist
@@ -37,7 +63,27 @@
         />
     </div>
 
-## PickList readonly
+##### PickList required with error
+
+    initialState = { value: null, };
+
+    <div className="rainbow-p-around_x-large">
+        <Picklist
+            label="Picklist label"
+            required
+            error="This field is required"
+            onChange={(value) => setState({ value })}
+            value={state.value}
+        >
+            <PicklistOption name="option 1" label="Option 1" />
+            <PicklistOption name="option 2" label="Option 2" />
+            <PicklistOption name="option 3" label="Option 3" />
+            <PicklistOption name="option 4" label="Option 4" />
+            <PicklistOption name="option 5" label="Option 5" />
+        </Picklist>
+    </div>
+
+##### PickList readonly
 
     <div className="rainbow-p-around_x-large">
         <Picklist
@@ -47,7 +93,7 @@
         />
     </div>
 
-## Example with redux form
+##### Example with redux form
 
     const { Field, reduxForm } = require('redux-form');
 
