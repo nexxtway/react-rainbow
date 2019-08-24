@@ -136,16 +136,15 @@ class Picklist extends Component {
             (activeChildren.length + activeOptionIndex - 1) % activeChildren.length;
 
         if (nextActiveIndex < activeOptionIndex) {
-            this.setState({
-                activeOptionIndex: nextActiveIndex,
-                activeOptionName: activeChildren[nextActiveIndex].name,
-            });
-
             if (nextActiveIndex === 0) {
                 this.scrollTo(0);
             } else {
                 this.scrollToOption(nextActiveIndex);
             }
+            this.setState({
+                activeOptionIndex: nextActiveIndex,
+                activeOptionName: activeChildren[nextActiveIndex].name,
+            });
         }
     }
 
@@ -153,11 +152,11 @@ class Picklist extends Component {
         const { activeChildren, activeOptionIndex } = this.state;
         const nextActiveIndex = (activeOptionIndex + 1) % activeChildren.length;
         if (nextActiveIndex > 0) {
+            this.scrollToOption(nextActiveIndex);
             this.setState({
                 activeOptionIndex: nextActiveIndex,
                 activeOptionName: activeChildren[nextActiveIndex].name,
             });
-            this.scrollToOption(nextActiveIndex);
         }
     }
 
@@ -277,15 +276,21 @@ class Picklist extends Component {
     }
 
     scrollToOption(nextFocusedIndex) {
-        const { activeChildren } = this.state;
+        const { activeChildren, activeOptionIndex } = this.state;
+        const currentFocusedOptionRef = activeChildren[activeOptionIndex].ref;
         const nextFocusedOptionRef = activeChildren[nextFocusedIndex].ref;
         if (!isOptionVisible(nextFocusedOptionRef, this.menuRef.current)) {
-            this.scrollTo(nextFocusedOptionRef.offsetTop);
+            const amount = nextFocusedOptionRef.offsetTop - currentFocusedOptionRef.offsetTop;
+            this.scrollBy(amount);
         }
     }
 
     scrollTo(offset) {
         this.menuRef.current.scrollTo(0, offset);
+    }
+
+    scrollBy(offset) {
+        this.menuRef.current.scrollBy(0, offset);
     }
 
     updateScrollingArrows() {
