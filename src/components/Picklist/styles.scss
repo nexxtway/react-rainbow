@@ -1,6 +1,7 @@
 @import '../../styles/colors';
 @import '../../styles/font-sizes';
 @import '../../styles/border-radius';
+@import '../../styles/shadows';
 
 .rainbow-picklist_dropdown {
     position: absolute;
@@ -83,7 +84,7 @@
     border-radius: $border-radius-2;
     transition: all 0.1s linear;
     display: inline-block;
-    padding: 0 1rem 0 1rem;
+    padding: 0 2rem 0 1rem;
     width: 100%;
     line-height: 2.5rem;
     height: 2.5rem;
@@ -97,6 +98,17 @@
         display: none;
         width: 0;
         height: 0;
+    }
+
+    &:focus,
+    &:active {
+        outline: 0;
+        line-height: 2.5rem;
+        padding-left: 0.9375rem;
+        border: 2px $color-brand solid;
+        background-color: white;
+        box-shadow: $shadow-outline;
+        z-index: 0;
     }
 
     &[disabled] {
@@ -146,7 +158,7 @@
 
     .rainbow-picklist_input-dropdown-indicator {
         height: 100%;
-        right: 1rem;
+        right: 1.2rem;
         position: absolute;
         line-height: 1;
         z-index: 2;
@@ -166,6 +178,12 @@
             border-width: 0.15em 0.15em 0 0;
             transform: rotate(135deg);
             color: #01b6f5;
+        }
+
+        &.rainbow-picklist_input-dropdown-indicator--disabled {
+            &::after {
+                color: $color-gray-2;
+            }
         }
     }
 }

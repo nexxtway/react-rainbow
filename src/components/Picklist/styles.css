@@ -65,7 +65,7 @@
   border-radius: 12rem;
   transition: all 0.1s linear;
   display: inline-block;
-  padding: 0 1rem 0 1rem;
+  padding: 0 2rem 0 1rem;
   width: 100%;
   line-height: 2.5rem;
   height: 2.5rem;
@@ -78,6 +78,14 @@
     display: none;
     width: 0;
     height: 0; }
+  .rainbow-picklist_input:focus, .rainbow-picklist_input:active {
+    outline: 0;
+    line-height: 2.5rem;
+    padding-left: 0.9375rem;
+    border: 2px #01b6f5 solid;
+    background-color: white;
+    box-shadow: 0 0 2px #01b6f5;
+    z-index: 0; }
   .rainbow-picklist_input[disabled] {
     background-color: #f4f6f9;
     border-color: #e3e5ed;
@@ -111,7 +119,7 @@
     padding-right: 2.35rem; }
   .rainbow-picklist_inner-container .rainbow-picklist_input-dropdown-indicator {
     height: 100%;
-    right: 1rem;
+    right: 1.2rem;
     position: absolute;
     line-height: 1;
     z-index: 2;
@@ -130,6 +138,8 @@
       border-width: 0.15em 0.15em 0 0;
       transform: rotate(135deg);
       color: #01b6f5; }
+    .rainbow-picklist_inner-container .rainbow-picklist_input-dropdown-indicator.rainbow-picklist_input-dropdown-indicator--disabled::after {
+      color: #e3e5ed; }
 
 .rainbow-picklist_input-label {
   color: #576574;

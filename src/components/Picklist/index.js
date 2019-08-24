@@ -107,6 +107,13 @@ class Picklist extends Component {
         });
     }
 
+    getIndicatorClassNames() {
+        const { disabled } = this.props;
+        return classnames('rainbow-picklist_input-dropdown-indicator', {
+            'rainbow-picklist_input-dropdown-indicator--disabled': disabled,
+        });
+    }
+
     getDropdownClassNames() {
         const { isLoading } = this.props;
         return classnames('rainbow-picklist_dropdown', {
@@ -353,6 +360,7 @@ class Picklist extends Component {
             label: pickListLabel,
             hideLabel,
             style,
+            error,
             title,
             assistiveText,
             isLoading,
@@ -368,6 +376,7 @@ class Picklist extends Component {
         const ariaLabel = title || assistiveText;
         const { label: valueLabel, icon } = this.getValue();
         const value = valueLabel || '';
+        const errorMessageId = '';
 
         const menuContainerStyles = {
             maxHeight: this.getMenuMaxHeight(),
@@ -398,7 +407,7 @@ class Picklist extends Component {
                         <span className="rainbow-picklist_icon">{icon}</span>
                     </RenderIf>
                     <RenderIf isTrue={!readOnly}>
-                        <span className="rainbow-picklist_input-dropdown-indicator" />
+                        <span className={this.getIndicatorClassNames()} />
                     </RenderIf>
                     <input
                         className={this.getInputClassNames()}
@@ -414,6 +423,7 @@ class Picklist extends Component {
                         readOnly
                         disabled={disabled}
                         required={required}
+                        aria-describedby={errorMessageId}
                         autoComplete="off"
                         ref={this.triggerRef}
                     />
@@ -445,6 +455,11 @@ class Picklist extends Component {
                         />
                     </RenderIf>
                 </div>
+                <RenderIf isTrue={!!error}>
+                    <div id={errorMessageId} className="rainbow-picklist_input-error">
+                        {error}
+                    </div>
+                </RenderIf>
             </div>
         );
     }
@@ -478,6 +493,8 @@ Picklist.propTypes = {
     style: PropTypes.object,
     /** The id of the outer element. */
     id: PropTypes.string,
+    /** Specifies that the Picklist must be filled out before submitting the form. */
+    error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies that an option must be selected before submitting the form.
      * This value defaults to false. */
     required: PropTypes.bool,
@@ -504,6 +521,7 @@ Picklist.defaultProps = {
     className: undefined,
     style: undefined,
     id: undefined,
+    error: null,
     disabled: false,
     readOnly: false,
     required: false,
