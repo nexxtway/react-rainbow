@@ -13,6 +13,7 @@ import { uniqueId } from '../../libs/utils';
 import MenuArrowButton from './menuArrowButton';
 import isOptionVisible from './helpers/isOptionVisible';
 import shouldOpenMenu from './helpers/shouldOpenMenu';
+import calculateScrollOffset from './helpers/calculateScrollOffset';
 
 const sizeMap = {
     small: 135,
@@ -265,7 +266,7 @@ class Picklist extends Component {
 
     handleBlur() {
         const { onBlur, value } = this.props;
-        this.closeMenu();
+        // this.closeMenu();
         const eventValue = value || null;
         onBlur(eventValue);
     }
@@ -280,7 +281,10 @@ class Picklist extends Component {
         const currentFocusedOptionRef = activeChildren[activeOptionIndex].ref;
         const nextFocusedOptionRef = activeChildren[nextFocusedIndex].ref;
         if (!isOptionVisible(nextFocusedOptionRef, this.menuRef.current)) {
-            const amount = nextFocusedOptionRef.offsetTop - currentFocusedOptionRef.offsetTop;
+            const amount = calculateScrollOffset(
+                currentFocusedOptionRef.offsetTop,
+                nextFocusedOptionRef.offsetTop,
+            );
             this.scrollBy(amount);
         }
     }
