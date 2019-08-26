@@ -266,7 +266,7 @@ class Picklist extends Component {
 
     handleBlur() {
         const { onBlur, value } = this.props;
-        this.closeMenu();
+        // this.closeMenu();
         const eventValue = value || null;
         onBlur(eventValue);
     }
