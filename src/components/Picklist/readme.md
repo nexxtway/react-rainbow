@@ -1,3 +1,48 @@
+##### Picklist base
+
+    const containerStyles = { paddingBottom: '12rem' };
+    initialState = { value: null, };
+
+    <div style={containerStyles}>
+        <header className="rainbow-align-content_space-between rainbow-p-vertical_small rainbow-p-horizontal_medium react-rainbow-golbal-header rainbow-background-color_white">
+            <img src="images/rainbow-logo.svg" height="40" width="40" alt="rainbow logo" />
+            <div className="rainbow-flex rainbow-align_right">
+                <Picklist onChange={(value) => setState({ value })} value={state.value}>
+                    <PicklistOption name="option 1" label="All Buildings" />
+                    <PicklistOption name="option 2" label="New Building" />
+                    <PicklistOption name="header 2" label="Your Buildings" variant="header" />
+                    <PicklistOption name="option 3" label="Experimental Building" />
+                    <PicklistOption name="option 4" label="Empire State" />
+                </Picklist>
+            </div>
+        </header>
+    </div>
+
+##### Picklist with icons
+
+    const containerStyles = { paddingBottom: '12rem' };
+    initialState = { value: null, };
+    const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+    const { faCity, faBuilding, faPlusCircle } = require('@fortawesome/free-solid-svg-icons');
+    const IconStyles = {
+        color: '#01b6f5',
+    };
+
+    <div style={containerStyles}>
+        <header className="rainbow-align-content_space-between rainbow-p-vertical_small rainbow-p-horizontal_medium react-rainbow-golbal-header rainbow-background-color_white">
+            <img src="images/rainbow-logo.svg" height="40" width="40" alt="rainbow logo" />
+            <div className="rainbow-flex rainbow-align_right">
+                <Picklist onChange={(value) => setState({ value })} value={state.value}>
+                    <PicklistOption name="option 1" label="All Buildings" icon={<span style={IconStyles}> <FontAwesomeIcon icon={faCity} /> </span>} />
+                    <PicklistOption name="option 2" label="New Building" icon={<span style={IconStyles}> <FontAwesomeIcon icon={faPlusCircle} /> </span>} />
+                    <PicklistOption name="header 2" label="Your Buildings" variant="header" />
+                    <PicklistOption name="option 3" label="Experimental Building" icon={<span style={IconStyles}> <FontAwesomeIcon icon={faBuilding} /> </span>} />
+                    <PicklistOption name="option 4" label="Empire State" icon={<span style={IconStyles}> <FontAwesomeIcon icon={faBuilding} /> </span>} />
+                </Picklist>
+            </div>
+        </header>
+    </div>
+
 ##### Example
 
     const RenderIf = require('../../components/RenderIf').default;
