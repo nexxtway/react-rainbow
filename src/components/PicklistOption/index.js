@@ -165,11 +165,12 @@ export default function PicklistOption(props) {
 }
 
 PicklistOption.propTypes = {
-    /** Text of the menu item. */
+    /** Text of the PicklistOption. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
-    /** */
+    /** The name of the PicklistOption. */
     name: PropTypes.string.isRequired,
-    /** The variant changes the type of menu item. Accepted variants include default and header.
+    /** The variant changes the type of PicklistOption.
+     * Accepted variants include default and header.
      * This value defaults to default. */
     variant: PropTypes.oneOf(['default', 'header']),
     /** The icon to show if it is passed. It must be a svg icon or a font icon. */
@@ -177,15 +178,16 @@ PicklistOption.propTypes = {
     /** Describes the position of the icon with respect to body. Options include left and right.
      * This value defaults to left. */
     iconPosition: PropTypes.oneOf(['left', 'right']),
-    /** If true the menu item is not actionable and is shown as disabled. */
+    /** If true the PicklistOption is not actionable and is shown as disabled. */
     disabled: PropTypes.bool,
     /** Displays tooltip text when the mouse moves over the element. */
     title: PropTypes.string,
+    /** Specifies the selected value of the PicklistOption. */
+    value: PropTypes.object,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
-    value: PropTypes.object,
 };
 
 PicklistOption.defaultProps = {

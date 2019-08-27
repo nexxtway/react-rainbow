@@ -62,6 +62,7 @@
 
 .rainbow-picklist_input {
   background-color: white;
+  box-sizing: border-box;
   border: 1px solid #a4a7b5;
   border-radius: 12rem;
   transition: all 0.1s linear;
@@ -103,8 +104,7 @@
       border: 1px #e3e5ed solid;
       padding-left: 1rem; }
   .rainbow-picklist_input::placeholder {
-    color: #a4a7b5;
-    font-weight: 300;
+    color: #576574;
     font-size: 1rem; }
 
 .rainbow-picklist_inner-container {
