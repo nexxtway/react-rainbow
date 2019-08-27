@@ -1,34 +1,58 @@
 ##### Picklist base
 
-    initialState = { value: { name: 'option 1', label:'All Buildings' } , };
+    const containerStyles = {
+        width: '210px',
+    };
+
+    initialState = { value: { name: 'option 4', label:'Central Park'} , };
 
     <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
         <GlobalHeader src="images/user/user2.jpg" className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
             <div className="rainbow-flex rainbow-align_right">
-                <Picklist onChange={(value) => setState({ value })} value={state.value} placeholder="Choose...">
-                    <PicklistOption name="option 1" label="All Buildings" />
-                    <PicklistOption name="option 2" label="New Building" />
-                    <PicklistOption name="header 2" label="Your Buildings" variant="header" />
-                    <PicklistOption name="option 3" label="Experimental Building" />
-                    <PicklistOption name="option 4" label="Empire State" />
+                <Picklist
+                    style={containerStyles}
+                    onChange={(value) => setState({ value })}
+                    value={state.value}
+                    label="Select Building"
+                    hideLabel>
+
+                    <PicklistOption name="header" label="Your Buildings" variant="header" />
+                    <PicklistOption name="option 1" label="Experimental Building" />
+                    <PicklistOption name="option 2" label="Empire State" />
+                    <PicklistOption name="option 3" label="Chrysler Building" />
+                    <PicklistOption name="option 4" label="Central Park" />
                 </Picklist>
             </div>
         </GlobalHeader>
     </div>
 
-##### Picklist with icons
+##### Picklist with multiple options
+
+    const containerStyles = {
+        width: '240px',
+    };
 
     initialState = { value: null, };
 
     <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
         <GlobalHeader src="images/user/user2.jpg" className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
             <div className="rainbow-flex rainbow-align_right">
-                <Picklist placeholder="Choose..." onChange={(value) => setState({ value })} value={state.value}>
+                <Picklist
+                    style={containerStyles}
+                    placeholder="Choose Building"
+                    onChange={(value) => setState({ value })}
+                    value={state.value}
+                    label="Select Building"
+                    hideLabel>
+
                     <PicklistOption name="option 1" label="All Buildings" icon={<DashboardIcon />} />
                     <PicklistOption name="option 2" label="New Building" icon={<AddFilledIcon />} />
                     <PicklistOption name="header 2" label="Your Buildings" variant="header" />
                     <PicklistOption name="option 3" label="Experimental Building" icon={<BuildingIcon />} />
                     <PicklistOption name="option 4" label="Empire State" icon={<BuildingIcon />} />
+                    <PicklistOption name="option 5" label="Chrysler Building" icon={<BuildingIcon />} />
+                    <PicklistOption name="option 6" label="Plaza" icon={<BuildingIcon />} />
+                    <PicklistOption name="option 7" label="Central Park" icon={<BuildingIcon />} />
                 </Picklist>
             </div>
         </GlobalHeader>
@@ -41,62 +65,41 @@
     <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
         <GlobalHeader src="images/user/user2.jpg" className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
             <div className="rainbow-flex rainbow-align_right">
-                <Picklist disabled value={state.value} />
-            </div>
-        </GlobalHeader>
-    </div>
-
-##### Picklist readOnly
-
-    initialState = { value: { name: 'option 1', label:'All Buildings', icon: <DashboardIcon /> } , };
-
-    <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
-        <GlobalHeader src="images/user/user2.jpg" className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
-            <div className="rainbow-flex rainbow-align_right">
-                <Picklist readOnly value={state.value} />
-            </div>
-        </GlobalHeader>
-    </div>
-
-##### Picklist required with error
-
-    initialState = { value: null, };
-
-    <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
-        <GlobalHeader src="images/user/user2.jpg" className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
-            <div className="rainbow-flex rainbow-align_right">
                 <Picklist
-                    placeholder="Choose..."
-                    required
-                    error="This field is required"
-                    onChange={(value) => setState({ value })}
+                    disabled
                     value={state.value}
-                >
-                    <PicklistOption name="option 1" label="All Buildings" icon={<DashboardIcon />} />
-                    <PicklistOption name="option 2" label="New Building" icon={<AddFilledIcon />} />
-                    <PicklistOption name="header 2" label="Your Buildings" variant="header" />
-                    <PicklistOption name="option 3" label="Experimental Building" icon={<BuildingIcon />} />
-                    <PicklistOption name="option 4" label="Empire State" icon={<BuildingIcon />} />
-                </Picklist>
+                    label="Select Building"
+                    hideLabel />
             </div>
         </GlobalHeader>
     </div>
 
 ##### Picklist with redux-form
 
+    const containerStyles = {
+        width: '240px',
+    };
+
     const { Field, reduxForm } = require('redux-form');
 
     function Form({ handleSubmit, onSubmit }) {
         return (
             <form className="rainbow-flex rainbow-align_right" noValidate onSubmit={handleSubmit(onSubmit)}>
-                <Field component={Picklist} name="option" placeholder="Choose...">
+                <Field
+                    style={containerStyles}
+                    component={Picklist}
+                    name="option"
+                    placeholder="Choose Building"
+                    label="Select Building"
+                    hideLabel>
+
                     <PicklistOption name="option 1" label="All Buildings" icon={<DashboardIcon />} />
                     <PicklistOption name="option 2" label="New Building" icon={<AddFilledIcon />} />
                     <PicklistOption name="header 2" label="Your Buildings" variant="header" />
                     <PicklistOption name="option 3" label="Experimental Building" icon={<BuildingIcon />} />
                     <PicklistOption name="option 4" label="Empire State" icon={<BuildingIcon />} />
                 </Field>
-                <Button label="Submit" type="submit" />
+                <Button className="rainbow-m-left_small" label="Submit" type="submit" />
             </form>
         );
     }

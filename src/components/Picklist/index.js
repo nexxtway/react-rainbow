@@ -21,6 +21,10 @@ const sizeMap = {
     large: 360,
 };
 
+/**
+ * A Picklist provides a user with an read-only input field that is accompanied with
+ *  a listbox of pre-defined options.
+ */
 class Picklist extends Component {
     constructor(props) {
         super(props);
@@ -480,7 +484,7 @@ Picklist.propTypes = {
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
     /** A boolean to hide the PickList label. */
     hideLabel: PropTypes.bool,
-    /** The content of the Picklist. Used to render the menuItem elements
+    /** The content of the Picklist. Used to render the options
      * when the Picklist is open. */
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
     /** If is set to true, then is showed a loading symbol. */
@@ -489,29 +493,37 @@ Picklist.propTypes = {
     title: PropTypes.string,
     /** A description for assistive sreen readers. */
     assistiveText: PropTypes.string,
+    /** Specifies the selected value of the Picklist. */
     value: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+    /**  The action triggered when click/select an option. */
     onChange: PropTypes.func,
+    /** The action triggered when the element is clicked. */
     onClick: PropTypes.func,
+    /** The action triggered when the element receives focus. */
     onFocus: PropTypes.func,
+    /** The action triggered when the element releases focus. */
     onBlur: PropTypes.func,
+    /** Specifies the tab order of an element (when the tab button is used for navigating). */
     tabIndex: PropTypes.string,
+    /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
     placeholder: PropTypes.string,
+    /** The name of the Picklist. */
     name: PropTypes.string,
-    /** A CSS class for the outer element, in addition to the component's base classes. */
-    className: PropTypes.string,
-    /** An object with custom style applied to the outer element. */
-    style: PropTypes.object,
-    /** The id of the outer element. */
-    id: PropTypes.string,
     /** Specifies that the Picklist must be filled out before submitting the form. */
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies that an option must be selected before submitting the form.
      * This value defaults to false. */
     required: PropTypes.bool,
-    /** Specifies that the PickList element should be disabled. This value defaults to false. */
+    /** Specifies that the Picklist element should be disabled. This value defaults to false. */
     disabled: PropTypes.bool,
-    /** Specifies that the PickList is read-only. This value defaults to false. */
+    /** Specifies that the Picklist is read-only. This value defaults to false. */
     readOnly: PropTypes.bool,
+    /** The id of the outer element. */
+    id: PropTypes.string,
+    /** A CSS class for the outer element, in addition to the component's base classes. */
+    className: PropTypes.string,
+    /** An object with custom style applied to the outer element. */
+    style: PropTypes.object,
 };
 
 Picklist.defaultProps = {
@@ -528,13 +540,13 @@ Picklist.defaultProps = {
     placeholder: undefined,
     name: undefined,
     hideLabel: false,
-    className: undefined,
-    style: undefined,
     id: undefined,
     error: null,
     disabled: false,
     readOnly: false,
     required: false,
+    className: undefined,
+    style: undefined,
 };
 
 export default withReduxForm(Picklist);

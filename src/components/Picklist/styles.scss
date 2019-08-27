@@ -90,6 +90,7 @@
 
 .rainbow-picklist_input {
     background-color: white;
+    box-sizing: border-box;
     border: 1px solid $color-gray-3;
     border-radius: $border-radius-2;
     transition: all 0.1s linear;
@@ -142,8 +143,7 @@
     }
 
     &::placeholder {
-        color: $color-gray-3;
-        font-weight: 300;
+        color: $color-gray-4;
         font-size: $font-size-text-large;
     }
 }
