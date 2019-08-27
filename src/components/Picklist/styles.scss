@@ -140,6 +140,12 @@
             padding-left: 1rem;
         }
     }
+
+    &::placeholder {
+        color: $color-gray-3;
+        font-weight: 300;
+        font-size: $font-size-text-large;
+    }
 }
 
 .rainbow-picklist_inner-container {
@@ -304,6 +310,8 @@
 
         &::placeholder {
             color: $color-gray-3;
+            font-weight: 300;
+            font-size: $font-size-text-large;
         }
     }
 }
