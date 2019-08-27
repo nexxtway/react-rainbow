@@ -21,6 +21,9 @@ import UserSignUpIcon from './exampleComponents/Icons/userSignup';
 import UserVerifiedIcon from './exampleComponents/Icons/userPhoneVerified';
 import UserFirstPostIcon from './exampleComponents/Icons/userFirstPost';
 import UploadIcon from './exampleComponents/Icons/upload';
+import DashboardIcon from './exampleComponents/Icons/dashboard';
+import AddFilledIcon from './exampleComponents/Icons/addFilled';
+import BuildingIcon from './exampleComponents/Icons/building';
 import Users from './data/users';
 
 global.GlobalHeader = GlobalHeader;
@@ -48,4 +51,7 @@ global.UserSignUpIcon = UserSignUpIcon;
 global.UserVerifiedIcon = UserVerifiedIcon;
 global.UserFirstPostIcon = UserFirstPostIcon;
 global.UploadIcon = UploadIcon;
+global.DashboardIcon = DashboardIcon;
+global.AddFilledIcon = AddFilledIcon;
+global.BuildingIcon = BuildingIcon;
 global.Users = Users;
