@@ -321,7 +321,7 @@ class Picklist extends Component {
             } else {
                 clearInterval(this.scrollingTimer);
             }
-        }, 10);
+        }, 5);
     }
 
     handleScrollDownArrowHover() {
@@ -334,7 +334,7 @@ class Picklist extends Component {
             } else {
                 clearInterval(this.scrollingTimer);
             }
-        }, 10);
+        }, 5);
     }
 
     handleStopArrowScoll() {
