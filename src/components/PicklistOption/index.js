@@ -6,6 +6,10 @@ import { Consumer } from '../Picklist/context';
 import Icon from './icon';
 import './styles.css';
 
+function preventDefault(event) {
+    event.preventDefault();
+}
+
 class Option extends Component {
     constructor(props) {
         super(props);
@@ -111,7 +115,8 @@ class Option extends Component {
                     className={this.getHeaderClassNames()}
                     style={style}
                     title={title}
-                    role="separator"
+                    role="presentation"
+                    onMouseDown={preventDefault}
                 >
                     <span className="rainbow-picklist-option_header-label">{label}</span>
                 </li>
