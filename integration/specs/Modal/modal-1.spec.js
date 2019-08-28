@@ -30,7 +30,7 @@ describe('Modal base example', () => {
         modal.waitUntilClose();
         expect(modal.isOpen()).toBe(false);
     });
-    it('should close the modal when is opened and click the closeButton', () => {
+    it.skip('should close the modal when is opened and click the closeButton', () => {
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);
         triggerButton.click();
