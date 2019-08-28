@@ -36,6 +36,10 @@ function EmptyComponent() {
 const ADD_RECORDS = Symbol('add-records');
 const MERGE_RECORDS = Symbol('merge-records');
 
+/**
+ * @category Experiences
+ */
+
 function ImportRecordsFlow(props) {
     const { className, style, isOpen, onRequestClose, schema, onComplete } = props;
     const [currentStepIndex, setCurrentStepIndex] = useState(0);

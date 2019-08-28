@@ -46,11 +46,11 @@
 
     &:focus {
         outline: 0;
-        background-color: $color-gray-2;
+        background-color: $color-gray-1;
     }
 
     &:active {
-        background-color: $color-gray-2;
+        background-color: $color-gray-1;
     }
 
     &[aria-disabled="true"] {
