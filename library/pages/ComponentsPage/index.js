@@ -33,14 +33,13 @@ export default class ComponentsPage extends Component {
             const href = `/#/${component.name}`;
             const card = (
                 <a href={href} key={key} className="react-rainbow-components-page_card-container">
-                    <Card
-                        className="react-rainbow-components-page_card"
-                        footer={component.name}>
+                    <Card className="react-rainbow-components-page_card" footer={component.name}>
                         <img
                             src={src}
                             onError={handleOnError}
                             className="react-rainbow-components-page_card-image"
-                            alt={`Component ${component.name}`} />
+                            alt={`Component ${component.name}`}
+                        />
                     </Card>
                 </a>
             );
@@ -73,29 +72,19 @@ export default class ComponentsPage extends Component {
                         Layout Components
                     </h1>
                 </RenderIf>
-                <div className="react-rainbow-components-page_card-group-container">
-                    {layouts}
-                </div>
+                <div className="react-rainbow-components-page_card-group-container">{layouts}</div>
                 <RenderIf isTrue={!!forms.length}>
-                    <h1 className="react-rainbow-components-page_category-title">
-                        Forms
-                    </h1>
+                    <h1 className="react-rainbow-components-page_category-title">Forms</h1>
                 </RenderIf>
-                <div className="react-rainbow-components-page_card-group-container">
-                    {forms}
-                </div>
+                <div className="react-rainbow-components-page_card-group-container">{forms}</div>
                 <RenderIf isTrue={!!miscellaneous.length}>
-                    <h1 className="react-rainbow-components-page_category-title">
-                        Miscellaneous
-                    </h1>
+                    <h1 className="react-rainbow-components-page_category-title">Miscellaneous</h1>
                 </RenderIf>
                 <div className="react-rainbow-components-page_card-group-container">
                     {miscellaneous}
                 </div>
                 <RenderIf isTrue={!!dataViews.length}>
-                    <h1 className="react-rainbow-components-page_category-title">
-                        Data View
-                    </h1>
+                    <h1 className="react-rainbow-components-page_category-title">Data View</h1>
                 </RenderIf>
                 <div className="react-rainbow-components-page_card-group-container">
                     {dataViews}
@@ -110,7 +99,7 @@ export default class ComponentsPage extends Component {
             <div>
                 <SectionHeading />
                 <div className="react-rainbow-components-page_container">
-                    <h1 className="react-rainbow-components-page_title">More than 50 components</h1>
+                    <h1 className="react-rainbow-components-page_title">More than 60 components</h1>
                     <Input
                         className="react-rainbow-components-page_search"
                         label="Find Components"
@@ -120,13 +109,13 @@ export default class ComponentsPage extends Component {
                         placeholder="Find Components"
                         aria-label="Find Components"
                         onChange={this.handleOnChange}
-                        icon={<SearchIcon />} />
+                        icon={<SearchIcon />}
+                    />
                     {this.renderCards()}
                 </div>
             </div>
         );
     }
-
 }
 
 ComponentsPage.propTypes = {
