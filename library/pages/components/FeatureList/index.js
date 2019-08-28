@@ -12,10 +12,7 @@ import ReduxForm from './images/redux-form';
 import './styles.css';
 
 export default function FeatureList(props) {
-    const {
-        className,
-        style,
-    } = props;
+    const { className, style } = props;
 
     const getContainerClassNames = () => classnames('react-rainbow-feature-list', className);
 
@@ -24,44 +21,51 @@ export default function FeatureList(props) {
             <Item
                 className="react-rainbow-feature-list_item"
                 image={<Components />}
-                title="50+ components"
-                description="More than 50 components build on top of React." />
+                title="60+ components"
+                description="More than 60 components build on top of React."
+            />
 
             <Item
                 className="react-rainbow-feature-list_item"
                 image={<InteractiveExamples />}
                 title="Interactive examples"
-                description="Proper documentation based on interactive examples to help you understand the features of each component." />
+                description="Proper documentation based on interactive examples to help you understand the features of each component."
+            />
 
             <Item
                 className="react-rainbow-feature-list_item"
                 image={<Testing />}
                 title="First class testing"
-                description="Our components are test infected. We like to test our components as much as possible." />
+                description="Our components are test infected. We like to test our components as much as possible."
+            />
 
             <Item
                 className="react-rainbow-feature-list_item"
                 image={<Internationalization />}
                 title="Internationalization"
-                description="We designed each component with i19n in mind. Any new component or feature we may add in the future, have to be able to work fully in different locales." />
+                description="We designed each component with i19n in mind. Any new component or feature we may add in the future, have to be able to work fully in different locales."
+            />
 
             <Item
                 className="react-rainbow-feature-list_item"
                 image={<Accesibility />}
                 title="Accesibility"
-                description="Accessibility is part of our definition of done. It's a must have for each component." />
+                description="Accessibility is part of our definition of done. It's a must have for each component."
+            />
 
             <Item
                 className="react-rainbow-feature-list_item"
                 image={<PageObject />}
                 title="Wdio page objects"
-                description="We know how important for you is to test your UI. Our npm package provides webdriver.io page object for almost every component." />
+                description="We know how important for you is to test your UI. Our npm package provides webdriver.io page object for almost every component."
+            />
 
             <Item
                 className="react-rainbow-feature-list_item"
                 image={<ReduxForm />}
                 title="Redux-Form integration"
-                description="Our inputable components work seamlessly with redux-form." />
+                description="Our inputable components work seamlessly with redux-form."
+            />
         </div>
     );
 }
