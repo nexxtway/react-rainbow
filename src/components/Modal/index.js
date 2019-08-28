@@ -190,7 +190,8 @@ Modal.propTypes = {
     footer: PropTypes.node,
     /** Controls whether the Modal is opened or not. If true, the modal is open. */
     isOpen: PropTypes.bool,
-    /** The action triggered when the close button is clicked. */
+    /** The action triggered when the component request to close
+     *  (e.g click close button, press esc key or click outside the modal). */
     onRequestClose: PropTypes.func,
     /** A callback triggered when the modal is opened. This is usefull for example to set focus
      * to an element inside the modal content after it is opened.
