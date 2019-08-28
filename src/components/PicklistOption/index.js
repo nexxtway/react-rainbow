@@ -19,39 +19,21 @@ class Option extends Component {
     }
 
     componentDidMount() {
-        const { privateRegisterChild, disabled, variant, label, name, icon, value } = this.props;
+        const { disabled, variant, name } = this.props;
         const isHeader = variant === 'header';
         if (disabled || isHeader || typeof name !== 'string') {
             return null;
         }
-        return setTimeout(
-            () =>
-                privateRegisterChild(this.itemRef.current, {
-                    label,
-                    name,
-                    icon,
-                    value,
-                }),
-            0,
-        );
+        return this.registerChild();
     }
 
     componentDidUpdate(prevProps) {
-        const { privateRegisterChild, privateUnregisterChild } = this.props;
+        const { privateUnregisterChild } = this.props;
         const { currentValueName: prevCurrentValueName } = prevProps;
-        const { currentValueName, label, name, icon, value } = this.props;
+        const { currentValueName } = this.props;
         if (prevCurrentValueName !== currentValueName) {
             if (prevCurrentValueName === name && currentValueName !== name) {
-                setTimeout(
-                    () =>
-                        privateRegisterChild(this.itemRef.current, {
-                            label,
-                            name,
-                            icon,
-                            value,
-                        }),
-                    0,
-                );
+                this.registerChild();
             } else if (prevCurrentValueName !== name && currentValueName === name) {
                 setTimeout(() => privateUnregisterChild(this.itemRef.current), 0);
             }
@@ -103,8 +85,18 @@ class Option extends Component {
         return privateOnHover(event, name);
     }
 
-    click() {
-        this.itemRef.current.click();
+    registerChild() {
+        const { privateRegisterChild, label, name, icon, value } = this.props;
+        return setTimeout(
+            () =>
+                privateRegisterChild(this.itemRef.current, {
+                    label,
+                    name,
+                    icon,
+                    value,
+                }),
+            0,
+        );
     }
 
     render() {
