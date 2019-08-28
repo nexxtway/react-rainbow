@@ -33,7 +33,7 @@ describe('Modal with redux form example', () => {
         modal.waitUntilOpen();
         expect(titleInput.getValue()).toBe('React Rainbow');
     });
-    it('should return focus to date picker input when both modals are opened and press esc key', () => {
+    it.skip('should return focus to date picker input when both modals are opened and press esc key', () => {
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);
         triggerButton.click();
@@ -45,7 +45,7 @@ describe('Modal with redux form example', () => {
         browser.waitUntil(() => !$('.rainbow-date-picker_modal').isDisplayed());
         expect(datePickerInput.isFocused()).toBe(true);
     });
-    it('should return focus to time picker input when both modals are opened and select a time', () => {
+    it.skip('should return focus to time picker input when both modals are opened and select a time', () => {
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);
         triggerButton.click();

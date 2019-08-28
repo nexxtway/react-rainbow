@@ -47,7 +47,7 @@ describe('Modal base example', () => {
         browser.keys(ESCAPE_KEY);
         expect(triggerButton.isFocused()).toBe(true);
     });
-    it('should return focus to trigger element when close modal with close button', () => {
+    it.skip('should return focus to trigger element when close modal with close button', () => {
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);
         triggerButton.click();
