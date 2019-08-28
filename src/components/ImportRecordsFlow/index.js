@@ -196,15 +196,25 @@ function ImportRecordsFlow(props) {
 }
 
 ImportRecordsFlow.propTypes = {
-    className: PropTypes.string,
-    style: PropTypes.object,
-    isOpen: PropTypes.bool,
-    onRequestClose: PropTypes.func,
-    onComplete: PropTypes.func,
+    /** The schema represent the structure necessary for import data from a file to a database. 
+     * Collection is meant to represent where in database the data will be stored.
+     * Attributes are the field to map with the file column headers */
     schema: PropTypes.shape({
         collection: PropTypes.string,
         attributes: PropTypes.object,
     }).isRequired,
+    /** Controls whether the ImportRecordsFlow modal is opened or not.
+     * If true, the modal is open. */
+    isOpen: PropTypes.bool,
+    /** The action triggered when the component request to close
+     *  (e.g click close button, press esc key or click outside the modal). */
+    onRequestClose: PropTypes.func,
+    /** The action triggered when all flow steps are completed. */
+    onComplete: PropTypes.func,
+    /** A CSS class for the outer element, in addition to the component's base classes. */
+    className: PropTypes.string,
+    /** An object with custom style applied to the outer element. */
+    style: PropTypes.object,
 };
 
 ImportRecordsFlow.defaultProps = {
