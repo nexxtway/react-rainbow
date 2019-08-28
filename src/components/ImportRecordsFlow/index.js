@@ -196,7 +196,8 @@ function ImportRecordsFlow(props) {
 }
 
 ImportRecordsFlow.propTypes = {
-    /** Collection is meant to represent where in database the data will be stored.
+    /** The schema represent the structure necessary for import data from a file to a database. 
+     * Collection is meant to represent where in database the data will be stored.
      * Attributes are the field to map with the file column headers */
     schema: PropTypes.shape({
         collection: PropTypes.string,
