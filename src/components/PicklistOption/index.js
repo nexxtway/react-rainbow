@@ -188,7 +188,7 @@ PicklistOption.propTypes = {
     disabled: PropTypes.bool,
     /** Displays tooltip text when the mouse moves over the element. */
     title: PropTypes.string,
-    /** Specifies the selected value of the PicklistOption. */
+    /** The value of the PicklistOption. */
     value: PropTypes.object,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
