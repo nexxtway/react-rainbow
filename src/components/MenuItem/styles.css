@@ -38,9 +38,9 @@
   text-decoration: none; }
   .rainbow-menu-item > a:focus {
     outline: 0;
-    background-color: #e3e5ed; }
+    background-color: #f4f6f9; }
   .rainbow-menu-item > a:active {
-    background-color: #e3e5ed; }
+    background-color: #f4f6f9; }
   .rainbow-menu-item > a[aria-disabled="true"] {
     color: #e3e5ed;
     cursor: default; }

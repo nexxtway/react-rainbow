@@ -26,7 +26,13 @@ export default class ComponentsPage extends Component {
         const { searchTerm } = this.state;
         const { components } = this.props;
         const filtered = filterSectionsByName(components, searchTerm);
-        const categorizedComponents = { forms: [], layouts: [], dataViews: [], miscellaneous: [] };
+        const categorizedComponents = {
+            forms: [],
+            layouts: [],
+            dataViews: [],
+            miscellaneous: [],
+            experiences: [],
+        };
         filtered.forEach((component, index) => {
             const key = `component-${index}`;
             const src = `images/componentsThumbs/${component.name}.svg`;
@@ -49,6 +55,8 @@ export default class ComponentsPage extends Component {
                     categorizedComponents.forms.push(card);
                 } else if (category === 'Layout') {
                     categorizedComponents.layouts.push(card);
+                } else if (category === 'Experiences') {
+                    categorizedComponents.experiences.push(card);
                 } else if (category === 'DataView') {
                     categorizedComponents.dataViews.push(card);
                 }
@@ -64,7 +72,13 @@ export default class ComponentsPage extends Component {
     }
 
     renderCards() {
-        const { forms, dataViews, layouts, miscellaneous } = this.getComponentsByCategory();
+        const {
+            forms,
+            dataViews,
+            layouts,
+            miscellaneous,
+            experiences,
+        } = this.getComponentsByCategory();
         return (
             <div className="react-rainbow-components-page_cards-container">
                 <RenderIf isTrue={!!layouts.length}>
@@ -88,6 +102,12 @@ export default class ComponentsPage extends Component {
                 </RenderIf>
                 <div className="react-rainbow-components-page_card-group-container">
                     {dataViews}
+                </div>
+                <RenderIf isTrue={!!experiences.length}>
+                    <h1 className="react-rainbow-components-page_category-title">Experiences</h1>
+                </RenderIf>
+                <div className="react-rainbow-components-page_card-group-container">
+                    {experiences}
                 </div>
             </div>
         );

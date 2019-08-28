@@ -38,6 +38,11 @@ export default class PrimitiveMenu extends Component {
         };
     }
 
+    componentWillUnmount() {
+        window.removeEventListener('click', this.handleClick);
+        window.removeEventListener('touchstart', this.handleClick);
+    }
+
     getContainerClassNames() {
         const { isOpen } = this.state;
         const { className } = this.props;

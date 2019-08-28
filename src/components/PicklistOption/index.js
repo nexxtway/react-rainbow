@@ -84,6 +84,7 @@ class Option extends Component {
         const { disabled, privateOnClick, label, name, icon, value } = this.props;
 
         if (disabled) {
+            event.preventDefault();
             return null;
         }
         return privateOnClick(event, {
