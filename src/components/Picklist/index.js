@@ -24,6 +24,7 @@ const sizeMap = {
 /**
  * A Picklist provides a user with an read-only input field that is accompanied with
  *  a listbox of pre-defined options.
+ * @category Form
  */
 class Picklist extends Component {
     constructor(props) {
