@@ -196,15 +196,20 @@ function ImportRecordsFlow(props) {
 }
 
 ImportRecordsFlow.propTypes = {
-    className: PropTypes.string,
-    style: PropTypes.object,
-    isOpen: PropTypes.bool,
-    onRequestClose: PropTypes.func,
-    onComplete: PropTypes.func,
     schema: PropTypes.shape({
         collection: PropTypes.string,
         attributes: PropTypes.object,
     }).isRequired,
+    /** Returns true when the modal is open, false otherwise. */
+    isOpen: PropTypes.bool,
+    /** The action triggered when the close buttonIcon is clicked. */
+    onRequestClose: PropTypes.func,
+    /** The action triggered when the ImportRecordsFlow is completed. */
+    onComplete: PropTypes.func,
+    /** A CSS class for the outer element, in addition to the component's base classes. */
+    className: PropTypes.string,
+    /** An object with custom style applied to the outer element. */
+    style: PropTypes.object,
 };
 
 ImportRecordsFlow.defaultProps = {
