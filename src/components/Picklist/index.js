@@ -200,9 +200,9 @@ class Picklist extends Component {
     }
 
     registerChild(childRef, childProps) {
-        if (isChildRegistered(childRef)) return;
-
         const { activeChildren } = this.state;
+
+        if (isChildRegistered(childRef, activeChildren)) return;
         const [...nodes] = getChildMenuItemNodes(this.containerRef.current);
         const newActiveChildren = insertChildOrderly(
             activeChildren,
@@ -218,8 +218,8 @@ class Picklist extends Component {
     }
 
     unregisterChild(childRef) {
-        if (!isChildRegistered(childRef)) return;
         const { activeChildren } = this.state;
+        if (!isChildRegistered(childRef, activeChildren)) return;
         const newActiveChildren = activeChildren.filter(child => child.ref !== childRef);
         this.setState({
             activeChildren: newActiveChildren,

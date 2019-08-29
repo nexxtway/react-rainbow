@@ -19,9 +19,9 @@ class Option extends Component {
     }
 
     componentDidMount() {
-        const { disabled, variant, name } = this.props;
+        const { disabled, variant, name, currentValueName } = this.props;
         const isHeader = variant === 'header';
-        if (disabled || isHeader || typeof name !== 'string') {
+        if (disabled || isHeader || typeof name !== 'string' || name === currentValueName) {
             return null;
         }
         return this.registerChild();
