@@ -1,5 +1,5 @@
 export default function normalizeValue(value) {
-    if (value && typeof value === 'object') {
+    if (value && ['object', 'string'].includes(typeof value)) {
         return value;
     }
     return {};
