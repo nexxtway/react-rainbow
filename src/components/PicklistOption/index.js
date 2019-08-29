@@ -24,25 +24,23 @@ class Option extends Component {
         if (disabled || isHeader || typeof name !== 'string' || name === currentValueName) {
             return null;
         }
-        return this.registerChild();
+        return this.register();
     }
 
     componentDidUpdate(prevProps) {
-        const { privateUnregisterChild } = this.props;
-        const { currentValueName: prevCurrentValueName } = prevProps;
         const { currentValueName } = this.props;
+        const { currentValueName: prevCurrentValueName } = prevProps;
         if (prevCurrentValueName !== currentValueName) {
             if (prevCurrentValueName === name && currentValueName !== name) {
-                this.registerChild();
+                this.register();
             } else if (prevCurrentValueName !== name && currentValueName === name) {
-                setTimeout(() => privateUnregisterChild(this.itemRef.current), 0);
+                setTimeout(() => this.unregister(), 0);
             }
         }
     }
 
     componentWillUnmount() {
-        const { privateUnregisterChild } = this.props;
-        return privateUnregisterChild(this.itemRef.current);
+        return this.unregister();
     }
 
     getHeaderClassNames() {
@@ -85,7 +83,7 @@ class Option extends Component {
         return privateOnHover(event, name);
     }
 
-    registerChild() {
+    register() {
         const { privateRegisterChild, label, name, icon, value } = this.props;
         return setTimeout(
             () =>
@@ -97,6 +95,11 @@ class Option extends Component {
                 }),
             0,
         );
+    }
+
+    unregister() {
+        const { privateUnregisterChild } = this.props;
+        return privateUnregisterChild(this.itemRef.current);
     }
 
     render() {

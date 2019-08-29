@@ -11,7 +11,7 @@ import Label from './label';
 import './styles.css';
 import { uniqueId } from '../../libs/utils';
 import MenuArrowButton from './menuArrowButton';
-import normalizeValue from './helpers/normalizeValue';
+import getNormalizeValue from './helpers/getNormalizeValue';
 import isChildRegistered from './helpers/isChildRegistered';
 import isOptionVisible from './helpers/isOptionVisible';
 import shouldOpenMenu from './helpers/shouldOpenMenu';
@@ -44,6 +44,8 @@ class Picklist extends Component {
         this.handleOptionClick = this.handleOptionClick.bind(this);
         this.handleScrollUpArrowHover = this.handleScrollUpArrowHover.bind(this);
         this.handleScrollDownArrowHover = this.handleScrollDownArrowHover.bind(this);
+        this.updateScrollingArrows = this.updateScrollingArrows.bind(this);
+        this.stopArrowScoll = this.stopArrowScoll.bind(this);
 
         this.registerChild = this.registerChild.bind(this);
         this.unregisterChild = this.unregisterChild.bind(this);
@@ -91,8 +93,8 @@ class Picklist extends Component {
     }
 
     getContext() {
-        const { activeOptionName } = this.state;
-        const { name } = this.getValue();
+        const { activeOptionName, value } = this.state;
+        const { name } = getNormalizeValue(value);
         return {
             privateOnClick: this.handleOptionClick,
             privateRegisterChild: this.registerChild,
@@ -109,7 +111,8 @@ class Picklist extends Component {
     }
 
     getInputClassNames() {
-        const { icon } = this.getValue();
+        const { value } = this.props;
+        const { icon } = getNormalizeValue(value);
         return classnames('rainbow-picklist_input', {
             'rainbow-picklist_input--icon': !!icon,
         });
@@ -127,11 +130,6 @@ class Picklist extends Component {
         return classnames('rainbow-picklist_dropdown', {
             'rainbow-picklist_dropdown--loading-box': isLoading,
         });
-    }
-
-    getValue() {
-        const { value } = this.props;
-        return normalizeValue(value);
     }
 
     getErrorMessageId() {
@@ -384,9 +382,10 @@ class Picklist extends Component {
             tabIndex,
             placeholder,
             name,
+            value: valueInProps,
         } = this.props;
         const ariaLabel = title || assistiveText;
-        const { label: valueLabel, icon } = this.getValue();
+        const { label: valueLabel, icon } = getNormalizeValue(valueInProps);
         const value = valueLabel || '';
         const errorMessageId = this.getErrorMessageId();
 
@@ -444,16 +443,12 @@ class Picklist extends Component {
                             <MenuArrowButton
                                 arrow="up"
                                 onMouseEnter={this.handleScrollUpArrowHover}
-                                onMouseLeave={() => {
-                                    this.stopArrowScoll();
-                                }}
+                                onMouseLeave={this.stopArrowScoll}
                             />
                         </RenderIf>
                         <ul
                             role="presentation"
-                            onScroll={() => {
-                                this.updateScrollingArrows();
-                            }}
+                            onScroll={this.updateScrollingArrows}
                             aria-label={ariaLabel}
                             ref={this.menuRef}
                             style={menuContainerStyles}
