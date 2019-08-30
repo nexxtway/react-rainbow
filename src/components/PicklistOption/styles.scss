@@ -2,7 +2,7 @@
 @import './../../styles/font-sizes.scss';
 
 .rainbow-picklist-option_header {
-    padding: 0.5rem 0.75rem;
+    padding: 0.75rem;
     max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -24,9 +24,8 @@
     font-size: $font-size-text-medium;
     line-height: 1.25;
     color: $color-gray-3;
-    font-weight: 100;
+    font-weight: normal;
     text-transform: uppercase;
-    letter-spacing: 0.0625rem;
 }
 
 .rainbow-picklist-option {
@@ -42,7 +41,7 @@
     justify-content: space-between;
     -ms-flex-align: center;
     align-items: center;
-    padding: 0.75rem 0.75rem;
+    padding: 0.75rem;
     color: $color-dark-1;
     white-space: nowrap;
     cursor: pointer;
