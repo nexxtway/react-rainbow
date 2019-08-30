@@ -1,6 +1,6 @@
-import isScrolPositionlAtMenuBottom from '../isScrolPositionlAtMenuBottom';
+import isScrollPositionAtMenuBottom from '../isScrollPositionAtMenuBottom';
 
-describe('isScrolPositionlAtMenuBottom', () => {
+describe('isScrollPositionAtMenuBottom', () => {
     it('should return true when scroll position is at bottom', () => {
         const menuRef = {
             scrollHeight: 925,
@@ -8,15 +8,15 @@ describe('isScrolPositionlAtMenuBottom', () => {
             clientHeight: 225,
         };
 
-        expect(isScrolPositionlAtMenuBottom(menuRef)).toBe(true);
+        expect(isScrollPositionAtMenuBottom(menuRef)).toBe(true);
     });
-    it('should return false when scroll position is not bottom', () => {
+    it('should return false when scroll position is not at bottom', () => {
         const menuRef = {
             scrollHeight: 925,
             scrollTop: 400,
             clientHeight: 225,
         };
 
-        expect(isScrolPositionlAtMenuBottom(menuRef)).toBe(false);
+        expect(isScrollPositionAtMenuBottom(menuRef)).toBe(false);
     });
 });

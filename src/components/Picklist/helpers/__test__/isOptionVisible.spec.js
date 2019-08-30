@@ -25,19 +25,14 @@ describe('isOptionVisible', () => {
             })),
         }));
 
-        const expectedResults = [true, true, true];
-        elements.forEach((element, index) => {
-            expect(isOptionVisible(element, container)).toBe(expectedResults[index]);
+        elements.forEach(element => {
+            expect(isOptionVisible(element, container)).toBe(true);
         });
     });
     it("should return false when element is not within container's visible bounds", () => {
         const elements = [
             { top: 407.5333251953125, bottom: 452.5333251953125 },
             { top: 452.5333251953125, bottom: 497.5333251953125 },
-            { top: 497.5333251953125, bottom: 542.5333251953125 },
-            { top: 542.5333251953125, bottom: 587.5333251953125 },
-            { top: 587.5333251953125, bottom: 632.5333251953125 },
-            { top: 632.5333251953125, bottom: 677.5333251953125 },
         ].map(element => ({
             top: element.top,
             bottom: element.bottom,
@@ -47,9 +42,8 @@ describe('isOptionVisible', () => {
             })),
         }));
 
-        const expectedResults = [false, false, false, false, false, false];
-        elements.forEach((element, index) => {
-            expect(isOptionVisible(element, container)).toBe(expectedResults[index]);
+        elements.forEach(element => {
+            expect(isOptionVisible(element, container)).toBe(false);
         });
     });
 });

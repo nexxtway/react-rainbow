@@ -16,7 +16,7 @@ import isChildRegistered from './helpers/isChildRegistered';
 import isOptionVisible from './helpers/isOptionVisible';
 import shouldOpenMenu from './helpers/shouldOpenMenu';
 import calculateScrollOffset from './helpers/calculateScrollOffset';
-import isScrolPositionlAtMenuBottom from './helpers/isScrolPositionlAtMenuBottom';
+import isScrollPositionAtMenuBottom from './helpers/isScrollPositionAtMenuBottom';
 
 const sizeMap = {
     small: 135,
@@ -305,7 +305,7 @@ class Picklist extends Component {
     updateScrollingArrows() {
         const menu = this.menuRef.current;
         const showScrollUpArrow = menu.scrollTop > 0;
-        const showScrollDownArrow = !isScrolPositionlAtMenuBottom(menu);
+        const showScrollDownArrow = !isScrollPositionAtMenuBottom(menu);
         this.setState({
             showScrollUpArrow,
             showScrollDownArrow,
@@ -330,7 +330,7 @@ class Picklist extends Component {
 
         const menu = this.menuRef.current;
         this.scrollingTimer = setInterval(() => {
-            if (!isScrolPositionlAtMenuBottom(menu)) {
+            if (!isScrollPositionAtMenuBottom(menu)) {
                 menu.scrollBy(0, 1);
             } else {
                 this.stopArrowScoll();
