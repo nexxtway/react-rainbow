@@ -4,26 +4,9 @@ import classnames from 'classnames';
 import Pagination from '../Pagination';
 import Table from '../Table';
 import RenderIf from '../RenderIf';
+import Options from './options';
+import getPageItems from './helpers/getPageItems';
 import './styles.css';
-
-function computedPageItems({ data, activePage, pageSize }) {
-    if (pageSize > data.length) {
-        return data;
-    }
-    const start = (activePage - 1) * pageSize;
-    const end = Math.min(activePage * pageSize, data.length);
-    return data.slice(start, end);
-}
-
-function Options({ pages }) {
-    const options = [];
-    let count = 1;
-    while (count <= pages) {
-        options.push(<option key={count}>{count}</option>);
-        count += 1;
-    }
-    return options;
-}
 
 /**
  * It implement a client side pagination experience. It basically wire up the Table and
@@ -37,7 +20,7 @@ export default class TableWithBrowserPagination extends React.Component {
         const { data, pageSize } = props;
         this.state = {
             activePage: 1,
-            pageItems: computedPageItems({
+            pageItems: getPageItems({
                 data,
                 activePage: 1,
                 pageSize,
@@ -69,7 +52,7 @@ export default class TableWithBrowserPagination extends React.Component {
         const totalPages = Math.ceil(data.length / pageSize);
         this.setState({
             activePage: activePage <= totalPages ? activePage : 1,
-            pageItems: computedPageItems({
+            pageItems: getPageItems({
                 data,
                 activePage,
                 pageSize,
@@ -81,7 +64,7 @@ export default class TableWithBrowserPagination extends React.Component {
         const { data, pageSize } = this.props;
         this.setState({
             activePage: page,
-            pageItems: computedPageItems({
+            pageItems: getPageItems({
                 data,
                 activePage: page,
                 pageSize,
