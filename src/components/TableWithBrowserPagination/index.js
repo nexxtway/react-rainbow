@@ -32,7 +32,8 @@ export default class TableWithBrowserPagination extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.data !== this.props.data) {
+        const { data, pageSize } = this.props;
+        if (prevProps.data !== data || prevProps.pageSize !== pageSize) {
             this.updateData();
         }
     }
@@ -54,7 +55,7 @@ export default class TableWithBrowserPagination extends React.Component {
             activePage: activePage <= totalPages ? activePage : 1,
             pageItems: getPageItems({
                 data,
-                activePage,
+                activePage: activePage <= totalPages ? activePage : 1,
                 pageSize,
             }),
         });
