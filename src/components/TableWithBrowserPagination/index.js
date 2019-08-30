@@ -51,11 +51,12 @@ export default class TableWithBrowserPagination extends React.Component {
         const { data, pageSize } = this.props;
         const { activePage } = this.state;
         const totalPages = Math.ceil(data.length / pageSize);
+        const nextActivePage = activePage <= totalPages ? activePage : 1;
         this.setState({
-            activePage: activePage <= totalPages ? activePage : 1,
+            activePage: nextActivePage,
             pageItems: getPageItems({
                 data,
-                activePage: activePage <= totalPages ? activePage : 1,
+                activePage: nextActivePage,
                 pageSize,
             }),
         });

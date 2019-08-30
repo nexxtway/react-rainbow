@@ -137,24 +137,12 @@ describe('<TableWithBrowserPagination />', () => {
             expect(component.find(Options).prop('pages')).toBe(expectedPages[index]);
         });
     });
-    it('should call updateData when data change dynamically', () => {
-        getPageItems.mockReset();
-        const component = mount(
-            <TableWithBrowserPagination data={data} pageSize={1} keyField="name" />,
-        );
-        component.instance().updateData = jest.fn();
-        component.setState({ activePage: 10 });
-        component.setProps({ data: nextData });
-        component.update();
-        expect(component.instance().updateData).toHaveBeenCalledTimes(1);
-    });
     it('should call updateData when pageSize change dynamically', () => {
         getPageItems.mockReset();
         const component = mount(
             <TableWithBrowserPagination data={data} pageSize={1} keyField="name" />,
         );
         component.instance().updateData = jest.fn();
-        component.setState({ activePage: 10 });
         component.setProps({ pageSize: 22 });
         component.update();
         expect(component.instance().updateData).toHaveBeenCalledTimes(1);
