@@ -11,7 +11,7 @@ describe('isOptionVisible', () => {
         }));
     });
 
-    it("should return true when element is within container's visible bounds", () => {
+    it('should return true when element is within container visible bounds', () => {
         const elements = [
             { top: 237.78334045410156, bottom: 282.78334045410156 },
             { top: 317.5333251953125, bottom: 362.5333251953125 },
@@ -29,7 +29,7 @@ describe('isOptionVisible', () => {
             expect(isOptionVisible(element, container)).toBe(true);
         });
     });
-    it("should return false when element is not within container's visible bounds", () => {
+    it('should return false when element is not within container visible bounds', () => {
         const elements = [
             { top: 407.5333251953125, bottom: 452.5333251953125 },
             { top: 452.5333251953125, bottom: 497.5333251953125 },
