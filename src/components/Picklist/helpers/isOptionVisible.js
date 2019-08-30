@@ -1,20 +1,6 @@
-export default function isOptionVisible(
-    el,
-    container,
-    scrollTopArrowVisible,
-    scrollDownArrowVisible,
-    arrowHeight,
-) {
+export default function isOptionVisible(el, container) {
     const { top: elTop, bottom: elBottom } = el.getBoundingClientRect();
-    let { top: containerTop, bottom: containerBottom } = container.getBoundingClientRect();
-
-    if (scrollTopArrowVisible) {
-        containerTop += arrowHeight;
-    }
-
-    if (scrollDownArrowVisible) {
-        containerBottom -= arrowHeight;
-    }
+    const { top: containerTop, bottom: containerBottom } = container.getBoundingClientRect();
 
     return (
         Math.floor(elTop) >= Math.floor(containerTop) &&

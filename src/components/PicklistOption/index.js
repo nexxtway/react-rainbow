@@ -19,48 +19,28 @@ class Option extends Component {
     }
 
     componentDidMount() {
-        const { privateRegisterChild, disabled, variant, label, name, icon, value } = this.props;
+        const { disabled, variant, name, currentValueName } = this.props;
         const isHeader = variant === 'header';
-        if (disabled || isHeader || typeof name !== 'string') {
+        if (disabled || isHeader || typeof name !== 'string' || name === currentValueName) {
             return null;
         }
-        return setTimeout(
-            () =>
-                privateRegisterChild(this.itemRef.current, {
-                    label,
-                    name,
-                    icon,
-                    value,
-                }),
-            0,
-        );
+        return this.register();
     }
 
     componentDidUpdate(prevProps) {
-        const { privateRegisterChild, privateUnregisterChild } = this.props;
+        const { currentValueName } = this.props;
         const { currentValueName: prevCurrentValueName } = prevProps;
-        const { currentValueName, label, name, icon, value } = this.props;
         if (prevCurrentValueName !== currentValueName) {
             if (prevCurrentValueName === name && currentValueName !== name) {
-                setTimeout(
-                    () =>
-                        privateRegisterChild(this.itemRef.current, {
-                            label,
-                            name,
-                            icon,
-                            value,
-                        }),
-                    0,
-                );
+                this.register();
             } else if (prevCurrentValueName !== name && currentValueName === name) {
-                setTimeout(() => privateUnregisterChild(this.itemRef.current), 0);
+                setTimeout(() => this.unregister(), 0);
             }
         }
     }
 
     componentWillUnmount() {
-        const { privateUnregisterChild } = this.props;
-        return privateUnregisterChild(this.itemRef.current);
+        return this.unregister();
     }
 
     getHeaderClassNames() {
@@ -103,8 +83,23 @@ class Option extends Component {
         return privateOnHover(event, name);
     }
 
-    click() {
-        this.itemRef.current.click();
+    register() {
+        const { privateRegisterChild, label, name, icon, value } = this.props;
+        return setTimeout(
+            () =>
+                privateRegisterChild(this.itemRef.current, {
+                    label,
+                    name,
+                    icon,
+                    value,
+                }),
+            0,
+        );
+    }
+
+    unregister() {
+        const { privateUnregisterChild } = this.props;
+        return privateUnregisterChild(this.itemRef.current);
     }
 
     render() {

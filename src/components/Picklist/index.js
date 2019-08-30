@@ -11,9 +11,12 @@ import Label from './label';
 import './styles.css';
 import { uniqueId } from '../../libs/utils';
 import MenuArrowButton from './menuArrowButton';
+import getNormalizeValue from './helpers/getNormalizeValue';
+import isChildRegistered from './helpers/isChildRegistered';
 import isOptionVisible from './helpers/isOptionVisible';
 import shouldOpenMenu from './helpers/shouldOpenMenu';
 import calculateScrollOffset from './helpers/calculateScrollOffset';
+import isScrollPositionAtMenuBottom from './helpers/isScrollPositionAtMenuBottom';
 
 const sizeMap = {
     small: 135,
@@ -30,6 +33,7 @@ class Picklist extends Component {
     constructor(props) {
         super(props);
         this.inputId = uniqueId('picklist-input');
+        this.errorMessageId = uniqueId('error-message');
         this.containerRef = React.createRef();
         this.triggerRef = React.createRef();
         this.menuRef = React.createRef();
@@ -39,10 +43,10 @@ class Picklist extends Component {
         this.handleKeyPressed = this.handleKeyPressed.bind(this);
         this.hoverChild = this.hoverChild.bind(this);
         this.handleOptionClick = this.handleOptionClick.bind(this);
-        this.handleScroll = this.handleScroll.bind(this);
         this.handleScrollUpArrowHover = this.handleScrollUpArrowHover.bind(this);
         this.handleScrollDownArrowHover = this.handleScrollDownArrowHover.bind(this);
-        this.handleStopArrowScoll = this.handleStopArrowScoll.bind(this);
+        this.updateScrollingArrows = this.updateScrollingArrows.bind(this);
+        this.stopArrowScoll = this.stopArrowScoll.bind(this);
 
         this.registerChild = this.registerChild.bind(this);
         this.unregisterChild = this.unregisterChild.bind(this);
@@ -91,7 +95,8 @@ class Picklist extends Component {
 
     getContext() {
         const { activeOptionName } = this.state;
-        const { name } = this.getValue();
+        const { value } = this.props;
+        const { name } = getNormalizeValue(value);
         return {
             privateOnClick: this.handleOptionClick,
             privateRegisterChild: this.registerChild,
@@ -108,7 +113,8 @@ class Picklist extends Component {
     }
 
     getInputClassNames() {
-        const { icon } = this.getValue();
+        const { value } = this.props;
+        const { icon } = getNormalizeValue(value);
         return classnames('rainbow-picklist_input', {
             'rainbow-picklist_input--icon': !!icon,
         });
@@ -128,12 +134,12 @@ class Picklist extends Component {
         });
     }
 
-    getValue() {
-        const { value } = this.props;
-        if (value && typeof value === 'object') {
-            return value;
+    getErrorMessageId() {
+        const { error } = this.props;
+        if (error) {
+            return this.errorMessageId;
         }
-        return {};
+        return undefined;
     }
 
     handleKeyUpPressed() {
@@ -193,15 +199,10 @@ class Picklist extends Component {
         return null;
     }
 
-    isChildRegistered(childRef) {
-        const { activeChildren } = this.state;
-        return activeChildren.findIndex(child => child.ref === childRef) !== -1;
-    }
-
     registerChild(childRef, childProps) {
-        if (this.isChildRegistered(childRef)) return;
-
         const { activeChildren } = this.state;
+
+        if (isChildRegistered(childRef, activeChildren)) return;
         const [...nodes] = getChildMenuItemNodes(this.containerRef.current);
         const newActiveChildren = insertChildOrderly(
             activeChildren,
@@ -217,8 +218,8 @@ class Picklist extends Component {
     }
 
     unregisterChild(childRef) {
-        if (!this.isChildRegistered(childRef)) return;
         const { activeChildren } = this.state;
+        if (!isChildRegistered(childRef, activeChildren)) return;
         const newActiveChildren = activeChildren.filter(child => child.ref !== childRef);
         this.setState({
             activeChildren: newActiveChildren,
@@ -305,44 +306,40 @@ class Picklist extends Component {
     updateScrollingArrows() {
         const menu = this.menuRef.current;
         const showScrollUpArrow = menu.scrollTop > 0;
-        const showScrollDownArrow = menu.scrollHeight - menu.scrollTop !== menu.clientHeight;
+        const showScrollDownArrow = !isScrollPositionAtMenuBottom(menu);
         this.setState({
             showScrollUpArrow,
             showScrollDownArrow,
         });
     }
 
-    handleScroll() {
-        this.updateScrollingArrows();
-    }
-
     handleScrollUpArrowHover() {
-        if (this.scrollingTimer) clearInterval(this.scrollingTimer);
+        this.stopArrowScoll();
 
         const menu = this.menuRef.current;
         this.scrollingTimer = setInterval(() => {
             if (menu.scrollTop > 0) {
                 menu.scrollBy(0, -1);
             } else {
-                clearInterval(this.scrollingTimer);
+                this.stopArrowScoll();
             }
         }, 5);
     }
 
     handleScrollDownArrowHover() {
-        if (this.scrollingTimer) clearInterval(this.scrollingTimer);
+        this.stopArrowScoll();
 
         const menu = this.menuRef.current;
         this.scrollingTimer = setInterval(() => {
-            if (menu.scrollHeight - menu.scrollTop !== menu.clientHeight) {
+            if (!isScrollPositionAtMenuBottom(menu)) {
                 menu.scrollBy(0, 1);
             } else {
-                clearInterval(this.scrollingTimer);
+                this.stopArrowScoll();
             }
         }, 5);
     }
 
-    handleStopArrowScoll() {
+    stopArrowScoll() {
         if (this.scrollingTimer) clearInterval(this.scrollingTimer);
     }
 
@@ -387,11 +384,12 @@ class Picklist extends Component {
             tabIndex,
             placeholder,
             name,
+            value: valueInProps,
         } = this.props;
         const ariaLabel = title || assistiveText;
-        const { label: valueLabel, icon } = this.getValue();
+        const { label: valueLabel, icon } = getNormalizeValue(valueInProps);
         const value = valueLabel || '';
-        const errorMessageId = '';
+        const errorMessageId = this.getErrorMessageId();
 
         const menuContainerStyles = {
             maxHeight: this.getMenuMaxHeight(),
@@ -447,12 +445,12 @@ class Picklist extends Component {
                             <MenuArrowButton
                                 arrow="up"
                                 onMouseEnter={this.handleScrollUpArrowHover}
-                                onMouseLeave={this.handleStopArrowScoll}
+                                onMouseLeave={this.stopArrowScoll}
                             />
                         </RenderIf>
                         <ul
                             role="presentation"
-                            onScroll={this.handleScroll}
+                            onScroll={this.updateScrollingArrows}
                             aria-label={ariaLabel}
                             ref={this.menuRef}
                             style={menuContainerStyles}
@@ -465,7 +463,7 @@ class Picklist extends Component {
                             <MenuArrowButton
                                 arrow="down"
                                 onMouseEnter={this.handleScrollDownArrowHover}
-                                onMouseLeave={this.handleStopArrowScoll}
+                                onMouseLeave={this.stopArrowScoll}
                             />
                         </RenderIf>
                     </div>

@@ -14,8 +14,6 @@ export default function Label(props) {
         });
     };
 
-    if (!label) return null;
-
     return (
         <label className={getLabelClassNames()} htmlFor={inputId} id={id}>
             <RequiredAsterisk required={required} />
