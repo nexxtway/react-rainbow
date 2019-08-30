@@ -11,7 +11,7 @@
   margin-bottom: 0.25rem;
   border: solid 1px #e3e5ed;
   border-radius: 0.875rem;
-  padding: 0.5rem 0;
+  padding: 1rem 0;
   font-size: 0.75rem;
   background: white;
   box-shadow: 0 2px 4px 0 #e3e5ed;
@@ -29,7 +29,7 @@
   margin-bottom: 0.125rem;
   border: solid 1px #e3e5ed;
   border-radius: 12px;
-  padding: 0.5rem 0;
+  padding: 1rem 0;
   font-size: 0.75rem;
   background-color: white;
   box-shadow: 0 2px 4px 0 #e3e5ed;
@@ -176,7 +176,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  height: 1.125rem;
+  height: 1rem;
   position: fixed;
   width: 100%;
   z-index: 10;
@@ -190,17 +190,17 @@
     width: 0.5rem;
     height: 0.5rem;
     border-style: solid;
-    color: #576574;
+    color: #a4a7b5;
     transform: rotate(135deg); }
   .rainbow-picklist_dropdown-arrow-button.rainbow-picklist_dropdown-arrow-up {
     top: 0;
-    margin-top: 0.5rem; }
+    margin-top: 0.25rem; }
     .rainbow-picklist_dropdown-arrow-button.rainbow-picklist_dropdown-arrow-up::after {
       border-width: 0 0 0.15em 0.15em;
       top: 50%; }
   .rainbow-picklist_dropdown-arrow-button.rainbow-picklist_dropdown-arrow-down {
     bottom: 0;
-    margin-bottom: 0.5rem; }
+    margin-bottom: 0.25rem; }
     .rainbow-picklist_dropdown-arrow-button.rainbow-picklist_dropdown-arrow-down::after {
       border-width: 0.15em 0.15em 0 0; }
 
