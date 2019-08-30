@@ -222,7 +222,6 @@ module.exports = [
         status: 'verified',
         id: '3456789b12',
         dob: '01/04/1992',
-        city: 'La Habana',
         city: 'San Francisco',
     },
     {
