@@ -1,5 +1,5 @@
 .rainbow-picklist-option_header {
-  padding: 0.5rem 0.75rem;
+  padding: 0.75rem;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -17,9 +17,8 @@
   font-size: 0.875rem;
   line-height: 1.25;
   color: #a4a7b5;
-  font-weight: 100;
-  text-transform: uppercase;
-  letter-spacing: 0.0625rem; }
+  font-weight: normal;
+  text-transform: uppercase; }
 
 .rainbow-picklist-option {
   line-height: 1.5; }
@@ -33,7 +32,7 @@
   justify-content: space-between;
   -ms-flex-align: center;
   align-items: center;
-  padding: 0.75rem 0.75rem;
+  padding: 0.75rem;
   color: #061c3f;
   white-space: nowrap;
   cursor: pointer;
