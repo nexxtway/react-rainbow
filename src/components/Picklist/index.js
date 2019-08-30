@@ -93,7 +93,8 @@ class Picklist extends Component {
     }
 
     getContext() {
-        const { activeOptionName, value } = this.state;
+        const { activeOptionName } = this.state;
+        const { value } = this.props;
         const { name } = getNormalizeValue(value);
         return {
             privateOnClick: this.handleOptionClick,
@@ -461,9 +462,7 @@ class Picklist extends Component {
                             <MenuArrowButton
                                 arrow="down"
                                 onMouseEnter={this.handleScrollDownArrowHover}
-                                onMouseLeave={() => {
-                                    this.stopArrowScoll();
-                                }}
+                                onMouseLeave={this.stopArrowScoll}
                             />
                         </RenderIf>
                     </div>
