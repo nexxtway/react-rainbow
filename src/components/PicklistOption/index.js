@@ -28,7 +28,7 @@ class Option extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        const { currentValueName } = this.props;
+        const { currentValueName, name } = this.props;
         const { currentValueName: prevCurrentValueName } = prevProps;
         if (prevCurrentValueName !== currentValueName) {
             if (prevCurrentValueName === name && currentValueName !== name) {
