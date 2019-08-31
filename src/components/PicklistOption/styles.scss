@@ -2,14 +2,26 @@
 @import './../../styles/font-sizes.scss';
 
 .rainbow-picklist-option_header {
-    padding: 0.75rem;
+    padding: 0 0.75rem;
+    height: 45px;
     max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
 
     &:hover {
         cursor: default;
+    }
+
+    .rainbow-picklist-option_header-label {
+        font-size: $font-size-text-medium;
+        color: $color-gray-3;
+        font-weight: normal;
+        text-transform: uppercase;
     }
 }
 
@@ -18,18 +30,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-}
-
-.rainbow-picklist-option_header-label {
-    font-size: $font-size-text-medium;
-    line-height: 1.25;
-    color: $color-gray-3;
-    font-weight: normal;
-    text-transform: uppercase;
-}
-
-.rainbow-picklist-option {
-    line-height: 1.5;
 }
 
 .rainbow-picklist-option > a {
@@ -41,7 +41,8 @@
     justify-content: space-between;
     -ms-flex-align: center;
     align-items: center;
-    padding: 0.75rem;
+    padding: 0 0.75rem;
+    height: 45px;
     color: $color-dark-1;
     white-space: nowrap;
     cursor: pointer;
@@ -69,7 +70,7 @@
 .rainbow-picklist-option_icon {
     width: 1rem;
     height: 1rem;
-    line-height: 1.5;
+    line-height: 1;
     fill: white;
 }
 
