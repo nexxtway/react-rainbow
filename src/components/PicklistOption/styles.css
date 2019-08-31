@@ -1,14 +1,11 @@
 .rainbow-picklist-option_header {
   padding: 0 0.75rem;
   height: 45px;
+  line-height: 45px;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-  align-items: center; }
+  white-space: nowrap; }
   .rainbow-picklist-option_header:hover {
     cursor: default; }
   .rainbow-picklist-option_header .rainbow-picklist-option_header-label {
