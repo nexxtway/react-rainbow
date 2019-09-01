@@ -34,7 +34,7 @@ class Option extends Component {
             if (prevCurrentValueName === name && currentValueName !== name) {
                 this.register();
             } else if (prevCurrentValueName !== name && currentValueName === name) {
-                setTimeout(() => this.unregister(), 0);
+                this.unregister();
             }
         }
     }
@@ -62,7 +62,6 @@ class Option extends Component {
 
     handleClick(event) {
         const { disabled, privateOnClick, label, name, icon, value } = this.props;
-
         if (disabled) {
             event.preventDefault();
             return null;
@@ -99,7 +98,7 @@ class Option extends Component {
 
     unregister() {
         const { privateUnregisterChild } = this.props;
-        return privateUnregisterChild(this.itemRef.current);
+        return setTimeout(() => privateUnregisterChild(this.itemRef.current), 0);
     }
 
     render() {
@@ -165,6 +164,8 @@ class Option extends Component {
 export default function PicklistOption(props) {
     return <Consumer>{values => <Option {...props} {...values} />}</Consumer>;
 }
+
+export { Option };
 
 PicklistOption.propTypes = {
     /** Text of the PicklistOption. */
