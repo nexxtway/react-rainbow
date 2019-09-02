@@ -23,6 +23,17 @@ describe('<PicklistOption />', () => {
             'rainbow-picklist-option rainbow-picklist-option_selected',
         );
     });
+    it('should render a option header when variant is header', () => {
+        const component = mount(<PicklistOption label="Header 1" variant="header" />);
+        expect(component.find('li').prop('className')).toBe('rainbow-picklist-option_header');
+        expect(component.find('li > span.rainbow-picklist-option_header-label').exists()).toBe(
+            true,
+        );
+    });
+    it('should render a regular option when variant is default', () => {
+        const component = mount(<PicklistOption label="option 1" name="option1" />);
+        expect(component.find('li').prop('className')).toBe('rainbow-picklist-option');
+    });
     it('should not register when is disabled', () => {
         const optionRegisterFn = jest.spyOn(PicklistOption.prototype, 'register');
         mount(<PicklistOption disabled />);
