@@ -19,7 +19,7 @@ import calculateScrollOffset from './helpers/calculateScrollOffset';
 import isScrollPositionAtMenuBottom from './helpers/isScrollPositionAtMenuBottom';
 
 const sizeMap = {
-    medium: 230,
+    medium: 227,
 };
 
 /**

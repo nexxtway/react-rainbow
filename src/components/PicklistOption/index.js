@@ -158,7 +158,7 @@ class Option extends Component {
 }
 
 /**
- * Represents a list item in a menu.
+ * Represents a list options in a menu.
  *  @category Form
  */
 export default function PicklistOption(props) {
