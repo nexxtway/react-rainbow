@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import getNextAmPmValue from './helpers/getNextAmPmValue';
 import { uniqueId } from './../../libs/utils';
-import { UP_KEY, DOWN_KEY } from '../../libs/constants';
+import isChecked from './helpers/isChecked';
 
 function handleAmPmBlur(event) {
     event.stopPropagation();
@@ -20,9 +19,7 @@ export default class AmPmSelect extends PureComponent {
         this.handleFocus = this.handleFocus.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
         this.handleOnChange = this.handleOnChange.bind(this);
-        this.handleKeyDown = this.handleKeyDown.bind(this);
-        this.handleAmClick = this.handleAmClick.bind(this);
-        this.handlePmClick = this.handlePmClick.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     handleFocus() {
@@ -48,43 +45,13 @@ export default class AmPmSelect extends PureComponent {
         onChange(value);
     }
 
-    handleAmClick() {
-        const { value } = this.state;
-        const { onChange } = this.props;
-        if (!value) {
-            onChange('AM');
-        }
+    handleClick() {
         this.setState({ isFocused: false });
     }
 
-    handlePmClick() {
-        const { value } = this.state;
-        const { onChange } = this.props;
-        if (!value) {
-            onChange('PM');
-        }
-        this.setState({ isFocused: false });
-    }
-
-    handleKeyDown(event) {
-        const { keyCode } = event;
-        const { onChange } = this.props;
-        const { value } = this.state;
-        const nextValue = getNextAmPmValue(value);
-        if (keyCode === UP_KEY || keyCode === DOWN_KEY) {
-            onChange(nextValue);
-        }
-    }
-
-    isChecked(inputValue) {
+    isInputChecked(inputValue) {
         const { value, defaultValue } = this.props;
-        if (value) {
-            return inputValue === value;
-        }
-        if (defaultValue) {
-            return inputValue === defaultValue;
-        }
-        return inputValue === 'AM';
+        return isChecked({ inputValue, value, defaultValue });
     }
 
     focus() {
@@ -98,12 +65,12 @@ export default class AmPmSelect extends PureComponent {
         if (isFocused) {
             return (
                 <fieldset
+                    data-id="fieldset-element"
                     className="rainbow-time-picker_time-select-value rainbow-time-picker_select-ampm"
                     role="presentation"
                     tabIndex={tabIndex}
                     onBlur={this.handleBlur}
                     onFocus={onFocus}
-                    onKeyDown={this.handleKeyDown}
                     ref={this.fieldsetRef}
                 >
                     <input
@@ -112,9 +79,9 @@ export default class AmPmSelect extends PureComponent {
                         id={this.inputAmId}
                         name="ampmOptions"
                         value="AM"
-                        checked={this.isChecked('AM')}
+                        checked={this.isInputChecked('AM')}
                         onChange={this.handleOnChange}
-                        onClick={this.handleAmClick}
+                        onClick={this.handleClick}
                         onBlur={handleAmPmBlur}
                     />
 
@@ -127,9 +94,9 @@ export default class AmPmSelect extends PureComponent {
                         id={this.inputPmId}
                         name="ampmOptions"
                         value="PM"
-                        checked={this.isChecked('PM')}
+                        checked={this.isInputChecked('PM')}
                         onChange={this.handleOnChange}
-                        onClick={this.handlePmClick}
+                        onClick={this.handleClick}
                         onBlur={handleAmPmBlur}
                     />
 
@@ -141,6 +108,7 @@ export default class AmPmSelect extends PureComponent {
         }
         return (
             <input
+                data-id="input-element"
                 className="rainbow-time-picker_time-select-value"
                 tabIndex={tabIndex}
                 onFocus={this.handleFocus}
