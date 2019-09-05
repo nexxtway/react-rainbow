@@ -1,7 +1,7 @@
 import isChecked from '../isChecked';
 
 describe('isChecked', () => {
-    it('should return true when value is equal to inputValue and value is truety', () => {
+    it('should return true when value is equal to inputValue and value is truthy', () => {
         const values = [
             {
                 value: 'AM',
