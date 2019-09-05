@@ -49,9 +49,10 @@ class Picklist extends Component {
         this.registerChild = this.registerChild.bind(this);
         this.unregisterChild = this.unregisterChild.bind(this);
 
+        this.activeChildren = [];
+
         this.state = {
             isOpen: false,
-            activeChildren: [],
             activeOptionIndex: -1,
             activeOptionName: null,
             showScrollUpArrow: undefined,
@@ -141,9 +142,9 @@ class Picklist extends Component {
     }
 
     handleKeyUpPressed() {
-        const { activeChildren, activeOptionIndex } = this.state;
+        const { activeOptionIndex } = this.state;
         const nextActiveIndex =
-            (activeChildren.length + activeOptionIndex - 1) % activeChildren.length;
+            (this.activeChildren.length + activeOptionIndex - 1) % this.activeChildren.length;
 
         if (nextActiveIndex < activeOptionIndex) {
             if (nextActiveIndex === 0) {
@@ -153,27 +154,27 @@ class Picklist extends Component {
             }
             this.setState({
                 activeOptionIndex: nextActiveIndex,
-                activeOptionName: activeChildren[nextActiveIndex].name,
+                activeOptionName: this.activeChildren[nextActiveIndex].name,
             });
         }
     }
 
     handleKeyDownPressed() {
-        const { activeChildren, activeOptionIndex } = this.state;
-        const nextActiveIndex = (activeOptionIndex + 1) % activeChildren.length;
+        const { activeOptionIndex } = this.state;
+        const nextActiveIndex = (activeOptionIndex + 1) % this.activeChildren.length;
         if (nextActiveIndex > 0) {
             this.scrollToOption(nextActiveIndex);
             this.setState({
                 activeOptionIndex: nextActiveIndex,
-                activeOptionName: activeChildren[nextActiveIndex].name,
+                activeOptionName: this.activeChildren[nextActiveIndex].name,
             });
         }
     }
 
     handleKeyEnterPressed() {
         const { onChange } = this.props;
-        const { activeChildren, activeOptionIndex } = this.state;
-        const { label, name, icon, value } = activeChildren[activeOptionIndex];
+        const { activeOptionIndex } = this.state;
+        const { label, name, icon, value } = this.activeChildren[activeOptionIndex];
         this.closeMenu();
         return onChange({
             label,
@@ -198,44 +199,33 @@ class Picklist extends Component {
     }
 
     registerChild(childRef, childProps) {
-        const { activeChildren } = this.state;
-
-        if (isChildRegistered(childRef, activeChildren)) return;
+        if (isChildRegistered(childRef, this.activeChildren)) return;
         const [...nodes] = getChildMenuItemNodes(this.containerRef.current);
-        const newActiveChildren = insertChildOrderly(
-            activeChildren,
+        this.activeChildren = insertChildOrderly(
+            this.activeChildren,
             {
                 ref: childRef,
                 ...childProps,
             },
             nodes,
         );
-        this.setState({
-            activeChildren: newActiveChildren,
-        });
     }
 
     unregisterChild(childRef) {
-        const { activeChildren } = this.state;
-        if (!isChildRegistered(childRef, activeChildren)) return;
-        const newActiveChildren = activeChildren.filter(child => child.ref !== childRef);
-        this.setState({
-            activeChildren: newActiveChildren,
-        });
+        if (!isChildRegistered(childRef, this.activeChildren)) return;
+        this.activeChildren = this.activeChildren.filter(child => child.ref !== childRef);
     }
 
     hoverChild(event, name) {
-        const { activeChildren } = this.state;
         this.setState({
             activeOptionName: name,
-            activeOptionIndex: activeChildren.findIndex(child => child.name === name),
+            activeOptionIndex: this.activeChildren.findIndex(child => child.name === name),
         });
     }
 
     openMenu() {
-        const { activeChildren } = this.state;
-        const firstOptionIndex = activeChildren.length > 0 ? 0 : -1;
-        const firstOptionName = activeChildren.length > 0 ? activeChildren[0].name : null;
+        const firstOptionIndex = this.activeChildren.length > 0 ? 0 : -1;
+        const firstOptionName = this.activeChildren.length > 0 ? this.activeChildren[0].name : null;
 
         return this.setState({
             isOpen: true,
@@ -281,9 +271,9 @@ class Picklist extends Component {
     }
 
     scrollToOption(nextFocusedIndex) {
-        const { activeChildren, activeOptionIndex } = this.state;
-        const currentFocusedOptionRef = activeChildren[activeOptionIndex].ref;
-        const nextFocusedOptionRef = activeChildren[nextFocusedIndex].ref;
+        const { activeOptionIndex } = this.state;
+        const currentFocusedOptionRef = this.activeChildren[activeOptionIndex].ref;
+        const nextFocusedOptionRef = this.activeChildren[nextFocusedIndex].ref;
         if (!isOptionVisible(nextFocusedOptionRef, this.menuRef.current)) {
             const amount = calculateScrollOffset(
                 currentFocusedOptionRef.offsetTop,
@@ -547,3 +537,4 @@ Picklist.defaultProps = {
 };
 
 export default withReduxForm(Picklist);
+export { Picklist as Component };
