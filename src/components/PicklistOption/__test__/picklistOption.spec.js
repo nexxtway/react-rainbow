@@ -3,6 +3,17 @@ import { mount, shallow } from 'enzyme';
 import { Option as PicklistOption } from '../index';
 
 describe('<PicklistOption />', () => {
+    let optionRegisterFn;
+    let optionUnregisterFn;
+
+    beforeEach(() => {
+        optionRegisterFn = jest.spyOn(PicklistOption.prototype, 'register');
+        optionUnregisterFn = jest.spyOn(PicklistOption.prototype, 'unregister');
+    });
+    afterEach(() => {
+        optionRegisterFn.mockClear();
+        optionUnregisterFn.mockClear();
+    });
     it('should have the right classnames when active', () => {
         const component = mount(<PicklistOption label="option 1" name="option1" />);
         expect(component.find('li').prop('className')).toBe('rainbow-picklist-option');
@@ -35,57 +46,41 @@ describe('<PicklistOption />', () => {
         expect(component.find('li').prop('className')).toBe('rainbow-picklist-option');
     });
     it('should not register when is disabled', () => {
-        const optionRegisterFn = jest.spyOn(PicklistOption.prototype, 'register');
         mount(<PicklistOption disabled />);
         expect(optionRegisterFn).not.toHaveBeenCalled();
-        optionRegisterFn.mockClear();
     });
     it('should not register when is variant header', () => {
-        const optionRegisterFn = jest.spyOn(PicklistOption.prototype, 'register');
         mount(<PicklistOption variant="header" />);
         expect(optionRegisterFn).not.toHaveBeenCalled();
-        optionRegisterFn.mockClear();
     });
     it('should not register when is name passed is not a string', () => {
-        const optionRegisterFn = jest.spyOn(PicklistOption.prototype, 'register');
         mount(<PicklistOption name={{}} currentValueName="option1" />);
         expect(optionRegisterFn).not.toHaveBeenCalled();
-        optionRegisterFn.mockClear();
     });
-    it('should not register when is is selected', () => {
-        const optionRegisterFn = jest.spyOn(PicklistOption.prototype, 'register');
+    it('should not register when it is selected', () => {
         mount(<PicklistOption name="option1" currentValueName="option1" />);
         expect(optionRegisterFn).not.toHaveBeenCalled();
-        optionRegisterFn.mockClear();
     });
     it('should register when mount', () => {
-        const optionRegisterFn = jest.spyOn(PicklistOption.prototype, 'register');
         mount(<PicklistOption name="option1" />);
         expect(optionRegisterFn).toHaveBeenCalled();
-        optionRegisterFn.mockClear();
     });
     it('should unregister when selected', () => {
-        const optionUnregisterFn = jest.spyOn(PicklistOption.prototype, 'unregister');
         const component = mount(<PicklistOption label="option 1" name="option1" />);
         component.setProps({ currentValueName: 'option1' });
         expect(optionUnregisterFn).toHaveBeenCalled();
-        optionUnregisterFn.mockClear();
     });
     it('should register when deselected', () => {
         const component = mount(
             <PicklistOption label="Option 1" name="option1" currentValueName="option1" />,
         );
-        const optionRegisterFn = jest.spyOn(PicklistOption.prototype, 'register');
         component.setProps({ currentValueName: undefined });
         expect(optionRegisterFn).toHaveBeenCalled();
-        optionRegisterFn.mockClear();
     });
     it('should unregister when unmount', () => {
-        const optionUnregisterFn = jest.spyOn(PicklistOption.prototype, 'unregister');
         const component = mount(<PicklistOption label="option 1" name="option1" />);
         component.unmount();
         expect(optionUnregisterFn).toHaveBeenCalled();
-        optionUnregisterFn.mockClear();
     });
     it('should fire an event with the right data when click the option', () => {
         const clickFn = jest.fn();
