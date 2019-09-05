@@ -5,14 +5,20 @@ import { Option as PicklistOption } from '../index';
 describe('<PicklistOption />', () => {
     let optionRegisterFn;
     let optionUnregisterFn;
+    let hoverFn;
+    let clickFn;
 
     beforeEach(() => {
         optionRegisterFn = jest.spyOn(PicklistOption.prototype, 'register');
         optionUnregisterFn = jest.spyOn(PicklistOption.prototype, 'unregister');
+        hoverFn = jest.fn();
+        clickFn = jest.fn();
     });
     afterEach(() => {
         optionRegisterFn.mockClear();
         optionUnregisterFn.mockClear();
+        hoverFn.mockClear();
+        clickFn.mockClear();
     });
     it('should have the right classnames when active', () => {
         const component = mount(<PicklistOption label="option 1" name="option1" />);
@@ -83,7 +89,6 @@ describe('<PicklistOption />', () => {
         expect(optionUnregisterFn).toHaveBeenCalled();
     });
     it('should fire an event with the right data when click the option', () => {
-        const clickFn = jest.fn();
         const data = {
             name: 'option1',
             label: 'option 1',
@@ -95,7 +100,6 @@ describe('<PicklistOption />', () => {
         expect(clickFn).toHaveBeenCalledWith(undefined, data);
     });
     it('should not fire an event when click the option but is disabled', () => {
-        const clickFn = jest.fn();
         const component = mount(
             <PicklistOption disabled label="option 1" name="option1" privateOnClick={clickFn} />,
         );
@@ -103,7 +107,6 @@ describe('<PicklistOption />', () => {
         expect(clickFn).not.toHaveBeenCalled();
     });
     it('should fire an event with the right data when hover the option', () => {
-        const hoverFn = jest.fn();
         const component = shallow(
             <PicklistOption label="option 1" name="option1" privateOnHover={hoverFn} />,
         );
@@ -111,7 +114,6 @@ describe('<PicklistOption />', () => {
         expect(hoverFn).toHaveBeenCalledWith(undefined, 'option1');
     });
     it('should not fire an event when hover the option but is disabled', () => {
-        const hoverFn = jest.fn();
         const component = mount(
             <PicklistOption disabled label="option 1" name="option1" privateOnHover={hoverFn} />,
         );
