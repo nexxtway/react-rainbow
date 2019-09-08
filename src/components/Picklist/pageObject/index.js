@@ -26,6 +26,16 @@ class PagePicklist {
     }
 
     /**
+     * Focus the input element.
+     * @mehod
+     */
+    focusInput() {
+        $(this.rootElement)
+            .$('input[type="text"]')
+            .sendKeys('');
+    }
+
+    /**
      * Returns true when the input element has focus.
      * @method
      * @returns {bool}
@@ -42,8 +52,18 @@ class PagePicklist {
      */
     hoverScrollUpArrow() {
         return $(this.rootElement)
-            .$('div.')
-            .isFocused();
+            .$('div.rainbow-picklist_dropdown-arrow-button.rainbow-picklist_dropdown-arrow-up')
+            .moveTo();
+    }
+
+    /**
+     * It moves the pointer out of the menu scroll up arrow
+     * @method
+     */
+    mouseLeaveScrollUpArrow() {
+        return $(this.rootElement)
+            .$('div.rainbow-picklist_dropdown-arrow-button.rainbow-picklist_dropdown-arrow-up')
+            .moveTo();
     }
 
     /**
@@ -52,8 +72,18 @@ class PagePicklist {
      */
     hoverScrollDownArrow() {
         return $(this.rootElement)
-            .$('div.')
-            .isFocused();
+            .$('div.rainbow-picklist_dropdown-arrow-button.rainbow-picklist_dropdown-arrow-down')
+            .moveTo();
+    }
+
+    /**
+     * It moves the pointer out of the menu scroll down arrow
+     * @method
+     */
+    mouseLeaveScrollDownArrow() {
+        return $(this.rootElement)
+            .$('div.rainbow-picklist_dropdown-arrow-button.rainbow-picklist_dropdown-arrow-down')
+            .moveTo();
     }
 
     /**
