@@ -2,10 +2,13 @@ import React from 'react';
 import { mount } from 'enzyme';
 import TimeSelect from '../timeSelect';
 
+jest.mock('./../helpers/getDefaultAmPm', () => jest.fn(() => 'AM'));
+
 describe('<TimeSelect/>', () => {
     it('should set hour value to "01" when hour input is focused and press up key', () => {
         const component = mount(<TimeSelect />);
-        component.find('div[role="presentation"]').simulate('keyDown', { keyCode: 38 });
+        const container = component.find('div[role="presentation"]');
+        container.simulate('keyDown', { keyCode: 38 });
         expect(
             component
                 .find('input')
@@ -16,8 +19,9 @@ describe('<TimeSelect/>', () => {
     it('should set hour value to "12" when hour input is focused and press down key', () => {
         const component = mount(<TimeSelect />);
         const hourInput = component.find('input').at(0);
+        const container = component.find('div[role="presentation"]');
         hourInput.simulate('focus');
-        component.find('div[role="presentation"]').simulate('keyDown', { keyCode: 40 });
+        container.simulate('keyDown', { keyCode: 40 });
         expect(
             component
                 .find('input')
@@ -171,8 +175,9 @@ describe('<TimeSelect/>', () => {
     it('should set minutes value to "00" when minutes input is focused and press up key', () => {
         const component = mount(<TimeSelect />);
         const minutesInput = component.find('input').at(1);
+        const container = component.find('div[role="presentation"]');
         minutesInput.simulate('focus');
-        component.find('div[role="presentation"]').simulate('keyDown', { keyCode: 38 });
+        container.simulate('keyDown', { keyCode: 38 });
         expect(
             component
                 .find('input')
@@ -183,8 +188,9 @@ describe('<TimeSelect/>', () => {
     it('should set minutes value to "59" when minutes input is focused and press down key', () => {
         const component = mount(<TimeSelect />);
         const minutesInput = component.find('input').at(1);
+        const container = component.find('div[role="presentation"]');
         minutesInput.simulate('focus');
-        component.find('div[role="presentation"]').simulate('keyDown', { keyCode: 40 });
+        container.simulate('keyDown', { keyCode: 40 });
         expect(
             component
                 .find('input')
@@ -210,16 +216,13 @@ describe('<TimeSelect/>', () => {
     it('should set the right minutes value and focus ampm input', () => {
         const component = mount(<TimeSelect />);
         const values = [
-            '022',
-            '000',
-            '001',
-            '022',
-            '055',
-            '019',
-            '030',
-            '045',
             '012',
             '013',
+            '019',
+            '022',
+            '030',
+            '045',
+            '055',
             '058',
             '059',
             '6',
@@ -228,16 +231,13 @@ describe('<TimeSelect/>', () => {
             '9',
         ];
         const expects = [
-            '22',
-            '00',
-            '01',
-            '22',
-            '55',
-            '19',
-            '30',
-            '45',
             '12',
             '13',
+            '19',
+            '22',
+            '30',
+            '45',
+            '55',
             '58',
             '59',
             '06',
@@ -352,16 +352,9 @@ describe('<TimeSelect/>', () => {
     });
     it('should pass the right defaultValue to AmPmSelect when up or down key is not pressed and does not have value initially', () => {
         const component = mount(<TimeSelect />);
-        const values = ['12', '11', '10', '5', '0', '1'];
-        const expects = ['PM', 'AM', 'AM', 'AM', 'AM', 'AM'];
-        values.forEach((value, index) => {
-            const container = component.find('div[role="presentation"]');
-            const hourInput = component.find('input').at(0);
-            hourInput.simulate('change', { target: { value } });
-            container.simulate('keyDown', { keyCode: 39 });
-            container.simulate('keyDown', { keyCode: 39 });
-            expect(component.find('AmPmSelect').prop('defaultValue')).toBe(expects[index]);
-        });
+        const hourInput = component.find('input').at(0);
+        hourInput.simulate('change', { target: { value: 12 } });
+        expect(component.find('AmPmSelect').prop('defaultValue')).toBe('AM');
     });
     it('should pass the right value to AmPmSelect when it is focused and up or down key is pressed', () => {
         const component = mount(<TimeSelect />);
@@ -457,6 +450,20 @@ describe('<TimeSelect/>', () => {
         const component = mount(<TimeSelect onCloseModal={onCloseModalMockFn} />);
         const container = component.find('div[role="presentation"]');
         container.simulate('keyDown', { keyCode: 13 });
+        expect(onCloseModalMockFn).toHaveBeenCalledTimes(1);
+    });
+    it('should call onCloseModal when click the cancel button', () => {
+        const onCloseModalMockFn = jest.fn();
+        const component = mount(<TimeSelect onCloseModal={onCloseModalMockFn} />);
+        const cancelButton = component.find('Button').at(0);
+        cancelButton.simulate('click');
+        expect(onCloseModalMockFn).toHaveBeenCalledTimes(1);
+    });
+    it('should call onCloseModal when click the OK button', () => {
+        const onCloseModalMockFn = jest.fn();
+        const component = mount(<TimeSelect onCloseModal={onCloseModalMockFn} />);
+        const okButton = component.find('Button').at(1);
+        okButton.simulate('click');
         expect(onCloseModalMockFn).toHaveBeenCalledTimes(1);
     });
     it('should call onChange with the right value when press enter key while hour, minutes and ampm has value', () => {
