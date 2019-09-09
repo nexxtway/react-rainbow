@@ -16,28 +16,11 @@ import getNextAmPmValue from './helpers/getNextAmPmValue';
 import get24HourTime from './helpers/get24HourTime';
 import getSingleNewTypedValue from './helpers/getSingleNewTypedValue';
 import isNumber from './helpers/isNumber';
+import getHour from './helpers/getHour';
+import getMinutes from './helpers/getMinutes';
+import getAmPm from './helpers/getAmPm';
+import getDefaultAmPm from './helpers/getDefaultAmPm';
 import { LEFT_KEY, RIGHT_KEY, UP_KEY, DOWN_KEY, DELETE_KEY, ENTER_KEY } from '../../libs/constants';
-
-function getHour(value) {
-    if (value) {
-        return value.split(':')[0];
-    }
-    return '';
-}
-
-function getMinutes(value) {
-    if (value) {
-        return value.split(':')[1].split(' ')[0];
-    }
-    return '';
-}
-
-function getAmPm(value) {
-    if (value) {
-        return value.split(' ')[1];
-    }
-    return undefined;
-}
 
 export default class TimeSelect extends Component {
     constructor(props) {
@@ -94,8 +77,7 @@ export default class TimeSelect extends Component {
                 });
             } else {
                 normalizedValue = normalizeHour(value);
-                const numberValue = Number(value);
-                this.defaultAmPM = numberValue > 11 && numberValue < 20 ? 'PM' : 'AM';
+                this.defaultAmPM = getDefaultAmPm(value);
                 this.setState({
                     hour: normalizedValue,
                 });
