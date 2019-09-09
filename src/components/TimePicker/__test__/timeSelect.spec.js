@@ -1,6 +1,14 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import TimeSelect from '../timeSelect';
+import {
+    LEFT_KEY,
+    RIGHT_KEY,
+    UP_KEY,
+    DOWN_KEY,
+    DELETE_KEY,
+    ENTER_KEY,
+} from '../../../libs/constants';
 
 jest.mock('./../helpers/getDefaultAmPm', () => jest.fn(() => 'AM'));
 
@@ -8,7 +16,7 @@ describe('<TimeSelect/>', () => {
     it('should set hour value to "01" when hour input is focused and press up key', () => {
         const component = mount(<TimeSelect />);
         const container = component.find('div[role="presentation"]');
-        container.simulate('keyDown', { keyCode: 38 });
+        container.simulate('keyDown', { keyCode: UP_KEY });
         expect(
             component
                 .find('input')
@@ -21,7 +29,7 @@ describe('<TimeSelect/>', () => {
         const hourInput = component.find('input').at(0);
         const container = component.find('div[role="presentation"]');
         hourInput.simulate('focus');
-        container.simulate('keyDown', { keyCode: 40 });
+        container.simulate('keyDown', { keyCode: DOWN_KEY });
         expect(
             component
                 .find('input')
@@ -34,11 +42,11 @@ describe('<TimeSelect/>', () => {
         const hourInput = component.find('input').at(0);
         const container = component.find('div[role="presentation"]');
         hourInput.simulate('focus');
-        container.simulate('keyDown', { keyCode: 38 });
-        container.simulate('keyDown', { keyCode: 38 });
-        container.simulate('keyDown', { keyCode: 38 });
-        container.simulate('keyDown', { keyCode: 38 });
-        container.simulate('keyDown', { keyCode: 38 });
+        container.simulate('keyDown', { keyCode: UP_KEY });
+        container.simulate('keyDown', { keyCode: UP_KEY });
+        container.simulate('keyDown', { keyCode: UP_KEY });
+        container.simulate('keyDown', { keyCode: UP_KEY });
+        container.simulate('keyDown', { keyCode: UP_KEY });
         expect(
             component
                 .find('input')
@@ -177,7 +185,7 @@ describe('<TimeSelect/>', () => {
         const minutesInput = component.find('input').at(1);
         const container = component.find('div[role="presentation"]');
         minutesInput.simulate('focus');
-        container.simulate('keyDown', { keyCode: 38 });
+        container.simulate('keyDown', { keyCode: UP_KEY });
         expect(
             component
                 .find('input')
@@ -190,7 +198,7 @@ describe('<TimeSelect/>', () => {
         const minutesInput = component.find('input').at(1);
         const container = component.find('div[role="presentation"]');
         minutesInput.simulate('focus');
-        container.simulate('keyDown', { keyCode: 40 });
+        container.simulate('keyDown', { keyCode: DOWN_KEY });
         expect(
             component
                 .find('input')
@@ -203,9 +211,9 @@ describe('<TimeSelect/>', () => {
         const minutesInput = component.find('input').at(1);
         const container = component.find('div[role="presentation"]');
         minutesInput.simulate('focus');
-        container.simulate('keyDown', { keyCode: 38 });
-        container.simulate('keyDown', { keyCode: 38 });
-        container.simulate('keyDown', { keyCode: 38 });
+        container.simulate('keyDown', { keyCode: UP_KEY });
+        container.simulate('keyDown', { keyCode: UP_KEY });
+        container.simulate('keyDown', { keyCode: UP_KEY });
         expect(
             component
                 .find('input')
@@ -317,36 +325,36 @@ describe('<TimeSelect/>', () => {
     it('should focus minutes input when hour input is focused and press right key', () => {
         const component = mount(<TimeSelect />);
         const container = component.find('div[role="presentation"]');
-        container.simulate('keyDown', { keyCode: 39 });
+        container.simulate('keyDown', { keyCode: RIGHT_KEY });
         const focusedElementDataId = document.activeElement.getAttribute('data-id');
         expect(focusedElementDataId).toBe('minutes');
     });
     it('should focus minutes input when ampm input is focused and press left key', () => {
         const component = mount(<TimeSelect />);
         const container = component.find('div[role="presentation"]');
-        container.simulate('keyDown', { keyCode: 39 });
-        container.simulate('keyDown', { keyCode: 39 });
-        container.simulate('keyDown', { keyCode: 37 });
+        container.simulate('keyDown', { keyCode: RIGHT_KEY });
+        container.simulate('keyDown', { keyCode: RIGHT_KEY });
+        container.simulate('keyDown', { keyCode: LEFT_KEY });
         const focusedElementDataId = document.activeElement.getAttribute('data-id');
         expect(focusedElementDataId).toBe('minutes');
     });
     it('should keep the hour input focused when it is focused and press left key', () => {
         const component = mount(<TimeSelect />);
         const container = component.find('div[role="presentation"]');
-        container.simulate('keyDown', { keyCode: 39 });
-        container.simulate('keyDown', { keyCode: 39 });
-        container.simulate('keyDown', { keyCode: 37 });
-        container.simulate('keyDown', { keyCode: 37 });
-        container.simulate('keyDown', { keyCode: 37 });
+        container.simulate('keyDown', { keyCode: RIGHT_KEY });
+        container.simulate('keyDown', { keyCode: RIGHT_KEY });
+        container.simulate('keyDown', { keyCode: LEFT_KEY });
+        container.simulate('keyDown', { keyCode: LEFT_KEY });
+        container.simulate('keyDown', { keyCode: LEFT_KEY });
         const focusedElementDataId = document.activeElement.getAttribute('data-id');
         expect(focusedElementDataId).toBe('hour');
     });
     it('should keep the ampm input focused when it is focused and press right key', () => {
         const component = mount(<TimeSelect />);
         const container = component.find('div[role="presentation"]');
-        container.simulate('keyDown', { keyCode: 39 });
-        container.simulate('keyDown', { keyCode: 39 });
-        container.simulate('keyDown', { keyCode: 39 });
+        container.simulate('keyDown', { keyCode: RIGHT_KEY });
+        container.simulate('keyDown', { keyCode: RIGHT_KEY });
+        container.simulate('keyDown', { keyCode: RIGHT_KEY });
         const focusedElementDataId = document.activeElement.getAttribute('data-id');
         expect(focusedElementDataId).toBe('input-element');
     });
@@ -358,13 +366,13 @@ describe('<TimeSelect/>', () => {
     });
     it('should pass the right value to AmPmSelect when it is focused and up or down key is pressed', () => {
         const component = mount(<TimeSelect />);
-        const values = [38, 40, 38, 38, 40, 40, 38];
+        const values = [UP_KEY, DOWN_KEY, UP_KEY, UP_KEY, DOWN_KEY, DOWN_KEY, UP_KEY];
         const expects = ['PM', 'AM', 'PM', 'AM', 'PM', 'AM', 'PM'];
 
         values.forEach((value, index) => {
             const container = component.find('div[role="presentation"]');
-            container.simulate('keyDown', { keyCode: 39 });
-            container.simulate('keyDown', { keyCode: 39 });
+            container.simulate('keyDown', { keyCode: RIGHT_KEY });
+            container.simulate('keyDown', { keyCode: RIGHT_KEY });
             container.simulate('keyDown', { keyCode: value });
             expect(component.find('AmPmSelect').prop('value')).toBe(expects[index]);
         });
@@ -374,7 +382,7 @@ describe('<TimeSelect/>', () => {
         const hourInput = component.find('input').at(0);
         const container = component.find('div[role="presentation"]');
         hourInput.simulate('change', { target: { value: '7' } });
-        container.simulate('keyDown', { keyCode: 8 });
+        container.simulate('keyDown', { keyCode: DELETE_KEY });
         expect(
             component
                 .find('input')
@@ -387,8 +395,8 @@ describe('<TimeSelect/>', () => {
         const minutesInput = component.find('input').at(1);
         const container = component.find('div[role="presentation"]');
         minutesInput.simulate('change', { target: { value: '20' } });
-        container.simulate('keyDown', { keyCode: 39 });
-        container.simulate('keyDown', { keyCode: 8 });
+        container.simulate('keyDown', { keyCode: RIGHT_KEY });
+        container.simulate('keyDown', { keyCode: DELETE_KEY });
         expect(
             component
                 .find('input')
@@ -401,8 +409,8 @@ describe('<TimeSelect/>', () => {
         const hourInput = component.find('input').at(0);
         const container = component.find('div[role="presentation"]');
         hourInput.simulate('change', { target: { value: '7' } });
-        container.simulate('keyDown', { keyCode: 8 });
-        container.simulate('keyDown', { keyCode: 38 });
+        container.simulate('keyDown', { keyCode: DELETE_KEY });
+        container.simulate('keyDown', { keyCode: UP_KEY });
         expect(
             component
                 .find('input')
@@ -415,9 +423,9 @@ describe('<TimeSelect/>', () => {
         const minutesInput = component.find('input').at(1);
         const container = component.find('div[role="presentation"]');
         minutesInput.simulate('change', { target: { value: '20' } });
-        container.simulate('keyDown', { keyCode: 39 });
-        container.simulate('keyDown', { keyCode: 8 });
-        container.simulate('keyDown', { keyCode: 40 });
+        container.simulate('keyDown', { keyCode: RIGHT_KEY });
+        container.simulate('keyDown', { keyCode: DELETE_KEY });
+        container.simulate('keyDown', { keyCode: DOWN_KEY });
         expect(
             component
                 .find('input')
@@ -430,7 +438,7 @@ describe('<TimeSelect/>', () => {
         const component = mount(<TimeSelect />);
         const container = component.find('div[role="presentation"]');
         container.simulate('keyDown', {
-            keyCode: 13,
+            keyCode: ENTER_KEY,
             stopPropagation: stopPropagationMockFn,
         });
         expect(stopPropagationMockFn).toHaveBeenCalledTimes(1);
@@ -440,7 +448,7 @@ describe('<TimeSelect/>', () => {
         const component = mount(<TimeSelect />);
         const container = component.find('div[role="presentation"]');
         container.simulate('keyDown', {
-            keyCode: 13,
+            keyCode: ENTER_KEY,
             preventDefault: preventDefaultMockFn,
         });
         expect(preventDefaultMockFn).toHaveBeenCalledTimes(1);
@@ -449,7 +457,7 @@ describe('<TimeSelect/>', () => {
         const onCloseModalMockFn = jest.fn();
         const component = mount(<TimeSelect onCloseModal={onCloseModalMockFn} />);
         const container = component.find('div[role="presentation"]');
-        container.simulate('keyDown', { keyCode: 13 });
+        container.simulate('keyDown', { keyCode: ENTER_KEY });
         expect(onCloseModalMockFn).toHaveBeenCalledTimes(1);
     });
     it('should call onCloseModal when click the cancel button', () => {
@@ -474,17 +482,17 @@ describe('<TimeSelect/>', () => {
         const minutesInput = component.find('input').at(1);
         hourInput.simulate('change', { target: { value: '12' } });
         minutesInput.simulate('change', { target: { value: '14' } });
-        container.simulate('keyDown', { keyCode: 39 });
-        container.simulate('keyDown', { keyCode: 39 });
-        container.simulate('keyDown', { keyCode: 38 });
-        container.simulate('keyDown', { keyCode: 13 });
+        container.simulate('keyDown', { keyCode: RIGHT_KEY });
+        container.simulate('keyDown', { keyCode: RIGHT_KEY });
+        container.simulate('keyDown', { keyCode: UP_KEY });
+        container.simulate('keyDown', { keyCode: ENTER_KEY });
         expect(onChangeMockFn).toHaveBeenCalledWith('12:14');
     });
     it('should not call onChange when press enter key while hour, minutes and ampm has not value', () => {
         const onChangeMockFn = jest.fn();
         const component = mount(<TimeSelect onChange={onChangeMockFn} />);
         const container = component.find('div[role="presentation"]');
-        container.simulate('keyDown', { keyCode: 13 });
+        container.simulate('keyDown', { keyCode: ENTER_KEY });
         expect(onChangeMockFn).toHaveBeenCalledTimes(0);
     });
 });

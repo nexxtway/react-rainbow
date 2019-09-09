@@ -6,11 +6,7 @@ describe('isNumber', () => {
         values.forEach(value => expect(isNumber(value)).toBe(true));
     });
     it('should return false when the value passed is not a positive integer number', () => {
-        const values = [0.23, '0,1', -100];
-        values.forEach(value => expect(isNumber(value)).toBe(false));
-    });
-    it('should return false when the value paseed is an empty string or it is an array', () => {
-        const values = [[], ''];
+        const values = [0.23, '0,1', -100, [], ''];
         values.forEach(value => expect(isNumber(value)).toBe(false));
     });
 });
