@@ -1,5 +1,14 @@
 const PagePicklist = require('../../../src/components/Picklist/pageObject');
-const { ARROW_DOWN_KEY, SPACE_KEY, ENTER_KEY, ESCAPE_KEY, TAB_KEY } = require('../../constants');
+const {
+    ARROW_LEFT_KEY,
+    ARROW_RIGHT_KEY,
+    ARROW_UP_KEY,
+    ARROW_DOWN_KEY,
+    SPACE_KEY,
+    ENTER_KEY,
+    ESCAPE_KEY,
+    TAB_KEY,
+} = require('../../constants');
 
 const PICKLIST = '#picklist-1';
 const REACT_LOGO = 'img[alt="react-rainbow"]';
@@ -25,10 +34,13 @@ describe('Picklist base example', () => {
     it('should open menu and not lose input focus when it is focused and press any arrow key', () => {
         const picklist = new PagePicklist(PICKLIST);
         picklist.focusInput();
-        browser.keys(ARROW_DOWN_KEY);
-        picklist.waitUntilOpen();
-        expect(picklist.isMenuOpen()).toBe(true);
-        expect(picklist.hasFocusInput()).toBe(true);
+        [ARROW_LEFT_KEY, ARROW_RIGHT_KEY, ARROW_UP_KEY, ARROW_DOWN_KEY].forEach(key => {
+            browser.keys(ESCAPE_KEY);
+            browser.keys(key);
+            picklist.waitUntilOpen();
+            expect(picklist.isMenuOpen()).toBe(true);
+            expect(picklist.hasFocusInput()).toBe(true);
+        });
     });
     it('should open menu and not lose input focus when it is focused and press enter key', () => {
         const picklist = new PagePicklist(PICKLIST);
@@ -70,15 +82,15 @@ describe('Picklist base example', () => {
         logoElement.click();
         expect(picklist.isMenuOpen()).toBe(false);
     });
-    it("should select 'Empire State' with keyboard", () => {
+    it('should select Empire State with keyboard', () => {
         const picklist = new PagePicklist(PICKLIST);
         picklist.clickInput();
         picklist.waitUntilOpen();
         browser.keys(ARROW_DOWN_KEY);
         browser.keys(ENTER_KEY);
-        expect(picklist.getLabel()).toBe('Empire State');
+        expect(picklist.getSelectedOptionLabel()).toBe('Empire State');
     });
-    it("should set active 'Empire State' when hover the option", () => {
+    it('should set active Empire State when hover the option', () => {
         const picklist = new PagePicklist(PICKLIST);
         picklist.clickInput();
         picklist.waitUntilOpen();
@@ -104,13 +116,10 @@ describe('Picklist base example', () => {
         picklist.clickInput();
         picklist.waitUntilOpen();
         const option = picklist.getOption(0);
-        const optionLabel = option.getLabel();
+        expect(option.isVisible()).toBe(true);
         browser.keys(ENTER_KEY);
-        const labels = [];
-        for (let index = 0; index < picklist.getRegisteredOptionsLength(); index += 1) {
-            const opt = picklist.getOption(index);
-            labels.push(opt.getLabel());
-        }
-        expect(labels.includes(optionLabel)).toBe(false);
+        picklist.clickInput();
+        picklist.waitUntilOpen();
+        expect(option.isVisible()).toBe(false);
     });
 });

@@ -86,7 +86,7 @@ class PagePicklist {
             .moveTo();
     }
 
-    getLabel() {
+    getSelectedOptionLabel() {
         return $(this.rootElement)
             .$('input[type="text"')
             .getValue();
@@ -97,7 +97,7 @@ class PagePicklist {
      * @method
      * @returns {number}
      */
-    getRegisteredOptionsLength() {
+    getOptionsLength() {
         return $(this.rootElement).$$(
             'li.rainbow-picklist-option:not(.rainbow-picklist-option_selected)',
         ).length;
@@ -113,7 +113,7 @@ class PagePicklist {
             'li.rainbow-picklist-option:not(.rainbow-picklist-option_selected)',
         );
         const option = activeOptions[optionIndex];
-        if (!option.error) {
+        if (option && !option.error) {
             return new PagePicklistOption(option);
         }
         return null;

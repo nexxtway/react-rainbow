@@ -1,12 +1,12 @@
 Here is an overview about how to use the Picklist page object:
 
-    const PagePicklist = require('../../../src/components/Picklist/pageObject');
+     const PagePicklist = require('react-rainbow-components/components//Picklist/pageObject');
 
     const PICKLIST = '#picklist-1';
 
     describe('Picklist base example', () => {
         beforeAll(() => {
-            browser.url('/#!/Picklist/1');
+            browser.url('/url/to/testing/page');
         });
         beforeEach(() => {
             browser.refresh();
@@ -22,13 +22,13 @@ Here is an overview about how to use the Picklist page object:
             expect(picklist.isMenuOpen()).toBe(true);
             expect(picklist.hasFocusInput()).toBe(true);
         });
-        it("should select 'Empire State' with keyboard", () => {
+        it('should select Empire State with keyboard', () => {
             const picklist = new PagePicklist(PICKLIST);
             picklist.clickInput();
             picklist.waitUntilOpen();
             browser.keys(ARROW_DOWN_KEY);
             browser.keys(ENTER_KEY);
-            expect(picklist.getLabel()).toBe('Empire State');
+            expect(picklist.getSelectedOptionLabel()).toBe('Empire State');
         });
         it('should set active the first option when other is active and close the menu and open it again', () => {
             const picklist = new PagePicklist(PICKLIST);
@@ -48,13 +48,10 @@ Here is an overview about how to use the Picklist page object:
             picklist.clickInput();
             picklist.waitUntilOpen();
             const option = picklist.getOption(0);
-            const optionLabel = option.getLabel();
+            expect(option.isVisible()).toBe(true);
             browser.keys(ENTER_KEY);
-            const labels = [];
-            for (let index = 0; index < picklist.getRegisteredOptionsLength(); index += 1) {
-                const opt = picklist.getOption(index);
-                labels.push(opt.getLabel());
-            }
-            expect(labels.includes(optionLabel)).toBe(false);
+            picklist.clickInput();
+            picklist.waitUntilOpen();
+            expect(option.isVisible()).toBe(false);
         });
     });
