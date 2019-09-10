@@ -30,9 +30,9 @@ class PagePicklist {
      * @mehod
      */
     focusInput() {
-        $(this.rootElement)
-            .$('input[type="text"]')
-            .sendKeys('');
+        this.clickInput();
+        this.waitUntilOpen();
+        this.clickInput();
     }
 
     /**
@@ -62,7 +62,7 @@ class PagePicklist {
      */
     mouseLeaveScrollUpArrow() {
         return $(this.rootElement)
-            .$('div.rainbow-picklist_dropdown-arrow-button.rainbow-picklist_dropdown-arrow-up')
+            .$('input[type="text"]')
             .moveTo();
     }
 
@@ -82,8 +82,14 @@ class PagePicklist {
      */
     mouseLeaveScrollDownArrow() {
         return $(this.rootElement)
-            .$('div.rainbow-picklist_dropdown-arrow-button.rainbow-picklist_dropdown-arrow-down')
+            .$('input[type="text"]')
             .moveTo();
+    }
+
+    getLabel() {
+        return $(this.rootElement)
+            .$('input[type="text"')
+            .getValue();
     }
 
     /**
@@ -91,8 +97,10 @@ class PagePicklist {
      * @method
      * @returns {number}
      */
-    getOptionsLength() {
-        return $(this.rootElement).$$('li.rainbow-picklist-option').length;
+    getRegisteredOptionsLength() {
+        return $(this.rootElement).$$(
+            'li.rainbow-picklist-option:not(.rainbow-picklist-option_selected)',
+        ).length;
     }
 
     /**
@@ -101,11 +109,12 @@ class PagePicklist {
      * @param {number} optionIndex - The base 0 index of the PicklistOption.
      */
     getOption(optionIndex) {
-        const options = $(this.rootElement).$$('li.rainbow-picklist-option');
-        if (options[optionIndex]) {
-            return new PagePicklistOption(
-                `${this.rootElement} li.rainbow-picklist-option:nth-child(${optionIndex + 1})`,
-            );
+        const activeOptions = $(this.rootElement).$$(
+            'li.rainbow-picklist-option:not(.rainbow-picklist-option_selected)',
+        );
+        const option = activeOptions[optionIndex];
+        if (!option.error) {
+            return new PagePicklistOption(option);
         }
         return null;
     }

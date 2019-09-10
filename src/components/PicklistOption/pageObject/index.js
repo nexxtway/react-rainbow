@@ -13,11 +13,21 @@ class PagePicklistOption {
     }
 
     /**
+     * Get PicklistOption root elment
+     * @method
+     * @private
+     * @returns {object}
+     */
+    getRootElement() {
+        return typeof this.rootElement === 'string' ? $(this.rootElement) : this.rootElement;
+    }
+
+    /**
      * Clicks the PicklistOption
      * @method
      */
     click() {
-        $(this.rootElement).click();
+        this.getRootElement().click();
     }
 
     /**
@@ -25,8 +35,19 @@ class PagePicklistOption {
      * @method
      */
     hover() {
-        const itemElement = $(`${this.rootElement} > a`);
+        const itemElement = this.getRootElement().$('a');
         itemElement.moveTo();
+    }
+
+    /**
+     * Get the label of the PicklistOption.
+     * @method
+     * @returns {string}
+     */
+    getLabel() {
+        return this.getRootElement()
+            .$('a')
+            .getText();
     }
 
     /**
@@ -36,7 +57,7 @@ class PagePicklistOption {
      */
     isActive() {
         return (
-            $(this.rootElement).getAttribute('class') ===
+            this.getRootElement().getAttribute('class') ===
             'rainbow-picklist-option rainbow-picklist-option_active'
         );
     }
@@ -48,7 +69,7 @@ class PagePicklistOption {
      */
     isSelected() {
         return (
-            $(this.rootElement).getAttribute('class') ===
+            this.getRootElement().getAttribute('class') ===
             'rainbow-picklist-option rainbow-picklist-option_selected'
         );
     }
@@ -59,7 +80,7 @@ class PagePicklistOption {
      * @returns {bool}
      */
     isVisible() {
-        return $(this.rootElement).isDisplayedInViewport();
+        return this.getRootElement().isDisplayedInViewport();
     }
 }
 
