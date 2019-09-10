@@ -34,7 +34,8 @@ describe('Picklist base example', () => {
     it('should open menu and not lose input focus when it is focused and press any arrow key', () => {
         const picklist = new PagePicklist(PICKLIST);
         picklist.focusInput();
-        [ARROW_LEFT_KEY, ARROW_RIGHT_KEY, ARROW_UP_KEY, ARROW_DOWN_KEY].forEach(key => {
+        const keys = [ARROW_LEFT_KEY, ARROW_RIGHT_KEY, ARROW_UP_KEY, ARROW_DOWN_KEY];
+        keys.forEach(key => {
             browser.keys(ESCAPE_KEY);
             browser.keys(key);
             picklist.waitUntilOpen();
