@@ -4,12 +4,10 @@
 
 fix: #
 
-Changes proposed in this PR:
--
--
--
+## Changes proposed in this PR:
 
+## -
 
-[ ] I have followed (at least) the [PR section of the contributing guide](https://github.com/90milesbridge/react-rainbow/blob/master/CONTRIBUTING.md#submitting-a-pull-request).
+[ ] I have followed (at least) the [PR section of the contributing guide](https://github.com/nexxtway/react-rainbow/blob/master/CONTRIBUTING.md#submitting-a-pull-request).
 
-@90milesbridge/tigger
+@nexxtway/tigger

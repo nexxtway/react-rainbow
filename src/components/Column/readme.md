@@ -13,7 +13,7 @@
     const data = [
         {
             name: 'Leandro Torres',
-            company: '90milesbridge',
+            company: 'Nexxtway',
             email: 'leandro@gmail.com',
             status: 'verified',
         },
@@ -25,19 +25,19 @@
         },
         {
             name: 'Reinier',
-            company: '90milesbridge',
+            company: 'Nexxtway',
             email: 'reinier@gmail.com',
             status: 'verified',
         },
         {
             name: 'Sara',
-            company: '90milesbridge',
+            company: 'Nexxtway',
             email: 'sara@gmail.com',
             status: 'verified',
         },
         {
             name: 'Tahimi',
-            company: '90milesbridge',
+            company: 'Nexxtway',
             email: 'tahimi@gmail.com',
             status: 'verified',
         },

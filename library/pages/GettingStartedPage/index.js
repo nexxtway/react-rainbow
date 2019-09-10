@@ -140,7 +140,7 @@ export default class GettingStartedPage extends Component {
                             </h5>
                             <a
                                 className="rainbow-link rainbow-m-left_xx-small react-rainbow-getting-started_issue-link"
-                                href="https://github.com/90milesbridge/react-rainbow/issues/new/choose"
+                                href="https://github.com/nexxtway/react-rainbow/issues/new/choose"
                                 rel="noopener noreferrer"
                                 target="_blank"
                             >
@@ -155,7 +155,7 @@ export default class GettingStartedPage extends Component {
                                 Feel free to contribute in rainbow-components available in
                                 <a
                                     className="rainbow-link rainbow-m-left_xx-small"
-                                    href="https://github.com/90milesbridge/react-rainbow"
+                                    href="https://github.com/nexxtway/react-rainbow"
                                     rel="noopener noreferrer"
                                     target="_blank"
                                 >
@@ -189,7 +189,7 @@ export default class GettingStartedPage extends Component {
                             </h5>
                             <a
                                 className="rainbow-link rainbow-m-left_xx-small react-rainbow-getting-started_issue-link"
-                                href="https://github.com/90milesbridge/react-rainbow/blob/master/CONTRIBUTING.md"
+                                href="https://github.com/nexxtway/react-rainbow/blob/master/CONTRIBUTING.md"
                                 rel="noopener noreferrer"
                                 target="_blank"
                             >

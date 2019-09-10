@@ -12,8 +12,8 @@ React Rainbow is a collection of components that will reliably help you build yo
 
 <br>
 
-[![CircleCI](https://circleci.com/gh/90milesbridge/react-rainbow/tree/master.svg?style=svg)](https://circleci.com/gh/90milesbridge/react-rainbow/tree/master)
-[![Coverage Status](https://coveralls.io/repos/github/90milesbridge/react-rainbow/badge.svg?branch=master)](https://coveralls.io/github/90milesbridge/react-rainbow-components?branch=master)
+[![CircleCI](https://circleci.com/gh/nexxtway/react-rainbow/tree/master.svg?style=svg)](https://circleci.com/gh/nexxtway/react-rainbow/tree/master)
+[![Coverage Status](https://coveralls.io/repos/github/nexxtway/react-rainbow/badge.svg?branch=master)](https://coveralls.io/github/nexxtway/react-rainbow-components?branch=master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![npm version](https://badge.fury.io/js/react-rainbow-components.svg)](https://badge.fury.io/js/react-rainbow-components)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/react-rainbow-components/community?source=orgpage)
@@ -55,7 +55,7 @@ Yes, it's really all you need to get started as you can see in this live and int
 
 ## Running locally
 
-1. git clone https://github.com/90milesbridge/react-rainbow.git
+1. git clone https://github.com/nexxtway/react-rainbow.git
 2. cd react-rainbow
 3. yarn install
 4. yarn start
@@ -67,4 +67,4 @@ We are excited that you are interested in contributing to this project!
 
 You can help us improve React Rainbow Components, the first step to begin collaborate is to create an issue before submitting a pull request, it's always good to file an issue, so we can discuss the details of your approach or suggestion.
 
-[See more details about how to collaborate?](https://github.com/90milesbridge/react-rainbow/blob/master/CONTRIBUTING.md)
+[See more details about how to collaborate?](https://github.com/nexxtway/react-rainbow/blob/master/CONTRIBUTING.md)
