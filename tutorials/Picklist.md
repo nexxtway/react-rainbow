@@ -1,6 +1,6 @@
 Here is an overview about how to use the Picklist page object:
 
-     const PagePicklist = require('react-rainbow-components/components//Picklist/pageObject');
+    const PagePicklist = require('react-rainbow-components/components//Picklist/pageObject');
 
     const PICKLIST = '#picklist-1';
 

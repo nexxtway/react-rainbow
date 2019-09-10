@@ -72,7 +72,7 @@ class PagePicklistOption {
     }
 
     /**
-     * Wait until the options menu is open.
+     *  Wait until the option is visible.
      * @method
      */
     waitUntilDisplayed() {
