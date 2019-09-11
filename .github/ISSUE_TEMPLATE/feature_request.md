@@ -4,7 +4,6 @@ about: Suggest an idea for React Rainbow Components
 title: 'feat: add the menuSize to the avatarMenu component'
 labels: Enhancements
 assignees: ''
-
 ---
 
 <!--- Provide a general summary of the feature in the Title above -->
@@ -15,17 +14,20 @@ assignees: ''
 -->
 
 <!-- Checked checkbox should look like this: [x] -->
-- [ ] I have searched the [issues](https://github.com/90milesbridge/react-rainbow/issues) of this repository and believe that this is not a duplicate.
+
+-   [ ] I have searched the [issues](https://github.com/nexxtway/react-rainbow/issues) of this repository and believe that this is not a duplicate.
 
 **Is your feature request related to a problem? Please describe.**
 A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
 
 ## Expected Behavior 🤔
+
 <!---
     Describe how it should work.
 -->
 
 ## Context 🔦
+
 <!---
     What are you trying to accomplish? How has the lack of this feature affected you?
     Providing context helps us come up with a solution that is most useful in the real world.

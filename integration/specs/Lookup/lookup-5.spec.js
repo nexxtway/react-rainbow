@@ -62,7 +62,7 @@ describe('Lookup with options type section example', () => {
         expect(option3.isActive()).toBe(false);
         expect(option2.isActive()).toBe(true);
     });
-    it('should scroll down to see the next option focused when initially is not visible', () => {
+    it.skip('should scroll down to see the next option focused when initially is not visible', () => {
         const lookup = new PageLookup(LOOKUP);
         lookup.click();
         lookup.setQuery('a');
