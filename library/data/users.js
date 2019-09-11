@@ -1,7 +1,7 @@
 module.exports = [
     {
         name: 'Leandro Torres',
-        company: '90milesbridge',
+        company: 'Nexxtway',
         email: 'leandro@gmail.com',
         status: 'verified',
         id: '01234456789',
@@ -28,7 +28,7 @@ module.exports = [
     },
     {
         name: 'Sara',
-        company: '90milesbridge',
+        company: 'nexxtway',
         email: 'sara@gmail.com',
         status: 'verified',
         id: '3456789012',
@@ -46,7 +46,7 @@ module.exports = [
     },
     {
         name: 'Sara',
-        company: '90milesbridge',
+        company: 'nexxtway',
         email: 'sara@gmail.com',
         status: 'verified',
         id: '6789012345',
@@ -55,7 +55,7 @@ module.exports = [
     },
     {
         name: 'Leandro Torres',
-        company: '90milesbridge',
+        company: 'nexxtway',
         email: 'leandro@gmail.com',
         status: 'verified',
         id: '5678901234',
@@ -82,7 +82,7 @@ module.exports = [
     },
     {
         name: 'Leo Torres',
-        company: '90milesbridge',
+        company: 'nexxtway',
         email: 'leandro@gmail.com',
         status: 'verified',
         id: 'a123456789',
@@ -91,7 +91,7 @@ module.exports = [
     },
     {
         name: 'Tahimi',
-        company: '90milesbridge',
+        company: 'nexxtway',
         email: 'tahimi@gmail.com',
         status: 'verified',
         id: '9012345678',
@@ -127,7 +127,7 @@ module.exports = [
     },
     {
         name: 'Tahimi Leon',
-        company: '90milesbridge',
+        company: 'nexxtway',
         email: 'tahimi@gmail.com',
         status: 'verified',
         id: '456789a123',
@@ -136,7 +136,7 @@ module.exports = [
     },
     {
         name: 'Leandro Torres',
-        company: '90milesbridge',
+        company: 'nexxtway',
         email: 'leandro@gmail.com',
         status: 'verified',
         id: '56789a1234',
@@ -163,7 +163,7 @@ module.exports = [
     },
     {
         name: 'Reinier',
-        company: '90milesbridge',
+        company: 'nexxtway',
         email: 'reinier@gmail.com',
         status: 'verified',
         id: '9a12345678',
@@ -172,7 +172,7 @@ module.exports = [
     },
     {
         name: 'Tahimi',
-        company: '90milesbridge',
+        company: 'nexxtway',
         email: 'tahimi@gmail.com',
         status: 'verified',
         id: 'b123456789',
@@ -181,7 +181,7 @@ module.exports = [
     },
     {
         name: 'Leandro Torres',
-        company: '90milesbridge',
+        company: 'nexxtway',
         email: 'leandro@gmail.com',
         status: 'verified',
         id: '123456789b',
@@ -199,7 +199,7 @@ module.exports = [
     },
     {
         name: 'Saray',
-        company: '90milesbridge',
+        company: 'nexxtway',
         email: 'sara@gmail.com',
         status: 'verified',
         id: '23456789bb1',
@@ -226,7 +226,7 @@ module.exports = [
     },
     {
         name: 'Tahy',
-        company: '90milesbridge',
+        company: 'nexxtway',
         email: 'tahimi@gmail.com',
         status: 'verified',
         id: '456789b123',
@@ -235,7 +235,7 @@ module.exports = [
     },
     {
         name: 'Leandro Torres',
-        company: '90milesbridge',
+        company: 'nexxtway',
         email: 'leandro@gmail.com',
         status: 'verified',
         id: '56789b1234',
@@ -262,7 +262,7 @@ module.exports = [
     },
     {
         name: 'S Pacheco',
-        company: '90milesbridge',
+        company: 'nexxtway',
         email: 'sara@gmail.com',
         status: 'verified',
         id: '6789aa12345',

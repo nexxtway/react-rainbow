@@ -8,8 +8,15 @@ import Badge from '../../../src/components/Badge';
 import './styles.css';
 
 const GithubStarsBadge = GithubStars(({ stars }) => (
-    <Badge className="react-rainbow-github-badge rainbow-color_dark-1 rainbow-m-right_small" variant="lightest">
-        <FontAwesomeIcon className="react-rainbow-github-badge_icon" color="#061c3f" icon={faStar} />
+    <Badge
+        className="react-rainbow-github-badge rainbow-color_dark-1 rainbow-m-right_small"
+        variant="lightest"
+    >
+        <FontAwesomeIcon
+            className="react-rainbow-github-badge_icon"
+            color="#061c3f"
+            icon={faStar}
+        />
         {stars}
     </Badge>
 ));
@@ -22,9 +29,10 @@ export default function SectionHeading() {
                     <GithubStarsBadge />
                 </div>
                 <a
-                    href="https://github.com/reiniergs/react-rainbow"
+                    href="https://github.com/nexxtway/react-rainbow"
                     target="_blank"
-                    rel="noopener noreferrer">
+                    rel="noopener noreferrer"
+                >
                     <img src={githublogo} alt="github logo" />
                 </a>
             </div>
