@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ButtonIcon from '../ButtonIcon';
@@ -22,6 +21,10 @@ import getMinutes from './helpers/getMinutes';
 import getAmPm from './helpers/getAmPm';
 import getDefaultAmPm from './helpers/getDefaultAmPm';
 import { LEFT_KEY, RIGHT_KEY, UP_KEY, DOWN_KEY, DELETE_KEY, ENTER_KEY } from '../../libs/constants';
+
+function preventDefault(event) {
+    event.preventDefault();
+}
 
 export default class TimeSelect extends Component {
     constructor(props) {
@@ -134,13 +137,8 @@ export default class TimeSelect extends Component {
                 });
             }
 
-            const isFullMinutesInitialy =
-                value.toString().length >= 2 && !this.isUpOrDownKeyPressed;
-
             const shouldNotFocusNextInput =
-                Number(normalizedValue) < 6 &&
-                !isFullMinutesInitialy &&
-                (!minutes || this.isUpOrDownKeyPressed);
+                Number(normalizedValue) < 6 && (!minutes || this.isUpOrDownKeyPressed);
 
             if (shouldNotFocusNextInput) {
                 this.isUpOrDownKeyPressed = false;
@@ -328,6 +326,8 @@ export default class TimeSelect extends Component {
                     onKeyDown={this.handleKeyDown}
                 >
                     <input
+                        onDrop={preventDefault}
+                        onPaste={preventDefault}
                         data-id="hour"
                         className="rainbow-time-picker_time-select-value"
                         type="text"
@@ -343,6 +343,8 @@ export default class TimeSelect extends Component {
                     <span className="rainbow-time-picker_dots">:</span>
 
                     <input
+                        onDrop={preventDefault}
+                        onPaste={preventDefault}
                         data-id="minutes"
                         className="rainbow-time-picker_time-select-value"
                         tabIndex="-1"

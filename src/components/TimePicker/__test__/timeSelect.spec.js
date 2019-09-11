@@ -238,9 +238,6 @@ describe('<TimeSelect/>', () => {
     it('should set the right minutes value and focus ampm input', () => {
         const component = mount(<TimeSelect />);
         const values = [
-            '000',
-            '001',
-            '005',
             '012',
             '013',
             '019',
@@ -256,9 +253,6 @@ describe('<TimeSelect/>', () => {
             '9',
         ];
         const expects = [
-            '00',
-            '01',
-            '05',
             '12',
             '13',
             '19',
