@@ -1,8 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="161" height="92" viewBox="0 0 161 92">
-    <g fill="none" fill-rule="nonzero">
-        <path fill="#E3E5ED" d="M.5 38.5V86A5.5 5.5 0 0 0 6 91.5h149a5.5 5.5 0 0 0 5.5-5.5V38.5H.5zM0 38h161v48a6 6 0 0 1-6 6H6a6 6 0 0 1-6-6V38z"/>
-        <path fill="#E3E5ED" d="M4 0h153a4 4 0 0 1 4 4v37H0V4a4 4 0 0 1 4-4z"/>
-        <path fill="#FFF" d="M22 19.5h54a8.5 8.5 0 0 1 8.5 8.5v14.5h-71V28a8.5 8.5 0 0 1 8.5-8.5z"/>
-        <path fill="#A4A7B5" d="M25.5 33.5a2 2 0 1 1 0-4h43a2 2 0 1 1 0 4h-43zM104.5 33.5a2 2 0 1 1 0-4h43a2 2 0 0 1 0 4h-43zM25.5 59a1.5 1.5 0 0 1 0-3H138a1.5 1.5 0 0 1 0 3H25.5zM25.5 70a1.5 1.5 0 0 1 0-3H112a1.5 1.5 0 0 1 0 3H25.5zM25.5 81.5a1.5 1.5 0 0 1 0-3H84a1.5 1.5 0 0 1 0 3H25.5z"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="161px" height="92px" viewBox="0 0 161 92" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>tabset</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="tabset">
+            <path d="M0.5,38.5 L0.5,86 C0.5,89.0375661 2.96243388,91.5 6,91.5 L155,91.5 C158.037566,91.5 160.5,89.0375661 160.5,86 L160.5,38.5 L0.5,38.5 Z M0,38 L161,38 L161,86 C161,89.3137085 158.313708,92 155,92 L6,92 C2.6862915,92 0,89.3137085 0,86 L0,38 Z" id="Rectangle" fill="#E3E5ED" fill-rule="nonzero"></path>
+            <path d="M0.5,38.5 L0.5,86 C0.5,89.0375661 2.96243388,91.5 6,91.5 L155,91.5 C158.037566,91.5 160.5,89.0375661 160.5,86 L160.5,38.5 L0.5,38.5 Z" id="Rectangle" fill="#FFFFFF" fill-rule="nonzero"></path>
+            <path d="M4,0 L157,0 C159.209139,0 161,1.790861 161,4 L161,41 L-4.4408921e-16,41 L-4.4408921e-16,4 C-4.4408921e-16,1.790861 1.790861,0 4,0 Z" id="Rectangle" fill="#E3E5ED" fill-rule="nonzero"></path>
+            <g id="Group-48" transform="translate(6.500000, 19.500000)">
+                <path d="M15.5,0 L69.5,0 C74.1944204,0 78,3.80557963 78,8.5 L78,23 L7,23 L7,8.5 C7,3.80557963 10.8055796,0 15.5,0 Z" id="Rectangle" fill="#FFFFFF" fill-rule="nonzero"></path>
+                <path d="M19,14 C17.8954305,14 17,13.1045695 17,12 C17,10.8954305 17.8954305,10 19,10 L62,10 C63.1045695,10 64,10.8954305 64,12 C64,13.1045695 63.1045695,14 62,14 L19,14 Z" id="Line-10" fill="#01B6F5" fill-rule="nonzero"></path>
+                <g id="Group-34" transform="translate(0.000000, 14.500000)">
+                    <rect id="Rectangle" fill="#FFFFFF" x="0.5" y="0" width="7" height="7"></rect>
+                    <path d="M0,0 L7,0 C7,3.86599325 3.86599325,7 0,7 L0,0 Z" id="Rectangle" fill="#E3E5ED" fill-rule="nonzero"></path>
+                </g>
+                <g id="Group-34" transform="translate(81.500000, 18.000000) scale(-1, 1) translate(-81.500000, -18.000000) translate(77.500000, 14.500000)">
+                    <rect id="Rectangle" fill="#FFFFFF" x="0.5" y="0" width="7" height="7"></rect>
+                    <path d="M0.5,0 L7.5,0 C7.5,3.86599325 4.36599325,7 0.5,7 L0.5,0 Z" id="Rectangle" fill="#E3E5ED" fill-rule="nonzero"></path>
+                </g>
+            </g>
+            <path d="M104.5,33.5 C103.395431,33.5 102.5,32.6045695 102.5,31.5 C102.5,30.3954305 103.395431,29.5 104.5,29.5 L147.5,29.5 C148.604569,29.5 149.5,30.3954305 149.5,31.5 C149.5,32.6045695 148.604569,33.5 147.5,33.5 L104.5,33.5 Z" id="Line-10" fill="#A4A7B5" fill-rule="nonzero"></path>
+            <path d="M25.5,59 C24.6715729,59 24,58.3284271 24,57.5 C24,56.6715729 24.6715729,56 25.5,56 L138,56 C138.828427,56 139.5,56.6715729 139.5,57.5 C139.5,58.3284271 138.828427,59 138,59 L25.5,59 Z" id="Line-10" fill="#A4A7B5" fill-rule="nonzero"></path>
+            <path d="M25.5,70 C24.6715729,70 24,69.3284271 24,68.5 C24,67.6715729 24.6715729,67 25.5,67 L112,67 C112.828427,67 113.5,67.6715729 113.5,68.5 C113.5,69.3284271 112.828427,70 112,70 L25.5,70 Z" id="Line-10" fill="#A4A7B5" fill-rule="nonzero"></path>
+            <path d="M25.5,81.5 C24.6715729,81.5 24,80.8284271 24,80 C24,79.1715729 24.6715729,78.5 25.5,78.5 L84,78.5 C84.8284271,78.5 85.5,79.1715729 85.5,80 C85.5,80.8284271 84.8284271,81.5 84,81.5 L25.5,81.5 Z" id="Line-10" fill="#A4A7B5" fill-rule="nonzero"></path>
+        </g>
     </g>
 </svg>
