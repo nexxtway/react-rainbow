@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ButtonIcon from '../ButtonIcon';
@@ -133,8 +134,13 @@ export default class TimeSelect extends Component {
                 });
             }
 
+            const isFullMinutesInitialy =
+                value.toString().length >= 2 && !this.isUpOrDownKeyPressed;
+
             const shouldNotFocusNextInput =
-                Number(normalizedValue) < 6 && (!minutes || this.isUpOrDownKeyPressed);
+                Number(normalizedValue) < 6 &&
+                !isFullMinutesInitialy &&
+                (!minutes || this.isUpOrDownKeyPressed);
 
             if (shouldNotFocusNextInput) {
                 this.isUpOrDownKeyPressed = false;
