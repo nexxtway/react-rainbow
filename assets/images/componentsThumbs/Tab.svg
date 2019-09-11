@@ -1,8 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="98" height="57" viewBox="0 0 98 57">
-    <g fill="none" fill-rule="nonzero">
-        <path fill="#E3E5ED" d="M.5 23.5V51A5.5 5.5 0 0 0 6 56.5h86a5.5 5.5 0 0 0 5.5-5.5V23.5H.5zM0 23h98v28a6 6 0 0 1-6 6H6a6 6 0 0 1-6-6V23z"/>
-        <path fill="#E3E5ED" d="M4 0h90a4 4 0 0 1 4 4v29H0V4a4 4 0 0 1 4-4z"/>
-        <path fill="#FFF" d="M22 12h54a8 8 0 0 1 8 8v14H14V20a8 8 0 0 1 8-8z"/>
-        <path fill="#A4A7B5" d="M29.5 25.5a2 2 0 1 1 0-4h39a2 2 0 1 1 0 4h-39z"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="98px" height="57px" viewBox="0 0 98 57" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>tab</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="tab">
+            <path d="M0.5,23.5 L0.5,51 C0.5,54.0375661 2.96243388,56.5 6,56.5 L92,56.5 C95.0375661,56.5 97.5,54.0375661 97.5,51 L97.5,23.5 L0.5,23.5 Z M0,23 L98,23 L98,51 C98,54.3137085 95.3137085,57 92,57 L6,57 C2.6862915,57 0,54.3137085 0,51 L0,23 Z" id="Rectangle" fill="#E3E5ED" fill-rule="nonzero"></path>
+            <path d="M0.5,23.5 L0.5,51 C0.5,54.0375661 2.96243388,56.5 6,56.5 L92,56.5 C95.0375661,56.5 97.5,54.0375661 97.5,51 L97.5,23.5 L0.5,23.5 Z" id="Path" fill="#FFFFFF" fill-rule="nonzero"></path>
+            <path d="M4,0 L94,0 C96.209139,0 98,1.790861 98,4 L98,33 L-4.4408921e-16,33 L-4.4408921e-16,4 C-4.4408921e-16,1.790861 1.790861,0 4,0 Z" id="Rectangle" fill="#E3E5ED" fill-rule="nonzero"></path>
+            <g id="Group-41" transform="translate(14.000000, 12.000000)" fill-rule="nonzero">
+                <path d="M8,0 L62,0 C66.418278,0 70,3.581722 70,8 L70,22 L0,22 L0,8 C0,3.581722 3.581722,0 8,0 Z" id="Rectangle" fill="#FFFFFF"></path>
+                <path d="M15.5,13.5 C14.3954305,13.5 13.5,12.6045695 13.5,11.5 C13.5,10.3954305 14.3954305,9.5 15.5,9.5 L54.5,9.5 C55.6045695,9.5 56.5,10.3954305 56.5,11.5 C56.5,12.6045695 55.6045695,13.5 54.5,13.5 L15.5,13.5 Z" id="Line-10" fill="#01B6F5"></path>
+            </g>
+            <g id="Group-34" transform="translate(7.000000, 26.000000)">
+                <rect id="Rectangle" fill="#FFFFFF" x="0.5" y="0" width="7" height="7"></rect>
+                <path d="M0,0 L7,0 C7,3.86599325 3.86599325,7 0,7 L0,0 Z" id="Rectangle" fill="#E3E5ED" fill-rule="nonzero"></path>
+            </g>
+            <g id="Group-34" transform="translate(87.000000, 29.500000) scale(-1, 1) translate(-87.000000, -29.500000) translate(83.000000, 26.000000)">
+                <rect id="Rectangle" fill="#FFFFFF" x="0.5" y="0" width="7" height="7"></rect>
+                <path d="M3.55271368e-15,0 L7,0 C7,3.86599325 3.86599325,7 3.55271368e-15,7 L3.55271368e-15,0 Z" id="Rectangle" fill="#E3E5ED" fill-rule="nonzero"></path>
+            </g>
+        </g>
     </g>
 </svg>
