@@ -85,7 +85,7 @@ jobs:
                       - v1-dependencies-{{ checksum "yarn.lock" }}
                       # fallback to using the latest cache if no exact match is found
                       - v1-dependencies-
-            - run: git config --global user.email "admin@90milesbridge.com"
+            - run: git config --global user.email "admin@nexxtway.com"
             - run: git config --global user.name "TheAdmin"
             - run: yarn install
             - run:

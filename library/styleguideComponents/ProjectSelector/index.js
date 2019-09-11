@@ -28,14 +28,20 @@ export default class ProjectSelector extends Component {
             [ESCAPE_KEY]: () => this.closeMenu(),
         };
         this.containerRef = React.createRef();
-        this.references = Array(1).fill(0).map(() => React.createRef());
+        this.references = Array(1)
+            .fill(0)
+            .map(() => React.createRef());
     }
 
     componentDidMount() {
-        getLibraryVersion('https://api.github.com/repos/90milesbridge/react-rainbow/contents/package.json').then((version) => {
+        getLibraryVersion(
+            'https://api.github.com/repos/nexxtway/react-rainbow/contents/package.json',
+        ).then(version => {
             this.setState({ componentLibraryVersion: version });
         });
-        getLibraryVersion('https://api.github.com/repos/reiniergs/react-prismic-cms/contents/package.json').then((version) => {
+        getLibraryVersion(
+            'https://api.github.com/repos/reiniergs/react-prismic-cms/contents/package.json',
+        ).then(version => {
             this.setState({ prismicLibraryVersion: version });
         });
     }
@@ -125,15 +131,18 @@ export default class ProjectSelector extends Component {
                 className={this.getContainerClassNames()}
                 role="menu"
                 onKeyDown={this.handleKeyPressed}
-                ref={this.containerRef}>
+                ref={this.containerRef}
+            >
                 <li
                     className="react-rainbow-selector_selected-item-section"
                     onClick={this.toggleMenu}
-                    role="menuitem">
+                    role="menuitem"
+                >
                     <a
                         href="javascript:void(0);"
                         className="react-rainbow-selector_item"
-                        tabIndex={this.getTabIndex()}>
+                        tabIndex={this.getTabIndex()}
+                    >
                         <img src={rainbowLogo} alt="react-rainbow" />
                         <div className="react-rainbow-selector_item-text">
                             <span className="react-rainbow-selector_item-text_header">
@@ -150,11 +159,12 @@ export default class ProjectSelector extends Component {
                     <MenuDivider className="react-rainbow-selector_divider" />
                     <li>
                         <a
-                            href=" https://react-prismic-cms.firebaseapp.com/"
+                            href=" https://react-prismic-cms.web.app/"
                             role="menuitem"
                             ref={this.references[0]}
                             onMouseEnter={() => this.focusChild(0)}
-                            className="react-rainbow-selector_item">
+                            className="react-rainbow-selector_item"
+                        >
                             <img src={reactPrismicLogo} alt="react-rainbow" />
                             <div className="react-rainbow-selector_item-text">
                                 <span className="react-rainbow-selector_item-text_header">

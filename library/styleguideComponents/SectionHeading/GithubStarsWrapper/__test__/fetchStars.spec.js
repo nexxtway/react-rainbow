@@ -10,12 +10,16 @@ beforeEach(() => {
 describe('fetch stars method', () => {
     it('should call fetch with the right data', () => {
         fetchGithubStars();
-        expect(fetch).toHaveBeenCalledWith('https://api.github.com/repos/90milesbridge/react-rainbow-components/stargazers');
+        expect(fetch).toHaveBeenCalledWith(
+            'https://api.github.com/repos/nexxtway/react-rainbow-components/stargazers',
+        );
     });
     it('should return the number of stars for the repository', () => {
-        fetch.mockReturnValue(Promise.resolve({
-            text: () => Promise.resolve('[{}, {}, {}]'),
-        }));
+        fetch.mockReturnValue(
+            Promise.resolve({
+                text: () => Promise.resolve('[{}, {}, {}]'),
+            }),
+        );
         expect(fetchGithubStars()).resolves.toBe(3);
     });
 });
