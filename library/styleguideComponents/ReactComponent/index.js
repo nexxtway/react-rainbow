@@ -41,13 +41,7 @@ export default class ReactComponent extends Component {
     }
 
     render() {
-        const {
-            name,
-            heading,
-            description,
-            examples,
-            tabBody,
-        } = this.props;
+        const { name, heading, description, examples, tabBody } = this.props;
         const descriptionText = description ? description.props.text : null;
         const { activeTabName } = this.state;
 
@@ -61,9 +55,7 @@ export default class ReactComponent extends Component {
                             <Breadcrumb label={name} />
                         </Breadcrumbs>
                     </div>
-                    <p className="react-rainbow-component_component-name">
-                        {name}
-                    </p>
+                    <p className="react-rainbow-component_component-name">{name}</p>
                     <div className="rainbow-p-horizontal_x-large rainbow-p-top_medium">
                         <Description text={descriptionText} />
                         <DescriptionLink name={name} />
@@ -77,10 +69,28 @@ export default class ReactComponent extends Component {
                     <Tabset
                         className="rainbow-p-horizontal_x-large rainbow-m-bottom_x-large react-rainbow-component_tabset"
                         activeTabName={activeTabName}
-                        onSelect={this.handleOnSelect}>
-
-                        <Tab name="examples" label={<TabLabel icon={<InteractiveExampleIcon className="rainbow-m-right_x-small" />} label="INTERACTIVE EXAMPLES" />} />
-                        <Tab name="properties" label={<TabLabel icon={<ListIcon className="rainbow-m-right_x-small" />} label="PROPERTIES AND METHODS" />} />
+                        onSelect={this.handleOnSelect}
+                    >
+                        <Tab
+                            name="examples"
+                            label={
+                                <TabLabel
+                                    icon={
+                                        <InteractiveExampleIcon className="rainbow-m-right_x-small" />
+                                    }
+                                    label="INTERACTIVE EXAMPLES"
+                                />
+                            }
+                        />
+                        <Tab
+                            name="properties"
+                            label={
+                                <TabLabel
+                                    icon={<ListIcon className="rainbow-m-right_x-small" />}
+                                    label="PROPERTIES AND METHODS"
+                                />
+                            }
+                        />
                         <UtilsTab name={name} />
                     </Tabset>
                 </div>
@@ -90,10 +100,14 @@ export default class ReactComponent extends Component {
                             <div className={getEditLinkClassName()}>
                                 <a
                                     className="rainbow-link"
-                                    href={`https://github.com/90milesbridge/react-rainbow/blob/master/src/components/${name}/readme.md`}
+                                    href={`https://github.com/nexxtway/react-rainbow/blob/master/src/components/${name}/readme.md`}
                                     target="_blank"
-                                    rel="noopener noreferrer">
-                                    <FontAwesomeIcon icon={faPencilAlt} className="rainbow-m-right_small" />
+                                    rel="noopener noreferrer"
+                                >
+                                    <FontAwesomeIcon
+                                        icon={faPencilAlt}
+                                        className="rainbow-m-right_small"
+                                    />
                                     Edit Interactive Examples
                                 </a>
                             </div>
@@ -103,19 +117,29 @@ export default class ReactComponent extends Component {
                     <RenderIf isTrue={activeTabName === 'properties'}>
                         <Card
                             className="rainbow-m-bottom_x-large rainbow-m-left_x-large rainbow-m-right_x-large react-rainbow-component_properties-table"
-                            icon={<FontAwesomeIcon icon={faList} size="lg" className="rainbow-color_brand" />}
+                            icon={
+                                <FontAwesomeIcon
+                                    icon={faList}
+                                    size="lg"
+                                    className="rainbow-color_brand"
+                                />
+                            }
                             actions={
                                 <a
                                     className="rainbow-link react-rainbow-component_tab-edit-link"
-                                    href={`https://github.com/90milesbridge/react-rainbow/blob/master/src/components/${name}/index.js`}
+                                    href={`https://github.com/nexxtway/react-rainbow/blob/master/src/components/${name}/index.js`}
                                     target="_blank"
-                                    rel="noopener noreferrer">
-                                    <FontAwesomeIcon icon={faPencilAlt} className="rainbow-m-right_small" />
+                                    rel="noopener noreferrer"
+                                >
+                                    <FontAwesomeIcon
+                                        icon={faPencilAlt}
+                                        className="rainbow-m-right_small"
+                                    />
                                     Edit
                                 </a>
                             }
-                            title="Properties & Methods details">
-
+                            title="Properties & Methods details"
+                        >
                             {tabBody}
                         </Card>
                     </RenderIf>
