@@ -165,7 +165,6 @@ export default class TimeSelect extends Component {
 
     handleKeyDown(event) {
         const { keyCode } = event;
-        this.keyPressed = keyCode;
 
         if (keyCode === RIGHT_KEY) {
             this.handleRightKeyPressed();
