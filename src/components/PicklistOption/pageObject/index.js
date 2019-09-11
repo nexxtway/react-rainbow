@@ -2,14 +2,22 @@
  * PicklistOption page object class.
  * @class
  */
+
+function isPointWithinRect(point, rect) {
+    const { x, y } = point;
+    const { left, top, right, bottom } = rect;
+    return x >= left && y >= top && x <= right && y <= bottom;
+}
+
 class PagePicklistOption {
     /**
      * Create a new PicklistOption page object.
      * @constructor
      * @param {string} rootElement - The selector of the PicklistOption root element.
      */
-    constructor(rootElement) {
+    constructor(rootElement, containerRect) {
         this.rootElement = rootElement;
+        this.containerRect = containerRect;
     }
 
     /**
@@ -36,17 +44,6 @@ class PagePicklistOption {
      */
     getLabel() {
         return this.rootElement.$('a').getText();
-    }
-
-    /**
-     * Returns PicklistOption bounds within viewport.
-     * @method
-     * @returns {object}
-     */
-    getBounds() {
-        const { x, y } = this.rootElement.getLocation();
-        const { width, height } = this.rootElement.getSize();
-        return { x, y, width, height };
     }
 
     /**
@@ -79,7 +76,22 @@ class PagePicklistOption {
      * @returns {bool}
      */
     isVisible() {
-        return this.rootElement.isDisplayedInViewport();
+        const { x, y } = this.rootElement.getLocation();
+        const { width, height } = this.rootElement.getSize();
+
+        return (
+            this.rootElement.isDisplayedInViewport() &&
+            (isPointWithinRect({ x, y }, this.containerRect) &&
+                isPointWithinRect({ x: x + width, y: y + height }, this.containerRect))
+        );
+    }
+
+    /**
+     *  Wait until the option is visible.
+     * @method
+     */
+    waitUntilIsVisible() {
+        browser.waitUntil(() => this.isVisible());
     }
 }
 

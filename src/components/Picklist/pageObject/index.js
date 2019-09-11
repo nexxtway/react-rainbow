@@ -119,7 +119,7 @@ class PagePicklist {
         );
         const option = activeOptions[optionIndex];
         if (option && !option.error) {
-            return new PagePicklistOption(option);
+            return new PagePicklistOption(option, this.getDropdownMenuBoundsRect());
         }
         return null;
     }
@@ -136,28 +136,20 @@ class PagePicklist {
     }
 
     /**
-     * Returns true if the bounds of PicklistOption page object of the element in item position.
-     * is contained within Picklist menu bounds rect.
-     * @param {number} optionIndex - The base 0 index of the PicklistOption.
+     * Returns the boundaries of Picklist dropdown menu.
+     * @method
+     * @returns {object}
      */
-    isOptionVisibleWithinMenuBounds(optionIndex) {
-        const isPositionWithinBoundsRect = (position, boundsRect) => {
-            const { x, y } = position;
-            const { l, t, r, b } = boundsRect;
-            return x >= l && y >= t && x <= r && y <= b;
-        };
-
+    getDropdownMenuBoundsRect() {
         const menu = $(this.rootElement).$('div.rainbow-picklist_dropdown');
-        const option = this.getOption(optionIndex);
-        const { x: mX, y: mY } = menu.getLocation();
-        const { width: mW, height: mH } = menu.getSize();
-        const { x: oX, y: oY, width: oW, height: oH } = option.getBounds();
-
-        const bounds = { l: mX, t: mY, r: mX + mW, b: mY + mH };
-        return (
-            isPositionWithinBoundsRect({ x: oX, y: oY }, bounds) ||
-            isPositionWithinBoundsRect({ x: oX + oW, y: oY + oH }, bounds)
-        );
+        const { x, y } = menu.getLocation();
+        const { width, height } = menu.getSize();
+        return {
+            left: x,
+            top: y,
+            right: x + width,
+            bottom: y + height,
+        };
     }
 
     /**
@@ -166,15 +158,6 @@ class PagePicklist {
      */
     waitUntilOpen() {
         browser.waitUntil(() => this.isMenuOpen());
-    }
-
-    /**
-     *  Wait until the option is visible within menu bounds rect.
-     * @method
-     * @param {number} optionIndex - The base 0 index of the PicklistOption.
-     */
-    waitUntilOptionIsVisibleWithinMenuBounds(optionIndex) {
-        browser.waitUntil(() => this.isOptionVisibleWithinMenuBounds(optionIndex));
     }
 }
 

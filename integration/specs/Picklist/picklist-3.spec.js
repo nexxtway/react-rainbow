@@ -29,11 +29,12 @@ describe('Picklist with multiple options', () => {
         picklist.getOption(3).hover();
         browser.keys(ARROW_DOWN_KEY);
         browser.keys(ARROW_DOWN_KEY);
-        expect(picklist.isOptionVisibleWithinMenuBounds(0)).toBe(false);
+        const firstOption = picklist.getOption(0);
+        expect(firstOption.isVisible()).toBe(false);
         picklist.getOption(2).hover();
         browser.keys(ARROW_UP_KEY);
         browser.keys(ARROW_UP_KEY);
-        expect(picklist.isOptionVisibleWithinMenuBounds(0)).toBe(true);
+        expect(firstOption.isVisible()).toBe(true);
     });
     it('should scroll down when hover the down arrow', () => {
         const picklist = new PagePicklist(PICKLIST);
@@ -42,18 +43,20 @@ describe('Picklist with multiple options', () => {
         const option = picklist.getOption(6);
         expect(option.isVisible()).toBe(false);
         picklist.hoverScrollDownArrow();
-        picklist.waitUntilOptionIsVisibleWithinMenuBounds(6);
+        option.waitUntilIsVisible();
         expect(option.isVisible()).toBe(true);
     });
     it('should up down when hover the up arrow', () => {
         const picklist = new PagePicklist(PICKLIST);
         picklist.clickInput();
         picklist.waitUntilOpen();
+        const firstOption = picklist.getOption(0);
+        const latestOption = picklist.getOption(7);
         picklist.hoverScrollDownArrow();
-        picklist.waitUntilOptionIsVisibleWithinMenuBounds(6);
-        expect(picklist.isOptionVisibleWithinMenuBounds(0)).toBe(false);
+        latestOption.waitUntilIsVisible();
+        expect(firstOption.isVisible()).toBe(false);
         picklist.hoverScrollUpArrow();
-        picklist.waitUntilOptionIsVisibleWithinMenuBounds(0);
-        expect(picklist.isOptionVisibleWithinMenuBounds(0)).toBe(true);
+        firstOption.waitUntilIsVisible();
+        expect(firstOption.isVisible()).toBe(true);
     });
 });
