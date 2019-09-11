@@ -39,6 +39,17 @@ class PagePicklistOption {
     }
 
     /**
+     * Returns PicklistOption bounds within viewport.
+     * @method
+     * @returns {object}
+     */
+    getBounds() {
+        const { x, y } = this.rootElement.getLocation();
+        const { width, height } = this.rootElement.getSize();
+        return { x, y, width, height };
+    }
+
+    /**
      * Returns true when the PicklistOption is active.
      * @method
      * @returns {bool}
@@ -69,14 +80,6 @@ class PagePicklistOption {
      */
     isVisible() {
         return this.rootElement.isDisplayedInViewport();
-    }
-
-    /**
-     *  Wait until the option is visible.
-     * @method
-     */
-    waitUntilDisplayed() {
-        browser.waitUntil(() => this.isVisible());
     }
 }
 

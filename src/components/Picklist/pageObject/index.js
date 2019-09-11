@@ -86,6 +86,11 @@ class PagePicklist {
             .moveTo();
     }
 
+    /**
+     * Returns the label of the selected PicklistOption
+     * @method
+     * @returns {string}
+     */
     getSelectedOptionLabel() {
         return $(this.rootElement)
             .$('input[type="text"')
@@ -131,11 +136,45 @@ class PagePicklist {
     }
 
     /**
+     * Returns true if the bounds of PicklistOption page object of the element in item position.
+     * is contained within Picklist menu bounds rect.
+     * @param {number} optionIndex - The base 0 index of the PicklistOption.
+     */
+    isOptionVisibleWithinMenuBounds(optionIndex) {
+        const isPositionWithinBoundsRect = (position, boundsRect) => {
+            const { x, y } = position;
+            const { l, t, r, b } = boundsRect;
+            return x >= l && y >= t && x <= r && y <= b;
+        };
+
+        const menu = $(this.rootElement).$('div.rainbow-picklist_dropdown');
+        const option = this.getOption(optionIndex);
+        const { x: mX, y: mY } = menu.getLocation();
+        const { width: mW, height: mH } = menu.getSize();
+        const { x: oX, y: oY, width: oW, height: oH } = option.getBounds();
+
+        const bounds = { l: mX, t: mY, r: mX + mW, b: mY + mH };
+        return (
+            isPositionWithinBoundsRect({ x: oX, y: oY }, bounds) ||
+            isPositionWithinBoundsRect({ x: oX + oW, y: oY + oH }, bounds)
+        );
+    }
+
+    /**
      * Wait until the options menu is open.
      * @method
      */
     waitUntilOpen() {
         browser.waitUntil(() => this.isMenuOpen());
+    }
+
+    /**
+     *  Wait until the option is visible within menu bounds rect.
+     * @method
+     * @param {number} optionIndex - The base 0 index of the PicklistOption.
+     */
+    waitUntilOptionIsVisibleWithinMenuBounds(optionIndex) {
+        browser.waitUntil(() => this.isOptionVisibleWithinMenuBounds(optionIndex));
     }
 }
 
