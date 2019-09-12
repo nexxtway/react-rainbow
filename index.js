@@ -33,6 +33,8 @@ import MenuItem from './MenuItem';
 import Modal from './Modal';
 import Notification from './Notification';
 import Pagination from './Pagination';
+import Picklist from './Picklist';
+import PicklistOption from './PicklistOption';
 import PrimitiveMenu from './PrimitiveMenu';
 import ProgressBar from './ProgressBar';
 import ProgressIndicator from './ProgressIndicator';
@@ -98,6 +100,8 @@ export {
     Modal,
     Notification,
     Pagination,
+    Picklist,
+    PicklistOption,
     PrimitiveMenu,
     ProgressBar,
     ProgressIndicator,
