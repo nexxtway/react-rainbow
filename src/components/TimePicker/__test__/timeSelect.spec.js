@@ -194,6 +194,36 @@ describe('<TimeSelect/>', () => {
                 .prop('value'),
         ).toBe('12');
     });
+    it('should set hour value to "12" when press right key after press up key and type 0 while hour input is focused', () => {
+        const component = mount(<TimeSelect />);
+        const container = component.find('div[role="presentation"]');
+        const hourInput = component.find('input').at(0);
+        container.simulate('keyDown', { keyCode: UP_KEY });
+        hourInput.simulate('change', { target: { value: '00' } });
+        container.simulate('keyDown', { keyCode: RIGHT_KEY });
+        hourInput.simulate('blur');
+        expect(
+            component
+                .find('input')
+                .at(0)
+                .prop('value'),
+        ).toBe('12');
+    });
+    it('should set hour value to "03" and focus the minutes iput when type "03" after press up key while hour input is focused', () => {
+        const component = mount(<TimeSelect />);
+        const focusedElementDataId = document.activeElement.getAttribute('data-id');
+        const container = component.find('div[role="presentation"]');
+        const hourInput = component.find('input').at(0);
+        container.simulate('keyDown', { keyCode: UP_KEY });
+        hourInput.simulate('change', { target: { value: '03' } });
+        expect(
+            component
+                .find('input')
+                .at(0)
+                .prop('value'),
+        ).toBe('03');
+        expect(focusedElementDataId).toBe('minutes');
+    });
     it('should set minutes value to "00" when minutes input is focused and press up key', () => {
         const component = mount(<TimeSelect />);
         const minutesInput = component.find('input').at(1);
@@ -508,5 +538,41 @@ describe('<TimeSelect/>', () => {
         const container = component.find('div[role="presentation"]');
         container.simulate('keyDown', { keyCode: ENTER_KEY });
         expect(onChangeMockFn).toHaveBeenCalledTimes(0);
+    });
+    it('should call event.preventDefault when something is pasted on hour input', () => {
+        const preventDefaultMockFn = jest.fn();
+        const component = mount(<TimeSelect />);
+        const hourInput = component.find('input').at(0);
+        hourInput.simulate('paste', {
+            preventDefault: preventDefaultMockFn,
+        });
+        expect(preventDefaultMockFn).toHaveBeenCalledTimes(1);
+    });
+    it('should call event.preventDefault when something is dropped on hour input', () => {
+        const preventDefaultMockFn = jest.fn();
+        const component = mount(<TimeSelect />);
+        const hourInput = component.find('input').at(0);
+        hourInput.simulate('drop', {
+            preventDefault: preventDefaultMockFn,
+        });
+        expect(preventDefaultMockFn).toHaveBeenCalledTimes(1);
+    });
+    it('should call event.preventDefault when something is pasted on minutes input', () => {
+        const preventDefaultMockFn = jest.fn();
+        const component = mount(<TimeSelect />);
+        const minutesInput = component.find('input').at(1);
+        minutesInput.simulate('paste', {
+            preventDefault: preventDefaultMockFn,
+        });
+        expect(preventDefaultMockFn).toHaveBeenCalledTimes(1);
+    });
+    it('should call event.preventDefault when something is dropped on minutes input', () => {
+        const preventDefaultMockFn = jest.fn();
+        const component = mount(<TimeSelect />);
+        const minutesInput = component.find('input').at(1);
+        minutesInput.simulate('drop', {
+            preventDefault: preventDefaultMockFn,
+        });
+        expect(preventDefaultMockFn).toHaveBeenCalledTimes(1);
     });
 });
