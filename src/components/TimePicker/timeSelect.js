@@ -116,6 +116,12 @@ export default class TimeSelect extends Component {
                 hour: '12',
             });
         }
+        if (hour === '00' && this.value > '0' && this.isRightKeyPressed) {
+            this.setState({
+                hour: '12',
+            });
+        }
+        this.isRightKeyPressed = false;
     }
 
     handleChangeMinutes(event) {
@@ -191,6 +197,7 @@ export default class TimeSelect extends Component {
     }
 
     handleRightKeyPressed() {
+        this.isRightKeyPressed = true;
         const nextInputIndex = this.inputFocusedIndex + 1;
         const nextInputToFocus = this.inputsMap[nextInputIndex];
         if (nextInputToFocus) {
