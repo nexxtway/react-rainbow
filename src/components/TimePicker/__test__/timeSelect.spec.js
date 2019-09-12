@@ -37,6 +37,20 @@ describe('<TimeSelect/>', () => {
                 .prop('value'),
         ).toBe('12');
     });
+    it('should set hour value to "12" when hour input has 00 as value and press down key while hour input is focused', () => {
+        const component = mount(<TimeSelect />);
+        const hourInput = component.find('input').at(0);
+        const container = component.find('div[role="presentation"]');
+        hourInput.simulate('focus');
+        hourInput.simulate('change', { target: { value: '00' } });
+        container.simulate('keyDown', { keyCode: DOWN_KEY });
+        expect(
+            component
+                .find('input')
+                .at(0)
+                .prop('value'),
+        ).toBe('12');
+    });
     it('should set hour value to "05" when hour input is focused and press up key for 5 times', () => {
         const component = mount(<TimeSelect />);
         const hourInput = component.find('input').at(0);
