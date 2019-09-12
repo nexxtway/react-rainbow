@@ -29,7 +29,7 @@ class PagePicklist {
 
     /**
      * Focus the input element.
-     * @mehod
+     * @method
      */
     focusInput() {
         this.clickInput();
