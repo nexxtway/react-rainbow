@@ -3,12 +3,15 @@
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
 version: 2
+
+defaults: &defaults
+    working_directory: ~/repo
+    docker:
+        - image: circleci/node:11.8.0-stretch-browsers
+
 jobs:
     build_and_test:
-        docker:
-            - image: circleci/node:11.8.0-stretch-browsers
-
-        working_directory: ~/repo
+        <<: *defaults
 
         steps:
             - checkout
@@ -32,10 +35,7 @@ jobs:
             - run: yarn test --ci --maxWorkers=2 --coverage --coverageReporters=text-lcov | ./node_modules/coveralls/bin/coveralls.js
 
     integration_tests:
-        docker:
-            - image: circleci/node:11.8.0-stretch-browsers
-
-        working_directory: ~/repo
+        <<: *defaults
 
         steps:
             - checkout
@@ -72,10 +72,7 @@ jobs:
                   path: ./errorShots
 
     publish_canary:
-        docker:
-            - image: circleci/node:11.8.0-stretch-browsers
-
-        working_directory: ~/repo
+        <<: *defaults
 
         steps:
             - checkout
@@ -95,10 +92,7 @@ jobs:
             - run: yarn publish --tag next
 
     deploy_firebase:
-        docker:
-            - image: circleci/node:11.8.0-stretch-browsers
-
-        working_directory: ~/repo
+        <<: *defaults
 
         steps:
             - checkout
