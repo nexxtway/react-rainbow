@@ -1,5 +1,7 @@
 const PagePicklistOption = require('../../PicklistOption/pageObject');
 
+const privateGetMenuBoundsRect = Symbol('privateGetMenuBoundsRect');
+
 /**
  * Picklist page object class.
  * @class
@@ -119,7 +121,7 @@ class PagePicklist {
         );
         const option = activeOptions[optionIndex];
         if (option && !option.error) {
-            return new PagePicklistOption(option, this.getDropdownMenuBoundsRect());
+            return new PagePicklistOption(option, this[privateGetMenuBoundsRect]());
         }
         return null;
     }
@@ -140,7 +142,7 @@ class PagePicklist {
      * @method
      * @returns {object}
      */
-    getDropdownMenuBoundsRect() {
+    [privateGetMenuBoundsRect]() {
         const menu = $(this.rootElement).$('div.rainbow-picklist_dropdown');
         const { x, y } = menu.getLocation();
         const { width, height } = menu.getSize();
