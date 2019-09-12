@@ -22,6 +22,10 @@ import getAmPm from './helpers/getAmPm';
 import getDefaultAmPm from './helpers/getDefaultAmPm';
 import { LEFT_KEY, RIGHT_KEY, UP_KEY, DOWN_KEY, DELETE_KEY, ENTER_KEY } from '../../libs/constants';
 
+function preventDefault(event) {
+    event.preventDefault();
+}
+
 export default class TimeSelect extends Component {
     constructor(props) {
         super(props);
@@ -165,7 +169,6 @@ export default class TimeSelect extends Component {
 
     handleKeyDown(event) {
         const { keyCode } = event;
-        this.keyPressed = keyCode;
 
         if (keyCode === RIGHT_KEY) {
             this.handleRightKeyPressed();
@@ -323,6 +326,8 @@ export default class TimeSelect extends Component {
                     onKeyDown={this.handleKeyDown}
                 >
                     <input
+                        onDrop={preventDefault}
+                        onPaste={preventDefault}
                         data-id="hour"
                         className="rainbow-time-picker_time-select-value"
                         type="text"
@@ -338,6 +343,8 @@ export default class TimeSelect extends Component {
                     <span className="rainbow-time-picker_dots">:</span>
 
                     <input
+                        onDrop={preventDefault}
+                        onPaste={preventDefault}
                         data-id="minutes"
                         className="rainbow-time-picker_time-select-value"
                         tabIndex="-1"
