@@ -40,7 +40,10 @@ class Lookup extends Component {
             searchValue: '',
             isFocused: false,
             options: normalizedOptions,
-            focusedItemIndex: getInitialFocusedIndex(normalizedOptions),
+            focusedItemIndex: getInitialFocusedIndex(
+                normalizedOptions,
+                props.preferredSelectedOption,
+            ),
         };
         this.inputId = uniqueId('lookup-input');
         this.errorMessageId = uniqueId('error-message');
@@ -68,12 +71,15 @@ class Lookup extends Component {
 
     componentDidUpdate(prevProps) {
         const { options: prevOptions } = prevProps;
-        const { options } = this.props;
+        const { options, preferredSelectedOption } = this.props;
         if (prevOptions !== options) {
             const normalizedOptions = getNormalizedOptions(options);
             this.setState({
                 options: normalizedOptions,
-                focusedItemIndex: getInitialFocusedIndex(normalizedOptions),
+                focusedItemIndex: getInitialFocusedIndex(
+                    normalizedOptions,
+                    preferredSelectedOption,
+                ),
             });
         }
     }
@@ -186,9 +192,10 @@ class Lookup extends Component {
 
     closeMenu() {
         const { options } = this.state;
+        const { preferredSelectedOption } = this.props;
         return this.setState({
             isFocused: false,
-            focusedItemIndex: getInitialFocusedIndex(options),
+            focusedItemIndex: getInitialFocusedIndex(options, preferredSelectedOption),
         });
     }
 
@@ -497,6 +504,8 @@ Lookup.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The index of the option that is visual-focus initially */
+    preferredSelectedOption: PropTypes.number,
 };
 
 Lookup.defaultProps = {
@@ -522,6 +531,7 @@ Lookup.defaultProps = {
     options: undefined,
     onSearch: () => {},
     debounce: false,
+    preferredSelectedOption: 0,
 };
 
 export default withReduxForm(Lookup);
