@@ -354,4 +354,27 @@ describe('<Lookup />', () => {
         component.find('input').simulate('blur');
         expect(onBlurMockFn).toHaveBeenCalledWith(null);
     });
+
+    it('should set the initial visual-focus to the option that is passed as preferredSelectedOption', () => {
+        const options = [
+            { label: 'Paris' },
+            { label: 'New York' },
+            { label: 'Los Angeles' },
+            { label: 'Brussels' },
+            { label: 'San Fransisco' },
+        ];
+        const component = mount(
+            <Lookup label="custom label" options={options} preferredSelectedOption={3} />,
+        );
+        component.find('input').simulate('focus');
+        expect(component.find('Options').prop('focusedItemIndex')).toBe(3);
+    });
+    it('should fallback to 0 if the index passed as preferredSelectedOption does not exist', () => {
+        const options = [{ label: 'Paris' }, { label: 'New York' }];
+        const component = mount(
+            <Lookup label="custom label" options={options} preferredSelectedOption={3} />,
+        );
+        component.find('input').simulate('focus');
+        expect(component.find('Options').prop('focusedItemIndex')).toBe(0);
+    });
 });
