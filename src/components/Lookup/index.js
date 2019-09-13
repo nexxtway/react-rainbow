@@ -70,7 +70,10 @@ class Lookup extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        const { options: prevOptions } = prevProps;
+        const {
+            options: prevOptions,
+            preferredSelectedOption: prevPreferredSelectedOption,
+        } = prevProps;
         const { options, preferredSelectedOption } = this.props;
         if (prevOptions !== options) {
             const normalizedOptions = getNormalizedOptions(options);
@@ -80,6 +83,13 @@ class Lookup extends Component {
                     normalizedOptions,
                     preferredSelectedOption,
                 ),
+            });
+        }
+
+        if (prevPreferredSelectedOption !== preferredSelectedOption) {
+            const { options: currentOptions } = this.state;
+            this.setState({
+                focusedItemIndex: getInitialFocusedIndex(currentOptions, preferredSelectedOption),
             });
         }
     }
