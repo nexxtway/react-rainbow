@@ -28,7 +28,6 @@ describe('<TimePicker/>', () => {
             <TimePicker label="unit-testing-timePicker" onFocus={onFocusMockFn} />,
         );
         component.find('input').simulate('focus');
-        component.find('input').simulate('blur');
         expect(onFocusMockFn).toHaveBeenCalledWith(undefined);
     });
     it('should fire onFocus with the value passed', () => {
@@ -37,7 +36,6 @@ describe('<TimePicker/>', () => {
             <TimePicker label="unit-testing-timePicker" value="18:35" onFocus={onFocusMockFn} />,
         );
         component.find('input').simulate('focus');
-        component.find('input').simulate('blur');
         expect(onFocusMockFn).toHaveBeenCalledWith('18:35');
     });
     it('should set isOpen to true and fire onClick when readOnly is not passed', () => {
@@ -71,28 +69,7 @@ describe('<TimePicker/>', () => {
             component.find('div.rainbow-time-picker_container.my-custom-class-name').exists(),
         ).toBe(true);
     });
-    it('should focus the input when the focus method is called', () => {
-        const component = mount(
-            <TimePicker label="unit-testing-timePicker" placeholder="testing-timePicker" />,
-        );
-
-        component.instance().focus();
-        const focusedElementPlaceholder = document.activeElement.getAttribute('placeholder');
-        expect(focusedElementPlaceholder).toBe('testing-timePicker');
-    });
-    it('should blur the input when the blur method is called', () => {
-        const component = mount(
-            <TimePicker label="unit-testing-timePicker" placeholder="testing-timePicker" />,
-        );
-        const instance = component.instance();
-        const focusedElementPlaceholder = document.activeElement.getAttribute('placeholder');
-
-        instance.focus();
-        expect(document.activeElement.getAttribute('placeholder')).toBe(focusedElementPlaceholder);
-        instance.blur();
-        expect(document.activeElement.getAttribute('placeholder')).toBeNull();
-    });
-    it('should set isOpen to true when enter key or space key is pressed while input is focused and readOnly is not passed', () => {
+    it('should open the modal when enter key or space key is pressed while input is focused and readOnly is not passed', () => {
         const values = [ENTER_KEY, SPACE_KEY];
         values.forEach(value => {
             const component = mount(<TimePicker label="unit-testing-timePicker" />);
@@ -102,7 +79,7 @@ describe('<TimePicker/>', () => {
             expect(component.find('Modal').prop('isOpen')).toBe(true);
         });
     });
-    it('should not set isOpen to true when enter key or space key is pressed while input is focused and readOnly is passed', () => {
+    it('should not open the modal when enter key or space key is pressed while input is focused and readOnly is passed', () => {
         const values = [ENTER_KEY, SPACE_KEY];
         values.forEach(value => {
             const component = mount(<TimePicker label="unit-testing-timePicker" readOnly />);
@@ -115,22 +92,14 @@ describe('<TimePicker/>', () => {
     it('should call to focusHourInput when the modal is open', () => {
         const component = mount(<TimePicker label="unit-testing-timePicker" />);
         component.find('input').simulate('click');
-        component.update();
         component.instance().fieldRef.current.timeSelectRef.current.focusHourInput = jest.fn();
         setTimeout(() => {
             expect(
                 component.instance().fieldRef.current.timeSelectRef.current.focusHourInput,
             ).toHaveBeenCalledTimes(1);
-        }, 1000);
+        }, 0);
     });
-    it('should call updateValue when value change dynamically', () => {
-        const component = mount(<TimePicker label="unit-testing-timePicker" value="22:59" />);
-        component.instance().fieldRef.current.updateValue = jest.fn();
-        component.setProps({ value: '23:01' });
-        component.update();
-        expect(component.instance().fieldRef.current.updateValue).toHaveBeenCalledTimes(1);
-    });
-    it('should set the right value when value change dynamically', () => {
+    it('should set the right input value when value change dynamically', () => {
         const component = mount(<TimePicker label="unit-testing-timePicker" value="22:59" />);
         component.setProps({ value: '23:01' });
         component.update();
