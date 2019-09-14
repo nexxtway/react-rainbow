@@ -17,9 +17,16 @@ describe('getInitialFocusedIndex', () => {
         expect(getInitialFocusedIndex(options)).toBe(1);
     });
     it('should return 0 when preferredSelectedOption is an invalid index', () => {
-        const options = [{ label: 'Paris' }, { label: 'New York' }];
+        const options = [{ label: 'New York' }, { label: 'San Fransisco' }];
         expect(getInitialFocusedIndex(options, -1)).toBe(0);
-        expect(getInitialFocusedIndex(options, 3)).toBe(0);
+    });
+    it('should return 0 when preferredSelectedOption is greater than non-header options', () => {
+        const options = [
+            { label: 'Paris', type: 'header' },
+            { label: 'New York' },
+            { label: 'San Fransisco' },
+        ];
+        expect(getInitialFocusedIndex(options, 3)).toBe(1);
     });
     it('should return 3', () => {
         const options = [
