@@ -63,10 +63,12 @@ Yes, it's really all you need to get started as you can see in this live and int
 
 ## Questions
 For `how-to` questions and other `non-issues`, please use our Gitter Chat instead of Github issues.
+
 https://gitter.im/react-rainbow-components/community
 
 ## Examples
 Are you looking for an example project to get started?
+
 [We host some here.](https://react-rainbow.web.app/#/Experiences)
 
 ## Contributing
