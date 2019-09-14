@@ -61,6 +61,10 @@ Yes, it's really all you need to get started as you can see in this live and int
 4. yarn start
 5. navigate to http://localhost:6060/
 
+## Questions
+For `how-to` questions and other `non-issues`, please use our Gitter Chat instead of Github issues.
+https://gitter.im/react-rainbow-components/community
+
 ## Contributing
 
 We are excited that you are interested in contributing to this project!
