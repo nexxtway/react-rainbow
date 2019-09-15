@@ -1,0 +1,46 @@
+@import "../../styles/colors";
+
+.rainbow-progress-circular {
+    width: 140px;
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+
+    .rainbow-progress-circular_ring {
+        width: 140px;
+        height: 140px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        .rainbow-progress-circular_ring-path {
+            stroke: $color-brand;
+        }
+    }
+
+    .rainbow-progress-circular_percent-text {
+        width: 140px;
+        height: 140px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        font-size: 2rem;
+        color: $color-brand;
+    }
+}
+
+.rainbow-progress-circular--success {
+    .rainbow-progress-circular_ring {
+        .rainbow-progress-circular_ring-path {
+            stroke: $color-success;
+        }
+    }
+
+    .rainbow-progress-circular_percent-text {
+        color: $color-success;
+    }
+}

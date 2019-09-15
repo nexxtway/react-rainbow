@@ -1,0 +1,31 @@
+.rainbow-progress-circular {
+  width: 140px;
+  height: 140px;
+  display: flex;
+  flex-direction: column; }
+  .rainbow-progress-circular .rainbow-progress-circular_ring {
+    width: 140px;
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative; }
+    .rainbow-progress-circular .rainbow-progress-circular_ring .rainbow-progress-circular_ring-path {
+      stroke: #01b6f5; }
+  .rainbow-progress-circular .rainbow-progress-circular_percent-text {
+    width: 140px;
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    font-size: 2rem;
+    color: #01b6f5; }
+
+.rainbow-progress-circular--success .rainbow-progress-circular_ring .rainbow-progress-circular_ring-path {
+  stroke: #1de9b6; }
+
+.rainbow-progress-circular--success .rainbow-progress-circular_percent-text {
+  color: #1de9b6; }
