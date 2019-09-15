@@ -27,9 +27,7 @@ function CategoryCards({ category, title }) {
         return (
             <a key={key} className="react-rainbow-designs_anchor" href={href}>
                 <Card className="react-rainbow-designs_card" footer={name}>
-                    <span className="react-rainbow-designs_card-image">
-                        {icon}
-                    </span>
+                    <span className="react-rainbow-designs_card-image">{icon}</span>
                 </Card>
             </a>
         );
@@ -60,22 +58,18 @@ export default function DesignDetails(props) {
                     <Breadcrumb label="Designs" href="/#/Designs/" />
                     <Breadcrumb label={title} />
                 </Breadcrumbs>
-                <h1 className="react-rainbow-design-detail_title">
-                    {title}
-                </h1>
+                <h1 className="react-rainbow-design-detail_title">{title}</h1>
             </header>
             <section className="react-rainbow-design-detail_content rainbow-m-top_x-small rainbow-flex">
                 <article className="react-rainbow-design-detail_img-container">
-                    {/* <h3 className="react-rainbow-design-detail_count">
+                    {/* <h3 className="react-rainbow-design-detail_count-details">
                         <span> {viewsAmount} views </span>
                         •
                         <span> {downloadsAmount} downloads </span>
                     </h3> */}
                     <a href={previewUrl} target="_blank" rel="noopener noreferrer">
                         <Card className="react-rainbow-design-detail_img" style={cardStyles}>
-                            <InnerImg
-                                liveUrl={liveUrl}
-                                previewUrl={previewUrl} />
+                            <InnerImg liveUrl={liveUrl} previewUrl={previewUrl} />
                         </Card>
                     </a>
                 </article>
@@ -84,14 +78,11 @@ export default function DesignDetails(props) {
                         className="react-rainbow-design-detail_donwload-buttons-container"
                         sketchUrl={sketchUrl}
                         photoshopUrl={photoshopUrl}
-                        illustratorUrl={illustratorUrl} />
+                        illustratorUrl={illustratorUrl}
+                    />
                     <article>
-                        <h2 className="react-rainbow-design-detail_subtitle">
-                            Description
-                        </h2>
-                        <p className="react-rainbow-design-detail_description">
-                            {description}
-                        </p>
+                        <h2 className="react-rainbow-design-detail_subtitle">Description</h2>
+                        <p className="react-rainbow-design-detail_description">{description}</p>
                         {children}
                     </article>
                 </article>

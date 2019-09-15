@@ -6,6 +6,7 @@ import Modal from '../Modal';
 import Input from './input';
 import TimeSelect from './timeSelect';
 import get12HourTime from './helpers/get12HourTime';
+import getInputValue from './helpers/getInputValue';
 import withReduxForm from '../../libs/hocs/withReduxForm';
 import { ENTER_KEY, SPACE_KEY } from '../../libs/constants';
 import './styles.css';
@@ -47,10 +48,7 @@ class TimePicker extends Component {
     getTriggerInputValue() {
         const { value } = this.state;
         const { placeholder } = this.props;
-        if (!value && placeholder) {
-            return '';
-        }
-        return value || '--:-- --';
+        return getInputValue(value, placeholder);
     }
 
     setFocusToHourInput() {
