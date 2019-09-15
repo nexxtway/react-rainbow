@@ -1,7 +1,13 @@
-export default function getInitialFocusedIndex(options = []) {
-    const firstOption = options[0];
-    if (firstOption && firstOption.type === 'header') {
-        return 1;
+export default function getInitialFocusedIndex(options = [], preferredSelectedOptionIndex = 0) {
+    const nonHeaderItems = options.filter(option => option.type !== 'header');
+    let index = preferredSelectedOptionIndex;
+
+    if (nonHeaderItems.length === 0) return 0;
+
+    if (index < 0 || index >= nonHeaderItems.length) {
+        index = 0;
     }
-    return 0;
+
+    const preferredSelectedOption = nonHeaderItems[index];
+    return options.indexOf(preferredSelectedOption);
 }
