@@ -1,6 +1,9 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import copyFn from 'clipboard-copy';
 import Lookup from '../';
+
+jest.mock('clipboard-copy');
 
 describe('<Lookup />', () => {
     it('should set an id in the input element', () => {
@@ -376,5 +379,17 @@ describe('<Lookup />', () => {
         );
         component.find('input').simulate('focus');
         expect(component.find('Options').prop('focusedItemIndex')).toBe(0);
+    });
+    it('should copy value label to clipboard when input gets focus', () => {
+        jest.mock('clipboard-copy');
+
+        const value = { label: 'San Francisco' };
+        const options = [
+            { label: 'San Francisco' },
+            { label: 'New York', description: 'awesome city' },
+        ];
+        const component = mount(<Lookup label="custom label" options={options} value={value} />);
+        component.find('input').simulate('focus');
+        expect(copyFn).toHaveBeenCalledWith(value.label);
     });
 });
