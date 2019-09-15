@@ -10,6 +10,7 @@ export default class SelectedValue extends Component {
     constructor(props) {
         super(props);
         this.inputRef = React.createRef();
+        this.handleFocus = this.handleFocus.bind(this);
     }
 
     getContainerClassNames() {
@@ -25,6 +26,16 @@ export default class SelectedValue extends Component {
         return classnames('rainbow-lookup_selected-value-input', {
             'rainbow-lookup_selected-value-input-with-icon': !!icon,
         });
+    }
+
+    handleFocus() {
+        const input = this.inputRef.current;
+        const inputHasSelection = input.selectionStart !== input.selectionEnd;
+        input.select();
+        document.execCommand('copy');
+        if (!inputHasSelection) {
+            input.selectionStart = input.selectionEnd;
+        }
     }
 
     /**
@@ -77,6 +88,7 @@ export default class SelectedValue extends Component {
                     className={this.getInputClassNames()}
                     value={label}
                     tabIndex={tabIndex}
+                    onFocus={this.handleFocus}
                     onClick={onClick}
                     disabled={disabled}
                     readOnly
