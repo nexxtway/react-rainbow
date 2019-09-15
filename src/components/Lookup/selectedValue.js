@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import copy from 'clipboard-copy';
 import formatValue from './helpers/formatValue';
 import RenderIf from '../RenderIf/index';
 import CloseIcon from '../Chip/closeIcon';
@@ -29,13 +30,9 @@ export default class SelectedValue extends Component {
     }
 
     handleFocus() {
-        const input = this.inputRef.current;
-        const inputHasSelection = input.selectionStart !== input.selectionEnd;
-        input.select();
-        document.execCommand('copy');
-        if (!inputHasSelection) {
-            input.selectionStart = input.selectionEnd;
-        }
+        const { value } = this.props;
+        const { label } = formatValue(value);
+        copy(label);
     }
 
     /**
