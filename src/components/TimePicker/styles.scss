@@ -69,19 +69,19 @@
     }
 
     &::-webkit-input-placeholder {
-        @include animation-properties();
+        @include placeholder-common();
     }
 
     &::-moz-placeholder {
-        @include animation-properties();
+        @include placeholder-common();
     }
 
     &:-ms-input-placeholder {
-        @include animation-properties();
+        @include placeholder-common();
     }
 
     &:-moz-placeholder {
-        @include animation-properties();
+        @include placeholder-common();
     }
 
     &:focus,
