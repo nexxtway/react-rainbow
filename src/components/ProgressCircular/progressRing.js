@@ -16,9 +16,16 @@ export default function ProgressRing({ percent }) {
                 height="140"
                 viewBox="-1.05 -1.05 2.1 2.1"
             >
-                <circle stroke="#e3e5ed" strokeWidth=".1" fill="none" cx="0" cy="0" r="1" />
-                <path
+                <circle
                     className="rainbow-progress-circular_ring-path"
+                    strokeWidth=".1"
+                    fill="none"
+                    cx="0"
+                    cy="0"
+                    r="1"
+                />
+                <path
+                    className="rainbow-progress-circular_ring-fill-percent"
                     strokeWidth=".1"
                     strokeLinecap="round"
                     fill="none"

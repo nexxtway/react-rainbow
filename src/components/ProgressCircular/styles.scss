@@ -16,6 +16,10 @@
         position: relative;
 
         .rainbow-progress-circular_ring-path {
+            stroke: $color-gray-2;
+        }
+
+        .rainbow-progress-circular_ring-fill-percent {
             stroke: $color-brand;
         }
     }
@@ -35,7 +39,7 @@
 
 .rainbow-progress-circular--success {
     .rainbow-progress-circular_ring {
-        .rainbow-progress-circular_ring-path {
+        .rainbow-progress-circular_ring-fill-percent {
             stroke: $color-success;
         }
     }
