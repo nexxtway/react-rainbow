@@ -25,7 +25,7 @@ export default function SectionHeading() {
     return (
         <header className="react-rainbow-heading-container rainbow-flex rainbow-justify_end rainbow-align_center rainbow-position_fixed">
             <div className="rainbow-align-content_center react-rainbow-github-badge-container">
-                <div>
+                <div className="react-rainbow-github-stars-container">
                     <GithubStarsBadge />
                 </div>
                 <a
