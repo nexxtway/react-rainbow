@@ -7,13 +7,7 @@ export default function ProgressRing({ percent }) {
     const arcY = Math.sin((2 * Math.PI * percent) / 100);
 
     return (
-        <div
-            className="rainbow-progress-circular_ring"
-            aria-valuemin="0"
-            aria-valuemax="100"
-            aria-valuenow={percent}
-            role="progressbar"
-        >
+        <div className="rainbow-progress-circular_ring">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 xmlnsXlink="http://www.w3.org/1999/xlink"

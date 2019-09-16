@@ -24,7 +24,14 @@ export default function ProgressCircular(props) {
     const normalizedValue = normalizeValue(value);
 
     return (
-        <div className={getContainerClassNames()} style={style}>
+        <div
+            className={getContainerClassNames()}
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow={normalizedValue}
+            role="progressbar"
+            style={style}
+        >
             <ProgressRing percent={normalizedValue} />
             <span className="rainbow-progress-circular_percent-text">{`${normalizedValue}%`}</span>
             <AssistiveText text={assistiveText} />
