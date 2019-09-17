@@ -32,13 +32,13 @@ jobs:
 
             - run: yarn lint
 
-            - run: yarn test --ci --maxWorkers=2 --coverage --coverageReporters=text-lcov
-
             - run:
-                  name: run coveralls
+                  name: run test
                   command: |
                       if [ -n "$COVERALLS_REPO_TOKEN" ]; then
-                          cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+                          yarn test --ci --maxWorkers=2 --coverage --coverageReporters=text-lcov | ./node_modules/coveralls/bin/coveralls.js
+                      else
+                          yarn test --ci --maxWorkers=2
                       fi
 
     integration_tests:
