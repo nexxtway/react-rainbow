@@ -4,6 +4,10 @@ import MenuItem from './menuItem';
 import SearchIcon from '../icons/searchIcon';
 import './styles.css';
 
+function preventDefault(event) {
+    event.preventDefault();
+}
+
 function MenuItems(props) {
     const { items, onClick, focusedItemIndex, onHover } = props;
 
@@ -94,6 +98,8 @@ export default class Options extends React.PureComponent {
                 className="rainbow-lookup_options-container"
                 style={resultContainerStyles}
                 ref={this.containerRef}
+                role="presentation"
+                onMouseDown={preventDefault}
             >
                 <MenuItems
                     items={items}

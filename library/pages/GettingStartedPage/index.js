@@ -36,6 +36,8 @@ export default class GettingStartedPage extends Component {
         super(props);
         this.state = { activeTabName: 'overview' };
         this.handleTabChange = this.handleTabChange.bind(this);
+        // eslint-disable-next-line no-undef
+        this.reactV = reactVersion[0] === '^' ? reactVersion.slice(1) : reactVersion;
     }
 
     handleTabChange(e, tabName) {
@@ -84,7 +86,9 @@ export default class GettingStartedPage extends Component {
                     <RenderIf isTrue={activeTabName === 'installation'}>
                         <div className="rainbow-flex rainbow-flex_column">
                             <h3 className="react-rainbow-getting-started_section-heading">
-                                React Rainbow Components is currently optimized for React 16.4.2
+                                {`React Rainbow Components is currently optimized for React ${
+                                    this.reactV
+                                }`}
                             </h3>
                             <h2 className="react-rainbow-getting-started_section-heading-2">
                                 Install

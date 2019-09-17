@@ -95,4 +95,23 @@ describe('<Options />', () => {
             .simulate('mouseEnter');
         expect(onHoverOptionMockFn).toHaveBeenCalledWith(1);
     });
+    it('should call preventDefault when click in a header option', () => {
+        const event = {
+            preventDefault: jest.fn(),
+        };
+        const items = [
+            {
+                type: 'header',
+                label: 'header option',
+            },
+            {
+                label: 'Moscow',
+            },
+        ];
+        const component = mount(<Options items={items} />);
+        component
+            .find('li[className="rainbow-lookup_menu-item_header"]')
+            .simulate('mouseDown', event);
+        expect(event.preventDefault).toHaveBeenCalledTimes(1);
+    });
 });
