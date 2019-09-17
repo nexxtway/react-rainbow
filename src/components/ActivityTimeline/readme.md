@@ -1,5 +1,7 @@
 ##### ActivityTimeline base example:
 
+
+```js
     const iconStyles = { width: 32, height: 32 };
     <div className="rainbow-m-around_xx-large">
         <ActivityTimeline>
@@ -29,3 +31,4 @@
             </TimelineMarker>
         </ActivityTimeline>
     </div>
+```
