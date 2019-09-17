@@ -5,15 +5,20 @@
     height: 140px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 
     .rainbow-progress-circular_ring {
-        width: 140px;
-        height: 140px;
+        width: 100%;
+        height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        position: relative;
+        position: absolute;
+        top: 0;
+        left: 0;
 
         .rainbow-progress-circular_ring-path {
             stroke: $color-gray-2;
@@ -25,13 +30,6 @@
     }
 
     .rainbow-progress-circular_percent-text {
-        width: 140px;
-        height: 140px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
         font-size: 2rem;
         color: $color-brand;
     }
