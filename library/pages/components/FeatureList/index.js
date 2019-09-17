@@ -43,13 +43,13 @@ export default function FeatureList(props) {
                 className="react-rainbow-feature-list_item"
                 image={<Internationalization />}
                 title="Internationalization"
-                description="We designed each component with i19n in mind. Any new component or feature we may add in the future, have to be able to work fully in different locales."
+                description="We designed each component with i18n in mind. Any new component or feature we may add in the future, have to be able to work fully in different locales."
             />
 
             <Item
                 className="react-rainbow-feature-list_item"
                 image={<Accesibility />}
-                title="Accesibility"
+                title="Accessibility"
                 description="Accessibility is part of our definition of done. It's a must have for each component."
             />
 

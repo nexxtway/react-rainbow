@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import copy from 'clipboard-copy';
 import formatValue from './helpers/formatValue';
 import RenderIf from '../RenderIf/index';
 import CloseIcon from '../Chip/closeIcon';
@@ -10,6 +11,7 @@ export default class SelectedValue extends Component {
     constructor(props) {
         super(props);
         this.inputRef = React.createRef();
+        this.handleFocus = this.handleFocus.bind(this);
     }
 
     getContainerClassNames() {
@@ -25,6 +27,12 @@ export default class SelectedValue extends Component {
         return classnames('rainbow-lookup_selected-value-input', {
             'rainbow-lookup_selected-value-input-with-icon': !!icon,
         });
+    }
+
+    handleFocus() {
+        const { value } = this.props;
+        const { label } = formatValue(value);
+        copy(label);
     }
 
     /**
@@ -77,6 +85,7 @@ export default class SelectedValue extends Component {
                     className={this.getInputClassNames()}
                     value={label}
                     tabIndex={tabIndex}
+                    onFocus={this.handleFocus}
                     onClick={onClick}
                     disabled={disabled}
                     readOnly

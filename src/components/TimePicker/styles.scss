@@ -3,6 +3,13 @@
 @import "../../styles/paddings";
 @import "../../styles/margins";
 
+@mixin placeholder-common {
+    color: $color-brand;
+    font-size: 44px;
+    font-weight: 200;
+    text-transform: uppercase;
+}
+
 .rainbow-time-picker_container {
     width: 100%;
 }
@@ -35,6 +42,48 @@
     height: 100%;
     text-align: center;
 
+    &::selection {
+        color: white;
+        background: $color-brand-active;
+    }
+
+    &::-moz-selection {
+        color: white;
+        background: $color-brand-active;
+    }
+
+    &[placeholder]:focus::-webkit-input-placeholder {
+        color: white;
+    }
+
+    &[placeholder]:focus::-moz-placeholder {
+        color: white;
+    }
+
+    &[placeholder]:focus:-ms-input-placeholder {
+        color: white;
+    }
+
+    &[placeholder]:focus:-moz-placeholder {
+        color: white;
+    }
+
+    &::-webkit-input-placeholder {
+        @include placeholder-common();
+    }
+
+    &::-moz-placeholder {
+        @include placeholder-common();
+    }
+
+    &:-ms-input-placeholder {
+        @include placeholder-common();
+    }
+
+    &:-moz-placeholder {
+        @include placeholder-common();
+    }
+
     &:focus,
     &:active {
         color: white;
@@ -42,22 +91,6 @@
         box-shadow: $shadow-outline;
         outline: none;
         caret-color: transparent;
-    }
-
-    &[placeholder]:focus::-webkit-input-placeholder {
-        color: white;
-    }
-
-    &::placeholder {
-        color: $color-brand;
-        font-size: 44px;
-        font-weight: 200;
-        text-transform: uppercase;
-    }
-
-    &::selection {
-        color: white;
-        background: $color-brand-active;
     }
 }
 
@@ -114,9 +147,11 @@
     color: white;
     outline: none;
     -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     -webkit-tap-highlight-color: transparent;
     -webkit-user-drag: none;
-    user-select: none;
 }
 
 .rainbow-time-picker_icon-button-container {

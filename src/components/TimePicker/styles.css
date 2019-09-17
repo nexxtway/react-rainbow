@@ -26,22 +26,46 @@
   border-radius: 4px;
   height: 100%;
   text-align: center; }
+  .rainbow-time-picker_time-select-value::selection {
+    color: white;
+    background: #009acf; }
+  .rainbow-time-picker_time-select-value::-moz-selection {
+    color: white;
+    background: #009acf; }
+  .rainbow-time-picker_time-select-value[placeholder]:focus::-webkit-input-placeholder {
+    color: white; }
+  .rainbow-time-picker_time-select-value[placeholder]:focus::-moz-placeholder {
+    color: white; }
+  .rainbow-time-picker_time-select-value[placeholder]:focus:-ms-input-placeholder {
+    color: white; }
+  .rainbow-time-picker_time-select-value[placeholder]:focus:-moz-placeholder {
+    color: white; }
+  .rainbow-time-picker_time-select-value::-webkit-input-placeholder {
+    color: #01b6f5;
+    font-size: 44px;
+    font-weight: 200;
+    text-transform: uppercase; }
+  .rainbow-time-picker_time-select-value::-moz-placeholder {
+    color: #01b6f5;
+    font-size: 44px;
+    font-weight: 200;
+    text-transform: uppercase; }
+  .rainbow-time-picker_time-select-value:-ms-input-placeholder {
+    color: #01b6f5;
+    font-size: 44px;
+    font-weight: 200;
+    text-transform: uppercase; }
+  .rainbow-time-picker_time-select-value:-moz-placeholder {
+    color: #01b6f5;
+    font-size: 44px;
+    font-weight: 200;
+    text-transform: uppercase; }
   .rainbow-time-picker_time-select-value:focus, .rainbow-time-picker_time-select-value:active {
     color: white;
     background-color: #01b6f5;
     box-shadow: 0 0 2px #01b6f5;
     outline: none;
     caret-color: transparent; }
-  .rainbow-time-picker_time-select-value[placeholder]:focus::-webkit-input-placeholder {
-    color: white; }
-  .rainbow-time-picker_time-select-value::placeholder {
-    color: #01b6f5;
-    font-size: 44px;
-    font-weight: 200;
-    text-transform: uppercase; }
-  .rainbow-time-picker_time-select-value::selection {
-    color: white;
-    background: #009acf; }
 
 .rainbow-time-picker_dots {
   font-size: 32px;
@@ -90,9 +114,11 @@
   color: white;
   outline: none;
   -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   -webkit-tap-highlight-color: transparent;
-  -webkit-user-drag: none;
-  user-select: none; }
+  -webkit-user-drag: none; }
 
 .rainbow-time-picker_icon-button-container {
   display: flex;

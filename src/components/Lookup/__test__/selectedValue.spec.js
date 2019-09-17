@@ -1,6 +1,9 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import copyFn from 'clipboard-copy';
 import SelectedValue from '../selectedValue';
+
+jest.mock('clipboard-copy');
 
 const value = { label: 'this is a test' };
 const valueWithIcon = { label: 'this is a test', icon: 'ok' };
@@ -44,5 +47,11 @@ describe('<SelectedValue />', () => {
     it('should not render the close button when disabled is passed', () => {
         const component = mount(<SelectedValue disabled />);
         expect(component.find('ButtonIcon').exists()).toBe(false);
+    });
+    it('should copy value label to clipboard when input gets focus', () => {
+        copyFn.mockReset();
+        const component = mount(<SelectedValue value={value} />);
+        component.find('input').simulate('focus');
+        expect(copyFn).toHaveBeenCalledWith(value.label);
     });
 });
