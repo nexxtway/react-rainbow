@@ -47,3 +47,27 @@
         color: $color-success;
     }
 }
+
+.rainbow-progress-circular--warning {
+    .rainbow-progress-circular_ring {
+        .rainbow-progress-circular_ring-fill-percent {
+            stroke: $color-yellow-1;
+        }
+    }
+
+    .rainbow-progress-circular_percent-text {
+        color: $color-yellow-1;
+    }
+}
+
+.rainbow-progress-circular--error {
+    .rainbow-progress-circular_ring {
+        .rainbow-progress-circular_ring-fill-percent {
+            stroke: $color-error;
+        }
+    }
+
+    .rainbow-progress-circular_percent-text {
+        color: $color-error;
+    }
+}

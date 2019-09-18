@@ -71,3 +71,15 @@
             </div>
         </div>
     </div>
+
+##### progressCircular warning
+
+    <div className="rainbow-align-content_center rainbow-m-around_xx-large rainbow-flex_column">
+        <ProgressCircular value={60} variant="warning" />
+    </div>
+
+##### progressCircular error
+
+    <div className="rainbow-align-content_center rainbow-m-around_xx-large rainbow-flex_column">
+        <ProgressCircular value={60} variant="error" />
+    </div>
