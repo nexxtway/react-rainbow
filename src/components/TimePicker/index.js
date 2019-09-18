@@ -164,6 +164,7 @@ class TimePicker extends Component {
                 />
 
                 <Modal
+                    id="time-picker_modal"
                     className="rainbow-time-picker_modal"
                     isOpen={isOpen}
                     onRequestClose={this.closeModal}

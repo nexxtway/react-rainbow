@@ -209,7 +209,7 @@ describe('<TimeSelect/>', () => {
                 .prop('value'),
         ).toBe('12');
     });
-    it('should set hour value to "03" and focus the minutes iput when type "03" after press up key while hour input is focused', () => {
+    it('should set hour value to "03" and focus the minutes input when type "03" after press up key while hour input is focused', () => {
         const component = mount(<TimeSelect />);
         const focusedElementDataId = document.activeElement.getAttribute('data-id');
         const container = component.find('div[role="presentation"]');

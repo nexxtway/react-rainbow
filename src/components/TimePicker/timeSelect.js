@@ -377,29 +377,32 @@ export default class TimeSelect extends Component {
 
                     <div className="rainbow-time-picker_icon-button-container">
                         <ButtonIcon
+                            id="time-picker_up-button"
                             tabIndex="-1"
                             variant="border-filled"
                             icon={<UpIcon />}
                             size="small"
                             onClick={this.incrementHandler}
                             onFocus={this.handleButtonsFocus}
-                            assistiveText="Previous value"
+                            assistiveText="Next value"
                         />
 
                         <ButtonIcon
+                            id="time-picker_down-button"
                             tabIndex="-1"
                             variant="border-filled"
                             icon={<DownIcon />}
                             size="small"
                             onClick={this.decrementHandler}
                             onFocus={this.handleButtonsFocus}
-                            assistiveText="Next value"
+                            assistiveText="Previous value"
                         />
                     </div>
                 </div>
 
                 <footer className="rainbow-time-picker_footer">
                     <Button
+                        id="time-picker_cancel-button"
                         className="rainbow-time-picker_button"
                         variant="base"
                         label={cancelLabel}
@@ -407,6 +410,7 @@ export default class TimeSelect extends Component {
                     />
 
                     <Button
+                        id="time-picker_ok-button"
                         className="rainbow-time-picker_button"
                         variant="brand"
                         label={okLabel}
