@@ -26,6 +26,7 @@
 
         .rainbow-progress-circular_ring-fill-percent {
             stroke: $color-brand;
+            transition: all 0.8s ease-out 0s;
         }
     }
 
