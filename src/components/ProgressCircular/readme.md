@@ -67,6 +67,7 @@
             </div>
             <div className="rainbow-p-horizontal_small" style={inputContainerStyles}>
                 <ProgressCircularForm onSubmit={values => setState({ percent: values.percent })} />
+                <Button label="Set random percent" onClick={() => setState({ percent: Math.ceil(Math.random() * 100) })} />
             </div>
         </div>
     </div>
