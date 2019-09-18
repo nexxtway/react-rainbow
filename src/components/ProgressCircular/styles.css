@@ -20,7 +20,7 @@
       stroke: #e3e5ed; }
     .rainbow-progress-circular .rainbow-progress-circular_ring .rainbow-progress-circular_ring-fill-percent {
       stroke: #01b6f5;
-      transition: all 0.8s ease-out 0s; }
+      transition: all 0.4s ease-out 0s; }
   .rainbow-progress-circular .rainbow-progress-circular_percent-text {
     font-size: 2rem;
     color: #01b6f5; }

@@ -13,12 +13,12 @@
 
         increment() {
             const { value } = this.state;
-            if (value === 100) {
+            if (value == 100) {
                 this.setState({ value: 0 });
             } else {
                 this.setState({ value: value + 1 });
             }
-            setTimeout(this.increment, 50);
+            setTimeout(this.increment, 100);
         }
 
         render() {
@@ -35,9 +35,38 @@
 
 ##### progressCircular success
 
-    initialState = { percent: 60 };
+    const inputContainerStyles = {
+        width: '50%',
+    };
+    initialState = { percent: 0 };
+    const { Field, reduxForm } = require('redux-form');
 
-    <div className="rainbow-align-content_center rainbow-m-around_xx-large rainbow-flex_column">
-        <Button label="Set random percent" onClick={() => setState({ percent: Math.ceil(Math.random() * 100) })} />
-        <ProgressCircular value={state.percent} variant="success" />
+    function Form({ handleSubmit, onSubmit }) {
+        return (
+            <form className="rainbow-align_right" noValidate onSubmit={handleSubmit(onSubmit)}>
+                <Field
+                    component={Input}
+                    type="number"
+                    name="percent"
+                    placeholder="0 to 100"
+                    label="Percent Value" />
+                <Button label="Set" type="submit" />
+            </form>
+        );
+    }
+
+    const ProgressCircularForm = reduxForm({
+        form: 'progress-circular-form',
+        touchOnBlur: false,
+    })(Form);
+
+    <div className="rainbow-align-content_center rainbow-m-around_xx-large">
+        <div className="rainbow-flex rainbow-p-bottom_medium">
+            <div className="rainbow-p-horizontal_small" style={inputContainerStyles}>
+                <ProgressCircular value={state.percent} variant="success" />
+            </div>
+            <div className="rainbow-p-horizontal_small" style={inputContainerStyles}>
+                <ProgressCircularForm onSubmit={values => setState({ percent: values.percent })} />
+            </div>
+        </div>
     </div>
