@@ -54,7 +54,7 @@ Begining to collaborate in React Rainbow Component is simple. Just have to go th
 
 ### Testing
 
-Test coverage is at +75% at the moment, but we are working to add more tests to the components when possible, please add tests for any changes you make. Tests can be run with `yarn test`
+Test coverage is at +80% at the moment, but we are working to add more tests to the components when possible, please add tests for any changes you make. Tests can be run with `yarn test`
 
 ### Updating the component API documentation
 
