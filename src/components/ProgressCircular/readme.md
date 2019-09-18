@@ -13,7 +13,7 @@
 
         increment() {
             const { value } = this.state;
-            if (value == 100) {
+            if (value === 100) {
                 this.setState({ value: 0 });
             } else {
                 this.setState({ value: value + 1 });

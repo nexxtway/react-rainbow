@@ -1,12 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function ProgressRing({ percent }) {
-    const [percentValue, setPercentValue] = useState(0);
-    useEffect(() => {
-        setPercentValue(percent);
-    }, [percent]);
-
     return (
         <div className="rainbow-progress-circular_ring">
             <svg
@@ -28,7 +23,7 @@ export default function ProgressRing({ percent }) {
                 <circle
                     className="rainbow-progress-circular_ring-fill-percent"
                     strokeWidth="1.6"
-                    strokeDasharray={`${percentValue} ${100 - percentValue}`}
+                    strokeDasharray={`${percent} ${100 - percent}`}
                     fill="none"
                     cx="0"
                     cy="0"
