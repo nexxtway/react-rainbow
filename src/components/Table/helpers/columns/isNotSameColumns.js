@@ -3,13 +3,16 @@ export default function isNotSameColumns(prevColumns, currentColumns) {
         return true;
     }
     return prevColumns.some((column, index) => {
-        const { field, type, header, component, defaultWidth, width } = currentColumns[index];
+        const { field, type, header, component, defaultWidth, width, sortable } = currentColumns[
+            index
+        ];
         return (
             column.field !== field ||
             column.type !== type ||
             column.header !== header ||
             column.defaultWidth !== defaultWidth ||
             column.component !== component ||
+            column.sortable !== sortable ||
             column.width !== width
         );
     });
