@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { axe } from 'jest-axe';
-import Accordion from '../../Accordion';
-import AccordionSection from '..';
+import Accordion from '..';
+import AccordionSection from '../../AccordionSection';
 
-describe('<AccordionSection/>', () => {
-    it('should be accessible when assistiveText is passed', async () => {
+describe('<Accordion/>', () => {
+    it('should be accessible when assistiveText is passed on AccordionSection', async () => {
         expect.assertions(1);
         const html = ReactDOMServer.renderToString(
             <Accordion>
