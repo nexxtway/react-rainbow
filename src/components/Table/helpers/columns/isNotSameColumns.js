@@ -5,6 +5,10 @@ export default function isNotSameColumns(prevColumns, currentColumns) {
     return prevColumns.some(
         (column, index) =>
             column.field !== currentColumns[index].field ||
-            column.header !== currentColumns[index].header,
+            column.type !== currentColumns[index].type ||
+            column.component !== currentColumns[index].component ||
+            column.defaultWidth !== currentColumns[index].defaultWidth ||
+            column.component !== currentColumns[index].component ||
+            column.width !== currentColumns[index].width,
     );
 }
