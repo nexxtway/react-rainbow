@@ -11,13 +11,13 @@ const IconStyles = {
     justifyContent: 'center',
 };
 
-function ProgressCircularInAction({ title, variant, color }) {
+function ActiveUsersCard({ title, variant, color }) {
     const [percent, setPercent] = React.useState(60);
 
     React.useEffect(() => {
         const timer = setInterval(() => {
             setPercent(Math.ceil(Math.random() * 100));
-        }, 2000);
+        }, 10000);
         return () => {
             clearInterval(timer);
         };
@@ -26,7 +26,7 @@ function ProgressCircularInAction({ title, variant, color }) {
     return (
         <Card className="rainbow-m-horizontal_large rainbow-m-bottom_large rainbow-p-around_small">
             <h1 className="rainbow-font-size-heading_medium">{title}</h1>
-            <h3 className="rainbow-font-size-heading_small rainbow-color_gray-3">Active users</h3>
+            <h2 className="rainbow-font-size-heading_small rainbow-color_gray-3">Active users</h2>
             <div className="rainbow-p-around_medium">
                 <ProgressCircular variant={variant} value={percent} />
             </div>
@@ -34,7 +34,7 @@ function ProgressCircularInAction({ title, variant, color }) {
                 <span style={IconStyles} className={`rainbow-color_${color}`}>
                     <FontAwesomeIcon icon={faCircle} />
                 </span>
-                <span className="rainbow-font-size_small">Active Now</span>
+                <h3 className="rainbow-font-size_small">Active Now</h3>
             </div>
         </Card>
     );
@@ -45,9 +45,9 @@ function ProgressCircularInAction({ title, variant, color }) {
         Social Network Activity
     </h1>
     <div className="rainbow-flex rainbow-flex_wrap">
-        <ProgressCircularInAction title="snapchat" variant="warning" color="yellow" />
-        <ProgressCircularInAction title="twitter" color="brand" />
-        <ProgressCircularInAction title="google" variant="error" color="error" />
+        <ActiveUsersCard title="snapchat" variant="warning" color="yellow" />
+        <ActiveUsersCard title="twitter" color="brand" />
+        <ActiveUsersCard title="google" variant="error" color="error" />
     </div>
 </div>;
 ```
@@ -57,11 +57,11 @@ function ProgressCircularInAction({ title, variant, color }) {
 ```js
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <div className="rainbow-p-around_large rainbow-align-content_center rainbow-flex_column">
-        <ProgressCircular value="60" />
+        <ProgressCircular value="24" />
         <h1 className="rainbow-font-size-heading_small rainbow-color_brand">brand</h1>
     </div>
     <div className="rainbow-p-around_large rainbow-align-content_center rainbow-flex_column">
-        <ProgressCircular value="60" variant="success" />
+        <ProgressCircular value="45" variant="success" />
         <h1 className="rainbow-font-size-heading_small rainbow-color_success">success</h1>
     </div>
     <div className="rainbow-p-around_large rainbow-align-content_center rainbow-flex_column">
@@ -69,7 +69,7 @@ function ProgressCircularInAction({ title, variant, color }) {
         <h1 className="rainbow-font-size-heading_small rainbow-color_yellow">warning</h1>
     </div>
     <div className="rainbow-p-around_large rainbow-align-content_center rainbow-flex_column">
-        <ProgressCircular value="60" variant="error" />
+        <ProgressCircular value="82" variant="error" />
         <h1 className="rainbow-font-size-heading_small rainbow-color_error">error</h1>
     </div>
 </div>
