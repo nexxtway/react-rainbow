@@ -18,7 +18,7 @@
         <Card
             icon={<Avatar icon={<FontAwesomeIcon icon={faUser} />} />}
             title="Contact details"
-            actions={<Button variant="neutral" label="New" variant="outline-brand" />} />
+            actions={<Button label="New" variant="outline-brand" />} />
     </div>
 
 ##### card-with header and spinner
