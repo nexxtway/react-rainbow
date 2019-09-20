@@ -8,21 +8,15 @@
   max-height: none;
   padding: 0; }
 
-.rainbow-date-picker_modal > button > svg {
-  fill: white; }
-
 .rainbow-date-picker_calendar-details-header {
-  background-color: #01b6f5;
-  height: 72px;
-  border-radius: 0.875rem 0.875rem 0 0;
   display: flex;
   align-items: center;
-  padding: 0 48px 0 24px; }
+  padding: 20px 48px 0 32px; }
 
 .rainbow-date-picker_calendar-date--selected {
-  color: white;
-  font-size: 1.25rem;
-  font-weight: 300; }
+  color: #01b6f5;
+  font-size: 1.5rem;
+  font-weight: 500; }
 
 .rainbow-date-picker_calendar-container {
   width: 460px;
