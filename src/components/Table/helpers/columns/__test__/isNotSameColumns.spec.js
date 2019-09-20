@@ -19,22 +19,8 @@ describe('isNotSameColumns', () => {
     });
     it('should return true when column field property changed', () => {
         const prevColumns = [
-            {
-                field: 'name',
-                header: 'Name',
-                component: {},
-                type: 'string',
-                defaultWidth: 100,
-                width: 'auto',
-            },
-            {
-                field: 'email',
-                header: 'Email',
-                component: {},
-                type: 'string',
-                defaultWidth: 100,
-                width: 'auto',
-            },
+            { field: 'name', header: 'Name' },
+            { field: 'email', header: 'Email' },
         ];
         const currentColumns = [
             { field: 'phone', header: 'Name' },
