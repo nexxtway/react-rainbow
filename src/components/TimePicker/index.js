@@ -141,6 +141,7 @@ class TimePicker extends Component {
         return (
             <div id={id} className={this.getContainerClassName()} style={style}>
                 <Input
+                    id="time-picker_time-input"
                     ref={this.inputRef}
                     label={label}
                     placeholder={placeholder}

@@ -1,4 +1,6 @@
-const PageModal = require('../../Modal/pageObject');
+/* eslint-disable class-methods-use-this */
+const timePickerModalId = '#time-picker_modal';
+const timeInputId = '#time-picker_time-input';
 
 /**
  * TimePicker page object class.
@@ -13,15 +15,15 @@ class PageTimePicker {
      */
     constructor(rootElement) {
         this.rootElement = rootElement;
-        this.timePickerModal = '#time-picker_modal';
     }
 
     /**
      * Clicks the input element.
      * @method
      */
-    click() {
+    clickTimeInput() {
         $(this.rootElement)
+            .$(timeInputId)
             .$('input')
             .click();
     }
@@ -41,7 +43,7 @@ class PageTimePicker {
      * @method
      */
     clickUpButton() {
-        $(this.timePickerModal)
+        $(timePickerModalId)
             .$('button[id="time-picker_up-button"]')
             .click();
     }
@@ -51,7 +53,7 @@ class PageTimePicker {
      * @method
      */
     clickDownButton() {
-        $(this.timePickerModal)
+        $(timePickerModalId)
             .$('button[id="time-picker_down-button"]')
             .click();
     }
@@ -61,7 +63,7 @@ class PageTimePicker {
      * @method
      */
     clickCancelButton() {
-        $(this.timePickerModal)
+        $(timePickerModalId)
             .$('button[id="time-picker_cancel-button"]')
             .click();
     }
@@ -71,7 +73,7 @@ class PageTimePicker {
      * @method
      */
     clickOkButton() {
-        $(this.timePickerModal)
+        $(timePickerModalId)
             .$('button[id="time-picker_ok-button"]')
             .click();
     }
@@ -81,8 +83,21 @@ class PageTimePicker {
      * @method
      * @returns {bool}
      */
-    isTimePickerOpen() {
-        return new PageModal(this.timePickerModal).isOpen();
+    isOpen() {
+        if ($(timePickerModalId).isDisplayed()) {
+            return (
+                $(timePickerModalId)
+                    .$('button[id="time-picker_cancel-button"]')
+                    .isDisplayed() &&
+                $(timePickerModalId)
+                    .$('button[id="time-picker_down-button"]')
+                    .isDisplayed() &&
+                $(timePickerModalId)
+                    .$('input[data-id="minutes"]')
+                    .isDisplayed()
+            );
+        }
+        return false;
     }
 
     /**
@@ -90,8 +105,9 @@ class PageTimePicker {
      * @method
      * @returns {string}
      */
-    getTimePickerValue() {
+    getTimeValue() {
         return $(this.rootElement)
+            .$(timeInputId)
             .$('input')
             .getValue();
     }
@@ -101,8 +117,9 @@ class PageTimePicker {
      * @method
      * @returns {bool}
      */
-    hasFocusTimePicker() {
+    hasFocusTimeInput() {
         return $(this.rootElement)
+            .$(timeInputId)
             .$('input')
             .isFocused();
     }
@@ -113,7 +130,7 @@ class PageTimePicker {
      * @returns {bool}
      */
     hasFocusHourInput() {
-        return $(this.timePickerModal)
+        return $(timePickerModalId)
             .$('input[data-id="hour"]')
             .isFocused();
     }
@@ -124,7 +141,7 @@ class PageTimePicker {
      * @returns {string}
      */
     getHourValue() {
-        return $(this.timePickerModal)
+        return $(timePickerModalId)
             .$('input[data-id="hour"]')
             .getValue();
     }
@@ -135,7 +152,7 @@ class PageTimePicker {
      * @returns {bool}
      */
     hasFocusMinutesInput() {
-        return $(this.timePickerModal)
+        return $(timePickerModalId)
             .$('input[data-id="minutes"]')
             .isFocused();
     }
@@ -146,7 +163,7 @@ class PageTimePicker {
      * @returns {string}
      */
     getMinutesValue() {
-        return $(this.timePickerModal)
+        return $(timePickerModalId)
             .$('input[data-id="minutes"]')
             .getValue();
     }
@@ -157,7 +174,7 @@ class PageTimePicker {
      * @returns {bool}
      */
     hasFocusAmPmSelect() {
-        return $(this.timePickerModal)
+        return $(timePickerModalId)
             .$('fieldset[data-id="fieldset-element"]')
             .isFocused();
     }
@@ -167,14 +184,14 @@ class PageTimePicker {
      * @method
      * @returns {bool}
      */
-    isAmInputSelected() {
+    isAmSelected() {
         browser.waitUntil(() =>
-            $(this.timePickerModal)
+            $(timePickerModalId)
                 .$('fieldset[data-id="fieldset-element"]')
                 .isFocused(),
         );
-        return $(this.timePickerModal)
-            .$$('input[type="radio"]')[0]
+        return $(timePickerModalId)
+            .$('input[value="AM"]')
             .isSelected();
     }
 
@@ -183,14 +200,14 @@ class PageTimePicker {
      * @method
      * @returns {bool}
      */
-    isPmInputSelected() {
+    isPmSelected() {
         browser.waitUntil(() =>
-            $(this.timePickerModal)
+            $(timePickerModalId)
                 .$('fieldset[data-id="fieldset-element"]')
                 .isFocused(),
         );
-        return $(this.timePickerModal)
-            .$$('input[type="radio"]')[1]
+        return $(timePickerModalId)
+            .$('input[value="PM"]')
             .isSelected();
     }
 
@@ -200,7 +217,7 @@ class PageTimePicker {
      * @param {string} value - The value to type in the hour input element.
      */
     setHourValue(value) {
-        $(this.timePickerModal)
+        $(timePickerModalId)
             .$('input[data-id="hour"]')
             .setValue(value);
     }
@@ -211,7 +228,7 @@ class PageTimePicker {
      * @param {string} value - The value to type in the minutes input element.
      */
     setMinutesValue(value) {
-        $(this.timePickerModal)
+        $(timePickerModalId)
             .$('input[data-id="minutes"]')
             .setValue(value);
     }
@@ -221,8 +238,7 @@ class PageTimePicker {
      * @method
      */
     waitUntilOpen() {
-        new PageModal(this.timePickerModal).waitUntilOpen();
-        browser.waitUntil(() => this.isTimePickerOpen());
+        browser.waitUntil(() => this.isOpen());
     }
 
     /**
@@ -230,7 +246,7 @@ class PageTimePicker {
      * @method
      */
     waitUntilClose() {
-        return new PageModal(this.timePickerModal).waitUntilClose();
+        browser.waitUntil(() => !this.isOpen());
     }
 }
 
