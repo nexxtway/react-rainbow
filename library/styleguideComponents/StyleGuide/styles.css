@@ -53,6 +53,17 @@
     z-index: 6500;
 }
 
+.react-rainbow-styleguide_backdrop {
+    display: unset;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(82, 95, 127, 0.4);
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    left: 0;
+}
+
 .react-rainbow-styleguide-open-chat-button {
     position: fixed;
     bottom: 24px;
@@ -78,8 +89,9 @@
         flex-direction: column-reverse;
     }
     .react-rainbow-styleguide-sidebar {
-        width: 100vw;
         position: initial;
+        margin-top: 0;
+        height: 100vh;
     }
     .react-rainbow-main-content {
         width: 100vw;

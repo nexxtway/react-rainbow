@@ -9,7 +9,7 @@
     list-style: none;
     position: fixed;
     top: 5px;
-    left: 10px;
+    left: 8px;
     z-index: 3050;
 }
 
@@ -98,4 +98,27 @@
     font-size: 10px;
     font-weight: 300;
     color: #576574;
+}
+
+@media (max-width: 600px) {
+    .react-rainbow-selector {
+        left: 4px;
+        width: 268px;
+    }
+
+    .react-rainbow-selector_item {
+        padding: 0 8px 0 12px;
+    }
+
+    .react-rainbow-selector_item-image {
+        width: 28px;
+    }
+
+    .react-rainbow-selector_item-text {
+        margin-left: 8px;
+    }
+
+    .react-rainbow-selector_selected-item-section_arrow {
+        right: 8px;
+    }
 }

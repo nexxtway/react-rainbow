@@ -30,22 +30,22 @@ export default class StyleGuide extends React.Component {
     }
 
     render() {
-        const {
-            children,
-            toc,
-        } = this.props;
+        const { children, toc, isSidebarHidden, toogleSidebar } = this.props;
         const components = toc.props.sections[1].components;
 
         return (
             <div className="react-rainbow-styleguide-container rainbow-position-align_start">
+                {/* <RenderIf isTrue={!isSidebarHidden}>
+                    <div
+                        className="react-rainbow-styleguide_backdrop"
+                        role="presentation"
+                        onClick={toogleSidebar}
+                    />
+                </RenderIf> */}
                 <ProjectSelector />
-                <aside className="react-rainbow-styleguide-sidebar">
-                    {toc}
-                </aside>
+                <aside className="react-rainbow-styleguide-sidebar">{toc}</aside>
                 <main className="react-rainbow-main-content">
-                    <RenderIf isTrue={window.location.hash !== '#/Components'}>
-                        {children}
-                    </RenderIf>
+                    <RenderIf isTrue={window.location.hash !== '#/Components'}>{children}</RenderIf>
                     <RenderIf isTrue={window.location.hash === '#/Components'}>
                         <ComponentsPage components={components} />
                     </RenderIf>
@@ -55,8 +55,12 @@ export default class StyleGuide extends React.Component {
                     shaded
                     variant="brand"
                     size="large"
-                    icon={<img src={chat} alt="chat icon" />} />
-                <GitterChat room="react-rainbow-components/community" activationElement=".react-rainbow-styleguide-open-chat-button" />
+                    icon={<img src={chat} alt="chat icon" />}
+                />
+                <GitterChat
+                    room="react-rainbow-components/community"
+                    activationElement=".react-rainbow-styleguide-open-chat-button"
+                />
             </div>
         );
     }
@@ -65,4 +69,6 @@ export default class StyleGuide extends React.Component {
 StyleGuide.propTypes = {
     children: PropTypes.node.isRequired,
     toc: PropTypes.object.isRequired,
+    toogleSidebar: PropTypes.func.isRequired,
+    isSidebarHidden: PropTypes.bool.isRequired,
 };

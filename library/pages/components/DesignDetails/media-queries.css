@@ -16,9 +16,19 @@
     .react-rainbow-design-detail_content {
         flex-wrap: wrap;
     }
-    
+
     .react-rainbow-design-detail_img-container, .react-rainbow-design-detail_img, .react-rainbow-design-detail_info-container {
         width: 100%;
+    }
+
+    .react-rainbow-design-detail_info-container {
+        margin-top: 16px;
+    }
+
+    .react-rainbow-design-detail_donwload-buttons-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .react-rainbow-design-detail_img-container {

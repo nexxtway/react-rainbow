@@ -30,11 +30,8 @@
 }
 
 @media (max-width: 600px) {
-    .react-rainbow-heading-container {
-        width: 100vw;
-    }
     .react-rainbow-github-badge-container {
-        margin-right: 16px;
+        margin-right: 8px;
     }
     .react-rainbow-github-stars-container {
         display: none;
