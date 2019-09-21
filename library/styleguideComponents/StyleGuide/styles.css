@@ -53,17 +53,6 @@
     z-index: 6500;
 }
 
-.react-rainbow-styleguide_backdrop {
-    display: unset;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(82, 95, 127, 0.4);
-    position: fixed;
-    z-index: 99999;
-    top: 0;
-    left: 0;
-}
-
 .react-rainbow-styleguide-open-chat-button {
     position: fixed;
     bottom: 24px;
@@ -78,9 +67,35 @@
         width: calc(100vw - 87px);
         margin-left: 87px;
     }
+
     .react-rainbow-styleguide-open-chat-button {
         bottom: 12px;
         right: 12px;
+    }
+
+    .react-rainbow-styleguide-sidebar {
+        position: fixed;
+        margin-top: 0;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        background-color: white;
+        z-index: 100000;
+    }
+
+    .react-rainbow-styleguide_backdrop {
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(82, 95, 127, 0.4);
+        position: fixed;
+        z-index: 99999;
+        top: 0;
+        left: 0;
+        display: none;
+    }
+
+    .react-rainbow-styleguide_show-content {
+        display: none;
     }
 }
 
@@ -88,11 +103,7 @@
     .react-rainbow-styleguide-container {
         flex-direction: column-reverse;
     }
-    .react-rainbow-styleguide-sidebar {
-        position: initial;
-        margin-top: 0;
-        height: 100vh;
-    }
+
     .react-rainbow-main-content {
         width: 100vw;
         margin-left: 0;

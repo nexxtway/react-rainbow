@@ -103,7 +103,7 @@
 @media (max-width: 600px) {
     .react-rainbow-selector {
         left: 4px;
-        width: 268px;
+        width: 260px;
     }
 
     .react-rainbow-selector_item {
@@ -119,6 +119,6 @@
     }
 
     .react-rainbow-selector_selected-item-section_arrow {
-        right: 8px;
+        right: 10px;
     }
 }

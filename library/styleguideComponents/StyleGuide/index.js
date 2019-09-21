@@ -41,7 +41,14 @@ export default class StyleGuide extends React.Component {
     getSideBarClassNames() {
         const { isSidebarHiddenInSmallScreen } = this.state;
         return classnames('react-rainbow-styleguide-sidebar', {
-            'class-for-set-display-none-in-media-query': isSidebarHiddenInSmallScreen,
+            'react-rainbow-styleguide_show-content': isSidebarHiddenInSmallScreen,
+        });
+    }
+
+    getBackdropClassNames() {
+        const { isSidebarHiddenInSmallScreen } = this.state;
+        return classnames('react-rainbow-styleguide_backdrop', {
+            'react-rainbow-styleguide_show-content': isSidebarHiddenInSmallScreen,
         });
     }
 
@@ -58,15 +65,13 @@ export default class StyleGuide extends React.Component {
 
         return (
             <div className="react-rainbow-styleguide-container rainbow-position-align_start">
-                {/* <RenderIf isTrue={isSidebarHiddenInSmallScreen}>
-                    <div
-                        className="react-rainbow-styleguide_backdrop"
-                        role="presentation"
-                        onClick={toggleSidebar}
-                    />
-                </RenderIf> */}
                 <ProjectSelector />
                 <aside className={this.getSideBarClassNames()}>{toc}</aside>
+                <div
+                    className={this.getBackdropClassNames()}
+                    role="presentation"
+                    onClick={this.toggleSidebar}
+                />
                 <main className="react-rainbow-main-content">
                     <RenderIf isTrue={window.location.hash !== '#/Components'}>{children}</RenderIf>
                     <RenderIf isTrue={window.location.hash === '#/Components'}>

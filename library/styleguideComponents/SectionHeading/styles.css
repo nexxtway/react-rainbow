@@ -23,9 +23,18 @@
     border-bottom: 1px solid #f4f6f9;
 }
 
+.react-rainbow-heading_hamburger-button {
+    display: none;
+}
+
 @media (max-width: 800px) {
     .react-rainbow-github-badge-container {
         margin-right: 24px;
+    }
+
+    .react-rainbow-heading_hamburger-button {
+        display: inline-block;
+        margin-left: 8px;
     }
 }
 
@@ -33,6 +42,7 @@
     .react-rainbow-github-badge-container {
         margin-right: 8px;
     }
+
     .react-rainbow-github-stars-container {
         display: none;
     }
