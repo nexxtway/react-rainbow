@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import StyledBadge from './styledBadge';
 import Content from './content';
-import './styles.css';
 
 /**
  * Badges are labels which hold small amounts of information.
@@ -10,25 +9,14 @@ import './styles.css';
 export default function Badge(props) {
     const { className, style, label, title, children, variant } = props;
 
-    function getVariantClassNames() {
-        if (variant === 'default') {
-            return null;
-        }
-        return `rainbow-badge--${variant}`;
-    }
-
-    function getClassName() {
-        return classnames('rainbow-badge', getVariantClassNames(), className);
-    }
-
     if (children === null && label === null) {
         return null;
     }
 
     return (
-        <span className={getClassName()} style={style} title={title}>
+        <StyledBadge className={className} style={style} variant={variant} title={title}>
             <Content label={label}>{children}</Content>
-        </span>
+        </StyledBadge>
     );
 }
 
