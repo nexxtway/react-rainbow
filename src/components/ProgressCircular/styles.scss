@@ -26,6 +26,7 @@
 
         .rainbow-progress-circular_ring-fill-percent {
             stroke: $color-brand;
+            transition: all 0.4s ease-out 0s;
         }
     }
 
@@ -44,5 +45,29 @@
 
     .rainbow-progress-circular_percent-text {
         color: $color-success;
+    }
+}
+
+.rainbow-progress-circular--warning {
+    .rainbow-progress-circular_ring {
+        .rainbow-progress-circular_ring-fill-percent {
+            stroke: $color-yellow-1;
+        }
+    }
+
+    .rainbow-progress-circular_percent-text {
+        color: $color-yellow-1;
+    }
+}
+
+.rainbow-progress-circular--error {
+    .rainbow-progress-circular_ring {
+        .rainbow-progress-circular_ring-fill-percent {
+            stroke: $color-error;
+        }
+    }
+
+    .rainbow-progress-circular_percent-text {
+        color: $color-error;
     }
 }
