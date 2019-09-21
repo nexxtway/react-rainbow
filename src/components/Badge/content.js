@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Truncate from './truncate';
+import { TruncatedText } from '../Structural';
 
 export default function Content(props) {
     const { label, children } = props;
 
     if (children || children === 0) {
-        return <Truncate>{children}</Truncate>;
+        return <TruncatedText>{children}</TruncatedText>;
     }
-    return <Truncate>{label}</Truncate>;
+    return <TruncatedText>{label}</TruncatedText>;
 }
 
 Content.propTypes = {

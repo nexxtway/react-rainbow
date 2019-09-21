@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-const Truncate = styled.span`
+const TruncatedText = styled.span`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 `;
 
-export default Truncate;
+export default TruncatedText;
