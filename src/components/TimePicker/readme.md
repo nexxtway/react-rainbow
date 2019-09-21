@@ -2,6 +2,7 @@
 
     <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
         <TimePicker
+            id="time-picker-1"
             value={state.time}
             label="TimePicker Label"
             onChange={ value => setState({ time: value }) } />

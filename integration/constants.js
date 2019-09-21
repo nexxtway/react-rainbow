@@ -8,4 +8,5 @@ module.exports = {
     ARROW_RIGHT_KEY: '\uE014',
     ARROW_DOWN_KEY: '\uE015',
     SHIFT_KEY: '\uE008',
+    DELETE_KEY: '\ue003',
 };
