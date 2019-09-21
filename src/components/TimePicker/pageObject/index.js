@@ -5,7 +5,7 @@ const timeInputId = '#time-picker_time-input';
 /**
  * TimePicker page object class.
  * @class
- * @tutorial picklist
+ * @tutorial timePicker
  */
 class PageTimePicker {
     /**
