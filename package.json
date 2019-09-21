@@ -42,6 +42,7 @@
         "react": "^16.8.6",
         "react-async-script-loader": "^0.3.0",
         "react-dom": "^16.8.6",
+        "styled-components": "^4.3.2",
         "xlsx": "^0.14.4"
     },
     "main": "components/index.js",
