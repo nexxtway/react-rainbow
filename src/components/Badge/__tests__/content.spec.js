@@ -2,14 +2,13 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Content from './../content';
 
-const falsyValues = [false, null, undefined, NaN, ''];
-
 describe('<Content/>', () => {
     it('should return the label when there are not children', () => {
         const component = mount(<Content label="Label in Content" />);
         expect(component.find('span').text()).toBe('Label in Content');
     });
     it('should return the label when children is a falsy value other than zero', () => {
+        const falsyValues = [false, null, undefined, NaN, ''];
         falsyValues.forEach(falsyValue => {
             const component = mount(<Content label="Label in Content">{falsyValue}</Content>);
             expect(component.find('span').text()).toBe('Label in Content');

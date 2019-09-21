@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Truncate from './truncate';
 
 export default function Content(props) {
     const { label, children } = props;
 
     if (children || children === 0) {
-        return <span className="rainbow-badge_content--truncate">{children}</span>;
+        return <Truncate>{children}</Truncate>;
     }
-    return <span className="rainbow-badge_content--truncate">{label}</span>;
+    return <Truncate>{label}</Truncate>;
 }
 
 Content.propTypes = {
