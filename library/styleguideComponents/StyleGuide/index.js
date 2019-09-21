@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import ReactGA from '.././../ga';
 import RenderIf from '../../../src/components/RenderIf';
 import ButtonIcon from '../../../src/components/ButtonIcon';
@@ -15,6 +16,14 @@ function trackPageview() {
 }
 
 export default class StyleGuide extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isSidebarHiddenInSmallScreen: true,
+        };
+        this.toggleSidebar = this.toggleSidebar.bind(this);
+    }
+
     componentDidMount() {
         // analytics
         if (window.location.hash === '') {
@@ -29,25 +38,42 @@ export default class StyleGuide extends React.Component {
         window.removeEventListener('hashchange', trackPageview);
     }
 
+    getSideBarClassNames() {
+        const { isSidebarHiddenInSmallScreen } = this.state;
+        return classnames('react-rainbow-styleguide-sidebar', {
+            'class-for-set-display-none-in-media-query': isSidebarHiddenInSmallScreen,
+        });
+    }
+
+    toggleSidebar() {
+        const { isSidebarHiddenInSmallScreen } = this.state;
+        this.setState({
+            isSidebarHiddenInSmallScreen: !isSidebarHiddenInSmallScreen,
+        });
+    }
+
     render() {
-        const { children, toc, isSidebarHidden, toogleSidebar } = this.props;
+        const { children, toc } = this.props;
         const components = toc.props.sections[1].components;
 
         return (
             <div className="react-rainbow-styleguide-container rainbow-position-align_start">
-                {/* <RenderIf isTrue={!isSidebarHidden}>
+                {/* <RenderIf isTrue={isSidebarHiddenInSmallScreen}>
                     <div
                         className="react-rainbow-styleguide_backdrop"
                         role="presentation"
-                        onClick={toogleSidebar}
+                        onClick={toggleSidebar}
                     />
                 </RenderIf> */}
                 <ProjectSelector />
-                <aside className="react-rainbow-styleguide-sidebar">{toc}</aside>
+                <aside className={this.getSideBarClassNames()}>{toc}</aside>
                 <main className="react-rainbow-main-content">
                     <RenderIf isTrue={window.location.hash !== '#/Components'}>{children}</RenderIf>
                     <RenderIf isTrue={window.location.hash === '#/Components'}>
-                        <ComponentsPage components={components} />
+                        <ComponentsPage
+                            components={components}
+                            onToggleSidebar={this.toggleSidebar}
+                        />
                     </RenderIf>
                 </main>
                 <ButtonIcon
@@ -69,6 +95,4 @@ export default class StyleGuide extends React.Component {
 StyleGuide.propTypes = {
     children: PropTypes.node.isRequired,
     toc: PropTypes.object.isRequired,
-    toogleSidebar: PropTypes.func.isRequired,
-    isSidebarHidden: PropTypes.bool.isRequired,
 };

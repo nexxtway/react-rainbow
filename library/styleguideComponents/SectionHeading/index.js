@@ -24,7 +24,7 @@ const GithubStarsBadge = GithubStars(({ stars }) => (
     </Badge>
 ));
 
-export default function SectionHeading({ onToogleSidebar }) {
+export default function SectionHeading({ onToggleSidebar }) {
     return (
         <header className="react-rainbow-heading-container rainbow-flex rainbow-justify_end rainbow-align_center rainbow-position_fixed">
             <div className="rainbow-align-content_center react-rainbow-github-badge-container">
@@ -39,7 +39,7 @@ export default function SectionHeading({ onToogleSidebar }) {
                     <img src={githublogo} alt="github logo" />
                 </a>
                 <ButtonIcon
-                    onClick={onToogleSidebar}
+                    onClick={onToggleSidebar}
                     className="react-rainbow-heading_hamburger-button"
                     size="large"
                     icon={<BarsIcon />}
@@ -50,9 +50,9 @@ export default function SectionHeading({ onToogleSidebar }) {
 }
 
 SectionHeading.propTypes = {
-    onToogleSidebar: PropTypes.func,
+    onToggleSidebar: PropTypes.func,
 };
 
 SectionHeading.defaultProps = {
-    onToogleSidebar: () => {},
+    onToggleSidebar: () => {},
 };
