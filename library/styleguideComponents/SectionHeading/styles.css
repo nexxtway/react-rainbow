@@ -13,6 +13,22 @@
     margin-right: 4px;
 }
 
+.react-rainbow-heading_github-link {
+    width: 30px;
+    height: 30px;
+}
+
+.react-rainbow-heading_github-link:hover {
+    width: 34px;
+    height: 34px;
+    margin-right: -4px;
+}
+
+.react-rainbow-heading_github-icon {
+    width: 100%;
+    height: 100%;
+}
+
 .react-rainbow-heading-container {
     top: 0;
     left: 0;

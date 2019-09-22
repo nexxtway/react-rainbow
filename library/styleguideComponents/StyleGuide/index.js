@@ -8,6 +8,7 @@ import ComponentsPage from '../../pages/ComponentsPage';
 import ProjectSelector from '../ProjectSelector';
 import GitterChat from '../GitterChat';
 import chat from './../../../assets/icons/chat.svg';
+import twitter from './../../../assets/icons/twitter.svg';
 import './styles.css';
 
 // analytics
@@ -41,14 +42,14 @@ export default class StyleGuide extends React.Component {
     getSideBarClassNames() {
         const { isSidebarHiddenInSmallScreen } = this.state;
         return classnames('react-rainbow-styleguide-sidebar', {
-            'react-rainbow-styleguide_show-content': isSidebarHiddenInSmallScreen,
+            'react-rainbow-styleguide_hidden-content': isSidebarHiddenInSmallScreen,
         });
     }
 
     getBackdropClassNames() {
         const { isSidebarHiddenInSmallScreen } = this.state;
         return classnames('react-rainbow-styleguide_backdrop', {
-            'react-rainbow-styleguide_show-content': isSidebarHiddenInSmallScreen,
+            'react-rainbow-styleguide_hidden-content': isSidebarHiddenInSmallScreen,
         });
     }
 
@@ -66,7 +67,17 @@ export default class StyleGuide extends React.Component {
         return (
             <div className="react-rainbow-styleguide-container rainbow-position-align_start">
                 <ProjectSelector />
-                <aside className={this.getSideBarClassNames()}>{toc}</aside>
+                <aside className={this.getSideBarClassNames()}>
+                    {toc}
+                    <a
+                        href="https://twitter.com/ReactRainbow"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="react-rainbow-styleguide_twitter-link"
+                    >
+                        <img src={twitter} alt="twitter logo" />
+                    </a>
+                </aside>
                 <div
                     className={this.getBackdropClassNames()}
                     role="presentation"
