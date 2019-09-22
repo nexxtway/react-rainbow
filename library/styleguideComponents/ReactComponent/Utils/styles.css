@@ -83,6 +83,11 @@
     .react-rainbow-utils_link, .react-rainbow-utils-item_page-object {
         width: 100%;
     }
+
+    .react-rainbow-utils_link {
+        margin: 0 0 16px 0;
+    }
+
     .react-rainbow-utils-item_img-container {
         height: 120px;
     }

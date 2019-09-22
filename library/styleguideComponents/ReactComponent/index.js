@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faList, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import Pathline from 'react-styleguidist/lib/rsg-components/Pathline';
 import { Prismic } from 'react-prismic-cms';
 import Tabset from '../../../src/components/Tabset';
@@ -117,13 +117,6 @@ export default class ReactComponent extends Component {
                     <RenderIf isTrue={activeTabName === 'properties'}>
                         <Card
                             className="rainbow-m-bottom_x-large rainbow-m-left_x-large rainbow-m-right_x-large react-rainbow-component_properties-table"
-                            icon={
-                                <FontAwesomeIcon
-                                    icon={faList}
-                                    size="lg"
-                                    className="rainbow-color_brand"
-                                />
-                            }
                             actions={
                                 <a
                                     className="rainbow-link react-rainbow-component_tab-edit-link"
@@ -138,7 +131,7 @@ export default class ReactComponent extends Component {
                                     Edit
                                 </a>
                             }
-                            title="Properties & Methods details"
+                            title="Properties & Methods"
                         >
                             {tabBody}
                         </Card>
