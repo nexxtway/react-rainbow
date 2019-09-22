@@ -1,11 +1,16 @@
 {
-    "extends": "stylelint-config-standard",
+    "processors": ["stylelint-processor-styled-components"],
+    "extends": ["stylelint-config-standard", "stylelint-config-styled-components"],
     "rules": {
         "indentation": 4,
         "selector-list-comma-newline-after": "always-multi-line",
         "max-line-length": 100,
-        "at-rule-no-unknown": [true, {
-            "ignoreAtRules": ["mixin", "include", "extend"]
-        }]
+        "declaration-colon-newline-after": null,
+        "at-rule-no-unknown": [
+            true,
+            {
+                "ignoreAtRules": ["mixin", "include", "extend"]
+            }
+        ]
     }
 }
