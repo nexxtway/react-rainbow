@@ -24,6 +24,7 @@ export default class StyleGuide extends React.Component {
             isSidebarHiddenInSmallScreen: true,
         };
         this.toggleSidebar = this.toggleSidebar.bind(this);
+        this.handleUrlChange = this.handleUrlChange.bind(this);
     }
 
     componentDidMount() {
@@ -33,11 +34,11 @@ export default class StyleGuide extends React.Component {
         } else {
             ReactGA.pageview(window.location.hash);
         }
-        window.addEventListener('hashchange', trackPageview);
+        window.addEventListener('hashchange', this.handleUrlChange);
     }
 
     componentWillUnmount() {
-        window.removeEventListener('hashchange', trackPageview);
+        window.removeEventListener('hashchange', this.handleUrlChange);
     }
 
     getSideBarClassNames() {
@@ -51,6 +52,13 @@ export default class StyleGuide extends React.Component {
         const { isSidebarHiddenInSmallScreen } = this.state;
         return classnames('react-rainbow-styleguide_backdrop', {
             'react-rainbow-styleguide_hidden-content': isSidebarHiddenInSmallScreen,
+        });
+    }
+
+    handleUrlChange() {
+        trackPageview();
+        this.setState({
+            isSidebarHiddenInSmallScreen: true,
         });
     }
 
