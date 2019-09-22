@@ -14,10 +14,6 @@
     justify-content: center;
     align-items: center;
     position: relative; }
-    .rainbow-visual-picker-option_content-container .rainbow-visual-picker-option_content .rainbow-visual-picker-option:hover {
-      cursor: pointer;
-      border: solid 2px #01b6f5;
-      box-shadow: 0 2px 4px 0 rgba(136, 152, 170, 0.5); }
     .rainbow-visual-picker-option_content-container .rainbow-visual-picker-option_content .rainbow-visual-picker-option .rainbow-visual-picker-option_selected-element {
       position: absolute;
       top: -1px;
@@ -46,13 +42,17 @@
   overflow: hidden;
   padding: 0;
   position: absolute; }
+  .rainbow-visual-picker-option_content-container .rainbow-visual-picker-option_input:focus ~ .rainbow-visual-picker-option_content > .rainbow-visual-picker-option {
+    border: solid 0.5px #67D3F9;
+    box-shadow: 0 0 2px #01b6f5; }
   .rainbow-visual-picker-option_content-container .rainbow-visual-picker-option_input:checked ~ .rainbow-visual-picker-option_content > .rainbow-visual-picker-option {
     border: solid 2px #01b6f5;
-    box-shadow: 0 2px 4px 0 rgba(136, 152, 170, 0.5);
+    box-shadow: 0 1px 2px 0 rgba(136, 152, 170, 0.5);
     position: relative; }
-  .rainbow-visual-picker-option_content-container .rainbow-visual-picker-option_input:focus ~ .rainbow-visual-picker-option_content > .rainbow-visual-picker-option {
-    border: solid 2px #01b6f5;
-    box-shadow: 0 2px 4px 0 rgba(136, 152, 170, 0.5), 0 0 2px #01b6f5; }
+  .rainbow-visual-picker-option_content-container .rainbow-visual-picker-option_input:hover ~ .rainbow-visual-picker-option_content > .rainbow-visual-picker-option {
+    cursor: pointer;
+    border: solid 1.5px #01b6f5;
+    box-shadow: 0 2px 4px 0 rgba(136, 152, 170, 0.5); }
   .rainbow-visual-picker-option_content-container .rainbow-visual-picker-option_input[disabled] ~ .rainbow-visual-picker-option_content > .rainbow-visual-picker-option {
     border: solid 1.5px #e3e5ed;
     box-shadow: 0 0 0 0 transparent;
