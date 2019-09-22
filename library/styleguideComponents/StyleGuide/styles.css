@@ -87,15 +87,27 @@
     z-index: 6000;
 }
 
+.react-rainbow-styleguide_hamburger-button {
+    position: fixed;
+    top: 8px;
+    right: 8px;
+    z-index: 6000;
+    display: none;
+}
+
 @media (max-width: 800px) {
     .react-rainbow-main-content {
-        width: calc(100vw - 87px);
-        margin-left: 87px;
+        width: 100vw;
+        margin-left: 0;
     }
 
     .react-rainbow-styleguide-open-chat-button {
         bottom: 12px;
         right: 12px;
+    }
+
+    .react-rainbow-styleguide_hamburger-button {
+        display: inline-block;
     }
 
     .react-rainbow-styleguide-sidebar {
@@ -111,14 +123,13 @@
     .react-rainbow-styleguide_backdrop {
         width: 100vw;
         height: 100vh;
-        background-color: rgba(82, 95, 127, 0.4);
+        background-color: rgba(82, 95, 127, 0.3);
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
         opacity: 1;
-        display: none;
         will-change: opacity;
         transform: translateZ(0);
         transition: left 0ms cubic-bezier(0.23, 1, 0.32, 1) 0ms, opacity 400ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
@@ -129,15 +140,8 @@
     .react-rainbow-styleguide_hidden-content {
         display: none;
     }
-}
 
-@media (max-width: 600px) {
     .react-rainbow-styleguide-container {
         flex-direction: column-reverse;
-    }
-
-    .react-rainbow-main-content {
-        width: 100vw;
-        margin-left: 0;
     }
 }

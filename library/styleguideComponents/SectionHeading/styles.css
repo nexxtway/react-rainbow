@@ -14,14 +14,8 @@
 }
 
 .react-rainbow-heading_github-link {
-    width: 30px;
-    height: 30px;
-}
-
-.react-rainbow-heading_github-link:hover {
-    width: 34px;
-    height: 34px;
-    margin-right: -4px;
+    width: 32px;
+    height: 32px;
 }
 
 .react-rainbow-heading_github-icon {
@@ -39,18 +33,15 @@
     border-bottom: 1px solid #f4f6f9;
 }
 
-.react-rainbow-heading_hamburger-button {
-    display: none;
-}
-
 @media (max-width: 800px) {
     .react-rainbow-github-badge-container {
         margin-right: 24px;
     }
 
-    .react-rainbow-heading_hamburger-button {
-        display: inline-block;
-        margin-left: 8px;
+    .react-rainbow-heading_github-link {
+        margin-right: 54px;
+        width: 28px;
+        height: 28px;
     }
 }
 

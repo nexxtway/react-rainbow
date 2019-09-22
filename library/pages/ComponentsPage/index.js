@@ -115,11 +115,10 @@ export default class ComponentsPage extends Component {
 
     render() {
         const { searchTerm } = this.state;
-        const { onToggleSidebar } = this.props;
 
         return (
             <div>
-                <SectionHeading onToggleSidebar={onToggleSidebar} />
+                <SectionHeading />
                 <div className="react-rainbow-components-page_container">
                     <h1 className="react-rainbow-components-page_title">More than 60 components</h1>
                     <Input
@@ -142,10 +141,8 @@ export default class ComponentsPage extends Component {
 
 ComponentsPage.propTypes = {
     components: PropTypes.array,
-    onToggleSidebar: PropTypes.func,
 };
 
 ComponentsPage.defaultProps = {
     components: [],
-    onToggleSidebar: () => {},
 };

@@ -9,6 +9,7 @@ import ProjectSelector from '../ProjectSelector';
 import GitterChat from '../GitterChat';
 import chat from './../../../assets/icons/chat.svg';
 import twitter from './../../../assets/icons/twitter.svg';
+import BarsIcon from './barsIcon';
 import './styles.css';
 
 // analytics
@@ -92,6 +93,12 @@ export default class StyleGuide extends React.Component {
                         />
                     </RenderIf>
                 </main>
+                <ButtonIcon
+                    className="react-rainbow-styleguide_hamburger-button"
+                    icon={<BarsIcon />}
+                    size="large"
+                    onClick={this.toggleSidebar}
+                />
                 <ButtonIcon
                     className="react-rainbow-styleguide-open-chat-button"
                     shaded
