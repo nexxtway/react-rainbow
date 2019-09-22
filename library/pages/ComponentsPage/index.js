@@ -115,6 +115,7 @@ export default class ComponentsPage extends Component {
 
     render() {
         const { searchTerm } = this.state;
+
         return (
             <div>
                 <SectionHeading />
