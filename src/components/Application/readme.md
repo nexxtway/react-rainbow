@@ -103,10 +103,10 @@ const inputStyles = {
                         className="rainbow-p-around_small"
                         style={inputStyles}
                     />
-                    <div className="rainbow-p-around_large rainbow-flex_column rainbow-align-content_center">
+                    <div className="rainbow-p-horizontal_xx-large rainbow-flex_column rainbow-align-content_center">
                         <img
                             src="images/illustrations/Illustration-rainbow-1.svg"
-                            className="rainbow-p-vertical_x-large rainbow-align_absolute-center"
+                            className="rainbow-p-top_x-large rainbow-align_absolute-center"
                             alt="the rainbow"
                         />
                         <p className="rainbow-p-top_medium rainbow-font-size-heading_small rainbow-color_gray-4">
