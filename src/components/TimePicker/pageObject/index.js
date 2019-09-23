@@ -84,32 +84,30 @@ class PageTimePicker {
      * @returns {bool}
      */
     isOpen() {
-        if ($(timePickerModalId).isDisplayed()) {
-            return (
-                $(timePickerModalId)
-                    .$('button[id="time-picker_cancel-button"]')
-                    .isDisplayed() &&
-                $(timePickerModalId)
-                    .$('button[id="time-picker_ok-button"]')
-                    .isDisplayed() &&
-                $(timePickerModalId)
-                    .$('button[id="time-picker_up-button"]')
-                    .isDisplayed() &&
-                $(timePickerModalId)
-                    .$('button[id="time-picker_down-button"]')
-                    .isDisplayed() &&
-                $(timePickerModalId)
-                    .$('input[data-id="minutes"]')
-                    .isDisplayed() &&
-                $(timePickerModalId)
-                    .$('input[data-id="hour"]')
-                    .isDisplayed() &&
-                $(timePickerModalId)
-                    .$('input[data-id="input-element"]')
-                    .isDisplayed()
-            );
-        }
-        return false;
+        return (
+            $(timePickerModalId).isDisplayed() &&
+            $(timePickerModalId)
+                .$('button[id="time-picker_cancel-button"]')
+                .isDisplayed() &&
+            $(timePickerModalId)
+                .$('button[id="time-picker_ok-button"]')
+                .isDisplayed() &&
+            $(timePickerModalId)
+                .$('button[id="time-picker_up-button"]')
+                .isDisplayed() &&
+            $(timePickerModalId)
+                .$('button[id="time-picker_down-button"]')
+                .isDisplayed() &&
+            $(timePickerModalId)
+                .$('input[data-id="minutes"]')
+                .isDisplayed() &&
+            $(timePickerModalId)
+                .$('input[data-id="hour"]')
+                .isDisplayed() &&
+            $(timePickerModalId)
+                .$('input[data-id="input-element"]')
+                .isDisplayed()
+        );
     }
 
     /**
