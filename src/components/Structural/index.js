@@ -1,2 +1,2 @@
-// eslint-disable-next-line import/prefer-default-export
 export { default as TruncatedText } from './truncatedText';
+export { default as HiddenElement } from './hiddenElement';
