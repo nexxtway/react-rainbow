@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { COLOR_WHITE, COLOR_BRAND, COLOR_GRAY_2, COLOR_GRAY_4 } from '../../libs/colors';
+import styled from 'styled-components';
+import { COLOR_WHITE, COLOR_BRAND, COLOR_GRAY_2, COLOR_GRAY_4 } from '../../styles/colors';
 
 const StyledBadge = styled.span`
     color: ${COLOR_GRAY_4};
@@ -24,26 +24,26 @@ const StyledBadge = styled.span`
 
     ${props =>
         props.variant === 'lightest' &&
-        css`
+        `
             background-color: ${COLOR_WHITE};
             border-color: ${COLOR_GRAY_2};
         `};
     ${props =>
         props.variant === 'brand' &&
-        css`
+        `
             color: ${COLOR_WHITE};
             background-color: ${COLOR_BRAND};
         `};
     ${props =>
         props.variant === 'outline-brand' &&
-        css`
+        `
             color: ${COLOR_BRAND};
             background-color: transparent;
             border-color: ${COLOR_BRAND};
         `};
     ${props =>
         props.variant === 'inverse' &&
-        css`
+        `
             color: ${COLOR_WHITE};
             background-color: ${COLOR_GRAY_4};
         `};
