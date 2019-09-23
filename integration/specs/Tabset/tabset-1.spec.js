@@ -54,7 +54,7 @@ describe('Tabset base example', () => {
         const tabset = new PageTabset(TABSET);
         browser.setWindowSize(1920, 1080);
         expect(tabset.isButtonsVisible()).toBe(false);
-        browser.setWindowSize(705, 705);
+        browser.setWindowSize(600, 600);
         expect(tabset.isButtonsVisible()).toBe(true);
     });
 });

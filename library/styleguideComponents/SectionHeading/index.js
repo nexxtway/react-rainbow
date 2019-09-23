@@ -29,11 +29,16 @@ export default function SectionHeading() {
                     <GithubStarsBadge />
                 </div>
                 <a
+                    className="react-rainbow-heading_github-link"
                     href="https://github.com/nexxtway/react-rainbow"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <img src={githublogo} alt="github logo" />
+                    <img
+                        src={githublogo}
+                        alt="github logo"
+                        className="react-rainbow-heading_github-icon"
+                    />
                 </a>
             </div>
         </header>

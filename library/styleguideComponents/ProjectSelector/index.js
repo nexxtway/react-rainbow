@@ -143,7 +143,11 @@ export default class ProjectSelector extends Component {
                         className="react-rainbow-selector_item"
                         tabIndex={this.getTabIndex()}
                     >
-                        <img src={rainbowLogo} alt="react-rainbow" />
+                        <img
+                            src={rainbowLogo}
+                            alt="react-rainbow"
+                            className="react-rainbow-selector_item-image"
+                        />
                         <div className="react-rainbow-selector_item-text">
                             <span className="react-rainbow-selector_item-text_header">
                                 react-rainbow-components
@@ -165,7 +169,11 @@ export default class ProjectSelector extends Component {
                             onMouseEnter={() => this.focusChild(0)}
                             className="react-rainbow-selector_item"
                         >
-                            <img src={reactPrismicLogo} alt="react-rainbow" />
+                            <img
+                                src={reactPrismicLogo}
+                                alt="react-rainbow"
+                                className="react-rainbow-selector_item-image"
+                            />
                             <div className="react-rainbow-selector_item-text">
                                 <span className="react-rainbow-selector_item-text_header">
                                     react-prismic-cms

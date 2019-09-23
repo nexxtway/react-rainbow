@@ -3,13 +3,14 @@
         margin-bottom: 16px;
     }
     .react-rainbow-component_container {
-        padding: 0;
+        padding: 0 12px;
     }
     .react-rainbow-component_interactive-example {
-        margin: 0 12px;
+        margin: 0;
     }
     .react-rainbow-component_properties-table {
-        margin: 0 12px;
+        margin: 0;
+        width: auto;
     }
     .react-rainbow-component_tab-edit-link {
         margin-right: 0;
