@@ -44,7 +44,7 @@ export default class StyleGuide extends React.Component {
     getSideBarClassNames() {
         const { isSidebarHiddenInSmallScreen } = this.state;
         return classnames('react-rainbow-styleguide-sidebar', {
-            'react-rainbow-styleguide_hidden-content': isSidebarHiddenInSmallScreen,
+            'react-rainbow-styleguide_hidden-sidebar': isSidebarHiddenInSmallScreen,
         });
     }
 

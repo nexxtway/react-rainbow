@@ -1,89 +1,147 @@
 ##### DatePicker base:
 
-    initialState = { date: new Date() };
-    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
-        <DatePicker
-            value={state.date}
-            label="DatePicker Label"
-            onChange={ value => setState({ date: value }) } />
-    </div>
+```js
+const containerStyles = {
+    maxWidth: 400,
+};
+
+initialState = { date: new Date() };
+<div
+    className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
+    style={containerStyles}
+>
+    <DatePicker
+        value={state.date}
+        label="DatePicker Label"
+        onChange={value => setState({ date: value })}
+    />
+</div>;
+```
 
 ##### DatePicker with date constraints:
 
-    initialState = { date: new Date() };
-    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
-        <DatePicker
-            value={state.date}
-            minDate={new Date(2018, 0, 4)}
-            maxDate={new Date(2020, 0, 4)}
-            label="DatePicker Label"
-            onChange={ value => setState({ date: value }) } />
-    </div>
+```js
+const containerStyles = {
+    maxWidth: 400,
+};
+
+initialState = { date: new Date() };
+<div
+    className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
+    style={containerStyles}
+>
+    <DatePicker
+        value={state.date}
+        minDate={new Date(2018, 0, 4)}
+        maxDate={new Date(2020, 0, 4)}
+        label="DatePicker Label"
+        onChange={value => setState({ date: value })}
+    />
+</div>;
+```
 
 ##### DatePicker with different date formats:
 
-    initialState = { date: new Date() };
-    <div className="rainbow-flex rainbow-p-vertical_large rainbow-m-horizontal_xx-large">
+```js
+initialState = { date: new Date() };
+<div className="rainbow-align-content_center rainbow-m-vertical_large rainbow-flex_wrap">
+    <div className="rainbow-m-around_small">
         <DatePicker
             formatStyle="small"
             value={state.date}
             label="DatePicker Label"
-            onChange={ value => setState({ date: value }) }
-            className="rainbow-m-horizontal_small" />
-
+            onChange={value => setState({ date: value })}
+        />
+    </div>
+    <div className="rainbow-m-around_small">
         <DatePicker
             formatStyle="medium"
             value={state.date}
             label="DatePicker Label"
-            onChange={ value => setState({ date: value }) }
-            className="rainbow-m-horizontal_small" />
-
+            onChange={value => setState({ date: value })}
+        />
+    </div>
+    <div className="rainbow-m-around_small">
         <DatePicker
             formatStyle="large"
             value={state.date}
             label="DatePicker Label"
-            onChange={ value => setState({ date: value }) }
-            className="rainbow-m-horizontal_small" />
+            onChange={value => setState({ date: value })}
+        />
     </div>
+</div>;
+```
 
 ##### DatePicker required:
 
-    initialState = { date: new Date() };
-    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
-        <DatePicker
-            required
-            value={state.date}
-            label="DatePicker Label"
-            onChange={ value => setState({ date: value }) } />
-    </div>
+```js
+const containerStyles = {
+    maxWidth: 400,
+};
+
+initialState = { date: new Date() };
+<div
+    className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
+    style={containerStyles}
+>
+    <DatePicker
+        required
+        value={state.date}
+        label="DatePicker Label"
+        onChange={value => setState({ date: value })}
+    />
+</div>;
+```
 
 ##### DatePicker with error:
 
-    initialState = { date: undefined };
-    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
-        <DatePicker
-            required
-            error="Select a date is Required"
-            placeholder="Select a date"
-            value={state.date}
-            label="DatePicker Label"
-            onChange={ value => setState({ date: value }) } />
-    </div>
+```js
+const containerStyles = {
+    maxWidth: 400,
+};
+
+initialState = { date: undefined };
+<div
+    className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
+    style={containerStyles}
+>
+    <DatePicker
+        required
+        error="Select a date is Required"
+        placeholder="Select a date"
+        value={state.date}
+        label="DatePicker Label"
+        onChange={value => setState({ date: value })}
+    />
+</div>;
+```
 
 ##### DatePicker disabled:
 
-    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
-        <DatePicker
-            disabled
-            value={Date.now()}
-            label="DatePicker Label" />
-    </div>
+```js
+const containerStyles = {
+    maxWidth: 400,
+};
+
+<div
+    className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
+    style={containerStyles}
+>
+    <DatePicker disabled value={Date.now()} label="DatePicker Label" />
+</div>;
+```
 
 ##### DatePicker readOnly:
 
-    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
-        <DatePicker
-            readOnly
-            value={Date.now()}
-            label="DatePicker Label" />
-    </div>
+```js
+const containerStyles = {
+    maxWidth: 400,
+};
+
+<div
+    className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
+    style={containerStyles}
+>
+    <DatePicker readOnly value={Date.now()} label="DatePicker Label" />
+</div>;
+```
