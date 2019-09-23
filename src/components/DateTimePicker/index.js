@@ -20,7 +20,7 @@ function DateTimePicker(props) {
         readOnly,
         disabled,
         tabIndex,
-        // onClick,
+        onClick,
         onChange,
         onFocus,
         onBlur,
@@ -40,8 +40,11 @@ function DateTimePicker(props) {
     const inputRef = useRef(React.createRef());
     const [isOpen, setIsOpen] = useState(false);
 
-    const openModal = () => {
-        setIsOpen(true);
+    const openModal = event => {
+        if (!readOnly) {
+            setIsOpen(true);
+            onClick(event);
+        }
     };
 
     const closeModal = () => {
