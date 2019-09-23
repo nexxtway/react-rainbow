@@ -13,7 +13,7 @@ import './styles.css';
  * Notifications serve as a confirmation mechanism & feedback that comes into the page at the top.
  */
 export default function Notification(props) {
-    const { className, style, icon, title, description, onRequestClose } = props;
+    const { className, style, icon, title, description, onRequestClose, hideCloseButton } = props;
 
     function getClassName() {
         return classnames('rainbow-notification', className);
@@ -34,13 +34,15 @@ export default function Notification(props) {
                     </RenderIf>
                 </span>
             </a>
-            <ButtonIcon
-                className="rainbow-notification_close"
-                icon={<CloseIcon />}
-                size="small"
-                title="Close"
-                onClick={onRequestClose}
-            />
+            <RenderIf isTrue={!hideCloseButton}>
+                <ButtonIcon
+                    className="rainbow-notification_close"
+                    icon={<CloseIcon />}
+                    size="small"
+                    title="Close"
+                    onClick={onRequestClose}
+                />
+            </RenderIf>
         </div>
     );
 }
@@ -63,6 +65,8 @@ Notification.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** If true, hide the close button in the notification */
+    hideCloseButton: PropTypes.bool,
 };
 
 Notification.defaultProps = {
@@ -72,4 +76,5 @@ Notification.defaultProps = {
     onRequestClose: () => {},
     className: undefined,
     style: undefined,
+    hideCloseButton: false,
 };
