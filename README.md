@@ -12,14 +12,44 @@ React Rainbow is a collection of components that will reliably help you build yo
 
 <br>
 
+<div align="center">
+ 
 [![CircleCI](https://circleci.com/gh/nexxtway/react-rainbow/tree/master.svg?style=svg)](https://circleci.com/gh/nexxtway/react-rainbow/tree/master)
 [![Coverage Status](https://coveralls.io/repos/github/nexxtway/react-rainbow/badge.svg?branch=master)](https://coveralls.io/github/nexxtway/react-rainbow?branch=master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![npm version](https://badge.fury.io/js/react-rainbow-components.svg)](https://badge.fury.io/js/react-rainbow-components)
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/react-rainbow-components/community?source=orgpage)
 [![Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io/)
 
-## Installation
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/react-rainbow-components/community?source=orgpage)
+
+</div>
+
+
+### ✨  Features
+
+- Build your application in a snap.
+- 60+ components built on top of React.
+- Interactive Examples.
+- First class testing.
+- Wdio page objects.
+- Redux-Form integration.
+- We designed each component with i18n in mind.
+- Accessibility is part of our definition of done.
+- The whole package of development and design resources and tools.
+
+<br>
+
+### 🖥  Environment Support
+
+- Modern browsers and Internet Explorer 9+
+
+| [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>IE / Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Opera |
+| --- | --- | --- | --- | --- |
+| IE9, IE10, IE11, Edge | last 2 versions | last 2 versions | last 2 versions | last 2 versions |
+
+<br>
+
+### 📦  Installation
 
 React Rainbow components is available as an [npm package](https://www.npmjs.com/package/react-rainbow-components).
 
@@ -33,7 +63,9 @@ $ yarn add react-rainbow-components
 $ npm install react-rainbow-components --save
 ```
 
-## Usage
+<br>
+
+### 👍  Usage
 
 Here is a quick example to get you started, **it's all you need**:
 
@@ -53,7 +85,9 @@ Yes, it's really all you need to get started as you can see in this live and int
 
 [![Edit Button](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/24p8n0pnz0?from-embed) [![Join the chat at https://gitter.im/react-rainbow/community](https://badges.gitter.im/react-rainbow/community.svg)](https://gitter.im/react-rainbow-components/community?source=orgpage)
 
-## Running locally
+<br>
+
+### ⌨️  Running locally
 
 1. git clone https://github.com/nexxtway/react-rainbow.git
 2. cd react-rainbow
@@ -61,17 +95,23 @@ Yes, it's really all you need to get started as you can see in this live and int
 4. yarn start
 5. navigate to http://localhost:6060/
 
-## Questions
+<br>
+
+### 💬  Questions
 For `how-to` questions and other `non-issues`, please use our Gitter Chat instead of Github issues.
 
 https://gitter.im/react-rainbow-components/community
 
-## Examples
+<br>
+
+### 💻  Examples
 Are you looking for an example project to get started?
 
 [We host some here.](https://react-rainbow.web.app/#/Experiences)
 
-## Contributing
+<br>
+
+### 🤝  Contributing
 
 We are excited that you are interested in contributing to this project!
 
