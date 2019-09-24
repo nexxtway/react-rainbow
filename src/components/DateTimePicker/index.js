@@ -1,4 +1,5 @@
-import React, { useRef, useState } from 'react';
+/* eslint-disable react/prop-types */
+import React, { useRef, useState, useImperativeHandle } from 'react';
 import PropTypes from 'prop-types';
 import withReduxForm from '../../libs/hocs/withReduxForm';
 import Input from '../DatePicker/input';
@@ -8,7 +9,7 @@ import formatDateTime from './helpers/formatDateTime';
 import { ENTER_KEY, SPACE_KEY } from '../../libs/constants';
 import Styled from './styledComponents';
 
-function DateTimePicker(props) {
+function DateTimePickerF(props, ref) {
     const {
         placeholder,
         hideLabel,
@@ -37,6 +38,18 @@ function DateTimePicker(props) {
     } = props;
 
     const inputRef = useRef(React.createRef());
+    useImperativeHandle(ref, () => ({
+        focus: () => {
+            inputRef.current.focus();
+        },
+        click: () => {
+            inputRef.current.click();
+        },
+        blur: () => {
+            inputRef.current.blur();
+        },
+    }));
+
     const [isOpen, setIsOpen] = useState(false);
 
     const openModal = event => {
@@ -110,6 +123,8 @@ function DateTimePicker(props) {
         </Styled.Container>
     );
 }
+
+const DateTimePicker = React.forwardRef(DateTimePickerF);
 
 DateTimePicker.propTypes = {
     /** Sets the date for the DateTimePicker programmatically. */
