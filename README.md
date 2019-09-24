@@ -34,7 +34,6 @@ React Rainbow is a collection of components that will reliably help you build yo
 -   Redux-Form integration.
 -   We designed each component with i18n in mind.
 -   Accessibility is part of our definition of done.
--   The whole package of development and design resources and tools.
 
 <br/>
 
