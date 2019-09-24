@@ -35,6 +35,7 @@ React Rainbow is a collection of components that will reliably help you build yo
 - The whole package of development and design resources and tools.
 
 <br/>
+
 ### 🖥  Environment Support
 
 - Modern browsers and Internet Explorer 9+
@@ -44,6 +45,7 @@ React Rainbow is a collection of components that will reliably help you build yo
 | IE9, IE10, IE11, Edge | last 2 versions | last 2 versions | last 2 versions | last 2 versions |
 
 <br/>
+
 ### 📦  Installation
 
 React Rainbow components is available as an [npm package](https://www.npmjs.com/package/react-rainbow-components).
@@ -59,6 +61,7 @@ $ npm install react-rainbow-components --save
 ```
 
 <br/>
+
 ### 👍  Usage
 
 Here is a quick example to get you started, **it's all you need**:
@@ -80,6 +83,7 @@ Yes, it's really all you need to get started as you can see in this live and int
 [![Edit Button](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/24p8n0pnz0?from-embed) [![Join the chat at https://gitter.im/react-rainbow/community](https://badges.gitter.im/react-rainbow/community.svg)](https://gitter.im/react-rainbow-components/community?source=orgpage)
 
 <br/>
+
 ### ⌨️  Running locally
 
 1. git clone https://github.com/nexxtway/react-rainbow.git
@@ -89,18 +93,21 @@ Yes, it's really all you need to get started as you can see in this live and int
 5. navigate to http://localhost:6060/
 
 <br/>
+
 ### 💬  Questions
 For `how-to` questions and other `non-issues`, please use our Gitter Chat instead of Github issues.
 
 https://gitter.im/react-rainbow-components/community
 
 <br/>
+
 ### 💻  Examples
 Are you looking for an example project to get started?
 
 [We host some here.](https://react-rainbow.web.app/#/Experiences)
 
 <br/>
+
 ### 🤝  Contributing
 
 We are excited that you are interested in contributing to this project!
