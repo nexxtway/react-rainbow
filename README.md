@@ -20,7 +20,7 @@ React Rainbow is a collection of components that will reliably help you build yo
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/react-rainbow-components/community?source=orgpage)
 
-
+</div>
 
 ### ✨  Features
 
