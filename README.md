@@ -24,7 +24,6 @@ React Rainbow is a collection of components that will reliably help you build yo
 
 ### ✨  Features
 
-- Build your application in a snap.
 - 60+ components built on top of React.
 - Interactive Examples.
 - First class testing.
