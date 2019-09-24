@@ -21,11 +21,11 @@ describe('Tabset base example', () => {
     });
     it('should select the last tab when the first has focus and left arrow key is pressed', () => {
         const tabset = new PageTabset(TABSET);
-        const tabItem = tabset.getItem(0);
-        tabItem.click();
+        const firstTabItem = tabset.getItem(0);
+        firstTabItem.click();
         browser.keys(ARROW_LEFT_KEY);
-        const tabItem2 = tabset.getItem(3);
-        expect(tabItem2.isSelected()).toBe(true);
+        const lastTabItem = tabset.getItem(4);
+        expect(lastTabItem.isSelected()).toBe(true);
     });
     it('should select the next tab when the first has focus and right arrow key is pressed', () => {
         const tabset = new PageTabset(TABSET);
