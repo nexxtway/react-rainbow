@@ -18,6 +18,7 @@ React Rainbow is a collection of components that will reliably help you build yo
 [![npm version](https://badge.fury.io/js/react-rainbow-components.svg)](https://badge.fury.io/js/react-rainbow-components)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/react-rainbow-components/community?source=orgpage)
 [![Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io/)
+[![NPM downloads](http://img.shields.io/npm/dm//react-rainbow-components.svg?style=flat-square)](http://npmjs.com//react-rainbow-components)
 
 ## Installation
 
