@@ -4,10 +4,9 @@ import withReduxForm from '../../libs/hocs/withReduxForm';
 import Input from '../DatePicker/input';
 import CalendarIcon from '../DatePicker/calendarIcon';
 import DateTimePickerModal from './pickerModal';
-// import Modal from '../Modal';
-// import Calendar from '../Calendar';
-// import TimeSelect from '../TimePicker/timeSelect';
 import formatDateTime from './helpers/formatDateTime';
+import { ENTER_KEY, SPACE_KEY } from '../../libs/constants';
+import Styled from './styledComponents';
 
 function DateTimePicker(props) {
     const {
@@ -59,7 +58,12 @@ function DateTimePicker(props) {
         onBlur(value);
     };
 
-    const handleKeyDown = () => {};
+    const handleKeyDown = ({ keyCode }) => {
+        const shouldOpenModal = (keyCode === ENTER_KEY || keyCode === SPACE_KEY) && !readOnly;
+        if (shouldOpenModal) {
+            setIsOpen(true);
+        }
+    };
 
     const handleChange = (...args) => {
         closeModal();
@@ -69,7 +73,7 @@ function DateTimePicker(props) {
     const formattedDatetime = formatDateTime(value, formatStyle);
 
     return (
-        <div id={id} className={className} style={style}>
+        <Styled.Container id={id} className={className} style={style}>
             <Input
                 ref={inputRef}
                 label={label}
@@ -103,7 +107,7 @@ function DateTimePicker(props) {
                 okLabel={okLabel}
                 cancelLabel={cancelLabel}
             />
-        </div>
+        </Styled.Container>
     );
 }
 

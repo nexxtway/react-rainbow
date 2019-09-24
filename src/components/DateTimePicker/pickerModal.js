@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Modal from '../Modal';
 import Calendar from '../Calendar';
 import TimeSelect from '../TimePicker/timeSelect';
 import extractDate from './helpers/extractDate';
@@ -25,13 +24,19 @@ function DateTimePickerModal(props) {
     const [date, setDate] = useState(value);
     const modalTitle = title || formatDate(date, formatStyle);
 
+    useEffect(() => {
+        if (isOpen) {
+            setDate(value);
+        }
+    }, [isOpen, value]);
+
     const handleChange = time => {
         const currentValue = new Date(`${extractDate(date)} ${time}`);
         onChange(currentValue);
     };
 
     return (
-        <Modal isOpen={isOpen} onRequestClose={onRequestClose} size="medium">
+        <Styled.Modal isOpen={isOpen} onRequestClose={onRequestClose}>
             <Styled.Header>
                 <Styled.H2>{modalTitle}</Styled.H2>
             </Styled.Header>
@@ -48,10 +53,11 @@ function DateTimePickerModal(props) {
                     value={extractTime(value)}
                     okLabel={okLabel}
                     cancelLabel={cancelLabel}
+                    onCloseModal={onRequestClose}
                     onChange={handleChange}
                 />
             </Styled.ResponsiveContainer>
-        </Modal>
+        </Styled.Modal>
     );
 }
 
