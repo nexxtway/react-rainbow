@@ -58,17 +58,27 @@ class TabsetExample extends React.Component {
                     sun to the observer's eye.
                 </div>
             );
+        } else if (selected === 'locked') {
+            return (
+                <div
+                    aria-labelledby="locked"
+                    id="lockedTab"
+                    className="rainbow-p-around_xx-large rainbow-m-bottom_xx-large rainbow-font-size-text_large rainbow-align-text-center rainbow-color_gray-3"
+                >
+                    Rainbows can be full circles. However, the observer normally sees only an arc
+                    formed by illuminated droplets above the ground.
+                </div>
+            );
         }
         return (
             <div
-                aria-labelledby="locked"
-                id="sharedTab"
+                aria-labelledby="forums"
+                id="forumsTab"
                 className="rainbow-p-around_xx-large rainbow-m-bottom_xx-large rainbow-font-size-text_large rainbow-align-text-center rainbow-color_gray-3"
             >
                 In a primary rainbow, the arc shows red on the outer part and violet on the inner
                 side. This rainbow is caused by light being refracted when entering a droplet of
-                water, then reflected inside on the back of the droplet and refracted again when
-                leaving it.
+                water.
             </div>
         );
     }
@@ -121,7 +131,9 @@ class TabsetExample extends React.Component {
 
                         <Tab label="SHARED" name="shared" id="shared" ariaControls="sharedTab" />
 
-                        <Tab label="LOCKED" name="locked" id="locked" ariaControls="sharedTab" />
+                        <Tab label="LOCKED" name="locked" id="locked" ariaControls="lockedTab" />
+
+                        <Tab label="FORUMS" name="forums" id="forums" ariaControls="forumsTab" />
                     </Tabset>
                     {this.getTabContent()}
                 </div>
