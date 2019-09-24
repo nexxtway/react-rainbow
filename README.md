@@ -20,7 +20,6 @@ React Rainbow is a collection of components that will reliably help you build yo
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/react-rainbow-components/community?source=orgpage)
 
-</div>
 
 
 ### ✨  Features
@@ -35,7 +34,6 @@ React Rainbow is a collection of components that will reliably help you build yo
 - Accessibility is part of our definition of done.
 - The whole package of development and design resources and tools.
 
-<br>
 
 ### 🖥  Environment Support
 
@@ -45,7 +43,7 @@ React Rainbow is a collection of components that will reliably help you build yo
 | --- | --- | --- | --- | --- |
 | IE9, IE10, IE11, Edge | last 2 versions | last 2 versions | last 2 versions | last 2 versions |
 
-<br>
+
 
 ### 📦  Installation
 
@@ -61,7 +59,6 @@ $ yarn add react-rainbow-components
 $ npm install react-rainbow-components --save
 ```
 
-<br>
 
 ### 👍  Usage
 
@@ -83,7 +80,6 @@ Yes, it's really all you need to get started as you can see in this live and int
 
 [![Edit Button](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/24p8n0pnz0?from-embed) [![Join the chat at https://gitter.im/react-rainbow/community](https://badges.gitter.im/react-rainbow/community.svg)](https://gitter.im/react-rainbow-components/community?source=orgpage)
 
-<br>
 
 ### ⌨️  Running locally
 
@@ -93,21 +89,18 @@ Yes, it's really all you need to get started as you can see in this live and int
 4. yarn start
 5. navigate to http://localhost:6060/
 
-<br>
 
 ### 💬  Questions
 For `how-to` questions and other `non-issues`, please use our Gitter Chat instead of Github issues.
 
 https://gitter.im/react-rainbow-components/community
 
-<br>
 
 ### 💻  Examples
 Are you looking for an example project to get started?
 
 [We host some here.](https://react-rainbow.web.app/#/Experiences)
 
-<br>
 
 ### 🤝  Contributing
 
