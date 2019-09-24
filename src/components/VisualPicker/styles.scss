@@ -8,6 +8,7 @@
 .rainbow-visual-picker_container {
     display: inline-flex;
     flex-direction: column;
+    justify-content: center;
 
     .rainbow-visual-picker_label {
         color: $color-gray-4;
@@ -18,10 +19,12 @@
     }
 
     .rainbow-visual-picker_options-container {
-        display: flex;
+        display: inline-flex;
+        flex-wrap: wrap;
+        justify-content: center;
 
-        .rainbow-visual-picker-option_content-container:not(:last-child) {
-            margin-right: 1rem;
+        .rainbow-visual-picker-option_content-container {
+            margin: 0 0.25rem 0.5rem 0.25rem;
         }
     }
 
