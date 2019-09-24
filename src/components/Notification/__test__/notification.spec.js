@@ -27,4 +27,8 @@ describe('<Notification/>', () => {
             'rainbow-notification my-custom-class-name',
         );
     });
+    it('should not display the close button when hideCloseButton props is true', () => {
+        const component = mount(<Notification title="Notification test" hideCloseButton />);
+        expect(component.find('ButtonIcon').exists()).toBe(false);
+    });
 });

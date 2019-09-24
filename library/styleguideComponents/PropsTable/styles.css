@@ -67,3 +67,14 @@
     text-transform: uppercase;
     letter-spacing: 0.0625rem;
 }
+
+@media (max-width: 800px) {
+    .react-rainbow-table {
+        width: 100%;
+        overflow-x: scroll;
+    }
+
+    .react-rainbow-text-title-caps {
+        width: 100%;
+    }
+}
