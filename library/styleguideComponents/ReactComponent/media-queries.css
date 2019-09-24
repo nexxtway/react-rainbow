@@ -11,6 +11,7 @@
     .react-rainbow-component_properties-table {
         margin: 0;
         width: auto;
+        overflow-x: auto;
     }
     .react-rainbow-component_tab-edit-link {
         margin-right: 0;
