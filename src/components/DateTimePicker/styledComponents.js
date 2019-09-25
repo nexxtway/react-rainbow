@@ -74,6 +74,7 @@ const Modal = styled(NSModal)`
 
         & .rainbow-time-picker_time-select-content {
             margin-top: 0;
+            margin-bottom: 10px;
             height: 76px;
         }
     }
