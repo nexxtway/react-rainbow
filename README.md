@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://react-rainbow.firebaseapp.com/" rel="noopener" target="_blank"><img width="10%" src="https://raw.githubusercontent.com/nexxtway/react-rainbow/master/assets/images/rainbow-logo.svg?sanitize=true" alt="React Rainbow Component logo"></a>
+  <a href="https://react-rainbow.firebaseapp.com/" rel="noopener" target="_blank"><img width="20%" src="https://raw.githubusercontent.com/nexxtway/react-rainbow/master/assets/images/rainbow-logo.svg?sanitize=true" alt="React Rainbow Component logo"></a>
 </p>
 
 <h2 align="center">
