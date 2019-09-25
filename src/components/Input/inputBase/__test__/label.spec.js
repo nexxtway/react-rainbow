@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Label from '../label';
-import StyledLabel from '../styled/label';
+import StyledLabel from '../../styled/label';
 import HiddenElement from '../../../Structural/hiddenElement';
 
 describe('<InputBaseLabel/>', () => {

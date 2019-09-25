@@ -7,10 +7,10 @@ import {
     COLOR_GRAY_2,
     COLOR_GRAY_1,
     COLOR_ERROR,
-} from '../../../../styles/colors';
-import { BORDER_RADIUS_2 } from '../../../../styles/borderRadius';
-import { FONT_SIZE_TEXT_LARGE } from '../../../../styles/fontSizes';
-import { SHADOW_OUTLINE, SHADOW_ERROR } from '../../../../styles/shadows';
+} from '../../../styles/colors';
+import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
+import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
+import { SHADOW_OUTLINE, SHADOW_ERROR } from '../../../styles/shadows';
 
 const hasLeftIcon = props => props.icon && props.iconPosition === 'left';
 const hasRightIcon = props => props.icon && props.iconPosition === 'right';

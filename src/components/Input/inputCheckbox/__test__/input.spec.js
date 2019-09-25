@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import InputCheckbox from './../';
+import InputCheckbox from '../';
+import StyledError from '../styled/error';
 
 describe('<InputCheckbox/>', () => {
     it('should set an id in the input element', () => {
@@ -32,9 +33,7 @@ describe('<InputCheckbox/>', () => {
     });
     it('should pass a generated id to the Error element and set the same id to the aria-describedby for the input when a error is passed', () => {
         const component = mount(<InputCheckbox error="error message" />);
-        expect(component.find('.rainbow-input-checkbox_error-message').prop('id')).toMatch(
-            /error-message/,
-        );
+        expect(component.find(StyledError).prop('id')).toMatch(/error-message/);
         expect(component.find('input').prop('aria-describedby')).toMatch(/error-message/);
     });
     it('should pass the right props to the Label component', () => {
@@ -45,22 +44,6 @@ describe('<InputCheckbox/>', () => {
             disabled: true,
             inputId: expect.any(String),
         });
-    });
-    it('should have the right class name in the container element', () => {
-        const component = mount(<InputCheckbox />);
-        expect(component.find('div[className="rainbow-input-checkbox_container"]').exists()).toBe(
-            true,
-        );
-    });
-    it('should have the right class names when error is passed', () => {
-        const component = mount(<InputCheckbox error="Error text" />);
-        expect(
-            component
-                .find(
-                    'div[className="rainbow-input-checkbox_container rainbow-input-checkbox--error"]',
-                )
-                .exists(),
-        ).toBe(true);
     });
     it('should set checked prop passed in input element', () => {
         const component = mount(<InputCheckbox checked />);

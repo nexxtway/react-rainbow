@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import { uniqueId } from './../../../libs/utils';
-import RenderIf from './../../RenderIf';
+import { uniqueId } from '../../../libs/utils';
+import RenderIf from '../../RenderIf';
 import Label from './label';
-import './styles.css';
+import StyledContainer from '../styled/container';
+import StyledCheckboxContainer from './styled/checkboxContainer';
+import StyledCheckboxInput from './styled/checkboxInput';
+import StyledHelpText from './styled/helpText';
+import StyledError from './styled/error';
 
 export default class InputCheckbox extends Component {
     constructor(props) {
@@ -13,17 +16,6 @@ export default class InputCheckbox extends Component {
         this.inlineTextLabelId = uniqueId('inline-text-label');
         this.errorMessageId = uniqueId('error-message');
         this.inputRef = React.createRef();
-    }
-
-    getContainerClassNames() {
-        const { className, error } = this.props;
-        return classnames(
-            'rainbow-input-checkbox_container',
-            {
-                'rainbow-input-checkbox--error': error,
-            },
-            className,
-        );
     }
 
     getInlineTextLabelId() {
@@ -68,6 +60,7 @@ export default class InputCheckbox extends Component {
 
     render() {
         const {
+            className,
             style,
             value,
             onChange,
@@ -87,9 +80,10 @@ export default class InputCheckbox extends Component {
         } = this.props;
 
         return (
-            <div id={id} className={this.getContainerClassNames()} style={style}>
-                <div className="rainbow-input-checkbox_inner-container">
-                    <input
+            <StyledContainer id={id} className={className} style={style}>
+                <StyledCheckboxContainer>
+                    <StyledCheckboxInput
+                        as="input"
                         id={this.inputId}
                         name={name}
                         type="checkbox"
@@ -105,8 +99,8 @@ export default class InputCheckbox extends Component {
                         aria-labelledby={this.getInlineTextLabelId()}
                         aria-describedby={this.getErrorMessageId()}
                         ref={this.inputRef}
+                        error={error}
                     />
-
                     <Label
                         label={label}
                         hideLabel={hideLabel}
@@ -114,19 +108,14 @@ export default class InputCheckbox extends Component {
                         inputId={this.inputId}
                         id={this.getInlineTextLabelId()}
                     />
-                </div>
+                </StyledCheckboxContainer>
                 <RenderIf isTrue={!!bottomHelpText}>
-                    <div className="rainbow-input-checkbox_help">{bottomHelpText}</div>
+                    <StyledHelpText>{bottomHelpText}</StyledHelpText>
                 </RenderIf>
                 <RenderIf isTrue={!!error}>
-                    <div
-                        id={this.getErrorMessageId()}
-                        className="rainbow-input-checkbox_error-message"
-                    >
-                        {error}
-                    </div>
+                    <StyledError id={this.getErrorMessageId()}>{error}</StyledError>
                 </RenderIf>
-            </div>
+            </StyledContainer>
         );
     }
 }

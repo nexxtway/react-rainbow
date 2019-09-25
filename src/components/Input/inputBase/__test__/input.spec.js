@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import InputBase from './../';
-import StyledError from '../styled/error';
+import InputBase from '../';
+import StyledError from '../../styled/error';
 
 describe('<InputBase/>', () => {
     it('should set an id in the input element', () => {
