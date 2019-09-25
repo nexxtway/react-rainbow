@@ -1,22 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import RequiredAsterisk from '../../RequiredAsterisk';
+import HiddenElement from '../../Structural/hiddenElement';
+import StyledLabel from './styled/label';
 
 export default function Label(props) {
-    const { label, required, inputId, readOnly, id, hideLabel } = props;
+    const { label, required, inputId, readOnly, id, hideLabel, disabled } = props;
 
-    const getLabelClassNames = () =>
-        classnames('rainbow-input_label', {
-            'rainbow-input_label-read-only': readOnly,
-            'rainbow-input_label--hide': hideLabel,
-        });
+    if (hideLabel) {
+        return (
+            <HiddenElement as="label" htmlFor={inputId} id={id}>
+                <RequiredAsterisk required={required} />
+                {label}
+            </HiddenElement>
+        );
+    }
 
     return (
-        <label className={getLabelClassNames()} htmlFor={inputId} id={id}>
+        <StyledLabel readOnly={readOnly} disabled={disabled} htmlFor={inputId} id={id}>
             <RequiredAsterisk required={required} />
             {label}
-        </label>
+        </StyledLabel>
     );
 }
 
@@ -27,9 +31,11 @@ Label.propTypes = {
     readOnly: PropTypes.bool.isRequired,
     id: PropTypes.string,
     hideLabel: PropTypes.bool,
+    disabled: PropTypes.bool,
 };
 
 Label.defaultProps = {
     id: undefined,
     hideLabel: false,
+    disabled: false,
 };

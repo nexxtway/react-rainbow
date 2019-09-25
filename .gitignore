@@ -22,10 +22,12 @@ package-lock.json
 components
 propTypes
 libs
+styles
 !/library/pages/components
 !/src/components
 !/src/libs
 !/src/propTypes
+!/src/styles
 styleguide
 errorShots
 allure-results
