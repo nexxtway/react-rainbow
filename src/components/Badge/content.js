@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TruncatedText } from '../Structural';
+import TruncatedText from '../Structural/truncatedText';
 
 export default function Content(props) {
     const { label, children } = props;

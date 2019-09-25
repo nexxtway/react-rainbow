@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { uniqueId } from './../../../libs/utils';
 import Label from './label';
 import RenderIf from '../../RenderIf';
-import './styles.css';
+import StyledInput from './styled/input';
+import StyledContainer from './styled/container';
+import StyledInputContainer from './styled/inputContainer';
+import StyledIconContainer from './styled/iconContainer';
+import StyledHelpText from './styled/helpText';
+import StyledError from './styled/error';
 
 export default class InputBase extends Component {
     constructor(props) {
@@ -13,34 +17,6 @@ export default class InputBase extends Component {
         this.inlineTextLabelId = uniqueId('inline-text-label');
         this.errorMessageId = uniqueId('error-message');
         this.inputRef = React.createRef();
-    }
-
-    getContainerClassNames() {
-        const { className, error, readOnly } = this.props;
-        return classnames(
-            'rainbow-input_container',
-            {
-                'rainbow-input--read-only': readOnly,
-                'rainbow-input--error': error,
-            },
-            className,
-        );
-    }
-
-    getIconPositionClassNames() {
-        const { icon, iconPosition } = this.props;
-        return classnames({
-            'rainbow-input_icon-container': icon,
-            [`rainbow-input_icon--${iconPosition}`]: icon,
-        });
-    }
-
-    getInputClassNames() {
-        const { isBare, isCentered } = this.props;
-        return classnames('rainbow-input', {
-            'rainbow-input_bare': isBare,
-            'rainbow-input_counter': isCentered,
-        });
     }
 
     getInlineTextLabelId() {
@@ -85,6 +61,7 @@ export default class InputBase extends Component {
 
     render() {
         const {
+            className,
             style,
             value,
             label,
@@ -109,29 +86,39 @@ export default class InputBase extends Component {
             autoComplete,
             name,
             hideLabel,
+            isBare,
+            isCentered,
+            iconPosition,
         } = this.props;
 
         return (
-            <div id={id} className={this.getContainerClassNames()} style={style}>
+            <StyledContainer id={id} className={className} style={style}>
                 <Label
                     label={label}
                     hideLabel={hideLabel}
                     required={required}
                     inputId={this.inputId}
                     readOnly={readOnly}
+                    disabled={disabled}
                     id={this.getInlineTextLabelId()}
                 />
 
-                <div className={this.getIconPositionClassNames()}>
+                <StyledInputContainer>
                     <RenderIf isTrue={!!icon}>
-                        <span className="rainbow-input_icon">{icon}</span>
+                        <StyledIconContainer
+                            iconPosition={iconPosition}
+                            readOnly={readOnly}
+                            disabled={disabled}
+                            error={error}
+                        >
+                            {icon}
+                        </StyledIconContainer>
                     </RenderIf>
 
-                    <input
+                    <StyledInput
                         id={this.inputId}
                         name={name}
                         type={type}
-                        className={this.getInputClassNames()}
                         value={value}
                         placeholder={placeholder}
                         onChange={onChange}
@@ -150,17 +137,20 @@ export default class InputBase extends Component {
                         aria-labelledby={this.getInlineTextLabelId()}
                         aria-describedby={this.getErrorMessageId()}
                         ref={this.inputRef}
+                        isBare={isBare}
+                        isCentered={isCentered}
+                        iconPosition={iconPosition}
+                        icon={icon}
+                        error={error}
                     />
-                </div>
+                </StyledInputContainer>
                 <RenderIf isTrue={!!bottomHelpText}>
-                    <div className="rainbow-input_help">{bottomHelpText}</div>
+                    <StyledHelpText>{bottomHelpText}</StyledHelpText>
                 </RenderIf>
                 <RenderIf isTrue={!!error}>
-                    <div id={this.getErrorMessageId()} className="rainbow-input_error">
-                        {error}
-                    </div>
+                    <StyledError id={this.getErrorMessageId()}>{error}</StyledError>
                 </RenderIf>
-            </div>
+            </StyledContainer>
         );
     }
 }

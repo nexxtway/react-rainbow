@@ -1,6 +1,6 @@
 {
     "name": "react-rainbow-components",
-    "version": "1.4.0",
+    "version": "1.5.0",
     "description": "React Rainbow Components",
     "keywords": [
         "react",
@@ -19,8 +19,8 @@
         "build:components": "npx babel ./src --out-dir ./",
         "build:css": "node-sass-chokidar src/components/ -o ./components/",
         "build:fonts": "npx babel src/components/Application/fonts --out-dir components/Application/fonts --copy-files",
-        "build": "run-p build:components build:css build:fonts build:copy-files",
-        "build:copy-files": "node ./scripts/copy-files.js",
+        "build:copy-ts-files": "node ./scripts/copy-files.js",
+        "build": "npm-run-all --parallel build:components build:css build:fonts --serial build:copy-ts-files",
         "prepublishOnly": "yarn clean && yarn build",
         "clean": "rm -Rf components && rm -Rf libs",
         "lint:js": "eslint src",
