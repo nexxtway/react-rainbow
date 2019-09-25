@@ -9,7 +9,6 @@ import StyledInputContainer from './styled/inputContainer';
 import StyledIconContainer from './styled/iconContainer';
 import StyledHelpText from './styled/helpText';
 import StyledError from './styled/error';
-import './styles.css';
 
 export default class InputBase extends Component {
     constructor(props) {
