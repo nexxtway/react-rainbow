@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_3, COLOR_ERROR } from '../../../../styles/colors';
+import { COLOR_GRAY_3, COLOR_ERROR } from '../../../styles/colors';
 
 const IconContainer = styled.span`
     fill: ${COLOR_GRAY_3};

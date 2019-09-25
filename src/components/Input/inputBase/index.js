@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { uniqueId } from './../../../libs/utils';
 import Label from './label';
 import RenderIf from '../../RenderIf';
-import StyledInput from './styled/input';
-import StyledContainer from './styled/container';
-import StyledInputContainer from './styled/inputContainer';
-import StyledIconContainer from './styled/iconContainer';
-import StyledHelpText from './styled/helpText';
-import StyledError from './styled/error';
+import StyledInput from '../styled/input';
+import StyledContainer from '../styled/container';
+import StyledInputContainer from '../styled/inputContainer';
+import StyledIconContainer from '../styled/iconContainer';
+import StyledHelpText from '../styled/helpText';
+import StyledError from '../styled/error';
 
 export default class InputBase extends Component {
     constructor(props) {
