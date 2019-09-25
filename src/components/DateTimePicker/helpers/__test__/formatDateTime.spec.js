@@ -27,10 +27,10 @@ describe('formatDateTime', () => {
     });
     it('should return the right formatted date when formatStyle small', () => {
         expect(formatDateTime(new Date(2019, 3, 24, 11, 34, 43), 'small')).toBe(
-            '04/24/19, 11:34 AM',
+            '4/24/19, 11:34 AM',
         );
-        expect(formatDateTime(new Date('04/24/2019 13:23'), 'small')).toBe('04/24/19, 1:23 PM');
-        expect(formatDateTime('04/24/2019 20:48', 'small')).toBe('04/24/19, 8:48 PM');
+        expect(formatDateTime(new Date('04/24/2019 13:23'), 'small')).toBe('4/24/19, 1:23 PM');
+        expect(formatDateTime('04/24/2019 20:48', 'small')).toBe('4/24/19, 8:48 PM');
     });
     it('should return the right formatted date when formatStyle is wrong', () => {
         expect(formatDateTime(new Date(2019, 3, 24, 11, 34, 43), 'normal')).toBe(
