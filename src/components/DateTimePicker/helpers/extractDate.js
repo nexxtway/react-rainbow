@@ -11,6 +11,6 @@ export default function extractDate(date) {
             return '';
         }
     }
-    console.error('Invalid date value passed to DatePicker');
+    console.error('Invalid date value passed to DateTimePicker');
     return '';
 }

@@ -7,7 +7,6 @@ export default function extractTime(date) {
                 hour12: true,
                 hour: '2-digit',
                 minute: '2-digit',
-                second: '2-digit',
             };
             const value = typeof date === 'string' ? new Date(date) : date;
             return new Intl.DateTimeFormat('en-US', options).format(value);
@@ -16,6 +15,6 @@ export default function extractTime(date) {
             return '';
         }
     }
-    console.error('Invalid date value passed to DatePicker');
+    console.error('Invalid date value passed to DateTimePicker');
     return '';
 }
