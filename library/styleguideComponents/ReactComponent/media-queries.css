@@ -4,6 +4,7 @@
     }
     .react-rainbow-component_container {
         padding: 0 12px;
+        margin-bottom: 20px;
     }
     .react-rainbow-component_interactive-example {
         margin: 0;
@@ -11,6 +12,7 @@
     .react-rainbow-component_properties-table {
         margin: 0;
         width: auto;
+        overflow-x: auto;
     }
     .react-rainbow-component_tab-edit-link {
         margin-right: 0;

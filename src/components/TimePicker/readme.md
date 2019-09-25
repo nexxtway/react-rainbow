@@ -1,58 +1,101 @@
 ##### TimePicker base:
 
-    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
-        <TimePicker
-            id="time-picker-1"
-            value={state.time}
-            label="TimePicker Label"
-            onChange={ value => setState({ time: value }) } />
-    </div>
+```js
+const containerStyles = {
+    maxWidth: 700,
+};
+
+<TimePicker
+    id="time-picker-1"
+    value={state.time}
+    label="TimePicker Label"
+    onChange={value => setState({ time: value })}
+    style={containerStyles}
+    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+/>;
+```
 
 ##### TimePicker with inital value:
 
-    initialState = { time: '13:32' };
-    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
-        <TimePicker
-            value={state.time}
-            label="TimePicker Label"
-            onChange={ value => setState({ time: value }) } />
-    </div>
+```js
+const containerStyles = {
+    maxWidth: 700,
+};
+
+initialState = { time: '13:32' };
+
+<TimePicker
+    value={state.time}
+    label="TimePicker Label"
+    onChange={value => setState({ time: value })}
+    style={containerStyles}
+    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+/>;
+```
 
 ##### TimePicker required:
 
-    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
-        <TimePicker
-            required
-            value={state.time}
-            label="TimePicker Label"
-            onChange={ value => setState({ time: value }) } />
-    </div>
+```js
+const containerStyles = {
+    maxWidth: 700,
+};
+
+<TimePicker
+    required
+    value={state.time}
+    label="TimePicker Label"
+    onChange={value => setState({ time: value })}
+    style={containerStyles}
+    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+/>;
+```
 
 ##### TimePicker with error:
 
-    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
-        <TimePicker
-            required
-            error="Select a time is Required"
-            value={state.time}
-            label="TimePicker Label"
-            onChange={ value => setState({ time: value }) } />
-    </div>
+```js
+const containerStyles = {
+    maxWidth: 700,
+};
+
+<TimePicker
+    required
+    error="Select a time is Required"
+    value={state.time}
+    label="TimePicker Label"
+    onChange={value => setState({ time: value })}
+    style={containerStyles}
+    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+/>;
+```
 
 ##### TimePicker disabled:
 
-    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
-        <TimePicker
-            disabled
-            value="-- : -- --"
-            label="TimePicker Label" />
-    </div>
+```js
+const containerStyles = {
+    maxWidth: 700,
+};
+
+<TimePicker
+    disabled
+    value="-- : -- --"
+    label="TimePicker Label"
+    style={containerStyles}
+    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+/>;
+```
 
 ##### TimePicker readOnly:
 
-    <div className="rainbow-p-vertical_large rainbow-p-horizontal_xx-large rainbow-m-horizontal_xx-large">
-        <TimePicker
-            readOnly
-            value="13:32"
-            label="TimePicker Label" />
-    </div>
+```js
+const containerStyles = {
+    maxWidth: 700,
+};
+
+<TimePicker
+    readOnly
+    value="13:32"
+    label="TimePicker Label"
+    style={containerStyles}
+    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+/>;
+```

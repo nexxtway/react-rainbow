@@ -81,10 +81,12 @@ export default class ButtonIcon extends Component {
             icon,
             onKeyDown,
             form,
+            onMouseDown,
         } = this.props;
 
         return (
             <button
+                onMouseDown={onMouseDown}
                 data-id="button-icon-element"
                 id={id}
                 className={this.getButtonClassNames()}
@@ -147,6 +149,8 @@ ButtonIcon.propTypes = {
     tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** The action that will be run when the button is clicked. */
     onClick: PropTypes.func,
+    /** The action that will be run when the user presses the mouse button. */
+    onMouseDown: PropTypes.func,
     /** The action triggered when a keyboard key is pressed. */
     onKeyDown: PropTypes.func,
     /** The action triggered when the element receives focus. */
@@ -184,6 +188,7 @@ ButtonIcon.defaultProps = {
     disabled: false,
     tabIndex: undefined,
     onClick: () => {},
+    onMouseDown: () => {},
     onKeyDown: () => {},
     onFocus: () => {},
     onBlur: () => {},

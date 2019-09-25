@@ -1,6 +1,6 @@
 {
     "name": "react-rainbow-components",
-    "version": "1.4.0",
+    "version": "1.5.0",
     "description": "React Rainbow Components",
     "keywords": [
         "react",
@@ -19,7 +19,8 @@
         "build:components": "npx babel ./src --out-dir ./",
         "build:css": "node-sass-chokidar src/components/ -o ./components/",
         "build:fonts": "npx babel src/components/Application/fonts --out-dir components/Application/fonts --copy-files",
-        "build": "run-p build:components build:css build:fonts",
+        "build:copy-ts-files": "node ./scripts/copy-files.js",
+        "build": "npm-run-all --parallel build:components build:css build:fonts --serial build:copy-ts-files",
         "prepublishOnly": "yarn clean && yarn build",
         "clean": "rm -Rf components && rm -Rf libs",
         "lint:js": "eslint src",
@@ -60,20 +61,30 @@
     ],
     "license": "MIT",
     "jest": {
+        "transform": {
+            "^.+\\.[t|j]sx?$": "babel-jest"
+        },
         "collectCoverage": true,
         "testURL": "http://localhost/",
         "testPathIgnorePatterns": [
             "./examples"
         ],
-        "setupTestFrameworkScriptFile": "./setupTests.js",
+        "setupFilesAfterEnv": [
+            "./setupTests.js"
+        ],
         "moduleNameMapper": {
             "\\.(css|less|svg)$": "<rootDir>/__mocks__/assetsMock.js"
         }
     },
     "devDependencies": {
-        "@babel/core": "^7.0.1",
+        "@babel/cli": "^7.6.0",
+        "@babel/core": "^7.6.0",
+        "@babel/plugin-transform-runtime": "^7.6.2",
+        "@babel/plugin-transform-typescript": "^7.6.0",
+        "@babel/preset-env": "^7.6.0",
         "@babel/preset-react": "^7.0.0",
-        "@babel/register": "^7.0.0",
+        "@babel/preset-typescript": "^7.6.0",
+        "@babel/register": "^7.6.0",
         "@fortawesome/fontawesome-svg-core": "^1.2.4",
         "@fortawesome/free-brands-svg-icons": "^5.1.0-11",
         "@fortawesome/free-regular-svg-icons": "^5.1.0-11",
@@ -87,15 +98,9 @@
         "@wdio/spec-reporter": "^5.7.13",
         "@wdio/sync": "^5.7.13",
         "assert": "^1.4.1",
-        "babel-cli": "6.26.0",
-        "babel-code-frame": "6.26.0",
-        "babel-core": "6.26.0",
-        "babel-eslint": "^8.2.6",
-        "babel-jest": "^23.4.2",
-        "babel-loader": "^7.1.5",
-        "babel-plugin-transform-object-rest-spread": "6.26.0",
-        "babel-preset-env": "^1.7.0",
-        "babel-preset-react": "6.24.1",
+        "babel-eslint": "^10.0.3",
+        "babel-jest": "^24.9.0",
+        "babel-loader": "^8.0.6",
         "copy-webpack-plugin": "^4.0.1",
         "coveralls": "^2.13.1",
         "css-loader": "^0.26.0",
@@ -115,7 +120,7 @@
         "firebase-tools": "6.1.1",
         "glob": "^7.1.3",
         "husky": "^2.2.0",
-        "jest": "^23.4.2",
+        "jest": "^24.9.0",
         "jest-axe": "^3.1.0",
         "jsdoc": "^3.5.5",
         "jsdom": "^12.0.0",

@@ -10,7 +10,8 @@ export default function Team() {
             downloadsAmount="333"
             imageSrc="/images/designsImages/team.png"
             previewUrl="/images/designsImages/team.png"
-            sketchUrl="https://firebasestorage.googleapis.com/v0/b/react-rainbow-admin.appspot.com/o/rainbow-team.sketch?alt=media&token=ce866b8b-52e0-407a-8944-ef9493304d12"
-            description="Rainbow Team is one of the elements that can be used inside a project. We are curious to see how you want to use it and also improve it, so let us know any feedback you have." />
+            sketchUrl="https://firebasestorage.googleapis.com/v0/b/react-rainbow.appspot.com/o/sketch%20designs%2Frainbow-team.sketch?alt=media&token=f5367683-58f2-4bb7-bfb7-3f8ff0b598e5"
+            description="Rainbow Team is one of the elements that can be used inside a project. We are curious to see how you want to use it and also improve it, so let us know any feedback you have."
+        />
     );
 }

@@ -9,7 +9,7 @@ export default function RainbowComponents() {
             title="Rainbow Components"
             description="Rainbow Components is a customizable and very easy to use library with more than 40 fully tested components."
             imageSrc="/images/designsImages/rainbow-components.png"
-            sketchUrl="https://firebasestorage.googleapis.com/v0/b/react-rainbow-admin.appspot.com/o/rainbow-components-library.sketch?alt=media&token=fd34197a-1c44-45b1-be10-d80463c00913"
+            sketchUrl="https://firebasestorage.googleapis.com/v0/b/react-rainbow.appspot.com/o/sketch%20designs%2Frainbow-components-library.sketch?alt=media&token=8b80cbe9-bad0-4fa4-91f6-eb5553cf3223"
             previewUrl="/images/designsImages/rainbow-components.png"
         >
             <h2 className="react-rainbow-rainbow-components_subtitle">

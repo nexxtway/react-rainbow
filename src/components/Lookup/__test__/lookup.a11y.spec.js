@@ -1,12 +1,18 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { axe } from 'jest-axe';
-import Textarea from './../';
+import Lookup from '..';
 
-describe('Textarea', () => {
+describe('<Lookup/>', () => {
     it('should be accessible when label is passed', async () => {
         expect.assertions(1);
-        const html = ReactDOMServer.renderToString(<Textarea label="Textarea Label" />);
+        const html = ReactDOMServer.renderToString(
+            <Lookup
+                className="rainbow-p-around_medium"
+                label="Place of Birth"
+                value={{ label: 'Varadero' }}
+            />,
+        );
         const results = await axe(html);
         expect(results).toHaveNoViolations();
     });

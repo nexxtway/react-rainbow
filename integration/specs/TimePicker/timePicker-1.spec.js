@@ -515,4 +515,12 @@ describe('TimePicker base example', () => {
         browser.keys(ENTER_KEY);
         expect(timePicker.getTimeValue()).toBe('02:02 AM');
     });
+    it('should set hour input value to "12" when hour input has "0" as value and press down button while hour input is focused', () => {
+        const timePicker = new PageTimePicker(TIME_PICKER);
+        timePicker.clickTimeInput();
+        timePicker.waitUntilOpen();
+        timePicker.setHourValue('0');
+        timePicker.clickDownButton();
+        expect(timePicker.getHourValue()).toBe('12');
+    });
 });
