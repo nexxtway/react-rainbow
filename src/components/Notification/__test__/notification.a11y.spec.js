@@ -4,7 +4,7 @@ import { axe } from 'jest-axe';
 import Notification from '..';
 import Avatar from './../../Avatar';
 
-describe('<Modal/>', () => {
+describe('<Notification/>', () => {
     it('should be accessible', async () => {
         expect.assertions(1);
         const html = ReactDOMServer.renderToString(
