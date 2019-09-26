@@ -108,6 +108,7 @@ export default class AmPmSelect extends PureComponent {
         }
         return (
             <input
+                aria-label="am-pm selector"
                 data-id="input-element"
                 className="rainbow-time-picker_time-select-value"
                 tabIndex={tabIndex}
