@@ -491,7 +491,7 @@ Picklist.propTypes = {
     /** The action triggered when the element releases focus. */
     onBlur: PropTypes.func,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
-    tabIndex: PropTypes.string,
+    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
     placeholder: PropTypes.string,
     /** The name of the Picklist. */

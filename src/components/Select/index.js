@@ -112,7 +112,7 @@ class Select extends Component {
 Select.propTypes = {
     /** Text label for the select. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
-    /** The name of the select */
+    /** The name of the select. */
     name: PropTypes.string,
     /** Specifies the selected value. */
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
