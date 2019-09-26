@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { uniqueId } from '../../../libs/utils';
 import RenderIf from '../../RenderIf';
-import Label from './label';
+import Label from '../checkboxRadioLabel';
+import InlineBlockElement from '../../Structural/inlineBlockElement';
 import StyledContainer from '../styled/container';
-import StyledCheckboxContainer from './styled/checkboxContainer';
-import StyledCheckboxInput from './styled/checkboxInput';
-import StyledHelpText from './styled/helpText';
-import StyledError from './styled/error';
+import HelpText from '../styled/helpText';
+import ErrorText from '../styled/errorText';
+import StyledCheckboxInput from './styled/checkbox';
 
 export default class InputCheckbox extends Component {
     constructor(props) {
@@ -81,7 +81,7 @@ export default class InputCheckbox extends Component {
 
         return (
             <StyledContainer id={id} className={className} style={style}>
-                <StyledCheckboxContainer>
+                <InlineBlockElement>
                     <StyledCheckboxInput
                         as="input"
                         id={this.inputId}
@@ -108,12 +108,14 @@ export default class InputCheckbox extends Component {
                         inputId={this.inputId}
                         id={this.getInlineTextLabelId()}
                     />
-                </StyledCheckboxContainer>
+                </InlineBlockElement>
                 <RenderIf isTrue={!!bottomHelpText}>
-                    <StyledHelpText>{bottomHelpText}</StyledHelpText>
+                    <HelpText alignSelf="flex-start">{bottomHelpText}</HelpText>
                 </RenderIf>
                 <RenderIf isTrue={!!error}>
-                    <StyledError id={this.getErrorMessageId()}>{error}</StyledError>
+                    <ErrorText alignSelf="flex-start" id={this.getErrorMessageId()}>
+                        {error}
+                    </ErrorText>
                 </RenderIf>
             </StyledContainer>
         );

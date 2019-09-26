@@ -25,13 +25,6 @@ function getColor(props) {
     return COLOR_BRAND;
 }
 
-function getDisabledCheckmarkColor(props) {
-    if (props.error) {
-        return COLOR_ERROR;
-    }
-    return COLOR_WHITE;
-}
-
 function getShadow(props) {
     if (props.error) {
         return SHADOW_ERROR;
@@ -39,8 +32,8 @@ function getShadow(props) {
     return SHADOW_OUTLINE;
 }
 
-const CheckboxContainer = styled(HiddenElement)`
-    & ~ label > .rainbow-input-checkbox_faux {
+const Checkbox = styled(HiddenElement)`
+    & ~ label > .rainbow-input_faux {
         width: 20px;
         height: 20px;
         display: inline-block;
@@ -53,7 +46,7 @@ const CheckboxContainer = styled(HiddenElement)`
         transition: border 0.1s linear, background-color 0.1s linear;
     }
 
-    :checked ~ label > .rainbow-input-checkbox_faux::after {
+    :checked ~ label > .rainbow-input_faux::after {
         display: block;
         content: '';
         height: 0.4rem;
@@ -67,32 +60,32 @@ const CheckboxContainer = styled(HiddenElement)`
         border-color: ${getColor};
     }
 
-    :checked ~ label > .rainbow-input-checkbox_faux {
+    :checked ~ label > .rainbow-input_faux {
         border: 2px solid;
         border-color: ${getColor};
     }
 
-    :focus ~ label > .rainbow-input-checkbox_faux {
+    :focus ~ label > .rainbow-input_faux {
         content: '';
         border: 2px solid;
         border-color: ${getColor};
         box-shadow: ${getShadow};
     }
 
-    &[disabled] ~ label > .rainbow-input-checkbox_faux {
+    &[disabled] ~ label > .rainbow-input_faux {
         background-color: ${COLOR_GRAY_1};
         border-color: ${COLOR_GRAY_2};
     }
 
-    &[disabled] ~ label > .rainbow-input-checkbox_faux::after {
-        border-color: ${getDisabledCheckmarkColor};
+    &[disabled] ~ label > .rainbow-input_faux::after {
+        border-color: ${COLOR_WHITE};
     }
 
-    :focus:checked ~ label > .rainbow-input-checkbox_faux {
+    :focus:checked ~ label > .rainbow-input_faux {
         border-color: ${getColor};
         background-color: ${COLOR_WHITE};
         box-shadow: ${getShadow};
     }
 `;
 
-export default CheckboxContainer;
+export default Checkbox;
