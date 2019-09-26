@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { uniqueId } from './../../../libs/utils';
 import Label from './label';
 import RenderIf from '../../RenderIf';
-import StyledInput from '../styled/input';
+import RelativeElement from '../../Structural/relativeElement';
 import StyledContainer from '../styled/container';
-import StyledInputContainer from '../styled/inputContainer';
 import StyledIconContainer from '../styled/iconContainer';
-import StyledHelpText from '../styled/helpText';
-import StyledError from '../styled/error';
+import StyledInput from '../styled/input';
+import HelpText from '../styled/helpText';
+import ErrorText from '../styled/errorText';
 
 export default class InputBase extends Component {
     constructor(props) {
@@ -103,7 +103,7 @@ export default class InputBase extends Component {
                     id={this.getInlineTextLabelId()}
                 />
 
-                <StyledInputContainer>
+                <RelativeElement>
                     <RenderIf isTrue={!!icon}>
                         <StyledIconContainer
                             iconPosition={iconPosition}
@@ -143,12 +143,14 @@ export default class InputBase extends Component {
                         icon={icon}
                         error={error}
                     />
-                </StyledInputContainer>
+                </RelativeElement>
                 <RenderIf isTrue={!!bottomHelpText}>
-                    <StyledHelpText>{bottomHelpText}</StyledHelpText>
+                    <HelpText alignSelf="center">{bottomHelpText}</HelpText>
                 </RenderIf>
                 <RenderIf isTrue={!!error}>
-                    <StyledError id={this.getErrorMessageId()}>{error}</StyledError>
+                    <ErrorText alignSelf="center" id={this.getErrorMessageId()}>
+                        {error}
+                    </ErrorText>
                 </RenderIf>
             </StyledContainer>
         );

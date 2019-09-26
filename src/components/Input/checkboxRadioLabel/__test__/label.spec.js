@@ -1,10 +1,10 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Label from '../label';
-import StyledLabelText from '../styled/labelText';
+import Label from '../';
+import StyledLabelText from '../labelText';
 import HiddenElement from '../../../Structural/hiddenElement';
 
-describe('<InputCheckboxLabel/>', () => {
+describe('<CheckboxRadioLabel/>', () => {
     describe('without hideLabel', () => {
         it('should set the inputId passed as the htmlFor prop in the label element', () => {
             const component = mount(<Label label="Input Label" inputId="input-213" />);

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import HiddenElement from '../../Structural/hiddenElement';
-import StyledLabelText from './styled/labelText';
+import StyledLabelText from './labelText';
 
 export default function Label(props) {
     const { label, disabled, hideLabel, inputId, id } = props;
@@ -9,7 +9,7 @@ export default function Label(props) {
     if (hideLabel) {
         return (
             <label htmlFor={inputId} id={id}>
-                <span className="rainbow-input-checkbox_faux" />
+                <span className="rainbow-input_faux" />
                 <HiddenElement>{label}</HiddenElement>
             </label>
         );
@@ -17,7 +17,7 @@ export default function Label(props) {
 
     return (
         <label htmlFor={inputId} id={id}>
-            <span className="rainbow-input-checkbox_faux" />
+            <span className="rainbow-input_faux" />
             <StyledLabelText disabled={disabled}>{label}</StyledLabelText>
         </label>
     );

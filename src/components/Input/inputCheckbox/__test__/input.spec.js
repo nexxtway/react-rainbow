@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import InputCheckbox from '../';
-import StyledError from '../styled/error';
+import StyledError from '../../styled/errorText';
 
 describe('<InputCheckbox/>', () => {
     it('should set an id in the input element', () => {
