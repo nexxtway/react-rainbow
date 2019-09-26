@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-const InputContainer = styled.div`
+const RelativeElement = styled.div`
     position: relative;
 `;
 
-export default InputContainer;
+export default RelativeElement;
