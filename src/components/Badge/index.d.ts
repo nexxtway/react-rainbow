@@ -1,3 +1,5 @@
+import { BaseProps } from './../types';
+
 export interface BadgeProps extends BaseProps {
     label?: string | JSX.ElementChildrenAttribute;
     title?: string;
