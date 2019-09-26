@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import RequiredAsterisk from '../../RequiredAsterisk';
 import HiddenElement from '../../Structural/hiddenElement';
-import StyledLabel from '../styled/label';
+import StyledLabel from './styled/label';
 
 export default function Label(props) {
     const { label, required, inputId, readOnly, id, hideLabel, disabled } = props;
