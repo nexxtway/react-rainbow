@@ -71,7 +71,6 @@ describe('<InputBase/>', () => {
             required: true,
             readOnly: false,
             hideLabel: false,
-            disabled: false,
             inputId: expect.any(String),
         });
     });

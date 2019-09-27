@@ -1,22 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import RequiredAsterisk from '../../RequiredAsterisk';
+import HiddenElement from '../../Structural/hiddenElement';
+import LabelText from './labelText';
 
 export default function Label(props) {
     const { label, required, inputId, readOnly, id, hideLabel } = props;
 
-    const getLabelClassNames = () =>
-        classnames('rainbow-time-picker_input-label', {
-            'rainbow-time-picker_input-label--readonly': readOnly,
-            'rainbow-time-picker_input-label--hide': hideLabel,
-        });
+    if (hideLabel) {
+        return (
+            <HiddenElement as="label" htmlFor={inputId} id={id}>
+                <RequiredAsterisk required={required} />
+                {label}
+            </HiddenElement>
+        );
+    }
 
     return (
-        <label className={getLabelClassNames()} htmlFor={inputId} id={id}>
+        <LabelText readOnly={readOnly} htmlFor={inputId} id={id}>
             <RequiredAsterisk required={required} />
             {label}
-        </label>
+        </LabelText>
     );
 }
 

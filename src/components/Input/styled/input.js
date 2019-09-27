@@ -49,23 +49,6 @@ const Input = styled.input`
         font-size: ${FONT_SIZE_TEXT_LARGE};
     }
 
-    &[readonly] {
-        padding-left: 0;
-        padding-right: 0;
-        background-color: transparent;
-        border: 2px transparent solid;
-        color: ${COLOR_DARK_1};
-        font-weight: 400;
-        cursor: text;
-
-        &:focus,
-        &:active {
-            box-shadow: none;
-            background-color: transparent;
-            border: 2px transparent solid;
-        }
-    }
-
     &[disabled] {
         background-color: ${COLOR_GRAY_1};
         border: 1px solid ${COLOR_GRAY_2};
@@ -95,24 +78,6 @@ const Input = styled.input`
             box-shadow: ${SHADOW_ERROR};
             padding: 0 1rem;
             outline: 0;
-        }
-
-        &[readonly] {
-            &:focus,
-            &:active {
-                padding: 0;
-
-                ${hasLeftIcon(props) &&
-                    `
-                    padding-left: 1.75rem;
-                    padding-right: 0;
-                `}
-                ${hasRightIcon(props) &&
-                    `
-                    padding-left: 0;
-                    padding-right: 1.75rem;
-                `}
-            }
         }
 
         &[disabled] {
@@ -167,11 +132,6 @@ const Input = styled.input`
             ${props.isBare && 'padding-right: 1rem'}
         }
 
-        &[readonly] {
-            padding-left: 1.75rem;
-            padding-right: 0;
-        }
-
         &[disabled] {
             padding-left: 2.35rem;
             padding-right: 1rem;
@@ -188,11 +148,6 @@ const Input = styled.input`
             padding-right: 2.2875rem;
             padding-right: ${props.isBare ? '2.35rem' : '2.2875rem'};
             ${props.isBare && 'padding-left: 1rem'}
-        }
-
-        &[readonly] {
-            padding-left: 0;
-            padding-right: 1.75rem;
         }
 
         &[disabled] {

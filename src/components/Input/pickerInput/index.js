@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import { uniqueId } from './../../../libs/utils';
-import Label from './label';
+import { uniqueId } from '../../../libs/utils';
+import Label from '../label';
 import RenderIf from '../../RenderIf';
-import './styles.css';
+import RelativeElement from '../../Structural/relativeElement';
+import StyledContainer from '../styled/container';
+import StyledIconContainer from '../styled/iconContainer';
+import HelpText from '../styled/helpText';
+import ErrorText from '../styled/errorText';
+import StyledReadonlyInput from '../inputBase/styled/input';
+import StyledPickerInput from './styled/input';
 
 export default class Input extends Component {
     constructor(props) {
@@ -13,34 +18,6 @@ export default class Input extends Component {
         this.inlineTextLabelId = uniqueId('inline-text-label');
         this.errorMessageId = uniqueId('error-message');
         this.inputRef = React.createRef();
-    }
-
-    getContainerClassNames() {
-        const { className, error } = this.props;
-        return classnames(
-            'rainbow-time-picker_input-container',
-            {
-                'rainbow-time-picker_input--error': error,
-            },
-            className,
-        );
-    }
-
-    getIconPositionClassNames() {
-        const { icon, iconPosition } = this.props;
-        return classnames({
-            'rainbow-time-picker_input-icon-container': icon,
-            [`rainbow-time-picker_input-icon--${iconPosition}`]: icon,
-        });
-    }
-
-    getInputClassNames() {
-        const { isBare, isCentered, readOnly } = this.props;
-        return classnames('rainbow-time-picker_input', {
-            'rainbow-time-picker_input--bare': isBare,
-            'rainbow-time-picker_input--counter': isCentered,
-            'rainbow-time-picker_input--readonly': readOnly,
-        });
     }
 
     getInlineTextLabelId() {
@@ -83,36 +60,54 @@ export default class Input extends Component {
         this.inputRef.current.blur();
     }
 
+    renderInput() {
+        const { props } = this;
+        const { readOnly } = props;
+
+        if (readOnly) {
+            return (
+                <StyledReadonlyInput
+                    {...props}
+                    id={this.inputId}
+                    readOnly
+                    aria-labelledby={this.getInlineTextLabelId()}
+                    aria-describedby={this.getErrorMessageId()}
+                    autoComplete="off"
+                    ref={this.inputRef}
+                />
+            );
+        }
+
+        return (
+            <StyledPickerInput
+                {...props}
+                id={this.inputId}
+                readOnly
+                aria-labelledby={this.getInlineTextLabelId()}
+                aria-describedby={this.getErrorMessageId()}
+                autoComplete="off"
+                ref={this.inputRef}
+            />
+        );
+    }
+
     render() {
         const {
+            className,
             style,
-            value,
-            onChange,
             label,
             error,
-            placeholder,
-            disabled,
             readOnly,
-            tabIndex,
-            onFocus,
-            onBlur,
-            onClick,
-            onKeyDown,
-            type,
-            maxLength,
-            minLength,
-            pattern,
             icon,
             bottomHelpText,
             required,
             id,
-            autoComplete,
-            name,
             hideLabel,
+            iconPosition,
         } = this.props;
 
         return (
-            <div id={id} className={this.getContainerClassNames()} style={style}>
+            <StyledContainer id={id} className={className} style={style} readOnly={readOnly}>
                 <Label
                     label={label}
                     hideLabel={hideLabel}
@@ -121,46 +116,27 @@ export default class Input extends Component {
                     readOnly={readOnly}
                     id={this.getInlineTextLabelId()}
                 />
-
-                <div className={this.getIconPositionClassNames()}>
+                <RelativeElement>
                     <RenderIf isTrue={!!icon}>
-                        <span className="rainbow-time-picker_input-icon">{icon}</span>
+                        <StyledIconContainer
+                            iconPosition={iconPosition}
+                            readOnly={readOnly}
+                            error={error}
+                        >
+                            {icon}
+                        </StyledIconContainer>
                     </RenderIf>
-
-                    <input
-                        id={this.inputId}
-                        name={name}
-                        type={type}
-                        className={this.getInputClassNames()}
-                        value={value}
-                        placeholder={placeholder}
-                        onChange={onChange}
-                        tabIndex={tabIndex}
-                        onFocus={onFocus}
-                        onBlur={onBlur}
-                        onClick={onClick}
-                        onKeyDown={onKeyDown}
-                        disabled={disabled}
-                        readOnly
-                        required={required}
-                        maxLength={maxLength}
-                        minLength={minLength}
-                        pattern={pattern}
-                        autoComplete={autoComplete}
-                        aria-labelledby={this.getInlineTextLabelId()}
-                        aria-describedby={this.getErrorMessageId()}
-                        ref={this.inputRef}
-                    />
-                </div>
+                    {this.renderInput()}
+                </RelativeElement>
                 <RenderIf isTrue={!!bottomHelpText}>
-                    <div className="rainbow-time-picker_input--help">{bottomHelpText}</div>
+                    <HelpText alignSelf="center">{bottomHelpText}</HelpText>
                 </RenderIf>
                 <RenderIf isTrue={!!error}>
-                    <div id={this.getErrorMessageId()} className="rainbow-time-picker_input-error">
+                    <ErrorText alignSelf="center" id={this.getErrorMessageId()}>
                         {error}
-                    </div>
+                    </ErrorText>
                 </RenderIf>
-            </div>
+            </StyledContainer>
         );
     }
 }
@@ -194,7 +170,6 @@ Input.propTypes = {
     required: PropTypes.bool,
     pattern: PropTypes.string,
     isCentered: PropTypes.bool,
-    isBare: PropTypes.bool,
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     disabled: PropTypes.bool,
     readOnly: PropTypes.bool,
@@ -224,7 +199,6 @@ Input.defaultProps = {
     required: false,
     pattern: undefined,
     isCentered: false,
-    isBare: false,
     error: null,
     disabled: false,
     readOnly: false,

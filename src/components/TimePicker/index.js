@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import ClockIcon from './icons/clock';
 import Modal from '../Modal';
-import Input from './input';
+import Input from '../Input/pickerInput';
 import TimeSelect from './timeSelect';
 import get12HourTime from './helpers/get12HourTime';
 import getInputValue from './helpers/getInputValue';
@@ -161,7 +161,6 @@ class TimePicker extends Component {
                     readOnly={readOnly}
                     disabled={disabled}
                     tabIndex={tabIndex}
-                    autoComplete="off"
                 />
 
                 <Modal
