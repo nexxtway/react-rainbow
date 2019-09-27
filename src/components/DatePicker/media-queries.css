@@ -1,8 +1,12 @@
 @media (max-width: 600px) {
   .rainbow-date-picker_modal {
     border-radius: 0 0 0.875rem 0.875rem;
-    align-self: flex-start; }
+    align-self: flex-start;
+    padding: -8px;
+    width: 100%;
+    max-width: 100%; }
   .rainbow-date-picker_calendar-container {
-    width: 100vw; }
+    width: 100%;
+    padding: 0; }
   .rainbow-date-picker_calendar-details-header {
     border-radius: 0; } }

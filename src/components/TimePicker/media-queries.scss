@@ -2,12 +2,8 @@
     .rainbow-time-picker_modal {
         border-radius: 0 0 0.875rem 0.875rem;
         align-self: flex-start;
-        width: 100vw;
-    }
-
-    .rainbow-time-picker_modal > .rainbow-modal_content {
-        max-height: none;
-        padding: 16px 8px;
+        width: 100%;
+        max-width: 100%;
     }
 
     .rainbow-time-picker_time-select-content {
