@@ -68,12 +68,7 @@ class PickerOption extends Component {
                         {children}
                     </span>
                     <RenderIf isTrue={!!footer}>
-                        <footer
-                            aria-label={this.inputId}
-                            className="rainbow-visual-picker-option_footer"
-                        >
-                            {footer}
-                        </footer>
+                        <span className="rainbow-visual-picker-option_footer">{footer}</span>
                     </RenderIf>
                 </label>
             </span>
