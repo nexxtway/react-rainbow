@@ -340,6 +340,7 @@ export default class TimeSelect extends Component {
                     onKeyDown={this.handleKeyDown}
                 >
                     <input
+                        aria-label="hour"
                         onDrop={preventDefault}
                         onPaste={preventDefault}
                         data-id="hour"
@@ -357,6 +358,7 @@ export default class TimeSelect extends Component {
                     <span className="rainbow-time-picker_dots">:</span>
 
                     <input
+                        aria-label="minutes"
                         onDrop={preventDefault}
                         onPaste={preventDefault}
                         data-id="minutes"
