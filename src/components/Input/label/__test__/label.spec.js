@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Label from '../label';
-import StyledLabel from '../styled/label';
+import Label from '../';
+import LabelText from '../labelText';
 import HiddenElement from '../../../Structural/hiddenElement';
 
 describe('<InputBaseLabel/>', () => {
@@ -22,9 +22,9 @@ describe('<InputBaseLabel/>', () => {
             const component = mount(<Label label="Input Label" />);
             expect(component.find('label').text()).toBe('Input Label');
         });
-        it('should render the StyledLabel component', () => {
+        it('should render the LabelText component', () => {
             const component = mount(<Label label="Input Label" />);
-            expect(component.find(StyledLabel).exists()).toBe(true);
+            expect(component.find(LabelText).exists()).toBe(true);
             expect(component.find(HiddenElement).exists()).toBe(false);
         });
     });
@@ -44,7 +44,7 @@ describe('<InputBaseLabel/>', () => {
         it('should render the HiddenElement component', () => {
             const component = mount(<Label label="Input Label" hideLabel />);
             expect(component.find(HiddenElement).exists()).toBe(true);
-            expect(component.find(StyledLabel).exists()).toBe(false);
+            expect(component.find(LabelText).exists()).toBe(false);
         });
     });
 });
