@@ -13,7 +13,7 @@ describe('extractTime', () => {
     });
     it('should return the right time', () => {
         expect(extractTime(new Date(2019, 3, 24, 11, 34, 43))).toBe('11:34 AM');
-        expect(extractTime(new Date('04/24/2019 13:23'))).toBe('1:23 PM');
-        expect(extractTime('04/24/2019 20:48')).toBe('8:48 PM');
+        expect(extractTime(new Date('04/24/2019 13:23'))).toBe('01:23 PM');
+        expect(extractTime('04/24/2019 20:48')).toBe('08:48 PM');
     });
 });
