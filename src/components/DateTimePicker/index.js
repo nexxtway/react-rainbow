@@ -3,7 +3,7 @@ import React, { useRef, useEffect, useState, useImperativeHandle } from 'react';
 import PropTypes from 'prop-types';
 import withReduxForm from '../../libs/hocs/withReduxForm';
 import Input from '../DatePicker/input';
-import CalendarIcon from '../DatePicker/calendarIcon';
+import DateTimeIcon from './icon';
 import DateTimePickerModal from './pickerModal';
 import formatDateTime from './helpers/formatDateTime';
 import { ENTER_KEY, SPACE_KEY } from '../../libs/constants';
@@ -93,7 +93,7 @@ function PickerComponent(props, ref) {
                 ref={inputRef}
                 label={label}
                 placeholder={placeholder}
-                icon={<CalendarIcon />}
+                icon={<DateTimeIcon />}
                 iconPosition="right"
                 required={required}
                 value={formattedDatetime}
