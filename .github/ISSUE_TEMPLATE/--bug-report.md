@@ -1,7 +1,7 @@
 ---
 name: "\U0001F41BBug report"
 about: Create a bug report to help us improve React Rainbow Components
-title: 'fix: fix Button behavior'
+title: 'fix: Button behavior'
 labels: bug
 assignees: ''
 ---
