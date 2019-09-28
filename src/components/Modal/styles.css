@@ -56,7 +56,8 @@
   padding: 1rem;
   max-height: calc(80vh - 140px);
   overflow: hidden;
-  overflow-y: auto; }
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; }
 
 .rainbow-modal_header, .rainbow-modal_footer {
   flex-shrink: 0; }
