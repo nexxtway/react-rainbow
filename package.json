@@ -35,7 +35,6 @@
     },
     "dependencies": {
         "autosize": "^4.0.2",
-        "body-scroll-lock": "^2.6.4",
         "chart.js": "^2.7.3",
         "classnames": "^2.2.5",
         "clipboard-copy": "^2.0.0",

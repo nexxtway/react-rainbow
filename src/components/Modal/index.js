@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
-import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 import classnames from 'classnames';
 import RenderIf from './../RenderIf';
 import ButtonIcon from './../ButtonIcon';
@@ -10,6 +9,7 @@ import { ESCAPE_KEY, TAB_KEY } from './../../libs/constants';
 import Header from './header';
 import CloseIcon from './closeIcon';
 import manageTab from './manageTab';
+import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from './scrollController';
 import CounterManager from './counterManager';
 import './styles.css';
 
@@ -34,10 +34,9 @@ export default class Modal extends Component {
 
     componentDidMount() {
         const { isOpen } = this.props;
-        this.contentElement = this.contentRef.current;
         if (isOpen) {
             CounterManager.increment();
-            disableBodyScroll(this.contentElement);
+            disableBodyScroll(this.contentRef.current);
             this.modalTriggerElement = document.activeElement;
             this.modalRef.current.focus();
         }
@@ -48,7 +47,7 @@ export default class Modal extends Component {
         const { isOpen: prevIsOpen } = prevProps;
         if (isOpen && !prevIsOpen) {
             CounterManager.increment();
-            disableBodyScroll(this.contentElement);
+            disableBodyScroll(this.contentRef.current);
             this.modalTriggerElement = document.activeElement;
             this.modalRef.current.focus();
             onOpened();
@@ -58,7 +57,7 @@ export default class Modal extends Component {
                 this.modalTriggerElement.focus();
             }
             if (!CounterManager.hasModalsOpen()) {
-                enableBodyScroll(this.contentElement);
+                enableBodyScroll();
             }
         }
     }
@@ -69,7 +68,7 @@ export default class Modal extends Component {
             CounterManager.decrement();
         }
         if (!CounterManager.hasModalsOpen()) {
-            enableBodyScroll(this.contentElement);
+            enableBodyScroll();
         }
         clearAllBodyScrollLocks();
     }
