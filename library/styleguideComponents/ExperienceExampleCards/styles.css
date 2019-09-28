@@ -87,15 +87,15 @@
     background-color: #01B6F5;
     top: -4px;
     right: 12px;
-    padding: 5px 8px 5px 8px;
+    padding: 2px 5px 4px 5px;
     border-radius: 4px 4px 0 0;
 }
 
 .react-rainbow-experience-example-cards_github-link::before {
-    border-left: 21px solid #01B6F5;
-    border-right: 21px solid #01B6F5;
+    border-left: 18px solid #01B6F5;
+    border-right: 18px solid #01B6F5;
     border-bottom: 8px solid transparent;
-    top: 30.5px;
+    top: 25px;
     bottom: 0;
     content: '';
     height: 0;
@@ -109,13 +109,13 @@
 }
 
 .react-rainbow-experience-example-cards_github-link:hover::before {
-    border-left: 21px solid #009ACF;
-    border-right: 21px solid #009ACF;
+    border-left: 18px solid #009ACF;
+    border-right: 18px solid #009ACF;
 }
 
 .react-rainbow-experience-example-cards_github-link > svg {
     fill: white;
-    height: 20px;
+    height: 16px;
 }
 
 @media (max-width: 600px) {
