@@ -201,6 +201,7 @@ class PlacesLookupComponent extends Component {
                     onBlur={onBlur}
                     error={error}
                     icon={<LocationIcon />}
+                    preferredSelectedOption={1}
                 />
                 <RenderIf isTrue={!error}>
                     <div className="rainbow-google-address-lookup_powered-by-google-container">
