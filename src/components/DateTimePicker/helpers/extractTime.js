@@ -1,20 +1,7 @@
 /* eslint-disable no-console */
+import get12HourTime from '../../TimePicker/helpers/get12HourTime';
 
 export default function extractTime(date) {
-    if (date) {
-        try {
-            const options = {
-                hour12: true,
-                hour: '2-digit',
-                minute: '2-digit',
-            };
-            const value = typeof date === 'string' ? new Date(date) : date;
-            return new Intl.DateTimeFormat('en-US', options).format(value);
-        } catch (error) {
-            console.error(error);
-            return '';
-        }
-    }
-    console.error('Invalid date value passed to DateTimePicker');
-    return '';
+    const time = get12HourTime(date);
+    return time || '';
 }

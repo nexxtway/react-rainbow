@@ -2,7 +2,7 @@
 import React, { useRef, useEffect, useState, useImperativeHandle } from 'react';
 import PropTypes from 'prop-types';
 import withReduxForm from '../../libs/hocs/withReduxForm';
-import Input from '../DatePicker/input';
+import Input from '../Input/pickerInput';
 import DateTimeIcon from './icon';
 import DateTimePickerModal from './pickerModal';
 import formatDateTime from './helpers/formatDateTime';

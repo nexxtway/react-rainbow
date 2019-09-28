@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_2 } from '../../../libs/colors';
+import { COLOR_GRAY_2 } from '../../../styles/colors';
 
 const StyledDivider = styled.div`
     display: flex;

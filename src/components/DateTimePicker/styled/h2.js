@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { COLOR_BRAND } from '../../../libs/colors';
+import { COLOR_BRAND_2 } from '../../../styles/colors';
 
 const StyledH2 = styled.h2`
-    color: ${COLOR_BRAND};
+    color: ${COLOR_BRAND_2};
     font-size: 1.5rem;
     font-weight: 500;
 `;
