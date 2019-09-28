@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/role-has-required-aria-props */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
@@ -32,6 +33,7 @@ class Picklist extends Component {
         super(props);
         this.inputId = uniqueId('picklist-input');
         this.errorMessageId = uniqueId('error-message');
+        this.listboxId = uniqueId('listbox');
         this.containerRef = React.createRef();
         this.triggerRef = React.createRef();
         this.menuRef = React.createRef();
@@ -383,7 +385,7 @@ class Picklist extends Component {
             maxHeight: this.getMenuMaxHeight(),
         };
 
-        const { showScrollUpArrow, showScrollDownArrow } = this.state;
+        const { showScrollUpArrow, showScrollDownArrow, isOpen } = this.state;
         return (
             <div
                 id={id}
@@ -403,7 +405,12 @@ class Picklist extends Component {
                     />
                 </RenderIf>
 
-                <div className="rainbow-picklist_inner-container">
+                <div
+                    className="rainbow-picklist_inner-container"
+                    aria-expanded={isOpen}
+                    aria-haspopup="listbox"
+                    role="combobox"
+                >
                     <RenderIf isTrue={!!icon}>
                         <span className="rainbow-picklist_icon">{icon}</span>
                     </RenderIf>
@@ -411,6 +418,7 @@ class Picklist extends Component {
                         <span className={this.getIndicatorClassNames()} />
                     </RenderIf>
                     <input
+                        aria-controls={this.listboxId}
                         className={this.getInputClassNames()}
                         id={this.inputId}
                         type="text"
@@ -428,7 +436,11 @@ class Picklist extends Component {
                         autoComplete="off"
                         ref={this.triggerRef}
                     />
-                    <div role="listbox" className={this.getDropdownClassNames()}>
+                    <div
+                        id={this.listboxId}
+                        role="listbox"
+                        className={this.getDropdownClassNames()}
+                    >
                         <RenderIf isTrue={showScrollUpArrow}>
                             <MenuArrowButton
                                 arrow="up"
