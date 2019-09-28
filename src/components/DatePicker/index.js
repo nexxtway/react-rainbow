@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import CalendarIcon from './calendarIcon';
 import Modal from './../Modal';
 import Calendar from './../Calendar';
-import Input from './input';
+import Input from '../Input/pickerInput';
 import formatDate from './helpers/formatDate';
 import withReduxForm from '../../libs/hocs/withReduxForm';
 import { ENTER_KEY, SPACE_KEY } from '../../libs/constants';
@@ -144,7 +144,6 @@ class DatePicker extends Component {
                     readOnly={readOnly}
                     disabled={disabled}
                     tabIndex={tabIndex}
-                    autoComplete="off"
                 />
 
                 <Modal
