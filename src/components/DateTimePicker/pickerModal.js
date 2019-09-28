@@ -4,8 +4,11 @@ import Calendar from '../Calendar';
 import TimeSelect from '../TimePicker/timeSelect';
 import extractDate from './helpers/extractDate';
 import extractTime from './helpers/extractTime';
-import formatDate from '../DatePicker/helpers/formatDate';
-import Styled from './styledComponents';
+import StyledModal from './styled/modal';
+import StyledHeader from './styled/header';
+import StyledH2 from './styled/h2';
+import StyledResponsiveContainer from './styled/responsiveContainer';
+import StyledDivider from './styled/divider';
 
 function DateTimePickerModal(props) {
     const {
@@ -22,42 +25,50 @@ function DateTimePickerModal(props) {
     } = props;
 
     const [date, setDate] = useState(value);
-    const modalTitle = title || formatDate(date, formatStyle);
+    const [time, setTime] = useState(extractTime(value));
 
     useEffect(() => {
         if (isOpen) {
             setDate(value);
+            setTime(!value ? '' : extractTime(value));
         }
     }, [isOpen, value]);
 
-    const handleChange = time => {
-        const currentValue = new Date(`${extractDate(date)} ${time}`);
+    const handleChange = selectedTime => {
+        const currentValue = new Date(`${extractDate(date)} ${selectedTime}`);
         onChange(currentValue);
     };
 
+    const handleDateChange = selectedDate => {
+        setDate(selectedDate);
+        if (!value && !time) {
+            setTime('12:00 AM');
+        }
+    };
+
     return (
-        <Styled.Modal isOpen={isOpen} onRequestClose={onRequestClose}>
-            <Styled.Header>
-                <Styled.H2>{modalTitle}</Styled.H2>
-            </Styled.Header>
-            <Styled.ResponsiveContainer>
+        <StyledModal isOpen={isOpen} onRequestClose={onRequestClose}>
+            <StyledHeader>
+                <StyledH2>{title}</StyledH2>
+            </StyledHeader>
+            <StyledResponsiveContainer>
                 <Calendar
                     value={date}
                     minDate={minDate}
                     maxDate={maxDate}
                     formatStyle={formatStyle}
-                    onChange={d => setDate(d)}
+                    onChange={handleDateChange}
                 />
-                <Styled.Divider />
+                <StyledDivider />
                 <TimeSelect
-                    value={extractTime(value)}
+                    value={time}
                     okLabel={okLabel}
                     cancelLabel={cancelLabel}
                     onCloseModal={onRequestClose}
                     onChange={handleChange}
                 />
-            </Styled.ResponsiveContainer>
-        </Styled.Modal>
+            </StyledResponsiveContainer>
+        </StyledModal>
     );
 }
 

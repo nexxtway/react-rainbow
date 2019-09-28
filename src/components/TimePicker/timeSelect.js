@@ -58,6 +58,14 @@ export default class TimeSelect extends Component {
         this.handleChangeTime = this.handleChangeTime.bind(this);
     }
 
+    componentDidUpdate(prevProps) {
+        const { value: prevValue } = prevProps;
+        const { value } = this.props;
+        if (prevValue !== value) {
+            this.updateTime();
+        }
+    }
+
     setNextAmPmValue() {
         const { ampm } = this.state;
         const nextAmPmValue = getNextAmPmValue(ampm);
@@ -261,6 +269,15 @@ export default class TimeSelect extends Component {
             });
             this.prevMinutes = '';
         }
+    }
+
+    updateTime() {
+        const { value } = this.props;
+        this.setState({
+            hour: getHour(value),
+            minutes: getMinutes(value),
+            ampm: getAmPm(value),
+        });
     }
 
     focusHourInput() {

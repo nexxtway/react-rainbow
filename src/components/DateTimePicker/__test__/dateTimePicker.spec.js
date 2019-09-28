@@ -4,14 +4,17 @@ import { SPACE_KEY, ENTER_KEY } from '../../../libs/constants';
 import DateTimePicker from '../index';
 
 const value = new Date('06/01/2019 20:48:34');
+jest.mock('../helpers/formatDateTime', () => jest.fn(() => '10/24/2019, 10:48 AM'));
 
 describe('<DateTimePicker/>', () => {
+    beforeEach(() => {
+        jest.clearAllMocks();
+    });
     it('should fire onBlur with undefined when there is not value', () => {
         const onBlurMockFn = jest.fn();
         const component = mount(
             <DateTimePicker label="unit-testing-dateTimePicker" onBlur={onBlurMockFn} />,
         );
-        component.find('input').simulate('focus');
         component.find('input').simulate('blur');
         expect(onBlurMockFn).toHaveBeenCalledWith(undefined);
     });
@@ -24,7 +27,6 @@ describe('<DateTimePicker/>', () => {
                 onBlur={onBlurMockFn}
             />,
         );
-        component.find('input').simulate('focus');
         component.find('input').simulate('blur');
         expect(onBlurMockFn).toHaveBeenCalledWith(value);
     });
@@ -34,7 +36,6 @@ describe('<DateTimePicker/>', () => {
             <DateTimePicker label="unit-testing-dateTimePicker" onFocus={onFocusMockFn} />,
         );
         component.find('input').simulate('focus');
-        component.find('input').simulate('blur');
         expect(onFocusMockFn).toHaveBeenCalledWith(undefined);
     });
     it('should fire onFocus with the value passed', () => {
@@ -47,7 +48,6 @@ describe('<DateTimePicker/>', () => {
             />,
         );
         component.find('input').simulate('focus');
-        component.find('input').simulate('blur');
         expect(onFocusMockFn).toHaveBeenCalledWith(value);
     });
     it('should set isOpen to true and fire onClick when readOnly is not passed', () => {
@@ -99,12 +99,10 @@ describe('<DateTimePicker/>', () => {
             expect(component.find('DateTimePickerModal').prop('isOpen')).toBe(false);
         });
     });
-    it('should set the right input value when value change dynamically', () => {
+    it('should set the right input value', () => {
         const component = mount(
             <DateTimePicker label="unit-testing-dateTimePicker" value={value} />,
         );
-        component.setProps({ value: new Date(2019, 9, 24, 10, 48, 45) });
-        component.update();
         expect(component.find('input').prop('value')).toBe('10/24/2019, 10:48 AM');
     });
 });

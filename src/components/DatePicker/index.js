@@ -180,7 +180,7 @@ DatePicker.propTypes = {
     /** The beginning of a range of valid dates. The range includes the startDate.
      * The default value is current date - 100 years. */
     minDate: PropTypes.instanceOf(Date),
-    /** This function is called to format the date displayed in the input field.
+    /**  The date format style to display in the input field.
      * Valid values are small, medium, and large. */
     formatStyle: PropTypes.oneOf(['small', 'medium', 'large']),
     /** The action triggered when a value attribute changes. */

@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useRef, useState, useImperativeHandle } from 'react';
+import React, { useRef, useEffect, useState, useImperativeHandle } from 'react';
 import PropTypes from 'prop-types';
 import withReduxForm from '../../libs/hocs/withReduxForm';
 import Input from '../DatePicker/input';
@@ -7,9 +7,9 @@ import CalendarIcon from '../DatePicker/calendarIcon';
 import DateTimePickerModal from './pickerModal';
 import formatDateTime from './helpers/formatDateTime';
 import { ENTER_KEY, SPACE_KEY } from '../../libs/constants';
-import Styled from './styledComponents';
+import StyledContainer from './styled/container';
 
-function DateTimePickerF(props, ref) {
+function PickerComponent(props, ref) {
     const {
         placeholder,
         hideLabel,
@@ -37,7 +37,7 @@ function DateTimePickerF(props, ref) {
         bottomHelpText,
     } = props;
 
-    const inputRef = useRef(React.createRef());
+    const inputRef = useRef();
     useImperativeHandle(ref, () => ({
         focus: () => {
             inputRef.current.focus();
@@ -51,6 +51,10 @@ function DateTimePickerF(props, ref) {
     }));
 
     const [isOpen, setIsOpen] = useState(false);
+    const [formattedDatetime, setFormattedDatetime] = useState(formatDateTime(value, formatStyle));
+    useEffect(() => {
+        setFormattedDatetime(formatDateTime(value, formatStyle));
+    }, [value, formatStyle]);
 
     const openModal = event => {
         if (!readOnly) {
@@ -83,10 +87,8 @@ function DateTimePickerF(props, ref) {
         onChange(...args);
     };
 
-    const formattedDatetime = formatDateTime(value, formatStyle);
-
     return (
-        <Styled.Container id={id} className={className} style={style}>
+        <StyledContainer id={id} className={className} style={style}>
             <Input
                 ref={inputRef}
                 label={label}
@@ -111,6 +113,7 @@ function DateTimePickerF(props, ref) {
             />
             <DateTimePickerModal
                 isOpen={isOpen}
+                title={formattedDatetime}
                 onRequestClose={closeModal}
                 formatStyle={formatStyle}
                 value={value}
@@ -120,11 +123,11 @@ function DateTimePickerF(props, ref) {
                 okLabel={okLabel}
                 cancelLabel={cancelLabel}
             />
-        </Styled.Container>
+        </StyledContainer>
     );
 }
 
-const DateTimePicker = React.forwardRef(DateTimePickerF);
+const DateTimePicker = React.forwardRef(PickerComponent);
 
 DateTimePicker.propTypes = {
     /** Sets the date for the DateTimePicker programmatically. */
@@ -135,7 +138,7 @@ DateTimePicker.propTypes = {
     /** The ending of a range of valid dates. The range includes the endDate.
      * The default value is current date + 100 years. */
     maxDate: PropTypes.instanceOf(Date),
-    /** This function is called to format the date displayed in the input field.
+    /**  The date time format style to display in the input field.
      * Valid values are small, medium, and large. */
     formatStyle: PropTypes.oneOf(['small', 'medium', 'large']),
     /** The name of the DateTimePicker. */
@@ -209,4 +212,5 @@ DateTimePicker.defaultProps = {
     isCentered: false,
 };
 
+// export default DateTimePicker;
 export default withReduxForm(DateTimePicker);
