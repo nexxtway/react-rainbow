@@ -1,6 +1,6 @@
 @media (max-width: 600px) {
   .rainbow-time-picker_modal {
-    border-radius: 0 0 0.875rem 0.875rem;
+    border-radius: 0 0 0.975rem 0.975rem;
     align-self: flex-start;
     width: 100vw; }
   .rainbow-time-picker_modal > .rainbow-modal_content {
@@ -11,14 +11,14 @@
     margin: 56px 0 40px 0; }
   .rainbow-time-picker_time-select-value {
     width: 24%;
-    font-size: 34px;
+    font-size: 32px;
     font-weight: 100; }
     .rainbow-time-picker_time-select-value::placeholder {
       font-size: 34px;
       font-weight: 100; }
   .rainbow-time-picker_select-ampm {
     width: 24%;
-    font-size: 34px; }
+    font-size: 32px; }
   .rainbow-time-picker_dots {
     margin: 0; }
   .rainbow-time-picker_icon-button-container {
