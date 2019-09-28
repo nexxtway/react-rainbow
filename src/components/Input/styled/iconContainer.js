@@ -27,12 +27,12 @@ const IconContainer = styled.span`
     ${props =>
         props.iconPosition === 'left' &&
         `
-        left: ${props.readOnly && !props.disabled ? 0 : '0.8rem'};
+        left: ${props.readOnly ? 0 : '0.8rem'};
     `}
     ${props =>
         props.iconPosition === 'right' &&
         `
-        right: ${props.readOnly && !props.disabled ? 0 : '0.8rem'};
+        right: ${props.readOnly ? 0 : '0.8rem'};
     `}
     ${props =>
         props.error &&

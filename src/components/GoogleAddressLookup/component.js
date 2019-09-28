@@ -196,7 +196,7 @@ class PlacesLookupComponent extends Component {
                     onChange={this.handleChange}
                     onSearch={this.handleSearch}
                     onClick={onClick}
-                    // fix focus problem when used with redux form
+                    // TODO: fix focus problem when used with redux form
                     // onFocus={onFocus}
                     onBlur={onBlur}
                     error={error}
