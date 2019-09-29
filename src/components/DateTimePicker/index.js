@@ -214,5 +214,4 @@ DateTimePicker.defaultProps = {
     isCentered: false,
 };
 
-// export default DateTimePicker;
 export default withReduxForm(DateTimePicker);
