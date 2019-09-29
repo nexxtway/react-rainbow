@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { axe } from 'jest-axe';
-import Input from './../';
+import Input from '../';
 
-describe('<Input/>', () => {
+describe('<PickerInput/>', () => {
     it('should be accessible when label is passed', async () => {
         expect.assertions(1);
         const html = ReactDOMServer.renderToString(<Input label="Input Label" />);

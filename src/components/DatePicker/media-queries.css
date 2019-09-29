@@ -1,6 +1,6 @@
 @media (max-width: 600px) {
   .rainbow-date-picker_modal {
-    border-radius: 0 0 0.875rem 0.875rem;
+    border-radius: 0 0 0.975rem 0.975rem;
     align-self: flex-start;
     width: 100%;
     max-width: 100%; }

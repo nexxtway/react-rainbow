@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { uniqueId } from './../../../libs/utils';
-import Label from './label';
+import Label from '../label';
 import RenderIf from '../../RenderIf';
 import RelativeElement from '../../Structural/relativeElement';
 import StyledContainer from '../styled/container';
 import StyledIconContainer from '../styled/iconContainer';
-import StyledInput from '../styled/input';
+import StyledInput from './styled/input';
 import HelpText from '../styled/helpText';
 import ErrorText from '../styled/errorText';
 
@@ -99,7 +99,6 @@ export default class InputBase extends Component {
                     required={required}
                     inputId={this.inputId}
                     readOnly={readOnly}
-                    disabled={disabled}
                     id={this.getInlineTextLabelId()}
                 />
 
@@ -108,7 +107,6 @@ export default class InputBase extends Component {
                         <StyledIconContainer
                             iconPosition={iconPosition}
                             readOnly={readOnly}
-                            disabled={disabled}
                             error={error}
                         >
                             {icon}

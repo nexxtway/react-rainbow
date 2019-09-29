@@ -1,10 +1,11 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Input from './../';
+import Input from '../';
+import StyledPickerInput from '../styled/input';
+import StyledReadonlyInput from '../../inputBase/styled/input';
+import ErrorText from '../../styled/errorText';
 
-const icon = <svg />;
-
-describe('<Input/>', () => {
+describe('<PickerInput/>', () => {
     it('should set an id in the input element', () => {
         const component = mount(<Input />);
         expect(component.find('input').prop('id')).toMatch(/input/);
@@ -62,9 +63,7 @@ describe('<Input/>', () => {
     });
     it('should pass a generated id to the Error element and set the same id to the aria-describedby for the input when a error is passed', () => {
         const component = mount(<Input error="error message" />);
-        expect(component.find('.rainbow-date-picker_input-error').prop('id')).toMatch(
-            /error-message/,
-        );
+        expect(component.find(ErrorText).prop('id')).toMatch(/error-message/);
         expect(component.find('input').prop('aria-describedby')).toMatch(/error-message/);
     });
     it('should pass the right props to the Label component', () => {
@@ -77,52 +76,12 @@ describe('<Input/>', () => {
             inputId: expect.any(String),
         });
     });
-    it('should have the right class name in the container element', () => {
-        const component = mount(<Input />);
-        expect(
-            component.find('div[className="rainbow-date-picker_input-container"]').exists(),
-        ).toBe(true);
+    it('should render StyledPickerInput when readOnly is not passed', () => {
+        const component = mount(<Input label="Input label" />);
+        expect(component.find(StyledPickerInput).exists()).toBe(true);
     });
-    it('should have the right class names when icon is passed', () => {
-        const component = mount(<Input icon={icon} />);
-        expect(
-            component
-                .find(
-                    'div[className="rainbow-date-picker_input-icon-container rainbow-date-picker_input-icon--left"]',
-                )
-                .exists(),
-        ).toBe(true);
-    });
-    it('should have the right class names when icon is passed and iconPosition is right', () => {
-        const component = mount(<Input icon={icon} iconPosition="right" />);
-        expect(
-            component
-                .find(
-                    'div[className="rainbow-date-picker_input-icon-container rainbow-date-picker_input-icon--right"]',
-                )
-                .exists(),
-        ).toBe(true);
-    });
-    it('should have the right class names when error is passed', () => {
-        const component = mount(<Input error="Error text" />);
-        expect(
-            component
-                .find(
-                    'div[className="rainbow-date-picker_input-container rainbow-date-picker_input--error"]',
-                )
-                .exists(),
-        ).toBe(true);
-    });
-    it('should have the right class names when isBare', () => {
-        const component = mount(<Input isBare />);
-        expect(component.find('input').prop('className')).toBe(
-            'rainbow-date-picker_input rainbow-date-picker_input--bare',
-        );
-    });
-    it('should have the right class names when isCentered', () => {
-        const component = mount(<Input isCentered />);
-        expect(component.find('input').prop('className')).toBe(
-            'rainbow-date-picker_input rainbow-date-picker_input--counter',
-        );
+    it('should render StyledReadonlyInput when readOnly is passed', () => {
+        const component = mount(<Input label="Input label" readOnly />);
+        expect(component.find(StyledReadonlyInput).exists()).toBe(true);
     });
 });
