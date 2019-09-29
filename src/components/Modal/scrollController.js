@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 let hasPassiveEvents = false;
 if (typeof window !== 'undefined') {
     const passiveTestOptions = {
@@ -207,17 +208,34 @@ export function clearAllBodyScrollLocks() {
     }
 }
 
-export function enableBodyScroll() {
+export function enableBodyScroll(targetElement) {
     if (isIosDevice) {
-        if (documentListenerAdded) {
+        if (!targetElement) {
+            // eslint-disable-next-line no-console
+            console.error(
+                'enableBodyScroll unsuccessful - targetElement must be provided when calling enableBodyScroll on IOS devices.',
+            );
+            return;
+        }
+
+        targetElement.ontouchstart = null;
+        targetElement.ontouchmove = null;
+
+        locks = locks.filter(lock => lock.targetElement !== targetElement);
+
+        if (documentListenerAdded && locks.length === 0) {
             document.removeEventListener(
                 'touchmove',
                 preventDefault,
                 hasPassiveEvents ? { passive: false } : undefined,
             );
+
             documentListenerAdded = false;
         }
     } else {
-        restoreOverflowSetting();
+        locks = locks.filter(lock => lock.targetElement !== targetElement);
+        if (!locks.length) {
+            restoreOverflowSetting();
+        }
     }
 }
