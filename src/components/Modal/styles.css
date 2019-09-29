@@ -24,7 +24,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  max-width: 55%;
+  width: 55%;
   min-width: 18rem;
   max-height: 80vh;
   min-height: 4rem;
@@ -41,10 +41,10 @@
     outline: 0; }
 
 .rainbow-modal--medium {
-  max-width: 70%; }
+  width: 70%; }
 
 .rainbow-modal--large {
-  max-width: 85%; }
+  width: 85%; }
 
 .rainbow-modal_header {
   font-family: 'Lato Light', Arial, sans-serif;
@@ -58,8 +58,7 @@
   padding: 1rem;
   overflow: hidden;
   overflow-y: auto;
-  box-sizing: border-box;
-  -webkit-overflow-scrolling: touch; }
+  box-sizing: border-box; }
 
 .rainbow-modal_header, .rainbow-modal_footer {
   flex-shrink: 0; }
@@ -106,12 +105,12 @@
 
 @media (min-width: 1240px) {
   .rainbow-modal {
-    max-width: 520px; }
+    width: 520px; }
   .rainbow-modal--medium {
-    max-width: 720px; }
+    width: 720px; }
   .rainbow-modal--large {
-    max-width: 920px; } }
+    width: 920px; } }
 
 @media (max-width: 800px) {
   .rainbow-modal, .rainbow-modal--medium, .rainbow-modal--large {
-    max-width: 95%; } }
+    width: 95%; } }
