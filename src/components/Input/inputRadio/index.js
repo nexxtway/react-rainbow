@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { uniqueId } from './../../../libs/utils';
 import RenderIf from './../../RenderIf';
-import Label from './label';
-import './styles.css';
+import Label from '../checkboxRadioLabel';
+import InlineBlockElement from '../../Structural/inlineBlockElement';
+import StyledContainer from '../styled/container';
+import HelpText from '../styled/helpText';
+import ErrorText from '../styled/errorText';
+import StyledRadioInput from './styled/radio';
 
 export default class InputRadio extends Component {
     constructor(props) {
@@ -13,17 +16,6 @@ export default class InputRadio extends Component {
         this.inlineTextLabelId = uniqueId('inline-text-label');
         this.errorMessageId = uniqueId('error-message');
         this.inputRef = React.createRef();
-    }
-
-    getContainerClassNames() {
-        const { className, error } = this.props;
-        return classnames(
-            'rainbow-input-radio_container',
-            {
-                'rainbow-input-radio--error': error,
-            },
-            className,
-        );
     }
 
     getInlineTextLabelId() {
@@ -68,6 +60,7 @@ export default class InputRadio extends Component {
 
     render() {
         const {
+            className,
             style,
             value,
             onChange,
@@ -87,9 +80,10 @@ export default class InputRadio extends Component {
         } = this.props;
 
         return (
-            <div id={id} className={this.getContainerClassNames()} style={style}>
-                <span className="rainbow-input-radio_inner-container">
-                    <input
+            <StyledContainer id={id} className={className} style={style}>
+                <InlineBlockElement>
+                    <StyledRadioInput
+                        as="input"
                         id={this.inputId}
                         name={name}
                         type="radio"
@@ -105,6 +99,7 @@ export default class InputRadio extends Component {
                         aria-labelledby={this.getInlineTextLabelId()}
                         aria-describedby={this.getErrorMessageId()}
                         ref={this.inputRef}
+                        error={error}
                     />
 
                     <Label
@@ -114,19 +109,16 @@ export default class InputRadio extends Component {
                         inputId={this.inputId}
                         id={this.getInlineTextLabelId()}
                     />
-                </span>
+                </InlineBlockElement>
                 <RenderIf isTrue={!!bottomHelpText}>
-                    <div className="rainbow-input-radio_help">{bottomHelpText}</div>
+                    <HelpText alignSelf="flex-start">{bottomHelpText}</HelpText>
                 </RenderIf>
                 <RenderIf isTrue={!!error}>
-                    <div
-                        id={this.getErrorMessageId()}
-                        className="rainbow-input-radio_error-message"
-                    >
+                    <ErrorText alignSelf="flex-start" id={this.getErrorMessageId()}>
                         {error}
-                    </div>
+                    </ErrorText>
                 </RenderIf>
-            </div>
+            </StyledContainer>
         );
     }
 }

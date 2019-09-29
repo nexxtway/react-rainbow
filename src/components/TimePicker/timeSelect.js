@@ -56,6 +56,7 @@ export default class TimeSelect extends Component {
         this.decrementHandler = this.decrementHandler.bind(this);
         this.handleButtonsFocus = this.handleButtonsFocus.bind(this);
         this.handleChangeTime = this.handleChangeTime.bind(this);
+        this.handleButtonsDown = this.handleButtonsDown.bind(this);
     }
 
     setNextAmPmValue() {
@@ -96,6 +97,7 @@ export default class TimeSelect extends Component {
                 this.hasPropValue = false;
                 return;
             }
+            this.isMinutesInputFocused = true;
             this.minutesInputRef.current.focus();
         }
     }
@@ -111,17 +113,19 @@ export default class TimeSelect extends Component {
 
     handleBlurHour() {
         const { hour } = this.state;
-        if (hour === '00' && this.value === '0') {
+        if (this.isUpOrDownButtonPressed) {
+            this.isUpOrDownButtonPressed = false;
+            return;
+        }
+        if (this.isMinutesInputFocused) {
+            this.isMinutesInputFocused = false;
+            return;
+        }
+        if (hour === '00' && this.value >= '0') {
             this.setState({
                 hour: '12',
             });
         }
-        if (hour === '00' && this.value > '0' && this.isRightKeyPressed) {
-            this.setState({
-                hour: '12',
-            });
-        }
-        this.isRightKeyPressed = false;
     }
 
     handleChangeMinutes(event) {
@@ -197,7 +201,6 @@ export default class TimeSelect extends Component {
     }
 
     handleRightKeyPressed() {
-        this.isRightKeyPressed = true;
         const nextInputIndex = this.inputFocusedIndex + 1;
         const nextInputToFocus = this.inputsMap[nextInputIndex];
         if (nextInputToFocus) {
@@ -239,6 +242,10 @@ export default class TimeSelect extends Component {
         if (this.inputFocusedIndex === 2) {
             this.setNextAmPmValue();
         }
+    }
+
+    handleButtonsDown() {
+        this.isUpOrDownButtonPressed = true;
     }
 
     handleButtonsFocus() {
@@ -333,6 +340,7 @@ export default class TimeSelect extends Component {
                     onKeyDown={this.handleKeyDown}
                 >
                     <input
+                        aria-label="hour"
                         onDrop={preventDefault}
                         onPaste={preventDefault}
                         data-id="hour"
@@ -350,6 +358,7 @@ export default class TimeSelect extends Component {
                     <span className="rainbow-time-picker_dots">:</span>
 
                     <input
+                        aria-label="minutes"
                         onDrop={preventDefault}
                         onPaste={preventDefault}
                         data-id="minutes"
@@ -382,6 +391,7 @@ export default class TimeSelect extends Component {
                             variant="border-filled"
                             icon={<UpIcon />}
                             size="small"
+                            onMouseDown={this.handleButtonsDown}
                             onClick={this.incrementHandler}
                             onFocus={this.handleButtonsFocus}
                             assistiveText="Next value"
@@ -393,6 +403,7 @@ export default class TimeSelect extends Component {
                             variant="border-filled"
                             icon={<DownIcon />}
                             size="small"
+                            onMouseDown={this.handleButtonsDown}
                             onClick={this.decrementHandler}
                             onFocus={this.handleButtonsFocus}
                             assistiveText="Previous value"

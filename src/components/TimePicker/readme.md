@@ -2,7 +2,7 @@
 
 ```js
 const containerStyles = {
-    maxWidth: 700,
+    maxWidth: 400,
 };
 
 <TimePicker
@@ -19,7 +19,7 @@ const containerStyles = {
 
 ```js
 const containerStyles = {
-    maxWidth: 700,
+    maxWidth: 400,
 };
 
 initialState = { time: '13:32' };
@@ -37,7 +37,7 @@ initialState = { time: '13:32' };
 
 ```js
 const containerStyles = {
-    maxWidth: 700,
+    maxWidth: 400,
 };
 
 <TimePicker
@@ -54,7 +54,7 @@ const containerStyles = {
 
 ```js
 const containerStyles = {
-    maxWidth: 700,
+    maxWidth: 400,
 };
 
 <TimePicker
@@ -72,7 +72,7 @@ const containerStyles = {
 
 ```js
 const containerStyles = {
-    maxWidth: 700,
+    maxWidth: 400,
 };
 
 <TimePicker
@@ -88,7 +88,7 @@ const containerStyles = {
 
 ```js
 const containerStyles = {
-    maxWidth: 700,
+    maxWidth: 400,
 };
 
 <TimePicker

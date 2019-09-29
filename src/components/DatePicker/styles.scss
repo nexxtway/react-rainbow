@@ -9,17 +9,13 @@
 
 .rainbow-date-picker_modal {
     width: auto;
-}
-
-.rainbow-date-picker_modal > .rainbow-modal_content {
-    max-height: none;
-    padding: 0;
+    height: fit-content;
 }
 
 .rainbow-date-picker_calendar-details-header {
     display: flex;
     align-items: center;
-    padding: 20px 48px 0 32px;
+    padding: 4px 48px 8px 20px;
 }
 
 .rainbow-date-picker_calendar-date--selected {
@@ -29,8 +25,8 @@
 }
 
 .rainbow-date-picker_calendar-container {
-    width: 460px;
+    width: 420px;
     height: 400px;
-    padding: 0 24px;
+    padding: 0 8px;
     margin: 20px 0 0 0;
 }

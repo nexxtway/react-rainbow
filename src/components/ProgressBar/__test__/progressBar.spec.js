@@ -8,7 +8,7 @@ describe('<ProgressBar/>', () => {
 
         expect(component.find('span.rainbow-progress-bar_value').prop('style').width).toBe('25%');
     });
-    it('should be accesible', () => {
+    it('should be accessible', () => {
         const component = shallow(<ProgressBar value={25} />);
 
         expect(component.find('div[role="progressbar"]').exists()).toBe(true);

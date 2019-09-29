@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './styles.css';
+import HiddenElement from '../Structural/hiddenElement';
 
 export default function AssistiveText({ text }) {
     if (text) {
-        return <span className="rainbow-assistive-text">{text}</span>;
+        return <HiddenElement>{text}</HiddenElement>;
     }
     return null;
 }

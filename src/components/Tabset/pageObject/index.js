@@ -37,7 +37,7 @@ class PageTabset {
     isButtonsVisible() {
         const buttons = $(this.rootElement).$$(BUTTON_SELECTOR);
         if (buttons && buttons.length) {
-            return buttons[0].isDisplayed() && buttons[1].isDisplayed();
+            return browser.waitUntil(() => buttons[0].isDisplayed() && buttons[1].isDisplayed());
         }
         return false;
     }

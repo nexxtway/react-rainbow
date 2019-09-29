@@ -34,7 +34,7 @@ class EmptyModal extends React.Component {
                 <Modal id="modal-1" isOpen={this.state.isOpen} onRequestClose={this.handleOnClose}>
                     <img
                         src="images/illustrations/Illustration-rainbow-1.svg"
-                        className="rainbow-p-vertical_x-large rainbow-m_auto rainbow-align-content_center"
+                        className="rainbow-p-around_xx-large rainbow-m_auto rainbow-align-content_center"
                         alt="landscape with rainbows, birds and colorful balloons"
                     />
                 </Modal>
@@ -67,6 +67,10 @@ const { faPlus, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');
 ```js
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faCog } = require('@fortawesome/free-solid-svg-icons');
+
+const textStyles = {
+    textAlign: 'center',
+};
 
 class ModalWHeader extends React.Component {
     constructor(props) {
@@ -101,14 +105,13 @@ class ModalWHeader extends React.Component {
                     onRequestClose={this.handleOnClose}
                     title="Modal Header"
                 >
-                    <p>
+                    <p style={textStyles}>
                         A rainbow is a meteorological phenomenon that is caused by reflection,
                         refraction and dispersion of light in water droplets resulting in a spectrum
                         of light appearing in the sky. It takes the form of a multicoloured circular
                         arc. Rainbows caused by sunlight always appear in the section of sky
                         directly opposite the sun. Rainbows can be full circles. However, the
-                        observer normally sees only an arc formed by illuminated droplets above the
-                        ground, and centered on a line from the sun to the observer's eye.
+                        observer normally sees only an arc formed by illuminated.
                     </p>
                 </Modal>
             </div>
@@ -124,6 +127,12 @@ class ModalWHeader extends React.Component {
 ```js
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faCog } = require('@fortawesome/free-solid-svg-icons');
+
+const textStyles = {
+    textAlign: 'center',
+    fontSize: 15,
+    padding: '0 16px',
+};
 
 class ModalWFooter extends React.Component {
     constructor(props) {
@@ -170,14 +179,42 @@ class ModalWFooter extends React.Component {
                         </div>
                     }
                 >
-                    <p>
+                    <p style={textStyles}>
                         A rainbow is a meteorological phenomenon that is caused by reflection,
                         refraction and dispersion of light in water droplets resulting in a spectrum
                         of light appearing in the sky. It takes the form of a multicoloured circular
                         arc. Rainbows caused by sunlight always appear in the section of sky
                         directly opposite the sun. Rainbows can be full circles. However, the
-                        observer normally sees only an arc formed by illuminated droplets above the
-                        ground, and centered on a line from the sun to the observer's eye.
+                        observer normally sees only an arc formed by illuminated.
+                    </p>
+                    <p style={textStyles}>
+                        It takes the form of a multicoloured circular arc. Rainbows caused by
+                        sunlight always appear in the section of sky directly opposite the sun.
+                        Rainbows can be full circles. However, the observer normally sees only an
+                        arc formed by illuminated droplets.
+                    </p>
+                    <p style={textStyles}>
+                        Rainbows caused by sunlight always appear in the section of sky directly
+                        opposite the sun. Rainbows can be full circles. However, the observer
+                        normally sees only an arc formed by illuminated droplets above the ground.
+                    </p>
+                    <p style={textStyles}>
+                        A rainbow is a meteorological phenomenon that is caused by reflection,
+                        refraction and dispersion of light in water droplets resulting in a spectrum
+                        of light appearing in the sky. It takes the form of a multicoloured circular
+                        arc. Rainbows caused by sunlight always appear in the section of sky
+                        directly opposite the sun.
+                    </p>
+                    <p style={textStyles}>
+                        It takes the form of a multicoloured circular arc. Rainbows caused by
+                        sunlight always appear in the section of sky directly opposite the sun.
+                        Rainbows can be full circles. However, the observer normally sees only an
+                        arc formed by illuminated droplets.
+                    </p>
+                    <p style={textStyles}>
+                        Rainbows caused by sunlight always appear in the section of sky directly
+                        opposite the sun. Rainbows can be full circles. However, the observer
+                        normally sees only an arc formed by illuminated droplets above the ground.
                     </p>
                 </Modal>
             </div>
@@ -193,6 +230,12 @@ class ModalWFooter extends React.Component {
 ```js
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faCog } = require('@fortawesome/free-solid-svg-icons');
+
+const textStyles = {
+    textAlign: 'center',
+    fontSize: 15,
+    padding: '0 16px',
+};
 
 class ModalWFooterDirectional extends React.Component {
     constructor(props) {
@@ -233,14 +276,14 @@ class ModalWFooterDirectional extends React.Component {
                         </div>
                     }
                 >
-                    <p>
+                    <p style={textStyles}>
                         A rainbow is a meteorological phenomenon that is caused by reflection,
                         refraction and dispersion of light in water droplets resulting in a spectrum
                         of light appearing in the sky. It takes the form of a multicoloured circular
                         arc. Rainbows caused by sunlight always appear in the section of sky
                         directly opposite the sun. Rainbows can be full circles. However, the
                         observer normally sees only an arc formed by illuminated droplets above the
-                        ground, and centered on a line from the sun to the observer's eye.
+                        ground.
                     </p>
                 </Modal>
             </div>
@@ -261,6 +304,12 @@ const { faHeart } = require('@fortawesome/free-regular-svg-icons');
 const iconContainerStyles = {
     width: '2.5rem',
     height: '2.5rem',
+};
+
+const textStyles = {
+    textAlign: 'center',
+    fontSize: 15,
+    padding: '0 16px 16px 16px',
 };
 
 class ModalWSize extends React.Component {
@@ -350,14 +399,14 @@ class ModalWSize extends React.Component {
                     onRequestClose={this.handleOnClose}
                     title="Modal Small"
                 >
-                    <p>
+                    <p style={textStyles}>
                         A rainbow is a meteorological phenomenon that is caused by reflection,
                         refraction and dispersion of light in water droplets resulting in a spectrum
                         of light appearing in the sky. It takes the form of a multicoloured circular
                         arc. Rainbows caused by sunlight always appear in the section of sky
                         directly opposite the sun. Rainbows can be full circles. However, the
                         observer normally sees only an arc formed by illuminated droplets above the
-                        ground, and centered on a line from the sun to the observer's eye.
+                        ground.
                     </p>
                 </Modal>
                 <Modal
@@ -366,14 +415,14 @@ class ModalWSize extends React.Component {
                     title="Modal Medium"
                     size="medium"
                 >
-                    <p>
+                    <p style={textStyles}>
                         A rainbow is a meteorological phenomenon that is caused by reflection,
                         refraction and dispersion of light in water droplets resulting in a spectrum
                         of light appearing in the sky. It takes the form of a multicoloured circular
                         arc. Rainbows caused by sunlight always appear in the section of sky
                         directly opposite the sun. Rainbows can be full circles. However, the
                         observer normally sees only an arc formed by illuminated droplets above the
-                        ground, and centered on a line from the sun to the observer's eye.
+                        ground.
                     </p>
                 </Modal>
                 <Modal
@@ -382,14 +431,14 @@ class ModalWSize extends React.Component {
                     title="Modal Large"
                     size="large"
                 >
-                    <p>
+                    <p style={textStyles}>
                         A rainbow is a meteorological phenomenon that is caused by reflection,
                         refraction and dispersion of light in water droplets resulting in a spectrum
                         of light appearing in the sky. It takes the form of a multicoloured circular
                         arc. Rainbows caused by sunlight always appear in the section of sky
                         directly opposite the sun. Rainbows can be full circles. However, the
                         observer normally sees only an arc formed by illuminated droplets above the
-                        ground, and centered on a line from the sun to the observer's eye.
+                        ground.
                     </p>
                 </Modal>
             </div>

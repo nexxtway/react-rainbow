@@ -1,8 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import InputBase from './../';
-
-const icon = <svg />;
+import InputBase from '../';
+import StyledError from '../../styled/errorText';
 
 describe('<InputBase/>', () => {
     it('should set an id in the input element', () => {
@@ -62,7 +61,7 @@ describe('<InputBase/>', () => {
     });
     it('should pass a generated id to the Error element and set the same id to the aria-describedby for the input when a error is passed', () => {
         const component = mount(<InputBase error="error message" />);
-        expect(component.find('.rainbow-input_error').prop('id')).toMatch(/error-message/);
+        expect(component.find(StyledError).prop('id')).toMatch(/error-message/);
         expect(component.find('input').prop('aria-describedby')).toMatch(/error-message/);
     });
     it('should pass the right props to the Label component', () => {
@@ -74,43 +73,5 @@ describe('<InputBase/>', () => {
             hideLabel: false,
             inputId: expect.any(String),
         });
-    });
-    it('should have the right class name in the container element', () => {
-        const component = mount(<InputBase />);
-        expect(component.find('div[className="rainbow-input_container"]').exists()).toBe(true);
-    });
-    it('should have the right class names when icon is passed', () => {
-        const component = mount(<InputBase icon={icon} />);
-        expect(
-            component
-                .find('div[className="rainbow-input_icon-container rainbow-input_icon--left"]')
-                .exists(),
-        ).toBe(true);
-    });
-    it('should have the right class names when icon is passed and iconPosition is right', () => {
-        const component = mount(<InputBase icon={icon} iconPosition="right" />);
-        expect(
-            component
-                .find('div[className="rainbow-input_icon-container rainbow-input_icon--right"]')
-                .exists(),
-        ).toBe(true);
-    });
-    it('should have the right class names when error is passed', () => {
-        const component = mount(<InputBase error="Error text" />);
-        expect(
-            component
-                .find('div[className="rainbow-input_container rainbow-input--error"]')
-                .exists(),
-        ).toBe(true);
-    });
-    it('should have the right class names when isBare', () => {
-        const component = mount(<InputBase isBare />);
-        expect(component.find('input').prop('className')).toBe('rainbow-input rainbow-input_bare');
-    });
-    it('should have the right class names when isCentered', () => {
-        const component = mount(<InputBase isCentered />);
-        expect(component.find('input').prop('className')).toBe(
-            'rainbow-input rainbow-input_counter',
-        );
     });
 });

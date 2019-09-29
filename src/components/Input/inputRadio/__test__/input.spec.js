@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import InputRadio from './../';
+import InputRadio from '../';
+import StyledError from '../../styled/errorText';
 
 describe('<InputRadio/>', () => {
     it('should set an id in the input element', () => {
@@ -32,9 +33,7 @@ describe('<InputRadio/>', () => {
     });
     it('should pass a generated id to the Error element and set the same id to the aria-describedby for the input when a error is passed', () => {
         const component = mount(<InputRadio error="error message" />);
-        expect(component.find('.rainbow-input-radio_error-message').prop('id')).toMatch(
-            /error-message/,
-        );
+        expect(component.find(StyledError).prop('id')).toMatch(/error-message/);
         expect(component.find('input').prop('aria-describedby')).toMatch(/error-message/);
     });
     it('should pass the right props to the Label component', () => {
@@ -45,20 +44,6 @@ describe('<InputRadio/>', () => {
             disabled: true,
             inputId: expect.any(String),
         });
-    });
-    it('should have the right class name in the container element', () => {
-        const component = mount(<InputRadio />);
-        expect(component.find('div[className="rainbow-input-radio_container"]').exists()).toBe(
-            true,
-        );
-    });
-    it('should have the right class names when error is passed', () => {
-        const component = mount(<InputRadio error="Error text" />);
-        expect(
-            component
-                .find('div[className="rainbow-input-radio_container rainbow-input-radio--error"]')
-                .exists(),
-        ).toBe(true);
     });
     it('should set checked prop passed in input element', () => {
         const component = mount(<InputRadio checked />);
