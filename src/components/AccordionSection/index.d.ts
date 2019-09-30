@@ -1,11 +1,14 @@
-import { BaseProps } from './../types';
+import React, { ReactNode } from 'react';
+import { BaseProps } from '../types';
 
-export interface AccordionProps extends BaseProps {
-    id?: string;
-    multiple?: boolean;
-    // onToggleSection?: ;
-    activeSectionNames?: string[] | string;
+export interface AccordionSectionProps extends BaseProps {
+    disabled?: boolean;
+    children?: ReactNode;
+    label?: ReactNode;
+    icon?: ReactNode;
+    assistiveText?: string;
+    name?: string;
 }
 
-declare const Accordion: React.ComponentType<AccordionProps>;
-export default Accordion;
+declare const AccordionSection: React.ComponentType<AccordionSectionProps>;
+export default AccordionSection;

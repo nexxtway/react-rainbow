@@ -1,9 +1,10 @@
+import { ReactNode, MouseEvent, MouseEventHandler } from 'react';
 import { BaseProps } from './../types';
 
 export interface BreadcrumbProps extends BaseProps {
-    label: string | JSX.ElementChildrenAttribute;
+    label: ReactNode;
     href?: string;
-    // onClick?: ;
+    onClick?: (event: EventHandler<any>) => void;
     disabled?: boolean;
 }
 

@@ -1,9 +1,10 @@
+import { ReactNode } from 'react';
 import { BaseProps } from './../types';
 
 export interface AvatarProps extends BaseProps {
     src?: string;
     initials?: string;
-    icon?: JSX.ElementChildrenAttribute;
+    icon?: ReactNode;
     size?: 'x-small' | 'small' | 'medium' | 'large';
     initialsVariant?: 'default' | 'inverse';
     title?: string;
