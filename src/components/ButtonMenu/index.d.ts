@@ -1,3 +1,4 @@
+import { FocusEvent } from 'react';
 import { BaseProps } from './../types';
 
 export interface ButtonMenuProps extends BaseProps {
@@ -18,8 +19,8 @@ export interface ButtonMenuProps extends BaseProps {
     isLoading?: boolean;
     menuSize?: 'xx-small' | 'x-small' | 'small' | 'medium' | 'large';
     menuAlignment?: 'left' | 'right' | 'bottom' | 'center' | 'bottom-right' | 'bottom-left';
-    // onFocus?: ;
-    // onBlur?: ;
+    onFocus?: (event: FocusEvent<HTMLElement>) => void;
+    onBlur?: (event: FocusEvent<HTMLElement>) => void;
     tabIndex?: number | string;
     title?: string;
 }

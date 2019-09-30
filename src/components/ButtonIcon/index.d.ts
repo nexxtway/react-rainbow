@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { ComponentType, MouseEvent, FocusEvent, KeyboardEvent } from 'react';
 import { BaseProps } from './../types';
 
 export interface ButtonIconProps extends BaseProps {
@@ -11,10 +11,11 @@ export interface ButtonIconProps extends BaseProps {
     form?: string;
     icon: JSX.ElementChildrenAttribute;
     id?: string;
-    // onBlur?: ;
-    // onClick?: ;
-    // onFocus?: ;
-    // onKeyDown?: ;
+    onClick?: (event: MouseEvent<HTMLElement>) => void;
+    onFocus?: (event: FocusEvent<HTMLElement>) => void;
+    onBlur?: (event: FocusEvent<HTMLElement>) => void;
+    onKeyDown?: (event: KeyboardEvent<HTMLElement>) => void;
+    onMouseDown?: (event: MouseEvent<HTMLElement>) => void;
     shaded?: boolean;
     size?: 'xx-small' | 'x-small' | 'small' | 'medium' | 'large';
     tabIndex?: number | string;
@@ -30,5 +31,5 @@ export interface ButtonIconProps extends BaseProps {
         | 'inverse';
 }
 
-declare const ButtonIcon: React.ComponentType<ButtonIconProps>;
+declare const ButtonIcon: ComponentType<ButtonIconProps>;
 export default ButtonIcon;

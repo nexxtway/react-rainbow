@@ -1,10 +1,10 @@
-import { ReactNode, MouseEvent, MouseEventHandler } from 'react';
+import { ReactNode, MouseEvent } from 'react';
 import { BaseProps } from './../types';
 
 export interface BreadcrumbProps extends BaseProps {
     label: ReactNode;
     href?: string;
-    onClick?: (event: EventHandler<any>) => void;
+    onClick?: (event: MouseEvent<HTMLElement>) => void;
     disabled?: boolean;
 }
 

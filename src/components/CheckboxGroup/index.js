@@ -51,7 +51,7 @@ class CheckboxGroup extends Component {
             return onChange(values.concat([value]));
         }
         if (checked && !Array.isArray(values)) {
-            return onChange([].concat([value]));
+            return onChange([value]);
         }
         return onChange(values.filter(valueId => valueId !== value));
     }

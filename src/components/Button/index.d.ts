@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { ComponentType, MouseEvent, FocusEvent, KeyboardEvent } from 'react';
 import { BaseProps } from './../types';
 
 export interface ButtonProps extends BaseProps {
@@ -24,11 +24,11 @@ export interface ButtonProps extends BaseProps {
     form?: string;
     id?: string;
     isLoading?: boolean;
-    // onClick?: ;
-    // onKeyDown?: ;
-    // onFocus?: ;
-    // onBlur?: ;
+    onClick?: (event: MouseEvent<HTMLElement>) => void;
+    onFocus?: (event: FocusEvent<HTMLElement>) => void;
+    onBlur?: (event: FocusEvent<HTMLElement>) => void;
+    onKeyDown?: (event: KeyboardEvent<HTMLElement>) => void;
 }
 
-declare const Button: React.ComponentType<ButtonProps>;
+declare const Button: ComponentType<ButtonProps>;
 export default Button;
