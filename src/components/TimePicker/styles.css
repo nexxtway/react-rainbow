@@ -2,7 +2,8 @@
   width: 100%; }
 
 .rainbow-time-picker_modal {
-  width: auto; }
+  width: auto;
+  height: fit-content; }
 
 .rainbow-time-picker_time-select-content {
   height: 100px;
