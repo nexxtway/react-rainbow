@@ -5,8 +5,10 @@ const StyledResponsiveContainer = styled.div`
     flex-wrap: wrap;
     padding-top: 1rem;
 
-    @media (max-width: 600px) {
-        padding: 0.5rem;
+    @media (max-width: 800px) {
+        padding: 22px 0 8px 0;
+        justify-content: center;
+        align-items: center;
     }
 `;
 

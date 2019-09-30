@@ -15,7 +15,7 @@
     justify-content: space-between;
     align-items: center;
     flex-grow: 1;
-    margin-right: 16px;
+    margin-right: 12px;
 }
 
 .rainbow-calendar_month-text {
@@ -29,8 +29,8 @@
     color: $color-gray-3;
     font-size: $font-size-text-medium;
     font-weight: 400;
-    line-height: 48px;
-    height: 48px;
+    line-height: 40px;
+    height: 40px;
 }
 
 .rainbow-calendar_header-days abbr {
@@ -55,7 +55,7 @@
     line-height: 36px;
     height: 36px;
     width: 36px;
-    margin: 6px auto;
+    margin: 5px auto;
 
     &:hover {
         transition: all 0.2s ease;
@@ -83,7 +83,7 @@
     line-height: 36px;
     height: 36px;
     width: 36px;
-    margin: 6px auto;
+    margin: 5px auto;
     padding: 0;
     border: none;
     outline: none;
@@ -107,10 +107,16 @@
     font-weight: 400;
     line-height: 36px;
     height: 36px;
-    margin: 6px auto;
+    margin: 5px auto;
     cursor: not-allowed;
     -webkit-user-select: none;
     -webkit-tap-highlight-color: transparent;
     -webkit-user-drag: none;
     user-select: none;
+}
+
+@media (max-width: 600px) {
+    .rainbow-calendar_day-adjacent, .rainbow-calendar_day-button--selected, .rainbow-calendar_day-button {
+        margin: 3px auto;
+    }
 }

@@ -14,7 +14,7 @@ const StyledDivider = styled.div`
         height: 100%;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 800px) {
         width: 100%;
         height: 1rem;
 
