@@ -6,7 +6,7 @@ const StyledResponsiveContainer = styled.div`
     padding-top: 1rem;
 
     @media (max-width: 800px) {
-        padding: 22px 0 8px 0;
+        padding: 26px 0 8px 0;
         justify-content: center;
         align-items: center;
     }
