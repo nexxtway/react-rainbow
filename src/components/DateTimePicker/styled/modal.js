@@ -2,21 +2,14 @@ import styled from 'styled-components';
 import Modal from '../../Modal';
 
 const StyledModal = styled(Modal)`
-    &.rainbow-modal {
-        width: auto;
-    }
+    width: fit-content !important;
 
-    & > .rainbow-modal_content {
-        max-height: none;
-        padding: 0;
-    }
-
-    @media (max-width: 600px) {
+    @media (max-width: 800px) {
         align-self: flex-start;
-
-        &.rainbow-modal {
-            border-radius: 0 0 0.875rem 0.875rem;
-        }
+        border-radius: 0 0 0.875rem 0.875rem !important;
+        height: fit-content !important;
+        max-height: fit-content !important;
+        width: 100vw !important;
 
         & .rainbow-time-picker_time-select-content {
             margin-top: 0;

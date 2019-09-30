@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Calendar from '../Calendar';
 import TimeSelect from '../TimePicker/timeSelect';
 import extractDate from './helpers/extractDate';
 import extractTime from './helpers/extractTime';
@@ -8,6 +7,7 @@ import StyledModal from './styled/modal';
 import StyledHeader from './styled/header';
 import StyledH2 from './styled/h2';
 import StyledResponsiveContainer from './styled/responsiveContainer';
+import StyledCalendar from './styled/calendar';
 import StyledDivider from './styled/divider';
 
 function DateTimePickerModal(props) {
@@ -52,7 +52,7 @@ function DateTimePickerModal(props) {
                 <StyledH2>{title}</StyledH2>
             </StyledHeader>
             <StyledResponsiveContainer>
-                <Calendar
+                <StyledCalendar
                     value={date}
                     minDate={minDate}
                     maxDate={maxDate}

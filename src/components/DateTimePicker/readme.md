@@ -44,32 +44,37 @@ initialState = { value: new Date() };
 ##### DateTimePicker with different date formats:
 
 ```js
+const inputStyles = {
+    maxWidth: 320,
+};
+
 initialState = { value: new Date() };
-<div className="rainbow-align-content_center rainbow-m-vertical_large rainbow-flex_wrap">
-    <div className="rainbow-m-around_small">
-        <DateTimePicker
-            formatStyle="small"
-            value={state.value}
-            label="DateTimePicker Label"
-            onChange={value => setState({ value })}
-        />
-    </div>
-    <div className="rainbow-m-around_small">
-        <DateTimePicker
-            formatStyle="medium"
-            value={state.value}
-            label="DateTimePicker Label"
-            onChange={value => setState({ value })}
-        />
-    </div>
-    <div className="rainbow-m-around_small">
-        <DateTimePicker
-            formatStyle="large"
-            value={state.value}
-            label="DateTimePicker Label"
-            onChange={value => setState({ value })}
-        />
-    </div>
+
+<div className="rainbow-align-content_center rainbow-m-vertical_large rainbow-m-horizontal_small rainbow-flex_wrap">
+    <DateTimePicker
+        formatStyle="small"
+        value={state.value}
+        label="DateTimePicker Label"
+        onChange={value => setState({ value })}
+        className="rainbow-m-around_small"
+        style={inputStyles}
+    />
+    <DateTimePicker
+        formatStyle="medium"
+        value={state.value}
+        label="DateTimePicker Label"
+        onChange={value => setState({ value })}
+        className="rainbow-m-around_small"
+        style={inputStyles}
+    />
+    <DateTimePicker
+        formatStyle="large"
+        value={state.value}
+        label="DateTimePicker Label"
+        onChange={value => setState({ value })}
+        className="rainbow-m-around_small"
+        style={inputStyles}
+    />
 </div>;
 ```
 
