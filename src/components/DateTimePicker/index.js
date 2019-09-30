@@ -183,9 +183,9 @@ DateTimePicker.propTypes = {
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
     /** Text label for the OK button in the modal dialog. */
-    okLabel: PropTypes.string,
+    okLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Text label for the CANCEL button in the modal dialog. */
-    cancelLabel: PropTypes.string,
+    cancelLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 };
 
 DateTimePicker.defaultProps = {
