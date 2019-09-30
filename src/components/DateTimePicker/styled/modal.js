@@ -6,11 +6,6 @@ const StyledModal = styled(Modal)`
         width: auto;
     }
 
-    & > .rainbow-modal_content {
-        max-height: none;
-        padding: 0;
-    }
-
     @media (max-width: 600px) {
         align-self: flex-start;
 
