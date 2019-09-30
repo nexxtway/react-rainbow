@@ -25,6 +25,7 @@ describe('<AvatarContent/>', () => {
         );
         expect(component.find('abbr').props()).toEqual({
             children: 'JD',
+            className: expect.any(String),
             title: 'Title',
         });
     });

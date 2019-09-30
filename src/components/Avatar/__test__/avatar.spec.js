@@ -7,8 +7,4 @@ describe('<Avatar/>', () => {
         const component = mount(<Avatar initials="JD" assistiveText="for screen readers" />);
         expect(component.find('AssistiveText').prop('text')).toBe('for screen readers');
     });
-    it('should have the right class names when props are not passed', () => {
-        const component = mount(<Avatar />);
-        expect(component.find('span[className="rainbow-avatar"]').exists()).toBe(true);
-    });
 });
