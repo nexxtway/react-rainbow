@@ -50,7 +50,7 @@ const inputStyles = {
 
 initialState = { value: new Date() };
 
-<div className="rainbow-align-content_center rainbow-m-vertical_large rainbow-m-horizontal_small rainbow-flex_wrap">
+<div className="rainbow-align-content_center rainbow-m-vertical_large rainbow-flex_wrap">
     <DateTimePicker
         formatStyle="small"
         value={state.value}
