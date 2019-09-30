@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/role-has-required-aria-props */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
@@ -363,8 +362,6 @@ class Picklist extends Component {
             hideLabel,
             style,
             error,
-            title,
-            assistiveText,
             isLoading,
             disabled,
             readOnly,
@@ -376,7 +373,6 @@ class Picklist extends Component {
             name,
             value: valueInProps,
         } = this.props;
-        const ariaLabel = title || assistiveText;
         const { label: valueLabel, icon } = getNormalizeValue(valueInProps);
         const value = valueLabel || '';
         const errorMessageId = this.getErrorMessageId();
@@ -409,6 +405,7 @@ class Picklist extends Component {
                     className="rainbow-picklist_inner-container"
                     aria-expanded={isOpen}
                     aria-haspopup="listbox"
+                    // eslint-disable-next-line jsx-a11y/role-has-required-aria-props
                     role="combobox"
                 >
                     <RenderIf isTrue={!!icon}>
@@ -451,7 +448,6 @@ class Picklist extends Component {
                         <ul
                             role="presentation"
                             onScroll={this.updateScrollingArrows}
-                            aria-label={ariaLabel}
                             ref={this.menuRef}
                             style={menuContainerStyles}
                         >
@@ -488,10 +484,6 @@ Picklist.propTypes = {
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
     /** If is set to true, then is showed a loading symbol. */
     isLoading: PropTypes.bool,
-    /** Displays tooltip text when the mouse moves over the element. */
-    title: PropTypes.string,
-    /** A description for assistive sreen readers. */
-    assistiveText: PropTypes.string,
     /** Specifies the selected value of the Picklist. */
     value: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     /**  The action triggered when click/select an option. */
@@ -528,8 +520,6 @@ Picklist.propTypes = {
 Picklist.defaultProps = {
     children: null,
     isLoading: false,
-    title: undefined,
-    assistiveText: undefined,
     value: undefined,
     onChange: () => {},
     onClick: () => {},
