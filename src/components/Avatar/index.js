@@ -1,23 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import AvatarContent from './avatarContent';
 import AssistiveText from './../AssistiveText';
-import './styles.css';
+import StyledAvatar from './styled/avatar';
 
 /**
  * An avatar component represents an object or entity
  */
 export default function Avatar(props) {
     const { className, style, size, assistiveText, ...rest } = props;
-    const getContainerClassNames = () =>
-        classnames('rainbow-avatar', `rainbow-avatar--${size}`, className);
 
     return (
-        <span className={getContainerClassNames()} style={style}>
+        <StyledAvatar className={className} style={style} size={size}>
             <AvatarContent {...rest} assistiveText={assistiveText} />
             <AssistiveText text={assistiveText} />
-        </span>
+        </StyledAvatar>
     );
 }
 

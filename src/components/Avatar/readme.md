@@ -42,7 +42,10 @@
 ```js
 <div className="rainbow-p-vertical_x-large rainbow-p-left_medium">
     <div className="rainbow-m-horizontal_medium">
+        <Avatar size="large" assistiveText="Jane Doe" initials="JD" title="Jane Doe" />
         <Avatar assistiveText="Jane Doe" initials="JD" title="Jane Doe" />
+        <Avatar size="small" assistiveText="Jane Doe" initials="JD" title="Jane Doe" />
+        <Avatar size="x-small" assistiveText="Jane Doe" initials="JD" title="Jane Doe" />
     </div>
 </div>
 ```
