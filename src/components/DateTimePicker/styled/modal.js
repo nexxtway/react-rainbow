@@ -17,6 +17,11 @@ const StyledModal = styled(Modal)`
             height: 76px;
         }
     }
+
+    @media (max-width: 340px) {
+        height: 100vh !important;
+        max-height: 100vh !important;
+    }
 `;
 
 export default StyledModal;
