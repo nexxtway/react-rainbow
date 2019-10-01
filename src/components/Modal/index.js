@@ -9,7 +9,7 @@ import { ESCAPE_KEY, TAB_KEY } from './../../libs/constants';
 import Header from './header';
 import CloseIcon from './closeIcon';
 import manageTab from './manageTab';
-import { disableScroll, enableScroll } from './scrollController';
+import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from './scrollController';
 import CounterManager from './counterManager';
 import './styles.css';
 
@@ -24,6 +24,7 @@ export default class Modal extends Component {
         super(props);
         this.buttonRef = React.createRef();
         this.modalRef = React.createRef();
+        this.contentRef = React.createRef();
         this.modalHeadingId = uniqueId('modal-heading');
         this.modalContentId = uniqueId('modal-content');
         this.handleKeyPressed = this.handleKeyPressed.bind(this);
@@ -34,8 +35,9 @@ export default class Modal extends Component {
     componentDidMount() {
         const { isOpen } = this.props;
         if (isOpen) {
+            this.contentElement = this.contentRef.current;
             CounterManager.increment();
-            disableScroll();
+            disableBodyScroll(this.contentRef.current);
             this.modalTriggerElement = document.activeElement;
             this.modalRef.current.focus();
         }
@@ -46,7 +48,8 @@ export default class Modal extends Component {
         const { isOpen: prevIsOpen } = prevProps;
         if (isOpen && !prevIsOpen) {
             CounterManager.increment();
-            disableScroll();
+            this.contentElement = this.contentRef.current;
+            disableBodyScroll(this.contentRef.current);
             this.modalTriggerElement = document.activeElement;
             this.modalRef.current.focus();
             onOpened();
@@ -56,7 +59,7 @@ export default class Modal extends Component {
                 this.modalTriggerElement.focus();
             }
             if (!CounterManager.hasModalsOpen()) {
-                enableScroll();
+                enableBodyScroll(this.contentElement);
             }
         }
     }
@@ -67,8 +70,9 @@ export default class Modal extends Component {
             CounterManager.decrement();
         }
         if (!CounterManager.hasModalsOpen()) {
-            enableScroll();
+            enableBodyScroll(this.contentElement);
         }
+        clearAllBodyScrollLocks();
     }
 
     getBackDropClassNames() {
@@ -163,7 +167,11 @@ export default class Modal extends Component {
 
                         <Header id={this.modalHeadingId} title={title} />
 
-                        <div className="rainbow-modal_content" id={this.modalContentId}>
+                        <div
+                            className="rainbow-modal_content"
+                            id={this.modalContentId}
+                            ref={this.contentRef}
+                        >
                             {children}
                         </div>
 

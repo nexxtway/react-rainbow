@@ -73,6 +73,7 @@
     padding: 1rem;
     overflow: hidden;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     box-sizing: border-box;
 }
 

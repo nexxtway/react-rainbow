@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import CounterManager from '../counterManager';
+import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from '../scrollController';
 import Modal from '../';
 
 jest.mock('../counterManager', () => ({
@@ -8,8 +9,19 @@ jest.mock('../counterManager', () => ({
     decrement: jest.fn(),
     hasModalsOpen: jest.fn(() => false),
 }));
+jest.mock('../scrollController', () => ({
+    disableBodyScroll: jest.fn(),
+    enableBodyScroll: jest.fn(),
+    clearAllBodyScrollLocks: jest.fn(),
+}));
 
 describe('<Modal/>', () => {
+    beforeEach(() => {
+        disableBodyScroll.mockReset();
+        enableBodyScroll.mockReset();
+        clearAllBodyScrollLocks.mockReset();
+    });
+
     it('should render the children passed', () => {
         const component = mount(
             <Modal isOpen>
@@ -146,15 +158,15 @@ describe('<Modal/>', () => {
         component.find('div[role="presentation"]').simulate('keyDown', { keyCode: 27 });
         expect(closeMockFn).toHaveBeenCalledTimes(1);
     });
-    it('should set body overflow style to hidden when modal is open', () => {
+    it('should call disableBodyScroll when open the modal', () => {
         mount(
             <Modal isOpen>
                 <p />
             </Modal>,
         );
-        expect(document.body.style.overflow).toBe('hidden');
+        expect(disableBodyScroll).toHaveBeenCalledWith(expect.any(Node));
     });
-    it('should set body overflow style to inherit when component unmounts and there is not another modal open', () => {
+    it('should call enableBodyScroll when component unmounts and there is not another modal open', () => {
         CounterManager.hasModalsOpen.mockReturnValue(false);
         const component = mount(
             <Modal isOpen>
@@ -162,9 +174,9 @@ describe('<Modal/>', () => {
             </Modal>,
         );
         component.unmount();
-        expect(document.body.style.overflow).toBe('inherit');
+        expect(enableBodyScroll).toHaveBeenCalledWith(expect.any(Node));
     });
-    it('should not set body overflow style to inherit when component unmounts and there is another modal open', () => {
+    it('should not call enableBodyScroll when component unmounts and there is another modal open', () => {
         CounterManager.hasModalsOpen.mockReturnValue(true);
         const component = mount(
             <Modal isOpen>
@@ -172,9 +184,9 @@ describe('<Modal/>', () => {
             </Modal>,
         );
         component.unmount();
-        expect(document.body.style.overflow).toBe('hidden');
+        expect(enableBodyScroll).not.toHaveBeenCalled();
     });
-    it('should set body overflow style to inherit when close modal and there is not another modal open', () => {
+    it('should call enableBodyScroll when close modal and there is not another modal open', () => {
         CounterManager.hasModalsOpen.mockReturnValue(false);
         const component = mount(
             <Modal isOpen>
@@ -184,9 +196,9 @@ describe('<Modal/>', () => {
         component.setProps({
             isOpen: false,
         });
-        expect(document.body.style.overflow).toBe('inherit');
+        expect(enableBodyScroll).toHaveBeenCalledWith(expect.any(Node));
     });
-    it('should not set body overflow style to inherit when close modal and there is another modal open', () => {
+    it('should not call enableBodyScroll when close modal and there is another modal open', () => {
         CounterManager.hasModalsOpen.mockReturnValue(true);
         const component = mount(
             <Modal isOpen>
@@ -196,7 +208,7 @@ describe('<Modal/>', () => {
         component.setProps({
             isOpen: false,
         });
-        expect(document.body.style.overflow).toBe('hidden');
+        expect(enableBodyScroll).not.toHaveBeenCalled();
     });
     it('should call CounterManager.decrement when the component unmount and it is open', () => {
         CounterManager.decrement.mockReset();
