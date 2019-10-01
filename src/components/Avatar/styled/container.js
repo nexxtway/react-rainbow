@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { COLOR_WHITE, COLOR_BRAND } from '../../../styles/colors';
 
-const StyledAvatar = styled.span`
+const StyledContainer = styled.span`
     background-color: ${COLOR_BRAND};
     color: ${COLOR_WHITE};
     border-radius: 50%;
@@ -47,4 +47,4 @@ const StyledAvatar = styled.span`
         `};
 `;
 
-export default StyledAvatar;
+export default StyledContainer;

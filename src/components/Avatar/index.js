@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AvatarContent from './avatarContent';
 import AssistiveText from './../AssistiveText';
-import StyledAvatar from './styled/avatar';
+import StyledContainer from './styled/container';
 
 /**
  * An avatar component represents an object or entity
@@ -11,10 +11,10 @@ export default function Avatar(props) {
     const { className, style, size, assistiveText, ...rest } = props;
 
     return (
-        <StyledAvatar className={className} style={style} size={size}>
+        <StyledContainer className={className} style={style} size={size}>
             <AvatarContent {...rest} assistiveText={assistiveText} />
             <AssistiveText text={assistiveText} />
-        </StyledAvatar>
+        </StyledContainer>
     );
 }
 
