@@ -27,6 +27,7 @@ function MenuItems(props) {
         return (
             <MenuItem
                 key={key}
+                id={key}
                 label={label}
                 description={description}
                 icon={icon}

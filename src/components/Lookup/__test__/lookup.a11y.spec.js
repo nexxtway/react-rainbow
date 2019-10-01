@@ -16,4 +16,12 @@ describe('<Lookup/>', () => {
         const results = await axe(html);
         expect(results).toHaveNoViolations();
     });
+    it('should be accessible when a value is selected', async () => {
+        expect.assertions(1);
+        const html = ReactDOMServer.renderToString(
+            <Lookup label="Place of Birth" value={{ label: 'London' }} />,
+        );
+        const results = await axe(html);
+        expect(results).toHaveNoViolations();
+    });
 });
