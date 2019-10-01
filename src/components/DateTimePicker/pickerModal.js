@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import TimeSelect from '../TimePicker/timeSelect';
 import extractDate from './helpers/extractDate';
 import extractTime from './helpers/extractTime';
+import formatDateTime from './helpers/formatDateTime';
 import StyledModal from './styled/modal';
 import StyledHeader from './styled/header';
 import StyledH2 from './styled/h2';
@@ -26,6 +27,7 @@ function DateTimePickerModal(props) {
 
     const [date, setDate] = useState(value);
     const [time, setTime] = useState(extractTime(value));
+    const [modalTitle, setModalTitle] = useState(title);
 
     useEffect(() => {
         if (isOpen) {
@@ -33,6 +35,11 @@ function DateTimePickerModal(props) {
             setTime(!value ? '' : extractTime(value));
         }
     }, [isOpen, value]);
+
+    useEffect(() => {
+        const currentDateTime = new Date(`${extractDate(date)} ${time}`);
+        setModalTitle(formatDateTime(currentDateTime, formatStyle));
+    }, [date, time, formatStyle]);
 
     const handleChange = selectedTime => {
         const currentValue = new Date(`${extractDate(date)} ${selectedTime}`);
@@ -49,7 +56,7 @@ function DateTimePickerModal(props) {
     return (
         <StyledModal isOpen={isOpen} onRequestClose={onRequestClose}>
             <StyledHeader>
-                <StyledH2>{title}</StyledH2>
+                <StyledH2>{modalTitle}</StyledH2>
             </StyledHeader>
             <StyledResponsiveContainer>
                 <StyledCalendar
