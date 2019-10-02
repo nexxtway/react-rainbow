@@ -1,8 +1,7 @@
 /* eslint-disable no-script-url */
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import './styles.css';
+import StyledContent from './styled/content';
 
 /**
  * An item in the hierarchy path of the page the user is on.
@@ -11,19 +10,16 @@ import './styles.css';
 export default function Breadcrumb(props) {
     const { href, label, onClick, disabled, className, style } = props;
 
-    const getClassNames = () =>
-        classnames('rainbow-breadcrumb', { 'rainbow-breadcrumb--disabled': disabled }, className);
-
     return (
-        <li className={getClassNames()} style={style}>
-            <a
-                className="rainbow-breadcrumb-anchor"
+        <li className={className} disabled={disabled} style={style}>
+            <StyledContent
+                disabled={disabled}
                 href={href}
                 onClick={onClick}
                 aria-disabled={!!disabled}
             >
                 {label}
-            </a>
+            </StyledContent>
         </li>
     );
 }
