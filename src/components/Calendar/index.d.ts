@@ -1,4 +1,5 @@
-import { BaseProps } from './../types';
+import { ComponentType } from 'react';
+import { BaseProps } from '../types';
 
 export interface CalendarProps extends BaseProps {
     value?: string | Date;
@@ -7,5 +8,5 @@ export interface CalendarProps extends BaseProps {
     onChange?: (date: Date) => void;
 }
 
-declare const Calendar: React.ComponentType<CalendarProps>;
+declare const Calendar: ComponentType<CalendarProps>;
 export default Calendar;

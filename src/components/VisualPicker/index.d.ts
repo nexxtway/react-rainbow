@@ -4,7 +4,7 @@ import { BaseProps } from './../types';
 export interface VisualPickerProps extends BaseProps {
     label?: string | JSX.ElementChildrenAttribute;
     name?: string;
-    value?: [] | string;
+    value?: string[] | string;
     id?: string;
     required?: boolean;
     error?: string | JSX.ElementChildrenAttribute;

@@ -1,6 +1,6 @@
 export interface DatasetProps {
-    type?: 'bar' | 'horizontalBar' | 'line' | 'radar' | 'pie' | 'doughnut' | 'polarArea' | 'bubble';
-    values: number;
+    type?: 'line';
+    values: number[];
     title?: string;
     backgroundColor?: string[] | string;
     borderColor?: string[] | string;

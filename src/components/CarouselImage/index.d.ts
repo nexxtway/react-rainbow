@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import { BaseProps } from './../types';
+import { ReactNode, ComponentType } from 'react';
+import { BaseProps } from '../types';
 
 export interface CarouselImageProps extends BaseProps {
     src?: string;
-    header?: string | JSX.ElementChildrenAttribute;
-    description?: string | JSX.ElementChildrenAttribute;
+    header?: ReactNode;
+    description?: ReactNode;
     assistiveText?: string;
     href?: string;
 }
 
-declare const CarouselImage: React.ComponentType<CarouselImageProps>;
+declare const CarouselImage: ComponentType<CarouselImageProps>;
 export default CarouselImage;

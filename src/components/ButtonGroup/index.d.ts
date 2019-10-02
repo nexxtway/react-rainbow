@@ -1,5 +1,8 @@
-import { BaseProps } from './../types';
+import { ReactNode } from 'react';
+import { BaseProps } from '../types';
 
-export interface ButtonGroupProps extends BaseProps {}
+export interface ButtonGroupProps extends BaseProps {
+    children?: ReactNode;
+}
 
 export default function(props: ButtonGroupProps): JSX.Element | null;

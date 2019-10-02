@@ -1,17 +1,17 @@
 import { ComponentType, ReactNode } from 'react';
-import { BaseProps } from './../types';
+import { BaseProps } from '../types';
 
 interface Option {
     label: ReactNode;
-    value: string;
-    disabled: boolean;
+    value?: string;
+    disabled?: boolean;
 }
 
 export interface CheckboxGroupProps extends BaseProps {
     options?: Option[];
     label?: ReactNode;
     name?: string;
-    value?: string[] | string;
+    value?: string[];
     required?: boolean;
     error?: ReactNode;
     onChange?: (values: string[]) => void;

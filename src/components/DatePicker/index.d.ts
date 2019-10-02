@@ -1,28 +1,30 @@
-import React, { Component } from 'react';
-import { BaseProps } from './../types';
+import { ReactNode, MouseEvent, ComponentType } from 'react';
+import { BaseProps } from '../types';
+
+type Value = string | Date;
 
 export interface DatePickerProps extends BaseProps {
-    // value?: ;
-    // maxDate?: ;
-    // minDate?: ;
+    value?: Value;
+    maxDate?: Date;
+    minDate?: Date;
     formatStyle?: 'small' | 'medium' | 'large';
-    // onChange?: ;
+    onChange?: (date: Date) => void;
     placeholder?: string;
-    label: string | JSX.ElementChildrenAttribute;
+    label: ReactNode;
     hideLabel?: boolean;
     required?: boolean;
     name?: string;
-    bottomHelpText?: string | JSX.ElementChildrenAttribute;
+    bottomHelpText?: ReactNode;
     isCentered?: boolean;
-    error?: string | JSX.ElementChildrenAttribute;
+    error?: ReactNode;
     readOnly?: boolean;
     disabled?: boolean;
     tabIndex?: number | string;
-    // onClick?: ;
-    // onFocus?: ;
-    // onBlur?: ;
+    onClick?: (event: MouseEvent<HTMLElement>) => void;
+    onFocus?: (event: Value) => void;
+    onBlur?: (event: Value) => void;
     id?: string;
 }
 
-declare const DatePicker: React.ComponentType<DatePickerProps>;
+declare const DatePicker: ComponentType<DatePickerProps>;
 export default DatePicker;

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { BaseProps } from './../types';
+import { ReactNode, ComponentType } from 'react';
+import { BaseProps } from '../types';
 
 export interface ChartProps extends BaseProps {
     type: 'bar' | 'horizontalBar' | 'line' | 'radar' | 'pie' | 'doughnut' | 'polarArea' | 'bubble';
@@ -11,7 +11,8 @@ export interface ChartProps extends BaseProps {
     disableLines?: boolean;
     disableCurves?: boolean;
     maintainAspectRatio?: boolean;
+    children?: ReactNode;
 }
 
-declare const Chart: React.ComponentType<ChartProps>;
+declare const Chart: ComponentType<ChartProps>;
 export default Chart;

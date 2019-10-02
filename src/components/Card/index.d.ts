@@ -1,10 +1,12 @@
-import { BaseProps } from './../types';
+import { ReactNode } from 'react';
+import { BaseProps } from '../types';
 
 export interface CardProps extends BaseProps {
-    title?: string | JSX.ElementChildrenAttribute;
-    icon?: JSX.ElementChildrenAttribute;
-    actions?: JSX.ElementChildrenAttribute;
-    footer?: string | JSX.ElementChildrenAttribute;
+    title?: ReactNode;
+    icon?: ReactNode;
+    actions?: ReactNode;
+    footer?: ReactNode;
+    children?: ReactNode;
     isLoading?: boolean;
 }
 

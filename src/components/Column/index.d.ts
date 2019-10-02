@@ -1,6 +1,8 @@
+import { ReactNode, ComponentType } from 'react';
+
 export interface ColumnProps {
-    header?: string | JSX.ElementChildrenAttribute;
-    // component?: ;
+    header?: ReactNode;
+    component?: ComponentType;
     field?: string;
     sortable?: boolean;
     width?: number | string;

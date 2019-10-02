@@ -1,28 +1,23 @@
-import { FocusEvent } from 'react';
-import { BaseProps } from './../types';
+import { ReactNode, MouseEvent, FocusEvent } from 'react';
+import { BaseProps, ButtonIconVariant, ButtonIconSize, MenuSize, MenuAlignment } from '../types';
 
 export interface ButtonMenuProps extends BaseProps {
-    assistiveText?: string;
+    icon: ReactNode;
+    children?: ReactNode;
+    buttonVariant?: ButtonIconVariant;
+    buttonSize?: ButtonIconSize;
     buttonShaded?: boolean;
-    buttonSize?: 'xx-small' | 'x-small' | 'small' | 'medium' | 'large';
-    buttonVariant?:
-        | 'base'
-        | 'brand'
-        | 'success'
-        | 'border'
-        | 'border-filled'
-        | 'border-inverse'
-        | 'inverse';
+    menuSize?: MenuSize;
+    menuAlignment?: MenuAlignment;
     disabled?: boolean;
-    icon: JSX.ElementChildrenAttribute;
-    id?: string;
     isLoading?: boolean;
-    menuSize?: 'xx-small' | 'x-small' | 'small' | 'medium' | 'large';
-    menuAlignment?: 'left' | 'right' | 'bottom' | 'center' | 'bottom-right' | 'bottom-left';
+    title?: string;
+    assistiveText?: string;
+    tabIndex?: number | string;
+    onClick?: (event: MouseEvent<HTMLElement>) => void;
     onFocus?: (event: FocusEvent<HTMLElement>) => void;
     onBlur?: (event: FocusEvent<HTMLElement>) => void;
-    tabIndex?: number | string;
-    title?: string;
+    id?: string;
 }
 
 export default function(props: ButtonMenuProps): JSX.Element | null;

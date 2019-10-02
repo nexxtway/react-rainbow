@@ -1,5 +1,5 @@
 import { ReactNode, MouseEvent } from 'react';
-import { BaseProps } from './../types';
+import { BaseProps } from '../types';
 
 export interface BreadcrumbProps extends BaseProps {
     label: ReactNode;

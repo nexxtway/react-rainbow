@@ -1,19 +1,24 @@
-import { BaseProps } from './../types';
+import { ReactNode, MouseEvent, FocusEvent } from 'react';
+import { BaseProps, AvatarSize, MenuSize, MenuAlignment } from '../types';
 
 export interface AvatarMenuProps extends BaseProps {
     src?: string;
     initials?: string;
-    icon?: JSX.ElementChildrenAttribute;
-    avatarSize?: 'x-small' | 'small' | 'medium' | 'large';
+    icon?: ReactNode;
+    avatarSize?: AvatarSize;
     initialsVariant?: 'default' | 'inverse';
-    title?: string;
-    menuSize?: 'xx-small' | 'x-small' | 'small' | 'medium' | 'large';
-    menuAlignment?: 'left' | 'right' | 'bottom' | 'center' | 'bottom-right' | 'bottom-left';
+    children?: ReactNode;
+    menuSize?: MenuSize;
+    menuAlignment?: MenuAlignment;
     isLoading?: boolean;
+    title?: string;
     assistiveText?: string;
-    id?: string;
     tabIndex?: number | string;
     disabled?: boolean;
+    onClick?: (event: MouseEvent<HTMLElement>) => void;
+    onFocus?: (event: FocusEvent<HTMLElement>) => void;
+    onBlur?: (event: FocusEvent<HTMLElement>) => void;
+    id?: string;
 }
 
 export default function(props: AvatarMenuProps): JSX.Element | null;

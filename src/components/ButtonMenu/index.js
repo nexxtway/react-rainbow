@@ -16,6 +16,7 @@ export default function ButtonMenu(props) {
         buttonShaded,
         disabled,
         tabIndex,
+        onClick,
         onFocus,
         onBlur,
         children,
@@ -33,6 +34,7 @@ export default function ButtonMenu(props) {
             variant={buttonVariant}
             shaded={buttonShaded}
             title={title}
+            onClick={onClick}
             onFocus={onFocus}
             onBlur={onBlur}
             trigger={ButtonIcon}
@@ -93,6 +95,8 @@ ButtonMenu.propTypes = {
     assistiveText: PropTypes.string,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
     tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    /** The action triggered when the element is clicked. */
+    onClick: PropTypes.func,
     /** The action triggered when the element receives focus. */
     onFocus: PropTypes.func,
     /** The action triggered when the element releases focus. */
@@ -117,6 +121,7 @@ ButtonMenu.defaultProps = {
     tabIndex: undefined,
     title: undefined,
     assistiveText: undefined,
+    onClick: () => {},
     onFocus: () => {},
     onBlur: () => {},
     className: undefined,

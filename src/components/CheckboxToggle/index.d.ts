@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import { BaseProps } from './../types';
+import { ReactNode, ComponentType, ChangeEvent, MouseEvent, FocusEvent } from 'react';
+import { BaseProps } from '../types';
 
 export interface CheckboxToggleProps extends BaseProps {
-    label?: string | JSX.ElementChildrenAttribute;
+    label?: ReactNode;
     name?: string;
     value?: boolean;
     disabled?: boolean;
-    // onChange?: ;
-    // onClick?: ;
-    // onFocus?: ;
-    // onBlur?: ;
+    onChange?: (event: ChangeEvent<HTMLElement>) => void;
+    onClick?: (event: MouseEvent<HTMLElement>) => void;
+    onFocus?: (event: FocusEvent<HTMLElement>) => void;
+    onBlur?: (event: FocusEvent<HTMLElement>) => void;
     id?: string;
 }
 
-declare const CheckboxToggle: React.ComponentType<CheckboxToggleProps>;
+declare const CheckboxToggle: ComponentType<CheckboxToggleProps>;
 export default CheckboxToggle;

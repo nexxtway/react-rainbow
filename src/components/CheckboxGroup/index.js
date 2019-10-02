@@ -108,7 +108,7 @@ CheckboxGroup.propTypes = {
     required: PropTypes.bool,
     /** Specifies that an input field must be filled out before submitting the form. */
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** Text label for the checkbox group. */
+    /** The action triggered when a value attribute changes. */
     onChange: PropTypes.func,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,

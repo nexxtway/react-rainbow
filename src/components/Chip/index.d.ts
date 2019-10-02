@@ -1,10 +1,11 @@
-import { BaseProps } from './../types';
+import { ReactNode, MouseEvent } from 'react';
+import { BaseProps } from '../types';
 
 export interface ChipProps extends BaseProps {
-    label?: string | JSX.ElementChildrenAttribute;
+    label?: ReactNode;
     title?: string;
     variant?: 'base' | 'neutral' | 'outline-brand' | 'brand';
-    // onDelete?: ;
+    onDelete?: (event: MouseEvent<HTMLElement>) => void;
 }
 
 export default function(props: ChipProps): JSX.Element | null;

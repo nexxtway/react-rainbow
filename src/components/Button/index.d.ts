@@ -1,8 +1,9 @@
-import { ComponentType, MouseEvent, FocusEvent, KeyboardEvent } from 'react';
-import { BaseProps } from './../types';
+import { ReactNode, MouseEvent, FocusEvent, KeyboardEvent, ComponentType } from 'react';
+import { BaseProps, ButtonType } from '../types';
 
 export interface ButtonProps extends BaseProps {
-    label?: string | JSX.ElementChildrenAttribute;
+    label?: ReactNode;
+    children?: ReactNode;
     variant?:
         | 'base'
         | 'neutral'
@@ -14,9 +15,13 @@ export interface ButtonProps extends BaseProps {
         | 'border-inverse';
     shaded?: boolean;
     title?: string;
-    type?: 'button' | 'submit' | 'reset';
+    type?: ButtonType;
     disabled?: boolean;
     tabIndex?: number | string;
+    onClick?: (event: MouseEvent<HTMLElement>) => void;
+    onKeyDown?: (event: KeyboardEvent<HTMLElement>) => void;
+    onFocus?: (event: FocusEvent<HTMLElement>) => void;
+    onBlur?: (event: FocusEvent<HTMLElement>) => void;
     ariaHaspopup?: boolean;
     ariaControls?: string;
     ariaExpanded?: boolean;
@@ -24,10 +29,6 @@ export interface ButtonProps extends BaseProps {
     form?: string;
     id?: string;
     isLoading?: boolean;
-    onClick?: (event: MouseEvent<HTMLElement>) => void;
-    onFocus?: (event: FocusEvent<HTMLElement>) => void;
-    onBlur?: (event: FocusEvent<HTMLElement>) => void;
-    onKeyDown?: (event: KeyboardEvent<HTMLElement>) => void;
 }
 
 declare const Button: ComponentType<ButtonProps>;

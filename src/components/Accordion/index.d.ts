@@ -1,4 +1,4 @@
-import React, { ReactNode, MouseEvent, ComponentType } from 'react';
+import { ReactNode, MouseEvent, ComponentType } from 'react';
 import { BaseProps } from '../types';
 
 type Names = string[] | string;
