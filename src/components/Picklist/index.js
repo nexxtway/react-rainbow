@@ -381,7 +381,7 @@ class Picklist extends Component {
             maxHeight: this.getMenuMaxHeight(),
         };
 
-        const { showScrollUpArrow, showScrollDownArrow, isOpen } = this.state;
+        const { showScrollUpArrow, showScrollDownArrow, isOpen, activeOptionName } = this.state;
         return (
             <div
                 id={id}
@@ -414,6 +414,7 @@ class Picklist extends Component {
                     <RenderIf isTrue={!readOnly}>
                         <span className={this.getIndicatorClassNames()} />
                     </RenderIf>
+                    {/* eslint-disable-next-line jsx-a11y/aria-activedescendant-has-tabindex */}
                     <input
                         aria-controls={this.listboxId}
                         className={this.getInputClassNames()}
@@ -432,6 +433,7 @@ class Picklist extends Component {
                         aria-describedby={errorMessageId}
                         autoComplete="off"
                         ref={this.triggerRef}
+                        aria-activedescendant={activeOptionName}
                     />
                     <div
                         id={this.listboxId}

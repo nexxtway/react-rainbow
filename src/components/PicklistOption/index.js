@@ -102,7 +102,18 @@ class Option extends Component {
     }
 
     render() {
-        const { style, label, title, variant, icon, iconPosition, disabled } = this.props;
+        const {
+            style,
+            label,
+            title,
+            variant,
+            icon,
+            iconPosition,
+            disabled,
+            activeOptionName,
+            name,
+        } = this.props;
+        const isActive = activeOptionName === name;
 
         if (variant === 'header') {
             return (
@@ -130,8 +141,10 @@ class Option extends Component {
                 onMouseEnter={this.handleHover}
             >
                 <a
+                    id={name}
                     href="javascript:void(0);"
-                    role="menuitem"
+                    role="option"
+                    aria-selected={isActive}
                     aria-disabled={disabled}
                     ref={this.itemRef}
                 >
