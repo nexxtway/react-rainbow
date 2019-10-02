@@ -12,24 +12,24 @@ import githublogo from './github.svg';
 import './styles.css';
 
 const HelloWorldExample = `import React from 'react';
-    import ReactDOM from 'react-dom';
-    import { Button } from 'react-rainbow-components';
+import ReactDOM from 'react-dom';
+import { Button } from 'react-rainbow-components';
 
-    function App() {
-        return (
-            <Button
-                label="Hello World!"
-                variant="brand"
-                onClick={() => alert('Hello World!')}
-            />
-        );
-    }
-
-    ReactDOM.render(
-        <App />,
-        document.getElementById('container')
+function App() {
+    return (
+        <Button
+            label="Hello World!"
+            variant="brand"
+            onClick={() => alert('Hello World!')}
+        />
     );
-    `;
+}
+
+ReactDOM.render(
+    <App />,
+    document.getElementById('container')
+);
+`;
 
 export default class GettingStartedPage extends Component {
     constructor(props) {
