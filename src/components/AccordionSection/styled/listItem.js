@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { COLOR_GRAY_2 } from '../../../styles/colors';
 
-const StyledContainer = styled.li`
+const StyledListItem = styled.li`
     border-top: 1px solid ${COLOR_GRAY_2};
     list-style: none;
 
@@ -9,11 +9,7 @@ const StyledContainer = styled.li`
         border-top: 0;
     }
 
-    ${props =>
-        props.disabled &&
-        `
-            pointer-events: none;
-        `};
+    ${props => props.disabled && 'pointer-events: none;'};
 `;
 
-export default StyledContainer;
+export default StyledListItem;

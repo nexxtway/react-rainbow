@@ -7,11 +7,7 @@ const StyledHeading = styled.h3`
     line-height: 1.25;
     color: ${COLOR_DARK_1};
     width: 100%;
-    ${props =>
-        props.disabled &&
-        `
-            color: ${COLOR_GRAY_2};
-    `};
+    ${props => props.disabled && `color: ${COLOR_GRAY_2};`};
 `;
 
 export default StyledHeading;

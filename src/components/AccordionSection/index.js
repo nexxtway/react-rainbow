@@ -8,7 +8,7 @@ import ButtonIcon from './../ButtonIcon';
 import RightArrow from './rightArrow';
 import isInArray from './isInArray';
 import removeItemFromArray from './removeItemFromArray';
-import StyledContainer from './styled/container';
+import StyledListItem from './styled/listItem';
 import StyledSummary from './styled/summary';
 import StyledHeading from './styled/heading';
 import StyledIcon from './styled/icon';
@@ -113,7 +113,7 @@ class AccordionItem extends Component {
         const isExpanded = this.isExpanded();
 
         return (
-            <StyledContainer
+            <StyledListItem
                 className={className}
                 style={style}
                 disabled={disabled}
@@ -145,13 +145,13 @@ class AccordionItem extends Component {
                     </StyledSummary>
                     <StyledContent
                         aria-hidden={!isExpanded}
-                        isCollapsed={!this.isExpanded()}
+                        isCollapsed={!isExpanded}
                         id={this.accordionDetailsId}
                     >
                         {children}
                     </StyledContent>
                 </section>
-            </StyledContainer>
+            </StyledListItem>
         );
     }
 }

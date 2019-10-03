@@ -9,11 +9,7 @@ const StyledContent = styled.div`
     padding-left: ${PADDING_MEDIUM};
     padding-right: ${PADDING_X_LARGE};
     padding-bottom: 0.875rem;
-    ${props =>
-        props.isCollapsed &&
-        `
-            display: none;
-        `};
+    ${props => props.isCollapsed && 'display: none;'};
 `;
 
 export default StyledContent;

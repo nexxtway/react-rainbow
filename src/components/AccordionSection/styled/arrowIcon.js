@@ -11,11 +11,7 @@ const StyledArrowIcon = styled.svg`
             transform: rotate(-180deg);
             transition: transform 0.15s linear;
         `};
-    ${props =>
-        props.disabled &&
-        `
-                fill: ${COLOR_GRAY_2};
-            `};
+    ${props => props.disabled && `fill: ${COLOR_GRAY_2};`};
 `;
 
 export default StyledArrowIcon;
