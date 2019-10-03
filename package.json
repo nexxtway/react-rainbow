@@ -1,6 +1,6 @@
 {
     "name": "react-rainbow-components",
-    "version": "1.5.0",
+    "version": "1.6.1",
     "description": "React Rainbow Components",
     "keywords": [
         "react",
@@ -22,7 +22,7 @@
         "build:copy-ts-files": "node ./scripts/copy-files.js",
         "build": "npm-run-all --parallel build:components build:css build:fonts --serial build:copy-ts-files",
         "prepublishOnly": "yarn clean && yarn build",
-        "clean": "rm -Rf components && rm -Rf libs",
+        "clean": "rm -Rf components && rm -Rf libs && rm -Rf styles",
         "lint:js": "eslint src",
         "lint:styles": "stylelint './src/**/*.js'",
         "lint": "yarn lint:js && yarn lint:styles",
@@ -48,7 +48,7 @@
     "main": "components/index.js",
     "files": [
         "components",
-        "propTypes",
+        "styles",
         "libs"
     ],
     "repository": {
