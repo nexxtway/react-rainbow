@@ -46,6 +46,7 @@ class Lookup extends Component {
             ),
         };
         this.inputId = uniqueId('lookup-input');
+        this.listboxId = uniqueId('lookup-listbox');
         this.errorMessageId = uniqueId('error-message');
         this.containerRef = React.createRef();
         this.inputRef = React.createRef();
@@ -356,6 +357,7 @@ class Lookup extends Component {
         const isOpenMenu = this.isMenuOpen();
         const errorMessageId = this.getErrorMessageId();
         const currentValue = this.getValue();
+        const focusedItemId = `lookup-item-${focusedItemIndex}`;
 
         return (
             <div
@@ -392,7 +394,13 @@ class Lookup extends Component {
                 </RenderIf>
 
                 <RenderIf isTrue={!currentValue}>
-                    <div className="rainbow-lookup_input-container">
+                    <div
+                        className="rainbow-lookup_input-container"
+                        aria-expanded={isOpenMenu}
+                        aria-haspopup="listbox"
+                        // eslint-disable-next-line jsx-a11y/role-has-required-aria-props
+                        role="combobox"
+                    >
                         <Spinner
                             isVisible={isLoading}
                             className="rainbow-lookup_spinner"
@@ -404,6 +412,7 @@ class Lookup extends Component {
                             onClear={this.clearInput}
                             icon={icon}
                         />
+                        {/* eslint-disable-next-line jsx-a11y/aria-activedescendant-has-tabindex */}
                         <input
                             id={this.inputId}
                             name={name}
@@ -421,10 +430,17 @@ class Lookup extends Component {
                             required={required}
                             autoComplete="off"
                             aria-describedby={errorMessageId}
+                            aria-autocomplete="list"
+                            aria-controls={this.listboxId}
+                            aria-activedescendant={focusedItemId}
                             ref={this.inputRef}
                         />
                         <RenderIf isTrue={isOpenMenu}>
-                            <div className="rainbow-lookup_options-menu">
+                            <div
+                                className="rainbow-lookup_options-menu"
+                                id={this.listboxId}
+                                role="listbox"
+                            >
                                 <Options
                                     items={options}
                                     value={searchValue}
