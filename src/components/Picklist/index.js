@@ -12,6 +12,7 @@ import './styles.css';
 import { uniqueId } from '../../libs/utils';
 import MenuArrowButton from './menuArrowButton';
 import getNormalizeValue from './helpers/getNormalizeValue';
+import getInitialSelectedOptionName from './helpers/getInitialSelectedOptionName';
 import isChildRegistered from './helpers/isChildRegistered';
 import isOptionVisible from './helpers/isOptionVisible';
 import shouldOpenMenu from './helpers/shouldOpenMenu';
@@ -58,6 +59,7 @@ class Picklist extends Component {
             activeOptionName: null,
             showScrollUpArrow: undefined,
             showScrollDownArrow: undefined,
+            selectedOptionName: getInitialSelectedOptionName(props),
         };
 
         this.keyHandlerMap = {
@@ -142,6 +144,11 @@ class Picklist extends Component {
         return undefined;
     }
 
+    getAriaActivedescendant() {
+        const { selectedOptionName, activeOptionName } = this.state;
+        return activeOptionName || selectedOptionName;
+    }
+
     handleKeyUpPressed() {
         const { activeOptionIndex } = this.state;
         const nextActiveIndex =
@@ -176,6 +183,9 @@ class Picklist extends Component {
         const { onChange } = this.props;
         const { activeOptionIndex } = this.state;
         const { label, name, icon, value } = this.activeChildren[activeOptionIndex];
+        this.setState({
+            selectedOptionName: name,
+        });
         this.closeMenu();
         return onChange({
             label,
@@ -268,6 +278,9 @@ class Picklist extends Component {
 
     handleOptionClick(event, option) {
         const { onChange } = this.props;
+        this.setState({
+            selectedOptionName: option.name,
+        });
         return onChange(option);
     }
 
@@ -381,7 +394,7 @@ class Picklist extends Component {
             maxHeight: this.getMenuMaxHeight(),
         };
 
-        const { showScrollUpArrow, showScrollDownArrow, isOpen, activeOptionName } = this.state;
+        const { showScrollUpArrow, showScrollDownArrow, isOpen } = this.state;
         return (
             <div
                 id={id}
@@ -433,7 +446,7 @@ class Picklist extends Component {
                         aria-describedby={errorMessageId}
                         autoComplete="off"
                         ref={this.triggerRef}
-                        aria-activedescendant={activeOptionName}
+                        aria-activedescendant={this.getAriaActivedescendant()}
                     />
                     <div
                         id={this.listboxId}
