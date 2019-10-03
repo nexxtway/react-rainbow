@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 import { COLOR_GRAY_2 } from '../../../styles/colors';
 
-const StyledContainer = styled.button`
+const StyledButton = styled.button`
     background-color: transparent;
     padding: 0;
     margin: 0;
@@ -28,4 +28,4 @@ const StyledContainer = styled.button`
     }
 `;
 
-export default StyledContainer;
+export default StyledButton;

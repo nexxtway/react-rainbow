@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Avatar from './../Avatar';
-import StyledContainer from './styled/container';
+import StyledButton from './styled/button';
 
 export default class AvatarButton extends Component {
     constructor(props) {
@@ -51,7 +51,7 @@ export default class AvatarButton extends Component {
         } = this.props;
 
         return (
-            <StyledContainer
+            <StyledButton
                 data-id="rainbow-avatar-menu_button"
                 tabIndex={tabIndex}
                 onFocus={onFocus}
@@ -74,7 +74,7 @@ export default class AvatarButton extends Component {
                     onFocus={onFocus}
                     onBlur={onBlur}
                 />
-            </StyledContainer>
+            </StyledButton>
         );
     }
 }
