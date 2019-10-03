@@ -11,7 +11,7 @@ export default function Breadcrumb(props) {
     const { href, label, onClick, disabled, className, style } = props;
 
     return (
-        <li className={className} disabled={disabled} style={style}>
+        <li className={className} style={style}>
             <StyledContent
                 disabled={disabled}
                 href={href}
