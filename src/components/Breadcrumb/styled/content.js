@@ -15,8 +15,8 @@ const StyledContent = styled.a`
     ${props =>
         props.disabled &&
         `
-    color: #d2d4de;
-    pointer-events: none;
+            color: #d2d4de;
+            pointer-events: none;
     `};
 `;
 
