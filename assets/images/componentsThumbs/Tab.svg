@@ -6,7 +6,7 @@
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="tab">
             <path d="M0.5,23.5 L0.5,51 C0.5,54.0375661 2.96243388,56.5 6,56.5 L92,56.5 C95.0375661,56.5 97.5,54.0375661 97.5,51 L97.5,23.5 L0.5,23.5 Z M0,23 L98,23 L98,51 C98,54.3137085 95.3137085,57 92,57 L6,57 C2.6862915,57 0,54.3137085 0,51 L0,23 Z" id="Rectangle" fill="#E3E5ED" fill-rule="nonzero"></path>
-            <path d="M0.5,23.5 L0.5,51 C0.5,54.0375661 2.96243388,56.5 6,56.5 L92,56.5 C95.0375661,56.5 97.5,54.0375661 97.5,51 L97.5,23.5 L0.5,23.5 Z" id="Path" fill="#FFFFFF" fill-rule="nonzero"></path>
+            <path d="M0.5,23.5 L0.5,51 C0.5,54.0375661 2.96243388,56.5 6,56.5 L92,56.5 C95.0375661,56.5 97.5,54.0375661 97.5,51 L97.5,23.5 L0.5,23.5 Z" fill="#FFFFFF" fill-rule="nonzero"></path>
             <path d="M4,0 L94,0 C96.209139,0 98,1.790861 98,4 L98,33 L-4.4408921e-16,33 L-4.4408921e-16,4 C-4.4408921e-16,1.790861 1.790861,0 4,0 Z" id="Rectangle" fill="#E3E5ED" fill-rule="nonzero"></path>
             <g id="Group-41" transform="translate(14.000000, 12.000000)" fill-rule="nonzero">
                 <path d="M8,0 L62,0 C66.418278,0 70,3.581722 70,8 L70,22 L0,22 L0,8 C0,3.581722 3.581722,0 8,0 Z" id="Rectangle" fill="#FFFFFF"></path>
