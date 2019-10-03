@@ -1,7 +1,7 @@
 /* eslint-disable no-script-url */
 import React from 'react';
 import PropTypes from 'prop-types';
-import StyledContent from './styled/content';
+import StyledAnchor from './styled/anchor';
 
 /**
  * An item in the hierarchy path of the page the user is on.
@@ -12,14 +12,14 @@ export default function Breadcrumb(props) {
 
     return (
         <li className={className} style={style}>
-            <StyledContent
+            <StyledAnchor
                 disabled={disabled}
                 href={href}
                 onClick={onClick}
                 aria-disabled={!!disabled}
             >
                 {label}
-            </StyledContent>
+            </StyledAnchor>
         </li>
     );
 }

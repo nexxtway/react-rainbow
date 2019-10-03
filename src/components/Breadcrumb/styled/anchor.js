@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { COLOR_BRAND, COLOR_GRAY_4 } from '../../../styles/colors';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 
-const StyledContent = styled.a`
+const StyledAnchor = styled.a`
     text-decoration: none;
     letter-spacing: 0.3px;
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
@@ -20,4 +20,4 @@ const StyledContent = styled.a`
     `};
 `;
 
-export default StyledContent;
+export default StyledAnchor;
