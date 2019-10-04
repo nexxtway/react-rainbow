@@ -114,13 +114,14 @@ class AccordionItem extends Component {
 
         return (
             <StyledListItem
+                data-id="accordion-section-li"
                 className={className}
                 style={style}
                 disabled={disabled}
                 ref={this.containerRef}
             >
                 <section>
-                    <StyledSummary>
+                    <StyledSummary data-id="accordion-section-summary">
                         <StyledHeading disabled={disabled}>
                             <RenderIf isTrue={!!icon}>
                                 <StyledIcon>{icon}</StyledIcon>
@@ -144,6 +145,7 @@ class AccordionItem extends Component {
                         />
                     </StyledSummary>
                     <StyledContent
+                        data-id="accordion-section-content"
                         aria-hidden={!isExpanded}
                         isCollapsed={!isExpanded}
                         id={this.accordionDetailsId}
