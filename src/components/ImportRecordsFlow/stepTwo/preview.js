@@ -6,6 +6,7 @@ import Column from '../../Column';
 import Spinner from '../../Spinner';
 import CSVDocIcon from '../icons/csv';
 import TrashIcon from '../icons/trash';
+import RenderIf from './../../RenderIf';
 
 function PreviewTable(props) {
     const { columns, data, isLoading } = props;
@@ -41,15 +42,19 @@ export default function Preview(props) {
             <div className="rainbow-import-records-flow_step-two-file-card">
                 <CSVDocIcon />
                 <div className="rainbow-import-records-flow_step-two-file-card-content">
-                    <h1
-                        title={fileName}
-                        className="rainbow-import-records-flow_step-two-file-card-title"
-                    >
-                        {fileName}
-                    </h1>
-                    <h2 className="rainbow-import-records-flow_step-two-file-card-description">
-                        {fileType}
-                    </h2>
+                    <RenderIf isTrue={fileName}>
+                        <h1
+                            title={fileName}
+                            className="rainbow-import-records-flow_step-two-file-card-title"
+                        >
+                            {fileName}
+                        </h1>
+                    </RenderIf>
+                    <RenderIf isTrue={fileType}>
+                        <h2 className="rainbow-import-records-flow_step-two-file-card-description">
+                            {fileType}
+                        </h2>
+                    </RenderIf>
                 </div>
                 <ButtonIcon
                     className="rainbow-import-records-flow_step-two-file-card-delete-button-icon"
