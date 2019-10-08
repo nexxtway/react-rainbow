@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import ButtonContent from './buttonContent';
 import StyledSpinner from './styled/spinner';
 import StyledContent from './styled/content';
-import './styles.css';
 
 const variantMap = {
     base: 'base',
