@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import RenderIf from '../RenderIf';
 import './styles.css';
 
 /**
@@ -16,8 +17,12 @@ export default function VisualPickerOptionFooter(props) {
 
     return (
         <article className={getContainerClassName()} style={style}>
-            <h1 className="rainbow-visual-picker-option-footer_label">{label}</h1>
-            <h2 className="rainbow-visual-picker-option-footer_description">{description}</h2>
+            <RenderIf isTrue={!!label}>
+                <h1 className="rainbow-visual-picker-option-footer_label">{label}</h1>
+            </RenderIf>
+            <RenderIf isTrue={!!description}>
+                <h2 className="rainbow-visual-picker-option-footer_description">{description}</h2>
+            </RenderIf>
         </article>
     );
 }

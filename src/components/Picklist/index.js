@@ -32,6 +32,7 @@ class Picklist extends Component {
         super(props);
         this.inputId = uniqueId('picklist-input');
         this.errorMessageId = uniqueId('error-message');
+        this.listboxId = uniqueId('listbox');
         this.containerRef = React.createRef();
         this.triggerRef = React.createRef();
         this.menuRef = React.createRef();
@@ -361,8 +362,6 @@ class Picklist extends Component {
             hideLabel,
             style,
             error,
-            title,
-            assistiveText,
             isLoading,
             disabled,
             readOnly,
@@ -374,7 +373,6 @@ class Picklist extends Component {
             name,
             value: valueInProps,
         } = this.props;
-        const ariaLabel = title || assistiveText;
         const { label: valueLabel, icon } = getNormalizeValue(valueInProps);
         const value = valueLabel || '';
         const errorMessageId = this.getErrorMessageId();
@@ -383,7 +381,7 @@ class Picklist extends Component {
             maxHeight: this.getMenuMaxHeight(),
         };
 
-        const { showScrollUpArrow, showScrollDownArrow } = this.state;
+        const { showScrollUpArrow, showScrollDownArrow, isOpen } = this.state;
         return (
             <div
                 id={id}
@@ -403,7 +401,13 @@ class Picklist extends Component {
                     />
                 </RenderIf>
 
-                <div className="rainbow-picklist_inner-container">
+                <div
+                    className="rainbow-picklist_inner-container"
+                    aria-expanded={isOpen}
+                    aria-haspopup="listbox"
+                    // eslint-disable-next-line jsx-a11y/role-has-required-aria-props
+                    role="combobox"
+                >
                     <RenderIf isTrue={!!icon}>
                         <span className="rainbow-picklist_icon">{icon}</span>
                     </RenderIf>
@@ -411,6 +415,7 @@ class Picklist extends Component {
                         <span className={this.getIndicatorClassNames()} />
                     </RenderIf>
                     <input
+                        aria-controls={this.listboxId}
                         className={this.getInputClassNames()}
                         id={this.inputId}
                         type="text"
@@ -428,7 +433,11 @@ class Picklist extends Component {
                         autoComplete="off"
                         ref={this.triggerRef}
                     />
-                    <div role="listbox" className={this.getDropdownClassNames()}>
+                    <div
+                        id={this.listboxId}
+                        role="listbox"
+                        className={this.getDropdownClassNames()}
+                    >
                         <RenderIf isTrue={showScrollUpArrow}>
                             <MenuArrowButton
                                 arrow="up"
@@ -439,7 +448,6 @@ class Picklist extends Component {
                         <ul
                             role="presentation"
                             onScroll={this.updateScrollingArrows}
-                            aria-label={ariaLabel}
                             ref={this.menuRef}
                             style={menuContainerStyles}
                         >
@@ -476,10 +484,6 @@ Picklist.propTypes = {
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
     /** If is set to true, then is showed a loading symbol. */
     isLoading: PropTypes.bool,
-    /** Displays tooltip text when the mouse moves over the element. */
-    title: PropTypes.string,
-    /** A description for assistive sreen readers. */
-    assistiveText: PropTypes.string,
     /** Specifies the selected value of the Picklist. */
     value: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     /**  The action triggered when click/select an option. */
@@ -516,8 +520,6 @@ Picklist.propTypes = {
 Picklist.defaultProps = {
     children: null,
     isLoading: false,
-    title: undefined,
-    assistiveText: undefined,
     value: undefined,
     onChange: () => {},
     onClick: () => {},

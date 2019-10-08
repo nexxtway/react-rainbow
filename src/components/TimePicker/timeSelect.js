@@ -351,6 +351,7 @@ export default class TimeSelect extends Component {
                         onChange={this.handleChangeHour}
                         onFocus={this.handleFocusHour}
                         onBlur={this.handleBlurHour}
+                        inputMode="numeric"
                         pattern="\d*"
                         ref={this.hourInputRef}
                     />
@@ -369,6 +370,7 @@ export default class TimeSelect extends Component {
                         placeholder={minutesPlaceholder}
                         onChange={this.handleChangeMinutes}
                         onFocus={this.handleFocusMinutes}
+                        inputMode="numeric"
                         pattern="\d*"
                         ref={this.minutesInputRef}
                     />

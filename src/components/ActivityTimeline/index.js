@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import './styles.css';
+import StyledContainer from './styled/container';
 
 /**
  * The ActivityTimeline displays each of any item upcoming, current, and past activities.
@@ -10,13 +9,10 @@ import './styles.css';
 export default function ActivityTimeline(props) {
     const { children, className, style } = props;
 
-    const getContainerClassName = () =>
-        classnames('rainbow-activity-timeline_container', className);
-
     return (
-        <ul className={getContainerClassName()} style={style}>
+        <StyledContainer className={className} style={style}>
             {children}
-        </ul>
+        </StyledContainer>
     );
 }
 

@@ -25,25 +25,9 @@ describe('<AvatarContent/>', () => {
         );
         expect(component.find('abbr').props()).toEqual({
             children: 'JD',
-            className: 'rainbow-avatar_initials',
+            className: expect.any(String),
             title: 'Title',
         });
-    });
-    it('should have the right class names when initials variant is default', () => {
-        const component = mount(<AvatarContent initialsVariant="default" />);
-        expect(component.find('span[className="rainbow-avatar_initials"]').exists()).toBe(true);
-    });
-    it('should have the right class names when initials variant is inverse', () => {
-        const component = mount(<AvatarContent initialsVariant="inverse" />);
-        expect(
-            component
-                .find('span[className="rainbow-avatar_initials rainbow-avatar_initials--inverse"]')
-                .exists(),
-        ).toBe(true);
-    });
-    it('should have the right class names when initials, icon and variant are not passed', () => {
-        const component = mount(<AvatarContent />);
-        expect(component.find('span[className="rainbow-avatar_initials"]').exists()).toBe(true);
     });
     it('should return the icon passed when src and initials are not passed', () => {
         const component = mount(<AvatarContent icon={<svg />} />);
