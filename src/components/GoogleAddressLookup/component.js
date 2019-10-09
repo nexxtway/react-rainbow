@@ -242,7 +242,6 @@ PlacesLookupComponent.propTypes = {
 };
 
 PlacesLookupComponent.defaultProps = {
-    label: undefined,
     searchOptions: undefined,
     value: undefined,
     name: undefined,
