@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import CardBoddy from './cardBody';
 import Header from './header';
 import RenderIf from '../RenderIf';
-import './styles.css';
+import StyledContainer from './styled/container';
+import StyledFooter from './styled/footer';
 
 /**
  * Cards are used to apply a container around a
@@ -14,27 +14,18 @@ import './styles.css';
 export default function Card(props) {
     const { className, style, actions, children, footer, title, icon, isLoading } = props;
 
-    const getContainerClassName = () => {
-        const hasHeader = icon || title || actions;
-        return classnames(
-            'rainbow-card',
-            {
-                'rainbow-card--with-header': hasHeader,
-            },
-            className,
-        );
-    };
+    const hasHeader = icon || title || actions;
 
     return (
-        <article className={getContainerClassName()} style={style}>
+        <StyledContainer className={className} style={style} hasHeader={hasHeader}>
             <Header actions={actions} title={title} icon={icon} />
 
             <CardBoddy isLoading={isLoading}>{children}</CardBoddy>
 
             <RenderIf isTrue={footer && !isLoading}>
-                <footer className="rainbow-card_footer">{footer}</footer>
+                <StyledFooter>{footer}</StyledFooter>
             </RenderIf>
-        </article>
+        </StyledContainer>
     );
 }
 
