@@ -13,8 +13,8 @@ import StyledFooter from './styled/footer';
  */
 export default function Card(props) {
     const { className, style, actions, children, footer, title, icon, isLoading } = props;
-
     const hasHeader = icon || title || actions;
+    const showFooter = !!(footer && !isLoading);
 
     return (
         <StyledContainer className={className} style={style} hasHeader={hasHeader}>
@@ -22,7 +22,7 @@ export default function Card(props) {
 
             <CardBoddy isLoading={isLoading}>{children}</CardBoddy>
 
-            <RenderIf isTrue={footer && !isLoading}>
+            <RenderIf isTrue={showFooter}>
                 <StyledFooter>{footer}</StyledFooter>
             </RenderIf>
         </StyledContainer>
