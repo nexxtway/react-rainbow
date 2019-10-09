@@ -2,8 +2,8 @@ import { ReactNode } from 'react';
 import { BaseProps, IconPosition } from '../types';
 
 export interface PicklistOptionProps extends BaseProps {
-    label: string;
-    name: string;
+    label?: string;
+    name?: string;
     variant?: 'default' | 'header';
     icon?: ReactNode;
     iconPosition?: IconPosition;

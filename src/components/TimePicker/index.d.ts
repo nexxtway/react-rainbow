@@ -7,7 +7,7 @@ export interface TimePickerProps extends BaseProps {
     okLabel?: ReactNode;
     onChange?: (time: string) => void;
     placeholder?: string;
-    label: ReactNode;
+    label?: ReactNode;
     hideLabel?: boolean;
     required?: boolean;
     name?: string;

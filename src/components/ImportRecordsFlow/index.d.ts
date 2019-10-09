@@ -8,7 +8,7 @@ interface CompleteValue {
 }
 
 export interface ImportRecordsFlowProps extends BaseProps {
-    schema: {
+    schema?: {
         collection?: string;
         attributes?: object;
     };

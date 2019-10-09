@@ -1,6 +1,6 @@
 export interface DatasetProps {
     type?: 'line';
-    values: number[];
+    values?: number[];
     title?: string;
     backgroundColor?: string[] | string;
     borderColor?: string[] | string;

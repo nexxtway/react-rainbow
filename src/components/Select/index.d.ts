@@ -2,13 +2,13 @@ import { ReactNode, ChangeEvent, MouseEvent, FocusEvent } from 'react';
 import { BaseProps } from '../types';
 
 export interface Option {
-    label: ReactNode;
+    label?: ReactNode;
     value?: ReactNode;
     disabled?: boolean;
 }
 
 export interface SelectProps extends BaseProps {
-    label: ReactNode;
+    label?: ReactNode;
     name?: string;
     value?: string | number;
     onChange?: (event: ChangeEvent<HTMLElement>) => void;

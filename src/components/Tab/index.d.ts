@@ -3,7 +3,7 @@ import { BaseProps } from '../types';
 
 export interface TabProps extends BaseProps {
     label?: ReactNode;
-    name: string;
+    name?: string;
     title?: string;
     disabled?: boolean;
     id?: string;

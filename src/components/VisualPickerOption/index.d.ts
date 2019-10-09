@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { BaseProps } from '../types';
 
 export interface VisualPickerOptionProps extends BaseProps {
-    name: string;
+    name?: string;
     footer?: ReactNode;
     disabled?: boolean;
     children?: ReactNode;

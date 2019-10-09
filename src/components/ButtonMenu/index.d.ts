@@ -2,7 +2,7 @@ import { ReactNode, MouseEvent, FocusEvent } from 'react';
 import { BaseProps, ButtonIconVariant, ButtonIconSize, MenuSize, MenuAlignment } from '../types';
 
 export interface ButtonMenuProps extends BaseProps {
-    icon: ReactNode;
+    icon?: ReactNode;
     children?: ReactNode;
     buttonVariant?: ButtonIconVariant;
     buttonSize?: ButtonIconSize;

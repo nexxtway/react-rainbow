@@ -3,7 +3,7 @@ import { BaseProps } from '../types';
 
 export interface VerticalItemProps extends BaseProps {
     label?: ReactNode;
-    name: string;
+    name?: string;
     icon?: ReactNode;
     href?: string;
     notification?: ReactNode;

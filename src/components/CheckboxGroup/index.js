@@ -92,7 +92,7 @@ CheckboxGroup.propTypes = {
     /** An Array of checkbox options with label, value and disabled for each checkbox. */
     options: PropTypes.arrayOf(
         PropTypes.shape({
-            label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+            label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
             value: PropTypes.string,
             disabled: PropTypes.bool,
         }),

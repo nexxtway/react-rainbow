@@ -2,9 +2,9 @@ import { ReactNode, MouseEvent } from 'react';
 import { BaseProps } from '../types';
 
 export interface SidebarItemProps extends BaseProps {
-    name: string;
+    name?: string;
     label?: ReactNode;
-    icon: ReactNode;
+    icon?: ReactNode;
     href?: string;
     onClick?: (event: MouseEvent<HTMLElement>) => void;
 }

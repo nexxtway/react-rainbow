@@ -47,7 +47,7 @@ export default function ButtonMenu(props) {
 ButtonMenu.propTypes = {
     /** The icon to show if it is passed.
      * It must be a svg icon or a font icon. It is a required value. */
-    icon: PropTypes.node.isRequired,
+    icon: PropTypes.node,
     /** The content of the ButtonMenu. Used to render the menuItem elements
      * when the ButtonMenu is open. */
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
@@ -110,6 +110,7 @@ ButtonMenu.propTypes = {
 };
 
 ButtonMenu.defaultProps = {
+    icon: null,
     children: null,
     buttonVariant: 'border-filled',
     buttonSize: 'medium',

@@ -125,7 +125,7 @@ export default class InputRadio extends Component {
 
 InputRadio.propTypes = {
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     name: PropTypes.string,
     bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
@@ -145,6 +145,7 @@ InputRadio.propTypes = {
 
 InputRadio.defaultProps = {
     value: undefined,
+    label: undefined,
     name: undefined,
     bottomHelpText: null,
     error: null,

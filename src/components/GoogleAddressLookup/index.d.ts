@@ -106,7 +106,7 @@ interface SearchOptionsShape {
 
 export interface GoogleAddressLookupProps extends BaseProps {
     apiKey: string;
-    label: ReactNode;
+    label?: ReactNode;
     hideLabel?: boolean;
     value?: string | PredictionShape | PlaceDetailsShape;
     name?: string;

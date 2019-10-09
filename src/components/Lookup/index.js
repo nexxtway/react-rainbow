@@ -467,7 +467,7 @@ class Lookup extends Component {
 
 Lookup.propTypes = {
     /** Text label for the Lookup. */
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** A boolean to hide the Lookup label. */
     hideLabel: PropTypes.bool,
     /** Specifies the selected value of the Lookup. */
@@ -535,6 +535,7 @@ Lookup.propTypes = {
 };
 
 Lookup.defaultProps = {
+    label: undefined,
     value: undefined,
     name: undefined,
     placeholder: null,

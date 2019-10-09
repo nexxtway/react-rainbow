@@ -476,7 +476,7 @@ class Picklist extends Component {
 
 Picklist.propTypes = {
     /** Text label for the PickList. */
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** A boolean to hide the PickList label. */
     hideLabel: PropTypes.bool,
     /** The content of the Picklist. Used to render the options
@@ -526,6 +526,7 @@ Picklist.propTypes = {
 };
 
 Picklist.defaultProps = {
+    label: undefined,
     children: null,
     isLoading: false,
     value: undefined,

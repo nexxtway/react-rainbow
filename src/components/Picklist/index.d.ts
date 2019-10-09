@@ -9,7 +9,7 @@ interface PicklistValue {
 }
 
 export interface PicklistProps extends BaseProps {
-    label: ReactNode;
+    label?: ReactNode;
     hideLabel?: boolean;
     children?: ReactNode;
     isLoading?: boolean;

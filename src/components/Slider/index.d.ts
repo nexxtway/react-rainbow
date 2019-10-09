@@ -2,7 +2,7 @@ import { ReactNode, ComponentType, ChangeEvent, MouseEvent, FocusEvent } from 'r
 import { BaseProps } from './../types';
 
 export interface SliderProps extends BaseProps {
-    label: ReactNode;
+    label?: ReactNode;
     hideLabel?: boolean;
     name?: string;
     value?: string | number;

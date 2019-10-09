@@ -57,19 +57,19 @@ function ActiveUsersCard({ title, variant, color }) {
 ```js
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <div className="rainbow-p-around_large rainbow-align-content_center rainbow-flex_column">
-        <ProgressCircular value="24" />
+        <ProgressCircular value={24} />
         <h1 className="rainbow-font-size-heading_small rainbow-color_brand">brand</h1>
     </div>
     <div className="rainbow-p-around_large rainbow-align-content_center rainbow-flex_column">
-        <ProgressCircular value="45" variant="success" />
+        <ProgressCircular value={45} variant="success" />
         <h1 className="rainbow-font-size-heading_small rainbow-color_success">success</h1>
     </div>
     <div className="rainbow-p-around_large rainbow-align-content_center rainbow-flex_column">
-        <ProgressCircular value="60" variant="warning" />
+        <ProgressCircular value={60} variant="warning" />
         <h1 className="rainbow-font-size-heading_small rainbow-color_yellow">warning</h1>
     </div>
     <div className="rainbow-p-around_large rainbow-align-content_center rainbow-flex_column">
-        <ProgressCircular value="82" variant="error" />
+        <ProgressCircular value={82} variant="error" />
         <h1 className="rainbow-font-size-heading_small rainbow-color_error">error</h1>
     </div>
 </div>

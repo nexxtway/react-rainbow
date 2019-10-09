@@ -188,7 +188,7 @@ DatePicker.propTypes = {
      * to prompt the user for a valid entry. */
     placeholder: PropTypes.string,
     /** Text label for the DatePicker. */
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** A boolean to hide the DatePicker label. */
     hideLabel: PropTypes.bool,
     /** Specifies that the DatePicker field must be filled out before submitting the form.
@@ -229,6 +229,7 @@ DatePicker.defaultProps = {
     formatStyle: 'medium',
     onChange: () => {},
     placeholder: null,
+    label: undefined,
     hideLabel: false,
     required: false,
     name: undefined,

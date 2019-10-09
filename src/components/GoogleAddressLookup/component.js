@@ -218,7 +218,7 @@ PlacesLookupComponent.propTypes = {
     isScriptLoaded: PropTypes.bool.isRequired,
     isScriptLoadSucceed: PropTypes.bool.isRequired,
     searchOptions: CustomPropTypes.searchOptionsShape,
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     hideLabel: PropTypes.bool,
     readOnly: PropTypes.bool,
     value: PropTypes.oneOfType([
@@ -242,6 +242,7 @@ PlacesLookupComponent.propTypes = {
 };
 
 PlacesLookupComponent.defaultProps = {
+    label: undefined,
     searchOptions: undefined,
     value: undefined,
     name: undefined,

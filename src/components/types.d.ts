@@ -28,7 +28,7 @@ export interface LookupValue {
 }
 
 export interface RadioOption {
-    label: ReactNode;
+    label?: ReactNode;
     value?: string;
     disabled?: boolean;
 }

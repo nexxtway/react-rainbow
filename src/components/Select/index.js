@@ -111,7 +111,7 @@ class Select extends Component {
 
 Select.propTypes = {
     /** Text label for the select. */
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The name of the select. */
     name: PropTypes.string,
     /** Specifies the selected value. */
@@ -135,7 +135,7 @@ Select.propTypes = {
     /** The option items to be displayed. */
     options: PropTypes.arrayOf(
         PropTypes.shape({
-            label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+            label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
             value: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
             disabled: PropTypes.bool,
         }),
@@ -151,6 +151,7 @@ Select.propTypes = {
 };
 
 Select.defaultProps = {
+    label: undefined,
     value: undefined,
     name: undefined,
     onChange: () => {},

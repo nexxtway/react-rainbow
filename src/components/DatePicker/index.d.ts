@@ -10,7 +10,7 @@ export interface DatePickerProps extends BaseProps {
     formatStyle?: 'small' | 'medium' | 'large';
     onChange?: (date: Date) => void;
     placeholder?: string;
-    label: ReactNode;
+    label?: ReactNode;
     hideLabel?: boolean;
     required?: boolean;
     name?: string;

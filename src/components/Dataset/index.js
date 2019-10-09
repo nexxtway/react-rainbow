@@ -11,7 +11,7 @@ Dataset.propTypes = {
     /** The type of chart for the specific dataset, it can be different than the chart type */
     type: PropTypes.oneOf(['line']),
     /** The values to represent in the chart */
-    values: PropTypes.arrayOf(PropTypes.number).isRequired,
+    values: PropTypes.arrayOf(PropTypes.number),
     /** The title for the dataset which appears in the legend and tooltips. */
     title: PropTypes.string,
     /** The fill color under the line. */
@@ -26,8 +26,9 @@ Dataset.propTypes = {
 };
 
 Dataset.defaultProps = {
-    title: 'Dataset',
     type: undefined,
+    values: [],
+    title: 'Dataset',
     backgroundColor: undefined,
     borderColor: undefined,
     stack: undefined,

@@ -77,7 +77,7 @@ Input.propTypes = {
         'checkbox',
     ]),
     /** Text label for the input. */
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** A boolean to hide the input label. */
     hideLabel: PropTypes.bool,
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
@@ -162,6 +162,7 @@ Input.defaultProps = {
     style: undefined,
     id: undefined,
     autoComplete: 'on',
+    label: undefined,
     hideLabel: false,
 };
 

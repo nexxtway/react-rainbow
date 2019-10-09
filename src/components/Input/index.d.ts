@@ -30,7 +30,7 @@ export interface InputProps extends BaseProps {
     value?: string | boolean;
     name?: string;
     type?: InputType;
-    label: ReactNode;
+    label?: ReactNode;
     hideLabel?: boolean;
     placeholder?: string;
     icon?: ReactNode;

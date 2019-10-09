@@ -2,7 +2,7 @@ import { ReactNode, ComponentType, MouseEvent, FocusEvent, KeyboardEvent } from 
 import { BaseProps, ButtonIconVariant, ButtonIconSize, ButtonType } from '../types';
 
 export interface ButtonIconProps extends BaseProps {
-    icon: ReactNode;
+    icon?: ReactNode;
     variant?: ButtonIconVariant;
     size?: ButtonIconSize;
     shaded?: boolean;

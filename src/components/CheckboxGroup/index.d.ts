@@ -2,7 +2,7 @@ import { ComponentType, ReactNode } from 'react';
 import { BaseProps } from '../types';
 
 interface Option {
-    label: ReactNode;
+    label?: ReactNode;
     value?: string;
     disabled?: boolean;
 }

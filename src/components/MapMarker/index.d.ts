@@ -4,8 +4,8 @@ import { BaseProps } from '../types';
 export interface MapMarkerProps extends BaseProps {
     label?: ReactNode;
     description?: ReactNode;
-    latitude: number;
-    longitude: number;
+    latitude?: number;
+    longitude?: number;
     icon?: ReactNode;
 }
 
