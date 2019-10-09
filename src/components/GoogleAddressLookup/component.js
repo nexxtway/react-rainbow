@@ -252,7 +252,7 @@ PlacesLookupComponent.defaultProps = {
     disabled: false,
     onChange: () => {},
     onClick: () => {},
-    onFocus: () => {},
+    // onFocus: () => {},
     onBlur: () => {},
     tabIndex: undefined,
     label: undefined,

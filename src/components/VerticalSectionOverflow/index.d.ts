@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
-import { BaseProps } from './../types';
+import { ComponentType, ReactNode, MouseEvent } from 'react';
+import { BaseProps } from '../types';
 
 export interface VerticalSectionOverflowProps extends BaseProps {
-    label?: string | JSX.ElementChildrenAttribute;
-    description?: string | JSX.ElementChildrenAttribute;
+    label?: ReactNode;
+    description?: ReactNode;
     expanded?: boolean;
     assistiveText?: string;
-    // onToggleSection?: ;
+    onToggleSection?: (event: MouseEvent<HTMLElement>) => void;
+    children?: ReactNode;
 }
 
-declare const VerticalSectionOverflow: React.ComponentType<VerticalSectionOverflowProps>;
+declare const VerticalSectionOverflow: ComponentType<VerticalSectionOverflowProps>;
 export default VerticalSectionOverflow;

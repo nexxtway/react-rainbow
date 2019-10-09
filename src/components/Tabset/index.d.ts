@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
-import { BaseProps } from './../types';
+import { ReactNode, ComponentType, MouseEvent } from 'react';
+import { BaseProps } from '../types';
 
 export interface TabsetProps extends BaseProps {
-    activeTabName?: JSX.ElementChildrenAttribute;
+    activeTabName?: string;
+    onSelect?: (event: MouseEvent<HTMLElement>, name: string) => void;
     fullWidth?: boolean;
     id?: string;
-    // onSelect?: ;
+    children?: ReactNode;
 }
 
-declare const Tabset: React.ComponentType<TabsetProps>;
+declare const Tabset: ComponentType<TabsetProps>;
 export default Tabset;

@@ -59,7 +59,7 @@ GoogleAddressLookup.propTypes = {
     /** The action triggered when the element is clicked. */
     onClick: PropTypes.func,
     /** The action triggered when the element receives focus. */
-    onFocus: PropTypes.func,
+    // onFocus: PropTypes.func,
     /** The action triggered when the element releases focus. */
     onBlur: PropTypes.func,
     /**
@@ -89,7 +89,7 @@ GoogleAddressLookup.defaultProps = {
     readOnly: false,
     onChange: () => {},
     onClick: () => {},
-    onFocus: () => {},
+    // onFocus: () => {},
     onBlur: () => {},
     tabIndex: undefined,
     label: undefined,

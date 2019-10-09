@@ -1,4 +1,4 @@
-import { BaseProps } from './../types';
+import { BaseProps } from '../types';
 
 export interface ProgressBarProps extends BaseProps {
     value?: number;

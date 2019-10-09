@@ -1,10 +1,12 @@
-import { BaseProps } from './../types';
+import { ReactNode } from 'react';
+import { BaseProps } from '../types';
 
 export interface TimelineMarkerProps extends BaseProps {
-    label?: string | JSX.ElementChildrenAttribute;
-    description?: string | JSX.ElementChildrenAttribute;
-    datetime?: string | JSX.ElementChildrenAttribute;
-    icon?: JSX.ElementChildrenAttribute;
+    label?: ReactNode;
+    description?: ReactNode;
+    datetime?: ReactNode;
+    icon?: ReactNode;
+    children?: ReactNode;
 }
 
 export default function(props: TimelineMarkerProps): JSX.Element | null;

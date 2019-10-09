@@ -1,11 +1,12 @@
-import { BaseProps } from './../types';
+import { ReactNode } from 'react';
+import { BaseProps } from '../types';
 
 export interface MapMarkerProps extends BaseProps {
-    label?: string | JSX.ElementChildrenAttribute;
-    description?: string | JSX.ElementChildrenAttribute;
+    label?: ReactNode;
+    description?: ReactNode;
     latitude: number;
     longitude: number;
-    icon?: string | JSX.ElementChildrenAttribute;
+    icon?: ReactNode;
 }
 
 export default function(props: MapMarkerProps): JSX.Element | null;

@@ -1,15 +1,16 @@
-import React, { Component } from 'react';
-import { BaseProps } from './../types';
+import { ReactNode, ComponentType } from 'react';
+import { BaseProps } from '../types';
 
 export interface ModalProps extends BaseProps {
-    title?: string | JSX.ElementChildrenAttribute;
+    title?: ReactNode;
     size?: 'small' | 'medium' | 'large';
-    footer?: JSX.ElementChildrenAttribute;
+    footer?: ReactNode;
     isOpen?: boolean;
+    onRequestClose?: () => void;
+    onOpened?: () => void;
     id?: string;
-    // onRequestClose?: ;
-    // onOpened?: ;
+    children?: ReactNode;
 }
 
-declare const Modal: React.ComponentType<ModalProps>;
+declare const Modal: ComponentType<ModalProps>;
 export default Modal;

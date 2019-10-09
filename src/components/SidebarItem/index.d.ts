@@ -1,11 +1,12 @@
-import { BaseProps } from './../types';
+import { ReactNode, MouseEvent } from 'react';
+import { BaseProps } from '../types';
 
 export interface SidebarItemProps extends BaseProps {
     name: string;
-    label?: string | JSX.ElementChildrenAttribute;
-    icon: JSX.ElementChildrenAttribute;
+    label?: ReactNode;
+    icon: ReactNode;
     href?: string;
-    // onClick?: ;
+    onClick?: (event: MouseEvent<HTMLElement>) => void;
 }
 
 export default function(props: SidebarItemProps): JSX.Element | null;

@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import { BaseProps } from './../types';
+import { ReactNode, ComponentType, ChangeEvent } from 'react';
+import { BaseProps, RadioOption } from '../types';
 
 export interface RadioButtonGroupProps extends BaseProps {
-    label?: string | JSX.ElementChildrenAttribute;
+    label?: ReactNode;
     name?: string;
     value?: string;
     variant?: 'default' | 'inverse' | 'brand';
+    onChange?: (event: ChangeEvent<HTMLElement>) => void;
     required?: boolean;
-    // options?: ;
-    // onChange?: ;
-    error?: string | JSX.ElementChildrenAttribute;
+    options?: RadioOption[];
+    error?: ReactNode;
     id?: string;
 }
 
-declare const RadioButtonGroup: React.ComponentType<RadioButtonGroupProps>;
+declare const RadioButtonGroup: ComponentType<RadioButtonGroupProps>;
 export default RadioButtonGroup;

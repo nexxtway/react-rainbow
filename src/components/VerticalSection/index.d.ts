@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
-import { BaseProps } from './../types';
+import { ComponentType, ReactNode } from 'react';
+import { BaseProps } from '../types';
 
 export interface VerticalSectionProps extends BaseProps {
-    label?: string | JSX.ElementChildrenAttribute;
+    label?: ReactNode;
+    children?: ReactNode;
 }
 
-declare const VerticalSection: React.ComponentType<VerticalSectionProps>;
+declare const VerticalSection: ComponentType<VerticalSectionProps>;
 export default VerticalSection;

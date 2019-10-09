@@ -485,7 +485,15 @@ Picklist.propTypes = {
     /** If is set to true, then is showed a loading symbol. */
     isLoading: PropTypes.bool,
     /** Specifies the selected value of the Picklist. */
-    value: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+    value: PropTypes.oneOfType([
+        PropTypes.shape({
+            label: PropTypes.string,
+            name: PropTypes.string,
+            icon: PropTypes.node,
+            value: PropTypes.any,
+        }),
+        PropTypes.string,
+    ]),
     /**  The action triggered when click/select an option. */
     onChange: PropTypes.func,
     /** The action triggered when the element is clicked. */

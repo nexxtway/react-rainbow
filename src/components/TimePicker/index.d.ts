@@ -1,27 +1,27 @@
-import React, { Component } from 'react';
-import { BaseProps } from './../types';
+import { ComponentType, ReactNode, MouseEvent, FocusEvent } from 'react';
+import { BaseProps } from '../types';
 
 export interface TimePickerProps extends BaseProps {
     value?: string;
-    cancelLabel?: string | JSX.ElementChildrenAttribute;
-    okLabel?: string | JSX.ElementChildrenAttribute;
+    cancelLabel?: ReactNode;
+    okLabel?: ReactNode;
+    onChange?: (time: string) => void;
     placeholder?: string;
-    label: string | JSX.ElementChildrenAttribute;
+    label: ReactNode;
     hideLabel?: boolean;
     required?: boolean;
     name?: string;
-    bottomHelpText?: string | JSX.ElementChildrenAttribute;
+    bottomHelpText?: ReactNode;
     isCentered?: boolean;
-    error?: string | JSX.ElementChildrenAttribute;
+    error?: ReactNode;
     readOnly?: boolean;
     disabled?: boolean;
     tabIndex?: number | string;
+    onClick?: (event: MouseEvent<HTMLInputElement>) => void;
+    onFocus?: (value: string) => void;
+    onBlur?: (value: string) => void;
     id?: string;
-    // onClick?: ;
-    // onFocus?: ;
-    // onBlur?: ;
-    // onChange?: ;
 }
 
-declare const TimePicker: React.ComponentType<TimePickerProps>;
+declare const TimePicker: ComponentType<TimePickerProps>;
 export default TimePicker;

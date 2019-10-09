@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
+import { ReactNode, ComponentType, ChangeEvent, MouseEvent, FocusEvent } from 'react';
 import { BaseProps } from './../types';
 
 export interface SliderProps extends BaseProps {
-    label: string | JSX.ElementChildrenAttribute;
+    label: ReactNode;
     hideLabel?: boolean;
     name?: string;
     value?: string | number;
     min?: string | number;
     max?: string | number;
     step?: string | number;
-    error?: string | JSX.ElementChildrenAttribute;
+    error?: ReactNode;
     disabled?: boolean;
-    // onChange?: ;
-    // onClick?: ;
-    // onFocus?: ;
-    // onBlur?: ;
+    onChange?: (event: ChangeEvent<HTMLElement>) => void;
+    onClick?: (event: MouseEvent<HTMLElement>) => void;
+    onFocus?: (event: FocusEvent<HTMLElement>) => void;
+    onBlur?: (event: FocusEvent<HTMLElement>) => void;
 }
 
-declare const Slider: React.ComponentType<SliderProps>;
+declare const Slider: ComponentType<SliderProps>;
 export default Slider;

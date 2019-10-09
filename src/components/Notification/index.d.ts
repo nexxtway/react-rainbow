@@ -1,11 +1,12 @@
-import { BaseProps } from './../types';
+import { ReactNode, MouseEvent } from 'react';
+import { BaseProps } from '../types';
 
 export interface NotificationProps extends BaseProps {
-    // icon?: ;
-    title?: string | JSX.ElementChildrenAttribute;
-    description?: string | JSX.ElementChildrenAttribute;
+    icon?: ReactNode | 'info' | 'success' | 'warning' | 'error';
+    title?: ReactNode;
+    description?: ReactNode;
+    onRequestClose?: (event: MouseEvent<HTMLElement>) => void;
     hideCloseButton?: boolean;
-    // onRequestClose?: ;
 }
 
 export default function(props: NotificationProps): JSX.Element | null;

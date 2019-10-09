@@ -1,51 +1,60 @@
-import React, { Component } from 'react';
-import { BaseProps } from './../types';
+import {
+    ComponentType,
+    ReactNode,
+    ChangeEvent,
+    MouseEvent,
+    FocusEvent,
+    KeyboardEvent,
+} from 'react';
+import { BaseProps, IconPosition } from '../types';
+
+type InputType =
+    | 'text'
+    | 'password'
+    | 'datetime'
+    | 'datetime-local'
+    | 'date'
+    | 'month'
+    | 'time'
+    | 'week'
+    | 'number'
+    | 'email'
+    | 'url'
+    | 'search'
+    | 'tel'
+    | 'color'
+    | 'radio'
+    | 'checkbox';
 
 export interface InputProps extends BaseProps {
-    label: string | JSX.ElementChildrenAttribute;
     value?: string | boolean;
     name?: string;
-    type?:
-        | 'text'
-        | 'password'
-        | 'datetime'
-        | 'datetime-local'
-        | 'date'
-        | 'month'
-        | 'time'
-        | 'week'
-        | 'number'
-        | 'email'
-        | 'url'
-        | 'search'
-        | 'tel'
-        | 'color'
-        | 'radio'
-        | 'checkbox';
+    type?: InputType;
+    label: ReactNode;
     hideLabel?: boolean;
     placeholder?: string;
-    icon?: JSX.ElementChildrenAttribute;
-    iconPosition?: 'left' | 'right';
+    icon?: ReactNode;
+    iconPosition?: IconPosition;
     maxLength?: number;
     minLength?: number;
-    bottomHelpText?: string | JSX.ElementChildrenAttribute;
+    bottomHelpText?: ReactNode;
     required?: boolean;
     pattern?: string;
     isCentered?: boolean;
     isBare?: boolean;
-    error?: string | JSX.ElementChildrenAttribute;
+    error?: ReactNode;
     disabled?: boolean;
     readOnly?: boolean;
     tabIndex?: number | string;
-    // onChange?: ;
-    // onClick?: ;
-    // onFocus?: ;
-    // onBlur?: ;
-    // onKeyDown?: ;
+    onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+    onClick?: (event: MouseEvent<HTMLInputElement>) => void;
+    onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
+    onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
+    onKeyDown?: (event: KeyboardEvent<HTMLInputElement>) => void;
     checked?: boolean;
     id?: string;
     autoComplete?: string;
 }
 
-declare const Input: React.ComponentType<InputProps>;
+declare const Input: ComponentType<InputProps>;
 export default Input;

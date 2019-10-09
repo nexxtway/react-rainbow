@@ -1,8 +1,15 @@
-import React, { Component } from 'react';
-import { BaseProps } from './../types';
+import {
+    ComponentType,
+    ReactNode,
+    ChangeEvent,
+    MouseEvent,
+    FocusEvent,
+    ClipboardEvent,
+} from 'react';
+import { BaseProps } from '../types';
 
 export interface TextareaProps extends BaseProps {
-    label: string | JSX.ElementChildrenAttribute;
+    label: ReactNode;
     hideLabel?: boolean;
     name?: string;
     value?: string;
@@ -10,19 +17,19 @@ export interface TextareaProps extends BaseProps {
     maxLength?: number;
     minLength?: number;
     grow?: boolean;
-    bottomHelpText?: string | JSX.ElementChildrenAttribute;
+    bottomHelpText?: ReactNode;
     required?: boolean;
-    error?: string | JSX.ElementChildrenAttribute;
+    error?: ReactNode;
     disabled?: boolean;
     rows?: number;
     readOnly?: boolean;
+    onChange?: (event: ChangeEvent<HTMLTextAreaElement>) => void;
+    onClick?: (event: MouseEvent<HTMLTextAreaElement>) => void;
+    onFocus?: (event: FocusEvent<HTMLTextAreaElement>) => void;
+    onBlur?: (event: FocusEvent<HTMLTextAreaElement>) => void;
+    onPaste?: (event: ClipboardEvent<HTMLTextAreaElement>) => void;
     id?: string;
-    // onChange?: ;
-    // onClick?: ;
-    // onFocus?: ;
-    // onBlur?: ;
-    // onPaste?: ;
 }
 
-declare const Textarea: React.ComponentType<TextareaProps>;
+declare const Textarea: ComponentType<TextareaProps>;
 export default Textarea;

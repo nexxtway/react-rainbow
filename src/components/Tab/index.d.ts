@@ -1,7 +1,8 @@
-import { BaseProps } from './../types';
+import { ReactNode } from 'react';
+import { BaseProps } from '../types';
 
 export interface TabProps extends BaseProps {
-    label?: string | JSX.ElementChildrenAttribute;
+    label?: ReactNode;
     name: string;
     title?: string;
     disabled?: boolean;

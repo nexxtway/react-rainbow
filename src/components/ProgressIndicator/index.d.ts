@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
-import { BaseProps } from './../types';
+import { ReactNode, ComponentType, MouseEvent } from 'react';
+import { BaseProps } from '../types';
 
 export interface ProgressIndicatorProps extends BaseProps {
     currentStepName?: string;
-    // onClick?: ;
+    onClick?: (event: MouseEvent<HTMLElement>, name: string) => void;
+    children?: ReactNode;
 }
 
-declare const ProgressIndicator: React.ComponentType<ProgressIndicatorProps>;
+declare const ProgressIndicator: ComponentType<ProgressIndicatorProps>;
 export default ProgressIndicator;

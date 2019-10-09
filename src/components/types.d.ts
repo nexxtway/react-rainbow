@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export interface BaseProps {
     className?: string;
     style?: CSS.style;
@@ -16,3 +18,17 @@ export type ButtonIconVariant =
     | 'border-filled'
     | 'border-inverse'
     | 'inverse';
+
+export type IconPosition = 'left' | 'right';
+
+export interface LookupValue {
+    label?: string;
+    description?: ReactNode;
+    icon?: ReactNode;
+}
+
+export interface RadioOption {
+    label: ReactNode;
+    value?: string;
+    disabled?: boolean;
+}

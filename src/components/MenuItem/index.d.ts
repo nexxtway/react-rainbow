@@ -1,13 +1,14 @@
-import { BaseProps } from './../types';
+import { ReactNode, MouseEvent } from 'react';
+import { BaseProps, IconPosition } from '../types';
 
 export interface MenuItemProps extends BaseProps {
-    label: string | JSX.ElementChildrenAttribute;
+    label: ReactNode;
     variant?: 'default' | 'header';
-    icon?: JSX.ElementChildrenAttribute;
-    iconPosition?: 'left' | 'right';
+    icon?: ReactNode;
+    iconPosition?: IconPosition;
     disabled?: boolean;
+    onClick?: (event: MouseEvent<HTMLElement>) => void;
     title?: string;
-    // onClick?: ;
 }
 
 export default function(props: MenuItemProps): JSX.Element | null;

@@ -1,12 +1,13 @@
-import { BaseProps } from './../types';
+import { ReactNode, MouseEvent } from 'react';
+import { BaseProps } from '../types';
 
 export interface VerticalItemProps extends BaseProps {
-    label?: string | JSX.ElementChildrenAttribute;
+    label?: ReactNode;
     name: string;
-    icon?: JSX.ElementChildrenAttribute;
+    icon?: ReactNode;
     href?: string;
-    notification?: JSX.ElementChildrenAttribute;
-    // onClick?: ;
+    notification?: ReactNode;
+    onClick?: (event: MouseEvent<HTMLElement>) => void;
 }
 
 export default function(props: VerticalItemProps): JSX.Element | null;

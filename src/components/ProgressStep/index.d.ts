@@ -1,8 +1,9 @@
-import { BaseProps } from './../types';
+import { ReactNode } from 'react';
+import { BaseProps } from '../types';
 
 export interface ProgressStepProps extends BaseProps {
     name?: string;
-    label?: JSX.ElementChildrenAttribute;
+    label?: ReactNode;
     hasError?: boolean;
 }
 

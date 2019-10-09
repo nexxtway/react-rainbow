@@ -1,8 +1,9 @@
-import { BaseProps } from './../types';
+import { ReactNode } from 'react';
+import { BaseProps } from '../types';
 
 export interface VisualPickerOptionFooterProps extends BaseProps {
-    label?: string | JSX.ElementChildrenAttribute;
-    description?: string | JSX.ElementChildrenAttribute;
+    label?: ReactNode;
+    description?: ReactNode;
 }
 
 export default function(props: VisualPickerOptionFooterProps): JSX.Element | null;

@@ -1,4 +1,4 @@
-import { BaseProps } from './../types';
+import { BaseProps } from '../types';
 
 export interface SpinnerProps extends BaseProps {
     variant?: 'base' | 'brand' | 'inverse' | 'neutral';

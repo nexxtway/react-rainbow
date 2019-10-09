@@ -109,10 +109,10 @@ Input.propTypes = {
     disabled: PropTypes.bool,
     /** Specifies that an input field is read-only. This value defaults to false. */
     readOnly: PropTypes.bool,
-    /** The action triggered when a value attribute changes. */
-    onChange: PropTypes.func,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
     tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    /** The action triggered when a value attribute changes. */
+    onChange: PropTypes.func,
     /** The action triggered when the element is clicked. */
     onClick: PropTypes.func,
     /** The action triggered when the element receives focus. */

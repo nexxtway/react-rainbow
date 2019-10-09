@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
-import { BaseProps } from './../types';
+import { ComponentType } from 'react';
+import { TableProps } from '../Table';
 
-export interface TableWithBrowserPaginationProps extends BaseProps {
+export interface TableWithBrowserPaginationProps extends TableProps {
     paginationAlignment?: 'center' | 'left' | 'right';
     pageSize?: number;
-    data?: [];
 }
 
-declare const TableWithBrowserPagination: React.ComponentType<TableWithBrowserPaginationProps>;
+declare const TableWithBrowserPagination: ComponentType<TableWithBrowserPaginationProps>;
 export default TableWithBrowserPagination;

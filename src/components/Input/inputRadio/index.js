@@ -124,7 +124,7 @@ export default class InputRadio extends Component {
 }
 
 InputRadio.propTypes = {
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
     name: PropTypes.string,
     bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),

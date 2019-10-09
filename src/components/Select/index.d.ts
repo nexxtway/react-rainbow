@@ -1,18 +1,25 @@
-import { BaseProps } from './../types';
+import { ReactNode, ChangeEvent, MouseEvent, FocusEvent } from 'react';
+import { BaseProps } from '../types';
+
+export interface Option {
+    label: ReactNode;
+    value?: ReactNode;
+    disabled?: boolean;
+}
 
 export interface SelectProps extends BaseProps {
-    label: string | JSX.ElementChildrenAttribute;
+    label: ReactNode;
     name?: string;
     value?: string | number;
-    // onChange?: ;
-    // onClick?: ;
-    // onFocus?: ;
-    // onBlur?: ;
-    error?: string | JSX.ElementChildrenAttribute;
+    onChange?: (event: ChangeEvent<HTMLElement>) => void;
+    onClick?: (event: MouseEvent<HTMLElement>) => void;
+    onFocus?: (event: FocusEvent<HTMLElement>) => void;
+    onBlur?: (event: FocusEvent<HTMLElement>) => void;
+    error?: ReactNode;
     required?: boolean;
     disabled?: boolean;
-    // options?: ;
-    // id?: ;
+    options?: Option[];
+    id?: string;
     hideLabel?: boolean;
 }
 

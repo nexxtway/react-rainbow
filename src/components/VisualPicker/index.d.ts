@@ -1,15 +1,18 @@
-import React, { Component } from 'react';
-import { BaseProps } from './../types';
+import { ReactNode, ComponentType } from 'react';
+import { BaseProps } from '../types';
+
+type Value = string[] | string;
 
 export interface VisualPickerProps extends BaseProps {
-    label?: string | JSX.ElementChildrenAttribute;
     name?: string;
-    value?: string[] | string;
+    value?: Value;
     id?: string;
+    onChange?: (value: Value) => void;
     required?: boolean;
-    error?: string | JSX.ElementChildrenAttribute;
+    label?: ReactNode;
+    error?: ReactNode;
+    children?: ReactNode;
     multiple?: boolean;
-    // onChange?: ;
 }
 
 declare const VisualPicker: React.ComponentType<VisualPickerProps>;
