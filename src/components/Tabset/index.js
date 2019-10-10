@@ -285,7 +285,7 @@ export default class Tabset extends Component {
 
 Tabset.propTypes = {
     /** The name of the tab that is selected. It must match the name of the tab. */
-    activeTabName: PropTypes.node,
+    activeTabName: PropTypes.string,
     /** Action fired when an item is selected.
      * The event params include the `name` of the selected item. */
     onSelect: PropTypes.func,

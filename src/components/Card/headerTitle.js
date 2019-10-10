@@ -1,15 +1,16 @@
 /* eslint-disable no-script-url */
 import React from 'react';
 import PropTypes from 'prop-types';
-import './styles.css';
+import StyledHeaderLink from './styled/headerLink';
+import StyledTitle from './styled/title';
 
 export default function HeaderTitle({ title }) {
     if (typeof title === 'string') {
         return (
             <h2>
-                <a href="javascript:void(0);" className="rainbow-card_header-link">
-                    <span className="rainbow-card_title">{title}</span>
-                </a>
+                <StyledHeaderLink href="javascript:void(0);">
+                    <StyledTitle>{title}</StyledTitle>
+                </StyledHeaderLink>
             </h2>
         );
     }
