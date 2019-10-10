@@ -17,6 +17,7 @@ React Rainbow is a collection of components that will reliably help you build yo
  
 [![CircleCI](https://circleci.com/gh/nexxtway/react-rainbow/tree/master.svg?style=svg)](https://circleci.com/gh/nexxtway/react-rainbow/tree/master)
 [![npm version](https://badge.fury.io/js/react-rainbow-components.svg)](https://badge.fury.io/js/react-rainbow-components)
+[![components](https://img.shields.io/bit/collection/total-components/nexxtway/react-rainbow?color=%236c5ce7)](https://bit.dev/nexxtway/react-rainbow?namespaces=__global__)
 [![Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io/)
 [![Known Vulnerabilities](https://snyk.io/test/github/nexxtway/react-rainbow/badge.svg)](https://snyk.io/test/github/nexxtway/react-rainbow)
 [![Coverage Status](https://coveralls.io/repos/github/nexxtway/react-rainbow/badge.svg?branch=master)](https://coveralls.io/github/nexxtway/react-rainbow?branch=master)
@@ -81,6 +82,22 @@ ReactDOM.render(<App />, document.getElementById('container'));
 Yes, it's really all you need to get started as you can see in this live and interactive demo:
 
 [![Edit Button](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/24p8n0pnz0?from-embed)
+
+You can also use individual component from [bit](https://bit.dev/nexxtway/react-rainbow):
+
+```js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Button from '@bit/nexxtway.react-rainbow.button';
+
+function App() {
+    return <Button label="Hello World!" variant="brand" onClick={() => alert('Hello World!')} />;
+}
+
+ReactDOM.render(<App />, document.getElementById('container'));
+```
+
+<a href="https://bit.dev/nexxtway/react-rainbow?namespaces=__global__" target="_blank"><img width="200" height="39" src="https://i.imagesup.co/images2/4a64f008951cd66e56d4f1e0141a27df584a1e94.png"></a>
 
 <br/>
 

@@ -51,7 +51,7 @@ class CheckboxGroup extends Component {
             return onChange(values.concat([value]));
         }
         if (checked && !Array.isArray(values)) {
-            return onChange([].concat([value]));
+            return onChange([value]);
         }
         return onChange(values.filter(valueId => valueId !== value));
     }
@@ -92,7 +92,7 @@ CheckboxGroup.propTypes = {
     /** An Array of checkbox options with label, value and disabled for each checkbox. */
     options: PropTypes.arrayOf(
         PropTypes.shape({
-            label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+            label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
             value: PropTypes.string,
             disabled: PropTypes.bool,
         }),
@@ -108,7 +108,7 @@ CheckboxGroup.propTypes = {
     required: PropTypes.bool,
     /** Specifies that an input field must be filled out before submitting the form. */
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** Text label for the checkbox group. */
+    /** The action triggered when a value attribute changes. */
     onChange: PropTypes.func,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,

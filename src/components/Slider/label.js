@@ -18,11 +18,13 @@ export default function Label(props) {
 }
 
 Label.propTypes = {
-    label: PropTypes.node.isRequired,
-    sliderId: PropTypes.string.isRequired,
+    label: PropTypes.node,
+    sliderId: PropTypes.string,
     hideLabel: PropTypes.bool,
 };
 
 Label.defaultProps = {
+    label: undefined,
+    sliderId: undefined,
     hideLabel: false,
 };

@@ -17,6 +17,7 @@ export default function AvatarMenu(props) {
         assistiveText,
         disabled,
         tabIndex,
+        onClick,
         onFocus,
         onBlur,
         children,
@@ -35,7 +36,7 @@ export default function AvatarMenu(props) {
             initialsVariant={initialsVariant}
             title={title}
             assistiveText={assistiveText}
-            ariaHaspopup
+            onClick={onClick}
             onFocus={onFocus}
             onBlur={onBlur}
             trigger={AvatarButton}
@@ -84,17 +85,23 @@ AvatarMenu.propTypes = {
     title: PropTypes.string,
     /** A description for assistive sreen readers. */
     assistiveText: PropTypes.string,
+    /** Specifies the tab order of an element (when the tab button is used for navigating). */
+    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    /** If true, the menu is disabled. Disabling the menu prevents users from opening it.
+     * This value defaults to false. */
+    disabled: PropTypes.bool,
+    /** The action triggered when the element is clicked. */
+    onClick: PropTypes.func,
+    /** The action triggered when the element receives focus. */
+    onFocus: PropTypes.func,
+    /** The action triggered when the element releases focus. */
+    onBlur: PropTypes.func,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
     /** The id of the outer element. */
     id: PropTypes.string,
-    /** Specifies the tab order of an element (when the tab button is used for navigating). */
-    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    /** If true, the menu is disabled. Disabling the menu prevents users from opening it.
-     * This value defaults to false. */
-    disabled: PropTypes.bool,
 };
 
 AvatarMenu.defaultProps = {
@@ -114,4 +121,7 @@ AvatarMenu.defaultProps = {
     id: undefined,
     disabled: false,
     tabIndex: undefined,
+    onClick: () => {},
+    onFocus: () => {},
+    onBlur: () => {},
 };
