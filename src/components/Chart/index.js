@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import ChartJS from 'chart.js';
 import resolveOptions from './resolveOptions';
 import resolveDatasets from './resolveDatasets';
-import './styles.css';
+import StyledContainer from './styled/container';
 
 /**
  * The Chart components are based on Charts.js an open source HTML5 based charting library.
@@ -28,11 +27,6 @@ export default class Chart extends Component {
         const { children } = this.props;
         this.datasets = resolveDatasets(children);
         this.updateChart();
-    }
-
-    getContainerClassNames() {
-        const { className } = this.props;
-        return classnames('rainbow-chart', className);
     }
 
     updateChart() {
@@ -60,12 +54,12 @@ export default class Chart extends Component {
     }
 
     render() {
-        const { style } = this.props;
+        const { style, className } = this.props;
 
         return (
-            <div className={this.getContainerClassNames()} style={style}>
+            <StyledContainer className={className} style={style}>
                 <canvas ref={this.chartRef} />
-            </div>
+            </StyledContainer>
         );
     }
 }
