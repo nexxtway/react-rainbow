@@ -45,7 +45,7 @@ export default function VerticalNavigation(props) {
 
 VerticalNavigation.propTypes = {
     /** Name of the nagivation item to make active. */
-    selectedItem: PropTypes.node,
+    selectedItem: PropTypes.string,
     /** Action fired when an item is selected.
      * The event params include the `name` of the selected item. */
     onSelect: PropTypes.func,
