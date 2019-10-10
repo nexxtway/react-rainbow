@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/label-has-for */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import withReduxForm from './../../libs/hocs/withReduxForm';
 import { uniqueId } from '../../libs/utils';
 import RenderIf from '../RenderIf';
-import './styles.css';
+import StyledLabelContainer from './styled/labelContainer';
+import StyledLabel from './styled/label';
 
 /**
  * Checkbox toggle is a checkable input that communicates if an option is true,
@@ -17,11 +17,6 @@ class CheckboxToggle extends Component {
         super(props);
         this.checkboxToggleRef = React.createRef();
         this.inputIndentifier = props.name || uniqueId('checkbox-toggle');
-    }
-
-    getClassNames() {
-        const { className } = this.props;
-        return classnames('rainbow-checkbox-toggle', className);
     }
 
     /**
@@ -51,6 +46,7 @@ class CheckboxToggle extends Component {
     render() {
         const {
             style,
+            className,
             disabled,
             label,
             value,
@@ -62,7 +58,7 @@ class CheckboxToggle extends Component {
         } = this.props;
 
         return (
-            <label id={id} className={this.getClassNames()} style={style}>
+            <StyledLabelContainer id={id} className={className} style={style}>
                 <input
                     type="checkbox"
                     name={this.inputIndentifier}
@@ -85,9 +81,9 @@ class CheckboxToggle extends Component {
                     <span className="rainbow-checkbox-toggle_faux" />
                 </span>
                 <RenderIf isTrue={!!label}>
-                    <span className="rainbow-checkbox-toggle_label">{label}</span>
+                    <StyledLabel>{label}</StyledLabel>
                 </RenderIf>
-            </label>
+            </StyledLabelContainer>
         );
     }
 }
