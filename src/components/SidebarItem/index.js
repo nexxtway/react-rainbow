@@ -53,11 +53,11 @@ function SidebarItem(props) {
 
 SidebarItem.propTypes = {
     /** A unique identifier for the navigation item. */
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
     /** The text to show if it is passed. The text displayed for the SidebarItem. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The icon displayed for the SidebarItem. It must be a svg icon or a font icon. */
-    icon: PropTypes.node.isRequired,
+    icon: PropTypes.node,
     /** The URL of the page that the navigation item goes to. */
     href: PropTypes.string,
     /** Event fired when the item is clicked. */
@@ -69,7 +69,9 @@ SidebarItem.propTypes = {
 };
 
 SidebarItem.defaultProps = {
-    label: '',
+    name: undefined,
+    label: undefined,
+    icon: null,
     href: 'javascript:void(0);',
     onClick: () => {},
     className: undefined,

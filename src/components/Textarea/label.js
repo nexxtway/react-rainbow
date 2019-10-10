@@ -20,15 +20,18 @@ export default function Label(props) {
 }
 
 Label.propTypes = {
-    label: PropTypes.node.isRequired,
-    required: PropTypes.bool.isRequired,
-    textareaId: PropTypes.string.isRequired,
+    label: PropTypes.node,
+    required: PropTypes.bool,
+    textareaId: PropTypes.string,
     id: PropTypes.string,
     readOnly: PropTypes.bool,
     hideLabel: PropTypes.bool,
 };
 
 Label.defaultProps = {
+    label: undefined,
+    required: false,
+    textareaId: undefined,
     id: undefined,
     readOnly: false,
     hideLabel: false,

@@ -32,6 +32,7 @@ class Picklist extends Component {
         super(props);
         this.inputId = uniqueId('picklist-input');
         this.errorMessageId = uniqueId('error-message');
+        this.listboxId = uniqueId('listbox');
         this.containerRef = React.createRef();
         this.triggerRef = React.createRef();
         this.menuRef = React.createRef();
@@ -361,8 +362,6 @@ class Picklist extends Component {
             hideLabel,
             style,
             error,
-            title,
-            assistiveText,
             isLoading,
             disabled,
             readOnly,
@@ -374,7 +373,6 @@ class Picklist extends Component {
             name,
             value: valueInProps,
         } = this.props;
-        const ariaLabel = title || assistiveText;
         const { label: valueLabel, icon } = getNormalizeValue(valueInProps);
         const value = valueLabel || '';
         const errorMessageId = this.getErrorMessageId();
@@ -383,7 +381,7 @@ class Picklist extends Component {
             maxHeight: this.getMenuMaxHeight(),
         };
 
-        const { showScrollUpArrow, showScrollDownArrow } = this.state;
+        const { showScrollUpArrow, showScrollDownArrow, isOpen } = this.state;
         return (
             <div
                 id={id}
@@ -403,7 +401,13 @@ class Picklist extends Component {
                     />
                 </RenderIf>
 
-                <div className="rainbow-picklist_inner-container">
+                <div
+                    className="rainbow-picklist_inner-container"
+                    aria-expanded={isOpen}
+                    aria-haspopup="listbox"
+                    // eslint-disable-next-line jsx-a11y/role-has-required-aria-props
+                    role="combobox"
+                >
                     <RenderIf isTrue={!!icon}>
                         <span className="rainbow-picklist_icon">{icon}</span>
                     </RenderIf>
@@ -411,6 +415,7 @@ class Picklist extends Component {
                         <span className={this.getIndicatorClassNames()} />
                     </RenderIf>
                     <input
+                        aria-controls={this.listboxId}
                         className={this.getInputClassNames()}
                         id={this.inputId}
                         type="text"
@@ -428,7 +433,11 @@ class Picklist extends Component {
                         autoComplete="off"
                         ref={this.triggerRef}
                     />
-                    <div role="listbox" className={this.getDropdownClassNames()}>
+                    <div
+                        id={this.listboxId}
+                        role="listbox"
+                        className={this.getDropdownClassNames()}
+                    >
                         <RenderIf isTrue={showScrollUpArrow}>
                             <MenuArrowButton
                                 arrow="up"
@@ -439,7 +448,6 @@ class Picklist extends Component {
                         <ul
                             role="presentation"
                             onScroll={this.updateScrollingArrows}
-                            aria-label={ariaLabel}
                             ref={this.menuRef}
                             style={menuContainerStyles}
                         >
@@ -468,7 +476,7 @@ class Picklist extends Component {
 
 Picklist.propTypes = {
     /** Text label for the PickList. */
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** A boolean to hide the PickList label. */
     hideLabel: PropTypes.bool,
     /** The content of the Picklist. Used to render the options
@@ -476,12 +484,16 @@ Picklist.propTypes = {
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
     /** If is set to true, then is showed a loading symbol. */
     isLoading: PropTypes.bool,
-    /** Displays tooltip text when the mouse moves over the element. */
-    title: PropTypes.string,
-    /** A description for assistive sreen readers. */
-    assistiveText: PropTypes.string,
     /** Specifies the selected value of the Picklist. */
-    value: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+    value: PropTypes.oneOfType([
+        PropTypes.shape({
+            label: PropTypes.string,
+            name: PropTypes.string,
+            icon: PropTypes.node,
+            value: PropTypes.any,
+        }),
+        PropTypes.string,
+    ]),
     /**  The action triggered when click/select an option. */
     onChange: PropTypes.func,
     /** The action triggered when the element is clicked. */
@@ -491,7 +503,7 @@ Picklist.propTypes = {
     /** The action triggered when the element releases focus. */
     onBlur: PropTypes.func,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
-    tabIndex: PropTypes.string,
+    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
     placeholder: PropTypes.string,
     /** The name of the Picklist. */
@@ -514,10 +526,9 @@ Picklist.propTypes = {
 };
 
 Picklist.defaultProps = {
+    label: undefined,
     children: null,
     isLoading: false,
-    title: undefined,
-    assistiveText: undefined,
     value: undefined,
     onChange: () => {},
     onClick: () => {},

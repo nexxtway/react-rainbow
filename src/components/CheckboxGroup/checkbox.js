@@ -45,8 +45,8 @@ export default class Checkbox extends Component {
 }
 
 Checkbox.propTypes = {
-    value: PropTypes.string.isRequired,
-    label: PropTypes.node.isRequired,
+    value: PropTypes.string,
+    label: PropTypes.node,
     disabled: PropTypes.bool,
     isSelected: PropTypes.bool,
     onChange: PropTypes.func,
@@ -55,6 +55,8 @@ Checkbox.propTypes = {
 };
 
 Checkbox.defaultProps = {
+    value: undefined,
+    label: undefined,
     disabled: false,
     isSelected: false,
     onChange: () => {},

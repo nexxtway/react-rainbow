@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import Content from './content';
-import './styles.css';
+import StyledButton from './styled/button';
 
 /**
  * Buttons are clickable items used to perform an action.
@@ -11,34 +10,6 @@ export default class Button extends Component {
     constructor(props) {
         super(props);
         this.buttonRef = React.createRef();
-    }
-
-    getVariantClassNames() {
-        const { variant } = this.props;
-        if (variant === 'base') {
-            return null;
-        }
-        return `rainbow-button--${variant}`;
-    }
-
-    getClassNames() {
-        const { className, shaded, variant, isLoading } = this.props;
-        const isShaded =
-            shaded &&
-            (variant === 'neutral' ||
-                variant === 'brand' ||
-                variant === 'destructive' ||
-                variant === 'success');
-
-        return classnames(
-            'rainbow-button',
-            this.getVariantClassNames(),
-            {
-                'rainbow-button--shaded': isShaded,
-                'rainbow-button--loading': isLoading && variant !== 'base',
-            },
-            className,
-        );
     }
 
     isDisabled() {
@@ -85,19 +56,24 @@ export default class Button extends Component {
             id,
             isLoading,
             variant,
+            shaded,
             ariaPressed,
             ariaControls,
             ariaExpanded,
             onKeyDown,
             form,
+            className,
         } = this.props;
 
         return (
-            <button
+            <StyledButton
                 data-id="button-element"
                 id={id}
-                className={this.getClassNames()}
+                className={className}
                 style={style}
+                variant={variant}
+                isLoading={isLoading}
+                shaded={shaded}
                 disabled={this.isDisabled()}
                 tabIndex={tabIndex}
                 onFocus={onFocus}
@@ -116,7 +92,7 @@ export default class Button extends Component {
                 <Content variant={variant} label={label} isLoading={isLoading}>
                     {children}
                 </Content>
-            </button>
+            </StyledButton>
         );
     }
 }

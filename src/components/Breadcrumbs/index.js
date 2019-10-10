@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './styles.css';
+import StyledOrderList from './styled/orderList';
 
 /**
  * Breadcrumbs are used to note the path of a record and help
@@ -12,7 +12,7 @@ export default function Breadcrumbs(props) {
 
     return (
         <nav aria-label="Breadcrumbs" style={style} className={className}>
-            <ol className="rainbow-breadcrumbs">{children}</ol>
+            <StyledOrderList>{children}</StyledOrderList>
         </nav>
     );
 }
