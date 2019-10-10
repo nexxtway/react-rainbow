@@ -491,7 +491,7 @@ class Picklist extends Component {
 
 Picklist.propTypes = {
     /** Text label for the PickList. */
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** A boolean to hide the PickList label. */
     hideLabel: PropTypes.bool,
     /** The content of the Picklist. Used to render the options
@@ -500,7 +500,15 @@ Picklist.propTypes = {
     /** If is set to true, then is showed a loading symbol. */
     isLoading: PropTypes.bool,
     /** Specifies the selected value of the Picklist. */
-    value: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+    value: PropTypes.oneOfType([
+        PropTypes.shape({
+            label: PropTypes.string,
+            name: PropTypes.string,
+            icon: PropTypes.node,
+            value: PropTypes.any,
+        }),
+        PropTypes.string,
+    ]),
     /**  The action triggered when click/select an option. */
     onChange: PropTypes.func,
     /** The action triggered when the element is clicked. */
@@ -510,7 +518,7 @@ Picklist.propTypes = {
     /** The action triggered when the element releases focus. */
     onBlur: PropTypes.func,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
-    tabIndex: PropTypes.string,
+    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
     placeholder: PropTypes.string,
     /** The name of the Picklist. */
@@ -533,6 +541,7 @@ Picklist.propTypes = {
 };
 
 Picklist.defaultProps = {
+    label: undefined,
     children: null,
     isLoading: false,
     value: undefined,

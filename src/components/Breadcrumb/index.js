@@ -1,8 +1,7 @@
 /* eslint-disable no-script-url */
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import './styles.css';
+import StyledAnchor from './styled/anchor';
 
 /**
  * An item in the hierarchy path of the page the user is on.
@@ -11,26 +10,23 @@ import './styles.css';
 export default function Breadcrumb(props) {
     const { href, label, onClick, disabled, className, style } = props;
 
-    const getClassNames = () =>
-        classnames('rainbow-breadcrumb', { 'rainbow-breadcrumb--disabled': disabled }, className);
-
     return (
-        <li className={getClassNames()} style={style}>
-            <a
-                className="rainbow-breadcrumb-anchor"
+        <li className={className} style={style}>
+            <StyledAnchor
+                disabled={disabled}
                 href={href}
                 onClick={onClick}
                 aria-disabled={!!disabled}
             >
                 {label}
-            </a>
+            </StyledAnchor>
         </li>
     );
 }
 
 Breadcrumb.propTypes = {
     /** The text label for the breadcrumb. */
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The URL of the page that the breadcrumb goes to. */
     href: PropTypes.string,
     /** The action triggered when the breadcrumb is clicked. */
@@ -44,6 +40,7 @@ Breadcrumb.propTypes = {
 };
 
 Breadcrumb.defaultProps = {
+    label: undefined,
     href: 'javascript:void(0);',
     onClick: () => {},
     disabled: false,

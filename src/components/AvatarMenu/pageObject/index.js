@@ -40,7 +40,7 @@ class PageButtonMenu {
      */
     click() {
         $(this.rootElement)
-            .$('button.rainbow-avatar-menu_button')
+            .$('button[data-id="rainbow-avatar-menu_button"]')
             .click();
     }
 

@@ -1,7 +1,8 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Accordion from './../index';
-import AccordionSection from './../../AccordionSection';
+import AccordionSection from '../../AccordionSection';
+import StyledContent from '../../AccordionSection/styled/content';
 
 describe('<Accordion />', () => {
     it('should set the right "state" when onToggleSection is passed and it is not a function', () => {
@@ -184,7 +185,7 @@ describe('<Accordion />', () => {
                 </AccordionSection>
             </Accordion>,
         );
-        const contentContainer = component.find('div.rainbow-accordion-section_content');
+        const contentContainer = component.find(StyledContent);
 
         expect(contentContainer.prop('aria-hidden')).toBe(false);
     });
