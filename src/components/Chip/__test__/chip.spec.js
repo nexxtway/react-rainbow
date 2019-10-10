@@ -3,19 +3,6 @@ import { mount } from 'enzyme';
 import Chip from '..';
 
 describe('<Chip/>', () => {
-    it('should have the right class names when variant base is passed', () => {
-        const component = mount(<Chip variat="base" />);
-        expect(component.find('span[className="rainbow-chip"]').exists()).toBe(true);
-    });
-    it('should have the right class names when variant passed is other than base', () => {
-        const variants = ['brand', 'neutral', 'outline-brand'];
-        variants.forEach(variant => {
-            const component = mount(<Chip variant={variant} />);
-            expect(
-                component.find(`span[className="rainbow-chip rainbow-chip--${variant}"]`).exists(),
-            ).toBe(true);
-        });
-    });
     it('should set the label passed', () => {
         const component = mount(<Chip label="testing Chip" />);
         expect(component.text()).toBe('testing Chip');
