@@ -1,7 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import DateTimePickerModal from '../pickerModal';
-// import extractDate from '../helpers/extractDate';
 
 const value = new Date('06/01/2019 20:48:34');
 jest.mock('../helpers/extractDate', () => jest.fn(() => '10/24/2019'));
@@ -24,8 +23,9 @@ describe('<DateTimePickerModal/>', () => {
         const component = mount(<DateTimePickerModal isOpen />);
         component
             .find('Calendar')
-            .find('button[className="rainbow-calendar_day-button"]')
+            .find('td')
             .at(5)
+            .find('button')
             .simulate('click');
         expect(component.find('TimeSelect').props().value).toBe('12:00 AM');
     });
@@ -34,8 +34,9 @@ describe('<DateTimePickerModal/>', () => {
         const component = mount(<DateTimePickerModal isOpen onChange={onChangeMockFn} />);
         component
             .find('Calendar')
-            .find('button[className="rainbow-calendar_day-button"]')
+            .find('td')
             .at(5)
+            .find('button')
             .simulate('click');
         component
             .find('TimeSelect')

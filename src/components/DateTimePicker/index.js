@@ -87,15 +87,13 @@ function PickerComponent(props, ref) {
         onChange(...args);
     };
 
-    const icon = readOnly ? null : <DateTimeIcon />;
-
     return (
         <StyledContainer id={id} className={className} style={style}>
             <Input
                 ref={inputRef}
                 label={label}
                 placeholder={placeholder}
-                icon={icon}
+                icon={<DateTimeIcon />}
                 iconPosition="right"
                 required={required}
                 value={formattedDatetime}
