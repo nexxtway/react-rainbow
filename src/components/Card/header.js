@@ -2,22 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import HeaderTitle from './headerTitle';
 import RenderIf from '../RenderIf';
-import './styles.css';
+import StyledHeaderContainer from './styled/headerContainer';
+import StyledHeader from './styled/header';
+import StyledIcon from './styled/icon';
 
 export default function Header({ icon, title, actions }) {
     return (
         <RenderIf isTrue={!!(icon || title || actions)}>
-            <div className="rainbow-card_header-container">
-                <header className="rainbow-card_header">
+            <StyledHeaderContainer>
+                <StyledHeader>
                     <RenderIf isTrue={!!icon}>
-                        <div className="rainbow-card_header-icon">{icon}</div>
+                        <StyledIcon>{icon}</StyledIcon>
                     </RenderIf>
                     <HeaderTitle title={title} />
-                </header>
+                </StyledHeader>
                 <RenderIf isTrue={!!actions}>
                     <div>{actions}</div>
                 </RenderIf>
-            </div>
+            </StyledHeaderContainer>
         </RenderIf>
     );
 }
