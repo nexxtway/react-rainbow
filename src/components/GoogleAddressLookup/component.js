@@ -218,7 +218,7 @@ PlacesLookupComponent.propTypes = {
     isScriptLoaded: PropTypes.bool.isRequired,
     isScriptLoadSucceed: PropTypes.bool.isRequired,
     searchOptions: CustomPropTypes.searchOptionsShape,
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     hideLabel: PropTypes.bool,
     readOnly: PropTypes.bool,
     value: PropTypes.oneOfType([
@@ -252,7 +252,7 @@ PlacesLookupComponent.defaultProps = {
     disabled: false,
     onChange: () => {},
     onClick: () => {},
-    onFocus: () => {},
+    // onFocus: () => {},
     onBlur: () => {},
     tabIndex: undefined,
     label: undefined,

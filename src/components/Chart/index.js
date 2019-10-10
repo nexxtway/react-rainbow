@@ -81,9 +81,9 @@ Chart.propTypes = {
         'doughnut',
         'polarArea',
         'bubble',
-    ]).isRequired,
+    ]),
     /** Defines the names of the sections for the corresponding values. */
-    labels: PropTypes.arrayOf(PropTypes.string).isRequired,
+    labels: PropTypes.arrayOf(PropTypes.string),
     /** Determines whether to show the stacked bars in a bar chart. */
     showStacked: PropTypes.bool,
     /** Defines if the legend is shown. */
@@ -114,6 +114,8 @@ Chart.propTypes = {
 };
 
 Chart.defaultProps = {
+    type: 'bar',
+    labels: [],
     showStacked: false,
     showLegend: true,
     legendPosition: 'bottom',

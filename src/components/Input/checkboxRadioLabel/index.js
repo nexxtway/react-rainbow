@@ -24,14 +24,17 @@ export default function Label(props) {
 }
 
 Label.propTypes = {
-    label: PropTypes.node.isRequired,
-    inputId: PropTypes.string.isRequired,
-    disabled: PropTypes.bool.isRequired,
+    label: PropTypes.node,
+    inputId: PropTypes.string,
+    disabled: PropTypes.bool,
     hideLabel: PropTypes.bool,
     id: PropTypes.string,
 };
 
 Label.defaultProps = {
+    label: undefined,
+    inputId: undefined,
+    disabled: false,
     hideLabel: false,
     id: undefined,
 };

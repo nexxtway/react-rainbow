@@ -109,7 +109,7 @@ Tab.propTypes = {
     label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
     /** The name is used during tabset's onSelect
      * event to determine which tab was clicked. */
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
     /** Displays tooltip text when the mouse moves over the element. */
     title: PropTypes.string,
     /** Specifies whether this tab should be displayed in a disabled state.
