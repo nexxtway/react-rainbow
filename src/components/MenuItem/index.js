@@ -123,7 +123,7 @@ export default function MenuItem(props) {
 
 MenuItem.propTypes = {
     /** Text of the menu item. */
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The variant changes the type of menu item. Accepted variants include default and header.
      * This value defaults to default. */
     variant: PropTypes.oneOf(['default', 'header']),

@@ -77,7 +77,7 @@ Input.propTypes = {
         'checkbox',
     ]),
     /** Text label for the input. */
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** A boolean to hide the input label. */
     hideLabel: PropTypes.bool,
     /** Text that is displayed when the field is empty, to prompt the user for a valid entry. */
@@ -109,10 +109,10 @@ Input.propTypes = {
     disabled: PropTypes.bool,
     /** Specifies that an input field is read-only. This value defaults to false. */
     readOnly: PropTypes.bool,
-    /** The action triggered when a value attribute changes. */
-    onChange: PropTypes.func,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
     tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    /** The action triggered when a value attribute changes. */
+    onChange: PropTypes.func,
     /** The action triggered when the element is clicked. */
     onClick: PropTypes.func,
     /** The action triggered when the element receives focus. */
@@ -162,6 +162,7 @@ Input.defaultProps = {
     style: undefined,
     id: undefined,
     autoComplete: 'on',
+    label: undefined,
     hideLabel: false,
 };
 
