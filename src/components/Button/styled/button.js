@@ -82,7 +82,7 @@ const StyledButton = styled.button`
             }
 
             &[disabled] {
-                background-color: ${props.isLoading ? 'COLOR_WHITE' : 'transparent'};
+                background-color: ${props.isLoading ? COLOR_WHITE : 'transparent'};
             }
         `};
     ${props =>
@@ -107,8 +107,8 @@ const StyledButton = styled.button`
             }
         
             &[disabled] {
-                background-color: ${props.isLoading ? 'COLOR_BRAND' : COLOR_GRAY_1};
-                border-color: ${props.isLoading ? 'COLOR_BRAND' : COLOR_GRAY_1};
+                background-color: ${props.isLoading ? COLOR_BRAND : COLOR_GRAY_1};
+                border-color: ${props.isLoading ? COLOR_BRAND : COLOR_GRAY_1};
                 color: ${COLOR_GRAY_2};
             }
         `};
@@ -127,7 +127,7 @@ const StyledButton = styled.button`
         
             &[disabled] {
                 background-color: transparent;
-                border-color: ${props.isLoading ? 'COLOR_BRAND' : COLOR_GRAY_2};
+                border-color: ${props.isLoading ? COLOR_BRAND : COLOR_GRAY_2};
                 
             }
         `};
@@ -174,7 +174,7 @@ const StyledButton = styled.button`
         
             &[disabled] {
                 background-color: transparent;
-                border-color: ${props.isLoading ? 'COLOR_WHITE' : COLOR_GRAY_4};
+                border-color: ${props.isLoading ? COLOR_WHITE : COLOR_GRAY_4};
                 color: ${COLOR_GRAY_4};
             }
         `};
@@ -203,8 +203,8 @@ const StyledButton = styled.button`
             }
         
             &[disabled] {
-                background-color: ${props.isLoading ? 'COLOR_ERROR' : COLOR_GRAY_1};
-                border-color: ${props.isLoading ? 'COLOR_ERROR' : COLOR_GRAY_1};
+                background-color: ${props.isLoading ? COLOR_ERROR : COLOR_GRAY_1};
+                border-color: ${props.isLoading ? COLOR_ERROR : COLOR_GRAY_1};
                 color: ${COLOR_GRAY_2};
             }
         `};
@@ -231,16 +231,12 @@ const StyledButton = styled.button`
             }
         
             &[disabled] {
-                background-color: ${props.isLoading ? 'COLOR_SUCCESS' : COLOR_GRAY_1};
-                border-color: ${props.isLoading ? 'COLOR_SUCCESS' : COLOR_GRAY_1};
+                background-color: ${props.isLoading ? COLOR_SUCCESS : COLOR_GRAY_1};
+                border-color: ${props.isLoading ? COLOR_SUCCESS : COLOR_GRAY_1};
                 color: ${COLOR_GRAY_2};
             }
         `};
-    ${props =>
-        props.shaded &&
-        `
-            box-shadow: ${SHADOW_1};
-        `};
+    ${props => props.shaded && `box-shadow: ${SHADOW_1};`};
 `;
 
 export default StyledButton;
