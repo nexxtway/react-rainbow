@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import CloseIcon from './closeIcon';
 import ButtonIcon from './../ButtonIcon';
 import RenderIf from '../RenderIf';
-import './styles.css';
+import StyledContainer from './styled/container';
+import TruncatedText from '../Structural/truncatedText';
 
 /**
  * A Chip displays a label that can be removed from view.
@@ -12,19 +12,9 @@ import './styles.css';
 export default function Chip(props) {
     const { label, onDelete, variant, title, className, style } = props;
 
-    const getVariantClassNames = () => {
-        if (variant === 'base') {
-            return null;
-        }
-        return `rainbow-chip--${variant}`;
-    };
-
-    const getContainerClassName = () =>
-        classnames('rainbow-chip', getVariantClassNames(), className);
-
     return (
-        <span className={getContainerClassName()} style={style} title={title}>
-            <span className="rainbow-chip_content--truncate">{label}</span>
+        <StyledContainer className={className} style={style} variant={variant} title={title}>
+            <TruncatedText>{label}</TruncatedText>
             <RenderIf isTrue={!!onDelete}>
                 <ButtonIcon
                     className="rainbow-chip_button-container"
@@ -35,7 +25,7 @@ export default function Chip(props) {
                     assistiveText="Remove"
                 />
             </RenderIf>
-        </span>
+        </StyledContainer>
     );
 }
 
