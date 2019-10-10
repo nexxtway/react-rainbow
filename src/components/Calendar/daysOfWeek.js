@@ -1,30 +1,31 @@
 import React from 'react';
+import StyledHeaderDays from './styled/headerDays';
 
 export default function DayOfWeek() {
     return (
         <thead>
             <tr>
-                <th scope="col" className="rainbow-calendar_header-days">
+                <StyledHeaderDays scope="col">
                     <abbr title="Sunday">Sun</abbr>
-                </th>
-                <th scope="col" className="rainbow-calendar_header-days">
+                </StyledHeaderDays>
+                <StyledHeaderDays scope="col">
                     <abbr title="Monday">Mon</abbr>
-                </th>
-                <th scope="col" className="rainbow-calendar_header-days">
+                </StyledHeaderDays>
+                <StyledHeaderDays scope="col">
                     <abbr title="Tuesday">Tue</abbr>
-                </th>
-                <th scope="col" className="rainbow-calendar_header-days">
+                </StyledHeaderDays>
+                <StyledHeaderDays scope="col">
                     <abbr title="Wednesday">Wed</abbr>
-                </th>
-                <th scope="col" className="rainbow-calendar_header-days">
+                </StyledHeaderDays>
+                <StyledHeaderDays scope="col">
                     <abbr title="Thursday">Thu</abbr>
-                </th>
-                <th scope="col" className="rainbow-calendar_header-days">
+                </StyledHeaderDays>
+                <StyledHeaderDays scope="col">
                     <abbr title="Friday">Fri</abbr>
-                </th>
-                <th scope="col" className="rainbow-calendar_header-days">
+                </StyledHeaderDays>
+                <StyledHeaderDays scope="col">
                     <abbr title="Saturday">Sat</abbr>
-                </th>
+                </StyledHeaderDays>
             </tr>
         </thead>
     );

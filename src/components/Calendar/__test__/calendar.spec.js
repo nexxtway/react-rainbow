@@ -71,28 +71,4 @@ describe('Calendar', () => {
             }),
         );
     });
-    it('should render a day selected when value passed is a date', () => {
-        const value = new Date('04/24/2019');
-        const component = mount(<Calendar value={value} />);
-        expect(
-            component
-                .find(
-                    'button[className="rainbow-calendar_day-button rainbow-calendar_day-button--selected"]',
-                )
-                .exists(),
-        ).toBe(true);
-    });
-    it('should not render a day selected when pass falsy values', () => {
-        const values = ['', undefined, null, 0];
-        values.forEach(value => {
-            const component = mount(<Calendar value={value} />);
-            expect(
-                component
-                    .find(
-                        'button[className="rainbow-calendar_day-button rainbow-calendar_day-button--selected"]',
-                    )
-                    .exists(),
-            ).toBe(false);
-        });
-    });
 });
