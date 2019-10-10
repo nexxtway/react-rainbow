@@ -4,12 +4,7 @@ import classnames from 'classnames';
 import RequiredAsterisk from '../RequiredAsterisk';
 
 export default function Label(props) {
-    const {
-        label,
-        required,
-        inputId,
-        id,
-    } = props;
+    const { label, required, inputId, id } = props;
 
     const getLabelClassNames = () => {
         const { readOnly, hideLabel } = props;
@@ -20,12 +15,7 @@ export default function Label(props) {
     };
 
     return (
-        <label
-            className={getLabelClassNames()}
-            htmlFor={inputId}
-            id={id}
-        >
-
+        <label className={getLabelClassNames()} htmlFor={inputId} id={id}>
             <RequiredAsterisk required={required} />
             {label}
         </label>
@@ -33,15 +23,19 @@ export default function Label(props) {
 }
 
 Label.propTypes = {
-    label: PropTypes.node.isRequired,
-    required: PropTypes.bool.isRequired,
-    inputId: PropTypes.string.isRequired,
-    readOnly: PropTypes.bool.isRequired,
+    label: PropTypes.node,
+    required: PropTypes.bool,
+    inputId: PropTypes.string,
+    readOnly: PropTypes.bool,
     id: PropTypes.string,
     hideLabel: PropTypes.bool,
 };
 
 Label.defaultProps = {
+    label: undefined,
+    required: false,
+    inputId: undefined,
+    readOnly: false,
     id: undefined,
     hideLabel: false,
 };

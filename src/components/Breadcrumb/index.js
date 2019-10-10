@@ -26,7 +26,7 @@ export default function Breadcrumb(props) {
 
 Breadcrumb.propTypes = {
     /** The text label for the breadcrumb. */
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The URL of the page that the breadcrumb goes to. */
     href: PropTypes.string,
     /** The action triggered when the breadcrumb is clicked. */
@@ -40,6 +40,7 @@ Breadcrumb.propTypes = {
 };
 
 Breadcrumb.defaultProps = {
+    label: undefined,
     href: 'javascript:void(0);',
     onClick: () => {},
     disabled: false,
