@@ -98,7 +98,7 @@ export default class ButtonIcon extends Component {
 ButtonIcon.propTypes = {
     /** The icon to show if it is passed.
      * It must be a svg icon or a font icon. It is a required value. */
-    icon: PropTypes.node.isRequired,
+    icon: PropTypes.node,
     /** The variant changes the appearance of buttonIcon. Accepted variants include base,
      *  brand, success, border, border-filled, border-inverse and inverse.
      * This value defaults to base. */
@@ -162,6 +162,7 @@ ButtonIcon.propTypes = {
 };
 
 ButtonIcon.defaultProps = {
+    icon: null,
     variant: 'base',
     size: 'medium',
     shaded: false,

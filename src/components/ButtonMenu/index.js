@@ -16,6 +16,7 @@ export default function ButtonMenu(props) {
         buttonShaded,
         disabled,
         tabIndex,
+        onClick,
         onFocus,
         onBlur,
         children,
@@ -33,6 +34,7 @@ export default function ButtonMenu(props) {
             variant={buttonVariant}
             shaded={buttonShaded}
             title={title}
+            onClick={onClick}
             onFocus={onFocus}
             onBlur={onBlur}
             trigger={ButtonIcon}
@@ -45,7 +47,7 @@ export default function ButtonMenu(props) {
 ButtonMenu.propTypes = {
     /** The icon to show if it is passed.
      * It must be a svg icon or a font icon. It is a required value. */
-    icon: PropTypes.node.isRequired,
+    icon: PropTypes.node,
     /** The content of the ButtonMenu. Used to render the menuItem elements
      * when the ButtonMenu is open. */
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
@@ -93,6 +95,8 @@ ButtonMenu.propTypes = {
     assistiveText: PropTypes.string,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
     tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    /** The action triggered when the element is clicked. */
+    onClick: PropTypes.func,
     /** The action triggered when the element receives focus. */
     onFocus: PropTypes.func,
     /** The action triggered when the element releases focus. */
@@ -106,6 +110,7 @@ ButtonMenu.propTypes = {
 };
 
 ButtonMenu.defaultProps = {
+    icon: null,
     children: null,
     buttonVariant: 'border-filled',
     buttonSize: 'medium',
@@ -117,6 +122,7 @@ ButtonMenu.defaultProps = {
     tabIndex: undefined,
     title: undefined,
     assistiveText: undefined,
+    onClick: () => {},
     onFocus: () => {},
     onBlur: () => {},
     className: undefined,
