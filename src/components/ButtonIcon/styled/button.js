@@ -217,7 +217,6 @@ const StyledButton = styled.button`
             svg {
                 width: 0.55rem !important;
                 height: 0.55rem !important;
-        
                 font-size: 0.55rem !important;
             }
         `};
@@ -231,21 +230,6 @@ const StyledButton = styled.button`
             svg {
                 width: 0.6rem !important;
                 height: 0.6rem !important;
-        
-                font-size: 0.6rem !important;
-            }
-        `};
-    ${props =>
-        props.size === 'x-small' &&
-        `
-            width: 1.25rem;
-            height: 1.25rem;
-            line-height: 1.25;
-
-            svg {
-                width: 0.6rem !important;
-                height: 0.6rem !important;
-        
                 font-size: 0.6rem !important;
             }
         `};
@@ -273,21 +257,6 @@ const StyledButton = styled.button`
             svg {
                 width: 1rem !important;
                 height: 1rem !important;
-        
-                font-size: 1rem !important;
-            }
-        `};
-    ${props =>
-        props.size === 'medium' &&
-        `
-            width: 2.5rem;
-            height: 2.5rem;
-            line-height: 2.5;
-
-            svg {
-                width: 1rem !important;
-                height: 1rem !important;
-        
                 font-size: 1rem !important;
             }
         `};
@@ -301,7 +270,6 @@ const StyledButton = styled.button`
             svg {
                 width: 1.5rem !important;
                 height: 1.5rem !important;
-        
                 font-size: 1rem !important;
             }
         `};
