@@ -197,7 +197,7 @@ TimePicker.propTypes = {
      * to prompt the user for a valid entry. */
     placeholder: PropTypes.string,
     /** Text label for the TimePicker. */
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** A boolean to hide the TimePicker label. */
     hideLabel: PropTypes.bool,
     /** Specifies that the TimePicker must be filled out before submitting the form.
@@ -237,6 +237,7 @@ TimePicker.defaultProps = {
     okLabel: 'OK',
     onChange: () => {},
     placeholder: null,
+    label: undefined,
     hideLabel: false,
     required: false,
     name: undefined,

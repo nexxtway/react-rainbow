@@ -9,6 +9,7 @@ import Internationalization from './images/internationalization';
 import Accesibility from './images/accesibility';
 import PageObject from './images/page-object';
 import ReduxForm from './images/redux-form';
+import TypeScript from './images/typescript';
 import './styles.css';
 
 export default function FeatureList(props) {
@@ -65,6 +66,13 @@ export default function FeatureList(props) {
                 image={<ReduxForm />}
                 title="Redux-Form integration"
                 description="Our inputable components work seamlessly with redux-form."
+            />
+
+            <Item
+                className="react-rainbow-feature-list_item"
+                image={<TypeScript />}
+                title="TypeScript Support"
+                description="Our components come with Typescript typings out of the box."
             />
         </div>
     );

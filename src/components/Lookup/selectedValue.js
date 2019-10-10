@@ -112,7 +112,7 @@ export default class SelectedValue extends Component {
 SelectedValue.propTypes = {
     value: PropTypes.oneOfType([
         PropTypes.shape({
-            label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+            label: PropTypes.string,
             description: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
             icon: PropTypes.node,
         }),

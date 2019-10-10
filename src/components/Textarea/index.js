@@ -150,7 +150,7 @@ class Textarea extends Component {
 
 Textarea.propTypes = {
     /** Text that describes the desired textarea input. */
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** A boolean to hide the textarea label */
     hideLabel: PropTypes.bool,
     /** The name of the textarea */
@@ -197,6 +197,7 @@ Textarea.propTypes = {
 };
 
 Textarea.defaultProps = {
+    label: undefined,
     value: undefined,
     name: undefined,
     placeholder: null,
