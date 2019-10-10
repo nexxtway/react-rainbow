@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import AssistiveText from './../AssistiveText';
-import './styles.css';
+import StyledButton from './styled/button';
 
 /**
  * Buttons Icons provide the user with visual iconography that
@@ -12,30 +11,6 @@ export default class ButtonIcon extends Component {
     constructor(props) {
         super(props);
         this.buttonRef = React.createRef();
-    }
-
-    getVariantClassName() {
-        const { variant } = this.props;
-        if (variant === 'base') {
-            return null;
-        }
-        return `rainbow-button-icon--${variant}`;
-    }
-
-    getButtonClassNames() {
-        const { className, shaded, variant, size } = this.props;
-        const isShaded =
-            shaded && (variant === 'border-filled' || variant === 'brand' || variant === 'success');
-
-        return classnames(
-            'rainbow-button-icon',
-            {
-                'rainbow-button-icon--shaded': isShaded,
-            },
-            this.getVariantClassName(),
-            `rainbow-button-icon--${size}`,
-            className,
-        );
     }
 
     /**
@@ -82,14 +57,21 @@ export default class ButtonIcon extends Component {
             onKeyDown,
             form,
             onMouseDown,
+            className,
+            shaded,
+            variant,
+            size,
         } = this.props;
 
         return (
-            <button
+            <StyledButton
                 onMouseDown={onMouseDown}
                 data-id="button-icon-element"
                 id={id}
-                className={this.getButtonClassNames()}
+                className={className}
+                shaded={shaded}
+                variant={variant}
+                size={size}
                 style={style}
                 disabled={disabled}
                 tabIndex={tabIndex}
@@ -108,7 +90,7 @@ export default class ButtonIcon extends Component {
             >
                 {icon}
                 <AssistiveText text={assistiveText} />
-            </button>
+            </StyledButton>
         );
     }
 }
@@ -116,7 +98,7 @@ export default class ButtonIcon extends Component {
 ButtonIcon.propTypes = {
     /** The icon to show if it is passed.
      * It must be a svg icon or a font icon. It is a required value. */
-    icon: PropTypes.node.isRequired,
+    icon: PropTypes.node,
     /** The variant changes the appearance of buttonIcon. Accepted variants include base,
      *  brand, success, border, border-filled, border-inverse and inverse.
      * This value defaults to base. */
@@ -180,6 +162,7 @@ ButtonIcon.propTypes = {
 };
 
 ButtonIcon.defaultProps = {
+    icon: null,
     variant: 'base',
     size: 'medium',
     shaded: false,
