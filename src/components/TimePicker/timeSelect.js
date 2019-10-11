@@ -345,12 +345,12 @@ export default class TimeSelect extends Component {
 
     render() {
         const { hour, minutes, ampm } = this.state;
-        const { onCloseModal, cancelLabel, okLabel, hours24 } = this.props;
+        const { onCloseModal, cancelLabel, okLabel, hours24, className } = this.props;
         const hourPlaceholder = this.prevHour || '--';
         const minutesPlaceholder = this.prevMinutes || '--';
 
         return (
-            <article>
+            <article className={className}>
                 <div
                     role="presentation"
                     className="rainbow-time-picker_time-select-content"
@@ -459,6 +459,7 @@ TimeSelect.propTypes = {
     okLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     onChange: PropTypes.func,
     value: PropTypes.string,
+    className: PropTypes.string,
 };
 
 TimeSelect.defaultProps = {
@@ -468,4 +469,5 @@ TimeSelect.defaultProps = {
     okLabel: 'OK',
     onChange: () => {},
     value: undefined,
+    className: undefined,
 };

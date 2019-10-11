@@ -10,12 +10,6 @@ const StyledModal = styled(Modal)`
         height: fit-content !important;
         max-height: fit-content !important;
         width: 100vw !important;
-
-        & .rainbow-time-picker_time-select-content {
-            margin-top: 0;
-            margin-bottom: 10px;
-            height: 76px;
-        }
     }
 
     @media (max-width: 340px) {

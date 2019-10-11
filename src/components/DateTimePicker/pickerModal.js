@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import TimeSelect from '../TimePicker/timeSelect';
 import extractDate from './helpers/extractDate';
 import extractTime from './helpers/extractTime';
 import formatDateTime from './helpers/formatDateTime';
@@ -10,6 +9,7 @@ import StyledH2 from './styled/h2';
 import StyledResponsiveContainer from './styled/responsiveContainer';
 import StyledCalendar from './styled/calendar';
 import StyledDivider from './styled/divider';
+import StyledTimeSelect from './styled/timeSelect';
 
 function DateTimePickerModal(props) {
     const {
@@ -67,7 +67,7 @@ function DateTimePickerModal(props) {
                     onChange={handleDateChange}
                 />
                 <StyledDivider />
-                <TimeSelect
+                <StyledTimeSelect
                     value={time}
                     okLabel={okLabel}
                     cancelLabel={cancelLabel}
