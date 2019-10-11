@@ -26,15 +26,8 @@ beforeAll(() => {
 });
 
 describe('<PlacesLookupComponent/>', () => {
-    it('should have the right class names', () => {
-        const component = mount(<PlacesLookupComponent className="some-class" />);
-        expect(component.find('.rainbow-google-address-lookup_container.some-class').exists()).toBe(
-            true,
-        );
-    });
-
     it('should not call any google.maps.places service when isScriptLoaded and isScriptLoadSucceed are false', () => {
-        const component = mount(<PlacesLookupComponent className="some-class" />);
+        const component = mount(<PlacesLookupComponent />);
         component.setProps({
             isScriptLoaded: false,
             isScriptLoadSucceed: false,
