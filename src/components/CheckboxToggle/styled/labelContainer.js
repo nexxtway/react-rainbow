@@ -109,9 +109,8 @@ const StyledLabelContainer = styled.label`
             box-shadow: 0 0 1px 0 ${COLOR_GRAY_2};
         }
 
-        &[disabled]:checked
-            + .rainbow-checkbox-toggle_faux-container
-            .rainbow-checkbox-toggle_faux::after {
+        /* prettier-ignore */
+        &[disabled]:checked + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux::after {
             background-color: transparent;
         }
     }
