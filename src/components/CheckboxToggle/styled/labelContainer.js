@@ -1,4 +1,4 @@
-/* stylelint-disable no-descending-specificity,max-line-length */
+/* stylelint-disable no-descending-specificity,max-line-length, selector-combinator-space-before, selector-descendant-combinator-no-non-space */
 import styled from 'styled-components';
 import {
     COLOR_WHITE,
