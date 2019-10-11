@@ -1,17 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import StyledAssignButton from './styled/assignButton';
 
 export default function ModifyCell(props) {
     const { onClick, value, row } = props;
     const buttonText = value ? 'Change' : 'Assign';
 
     return (
-        <button
-            className="rainbow-import-records-flow_step-three-assign-button"
-            onClick={() => onClick(row.databaseField)}
-        >
+        <StyledAssignButton onClick={() => onClick(row.databaseField)}>
             {buttonText}
-        </button>
+        </StyledAssignButton>
     );
 }
 

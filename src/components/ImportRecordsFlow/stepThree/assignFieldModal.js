@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import Modal from '../../Modal';
-import Select from '../../Select';
 import getFileFieldsOptions from '../helpers/getFileFieldsOptions';
 import AssignFieldModalFooter from './assignFieldModalFooter';
 import SelectedFieldsToAssign from './selectedFieldsToAssign';
 import Preview from './preview';
+import StyledModalContainer from './styled/modalContainer';
+import StyledSelect from './styled/select';
 
 export default function AssignFieldModal(props) {
     const {
@@ -63,11 +63,6 @@ export default function AssignFieldModal(props) {
         setFileFieldsToAssign(fileFieldsToAssign.filter(field => field !== value));
     };
 
-    const getModalContainerClassNames = () =>
-        classnames({
-            'rainbow-import-records-flow_step-three-assign-field-modal-content': !fileFieldsToAssign.length,
-        });
-
     return (
         <Modal
             title={modalTitle}
@@ -82,9 +77,8 @@ export default function AssignFieldModal(props) {
                 />
             }
         >
-            <div className={getModalContainerClassNames()}>
-                <Select
-                    className="rainbow-import-records-flow_step-three-field-select"
+            <StyledModalContainer fileFieldsToAssign={!fileFieldsToAssign.length}>
+                <StyledSelect
                     label="Select Field To Assign"
                     options={fileFieldsOptions}
                     onChange={selectFileField}
@@ -97,7 +91,7 @@ export default function AssignFieldModal(props) {
                     data={data}
                     attributes={attributes}
                 />
-            </div>
+            </StyledModalContainer>
         </Modal>
     );
 }
