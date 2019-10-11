@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CloseIcon from './closeIcon';
-import ButtonIcon from './../ButtonIcon';
 import RenderIf from '../RenderIf';
 import StyledContainer from './styled/container';
 import TruncatedText from '../Structural/truncatedText';
+import StyledButtonIcon from './styled/buttonIcon';
 
 /**
  * A Chip displays a label that can be removed from view.
@@ -16,8 +16,8 @@ export default function Chip(props) {
         <StyledContainer className={className} style={style} variant={variant} title={title}>
             <TruncatedText>{label}</TruncatedText>
             <RenderIf isTrue={!!onDelete}>
-                <ButtonIcon
-                    className="rainbow-chip_button-container"
+                <StyledButtonIcon
+                    variant={variant}
                     icon={<CloseIcon />}
                     size="small"
                     title="Close"
