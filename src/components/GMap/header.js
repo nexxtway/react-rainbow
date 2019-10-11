@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import StyledHeader from './styled/header';
 
 export default function Header({ text }) {
     if (typeof text === 'string') {
-        return <h2 className="rainbow-google-map_header">{text}</h2>;
+        return <StyledHeader>{text}</StyledHeader>;
     }
     return text;
 }
