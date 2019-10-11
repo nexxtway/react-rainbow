@@ -6,6 +6,7 @@ import {
     COLOR_BRAND,
     COLOR_BRAND_2,
     COLOR_GRAY_1,
+    COLOR_GRAY_3,
 } from '../../../styles/colors';
 
 const StyledLabelContainer = styled.label`
@@ -37,7 +38,7 @@ const StyledLabelContainer = styled.label`
             left: 0.015625rem;
             width: 1.25rem;
             height: 1.25rem;
-            box-shadow: 0 0 2px 0 $color-gray-3;
+            box-shadow: 0 0 2px 0 ${COLOR_GRAY_3};
             transition: all 0.3s cubic-bezier(0.75, 0, 0.08, 1);
             border-radius: 1rem;
             border: solid 0.125rem transparent;
