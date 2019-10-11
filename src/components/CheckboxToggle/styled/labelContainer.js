@@ -1,4 +1,4 @@
-/* stylelint-disable no-descending-specificity,max-line-length, selector-combinator-space-before, selector-descendant-combinator-no-non-space */
+/* stylelint-disable no-descending-specificity, max-line-length */
 import styled from 'styled-components';
 import {
     COLOR_WHITE,
@@ -52,15 +52,6 @@ const StyledLabelContainer = styled.label`
     }
 
     [type='checkbox'] {
-        width: 0.0625rem;
-        height: 0.0625rem;
-        border: 0;
-        clip: rect(0 0 0 0);
-        margin: -0.0625rem;
-        overflow: hidden;
-        padding: 0;
-        position: absolute;
-
         :focus + .rainbow-checkbox-toggle_faux,
         :focus ~ .rainbow-checkbox-toggle_faux,
         :focus + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux {

@@ -6,6 +6,7 @@ import { uniqueId } from '../../libs/utils';
 import RenderIf from '../RenderIf';
 import StyledLabelContainer from './styled/labelContainer';
 import StyledLabel from './styled/label';
+import HiddenElement from '../Structural/hiddenElement';
 
 /**
  * Checkbox toggle is a checkable input that communicates if an option is true,
@@ -59,7 +60,8 @@ class CheckboxToggle extends Component {
 
         return (
             <StyledLabelContainer id={id} className={className} style={style}>
-                <input
+                <HiddenElement
+                    as="input"
                     type="checkbox"
                     name={this.inputIndentifier}
                     value={this.inputIndentifier}
