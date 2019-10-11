@@ -80,12 +80,4 @@ describe('<MenuItem/>', () => {
         const component = mount(<MenuItem variant="header" title="header title" />);
         expect(component.find('li').prop('title')).toBe('header title');
     });
-    it('should have the right class names when variant is header', () => {
-        const component = mount(<MenuItem variant="header" />);
-        expect(component.find('li').prop('className')).toBe('rainbow-menu-item_header');
-    });
-    it('should have the right class names when variant is not passed', () => {
-        const component = mount(<MenuItem label="menu item 2" />);
-        expect(component.find('li').prop('className')).toBe('rainbow-menu-item');
-    });
 });
