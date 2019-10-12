@@ -4,7 +4,8 @@ import LeftArrow from './leftArrow';
 import RightArrow from './rightArrow';
 import NavigationButton from './navigationButton';
 import PageButtons from './pageButtons';
-import './styles.css';
+import StyledNav from './styled/nav';
+import StyledPaginationContainer from './styled/paginationContainer';
 
 /**
  * @category Layout
@@ -16,14 +17,14 @@ export default function Pagination(props) {
     const isLastItemSelected = activePage === pages;
 
     return (
-        <nav className={className} aria-label="pagination" style={style}>
-            <ul className="rainbow-pagination">
+        <StyledNav className={className} aria-label="pagination" style={style}>
+            <StyledPaginationContainer>
                 <NavigationButton
                     dataId="previous-page-button"
                     icon={<LeftArrow />}
                     onClick={event => onChange(event, activePage - 1)}
                     disabled={isFirstItemSelected}
-                    ariaLabel="Goto Previous Page"
+                    ariaLabel="Goto the Previous Page"
                 />
 
                 <PageButtons onChange={onChange} pages={pages} activePage={activePage} />
@@ -32,10 +33,10 @@ export default function Pagination(props) {
                     icon={<RightArrow />}
                     onClick={event => onChange(event, activePage + 1)}
                     disabled={isLastItemSelected}
-                    ariaLabel="Goto Next Page"
+                    ariaLabel="Goto the Next Page"
                 />
-            </ul>
-        </nav>
+            </StyledPaginationContainer>
+        </StyledNav>
     );
 }
 
