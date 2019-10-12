@@ -3,6 +3,7 @@ import { mount } from 'enzyme';
 import CounterManager from '../counterManager';
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from '../scrollController';
 import Modal from '../';
+import StyledContent from '../styled/content';
 
 jest.mock('../counterManager', () => ({
     increment: jest.fn(),
@@ -38,48 +39,6 @@ describe('<Modal/>', () => {
         );
         expect(component.find('footer').text()).toBe('modal footer');
     });
-    it('should have the right class names in the backdrop element when the modal is opened', () => {
-        const component = mount(
-            <Modal isOpen>
-                <p />
-            </Modal>,
-        );
-        expect(
-            component
-                .find('div[className="rainbow-modal_backdrop rainbow-modal_backdrop--open"]')
-                .exists(),
-        ).toBe(true);
-    });
-    it('should have the right class names in the section element when the modal is opened', () => {
-        const component = mount(
-            <Modal isOpen>
-                <p />
-            </Modal>,
-        );
-        expect(component.find('section[role="dialog"]').prop('className')).toBe(
-            'rainbow-modal rainbow-modal--open',
-        );
-    });
-    it('should have the right class names in the section element when the modal is opened and the size is medium', () => {
-        const component = mount(
-            <Modal isOpen size="medium">
-                <p />
-            </Modal>,
-        );
-        expect(component.find('section[role="dialog"]').prop('className')).toBe(
-            'rainbow-modal rainbow-modal--open rainbow-modal--medium',
-        );
-    });
-    it('should have the right class names in the section element when the modal is opened and the size is large', () => {
-        const component = mount(
-            <Modal isOpen size="large">
-                <p />
-            </Modal>,
-        );
-        expect(component.find('section[role="dialog"]').prop('className')).toBe(
-            'rainbow-modal rainbow-modal--open rainbow-modal--large',
-        );
-    });
     it('should set tabIndex as -1 in section element', () => {
         const component = mount(
             <Modal isOpen>
@@ -108,9 +67,7 @@ describe('<Modal/>', () => {
         expect(component.find('section[role="dialog"]').prop('aria-describedby')).toMatch(
             /modal-content/,
         );
-        expect(component.find('div[className="rainbow-modal_content"]').prop('id')).toMatch(
-            /modal-content/,
-        );
+        expect(component.find(StyledContent).prop('id')).toMatch(/modal-content/);
     });
     it('should set aria-modal to true in section element', () => {
         const component = mount(
