@@ -228,7 +228,7 @@ DatePicker.defaultProps = {
     maxDate: undefined,
     formatStyle: 'medium',
     onChange: () => {},
-    placeholder: null,
+    placeholder: undefined,
     label: undefined,
     hideLabel: false,
     required: false,

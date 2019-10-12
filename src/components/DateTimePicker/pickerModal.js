@@ -82,7 +82,7 @@ function DateTimePickerModal(props) {
 DateTimePickerModal.propTypes = {
     title: PropTypes.string,
     isOpen: PropTypes.bool.isRequired,
-    value: PropTypes.instanceOf(Date),
+    value: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
     minDate: PropTypes.instanceOf(Date),
     maxDate: PropTypes.instanceOf(Date),
     formatStyle: PropTypes.oneOf(['small', 'medium', 'large']).isRequired,

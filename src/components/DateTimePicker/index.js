@@ -131,7 +131,7 @@ const DateTimePicker = React.forwardRef(PickerComponent);
 
 DateTimePicker.propTypes = {
     /** Sets the date for the DateTimePicker programmatically. */
-    value: PropTypes.instanceOf(Date),
+    value: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
     /** The beginning of a range of valid dates. The range includes the startDate.
      * The default value is current date - 100 years. */
     minDate: PropTypes.instanceOf(Date),
@@ -144,7 +144,7 @@ DateTimePicker.propTypes = {
     /** The name of the DateTimePicker. */
     name: PropTypes.string,
     /** Text label for the DateTimePicker. */
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** A boolean to hide the DateTimePicker label. */
     hideLabel: PropTypes.bool,
     /** Text that is displayed when the DateTimePicker is empty,
@@ -187,7 +187,8 @@ DateTimePicker.propTypes = {
 };
 
 DateTimePicker.defaultProps = {
-    placeholder: null,
+    placeholder: undefined,
+    label: undefined,
     hideLabel: false,
     required: false,
     name: undefined,
