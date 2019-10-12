@@ -109,7 +109,7 @@ export default class Modal extends Component {
     }
 
     render() {
-        const { title, style, children, footer, isOpen, id, size } = this.props;
+        const { title, style, className, children, footer, isOpen, id, size } = this.props;
 
         if (isOpen) {
             return createPortal(
@@ -130,6 +130,7 @@ export default class Modal extends Component {
                         style={style}
                         ref={this.modalRef}
                         isOpen={isOpen}
+                        className={className}
                         size={size}
                     >
                         <StyledCloseButton
