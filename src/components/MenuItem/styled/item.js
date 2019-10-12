@@ -6,6 +6,7 @@ const StyledItem = styled.li`
     line-height: 1.5;
 
     > a {
+        transition: color 0.1s linear;
         position: relative;
         font-size: ${FONT_SIZE_TEXT_MEDIUM};
         display: flex;
@@ -24,6 +25,7 @@ const StyledItem = styled.li`
 
         &:active {
             background-color: ${COLOR_GRAY_1};
+            outline: 0;
         }
 
         &[aria-disabled='true'] {
@@ -33,6 +35,7 @@ const StyledItem = styled.li`
             &:hover,
             &:focus {
                 background-color: transparent;
+                outline: 0;
             }
         }
     }
