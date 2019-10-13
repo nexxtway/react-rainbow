@@ -12,6 +12,7 @@ import './styles.css';
 import { uniqueId } from '../../libs/utils';
 import MenuArrowButton from './menuArrowButton';
 import getNormalizeValue from './helpers/getNormalizeValue';
+import getSelectedOptionName from './helpers/getSelectedOptionName';
 import isChildRegistered from './helpers/isChildRegistered';
 import isOptionVisible from './helpers/isOptionVisible';
 import shouldOpenMenu from './helpers/shouldOpenMenu';
@@ -140,6 +141,12 @@ class Picklist extends Component {
             return this.errorMessageId;
         }
         return undefined;
+    }
+
+    getAriaActivedescendant() {
+        const { activeOptionName } = this.state;
+        const { value } = this.props;
+        return activeOptionName || getSelectedOptionName(value);
     }
 
     handleKeyUpPressed() {
@@ -414,6 +421,7 @@ class Picklist extends Component {
                     <RenderIf isTrue={!readOnly}>
                         <span className={this.getIndicatorClassNames()} />
                     </RenderIf>
+                    {/* eslint-disable-next-line jsx-a11y/aria-activedescendant-has-tabindex */}
                     <input
                         aria-controls={this.listboxId}
                         className={this.getInputClassNames()}
@@ -432,6 +440,7 @@ class Picklist extends Component {
                         aria-describedby={errorMessageId}
                         autoComplete="off"
                         ref={this.triggerRef}
+                        aria-activedescendant={this.getAriaActivedescendant()}
                     />
                     <div
                         id={this.listboxId}
