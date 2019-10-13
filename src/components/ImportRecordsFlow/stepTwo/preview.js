@@ -47,7 +47,7 @@ export default function Preview(props) {
                         title={name}
                         className="rainbow-import-records-flow_step-two-file-card-title"
                     >
-                        {fileName}
+                        {name}
                     </h1>
                     <h2 className="rainbow-import-records-flow_step-two-file-card-description">
                         {type}
