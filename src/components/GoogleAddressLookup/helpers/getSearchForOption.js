@@ -1,15 +1,15 @@
 import React from 'react';
 import SearchValueIcon from '../icons/searchValueIcon';
+import StyledOptionLabel from '../styled/optionLabel';
+import StyledOptionTyping from '../styled/optionTyping';
 
 export default function getSearchForOption(searchValue) {
     return {
         label: (
-            <span className="rainbow-google-address-lookup_search-option-label">
+            <StyledOptionLabel>
                 Search for:
-                <span className="rainbow-google-address-lookup_search-option-typing">
-                    &lsquo;{searchValue}&rsquo;
-                </span>
-            </span>
+                <StyledOptionTyping>&lsquo;{searchValue}&rsquo;</StyledOptionTyping>
+            </StyledOptionLabel>
         ),
         data: searchValue,
         icon: <SearchValueIcon />,

@@ -7,8 +7,8 @@ const StyledHeaderDays = styled.th`
     color: ${COLOR_GRAY_3};
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
     font-weight: 400;
-    line-height: 48px;
-    height: 48px;
+    line-height: 40px;
+    height: 40px;
 
     abbr {
         cursor: default;
