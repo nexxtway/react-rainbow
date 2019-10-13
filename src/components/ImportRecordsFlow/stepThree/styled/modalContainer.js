@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const StyledModalContainer = styled.div`
     ${props =>
-        props.fileFieldsToAssign &&
+        props.hasNotFileFieldsToAssign &&
         `
             margin-bottom: 100px;
         `};

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { COLOR_BRAND_LIGHT } from '../../../../styles/colors';
 
 const StyledContainer = styled.div`
     border-radius: 4px;
@@ -11,7 +12,12 @@ const StyledContainer = styled.div`
     align-items: center;
     justify-content: center;
     position: relative;
-    ${props => props.isDragOver && 'background-color: rgba(#cec6c6, 0.7);'};
+    ${props =>
+        props.isDragOver &&
+        `
+            background-color: rgba(234, 238, 245, 0.4);
+            border: dashed 1.5px ${COLOR_BRAND_LIGHT};
+        `};
 `;
 
 export default StyledContainer;

@@ -63,6 +63,8 @@ export default function AssignFieldModal(props) {
         setFileFieldsToAssign(fileFieldsToAssign.filter(field => field !== value));
     };
 
+    const hasNotFileFieldsToAssign = !fileFieldsToAssign.length;
+
     return (
         <Modal
             title={modalTitle}
@@ -77,7 +79,7 @@ export default function AssignFieldModal(props) {
                 />
             }
         >
-            <StyledModalContainer fileFieldsToAssign={!fileFieldsToAssign.length}>
+            <StyledModalContainer hasNotFileFieldsToAssign={hasNotFileFieldsToAssign}>
                 <StyledSelect
                     label="Select Field To Assign"
                     options={fileFieldsOptions}

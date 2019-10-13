@@ -22,7 +22,7 @@ export default function StepTwo(props) {
         fileType,
     } = props;
 
-    const [setIsDragOver] = useState(false);
+    const [isDragOver, setIsDragOver] = useState(false);
 
     const handleChange = event => {
         onProcessFile(event.target.files[0]);
@@ -61,6 +61,7 @@ export default function StepTwo(props) {
 
     return (
         <StyledContainer
+            isDragOver={isDragOver}
             onDragEnter={preventDefault}
             onDragLeave={handleDragLeave}
             onDragOver={handleDragOver}
