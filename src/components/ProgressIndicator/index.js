@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { Provider } from './context';
 import StyledContainer from './styled/container';
 import StyledIndicatorList from './styled/indicatorList';
