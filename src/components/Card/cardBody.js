@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Spinner from '../Spinner';
-import './styles.css';
 
 export default function CardBoddy({ isLoading, children }) {
     if (isLoading) {

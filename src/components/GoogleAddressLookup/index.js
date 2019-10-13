@@ -24,7 +24,7 @@ GoogleAddressLookup.propTypes = {
      * to get an API Key. */
     apiKey: PropTypes.string.isRequired,
     /** Text label for the component. */
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** A boolean to hide the component label. */
     hideLabel: PropTypes.bool,
     /** Specifies the selected value of the component. */
@@ -59,7 +59,7 @@ GoogleAddressLookup.propTypes = {
     /** The action triggered when the element is clicked. */
     onClick: PropTypes.func,
     /** The action triggered when the element receives focus. */
-    onFocus: PropTypes.func,
+    // onFocus: PropTypes.func,
     /** The action triggered when the element releases focus. */
     onBlur: PropTypes.func,
     /**
@@ -79,7 +79,7 @@ GoogleAddressLookup.propTypes = {
 };
 
 GoogleAddressLookup.defaultProps = {
-    apiKey: undefined,
+    label: undefined,
     value: undefined,
     name: undefined,
     placeholder: null,
@@ -89,10 +89,9 @@ GoogleAddressLookup.defaultProps = {
     readOnly: false,
     onChange: () => {},
     onClick: () => {},
-    onFocus: () => {},
+    // onFocus: () => {},
     onBlur: () => {},
     tabIndex: undefined,
-    label: undefined,
     className: undefined,
     style: undefined,
     id: undefined,

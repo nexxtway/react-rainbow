@@ -18,7 +18,7 @@ class PageAccordionSection {
      */
     clickButtonIcon() {
         $(this.rootElement)
-            .$('.rainbow-accordion-section_summary > button')
+            .$('[data-id="accordion-section-summary"] > button')
             .click();
     }
 
@@ -29,7 +29,7 @@ class PageAccordionSection {
      */
     hasFocusButtonIcon() {
         return $(this.rootElement)
-            .$('.rainbow-accordion-section_summary > button')
+            .$('[data-id="accordion-section-summary"] > button')
             .isFocused();
     }
 
@@ -40,7 +40,7 @@ class PageAccordionSection {
      */
     isExpanded() {
         return $(this.rootElement)
-            .$('.rainbow-accordion-section_content')
+            .$('[data-id="accordion-section-content"]')
             .isDisplayed();
     }
 }

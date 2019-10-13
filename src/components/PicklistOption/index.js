@@ -182,9 +182,9 @@ export { Option };
 
 PicklistOption.propTypes = {
     /** Text of the PicklistOption. */
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+    label: PropTypes.string,
     /** The name of the PicklistOption. */
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
     /** The variant changes the type of PicklistOption.
      * Accepted variants include default and header.
      * This value defaults to default. */
@@ -199,7 +199,7 @@ PicklistOption.propTypes = {
     /** Displays tooltip text when the mouse moves over the element. */
     title: PropTypes.string,
     /** The value of the PicklistOption. */
-    value: PropTypes.object,
+    value: PropTypes.any,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
@@ -207,6 +207,7 @@ PicklistOption.propTypes = {
 };
 
 PicklistOption.defaultProps = {
+    label: undefined,
     name: undefined,
     variant: 'default',
     icon: null,

@@ -33,14 +33,14 @@ class VisualPicker extends Component {
         return undefined;
     }
 
-    handleChange(optionName, optionChecked) {
+    handleChange(optionName, isChecked) {
         const { onChange, multiple, value } = this.props;
         let currentValue = optionName;
         if (multiple) {
             if (!Array.isArray(value)) {
-                currentValue = optionChecked ? [optionName] : [];
+                currentValue = isChecked ? [optionName] : [];
             } else {
-                currentValue = optionChecked
+                currentValue = isChecked
                     ? [...value, optionName]
                     : value.filter(item => item !== optionName);
             }

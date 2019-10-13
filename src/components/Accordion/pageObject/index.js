@@ -21,10 +21,10 @@ class PageAccordion {
      * @param {number} itemPosition - The base 0 index of the accordion section.
      */
     getItem(itemPosition) {
-        const items = $(this.rootElement).$$('.rainbow-accordion-section_container');
+        const items = $(this.rootElement).$$('[data-id="accordion-section-li"]');
         if (items[itemPosition]) {
             return new PageAccordionSection(
-                `${this.rootElement} .rainbow-accordion-section_container:nth-child(${itemPosition +
+                `${this.rootElement} [data-id="accordion-section-li"]:nth-child(${itemPosition +
                     1})`,
             );
         }

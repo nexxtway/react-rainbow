@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import RenderIf from './../RenderIf';
 import { uniqueId } from './../../libs/utils';
 import { Consumer } from './../Accordion/context';
@@ -9,7 +8,11 @@ import ButtonIcon from './../ButtonIcon';
 import RightArrow from './rightArrow';
 import isInArray from './isInArray';
 import removeItemFromArray from './removeItemFromArray';
-import './styles.css';
+import StyledListItem from './styled/listItem';
+import StyledSummary from './styled/summary';
+import StyledHeading from './styled/heading';
+import StyledIcon from './styled/icon';
+import StyledContent from './styled/content';
 
 class AccordionItem extends Component {
     constructor(props) {
@@ -42,24 +45,6 @@ class AccordionItem extends Component {
     componentWillUnmount() {
         const { privateUnregisterAccordionSection } = this.props;
         privateUnregisterAccordionSection(this.getCurrentName());
-    }
-
-    getContainerClassNames() {
-        const { className, disabled } = this.props;
-        return classnames(
-            'rainbow-accordion-section_container',
-            {
-                'rainbow-accordion-section_container--disabled': disabled,
-            },
-            className,
-        );
-    }
-
-    getCollapsedClassNames() {
-        const isExpanded = this.isExpanded();
-        return classnames('rainbow-accordion-section_content', {
-            'rainbow-accordion-section_content--collapsed': !isExpanded,
-        });
     }
 
     getCurrentName() {
@@ -123,29 +108,28 @@ class AccordionItem extends Component {
     }
 
     render() {
-        const { style, disabled, children, label, icon, assistiveText } = this.props;
+        const { style, disabled, children, label, icon, assistiveText, className } = this.props;
 
         const isExpanded = this.isExpanded();
 
         return (
-            <li
-                className={this.getContainerClassNames()}
+            <StyledListItem
+                data-id="accordion-section-li"
+                className={className}
                 style={style}
                 disabled={disabled}
                 ref={this.containerRef}
             >
                 <section>
-                    <div className="rainbow-accordion-section_summary">
-                        <h3 className="rainbow-accordion-section_summary-heading">
+                    <StyledSummary data-id="accordion-section-summary">
+                        <StyledHeading disabled={disabled}>
                             <RenderIf isTrue={!!icon}>
-                                <span className="rainbow-accordion-section_summary-icon">
-                                    {icon}
-                                </span>
+                                <StyledIcon>{icon}</StyledIcon>
                             </RenderIf>
                             <RenderIf isTrue={!!label}>
                                 <span title="Accordion Label">{label}</span>
                             </RenderIf>
-                        </h3>
+                        </StyledHeading>
 
                         <ButtonIcon
                             size="small"
@@ -159,16 +143,17 @@ class AccordionItem extends Component {
                             ref={this.buttonRef}
                             icon={<RightArrow isExpanded={isExpanded} disabled={disabled} />}
                         />
-                    </div>
-                    <div
+                    </StyledSummary>
+                    <StyledContent
+                        data-id="accordion-section-content"
                         aria-hidden={!isExpanded}
-                        className={this.getCollapsedClassNames()}
+                        isCollapsed={!isExpanded}
                         id={this.accordionDetailsId}
                     >
                         {children}
-                    </div>
+                    </StyledContent>
                 </section>
-            </li>
+            </StyledListItem>
         );
     }
 }
