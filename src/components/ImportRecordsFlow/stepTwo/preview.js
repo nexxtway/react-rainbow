@@ -6,7 +6,6 @@ import Column from '../../Column';
 import Spinner from '../../Spinner';
 import CSVDocIcon from '../icons/csv';
 import TrashIcon from '../icons/trash';
-import RenderIf from './../../RenderIf';
 
 function PreviewTable(props) {
     const { columns, data, isLoading } = props;
@@ -36,25 +35,23 @@ PreviewTable.propTypes = {
 export default function Preview(props) {
     const { fileName, fileType, columns, data, isLoading, onRemoveFile } = props;
     const previewData = data.slice(0, 5);
+    const name = fileName || 'Unknow File Name';
+    const type = fileType || 'Unknow File Type';
 
     return (
         <div>
             <div className="rainbow-import-records-flow_step-two-file-card">
                 <CSVDocIcon />
                 <div className="rainbow-import-records-flow_step-two-file-card-content">
-                    <RenderIf isTrue={fileName}>
-                        <h1
-                            title={fileName}
-                            className="rainbow-import-records-flow_step-two-file-card-title"
-                        >
-                            {fileName}
-                        </h1>
-                    </RenderIf>
-                    <RenderIf isTrue={fileType}>
-                        <h2 className="rainbow-import-records-flow_step-two-file-card-description">
-                            {fileType}
-                        </h2>
-                    </RenderIf>
+                    <h1
+                        title={name}
+                        className="rainbow-import-records-flow_step-two-file-card-title"
+                    >
+                        {fileName}
+                    </h1>
+                    <h2 className="rainbow-import-records-flow_step-two-file-card-description">
+                        {type}
+                    </h2>
                 </div>
                 <ButtonIcon
                     className="rainbow-import-records-flow_step-two-file-card-delete-button-icon"
