@@ -12,7 +12,7 @@ const StyledDayButton = styled.button`
     line-height: 36px;
     height: 36px;
     width: 36px;
-    margin: 6px auto;
+    margin: 5px auto;
 
     &:hover {
         transition: all 0.2s ease;
@@ -29,6 +29,10 @@ const StyledDayButton = styled.button`
         box-shadow: ${SHADOW_OUTLINE};
     }
 
+    @media (max-width: 600px) {
+        margin: 3px auto;
+    }
+
     ${props =>
         props.isSelected &&
         `
@@ -41,7 +45,7 @@ const StyledDayButton = styled.button`
             line-height: 36px;
             height: 36px;
             width: 36px;
-            margin: 6px auto;
+            margin: 5px auto;
             padding: 0;
             border: none;
             outline: none;
@@ -53,6 +57,10 @@ const StyledDayButton = styled.button`
         
             &:hover {
                 background-color: ${COLOR_BRAND};
+            }
+
+            @media (max-width: 600px) {
+                margin: 3px auto;
             }
         `};
 `;
