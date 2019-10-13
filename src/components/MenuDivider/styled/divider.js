@@ -6,7 +6,6 @@ const StyledDivider = styled.li`
     ${props =>
         props.variant === 'space' &&
         `
-            border-top: solid 1px ${COLOR_GRAY_2};
             margin-top: 0.5rem;
             padding-top: 0.5rem;
         `};
