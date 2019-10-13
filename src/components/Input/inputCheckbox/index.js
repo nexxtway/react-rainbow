@@ -124,7 +124,7 @@ export default class InputCheckbox extends Component {
 
 InputCheckbox.propTypes = {
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     name: PropTypes.string,
     bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
@@ -144,6 +144,7 @@ InputCheckbox.propTypes = {
 
 InputCheckbox.defaultProps = {
     value: undefined,
+    label: undefined,
     name: undefined,
     bottomHelpText: null,
     error: null,

@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import withReduxForm from '../../libs/hocs/withReduxForm';
 import Lookup from '../Lookup';
 import LocationIcon from './icons/locationIcon';
-import PoweredByGoogleLogo from './icons/poweredByGoogle';
 import { uniqueId } from '../../libs/utils';
 import getSuggestions from './helpers/getSuggestions';
 import getSearchForOption from './helpers/getSearchForOption';
@@ -13,7 +11,8 @@ import SelectedLocationIcon from './icons/selectedLocationIcon';
 import RenderIf from '../RenderIf';
 import getSearchParams from './helpers/getSearchParams';
 import * as CustomPropTypes from './proptypes';
-import './styles.css';
+import StyledPoweredByGoogleContainer from './styled/poweredByGoogleContainer';
+import StyledPoweredByGoogleLogo from './styled/poweredByGoogleLogo';
 
 class PlacesLookupComponent extends Component {
     constructor(props) {
@@ -40,11 +39,6 @@ class PlacesLookupComponent extends Component {
         if (!prevIsScriptLoaded && isScriptLoaded && isScriptLoadSucceed) {
             this.initComponent();
         }
-    }
-
-    getContainerClassName() {
-        const { className } = this.props;
-        return classnames('rainbow-google-address-lookup_container', className);
     }
 
     getPlaceInfo(placeId) {
@@ -160,6 +154,7 @@ class PlacesLookupComponent extends Component {
     render() {
         const {
             style,
+            className,
             label,
             error,
             readOnly,
@@ -178,7 +173,7 @@ class PlacesLookupComponent extends Component {
         const { isSearching, suggestions } = this.state;
         const options = suggestions.length > 0 ? suggestions : null;
         return (
-            <div id={id} style={style} className={this.getContainerClassName()}>
+            <div id={id} style={style} className={className}>
                 <Lookup
                     id={this.lookupId}
                     name={name}
@@ -204,9 +199,9 @@ class PlacesLookupComponent extends Component {
                     preferredSelectedOption={1}
                 />
                 <RenderIf isTrue={!error}>
-                    <div className="rainbow-google-address-lookup_powered-by-google-container">
-                        <PoweredByGoogleLogo className="rainbow-google-address-lookup_powered-by-google-logo" />
-                    </div>
+                    <StyledPoweredByGoogleContainer>
+                        <StyledPoweredByGoogleLogo />
+                    </StyledPoweredByGoogleContainer>
                 </RenderIf>
                 <div ref={this.placesServiceRef} />
             </div>
@@ -218,7 +213,7 @@ PlacesLookupComponent.propTypes = {
     isScriptLoaded: PropTypes.bool.isRequired,
     isScriptLoadSucceed: PropTypes.bool.isRequired,
     searchOptions: CustomPropTypes.searchOptionsShape,
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     hideLabel: PropTypes.bool,
     readOnly: PropTypes.bool,
     value: PropTypes.oneOfType([
@@ -252,7 +247,7 @@ PlacesLookupComponent.defaultProps = {
     disabled: false,
     onChange: () => {},
     onClick: () => {},
-    onFocus: () => {},
+    // onFocus: () => {},
     onBlur: () => {},
     tabIndex: undefined,
     label: undefined,

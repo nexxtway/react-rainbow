@@ -112,11 +112,12 @@ export default class Slider extends Component {
 Slider.propTypes = {
     /** The text label for the slider. Provide your own label to describe the slider.
      * Otherwise, no label is displayed. */
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** A boolean to hide the slider label */
     hideLabel: PropTypes.bool,
     /** The numerical value of the slider. This value defaults to 0. */
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    /** The name of the Slider. */
     name: PropTypes.string,
     /** The min value of the slider. This value defaults to 0. */
     min: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),

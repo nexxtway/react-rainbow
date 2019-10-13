@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import StyledDay from './styled/day';
+import StyledDayAdjacent from './styled/dayAdjacent';
+import StyledDayButton from './styled/dayButton';
 
 export default function Day(props) {
     const { date, firstDayMonth, isSelected, minDate, maxDate, onChange } = props;
@@ -10,22 +12,18 @@ export default function Day(props) {
 
     if (isAdjacentDate || isDisabled) {
         return (
-            <td className="rainbow-calendar_day" role="gridcell" aria-selected="false">
-                <span className="rainbow-calendar_day-adjacent">{day}</span>
-            </td>
+            <StyledDay role="gridcell" aria-selected="false">
+                <StyledDayAdjacent>{day}</StyledDayAdjacent>
+            </StyledDay>
         );
     }
 
-    const buttonClassNames = classnames('rainbow-calendar_day-button', {
-        'rainbow-calendar_day-button--selected': isSelected,
-    });
-
     return (
-        <td className="rainbow-calendar_day" role="gridcell">
-            <button onClick={() => onChange(new Date(date))} className={buttonClassNames}>
+        <StyledDay role="gridcell">
+            <StyledDayButton onClick={() => onChange(new Date(date))} isSelected={isSelected}>
                 {day}
-            </button>
-        </td>
+            </StyledDayButton>
+        </StyledDay>
     );
 }
 
