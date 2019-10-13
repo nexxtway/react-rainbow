@@ -1,10 +1,12 @@
 /* eslint-disable no-script-url, react/prop-types, jsx-a11y/anchor-is-valid */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { Consumer } from '../Picklist/context';
 import Icon from './icon';
-import './styles.css';
+import StyledHeader from './styled/header';
+import StyledHeaderLabel from './styled/headerLabel';
+import StyledItem from './styled/item';
+import StyledIconContainer from './styled/iconContainer';
 
 function preventDefault(event) {
     event.preventDefault();
@@ -41,23 +43,6 @@ class Option extends Component {
 
     componentWillUnmount() {
         return this.unregister();
-    }
-
-    getHeaderClassNames() {
-        const { className } = this.props;
-        return classnames('rainbow-picklist-option_header', className);
-    }
-
-    getItemClassNames() {
-        const { className, activeOptionName, name, currentValueName } = this.props;
-        return classnames(
-            'rainbow-picklist-option',
-            {
-                'rainbow-picklist-option_selected': currentValueName === name,
-                'rainbow-picklist-option_active': activeOptionName === name,
-            },
-            className,
-        );
     }
 
     handleClick(event) {
@@ -102,19 +87,34 @@ class Option extends Component {
     }
 
     render() {
-        const { style, label, title, variant, icon, iconPosition, disabled } = this.props;
+        const {
+            style,
+            className,
+            label,
+            title,
+            variant,
+            icon,
+            iconPosition,
+            disabled,
+            activeOptionName,
+            name,
+            currentValueName,
+        } = this.props;
+
+        const isSelected = currentValueName === name;
+        const isActive = activeOptionName === name;
 
         if (variant === 'header') {
             return (
-                <li
-                    className={this.getHeaderClassNames()}
+                <StyledHeader
+                    className={className}
                     style={style}
                     title={title}
                     role="presentation"
                     onMouseDown={preventDefault}
                 >
-                    <span className="rainbow-picklist-option_header-label">{label}</span>
-                </li>
+                    <StyledHeaderLabel>{label}</StyledHeaderLabel>
+                </StyledHeader>
             );
         }
 
@@ -123,19 +123,21 @@ class Option extends Component {
 
         return (
             <li
-                className={this.getItemClassNames()}
+                className={className}
                 style={style}
                 role="presentation"
                 onMouseDown={this.handleClick}
                 onMouseEnter={this.handleHover}
             >
-                <a
+                <StyledItem
                     href="javascript:void(0);"
                     role="menuitem"
                     aria-disabled={disabled}
                     ref={this.itemRef}
+                    isSelected={isSelected}
+                    isActive={isActive}
                 >
-                    <span className="rainbow-picklist-option_icon-container" title={title}>
+                    <StyledIconContainer title={title}>
                         <Icon
                             data-id="menu-item-left-icon"
                             icon={icon}
@@ -144,14 +146,14 @@ class Option extends Component {
                         />
 
                         {label}
-                    </span>
+                    </StyledIconContainer>
                     <Icon
                         data-id="menu-item-right-icon"
                         icon={icon}
                         isVisible={hasRightIcon}
                         position={iconPosition}
                     />
-                </a>
+                </StyledItem>
             </li>
         );
     }
