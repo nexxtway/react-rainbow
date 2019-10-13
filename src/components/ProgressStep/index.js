@@ -80,7 +80,7 @@ class StepItem extends Component {
         if (label) {
             return label;
         }
-        if (stepState !== 'Inactive') {
+        if (stepState) {
             return stepState;
         }
         return '';

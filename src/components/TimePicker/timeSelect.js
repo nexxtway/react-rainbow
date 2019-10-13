@@ -59,6 +59,14 @@ export default class TimeSelect extends Component {
         this.handleButtonsDown = this.handleButtonsDown.bind(this);
     }
 
+    componentDidUpdate(prevProps) {
+        const { value: prevValue } = prevProps;
+        const { value } = this.props;
+        if (prevValue !== value) {
+            this.updateTime();
+        }
+    }
+
     setNextAmPmValue() {
         const { ampm } = this.state;
         const nextAmPmValue = getNextAmPmValue(ampm);
@@ -270,6 +278,15 @@ export default class TimeSelect extends Component {
         }
     }
 
+    updateTime() {
+        const { value } = this.props;
+        this.setState({
+            hour: getHour(value),
+            minutes: getMinutes(value),
+            ampm: getAmPm(value),
+        });
+    }
+
     focusHourInput() {
         this.hourInputRef.current.focus();
         this.inputFocusedIndex = 0;
@@ -328,12 +345,12 @@ export default class TimeSelect extends Component {
 
     render() {
         const { hour, minutes, ampm } = this.state;
-        const { onCloseModal, cancelLabel, okLabel, hours24 } = this.props;
+        const { onCloseModal, cancelLabel, okLabel, hours24, className } = this.props;
         const hourPlaceholder = this.prevHour || '--';
         const minutesPlaceholder = this.prevMinutes || '--';
 
         return (
-            <article>
+            <article className={className}>
                 <div
                     role="presentation"
                     className="rainbow-time-picker_time-select-content"
@@ -442,6 +459,7 @@ TimeSelect.propTypes = {
     okLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     onChange: PropTypes.func,
     value: PropTypes.string,
+    className: PropTypes.string,
 };
 
 TimeSelect.defaultProps = {
@@ -451,4 +469,5 @@ TimeSelect.defaultProps = {
     okLabel: 'OK',
     onChange: () => {},
     value: undefined,
+    className: undefined,
 };
