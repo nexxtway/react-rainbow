@@ -5,7 +5,9 @@ import RenderIf from './../RenderIf';
 import Header from './header';
 import { Provider } from './context';
 import getMapContainerStyles from './getMapContainerStyles';
-import './styles.css';
+import StyledContainer from './styled/container';
+import StyledMapContainer from './styled/mapContainer';
+import StyledCoordinatesContainer from './styled/coordinatesContainer';
 
 const currentInfoWindow = Symbol('currentInfoWindow');
 
@@ -81,22 +83,26 @@ export default class MapComponent extends Component {
         const { header, children, style } = this.props;
 
         return (
-            <div className={this.getContainerClassNames()} style={style} ref={this.container}>
-                <div
+            <StyledContainer
+                className={this.getContainerClassNames()}
+                style={style}
+                ref={this.container}
+            >
+                <StyledMapContainer
+                    className="rainbow-google-map_map-container"
                     ref={this.mapContainer}
                     style={getMapContainerStyles(this.container.current)}
-                    className="rainbow-google-map_map-container"
                 />
 
-                <div className="rainbow-google-map_coordinates-container">
+                <StyledCoordinatesContainer>
                     <RenderIf isTrue={!!header}>
                         <Header text={header} />
                     </RenderIf>
                     <ul>
                         <Provider value={this.state}>{children}</Provider>
                     </ul>
-                </div>
-            </div>
+                </StyledCoordinatesContainer>
+            </StyledContainer>
         );
     }
 }

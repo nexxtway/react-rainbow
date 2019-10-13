@@ -40,14 +40,16 @@ PreviewTable.propTypes = {
 export default function Preview(props) {
     const { fileName, fileType, columns, data, isLoading, onRemoveFile } = props;
     const previewData = data.slice(0, 5);
+    const name = fileName || 'Unknow File Name';
+    const type = fileType || 'Unknow File Type';
 
     return (
         <div>
             <StyledFileCard>
                 <CSVDocIcon />
                 <StyledFileCardContent>
-                    <StyledFileCardTitle title={fileName}>{fileName}</StyledFileCardTitle>
-                    <StyledFileCardDescription>{fileType}</StyledFileCardDescription>
+                    <StyledFileCardTitle title={name}>{name}</StyledFileCardTitle>
+                    <StyledFileCardDescription>{type}</StyledFileCardDescription>
                 </StyledFileCardContent>
                 <StyledButtonIcon
                     icon={<StyledIcon />}
