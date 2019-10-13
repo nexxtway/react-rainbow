@@ -35,6 +35,8 @@ PreviewTable.propTypes = {
 export default function Preview(props) {
     const { fileName, fileType, columns, data, isLoading, onRemoveFile } = props;
     const previewData = data.slice(0, 5);
+    const name = fileName || 'Unknow File Name';
+    const type = fileType || 'Unknow File Type';
 
     return (
         <div>
@@ -42,13 +44,13 @@ export default function Preview(props) {
                 <CSVDocIcon />
                 <div className="rainbow-import-records-flow_step-two-file-card-content">
                     <h1
-                        title={fileName}
+                        title={name}
                         className="rainbow-import-records-flow_step-two-file-card-title"
                     >
-                        {fileName}
+                        {name}
                     </h1>
                     <h2 className="rainbow-import-records-flow_step-two-file-card-description">
-                        {fileType}
+                        {type}
                     </h2>
                 </div>
                 <ButtonIcon
