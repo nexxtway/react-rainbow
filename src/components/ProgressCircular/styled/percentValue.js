@@ -1,11 +1,5 @@
 import styled from 'styled-components';
-import {
-    COLOR_BRAND,
-    COLOR_SUCCESS,
-    COLOR_YELLOW_1,
-    COLOR_ERROR,
-    COLOR_GRAY_2,
-} from '../../../styles/colors';
+import { COLOR_BRAND, COLOR_SUCCESS, COLOR_YELLOW_1, COLOR_ERROR } from '../../../styles/colors';
 
 const StyledPercentValue = styled.h1`
     font-size: 2rem;
