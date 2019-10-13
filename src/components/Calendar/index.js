@@ -15,7 +15,9 @@ import {
     getLastDayMonth,
     getYearsRange,
 } from './helpers';
-import './styles.css';
+import StyledControlsContainer from './styled/controlsContainer';
+import StyledMonthContainer from './styled/monthContainer';
+import StyledMonth from './styled/month';
 
 /**
  * Calendar provide a simple way to select a single date.
@@ -86,8 +88,8 @@ export default class Calendar extends Component {
 
         return (
             <section className={className} style={style}>
-                <div className="rainbow-calendar_controls-container">
-                    <div className="rainbow-calendar_month-container">
+                <StyledControlsContainer>
+                    <StyledMonthContainer>
                         <ButtonIcon
                             onClick={this.previousMonth}
                             size="medium"
@@ -96,9 +98,7 @@ export default class Calendar extends Component {
                             assistiveText="Previous Month"
                         />
 
-                        <h3 className="rainbow-calendar_month-text" id="month">
-                            {formattedMonth}
-                        </h3>
+                        <StyledMonth id="month">{formattedMonth}</StyledMonth>
 
                         <ButtonIcon
                             onClick={this.nextMonth}
@@ -107,16 +107,15 @@ export default class Calendar extends Component {
                             icon={<RightIcon />}
                             assistiveText="Next Month"
                         />
-                    </div>
+                    </StyledMonthContainer>
                     <Select
                         label="select year"
                         hideLabel
-                        className="rainbow-calendar_select-year"
                         value={currentYear}
                         options={yearsRange}
                         onChange={this.handleYearChange}
                     />
-                </div>
+                </StyledControlsContainer>
                 <table role="grid" aria-labelledby="month">
                     <DaysOfWeek />
                     <Month
