@@ -1,18 +1,20 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import ButtonIcon from '../ButtonIcon';
 import { Consumer } from '../ProgressIndicator/context';
 import DoneIcon from './doneIcon';
 import ErrorIcon from './errorIcon';
-import './styles.css';
+import StyledStep from './styled/step';
+import StyledStepButton from './styled/stepButton';
+import StyledInactiveIcon from './styled/inactiveIcon';
+import StyledActiveIcon from './styled/activeIcon';
+import StyledLabel from './styled/label';
 
 const iconMap = {
     Error: () => <ErrorIcon />,
     Completed: () => <DoneIcon />,
-    Active: () => <div className="rainbow-progress-step--is-active_icon" />,
-    Inactive: () => <div className="rainbow-progress-step_marker_icon" />,
+    Active: () => <StyledActiveIcon />,
+    Inactive: () => <StyledInactiveIcon />,
 };
 
 class StepItem extends Component {
@@ -55,21 +57,6 @@ class StepItem extends Component {
         return this.setState({ stepState });
     }
 
-    getContainerClassNames() {
-        const { className } = this.props;
-        return classnames('rainbow-progress-step', className);
-    }
-
-    getButtonClassNames() {
-        const { stepState } = this.state;
-        return classnames({
-            'rainbow-progress-step_marker': stepState === 'Inactive',
-            'rainbow-progress-step--is-completed': stepState === 'Completed',
-            'rainbow-progress-step--is-active': stepState === 'Active',
-            'rainbow-progress-step--error': stepState === 'Error',
-        });
-    }
-
     getAssistiveText() {
         const { label } = this.props;
         const { stepState } = this.state;
@@ -100,18 +87,19 @@ class StepItem extends Component {
     }
 
     render() {
-        const { label } = this.props;
+        const { label, className } = this.props;
+        const { stepState } = this.state;
 
         return (
-            <li className={this.getContainerClassNames()}>
-                <ButtonIcon
+            <StyledStep className={className}>
+                <StyledStepButton
+                    stepState={stepState}
                     icon={this.getIcon()}
-                    className={this.getButtonClassNames()}
                     onClick={this.handleOnClick}
                     assistiveText={this.getAssistiveText()}
                 />
-                <span className="rainbow-progress-step_label">{label}</span>
-            </li>
+                <StyledLabel stepState={stepState}>{label}</StyledLabel>
+            </StyledStep>
         );
     }
 }
