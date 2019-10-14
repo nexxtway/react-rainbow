@@ -100,7 +100,6 @@ class Option extends Component {
             name,
             currentValueName,
         } = this.props;
-
         const isSelected = currentValueName === name;
         const isActive = activeOptionName === name;
 
@@ -130,8 +129,10 @@ class Option extends Component {
                 onMouseEnter={this.handleHover}
             >
                 <StyledItem
+                    id={name}
                     href="javascript:void(0);"
-                    role="menuitem"
+                    role="option"
+                    aria-selected={isActive}
                     aria-disabled={disabled}
                     ref={this.itemRef}
                     isSelected={isSelected}

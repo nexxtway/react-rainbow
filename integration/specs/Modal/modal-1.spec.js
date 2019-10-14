@@ -30,29 +30,12 @@ describe('Modal base example', () => {
         modal.waitUntilClose();
         expect(modal.isOpen()).toBe(false);
     });
-    it.skip('should close the modal when is opened and click the closeButton', () => {
-        const modal = new PageModal(MODAL);
-        const triggerButton = $(BUTTON);
-        triggerButton.click();
-        modal.waitUntilOpen();
-        modal.clickCloseButton();
-        modal.waitUntilClose();
-        expect(modal.isOpen()).toBe(false);
-    });
     it('should return focus to trigger element when close modal with ESC key', () => {
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);
         triggerButton.click();
         modal.waitUntilOpen();
         browser.keys(ESCAPE_KEY);
-        expect(triggerButton.isFocused()).toBe(true);
-    });
-    it.skip('should return focus to trigger element when close modal with close button', () => {
-        const modal = new PageModal(MODAL);
-        const triggerButton = $(BUTTON);
-        triggerButton.click();
-        modal.waitUntilOpen();
-        modal.clickCloseButton();
         expect(triggerButton.isFocused()).toBe(true);
     });
     it('should focus the close button when the modal is opened and press TAB', () => {
@@ -62,5 +45,22 @@ describe('Modal base example', () => {
         modal.waitUntilOpen();
         browser.keys(TAB_KEY);
         expect(modal.hasFocusCloseButton()).toBe(true);
+    });
+    it.skip('should close the modal when is opened and click the closeButton', () => {
+        const modal = new PageModal(MODAL);
+        const triggerButton = $(BUTTON);
+        triggerButton.click();
+        modal.waitUntilOpen();
+        modal.clickCloseButton();
+        modal.waitUntilClose();
+        expect(modal.isOpen()).toBe(false);
+    });
+    it.skip('should return focus to trigger element when close modal with close button', () => {
+        const modal = new PageModal(MODAL);
+        const triggerButton = $(BUTTON);
+        triggerButton.click();
+        modal.waitUntilOpen();
+        modal.clickCloseButton();
+        expect(triggerButton.isFocused()).toBe(true);
     });
 });

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import './styles.css';
+import StyledDivider from './styled/divider';
 
 /**
  * The MenuDivider are used for separate content inside the ButtonMenu.
@@ -9,16 +8,7 @@ import './styles.css';
 export default function MenuDivider(props) {
     const { variant, className, style } = props;
 
-    const getVariantClassNames = () => {
-        if (variant === 'default') {
-            return 'rainbow-divider';
-        }
-        return 'rainbow-divider_space';
-    };
-
-    const getClassNames = () => classnames(getVariantClassNames(), className);
-
-    return <li className={getClassNames()} style={style} role="separator" />;
+    return <StyledDivider className={className} style={style} variant={variant} role="separator" />;
 }
 
 MenuDivider.propTypes = {

@@ -127,7 +127,7 @@ const containerStyles = {
     className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
     style={containerStyles}
 >
-    <DatePicker disabled value={Date.now()} label="DatePicker Label" />
+    <DatePicker disabled value={new Date()} label="DatePicker Label" />
 </div>;
 ```
 
@@ -142,6 +142,6 @@ const containerStyles = {
     className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
     style={containerStyles}
 >
-    <DatePicker readOnly value={Date.now()} label="DatePicker Label" />
+    <DatePicker readOnly value={new Date()} label="DatePicker Label" />
 </div>;
 ```
