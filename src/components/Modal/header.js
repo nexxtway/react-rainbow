@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import StyledHeader from './styled/header';
 
 export default function Header({ title, id }) {
     if (typeof title === 'string') {
         return (
-            <header className="rainbow-modal_header">
+            <StyledHeader>
                 <h2 id={id}>{title}</h2>
-            </header>
+            </StyledHeader>
         );
     }
     return title;

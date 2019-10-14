@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import MapMarker from './../index';
+import MapMarker from '../index';
+import StyledButton from '../styled/button';
 
 const marker = {
     addListener: jest.fn(),
@@ -34,7 +35,7 @@ describe('<MapMarker/>', () => {
         const component = mount(
             <MapMarker latitude={5} longitude={10} selectedMarker="marker-1" />,
         );
-        expect(component.find('.rainbow-google-map-marker_button').prop('aria-pressed')).toBe(true);
+        expect(component.find(StyledButton).prop('aria-pressed')).toBe(true);
     });
     it('should not retrun anything when latitude and longitude are not passed', () => {
         const component = mount(<MapMarker />);
@@ -141,7 +142,7 @@ describe('<MapMarker/>', () => {
         };
         // this actually is context not props
         component.setProps(context);
-        component.find('.rainbow-google-map-marker_button').simulate('click');
+        component.find(StyledButton).simulate('click');
         expect(marker.setAnimation).toHaveBeenCalledWith(null);
     });
     it('should call setAnimation on marker with the bounce animation when mouseover event occurs on marker button', () => {
@@ -149,7 +150,7 @@ describe('<MapMarker/>', () => {
         const component = mount(<MapMarker latitude={5} longitude={10} />);
         // this actually is context not props
         component.setProps(newContext);
-        component.find('.rainbow-google-map-marker_button').simulate('mouseover');
+        component.find(StyledButton).simulate('mouseover');
         expect(marker.setAnimation).toHaveBeenCalledWith(global.google.maps.Animation.BOUNCE);
     });
     it('should call setAnimation on marker with the bounce animation when the marker button is focused', () => {
@@ -157,7 +158,7 @@ describe('<MapMarker/>', () => {
         const component = mount(<MapMarker latitude={5} longitude={10} />);
         // this actually is context not props
         component.setProps(newContext);
-        component.find('.rainbow-google-map-marker_button').simulate('focus');
+        component.find(StyledButton).simulate('focus');
         expect(marker.setAnimation).toHaveBeenCalledWith(global.google.maps.Animation.BOUNCE);
     });
     it('should call setAnimation on marker with null when mouseleave event occurs on marker button', () => {
@@ -165,7 +166,7 @@ describe('<MapMarker/>', () => {
         const component = mount(<MapMarker latitude={5} longitude={10} />);
         // this actually is context not props
         component.setProps(newContext);
-        component.find('.rainbow-google-map-marker_button').simulate('mouseleave');
+        component.find(StyledButton).simulate('mouseleave');
         expect(marker.setAnimation).toHaveBeenCalledWith(null);
     });
     it('should call setAnimation on marker with null when the marker button is blurred', () => {
@@ -173,14 +174,12 @@ describe('<MapMarker/>', () => {
         const component = mount(<MapMarker latitude={5} longitude={10} />);
         // this actually is context not props
         component.setProps(newContext);
-        component.find('.rainbow-google-map-marker_button').simulate('blur');
+        component.find(StyledButton).simulate('blur');
         expect(marker.setAnimation).toHaveBeenCalledWith(null);
     });
     it('should set aria-pressed to false in marker button when it is not selected', () => {
         marker.setAnimation.mockReset();
         const component = mount(<MapMarker latitude={5} longitude={10} />);
-        expect(component.find('.rainbow-google-map-marker_button').prop('aria-pressed')).toBe(
-            false,
-        );
+        expect(component.find(StyledButton).prop('aria-pressed')).toBe(false);
     });
 });
