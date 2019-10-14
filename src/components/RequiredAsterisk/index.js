@@ -1,14 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import RenderIf from '../RenderIf';
-import './styles.css';
+import StyledAsterisk from './StyledAsterisk';
 
 export default function RequiredAsterisk({ required }) {
     return (
         <RenderIf isTrue={required}>
-            <abbr className="rainbow-required-asterisk" title="required">
-                *{' '}
-            </abbr>
+            <StyledAsterisk title="required">* </StyledAsterisk>
         </RenderIf>
     );
 }
