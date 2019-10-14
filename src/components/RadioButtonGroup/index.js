@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import withReduxForm from './../../libs/hocs/withReduxForm';
 import ButtonItems from './buttonItems';
 import RenderIf from '../RenderIf';
 import RequiredAsterisk from '../RequiredAsterisk';
 import { uniqueId } from '../../libs/utils';
-import './styles.css';
 import Marker from './marker';
 import isOptionChecked from './helpers/isOptionChecked';
+import StyledContainer from './styled/container';
+import StyledLabel from './styled/label';
+import StyledButtonItemsContainer from './styled/buttonItemsContainer';
+import StyledTextError from './styled/textError';
 
 /**
  * A button list that can have a single entry checked at any one time.
@@ -42,24 +44,6 @@ class RadioButtonGroup extends Component {
         if (prevProps.value !== this.props.value) {
             this.updateMarker();
         }
-    }
-
-    getVariantClassNames() {
-        const { variant } = this.props;
-        if (variant === 'default') {
-            return null;
-        }
-        return `rainbow-radio-button-group--${variant}`;
-    }
-
-    getContainerClassNames() {
-        const { className, error } = this.props;
-        return classnames(
-            'rainbow-radio-button-group_container',
-            this.getVariantClassNames(),
-            { 'rainbow-radio-button-group--error': !!error },
-            className,
-        );
     }
 
     getErrorMessageId() {
@@ -117,7 +101,17 @@ class RadioButtonGroup extends Component {
     }
 
     render() {
-        const { style, label, required, error, value, id, onChange } = this.props;
+        const {
+            style,
+            className,
+            label,
+            required,
+            error,
+            value,
+            id,
+            onChange,
+            variant,
+        } = this.props;
         const { options, markerLeft, markerWidth } = this.state;
         const markerStyle = {
             left: markerLeft,
@@ -125,35 +119,34 @@ class RadioButtonGroup extends Component {
         };
 
         return (
-            <fieldset id={id} className={this.getContainerClassNames()} style={style}>
+            <StyledContainer id={id} className={className} style={style}>
                 <RenderIf isTrue={!!label}>
-                    <legend className="rainbow-radio-button-group_label">
+                    <StyledLabel variant={variant}>
                         <RequiredAsterisk required={required} />
                         {label}
-                    </legend>
+                    </StyledLabel>
                 </RenderIf>
-                <div className="rainbow-radio-button-group_inner-container">
-                    <Marker isVisible={this.isMarkerActive()} style={markerStyle} />
-                    <div className="rainbow-radio-button-group_items-container">
-                        <ButtonItems
-                            value={value}
-                            onChange={onChange}
-                            options={options}
-                            name={this.groupNameId}
-                            required={required}
-                            ariaDescribedby={this.getErrorMessageId()}
-                        />
-                    </div>
-                </div>
+                <StyledButtonItemsContainer variant={variant}>
+                    <Marker
+                        variant={variant}
+                        isVisible={this.isMarkerActive()}
+                        style={markerStyle}
+                    />
+
+                    <ButtonItems
+                        value={value}
+                        onChange={onChange}
+                        options={options}
+                        name={this.groupNameId}
+                        required={required}
+                        ariaDescribedby={this.getErrorMessageId()}
+                        variant={variant}
+                    />
+                </StyledButtonItemsContainer>
                 <RenderIf isTrue={!!error}>
-                    <div
-                        id={this.getErrorMessageId()}
-                        className="rainbow-radio-button-group_text-error"
-                    >
-                        {error}
-                    </div>
+                    <StyledTextError id={this.getErrorMessageId()}>{error}</StyledTextError>
                 </RenderIf>
-            </fieldset>
+            </StyledContainer>
         );
     }
 }
