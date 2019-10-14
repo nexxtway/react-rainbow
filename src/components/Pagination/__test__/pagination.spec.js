@@ -17,17 +17,17 @@ describe('<Pagination />', () => {
         const component = mount(<Pagination pages={5} activePage={1} />);
         expect(component.find('nav').prop('aria-label')).toBe('pagination');
     });
-    it('shold call the onClick function with the right arguments when the previous page button is clicked', () => {
+    it('should call the onClick function with the right arguments when the previous page button is clicked', () => {
         const onChangeMockFn = jest.fn();
         const component = mount(<Pagination pages={5} activePage={5} onChange={onChangeMockFn} />);
-        const previousButton = component.find('[data-id="previous-page-button"]');
+        const previousButton = component.find('a[data-id="previous-page-button"]');
         previousButton.simulate('click');
         expect(onChangeMockFn).toHaveBeenCalledWith(expect.any(Object), 4);
     });
-    it('shold call the onClick function with the right arguments when the next page button is clicked', () => {
+    it('should call the onClick function with the right arguments when the next page button is clicked', () => {
         const onChangeMockFn = jest.fn();
         const component = mount(<Pagination pages={5} activePage={1} onChange={onChangeMockFn} />);
-        const previousButton = component.find('[data-id="next-page-button"]');
+        const previousButton = component.find('a[data-id="next-page-button"]');
         previousButton.simulate('click');
         expect(onChangeMockFn).toHaveBeenCalledWith(expect.any(Object), 2);
     });

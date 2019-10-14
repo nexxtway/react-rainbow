@@ -24,7 +24,7 @@ export default function Pagination(props) {
                     icon={<LeftArrow />}
                     onClick={event => onChange(event, activePage - 1)}
                     disabled={isFirstItemSelected}
-                    ariaLabel="Goto the Previous Page"
+                    ariaLabel="Goto Previous Page"
                 />
 
                 <PageButtons onChange={onChange} pages={pages} activePage={activePage} />
@@ -33,7 +33,7 @@ export default function Pagination(props) {
                     icon={<RightArrow />}
                     onClick={event => onChange(event, activePage + 1)}
                     disabled={isLastItemSelected}
-                    ariaLabel="Goto the Next Page"
+                    ariaLabel="Goto Next Page"
                 />
             </StyledPaginationContainer>
         </StyledNav>
