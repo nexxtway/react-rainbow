@@ -93,10 +93,4 @@ describe('<ProgressIndicator/>', () => {
             .simulate('click');
         expect(onClickMockFn).toHaveBeenCalledWith(expect.any(Object), 'step-2');
     });
-    it('should have the right class names when a custom class is passed', () => {
-        const component = mount(<ProgressIndicator className="my-custom-class-name" />);
-        expect(component.find('div.rainbow-progress-indicator.my-custom-class-name').exists()).toBe(
-            true,
-        );
-    });
 });

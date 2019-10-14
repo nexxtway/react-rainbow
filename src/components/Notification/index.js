@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import CloseIcon from './closeIcon';
-import ButtonIcon from './../ButtonIcon';
 import RenderIf from '../RenderIf';
 import Icon from './icons';
 import Title from './title';
 import Description from './description';
-import './styles.css';
+import StyledContainer from './styled/container';
+import StyledAnchor from './styled/anchor';
+import StyledCloseButton from './styled/closeButton';
 
 /**
  * Notifications serve as a confirmation mechanism & feedback that comes into the page at the top.
@@ -15,13 +15,9 @@ import './styles.css';
 export default function Notification(props) {
     const { className, style, icon, title, description, onRequestClose, hideCloseButton } = props;
 
-    function getClassName() {
-        return classnames('rainbow-notification', className);
-    }
-
     return (
-        <div className={getClassName()} style={style}>
-            <a className="rainbow-notification_anchor">
+        <StyledContainer className={className} style={style}>
+            <StyledAnchor>
                 <RenderIf isTrue={!!icon}>
                     <Icon icon={icon} />
                 </RenderIf>
@@ -33,17 +29,16 @@ export default function Notification(props) {
                         <Description text={description} />
                     </RenderIf>
                 </span>
-            </a>
+            </StyledAnchor>
             <RenderIf isTrue={!hideCloseButton}>
-                <ButtonIcon
-                    className="rainbow-notification_close"
+                <StyledCloseButton
                     icon={<CloseIcon />}
                     size="small"
                     title="Close"
                     onClick={onRequestClose}
                 />
             </RenderIf>
-        </div>
+        </StyledContainer>
     );
 }
 

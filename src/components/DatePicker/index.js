@@ -32,9 +32,7 @@ class DatePicker extends Component {
 
     handleChange(...args) {
         const { onChange } = this.props;
-        this.setState({
-            isOpen: false,
-        });
+        this.closeModal();
         onChange(...args);
     }
 
