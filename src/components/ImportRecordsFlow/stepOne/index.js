@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import VisualPicker from '../../VisualPicker';
 import VisualPickerOption from '../../VisualPickerOption';
 import VisualPickerOptionFooter from '../../VisualPickerOptionFooter';
 import RenderIf from '../../RenderIf';
@@ -8,7 +7,8 @@ import Select from '../../Select';
 import AddRecordsIcon from '../icons/addRecords';
 import MergeRecordsIcon from '../icons/mergeRecords';
 import getSchemaFieldOptions from '../helpers/getSchemaFieldOptions';
-import './styles.css';
+import StyledContainer from './styled/container';
+import StyledVisualPicker from './styled/visualPicker';
 
 export default function StepOne(props) {
     const { schemaFields, actionOption, onChangeAction, matchField, onChangeMatchField } = props;
@@ -20,9 +20,8 @@ export default function StepOne(props) {
     }, [schemaFields]);
 
     return (
-        <div className="rainbow-import-records-flow_step-one-container">
-            <VisualPicker
-                className="rainbow-import-records-flow_step-one-visual-picker"
+        <StyledContainer>
+            <StyledVisualPicker
                 label="Select the option type that do you want to do"
                 onChange={onChangeAction}
                 value={actionOption}
@@ -39,7 +38,7 @@ export default function StepOne(props) {
                 >
                     <MergeRecordsIcon />
                 </VisualPickerOption>
-            </VisualPicker>
+            </StyledVisualPicker>
             <RenderIf isTrue={isMergeOption}>
                 <Select
                     label="Match Field"
@@ -49,7 +48,7 @@ export default function StepOne(props) {
                     value={matchField}
                 />
             </RenderIf>
-        </div>
+        </StyledContainer>
     );
 }
 

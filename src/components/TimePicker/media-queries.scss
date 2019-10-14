@@ -35,3 +35,17 @@
         margin-left: 0;
     }
 }
+
+@media (max-width: 340px) {
+    .rainbow-time-picker_time-select-value {
+        font-size: 24px;
+
+        &::placeholder {
+            font-size: 24px;
+        }
+    }
+
+    .rainbow-time-picker_select-ampm, .rainbow-time-picker_select-option {
+        font-size: 22px;
+    }
+}
