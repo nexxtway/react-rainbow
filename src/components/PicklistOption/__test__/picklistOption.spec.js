@@ -1,6 +1,8 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 import { Option as PicklistOption } from '../index';
+import StyledHeader from '../styled/header';
+import StyledItem from '../styled/item';
 
 describe('<PicklistOption />', () => {
     let optionRegisterFn;
@@ -19,6 +21,15 @@ describe('<PicklistOption />', () => {
         optionUnregisterFn.mockClear();
         hoverFn.mockClear();
         clickFn.mockClear();
+    });
+
+    it('should render a option header when variant is header', () => {
+        const component = mount(<PicklistOption label="Header 1" variant="header" />);
+        expect(component.find(StyledHeader).exists()).toBe(true);
+    });
+    it('should render a regular option when variant is default', () => {
+        const component = mount(<PicklistOption label="option 1" name="option1" />);
+        expect(component.find(StyledItem).exists()).toBe(true);
     });
     it('should not register when is disabled', () => {
         mount(<PicklistOption disabled />);
