@@ -1,7 +1,8 @@
 /* eslint-disable no-script-url */
 import React from 'react';
 import { mount } from 'enzyme';
-import MenuItem from './../';
+import MenuItem from '../';
+import StyledIconContainer from '../styled/iconContainer';
 
 describe('<MenuItem/>', () => {
     it('should render the label passed', () => {
@@ -10,9 +11,7 @@ describe('<MenuItem/>', () => {
     });
     it('should set the title passed in the label container', () => {
         const component = mount(<MenuItem title="item title" />);
-        expect(
-            component.find('span[className="rainbow-menu-item_icon-container"]').prop('title'),
-        ).toBe('item title');
+        expect(component.find(StyledIconContainer).prop('title')).toBe('item title');
     });
     it('should pass the right props to the left and right Icon', () => {
         const component = mount(<MenuItem icon={<svg />} iconPosition="right" />);
