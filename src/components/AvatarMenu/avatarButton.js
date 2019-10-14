@@ -52,7 +52,7 @@ export default class AvatarButton extends Component {
 
         return (
             <StyledButton
-                data-id="rainbow-avatar-menu_button"
+                data-id="avatar-menu-button"
                 tabIndex={tabIndex}
                 onFocus={onFocus}
                 onBlur={onBlur}
