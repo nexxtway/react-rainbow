@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import AsistiveText from './../AssistiveText';
 import normalizeValue from './normalizeValue';
-import './styles.css';
+import StyledContainer from './styled/container';
+import StyledBar from './styled/bar';
 
 /**
  * Progress bar component communicates to the user the progress of a particular process.
@@ -11,35 +11,24 @@ import './styles.css';
 export default function ProgressBar(props) {
     const { className, style, assistiveText, value, size, variant } = props;
 
-    const getContainerClassNames = () =>
-        classnames(
-            'rainbow-progress-bar',
-            `rainbow-progress-bar--${size}`,
-            { 'rainbow-progress-bar--success': variant === 'success' },
-            className,
-        );
-
-    const getProgressBarClassNames = () =>
-        classnames('rainbow-progress-bar_value', {
-            'rainbow-progress-bar_value--success': variant === 'success',
-        });
-
     const normalizedValue = normalizeValue(value);
     const WIDTH = { width: `${normalizedValue}%` };
 
     return (
-        <div
-            className={getContainerClassNames()}
+        <StyledContainer
+            className={className}
+            style={style}
+            size={size}
+            variant={variant}
             aria-valuemin="0"
             aria-valuemax="100"
             aria-valuenow={normalizedValue}
             role="progressbar"
-            style={style}
         >
-            <span className={getProgressBarClassNames()} style={WIDTH}>
+            <StyledBar variant={variant} style={WIDTH}>
                 <AsistiveText text={assistiveText} />
-            </span>
-        </div>
+            </StyledBar>
+        </StyledContainer>
     );
 }
 
