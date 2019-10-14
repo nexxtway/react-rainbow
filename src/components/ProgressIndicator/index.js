@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { Provider } from './context';
-import './styles.css';
+import StyledContainer from './styled/container';
+import StyledIndicatorList from './styled/indicatorList';
+import StyledIndicatorBar from './styled/indicatorBar';
 
 /**
  * A progress indicator component communicates to the user the progress of a particular process.
@@ -13,11 +14,6 @@ export default class ProgressIndicator extends Component {
         this.stepChildren = [];
         this.registerStep = this.registerStep.bind(this);
         this.setChildrenState = this.setChildrenState.bind(this);
-    }
-
-    getContainerClassNames() {
-        const { className } = this.props;
-        return classnames('rainbow-progress-indicator', className);
     }
 
     setChildrenState(step) {
@@ -41,7 +37,7 @@ export default class ProgressIndicator extends Component {
     }
 
     render() {
-        const { style, children, currentStepName, onClick } = this.props;
+        const { style, className, children, currentStepName, onClick } = this.props;
         const context = {
             currentStepName,
             privateRegisterStep: this.registerStep,
@@ -50,12 +46,12 @@ export default class ProgressIndicator extends Component {
         };
 
         return (
-            <div className={this.getContainerClassNames()} style={style}>
-                <ol className="rainbow-progress-indicator_list">
+            <StyledContainer className={className} style={style}>
+                <StyledIndicatorList>
                     <Provider value={context}>{children}</Provider>
-                </ol>
-                <div className="rainbow-progress-indicator_bar" />
-            </div>
+                </StyledIndicatorList>
+                <StyledIndicatorBar />
+            </StyledContainer>
         );
     }
 }

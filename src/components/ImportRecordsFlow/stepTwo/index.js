@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import UploadFileButton from './uploadFileButton';
 import Preview from './preview';
-import './styles.css';
+import StyledContainer from './styled/container';
+import StyledText from './styled/text';
 
 function preventDefault(event) {
     event.stopPropagation();
@@ -23,11 +23,6 @@ export default function StepTwo(props) {
     } = props;
 
     const [isDragOver, setIsDragOver] = useState(false);
-
-    const getContainerClassNames = () =>
-        classnames('rainbow-import-records-flow_step-two-container', {
-            'rainbow-import-records-flow_step-two-container-drag-over': isDragOver,
-        });
 
     const handleChange = event => {
         onProcessFile(event.target.files[0]);
@@ -65,8 +60,8 @@ export default function StepTwo(props) {
     }
 
     return (
-        <div
-            className={getContainerClassNames()}
+        <StyledContainer
+            isDragOver={isDragOver}
             onDragEnter={preventDefault}
             onDragLeave={handleDragLeave}
             onDragOver={handleDragOver}
@@ -74,10 +69,8 @@ export default function StepTwo(props) {
             draggable
         >
             <UploadFileButton onChange={handleChange} />
-            <h1 className="rainbow-import-records-flow_step-two-text">
-                Find the file in your desktop.
-            </h1>
-        </div>
+            <StyledText>Find the file in your desktop.</StyledText>
+        </StyledContainer>
     );
 }
 
