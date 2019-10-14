@@ -5,7 +5,7 @@ const StyledMonthContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     flex-grow: 1;
-    margin-right: 16px;
+    margin-right: 12px;
 `;
 
 export default StyledMonthContainer;

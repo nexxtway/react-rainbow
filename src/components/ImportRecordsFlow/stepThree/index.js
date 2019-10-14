@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Table from '../../Table';
 import Column from '../../Column';
 import getAssignFieldsData from '../helpers/getAssignFieldsData';
 import ModifyCell from './modifyCell';
 import FileFieldCell from './fileFieldCell';
 import DatabaseFieldCell from './databaseFieldCell';
 import AssignFieldModal from './assignFieldModal';
-import './styles.css';
+import StyledTable from '../styled/table';
 
 export default function StepThree(props) {
     const { attributes, columns, onAssignField, fieldsMap, data, matchField } = props;
@@ -37,7 +36,7 @@ export default function StepThree(props) {
 
     return (
         <div>
-            <Table className="rainbow-import-records-flow_table" keyField="id" data={assignData}>
+            <StyledTable keyField="id" data={assignData}>
                 <Column
                     header="Modify"
                     field="fileField"
@@ -51,7 +50,7 @@ export default function StepThree(props) {
                     field="databaseField"
                     component={DatabaseFieldCell}
                 />
-            </Table>
+            </StyledTable>
             <AssignFieldModal
                 attributes={attributes}
                 isAssignFieldModalOpen={isAssignFieldModalOpen}
