@@ -15,10 +15,6 @@ import StyledCloseButton from './styled/closeButton';
 export default function Notification(props) {
     const { className, style, icon, title, description, onRequestClose, hideCloseButton } = props;
 
-    // function getClassName() {
-    //     return classnames('rainbow-notification', className);
-    // }
-
     return (
         <StyledContainer className={className} style={style}>
             <StyledAnchor>
