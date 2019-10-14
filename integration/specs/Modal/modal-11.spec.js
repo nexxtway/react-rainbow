@@ -74,7 +74,7 @@ describe('Modal with redux form example', () => {
         browser.keys(ESCAPE_KEY);
         expect(modal.isOpen()).toBe(false);
     });
-    it('should close the modal when select an option with keyboard and then press ESC', () => {
+    it.skip('should close the modal when select an option with keyboard and then press ESC', () => {
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);
         triggerButton.click();
