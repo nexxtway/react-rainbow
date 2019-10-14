@@ -12,16 +12,6 @@ const StyledButtonItem = styled.span`
     transition: transform 600ms cubic-bezier(0.02, 0.94, 0.09, 0.97),
         all 300ms cubic-bezier(0.17, 0.67, 0.14, 1.03);
     transform: translate3d(0, 0, 0);
-    margin-left: 1px;
-    margin-right: 1px;
-
-    &:first-child {
-        margin-left: -5px;
-    }
-
-    &:last-child {
-        margin-right: -1px;
-    }
 
     &:hover {
         background-color: rgba(227, 229, 237, 0.4);
@@ -52,7 +42,7 @@ const StyledButtonItem = styled.span`
         `
             transition: transform 600ms cubic-bezier(0.02, 0.94, 0.09, 0.97), all 300ms cubic-bezier(0.17, 0.67, 0.14, 1.03);
             transform: translate3d(0, 0, 0);
-            height: 2.6rem;
+            height: 100%;
 
             &:hover {
                 background-color: transparent;

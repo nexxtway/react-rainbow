@@ -1,4 +1,4 @@
-##### radiobuttongroup base
+##### RadioButtonGroup base
 
 ```js
 const options = [
@@ -38,7 +38,7 @@ class SimpleRadioButtonGroup extends React.Component {
 </div>;
 ```
 
-##### radiobuttongroup brand with label
+##### RadioButtonGroup brand with label
 
 ```js
 const options = [
@@ -80,7 +80,7 @@ class LabeledBrandRadioButtonGroup extends React.Component {
 </div>;
 ```
 
-##### radiobuttongroup inverse
+##### RadioButtonGroup inverse
 
 ```js
 const options = [
@@ -129,7 +129,7 @@ class RadioButtonGroupInverse extends React.Component {
 </div>;
 ```
 
-##### radiobuttongroup disabled
+##### RadioButtonGroup disabled
 
 ```js
 const options = [
@@ -169,7 +169,7 @@ class DisabledRadioButtonGroup extends React.Component {
 </div>;
 ```
 
-##### radiobuttongroup required
+##### RadioButtonGroup required
 
 ```js
 const options = [
@@ -210,7 +210,7 @@ class RequiredRadioButtonGroup extends React.Component {
 </div>;
 ```
 
-##### radiobutton group error
+##### RadioButtonGroup error
 
 ```js
 const options = [
