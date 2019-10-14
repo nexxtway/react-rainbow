@@ -3,20 +3,6 @@ import { mount } from 'enzyme';
 import Icon from './../icons';
 
 describe('<NotificationIcon/>', () => {
-    it('should have the right class names', () => {
-        const component = mount(<Icon />);
-        expect(component.find('div').prop('className')).toBe('rainbow-notification_icon-container');
-    });
-    it('should have the right class names when icon variants are passed', () => {
-        const variants = ['info', 'error', 'warning', 'success'];
-        variants.forEach(variant => {
-            const component = mount(<Icon icon={variant} />);
-            const iconClassNameProp = component.find('div').prop('className');
-            expect(iconClassNameProp).toBe(
-                `rainbow-notification_icon-container rainbow-notification_icon--${variant}`,
-            );
-        });
-    });
     it('should render the "svg" passed as icon', () => {
         const component = mount(<Icon icon={<svg />} />);
         expect(component.find('svg').exists()).toBe(true);
