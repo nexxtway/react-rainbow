@@ -11,7 +11,6 @@ import StepOne from './stepOne';
 import StepTwo from './stepTwo';
 import StepThree from './stepThree';
 import StepFour from './stepFour';
-import './styles.css';
 
 const stepNames = ['step-1', 'step-2', 'step-3', 'step-4'];
 

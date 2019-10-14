@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import InfoIcon from './infoIcon';
 import ErrorIcon from './errorIcon';
 import SuccessIcon from './successIcon';
 import WarningIcon from './warningIcon';
+import StyledIconContainer from '../styled/iconContainer';
 
 const iconMap = {
     info: () => <InfoIcon />,
@@ -15,15 +15,8 @@ const iconMap = {
 };
 
 function VariantIcon({ icon }) {
-    function getClassName() {
-        return classnames(
-            'rainbow-notification_icon-container',
-            `rainbow-notification_icon--${icon}`,
-        );
-    }
-
     if (iconMap[icon]) {
-        return <div className={getClassName()}>{iconMap[icon]()}</div>;
+        return <StyledIconContainer icon={icon}>{iconMap[icon]()}</StyledIconContainer>;
     }
     return null;
 }
@@ -32,7 +25,7 @@ export default function Icon({ icon }) {
     if (typeof icon === 'string') {
         return <VariantIcon icon={icon} />;
     }
-    return <div className="rainbow-notification_icon-container">{icon}</div>;
+    return <StyledIconContainer>{icon}</StyledIconContainer>;
 }
 
 Icon.propTypes = {
