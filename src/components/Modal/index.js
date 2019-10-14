@@ -134,6 +134,7 @@ export default class Modal extends Component {
                         size={size}
                     >
                         <StyledCloseButton
+                            id="modal-close-button"
                             icon={<CloseIcon />}
                             title="Close"
                             onClick={this.closeModal}

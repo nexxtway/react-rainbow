@@ -33,34 +33,6 @@ describe('Modal with redux form example', () => {
         modal.waitUntilOpen();
         expect(titleInput.getValue()).toBe('React Rainbow');
     });
-    it.skip('should return focus to date picker input when both modals are opened and press esc key', () => {
-        const modal = new PageModal(MODAL);
-        const triggerButton = $(BUTTON);
-        triggerButton.click();
-        modal.waitUntilOpen();
-        const datePickerInput = $(DATE_PICKER_INPUT);
-        datePickerInput.click();
-        modal.waitUntilOpen();
-        browser.keys(ESCAPE_KEY);
-        browser.waitUntil(() => !$('.rainbow-date-picker_modal').isDisplayed());
-        expect(datePickerInput.isFocused()).toBe(true);
-    });
-    it.skip('should return focus to time picker input when both modals are opened and select a time', () => {
-        const modal = new PageModal(MODAL);
-        const triggerButton = $(BUTTON);
-        triggerButton.click();
-        modal.waitUntilOpen();
-        const timePickerInput = $(TIME_PICKER_INPUT);
-        timePickerInput.click();
-        modal.waitUntilOpen();
-        browser.keys('0');
-        browser.keys('0');
-        browser.keys('0');
-        browser.keys('0');
-        browser.keys(ENTER_KEY);
-        browser.waitUntil(() => !$('.rainbow-time-picker_modal').isDisplayed());
-        expect(timePickerInput.isFocused()).toBe(true);
-    });
     it('should not close the modal when is opened and press ESC if the lookup has value typed', () => {
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);
@@ -116,5 +88,45 @@ describe('Modal with redux form example', () => {
         expect(lookup.getSelectedOptionLabel()).toBe('Barcelona');
         browser.keys(ESCAPE_KEY);
         expect(modal.isOpen()).toBe(false);
+    });
+    it.skip('should return focus to date picker input when both modals are opened and press esc key', () => {
+        const modal = new PageModal(MODAL);
+        const triggerButton = $(BUTTON);
+        triggerButton.click();
+        modal.waitUntilOpen();
+        const datePickerInput = $(DATE_PICKER_INPUT);
+        datePickerInput.click();
+        modal.waitUntilOpen();
+        browser.keys(ESCAPE_KEY);
+        browser.waitUntil(
+            () =>
+                !browser
+                    .react$('DatePicker')
+                    .react$('Modal')
+                    .isDisplayed(),
+        );
+        expect(datePickerInput.isFocused()).toBe(true);
+    });
+    it.skip('should return focus to time picker input when both modals are opened and select a time', () => {
+        const modal = new PageModal(MODAL);
+        const triggerButton = $(BUTTON);
+        triggerButton.click();
+        modal.waitUntilOpen();
+        const timePickerInput = $(TIME_PICKER_INPUT);
+        timePickerInput.click();
+        modal.waitUntilOpen();
+        browser.keys('0');
+        browser.keys('0');
+        browser.keys('0');
+        browser.keys('0');
+        browser.keys(ENTER_KEY);
+        browser.waitUntil(
+            () =>
+                !browser
+                    .react$('DatePicker')
+                    .react$('Modal')
+                    .isDisplayed(),
+        );
+        expect(timePickerInput.isFocused()).toBe(true);
     });
 });
