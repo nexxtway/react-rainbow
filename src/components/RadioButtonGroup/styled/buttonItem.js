@@ -15,6 +15,14 @@ const StyledButtonItem = styled.span`
     margin-left: 1px;
     margin-right: 1px;
 
+    &:first-child {
+        margin-left: -5px;
+    }
+
+    &:last-child {
+        margin-right: -1px;
+    }
+
     &:hover {
         background-color: rgba(227, 229, 237, 0.4);
         cursor: pointer;

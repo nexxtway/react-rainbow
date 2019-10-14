@@ -10,6 +10,7 @@ const StyledButtonItemsContainer = styled.div`
     background-color: rgba(227, 229, 237, 0.4);
     line-height: 2.5rem;
     height: 2.5rem;
+    margin-left: -2px;
     ${props =>
         props.variant === 'inverse' &&
         `
