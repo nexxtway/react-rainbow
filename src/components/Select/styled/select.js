@@ -18,8 +18,7 @@ const StyledSelect = styled.select`
     margin: 0;
     text-transform: none;
     width: 100%;
-    -moz-appearance: none;
-    -webkit-appearance: none;
+    appearance: none;
     line-height: 2rem;
     height: 2.5rem;
     border: 1px solid ${COLOR_GRAY_3};
