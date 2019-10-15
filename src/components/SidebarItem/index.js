@@ -27,7 +27,12 @@ function SidebarItem(props) {
     }
 
     return (
-        <StyledContainer isSelected={isSelected} className={className} style={style}>
+        <StyledContainer
+            data-id="sidebar-item-li"
+            isSelected={isSelected}
+            className={className}
+            style={style}
+        >
             <StyledAnchorContent
                 href={href}
                 onClick={hanldeOnClick}
