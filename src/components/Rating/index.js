@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import RatingItems from './ratingItems';
-import './styles.css';
 import { uniqueId } from '../../libs/utils';
 import RenderIf from '../RenderIf';
+import StyledContainer from './styled/container';
+import StyledLabel from './styled/label';
 
 /** @category Form */
 export default class Rating extends Component {
@@ -16,11 +16,6 @@ export default class Rating extends Component {
         this.starGroupNameId = uniqueId('starGroup');
         this.handleOnHover = this.handleOnHover.bind(this);
         this.handleOnLeave = this.handleOnLeave.bind(this);
-    }
-
-    getContainerClassNames() {
-        const { className } = this.props;
-        return classnames('rainbow-rating_container', className);
     }
 
     getName() {
@@ -43,20 +38,20 @@ export default class Rating extends Component {
     }
 
     render() {
-        const { style, onChange, label } = this.props;
+        const { style, className, onChange, label } = this.props;
         const { value } = this.state;
         return (
-            <fieldset
+            <StyledContainer
                 onMouseOver={this.handleOnHover}
                 onMouseLeave={this.handleOnLeave}
-                className={this.getContainerClassNames()}
+                className={className}
                 style={style}
             >
                 <RenderIf isTrue={!!label}>
-                    <legend className="rainbow-rating_label">{label}</legend>
+                    <StyledLabel>{label}</StyledLabel>
                 </RenderIf>
                 <RatingItems onChange={onChange} value={value} name={this.getName()} />
-            </fieldset>
+            </StyledContainer>
         );
     }
 }
