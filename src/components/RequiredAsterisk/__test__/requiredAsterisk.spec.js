@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import RequiredAsterisk from './../index';
-import StyledAsterisk from '../StyledAsterisk';
+import StyledAsterisk from '../styledAsterisk';
 
 describe('<InputRequiredAsterisk/>', () => {
     it('should render the abbr element when is required', () => {
