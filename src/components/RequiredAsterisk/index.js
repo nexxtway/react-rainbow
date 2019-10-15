@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import RenderIf from '../RenderIf';
-import StyledAsterisk from './StyledAsterisk';
+import StyledAsterisk from './styledAsterisk';
 
 export default function RequiredAsterisk({ required }) {
     return (
