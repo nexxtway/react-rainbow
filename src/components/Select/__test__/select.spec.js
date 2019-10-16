@@ -29,20 +29,4 @@ describe('Select component', () => {
         const component = mount(<Select label="Select Label" required />);
         expect(component.find('RequiredAsterisk').prop('required')).toBe(true);
     });
-    it('should have the right class names when error is passed', () => {
-        const component = mount(<Select error="Error text" />);
-        expect(
-            component
-                .find('div[className="rainbow-select_container rainbow-select--error"]')
-                .exists(),
-        ).toBe(true);
-    });
-    it('should have the right class names when hideLabel is passed', () => {
-        const component = mount(<Select label="Select Label" hideLabel />);
-        expect(
-            component
-                .find('label[className="rainbow-select_label rainbow-select_label--hide-label"]')
-                .exists(),
-        ).toBe(true);
-    });
 });
