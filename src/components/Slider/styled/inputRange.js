@@ -1,39 +1,20 @@
-@import "../../styles/paddings";
-@import "../../styles/margins";
-@import "../../styles/font-sizes";
-@import "../../styles/colors";
-@import "../../styles/shadows";
-@import "../../styles/border-radius";
+import styled from 'styled-components';
+import { BORDER_RADIUS_3, BORDER_RADIUS_2 } from '../../../styles/borderRadius';
+import { COLOR_BRAND, COLOR_GRAY_2, COLOR_BRAND_ACTIVE } from '../../../styles/colors';
 
-.rainbow-slider_container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.rainbow-slider {
-    display: -ms-flexbox;
-    display: flex;
-    position: relative;
-    width: 100%;
-    padding: $padding-small 0;
-}
-
-.rainbow-slider_range {
-    -webkit-appearance: none;
-    -moz-appearance: none;
+const StyledInputRange = styled.input`
+    appearance: none;
     width: 100%;
     margin: 0.5rem 0;
     background: transparent;
-    border-radius: $border-radius-3;
+    border-radius: ${BORDER_RADIUS_3};
 
     &::-webkit-slider-thumb {
-        -webkit-appearance: none;
+        appearance: none;
         width: 1rem;
         height: 1rem;
         border-radius: 50%;
-        background: $color-brand;
+        background: ${COLOR_BRAND};
         border: 0;
         box-shadow: rgba(0, 0, 0, 0.16) 0 2px 3px;
         cursor: pointer;
@@ -45,16 +26,16 @@
         width: 100%;
         height: 4px;
         cursor: pointer;
-        background: $color-gray-2;
-        border-radius: $border-radius-3;
+        background: ${COLOR_GRAY_2};
+        border-radius: ${BORDER_RADIUS_3};
     }
 
     &::-moz-range-thumb {
-        -moz-appearance: none;
+        appearance: none;
         width: 1rem;
         height: 1rem;
         border-radius: 50%;
-        background: $color-brand;
+        background: ${COLOR_BRAND};
         border: 0;
         box-shadow: rgba(0, 0, 0, 0.16) 0 2px 3px;
         cursor: pointer;
@@ -65,15 +46,15 @@
         width: 100%;
         height: 4px;
         cursor: pointer;
-        background: $color-gray-2;
-        border-radius: $border-radius-3;
+        background: ${COLOR_GRAY_2};
+        border-radius: ${BORDER_RADIUS_3};
     }
 
     &::-ms-track {
         width: 100%;
         height: 4px;
         cursor: pointer;
-        border-radius: $border-radius-3;
+        border-radius: ${BORDER_RADIUS_3};
         background: transparent;
         border-color: transparent;
         color: transparent;
@@ -82,8 +63,8 @@
     &::-ms-thumb {
         width: 1rem;
         height: 1rem;
-        border-radius: $border-radius-2;
-        background: $color-brand;
+        border-radius: ${BORDER_RADIUS_2};
+        background: ${COLOR_BRAND};
         border: 0;
         box-shadow: rgba(0, 0, 0, 0.16) 0 2px 3px;
         cursor: pointer;
@@ -95,86 +76,65 @@
     }
 
     &::-webkit-slider-thumb:hover {
-        background-color: $color-brand-active;
+        background-color: ${COLOR_BRAND_ACTIVE};
     }
 
     &::-moz-range-thumb:hover {
-        background-color: $color-brand-active;
+        background-color: ${COLOR_BRAND_ACTIVE};
     }
 
     &::-ms-thumb:hover {
-        background-color: $color-brand-active;
+        background-color: ${COLOR_BRAND_ACTIVE};
     }
 
     &:focus::-webkit-slider-thumb {
-        background-color: $color-brand;
+        background-color: ${COLOR_BRAND};
         box-shadow: $shadow-outline;
     }
 
     &:active::-webkit-slider-thumb {
-        background-color: $color-brand;
+        background-color: ${COLOR_BRAND};
         transition: all 0.3s ease 0s;
         transform: scale3d(1.5, 1.5, 1);
     }
 
     &:focus::-moz-range-thumb {
-        background-color: $color-brand;
+        background-color: ${COLOR_BRAND};
         box-shadow: $shadow-outline;
     }
 
     &:active::-moz-range-thumb {
-        background-color: $color-brand;
+        background-color: ${COLOR_BRAND};
     }
 
     &[disabled]::-webkit-slider-thumb {
-        background-color: $color-gray-2;
+        background-color: ${COLOR_GRAY_2};
         cursor: default;
     }
 
     &[disabled]::-webkit-slider-runnable-track {
-        background-color: $color-gray-2;
+        background-color: ${COLOR_GRAY_2};
         cursor: default;
     }
 
     &[disabled]::-moz-range-thumb {
-        background-color: $color-gray-2;
+        background-color: ${COLOR_GRAY_2};
         cursor: default;
     }
 
     &[disabled]::-moz-range-track {
-        background-color: $color-gray-2;
+        background-color: ${COLOR_GRAY_2};
     }
 
     &[disabled]::-ms-thumb {
-        background-color: $color-gray-2;
+        background-color: ${COLOR_GRAY_2};
         cursor: default;
     }
 
     &[disabled]::-ms-track {
-        background-color: $color-gray-2;
+        background-color: ${COLOR_GRAY_2};
         cursor: default;
     }
-}
+`;
 
-.rainbow-slider_value {
-    padding: 0 0.5rem;
-}
-
-.rainbow-slider_error {
-    font-size: $font-size-text-medium;
-    margin-top: $margin-x-small;
-    color: $color-error;
-}
-
-.rainbow-slider_label--hide-label {
-    position: absolute !important;
-    margin: -1px !important;
-    border: 0 !important;
-    padding: 0 !important;
-    width: 1px !important;
-    height: 1px !important;
-    overflow: hidden !important;
-    clip: rect(0 0 0 0) !important;
-    text-transform: none !important;
-    white-space: nowrap !important;
-}
+export default StyledInputRange;
