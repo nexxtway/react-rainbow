@@ -95,7 +95,7 @@ class PagePicklist {
      */
     getSelectedOptionLabel() {
         return $(this.rootElement)
-            .$('input[type="text"')
+            .$('input[type="text"]')
             .getValue();
     }
 
@@ -117,7 +117,7 @@ class PagePicklist {
      */
     getOption(optionIndex) {
         const activeOptions = $(this.rootElement).$$(
-            'li.rainbow-picklist-option:not(.rainbow-picklist-option_selected)',
+            'li[data-id="picklist-option-li-selected_false"]',
         );
         const option = activeOptions[optionIndex];
         if (option && !option.error) {

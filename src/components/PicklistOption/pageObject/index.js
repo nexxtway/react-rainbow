@@ -33,7 +33,7 @@ class PagePicklistOption {
      * @method
      */
     hover() {
-        const itemElement = this.rootElement.$('a');
+        const itemElement = this.rootElement.$('div[role="option"]');
         itemElement.moveTo();
     }
 
@@ -43,7 +43,7 @@ class PagePicklistOption {
      * @returns {string}
      */
     getLabel() {
-        return this.rootElement.$('a').getText();
+        return this.rootElement.$('div[role="option"]').getText();
     }
 
     /**
@@ -52,10 +52,7 @@ class PagePicklistOption {
      * @returns {bool}
      */
     isActive() {
-        return (
-            this.rootElement.getAttribute('class') ===
-            'rainbow-picklist-option rainbow-picklist-option_active'
-        );
+        return this.rootElement.$('div[aria-selected="true"]').isExisting();
     }
 
     /**
@@ -64,10 +61,7 @@ class PagePicklistOption {
      * @returns {bool}
      */
     isSelected() {
-        return (
-            this.rootElement.getAttribute('class') ===
-            'rainbow-picklist-option rainbow-picklist-option_selected'
-        );
+        return this.rootElement.$('li[data-id="picklist-option-li-selected_true"]').isExisting();
     }
 
     /**
