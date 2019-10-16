@@ -20,11 +20,11 @@ class PageModal {
     clickCloseButton() {
         browser.waitUntil(() =>
             $(this.rootElement)
-                .$('.rainbow-modal_close-button')
+                .$('[id="modal-close-button"]')
                 .isDisplayed(),
         );
         $(this.rootElement)
-            .$('.rainbow-modal_close-button')
+            .$('[id="modal-close-button"]')
             .click();
     }
 
@@ -46,7 +46,7 @@ class PageModal {
                     .$('section[role="dialog"]')
                     .isDisplayed() &&
                 $(this.rootElement)
-                    .$('.rainbow-modal_close-button')
+                    .$('[id="modal-close-button"]')
                     .isDisplayed()
             );
         }
@@ -60,7 +60,7 @@ class PageModal {
      */
     hasFocusCloseButton() {
         return $(this.rootElement)
-            .$('.rainbow-modal_close-button')
+            .$('[id="modal-close-button"]')
             .isFocused();
     }
 

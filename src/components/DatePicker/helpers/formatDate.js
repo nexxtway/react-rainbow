@@ -16,6 +16,5 @@ export default function formatDate(date, formatStyle = 'medium') {
             return '';
         }
     }
-    console.error('Invalid date value passed to DatePicker');
     return '';
 }

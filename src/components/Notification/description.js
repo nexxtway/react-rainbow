@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import StyledDescription from './styled/description';
 
 export default function Description({ text }) {
     if (typeof text === 'string') {
-        return <p className="rainbow-notification_description">{text}</p>;
+        return <StyledDescription>{text}</StyledDescription>;
     }
     return text;
 }

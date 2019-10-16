@@ -1,7 +1,8 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import MapComponent from './../component';
-import MapMarker from './../../MapMarker';
+import MapComponent from '../component';
+import MapMarker from '../../MapMarker';
+import StyledMarkerButton from '../../MapMarker/styled/button';
 
 global.google = {
     maps: {
@@ -84,7 +85,7 @@ describe('<MapComponent/>', () => {
         );
         component.setProps(nextProps);
         component
-            .find('.rainbow-google-map-marker_button')
+            .find(StyledMarkerButton)
             .at(1)
             .simulate('click');
         expect(component.state().selectedMarker).toBe('marker-2');
@@ -99,7 +100,7 @@ describe('<MapComponent/>', () => {
         );
         component.setProps(nextProps);
         component
-            .find('.rainbow-google-map-marker_button')
+            .find(StyledMarkerButton)
             .at(1)
             .simulate('click');
         expect(component.state().map.panTo).toHaveBeenCalledWith({
