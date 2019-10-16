@@ -18,7 +18,7 @@ const StyledAnchor = styled.a`
     padding: ${PADDING_X_SMALL} 1.75rem;
     border-radius: 1rem 1rem 0 0;
     line-height: 1rem;
-    letter-spacing: 1px;
+    letter-spacing: 0.9px;
     font-size: ${FONT_SIZE_TEXT_SMALL};
     font-weight: 600;
     color: ${COLOR_GRAY_4};
