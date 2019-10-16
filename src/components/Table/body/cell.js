@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { SELECTABLE_CHECKBOX } from '../helpers/columns';
 import SelectableCell from './selectableCell';
 import ActionsCell from './actionsCell';
+import StyledThCell from './styled/thCell';
+import StyledCellContent from './styled/cellContent';
 
 function CellValue(props) {
     const { component: CellComponent, value, rowData, restColumnProps } = props;
@@ -79,40 +81,30 @@ export default function Cell(props) {
 
     if (isFirst) {
         return (
-            <th
-                className="rainbow-table_cell-container"
-                scope="row"
-                tabIndex={-1}
-                data-label={getHeaderLabel()}
-            >
-                <div className="rainbow-table_cell-content">
+            <StyledThCell scope="row" tabIndex={-1} data-label={getHeaderLabel()}>
+                <StyledCellContent>
                     <CellValue
                         component={component}
                         value={value}
                         rowData={rowData}
                         restColumnProps={restColumnProps}
                     />
-                </div>
-            </th>
+                </StyledCellContent>
+            </StyledThCell>
         );
     }
 
     return (
-        <td
-            className="rainbow-table_cell-container"
-            role="gridcell"
-            tabIndex={-1}
-            data-label={getHeaderLabel()}
-        >
-            <div className="rainbow-table_cell-content">
+        <StyledThCell role="gridcell" tabIndex={-1} data-label={getHeaderLabel()}>
+            <StyledCellContent>
                 <CellValue
                     component={component}
                     value={value}
                     rowData={rowData}
                     restColumnProps={restColumnProps}
                 />
-            </div>
-        </td>
+            </StyledCellContent>
+        </StyledThCell>
     );
 }
 

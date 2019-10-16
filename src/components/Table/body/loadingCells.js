@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { SELECTABLE_CHECKBOX } from '../helpers/columns';
+import StyledTdLoadingContainer from './styled/tdLoadingContainer';
+import StyledLoadingCell from './styled/loadingCell';
+import StyledElementLoading from './styled/elementLoading';
 
 const widths = ['40%', '60%', '70%', '85%', '95%'];
 
@@ -21,11 +24,11 @@ export default function LoadingCells({ value, columns }) {
                 };
 
                 return (
-                    <td key={key}>
-                        <div className="rainbow-table_body--loading">
-                            <div className="rainbow-table_body-element--loading" style={styles} />
-                        </div>
-                    </td>
+                    <StyledTdLoadingContainer key={key}>
+                        <StyledLoadingCell>
+                            <StyledElementLoading style={styles} />
+                        </StyledLoadingCell>
+                    </StyledTdLoadingContainer>
                 );
             });
     }

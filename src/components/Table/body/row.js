@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { SELECTABLE_CHECKBOX } from '../helpers/columns';
 import { getFieldValue } from '../helpers/rows';
 import Cell from './cell';
 import LoadingCells from './loadingCells';
+import StyledRow from './styled/row';
 
 function isFirstAndNoSelectable(index, type) {
     if (index === 0 && type !== SELECTABLE_CHECKBOX) {
@@ -15,11 +15,6 @@ function isFirstAndNoSelectable(index, type) {
 
 export default function Row(props) {
     const { rowData, columns, isSelected, ...rest } = props;
-
-    const getClassName = () =>
-        classnames('rainbow-table_body-row', {
-            'rainbow-table_body-row-selected': isSelected,
-        });
 
     let isFirstColumn;
     const cells = columns.map((column, index) => {
@@ -67,9 +62,9 @@ export default function Row(props) {
     }
 
     return (
-        <tr tabIndex={-1} aria-selected={isSelected} className={getClassName()}>
+        <StyledRow tabIndex={-1} aria-selected={isSelected} isSelected={isSelected}>
             {cells}
-        </tr>
+        </StyledRow>
     );
 }
 

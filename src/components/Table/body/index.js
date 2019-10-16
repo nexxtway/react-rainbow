@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Row from './row';
 import Loading from './loading';
 import Empty from './empty';
-import './styles.css';
 
 function getData(data = [], isLoading = false) {
     let newData;
