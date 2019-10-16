@@ -30,11 +30,9 @@ function DateTimePickerModal(props) {
     const [modalTitle, setModalTitle] = useState(title);
 
     useEffect(() => {
-        if (isOpen) {
-            setDate(value);
-            setTime(!value ? '' : extractTime(value));
-        }
-    }, [isOpen, value]);
+        setDate(value);
+        setTime(!value ? '' : extractTime(value));
+    }, [value]);
 
     useEffect(() => {
         const currentDateTime = new Date(`${extractDate(date)} ${time}`);

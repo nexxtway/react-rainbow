@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import AssistiveText from './../AssistiveText';
-import './styles.css';
+import StyledSpinner from './styled/spinner';
 
 /**
  * Spinners should be shown when retrieving data or performing slow,
@@ -10,24 +9,10 @@ import './styles.css';
  */
 export default function Spinner(props) {
     const { className, style, assistiveText, isVisible, size, variant } = props;
-    const getVariantClassNames = () => {
-        if (variant === 'base') {
-            return '';
-        }
-        return `rainbow-spinner--${variant}`;
-    };
-
-    const getContainerClassNames = () =>
-        classnames(
-            'rainbow-spinner',
-            `rainbow-spinner--${size}`,
-            getVariantClassNames(),
-            className,
-        );
 
     if (isVisible) {
         return (
-            <div className={getContainerClassNames()} style={style}>
+            <StyledSpinner className={className} size={size} variant={variant} style={style}>
                 <div />
                 <div />
                 <div />
@@ -37,7 +22,7 @@ export default function Spinner(props) {
                 <div />
                 <div />
                 <AssistiveText text={assistiveText} />
-            </div>
+            </StyledSpinner>
         );
     }
     return null;
