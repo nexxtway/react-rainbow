@@ -20,10 +20,10 @@ class PageSidebar {
      * @param {number} itemPosition - The base 0 index of the sidebar item
      */
     getItem(itemPosition) {
-        const items = $(this.rootElement).$$('.rainbow-sidebar-item');
+        const items = $(this.rootElement).$$('li[data-id="sidebar-item-li"]');
         if (items[itemPosition]) {
             return new PageSidebarItem(
-                `${this.rootElement} .rainbow-sidebar-item:nth-child(${itemPosition + 1})`,
+                `${this.rootElement} li[data-id="sidebar-item-li"]:nth-child(${itemPosition + 1})`,
             );
         }
         return null;
