@@ -31,11 +31,4 @@ describe('<Breadcrumb/>', () => {
 
         expect(component.find('a').prop('aria-disabled')).toBe(true);
     });
-    it('should set the right className when the disabled is passed', () => {
-        const component = mount(<Breadcrumb label="index" disabled />);
-
-        expect(component.find('li').prop('className')).toBe(
-            'rainbow-breadcrumb rainbow-breadcrumb--disabled',
-        );
-    });
 });

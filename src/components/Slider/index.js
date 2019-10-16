@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { uniqueId } from './../../libs/utils';
 import RenderIf from '../RenderIf';
-import Label from './label';
-import './style.css';
+import Label from '../Input/label/index';
+import StyledContainer from './styled/container';
+import StyledSlider from './styled/slider';
+import StyledInputRange from './styled/inputRange';
+import StyledValue from './styled/value';
+import StyledError from './styled/error';
 
 /**
  * An input range slider lets the user specify a numeric value which must be between
@@ -25,11 +28,6 @@ export default class Slider extends Component {
             return this.errorMessageId;
         }
         return undefined;
-    }
-
-    getContainerClassName() {
-        const { className } = this.props;
-        return classnames('rainbow-slider_container', className);
     }
 
     /**
@@ -71,15 +69,15 @@ export default class Slider extends Component {
             onClick,
             onFocus,
             style,
+            className,
             hideLabel,
         } = this.props;
         return (
-            <div className={this.getContainerClassName()} style={style}>
-                <Label label={label} hideLabel={hideLabel} sliderId={this.sliderId} />
-                <div className="rainbow-slider">
-                    <input
+            <StyledContainer className={className} style={style}>
+                <Label label={label} hideLabel={hideLabel} inputId={this.sliderId} />
+                <StyledSlider>
+                    <StyledInputRange
                         id={this.sliderId}
-                        className="rainbow-slider_range"
                         type="range"
                         name={name}
                         value={value}
@@ -95,16 +93,12 @@ export default class Slider extends Component {
                         ref={this.sliderRef}
                     />
 
-                    <span className="rainbow-slider_value" aria-hidden>
-                        {value}
-                    </span>
-                </div>
+                    <StyledValue aria-hidden>{value}</StyledValue>
+                </StyledSlider>
                 <RenderIf isTrue={!!error}>
-                    <div id={this.errorMessageId} className="rainbow-slider_error">
-                        {error}
-                    </div>
+                    <StyledError id={this.errorMessageId}>{error}</StyledError>
                 </RenderIf>
-            </div>
+            </StyledContainer>
         );
     }
 }
@@ -112,11 +106,12 @@ export default class Slider extends Component {
 Slider.propTypes = {
     /** The text label for the slider. Provide your own label to describe the slider.
      * Otherwise, no label is displayed. */
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** A boolean to hide the slider label */
     hideLabel: PropTypes.bool,
     /** The numerical value of the slider. This value defaults to 0. */
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    /** The name of the Slider. */
     name: PropTypes.string,
     /** The min value of the slider. This value defaults to 0. */
     min: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),

@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Chip from '../../Chip';
+import StyledChip from './styled/chip';
 
 export default function SelectedFieldsToAssign({ values, onDelete }) {
     return values.map((value, index) => {
         const key = `field-${index}`;
         return (
-            <Chip
+            <StyledChip
                 key={key}
-                className="rainbow-import-records-flow_step-three-chip-field"
                 label={value}
                 title={value}
                 variant="neutral"

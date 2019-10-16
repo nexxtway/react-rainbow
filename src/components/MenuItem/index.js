@@ -1,10 +1,12 @@
 /* eslint-disable no-script-url, react/prop-types */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { Consumer } from './../PrimitiveMenu/context';
 import Icon from './icon';
-import './styles.css';
+import StyledHeader from './styled/header';
+import StyledHeaderLabel from './styled/headerLabel';
+import StyledItem from './styled/item';
+import StyledIconContainer from './styled/iconContainer';
 
 class Item extends Component {
     constructor(props) {
@@ -26,16 +28,6 @@ class Item extends Component {
     componentWillUnmount() {
         const { privateUnregisterChild } = this.props;
         return privateUnregisterChild(this.itemRef.current);
-    }
-
-    getHeaderClassNames() {
-        const { className } = this.props;
-        return classnames('rainbow-menu-item_header', className);
-    }
-
-    getItemClassNames() {
-        const { className } = this.props;
-        return classnames('rainbow-menu-item', className);
     }
 
     handleClick(event) {
@@ -60,18 +52,22 @@ class Item extends Component {
     }
 
     render() {
-        const { style, label, title, variant, icon, iconPosition, disabled } = this.props;
+        const {
+            style,
+            className,
+            label,
+            title,
+            variant,
+            icon,
+            iconPosition,
+            disabled,
+        } = this.props;
 
         if (variant === 'header') {
             return (
-                <li
-                    className={this.getHeaderClassNames()}
-                    style={style}
-                    title={title}
-                    role="separator"
-                >
-                    <span className="rainbow-menu-item_header-label">{label}</span>
-                </li>
+                <StyledHeader className={className} style={style} title={title} role="separator">
+                    <StyledHeaderLabel>{label}</StyledHeaderLabel>
+                </StyledHeader>
             );
         }
 
@@ -79,8 +75,8 @@ class Item extends Component {
         const hasRightIcon = !!(icon && iconPosition === 'right');
 
         return (
-            <li
-                className={this.getItemClassNames()}
+            <StyledItem
+                className={className}
                 style={style}
                 role="presentation"
                 onClick={this.handleClick}
@@ -92,7 +88,7 @@ class Item extends Component {
                     aria-disabled={disabled}
                     ref={this.itemRef}
                 >
-                    <span className="rainbow-menu-item_icon-container" title={title}>
+                    <StyledIconContainer title={title}>
                         <Icon
                             data-id="menu-item-left-icon"
                             icon={icon}
@@ -101,7 +97,7 @@ class Item extends Component {
                         />
 
                         {label}
-                    </span>
+                    </StyledIconContainer>
                     <Icon
                         data-id="menu-item-right-icon"
                         icon={icon}
@@ -109,7 +105,7 @@ class Item extends Component {
                         position={iconPosition}
                     />
                 </a>
-            </li>
+            </StyledItem>
         );
     }
 }
@@ -123,7 +119,7 @@ export default function MenuItem(props) {
 
 MenuItem.propTypes = {
     /** Text of the menu item. */
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The variant changes the type of menu item. Accepted variants include default and header.
      * This value defaults to default. */
     variant: PropTypes.oneOf(['default', 'header']),

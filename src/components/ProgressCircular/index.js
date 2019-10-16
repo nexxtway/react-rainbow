@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import AssistiveText from './../AssistiveText';
 import normalizeValue from './normalizeValue';
 import ProgressRing from './progressRing';
-import './styles.css';
+import StyledContainer from './styled/container';
+import StyledPercentValue from './styled/percentValue';
 
 /**
  * ProgressCircular component communicates to the user the progress of a particular process.
@@ -12,32 +12,21 @@ import './styles.css';
 export default function ProgressCircular(props) {
     const { value, variant, assistiveText, className, style } = props;
 
-    const getContainerClassNames = () =>
-        classnames(
-            'rainbow-progress-circular',
-            {
-                'rainbow-progress-circular--success': variant === 'success',
-                'rainbow-progress-circular--warning': variant === 'warning',
-                'rainbow-progress-circular--error': variant === 'error',
-            },
-            className,
-        );
-
     const normalizedValue = normalizeValue(value);
 
     return (
-        <div
-            className={getContainerClassNames()}
+        <StyledContainer
+            className={className}
             aria-valuemin="0"
             aria-valuemax="100"
             aria-valuenow={normalizedValue}
             role="progressbar"
             style={style}
         >
-            <ProgressRing percent={normalizedValue} />
-            <span className="rainbow-progress-circular_percent-text">{`${normalizedValue}%`}</span>
+            <ProgressRing variant={variant} percent={normalizedValue} />
+            <StyledPercentValue variant={variant}>{`${normalizedValue}%`}</StyledPercentValue>
             <AssistiveText text={assistiveText} />
-        </div>
+        </StyledContainer>
     );
 }
 

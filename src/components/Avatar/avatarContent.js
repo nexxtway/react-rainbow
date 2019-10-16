@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import normalizeInitials from './normalizeInitials';
+import StyledContent from './styled/content';
 
 export default class AvatarContent extends Component {
     constructor(props) {
@@ -14,19 +14,12 @@ export default class AvatarContent extends Component {
         this.handleImageError = this.handleImageError.bind(this);
     }
 
-    getClassNames() {
-        const { initialsVariant } = this.props;
-        return classnames('rainbow-avatar_initials', {
-            'rainbow-avatar_initials--inverse': initialsVariant === 'inverse',
-        });
-    }
-
     handleImageError() {
         this.setState({ imageFailed: true });
     }
 
     render() {
-        const { src, initials, title, icon, assistiveText } = this.props;
+        const { src, initials, title, icon, assistiveText, initialsVariant } = this.props;
 
         const { imageFailed } = this.state;
         if (src && !imageFailed) {
@@ -35,18 +28,18 @@ export default class AvatarContent extends Component {
             );
         } else if (initials) {
             return (
-                <abbr className={this.getClassNames()} title={title}>
+                <StyledContent as="abbr" initialsVariant={initialsVariant} title={title}>
                     {normalizeInitials(initials)}
-                </abbr>
+                </StyledContent>
             );
         } else if (icon) {
             return (
-                <span className={this.getClassNames()} title={title}>
+                <StyledContent initialsVariant={initialsVariant} title={title}>
                     {icon}
-                </span>
+                </StyledContent>
             );
         }
-        return <span className={this.getClassNames()} title={title} />;
+        return <StyledContent initialsVariant={initialsVariant} title={title} />;
     }
 }
 

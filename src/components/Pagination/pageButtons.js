@@ -1,16 +1,12 @@
 /* eslint-disable no-script-url */
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import getFirstItem from './getFirstItem';
+import StyledPageButton from './styled/pageButton';
+import StyledButton from './styled/button';
 
 export default function PageButtons(props) {
     const { pages, activePage, onChange } = props;
-
-    const getButtonClassName = page =>
-        classnames('rainbow-pagination_button-content', {
-            'rainbow-pagination_button-content--active': activePage === page,
-        });
 
     const getAriaCurrent = page => {
         if (page === activePage) {
@@ -28,19 +24,20 @@ export default function PageButtons(props) {
                 const page = firstItem + index;
                 const key = `page-button-${page}`;
                 const ariaLabel = `Goto Page ${page}`;
+                const isActivePage = activePage === page;
 
                 return (
-                    <li key={key} className="rainbow-pagination_button">
-                        <a
-                            className={getButtonClassName(page)}
+                    <StyledPageButton key={key}>
+                        <StyledButton
+                            isActivePage={isActivePage}
                             onClick={event => onChange(event, page)}
                             aria-current={getAriaCurrent(page)}
                             aria-label={ariaLabel}
                             href="javascript:void(0);"
                         >
                             <span>{page}</span>
-                        </a>
-                    </li>
+                        </StyledButton>
+                    </StyledPageButton>
                 );
             });
     };

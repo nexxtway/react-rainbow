@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import RenderIf from '../RenderIf';
-import './styles.css';
 import { uniqueId } from '../../libs/utils';
+import StyledContainer from './styled/container';
+import StyledError from './styled/error';
 
 export default class ReCaptchaComponent extends Component {
     constructor(props) {
@@ -13,11 +13,6 @@ export default class ReCaptchaComponent extends Component {
 
     componentDidMount() {
         window.grecaptcha.ready(() => this.renderReCaptcha());
-    }
-
-    getContainerClassNames() {
-        const { className } = this.props;
-        return classnames('rainbow-recaptcha-container', className);
     }
 
     renderReCaptcha() {
@@ -34,14 +29,14 @@ export default class ReCaptchaComponent extends Component {
     }
 
     render() {
-        const { error, style } = this.props;
+        const { error, style, className } = this.props;
         return (
-            <div className={this.getContainerClassNames()} style={style}>
+            <StyledContainer className={className} style={style}>
                 <div id={this.recaptchaID} />
                 <RenderIf isTrue={!!error}>
-                    <div className="rainbow-recaptcha_error">{error}</div>
+                    <StyledError>{error}</StyledError>
                 </RenderIf>
-            </div>
+            </StyledContainer>
         );
     }
 }

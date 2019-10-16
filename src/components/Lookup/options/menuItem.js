@@ -24,7 +24,7 @@ export default class MenuItem extends Component {
     }
 
     render() {
-        const { label, description, icon, onClick } = this.props;
+        const { label, description, icon, onClick, isActive, id } = this.props;
 
         return (
             <li
@@ -34,10 +34,12 @@ export default class MenuItem extends Component {
                 onMouseEnter={this.handleHover}
             >
                 <a
+                    aria-selected={isActive}
+                    id={id}
                     tabIndex={-1}
                     className="rainbow-lookup_menu-item-link"
                     href="javascript:void(0);"
-                    role="menuitem"
+                    role="option"
                     ref={this.itemRef}
                 >
                     <RenderIf isTrue={!!icon}>
@@ -58,13 +60,14 @@ export default class MenuItem extends Component {
 }
 
 MenuItem.propTypes = {
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    description: PropTypes.string,
+    label: PropTypes.string,
+    description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     icon: PropTypes.node,
     onClick: PropTypes.func,
     isActive: PropTypes.bool,
     onHover: PropTypes.func,
     index: PropTypes.number,
+    id: PropTypes.string,
 };
 
 MenuItem.defaultProps = {
@@ -75,4 +78,5 @@ MenuItem.defaultProps = {
     isActive: false,
     onHover: () => {},
     index: undefined,
+    id: undefined,
 };

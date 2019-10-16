@@ -4,7 +4,10 @@ import PropTypes from 'prop-types';
 import { Consumer } from './../GMap/context';
 import { uniqueId } from './../../libs/utils';
 import Icon from './icon';
-import './styles.css';
+import HiddenElement from '../Structural/hiddenElement';
+import StyledButton from './styled/button';
+import StyledTextContainer from './styled/textContainer';
+import StyledLabel from './styled/label';
 
 const marker = Symbol('marker');
 
@@ -138,14 +141,10 @@ class Marker extends Component {
         if (latitude && longitude) {
             return (
                 <li className={className} style={style}>
-                    <span
-                        className="rainbow-google-map-marker_assistive-aria-live"
-                        aria-live="polite"
-                    >
+                    <HiddenElement aria-live="polite">
                         {this.getAssistiveAriaLiveText()}
-                    </span>
-                    <button
-                        className="rainbow-google-map-marker_button"
+                    </HiddenElement>
+                    <StyledButton
                         aria-pressed={this.isSelected()}
                         onClick={this.handleClick}
                         onMouseOver={this.startAnimation}
@@ -154,11 +153,11 @@ class Marker extends Component {
                         onBlur={this.stopAnimation}
                     >
                         <Icon icon={icon} />
-                        <span className="rainbow-google-map-marker_text-container">
-                            <span className="rainbow-google-map-marker_label">{label}</span>
+                        <StyledTextContainer>
+                            <StyledLabel>{label}</StyledLabel>
                             <span>{description}</span>
-                        </span>
-                    </button>
+                        </StyledTextContainer>
+                    </StyledButton>
                 </li>
             );
         }
@@ -180,9 +179,9 @@ MapMarker.propTypes = {
     /** The description of the marker. */
     description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The angular distance of a place north or south of the earth's equator. */
-    latitude: PropTypes.number.isRequired,
+    latitude: PropTypes.number,
     /** The angular distance of a place east or west of the meridian at Greenwich. */
-    longitude: PropTypes.number.isRequired,
+    longitude: PropTypes.number,
     /** The icon to show if it is passed. If not passed a fallback icon will be showed. */
     icon: PropTypes.node,
     /** A CSS class for the outer element, in addition to the component's base classes. */
@@ -194,6 +193,8 @@ MapMarker.propTypes = {
 MapMarker.defaultProps = {
     label: undefined,
     description: undefined,
+    latitude: undefined,
+    longitude: undefined,
     icon: null,
     className: undefined,
     style: undefined,

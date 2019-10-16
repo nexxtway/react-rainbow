@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import CalendarIcon from './calendarIcon';
-import Modal from './../Modal';
-import Calendar from './../Calendar';
 import Input from '../Input/pickerInput';
 import formatDate from './helpers/formatDate';
 import withReduxForm from '../../libs/hocs/withReduxForm';
 import { ENTER_KEY, SPACE_KEY } from '../../libs/constants';
-import './styles.css';
-import './media-queries.css';
+import StyledContainer from './styled/container';
+import StyledModal from './styled/modal';
+import StyledHeader from './styled/header';
+import StyledHeaderTitle from './styled/headerTitle';
+import StyledCalendar from './styled/calendar';
 
 /**
  * A DatePicker is a text input to capture a date.
@@ -30,16 +30,9 @@ class DatePicker extends Component {
         this.handleFocus = this.handleFocus.bind(this);
     }
 
-    getContainerClassName() {
-        const { className } = this.props;
-        return classnames('rainbow-date-picker_container', className);
-    }
-
     handleChange(...args) {
         const { onChange } = this.props;
-        this.setState({
-            isOpen: false,
-        });
+        this.closeModal();
         onChange(...args);
     }
 
@@ -107,6 +100,7 @@ class DatePicker extends Component {
             label,
             required,
             style,
+            className,
             formatStyle,
             hideLabel,
             name,
@@ -123,7 +117,7 @@ class DatePicker extends Component {
         const formattedDate = formatDate(value, formatStyle);
 
         return (
-            <div id={id} className={this.getContainerClassName()} style={style}>
+            <StyledContainer id={id} className={className} style={style}>
                 <Input
                     ref={this.inputRef}
                     label={label}
@@ -146,26 +140,19 @@ class DatePicker extends Component {
                     tabIndex={tabIndex}
                 />
 
-                <Modal
-                    className="rainbow-date-picker_modal"
-                    isOpen={isOpen}
-                    onRequestClose={this.closeModal}
-                >
-                    <header className="rainbow-date-picker_calendar-details-header">
-                        <h2 className="rainbow-date-picker_calendar-date--selected">
-                            {formattedDate}
-                        </h2>
-                    </header>
-                    <Calendar
+                <StyledModal isOpen={isOpen} onRequestClose={this.closeModal}>
+                    <StyledHeader>
+                        <StyledHeaderTitle>{formattedDate}</StyledHeaderTitle>
+                    </StyledHeader>
+                    <StyledCalendar
                         value={value}
                         minDate={minDate}
                         maxDate={maxDate}
                         formatStyle={formatStyle}
                         onChange={this.handleChange}
-                        className="rainbow-date-picker_calendar-container"
                     />
-                </Modal>
-            </div>
+                </StyledModal>
+            </StyledContainer>
         );
     }
 }
@@ -179,7 +166,7 @@ DatePicker.propTypes = {
     /** The beginning of a range of valid dates. The range includes the startDate.
      * The default value is current date - 100 years. */
     minDate: PropTypes.instanceOf(Date),
-    /** This function is called to format the date displayed in the input field.
+    /**  The date format style to display in the input field.
      * Valid values are small, medium, and large. */
     formatStyle: PropTypes.oneOf(['small', 'medium', 'large']),
     /** The action triggered when a value attribute changes. */
@@ -188,7 +175,7 @@ DatePicker.propTypes = {
      * to prompt the user for a valid entry. */
     placeholder: PropTypes.string,
     /** Text label for the DatePicker. */
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** A boolean to hide the DatePicker label. */
     hideLabel: PropTypes.bool,
     /** Specifies that the DatePicker field must be filled out before submitting the form.
@@ -228,7 +215,8 @@ DatePicker.defaultProps = {
     maxDate: undefined,
     formatStyle: 'medium',
     onChange: () => {},
-    placeholder: null,
+    placeholder: undefined,
+    label: undefined,
     hideLabel: false,
     required: false,
     name: undefined,

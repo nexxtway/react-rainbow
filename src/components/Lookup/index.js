@@ -13,6 +13,7 @@ import {
     getNormalizedOptions,
     getInitialFocusedIndex,
     isOptionVisible,
+    isMenuOpen,
 } from './helpers';
 import { uniqueId } from '../../libs/utils';
 import { UP_KEY, DOWN_KEY, ENTER_KEY, ESCAPE_KEY } from '../../libs/constants';
@@ -46,6 +47,7 @@ class Lookup extends Component {
             ),
         };
         this.inputId = uniqueId('lookup-input');
+        this.listboxId = uniqueId('lookup-listbox');
         this.errorMessageId = uniqueId('error-message');
         this.containerRef = React.createRef();
         this.inputRef = React.createRef();
@@ -124,6 +126,16 @@ class Lookup extends Component {
         const { error } = this.props;
         if (error) {
             return this.errorMessageId;
+        }
+        return undefined;
+    }
+
+    getAriaActivedescendant() {
+        const { isFocused, focusedItemIndex } = this.state;
+        const { options } = this.props;
+        const isOpen = isMenuOpen(options, isFocused);
+        if (isOpen) {
+            return `lookup-item-${focusedItemIndex}`;
         }
         return undefined;
     }
@@ -209,12 +221,12 @@ class Lookup extends Component {
         });
     }
 
-    isMenuOpen() {
+    isLookupOpen() {
         const { searchValue, isFocused } = this.state;
         const { options } = this.props;
         const isMenuEmpty =
             isFocused && !!searchValue && Array.isArray(options) && options.length === 0;
-        const isOpen = isFocused && Array.isArray(options) && !!options.length;
+        const isOpen = isMenuOpen(options, isFocused);
         return isOpen || isMenuEmpty;
     }
 
@@ -230,7 +242,7 @@ class Lookup extends Component {
         if (keyCode === ESCAPE_KEY && !!searchValue) {
             event.stopPropagation();
         }
-        if (isNavigationKey(keyCode) && this.isMenuOpen()) {
+        if (isNavigationKey(keyCode) && this.isLookupOpen()) {
             event.preventDefault();
             event.stopPropagation();
             if (this.keyHandlerMap[keyCode]) {
@@ -353,7 +365,7 @@ class Lookup extends Component {
         } = this.props;
         const { searchValue, focusedItemIndex, options } = this.state;
         const onDeleteValue = disabled || readOnly ? undefined : this.handleRemoveValue;
-        const isOpenMenu = this.isMenuOpen();
+        const isLookupOpen = this.isLookupOpen();
         const errorMessageId = this.getErrorMessageId();
         const currentValue = this.getValue();
 
@@ -392,7 +404,13 @@ class Lookup extends Component {
                 </RenderIf>
 
                 <RenderIf isTrue={!currentValue}>
-                    <div className="rainbow-lookup_input-container">
+                    <div
+                        className="rainbow-lookup_input-container"
+                        aria-expanded={isLookupOpen}
+                        aria-haspopup="listbox"
+                        // eslint-disable-next-line jsx-a11y/role-has-required-aria-props
+                        role="combobox"
+                    >
                         <Spinner
                             isVisible={isLoading}
                             className="rainbow-lookup_spinner"
@@ -404,6 +422,7 @@ class Lookup extends Component {
                             onClear={this.clearInput}
                             icon={icon}
                         />
+                        {/* eslint-disable-next-line jsx-a11y/aria-activedescendant-has-tabindex */}
                         <input
                             id={this.inputId}
                             name={name}
@@ -421,10 +440,17 @@ class Lookup extends Component {
                             required={required}
                             autoComplete="off"
                             aria-describedby={errorMessageId}
+                            aria-autocomplete="list"
+                            aria-controls={this.listboxId}
+                            aria-activedescendant={this.getAriaActivedescendant()}
                             ref={this.inputRef}
                         />
-                        <RenderIf isTrue={isOpenMenu}>
-                            <div className="rainbow-lookup_options-menu">
+                        <RenderIf isTrue={isLookupOpen}>
+                            <div
+                                className="rainbow-lookup_options-menu"
+                                id={this.listboxId}
+                                role="listbox"
+                            >
                                 <Options
                                     items={options}
                                     value={searchValue}
@@ -451,13 +477,13 @@ class Lookup extends Component {
 
 Lookup.propTypes = {
     /** Text label for the Lookup. */
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** A boolean to hide the Lookup label. */
     hideLabel: PropTypes.bool,
     /** Specifies the selected value of the Lookup. */
     value: PropTypes.oneOfType([
         PropTypes.shape({
-            label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+            label: PropTypes.string,
             description: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
             icon: PropTypes.node,
         }),
@@ -466,7 +492,7 @@ Lookup.propTypes = {
     /** An array of matched options to show in a menu. */
     options: PropTypes.arrayOf(
         PropTypes.shape({
-            label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+            label: PropTypes.string,
             description: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
             icon: PropTypes.node,
         }),
@@ -519,6 +545,7 @@ Lookup.propTypes = {
 };
 
 Lookup.defaultProps = {
+    label: undefined,
     value: undefined,
     name: undefined,
     placeholder: null,

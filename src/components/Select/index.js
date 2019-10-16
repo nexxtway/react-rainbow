@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import withReduxForm from './../../libs/hocs/withReduxForm';
 import { uniqueId } from './../../libs/utils';
 import RenderIf from '../RenderIf';
 import RequiredAsterisk from '../RequiredAsterisk';
 import Options from './options';
-import './styles.css';
+import StyledContainer from './styled/container';
+import StyledLabel from './styled/label';
+import StyledInnerContainer from './styled/innerContainer';
+import StyledSelect from './styled/select';
+import StyledError from './styled/error';
 
 /**
  * Select element presents a menu of options.
@@ -17,24 +20,6 @@ class Select extends Component {
         super(props);
         this.selectId = uniqueId('select');
         this.selectRef = React.createRef();
-    }
-
-    getContainerClassNames() {
-        const { className, error } = this.props;
-        return classnames(
-            'rainbow-select_container',
-            {
-                'rainbow-select--error': error,
-            },
-            className,
-        );
-    }
-
-    getLabelClassNames() {
-        const { hideLabel } = this.props;
-        return classnames('rainbow-select_label', {
-            'rainbow-select_label--hide-label': hideLabel,
-        });
     }
 
     /**
@@ -74,19 +59,21 @@ class Select extends Component {
             disabled,
             options,
             style,
+            className,
             id,
             name,
+            hideLabel,
         } = this.props;
 
         return (
-            <div className={this.getContainerClassNames()} style={style} id={id}>
-                <label className={this.getLabelClassNames()} htmlFor={this.selectId}>
+            <StyledContainer className={className} style={style} id={id}>
+                <StyledLabel hideLabel={hideLabel} htmlFor={this.selectId}>
                     <RequiredAsterisk required={required} />
                     {label}
-                </label>
-                <div className="rainbow-select_inner-container" disabled={disabled}>
-                    <select
-                        className="rainbow-select"
+                </StyledLabel>
+                <StyledInnerContainer error={error} disabled={disabled}>
+                    <StyledSelect
+                        error={error}
                         id={this.selectId}
                         name={name}
                         onChange={onChange}
@@ -99,20 +86,20 @@ class Select extends Component {
                         ref={this.selectRef}
                     >
                         <Options options={options} />
-                    </select>
-                </div>
+                    </StyledSelect>
+                </StyledInnerContainer>
                 <RenderIf isTrue={!!error}>
-                    <div className="rainbow-select_text-error">{error}</div>
+                    <StyledError>{error}</StyledError>
                 </RenderIf>
-            </div>
+            </StyledContainer>
         );
     }
 }
 
 Select.propTypes = {
     /** Text label for the select. */
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
-    /** The name of the select */
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /** The name of the select. */
     name: PropTypes.string,
     /** Specifies the selected value. */
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -135,7 +122,7 @@ Select.propTypes = {
     /** The option items to be displayed. */
     options: PropTypes.arrayOf(
         PropTypes.shape({
-            label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+            label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
             value: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
             disabled: PropTypes.bool,
         }),
@@ -151,6 +138,7 @@ Select.propTypes = {
 };
 
 Select.defaultProps = {
+    label: undefined,
     value: undefined,
     name: undefined,
     onChange: () => {},

@@ -13,11 +13,6 @@ describe('<PageButtons />', () => {
         const buttons = component.find('li');
         expect(buttons.length).toBe(4);
     });
-    it('should set the right className to the active page button', () => {
-        const component = mount(<PageButtons pages={7} onChange={() => {}} activePage={3} />);
-        const pageButtons = component.find('li.rainbow-pagination_button');
-        expect(pageButtons.get(2).props.className).toBe('rainbow-pagination_button');
-    });
     it('should set aria-current to "page" to the active anchor element', () => {
         const component = mount(<PageButtons pages={7} onChange={() => {}} activePage={3} />);
         const pageButtons = component.find('a');

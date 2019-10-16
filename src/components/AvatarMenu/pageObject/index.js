@@ -21,14 +21,14 @@ class PageButtonMenu {
      * @param {number} itemPosition - The base 0 index of the MenuItem.
      */
     getItem(itemPosition) {
-        const menuItems = $(this.rootElement).$$('li.rainbow-menu-item');
+        const menuItems = $(this.rootElement).$$('li[role="presentation"]');
         const buttonMenuItems = $(this.rootElement).$$('ul > *');
         if (menuItems[itemPosition]) {
             const indexPosition = buttonMenuItems.findIndex(
                 element => element.ELEMENT === menuItems[itemPosition].ELEMENT,
             );
             return new PageMenuItem(
-                `${this.rootElement} li.rainbow-menu-item:nth-child(${indexPosition + 1})`,
+                `${this.rootElement} li[role="presentation"]:nth-child(${indexPosition + 1})`,
             );
         }
         return null;
@@ -40,7 +40,7 @@ class PageButtonMenu {
      */
     click() {
         $(this.rootElement)
-            .$('button.rainbow-avatar-menu_button')
+            .$('button[data-id="avatar-menu-button"]')
             .click();
     }
 

@@ -11,7 +11,6 @@ import StepOne from './stepOne';
 import StepTwo from './stepTwo';
 import StepThree from './stepThree';
 import StepFour from './stepFour';
-import './styles.css';
 
 const stepNames = ['step-1', 'step-2', 'step-3', 'step-4'];
 
@@ -202,7 +201,7 @@ ImportRecordsFlow.propTypes = {
     schema: PropTypes.shape({
         collection: PropTypes.string,
         attributes: PropTypes.object,
-    }).isRequired,
+    }),
     /** Controls whether the ImportRecordsFlow modal is opened or not.
      * If true, the modal is open. */
     isOpen: PropTypes.bool,
@@ -218,12 +217,14 @@ ImportRecordsFlow.propTypes = {
 };
 
 ImportRecordsFlow.defaultProps = {
-    className: '',
-    style: {},
+    className: undefined,
+    style: undefined,
+    schema: {
+        attributes: {},
+    },
     isOpen: false,
     onRequestClose: () => {},
     onComplete: () => {},
-    schema: {},
 };
 
 ImportRecordsFlow.MERGE_RECORDS = MERGE_RECORDS;

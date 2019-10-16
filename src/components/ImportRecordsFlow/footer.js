@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '../Button';
 import ProgressIndicator from '../ProgressIndicator';
 import ProgressStep from '../ProgressStep';
+import StyledFooter from './styled/footer';
+import StyledBackButton from './styled/backButton';
+import StyledNextButton from './styled/nextButton';
 
 export default function DirectionalFooter(props) {
     const { onBack, onNext, currentStep, isBackButtonDisabled, isNextButtonDisabled } = props;
@@ -15,27 +17,21 @@ export default function DirectionalFooter(props) {
     };
 
     return (
-        <div className="rainbow-import-records-flow_footer">
-            <Button
-                className="rainbow-import-records-flow_footer-back-button"
-                label="Back"
-                onClick={onBack}
-                disabled={isBackButtonDisabled}
-            />
+        <StyledFooter>
+            <StyledBackButton label="Back" onClick={onBack} disabled={isBackButtonDisabled} />
             <ProgressIndicator currentStepName={currentStep}>
                 <ProgressStep name="step-1" />
                 <ProgressStep name="step-2" />
                 <ProgressStep name="step-3" />
                 <ProgressStep name="step-4" />
             </ProgressIndicator>
-            <Button
-                className="rainbow-import-records-flow_footer-next-button"
+            <StyledNextButton
                 label={getLabel()}
                 variant="brand"
                 onClick={onNext}
                 disabled={isNextButtonDisabled}
             />
-        </div>
+        </StyledFooter>
     );
 }
 
