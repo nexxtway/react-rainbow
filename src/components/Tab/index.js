@@ -1,9 +1,10 @@
 /* eslint-disable no-script-url, react/prop-types */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { Consumer } from '../Tabset/context';
-import './styles.css';
+import StyledContainer from './styled/container';
+import TruncatedText from '../Structural/truncatedText';
+import StyledAnchor from './styled/anchor';
 
 class TabItem extends Component {
     constructor(props) {
@@ -31,26 +32,26 @@ class TabItem extends Component {
         privateUnRegisterTab(name);
     }
 
-    getContainerClassName() {
-        const { className, fullWidth } = this.props;
-        return classnames(
-            'rainbow-tab',
-            {
-                'rainbow-tab--full-width': fullWidth,
-                'rainbow-tab--active': this.isSelected(),
-            },
-            className,
-        );
-    }
+    // getContainerClassName() {
+    //     const { className, fullWidth } = this.props;
+    //     return classnames(
+    //         'rainbow-tab',
+    //         {
+    //             'rainbow-tab--full-width': fullWidth,
+    //             'rainbow-tab--active': this.isSelected(),
+    //         },
+    //         className,
+    //     );
+    // }
 
-    getTabClassName() {
-        const { disabled, fullWidth } = this.props;
-        return classnames('rainbow-tab_anchor', {
-            'rainbow-tab--active': this.isSelected(),
-            'rainbow-tab--disabled': disabled,
-            'rainbow-tab--full-width': fullWidth,
-        });
-    }
+    // getTabClassName() {
+    //     const { disabled, fullWidth } = this.props;
+    //     return classnames('rainbow-tab_anchor', {
+    //         'rainbow-tab--active': this.isSelected(),
+    //         'rainbow-tab--disabled': disabled,
+    //         'rainbow-tab--full-width': fullWidth,
+    //     });
+    // }
 
     getTabIndex() {
         if (this.isSelected()) {
@@ -72,29 +73,42 @@ class TabItem extends Component {
     }
 
     render() {
-        const { label, style, title, id, ariaControls } = this.props;
+        const {
+            label,
+            style,
+            className,
+            title,
+            id,
+            ariaControls,
+            fullWidth,
+            disabled,
+        } = this.props;
+        const isActive = this.isSelected();
 
         return (
-            <li
-                className={this.getContainerClassName()}
+            <StyledContainer
+                className={className}
+                fullWidth={fullWidth}
+                isActive={isActive}
                 style={style}
                 title={title}
                 role="presentation"
             >
-                <a
+                <StyledAnchor
                     href="javascript:void(0);"
                     role="tab"
-                    className={this.getTabClassName()}
-                    aria-selected={this.isSelected()}
+                    aria-selected={isActive}
                     onClick={this.handleSelect}
                     tabIndex={this.getTabIndex()}
                     id={id}
                     aria-controls={ariaControls}
                     ref={this.tabRef}
+                    isActive={isActive}
+                    disabled={disabled}
                 >
-                    <span className="rainbow-tab_anchor-inner-text">{label}</span>
-                </a>
-            </li>
+                    <TruncatedText>{label}</TruncatedText>
+                </StyledAnchor>
+            </StyledContainer>
         );
     }
 }
