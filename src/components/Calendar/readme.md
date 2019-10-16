@@ -16,7 +16,11 @@ const calendarContainerStyles = {
     </header>
     <div className="rainbow-align-content_center rainbow-p-vertical_xx-large rainbow-p-horizontal_medium">
         <Card style={calendarContainerStyles} className="rainbow-p-around_large">
-            <Calendar value={state.date} onChange={value => setState({ date: value })} />
+            <Calendar
+                className="calendar-1"
+                value={state.date}
+                onChange={value => setState({ date: value })}
+            />
         </Card>
     </div>
 </div>;
