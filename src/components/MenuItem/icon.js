@@ -1,15 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import RenderIf from '../RenderIf';
+import StyledIcon from './styled/icon';
 
 export default function Icon({ icon, isVisible, position }) {
-    const getIconClassNames = () =>
-        classnames('rainbow-menu-item_icon', `rainbow-menu-item_icon--${position}`);
-
     return (
         <RenderIf isTrue={isVisible}>
-            <span className={getIconClassNames()}>{icon}</span>
+            <StyledIcon position={position}>{icon}</StyledIcon>
         </RenderIf>
     );
 }
