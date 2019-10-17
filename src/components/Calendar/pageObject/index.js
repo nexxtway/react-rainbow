@@ -19,8 +19,7 @@ class PageCalendar {
      */
     clickPrevMonthButton() {
         $(this.rootElement)
-            .$('.rainbow-calendar_month-container')
-            .$$('button')[0]
+            .$$('button[data-id=button-icon-element]')[0]
             .click();
     }
 
@@ -30,8 +29,7 @@ class PageCalendar {
      */
     clickNextMonthButton() {
         $(this.rootElement)
-            .$('.rainbow-calendar_month-container')
-            .$$('button')[1]
+            .$$('button[data-id=button-icon-element]')[1]
             .click();
     }
 
@@ -41,7 +39,7 @@ class PageCalendar {
      */
     clickSelectYear() {
         $(this.rootElement)
-            .$('select.rainbow-select')
+            .$('select#select-1')
             .click();
     }
 
@@ -50,7 +48,7 @@ class PageCalendar {
      * @method
      */
     clickDay(day) {
-        const buttonEl = $(this.rootElement).$$('button.rainbow-calendar_day-button')[day];
+        const buttonEl = $(this.rootElement).$$('button:not(data-id=button-icon-element)')[day];
         buttonEl.click();
     }
 
@@ -70,8 +68,7 @@ class PageCalendar {
      */
     hasFocusPrevMonthButton() {
         $(this.rootElement)
-            .$('.rainbow-calendar_month-container')
-            .$$('button')[0]
+            .$$('button[data-id=button-icon-element]')[1]
             .isFocused();
     }
 
@@ -82,8 +79,7 @@ class PageCalendar {
      */
     hasFocusNextMonthButton() {
         $(this.rootElement)
-            .$('.rainbow-calendar_month-container')
-            .$$('button')[1]
+            .$$('button[data-id=button-icon-element]')[1]
             .isFocused();
     }
 
@@ -94,7 +90,7 @@ class PageCalendar {
      */
     hasFocusSelectYear() {
         $(this.rootElement)
-            .$('select.rainbow-select')
+            .$('select#select-1')
             .isFocused();
     }
 
@@ -105,7 +101,7 @@ class PageCalendar {
      */
     getSelectedMonth() {
         return $(this.rootElement)
-            .$('h3.rainbow-calendar_month-text')
+            .$('h3#month')
             .getText();
     }
 
@@ -116,7 +112,7 @@ class PageCalendar {
      */
     getSelectedYear() {
         return $(this.rootElement)
-            .$('select.rainbow-select')
+            .$('select#select-1')
             .getValue();
     }
 
@@ -127,7 +123,7 @@ class PageCalendar {
      */
     getSelectedDay() {
         return $(this.rootElement)
-            .$('button.rainbow-calendar_day-button.rainbow-calendar_day-button--selected')
+            .$('button:not(data-id=button-icon-element)')
             .getText();
     }
 }
