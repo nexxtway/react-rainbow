@@ -1,10 +1,5 @@
 const PageCalendar = require('../../../src/components/Calendar/pageObject');
-// const {
-//     ARROW_UP_KEY,
-//     ARROW_DOWN_KEY,
-//     ENTER_KEY,
-//     ESCAPE_KEY,
-// } = require('../../constants');
+const { TAB_KEY } = require('../../constants');
 
 const CALENDAR = '.calendar-1';
 
@@ -47,5 +42,12 @@ describe('Calendar', () => {
         calendar.clickNextMonthButton();
         calendar.clickNextMonthButton();
         expect(calendar.getSelectedMonth()).toBe(nextMonth);
+    });
+    it('should set  onChange width right value', () => {
+        // const calendar = new PageCalendar(CALENDAR);
+        // const day = new Date().getDate();
+        // expect(calendar.getSelectedDay()).toBe(`${day}`);
+        // calendar.clickDay(4);
+        // expect(calendar.getSelectedDay()).toBe('4');
     });
 });
