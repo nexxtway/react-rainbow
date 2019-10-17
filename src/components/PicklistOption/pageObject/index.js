@@ -61,7 +61,7 @@ class PagePicklistOption {
      * @returns {bool}
      */
     isSelected() {
-        return this.rootElement.$('li[data-id="picklist-option-li-selected_true"]').isExisting();
+        return this.rootElement.$('li[data-selected="true"]').isExisting();
     }
 
     /**
@@ -70,8 +70,8 @@ class PagePicklistOption {
      * @returns {bool}
      */
     isVisible() {
-        const { x, y } = this.rootElement.getLocation();
-        const { width, height } = this.rootElement.getSize();
+        const { x, y } = this.rootElement.$('div[role="option"]').getLocation();
+        const { width, height } = this.rootElement.$('div[role="option"]').getSize();
 
         return (
             this.rootElement.isDisplayedInViewport() &&

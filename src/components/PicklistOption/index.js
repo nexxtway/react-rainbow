@@ -119,25 +119,24 @@ class Option extends Component {
 
         const hasLeftIcon = !!(icon && iconPosition === 'left');
         const hasRightIcon = !!(icon && iconPosition === 'right');
-        const itemDataId = `picklist-option-li-selected_${isSelected}`;
 
         return (
-            <StyledItem
-                data-id={itemDataId}
+            <li
+                data-selected={isSelected}
                 className={className}
                 style={style}
                 role="presentation"
                 onMouseDown={this.handleClick}
                 onMouseEnter={this.handleHover}
-                isSelected={isSelected}
-                isActive={isActive}
             >
-                <div
+                <StyledItem
                     id={name}
                     role="option"
                     aria-selected={isActive}
                     aria-disabled={disabled}
                     ref={this.itemRef}
+                    isSelected={isSelected}
+                    isActive={isActive}
                 >
                     <StyledIconContainer title={title}>
                         <Icon
@@ -155,8 +154,8 @@ class Option extends Component {
                         isVisible={hasRightIcon}
                         position={iconPosition}
                     />
-                </div>
-            </StyledItem>
+                </StyledItem>
+            </li>
         );
     }
 }

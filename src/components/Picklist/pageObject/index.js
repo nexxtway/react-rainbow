@@ -116,9 +116,7 @@ class PagePicklist {
      * @param {number} optionIndex - The base 0 index of the PicklistOption.
      */
     getOption(optionIndex) {
-        const activeOptions = $(this.rootElement).$$(
-            'li[data-id="picklist-option-li-selected_false"]',
-        );
+        const activeOptions = $(this.rootElement).$$('li[data-selected="false"]');
         const option = activeOptions[optionIndex];
         if (option && !option.error) {
             return new PagePicklistOption(option, this[privateGetMenuBoundsRect]());

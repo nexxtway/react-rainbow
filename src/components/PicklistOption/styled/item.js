@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { COLOR_GRAY_2, COLOR_GRAY_1, COLOR_DARK_1 } from '../../../styles/colors';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 
-const StyledItem = styled.li`
+const StyledItem = styled.div`
     position: relative;
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
     display: flex;
@@ -15,7 +15,7 @@ const StyledItem = styled.li`
     cursor: pointer;
     text-decoration: none;
 
-    & > div[aria-disabled='true'] {
+    &[aria-disabled='true'] {
         color: ${COLOR_GRAY_2};
         cursor: default;
 
