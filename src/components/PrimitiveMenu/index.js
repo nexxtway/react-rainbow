@@ -264,6 +264,7 @@ export default class PrimitiveMenu extends Component {
                 />
 
                 <StyledDropdown
+                    data-id="primitive-menu_dropdown"
                     menuSize={menuSize}
                     menuAlignment={menuAlignment}
                     isLoading={isLoading}
