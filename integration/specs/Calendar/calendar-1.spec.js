@@ -43,11 +43,11 @@ describe('Calendar', () => {
         calendar.clickNextMonthButton();
         expect(calendar.getSelectedMonth()).toBe(nextMonth);
     });
-    it('should set  onChange width right value', () => {
-        // const calendar = new PageCalendar(CALENDAR);
-        // const day = new Date().getDate();
-        // expect(calendar.getSelectedDay()).toBe(`${day}`);
-        // calendar.clickDay(4);
-        // expect(calendar.getSelectedDay()).toBe('4');
+    it('should select the rigth day button element', () => {
+        const calendar = new PageCalendar(CALENDAR);
+        const day = new Date().getDate();
+        expect(calendar.getSelectedDay()).toBe(`${day}`);
+        calendar.clickDay(4);
+        expect(calendar.getSelectedDay()).toBe('4');
     });
 });

@@ -48,7 +48,9 @@ class PageCalendar {
      * @method
      */
     clickDay(day) {
-        const buttonEl = $(this.rootElement).$$('button:not(data-id=button-icon-element)')[day];
+        const buttonEl = $(this.rootElement)
+            .$('table')
+            .$$('button')[day - 1];
         buttonEl.click();
     }
 
@@ -123,7 +125,7 @@ class PageCalendar {
      */
     getSelectedDay() {
         return $(this.rootElement)
-            .$('button:not(data-id=button-icon-element)')
+            .$('button[data-selected=true]')
             .getText();
     }
 }
