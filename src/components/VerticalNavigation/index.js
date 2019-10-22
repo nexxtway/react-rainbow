@@ -25,16 +25,6 @@ export default function VerticalNavigation(props) {
         onSelect,
     };
 
-    // const getClassNames = () =>
-    //     classnames(
-    //         'rainbow-vertical-navigation',
-    //         {
-    //             'rainbow-vertical-navigation_compact': compact,
-    //             'rainbow-vertical-navigation_shade': shaded,
-    //         },
-    //         className,
-    //     );
-
     return (
         <StyledNav
             id={id}
