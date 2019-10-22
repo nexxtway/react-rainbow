@@ -49,7 +49,7 @@ class SimpleVerticalNavigation extends React.Component {
 </div>;
 ```
 
-##### compact VerticalNavigation with href
+##### compact VerticalNavigation compact with href
 
 ```js
 const verticalNavigationContainerStyles = {
@@ -460,6 +460,58 @@ class VerticalNavigationWithNotifications extends React.Component {
         style={containerStyles}
     >
         <VerticalNavigationWithNotifications />
+    </div>
+</div>;
+```
+
+##### VerticalNavigation shaded
+
+```js
+const verticalNavigationContainerStyles = {
+    width: '220px',
+    borderBottomLeftRadius: '0.875rem',
+    borderRight: '1px solid #e3e5ed',
+};
+
+class SimpleVerticalNavigation extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            selectedItem: 'item 1',
+        };
+        this.handleOnSelect = this.handleOnSelect.bind(this);
+    }
+
+    handleOnSelect(e, selectedItem) {
+        return this.setState({ selectedItem });
+    }
+
+    render() {
+        return (
+            <VerticalNavigation
+                selectedItem={this.state.selectedItem}
+                onSelect={this.handleOnSelect}
+                shaded
+            >
+                <VerticalSection>
+                    <VerticalItem name="item-1" label="Recent" />
+                    <VerticalItem name="item-2" label="Projects" />
+                    <VerticalItem name="item-3" label="Folders" />
+                    <VerticalItem name="item-4" label="Settings" />
+                    <VerticalItem name="item-5" label="Reports" />
+                </VerticalSection>
+            </VerticalNavigation>
+        );
+    }
+}
+
+<div>
+    <GlobalHeader src="images/user/user3.jpg" />
+    <div
+        className="rainbow-background-color_white rainbow-p-top_small rainbow-p-bottom_medium"
+        style={verticalNavigationContainerStyles}
+    >
+        <SimpleVerticalNavigation />
     </div>
 </div>;
 ```
