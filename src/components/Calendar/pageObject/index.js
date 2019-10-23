@@ -39,7 +39,7 @@ class PageCalendar {
      */
     clickSelectYear() {
         $(this.rootElement)
-            .$('select#select-1')
+            .$('select')
             .click();
     }
 
@@ -55,55 +55,13 @@ class PageCalendar {
     }
 
     /**
-     * Set focus on the select year element.
-     * @method
-     */
-    focusSelectYear() {
-        this.clickSelectYear();
-        this.clickSelectYear();
-    }
-
-    /**
-     * Returns true when the prev month button element has focus.
-     * @method
-     * @returns {bool}
-     */
-    hasFocusPrevMonthButton() {
-        $(this.rootElement)
-            .$$('button[data-id=button-icon-element]')[1]
-            .isFocused();
-    }
-
-    /**
-     * Returns true when the next month button element has focus.
-     * @method
-     * @returns {bool}
-     */
-    hasFocusNextMonthButton() {
-        $(this.rootElement)
-            .$$('button[data-id=button-icon-element]')[1]
-            .isFocused();
-    }
-
-    /**
-     * Returns true when the select year element has focus.
-     * @method
-     * @returns {bool}
-     */
-    hasFocusSelectYear() {
-        $(this.rootElement)
-            .$('select#select-1')
-            .isFocused();
-    }
-
-    /**
      * Returns the text of the current selected month element.
      * @method
      * @returns {string}
      */
     getSelectedMonth() {
         return $(this.rootElement)
-            .$('h3#month')
+            .$('h3[data-id=month]')
             .getText();
     }
 
@@ -114,7 +72,7 @@ class PageCalendar {
      */
     getSelectedYear() {
         return $(this.rootElement)
-            .$('select#select-1')
+            .$('select')
             .getValue();
     }
 

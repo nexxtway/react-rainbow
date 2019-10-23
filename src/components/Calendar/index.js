@@ -71,7 +71,7 @@ export default class Calendar extends Component {
 
     render() {
         const { currentMonth } = this.state;
-        const { onChange, value, minDate, maxDate, className, style } = this.props;
+        const { id, onChange, value, minDate, maxDate, className, style } = this.props;
         const formattedMonth = getFormattedMonth(currentMonth);
         const currentYear = currentMonth.getFullYear();
         const yearsRange = getYearsRange({
@@ -87,7 +87,7 @@ export default class Calendar extends Component {
         const disablePreviousMonth = prevDate < minSelectableDate;
 
         return (
-            <section className={className} style={style}>
+            <section id={id} className={className} style={style}>
                 <StyledControlsContainer>
                     <StyledMonthContainer>
                         <ButtonIcon
@@ -98,7 +98,7 @@ export default class Calendar extends Component {
                             assistiveText="Previous Month"
                         />
 
-                        <StyledMonth id="month">{formattedMonth}</StyledMonth>
+                        <StyledMonth data-id="month">{formattedMonth}</StyledMonth>
 
                         <ButtonIcon
                             onClick={this.nextMonth}
@@ -146,6 +146,8 @@ Calendar.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The id of the outer element. */
+    id: PropTypes.string,
 };
 
 Calendar.defaultProps = {
@@ -155,4 +157,5 @@ Calendar.defaultProps = {
     onChange: () => {},
     className: undefined,
     style: undefined,
+    id: undefined,
 };
