@@ -18,6 +18,7 @@ import {
 import StyledControlsContainer from './styled/controlsContainer';
 import StyledMonthContainer from './styled/monthContainer';
 import StyledMonth from './styled/month';
+import { uniqueId } from '../../libs/utils';
 
 /**
  * Calendar provide a simple way to select a single date.
@@ -28,6 +29,7 @@ export default class Calendar extends Component {
         this.state = {
             currentMonth: getFirstDayMonth(normalizeDate(props.value)),
         };
+        this.monthLabelId = uniqueId('month');
         this.previousMonth = this.previousMonth.bind(this);
         this.nextMonth = this.nextMonth.bind(this);
         this.handleYearChange = this.handleYearChange.bind(this);
@@ -71,7 +73,7 @@ export default class Calendar extends Component {
 
     render() {
         const { currentMonth } = this.state;
-        const { onChange, value, minDate, maxDate, className, style } = this.props;
+        const { id, onChange, value, minDate, maxDate, className, style } = this.props;
         const formattedMonth = getFormattedMonth(currentMonth);
         const currentYear = currentMonth.getFullYear();
         const yearsRange = getYearsRange({
@@ -87,7 +89,7 @@ export default class Calendar extends Component {
         const disablePreviousMonth = prevDate < minSelectableDate;
 
         return (
-            <section className={className} style={style}>
+            <section id={id} className={className} style={style}>
                 <StyledControlsContainer>
                     <StyledMonthContainer>
                         <ButtonIcon
@@ -98,7 +100,9 @@ export default class Calendar extends Component {
                             assistiveText="Previous Month"
                         />
 
-                        <StyledMonth id="month">{formattedMonth}</StyledMonth>
+                        <StyledMonth id={this.monthLabelId} data-id="month">
+                            {formattedMonth}
+                        </StyledMonth>
 
                         <ButtonIcon
                             onClick={this.nextMonth}
@@ -116,7 +120,7 @@ export default class Calendar extends Component {
                         onChange={this.handleYearChange}
                     />
                 </StyledControlsContainer>
-                <table role="grid" aria-labelledby="month">
+                <table role="grid" aria-labelledby={this.monthLabelId}>
                     <DaysOfWeek />
                     <Month
                         value={value}
@@ -146,6 +150,8 @@ Calendar.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The id of the outer element. */
+    id: PropTypes.string,
 };
 
 Calendar.defaultProps = {
@@ -155,4 +161,5 @@ Calendar.defaultProps = {
     onChange: () => {},
     className: undefined,
     style: undefined,
+    id: undefined,
 };

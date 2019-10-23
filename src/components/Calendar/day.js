@@ -20,7 +20,11 @@ export default function Day(props) {
 
     return (
         <StyledDay role="gridcell">
-            <StyledDayButton onClick={() => onChange(new Date(date))} isSelected={isSelected}>
+            <StyledDayButton
+                onClick={() => onChange(new Date(date))}
+                isSelected={isSelected}
+                data-selected={isSelected}
+            >
                 {day}
             </StyledDayButton>
         </StyledDay>
