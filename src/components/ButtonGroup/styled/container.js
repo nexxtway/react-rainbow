@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 import styled from 'styled-components';
 
 const StyledContainer = styled.div`
@@ -17,27 +18,18 @@ const StyledContainer = styled.div`
         }
     }
 
-    button:first-child {
+    > button:first-child,
+    > div:first-child > button {
         border-radius: 100px 0 0 100px;
     }
 
-    button:last-child {
+    > button:last-child,
+    > div:last-child > button {
         border-radius: 0 100px 100px 0;
     }
 
-    button:only-child {
-        border-radius: 100px;
-    }
-
-    div:first-child > button {
-        border-radius: 100px 0 0 100px;
-    }
-
-    div:last-child > button {
-        border-radius: 0 100px 100px 0;
-    }
-
-    div:only-child > button {
+    > button:only-child,
+    > div:only-child > button {
         border-radius: 100px;
     }
 `;

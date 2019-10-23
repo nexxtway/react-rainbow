@@ -51,7 +51,7 @@ class PageButtonMenu {
      */
     isOpen() {
         return $(this.rootElement)
-            .$('.rainbow-primitive-menu_dropdown')
+            .$('div[data-id="primitive-menu_dropdown"]')
             .isDisplayed();
     }
 
