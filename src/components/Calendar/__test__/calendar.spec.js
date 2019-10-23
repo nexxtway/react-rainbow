@@ -13,21 +13,21 @@ describe('Calendar', () => {
     it('should render the right month', () => {
         const value = new Date('04/24/2019');
         const component = mount(<Calendar value={value} />);
-        expect(component.find('h3[id="month"]').text()).toBe('April');
+        expect(component.find('h3[data-id="month"]').text()).toBe('April');
     });
     it('should render the prev month', () => {
         const value = new Date('04/24/2019');
         const component = mount(<Calendar value={value} />);
         const prevMonthButton = component.find('ButtonIcon').at(0);
         prevMonthButton.simulate('click');
-        expect(component.find('h3[id="month"]').text()).toBe('March');
+        expect(component.find('h3[data-id="month"]').text()).toBe('March');
     });
     it('should render the next month', () => {
         const value = new Date('04/24/2019');
         const component = mount(<Calendar value={value} />);
         const nextMonthButton = component.find('ButtonIcon').at(1);
         nextMonthButton.simulate('click');
-        expect(component.find('h3[id="month"]').text()).toBe('May');
+        expect(component.find('h3[data-id="month"]').text()).toBe('May');
     });
     it('should set to disable the prev month button when minDate is greater than prev month date', () => {
         const value = new Date('04/24/2019');
@@ -49,7 +49,7 @@ describe('Calendar', () => {
         component.setProps({
             value: new Date('10/24/2019'),
         });
-        expect(component.find('h3[id="month"]').text()).toBe('October');
+        expect(component.find('h3[data-id="month"]').text()).toBe('October');
     });
     it('should change the year', () => {
         const value = new Date('04/24/2019');
@@ -64,9 +64,10 @@ describe('Calendar', () => {
     it('should set the right attributes in table element', () => {
         const value = new Date('04/24/2019');
         const component = mount(<Calendar value={value} />);
+        const monthLabelId = component.instance().monthLabelId;
         expect(component.find('table').props()).toEqual(
             expect.objectContaining({
-                'aria-labelledby': 'month',
+                'aria-labelledby': monthLabelId,
                 role: 'grid',
             }),
         );
