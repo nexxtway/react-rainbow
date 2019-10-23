@@ -1,7 +1,7 @@
 ##### Calendar base:
 
 ```js
-initialState = { date: new Date() };
+initialState = { date: new Date('2019-12-06 00:00:00') };
 const calendarContainerStyles = {
     width: '28rem',
     height: '26.5rem',
@@ -17,7 +17,7 @@ const calendarContainerStyles = {
     <div className="rainbow-align-content_center rainbow-p-vertical_xx-large rainbow-p-horizontal_medium">
         <Card style={calendarContainerStyles} className="rainbow-p-around_large">
             <Calendar
-                className="calendar-1"
+                id="calendar-1"
                 value={state.date}
                 onChange={value => setState({ date: value })}
             />
