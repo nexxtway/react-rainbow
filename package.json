@@ -134,7 +134,7 @@
         "react-ga": "^2.5.3",
         "react-prismic-cms": "^0.3.1",
         "react-redux": "^5.1.0",
-        "react-styleguidist": "^7.2.1",
+        "react-styleguidist": "^9.2.0",
         "react-test-renderer": "^16.8.6",
         "redux": "^4.0.1",
         "redux-form": "^7.4.2",
@@ -148,7 +148,7 @@
         "stylelint-scss": "^3.3.0",
         "wdio-chromedriver-service": "^5.0.1",
         "webdriverio": "^5.7.15",
-        "webpack": "^4.16.5"
+        "webpack": "^4.41.2"
     },
     "pre-push": [
         "lint",
