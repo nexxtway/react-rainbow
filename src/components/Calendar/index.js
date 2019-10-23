@@ -18,6 +18,7 @@ import {
 import StyledControlsContainer from './styled/controlsContainer';
 import StyledMonthContainer from './styled/monthContainer';
 import StyledMonth from './styled/month';
+import { uniqueId } from '../../libs/utils';
 
 /**
  * Calendar provide a simple way to select a single date.
@@ -28,6 +29,7 @@ export default class Calendar extends Component {
         this.state = {
             currentMonth: getFirstDayMonth(normalizeDate(props.value)),
         };
+        this.monthLabelId = uniqueId('month');
         this.previousMonth = this.previousMonth.bind(this);
         this.nextMonth = this.nextMonth.bind(this);
         this.handleYearChange = this.handleYearChange.bind(this);
@@ -98,7 +100,9 @@ export default class Calendar extends Component {
                             assistiveText="Previous Month"
                         />
 
-                        <StyledMonth data-id="month">{formattedMonth}</StyledMonth>
+                        <StyledMonth id={this.monthLabelId} data-id="month">
+                            {formattedMonth}
+                        </StyledMonth>
 
                         <ButtonIcon
                             onClick={this.nextMonth}
@@ -116,7 +120,7 @@ export default class Calendar extends Component {
                         onChange={this.handleYearChange}
                     />
                 </StyledControlsContainer>
-                <table role="grid" aria-labelledby="month">
+                <table role="grid" aria-labelledby={this.monthLabelId}>
                     <DaysOfWeek />
                     <Month
                         value={value}
