@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { uniqueId } from '../../libs/utils';
 import { Provider } from './context';
 import RenderIf from '../RenderIf';
-import './styles.css';
+import StyledContainer from './styled/container';
+import StyledTitle from './styled/title';
 
 /**
  * Represents a section within a VerticalNavigation.
@@ -16,25 +16,18 @@ class VerticalSection extends Component {
         this.entityHeaderId = uniqueId('entity-header');
     }
 
-    getClassNames() {
-        const { className } = this.props;
-        return classnames('rainbow-vertical-section', className);
-    }
-
     render() {
-        const { label, style, children } = this.props;
+        const { label, style, children, className } = this.props;
 
         return (
-            <div className={this.getClassNames()} style={style}>
+            <StyledContainer className={className} style={style}>
                 <RenderIf isTrue={!!label}>
-                    <h2 id={this.entityHeaderId} className="rainbow-vertical-section_title">
-                        {label}
-                    </h2>
+                    <StyledTitle>{label}</StyledTitle>
                 </RenderIf>
                 <Provider value={this.entityHeaderId}>
                     <ul>{children}</ul>
                 </Provider>
-            </div>
+            </StyledContainer>
         );
     }
 }
