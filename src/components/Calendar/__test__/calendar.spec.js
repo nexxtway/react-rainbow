@@ -64,9 +64,10 @@ describe('Calendar', () => {
     it('should set the right attributes in table element', () => {
         const value = new Date('04/24/2019');
         const component = mount(<Calendar value={value} />);
+        const monthLabelId = component.instance().monthLabelId;
         expect(component.find('table').props()).toEqual(
             expect.objectContaining({
-                'aria-labelledby': 'month',
+                'aria-labelledby': monthLabelId,
                 role: 'grid',
             }),
         );
