@@ -221,7 +221,7 @@ describe('<Picklist />', () => {
         component.instance().openMenu();
         component.update();
         component
-            .find('li.rainbow-picklist-option')
+            .find('li')
             .at(1)
             .simulate('mousedown');
         expect(onChangeFn).toHaveBeenCalledWith({
@@ -245,7 +245,7 @@ describe('<Picklist />', () => {
         component.instance().openMenu();
         component.update();
         component
-            .find('li.rainbow-picklist-option')
+            .find('li')
             .at(1)
             .simulate('keyDown', {
                 keyCode: ENTER_KEY,

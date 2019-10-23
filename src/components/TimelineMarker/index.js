@@ -1,8 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import CalendarIcon from './calendarIcon';
-import './styles.css';
+import StyledLi from './styled/li';
+import StyledColumnLeft from './styled/columnLeft';
+import StyledIconContainer from './styled/iconContainer';
+import StyledContentContainer from './styled/contentContainer';
+import StyledHeader from './styled/header';
+import StyledLabel from './styled/label';
+import StyledDatetime from './styled/datetime';
+import StyledDescription from './styled/description';
+import StyledBody from './styled/body';
 
 /**
  * The TimelineMarker displays one event of an item timeline.
@@ -11,24 +18,22 @@ import './styles.css';
 export default function TimelineMarker(props) {
     const { icon, label, description, datetime, children, className, style } = props;
 
-    const getContainerClassName = () => classnames('rainbow-timeline-marker_container', className);
-
     return (
-        <li className={getContainerClassName()} style={style}>
-            <div className="rainbow-timeline-marker_column-left">
-                <span className="rainbow-timeline-marker_icon-container">{icon}</span>
-            </div>
-            <div className="rainbow-timeline-marker_content">
-                <div className="rainbow-timeline-marker_content-header">
-                    <div className="rainbow-timeline-marker_content-header-title">
-                        <h1 className="rainbow-timeline-marker_label">{label}</h1>
-                        <p className="rainbow-timeline-marker_datetime">{datetime}</p>
-                    </div>
-                    <p className="rainbow-timeline-marker_description">{description}</p>
+        <StyledLi className={className} style={style}>
+            <StyledColumnLeft>
+                <StyledIconContainer>{icon}</StyledIconContainer>
+            </StyledColumnLeft>
+            <StyledContentContainer>
+                <div>
+                    <StyledHeader>
+                        <StyledLabel>{label}</StyledLabel>
+                        <StyledDatetime>{datetime}</StyledDatetime>
+                    </StyledHeader>
+                    <StyledDescription>{description}</StyledDescription>
                 </div>
-                <div className="rainbow-timeline-marker_body">{children}</div>
-            </div>
-        </li>
+                <StyledBody>{children}</StyledBody>
+            </StyledContentContainer>
+        </StyledLi>
     );
 }
 

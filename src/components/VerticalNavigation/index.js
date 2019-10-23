@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { Provider } from './context';
-import './styles.css';
+import StyledNav from './styled/nav';
 
 /**
  * Navigation represents a list of links that either take the user to another page
@@ -26,20 +25,17 @@ export default function VerticalNavigation(props) {
         onSelect,
     };
 
-    const getClassNames = () =>
-        classnames(
-            'rainbow-vertical-navigation',
-            {
-                'rainbow-vertical-navigation_compact': compact,
-                'rainbow-vertical-navigation_shade': shaded,
-            },
-            className,
-        );
-
     return (
-        <nav id={id} className={getClassNames()} style={style} aria-label={ariaLabel}>
+        <StyledNav
+            id={id}
+            className={className}
+            style={style}
+            aria-label={ariaLabel}
+            compact={compact}
+            shaded={shaded}
+        >
             <Provider value={context}>{children}</Provider>
-        </nav>
+        </StyledNav>
     );
 }
 
