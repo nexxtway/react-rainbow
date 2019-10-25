@@ -4,6 +4,7 @@ import CounterManager from '../counterManager';
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from '../scrollController';
 import Modal from '../';
 import StyledContent from '../styled/content';
+import StyledCloseButton from '../styled/closeButton';
 
 jest.mock('../counterManager', () => ({
     increment: jest.fn(),
@@ -186,5 +187,23 @@ describe('<Modal/>', () => {
         );
         component.unmount();
         expect(CounterManager.decrement).not.toHaveBeenCalled();
+    });
+    it('should render the close button by default', () => {
+        const component = mount(
+            <Modal isOpen>
+                <p />
+            </Modal>,
+        );
+
+        expect(component.find(StyledCloseButton).exists()).toBe(true);
+    });
+    it('should not render the close button when the hideCloseButton prop is equal to true', () => {
+        const component = mount(
+            <Modal isOpen hideCloseButton>
+                <p />
+            </Modal>,
+        );
+
+        expect(component.find(StyledCloseButton).exists()).toBe(false);
     });
 });
