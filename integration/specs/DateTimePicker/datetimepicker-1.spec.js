@@ -17,6 +17,6 @@ describe('DateTimePicker', () => {
         picker.waitUntilModalIsOpen();
         expect(picker.getModalHeaderText()).toBe('10/25/19, 2:44 PM');
         picker.clickDay(10);
-        expect(picker.getTimeValue()).toBe('10/10/19, 2:44 PM');
+        expect(picker.getModalHeaderText()).toBe('10/10/19, 2:44 PM');
     });
 });
