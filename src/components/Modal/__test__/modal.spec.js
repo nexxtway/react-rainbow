@@ -195,7 +195,7 @@ describe('<Modal/>', () => {
             </Modal>,
         );
 
-        expect(component.find(StyledCloseButton).exists).toBeTruthy();
+        expect(component.find(StyledCloseButton).exists()).toBe(true);
     });
     it('should not render the close button when the hideCloseButton prop is equal to true', () => {
         const component = mount(
@@ -204,6 +204,6 @@ describe('<Modal/>', () => {
             </Modal>,
         );
 
-        expect(component.find(StyledCloseButton).exists()).toBeFalsy();
+        expect(component.find(StyledCloseButton).exists()).toBe(false);
     });
 });
