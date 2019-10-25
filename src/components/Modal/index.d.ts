@@ -10,6 +10,7 @@ export interface ModalProps extends BaseProps {
     onOpened?: () => void;
     id?: string;
     children?: ReactNode;
+    showClose?: boolean;
 }
 
 declare const Modal: ComponentType<ModalProps>;

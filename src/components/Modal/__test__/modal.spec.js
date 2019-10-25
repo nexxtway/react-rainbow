@@ -187,4 +187,24 @@ describe('<Modal/>', () => {
         component.unmount();
         expect(CounterManager.decrement).not.toHaveBeenCalled();
     });
+    it('should show the cross for close the modal by default', () => {
+        const component = mount(
+            <Modal isOpen>
+                <p />
+            </Modal>,
+        );
+
+        expect(component.find('button[data-id="button-icon-element"]').prop('id')).toBe(
+            'modal-close-button',
+        );
+    });
+    it('should not render the cross for close the modal when the showClose prop is equal to false', () => {
+        const component = mount(
+            <Modal isOpen showClose={false}>
+                <p />
+            </Modal>,
+        );
+
+        expect(component.exists('button[data-id="button-icon-element"]')).toBeFalsy();
+    });
 });
