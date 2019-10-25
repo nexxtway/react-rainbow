@@ -15,8 +15,8 @@ describe('DateTimePicker', () => {
         const picker = new PageDateTimePicker(DATETIMEPICKER);
         picker.click();
         picker.waitUntilModalIsOpen();
-        expect(picker.getModalHeaderText()).toBe('10/25/19, 10:44 PM');
+        expect(picker.getModalHeaderText()).toBe('10/25/19, 10:44 AM');
         picker.clickDay(10);
-        expect(picker.getModalHeaderText()).toBe('10/10/19, 10:44 PM');
+        expect(picker.getModalHeaderText()).toBe('10/10/19, 10:44 AM');
     });
 });
