@@ -11,6 +11,7 @@
         "react/jsx-first-prop-new-line": "off",
         "react/jsx-closing-bracket-location": "off",
         "react/forbid-prop-types": "off",
+        "react/require-default-props": 2,
         "no-mixed-operators": "off",
         "arrow-parens": ["error", "as-needed"]
     },
