@@ -5,7 +5,7 @@ const containerStyles = {
     maxWidth: 400,
 };
 
-const initialState = { value: new Date('2019-10-25 14:44') };
+const initialState = { value: new Date('2019-10-25 10:44') };
 <div
     className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
     style={containerStyles}
