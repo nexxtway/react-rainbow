@@ -38,6 +38,7 @@ function PickerComponent(props, ref) {
     } = props;
 
     const inputRef = useRef();
+    const modalId = (id && `${id}_modal`) || undefined;
     useImperativeHandle(ref, () => ({
         focus: () => {
             inputRef.current.focus();
@@ -112,6 +113,7 @@ function PickerComponent(props, ref) {
                 autoComplete="off"
             />
             <DateTimePickerModal
+                id={modalId}
                 isOpen={isOpen}
                 title={formattedDatetime}
                 onRequestClose={closeModal}
