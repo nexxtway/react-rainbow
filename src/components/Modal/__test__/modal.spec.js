@@ -4,6 +4,7 @@ import CounterManager from '../counterManager';
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from '../scrollController';
 import Modal from '../';
 import StyledContent from '../styled/content';
+import StyledCloseButton from '../styled/closeButton';
 
 jest.mock('../counterManager', () => ({
     increment: jest.fn(),
@@ -187,24 +188,22 @@ describe('<Modal/>', () => {
         component.unmount();
         expect(CounterManager.decrement).not.toHaveBeenCalled();
     });
-    it('should show the cross for close the modal by default', () => {
+    it('should render the close button by default', () => {
         const component = mount(
             <Modal isOpen>
                 <p />
             </Modal>,
         );
 
-        expect(component.find('button[data-id="button-icon-element"]').prop('id')).toBe(
-            'modal-close-button',
-        );
+        expect(component.find(StyledCloseButton).exists).toBeTruthy();
     });
-    it('should not render the cross for close the modal when the showClose prop is equal to false', () => {
+    it('should not render the close button when the hideCloseButton prop is equal to true', () => {
         const component = mount(
-            <Modal isOpen showClose={false}>
+            <Modal isOpen hideCloseButton>
                 <p />
             </Modal>,
         );
 
-        expect(component.exists('button[data-id="button-icon-element"]')).toBeFalsy();
+        expect(component.find(StyledCloseButton).exists()).toBeFalsy();
     });
 });

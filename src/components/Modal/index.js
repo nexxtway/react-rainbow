@@ -118,7 +118,7 @@ export default class Modal extends Component {
             isOpen,
             id,
             size,
-            showClose,
+            hideCloseButton,
         } = this.props;
 
         if (isOpen) {
@@ -143,7 +143,7 @@ export default class Modal extends Component {
                         className={className}
                         size={size}
                     >
-                        {showClose && (
+                        <RenderIf isTrue={!hideCloseButton}>
                             <StyledCloseButton
                                 id="modal-close-button"
                                 icon={<CloseIcon />}
@@ -151,7 +151,7 @@ export default class Modal extends Component {
                                 onClick={this.closeModal}
                                 ref={this.buttonRef}
                             />
-                        )}
+                        </RenderIf>
 
                         <Header id={this.modalHeadingId} title={title} />
 
@@ -200,8 +200,8 @@ Modal.propTypes = {
      * @ignore
      */
     children: PropTypes.node,
-    /** Determines if the cross for close is showed or not */
-    showClose: PropTypes.bool,
+    /** If true, hide the close button in the modal */
+    hideCloseButton: PropTypes.bool,
 };
 
 Modal.defaultProps = {
@@ -215,5 +215,5 @@ Modal.defaultProps = {
     onRequestClose: () => {},
     onOpened: () => {},
     id: undefined,
-    showClose: true,
+    hideCloseButton: false,
 };
