@@ -15,13 +15,13 @@ describe('DateTimePicker', () => {
         const picker = new PageDateTimePicker(DATETIMEPICKER);
         picker.click();
         picker.waitUntilOpen();
-        expect(picker.isModalOpen()).toBe(true);
+        expect(picker.isOpen()).toBe(true);
     });
     it('should open the DateTimePicker when click on the label element', () => {
         const picker = new PageDateTimePicker(DATETIMEPICKER);
         picker.clickLabel();
         picker.waitUntilOpen();
-        expect(picker.isModalOpen()).toBe(true);
+        expect(picker.isOpen()).toBe(true);
     });
     it('should close the DateTimePicker when click the ok button', () => {
         const picker = new PageDateTimePicker(DATETIMEPICKER);
@@ -29,7 +29,7 @@ describe('DateTimePicker', () => {
         picker.waitUntilOpen();
         picker.clickOKButton();
         picker.waitUntilClose();
-        expect(picker.isModalOpen()).toBe(false);
+        expect(picker.isOpen()).toBe(false);
     });
     it('should close the DateTimePicker when click the cancel button', () => {
         const picker = new PageDateTimePicker(DATETIMEPICKER);
@@ -37,7 +37,7 @@ describe('DateTimePicker', () => {
         picker.waitUntilOpen();
         picker.clickCancelButton();
         picker.waitUntilClose();
-        expect(picker.isModalOpen()).toBe(false);
+        expect(picker.isOpen()).toBe(false);
     });
     it('should set the right value when select a date', () => {
         const picker = new PageDateTimePicker(DATETIMEPICKER);

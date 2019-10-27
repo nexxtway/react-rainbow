@@ -91,8 +91,16 @@ class PageDateTimePicker {
      * @method
      * @returns {bool}
      */
-    isModalOpen() {
-        return new PageModal(this.modalRootEl).isOpen();
+    isOpen() {
+        return (
+            $(this.modalRootEl).isDisplayed() &&
+            $(this.modalRootEl)
+                .$('button[id="time-picker_ok-button"]')
+                .isDisplayed() &&
+            $(this.modalRootEl)
+                .$('button[id="time-picker_cancel-button"]')
+                .isDisplayed()
+        );
     }
 
     /**
@@ -100,7 +108,7 @@ class PageDateTimePicker {
      * @method
      */
     waitUntilOpen() {
-        browser.waitUntil(() => this.isModalOpen());
+        browser.waitUntil(() => this.isOpen());
     }
 
     /**
@@ -108,7 +116,7 @@ class PageDateTimePicker {
      * @method
      */
     waitUntilClose() {
-        browser.waitUntil(() => !this.isModalOpen());
+        browser.waitUntil(() => !this.isOpen());
     }
 }
 
