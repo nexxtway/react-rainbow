@@ -96,7 +96,7 @@ class PageDateTimePicker {
      * @method
      */
     waitUntilOpen() {
-        new PageModal(this.modalRootEl).waitUntilOpen();
+        browser.waitUntil(() => this.isModalOpen());
     }
 
     /**
@@ -104,7 +104,7 @@ class PageDateTimePicker {
      * @method
      */
     waitUntilClose() {
-        new PageModal(this.modalRootEl).waitUntilClose();
+        browser.waitUntil(() => !this.isModalOpen());
     }
 }
 
