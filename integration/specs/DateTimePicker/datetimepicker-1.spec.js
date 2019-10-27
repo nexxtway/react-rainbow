@@ -47,7 +47,6 @@ describe('DateTimePicker', () => {
         picker.clickDay(10);
         picker.clickOKButton();
         picker.waitUntilClose();
-        console.log(picker.getValue());
         expect(picker.getValue()).toBe('10/10/19, 10:44 AM');
     });
 });
