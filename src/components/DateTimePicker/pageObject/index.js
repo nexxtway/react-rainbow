@@ -1,4 +1,3 @@
-const PageModal = require('../../Modal/pageObject');
 const PageCalendar = require('../../Calendar/pageObject');
 const PageTimeSelect = require('./pageTimeSelect');
 
