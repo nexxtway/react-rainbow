@@ -19,7 +19,7 @@ class PageDateTimePicker {
     }
 
     /**
-     * Returns the time selected element.
+     * Returns the selected time value.
      * @method
      * @returns {string}
      */
@@ -28,14 +28,14 @@ class PageDateTimePicker {
     }
 
     /**
-     * Returns the text of the modal header element.
+     * Returns the value of the input element.
      * @method
      * @returns {string}
      */
-    getModalHeaderText() {
-        return $(this.modalRootEl)
-            .$('header > h2')
-            .getText();
+    getValue() {
+        return $(this.rootElement)
+            .$('input[type="text"]')
+            .getValue();
     }
 
     /**
@@ -45,6 +45,16 @@ class PageDateTimePicker {
     click() {
         $(this.rootElement)
             .$('input[type="text"]')
+            .click();
+    }
+
+    /**
+     * Clicks the input label element.
+     * @method
+     */
+    clickLabel() {
+        $(this.rootElement)
+            .$('label')
             .click();
     }
 
@@ -73,11 +83,28 @@ class PageDateTimePicker {
     }
 
     /**
+     * Returns true when the picker modal is open, false otherwise.
+     * @method
+     * @returns {bool}
+     */
+    isModalOpen() {
+        return new PageModal(this.modalRootEl).isOpen();
+    }
+
+    /**
      * Wait until the modal is open.
      * @method
      */
-    waitUntilModalIsOpen() {
+    waitUntilOpen() {
         new PageModal(this.modalRootEl).waitUntilOpen();
+    }
+
+    /**
+     * Wait until the modal is closed.
+     * @method
+     */
+    waitUntilClose() {
+        new PageModal(this.modalRootEl).waitUntilClose();
     }
 }
 

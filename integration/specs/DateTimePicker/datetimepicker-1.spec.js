@@ -11,12 +11,43 @@ describe('DateTimePicker', () => {
         const component = $(DATETIMEPICKER);
         component.waitForExist();
     });
-    it('should set correct date on modal header when day is clicked', () => {
+    it('should open the DateTimePicker when click on input element', () => {
         const picker = new PageDateTimePicker(DATETIMEPICKER);
         picker.click();
-        picker.waitUntilModalIsOpen();
-        expect(picker.getModalHeaderText()).toBe('10/25/19, 10:44 AM');
+        picker.waitUntilOpen();
+        expect(picker.isModalOpen()).toBe(true);
+    });
+    it('should open the DateTimePicker when click on the label element', () => {
+        const picker = new PageDateTimePicker(DATETIMEPICKER);
+        picker.clickLabel();
+        picker.waitUntilOpen();
+        expect(picker.isModalOpen()).toBe(true);
+    });
+    it('should close the DateTimePicker when click the ok button', () => {
+        const picker = new PageDateTimePicker(DATETIMEPICKER);
+        picker.click();
+        picker.waitUntilOpen();
+        picker.clickOKButton();
+        picker.waitUntilClose();
+        expect(picker.isModalOpen()).toBe(false);
+    });
+    it('should close the DateTimePicker when click the cancel button', () => {
+        const picker = new PageDateTimePicker(DATETIMEPICKER);
+        picker.click();
+        picker.waitUntilOpen();
+        picker.clickCancelButton();
+        picker.waitUntilClose();
+        expect(picker.isModalOpen()).toBe(false);
+    });
+    it('should set the right value when select a date', () => {
+        const picker = new PageDateTimePicker(DATETIMEPICKER);
+        picker.click();
+        picker.waitUntilOpen();
+        expect(picker.getValue()).toBe('10/25/19, 10:44 AM');
         picker.clickDay(10);
-        expect(picker.getModalHeaderText()).toBe('10/10/19, 10:44 AM');
+        picker.clickOKButton();
+        picker.waitUntilClose();
+        console.log(picker.getValue());
+        expect(picker.getValue()).toBe('10/10/19, 10:44 AM');
     });
 });

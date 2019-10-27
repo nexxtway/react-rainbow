@@ -14,7 +14,7 @@ describe('DateTimePicker', () => {
     it('should set 12:00 AM as time when day is selected', () => {
         const picker = new PageDateTimePicker(DATETIMEPICKER);
         picker.click();
-        picker.waitUntilModalIsOpen();
+        picker.waitUntilOpen();
         expect(picker.getTimeValue()).toBe('');
         picker.clickDay(10);
         expect(picker.getTimeValue()).toBe('12:00 AM');

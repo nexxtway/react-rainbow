@@ -19,7 +19,7 @@ class PageTimeSelect {
      */
     clickOKButton() {
         $(this.rootElement)
-            .$('button[id=time-picker_cancel-button]')
+            .$('button[id=time-picker_ok-button]')
             .click();
     }
 
@@ -29,7 +29,7 @@ class PageTimeSelect {
      */
     clickCancelButton() {
         $(this.rootElement)
-            .$('button[id=time-picker_ok-button]')
+            .$('button[id=time-picker_cancel-button]')
             .click();
     }
 

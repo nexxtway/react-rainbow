@@ -38,7 +38,7 @@ function PickerComponent(props, ref) {
     } = props;
 
     const inputRef = useRef();
-    const modalId = (id && `${id}_modal`) || undefined;
+    const modalId = id && `${id}_modal`;
     useImperativeHandle(ref, () => ({
         focus: () => {
             inputRef.current.focus();
