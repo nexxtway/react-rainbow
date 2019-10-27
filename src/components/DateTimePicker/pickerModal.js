@@ -13,6 +13,7 @@ import StyledTimeSelect from './styled/timeSelect';
 
 function DateTimePickerModal(props) {
     const {
+        id,
         isOpen,
         title,
         value,
@@ -32,7 +33,7 @@ function DateTimePickerModal(props) {
     useEffect(() => {
         setDate(value);
         setTime(!value ? '' : extractTime(value));
-    }, [value]);
+    }, [isOpen, value]);
 
     useEffect(() => {
         const currentDateTime = new Date(`${extractDate(date)} ${time}`);
@@ -52,7 +53,7 @@ function DateTimePickerModal(props) {
     };
 
     return (
-        <StyledModal isOpen={isOpen} onRequestClose={onRequestClose}>
+        <StyledModal id={id} isOpen={isOpen} onRequestClose={onRequestClose}>
             <StyledHeader>
                 <StyledH2>{modalTitle}</StyledH2>
             </StyledHeader>
@@ -78,6 +79,7 @@ function DateTimePickerModal(props) {
 }
 
 DateTimePickerModal.propTypes = {
+    id: PropTypes.string,
     title: PropTypes.string,
     isOpen: PropTypes.bool.isRequired,
     value: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
@@ -91,6 +93,7 @@ DateTimePickerModal.propTypes = {
 };
 
 DateTimePickerModal.defaultProps = {
+    id: undefined,
     title: undefined,
     value: undefined,
     minDate: undefined,

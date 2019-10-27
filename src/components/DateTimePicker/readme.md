@@ -5,12 +5,13 @@ const containerStyles = {
     maxWidth: 400,
 };
 
-const initialState = { value: new Date() };
+const initialState = { value: new Date('2019-10-25 10:44') };
 <div
     className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
     style={containerStyles}
 >
     <DateTimePicker
+        id="datetimepicker-1"
         label="DateTimePicker label"
         value={state.value}
         onChange={value => setState({ value })}
@@ -112,6 +113,7 @@ initialState = { value: undefined };
     style={containerStyles}
 >
     <DateTimePicker
+        id="datetimepicker-9"
         required
         error="Field is required"
         placeholder="Select date and time"
