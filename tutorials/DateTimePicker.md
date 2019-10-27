@@ -1,6 +1,6 @@
 Here is an overview about how to use the DateTimePicker page object:
 
-    const PageDateTimePicker = require('react-rainbow-components/components/Calendar/pageObject');
+    const PageDateTimePicker = require('react-rainbow-components/components/DateTimePicker/pageObject');
     const DATETIMEPICKER = '#datetimepicker-1';
 
     describe('DateTimePicker', () => {
