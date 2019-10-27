@@ -71,7 +71,9 @@ class PageDateTimePicker {
      * @method
      */
     clickOKButton() {
-        new PageTimeSelect(this.modalRootEl).clickOKButton();
+        $(this.modalRootEl)
+            .$('button[id="time-picker_ok-button"]')
+            .click();
     }
 
     /**
@@ -79,7 +81,9 @@ class PageDateTimePicker {
      * @method
      */
     clickCancelButton() {
-        new PageTimeSelect(this.modalRootEl).clickCancelButton();
+        $(this.modalRootEl)
+            .$('button[id="time-picker_cancel-button"]')
+            .click();
     }
 
     /**

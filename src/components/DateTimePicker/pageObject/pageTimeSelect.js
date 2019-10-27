@@ -14,26 +14,6 @@ class PageTimeSelect {
     }
 
     /**
-     * Clicks the OK button element
-     * @method
-     */
-    clickOKButton() {
-        $(this.rootElement)
-            .$('button[id="time-picker_ok-button"]')
-            .click();
-    }
-
-    /**
-     * Clicks the Cancel button element
-     * @method
-     */
-    clickCancelButton() {
-        $(this.rootElement)
-            .$('button[id="time-picker_cancel-button"]')
-            .click();
-    }
-
-    /**
      * Returns the text representing the current selected time.
      * @method
      * @returns {string}
