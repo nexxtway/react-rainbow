@@ -152,6 +152,8 @@ export default function Calendar(props) {
     return <Consumer>{values => <CalendarComponent {...values} {...props} />}</Consumer>;
 }
 
+export { CalendarComponent as Component };
+
 Calendar.propTypes = {
     /** Sets the date for the Calendar programmatically. */
     value: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),

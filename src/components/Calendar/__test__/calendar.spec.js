@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Calendar from '../';
+import Calendar, { Component } from '../';
 
 describe('Calendar', () => {
     it('should render the component when pass falsy values', () => {
@@ -63,7 +63,7 @@ describe('Calendar', () => {
     });
     it('should set the right attributes in table element', () => {
         const value = new Date('04/24/2019');
-        const component = mount(<Calendar value={value} />);
+        const component = mount(<Component value={value} />);
         const monthLabelId = component.instance().monthLabelId;
         expect(component.find('table').props()).toEqual(
             expect.objectContaining({
