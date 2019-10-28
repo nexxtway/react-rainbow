@@ -1,6 +1,11 @@
 ##### accordion base
 
 ```js
+import React from 'react';
+import Card from 'react-rainbow-components/components/Card';
+import Accordion from 'react-rainbow-components/components/Accordion';
+import AccordionSection from 'react-rainbow-components/components/AccordionSection';
+
 <div className="rainbow-m-around_xx-large">
     <Card>
         <Accordion>
@@ -21,5 +26,5 @@
             </AccordionSection>
         </Accordion>
     </Card>
-</div>
+</div>;
 ```

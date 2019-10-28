@@ -2,12 +2,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Controlled as CodeMirror } from 'react-codemirror2';
+import 'codemirror/theme/material.css';
+import 'codemirror/mode/jsx/jsx';
+import 'codemirror/lib/codemirror.css';
 import Header from './header';
 import './styles.css';
 
 const configOptions = {
     mode: 'jsx',
     lineNumbers: true,
+    theme: 'material',
 };
 
 export default function CodeEditor({ code }) {
