@@ -153,3 +153,54 @@ const containerStyles = {
     <DateTimePicker readOnly value={new Date()} label="DateTimePicker Label" />
 </div>;
 ```
+
+##### DateTimePicker with localization:
+
+```js
+const containerStyles = {
+    maxWidth: 400,
+};
+
+const initialState = {
+    value: new Date('2019-10-25 10:44'),
+    locale: { name: 'en-US', label: 'English (US)' },
+};
+
+const okButtonLocalizedLabel = {
+    'en-US': 'OK',
+    'es-ES': 'Aceptar',
+    'fr-Fr': "D'accord",
+};
+
+const cancelButtonLocalizedLabel = {
+    'en-US': 'Cancel',
+    'es-ES': 'Cancelar',
+    'fr-Fr': 'Annuler',
+};
+
+<div>
+    <GlobalHeader src="images/user/user2.jpg">
+        <div className="rainbow-flex rainbow-align_right">
+            <Picklist value={state.locale} onChange={value => setState({ locale: value })}>
+                <PicklistOption name="en-US" label="English (US)" />
+                <PicklistOption name="es-ES" label="Spanish (Spain)" />
+                <PicklistOption name="fr-Fr" label="French" />
+            </Picklist>
+        </div>
+    </GlobalHeader>
+    <div
+        className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
+        style={containerStyles}
+    >
+        <DateTimePicker
+            label="DateTimePicker label"
+            value={state.value}
+            onChange={value => setState({ value })}
+            formatStyle="large"
+            locale={state.locale.name}
+            okLabel={okButtonLocalizedLabel[state.locale.name]}
+            cancelLabel={cancelButtonLocalizedLabel[state.locale.name]}
+        />
+    </div>
+</div>;
+```

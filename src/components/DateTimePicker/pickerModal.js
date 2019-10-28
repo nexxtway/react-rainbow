@@ -24,6 +24,7 @@ function DateTimePickerModal(props) {
         cancelLabel,
         onRequestClose,
         onChange,
+        locale,
     } = props;
 
     const [date, setDate] = useState(value);
@@ -37,8 +38,8 @@ function DateTimePickerModal(props) {
 
     useEffect(() => {
         const currentDateTime = new Date(`${extractDate(date)} ${time}`);
-        setModalTitle(formatDateTime(currentDateTime, formatStyle));
-    }, [date, time, formatStyle]);
+        setModalTitle(formatDateTime(currentDateTime, formatStyle, locale));
+    }, [date, time, formatStyle, locale]);
 
     const handleChange = selectedTime => {
         const currentValue = new Date(`${extractDate(date)} ${selectedTime}`);
@@ -60,6 +61,7 @@ function DateTimePickerModal(props) {
             <StyledResponsiveContainer>
                 <StyledCalendar
                     value={date}
+                    locale={locale}
                     minDate={minDate}
                     maxDate={maxDate}
                     formatStyle={formatStyle}
@@ -90,6 +92,7 @@ DateTimePickerModal.propTypes = {
     okLabel: PropTypes.string,
     cancelLabel: PropTypes.string,
     onChange: PropTypes.func,
+    locale: PropTypes.string,
 };
 
 DateTimePickerModal.defaultProps = {
@@ -101,6 +104,7 @@ DateTimePickerModal.defaultProps = {
     okLabel: 'Ok',
     cancelLabel: 'Cancel',
     onChange: () => {},
+    locale: undefined,
 };
 
 export default DateTimePickerModal;

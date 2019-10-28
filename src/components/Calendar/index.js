@@ -20,7 +20,7 @@ import StyledControlsContainer from './styled/controlsContainer';
 import StyledMonthContainer from './styled/monthContainer';
 import StyledMonth from './styled/month';
 import { uniqueId } from '../../libs/utils';
-import { Consumer } from '../Application/';
+import { Consumer } from '../Application/context';
 
 /**
  * Calendar provide a simple way to select a single date.
