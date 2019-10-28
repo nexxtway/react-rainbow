@@ -145,3 +145,40 @@ const containerStyles = {
     <DatePicker readOnly value={new Date()} label="DatePicker Label" />
 </div>;
 ```
+
+##### DatePicker with localization:
+
+```js
+const initialState = {
+    value: new Date('2019-10-25 10:44'),
+    locale: { name: 'en-US', label: 'English (US)' },
+};
+
+const containerStyles = {
+    maxWidth: 400,
+};
+
+<div>
+    <GlobalHeader src="images/user/user2.jpg">
+        <div className="rainbow-flex rainbow-align_right">
+            <Picklist value={state.locale} onChange={value => setState({ locale: value })}>
+                <PicklistOption name="en-US" label="English (US)" />
+                <PicklistOption name="es-ES" label="Spanish (Spain)" />
+                <PicklistOption name="fr-Fr" label="French" />
+            </Picklist>
+        </div>
+    </GlobalHeader>
+    <div
+        className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
+        style={containerStyles}
+    >
+        <DatePicker
+            value={state.value}
+            onChange={value => setState({ value })}
+            label="DatePicker Label"
+            formatStyle="large"
+            locale={state.locale.name}
+        />
+    </div>
+</div>;
+```

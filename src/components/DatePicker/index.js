@@ -1,7 +1,7 @@
+/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import CalendarIcon from './calendarIcon';
-import Input from '../Input/pickerInput';
 import formatDate from './helpers/formatDate';
 import withReduxForm from '../../libs/hocs/withReduxForm';
 import { ENTER_KEY, SPACE_KEY } from '../../libs/constants';
@@ -10,12 +10,14 @@ import StyledModal from './styled/modal';
 import StyledHeader from './styled/header';
 import StyledHeaderTitle from './styled/headerTitle';
 import StyledCalendar from './styled/calendar';
+import StyledInput from './styled/input';
+import { Consumer } from '../Application/context';
 
 /**
  * A DatePicker is a text input to capture a date.
  * @category Form
  */
-class DatePicker extends Component {
+class DatePickerComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -111,14 +113,15 @@ class DatePicker extends Component {
             disabled,
             tabIndex,
             id,
+            locale,
         } = this.props;
         const { isOpen } = this.state;
 
-        const formattedDate = formatDate(value, formatStyle);
+        const formattedDate = formatDate(value, formatStyle, locale);
 
         return (
             <StyledContainer id={id} className={className} style={style}>
-                <Input
+                <StyledInput
                     ref={this.inputRef}
                     label={label}
                     placeholder={placeholder}
@@ -150,11 +153,16 @@ class DatePicker extends Component {
                         maxDate={maxDate}
                         formatStyle={formatStyle}
                         onChange={this.handleChange}
+                        locale={locale}
                     />
                 </StyledModal>
             </StyledContainer>
         );
     }
+}
+
+function DatePicker(props) {
+    return <Consumer>{values => <DatePickerComponent {...values} {...props} />}</Consumer>;
 }
 
 DatePicker.propTypes = {
@@ -207,6 +215,9 @@ DatePicker.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The language locale used.
+     * The default value is 'en-US'. */
+    locale: PropTypes.string,
 };
 
 DatePicker.defaultProps = {
@@ -232,6 +243,7 @@ DatePicker.defaultProps = {
     id: undefined,
     className: undefined,
     style: undefined,
+    locale: undefined,
 };
 
 export default withReduxForm(DatePicker);
