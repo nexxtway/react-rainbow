@@ -29,7 +29,6 @@ class CalendarComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentLocale: props.locale,
             currentMonth: getFirstDayMonth(normalizeDate(props.value)),
         };
         this.monthLabelId = uniqueId('month');
@@ -39,27 +38,17 @@ class CalendarComponent extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        const { value: prevValue, locale: prevLocale } = prevProps;
-        const { value, locale } = this.props;
+        const { value: prevValue } = prevProps;
+        const { value } = this.props;
         const normalizedDate = normalizeDate(value);
         if (formatDate(normalizeDate(prevValue)) !== formatDate(normalizedDate)) {
             this.updateCurrentMonth(normalizedDate);
-        }
-        if (locale !== prevLocale) {
-            this.updateLocale();
         }
     }
 
     updateCurrentMonth(value) {
         this.setState({
             currentMonth: getFirstDayMonth(value),
-        });
-    }
-
-    updateLocale() {
-        const { locale } = this.props;
-        this.setState({
-            currentLocale: locale,
         });
     }
 
@@ -85,9 +74,9 @@ class CalendarComponent extends Component {
     }
 
     render() {
-        const { currentMonth, currentLocale } = this.state;
-        const { id, onChange, value, minDate, maxDate, className, style } = this.props;
-        const formattedMonth = getFormattedMonth(currentMonth, currentLocale);
+        const { currentMonth } = this.state;
+        const { id, onChange, value, minDate, maxDate, className, style, locale } = this.props;
+        const formattedMonth = getFormattedMonth(currentMonth, locale);
         const currentYear = currentMonth.getFullYear();
         const yearsRange = getYearsRange({
             minDate,
