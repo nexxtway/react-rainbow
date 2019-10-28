@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Select from './../Select';
@@ -19,14 +20,16 @@ import StyledControlsContainer from './styled/controlsContainer';
 import StyledMonthContainer from './styled/monthContainer';
 import StyledMonth from './styled/month';
 import { uniqueId } from '../../libs/utils';
+import { Consumer } from '../Application/';
 
 /**
  * Calendar provide a simple way to select a single date.
  */
-export default class Calendar extends Component {
+class CalendarComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            currentLocale: props.locale,
             currentMonth: getFirstDayMonth(normalizeDate(props.value)),
         };
         this.monthLabelId = uniqueId('month');
@@ -36,17 +39,27 @@ export default class Calendar extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        const { value: prevValue } = prevProps;
-        const { value } = this.props;
+        const { value: prevValue, locale: prevLocale } = prevProps;
+        const { value, locale } = this.props;
         const normalizedDate = normalizeDate(value);
         if (formatDate(normalizeDate(prevValue)) !== formatDate(normalizedDate)) {
             this.updateCurrentMonth(normalizedDate);
+        }
+        if (locale !== prevLocale) {
+            this.updateLocale();
         }
     }
 
     updateCurrentMonth(value) {
         this.setState({
             currentMonth: getFirstDayMonth(value),
+        });
+    }
+
+    updateLocale() {
+        const { locale } = this.props;
+        this.setState({
+            currentLocale: locale,
         });
     }
 
@@ -72,9 +85,9 @@ export default class Calendar extends Component {
     }
 
     render() {
-        const { currentMonth } = this.state;
+        const { currentMonth, currentLocale } = this.state;
         const { id, onChange, value, minDate, maxDate, className, style } = this.props;
-        const formattedMonth = getFormattedMonth(currentMonth);
+        const formattedMonth = getFormattedMonth(currentMonth, currentLocale);
         const currentYear = currentMonth.getFullYear();
         const yearsRange = getYearsRange({
             minDate,
@@ -135,6 +148,10 @@ export default class Calendar extends Component {
     }
 }
 
+export default function Calendar(props) {
+    return <Consumer>{values => <CalendarComponent {...values} {...props} />}</Consumer>;
+}
+
 Calendar.propTypes = {
     /** Sets the date for the Calendar programmatically. */
     value: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
@@ -152,6 +169,9 @@ Calendar.propTypes = {
     style: PropTypes.object,
     /** The id of the outer element. */
     id: PropTypes.string,
+    /** The language locale used.
+     * The default value is 'en-US'. */
+    locale: PropTypes.string,
 };
 
 Calendar.defaultProps = {
@@ -162,4 +182,5 @@ Calendar.defaultProps = {
     className: undefined,
     style: undefined,
     id: undefined,
+    locale: undefined,
 };

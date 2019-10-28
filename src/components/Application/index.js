@@ -11,10 +11,10 @@ export const { Provider, Consumer } = React.createContext();
  * @category Layout
  */
 export default function Application(props) {
-    const { children, className, style } = props;
-
+    const { children, className, style, locale } = props;
+    const contextValue = { locale };
     return (
-        <Provider>
+        <Provider value={contextValue}>
             <div className={className} style={style}>
                 {children}
             </div>
@@ -32,10 +32,14 @@ Application.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The language locale used by application
+     * The default value is 'en-US'. */
+    locale: PropTypes.string,
 };
 
 Application.defaultProps = {
     children: [],
     className: undefined,
     style: undefined,
+    locale: 'en-US',
 };

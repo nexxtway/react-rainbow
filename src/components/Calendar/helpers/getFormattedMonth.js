@@ -1,6 +1,6 @@
-export default function getFormattedMonth(value) {
+export default function getFormattedMonth(value, locale = 'en-US') {
     try {
-        return new Intl.DateTimeFormat('en-US', { month: 'long' }).format(value);
+        return new Intl.DateTimeFormat(locale, { month: 'long' }).format(value);
     } catch (error) {
         // eslint-disable-next-line no-console
         console.error(error);
