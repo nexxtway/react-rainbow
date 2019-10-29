@@ -19,7 +19,7 @@ import {
 import StyledControlsContainer from './styled/controlsContainer';
 import StyledMonthContainer from './styled/monthContainer';
 import StyledMonth from './styled/month';
-import { uniqueId } from '../../libs/utils';
+import { uniqueId, getLocaleFromContext } from '../../libs/utils';
 import { Consumer } from '../Application/context';
 
 /**
@@ -138,7 +138,11 @@ class CalendarComponent extends Component {
 }
 
 export default function Calendar(props) {
-    return <Consumer>{values => <CalendarComponent locale={values.locale} {...props} />}</Consumer>;
+    return (
+        <Consumer>
+            {values => <CalendarComponent locale={getLocaleFromContext(values)} {...props} />}
+        </Consumer>
+    );
 }
 
 export { CalendarComponent as Component };

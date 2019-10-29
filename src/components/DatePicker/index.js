@@ -12,6 +12,7 @@ import StyledHeaderTitle from './styled/headerTitle';
 import StyledCalendar from './styled/calendar';
 import StyledInput from './styled/input';
 import { Consumer } from '../Application/context';
+import { getLocaleFromContext } from '../../libs/utils';
 
 /**
  * A DatePicker is a text input to capture a date.
@@ -163,7 +164,9 @@ class DatePickerComponent extends Component {
 
 function DatePicker(props) {
     return (
-        <Consumer>{values => <DatePickerComponent locale={values.locale} {...props} />}</Consumer>
+        <Consumer>
+            {values => <DatePickerComponent locale={getLocaleFromContext(values)} {...props} />}
+        </Consumer>
     );
 }
 
