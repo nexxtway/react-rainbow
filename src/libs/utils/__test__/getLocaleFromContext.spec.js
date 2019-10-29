@@ -1,4 +1,4 @@
-import { getLocaleFromContext } from '../';
+import { getLocaleFromContext } from '..';
 
 describe('getLocaleFromContext', () => {
     it('should return undefined', () => {
