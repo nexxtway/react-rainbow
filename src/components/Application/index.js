@@ -30,7 +30,7 @@ Application.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
-    /** The language locale used by application
+    /** The locale used by application
      * The default value is 'en-US'. */
     locale: PropTypes.string,
 };
@@ -39,5 +39,5 @@ Application.defaultProps = {
     children: [],
     className: undefined,
     style: undefined,
-    locale: 'en-US',
+    locale: 'es-ES',
 };

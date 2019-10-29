@@ -138,7 +138,7 @@ class CalendarComponent extends Component {
 }
 
 export default function Calendar(props) {
-    return <Consumer>{values => <CalendarComponent {...values} {...props} />}</Consumer>;
+    return <Consumer>{values => <CalendarComponent locale={values.locale} {...props} />}</Consumer>;
 }
 
 export { CalendarComponent as Component };
@@ -160,8 +160,7 @@ Calendar.propTypes = {
     style: PropTypes.object,
     /** The id of the outer element. */
     id: PropTypes.string,
-    /** The language locale used.
-     * The default value is 'en-US'. */
+    /** The Calendar locale. The default value is 'en-US'. */
     locale: PropTypes.string,
 };
 
@@ -173,5 +172,5 @@ Calendar.defaultProps = {
     className: undefined,
     style: undefined,
     id: undefined,
-    locale: undefined,
+    locale: 'en-US',
 };

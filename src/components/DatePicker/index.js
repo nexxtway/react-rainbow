@@ -162,7 +162,9 @@ class DatePickerComponent extends Component {
 }
 
 function DatePicker(props) {
-    return <Consumer>{values => <DatePickerComponent {...values} {...props} />}</Consumer>;
+    return (
+        <Consumer>{values => <DatePickerComponent locale={values.locale} {...props} />}</Consumer>
+    );
 }
 
 DatePicker.propTypes = {
@@ -215,8 +217,7 @@ DatePicker.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
-    /** The language locale used.
-     * The default value is 'en-US'. */
+    /** The DatePicker locale. The default value is 'en-US'. */
     locale: PropTypes.string,
 };
 

@@ -195,8 +195,7 @@ DateTimePicker.propTypes = {
     okLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Text label for the CANCEL button in the modal dialog. */
     cancelLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** The language locale used.
-     * The default value is 'en-US'. */
+    /** The DateTimePicker locale. The default value is 'en-US'. */
     locale: PropTypes.string,
 };
 
