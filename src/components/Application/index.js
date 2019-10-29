@@ -39,5 +39,5 @@ Application.defaultProps = {
     children: [],
     className: undefined,
     style: undefined,
-    locale: 'es-ES',
+    locale: 'en-US',
 };

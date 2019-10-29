@@ -123,7 +123,7 @@ class CalendarComponent extends Component {
                     />
                 </StyledControlsContainer>
                 <table role="grid" aria-labelledby={this.monthLabelId}>
-                    <DaysOfWeek />
+                    <DaysOfWeek locale={locale} />
                     <Month
                         value={value}
                         firstDayMonth={currentMonth}
@@ -176,5 +176,5 @@ Calendar.defaultProps = {
     className: undefined,
     style: undefined,
     id: undefined,
-    locale: 'en-US',
+    locale: undefined,
 };
