@@ -316,7 +316,7 @@ import {
             <MenuItem label="Menu medium" />
         </ButtonMenu>
     </div>
-</div>;
+</div>
 ```
 
 ##### button menu with disabled items
