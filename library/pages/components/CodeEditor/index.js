@@ -11,7 +11,6 @@ import './styles.css';
 const configOptions = {
     mode: 'jsx',
     lineNumbers: true,
-    theme: 'material',
 };
 
 export default function CodeEditor({ code }) {
