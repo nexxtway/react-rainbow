@@ -1,6 +1,9 @@
 ##### button group
 
 ```js
+import React from 'react';
+import { ButtonGroup, Button } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faAngleDown } = require('@fortawesome/free-solid-svg-icons');
 
@@ -21,6 +24,9 @@ const { faAngleDown } = require('@fortawesome/free-solid-svg-icons');
 ##### button group with overflow menu icon
 
 ```js
+import React from 'react';
+import { ButtonGroup, Button, ButtonMenu, MenuItem } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faAngleDown } = require('@fortawesome/free-solid-svg-icons');
 
@@ -45,6 +51,15 @@ const { faAngleDown } = require('@fortawesome/free-solid-svg-icons');
 ##### button group with icon
 
 ```js
+import React from 'react';
+import {
+    ButtonGroup,
+    Button,
+    ButtonIcon,
+    ButtonMenu,
+    MenuItem,
+} from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faPlus, faPencilAlt, faPaste, faAngleDown } = require('@fortawesome/free-solid-svg-icons');
 
@@ -83,6 +98,9 @@ const { faPlus, faPencilAlt, faPaste, faAngleDown } = require('@fortawesome/free
 ##### button group with button disabled
 
 ```js
+import React from 'react';
+import { ButtonGroup, Button, ButtonIcon } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faPlus, faPencilAlt, faPaste, faAngleDown } = require('@fortawesome/free-solid-svg-icons');
 
@@ -127,6 +145,9 @@ const { faPlus, faPencilAlt, faPaste, faAngleDown } = require('@fortawesome/free
 ##### buttons group with button inverse
 
 ```js
+import React from 'react';
+import { ButtonGroup, Button, ButtonIcon } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faPlus, faPencilAlt, faPaste, faAngleDown } = require('@fortawesome/free-solid-svg-icons');
 

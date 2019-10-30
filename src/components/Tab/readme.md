@@ -1,6 +1,9 @@
 ##### Tab base
 
 ```js
+import React from 'react';
+import { Tabset, Tab, ButtonGroup, ButtonIcon } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faCog, faEllipsisV, faFolderOpen } = require('@fortawesome/free-solid-svg-icons');
 const { faClock, faStar } = require('@fortawesome/free-regular-svg-icons');
@@ -121,6 +124,9 @@ class TabExample extends React.Component {
 ##### Tab with icon
 
 ```js
+import React from 'react';
+import { Tabset, Tab, ButtonGroup, ButtonIcon } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faCog, faEllipsisV, faFolderOpen } = require('@fortawesome/free-solid-svg-icons');
 const { faClock, faStar } = require('@fortawesome/free-regular-svg-icons');
@@ -252,6 +258,9 @@ class TabExample extends React.Component {
 ##### Tab disabled
 
 ```js
+import React from 'react';
+import { Tabset, Tab, ButtonGroup, ButtonIcon } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faCog, faEllipsisV, faFolderOpen } = require('@fortawesome/free-solid-svg-icons');
 const { faClock, faStar } = require('@fortawesome/free-regular-svg-icons');

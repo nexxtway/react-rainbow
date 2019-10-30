@@ -1,6 +1,9 @@
 ##### rating base
 
 ```js
+import React from 'react';
+import { Card, ButtonGroup, ButtonIcon, Rating } from 'react-rainbow-components/components';
+
 const cardStyles = {
     width: 300,
 };
@@ -72,6 +75,16 @@ class SimpleRating extends React.Component {
 ##### rating with details
 
 ```js
+import React from 'react';
+import {
+    Rating,
+    ButtonGroup,
+    ButtonIcon,
+    Card,
+    CarouselCard,
+    CarouselImage,
+} from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faPlus, faEllipsisV, faImages } = require('@fortawesome/free-solid-svg-icons');
 

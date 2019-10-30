@@ -1,6 +1,9 @@
 ##### photo-url
 
 ```js
+import React from 'react';
+import Avatar from 'react-rainbow-components/components/Avatar';
+
 <div className="rainbow-p-vertical_large rainbow-p-left_medium rainbow-flex rainbow-align_center">
     <div className="rainbow-m-horizontal_medium">
         <Avatar
@@ -34,22 +37,28 @@
             size="x-small"
         />
     </div>
-</div>
+</div>;
 ```
 
 ##### fallback user initials
 
 ```js
+import React from 'react';
+import Avatar from 'react-rainbow-components/components/Avatar';
+
 <div className="rainbow-p-vertical_x-large rainbow-p-left_medium">
     <div className="rainbow-m-horizontal_medium">
         <Avatar assistiveText="Jane Doe" initials="JD" title="Jane Doe" />
     </div>
-</div>
+</div>;
 ```
 
 ##### fallback user icon
 
 ```js
+import React from 'react';
+import Avatar from 'react-rainbow-components/components/Avatar';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faUser } = require('@fortawesome/free-regular-svg-icons');
 
@@ -67,6 +76,9 @@ const { faUser } = require('@fortawesome/free-regular-svg-icons');
 ##### fallback user initials inverse
 
 ```js
+import React from 'react';
+import Avatar from 'react-rainbow-components/components/Avatar';
+
 const avatarContainerStyles = {
     borderRadius: '0.875rem',
 };

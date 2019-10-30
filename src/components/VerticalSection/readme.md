@@ -1,6 +1,13 @@
 ##### VerticalSection
 
 ```js
+import React from 'react';
+import {
+    VerticalNavigation,
+    VerticalSection,
+    VerticalItem,
+} from 'react-rainbow-components/components';
+
 const containerStyles = {
     width: '220px',
     borderBottomLeftRadius: '0.875rem',

@@ -1,6 +1,9 @@
 ##### SidebarItem simple
 
 ```js
+import React from 'react';
+import { Sidebar, SidebarItem } from 'react-rainbow-components/components';
+
 const dashboard = require('../../../assets/icons/dashboard.svg');
 const application = require('../../../assets/icons/application.svg');
 const messages = require('../../../assets/icons/messages.svg');

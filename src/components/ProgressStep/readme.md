@@ -1,6 +1,15 @@
 ##### progress step base
 
 ```js
+import React from 'react';
+import {
+    ProgressIndicator,
+    ProgressStep,
+    ButtonGroup,
+    ButtonIcon,
+    Button,
+} from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faPlus, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');
 

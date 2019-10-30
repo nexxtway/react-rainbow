@@ -1,6 +1,9 @@
 ##### simple Column
 
 ```js
+import React from 'react';
+import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const {
     faCog,
@@ -71,6 +74,9 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 ##### Column with fix width and defaultWidth
 
 ```js
+import React from 'react';
+import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const {
     faCog,

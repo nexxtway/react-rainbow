@@ -1,6 +1,9 @@
 ##### button menu base
 
 ```js
+import React from 'react';
+import { ButtonGroup, ButtonMenu, MenuItem } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faCog } = require('@fortawesome/free-solid-svg-icons');
 
@@ -26,6 +29,15 @@ const { faCog } = require('@fortawesome/free-solid-svg-icons');
 ##### button menu with divider
 
 ```js
+import React from 'react';
+import {
+    ButtonGroup,
+    ButtonMenu,
+    MenuItem,
+    ButtonIcon,
+    MenuDivider,
+} from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const {
     faAngleDown,
@@ -67,6 +79,9 @@ const {
 ##### button menu with subheaders
 
 ```js
+import React from 'react';
+import { ButtonGroup, ButtonIcon, ButtonMenu, MenuItem } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faPlus, faEdit, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');
 
@@ -100,6 +115,9 @@ const { faPlus, faEdit, faEllipsisV } = require('@fortawesome/free-solid-svg-ico
 ##### button menu with icons
 
 ```js
+import React from 'react';
+import { ButtonGroup, ButtonIcon, ButtonMenu, MenuItem } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const {
     faAlignCenter,
@@ -176,6 +194,9 @@ const {
 ##### button menu position variants
 
 ```js
+import React from 'react';
+import { ButtonGroup, ButtonIcon, ButtonMenu, MenuItem } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const {
     faCog,
@@ -240,6 +261,9 @@ const {
 ##### button menu width variants
 
 ```js
+import React from 'react';
+import { ButtonGroup, ButtonIcon, ButtonMenu, MenuItem } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const {
     faCog,
@@ -310,6 +334,9 @@ const {
 ##### button menu with disabled items
 
 ```js
+import React from 'react';
+import { ButtonGroup, ButtonMenu, MenuItem } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faCog } = require('@fortawesome/free-solid-svg-icons');
 
@@ -337,6 +364,9 @@ const { faCog } = require('@fortawesome/free-solid-svg-icons');
 ##### button menu loading
 
 ```js
+import React from 'react';
+import { ButtonGroup, ButtonMenu } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faBell } = require('@fortawesome/free-solid-svg-icons');
 

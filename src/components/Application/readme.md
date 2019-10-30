@@ -1,6 +1,20 @@
 ##### example
 
 ```js
+import React from 'react';
+import {
+    Application,
+    ButtonGroup,
+    ButtonIcon,
+    ButtonMenu,
+    MenuDivider,
+    MenuItem,
+    Avatar,
+    Card,
+    Button,
+    Input,
+} from 'react-rainbow-components/components';
+
 // more details about how to use react-font-awesome
 // visit https://github.com/FortAwesome/react-fontawesome
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');

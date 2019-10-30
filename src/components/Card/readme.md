@@ -1,6 +1,9 @@
 ##### card default with illustration
 
 ```js
+import React from 'react';
+import Card from 'react-rainbow-components/components/Card';
+
 <div className="rainbow-p-around_large">
     <Card>
         <img
@@ -9,12 +12,15 @@
             alt="landscape with rainbows, birds and colorful balloons"
         />
     </Card>
-</div>
+</div>;
 ```
 
 ##### card-with header and button
 
 ```js
+import React from 'react';
+import { Card, Avatar, Button } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faUser } = require('@fortawesome/free-regular-svg-icons');
 
@@ -30,6 +36,9 @@ const { faUser } = require('@fortawesome/free-regular-svg-icons');
 ##### card-with header and spinner
 
 ```js
+import React from 'react';
+import { Card, ButtonGroup, ButtonIcon } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faPlus, faUsers, faEdit, faAngleDown } = require('@fortawesome/free-solid-svg-icons');
 
@@ -56,6 +65,9 @@ const { faPlus, faUsers, faEdit, faAngleDown } = require('@fortawesome/free-soli
 ##### card with header and illustration
 
 ```js
+import React from 'react';
+import { Card, ButtonIcon, Button } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faTasks, faShareAlt, faAngleDown } = require('@fortawesome/free-solid-svg-icons');
 const { faHeart } = require('@fortawesome/free-regular-svg-icons');

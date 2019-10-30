@@ -1,6 +1,9 @@
 ##### ProgressBar base in action
 
 ```js
+import React from 'react';
+import ProgressBar from 'react-rainbow-components/components/ProgressBar';
+
 class ProgressBarInAction extends React.Component {
     constructor(props) {
         super(props);
@@ -38,14 +41,20 @@ class ProgressBarInAction extends React.Component {
 ##### ProgressBar success
 
 ```js
+import React from 'react';
+import ProgressBar from 'react-rainbow-components/components/ProgressBar';
+
 <div className="rainbow-p-around_x-large">
     <ProgressBar value={50} variant="success" />
-</div>
+</div>;
 ```
 
 ##### descriptive ProgressBar
 
 ```js
+import React from 'react';
+import ProgressBar from 'react-rainbow-components/components/ProgressBar';
+
 <div className="rainbow-p-around_x-large">
     <div className="rainbow-align-content_space-between rainbow-p-bottom_x-small">
         <span className="rainbow-font-size-text_medium rainbow-color_gray-4">
@@ -58,12 +67,15 @@ class ProgressBarInAction extends React.Component {
         </span>
     </div>
     <ProgressBar value={25} />
-</div>
+</div>;
 ```
 
 ##### ProgressBar with size variants
 
 ```js
+import React from 'react';
+import ProgressBar from 'react-rainbow-components/components/ProgressBar';
+
 <div className="rainbow-p-around_large">
     <div className="rainbow-p-around_medium">
         <ProgressBar value={25} size="x-small" />
@@ -85,5 +97,5 @@ class ProgressBarInAction extends React.Component {
         <ProgressBar value={75} size="large" />
         <span className="rainbow-flex rainbow-m-top_x-small rainbow-color_gray-4">size: large</span>
     </div>
-</div>
+</div>;
 ```

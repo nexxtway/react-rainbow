@@ -1,6 +1,9 @@
 ##### GoogleAddressLookup base
 
 ```js
+import React from 'react';
+import GoogleAddressLookup from 'react-rainbow-components/components/GoogleAddressLookup';
+
 const containerStyles = {
     maxWidth: 700,
 };
@@ -22,6 +25,9 @@ initialState = { value: null };
 ##### GoogleAddressLookup disabled
 
 ```js
+import React from 'react';
+import GoogleAddressLookup from 'react-rainbow-components/components/GoogleAddressLookup';
+
 const containerStyles = {
     maxWidth: 700,
 };
@@ -44,6 +50,9 @@ initialState = { value: null };
 ##### GoogleAddressLookup with custom search params (bounds, types)
 
 ```js
+import React from 'react';
+import GoogleAddressLookup from 'react-rainbow-components/components/GoogleAddressLookup';
+
 const containerStyles = {
     maxWidth: 700,
 };
@@ -78,6 +87,9 @@ initialState = { value: null };
 ##### GoogleAddressLookup with custom search params (location, radius, types, country)
 
 ```js
+import React from 'react';
+import GoogleAddressLookup from 'react-rainbow-components/components/GoogleAddressLookup';
+
 const containerStyles = {
     maxWidth: 700,
 };
@@ -108,6 +120,9 @@ initialState = { value: null };
 ##### GoogleAddressLookup required with error
 
 ```js
+import React from 'react';
+import GoogleAddressLookup from 'react-rainbow-components/components/GoogleAddressLookup';
+
 const containerStyles = {
     maxWidth: 700,
 };

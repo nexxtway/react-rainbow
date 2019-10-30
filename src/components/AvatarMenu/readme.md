@@ -1,6 +1,9 @@
 ##### avatar menu base
 
 ```js
+import React from 'react';
+import { Avatar, AvatarMenu, MenuDivider, MenuItem } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faPencilAlt, faPowerOff } = require('@fortawesome/free-solid-svg-icons');
 

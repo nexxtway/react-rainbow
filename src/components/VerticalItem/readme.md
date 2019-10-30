@@ -1,6 +1,13 @@
 ##### VerticalItem
 
 ```js
+import React from 'react';
+import {
+    VerticalNavigation,
+    VerticalSection,
+    VerticalItem,
+} from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faFolderOpen, faTh } = require('@fortawesome/free-solid-svg-icons');
 

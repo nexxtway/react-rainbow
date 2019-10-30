@@ -1,6 +1,9 @@
 ##### radiobuttongroup base
 
 ```js
+import React from 'react';
+import RadioButtonGroup from 'react-rainbow-components/components/RadioButtonGroup';
+
 const options = [
     { value: 'off', label: 'Off' },
     { value: 'parking', label: 'Parking' },
@@ -41,6 +44,9 @@ class SimpleRadioButtonGroup extends React.Component {
 ##### radiobuttongroup brand with label
 
 ```js
+import React from 'react';
+import RadioButtonGroup from 'react-rainbow-components/components/RadioButtonGroup';
+
 const options = [
     { value: 'off', label: 'Off' },
     { value: 'parking', label: 'Parking' },
@@ -83,6 +89,9 @@ class LabeledBrandRadioButtonGroup extends React.Component {
 ##### radiobuttongroup inverse
 
 ```js
+import React from 'react';
+import RadioButtonGroup from 'react-rainbow-components/components/RadioButtonGroup';
+
 const options = [
     { value: 'off', label: 'Off' },
     { value: 'parking', label: 'Parking' },
@@ -132,6 +141,9 @@ class RadioButtonGroupInverse extends React.Component {
 ##### radiobuttongroup disabled
 
 ```js
+import React from 'react';
+import RadioButtonGroup from 'react-rainbow-components/components/RadioButtonGroup';
+
 const options = [
     { value: 'off', label: 'Off', disabled: true },
     { value: 'parking', label: 'Parking', disabled: true },
@@ -172,6 +184,9 @@ class DisabledRadioButtonGroup extends React.Component {
 ##### radiobuttongroup required
 
 ```js
+import React from 'react';
+import RadioButtonGroup from 'react-rainbow-components/components/RadioButtonGroup';
+
 const options = [
     { value: 'off', label: 'Off' },
     { value: 'parking', label: 'Parking' },
@@ -213,6 +228,9 @@ class RequiredRadioButtonGroup extends React.Component {
 ##### radiobutton group error
 
 ```js
+import React from 'react';
+import RadioButtonGroup from 'react-rainbow-components/components/RadioButtonGroup';
+
 const options = [
     { value: 'off', label: 'Off' },
     { value: 'parking', label: 'Parking' },

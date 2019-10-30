@@ -1,6 +1,9 @@
 ##### DatePicker base:
 
 ```js
+import React from 'react';
+import DatePicker from 'react-rainbow-components/components/DatePicker';
+
 const containerStyles = {
     maxWidth: 400,
 };
@@ -21,6 +24,9 @@ initialState = { date: new Date() };
 ##### DatePicker with date constraints:
 
 ```js
+import React from 'react';
+import DatePicker from 'react-rainbow-components/components/DatePicker';
+
 const containerStyles = {
     maxWidth: 400,
 };
@@ -43,6 +49,9 @@ initialState = { date: new Date() };
 ##### DatePicker with different date formats:
 
 ```js
+import React from 'react';
+import DatePicker from 'react-rainbow-components/components/DatePicker';
+
 initialState = { date: new Date() };
 <div className="rainbow-align-content_center rainbow-m-vertical_large rainbow-flex_wrap">
     <div className="rainbow-m-around_small">
@@ -75,6 +84,9 @@ initialState = { date: new Date() };
 ##### DatePicker required:
 
 ```js
+import React from 'react';
+import DatePicker from 'react-rainbow-components/components/DatePicker';
+
 const containerStyles = {
     maxWidth: 400,
 };
@@ -96,6 +108,9 @@ initialState = { date: new Date() };
 ##### DatePicker with error:
 
 ```js
+import React from 'react';
+import DatePicker from 'react-rainbow-components/components/DatePicker';
+
 const containerStyles = {
     maxWidth: 400,
 };
@@ -119,6 +134,9 @@ initialState = { date: undefined };
 ##### DatePicker disabled:
 
 ```js
+import React from 'react';
+import DatePicker from 'react-rainbow-components/components/DatePicker';
+
 const containerStyles = {
     maxWidth: 400,
 };
@@ -134,6 +152,9 @@ const containerStyles = {
 ##### DatePicker readOnly:
 
 ```js
+import React from 'react';
+import DatePicker from 'react-rainbow-components/components/DatePicker';
+
 const containerStyles = {
     maxWidth: 400,
 };

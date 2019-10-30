@@ -1,6 +1,9 @@
 ##### modal base empty
 
 ```js
+import React from 'react';
+import { Modal, Button, ButtonGroup, ButtonIcon } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faCog } = require('@fortawesome/free-solid-svg-icons');
 
@@ -65,6 +68,9 @@ const { faPlus, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');
 ##### modal with header
 
 ```js
+import React from 'react';
+import { Modal, Button } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faCog } = require('@fortawesome/free-solid-svg-icons');
 
@@ -125,6 +131,9 @@ class ModalWHeader extends React.Component {
 ##### modal with footer
 
 ```js
+import React from 'react';
+import { Modal, Button } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faCog } = require('@fortawesome/free-solid-svg-icons');
 
@@ -228,6 +237,9 @@ class ModalWFooter extends React.Component {
 ##### modal with footer directional
 
 ```js
+import React from 'react';
+import { Modal, Button } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faCog } = require('@fortawesome/free-solid-svg-icons');
 
@@ -297,6 +309,9 @@ class ModalWFooterDirectional extends React.Component {
 ##### modal with variant size
 
 ```js
+import React from 'react';
+import { Modal, Card, Button, ButtonGroup } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faTasks, faShareAlt, faAngleDown } = require('@fortawesome/free-solid-svg-icons');
 const { faHeart } = require('@fortawesome/free-regular-svg-icons');
@@ -452,6 +467,9 @@ class ModalWSize extends React.Component {
 ##### modal with redux form
 
 ```js
+import React from 'react';
+import { Modal, ButtonIcon, ButtonGroup, Button } from 'react-rainbow-components/components';
+
 const { Field, reduxForm } = require('redux-form');
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faCog } = require('@fortawesome/free-solid-svg-icons');

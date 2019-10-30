@@ -1,6 +1,9 @@
 ##### Tabset base
 
 ```js
+import React from 'react';
+import { Tabset, Tab, ButtonGroup, ButtonIcon } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faCog, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');
 
@@ -148,6 +151,9 @@ class TabsetExample extends React.Component {
 ##### Tabset fullWidth
 
 ```js
+import React from 'react';
+import { Tabset, Tab, ButtonGroup, ButtonIcon } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faCog, faEllipsisV, faFolderOpen, faLock } = require('@fortawesome/free-solid-svg-icons');
 const { faClock, faStar } = require('@fortawesome/free-regular-svg-icons');
@@ -302,6 +308,9 @@ class TabsetExample extends React.Component {
 ##### Tabset with multi Tabs
 
 ```js
+import React from 'react';
+import { Tabset, Tab, ButtonGroup, ButtonIcon } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faCog, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');
 

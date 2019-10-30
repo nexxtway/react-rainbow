@@ -1,6 +1,9 @@
 ##### ImportRecordsFlow base:
 
 ```js
+import React from 'react';
+import { ImportRecordsFlow, Button } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faCog } = require('@fortawesome/free-solid-svg-icons');
 

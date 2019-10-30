@@ -1,6 +1,9 @@
-Pagination base:
+##### Pagination base:
 
 ```js
+import React from 'react';
+import { Card, Pagination } from 'react-rainbow-components/components';
+
 function getCardImageContainerStyles(src) {
     return {
         width: '100%',

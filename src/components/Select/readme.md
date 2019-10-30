@@ -1,6 +1,9 @@
 ##### select basic
 
 ```js
+import React from 'react';
+import Select from 'react-rainbow-components/components/Select';
+
 const containerStyles = {
     maxWidth: 700,
 };
@@ -23,6 +26,9 @@ const options = [
 ##### select required
 
 ```js
+import React from 'react';
+import Select from 'react-rainbow-components/components/Select';
+
 const containerStyles = {
     maxWidth: 700,
 };
@@ -45,6 +51,9 @@ const options = [
 ##### select disabled
 
 ```js
+import React from 'react';
+import Select from 'react-rainbow-components/components/Select';
+
 const containerStyles = {
     maxWidth: 700,
 };
@@ -67,6 +76,9 @@ const options = [
 ##### select with error
 
 ```js
+import React from 'react';
+import Select from 'react-rainbow-components/components/Select';
+
 const containerStyles = {
     maxWidth: 700,
 };
@@ -90,6 +102,9 @@ const options = [
 ##### select controlled example
 
 ```js
+import React from 'react';
+import Select from 'react-rainbow-components/components/Select';
+
 const containerStyles = {
     maxWidth: 700,
 };

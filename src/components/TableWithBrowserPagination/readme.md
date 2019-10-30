@@ -1,6 +1,9 @@
 ##### A table with pagination made in the client side:
 
 ```js
+import React from 'react';
+import { Table, Column, Badge } from 'react-rainbow-components/components';
+
 const badgeStyles = { color: '#1de9b6' };
 const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
 
@@ -20,6 +23,9 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 ##### A table with fixed height and pagination made in the client side:
 
 ```js
+import React from 'react';
+import { Table, Column, Badge } from 'react-rainbow-components/components';
+
 const badgeStyles = { color: '#1de9b6' };
 const containerStyles = { height: 312, backgroundColor: '#f4f6f9' };
 const containerTableStyles = { height: 256 };
@@ -49,6 +55,9 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 ##### A table with pagination aling to the right made in the client side:
 
 ```js
+import React from 'react';
+import { Table, Column, Badge } from 'react-rainbow-components/components';
+
 const badgeStyles = { color: '#1de9b6' };
 const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
 
@@ -68,6 +77,9 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 ##### A table with pagination aling to the left made in the client side:
 
 ```js
+import React from 'react';
+import { Table, Column, Badge } from 'react-rainbow-components/components';
+
 const badgeStyles = { color: '#1de9b6' };
 const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
 

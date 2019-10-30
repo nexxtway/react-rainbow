@@ -1,6 +1,9 @@
 ##### DateTimePicker base:
 
 ```js
+import React from 'react';
+import DateTimePicker from 'react-rainbow-components/components/DateTimePicker';
+
 const containerStyles = {
     maxWidth: 400,
 };
@@ -23,6 +26,9 @@ const initialState = { value: new Date('2019-10-25 10:44') };
 ##### DateTimePicker with date constraints:
 
 ```js
+import React from 'react';
+import DateTimePicker from 'react-rainbow-components/components/DateTimePicker';
+
 const containerStyles = {
     maxWidth: 400,
 };
@@ -45,6 +51,9 @@ initialState = { value: new Date() };
 ##### DateTimePicker with different date formats:
 
 ```js
+import React from 'react';
+import DateTimePicker from 'react-rainbow-components/components/DateTimePicker';
+
 const inputStyles = {
     maxWidth: 320,
 };
@@ -82,6 +91,9 @@ initialState = { value: new Date() };
 ##### DateTimePicker required:
 
 ```js
+import React from 'react';
+import DateTimePicker from 'react-rainbow-components/components/DateTimePicker';
+
 const containerStyles = {
     maxWidth: 400,
 };
@@ -103,6 +115,9 @@ initialState = { value: new Date() };
 ##### DateTimePicker with error:
 
 ```js
+import React from 'react';
+import DateTimePicker from 'react-rainbow-components/components/DateTimePicker';
+
 const containerStyles = {
     maxWidth: 400,
 };
@@ -127,6 +142,9 @@ initialState = { value: undefined };
 ##### DateTimePicker disabled:
 
 ```js
+import React from 'react';
+import DateTimePicker from 'react-rainbow-components/components/DateTimePicker';
+
 const containerStyles = {
     maxWidth: 400,
 };
@@ -142,6 +160,9 @@ const containerStyles = {
 ##### DateTimePicker readOnly:
 
 ```js
+import React from 'react';
+import DateTimePicker from 'react-rainbow-components/components/DateTimePicker';
+
 const containerStyles = {
     maxWidth: 400,
 };

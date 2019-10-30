@@ -1,6 +1,9 @@
 ##### input base
 
 ```js
+import React from 'react';
+import Input from 'react-rainbow-components/components/Input';
+
 const containerStyles = {
     maxWidth: 700,
 };
@@ -17,6 +20,9 @@ const containerStyles = {
 ##### type of the inputs
 
 ```js
+import React from 'react';
+import Input from 'react-rainbow-components/components/Input';
+
 const inputStyles = {
     width: 300,
 };
@@ -141,6 +147,9 @@ const inputStyles = {
 ##### input radio
 
 ```js
+import React from 'react';
+import Input from 'react-rainbow-components/components/Input';
+
 <div className="rainbow-p-around_x-large rainbow-flex rainbow-justify_space-around rainbow-flex_wrap">
     <Input className="rainbow-m-around_medium" type="radio" label="Input Radio Label" />
     <Input
@@ -156,12 +165,15 @@ const inputStyles = {
         bottomHelpText="ex: (111) 111 1111"
         label="Input Radio Label"
     />
-</div>
+</div>;
 ```
 
 ##### input type checkbox
 
 ```js
+import React from 'react';
+import Input from 'react-rainbow-components/components/Input';
+
 <div className="rainbow-p-around_x-large rainbow-flex rainbow-justify_space-around rainbow-flex_wrap">
     <Input className="rainbow-m-around_medium" type="checkbox" label="Input Checkbox Label" />
     <Input
@@ -182,12 +194,15 @@ const inputStyles = {
         bottomHelpText="ex: (111) 111 1111"
         label="Input Checkbox Label"
     />
-</div>
+</div>;
 ```
 
 ##### input with icons
 
 ```js
+import React from 'react';
+import Input from 'react-rainbow-components/components/Input';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faSearch } = require('@fortawesome/free-solid-svg-icons');
 
@@ -217,6 +232,9 @@ const inputStyles = {
 ##### input with help
 
 ```js
+import React from 'react';
+import Input from 'react-rainbow-components/components/Input';
+
 const containerStyles = {
     maxWidth: 700,
 };
@@ -233,6 +251,9 @@ const containerStyles = {
 ##### input required
 
 ```js
+import React from 'react';
+import Input from 'react-rainbow-components/components/Input';
+
 const containerStyles = {
     maxWidth: 700,
 };
@@ -249,6 +270,9 @@ const containerStyles = {
 ##### input disabled
 
 ```js
+import React from 'react';
+import Input from 'react-rainbow-components/components/Input';
+
 const containerStyles = {
     maxWidth: 700,
 };
@@ -265,6 +289,9 @@ const containerStyles = {
 ##### input centered
 
 ```js
+import React from 'react';
+import Input from 'react-rainbow-components/components/Input';
+
 const containerStyles = {
     maxWidth: 700,
 };
@@ -281,6 +308,9 @@ const containerStyles = {
 ##### input error
 
 ```js
+import React from 'react';
+import Input from 'react-rainbow-components/components/Input';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faBan } = require('@fortawesome/free-solid-svg-icons');
 
@@ -311,6 +341,9 @@ const inputStyles = {
 ##### input read only
 
 ```js
+import React from 'react';
+import Input from 'react-rainbow-components/components/Input';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faStar } = require('@fortawesome/free-solid-svg-icons');
 

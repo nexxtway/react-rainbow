@@ -1,6 +1,9 @@
 ##### Chip simple
 
 ```js
+import React from 'react';
+import Chip from 'react-rainbow-components/components/Chip';
+
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <Chip className="rainbow-m-around_medium" label="Chip base" />
 
@@ -9,12 +12,15 @@
     <Chip className="rainbow-m-around_medium" label="Chip Neutral" variant="outline-brand" />
 
     <Chip className="rainbow-m-around_medium" label="Chip Brand" variant="brand" />
-</div>
+</div>;
 ```
 
 ##### Deletable Chip
 
 ```js
+import React from 'react';
+import Chip from 'react-rainbow-components/components/Chip';
+
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <Chip
         className="rainbow-m-around_medium"
@@ -42,12 +48,15 @@
         variant="brand"
         onDelete={() => alert('Delete Chip!')}
     />
-</div>
+</div>;
 ```
 
 ##### Chip with Icon and Avatar
 
 ```js
+import React from 'react';
+import { Chip, Avatar } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faStar } = require('@fortawesome/free-solid-svg-icons');
 

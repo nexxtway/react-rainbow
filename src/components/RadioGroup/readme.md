@@ -1,6 +1,9 @@
 ##### radio group base
 
 ```js
+import React from 'react';
+import RadioGroup from 'react-rainbow-components/components/RadioGroup';
+
 const options = [
     { value: 'radioOne', label: 'Radio One' },
     { value: 'radioTwo', label: 'Radio Two' },
@@ -41,6 +44,9 @@ class SimpleRadioGroup extends React.Component {
 ##### radio group disabled
 
 ```js
+import React from 'react';
+import RadioGroup from 'react-rainbow-components/components/RadioGroup';
+
 const options = [
     { value: 'radioOne', label: 'Radio One', disabled: true },
     { value: 'radioTwo', label: 'Radio Two', disabled: true },
@@ -80,6 +86,9 @@ class DisabledRadioGroup extends React.Component {
 ##### radio group required
 
 ```js
+import React from 'react';
+import RadioGroup from 'react-rainbow-components/components/RadioGroup';
+
 const options = [
     { value: 'radioOne', label: 'Radio One' },
     { value: 'radioTwo', label: 'Radio Two' },
@@ -120,6 +129,9 @@ class RequiredRadioGroup extends React.Component {
 ##### radio group error
 
 ```js
+import React from 'react';
+import RadioGroup from 'react-rainbow-components/components/RadioGroup';
+
 const options = [
     { value: 'radioOne', label: 'Radio One' },
     { value: 'radioTwo', label: 'Radio Two' },

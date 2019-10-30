@@ -2,9 +2,7 @@
 
 ```js
 import React from 'react';
-import Card from 'react-rainbow-components/components/Card';
-import Accordion from 'react-rainbow-components/components/Accordion';
-import AccordionSection from 'react-rainbow-components/components/AccordionSection';
+import { Card, Accordion, AccordionSection } from 'react-rainbow-components/components';
 
 <div className="rainbow-m-around_xx-large">
     <Card>

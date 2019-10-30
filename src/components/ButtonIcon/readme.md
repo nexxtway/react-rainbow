@@ -1,6 +1,9 @@
 ##### button icon base
 
 ```js
+import React from 'react';
+import ButtonIcon from 'react-rainbow-components/components/ButtonIcon';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faStar } = require('@fortawesome/free-regular-svg-icons');
 const { faSlidersH, faSignal, faRedo, faTimes } = require('@fortawesome/free-solid-svg-icons');
@@ -25,6 +28,9 @@ const { faSlidersH, faSignal, faRedo, faTimes } = require('@fortawesome/free-sol
 ##### button icon border
 
 ```js
+import React from 'react';
+import ButtonIcon from 'react-rainbow-components/components/ButtonIcon';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faStar } = require('@fortawesome/free-regular-svg-icons');
 const {
@@ -58,6 +64,9 @@ const {
 ##### button icon filled
 
 ```js
+import React from 'react';
+import ButtonIcon from 'react-rainbow-components/components/ButtonIcon';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faStar } = require('@fortawesome/free-regular-svg-icons');
 
@@ -75,6 +84,9 @@ const { faStar } = require('@fortawesome/free-regular-svg-icons');
 ##### button icon shaded
 
 ```js
+import React from 'react';
+import ButtonIcon from 'react-rainbow-components/components/ButtonIcon';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faStar } = require('@fortawesome/free-regular-svg-icons');
 
@@ -92,6 +104,9 @@ const { faStar } = require('@fortawesome/free-regular-svg-icons');
 ##### button icon disabled
 
 ```js
+import React from 'react';
+import ButtonIcon from 'react-rainbow-components/components/ButtonIcon';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faStar } = require('@fortawesome/free-regular-svg-icons');
 
@@ -109,6 +124,9 @@ const { faStar } = require('@fortawesome/free-regular-svg-icons');
 ##### button icon inverse
 
 ```js
+import React from 'react';
+import ButtonIcon from 'react-rainbow-components/components/ButtonIcon';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faStar } = require('@fortawesome/free-regular-svg-icons');
 

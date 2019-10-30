@@ -1,6 +1,9 @@
 ##### Slider Base
 
 ```js
+import React from 'react';
+import Slider from 'react-rainbow-components/components/Slider';
+
 const containerStyles = {
     maxWidth: 700,
 };
@@ -40,6 +43,9 @@ class SliderExample extends React.Component {
 ##### Slider with min, max and step properties
 
 ```js
+import React from 'react';
+import Slider from 'react-rainbow-components/components/Slider';
+
 const containerStyles = {
     maxWidth: 700,
 };
@@ -86,6 +92,9 @@ class SliderExample extends React.Component {
 ##### Slider with error
 
 ```js
+import React from 'react';
+import Slider from 'react-rainbow-components/components/Slider';
+
 const containerStyles = {
     maxWidth: 700,
 };
@@ -130,6 +139,9 @@ class SliderExample extends React.Component {
 ##### Slider disabled
 
 ```js
+import React from 'react';
+import Slider from 'react-rainbow-components/components/Slider';
+
 const containerStyles = {
     maxWidth: 700,
 };

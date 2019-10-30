@@ -1,6 +1,9 @@
 ##### badges border
 
 ```js
+import React from 'react';
+import Badge from 'react-rainbow-components/components/Badge';
+
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <Badge
         className="rainbow-m-around_medium"
@@ -15,12 +18,15 @@
         variant="outline-brand"
         title="the badge title"
     />
-</div>
+</div>;
 ```
 
 ##### badges variant
 
 ```js
+import React from 'react';
+import Badge from 'react-rainbow-components/components/Badge';
+
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <Badge className="rainbow-m-around_medium" label="Default Badge" title="the badge title" />
 
@@ -37,12 +43,15 @@
         variant="brand"
         title="the badge title"
     />
-</div>
+</div>;
 ```
 
 ##### badges with icons
 
 ```js
+import React from 'react';
+import Badge from 'react-rainbow-components/components/Badge';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faStar } = require('@fortawesome/free-solid-svg-icons');
 

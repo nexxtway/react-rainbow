@@ -1,6 +1,13 @@
 ##### VerticalSectionOverflow
 
 ```js
+import React from 'react';
+import {
+    VerticalNavigation,
+    VerticalItem,
+    VerticalSectionOverflow,
+} from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faChevronDown, faTh, faFolderOpen } = require('@fortawesome/free-solid-svg-icons');
 

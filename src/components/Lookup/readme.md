@@ -1,6 +1,9 @@
 ##### Lookup base
 
 ```js
+import React from 'react';
+import Lookup from 'react-rainbow-components/components/Lookup';
+
 const containerStyles = {
     maxWidth: 700,
 };
@@ -70,6 +73,9 @@ initialState = { options: null };
 ##### Lookup small with icon and description
 
 ```js
+import React from 'react';
+import Lookup from 'react-rainbow-components/components/Lookup';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faBuilding } = require('@fortawesome/free-regular-svg-icons');
 
@@ -270,6 +276,9 @@ initialState = { options: null };
 ##### Lookup with options type section
 
 ```js
+import React from 'react';
+import Lookup from 'react-rainbow-components/components/Lookup';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faBuilding } = require('@fortawesome/free-solid-svg-icons');
 
@@ -407,6 +416,9 @@ initialState = { options: null };
 ##### Lookup disabled
 
 ```js
+import React from 'react';
+import Lookup from 'react-rainbow-components/components/Lookup';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faCity } = require('@fortawesome/free-solid-svg-icons');
 
@@ -486,6 +498,9 @@ initialState = { options: null };
 ##### Lookup required with error
 
 ```js
+import React from 'react';
+import Lookup from 'react-rainbow-components/components/Lookup';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faCity } = require('@fortawesome/free-solid-svg-icons');
 
@@ -566,6 +581,9 @@ initialState = { options: null };
 ##### Lookup with value selected
 
 ```js
+import React from 'react';
+import Lookup from 'react-rainbow-components/components/Lookup';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faBuilding } = require('@fortawesome/free-solid-svg-icons');
 

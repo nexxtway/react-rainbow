@@ -1,6 +1,9 @@
 ##### Textarea base
 
 ```js
+import React from 'react';
+import Textarea from 'react-rainbow-components/components/Textarea';
+
 const containerStyles = {
     maxWidth: 700,
 };
@@ -18,6 +21,9 @@ const containerStyles = {
 ##### Textarea required
 
 ```js
+import React from 'react';
+import Textarea from 'react-rainbow-components/components/Textarea';
+
 const containerStyles = {
     maxWidth: 700,
 };
@@ -35,6 +41,9 @@ const containerStyles = {
 ##### Textarea disabled
 
 ```js
+import React from 'react';
+import Textarea from 'react-rainbow-components/components/Textarea';
+
 const containerStyles = {
     maxWidth: 700,
 };
@@ -52,6 +61,9 @@ const containerStyles = {
 ##### Textarea with bottom help
 
 ```js
+import React from 'react';
+import Textarea from 'react-rainbow-components/components/Textarea';
+
 const containerStyles = {
     maxWidth: 700,
 };
@@ -69,6 +81,9 @@ const containerStyles = {
 ##### Textarea error
 
 ```js
+import React from 'react';
+import Textarea from 'react-rainbow-components/components/Textarea';
+
 const containerStyles = {
     maxWidth: 700,
 };
@@ -86,6 +101,9 @@ const containerStyles = {
 ##### Textarea read only
 
 ```js
+import React from 'react';
+import Textarea from 'react-rainbow-components/components/Textarea';
+
 const containerStyles = {
     maxWidth: 700,
 };

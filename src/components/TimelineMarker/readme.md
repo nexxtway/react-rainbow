@@ -1,6 +1,9 @@
 ##### TimeLineMarker base:
 
 ```js
+import React from 'react';
+import TimelineMarker from 'react-rainbow-components/components/TimelineMarker';
+
 const iconStyles = { width: 32, height: 32 };
 <div className="rainbow-m-around_xx-large">
     <TimelineMarker
@@ -15,6 +18,9 @@ const iconStyles = { width: 32, height: 32 };
 ##### TimeLineMarker with content and description:
 
 ```js
+import React from 'react';
+import { TimelineMarker, Card } from 'react-rainbow-components/components';
+
 const iconStyles = { width: 32, height: 32 };
 <div className="rainbow-m-around_xx-large">
     <TimelineMarker

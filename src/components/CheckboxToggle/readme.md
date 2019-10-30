@@ -1,6 +1,9 @@
 ##### checkbox toggle base
 
 ```js
+import React from 'react';
+import CheckboxToggle from 'react-rainbow-components/components/CheckboxToggle';
+
 class SimpleCheckboxToggle extends React.Component {
     constructor(props) {
         super(props);
@@ -34,6 +37,9 @@ class SimpleCheckboxToggle extends React.Component {
 ##### checkbox toggle checked
 
 ```js
+import React from 'react';
+import CheckboxToggle from 'react-rainbow-components/components/CheckboxToggle';
+
 class CheckedCheckboxToggle extends React.Component {
     constructor(props) {
         super(props);
@@ -66,6 +72,9 @@ class CheckedCheckboxToggle extends React.Component {
 ##### checkbox toggle disabled
 
 ```js
+import React from 'react';
+import CheckboxToggle from 'react-rainbow-components/components/CheckboxToggle';
+
 class DisabledCheckboxToggle extends React.Component {
     constructor(props) {
         super(props);

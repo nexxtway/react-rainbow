@@ -1,6 +1,9 @@
 ##### CarouselCard
 
 ```js
+import React from 'react';
+import { CarouselCard, CarouselImage } from 'react-rainbow-components/components';
+
 const carouselContainerStyles = {
     maxWidth: 600,
 };

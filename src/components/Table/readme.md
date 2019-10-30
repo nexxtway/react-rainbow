@@ -1,6 +1,9 @@
 ##### simple Table
 
 ```js
+import React from 'react';
+import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const {
     faCog,
@@ -76,6 +79,9 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 ##### Table with sorting
 
 ```js
+import React from 'react';
+import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const {
     faCog,
@@ -219,6 +225,9 @@ class TableExample extends React.Component {
 ##### Table with Selectable Rows
 
 ```js
+import React from 'react';
+import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const {
     faCog,
@@ -345,6 +354,9 @@ class TableExample extends React.Component {
 ##### Table with a limited number of Selectable Rows
 
 ```js
+import React from 'react';
+import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const {
     faCog,
@@ -442,6 +454,9 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 ##### Table with Selectable Rows by radio buttons
 
 ```js
+import React from 'react';
+import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const {
     faCog,
@@ -524,6 +539,16 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 ##### Table with row actions
 
 ```js
+import React from 'react';
+import {
+    Table,
+    Column,
+    ButtonGroup,
+    ButtonIcon,
+    Badge,
+    MenuItem,
+} from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const {
     faCog,
@@ -610,6 +635,9 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 ##### Table Loading
 
 ```js
+import React from 'react';
+import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const {
     faCog,
@@ -649,6 +677,9 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 ##### Table Empty
 
 ```js
+import React from 'react';
+import { Table, Column, ButtonGroup, ButtonIcon } from 'react-rainbow-components/components';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const {
     faCog,

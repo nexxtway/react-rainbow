@@ -36,6 +36,7 @@ export { default as Pagination } from './Pagination';
 export { default as Picklist } from './Picklist';
 export { default as PicklistOption } from './PicklistOption';
 export { default as ProgressBar } from './ProgressBar';
+export { default as ProgressCircular } from './ProgressCircular';
 export { default as ProgressIndicator } from './ProgressIndicator';
 export { default as ProgressStep } from './ProgressStep';
 export { default as RadioButtonGroup } from './RadioButtonGroup';

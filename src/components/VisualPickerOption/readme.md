@@ -1,6 +1,9 @@
 ##### VisualPickerOption with one option selected:
 
 ```js
+import React from 'react';
+import { VisualPicker, VisualPickerOption } from 'react-rainbow-components/components';
+
 const titleStyles = {
     fontSize: 24,
     color: '#061c3f',
@@ -62,6 +65,9 @@ class SimpleVisualPicker extends React.Component {
 ##### VisualPickerOption with option disabled:
 
 ```js
+import React from 'react';
+import { VisualPicker, VisualPickerOption } from 'react-rainbow-components/components';
+
 const titleStyles = {
     fontSize: 24,
     color: '#061c3f',
@@ -123,6 +129,13 @@ class SimpleVisualPicker extends React.Component {
 ##### VisualPickerOption with footer:
 
 ```js
+import React from 'react';
+import {
+    VisualPicker,
+    VisualPickerOption,
+    VisualPickerOptionFooter,
+} from 'react-rainbow-components/components';
+
 const headerStyles = {
     fontSize: 24,
     color: '#061c3f',
