@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components/components';
+import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const {
@@ -80,7 +80,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 
 ```js
 import React from 'react';
-import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components/components';
+import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const {
@@ -226,7 +226,7 @@ class TableExample extends React.Component {
 
 ```js
 import React from 'react';
-import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components/components';
+import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const {
@@ -355,7 +355,7 @@ class TableExample extends React.Component {
 
 ```js
 import React from 'react';
-import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components/components';
+import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const {
@@ -455,7 +455,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 
 ```js
 import React from 'react';
-import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components/components';
+import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const {
@@ -540,14 +540,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 
 ```js
 import React from 'react';
-import {
-    Table,
-    Column,
-    ButtonGroup,
-    ButtonIcon,
-    Badge,
-    MenuItem,
-} from 'react-rainbow-components/components';
+import { Table, Column, ButtonGroup, ButtonIcon, Badge, MenuItem } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const {
@@ -636,7 +629,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 
 ```js
 import React from 'react';
-import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components/components';
+import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const {
@@ -678,7 +671,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 
 ```js
 import React from 'react';
-import { Table, Column, ButtonGroup, ButtonIcon } from 'react-rainbow-components/components';
+import { Table, Column, ButtonGroup, ButtonIcon } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const {

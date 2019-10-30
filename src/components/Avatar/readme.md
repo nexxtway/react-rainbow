@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import Avatar from 'react-rainbow-components/components/Avatar';
+import { Avatar } from 'react-rainbow-components';
 
 <div className="rainbow-p-vertical_large rainbow-p-left_medium rainbow-flex rainbow-align_center">
     <div className="rainbow-m-horizontal_medium">
@@ -44,7 +44,7 @@ import Avatar from 'react-rainbow-components/components/Avatar';
 
 ```js
 import React from 'react';
-import Avatar from 'react-rainbow-components/components/Avatar';
+import { Avatar } from 'react-rainbow-components';
 
 <div className="rainbow-p-vertical_x-large rainbow-p-left_medium">
     <div className="rainbow-m-horizontal_medium">
@@ -57,7 +57,7 @@ import Avatar from 'react-rainbow-components/components/Avatar';
 
 ```js
 import React from 'react';
-import Avatar from 'react-rainbow-components/components/Avatar';
+import { Avatar } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faUser } = require('@fortawesome/free-regular-svg-icons');
@@ -77,7 +77,7 @@ const { faUser } = require('@fortawesome/free-regular-svg-icons');
 
 ```js
 import React from 'react';
-import Avatar from 'react-rainbow-components/components/Avatar';
+import { Avatar } from 'react-rainbow-components';
 
 const avatarContainerStyles = {
     borderRadius: '0.875rem',

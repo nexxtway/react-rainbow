@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import { VisualPicker, VisualPickerOption } from 'react-rainbow-components/components';
+import { VisualPicker, VisualPickerOption } from 'react-rainbow-components';
 
 const titleStyles = {
     fontSize: 24,
@@ -66,7 +66,7 @@ class SimpleVisualPicker extends React.Component {
 
 ```js
 import React from 'react';
-import { VisualPicker, VisualPickerOption } from 'react-rainbow-components/components';
+import { VisualPicker, VisualPickerOption } from 'react-rainbow-components';
 
 const titleStyles = {
     fontSize: 24,
@@ -134,7 +134,7 @@ import {
     VisualPicker,
     VisualPickerOption,
     VisualPickerOptionFooter,
-} from 'react-rainbow-components/components';
+} from 'react-rainbow-components';
 
 const headerStyles = {
     fontSize: 24,

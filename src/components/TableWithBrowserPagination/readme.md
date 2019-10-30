@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import { Table, Column, Badge } from 'react-rainbow-components/components';
+import { Table, Column, Badge } from 'react-rainbow-components';
 
 const badgeStyles = { color: '#1de9b6' };
 const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
@@ -24,7 +24,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 
 ```js
 import React from 'react';
-import { Table, Column, Badge } from 'react-rainbow-components/components';
+import { Table, Column, Badge } from 'react-rainbow-components';
 
 const badgeStyles = { color: '#1de9b6' };
 const containerStyles = { height: 312, backgroundColor: '#f4f6f9' };
@@ -56,7 +56,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 
 ```js
 import React from 'react';
-import { Table, Column, Badge } from 'react-rainbow-components/components';
+import { Table, Column, Badge } from 'react-rainbow-components';
 
 const badgeStyles = { color: '#1de9b6' };
 const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
@@ -78,7 +78,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 
 ```js
 import React from 'react';
-import { Table, Column, Badge } from 'react-rainbow-components/components';
+import { Table, Column, Badge } from 'react-rainbow-components';
 
 const badgeStyles = { color: '#1de9b6' };
 const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;

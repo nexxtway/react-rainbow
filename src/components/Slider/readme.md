@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import Slider from 'react-rainbow-components/components/Slider';
+import { Slider } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 700,
@@ -44,7 +44,7 @@ class SliderExample extends React.Component {
 
 ```js
 import React from 'react';
-import Slider from 'react-rainbow-components/components/Slider';
+import { Slider } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 700,
@@ -93,7 +93,7 @@ class SliderExample extends React.Component {
 
 ```js
 import React from 'react';
-import Slider from 'react-rainbow-components/components/Slider';
+import { Slider } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 700,
@@ -140,7 +140,7 @@ class SliderExample extends React.Component {
 
 ```js
 import React from 'react';
-import Slider from 'react-rainbow-components/components/Slider';
+import { Slider } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 700,

@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import { Sidebar, SidebarItem } from 'react-rainbow-components/components';
+import { Sidebar, SidebarItem } from 'react-rainbow-components';
 
 const dashboard = require('../../../assets/icons/dashboard.svg');
 const application = require('../../../assets/icons/application.svg');

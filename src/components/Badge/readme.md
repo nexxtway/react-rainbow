@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import Badge from 'react-rainbow-components/components/Badge';
+import { Badge } from 'react-rainbow-components';
 
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <Badge
@@ -25,7 +25,7 @@ import Badge from 'react-rainbow-components/components/Badge';
 
 ```js
 import React from 'react';
-import Badge from 'react-rainbow-components/components/Badge';
+import { Badge } from 'react-rainbow-components';
 
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <Badge className="rainbow-m-around_medium" label="Default Badge" title="the badge title" />
@@ -50,7 +50,7 @@ import Badge from 'react-rainbow-components/components/Badge';
 
 ```js
 import React from 'react';
-import Badge from 'react-rainbow-components/components/Badge';
+import { Badge } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faStar } = require('@fortawesome/free-solid-svg-icons');

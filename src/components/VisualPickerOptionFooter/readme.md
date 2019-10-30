@@ -6,7 +6,7 @@ import {
     VisualPicker,
     VisualPickerOption,
     VisualPickerOptionFooter,
-} from 'react-rainbow-components/components';
+} from 'react-rainbow-components';
 
 const iconStyles = { width: 50, height: 50 };
 

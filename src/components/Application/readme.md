@@ -13,7 +13,7 @@ import {
     Card,
     Button,
     Input,
-} from 'react-rainbow-components/components';
+} from 'react-rainbow-components';
 
 // more details about how to use react-font-awesome
 // visit https://github.com/FortAwesome/react-fontawesome

@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import RadioGroup from 'react-rainbow-components/components/RadioGroup';
+import { RadioGroup } from 'react-rainbow-components';
 
 const options = [
     { value: 'radioOne', label: 'Radio One' },
@@ -45,7 +45,7 @@ class SimpleRadioGroup extends React.Component {
 
 ```js
 import React from 'react';
-import RadioGroup from 'react-rainbow-components/components/RadioGroup';
+import { RadioGroup } from 'react-rainbow-components';
 
 const options = [
     { value: 'radioOne', label: 'Radio One', disabled: true },
@@ -87,7 +87,7 @@ class DisabledRadioGroup extends React.Component {
 
 ```js
 import React from 'react';
-import RadioGroup from 'react-rainbow-components/components/RadioGroup';
+import { RadioGroup } from 'react-rainbow-components';
 
 const options = [
     { value: 'radioOne', label: 'Radio One' },
@@ -130,7 +130,7 @@ class RequiredRadioGroup extends React.Component {
 
 ```js
 import React from 'react';
-import RadioGroup from 'react-rainbow-components/components/RadioGroup';
+import { RadioGroup } from 'react-rainbow-components';
 
 const options = [
     { value: 'radioOne', label: 'Radio One' },

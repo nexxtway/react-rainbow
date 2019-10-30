@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import CheckboxToggle from 'react-rainbow-components/components/CheckboxToggle';
+import { CheckboxToggle } from 'react-rainbow-components';
 
 class SimpleCheckboxToggle extends React.Component {
     constructor(props) {
@@ -38,7 +38,7 @@ class SimpleCheckboxToggle extends React.Component {
 
 ```js
 import React from 'react';
-import CheckboxToggle from 'react-rainbow-components/components/CheckboxToggle';
+import { CheckboxToggle } from 'react-rainbow-components';
 
 class CheckedCheckboxToggle extends React.Component {
     constructor(props) {
@@ -73,7 +73,7 @@ class CheckedCheckboxToggle extends React.Component {
 
 ```js
 import React from 'react';
-import CheckboxToggle from 'react-rainbow-components/components/CheckboxToggle';
+import { CheckboxToggle } from 'react-rainbow-components';
 
 class DisabledCheckboxToggle extends React.Component {
     constructor(props) {

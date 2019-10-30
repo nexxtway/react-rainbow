@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import { ButtonGroup, ButtonMenu, MenuItem } from 'react-rainbow-components/components';
+import { ButtonGroup, ButtonMenu, MenuItem } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faCog } = require('@fortawesome/free-solid-svg-icons');
@@ -36,7 +36,7 @@ import {
     MenuItem,
     ButtonIcon,
     MenuDivider,
-} from 'react-rainbow-components/components';
+} from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const {
@@ -80,7 +80,7 @@ const {
 
 ```js
 import React from 'react';
-import { ButtonGroup, ButtonIcon, ButtonMenu, MenuItem } from 'react-rainbow-components/components';
+import { ButtonGroup, ButtonIcon, ButtonMenu, MenuItem } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faPlus, faEdit, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');
@@ -116,7 +116,7 @@ const { faPlus, faEdit, faEllipsisV } = require('@fortawesome/free-solid-svg-ico
 
 ```js
 import React from 'react';
-import { ButtonGroup, ButtonIcon, ButtonMenu, MenuItem } from 'react-rainbow-components/components';
+import { ButtonGroup, ButtonIcon, ButtonMenu, MenuItem } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const {
@@ -195,7 +195,7 @@ const {
 
 ```js
 import React from 'react';
-import { ButtonGroup, ButtonIcon, ButtonMenu, MenuItem } from 'react-rainbow-components/components';
+import { ButtonGroup, ButtonIcon, ButtonMenu, MenuItem } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const {
@@ -262,7 +262,7 @@ const {
 
 ```js
 import React from 'react';
-import { ButtonGroup, ButtonIcon, ButtonMenu, MenuItem } from 'react-rainbow-components/components';
+import { ButtonGroup, ButtonIcon, ButtonMenu, MenuItem } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const {
@@ -335,7 +335,7 @@ const {
 
 ```js
 import React from 'react';
-import { ButtonGroup, ButtonMenu, MenuItem } from 'react-rainbow-components/components';
+import { ButtonGroup, ButtonMenu, MenuItem } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faCog } = require('@fortawesome/free-solid-svg-icons');
@@ -365,7 +365,7 @@ const { faCog } = require('@fortawesome/free-solid-svg-icons');
 
 ```js
 import React from 'react';
-import { ButtonGroup, ButtonMenu } from 'react-rainbow-components/components';
+import { ButtonGroup, ButtonMenu } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faBell } = require('@fortawesome/free-solid-svg-icons');

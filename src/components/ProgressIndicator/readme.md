@@ -8,7 +8,7 @@ import {
     ButtonGroup,
     ButtonIcon,
     Button,
-} from 'react-rainbow-components/components';
+} from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faPlus, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');
@@ -125,7 +125,7 @@ import {
     ButtonGroup,
     ButtonIcon,
     Button,
-} from 'react-rainbow-components/components';
+} from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faPlus, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');
@@ -242,7 +242,7 @@ import {
     ButtonGroup,
     ButtonIcon,
     Button,
-} from 'react-rainbow-components/components';
+} from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faPlus, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');
@@ -353,12 +353,7 @@ class ProgressIndicatorWithError extends React.Component {
 
 ```js
 import React from 'react';
-import {
-    ProgressIndicator,
-    ProgressStep,
-    ButtonGroup,
-    ButtonIcon,
-} from 'react-rainbow-components/components';
+import { ProgressIndicator, ProgressStep, ButtonGroup, ButtonIcon } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faPlus, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');

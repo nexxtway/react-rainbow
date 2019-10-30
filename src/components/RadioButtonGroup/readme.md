@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import RadioButtonGroup from 'react-rainbow-components/components/RadioButtonGroup';
+import { RadioButtonGroup } from 'react-rainbow-components';
 
 const options = [
     { value: 'off', label: 'Off' },
@@ -45,7 +45,7 @@ class SimpleRadioButtonGroup extends React.Component {
 
 ```js
 import React from 'react';
-import RadioButtonGroup from 'react-rainbow-components/components/RadioButtonGroup';
+import { RadioButtonGroup } from 'react-rainbow-components';
 
 const options = [
     { value: 'off', label: 'Off' },
@@ -90,7 +90,7 @@ class LabeledBrandRadioButtonGroup extends React.Component {
 
 ```js
 import React from 'react';
-import RadioButtonGroup from 'react-rainbow-components/components/RadioButtonGroup';
+import { RadioButtonGroup } from 'react-rainbow-components';
 
 const options = [
     { value: 'off', label: 'Off' },
@@ -142,7 +142,7 @@ class RadioButtonGroupInverse extends React.Component {
 
 ```js
 import React from 'react';
-import RadioButtonGroup from 'react-rainbow-components/components/RadioButtonGroup';
+import { RadioButtonGroup } from 'react-rainbow-components';
 
 const options = [
     { value: 'off', label: 'Off', disabled: true },
@@ -185,7 +185,7 @@ class DisabledRadioButtonGroup extends React.Component {
 
 ```js
 import React from 'react';
-import RadioButtonGroup from 'react-rainbow-components/components/RadioButtonGroup';
+import { RadioButtonGroup } from 'react-rainbow-components';
 
 const options = [
     { value: 'off', label: 'Off' },
@@ -229,7 +229,7 @@ class RequiredRadioButtonGroup extends React.Component {
 
 ```js
 import React from 'react';
-import RadioButtonGroup from 'react-rainbow-components/components/RadioButtonGroup';
+import { RadioButtonGroup } from 'react-rainbow-components';
 
 const options = [
     { value: 'off', label: 'Off' },

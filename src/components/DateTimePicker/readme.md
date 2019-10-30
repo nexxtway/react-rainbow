@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import DateTimePicker from 'react-rainbow-components/components/DateTimePicker';
+import { DateTimePicker } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 400,
@@ -27,7 +27,7 @@ const initialState = { value: new Date('2019-10-25 10:44') };
 
 ```js
 import React from 'react';
-import DateTimePicker from 'react-rainbow-components/components/DateTimePicker';
+import { DateTimePicker } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 400,
@@ -52,7 +52,7 @@ initialState = { value: new Date() };
 
 ```js
 import React from 'react';
-import DateTimePicker from 'react-rainbow-components/components/DateTimePicker';
+import { DateTimePicker } from 'react-rainbow-components';
 
 const inputStyles = {
     maxWidth: 320,
@@ -92,7 +92,7 @@ initialState = { value: new Date() };
 
 ```js
 import React from 'react';
-import DateTimePicker from 'react-rainbow-components/components/DateTimePicker';
+import { DateTimePicker } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 400,
@@ -116,7 +116,7 @@ initialState = { value: new Date() };
 
 ```js
 import React from 'react';
-import DateTimePicker from 'react-rainbow-components/components/DateTimePicker';
+import { DateTimePicker } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 400,
@@ -143,7 +143,7 @@ initialState = { value: undefined };
 
 ```js
 import React from 'react';
-import DateTimePicker from 'react-rainbow-components/components/DateTimePicker';
+import { DateTimePicker } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 400,
@@ -161,7 +161,7 @@ const containerStyles = {
 
 ```js
 import React from 'react';
-import DateTimePicker from 'react-rainbow-components/components/DateTimePicker';
+import { DateTimePicker } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 400,

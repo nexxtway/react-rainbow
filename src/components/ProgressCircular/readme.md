@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import { Card, ProgressCircular } from 'react-rainbow-components/components';
+import { Card, ProgressCircular } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faCircle } = require('@fortawesome/free-solid-svg-icons');
@@ -59,7 +59,7 @@ function ActiveUsersCard({ title, variant, color }) {
 
 ```js
 import React from 'react';
-import ProgressCircular from 'react-rainbow-components/components/ProgressCircular';
+import { ProgressCircular } from 'react-rainbow-components';
 
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <div className="rainbow-p-around_large rainbow-align-content_center rainbow-flex_column">

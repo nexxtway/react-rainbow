@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import { Breadcrumb, Breadcrumbs } from 'react-rainbow-components/components';
+import { Breadcrumb, Breadcrumbs } from 'react-rainbow-components';
 
 <div>
     <GlobalHeader />

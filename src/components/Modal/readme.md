@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import { Modal, Button, ButtonGroup, ButtonIcon } from 'react-rainbow-components/components';
+import { Modal, Button, ButtonGroup, ButtonIcon } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faCog } = require('@fortawesome/free-solid-svg-icons');
@@ -69,7 +69,7 @@ const { faPlus, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');
 
 ```js
 import React from 'react';
-import { Modal, Button } from 'react-rainbow-components/components';
+import { Modal, Button } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faCog } = require('@fortawesome/free-solid-svg-icons');
@@ -132,7 +132,7 @@ class ModalWHeader extends React.Component {
 
 ```js
 import React from 'react';
-import { Modal, Button } from 'react-rainbow-components/components';
+import { Modal, Button } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faCog } = require('@fortawesome/free-solid-svg-icons');
@@ -238,7 +238,7 @@ class ModalWFooter extends React.Component {
 
 ```js
 import React from 'react';
-import { Modal, Button } from 'react-rainbow-components/components';
+import { Modal, Button } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faCog } = require('@fortawesome/free-solid-svg-icons');
@@ -310,7 +310,7 @@ class ModalWFooterDirectional extends React.Component {
 
 ```js
 import React from 'react';
-import { Modal, Card, Button, ButtonGroup } from 'react-rainbow-components/components';
+import { Modal, Card, Button, ButtonGroup } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faTasks, faShareAlt, faAngleDown } = require('@fortawesome/free-solid-svg-icons');
@@ -478,7 +478,7 @@ import {
     DatePicker,
     Lookup,
     Textarea,
-} from 'react-rainbow-components/components';
+} from 'react-rainbow-components';
 
 const { Field, reduxForm } = require('redux-form');
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');

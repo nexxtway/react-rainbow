@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import { Picklist, PicklistOption } from 'react-rainbow-components/components';
+import { Picklist, PicklistOption } from 'react-rainbow-components';
 
 const containerStyles = {
     width: '200px',
@@ -38,7 +38,7 @@ initialState = { value: { name: 'option 3', label: 'Central Park' } };
 
 ```js
 import React from 'react';
-import { Picklist, PicklistOption } from 'react-rainbow-components/components';
+import { Picklist, PicklistOption } from 'react-rainbow-components';
 
 const containerStyles = {
     width: '200px',
@@ -80,7 +80,7 @@ initialState = { value: null };
 
 ```js
 import React from 'react';
-import { Picklist, PicklistOption } from 'react-rainbow-components/components';
+import { Picklist, PicklistOption } from 'react-rainbow-components';
 
 const containerStyles = {
     width: '180px',
@@ -114,7 +114,7 @@ initialState = { value: { name: 'option 1', label: 'All Buildings' } };
 
 ```js
 import React from 'react';
-import { Picklist, PicklistOption, Button } from 'react-rainbow-components/components';
+import { Picklist, PicklistOption, Button } from 'react-rainbow-components';
 
 const containerStyles = {
     width: '140px',

@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import Button from 'react-rainbow-components/components/Button';
+import { Button } from 'react-rainbow-components';
 
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <Button variant="base" label="Button Base" className="rainbow-m-around_medium" />
@@ -19,7 +19,7 @@ import Button from 'react-rainbow-components/components/Button';
 
 ```js
 import React from 'react';
-import Button from 'react-rainbow-components/components/Button';
+import { Button } from 'react-rainbow-components';
 
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <Button
@@ -42,7 +42,7 @@ import Button from 'react-rainbow-components/components/Button';
 
 ```js
 import React from 'react';
-import Button from 'react-rainbow-components/components/Button';
+import { Button } from 'react-rainbow-components';
 
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <Button
@@ -72,7 +72,7 @@ import Button from 'react-rainbow-components/components/Button';
 
 ```js
 import React from 'react';
-import Button from 'react-rainbow-components/components/Button';
+import { Button } from 'react-rainbow-components';
 
 // more details about how to use react-font-awesome
 // visit https://github.com/FortAwesome/react-fontawesome
@@ -99,7 +99,7 @@ const { faCoffee, faCheck, faArrowRight } = require('@fortawesome/free-solid-svg
 
 ```js
 import React from 'react';
-import Button from 'react-rainbow-components/components/Button';
+import { Button } from 'react-rainbow-components';
 
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <Button disabled label="Button Base Disabled" className="rainbow-m-around_medium" />
@@ -122,7 +122,7 @@ import Button from 'react-rainbow-components/components/Button';
 
 ```js
 import React from 'react';
-import Button from 'react-rainbow-components/components/Button';
+import { Button } from 'react-rainbow-components';
 
 // more details about how to use react-font-awesome
 // visit https://github.com/FortAwesome/react-fontawesome
@@ -150,7 +150,7 @@ const buttonsContainerStyles = {
 
 ```js
 import React from 'react';
-import Button from 'react-rainbow-components/components/Button';
+import { Button } from 'react-rainbow-components';
 
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <Button

@@ -6,7 +6,7 @@ import {
     VerticalNavigation,
     VerticalItem,
     VerticalSectionOverflow,
-} from 'react-rainbow-components/components';
+} from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faChevronDown, faTh, faFolderOpen } = require('@fortawesome/free-solid-svg-icons');

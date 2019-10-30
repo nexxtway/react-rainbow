@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import Notification from 'react-rainbow-components/components/Notification';
+import { Notification } from 'react-rainbow-components';
 
 <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
     <GlobalHeader src="images/user/user3.jpg" className="rainbow-p-bottom_small" />
@@ -19,7 +19,7 @@ import Notification from 'react-rainbow-components/components/Notification';
 
 ```js
 import React from 'react';
-import Notification from 'react-rainbow-components/components/Notification';
+import { Notification } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faGithub } = require('@fortawesome/free-brands-svg-icons');
@@ -52,7 +52,7 @@ const iconContainerStyles = {
 
 ```js
 import React from 'react';
-import Notification from 'react-rainbow-components/components/Notification';
+import { Notification } from 'react-rainbow-components';
 
 <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
     <GlobalHeader src="images/user/user3.jpg" className="rainbow-p-bottom_small" />

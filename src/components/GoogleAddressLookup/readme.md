@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import GoogleAddressLookup from 'react-rainbow-components/components/GoogleAddressLookup';
+import { GoogleAddressLookup } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 700,
@@ -26,7 +26,7 @@ initialState = { value: null };
 
 ```js
 import React from 'react';
-import GoogleAddressLookup from 'react-rainbow-components/components/GoogleAddressLookup';
+import { GoogleAddressLookup } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 700,
@@ -51,7 +51,7 @@ initialState = { value: null };
 
 ```js
 import React from 'react';
-import GoogleAddressLookup from 'react-rainbow-components/components/GoogleAddressLookup';
+import { GoogleAddressLookup } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 700,
@@ -88,7 +88,7 @@ initialState = { value: null };
 
 ```js
 import React from 'react';
-import GoogleAddressLookup from 'react-rainbow-components/components/GoogleAddressLookup';
+import { GoogleAddressLookup } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 700,
@@ -121,7 +121,7 @@ initialState = { value: null };
 
 ```js
 import React from 'react';
-import GoogleAddressLookup from 'react-rainbow-components/components/GoogleAddressLookup';
+import { GoogleAddressLookup } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 700,

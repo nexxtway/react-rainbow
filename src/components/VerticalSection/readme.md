@@ -2,11 +2,7 @@
 
 ```js
 import React from 'react';
-import {
-    VerticalNavigation,
-    VerticalSection,
-    VerticalItem,
-} from 'react-rainbow-components/components';
+import { VerticalNavigation, VerticalSection, VerticalItem } from 'react-rainbow-components';
 
 const containerStyles = {
     width: '220px',

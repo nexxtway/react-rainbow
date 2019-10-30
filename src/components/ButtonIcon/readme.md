@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import ButtonIcon from 'react-rainbow-components/components/ButtonIcon';
+import { ButtonIcon } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faStar } = require('@fortawesome/free-regular-svg-icons');
@@ -29,7 +29,7 @@ const { faSlidersH, faSignal, faRedo, faTimes } = require('@fortawesome/free-sol
 
 ```js
 import React from 'react';
-import ButtonIcon from 'react-rainbow-components/components/ButtonIcon';
+import { ButtonIcon } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faStar } = require('@fortawesome/free-regular-svg-icons');
@@ -65,7 +65,7 @@ const {
 
 ```js
 import React from 'react';
-import ButtonIcon from 'react-rainbow-components/components/ButtonIcon';
+import { ButtonIcon } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faStar } = require('@fortawesome/free-regular-svg-icons');
@@ -85,7 +85,7 @@ const { faStar } = require('@fortawesome/free-regular-svg-icons');
 
 ```js
 import React from 'react';
-import ButtonIcon from 'react-rainbow-components/components/ButtonIcon';
+import { ButtonIcon } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faStar } = require('@fortawesome/free-regular-svg-icons');
@@ -105,7 +105,7 @@ const { faStar } = require('@fortawesome/free-regular-svg-icons');
 
 ```js
 import React from 'react';
-import ButtonIcon from 'react-rainbow-components/components/ButtonIcon';
+import { ButtonIcon } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faStar } = require('@fortawesome/free-regular-svg-icons');
@@ -125,7 +125,7 @@ const { faStar } = require('@fortawesome/free-regular-svg-icons');
 
 ```js
 import React from 'react';
-import ButtonIcon from 'react-rainbow-components/components/ButtonIcon';
+import { ButtonIcon } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faStar } = require('@fortawesome/free-regular-svg-icons');

@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import TimePicker from 'react-rainbow-components/components/TimePicker';
+import { TimePicker } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 400,
@@ -22,7 +22,7 @@ const containerStyles = {
 
 ```js
 import React from 'react';
-import TimePicker from 'react-rainbow-components/components/TimePicker';
+import { TimePicker } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 400,
@@ -43,7 +43,7 @@ initialState = { time: '13:32' };
 
 ```js
 import React from 'react';
-import TimePicker from 'react-rainbow-components/components/TimePicker';
+import { TimePicker } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 400,
@@ -63,7 +63,7 @@ const containerStyles = {
 
 ```js
 import React from 'react';
-import TimePicker from 'react-rainbow-components/components/TimePicker';
+import { TimePicker } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 400,
@@ -84,7 +84,7 @@ const containerStyles = {
 
 ```js
 import React from 'react';
-import TimePicker from 'react-rainbow-components/components/TimePicker';
+import { TimePicker } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 400,
@@ -103,7 +103,7 @@ const containerStyles = {
 
 ```js
 import React from 'react';
-import TimePicker from 'react-rainbow-components/components/TimePicker';
+import { TimePicker } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 400,

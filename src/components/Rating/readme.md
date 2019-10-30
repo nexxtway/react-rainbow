@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import { Card, ButtonGroup, ButtonIcon, Rating } from 'react-rainbow-components/components';
+import { Card, ButtonGroup, ButtonIcon, Rating } from 'react-rainbow-components';
 
 const cardStyles = {
     width: 300,
@@ -83,7 +83,7 @@ import {
     Card,
     CarouselCard,
     CarouselImage,
-} from 'react-rainbow-components/components';
+} from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faPlus, faEllipsisV, faImages } = require('@fortawesome/free-solid-svg-icons');

@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import Select from 'react-rainbow-components/components/Select';
+import { Select } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 700,
@@ -27,7 +27,7 @@ const options = [
 
 ```js
 import React from 'react';
-import Select from 'react-rainbow-components/components/Select';
+import { Select } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 700,
@@ -52,7 +52,7 @@ const options = [
 
 ```js
 import React from 'react';
-import Select from 'react-rainbow-components/components/Select';
+import { Select } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 700,
@@ -77,7 +77,7 @@ const options = [
 
 ```js
 import React from 'react';
-import Select from 'react-rainbow-components/components/Select';
+import { Select } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 700,
@@ -103,7 +103,7 @@ const options = [
 
 ```js
 import React from 'react';
-import Select from 'react-rainbow-components/components/Select';
+import { Select } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 700,

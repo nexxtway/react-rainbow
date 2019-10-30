@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import { MapMarker, GMap } from 'react-rainbow-components/components';
+import { MapMarker, GMap } from 'react-rainbow-components';
 
 const styles = {
     maxWidth: 400,

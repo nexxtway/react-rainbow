@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import { Card, Pagination } from 'react-rainbow-components/components';
+import { Card, Pagination } from 'react-rainbow-components';
 
 function getCardImageContainerStyles(src) {
     return {

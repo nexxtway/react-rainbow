@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import { ButtonMenu, MenuItem, MenuDivider } from 'react-rainbow-components/components';
+import { ButtonMenu, MenuItem, MenuDivider } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faCog } = require('@fortawesome/free-solid-svg-icons');

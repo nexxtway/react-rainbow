@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import DatePicker from 'react-rainbow-components/components/DatePicker';
+import { DatePicker } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 400,
@@ -25,7 +25,7 @@ initialState = { date: new Date() };
 
 ```js
 import React from 'react';
-import DatePicker from 'react-rainbow-components/components/DatePicker';
+import { DatePicker } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 400,
@@ -50,7 +50,7 @@ initialState = { date: new Date() };
 
 ```js
 import React from 'react';
-import DatePicker from 'react-rainbow-components/components/DatePicker';
+import { DatePicker } from 'react-rainbow-components';
 
 initialState = { date: new Date() };
 <div className="rainbow-align-content_center rainbow-m-vertical_large rainbow-flex_wrap">
@@ -85,7 +85,7 @@ initialState = { date: new Date() };
 
 ```js
 import React from 'react';
-import DatePicker from 'react-rainbow-components/components/DatePicker';
+import { DatePicker } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 400,
@@ -109,7 +109,7 @@ initialState = { date: new Date() };
 
 ```js
 import React from 'react';
-import DatePicker from 'react-rainbow-components/components/DatePicker';
+import { DatePicker } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 400,
@@ -135,7 +135,7 @@ initialState = { date: undefined };
 
 ```js
 import React from 'react';
-import DatePicker from 'react-rainbow-components/components/DatePicker';
+import { DatePicker } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 400,
@@ -153,7 +153,7 @@ const containerStyles = {
 
 ```js
 import React from 'react';
-import DatePicker from 'react-rainbow-components/components/DatePicker';
+import { DatePicker } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 400,

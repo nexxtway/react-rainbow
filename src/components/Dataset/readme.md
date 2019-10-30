@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import { Dataset, Chart } from 'react-rainbow-components/components';
+import { Dataset, Chart } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 600,

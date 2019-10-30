@@ -8,7 +8,7 @@ import {
     ButtonGroup,
     ButtonIcon,
     Button,
-} from 'react-rainbow-components/components';
+} from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faPlus, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');

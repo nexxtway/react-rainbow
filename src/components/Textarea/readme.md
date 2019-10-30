@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import Textarea from 'react-rainbow-components/components/Textarea';
+import { Textarea } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 700,
@@ -22,7 +22,7 @@ const containerStyles = {
 
 ```js
 import React from 'react';
-import Textarea from 'react-rainbow-components/components/Textarea';
+import { Textarea } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 700,
@@ -42,7 +42,7 @@ const containerStyles = {
 
 ```js
 import React from 'react';
-import Textarea from 'react-rainbow-components/components/Textarea';
+import { Textarea } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 700,
@@ -62,7 +62,7 @@ const containerStyles = {
 
 ```js
 import React from 'react';
-import Textarea from 'react-rainbow-components/components/Textarea';
+import { Textarea } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 700,
@@ -82,7 +82,7 @@ const containerStyles = {
 
 ```js
 import React from 'react';
-import Textarea from 'react-rainbow-components/components/Textarea';
+import { Textarea } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 700,
@@ -102,7 +102,7 @@ const containerStyles = {
 
 ```js
 import React from 'react';
-import Textarea from 'react-rainbow-components/components/Textarea';
+import { Textarea } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 700,

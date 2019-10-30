@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import ProgressBar from 'react-rainbow-components/components/ProgressBar';
+import { ProgressBar } from 'react-rainbow-components';
 
 class ProgressBarInAction extends React.Component {
     constructor(props) {
@@ -42,7 +42,7 @@ class ProgressBarInAction extends React.Component {
 
 ```js
 import React from 'react';
-import ProgressBar from 'react-rainbow-components/components/ProgressBar';
+import { ProgressBar } from 'react-rainbow-components';
 
 <div className="rainbow-p-around_x-large">
     <ProgressBar value={50} variant="success" />
@@ -53,7 +53,7 @@ import ProgressBar from 'react-rainbow-components/components/ProgressBar';
 
 ```js
 import React from 'react';
-import ProgressBar from 'react-rainbow-components/components/ProgressBar';
+import { ProgressBar } from 'react-rainbow-components';
 
 <div className="rainbow-p-around_x-large">
     <div className="rainbow-align-content_space-between rainbow-p-bottom_x-small">
@@ -74,7 +74,7 @@ import ProgressBar from 'react-rainbow-components/components/ProgressBar';
 
 ```js
 import React from 'react';
-import ProgressBar from 'react-rainbow-components/components/ProgressBar';
+import { ProgressBar } from 'react-rainbow-components';
 
 <div className="rainbow-p-around_large">
     <div className="rainbow-p-around_medium">

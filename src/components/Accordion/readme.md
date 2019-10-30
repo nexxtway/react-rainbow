@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import { Card, Accordion, AccordionSection, Input } from 'react-rainbow-components/components';
+import { Card, Accordion, AccordionSection, Input } from 'react-rainbow-components';
 
 <div className="rainbow-m-around_xx-large">
     <Card>
@@ -34,7 +34,7 @@ import { Card, Accordion, AccordionSection, Input } from 'react-rainbow-componen
 
 ```js
 import React from 'react';
-import { Card, Accordion, AccordionSection } from 'react-rainbow-components/components';
+import { Card, Accordion, AccordionSection } from 'react-rainbow-components';
 
 // more details about how to use react-font-awesome
 // visit https://github.com/FortAwesome/react-fontawesome
@@ -77,7 +77,7 @@ const { faUser, faUsers, faCog } = require('@fortawesome/free-solid-svg-icons');
 
 ```js
 import React from 'react';
-import { Card, Accordion, AccordionSection } from 'react-rainbow-components/components';
+import { Card, Accordion, AccordionSection } from 'react-rainbow-components';
 
 class AccordionExample extends React.Component {
     constructor(props) {
@@ -135,7 +135,7 @@ class AccordionExample extends React.Component {
 
 ```js
 import React from 'react';
-import { Card, Accordion, AccordionSection } from 'react-rainbow-components/components';
+import { Card, Accordion, AccordionSection } from 'react-rainbow-components';
 
 <div className="rainbow-m-around_xx-large">
     <Card>

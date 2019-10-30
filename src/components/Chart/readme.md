@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import { Chart, Dataset } from 'react-rainbow-components/components';
+import { Chart, Dataset } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 600,
@@ -39,7 +39,7 @@ const { faCog, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');
 
 ```js
 import React from 'react';
-import { Chart, Dataset, ButtonGroup, Button } from 'react-rainbow-components/components';
+import { Chart, Dataset, ButtonGroup, Button } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 600,
@@ -190,7 +190,7 @@ class BarChartExample extends React.Component {
 
 ```js
 import React from 'react';
-import { Chart, Dataset, ButtonGroup, Button } from 'react-rainbow-components/components';
+import { Chart, Dataset, ButtonGroup, Button } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 600,
@@ -337,7 +337,7 @@ class LineChartExample extends React.Component {
 
 ```js
 import React from 'react';
-import { Chart, Dataset, ButtonGroup, Button } from 'react-rainbow-components/components';
+import { Chart, Dataset, ButtonGroup, Button } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 600,
@@ -500,7 +500,7 @@ class LineChartExample extends React.Component {
 
 ```js
 import React from 'react';
-import { Chart, Dataset, ButtonGroup, Button } from 'react-rainbow-components/components';
+import { Chart, Dataset, ButtonGroup, Button } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 600,
@@ -606,7 +606,7 @@ class PieChartExample extends React.Component {
 
 ```js
 import React from 'react';
-import { Chart, Dataset, ButtonGroup, Button } from 'react-rainbow-components/components';
+import { Chart, Dataset, ButtonGroup, Button } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 600,

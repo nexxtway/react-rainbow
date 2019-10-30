@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import CheckboxGroup from 'react-rainbow-components/components/CheckboxGroup';
+import { CheckboxGroup } from 'react-rainbow-components';
 
 const options = [
     { value: 'checkboxOne', label: 'Checkbox One', disabled: false },
@@ -44,7 +44,7 @@ class CheckboxGroupTry extends React.Component {
 
 ```js
 import React from 'react';
-import CheckboxGroup from 'react-rainbow-components/components/CheckboxGroup';
+import { CheckboxGroup } from 'react-rainbow-components';
 
 const options = [
     { value: 'checkboxOne', label: 'Checkbox One', disabled: true },
@@ -85,7 +85,7 @@ class CheckboxGroupTry extends React.Component {
 
 ```js
 import React from 'react';
-import CheckboxGroup from 'react-rainbow-components/components/CheckboxGroup';
+import { CheckboxGroup } from 'react-rainbow-components';
 
 const options = [
     { value: 'checkboxOne', label: 'Checkbox One', disabled: false },
@@ -127,7 +127,7 @@ class CheckboxGroupTry extends React.Component {
 
 ```js
 import React from 'react';
-import CheckboxGroup from 'react-rainbow-components/components/CheckboxGroup';
+import { CheckboxGroup } from 'react-rainbow-components';
 
 const options = [
     { value: 'checkboxOne', label: 'Checkbox One', disabled: false },

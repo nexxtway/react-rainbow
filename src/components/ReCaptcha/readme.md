@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import { ReCaptcha, Input, Textarea, Button } from 'react-rainbow-components/components';
+import { ReCaptcha, Input, Textarea, Button } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faUser, faEnvelope } = require('@fortawesome/free-solid-svg-icons');
@@ -170,7 +170,7 @@ class ReCaptchaExample extends React.Component {
 
 ```js
 import React from 'react';
-import { ReCaptcha, Input, Textarea, Button } from 'react-rainbow-components/components';
+import { ReCaptcha, Input, Textarea, Button } from 'react-rainbow-components';
 
 const { Field, reduxForm } = require('redux-form');
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');

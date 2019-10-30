@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import { Tabset, Tab, ButtonGroup, ButtonIcon } from 'react-rainbow-components/components';
+import { Tabset, Tab, ButtonGroup, ButtonIcon } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faCog, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');
@@ -152,7 +152,7 @@ class TabsetExample extends React.Component {
 
 ```js
 import React from 'react';
-import { Tabset, Tab, ButtonGroup, ButtonIcon } from 'react-rainbow-components/components';
+import { Tabset, Tab, ButtonGroup, ButtonIcon } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faCog, faEllipsisV, faFolderOpen, faLock } = require('@fortawesome/free-solid-svg-icons');
@@ -309,7 +309,7 @@ class TabsetExample extends React.Component {
 
 ```js
 import React from 'react';
-import { Tabset, Tab, ButtonGroup, ButtonIcon } from 'react-rainbow-components/components';
+import { Tabset, Tab, ButtonGroup, ButtonIcon } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faCog, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');

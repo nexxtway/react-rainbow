@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import Spinner from 'react-rainbow-components/components/Spinner';
+import { Spinner } from 'react-rainbow-components';
 
 <div>
     <GlobalHeader src="images/user/user3.jpg" />
@@ -18,7 +18,7 @@ import Spinner from 'react-rainbow-components/components/Spinner';
 
 ```js
 import React from 'react';
-import Spinner from 'react-rainbow-components/components/Spinner';
+import { Spinner } from 'react-rainbow-components';
 
 const containerStyles = {
     borderRadius: '0.875rem',
@@ -39,7 +39,7 @@ const containerStyles = {
 
 ```js
 import React from 'react';
-import { Spinner, Card, Button } from 'react-rainbow-components/components';
+import { Spinner, Card, Button } from 'react-rainbow-components';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faTasks } = require('@fortawesome/free-solid-svg-icons');
@@ -82,7 +82,7 @@ const spinner = (
 
 ```js
 import React from 'react';
-import Spinner from 'react-rainbow-components/components/Spinner';
+import { Spinner } from 'react-rainbow-components';
 
 const containerStyles = {
     backgroundColor: '#061c3f',

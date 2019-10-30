@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import { Card, ActivityTimeline, TimelineMarker } from 'react-rainbow-components/components';
+import { Card, ActivityTimeline, TimelineMarker } from 'react-rainbow-components';
 
 const iconStyles = { width: 32, height: 32 };
 
