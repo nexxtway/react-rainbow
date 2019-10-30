@@ -468,7 +468,17 @@ class ModalWSize extends React.Component {
 
 ```js
 import React from 'react';
-import { Modal, ButtonIcon, ButtonGroup, Button } from 'react-rainbow-components/components';
+import {
+    Modal,
+    ButtonIcon,
+    ButtonGroup,
+    Button,
+    Input,
+    TimePicker,
+    DatePicker,
+    Lookup,
+    Textarea,
+} from 'react-rainbow-components/components';
 
 const { Field, reduxForm } = require('redux-form');
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
