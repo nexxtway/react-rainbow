@@ -1,7 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import PropTypes from 'prop-types';
-// import Markdown from 'react-styleguidist/lib/rsg-components/Markdown/Markdown';
 import SectionHeading from '../SectionHeading';
 
 export default function SectionRenderer(props) {
@@ -21,7 +20,6 @@ export default function SectionRenderer(props) {
                 </SectionHeading>
             )}
             <div>
-                {/* {description && <Markdown text={description} />} */}
                 {description}
                 {content}
                 {sections}

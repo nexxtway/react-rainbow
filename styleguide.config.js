@@ -19,6 +19,9 @@ if (env.parsed && !env.error) {
 }
 
 module.exports = {
+    moduleAliases: {
+        'react-rainbow-components': path.resolve(__dirname, './src'),
+    },
     ignore: ['**/__tests__/**', '/node_modules/**'],
     assetsDir: path.resolve(__dirname, 'assets'),
     skipComponentsWithoutExample: true,
