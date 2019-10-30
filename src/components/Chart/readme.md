@@ -3,13 +3,12 @@
 ```js
 import React from 'react';
 import { Chart, Dataset } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const containerStyles = {
     maxWidth: 600,
 };
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faCog, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');
 
 <div className="rainbow-p-vertical_medium rainbow-m_auto" style={containerStyles}>
     <div className="rainbow-align-content_center">
@@ -40,13 +39,12 @@ const { faCog, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');
 ```js
 import React from 'react';
 import { Chart, Dataset, ButtonGroup, Button } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 
 const containerStyles = {
     maxWidth: 600,
 };
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faPlus, faMinus } = require('@fortawesome/free-solid-svg-icons');
 
 class BarChartExample extends React.Component {
     constructor(props) {
@@ -191,13 +189,12 @@ class BarChartExample extends React.Component {
 ```js
 import React from 'react';
 import { Chart, Dataset, ButtonGroup, Button } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 
 const containerStyles = {
     maxWidth: 600,
 };
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faPlus, faMinus } = require('@fortawesome/free-solid-svg-icons');
 
 class LineChartExample extends React.Component {
     constructor(props) {
@@ -338,13 +335,12 @@ class LineChartExample extends React.Component {
 ```js
 import React from 'react';
 import { Chart, Dataset, ButtonGroup, Button } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 
 const containerStyles = {
     maxWidth: 600,
 };
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faPlus, faMinus } = require('@fortawesome/free-solid-svg-icons');
 
 class LineChartExample extends React.Component {
     constructor(props) {
@@ -501,13 +497,12 @@ class LineChartExample extends React.Component {
 ```js
 import React from 'react';
 import { Chart, Dataset, ButtonGroup, Button } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 
 const containerStyles = {
     maxWidth: 600,
 };
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faPlus, faMinus } = require('@fortawesome/free-solid-svg-icons');
 
 class PieChartExample extends React.Component {
     constructor(props) {
@@ -607,13 +602,12 @@ class PieChartExample extends React.Component {
 ```js
 import React from 'react';
 import { Chart, Dataset, ButtonGroup, Button } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 
 const containerStyles = {
     maxWidth: 600,
 };
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faPlus, faMinus } = require('@fortawesome/free-solid-svg-icons');
 
 class DoughnutChartExample extends React.Component {
     constructor(props) {

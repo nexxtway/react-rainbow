@@ -38,8 +38,8 @@ import { Card, Accordion, AccordionSection } from 'react-rainbow-components';
 
 // more details about how to use react-font-awesome
 // visit https://github.com/FortAwesome/react-fontawesome
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faUser, faUsers, faCog } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faUsers, faCog } from '@fortawesome/free-solid-svg-icons';
 
 <div className="rainbow-m-around_xx-large">
     <Card>

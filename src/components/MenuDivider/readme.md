@@ -3,9 +3,8 @@
 ```js
 import React from 'react';
 import { ButtonMenu, MenuItem, MenuDivider } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faCog } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
 
 <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
     <GlobalHeader

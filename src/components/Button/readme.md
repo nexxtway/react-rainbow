@@ -73,11 +73,10 @@ import { Button } from 'react-rainbow-components';
 ```js
 import React from 'react';
 import { Button } from 'react-rainbow-components';
-
 // more details about how to use react-font-awesome
 // visit https://github.com/FortAwesome/react-fontawesome
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faCoffee, faCheck, faArrowRight } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCoffee, faCheck, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <Button variant="base" className="rainbow-m-around_medium">
@@ -123,11 +122,10 @@ import { Button } from 'react-rainbow-components';
 ```js
 import React from 'react';
 import { Button } from 'react-rainbow-components';
-
 // more details about how to use react-font-awesome
 // visit https://github.com/FortAwesome/react-fontawesome
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faArrowRight } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 const buttonsContainerStyles = {
     backgroundColor: '#061c3f',

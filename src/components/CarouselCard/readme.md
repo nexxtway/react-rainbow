@@ -3,20 +3,19 @@
 ```js
 import React from 'react';
 import { CarouselCard, CarouselImage } from 'react-rainbow-components';
-
-const carouselContainerStyles = {
-    maxWidth: 600,
-};
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
     faCog,
     faPencilAlt,
     faStore,
     faPlus,
     faBell,
     faEllipsisV,
-} = require('@fortawesome/free-solid-svg-icons');
+} from '@fortawesome/free-solid-svg-icons';
+
+const carouselContainerStyles = {
+    maxWidth: 600,
+};
 
 <div className="rainbow-p-bottom_xx-large">
     <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg" />

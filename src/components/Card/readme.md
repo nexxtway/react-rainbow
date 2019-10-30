@@ -20,9 +20,8 @@ import { Card } from 'react-rainbow-components';
 ```js
 import React from 'react';
 import { Card, Avatar, Button } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faUser } = require('@fortawesome/free-regular-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-regular-svg-icons';
 
 <div className="rainbow-m-around_large">
     <Card
@@ -38,9 +37,8 @@ const { faUser } = require('@fortawesome/free-regular-svg-icons');
 ```js
 import React from 'react';
 import { Card, ButtonGroup, ButtonIcon } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faPlus, faUsers, faEdit, faAngleDown } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faUsers, faEdit, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 <div className="rainbow-m-around_large">
     <Card
@@ -67,10 +65,9 @@ const { faPlus, faUsers, faEdit, faAngleDown } = require('@fortawesome/free-soli
 ```js
 import React from 'react';
 import { Card, ButtonIcon, Button } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faTasks, faShareAlt, faAngleDown } = require('@fortawesome/free-solid-svg-icons');
-const { faHeart } = require('@fortawesome/free-regular-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTasks, faShareAlt, faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
 
 const iconContainerStyles = {
     width: '2.5rem',

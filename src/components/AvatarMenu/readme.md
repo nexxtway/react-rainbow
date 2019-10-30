@@ -3,9 +3,8 @@
 ```js
 import React from 'react';
 import { Avatar, AvatarMenu, MenuDivider, MenuItem } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faPencilAlt, faPowerOff } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencilAlt, faPowerOff } from '@fortawesome/free-solid-svg-icons';
 
 const containerStyles = {
     paddingBottom: '12rem',

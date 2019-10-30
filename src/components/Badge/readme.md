@@ -51,9 +51,8 @@ import { Badge } from 'react-rainbow-components';
 ```js
 import React from 'react';
 import { Badge } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faStar } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <Badge variant="inverse" title="the badge title" className="rainbow-m-around_medium">

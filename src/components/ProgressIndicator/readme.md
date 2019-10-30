@@ -9,9 +9,8 @@ import {
     ButtonIcon,
     Button,
 } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faPlus, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const stepNames = ['step-1', 'step-2', 'step-3', 'step-4', 'step-5'];
 
@@ -126,9 +125,8 @@ import {
     ButtonIcon,
     Button,
 } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faPlus, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const stepNames = ['step-1', 'step-2', 'step-3', 'step-4', 'step-5'];
 
@@ -243,9 +241,8 @@ import {
     ButtonIcon,
     Button,
 } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faPlus, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const stepNames = ['step-1', 'step-2', 'step-3', 'step-4', 'step-5'];
 
@@ -354,9 +351,8 @@ class ProgressIndicatorWithError extends React.Component {
 ```js
 import React from 'react';
 import { ProgressIndicator, ProgressStep, ButtonGroup, ButtonIcon } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faPlus, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const steps = {
     'step-1': 'first',

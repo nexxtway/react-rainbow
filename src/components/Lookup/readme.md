@@ -75,9 +75,8 @@ initialState = { options: null };
 ```js
 import React from 'react';
 import { Lookup } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faBuilding } = require('@fortawesome/free-regular-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBuilding } from '@fortawesome/free-regular-svg-icons';
 
 const IconStyles = {
     height: 30,
@@ -278,9 +277,8 @@ initialState = { options: null };
 ```js
 import React from 'react';
 import { Lookup } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faBuilding } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBuilding } from '@fortawesome/free-solid-svg-icons';
 
 const containerStyles = {
     maxWidth: 700,
@@ -418,9 +416,8 @@ initialState = { options: null };
 ```js
 import React from 'react';
 import { Lookup } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faCity } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCity } from '@fortawesome/free-solid-svg-icons';
 
 const containerStyles = {
     maxWidth: 700,
@@ -500,9 +497,8 @@ initialState = { options: null };
 ```js
 import React from 'react';
 import { Lookup } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faCity } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCity } from '@fortawesome/free-solid-svg-icons';
 
 const containerStyles = {
     maxWidth: 700,
@@ -583,9 +579,8 @@ initialState = { options: null };
 ```js
 import React from 'react';
 import { Lookup } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faBuilding } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBuilding } from '@fortawesome/free-solid-svg-icons';
 
 const inputStyles = {
     width: 300,

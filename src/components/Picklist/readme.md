@@ -115,12 +115,11 @@ initialState = { value: { name: 'option 1', label: 'All Buildings' } };
 ```js
 import React from 'react';
 import { Picklist, PicklistOption, Button } from 'react-rainbow-components';
+import { Field, reduxForm } from 'redux-form';
 
 const containerStyles = {
     width: '140px',
 };
-
-const { Field, reduxForm } = require('redux-form');
 
 function Form({ handleSubmit, onSubmit }) {
     return (

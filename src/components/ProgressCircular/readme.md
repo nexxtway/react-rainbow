@@ -3,9 +3,9 @@
 ```js
 import React from 'react';
 import { Card, ProgressCircular } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircle } from '@fortawesome/free-solid-svg-icons';
 
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faCircle } = require('@fortawesome/free-solid-svg-icons');
 const IconStyles = {
     width: 24,
     height: 20,

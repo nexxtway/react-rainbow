@@ -181,21 +181,14 @@ class VerticalNavigationWithHeaders extends React.Component {
 ```js
 import React from 'react';
 import { VerticalNavigation, VerticalSection, VerticalItem } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClock, faCog, faFolderOpen, faBook, faReceipt } from '@fortawesome/free-solid-svg-icons';
 
 const verticalNavigationContainerStyles = {
     width: '220px',
     borderBottomLeftRadius: '0.875rem',
     borderRight: '1px solid #e3e5ed',
 };
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const {
-    faClock,
-    faCog,
-    faFolderOpen,
-    faBook,
-    faReceipt,
-} = require('@fortawesome/free-solid-svg-icons');
 
 class VerticalNavigationWithIcons extends React.Component {
     constructor(props) {
@@ -264,21 +257,14 @@ class VerticalNavigationWithIcons extends React.Component {
 ```js
 import React from 'react';
 import { VerticalNavigation, VerticalSection, VerticalItem } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClock, faCog, faFolderOpen, faBook, faReceipt } from '@fortawesome/free-solid-svg-icons';
 
 const verticalNavigationContainerStyles = {
     width: '220px',
     borderBottomLeftRadius: '0.875rem',
     borderRight: '1px solid #e3e5ed',
 };
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const {
-    faClock,
-    faCog,
-    faFolderOpen,
-    faBook,
-    faReceipt,
-} = require('@fortawesome/free-solid-svg-icons');
 
 class VerticalNavigationWithIcons extends React.Component {
     constructor(props) {
@@ -354,9 +340,8 @@ import {
     VerticalItem,
     VerticalSectionOverflow,
 } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faChevronDown, faTh, faFolderOpen } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown, faTh, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 
 const containerStyles = {
     width: '220px',

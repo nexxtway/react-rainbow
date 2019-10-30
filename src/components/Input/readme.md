@@ -202,9 +202,8 @@ import { Input } from 'react-rainbow-components';
 ```js
 import React from 'react';
 import { Input } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faSearch } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const inputStyles = {
     width: 300,
@@ -310,9 +309,8 @@ const containerStyles = {
 ```js
 import React from 'react';
 import { Input } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faBan } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBan } from '@fortawesome/free-solid-svg-icons';
 
 const inputStyles = {
     width: 300,
@@ -343,9 +341,8 @@ const inputStyles = {
 ```js
 import React from 'react';
 import { Input } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faStar } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 const inputStyles = {
     width: 300,

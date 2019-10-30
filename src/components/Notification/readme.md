@@ -20,9 +20,8 @@ import { Notification } from 'react-rainbow-components';
 ```js
 import React from 'react';
 import { Notification } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faGithub } = require('@fortawesome/free-brands-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 const iconContainerStyles = {
     width: '2rem',

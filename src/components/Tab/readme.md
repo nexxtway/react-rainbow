@@ -3,10 +3,9 @@
 ```js
 import React from 'react';
 import { Tabset, Tab, ButtonGroup, ButtonIcon } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faCog, faEllipsisV, faFolderOpen } = require('@fortawesome/free-solid-svg-icons');
-const { faClock, faStar } = require('@fortawesome/free-regular-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog, faEllipsisV, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
+import { faClock, faStar } from '@fortawesome/free-regular-svg-icons';
 
 const tabsContainerStyles = {
     backgroundColor: 'white',
@@ -126,10 +125,9 @@ class TabExample extends React.Component {
 ```js
 import React from 'react';
 import { Tabset, Tab, ButtonGroup, ButtonIcon } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faCog, faEllipsisV, faFolderOpen } = require('@fortawesome/free-solid-svg-icons');
-const { faClock, faStar } = require('@fortawesome/free-regular-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog, faEllipsisV, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
+import { faClock, faStar } from '@fortawesome/free-regular-svg-icons';
 
 const tabsContainerStyles = {
     backgroundColor: 'white',
@@ -260,10 +258,9 @@ class TabExample extends React.Component {
 ```js
 import React from 'react';
 import { Tabset, Tab, ButtonGroup, ButtonIcon } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faCog, faEllipsisV, faFolderOpen } = require('@fortawesome/free-solid-svg-icons');
-const { faClock, faStar } = require('@fortawesome/free-regular-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog, faEllipsisV, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
+import { faClock, faStar } from '@fortawesome/free-regular-svg-icons';
 
 const tabsContainerStyles = {
     backgroundColor: 'white',

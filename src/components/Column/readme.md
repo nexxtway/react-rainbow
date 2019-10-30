@@ -3,16 +3,15 @@
 ```js
 import React from 'react';
 import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
     faCog,
     faPencilAlt,
     faStore,
     faPlus,
     faBell,
     faEllipsisV,
-} = require('@fortawesome/free-solid-svg-icons');
+} from '@fortawesome/free-solid-svg-icons';
 
 const data = [
     {
@@ -76,16 +75,15 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 ```js
 import React from 'react';
 import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
     faCog,
     faPencilAlt,
     faStore,
     faPlus,
     faBell,
     faEllipsisV,
-} = require('@fortawesome/free-solid-svg-icons');
+} from '@fortawesome/free-solid-svg-icons';
 
 const data = [
     {

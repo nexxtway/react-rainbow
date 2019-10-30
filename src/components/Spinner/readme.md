@@ -40,9 +40,8 @@ const containerStyles = {
 ```js
 import React from 'react';
 import { Spinner, Card, Button } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faTasks } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTasks } from '@fortawesome/free-solid-svg-icons';
 
 const iconContainerStyles = {
     width: '2rem',

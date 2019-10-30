@@ -42,9 +42,8 @@ const styles = {
 ```js
 import React from 'react';
 import { MapMarker, GMap, Card } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faMap } = require('@fortawesome/free-regular-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMap } from '@fortawesome/free-regular-svg-icons';
 
 const containerStyles = {
     maxWidth: 720,

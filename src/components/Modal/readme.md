@@ -3,9 +3,8 @@
 ```js
 import React from 'react';
 import { Modal, Button, ButtonGroup, ButtonIcon } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faCog } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog, faPlus, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 class EmptyModal extends React.Component {
     constructor(props) {
@@ -46,8 +45,6 @@ class EmptyModal extends React.Component {
     }
 }
 
-const { faPlus, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');
-
 <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
     <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
         <div className="rainbow-m-right_medium">
@@ -70,9 +67,8 @@ const { faPlus, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');
 ```js
 import React from 'react';
 import { Modal, Button } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faCog } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
 
 const textStyles = {
     textAlign: 'center',
@@ -133,9 +129,8 @@ class ModalWHeader extends React.Component {
 ```js
 import React from 'react';
 import { Modal, Button } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faCog } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
 
 const textStyles = {
     textAlign: 'center',
@@ -239,9 +234,8 @@ class ModalWFooter extends React.Component {
 ```js
 import React from 'react';
 import { Modal, Button } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faCog } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
 
 const textStyles = {
     textAlign: 'center',
@@ -311,10 +305,9 @@ class ModalWFooterDirectional extends React.Component {
 ```js
 import React from 'react';
 import { Modal, Card, Button, ButtonGroup } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faTasks, faShareAlt, faAngleDown } = require('@fortawesome/free-solid-svg-icons');
-const { faHeart } = require('@fortawesome/free-regular-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTasks, faShareAlt, faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
 
 const iconContainerStyles = {
     width: '2.5rem',
@@ -479,10 +472,9 @@ import {
     Lookup,
     Textarea,
 } from 'react-rainbow-components';
-
-const { Field, reduxForm } = require('redux-form');
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faCog } = require('@fortawesome/free-solid-svg-icons');
+import { Field, reduxForm } from 'redux-form';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog, faPlus, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const styles = {
     input: {
@@ -715,8 +707,6 @@ class FormModal extends React.Component {
         );
     }
 }
-
-const { faPlus, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');
 
 <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
     <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">

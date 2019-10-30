@@ -3,9 +3,8 @@
 ```js
 import React from 'react';
 import { ReCaptcha, Input, Textarea, Button } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faUser, faEnvelope } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 const inputStyles = { width: '48%' };
 const inputIconStyles = { color: '#01b6f5' };
@@ -171,10 +170,9 @@ class ReCaptchaExample extends React.Component {
 ```js
 import React from 'react';
 import { ReCaptcha, Input, Textarea, Button } from 'react-rainbow-components';
-
-const { Field, reduxForm } = require('redux-form');
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faUser, faEnvelope } = require('@fortawesome/free-solid-svg-icons');
+import { Field, reduxForm } from 'redux-form';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 const inputStyles = { width: '48%' };
 const inputIconStyles = { color: '#01b6f5' };

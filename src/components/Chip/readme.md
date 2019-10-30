@@ -56,9 +56,8 @@ import { Chip } from 'react-rainbow-components';
 ```js
 import React from 'react';
 import { Chip, Avatar } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faStar } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 const AvatarStyles = {
     width: '30px',

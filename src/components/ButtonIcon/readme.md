@@ -3,10 +3,9 @@
 ```js
 import React from 'react';
 import { ButtonIcon } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faStar } = require('@fortawesome/free-regular-svg-icons');
-const { faSlidersH, faSignal, faRedo, faTimes } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-regular-svg-icons';
+import { faSlidersH, faSignal, faRedo, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 <div className="rainbow-p-vertical_large rainbow-p-left_x-large rainbow-flex rainbow-align_center">
     <div className="rainbow-p-right_large">
@@ -30,15 +29,14 @@ const { faSlidersH, faSignal, faRedo, faTimes } = require('@fortawesome/free-sol
 ```js
 import React from 'react';
 import { ButtonIcon } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faStar } = require('@fortawesome/free-regular-svg-icons');
-const {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-regular-svg-icons';
+import {
     faTrashAlt,
     faPencilAlt,
     faLocationArrow,
     faArrowDown,
-} = require('@fortawesome/free-solid-svg-icons');
+} from '@fortawesome/free-solid-svg-icons';
 
 <div className="rainbow-p-vertical_large rainbow-p-left_x-large rainbow-flex rainbow-align_center">
     <div className="rainbow-p-right_large">
@@ -66,9 +64,8 @@ const {
 ```js
 import React from 'react';
 import { ButtonIcon } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faStar } = require('@fortawesome/free-regular-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-regular-svg-icons';
 
 <div className="rainbow-p-vertical_large rainbow-p-left_x-large rainbow-flex rainbow-align_center">
     <div className="rainbow-p-right_large">
@@ -86,9 +83,8 @@ const { faStar } = require('@fortawesome/free-regular-svg-icons');
 ```js
 import React from 'react';
 import { ButtonIcon } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faStar } = require('@fortawesome/free-regular-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-regular-svg-icons';
 
 <div className="rainbow-p-vertical_large rainbow-p-left_x-large rainbow-flex rainbow-align_center">
     <div className="rainbow-p-right_large">
@@ -106,9 +102,8 @@ const { faStar } = require('@fortawesome/free-regular-svg-icons');
 ```js
 import React from 'react';
 import { ButtonIcon } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faStar } = require('@fortawesome/free-regular-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-regular-svg-icons';
 
 <div className="rainbow-p-vertical_large rainbow-p-left_x-large rainbow-flex rainbow-align_center">
     <div className="rainbow-p-right_large">
@@ -126,9 +121,8 @@ const { faStar } = require('@fortawesome/free-regular-svg-icons');
 ```js
 import React from 'react';
 import { ButtonIcon } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faStar } = require('@fortawesome/free-regular-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-regular-svg-icons';
 
 const buttonsIconContainerStyles = {
     borderRadius: '0.25rem',

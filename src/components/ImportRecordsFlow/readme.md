@@ -4,9 +4,6 @@
 import React from 'react';
 import { ImportRecordsFlow, Button } from 'react-rainbow-components';
 
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faCog } = require('@fortawesome/free-solid-svg-icons');
-
 const containerStyles = { height: 360 };
 
 const schema = {
@@ -60,8 +57,6 @@ class ImportRecordsFlowModal extends React.Component {
         );
     }
 }
-
-const { faPlus, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');
 
 <div style={containerStyles}>
     <GlobalHeader>

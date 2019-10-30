@@ -59,9 +59,6 @@ import { Avatar } from 'react-rainbow-components';
 import React from 'react';
 import { Avatar } from 'react-rainbow-components';
 
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faUser } = require('@fortawesome/free-regular-svg-icons');
-
 <div className="rainbow-p-vertical_x-large rainbow-p-left_medium">
     <div className="rainbow-m-horizontal_medium">
         <Avatar

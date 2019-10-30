@@ -3,9 +3,8 @@
 ```js
 import React from 'react';
 import { ButtonGroup, Button } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faAngleDown } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <ButtonGroup className="rainbow-m-around_medium">
@@ -26,9 +25,8 @@ const { faAngleDown } = require('@fortawesome/free-solid-svg-icons');
 ```js
 import React from 'react';
 import { ButtonGroup, Button, ButtonMenu, MenuItem } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faAngleDown } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-m-horizontal_medium">
     <ButtonGroup>
@@ -53,9 +51,8 @@ const { faAngleDown } = require('@fortawesome/free-solid-svg-icons');
 ```js
 import React from 'react';
 import { ButtonGroup, Button, ButtonIcon, ButtonMenu, MenuItem } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faPlus, faPencilAlt, faPaste, faAngleDown } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faPencilAlt, faPaste, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <ButtonGroup className="rainbow-m-around_medium">
@@ -94,9 +91,8 @@ const { faPlus, faPencilAlt, faPaste, faAngleDown } = require('@fortawesome/free
 ```js
 import React from 'react';
 import { ButtonGroup, Button, ButtonIcon } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faPlus, faPencilAlt, faPaste, faAngleDown } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faPencilAlt, faPaste, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <ButtonGroup className="rainbow-m-around_medium">
@@ -141,9 +137,8 @@ const { faPlus, faPencilAlt, faPaste, faAngleDown } = require('@fortawesome/free
 ```js
 import React from 'react';
 import { ButtonGroup, Button, ButtonIcon } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faPlus, faPencilAlt, faPaste, faAngleDown } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faPencilAlt, faPaste, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 <div className="rainbow-border-radius_oval rainbow-background-color_dark-1 rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <ButtonGroup className="rainbow-m-around_medium">

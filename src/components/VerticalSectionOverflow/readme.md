@@ -7,9 +7,8 @@ import {
     VerticalItem,
     VerticalSectionOverflow,
 } from 'react-rainbow-components';
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faChevronDown, faTh, faFolderOpen } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown, faTh, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 
 const containerStyles = {
     width: '220px',

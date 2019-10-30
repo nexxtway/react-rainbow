@@ -3,12 +3,11 @@
 ```js
 import React from 'react';
 import { Sidebar, SidebarItem } from 'react-rainbow-components';
-
-const dashboard = require('../../../assets/icons/dashboard.svg');
-const application = require('../../../assets/icons/application.svg');
-const messages = require('../../../assets/icons/messages.svg');
-const charts = require('../../../assets/icons/charts.svg');
-const puzzle = require('../../../assets/icons/puzzle.svg');
+import dashboard from '../../../assets/icons/dashboard.svg';
+import application from '../../../assets/icons/application.svg';
+import messages from '../../../assets/icons/messages.svg';
+import charts from '../../../assets/icons/charts.svg';
+import puzzle from '../../../assets/icons/puzzle.svg';
 
 const sidebarContainerStyles = {
     width: '88px',
