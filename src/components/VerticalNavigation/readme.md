@@ -1,6 +1,9 @@
 ##### VerticalNavigation
 
 ```js
+import React from 'react';
+import { VerticalNavigation, VerticalSection, VerticalItem } from 'react-rainbow-components';
+
 const verticalNavigationContainerStyles = {
     width: '220px',
     borderBottomLeftRadius: '0.875rem',
@@ -46,12 +49,15 @@ class SimpleVerticalNavigation extends React.Component {
     >
         <SimpleVerticalNavigation />
     </div>
-</div>;
+</div>
 ```
 
 ##### compact VerticalNavigation compact with href
 
 ```js
+import React from 'react';
+import { VerticalNavigation, VerticalSection, VerticalItem } from 'react-rainbow-components';
+
 const verticalNavigationContainerStyles = {
     width: '220px',
     borderBottomLeftRadius: '0.875rem',
@@ -111,12 +117,15 @@ class CompactVerticalNavigation extends React.Component {
     >
         <CompactVerticalNavigation />
     </div>
-</div>;
+</div>
 ```
 
 ##### vertical navigation with headers
 
 ```js
+import React from 'react';
+import { VerticalNavigation, VerticalSection, VerticalItem } from 'react-rainbow-components';
+
 const verticalNavigationContainerStyles = {
     width: '220px',
     borderBottomLeftRadius: '0.875rem',
@@ -164,26 +173,22 @@ class VerticalNavigationWithHeaders extends React.Component {
     >
         <VerticalNavigationWithHeaders />
     </div>
-</div>;
+</div>
 ```
 
 ##### vertical navigation with icons
 
 ```js
+import React from 'react';
+import { VerticalNavigation, VerticalSection, VerticalItem } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClock, faCog, faFolderOpen, faBook, faReceipt } from '@fortawesome/free-solid-svg-icons';
+
 const verticalNavigationContainerStyles = {
     width: '220px',
     borderBottomLeftRadius: '0.875rem',
     borderRight: '1px solid #e3e5ed',
 };
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const {
-    faClock,
-    faCog,
-    faFolderOpen,
-    faBook,
-    faReceipt,
-} = require('@fortawesome/free-solid-svg-icons');
 
 class VerticalNavigationWithIcons extends React.Component {
     constructor(props) {
@@ -244,26 +249,22 @@ class VerticalNavigationWithIcons extends React.Component {
     >
         <VerticalNavigationWithIcons />
     </div>
-</div>;
+</div>
 ```
 
 ##### vertical navigation with header and icons
 
 ```js
+import React from 'react';
+import { VerticalNavigation, VerticalSection, VerticalItem } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClock, faCog, faFolderOpen, faBook, faReceipt } from '@fortawesome/free-solid-svg-icons';
+
 const verticalNavigationContainerStyles = {
     width: '220px',
     borderBottomLeftRadius: '0.875rem',
     borderRight: '1px solid #e3e5ed',
 };
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const {
-    faClock,
-    faCog,
-    faFolderOpen,
-    faBook,
-    faReceipt,
-} = require('@fortawesome/free-solid-svg-icons');
 
 class VerticalNavigationWithIcons extends React.Component {
     constructor(props) {
@@ -327,14 +328,20 @@ class VerticalNavigationWithIcons extends React.Component {
     >
         <VerticalNavigationWithIcons />
     </div>
-</div>;
+</div>
 ```
 
 ##### vertical navigation expandable
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faChevronDown, faTh, faFolderOpen } = require('@fortawesome/free-solid-svg-icons');
+import React from 'react';
+import {
+    VerticalNavigation,
+    VerticalItem,
+    VerticalSectionOverflow,
+} from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown, faTh, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 
 const containerStyles = {
     width: '220px',
@@ -401,12 +408,15 @@ class ShadedVerticalNavigation extends React.Component {
     >
         <ShadedVerticalNavigation />
     </div>
-</div>;
+</div>
 ```
 
 ##### vertical navigation with notifications
 
 ```js
+import React from 'react';
+import { VerticalNavigation, VerticalSection, VerticalItem, Badge } from 'react-rainbow-components';
+
 const containerStyles = {
     width: '220px',
     borderBottomLeftRadius: '0.875rem',
@@ -461,12 +471,15 @@ class VerticalNavigationWithNotifications extends React.Component {
     >
         <VerticalNavigationWithNotifications />
     </div>
-</div>;
+</div>
 ```
 
 ##### VerticalNavigation shaded
 
 ```js
+import React from 'react';
+import { VerticalNavigation, VerticalSection, VerticalItem } from 'react-rainbow-components';
+
 const verticalNavigationContainerStyles = {
     width: '220px',
     borderBottomLeftRadius: '0.875rem',
@@ -513,5 +526,5 @@ class SimpleVerticalNavigation extends React.Component {
     >
         <SimpleVerticalNavigation />
     </div>
-</div>;
+</div>
 ```

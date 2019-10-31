@@ -1,8 +1,10 @@
 ##### VerticalItem
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faFolderOpen, faTh } = require('@fortawesome/free-solid-svg-icons');
+import React from 'react';
+import { VerticalNavigation, VerticalSection, VerticalItem } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFolderOpen, faTh } from '@fortawesome/free-solid-svg-icons';
 
 const containerStyles = {
     width: '220px',
@@ -69,5 +71,5 @@ class SimpleVerticalNavigation extends React.Component {
     >
         <SimpleVerticalNavigation />
     </div>
-</div>;
+</div>
 ```

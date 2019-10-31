@@ -1,6 +1,9 @@
 ##### notification base
 
 ```js
+import React from 'react';
+import { Notification } from 'react-rainbow-components';
+
 <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
     <GlobalHeader src="images/user/user3.jpg" className="rainbow-p-bottom_small" />
     <div className="rainbow-p-right_small rainbow-flex rainbow-justify_end">
@@ -15,8 +18,10 @@
 ##### notification with icon
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faGithub } = require('@fortawesome/free-brands-svg-icons');
+import React from 'react';
+import { Notification } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 const iconContainerStyles = {
     width: '2rem',
@@ -39,12 +44,15 @@ const iconContainerStyles = {
             }
         />
     </div>
-</div>;
+</div>
 ```
 
 ##### notification with icon variants
 
 ```js
+import React from 'react';
+import { Notification } from 'react-rainbow-components';
+
 <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
     <GlobalHeader src="images/user/user3.jpg" className="rainbow-p-bottom_small" />
     <div className="rainbow-p-right_small rainbow-flex rainbow-flex_column rainbow-align_end">

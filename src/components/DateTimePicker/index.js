@@ -138,6 +138,10 @@ function PickerComponent(props, ref) {
     );
 }
 
+/**
+ * A DateTimePicker is used to select a day and a time.
+ * @category Form
+ */
 const DateTimePicker = React.forwardRef(PickerComponent);
 
 DateTimePicker.propTypes = {

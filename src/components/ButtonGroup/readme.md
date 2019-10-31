@@ -1,8 +1,10 @@
 ##### button group
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faAngleDown } = require('@fortawesome/free-solid-svg-icons');
+import React from 'react';
+import { ButtonGroup, Button } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <ButtonGroup className="rainbow-m-around_medium">
@@ -15,14 +17,16 @@ const { faAngleDown } = require('@fortawesome/free-solid-svg-icons');
         <Button label="Edit" variant="outline-brand" />
         <Button label="Save" variant="outline-brand" />
     </ButtonGroup>
-</div>;
+</div>
 ```
 
 ##### button group with overflow menu icon
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faAngleDown } = require('@fortawesome/free-solid-svg-icons');
+import React from 'react';
+import { ButtonGroup, Button, ButtonMenu, MenuItem } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-m-horizontal_medium">
     <ButtonGroup>
@@ -39,14 +43,16 @@ const { faAngleDown } = require('@fortawesome/free-solid-svg-icons');
             <MenuItem label="Menu Item Three" />
         </ButtonMenu>
     </ButtonGroup>
-</div>;
+</div>
 ```
 
 ##### button group with icon
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faPlus, faPencilAlt, faPaste, faAngleDown } = require('@fortawesome/free-solid-svg-icons');
+import React from 'react';
+import { ButtonGroup, Button, ButtonIcon, ButtonMenu, MenuItem } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faPencilAlt, faPaste, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <ButtonGroup className="rainbow-m-around_medium">
@@ -77,14 +83,16 @@ const { faPlus, faPencilAlt, faPaste, faAngleDown } = require('@fortawesome/free
             <MenuItem label="Menu Item Three" />
         </ButtonMenu>
     </ButtonGroup>
-</div>;
+</div>
 ```
 
 ##### button group with button disabled
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faPlus, faPencilAlt, faPaste, faAngleDown } = require('@fortawesome/free-solid-svg-icons');
+import React from 'react';
+import { ButtonGroup, Button, ButtonIcon } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faPencilAlt, faPaste, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <ButtonGroup className="rainbow-m-around_medium">
@@ -121,14 +129,16 @@ const { faPlus, faPencilAlt, faPaste, faAngleDown } = require('@fortawesome/free
             icon={<FontAwesomeIcon icon={faAngleDown} />}
         />
     </ButtonGroup>
-</div>;
+</div>
 ```
 
 ##### buttons group with button inverse
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faPlus, faPencilAlt, faPaste, faAngleDown } = require('@fortawesome/free-solid-svg-icons');
+import React from 'react';
+import { ButtonGroup, Button, ButtonIcon } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faPencilAlt, faPaste, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 <div className="rainbow-border-radius_oval rainbow-background-color_dark-1 rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <ButtonGroup className="rainbow-m-around_medium">
@@ -157,5 +167,5 @@ const { faPlus, faPencilAlt, faPaste, faAngleDown } = require('@fortawesome/free
         <ButtonIcon variant="border-inverse" icon={<FontAwesomeIcon icon={faPaste} />} />
         <ButtonIcon variant="border-inverse" icon={<FontAwesomeIcon icon={faAngleDown} />} />
     </ButtonGroup>
-</div>;
+</div>
 ```

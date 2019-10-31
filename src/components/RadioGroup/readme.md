@@ -1,6 +1,9 @@
 ##### radio group base
 
 ```js
+import React from 'react';
+import { RadioGroup } from 'react-rainbow-components';
+
 const options = [
     { value: 'radioOne', label: 'Radio One' },
     { value: 'radioTwo', label: 'Radio Two' },
@@ -35,12 +38,15 @@ class SimpleRadioGroup extends React.Component {
 
 <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
     <SimpleRadioGroup />
-</div>;
+</div>
 ```
 
 ##### radio group disabled
 
 ```js
+import React from 'react';
+import { RadioGroup } from 'react-rainbow-components';
+
 const options = [
     { value: 'radioOne', label: 'Radio One', disabled: true },
     { value: 'radioTwo', label: 'Radio Two', disabled: true },
@@ -74,12 +80,15 @@ class DisabledRadioGroup extends React.Component {
 
 <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
     <DisabledRadioGroup />
-</div>;
+</div>
 ```
 
 ##### radio group required
 
 ```js
+import React from 'react';
+import { RadioGroup } from 'react-rainbow-components';
+
 const options = [
     { value: 'radioOne', label: 'Radio One' },
     { value: 'radioTwo', label: 'Radio Two' },
@@ -114,12 +123,15 @@ class RequiredRadioGroup extends React.Component {
 
 <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
     <RequiredRadioGroup />
-</div>;
+</div>
 ```
 
 ##### radio group error
 
 ```js
+import React from 'react';
+import { RadioGroup } from 'react-rainbow-components';
+
 const options = [
     { value: 'radioOne', label: 'Radio One' },
     { value: 'radioTwo', label: 'Radio Two' },
@@ -154,5 +166,5 @@ class ErrorRadioGroup extends React.Component {
 
 <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
     <ErrorRadioGroup />
-</div>;
+</div>
 ```

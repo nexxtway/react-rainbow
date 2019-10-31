@@ -1,6 +1,9 @@
 ##### DatePicker base:
 
 ```js
+import React from 'react';
+import { Picklist, PicklistOption, DatePicker } from 'react-rainbow-components';
+
 const initialState = {
     date: new Date('2019-10-25 10:44'),
     locale: { name: 'en-US', label: 'English (US)' },
@@ -38,6 +41,9 @@ const containerStyles = {
 ##### DatePicker with date constraints:
 
 ```js
+import React from 'react';
+import { DatePicker } from 'react-rainbow-components';
+
 const containerStyles = {
     maxWidth: 400,
 };
@@ -54,12 +60,15 @@ initialState = { date: new Date() };
         label="DatePicker Label"
         onChange={value => setState({ date: value })}
     />
-</div>;
+</div>
 ```
 
 ##### DatePicker with different date formats:
 
 ```js
+import React from 'react';
+import { DatePicker } from 'react-rainbow-components';
+
 initialState = { date: new Date() };
 <div className="rainbow-align-content_center rainbow-m-vertical_large rainbow-flex_wrap">
     <div className="rainbow-m-around_small">
@@ -86,12 +95,15 @@ initialState = { date: new Date() };
             onChange={value => setState({ date: value })}
         />
     </div>
-</div>;
+</div>
 ```
 
 ##### DatePicker required:
 
 ```js
+import React from 'react';
+import { DatePicker } from 'react-rainbow-components';
+
 const containerStyles = {
     maxWidth: 400,
 };
@@ -107,12 +119,15 @@ initialState = { date: new Date() };
         label="DatePicker Label"
         onChange={value => setState({ date: value })}
     />
-</div>;
+</div>
 ```
 
 ##### DatePicker with error:
 
 ```js
+import React from 'react';
+import { DatePicker } from 'react-rainbow-components';
+
 const containerStyles = {
     maxWidth: 400,
 };
@@ -130,12 +145,15 @@ initialState = { date: undefined };
         label="DatePicker Label"
         onChange={value => setState({ date: value })}
     />
-</div>;
+</div>
 ```
 
 ##### DatePicker disabled:
 
 ```js
+import React from 'react';
+import { DatePicker } from 'react-rainbow-components';
+
 const containerStyles = {
     maxWidth: 400,
 };
@@ -145,12 +163,15 @@ const containerStyles = {
     style={containerStyles}
 >
     <DatePicker disabled value={new Date()} label="DatePicker Label" />
-</div>;
+</div>
 ```
 
 ##### DatePicker readOnly:
 
 ```js
+import React from 'react';
+import { DatePicker } from 'react-rainbow-components';
+
 const containerStyles = {
     maxWidth: 400,
 };
@@ -160,5 +181,5 @@ const containerStyles = {
     style={containerStyles}
 >
     <DatePicker readOnly value={new Date()} label="DatePicker Label" />
-</div>;
+</div>
 ```

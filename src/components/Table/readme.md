@@ -1,15 +1,17 @@
 ##### simple Table
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const {
+import React from 'react';
+import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
     faCog,
     faPencilAlt,
     faStore,
     faPlus,
     faBell,
     faEllipsisV,
-} = require('@fortawesome/free-solid-svg-icons');
+} from '@fortawesome/free-solid-svg-icons';
 
 const data = [
     {
@@ -70,21 +72,23 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
         <Column header="Company" field="company" />
         <Column header="Email" field="email" />
     </Table>
-</div>;
+</div>
 ```
 
 ##### Table with sorting
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const {
+import React from 'react';
+import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
     faCog,
     faPencilAlt,
     faStore,
     faPlus,
     faBell,
     faEllipsisV,
-} = require('@fortawesome/free-solid-svg-icons');
+} from '@fortawesome/free-solid-svg-icons';
 
 const badgeStyles = { color: '#1de9b6' };
 const tableContainerStyles = { height: 300 };
@@ -219,15 +223,17 @@ class TableExample extends React.Component {
 ##### Table with Selectable Rows
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const {
+import React from 'react';
+import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
     faCog,
     faPencilAlt,
     faStore,
     faPlus,
     faBell,
     faEllipsisV,
-} = require('@fortawesome/free-solid-svg-icons');
+} from '@fortawesome/free-solid-svg-icons';
 
 const badgeStyles = { color: '#1de9b6' };
 const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
@@ -345,15 +351,17 @@ class TableExample extends React.Component {
 ##### Table with a limited number of Selectable Rows
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const {
+import React from 'react';
+import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
     faCog,
     faPencilAlt,
     faStore,
     faPlus,
     faBell,
     faEllipsisV,
-} = require('@fortawesome/free-solid-svg-icons');
+} from '@fortawesome/free-solid-svg-icons';
 
 const data = [
     {
@@ -436,21 +444,23 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
         <Column header="Company" field="company" />
         <Column header="Email" field="email" />
     </Table>
-</div>;
+</div>
 ```
 
 ##### Table with Selectable Rows by radio buttons
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const {
+import React from 'react';
+import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
     faCog,
     faPencilAlt,
     faStore,
     faPlus,
     faBell,
     faEllipsisV,
-} = require('@fortawesome/free-solid-svg-icons');
+} from '@fortawesome/free-solid-svg-icons';
 
 const data = [
     {
@@ -518,21 +528,23 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
         <Column header="Company" field="company" />
         <Column header="Email" field="email" />
     </Table>
-</div>;
+</div>
 ```
 
 ##### Table with row actions
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const {
+import React from 'react';
+import { Table, Column, ButtonGroup, ButtonIcon, Badge, MenuItem } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
     faCog,
     faPencilAlt,
     faStore,
     faPlus,
     faBell,
     faEllipsisV,
-} = require('@fortawesome/free-solid-svg-icons');
+} from '@fortawesome/free-solid-svg-icons';
 
 const data = [
     {
@@ -604,21 +616,23 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
             <MenuItem label="Delete" onClick={(e, data) => console.log(`Delete ${data.name}`)} />
         </Column>
     </Table>
-</div>;
+</div>
 ```
 
 ##### Table Loading
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const {
+import React from 'react';
+import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
     faCog,
     faPencilAlt,
     faStore,
     faPlus,
     faBell,
     faEllipsisV,
-} = require('@fortawesome/free-solid-svg-icons');
+} from '@fortawesome/free-solid-svg-icons';
 
 const data = [];
 
@@ -643,21 +657,23 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
         <Column header="Company" field="company" />
         <Column header="Email" field="email" />
     </Table>
-</div>;
+</div>
 ```
 
 ##### Table Empty
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const {
+import React from 'react';
+import { Table, Column, ButtonGroup, ButtonIcon } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
     faCog,
     faPencilAlt,
     faStore,
     faPlus,
     faBell,
     faEllipsisV,
-} = require('@fortawesome/free-solid-svg-icons');
+} from '@fortawesome/free-solid-svg-icons';
 
 const tableContainerStyles = { height: 300 };
 
@@ -677,5 +693,5 @@ const tableContainerStyles = { height: 300 };
         <Column header="Company" field="company" />
         <Column header="Email" field="email" />
     </Table>
-</div>;
+</div>
 ```

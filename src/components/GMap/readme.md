@@ -1,6 +1,9 @@
 ##### GMap base:
 
 ```js
+import React from 'react';
+import { MapMarker, GMap } from 'react-rainbow-components';
+
 const styles = {
     maxWidth: 400,
     margin: 'auto',
@@ -31,14 +34,16 @@ const styles = {
             />
         </GMap>
     </div>
-</div>;
+</div>
 ```
 
 ##### GMap inside a card:
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faMap } = require('@fortawesome/free-regular-svg-icons');
+import React from 'react';
+import { MapMarker, GMap, Card } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMap } from '@fortawesome/free-regular-svg-icons';
 
 const containerStyles = {
     maxWidth: 720,
@@ -88,5 +93,5 @@ const ICON = (
             />
         </GMap>
     </Card>
-</div>;
+</div>
 ```

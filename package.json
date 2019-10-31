@@ -101,6 +101,7 @@
         "babel-eslint": "^10.0.3",
         "babel-jest": "^24.9.0",
         "babel-loader": "^8.0.6",
+        "codemirror": "^5.49.2",
         "copy-webpack-plugin": "^4.0.1",
         "coveralls": "^2.13.1",
         "css-loader": "^0.26.0",
@@ -130,11 +131,11 @@
         "pre-push": "^0.1.1",
         "prettier": "1.17.0",
         "pretty-quick": "^1.10.0",
-        "react-codemirror2": "^5.1.0",
+        "react-codemirror2": "^6.0.0",
         "react-ga": "^2.5.3",
         "react-prismic-cms": "^0.3.1",
         "react-redux": "^5.1.0",
-        "react-styleguidist": "^7.2.1",
+        "react-styleguidist": "^9.2.0",
         "react-test-renderer": "^16.8.6",
         "redux": "^4.0.1",
         "redux-form": "^7.4.2",
@@ -148,7 +149,7 @@
         "stylelint-scss": "^3.3.0",
         "wdio-chromedriver-service": "^5.0.1",
         "webdriverio": "^5.7.15",
-        "webpack": "^4.16.5"
+        "webpack": "^4.41.2"
     },
     "pre-push": [
         "lint",

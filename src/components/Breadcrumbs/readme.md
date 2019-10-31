@@ -1,6 +1,9 @@
 ##### breadcrumbs
 
 ```js
+import React from 'react';
+import { Breadcrumb, Breadcrumbs } from 'react-rainbow-components';
+
 <div>
     <GlobalHeader />
     <div className="rainbow-p-around_large rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
@@ -15,6 +18,9 @@
 ##### breadcrumbs disabled
 
 ```js
+import React from 'react';
+import { Breadcrumb, Breadcrumbs } from 'react-rainbow-components';
+
 <div>
     <GlobalHeader />
     <div className="rainbow-p-around_large rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
