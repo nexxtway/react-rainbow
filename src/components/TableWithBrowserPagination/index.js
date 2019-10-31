@@ -146,6 +146,11 @@ TableWithBrowserPagination.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /**
+     * This prop that should not be visible in the documentation.
+     * @ignore
+     */
+    children: PropTypes.node,
 };
 
 TableWithBrowserPagination.defaultProps = {
@@ -154,4 +159,5 @@ TableWithBrowserPagination.defaultProps = {
     style: undefined,
     pageSize: Infinity,
     data: [],
+    children: undefined,
 };

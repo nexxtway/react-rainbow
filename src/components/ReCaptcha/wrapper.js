@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReCaptchaComponent from './component';
 
 export default function ReCaptchaWrapper(props) {
@@ -10,3 +11,13 @@ export default function ReCaptchaWrapper(props) {
     }
     return null;
 }
+
+ReCaptchaWrapper.propTypes = {
+    isScriptLoaded: PropTypes.bool,
+    isScriptLoadSucceed: PropTypes.bool,
+};
+
+ReCaptchaWrapper.defaultProps = {
+    isScriptLoaded: false,
+    isScriptLoadSucceed: false,
+};
