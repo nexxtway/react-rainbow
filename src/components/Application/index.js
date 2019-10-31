@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './styles/rainbow-styles.css';
 import { Provider } from './context';
-import { getBrowserLocale } from '../../libs/utils';
+
 /**
  * This component is used to setup the React Rainbow context for a tree.
  * Usually, this component will wrap an app's root component so that the entire
@@ -11,8 +11,7 @@ import { getBrowserLocale } from '../../libs/utils';
  */
 export default function Application(props) {
     const { children, className, style, locale } = props;
-    const localeValue = locale || getBrowserLocale();
-    const contextValue = { locale: localeValue };
+    const contextValue = { locale };
     return (
         <Provider value={contextValue}>
             <div className={className} style={style}>
