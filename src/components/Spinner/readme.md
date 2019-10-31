@@ -1,6 +1,9 @@
 ##### list loading using spinner - base - large
 
 ```js
+import React from 'react';
+import { Spinner } from 'react-rainbow-components';
+
 <div>
     <GlobalHeader src="images/user/user3.jpg" />
     <div className="rainbow-p-vertical_xx-large">
@@ -14,6 +17,9 @@
 ##### full screen loading using spinner - brand - medium
 
 ```js
+import React from 'react';
+import { Spinner } from 'react-rainbow-components';
+
 const containerStyles = {
     borderRadius: '0.875rem',
 };
@@ -26,14 +32,16 @@ const containerStyles = {
     <h1 className="rainbow-color_brand rainbow-font-size-text_medium rainbow-p-top_xx-large rainbow-m-top_xx-large rainbow-m-bottom_large">
         Loading…
     </h1>
-</div>;
+</div>
 ```
 
 ##### lazy loading using spinner - neutral - small
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faTasks } = require('@fortawesome/free-solid-svg-icons');
+import React from 'react';
+import { Spinner, Card, Button } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTasks } from '@fortawesome/free-solid-svg-icons';
 
 const iconContainerStyles = {
     width: '2rem',
@@ -66,12 +74,15 @@ const spinner = (
     >
         <div className="rainbow-p-vertical_xx-large" />
     </Card>
-</div>;
+</div>
 ```
 
 ##### full screen loading using spinner - inverse - medium
 
 ```js
+import React from 'react';
+import { Spinner } from 'react-rainbow-components';
+
 const containerStyles = {
     backgroundColor: '#061c3f',
     borderRadius: '0.875rem',
@@ -92,5 +103,5 @@ const textStyles = {
     >
         Loading…
     </h1>
-</div>;
+</div>
 ```

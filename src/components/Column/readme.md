@@ -1,15 +1,17 @@
 ##### simple Column
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const {
+import React from 'react';
+import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
     faCog,
     faPencilAlt,
     faStore,
     faPlus,
     faBell,
     faEllipsisV,
-} = require('@fortawesome/free-solid-svg-icons');
+} from '@fortawesome/free-solid-svg-icons';
 
 const data = [
     {
@@ -65,21 +67,23 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
         <Column header="Company" field="company" />
         <Column header="Email" field="email" />
     </Table>
-</div>;
+</div>
 ```
 
 ##### Column with fix width and defaultWidth
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const {
+import React from 'react';
+import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
     faCog,
     faPencilAlt,
     faStore,
     faPlus,
     faBell,
     faEllipsisV,
-} = require('@fortawesome/free-solid-svg-icons');
+} from '@fortawesome/free-solid-svg-icons';
 
 const data = [
     {
@@ -141,5 +145,5 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
         <Column header="Email" field="email" />
         <Column header="Place of birth" field="location" />
     </Table>
-</div>;
+</div>
 ```

@@ -1,8 +1,10 @@
 ##### MenuDivider base
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faCog } = require('@fortawesome/free-solid-svg-icons');
+import React from 'react';
+import { ButtonMenu, MenuItem, MenuDivider } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
 
 <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
     <GlobalHeader
@@ -25,5 +27,5 @@ const { faCog } = require('@fortawesome/free-solid-svg-icons');
             <MenuItem label="Other Menu Item Base" />
         </ButtonMenu>
     </GlobalHeader>
-</div>;
+</div>
 ```

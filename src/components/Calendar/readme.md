@@ -1,6 +1,9 @@
 ##### Calendar base:
 
 ```js
+import React from 'react';
+import { Card, Calendar, Avatar } from 'react-rainbow-components';
+
 initialState = { date: new Date('2019-12-06 00:00:00') };
 const calendarContainerStyles = {
     width: '28rem',
@@ -23,12 +26,15 @@ const calendarContainerStyles = {
             />
         </Card>
     </div>
-</div>;
+</div>
 ```
 
 ##### Calendar with dates contrains:
 
 ```js
+import React from 'react';
+import { Card, Calendar, Avatar } from 'react-rainbow-components';
+
 initialState = { date: new Date() };
 const calendarContainerStyles = {
     width: '28rem',
@@ -52,5 +58,5 @@ const calendarContainerStyles = {
             />
         </Card>
     </div>
-</div>;
+</div>
 ```
