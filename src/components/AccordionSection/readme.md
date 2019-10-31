@@ -24,5 +24,5 @@ import { Card, Accordion, AccordionSection } from 'react-rainbow-components';
             </AccordionSection>
         </Accordion>
     </Card>
-</div>;
+</div>
 ```

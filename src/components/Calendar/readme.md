@@ -26,7 +26,7 @@ const calendarContainerStyles = {
             />
         </Card>
     </div>
-</div>;
+</div>
 ```
 
 ##### Calendar with dates contrains:
@@ -58,5 +58,5 @@ const calendarContainerStyles = {
             />
         </Card>
     </div>
-</div>;
+</div>
 ```

@@ -17,7 +17,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
         <Column header="Date of Birth" field="dob" />
         <Column header="City" field="city" />
     </TableWithBrowserPagination>
-</div>;
+</div>
 ```
 
 ##### A table with fixed height and pagination made in the client side:
@@ -49,7 +49,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
             <Column header="City" field="city" />
         </TableWithBrowserPagination>
     </div>
-</div>;
+</div>
 ```
 
 ##### A table with pagination aling to the right made in the client side:
@@ -71,7 +71,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
         <Column header="Date of Birth" field="dob" />
         <Column header="City" field="city" />
     </TableWithBrowserPagination>
-</div>;
+</div>
 ```
 
 ##### A table with pagination aling to the left made in the client side:
@@ -93,5 +93,5 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
         <Column header="Date of Birth" field="dob" />
         <Column header="City" field="city" />
     </TableWithBrowserPagination>
-</div>;
+</div>
 ```

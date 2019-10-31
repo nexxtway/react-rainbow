@@ -34,7 +34,7 @@ const styles = {
             />
         </GMap>
     </div>
-</div>;
+</div>
 ```
 
 ##### GMap inside a card:
@@ -93,5 +93,5 @@ const ICON = (
             />
         </GMap>
     </Card>
-</div>;
+</div>
 ```

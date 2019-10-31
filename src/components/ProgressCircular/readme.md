@@ -52,7 +52,7 @@ function ActiveUsersCard({ title, variant, color }) {
         <ActiveUsersCard title="twitter" color="brand" />
         <ActiveUsersCard title="google" variant="error" color="error" />
     </div>
-</div>;
+</div>
 ```
 
 ##### ProgressCircular variants
@@ -78,5 +78,5 @@ import { ProgressCircular } from 'react-rainbow-components';
         <ProgressCircular value={82} variant="error" />
         <h1 className="rainbow-font-size-heading_small rainbow-color_error">error</h1>
     </div>
-</div>;
+</div>
 ```

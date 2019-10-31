@@ -12,7 +12,7 @@ const iconStyles = { width: 32, height: 32 };
         datetime="Yesterday"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua."
     />
-</div>;
+</div>
 ```
 
 ##### TimeLineMarker with content and description:
@@ -37,5 +37,5 @@ const iconStyles = { width: 32, height: 32 };
             />
         </Card>
     </TimelineMarker>
-</div>;
+</div>
 ```

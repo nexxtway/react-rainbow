@@ -41,5 +41,5 @@ class SimpleVisualPicker extends React.Component {
 
 <div className="rainbow-align-content_center rainbow-m-around_xx-large">
     <SimpleVisualPicker />
-</div>;
+</div>
 ```

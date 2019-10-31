@@ -31,7 +31,7 @@ initialState = { value: { name: 'option 3', label: 'Central Park' } };
             </Picklist>
         </div>
     </GlobalHeader>
-</div>;
+</div>
 ```
 
 ##### Picklist with multiple options
@@ -73,7 +73,7 @@ initialState = { value: null };
             </Picklist>
         </div>
     </GlobalHeader>
-</div>;
+</div>
 ```
 
 ##### Picklist disabled
@@ -107,7 +107,7 @@ initialState = { value: { name: 'option 1', label: 'All Buildings' } };
             </Picklist>
         </div>
     </GlobalHeader>
-</div>;
+</div>
 ```
 
 ##### Picklist with redux-form
@@ -159,5 +159,5 @@ const PicklistForm = reduxForm({
     >
         <PicklistForm onSubmit={values => console.log(values)} />
     </GlobalHeader>
-</div>;
+</div>
 ```

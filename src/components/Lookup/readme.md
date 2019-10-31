@@ -607,5 +607,5 @@ const inputStyles = {
             icon: <FontAwesomeIcon icon={faBuilding} className="rainbow-color_brand" />,
         }}
     />
-</div>;
+</div>
 ```

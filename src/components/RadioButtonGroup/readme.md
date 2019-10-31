@@ -38,7 +38,7 @@ class SimpleRadioButtonGroup extends React.Component {
 
 <div className="rainbow-p-around_x-large rainbow-align-content_center">
     <SimpleRadioButtonGroup />
-</div>;
+</div>
 ```
 
 ##### radiobuttongroup brand with label
@@ -83,7 +83,7 @@ class LabeledBrandRadioButtonGroup extends React.Component {
 
 <div className="rainbow-p-around_x-large rainbow-align-content_center">
     <LabeledBrandRadioButtonGroup />
-</div>;
+</div>
 ```
 
 ##### radiobuttongroup inverse
@@ -135,7 +135,7 @@ class RadioButtonGroupInverse extends React.Component {
     style={buttonsContainerStyles}
 >
     <RadioButtonGroupInverse />
-</div>;
+</div>
 ```
 
 ##### radiobuttongroup disabled
@@ -178,7 +178,7 @@ class DisabledRadioButtonGroup extends React.Component {
 
 <div className="rainbow-p-around_x-large rainbow-align-content_center">
     <DisabledRadioButtonGroup />
-</div>;
+</div>
 ```
 
 ##### radiobuttongroup required
@@ -222,7 +222,7 @@ class RequiredRadioButtonGroup extends React.Component {
 
 <div className="rainbow-p-around_x-large rainbow-align-content_center">
     <RequiredRadioButtonGroup />
-</div>;
+</div>
 ```
 
 ##### radiobutton group error
@@ -266,5 +266,5 @@ class ErrorRadioButtonGroup extends React.Component {
 
 <div className="rainbow-p-around_x-large rainbow-align-content_center">
     <ErrorRadioButtonGroup />
-</div>;
+</div>
 ```

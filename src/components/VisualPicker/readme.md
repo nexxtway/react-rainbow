@@ -60,7 +60,7 @@ class SimpleVisualPicker extends React.Component {
         What are you doing?
     </h1>
     <SimpleVisualPicker />
-</div>;
+</div>
 ```
 
 ##### VisualPicker with multiple option selected
@@ -125,7 +125,7 @@ class MultipleVisualPicker extends React.Component {
         What are you doing?
     </h1>
     <MultipleVisualPicker />
-</div>;
+</div>
 ```
 
 ##### VisualPicker with footer
@@ -223,5 +223,5 @@ class SimpleVisualPickerWithFooter extends React.Component {
         Select plan
     </h1>
     <SimpleVisualPickerWithFooter />
-</div>;
+</div>
 ```

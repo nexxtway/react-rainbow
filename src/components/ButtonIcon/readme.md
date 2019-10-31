@@ -21,7 +21,7 @@ import { faSlidersH, faSignal, faRedo, faTimes } from '@fortawesome/free-solid-s
         <ButtonIcon size="x-small" icon={<FontAwesomeIcon icon={faRedo} />} />
     </div>
     <ButtonIcon size="xx-small" icon={<FontAwesomeIcon icon={faTimes} />} />
-</div>;
+</div>
 ```
 
 ##### button icon border
@@ -56,7 +56,7 @@ import {
         <ButtonIcon variant="border" size="x-small" icon={<FontAwesomeIcon icon={faTrashAlt} />} />
     </div>
     <ButtonIcon variant="border" size="xx-small" icon={<FontAwesomeIcon icon={faArrowDown} />} />
-</div>;
+</div>
 ```
 
 ##### button icon filled
@@ -75,7 +75,7 @@ import { faStar } from '@fortawesome/free-regular-svg-icons';
         <ButtonIcon variant="brand" icon={<FontAwesomeIcon icon={faStar} />} />
     </div>
     <ButtonIcon variant="success" icon={<FontAwesomeIcon icon={faStar} />} />
-</div>;
+</div>
 ```
 
 ##### button icon shaded
@@ -94,7 +94,7 @@ import { faStar } from '@fortawesome/free-regular-svg-icons';
         <ButtonIcon shaded variant="brand" icon={<FontAwesomeIcon icon={faStar} />} />
     </div>
     <ButtonIcon shaded variant="success" icon={<FontAwesomeIcon icon={faStar} />} />
-</div>;
+</div>
 ```
 
 ##### button icon disabled
@@ -113,7 +113,7 @@ import { faStar } from '@fortawesome/free-regular-svg-icons';
         <ButtonIcon variant="brand" disabled icon={<FontAwesomeIcon icon={faStar} />} />
     </div>
     <ButtonIcon disabled icon={<FontAwesomeIcon icon={faStar} />} />
-</div>;
+</div>
 ```
 
 ##### button icon inverse
@@ -133,5 +133,5 @@ const buttonsIconContainerStyles = {
         <ButtonIcon variant="border-inverse" icon={<FontAwesomeIcon icon={faStar} />} />
     </div>
     <ButtonIcon variant="inverse" icon={<FontAwesomeIcon icon={faStar} />} />
-</div>;
+</div>
 ```

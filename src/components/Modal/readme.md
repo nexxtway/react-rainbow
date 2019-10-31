@@ -59,7 +59,7 @@ class EmptyModal extends React.Component {
             />
         </ButtonGroup>
     </GlobalHeader>
-</div>;
+</div>
 ```
 
 ##### modal with header
@@ -722,5 +722,5 @@ class FormModal extends React.Component {
             />
         </ButtonGroup>
     </GlobalHeader>
-</div>;
+</div>
 ```

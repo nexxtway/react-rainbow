@@ -22,7 +22,7 @@ import { faCog } from '@fortawesome/free-solid-svg-icons';
             </ButtonMenu>
         </ButtonGroup>
     </GlobalHeader>
-</div>;
+</div>
 ```
 
 ##### button menu with divider
@@ -71,7 +71,7 @@ import {
             </ButtonMenu>
         </ButtonGroup>
     </GlobalHeader>
-</div>;
+</div>
 ```
 
 ##### button menu with subheaders
@@ -106,7 +106,7 @@ import { faPlus, faEdit, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
             </ButtonMenu>
         </ButtonGroup>
     </GlobalHeader>
-</div>;
+</div>
 ```
 
 ##### button menu with icons
@@ -184,7 +184,7 @@ import {
             </ButtonMenu>
         </ButtonGroup>
     </GlobalHeader>
-</div>;
+</div>
 ```
 
 ##### button menu position variants
@@ -244,7 +244,7 @@ import { faCog, faShareAlt, faPlus, faBell, faSlidersH } from '@fortawesome/free
             <MenuItem label="Menu Positioned Bottom" />
         </ButtonMenu>
     </div>
-</div>;
+</div>
 ```
 
 ##### button menu width variants
@@ -345,7 +345,7 @@ import { faCog } from '@fortawesome/free-solid-svg-icons';
             </ButtonMenu>
         </ButtonGroup>
     </GlobalHeader>
-</div>;
+</div>
 ```
 
 ##### button menu loading
@@ -371,5 +371,5 @@ import { faBell } from '@fortawesome/free-solid-svg-icons';
             />
         </ButtonGroup>
     </GlobalHeader>
-</div>;
+</div>
 ```

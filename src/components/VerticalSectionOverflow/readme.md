@@ -74,5 +74,5 @@ class ShadedVerticalNavigation extends React.Component {
     >
         <ShadedVerticalNavigation />
     </div>
-</div>;
+</div>
 ```

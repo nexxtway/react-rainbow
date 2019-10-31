@@ -54,5 +54,5 @@ class SimpleSidebar extends React.Component {
     >
         <SimpleSidebar />
     </div>
-</div>;
+</div>
 ```

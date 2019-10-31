@@ -141,7 +141,7 @@ const inputStyles = {
             style={inputStyles}
         />
     </div>
-</div>;
+</div>
 ```
 
 ##### input radio
@@ -165,7 +165,7 @@ import { Input } from 'react-rainbow-components';
         bottomHelpText="ex: (111) 111 1111"
         label="Input Radio Label"
     />
-</div>;
+</div>
 ```
 
 ##### input type checkbox
@@ -194,7 +194,7 @@ import { Input } from 'react-rainbow-components';
         bottomHelpText="ex: (111) 111 1111"
         label="Input Checkbox Label"
     />
-</div>;
+</div>
 ```
 
 ##### input with icons
@@ -225,7 +225,7 @@ const inputStyles = {
         iconPosition="right"
         icon={<FontAwesomeIcon icon={faSearch} className="rainbow-color_gray-3" />}
     />
-</div>;
+</div>
 ```
 
 ##### input with help
@@ -333,7 +333,7 @@ const inputStyles = {
         className="rainbow-p-around_medium"
         style={inputStyles}
     />
-</div>;
+</div>
 ```
 
 ##### input read only
@@ -365,5 +365,5 @@ const inputStyles = {
         className="rainbow-p-around_medium"
         style={inputStyles}
     />
-</div>;
+</div>
 ```

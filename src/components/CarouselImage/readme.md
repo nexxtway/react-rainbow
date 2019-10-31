@@ -28,5 +28,5 @@ const carouselContainerStyles = {
             href="/"
         />
     </CarouselCard>
-</div>;
+</div>
 ```

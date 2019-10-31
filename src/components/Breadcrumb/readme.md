@@ -12,5 +12,5 @@ import { Breadcrumb, Breadcrumbs } from 'react-rainbow-components';
             <Breadcrumb label="Breadcrumb" />
         </Breadcrumbs>
     </div>
-</div>;
+</div>
 ```

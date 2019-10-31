@@ -51,5 +51,5 @@ const containerStyles = {
             </AvatarMenu>
         </div>
     </header>
-</div>;
+</div>
 ```

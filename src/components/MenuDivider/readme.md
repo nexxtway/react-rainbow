@@ -27,5 +27,5 @@ import { faCog } from '@fortawesome/free-solid-svg-icons';
             <MenuItem label="Other Menu Item Base" />
         </ButtonMenu>
     </GlobalHeader>
-</div>;
+</div>
 ```

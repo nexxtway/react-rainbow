@@ -27,7 +27,7 @@ import { Card, Accordion, AccordionSection, Input } from 'react-rainbow-componen
             </AccordionSection>
         </Accordion>
     </Card>
-</div>;
+</div>
 ```
 
 ##### accordion with icons
@@ -70,7 +70,7 @@ import { faUser, faUsers, faCog } from '@fortawesome/free-solid-svg-icons';
             </AccordionSection>
         </Accordion>
     </Card>
-</div>;
+</div>
 ```
 
 ##### accordion with multiple sections opened
@@ -157,5 +157,5 @@ import { Card, Accordion, AccordionSection } from 'react-rainbow-components';
             </AccordionSection>
         </Accordion>
     </Card>
-</div>;
+</div>
 ```

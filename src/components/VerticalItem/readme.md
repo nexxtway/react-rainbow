@@ -71,5 +71,5 @@ class SimpleVerticalNavigation extends React.Component {
     >
         <SimpleVerticalNavigation />
     </div>
-</div>;
+</div>
 ```

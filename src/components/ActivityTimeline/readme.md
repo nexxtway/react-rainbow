@@ -35,5 +35,5 @@ const iconStyles = { width: 32, height: 32 };
             </Card>
         </TimelineMarker>
     </ActivityTimeline>
-</div>;
+</div>
 ```

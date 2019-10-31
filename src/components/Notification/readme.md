@@ -12,7 +12,7 @@ import { Notification } from 'react-rainbow-components';
             description="This is the Notification description"
         />
     </div>
-</div>;
+</div>
 ```
 
 ##### notification with icon
@@ -44,7 +44,7 @@ const iconContainerStyles = {
             }
         />
     </div>
-</div>;
+</div>
 ```
 
 ##### notification with icon variants
@@ -83,5 +83,5 @@ import { Notification } from 'react-rainbow-components';
             icon="error"
         />
     </div>
-</div>;
+</div>
 ```

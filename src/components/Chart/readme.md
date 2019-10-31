@@ -31,7 +31,7 @@ const containerStyles = {
             />
         </Chart>
     </div>
-</div>;
+</div>
 ```
 
 ##### Bar chart vertical:

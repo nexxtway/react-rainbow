@@ -12,7 +12,7 @@ import { Chip } from 'react-rainbow-components';
     <Chip className="rainbow-m-around_medium" label="Chip Neutral" variant="outline-brand" />
 
     <Chip className="rainbow-m-around_medium" label="Chip Brand" variant="brand" />
-</div>;
+</div>
 ```
 
 ##### Deletable Chip
@@ -48,7 +48,7 @@ import { Chip } from 'react-rainbow-components';
         variant="brand"
         onDelete={() => alert('Delete Chip!')}
     />
-</div>;
+</div>
 ```
 
 ##### Chip with Icon and Avatar
@@ -136,5 +136,5 @@ const ChipContainer = {
             </span>
         }
     />
-</div>;
+</div>
 ```

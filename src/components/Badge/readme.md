@@ -18,7 +18,7 @@ import { Badge } from 'react-rainbow-components';
         variant="outline-brand"
         title="the badge title"
     />
-</div>;
+</div>
 ```
 
 ##### badges variant
@@ -43,7 +43,7 @@ import { Badge } from 'react-rainbow-components';
         variant="brand"
         title="the badge title"
     />
-</div>;
+</div>
 ```
 
 ##### badges with icons
@@ -66,5 +66,5 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
     <Badge variant="lightest" title="the badge title" className="rainbow-m-around_medium">
         <FontAwesomeIcon icon={faStar} size="lg" />
     </Badge>
-</div>;
+</div>
 ```

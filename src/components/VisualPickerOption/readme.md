@@ -59,7 +59,7 @@ class SimpleVisualPicker extends React.Component {
         What are you doing?
     </h1>
     <SimpleVisualPicker />
-</div>;
+</div>
 ```
 
 ##### VisualPickerOption with option disabled:
@@ -123,7 +123,7 @@ class SimpleVisualPicker extends React.Component {
         What are you doing?
     </h1>
     <SimpleVisualPicker />
-</div>;
+</div>
 ```
 
 ##### VisualPickerOption with footer:
@@ -220,5 +220,5 @@ class SimpleVisualPickerWithFooter extends React.Component {
         Select plan
     </h1>
     <SimpleVisualPickerWithFooter />
-</div>;
+</div>
 ```

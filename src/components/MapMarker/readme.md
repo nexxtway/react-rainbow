@@ -34,5 +34,5 @@ const styles = {
             />
         </GMap>
     </div>
-</div>;
+</div>
 ```

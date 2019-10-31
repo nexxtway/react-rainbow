@@ -12,7 +12,7 @@ import { Card } from 'react-rainbow-components';
             alt="landscape with rainbows, birds and colorful balloons"
         />
     </Card>
-</div>;
+</div>
 ```
 
 ##### card-with header and button
@@ -29,7 +29,7 @@ import { faUser } from '@fortawesome/free-regular-svg-icons';
         title="Contact details"
         actions={<Button label="New" variant="outline-brand" />}
     />
-</div>;
+</div>
 ```
 
 ##### card-with header and spinner
@@ -57,7 +57,7 @@ import { faPlus, faUsers, faEdit, faAngleDown } from '@fortawesome/free-solid-sv
             </ButtonGroup>
         }
     />
-</div>;
+</div>
 ```
 
 ##### card with header and illustration
@@ -109,5 +109,5 @@ const iconContainerStyles = {
             </h1>
         </div>
     </Card>
-</div>;
+</div>
 ```

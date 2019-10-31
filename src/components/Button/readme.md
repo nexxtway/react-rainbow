@@ -12,7 +12,7 @@ import { Button } from 'react-rainbow-components';
         variant="outline-brand"
         className="rainbow-m-around_medium"
     />
-</div>;
+</div>
 ```
 
 ##### button variants
@@ -35,7 +35,7 @@ import { Button } from 'react-rainbow-components';
         className="rainbow-m-around_medium"
     />
     <Button label="Button Destructive" variant="destructive" className="rainbow-m-around_medium" />
-</div>;
+</div>
 ```
 
 ##### button shaded
@@ -65,7 +65,7 @@ import { Button } from 'react-rainbow-components';
         variant="destructive"
         className="rainbow-m-around_medium"
     />
-</div>;
+</div>
 ```
 
 ##### buttons with icon
@@ -91,7 +91,7 @@ import { faCoffee, faCheck, faArrowRight } from '@fortawesome/free-solid-svg-ico
         Brand button with right icon
         <FontAwesomeIcon icon={faArrowRight} className="rainbow-m-left_medium" />
     </Button>
-</div>;
+</div>
 ```
 
 ##### disabled buttons
@@ -114,7 +114,7 @@ import { Button } from 'react-rainbow-components';
         variant="brand"
         className="rainbow-m-around_medium"
     />
-</div>;
+</div>
 ```
 
 ##### buttons inverse
@@ -141,7 +141,7 @@ const buttonsContainerStyles = {
         Button Inverse with icon
         <FontAwesomeIcon icon={faArrowRight} className="rainbow-m-left_medium" />
     </Button>
-</div>;
+</div>
 ```
 
 ##### buttons loadings
@@ -164,5 +164,5 @@ import { Button } from 'react-rainbow-components';
         className="rainbow-m-around_medium"
     />
     <Button isLoading label="Button Brand" variant="brand" className="rainbow-m-around_medium" />
-</div>;
+</div>
 ```

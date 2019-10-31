@@ -46,7 +46,7 @@ import { ProgressBar } from 'react-rainbow-components';
 
 <div className="rainbow-p-around_x-large">
     <ProgressBar value={50} variant="success" />
-</div>;
+</div>
 ```
 
 ##### descriptive ProgressBar
@@ -67,7 +67,7 @@ import { ProgressBar } from 'react-rainbow-components';
         </span>
     </div>
     <ProgressBar value={25} />
-</div>;
+</div>
 ```
 
 ##### ProgressBar with size variants
@@ -97,5 +97,5 @@ import { ProgressBar } from 'react-rainbow-components';
         <ProgressBar value={75} size="large" />
         <span className="rainbow-flex rainbow-m-top_x-small rainbow-color_gray-4">size: large</span>
     </div>
-</div>;
+</div>
 ```

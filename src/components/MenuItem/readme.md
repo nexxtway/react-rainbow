@@ -34,5 +34,5 @@ import { faAlignCenter, faAlignRight, faEllipsisV } from '@fortawesome/free-soli
             />
         </ButtonMenu>
     </GlobalHeader>
-</div>;
+</div>
 ```

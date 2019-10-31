@@ -72,7 +72,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
         <Column header="Company" field="company" />
         <Column header="Email" field="email" />
     </Table>
-</div>;
+</div>
 ```
 
 ##### Table with sorting
@@ -444,7 +444,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
         <Column header="Company" field="company" />
         <Column header="Email" field="email" />
     </Table>
-</div>;
+</div>
 ```
 
 ##### Table with Selectable Rows by radio buttons
@@ -528,7 +528,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
         <Column header="Company" field="company" />
         <Column header="Email" field="email" />
     </Table>
-</div>;
+</div>
 ```
 
 ##### Table with row actions
@@ -616,7 +616,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
             <MenuItem label="Delete" onClick={(e, data) => console.log(`Delete ${data.name}`)} />
         </Column>
     </Table>
-</div>;
+</div>
 ```
 
 ##### Table Loading
@@ -657,7 +657,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
         <Column header="Company" field="company" />
         <Column header="Email" field="email" />
     </Table>
-</div>;
+</div>
 ```
 
 ##### Table Empty
@@ -693,5 +693,5 @@ const tableContainerStyles = { height: 300 };
         <Column header="Company" field="company" />
         <Column header="Email" field="email" />
     </Table>
-</div>;
+</div>
 ```

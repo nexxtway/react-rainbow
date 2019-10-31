@@ -38,7 +38,7 @@ class SimpleRadioGroup extends React.Component {
 
 <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
     <SimpleRadioGroup />
-</div>;
+</div>
 ```
 
 ##### radio group disabled
@@ -80,7 +80,7 @@ class DisabledRadioGroup extends React.Component {
 
 <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
     <DisabledRadioGroup />
-</div>;
+</div>
 ```
 
 ##### radio group required
@@ -123,7 +123,7 @@ class RequiredRadioGroup extends React.Component {
 
 <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
     <RequiredRadioGroup />
-</div>;
+</div>
 ```
 
 ##### radio group error
@@ -166,5 +166,5 @@ class ErrorRadioGroup extends React.Component {
 
 <div className="rainbow-p-vertical_large rainbow-p-left_xx-large">
     <ErrorRadioGroup />
-</div>;
+</div>
 ```

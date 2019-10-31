@@ -18,7 +18,7 @@ initialState = { date: new Date() };
         label="DatePicker Label"
         onChange={value => setState({ date: value })}
     />
-</div>;
+</div>
 ```
 
 ##### DatePicker with date constraints:
@@ -43,7 +43,7 @@ initialState = { date: new Date() };
         label="DatePicker Label"
         onChange={value => setState({ date: value })}
     />
-</div>;
+</div>
 ```
 
 ##### DatePicker with different date formats:
@@ -78,7 +78,7 @@ initialState = { date: new Date() };
             onChange={value => setState({ date: value })}
         />
     </div>
-</div>;
+</div>
 ```
 
 ##### DatePicker required:
@@ -102,7 +102,7 @@ initialState = { date: new Date() };
         label="DatePicker Label"
         onChange={value => setState({ date: value })}
     />
-</div>;
+</div>
 ```
 
 ##### DatePicker with error:
@@ -128,7 +128,7 @@ initialState = { date: undefined };
         label="DatePicker Label"
         onChange={value => setState({ date: value })}
     />
-</div>;
+</div>
 ```
 
 ##### DatePicker disabled:
@@ -146,7 +146,7 @@ const containerStyles = {
     style={containerStyles}
 >
     <DatePicker disabled value={new Date()} label="DatePicker Label" />
-</div>;
+</div>
 ```
 
 ##### DatePicker readOnly:
@@ -164,5 +164,5 @@ const containerStyles = {
     style={containerStyles}
 >
     <DatePicker readOnly value={new Date()} label="DatePicker Label" />
-</div>;
+</div>
 ```

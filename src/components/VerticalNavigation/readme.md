@@ -49,7 +49,7 @@ class SimpleVerticalNavigation extends React.Component {
     >
         <SimpleVerticalNavigation />
     </div>
-</div>;
+</div>
 ```
 
 ##### compact VerticalNavigation compact with href
@@ -117,7 +117,7 @@ class CompactVerticalNavigation extends React.Component {
     >
         <CompactVerticalNavigation />
     </div>
-</div>;
+</div>
 ```
 
 ##### vertical navigation with headers
@@ -173,7 +173,7 @@ class VerticalNavigationWithHeaders extends React.Component {
     >
         <VerticalNavigationWithHeaders />
     </div>
-</div>;
+</div>
 ```
 
 ##### vertical navigation with icons
@@ -249,7 +249,7 @@ class VerticalNavigationWithIcons extends React.Component {
     >
         <VerticalNavigationWithIcons />
     </div>
-</div>;
+</div>
 ```
 
 ##### vertical navigation with header and icons
@@ -328,7 +328,7 @@ class VerticalNavigationWithIcons extends React.Component {
     >
         <VerticalNavigationWithIcons />
     </div>
-</div>;
+</div>
 ```
 
 ##### vertical navigation expandable
@@ -408,7 +408,7 @@ class ShadedVerticalNavigation extends React.Component {
     >
         <ShadedVerticalNavigation />
     </div>
-</div>;
+</div>
 ```
 
 ##### vertical navigation with notifications
@@ -471,7 +471,7 @@ class VerticalNavigationWithNotifications extends React.Component {
     >
         <VerticalNavigationWithNotifications />
     </div>
-</div>;
+</div>
 ```
 
 ##### VerticalNavigation shaded
@@ -526,5 +526,5 @@ class SimpleVerticalNavigation extends React.Component {
     >
         <SimpleVerticalNavigation />
     </div>
-</div>;
+</div>
 ```

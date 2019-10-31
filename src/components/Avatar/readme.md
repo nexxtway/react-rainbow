@@ -37,7 +37,7 @@ import { Avatar } from 'react-rainbow-components';
             size="x-small"
         />
     </div>
-</div>;
+</div>
 ```
 
 ##### fallback user initials
@@ -50,7 +50,7 @@ import { Avatar } from 'react-rainbow-components';
     <div className="rainbow-m-horizontal_medium">
         <Avatar assistiveText="Jane Doe" initials="JD" title="Jane Doe" />
     </div>
-</div>;
+</div>
 ```
 
 ##### fallback user icon
@@ -67,7 +67,7 @@ import { Avatar } from 'react-rainbow-components';
             title="user icon"
         />
     </div>
-</div>;
+</div>
 ```
 
 ##### fallback user initials inverse
@@ -87,5 +87,5 @@ const avatarContainerStyles = {
     <div className="rainbow-m-horizontal_medium">
         <Avatar assistiveText="Jane Doe" initials="JD" title="Jane Doe" initialsVariant="inverse" />
     </div>
-</div>;
+</div>
 ```

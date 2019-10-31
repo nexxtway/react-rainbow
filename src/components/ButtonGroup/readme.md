@@ -17,7 +17,7 @@ import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
         <Button label="Edit" variant="outline-brand" />
         <Button label="Save" variant="outline-brand" />
     </ButtonGroup>
-</div>;
+</div>
 ```
 
 ##### button group with overflow menu icon
@@ -43,7 +43,7 @@ import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
             <MenuItem label="Menu Item Three" />
         </ButtonMenu>
     </ButtonGroup>
-</div>;
+</div>
 ```
 
 ##### button group with icon
@@ -83,7 +83,7 @@ import { faPlus, faPencilAlt, faPaste, faAngleDown } from '@fortawesome/free-sol
             <MenuItem label="Menu Item Three" />
         </ButtonMenu>
     </ButtonGroup>
-</div>;
+</div>
 ```
 
 ##### button group with button disabled
@@ -129,7 +129,7 @@ import { faPlus, faPencilAlt, faPaste, faAngleDown } from '@fortawesome/free-sol
             icon={<FontAwesomeIcon icon={faAngleDown} />}
         />
     </ButtonGroup>
-</div>;
+</div>
 ```
 
 ##### buttons group with button inverse
@@ -167,5 +167,5 @@ import { faPlus, faPencilAlt, faPaste, faAngleDown } from '@fortawesome/free-sol
         <ButtonIcon variant="border-inverse" icon={<FontAwesomeIcon icon={faPaste} />} />
         <ButtonIcon variant="border-inverse" icon={<FontAwesomeIcon icon={faAngleDown} />} />
     </ButtonGroup>
-</div>;
+</div>
 ```

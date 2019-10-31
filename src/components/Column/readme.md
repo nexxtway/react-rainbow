@@ -67,7 +67,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
         <Column header="Company" field="company" />
         <Column header="Email" field="email" />
     </Table>
-</div>;
+</div>
 ```
 
 ##### Column with fix width and defaultWidth
@@ -145,5 +145,5 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
         <Column header="Email" field="email" />
         <Column header="Place of birth" field="location" />
     </Table>
-</div>;
+</div>
 ```

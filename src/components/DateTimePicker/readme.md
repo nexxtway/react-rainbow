@@ -20,7 +20,7 @@ const initialState = { value: new Date('2019-10-25 10:44') };
         onChange={value => setState({ value })}
         formatStyle="small"
     />
-</div>;
+</div>
 ```
 
 ##### DateTimePicker with date constraints:
@@ -45,7 +45,7 @@ initialState = { value: new Date() };
         label="DateTimePicker Label"
         onChange={value => setState({ value })}
     />
-</div>;
+</div>
 ```
 
 ##### DateTimePicker with different date formats:
@@ -85,7 +85,7 @@ initialState = { value: new Date() };
         className="rainbow-m-around_small"
         style={inputStyles}
     />
-</div>;
+</div>
 ```
 
 ##### DateTimePicker required:
@@ -109,7 +109,7 @@ initialState = { value: new Date() };
         label="DateTimePicker Label"
         onChange={value => setState({ value })}
     />
-</div>;
+</div>
 ```
 
 ##### DateTimePicker with error:
@@ -136,7 +136,7 @@ initialState = { value: undefined };
         label="DateTimePicker Label"
         onChange={value => setState({ value })}
     />
-</div>;
+</div>
 ```
 
 ##### DateTimePicker disabled:
@@ -154,7 +154,7 @@ const containerStyles = {
     style={containerStyles}
 >
     <DateTimePicker disabled value={new Date()} label="DateTimePicker Label" />
-</div>;
+</div>
 ```
 
 ##### DateTimePicker readOnly:
@@ -172,5 +172,5 @@ const containerStyles = {
     style={containerStyles}
 >
     <DateTimePicker readOnly value={new Date()} label="DateTimePicker Label" />
-</div>;
+</div>
 ```

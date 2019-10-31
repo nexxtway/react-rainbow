@@ -11,7 +11,7 @@ import { Spinner } from 'react-rainbow-components';
             <Spinner size="large" />
         </div>
     </div>
-</div>;
+</div>
 ```
 
 ##### full screen loading using spinner - brand - medium
@@ -32,7 +32,7 @@ const containerStyles = {
     <h1 className="rainbow-color_brand rainbow-font-size-text_medium rainbow-p-top_xx-large rainbow-m-top_xx-large rainbow-m-bottom_large">
         Loading…
     </h1>
-</div>;
+</div>
 ```
 
 ##### lazy loading using spinner - neutral - small
@@ -74,7 +74,7 @@ const spinner = (
     >
         <div className="rainbow-p-vertical_xx-large" />
     </Card>
-</div>;
+</div>
 ```
 
 ##### full screen loading using spinner - inverse - medium
@@ -103,5 +103,5 @@ const textStyles = {
     >
         Loading…
     </h1>
-</div>;
+</div>
 ```

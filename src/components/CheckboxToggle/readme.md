@@ -31,7 +31,7 @@ class SimpleCheckboxToggle extends React.Component {
 
 <div className="rainbow-p-vertical_large rainbow-p-left_x-large">
     <SimpleCheckboxToggle />
-</div>;
+</div>
 ```
 
 ##### checkbox toggle checked
@@ -66,7 +66,7 @@ class CheckedCheckboxToggle extends React.Component {
 
 <div className="rainbow-p-vertical_large rainbow-p-left_x-large">
     <CheckedCheckboxToggle />
-</div>;
+</div>
 ```
 
 ##### checkbox toggle disabled
@@ -102,5 +102,5 @@ class DisabledCheckboxToggle extends React.Component {
 
 <div className="rainbow-p-vertical_large rainbow-p-left_x-large">
     <DisabledCheckboxToggle />
-</div>;
+</div>
 ```

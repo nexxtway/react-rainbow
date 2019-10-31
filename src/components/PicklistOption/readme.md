@@ -31,7 +31,7 @@ initialState = { value: { name: 'option 1', label: 'Experimental Building' } };
             </Picklist>
         </div>
     </GlobalHeader>
-</div>;
+</div>
 ```
 
 ##### PicklistOption with icons
@@ -67,5 +67,5 @@ initialState = { value: null };
             </Picklist>
         </div>
     </GlobalHeader>
-</div>;
+</div>
 ```

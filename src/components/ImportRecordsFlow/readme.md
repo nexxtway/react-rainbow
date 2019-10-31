@@ -64,5 +64,5 @@ class ImportRecordsFlowModal extends React.Component {
             <ImportRecordsFlowModal />
         </div>
     </GlobalHeader>
-</div>;
+</div>
 ```

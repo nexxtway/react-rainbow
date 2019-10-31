@@ -68,7 +68,7 @@ class SimpleRating extends React.Component {
             <div style={imageStyles} />
         </Card>
     </div>
-</div>;
+</div>
 ```
 
 ##### rating with details
@@ -278,5 +278,5 @@ class DetailRating extends React.Component {
             </CarouselCard>
         </Card>
     </div>
-</div>;
+</div>
 ```
