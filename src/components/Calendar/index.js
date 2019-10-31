@@ -19,7 +19,7 @@ import {
 import StyledControlsContainer from './styled/controlsContainer';
 import StyledMonthContainer from './styled/monthContainer';
 import StyledMonth from './styled/month';
-import { uniqueId, getLocaleFromContext } from '../../libs/utils';
+import { uniqueId, getLocale } from '../../libs/utils';
 import { Consumer } from '../Application/context';
 
 /**
@@ -137,10 +137,10 @@ class CalendarComponent extends Component {
     }
 }
 
-export default function Calendar(props) {
+export default function Calendar({ locale, ...rest }) {
     return (
         <Consumer>
-            {values => <CalendarComponent locale={getLocaleFromContext(values)} {...props} />}
+            {values => <CalendarComponent locale={getLocale(values, locale)} {...rest} />}
         </Consumer>
     );
 }
@@ -164,7 +164,7 @@ Calendar.propTypes = {
     style: PropTypes.object,
     /** The id of the outer element. */
     id: PropTypes.string,
-    /** The Calendar locale. The default value is 'en-US'. */
+    /** The Calendar locale. Defaults to browser's language. */
     locale: PropTypes.string,
 };
 

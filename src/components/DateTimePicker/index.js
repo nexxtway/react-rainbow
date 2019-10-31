@@ -9,6 +9,7 @@ import { ENTER_KEY, SPACE_KEY } from '../../libs/constants';
 import StyledContainer from './styled/container';
 import StyledInput from './styled/input';
 import { AppContext } from '../Application/context';
+import { getLocale } from '../../libs/utils';
 
 function PickerComponent(props, ref) {
     const {
@@ -54,8 +55,7 @@ function PickerComponent(props, ref) {
     }));
 
     const context = useContext(AppContext);
-    const contextLocale = (context && context.locale) || 'en-US';
-    const locale = localeProp || contextLocale;
+    const locale = getLocale(context, localeProp);
 
     const [isOpen, setIsOpen] = useState(false);
     const [formattedDatetime, setFormattedDatetime] = useState(
@@ -195,7 +195,7 @@ DateTimePicker.propTypes = {
     okLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Text label for the CANCEL button in the modal dialog. */
     cancelLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** The DateTimePicker locale. The default value is 'en-US'. */
+    /** The DateTimePicker locale. Defaults to browser's language. */
     locale: PropTypes.string,
 };
 

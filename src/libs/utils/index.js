@@ -1,4 +1,5 @@
 import uniqueId from './uniqueId';
-import getLocaleFromContext from './getLocaleFromContext';
+import getLocale from './getLocale';
+import getBrowserLocale from './getBrowserLocale';
 
-export { uniqueId, getLocaleFromContext };
+export { uniqueId, getLocale, getBrowserLocale };

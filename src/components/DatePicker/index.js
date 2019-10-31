@@ -12,7 +12,7 @@ import StyledHeaderTitle from './styled/headerTitle';
 import StyledCalendar from './styled/calendar';
 import StyledInput from './styled/input';
 import { Consumer } from '../Application/context';
-import { getLocaleFromContext } from '../../libs/utils';
+import { getLocale } from '../../libs/utils';
 
 /**
  * A DatePicker is a text input to capture a date.
@@ -162,10 +162,10 @@ class DatePickerComponent extends Component {
     }
 }
 
-function DatePicker(props) {
+function DatePicker({ locale, ...rest }) {
     return (
         <Consumer>
-            {values => <DatePickerComponent locale={getLocaleFromContext(values)} {...props} />}
+            {values => <DatePickerComponent locale={getLocale(values, locale)} {...rest} />}
         </Consumer>
     );
 }
@@ -220,7 +220,7 @@ DatePicker.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
-    /** The DatePicker locale. The default value is 'en-US'. */
+    /** The DatePicker locale. Defaults to browser's language. */
     locale: PropTypes.string,
 };
 

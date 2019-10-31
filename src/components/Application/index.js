@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './styles/rainbow-styles.css';
 import { Provider } from './context';
+import { getBrowserLocale } from '../../libs/utils';
 /**
  * This component is used to setup the React Rainbow context for a tree.
  * Usually, this component will wrap an app's root component so that the entire
@@ -10,7 +11,8 @@ import { Provider } from './context';
  */
 export default function Application(props) {
     const { children, className, style, locale } = props;
-    const contextValue = { locale };
+    const localeValue = locale || getBrowserLocale();
+    const contextValue = { locale: localeValue };
     return (
         <Provider value={contextValue}>
             <div className={className} style={style}>
@@ -30,8 +32,7 @@ Application.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
-    /** The locale used by application
-     * The default value is 'en-US'. */
+    /** The locale used by application. Defaults to browser's locale. */
     locale: PropTypes.string,
 };
 
@@ -39,5 +40,5 @@ Application.defaultProps = {
     children: [],
     className: undefined,
     style: undefined,
-    locale: 'en-US',
+    locale: undefined,
 };
