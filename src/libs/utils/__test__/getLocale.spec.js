@@ -5,7 +5,7 @@ describe('getLocale', () => {
     beforeAll(() => {
         getBrowserLocale.default = jest.fn(() => 'es-ES');
     });
-    it('should return undefined', () => {
+    it('should return the browser local', () => {
         const contexts = [{}, null, undefined, { value: 1 }];
         contexts.forEach(context => {
             expect(getLocale(context, undefined)).toBe('es-ES');
