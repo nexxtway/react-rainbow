@@ -43,10 +43,10 @@ describe('DateTimePicker', () => {
         const picker = new PageDateTimePicker(DATETIMEPICKER);
         picker.click();
         picker.waitUntilOpen();
-        expect(picker.getValue()).toBe('10/25/19, 10:44 AM');
+        expect(picker.getValue()).toBe('Friday, 10/25/2019, 10:44 AM');
         picker.clickDay(10);
         picker.clickOKButton();
         picker.waitUntilClose();
-        expect(picker.getValue()).toBe('10/10/19, 10:44 AM');
+        expect(picker.getValue()).toBe('Thursday, 10/10/2019, 10:44 AM');
     });
 });

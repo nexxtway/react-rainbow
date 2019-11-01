@@ -83,6 +83,7 @@ Body.propTypes = {
     emptyIcon: PropTypes.node,
     emptyTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     emptyDescription: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    isLoading: PropTypes.bool,
 };
 
 Body.defaultProps = {
@@ -94,4 +95,5 @@ Body.defaultProps = {
     emptyDescription: undefined,
     onSelectRow: () => {},
     onDeselectRow: () => {},
+    isLoading: false,
 };
