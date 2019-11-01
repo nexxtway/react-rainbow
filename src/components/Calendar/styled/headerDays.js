@@ -12,6 +12,7 @@ const StyledHeaderDays = styled.th`
 
     abbr {
         cursor: default;
+        text-transform: capitalize;
     }
 `;
 

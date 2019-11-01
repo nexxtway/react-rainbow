@@ -5,6 +5,7 @@ import { FONT_SIZE_HEADING_MEDIUM } from '../../../styles/fontSizes';
 const StyledMonth = styled.h3`
     font-size: ${FONT_SIZE_HEADING_MEDIUM};
     color: ${COLOR_DARK_1};
+    text-transform: capitalize;
     font-weight: 500;
 `;
 

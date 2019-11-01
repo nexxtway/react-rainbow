@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Select from './../Select';
@@ -18,12 +19,13 @@ import {
 import StyledControlsContainer from './styled/controlsContainer';
 import StyledMonthContainer from './styled/monthContainer';
 import StyledMonth from './styled/month';
-import { uniqueId } from '../../libs/utils';
+import { uniqueId, getLocale } from '../../libs/utils';
+import { Consumer } from '../Application/context';
 
 /**
  * Calendar provide a simple way to select a single date.
  */
-export default class Calendar extends Component {
+class CalendarComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -73,8 +75,8 @@ export default class Calendar extends Component {
 
     render() {
         const { currentMonth } = this.state;
-        const { id, onChange, value, minDate, maxDate, className, style } = this.props;
-        const formattedMonth = getFormattedMonth(currentMonth);
+        const { id, onChange, value, minDate, maxDate, className, style, locale } = this.props;
+        const formattedMonth = getFormattedMonth(currentMonth, locale);
         const currentYear = currentMonth.getFullYear();
         const yearsRange = getYearsRange({
             minDate,
@@ -121,7 +123,7 @@ export default class Calendar extends Component {
                     />
                 </StyledControlsContainer>
                 <table role="grid" aria-labelledby={this.monthLabelId}>
-                    <DaysOfWeek />
+                    <DaysOfWeek locale={locale} />
                     <Month
                         value={value}
                         firstDayMonth={currentMonth}
@@ -134,6 +136,16 @@ export default class Calendar extends Component {
         );
     }
 }
+
+export default function Calendar({ locale, ...rest }) {
+    return (
+        <Consumer>
+            {values => <CalendarComponent locale={getLocale(values, locale)} {...rest} />}
+        </Consumer>
+    );
+}
+
+export { CalendarComponent as Component };
 
 Calendar.propTypes = {
     /** Sets the date for the Calendar programmatically. */
@@ -152,6 +164,8 @@ Calendar.propTypes = {
     style: PropTypes.object,
     /** The id of the outer element. */
     id: PropTypes.string,
+    /** The Calendar locale. Defaults to browser's language. */
+    locale: PropTypes.string,
 };
 
 Calendar.defaultProps = {
@@ -162,4 +176,5 @@ Calendar.defaultProps = {
     className: undefined,
     style: undefined,
     id: undefined,
+    locale: undefined,
 };

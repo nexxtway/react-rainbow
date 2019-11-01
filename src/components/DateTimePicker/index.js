@@ -1,13 +1,15 @@
 /* eslint-disable react/prop-types */
-import React, { useRef, useEffect, useState, useImperativeHandle } from 'react';
+import React, { useRef, useEffect, useState, useImperativeHandle, useContext } from 'react';
 import PropTypes from 'prop-types';
 import withReduxForm from '../../libs/hocs/withReduxForm';
-import Input from '../Input/pickerInput';
 import DateTimeIcon from './icon';
 import DateTimePickerModal from './pickerModal';
 import formatDateTime from './helpers/formatDateTime';
 import { ENTER_KEY, SPACE_KEY } from '../../libs/constants';
 import StyledContainer from './styled/container';
+import StyledInput from './styled/input';
+import { AppContext } from '../Application/context';
+import { getLocale } from '../../libs/utils';
 
 function PickerComponent(props, ref) {
     const {
@@ -35,6 +37,7 @@ function PickerComponent(props, ref) {
         cancelLabel,
         isCentered,
         bottomHelpText,
+        locale: localeProp,
     } = props;
 
     const inputRef = useRef();
@@ -51,11 +54,16 @@ function PickerComponent(props, ref) {
         },
     }));
 
+    const context = useContext(AppContext);
+    const locale = getLocale(context, localeProp);
+
     const [isOpen, setIsOpen] = useState(false);
-    const [formattedDatetime, setFormattedDatetime] = useState(formatDateTime(value, formatStyle));
+    const [formattedDatetime, setFormattedDatetime] = useState(
+        formatDateTime(value, formatStyle, locale),
+    );
     useEffect(() => {
-        setFormattedDatetime(formatDateTime(value, formatStyle));
-    }, [value, formatStyle]);
+        setFormattedDatetime(formatDateTime(value, formatStyle, locale));
+    }, [value, formatStyle, locale]);
 
     const openModal = event => {
         if (!readOnly) {
@@ -90,7 +98,7 @@ function PickerComponent(props, ref) {
 
     return (
         <StyledContainer id={id} className={className} style={style}>
-            <Input
+            <StyledInput
                 ref={inputRef}
                 label={label}
                 placeholder={placeholder}
@@ -124,6 +132,7 @@ function PickerComponent(props, ref) {
                 maxDate={maxDate}
                 okLabel={okLabel}
                 cancelLabel={cancelLabel}
+                locale={locale}
             />
         </StyledContainer>
     );
@@ -190,6 +199,8 @@ DateTimePicker.propTypes = {
     okLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Text label for the CANCEL button in the modal dialog. */
     cancelLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /** The DateTimePicker locale. Defaults to browser's language. */
+    locale: PropTypes.string,
 };
 
 DateTimePicker.defaultProps = {
@@ -217,6 +228,7 @@ DateTimePicker.defaultProps = {
     cancelLabel: 'Cancel',
     bottomHelpText: '',
     isCentered: false,
+    locale: undefined,
 };
 
 export default withReduxForm(DateTimePicker);
