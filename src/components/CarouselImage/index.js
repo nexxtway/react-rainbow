@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { uniqueId } from '../../libs/utils';
 import RenderIf from '../RenderIf';
-import AssistiveText from '../AssistiveText';
 import { Consumer } from '../CarouselCard/context';
 import { getItemIndex } from '../CarouselCard/utils';
+import ImageContainer from './imageContainer';
 import './styles.css';
 
 class Item extends Component {
@@ -62,6 +62,13 @@ class Item extends Component {
             },
             className,
         );
+    }
+
+    getImageContainerClassName() {
+        const { href } = this.props;
+        return classnames('rainbow-carousel-image_content-image-container', {
+            'rainbow-carousel-image': !href,
+        });
     }
 
     getAnimationDirection() {
@@ -142,48 +149,26 @@ class Item extends Component {
                         tabIndex={this.getTabIndex()}
                         ref={this.itemRef}
                     >
-                        <div className="rainbow-carousel-image_content-image-container">
-                            <div
-                                className="rainbow-carousel-image_image"
-                                style={this.getImageSrc()}
-                            />
-                            <AssistiveText text={assistiveText} />
-                            <RenderIf isTrue={hasContent}>
-                                <div className="rainbow-carousel-image_content">
-                                    <RenderIf isTrue={!!header}>
-                                        <h2 className="rainbow-carousel-image_content-title">
-                                            {header}
-                                        </h2>
-                                    </RenderIf>
-                                    <RenderIf isTrue={!!description}>
-                                        <p>{description}</p>
-                                    </RenderIf>
-                                </div>
-                            </RenderIf>
-                        </div>
+                        <ImageContainer
+                            containerClassName={this.getImageContainerClassName()}
+                            imageSrc={this.getImageSrc()}
+                            assistiveText={assistiveText}
+                            hasContent={hasContent}
+                            header={header}
+                            description={description}
+                        />
                     </a>
                 </RenderIf>
                 <RenderIf isTrue={!href}>
-                    <div
-                        className="rainbow-carousel-image rainbow-carousel-image_content-image-container"
+                    <ImageContainer
+                        containerClassName={this.getImageContainerClassName()}
                         tabIndex={this.getTabIndex()}
-                        ref={this.itemRef}
-                    >
-                        <div className="rainbow-carousel-image_image" style={this.getImageSrc()} />
-                        <AssistiveText text={assistiveText} />
-                        <RenderIf isTrue={hasContent}>
-                            <div className="rainbow-carousel-image_content">
-                                <RenderIf isTrue={!!header}>
-                                    <h2 className="rainbow-carousel-image_content-title">
-                                        {header}
-                                    </h2>
-                                </RenderIf>
-                                <RenderIf isTrue={!!description}>
-                                    <p>{description}</p>
-                                </RenderIf>
-                            </div>
-                        </RenderIf>
-                    </div>
+                        imageSrc={this.getImageSrc()}
+                        assistiveText={assistiveText}
+                        hasContent={hasContent}
+                        header={header}
+                        description={description}
+                    />
                 </RenderIf>
             </li>
         );
