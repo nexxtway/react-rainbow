@@ -127,7 +127,7 @@ class Item extends Component {
         const { assistiveText, description, header, href, style } = this.props;
         const hasContent = !!(header || description);
         return (
-            <div
+            <li
                 id={this.carouselImageID}
                 className={this.getContainerClassName()}
                 role="tabpanel"
@@ -135,13 +135,40 @@ class Item extends Component {
                 aria-labelledby={this.carouselIndicatorID}
                 style={style}
             >
-                <a
-                    href={href}
-                    className="rainbow-carousel-image"
-                    tabIndex={this.getTabIndex()}
-                    ref={this.itemRef}
-                >
-                    <div className="rainbow-carousel-image_content-image-container">
+                <RenderIf isTrue={!!href}>
+                    <a
+                        href={href}
+                        className="rainbow-carousel-image"
+                        tabIndex={this.getTabIndex()}
+                        ref={this.itemRef}
+                    >
+                        <div className="rainbow-carousel-image_content-image-container">
+                            <div
+                                className="rainbow-carousel-image_image"
+                                style={this.getImageSrc()}
+                            />
+                            <AssistiveText text={assistiveText} />
+                            <RenderIf isTrue={hasContent}>
+                                <div className="rainbow-carousel-image_content">
+                                    <RenderIf isTrue={!!header}>
+                                        <h2 className="rainbow-carousel-image_content-title">
+                                            {header}
+                                        </h2>
+                                    </RenderIf>
+                                    <RenderIf isTrue={!!description}>
+                                        <p>{description}</p>
+                                    </RenderIf>
+                                </div>
+                            </RenderIf>
+                        </div>
+                    </a>
+                </RenderIf>
+                <RenderIf isTrue={!href}>
+                    <div
+                        className="rainbow-carousel-image rainbow-carousel-image_content-image-container"
+                        tabIndex={this.getTabIndex()}
+                        ref={this.itemRef}
+                    >
                         <div className="rainbow-carousel-image_image" style={this.getImageSrc()} />
                         <AssistiveText text={assistiveText} />
                         <RenderIf isTrue={hasContent}>
@@ -157,8 +184,8 @@ class Item extends Component {
                             </div>
                         </RenderIf>
                     </div>
-                </a>
-            </div>
+                </RenderIf>
+            </li>
         );
     }
 }

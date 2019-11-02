@@ -52,10 +52,9 @@ export default class Indicator extends Component {
                 role="presentation"
                 key={indicatorID}
             >
-                <a
+                <button
                     id={indicatorID}
                     className={this.getIndicatorClassName(indicatorID)}
-                    href="javascript:void(0);"
                     role="tab"
                     tabIndex={this.getTabIndex(indicatorID)}
                     aria-selected={this.isSelected(indicatorID)}
@@ -65,7 +64,7 @@ export default class Indicator extends Component {
                     ref={this.indicatorRef}
                 >
                     <AssistiveText text={assistiveText} />
-                </a>
+                </button>
             </li>
         );
     }
