@@ -9,6 +9,7 @@ import DaysOfWeek from './daysOfWeek';
 import Month from './month';
 import {
     normalizeDate,
+    addDays,
     addMonths,
     formatDate,
     getFirstDayMonth,
@@ -19,8 +20,20 @@ import {
 import StyledControlsContainer from './styled/controlsContainer';
 import StyledMonthContainer from './styled/monthContainer';
 import StyledMonth from './styled/month';
+import {
+    UP_KEY,
+    DOWN_KEY,
+    RIGHT_KEY,
+    LEFT_KEY,
+    HOME_KEY,
+    END_KEY,
+    PAGEUP_KEY,
+    PAGEDN_KEY,
+} from '../../libs/constants';
 import { uniqueId, getLocale } from '../../libs/utils';
 import { Consumer } from '../Application/context';
+import { Provider } from './context';
+import isSameDay from './helpers/isSameDay';
 
 /**
  * Calendar provide a simple way to select a single date.
@@ -29,12 +42,42 @@ class CalendarComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            focusedDate: undefined,
             currentMonth: getFirstDayMonth(normalizeDate(props.value)),
         };
+        this.enableNavKeys = false;
         this.monthLabelId = uniqueId('month');
         this.previousMonth = this.previousMonth.bind(this);
         this.nextMonth = this.nextMonth.bind(this);
         this.handleYearChange = this.handleYearChange.bind(this);
+        this.handleKeyDown = this.handleKeyDown.bind(this);
+        this.handleKeyUpPressed = this.handleKeyUpPressed.bind(this);
+        this.handleKeyDownPressed = this.handleKeyDownPressed.bind(this);
+        this.handleKeyLeftPressed = this.handleKeyLeftPressed.bind(this);
+        this.handleKeyRightPressed = this.handleKeyRightPressed.bind(this);
+        this.handleKeyHomePressed = this.handleKeyHomePressed.bind(this);
+        this.handleKeyEndPressed = this.handleKeyEndPressed.bind(this);
+        this.handleKeyPageUpPressed = this.handleKeyPageUpPressed.bind(this);
+        this.handleKeyPageDownPressed = this.handleKeyPageDownPressed.bind(this);
+        this.handleKeyAltPageUpPressed = this.handleKeyAltPageUpPressed.bind(this);
+        this.handleKeyAltPageDownPressed = this.handleKeyAltPageDownPressed.bind(this);
+        this.keyHandlerMap = {
+            [UP_KEY]: this.handleKeyUpPressed,
+            [DOWN_KEY]: this.handleKeyDownPressed,
+            [LEFT_KEY]: this.handleKeyLeftPressed,
+            [RIGHT_KEY]: this.handleKeyRightPressed,
+            [HOME_KEY]: this.handleKeyHomePressed,
+            [END_KEY]: this.handleKeyEndPressed,
+            [PAGEUP_KEY]: this.handleKeyPageUpPressed,
+            [PAGEDN_KEY]: this.handleKeyPageDownPressed,
+        };
+        this.keyHandlerMapAlt = {
+            [PAGEUP_KEY]: this.handleKeyAltPageUpPressed,
+            [PAGEDN_KEY]: this.handleKeyAltPageDownPressed,
+        };
+
+        this.onDayFocus = this.onDayFocus.bind(this);
+        this.onDayBlur = this.onDayBlur.bind(this);
     }
 
     componentDidUpdate(prevProps) {
@@ -44,6 +87,29 @@ class CalendarComponent extends Component {
         if (formatDate(normalizeDate(prevValue)) !== formatDate(normalizedDate)) {
             this.updateCurrentMonth(normalizedDate);
         }
+    }
+
+    onDayFocus(day) {
+        const { focusedDate } = this.state;
+        this.enableNavKeys = true;
+        if (!isSameDay(focusedDate, day)) {
+            this.setState({ focusedDate: normalizeDate(day) });
+        }
+    }
+
+    onDayBlur() {
+        this.enableNavKeys = false;
+    }
+
+    getContext() {
+        const { focusedDate } = this.state;
+        return {
+            focusedDate,
+            useAutoFocus: this.enableNavKeys,
+            privateKeyDown: this.handleKeyDown,
+            privateOnFocus: this.onDayFocus,
+            privateOnBlur: this.onDayBlur,
+        };
     }
 
     updateCurrentMonth(value) {
@@ -70,6 +136,148 @@ class CalendarComponent extends Component {
         newMonth.setFullYear(year);
         this.setState({
             currentMonth: newMonth,
+        });
+    }
+
+    handleKeyDown(event) {
+        if (!this.enableNavKeys) return;
+        const { keyCode, altKey } = event;
+        const keyHandler = altKey ? this.keyHandlerMapAlt : this.keyHandlerMap;
+        if (keyHandler[keyCode]) {
+            event.preventDefault();
+            event.stopPropagation();
+            keyHandler[keyCode]();
+        }
+    }
+
+    handleKeyUpPressed() {
+        const { currentMonth, focusedDate } = this.state;
+        const nextFocusedDate = addDays(focusedDate, -7);
+        let nextFocusedMonth = currentMonth;
+
+        if (nextFocusedDate.getMonth() !== currentMonth.getMonth()) {
+            nextFocusedMonth = addMonths(currentMonth, -1);
+        }
+
+        this.setState({
+            focusedDate: nextFocusedDate,
+            currentMonth: getFirstDayMonth(nextFocusedMonth),
+        });
+    }
+
+    handleKeyDownPressed() {
+        const { currentMonth, focusedDate } = this.state;
+        const nextFocusedDate = addDays(focusedDate, 7);
+        let nextFocusedMonth = currentMonth;
+
+        if (nextFocusedDate.getMonth() !== currentMonth.getMonth()) {
+            nextFocusedMonth = addMonths(currentMonth, 1);
+        }
+
+        this.setState({
+            focusedDate: nextFocusedDate,
+            currentMonth: getFirstDayMonth(nextFocusedMonth),
+        });
+    }
+
+    handleKeyLeftPressed() {
+        const { currentMonth, focusedDate } = this.state;
+        const nextFocusedDate = addDays(focusedDate, -1);
+        let nextFocusedMonth = currentMonth;
+
+        if (nextFocusedDate.getMonth() !== currentMonth.getMonth()) {
+            nextFocusedMonth = addMonths(currentMonth, -1);
+        }
+
+        this.setState({
+            focusedDate: nextFocusedDate,
+            currentMonth: getFirstDayMonth(nextFocusedMonth),
+        });
+    }
+
+    handleKeyRightPressed() {
+        const { currentMonth, focusedDate } = this.state;
+        const nextFocusedDate = addDays(focusedDate, 1);
+        let nextFocusedMonth = currentMonth;
+
+        if (nextFocusedDate.getMonth() !== currentMonth.getMonth()) {
+            nextFocusedMonth = addMonths(currentMonth, 1);
+        }
+
+        this.setState({
+            focusedDate: nextFocusedDate,
+            currentMonth: getFirstDayMonth(nextFocusedMonth),
+        });
+    }
+
+    handleKeyHomePressed() {
+        const { currentMonth, focusedDate } = this.state;
+        const nextFocusedDate = addDays(focusedDate, -focusedDate.getDay());
+        let nextFocusedMonth = currentMonth;
+
+        if (nextFocusedDate.getMonth() !== currentMonth.getMonth()) {
+            nextFocusedMonth = addMonths(currentMonth, -1);
+        }
+
+        this.setState({
+            focusedDate: nextFocusedDate,
+            currentMonth: getFirstDayMonth(nextFocusedMonth),
+        });
+    }
+
+    handleKeyEndPressed() {
+        const { currentMonth, focusedDate } = this.state;
+        const diff = 6 - focusedDate.getDay();
+        const nextFocusedDate = addDays(focusedDate, diff);
+        let nextFocusedMonth = currentMonth;
+
+        if (nextFocusedDate.getMonth() !== currentMonth.getMonth()) {
+            nextFocusedMonth = addMonths(currentMonth, 1);
+        }
+
+        this.setState({
+            focusedDate: nextFocusedDate,
+            currentMonth: getFirstDayMonth(nextFocusedMonth),
+        });
+    }
+
+    handleKeyPageUpPressed() {
+        const { focusedDate } = this.state;
+        const nextFocusedDate = addMonths(focusedDate, -1);
+
+        this.setState({
+            focusedDate: nextFocusedDate,
+            currentMonth: getFirstDayMonth(nextFocusedDate),
+        });
+    }
+
+    handleKeyPageDownPressed() {
+        const { focusedDate } = this.state;
+        const nextFocusedDate = addMonths(focusedDate, 1);
+
+        this.setState({
+            focusedDate: nextFocusedDate,
+            currentMonth: getFirstDayMonth(nextFocusedDate),
+        });
+    }
+
+    handleKeyAltPageUpPressed() {
+        const { focusedDate } = this.state;
+        const nextFocusedDate = addMonths(focusedDate, -12);
+
+        this.setState({
+            focusedDate: nextFocusedDate,
+            currentMonth: getFirstDayMonth(nextFocusedDate),
+        });
+    }
+
+    handleKeyAltPageDownPressed() {
+        const { focusedDate } = this.state;
+        const nextFocusedDate = addMonths(focusedDate, 12);
+
+        this.setState({
+            focusedDate: nextFocusedDate,
+            currentMonth: getFirstDayMonth(nextFocusedDate),
         });
     }
 
@@ -124,13 +332,15 @@ class CalendarComponent extends Component {
                 </StyledControlsContainer>
                 <table role="grid" aria-labelledby={this.monthLabelId}>
                     <DaysOfWeek locale={locale} />
-                    <Month
-                        value={value}
-                        firstDayMonth={currentMonth}
-                        minDate={minDate}
-                        maxDate={maxDate}
-                        onChange={onChange}
-                    />
+                    <Provider value={this.getContext()}>
+                        <Month
+                            value={value}
+                            firstDayMonth={currentMonth}
+                            minDate={minDate}
+                            maxDate={maxDate}
+                            onChange={onChange}
+                        />
+                    </Provider>
                 </table>
             </section>
         );

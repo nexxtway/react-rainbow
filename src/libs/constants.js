@@ -7,3 +7,7 @@ export const TAB_KEY = 9;
 export const ENTER_KEY = 13;
 export const DELETE_KEY = 8;
 export const SPACE_KEY = 32;
+export const PAGEUP_KEY = 33;
+export const PAGEDN_KEY = 34;
+export const END_KEY = 35;
+export const HOME_KEY = 36;
