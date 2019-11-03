@@ -150,7 +150,7 @@ class Item extends Component {
                         ref={this.itemRef}
                     >
                         <ImageContainer
-                            containerClassName={this.getImageContainerClassName()}
+                            className={this.getImageContainerClassName()}
                             imageSrc={this.getImageSrc()}
                             assistiveText={assistiveText}
                             hasContent={hasContent}
@@ -161,7 +161,8 @@ class Item extends Component {
                 </RenderIf>
                 <RenderIf isTrue={!href}>
                     <ImageContainer
-                        containerClassName={this.getImageContainerClassName()}
+                        itemRef={this.itemRef}
+                        className={this.getImageContainerClassName()}
                         tabIndex={this.getTabIndex()}
                         imageSrc={this.getImageSrc()}
                         assistiveText={assistiveText}
