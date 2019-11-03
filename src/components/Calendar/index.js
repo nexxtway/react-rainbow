@@ -16,6 +16,7 @@ import {
     getFormattedMonth,
     getLastDayMonth,
     getYearsRange,
+    compareDates,
 } from './helpers';
 import StyledControlsContainer from './styled/controlsContainer';
 import StyledMonthContainer from './styled/monthContainer';
@@ -112,24 +113,40 @@ class CalendarComponent extends Component {
         };
     }
 
-    moveFocusedDay(increment, modifier = 1) {
+    moveFocusedDay(increment) {
+        const { minDate, maxDate } = this.props;
         const { currentMonth, focusedDate } = this.state;
-        const nextFocusedDate = addDays(focusedDate, modifier * increment);
+        let nextFocusedDate = addDays(focusedDate, increment);
         let nextFocusedMonth = currentMonth;
 
         if (nextFocusedDate.getMonth() !== currentMonth.getMonth()) {
-            nextFocusedMonth = addMonths(currentMonth, modifier);
+            nextFocusedMonth = getFirstDayMonth(addMonths(currentMonth, Math.sign(increment)));
+        }
+
+        if (minDate && compareDates(nextFocusedDate, minDate) < 0) {
+            nextFocusedDate = minDate;
+            nextFocusedMonth = getFirstDayMonth(minDate);
+        } else if (maxDate && compareDates(nextFocusedDate, maxDate) > 0) {
+            nextFocusedDate = maxDate;
+            nextFocusedMonth = getFirstDayMonth(maxDate);
         }
 
         this.setState({
             focusedDate: nextFocusedDate,
-            currentMonth: getFirstDayMonth(nextFocusedMonth),
+            currentMonth: nextFocusedMonth,
         });
     }
 
     moveFocusedMonth(increment) {
+        const { minDate, maxDate } = this.props;
         const { focusedDate } = this.state;
-        const nextFocusedDate = addMonths(focusedDate, increment);
+        let nextFocusedDate = addMonths(focusedDate, increment);
+
+        if (minDate && compareDates(nextFocusedDate, minDate) < 0) {
+            nextFocusedDate = minDate;
+        } else if (maxDate && compareDates(nextFocusedDate, maxDate) > 0) {
+            nextFocusedDate = maxDate;
+        }
 
         this.setState({
             focusedDate: nextFocusedDate,
@@ -176,7 +193,7 @@ class CalendarComponent extends Component {
     }
 
     handleKeyUpPressed() {
-        this.moveFocusedDay(7, -1);
+        this.moveFocusedDay(-7);
     }
 
     handleKeyDownPressed() {
@@ -184,7 +201,7 @@ class CalendarComponent extends Component {
     }
 
     handleKeyLeftPressed() {
-        this.moveFocusedDay(1, -1);
+        this.moveFocusedDay(-1);
     }
 
     handleKeyRightPressed() {
@@ -193,7 +210,7 @@ class CalendarComponent extends Component {
 
     handleKeyHomePressed() {
         const { focusedDate } = this.state;
-        this.moveFocusedDay(focusedDate.getDay(), -1);
+        this.moveFocusedDay(-focusedDate.getDay());
     }
 
     handleKeyEndPressed() {

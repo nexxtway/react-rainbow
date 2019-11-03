@@ -8,6 +8,7 @@ import getYearsRange from './getYearsRange';
 import isSameDay from './isSameDay';
 import normalizeDate from './normalizeDate';
 import getFormattedDayName from './getFormattedDayName';
+import compareDates from './compareDates';
 
 export {
     addDays,
@@ -20,4 +21,5 @@ export {
     isSameDay,
     normalizeDate,
     getFormattedDayName,
+    compareDates,
 };

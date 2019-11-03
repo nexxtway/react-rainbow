@@ -6,13 +6,14 @@ import StyledDay from './styled/day';
 import StyledDayAdjacent from './styled/dayAdjacent';
 import StyledDayButton from './styled/dayButton';
 import isSameDay from './helpers/isSameDay';
+import { compareDates } from './helpers';
 
 function DayComponent(props) {
     const { date, firstDayMonth, isSelected, minDate, maxDate, onChange } = props;
     const { focusedDate, useAutoFocus, privateKeyDown, privateOnFocus, privateOnBlur } = props;
     const day = date.getDate();
     const isAdjacentDate = date.getMonth() !== firstDayMonth.getMonth();
-    const isDisabled = date > maxDate || date < minDate;
+    const isDisabled = compareDates(date, maxDate) > 0 || compareDates(date, minDate) < 0;
     const buttonRef = useRef();
 
     useEffect(() => {
