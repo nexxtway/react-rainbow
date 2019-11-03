@@ -112,6 +112,31 @@ class CalendarComponent extends Component {
         };
     }
 
+    moveFocusedDay(increment, modifier = 1) {
+        const { currentMonth, focusedDate } = this.state;
+        const nextFocusedDate = addDays(focusedDate, modifier * increment);
+        let nextFocusedMonth = currentMonth;
+
+        if (nextFocusedDate.getMonth() !== currentMonth.getMonth()) {
+            nextFocusedMonth = addMonths(currentMonth, modifier);
+        }
+
+        this.setState({
+            focusedDate: nextFocusedDate,
+            currentMonth: getFirstDayMonth(nextFocusedMonth),
+        });
+    }
+
+    moveFocusedMonth(increment) {
+        const { focusedDate } = this.state;
+        const nextFocusedDate = addMonths(focusedDate, increment);
+
+        this.setState({
+            focusedDate: nextFocusedDate,
+            currentMonth: getFirstDayMonth(nextFocusedDate),
+        });
+    }
+
     updateCurrentMonth(value) {
         this.setState({
             currentMonth: getFirstDayMonth(value),
@@ -151,134 +176,46 @@ class CalendarComponent extends Component {
     }
 
     handleKeyUpPressed() {
-        const { currentMonth, focusedDate } = this.state;
-        const nextFocusedDate = addDays(focusedDate, -7);
-        let nextFocusedMonth = currentMonth;
-
-        if (nextFocusedDate.getMonth() !== currentMonth.getMonth()) {
-            nextFocusedMonth = addMonths(currentMonth, -1);
-        }
-
-        this.setState({
-            focusedDate: nextFocusedDate,
-            currentMonth: getFirstDayMonth(nextFocusedMonth),
-        });
+        this.moveFocusedDay(7, -1);
     }
 
     handleKeyDownPressed() {
-        const { currentMonth, focusedDate } = this.state;
-        const nextFocusedDate = addDays(focusedDate, 7);
-        let nextFocusedMonth = currentMonth;
-
-        if (nextFocusedDate.getMonth() !== currentMonth.getMonth()) {
-            nextFocusedMonth = addMonths(currentMonth, 1);
-        }
-
-        this.setState({
-            focusedDate: nextFocusedDate,
-            currentMonth: getFirstDayMonth(nextFocusedMonth),
-        });
+        this.moveFocusedDay(7);
     }
 
     handleKeyLeftPressed() {
-        const { currentMonth, focusedDate } = this.state;
-        const nextFocusedDate = addDays(focusedDate, -1);
-        let nextFocusedMonth = currentMonth;
-
-        if (nextFocusedDate.getMonth() !== currentMonth.getMonth()) {
-            nextFocusedMonth = addMonths(currentMonth, -1);
-        }
-
-        this.setState({
-            focusedDate: nextFocusedDate,
-            currentMonth: getFirstDayMonth(nextFocusedMonth),
-        });
+        this.moveFocusedDay(1, -1);
     }
 
     handleKeyRightPressed() {
-        const { currentMonth, focusedDate } = this.state;
-        const nextFocusedDate = addDays(focusedDate, 1);
-        let nextFocusedMonth = currentMonth;
-
-        if (nextFocusedDate.getMonth() !== currentMonth.getMonth()) {
-            nextFocusedMonth = addMonths(currentMonth, 1);
-        }
-
-        this.setState({
-            focusedDate: nextFocusedDate,
-            currentMonth: getFirstDayMonth(nextFocusedMonth),
-        });
+        this.moveFocusedDay(1);
     }
 
     handleKeyHomePressed() {
-        const { currentMonth, focusedDate } = this.state;
-        const nextFocusedDate = addDays(focusedDate, -focusedDate.getDay());
-        let nextFocusedMonth = currentMonth;
-
-        if (nextFocusedDate.getMonth() !== currentMonth.getMonth()) {
-            nextFocusedMonth = addMonths(currentMonth, -1);
-        }
-
-        this.setState({
-            focusedDate: nextFocusedDate,
-            currentMonth: getFirstDayMonth(nextFocusedMonth),
-        });
+        const { focusedDate } = this.state;
+        this.moveFocusedDay(focusedDate.getDay(), -1);
     }
 
     handleKeyEndPressed() {
-        const { currentMonth, focusedDate } = this.state;
+        const { focusedDate } = this.state;
         const diff = 6 - focusedDate.getDay();
-        const nextFocusedDate = addDays(focusedDate, diff);
-        let nextFocusedMonth = currentMonth;
-
-        if (nextFocusedDate.getMonth() !== currentMonth.getMonth()) {
-            nextFocusedMonth = addMonths(currentMonth, 1);
-        }
-
-        this.setState({
-            focusedDate: nextFocusedDate,
-            currentMonth: getFirstDayMonth(nextFocusedMonth),
-        });
+        this.moveFocusedDay(diff);
     }
 
     handleKeyPageUpPressed() {
-        const { focusedDate } = this.state;
-        const nextFocusedDate = addMonths(focusedDate, -1);
-
-        this.setState({
-            focusedDate: nextFocusedDate,
-            currentMonth: getFirstDayMonth(nextFocusedDate),
-        });
+        this.moveFocusedMonth(-1);
     }
 
     handleKeyPageDownPressed() {
-        const { focusedDate } = this.state;
-        const nextFocusedDate = addMonths(focusedDate, 1);
-
-        this.setState({
-            focusedDate: nextFocusedDate,
-            currentMonth: getFirstDayMonth(nextFocusedDate),
-        });
+        this.moveFocusedMonth(1);
     }
 
     handleKeyAltPageUpPressed() {
-        const { focusedDate } = this.state;
-        const nextFocusedDate = addMonths(focusedDate, -12);
-
-        this.setState({
-            focusedDate: nextFocusedDate,
-            currentMonth: getFirstDayMonth(nextFocusedDate),
-        });
+        this.moveFocusedMonth(-12);
     }
 
     handleKeyAltPageDownPressed() {
-        const { focusedDate } = this.state;
-        const nextFocusedDate = addMonths(focusedDate, 12);
-
-        this.setState({
-            focusedDate: nextFocusedDate,
-            currentMonth: getFirstDayMonth(nextFocusedDate),
-        });
+        this.moveFocusedMonth(12);
     }
 
     render() {
