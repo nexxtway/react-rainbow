@@ -141,10 +141,10 @@ class Item extends Component {
                 aria-hidden={this.getAriaHidden()}
                 aria-labelledby={this.carouselIndicatorID}
                 style={style}
+                href={href}
             >
                 <RenderIf isTrue={!!href}>
                     <a
-                        href={href}
                         className="rainbow-carousel-image"
                         tabIndex={this.getTabIndex()}
                         ref={this.itemRef}
@@ -161,7 +161,6 @@ class Item extends Component {
                 </RenderIf>
                 <RenderIf isTrue={!href}>
                     <ImageContainer
-                        itemRef={this.itemRef}
                         className={this.getImageContainerClassName()}
                         tabIndex={this.getTabIndex()}
                         imageSrc={this.getImageSrc()}
