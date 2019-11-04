@@ -1,6 +1,9 @@
 ##### simple buttons
 
 ```js
+import React from 'react';
+import { Button } from 'react-rainbow-components';
+
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <Button variant="base" label="Button Base" className="rainbow-m-around_medium" />
     <Button label="Button Neutral" variant="neutral" className="rainbow-m-around_medium" />
@@ -15,6 +18,9 @@
 ##### button variants
 
 ```js
+import React from 'react';
+import { Button } from 'react-rainbow-components';
+
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <Button
         label="Button Brand"
@@ -35,6 +41,9 @@
 ##### button shaded
 
 ```js
+import React from 'react';
+import { Button } from 'react-rainbow-components';
+
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <Button
         shaded
@@ -62,10 +71,12 @@
 ##### buttons with icon
 
 ```js
+import React from 'react';
+import { Button } from 'react-rainbow-components';
 // more details about how to use react-font-awesome
 // visit https://github.com/FortAwesome/react-fontawesome
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faCoffee, faCheck, faArrowRight } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCoffee, faCheck, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <Button variant="base" className="rainbow-m-around_medium">
@@ -80,12 +91,15 @@ const { faCoffee, faCheck, faArrowRight } = require('@fortawesome/free-solid-svg
         Brand button with right icon
         <FontAwesomeIcon icon={faArrowRight} className="rainbow-m-left_medium" />
     </Button>
-</div>;
+</div>
 ```
 
 ##### disabled buttons
 
 ```js
+import React from 'react';
+import { Button } from 'react-rainbow-components';
+
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <Button disabled label="Button Base Disabled" className="rainbow-m-around_medium" />
     <Button
@@ -106,10 +120,12 @@ const { faCoffee, faCheck, faArrowRight } = require('@fortawesome/free-solid-svg
 ##### buttons inverse
 
 ```js
+import React from 'react';
+import { Button } from 'react-rainbow-components';
 // more details about how to use react-font-awesome
 // visit https://github.com/FortAwesome/react-fontawesome
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faArrowRight } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 const buttonsContainerStyles = {
     backgroundColor: '#061c3f',
@@ -125,12 +141,15 @@ const buttonsContainerStyles = {
         Button Inverse with icon
         <FontAwesomeIcon icon={faArrowRight} className="rainbow-m-left_medium" />
     </Button>
-</div>;
+</div>
 ```
 
 ##### buttons loadings
 
 ```js
+import React from 'react';
+import { Button } from 'react-rainbow-components';
+
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <Button
         isLoading

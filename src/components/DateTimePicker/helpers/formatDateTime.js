@@ -6,17 +6,16 @@ const FORMATS = {
 };
 const timeFormat = { hour12: true, hour: '2-digit', minute: '2-digit' };
 
-export default function formatDateTime(date, formatStyle = 'medium') {
+export default function formatDateTime(date, formatStyle = 'medium', locale = 'en-US') {
     if (date) {
         try {
             const options = FORMATS[formatStyle] || FORMATS.medium;
             const value = typeof date === 'string' ? new Date(date) : date;
-            return new Intl.DateTimeFormat('en-US', { ...options, ...timeFormat }).format(value);
+            return new Intl.DateTimeFormat(locale, { ...options, ...timeFormat }).format(value);
         } catch (error) {
             console.error(error);
             return '';
         }
     }
-    console.error('Invalid date value passed to DateTimePicker');
     return '';
 }

@@ -1,8 +1,8 @@
 ##### ImportRecordsFlow base:
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faCog } = require('@fortawesome/free-solid-svg-icons');
+import React from 'react';
+import { ImportRecordsFlow, Button } from 'react-rainbow-components';
 
 const containerStyles = { height: 360 };
 
@@ -58,13 +58,11 @@ class ImportRecordsFlowModal extends React.Component {
     }
 }
 
-const { faPlus, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');
-
 <div style={containerStyles}>
     <GlobalHeader>
         <div className="rainbow-m-right_medium">
             <ImportRecordsFlowModal />
         </div>
     </GlobalHeader>
-</div>;
+</div>
 ```

@@ -70,6 +70,8 @@ StepThree.propTypes = {
     fieldsMap: PropTypes.object,
     data: PropTypes.array,
     attributes: PropTypes.object,
+    matchField: PropTypes.string,
+    columns: PropTypes.array,
 };
 
 StepThree.defaultProps = {
@@ -77,4 +79,6 @@ StepThree.defaultProps = {
     fieldsMap: {},
     data: [],
     attributes: {},
+    matchField: '',
+    columns: [],
 };

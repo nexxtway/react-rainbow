@@ -4,10 +4,15 @@ import { mount } from 'enzyme';
 import Breadcrumb from './../index';
 
 describe('<Breadcrumb/>', () => {
-    it('should fallback the href to href="javascript:void(0);" if the prop is not provided', () => {
-        const component = mount(<Breadcrumb label="index" />);
+    it('should render an anchor when href is passed', () => {
+        const component = mount(<Breadcrumb label="index" href="index" />);
 
-        expect(component.find('a').prop('href')).toBe('javascript:void(0);');
+        expect(component.find('a')).toBeTruthy();
+    });
+    it('should render a button when href is not passed', () => {
+        const component = mount(<Breadcrumb label="index" href="index" />);
+
+        expect(component.find('button')).toBeTruthy();
     });
     it('should set the href passed', () => {
         const component = mount(<Breadcrumb label="index" href="index" />);
@@ -18,16 +23,26 @@ describe('<Breadcrumb/>', () => {
         const onClickMockFn = jest.fn();
         const component = mount(<Breadcrumb label="index" onClick={onClickMockFn} />);
 
-        component.find('a').simulate('click');
+        component.find('button').simulate('click');
         expect(onClickMockFn.mock.calls.length).toBe(1);
     });
     it('should set the label passed as children', () => {
         const component = mount(<Breadcrumb label="index" />);
 
-        expect(component.find('a').text()).toBe('index');
+        expect(component.find('button').text()).toBe('index');
     });
     it('should set the right aria-disabled value when the disabled is passed', () => {
         const component = mount(<Breadcrumb label="index" disabled />);
+
+        expect(component.find('button').prop('aria-disabled')).toBe(true);
+    });
+    it('should set the label passed as children while href is passed', () => {
+        const component = mount(<Breadcrumb href="index" label="index" />);
+
+        expect(component.find('a').text()).toBe('index');
+    });
+    it('should set the right aria-disabled value when the disabled is passed while href is passed', () => {
+        const component = mount(<Breadcrumb href="index" label="index" disabled />);
 
         expect(component.find('a').prop('aria-disabled')).toBe(true);
     });

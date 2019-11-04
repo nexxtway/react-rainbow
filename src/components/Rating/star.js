@@ -4,6 +4,8 @@ import AssistiveText from '../AssistiveText';
 import { uniqueId } from '../../libs/utils';
 import StarFill from './starFill';
 import StarBordered from './starBordered';
+import StyledStartContainer from './styled/starContainer';
+import StyledStartInput from './styled/starInput';
 
 export default class Star extends Component {
     constructor(props) {
@@ -31,9 +33,8 @@ export default class Star extends Component {
         const { onChange, value, name } = this.props;
 
         return (
-            <span className="rainbow-rating_star">
-                <input
-                    className="rainbow-rating_star-input"
+            <StyledStartContainer>
+                <StyledStartInput
                     type="radio"
                     id={this.starId}
                     value={value}
@@ -45,7 +46,7 @@ export default class Star extends Component {
                     {this.renderStar()}
                     <AssistiveText text={this.getAssitiveText()} />
                 </label>
-            </span>
+            </StyledStartContainer>
         );
     }
 }

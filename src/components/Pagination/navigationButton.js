@@ -1,15 +1,10 @@
 /* eslint-disable no-script-url */
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import StyledButton from './styled/button';
 
 export default function NavigationButton(props) {
     const { onClick, icon, disabled, dataId, ariaLabel } = props;
-
-    const getClassName = () =>
-        classnames('rainbow-pagination_navigation-button-content', {
-            'rainbow-pagination_navigation-button-content--disabled': disabled,
-        });
 
     const handleOnClick = event => {
         if (!disabled) {
@@ -25,9 +20,9 @@ export default function NavigationButton(props) {
     };
 
     return (
-        <li className="rainbow-pagination_navigation-button">
-            <a
-                className={getClassName()}
+        <li>
+            <StyledButton
+                disabled={disabled}
                 data-id={dataId}
                 onClick={handleOnClick}
                 href="javascript:void(0);"
@@ -36,7 +31,7 @@ export default function NavigationButton(props) {
                 aria-label={ariaLabel}
             >
                 {icon}
-            </a>
+            </StyledButton>
         </li>
     );
 }

@@ -1,26 +1,18 @@
 /* eslint-disable no-script-url, react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { withContext } from '../Sidebar/context';
 import RenderIf from '../RenderIf';
-import './styles.css';
-
+import StyledContainer from './styled/container';
+import StyledIcon from './styled/icon';
+import StyledLabel from './styled/label';
+import StyledAnchorContent from './styled/anchorContent';
 /**
  * @category Layout
  */
 function SidebarItem(props) {
     const { label, icon, name, href, onClick, className, style, selectedItem, onSelect } = props;
     const isSelected = name === selectedItem;
-
-    const getContainerClassNames = () =>
-        classnames(
-            'rainbow-sidebar-item',
-            {
-                'rainbow-sidebar-item--active': isSelected,
-            },
-            className,
-        );
 
     const getAriaCurrent = () => {
         if (isSelected) {
@@ -35,19 +27,23 @@ function SidebarItem(props) {
     }
 
     return (
-        <li className={getContainerClassNames()} style={style}>
-            <a
+        <StyledContainer
+            data-id="sidebar-item-li"
+            isSelected={isSelected}
+            className={className}
+            style={style}
+        >
+            <StyledAnchorContent
                 href={href}
                 onClick={hanldeOnClick}
-                className="rainbow-sidebar-item_action"
                 aria-current={getAriaCurrent()}
             >
-                <div className="rainbow-sidebar-item_icon">{icon}</div>
+                <StyledIcon isSelected={isSelected}>{icon}</StyledIcon>
                 <RenderIf isTrue={!!label}>
-                    <span className="rainbow-sidebar-item_label">{label}</span>
+                    <StyledLabel isSelected={isSelected}>{label}</StyledLabel>
                 </RenderIf>
-            </a>
-        </li>
+            </StyledAnchorContent>
+        </StyledContainer>
     );
 }
 

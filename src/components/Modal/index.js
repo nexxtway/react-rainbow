@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
-import classnames from 'classnames';
 import RenderIf from './../RenderIf';
-import ButtonIcon from './../ButtonIcon';
 import { uniqueId } from './../../libs/utils';
 import { ESCAPE_KEY, TAB_KEY } from './../../libs/constants';
 import Header from './header';
@@ -11,7 +9,11 @@ import CloseIcon from './closeIcon';
 import manageTab from './manageTab';
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from './scrollController';
 import CounterManager from './counterManager';
-import './styles.css';
+import StyledBackDrop from './styled/backDrop';
+import StyledModalContainer from './styled/modalContainer';
+import StyledCloseButton from './styled/closeButton';
+import StyledContent from './styled/content';
+import StyledFooter from './styled/footer';
 
 /**
  * Modals are used to display content in a layer above the app.
@@ -75,34 +77,6 @@ export default class Modal extends Component {
         clearAllBodyScrollLocks();
     }
 
-    getBackDropClassNames() {
-        const { isOpen } = this.props;
-        return classnames('rainbow-modal_backdrop', {
-            'rainbow-modal_backdrop--open': isOpen,
-        });
-    }
-
-    getContainerClassNames() {
-        const { className, isOpen } = this.props;
-        return classnames(
-            'rainbow-modal',
-            {
-                'rainbow-modal--open': isOpen,
-                'rainbow-modal--close': !isOpen,
-            },
-            this.getSizeClassNames(),
-            className,
-        );
-    }
-
-    getSizeClassNames() {
-        const { size } = this.props;
-        if (size === 'small') {
-            return null;
-        }
-        return `rainbow-modal--${size}`;
-    }
-
     handleKeyPressed(event) {
         event.stopPropagation();
         const { isOpen } = this.props;
@@ -135,51 +109,61 @@ export default class Modal extends Component {
     }
 
     render() {
-        const { title, style, children, footer, isOpen, id } = this.props;
+        const {
+            title,
+            style,
+            className,
+            children,
+            footer,
+            isOpen,
+            id,
+            size,
+            hideCloseButton,
+        } = this.props;
 
         if (isOpen) {
             return createPortal(
-                <div
+                <StyledBackDrop
                     role="presentation"
+                    isOpen={isOpen}
                     id={id}
                     onClick={this.handleClick}
-                    className={this.getBackDropClassNames()}
                     onKeyDown={this.handleKeyPressed}
                 >
-                    <section
+                    <StyledModalContainer
                         role="dialog"
                         tabIndex={-1}
                         aria-labelledby={this.modalHeadingId}
                         aria-modal
                         aria-hidden={!isOpen}
                         aria-describedby={this.modalContentId}
-                        className={this.getContainerClassNames()}
                         style={style}
                         ref={this.modalRef}
+                        isOpen={isOpen}
+                        className={className}
+                        size={size}
                     >
-                        <ButtonIcon
-                            className="rainbow-modal_close-button"
-                            icon={<CloseIcon />}
-                            title="Close"
-                            onClick={this.closeModal}
-                            ref={this.buttonRef}
-                        />
+                        <RenderIf isTrue={!hideCloseButton}>
+                            <StyledCloseButton
+                                id="modal-close-button"
+                                icon={<CloseIcon />}
+                                title="Close"
+                                onClick={this.closeModal}
+                                ref={this.buttonRef}
+                            />
+                        </RenderIf>
 
                         <Header id={this.modalHeadingId} title={title} />
 
-                        <div
-                            className="rainbow-modal_content"
-                            id={this.modalContentId}
-                            ref={this.contentRef}
-                        >
+                        <StyledContent id={this.modalContentId} ref={this.contentRef}>
                             {children}
-                        </div>
+                        </StyledContent>
 
                         <RenderIf isTrue={!!footer}>
-                            <footer className="rainbow-modal_footer">{footer}</footer>
+                            <StyledFooter>{footer}</StyledFooter>
                         </RenderIf>
-                    </section>
-                </div>,
+                    </StyledModalContainer>
+                </StyledBackDrop>,
                 document.body,
             );
         }
@@ -216,6 +200,8 @@ Modal.propTypes = {
      * @ignore
      */
     children: PropTypes.node,
+    /** If true, hide the close button in the modal */
+    hideCloseButton: PropTypes.bool,
 };
 
 Modal.defaultProps = {
@@ -229,4 +215,5 @@ Modal.defaultProps = {
     onRequestClose: () => {},
     onOpened: () => {},
     id: undefined,
+    hideCloseButton: false,
 };

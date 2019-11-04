@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import MenuContent from './menuContent';
 import { Provider } from './context';
 import { findItemByKey, findItemIndex, insertChildOrderly, getChildMenuItemNodes } from './utils';
 import { UP_KEY, DOWN_KEY, ESCAPE_KEY, TAB_KEY, ENTER_KEY } from './../../libs/constants';
-import './styles.css';
+import StyledContainer from './styled/container';
+import StyledDropdown from './styled/dropdown';
+import StyledContent from './styled/content';
 
 export default class PrimitiveMenu extends Component {
     constructor(props) {
@@ -41,29 +42,6 @@ export default class PrimitiveMenu extends Component {
     componentWillUnmount() {
         window.removeEventListener('click', this.handleClick);
         window.removeEventListener('touchstart', this.handleClick);
-    }
-
-    getContainerClassNames() {
-        const { isOpen } = this.state;
-        const { className } = this.props;
-
-        return classnames(
-            'rainbow-primitive-menu',
-            {
-                'rainbow-primitive-menu--open': isOpen,
-            },
-            className,
-        );
-    }
-
-    getDropdownClassNames() {
-        const { menuAlignment, menuSize, isLoading } = this.props;
-        return classnames(
-            'rainbow-primitive-menu_dropdown',
-            `rainbow-primitive-menu_dropdown--${menuAlignment}`,
-            `rainbow-primitive-menu_dropdown--${menuSize}`,
-            { 'rainbow-primitive-menu_dropdown--loading-box': isLoading },
-        );
     }
 
     focusChild(index) {
@@ -266,10 +244,10 @@ export default class PrimitiveMenu extends Component {
         const ariaLabel = title || assistiveText;
 
         return (
-            <div
+            <StyledContainer
                 id={id}
                 role="presentation"
-                className={this.getContainerClassNames()}
+                className={className}
                 style={style}
                 onKeyDown={this.handleKeyPressed}
                 ref={this.containerRef}
@@ -285,14 +263,20 @@ export default class PrimitiveMenu extends Component {
                     ref={this.triggerRef}
                 />
 
-                <div className={this.getDropdownClassNames()}>
-                    <ul role="menu" aria-label={ariaLabel}>
+                <StyledDropdown
+                    data-id="primitive-menu_dropdown"
+                    menuSize={menuSize}
+                    menuAlignment={menuAlignment}
+                    isLoading={isLoading}
+                    isOpen={isOpen}
+                >
+                    <StyledContent role="menu" aria-label={ariaLabel}>
                         <MenuContent isLoading={isLoading}>
                             <Provider value={context}>{children}</Provider>
                         </MenuContent>
-                    </ul>
-                </div>
-            </div>
+                    </StyledContent>
+                </StyledDropdown>
+            </StyledContainer>
         );
     }
 }

@@ -4,7 +4,10 @@ import PropTypes from 'prop-types';
 import { Consumer } from './../GMap/context';
 import { uniqueId } from './../../libs/utils';
 import Icon from './icon';
-import './styles.css';
+import HiddenElement from '../Structural/hiddenElement';
+import StyledButton from './styled/button';
+import StyledTextContainer from './styled/textContainer';
+import StyledLabel from './styled/label';
 
 const marker = Symbol('marker');
 
@@ -138,14 +141,10 @@ class Marker extends Component {
         if (latitude && longitude) {
             return (
                 <li className={className} style={style}>
-                    <span
-                        className="rainbow-google-map-marker_assistive-aria-live"
-                        aria-live="polite"
-                    >
+                    <HiddenElement aria-live="polite">
                         {this.getAssistiveAriaLiveText()}
-                    </span>
-                    <button
-                        className="rainbow-google-map-marker_button"
+                    </HiddenElement>
+                    <StyledButton
                         aria-pressed={this.isSelected()}
                         onClick={this.handleClick}
                         onMouseOver={this.startAnimation}
@@ -154,11 +153,11 @@ class Marker extends Component {
                         onBlur={this.stopAnimation}
                     >
                         <Icon icon={icon} />
-                        <span className="rainbow-google-map-marker_text-container">
-                            <span className="rainbow-google-map-marker_label">{label}</span>
+                        <StyledTextContainer>
+                            <StyledLabel>{label}</StyledLabel>
                             <span>{description}</span>
-                        </span>
-                    </button>
+                        </StyledTextContainer>
+                    </StyledButton>
                 </li>
             );
         }

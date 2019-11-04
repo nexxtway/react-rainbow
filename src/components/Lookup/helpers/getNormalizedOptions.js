@@ -7,9 +7,7 @@ export default function getNormalizedOptions(options) {
                     label: item.label,
                     type: 'header',
                 });
-                return arr.concat(
-                    isArray(item.options) ? item.options : [],
-                );
+                return arr.concat(isArray(item.options) ? item.options : []);
             }
             arr.push(item);
             return arr;

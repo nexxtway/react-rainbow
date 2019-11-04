@@ -1,6 +1,8 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 import { Option as PicklistOption } from '../index';
+import StyledHeader from '../styled/header';
+import StyledItem from '../styled/item';
 
 describe('<PicklistOption />', () => {
     let optionRegisterFn;
@@ -20,36 +22,14 @@ describe('<PicklistOption />', () => {
         hoverFn.mockClear();
         clickFn.mockClear();
     });
-    it('should have the right classnames when active', () => {
-        const component = mount(<PicklistOption label="option 1" name="option1" />);
-        expect(component.find('li').prop('className')).toBe('rainbow-picklist-option');
-        component.setProps({
-            activeOptionName: 'option1',
-        });
-        expect(component.find('li').prop('className')).toBe(
-            'rainbow-picklist-option rainbow-picklist-option_active',
-        );
-    });
-    it('should have the right classnames when selected', () => {
-        const component = mount(<PicklistOption label="option 1" name="option1" />);
-        expect(component.find('li').prop('className')).toBe('rainbow-picklist-option');
-        component.setProps({
-            currentValueName: 'option1',
-        });
-        expect(component.find('li').prop('className')).toBe(
-            'rainbow-picklist-option rainbow-picklist-option_selected',
-        );
-    });
+
     it('should render a option header when variant is header', () => {
         const component = mount(<PicklistOption label="Header 1" variant="header" />);
-        expect(component.find('li').prop('className')).toBe('rainbow-picklist-option_header');
-        expect(component.find('li > span.rainbow-picklist-option_header-label').exists()).toBe(
-            true,
-        );
+        expect(component.find(StyledHeader).exists()).toBe(true);
     });
     it('should render a regular option when variant is default', () => {
         const component = mount(<PicklistOption label="option 1" name="option1" />);
-        expect(component.find('li').prop('className')).toBe('rainbow-picklist-option');
+        expect(component.find(StyledItem).exists()).toBe(true);
     });
     it('should not register when is disabled', () => {
         mount(<PicklistOption disabled />);

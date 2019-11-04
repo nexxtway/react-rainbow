@@ -1,20 +1,13 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import TimelineMarker from '../index';
-import Card from './../../Card';
-import Avatar from './../../Avatar';
+import Card from '../../Card';
+import Avatar from '../../Avatar';
+import StyledLabel from '../styled/label';
+import StyledDatetime from '../styled/datetime';
+import StyledDescription from '../styled/description';
 
 describe('<TimelineMarker/>', () => {
-    it('should have the right class names', () => {
-        const component = mount(<TimelineMarker />);
-        expect(component.find('li').prop('className')).toBe('rainbow-timeline-marker_container');
-    });
-    it('should have the right class names when a custom class name is passed', () => {
-        const component = mount(<TimelineMarker className="testing_timelineMarker" />);
-        expect(component.find('li').prop('className')).toBe(
-            'rainbow-timeline-marker_container testing_timelineMarker',
-        );
-    });
     it('should render the children passed', () => {
         const component = mount(
             <TimelineMarker>
@@ -33,19 +26,17 @@ describe('<TimelineMarker/>', () => {
     });
     it('should render the label passed', () => {
         const component = mount(<TimelineMarker label="testing label on TimelineMarker" />);
-        expect(component.find('h1.rainbow-timeline-marker_label').text()).toBe(
-            'testing label on TimelineMarker',
-        );
+        expect(component.find(StyledLabel).text()).toBe('testing label on TimelineMarker');
     });
     it('should render the datetime passed', () => {
         const component = mount(<TimelineMarker datetime="Yesterday" />);
-        expect(component.find('p.rainbow-timeline-marker_datetime').text()).toBe('Yesterday');
+        expect(component.find(StyledDatetime).text()).toBe('Yesterday');
     });
     it('should render the description passed', () => {
         const component = mount(
             <TimelineMarker description="testing description on TimelineMarker" />,
         );
-        expect(component.find('p.rainbow-timeline-marker_description').text()).toBe(
+        expect(component.find(StyledDescription).text()).toBe(
             'testing description on TimelineMarker',
         );
     });

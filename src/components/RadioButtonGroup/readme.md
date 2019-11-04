@@ -1,6 +1,9 @@
 ##### RadioButtonGroup base
 
 ```js
+import React from 'react';
+import { RadioButtonGroup } from 'react-rainbow-components';
+
 const options = [
     { value: 'off', label: 'Off' },
     { value: 'parking', label: 'Parking' },
@@ -35,12 +38,15 @@ class SimpleRadioButtonGroup extends React.Component {
 
 <div className="rainbow-p-around_x-large rainbow-align-content_center">
     <SimpleRadioButtonGroup />
-</div>;
+</div>
 ```
 
 ##### RadioButtonGroup brand with label
 
 ```js
+import React from 'react';
+import { RadioButtonGroup } from 'react-rainbow-components';
+
 const options = [
     { value: 'off', label: 'Off' },
     { value: 'parking', label: 'Parking' },
@@ -77,12 +83,15 @@ class LabeledBrandRadioButtonGroup extends React.Component {
 
 <div className="rainbow-p-around_x-large rainbow-align-content_center">
     <LabeledBrandRadioButtonGroup />
-</div>;
+</div>
 ```
 
 ##### RadioButtonGroup inverse
 
 ```js
+import React from 'react';
+import { RadioButtonGroup } from 'react-rainbow-components';
+
 const options = [
     { value: 'off', label: 'Off' },
     { value: 'parking', label: 'Parking' },
@@ -126,12 +135,15 @@ class RadioButtonGroupInverse extends React.Component {
     style={buttonsContainerStyles}
 >
     <RadioButtonGroupInverse />
-</div>;
+</div>
 ```
 
 ##### RadioButtonGroup disabled
 
 ```js
+import React from 'react';
+import { RadioButtonGroup } from 'react-rainbow-components';
+
 const options = [
     { value: 'off', label: 'Off', disabled: true },
     { value: 'parking', label: 'Parking', disabled: true },
@@ -166,12 +178,15 @@ class DisabledRadioButtonGroup extends React.Component {
 
 <div className="rainbow-p-around_x-large rainbow-align-content_center">
     <DisabledRadioButtonGroup />
-</div>;
+</div>
 ```
 
 ##### RadioButtonGroup required
 
 ```js
+import React from 'react';
+import { RadioButtonGroup } from 'react-rainbow-components';
+
 const options = [
     { value: 'off', label: 'Off' },
     { value: 'parking', label: 'Parking' },
@@ -207,12 +222,15 @@ class RequiredRadioButtonGroup extends React.Component {
 
 <div className="rainbow-p-around_x-large rainbow-align-content_center">
     <RequiredRadioButtonGroup />
-</div>;
+</div>
 ```
 
 ##### RadioButtonGroup error
 
 ```js
+import React from 'react';
+import { RadioButtonGroup } from 'react-rainbow-components';
+
 const options = [
     { value: 'off', label: 'Off' },
     { value: 'parking', label: 'Parking' },
@@ -248,5 +266,5 @@ class ErrorRadioButtonGroup extends React.Component {
 
 <div className="rainbow-p-around_x-large rainbow-align-content_center">
     <ErrorRadioButtonGroup />
-</div>;
+</div>
 ```

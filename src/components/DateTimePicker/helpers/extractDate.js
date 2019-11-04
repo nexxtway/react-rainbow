@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-
 export default function extractDate(date) {
     if (date) {
         try {
@@ -11,6 +10,5 @@ export default function extractDate(date) {
             return '';
         }
     }
-    console.error('Invalid date value passed to DateTimePicker');
     return '';
 }
