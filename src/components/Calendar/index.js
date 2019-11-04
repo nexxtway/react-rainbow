@@ -215,8 +215,7 @@ class CalendarComponent extends Component {
 
     handleKeyEndPressed() {
         const { focusedDate } = this.state;
-        const diff = 6 - focusedDate.getDay();
-        this.moveFocusedDay(diff);
+        this.moveFocusedDay(6 - focusedDate.getDay());
     }
 
     handleKeyPageUpPressed() {
