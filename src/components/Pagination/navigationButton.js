@@ -25,7 +25,6 @@ export default function NavigationButton(props) {
                 disabled={disabled}
                 data-id={dataId}
                 onClick={handleOnClick}
-                href="javascript:void(0);"
                 aria-disabled={!!disabled}
                 tabIndex={getTabIndex()}
                 aria-label={ariaLabel}
