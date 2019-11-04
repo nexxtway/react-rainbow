@@ -20,6 +20,7 @@ import {
 } from './helpers';
 import StyledControlsContainer from './styled/controlsContainer';
 import StyledMonthContainer from './styled/monthContainer';
+import StyledTable from './styled/table';
 import StyledMonth from './styled/month';
 import {
     UP_KEY,
@@ -30,11 +31,12 @@ import {
     END_KEY,
     PAGEUP_KEY,
     PAGEDN_KEY,
+    SPACE_KEY,
+    ENTER_KEY,
 } from '../../libs/constants';
 import { uniqueId, getLocale } from '../../libs/utils';
 import { Consumer } from '../Application/context';
 import { Provider } from './context';
-import isSameDay from './helpers/isSameDay';
 
 /**
  * Calendar provide a simple way to select a single date.
@@ -43,10 +45,10 @@ class CalendarComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            focusedDate: undefined,
+            showFocusedDate: false,
+            focusedDate: normalizeDate(props.value),
             currentMonth: getFirstDayMonth(normalizeDate(props.value)),
         };
-        this.enableNavKeys = false;
         this.monthLabelId = uniqueId('month');
         this.previousMonth = this.previousMonth.bind(this);
         this.nextMonth = this.nextMonth.bind(this);
@@ -60,6 +62,7 @@ class CalendarComponent extends Component {
         this.handleKeyEndPressed = this.handleKeyEndPressed.bind(this);
         this.handleKeyPageUpPressed = this.handleKeyPageUpPressed.bind(this);
         this.handleKeyPageDownPressed = this.handleKeyPageDownPressed.bind(this);
+        this.handleKeyEnterPressed = this.handleKeyEnterPressed.bind(this);
         this.handleKeyAltPageUpPressed = this.handleKeyAltPageUpPressed.bind(this);
         this.handleKeyAltPageDownPressed = this.handleKeyAltPageDownPressed.bind(this);
         this.keyHandlerMap = {
@@ -71,14 +74,13 @@ class CalendarComponent extends Component {
             [END_KEY]: this.handleKeyEndPressed,
             [PAGEUP_KEY]: this.handleKeyPageUpPressed,
             [PAGEDN_KEY]: this.handleKeyPageDownPressed,
+            [SPACE_KEY]: this.handleKeyEnterPressed,
+            [ENTER_KEY]: this.handleKeyEnterPressed,
         };
         this.keyHandlerMapAlt = {
             [PAGEUP_KEY]: this.handleKeyAltPageUpPressed,
             [PAGEDN_KEY]: this.handleKeyAltPageDownPressed,
         };
-
-        this.onDayFocus = this.onDayFocus.bind(this);
-        this.onDayBlur = this.onDayBlur.bind(this);
     }
 
     componentDidUpdate(prevProps) {
@@ -87,29 +89,14 @@ class CalendarComponent extends Component {
         const normalizedDate = normalizeDate(value);
         if (formatDate(normalizeDate(prevValue)) !== formatDate(normalizedDate)) {
             this.updateCurrentMonth(normalizedDate);
+            this.updateFocusedDate(normalizedDate);
         }
-    }
-
-    onDayFocus(day) {
-        const { focusedDate } = this.state;
-        this.enableNavKeys = true;
-        if (!isSameDay(focusedDate, day)) {
-            this.setState({ focusedDate: normalizeDate(day) });
-        }
-    }
-
-    onDayBlur() {
-        this.enableNavKeys = false;
     }
 
     getContext() {
         const { focusedDate } = this.state;
         return {
             focusedDate,
-            useAutoFocus: this.enableNavKeys,
-            privateKeyDown: this.handleKeyDown,
-            privateOnFocus: this.onDayFocus,
-            privateOnBlur: this.onDayBlur,
         };
     }
 
@@ -160,6 +147,12 @@ class CalendarComponent extends Component {
         });
     }
 
+    updateFocusedDate(value) {
+        this.setState({
+            focusedDate: value,
+        });
+    }
+
     nextMonth() {
         this.setState({
             currentMonth: addMonths(this.state.currentMonth, 1),
@@ -182,7 +175,6 @@ class CalendarComponent extends Component {
     }
 
     handleKeyDown(event) {
-        if (!this.enableNavKeys) return;
         const { keyCode, altKey } = event;
         const keyHandler = altKey ? this.keyHandlerMapAlt : this.keyHandlerMap;
         if (keyHandler[keyCode]) {
@@ -234,6 +226,12 @@ class CalendarComponent extends Component {
         this.moveFocusedMonth(12);
     }
 
+    handleKeyEnterPressed() {
+        const { onChange } = this.props;
+        const { focusedDate } = this.state;
+        onChange(new Date(focusedDate));
+    }
+
     render() {
         const { currentMonth } = this.state;
         const { id, onChange, value, minDate, maxDate, className, style, locale } = this.props;
@@ -283,7 +281,12 @@ class CalendarComponent extends Component {
                         onChange={this.handleYearChange}
                     />
                 </StyledControlsContainer>
-                <table role="grid" aria-labelledby={this.monthLabelId}>
+                <StyledTable
+                    role="grid"
+                    aria-labelledby={this.monthLabelId}
+                    tabIndex="0"
+                    onKeyDown={this.handleKeyDown}
+                >
                     <DaysOfWeek locale={locale} />
                     <Provider value={this.getContext()}>
                         <Month
@@ -294,7 +297,7 @@ class CalendarComponent extends Component {
                             onChange={onChange}
                         />
                     </Provider>
-                </table>
+                </StyledTable>
             </section>
         );
     }
