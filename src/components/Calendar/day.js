@@ -10,11 +10,11 @@ import { compareDates } from './helpers';
 
 function DayComponent(props) {
     const { date, firstDayMonth, isSelected, minDate, maxDate, onChange } = props;
-    const { focusedDate } = props;
+    const { focusedDate, showFocusedDate } = props;
     const day = date.getDate();
     const isAdjacentDate = date.getMonth() !== firstDayMonth.getMonth();
     const isDisabled = compareDates(date, maxDate) > 0 || compareDates(date, minDate) < 0;
-    const isFocused = !isSelected && isSameDay(focusedDate, date);
+    const isFocused = showFocusedDate && isSameDay(focusedDate, date);
 
     if (isAdjacentDate || isDisabled) {
         return (

@@ -53,6 +53,8 @@ class CalendarComponent extends Component {
         this.previousMonth = this.previousMonth.bind(this);
         this.nextMonth = this.nextMonth.bind(this);
         this.handleYearChange = this.handleYearChange.bind(this);
+        this.handleFocusDaysContainer = this.handleFocusDaysContainer.bind(this);
+        this.handleBlurDaysContainer = this.handleBlurDaysContainer.bind(this);
         this.handleKeyDown = this.handleKeyDown.bind(this);
         this.handleKeyUpPressed = this.handleKeyUpPressed.bind(this);
         this.handleKeyDownPressed = this.handleKeyDownPressed.bind(this);
@@ -94,8 +96,9 @@ class CalendarComponent extends Component {
     }
 
     getContext() {
-        const { focusedDate } = this.state;
+        const { showFocusedDate, focusedDate } = this.state;
         return {
+            showFocusedDate,
             focusedDate,
         };
     }
@@ -232,6 +235,18 @@ class CalendarComponent extends Component {
         onChange(new Date(focusedDate));
     }
 
+    handleFocusDaysContainer() {
+        this.setState({
+            showFocusedDate: true,
+        });
+    }
+
+    handleBlurDaysContainer() {
+        this.setState({
+            showFocusedDate: false,
+        });
+    }
+
     render() {
         const { currentMonth } = this.state;
         const { id, onChange, value, minDate, maxDate, className, style, locale } = this.props;
@@ -286,6 +301,8 @@ class CalendarComponent extends Component {
                     aria-labelledby={this.monthLabelId}
                     tabIndex="0"
                     onKeyDown={this.handleKeyDown}
+                    onFocus={this.handleFocusDaysContainer}
+                    onBlur={this.handleBlurDaysContainer}
                 >
                     <DaysOfWeek locale={locale} />
                     <Provider value={this.getContext()}>
