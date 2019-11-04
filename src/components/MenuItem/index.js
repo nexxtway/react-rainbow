@@ -82,12 +82,7 @@ class Item extends Component {
                 onClick={this.handleClick}
                 onMouseEnter={this.handleHover}
             >
-                <a
-                    href="javascript:void(0);"
-                    role="menuitem"
-                    aria-disabled={disabled}
-                    ref={this.itemRef}
-                >
+                <button role="menuitem" aria-disabled={disabled} ref={this.itemRef}>
                     <StyledIconContainer title={title}>
                         <Icon
                             data-id="menu-item-left-icon"
@@ -104,7 +99,7 @@ class Item extends Component {
                         isVisible={hasRightIcon}
                         position={iconPosition}
                     />
-                </a>
+                </button>
             </StyledItem>
         );
     }

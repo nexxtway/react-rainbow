@@ -37,12 +37,11 @@ describe('<MenuItem/>', () => {
             false,
         );
     });
-    it('should pass the right props to the anchor element', () => {
+    it('should pass the right props to the button element', () => {
         const component = mount(<MenuItem disabled />);
-        expect(component.find('a').props()).toEqual(
+        expect(component.find('button').props()).toEqual(
             expect.objectContaining({
                 'aria-disabled': true,
-                href: 'javascript:void(0);',
                 role: 'menuitem',
             }),
         );

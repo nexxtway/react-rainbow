@@ -5,7 +5,13 @@ import { COLOR_GRAY_2, COLOR_DARK_1, COLOR_GRAY_1 } from '../../../styles/colors
 const StyledItem = styled.li`
     line-height: 1.5;
 
-    > a {
+    > button {
+        width: 100%;
+        background: none;
+        border: none;
+        font: inherit;
+        outline: inherit;
+        margin: 0;
         transition: color 0.1s linear;
         position: relative;
         font-size: ${FONT_SIZE_TEXT_MEDIUM};
