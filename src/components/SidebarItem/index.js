@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import { withContext } from '../Sidebar/context';
 import RenderIf from '../RenderIf';
 import StyledContainer from './styled/container';
-import StyledIcon from './styled/icon';
-import StyledLabel from './styled/label';
 import StyledAnchorContent from './styled/anchorContent';
+import StyledButtonContent from './styled/buttonContent';
+import ItemContent from './itemContent';
 /**
  * @category Layout
  */
@@ -33,16 +33,20 @@ function SidebarItem(props) {
             className={className}
             style={style}
         >
-            <StyledAnchorContent
-                href={href}
-                onClick={hanldeOnClick}
-                aria-current={getAriaCurrent()}
-            >
-                <StyledIcon isSelected={isSelected}>{icon}</StyledIcon>
-                <RenderIf isTrue={!!label}>
-                    <StyledLabel isSelected={isSelected}>{label}</StyledLabel>
-                </RenderIf>
-            </StyledAnchorContent>
+            <RenderIf isTrue={!!href}>
+                <StyledAnchorContent
+                    href={href}
+                    onClick={hanldeOnClick}
+                    aria-current={getAriaCurrent()}
+                >
+                    <ItemContent isSelected={isSelected} label={label} icon={icon} />
+                </StyledAnchorContent>
+            </RenderIf>
+            <RenderIf isTrue={!href}>
+                <StyledButtonContent onClick={hanldeOnClick} aria-current={getAriaCurrent()}>
+                    <ItemContent isSelected={isSelected} label={label} icon={icon} />
+                </StyledButtonContent>
+            </RenderIf>
         </StyledContainer>
     );
 }
@@ -68,7 +72,7 @@ SidebarItem.defaultProps = {
     name: undefined,
     label: undefined,
     icon: null,
-    href: 'javascript:void(0);',
+    href: undefined,
     onClick: () => {},
     className: undefined,
     style: undefined,
