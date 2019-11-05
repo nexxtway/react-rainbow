@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-
 export default function extractDate(date) {
     if (date) {
         try {

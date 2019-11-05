@@ -1,8 +1,11 @@
 ##### ProgressCircular
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faCircle } = require('@fortawesome/free-solid-svg-icons');
+import React from 'react';
+import { Card, ProgressCircular } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircle } from '@fortawesome/free-solid-svg-icons';
+
 const IconStyles = {
     width: 24,
     height: 20,
@@ -49,12 +52,15 @@ function ActiveUsersCard({ title, variant, color }) {
         <ActiveUsersCard title="twitter" color="brand" />
         <ActiveUsersCard title="google" variant="error" color="error" />
     </div>
-</div>;
+</div>
 ```
 
 ##### ProgressCircular variants
 
 ```js
+import React from 'react';
+import { ProgressCircular } from 'react-rainbow-components';
+
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <div className="rainbow-p-around_large rainbow-align-content_center rainbow-flex_column">
         <ProgressCircular value={24} />

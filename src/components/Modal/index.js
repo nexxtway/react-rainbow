@@ -109,7 +109,17 @@ export default class Modal extends Component {
     }
 
     render() {
-        const { title, style, className, children, footer, isOpen, id, size } = this.props;
+        const {
+            title,
+            style,
+            className,
+            children,
+            footer,
+            isOpen,
+            id,
+            size,
+            hideCloseButton,
+        } = this.props;
 
         if (isOpen) {
             return createPortal(
@@ -133,13 +143,15 @@ export default class Modal extends Component {
                         className={className}
                         size={size}
                     >
-                        <StyledCloseButton
-                            id="modal-close-button"
-                            icon={<CloseIcon />}
-                            title="Close"
-                            onClick={this.closeModal}
-                            ref={this.buttonRef}
-                        />
+                        <RenderIf isTrue={!hideCloseButton}>
+                            <StyledCloseButton
+                                id="modal-close-button"
+                                icon={<CloseIcon />}
+                                title="Close"
+                                onClick={this.closeModal}
+                                ref={this.buttonRef}
+                            />
+                        </RenderIf>
 
                         <Header id={this.modalHeadingId} title={title} />
 
@@ -188,6 +200,8 @@ Modal.propTypes = {
      * @ignore
      */
     children: PropTypes.node,
+    /** If true, hide the close button in the modal */
+    hideCloseButton: PropTypes.bool,
 };
 
 Modal.defaultProps = {
@@ -201,4 +215,5 @@ Modal.defaultProps = {
     onRequestClose: () => {},
     onOpened: () => {},
     id: undefined,
+    hideCloseButton: false,
 };

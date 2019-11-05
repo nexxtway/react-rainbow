@@ -1,6 +1,9 @@
 ##### checkbox toggle base
 
 ```js
+import React from 'react';
+import { CheckboxToggle } from 'react-rainbow-components';
+
 class SimpleCheckboxToggle extends React.Component {
     constructor(props) {
         super(props);
@@ -28,12 +31,15 @@ class SimpleCheckboxToggle extends React.Component {
 
 <div className="rainbow-p-vertical_large rainbow-p-left_x-large">
     <SimpleCheckboxToggle />
-</div>;
+</div>
 ```
 
 ##### checkbox toggle checked
 
 ```js
+import React from 'react';
+import { CheckboxToggle } from 'react-rainbow-components';
+
 class CheckedCheckboxToggle extends React.Component {
     constructor(props) {
         super(props);
@@ -60,12 +66,15 @@ class CheckedCheckboxToggle extends React.Component {
 
 <div className="rainbow-p-vertical_large rainbow-p-left_x-large">
     <CheckedCheckboxToggle />
-</div>;
+</div>
 ```
 
 ##### checkbox toggle disabled
 
 ```js
+import React from 'react';
+import { CheckboxToggle } from 'react-rainbow-components';
+
 class DisabledCheckboxToggle extends React.Component {
     constructor(props) {
         super(props);
@@ -93,5 +102,5 @@ class DisabledCheckboxToggle extends React.Component {
 
 <div className="rainbow-p-vertical_large rainbow-p-left_x-large">
     <DisabledCheckboxToggle />
-</div>;
+</div>
 ```

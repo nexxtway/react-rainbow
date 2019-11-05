@@ -1,20 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import PropTypes from 'prop-types';
-import Markdown from 'react-styleguidist/lib/rsg-components/Markdown/Markdown';
 import SectionHeading from '../SectionHeading';
 
 export default function SectionRenderer(props) {
-    const {
-        name,
-        slug,
-        content,
-        components,
-        sections,
-        depth,
-        description,
-        pagePerSection,
-    } = props;
+    const { name, slug, content, components, sections, depth, description, pagePerSection } = props;
 
     return (
         <section>
@@ -24,12 +14,13 @@ export default function SectionRenderer(props) {
                     id={slug}
                     slotName="sectionToolbar"
                     pagePerSection={pagePerSection}
-                    slotProps={props}>
+                    slotProps={props}
+                >
                     {name}
                 </SectionHeading>
             )}
             <div>
-                {description && <Markdown text={description} />}
+                {description}
                 {content}
                 {sections}
                 {components}

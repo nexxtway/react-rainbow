@@ -6,7 +6,17 @@ const StyledOrderList = styled.ol`
     flex-wrap: wrap;
     align-items: center;
 
+    li > a {
+        text-decoration: none;
+    }
+
     > li:last-child > a {
+        font-weight: 900;
+        color: ${COLOR_DARK_1};
+        pointer-events: none;
+    }
+
+    > li:last-child > button {
         font-weight: 900;
         color: ${COLOR_DARK_1};
         pointer-events: none;

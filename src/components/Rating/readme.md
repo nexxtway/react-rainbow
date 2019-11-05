@@ -1,6 +1,11 @@
 ##### rating base
 
 ```js
+import React from 'react';
+import { Card, ButtonGroup, ButtonIcon, Rating } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+
 const cardStyles = {
     width: 300,
 };
@@ -13,9 +18,6 @@ const imageStyles = {
     backgroundImage: 'url(images/illustrations/Illustration-rainbow-4.svg)',
     backgroundSize: 'cover',
 };
-
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faPlus, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');
 
 class SimpleRating extends React.Component {
     constructor(props) {
@@ -66,16 +68,24 @@ class SimpleRating extends React.Component {
             <div style={imageStyles} />
         </Card>
     </div>
-</div>;
+</div>
 ```
 
 ##### rating with details
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faPlus, faEllipsisV, faImages } = require('@fortawesome/free-solid-svg-icons');
-
-const smallStar = require('../../../assets/images/smallStar.svg');
+import React from 'react';
+import {
+    Rating,
+    ButtonGroup,
+    ButtonIcon,
+    Card,
+    CarouselCard,
+    CarouselImage,
+} from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faEllipsisV, faImages } from '@fortawesome/free-solid-svg-icons';
+import smallStar from '../../../assets/images/smallStar.svg';
 
 const iconContainerStyles = {
     width: '2rem',
@@ -268,5 +278,5 @@ class DetailRating extends React.Component {
             </CarouselCard>
         </Card>
     </div>
-</div>;
+</div>
 ```

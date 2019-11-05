@@ -1,6 +1,9 @@
 ##### TimePicker base:
 
 ```js
+import React from 'react';
+import { TimePicker } from 'react-rainbow-components';
+
 const containerStyles = {
     maxWidth: 400,
 };
@@ -18,6 +21,9 @@ const containerStyles = {
 ##### TimePicker with inital value:
 
 ```js
+import React from 'react';
+import { TimePicker } from 'react-rainbow-components';
+
 const containerStyles = {
     maxWidth: 400,
 };
@@ -36,6 +42,9 @@ initialState = { time: '13:32' };
 ##### TimePicker required:
 
 ```js
+import React from 'react';
+import { TimePicker } from 'react-rainbow-components';
+
 const containerStyles = {
     maxWidth: 400,
 };
@@ -53,6 +62,9 @@ const containerStyles = {
 ##### TimePicker with error:
 
 ```js
+import React from 'react';
+import { TimePicker } from 'react-rainbow-components';
+
 const containerStyles = {
     maxWidth: 400,
 };
@@ -71,6 +83,9 @@ const containerStyles = {
 ##### TimePicker disabled:
 
 ```js
+import React from 'react';
+import { TimePicker } from 'react-rainbow-components';
+
 const containerStyles = {
     maxWidth: 400,
 };
@@ -87,6 +102,9 @@ const containerStyles = {
 ##### TimePicker readOnly:
 
 ```js
+import React from 'react';
+import { TimePicker } from 'react-rainbow-components';
+
 const containerStyles = {
     maxWidth: 400,
 };

@@ -1,8 +1,10 @@
 ##### Tabset base
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faCog, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');
+import React from 'react';
+import { Tabset, Tab, ButtonGroup, ButtonIcon } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const tabsContainerStyles = {
     backgroundColor: 'white',
@@ -148,9 +150,11 @@ class TabsetExample extends React.Component {
 ##### Tabset fullWidth
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faCog, faEllipsisV, faFolderOpen, faLock } = require('@fortawesome/free-solid-svg-icons');
-const { faClock, faStar } = require('@fortawesome/free-regular-svg-icons');
+import React from 'react';
+import { Tabset, Tab, ButtonGroup, ButtonIcon } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog, faEllipsisV, faFolderOpen, faLock } from '@fortawesome/free-solid-svg-icons';
+import { faClock, faStar } from '@fortawesome/free-regular-svg-icons';
 
 const tabsContainerStyles = {
     backgroundColor: 'white',
@@ -302,8 +306,10 @@ class TabsetExample extends React.Component {
 ##### Tabset with multi Tabs
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faCog, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');
+import React from 'react';
+import { Tabset, Tab, ButtonGroup, ButtonIcon } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const tabsContainerStyles = {
     backgroundColor: 'white',

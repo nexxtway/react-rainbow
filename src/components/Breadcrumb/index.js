@@ -1,7 +1,9 @@
 /* eslint-disable no-script-url */
 import React from 'react';
 import PropTypes from 'prop-types';
+import RenderIf from './../RenderIf';
 import StyledAnchor from './styled/anchor';
+import StyledButton from './styled/button';
 
 /**
  * An item in the hierarchy path of the page the user is on.
@@ -12,14 +14,16 @@ export default function Breadcrumb(props) {
 
     return (
         <li className={className} style={style}>
-            <StyledAnchor
-                disabled={disabled}
-                href={href}
-                onClick={onClick}
-                aria-disabled={!!disabled}
-            >
-                {label}
-            </StyledAnchor>
+            <RenderIf isTrue={!!href}>
+                <StyledAnchor disabled={disabled} href={href} aria-disabled={!!disabled}>
+                    {label}
+                </StyledAnchor>
+            </RenderIf>
+            <RenderIf isTrue={onClick && !href}>
+                <StyledButton disabled={disabled} onClick={onClick} aria-disabled={!!disabled}>
+                    {label}
+                </StyledButton>
+            </RenderIf>
         </li>
     );
 }
@@ -41,7 +45,7 @@ Breadcrumb.propTypes = {
 
 Breadcrumb.defaultProps = {
     label: undefined,
-    href: 'javascript:void(0);',
+    href: undefined,
     onClick: () => {},
     disabled: false,
     className: undefined,

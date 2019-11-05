@@ -13,6 +13,7 @@ import StyledTimeSelect from './styled/timeSelect';
 
 function DateTimePickerModal(props) {
     const {
+        id,
         isOpen,
         title,
         value,
@@ -23,6 +24,7 @@ function DateTimePickerModal(props) {
         cancelLabel,
         onRequestClose,
         onChange,
+        locale,
     } = props;
 
     const [date, setDate] = useState(value);
@@ -32,12 +34,12 @@ function DateTimePickerModal(props) {
     useEffect(() => {
         setDate(value);
         setTime(!value ? '' : extractTime(value));
-    }, [value]);
+    }, [isOpen, value]);
 
     useEffect(() => {
         const currentDateTime = new Date(`${extractDate(date)} ${time}`);
-        setModalTitle(formatDateTime(currentDateTime, formatStyle));
-    }, [date, time, formatStyle]);
+        setModalTitle(formatDateTime(currentDateTime, formatStyle, locale));
+    }, [date, time, formatStyle, locale]);
 
     const handleChange = selectedTime => {
         const currentValue = new Date(`${extractDate(date)} ${selectedTime}`);
@@ -52,13 +54,14 @@ function DateTimePickerModal(props) {
     };
 
     return (
-        <StyledModal isOpen={isOpen} onRequestClose={onRequestClose}>
+        <StyledModal id={id} isOpen={isOpen} onRequestClose={onRequestClose}>
             <StyledHeader>
                 <StyledH2>{modalTitle}</StyledH2>
             </StyledHeader>
             <StyledResponsiveContainer>
                 <StyledCalendar
                     value={date}
+                    locale={locale}
                     minDate={minDate}
                     maxDate={maxDate}
                     formatStyle={formatStyle}
@@ -78,6 +81,7 @@ function DateTimePickerModal(props) {
 }
 
 DateTimePickerModal.propTypes = {
+    id: PropTypes.string,
     title: PropTypes.string,
     isOpen: PropTypes.bool.isRequired,
     value: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
@@ -88,9 +92,11 @@ DateTimePickerModal.propTypes = {
     okLabel: PropTypes.string,
     cancelLabel: PropTypes.string,
     onChange: PropTypes.func,
+    locale: PropTypes.string,
 };
 
 DateTimePickerModal.defaultProps = {
+    id: undefined,
     title: undefined,
     value: undefined,
     minDate: undefined,
@@ -98,6 +104,7 @@ DateTimePickerModal.defaultProps = {
     okLabel: 'Ok',
     cancelLabel: 'Cancel',
     onChange: () => {},
+    locale: undefined,
 };
 
 export default DateTimePickerModal;
