@@ -167,12 +167,14 @@ class CalendarComponent extends Component {
     nextMonth() {
         this.setState({
             currentMonth: addMonths(this.state.currentMonth, 1),
+            focusedDate: getFirstDayMonth(addMonths(this.state.currentMonth, 1)),
         });
     }
 
     previousMonth() {
         this.setState({
             currentMonth: addMonths(this.state.currentMonth, -1),
+            focusedDate: getFirstDayMonth(addMonths(this.state.currentMonth, -1)),
         });
     }
 
@@ -181,6 +183,7 @@ class CalendarComponent extends Component {
         const newMonth = new Date(this.state.currentMonth);
         newMonth.setFullYear(year);
         this.setState({
+            focusedDate: getFirstDayMonth(newMonth),
             currentMonth: newMonth,
         });
     }
