@@ -35,6 +35,7 @@ function SidebarItem(props) {
         >
             <RenderIf isTrue={!!href}>
                 <StyledAnchorContent
+                    data-id="sidebar-item-clickable-element"
                     href={href}
                     onClick={hanldeOnClick}
                     aria-current={getAriaCurrent()}
@@ -43,7 +44,11 @@ function SidebarItem(props) {
                 </StyledAnchorContent>
             </RenderIf>
             <RenderIf isTrue={!href}>
-                <StyledButtonContent onClick={hanldeOnClick} aria-current={getAriaCurrent()}>
+                <StyledButtonContent
+                    data-id="sidebar-item-clickable-element"
+                    onClick={hanldeOnClick}
+                    aria-current={getAriaCurrent()}
+                >
                     <ItemContent isSelected={isSelected} label={label} icon={icon} />
                 </StyledButtonContent>
             </RenderIf>
