@@ -72,7 +72,7 @@ class PaginationExample extends React.Component {
 
     getContent() {
         const { activePage } = this.state;
-        const lastItem = activePage + 2;
+        const lastItem = activePage * 2;
         const firstItem = lastItem - 2;
         return this.content.slice(firstItem, lastItem).map(({ title, src }) => (
             <Card
