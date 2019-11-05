@@ -14,7 +14,7 @@ function DayComponent(props) {
     const day = date.getDate();
     const isAdjacentDate = date.getMonth() !== firstDayMonth.getMonth();
     const isDisabled = compareDates(date, maxDate) > 0 || compareDates(date, minDate) < 0;
-    const isFocused = showFocusedDate && isSameDay(focusedDate, date);
+    const isFocused = !isSelected && showFocusedDate && isSameDay(focusedDate, date);
 
     if (isAdjacentDate || isDisabled) {
         return (
@@ -28,7 +28,7 @@ function DayComponent(props) {
         <StyledDay role="gridcell">
             <StyledDayButton
                 tabIndex="-1"
-                onClick={() => onChange(new Date(date))}
+                onMouseDown={() => onChange(new Date(date))}
                 isSelected={isSelected}
                 isFocused={isFocused}
                 data-selected={isSelected}

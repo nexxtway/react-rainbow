@@ -50,9 +50,11 @@ class CalendarComponent extends Component {
             currentMonth: getFirstDayMonth(normalizeDate(props.value)),
         };
         this.monthLabelId = uniqueId('month');
+        this.tableRef = React.createRef();
         this.previousMonth = this.previousMonth.bind(this);
         this.nextMonth = this.nextMonth.bind(this);
         this.handleYearChange = this.handleYearChange.bind(this);
+        this.handleChange = this.handleChange.bind(this);
         this.handleFocusDaysContainer = this.handleFocusDaysContainer.bind(this);
         this.handleBlurDaysContainer = this.handleBlurDaysContainer.bind(this);
         this.handleKeyDown = this.handleKeyDown.bind(this);
@@ -85,13 +87,19 @@ class CalendarComponent extends Component {
         };
     }
 
-    componentDidUpdate(prevProps) {
+    componentDidUpdate(prevProps, prevState) {
         const { value: prevValue } = prevProps;
         const { value } = this.props;
         const normalizedDate = normalizeDate(value);
         if (formatDate(normalizeDate(prevValue)) !== formatDate(normalizedDate)) {
             this.updateCurrentMonth(normalizedDate);
             this.updateFocusedDate(normalizedDate);
+        }
+
+        const { showFocusedDate: prevShowFocusedDate } = prevState;
+        const { showFocusedDate } = this.state;
+        if (showFocusedDate && !prevShowFocusedDate) {
+            this.tableRef.current.focus();
         }
     }
 
@@ -236,20 +244,30 @@ class CalendarComponent extends Component {
     }
 
     handleFocusDaysContainer() {
+        if (this.state.showFocusedDate) return;
         this.setState({
             showFocusedDate: true,
         });
     }
 
     handleBlurDaysContainer() {
+        if (!this.state.showFocusedDate) return;
         this.setState({
             showFocusedDate: false,
         });
     }
 
+    handleChange(date) {
+        const { onChange } = this.props;
+        onChange(date);
+        setTimeout(() => {
+            this.tableRef.current.focus();
+        }, 0);
+    }
+
     render() {
         const { currentMonth } = this.state;
-        const { id, onChange, value, minDate, maxDate, className, style, locale } = this.props;
+        const { id, value, minDate, maxDate, className, style, locale } = this.props;
         const formattedMonth = getFormattedMonth(currentMonth, locale);
         const currentYear = currentMonth.getFullYear();
         const yearsRange = getYearsRange({
@@ -298,6 +316,7 @@ class CalendarComponent extends Component {
                 </StyledControlsContainer>
                 <StyledTable
                     role="grid"
+                    ref={this.tableRef}
                     aria-labelledby={this.monthLabelId}
                     tabIndex="0"
                     onKeyDown={this.handleKeyDown}
@@ -311,7 +330,7 @@ class CalendarComponent extends Component {
                             firstDayMonth={currentMonth}
                             minDate={minDate}
                             maxDate={maxDate}
-                            onChange={onChange}
+                            onChange={this.handleChange}
                         />
                     </Provider>
                 </StyledTable>
