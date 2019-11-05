@@ -26,7 +26,7 @@ describe('<DateTimePickerModal/>', () => {
             .find('td')
             .at(5)
             .find('button')
-            .simulate('click');
+            .simulate('mouseDown');
         expect(component.find('TimeSelect').props().value).toBe('12:00 AM');
     });
     it('should fire OnChange when Ok button is clicked', () => {
@@ -37,7 +37,7 @@ describe('<DateTimePickerModal/>', () => {
             .find('td')
             .at(5)
             .find('button')
-            .simulate('click');
+            .simulate('mouseDown');
         component
             .find('TimeSelect')
             .find('Button')

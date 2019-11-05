@@ -16,7 +16,7 @@ describe('Day', () => {
         const component = mount(
             <Day date={date} firstDayMonth={firstDayMonth} onChange={onChangeMockFn} />,
         );
-        component.find('button').simulate('click');
+        component.find('button').simulate('mouseDown');
         expect(onChangeMockFn).toHaveBeenCalledWith(new Date('04/24/2019'));
     });
     it('should render the right day when is adjacent', () => {
