@@ -1,5 +1,10 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_4, COLOR_GRAY_1, COLOR_DARK_1 } from '../../../styles/colors';
+import {
+    COLOR_GRAY_4,
+    COLOR_GRAY_1,
+    COLOR_GRAY_TRANSPARENT_1,
+    COLOR_DARK_1,
+} from '../../../styles/colors';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 
 const StyledAnchor = styled.a`
@@ -18,7 +23,6 @@ const StyledAnchor = styled.a`
     :hover,
     :focus,
     :active {
-        background-color: ${COLOR_GRAY_1};
         color: ${COLOR_DARK_1};
         text-decoration: none;
         outline: 0;
@@ -27,6 +31,11 @@ const StyledAnchor = styled.a`
     :focus,
     :active {
         font-family: 'Lato Black', Arial, sans-serif;
+        background-color: ${COLOR_GRAY_1};
+    }
+
+    :hover {
+        background-color: ${COLOR_GRAY_TRANSPARENT_1};
     }
 `;
 
