@@ -16,10 +16,12 @@ import {
     getFormattedMonth,
     getLastDayMonth,
     getYearsRange,
-    compareDates,
-    isSameMonthAndYear,
+    isSameMonth,
+    isSameYear,
     getSign,
     getCalendarBounds,
+    isDateBelowLimit,
+    isDateBeyondLimit,
 } from './helpers';
 import StyledControlsContainer from './styled/controlsContainer';
 import StyledMonthContainer from './styled/monthContainer';
@@ -124,17 +126,17 @@ class CalendarComponent extends Component {
         let nextFocusedDate = addDays(focusedDate, increment);
         let nextFocusedMonth = currentMonth;
 
-        if (nextFocusedDate.getMonth() !== currentMonth.getMonth()) {
+        if (!isSameMonth(nextFocusedDate, currentMonth)) {
             nextFocusedMonth = getFirstDayMonth(addMonths(currentMonth, getSign(increment)));
         }
 
         const { minDate, maxDate } = this.props;
         const { minCalendarDate, maxCalendarDate } = getCalendarBounds(minDate, maxDate);
 
-        if (compareDates(nextFocusedDate, minCalendarDate) < 0) {
+        if (isDateBelowLimit(nextFocusedDate, minCalendarDate)) {
             nextFocusedDate = minCalendarDate;
             nextFocusedMonth = getFirstDayMonth(minCalendarDate);
-        } else if (compareDates(nextFocusedDate, maxCalendarDate) > 0) {
+        } else if (isDateBeyondLimit(nextFocusedDate, maxCalendarDate)) {
             nextFocusedDate = maxCalendarDate;
             nextFocusedMonth = getFirstDayMonth(maxCalendarDate);
         }
@@ -151,9 +153,9 @@ class CalendarComponent extends Component {
 
         const { minDate, maxDate } = this.props;
         const { minCalendarDate, maxCalendarDate } = getCalendarBounds(minDate, maxDate);
-        if (compareDates(nextFocusedDate, minCalendarDate) < 0) {
+        if (isDateBelowLimit(nextFocusedDate, minCalendarDate)) {
             nextFocusedDate = minCalendarDate;
-        } else if (compareDates(nextFocusedDate, maxCalendarDate) > 0) {
+        } else if (isDateBeyondLimit(nextFocusedDate, maxCalendarDate)) {
             nextFocusedDate = maxCalendarDate;
         }
 
@@ -178,9 +180,10 @@ class CalendarComponent extends Component {
     nextMonth() {
         const newMonth = addMonths(this.state.currentMonth, 1);
         const { value } = this.props;
-        const focusedDate = isSameMonthAndYear(value, newMonth)
-            ? value
-            : getFirstDayMonth(newMonth);
+        const focusedDate =
+            isSameMonth(value, newMonth) && isSameYear(value, newMonth)
+                ? value
+                : getFirstDayMonth(newMonth);
 
         this.setState({
             focusedDate,
@@ -191,9 +194,10 @@ class CalendarComponent extends Component {
     previousMonth() {
         const newMonth = addMonths(this.state.currentMonth, -1);
         const { value } = this.props;
-        const focusedDate = isSameMonthAndYear(value, newMonth)
-            ? value
-            : getFirstDayMonth(newMonth);
+        const focusedDate =
+            isSameMonth(value, newMonth) && isSameYear(value, newMonth)
+                ? value
+                : getFirstDayMonth(newMonth);
 
         this.setState({
             focusedDate,
@@ -207,9 +211,10 @@ class CalendarComponent extends Component {
         newMonth.setFullYear(year);
 
         const { value } = this.props;
-        const focusedDate = isSameMonthAndYear(value, newMonth)
-            ? value
-            : getFirstDayMonth(newMonth);
+        const focusedDate =
+            isSameMonth(value, newMonth) && isSameYear(value, newMonth)
+                ? value
+                : getFirstDayMonth(newMonth);
 
         this.setState({
             focusedDate,
