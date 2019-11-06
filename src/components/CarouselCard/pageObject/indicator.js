@@ -18,7 +18,7 @@ class PageCarouselCardIndicator {
      */
     click() {
         $(this.rootElement)
-            .$('a')
+            .$('button')
             .click();
     }
 
@@ -29,7 +29,7 @@ class PageCarouselCardIndicator {
      */
     hasFocus() {
         return $(this.rootElement)
-            .$('a')
+            .$('button')
             .isFocused();
     }
 
@@ -41,7 +41,7 @@ class PageCarouselCardIndicator {
     isSelected() {
         return (
             $(this.rootElement)
-                .$('a')
+                .$('button')
                 .getAttribute('class') ===
             'rainbow-carousel_indicator rainbow-carousel_indicator--active'
         );
