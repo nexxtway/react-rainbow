@@ -53,6 +53,7 @@ function Item(props) {
             style={style}
             data-active={isSelected}
             isSelected={isSelected}
+            data-id="vertical-item"
         >
             <StyledAnchor
                 data-id="vertical-item-clickable-element"

@@ -39,7 +39,7 @@ class PageVerticalItem {
      * @returns {bool}
      */
     isSelected() {
-        return $(this.rootElement).getAttribute('data-active') === true;
+        return !!$(this.rootElement).getAttribute('data-active');
     }
 }
 

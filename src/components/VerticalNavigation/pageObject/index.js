@@ -21,12 +21,10 @@ class PageVerticalNavigation {
      * @param {number} itemPosition - The base 0 index of the vertical item.
      */
     getItem(itemPosition) {
-        const items = $(this.rootElement).$$('[data-id="vertical-item-clickable-element"]');
+        const items = $(this.rootElement).$$('[data-id="vertical-item"]');
         if (items[itemPosition]) {
             return new PageVerticalItem(
-                `${
-                    this.rootElement
-                } [data-id="vertical-item-clickable-element"]:nth-child(${itemPosition + 1})`,
+                `${this.rootElement} [data-id="vertical-item"]:nth-child(${itemPosition + 1})`,
             );
         }
         return null;
