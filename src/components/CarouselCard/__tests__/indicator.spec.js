@@ -12,13 +12,13 @@ describe('<Indicator />', () => {
                 header="Header"
             />,
         );
-        const anchorComponent = component.find(
-            'a.rainbow-carousel_indicator.rainbow-carousel_indicator--active',
+        const buttonComponent = component.find(
+            'button.rainbow-carousel_indicator.rainbow-carousel_indicator--active',
         );
 
-        expect(anchorComponent.exists()).toBe(true);
-        expect(anchorComponent.prop('aria-selected')).toBe(true);
-        expect(anchorComponent.prop('tabIndex')).toBe(0);
+        expect(buttonComponent.exists()).toBe(true);
+        expect(buttonComponent.prop('aria-selected')).toBe(true);
+        expect(buttonComponent.prop('tabIndex')).toBe(0);
     });
     it('should set the right props if the indicator is not selected', () => {
         const component = mount(
@@ -29,12 +29,12 @@ describe('<Indicator />', () => {
                 header="Header"
             />,
         );
-        const anchorComponent = component.find('a.rainbow-carousel_indicator');
+        const buttonComponent = component.find('button.rainbow-carousel_indicator');
 
-        expect(anchorComponent.prop('aria-selected')).toBe(false);
-        expect(anchorComponent.prop('tabIndex')).toBe(-1);
+        expect(buttonComponent.prop('aria-selected')).toBe(false);
+        expect(buttonComponent.prop('tabIndex')).toBe(-1);
     });
-    it('should set the assistive text as title to the anchor element', () => {
+    it('should set the assistive text as title to the button element', () => {
         const component = mount(
             <Indicator
                 selectedItem="indicator-1"
@@ -43,10 +43,10 @@ describe('<Indicator />', () => {
                 header="Header"
             />,
         );
-        const anchorComponent = component.find('a.rainbow-carousel_indicator');
+        const buttonComponent = component.find('button.rainbow-carousel_indicator');
 
-        expect(anchorComponent.text()).toBe('Header Tab');
-        expect(anchorComponent.prop('title')).toBe('Header Tab');
+        expect(buttonComponent.text()).toBe('Header Tab');
+        expect(buttonComponent.prop('title')).toBe('Header Tab');
     });
     it('should set title and text in AssistiveText to undefined when header is not a string', () => {
         const component = mount(
@@ -57,12 +57,12 @@ describe('<Indicator />', () => {
                 header={<span>Header</span>}
             />,
         );
-        const anchorComponent = component.find('a.rainbow-carousel_indicator');
+        const buttonComponent = component.find('button.rainbow-carousel_indicator');
 
-        expect(anchorComponent.text()).toBe('');
-        expect(anchorComponent.prop('title')).toBe(undefined);
+        expect(buttonComponent.text()).toBe('');
+        expect(buttonComponent.prop('title')).toBe(undefined);
     });
-    it('should set the role as tab in anchor element', () => {
+    it('should set the role as tab in button element', () => {
         const component = mount(
             <Indicator
                 selectedItem="indicator-1"
@@ -71,9 +71,9 @@ describe('<Indicator />', () => {
                 header={<span>Header</span>}
             />,
         );
-        const anchorComponent = component.find('a.rainbow-carousel_indicator');
+        const buttonComponent = component.find('button.rainbow-carousel_indicator');
 
-        expect(anchorComponent.prop('role')).toBe('tab');
+        expect(buttonComponent.prop('role')).toBe('tab');
     });
     it('should set the right accesivillity props', () => {
         const component = mount(
@@ -84,10 +84,10 @@ describe('<Indicator />', () => {
                 header="Header"
             />,
         );
-        const anchorComponent = component.find('a.rainbow-carousel_indicator');
+        const buttonComponent = component.find('button.rainbow-carousel_indicator');
 
-        expect(anchorComponent.prop('id')).toBe('indicator-1');
-        expect(anchorComponent.prop('aria-controls')).toBe('container-1');
+        expect(buttonComponent.prop('id')).toBe('indicator-1');
+        expect(buttonComponent.prop('aria-controls')).toBe('container-1');
     });
     it('should call the function passed in onSelect prop', () => {
         const onSelectMockFn = jest.fn();
@@ -100,8 +100,8 @@ describe('<Indicator />', () => {
                 onSelect={onSelectMockFn}
             />,
         );
-        const anchorComponent = component.find('a.rainbow-carousel_indicator');
-        anchorComponent.simulate('click');
+        const buttonComponent = component.find('button.rainbow-carousel_indicator');
+        buttonComponent.simulate('click');
 
         expect(onSelectMockFn).toHaveBeenCalledWith('indicator-1');
     });

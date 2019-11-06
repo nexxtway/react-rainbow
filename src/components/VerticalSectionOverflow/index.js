@@ -85,6 +85,7 @@ export default class VerticalSectionOverflow extends Component {
                 style={style}
             >
                 <button
+                    data-id="vertical-overflow-button"
                     className={this.getButtonClassNames()}
                     aria-controls={this.searchResultsId}
                     aria-expanded={isExpanded}

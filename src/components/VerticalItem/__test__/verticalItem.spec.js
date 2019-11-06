@@ -3,18 +3,11 @@ import { mount } from 'enzyme';
 import VerticalItem from './../';
 
 describe('<VerticalItem/>', () => {
-    it('should set the rainbow-is-active className to li container when the item is selected', () => {
-        const component = mount(<VerticalItem label="item 1" name="item1" selectedItem="item1" />);
-        expect(component.find('li').prop('className')).toBe(
-            'rainbow-vertical-item rainbow-vertical-item--active',
-        );
-    });
     it('should pass the right props to anchor element', () => {
         const component = mount(<VerticalItem label="item 1" name="item1" href="/page/to/go" />);
         expect(component.find('a').props()).toEqual(
             expect.objectContaining({
                 href: '/page/to/go',
-                className: 'rainbow-vertical-item_action',
                 'aria-current': undefined,
                 onClick: expect.any(Function),
             }),
