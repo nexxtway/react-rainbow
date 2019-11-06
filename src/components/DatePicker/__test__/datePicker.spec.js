@@ -42,7 +42,7 @@ describe('<DatePicker/>', () => {
         component
             .find('button')
             .at('14')
-            .simulate('mouseDown');
+            .simulate('click');
         expect(onChangeMockFn).toHaveBeenCalledWith(new Date('06/12/2019'));
     });
     it('should close the modal when the Calendar date is changed', () => {
@@ -51,7 +51,7 @@ describe('<DatePicker/>', () => {
         component
             .find('button')
             .at('14')
-            .simulate('mouseDown');
+            .simulate('click');
         expect(component.find('Modal').prop('isOpen')).toBe(false);
     });
     it('should open the modal when enter or space key is pressed while DatePicker is focused and readOnly is not passed', () => {
