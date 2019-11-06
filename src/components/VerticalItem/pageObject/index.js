@@ -18,7 +18,7 @@ class PageVerticalItem {
      */
     click() {
         $(this.rootElement)
-            .$('.rainbow-vertical-item_action')
+            .$('[data-id="vertical-item-clickable-element"]')
             .click();
     }
 
@@ -29,7 +29,7 @@ class PageVerticalItem {
      */
     hasFocus() {
         return $(this.rootElement)
-            .$('.rainbow-vertical-item_action')
+            .$('[data-id="vertical-item-clickable-element"]')
             .isFocused();
     }
 
@@ -39,10 +39,7 @@ class PageVerticalItem {
      * @returns {bool}
      */
     isSelected() {
-        return (
-            $(this.rootElement).getAttribute('class') ===
-            'rainbow-vertical-item rainbow-vertical-item--active'
-        );
+        return $(this.rootElement).getAttribute('data-active') === true;
     }
 }
 

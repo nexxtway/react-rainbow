@@ -48,8 +48,14 @@ function Item(props) {
     }
 
     return (
-        <StyledLi className={className} style={style} isSelected={isSelected}>
+        <StyledLi
+            className={className}
+            style={style}
+            data-active={isSelected}
+            isSelected={isSelected}
+        >
             <StyledAnchor
+                data-id="vertical-item-clickable-element"
                 href={href}
                 onClick={hanldeOnClick}
                 aria-describedby={entityHeaderId}
