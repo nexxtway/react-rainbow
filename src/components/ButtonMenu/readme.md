@@ -252,7 +252,7 @@ import { faCog, faShareAlt, faPlus, faBell, faSlidersH } from '@fortawesome/free
 ```js
 import React from 'react';
 import { ButtonGroup, ButtonIcon, ButtonMenu, MenuItem } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCog,
     faPencilAlt,
