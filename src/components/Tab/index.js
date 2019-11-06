@@ -32,27 +32,6 @@ class TabItem extends Component {
         privateUnRegisterTab(name);
     }
 
-    // getContainerClassName() {
-    //     const { className, fullWidth } = this.props;
-    //     return classnames(
-    //         'rainbow-tab',
-    //         {
-    //             'rainbow-tab--full-width': fullWidth,
-    //             'rainbow-tab--active': this.isSelected(),
-    //         },
-    //         className,
-    //     );
-    // }
-
-    // getTabClassName() {
-    //     const { disabled, fullWidth } = this.props;
-    //     return classnames('rainbow-tab_anchor', {
-    //         'rainbow-tab--active': this.isSelected(),
-    //         'rainbow-tab--disabled': disabled,
-    //         'rainbow-tab--full-width': fullWidth,
-    //     });
-    // }
-
     getTabIndex() {
         if (this.isSelected()) {
             return 0;

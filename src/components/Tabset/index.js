@@ -1,10 +1,7 @@
 /* eslint-disable max-len */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { Provider } from './context';
-import ButtonGroup from './../ButtonGroup';
-import ButtonIcon from './../ButtonIcon';
 import RenderIf from './../RenderIf';
 import { LEFT_KEY, RIGHT_KEY } from '../../libs/constants';
 import {
@@ -22,7 +19,12 @@ import RightThinChevron from './rightThinChevron';
 import LeftThinChevron from './leftThinChevron';
 import ResizeSensor from '../../libs/ResizeSensor';
 import debounce from '../../libs/debounce';
-import './styles.css';
+import StyledContainer from './styled/container';
+import StyledObserver from './styled/observer';
+import StyledTabset from './styled/tabset';
+import StyledInnerContainer from './styled/innerContainer';
+import StyledButtonGroup from './styled/buttonGroup';
+import StyledButtonIcon from './styled/buttonIcon';
 
 const RIGHT_SIDE = 1;
 const LEFT_SIDE = -1;
@@ -78,18 +80,6 @@ export default class Tabset extends Component {
 
     componentWillUnmount() {
         this.widthObserver.detach(this.resizeTarget.current);
-    }
-
-    getContainerClassName() {
-        const { className } = this.props;
-        return classnames('rainbow-tabset_container', className);
-    }
-
-    getInnerContainerClassName() {
-        const { fullWidth } = this.props;
-        return classnames('rainbow-tabset_inner-container', {
-            'rainbow-tabset_inner-container--full-width': fullWidth,
-        });
     }
 
     setAsSelectedTab(tabIndex) {
@@ -231,7 +221,7 @@ export default class Tabset extends Component {
     }
 
     render() {
-        const { activeTabName, fullWidth, children, style, id } = this.props;
+        const { activeTabName, fullWidth, children, style, className, id } = this.props;
         const { areButtonsVisible } = this.state;
         const { screenWidth } = this;
         const showButtons = areButtonsVisible || screenWidth < 600;
@@ -245,40 +235,38 @@ export default class Tabset extends Component {
         };
 
         return (
-            <div className={this.getContainerClassName()} style={style} id={id}>
-                <div className="rainbow-tabset-width-observer" ref={this.resizeTarget} />
-                <div className="rainbow-tabset">
-                    <ul
-                        className={this.getInnerContainerClassName()}
+            <StyledContainer className={className} style={style} id={id}>
+                <StyledObserver ref={this.resizeTarget} />
+                <StyledTabset>
+                    <StyledInnerContainer
+                        fullWidth={fullWidth}
                         role="tablist"
                         onKeyDown={this.handleKeyPressed}
                         onScroll={this.updateButtonsVisibility}
                         ref={this.tabsetRef}
                     >
                         <Provider value={context}>{children}</Provider>
-                    </ul>
+                    </StyledInnerContainer>
                     <RenderIf isTrue={showButtons}>
-                        <ButtonGroup className="rainbow-tabset_button-group">
-                            <ButtonIcon
-                                className="rainbow-tabset_button-icon"
+                        <StyledButtonGroup>
+                            <StyledButtonIcon
                                 icon={<LeftThinChevron />}
                                 disabled={this.isLeftButtonDisabled()}
                                 onClick={this.handleLeftButtonClick}
                                 assistiveText="previus tab button"
                                 variant="border-filled"
                             />
-                            <ButtonIcon
-                                className="rainbow-tabset_button-icon"
+                            <StyledButtonIcon
                                 icon={<RightThinChevron />}
                                 disabled={this.isRightButtonDisabled()}
                                 onClick={this.handleRightButtonClick}
                                 assistiveText="next tab button"
                                 variant="border-filled"
                             />
-                        </ButtonGroup>
+                        </StyledButtonGroup>
                     </RenderIf>
-                </div>
-            </div>
+                </StyledTabset>
+            </StyledContainer>
         );
     }
 }
