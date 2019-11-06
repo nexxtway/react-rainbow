@@ -9,6 +9,9 @@ import isSameDay from './isSameDay';
 import normalizeDate from './normalizeDate';
 import getFormattedDayName from './getFormattedDayName';
 import compareDates from './compareDates';
+import isSameMonthAndYear from './isSameMonthAndYear';
+import getSign from './getSign';
+import getCalendarBounds from './getCalendarBounds';
 
 export {
     addDays,
@@ -22,4 +25,7 @@ export {
     normalizeDate,
     getFormattedDayName,
     compareDates,
+    isSameMonthAndYear,
+    getSign,
+    getCalendarBounds,
 };
