@@ -107,9 +107,9 @@ export default class CarouselCard extends Component {
                         isAnimationPaused={isAnimationPaused}
                     />
                 </span>
-                <div className="rainbow-carousel_images" ref={this.containerRef}>
+                <ul className="rainbow-carousel_images" ref={this.containerRef}>
                     <Provider value={this.state}>{children}</Provider>
-                </div>
+                </ul>
                 <Indicators
                     carouselChildren={childrenRegistred}
                     onSelect={this.setActiveItem}
