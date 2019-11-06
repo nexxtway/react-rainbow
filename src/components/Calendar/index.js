@@ -17,10 +17,12 @@ import {
     getLastDayMonth,
     getYearsRange,
     compareDates,
+    isSameMonthAndYear,
+    getSign,
+    getCalendarBounds,
 } from './helpers';
 import StyledControlsContainer from './styled/controlsContainer';
 import StyledMonthContainer from './styled/monthContainer';
-import StyledTable from './styled/table';
 import StyledMonth from './styled/month';
 import {
     UP_KEY,
@@ -45,18 +47,14 @@ class CalendarComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showFocusedDate: false,
             focusedDate: normalizeDate(props.value),
             currentMonth: getFirstDayMonth(normalizeDate(props.value)),
         };
+        this.enableNavKeys = false;
         this.monthLabelId = uniqueId('month');
-        this.tableRef = React.createRef();
         this.previousMonth = this.previousMonth.bind(this);
         this.nextMonth = this.nextMonth.bind(this);
         this.handleYearChange = this.handleYearChange.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-        this.handleFocusDaysContainer = this.handleFocusDaysContainer.bind(this);
-        this.handleBlurDaysContainer = this.handleBlurDaysContainer.bind(this);
         this.handleKeyDown = this.handleKeyDown.bind(this);
         this.handleKeyUpPressed = this.handleKeyUpPressed.bind(this);
         this.handleKeyDownPressed = this.handleKeyDownPressed.bind(this);
@@ -82,12 +80,17 @@ class CalendarComponent extends Component {
             [ENTER_KEY]: this.handleKeyEnterPressed,
         };
         this.keyHandlerMapAlt = {
+            [HOME_KEY]: this.handleKeyHomePressed,
+            [END_KEY]: this.handleKeyEndPressed,
             [PAGEUP_KEY]: this.handleKeyAltPageUpPressed,
             [PAGEDN_KEY]: this.handleKeyAltPageDownPressed,
         };
+
+        this.onDayFocus = this.onDayFocus.bind(this);
+        this.onDayBlur = this.onDayBlur.bind(this);
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps) {
         const { value: prevValue } = prevProps;
         const { value } = this.props;
         const normalizedDate = normalizeDate(value);
@@ -95,38 +98,45 @@ class CalendarComponent extends Component {
             this.updateCurrentMonth(normalizedDate);
             this.updateFocusedDate(normalizedDate);
         }
+    }
 
-        const { showFocusedDate: prevShowFocusedDate } = prevState;
-        const { showFocusedDate } = this.state;
-        if (showFocusedDate && !prevShowFocusedDate) {
-            this.tableRef.current.focus();
-        }
+    onDayFocus() {
+        this.enableNavKeys = true;
+    }
+
+    onDayBlur() {
+        this.enableNavKeys = false;
     }
 
     getContext() {
-        const { showFocusedDate, focusedDate } = this.state;
+        const { focusedDate } = this.state;
         return {
-            showFocusedDate,
             focusedDate,
+            useAutoFocus: this.enableNavKeys,
+            privateKeyDown: this.handleKeyDown,
+            privateOnFocus: this.onDayFocus,
+            privateOnBlur: this.onDayBlur,
         };
     }
 
     moveFocusedDay(increment) {
-        const { minDate, maxDate } = this.props;
         const { currentMonth, focusedDate } = this.state;
         let nextFocusedDate = addDays(focusedDate, increment);
         let nextFocusedMonth = currentMonth;
 
         if (nextFocusedDate.getMonth() !== currentMonth.getMonth()) {
-            nextFocusedMonth = getFirstDayMonth(addMonths(currentMonth, Math.sign(increment)));
+            nextFocusedMonth = getFirstDayMonth(addMonths(currentMonth, getSign(increment)));
         }
 
-        if (minDate && compareDates(nextFocusedDate, minDate) < 0) {
-            nextFocusedDate = minDate;
-            nextFocusedMonth = getFirstDayMonth(minDate);
-        } else if (maxDate && compareDates(nextFocusedDate, maxDate) > 0) {
-            nextFocusedDate = maxDate;
-            nextFocusedMonth = getFirstDayMonth(maxDate);
+        const { minDate, maxDate } = this.props;
+        const { minCalendarDate, maxCalendarDate } = getCalendarBounds(minDate, maxDate);
+
+        if (compareDates(nextFocusedDate, minCalendarDate) < 0) {
+            nextFocusedDate = minCalendarDate;
+            nextFocusedMonth = getFirstDayMonth(minCalendarDate);
+        } else if (compareDates(nextFocusedDate, maxCalendarDate) > 0) {
+            nextFocusedDate = maxCalendarDate;
+            nextFocusedMonth = getFirstDayMonth(maxCalendarDate);
         }
 
         this.setState({
@@ -136,14 +146,15 @@ class CalendarComponent extends Component {
     }
 
     moveFocusedMonth(increment) {
-        const { minDate, maxDate } = this.props;
         const { focusedDate } = this.state;
         let nextFocusedDate = addMonths(focusedDate, increment);
 
-        if (minDate && compareDates(nextFocusedDate, minDate) < 0) {
-            nextFocusedDate = minDate;
-        } else if (maxDate && compareDates(nextFocusedDate, maxDate) > 0) {
-            nextFocusedDate = maxDate;
+        const { minDate, maxDate } = this.props;
+        const { minCalendarDate, maxCalendarDate } = getCalendarBounds(minDate, maxDate);
+        if (compareDates(nextFocusedDate, minCalendarDate) < 0) {
+            nextFocusedDate = minCalendarDate;
+        } else if (compareDates(nextFocusedDate, maxCalendarDate) > 0) {
+            nextFocusedDate = maxCalendarDate;
         }
 
         this.setState({
@@ -165,16 +176,28 @@ class CalendarComponent extends Component {
     }
 
     nextMonth() {
+        const newMonth = addMonths(this.state.currentMonth, 1);
+        const { value } = this.props;
+        const focusedDate = isSameMonthAndYear(value, newMonth)
+            ? value
+            : getFirstDayMonth(newMonth);
+
         this.setState({
-            currentMonth: addMonths(this.state.currentMonth, 1),
-            focusedDate: getFirstDayMonth(addMonths(this.state.currentMonth, 1)),
+            focusedDate,
+            currentMonth: newMonth,
         });
     }
 
     previousMonth() {
+        const newMonth = addMonths(this.state.currentMonth, -1);
+        const { value } = this.props;
+        const focusedDate = isSameMonthAndYear(value, newMonth)
+            ? value
+            : getFirstDayMonth(newMonth);
+
         this.setState({
-            currentMonth: addMonths(this.state.currentMonth, -1),
-            focusedDate: getFirstDayMonth(addMonths(this.state.currentMonth, -1)),
+            focusedDate,
+            currentMonth: newMonth,
         });
     }
 
@@ -182,13 +205,20 @@ class CalendarComponent extends Component {
         const year = +event.target.value;
         const newMonth = new Date(this.state.currentMonth);
         newMonth.setFullYear(year);
+
+        const { value } = this.props;
+        const focusedDate = isSameMonthAndYear(value, newMonth)
+            ? value
+            : getFirstDayMonth(newMonth);
+
         this.setState({
-            focusedDate: getFirstDayMonth(newMonth),
+            focusedDate,
             currentMonth: newMonth,
         });
     }
 
     handleKeyDown(event) {
+        if (!this.enableNavKeys) return;
         const { keyCode, altKey } = event;
         const keyHandler = altKey ? this.keyHandlerMapAlt : this.keyHandlerMap;
         if (keyHandler[keyCode]) {
@@ -246,31 +276,9 @@ class CalendarComponent extends Component {
         onChange(new Date(focusedDate));
     }
 
-    handleFocusDaysContainer() {
-        if (this.state.showFocusedDate) return;
-        this.setState({
-            showFocusedDate: true,
-        });
-    }
-
-    handleBlurDaysContainer() {
-        if (!this.state.showFocusedDate) return;
-        this.setState({
-            showFocusedDate: false,
-        });
-    }
-
-    handleChange(date) {
-        const { onChange } = this.props;
-        onChange(date);
-        setTimeout(() => {
-            this.tableRef.current.focus();
-        }, 0);
-    }
-
     render() {
         const { currentMonth } = this.state;
-        const { id, value, minDate, maxDate, className, style, locale } = this.props;
+        const { id, value, onChange, minDate, maxDate, className, style, locale } = this.props;
         const formattedMonth = getFormattedMonth(currentMonth, locale);
         const currentYear = currentMonth.getFullYear();
         const yearsRange = getYearsRange({
@@ -317,15 +325,7 @@ class CalendarComponent extends Component {
                         onChange={this.handleYearChange}
                     />
                 </StyledControlsContainer>
-                <StyledTable
-                    role="grid"
-                    ref={this.tableRef}
-                    aria-labelledby={this.monthLabelId}
-                    tabIndex="0"
-                    onKeyDown={this.handleKeyDown}
-                    onFocus={this.handleFocusDaysContainer}
-                    onBlur={this.handleBlurDaysContainer}
-                >
+                <table role="grid" aria-labelledby={this.monthLabelId}>
                     <DaysOfWeek locale={locale} />
                     <Provider value={this.getContext()}>
                         <Month
@@ -333,10 +333,10 @@ class CalendarComponent extends Component {
                             firstDayMonth={currentMonth}
                             minDate={minDate}
                             maxDate={maxDate}
-                            onChange={this.handleChange}
+                            onChange={onChange}
                         />
                     </Provider>
-                </StyledTable>
+                </table>
             </section>
         );
     }

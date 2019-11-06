@@ -63,11 +63,6 @@ const StyledDayButton = styled.button`
                 margin: 3px auto;
             }
         `};
-    ${props =>
-        props.isFocused &&
-        `
-        box-shadow: ${SHADOW_OUTLINE};
-    `};
 `;
 
 export default StyledDayButton;
