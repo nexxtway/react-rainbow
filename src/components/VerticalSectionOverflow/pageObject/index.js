@@ -18,7 +18,7 @@ class PageVerticalSectionOverflow {
      */
     click() {
         $(this.rootElement)
-            .$('.rainbow-vertical-section-overflow_button')
+            .$('[data-id="vertical-overflow-button"]')
             .click();
     }
 
@@ -56,7 +56,7 @@ class PageVerticalSectionOverflow {
      */
     hasFocusButton() {
         return $(this.rootElement)
-            .$('.rainbow-vertical-section-overflow_button')
+            .$('[data-id="vertical-overflow-button"]')
             .isFocused();
     }
 }

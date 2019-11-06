@@ -21,10 +21,10 @@ class PageVerticalNavigation {
      * @param {number} itemPosition - The base 0 index of the vertical item.
      */
     getItem(itemPosition) {
-        const items = $(this.rootElement).$$('.rainbow-vertical-item');
+        const items = $(this.rootElement).$$('[data-id="vertical-item"]');
         if (items[itemPosition]) {
             return new PageVerticalItem(
-                `${this.rootElement} .rainbow-vertical-item:nth-child(${itemPosition + 1})`,
+                `${this.rootElement} [data-id="vertical-item"]:nth-child(${itemPosition + 1})`,
             );
         }
         return null;
@@ -36,12 +36,12 @@ class PageVerticalNavigation {
      * @param {number} itemPosition - The base 0 index of the vertical section overflow.
      */
     getSectionOverflow(itemPosition) {
-        const items = $(this.rootElement).$$('.rainbow-vertical-section-overflow_container');
+        const items = $(this.rootElement).$$('[data-id="vertical-overflow-container"]');
         if (items[itemPosition]) {
             return new PageVerticalSectionOverflow(
                 `${
                     this.rootElement
-                } .rainbow-vertical-section-overflow_container:nth-child(${itemPosition + 1})`,
+                } [data-id="vertical-overflow-container"]:nth-child(${itemPosition + 1})`,
             );
         }
         return null;
