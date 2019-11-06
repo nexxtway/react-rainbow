@@ -1,4 +1,3 @@
-/* eslint-disable no-script-url, react/prop-types */
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import RenderIf from '../RenderIf';
