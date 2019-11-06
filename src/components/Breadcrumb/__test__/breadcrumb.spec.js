@@ -7,12 +7,12 @@ describe('<Breadcrumb/>', () => {
     it('should render an anchor when href is passed', () => {
         const component = mount(<Breadcrumb label="index" href="index" />);
 
-        expect(component.find('a')).toBeTruthy();
+        expect(component.find('a').exists()).toBe(true);
     });
     it('should render a button when href is not passed', () => {
-        const component = mount(<Breadcrumb label="index" href="index" />);
+        const component = mount(<Breadcrumb label="index" />);
 
-        expect(component.find('button')).toBeTruthy();
+        expect(component.find('button').exists()).toBe(true);
     });
     it('should set the href passed', () => {
         const component = mount(<Breadcrumb label="index" href="index" />);
