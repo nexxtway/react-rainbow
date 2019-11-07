@@ -20,14 +20,14 @@ describe('<Pagination />', () => {
     it('should call the onClick function with the right arguments when the previous page button is clicked', () => {
         const onChangeMockFn = jest.fn();
         const component = mount(<Pagination pages={5} activePage={5} onChange={onChangeMockFn} />);
-        const previousButton = component.find('a[data-id="previous-page-button"]');
+        const previousButton = component.find('button[data-id="previous-page-button"]');
         previousButton.simulate('click');
         expect(onChangeMockFn).toHaveBeenCalledWith(expect.any(Object), 4);
     });
     it('should call the onClick function with the right arguments when the next page button is clicked', () => {
         const onChangeMockFn = jest.fn();
         const component = mount(<Pagination pages={5} activePage={1} onChange={onChangeMockFn} />);
-        const previousButton = component.find('a[data-id="next-page-button"]');
+        const previousButton = component.find('button[data-id="next-page-button"]');
         previousButton.simulate('click');
         expect(onChangeMockFn).toHaveBeenCalledWith(expect.any(Object), 2);
     });

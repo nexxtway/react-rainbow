@@ -18,23 +18,6 @@ describe('<VerticalNavigation/>', () => {
         );
         expect(component.find('span').text()).toBe('item children');
     });
-    it('should set the rainbow-is-active class only to the third VerticalItem when selectedItem is item 3', () => {
-        const component = mount(
-            <VerticalNavigation selectedItem="item 3">
-                <VerticalSection label="header section">
-                    <VerticalItem name="item 1" label="item 1" />
-                    <VerticalItem name="item 2" label="item 2" />
-                    <VerticalItem name="item 3" label="item 3" />
-                </VerticalSection>
-            </VerticalNavigation>,
-        );
-        const item1 = component.find('VerticalItem[name="item 1"]').find('li');
-        const item2 = component.find('VerticalItem[name="item 2"]').find('li');
-        const item3 = component.find('VerticalItem[name="item 3"]').find('li');
-        expect(item1.prop('className')).toBe('rainbow-vertical-item');
-        expect(item2.prop('className')).toBe('rainbow-vertical-item');
-        expect(item3.prop('className')).toBe('rainbow-vertical-item rainbow-vertical-item--active');
-    });
     it('should call onSelect event with the right data when an item is clicked', () => {
         const onSelectMockFn = jest.fn();
         const component = mount(
