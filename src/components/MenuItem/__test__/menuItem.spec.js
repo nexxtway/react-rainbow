@@ -37,14 +37,9 @@ describe('<MenuItem/>', () => {
             false,
         );
     });
-    it('should pass the right props to the button element', () => {
-        const component = mount(<MenuItem disabled />);
-        expect(component.find('button').props()).toEqual(
-            expect.objectContaining({
-                'aria-disabled': true,
-                role: 'menuitem',
-            }),
-        );
+    it('should set aria-disabled to true in the li element when disabled is passed', () => {
+        const component = mount(<MenuItem disabled label="item label" />);
+        expect(component.find('li').prop('aria-disabled')).toBe(true);
     });
     it('should fire an event when the li elment is clicked', () => {
         const onClickMockFn = jest.fn();
@@ -66,9 +61,9 @@ describe('<MenuItem/>', () => {
         expect(onClickMockFn).not.toHaveBeenCalled();
         expect(privateOnCloseMockFn).not.toHaveBeenCalled();
     });
-    it('should set the role as presentation in the li element', () => {
-        const component = mount(<MenuItem label="item label" />);
-        expect(component.find('li').prop('role')).toBe('presentation');
+    it('should set the role as menuitem in the li element', () => {
+        const component = mount(<MenuItem disabled label="item label" />);
+        expect(component.find('li').prop('role')).toBe('menuitem');
     });
     it('should set the role as separator in the li element when the variant is header', () => {
         const component = mount(<MenuItem variant="header" />);
