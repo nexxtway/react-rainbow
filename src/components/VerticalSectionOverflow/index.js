@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { uniqueId } from './../../libs/utils';
 import AssistiveText from './../AssistiveText';
 import { Provider } from './context';
 import getMaxHeight from './getMaxHeight';
 import Description from './description';
 import RightArrow from './rightArrow';
-import './styles.css';
+import StyledContainer from './styled/container';
+import StyledButton from './styled/button';
+import StyledActionContainer from './styled/actionContainer';
+import StyledActionLabel from './styled/actionLabel';
+import StyledOverflow from './styled/overflow';
 
 /**
  * Represents an overflow of items from a preceding VerticalNavigationSection,
@@ -34,34 +37,6 @@ export default class VerticalSectionOverflow extends Component {
         return null;
     }
 
-    getContainerClassNames() {
-        const { className } = this.props;
-        const { isExpanded } = this.state;
-        return classnames(
-            'rainbow-vertical-section-overflow_container',
-            {
-                'rainbow-vertical-section-overflow_container--expanded': isExpanded,
-            },
-            className,
-        );
-    }
-
-    getButtonClassNames() {
-        const { isExpanded } = this.state;
-        const { description } = this.props;
-        return classnames('rainbow-vertical-section-overflow_button', {
-            'rainbow-vertical-section-overflow_button--expanded': isExpanded && description,
-        });
-    }
-
-    getOverflowClassName() {
-        const { isExpanded } = this.state;
-        if (isExpanded) {
-            return 'rainbow-vertical-section-overflow--show';
-        }
-        return 'rainbow-vertical-section-overflow--hide';
-    }
-
     toggleOverflow(event) {
         const { isExpanded } = this.state;
         const { onToggleSection } = this.props;
@@ -72,45 +47,45 @@ export default class VerticalSectionOverflow extends Component {
     }
 
     render() {
-        const { label, description, style, assistiveText, children } = this.props;
+        const { label, description, style, assistiveText, children, className } = this.props;
         const { isExpanded } = this.state;
         const sectionMaxHeight = {
             maxHeight: getMaxHeight(children, isExpanded),
         };
 
         return (
-            <div
+            <StyledContainer
                 data-id="vertical-overflow-container"
-                className={this.getContainerClassNames()}
+                className={className}
                 style={style}
+                isExpanded={isExpanded}
             >
-                <button
+                <StyledButton
                     data-id="vertical-overflow-button"
-                    className={this.getButtonClassNames()}
                     aria-controls={this.searchResultsId}
                     aria-expanded={isExpanded}
                     onClick={this.toggleOverflow}
+                    isExpanded={isExpanded}
+                    description={description}
                 >
-                    <div className="rainbow-vertical-section-overflow_action-text">
-                        <span className="rainbow-vertical-section-overflow_action-label">
-                            {label}
-                        </span>
+                    <StyledActionContainer>
+                        <StyledActionLabel>{label}</StyledActionLabel>
                         <Description isExpanded={isExpanded} description={description} />
                         <AssistiveText text={assistiveText} />
-                    </div>
+                    </StyledActionContainer>
                     <RightArrow isExpanded={isExpanded} />
-                </button>
-                <div
+                </StyledButton>
+                <StyledOverflow
                     data-id="vertical-overflow"
                     id={this.searchResultsId}
-                    className={this.getOverflowClassName()}
                     style={sectionMaxHeight}
+                    isExpanded={isExpanded}
                 >
                     <Provider value={isExpanded}>
                         <ul>{children}</ul>
                     </Provider>
-                </div>
-            </div>
+                </StyledOverflow>
+            </StyledContainer>
         );
     }
 }

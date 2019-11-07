@@ -1,17 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import RenderIf from './../RenderIf';
+import StyledDescription from './styled/description';
 
 export default function Description({ description, isExpanded }) {
-    const getClassNames = () =>
-        classnames('rainbow-vertical-section-overflow_action-description', {
-            'rainbow-vertical-section-overflow_action-description--expanded': isExpanded,
-        });
-
     return (
         <RenderIf isTrue={!!description}>
-            <span className={getClassNames()}>{description}</span>
+            <StyledDescription isExpanded={isExpanded}>{description}</StyledDescription>
         </RenderIf>
     );
 }
