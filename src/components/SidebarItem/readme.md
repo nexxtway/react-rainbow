@@ -33,11 +33,7 @@ class SimpleSidebar extends React.Component {
         return (
             <Sidebar selectedItem={selectedItem} onSelect={this.handleOnSelect} id="sidebar-1">
                 <SidebarItem icon={<img src={dashboard} />} name="Dashboard" label="Dashboard" />
-                <SidebarItem
-                    icon={<img src={application} />}
-                    name="Aplications"
-                    label="Aplications"
-                />
+                <SidebarItem icon={<img src={application} />} name="Aplications" label="Aplications"/>
                 <SidebarItem icon={<img src={puzzle} />} name="Components" label="Components" />
                 <SidebarItem icon={<img src={messages} />} name="Messages" label="Messages" />
                 <SidebarItem icon={<img src={charts} />} name="Charts" label="Charts" />
