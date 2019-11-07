@@ -6,7 +6,7 @@ import getUrl from './getUrl';
 import ReCaptchaWrapper from './wrapper';
 
 /**
- * The reCAPTCHA component is used to protects your website from spam and abuse.
+ * The ReCaptcha component is used to protects your website from spam and abuse.
  */
 class ReCaptcha extends Component {
     constructor(props) {

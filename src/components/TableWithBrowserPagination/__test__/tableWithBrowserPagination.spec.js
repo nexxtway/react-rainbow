@@ -261,7 +261,7 @@ describe('<TableWithBrowserPagination />', () => {
             <TableWithBrowserPagination data={data} pageSize={1} keyField="name" />,
         );
         const nextPageButtonComponent = component.find('NavigationButton').at(1);
-        nextPageButtonComponent.find('a').simulate('click');
+        nextPageButtonComponent.find('button').simulate('click');
         expect(component.find('select').prop('value')).toBe(2);
         expect(component.find(Pagination).prop('activePage')).toBe(2);
     });
@@ -271,7 +271,7 @@ describe('<TableWithBrowserPagination />', () => {
             <TableWithBrowserPagination data={data} pageSize={1} keyField="name" />,
         );
         const nextPageButtonComponent = component.find('NavigationButton').at(1);
-        nextPageButtonComponent.find('a').simulate('click');
+        nextPageButtonComponent.find('button').simulate('click');
         expect(getPageItems).toHaveBeenCalledTimes(2);
         expect(getPageItems.mock.calls[1][0]).toEqual({
             activePage: 2,
@@ -285,7 +285,7 @@ describe('<TableWithBrowserPagination />', () => {
         );
         component.instance().table.current.scrollTop = jest.fn();
         const nextPageButtonComponent = component.find('NavigationButton').at(1);
-        nextPageButtonComponent.find('a').simulate('click');
+        nextPageButtonComponent.find('button').simulate('click');
         expect(component.instance().table.current.scrollTop).toHaveBeenCalled();
     });
 });

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { Provider } from './context';
-import './styles.css';
+import StyledNav from './styled/nav';
+import StyledContent from './styled/content';
 
 /**
  * Sidebar represents a list of links that either take the user to another
@@ -17,14 +17,12 @@ export default function Sidebar(props) {
         onSelect,
     };
 
-    const getClassNames = () => classnames('rainbow-sidebar', className);
-
     return (
-        <nav id={id} className={getClassNames()} style={style} aria-label={ariaLabel}>
+        <StyledNav id={id} className={className} style={style} aria-label={ariaLabel}>
             <Provider value={context}>
-                <ul>{children}</ul>
+                <StyledContent>{children}</StyledContent>
             </Provider>
-        </nav>
+        </StyledNav>
     );
 }
 

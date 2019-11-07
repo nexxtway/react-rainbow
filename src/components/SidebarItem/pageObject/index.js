@@ -18,7 +18,7 @@ class PageSidebarItem {
      */
     click() {
         $(this.rootElement)
-            .$('a')
+            .$('[data-id="sidebar-item-clickable-element"]')
             .click();
     }
 
@@ -28,10 +28,9 @@ class PageSidebarItem {
      * @returns {bool}
      */
     isActive() {
-        return (
-            $(this.rootElement).getAttribute('class') ===
-            'rainbow-sidebar-item rainbow-sidebar-item--active'
-        );
+        return $(this.rootElement)
+            .$('[aria-current="page"]')
+            .isExisting();
     }
 }
 

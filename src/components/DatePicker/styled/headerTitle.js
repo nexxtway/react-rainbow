@@ -6,6 +6,7 @@ const StyledHeaderTitle = styled.h1`
     color: ${COLOR_BRAND};
     font-size: ${FONT_SIZE_HEADING_LARGE};
     font-weight: 500;
+    text-transform: capitalize;
 `;
 
 export default StyledHeaderTitle;

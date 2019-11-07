@@ -1,6 +1,9 @@
 ##### Checkbox Group basic
 
 ```js
+import React from 'react';
+import { CheckboxGroup } from 'react-rainbow-components';
+
 const options = [
     { value: 'checkboxOne', label: 'Checkbox One', disabled: false },
     { value: 'checkboxTwo', label: 'Checkbox Two', disabled: false },
@@ -40,6 +43,9 @@ class CheckboxGroupTry extends React.Component {
 ##### Checkbox Group disabled
 
 ```js
+import React from 'react';
+import { CheckboxGroup } from 'react-rainbow-components';
+
 const options = [
     { value: 'checkboxOne', label: 'Checkbox One', disabled: true },
     { value: 'checkboxTwo', label: 'Checkbox Two', disabled: true },
@@ -78,6 +84,9 @@ class CheckboxGroupTry extends React.Component {
 ##### Checkbox Group required
 
 ```js
+import React from 'react';
+import { CheckboxGroup } from 'react-rainbow-components';
+
 const options = [
     { value: 'checkboxOne', label: 'Checkbox One', disabled: false },
     { value: 'checkboxTwo', label: 'Checkbox Two', disabled: false },
@@ -117,6 +126,9 @@ class CheckboxGroupTry extends React.Component {
 ##### Checkbox Group error
 
 ```js
+import React from 'react';
+import { CheckboxGroup } from 'react-rainbow-components';
+
 const options = [
     { value: 'checkboxOne', label: 'Checkbox One', disabled: false },
     { value: 'checkboxTwo', label: 'Checkbox Two', disabled: false },

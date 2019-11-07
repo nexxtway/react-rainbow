@@ -1,6 +1,9 @@
 ##### accordion base
 
 ```js
+import React from 'react';
+import { Card, Accordion, AccordionSection, Input } from 'react-rainbow-components';
+
 <div className="rainbow-m-around_xx-large">
     <Card>
         <Accordion id="accordion-1">
@@ -30,10 +33,13 @@
 ##### accordion with icons
 
 ```js
+import React from 'react';
+import { Card, Accordion, AccordionSection } from 'react-rainbow-components';
+
 // more details about how to use react-font-awesome
 // visit https://github.com/FortAwesome/react-fontawesome
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faUser, faUsers, faCog } = require('@fortawesome/free-solid-svg-icons');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faUsers, faCog } from '@fortawesome/free-solid-svg-icons';
 
 <div className="rainbow-m-around_xx-large">
     <Card>
@@ -64,12 +70,15 @@ const { faUser, faUsers, faCog } = require('@fortawesome/free-solid-svg-icons');
             </AccordionSection>
         </Accordion>
     </Card>
-</div>;
+</div>
 ```
 
 ##### accordion with multiple sections opened
 
 ```js
+import React from 'react';
+import { Card, Accordion, AccordionSection } from 'react-rainbow-components';
+
 class AccordionExample extends React.Component {
     constructor(props) {
         super(props);
@@ -125,6 +134,9 @@ class AccordionExample extends React.Component {
 ##### accordions disabled
 
 ```js
+import React from 'react';
+import { Card, Accordion, AccordionSection } from 'react-rainbow-components';
+
 <div className="rainbow-m-around_xx-large">
     <Card>
         <Accordion>

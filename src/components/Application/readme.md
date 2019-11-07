@@ -1,10 +1,24 @@
 ##### example
 
 ```js
+import React from 'react';
+import {
+    Application,
+    ButtonGroup,
+    ButtonIcon,
+    ButtonMenu,
+    MenuDivider,
+    MenuItem,
+    Avatar,
+    Card,
+    Button,
+    Input,
+} from 'react-rainbow-components';
+
 // more details about how to use react-font-awesome
 // visit https://github.com/FortAwesome/react-fontawesome
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
     faSearch,
     faTasks,
     faShareAlt,
@@ -12,7 +26,7 @@ const {
     faAngleDown,
     faPencilAlt,
     faBell,
-} = require('@fortawesome/free-solid-svg-icons');
+} from '@fortawesome/free-solid-svg-icons';
 
 const iconContainerStyles = {
     width: '2rem',

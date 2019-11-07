@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './styles/rainbow-styles.css';
-
-export const { Provider, Consumer } = React.createContext();
+import { Provider } from './context';
 
 /**
  * This component is used to setup the React Rainbow context for a tree.
@@ -11,10 +10,10 @@ export const { Provider, Consumer } = React.createContext();
  * @category Layout
  */
 export default function Application(props) {
-    const { children, className, style } = props;
-
+    const { children, className, style, locale } = props;
+    const contextValue = { locale };
     return (
-        <Provider>
+        <Provider value={contextValue}>
             <div className={className} style={style}>
                 {children}
             </div>
@@ -32,10 +31,13 @@ Application.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The locale used by application. Defaults to browser's locale. */
+    locale: PropTypes.string,
 };
 
 Application.defaultProps = {
     children: [],
     className: undefined,
     style: undefined,
+    locale: undefined,
 };

@@ -1,6 +1,9 @@
 ##### Picklist base
 
 ```js
+import React from 'react';
+import { Picklist, PicklistOption } from 'react-rainbow-components';
+
 const containerStyles = {
     width: '200px',
 };
@@ -28,12 +31,15 @@ initialState = { value: { name: 'option 3', label: 'Central Park' } };
             </Picklist>
         </div>
     </GlobalHeader>
-</div>;
+</div>
 ```
 
 ##### Picklist with multiple options
 
 ```js
+import React from 'react';
+import { Picklist, PicklistOption } from 'react-rainbow-components';
+
 const containerStyles = {
     width: '200px',
 };
@@ -67,12 +73,15 @@ initialState = { value: null };
             </Picklist>
         </div>
     </GlobalHeader>
-</div>;
+</div>
 ```
 
 ##### Picklist disabled
 
 ```js
+import React from 'react';
+import { Picklist, PicklistOption } from 'react-rainbow-components';
+
 const containerStyles = {
     width: '180px',
 };
@@ -91,20 +100,26 @@ initialState = { value: { name: 'option 1', label: 'All Buildings' } };
                 label="Select Building"
                 hideLabel
                 style={containerStyles}
-            />
+            >
+                <PicklistOption name="option 1" label="Experimental Building" />
+                <PicklistOption name="option 2" label="Empire State" />
+                <PicklistOption name="option 3" label="Central Park" />
+            </Picklist>
         </div>
     </GlobalHeader>
-</div>;
+</div>
 ```
 
 ##### Picklist with redux-form
 
 ```js
+import React from 'react';
+import { Picklist, PicklistOption, Button } from 'react-rainbow-components';
+import { Field, reduxForm } from 'redux-form';
+
 const containerStyles = {
     width: '140px',
 };
-
-const { Field, reduxForm } = require('redux-form');
 
 function Form({ handleSubmit, onSubmit }) {
     return (
@@ -144,5 +159,5 @@ const PicklistForm = reduxForm({
     >
         <PicklistForm onSubmit={values => console.log(values)} />
     </GlobalHeader>
-</div>;
+</div>
 ```

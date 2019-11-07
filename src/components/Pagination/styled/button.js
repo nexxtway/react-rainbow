@@ -10,8 +10,8 @@ import {
 import { SHADOW_OUTLINE } from '../../../styles/shadows';
 import { FONT_SIZE_TEXT_LARGE, FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 
-const StyledButton = styled.a`
-    text-decoration: none;
+const StyledButton = styled.button`
+    padding: 0;
     transition: color 0.1s linear;
     cursor: pointer;
     height: 2rem;
@@ -19,7 +19,7 @@ const StyledButton = styled.a`
     border-radius: ${BORDER_RADIUS_2};
     font-weight: bold;
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
-    line-height: 2rem;
+    line-height: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,7 +57,7 @@ const StyledButton = styled.a`
         props.isActivePage &&
         `
             font-size: ${FONT_SIZE_TEXT_LARGE};
-            text-decoration: none;
+            line-height: 0;
             color: ${COLOR_DARK_1};
             background-color: ${COLOR_GRAY_2};
             z-index: 100;
