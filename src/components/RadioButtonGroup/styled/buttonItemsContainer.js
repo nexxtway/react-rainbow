@@ -12,7 +12,7 @@ const StyledButtonItemsContainer = styled.div`
     height: 2.5rem;
 
     > :first-child {
-        margin-left: -2px;
+        margin-left: -1px;
     }
 
     > :last-child {
