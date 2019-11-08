@@ -10,6 +10,7 @@ import {
     getChildrenTotalWidthUpToClickedTab,
     getTabIndexFromName,
 } from './../utils';
+import StyledAnchor from './../../Tab/styled/anchor';
 
 jest.mock('./../utils.js', () => ({
     getLeftButtonDisabledState: jest.fn(() => false),
@@ -35,16 +36,6 @@ describe('<Tabset />', () => {
         );
         expect(component.find('p').text()).toBe('testing tabset');
     });
-    it('should have the right class names when fullWidth prop is passed', () => {
-        const component = mount(
-            <Tabset fullWidth>
-                <Tab label="Tab-1" name="tab-1" registerTab={registerTabMockFn} />
-            </Tabset>,
-        );
-        expect(component.find('ul[role="tablist"]').prop('className')).toBe(
-            'rainbow-tabset_inner-container rainbow-tabset_inner-container--full-width',
-        );
-    });
     it('should set the rainbow-tab--active class only to the third Tab when activeTabName is tab-3', () => {
         const component = mount(
             <Tabset activeTabName="tab-3">
@@ -53,12 +44,12 @@ describe('<Tabset />', () => {
                 <Tab label="Tab-3" name="tab-3" registerTab={registerTabMockFn} />
             </Tabset>,
         );
-        const item1 = component.find('Tab[name="tab-1"]').find('a');
-        const item2 = component.find('Tab[name="tab-2"]').find('a');
-        const item3 = component.find('Tab[name="tab-3"]').find('a');
-        expect(item1.prop('className')).toBe('rainbow-tab_anchor');
-        expect(item2.prop('className')).toBe('rainbow-tab_anchor');
-        expect(item3.prop('className')).toBe('rainbow-tab_anchor rainbow-tab--active');
+        const item1 = component.find('Tab[name="tab-1"]').find(StyledAnchor);
+        const item2 = component.find('Tab[name="tab-2"]').find(StyledAnchor);
+        const item3 = component.find('Tab[name="tab-3"]').find(StyledAnchor);
+        expect(item1.prop('isActive')).toBe(false);
+        expect(item2.prop('isActive')).toBe(false);
+        expect(item3.prop('isActive')).toBe(true);
     });
     it('should call onSelect event with the right data when an item is clicked', () => {
         const onSelectMockFn = jest.fn();
