@@ -1,26 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import RenderIf from '../../RenderIf';
 import { SELECTABLE_CHECKBOX } from './../helpers/columns';
 import SortArrowIcon from './sortArrowIcon';
 import ResizeBar from './resizeBar';
 import SelectableHeader from './selectableHeader';
+import StyledTh from './styled/th';
+import StyledWrapper from './styled/wrapper';
+import StyledHeaderContainer from './styled/headerContainer';
+import StyledContent from './styled/content';
 
 export default class Header extends Component {
     constructor(props) {
         super(props);
         this.handleSort = this.handleSort.bind(this);
         this.handleResize = this.handleResize.bind(this);
-    }
-
-    getClassName() {
-        const { sortable, isSorted } = this.props;
-        return classnames('rainbow-table_header', {
-            'rainbow-table_header--resizable': this.isResizable(),
-            'rainbow-table_header--sortable': sortable,
-            'rainbow-table_header--sorted': isSorted,
-        });
     }
 
     getTabIndex() {
@@ -63,6 +57,7 @@ export default class Header extends Component {
             minColumnWidth,
             maxColumnWidth,
             sortable,
+            isSorted,
             computedWidth,
             type,
             onSelectAllRows,
@@ -74,6 +69,7 @@ export default class Header extends Component {
         const headerStyles = {
             width: computedWidth,
         };
+        const isResizable = this.isResizable();
 
         if (type === SELECTABLE_CHECKBOX) {
             return (
@@ -89,39 +85,41 @@ export default class Header extends Component {
         }
 
         return (
-            <th
-                className={this.getClassName()}
+            <StyledTh
                 style={headerStyles}
+                sortable={sortable}
+                isSorted={isSorted}
+                isResizable={isResizable}
                 scope="col"
                 tabIndex={this.getTabIndex()}
                 aria-label={this.getHeaderContent()}
             >
-                <div className="rainbow-table_header-wrapper" style={headerStyles}>
-                    <div
+                <StyledWrapper className="rainbow-table_header-wrapper" style={headerStyles}>
+                    <StyledHeaderContainer
                         className="rainbow-table_header-container"
                         role="presentation"
                         onClick={this.handleSort}
                     >
-                        <span
+                        <StyledContent
                             title={this.getHeaderContent()}
                             className="rainbow-table_header-content"
                         >
                             {content}
-                        </span>
+                        </StyledContent>
                         <RenderIf isTrue={sortable}>
                             <SortArrowIcon direction={sortDirection} />
                         </RenderIf>
-                    </div>
+                    </StyledHeaderContainer>
                     <ResizeBar
                         minColumnWidth={minColumnWidth}
                         maxColumnWidth={maxColumnWidth}
-                        isResizable={this.isResizable()}
+                        isResizable={isResizable}
                         ariaLabel={this.getHeaderContent()}
                         onResize={this.handleResize}
                         headerWidth={computedWidth}
                     />
-                </div>
-            </th>
+                </StyledWrapper>
+            </StyledTh>
         );
     }
 }

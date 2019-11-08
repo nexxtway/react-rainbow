@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { uniqueId } from '../../../../libs/utils';
-import RenderIf from '../../../RenderIf';
 import Label from './label';
-import './styles.css';
+import StyledContainer from './styled/container';
+import StyledInnerContainer from './styled/innerContainer';
 
 export default class InputCheckbox extends Component {
     constructor(props) {
@@ -28,32 +27,16 @@ export default class InputCheckbox extends Component {
         }
     }
 
-    getContainerClassNames() {
-        const { className, error } = this.props;
-        return classnames(
-            'rainbow-table-input-checkbox_container',
-            {
-                'rainbow-table-input-checkbox--error': error,
-            },
-            className,
-        );
-    }
-
-    getInlineTextLabelId() {
-        const { bottomHelpText } = this.props;
-        if (bottomHelpText) {
-            return this.inlineTextLabelId;
-        }
-        return undefined;
-    }
-
-    getErrorMessageId() {
-        const { error } = this.props;
-        if (error) {
-            return this.errorMessageId;
-        }
-        return undefined;
-    }
+    // getContainerClassNames() {
+    //     const { className, error } = this.props;
+    //     return classnames(
+    //         'rainbow-table-input-checkbox_container',
+    //         {
+    //             'rainbow-table-input-checkbox--error': error,
+    //         },
+    //         className,
+    //     );
+    // }
 
     /**
      * Sets focus on the element.
@@ -82,17 +65,16 @@ export default class InputCheckbox extends Component {
     render() {
         const {
             style,
+            className,
             value,
             onChange,
             label,
-            error,
             disabled,
             tabIndex,
             onFocus,
             onBlur,
             onClick,
             onKeyDown,
-            bottomHelpText,
             id,
             name,
             checked,
@@ -100,8 +82,8 @@ export default class InputCheckbox extends Component {
         } = this.props;
 
         return (
-            <div id={id} className={this.getContainerClassNames()} style={style}>
-                <div className="rainbow-table-input-checkbox_inner-container">
+            <StyledContainer id={id} className={className} style={style}>
+                <StyledInnerContainer>
                     <input
                         id={this.inputId}
                         name={name}
@@ -115,8 +97,6 @@ export default class InputCheckbox extends Component {
                         onKeyDown={onKeyDown}
                         disabled={disabled}
                         checked={checked}
-                        aria-labelledby={this.getInlineTextLabelId()}
-                        aria-describedby={this.getErrorMessageId()}
                         ref={this.inputRef}
                     />
 
@@ -125,21 +105,9 @@ export default class InputCheckbox extends Component {
                         hideLabel={hideLabel}
                         disabled={disabled}
                         inputId={this.inputId}
-                        id={this.getInlineTextLabelId()}
                     />
-                </div>
-                <RenderIf isTrue={!!bottomHelpText}>
-                    <div className="rainbow-table-input-checkbox_help">{bottomHelpText}</div>
-                </RenderIf>
-                <RenderIf isTrue={!!error}>
-                    <div
-                        id={this.getErrorMessageId()}
-                        className="rainbow-table-input-checkbox_error-message"
-                    >
-                        {error}
-                    </div>
-                </RenderIf>
-            </div>
+                </StyledInnerContainer>
+            </StyledContainer>
         );
     }
 }
@@ -148,8 +116,6 @@ InputCheckbox.propTypes = {
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
     name: PropTypes.string,
-    bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     disabled: PropTypes.bool,
     onChange: PropTypes.func,
     tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
