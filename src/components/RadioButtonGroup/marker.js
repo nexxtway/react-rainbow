@@ -6,7 +6,7 @@ import StyledMarker from './styled/marker';
 
 export default function Marker(props) {
     const { style, isVisible, variant } = props;
-    const markerStype = {
+    const markerStyle = {
         ...style,
         opacity: isVisible ? 1 : 0,
     };
@@ -14,7 +14,7 @@ export default function Marker(props) {
     return (
         <RenderIf isTrue={isVisible}>
             <StyledMarkerContainer>
-                <StyledMarker variant={variant} style={markerStype} />
+                <StyledMarker variant={variant} style={markerStyle} />
             </StyledMarkerContainer>
         </RenderIf>
     );
