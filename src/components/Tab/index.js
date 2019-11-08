@@ -84,6 +84,7 @@ class TabItem extends Component {
                     ref={this.tabRef}
                     isActive={isActive}
                     disabled={disabled}
+                    fullWidth={fullWidth}
                 >
                     <TruncatedText>{label}</TruncatedText>
                 </StyledAnchor>

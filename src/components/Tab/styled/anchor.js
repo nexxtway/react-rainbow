@@ -4,19 +4,14 @@ import { FONT_SIZE_TEXT_SMALL, FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fon
 import { COLOR_GRAY_4, COLOR_WHITE, COLOR_BRAND, COLOR_GRAY_3 } from '../../../styles/colors';
 
 const StyledAnchor = styled.a`
-    text-decoration: none;
-    transition: color 0.1s linear;
-    cursor: pointer;
-    height: 2.75rem;
-    box-sizing: border-box;
-    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     background-color: transparent;
     padding: ${PADDING_X_SMALL} 1.75rem;
-    border-radius: 1rem 1rem 0 0;
+    border-radius: 14px 14px 0 0;
     line-height: 1rem;
     letter-spacing: 0.9px;
     font-size: ${FONT_SIZE_TEXT_SMALL};
@@ -24,19 +19,18 @@ const StyledAnchor = styled.a`
     color: ${COLOR_GRAY_4};
     z-index: 0;
 
-    :hover,
-    :active,
-    :visited {
+    &:hover,
+    &:active,
+    &:visited {
         text-decoration: none;
         outline: 0;
         cursor: pointer;
     }
 
-    :hover {
+    &:hover {
         background-color: #f9fafc;
         color: ${COLOR_GRAY_4};
         z-index: 1;
-        outline: 0;
     }
 
     &:focus {
@@ -45,10 +39,10 @@ const StyledAnchor = styled.a`
         border-radius: 14px 14px 0 0;
     }
 
-    ::after {
+    &::after {
         content: '';
         position: absolute;
-        left: -1px;
+        left: -2px;
         height: 20px;
         width: 1px;
         background-color: ${COLOR_GRAY_3};
@@ -59,12 +53,18 @@ const StyledAnchor = styled.a`
     }
 
     @media (max-width: 600px) {
-        height: 4rem;
+        height: 100%;
         border-radius: 0;
         color: ${COLOR_BRAND};
         font-size: ${FONT_SIZE_TEXT_MEDIUM};
+        width: 100%;
+        padding: 0 1rem 0 1rem;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        position: relative;
 
-        ::after {
+        &::after {
             content: unset;
             position: unset;
             left: unset;
@@ -85,14 +85,14 @@ const StyledAnchor = styled.a`
             background-color: ${COLOR_WHITE};
             color: ${COLOR_BRAND};
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            border-radius: 14px 14px 0 0;
 
-            :hover, :active, :visited, :focus {
+            &:hover, &:active, &:visited, &:focus {
                 background-color: ${COLOR_WHITE};
-                z-index: 2;
                 color: ${COLOR_BRAND};
             }
 
-            ::after {
+            &::after {
                 left: -40px;
                 content: '';
                 background: transparent;
@@ -107,7 +107,7 @@ const StyledAnchor = styled.a`
                 -webkit-transform: rotate(45deg);
             }
 
-            ::before {
+            &::before {
                 right: -40px;
                 content: '';
                 background: transparent;
@@ -123,18 +123,11 @@ const StyledAnchor = styled.a`
             }
 
             @media (max-width: 600px) {
-                padding: 0 1rem 0 1rem !important;
-                width: 100%;
                 border-radius: 0;
                 position: relative;
-                box-shadow: 0 1px 2px transparent;
-                display: flex;
-                justify-content: flex-start;
-                align-items: center;
-                position: relative;
-                padding: 0;
+                width: 100%;
 
-                ::after {
+                &::after {
                     left: unset;
                     content: unset;
                     background: unset;
@@ -149,7 +142,7 @@ const StyledAnchor = styled.a`
                     -webkit-transform: unset;
                 }
             
-                ::before {
+                &::before {
                     background: unset;
                     border-width: unset;
                     border-style: unset;
@@ -177,6 +170,11 @@ const StyledAnchor = styled.a`
                 box-shadow: none;
                 background-color: transparent;
             }
+        `};
+    ${props =>
+        props.fullWidth &&
+        `
+            flex-grow: 1;
         `};
 `;
 
