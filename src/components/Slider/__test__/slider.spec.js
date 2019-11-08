@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Slider from '../index';
+import Error from '../styled/error';
 
 describe('<Slider />', () => {
     it('should fire an event when the user change the input', () => {
@@ -35,12 +36,12 @@ describe('<Slider />', () => {
     });
     it('should pass a generated id to the Error element and set the same id to the aria-describedby for the input when a error is passed', () => {
         const component = mount(<Slider error="error message" />);
-        expect(component.find('.rainbow-slider_error').prop('id')).toMatch(/error-message/);
+        expect(component.find(Error).prop('id')).toMatch(/error-message/);
         expect(component.find('input').prop('aria-describedby')).toMatch(/error-message/);
     });
     it('should not set aria-describedby in the input if no error is passed', () => {
         const component = mount(<Slider />);
-        expect(component.find('.rainbow-slider_error').exists()).toBe(false);
+        expect(component.find(Error).exists()).toBe(false);
         expect(component.find('input').prop('aria-describedby')).toBe(undefined);
     });
 });

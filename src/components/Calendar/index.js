@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Select from './../Select';
@@ -18,16 +19,19 @@ import {
 import StyledControlsContainer from './styled/controlsContainer';
 import StyledMonthContainer from './styled/monthContainer';
 import StyledMonth from './styled/month';
+import { uniqueId, getLocale } from '../../libs/utils';
+import { Consumer } from '../Application/context';
 
 /**
  * Calendar provide a simple way to select a single date.
  */
-export default class Calendar extends Component {
+class CalendarComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
             currentMonth: getFirstDayMonth(normalizeDate(props.value)),
         };
+        this.monthLabelId = uniqueId('month');
         this.previousMonth = this.previousMonth.bind(this);
         this.nextMonth = this.nextMonth.bind(this);
         this.handleYearChange = this.handleYearChange.bind(this);
@@ -71,8 +75,8 @@ export default class Calendar extends Component {
 
     render() {
         const { currentMonth } = this.state;
-        const { onChange, value, minDate, maxDate, className, style } = this.props;
-        const formattedMonth = getFormattedMonth(currentMonth);
+        const { id, onChange, value, minDate, maxDate, className, style, locale } = this.props;
+        const formattedMonth = getFormattedMonth(currentMonth, locale);
         const currentYear = currentMonth.getFullYear();
         const yearsRange = getYearsRange({
             minDate,
@@ -87,7 +91,7 @@ export default class Calendar extends Component {
         const disablePreviousMonth = prevDate < minSelectableDate;
 
         return (
-            <section className={className} style={style}>
+            <section id={id} className={className} style={style}>
                 <StyledControlsContainer>
                     <StyledMonthContainer>
                         <ButtonIcon
@@ -98,7 +102,9 @@ export default class Calendar extends Component {
                             assistiveText="Previous Month"
                         />
 
-                        <StyledMonth id="month">{formattedMonth}</StyledMonth>
+                        <StyledMonth id={this.monthLabelId} data-id="month">
+                            {formattedMonth}
+                        </StyledMonth>
 
                         <ButtonIcon
                             onClick={this.nextMonth}
@@ -116,8 +122,8 @@ export default class Calendar extends Component {
                         onChange={this.handleYearChange}
                     />
                 </StyledControlsContainer>
-                <table role="grid" aria-labelledby="month">
-                    <DaysOfWeek />
+                <table role="grid" aria-labelledby={this.monthLabelId}>
+                    <DaysOfWeek locale={locale} />
                     <Month
                         value={value}
                         firstDayMonth={currentMonth}
@@ -130,6 +136,16 @@ export default class Calendar extends Component {
         );
     }
 }
+
+export default function Calendar({ locale, ...rest }) {
+    return (
+        <Consumer>
+            {values => <CalendarComponent locale={getLocale(values, locale)} {...rest} />}
+        </Consumer>
+    );
+}
+
+export { CalendarComponent as Component };
 
 Calendar.propTypes = {
     /** Sets the date for the Calendar programmatically. */
@@ -146,6 +162,10 @@ Calendar.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The id of the outer element. */
+    id: PropTypes.string,
+    /** The Calendar locale. Defaults to browser's language. */
+    locale: PropTypes.string,
 };
 
 Calendar.defaultProps = {
@@ -155,4 +175,6 @@ Calendar.defaultProps = {
     onChange: () => {},
     className: undefined,
     style: undefined,
+    id: undefined,
+    locale: undefined,
 };

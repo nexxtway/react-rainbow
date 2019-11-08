@@ -1,6 +1,9 @@
 ##### VerticalSection
 
 ```js
+import React from 'react';
+import { VerticalNavigation, VerticalSection, VerticalItem } from 'react-rainbow-components';
+
 const containerStyles = {
     width: '220px',
     borderBottomLeftRadius: '0.875rem',
@@ -59,5 +62,5 @@ class SimpleVerticalNavigation extends React.Component {
     >
         <SimpleVerticalNavigation />
     </div>
-</div>;
+</div>
 ```

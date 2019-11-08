@@ -33,12 +33,11 @@ export default class MenuItem extends Component {
                 onMouseDown={onClick}
                 onMouseEnter={this.handleHover}
             >
-                <a
+                <div
                     aria-selected={isActive}
                     id={id}
                     tabIndex={-1}
                     className="rainbow-lookup_menu-item-link"
-                    href="javascript:void(0);"
                     role="option"
                     ref={this.itemRef}
                 >
@@ -53,7 +52,7 @@ export default class MenuItem extends Component {
                             </span>
                         </RenderIf>
                     </span>
-                </a>
+                </div>
             </li>
         );
     }

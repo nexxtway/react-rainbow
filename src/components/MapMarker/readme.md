@@ -1,6 +1,9 @@
 ##### MapMarker base:
 
 ```js
+import React from 'react';
+import { MapMarker, GMap } from 'react-rainbow-components';
+
 const styles = {
     maxWidth: 400,
     margin: 'auto',
@@ -31,5 +34,5 @@ const styles = {
             />
         </GMap>
     </div>
-</div>;
+</div>
 ```

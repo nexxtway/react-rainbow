@@ -13,6 +13,5 @@ export default function extractTime(date) {
         const minutes = value.getMinutes();
         return `${zeroFill(hours, 2)}:${zeroFill(minutes, 2)} ${suffix}`;
     }
-    console.error('Invalid date value passed to DateTimePicker');
     return '';
 }

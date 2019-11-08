@@ -1,6 +1,13 @@
 ##### VisualPickerOptionFooter base:
 
 ```js
+import React from 'react';
+import {
+    VisualPicker,
+    VisualPickerOption,
+    VisualPickerOptionFooter,
+} from 'react-rainbow-components';
+
 const iconStyles = { width: 50, height: 50 };
 
 class SimpleVisualPicker extends React.Component {
@@ -34,5 +41,5 @@ class SimpleVisualPicker extends React.Component {
 
 <div className="rainbow-align-content_center rainbow-m-around_xx-large">
     <SimpleVisualPicker />
-</div>;
+</div>
 ```

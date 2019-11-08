@@ -1,0 +1,53 @@
+Here is an overview about how to use the DateTimePicker page object:
+
+    const PageDateTimePicker = require('react-rainbow-components/components/DateTimePicker/pageObject');
+    const DATETIMEPICKER = '#datetimepicker-1';
+
+    describe('DateTimePicker', () => {
+        beforeAll(() => {
+            browser.url('/url/to/testing/page');
+        });
+        beforeEach(() => {
+            browser.refresh();
+            const component = $(DATETIMEPICKER);
+            component.waitForExist();
+        });
+        it('should open the DateTimePicker when click on input element', () => {
+            const picker = new PageDateTimePicker(DATETIMEPICKER);
+            picker.click();
+            picker.waitUntilOpen();
+            expect(picker.isOpen()).toBe(true);
+        });
+        it('should open the DateTimePicker when click on the label element', () => {
+            const picker = new PageDateTimePicker(DATETIMEPICKER);
+            picker.clickLabel();
+            picker.waitUntilOpen();
+            expect(picker.isOpen()).toBe(true);
+        });
+        it('should close the DateTimePicker when click the ok button', () => {
+            const picker = new PageDateTimePicker(DATETIMEPICKER);
+            picker.click();
+            picker.waitUntilOpen();
+            picker.clickOKButton();
+            picker.waitUntilClose();
+            expect(picker.isOpen()).toBe(false);
+        });
+        it('should close the DateTimePicker when click the cancel button', () => {
+            const picker = new PageDateTimePicker(DATETIMEPICKER);
+            picker.click();
+            picker.waitUntilOpen();
+            picker.clickCancelButton();
+            picker.waitUntilClose();
+            expect(picker.isOpen()).toBe(false);
+        });
+        it('should set the right value when select a date', () => {
+            const picker = new PageDateTimePicker(DATETIMEPICKER);
+            picker.click();
+            picker.waitUntilOpen();
+            expect(picker.getValue()).toBe('10/25/19, 10:44 AM');
+            picker.clickDay(10);
+            picker.clickOKButton();
+            picker.waitUntilClose();
+            expect(picker.getValue()).toBe('10/10/19, 10:44 AM');
+        });
+    });

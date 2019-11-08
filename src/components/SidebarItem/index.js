@@ -1,26 +1,18 @@
 /* eslint-disable no-script-url, react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { withContext } from '../Sidebar/context';
 import RenderIf from '../RenderIf';
-import './styles.css';
-
+import StyledContainer from './styled/container';
+import StyledAnchorContent from './styled/anchorContent';
+import StyledButtonContent from './styled/buttonContent';
+import ItemContent from './itemContent';
 /**
  * @category Layout
  */
 function SidebarItem(props) {
     const { label, icon, name, href, onClick, className, style, selectedItem, onSelect } = props;
     const isSelected = name === selectedItem;
-
-    const getContainerClassNames = () =>
-        classnames(
-            'rainbow-sidebar-item',
-            {
-                'rainbow-sidebar-item--active': isSelected,
-            },
-            className,
-        );
 
     const getAriaCurrent = () => {
         if (isSelected) {
@@ -35,19 +27,32 @@ function SidebarItem(props) {
     }
 
     return (
-        <li className={getContainerClassNames()} style={style}>
-            <a
-                href={href}
-                onClick={hanldeOnClick}
-                className="rainbow-sidebar-item_action"
-                aria-current={getAriaCurrent()}
-            >
-                <div className="rainbow-sidebar-item_icon">{icon}</div>
-                <RenderIf isTrue={!!label}>
-                    <span className="rainbow-sidebar-item_label">{label}</span>
-                </RenderIf>
-            </a>
-        </li>
+        <StyledContainer
+            data-id="sidebar-item-li"
+            isSelected={isSelected}
+            className={className}
+            style={style}
+        >
+            <RenderIf isTrue={!!href}>
+                <StyledAnchorContent
+                    data-id="sidebar-item-clickable-element"
+                    href={href}
+                    onClick={hanldeOnClick}
+                    aria-current={getAriaCurrent()}
+                >
+                    <ItemContent isSelected={isSelected} label={label} icon={icon} />
+                </StyledAnchorContent>
+            </RenderIf>
+            <RenderIf isTrue={!href}>
+                <StyledButtonContent
+                    data-id="sidebar-item-clickable-element"
+                    onClick={hanldeOnClick}
+                    aria-current={getAriaCurrent()}
+                >
+                    <ItemContent isSelected={isSelected} label={label} icon={icon} />
+                </StyledButtonContent>
+            </RenderIf>
+        </StyledContainer>
     );
 }
 
@@ -72,7 +77,7 @@ SidebarItem.defaultProps = {
     name: undefined,
     label: undefined,
     icon: null,
-    href: 'javascript:void(0);',
+    href: undefined,
     onClick: () => {},
     className: undefined,
     style: undefined,

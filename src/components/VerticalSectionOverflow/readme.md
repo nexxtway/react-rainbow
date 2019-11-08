@@ -1,8 +1,14 @@
 ##### VerticalSectionOverflow
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faChevronDown, faTh, faFolderOpen } = require('@fortawesome/free-solid-svg-icons');
+import React from 'react';
+import {
+    VerticalNavigation,
+    VerticalItem,
+    VerticalSectionOverflow,
+} from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown, faTh, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 
 const containerStyles = {
     width: '220px',
@@ -68,5 +74,5 @@ class ShadedVerticalNavigation extends React.Component {
     >
         <ShadedVerticalNavigation />
     </div>
-</div>;
+</div>
 ```

@@ -1,8 +1,10 @@
 ##### button menu base
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faCog } = require('@fortawesome/free-solid-svg-icons');
+import React from 'react';
+import { ButtonGroup, ButtonMenu, MenuItem } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
 
 <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
     <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
@@ -20,20 +22,28 @@ const { faCog } = require('@fortawesome/free-solid-svg-icons');
             </ButtonMenu>
         </ButtonGroup>
     </GlobalHeader>
-</div>;
+</div>
 ```
 
 ##### button menu with divider
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const {
+import React from 'react';
+import {
+    ButtonGroup,
+    ButtonMenu,
+    MenuItem,
+    ButtonIcon,
+    MenuDivider,
+} from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
     faAngleDown,
     faCog,
     faPaste,
     faPlus,
     faEllipsisV,
-} = require('@fortawesome/free-solid-svg-icons');
+} from '@fortawesome/free-solid-svg-icons';
 
 <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
     <GlobalHeader
@@ -61,14 +71,16 @@ const {
             </ButtonMenu>
         </ButtonGroup>
     </GlobalHeader>
-</div>;
+</div>
 ```
 
 ##### button menu with subheaders
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faPlus, faEdit, faEllipsisV } = require('@fortawesome/free-solid-svg-icons');
+import React from 'react';
+import { ButtonGroup, ButtonIcon, ButtonMenu, MenuItem } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faEdit, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
     <GlobalHeader
@@ -94,14 +106,16 @@ const { faPlus, faEdit, faEllipsisV } = require('@fortawesome/free-solid-svg-ico
             </ButtonMenu>
         </ButtonGroup>
     </GlobalHeader>
-</div>;
+</div>
 ```
 
 ##### button menu with icons
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const {
+import React from 'react';
+import { ButtonGroup, ButtonIcon, ButtonMenu, MenuItem } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
     faAlignCenter,
     faAlignLeft,
     faAlignRight,
@@ -111,7 +125,7 @@ const {
     faBullhorn,
     faStore,
     faEllipsisV,
-} = require('@fortawesome/free-solid-svg-icons');
+} from '@fortawesome/free-solid-svg-icons';
 
 <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
     <GlobalHeader
@@ -170,20 +184,16 @@ const {
             </ButtonMenu>
         </ButtonGroup>
     </GlobalHeader>
-</div>;
+</div>
 ```
 
 ##### button menu position variants
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const {
-    faCog,
-    faShareAlt,
-    faPlus,
-    faBell,
-    faSlidersH,
-} = require('@fortawesome/free-solid-svg-icons');
+import React from 'react';
+import { ButtonGroup, ButtonIcon, ButtonMenu, MenuItem } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog, faShareAlt, faPlus, faBell, faSlidersH } from '@fortawesome/free-solid-svg-icons';
 
 <div>
     <GlobalHeader
@@ -234,21 +244,23 @@ const {
             <MenuItem label="Menu Positioned Bottom" />
         </ButtonMenu>
     </div>
-</div>;
+</div>
 ```
 
 ##### button menu width variants
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const {
+import React from 'react';
+import { ButtonGroup, ButtonIcon, ButtonMenu, MenuItem } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
     faCog,
     faPencilAlt,
     faStore,
     faPlus,
     faBell,
     faEllipsisV,
-} = require('@fortawesome/free-solid-svg-icons');
+} from '@fortawesome/free-solid-svg-icons';
 
 <div>
     <GlobalHeader className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
@@ -304,14 +316,16 @@ const {
             <MenuItem label="Menu medium" />
         </ButtonMenu>
     </div>
-</div>;
+</div>
 ```
 
 ##### button menu with disabled items
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faCog } = require('@fortawesome/free-solid-svg-icons');
+import React from 'react';
+import { ButtonGroup, ButtonMenu, MenuItem } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
 
 <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
     <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
@@ -331,14 +345,16 @@ const { faCog } = require('@fortawesome/free-solid-svg-icons');
             </ButtonMenu>
         </ButtonGroup>
     </GlobalHeader>
-</div>;
+</div>
 ```
 
 ##### button menu loading
 
 ```js
-const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
-const { faBell } = require('@fortawesome/free-solid-svg-icons');
+import React from 'react';
+import { ButtonGroup, ButtonMenu } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBell } from '@fortawesome/free-solid-svg-icons';
 
 <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
     <GlobalHeader
@@ -355,5 +371,5 @@ const { faBell } = require('@fortawesome/free-solid-svg-icons');
             />
         </ButtonGroup>
     </GlobalHeader>
-</div>;
+</div>
 ```

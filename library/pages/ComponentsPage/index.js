@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies,no-param-reassign */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import filterSectionsByName from 'react-styleguidist/lib/utils/filterSectionsByName';
+import filterSectionsByName from './../../utils/filterSectionsByName';
 import Card from '../../../src/components/Card';
 import Input from '../../../src/components/Input';
 import RenderIf from '../../../src/components/RenderIf';

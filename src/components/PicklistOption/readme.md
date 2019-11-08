@@ -1,6 +1,9 @@
 ##### PicklistOption base
 
 ```js
+import React from 'react';
+import { Picklist, PicklistOption } from 'react-rainbow-components';
+
 const containerStyles = {
     width: '200px',
 };
@@ -28,12 +31,15 @@ initialState = { value: { name: 'option 1', label: 'Experimental Building' } };
             </Picklist>
         </div>
     </GlobalHeader>
-</div>;
+</div>
 ```
 
 ##### PicklistOption with icons
 
 ```js
+import React from 'react';
+import { Picklist, PicklistOption } from 'react-rainbow-components';
+
 const containerStyles = {
     width: '200px',
 };
@@ -61,5 +67,5 @@ initialState = { value: null };
             </Picklist>
         </div>
     </GlobalHeader>
-</div>;
+</div>
 ```
