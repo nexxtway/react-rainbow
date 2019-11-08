@@ -1,9 +1,7 @@
 import styled from 'styled-components';
+import TruncatedText from '../../Structural/truncatedText';
 
-const StyledActionContainer = styled.div`
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+const StyledActionContainer = styled(TruncatedText)`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

@@ -68,7 +68,7 @@ export default class VerticalSectionOverflow extends Component {
                     isExpanded={isExpanded}
                     description={description}
                 >
-                    <StyledActionContainer>
+                    <StyledActionContainer as="div">
                         <StyledActionLabel>{label}</StyledActionLabel>
                         <Description isExpanded={isExpanded} description={description} />
                         <AssistiveText text={assistiveText} />

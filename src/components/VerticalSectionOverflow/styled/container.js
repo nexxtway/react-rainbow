@@ -3,6 +3,11 @@ import { COLOR_GRAY_TRANSPARENT_1 } from '../../../styles/colors';
 
 const StyledContainer = styled.div`
     transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+
+    :hover {
+        background-color: ${COLOR_GRAY_TRANSPARENT_1};
+    }
+
     ${props =>
         props.isExpanded &&
         `
