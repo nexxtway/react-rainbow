@@ -8,6 +8,10 @@ const StyledContainer = styled.div`
         background-color: ${COLOR_GRAY_TRANSPARENT_1};
     }
 
+    .rainbow-vertical-item_action {
+        padding: 0.65rem 1rem 0.65rem 3rem;
+    }
+
     ${props =>
         props.isExpanded &&
         `

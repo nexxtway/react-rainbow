@@ -16,9 +16,10 @@ const StyledButton = styled.button`
     cursor: pointer;
     white-space: normal;
     user-select: none;
-    transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    appearance: none;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 
-    &:focus {
+    :focus {
         outline: 0;
         background-color: ${COLOR_GRAY_1};
     }

@@ -8,7 +8,7 @@ const StyledDescription = styled(TruncatedText)`
     line-height: 1rem;
     color: ${COLOR_GRAY_3};
     text-align: left;
-    width: 100%;
+    max-width: 100%;
     transition: all 0.15s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
     ${props =>
         props.isExpanded &&

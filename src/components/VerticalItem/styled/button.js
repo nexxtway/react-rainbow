@@ -39,6 +39,14 @@ const StyledAnchor = styled.button`
     :hover {
         background-color: ${COLOR_GRAY_TRANSPARENT_1};
     }
+
+    ${props =>
+        props.isSelected &&
+        `
+            color: ${COLOR_DARK_1};
+            background-color: ${COLOR_GRAY_1};
+            font-family: 'Lato Black', Arial, sans-serif;
+        `};
 `;
 
 export default StyledAnchor;
