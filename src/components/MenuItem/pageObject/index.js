@@ -26,9 +26,7 @@ class PageMenuItem {
      * @returns {bool}
      */
     hasFocus() {
-        return $(this.rootElement)
-            .$('[role="menuitem"]')
-            .isFocused();
+        return $(this.rootElement).isFocused();
     }
 
     /**
@@ -36,8 +34,7 @@ class PageMenuItem {
      * @method
      */
     hover() {
-        const itemElement = $(`${this.rootElement} > a`);
-        itemElement.moveTo();
+        $(this.rootElement).moveTo();
     }
 }
 

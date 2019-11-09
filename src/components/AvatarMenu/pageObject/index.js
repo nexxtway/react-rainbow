@@ -21,14 +21,14 @@ class PageButtonMenu {
      * @param {number} itemPosition - The base 0 index of the MenuItem.
      */
     getItem(itemPosition) {
-        const menuItems = $(this.rootElement).$$('li[role="presentation"]');
+        const menuItems = $(this.rootElement).$$('li[role="menuitem"]');
         const buttonMenuItems = $(this.rootElement).$$('ul > *');
         if (menuItems[itemPosition]) {
             const indexPosition = buttonMenuItems.findIndex(
                 element => element.ELEMENT === menuItems[itemPosition].ELEMENT,
             );
             return new PageMenuItem(
-                `${this.rootElement} li[role="presentation"]:nth-child(${indexPosition + 1})`,
+                `${this.rootElement} li[role="menuitem"]:nth-child(${indexPosition + 1})`,
             );
         }
         return null;
