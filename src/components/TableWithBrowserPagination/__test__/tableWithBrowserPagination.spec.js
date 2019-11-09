@@ -46,32 +46,6 @@ const nextData = [
 ];
 
 describe('<TableWithBrowserPagination />', () => {
-    it('should set the right class names when paginationAlignment is passed', () => {
-        const paginationAlignments = ['center', 'left', 'right'];
-        paginationAlignments.forEach(paginationAlignment => {
-            const component = mount(
-                <TableWithBrowserPagination
-                    keyField="name"
-                    data={data}
-                    pageSize={5}
-                    paginationAlignment={paginationAlignment}
-                />,
-            );
-            expect(
-                component
-                    .find(
-                        `div[className="rainbow-table-with-browser-pagination_pagination-container rainbow-table-with-browser-pagination_pagination--${paginationAlignment}"]`,
-                    )
-                    .exists(),
-            ).toBe(true);
-        });
-    });
-    it('should show the Pagination when pageSize is less than data length', () => {
-        const component = mount(
-            <TableWithBrowserPagination keyField="name" data={data} pageSize={5} />,
-        );
-        expect(component.find(Pagination).exists()).toBe(true);
-    });
     it('should not show the Pagination when pageSize is equal or more than data length', () => {
         const pageSizes = [14, 15];
         pageSizes.forEach(pageSize => {
