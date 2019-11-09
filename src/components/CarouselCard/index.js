@@ -1,7 +1,6 @@
 /* eslint-disable no-script-url,max-len */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { Provider } from './context';
 import Indicators from './indicators';
 import AnimationButton from './animationButton';
@@ -11,7 +10,10 @@ import {
     insertChildOrderly,
     getCarouselCardContainerStyles,
 } from './utils';
-import './styles.css';
+import StyledContainer from './styled/container';
+import StyledAutoplay from './styled/autoplay';
+import StyledImagesUl from './styled/imagesUl';
+// import './styles.css';
 
 /**
  * A carouselCard allows multiple pieces of featured content to occupy an allocated amount of space.
@@ -37,11 +39,6 @@ export default class CarouselCard extends Component {
         if (!isAnimationPaused) {
             this.startAnimation();
         }
-    }
-
-    getContainerClassName() {
-        const { className } = this.props;
-        return classnames('rainbow-carousel', className);
     }
 
     getContainerStyle() {
@@ -92,30 +89,30 @@ export default class CarouselCard extends Component {
     }
 
     render() {
-        const { children, id } = this.props;
+        const { children, id, className } = this.props;
         const { childrenRegistred, activeItem, isAnimationPaused } = this.state;
         return (
-            <div
-                className={this.getContainerClassName()}
+            <StyledContainer
+                className={className}
                 style={this.getContainerStyle()}
                 id={id}
                 ref={this.container}
             >
-                <span className="rainbow-carousel_autoplay">
+                <StyledAutoplay>
                     <AnimationButton
                         onClick={this.handleOnClick}
                         isAnimationPaused={isAnimationPaused}
                     />
-                </span>
-                <ul className="rainbow-carousel_images" ref={this.containerRef}>
+                </StyledAutoplay>
+                <StyledImagesUl ref={this.containerRef}>
                     <Provider value={this.state}>{children}</Provider>
-                </ul>
+                </StyledImagesUl>
                 <Indicators
                     carouselChildren={childrenRegistred}
                     onSelect={this.setActiveItem}
                     selectedItem={activeItem}
                 />
-            </div>
+            </StyledContainer>
         );
     }
 }
