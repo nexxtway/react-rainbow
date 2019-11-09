@@ -78,33 +78,29 @@ class Item extends Component {
             <StyledItem
                 className={className}
                 style={style}
-                role="presentation"
+                role="menuitem"
                 onClick={this.handleClick}
                 onMouseEnter={this.handleHover}
+                aria-disabled={disabled}
+                tabIndex="-1"
+                ref={this.itemRef}
             >
-                <a
-                    href="javascript:void(0);"
-                    role="menuitem"
-                    aria-disabled={disabled}
-                    ref={this.itemRef}
-                >
-                    <StyledIconContainer title={title}>
-                        <Icon
-                            data-id="menu-item-left-icon"
-                            icon={icon}
-                            isVisible={hasLeftIcon}
-                            position={iconPosition}
-                        />
-
-                        {label}
-                    </StyledIconContainer>
+                <StyledIconContainer title={title}>
                     <Icon
-                        data-id="menu-item-right-icon"
+                        data-id="menu-item-left-icon"
                         icon={icon}
-                        isVisible={hasRightIcon}
+                        isVisible={hasLeftIcon}
                         position={iconPosition}
                     />
-                </a>
+
+                    {label}
+                </StyledIconContainer>
+                <Icon
+                    data-id="menu-item-right-icon"
+                    icon={icon}
+                    isVisible={hasRightIcon}
+                    position={iconPosition}
+                />
             </StyledItem>
         );
     }
