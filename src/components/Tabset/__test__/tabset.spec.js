@@ -10,7 +10,7 @@ import {
     getChildrenTotalWidthUpToClickedTab,
     getTabIndexFromName,
 } from './../utils';
-import StyledAnchor from './../../Tab/styled/anchor';
+import StyledButton from './../../Tab/styled/button';
 
 jest.mock('./../utils.js', () => ({
     getLeftButtonDisabledState: jest.fn(() => false),
@@ -36,7 +36,7 @@ describe('<Tabset />', () => {
         );
         expect(component.find('p').text()).toBe('testing tabset');
     });
-    it('should set the rainbow-tab--active class only to the third Tab when activeTabName is tab-3', () => {
+    it('should set isActive to true only on the third Tab when activeTabName is tab-3', () => {
         const component = mount(
             <Tabset activeTabName="tab-3">
                 <Tab label="Tab-1" name="tab-1" registerTab={registerTabMockFn} />
@@ -44,9 +44,9 @@ describe('<Tabset />', () => {
                 <Tab label="Tab-3" name="tab-3" registerTab={registerTabMockFn} />
             </Tabset>,
         );
-        const item1 = component.find('Tab[name="tab-1"]').find(StyledAnchor);
-        const item2 = component.find('Tab[name="tab-2"]').find(StyledAnchor);
-        const item3 = component.find('Tab[name="tab-3"]').find(StyledAnchor);
+        const item1 = component.find('Tab[name="tab-1"]').find(StyledButton);
+        const item2 = component.find('Tab[name="tab-2"]').find(StyledButton);
+        const item3 = component.find('Tab[name="tab-3"]').find(StyledButton);
         expect(item1.prop('isActive')).toBe(false);
         expect(item2.prop('isActive')).toBe(false);
         expect(item3.prop('isActive')).toBe(true);
@@ -61,7 +61,7 @@ describe('<Tabset />', () => {
             </Tabset>,
         );
         component.instance().tabsetRef.current.scrollTo = jest.fn();
-        const item2 = component.find('Tab[name="tab-2"]').find('a');
+        const item2 = component.find('Tab[name="tab-2"]').find('button');
         item2.simulate('click');
         expect(onSelectMockFn).toHaveBeenCalledWith(expect.any(Object), 'tab-2');
     });
@@ -75,7 +75,7 @@ describe('<Tabset />', () => {
             </Tabset>,
         );
         component.instance().scrollToSelectedTab = jest.fn();
-        const item1 = component.find('Tab[name="tab-1"]').find('a');
+        const item1 = component.find('Tab[name="tab-1"]').find('button');
         item1.simulate('click');
         expect(component.instance().scrollToSelectedTab).toHaveBeenCalledWith('tab-1');
     });
@@ -141,7 +141,7 @@ describe('<Tabset />', () => {
             </Tabset>,
         );
         component.setState({ areButtonsVisible: true });
-        const leftButton = component.find('button').at(0);
+        const leftButton = component.find('button[data-id="button-icon-element"]').at(0);
         expect(leftButton.prop('disabled')).toBe(true);
     });
     it('should set the right button disabled to true', () => {
@@ -155,7 +155,7 @@ describe('<Tabset />', () => {
             </Tabset>,
         );
         component.setState({ areButtonsVisible: true });
-        const leftButton = component.find('button').at(1);
+        const leftButton = component.find('button[data-id="button-icon-element"]').at(1);
         expect(leftButton.prop('disabled')).toBe(true);
     });
     it('should set the areButtonsVisible to true when children total width is more than tabset width', () => {
@@ -211,7 +211,7 @@ describe('<Tabset />', () => {
             </Tabset>,
         );
         component.instance().tabsetRef.current.scrollTo = jest.fn();
-        const item1 = component.find('Tab[name="tab-1"]').find('a');
+        const item1 = component.find('Tab[name="tab-1"]').find('button');
         item1.simulate('click');
         expect(component.instance().tabsetRef.current.scrollTo).toHaveBeenCalledWith(0, 0);
     });
@@ -233,7 +233,7 @@ describe('<Tabset />', () => {
             offsetWidth: 600,
         };
         component.instance().tabsetRef.current.scrollTo = jest.fn();
-        const item2 = component.find('Tab[name="tab-2"]').find('a');
+        const item2 = component.find('Tab[name="tab-2"]').find('button');
         item2.simulate('click');
         expect(component.instance().tabsetRef.current.scrollTo).toHaveBeenCalledWith(400, 0);
     });
@@ -255,7 +255,7 @@ describe('<Tabset />', () => {
             offsetWidth: 300,
         };
         component.instance().tabsetRef.current.scrollTo = jest.fn();
-        const item3 = component.find('Tab[name="tab-3"]').find('a');
+        const item3 = component.find('Tab[name="tab-3"]').find('button');
         item3.simulate('click');
         expect(component.instance().tabsetRef.current.scrollTo).toHaveBeenCalledWith(220, 0);
     });

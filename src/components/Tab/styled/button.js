@@ -3,7 +3,10 @@ import { PADDING_X_SMALL } from '../../../styles/paddings';
 import { FONT_SIZE_TEXT_SMALL, FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 import { COLOR_GRAY_4, COLOR_WHITE, COLOR_BRAND, COLOR_GRAY_3 } from '../../../styles/colors';
 
-const StyledAnchor = styled.a`
+const StyledAnchor = styled.button`
+    background: none;
+    border: none;
+    outline: inherit;
     height: 100%;
     display: flex;
     justify-content: center;

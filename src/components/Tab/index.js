@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Consumer } from '../Tabset/context';
 import StyledContainer from './styled/container';
 import TruncatedText from '../Structural/truncatedText';
-import StyledAnchor from './styled/anchor';
+import StyledButton from './styled/button';
 
 class TabItem extends Component {
     constructor(props) {
@@ -73,8 +73,7 @@ class TabItem extends Component {
                 title={title}
                 role="presentation"
             >
-                <StyledAnchor
-                    href="javascript:void(0);"
+                <StyledButton
                     role="tab"
                     aria-selected={isActive}
                     onClick={this.handleSelect}
@@ -88,7 +87,7 @@ class TabItem extends Component {
                     data-active={isActive}
                 >
                     <TruncatedText>{label}</TruncatedText>
-                </StyledAnchor>
+                </StyledButton>
             </StyledContainer>
         );
     }

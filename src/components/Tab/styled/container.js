@@ -9,7 +9,7 @@ const StyledContainer = styled.li`
     height: 2.75rem;
     background-color: transparent;
 
-    :nth-child(1) > a::after {
+    :nth-child(1) > button::after {
         background-color: transparent;
     }
 
