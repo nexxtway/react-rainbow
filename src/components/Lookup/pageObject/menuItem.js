@@ -25,7 +25,7 @@ class PageLookupMenuItem {
      * @method
      */
     hover() {
-        const itemElement = $(`${this.rootElement} > a`);
+        const itemElement = $(`${this.rootElement} > div[role="option"]`);
         itemElement.moveTo();
     }
 

@@ -24,7 +24,7 @@ export function findItemIndex(childrenRefs, item) {
 
 export function getChildMenuItemNodes(ref) {
     if (ref) {
-        return ref.querySelectorAll('a[role="menuitem"]');
+        return ref.querySelectorAll('[role="menuitem"]');
     }
     return [];
 }

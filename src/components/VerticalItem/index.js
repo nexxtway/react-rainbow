@@ -1,12 +1,15 @@
 /* eslint-disable no-script-url, react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { Consumer as NavigationConsumer } from '../VerticalNavigation/context';
 import { Consumer as SectionConsumer } from '../VerticalSection/context';
 import { Consumer as SectionOverflowConsumer } from '../VerticalSectionOverflow/context';
 import RenderIf from '../RenderIf';
-import './styles.css';
+import StyledLi from './styled/li';
+import StyledAnchor from './styled/anchor';
+import StyledIcon from './styled/icon';
+import StyledButton from './styled/button';
+import ItemContent from './itemContent';
 
 function Item(props) {
     const {
@@ -24,15 +27,6 @@ function Item(props) {
         isExpanded,
     } = props;
     const isSelected = name === selectedItem;
-
-    const getContainerClassNames = () =>
-        classnames(
-            'rainbow-vertical-item',
-            {
-                'rainbow-vertical-item--active': isSelected,
-            },
-            className,
-        );
 
     const getAriaCurrent = () => {
         if (isSelected) {
@@ -54,24 +48,40 @@ function Item(props) {
     }
 
     return (
-        <li className={getContainerClassNames()} style={style}>
-            <a
-                href={href}
-                onClick={hanldeOnClick}
-                aria-describedby={entityHeaderId}
-                className="rainbow-vertical-item_action"
-                aria-current={getAriaCurrent()}
-                tabIndex={resolveTabIndex()}
-            >
-                <span className="rainbow-vertical-item_action-label">{label}</span>
-                <RenderIf isTrue={!!notification}>
-                    <span className="rainbow-vertical-item_notification">{notification}</span>
-                </RenderIf>
-            </a>
-            <RenderIf isTrue={!!icon}>
-                <span className="rainbow-vertical-item_icon">{icon}</span>
+        <StyledLi
+            className={className}
+            style={style}
+            data-active={isSelected}
+            isSelected={isSelected}
+            data-id="vertical-item"
+        >
+            <RenderIf isTrue={!!href}>
+                <StyledAnchor
+                    data-id="vertical-item-clickable-element"
+                    href={href}
+                    onClick={hanldeOnClick}
+                    aria-describedby={entityHeaderId}
+                    aria-current={getAriaCurrent()}
+                    tabIndex={resolveTabIndex()}
+                >
+                    <ItemContent label={label} notification={notification} />
+                </StyledAnchor>
             </RenderIf>
-        </li>
+            <RenderIf isTrue={!href}>
+                <StyledButton
+                    data-id="vertical-item-clickable-element"
+                    onClick={hanldeOnClick}
+                    aria-describedby={entityHeaderId}
+                    aria-current={getAriaCurrent()}
+                    tabIndex={resolveTabIndex()}
+                >
+                    <ItemContent label={label} notification={notification} />
+                </StyledButton>
+            </RenderIf>
+            <RenderIf isTrue={!!icon}>
+                <StyledIcon>{icon}</StyledIcon>
+            </RenderIf>
+        </StyledLi>
     );
 }
 
@@ -125,7 +135,7 @@ VerticalItem.defaultProps = {
     label: '',
     name: undefined,
     icon: undefined,
-    href: 'javascript:void(0);',
+    href: undefined,
     onClick: () => {},
     notification: null,
     className: undefined,

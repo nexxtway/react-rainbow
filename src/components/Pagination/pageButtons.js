@@ -33,7 +33,6 @@ export default function PageButtons(props) {
                             onClick={event => onChange(event, page)}
                             aria-current={getAriaCurrent(page)}
                             aria-label={ariaLabel}
-                            href="javascript:void(0);"
                         >
                             <span>{page}</span>
                         </StyledButton>
