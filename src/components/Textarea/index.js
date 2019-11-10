@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import autosize from 'autosize';
 import withReduxForm from './../../libs/hocs/withReduxForm';
 import { uniqueId } from './../../libs/utils';
 import RenderIf from '../RenderIf';
 import Label from './label';
-import './styles.css';
+import StyledContainer from './styled/container';
+import StyledTextarea from './styled/textarea';
+import StyledBottomHelp from './styled/bottomHelp';
+import StyledError from './styled/error';
 
 /**
  * Textarea inputs are used for freeform data entry.
@@ -27,15 +29,6 @@ class Textarea extends Component {
             return autosize(this.textareaRef.current);
         }
         return null;
-    }
-
-    getContainerClassNames() {
-        const { className, error } = this.props;
-        return classnames(
-            'rainbow-textarea_container',
-            { 'rainbow-textarea--error': error },
-            className,
-        );
     }
 
     getInlineTextLabelId() {
@@ -81,6 +74,7 @@ class Textarea extends Component {
     render() {
         const {
             style,
+            className,
             onChange,
             onClick,
             onFocus,
@@ -103,7 +97,7 @@ class Textarea extends Component {
         } = this.props;
 
         return (
-            <div className={this.getContainerClassNames()} style={style} id={id}>
+            <StyledContainer className={className} error={error} style={style} id={id}>
                 <Label
                     label={label}
                     hideLabel={hideLabel}
@@ -113,9 +107,9 @@ class Textarea extends Component {
                     id={this.getInlineTextLabelId()}
                 />
 
-                <textarea
+                <StyledTextarea
+                    error={error}
                     id={this.textareaId}
-                    className="rainbow-textarea"
                     name={name}
                     placeholder={placeholder}
                     disabled={disabled}
@@ -136,14 +130,12 @@ class Textarea extends Component {
                 />
 
                 <RenderIf isTrue={!!bottomHelpText}>
-                    <div className="rainbow-textarea_bottom-help">{bottomHelpText}</div>
+                    <StyledBottomHelp>{bottomHelpText}</StyledBottomHelp>
                 </RenderIf>
                 <RenderIf isTrue={!!error}>
-                    <div id={this.getErrorMessageId()} className="rainbow-textarea_text-error">
-                        {error}
-                    </div>
+                    <StyledError id={this.getErrorMessageId()}>{error}</StyledError>
                 </RenderIf>
-            </div>
+            </StyledContainer>
         );
     }
 }
