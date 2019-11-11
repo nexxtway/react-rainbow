@@ -20,12 +20,12 @@ class PageVisualPicker {
      * @param {number} itemPosition - The base 0 index of the VisualPickerOption.
      */
     getItem(itemPosition) {
-        const items = $(this.rootElement).$$('.rainbow-visual-picker-option_content-container');
+        const items = $(this.rootElement).$$('span[data-id="visual-picker_option-container"]');
         if (items[itemPosition]) {
             return new PageVisualPickerOption(
                 `${
                     this.rootElement
-                } .rainbow-visual-picker-option_content-container:nth-child(${itemPosition + 1})`,
+                } span[data-id="visual-picker_option-container"]:nth-child(${itemPosition + 1})`,
             );
         }
         return null;

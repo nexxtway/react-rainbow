@@ -18,7 +18,7 @@ class PageVisualPickerOption {
      */
     click() {
         $(this.rootElement)
-            .$('.rainbow-visual-picker-option_content')
+            .$('label[data-id="visual-picker_option-label"]')
             .click();
     }
 

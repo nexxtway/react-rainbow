@@ -46,7 +46,11 @@ class PickerOption extends Component {
         const { groupName, ariaDescribedby } = this.props;
 
         return (
-            <StyledContainer className={className} style={style}>
+            <StyledContainer
+                data-id="visual-picker_option-container"
+                className={className}
+                style={style}
+            >
                 <StyledInput
                     as="input"
                     type={this.getType()}
@@ -58,8 +62,8 @@ class PickerOption extends Component {
                     disabled={disabled}
                 />
 
-                <StyledLabel htmlFor={this.inputId}>
-                    <StyledContent className="rainbow-visual-picker-option">
+                <StyledLabel data-id="visual-picker_option-label" htmlFor={this.inputId}>
+                    <StyledContent data-id="visual-picker_option">
                         <RenderIf isTrue={this.isChecked()}>
                             <StyledCheckedTriangle />
                             <CheckmarkIcon />
