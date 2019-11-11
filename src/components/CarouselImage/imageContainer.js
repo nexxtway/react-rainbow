@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import RenderIf from '../RenderIf';
 import AssistiveText from '../AssistiveText';
@@ -8,10 +8,10 @@ import StyledFooterTitle from './styled/footerTitle';
 import StyledFooterDescription from './styled/footerDescription';
 
 export default function ImageContainer(props) {
-    const { className, tabIndex, imageSrc, assistiveText, hasContent, header, description } = props;
+    const { imageSrc, assistiveText, hasContent, header, description } = props;
 
     return (
-        <div className={className} tabIndex={tabIndex}>
+        <Fragment>
             <StyledImage style={imageSrc} />
             <AssistiveText text={assistiveText} />
             <RenderIf isTrue={hasContent}>
@@ -24,13 +24,11 @@ export default function ImageContainer(props) {
                     </RenderIf>
                 </StyledImageFooter>
             </RenderIf>
-        </div>
+        </Fragment>
     );
 }
 
 ImageContainer.propTypes = {
-    className: PropTypes.string,
-    tabIndex: PropTypes.number,
     imageSrc: PropTypes.object,
     assistiveText: PropTypes.string,
     hasContent: PropTypes.bool.isRequired,
@@ -39,8 +37,6 @@ ImageContainer.propTypes = {
 };
 
 ImageContainer.defaultProps = {
-    className: undefined,
-    tabIndex: undefined,
     imageSrc: {},
     assistiveText: undefined,
     header: undefined,

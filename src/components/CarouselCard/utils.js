@@ -4,7 +4,7 @@ export function getItemIndex(children, id) {
 
 export function getChildTabNodes(ref) {
     if (ref) {
-        return ref.querySelectorAll('a.rainbow-carousel-image');
+        return ref.querySelectorAll('a[data-id="carousel-image_inner-container"]');
     }
     return [];
 }

@@ -39,12 +39,9 @@ class PageCarouselCardIndicator {
      * @returns {bool}
      */
     isSelected() {
-        return (
-            $(this.rootElement)
-                .$('button')
-                .getAttribute('class') ===
-            'rainbow-carousel_indicator rainbow-carousel_indicator--active'
-        );
+        return !!$(this.rootElement)
+            .$('button')
+            .getAttribute('data-selected');
     }
 }
 

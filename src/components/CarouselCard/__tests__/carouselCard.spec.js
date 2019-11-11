@@ -30,7 +30,7 @@ describe('<CarouselCard />', () => {
                 />
             </CarouselCard>,
         );
-        expect(component.find('a.rainbow-carousel-image').length).toBe(3);
+        expect(component.find('a[href="/"]').length).toBe(3);
     });
     it('should set the right state when disableAutoScroll is passed', () => {
         const component = mount(<CarouselCard disableAutoScroll />);

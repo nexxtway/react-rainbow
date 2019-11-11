@@ -2,12 +2,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { uniqueId } from '../../libs/utils';
-import RenderIf from '../RenderIf';
 import { Consumer } from '../CarouselCard/context';
 import { getItemIndex } from '../CarouselCard/utils';
 import StyledLi from './styled/li';
-import StyledAnchor from './styled/anchor';
-import StyledImageContainer from './styled/imageContainer';
+import StyledInnerContainer from './styled/innerContainer';
+import ImageContainer from './imageContainer';
 
 class Item extends Component {
     constructor(props) {
@@ -110,6 +109,14 @@ class Item extends Component {
         return areTheSame && isSelected;
     }
 
+    computeHtmlElememnt() {
+        const { href } = this.props;
+        if (href !== undefined) {
+            return 'a';
+        }
+        return 'div';
+    }
+
     render() {
         const { assistiveText, description, header, href, style, className } = this.props;
         const hasContent = !!(header || description);
@@ -121,38 +128,27 @@ class Item extends Component {
                 aria-hidden={this.getAriaHidden()}
                 aria-labelledby={this.carouselIndicatorID}
                 style={style}
-                href={href}
+                ref={this.itemRef}
                 shouldBeActive={this.shouldBeActive()}
                 shouldShow={this.shouldShow()}
                 shouldHide={this.shouldHide()}
                 direction={this.getAnimationDirection()}
             >
-                <RenderIf isTrue={!!href}>
-                    <StyledAnchor
-                        className="rainbow-carousel-image"
-                        tabIndex={this.getTabIndex()}
-                        ref={this.itemRef}
-                        href={href}
-                    >
-                        <StyledImageContainer
-                            imageSrc={this.getImageSrc()}
-                            assistiveText={assistiveText}
-                            hasContent={hasContent}
-                            header={header}
-                            description={description}
-                        />
-                    </StyledAnchor>
-                </RenderIf>
-                <RenderIf isTrue={!href}>
-                    <StyledImageContainer
-                        tabIndex={this.getTabIndex()}
+                <StyledInnerContainer
+                    tabIndex={this.getTabIndex()}
+                    href={href}
+                    as={this.computeHtmlElememnt()}
+                    isAnAnchor={!!href}
+                    data-id="carousel-image_inner-container"
+                >
+                    <ImageContainer
                         imageSrc={this.getImageSrc()}
                         assistiveText={assistiveText}
                         hasContent={hasContent}
                         header={header}
                         description={description}
                     />
-                </RenderIf>
+                </StyledInnerContainer>
             </StyledLi>
         );
     }

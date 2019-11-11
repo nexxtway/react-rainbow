@@ -3,16 +3,17 @@ import { BORDER_RADIUS_1 } from '../../../styles/borderRadius';
 import { COLOR_BRAND } from '../../../styles/colors';
 import { SHADOW_OUTLINE_2 } from '../../../styles/shadows';
 
-const StyledAnchor = styled.a`
-    display: block;
+const StyledInnerContainer = styled.div`
     border-radius: ${BORDER_RADIUS_1};
     overflow: hidden;
-    cursor: pointer;
     line-height: inherit;
     font-size: inherit;
     color: inherit;
     text-decoration: none;
     height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 
     :hover {
         text-decoration: none;
@@ -24,6 +25,12 @@ const StyledAnchor = styled.a`
         box-shadow: ${SHADOW_OUTLINE_2};
         outline: 0;
     }
+
+    ${props =>
+        props.isAnAnchor &&
+        `
+        cursor: pointer;
+        `};
 `;
 
-export default StyledAnchor;
+export default StyledInnerContainer;

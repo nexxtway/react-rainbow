@@ -41,18 +41,20 @@ export default class Indicator extends Component {
     render() {
         const { indicatorID, containerID, header, onSelect } = this.props;
         const assistiveText = getAssistiveText(header);
+        const isSelected = this.isSelected(indicatorID);
         return (
-            <StyledIndicatorLi role="presentation" key={indicatorID}>
+            <StyledIndicatorLi data-id="carousel_indicators" role="presentation" key={indicatorID}>
                 <StyledIndicatorButton
                     id={indicatorID}
-                    isSelected={this.isSelected(indicatorID)}
+                    isSelected={isSelected}
                     role="tab"
                     tabIndex={this.getTabIndex(indicatorID)}
-                    aria-selected={this.isSelected(indicatorID)}
+                    aria-selected={isSelected}
                     aria-controls={containerID}
                     title={assistiveText}
                     onClick={() => onSelect(indicatorID)}
                     ref={this.indicatorRef}
+                    data-selected={isSelected}
                 >
                     <AssistiveText text={assistiveText} />
                 </StyledIndicatorButton>

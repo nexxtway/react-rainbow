@@ -1,4 +1,5 @@
 const PageCarouselCardIndicator = require('./indicator');
+const PageCarouselImage = require('./../../CarouselImage/pageObject');
 
 /**
  * CarouselCard page object class.
@@ -18,15 +19,29 @@ class PageCarouselCard {
     /**
      * Returns a new Indicator page object of the element in item position.
      * @method
-     * @param {number} itemPosition - The base 0 index of the tab item.
+     * @param {number} itemPosition - The base 0 index of the indicator item.
      */
     getIndicatorItem(itemPosition) {
-        const items = $(this.rootElement).$$('.rainbow-carousel_indicators-container');
+        const items = $(this.rootElement).$$('[data-id="carousel_indicators"]');
         if (items[itemPosition]) {
             return new PageCarouselCardIndicator(
-                `${
-                    this.rootElement
-                } .rainbow-carousel_indicators-container:nth-child(${itemPosition + 1})`,
+                `${this.rootElement} [data-id="carousel_indicators"]:nth-child(${itemPosition +
+                    1})`,
+            );
+        }
+        return null;
+    }
+
+    /**
+     * Returns a new CarouselImage page object of the element in item position.
+     * @method
+     * @param {number} itemPosition - The base 0 index of the CarouselImage item.
+     */
+    getCarouselImageItem(itemPosition) {
+        const items = $(this.rootElement).$$('li[role="tabpanel"]');
+        if (items[itemPosition]) {
+            return new PageCarouselImage(
+                `${this.rootElement} li[role="tabpanel"]:nth-child(${itemPosition + 1})`,
             );
         }
         return null;
