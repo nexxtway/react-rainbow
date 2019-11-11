@@ -48,7 +48,7 @@ describe('<RadioButtonGroup />', () => {
         component = mount(<RadioButtonGroup options={options} onChange={onChangeFn} />);
         expect(component.find('Marker').prop('isVisible')).toBe(false);
         const radio = component
-            .find('RadioButton')
+            .find('RadioButtonItem')
             .at(2)
             .find('input');
 

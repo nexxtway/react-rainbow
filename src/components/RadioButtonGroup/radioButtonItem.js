@@ -26,6 +26,7 @@ export default class RadioButtonItem extends Component {
 
         return (
             <StyledButtonItem
+                data-id="radio-button-group_radio-container"
                 variant={variant}
                 isChecked={isChecked}
                 disabled={disabled}

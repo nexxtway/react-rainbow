@@ -20,10 +20,12 @@ class PageRadioButtonGroup {
      * @param {number} itemPosition - The base 0 index of the radio.
      */
     getItem(itemPosition) {
-        const items = $(this.rootElement).$$('.rainbow-radio-button-group_radio');
+        const items = $(this.rootElement).$$('span[data-id="radio-button-group_radio-container"]');
         if (items[itemPosition]) {
             return new PageRadioButtonItem(
-                `${this.rootElement} .rainbow-radio-button-group_radio:nth-child(${itemPosition +
+                `${
+                    this.rootElement
+                } span[data-id="radio-button-group_radio-container"]:nth-child(${itemPosition +
                     1})`,
             );
         }
