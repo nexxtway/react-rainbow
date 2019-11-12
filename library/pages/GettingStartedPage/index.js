@@ -7,6 +7,7 @@ import Tab from '../../../src/components/Tab';
 import RenderIf from '../../../src/components/RenderIf';
 import FeatureList from '../components/FeatureList';
 import CodeEditor from '../components/CodeEditor';
+import CarbonAds from '../components/CarbonAds';
 import githublogo from './github.svg';
 
 import './styles.css';
@@ -48,6 +49,7 @@ export default class GettingStartedPage extends Component {
         const { activeTabName } = this.state;
         return (
             <div className="react-rainbow-getting-started_top-container">
+                <CarbonAds />
                 <Tabset
                     className="react-rainbow-getting-started_top-container-tabset"
                     activeTabName={activeTabName}
