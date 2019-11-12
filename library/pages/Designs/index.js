@@ -35,8 +35,10 @@ function CategorySection({ title, pages }) {
 export default function Designs() {
     return (
         <div className="react-rainbow-designs_view-port rainbow-background-color_gray-1">
-            <CarbonAds />
-            <h1 className="react-rainbow-designs_header">Discover our designs</h1>
+            <div className="react-rainbow-designs_header-container">
+                <h1 className="react-rainbow-designs_header">Discover our designs</h1>
+                <CarbonAds className="react-rainbow-designs_carbon-ad" />
+            </div>
             <CategorySection title="Libraries" pages={libraryPages} />
             <CategorySection title="Websites" pages={websitePages} />
         </div>
