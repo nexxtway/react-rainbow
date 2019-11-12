@@ -43,9 +43,3 @@
         margin-top: 16px;
     }
 }
-
-@media (max-width: 340px) {
-    .react-rainbow-designs_view-port {
-        padding: 0 1rem 1rem 1rem;
-    }
-}

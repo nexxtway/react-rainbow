@@ -1,6 +1,10 @@
 .react-rainbow-experience-examples-view-port {
     background-color: #f4f6f9;
     min-height: calc(100vh - 68px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2rem;
 }
 
 .react-rainbow-experience-examples-header-title {
@@ -30,7 +34,7 @@
 @media (max-width: 600px) {
     .react-rainbow-experience-examples-view-port {
         height: unset;
-        padding: 0 2.25rem 1.5rem 2.25rem;
+        padding: 2rem 2.25rem 1.5rem 2.25rem;
     }
 
     .react-rainbow-experience-examples-header-title {
@@ -45,7 +49,7 @@
 
 @media (max-width: 340px) {
     .react-rainbow-experience-examples-view-port {
-        padding: 0 1rem 1rem 1rem;
+        padding: 2rem 1rem 1rem 1rem;
     }
 
     .react-rainbow-experience-examples-header-title {

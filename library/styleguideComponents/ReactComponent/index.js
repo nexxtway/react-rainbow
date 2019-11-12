@@ -12,6 +12,7 @@ import RenderIf from '../../../src/components/RenderIf';
 import Card from './../../../src/components/Card';
 import Breadcrumbs from '../../../src/components/Breadcrumbs';
 import Breadcrumb from '../../../src/components/Breadcrumb';
+import CarbonAds from '../../pages/components/CarbonAds';
 import TabLabel from './tabLabel';
 import Description from './description';
 import InteractiveExampleIcon from './icons/interactiveExampleIcon';
@@ -49,23 +50,27 @@ export default class ReactComponent extends Component {
             <Prismic repo="rainbow-doc">
                 <div className="react-rainbow-component_top-content">
                     {heading}
-                    <div className="rainbow-p-top_medium rainbow-p-left_x-large">
-                        <Breadcrumbs>
-                            <Breadcrumb label="Components" href="/#/Components" />
-                            <Breadcrumb label={name} />
-                        </Breadcrumbs>
-                    </div>
-                    <p className="react-rainbow-component_component-name">{name}</p>
-                    <div className="rainbow-p-horizontal_x-large rainbow-p-top_medium">
-                        <Description text={descriptionText} />
-                        <DescriptionLink name={name} />
+                    <div className="react-rainbow-component_header">
+                        <div>
+                            <div className="rainbow-p-top_medium rainbow-p-left_x-large">
+                                <Breadcrumbs>
+                                    <Breadcrumb label="Components" href="/#/Components" />
+                                    <Breadcrumb label={name} />
+                                </Breadcrumbs>
+                            </div>
+                            <p className="react-rainbow-component_component-name">{name}</p>
+                            <div className="rainbow-p-horizontal_x-large rainbow-p-top_medium">
+                                <Description text={descriptionText} />
+                                <DescriptionLink name={name} />
+                            </div>
+                        </div>
+                        <CarbonAds className="react-rainbow-component_carbon-ads" />
                     </div>
                     <div className="rainbow-p-vertical_large rainbow-p-horizontal_x-large">
                         <Pathline name={name}>
                             {`import { ${name} } from 'react-rainbow-components';`}
                         </Pathline>
                     </div>
-
                     <Tabset
                         className="rainbow-p-horizontal_x-large rainbow-m-bottom_x-large react-rainbow-component_tabset"
                         activeTabName={activeTabName}

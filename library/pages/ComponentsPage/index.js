@@ -7,6 +7,7 @@ import Input from '../../../src/components/Input';
 import RenderIf from '../../../src/components/RenderIf';
 import SearchIcon from './searchIcon';
 import SectionHeading from '../../styleguideComponents/SectionHeading';
+import CarbonAds from '../components/CarbonAds';
 import './styles.css';
 
 function handleOnError(event) {
@@ -120,6 +121,7 @@ export default class ComponentsPage extends Component {
             <div>
                 <SectionHeading />
                 <div className="react-rainbow-components-page_container">
+                    <CarbonAds />
                     <h1 className="react-rainbow-components-page_title">More than 60 components</h1>
                     <Input
                         className="react-rainbow-components-page_search"
