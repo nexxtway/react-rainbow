@@ -4,38 +4,24 @@
 }
 
 #carbonads {
-    max-width: 330px;
+    background-color: #fff;
+    border-radius: 4px;
     box-shadow: 0 1px 4px 1px hsla(0, 0%, 0%, .1);
     display: block;
-    padding: 12px 12px 12px 142px;
+    max-width: 330px;
     overflow: hidden;
-    border-radius: 4px;
-    background-color: #f5f5f5;
 }
 
 #carbonads a {
-    color: inherit;
+    color: rgba(0, 0, 0, 0.87);
     text-decoration: none;
 }
 
-#carbonads a:hover {
-    color: inherit;
-}
-
-#carbonads span {
-    position: relative;
-    display: block;
-    overflow: hidden;
-}
-
-#carbonads .carbon-wrap {
-    display: flex;
-}
-
 .carbon-img {
-    display: block;
-    margin: 0;
-    line-height: 1;
+    float: left;
+    width: 130px;
+    height: 100px;
+    margin-right: 12px;
 }
 
 .carbon-img img {
@@ -43,30 +29,32 @@
 }
 
 .carbon-text {
-    font-size: 13px;
-    padding: 10px;
-    line-height: 1.5;
-    text-align: left;
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.43;
+    letter-spacing: 0.01071em;
+    padding: 8px 12px 0 0;
 }
 
-.carbon-poweredby {
+#carbonads .carbon-poweredby {
+    color: rgba(0, 0, 0, 0.54);
     display: block;
-    padding: 8px 10px;
-    background: repeating-linear-gradient(-45deg, transparent, transparent 5px, hsla(0, 0%, 0%, .025) 5px, hsla(0, 0%, 0%, .025) 10px) hsla(203, 11%, 95%, .4);
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: .5px;
-    font-weight: 600;
-    font-size: 9px;
-    line-height: 1;
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.66;
+    letter-spacing: 0.03333em;
+}
+
+#carbonads .carbon-poweredby:hover {
+    color: rgba(0, 0, 0, 0.94);
 }
 
 .react-rainbow-carbonads {
-    margin: 0 20px 20px 0;
+    display: inline-block;
     font-size: 1.5rem;
     font-weight: 400;
     line-height: 1.33;
     letter-spacing: 0em;
-    display: flex;
-    justify-content: flex-end;
+    height: 100px;
 }

@@ -2,6 +2,7 @@
 import React from 'react';
 import Card from './../../../src/components/Card';
 import { libraryPages, websitePages } from '../components/DesignDetails/pagesData';
+import CarbonAds from '../components/CarbonAds';
 import './styles.css';
 import './media-queries.css';
 
@@ -13,9 +14,7 @@ function CategoryCards({ pages }) {
         return (
             <a key={key} className="react-rainbow-designs_anchor" href={href}>
                 <Card className="react-rainbow-designs_card" footer={name}>
-                    <span className="react-rainbow-designs_card-image">
-                        {icon}
-                    </span>
+                    <span className="react-rainbow-designs_card-image">{icon}</span>
                 </Card>
             </a>
         );
@@ -25,9 +24,7 @@ function CategoryCards({ pages }) {
 function CategorySection({ title, pages }) {
     return (
         <div className="react-rainbow-designs_category">
-            <h2 className="react-rainbow-designs_sub-header">
-                {title}
-            </h2>
+            <h2 className="react-rainbow-designs_sub-header">{title}</h2>
             <section className="react-rainbow-designs_cards-container">
                 <CategoryCards pages={pages} />
             </section>
@@ -38,9 +35,8 @@ function CategorySection({ title, pages }) {
 export default function Designs() {
     return (
         <div className="react-rainbow-designs_view-port rainbow-background-color_gray-1">
-            <h1 className="react-rainbow-designs_header">
-                Discover our designs
-            </h1>
+            <CarbonAds />
+            <h1 className="react-rainbow-designs_header">Discover our designs</h1>
             <CategorySection title="Libraries" pages={libraryPages} />
             <CategorySection title="Websites" pages={websitePages} />
         </div>

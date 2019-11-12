@@ -7,7 +7,7 @@ import Tab from '../../../src/components/Tab';
 import RenderIf from '../../../src/components/RenderIf';
 import FeatureList from '../components/FeatureList';
 import CodeEditor from '../components/CodeEditor';
-import CarbonAds from '../components/CarbonAds';
+// import CarbonAds from '../components/CarbonAds';
 import githublogo from './github.svg';
 
 import './styles.css';
@@ -43,13 +43,14 @@ export default class GettingStartedPage extends Component {
 
     handleTabChange(e, tabName) {
         this.setState({ activeTabName: tabName });
+        // eslint-disable-next-line no-undef
+        // if (typeof _carbonads !== 'undefined') _carbonads.refresh();
     }
 
     render() {
         const { activeTabName } = this.state;
         return (
             <div className="react-rainbow-getting-started_top-container">
-                <CarbonAds />
                 <Tabset
                     className="react-rainbow-getting-started_top-container-tabset"
                     activeTabName={activeTabName}
@@ -77,6 +78,7 @@ export default class GettingStartedPage extends Component {
                     />
                 </Tabset>
                 <section className="react-rainbow-getting-started_container">
+                    {/* <CarbonAds /> */}
                     <RenderIf isTrue={activeTabName === 'overview'}>
                         <h3 className="react-rainbow-getting-started_section-heading">
                             React Rainbow is a collection of components that will reliably help you
