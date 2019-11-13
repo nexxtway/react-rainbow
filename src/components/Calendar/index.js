@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Select from './../Select';
-import ButtonIcon from './../ButtonIcon';
 import RightIcon from './icons/rightArrow';
 import LeftIcon from './icons/leftArrow';
 import DaysOfWeek from './daysOfWeek';
@@ -26,6 +25,7 @@ import {
 import StyledControlsContainer from './styled/controlsContainer';
 import StyledMonthContainer from './styled/monthContainer';
 import StyledMonth from './styled/month';
+import StyledArrowButton from './styled/arrowButton';
 import {
     UP_KEY,
     DOWN_KEY,
@@ -302,7 +302,7 @@ class CalendarComponent extends Component {
             <section id={id} className={className} style={style}>
                 <StyledControlsContainer>
                     <StyledMonthContainer>
-                        <ButtonIcon
+                        <StyledArrowButton
                             onClick={this.previousMonth}
                             size="medium"
                             disabled={disablePreviousMonth}
@@ -314,7 +314,7 @@ class CalendarComponent extends Component {
                             {formattedMonth}
                         </StyledMonth>
 
-                        <ButtonIcon
+                        <StyledArrowButton
                             onClick={this.nextMonth}
                             size="medium"
                             disabled={disableNextMonth}
