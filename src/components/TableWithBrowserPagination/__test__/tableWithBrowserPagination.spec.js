@@ -46,6 +46,12 @@ const nextData = [
 ];
 
 describe('<TableWithBrowserPagination />', () => {
+    it('should show the Pagination when pageSize is less than data length', () => {
+        const component = mount(
+            <TableWithBrowserPagination keyField="name" data={data} pageSize={5} />,
+        );
+        expect(component.find(Pagination).exists()).toBe(true);
+    });
     it('should not show the Pagination when pageSize is equal or more than data length', () => {
         const pageSizes = [14, 15];
         pageSizes.forEach(pageSize => {
