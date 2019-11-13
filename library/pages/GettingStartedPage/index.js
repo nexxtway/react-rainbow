@@ -7,6 +7,7 @@ import Tab from '../../../src/components/Tab';
 import RenderIf from '../../../src/components/RenderIf';
 import FeatureList from '../components/FeatureList';
 import CodeEditor from '../components/CodeEditor';
+import CarbonAds from '../components/CarbonAds';
 import githublogo from './github.svg';
 
 import './styles.css';
@@ -85,28 +86,33 @@ export default class GettingStartedPage extends Component {
                     </RenderIf>
                     <RenderIf isTrue={activeTabName === 'installation'}>
                         <div className="rainbow-flex rainbow-flex_column">
-                            <h3 className="react-rainbow-getting-started_section-heading">
-                                {`React Rainbow Components is currently optimized for React ${
-                                    this.reactV
-                                }`}
-                            </h3>
-                            <h2 className="react-rainbow-getting-started_section-heading-2">
-                                Install
-                            </h2>
-                            <h5 className="react-rainbow-getting-started_section-heading-5">
-                                React Rainbow Components is available as an
-                                <a
-                                    className="react-rainbow-getting-started_section-link"
-                                    href="https://www.npmjs.com/package/react-rainbow-components"
-                                    rel="noopener noreferrer"
-                                    target="_blank"
-                                >
-                                    npm package
-                                </a>
-                            </h5>
-                            <span className="react-rainbow-getting-started_section-italic">
-                                installing with npm
-                            </span>
+                            <div className="react-rainbow-getting-started_section-heading-container">
+                                <div>
+                                    <h3 className="react-rainbow-getting-started_section-heading">
+                                        {`React Rainbow Components is currently optimized for React ${
+                                            this.reactV
+                                        }`}
+                                    </h3>
+                                    <h2 className="react-rainbow-getting-started_section-heading-2">
+                                        Install
+                                    </h2>
+                                    <h5 className="react-rainbow-getting-started_section-heading-5">
+                                        React Rainbow Components is available as an
+                                        <a
+                                            className="react-rainbow-getting-started_section-link"
+                                            href="https://www.npmjs.com/package/react-rainbow-components"
+                                            rel="noopener noreferrer"
+                                            target="_blank"
+                                        >
+                                            npm package
+                                        </a>
+                                    </h5>
+                                    <span className="react-rainbow-getting-started_section-italic">
+                                        installing with npm
+                                    </span>
+                                </div>
+                                <CarbonAds className="react-rainbow-getting-started_carbon-ad" />
+                            </div>
                             <CodeEditor code="$ npm install react-rainbow-components --save" />
                             <span className="react-rainbow-getting-started_section-italic">
                                 installing with yarn
@@ -115,10 +121,13 @@ export default class GettingStartedPage extends Component {
                         </div>
                     </RenderIf>
                     <RenderIf isTrue={activeTabName === 'usage'}>
-                        <h3 className="react-rainbow-getting-started_section-heading">
-                            There are several runnable examples in this Git repo, but here's a Hello
-                            World one:
-                        </h3>
+                        <div className="react-rainbow-getting-started_section-heading-container rainbow-align_end rainbow-m-bottom_medium">
+                            <h3 className="react-rainbow-getting-started_section-heading">
+                                There are several runnable examples in this Git repo, but here's a
+                                Hello World one:
+                            </h3>
+                            <CarbonAds className="react-rainbow-getting-started_carbon-ad" />
+                        </div>
                         <CodeEditor code={HelloWorldExample} />
                         <iframe
                             title="codesandbox example"
@@ -128,14 +137,19 @@ export default class GettingStartedPage extends Component {
                     </RenderIf>
                     <RenderIf isTrue={activeTabName === 'contributing'}>
                         <div className="rainbow-flex rainbow-flex_column">
-                            <h3 className="react-rainbow-getting-started_section-heading">
-                                We are excited that you are interested in contributing to this
-                                project!
-                            </h3>
-                            <h2 className="react-rainbow-getting-started_section-heading-2">
-                                {' '}
-                                Get your git on
-                            </h2>
+                            <div className="react-rainbow-getting-started_section-heading-container rainbow-align_end rainbow-m-bottom_small">
+                                <div>
+                                    <h3 className="react-rainbow-getting-started_section-heading">
+                                        We are excited that you are interested in contributing to
+                                        this project!
+                                    </h3>
+                                    <h2 className="react-rainbow-getting-started_section-heading-2">
+                                        {' '}
+                                        Get your git on
+                                    </h2>
+                                </div>
+                                <CarbonAds className="react-rainbow-getting-started_carbon-ad" />
+                            </div>
                             <h5 className="react-rainbow-getting-started_section-heading-5">
                                 You can help us improve React Rainbow Components, the first step to
                                 begin collaborating is to create an issue before submitting a pull
