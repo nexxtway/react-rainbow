@@ -1,23 +1,22 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { Consumer as VisualPickerConsumer } from '../VisualPicker/context';
 import { uniqueId } from '../../libs/utils';
 import RenderIf from '../RenderIf';
 import CheckmarkIcon from './checkmark';
-import './styles.css';
+import StyledContainer from './styled/container';
+import StyledInput from './styled/input';
+import StyledLabel from './styled/label';
+import StyledContent from './styled/content';
+import StyledCheckedTriangle from './styled/checkedTriangle';
+import StyledFooter from './styled/footer';
 
 class PickerOption extends Component {
     constructor(props) {
         super(props);
         this.inputId = uniqueId('radio');
         this.handleChange = this.handleChange.bind(this);
-    }
-
-    getContainerClassNames() {
-        const { className } = this.props;
-        return classnames('rainbow-visual-picker-option_content-container', className);
     }
 
     getType() {
@@ -43,13 +42,17 @@ class PickerOption extends Component {
     }
 
     render() {
-        const { disabled, children, footer, style } = this.props;
+        const { disabled, children, footer, style, className } = this.props;
         const { groupName, ariaDescribedby } = this.props;
 
         return (
-            <span className={this.getContainerClassNames()} style={style}>
-                <input
-                    className="rainbow-visual-picker-option_input"
+            <StyledContainer
+                data-id="visual-picker_option-container"
+                className={className}
+                style={style}
+            >
+                <StyledInput
+                    as="input"
                     type={this.getType()}
                     id={this.inputId}
                     name={groupName}
@@ -59,19 +62,19 @@ class PickerOption extends Component {
                     disabled={disabled}
                 />
 
-                <label className="rainbow-visual-picker-option_content" htmlFor={this.inputId}>
-                    <span className="rainbow-visual-picker-option">
+                <StyledLabel data-id="visual-picker_option-label" htmlFor={this.inputId}>
+                    <StyledContent data-id="visual-picker_option">
                         <RenderIf isTrue={this.isChecked()}>
-                            <span className="rainbow-visual-picker-option_selected-element" />
-                            <CheckmarkIcon className="rainbow-visual-picker-option_checkmark-icon" />
+                            <StyledCheckedTriangle />
+                            <CheckmarkIcon />
                         </RenderIf>
                         {children}
-                    </span>
+                    </StyledContent>
                     <RenderIf isTrue={!!footer}>
-                        <span className="rainbow-visual-picker-option_footer">{footer}</span>
+                        <StyledFooter>{footer}</StyledFooter>
                     </RenderIf>
-                </label>
-            </span>
+                </StyledLabel>
+            </StyledContainer>
         );
     }
 }
