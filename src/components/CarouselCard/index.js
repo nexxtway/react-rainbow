@@ -13,7 +13,6 @@ import {
 import StyledContainer from './styled/container';
 import StyledAutoplay from './styled/autoplay';
 import StyledImagesUl from './styled/imagesUl';
-// import './styles.css';
 
 /**
  * A carouselCard allows multiple pieces of featured content to occupy an allocated amount of space.

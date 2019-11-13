@@ -48,10 +48,10 @@ describe('<CarouselCard/> utils', () => {
         const ref = {
             querySelectorAll: jest.fn(() => elements),
         };
-        it('should call querySelectorAll with a[data-id="carousel-image_inner-container"]', () => {
+        it('should call querySelectorAll with [data-id="carousel-image_inner-container"]', () => {
             getChildTabNodes(ref);
             expect(ref.querySelectorAll).toHaveBeenCalledWith(
-                'a[data-id="carousel-image_inner-container"]',
+                '[data-id="carousel-image_inner-container"]',
             );
         });
         it('should return the elements resolved by querySelectorAll', () => {

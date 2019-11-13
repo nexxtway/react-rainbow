@@ -88,6 +88,14 @@ class Item extends Component {
         };
     }
 
+    getHtmlElememnt() {
+        const { href } = this.props;
+        if (href && typeof href === 'string') {
+            return 'a';
+        }
+        return 'div';
+    }
+
     shouldShow() {
         const { activeItem, prevActiveItem } = this.state;
         const areTheSame = activeItem === prevActiveItem;
@@ -109,14 +117,6 @@ class Item extends Component {
         return areTheSame && isSelected;
     }
 
-    computeHtmlElememnt() {
-        const { href } = this.props;
-        if (href !== undefined) {
-            return 'a';
-        }
-        return 'div';
-    }
-
     render() {
         const { assistiveText, description, header, href, style, className } = this.props;
         const hasContent = !!(header || description);
@@ -135,10 +135,10 @@ class Item extends Component {
                 direction={this.getAnimationDirection()}
             >
                 <StyledInnerContainer
+                    className="rainbow-carousel-image"
                     tabIndex={this.getTabIndex()}
                     href={href}
-                    as={this.computeHtmlElememnt()}
-                    isAnAnchor={!!href}
+                    as={this.getHtmlElememnt()}
                     data-id="carousel-image_inner-container"
                 >
                     <ImageContainer

@@ -41,7 +41,7 @@ class PageCarouselCardIndicator {
     isSelected() {
         return !!$(this.rootElement)
             .$('button')
-            .getAttribute('data-selected');
+            .getAttribute('aria-selected');
     }
 }
 

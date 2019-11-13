@@ -25,12 +25,6 @@ const StyledInnerContainer = styled.div`
         box-shadow: ${SHADOW_OUTLINE_2};
         outline: 0;
     }
-
-    ${props =>
-        props.isAnAnchor &&
-        `
-        cursor: pointer;
-        `};
 `;
 
 export default StyledInnerContainer;

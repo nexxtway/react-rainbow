@@ -60,7 +60,7 @@ describe('CarouselCard base example', () => {
     });
     it('should navigate to CarouselImage page when click on the first CarouselIamge', () => {
         const carousel = new PageCarouselCard(CAROUSEL);
-        const carouselImage = carousel.getCarouselImageItem(0);
+        const carouselImage = carousel.getImageItem(0);
         carouselImage.click();
         expect(browser.getUrl()).toContain('Components/CarouselImage');
     });

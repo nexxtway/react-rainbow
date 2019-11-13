@@ -43,7 +43,7 @@ export default class Indicator extends Component {
         const assistiveText = getAssistiveText(header);
         const isSelected = this.isSelected(indicatorID);
         return (
-            <StyledIndicatorLi data-id="carousel_indicators" role="presentation" key={indicatorID}>
+            <StyledIndicatorLi role="presentation" key={indicatorID}>
                 <StyledIndicatorButton
                     id={indicatorID}
                     isSelected={isSelected}
@@ -54,7 +54,6 @@ export default class Indicator extends Component {
                     title={assistiveText}
                     onClick={() => onSelect(indicatorID)}
                     ref={this.indicatorRef}
-                    data-selected={isSelected}
                 >
                     <AssistiveText text={assistiveText} />
                 </StyledIndicatorButton>
