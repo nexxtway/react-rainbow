@@ -53,7 +53,7 @@ describe('<Textarea/>', () => {
             required: true,
             readOnly: false,
             hideLabel: false,
-            textareaId: expect.any(String),
+            inputId: expect.any(String),
         });
     });
 });

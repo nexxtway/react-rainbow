@@ -4,11 +4,11 @@ import autosize from 'autosize';
 import withReduxForm from './../../libs/hocs/withReduxForm';
 import { uniqueId } from './../../libs/utils';
 import RenderIf from '../RenderIf';
-import Label from './label';
+import Label from './../Input/label';
 import StyledContainer from './styled/container';
 import StyledTextarea from './styled/textarea';
-import StyledBottomHelp from './styled/bottomHelp';
-import StyledError from './styled/error';
+import StyledBottomHelp from '../Input/styled/helpText';
+import StyledError from '../Input/styled/errorText';
 
 /**
  * Textarea inputs are used for freeform data entry.
@@ -97,12 +97,12 @@ class Textarea extends Component {
         } = this.props;
 
         return (
-            <StyledContainer className={className} error={error} style={style} id={id}>
+            <StyledContainer className={className} style={style} id={id}>
                 <Label
                     label={label}
                     hideLabel={hideLabel}
                     required={required}
-                    textareaId={this.textareaId}
+                    inputId={this.textareaId}
                     readOnly={readOnly}
                     id={this.getInlineTextLabelId()}
                 />
