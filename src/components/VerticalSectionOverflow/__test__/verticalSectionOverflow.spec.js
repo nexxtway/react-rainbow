@@ -60,40 +60,6 @@ describe('<VerticalSectionOverflow/>', () => {
         const component = mount(<VerticalSectionOverflow assistiveText="description text" />);
         expect(component.find('AssistiveText').prop('text')).toBe('description text');
     });
-    it('should set the right className in the container element when is expanded', () => {
-        const component = mount(<VerticalSectionOverflow expanded />);
-        expect(component.find('div[data-id="vertical-overflow-container"]').prop('className')).toBe(
-            'rainbow-vertical-section-overflow_container rainbow-vertical-section-overflow_container--expanded',
-        );
-    });
-    it('should set the right className in the container element when is not expanded', () => {
-        const component = mount(<VerticalSectionOverflow />);
-        expect(component.find('div[data-id="vertical-overflow-container"]').prop('className')).toBe(
-            'rainbow-vertical-section-overflow_container',
-        );
-    });
-    it('should set the right className in the overflow container when is closed', () => {
-        const component = mount(<VerticalSectionOverflow />);
-        expect(component.find('div[data-id="vertical-overflow"]').prop('className')).toBe(
-            'rainbow-vertical-section-overflow--hide',
-        );
-    });
-    it('should set the right className in the overflow container when expanded is passed', () => {
-        const component = mount(<VerticalSectionOverflow expanded />);
-        expect(component.find('div[data-id="vertical-overflow"]').prop('className')).toBe(
-            'rainbow-vertical-section-overflow--show',
-        );
-    });
-    it('should set the right className in the overflow container when the button is clicked', () => {
-        const component = mount(<VerticalSectionOverflow />);
-        expect(component.find('div[data-id="vertical-overflow"]').prop('className')).toBe(
-            'rainbow-vertical-section-overflow--hide',
-        );
-        component.find('button').simulate('click');
-        expect(component.find('div[data-id="vertical-overflow"]').prop('className')).toBe(
-            'rainbow-vertical-section-overflow--show',
-        );
-    });
     it('should render the children passed', () => {
         const component = mount(
             <VerticalSectionOverflow>

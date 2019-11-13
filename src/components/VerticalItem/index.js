@@ -58,11 +58,13 @@ function Item(props) {
             <RenderIf isTrue={!!href}>
                 <StyledAnchor
                     data-id="vertical-item-clickable-element"
+                    className="rainbow-vertical-item_action"
                     href={href}
                     onClick={hanldeOnClick}
                     aria-describedby={entityHeaderId}
                     aria-current={getAriaCurrent()}
                     tabIndex={resolveTabIndex()}
+                    isSelected={isSelected}
                 >
                     <ItemContent label={label} notification={notification} />
                 </StyledAnchor>
@@ -70,10 +72,12 @@ function Item(props) {
             <RenderIf isTrue={!href}>
                 <StyledButton
                     data-id="vertical-item-clickable-element"
+                    className="rainbow-vertical-item_action"
                     onClick={hanldeOnClick}
                     aria-describedby={entityHeaderId}
                     aria-current={getAriaCurrent()}
                     tabIndex={resolveTabIndex()}
+                    isSelected={isSelected}
                 >
                     <ItemContent label={label} notification={notification} />
                 </StyledButton>
