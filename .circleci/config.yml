@@ -118,6 +118,7 @@ jobs:
                       echo REACT_APP_GA_ID=$REACT_APP_GA_ID >> .env;
                       echo REACT_APP_GOOGLE_MAPS_APIKEY=$REACT_APP_GOOGLE_MAPS_APIKEY >> .env;
                       echo REACT_APP_RECAPTCHA_APIKEY=$REACT_APP_RECAPTCHA_APIKEY >> .env;
+                      echo REACT_APP_CARBON_ADS_SRC=$REACT_APP_CARBON_ADS_SRC >> .env;
 
             - run: yarn install
             - run: yarn deploy:library --token=$FIREBASE_TOKEN
