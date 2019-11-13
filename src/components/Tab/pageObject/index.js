@@ -18,7 +18,7 @@ class PageTab {
      */
     click() {
         $(this.rootElement)
-            .$('a')
+            .$('button[role="tab"]')
             .click();
     }
 
@@ -29,7 +29,7 @@ class PageTab {
      */
     hasFocus() {
         return $(this.rootElement)
-            .$('a')
+            .$('button[role="tab"]')
             .isFocused();
     }
 
@@ -39,11 +39,9 @@ class PageTab {
      * @returns {bool}
      */
     isSelected() {
-        return (
-            $(this.rootElement)
-                .$('a')
-                .getAttribute('class') === 'rainbow-tab_anchor rainbow-tab--active'
-        );
+        return !!$(this.rootElement)
+            .$('button[role="tab"]')
+            .getAttribute('data-active');
     }
 
     /**
@@ -53,7 +51,7 @@ class PageTab {
      */
     isVisibleWithinViewport() {
         return $(this.rootElement)
-            .$('a')
+            .$('button[role="tab"]')
             .isDisplayedInViewport();
     }
 }
