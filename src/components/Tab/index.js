@@ -1,9 +1,10 @@
 /* eslint-disable no-script-url, react/prop-types */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { Consumer } from '../Tabset/context';
-import './styles.css';
+import StyledContainer from './styled/container';
+import TruncatedText from '../Structural/truncatedText';
+import StyledButton from './styled/button';
 
 class TabItem extends Component {
     constructor(props) {
@@ -31,27 +32,6 @@ class TabItem extends Component {
         privateUnRegisterTab(name);
     }
 
-    getContainerClassName() {
-        const { className, fullWidth } = this.props;
-        return classnames(
-            'rainbow-tab',
-            {
-                'rainbow-tab--full-width': fullWidth,
-                'rainbow-tab--active': this.isSelected(),
-            },
-            className,
-        );
-    }
-
-    getTabClassName() {
-        const { disabled, fullWidth } = this.props;
-        return classnames('rainbow-tab_anchor', {
-            'rainbow-tab--active': this.isSelected(),
-            'rainbow-tab--disabled': disabled,
-            'rainbow-tab--full-width': fullWidth,
-        });
-    }
-
     getTabIndex() {
         if (this.isSelected()) {
             return 0;
@@ -72,29 +52,43 @@ class TabItem extends Component {
     }
 
     render() {
-        const { label, style, title, id, ariaControls } = this.props;
+        const {
+            label,
+            style,
+            className,
+            title,
+            id,
+            ariaControls,
+            fullWidth,
+            disabled,
+        } = this.props;
+        const isActive = this.isSelected();
 
         return (
-            <li
-                className={this.getContainerClassName()}
+            <StyledContainer
+                className={className}
+                fullWidth={fullWidth}
+                isActive={isActive}
                 style={style}
                 title={title}
                 role="presentation"
             >
-                <a
-                    href="javascript:void(0);"
+                <StyledButton
                     role="tab"
-                    className={this.getTabClassName()}
-                    aria-selected={this.isSelected()}
+                    aria-selected={isActive}
                     onClick={this.handleSelect}
                     tabIndex={this.getTabIndex()}
                     id={id}
                     aria-controls={ariaControls}
                     ref={this.tabRef}
+                    isActive={isActive}
+                    disabled={disabled}
+                    fullWidth={fullWidth}
+                    data-active={isActive}
                 >
-                    <span className="rainbow-tab_anchor-inner-text">{label}</span>
-                </a>
-            </li>
+                    <TruncatedText>{label}</TruncatedText>
+                </StyledButton>
+            </StyledContainer>
         );
     }
 }

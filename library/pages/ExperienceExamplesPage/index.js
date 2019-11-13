@@ -9,10 +9,12 @@ export default function ExperienceExamplesPage() {
     return (
         <Prismic repo="rainbow-doc">
             <div className="react-rainbow-experience-examples-view-port">
-                <CarbonAds />
-                <h1 className="react-rainbow-experience-examples-header-title">
-                    Experience examples
-                </h1>
+                <div className="react-rainbow-experience-examples_header-container">
+                    <h1 className="react-rainbow-experience-examples-header-title">
+                        Experience examples
+                    </h1>
+                    <CarbonAds className="react-rainbow-experience-examples_carbon-ad" />
+                </div>
                 <div className="react-rainbow-experience-examples-container">
                     <QueryAt
                         component={ExperienceExample}

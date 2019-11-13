@@ -39,6 +39,8 @@ export default class ReactComponent extends Component {
 
     handleOnSelect(event, tab) {
         this.setState({ activeTabName: tab });
+        // eslint-disable-next-line no-undef
+        if (_carbonads) _carbonads.refresh();
     }
 
     render() {
