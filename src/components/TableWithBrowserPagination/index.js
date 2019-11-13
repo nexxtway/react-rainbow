@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import Pagination from '../Pagination';
 import Table from '../Table';
 import RenderIf from '../RenderIf';
 import Options from './options';
 import getPageItems from './helpers/getPageItems';
-import './styles.css';
+import StyledContainer from './styled/container';
+import StyledPaginationContainer from './styled/paginationContainer';
+import StyledSelectContainer from './styled/selectContainer';
+import StyledSelect from './styled/select';
 
 /**
  * It implement a client side pagination experience. It basically wire up the Table and
@@ -14,7 +16,7 @@ import './styles.css';
  * based on a new prop `pageSize`.
  * @category DataView
  */
-export default class TableWithBrowserPagination extends React.Component {
+export default class TableWithBrowserPagination extends Component {
     constructor(props) {
         super(props);
         const { data, pageSize } = props;
@@ -36,15 +38,6 @@ export default class TableWithBrowserPagination extends React.Component {
         if (prevProps.data !== data || prevProps.pageSize !== pageSize) {
             this.updateData();
         }
-    }
-
-    getPaginationContainerClassNames() {
-        const { paginationAlignment } = this.props;
-
-        return classnames(
-            'rainbow-table-with-browser-pagination_pagination-container',
-            `rainbow-table-with-browser-pagination_pagination--${paginationAlignment}`,
-        );
     }
 
     updateData() {
@@ -99,36 +92,27 @@ export default class TableWithBrowserPagination extends React.Component {
         const showPagination = pages > 1;
 
         return (
-            <div className={className} style={style}>
-                <Table
-                    className="rainbow-table-with-browser-pagination_table"
-                    data={pageItems}
-                    {...rest}
-                    ref={this.table}
-                >
+            <StyledContainer className={className} style={style}>
+                <Table data={pageItems} {...rest} ref={this.table}>
                     {children}
                 </Table>
                 <RenderIf isTrue={showPagination}>
-                    <div className={this.getPaginationContainerClassNames()}>
+                    <StyledPaginationContainer paginationAlignment={paginationAlignment}>
                         <Pagination
                             pages={pages}
                             activePage={activePage}
                             onChange={this.handleChange}
                         />
                         <RenderIf isTrue={pages > 6}>
-                            <div className="rainbow-table-with-browser-pagination_select-container">
-                                <select
-                                    className="rainbow-table-with-browser-pagination_select"
-                                    onChange={this.handleSelectChange}
-                                    value={activePage}
-                                >
+                            <StyledSelectContainer>
+                                <StyledSelect onChange={this.handleSelectChange} value={activePage}>
                                     <Options pages={pages} />
-                                </select>
-                            </div>
+                                </StyledSelect>
+                            </StyledSelectContainer>
                         </RenderIf>
-                    </div>
+                    </StyledPaginationContainer>
                 </RenderIf>
-            </div>
+            </StyledContainer>
         );
     }
 }

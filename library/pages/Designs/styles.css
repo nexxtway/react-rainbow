@@ -1,18 +1,30 @@
 .react-rainbow-designs_view-port {
-    padding: 0 0 0 1rem;
+    padding: 2rem 0 0 1rem;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.react-rainbow-designs_header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 }
 
 .react-rainbow-designs_header {
     display: flex;
-    justify-content: center;
     align-items: center;
     font-family: 'Lato Light';
     font-size: 32px;
     font-weight: 300;
     letter-spacing: 0.5px;
     color: #061c3f;
-    padding: 2.25rem 0 1rem 0;
+    padding: 1rem 0 1rem 2rem;
+}
+
+.react-rainbow-designs_carbon-ad {
+    align-self: flex-end;
+    margin-right: 3rem;
 }
 
 .react-rainbow-designs_category {
