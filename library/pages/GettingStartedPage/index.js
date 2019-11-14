@@ -9,7 +9,6 @@ import FeatureList from '../components/FeatureList';
 import CodeEditor from '../components/CodeEditor';
 import CarbonAds from '../components/CarbonAds';
 import githublogo from './github.svg';
-
 import './styles.css';
 
 const HelloWorldExample = `import React from 'react';
@@ -77,11 +76,14 @@ export default class GettingStartedPage extends Component {
                 </Tabset>
                 <section className="react-rainbow-getting-started_container">
                     <RenderIf isTrue={activeTabName === 'overview'}>
-                        <h3 className="react-rainbow-getting-started_section-heading">
-                            React Rainbow is a collection of components that will reliably help you
-                            build your application in a snap. Give it a hack and let us know what
-                            you think.
-                        </h3>
+                        <div className="react-rainbow-getting-started_section-heading-container">
+                            <h3 className="react-rainbow-getting-started_section-heading">
+                                React Rainbow is a collection of components that will reliably help
+                                you build your application in a snap. Give it a hack and let us know
+                                what you think.
+                            </h3>
+                            <CarbonAds className="react-rainbow-getting-started_carbon-ad rainbow-m-left_medium" />
+                        </div>
                         <FeatureList />
                     </RenderIf>
                     <RenderIf isTrue={activeTabName === 'installation'}>

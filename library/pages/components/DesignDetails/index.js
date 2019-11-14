@@ -8,6 +8,7 @@ import InnerImg from './innerImg';
 import DonwloadDesignButtons from './../DonwloadDesignButtons';
 import RenderIf from './../../../../src/components/RenderIf';
 import { libraryPages, websitePages } from './pagesData';
+import CarbonAds from '../CarbonAds';
 import './styles.css';
 import './media-queries.css';
 
@@ -53,12 +54,15 @@ export default function DesignDetails(props) {
 
     return (
         <section className="react-rainbow-designs-details_view-port rainbow-p-vertical_medium rainbow-p-horizontal_x-large rainbow-background-color_gray-1">
-            <header>
-                <Breadcrumbs>
-                    <Breadcrumb label="Designs" href="/#/Designs/" />
-                    <Breadcrumb label={title} />
-                </Breadcrumbs>
-                <h1 className="react-rainbow-design-detail_title">{title}</h1>
+            <header className="react-rainbow-design-detail_header">
+                <div>
+                    <Breadcrumbs>
+                        <Breadcrumb label="Designs" href="/#/Designs/" />
+                        <Breadcrumb label={title} />
+                    </Breadcrumbs>
+                    <h1 className="react-rainbow-design-detail_title">{title}</h1>
+                </div>
+                <CarbonAds className="react-rainbow-design-detail_carbon-ads rainbow-m-bottom_small" />
             </header>
             <section className="react-rainbow-design-detail_content rainbow-m-top_x-small rainbow-flex">
                 <article className="react-rainbow-design-detail_img-container">
