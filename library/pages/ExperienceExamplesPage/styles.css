@@ -3,7 +3,7 @@
     min-height: calc(100vh - 68px);
     display: flex;
     flex-direction: column;
-    padding-top: 2rem;
+    padding-top: 1rem;
 }
 
 .react-rainbow-experience-examples_header-container {
@@ -22,7 +22,7 @@
     font-weight: 300;
     letter-spacing: 0.5px;
     color: #061c3f;
-    padding: 2.25rem 0 1rem 3rem;
+    padding: 2.25rem 0 0 3rem;
 }
 
 .react-rainbow-experience-examples_carbon-ad {

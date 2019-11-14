@@ -77,12 +77,12 @@ export default class GettingStartedPage extends Component {
                 <section className="react-rainbow-getting-started_container">
                     <RenderIf isTrue={activeTabName === 'overview'}>
                         <div className="react-rainbow-getting-started_section-heading-container">
-                            <h3 className="react-rainbow-getting-started_section-heading">
+                            <h3 className="react-rainbow-getting-started_section-heading rainbow-m-right_medium">
                                 React Rainbow is a collection of components that will reliably help
                                 you build your application in a snap. Give it a hack and let us know
                                 what you think.
                             </h3>
-                            <CarbonAds className="react-rainbow-getting-started_carbon-ad rainbow-m-left_medium" />
+                            <CarbonAds className="react-rainbow-getting-started_carbon-ad" />
                         </div>
                         <FeatureList />
                     </RenderIf>
