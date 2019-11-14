@@ -105,9 +105,7 @@ class PagePicklist {
      * @returns {number}
      */
     getOptionsLength() {
-        return $(this.rootElement).$$(
-            'li.rainbow-picklist-option:not(.rainbow-picklist-option_selected)',
-        ).length;
+        return $(this.rootElement).$$('li[data-selected="false"]').length;
     }
 
     /**
