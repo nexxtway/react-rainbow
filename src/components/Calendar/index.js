@@ -16,11 +16,11 @@ import {
     getLastDayMonth,
     getYearsRange,
     isSameMonth,
-    isSameYear,
     getSign,
     getCalendarBounds,
     isDateBelowLimit,
     isDateBeyondLimit,
+    getNextFocusedDate,
 } from './helpers';
 import StyledControlsContainer from './styled/controlsContainer';
 import StyledMonthContainer from './styled/monthContainer';
@@ -180,10 +180,7 @@ class CalendarComponent extends Component {
     nextMonth() {
         const newMonth = addMonths(this.state.currentMonth, 1);
         const { value } = this.props;
-        const focusedDate =
-            isSameMonth(value, newMonth) && isSameYear(value, newMonth)
-                ? value
-                : getFirstDayMonth(newMonth);
+        const focusedDate = getNextFocusedDate(value, newMonth);
 
         this.setState({
             focusedDate,
@@ -194,10 +191,7 @@ class CalendarComponent extends Component {
     previousMonth() {
         const newMonth = addMonths(this.state.currentMonth, -1);
         const { value } = this.props;
-        const focusedDate =
-            isSameMonth(value, newMonth) && isSameYear(value, newMonth)
-                ? value
-                : getFirstDayMonth(newMonth);
+        const focusedDate = getNextFocusedDate(value, newMonth);
 
         this.setState({
             focusedDate,
@@ -211,10 +205,7 @@ class CalendarComponent extends Component {
         newMonth.setFullYear(year);
 
         const { value } = this.props;
-        const focusedDate =
-            isSameMonth(value, newMonth) && isSameYear(value, newMonth)
-                ? value
-                : getFirstDayMonth(newMonth);
+        const focusedDate = getNextFocusedDate(value, newMonth);
 
         this.setState({
             focusedDate,
