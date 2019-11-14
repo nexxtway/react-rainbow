@@ -89,7 +89,7 @@ export default class GettingStartedPage extends Component {
                     <RenderIf isTrue={activeTabName === 'installation'}>
                         <div className="rainbow-flex rainbow-flex_column">
                             <div className="react-rainbow-getting-started_section-heading-container">
-                                <div>
+                                <div className="rainbow-m-right_medium">
                                     <h3 className="react-rainbow-getting-started_section-heading">
                                         {`React Rainbow Components is currently optimized for React ${
                                             this.reactV
@@ -124,7 +124,7 @@ export default class GettingStartedPage extends Component {
                     </RenderIf>
                     <RenderIf isTrue={activeTabName === 'usage'}>
                         <div className="react-rainbow-getting-started_section-heading-container rainbow-align_end rainbow-m-bottom_medium">
-                            <h3 className="react-rainbow-getting-started_section-heading">
+                            <h3 className="react-rainbow-getting-started_section-heading rainbow-m-right_medium">
                                 There are several runnable examples in this Git repo, but here's a
                                 Hello World one:
                             </h3>
@@ -139,8 +139,8 @@ export default class GettingStartedPage extends Component {
                     </RenderIf>
                     <RenderIf isTrue={activeTabName === 'contributing'}>
                         <div className="rainbow-flex rainbow-flex_column">
-                            <div className="react-rainbow-getting-started_section-heading-container rainbow-align_end rainbow-m-bottom_small">
-                                <div>
+                            <div className="react-rainbow-getting-started_section-heading-container rainbow-align_end rainbow-m-bottom_medium">
+                                <div className="rainbow-m-right_medium">
                                     <h3 className="react-rainbow-getting-started_section-heading">
                                         We are excited that you are interested in contributing to
                                         this project!
