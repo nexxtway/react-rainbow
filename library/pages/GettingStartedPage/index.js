@@ -123,7 +123,7 @@ export default class GettingStartedPage extends Component {
                         </div>
                     </RenderIf>
                     <RenderIf isTrue={activeTabName === 'usage'}>
-                        <div className="react-rainbow-getting-started_section-heading-container rainbow-align_end rainbow-m-bottom_medium">
+                        <div className="react-rainbow-getting-started_section-heading-container rainbow-align_center rainbow-m-bottom_medium">
                             <h3 className="react-rainbow-getting-started_section-heading rainbow-m-right_medium">
                                 There are several runnable examples in this Git repo, but here's a
                                 Hello World one:
@@ -139,7 +139,7 @@ export default class GettingStartedPage extends Component {
                     </RenderIf>
                     <RenderIf isTrue={activeTabName === 'contributing'}>
                         <div className="rainbow-flex rainbow-flex_column">
-                            <div className="react-rainbow-getting-started_section-heading-container rainbow-align_end rainbow-m-bottom_medium">
+                            <div className="react-rainbow-getting-started_section-heading-container rainbow-align_center rainbow-m-bottom_medium">
                                 <div className="rainbow-m-right_medium">
                                     <h3 className="react-rainbow-getting-started_section-heading">
                                         We are excited that you are interested in contributing to
