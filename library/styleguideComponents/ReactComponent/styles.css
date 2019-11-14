@@ -67,3 +67,13 @@
 .react-rainbow-component_example-edit-link-container--compress {
     margin-bottom: 33px;
 }
+
+.react-rainbow-component_header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.react-rainbow-component_carbon-ads {
+    margin: 40px 20px 0 0;
+    min-width: 330px;
+}

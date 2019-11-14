@@ -1,6 +1,6 @@
 const PageTab = require('../../Tab/pageObject');
 
-const BUTTON_SELECTOR = '.rainbow-tabset_button-icon';
+const BUTTON_SELECTOR = '[data-id="button-icon-element"]';
 
 /**
  * Tabset page object class.
@@ -22,9 +22,11 @@ class PageTabset {
      * @param {number} itemPosition - The base 0 index of the tab item.
      */
     getItem(itemPosition) {
-        const items = $(this.rootElement).$$('.rainbow-tab');
+        const items = $(this.rootElement).$$('li[role="presentation"]');
         if (items[itemPosition]) {
-            return new PageTab(`${this.rootElement} .rainbow-tab:nth-child(${itemPosition + 1})`);
+            return new PageTab(
+                `${this.rootElement} li[role="presentation"]:nth-child(${itemPosition + 1})`,
+            );
         }
         return null;
     }

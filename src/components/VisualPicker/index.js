@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import withReduxForm from './../../libs/hocs/withReduxForm';
 import RenderIf from '../RenderIf';
 import RequiredAsterisk from '../RequiredAsterisk';
 import { uniqueId } from './../../libs/utils';
 import { Provider } from './context';
-import './styles.css';
+import StyledContainer from './styled/container';
+import StyledLabel from './styled/label';
+import StyledOptionsContainer from './styled/optionsContainer';
+import StyledError from './styled/error';
 
 /**
  * A VisualPicker can be either radio buttons, checkboxes, or links that are visually enhanced.
@@ -18,11 +20,6 @@ class VisualPicker extends Component {
         this.errorId = uniqueId('error-message');
         this.groupNameId = props.name || uniqueId('visual-picker');
         this.handleChange = this.handleChange.bind(this);
-    }
-
-    getContainerClassNames() {
-        const { className } = this.props;
-        return classnames('rainbow-visual-picker_container', className);
     }
 
     getErrorMessageId() {
@@ -49,7 +46,17 @@ class VisualPicker extends Component {
     }
 
     render() {
-        const { style, label, required, error, id, children, value, multiple } = this.props;
+        const {
+            style,
+            label,
+            required,
+            error,
+            id,
+            children,
+            value,
+            multiple,
+            className,
+        } = this.props;
         const context = {
             ariaDescribedby: this.getErrorMessageId(),
             groupName: this.groupNameId,
@@ -59,22 +66,20 @@ class VisualPicker extends Component {
         };
 
         return (
-            <fieldset id={id} className={this.getContainerClassNames()} style={style}>
+            <StyledContainer id={id} className={className} style={style}>
                 <RenderIf isTrue={!!label}>
-                    <legend className="rainbow-visual-picker_label">
+                    <StyledLabel>
                         <RequiredAsterisk required={required} />
                         {label}
-                    </legend>
+                    </StyledLabel>
                 </RenderIf>
-                <div className="rainbow-visual-picker_options-container">
+                <StyledOptionsContainer>
                     <Provider value={context}>{children}</Provider>
-                </div>
+                </StyledOptionsContainer>
                 <RenderIf isTrue={!!error}>
-                    <div id={this.getErrorMessageId()} className="rainbow-visual-picker_text-error">
-                        {error}
-                    </div>
+                    <StyledError id={this.getErrorMessageId()}>{error}</StyledError>
                 </RenderIf>
-            </fieldset>
+            </StyledContainer>
         );
     }
 }
