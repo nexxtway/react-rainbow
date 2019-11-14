@@ -33,7 +33,7 @@ function DayComponent(props) {
         <StyledDay role="gridcell">
             <StyledDayButton
                 ref={buttonRef}
-                tabIndex={`${tabIndex}`}
+                tabIndex={tabIndex}
                 onClick={() => onChange(new Date(date))}
                 isSelected={isSelected}
                 data-selected={isSelected}

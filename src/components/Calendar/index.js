@@ -292,7 +292,7 @@ class CalendarComponent extends Component {
             currentMonth: currentMonth.getMonth(),
         });
         const lastYearItem = yearsRange[yearsRange.length - 1];
-        const maxSelectableDate = maxDate || new Date(lastYearItem.value, 0, 1);
+        const maxSelectableDate = maxDate || new Date(lastYearItem.value, 11, 31);
         const disableNextMonth = addMonths(currentMonth, 1) > maxSelectableDate;
         const minSelectableDate = minDate || new Date(yearsRange[0].value, 0, 1);
         const prevDate = getLastDayMonth(addMonths(currentMonth, -1));
