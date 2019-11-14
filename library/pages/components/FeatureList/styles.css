@@ -1,7 +1,7 @@
 .react-rainbow-feature-list {
     display: inline-flex;
     flex-wrap: wrap;
-    padding-top: 48px;
+    padding-top: 24px;
 }
 
 .react-rainbow-feature-list_item {

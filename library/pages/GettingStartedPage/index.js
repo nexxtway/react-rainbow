@@ -9,7 +9,6 @@ import FeatureList from '../components/FeatureList';
 import CodeEditor from '../components/CodeEditor';
 import CarbonAds from '../components/CarbonAds';
 import githublogo from './github.svg';
-
 import './styles.css';
 
 const HelloWorldExample = `import React from 'react';
@@ -77,17 +76,20 @@ export default class GettingStartedPage extends Component {
                 </Tabset>
                 <section className="react-rainbow-getting-started_container">
                     <RenderIf isTrue={activeTabName === 'overview'}>
-                        <h3 className="react-rainbow-getting-started_section-heading">
-                            React Rainbow is a collection of components that will reliably help you
-                            build your application in a snap. Give it a hack and let us know what
-                            you think.
-                        </h3>
+                        <div className="react-rainbow-getting-started_section-heading-container">
+                            <h3 className="react-rainbow-getting-started_section-heading rainbow-m-right_medium">
+                                React Rainbow is a collection of components that will reliably help
+                                you build your application in a snap. Give it a hack and let us know
+                                what you think.
+                            </h3>
+                            <CarbonAds className="react-rainbow-getting-started_carbon-ad" />
+                        </div>
                         <FeatureList />
                     </RenderIf>
                     <RenderIf isTrue={activeTabName === 'installation'}>
                         <div className="rainbow-flex rainbow-flex_column">
                             <div className="react-rainbow-getting-started_section-heading-container">
-                                <div>
+                                <div className="rainbow-m-right_medium">
                                     <h3 className="react-rainbow-getting-started_section-heading">
                                         {`React Rainbow Components is currently optimized for React ${
                                             this.reactV
@@ -121,8 +123,8 @@ export default class GettingStartedPage extends Component {
                         </div>
                     </RenderIf>
                     <RenderIf isTrue={activeTabName === 'usage'}>
-                        <div className="react-rainbow-getting-started_section-heading-container rainbow-align_end rainbow-m-bottom_medium">
-                            <h3 className="react-rainbow-getting-started_section-heading">
+                        <div className="react-rainbow-getting-started_section-heading-container rainbow-align_center rainbow-m-bottom_medium">
+                            <h3 className="react-rainbow-getting-started_section-heading rainbow-m-right_medium">
                                 There are several runnable examples in this Git repo, but here's a
                                 Hello World one:
                             </h3>
@@ -137,8 +139,8 @@ export default class GettingStartedPage extends Component {
                     </RenderIf>
                     <RenderIf isTrue={activeTabName === 'contributing'}>
                         <div className="rainbow-flex rainbow-flex_column">
-                            <div className="react-rainbow-getting-started_section-heading-container rainbow-align_end rainbow-m-bottom_small">
-                                <div>
+                            <div className="react-rainbow-getting-started_section-heading-container rainbow-align_center rainbow-m-bottom_medium">
+                                <div className="rainbow-m-right_medium">
                                     <h3 className="react-rainbow-getting-started_section-heading">
                                         We are excited that you are interested in contributing to
                                         this project!

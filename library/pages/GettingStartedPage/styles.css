@@ -20,6 +20,7 @@
 
 .react-rainbow-getting-started_carbon-ad {
     margin-top: 1rem;
+    min-width: 340px;
 }
 
 .react-rainbow-getting-started_section-heading {
@@ -105,6 +106,7 @@
     }
     .react-rainbow-getting-started_carbon-ad {
         margin-bottom: 1rem;
+        align-self: center;
     }
     .react-rainbow-getting-started_section-heading {
         text-align: center;

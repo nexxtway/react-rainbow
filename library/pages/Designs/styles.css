@@ -1,5 +1,5 @@
 .react-rainbow-designs_view-port {
-    padding: 2rem 0 0 1rem;
+    padding: 1rem 0 0 1rem;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -19,7 +19,7 @@
     font-weight: 300;
     letter-spacing: 0.5px;
     color: #061c3f;
-    padding: 1rem 0 1rem 2rem;
+    padding: 1rem 0 0 2rem;
 }
 
 .react-rainbow-designs_carbon-ad {
