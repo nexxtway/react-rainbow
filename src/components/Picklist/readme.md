@@ -174,7 +174,7 @@ const PicklistForm = reduxForm({
 
 ```js
 import React from 'react';
-import { RenderIf, Picklist, PicklistOption, ButtonIcon } from 'react-rainbow-components';
+import { Picklist, PicklistOption, ButtonIcon } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 
@@ -197,8 +197,15 @@ class PicklistExample extends React.Component {
         this.setState({ isBuildingsAdded: !isBuildingsAdded  });
     }
 
-    render() {
+    renderNewBuildings() {
         const { isBuildingsAdded } = this.state;
+        if (isBuildingsAdded) {
+            return <PicklistOption name="option 4" label="One World Trade Center" />;
+        }
+        return null;
+    }
+
+    render() {
         return (
             <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
                 <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
@@ -212,11 +219,7 @@ class PicklistExample extends React.Component {
                             hideLabel
                         >
                             <PicklistOption name="option 1" label="Experimental Building" />
-                            <RenderIf isTrue={isBuildingsAdded}>
-                                <PicklistOption name="option 4" label="One World Trade Center" />
-                                <PicklistOption name="option 5" label="Bank of America Plaza" />
-                                <PicklistOption name="option 6" label="Columbia Center" />
-                            </RenderIf>
+                            {this.renderNewBuildings()}
                             <PicklistOption name="option 2" label="Empire State" />
                             <PicklistOption name="option 3" label="Central Park" />
                         </Picklist>
