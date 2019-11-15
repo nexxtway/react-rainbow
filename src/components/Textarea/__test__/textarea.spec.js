@@ -53,19 +53,7 @@ describe('<Textarea/>', () => {
             required: true,
             readOnly: false,
             hideLabel: false,
-            textareaId: expect.any(String),
+            inputId: expect.any(String),
         });
-    });
-    it('should have the right class name in the container element', () => {
-        const component = mount(<Textarea />);
-        expect(component.find('div[className="rainbow-textarea_container"]').exists()).toBe(true);
-    });
-    it('should have the right class names when error is passed', () => {
-        const component = mount(<Textarea error="Error text" />);
-        expect(
-            component
-                .find('div[className="rainbow-textarea_container rainbow-textarea--error"]')
-                .exists(),
-        ).toBe(true);
     });
 });

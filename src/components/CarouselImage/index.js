@@ -1,13 +1,12 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { uniqueId } from '../../libs/utils';
-import RenderIf from '../RenderIf';
 import { Consumer } from '../CarouselCard/context';
 import { getItemIndex } from '../CarouselCard/utils';
+import StyledLi from './styled/li';
+import StyledInnerContainer from './styled/innerContainer';
 import ImageContainer from './imageContainer';
-import './styles.css';
 
 class Item extends Component {
     constructor(props) {
@@ -51,26 +50,6 @@ class Item extends Component {
         );
     }
 
-    getContainerClassName() {
-        const { className } = this.props;
-        return classnames(
-            'rainbow-carousel-image_container',
-            {
-                [`rainbow-carousel-image--slide-in_${this.getAnimationDirection()}`]: this.shouldShow(),
-                [`rainbow-carousel-image--slide-out_${this.getAnimationDirection()}`]: this.shouldHide(),
-                'rainbow-carousel-image--active': this.shouldBeActive(),
-            },
-            className,
-        );
-    }
-
-    getImageContainerClassName() {
-        const { href } = this.props;
-        return classnames('rainbow-carousel-image_content-image-container', {
-            'rainbow-carousel-image': !href,
-        });
-    }
-
     getAnimationDirection() {
         const { childrenRegistred, isAnimationPaused } = this.props;
         const { activeItem, prevActiveItem } = this.state;
@@ -109,6 +88,14 @@ class Item extends Component {
         };
     }
 
+    getHtmlElememnt() {
+        const { href } = this.props;
+        if (href && typeof href === 'string') {
+            return 'a';
+        }
+        return 'div';
+    }
+
     shouldShow() {
         const { activeItem, prevActiveItem } = this.state;
         const areTheSame = activeItem === prevActiveItem;
@@ -131,46 +118,38 @@ class Item extends Component {
     }
 
     render() {
-        const { assistiveText, description, header, href, style } = this.props;
+        const { assistiveText, description, header, href, style, className } = this.props;
         const hasContent = !!(header || description);
         return (
-            <li
+            <StyledLi
                 id={this.carouselImageID}
-                className={this.getContainerClassName()}
+                className={className}
                 role="tabpanel"
                 aria-hidden={this.getAriaHidden()}
                 aria-labelledby={this.carouselIndicatorID}
                 style={style}
-                href={href}
+                ref={this.itemRef}
+                shouldBeActive={this.shouldBeActive()}
+                shouldShow={this.shouldShow()}
+                shouldHide={this.shouldHide()}
+                direction={this.getAnimationDirection()}
             >
-                <RenderIf isTrue={!!href}>
-                    <a
-                        className="rainbow-carousel-image"
-                        tabIndex={this.getTabIndex()}
-                        ref={this.itemRef}
-                    >
-                        <ImageContainer
-                            className={this.getImageContainerClassName()}
-                            imageSrc={this.getImageSrc()}
-                            assistiveText={assistiveText}
-                            hasContent={hasContent}
-                            header={header}
-                            description={description}
-                        />
-                    </a>
-                </RenderIf>
-                <RenderIf isTrue={!href}>
+                <StyledInnerContainer
+                    className="rainbow-carousel-image"
+                    tabIndex={this.getTabIndex()}
+                    href={href}
+                    as={this.getHtmlElememnt()}
+                    data-id="carousel-image_inner-container"
+                >
                     <ImageContainer
-                        className={this.getImageContainerClassName()}
-                        tabIndex={this.getTabIndex()}
                         imageSrc={this.getImageSrc()}
                         assistiveText={assistiveText}
                         hasContent={hasContent}
                         header={header}
                         description={description}
                     />
-                </RenderIf>
-            </li>
+                </StyledInnerContainer>
+            </StyledLi>
         );
     }
 }

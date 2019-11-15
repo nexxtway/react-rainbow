@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { LEFT_KEY, RIGHT_KEY } from '../../../libs/constants';
 import { getItemIndex } from '../utils';
 import Indicator from './indicator';
+import StyledIndicatorUl from '../styled/indicatorsUl';
 
 const RIGHT_SIDE = 1;
 const LEFT_SIDE = -1;
@@ -74,13 +75,9 @@ export default class Indicators extends Component {
 
     render() {
         return (
-            <ul
-                className="rainbow-carousel_indicators"
-                role="tablist"
-                onKeyDown={this.handleKeyPressed}
-            >
+            <StyledIndicatorUl role="tablist" onKeyDown={this.handleKeyPressed}>
                 {this.renderIndicators()}
-            </ul>
+            </StyledIndicatorUl>
         );
     }
 }

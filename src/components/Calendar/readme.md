@@ -6,21 +6,27 @@ import { Card, Calendar, Avatar, Picklist, PicklistOption } from 'react-rainbow-
 
 initialState = {
     date: new Date('2019-12-06 00:00:00'),
-    locale: { name: 'en-US', label: 'English (US)' },
+    locale: { name: 'en-US', label: 'English' },
 };
 
 const calendarContainerStyles = {
     width: '28rem',
     height: '26.5rem',
 };
+const selectStyles = {
+    width: '8rem',
+};
 
 <div>
     <GlobalHeader src="images/user/user2.jpg">
-        <div className="rainbow-flex rainbow-align_right">
+        <div className="rainbow-flex rainbow-align_right" style={selectStyles}>
             <Picklist value={state.locale} onChange={value => setState({ locale: value })}>
-                <PicklistOption name="en-US" label="English (US)" />
-                <PicklistOption name="es-ES" label="Spanish (Spain)" />
-                <PicklistOption name="fr-Fr" label="French" />
+                <PicklistOption name="en-US" label="English" />
+                <PicklistOption name="es-ES" label="Español" />
+                <PicklistOption name="ja" label="日本語" />
+                <PicklistOption name="fr-Fr" label="Français" />
+                <PicklistOption name="zh" label="日文" />
+                <PicklistOption name="de" label="Deutsch" />
             </Picklist>
         </div>
     </GlobalHeader>

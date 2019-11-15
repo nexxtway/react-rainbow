@@ -20,4 +20,12 @@
     .react-rainbow-utils_container {
         margin-top: 24px;
     }
+    .react-rainbow-component_header {
+        display: inline-block;
+    }
+    .react-rainbow-component_carbon-ads {
+        margin-left: 2rem;
+        margin-right: 2rem;
+        min-width: auto;
+    }
 }

@@ -66,9 +66,9 @@ Updating the component API documentation is easy. There are two ways:
 
 ### Coding styles
 
-React Rainbow Components uses SASS for writing the styles of the component in a `style.scss` file. What is imported in the `index.js` file is the `style.css` file that will be auto-generated.
+React Rainbow Components is migrating to `styled-components` the styles of the component.
 
-Please follow [the coding style and naming convention](https://github.com/nexxtway/react-rainbow/blob/master/CSSCONVENTION.md) of the project. React Rainbow Components uses eslint, if possible, enable linting in your editor to get real-time feedback. The linting rules can be run manually with the following command yarn lint.
+React Rainbow Components uses eslint, if possible, enable linting in your editor to get real-time feedback. The linting rules can be run manually with the following command yarn lint.
 When pushing the changes they will run and the commit will not be pushed if they fail.
 Finally, when you submit a pull request, they will run again by Circle CI, hopefully, by then, your code is already clean!
 
