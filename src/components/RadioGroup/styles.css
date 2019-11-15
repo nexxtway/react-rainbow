@@ -1,15 +1,4 @@
 /* stylelint-disable no-descending-specificity,max-line-length */
-.rainbow-radio-group_container {
-  position: relative; }
-
-.rainbow-radio-group_label {
-  display: inline-block;
-  color: #576574;
-  font-size: 0.875rem;
-  margin-right: 0.75rem;
-  margin-bottom: 0.25rem;
-  width: 100%; }
-
 .rainbow-radio-group_inner-container .rainbow-radio-group_radio {
   display: block; }
 

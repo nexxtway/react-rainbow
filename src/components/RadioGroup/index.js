@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import withReduxForm from './../../libs/hocs/withReduxForm';
 import RadioItmes from './radioItems';
 import RenderIf from '../RenderIf';
 import RequiredAsterisk from '../RequiredAsterisk';
 import { uniqueId } from '../../libs/utils';
-import './styles.css';
+import StyledFieldset from './styled/fieldset';
+import StyledLegend from './styled/legend';
+import StyledTextError from '../Input/styled/errorText';
+import StyledContentContainer from './styled/contentContainer';
 
 /**
  * A select list that can have a single entry checked at any one time.
@@ -19,15 +21,6 @@ class RadioGroup extends Component {
         this.groupNameId = props.name || uniqueId('options');
     }
 
-    getContainerClassNames() {
-        const { className, error } = this.props;
-        return classnames(
-            'rainbow-radio-group_container',
-            { 'rainbow-radio-group--error': !!error },
-            className,
-        );
-    }
-
     getErrorMessageId() {
         const { error } = this.props;
         if (error) {
@@ -37,17 +30,27 @@ class RadioGroup extends Component {
     }
 
     render() {
-        const { style, label, required, error, onChange, options, value, id } = this.props;
+        const {
+            style,
+            className,
+            label,
+            required,
+            error,
+            onChange,
+            options,
+            value,
+            id,
+        } = this.props;
 
         return (
-            <fieldset id={id} className={this.getContainerClassNames()} style={style}>
+            <StyledFieldset id={id} className={className} style={style}>
                 <RenderIf isTrue={!!label}>
-                    <legend className="rainbow-radio-group_label">
+                    <StyledLegend>
                         <RequiredAsterisk required={required} />
                         {label}
-                    </legend>
+                    </StyledLegend>
                 </RenderIf>
-                <div className="rainbow-radio-group_inner-container">
+                <StyledContentContainer>
                     <RadioItmes
                         value={value}
                         onChange={onChange}
@@ -56,13 +59,11 @@ class RadioGroup extends Component {
                         required={required}
                         ariaDescribedby={this.getErrorMessageId()}
                     />
-                </div>
+                </StyledContentContainer>
                 <RenderIf isTrue={!!error}>
-                    <div id={this.getErrorMessageId()} className="rainbow-radio-group_text-error">
-                        {error}
-                    </div>
+                    <StyledTextError id={this.getErrorMessageId()}>{error}</StyledTextError>
                 </RenderIf>
-            </fieldset>
+            </StyledFieldset>
         );
     }
 }
