@@ -1,32 +1,34 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import RenderIf from '../RenderIf';
 import AssistiveText from '../AssistiveText';
+import StyledImage from './styled/image';
+import StyledImageFooter from './styled/imageFooter';
+import StyledFooterTitle from './styled/footerTitle';
+import StyledFooterDescription from './styled/footerDescription';
 
 export default function ImageContainer(props) {
-    const { className, tabIndex, imageSrc, assistiveText, hasContent, header, description } = props;
+    const { imageSrc, assistiveText, hasContent, header, description } = props;
 
     return (
-        <div className={className} tabIndex={tabIndex}>
-            <div className="rainbow-carousel-image_image" style={imageSrc} />
+        <Fragment>
+            <StyledImage style={imageSrc} />
             <AssistiveText text={assistiveText} />
             <RenderIf isTrue={hasContent}>
-                <div className="rainbow-carousel-image_content">
+                <StyledImageFooter>
                     <RenderIf isTrue={!!header}>
-                        <h2 className="rainbow-carousel-image_content-title">{header}</h2>
+                        <StyledFooterTitle>{header}</StyledFooterTitle>
                     </RenderIf>
                     <RenderIf isTrue={!!description}>
-                        <p>{description}</p>
+                        <StyledFooterDescription>{description}</StyledFooterDescription>
                     </RenderIf>
-                </div>
+                </StyledImageFooter>
             </RenderIf>
-        </div>
+        </Fragment>
     );
 }
 
 ImageContainer.propTypes = {
-    className: PropTypes.string,
-    tabIndex: PropTypes.number,
     imageSrc: PropTypes.object,
     assistiveText: PropTypes.string,
     hasContent: PropTypes.bool.isRequired,
@@ -35,8 +37,6 @@ ImageContainer.propTypes = {
 };
 
 ImageContainer.defaultProps = {
-    className: undefined,
-    tabIndex: undefined,
     imageSrc: {},
     assistiveText: undefined,
     header: undefined,

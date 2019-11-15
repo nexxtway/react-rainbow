@@ -1,27 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { uniqueId } from '../../libs/utils';
+import StyledButtonItem from './styled/buttonItem';
+import StyledButtonItemLabel from './styled/buttonItemLabel';
 
-export default class RadioButton extends Component {
+export default class RadioButtonItem extends Component {
     constructor(props) {
         super(props);
         this.radioId = uniqueId('radiobutton');
-    }
-
-    getContainerClassNames() {
-        const { isChecked, disabled } = this.props;
-        return classnames('rainbow-radio-button-group_radio', {
-            'rainbow-radio-button-group_radio--checked': isChecked,
-            'rainbow-radio-button-group_radio--disabled': disabled,
-        });
-    }
-
-    getLabelClassNames() {
-        const { disabled } = this.props;
-        return classnames('rainbow-radio-button-group_radio-label', {
-            'rainbow-radio-button-group_radio-label--disabled': disabled,
-        });
     }
 
     render() {
@@ -35,10 +21,17 @@ export default class RadioButton extends Component {
             isChecked,
             name,
             required,
+            variant,
         } = this.props;
 
         return (
-            <span ref={itemRef} className={this.getContainerClassNames()}>
+            <StyledButtonItem
+                data-id="radio-button-group_radio-container"
+                variant={variant}
+                isChecked={isChecked}
+                disabled={disabled}
+                ref={itemRef}
+            >
                 <input
                     type="radio"
                     required={required}
@@ -51,18 +44,20 @@ export default class RadioButton extends Component {
                     disabled={disabled}
                 />
 
-                <label
-                    className="rainbow-radio-button-group_radio-label-container"
+                <StyledButtonItemLabel
+                    disabled={disabled}
+                    isChecked={isChecked}
+                    variant={variant}
                     htmlFor={this.radioId}
                 >
-                    <span className={this.getLabelClassNames()}>{label}</span>
-                </label>
-            </span>
+                    {label}
+                </StyledButtonItemLabel>
+            </StyledButtonItem>
         );
     }
 }
 
-RadioButton.propTypes = {
+RadioButtonItem.propTypes = {
     label: PropTypes.node.isRequired,
     value: PropTypes.string,
     onChange: PropTypes.func,
@@ -72,13 +67,15 @@ RadioButton.propTypes = {
     name: PropTypes.string,
     required: PropTypes.bool.isRequired,
     itemRef: PropTypes.object.isRequired,
+    variant: PropTypes.oneOf(['default', 'inverse', 'brand']),
 };
 
-RadioButton.defaultProps = {
+RadioButtonItem.defaultProps = {
     value: undefined,
     onChange: () => {},
     ariaDescribedby: undefined,
     disabled: false,
     isChecked: false,
     name: undefined,
+    variant: 'default',
 };

@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RadioButton from './radioButton';
+import RadioButtonItem from './radioButtonItem';
 
 export default function ButtonItems(props) {
-    const { options, ariaDescribedby, onChange, value, name, required } = props;
+    const { options, ariaDescribedby, onChange, value, name, required, variant } = props;
 
     const isChecked = option => option.value === value;
 
     return options.map((option, index) => {
         const key = `radiobutton-${index}`;
         return (
-            <RadioButton
+            <RadioButtonItem
                 key={key}
                 itemRef={option.optionRef}
                 required={required}
@@ -18,6 +18,7 @@ export default function ButtonItems(props) {
                 isChecked={isChecked(option)}
                 ariaDescribedby={ariaDescribedby}
                 name={name}
+                variant={variant}
                 {...option}
             />
         );

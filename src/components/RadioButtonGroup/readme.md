@@ -1,4 +1,4 @@
-##### radiobuttongroup base
+##### RadioButtonGroup base
 
 ```js
 import React from 'react';
@@ -41,7 +41,7 @@ class SimpleRadioButtonGroup extends React.Component {
 </div>
 ```
 
-##### radiobuttongroup brand with label
+##### RadioButtonGroup brand with label
 
 ```js
 import React from 'react';
@@ -86,7 +86,7 @@ class LabeledBrandRadioButtonGroup extends React.Component {
 </div>
 ```
 
-##### radiobuttongroup inverse
+##### RadioButtonGroup inverse
 
 ```js
 import React from 'react';
@@ -138,7 +138,7 @@ class RadioButtonGroupInverse extends React.Component {
 </div>
 ```
 
-##### radiobuttongroup disabled
+##### RadioButtonGroup disabled
 
 ```js
 import React from 'react';
@@ -181,7 +181,7 @@ class DisabledRadioButtonGroup extends React.Component {
 </div>
 ```
 
-##### radiobuttongroup required
+##### RadioButtonGroup required
 
 ```js
 import React from 'react';
@@ -225,7 +225,7 @@ class RequiredRadioButtonGroup extends React.Component {
 </div>
 ```
 
-##### radiobutton group error
+##### RadioButtonGroup error
 
 ```js
 import React from 'react';
