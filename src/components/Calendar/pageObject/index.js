@@ -86,6 +86,18 @@ class PageCalendar {
             .$('button[data-selected=true]')
             .getText();
     }
+
+    /**
+     * Returns true when the specific day button element has focus.
+     * @method
+     * @returns {bool}
+     */
+    isDayFocused(day) {
+        const buttonEl = $(this.rootElement)
+            .$('table')
+            .$$('button')[day - 1];
+        return buttonEl.isFocused();
+    }
 }
 
 module.exports = PageCalendar;

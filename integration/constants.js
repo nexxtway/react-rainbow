@@ -9,4 +9,9 @@ module.exports = {
     ARROW_DOWN_KEY: '\uE015',
     SHIFT_KEY: '\uE008',
     DELETE_KEY: '\ue003',
+    PAGEUP_KEY: '\uE00E',
+    PAGEDN_KEY: '\uE00F',
+    END_KEY: '\uE010',
+    HOME_KEY: '\uE011',
+    ALT_KEY: '\uE00A',
 };
