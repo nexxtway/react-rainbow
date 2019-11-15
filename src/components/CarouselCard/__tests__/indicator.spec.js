@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Indicator from '../indicators/indicator';
+import StyledIndicatorButton from '../styled/indicatorButton';
 
 describe('<Indicator />', () => {
     it('should set the right props if the indicator is selected', () => {
@@ -12,13 +13,12 @@ describe('<Indicator />', () => {
                 header="Header"
             />,
         );
-        const buttonComponent = component.find(
-            'button.rainbow-carousel_indicator.rainbow-carousel_indicator--active',
-        );
+        const buttonComponent = component.find(StyledIndicatorButton);
 
         expect(buttonComponent.exists()).toBe(true);
         expect(buttonComponent.prop('aria-selected')).toBe(true);
         expect(buttonComponent.prop('tabIndex')).toBe(0);
+        expect(buttonComponent.prop('isSelected')).toBe(true);
     });
     it('should set the right props if the indicator is not selected', () => {
         const component = mount(
@@ -29,7 +29,7 @@ describe('<Indicator />', () => {
                 header="Header"
             />,
         );
-        const buttonComponent = component.find('button.rainbow-carousel_indicator');
+        const buttonComponent = component.find(StyledIndicatorButton);
 
         expect(buttonComponent.prop('aria-selected')).toBe(false);
         expect(buttonComponent.prop('tabIndex')).toBe(-1);
@@ -43,7 +43,7 @@ describe('<Indicator />', () => {
                 header="Header"
             />,
         );
-        const buttonComponent = component.find('button.rainbow-carousel_indicator');
+        const buttonComponent = component.find(StyledIndicatorButton);
 
         expect(buttonComponent.text()).toBe('Header Tab');
         expect(buttonComponent.prop('title')).toBe('Header Tab');
@@ -57,7 +57,7 @@ describe('<Indicator />', () => {
                 header={<span>Header</span>}
             />,
         );
-        const buttonComponent = component.find('button.rainbow-carousel_indicator');
+        const buttonComponent = component.find(StyledIndicatorButton);
 
         expect(buttonComponent.text()).toBe('');
         expect(buttonComponent.prop('title')).toBe(undefined);
@@ -71,7 +71,7 @@ describe('<Indicator />', () => {
                 header={<span>Header</span>}
             />,
         );
-        const buttonComponent = component.find('button.rainbow-carousel_indicator');
+        const buttonComponent = component.find(StyledIndicatorButton);
 
         expect(buttonComponent.prop('role')).toBe('tab');
     });
@@ -84,7 +84,7 @@ describe('<Indicator />', () => {
                 header="Header"
             />,
         );
-        const buttonComponent = component.find('button.rainbow-carousel_indicator');
+        const buttonComponent = component.find(StyledIndicatorButton);
 
         expect(buttonComponent.prop('id')).toBe('indicator-1');
         expect(buttonComponent.prop('aria-controls')).toBe('container-1');
@@ -100,7 +100,7 @@ describe('<Indicator />', () => {
                 onSelect={onSelectMockFn}
             />,
         );
-        const buttonComponent = component.find('button.rainbow-carousel_indicator');
+        const buttonComponent = component.find(StyledIndicatorButton);
         buttonComponent.simulate('click');
 
         expect(onSelectMockFn).toHaveBeenCalledWith('indicator-1');

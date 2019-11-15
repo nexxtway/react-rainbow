@@ -4,10 +4,6 @@ import CarouselCard from '../index';
 import CarouselImage from '../../CarouselImage';
 
 describe('<CarouselCard />', () => {
-    it('should set the right class names', () => {
-        const component = mount(<CarouselCard className="custom-class" disableAutoScroll />);
-        expect(component.find('div.rainbow-carousel.custom-class').exists()).toBe(true);
-    });
     it('should render the children passed', () => {
         const component = mount(
             <CarouselCard disableAutoScroll>
@@ -34,7 +30,7 @@ describe('<CarouselCard />', () => {
                 />
             </CarouselCard>,
         );
-        expect(component.find('a.rainbow-carousel-image').length).toBe(3);
+        expect(component.find('a[href="/"]').length).toBe(3);
     });
     it('should set the right state when disableAutoScroll is passed', () => {
         const component = mount(<CarouselCard disableAutoScroll />);
