@@ -58,4 +58,10 @@ describe('CarouselCard base example', () => {
         browser.keys(ARROW_RIGHT_KEY);
         expect(indicator.hasFocus()).toBe(false);
     });
+    it('should navigate to CarouselImage page when click on the first CarouselIamge', () => {
+        const carousel = new PageCarouselCard(CAROUSEL);
+        const carouselImage = carousel.getImageItem(0);
+        carouselImage.click();
+        expect(browser.getUrl()).toContain('Components/CarouselImage');
+    });
 });
