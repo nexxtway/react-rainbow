@@ -12,7 +12,7 @@ describe('<ButtonItems />', () => {
         const component = mount(<ButtonItems options={options} />);
         expect(component.children().length).toBe(3);
     });
-    it('should pass the right props to the RadioButton component', () => {
+    it('should pass the right props to the RadioButtonItem component', () => {
         const option = [{ optionRef: '000', value: 'admin', label: 'Admin', disabled: true }];
         const component = mount(
             <ButtonItems
@@ -20,9 +20,10 @@ describe('<ButtonItems />', () => {
                 name="name-1"
                 ariaDescribedby="error-1"
                 onChange={() => {}}
+                variant="inverse"
             />,
         );
-        expect(component.find('RadioButton').props()).toEqual({
+        expect(component.find('RadioButtonItem').props()).toEqual({
             optionRef: option[0].optionRef,
             itemRef: option[0].optionRef,
             value: option[0].value,
@@ -33,6 +34,7 @@ describe('<ButtonItems />', () => {
             onChange: expect.any(Function),
             isChecked: false,
             required: undefined,
+            variant: 'inverse',
         });
     });
 });
