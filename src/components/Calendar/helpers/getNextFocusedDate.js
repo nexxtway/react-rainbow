@@ -2,10 +2,10 @@ import isSameMonth from './isSameMonth';
 import isSameYear from './isSameYear';
 import getFirstDayMonth from './getFirstDayMonth';
 
-export default function getNextFocusedDate(value1, value2) {
-    if (!value1 && !value2) return getFirstDayMonth(new Date());
+export default function getNextFocusedDate(currentDate, nextDate) {
+    if (!currentDate && !nextDate) return getFirstDayMonth(new Date());
 
-    return isSameMonth(value1, value2) && isSameYear(value1, value2)
-        ? value1
-        : getFirstDayMonth(value2);
+    return isSameMonth(currentDate, nextDate) && isSameYear(currentDate, nextDate)
+        ? currentDate
+        : getFirstDayMonth(nextDate);
 }
