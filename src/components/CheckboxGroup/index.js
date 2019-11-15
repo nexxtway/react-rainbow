@@ -73,6 +73,7 @@ class CheckboxGroup extends Component {
                         onChange={this.handleOnChange}
                         describedBy={this.getErrorMessageId()}
                         name={name}
+                        error={error}
                     />
                 </div>
                 <RenderIf isTrue={!!error}>
