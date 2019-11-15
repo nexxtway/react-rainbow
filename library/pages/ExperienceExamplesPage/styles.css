@@ -1,18 +1,33 @@
 .react-rainbow-experience-examples-view-port {
     background-color: #f4f6f9;
     min-height: calc(100vh - 68px);
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+}
+
+.react-rainbow-experience-examples_header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2.25rem;
+    width: 100%;
 }
 
 .react-rainbow-experience-examples-header-title {
     display: flex;
-    justify-content: center;
     align-items: center;
     font-family: 'Lato Light';
     font-size: 32px;
     font-weight: 300;
     letter-spacing: 0.5px;
     color: #061c3f;
-    padding: 2.25rem 0;
+    padding: 2.25rem 0 0 3rem;
+}
+
+.react-rainbow-experience-examples_carbon-ad {
+    align-self: flex-end;
+    margin-right: 3rem;
 }
 
 .react-rainbow-experience-examples-container {
@@ -30,7 +45,18 @@
 @media (max-width: 600px) {
     .react-rainbow-experience-examples-view-port {
         height: unset;
-        padding: 0 2.25rem 1.5rem 2.25rem;
+        padding: 2rem 2.25rem 1.5rem 2.25rem;
+    }
+
+    .react-rainbow-experience-examples_header-container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .react-rainbow-experience-examples_carbon-ad {
+        align-self: center;
+        margin: 0;
     }
 
     .react-rainbow-experience-examples-header-title {
@@ -45,7 +71,7 @@
 
 @media (max-width: 340px) {
     .react-rainbow-experience-examples-view-port {
-        padding: 0 1rem 1rem 1rem;
+        padding: 2rem 1rem 1rem 1rem;
     }
 
     .react-rainbow-experience-examples-header-title {

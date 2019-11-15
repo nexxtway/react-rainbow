@@ -2,6 +2,11 @@
     .react-rainbow-design-detail_img-container {
         width: 60%;
     }
+
+    .react-rainbow-design-detail_header {
+        display: flex;
+        flex-direction: column;
+    }
     
     .react-rainbow-design-detail_img {
         height: 500px;
@@ -15,6 +20,10 @@
 @media (max-width: 600px) {
     .react-rainbow-design-detail_content {
         flex-wrap: wrap;
+    }
+
+    .react-rainbow-design-detail_carbon-ads {
+        align-self: center;
     }
 
     .react-rainbow-design-detail_img-container, .react-rainbow-design-detail_img, .react-rainbow-design-detail_info-container {
@@ -41,11 +50,5 @@
 
     .react-rainbow-design-detail_subtitle {
         margin-top: 16px;
-    }
-}
-
-@media (max-width: 340px) {
-    .react-rainbow-designs_view-port {
-        padding: 0 1rem 1rem 1rem;
     }
 }

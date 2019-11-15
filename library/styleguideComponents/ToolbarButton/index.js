@@ -11,6 +11,11 @@ function resolveHref() {
     return `/#/${componentName}`;
 }
 
+function reafreshAds() {
+    // eslint-disable-next-line no-undef
+    if (_carbonads) _carbonads.refresh();
+}
+
 export default function ToolbarButton(props) {
     const { onClick, href, title, children } = props;
 
@@ -21,6 +26,7 @@ export default function ToolbarButton(props) {
                 href={href}
                 title={title}
                 aria-label={title}
+                onClick={reafreshAds}
             >
                 <FontAwesomeIcon icon={faExpandArrowsAlt} className="rainbow-color_gray-4" />
             </a>
@@ -34,6 +40,7 @@ export default function ToolbarButton(props) {
                 href={resolveHref()}
                 title={title}
                 aria-label={title}
+                onClick={reafreshAds}
             >
                 <FontAwesomeIcon icon={faCompress} className="rainbow-color_gray-4" />
             </a>
