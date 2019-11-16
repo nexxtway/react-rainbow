@@ -44,7 +44,7 @@ class PageCalendar {
     }
 
     /**
-     * Clicks the specific day button element.
+     * Clicks the specific enabled day button element.
      * @method
      */
     clickDay(day) {
@@ -115,7 +115,7 @@ class PageCalendar {
      * @method
      * @returns {bool}
      */
-    isDisabledPrevMonthButton() {
+    isPrevMonthButtonDisabled() {
         const buttonEl = $(this.rootElement).$$('button[data-id=button-icon-element]')[0];
         return !buttonEl.isEnabled();
     }
@@ -125,7 +125,7 @@ class PageCalendar {
      * @method
      * @returns {bool}
      */
-    isDisabledNextMonthButton() {
+    isNextMonthButtonDisabled() {
         const buttonEl = $(this.rootElement).$$('button[data-id=button-icon-element]')[1];
         return !buttonEl.isEnabled();
     }

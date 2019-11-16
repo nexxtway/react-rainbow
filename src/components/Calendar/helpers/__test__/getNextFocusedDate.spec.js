@@ -1,5 +1,4 @@
 import getNextFocusedDate from '../getNextFocusedDate';
-// import getFirstDayMonth from '../getFirstDayMonth';
 
 jest.mock('../getFirstDayMonth.js', () => jest.fn(() => '2020-01-01'));
 

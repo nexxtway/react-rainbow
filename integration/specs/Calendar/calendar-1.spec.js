@@ -5,7 +5,7 @@ const {
     ARROW_LEFT_KEY,
     ARROW_RIGHT_KEY,
     PAGEUP_KEY,
-    PAGEDN_KEY,
+    PAGEDOWN_KEY,
     HOME_KEY,
     END_KEY,
     ALT_KEY,
@@ -106,17 +106,8 @@ describe('Calendar', () => {
     });
     it('should change year when is in the first week of January and the day 1 is not the fisrt day of the week and press HOME key', () => {
         const calendar = new PageCalendar(CALENDAR);
-        calendar.clickPrevMonthButton();
-        calendar.clickPrevMonthButton();
-        calendar.clickPrevMonthButton();
-        calendar.clickPrevMonthButton();
-        calendar.clickPrevMonthButton();
-        calendar.clickPrevMonthButton();
-        calendar.clickPrevMonthButton();
-        calendar.clickPrevMonthButton();
-        calendar.clickPrevMonthButton();
-        calendar.clickPrevMonthButton();
-        calendar.clickPrevMonthButton();
+        calendar.clickNextMonthButton();
+        calendar.setYear('2019');
         calendar.clickDay(2);
         browser.keys(HOME_KEY);
         expect(calendar.getSelectedYear()).toBe('2018');
@@ -137,23 +128,14 @@ describe('Calendar', () => {
     it('should change to next month when PAGEDOWN key is pressed', () => {
         const calendar = new PageCalendar(CALENDAR);
         calendar.clickDay(11);
-        browser.keys(PAGEDN_KEY);
+        browser.keys(PAGEDOWN_KEY);
         expect(calendar.getSelectedMonth()).toBe('January');
         expect(calendar.isDayFocused(11)).toBe(true);
     });
     it('should change to the previous year when is in January and PAGEUP key is pressed', () => {
         const calendar = new PageCalendar(CALENDAR);
-        calendar.clickPrevMonthButton();
-        calendar.clickPrevMonthButton();
-        calendar.clickPrevMonthButton();
-        calendar.clickPrevMonthButton();
-        calendar.clickPrevMonthButton();
-        calendar.clickPrevMonthButton();
-        calendar.clickPrevMonthButton();
-        calendar.clickPrevMonthButton();
-        calendar.clickPrevMonthButton();
-        calendar.clickPrevMonthButton();
-        calendar.clickPrevMonthButton();
+        calendar.clickNextMonthButton();
+        calendar.setYear('2019');
         calendar.clickDay(11);
         browser.keys(PAGEUP_KEY);
         expect(calendar.getSelectedYear()).toBe('2018');
@@ -161,7 +143,7 @@ describe('Calendar', () => {
     it('should change to next year when is in the December and PAGEDOWN key is pressed', () => {
         const calendar = new PageCalendar(CALENDAR);
         calendar.clickDay(11);
-        browser.keys(PAGEDN_KEY);
+        browser.keys(PAGEDOWN_KEY);
         expect(calendar.getSelectedYear()).toBe('2020');
     });
     it('should change to the previous year when ALT + PAGEUP keys are pressed', () => {
@@ -175,7 +157,7 @@ describe('Calendar', () => {
     it('should change to next year when ALT + PAGEDOWN keys are pressed', () => {
         const calendar = new PageCalendar(CALENDAR);
         calendar.clickDay(11);
-        browser.keys([ALT_KEY, PAGEDN_KEY]);
+        browser.keys([ALT_KEY, PAGEDOWN_KEY]);
         expect(calendar.getSelectedMonth()).toBe('January');
         expect(calendar.getSelectedYear()).toBe('2020');
         expect(calendar.isDayFocused(11)).toBe(true);
