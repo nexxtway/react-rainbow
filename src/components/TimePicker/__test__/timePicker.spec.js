@@ -61,14 +61,6 @@ describe('<TimePicker/>', () => {
         expect(onClickMockFn).toHaveBeenCalledTimes(0);
         expect(component.find('Modal').prop('isOpen')).toBe(false);
     });
-    it('should have the right class names when a custom className is passed', () => {
-        const component = mount(
-            <TimePicker label="unit-testing-timePicker" className="my-custom-class-name" />,
-        );
-        expect(
-            component.find('div.rainbow-time-picker_container.my-custom-class-name').exists(),
-        ).toBe(true);
-    });
     it('should open the modal when enter key or space key is pressed while input is focused and readOnly is not passed', () => {
         const values = [ENTER_KEY, SPACE_KEY];
         values.forEach(value => {
