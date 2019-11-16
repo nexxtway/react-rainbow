@@ -14,6 +14,7 @@ const StyledInput = styled(Input)`
         color: ${COLOR_DARK_1};
         font-weight: 400;
         cursor: text;
+        box-sizing: border-box;
 
         &:focus,
         &:active {

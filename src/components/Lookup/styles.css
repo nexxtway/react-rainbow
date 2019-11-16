@@ -36,67 +36,6 @@
       font-size: 16px; }
   .rainbow-lookup_input-container .rainbow-lookup_input-icon:not(button) {
     pointer-events: none; }
-  .rainbow-lookup_input-container .rainbow-lookup_input {
-    right: 0.8rem;
-    padding-right: 2.35rem; }
-  .rainbow-lookup_input-container .rainbow-lookup_input--loading {
-    padding-right: 5rem; }
-
-.rainbow-lookup_input {
-  background-color: white;
-  border: 1px solid #a4a7b5;
-  border-radius: 12rem;
-  width: 100%;
-  transition: all 0.1s linear;
-  display: inline-block;
-  padding: 0 1rem 0 1rem;
-  line-height: 2.5rem;
-  height: 2.5rem;
-  color: #061c3f;
-  font-size: 1rem; }
-  .rainbow-lookup_input[type='search']::-ms-clear {
-    display: none;
-    width: 0;
-    height: 0; }
-  .rainbow-lookup_input:focus, .rainbow-lookup_input:active {
-    outline: 0;
-    line-height: 2.5rem;
-    padding-left: 0.9375rem;
-    border: 2px #01b6f5 solid;
-    background-color: white;
-    box-shadow: 0 0 2px #01b6f5;
-    z-index: 0; }
-  .rainbow-lookup_input::placeholder {
-    color: #a4a7b5;
-    font-weight: 300;
-    font-size: 1rem; }
-  .rainbow-lookup_input[readonly] {
-    padding-left: 0;
-    padding-right: 0;
-    border-color: transparent;
-    background-color: transparent;
-    font-size: 1rem;
-    color: #061c3f;
-    font-weight: 400;
-    box-sizing: border-box; }
-    .rainbow-lookup_input[readonly]:focus, .rainbow-lookup_input[readonly]:active {
-      box-shadow: none;
-      border: 1px transparent solid;
-      padding-right: 0; }
-  .rainbow-lookup_input[disabled] {
-    background-color: #f4f6f9;
-    border-color: #e3e5ed;
-    color: #e3e5ed;
-    cursor: not-allowed;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none; }
-    .rainbow-lookup_input[disabled]:focus, .rainbow-lookup_input[disabled]:active {
-      box-shadow: none;
-      background-color: #f4f6f9;
-      border: 1px #e3e5ed solid;
-      padding-left: 1rem; }
 
 .rainbow-lookup_options-menu {
   position: absolute;
@@ -119,15 +58,6 @@
   margin-top: 0.5rem;
   align-self: center;
   color: #fe4849; }
-
-.rainbow-lookup_container--error .rainbow-lookup_input {
-  background-color: white;
-  border: 2px #fe4849 solid;
-  padding-left: 1rem;
-  background-clip: padding-box;
-  line-height: 2.5rem; }
-  .rainbow-lookup_container--error .rainbow-lookup_input:focus {
-    box-shadow: 0 0 2px #fe4849; }
 
 .rainbow-lookup_container--error .rainbow-lookup_input-icon {
   fill: #fe4849;
@@ -174,58 +104,6 @@
     justify-content: center; }
   .rainbow-lookup_selected-value .rainbow-lookup_selected-value-icon:not(button) {
     pointer-events: none; }
-  .rainbow-lookup_selected-value .rainbow-lookup_selected-value-input {
-    box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 4px #dddbda;
-    caret-color: transparent;
-    background-color: white;
-    border: 1px solid #a4a7b5;
-    border-radius: 12rem;
-    color: #576574;
-    width: 100%;
-    transition: all 0.1s linear;
-    display: inline-block;
-    padding: 0 2.35rem 0 1rem;
-    line-height: 2.5rem;
-    height: 2.5rem;
-    font-size: 0.875rem;
-    text-overflow: ellipsis; }
-    .rainbow-lookup_selected-value .rainbow-lookup_selected-value-input[type='search']::-ms-clear {
-      display: none;
-      width: 0;
-      height: 0; }
-    .rainbow-lookup_selected-value .rainbow-lookup_selected-value-input:focus, .rainbow-lookup_selected-value .rainbow-lookup_selected-value-input:active {
-      outline: 0;
-      line-height: 2.5rem;
-      box-shadow: inset 0 0 0 2px #fff, inset 0 0 0 3px #dddbda, 0 0 2px #01b6f5;
-      border: 2px #01b6f5 solid;
-      padding: 0 2.35rem 0 0.9375rem;
-      background-color: white;
-      z-index: 0; }
-    .rainbow-lookup_selected-value .rainbow-lookup_selected-value-input::placeholder {
-      color: #a4a7b5;
-      font-weight: 300;
-      font-size: 1rem; }
-    .rainbow-lookup_selected-value .rainbow-lookup_selected-value-input[disabled] {
-      box-shadow: none;
-      border-color: #e3e5ed;
-      background-color: #f4f6f9;
-      color: #a4a7b5;
-      cursor: not-allowed;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none; }
-      .rainbow-lookup_selected-value .rainbow-lookup_selected-value-input[disabled]:focus, .rainbow-lookup_selected-value .rainbow-lookup_selected-value-input[disabled]:active {
-        box-shadow: none;
-        background-color: #f4f6f9;
-        border: 1px #e3e5ed solid;
-        padding-left: 1rem; }
-  .rainbow-lookup_selected-value .rainbow-lookup_selected-value-input-with-icon {
-    padding-left: 2.35rem; }
-    .rainbow-lookup_selected-value .rainbow-lookup_selected-value-input-with-icon:focus, .rainbow-lookup_selected-value .rainbow-lookup_selected-value-input-with-icon:active {
-      padding-left: 2.2875rem; }
-    .rainbow-lookup_selected-value .rainbow-lookup_selected-value-input-with-icon[disabled]:focus, .rainbow-lookup_selected-value .rainbow-lookup_selected-value-input-with-icon[disabled]:active {
-      padding-left: 2.35rem; }
   .rainbow-lookup_selected-value .rainbow-lookup_selected-value-clear-button-container {
     height: 100%;
     right: 0.5rem;
@@ -241,30 +119,3 @@
   display: flex; }
   .rainbow-lookup_selected-value--readonly .rainbow-lookup_selected-value-icon {
     width: 24px; }
-  .rainbow-lookup_selected-value--readonly .rainbow-lookup_selected-value-input {
-    box-shadow: none;
-    background-color: transparent;
-    border: 2px solid transparent;
-    font-size: 1rem;
-    outline: 0;
-    color: #061c3f;
-    cursor: not-allowed;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    padding-left: 0;
-    padding-right: 0; }
-    .rainbow-lookup_selected-value--readonly .rainbow-lookup_selected-value-input:focus, .rainbow-lookup_selected-value--readonly .rainbow-lookup_selected-value-input:active {
-      padding-left: 0;
-      padding-right: 0;
-      outline: 0;
-      box-shadow: none;
-      border-color: transparent;
-      background-color: transparent; }
-    .rainbow-lookup_selected-value--readonly .rainbow-lookup_selected-value-input::placeholder {
-      color: #a4a7b5; }
-  .rainbow-lookup_selected-value--readonly .rainbow-lookup_selected-value-input-with-icon {
-    padding-left: 1.75rem; }
-    .rainbow-lookup_selected-value--readonly .rainbow-lookup_selected-value-input-with-icon:focus, .rainbow-lookup_selected-value--readonly .rainbow-lookup_selected-value-input-with-icon:active {
-      padding-left: 1.75rem; }

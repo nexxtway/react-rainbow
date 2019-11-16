@@ -61,89 +61,6 @@
     .rainbow-lookup_input-icon:not(button) {
         pointer-events: none;
     }
-
-    .rainbow-lookup_input {
-        right: 0.8rem;
-        padding-right: 2.35rem;
-    }
-
-    .rainbow-lookup_input--loading {
-        padding-right: 5rem;
-    }
-}
-
-.rainbow-lookup_input {
-    background-color: white;
-    border: 1px solid $color-gray-3;
-    border-radius: $border-radius-2;
-    width: 100%;
-    transition: all 0.1s linear;
-    display: inline-block;
-    padding: 0 1rem 0 1rem;
-    line-height: 2.5rem;
-    height: 2.5rem;
-    color: $color-dark-1;
-    font-size: $font-size-text-large;
-
-    &[type='search']::-ms-clear {
-        display: none;
-        width: 0;
-        height: 0;
-    }
-
-    &:focus,
-    &:active {
-        outline: 0;
-        line-height: 2.5rem;
-        padding-left: 0.9375rem;
-        border: 2px $color-brand solid;
-        background-color: white;
-        box-shadow: $shadow-outline;
-        z-index: 0;
-    }
-
-    &::placeholder {
-        color: $color-gray-3;
-        font-weight: 300;
-        font-size: $font-size-text-large;
-    }
-
-    &[readonly] {
-        padding-left: 0;
-        padding-right: 0;
-        border-color: transparent;
-        background-color: transparent;
-        font-size: $font-size-text-large;
-        color: $color-dark-1;
-        font-weight: 400;
-        box-sizing: border-box;
-
-        &:focus,
-        &:active {
-            box-shadow: none;
-            border: 1px transparent solid;
-            padding-right: 0;
-        }
-    }
-
-    &[disabled] {
-        background-color: $color-gray-1;
-        border-color: $color-gray-2;
-        color: $color-gray-2;
-        cursor: not-allowed;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-
-        &:focus,
-        &:active {
-            box-shadow: none;
-            background-color: $color-gray-1;
-            border: 1px $color-gray-2 solid;
-            padding-left: $padding-medium;
-        }
-    }
 }
 
 .rainbow-lookup_options-menu {
@@ -170,18 +87,6 @@
 }
 
 .rainbow-lookup_container--error {
-    .rainbow-lookup_input {
-        background-color: white;
-        border: 2px $color-error solid;
-        padding-left: $padding-medium;
-        background-clip: padding-box;
-        line-height: 2.5rem;
-
-        &:focus {
-            box-shadow: $shadow-error;
-        }
-    }
-
     .rainbow-lookup_input-icon {
         fill: $color-error;
         color: $color-error;
@@ -237,82 +142,6 @@
         pointer-events: none;
     }
 
-    .rainbow-lookup_selected-value-input {
-        box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 4px #dddbda;
-        caret-color: transparent;
-        background-color: white;
-        border: 1px solid $color-gray-3;
-        border-radius: $border-radius-2;
-        color: $color-gray-4;
-        width: 100%;
-        transition: all 0.1s linear;
-        display: inline-block;
-        padding: 0 2.35rem 0 1rem;
-        line-height: 2.5rem;
-        height: 2.5rem;
-        font-size: $font-size-text-medium;
-        text-overflow: ellipsis;
-
-        &[type='search']::-ms-clear {
-            display: none;
-            width: 0;
-            height: 0;
-        }
-
-        &:focus,
-        &:active {
-            outline: 0;
-            line-height: 2.5rem;
-            box-shadow: inset 0 0 0 2px #fff, inset 0 0 0 3px #dddbda, $shadow-outline;
-            border: 2px $color-brand solid;
-            padding: 0 2.35rem 0 0.9375rem;
-            background-color: white;
-            z-index: 0;
-        }
-
-        &::placeholder {
-            color: $color-gray-3;
-            font-weight: 300;
-            font-size: $font-size-text-large;
-        }
-
-        &[disabled] {
-            box-shadow: none;
-            border-color: $color-gray-2;
-            background-color: $color-gray-1;
-            color: $color-gray-3;
-            cursor: not-allowed;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-
-            &:focus,
-            &:active {
-                box-shadow: none;
-                background-color: $color-gray-1;
-                border: 1px $color-gray-2 solid;
-                padding-left: $padding-medium;
-            }
-        }
-    }
-
-    .rainbow-lookup_selected-value-input-with-icon {
-        padding-left: 2.35rem;
-
-        &:focus,
-        &:active {
-            padding-left: 2.2875rem;
-        }
-
-        &[disabled] {
-            &:focus,
-            &:active {
-                padding-left: 2.35rem;
-            }
-        }
-    }
-
     .rainbow-lookup_selected-value-clear-button-container {
         height: 100%;
         right: 0.5rem;
@@ -331,44 +160,5 @@
 
     .rainbow-lookup_selected-value-icon {
         width: 24px;
-    }
-
-    .rainbow-lookup_selected-value-input {
-        box-shadow: none;
-        background-color: transparent;
-        border: 2px solid transparent;
-        font-size: $font-size-text-large;
-        outline: 0;
-        color: $color-dark-1;
-        cursor: not-allowed;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        padding-left: 0;
-        padding-right: 0;
-
-        &:focus,
-        &:active {
-            padding-left: 0;
-            padding-right: 0;
-            outline: 0;
-            box-shadow: none;
-            border-color: transparent;
-            background-color: transparent;
-        }
-
-        &::placeholder {
-            color: $color-gray-3;
-        }
-    }
-
-    .rainbow-lookup_selected-value-input-with-icon {
-        padding-left: 1.75rem;
-
-        &:focus,
-        &:active {
-            padding-left: 1.75rem;
-        }
     }
 }

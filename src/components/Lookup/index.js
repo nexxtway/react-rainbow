@@ -18,6 +18,7 @@ import {
 import { uniqueId } from '../../libs/utils';
 import { UP_KEY, DOWN_KEY, ENTER_KEY, ESCAPE_KEY } from '../../libs/constants';
 import withReduxForm from '../../libs/hocs/withReduxForm';
+import StyledInput from './styled/input';
 import SearchIcon from './icons/searchIcon';
 import './styles.css';
 
@@ -105,13 +106,6 @@ class Lookup extends Component {
             },
             className,
         );
-    }
-
-    getInputClassNames() {
-        const { isLoading } = this.props;
-        return classnames('rainbow-lookup_input', {
-            'rainbow-lookup_input--loading': isLoading,
-        });
     }
 
     getValue() {
@@ -395,6 +389,7 @@ class Lookup extends Component {
                         tabIndex={tabIndex}
                         onClick={onClick}
                         disabled={disabled}
+                        error={error}
                         required={required}
                         readOnly={readOnly}
                         errorMessageId={errorMessageId}
@@ -422,12 +417,10 @@ class Lookup extends Component {
                             onClear={this.clearInput}
                             icon={icon}
                         />
-                        {/* eslint-disable-next-line jsx-a11y/aria-activedescendant-has-tabindex */}
-                        <input
+                        <StyledInput
                             id={this.inputId}
                             name={name}
                             type="search"
-                            className={this.getInputClassNames()}
                             value={searchValue}
                             placeholder={placeholder}
                             onChange={this.handleSearch}
@@ -444,6 +437,10 @@ class Lookup extends Component {
                             aria-controls={this.listboxId}
                             aria-activedescendant={this.getAriaActivedescendant()}
                             ref={this.inputRef}
+                            iconPosition="right"
+                            icon={icon}
+                            error={error}
+                            isLoading={isLoading}
                         />
                         <RenderIf isTrue={isLookupOpen}>
                             <div
