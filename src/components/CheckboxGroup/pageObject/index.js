@@ -20,11 +20,12 @@ class PageCheckboxGroup {
      * @param {number} itemPosition - The base 0 index of the checkbox.
      */
     getItem(itemPosition) {
-        const items = $(this.rootElement).$$('.rainbow-checkbox-group_checkbox');
+        const items = $(this.rootElement).$$('div[data-id="input-checkbox_container"]');
         if (items[itemPosition]) {
             return new PageCheckboxItem(
-                `${this.rootElement} .rainbow-checkbox-group_checkbox:nth-child(${itemPosition +
-                    1})`,
+                `${
+                    this.rootElement
+                } div[data-id="input-checkbox_container"]:nth-child(${itemPosition + 1})`,
             );
         }
         return null;

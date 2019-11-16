@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { uniqueId } from '../../../libs/utils';
-import Label from '../checkboxRadioLabel';
+import Label from '../checkboxLabel';
 import InlineBlockElement from '../../Structural/inlineBlockElement';
 import StyledCheckboxInput from './styled/checkbox';
 
@@ -56,7 +56,7 @@ export default class Checkbox extends Component {
         } = this.props;
 
         return (
-            <InlineBlockElement>
+            <InlineBlockElement data-id="input-checkbox_container">
                 <StyledCheckboxInput
                     as="input"
                     id={this.inputId}

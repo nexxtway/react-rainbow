@@ -18,7 +18,7 @@ class PageCheckboxItem {
      */
     click() {
         $(this.rootElement)
-            .$('.rainbow-checkbox-group_checkbox-label-container')
+            .$('input[type="checkbox"] + label')
             .click();
     }
 

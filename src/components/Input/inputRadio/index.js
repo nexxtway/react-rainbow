@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { uniqueId } from './../../../libs/utils';
 import RenderIf from './../../RenderIf';
-import Label from '../checkboxRadioLabel';
+import Label from '../checkboxLabel';
 import InlineBlockElement from '../../Structural/inlineBlockElement';
 import StyledContainer from '../styled/container';
 import HelpText from '../styled/helpText';
