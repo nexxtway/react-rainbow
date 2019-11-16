@@ -1,7 +1,7 @@
 const PageTableRow = require('./row');
 
-const HEAD_CHECKBOX_LABEL_SELECTOR = '.rainbow-table-input-checkbox_label-container';
-const HEAD_CHECKBOX_INPUT_SELECTOR = '.rainbow-table_header-checkbox-container input';
+const HEAD_CHECKBOX_LABEL_SELECTOR = 'label[data-id="table-input-checkbox_label"]';
+const HEAD_CHECKBOX_INPUT_SELECTOR = 'input[type="checkbox"]';
 
 /**
  * Table page object class.
@@ -55,10 +55,10 @@ class PageTable {
      * @param {number} rowPosition - The base 0 index of the row item.
      */
     getRow(rowPosition) {
-        const rows = $(this.rootElement).$$('tbody > tr.rainbow-table_body-row');
+        const rows = $(this.rootElement).$$('tbody > tr[data-id="table_body-row"]');
         if (rows[rowPosition]) {
             return new PageTableRow(
-                `${this.rootElement} tr.rainbow-table_body-row:nth-child(${rowPosition + 1})`,
+                `${this.rootElement} tr[data-id="table_body-row"]:nth-child(${rowPosition + 1})`,
             );
         }
         return null;
@@ -72,10 +72,10 @@ class PageTable {
         browser.waitUntil(
             () =>
                 !$(this.rootElement)
-                    .$('.rainbow-table_body--loading')
+                    .$('div[data-id="table_body--loading"]')
                     .isDisplayed() &&
                 $(this.rootElement)
-                    .$('.rainbow-table_body-row')
+                    .$('tr[data-id="table_body-row"]')
                     .isDisplayed(),
         );
     }

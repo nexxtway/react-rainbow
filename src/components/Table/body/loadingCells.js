@@ -25,7 +25,7 @@ export default function LoadingCells({ value, columns }) {
 
                 return (
                     <StyledTdLoadingContainer key={key}>
-                        <StyledLoadingCell>
+                        <StyledLoadingCell data-id="table_body--loading">
                             <StyledElementLoading style={styles} />
                         </StyledLoadingCell>
                     </StyledTdLoadingContainer>

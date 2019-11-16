@@ -7,7 +7,7 @@ export default function Label(props) {
     const { label, inputId } = props;
 
     return (
-        <label htmlFor={inputId}>
+        <label data-id="table-input-checkbox_label" htmlFor={inputId}>
             <StyledFaux className="rainbow-table-input-checkbox_faux" />
             <HiddenElement>{label}</HiddenElement>
         </label>

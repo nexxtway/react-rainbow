@@ -62,7 +62,12 @@ export default function Row(props) {
     }
 
     return (
-        <StyledRow tabIndex={-1} aria-selected={isSelected} isSelected={isSelected}>
+        <StyledRow
+            data-id="table_body-row"
+            tabIndex={-1}
+            aria-selected={isSelected}
+            isSelected={isSelected}
+        >
             {cells}
         </StyledRow>
     );
