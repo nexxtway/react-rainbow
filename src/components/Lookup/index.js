@@ -1,10 +1,7 @@
 /* eslint-disable react/no-did-update-set-state, react/no-did-mount-set-state */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import RenderIf from '../RenderIf';
-import Spinner from '../Spinner';
-import Label from './label';
 import RightElement from './rightElement';
 import SelectedValue from './selectedValue';
 import Options from './options';
@@ -18,9 +15,15 @@ import {
 import { uniqueId } from '../../libs/utils';
 import { UP_KEY, DOWN_KEY, ENTER_KEY, ESCAPE_KEY } from '../../libs/constants';
 import withReduxForm from '../../libs/hocs/withReduxForm';
-import StyledInput from './styled/input';
 import SearchIcon from './icons/searchIcon';
-import './styles.css';
+import Label from '../Input/label';
+import StyledInput from './styled/input';
+import StyledContainer from './styled/container';
+import StyledInputContainer from './styled/inputContainer';
+import StyledSpinner from './styled/spinner';
+import StyledOptionsMenu from './styled/optionsMenu';
+import StyledTextError from '../Input/styled/errorText';
+// import './styles.css';
 
 const OPTION_HEIGHT = 48;
 const visibleOptionsMap = {
@@ -95,17 +98,6 @@ class Lookup extends Component {
                 focusedItemIndex: getInitialFocusedIndex(currentOptions, preferredSelectedOption),
             });
         }
-    }
-
-    getContainerClassNames() {
-        const { className, error } = this.props;
-        return classnames(
-            'rainbow-lookup_container',
-            {
-                'rainbow-lookup_container--error': error,
-            },
-            className,
-        );
     }
 
     getValue() {
@@ -342,6 +334,7 @@ class Lookup extends Component {
     render() {
         const {
             style,
+            className,
             label,
             error,
             size,
@@ -364,9 +357,9 @@ class Lookup extends Component {
         const currentValue = this.getValue();
 
         return (
-            <div
+            <StyledContainer
                 id={id}
-                className={this.getContainerClassNames()}
+                className={className}
                 style={style}
                 role="presentation"
                 onKeyDown={this.handleKeyDown}
@@ -399,16 +392,14 @@ class Lookup extends Component {
                 </RenderIf>
 
                 <RenderIf isTrue={!currentValue}>
-                    <div
-                        className="rainbow-lookup_input-container"
+                    <StyledInputContainer
                         aria-expanded={isLookupOpen}
                         aria-haspopup="listbox"
                         // eslint-disable-next-line jsx-a11y/role-has-required-aria-props
                         role="combobox"
                     >
-                        <Spinner
+                        <StyledSpinner
                             isVisible={isLoading}
-                            className="rainbow-lookup_spinner"
                             size="x-small"
                             assistiveText="searching"
                         />
@@ -416,6 +407,7 @@ class Lookup extends Component {
                             showCloseButton={!!searchValue}
                             onClear={this.clearInput}
                             icon={icon}
+                            error={error}
                         />
                         <StyledInput
                             id={this.inputId}
@@ -443,11 +435,7 @@ class Lookup extends Component {
                             isLoading={isLoading}
                         />
                         <RenderIf isTrue={isLookupOpen}>
-                            <div
-                                className="rainbow-lookup_options-menu"
-                                id={this.listboxId}
-                                role="listbox"
-                            >
+                            <StyledOptionsMenu id={this.listboxId} role="listbox">
                                 <Options
                                     items={options}
                                     value={searchValue}
@@ -458,16 +446,14 @@ class Lookup extends Component {
                                     ref={this.menuRef}
                                     size={size}
                                 />
-                            </div>
+                            </StyledOptionsMenu>
                         </RenderIf>
-                    </div>
+                    </StyledInputContainer>
                 </RenderIf>
                 <RenderIf isTrue={!!error}>
-                    <div id={errorMessageId} className="rainbow-lookup_input-error">
-                        {error}
-                    </div>
+                    <StyledTextError id={errorMessageId}>{error}</StyledTextError>
                 </RenderIf>
-            </div>
+            </StyledContainer>
         );
     }
 }

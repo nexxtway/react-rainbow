@@ -2,11 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ButtonIcon from '../ButtonIcon';
 import CloseIcon from './icons/closeIcon';
+import StyledCloseButton from './styled/closeButton';
+import StyledInputIcon from './styled/inputIcon';
 
-export default function RightElement({ showCloseButton, onClear, icon }) {
+export default function RightElement({ showCloseButton, onClear, icon, error }) {
     if (showCloseButton) {
         return (
-            <span className="rainbow-lookup_input-close-button-container">
+            <StyledCloseButton>
                 <ButtonIcon
                     assistiveText="close"
                     size="small"
@@ -15,20 +17,22 @@ export default function RightElement({ showCloseButton, onClear, icon }) {
                     icon={<CloseIcon />}
                     onClick={onClear}
                 />
-            </span>
+            </StyledCloseButton>
         );
     }
-    return <span className="rainbow-lookup_input-icon">{icon}</span>;
+    return <StyledInputIcon error={error}>{icon}</StyledInputIcon>;
 }
 
 RightElement.propTypes = {
     icon: PropTypes.node,
     showCloseButton: PropTypes.bool,
     onClear: PropTypes.func,
+    error: PropTypes.bool,
 };
 
 RightElement.defaultProps = {
     icon: undefined,
     showCloseButton: false,
+    error: false,
     onClear: () => {},
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Lookup from '../';
+import StyledTextError from '../../Input/styled/errorText';
 
 describe('<Lookup />', () => {
     it('should set an id in the input element', () => {
@@ -13,7 +14,7 @@ describe('<Lookup />', () => {
     });
     it('should pass a generated id to the Error element and set the same id to the aria-describedby for the input when a error is passed', () => {
         const component = mount(<Lookup error="error message" />);
-        expect(component.find('.rainbow-lookup_input-error').prop('id')).toMatch(/error-message/);
+        expect(component.find(StyledTextError).prop('id')).toMatch(/error-message/);
         expect(component.find('input').prop('aria-describedby')).toMatch(/error-message/);
     });
     it('should pass the right props to the Label component', () => {

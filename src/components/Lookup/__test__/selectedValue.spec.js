@@ -2,6 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import copyFn from 'clipboard-copy';
 import SelectedValue from '../selectedValue';
+import StyledSelectedValueIcon from '../styled/selectedValueIcon';
 
 jest.mock('clipboard-copy');
 
@@ -20,11 +21,11 @@ describe('<SelectedValue />', () => {
     });
     it('should not render an icon container', () => {
         const component = mount(<SelectedValue value={value} />);
-        expect(component.find('span.rainbow-lookup_selected-value-icon').exists()).toBe(false);
+        expect(component.find(StyledSelectedValueIcon).exists()).toBe(false);
     });
     it('should render an icon container', () => {
         const component = mount(<SelectedValue value={valueWithIcon} />);
-        expect(component.find('span.rainbow-lookup_selected-value-icon').exists()).toBe(true);
+        expect(component.find(StyledSelectedValueIcon).exists()).toBe(true);
     });
     it('should render a close button', () => {
         const component = mount(<SelectedValue />);
@@ -35,10 +36,6 @@ describe('<SelectedValue />', () => {
         const component = mount(<SelectedValue onClearValue={onClearMockFn} />);
         component.find('ButtonIcon').simulate('click');
         expect(onClearMockFn).toHaveBeenCalledTimes(1);
-    });
-    it('should set the right class names when readOnly is passed', () => {
-        const component = mount(<SelectedValue readOnly />);
-        expect(component.find('div.rainbow-lookup_selected-value--readonly').exists()).toBe(true);
     });
     it('should not render the close button when readOnly is passed', () => {
         const component = mount(<SelectedValue readOnly />);

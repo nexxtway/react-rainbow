@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import copy from 'clipboard-copy';
 import formatValue from './helpers/formatValue';
 import RenderIf from '../RenderIf/index';
@@ -8,19 +7,15 @@ import CloseIcon from '../Chip/closeIcon';
 import ButtonIcon from '../ButtonIcon/index';
 import StyledReadOnlySelectedInput from './styled/input';
 import StyledSelectedInput from './styled/selectedInput';
+import StyledSelectedValueIcon from './styled/selectedValueIcon';
+import StyledSelectedValueContainer from './styled/selectedValueContainer';
+import StyledSelectedValueClearButton from './styled/selectedValueClearButton';
 
 export default class SelectedValue extends Component {
     constructor(props) {
         super(props);
         this.inputRef = React.createRef();
         this.handleFocus = this.handleFocus.bind(this);
-    }
-
-    getContainerClassNames() {
-        const { readOnly } = this.props;
-        return classnames('rainbow-lookup_selected-value', {
-            'rainbow-lookup_selected-value--readonly': readOnly,
-        });
     }
 
     handleFocus() {
@@ -115,15 +110,15 @@ export default class SelectedValue extends Component {
         const { icon } = formatValue(value);
 
         return (
-            <div className={this.getContainerClassNames()}>
+            <StyledSelectedValueContainer readOnly={readOnly}>
                 <RenderIf isTrue={!!icon}>
-                    <span className="rainbow-lookup_selected-value-icon">{icon}</span>
+                    <StyledSelectedValueIcon readOnly={readOnly}>{icon}</StyledSelectedValueIcon>
                 </RenderIf>
 
                 {this.renderInput()}
 
                 <RenderIf isTrue={!(readOnly || disabled)}>
-                    <span className="rainbow-lookup_selected-value-clear-button-container">
+                    <StyledSelectedValueClearButton>
                         <ButtonIcon
                             assistiveText="clear"
                             size="small"
@@ -131,9 +126,9 @@ export default class SelectedValue extends Component {
                             icon={<CloseIcon color="#576574" />}
                             onClick={onClearValue}
                         />
-                    </span>
+                    </StyledSelectedValueClearButton>
                 </RenderIf>
-            </div>
+            </StyledSelectedValueContainer>
         );
     }
 }
