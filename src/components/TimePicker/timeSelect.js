@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ButtonIcon from '../ButtonIcon';
-import Button from '../Button';
 import AmPmSelect from './ampmSelect';
 import UpIcon from './icons/upArrow';
 import DownIcon from './icons/downArrow';
@@ -21,6 +20,12 @@ import getMinutes from './helpers/getMinutes';
 import getAmPm from './helpers/getAmPm';
 import getDefaultAmPm from './helpers/getDefaultAmPm';
 import { LEFT_KEY, RIGHT_KEY, UP_KEY, DOWN_KEY, DELETE_KEY, ENTER_KEY } from '../../libs/constants';
+import StyledSelectContent from './styled/selectContent';
+import StyledDots from './styled/dots';
+import StyledSelectValue from './styled/selectValue';
+import StyledVerticalButtonsContainer from './styled/verticalButtonsContainer';
+import StyledFooter from './styled/footer';
+import StyledButton from './styled/button';
 
 function preventDefault(event) {
     event.preventDefault();
@@ -351,17 +356,12 @@ export default class TimeSelect extends Component {
 
         return (
             <article className={className}>
-                <div
-                    role="presentation"
-                    className="rainbow-time-picker_time-select-content"
-                    onKeyDown={this.handleKeyDown}
-                >
-                    <input
+                <StyledSelectContent role="presentation" onKeyDown={this.handleKeyDown}>
+                    <StyledSelectValue
                         aria-label="hour"
                         onDrop={preventDefault}
                         onPaste={preventDefault}
                         data-id="hour"
-                        className="rainbow-time-picker_time-select-value"
                         type="text"
                         value={hour}
                         placeholder={hourPlaceholder}
@@ -373,14 +373,13 @@ export default class TimeSelect extends Component {
                         ref={this.hourInputRef}
                     />
 
-                    <span className="rainbow-time-picker_dots">:</span>
+                    <StyledDots>:</StyledDots>
 
-                    <input
+                    <StyledSelectValue
                         aria-label="minutes"
                         onDrop={preventDefault}
                         onPaste={preventDefault}
                         data-id="minutes"
-                        className="rainbow-time-picker_time-select-value"
                         tabIndex="-1"
                         type="text"
                         value={minutes}
@@ -403,7 +402,7 @@ export default class TimeSelect extends Component {
                         />
                     </RenderIf>
 
-                    <div className="rainbow-time-picker_icon-button-container">
+                    <StyledVerticalButtonsContainer>
                         <ButtonIcon
                             id="time-picker_up-button"
                             tabIndex="-1"
@@ -427,26 +426,24 @@ export default class TimeSelect extends Component {
                             onFocus={this.handleButtonsFocus}
                             assistiveText="Previous value"
                         />
-                    </div>
-                </div>
+                    </StyledVerticalButtonsContainer>
+                </StyledSelectContent>
 
-                <footer className="rainbow-time-picker_footer">
-                    <Button
+                <StyledFooter>
+                    <StyledButton
                         id="time-picker_cancel-button"
-                        className="rainbow-time-picker_button"
                         variant="base"
                         label={cancelLabel}
                         onClick={onCloseModal}
                     />
 
-                    <Button
+                    <StyledButton
                         id="time-picker_ok-button"
-                        className="rainbow-time-picker_button"
                         variant="brand"
                         label={okLabel}
                         onClick={this.handleChangeTime}
                     />
-                </footer>
+                </StyledFooter>
             </article>
         );
     }

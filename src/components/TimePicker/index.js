@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import ClockIcon from './icons/clock';
-import Modal from '../Modal';
 import Input from '../Input/pickerInput';
 import TimeSelect from './timeSelect';
 import get12HourTime from './helpers/get12HourTime';
 import getInputValue from './helpers/getInputValue';
 import withReduxForm from '../../libs/hocs/withReduxForm';
 import { ENTER_KEY, SPACE_KEY } from '../../libs/constants';
-import './styles.css';
-import './media-queries.css';
+import StyledContainer from './styled/container';
+import StyledModal from './styled/modal';
 
 /**
  * A TimePicker is used to input a time by displaying an interface the user can interact with.
@@ -38,11 +36,6 @@ class TimePicker extends Component {
         if (prevValue !== value) {
             this.updateValue();
         }
-    }
-
-    getContainerClassName() {
-        const { className } = this.props;
-        return classnames('rainbow-time-picker_container', className);
     }
 
     getTriggerInputValue() {
@@ -123,6 +116,7 @@ class TimePicker extends Component {
             label,
             required,
             style,
+            className,
             hideLabel,
             name,
             bottomHelpText,
@@ -139,7 +133,7 @@ class TimePicker extends Component {
         const { isOpen, value } = this.state;
 
         return (
-            <div id={id} className={this.getContainerClassName()} style={style}>
+            <StyledContainer id={id} className={className} style={style}>
                 <Input
                     id="time-picker_time-input"
                     ref={this.inputRef}
@@ -163,9 +157,8 @@ class TimePicker extends Component {
                     tabIndex={tabIndex}
                 />
 
-                <Modal
+                <StyledModal
                     id="time-picker_modal"
-                    className="rainbow-time-picker_modal"
                     isOpen={isOpen}
                     onRequestClose={this.closeModal}
                     onOpened={this.setFocusToHourInput}
@@ -178,8 +171,8 @@ class TimePicker extends Component {
                         value={value}
                         ref={this.timeSelectRef}
                     />
-                </Modal>
-            </div>
+                </StyledModal>
+            </StyledContainer>
         );
     }
 }

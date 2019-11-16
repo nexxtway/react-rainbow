@@ -2,6 +2,9 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { uniqueId } from './../../libs/utils';
 import isChecked from './helpers/isChecked';
+import StyledInputHidden from './styled/inputHidden';
+import StyledOptionLabel from './styled/optionLabel';
+import StyledSelectValue from './styled/selectValue';
 
 function handleAmPmBlur(event) {
     event.stopPropagation();
@@ -64,17 +67,17 @@ export default class AmPmSelect extends PureComponent {
 
         if (isFocused) {
             return (
-                <fieldset
+                <StyledSelectValue
+                    as="fieldset"
                     data-id="fieldset-element"
-                    className="rainbow-time-picker_time-select-value rainbow-time-picker_select-ampm"
                     role="presentation"
                     tabIndex={tabIndex}
                     onBlur={this.handleBlur}
                     onFocus={onFocus}
                     ref={this.fieldsetRef}
                 >
-                    <input
-                        className="rainbow-time-picker_time-input--hidden"
+                    <StyledInputHidden
+                        as="input"
                         type="radio"
                         id={this.inputAmId}
                         name="ampmOptions"
@@ -85,11 +88,9 @@ export default class AmPmSelect extends PureComponent {
                         onBlur={handleAmPmBlur}
                     />
 
-                    <label className="rainbow-time-picker_select-option" htmlFor={this.inputAmId}>
-                        am
-                    </label>
-                    <input
-                        className="rainbow-time-picker_time-input--hidden"
+                    <StyledOptionLabel htmlFor={this.inputAmId}>am</StyledOptionLabel>
+                    <StyledInputHidden
+                        as="input"
                         type="radio"
                         id={this.inputPmId}
                         name="ampmOptions"
@@ -100,17 +101,15 @@ export default class AmPmSelect extends PureComponent {
                         onBlur={handleAmPmBlur}
                     />
 
-                    <label className="rainbow-time-picker_select-option" htmlFor={this.inputPmId}>
-                        pm
-                    </label>
-                </fieldset>
+                    <StyledOptionLabel htmlFor={this.inputPmId}>pm</StyledOptionLabel>
+                </StyledSelectValue>
             );
         }
         return (
-            <input
+            <StyledSelectValue
+                isInput
                 aria-label="am-pm selector"
                 data-id="input-element"
-                className="rainbow-time-picker_time-select-value"
                 tabIndex={tabIndex}
                 onFocus={this.handleFocus}
                 placeholder="--"
