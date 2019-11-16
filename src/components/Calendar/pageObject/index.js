@@ -88,6 +88,17 @@ class PageCalendar {
     }
 
     /**
+     * Set the value of the year select element
+     * @method
+     * @param {string}
+     */
+    setYear(value) {
+        $(this.rootElement)
+            .$('select')
+            .selectByVisibleText(value);
+    }
+
+    /**
      * Returns true when the specific day button element has focus.
      * @method
      * @returns {bool}
@@ -97,6 +108,26 @@ class PageCalendar {
             .$('table')
             .$$('button')[day - 1];
         return buttonEl.isFocused();
+    }
+
+    /**
+     * Returns true when the previous month button element is disabled.
+     * @method
+     * @returns {bool}
+     */
+    isDisabledPrevMonthButton() {
+        const buttonEl = $(this.rootElement).$$('button[data-id=button-icon-element]')[0];
+        return !buttonEl.isEnabled();
+    }
+
+    /**
+     * Returns true when the next month button element is disabled.
+     * @method
+     * @returns {bool}
+     */
+    isDisabledNextMonthButton() {
+        const buttonEl = $(this.rootElement).$$('button[data-id=button-icon-element]')[1];
+        return !buttonEl.isEnabled();
     }
 }
 
