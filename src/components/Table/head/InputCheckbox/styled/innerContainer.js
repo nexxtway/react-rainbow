@@ -1,3 +1,4 @@
+/* stylelint-disable */
 import styled from 'styled-components';
 import { COLOR_WHITE, COLOR_GRAY_2, COLOR_GRAY_1, COLOR_BRAND } from '../../../../../styles/colors';
 import { SHADOW_OUTLINE } from '../../../../../styles/shadows';

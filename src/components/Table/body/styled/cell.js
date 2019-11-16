@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { COLOR_BRAND } from '../../../../styles/colors';
 
-const StyledThCell = styled.th`
+const StyledCell = styled.th`
     padding: 0;
     text-align: left;
 
@@ -18,4 +18,4 @@ const StyledThCell = styled.th`
     }
 `;
 
-export default StyledThCell;
+export default StyledCell;

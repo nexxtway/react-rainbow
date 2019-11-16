@@ -1,16 +1,15 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import SortArrowIcon from '../sortArrowIcon';
+import StyledSortArrowIcon from './../styled/sortArrowIcon';
 
 describe('<SortArrowIcon />', () => {
-    it('should set the right class names when direction is asc', () => {
+    it('should set the prop arrowAscendent to true when direction is asc', () => {
         const component = mount(<SortArrowIcon direction="asc" />);
-        expect(component.find('svg').prop('className')).toBe(
-            'rainbow-table_header-arrow rainbow-table_header-arrow--asc',
-        );
+        expect(component.find(StyledSortArrowIcon).prop('arrowAscendent')).toBe(true);
     });
-    it('should set the right class names when direction is desc', () => {
+    it('should set the prop arrowAscendent to true when direction is desc', () => {
         const component = mount(<SortArrowIcon direction="desc" />);
-        expect(component.find('svg').prop('className')).toBe('rainbow-table_header-arrow');
+        expect(component.find(StyledSortArrowIcon).prop('arrowAscendent')).toBe(false);
     });
 });

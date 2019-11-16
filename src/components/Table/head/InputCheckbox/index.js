@@ -9,8 +9,6 @@ export default class InputCheckbox extends Component {
     constructor(props) {
         super(props);
         this.inputId = uniqueId('input-checkbox');
-        this.inlineTextLabelId = uniqueId('inline-text-label');
-        this.errorMessageId = uniqueId('error-message');
         this.inputRef = React.createRef();
     }
 
@@ -26,17 +24,6 @@ export default class InputCheckbox extends Component {
             this.inputRef.current.indeterminate = indeterminate;
         }
     }
-
-    // getContainerClassNames() {
-    //     const { className, error } = this.props;
-    //     return classnames(
-    //         'rainbow-table-input-checkbox_container',
-    //         {
-    //             'rainbow-table-input-checkbox--error': error,
-    //         },
-    //         className,
-    //     );
-    // }
 
     /**
      * Sets focus on the element.
@@ -78,7 +65,6 @@ export default class InputCheckbox extends Component {
             id,
             name,
             checked,
-            hideLabel,
         } = this.props;
 
         return (
@@ -100,12 +86,7 @@ export default class InputCheckbox extends Component {
                         ref={this.inputRef}
                     />
 
-                    <Label
-                        label={label}
-                        hideLabel={hideLabel}
-                        disabled={disabled}
-                        inputId={this.inputId}
-                    />
+                    <Label label={label} inputId={this.inputId} />
                 </StyledInnerContainer>
             </StyledContainer>
         );
@@ -124,7 +105,6 @@ InputCheckbox.propTypes = {
     onBlur: PropTypes.func,
     onKeyDown: PropTypes.func,
     checked: PropTypes.bool,
-    hideLabel: PropTypes.bool,
     indeterminate: PropTypes.bool,
     className: PropTypes.string,
     style: PropTypes.object,
@@ -134,8 +114,6 @@ InputCheckbox.propTypes = {
 InputCheckbox.defaultProps = {
     value: undefined,
     name: undefined,
-    bottomHelpText: null,
-    error: null,
     disabled: false,
     onChange: () => {},
     tabIndex: undefined,
@@ -144,7 +122,6 @@ InputCheckbox.defaultProps = {
     onBlur: () => {},
     onKeyDown: () => {},
     checked: undefined,
-    hideLabel: false,
     indeterminate: undefined,
     className: undefined,
     style: undefined,

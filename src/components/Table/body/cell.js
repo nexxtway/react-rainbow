@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { SELECTABLE_CHECKBOX } from '../helpers/columns';
 import SelectableCell from './selectableCell';
 import ActionsCell from './actionsCell';
-import StyledThCell from './styled/thCell';
+import StyledCell from './styled/cell';
 import StyledCellContent from './styled/cellContent';
 
 function CellValue(props) {
@@ -81,7 +81,7 @@ export default function Cell(props) {
 
     if (isFirst) {
         return (
-            <StyledThCell scope="row" tabIndex={-1} data-label={getHeaderLabel()}>
+            <StyledCell as="th" scope="row" tabIndex={-1} data-label={getHeaderLabel()}>
                 <StyledCellContent>
                     <CellValue
                         component={component}
@@ -90,12 +90,12 @@ export default function Cell(props) {
                         restColumnProps={restColumnProps}
                     />
                 </StyledCellContent>
-            </StyledThCell>
+            </StyledCell>
         );
     }
 
     return (
-        <StyledThCell role="gridcell" tabIndex={-1} data-label={getHeaderLabel()}>
+        <StyledCell as="td" role="gridcell" tabIndex={-1} data-label={getHeaderLabel()}>
             <StyledCellContent>
                 <CellValue
                     component={component}
@@ -104,7 +104,7 @@ export default function Cell(props) {
                     restColumnProps={restColumnProps}
                 />
             </StyledCellContent>
-        </StyledThCell>
+        </StyledCell>
     );
 }
 
