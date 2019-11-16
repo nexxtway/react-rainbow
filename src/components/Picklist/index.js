@@ -10,6 +10,7 @@ import { insertChildOrderly, getChildMenuItemNodes } from './utils';
 import Label from './label';
 import './styles.css';
 import { uniqueId } from '../../libs/utils';
+import StyledInput from './styled/input';
 import MenuArrowButton from './menuArrowButton';
 import getNormalizeValue from './helpers/getNormalizeValue';
 import getSelectedOptionName from './helpers/getSelectedOptionName';
@@ -111,14 +112,6 @@ class Picklist extends Component {
     // eslint-disable-next-line class-methods-use-this
     getMenuMaxHeight() {
         return sizeMap.medium;
-    }
-
-    getInputClassNames() {
-        const { value } = this.props;
-        const { icon } = getNormalizeValue(value);
-        return classnames('rainbow-picklist_input', {
-            'rainbow-picklist_input--icon': !!icon,
-        });
     }
 
     getIndicatorClassNames() {
@@ -421,10 +414,8 @@ class Picklist extends Component {
                     <RenderIf isTrue={!readOnly}>
                         <span className={this.getIndicatorClassNames()} />
                     </RenderIf>
-                    {/* eslint-disable-next-line jsx-a11y/aria-activedescendant-has-tabindex */}
-                    <input
+                    <StyledInput
                         aria-controls={this.listboxId}
-                        className={this.getInputClassNames()}
                         id={this.inputId}
                         type="text"
                         name={name}
@@ -435,12 +426,15 @@ class Picklist extends Component {
                         placeholder={placeholder}
                         tabIndex={tabIndex}
                         readOnly
+                        isReadOnly={readOnly}
                         disabled={disabled}
                         required={required}
                         aria-describedby={errorMessageId}
                         autoComplete="off"
                         ref={this.triggerRef}
                         aria-activedescendant={this.getAriaActivedescendant()}
+                        icon={icon}
+                        iconPosition="left"
                     />
                     <div
                         id={this.listboxId}
