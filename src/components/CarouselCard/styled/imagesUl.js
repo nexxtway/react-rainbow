@@ -11,6 +11,10 @@ const StyledImagesUl = styled.ul`
     border-radius: ${BORDER_RADIUS_1};
     border: 1px solid #dddbda;
     box-shadow: ${SHADOW_4};
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
 
     :active,
     :focus {
