@@ -20,12 +20,11 @@ class PageCheckboxGroup {
      * @param {number} itemPosition - The base 0 index of the checkbox.
      */
     getItem(itemPosition) {
-        const items = $(this.rootElement).$$('div[data-id="input-checkbox_container"]');
+        const items = $(this.rootElement).$$('[data-id="input-checkbox_container"]');
         if (items[itemPosition]) {
             return new PageCheckboxItem(
-                `${
-                    this.rootElement
-                } div[data-id="input-checkbox_container"]:nth-child(${itemPosition + 1})`,
+                `${this.rootElement} [data-id="input-checkbox_container"]:nth-child(${itemPosition +
+                    1})`,
             );
         }
         return null;
