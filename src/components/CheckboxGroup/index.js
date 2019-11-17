@@ -18,6 +18,7 @@ class CheckboxGroup extends Component {
     constructor(props) {
         super(props);
         this.errorMessageId = uniqueId('error-message');
+        this.groupNameId = props.name || uniqueId('options');
         this.handleOnChange = this.handleOnChange.bind(this);
     }
 
@@ -50,7 +51,7 @@ class CheckboxGroup extends Component {
     }
 
     render() {
-        const { id, options, required, label, error, style, className, name } = this.props;
+        const { id, options, required, label, error, style, className } = this.props;
         return (
             <StyledFieldset id={id} className={className} style={style} error={error}>
                 <RenderIf isTrue={!!label}>
@@ -64,8 +65,8 @@ class CheckboxGroup extends Component {
                         values={this.getValue()}
                         options={options}
                         onChange={this.handleOnChange}
+                        name={this.groupNameId}
                         describedBy={this.getErrorMessageId()}
-                        name={name}
                         error={error}
                     />
                 </StyledContantContainer>
