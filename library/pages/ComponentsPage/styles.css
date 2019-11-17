@@ -83,7 +83,7 @@
 
     .react-rainbow-components-page_carbon-ads {
         margin: 0;
-        text-align: center;
+        align-self: center;
     }
 
     .react-rainbow-components-page_cards-container {

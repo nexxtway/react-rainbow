@@ -2,17 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { uniqueId } from '../../../libs/utils';
 import RenderIf from '../../RenderIf';
-import Label from '../checkboxRadioLabel';
-import InlineBlockElement from '../../Structural/inlineBlockElement';
 import StyledContainer from '../styled/container';
 import HelpText from '../styled/helpText';
 import ErrorText from '../styled/errorText';
-import StyledCheckboxInput from './styled/checkbox';
+import Checkbox from './checkbox';
 
 export default class InputCheckbox extends Component {
     constructor(props) {
         super(props);
-        this.inputId = uniqueId('input-checkbox');
         this.inlineTextLabelId = uniqueId('inline-text-label');
         this.errorMessageId = uniqueId('error-message');
         this.inputRef = React.createRef();
@@ -78,42 +75,33 @@ export default class InputCheckbox extends Component {
             checked,
             hideLabel,
         } = this.props;
+        const errorMessageId = this.getErrorMessageId();
 
         return (
             <StyledContainer id={id} className={className} style={style}>
-                <InlineBlockElement>
-                    <StyledCheckboxInput
-                        as="input"
-                        id={this.inputId}
-                        name={name}
-                        type="checkbox"
-                        value={value}
-                        onChange={onChange}
-                        tabIndex={tabIndex}
-                        onFocus={onFocus}
-                        onBlur={onBlur}
-                        onClick={onClick}
-                        onKeyDown={onKeyDown}
-                        disabled={disabled}
-                        checked={checked}
-                        aria-labelledby={this.getInlineTextLabelId()}
-                        aria-describedby={this.getErrorMessageId()}
-                        ref={this.inputRef}
-                        error={error}
-                    />
-                    <Label
-                        label={label}
-                        hideLabel={hideLabel}
-                        disabled={disabled}
-                        inputId={this.inputId}
-                        id={this.getInlineTextLabelId()}
-                    />
-                </InlineBlockElement>
+                <Checkbox
+                    name={name}
+                    value={value}
+                    onChange={onChange}
+                    tabIndex={tabIndex}
+                    onFocus={onFocus}
+                    onBlur={onBlur}
+                    onClick={onClick}
+                    onKeyDown={onKeyDown}
+                    disabled={disabled}
+                    checked={checked}
+                    ariaLabelledBy={this.getInlineTextLabelId()}
+                    ariaDescribedBy={errorMessageId}
+                    ref={this.inputRef}
+                    error={error}
+                    label={label}
+                    hideLabel={hideLabel}
+                />
                 <RenderIf isTrue={!!bottomHelpText}>
                     <HelpText alignSelf="flex-start">{bottomHelpText}</HelpText>
                 </RenderIf>
                 <RenderIf isTrue={!!error}>
-                    <ErrorText alignSelf="flex-start" id={this.getErrorMessageId()}>
+                    <ErrorText alignSelf="flex-start" id={errorMessageId}>
                         {error}
                     </ErrorText>
                 </RenderIf>

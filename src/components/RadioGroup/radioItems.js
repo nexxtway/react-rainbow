@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Radio from './radio';
+import Radio from '../Input/inputRadio/radio';
 
 export default function RadioItems(props) {
-    const { options, ariaDescribedby, onChange, value, name, required } = props;
+    const { options, ariaDescribedby, onChange, value, name, error } = props;
 
     const isChecked = option => option.value === value;
 
@@ -11,13 +11,13 @@ export default function RadioItems(props) {
         const key = `radio-${index}`;
         return (
             <Radio
+                {...option}
                 key={key}
-                required={required}
                 onChange={onChange}
-                isChecked={isChecked(option)}
+                checked={isChecked(option)}
                 ariaDescribedby={ariaDescribedby}
                 name={name}
-                {...option}
+                error={error}
             />
         );
     });
@@ -29,7 +29,6 @@ RadioItems.propTypes = {
     options: PropTypes.array.isRequired,
     onChange: PropTypes.func,
     name: PropTypes.string.isRequired,
-    required: PropTypes.bool.isRequired,
 };
 
 RadioItems.defaultProps = {
