@@ -10,21 +10,36 @@ const StyledButton = styled.button`
     outline: none;
     border-radius: ${BORDER_RADIUS_2};
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    cursor: pointer;
+    color: inherit;
+    font: inherit;
+    overflow: visible;
+    text-transform: none;
+    appearance: button;
 
-    &:focus,
-    &:active {
+    ::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+    }
+
+    :focus,
+    :active {
         outline: 0;
         box-shadow: 0 0 0 4px ${COLOR_GRAY_2};
     }
 
-    &:active {
+    :active {
         transform: scale(0.97);
         transition: all 0.2s ease;
     }
 
-    &:hover {
+    :hover {
         box-shadow: 0 0 0 4px ${COLOR_GRAY_2};
         transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    }
+
+    &[disabled] {
+        cursor: default;
     }
 `;
 
