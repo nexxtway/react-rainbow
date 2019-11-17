@@ -8,6 +8,8 @@ const StyledFileCardTitle = styled.h1`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    margin: 0;
+    padding: 0;
 `;
 
 export default StyledFileCardTitle;
