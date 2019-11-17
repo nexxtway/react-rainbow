@@ -5,7 +5,7 @@ import extractTime from './helpers/extractTime';
 import formatDateTime from './helpers/formatDateTime';
 import StyledModal from './styled/modal';
 import StyledHeader from './styled/header';
-import StyledH2 from './styled/h2';
+import StyledTitle from './styled/title';
 import StyledResponsiveContainer from './styled/responsiveContainer';
 import StyledCalendar from './styled/calendar';
 import StyledDivider from './styled/divider';
@@ -56,7 +56,7 @@ function DateTimePickerModal(props) {
     return (
         <StyledModal id={id} isOpen={isOpen} onRequestClose={onRequestClose}>
             <StyledHeader>
-                <StyledH2>{modalTitle}</StyledH2>
+                <StyledTitle>{modalTitle}</StyledTitle>
             </StyledHeader>
             <StyledResponsiveContainer>
                 <StyledCalendar
