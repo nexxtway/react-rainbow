@@ -302,14 +302,14 @@ describe('<TimeSelect/>', () => {
             const minutesInput = component.find('input').at(1);
             minutesInput.simulate('focus');
             minutesInput.simulate('change', { target: { value } });
-            const focusedElementDataId = document.activeElement.getAttribute('data-id');
+            const focusedElementAriaLabel = document.activeElement.getAttribute('aria-label');
             expect(
                 component
                     .find('input')
                     .at(1)
                     .prop('value'),
             ).toBe(expects[index]);
-            expect(focusedElementDataId).toBe('input-element');
+            expect(focusedElementAriaLabel).toBe('am-pm selector');
         });
     });
     it('should set minutes value to "00" when minutes input is focused and click up button', () => {
@@ -399,8 +399,8 @@ describe('<TimeSelect/>', () => {
         container.simulate('keyDown', { keyCode: RIGHT_KEY });
         container.simulate('keyDown', { keyCode: RIGHT_KEY });
         container.simulate('keyDown', { keyCode: RIGHT_KEY });
-        const focusedElementDataId = document.activeElement.getAttribute('data-id');
-        expect(focusedElementDataId).toBe('input-element');
+        const focusedElementAriaLabel = document.activeElement.getAttribute('aria-label');
+        expect(focusedElementAriaLabel).toBe('am-pm selector');
     });
     it('should pass the right defaultValue to AmPmSelect when up or down key is not pressed and does not have value initially', () => {
         const component = mount(<TimeSelect />);

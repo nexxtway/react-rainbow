@@ -105,7 +105,7 @@ class PageTimePicker {
                 .$('input[data-id="hour"]')
                 .isDisplayed() &&
             $(timePickerModalId)
-                .$('input[data-id="input-element"]')
+                .$('input[aria-label="am-pm selector"]')
                 .isDisplayed()
         );
     }
@@ -185,7 +185,7 @@ class PageTimePicker {
      */
     hasFocusAmPmSelect() {
         return $(timePickerModalId)
-            .$('fieldset[data-id="fieldset-element"]')
+            .$('fieldset[role="presentation"]')
             .isFocused();
     }
 
@@ -197,7 +197,7 @@ class PageTimePicker {
     isAmSelected() {
         browser.waitUntil(() =>
             $(timePickerModalId)
-                .$('fieldset[data-id="fieldset-element"]')
+                .$('fieldset[role="presentation"]')
                 .isFocused(),
         );
         return $(timePickerModalId)
@@ -213,7 +213,7 @@ class PageTimePicker {
     isPmSelected() {
         browser.waitUntil(() =>
             $(timePickerModalId)
-                .$('fieldset[data-id="fieldset-element"]')
+                .$('fieldset[role="presentation"]')
                 .isFocused(),
         );
         return $(timePickerModalId)

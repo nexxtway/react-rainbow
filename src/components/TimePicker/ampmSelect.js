@@ -107,9 +107,7 @@ export default class AmPmSelect extends PureComponent {
         }
         return (
             <StyledSelectValue
-                isInput
                 aria-label="am-pm selector"
-                data-id="input-element"
                 tabIndex={tabIndex}
                 onFocus={this.handleFocus}
                 placeholder="--"

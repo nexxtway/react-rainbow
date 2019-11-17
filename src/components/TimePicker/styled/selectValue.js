@@ -97,7 +97,7 @@ const StyledSelectValue = styled.input`
     }
 
     ${props =>
-        props.isInput &&
+        !props.as === 'fieldset' &&
         `
             margin: 0;
             line-height: normal;
@@ -105,7 +105,7 @@ const StyledSelectValue = styled.input`
             padding: 0;
         `};
     ${props =>
-        !props.isInput &&
+        props.as === 'fieldset' &&
         `
             border: 0;
             margin: 0;
