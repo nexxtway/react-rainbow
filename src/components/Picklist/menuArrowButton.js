@@ -1,15 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import StyledArrowButton from './styled/arrowButton';
 
 export default function MenuArrowButton(props) {
     const { arrow, onMouseEnter, onMouseLeave } = props;
-    const className = classnames(
-        'rainbow-picklist_dropdown-arrow-button',
-        `rainbow-picklist_dropdown-arrow-${arrow}`,
-    );
 
-    return <div className={className} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} />;
+    return (
+        <StyledArrowButton
+            data-id={`picklist-arrow-button-${arrow}`}
+            arrow={arrow}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+        />
+    );
 }
 
 MenuArrowButton.propTypes = {
