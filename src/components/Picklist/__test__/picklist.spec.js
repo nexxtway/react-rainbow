@@ -71,16 +71,10 @@ describe('<Picklist />', () => {
                 <PicklistOption label="Option 3" name="option3" />
             </Picklist>,
         );
-        expect(component.state().isOpen).toBe(false);
-        expect(component.find("div[role='presentation']").prop('className')).toBe(
-            'rainbow-picklist',
-        );
+        expect(component.find('[aria-expanded=true]').exists()).toBe(false);
         component.instance().menuRef.current = menuRef;
         component.find('input').simulate('click');
-        expect(component.state().isOpen).toBe(true);
-        expect(component.find("div[role='presentation']").prop('className')).toBe(
-            'rainbow-picklist rainbow-picklist--open',
-        );
+        expect(component.find('[aria-expanded=true]').exists()).toBe(true);
     });
     it('should open menu when picklist is focused and press a navigation key', () => {
         const keyCodes = [UP_KEY, LEFT_KEY, RIGHT_KEY, DOWN_KEY];
@@ -94,16 +88,10 @@ describe('<Picklist />', () => {
             );
             const input = component.find('input');
             input.simulate('focus');
-            expect(component.state().isOpen).toBe(false);
-            expect(component.find("div[role='presentation']").prop('className')).toBe(
-                'rainbow-picklist',
-            );
+            expect(component.find('[aria-expanded=true]').exists()).toBe(false);
             component.instance().menuRef.current = menuRef;
             input.simulate('keyDown', { keyCode });
-            expect(component.state().isOpen).toBe(true);
-            expect(component.find("div[role='presentation']").prop('className')).toBe(
-                'rainbow-picklist rainbow-picklist--open',
-            );
+            expect(component.find('[aria-expanded=true]').exists()).toBe(true);
         });
     });
     it('should open menu when picklist is focused and press SPACE key', () => {
@@ -116,21 +104,12 @@ describe('<Picklist />', () => {
         );
         const input = component.find('input');
         input.simulate('focus');
-
-        expect(component.state().isOpen).toBe(false);
-        expect(component.find("div[role='presentation']").prop('className')).toBe(
-            'rainbow-picklist',
-        );
+        expect(component.find('[aria-expanded=true]').exists()).toBe(false);
         component.instance().menuRef.current = menuRef;
-
         input.simulate('keyDown', {
             keyCode: SPACE_KEY,
         });
-
-        expect(component.state().isOpen).toBe(true);
-        expect(component.find("div[role='presentation']").prop('className')).toBe(
-            'rainbow-picklist rainbow-picklist--open',
-        );
+        expect(component.find('[aria-expanded=true]').exists()).toBe(true);
     });
     it('should close menu when is opened and click the picklist input', () => {
         const component = mount(
@@ -143,18 +122,9 @@ describe('<Picklist />', () => {
         component.instance().menuRef.current = menuRef;
         component.instance().openMenu();
         component.update();
-
-        expect(component.state().isOpen).toBe(true);
-        expect(component.find("div[role='presentation']").prop('className')).toBe(
-            'rainbow-picklist rainbow-picklist--open',
-        );
-
+        expect(component.find('[aria-expanded=true]').exists()).toBe(true);
         component.find('input').simulate('click');
-
-        expect(component.state().isOpen).toBe(false);
-        expect(component.find("div[role='presentation']").prop('className')).toBe(
-            'rainbow-picklist',
-        );
+        expect(component.find('[aria-expanded=true]').exists()).toBe(false);
     });
     it('should close menu when is opened and press ESCAPE key', () => {
         const component = mount(
@@ -167,20 +137,11 @@ describe('<Picklist />', () => {
         component.instance().menuRef.current = menuRef;
         component.instance().openMenu();
         component.update();
-
-        expect(component.state().isOpen).toBe(true);
-        expect(component.find("div[role='presentation']").prop('className')).toBe(
-            'rainbow-picklist rainbow-picklist--open',
-        );
-
+        expect(component.find('[aria-expanded=true]').exists()).toBe(true);
         component.find('input').simulate('keyDown', {
             keyCode: ESCAPE_KEY,
         });
-
-        expect(component.state().isOpen).toBe(false);
-        expect(component.find("div[role='presentation']").prop('className')).toBe(
-            'rainbow-picklist',
-        );
+        expect(component.find('[aria-expanded=true]').exists()).toBe(false);
     });
     it('should close menu when is opened and press TAB key', () => {
         const component = mount(
@@ -193,20 +154,11 @@ describe('<Picklist />', () => {
         component.instance().menuRef.current = menuRef;
         component.instance().openMenu();
         component.update();
-
-        expect(component.state().isOpen).toBe(true);
-        expect(component.find("div[role='presentation']").prop('className')).toBe(
-            'rainbow-picklist rainbow-picklist--open',
-        );
-
+        expect(component.find('[aria-expanded=true]').exists()).toBe(true);
         component.find('input').simulate('keyDown', {
             keyCode: TAB_KEY,
         });
-
-        expect(component.state().isOpen).toBe(false);
-        expect(component.find("div[role='presentation']").prop('className')).toBe(
-            'rainbow-picklist',
-        );
+        expect(component.find('[aria-expanded=true]').exists()).toBe(false);
     });
     it('should fire onChange when option is selected by click', () => {
         const onChangeFn = jest.fn();

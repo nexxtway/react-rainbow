@@ -148,7 +148,7 @@
         "stylelint-processor-styled-components": "^1.8.0",
         "stylelint-scss": "^3.3.0",
         "wdio-chromedriver-service": "^5.0.1",
-        "webdriverio": "^5.7.15",
+        "webdriverio": "^5.16.7",
         "webpack": "^4.41.2"
     },
     "pre-push": [

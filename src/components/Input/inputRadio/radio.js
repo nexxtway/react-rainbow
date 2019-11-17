@@ -1,34 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { uniqueId } from './../../../libs/utils';
-import RenderIf from './../../RenderIf';
-import StyledContainer from '../styled/container';
-import HelpText from '../styled/helpText';
-import ErrorText from '../styled/errorText';
-import Radio from './radio';
+import { uniqueId } from '../../../libs/utils';
+import Label from '../checkboxRadioLabel';
+import StyledContainer from './styled/container';
+import StyledRadioInput from './styled/radio';
 
-export default class InputRadio extends Component {
+export default class Radio extends Component {
     constructor(props) {
         super(props);
-        this.inlineTextLabelId = uniqueId('inline-text-label');
-        this.errorMessageId = uniqueId('error-message');
+        this.inputId = uniqueId('input-radio');
         this.inputRef = React.createRef();
-    }
-
-    getInlineTextLabelId() {
-        const { bottomHelpText } = this.props;
-        if (bottomHelpText) {
-            return this.inlineTextLabelId;
-        }
-        return undefined;
-    }
-
-    getErrorMessageId() {
-        const { error } = this.props;
-        if (error) {
-            return this.errorMessageId;
-        }
-        return undefined;
     }
 
     /**
@@ -57,30 +38,30 @@ export default class InputRadio extends Component {
 
     render() {
         const {
-            className,
-            style,
+            name,
             value,
             onChange,
-            label,
-            error,
-            disabled,
             tabIndex,
             onFocus,
             onBlur,
             onClick,
             onKeyDown,
-            bottomHelpText,
-            id,
-            name,
+            disabled,
             checked,
+            ariaLabelledBy,
+            ariaDescribedBy,
+            error,
+            label,
             hideLabel,
         } = this.props;
-        const errorMessageId = this.getErrorMessageId();
 
         return (
-            <StyledContainer id={id} className={className} style={style}>
-                <Radio
+            <StyledContainer data-id="input-radio_container">
+                <StyledRadioInput
+                    as="input"
+                    id={this.inputId}
                     name={name}
+                    type="radio"
                     value={value}
                     onChange={onChange}
                     tabIndex={tabIndex}
@@ -90,31 +71,27 @@ export default class InputRadio extends Component {
                     onKeyDown={onKeyDown}
                     disabled={disabled}
                     checked={checked}
-                    ariaLabelledBy={this.getInlineTextLabelId()}
-                    ariaDescribedBy={errorMessageId}
+                    aria-labelledby={ariaLabelledBy}
+                    aria-describedby={ariaDescribedBy}
                     ref={this.inputRef}
                     error={error}
+                />
+                <Label
                     label={label}
                     hideLabel={hideLabel}
+                    disabled={disabled}
+                    inputId={this.inputId}
+                    id={ariaLabelledBy}
                 />
-                <RenderIf isTrue={!!bottomHelpText}>
-                    <HelpText alignSelf="flex-start">{bottomHelpText}</HelpText>
-                </RenderIf>
-                <RenderIf isTrue={!!error}>
-                    <ErrorText alignSelf="flex-start" id={errorMessageId}>
-                        {error}
-                    </ErrorText>
-                </RenderIf>
             </StyledContainer>
         );
     }
 }
 
-InputRadio.propTypes = {
+Radio.propTypes = {
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     name: PropTypes.string,
-    bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     disabled: PropTypes.bool,
     onChange: PropTypes.func,
@@ -125,16 +102,14 @@ InputRadio.propTypes = {
     onKeyDown: PropTypes.func,
     checked: PropTypes.bool,
     hideLabel: PropTypes.bool,
-    className: PropTypes.string,
-    style: PropTypes.object,
-    id: PropTypes.string,
+    ariaLabelledBy: PropTypes.string,
+    ariaDescribedBy: PropTypes.string,
 };
 
-InputRadio.defaultProps = {
+Radio.defaultProps = {
     value: undefined,
     label: undefined,
     name: undefined,
-    bottomHelpText: null,
     error: null,
     disabled: false,
     onChange: () => {},
@@ -145,7 +120,6 @@ InputRadio.defaultProps = {
     onKeyDown: () => {},
     checked: undefined,
     hideLabel: false,
-    className: undefined,
-    style: undefined,
-    id: undefined,
+    ariaLabelledBy: undefined,
+    ariaDescribedBy: undefined,
 };
