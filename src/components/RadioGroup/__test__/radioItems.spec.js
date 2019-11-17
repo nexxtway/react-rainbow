@@ -22,14 +22,17 @@ describe('<RadioItems />', () => {
                 onChange={() => {}}
             />,
         );
-        expect(component.find('Radio').props()).toEqual({
-            value: option[0].value,
-            label: option[0].label,
-            disabled: option[0].disabled,
-            ariaDescribedby: 'error-1',
-            name: 'name-1',
-            onChange: expect.any(Function),
-            isChecked: false,
-        });
+        expect(component.find('Radio').props()).toEqual(
+            expect.objectContaining({
+                value: option[0].value,
+                label: option[0].label,
+                disabled: option[0].disabled,
+                ariaDescribedby: 'error-1',
+                name: 'name-1',
+                onChange: expect.any(Function),
+                checked: false,
+                error: null,
+            }),
+        );
     });
 });
