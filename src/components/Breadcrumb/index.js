@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import RenderIf from './../RenderIf';
 import StyledAnchor from './styled/anchor';
 import StyledButton from './styled/button';
+import StyledLi from './styled/li';
 
 /**
  * An item in the hierarchy path of the page the user is on.
@@ -13,7 +14,7 @@ export default function Breadcrumb(props) {
     const { href, label, onClick, disabled, className, style } = props;
 
     return (
-        <li className={className} style={style}>
+        <StyledLi className={className} style={style}>
             <RenderIf isTrue={!!href}>
                 <StyledAnchor disabled={disabled} href={href} aria-disabled={!!disabled}>
                     {label}
@@ -24,7 +25,7 @@ export default function Breadcrumb(props) {
                     {label}
                 </StyledButton>
             </RenderIf>
-        </li>
+        </StyledLi>
     );
 }
 
