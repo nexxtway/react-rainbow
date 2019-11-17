@@ -8,7 +8,7 @@ import ButtonIcon from './../ButtonIcon';
 import RightArrow from './rightArrow';
 import isInArray from './isInArray';
 import removeItemFromArray from './removeItemFromArray';
-import StyledListItem from './styled/listItem';
+import StyledLi from './styled/li';
 import StyledSummary from './styled/summary';
 import StyledHeading from './styled/heading';
 import StyledIcon from './styled/icon';
@@ -113,7 +113,7 @@ class AccordionItem extends Component {
         const isExpanded = this.isExpanded();
 
         return (
-            <StyledListItem
+            <StyledLi
                 data-id="accordion-section-li"
                 className={className}
                 style={style}
@@ -153,7 +153,7 @@ class AccordionItem extends Component {
                         {children}
                     </StyledContent>
                 </section>
-            </StyledListItem>
+            </StyledLi>
         );
     }
 }
