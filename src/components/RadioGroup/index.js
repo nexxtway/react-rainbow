@@ -56,8 +56,8 @@ class RadioGroup extends Component {
                         onChange={onChange}
                         options={options}
                         name={this.groupNameId}
-                        required={required}
                         ariaDescribedby={this.getErrorMessageId()}
+                        error={error}
                     />
                 </StyledContentContainer>
                 <RenderIf isTrue={!!error}>
