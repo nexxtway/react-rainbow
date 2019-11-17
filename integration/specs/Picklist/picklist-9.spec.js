@@ -6,7 +6,7 @@ const PICKLIST = '#picklist-9';
 const addNewBuildings = () => $('#button-icon_add-new-buildings').click();
 
 describe('Picklist with PicklistOption changed dynamically', () => {
-    it('should select Columbia Center with keyboard when children are changed dynamically', () => {
+    it('should select the new option with keyboard after it is added dynamically', () => {
         browser.url('/#!/Picklist/9');
         const component = $(PICKLIST);
         component.waitForExist();
