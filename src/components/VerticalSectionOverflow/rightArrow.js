@@ -1,23 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import StyledIcon from './styled/icon';
 
 export default function RightArrow({ isExpanded }) {
-    const getArrowClassName = () =>
-        classnames('rainbow-vertical-section-overflow_icon', {
-            'rainbow-vertical-section-overflow-icon--expanded': isExpanded,
-        });
-
     return (
-        <svg
-            className={getArrowClassName()}
+        <StyledIcon
+            isExpanded={isExpanded}
             width="10px"
             height="7px"
             viewBox="0 0 10 7"
             version="1.1"
         >
-            <title>angle-down</title>
-            <desc>Created with Sketch.</desc>
             <defs />
             <g id="examples" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g id="angle-down" transform="translate(-7.000000, -9.000000)" fillRule="nonzero">
@@ -29,7 +22,7 @@ export default function RightArrow({ isExpanded }) {
                     />
                 </g>
             </g>
-        </svg>
+        </StyledIcon>
     );
 }
 

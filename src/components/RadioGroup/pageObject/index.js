@@ -20,10 +20,11 @@ class PageRadioGroup {
      * @param {number} itemPosition - The base 0 index of the radio.
      */
     getItem(itemPosition) {
-        const items = $(this.rootElement).$$('.rainbow-radio-group_radio');
+        const items = $(this.rootElement).$$('[data-id="input-radio_container"]');
         if (items[itemPosition]) {
             return new PageRadioItem(
-                `${this.rootElement} .rainbow-radio-group_radio:nth-child(${itemPosition + 1})`,
+                `${this.rootElement} [data-id="input-radio_container"]:nth-child(${itemPosition +
+                    1})`,
             );
         }
         return null;

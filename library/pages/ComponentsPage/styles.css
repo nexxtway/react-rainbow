@@ -1,13 +1,30 @@
 .react-rainbow-components-page_container {
-    padding: 0 1.25rem;
+    padding: 1rem 1.25rem 2.375rem 1.25rem;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
-    padding-top: 2.375rem;
-    padding-bottom: 2.375rem;
     background-color: #f4f6f9;
     min-height: calc(100vh - 68px);
+}
+
+.react-rainbow-components-page_title {
+    text-align: center;
+    margin: 1.25rem 0 1rem 0;
+    font-family: Lato;
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 0.03125rem;
+    color: #061c3f;
+}
+
+.react-rainbow-components-page_search {
+    width: 50%;
+}
+
+.react-rainbow-components-page_carbon-ads {
+    align-self: flex-end;
+    margin: 0 1rem -64px 0;
 }
 
 .react-rainbow-components-page_card-container {
@@ -50,23 +67,23 @@
     display: flex;
 }
 
-.react-rainbow-components-page_title {
-    text-align: center;
-    margin-bottom: 1rem;
-    font-family: Lato;
-    font-size: 2rem;
-    font-weight: 300;
-    letter-spacing: 0.03125rem;
-    color: #061c3f;
-}
-
-.react-rainbow-components-page_search {
-    width: 70%;
+@media (max-width: 1280px) {
+    .react-rainbow-components-page_carbon-ads {
+        margin: 0 1rem -1rem 0;
+    }
+    .react-rainbow-components-page_search {
+        width: 70%;
+    }
 }
 
 @media (max-width: 600px) {
     .react-rainbow-components-page_search {
         width: 100%;
+    }
+
+    .react-rainbow-components-page_carbon-ads {
+        margin: 0;
+        align-self: center;
     }
 
     .react-rainbow-components-page_cards-container {

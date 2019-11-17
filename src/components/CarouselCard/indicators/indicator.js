@@ -1,8 +1,9 @@
 /* eslint-disable no-script-url */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import AssistiveText from '../../AssistiveText';
+import StyledIndicatorLi from '../styled/indicatorLi';
+import StyledIndicatorButton from '../styled/indicatorButton';
 
 function getAssistiveText(header) {
     if (typeof header === 'string') {
@@ -25,12 +26,6 @@ export default class Indicator extends Component {
         });
     }
 
-    getIndicatorClassName(id) {
-        return classnames('rainbow-carousel_indicator', {
-            'rainbow-carousel_indicator--active': this.isSelected(id),
-        });
-    }
-
     getTabIndex(id) {
         if (this.isSelected(id)) {
             return 0;
@@ -46,26 +41,23 @@ export default class Indicator extends Component {
     render() {
         const { indicatorID, containerID, header, onSelect } = this.props;
         const assistiveText = getAssistiveText(header);
+        const isSelected = this.isSelected(indicatorID);
         return (
-            <li
-                className="rainbow-carousel_indicators-container"
-                role="presentation"
-                key={indicatorID}
-            >
-                <button
+            <StyledIndicatorLi role="presentation" key={indicatorID}>
+                <StyledIndicatorButton
                     id={indicatorID}
-                    className={this.getIndicatorClassName(indicatorID)}
+                    isSelected={isSelected}
                     role="tab"
                     tabIndex={this.getTabIndex(indicatorID)}
-                    aria-selected={this.isSelected(indicatorID)}
+                    aria-selected={isSelected}
                     aria-controls={containerID}
                     title={assistiveText}
                     onClick={() => onSelect(indicatorID)}
                     ref={this.indicatorRef}
                 >
                     <AssistiveText text={assistiveText} />
-                </button>
-            </li>
+                </StyledIndicatorButton>
+            </StyledIndicatorLi>
         );
     }
 }

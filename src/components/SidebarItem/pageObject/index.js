@@ -18,7 +18,7 @@ class PageSidebarItem {
      */
     click() {
         $(this.rootElement)
-            .$('a')
+            .$('[data-id="sidebar-item-clickable-element"]')
             .click();
     }
 

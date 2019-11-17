@@ -13,6 +13,15 @@
     padding: 1.25rem 2rem 0 2rem;
 }
 
+.react-rainbow-getting-started_section-heading-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.react-rainbow-getting-started_carbon-ad {
+    margin-top: 1rem;
+    min-width: 340px;
+}
 
 .react-rainbow-getting-started_section-heading {
     font-size: 1rem;
@@ -91,6 +100,13 @@
     }
     .react-rainbow-getting-started_container {
         padding: 1rem 1rem 0 1rem;
+    }
+    .react-rainbow-getting-started_section-heading-container {
+        flex-direction: column;
+    }
+    .react-rainbow-getting-started_carbon-ad {
+        margin-bottom: 1rem;
+        align-self: center;
     }
     .react-rainbow-getting-started_section-heading {
         text-align: center;

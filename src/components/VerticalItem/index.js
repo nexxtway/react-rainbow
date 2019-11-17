@@ -7,9 +7,9 @@ import { Consumer as SectionOverflowConsumer } from '../VerticalSectionOverflow/
 import RenderIf from '../RenderIf';
 import StyledLi from './styled/li';
 import StyledAnchor from './styled/anchor';
-import StyledLabel from './styled/label';
-import StyledNotification from './styled/notification';
 import StyledIcon from './styled/icon';
+import StyledButton from './styled/button';
+import ItemContent from './itemContent';
 
 function Item(props) {
     const {
@@ -55,19 +55,33 @@ function Item(props) {
             isSelected={isSelected}
             data-id="vertical-item"
         >
-            <StyledAnchor
-                data-id="vertical-item-clickable-element"
-                href={href}
-                onClick={hanldeOnClick}
-                aria-describedby={entityHeaderId}
-                aria-current={getAriaCurrent()}
-                tabIndex={resolveTabIndex()}
-            >
-                <StyledLabel>{label}</StyledLabel>
-                <RenderIf isTrue={!!notification}>
-                    <StyledNotification>{notification}</StyledNotification>
-                </RenderIf>
-            </StyledAnchor>
+            <RenderIf isTrue={!!href}>
+                <StyledAnchor
+                    data-id="vertical-item-clickable-element"
+                    className="rainbow-vertical-item_action"
+                    href={href}
+                    onClick={hanldeOnClick}
+                    aria-describedby={entityHeaderId}
+                    aria-current={getAriaCurrent()}
+                    tabIndex={resolveTabIndex()}
+                    isSelected={isSelected}
+                >
+                    <ItemContent label={label} notification={notification} />
+                </StyledAnchor>
+            </RenderIf>
+            <RenderIf isTrue={!href}>
+                <StyledButton
+                    data-id="vertical-item-clickable-element"
+                    className="rainbow-vertical-item_action"
+                    onClick={hanldeOnClick}
+                    aria-describedby={entityHeaderId}
+                    aria-current={getAriaCurrent()}
+                    tabIndex={resolveTabIndex()}
+                    isSelected={isSelected}
+                >
+                    <ItemContent label={label} notification={notification} />
+                </StyledButton>
+            </RenderIf>
             <RenderIf isTrue={!!icon}>
                 <StyledIcon>{icon}</StyledIcon>
             </RenderIf>
@@ -125,7 +139,7 @@ VerticalItem.defaultProps = {
     label: '',
     name: undefined,
     icon: undefined,
-    href: 'javascript:void(0);',
+    href: undefined,
     onClick: () => {},
     notification: null,
     className: undefined,

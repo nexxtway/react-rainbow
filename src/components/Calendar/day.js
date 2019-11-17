@@ -1,14 +1,25 @@
-import React from 'react';
+/* eslint-disable react/prop-types */
+import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Consumer } from './context';
 import StyledDay from './styled/day';
 import StyledDayAdjacent from './styled/dayAdjacent';
 import StyledDayButton from './styled/dayButton';
+import { isSameDay, compareDates } from './helpers';
 
-export default function Day(props) {
+function DayComponent(props) {
     const { date, firstDayMonth, isSelected, minDate, maxDate, onChange } = props;
+    const { useAutoFocus, focusedDate, privateKeyDown, privateOnFocus, privateOnBlur } = props;
     const day = date.getDate();
     const isAdjacentDate = date.getMonth() !== firstDayMonth.getMonth();
-    const isDisabled = date > maxDate || date < minDate;
+    const isDisabled = compareDates(date, maxDate) > 0 || compareDates(date, minDate) < 0;
+    const tabIndex = isSameDay(focusedDate, date) ? 0 : -1;
+    const buttonRef = useRef();
+
+    useEffect(() => {
+        if (!useAutoFocus || !buttonRef.current || tabIndex === -1) return;
+        buttonRef.current.focus();
+    }, [tabIndex, useAutoFocus]);
 
     if (isAdjacentDate || isDisabled) {
         return (
@@ -21,14 +32,23 @@ export default function Day(props) {
     return (
         <StyledDay role="gridcell">
             <StyledDayButton
+                ref={buttonRef}
+                tabIndex={tabIndex}
                 onClick={() => onChange(new Date(date))}
                 isSelected={isSelected}
                 data-selected={isSelected}
+                onKeyDown={privateKeyDown}
+                onFocus={privateOnFocus}
+                onBlur={privateOnBlur}
             >
                 {day}
             </StyledDayButton>
         </StyledDay>
     );
+}
+
+export default function Day(props) {
+    return <Consumer>{values => <DayComponent {...values} {...props} />}</Consumer>;
 }
 
 Day.propTypes = {

@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import RenderIf from '../RenderIf';
-import './styles.css';
+import StyledContainer from './styled/container';
+import StyledLabel from './styled/label';
+import StyledDescription from './styled/description';
 
 /**
  * A VisualPickerOptionFooter.
@@ -12,18 +13,15 @@ import './styles.css';
 export default function VisualPickerOptionFooter(props) {
     const { label, description, className, style } = props;
 
-    const getContainerClassName = () =>
-        classnames('rainbow-visual-picker-option-footer_container', className);
-
     return (
-        <article className={getContainerClassName()} style={style}>
+        <StyledContainer className={className} style={style}>
             <RenderIf isTrue={!!label}>
-                <h1 className="rainbow-visual-picker-option-footer_label">{label}</h1>
+                <StyledLabel>{label}</StyledLabel>
             </RenderIf>
             <RenderIf isTrue={!!description}>
-                <h2 className="rainbow-visual-picker-option-footer_description">{description}</h2>
+                <StyledDescription>{description}</StyledDescription>
             </RenderIf>
-        </article>
+        </StyledContainer>
     );
 }
 
