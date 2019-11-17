@@ -18,7 +18,7 @@ export function insertChildOrderly(children, child, nodes) {
 
 export function getChildMenuItemNodes(ref) {
     if (ref) {
-        return ref.querySelectorAll('a[role="menuitem"]');
+        return ref.querySelectorAll('div[role="option"]');
     }
     return [];
 }

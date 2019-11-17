@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import withReduxForm from '../../libs/hocs/withReduxForm';
 import RenderIf from '../RenderIf';
 import { UP_KEY, DOWN_KEY, ESCAPE_KEY, TAB_KEY, SPACE_KEY, ENTER_KEY } from '../../libs/constants';
 import { Provider } from './context';
 import MenuContent from './menuContent';
 import { insertChildOrderly, getChildMenuItemNodes } from './utils';
-import Label from './label';
-import './styles.css';
 import { uniqueId } from '../../libs/utils';
+import Label from '../Input/label';
 import MenuArrowButton from './menuArrowButton';
 import getNormalizeValue from './helpers/getNormalizeValue';
 import getSelectedOptionName from './helpers/getSelectedOptionName';
@@ -18,6 +16,14 @@ import isOptionVisible from './helpers/isOptionVisible';
 import shouldOpenMenu from './helpers/shouldOpenMenu';
 import calculateScrollOffset from './helpers/calculateScrollOffset';
 import isScrollPositionAtMenuBottom from './helpers/isScrollPositionAtMenuBottom';
+import StyledInput from './styled/input';
+import StyledContainer from './styled/container';
+import StyledInnerContainer from './styled/innerContainer';
+import StyledIcon from './styled/icon';
+import StyledError from '../Input/styled/errorText';
+import StyledIndicator from './styled/indicator';
+import StyledDropdown from './styled/dropdown';
+import StyledUl from './styled/ul';
 
 const sizeMap = {
     medium: 227,
@@ -79,21 +85,6 @@ class Picklist extends Component {
         }
     }
 
-    getContainerClassNames() {
-        const { isOpen } = this.state;
-        const { className, readOnly, error } = this.props;
-
-        return classnames(
-            'rainbow-picklist',
-            {
-                'rainbow-picklist--error': error,
-                'rainbow-picklist--readonly': readOnly,
-                'rainbow-picklist--open': isOpen && !readOnly,
-            },
-            className,
-        );
-    }
-
     getContext() {
         const { activeOptionName } = this.state;
         const { value } = this.props;
@@ -111,28 +102,6 @@ class Picklist extends Component {
     // eslint-disable-next-line class-methods-use-this
     getMenuMaxHeight() {
         return sizeMap.medium;
-    }
-
-    getInputClassNames() {
-        const { value } = this.props;
-        const { icon } = getNormalizeValue(value);
-        return classnames('rainbow-picklist_input', {
-            'rainbow-picklist_input--icon': !!icon,
-        });
-    }
-
-    getIndicatorClassNames() {
-        const { disabled } = this.props;
-        return classnames('rainbow-picklist_input-dropdown-indicator', {
-            'rainbow-picklist_input-dropdown-indicator--disabled': disabled,
-        });
-    }
-
-    getDropdownClassNames() {
-        const { isLoading } = this.props;
-        return classnames('rainbow-picklist_dropdown', {
-            'rainbow-picklist_dropdown--loading-box': isLoading,
-        });
     }
 
     getErrorMessageId() {
@@ -368,6 +337,7 @@ class Picklist extends Component {
             label: pickListLabel,
             hideLabel,
             style,
+            className,
             error,
             isLoading,
             disabled,
@@ -390,13 +360,14 @@ class Picklist extends Component {
 
         const { showScrollUpArrow, showScrollDownArrow, isOpen } = this.state;
         return (
-            <div
+            <StyledContainer
                 id={id}
                 role="presentation"
-                className={this.getContainerClassNames()}
+                className={className}
                 style={style}
                 onKeyDown={this.handleKeyPressed}
                 ref={this.containerRef}
+                readOnly={readOnly}
             >
                 <RenderIf isTrue={!!pickListLabel}>
                     <Label
@@ -408,23 +379,20 @@ class Picklist extends Component {
                     />
                 </RenderIf>
 
-                <div
-                    className="rainbow-picklist_inner-container"
+                <StyledInnerContainer
                     aria-expanded={isOpen}
                     aria-haspopup="listbox"
                     // eslint-disable-next-line jsx-a11y/role-has-required-aria-props
                     role="combobox"
                 >
                     <RenderIf isTrue={!!icon}>
-                        <span className="rainbow-picklist_icon">{icon}</span>
+                        <StyledIcon error={error}>{icon}</StyledIcon>
                     </RenderIf>
                     <RenderIf isTrue={!readOnly}>
-                        <span className={this.getIndicatorClassNames()} />
+                        <StyledIndicator disabled={disabled} />
                     </RenderIf>
-                    {/* eslint-disable-next-line jsx-a11y/aria-activedescendant-has-tabindex */}
-                    <input
+                    <StyledInput
                         aria-controls={this.listboxId}
-                        className={this.getInputClassNames()}
                         id={this.inputId}
                         type="text"
                         name={name}
@@ -435,17 +403,21 @@ class Picklist extends Component {
                         placeholder={placeholder}
                         tabIndex={tabIndex}
                         readOnly
+                        isReadOnly={readOnly}
                         disabled={disabled}
                         required={required}
                         aria-describedby={errorMessageId}
                         autoComplete="off"
                         ref={this.triggerRef}
                         aria-activedescendant={this.getAriaActivedescendant()}
+                        icon={icon}
+                        iconPosition="left"
                     />
-                    <div
+                    <StyledDropdown
                         id={this.listboxId}
                         role="listbox"
-                        className={this.getDropdownClassNames()}
+                        isVisible={isOpen && !readOnly}
+                        isLoading={isLoading}
                     >
                         <RenderIf isTrue={showScrollUpArrow}>
                             <MenuArrowButton
@@ -454,7 +426,7 @@ class Picklist extends Component {
                                 onMouseLeave={this.stopArrowScoll}
                             />
                         </RenderIf>
-                        <ul
+                        <StyledUl
                             role="presentation"
                             onScroll={this.updateScrollingArrows}
                             ref={this.menuRef}
@@ -463,7 +435,7 @@ class Picklist extends Component {
                             <MenuContent isLoading={isLoading}>
                                 <Provider value={this.getContext()}>{children}</Provider>
                             </MenuContent>
-                        </ul>
+                        </StyledUl>
                         <RenderIf isTrue={showScrollDownArrow}>
                             <MenuArrowButton
                                 arrow="down"
@@ -471,14 +443,12 @@ class Picklist extends Component {
                                 onMouseLeave={this.stopArrowScoll}
                             />
                         </RenderIf>
-                    </div>
-                </div>
+                    </StyledDropdown>
+                </StyledInnerContainer>
                 <RenderIf isTrue={!!error}>
-                    <div id={errorMessageId} className="rainbow-picklist_input-error">
-                        {error}
-                    </div>
+                    <StyledError id={errorMessageId}>{error}</StyledError>
                 </RenderIf>
-            </div>
+            </StyledContainer>
         );
     }
 }

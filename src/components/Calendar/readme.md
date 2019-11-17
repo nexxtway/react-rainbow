@@ -49,7 +49,7 @@ const selectStyles = {
 import React from 'react';
 import { Card, Calendar, Avatar } from 'react-rainbow-components';
 
-initialState = { date: new Date() };
+initialState = { date: new Date('2019-11-11 00:00:00') };
 const calendarContainerStyles = {
     width: '28rem',
     height: '26.5rem',
@@ -65,6 +65,7 @@ const calendarContainerStyles = {
     <div className="rainbow-align-content_center rainbow-p-vertical_xx-large rainbow-p-horizontal_medium">
         <Card style={calendarContainerStyles} className="rainbow-p-around_large">
             <Calendar
+                id="calendar-3"
                 value={state.date}
                 minDate={new Date(2018, 0, 4)}
                 maxDate={new Date(2020, 0, 4)}
