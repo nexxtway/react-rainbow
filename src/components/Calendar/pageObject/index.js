@@ -44,14 +44,14 @@ class PageCalendar {
     }
 
     /**
-     * Clicks the specific day button element.
+     * Clicks the specific enabled day button element.
      * @method
      */
     clickDay(day) {
         const buttonEl = $(this.rootElement)
             .$('table')
-            .$$('button')[day - 1];
-        buttonEl.click();
+            .$(`button=${day}`);
+        if (buttonEl.isExisting()) buttonEl.click();
     }
 
     /**
@@ -85,6 +85,50 @@ class PageCalendar {
         return $(this.rootElement)
             .$('button[data-selected=true]')
             .getText();
+    }
+
+    /**
+     * Set the value of the year select element
+     * @method
+     * @param {string}
+     */
+    setYear(value) {
+        $(this.rootElement)
+            .$('select')
+            .selectByVisibleText(value);
+    }
+
+    /**
+     * Returns true when the specific day button element has focus.
+     * @method
+     * @returns {bool}
+     */
+    isDayFocused(day) {
+        const buttonEl = $(this.rootElement)
+            .$('table')
+            .$(`button=${day}`);
+        if (!buttonEl.isExisting()) return false;
+        return buttonEl.isFocused();
+    }
+
+    /**
+     * Returns true when the previous month button element is disabled.
+     * @method
+     * @returns {bool}
+     */
+    isPrevMonthButtonDisabled() {
+        const buttonEl = $(this.rootElement).$$('button[data-id=button-icon-element]')[0];
+        return !buttonEl.isEnabled();
+    }
+
+    /**
+     * Returns true when the next month button element is disabled.
+     * @method
+     * @returns {bool}
+     */
+    isNextMonthButtonDisabled() {
+        const buttonEl = $(this.rootElement).$$('button[data-id=button-icon-element]')[1];
+        return !buttonEl.isEnabled();
     }
 }
 
