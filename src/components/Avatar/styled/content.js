@@ -9,6 +9,7 @@ const StyledContent = styled.span`
     align-items: center;
     height: 100%;
     text-shadow: ${SHADOW_1};
+    box-sizing: border-box;
 
     &:hover {
         color: ${COLOR_WHITE};
@@ -31,6 +32,14 @@ const StyledContent = styled.span`
                 color: ${COLOR_GRAY_4};
                 cursor: default;
             }
+        `};
+    ${props =>
+        props.as === 'abbr' &&
+        `
+            border: 0;
+            border-bottom: 1px dotted;
+            text-decoration: none;
+            cursor: help;
         `};
 `;
 
