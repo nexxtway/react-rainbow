@@ -4,7 +4,7 @@ import Label from '../';
 import StyledLabelText from '../labelText';
 import HiddenElement from '../../../Structural/hiddenElement';
 
-describe('<CheckboxLabel/>', () => {
+describe('<CheckboxRadioLabel/>', () => {
     describe('without hideLabel', () => {
         it('should set the inputId passed as the htmlFor prop in the label element', () => {
             const component = mount(<Label label="Input Label" inputId="input-213" />);

@@ -53,7 +53,7 @@ class CheckboxGroup extends Component {
     render() {
         const { id, options, required, label, error, style, className } = this.props;
         return (
-            <StyledFieldset id={id} className={className} style={style} error={error}>
+            <StyledFieldset id={id} className={className} style={style}>
                 <RenderIf isTrue={!!label}>
                     <StyledLegend>
                         <RequiredAsterisk required={required} />
