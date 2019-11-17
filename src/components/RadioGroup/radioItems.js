@@ -11,13 +11,13 @@ export default function RadioItems(props) {
         const key = `radio-${index}`;
         return (
             <Radio
+                {...option}
                 key={key}
                 onChange={onChange}
                 checked={isChecked(option)}
                 ariaDescribedby={ariaDescribedby}
                 name={name}
                 error={error}
-                {...option}
             />
         );
     });
