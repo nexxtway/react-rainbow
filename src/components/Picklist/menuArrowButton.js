@@ -6,7 +6,12 @@ export default function MenuArrowButton(props) {
     const { arrow, onMouseEnter, onMouseLeave } = props;
 
     return (
-        <StyledArrowButton arrow={arrow} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} />
+        <StyledArrowButton
+            data-id={`picklist-arrow-button-${arrow}`}
+            arrow={arrow}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+        />
     );
 }
 

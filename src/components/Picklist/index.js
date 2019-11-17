@@ -85,21 +85,6 @@ class Picklist extends Component {
         }
     }
 
-    // getContainerClassNames() {
-    //     const { isOpen } = this.state;
-    //     const { className, readOnly, error } = this.props;
-
-    //     return classnames(
-    //         'rainbow-picklist',
-    //         {
-    //             'rainbow-picklist--error': error,
-    //             'rainbow-picklist--readonly': readOnly,
-    //             'rainbow-picklist--open': isOpen && !readOnly,
-    //         },
-    //         className,
-    //     );
-    // }
-
     getContext() {
         const { activeOptionName } = this.state;
         const { value } = this.props;
@@ -118,13 +103,6 @@ class Picklist extends Component {
     getMenuMaxHeight() {
         return sizeMap.medium;
     }
-
-    // getDropdownClassNames() {
-    //     const { isLoading } = this.props;
-    //     return classnames('rainbow-picklist_dropdown', {
-    //         'rainbow-picklist_dropdown--loading-box': isLoading,
-    //     });
-    // }
 
     getErrorMessageId() {
         const { error } = this.props;
