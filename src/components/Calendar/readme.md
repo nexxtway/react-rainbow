@@ -11,7 +11,7 @@ initialState = {
 
 const calendarContainerStyles = {
     width: '28rem',
-    height: '26.5rem',
+    height: '25rem',
 };
 const selectStyles = {
     width: '8rem',
@@ -52,7 +52,7 @@ import { Card, Calendar, Avatar } from 'react-rainbow-components';
 initialState = { date: new Date() };
 const calendarContainerStyles = {
     width: '28rem',
-    height: '26.5rem',
+    height: '25rem',
 };
 
 <div>

@@ -26,6 +26,7 @@ import StyledControlsContainer from './styled/controlsContainer';
 import StyledMonthContainer from './styled/monthContainer';
 import StyledMonth from './styled/month';
 import StyledArrowButton from './styled/arrowButton';
+import StyledTable from './styled/table';
 import {
     UP_KEY,
     DOWN_KEY,
@@ -330,7 +331,7 @@ class CalendarComponent extends Component {
                         onChange={this.handleYearChange}
                     />
                 </StyledControlsContainer>
-                <table role="grid" aria-labelledby={this.monthLabelId}>
+                <StyledTable role="grid" aria-labelledby={this.monthLabelId}>
                     <DaysOfWeek locale={locale} />
                     <Provider value={this.getContext()}>
                         <Month
@@ -341,7 +342,7 @@ class CalendarComponent extends Component {
                             onChange={onChange}
                         />
                     </Provider>
-                </table>
+                </StyledTable>
             </section>
         );
     }
