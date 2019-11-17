@@ -50,8 +50,8 @@ class PageCalendar {
     clickDay(day) {
         const buttonEl = $(this.rootElement)
             .$('table')
-            .$$('button')[day - 1];
-        buttonEl.click();
+            .$(`button=${day}`);
+        if (buttonEl.isExisting()) buttonEl.click();
     }
 
     /**
@@ -106,7 +106,8 @@ class PageCalendar {
     isDayFocused(day) {
         const buttonEl = $(this.rootElement)
             .$('table')
-            .$$('button')[day - 1];
+            .$(`button=${day}`);
+        if (!buttonEl.isExisting()) return false;
         return buttonEl.isFocused();
     }
 
