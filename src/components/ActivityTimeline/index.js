@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import StyledContainer from './styled/container';
+import StyledUl from './styled/ul';
 
 /**
  * The ActivityTimeline displays each of any item upcoming, current, and past activities.
@@ -10,9 +10,9 @@ export default function ActivityTimeline(props) {
     const { children, className, style } = props;
 
     return (
-        <StyledContainer className={className} style={style}>
+        <StyledUl className={className} style={style}>
             {children}
-        </StyledContainer>
+        </StyledUl>
     );
 }
 
