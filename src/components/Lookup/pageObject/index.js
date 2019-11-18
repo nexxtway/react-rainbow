@@ -50,7 +50,7 @@ class PageLookup {
      */
     clickLabel() {
         $(this.rootElement)
-            .$('label.rainbow-lookup_input-label')
+            .$('label')
             .click();
     }
 
@@ -135,7 +135,7 @@ class PageLookup {
      * @returns {number}
      */
     getOptionsLength() {
-        return $(this.rootElement).$$('li.rainbow-lookup_menu-item').length;
+        return $(this.rootElement).$$('li[role="presentation"]').length;
     }
 
     /**
@@ -144,10 +144,10 @@ class PageLookup {
      * @param {number} itemPosition - The base 0 index of the LookupMenuItem.
      */
     getOption(itemPosition) {
-        const items = $(this.rootElement).$$('li.rainbow-lookup_menu-item');
+        const items = $(this.rootElement).$$('li[role="presentation"]');
         if (items[itemPosition]) {
             return new PageLookupMenuItem(
-                `${this.rootElement} li.rainbow-lookup_menu-item:nth-child(${itemPosition + 1})`,
+                `${this.rootElement} li[role="presentation"]:nth-child(${itemPosition + 1})`,
             );
         }
         return null;
@@ -173,7 +173,7 @@ class PageLookup {
      */
     isMenuOpen() {
         return $(this.rootElement)
-            .$('.rainbow-lookup_options-container')
+            .$('[role="listbox"]')
             .isDisplayed();
     }
 
@@ -184,7 +184,7 @@ class PageLookup {
      */
     isMenuEmpty() {
         return $(this.rootElement)
-            .$('.rainbow-lookup_options-container--empty')
+            .$('[data-id="lookup-options-empty-container"]')
             .isDisplayed();
     }
 

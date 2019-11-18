@@ -50,27 +50,29 @@ describe('<Table />', () => {
             </Table>,
         );
 
-        const header = component.find('th.rainbow-table_header');
-        const cell = component.find('th.rainbow-table_cell-container');
+        const header = component.find('th[scope="col"]');
+        const cell = component.find('th[scope="row"]');
 
         expect(header.text()).toBe('Name');
         expect(cell.text()).toBe('a');
     });
-    it('should add a column when showCheckboxColumn is not passed', () => {
+    it('should not add a column when showCheckboxColumn is not passed', () => {
         const component = mount(
             <Table data={data} keyField="name">
                 <Column field="name" header="Name" />
             </Table>,
         );
-        expect(component.find('.rainbow-table_cell-container').length).toBe(1);
-        expect(component.find('th.rainbow-table_cell-container').text()).toBe('a');
+        expect(component.find('th[scope="row"]').length).toBe(1);
+        expect(component.find('td[role="gridcell"]').length).toBe(0);
+        expect(component.find('th[scope="row"]').text()).toBe('a');
         component.setProps({
             children: [<Column field="name" header="Name" />, <Column field="number" />],
         });
         component.update();
-        expect(component.find('.rainbow-table_cell-container').length).toBe(2);
-        expect(component.find('th.rainbow-table_cell-container').text()).toBe('a');
-        expect(component.find('td.rainbow-table_cell-container').text()).toBe('23');
+        expect(component.find('th[scope="row"]').length).toBe(1);
+        expect(component.find('td[role="gridcell"]').length).toBe(1);
+        expect(component.find('th[scope="row"]').text()).toBe('a');
+        expect(component.find('td[role="gridcell"]').text()).toBe('23');
     });
     it('should add a column when showCheckboxColumn is passed', () => {
         const component = mount(
@@ -78,12 +80,14 @@ describe('<Table />', () => {
                 <Column field="name" header="Name" />
             </Table>,
         );
-        expect(component.find('.rainbow-table_cell-container').length).toBe(2);
+        expect(component.find('th[scope="row"]').length).toBe(1);
+        expect(component.find('td[role="gridcell"]').length).toBe(1);
         component.setProps({
             children: [<Column field="name" header="Name" />, <Column field="number" />],
         });
         component.update();
-        expect(component.find('.rainbow-table_cell-container').length).toBe(3);
+        expect(component.find('th[scope="row"]').length).toBe(1);
+        expect(component.find('td[role="gridcell"]').length).toBe(2);
     });
     it('should update the columns state when add a column and showCheckboxColumn is not passed', () => {
         const component = mount(
@@ -196,7 +200,7 @@ describe('<Table />', () => {
                 <Column field="number" header="Number" />
             </Table>,
         );
-        const resizeBar = component.find('.rainbow-table_header-resize-bar');
+        const resizeBar = component.find('span.rainbow-table_header-resize-bar');
         expect(component.state().tableWidth).toBe(100);
         resizeBar.at(0).simulate('mousedown', { clientX: 100 });
 
@@ -211,7 +215,7 @@ describe('<Table />', () => {
                 <Column field="number" header="Number" />
             </Table>,
         );
-        const resizeBar = component.find('.rainbow-table_header-resize-bar');
+        const resizeBar = component.find('span.rainbow-table_header-resize-bar');
         expect(component.state().columns).toEqual([
             {
                 field: 'name',
@@ -257,7 +261,7 @@ describe('<Table />', () => {
                 <Column field="number" header="Number" />
             </Table>,
         );
-        const resizeBar = component.find('.rainbow-table_header-resize-bar');
+        const resizeBar = component.find('span.rainbow-table_header-resize-bar');
         expect(component.state().tableWidth).toBe(100);
 
         resizeBar.at(0).simulate('mousedown', { clientX: 60 });
@@ -278,7 +282,7 @@ describe('<Table />', () => {
                 <Column field="number" header="Number" />,
             </Table>,
         );
-        const tableHeader = component.find('.rainbow-table_header-container');
+        const tableHeader = component.find('div.rainbow-table_header-container');
         tableHeader.at(0).simulate('click');
         expect(onSortMock).toHaveBeenCalledWith(expect.any(Object), 'name', 'asc');
     });
@@ -290,7 +294,7 @@ describe('<Table />', () => {
                 <Column field="number" header="Number" />,
             </Table>,
         );
-        const tableHeader = component.find('.rainbow-table_header-container');
+        const tableHeader = component.find('div.rainbow-table_header-container');
         tableHeader.at(1).simulate('click');
         expect(onSortMock).not.toHaveBeenCalled();
     });
@@ -313,7 +317,7 @@ describe('<Table />', () => {
                 <Column field="name" header="Name" sortable />
             </Table>,
         );
-        const tableHeader = component.find('.rainbow-table_header-container');
+        const tableHeader = component.find('div.rainbow-table_header-container');
         tableHeader.simulate('click');
         expect(onSortMock).toHaveBeenCalledWith(expect.any(Object), 'name', 'desc');
         component.setProps({ sortedBy, sortDirection });

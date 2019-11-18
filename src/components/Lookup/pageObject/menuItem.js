@@ -36,8 +36,9 @@ class PageLookupMenuItem {
      */
     isActive() {
         return (
-            $(this.rootElement).getAttribute('class') ===
-            'rainbow-lookup_menu-item rainbow-lookup_menu-item--active'
+            $(this.rootElement)
+                .$('[role="option"]')
+                .getAttribute('aria-selected') === 'true'
         );
     }
 

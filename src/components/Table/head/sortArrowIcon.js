@@ -1,16 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import StyledSortArrowIcon from './styled/sortArrowIcon';
 
 export default function SortArrowIcon({ direction, color }) {
-    const getClassName = () =>
-        classnames('rainbow-table_header-arrow', {
-            'rainbow-table_header-arrow--asc': direction === 'asc',
-        });
+    const arrowAscendent = direction === 'asc';
 
     return (
-        <svg
-            className={getClassName()}
+        <StyledSortArrowIcon
+            arrowAscendent={arrowAscendent}
+            className="rainbow-table_header-arrow"
             width="12px"
             height="12px"
             viewBox="0 0 12 12"
@@ -37,7 +35,7 @@ export default function SortArrowIcon({ direction, color }) {
                     </g>
                 </g>
             </g>
-        </svg>
+        </StyledSortArrowIcon>
     );
 }
 

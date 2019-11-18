@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import ResizeBar from '../resizeBar';
 
-const resizeBarSelector = '.rainbow-table_header-resize-bar';
+const resizeBarSelector = 'span.rainbow-table_header-resize-bar';
 
 const eventMap = {};
 document.addEventListener = jest.fn((event, cb) => {

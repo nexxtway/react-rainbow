@@ -25,42 +25,16 @@ describe('<InputCheckbox/>', () => {
         const component = mount(<InputCheckbox disabled />);
         expect(component.find('input').prop('disabled')).toBe(true);
     });
-    it('should pass a generated id to the Label component and set the same id to the aria-labelledby for the input when a bottomHelpText is passed', () => {
+    it('should pass a generated inputId to the Label component', () => {
         const component = mount(<InputCheckbox bottomHelpText="Help text" />);
-        expect(component.find('Label').prop('id')).toMatch(/inline-text-label/);
-        expect(component.find('input').prop('aria-labelledby')).toMatch(/inline-text-label/);
-    });
-    it('should pass a generated id to the Error element and set the same id to the aria-describedby for the input when a error is passed', () => {
-        const component = mount(<InputCheckbox error="error message" />);
-        expect(component.find('.rainbow-table-input-checkbox_error-message').prop('id')).toMatch(
-            /error-message/,
-        );
-        expect(component.find('input').prop('aria-describedby')).toMatch(/error-message/);
+        expect(component.find('Label').prop('inputId')).toMatch(/input-checkbox/);
     });
     it('should pass the right props to the Label component', () => {
-        const component = mount(<InputCheckbox label="custom label" disabled />);
+        const component = mount(<InputCheckbox label="custom label" />);
         expect(component.find('Label').props()).toEqual({
             label: 'custom label',
-            hideLabel: false,
-            disabled: true,
             inputId: expect.any(String),
         });
-    });
-    it('should have the right class name in the container element', () => {
-        const component = mount(<InputCheckbox />);
-        expect(
-            component.find('div[className="rainbow-table-input-checkbox_container"]').exists(),
-        ).toBe(true);
-    });
-    it('should have the right class names when error is passed', () => {
-        const component = mount(<InputCheckbox error="Error text" />);
-        expect(
-            component
-                .find(
-                    'div[className="rainbow-table-input-checkbox_container rainbow-table-input-checkbox--error"]',
-                )
-                .exists(),
-        ).toBe(true);
     });
     it('should set indeterminate prop to true in input reference when it is passed', () => {
         const component = mount(<InputCheckbox indeterminate />);
