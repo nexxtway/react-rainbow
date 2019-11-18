@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import { MARGIN_X_SMALL } from '../../../styles/margins';
 
-const StyledPageButtonContainer = styled.li`
+const StyledPageButton = styled.li`
+    box-sizing: border-box;
+
     > button {
         border-radius: 0;
         margin-left: -1px;
@@ -18,4 +20,4 @@ const StyledPageButtonContainer = styled.li`
     }
 `;
 
-export default StyledPageButtonContainer;
+export default StyledPageButton;
