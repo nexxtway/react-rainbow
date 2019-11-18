@@ -2,6 +2,8 @@ import React, { isValidElement } from 'react';
 import PropTypes from 'prop-types';
 import ButtonMenu from '../../ButtonMenu';
 import MoreIcon from './icons/more';
+import StyledCellContainer from './styled/cellContainer';
+import StyledActionCell from './styled/actionCell';
 
 function MenuItems({ children, rowData }) {
     return React.Children.map(
@@ -43,8 +45,8 @@ export default function ActionsCell(props) {
         };
 
         return (
-            <td className="rainbow-table_actions-cell-container" role="gridcell" tabIndex={-1}>
-                <div className="rainbow-table_actions-cell">
+            <StyledCellContainer role="gridcell" tabIndex={-1}>
+                <StyledActionCell>
                     <ButtonMenu
                         tabIndex={-1}
                         icon={<MoreIcon />}
@@ -53,8 +55,8 @@ export default function ActionsCell(props) {
                     >
                         <MenuItems rowData={rowData}>{columnChildren}</MenuItems>
                     </ButtonMenu>
-                </div>
-            </td>
+                </StyledActionCell>
+            </StyledCellContainer>
         );
     }
     return null;
