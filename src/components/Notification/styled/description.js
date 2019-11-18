@@ -8,7 +8,7 @@ const StyledDescription = styled.p`
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
     font-weight: 300;
     color: ${COLOR_GRAY_4};
-    padding-top: ${PADDING_XX_SMALL};
+    padding: ${PADDING_XX_SMALL} 0 0 0;
 `;
 
 export default StyledDescription;
