@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Lookup from '../';
+import StyledTextError from '../../Input/styled/errorText';
 
 describe('<Lookup />', () => {
     it('should set an id in the input element', () => {
@@ -13,7 +14,7 @@ describe('<Lookup />', () => {
     });
     it('should pass a generated id to the Error element and set the same id to the aria-describedby for the input when a error is passed', () => {
         const component = mount(<Lookup error="error message" />);
-        expect(component.find('.rainbow-lookup_input-error').prop('id')).toMatch(/error-message/);
+        expect(component.find(StyledTextError).prop('id')).toMatch(/error-message/);
         expect(component.find('input').prop('aria-describedby')).toMatch(/error-message/);
     });
     it('should pass the right props to the Label component', () => {
@@ -25,19 +26,6 @@ describe('<Lookup />', () => {
             hideLabel: false,
             inputId: expect.any(String),
         });
-    });
-    it('should set the right class names in the container element when pass an error', () => {
-        const component = mount(<Lookup label="custom label" error="some error" />);
-        expect(
-            component.find('div.rainbow-lookup_container.rainbow-lookup_container--error').exists(),
-        ).toBe(true);
-    });
-    it('should set the right class names in the input element when isLoading is passed', () => {
-        const component = mount(<Lookup label="custom label" options={[{}]} isLoading />);
-        component.find('input').simulate('focus');
-        expect(
-            component.find('input.rainbow-lookup_input.rainbow-lookup_input--loading').exists(),
-        ).toBe(true);
     });
     it('should render the Options menu when there are options and the input is focused', () => {
         const component = mount(<Lookup label="custom label" options={[{}]} />);

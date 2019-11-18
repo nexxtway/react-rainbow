@@ -1,21 +1,18 @@
 /* eslint-disable no-script-url */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import RenderIf from '../../RenderIf';
+import StyledItem from './styled/item';
+import StyledLi from './styled/li';
+import StyledIcon from './styled/icon';
+import StyledContent from './styled/content';
+import StyledDescription from './styled/description';
 
 export default class MenuItem extends Component {
     constructor(props) {
         super(props);
         this.itemRef = React.createRef();
         this.handleHover = this.handleHover.bind(this);
-    }
-
-    getContainerClassNames() {
-        const { isActive } = this.props;
-        return classnames('rainbow-lookup_menu-item', {
-            'rainbow-lookup_menu-item--active': isActive,
-        });
     }
 
     handleHover() {
@@ -27,33 +24,26 @@ export default class MenuItem extends Component {
         const { label, description, icon, onClick, isActive, id } = this.props;
 
         return (
-            <li
-                className={this.getContainerClassNames()}
-                role="presentation"
-                onMouseDown={onClick}
-                onMouseEnter={this.handleHover}
-            >
-                <div
+            <StyledLi role="presentation" onMouseDown={onClick} onMouseEnter={this.handleHover}>
+                <StyledItem
                     aria-selected={isActive}
+                    isActive={isActive}
                     id={id}
                     tabIndex={-1}
-                    className="rainbow-lookup_menu-item-link"
                     role="option"
                     ref={this.itemRef}
                 >
                     <RenderIf isTrue={!!icon}>
-                        <span className="rainbow-lookup_menu-item_icon-container">{icon}</span>
+                        <StyledIcon>{icon}</StyledIcon>
                     </RenderIf>
-                    <span className="rainbow-lookup_menu-item_label-container">
+                    <StyledContent>
                         {label}
                         <RenderIf isTrue={!!description}>
-                            <span className="rainbow-lookup_menu-item_description">
-                                {description}
-                            </span>
+                            <StyledDescription>{description}</StyledDescription>
                         </RenderIf>
-                    </span>
-                </div>
-            </li>
+                    </StyledContent>
+                </StyledItem>
+            </StyledLi>
         );
     }
 }

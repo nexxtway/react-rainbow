@@ -1,32 +1,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import copy from 'clipboard-copy';
 import formatValue from './helpers/formatValue';
 import RenderIf from '../RenderIf/index';
 import CloseIcon from '../Chip/closeIcon';
 import ButtonIcon from '../ButtonIcon/index';
+import StyledReadOnlySelectedInput from './styled/input';
+import StyledSelectedInput from './styled/selectedInput';
+import StyledSelectedValueIcon from './styled/selectedValueIcon';
+import StyledSelectedValueContainer from './styled/selectedValueContainer';
+import StyledSelectedValueClearButton from './styled/selectedValueClearButton';
 
 export default class SelectedValue extends Component {
     constructor(props) {
         super(props);
         this.inputRef = React.createRef();
         this.handleFocus = this.handleFocus.bind(this);
-    }
-
-    getContainerClassNames() {
-        const { readOnly } = this.props;
-        return classnames('rainbow-lookup_selected-value', {
-            'rainbow-lookup_selected-value--readonly': readOnly,
-        });
-    }
-
-    getInputClassNames() {
-        const { value } = this.props;
-        const { icon } = formatValue(value);
-        return classnames('rainbow-lookup_selected-value-input', {
-            'rainbow-lookup_selected-value-input-with-icon': !!icon,
-        });
     }
 
     handleFocus() {
@@ -59,7 +48,7 @@ export default class SelectedValue extends Component {
         this.inputRef.current.blur();
     }
 
-    render() {
+    renderInput() {
         const {
             id,
             name,
@@ -69,20 +58,17 @@ export default class SelectedValue extends Component {
             readOnly,
             required,
             onClick,
-            onClearValue,
             errorMessageId,
+            error,
         } = this.props;
         const { label, icon } = formatValue(value);
-        return (
-            <div className={this.getContainerClassNames()}>
-                <RenderIf isTrue={!!icon}>
-                    <span className="rainbow-lookup_selected-value-icon">{icon}</span>
-                </RenderIf>
-                <input
+
+        if (readOnly) {
+            return (
+                <StyledReadOnlySelectedInput
                     id={id}
                     name={name}
                     type="text"
-                    className={this.getInputClassNames()}
                     value={label}
                     tabIndex={tabIndex}
                     onFocus={this.handleFocus}
@@ -92,9 +78,47 @@ export default class SelectedValue extends Component {
                     aria-describedby={errorMessageId}
                     required={required}
                     ref={this.inputRef}
+                    iconPosition="left"
+                    icon={icon}
+                    error={error}
                 />
+            );
+        }
+        return (
+            <StyledSelectedInput
+                id={id}
+                name={name}
+                type="text"
+                value={label}
+                tabIndex={tabIndex}
+                onFocus={this.handleFocus}
+                onClick={onClick}
+                disabled={disabled}
+                readOnly
+                aria-describedby={errorMessageId}
+                required={required}
+                ref={this.inputRef}
+                iconPosition="left"
+                icon={icon}
+                error={error}
+            />
+        );
+    }
+
+    render() {
+        const { value, disabled, readOnly, onClearValue } = this.props;
+        const { icon } = formatValue(value);
+
+        return (
+            <StyledSelectedValueContainer readOnly={readOnly}>
+                <RenderIf isTrue={!!icon}>
+                    <StyledSelectedValueIcon readOnly={readOnly}>{icon}</StyledSelectedValueIcon>
+                </RenderIf>
+
+                {this.renderInput()}
+
                 <RenderIf isTrue={!(readOnly || disabled)}>
-                    <span className="rainbow-lookup_selected-value-clear-button-container">
+                    <StyledSelectedValueClearButton>
                         <ButtonIcon
                             assistiveText="clear"
                             size="small"
@@ -102,9 +126,9 @@ export default class SelectedValue extends Component {
                             icon={<CloseIcon color="#576574" />}
                             onClick={onClearValue}
                         />
-                    </span>
+                    </StyledSelectedValueClearButton>
                 </RenderIf>
-            </div>
+            </StyledSelectedValueContainer>
         );
     }
 }
@@ -127,6 +151,7 @@ SelectedValue.propTypes = {
     onClick: PropTypes.func,
     onClearValue: PropTypes.func,
     errorMessageId: PropTypes.string,
+    error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 };
 
 SelectedValue.defaultProps = {
@@ -140,4 +165,5 @@ SelectedValue.defaultProps = {
     onClick: () => {},
     onClearValue: undefined,
     errorMessageId: undefined,
+    error: undefined,
 };

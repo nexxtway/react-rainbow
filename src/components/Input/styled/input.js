@@ -20,7 +20,7 @@ const Input = styled.input`
     border: 1px solid ${COLOR_GRAY_3};
     border-radius: ${BORDER_RADIUS_2};
     width: 100%;
-    transition: all 0.1s linear;
+    transition: all 0.1s linear, padding 0s, border 0s;
     display: inline-block;
     padding: 0 1rem;
     line-height: 2.5rem;
@@ -38,7 +38,7 @@ const Input = styled.input`
     :active {
         outline: 0;
         padding: 0 0.9375rem;
-        border: 2px ${COLOR_BRAND} solid;
+        border: 2px solid ${COLOR_BRAND};
         background-color: ${COLOR_WHITE};
         box-shadow: ${SHADOW_OUTLINE};
     }
@@ -61,7 +61,7 @@ const Input = styled.input`
         &:active {
             box-shadow: none;
             background-color: ${COLOR_GRAY_1};
-            border: 1px ${COLOR_GRAY_2} solid;
+            border: 1px solid ${COLOR_GRAY_2};
         }
     }
 
@@ -69,12 +69,12 @@ const Input = styled.input`
         props.error &&
         `
         background-color: ${COLOR_WHITE};
-        border: 2px ${COLOR_ERROR} solid;
+        border: 2px solid ${COLOR_ERROR};
         background-clip: padding-box;
 
         :focus {
             background-color: ${COLOR_WHITE};
-            border: 2px ${COLOR_ERROR} solid;
+            border: 2px solid ${COLOR_ERROR};
             box-shadow: ${SHADOW_ERROR};
             padding: 0 1rem;
             outline: 0;
@@ -145,9 +145,8 @@ const Input = styled.input`
 
         &:focus,
         &:active {
-            padding-right: 2.2875rem;
             padding-right: ${props.isBare ? '2.35rem' : '2.2875rem'};
-            ${props.isBare && 'padding-left: 1rem'}
+            ${props.isBare ? 'padding-left: 1rem' : ''}
         }
 
         &[disabled] {

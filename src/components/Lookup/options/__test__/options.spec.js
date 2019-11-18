@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Options from '../';
+import StyledHeaderLi from '../styled/headerLi';
 
 describe('<Options />', () => {
     it('should render the empty message when items is an empty array', () => {
@@ -72,8 +73,8 @@ describe('<Options />', () => {
             },
         ];
         const component = mount(<Options items={items} />);
-        expect(component.find('li.rainbow-lookup_menu-item_header').exists()).toBe(true);
-        expect(component.find('li.rainbow-lookup_menu-item_header').text()).toBe('header item');
+        expect(component.find(StyledHeaderLi).exists()).toBe(true);
+        expect(component.find(StyledHeaderLi).text()).toBe('header item');
     });
     it('should fire an event with the right data when click an item', () => {
         const items = [{ label: 'London', description: 'awesome city' }, { label: 'Moscow' }];
@@ -109,9 +110,7 @@ describe('<Options />', () => {
             },
         ];
         const component = mount(<Options items={items} />);
-        component
-            .find('li[className="rainbow-lookup_menu-item_header"]')
-            .simulate('mouseDown', event);
+        component.find(StyledHeaderLi).simulate('mouseDown', event);
         expect(event.preventDefault).toHaveBeenCalledTimes(1);
     });
 });
