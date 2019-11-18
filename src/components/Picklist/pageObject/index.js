@@ -54,7 +54,7 @@ class PagePicklist {
      */
     hoverScrollUpArrow() {
         return $(this.rootElement)
-            .$('div.rainbow-picklist_dropdown-arrow-button.rainbow-picklist_dropdown-arrow-up')
+            .$('[data-id=picklist-arrow-button-up]')
             .moveTo();
     }
 
@@ -74,7 +74,7 @@ class PagePicklist {
      */
     hoverScrollDownArrow() {
         return $(this.rootElement)
-            .$('div.rainbow-picklist_dropdown-arrow-button.rainbow-picklist_dropdown-arrow-down')
+            .$('[data-id=picklist-arrow-button-down]')
             .moveTo();
     }
 
@@ -105,9 +105,7 @@ class PagePicklist {
      * @returns {number}
      */
     getOptionsLength() {
-        return $(this.rootElement).$$(
-            'li.rainbow-picklist-option:not(.rainbow-picklist-option_selected)',
-        ).length;
+        return $(this.rootElement).$$('li[data-selected="false"]').length;
     }
 
     /**
@@ -131,7 +129,7 @@ class PagePicklist {
      */
     isMenuOpen() {
         return $(this.rootElement)
-            .$('.rainbow-picklist_dropdown')
+            .$('[role="listbox"]')
             .isDisplayed();
     }
 
@@ -141,7 +139,7 @@ class PagePicklist {
      * @returns {object}
      */
     [privateGetMenuBoundsRect]() {
-        const menu = $(this.rootElement).$('div.rainbow-picklist_dropdown');
+        const menu = $(this.rootElement).$('[role="listbox"]');
         const { x, y } = menu.getLocation();
         const { width, height } = menu.getSize();
         return {

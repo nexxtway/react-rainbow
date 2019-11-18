@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import withReduxForm from './../../libs/hocs/withReduxForm';
 import { uniqueId } from '../../libs/utils';
 import RenderIf from '../RenderIf';
 import RequiredAsterisk from '../RequiredAsterisk';
 import CheckboxList from './checkboxList';
-import './styles.css';
+import StyledFieldset from './styled/fieldset';
+import StyledLegend from './styled/legend';
+import StyledContantContainer from './styled/contentContainer';
+import StyledTextError from '../Input/styled/errorText';
 
 /**
  * A checkable input that communicates if an option is true, false or indeterminate.
@@ -16,6 +18,7 @@ class CheckboxGroup extends Component {
     constructor(props) {
         super(props);
         this.errorMessageId = uniqueId('error-message');
+        this.groupNameId = props.name || uniqueId('options');
         this.handleOnChange = this.handleOnChange.bind(this);
     }
 
@@ -35,15 +38,6 @@ class CheckboxGroup extends Component {
         return value;
     }
 
-    getCheckboxContainerClassNames() {
-        const { error, className } = this.props;
-        return classnames(
-            'rainbow-checkbox-group_container',
-            { 'rainbow-checkbox-group--error': !!error },
-            className,
-        );
-    }
-
     handleOnChange(event) {
         const { value, checked } = event.target;
         const { value: values, onChange } = this.props;
@@ -57,33 +51,29 @@ class CheckboxGroup extends Component {
     }
 
     render() {
-        const { id, options, required, label, error, style, name } = this.props;
+        const { id, options, required, label, error, style, className } = this.props;
         return (
-            <fieldset id={id} className={this.getCheckboxContainerClassNames()} style={style}>
+            <StyledFieldset id={id} className={className} style={style}>
                 <RenderIf isTrue={!!label}>
-                    <legend className="rainbow-checkbox-group_label">
+                    <StyledLegend>
                         <RequiredAsterisk required={required} />
                         {label}
-                    </legend>
+                    </StyledLegend>
                 </RenderIf>
-                <div className="rainbow-checkbox-group_content-container">
+                <StyledContantContainer>
                     <CheckboxList
                         values={this.getValue()}
                         options={options}
                         onChange={this.handleOnChange}
+                        name={this.groupNameId}
                         describedBy={this.getErrorMessageId()}
-                        name={name}
+                        error={error}
                     />
-                </div>
+                </StyledContantContainer>
                 <RenderIf isTrue={!!error}>
-                    <div
-                        id={this.getErrorMessageId()}
-                        className="rainbow-checkbox-group_text-error"
-                    >
-                        {error}
-                    </div>
+                    <StyledTextError id={this.getErrorMessageId()}>{error}</StyledTextError>
                 </RenderIf>
-            </fieldset>
+            </StyledFieldset>
         );
     }
 }

@@ -15,6 +15,7 @@ import getSign from './getSign';
 import getCalendarBounds from './getCalendarBounds';
 import isDateBelowLimit from './isDateBelowLimit';
 import isDateBeyondLimit from './isDateBeyondLimit';
+import getNextFocusedDate from './getNextFocusedDate';
 
 export {
     addDays,
@@ -34,4 +35,5 @@ export {
     getCalendarBounds,
     isDateBelowLimit,
     isDateBeyondLimit,
+    getNextFocusedDate,
 };
