@@ -114,7 +114,9 @@ initialState = { value: { name: 'option 1', label: 'All Buildings' } };
 
 ```js
 import React from 'react';
-import { Picklist, PicklistOption, Button } from 'react-rainbow-components';
+import { Picklist, PicklistOption, ButtonIcon } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUpload } from '@fortawesome/free-solid-svg-icons';
 import { Field, reduxForm } from 'redux-form';
 
 const containerStyles = {
@@ -142,7 +144,13 @@ function Form({ handleSubmit, onSubmit }) {
                 <PicklistOption name="option 3" label="Experimental" />
                 <PicklistOption name="option 4" label="Empire State" />
             </Field>
-            <Button className="rainbow-m-left_small" label="Send" type="submit" />
+            <ButtonIcon
+                variant="border"
+                icon={<FontAwesomeIcon icon={faUpload} />}
+                className="rainbow-m-left_small"
+                type="submit"
+            />
+
         </form>
     );
 }
@@ -160,4 +168,74 @@ const PicklistForm = reduxForm({
         <PicklistForm onSubmit={values => console.log(values)} />
     </GlobalHeader>
 </div>
+```
+
+##### Picklist with PicklistOption changed dynamically
+
+```js
+import React from 'react';
+import { Picklist, PicklistOption, ButtonIcon } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDownload } from '@fortawesome/free-solid-svg-icons';
+
+const containerStyles = {
+    width: '200px',
+};
+
+initialState = { value: { name: 'option 3', label: 'Central Park' } };
+
+class PicklistExample extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isBuildingsAdded: false,
+        };
+    }
+
+    addNewBuildings() {
+        const { isBuildingsAdded } = this.state;
+        this.setState({ isBuildingsAdded: !isBuildingsAdded  });
+    }
+
+    renderNewBuildings() {
+        const { isBuildingsAdded } = this.state;
+        if (isBuildingsAdded) {
+            return <PicklistOption name="option 4" label="One World Trade Center" />;
+        }
+        return null;
+    }
+
+    render() {
+        return (
+            <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
+                <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
+                    <div className="rainbow-flex rainbow-align_right">
+                        <Picklist
+                            id="picklist-9"
+                            style={containerStyles}
+                            onChange={value => setState({ value })}
+                            value={state.value}
+                            label="Select Building"
+                            hideLabel
+                        >
+                            <PicklistOption name="option 1" label="Experimental Building" />
+                            {this.renderNewBuildings()}
+                            <PicklistOption name="option 2" label="Empire State" />
+                            <PicklistOption name="option 3" label="Central Park" />
+                        </Picklist>
+                    </div>
+                    <ButtonIcon
+                        id="button-icon_add-new-buildings"
+                        className="rainbow-m-left_small"
+                        onClick={() => this.addNewBuildings()}
+                        variant="border"
+                        icon={<FontAwesomeIcon icon={faDownload} />}
+                    />
+                    </GlobalHeader>
+            </div>
+        );
+    }
+}
+
+<PicklistExample />;
 ```

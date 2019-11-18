@@ -33,15 +33,15 @@ describe('<ButtonMenu/> utils', () => {
     });
     describe('getChildMenuItemNodes', () => {
         const elements = [
-            { element: 'a', innerText: 'Julio' },
-            { element: 'a', innerText: 'Pepe' },
+            { element: 'div', innerText: 'Julio' },
+            { element: 'div', innerText: 'Pepe' },
         ];
         const ref = {
             querySelectorAll: jest.fn(() => elements),
         };
         it('should call querySelectorAll with a[role="menuitem"]', () => {
             getChildMenuItemNodes(ref);
-            expect(ref.querySelectorAll).toHaveBeenCalledWith('a[role="menuitem"]');
+            expect(ref.querySelectorAll).toHaveBeenCalledWith('div[role="option"]');
         });
         it('should return the elements resolved by querySelectorAll', () => {
             expect(getChildMenuItemNodes(ref)).toEqual(elements);
