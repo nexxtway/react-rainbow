@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import Body from './body';
 import Head from './head';
 import { getNextSortDirection } from './helpers/sort';
@@ -24,7 +23,11 @@ import ResizeSensor from '../../libs/ResizeSensor';
 import debounce from '../../libs/debounce';
 import { uniqueId } from '../../libs/utils';
 import EmptyIcon from './body/icons/empty';
-import './styles.css';
+import StyledContainer from './styled/container';
+import StyledScrollableX from './styled/scrollableX';
+import StyledScrollableY from './styled/scrollableY';
+import StyledTable from './styled/table';
+import StyledTableBody from './styled/tableBody';
 
 /**
  * Data tables display information in a way that’s easy to scan,
@@ -150,19 +153,6 @@ export default class Table extends Component {
 
     componentWillUnmount() {
         this.widthObserver.detach();
-    }
-
-    getContainerClassNames() {
-        const { className } = this.props;
-        return classnames('rainbow-table_container', className);
-    }
-
-    getScrollableYClassNames() {
-        const { data, isLoading } = this.props;
-        const isEmpty = data.length === 0;
-        return classnames('rainbow-table_container--scrollable-y', {
-            'rainbow-table_container--scrollable-y-align-content': isEmpty && !isLoading,
-        });
     }
 
     getTableWidthFromDom() {
@@ -394,6 +384,7 @@ export default class Table extends Component {
             minColumnWidth,
             maxColumnWidth,
             style,
+            className,
             isLoading,
             emptyIcon,
             emptyTitle,
@@ -408,21 +399,21 @@ export default class Table extends Component {
         const minColWidth = Number(minColumnWidth) || 50;
         const maxColWidth = Number(maxColumnWidth) || 1000;
 
+        const isEmpty = data.length === 0;
+
         if (keyField && typeof keyField === 'string') {
             return (
-                <div id={id} className={this.getContainerClassNames()} style={style}>
-                    <div className="rainbow-table-width-observer" ref={this.resizeTarget} />
-                    <div className="rainbow-table_container">
-                        <div
-                            className="rainbow-table_container--scrollable-x"
-                            ref={this.tableContainerRef}
-                        >
-                            <div
+                <StyledContainer id={id} className={className} style={style}>
+                    <div ref={this.resizeTarget} />
+                    <StyledContainer>
+                        <StyledScrollableX ref={this.tableContainerRef}>
+                            <StyledScrollableY
+                                isEmpty={isEmpty}
+                                isLoading={isLoading}
                                 ref={this.scrollableY}
-                                className={this.getScrollableYClassNames()}
                                 style={tableStyles}
                             >
-                                <table className="rainbow-table" style={tableStyles}>
+                                <StyledTable style={tableStyles}>
                                     <thead>
                                         <tr>
                                             <Head
@@ -443,7 +434,7 @@ export default class Table extends Component {
                                             />
                                         </tr>
                                     </thead>
-                                    <tbody className="rainbow-table_body">
+                                    <StyledTableBody>
                                         <Body
                                             data={normalizeData(data)}
                                             columns={columns}
@@ -456,12 +447,12 @@ export default class Table extends Component {
                                             onSelectRow={this.handleSelectRow}
                                             onDeselectRow={this.handleDeselectRow}
                                         />
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                    </StyledTableBody>
+                                </StyledTable>
+                            </StyledScrollableY>
+                        </StyledScrollableX>
+                    </StyledContainer>
+                </StyledContainer>
             );
         }
         console.error('The "keyField" is a required prop of the Table component.');

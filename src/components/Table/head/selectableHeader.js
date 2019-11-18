@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import InputCheckbox from './InputCheckbox';
+import StyledWrapper from './styled/wrapper';
+import StyledCheckboxWrapper from './styled/checkboxWrapper';
 
 export default function SelectableHeader(props) {
     const {
@@ -25,17 +27,12 @@ export default function SelectableHeader(props) {
     };
 
     if (isRadio) {
-        return (
-            <th className="rainbow-table_header-wrapper" style={style} scope="col" tabIndex={-1} />
-        );
+        return <StyledWrapper as="th" style={style} scope="col" tabIndex={-1} />;
     }
 
     return (
         <th style={style} scope="col" tabIndex={-1}>
-            <div
-                className="rainbow-table_header-checkbox-container rainbow-table_header-wrapper"
-                style={style}
-            >
+            <StyledCheckboxWrapper style={style}>
                 <InputCheckbox
                     name={name}
                     label="select all rows"
@@ -47,7 +44,7 @@ export default function SelectableHeader(props) {
                     disabled={isDisabled}
                     onClick={handleClick}
                 />
-            </div>
+            </StyledCheckboxWrapper>
         </th>
     );
 }

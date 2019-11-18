@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Input from '../../Input';
 import { LEFT_KEY, RIGHT_KEY } from '../../../libs/constants';
+import StyledCellContainer from './styled/cellContainer';
+import StyledCheckboxContainer from './styled/checkboxContainer';
 
 export default function SelectableCell(props) {
     const { isSelected, isDisabled, tableId, onSelectRow, onDeselectRow, inputType } = props;
@@ -34,12 +36,8 @@ export default function SelectableCell(props) {
     };
 
     return (
-        <td className="rainbow-table_cell-container" role="gridcell" tabIndex={-1}>
-            <div
-                className="rainbow-table_cell-checkbox-container"
-                role="presentation"
-                onMouseDown={handleMouseDown}
-            >
+        <StyledCellContainer role="gridcell" tabIndex={-1}>
+            <StyledCheckboxContainer role="presentation" onMouseDown={handleMouseDown}>
                 <Input
                     className="rainbow-table_cell-checkbox"
                     name={name}
@@ -52,8 +50,8 @@ export default function SelectableCell(props) {
                     onClick={handleClick}
                     onKeyDown={handleKeyDown}
                 />
-            </div>
-        </td>
+            </StyledCheckboxContainer>
+        </StyledCellContainer>
     );
 }
 

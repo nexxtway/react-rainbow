@@ -1,5 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import StyledEmptyContainer from './styled/emptyContainer';
+import StyledEmptyIcon from './styled/emptyIcon';
+import StyledEmptyTitle from './styled/emptyTitle';
+import StyledEmptyDescription from './styled/emptyDescription';
 
 export default function Empty(props) {
     const { emptyIcon, emptyTitle, emptyDescription, columnsLength } = props;
@@ -7,11 +11,11 @@ export default function Empty(props) {
     return (
         <tr>
             <td colSpan={columnsLength}>
-                <div className="rainbow-table_body--empty-container">
-                    <span className="rainbow-table_body--empty-icon">{emptyIcon}</span>
-                    <h1 className="rainbow-table_body--empty-title">{emptyTitle}</h1>
-                    <h2 className="rainbow-table_body--empty-description">{emptyDescription}</h2>
-                </div>
+                <StyledEmptyContainer>
+                    <StyledEmptyIcon>{emptyIcon}</StyledEmptyIcon>
+                    <StyledEmptyTitle>{emptyTitle}</StyledEmptyTitle>
+                    <StyledEmptyDescription>{emptyDescription}</StyledEmptyDescription>
+                </StyledEmptyContainer>
             </td>
         </tr>
     );

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import RenderIf from '../../RenderIf';
+import StyledResizeBar from './styled/resizeBar';
+import StyledInput from './styled/input';
+import StyledGuideline from './styled/guideline';
 
 export default class ResizeBar extends Component {
     constructor(props) {
@@ -59,29 +62,28 @@ export default class ResizeBar extends Component {
 
         return (
             <RenderIf isTrue={isResizable}>
-                <span
+                <StyledResizeBar
                     className="rainbow-table_header-resize-bar"
                     role="presentation"
                     draggable
                     onMouseDown={this.handleMouseDown}
                     style={resizeBarStyle}
                 >
-                    <input
+                    <StyledInput
+                        as="input"
                         type="range"
                         min={minColumnWidth}
                         max={maxColumnWidth}
                         aria-label={ariaLabel}
                         tabIndex={-1}
-                        className="rainbow-table_header-resize-bar_input"
                     />
 
-                    <span
-                        className="rainbow-table_header-resize-bar_table-guideline"
+                    <StyledGuideline
                         role="presentation"
                         draggable
                         onMouseDown={this.handleMouseDown}
                     />
-                </span>
+                </StyledResizeBar>
             </RenderIf>
         );
     }

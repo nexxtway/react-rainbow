@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Header from './header';
-import './styles.css';
 
 export default class Head extends PureComponent {
     resolveSortDirection(field) {

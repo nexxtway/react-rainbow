@@ -10,16 +10,6 @@ document.addEventListener = jest.fn((event, cb) => {
 const preventDefault = jest.fn();
 
 describe('<Header />', () => {
-    it('should set the right class names in th element when sortable and isSorted are passed and is resizable', () => {
-        const component = mount(<Header sortable isSorted sortDirection="asc" />);
-        expect(component.find('th').prop('className')).toBe(
-            'rainbow-table_header rainbow-table_header--resizable rainbow-table_header--sortable rainbow-table_header--sorted',
-        );
-    });
-    it('should set the right class names in th element when resizeColumnDisabled is passed', () => {
-        const component = mount(<Header resizeColumnDisabled />);
-        expect(component.find('th').prop('className')).toBe('rainbow-table_header');
-    });
     it('should set scope="col" in th element', () => {
         const component = mount(<Header sortDirection="asc" />);
         expect(component.find('th').prop('scope')).toBe('col');
@@ -42,13 +32,13 @@ describe('<Header />', () => {
     });
     it('should set the right title in the content container element when the content passed is a string', () => {
         const component = mount(<Header sortDirection="asc" content="header content" />);
-        expect(component.find('.rainbow-table_header-content').prop('title')).toBe(
+        expect(component.find('span.rainbow-table_header-content').prop('title')).toBe(
             'header content',
         );
     });
     it('should not set any title in the content container element when the content passed is not a string', () => {
         const component = mount(<Header sortDirection="asc" content={<div />} />);
-        expect(component.find('.rainbow-table_header-content').prop('title')).toBe(undefined);
+        expect(component.find('span.rainbow-table_header-content').prop('title')).toBe(undefined);
     });
     it('should set isResizable to true in ResizeBar component', () => {
         const component = mount(<Header sortDirection="asc" />);
@@ -67,14 +57,14 @@ describe('<Header />', () => {
         const component = mount(
             <Header sortable sortDirection="asc" field="email" onSort={onSortMockFn} />,
         );
-        const header = component.find('.rainbow-table_header-container');
+        const header = component.find('div.rainbow-table_header-container');
         header.simulate('click');
         expect(onSortMockFn).toHaveBeenCalledWith(expect.any(Object), 'email', 'asc');
     });
     it('should not call onSort when sortable is not passed', () => {
         const onSortMockFn = jest.fn();
         const component = mount(<Header sortDirection="asc" onSort={onSortMockFn} />);
-        const header = component.find('.rainbow-table_header-container');
+        const header = component.find('div.rainbow-table_header-container');
         header.simulate('click');
         expect(onSortMockFn).not.toHaveBeenCalled();
     });
@@ -83,7 +73,7 @@ describe('<Header />', () => {
         const component = mount(
             <Header sortDirection="asc" colIndex={2} onResize={onResizeMockFn} />,
         );
-        const resizeBar = component.find('.rainbow-table_header-resize-bar');
+        const resizeBar = component.find('span.rainbow-table_header-resize-bar');
         resizeBar.simulate('mousedown', { clientX: 100 });
         eventMap.mousemove({ clientX: 133, preventDefault });
         eventMap.mouseup({ preventDefault });
