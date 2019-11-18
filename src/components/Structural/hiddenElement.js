@@ -16,6 +16,11 @@ const HiddenElement = styled.span`
         `
             box-sizing: border-box;
         `};
+    ${props =>
+        props.as === 'label' &&
+        `
+            box-sizing: border-box;
+        `};
 `;
 
 export default HiddenElement;
