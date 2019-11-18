@@ -7,6 +7,7 @@ const StyledInputHidden = styled(HiddenElement)`
     font: inherit;
     line-height: normal;
     box-sizing: border-box;
+    visibility: hidden;
 
     ::-moz-focus-inner {
         border: 0;
