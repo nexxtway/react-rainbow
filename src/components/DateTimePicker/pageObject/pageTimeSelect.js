@@ -26,7 +26,7 @@ class PageTimeSelect {
             .$('input[data-id=minutes]')
             .getValue();
         const meridian = $(this.rootElement)
-            .$('input[data-id=input-element]')
+            .$('input[aria-label="am-pm selector"]')
             .getValue();
 
         return hour && minutes && meridian ? `${hour}:${minutes} ${meridian}` : '';
