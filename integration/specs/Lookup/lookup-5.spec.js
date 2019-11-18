@@ -1,9 +1,5 @@
 const PageLookup = require('../../../src/components/Lookup/pageObject');
-const {
-    ARROW_DOWN_KEY,
-    ARROW_UP_KEY,
-    ENTER_KEY,
-} = require('../../constants');
+const { ARROW_DOWN_KEY, ARROW_UP_KEY, ENTER_KEY } = require('../../constants');
 
 const LOOKUP = '#lookup-5';
 const REACT_LOGO = 'img[alt="react-rainbow"]';
@@ -62,19 +58,6 @@ describe('Lookup with options type section example', () => {
         expect(option3.isActive()).toBe(false);
         expect(option2.isActive()).toBe(true);
     });
-    it.skip('should scroll down to see the next option focused when initially is not visible', () => {
-        const lookup = new PageLookup(LOOKUP);
-        lookup.click();
-        lookup.setQuery('a');
-        lookup.waitUntilOpen();
-        const option7 = lookup.getOption(6);
-        expect(option7.isVisible()).toBe(false);
-        lookup.getOption(3).hover();
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ARROW_DOWN_KEY);
-        expect(option7.isVisible()).toBe(true);
-    });
     it('should scroll up to see the first option', () => {
         const lookup = new PageLookup(LOOKUP);
         lookup.click();
@@ -90,5 +73,18 @@ describe('Lookup with options type section example', () => {
         browser.keys(ARROW_UP_KEY);
         browser.keys(ARROW_UP_KEY);
         expect(option1.isVisible()).toBe(true);
+    });
+    it.skip('should scroll down to see the next option focused when initially is not visible', () => {
+        const lookup = new PageLookup(LOOKUP);
+        lookup.click();
+        lookup.setQuery('a');
+        lookup.waitUntilOpen();
+        const option7 = lookup.getOption(6);
+        expect(option7.isVisible()).toBe(false);
+        lookup.getOption(3).hover();
+        browser.keys(ARROW_DOWN_KEY);
+        browser.keys(ARROW_DOWN_KEY);
+        browser.keys(ARROW_DOWN_KEY);
+        expect(option7.isVisible()).toBe(true);
     });
 });

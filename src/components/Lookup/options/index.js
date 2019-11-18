@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MenuItem from './menuItem';
-import SearchIcon from '../icons/searchIcon';
-import './styles.css';
+import StyledHeaderLi from './styled/headerLi';
+import StyledSearchIcon from './styled/searchIcon';
+import StyledOptionsContainer from './styled//optionsContainer';
+import StyledEmptyMessage from './styled/emptyMessage';
 
 function preventDefault(event) {
     event.preventDefault();
@@ -18,9 +20,9 @@ function MenuItems(props) {
 
         if (type === 'header') {
             return (
-                <li key={key} className="rainbow-lookup_menu-item_header" role="separator">
-                    <span className="rainbow-lookup_menu-item_header-label">{label}</span>
-                </li>
+                <StyledHeaderLi key={key} role="separator">
+                    <span>{label}</span>
+                </StyledHeaderLi>
             );
         }
 
@@ -77,15 +79,13 @@ export default class Options extends React.PureComponent {
 
         if (items.length === 0) {
             return (
-                <div className="rainbow-lookup_options-container rainbow-lookup_options-container--empty">
-                    <SearchIcon className="rainbow-lookup_options-empty-message_search-icon" />
-                    <span className="rainbow-lookup_options-empty-message">
+                <StyledOptionsContainer as="div" data-id="lookup-options-empty-container">
+                    <StyledSearchIcon />
+                    <StyledEmptyMessage>
                         Our robots did not find any match for
-                        <span className="rainbow-lookup_options-empty-message_match-value">
-                            {` "${value}"`}
-                        </span>
-                    </span>
-                </div>
+                        <span>{` "${value}"`}</span>
+                    </StyledEmptyMessage>
+                </StyledOptionsContainer>
             );
         }
 
@@ -95,8 +95,7 @@ export default class Options extends React.PureComponent {
         };
 
         return (
-            <ul
-                className="rainbow-lookup_options-container"
+            <StyledOptionsContainer
                 style={resultContainerStyles}
                 ref={this.containerRef}
                 role="presentation"
@@ -108,7 +107,7 @@ export default class Options extends React.PureComponent {
                     onClick={onSelectOption}
                     onHover={onHoverOption}
                 />
-            </ul>
+            </StyledOptionsContainer>
         );
     }
 }

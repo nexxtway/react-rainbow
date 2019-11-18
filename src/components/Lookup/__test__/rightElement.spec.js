@@ -1,11 +1,12 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import RightElement from '../rightElement';
+import StyledInputIcon from '../styled/inputIcon';
 
 describe('<RightElement />', () => {
     it('should render an icon container', () => {
         const component = mount(<RightElement />);
-        expect(component.find('span.rainbow-lookup_input-icon').exists()).toBe(true);
+        expect(component.find(StyledInputIcon).exists()).toBe(true);
     });
     it('should render a close button when showCloseButton is passed', () => {
         const component = mount(<RightElement showCloseButton />);
