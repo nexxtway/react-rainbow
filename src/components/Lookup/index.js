@@ -23,7 +23,6 @@ import StyledInputContainer from './styled/inputContainer';
 import StyledSpinner from './styled/spinner';
 import StyledOptionsMenu from './styled/optionsMenu';
 import StyledTextError from '../Input/styled/errorText';
-// import './styles.css';
 
 const OPTION_HEIGHT = 48;
 const visibleOptionsMap = {

@@ -27,12 +27,12 @@ RightElement.propTypes = {
     icon: PropTypes.node,
     showCloseButton: PropTypes.bool,
     onClear: PropTypes.func,
-    error: PropTypes.bool,
+    error: PropTypes.node,
 };
 
 RightElement.defaultProps = {
     icon: undefined,
     showCloseButton: false,
-    error: false,
+    error: null,
     onClear: () => {},
 };

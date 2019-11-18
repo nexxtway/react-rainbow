@@ -77,7 +77,10 @@ export default class Options extends React.PureComponent {
 
         if (items.length === 0) {
             return (
-                <div className="rainbow-lookup_options-container rainbow-lookup_options-container--empty">
+                <div
+                    data-id="lookup-options-empty-container"
+                    className="rainbow-lookup_options-container rainbow-lookup_options-container--empty"
+                >
                     <SearchIcon className="rainbow-lookup_options-empty-message_search-icon" />
                     <span className="rainbow-lookup_options-empty-message">
                         Our robots did not find any match for

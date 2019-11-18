@@ -17,9 +17,7 @@ exports.config = {
     // NPM script (see https://docs.npmjs.com/cli/run-script) then the current working
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
-    specs: [
-        './integration/specs/**/*.js',
-    ],
+    specs: ['./integration/specs/**/*.js'],
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
@@ -46,27 +44,29 @@ exports.config = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://docs.saucelabs.com/reference/platforms-configurator
     //
-    capabilities: [{
-        // maxInstances can get overwritten per capability. So if you have an in-house Selenium
-        // grid with only 5 firefox instances available you can make sure that not more than
-        // 5 instances get started at a time.
-        maxInstances: 5,
-        //
-        browserName: 'chrome',
-        'goog:chromeOptions': {
-            // (see https://developers.google.com/web/updates/2017/04/headless-chrome)
-            args: (() => {
-                if (process.argv.indexOf('--headless') !== -1) {
-                    return ['disable-gpu', 'no-sandbox', 'headless'];
-                }
-                return ['disable-gpu', 'no-sandbox'];
-            })(),
+    capabilities: [
+        {
+            // maxInstances can get overwritten per capability. So if you have an in-house Selenium
+            // grid with only 5 firefox instances available you can make sure that not more than
+            // 5 instances get started at a time.
+            maxInstances: 5,
+            //
+            browserName: 'chrome',
+            'goog:chromeOptions': {
+                // (see https://developers.google.com/web/updates/2017/04/headless-chrome)
+                args: (() => {
+                    if (process.argv.indexOf('--headless') !== -1) {
+                        return ['disable-gpu', 'no-sandbox', 'headless'];
+                    }
+                    return ['disable-gpu', 'no-sandbox'];
+                })(),
+            },
+            // If outputDir is provided WebdriverIO can capture driver session logs
+            // it is possible to configure which logTypes to include/exclude.
+            // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
+            // excludeDriverLogs: ['bugreport', 'server'],
         },
-        // If outputDir is provided WebdriverIO can capture driver session logs
-        // it is possible to configure which logTypes to include/exclude.
-        // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
-        // excludeDriverLogs: ['bugreport', 'server'],
-    }],
+    ],
     //
     // ===================
     // Test Configurations
@@ -85,10 +85,10 @@ exports.config = {
     // - wdio-sumologic-reporter
     // - wdio-cli, wdio-config, wdio-sync, wdio-utils
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    //logLevels: {
+    // logLevels: {
     //      webdriver: 'error',
     //          'wdio-local-runner': 'error',
-    //},
+    // },
     //
     // Enables colors for log output.
     coloredLogs: true,
@@ -136,10 +136,7 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
-    reporters: [
-        'spec',
-        'junit',
-    ],
+    reporters: ['spec', 'junit'],
 
     //
     // Options to be passed to Jasmine.
@@ -269,10 +266,10 @@ exports.config = {
     // onComplete: function(exitCode, config, capabilities, results) {
     // },
     /**
-    * Gets executed when a refresh happens.
-    * @param {String} oldSessionId session ID of the old session
-    * @param {String} newSessionId session ID of the new session
-    */
-    //onReload: function(oldSessionId, newSessionId) {
-    //}
+     * Gets executed when a refresh happens.
+     * @param {String} oldSessionId session ID of the old session
+     * @param {String} newSessionId session ID of the new session
+     */
+    // onReload: function(oldSessionId, newSessionId) {
+    // }
 };
