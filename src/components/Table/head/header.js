@@ -94,7 +94,7 @@ export default class Header extends Component {
                 tabIndex={this.getTabIndex()}
                 aria-label={this.getHeaderContent()}
             >
-                <StyledWrapper className="rainbow-table_header-wrapper" style={headerStyles}>
+                <StyledWrapper style={headerStyles}>
                     <StyledHeaderContainer
                         className="rainbow-table_header-container"
                         role="presentation"

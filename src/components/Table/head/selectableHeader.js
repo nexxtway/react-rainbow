@@ -27,20 +27,12 @@ export default function SelectableHeader(props) {
     };
 
     if (isRadio) {
-        return (
-            <StyledWrapper
-                as="th"
-                className="rainbow-table_header-wrapper"
-                style={style}
-                scope="col"
-                tabIndex={-1}
-            />
-        );
+        return <StyledWrapper as="th" style={style} scope="col" tabIndex={-1} />;
     }
 
     return (
         <th style={style} scope="col" tabIndex={-1}>
-            <StyledCheckboxWrapper className="rainbow-table_header-wrapper" style={style}>
+            <StyledCheckboxWrapper style={style}>
                 <InputCheckbox
                     name={name}
                     label="select all rows"
