@@ -106,12 +106,6 @@ describe('<Row />', () => {
         expect(cell.at(0).prop('value')).toBe('a');
         expect(cell.at(1).prop('value')).toBe(0);
     });
-    it('should set the right class names in tr element when the row is selected', () => {
-        const component = mount(<Row rowData={data} columns={columns} isSelected />);
-        expect(component.find('tr').prop('className')).toBe(
-            'rainbow-table_body-row rainbow-table_body-row-selected',
-        );
-    });
     it('should set aria-selected in tr element to false when the row is not selected', () => {
         const component = mount(<Row rowData={data} columns={columns} />);
         expect(component.find('tr').prop('aria-selected')).toBe(false);
