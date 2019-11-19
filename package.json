@@ -36,7 +36,6 @@
     "dependencies": {
         "autosize": "^4.0.2",
         "chart.js": "^2.7.3",
-        "classnames": "^2.2.5",
         "clipboard-copy": "^2.0.0",
         "prop-types": "^15.6.2",
         "react": "^16.8.6",
@@ -101,6 +100,7 @@
         "babel-eslint": "^10.0.3",
         "babel-jest": "^24.9.0",
         "babel-loader": "^8.0.6",
+        "classnames": "^2.2.6",
         "codemirror": "^5.49.2",
         "copy-webpack-plugin": "^4.0.1",
         "coveralls": "^2.13.1",
