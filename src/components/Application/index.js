@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './styles/rainbow-styles.css';
 import { Provider } from './context';
+import legacyStyles from './rainbowLegacyStyles';
 
 /**
  * This component is used to setup the React Rainbow context for a tree.
@@ -15,6 +15,7 @@ export default function Application(props) {
     return (
         <Provider value={contextValue}>
             <div className={className} style={style}>
+                <style>{legacyStyles}</style>
                 {children}
             </div>
         </Provider>

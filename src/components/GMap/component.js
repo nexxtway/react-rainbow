@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import RenderIf from './../RenderIf';
 import Header from './header';
 import { Provider } from './context';
@@ -36,7 +35,10 @@ export default class MapComponent extends Component {
 
     getContainerClassNames() {
         const { className } = this.props;
-        return classnames('rainbow-google-map', className);
+        if (className && typeof className === 'string') {
+            return `rainbow-google-map ${className}`;
+        }
+        return 'rainbow-google-map';
     }
 
     initMap() {

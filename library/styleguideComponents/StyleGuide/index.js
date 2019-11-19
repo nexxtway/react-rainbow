@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import classnames from 'classnames';
+import Application from './../../../src/components/Application';
 import ReactGA from '.././../ga';
 import RenderIf from '../../../src/components/RenderIf';
 import ButtonIcon from '../../../src/components/ButtonIcon';
@@ -17,7 +19,7 @@ function trackPageview() {
     ReactGA.pageview(window.location.hash);
 }
 
-export default class StyleGuide extends React.Component {
+class StyleGuide extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -124,3 +126,11 @@ StyleGuide.propTypes = {
     children: PropTypes.node.isRequired,
     toc: PropTypes.object.isRequired,
 };
+
+export default function LibraryWrapper(props) {
+    return (
+        <Application>
+            <StyleGuide {...props} />
+        </Application>
+    );
+}
