@@ -20,7 +20,7 @@ const StyledInnerContainer = styled.div`
     }
 
     ${props =>
-        props.as !== 'div' &&
+        props.as === 'a' &&
         `
         :active,
         :focus {
