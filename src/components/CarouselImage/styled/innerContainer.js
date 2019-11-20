@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { BORDER_RADIUS_1 } from '../../../styles/borderRadius';
 import { COLOR_BRAND } from '../../../styles/colors';
-import { SHADOW_OUTLINE_2 } from '../../../styles/shadows';
 
 const StyledInnerContainer = styled.div`
     border-radius: ${BORDER_RADIUS_1};
@@ -20,11 +19,17 @@ const StyledInnerContainer = styled.div`
         color: inherit;
     }
 
-    :focus {
-        border: 1px solid ${COLOR_BRAND};
-        box-shadow: ${SHADOW_OUTLINE_2};
-        outline: 0;
-    }
+    ${props =>
+        props.as !== 'div' &&
+        `
+        :active,
+        :focus {
+            color: inherit;
+            text-decoration: none;
+            border: 1px solid ${COLOR_BRAND};
+            outline: 0;
+        }
+    `}
 `;
 
 export default StyledInnerContainer;
