@@ -42,9 +42,6 @@ import { uniqueId, getLocale } from '../../libs/utils';
 import { Consumer } from '../Application/context';
 import { Provider } from './context';
 
-/**
- * Calendar provide a simple way to select a single date.
- */
 class CalendarComponent extends Component {
     constructor(props) {
         super(props);
@@ -338,6 +335,9 @@ class CalendarComponent extends Component {
     }
 }
 
+/**
+ * Calendar provide a simple way to select a single date.
+ */
 export default function Calendar({ locale, ...rest }) {
     return (
         <Consumer>
