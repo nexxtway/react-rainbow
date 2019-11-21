@@ -52,6 +52,13 @@ Begining to collaborate in React Rainbow Component is simple. Just have to go th
 5. Visit GitHub and make your pull request.
    If you have an existing local repository, please update it before you start, to minimize the chance of merge conflicts.
 
+## Managing Node/Yarn versions with [Volta](https://volta.sh/)
+
+Our project runs with specific Node/Yarn versions contrains, as a good practice you should consider to install [Volta](https://volta.sh/)
+that it will take care of managing seamlessly Node/Yarn versions for you. 
+
+- [Getting started with volta](https://docs.volta.sh/guide/getting-started)
+
 ### Testing
 
 Test coverage is at +80% at the moment, but we are working to add more tests to the components when possible, please add tests for any changes you make. Tests can be run with `yarn test`
