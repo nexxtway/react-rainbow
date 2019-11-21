@@ -159,5 +159,9 @@
         "hooks": {
             "pre-commit": "pretty-quick --staged"
         }
+    },
+    "volta": {
+        "node": "10.16.3",
+        "yarn": "1.17.3"
     }
 }
