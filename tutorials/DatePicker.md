@@ -33,13 +33,6 @@ Here is an overview about how to use the DatePicker page object:
             datePicker.waitUntilClose();
             expect(datePicker.isOpen()).toBe(false);
         });
-        it('should keep focus the input element when DatePicker is closed', () => {
-            const datePicker = new PageDatePicker(DATEPICKER);
-            datePicker.click();
-            datePicker.waitUntilOpen();
-            browser.keys(ESCAPE_KEY);
-            expect(datePicker.hasFocusInput()).toBe(true);
-        });
         it('should set the right value when select a date', () => {
             const datePicker = new PageDatePicker(DATEPICKER);
             datePicker.click();

@@ -40,13 +40,6 @@ describe('DatePicker base', () => {
         datePicker.waitUntilClose();
         expect(datePicker.isOpen()).toBe(false);
     });
-    it('should keep focus the input element when DatePicker is closed', () => {
-        const datePicker = new PageDatePicker(DATEPICKER);
-        datePicker.click();
-        datePicker.waitUntilOpen();
-        browser.keys(ESCAPE_KEY);
-        expect(datePicker.hasFocusInput()).toBe(true);
-    });
     it('should open the DatePicker when enter key is pressed while input element is focused', () => {
         const datePicker = new PageDatePicker(DATEPICKER);
         datePicker.click();
