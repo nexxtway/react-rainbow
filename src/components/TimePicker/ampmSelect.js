@@ -5,6 +5,7 @@ import isChecked from './helpers/isChecked';
 import StyledInputHidden from './styled/inputHidden';
 import StyledOptionLabel from './styled/optionLabel';
 import StyledSelectValue from './styled/selectValue';
+import { TAB_KEY } from '../../libs/constants';
 
 function handleAmPmBlur(event) {
     event.stopPropagation();
@@ -20,9 +21,36 @@ export default class AmPmSelect extends PureComponent {
         this.inputAmId = uniqueId('am');
         this.inputPmId = uniqueId('pm');
         this.handleFocus = this.handleFocus.bind(this);
-        this.handleBlur = this.handleBlur.bind(this);
         this.handleOnChange = this.handleOnChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.handleClickOutside = this.handleClickOutside.bind(this);
+        this.handleKeyPress = this.handleKeyPress.bind(this);
+    }
+
+    componentDidUpdate(prevState) {
+        const { isFocused: prevIsFocused } = prevState;
+        const { isFocused } = this.state;
+
+        if (!prevIsFocused && isFocused) {
+            document.addEventListener('click', this.handleClickOutside);
+            document.addEventListener('keydown', this.handleKeyPress);
+        } else if (prevIsFocused && !isFocused) {
+            document.removeEventListener('click', this.handleClickOutside);
+            document.removeEventListener('keydown', this.handleKeyPress);
+        }
+    }
+
+    handleClickOutside(event) {
+        if (!this.fieldsetRef.current) return;
+        if (!this.fieldsetRef.current.contains(event.target)) {
+            this.setState({ isFocused: false });
+        }
+    }
+
+    handleKeyPress(event) {
+        if (event.keyCode === TAB_KEY) {
+            this.setState({ isFocused: false });
+        }
     }
 
     handleFocus() {
@@ -34,12 +62,6 @@ export default class AmPmSelect extends PureComponent {
         if (!value) {
             onChange(defaultValue || 'AM');
         }
-    }
-
-    handleBlur() {
-        this.setState({
-            isFocused: false,
-        });
     }
 
     handleOnChange(event) {
@@ -72,7 +94,6 @@ export default class AmPmSelect extends PureComponent {
                     data-id="fieldset-element"
                     role="presentation"
                     tabIndex={tabIndex}
-                    onBlur={this.handleBlur}
                     onFocus={onFocus}
                     ref={this.fieldsetRef}
                 >
