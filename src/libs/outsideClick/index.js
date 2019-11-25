@@ -2,6 +2,8 @@ class OutsideClick {
     constructor() {
         this.containerRef = null;
         this.callback = null;
+        this.listening = false;
+        this.handleClick = this.handleClick.bind(this);
     }
 
     handleClick(event) {
@@ -14,12 +16,18 @@ class OutsideClick {
         this.containerRef = containerRef;
         this.callback = callback;
         document.addEventListener('click', this.handleClick);
+        this.listening = true;
     }
 
     stopListening() {
+        this.listening = false;
         document.removeEventListener('click', this.handleClick);
         this.containerRef = null;
         this.callback = null;
+    }
+
+    isListening() {
+        return this.listening;
     }
 }
 
