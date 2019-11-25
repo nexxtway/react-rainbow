@@ -120,6 +120,7 @@ class Item extends Component {
     render() {
         const { assistiveText, description, header, href, style, className } = this.props;
         const hasContent = !!(header || description);
+        const tabIndex = href ? this.getTabIndex() : undefined;
         return (
             <StyledLi
                 id={this.carouselImageID}
@@ -136,7 +137,7 @@ class Item extends Component {
             >
                 <StyledInnerContainer
                     className="rainbow-carousel-image"
-                    tabIndex={this.getTabIndex()}
+                    tabIndex={tabIndex}
                     href={href}
                     as={this.getHtmlElememnt()}
                     data-id="carousel-image_inner-container"

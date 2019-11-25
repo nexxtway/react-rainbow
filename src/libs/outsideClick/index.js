@@ -20,14 +20,12 @@ class OutsideClick {
     }
 
     stopListening() {
+        if (!this.listening) return;
+
         this.listening = false;
         document.removeEventListener('click', this.handleClick);
         this.containerRef = null;
         this.callback = null;
-    }
-
-    isListening() {
-        return this.listening;
     }
 }
 

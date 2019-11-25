@@ -20,7 +20,7 @@ const iconStyles = { width: 32, height: 32 };
             datetime="Today"
             description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
         />
-        <TimelineMarker
+            <TimelineMarker
             label="User first post."
             icon={<UserFirstPostIcon style={iconStyles} />}
             datetime="3 hours ago"
