@@ -5,7 +5,7 @@ import isChecked from './helpers/isChecked';
 import StyledInputHidden from './styled/inputHidden';
 import StyledOptionLabel from './styled/optionLabel';
 import StyledSelectValue from './styled/selectValue';
-import { TAB_KEY } from '../../libs/constants';
+import { TAB_KEY, LEFT_KEY } from '../../libs/constants';
 import outsideClick from '../../libs/outsideClick';
 
 function handleAmPmBlur(event) {
@@ -33,19 +33,20 @@ export default class AmPmSelect extends PureComponent {
         const { isFocused } = this.state;
 
         if (!prevIsFocused && isFocused) {
+            outsideClick.startListening(this.fieldsetRef.current, this.handleClickOutside);
             document.addEventListener('keydown', this.handleKeyPress);
         } else if (prevIsFocused && !isFocused) {
+            outsideClick.stopListening();
             document.removeEventListener('keydown', this.handleKeyPress);
         }
     }
 
-    handleClickOutside(event) {
-        event.stopListening();
+    handleClickOutside() {
         this.setState({ isFocused: false });
     }
 
     handleKeyPress(event) {
-        if (event.keyCode === TAB_KEY) {
+        if ([TAB_KEY, LEFT_KEY].includes(event.keyCode)) {
             this.setState({ isFocused: false });
         }
     }
@@ -59,8 +60,6 @@ export default class AmPmSelect extends PureComponent {
         if (!value) {
             onChange(defaultValue || 'AM');
         }
-
-        outsideClick.startListening(this.fieldsetRef.current, this.handleClickOutside);
     }
 
     handleOnChange(event) {
