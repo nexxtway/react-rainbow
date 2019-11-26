@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { BORDER_RADIUS_1 } from '../../../styles/borderRadius';
-import { SHADOW_4, SHADOW_OUTLINE_2 } from '../../../styles/shadows';
+import { SHADOW_4 } from '../../../styles/shadows';
 
 const StyledImagesUl = styled.ul`
     width: 100%;

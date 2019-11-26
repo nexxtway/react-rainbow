@@ -62,7 +62,7 @@ module.exports = {
         },
     },
     require: [
-        path.resolve(__dirname, 'src/components/Application/styles/rainbow-styles.css'),
+        path.resolve(__dirname, 'assets/styles.css'),
         path.resolve(__dirname, 'library/setup.js'),
         path.resolve(__dirname, 'library/ga.js'),
     ],

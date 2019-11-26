@@ -79,7 +79,8 @@ const Input = styled.input`
         border: 2px solid ${COLOR_ERROR};
         background-clip: padding-box;
 
-        :focus {
+        :focus,
+        :active {
             background-color: ${COLOR_WHITE};
             border: 2px solid ${COLOR_ERROR};
             box-shadow: ${SHADOW_ERROR};
