@@ -119,6 +119,8 @@ class DatePickerComponent extends Component {
         const { isOpen } = this.state;
 
         const formattedDate = formatDate(value, formatStyle, locale);
+        const modalId = id && `${id}_modal`;
+        const calendarId = id && `${id}_calendar`;
 
         return (
             <StyledContainer id={id} className={className} style={style}>
@@ -144,11 +146,12 @@ class DatePickerComponent extends Component {
                     tabIndex={tabIndex}
                 />
 
-                <StyledModal isOpen={isOpen} onRequestClose={this.closeModal}>
+                <StyledModal id={modalId} isOpen={isOpen} onRequestClose={this.closeModal}>
                     <StyledHeader>
                         <StyledHeaderTitle>{formattedDate}</StyledHeaderTitle>
                     </StyledHeader>
                     <StyledCalendar
+                        id={calendarId}
                         value={value}
                         minDate={minDate}
                         maxDate={maxDate}
