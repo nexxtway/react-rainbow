@@ -28,6 +28,7 @@ const containerStyles = {
         style={containerStyles}
     >
         <DatePicker
+            id="datePicker-1"
             value={state.date}
             onChange={value => setState({ date: value })}
             label="DatePicker Label"
@@ -180,6 +181,6 @@ const containerStyles = {
     className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
     style={containerStyles}
 >
-    <DatePicker readOnly value={new Date()} label="DatePicker Label" />
+    <DatePicker id="datePicker-13" readOnly value={new Date()} label="DatePicker Label" />
 </div>
 ```
