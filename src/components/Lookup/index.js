@@ -23,6 +23,8 @@ import StyledInputContainer from './styled/inputContainer';
 import StyledSpinner from './styled/spinner';
 import StyledOptionsMenu from './styled/optionsMenu';
 import StyledTextError from '../Input/styled/errorText';
+import isScrollPositionAtMenuBottom from './helpers/isScrollPositionAtMenuBottom';
+import MenuArrowButton from './menuArrowButton';
 
 const OPTION_HEIGHT = 48;
 const visibleOptionsMap = {
@@ -48,6 +50,8 @@ class Lookup extends Component {
                 normalizedOptions,
                 props.preferredSelectedOption,
             ),
+            showScrollUpArrow: undefined,
+            showScrollDownArrow: undefined,
         };
         this.inputId = uniqueId('lookup-input');
         this.listboxId = uniqueId('lookup-listbox');
@@ -61,7 +65,6 @@ class Lookup extends Component {
         this.handleFocus = this.handleFocus.bind(this);
         this.handleRemoveValue = this.handleRemoveValue.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
-
         this.handleHover = this.handleHover.bind(this);
         this.handleKeyDown = this.handleKeyDown.bind(this);
         this.handleKeyUpPressed = this.handleKeyUpPressed.bind(this);
@@ -72,6 +75,9 @@ class Lookup extends Component {
             [DOWN_KEY]: this.handleKeyDownPressed,
             [ENTER_KEY]: this.handleKeyEnterPressed,
         };
+        this.handleScrollDownArrowHover = this.handleScrollDownArrowHover.bind(this);
+        this.handleScrollUpArrowHover = this.handleScrollUpArrowHover.bind(this);
+        this.stopArrowScoll = this.stopArrowScoll.bind(this);
     }
 
     componentDidUpdate(prevProps) {
@@ -97,6 +103,7 @@ class Lookup extends Component {
                 focusedItemIndex: getInitialFocusedIndex(currentOptions, preferredSelectedOption),
             });
         }
+        // this.updateScrollingArrows(); throw an error
     }
 
     getValue() {
@@ -236,6 +243,63 @@ class Lookup extends Component {
         }
     }
 
+    // -- mine
+
+    stopArrowScoll() {
+        if (this.scrollingTimer) {
+            clearInterval(this.scrollingTimer);
+        }
+    }
+
+    scrollTo(offset) {
+        const menu = this.menuRef.current.getRef();
+        menu.scrollTo(0, offset);
+    }
+
+    scrollBy(offset) {
+        const menu = this.menuRef.current.getRef();
+        menu.scrollBy(0, offset);
+    }
+
+    handleScrollUpArrowHover() {
+        this.stopArrowScoll();
+
+        const menu = this.menuRef.current.getRef();
+        this.scrollingTimer = setInterval(() => {
+            if (menu.scrollTop > 0) {
+                menu.scrollBy(0, -1);
+            } else {
+                this.stopArrowScoll();
+            }
+        }, 5);
+    }
+
+    handleScrollDownArrowHover() {
+        this.stopArrowScoll();
+
+        const menu = this.menuRef.current.getRef();
+        this.scrollingTimer = setInterval(() => {
+            if (!isScrollPositionAtMenuBottom(menu)) {
+                menu.scrollBy(0, 1);
+            } else {
+                this.stopArrowScoll();
+            }
+        }, 5);
+        this.updateScrollingArrows();
+    }
+
+    updateScrollingArrows() {
+        const menu = this.menuRef.current.getRef();
+        const showScrollUpArrow = menu.scrollTop > 0;
+        const showScrollDownArrow = !isScrollPositionAtMenuBottom(menu);
+        this.setState({
+            showScrollUpArrow,
+            showScrollDownArrow,
+        });
+    }
+
+    // - end of mine
+
     handleKeyUpPressed() {
         const { focusedItemIndex, options } = this.state;
         if (focusedItemIndex > 0) {
@@ -354,6 +418,7 @@ class Lookup extends Component {
         const isLookupOpen = this.isLookupOpen();
         const errorMessageId = this.getErrorMessageId();
         const currentValue = this.getValue();
+        const { showScrollUpArrow, showScrollDownArrow } = this.state;
 
         return (
             <StyledContainer
@@ -435,6 +500,20 @@ class Lookup extends Component {
                         />
                         <RenderIf isTrue={isLookupOpen}>
                             <StyledOptionsMenu id={this.listboxId} role="listbox">
+                                {/* <RenderIf isTrue={showScrollUpArrow}> */}
+                                <RenderIf isTrue={isLookupOpen}>
+                                    <span
+                                        onMouseEnter={this.handleScrollUpArrowHover}
+                                        onMouseLeave={this.stopArrowScoll}
+                                    >
+                                        222222
+                                    </span>
+                                    {/* <MenuArrowButton
+                                        arrow="up"
+                                        onMouseEnter={this.handleScrollUpArrowHover}
+                                        onMouseLeave={this.stopArrowScoll}
+                                    /> */}
+                                </RenderIf>
                                 <Options
                                     items={options}
                                     value={searchValue}
@@ -445,6 +524,14 @@ class Lookup extends Component {
                                     ref={this.menuRef}
                                     size={size}
                                 />
+                                <RenderIf isTrue={isLookupOpen}>
+                                    <span
+                                        onMouseEnter={this.handleScrollDownArrowHover}
+                                        onMouseLeave={this.stopArrowScoll}
+                                    >
+                                        666666
+                                    </span>
+                                </RenderIf>
                             </StyledOptionsMenu>
                         </RenderIf>
                     </StyledInputContainer>
