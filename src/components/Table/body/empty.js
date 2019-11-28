@@ -4,19 +4,20 @@ import StyledEmptyContainer from './styled/emptyContainer';
 import StyledEmptyIcon from './styled/emptyIcon';
 import StyledEmptyTitle from './styled/emptyTitle';
 import StyledEmptyDescription from './styled/emptyDescription';
+import StyledTd from './styled/td';
 
 export default function Empty(props) {
     const { emptyIcon, emptyTitle, emptyDescription, columnsLength } = props;
 
     return (
         <tr>
-            <td colSpan={columnsLength}>
+            <StyledTd colSpan={columnsLength}>
                 <StyledEmptyContainer>
                     <StyledEmptyIcon>{emptyIcon}</StyledEmptyIcon>
                     <StyledEmptyTitle>{emptyTitle}</StyledEmptyTitle>
                     <StyledEmptyDescription>{emptyDescription}</StyledEmptyDescription>
                 </StyledEmptyContainer>
-            </td>
+            </StyledTd>
         </tr>
     );
 }
