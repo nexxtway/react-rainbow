@@ -23,6 +23,9 @@ const StyledTextarea = styled.textarea`
     font-size: ${FONT_SIZE_TEXT_LARGE};
     line-height: 1.57;
     color: ${COLOR_DARK_1};
+    box-sizing: border-box;
+    margin: 0;
+    overflow: auto;
 
     :focus,
     :active {
