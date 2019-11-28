@@ -11,7 +11,6 @@ const StyledAsterisk = styled.abbr`
 
     &[title] {
         border: 0;
-        border-bottom: 1px dotted;
         text-decoration: none;
         cursor: help;
     }
