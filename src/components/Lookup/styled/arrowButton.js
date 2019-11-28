@@ -6,7 +6,7 @@ const StyledArrowButton = styled.div`
     justify-content: flex-start;
     align-items: center;
     height: 1rem;
-    position: fixed;
+    position: absolute;
     width: 100%;
     z-index: 10;
     background: ${COLOR_WHITE};

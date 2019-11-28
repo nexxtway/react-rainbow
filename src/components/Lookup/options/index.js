@@ -79,7 +79,11 @@ export default class Options extends React.PureComponent {
 
         if (items.length === 0) {
             return (
-                <StyledOptionsContainer as="div" data-id="lookup-options-empty-container">
+                <StyledOptionsContainer
+                    ref={this.containerRef}
+                    as="div"
+                    data-id="lookup-options-empty-container"
+                >
                     <StyledSearchIcon />
                     <StyledEmptyMessage>
                         Our robots did not find any match for

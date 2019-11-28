@@ -80,12 +80,13 @@ class Lookup extends Component {
         this.stopArrowScoll = this.stopArrowScoll.bind(this);
     }
 
-    componentDidUpdate(prevProps) {
+    componentDidUpdate(prevProps, prevState) {
         const {
             options: prevOptions,
             preferredSelectedOption: prevPreferredSelectedOption,
         } = prevProps;
         const { options, preferredSelectedOption } = this.props;
+        const { isFocused: prevIsFocused } = prevState;
         if (prevOptions !== options) {
             const normalizedOptions = getNormalizedOptions(options);
             this.setState({
@@ -103,7 +104,9 @@ class Lookup extends Component {
                 focusedItemIndex: getInitialFocusedIndex(currentOptions, preferredSelectedOption),
             });
         }
-        // this.updateScrollingArrows(); throw an error
+        if (!prevIsFocused && this.isLookupOpen()) {
+            this.updateScrollingArrows();
+        }
     }
 
     getValue() {
@@ -502,17 +505,17 @@ class Lookup extends Component {
                             <StyledOptionsMenu id={this.listboxId} role="listbox">
                                 {/* <RenderIf isTrue={showScrollUpArrow}> */}
                                 <RenderIf isTrue={isLookupOpen}>
-                                    <span
+                                    {/* <span
                                         onMouseEnter={this.handleScrollUpArrowHover}
                                         onMouseLeave={this.stopArrowScoll}
                                     >
                                         222222
-                                    </span>
-                                    {/* <MenuArrowButton
+                                    </span> */}
+                                    <MenuArrowButton
                                         arrow="up"
                                         onMouseEnter={this.handleScrollUpArrowHover}
                                         onMouseLeave={this.stopArrowScoll}
-                                    /> */}
+                                    />
                                 </RenderIf>
                                 <Options
                                     items={options}
@@ -525,12 +528,17 @@ class Lookup extends Component {
                                     size={size}
                                 />
                                 <RenderIf isTrue={isLookupOpen}>
-                                    <span
+                                    {/* <span
                                         onMouseEnter={this.handleScrollDownArrowHover}
                                         onMouseLeave={this.stopArrowScoll}
                                     >
                                         666666
-                                    </span>
+                                    </span> */}
+                                    <MenuArrowButton
+                                        arrow="down"
+                                        onMouseEnter={this.handleScrollDownArrowHover}
+                                        onMouseLeave={this.stopArrowScoll}
+                                    />
                                 </RenderIf>
                             </StyledOptionsMenu>
                         </RenderIf>
