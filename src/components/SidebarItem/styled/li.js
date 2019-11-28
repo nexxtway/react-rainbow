@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import { COLOR_BRAND } from '../../../styles/colors';
 
-const StyledContainer = styled.li`
+const StyledLi = styled.li`
     position: relative;
     margin-bottom: 1.375rem;
     padding-bottom: 0.75rem;
     padding-top: 0.75rem;
+    box-sizing: border-box;
 
     :last-child {
         margin-bottom: 0;
@@ -26,4 +27,4 @@ const StyledContainer = styled.li`
         `};
 `;
 
-export default StyledContainer;
+export default StyledLi;
