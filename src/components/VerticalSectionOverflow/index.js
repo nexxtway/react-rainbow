@@ -11,6 +11,7 @@ import StyledButton from './styled/button';
 import StyledActionContainer from './styled/actionContainer';
 import StyledActionLabel from './styled/actionLabel';
 import StyledOverflow from './styled/overflow';
+import StyledUl from './styled/ul';
 
 /**
  * Represents an overflow of items from a preceding VerticalNavigationSection,
@@ -82,7 +83,7 @@ export default class VerticalSectionOverflow extends Component {
                     isExpanded={isExpanded}
                 >
                     <Provider value={isExpanded}>
-                        <ul>{children}</ul>
+                        <StyledUl>{children}</StyledUl>
                     </Provider>
                 </StyledOverflow>
             </StyledContainer>
