@@ -38,9 +38,8 @@ class PageAccordion {
      */
     getOpenSectionLabel() {
         return $(this.rootElement)
-            .$('div[aria-hidden="false"]')
-            .$('..')
-            .$('div h3 > span:nth-child(2)')
+            .$('[data-expanded="true"]')
+            .$('[title="Accordion Label"]')
             .getText();
     }
 }

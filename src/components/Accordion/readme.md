@@ -174,7 +174,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faPlus,
-  	faEllipsisV,
+    faEllipsisV,
     faSync
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -215,17 +215,17 @@ class AccordionExample extends React.Component {
                 <GlobalHeader src="images/user/user3.jpg">
                     
                     <ButtonGroup>
-                    <ButtonIcon
-                        variant="border"
-                        disabled
-                        icon={<FontAwesomeIcon icon={faPlus} />}
-                    />
-                    <ButtonIcon
-                        variant="border"
-                        disabled
-                        icon={<FontAwesomeIcon icon={faEllipsisV} />}
-                    />
-                </ButtonGroup>
+                        <ButtonIcon
+                            variant="border"
+                            disabled
+                            icon={<FontAwesomeIcon icon={faPlus} />}
+                        />
+                        <ButtonIcon
+                            variant="border"
+                            disabled
+                            icon={<FontAwesomeIcon icon={faEllipsisV} />}
+                        />
+                    </ButtonGroup>
 
                     <ButtonIcon
                         id="button-icon_add-new-advanced-settings"
