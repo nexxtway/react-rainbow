@@ -32,16 +32,6 @@ class PageAccordion {
     }
 
     /**
-     * Clicks in the button of the first AccordionSection element.
-     * @method
-     */
-    clickFirstButton() {
-        $(this.rootElement)
-            .$('li:nth-child(1) button')
-            .click();
-    }
-
-    /**
      * Returns the label of the open AccordionSection
      * @method
      * @returns {string}
