@@ -8,6 +8,7 @@ const StyledLabel = styled.h1`
     font-weight: inherit;
     color: ${COLOR_DARK_1};
     font-size: ${FONT_SIZE_HEADING_SMALL};
+    box-sizing: border-box;
 `;
 
 export default StyledLabel;

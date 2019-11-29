@@ -12,6 +12,7 @@ const StyledTh = styled.th`
     position: static;
     padding: 0;
     border-top: 0;
+    box-sizing: border-box;
 
     &:first-of-type .rainbow-table_header-container {
         padding-left: 18px;

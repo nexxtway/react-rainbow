@@ -19,6 +19,7 @@ const StyledAnchor = styled.a`
     background-color: transparent;
     text-decoration: none;
     transition: color 0.1s linear;
+    box-sizing: border-box;
 
     :hover,
     :focus,

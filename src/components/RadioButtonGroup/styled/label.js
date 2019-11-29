@@ -11,6 +11,7 @@ const StyledLabel = styled.legend`
     line-height: 1.5;
     margin: 0 auto 0.125rem auto;
     text-align: center;
+    box-sizing: border-box;
     ${props =>
         props.variant === 'inverse' &&
         `

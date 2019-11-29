@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import StyledRingContainer from './styled/ringContainer';
 import StyledRingPath from './styled/ringPath';
 import StyledRingFill from './styled/ringFill';
+import StyledSvg from './styled/svg';
 
 export default function ProgressRing({ percent, variant }) {
     return (
         <StyledRingContainer>
-            <svg
+            <StyledSvg
                 xmlns="http://www.w3.org/2000/svg"
                 xmlnsXlink="http://www.w3.org/1999/xlink"
                 version="1.1"
@@ -26,7 +27,7 @@ export default function ProgressRing({ percent, variant }) {
                     r="16"
                     transform="rotate(-90)"
                 />
-            </svg>
+            </StyledSvg>
         </StyledRingContainer>
     );
 }

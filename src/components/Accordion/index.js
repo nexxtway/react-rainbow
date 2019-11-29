@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Provider } from './context';
 import { LEFT_KEY, RIGHT_KEY, DOWN_KEY, UP_KEY } from '../../libs/constants';
 import { getChildAccordionSectionNodes, insertChildOrderly } from './utils';
+import StyledUl from './styled/ul';
 
 const RIGHT_SIDE = 1;
 const LEFT_SIDE = -1;
@@ -110,9 +111,9 @@ export default class Accordion extends Component {
     render() {
         const { id, children, style, className } = this.props;
         return (
-            <ul ref={this.containerRef} id={id} className={className} style={style}>
+            <StyledUl ref={this.containerRef} id={id} className={className} style={style}>
                 <Provider value={this.state}>{children}</Provider>
-            </ul>
+            </StyledUl>
         );
     }
 }

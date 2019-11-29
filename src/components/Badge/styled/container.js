@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { COLOR_WHITE, COLOR_BRAND, COLOR_GRAY_2, COLOR_GRAY_4 } from '../../styles/colors';
+import { COLOR_WHITE, COLOR_BRAND, COLOR_GRAY_2, COLOR_GRAY_4 } from '../../../styles/colors';
 
-const StyledBadge = styled.span`
+const StyledContainer = styled.span`
     color: ${COLOR_GRAY_4};
     background-color: ${COLOR_GRAY_2};
     border: 1px solid;
@@ -49,4 +49,4 @@ const StyledBadge = styled.span`
         `};
 `;
 
-export default StyledBadge;
+export default StyledContainer;

@@ -15,6 +15,7 @@ const StyledButtonItemLabel = styled.label`
     color: ${COLOR_GRAY_3};
     padding: 0 ${PADDING_LARGE};
     font-weight: 400;
+    box-sizing: border-box;
 
     &:hover {
         cursor: pointer;

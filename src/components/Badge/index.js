@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import StyledBadge from './styledBadge';
+import StyledContainer from './styled/container';
 import Content from './content';
 
 /**
@@ -14,9 +14,9 @@ export default function Badge(props) {
     }
 
     return (
-        <StyledBadge className={className} style={style} variant={variant} title={title}>
+        <StyledContainer className={className} style={style} variant={variant} title={title}>
             <Content label={label}>{children}</Content>
-        </StyledBadge>
+        </StyledContainer>
     );
 }
 

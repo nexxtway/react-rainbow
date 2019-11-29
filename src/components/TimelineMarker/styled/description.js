@@ -8,6 +8,7 @@ const StyledDescription = styled.p`
     color: ${COLOR_GRAY_4};
     padding: ${PADDING_X_SMALL} 0;
     margin: 0;
+    box-sizing: border-box;
 `;
 
 export default StyledDescription;

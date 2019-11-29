@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 import { COLOR_GRAY_4, COLOR_DARK_1 } from '../../../styles/colors';
 
-const StyledOrderList = styled.ol`
+const StyledOl = styled.ol`
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
 
     li > a {
         text-decoration: none;
@@ -32,4 +36,4 @@ const StyledOrderList = styled.ol`
     }
 `;
 
-export default StyledOrderList;
+export default StyledOl;

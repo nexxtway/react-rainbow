@@ -9,6 +9,7 @@ const StyledContainer = styled.fieldset`
     align-items: center;
     position: relative;
     flex-direction: column;
+    box-sizing: border-box;
 `;
 
 export default StyledContainer;

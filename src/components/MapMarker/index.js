@@ -8,6 +8,7 @@ import HiddenElement from '../Structural/hiddenElement';
 import StyledButton from './styled/button';
 import StyledTextContainer from './styled/textContainer';
 import StyledLabel from './styled/label';
+import StyledLi from './styled/li';
 
 const marker = Symbol('marker');
 
@@ -140,7 +141,7 @@ class Marker extends Component {
 
         if (latitude && longitude) {
             return (
-                <li className={className} style={style}>
+                <StyledLi className={className} style={style}>
                     <HiddenElement aria-live="polite">
                         {this.getAssistiveAriaLiveText()}
                     </HiddenElement>
@@ -158,7 +159,7 @@ class Marker extends Component {
                             <span>{description}</span>
                         </StyledTextContainer>
                     </StyledButton>
-                </li>
+                </StyledLi>
             );
         }
         return null;

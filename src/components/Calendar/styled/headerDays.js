@@ -9,11 +9,8 @@ const StyledHeaderDays = styled.th`
     font-weight: 400;
     line-height: 40px;
     height: 40px;
-
-    abbr {
-        cursor: default;
-        text-transform: capitalize;
-    }
+    padding: 0;
+    box-sizing: border-box;
 `;
 
 export default StyledHeaderDays;
