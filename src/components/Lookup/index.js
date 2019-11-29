@@ -501,7 +501,7 @@ class Lookup extends Component {
                             error={error}
                             isLoading={isLoading}
                         />
-                        <RenderIf isTrue={isLookupOpen}>
+                        <RenderIf isTrue>
                             <StyledOptionsMenu id={this.listboxId} role="listbox">
                                 {/* <RenderIf isTrue={showScrollUpArrow}> */}
                                 <RenderIf isTrue={isLookupOpen}>
