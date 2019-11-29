@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { uniqueId } from '../../libs/utils';
 import StyledButtonItem from './styled/buttonItem';
 import StyledButtonItemLabel from './styled/buttonItemLabel';
+import StyledInput from './styled/input';
 
 export default class RadioButtonItem extends Component {
     constructor(props) {
@@ -32,7 +33,7 @@ export default class RadioButtonItem extends Component {
                 disabled={disabled}
                 ref={itemRef}
             >
-                <input
+                <StyledInput
                     type="radio"
                     required={required}
                     id={this.radioId}

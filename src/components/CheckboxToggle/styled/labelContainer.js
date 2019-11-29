@@ -12,6 +12,7 @@ import {
 const StyledLabelContainer = styled.label`
     display: inline-flex;
     align-items: center;
+    box-sizing: border-box;
 
     .rainbow-checkbox-toggle_faux {
         display: block;
@@ -23,6 +24,7 @@ const StyledLabelContainer = styled.label`
         border: solid 0.125rem #dcdfe7;
         background-color: ${COLOR_GRAY_2};
         position: relative;
+        box-sizing: border-box;
 
         &:hover,
         &:focus {
@@ -44,6 +46,7 @@ const StyledLabelContainer = styled.label`
             border: solid 0.125rem transparent;
             background-color: ${COLOR_WHITE};
             position: absolute;
+            box-sizing: border-box;
         }
     }
 
@@ -85,6 +88,7 @@ const StyledLabelContainer = styled.label`
             box-shadow: 0 0 0 0 transparent;
             transition: all 0.3s cubic-bezier(0.75, 0, 0.08, 1);
             transform: translateX(20px);
+            box-sizing: border-box;
         }
 
         :checked:focus + .rainbow-checkbox-toggle_faux,
@@ -108,11 +112,13 @@ const StyledLabelContainer = styled.label`
         &[disabled] + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux::after {
             background-color: ${COLOR_WHITE};
             box-shadow: 0 0 1px 0 ${COLOR_GRAY_2};
+            box-sizing: border-box;
         }
 
         /* prettier-ignore */
         &[disabled]:checked + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux::after {
             background-color: transparent;
+            box-sizing: border-box;
         }
     }
 `;

@@ -6,6 +6,7 @@ const StyledHeader = styled.li`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    box-sizing: border-box;
 `;
 
 export default StyledHeader;

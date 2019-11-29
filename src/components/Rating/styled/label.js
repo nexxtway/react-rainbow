@@ -10,6 +10,7 @@ const StyledLabel = styled.legend`
     line-height: 1.5;
     margin-bottom: 0.125rem;
     align-self: center;
+    box-sizing: border-box;
 
     &:empty {
         margin: 0;

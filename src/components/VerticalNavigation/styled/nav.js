@@ -4,6 +4,7 @@ import { COLOR_GRAY_1, COLOR_GRAY_TRANSPARENT_1 } from '../../../styles/colors';
 const StyledNav = styled.nav`
     display: block;
     position: relative;
+    box-sizing: border-box;
     ${props =>
         props.compact &&
         `

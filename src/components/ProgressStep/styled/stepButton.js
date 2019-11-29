@@ -5,6 +5,7 @@ import { COLOR_GRAY_2, COLOR_WHITE } from '../../../styles/colors';
 const StyledStepButton = styled(ButtonIcon)`
     width: 1.25rem;
     height: 1.25rem;
+    cursor: auto;
     ${props =>
         props.stepState === 'Inactive' &&
         `

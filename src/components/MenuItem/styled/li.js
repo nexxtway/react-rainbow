@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 import { COLOR_GRAY_2, COLOR_DARK_1, COLOR_GRAY_1 } from '../../../styles/colors';
 
-const StyledItem = styled.li`
+const StyledLi = styled.li`
     font: inherit;
     line-height: 1.5;
     width: 100%;
@@ -21,6 +21,7 @@ const StyledItem = styled.li`
     white-space: nowrap;
     cursor: pointer;
     text-decoration: none;
+    box-sizing: border-box;
 
     &:focus {
         outline: 0;
@@ -44,4 +45,4 @@ const StyledItem = styled.li`
     }
 `;
 
-export default StyledItem;
+export default StyledLi;

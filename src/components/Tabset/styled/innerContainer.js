@@ -9,6 +9,9 @@ const StyledInnerContainer = styled.ul`
     justify-content: flex-start;
     width: 100%;
     padding: 0 ${PADDING_SMALL};
+    box-sizing: border-box;
+    list-style: none;
+    margin: 0;
 
     @media (max-width: 600px) {
         padding: 0;

@@ -8,9 +8,11 @@ const StyledContainer = styled.li`
     align-items: center;
     height: 2.75rem;
     background-color: transparent;
+    box-sizing: border-box;
 
     :nth-child(1) > button::after {
         background-color: transparent;
+        box-sizing: border-box;
     }
 
     @media (max-width: 600px) {
@@ -35,6 +37,7 @@ const StyledContainer = styled.li`
             border-radius: 14px 14px 0 0;
             z-index: 2;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            box-sizing: border-box;
 
             &::after {
                 left: -40px;
@@ -49,6 +52,7 @@ const StyledContainer = styled.li`
                 border-style: solid;
                 border-color: transparent white transparent transparent;
                 -webkit-transform: rotate(45deg);
+                box-sizing: border-box;
             }
         
             &::before {
@@ -64,6 +68,7 @@ const StyledContainer = styled.li`
                 border-style: solid;
                 border-color: transparent white transparent transparent;
                 -webkit-transform: rotate(145deg);
+                box-sizing: border-box;
             }
         
             &:hover, &:active, &:visited, &:focus {
@@ -90,6 +95,7 @@ const StyledContainer = styled.li`
                 border-style: unset;
                 border-color: unset;
                 -webkit-transform: unset;
+                box-sizing: border-box;
             }
 
             &::before {
@@ -106,6 +112,7 @@ const StyledContainer = styled.li`
                 position: absolute;
                 background-color: #01b6f5;
                 border-radius: 100px;
+                box-sizing: border-box;
             }
         `};
 `;

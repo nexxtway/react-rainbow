@@ -28,6 +28,7 @@ const StyledSelect = styled.select`
     color: ${COLOR_DARK_1};
     font-size: ${FONT_SIZE_TEXT_LARGE};
     transition: all 0.1s linear;
+    box-sizing: border-box;
 
     &::-ms-expand {
         display: none;

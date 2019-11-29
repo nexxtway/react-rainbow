@@ -5,6 +5,7 @@ import { Provider } from './context';
 import RenderIf from '../RenderIf';
 import StyledContainer from './styled/container';
 import StyledTitle from './styled/title';
+import StyledUl from './styled/ul';
 
 /**
  * Represents a section within a VerticalNavigation.
@@ -25,7 +26,7 @@ class VerticalSection extends Component {
                     <StyledTitle id={this.entityHeaderId}>{label}</StyledTitle>
                 </RenderIf>
                 <Provider value={this.entityHeaderId}>
-                    <ul>{children}</ul>
+                    <StyledUl>{children}</StyledUl>
                 </Provider>
             </StyledContainer>
         );

@@ -11,6 +11,7 @@ import { SHADOW_OUTLINE } from '../../../styles/shadows';
 import { FONT_SIZE_TEXT_LARGE, FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 
 const StyledButton = styled.button`
+    font: inherit;
     padding: 0;
     transition: color 0.1s linear;
     cursor: pointer;
@@ -27,6 +28,11 @@ const StyledButton = styled.button`
     border: 1px solid ${COLOR_GRAY_2};
     color: ${COLOR_GRAY_4};
     outline: none;
+    margin: 0;
+    overflow: visible;
+    text-transform: none;
+    appearance: button;
+    box-sizing: border-box;
 
     :focus,
     :active {

@@ -6,6 +6,7 @@ const StyledFooter = styled.footer`
     padding: 0.75rem 1rem;
     flex-shrink: 0;
     display: block;
+    box-sizing: border-box;
 `;
 
 export default StyledFooter;

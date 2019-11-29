@@ -13,6 +13,8 @@ const StyledSelect = styled.select`
     color: #061c3f;
     font-size: 14px;
     transition: all 0.1s linear;
+    box-sizing: border-box;
+    text-transform: none;
 
     :focus,
     :active {

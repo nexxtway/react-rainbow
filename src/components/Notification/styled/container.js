@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { BORDER_RADIUS_1 } from '../../../styles/borderRadius';
 import { SHADOW_4 } from '../../../styles/shadows';
-import { COLOR_WHITE, COLOR_GRAY_1, COLOR_BRAND_ACTIVE } from '../../../styles/colors';
+import { COLOR_WHITE, COLOR_GRAY_1 } from '../../../styles/colors';
 import { PADDING_SMALL } from '../../../styles/paddings';
 
 const StyledContainer = styled.div`
@@ -17,13 +17,9 @@ const StyledContainer = styled.div`
     transition-property: margin, max-height, opacity, top;
     min-height: 2.625rem;
 
-    &:hover {
+    :hover {
         background-color: ${COLOR_GRAY_1};
         cursor: pointer;
-    }
-
-    &:hover > a > span {
-        color: ${COLOR_BRAND_ACTIVE};
     }
 `;
 

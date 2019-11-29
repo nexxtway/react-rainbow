@@ -10,6 +10,7 @@ const StyledLabel = styled.label`
     margin-right: ${MARGIN_SMALL};
     margin-bottom: ${MARGIN_XX_SMALL};
     align-self: center;
+    box-sizing: border-box;
 
     &:empty {
         margin: 0;
