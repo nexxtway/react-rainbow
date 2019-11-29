@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { ThemeProvider } from 'styled-components';
 import { Provider } from './context';
 import legacyStyles from './rainbowLegacyStyles';
+import normalizeTheme from './normalizeTheme';
 
 /**
  * This component is used to setup the React Rainbow context for a tree.
@@ -10,14 +12,23 @@ import legacyStyles from './rainbowLegacyStyles';
  * @category Layout
  */
 export default function Application(props) {
-    const { children, className, style, locale } = props;
+    const { children, className, style, locale, theme } = props;
     const contextValue = { locale };
+
+    const [normalizedTheme, setTheme] = useState(() => normalizeTheme(theme));
+
+    useEffect(() => {
+        setTheme(normalizeTheme(theme));
+    }, [theme]);
+
     return (
         <Provider value={contextValue}>
-            <div className={className} style={style}>
-                <style>{legacyStyles}</style>
-                {children}
-            </div>
+            <ThemeProvider theme={normalizedTheme}>
+                <div className={className} style={style}>
+                    <style>{legacyStyles}</style>
+                    {children}
+                </div>
+            </ThemeProvider>
         </Provider>
     );
 }
@@ -34,6 +45,21 @@ Application.propTypes = {
     style: PropTypes.object,
     /** The locale used by application. Defaults to browser's locale. */
     locale: PropTypes.string,
+    /** The application theme. */
+    theme: PropTypes.shape({
+        rainbow: {
+            palette: PropTypes.shape({
+                brand: PropTypes.string,
+                success: PropTypes.string,
+                error: PropTypes.string,
+                warning: PropTypes.string,
+                background: {
+                    primary: PropTypes.string,
+                    secondary: PropTypes.string,
+                },
+            }),
+        },
+    }),
 };
 
 Application.defaultProps = {
@@ -41,4 +67,5 @@ Application.defaultProps = {
     className: undefined,
     style: undefined,
     locale: undefined,
+    theme: {},
 };

@@ -2,16 +2,24 @@
 
 ```js
 import React from 'react';
-import { Button } from 'react-rainbow-components';
+import { Application, Button } from 'react-rainbow-components';
 
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
-    <Button variant="base" label="Button Base" className="rainbow-m-around_medium" />
-    <Button label="Button Neutral" variant="neutral" className="rainbow-m-around_medium" />
-    <Button
-        label="Button Outline Brand"
-        variant="outline-brand"
-        className="rainbow-m-around_medium"
-    />
+    <Application theme={{
+        rainbow: {
+            palette: {
+                brand: 'purple',
+            },
+        },
+    }}>
+        <Button variant="base" label="Button Base" className="rainbow-m-around_medium" />
+        <Button label="Button Neutral" variant="neutral" className="rainbow-m-around_medium" />
+        <Button
+            label="Button Outline Brand"
+            variant="outline-brand"
+            className="rainbow-m-around_medium"
+        />
+    </Application>
 </div>
 ```
 
@@ -19,7 +27,7 @@ import { Button } from 'react-rainbow-components';
 
 ```js
 import React from 'react';
-import { Button } from 'react-rainbow-components';
+import { Application, Button } from 'react-rainbow-components';
 
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <Button

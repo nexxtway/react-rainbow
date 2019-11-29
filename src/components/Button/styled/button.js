@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import {
     COLOR_WHITE,
     COLOR_BRAND_ACTIVE,
-    COLOR_BRAND,
     COLOR_GRAY_1,
     COLOR_GRAY_2,
     COLOR_GRAY_3,
@@ -14,6 +13,7 @@ import {
 } from '../../../styles/colors';
 import { FONT_SIZE_HEADING_SMALL } from '../../../styles/fontSizes';
 import { SHADOW_OUTLINE, SHADOW_5, SHADOW_1 } from '../../../styles/shadows';
+import getTheme from '../../../styles/getTheme';
 
 const StyledButton = styled.button`
     font: inherit;
@@ -28,7 +28,7 @@ const StyledButton = styled.button`
     border-radius: 100px;
     line-height: 2.375rem;
     text-decoration: none;
-    color: ${COLOR_BRAND};
+    color: ${props => getTheme(props).palette.brand};
     padding: 0 1rem;
     cursor: pointer;
     white-space: normal;
@@ -85,7 +85,7 @@ const StyledButton = styled.button`
         `
             background-color: ${COLOR_WHITE};
             border: 1px solid ${COLOR_GRAY_2};
-            color: ${COLOR_BRAND};
+            color: ${getTheme(props).palette.brand};
 
             &:hover,
             &:focus,
@@ -100,8 +100,8 @@ const StyledButton = styled.button`
     ${props =>
         props.variant === 'brand' &&
         `
-            background-color: ${COLOR_BRAND};
-            border: 1px solid ${COLOR_BRAND};
+            background-color: ${getTheme(props).palette.brand};
+            border: 1px solid ${getTheme(props).palette.brand};
             color: ${COLOR_WHITE};
 
             &:link,
@@ -119,8 +119,8 @@ const StyledButton = styled.button`
             }
         
             &[disabled] {
-                background-color: ${props.isLoading ? COLOR_BRAND : COLOR_GRAY_1};
-                border-color: ${props.isLoading ? COLOR_BRAND : COLOR_GRAY_1};
+                background-color: ${props.isLoading ? getTheme(props).palette.brand : COLOR_GRAY_1};
+                border-color: ${props.isLoading ? getTheme(props).palette.brand : COLOR_GRAY_1};
                 color: ${COLOR_GRAY_2};
             }
         `};
@@ -128,8 +128,8 @@ const StyledButton = styled.button`
         props.variant === 'outline-brand' &&
         `
             background-color: transparent;
-            border: 1px solid ${COLOR_BRAND};
-            color: ${COLOR_BRAND};
+            border: 1px solid ${getTheme(props).palette.brand};
+            color: ${getTheme(props).palette.brand};
 
             &:hover,
             &:focus,
@@ -139,7 +139,7 @@ const StyledButton = styled.button`
         
             &[disabled] {
                 background-color: transparent;
-                border-color: ${props.isLoading ? COLOR_BRAND : COLOR_GRAY_2};
+                border-color: ${props.isLoading ? getTheme(props).palette.brand : COLOR_GRAY_2};
                 
             }
         `};

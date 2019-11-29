@@ -29,7 +29,9 @@ export const COLOR_GRAY_TRANSPARENT_3 = 'rgba(82, 95, 127, 0.15)';
 export const COLOR_DARK_1 = '#061c3f';
 
 // yellow colors
+// TODO: only warning const should remain
 export const COLOR_YELLOW_1 = '#fc0';
+export const COLOR_WARNING = COLOR_YELLOW_1;
 
 // purple colors
 export const COLOR_PURPLE = '#663398';
