@@ -21,6 +21,7 @@ const StyledAnchor = styled.button`
     background-color: transparent;
     text-decoration: none;
     transition: color 0.1s linear;
+    box-sizing: border-box;
 
     :hover,
     :focus,

@@ -11,6 +11,16 @@ const HiddenElement = styled.span`
     clip: rect(0 0 0 0) !important;
     text-transform: none !important;
     white-space: nowrap !important;
+    ${props =>
+        props.as === 'input' &&
+        `
+            box-sizing: border-box;
+        `};
+    ${props =>
+        props.as === 'label' &&
+        `
+            box-sizing: border-box;
+        `};
 `;
 
 export default HiddenElement;

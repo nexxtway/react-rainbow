@@ -7,6 +7,7 @@ const StyledActiveIcon = styled.div`
     height: 1.25rem;
     border-radius: ${BORDER_RADIUS_2};
     border: 0.375rem solid ${COLOR_BRAND};
+    box-sizing: border-box;
 `;
 
 export default StyledActiveIcon;

@@ -16,6 +16,7 @@ import { FONT_SIZE_HEADING_SMALL } from '../../../styles/fontSizes';
 import { SHADOW_OUTLINE, SHADOW_5, SHADOW_1 } from '../../../styles/shadows';
 
 const StyledButton = styled.button`
+    font: inherit;
     align-items: center;
     display: inline-flex;
     font-size: ${FONT_SIZE_HEADING_SMALL};
@@ -35,6 +36,16 @@ const StyledButton = styled.button`
     text-align: center;
     vertical-align: middle;
     transition: border 0.15s linear;
+    overflow: visible;
+    text-transform: none;
+    appearance: button;
+    box-sizing: border-box;
+
+    ::-moz-focus-inner,
+    ::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+    }
 
     &:hover,
     &:focus,
@@ -61,6 +72,7 @@ const StyledButton = styled.button`
 
     &[disabled] {
         color: ${COLOR_GRAY_2};
+        cursor: default;
     }
 
     &[disabled] * {

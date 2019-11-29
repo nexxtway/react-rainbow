@@ -5,7 +5,7 @@ import { Consumer } from './../PrimitiveMenu/context';
 import Icon from './icon';
 import StyledHeader from './styled/header';
 import StyledHeaderLabel from './styled/headerLabel';
-import StyledItem from './styled/item';
+import StyledLi from './styled/li';
 import StyledIconContainer from './styled/iconContainer';
 
 class Item extends Component {
@@ -75,7 +75,7 @@ class Item extends Component {
         const hasRightIcon = !!(icon && iconPosition === 'right');
 
         return (
-            <StyledItem
+            <StyledLi
                 className={className}
                 style={style}
                 role="menuitem"
@@ -101,7 +101,7 @@ class Item extends Component {
                     isVisible={hasRightIcon}
                     position={iconPosition}
                 />
-            </StyledItem>
+            </StyledLi>
         );
     }
 }

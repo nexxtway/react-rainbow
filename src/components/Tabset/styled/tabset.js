@@ -7,6 +7,7 @@ const StyledTabset = styled.div`
     overflow-y: hidden;
     justify-content: flex-start;
     width: 100%;
+    box-sizing: border-box;
 `;
 
 export default StyledTabset;

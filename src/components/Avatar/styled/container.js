@@ -11,6 +11,7 @@ const StyledContainer = styled.span`
     overflow: hidden;
     vertical-align: middle;
     width: 2.5rem;
+    box-sizing: border-box;
 
     &:hover,
     &:focus {

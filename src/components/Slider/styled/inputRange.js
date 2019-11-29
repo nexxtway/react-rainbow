@@ -8,6 +8,15 @@ const StyledInputRange = styled.input`
     margin: 0.5rem 0;
     background: transparent;
     border-radius: ${BORDER_RADIUS_3};
+    box-sizing: border-box;
+    color: inherit;
+    font: inherit;
+    line-height: normal;
+
+    ::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+    }
 
     &::-webkit-slider-thumb {
         appearance: none;

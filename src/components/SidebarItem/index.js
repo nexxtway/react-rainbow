@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withContext } from '../Sidebar/context';
 import RenderIf from '../RenderIf';
-import StyledContainer from './styled/container';
+import StyledLi from './styled/li';
 import StyledAnchorContent from './styled/anchorContent';
 import StyledButtonContent from './styled/buttonContent';
 import ItemContent from './itemContent';
@@ -27,7 +27,7 @@ function SidebarItem(props) {
     }
 
     return (
-        <StyledContainer
+        <StyledLi
             data-id="sidebar-item-li"
             isSelected={isSelected}
             className={className}
@@ -52,7 +52,7 @@ function SidebarItem(props) {
                     <ItemContent isSelected={isSelected} label={label} icon={icon} />
                 </StyledButtonContent>
             </RenderIf>
-        </StyledContainer>
+        </StyledLi>
     );
 }
 

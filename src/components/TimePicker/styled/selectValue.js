@@ -13,6 +13,9 @@ const StyledSelectValue = styled.input`
     border-radius: 4px;
     height: 100%;
     text-align: center;
+    box-sizing: border-box;
+    margin: 0;
+    line-height: normal;
 
     &::selection {
         color: ${COLOR_WHITE};

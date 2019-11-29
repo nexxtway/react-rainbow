@@ -4,6 +4,7 @@ import { FONT_SIZE_TEXT_SMALL, FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fon
 import { COLOR_GRAY_4, COLOR_WHITE, COLOR_BRAND, COLOR_GRAY_3 } from '../../../styles/colors';
 
 const StyledAnchor = styled.button`
+    font: inherit;
     background: none;
     border: none;
     outline: inherit;
@@ -21,6 +22,17 @@ const StyledAnchor = styled.button`
     font-weight: 600;
     color: ${COLOR_GRAY_4};
     z-index: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin: 0;
+    overflow: visible;
+    text-transform: none;
+    appearance: button;
+
+    ::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+    }
 
     &:hover,
     &:active,
@@ -49,6 +61,7 @@ const StyledAnchor = styled.button`
         height: 20px;
         width: 1px;
         background-color: ${COLOR_GRAY_3};
+        box-sizing: border-box;
     }
 
     :hover::after {
@@ -74,6 +87,7 @@ const StyledAnchor = styled.button`
             height: unset;
             width: unset;
             background-color: unset;
+            box-sizing: border-box;
         }
 
         &:focus {
@@ -108,6 +122,7 @@ const StyledAnchor = styled.button`
                 border-style: solid;
                 border-color: transparent white transparent transparent;
                 -webkit-transform: rotate(45deg);
+                box-sizing: border-box;
             }
 
             &::before {
@@ -123,6 +138,7 @@ const StyledAnchor = styled.button`
                 border-style: solid;
                 border-color: transparent white transparent transparent;
                 -webkit-transform: rotate(145deg);
+                box-sizing: border-box;
             }
 
             @media (max-width: 600px) {

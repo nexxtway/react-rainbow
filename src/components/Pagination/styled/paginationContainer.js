@@ -7,6 +7,7 @@ const StyledPaginationContainer = styled.ul`
     display: flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
 `;
 
 export default StyledPaginationContainer;

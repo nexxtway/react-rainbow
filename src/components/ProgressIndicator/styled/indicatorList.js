@@ -9,6 +9,7 @@ const StyledIndicatorList = styled.ol`
     margin: auto;
     position: relative;
     z-index: 1;
+    box-sizing: border-box;
 `;
 
 export default StyledIndicatorList;
