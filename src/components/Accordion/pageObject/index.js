@@ -30,6 +30,29 @@ class PageAccordion {
         }
         return null;
     }
+
+    /**
+     * Clicks in the button of the first AccordionSection element.
+     * @method
+     */
+    clickFirstButton() {
+        $(this.rootElement)
+            .$('li:nth-child(1) button')
+            .click();
+    }
+
+    /**
+     * Returns the label of the open AccordionSection
+     * @method
+     * @returns {string}
+     */
+    getOpenSectionLabel() {
+        return $(this.rootElement)
+            .$('div[aria-hidden="false"]')
+            .$('..')
+            .$('div h3 > span:nth-child(2)')
+            .getText();
+    }
 }
 
 module.exports = PageAccordion;

@@ -228,7 +228,7 @@ class AccordionExample extends React.Component {
                 </ButtonGroup>
 
                     <ButtonIcon
-                        id="button-icon_add-new-buildings"
+                        id="button-icon_add-new-advanced-settings"
                         className="rainbow-m-left_small"
                         onClick={() => this.addNewAdvancedSettings()}
                         variant="border"
@@ -237,7 +237,7 @@ class AccordionExample extends React.Component {
                 </GlobalHeader>
                 <div className="rainbow-m-around_xx-large">
                     <Card>
-                        <Accordion id="accordion-4">
+                        <Accordion id="accordion-9">
                             <AccordionSection 
                                 icon={<SettingsIcon/>}
                                 label="General Settings"
