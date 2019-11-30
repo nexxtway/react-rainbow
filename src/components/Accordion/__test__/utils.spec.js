@@ -43,11 +43,9 @@ describe('<Accordion/> utils', () => {
         const ref = {
             querySelectorAll: jest.fn(() => elements),
         };
-        it('should call querySelectorAll with "div.rainbow-accordion-section_summary:nth-child(2)"', () => {
+        it('should call querySelectorAll with the right value', () => {
             getChildAccordionSectionNodes(ref);
-            expect(ref.querySelectorAll).toHaveBeenCalledWith(
-                'li.rainbow-accordion-section_container',
-            );
+            expect(ref.querySelectorAll).toHaveBeenCalledWith('li[data-id="accordion-section-li"]');
         });
         it('should return the elements resolved by querySelectorAll', () => {
             expect(getChildAccordionSectionNodes(ref)).toEqual(elements);

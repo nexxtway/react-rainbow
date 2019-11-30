@@ -159,3 +159,117 @@ import { Card, Accordion, AccordionSection } from 'react-rainbow-components';
     </Card>
 </div>
 ```
+
+##### Accordion with AccordionSection  changed dynamically
+
+```js
+import React from 'react';
+import { 
+    Card, 
+    Accordion, 
+    AccordionSection,
+    ButtonGroup,
+    ButtonIcon,
+} from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+    faPlus,
+    faEllipsisV,
+    faSync
+} from '@fortawesome/free-solid-svg-icons';
+
+
+class AccordionExample extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isAdvancedSettingsAdded: false,
+        };
+    }
+
+    addNewAdvancedSettings() {
+        const { isAdvancedSettingsAdded } = this.state;
+        this.setState({ isAdvancedSettingsAdded: !isAdvancedSettingsAdded  });
+    }
+
+    renderNewAdvancedSettings() {
+        const { isAdvancedSettingsAdded } = this.state;
+        if (isAdvancedSettingsAdded) {
+            return (
+                <AccordionSection 
+                    icon={<AdvancedSettingsIcon />}
+                    label="Advanced Settings"
+                >
+                    A rainbow is a meteorological phenomenon that is caused by reflection, refraction
+                    and dispersion of light in water droplets resulting in a spectrum of light appearing
+                    in the sky.
+                </AccordionSection>
+            );
+        }
+        return null;
+    }
+
+    render() {
+        return (
+            <div className="rainbow-m-bottom_xx-large">
+                <GlobalHeader src="images/user/user3.jpg">
+                    
+                    <ButtonGroup>
+                        <ButtonIcon
+                            variant="border"
+                            disabled
+                            icon={<FontAwesomeIcon icon={faPlus} />}
+                        />
+                        <ButtonIcon
+                            variant="border"
+                            disabled
+                            icon={<FontAwesomeIcon icon={faEllipsisV} />}
+                        />
+                    </ButtonGroup>
+
+                    <ButtonIcon
+                        id="button-icon_add-new-advanced-settings"
+                        className="rainbow-m-left_small"
+                        onClick={() => this.addNewAdvancedSettings()}
+                        variant="border"
+                        icon={<FontAwesomeIcon icon={faSync} />}
+                    />
+                </GlobalHeader>
+                <div className="rainbow-m-around_xx-large">
+                    <Card>
+                        <Accordion id="accordion-9">
+                            <AccordionSection 
+                                icon={<SettingsIcon/>}
+                                label="General Settings"
+                            >
+                                A rainbow is a meteorological phenomenon that is caused by reflection, refraction
+                                and dispersion of light in water droplets resulting in a spectrum of light appearing
+                                in the sky.
+                            </AccordionSection>
+                            {this.renderNewAdvancedSettings()}
+                            <AccordionSection 
+                                icon={<UserIcon />}
+                                label="Personal Profile"
+                            >
+                                A rainbow is a meteorological phenomenon that is caused by reflection, refraction
+                                and dispersion of light in water droplets resulting in a spectrum of light appearing
+                                in the sky.
+                            </AccordionSection>
+                            <AccordionSection 
+                                icon={<CompanyIcon />}
+                                label="Company Profile"
+                            >
+                                A rainbow is a meteorological phenomenon that is caused by reflection, refraction
+                                and dispersion of light in water droplets resulting in a spectrum of light appearing
+                                in the sky.
+                            </AccordionSection>
+                        </Accordion>
+                    </Card>
+                </div>
+            </div>
+        );
+    }
+}
+<AccordionExample/>
+
+```
