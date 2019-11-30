@@ -11,6 +11,7 @@ const StyledLi = styled.li`
     transform: translateX(-100%);
     width: 100%;
     height: 100%;
+    box-sizing: border-box;
     ${props =>
         props.shouldShow &&
         props.direction === 'right-to-left' &&

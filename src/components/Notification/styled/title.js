@@ -8,8 +8,8 @@ const StyledTitle = styled.h1`
     font-weight: inherit;
     font-size: ${FONT_SIZE_HEADING_SMALL};
     color: ${COLOR_DARK_1};
-    padding-right: ${PADDING_MEDIUM};
     line-height: 1;
+    padding: 0 ${PADDING_MEDIUM} 0 0;
 `;
 
 export default StyledTitle;

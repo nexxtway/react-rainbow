@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import StyledHeader from './styled/header';
+import StyledTitle from './styled/title';
 
 export default function Header({ title, id }) {
     if (typeof title === 'string') {
         return (
             <StyledHeader>
-                <h2 id={id}>{title}</h2>
+                <StyledTitle id={id}>{title}</StyledTitle>
             </StyledHeader>
         );
     }

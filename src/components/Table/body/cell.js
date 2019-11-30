@@ -81,7 +81,7 @@ export default function Cell(props) {
 
     if (isFirst) {
         return (
-            <StyledCell as="th" scope="row" tabIndex={-1} data-label={getHeaderLabel()}>
+            <StyledCell scope="row" tabIndex={-1} data-label={getHeaderLabel()}>
                 <StyledCellContent>
                     <CellValue
                         component={component}

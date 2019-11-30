@@ -5,6 +5,12 @@ const StyledArrowIcon = styled.svg`
     transform: rotate(0deg);
     fill: ${COLOR_BRAND};
     transition: transform 0.15s linear;
+    vertical-align: middle;
+
+    :not(:root) {
+        overflow: hidden;
+    }
+
     ${props =>
         props.isExpanded &&
         `

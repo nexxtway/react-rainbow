@@ -12,6 +12,7 @@ const StyledDivider = styled.div`
         margin: 0 auto;
         width: 1px;
         height: 100%;
+        box-sizing: border-box;
     }
 
     @media (max-width: 800px) {

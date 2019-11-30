@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import normalizeInitials from './normalizeInitials';
 import StyledContent from './styled/content';
+import StyledImage from './styled/image';
 
 export default class AvatarContent extends Component {
     constructor(props) {
@@ -24,7 +25,12 @@ export default class AvatarContent extends Component {
         const { imageFailed } = this.state;
         if (src && !imageFailed) {
             return (
-                <img src={src} onError={this.handleImageError} title={title} alt={assistiveText} />
+                <StyledImage
+                    src={src}
+                    onError={this.handleImageError}
+                    title={title}
+                    alt={assistiveText}
+                />
             );
         } else if (initials) {
             return (

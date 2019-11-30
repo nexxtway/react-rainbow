@@ -3,6 +3,7 @@ import { COLOR_BRAND } from '../../../styles/colors';
 
 const StyledLi = styled.li`
     position: relative;
+    box-sizing: border-box;
     ${props =>
         props.isSelected &&
         `

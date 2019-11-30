@@ -44,6 +44,7 @@ const Checkbox = styled(HiddenElement)`
         background: ${COLOR_WHITE};
         margin-right: ${MARGIN_SMALL};
         transition: border 0.1s linear, background-color 0.1s linear;
+        box-sizing: border-box;
     }
 
     :checked ~ label > .rainbow-input_faux::after {
@@ -58,6 +59,8 @@ const Checkbox = styled(HiddenElement)`
         border-bottom: 2px solid;
         border-left: 2px solid;
         border-color: ${getColor};
+        box-sizing: border-box;
+        padding: 0;
     }
 
     :checked ~ label > .rainbow-input_faux {
@@ -79,6 +82,7 @@ const Checkbox = styled(HiddenElement)`
 
     &[disabled] ~ label > .rainbow-input_faux::after {
         border-color: ${COLOR_WHITE};
+        box-sizing: border-box;
     }
 
     :focus:checked ~ label > .rainbow-input_faux {

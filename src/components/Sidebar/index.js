@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from './context';
 import StyledNav from './styled/nav';
-import StyledContent from './styled/content';
+import StyledUl from './styled/ul';
 
 /**
  * Sidebar represents a list of links that either take the user to another
@@ -20,7 +20,7 @@ export default function Sidebar(props) {
     return (
         <StyledNav id={id} className={className} style={style} aria-label={ariaLabel}>
             <Provider value={context}>
-                <StyledContent>{children}</StyledContent>
+                <StyledUl>{children}</StyledUl>
             </Provider>
         </StyledNav>
     );

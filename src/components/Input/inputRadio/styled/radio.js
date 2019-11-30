@@ -44,6 +44,8 @@ const Radio = styled(HiddenElement)`
         background: ${COLOR_WHITE};
         margin-right: ${MARGIN_SMALL};
         transition: border 0.1s linear, background-color 0.1s linear;
+        box-sizing: border-box;
+        padding: 0;
 
         &::after {
             content: '';
@@ -57,6 +59,7 @@ const Radio = styled(HiddenElement)`
             opacity: 0;
             transform: scale(0.1, 0.1);
             transition: all 0.2s ease-in;
+            box-sizing: border-box;
         }
     }
 
@@ -70,6 +73,7 @@ const Radio = styled(HiddenElement)`
             transform: scale(1, 1);
             transition: all 0.2s ease-in;
             background: ${getColor};
+            box-sizing: border-box;
         }
     }
 
@@ -86,6 +90,7 @@ const Radio = styled(HiddenElement)`
 
     &[disabled] ~ label > .rainbow-input_faux::after {
         background: ${COLOR_WHITE};
+        box-sizing: border-box;
     }
 `;
 

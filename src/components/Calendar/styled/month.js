@@ -7,6 +7,9 @@ const StyledMonth = styled.h3`
     color: ${COLOR_DARK_1};
     text-transform: capitalize;
     font-weight: 500;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 `;
 
 export default StyledMonth;

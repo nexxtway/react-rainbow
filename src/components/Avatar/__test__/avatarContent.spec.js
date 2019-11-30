@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import AvatarContent from './../avatarContent';
+import StyledImage from '../styled/image';
 
 describe('<AvatarContent/>', () => {
     it('should render an img when src is passed', () => {
@@ -9,7 +10,7 @@ describe('<AvatarContent/>', () => {
     });
     it('should pass right props to the img element when a valid src is passed', () => {
         const component = mount(<AvatarContent src="images/user/user1.jpg" title="Title" />);
-        expect(component.find('img').props()).toEqual({
+        expect(component.find(StyledImage).props()).toEqual({
             src: 'images/user/user1.jpg',
             onError: expect.any(Function),
             title: 'Title',

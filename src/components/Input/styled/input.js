@@ -16,6 +16,7 @@ const hasLeftIcon = props => props.icon && props.iconPosition === 'left';
 const hasRightIcon = props => props.icon && props.iconPosition === 'right';
 
 const Input = styled.input`
+    font: inherit;
     background-color: ${COLOR_WHITE};
     border: 1px solid ${COLOR_GRAY_3};
     border-radius: ${BORDER_RADIUS_2};
@@ -27,11 +28,17 @@ const Input = styled.input`
     height: 2.5rem;
     color: ${COLOR_DARK_1};
     font-size: ${FONT_SIZE_TEXT_LARGE};
+    box-sizing: border-box;
+    margin: 0;
 
-    [type='search']::-ms-clear {
-        display: none;
-        width: 0;
-        height: 0;
+    ::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+    }
+
+    &[type='number']::-webkit-inner-spin-button,
+    &[type='number']::-webkit-outer-spin-button {
+        height: auto;
     }
 
     :focus,
@@ -194,10 +201,12 @@ const Input = styled.input`
                 transform: rotate(135deg);
                 vertical-align: top;
                 color: ${COLOR_DARK_1};
+                box-sizing: border-box;
             }
 
             &[disabled]::after {
                 color: ${COLOR_GRAY_2};
+                box-sizing: border-box;
             }
         }
     }
