@@ -11,18 +11,6 @@ describe('Accordion with AccordionOption changed dynamically', () => {
         const component = $(ACCORDION);
         component.waitForExist();
         const accordion = new PageAccordion(ACCORDION);
-<<<<<<< HEAD
-        accordion.getItem(0).clickButtonIcon();
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ENTER_KEY);
-        expect(accordion.getOpenSectionLabel()).toBe('Personal Profile');
-        browser.refresh();
-        addAdvancedSettings();
-        accordion.getItem(0).clickButtonIcon();
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ENTER_KEY);
-        expect(accordion.getOpenSectionLabel()).toBe('Advanced Settings');
-=======
         const firstSection = accordion.getItem(0);
         firstSection.clickButtonIcon();
         browser.keys(ARROW_DOWN_KEY);
@@ -37,6 +25,5 @@ describe('Accordion with AccordionOption changed dynamically', () => {
         browser.keys(ENTER_KEY);
         expect(secondSection.isExpanded()).toBe(true);
         expect(secondSection.getLabel()).toBe('Advanced Settings');
->>>>>>> upstream/master
     });
 });
