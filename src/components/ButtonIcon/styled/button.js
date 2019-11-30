@@ -14,6 +14,7 @@ import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 import { SHADOW_OUTLINE, SHADOW_5, SHADOW_3 } from '../../../styles/shadows';
 
 const StyledButton = styled.button`
+    font: inherit;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -30,6 +31,15 @@ const StyledButton = styled.button`
     white-space: normal;
     user-select: none;
     vertical-align: middle;
+    overflow: visible;
+    text-transform: none;
+    appearance: button;
+    box-sizing: border-box;
+
+    ::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+    }
 
     &:hover,
     &:focus,
@@ -49,6 +59,7 @@ const StyledButton = styled.button`
 
     &[disabled] {
         color: ${COLOR_GRAY_2};
+        cursor: default;
     }
 
     &[disabled] * {

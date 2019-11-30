@@ -1,6 +1,6 @@
 export function getChildAccordionSectionNodes(ref) {
     if (ref) {
-        return ref.querySelectorAll('li.rainbow-accordion-section_container');
+        return ref.querySelectorAll('li[data-id="accordion-section-li"]');
     }
     return [];
 }

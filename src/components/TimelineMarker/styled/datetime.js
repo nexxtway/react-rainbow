@@ -9,6 +9,7 @@ const StyledDatetime = styled.p`
     margin: 0;
     padding: 0;
     margin-left: ${MARGIN_SMALL};
+    box-sizing: border-box;
 `;
 
 export default StyledDatetime;

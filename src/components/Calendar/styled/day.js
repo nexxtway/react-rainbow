@@ -8,7 +8,9 @@ const StyledDay = styled.td`
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
     font-weight: 400;
     border-radius: 100%;
-    width: 36px;
+    width: 38px;
+    padding: 0;
+    box-sizing: border-box;
 `;
 
 export default StyledDay;

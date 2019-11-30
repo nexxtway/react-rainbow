@@ -11,6 +11,7 @@ describe('Accordion with AccordionOption changed dynamically', () => {
         const component = $(ACCORDION);
         component.waitForExist();
         const accordion = new PageAccordion(ACCORDION);
+<<<<<<< HEAD
         accordion.getItem(0).clickButtonIcon();
         browser.keys(ARROW_DOWN_KEY);
         browser.keys(ENTER_KEY);
@@ -21,5 +22,21 @@ describe('Accordion with AccordionOption changed dynamically', () => {
         browser.keys(ARROW_DOWN_KEY);
         browser.keys(ENTER_KEY);
         expect(accordion.getOpenSectionLabel()).toBe('Advanced Settings');
+=======
+        const firstSection = accordion.getItem(0);
+        firstSection.clickButtonIcon();
+        browser.keys(ARROW_DOWN_KEY);
+        browser.keys(ENTER_KEY);
+        const secondSection = accordion.getItem(1);
+        expect(secondSection.isExpanded()).toBe(true);
+        expect(secondSection.getLabel()).toBe('Personal Profile');
+        browser.refresh();
+        addAdvancedSettings();
+        firstSection.clickButtonIcon();
+        browser.keys(ARROW_DOWN_KEY);
+        browser.keys(ENTER_KEY);
+        expect(secondSection.isExpanded()).toBe(true);
+        expect(secondSection.getLabel()).toBe('Advanced Settings');
+>>>>>>> upstream/master
     });
 });

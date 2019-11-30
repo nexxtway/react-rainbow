@@ -22,6 +22,7 @@ const StyledUploadFileLabel = styled.label`
     cursor: pointer;
     white-space: normal;
     user-select: none;
+    box-sizing: border-box;
 
     &:focus {
         outline: 0;

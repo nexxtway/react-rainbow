@@ -12,6 +12,18 @@ const StyledButtonContent = styled.button`
     border-radius: 0;
     cursor: pointer;
     flex-direction: column;
+    box-sizing: border-box;
+    color: inherit;
+    font: inherit;
+    margin: 0;
+    overflow: visible;
+    text-transform: none;
+    appearance: button;
+
+    ::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+    }
 `;
 
 export default StyledButtonContent;

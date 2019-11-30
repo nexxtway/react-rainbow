@@ -7,18 +7,13 @@ const StyledAnchor = styled.a`
     cursor: pointer;
     display: flex;
 
-    a:hover,
-    a:focus {
-        text-decoration: underline;
-        color: #005fb2;
+    :hover,
+    :focus {
+        text-decoration: none;
     }
 
-    a:active {
-        color: #005fb2;
-    }
-
-    a:active,
-    a:hover {
+    :active,
+    :hover {
         outline: 0;
     }
 `;

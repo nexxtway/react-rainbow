@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import RatingItems from './ratingItems';
 import { uniqueId } from '../../libs/utils';
 import RenderIf from '../RenderIf';
-import StyledContainer from './styled/container';
+import StyledFieldset from './styled/fieldset';
 import StyledLabel from './styled/label';
 
 /** @category Form */
@@ -41,7 +41,7 @@ export default class Rating extends Component {
         const { style, className, onChange, label } = this.props;
         const { value } = this.state;
         return (
-            <StyledContainer
+            <StyledFieldset
                 onMouseOver={this.handleOnHover}
                 onMouseLeave={this.handleOnLeave}
                 className={className}
@@ -51,7 +51,7 @@ export default class Rating extends Component {
                     <StyledLabel>{label}</StyledLabel>
                 </RenderIf>
                 <RatingItems onChange={onChange} value={value} name={this.getName()} />
-            </StyledContainer>
+            </StyledFieldset>
         );
     }
 }

@@ -10,12 +10,15 @@ const StyledAnchorContent = styled.a`
     border-radius: 0;
     cursor: pointer;
     flex-direction: column;
+    box-sizing: border-box;
+    color: transparent;
 
     :hover,
     :active,
     :focus {
         text-decoration: none;
         outline: 0;
+        color: transparent;
     }
 `;
 

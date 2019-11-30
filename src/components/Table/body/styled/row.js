@@ -4,6 +4,7 @@ import { COLOR_GRAY_TRANSPARENT_1, COLOR_GRAY_2 } from '../../../../styles/color
 const StyledRow = styled.tr`
     box-shadow: 0 1px 0 0 ${COLOR_GRAY_2};
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    box-sizing: border-box;
 
     &:hover {
         background-color: ${COLOR_GRAY_TRANSPARENT_1};

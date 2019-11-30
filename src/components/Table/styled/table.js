@@ -7,6 +7,7 @@ const StyledTable = styled.table`
     background-color: ${COLOR_WHITE};
     border-spacing: 0;
     width: 100%;
+    box-sizing: border-box;
 `;
 
 export default StyledTable;

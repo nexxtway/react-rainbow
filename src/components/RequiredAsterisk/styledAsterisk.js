@@ -7,6 +7,13 @@ const StyledAsterisk = styled.abbr`
     border: 0;
     color: ${COLOR_ERROR};
     margin: 0 0.125rem;
+    box-sizing: border-box;
+
+    &[title] {
+        border: 0;
+        text-decoration: none;
+        cursor: help;
+    }
 `;
 
 export default StyledAsterisk;

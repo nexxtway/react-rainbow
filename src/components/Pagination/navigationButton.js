@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import StyledButton from './styled/button';
+import StyledLi from './styled/li';
 
 export default function NavigationButton(props) {
     const { onClick, icon, disabled, dataId, ariaLabel } = props;
@@ -20,7 +21,7 @@ export default function NavigationButton(props) {
     };
 
     return (
-        <li>
+        <StyledLi>
             <StyledButton
                 disabled={disabled}
                 data-id={dataId}
@@ -31,7 +32,7 @@ export default function NavigationButton(props) {
             >
                 {icon}
             </StyledButton>
-        </li>
+        </StyledLi>
     );
 }
 

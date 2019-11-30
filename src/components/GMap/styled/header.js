@@ -6,6 +6,8 @@ const StyledHeader = styled.h2`
     font-size: ${FONT_SIZE_HEADING_SMALL};
     font-weight: 900;
     color: ${COLOR_DARK_1};
+    margin: 0;
+    padding: 0;
 `;
 
 export default StyledHeader;

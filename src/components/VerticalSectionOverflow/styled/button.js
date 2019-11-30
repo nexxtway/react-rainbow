@@ -18,6 +18,7 @@ const StyledButton = styled.button`
     user-select: none;
     appearance: none;
     transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    box-sizing: border-box;
 
     :focus {
         outline: 0;
