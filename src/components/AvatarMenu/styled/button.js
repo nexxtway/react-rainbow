@@ -36,6 +36,12 @@ const StyledButton = styled.button`
     :hover {
         box-shadow: 0 0 0 4px ${COLOR_GRAY_2};
         transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        cursor: pointer;
+    }
+
+    :hover span,
+    :hover abbr {
+        cursor: pointer;
     }
 
     &[disabled] {
