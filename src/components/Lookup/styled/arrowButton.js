@@ -29,6 +29,7 @@ const StyledArrowButton = styled.div`
         `
             top: 0;
             margin-top: 0.2rem;
+            cursor: pointer;
 
             &::after {
                 border-width: 0 0 0.15em 0.15em;
@@ -41,6 +42,7 @@ const StyledArrowButton = styled.div`
         `
             bottom: 0;
             margin-bottom: 0.2rem;
+            cursor: pointer;
 
             &::after {
                 border-width: 0.15em 0.15em 0 0;
