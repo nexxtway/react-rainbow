@@ -44,6 +44,7 @@ class Lookup extends Component {
         const normalizedOptions = getNormalizedOptions(props.options || []);
         this.state = {
             searchValue: '',
+            isOpen: false,
             isFocused: false,
             options: normalizedOptions,
             focusedItemIndex: getInitialFocusedIndex(
@@ -78,6 +79,7 @@ class Lookup extends Component {
         this.handleScrollDownArrowHover = this.handleScrollDownArrowHover.bind(this);
         this.handleScrollUpArrowHover = this.handleScrollUpArrowHover.bind(this);
         this.stopArrowScoll = this.stopArrowScoll.bind(this);
+        this.updateScrollingArrows = this.updateScrollingArrows.bind(this);
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -86,7 +88,6 @@ class Lookup extends Component {
             preferredSelectedOption: prevPreferredSelectedOption,
         } = prevProps;
         const { options, preferredSelectedOption } = this.props;
-        const { isFocused: prevIsFocused } = prevState;
         if (prevOptions !== options) {
             const normalizedOptions = getNormalizedOptions(options);
             this.setState({
@@ -95,6 +96,7 @@ class Lookup extends Component {
                     normalizedOptions,
                     preferredSelectedOption,
                 ),
+                isOpen: this.isLookupOpen(),
             });
         }
 
@@ -102,9 +104,13 @@ class Lookup extends Component {
             const { options: currentOptions } = this.state;
             this.setState({
                 focusedItemIndex: getInitialFocusedIndex(currentOptions, preferredSelectedOption),
+                isOpen: this.isLookupOpen(),
             });
         }
-        if (!prevIsFocused && this.isLookupOpen()) {
+        const { isOpen: wasOpen } = prevState;
+        const { isOpen } = this.state;
+        if (!wasOpen && isOpen && this.menuRef.current !== null) {
+            this.scrollTo(0);
             this.updateScrollingArrows();
         }
     }
@@ -246,11 +252,9 @@ class Lookup extends Component {
         }
     }
 
-    // -- mine
-
     stopArrowScoll() {
         if (this.scrollingTimer) {
-            clearInterval(this.scrollingTimer);
+            clearTimeout(this.scrollingTimer);
         }
     }
 
@@ -268,22 +272,25 @@ class Lookup extends Component {
         this.stopArrowScoll();
 
         const menu = this.menuRef.current.getRef();
-        this.scrollingTimer = setInterval(() => {
+        this.scrollingTimer = setTimeout(() => {
             if (menu.scrollTop > 0) {
                 menu.scrollBy(0, -1);
+                setTimeout(this.handleScrollUpArrowHover(), 5);
             } else {
                 this.stopArrowScoll();
             }
         }, 5);
+        this.updateScrollingArrows();
     }
 
     handleScrollDownArrowHover() {
         this.stopArrowScoll();
 
         const menu = this.menuRef.current.getRef();
-        this.scrollingTimer = setInterval(() => {
+        this.scrollingTimer = setTimeout(() => {
             if (!isScrollPositionAtMenuBottom(menu)) {
                 menu.scrollBy(0, 1);
+                setTimeout(this.handleScrollDownArrowHover(), 5);
             } else {
                 this.stopArrowScoll();
             }
@@ -300,8 +307,6 @@ class Lookup extends Component {
             showScrollDownArrow,
         });
     }
-
-    // - end of mine
 
     handleKeyUpPressed() {
         const { focusedItemIndex, options } = this.state;
@@ -432,6 +437,7 @@ class Lookup extends Component {
                 onKeyDown={this.handleKeyDown}
                 ref={this.containerRef}
                 tabIndex={-1}
+                onScroll={this.updateScrollingArrows}
             >
                 <Label
                     label={label}
@@ -503,14 +509,7 @@ class Lookup extends Component {
                         />
                         <RenderIf isTrue={isLookupOpen}>
                             <StyledOptionsMenu id={this.listboxId} role="listbox">
-                                {/* <RenderIf isTrue={showScrollUpArrow}> */}
-                                <RenderIf isTrue={isLookupOpen}>
-                                    {/* <span
-                                        onMouseEnter={this.handleScrollUpArrowHover}
-                                        onMouseLeave={this.stopArrowScoll}
-                                    >
-                                        222222
-                                    </span> */}
+                                <RenderIf isTrue={showScrollUpArrow}>
                                     <MenuArrowButton
                                         arrow="up"
                                         onMouseEnter={this.handleScrollUpArrowHover}
@@ -527,13 +526,7 @@ class Lookup extends Component {
                                     ref={this.menuRef}
                                     size={size}
                                 />
-                                <RenderIf isTrue={isLookupOpen}>
-                                    {/* <span
-                                        onMouseEnter={this.handleScrollDownArrowHover}
-                                        onMouseLeave={this.stopArrowScoll}
-                                    >
-                                        666666
-                                    </span> */}
+                                <RenderIf isTrue={showScrollDownArrow}>
                                     <MenuArrowButton
                                         arrow="down"
                                         onMouseEnter={this.handleScrollDownArrowHover}
