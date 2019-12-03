@@ -218,6 +218,7 @@ class Lookup extends Component {
         const { preferredSelectedOption } = this.props;
         return this.setState({
             isFocused: false,
+            isOpen: false,
             focusedItemIndex: getInitialFocusedIndex(options, preferredSelectedOption),
         });
     }
