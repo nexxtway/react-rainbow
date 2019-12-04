@@ -21,6 +21,17 @@ class PageCarouselImage {
             .$('a')
             .click();
     }
+
+    /**
+     * Returns the header of the CarouselImage.
+     * @method
+     * @returns {string}
+     */
+    getHeader() {
+        return $(this.rootElement)
+            .$('[title="Imagen Header"]')
+            .getHTML(false);
+    }
 }
 
 module.exports = PageCarouselImage;

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { LEFT_KEY, RIGHT_KEY } from '../../../libs/constants';
 import { getItemIndex } from '../utils';
+import { getChildTabNodes, insertChildOrderly } from './utils';
 import Indicator from './indicator';
 import StyledIndicatorUl from '../styled/indicatorsUl';
 
@@ -12,6 +13,7 @@ const LEFT_SIDE = -1;
 export default class Indicators extends Component {
     constructor(props) {
         super(props);
+        this.container = React.createRef();
         this.handleKeyPressed = this.handleKeyPressed.bind(this);
         this.registerIndicator = this.registerIndicator.bind(this);
         this.keyHandlerMap = {
@@ -31,7 +33,8 @@ export default class Indicators extends Component {
 
     registerIndicator(indicator) {
         const { indicatorsRefs } = this.state;
-        const newRefs = indicatorsRefs.concat([indicator]);
+        const [...nodes] = getChildTabNodes(this.container.current);
+        const newRefs = insertChildOrderly(indicatorsRefs, indicator, nodes);
         this.setState({ indicatorsRefs: newRefs });
     }
 
@@ -75,7 +78,11 @@ export default class Indicators extends Component {
 
     render() {
         return (
-            <StyledIndicatorUl role="tablist" onKeyDown={this.handleKeyPressed}>
+            <StyledIndicatorUl
+                role="tablist"
+                onKeyDown={this.handleKeyPressed}
+                ref={this.container}
+            >
                 {this.renderIndicators()}
             </StyledIndicatorUl>
         );
