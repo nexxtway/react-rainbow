@@ -30,18 +30,6 @@ class PageAccordion {
         }
         return null;
     }
-
-    /**
-     * Returns the label of the open AccordionSection
-     * @method
-     * @returns {string}
-     */
-    getOpenSectionLabel() {
-        return $(this.rootElement)
-            .$('[data-expanded="true"]')
-            .$('[title="Accordion Label"]')
-            .getText();
-    }
 }
 
 module.exports = PageAccordion;
