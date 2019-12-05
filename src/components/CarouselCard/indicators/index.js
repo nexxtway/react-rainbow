@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { LEFT_KEY, RIGHT_KEY } from '../../../libs/constants';
 import { getItemIndex } from '../utils';
-import { getChildTabNodes } from './utils';
-import { insertChildOrderly } from '../utils';
+import { getChildTabNodes, insertChildOrderly } from './utils';
 import Indicator from './indicator';
 import StyledIndicatorUl from '../styled/indicatorsUl';
 

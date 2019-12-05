@@ -27,7 +27,7 @@ class PageCarouselImage {
      * @method
      * @returns {string}
      */
-    getHeader() {
+    getHeaderText() {
         return $(this.rootElement)
             .$('[title="Imagen Header"]')
             .getHTML(false);

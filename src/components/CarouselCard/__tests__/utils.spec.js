@@ -48,9 +48,9 @@ describe('<CarouselCard/> utils', () => {
         const ref = {
             querySelectorAll: jest.fn(() => elements),
         };
-        it('should call querySelectorAll with [data-id="carousel-image-li"]', () => {
+        it('should call querySelectorAll with [role="tabpanel"]', () => {
             getChildTabNodes(ref);
-            expect(ref.querySelectorAll).toHaveBeenCalledWith('[data-id="carousel-image-li"]');
+            expect(ref.querySelectorAll).toHaveBeenCalledWith('[role="tabpanel"]');
         });
         it('should return the elements resolved by querySelectorAll', () => {
             expect(getChildTabNodes(ref)).toEqual(elements);

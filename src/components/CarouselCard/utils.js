@@ -4,7 +4,7 @@ export function getItemIndex(children, id) {
 
 export function getChildTabNodes(ref) {
     if (ref) {
-        return ref.querySelectorAll('[data-id="carousel-image-li"]');
+        return ref.querySelectorAll('[role="tabpanel"]');
     }
     return [];
 }

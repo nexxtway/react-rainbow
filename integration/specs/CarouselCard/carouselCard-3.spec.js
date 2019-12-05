@@ -17,12 +17,12 @@ describe('CarouselCard with CarouselImagen changed dynamically', () => {
         const indicator2 = carousel.getIndicatorItem(1);
         expect(indicator2.isSelected()).toBe(true);
         const carouselImagen2 = carousel.getImageItem(1);
-        expect(carouselImagen2.getHeader()).toBe('Second Card');
+        expect(carouselImagen2.getHeaderText()).toBe('Second Card');
         browser.refresh();
         addNewCard();
         indicator.click();
         browser.keys(ARROW_RIGHT_KEY);
         expect(indicator2.isSelected()).toBe(true);
-        expect(carouselImagen2.getHeader()).toBe('New Card');
+        expect(carouselImagen2.getHeaderText()).toBe('New Card');
     });
 });
