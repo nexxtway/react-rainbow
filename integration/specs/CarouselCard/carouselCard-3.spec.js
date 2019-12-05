@@ -10,7 +10,7 @@ describe('CarouselCard with CarouselImagen changed dynamically', () => {
         browser.url('/#!/CarouselCard/3');
         const component = $(CAROUSEL);
         component.waitForExist();
-        var carousel = new PageCarouselCard(CAROUSEL);
+        const carousel = new PageCarouselCard(CAROUSEL);
         const indicator = carousel.getIndicatorItem(0);
         indicator.click();
         browser.keys(ARROW_RIGHT_KEY);
