@@ -122,7 +122,7 @@ class AccordionItem extends Component {
             >
                 <section>
                     <StyledSummary data-id="accordion-section-summary">
-                        <StyledHeading disabled={disabled} data-expanded={isExpanded}>
+                        <StyledHeading disabled={disabled}>
                             <RenderIf isTrue={!!icon}>
                                 <StyledIcon>{icon}</StyledIcon>
                             </RenderIf>
