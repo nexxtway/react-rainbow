@@ -72,6 +72,7 @@ Indicator.propTypes = {
     header: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     onSelect: PropTypes.func,
     onCreate: PropTypes.func,
+    onDestroy: PropTypes.func,
     selectedItem: PropTypes.string,
 };
 
@@ -81,5 +82,6 @@ Indicator.defaultProps = {
     header: undefined,
     onSelect: () => {},
     onCreate: () => {},
+    onDestroy: () => {},
     selectedItem: undefined,
 };
