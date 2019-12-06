@@ -110,7 +110,7 @@ class CarrouselCardExample extends React.Component {
                     style={carouselContainerStyles}
                     className="rainbow-align-content_center rainbow-m_auto"
                     id="carousel-3"
-                    disableAutoScroll="true"
+                    disableAutoScroll={true}
                 >
                     <CarouselImage
                         src="images/illustrations/Illustration-rainbow-4.svg"

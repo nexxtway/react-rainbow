@@ -16,6 +16,7 @@ export default class Indicators extends Component {
         this.container = React.createRef();
         this.handleKeyPressed = this.handleKeyPressed.bind(this);
         this.registerIndicator = this.registerIndicator.bind(this);
+        this.unregisterIndicator = this.unregisterIndicator.bind(this);
         this.keyHandlerMap = {
             [RIGHT_KEY]: () => this.selectIndicator(RIGHT_SIDE),
             [LEFT_KEY]: () => this.selectIndicator(LEFT_SIDE),
@@ -36,6 +37,14 @@ export default class Indicators extends Component {
         const [...nodes] = getChildTabNodes(this.container.current);
         const newRefs = insertChildOrderly(indicatorsRefs, indicator, nodes);
         this.setState({ indicatorsRefs: newRefs });
+    }
+
+    unregisterIndicator(indicator) {
+        const { indicatorsRefs } = this.state;
+        const newChildren = indicatorsRefs.filter(child => child.ref !== indicator);
+        this.setState({
+            indicatorsRefs: newChildren,
+        });
     }
 
     selectIndicator(side) {
@@ -65,13 +74,14 @@ export default class Indicators extends Component {
 
     renderIndicators() {
         const { carouselChildren, onSelect, selectedItem } = this.props;
-        return carouselChildren.map(child => (
+        return carouselChildren.map(({ ref, ...rest }) => (
             <Indicator
-                {...child}
+                {...rest}
                 onSelect={onSelect}
                 selectedItem={selectedItem}
                 onCreate={this.registerIndicator}
-                key={child.indicatorID}
+                onDestroy={this.unregisterIndicator}
+                key={rest.indicatorID}
             />
         ));
     }

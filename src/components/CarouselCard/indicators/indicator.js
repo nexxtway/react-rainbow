@@ -25,6 +25,10 @@ export default class Indicator extends Component {
             ref: this.indicatorRef,
         });
     }
+    componentWillUnmount() {
+        const { onDestroy } = this.props;
+        onDestroy(this.indicatorRef);
+    }
 
     getTabIndex(id) {
         if (this.isSelected(id)) {
