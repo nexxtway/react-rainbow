@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, MouseEvent } from 'react';
 import { BaseProps, LookupValue } from '../types';
 
 interface MatchedSubstringsShape {
