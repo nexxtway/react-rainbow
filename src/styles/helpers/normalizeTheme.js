@@ -1,4 +1,5 @@
-import defaultTheme from '../../styles/defaultTheme';
+import defaultTheme from '../defaultTheme';
+import { darken } from './color';
 
 function pickColors(colors, obj = {}) {
     return colors.reduce((seed, color) => {
@@ -19,14 +20,27 @@ function get(obj, path) {
     }, obj);
 }
 
+function normalizeColors(colors) {
+    return Object.keys(colors).reduce((seed, key) => {
+        // eslint-disable-next-line no-param-reassign
+        seed[key] = {
+            main: colors[key],
+            dark: darken(colors[key]),
+        };
+        return seed;
+    }, {});
+}
+
 export default function normalizeTheme(theme) {
     return {
         rainbow: {
             palette: {
                 ...defaultTheme.palette,
-                ...pickColors(
-                    ['brand', 'success', 'error', 'warning'],
-                    get(theme, 'rainbow.palette'),
+                ...normalizeColors(
+                    pickColors(
+                        ['brand', 'success', 'error', 'warning'],
+                        get(theme, 'rainbow.palette'),
+                    ),
                 ),
                 background: {
                     ...defaultTheme.palette.background,

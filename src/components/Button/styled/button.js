@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import {
     COLOR_WHITE,
-    COLOR_BRAND_ACTIVE,
     COLOR_GRAY_1,
     COLOR_GRAY_2,
     COLOR_GRAY_3,
@@ -13,7 +12,7 @@ import {
 } from '../../../styles/colors';
 import { FONT_SIZE_HEADING_SMALL } from '../../../styles/fontSizes';
 import { SHADOW_OUTLINE, SHADOW_5, SHADOW_1 } from '../../../styles/shadows';
-import getTheme from '../../../styles/getTheme';
+import getTheme from '../../../styles/helpers/getTheme';
 
 const StyledButton = styled.button`
     font: inherit;
@@ -28,7 +27,7 @@ const StyledButton = styled.button`
     border-radius: 100px;
     line-height: 2.375rem;
     text-decoration: none;
-    color: ${props => getTheme(props).palette.brand};
+    color: ${props => getTheme(props).palette.brand.main};
     padding: 0 1rem;
     cursor: pointer;
     white-space: normal;
@@ -56,7 +55,7 @@ const StyledButton = styled.button`
 
     &:hover,
     &:focus {
-        color: ${COLOR_BRAND_ACTIVE};
+        color: ${props => getTheme(props).palette.brand.dark};
     }
 
     &:focus {
@@ -65,7 +64,7 @@ const StyledButton = styled.button`
     }
 
     &:active {
-        color: ${COLOR_BRAND_ACTIVE};
+        color: ${props => getTheme(props).palette.brand.dark};
         transform: scale(0.95);
         transition: all 0.2s ease;
     }
@@ -85,7 +84,7 @@ const StyledButton = styled.button`
         `
             background-color: ${COLOR_WHITE};
             border: 1px solid ${COLOR_GRAY_2};
-            color: ${getTheme(props).palette.brand};
+            color: ${getTheme(props).palette.brand.main};
 
             &:hover,
             &:focus,
@@ -100,27 +99,35 @@ const StyledButton = styled.button`
     ${props =>
         props.variant === 'brand' &&
         `
-            background-color: ${getTheme(props).palette.brand};
-            border: 1px solid ${getTheme(props).palette.brand};
-            color: ${COLOR_WHITE};
+            background-color: ${getTheme(props).palette.brand.main};
+            border: 1px solid ${getTheme(props).palette.brand.main};
+            color: ${getTheme(props).palette.getContrastText(getTheme(props).palette.brand.main)};
 
             &:link,
             &:visited,
             &:active {
-                color: ${COLOR_WHITE}
+                color: ${getTheme(props).palette.getContrastText(
+                    getTheme(props).palette.brand.main,
+                )}
             }
 
             &:hover,
             &:focus,
             &:active {
-                background-color: ${COLOR_BRAND_ACTIVE};
-                border-color: ${COLOR_BRAND_ACTIVE};
-                color: ${COLOR_WHITE};
+                background-color: ${getTheme(props).palette.brand.dark};
+                border-color: ${getTheme(props).palette.brand.dark};
+                color: ${getTheme(props).palette.getContrastText(
+                    getTheme(props).palette.brand.dark,
+                )};
             }
         
             &[disabled] {
-                background-color: ${props.isLoading ? getTheme(props).palette.brand : COLOR_GRAY_1};
-                border-color: ${props.isLoading ? getTheme(props).palette.brand : COLOR_GRAY_1};
+                background-color: ${
+                    props.isLoading ? getTheme(props).palette.brand.main : COLOR_GRAY_1
+                };
+                border-color: ${
+                    props.isLoading ? getTheme(props).palette.brand.main : COLOR_GRAY_1
+                };
                 color: ${COLOR_GRAY_2};
             }
         `};
@@ -128,18 +135,20 @@ const StyledButton = styled.button`
         props.variant === 'outline-brand' &&
         `
             background-color: transparent;
-            border: 1px solid ${getTheme(props).palette.brand};
-            color: ${getTheme(props).palette.brand};
+            border: 1px solid ${getTheme(props).palette.brand.main};
+            color: ${getTheme(props).palette.brand.main};
 
             &:hover,
             &:focus,
             &:active {
-                border-color: ${COLOR_BRAND_ACTIVE};
+                border-color: ${getTheme(props).palette.brand.dark};
             }
         
             &[disabled] {
                 background-color: transparent;
-                border-color: ${props.isLoading ? getTheme(props).palette.brand : COLOR_GRAY_2};
+                border-color: ${
+                    props.isLoading ? getTheme(props).palette.brand.main : COLOR_GRAY_2
+                };
                 
             }
         `};

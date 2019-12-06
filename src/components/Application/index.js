@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from './context';
 import legacyStyles from './rainbowLegacyStyles';
-import normalizeTheme from './normalizeTheme';
+import normalizeTheme from '../../styles/helpers/normalizeTheme';
 
 /**
  * This component is used to setup the React Rainbow context for a tree.
