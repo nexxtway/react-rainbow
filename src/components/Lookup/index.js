@@ -110,7 +110,6 @@ class Lookup extends Component {
         const { isOpen: wasOpen } = prevState;
         const { isOpen } = this.state;
         if (!wasOpen && isOpen && this.menuRef.current !== null) {
-            this.scrollTo(0);
             this.updateScrollingArrows();
         }
     }
