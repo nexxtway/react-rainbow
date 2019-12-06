@@ -12,6 +12,7 @@ const StyledOptionsMenu = styled.div`
     margin-top: 0.2rem;
     z-index: 2000;
     transition: all 0.1s linear;
+    padding: 1.15rem 0;
 `;
 
 export default StyledOptionsMenu;
