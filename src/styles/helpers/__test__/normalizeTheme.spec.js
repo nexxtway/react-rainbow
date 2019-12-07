@@ -1,5 +1,5 @@
 import normalizeTheme from '../normalizeTheme';
-import defaultTheme from '../../../styles/defaultTheme';
+import defaultTheme from '../../defaultTheme';
 
 const rainbowTheme = {
     rainbow: defaultTheme,

@@ -14,8 +14,14 @@ export default {
             main: COLOR_BRAND,
             dark: darken(COLOR_BRAND),
         },
-        success: COLOR_SUCCESS,
-        error: COLOR_ERROR,
+        success: {
+            main: COLOR_SUCCESS,
+            dark: darken(COLOR_SUCCESS),
+        },
+        error: {
+            main: COLOR_ERROR,
+            dark: darken(COLOR_ERROR),
+        },
         warning: COLOR_WARNING,
         background: {
             primary: COLOR_WHITE,

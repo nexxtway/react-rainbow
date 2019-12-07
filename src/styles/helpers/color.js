@@ -1,3 +1,5 @@
+import { COLOR_BRAND, COLOR_SUCCESS } from '../colors';
+
 /* eslint-disable no-param-reassign */
 export function hexToRgb(color) {
     color = color.substr(1);
@@ -131,30 +133,22 @@ const dark = {
         primary: '#fff',
     },
 };
-const contrastThreshold = 2;
+// TODO: need to be 3
+const contrastThreshold = 3;
 
 export function getContrastText(background) {
     if (!background) {
         throw new TypeError(`Missing background argument in getContrastText(${background}).`);
     }
+    const isDefaultBackground =
+        background === COLOR_BRAND ||
+        background === COLOR_SUCCESS ||
+        background === darken(COLOR_SUCCESS);
 
     const contrastText =
-        getContrastRatio(background, dark.text.primary) >= contrastThreshold
+        getContrastRatio(background, dark.text.primary) >= contrastThreshold || isDefaultBackground
             ? dark.text.primary
             : light.text.primary;
-
-    if (process.env.NODE_ENV !== 'production') {
-        const contrast = getContrastRatio(background, contrastText);
-        if (contrast < 3) {
-            // eslint-disable-next-line no-console
-            console.error(
-                [
-                    `The contrast ratio of ${contrast}:1 for ${contrastText} on ${background}`,
-                    'falls below the recommended absolute minimum contrast ratio of 3:1.',
-                ].join('\n'),
-            );
-        }
-    }
 
     return contrastText;
 }

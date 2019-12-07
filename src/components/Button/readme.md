@@ -5,23 +5,6 @@ import React from 'react';
 import { Application, Button } from 'react-rainbow-components';
 
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
-    <Button variant="brand" label="Brand" className="rainbow-m-around_medium" />
-    <Button variant="base" label="Button Base" className="rainbow-m-around_medium" />
-    <Button label="Button Neutral" variant="neutral" className="rainbow-m-around_medium" />
-    <Button
-        label="Button Outline Brand"
-        variant="outline-brand"
-        className="rainbow-m-around_medium"
-    />
-    <Application theme={{
-        rainbow: {
-            palette: {
-                brand: '#123fda',
-                success: '#000',
-            },
-        },
-    }}>
-        <Button variant="brand" label="Brand" className="rainbow-m-around_medium" />
         <Button variant="base" label="Button Base" className="rainbow-m-around_medium" />
         <Button label="Button Neutral" variant="neutral" className="rainbow-m-around_medium" />
         <Button
@@ -29,7 +12,6 @@ import { Application, Button } from 'react-rainbow-components';
             variant="outline-brand"
             className="rainbow-m-around_medium"
         />
-    </Application>
 </div>
 ```
 
