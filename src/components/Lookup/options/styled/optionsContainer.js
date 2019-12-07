@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const StyledOptionsContainer = styled.ul`
-    padding: 8px 0;
     overflow-y: auto;
     box-sizing: border-box;
     ${props =>

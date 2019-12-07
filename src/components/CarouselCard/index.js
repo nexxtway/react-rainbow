@@ -22,6 +22,7 @@ export default class CarouselCard extends Component {
         super(props);
         this.container = React.createRef();
         this.registerChild = this.registerChild.bind(this);
+        this.unregisterChild = this.unregisterChild.bind(this);
         this.setActiveItem = this.setActiveItem.bind(this);
         this.handleOnClick = this.handleOnClick.bind(this);
         this.state = {
@@ -29,6 +30,7 @@ export default class CarouselCard extends Component {
             activeItem: undefined,
             isAnimationPaused: this.props.disableAutoScroll,
             privateRegisterChild: this.registerChild,
+            privateUnregisterChild: this.unregisterChild,
         };
         this.containerRef = React.createRef();
     }
@@ -81,6 +83,15 @@ export default class CarouselCard extends Component {
         const { childrenRegistred } = this.state;
         const [...nodes] = getChildTabNodes(this.containerRef.current);
         const newChildren = insertChildOrderly(childrenRegistred, child, nodes);
+        this.setState({
+            childrenRegistred: newChildren,
+            activeItem: newChildren[0].indicatorID,
+        });
+    }
+
+    unregisterChild(indicatorID) {
+        const { childrenRegistred } = this.state;
+        const newChildren = childrenRegistred.filter(child => child.indicatorID !== indicatorID);
         this.setState({
             childrenRegistred: newChildren,
             activeItem: newChildren[0].indicatorID,

@@ -17,7 +17,6 @@ const StyledContent = styled.span`
     }
 
     &[title] {
-        cursor: default;
         text-decoration: none;
     }
 
@@ -39,7 +38,6 @@ const StyledContent = styled.span`
             border: 0;
             border-bottom: 1px dotted;
             text-decoration: none;
-            cursor: help;
         `};
 `;
 
