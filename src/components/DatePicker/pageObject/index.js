@@ -62,15 +62,7 @@ class PageDatePicker {
      * @returns {bool}
      */
     isOpen() {
-        return (
-            $(this.modalRootEl).isDisplayed() &&
-            $(this.modalRootEl)
-                .$('h1')
-                .isDisplayed() &&
-            $(this.modalRootEl)
-                .$('select')
-                .isDisplayed()
-        );
+        return $(this.modalRootEl).isExisting();
     }
 
     /**

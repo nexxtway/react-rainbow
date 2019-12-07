@@ -67,8 +67,10 @@ describe('DatePicker base', () => {
         datePicker.click();
         datePicker.waitUntilOpen();
         expect(datePicker.getValue()).toBe('Friday, 10/25/2019');
-        datePicker.clickDay(31);
-        datePicker.waitUntilClose();
+        browser.execute(() => {
+            const elements = document.querySelectorAll('#datePicker-1_calendar table button');
+            elements[30].click();
+        });
         expect(datePicker.isOpen()).toBe(false);
         expect(datePicker.getValue()).toBe('Thursday, 10/31/2019');
     });
