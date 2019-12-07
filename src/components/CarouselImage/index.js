@@ -43,11 +43,16 @@ class Item extends Component {
                 privateRegisterChild({
                     containerID: this.carouselImageID,
                     indicatorID: this.carouselIndicatorID,
-                    ref: this.itemRef,
+                    ref: this.itemRef.current,
                     header,
                 }),
             0,
         );
+    }
+
+    componentWillUnmount() {
+        const { privateUnregisterChild } = this.props;
+        privateUnregisterChild(this.carouselIndicatorID);
     }
 
     getAnimationDirection() {
