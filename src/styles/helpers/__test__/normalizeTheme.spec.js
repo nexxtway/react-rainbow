@@ -1,6 +1,10 @@
 import normalizeTheme from '../normalizeTheme';
 import defaultTheme from '../../defaultTheme';
 
+jest.mock('../color', () => ({
+    darken: jest.fn(() => '#ccc'),
+}));
+
 const rainbowTheme = {
     rainbow: defaultTheme,
 };
@@ -35,7 +39,7 @@ describe('normalizeTheme', () => {
             normalizeTheme({
                 rainbow: {
                     palette: {
-                        brand: 'fff',
+                        brand: '#fff',
                     },
                 },
             }),
@@ -43,7 +47,10 @@ describe('normalizeTheme', () => {
             rainbow: {
                 palette: {
                     ...defaultTheme.palette,
-                    brand: 'fff',
+                    brand: {
+                        main: '#fff',
+                        dark: '#ccc',
+                    },
                 },
             },
         });
