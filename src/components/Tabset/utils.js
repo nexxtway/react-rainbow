@@ -1,6 +1,6 @@
 export function getChildTabNodes(ref) {
     if (ref) {
-        return ref.querySelectorAll('a[role="tab"]');
+        return ref.querySelectorAll('[role="tab"]');
     }
     return [];
 }
