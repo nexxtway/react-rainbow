@@ -50,6 +50,14 @@ class PageLookupMenuItem {
     isVisible() {
         return $(this.rootElement).isDisplayedInViewport();
     }
+
+    /**
+     *  Wait until the option is visible.
+     * @method
+     */
+    waitUntilIsVisible() {
+        browser.waitUntil(() => this.isVisible());
+    }
 }
 
 module.exports = PageLookupMenuItem;

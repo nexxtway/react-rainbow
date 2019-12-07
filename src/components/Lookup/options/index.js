@@ -43,9 +43,9 @@ function MenuItems(props) {
 }
 
 const sizeMap = {
-    small: 160,
-    medium: 256,
-    large: 400,
+    small: 144,
+    medium: 240,
+    large: 384,
 };
 
 export default class Options extends React.PureComponent {
@@ -79,7 +79,11 @@ export default class Options extends React.PureComponent {
 
         if (items.length === 0) {
             return (
-                <StyledOptionsContainer as="div" data-id="lookup-options-empty-container">
+                <StyledOptionsContainer
+                    ref={this.containerRef}
+                    as="div"
+                    data-id="lookup-options-empty-container"
+                >
                     <StyledSearchIcon />
                     <StyledEmptyMessage>
                         Our robots did not find any match for
@@ -90,7 +94,7 @@ export default class Options extends React.PureComponent {
         }
 
         const resultContainerStyles = {
-            height: itemHeight * items.length + 17,
+            height: itemHeight * items.length,
             maxHeight: this.getMaxHeight(),
         };
 
