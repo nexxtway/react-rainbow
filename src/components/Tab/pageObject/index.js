@@ -54,6 +54,15 @@ class PageTab {
             .$('button[role="tab"]')
             .isDisplayedInViewport();
     }
+
+    /**
+     * Returns the text of the tab item.
+     * @method
+     * @returns {string}
+     */
+    getLabelText() {
+        return $(this.rootElement).getText();
+    }
 }
 
 module.exports = PageTab;

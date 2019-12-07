@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { LEFT_KEY, RIGHT_KEY } from '../../../libs/constants';
 import { getItemIndex } from '../utils';
+import { getChildTabNodes, insertChildOrderly } from './utils';
 import Indicator from './indicator';
 import StyledIndicatorUl from '../styled/indicatorsUl';
 
@@ -12,8 +13,10 @@ const LEFT_SIDE = -1;
 export default class Indicators extends Component {
     constructor(props) {
         super(props);
+        this.container = React.createRef();
         this.handleKeyPressed = this.handleKeyPressed.bind(this);
         this.registerIndicator = this.registerIndicator.bind(this);
+        this.unregisterIndicator = this.unregisterIndicator.bind(this);
         this.keyHandlerMap = {
             [RIGHT_KEY]: () => this.selectIndicator(RIGHT_SIDE),
             [LEFT_KEY]: () => this.selectIndicator(LEFT_SIDE),
@@ -31,8 +34,17 @@ export default class Indicators extends Component {
 
     registerIndicator(indicator) {
         const { indicatorsRefs } = this.state;
-        const newRefs = indicatorsRefs.concat([indicator]);
+        const [...nodes] = getChildTabNodes(this.container.current);
+        const newRefs = insertChildOrderly(indicatorsRefs, indicator, nodes);
         this.setState({ indicatorsRefs: newRefs });
+    }
+
+    unregisterIndicator(indicator) {
+        const { indicatorsRefs } = this.state;
+        const newChildren = indicatorsRefs.filter(child => child.ref !== indicator);
+        this.setState({
+            indicatorsRefs: newChildren,
+        });
     }
 
     selectIndicator(side) {
@@ -62,20 +74,25 @@ export default class Indicators extends Component {
 
     renderIndicators() {
         const { carouselChildren, onSelect, selectedItem } = this.props;
-        return carouselChildren.map(child => (
+        return carouselChildren.map(({ ref, ...rest }) => (
             <Indicator
-                {...child}
+                {...rest}
                 onSelect={onSelect}
                 selectedItem={selectedItem}
                 onCreate={this.registerIndicator}
-                key={child.indicatorID}
+                onDestroy={this.unregisterIndicator}
+                key={rest.indicatorID}
             />
         ));
     }
 
     render() {
         return (
-            <StyledIndicatorUl role="tablist" onKeyDown={this.handleKeyPressed}>
+            <StyledIndicatorUl
+                role="tablist"
+                onKeyDown={this.handleKeyPressed}
+                ref={this.container}
+            >
                 {this.renderIndicators()}
             </StyledIndicatorUl>
         );

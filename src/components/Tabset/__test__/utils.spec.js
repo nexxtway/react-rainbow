@@ -53,9 +53,9 @@ describe('<Tabset/> utils', () => {
         const ref = {
             querySelectorAll: jest.fn(() => elements),
         };
-        it('should call querySelectorAll with a[role="tab"]', () => {
+        it('should call querySelectorAll with [role="tab"]', () => {
             getChildTabNodes(ref);
-            expect(ref.querySelectorAll).toHaveBeenCalledWith('a[role="tab"]');
+            expect(ref.querySelectorAll).toHaveBeenCalledWith('[role="tab"]');
         });
         it('should return the elements resolved by querySelectorAll', () => {
             expect(getChildTabNodes(ref)).toEqual(elements);

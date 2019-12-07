@@ -373,3 +373,90 @@ import { faBell } from '@fortawesome/free-solid-svg-icons';
     </GlobalHeader>
 </div>
 ```
+##### ButtonMenu with MenuItems changed dynamically
+
+```js
+import React from 'react';
+import {
+    ButtonGroup,
+    ButtonMenu,
+    MenuItem,
+    ButtonIcon
+} from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+    faPencilAlt,
+    faAngleDown,
+    faPaste,
+    faPlus
+} from '@fortawesome/free-solid-svg-icons';
+
+
+class ButtonMenuExample extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isMenuItemAdded: false,
+        };
+    }
+
+    addNewMenuItem() {
+        const { isMenuItemAdded } = this.state;
+        this.setState({ isMenuItemAdded: !isMenuItemAdded  });
+    }
+
+    renderNewMenuItem() {
+        const { isMenuItemAdded } = this.state;
+        if (isMenuItemAdded) {
+            return (
+                <MenuItem label="Menu Item New" />
+            );
+        }
+        return null;
+    }
+
+    render() {
+        return (
+            <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
+                <GlobalHeader
+                    src="images/user/user3.jpg"
+                    className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large"
+                >
+                    <ButtonGroup>
+                        <ButtonIcon 
+                            icon={<FontAwesomeIcon icon={faPencilAlt} />}
+                            variant="border-filled"
+                            disabled
+                        />
+                        <ButtonIcon
+                            icon={<FontAwesomeIcon icon={faPaste} />}
+                            variant="border-filled"
+                            disabled
+                        />
+                        <ButtonMenu
+                            id="button-menu-17"
+                            menuAlignment="right"
+                            menuSize="x-small"
+                            icon={<FontAwesomeIcon icon={faAngleDown} />}
+                        >
+                            <MenuItem label="Menu Item One" />
+                            {this.renderNewMenuItem()}
+                            <MenuItem label="Menu Item Two" />
+                            <MenuItem label="Menu Item Three" />
+                        </ButtonMenu>
+                    </ButtonGroup>
+
+                    <ButtonIcon
+                        id="button-icon_add-new-menu-item"
+                        className="rainbow-m-left_small"
+                        onClick={() => this.addNewMenuItem()}
+                        variant="border-filled"
+                        icon={<FontAwesomeIcon icon={faPlus} />}
+                    />
+                </GlobalHeader>
+            </div>
+        );
+    }
+}
+<ButtonMenuExample/>
+```
