@@ -38,10 +38,12 @@ const orangeTheme = {
     },
 };
 
-const greenTheme = {
+const cyanTheme = {
     rainbow: {
         palette: {
-            brand: '#1AD1A3',
+            brand: '#80deea',
+            success: '#b9f6ca',
+            error: '#ff5252',
         },
     },
 };
@@ -57,18 +59,8 @@ const deepPurpleTheme = {
 const yellowTheme = {
     rainbow: {
         palette: {
-            brand: '#FFCC00',
+            brand: '#ffcc00',
             success: '#aeea00',
-            error: '#ff5252',
-        },
-    },
-};
-
-const cyanTheme = {
-    rainbow: {
-        palette: {
-            brand: '#80deea',
-            success: '#b9f6ca',
             error: '#ff5252',
         },
     },
@@ -116,9 +108,9 @@ export default function Wrapper(props) {
                         onClick={() => setTheme(orangeTheme)}
                     />
                     <MenuItem
-                        label="Green"
-                        icon={<StyledColorBox rainbowTheme={greenTheme.rainbow} />}
-                        onClick={() => setTheme(greenTheme)}
+                        label="Cyan"
+                        icon={<StyledColorBox rainbowTheme={cyanTheme.rainbow} />}
+                        onClick={() => setTheme(cyanTheme)}
                     />
                     <MenuItem
                         label="Yellow"
@@ -129,11 +121,6 @@ export default function Wrapper(props) {
                         label="Deep Purple"
                         icon={<StyledColorBox rainbowTheme={deepPurpleTheme.rainbow} />}
                         onClick={() => setTheme(deepPurpleTheme)}
-                    />
-                    <MenuItem
-                        label="Cyan"
-                        icon={<StyledColorBox rainbowTheme={cyanTheme.rainbow} />}
-                        onClick={() => setTheme(cyanTheme)}
                     />
                 </StyledPickerTheme>
             </StyledTopBar>
