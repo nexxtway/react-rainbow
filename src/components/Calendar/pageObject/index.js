@@ -48,16 +48,10 @@ class PageCalendar {
      * @method
      */
     clickDay(day) {
-        const calendarDayObj = `${this.rootElement} table button`;
-        browser.execute(
-            (pday, pcalendarDayObj) => {
-                const buttonEls = document.querySelectorAll(pcalendarDayObj);
-                const buttonEl = buttonEls[pday - 1];
-                if (buttonEl) buttonEl.click();
-            },
-            day,
-            calendarDayObj,
-        );
+        const buttonEl = $(this.rootElement)
+            .$('table')
+            .$(`button=${day}`);
+        if (buttonEl.isExisting()) buttonEl.click();
     }
 
     /**
