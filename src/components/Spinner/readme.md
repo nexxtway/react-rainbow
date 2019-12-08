@@ -21,7 +21,7 @@ import React from 'react';
 import { Spinner } from 'react-rainbow-components';
 
 const containerStyles = {
-    borderRadius: '0.875rem',
+    borderRadius: '0 0 0.875rem 0.875rem',
 };
 
 <div
@@ -85,7 +85,7 @@ import { Spinner } from 'react-rainbow-components';
 
 const containerStyles = {
     backgroundColor: '#061c3f',
-    borderRadius: '0.875rem',
+    borderRadius: '0 0 0.875rem 0.875rem',
 };
 
 const textStyles = {

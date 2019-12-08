@@ -101,7 +101,7 @@ const options = [
 
 const buttonsContainerStyles = {
     backgroundColor: '#061c3f',
-    borderRadius: '0.875rem',
+    borderRadius: '0 0 0.875rem 0.875rem',
 };
 
 class RadioButtonGroupInverse extends React.Component {

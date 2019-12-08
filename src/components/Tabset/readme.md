@@ -8,7 +8,7 @@ import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const tabsContainerStyles = {
     backgroundColor: 'white',
-    borderRadius: '0.875rem',
+    borderRadius: '0 0 0.875rem 0.875rem',
 };
 
 class TabsetExample extends React.Component {
@@ -158,7 +158,7 @@ import { faClock, faStar } from '@fortawesome/free-regular-svg-icons';
 
 const tabsContainerStyles = {
     backgroundColor: 'white',
-    borderRadius: '0.875rem',
+    borderRadius: '0 0 0.875rem 0.875rem',
 };
 
 class TabsetExample extends React.Component {
@@ -313,7 +313,7 @@ import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const tabsContainerStyles = {
     backgroundColor: 'white',
-    borderRadius: '0.875rem',
+    borderRadius: '0 0 0.875rem 0.875rem',
 };
 
 class TabsetExample extends React.Component {
@@ -584,7 +584,7 @@ import {
 
 const tabsContainerStyles = {
     backgroundColor: 'white',
-    borderRadius: '0.875rem',
+    borderRadius: '0 0 0.875rem 0.875rem',
 };
 
 class TabsetExample extends React.Component {

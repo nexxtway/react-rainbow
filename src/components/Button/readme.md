@@ -129,7 +129,7 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 const buttonsContainerStyles = {
     backgroundColor: '#061c3f',
-    borderRadius: '0.875rem',
+    borderRadius: '0 0 0.875rem 0.875rem',
 };
 
 <div

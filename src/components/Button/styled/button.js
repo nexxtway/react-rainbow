@@ -228,6 +228,7 @@ const StyledButton = styled.button.attrs(props => {
             &:hover,
             &:focus {
                 background-color: ${props.errorDarkColor};
+                border-color: ${props.errorDarkColor};
                 color: ${errorDarkContrastText};
             }
 

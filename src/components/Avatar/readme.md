@@ -77,7 +77,7 @@ import React from 'react';
 import { Avatar } from 'react-rainbow-components';
 
 const avatarContainerStyles = {
-    borderRadius: '0.875rem',
+    borderRadius: '0 0 0.875rem 0.875rem',
 };
 
 <div

@@ -11,7 +11,7 @@ const containerStyles = {
 };
 
 <div style={containerStyles}>
-    <header className="rainbow-align-content_space-between rainbow-p-vertical_small rainbow-p-horizontal_medium react-rainbow-golbal-header rainbow-background-color_white">
+    <header className="rainbow-align-content_space-between rainbow-p-vertical_small rainbow-p-horizontal_medium react-rainbow-global-header rainbow-background-color_white">
         <img src="images/rainbow-logo.svg" height="40" width="40" alt="rainbow logo" />
         <div className="rainbow-flex rainbow-align_center">
             <AvatarMenu
