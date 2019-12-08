@@ -13,9 +13,9 @@ export default function PlaygroundRenderer(props) {
 
     return (
         <div className="rainbow-position_relative rainbow-m-bottom_large">
-            {toolbar}
             <article {...rest} className="react-rainbow-playground" data-preview={name}>
                 {preview}
+                {toolbar}
             </article>
             <div className="rainbow-flex rainbow-justify_end rainbow-p-vertical_xx-small">
                 {tabButtons}

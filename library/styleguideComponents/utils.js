@@ -11,8 +11,9 @@ const pages = [
     'CreateProfile',
     'Team',
     'SocialIconsSet',
+    '',
 ];
 
 export default function isNotComponentPage(name) {
-    return pages.some(page => page === name);
+    return pages.indexOf(name) !== -1 || name === undefined;
 }

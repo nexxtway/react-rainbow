@@ -3,6 +3,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExpandArrowsAlt, faCompress } from '@fortawesome/free-solid-svg-icons';
+import ExpandArrow from '../../exampleComponents/Icons/expandArrow';
+import CompressArrow from '../../exampleComponents/Icons/compressArrow';
 import './styles.css';
 
 function resolveHref() {
@@ -28,7 +30,7 @@ export default function ToolbarButton(props) {
                 aria-label={title}
                 onClick={reafreshAds}
             >
-                <FontAwesomeIcon icon={faExpandArrowsAlt} className="rainbow-color_gray-4" />
+                <ExpandArrow />
             </a>
         );
     }
@@ -42,7 +44,7 @@ export default function ToolbarButton(props) {
                 aria-label={title}
                 onClick={reafreshAds}
             >
-                <FontAwesomeIcon icon={faCompress} className="rainbow-color_gray-4" />
+                <CompressArrow />
             </a>
         );
     }
