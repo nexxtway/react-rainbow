@@ -68,6 +68,7 @@ describe('DatePicker base', () => {
         datePicker.waitUntilOpen();
         expect(datePicker.getValue()).toBe('Friday, 10/25/2019');
         datePicker.clickDay(31);
+        datePicker.waitUntilClose();
         expect(datePicker.isOpen()).toBe(false);
         expect(datePicker.getValue()).toBe('Thursday, 10/31/2019');
     });
