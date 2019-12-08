@@ -1,7 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
-import Badge from '../../../components/Badge';
-import { ButtonMenu } from '../../../src/components/index';
+import { ButtonMenu, Badge } from '../../../src/components/index';
 import { COLOR_WHITE, COLOR_BRAND } from '../../../src/styles/colors';
 
 export const StyledTopBar = styled.header`
