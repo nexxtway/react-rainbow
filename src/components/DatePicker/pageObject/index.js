@@ -53,7 +53,15 @@ class PageDatePicker {
      * @method
      */
     clickDay(day) {
-        new PageCalendar(this.calendarRootEl).clickDay(day);
+        const calendarDayObj = `${this.calendarRootEl} table button`;
+        browser.execute(
+            (pday, pcalendarDayObj) => {
+                const elements = document.querySelectorAll(pcalendarDayObj);
+                elements[pday - 1].click();
+            },
+            day,
+            calendarDayObj,
+        );
     }
 
     /**
@@ -62,7 +70,15 @@ class PageDatePicker {
      * @returns {bool}
      */
     isOpen() {
-        return $(this.modalRootEl).isExisting();
+        return (
+            $(this.modalRootEl).isDisplayed() &&
+            $(this.modalRootEl)
+                .$('h1')
+                .isDisplayed() &&
+            $(this.modalRootEl)
+                .$('select')
+                .isDisplayed()
+        );
     }
 
     /**
