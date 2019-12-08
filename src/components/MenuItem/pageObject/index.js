@@ -36,6 +36,15 @@ class PageMenuItem {
     hover() {
         $(this.rootElement).moveTo();
     }
+
+    /**
+     * Returns the label text of the menu item.
+     * @method
+     * @returns {string}
+     */
+    getLabelText() {
+        return $(this.rootElement).getText();
+    }
 }
 
 module.exports = PageMenuItem;
