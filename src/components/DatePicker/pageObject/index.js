@@ -53,15 +53,7 @@ class PageDatePicker {
      * @method
      */
     clickDay(day) {
-        const calendarDayObj = `${this.calendarRootEl} table button`;
-        browser.execute(
-            (pday, pcalendarDayObj) => {
-                const elements = document.querySelectorAll(pcalendarDayObj);
-                elements[pday - 1].click();
-            },
-            day,
-            calendarDayObj,
-        );
+        new PageCalendar(this.calendarRootEl).clickDay(day);
     }
 
     /**
