@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 import { COLOR_WHITE, COLOR_BRAND, COLOR_GRAY_2, COLOR_GRAY_4 } from '../../../styles/colors';
+import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledContainer = styled.span`
+const StyledContainer = styled.span.attrs(props => {
+    const brandMainColor = getTheme(props).palette.brand.main;
+    return { brandMainColor };
+})`
     color: ${COLOR_GRAY_4};
     background-color: ${COLOR_GRAY_2};
     border: 1px solid;
@@ -32,14 +36,14 @@ const StyledContainer = styled.span`
         props.variant === 'brand' &&
         `
             color: ${COLOR_WHITE};
-            background-color: ${COLOR_BRAND};
+            background-color: ${props.brandMainColor};
         `};
     ${props =>
         props.variant === 'outline-brand' &&
         `
-            color: ${COLOR_BRAND};
+            color: ${props.brandMainColor};
             background-color: transparent;
-            border-color: ${COLOR_BRAND};
+            border-color: ${props.brandMainColor};
         `};
     ${props =>
         props.variant === 'inverse' &&
