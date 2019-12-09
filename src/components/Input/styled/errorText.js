@@ -9,7 +9,7 @@ function getAlignSelf(props) {
 
 const ErrorText = styled.div.attrs(props => {
     const errorMainColor = getTheme(props).palette.error.main;
-    return { errorMainColor: errorMainColor };
+    return { errorMainColor };
 })`
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
     margin-top: ${MARGIN_X_SMALL};
