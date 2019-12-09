@@ -1,7 +1,11 @@
 import styled from 'styled-components';
-import { COLOR_WHITE, COLOR_BRAND } from '../../../styles/colors';
+import { COLOR_WHITE } from '../../../styles/colors';
+import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledContainer = styled.li`
+const StyledContainer = styled.li.attrs(props => {
+    const brandMainColor = getTheme(props).palette.brand.main;
+    return { brandMainColor };
+})`
     position: relative;
     display: flex;
     justify-content: center;
@@ -33,7 +37,7 @@ const StyledContainer = styled.li`
         props.isActive &&
         `
             background-color: ${COLOR_WHITE};
-            color: ${COLOR_BRAND};
+            color: ${props.brandMainColor};
             border-radius: 14px 14px 0 0;
             z-index: 2;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);

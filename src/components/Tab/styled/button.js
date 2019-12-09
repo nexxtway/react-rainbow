@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 import { PADDING_X_SMALL } from '../../../styles/paddings';
 import { FONT_SIZE_TEXT_SMALL, FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
-import { COLOR_GRAY_4, COLOR_WHITE, COLOR_BRAND, COLOR_GRAY_3 } from '../../../styles/colors';
+import { COLOR_GRAY_4, COLOR_WHITE, COLOR_GRAY_3 } from '../../../styles/colors';
+import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledAnchor = styled.button`
+const StyledAnchor = styled.button.attrs(props => {
+    const brandMainColor = getTheme(props).palette.brand.main;
+    return { brandMainColor };
+})`
     font: inherit;
     background: none;
     border: none;
@@ -71,7 +75,7 @@ const StyledAnchor = styled.button`
     @media (max-width: 600px) {
         height: 100%;
         border-radius: 0;
-        color: ${COLOR_BRAND};
+        color: ${props => props.brandMainColor};
         font-size: ${FONT_SIZE_TEXT_MEDIUM};
         width: 100%;
         padding: 0 1rem 0 1rem;
@@ -100,13 +104,13 @@ const StyledAnchor = styled.button`
         `
             z-index: 2;
             background-color: ${COLOR_WHITE};
-            color: ${COLOR_BRAND};
+            color: ${props.brandMainColor};
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
             border-radius: 14px 14px 0 0;
 
             &:hover, &:active, &:visited, &:focus {
                 background-color: ${COLOR_WHITE};
-                color: ${COLOR_BRAND};
+                color: ${props.brandMainColor};
             }
 
             &::after {
