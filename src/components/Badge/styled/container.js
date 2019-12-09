@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { COLOR_WHITE, COLOR_BRAND, COLOR_GRAY_2, COLOR_GRAY_4 } from '../../../styles/colors';
+import { COLOR_WHITE, COLOR_GRAY_2, COLOR_GRAY_4 } from '../../../styles/colors';
 import getTheme from '../../../styles/helpers/getTheme';
 
 const StyledContainer = styled.span.attrs(props => {
