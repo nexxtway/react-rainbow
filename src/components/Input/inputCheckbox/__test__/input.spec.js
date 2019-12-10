@@ -40,9 +40,11 @@ describe('<InputCheckbox/>', () => {
         const component = mount(<InputCheckbox label="custom label" disabled />);
         expect(component.find('Label').props()).toEqual({
             label: 'custom label',
-            hideLabel: false,
             disabled: true,
-            inputId: expect.any(String),
+            inputId: 'input-checkbox-24',
+            id: undefined,
+            hideLabel: false,
+            variant: 'neutral',
         });
     });
     it('should set checked prop passed in input element', () => {

@@ -42,7 +42,9 @@ describe('<InputRadio/>', () => {
             label: 'custom label',
             hideLabel: false,
             disabled: true,
-            inputId: expect.any(String),
+            inputId: 'input-radio-24',
+            id: undefined,
+            variant: 'neutral',
         });
     });
     it('should set checked prop passed in input element', () => {
