@@ -32,10 +32,7 @@ const Radio = styled(HiddenElement).attrs(props => {
         display: inline-block;
         position: relative;
         vertical-align: middle;
-        border: ${props =>
-            props.error
-                ? `2px solid ${props.errorMainColor}`
-                : `1px solid ${props.brandMainColor}`};
+        border: ${props => `1px solid ${props.brandMainColor}`};
         border-radius: ${BORDER_RADIUS_2};
         background: ${COLOR_WHITE};
         margin-right: ${MARGIN_SMALL};
@@ -88,6 +85,25 @@ const Radio = styled(HiddenElement).attrs(props => {
         background: ${COLOR_WHITE};
         box-sizing: border-box;
     }
+
+    ${props =>
+        props.error &&
+        `
+            border: 2px solid ${props.errorMainColor};
+
+            :checked ~ label > .rainbow-input_faux {
+                border-color: ${props.errorMainColor};
+        
+                &::after {
+                    background: ${props.errorMainColor};
+                }
+            }
+
+            :focus ~ label > .rainbow-input_faux {
+                border-color: ${props.errorMainColor};
+                box-shadow: ${props.errorShadow};
+            }
+        `};
 `;
 
 export default Radio;
