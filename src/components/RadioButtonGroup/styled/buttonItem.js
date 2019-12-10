@@ -46,6 +46,7 @@ const StyledButtonItem = styled.span.attrs(props => {
         padding: 0;
         position: absolute;
     }
+
     ${props => {
         const brandMainContrastText = props.getContrastText(props.brandMainColor);
         const brandDarkContrastText = props.getContrastText(props.brandDarkColor);
@@ -77,6 +78,7 @@ const StyledButtonItem = styled.span.attrs(props => {
         `
         );
     }};
+
     ${props => {
         const brandMainContrastText = props.getContrastText(props.brandMainColor);
         const brandDarkContrastText = props.getContrastText(props.brandDarkColor);
@@ -110,6 +112,7 @@ const StyledButtonItem = styled.span.attrs(props => {
         `
         );
     }};
+
     ${props =>
         props.isChecked &&
         `
@@ -122,6 +125,7 @@ const StyledButtonItem = styled.span.attrs(props => {
                 cursor: pointer;
             }
         `};
+
     ${props =>
         props.disabled &&
         `
