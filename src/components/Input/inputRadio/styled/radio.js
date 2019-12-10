@@ -1,45 +1,41 @@
 import styled from 'styled-components';
 import HiddenElement from '../../../Structural/hiddenElement';
-import {
-    COLOR_GRAY_1,
-    COLOR_GRAY_2,
-    COLOR_WHITE,
-    COLOR_BRAND,
-    COLOR_ERROR,
-} from '../../../../styles/colors';
+import { COLOR_GRAY_1, COLOR_GRAY_2, COLOR_WHITE } from '../../../../styles/colors';
 import { BORDER_RADIUS_2 } from '../../../../styles/borderRadius';
 import { MARGIN_SMALL } from '../../../../styles/margins';
-import { SHADOW_OUTLINE, SHADOW_ERROR } from '../../../../styles/shadows';
+import getTheme from '../../../../styles/helpers/getTheme';
 
-function getInitialBorder(props) {
-    if (props.error) {
-        return `2px solid ${COLOR_ERROR}`;
-    }
-    return `1px solid ${COLOR_GRAY_2}`;
-}
+const Radio = styled(HiddenElement).attrs(props => {
+    const theme = getTheme(props);
+    const { getContrastText, brand, success, error } = theme.palette;
+    const { main: brandMainColor, dark: brandDarkColor } = brand;
+    const { main: successMainColor, dark: successDarkColor } = success;
+    const { main: errorMainColor, dark: errorDarkColor } = error;
 
-function getColor(props) {
-    if (props.error) {
-        return COLOR_ERROR;
-    }
-    return COLOR_BRAND;
-}
-
-function getShadow(props) {
-    if (props.error) {
-        return SHADOW_ERROR;
-    }
-    return SHADOW_OUTLINE;
-}
-
-const Radio = styled(HiddenElement)`
+    return {
+        brandMainColor,
+        brandDarkColor,
+        successMainColor,
+        successDarkColor,
+        errorMainColor,
+        errorDarkColor,
+        getContrastText,
+        // TODO: move up to defaultTheme or normalizeTheme
+        brandShadow: `0 0 2px ${brandMainColor}`,
+        successShadow: `0 0 2px ${successMainColor}`,
+        errorShadow: `0 0 2px ${errorMainColor}`,
+    };
+})`
     & ~ label > .rainbow-input_faux {
         width: 20px;
         height: 20px;
         display: inline-block;
         position: relative;
         vertical-align: middle;
-        border: ${getInitialBorder};
+        border: ${props =>
+            props.error
+                ? `2px solid ${props.errorMainColor}`
+                : `1px solid ${props.brandMainColor}`};
         border-radius: ${BORDER_RADIUS_2};
         background: ${COLOR_WHITE};
         margin-right: ${MARGIN_SMALL};
@@ -66,21 +62,21 @@ const Radio = styled(HiddenElement)`
     :checked ~ label > .rainbow-input_faux {
         background: ${COLOR_WHITE};
         border: 2px solid;
-        border-color: ${getColor};
+        border-color: ${props => (props.error ? props.errorMainColor : props.brandMainColor)};
 
         &::after {
             opacity: 1;
             transform: scale(1, 1);
             transition: all 0.2s ease-in;
-            background: ${getColor};
+            background: ${props => (props.error ? props.errorMainColor : props.brandMainColor)};
             box-sizing: border-box;
         }
     }
 
     :focus ~ label > .rainbow-input_faux {
         border: 2px solid;
-        border-color: ${getColor};
-        box-shadow: ${getShadow};
+        border-color: ${props => (props.error ? props.errorMainColor : props.brandMainColor)};
+        box-shadow: ${props => (props.error ? props.errorShadow : props.brandShadow)};
     }
 
     &[disabled] ~ label > .rainbow-input_faux {

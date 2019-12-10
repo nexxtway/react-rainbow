@@ -32,10 +32,24 @@ ButtonItems.propTypes = {
     onChange: PropTypes.func,
     name: PropTypes.string.isRequired,
     required: PropTypes.bool.isRequired,
+    /** The variant changes the appearance of the ButtonItems.
+     * Accepted variants include base, neutral, brand, outline-brand, destructive,
+     * success, inverse and border-inverse. */
+    variant: PropTypes.oneOf([
+        'base',
+        'neutral',
+        'brand',
+        'outline-brand',
+        'destructive',
+        'success',
+        'inverse',
+        'border-inverse',
+    ]),
 };
 
 ButtonItems.defaultProps = {
     ariaDescribedby: undefined,
     value: undefined,
     onChange: () => {},
+    variant: 'neutral',
 };

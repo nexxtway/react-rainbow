@@ -53,6 +53,7 @@ export default class Radio extends Component {
             error,
             label,
             hideLabel,
+            variant,
         } = this.props;
 
         return (
@@ -75,6 +76,7 @@ export default class Radio extends Component {
                     aria-describedby={ariaDescribedBy}
                     ref={this.inputRef}
                     error={error}
+                    variant={variant}
                 />
                 <Label
                     label={label}
@@ -82,6 +84,7 @@ export default class Radio extends Component {
                     disabled={disabled}
                     inputId={this.inputId}
                     id={ariaLabelledBy}
+                    variant={variant}
                 />
             </StyledContainer>
         );
@@ -104,6 +107,19 @@ Radio.propTypes = {
     hideLabel: PropTypes.bool,
     ariaLabelledBy: PropTypes.string,
     ariaDescribedBy: PropTypes.string,
+    /** The variant changes the appearance of the Radio.
+     * Accepted variants include base, neutral, brand, outline-brand, destructive,
+     * success, inverse and border-inverse. */
+    variant: PropTypes.oneOf([
+        'base',
+        'neutral',
+        'brand',
+        'outline-brand',
+        'destructive',
+        'success',
+        'inverse',
+        'border-inverse',
+    ]),
 };
 
 Radio.defaultProps = {
@@ -122,4 +138,5 @@ Radio.defaultProps = {
     hideLabel: false,
     ariaLabelledBy: undefined,
     ariaDescribedBy: undefined,
+    variant: 'neutral',
 };

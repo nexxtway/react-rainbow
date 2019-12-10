@@ -4,7 +4,7 @@ import HiddenElement from '../../Structural/hiddenElement';
 import StyledLabelText from './labelText';
 
 export default function Label(props) {
-    const { label, disabled, hideLabel, inputId, id } = props;
+    const { label, disabled, hideLabel, inputId, id, variant } = props;
 
     if (hideLabel) {
         return (
@@ -18,7 +18,9 @@ export default function Label(props) {
     return (
         <label htmlFor={inputId} id={id}>
             <span className="rainbow-input_faux" />
-            <StyledLabelText disabled={disabled}>{label}</StyledLabelText>
+            <StyledLabelText disabled={disabled} variant={variant}>
+                {label}
+            </StyledLabelText>
         </label>
     );
 }
@@ -29,6 +31,19 @@ Label.propTypes = {
     disabled: PropTypes.bool,
     hideLabel: PropTypes.bool,
     id: PropTypes.string,
+    /** The variant changes the appearance of the Label.
+     * Accepted variants include base, neutral, brand, outline-brand, destructive,
+     * success, inverse and border-inverse. */
+    variant: PropTypes.oneOf([
+        'base',
+        'neutral',
+        'brand',
+        'outline-brand',
+        'destructive',
+        'success',
+        'inverse',
+        'border-inverse',
+    ]),
 };
 
 Label.defaultProps = {
@@ -37,4 +52,5 @@ Label.defaultProps = {
     disabled: false,
     hideLabel: false,
     id: undefined,
+    variant: 'neutral',
 };

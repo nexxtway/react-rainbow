@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import withReduxForm from './../../libs/hocs/withReduxForm';
-import RadioItmes from './radioItems';
+import RadioItems from './radioItems';
 import RenderIf from '../RenderIf';
 import RequiredAsterisk from '../RequiredAsterisk';
 import { uniqueId } from '../../libs/utils';
@@ -40,24 +40,26 @@ class RadioGroup extends Component {
             options,
             value,
             id,
+            variant,
         } = this.props;
 
         return (
-            <StyledFieldset id={id} className={className} style={style}>
+            <StyledFieldset id={id} className={className} style={style} variant={variant}>
                 <RenderIf isTrue={!!label}>
-                    <StyledLegend>
+                    <StyledLegend variant={variant}>
                         <RequiredAsterisk required={required} />
                         {label}
                     </StyledLegend>
                 </RenderIf>
                 <StyledContentContainer>
-                    <RadioItmes
+                    <RadioItems
                         value={value}
                         onChange={onChange}
                         options={options}
                         name={this.groupNameId}
                         ariaDescribedby={this.getErrorMessageId()}
                         error={error}
+                        variant={variant}
                     />
                 </StyledContentContainer>
                 <RenderIf isTrue={!!error}>
@@ -95,6 +97,19 @@ RadioGroup.propTypes = {
     style: PropTypes.object,
     /** The id of the outer element. */
     id: PropTypes.string,
+    /** The variant changes the appearance of the radio group.
+     * Accepted variants include base, neutral, brand, outline-brand, destructive,
+     * success, inverse and border-inverse. */
+    variant: PropTypes.oneOf([
+        'base',
+        'neutral',
+        'brand',
+        'outline-brand',
+        'destructive',
+        'success',
+        'inverse',
+        'border-inverse',
+    ]),
 };
 
 RadioGroup.defaultProps = {
@@ -108,6 +123,7 @@ RadioGroup.defaultProps = {
     options: [],
     error: null,
     id: undefined,
+    variant: 'neutral',
 };
 
 export default withReduxForm(RadioGroup);

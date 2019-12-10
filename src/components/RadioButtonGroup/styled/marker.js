@@ -1,11 +1,22 @@
 /* stylelint-disable max-line-length */
 import styled from 'styled-components';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
-import { COLOR_WHITE, COLOR_BRAND } from '../../../styles/colors';
+import { SHADOW_5 } from '../../../styles/shadows';
+import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledMarker = styled.span`
+const StyledMarker = styled.span.attrs(props => {
+    const theme = getTheme(props);
+    const { getContrastText, brand } = theme.palette;
+    const { main: brandMainColor, dark: brandDarkColor } = brand;
+
+    return {
+        brandMainColor,
+        brandDarkColor,
+        getContrastText,
+    };
+})`
     position: absolute;
-    background: ${COLOR_WHITE};
+    background-color: ${props => props.brandMainColor};
     opacity: 0;
     top: 0;
     bottom: 0;
@@ -23,15 +34,15 @@ const StyledMarker = styled.span`
         props.variant === 'inverse' &&
         `
             box-shadow: 0 0 4px 0 #029bd3;
-            background-color: #029bd3;
-            border: solid 1px #009acf;
+            background-color: ${props.brandMainColor};
+            border-color: ${props.brandMainColor};
         `};
     ${props =>
         props.variant === 'brand' &&
         `
-            background-color: ${COLOR_BRAND};
-            border-color: #01aae5;
-            box-shadow: 0 0 3px 0 rgba(1, 38, 96, 0.4); 
+            background-color: ${props.brandMainColor};
+            border-color: ${props.brandMainColor};
+            box-shadow: ${SHADOW_5};
         `};
 `;
 

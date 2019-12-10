@@ -1,18 +1,23 @@
 import styled from 'styled-components';
-import {
-    COLOR_GRAY_4,
-    COLOR_GRAY_3,
-    COLOR_GRAY_2,
-    COLOR_DARK_1,
-    COLOR_WHITE,
-} from '../../../styles/colors';
+import { COLOR_GRAY_4, COLOR_GRAY_2 } from '../../../styles/colors';
 import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
 import { PADDING_LARGE } from '../../../styles/paddings';
+import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledButtonItemLabel = styled.label`
+const StyledButtonItemLabel = styled.label.attrs(props => {
+    const theme = getTheme(props);
+    const { getContrastText, brand } = theme.palette;
+    const { main: brandMainColor, dark: brandDarkColor } = brand;
+
+    return {
+        brandMainColor,
+        brandDarkColor,
+        getContrastText,
+    };
+})`
     display: inline-flex;
     font-size: ${FONT_SIZE_TEXT_LARGE};
-    color: ${COLOR_GRAY_3};
+    color: ${props => props.brandMainColor};
     padding: 0 ${PADDING_LARGE};
     font-weight: 400;
     box-sizing: border-box;
@@ -21,11 +26,16 @@ const StyledButtonItemLabel = styled.label`
         cursor: pointer;
     }
 
-    ${props =>
-        props.isChecked &&
-        `
-            color: ${COLOR_DARK_1};
-        `};
+    ${props => {
+        const brandDarkContrastText = props.getContrastText(props.brandDarkColor);
+
+        return (
+            props.isChecked &&
+            `
+                color: ${brandDarkContrastText};
+            `
+        );
+    }};
     ${props =>
         props.disabled &&
         `   
@@ -37,18 +47,6 @@ const StyledButtonItemLabel = styled.label`
             :hover {
                 cursor: not-allowed;
             }
-        `};
-    ${props =>
-        props.variant === 'brand' &&
-        props.isChecked &&
-        `
-            color: ${COLOR_WHITE};
-        `};
-    ${props =>
-        props.variant === 'inverse' &&
-        props.isChecked &&
-        `
-            color: ${COLOR_WHITE};
         `};
 `;
 
