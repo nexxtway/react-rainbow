@@ -1,12 +1,6 @@
 /* stylelint-disable max-line-length */
 import styled from 'styled-components';
-import {
-    COLOR_WHITE,
-    COLOR_GRAY_1,
-    COLOR_GRAY_2,
-    COLOR_GRAY_3,
-    COLOR_GRAY_4,
-} from '../../../styles/colors';
+import { COLOR_GRAY_1, COLOR_GRAY_2 } from '../../../styles/colors';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 import getTheme from '../../../styles/helpers/getTheme';
 
