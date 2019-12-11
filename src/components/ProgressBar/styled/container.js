@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { COLOR_BRAND_LIGHT, COLOR_SUCCESS_LIGHT } from '../../../styles/colors';
 import getTheme from '../../../styles/helpers/getTheme';
 
 const StyledContainer = styled.div.attrs(props => {
