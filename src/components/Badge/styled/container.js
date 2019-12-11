@@ -3,8 +3,12 @@ import { COLOR_WHITE, COLOR_GRAY_2, COLOR_GRAY_4 } from '../../../styles/colors'
 import getTheme from '../../../styles/helpers/getTheme';
 
 const StyledContainer = styled.span.attrs(props => {
-    const brandMainColor = getTheme(props).palette.brand.main;
-    return { brandMainColor };
+    const { getContrastText, brand } = getTheme(props).palette;
+    const brandMainColor = brand.main;
+    return {
+        brandMainColor,
+        getContrastText,
+    };
 })`
     color: ${COLOR_GRAY_4};
     background-color: ${COLOR_GRAY_2};
@@ -35,7 +39,7 @@ const StyledContainer = styled.span.attrs(props => {
     ${props =>
         props.variant === 'brand' &&
         `
-            color: ${COLOR_WHITE};
+            color: ${props.getContrastText(props.brandMainColor)};
             background-color: ${props.brandMainColor};
         `};
     ${props =>
