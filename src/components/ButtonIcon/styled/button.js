@@ -114,10 +114,10 @@ const StyledButton = styled.button.attrs(props => {
             `
         );
     }};
-
     ${props => {
         const successMainContrastText = props.getContrastText(props.successMainColor);
         const successDarkContrastText = props.getContrastText(props.successDarkColor);
+
         return (
             props.variant === 'success' &&
             `
@@ -147,7 +147,6 @@ const StyledButton = styled.button.attrs(props => {
             `
         );
     }};
-
     ${props =>
         props.variant === 'border' &&
         `
