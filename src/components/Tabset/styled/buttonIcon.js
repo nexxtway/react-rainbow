@@ -7,9 +7,12 @@ const StyledButtonIcon = styled(ButtonIcon).attrs(props => {
     const brandMainColor = getTheme(props).palette.brand.main;
     return { brandMainColor };
 })`
-    > svg {
-        fill: ${props => props.brandMainColor};
+    color: ${props => props.brandMainColor};
+
+    &:hover {
+        color: ${props => props.brandMainColor};
     }
+
     &[disabled] {
         background-color: ${COLOR_WHITE};
 

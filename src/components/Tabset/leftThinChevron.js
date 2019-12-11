@@ -10,7 +10,7 @@ export default function LeftThinChevron(props) {
             width="8px"
             height="15px"
             viewBox="0 0 8 15"
-            fill="#01b6f5"
+            fill="currentColor"
         >
             <g transform="translate(-304.000000, -289.000000)">
                 <g transform="translate(-12.000000, 268.000000)">
