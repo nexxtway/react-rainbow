@@ -68,16 +68,7 @@ RadioButtonItem.propTypes = {
     name: PropTypes.string,
     required: PropTypes.bool.isRequired,
     itemRef: PropTypes.object.isRequired,
-    variant: PropTypes.oneOf([
-        'base',
-        'neutral',
-        'brand',
-        'outline-brand',
-        'destructive',
-        'success',
-        'inverse',
-        'border-inverse',
-    ]),
+    variant: PropTypes.oneOf(['default', 'inverse', 'brand']),
 };
 
 RadioButtonItem.defaultProps = {
@@ -87,5 +78,5 @@ RadioButtonItem.defaultProps = {
     disabled: false,
     isChecked: false,
     name: undefined,
-    variant: 'neutral',
+    variant: 'default',
 };

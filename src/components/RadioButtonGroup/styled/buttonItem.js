@@ -1,28 +1,18 @@
 /* stylelint-disable max-line-length */
 import styled from 'styled-components';
-import { COLOR_GRAY_1, COLOR_GRAY_2 } from '../../../styles/colors';
+import { COLOR_GRAY_2 } from '../../../styles/colors';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 import getTheme from '../../../styles/helpers/getTheme';
 
 const StyledButtonItem = styled.span.attrs(props => {
     const theme = getTheme(props);
-    const { getContrastText, brand, success, error } = theme.palette;
+    const { getContrastText, brand } = theme.palette;
     const { main: brandMainColor, dark: brandDarkColor } = brand;
-    const { main: successMainColor, dark: successDarkColor } = success;
-    const { main: errorMainColor, dark: errorDarkColor } = error;
 
     return {
         brandMainColor,
         brandDarkColor,
-        successMainColor,
-        successDarkColor,
-        errorMainColor,
-        errorDarkColor,
         getContrastText,
-        // TODO: move up to defaultTheme or normalizeTheme
-        brandShadow: `0 0 2px ${brandMainColor}`,
-        successShadow: `0 0 2px ${successMainColor}`,
-        errorShadow: `0 0 2px ${errorMainColor}`,
     };
 })`
     display: inline-flex;
@@ -38,13 +28,6 @@ const StyledButtonItem = styled.span.attrs(props => {
     &:hover {
         background-color: ${COLOR_GRAY_2};
         cursor: pointer;
-    }
-
-    &:focus,
-    &:active {
-        background-color: ${props => props.brandDarkColor};
-        border-color: ${props => props.brandDarkColor};
-        color: ${props => props.getContrastText(props.brandDarkColor)};
     }
 
     > [type='radio'] {
@@ -66,32 +49,6 @@ const StyledButtonItem = styled.span.attrs(props => {
                     cursor: pointer;
                 }
             `};
-    ${props => {
-        const brandDarkContrastText = props.getContrastText(props.brandDarkColor);
-
-        return (
-            props.variant === 'brand' &&
-            `
-            &:focus,
-            &:active {
-                background-color: ${props.brandDarkColor};
-                border-color: ${props.brandDarkColor};
-                color: ${brandDarkContrastText};
-            }
-
-            &:hover {
-                background-color: ${COLOR_GRAY_2};
-                cursor: pointer;
-            }
-
-            &[disabled] {
-                background-color: transparent;
-                border-color: transparent;
-                color: ${COLOR_GRAY_1};
-            }
-            `
-        );
-    }};
     ${props => {
         const brandMainContrastText = props.getContrastText(props.brandMainColor);
         const brandDarkContrastText = props.getContrastText(props.brandDarkColor);
