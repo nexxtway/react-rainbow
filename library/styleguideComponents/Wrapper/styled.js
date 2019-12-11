@@ -1,10 +1,14 @@
 /* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
 import { ButtonMenu, Badge } from '../../../src/components/index';
-import { COLOR_WHITE, COLOR_BRAND } from '../../../src/styles/colors';
+import { COLOR_WHITE, COLOR_BRAND, COLOR_GRAY_3 } from '../../../src/styles/colors';
+import getTheme from '../../../src/styles/helpers/getTheme';
 
-export const StyledTopBar = styled.header`
-    background-color: ${COLOR_WHITE};
+export const StyledTopBar = styled.header.attrs(props => {
+    const secondaryBackground = getTheme(props).palette.background.secundary;
+    return { secondaryBackground };
+})`
+    background-color: ${props => props.secondaryBackground};
     width: 100%;
     display: flex;
     align-items: center;
@@ -13,6 +17,16 @@ export const StyledTopBar = styled.header`
     height: 48px;
     border-bottom: 1px solid #edeef3;
     padding: 0 60px 0 12px;
+`;
+
+export const StyledContent = styled.div.attrs(props => {
+    const primaryBackground = getTheme(props).palette.background.primary;
+    return {
+        primaryBackground,
+    };
+})`
+    background-color: ${props => props.primaryBackground};
+    border-radius: 0 0 0.875rem 0.875rem;
 `;
 
 export const StyledLeftElement = styled.div`
@@ -41,8 +55,13 @@ export const StyledBadge = styled(Badge)`
 
 export const StyledPickerTheme = styled(ButtonMenu)`
     > button {
+        background-color: transparent;
         width: 32px;
         height: 32px;
+
+        &:hover {
+            background-color: transparent;
+        }
     }
 `;
 
@@ -53,13 +72,26 @@ export const StyledLogo = styled.img`
 
 export const StyledTitle = styled.h1`
     font-size: 14px;
-    color: ${COLOR_BRAND};
-    margin-left: 2px;
-    text-transform: italic;
-    font-style: italic;
+    color: ${COLOR_GRAY_3};
+    margin-left: 4px;
 `;
 
-export const StyledColorBox = styled.div`
+export const StyledColorCircle = styled.div.attrs(props => {
+    const { main: brandMainColor, dark: brandDarkColor } = getTheme(props).palette.brand;
+    return {
+        brandMainColor,
+        brandDarkColor,
+    };
+})`
+    height: 20px;
+    width: 20px;
+    background-color: ${props => props.brandMainColor};
+    display: inline-block;
+    border-radius: 11px;
+    border: 1px solid ${props => props.brandDarkColor};
+`;
+
+export const StyledColorBox = styled.div.attrs(props => {})`
     height: 18px;
     width: 18px;
     background-color: ${COLOR_BRAND};

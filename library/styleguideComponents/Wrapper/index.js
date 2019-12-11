@@ -6,20 +6,17 @@ import { reducer as formReducer } from 'redux-form';
 import { Provider } from 'react-redux';
 import Application from '../../../src/components/Application';
 import MenuItem from '../../../src/components/MenuItem';
-import ButtonMenu from '../../../src/components/ButtonMenu';
 import InfoFilled from '../../exampleComponents/Icons/infoFilled';
-import logo from './../../../assets/images/rainbow-logo.svg';
 import isNotComponentPage from '../utils';
 import {
     StyledTopBar,
     StyledLeftElement,
     StyledTitle,
-    StyledInfoContent,
-    StyledContentText,
+    StyledContent,
     StyledBadge,
-    StyledLogo,
     StyledPickerTheme,
     StyledColorBox,
+    StyledColorCircle,
 } from './styled';
 
 const rootReducer = combineReducers({
@@ -66,6 +63,20 @@ const yellowTheme = {
     },
 };
 
+const orangeDarkTheme = {
+    rainbow: {
+        palette: {
+            brand: '#f8752d',
+            success: '#00a042',
+            error: '#e53935',
+            background: {
+                primary: '#333333',
+                secundary: '#242424',
+            },
+        },
+    },
+};
+
 export default function Wrapper(props) {
     const { children } = props;
     const [theme, setTheme] = useState();
@@ -79,22 +90,16 @@ export default function Wrapper(props) {
         <Application theme={theme}>
             <StyledTopBar>
                 <StyledLeftElement>
-                    <ButtonMenu buttonVariant="base" icon={<InfoFilled />}>
-                        <StyledInfoContent>
-                            <StyledContentText>
-                                The theme support is
-                                <StyledBadge label="BETA" />
-                                and
-                                <StyledBadge label="WIP" />
-                            </StyledContentText>
-                        </StyledInfoContent>
-                    </ButtonMenu>
-                    <StyledTitle>Info</StyledTitle>
+                    <InfoFilled />
+                    <StyledTitle>
+                        The theme support is <StyledBadge label="BETA" /> and{' '}
+                        <StyledBadge label="WIP" />
+                    </StyledTitle>
                 </StyledLeftElement>
                 <StyledPickerTheme
                     menuAlignment="right"
                     menuSize="x-small"
-                    icon={<StyledLogo src={logo} alt="rainbow logo" />}
+                    icon={<StyledColorCircle />}
                 >
                     <MenuItem label="THEME SELECTOR" variant="header" />
                     <MenuItem
@@ -122,9 +127,16 @@ export default function Wrapper(props) {
                         icon={<StyledColorBox rainbowTheme={deepPurpleTheme.rainbow} />}
                         onClick={() => setTheme(deepPurpleTheme)}
                     />
+                    <MenuItem
+                        label="Orange Dark"
+                        icon={<StyledColorBox rainbowTheme={orangeDarkTheme.rainbow} />}
+                        onClick={() => setTheme(orangeDarkTheme)}
+                    />
                 </StyledPickerTheme>
             </StyledTopBar>
-            <Provider store={store}>{children}</Provider>
+            <StyledContent>
+                <Provider store={store}>{children}</Provider>
+            </StyledContent>
         </Application>
     );
 }

@@ -98,7 +98,7 @@ const StyledButton = styled.button.attrs(props => {
     ${props =>
         props.variant === 'neutral' &&
         `
-            background-color: ${COLOR_WHITE};
+            background-color: transparent;
             border: 1px solid ${COLOR_GRAY_2};
             color: ${props.brandMainColor};
 
