@@ -1,12 +1,23 @@
 import styled from 'styled-components';
 import { COLOR_BRAND_LIGHT, COLOR_SUCCESS_LIGHT } from '../../../styles/colors';
+import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledContainer = styled.div`
+const StyledContainer = styled.div.attrs(props => {
+    const theme = getTheme(props);
+    const { brand, success } = theme.palette;
+    const { light: brandLightColor } = brand;
+    const { light: successLightColor } = success;
+
+    return {
+        brandLightColor,
+        successLightColor,
+    };
+})`
     width: 100%;
     border: 0;
     position: relative;
     display: block;
-    background: ${COLOR_BRAND_LIGHT};
+    background: ${props => props.brandLightColor};
     height: 0.5rem;
     border-radius: 1rem;
     ${props => props.size === 'x-small' && 'height: 0.125rem;'}
@@ -16,7 +27,7 @@ const StyledContainer = styled.div`
     ${props =>
         props.variant === 'success' &&
         `
-            background: ${COLOR_SUCCESS_LIGHT};
+            background: ${props.successLightColor};
         `};
 `;
 
