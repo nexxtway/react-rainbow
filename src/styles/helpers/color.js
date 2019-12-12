@@ -89,11 +89,10 @@ export function lighten(color, coefficient = 0.2) {
     coefficient = clamp(coefficient);
 
     if (color.type.indexOf('hsl') !== -1) {
-        color.values[2] *= 1 + coefficient;
+        color.values[2] += (100 - color.values[2]) * coefficient;
     } else if (color.type.indexOf('rgb') !== -1) {
         for (let i = 0; i < 3; i += 1) {
-            color.values[i] *= 1 + coefficient;
-            color.values[i] = Math.min(255, color.values[i]);
+            color.values[i] += (255 - color.values[i]) * coefficient;
         }
     }
 
