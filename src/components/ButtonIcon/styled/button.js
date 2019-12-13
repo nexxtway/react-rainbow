@@ -85,6 +85,7 @@ const StyledButton = styled.button.attrs(props => {
 
     ${props => {
         const brandMainContrastText = props.getContrastText(props.brandMainColor);
+        const brandDarkContrastText = props.getContrastText(props.brandDarkColor);
         return (
             props.variant === 'brand' &&
             `
@@ -103,7 +104,7 @@ const StyledButton = styled.button.attrs(props => {
                 &:active {
                     background-color: ${props.brandDarkColor};
                     border: 1px solid ${props.brandDarkColor};
-                    color: ${brandMainContrastText};
+                    color: ${brandDarkContrastText};
                 }
             
                 &[disabled] {
@@ -172,7 +173,7 @@ const StyledButton = styled.button.attrs(props => {
     ${props =>
         props.variant === 'border-filled' &&
         `
-            background-color: transparent;
+            background-color: ${COLOR_WHITE};
             border: 1px solid ${COLOR_GRAY_2};
             color: ${COLOR_GRAY_4};
             transition: border 0.15s linear;
