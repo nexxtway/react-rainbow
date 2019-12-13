@@ -177,7 +177,7 @@ const StyledAnchor = styled.button.attrs(props => {
                     left: 0;
                     bottom: 0;
                     position: absolute;
-                    background-color: #01b6f5;
+                    background-color: ${props.brandMainColor};
                     border-radius: 100px;
                 }
             }

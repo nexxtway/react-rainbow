@@ -15,10 +15,7 @@ const StyledButtonIcon = styled(ButtonIcon).attrs(props => {
 
     &[disabled] {
         background-color: ${COLOR_WHITE};
-
-        > svg {
-            fill: ${COLOR_GRAY_2};
-        }
+        color: ${COLOR_GRAY_2};
     }
 `;
 
