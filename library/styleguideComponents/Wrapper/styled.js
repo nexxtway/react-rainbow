@@ -4,18 +4,39 @@ import { ButtonMenu, Badge } from '../../../src/components/index';
 import { COLOR_WHITE, COLOR_BRAND, COLOR_GRAY_3 } from '../../../src/styles/colors';
 import getTheme from '../../../src/styles/helpers/getTheme';
 
-export const StyledTopBar = styled.header.attrs(props => {
-    const secondaryBackground = getTheme(props).palette.background.secundary;
-    return { secondaryBackground };
+export const StyledWrapper = styled.div.attrs(props => {
+    const palette = getTheme(props).palette;
+    const secondaryBackground = palette.background.secondary;
+    const divider = palette.divider;
+    return {
+        secondaryBackground,
+        divider,
+    };
 })`
+    padding: 0;
+    border-radius: 0.875rem;
     background-color: ${props => props.secondaryBackground};
+    background-clip: padding-box;
+    border: solid 1px ${props => props.divider};
+`;
+
+export const StyledTopBar = styled.header.attrs(props => {
+    const palette = getTheme(props).palette;
+    const primaryBackground = palette.background.primary;
+    const divider = palette.divider;
+    return {
+        primaryBackground,
+        divider,
+    };
+})`
+    background-color: ${props => props.primaryBackground};
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-radius: 0.875rem 0.875rem 0 0;
     height: 48px;
-    border-bottom: 1px solid #edeef3;
+    border-bottom: 1px solid ${props => props.divider};
     padding: 0 60px 0 12px;
 `;
 
@@ -25,8 +46,7 @@ export const StyledContent = styled.div.attrs(props => {
         primaryBackground,
     };
 })`
-    background-color: ${props => props.primaryBackground};
-    border-radius: 0 0 0.875rem 0.875rem;
+    background-color: transparent;
 `;
 
 export const StyledLeftElement = styled.div`

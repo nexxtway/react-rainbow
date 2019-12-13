@@ -9,6 +9,7 @@ import MenuItem from '../../../src/components/MenuItem';
 import InfoFilled from '../../exampleComponents/Icons/infoFilled';
 import isNotComponentPage from '../utils';
 import {
+    StyledWrapper,
     StyledTopBar,
     StyledLeftElement,
     StyledTitle,
@@ -70,9 +71,10 @@ const orangeDarkTheme = {
             success: '#00a042',
             error: '#e53935',
             background: {
-                primary: '#333333',
-                secundary: '#242424',
+                primary: '#242424',
+                secondary: '#333333',
             },
+            divider: '#333333',
         },
     },
 };
@@ -88,55 +90,57 @@ export default function Wrapper(props) {
 
     return (
         <Application theme={theme}>
-            <StyledTopBar>
-                <StyledLeftElement>
-                    <InfoFilled />
-                    <StyledTitle>
-                        The theme support is <StyledBadge label="BETA" /> and{' '}
-                        <StyledBadge label="WIP" />
-                    </StyledTitle>
-                </StyledLeftElement>
-                <StyledPickerTheme
-                    menuAlignment="right"
-                    menuSize="x-small"
-                    icon={<StyledColorCircle />}
-                >
-                    <MenuItem label="THEME SELECTOR" variant="header" />
-                    <MenuItem
-                        label="Default"
-                        icon={<StyledColorBox />}
-                        onClick={() => setTheme()}
-                    />
-                    <MenuItem
-                        label="Orange"
-                        icon={<StyledColorBox rainbowTheme={orangeTheme.rainbow} />}
-                        onClick={() => setTheme(orangeTheme)}
-                    />
-                    <MenuItem
-                        label="Cyan"
-                        icon={<StyledColorBox rainbowTheme={cyanTheme.rainbow} />}
-                        onClick={() => setTheme(cyanTheme)}
-                    />
-                    <MenuItem
-                        label="Yellow"
-                        icon={<StyledColorBox rainbowTheme={yellowTheme.rainbow} />}
-                        onClick={() => setTheme(yellowTheme)}
-                    />
-                    <MenuItem
-                        label="Deep Purple"
-                        icon={<StyledColorBox rainbowTheme={deepPurpleTheme.rainbow} />}
-                        onClick={() => setTheme(deepPurpleTheme)}
-                    />
-                    <MenuItem
-                        label="Orange Dark"
-                        icon={<StyledColorBox rainbowTheme={orangeDarkTheme.rainbow} />}
-                        onClick={() => setTheme(orangeDarkTheme)}
-                    />
-                </StyledPickerTheme>
-            </StyledTopBar>
-            <StyledContent>
-                <Provider store={store}>{children}</Provider>
-            </StyledContent>
+            <StyledWrapper>
+                <StyledTopBar>
+                    <StyledLeftElement>
+                        <InfoFilled />
+                        <StyledTitle>
+                            The theme support is <StyledBadge label="BETA" /> and{' '}
+                            <StyledBadge label="WIP" />
+                        </StyledTitle>
+                    </StyledLeftElement>
+                    <StyledPickerTheme
+                        menuAlignment="right"
+                        menuSize="x-small"
+                        icon={<StyledColorCircle />}
+                    >
+                        <MenuItem label="THEME SELECTOR" variant="header" />
+                        <MenuItem
+                            label="Default"
+                            icon={<StyledColorBox />}
+                            onClick={() => setTheme()}
+                        />
+                        <MenuItem
+                            label="Orange"
+                            icon={<StyledColorBox rainbowTheme={orangeTheme.rainbow} />}
+                            onClick={() => setTheme(orangeTheme)}
+                        />
+                        <MenuItem
+                            label="Cyan"
+                            icon={<StyledColorBox rainbowTheme={cyanTheme.rainbow} />}
+                            onClick={() => setTheme(cyanTheme)}
+                        />
+                        <MenuItem
+                            label="Yellow"
+                            icon={<StyledColorBox rainbowTheme={yellowTheme.rainbow} />}
+                            onClick={() => setTheme(yellowTheme)}
+                        />
+                        <MenuItem
+                            label="Deep Purple"
+                            icon={<StyledColorBox rainbowTheme={deepPurpleTheme.rainbow} />}
+                            onClick={() => setTheme(deepPurpleTheme)}
+                        />
+                        <MenuItem
+                            label="Orange Dark"
+                            icon={<StyledColorBox rainbowTheme={orangeDarkTheme.rainbow} />}
+                            onClick={() => setTheme(orangeDarkTheme)}
+                        />
+                    </StyledPickerTheme>
+                </StyledTopBar>
+                <StyledContent>
+                    <Provider store={store}>{children}</Provider>
+                </StyledContent>
+            </StyledWrapper>
         </Application>
     );
 }
