@@ -1,9 +1,18 @@
 import styled from 'styled-components';
-import { COLOR_WHITE, COLOR_BRAND } from '../../../styles/colors';
+import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledContainer = styled.span`
-    background-color: ${COLOR_BRAND};
-    color: ${COLOR_WHITE};
+const StyledContainer = styled.span.attrs(props => {
+    const theme = getTheme(props);
+    const { getContrastText, brand } = theme.palette;
+    const brandMainColor = brand.main;
+
+    return {
+        brandMainColor,
+        getContrastText,
+    };
+})`
+    background-color: ${props => props.brandMainColor};
+    color: ${props => props.getContrastText(props.brandMainColor)};
     border-radius: 50%;
     display: inline-block;
     height: 2.5rem;
