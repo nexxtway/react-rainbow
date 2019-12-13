@@ -83,7 +83,7 @@ export function darken(color, coefficient = 0.2) {
     return recomposeColor(color);
 }
 
-export function lighten(color, coefficient = 0.2) {
+export function lighten(color, coefficient = 0.8) {
     color = decomposeColor(color);
 
     coefficient = clamp(coefficient);
