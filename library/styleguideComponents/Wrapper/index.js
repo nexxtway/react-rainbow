@@ -80,9 +80,11 @@ const orangeDarkTheme = {
 };
 
 export default function Wrapper(props) {
-    const { children } = props;
+    const { children, preview } = props;
     const [theme, setTheme] = useState();
     const pageName = window.location.hash.split('/')[1];
+
+    console.log(props);
 
     if (isNotComponentPage(pageName)) {
         return children;
@@ -93,6 +95,7 @@ export default function Wrapper(props) {
             <StyledWrapper>
                 <StyledTopBar>
                     <StyledLeftElement>
+                        {preview}
                         <InfoFilled />
                         <StyledTitle>
                             The theme support is <StyledBadge label="BETA" /> and{' '}

@@ -94,6 +94,10 @@ export const StyledTitle = styled.h1`
     font-size: 14px;
     color: ${COLOR_GRAY_3};
     margin-left: 4px;
+
+    @media (max-width: 600px) {
+        display: none;
+    }
 `;
 
 export const StyledColorCircle = styled.div.attrs(props => {
