@@ -1,6 +1,5 @@
 /* stylelint-disable max-line-length */
 import styled from 'styled-components';
-import { COLOR_GRAY_2 } from '../../../styles/colors';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 import getTheme from '../../../styles/helpers/getTheme';
 
@@ -26,7 +25,7 @@ const StyledButtonItem = styled.span.attrs(props => {
     transform: translate3d(0, 0, 0);
 
     &:hover {
-        background-color: ${COLOR_GRAY_2};
+        background-color: rgba(227, 229, 237, 0.4);
         cursor: pointer;
     }
 
@@ -49,30 +48,18 @@ const StyledButtonItem = styled.span.attrs(props => {
                     cursor: pointer;
                 }
             `};
-    ${props => {
-        const brandMainContrastText = props.getContrastText(props.brandMainColor);
-        const brandDarkContrastText = props.getContrastText(props.brandDarkColor);
+    ${props =>
+        props.isChecked &&
+        `
+            transition: transform 600ms cubic-bezier(0.02, 0.94, 0.09, 0.97), all 300ms cubic-bezier(0.17, 0.67, 0.14, 1.03);
+            transform: translate3d(0, 0, 0);
+            height: 100%;
 
-        return (
-            props.isChecked &&
-            `
-                transition: transform 600ms cubic-bezier(0.02, 0.94, 0.09, 0.97), all 300ms cubic-bezier(0.17, 0.67, 0.14, 1.03);
-                transform: translate3d(0, 0, 0);
-                height: 100%;
-
-                background-color: ${props.brandMainColor};
-                border: 1px solid ${props.brandMainColor};
-                color: ${brandMainContrastText};
-
-                &:hover {
-                    background-color: ${props.brandDarkColor};
-                    cursor: pointer;
-                    border-color: ${props.brandDarkColor};
-                    color: ${brandDarkContrastText};
-                }
-            `
-        );
-    }};
+            &:hover {
+                background-color: transparent;
+                cursor: pointer;
+            }
+        `};
     ${props =>
         props.disabled &&
         `
