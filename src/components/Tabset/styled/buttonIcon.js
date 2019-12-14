@@ -9,7 +9,9 @@ const StyledButtonIcon = styled(ButtonIcon).attrs(props => {
 })`
     color: ${props => props.brandMainColor};
 
-    &:hover {
+    &:hover,
+    &:active,
+    &:focus {
         color: ${props => props.brandMainColor};
     }
 

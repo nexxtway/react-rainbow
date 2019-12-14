@@ -74,11 +74,6 @@ const StyledContainer = styled.li.attrs(props => {
                 -webkit-transform: rotate(145deg);
                 box-sizing: border-box;
             }
-        
-            &:hover, &:active, &:visited, &:focus {
-                color: $color-brand;
-                background-color: white;
-            }
             
             @media (max-width: 600px) {
                 border-radius: 0;
@@ -114,7 +109,6 @@ const StyledContainer = styled.li.attrs(props => {
                 left: 0;
                 bottom: 0;
                 position: absolute;
-                background-color: #01b6f5;
                 border-radius: 100px;
                 box-sizing: border-box;
             }
