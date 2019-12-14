@@ -27,7 +27,7 @@ const StyledLabel = styled.span.attrs(props => {
     ${props =>
         props.stepState === 'Error' &&
         `
-            color: ${props => props.errorMainColor};
+            color: ${props.errorMainColor};
         `};
 `;
 
