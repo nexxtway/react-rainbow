@@ -84,8 +84,6 @@ export default function Wrapper(props) {
     const [theme, setTheme] = useState();
     const pageName = window.location.hash.split('/')[1];
 
-    console.log(props);
-
     if (isNotComponentPage(pageName)) {
         return children;
     }

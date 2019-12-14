@@ -32,12 +32,14 @@ export const StyledTopBar = styled.header.attrs(props => {
     background-color: ${props => props.primaryBackground};
     width: 100%;
     display: flex;
-    align-items: center;
     justify-content: space-between;
     border-radius: 0.875rem 0.875rem 0 0;
-    height: 48px;
     border-bottom: 1px solid ${props => props.divider};
-    padding: 0 60px 0 12px;
+    padding: 8px 60px 8px 12px;
+
+    @media (max-width: 600px) {
+        padding-right: 50px;
+    }
 `;
 
 export const StyledContent = styled.div.attrs(props => {
@@ -52,6 +54,13 @@ export const StyledContent = styled.div.attrs(props => {
 export const StyledLeftElement = styled.div`
     display: flex;
     align-items: center;
+
+    @media (max-width: 600px) {
+        > svg {
+            width: 40px;
+            margin-top: -14px;
+        }
+    }
 `;
 
 export const StyledInfoContent = styled.div`
@@ -71,6 +80,11 @@ export const StyledContentText = styled.h2`
 
 export const StyledBadge = styled(Badge)`
     margin: 2px 8px;
+
+    @media (max-width: 600px) {
+        margin: 2px 2px;
+        padding: 3px;
+    }
 `;
 
 export const StyledPickerTheme = styled(ButtonMenu)`
@@ -85,18 +99,13 @@ export const StyledPickerTheme = styled(ButtonMenu)`
     }
 `;
 
-export const StyledLogo = styled.img`
-    width: 16px;
-    height: 16px;
-`;
-
 export const StyledTitle = styled.h1`
     font-size: 14px;
     color: ${COLOR_GRAY_3};
     margin-left: 4px;
 
     @media (max-width: 600px) {
-        display: none;
+        font-size: 12px;
     }
 `;
 
@@ -112,10 +121,13 @@ export const StyledColorCircle = styled.div.attrs(props => {
     background-color: ${props => props.brandMainColor};
     display: inline-block;
     border-radius: 11px;
-    border: 1px solid ${props => props.brandDarkColor};
+
+    &:hover {
+        background-color: ${props => props.brandDarkColor};
+    }
 `;
 
-export const StyledColorBox = styled.div.attrs(props => {})`
+export const StyledColorBox = styled.div`
     height: 18px;
     width: 18px;
     background-color: ${COLOR_BRAND};
