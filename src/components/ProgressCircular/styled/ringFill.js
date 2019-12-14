@@ -1,13 +1,26 @@
 import styled from 'styled-components';
-import { COLOR_BRAND, COLOR_SUCCESS, COLOR_YELLOW_1, COLOR_ERROR } from '../../../styles/colors';
+import { COLOR_YELLOW_1 } from '../../../styles/colors';
+import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledRingFill = styled.circle`
-    stroke: ${COLOR_BRAND};
+const StyledRingFill = styled.circle.attrs(props => {
+    const theme = getTheme(props);
+    const { brand, success, error } = theme.palette;
+    const { main: brandMainColor } = brand;
+    const { main: successMainColor } = success;
+    const { main: errorMainColor } = error;
+
+    return {
+        brandMainColor,
+        successMainColor,
+        errorMainColor,
+    };
+})`
+    stroke: ${props => props.brandMainColor};
     transition: all 0.4s ease-out 0s;
     ${props =>
         props.variant === 'success' &&
         `
-            stroke: ${COLOR_SUCCESS};
+            stroke: ${props.successMainColor};
         `};
     ${props =>
         props.variant === 'warning' &&
@@ -17,7 +30,7 @@ const StyledRingFill = styled.circle`
     ${props =>
         props.variant === 'error' &&
         `
-            stroke: ${COLOR_ERROR};
+            stroke: ${props.errorMainColor};
         `};
 `;
 
