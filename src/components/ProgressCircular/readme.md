@@ -64,19 +64,19 @@ import { ProgressCircular } from 'react-rainbow-components';
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <div className="rainbow-p-around_large rainbow-align-content_center rainbow-flex_column">
         <ProgressCircular value={24} />
-        <h1 className="rainbow-font-size-heading_small rainbow-color_brand">brand</h1>
+        <h1 className="rainbow-font-size-heading_small rainbow-color_gray-3">brand</h1>
     </div>
     <div className="rainbow-p-around_large rainbow-align-content_center rainbow-flex_column">
         <ProgressCircular value={45} variant="success" />
-        <h1 className="rainbow-font-size-heading_small rainbow-color_success">success</h1>
+        <h1 className="rainbow-font-size-heading_small rainbow-color_gray-3">success</h1>
     </div>
     <div className="rainbow-p-around_large rainbow-align-content_center rainbow-flex_column">
         <ProgressCircular value={60} variant="warning" />
-        <h1 className="rainbow-font-size-heading_small rainbow-color_yellow">warning</h1>
+        <h1 className="rainbow-font-size-heading_small rainbow-color_gray-3">warning</h1>
     </div>
     <div className="rainbow-p-around_large rainbow-align-content_center rainbow-flex_column">
         <ProgressCircular value={82} variant="error" />
-        <h1 className="rainbow-font-size-heading_small rainbow-color_error">error</h1>
+        <h1 className="rainbow-font-size-heading_small rainbow-color_gray-3">error</h1>
     </div>
 </div>
 ```
