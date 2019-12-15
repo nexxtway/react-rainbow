@@ -3,19 +3,30 @@ import {
     COLOR_WHITE,
     COLOR_GRAY_3,
     COLOR_DARK_1,
-    COLOR_BRAND,
     COLOR_GRAY_2,
     COLOR_GRAY_1,
-    COLOR_ERROR,
 } from '../../../styles/colors';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
-import { SHADOW_OUTLINE, SHADOW_ERROR } from '../../../styles/shadows';
+import getTheme from '../../../styles/helpers/getTheme';
 
 const hasLeftIcon = props => props.icon && props.iconPosition === 'left';
 const hasRightIcon = props => props.icon && props.iconPosition === 'right';
 
-const Input = styled.input`
+const Input = styled.input.attrs(props => {
+    const theme = getTheme(props);
+    const { brand, error } = theme.palette;
+    const { main: brandMainColor } = brand;
+    const { main: errorMainColor } = error;
+
+    return {
+        brandMainColor,
+        errorMainColor,
+        // TODO: move up to defaultTheme or normalizeTheme
+        brandShadow: `0 0 2px ${brandMainColor}`,
+        errorShadow: `0 0 2px ${errorMainColor}`,
+    };
+})`
     font: inherit;
     background-color: ${COLOR_WHITE};
     border: 1px solid ${COLOR_GRAY_3};
@@ -45,9 +56,9 @@ const Input = styled.input`
     :active {
         outline: 0;
         padding: 0 0.9375rem;
-        border: 2px solid ${COLOR_BRAND};
+        border: 2px solid ${props => props.brandMainColor};
         background-color: ${COLOR_WHITE};
-        box-shadow: ${SHADOW_OUTLINE};
+        box-shadow: ${props => props.brandShadow};
     }
 
     ::placeholder {
@@ -76,14 +87,14 @@ const Input = styled.input`
         props.error &&
         `
         background-color: ${COLOR_WHITE};
-        border: 2px solid ${COLOR_ERROR};
+        border: 2px solid ${props.errorMainColor};
         background-clip: padding-box;
 
         :focus,
         :active {
             background-color: ${COLOR_WHITE};
-            border: 2px solid ${COLOR_ERROR};
-            box-shadow: ${SHADOW_ERROR};
+            border: 2px solid ${props.errorMainColor};
+            box-shadow: ${props.errorShadow};
             padding: 0 1rem;
             outline: 0;
         }

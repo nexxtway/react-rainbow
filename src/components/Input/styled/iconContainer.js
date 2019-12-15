@@ -1,7 +1,11 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_3, COLOR_ERROR } from '../../../styles/colors';
+import { COLOR_GRAY_3 } from '../../../styles/colors';
+import getTheme from '../../../styles/helpers/getTheme';
 
-const IconContainer = styled.span`
+const IconContainer = styled.span.attrs(props => {
+    const errorMainColor = getTheme(props).palette.error.main;
+    return { errorMainColor };
+})`
     fill: ${COLOR_GRAY_3};
     height: 100%;
     width: 22px;
@@ -37,8 +41,8 @@ const IconContainer = styled.span`
     ${props =>
         props.error &&
         `
-        fill: ${COLOR_ERROR};
-        color: ${COLOR_ERROR};
+        fill: ${props.errorMainColor};
+        color: ${props.errorMainColor};
     `}
 `;
 
