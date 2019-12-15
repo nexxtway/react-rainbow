@@ -19,10 +19,9 @@ const StyledIconContainer = styled.span.attrs(props => {
     width: 24;
     height: 20;
     display: 'flex';
-    alignitems: 'center';
-    justifycontent: 'center';
+    align-items: 'center';
+    justify-content: 'center';
     color: ${props => props.brandMainColor};
-
     ${props =>
         props.variant === 'brand' &&
         `
