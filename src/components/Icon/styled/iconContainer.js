@@ -16,11 +16,11 @@ const StyledIconContainer = styled.span.attrs(props => {
         warningMainColor,
     };
 })`
-    width: 24,
-    height: 20,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    width: 24;
+    height: 20;
+    display: 'flex';
+    alignitems: 'center';
+    justifycontent: 'center';
     color: ${props => props.brandMainColor};
 
     ${props =>
