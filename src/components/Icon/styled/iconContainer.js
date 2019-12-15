@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledPercentValue = styled.h1.attrs(props => {
+const StyledIconContainer = styled.span.attrs(props => {
     const theme = getTheme(props);
     const { brand, success, error, warning } = theme.palette;
     const { main: brandMainColor } = brand;
@@ -16,11 +16,18 @@ const StyledPercentValue = styled.h1.attrs(props => {
         warningMainColor,
     };
 })`
-    font-size: 2rem;
-    font-weight: 400;
+    width: 24,
+    height: 20,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     color: ${props => props.brandMainColor};
-    margin: 0;
-    padding: 0;
+
+    ${props =>
+        props.variant === 'brand' &&
+        `
+            color: ${props.brandMainColor};
+        `};
     ${props =>
         props.variant === 'success' &&
         `
@@ -38,4 +45,4 @@ const StyledPercentValue = styled.h1.attrs(props => {
         `};
 `;
 
-export default StyledPercentValue;
+export default StyledIconContainer;

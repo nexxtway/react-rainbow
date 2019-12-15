@@ -2,8 +2,7 @@
 
 ```js
 import React from 'react';
-import { Card, ProgressCircular } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Card, Icon, ProgressCircular } from 'react-rainbow-components';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 
 const IconStyles = {
@@ -34,9 +33,7 @@ function ActiveUsersCard({ title, variant, color }) {
                 <ProgressCircular variant={variant} value={percent} />
             </div>
             <div className="rainbow-flex rainbow_vertical-stretch">
-                <span style={IconStyles} className={`rainbow-color_${color}`}>
-                    <FontAwesomeIcon icon={faCircle} />
-                </span>
+                <Icon variant={variant} icon={faCircle} />
                 <h3 className="rainbow-font-size_small">Active Now</h3>
             </div>
         </Card>
@@ -48,9 +45,9 @@ function ActiveUsersCard({ title, variant, color }) {
         Social Network Activity
     </h1>
     <div className="rainbow-flex rainbow-flex_wrap">
-        <ActiveUsersCard title="snapchat" variant="warning" color="yellow" />
-        <ActiveUsersCard title="twitter" color="brand" />
-        <ActiveUsersCard title="google" variant="error" color="error" />
+        <ActiveUsersCard title="snapchat" variant="warning" />
+        <ActiveUsersCard title="twitter" />
+        <ActiveUsersCard title="google" variant="error" />
     </div>
 </div>
 ```
