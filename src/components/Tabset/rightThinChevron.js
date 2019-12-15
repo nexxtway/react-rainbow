@@ -10,7 +10,7 @@ export default function RightThinChevron(props) {
             width="8px"
             height="14px"
             viewBox="0 0 8 14"
-            fill="#01b6f5"
+            fill="currentColor"
         >
             <g transform="translate(-337.000000, -289.000000)">
                 <g transform="translate(-12.000000, 268.000000)">
