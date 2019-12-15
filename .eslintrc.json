@@ -12,7 +12,8 @@
         "react/jsx-closing-bracket-location": "off",
         "react/forbid-prop-types": "off",
         "no-mixed-operators": "off",
-        "arrow-parens": ["error", "as-needed"]
+        "arrow-parens": ["error", "as-needed"],
+        "linebreak-style": 0
     },
     "env": {
         "es6": true,
