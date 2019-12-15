@@ -3,6 +3,7 @@ import defaultTheme from '../../defaultTheme';
 
 jest.mock('../color', () => ({
     darken: jest.fn(() => '#ccc'),
+    lighten: jest.fn(() => '#ededed'),
 }));
 
 const rainbowTheme = {
@@ -50,6 +51,7 @@ describe('normalizeTheme', () => {
                     brand: {
                         main: '#fff',
                         dark: '#ccc',
+                        light: '#ededed',
                     },
                 },
             },

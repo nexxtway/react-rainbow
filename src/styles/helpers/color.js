@@ -79,6 +79,23 @@ export function darken(color, coefficient = 0.2) {
             color.values[i] *= 1 - coefficient;
         }
     }
+
+    return recomposeColor(color);
+}
+
+export function lighten(color, coefficient = 0.8) {
+    color = decomposeColor(color);
+
+    coefficient = clamp(coefficient);
+
+    if (color.type.indexOf('hsl') !== -1) {
+        color.values[2] += (100 - color.values[2]) * coefficient;
+    } else if (color.type.indexOf('rgb') !== -1) {
+        for (let i = 0; i < 3; i += 1) {
+            color.values[i] += (255 - color.values[i]) * coefficient;
+        }
+    }
+
     return recomposeColor(color);
 }
 
