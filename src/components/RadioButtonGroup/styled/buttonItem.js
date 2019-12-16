@@ -32,11 +32,11 @@ const StyledButtonItem = styled.span`
     ${props =>
         props.variant === 'inverse' &&
         `
-            &:hover {
-                background-color: rgba(0, 0, 0, 0.95);
-                cursor: pointer;
-            }
-        `};
+                &:hover {
+                    background-color: rgba(0, 0, 0, 0.95);
+                    cursor: pointer;
+                }
+            `};
     ${props =>
         props.isChecked &&
         `

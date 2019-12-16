@@ -1,15 +1,19 @@
 import styled from 'styled-components';
-import {
-    COLOR_GRAY_4,
-    COLOR_GRAY_3,
-    COLOR_GRAY_2,
-    COLOR_DARK_1,
-    COLOR_WHITE,
-} from '../../../styles/colors';
+import { COLOR_GRAY_4, COLOR_GRAY_3, COLOR_GRAY_2, COLOR_DARK_1 } from '../../../styles/colors';
 import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
 import { PADDING_LARGE } from '../../../styles/paddings';
+import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledButtonItemLabel = styled.label`
+const StyledButtonItemLabel = styled.label.attrs(props => {
+    const theme = getTheme(props);
+    const { getContrastText, brand } = theme.palette;
+    const { main: brandMainColor } = brand;
+
+    return {
+        brandMainColor,
+        getContrastText,
+    };
+})`
     display: inline-flex;
     font-size: ${FONT_SIZE_TEXT_LARGE};
     color: ${COLOR_GRAY_3};
@@ -42,13 +46,13 @@ const StyledButtonItemLabel = styled.label`
         props.variant === 'brand' &&
         props.isChecked &&
         `
-            color: ${COLOR_WHITE};
+            color: ${props.getContrastText(props.brandMainColor)};
         `};
     ${props =>
         props.variant === 'inverse' &&
         props.isChecked &&
         `
-            color: ${COLOR_WHITE};
+            color: ${props.getContrastText(props.brandMainColor)};
         `};
 `;
 

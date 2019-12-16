@@ -1,7 +1,11 @@
 import styled from 'styled-components';
-import { COLOR_WHITE, COLOR_BRAND } from '../../../styles/colors';
+import { COLOR_WHITE } from '../../../styles/colors';
+import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledContainer = styled.li`
+const StyledContainer = styled.li.attrs(props => {
+    const brandMainColor = getTheme(props).palette.brand.main;
+    return { brandMainColor };
+})`
     position: relative;
     display: flex;
     justify-content: center;
@@ -33,7 +37,7 @@ const StyledContainer = styled.li`
         props.isActive &&
         `
             background-color: ${COLOR_WHITE};
-            color: ${COLOR_BRAND};
+            color: ${props.brandMainColor};
             border-radius: 14px 14px 0 0;
             z-index: 2;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -70,11 +74,6 @@ const StyledContainer = styled.li`
                 -webkit-transform: rotate(145deg);
                 box-sizing: border-box;
             }
-        
-            &:hover, &:active, &:visited, &:focus {
-                color: $color-brand;
-                background-color: white;
-            }
             
             @media (max-width: 600px) {
                 border-radius: 0;
@@ -110,7 +109,6 @@ const StyledContainer = styled.li`
                 left: 0;
                 bottom: 0;
                 position: absolute;
-                background-color: #01b6f5;
                 border-radius: 100px;
                 box-sizing: border-box;
             }
