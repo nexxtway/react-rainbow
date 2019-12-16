@@ -1,5 +1,5 @@
 import defaultTheme from '../defaultTheme';
-import { darken } from './color';
+import { darken, lighten } from './color';
 
 function pickColors(colors, obj = {}) {
     return colors.reduce((seed, color) => {
@@ -26,6 +26,7 @@ function normalizeColors(colors) {
         seed[key] = {
             main: colors[key],
             dark: darken(colors[key]),
+            light: lighten(colors[key]),
         };
         return seed;
     }, {});
