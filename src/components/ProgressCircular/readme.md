@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import { Card, Icon, ProgressCircular } from 'react-rainbow-components';
+import { Card, ProgressCircular } from 'react-rainbow-components';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import StyledIconContainer from './styled/iconContainer';
