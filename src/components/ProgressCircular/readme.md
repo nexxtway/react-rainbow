@@ -5,7 +5,39 @@ import React from 'react';
 import { Card, ProgressCircular } from 'react-rainbow-components';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import StyledIconContainer from './styled/iconContainer';
+import styled from 'styled-components';
+
+const ActiveCirlce = styled.span.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    width: 24;
+    height: 20;
+    display: 'flex';
+    align-items: 'center';
+    justify-content: 'center';
+    margin-right: 8px;
+    color: ${props => props.brand.main};
+    ${props =>
+        props.variant === 'brand' &&
+        `
+            color: ${props.brand.main};
+        `};
+    ${props =>
+        props.variant === 'success' &&
+        `
+            color: ${props.success.main};
+        `};
+    ${props =>
+        props.variant === 'warning' &&
+        `
+            color: ${props.warning.main};
+        `};
+    ${props =>
+        props.variant === 'error' &&
+        `
+            color: ${props.error.main};
+        `};
+`;
 
 function ActiveUsersCard({ title, variant, color }) {
     const [percent, setPercent] = React.useState(60);
@@ -27,9 +59,9 @@ function ActiveUsersCard({ title, variant, color }) {
                 <ProgressCircular variant={variant} value={percent} />
             </div>
             <div className="rainbow-flex rainbow_vertical-stretch">
-                <StyledIconContainer variant={variant}>
+                <ActiveCirlce variant={variant}>
                     <FontAwesomeIcon icon={faCircle} />
-                </StyledIconContainer>
+                </ActiveCirlce>
                 <h3 className="rainbow-font-size_small">Active Now</h3>
             </div>
         </Card>
