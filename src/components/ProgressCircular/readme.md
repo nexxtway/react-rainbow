@@ -39,7 +39,7 @@ const ActiveCirlce = styled.span.attrs(props => {
         `};
 `;
 
-function ActiveUsersCard({ title, variant, color }) {
+function ActiveUsersCard({ title, variant }) {
     const [percent, setPercent] = React.useState(60);
 
     React.useEffect(() => {
