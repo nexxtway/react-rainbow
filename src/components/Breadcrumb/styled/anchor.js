@@ -1,8 +1,17 @@
 import styled from 'styled-components';
-import { COLOR_BRAND, COLOR_GRAY_4 } from '../../../styles/colors';
+import { COLOR_GRAY_4 } from '../../../styles/colors';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
+import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledAnchor = styled.a`
+const StyledAnchor = styled.a.attrs(props => {
+    const theme = getTheme(props);
+    const { brand } = theme.palette;
+    const { main: brandMainColor } = brand;
+
+    return {
+        brandMainColor,
+    };
+})`
     letter-spacing: 0.3px;
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
     color: ${COLOR_GRAY_4};
@@ -15,11 +24,11 @@ const StyledAnchor = styled.a`
     :hover,
     :focus {
         text-decoration: underline;
-        color: ${COLOR_BRAND};
+        color: ${props => props.brandMainColor};
     }
 
     :active {
-        color: ${COLOR_BRAND};
+        color: ${props => props.brandMainColor};
     }
 
     :active,
@@ -28,7 +37,7 @@ const StyledAnchor = styled.a`
     }
 
     :hover {
-        color: ${COLOR_BRAND};
+        color: ${props => props.brandMainColor};
     }
 
     ${props =>
