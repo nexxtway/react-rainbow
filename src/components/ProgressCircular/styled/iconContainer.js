@@ -21,6 +21,7 @@ const StyledIconContainer = styled.span.attrs(props => {
     display: 'flex';
     align-items: 'center';
     justify-content: 'center';
+    margin-right: 8px;
     color: ${props => props.brandMainColor};
     ${props =>
         props.variant === 'brand' &&
