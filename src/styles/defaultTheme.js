@@ -25,9 +25,8 @@ export default {
         warning: COLOR_WARNING,
         background: {
             primary: COLOR_WHITE,
-            secondary: '#f9fafc;',
+            secondary: '#f9fafc',
         },
-        divider: COLOR_GRAY_2,
         getContrastText,
     },
 };

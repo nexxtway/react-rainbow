@@ -74,13 +74,12 @@ const orangeDarkTheme = {
                 primary: '#242424',
                 secondary: '#333333',
             },
-            divider: '#333333',
         },
     },
 };
 
 export default function Wrapper(props) {
-    const { children, preview } = props;
+    const { children } = props;
     const [theme, setTheme] = useState();
     const pageName = window.location.hash.split('/')[1];
 
@@ -93,7 +92,6 @@ export default function Wrapper(props) {
             <StyledWrapper>
                 <StyledTopBar>
                     <StyledLeftElement>
-                        {preview}
                         <InfoFilled />
                         <StyledTitle>
                             The theme support is <StyledBadge label="BETA" /> and{' '}

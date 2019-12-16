@@ -36,7 +36,6 @@ export default function normalizeTheme(theme) {
         rainbow: {
             palette: {
                 ...defaultTheme.palette,
-                ...pickColors(['divider'], get(theme, 'rainbow.palette')),
                 ...normalizeColors(
                     pickColors(
                         ['brand', 'success', 'error', 'warning'],

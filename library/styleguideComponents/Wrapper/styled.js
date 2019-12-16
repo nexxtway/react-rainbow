@@ -3,11 +3,12 @@ import styled from 'styled-components';
 import { ButtonMenu, Badge } from '../../../src/components/index';
 import { COLOR_WHITE, COLOR_BRAND, COLOR_GRAY_3 } from '../../../src/styles/colors';
 import getTheme from '../../../src/styles/helpers/getTheme';
+import { darken } from '../../../src/styles/helpers/color';
 
 export const StyledWrapper = styled.div.attrs(props => {
     const palette = getTheme(props).palette;
     const secondaryBackground = palette.background.secondary;
-    const divider = palette.divider;
+    const divider = darken(secondaryBackground, 0.1);
     return {
         secondaryBackground,
         divider,
@@ -21,9 +22,10 @@ export const StyledWrapper = styled.div.attrs(props => {
 `;
 
 export const StyledTopBar = styled.header.attrs(props => {
-    const palette = getTheme(props).palette;
-    const primaryBackground = palette.background.primary;
-    const divider = palette.divider;
+    const { primary: primaryBackground, secondary: secondaryBackground } = getTheme(
+        props,
+    ).palette.background;
+    const divider = darken(secondaryBackground, 0.1);
     return {
         primaryBackground,
         divider,
@@ -42,12 +44,7 @@ export const StyledTopBar = styled.header.attrs(props => {
     }
 `;
 
-export const StyledContent = styled.div.attrs(props => {
-    const primaryBackground = getTheme(props).palette.background.primary;
-    return {
-        primaryBackground,
-    };
-})`
+export const StyledContent = styled.div`
     background-color: transparent;
 `;
 
