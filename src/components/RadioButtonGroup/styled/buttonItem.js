@@ -1,19 +1,8 @@
 /* stylelint-disable max-line-length */
 import styled from 'styled-components';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
-import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledButtonItem = styled.span.attrs(props => {
-    const theme = getTheme(props);
-    const { getContrastText, brand } = theme.palette;
-    const { main: brandMainColor, dark: brandDarkColor } = brand;
-
-    return {
-        brandMainColor,
-        brandDarkColor,
-        getContrastText,
-    };
-})`
+const StyledButtonItem = styled.span`
     display: inline-flex;
     justify-content: center;
     align-items: center;
