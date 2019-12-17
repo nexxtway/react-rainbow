@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ButtonIcon from '../ButtonIcon';
 import AmPmSelect from './ampmSelect';
-import UpIcon from './icons/upArrow';
-import DownIcon from './icons/downArrow';
+import StyledUpArrow from './styled/upArrow';
+import StyledDownArrow from './styled/downArrow';
 import RenderIf from '../RenderIf';
 import normalizeHour from './helpers/normalizeHour';
 import normalizeMinutes from './helpers/normalizeMinutes';
@@ -410,7 +410,7 @@ export default class TimeSelect extends Component {
                             id="time-picker_up-button"
                             tabIndex="-1"
                             variant="border-filled"
-                            icon={<UpIcon />}
+                            icon={<StyledUpArrow />}
                             size="small"
                             onMouseDown={this.handleButtonsDown}
                             onClick={this.incrementHandler}
@@ -422,7 +422,7 @@ export default class TimeSelect extends Component {
                             id="time-picker_down-button"
                             tabIndex="-1"
                             variant="border-filled"
-                            icon={<DownIcon />}
+                            icon={<StyledDownArrow />}
                             size="small"
                             onMouseDown={this.handleButtonsDown}
                             onClick={this.decrementHandler}

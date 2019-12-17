@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { SHADOW_OUTLINE } from '../../../styles/shadows';
 import getTheme from '../../../styles/helpers/getTheme';
 
 const StyledSelectValue = styled.input.attrs(props => {
@@ -85,7 +84,7 @@ const StyledSelectValue = styled.input.attrs(props => {
     &:active {
         color: ${props => props.getContrastText(props.brandMainColor)};
         background-color: ${props => props.brandMainColor};
-        box-shadow: ${SHADOW_OUTLINE};
+        box-shadow: 0 0 2px ${props => props.brandMainColor};
         outline: none;
         caret-color: transparent;
     }
