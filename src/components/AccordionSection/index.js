@@ -108,7 +108,17 @@ class AccordionItem extends Component {
     }
 
     render() {
-        const { style, disabled, children, label, icon, assistiveText, className } = this.props;
+        // eslint-disable-next-line max-len
+        const {
+            style,
+            disabled,
+            children,
+            label,
+            icon,
+            assistiveText,
+            className,
+            variant,
+        } = this.props;
 
         const isExpanded = this.isExpanded();
 
@@ -142,6 +152,7 @@ class AccordionItem extends Component {
                             ariaExpanded={isExpanded}
                             ref={this.buttonRef}
                             icon={<RightArrow isExpanded={isExpanded} disabled={disabled} />}
+                            variant={variant}
                         />
                     </StyledSummary>
                     <StyledContent
@@ -188,6 +199,9 @@ AccordionSection.propTypes = {
     /** The name is used to determine which AccordionSection was clicked.
      * If `name` is not passed it will be generated. */
     name: PropTypes.string,
+    /** The variant changes the appearance of the accordion section.
+     * Accepted variants include base, brand. */
+    variant: PropTypes.oneOf(['base', 'brand']),
 };
 
 AccordionSection.defaultProps = {
@@ -199,4 +213,5 @@ AccordionSection.defaultProps = {
     label: undefined,
     icon: null,
     name: undefined,
+    variant: 'base',
 };
