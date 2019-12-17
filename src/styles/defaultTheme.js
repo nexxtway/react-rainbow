@@ -25,7 +25,9 @@ export default {
             dark: darken(COLOR_ERROR),
             light: lighten(COLOR_ERROR),
         },
-        warning: COLOR_WARNING,
+        warning: {
+            main: COLOR_WARNING,
+        },
         background: {
             primary: COLOR_WHITE,
             secondary: COLOR_GRAY_2,
