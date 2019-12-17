@@ -1,15 +1,18 @@
 /* stylelint-disable no-descending-specificity, max-line-length */
 import styled from 'styled-components';
-import {
-    COLOR_WHITE,
-    COLOR_GRAY_2,
-    COLOR_BRAND,
-    COLOR_BRAND_2,
-    COLOR_GRAY_1,
-    COLOR_GRAY_3,
-} from '../../../styles/colors';
+import { COLOR_WHITE, COLOR_GRAY_2, COLOR_GRAY_1, COLOR_GRAY_3 } from '../../../styles/colors';
+import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledLabelContainer = styled.label`
+const StyledLabelContainer = styled.label.attrs(props => {
+    const theme = getTheme(props);
+    const { brand } = theme.palette;
+    const { main: brandMainColor, dark: brandDarkColor } = brand;
+
+    return {
+        brandMainColor,
+        brandDarkColor,
+    };
+})`
     display: inline-flex;
     align-items: center;
     box-sizing: border-box;
@@ -62,14 +65,14 @@ const StyledLabelContainer = styled.label`
             background-color: ${COLOR_GRAY_2};
             border-color: #dcdfe7;
             outline: 0;
-            box-shadow: 0 0 4px ${COLOR_BRAND};
+            box-shadow: 0 0 4px ${props => props.brandMainColor};
         }
 
         :checked + .rainbow-checkbox-toggle_faux,
         :checked ~ .rainbow-checkbox-toggle_faux,
         :checked + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux {
-            border-color: ${COLOR_BRAND_2};
-            background-color: ${COLOR_BRAND};
+            border-color: ${props => props.brandDarkColor};
+            background-color: ${props => props.brandMainColor};
         }
 
         :checked + .rainbow-checkbox-toggle_faux:hover,
@@ -78,8 +81,8 @@ const StyledLabelContainer = styled.label`
         :checked ~ .rainbow-checkbox-toggle_faux:focus,
         :checked + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux:hover,
         :checked + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux:focus {
-            background-color: ${COLOR_BRAND_2};
-            border-color: ${COLOR_BRAND_2};
+            background-color: ${props => props.brandDarkColor};
+            border-color: ${props => props.brandDarkColor};
         }
 
         :checked + .rainbow-checkbox-toggle_faux::after,
@@ -94,7 +97,7 @@ const StyledLabelContainer = styled.label`
         :checked:focus + .rainbow-checkbox-toggle_faux,
         :checked:focus ~ .rainbow-checkbox-toggle_faux,
         :checked:focus + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux {
-            background-color: ${COLOR_BRAND};
+            background-color: ${props => props.brandMainColor};
         }
 
         &[disabled] + .rainbow-checkbox-toggle_faux,
