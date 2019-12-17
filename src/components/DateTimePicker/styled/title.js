@@ -1,8 +1,11 @@
 import styled from 'styled-components';
-import { COLOR_BRAND_2 } from '../../../styles/colors';
+import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledTitle = styled.h2`
-    color: ${COLOR_BRAND_2};
+const StyledTitle = styled.h2.attrs(props => {
+    const brandDarkColor = getTheme(props).palette.brand.dark;
+    return { brandDarkColor };
+})`
+    color: ${props => props.brandDarkColor};
     font-size: 1.5rem;
     font-weight: 500;
     text-transform: capitalize;

@@ -7,7 +7,7 @@ export default function UpArrow() {
                 <g
                     id="Components-Datepicker-open-clock-3"
                     transform="translate(-622.000000, -276.000000)"
-                    fill="#01b6f5"
+                    fill="currentColor"
                     fillRule="nonzero"
                 >
                     <g transform="translate(380.000000, 256.000000)">
