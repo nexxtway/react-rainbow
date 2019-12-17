@@ -1,12 +1,22 @@
 import styled from 'styled-components';
-import { COLOR_BRAND, COLOR_WHITE, COLOR_BRAND_ACTIVE } from '../../../styles/colors';
 import { SHADOW_OUTLINE } from '../../../styles/shadows';
+import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledSelectValue = styled.input`
+const StyledSelectValue = styled.input.attrs(props => {
+    const theme = getTheme(props);
+    const { getContrastText, brand } = theme.palette;
+    const { main: brandMainColor, dark: brandDarkColor } = brand;
+
+    return {
+        brandMainColor,
+        brandDarkColor,
+        getContrastText,
+    };
+})`
     font-size: 40px;
     font-weight: 200;
     text-transform: uppercase;
-    color: ${COLOR_BRAND};
+    color: ${props => props.brandMainColor};
     border: none;
     width: 82px;
     background-color: transparent;
@@ -18,54 +28,54 @@ const StyledSelectValue = styled.input`
     line-height: normal;
 
     &::selection {
-        color: ${COLOR_WHITE};
-        background: ${COLOR_BRAND_ACTIVE};
+        color: ${props => props.getContrastText(props.brandDarkColor)};
+        background: ${props => props.brandDarkColor};
     }
 
     &::-moz-selection {
-        color: ${COLOR_WHITE};
-        background: ${COLOR_BRAND_ACTIVE};
+        color: ${props => props.getContrastText(props.brandDarkColor)};
+        background: ${props => props.brandDarkColor};
     }
 
     &[placeholder]:focus::-webkit-input-placeholder {
-        color: ${COLOR_WHITE};
+        color: ${props => props.getContrastText(props.brandDarkColor)};
     }
 
     &[placeholder]:focus::-moz-placeholder {
-        color: ${COLOR_WHITE};
+        color: ${props => props.getContrastText(props.brandDarkColor)};
     }
 
     &[placeholder]:focus:-ms-input-placeholder {
-        color: ${COLOR_WHITE};
+        color: ${props => props.getContrastText(props.brandDarkColor)};
     }
 
     &[placeholder]:focus:-moz-placeholder {
-        color: ${COLOR_WHITE};
+        color: ${props => props.getContrastText(props.brandDarkColor)};
     }
 
     &::-webkit-input-placeholder {
-        color: ${COLOR_BRAND};
+        color: ${props => props.brandMainColor};
         font-size: 40px;
         font-weight: 200;
         text-transform: uppercase;
     }
 
     &::-moz-placeholder {
-        color: ${COLOR_BRAND};
+        color: ${props => props.brandMainColor};
         font-size: 40px;
         font-weight: 200;
         text-transform: uppercase;
     }
 
     &:-ms-input-placeholder {
-        color: ${COLOR_BRAND};
+        color: ${props => props.brandMainColor};
         font-size: 40px;
         font-weight: 200;
         text-transform: uppercase;
     }
 
     &:-moz-placeholder {
-        color: ${COLOR_BRAND};
+        color: ${props => props.brandMainColor};
         font-size: 40px;
         font-weight: 200;
         text-transform: uppercase;
@@ -73,8 +83,8 @@ const StyledSelectValue = styled.input`
 
     &:focus,
     &:active {
-        color: ${COLOR_WHITE};
-        background-color: ${COLOR_BRAND};
+        color: ${props => props.getContrastText(props.brandMainColor)};
+        background-color: ${props => props.brandMainColor};
         box-shadow: ${SHADOW_OUTLINE};
         outline: none;
         caret-color: transparent;
@@ -115,6 +125,7 @@ const StyledSelectValue = styled.input`
             padding: 0;
             display: flex;
             flex-direction: column;
+            color: #f00;
         `};
 `;
 

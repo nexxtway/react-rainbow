@@ -63,7 +63,7 @@ export default class AmPmSelect extends PureComponent {
 
     render() {
         const { isFocused } = this.state;
-        const { tabIndex, onFocus, value } = this.props;
+        const { tabIndex, onFocus, value, variant } = this.props;
 
         if (isFocused) {
             return (
@@ -75,6 +75,7 @@ export default class AmPmSelect extends PureComponent {
                     onBlur={this.handleBlur}
                     onFocus={onFocus}
                     ref={this.fieldsetRef}
+                    variant={variant}
                 >
                     <StyledInputHidden
                         as="input"
@@ -113,6 +114,7 @@ export default class AmPmSelect extends PureComponent {
                 placeholder="--"
                 defaultValue={value}
                 ref={this.fieldsetRef}
+                variant={variant}
             />
         );
     }
@@ -124,6 +126,7 @@ AmPmSelect.propTypes = {
     onChange: PropTypes.func,
     onFocus: PropTypes.func,
     tabIndex: PropTypes.string,
+    variant: PropTypes.oneOf(['default', 'brand']),
 };
 
 AmPmSelect.defaultProps = {
@@ -132,4 +135,5 @@ AmPmSelect.defaultProps = {
     onChange: () => {},
     onFocus: () => {},
     tabIndex: undefined,
+    variant: 'default',
 };

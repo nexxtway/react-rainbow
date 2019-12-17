@@ -1,12 +1,11 @@
 import styled from 'styled-components';
-import { COLOR_BRAND } from '../../../styles/colors';
 import { PADDING_XX_SMALL } from '../../../styles/paddings';
 
-const StyledDots = styled.span`
+const StyledDots = styled.span.attrs(props => props.theme.rainbow.palette)`
     font-size: 32px;
     font-weight: 200;
     height: 100%;
-    color: ${COLOR_BRAND};
+    color: ${props => props.brand.main};
     margin: auto ${PADDING_XX_SMALL};
     display: flex;
     align-items: center;

@@ -350,7 +350,7 @@ export default class TimeSelect extends Component {
 
     render() {
         const { hour, minutes, ampm } = this.state;
-        const { onCloseModal, cancelLabel, okLabel, hours24, className } = this.props;
+        const { onCloseModal, cancelLabel, okLabel, hours24, className, variant } = this.props;
         const hourPlaceholder = this.prevHour || '--';
         const minutesPlaceholder = this.prevMinutes || '--';
 
@@ -371,6 +371,7 @@ export default class TimeSelect extends Component {
                         inputMode="numeric"
                         pattern="\d*"
                         ref={this.hourInputRef}
+                        variant={variant}
                     />
 
                     <StyledDots>:</StyledDots>
@@ -389,6 +390,7 @@ export default class TimeSelect extends Component {
                         inputMode="numeric"
                         pattern="\d*"
                         ref={this.minutesInputRef}
+                        variant={variant}
                     />
 
                     <RenderIf isTrue={!hours24}>
@@ -399,6 +401,7 @@ export default class TimeSelect extends Component {
                             onFocus={this.hanldeFocusAmPm}
                             onChange={this.handleAmPmChange}
                             ref={this.amPmInputRef}
+                            variant={variant}
                         />
                     </RenderIf>
 
@@ -457,6 +460,7 @@ TimeSelect.propTypes = {
     onChange: PropTypes.func,
     value: PropTypes.string,
     className: PropTypes.string,
+    variant: PropTypes.oneOf(['default', 'brand']),
 };
 
 TimeSelect.defaultProps = {
@@ -467,4 +471,5 @@ TimeSelect.defaultProps = {
     onChange: () => {},
     value: undefined,
     className: undefined,
+    variant: 'default',
 };
