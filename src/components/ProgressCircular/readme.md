@@ -3,18 +3,43 @@
 ```js
 import React from 'react';
 import { Card, ProgressCircular } from 'react-rainbow-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import styled from 'styled-components';
 
-const IconStyles = {
-    width: 24,
-    height: 20,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-};
+const ActiveCirlce = styled.span.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    width: 24;
+    height: 20;
+    display: 'flex';
+    align-items: 'center';
+    justify-content: 'center';
+    margin-right: 8px;
+    color: ${props => props.brand.main};
+    ${props =>
+        props.variant === 'brand' &&
+        `
+            color: ${props.brand.main};
+        `};
+    ${props =>
+        props.variant === 'success' &&
+        `
+            color: ${props.success.main};
+        `};
+    ${props =>
+        props.variant === 'warning' &&
+        `
+            color: ${props.warning.main};
+        `};
+    ${props =>
+        props.variant === 'error' &&
+        `
+            color: ${props.error.main};
+        `};
+`;
 
-function ActiveUsersCard({ title, variant, color }) {
+function ActiveUsersCard({ title, variant }) {
     const [percent, setPercent] = React.useState(60);
 
     React.useEffect(() => {
@@ -34,9 +59,9 @@ function ActiveUsersCard({ title, variant, color }) {
                 <ProgressCircular variant={variant} value={percent} />
             </div>
             <div className="rainbow-flex rainbow_vertical-stretch">
-                <span style={IconStyles} className={`rainbow-color_${color}`}>
+                <ActiveCirlce variant={variant}>
                     <FontAwesomeIcon icon={faCircle} />
-                </span>
+                </ActiveCirlce>
                 <h3 className="rainbow-font-size_small">Active Now</h3>
             </div>
         </Card>
@@ -48,9 +73,9 @@ function ActiveUsersCard({ title, variant, color }) {
         Social Network Activity
     </h1>
     <div className="rainbow-flex rainbow-flex_wrap">
-        <ActiveUsersCard title="snapchat" variant="warning" color="yellow" />
-        <ActiveUsersCard title="twitter" color="brand" />
-        <ActiveUsersCard title="google" variant="error" color="error" />
+        <ActiveUsersCard title="snapchat" variant="warning" />
+        <ActiveUsersCard title="twitter" />
+        <ActiveUsersCard title="google" variant="error" />
     </div>
 </div>
 ```
@@ -64,19 +89,19 @@ import { ProgressCircular } from 'react-rainbow-components';
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <div className="rainbow-p-around_large rainbow-align-content_center rainbow-flex_column">
         <ProgressCircular value={24} />
-        <h1 className="rainbow-font-size-heading_small rainbow-color_brand">brand</h1>
+        <h1 className="rainbow-font-size-heading_small rainbow-color_gray-3">brand</h1>
     </div>
     <div className="rainbow-p-around_large rainbow-align-content_center rainbow-flex_column">
         <ProgressCircular value={45} variant="success" />
-        <h1 className="rainbow-font-size-heading_small rainbow-color_success">success</h1>
+        <h1 className="rainbow-font-size-heading_small rainbow-color_gray-3">success</h1>
     </div>
     <div className="rainbow-p-around_large rainbow-align-content_center rainbow-flex_column">
         <ProgressCircular value={60} variant="warning" />
-        <h1 className="rainbow-font-size-heading_small rainbow-color_yellow">warning</h1>
+        <h1 className="rainbow-font-size-heading_small rainbow-color_gray-3">warning</h1>
     </div>
     <div className="rainbow-p-around_large rainbow-align-content_center rainbow-flex_column">
         <ProgressCircular value={82} variant="error" />
-        <h1 className="rainbow-font-size-heading_small rainbow-color_error">error</h1>
+        <h1 className="rainbow-font-size-heading_small rainbow-color_gray-3">error</h1>
     </div>
 </div>
 ```

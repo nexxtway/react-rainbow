@@ -1,8 +1,17 @@
 import styled from 'styled-components';
-import { COLOR_BRAND, COLOR_GRAY_4 } from '../../../styles/colors';
+import { COLOR_GRAY_4 } from '../../../styles/colors';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
+import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledButton = styled.button`
+const StyledButton = styled.button.attrs(props => {
+    const theme = getTheme(props);
+    const { brand } = theme.palette;
+    const { main: brandMainColor } = brand;
+
+    return {
+        brandMainColor,
+    };
+})`
     font: inherit;
     background: none;
     border: none;
@@ -24,7 +33,7 @@ const StyledButton = styled.button`
     }
 
     :hover {
-        color: ${COLOR_BRAND};
+        color: ${props => props.brandMainColor};
     }
 
     ${props =>
