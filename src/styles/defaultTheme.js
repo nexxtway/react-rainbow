@@ -1,11 +1,4 @@
-import {
-    COLOR_BRAND,
-    COLOR_SUCCESS,
-    COLOR_ERROR,
-    COLOR_WARNING,
-    COLOR_WHITE,
-    COLOR_GRAY_2,
-} from './colors';
+import { COLOR_BRAND, COLOR_SUCCESS, COLOR_ERROR, COLOR_WARNING, COLOR_WHITE } from './colors';
 import { darken, getContrastText, lighten } from './helpers/color';
 
 export default {
