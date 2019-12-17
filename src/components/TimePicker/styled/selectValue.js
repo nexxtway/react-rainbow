@@ -1,26 +1,12 @@
 import styled from 'styled-components';
-import getTheme from '../../../styles/helpers/getTheme';
+import { COLOR_BRAND, COLOR_WHITE, COLOR_BRAND_ACTIVE } from '../../../styles/colors';
+import { SHADOW_OUTLINE } from '../../../styles/shadows';
 
-const StyledSelectValue = styled.input.attrs(props => {
-    const theme = getTheme(props);
-    const { getContrastText, brand, success } = theme.palette;
-    const brandMainColor = brand.main;
-    const successMainColor = success.main;
-    const brandMainContrastText = getContrastText(brandMainColor);
-    const successMainContrastText = getContrastText(successMainColor);
-
-    return {
-        brandMainColor,
-        successMainColor,
-        successMainContrastText,
-        brandMainContrastText,
-        brandShadow: `0 0 2px ${brandMainColor}`,
-    };
-})`
+const StyledSelectValue = styled.input`
     font-size: 40px;
     font-weight: 200;
     text-transform: uppercase;
-    color: ${props => props.brandMainColor};
+    color: ${COLOR_BRAND};
     border: none;
     width: 82px;
     background-color: transparent;
@@ -32,54 +18,54 @@ const StyledSelectValue = styled.input.attrs(props => {
     line-height: normal;
 
     &::selection {
-        color: ${props => props.successMainContrastText};
-        background: ${props => props.successMainColor};
+        color: ${COLOR_WHITE};
+        background: ${COLOR_BRAND_ACTIVE};
     }
 
     &::-moz-selection {
-        color: ${props => props.successMainContrastText};
-        background: ${props => props.successMainColor};
+        color: ${COLOR_WHITE};
+        background: ${COLOR_BRAND_ACTIVE};
     }
 
     &[placeholder]:focus::-webkit-input-placeholder {
-        color: ${props => props.successMainContrastText};
+        color: ${COLOR_WHITE};
     }
 
     &[placeholder]:focus::-moz-placeholder {
-        color: ${props => props.successMainContrastText};
+        color: ${COLOR_WHITE};
     }
 
     &[placeholder]:focus:-ms-input-placeholder {
-        color: ${props => props.successMainContrastText};
+        color: ${COLOR_WHITE};
     }
 
     &[placeholder]:focus:-moz-placeholder {
-        color: ${props => props.successMainContrastText};
+        color: ${COLOR_WHITE};
     }
 
     &::-webkit-input-placeholder {
-        color: ${props => props.brandMainColor};
+        color: ${COLOR_BRAND};
         font-size: 40px;
         font-weight: 200;
         text-transform: uppercase;
     }
 
     &::-moz-placeholder {
-        color: ${props => props.brandMainColor};
+        color: ${COLOR_BRAND};
         font-size: 40px;
         font-weight: 200;
         text-transform: uppercase;
     }
 
     &:-ms-input-placeholder {
-        color: ${props => props.brandMainColor};
+        color: ${COLOR_BRAND};
         font-size: 40px;
         font-weight: 200;
         text-transform: uppercase;
     }
 
     &:-moz-placeholder {
-        color: ${props => props.brandMainColor};
+        color: ${COLOR_BRAND};
         font-size: 40px;
         font-weight: 200;
         text-transform: uppercase;
@@ -87,9 +73,9 @@ const StyledSelectValue = styled.input.attrs(props => {
 
     &:focus,
     &:active {
-        color: ${props => props.brandMainContrastText};
-        background-color: ${props => props.brandMainColor};
-        box-shadow: ${props => props.brandShadow};
+        color: ${COLOR_WHITE};
+        background-color: ${COLOR_BRAND};
+        box-shadow: ${SHADOW_OUTLINE};
         outline: none;
         caret-color: transparent;
     }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import ButtonIcon from '../ButtonIcon';
 import AmPmSelect from './ampmSelect';
 import UpIcon from './icons/upArrow';
 import DownIcon from './icons/downArrow';
@@ -25,7 +26,6 @@ import StyledSelectValue from './styled/selectValue';
 import StyledVerticalButtonsContainer from './styled/verticalButtonsContainer';
 import StyledFooter from './styled/footer';
 import StyledButton from './styled/button';
-import StyledArrowButton from './styled/arrowButton';
 
 function preventDefault(event) {
     event.preventDefault();
@@ -403,7 +403,7 @@ export default class TimeSelect extends Component {
                     </RenderIf>
 
                     <StyledVerticalButtonsContainer>
-                        <StyledArrowButton
+                        <ButtonIcon
                             id="time-picker_up-button"
                             tabIndex="-1"
                             variant="border-filled"
@@ -415,7 +415,7 @@ export default class TimeSelect extends Component {
                             assistiveText="Next value"
                         />
 
-                        <StyledArrowButton
+                        <ButtonIcon
                             id="time-picker_down-button"
                             tabIndex="-1"
                             variant="border-filled"

@@ -6,7 +6,7 @@ export default function DownArrow() {
             <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g
                     transform="translate(-622.000000, -294.000000)"
-                    fill="currentColor"
+                    fill="#01b6f5"
                     fillRule="nonzero"
                 >
                     <g transform="translate(380.000000, 256.000000)">
