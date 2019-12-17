@@ -67,9 +67,9 @@ const yellowTheme = {
 const orangeDarkTheme = {
     rainbow: {
         palette: {
-            brand: '#f8752d',
-            success: '#00a042',
-            error: '#e53935',
+            brand: '#80deea',
+            success: '#b9f6ca',
+            error: '#ff5252',
             background: {
                 primary: '#242424',
                 secondary: '#333333',
@@ -130,7 +130,7 @@ export default function Wrapper(props) {
                             onClick={() => setTheme(deepPurpleTheme)}
                         />
                         <MenuItem
-                            label="Orange Dark"
+                            label="Cyan Dark"
                             icon={<StyledColorBox rainbowTheme={orangeDarkTheme.rainbow} />}
                             onClick={() => setTheme(orangeDarkTheme)}
                         />
