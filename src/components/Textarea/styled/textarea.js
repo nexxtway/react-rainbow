@@ -4,10 +4,8 @@ import {
     COLOR_WHITE,
     COLOR_GRAY_3,
     COLOR_DARK_1,
-    COLOR_BRAND,
     COLOR_GRAY_1,
     COLOR_GRAY_2,
-    COLOR_ERROR,
 } from '../../../styles/colors';
 import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
 import getTheme from '../../../styles/helpers/getTheme';
