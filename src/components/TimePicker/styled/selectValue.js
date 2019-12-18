@@ -5,11 +5,14 @@ const StyledSelectValue = styled.input.attrs(props => {
     const theme = getTheme(props);
     const { getContrastText, brand } = theme.palette;
     const { main: brandMainColor, dark: brandDarkColor } = brand;
+    const brandMainContrastText = getContrastText(brandMainColor);
+    const brandDarkContrastText = getContrastText(brandDarkColor);
 
     return {
         brandMainColor,
         brandDarkColor,
-        getContrastText,
+        brandMainContrastText,
+        brandDarkContrastText,
     };
 })`
     font-size: 40px;
@@ -27,29 +30,29 @@ const StyledSelectValue = styled.input.attrs(props => {
     line-height: normal;
 
     &::selection {
-        color: ${props => props.getContrastText(props.brandDarkColor)};
+        color: ${props => props.brandDarkContrastText};
         background: ${props => props.brandDarkColor};
     }
 
     &::-moz-selection {
-        color: ${props => props.getContrastText(props.brandDarkColor)};
+        color: ${props => props.brandDarkContrastText};
         background: ${props => props.brandDarkColor};
     }
 
     &[placeholder]:focus::-webkit-input-placeholder {
-        color: ${props => props.getContrastText(props.brandDarkColor)};
+        color: ${props => props.brandDarkContrastText};
     }
 
     &[placeholder]:focus::-moz-placeholder {
-        color: ${props => props.getContrastText(props.brandDarkColor)};
+        color: ${props => props.brandDarkContrastText};
     }
 
     &[placeholder]:focus:-ms-input-placeholder {
-        color: ${props => props.getContrastText(props.brandDarkColor)};
+        color: ${props => props.brandDarkContrastText};
     }
 
     &[placeholder]:focus:-moz-placeholder {
-        color: ${props => props.getContrastText(props.brandDarkColor)};
+        color: ${props => props.brandDarkContrastText};
     }
 
     &::-webkit-input-placeholder {
@@ -82,7 +85,7 @@ const StyledSelectValue = styled.input.attrs(props => {
 
     &:focus,
     &:active {
-        color: ${props => props.getContrastText(props.brandMainColor)};
+        color: ${props => props.brandMainContrastText};
         background-color: ${props => props.brandMainColor};
         box-shadow: 0 0 2px ${props => props.brandMainColor};
         outline: none;
