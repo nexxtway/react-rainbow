@@ -42,7 +42,7 @@ class PickerOption extends Component {
     }
 
     render() {
-        const { disabled, children, footer, style, className, variant } = this.props;
+        const { disabled, children, footer, style, className } = this.props;
         const { groupName, ariaDescribedby } = this.props;
 
         return (
@@ -60,14 +60,13 @@ class PickerOption extends Component {
                     aria-describedby={ariaDescribedby}
                     onChange={this.handleChange}
                     disabled={disabled}
-                    variant={variant}
                 />
 
                 <StyledLabel data-id="visual-picker_option-label" htmlFor={this.inputId}>
                     <StyledContent data-id="visual-picker_option">
                         <RenderIf isTrue={this.isChecked()}>
-                            <StyledCheckedTriangle variant={variant} />
-                            <CheckmarkIcon variant={variant} />
+                            <StyledCheckedTriangle />
+                            <CheckmarkIcon />
                         </RenderIf>
                         {children}
                     </StyledContent>
@@ -109,9 +108,6 @@ VisualPickerOption.propTypes = {
      * @ignore
      */
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
-    // eslint-disable-next-line max-len
-    /** The variant changes the appearance of the visualpickeroption. Accepted variants include default and brand. */
-    variant: PropTypes.oneOf(['default', 'brand']),
 };
 
 VisualPickerOption.defaultProps = {
@@ -122,5 +118,4 @@ VisualPickerOption.defaultProps = {
     style: undefined,
     children: [],
     ariaDescribedby: undefined,
-    variant: 'default',
 };

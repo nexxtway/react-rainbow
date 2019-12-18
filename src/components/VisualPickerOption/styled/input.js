@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import HiddenElement from '../../Structural/hiddenElement';
 import { COLOR_GRAY_2, COLOR_GRAY_1 } from '../../../styles/colors';
-import { SHADOW_OUTLINE } from '../../../styles/shadows';
 import getTheme from '../../../styles/helpers/getTheme';
 
 const StyledInput = styled(HiddenElement).attrs(props => {
@@ -26,7 +25,7 @@ const StyledInput = styled(HiddenElement).attrs(props => {
 
     :focus ~ label > [data-id='visual-picker_option'] {
         border: solid 0.5px #67d3f9;
-        box-shadow: 0 1px 2px 0 rgba(136, 152, 170, 0.5), ${SHADOW_OUTLINE};
+        box-shadow: 0 1px 2px 0 rgba(136, 152, 170, 0.5), 0 0 2px ${props => props.brandMainColor};
     }
 
     :checked ~ label > [data-id='visual-picker_option'] {
