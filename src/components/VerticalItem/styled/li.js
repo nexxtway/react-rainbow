@@ -1,7 +1,10 @@
 import styled from 'styled-components';
-import { COLOR_BRAND } from '../../../styles/colors';
+import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledLi = styled.li`
+const StyledLi = styled.li.attrs(props => {
+    const brandMainColor = getTheme(props).palette.brand.main;
+    return { brandMainColor };
+})`
     position: relative;
     box-sizing: border-box;
     ${props =>
@@ -14,7 +17,7 @@ const StyledLi = styled.li`
                 top: 0;
                 bottom: 0;
                 position: absolute;
-                background-color: ${COLOR_BRAND};
+                background-color: ${props.brandMainColor};
             }
         `};
 `;

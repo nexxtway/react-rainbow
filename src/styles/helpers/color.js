@@ -68,7 +68,7 @@ export function recomposeColor(color) {
     return `${type}(${values.join(', ')})`;
 }
 
-export function darken(color, coefficient = 0.2) {
+export function darken(color, coefficient = 0.1) {
     color = decomposeColor(color);
     coefficient = clamp(coefficient);
 
