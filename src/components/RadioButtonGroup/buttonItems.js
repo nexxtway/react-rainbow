@@ -32,10 +32,12 @@ ButtonItems.propTypes = {
     onChange: PropTypes.func,
     name: PropTypes.string.isRequired,
     required: PropTypes.bool.isRequired,
+    variant: PropTypes.oneOf(['default', 'inverse', 'brand']),
 };
 
 ButtonItems.defaultProps = {
     ariaDescribedby: undefined,
     value: undefined,
     onChange: () => {},
+    variant: 'default',
 };
