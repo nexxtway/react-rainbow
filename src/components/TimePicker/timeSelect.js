@@ -410,7 +410,7 @@ export default class TimeSelect extends Component {
                             id="time-picker_up-button"
                             tabIndex="-1"
                             variant="border-filled"
-                            icon={<StyledUpArrow />}
+                            icon={<StyledUpArrow style />}
                             size="small"
                             onMouseDown={this.handleButtonsDown}
                             onClick={this.incrementHandler}
@@ -422,7 +422,7 @@ export default class TimeSelect extends Component {
                             id="time-picker_down-button"
                             tabIndex="-1"
                             variant="border-filled"
-                            icon={<StyledDownArrow />}
+                            icon={<StyledDownArrow style />}
                             size="small"
                             onMouseDown={this.handleButtonsDown}
                             onClick={this.decrementHandler}
