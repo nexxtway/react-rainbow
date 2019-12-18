@@ -13,6 +13,8 @@ const StyledSelectValue = styled.input.attrs(props => {
         brandDarkColor,
         brandMainContrastText,
         brandDarkContrastText,
+        // TODO: move up to defaultTheme or normalizeTheme
+        brandShadow: `0 0 2px ${brandMainColor}`,
     };
 })`
     font-size: 40px;
@@ -40,19 +42,19 @@ const StyledSelectValue = styled.input.attrs(props => {
     }
 
     &[placeholder]:focus::-webkit-input-placeholder {
-        color: ${props => props.brandDarkContrastText};
+        color: ${props => props.brandMainContrastText};
     }
 
     &[placeholder]:focus::-moz-placeholder {
-        color: ${props => props.brandDarkContrastText};
+        color: ${props => props.brandMainContrastText};
     }
 
     &[placeholder]:focus:-ms-input-placeholder {
-        color: ${props => props.brandDarkContrastText};
+        color: ${props => props.brandMainContrastText};
     }
 
     &[placeholder]:focus:-moz-placeholder {
-        color: ${props => props.brandDarkContrastText};
+        color: ${props => props.brandMainContrastText};
     }
 
     &::-webkit-input-placeholder {
@@ -87,7 +89,7 @@ const StyledSelectValue = styled.input.attrs(props => {
     &:active {
         color: ${props => props.brandMainContrastText};
         background-color: ${props => props.brandMainColor};
-        box-shadow: 0 0 2px ${props => props.brandMainColor};
+        box-shadow: ${props => props.brandShadow};
         outline: none;
         caret-color: transparent;
     }
@@ -127,7 +129,6 @@ const StyledSelectValue = styled.input.attrs(props => {
             padding: 0;
             display: flex;
             flex-direction: column;
-            color: #f00;
         `};
 `;
 
