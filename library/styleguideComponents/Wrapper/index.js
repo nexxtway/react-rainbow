@@ -38,16 +38,6 @@ const orangeTheme = {
     },
 };
 
-const cyanTheme = {
-    rainbow: {
-        palette: {
-            brand: '#80deea',
-            success: '#b9f6ca',
-            error: '#ff5252',
-        },
-    },
-};
-
 const deepPurpleTheme = {
     rainbow: {
         palette: {
@@ -117,12 +107,6 @@ export default function Wrapper(props) {
                             icon={theme === orangeTheme && <StyledCheckIcon icon={faCheck} />}
                             iconPosition="right"
                             onClick={() => setTheme(orangeTheme)}
-                        />
-                        <MenuItem
-                            label={<ColorBox label="Cyan" color={cyanTheme.rainbow} />}
-                            icon={theme === cyanTheme && <StyledCheckIcon icon={faCheck} />}
-                            iconPosition="right"
-                            onClick={() => setTheme(cyanTheme)}
                         />
                         <MenuItem
                             label={<ColorBox label="Yellow" color={yellowTheme.rainbow} />}
