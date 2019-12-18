@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { BORDER_RADIUS_3, BORDER_RADIUS_2 } from '../../../styles/borderRadius';
-import { COLOR_BRAND, COLOR_GRAY_2, COLOR_BRAND_ACTIVE } from '../../../styles/colors';
+import { COLOR_GRAY_2 } from '../../../styles/colors';
 import getTheme from '../../../styles/helpers/getTheme';
 
 const StyledInputRange = styled.input.attrs(props => {

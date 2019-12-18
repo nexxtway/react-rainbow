@@ -10,9 +10,20 @@ import {
     COLOR_ERROR,
 } from '../../../styles/colors';
 import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
-import { SHADOW_OUTLINE, SHADOW_ERROR } from '../../../styles/shadows';
+import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledTextarea = styled.textarea`
+const StyledTextarea = styled.textarea.attrs(props => {
+    const { brand, error } = getTheme(props).palette;
+    const brandMainColor = brand.main;
+    const errorMainColor = error.main;
+
+    return {
+        brandMainColor,
+        errorMainColor,
+        brandShadow: `0 0 2px ${brandMainColor}`,
+        errorShadow: `0 0 2px ${errorMainColor}`,
+    };
+})`
     border-radius: ${BORDER_RADIUS_1};
     background-color: ${COLOR_WHITE};
     border: solid 1px ${COLOR_GRAY_3};
@@ -31,8 +42,8 @@ const StyledTextarea = styled.textarea`
     :active {
         outline: 0;
         background-color: ${COLOR_WHITE};
-        border: solid 2px ${COLOR_BRAND};
-        box-shadow: ${SHADOW_OUTLINE};
+        border: solid 2px ${propps => propps.brandMainColor};
+        box-shadow: ${props => props.brandShadow};
         padding: 0.5625rem 0.9375rem;
     }
 
@@ -77,14 +88,14 @@ const StyledTextarea = styled.textarea`
         props.error &&
         `
             background-color: ${COLOR_WHITE};
-            border: solid 2px ${COLOR_ERROR};
+            border: solid 2px ${props.errorMainColor};
             background-clip: padding-box;
 
             &:focus,
             &:active {
                 padding: 0.625rem 1rem;
-                box-shadow: ${SHADOW_ERROR};
-                border: solid 2px ${COLOR_ERROR};
+                box-shadow: ${props.errorShadow};
+                border: solid 2px ${props.errorMainColor};
             }
         `};
 `;
