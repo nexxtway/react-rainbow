@@ -6,10 +6,12 @@ import getTheme from '../../../styles/helpers/getTheme';
 const StyledInput = styled(HiddenElement).attrs(props => {
     const theme = getTheme(props);
     const { brand } = theme.palette;
+    const { light: brandLightColor } = brand;
     const { main: brandMainColor } = brand;
 
     return {
         brandMainColor,
+        brandLightColor,
         // TODO: move up to defaultTheme or normalizeTheme
         brandShadow: `0 0 2px ${brandMainColor}`,
     };
@@ -26,7 +28,7 @@ const StyledInput = styled(HiddenElement).attrs(props => {
     }
 
     :focus ~ label > [data-id='visual-picker_option'] {
-        border: solid 0.5px #67d3f9;
+        border: solid 1px ${props => props.brandLightColor};
         box-shadow: 0 1px 2px 0 rgba(136, 152, 170, 0.5), ${props => props.brandShadow};
     }
 
