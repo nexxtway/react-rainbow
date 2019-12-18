@@ -10,6 +10,8 @@ const StyledInput = styled(HiddenElement).attrs(props => {
 
     return {
         brandMainColor,
+        // TODO: move up to defaultTheme or normalizeTheme
+        brandShadow: `0 0 2px ${brandMainColor}`,
     };
 })`
     color: inherit;
@@ -25,7 +27,7 @@ const StyledInput = styled(HiddenElement).attrs(props => {
 
     :focus ~ label > [data-id='visual-picker_option'] {
         border: solid 0.5px #67d3f9;
-        box-shadow: 0 1px 2px 0 rgba(136, 152, 170, 0.5), 0 0 2px ${props => props.brandMainColor};
+        box-shadow: 0 1px 2px 0 rgba(136, 152, 170, 0.5), ${props => props.brandShadow};
     }
 
     :checked ~ label > [data-id='visual-picker_option'] {

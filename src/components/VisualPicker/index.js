@@ -8,7 +8,7 @@ import { Provider } from './context';
 import StyledContainer from './styled/container';
 import StyledLabel from './styled/label';
 import StyledOptionsContainer from './styled/optionsContainer';
-import StyledError from './styled/error';
+import StyledError from '../Input/styled/errorText';
 
 /**
  * A VisualPicker can be either radio buttons, checkboxes, or links that are visually enhanced.
