@@ -129,7 +129,6 @@ class TimePicker extends Component {
             cancelLabel,
             okLabel,
             onChange,
-            variant,
         } = this.props;
         const { isOpen, value } = this.state;
 
@@ -156,7 +155,6 @@ class TimePicker extends Component {
                     readOnly={readOnly}
                     disabled={disabled}
                     tabIndex={tabIndex}
-                    variant={variant}
                 />
 
                 <StyledModal
@@ -172,7 +170,6 @@ class TimePicker extends Component {
                         okLabel={okLabel}
                         value={value}
                         ref={this.timeSelectRef}
-                        variant={variant}
                     />
                 </StyledModal>
             </StyledContainer>
@@ -225,9 +222,6 @@ TimePicker.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
-    /** The variant changes the appearance of the TimePicker. Accepted variants include default,
-     * and. This value defaults to default. */
-    variant: PropTypes.oneOf(['default', 'brand']),
 };
 
 TimePicker.defaultProps = {
@@ -252,7 +246,6 @@ TimePicker.defaultProps = {
     id: undefined,
     className: undefined,
     style: undefined,
-    variant: 'default',
 };
 
 export default withReduxForm(TimePicker);
