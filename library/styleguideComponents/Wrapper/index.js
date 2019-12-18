@@ -6,20 +6,20 @@ import { reducer as formReducer } from 'redux-form';
 import { Provider } from 'react-redux';
 import Application from '../../../src/components/Application';
 import MenuItem from '../../../src/components/MenuItem';
-import ButtonMenu from '../../../src/components/ButtonMenu';
 import InfoFilled from '../../exampleComponents/Icons/infoFilled';
-import logo from './../../../assets/images/rainbow-logo.svg';
 import isNotComponentPage from '../utils';
+import ColorBox from './colorBox';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import {
+    StyledWrapper,
     StyledTopBar,
     StyledLeftElement,
     StyledTitle,
-    StyledInfoContent,
-    StyledContentText,
+    StyledContent,
     StyledBadge,
-    StyledLogo,
     StyledPickerTheme,
-    StyledColorBox,
+    StyledColorCircle,
+    StyledCheckIcon,
 } from './styled';
 
 const rootReducer = combineReducers({
@@ -34,16 +34,6 @@ const orangeTheme = {
             brand: '#f8752d',
             success: '#00a042',
             error: '#e53935',
-        },
-    },
-};
-
-const cyanTheme = {
-    rainbow: {
-        palette: {
-            brand: '#80deea',
-            success: '#b9f6ca',
-            error: '#ff5252',
         },
     },
 };
@@ -66,6 +56,20 @@ const yellowTheme = {
     },
 };
 
+const cyanDarkTheme = {
+    rainbow: {
+        palette: {
+            brand: '#80deea',
+            success: '#b9f6ca',
+            error: '#ff5252',
+            background: {
+                primary: '#242424',
+                secondary: '#333333',
+            },
+        },
+    },
+};
+
 export default function Wrapper(props) {
     const { children } = props;
     const [theme, setTheme] = useState();
@@ -77,54 +81,57 @@ export default function Wrapper(props) {
 
     return (
         <Application theme={theme}>
-            <StyledTopBar>
-                <StyledLeftElement>
-                    <ButtonMenu buttonVariant="base" icon={<InfoFilled />}>
-                        <StyledInfoContent>
-                            <StyledContentText>
-                                The theme support is
-                                <StyledBadge label="BETA" />
-                                and
-                                <StyledBadge label="WIP" />
-                            </StyledContentText>
-                        </StyledInfoContent>
-                    </ButtonMenu>
-                    <StyledTitle>Info</StyledTitle>
-                </StyledLeftElement>
-                <StyledPickerTheme
-                    menuAlignment="right"
-                    menuSize="x-small"
-                    icon={<StyledLogo src={logo} alt="rainbow logo" />}
-                >
-                    <MenuItem label="THEME SELECTOR" variant="header" />
-                    <MenuItem
-                        label="Default"
-                        icon={<StyledColorBox />}
-                        onClick={() => setTheme()}
-                    />
-                    <MenuItem
-                        label="Orange"
-                        icon={<StyledColorBox rainbowTheme={orangeTheme.rainbow} />}
-                        onClick={() => setTheme(orangeTheme)}
-                    />
-                    <MenuItem
-                        label="Cyan"
-                        icon={<StyledColorBox rainbowTheme={cyanTheme.rainbow} />}
-                        onClick={() => setTheme(cyanTheme)}
-                    />
-                    <MenuItem
-                        label="Yellow"
-                        icon={<StyledColorBox rainbowTheme={yellowTheme.rainbow} />}
-                        onClick={() => setTheme(yellowTheme)}
-                    />
-                    <MenuItem
-                        label="Deep Purple"
-                        icon={<StyledColorBox rainbowTheme={deepPurpleTheme.rainbow} />}
-                        onClick={() => setTheme(deepPurpleTheme)}
-                    />
-                </StyledPickerTheme>
-            </StyledTopBar>
-            <Provider store={store}>{children}</Provider>
+            <StyledWrapper>
+                <StyledTopBar>
+                    <StyledLeftElement>
+                        <InfoFilled />
+                        <StyledTitle>
+                            The theme support is <StyledBadge label="BETA" /> and{' '}
+                            <StyledBadge label="WIP" />
+                        </StyledTitle>
+                    </StyledLeftElement>
+                    <StyledPickerTheme
+                        menuAlignment="right"
+                        menuSize="x-small"
+                        icon={<StyledColorCircle />}
+                    >
+                        <MenuItem label="THEME SELECTOR" variant="header" />
+                        <MenuItem
+                            label={<ColorBox label="Default" />}
+                            icon={!theme && <StyledCheckIcon icon={faCheck} />}
+                            iconPosition="right"
+                            onClick={() => setTheme()}
+                        />
+                        <MenuItem
+                            label={<ColorBox label="Orange" color={orangeTheme.rainbow} />}
+                            icon={theme === orangeTheme && <StyledCheckIcon icon={faCheck} />}
+                            iconPosition="right"
+                            onClick={() => setTheme(orangeTheme)}
+                        />
+                        <MenuItem
+                            label={<ColorBox label="Yellow" color={yellowTheme.rainbow} />}
+                            icon={theme === yellowTheme && <StyledCheckIcon icon={faCheck} />}
+                            iconPosition="right"
+                            onClick={() => setTheme(yellowTheme)}
+                        />
+                        <MenuItem
+                            label={<ColorBox label="Deep Purple" color={deepPurpleTheme.rainbow} />}
+                            icon={theme === deepPurpleTheme && <StyledCheckIcon icon={faCheck} />}
+                            iconPosition="right"
+                            onClick={() => setTheme(deepPurpleTheme)}
+                        />
+                        <MenuItem
+                            label={<ColorBox label="Cyan Dark" color={cyanDarkTheme.rainbow} />}
+                            icon={theme === cyanDarkTheme && <StyledCheckIcon icon={faCheck} />}
+                            iconPosition="right"
+                            onClick={() => setTheme(cyanDarkTheme)}
+                        />
+                    </StyledPickerTheme>
+                </StyledTopBar>
+                <StyledContent>
+                    <Provider store={store}>{children}</Provider>
+                </StyledContent>
+            </StyledWrapper>
         </Application>
     );
 }
