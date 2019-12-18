@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { ButtonMenu, Badge } from '../../../src/components/index';
 import { COLOR_BRAND, COLOR_GRAY_3 } from '../../../src/styles/colors';
 import getTheme from '../../../src/styles/helpers/getTheme';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const StyledWrapper = styled.div.attrs(props => {
     const palette = getTheme(props).palette;
@@ -134,4 +135,19 @@ export const StyledColorBox = styled.div`
         `
         background-color: ${props.rainbowTheme.palette.brand};
     `}
+`;
+
+export const StyledIcon = styled.span`
+    width: 1rem;
+    height: 1rem;
+    line-height: 1.5;
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+`;
+
+export const StyledCheckIcon = styled(FontAwesomeIcon).attrs(props => {
+    const brand = getTheme(props).palette.brand.main;
+    return { brand };
+})`
+    color: ${props => props.brand};
 `;

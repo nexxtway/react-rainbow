@@ -8,6 +8,8 @@ import Application from '../../../src/components/Application';
 import MenuItem from '../../../src/components/MenuItem';
 import InfoFilled from '../../exampleComponents/Icons/infoFilled';
 import isNotComponentPage from '../utils';
+import ColorBox from './colorBox';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import {
     StyledWrapper,
     StyledTopBar,
@@ -16,8 +18,8 @@ import {
     StyledContent,
     StyledBadge,
     StyledPickerTheme,
-    StyledColorBox,
     StyledColorCircle,
+    StyledCheckIcon,
 } from './styled';
 
 const rootReducer = combineReducers({
@@ -64,7 +66,7 @@ const yellowTheme = {
     },
 };
 
-const orangeDarkTheme = {
+const cyanDarkTheme = {
     rainbow: {
         palette: {
             brand: '#80deea',
@@ -105,34 +107,40 @@ export default function Wrapper(props) {
                     >
                         <MenuItem label="THEME SELECTOR" variant="header" />
                         <MenuItem
-                            label="Default"
-                            icon={<StyledColorBox />}
+                            label={<ColorBox label="Default" />}
+                            icon={!theme && <StyledCheckIcon icon={faCheck} />}
+                            iconPosition="right"
                             onClick={() => setTheme()}
                         />
                         <MenuItem
-                            label="Orange"
-                            icon={<StyledColorBox rainbowTheme={orangeTheme.rainbow} />}
+                            label={<ColorBox label="Orange" color={orangeTheme.rainbow} />}
+                            icon={theme === orangeTheme && <StyledCheckIcon icon={faCheck} />}
+                            iconPosition="right"
                             onClick={() => setTheme(orangeTheme)}
                         />
                         <MenuItem
-                            label="Cyan"
-                            icon={<StyledColorBox rainbowTheme={cyanTheme.rainbow} />}
+                            label={<ColorBox label="Cyan" color={cyanTheme.rainbow} />}
+                            icon={theme === cyanTheme && <StyledCheckIcon icon={faCheck} />}
+                            iconPosition="right"
                             onClick={() => setTheme(cyanTheme)}
                         />
                         <MenuItem
-                            label="Yellow"
-                            icon={<StyledColorBox rainbowTheme={yellowTheme.rainbow} />}
+                            label={<ColorBox label="Yellow" color={yellowTheme.rainbow} />}
+                            icon={theme === yellowTheme && <StyledCheckIcon icon={faCheck} />}
+                            iconPosition="right"
                             onClick={() => setTheme(yellowTheme)}
                         />
                         <MenuItem
-                            label="Deep Purple"
-                            icon={<StyledColorBox rainbowTheme={deepPurpleTheme.rainbow} />}
+                            label={<ColorBox label="Deep Purple" color={deepPurpleTheme.rainbow} />}
+                            icon={theme === deepPurpleTheme && <StyledCheckIcon icon={faCheck} />}
+                            iconPosition="right"
                             onClick={() => setTheme(deepPurpleTheme)}
                         />
                         <MenuItem
-                            label="Cyan Dark"
-                            icon={<StyledColorBox rainbowTheme={orangeDarkTheme.rainbow} />}
-                            onClick={() => setTheme(orangeDarkTheme)}
+                            label={<ColorBox label="Cyan Dark" color={cyanDarkTheme.rainbow} />}
+                            icon={theme === cyanDarkTheme && <StyledCheckIcon icon={faCheck} />}
+                            iconPosition="right"
+                            onClick={() => setTheme(cyanDarkTheme)}
                         />
                     </StyledPickerTheme>
                 </StyledTopBar>
