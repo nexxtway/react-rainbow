@@ -1,9 +1,12 @@
 import styled from 'styled-components';
-import { COLOR_BRAND } from '../../../styles/colors';
+import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledIcon = styled.span`
+const StyledIcon = styled.span.attrs(props => {
+    const brandMainColor = getTheme(props).palette.brand.main;
+    return { brandMainColor };
+})`
     align-items: center;
-    color: ${COLOR_BRAND};
+    color: ${props => props.brandMainColor};
     display: flex;
     line-height: 1;
     height: 100%;

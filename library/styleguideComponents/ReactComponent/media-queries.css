@@ -7,7 +7,7 @@
         margin-bottom: 20px;
     }
     .react-rainbow-component_interactive-example {
-        margin: 0;
+        margin: 0 !important;
     }
     .react-rainbow-component_properties-table {
         margin: 0;
