@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import styled from 'styled-components';
 import getTheme from '../../../styles/helpers/getTheme';
 
@@ -10,13 +11,9 @@ const hexToRgb = hex => {
 
     return result
         ? {
-              // eslint-disable-next-line indent
               r: parseInt(result[1], 16),
-              // eslint-disable-next-line indent
               g: parseInt(result[2], 16),
-              // eslint-disable-next-line indent
               b: parseInt(result[3], 16),
-              // eslint-disable-next-line indent
           }
         : null;
 };
