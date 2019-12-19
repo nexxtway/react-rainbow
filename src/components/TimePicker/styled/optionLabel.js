@@ -1,7 +1,14 @@
 import styled from 'styled-components';
 import { COLOR_GRAY_TRANSPARENT_1 } from '../../../styles/colors';
+import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledOptionLabel = styled.label`
+const StyledOptionLabel = styled.label.attrs(props => {
+    const brandDarkColor = getTheme(props).palette.brand.dark;
+
+    return {
+        brandDarkColor,
+    };
+})`
     box-sizing: border-box;
     font-size: 24px;
     font-weight: 200;
@@ -15,7 +22,7 @@ const StyledOptionLabel = styled.label`
 
     &:hover {
         cursor: pointer;
-        background-color: rgba(0, 154, 207, 0.2);
+        background-color: ${props => props.brandDarkColor};
         border-radius: 4px;
     }
 
