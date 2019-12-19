@@ -9,7 +9,7 @@ import StyledContainer from './styled/container';
 import StyledLabel from './styled/label';
 import StyledInnerContainer from './styled/innerContainer';
 import StyledSelect from './styled/select';
-import StyledError from './styled/error';
+import ErrorText from '../../components/Input/styled/errorText';
 
 /**
  * Select element presents a menu of options.
@@ -89,7 +89,7 @@ class Select extends Component {
                     </StyledSelect>
                 </StyledInnerContainer>
                 <RenderIf isTrue={!!error}>
-                    <StyledError>{error}</StyledError>
+                    <ErrorText>{error}</ErrorText>
                 </RenderIf>
             </StyledContainer>
         );

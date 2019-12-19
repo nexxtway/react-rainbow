@@ -46,7 +46,7 @@ export default function normalizeTheme(theme) {
                 background: {
                     ...defaultTheme.palette.background,
                     ...pickColors(
-                        ['primary', 'secundary'],
+                        ['primary', 'secondary'],
                         get(theme, 'rainbow.palette.background'),
                     ),
                 },
