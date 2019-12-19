@@ -24,16 +24,15 @@ const StyledOptionLabel = styled.label.attrs(props => {
     const brandMainContrastText = getContrastText(brandMainColor);
 
     const rgba = alpha => {
-        if (brandMainContrastText[0] !== '#' && brandMainContrastText[0] === 'r')
+        if (brandMainContrastText[0] !== '#' && brandMainContrastText[0] === 'r') {
             return brandMainContrastText.replace('0.87', alpha);
+        }
         const color = hexToRgb(brandMainContrastText);
         return `rgba(${color.r}, ${color.g}, ${color.b}, ${alpha})`;
     };
 
     return {
         brandDarkColor,
-        brandMainColor,
-        brandMainContrastText,
         rgba,
     };
 })`
