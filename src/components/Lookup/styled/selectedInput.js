@@ -4,7 +4,14 @@ import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 import Input from '../../Input/styled/input';
 import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledSelectedInput = styled(Input)`
+const StyledSelectedInput = styled(Input).attrs(props => {
+    const brandMainColor = getTheme(props).palette.brand.main;
+
+    return {
+        // TODO: move up to defaultTheme or normalizeTheme
+        brandShadow: `0 0 2px ${brandMainColor}`,
+    };
+})`
     box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 4px #dddbda;
     caret-color: transparent;
     color: ${COLOR_GRAY_4};
@@ -14,8 +21,7 @@ const StyledSelectedInput = styled(Input)`
 
     :focus,
     :active {
-        box-shadow: inset 0 0 0 2px #fff, inset 0 0 0 3px #dddbda,
-            0 0 2px ${props => getTheme(props).palette.brand.main};
+        box-shadow: inset 0 0 0 2px #fff, inset 0 0 0 3px #dddbda, ${props => props.brandShadow};
         padding-right: 2.35rem;
         text-overflow: ellipsis;
     }
