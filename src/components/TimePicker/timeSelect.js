@@ -82,28 +82,31 @@ export default class TimeSelect extends Component {
 
     handleChangeHour(event) {
         const { hour } = this.state;
+        const { hours24 } = this.props;
         const { value } = event.target;
         let normalizedValue;
 
         if (isNumber(value)) {
             this.value = value;
-            if (Number(value) > 19 || this.isUpOrDownKeyPressed || this.hasPropValue) {
+            if (Number(value) > 23 || this.isUpOrDownKeyPressed || this.hasPropValue) {
                 const newTypedValue = getSingleNewTypedValue(hour, value);
-                normalizedValue = normalizeHour(newTypedValue);
+                normalizedValue = normalizeHour(newTypedValue, hours24);
                 this.setState({
                     hour: normalizedValue,
                 });
             } else {
-                normalizedValue = normalizeHour(value);
+                normalizedValue = normalizeHour(value, hours24);
                 this.defaultAmPM = getDefaultAmPm(value);
                 this.setState({
                     hour: normalizedValue,
                 });
             }
 
-            const shouldNotFocusNextInput =
-                Number(normalizedValue) < 2 &&
-                (!hour || this.isUpOrDownKeyPressed || this.hasPropValue);
+            const shouldNotFocusNextInput = !hours24
+                ? Number(normalizedValue) < 2 &&
+                  (!hour || this.isUpOrDownKeyPressed || this.hasPropValue)
+                : Number(normalizedValue) < 3 &&
+                  (!hour || this.isUpOrDownKeyPressed || this.hasPropValue);
 
             if (shouldNotFocusNextInput) {
                 this.isUpOrDownKeyPressed = false;
@@ -299,17 +302,23 @@ export default class TimeSelect extends Component {
 
     incrementHour() {
         const { hour } = this.state;
+        const { hours24 } = this.props;
         const hourValue = hour || this.prevHour;
         this.setState({
-            hour: normalizeHour(getNextHour(hourValue)),
+            hour: hours24
+                ? normalizeHour(getNextHour(hourValue, true), true)
+                : normalizeHour(getNextHour(hourValue)),
         });
     }
 
     decrementHour() {
         const { hour } = this.state;
+        const { hours24 } = this.props;
         const hourValue = hour || this.prevHour;
         this.setState({
-            hour: normalizeHour(getPrevHour(hourValue)),
+            hour: hours24
+                ? normalizeHour(getPrevHour(hourValue, true), true)
+                : normalizeHour(getPrevHour(hourValue)),
         });
     }
 
