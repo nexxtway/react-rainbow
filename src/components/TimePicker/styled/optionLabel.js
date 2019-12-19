@@ -7,12 +7,16 @@ const hexToRgb = hex => {
     hex = hex.replace(shorthandRegex, (m, r, g, b) => r + r + g + g + b + b);
 
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    // eslint-disable-next-line indent
+
     return result
         ? {
+              // eslint-disable-next-line indent
               r: parseInt(result[1], 16),
+              // eslint-disable-next-line indent
               g: parseInt(result[2], 16),
+              // eslint-disable-next-line indent
               b: parseInt(result[3], 16),
+              // eslint-disable-next-line indent
           }
         : null;
 };
