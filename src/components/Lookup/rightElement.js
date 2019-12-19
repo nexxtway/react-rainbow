@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ButtonIcon from '../ButtonIcon';
-import CloseIcon from './icons/closeIcon';
+import StyledCloseIcon from './styled/closeIcon';
 import StyledCloseButton from './styled/closeButton';
 import StyledInputIcon from './styled/inputIcon';
 
@@ -14,7 +14,7 @@ export default function RightElement({ showCloseButton, onClear, icon, error }) 
                     size="small"
                     title="close"
                     tabIndex={-1}
-                    icon={<CloseIcon />}
+                    icon={<StyledCloseIcon />}
                     onClick={onClear}
                 />
             </StyledCloseButton>
