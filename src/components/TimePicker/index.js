@@ -40,8 +40,8 @@ class TimePicker extends Component {
 
     getTriggerInputValue() {
         const { value } = this.state;
-        const { placeholder } = this.props;
-        return getInputValue(value, placeholder);
+        const { placeholder, hour24 } = this.props;
+        return getInputValue(value, placeholder, hour24);
     }
 
     setFocusToHourInput() {

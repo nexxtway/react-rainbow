@@ -351,7 +351,7 @@ export default class TimeSelect extends Component {
             ampm,
         });
 
-        if (currentHour && currentMinutes && ampm) {
+        if (currentHour && currentMinutes) {
             onChange(time);
         }
         onCloseModal();

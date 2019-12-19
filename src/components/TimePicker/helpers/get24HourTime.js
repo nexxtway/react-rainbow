@@ -12,7 +12,7 @@ function get24Hour(hour, ampm) {
         }
         return String(hourNumber + 12);
     }
-    return '';
+    return hour;
 }
 
 export default function get24HourTime({ hour, minutes, ampm }) {
