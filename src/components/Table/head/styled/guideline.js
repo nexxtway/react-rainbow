@@ -1,7 +1,16 @@
 import styled from 'styled-components';
-import { COLOR_BRAND, COLOR_BRAND_ACTIVE } from '../../../../styles/colors';
+import getTheme from '../../../../styles/helpers/getTheme';
 
-const StyledGuideline = styled.span`
+const StyledGuideline = styled.span.attrs(props => {
+    const { brand, success } = getTheme(props).palette;
+    const brandMainColor = brand.main;
+    const successMainColor = success.main;
+
+    return {
+        brandMainColor,
+        successMainColor,
+    };
+})`
     background-color: transparent;
     height: 100vh;
     position: absolute;
@@ -9,11 +18,11 @@ const StyledGuideline = styled.span`
     width: 1px;
 
     :hover {
-        background-color: ${COLOR_BRAND};
+        background-color: ${props => props.brandMainColor};
     }
 
     :active {
-        background-color: ${COLOR_BRAND_ACTIVE};
+        background-color: ${props => props.successMainColor};
     }
 `;
 
