@@ -1,9 +1,16 @@
 import styled from 'styled-components';
 import TrashIcon from '../../icons/trash';
+import getTheme from '../../../../styles/helpers/getTheme';
 
-const StyledIcon = styled(TrashIcon)`
-    fill: #01b6f5;
-    color: #01b6f5;
+const StyledIcon = styled(TrashIcon).attrs(props => {
+    const brandMainColor = getTheme(props).palette.brand.main;
+
+    return {
+        brandMainColor,
+    };
+})`
+    fill: ${props => props.brandMainColor};
+    color: ${props => props.brandMainColor};
 `;
 
 export default StyledIcon;
