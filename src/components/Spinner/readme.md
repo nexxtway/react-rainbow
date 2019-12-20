@@ -19,14 +19,25 @@ import { Spinner } from 'react-rainbow-components';
 ```js
 import React from 'react';
 import { Spinner } from 'react-rainbow-components';
+import styled from 'styled-components';
+
+const Loading = styled.h1.attrs(props => { 
+    const brandMainColor = props.theme.rainbow.palette.brand.main;
+
+    return {
+        brandMainColor,
+    };
+})`
+    color: ${props => props.brandMainColor};
+`;
 
 <div
     className="rainbow-align-content_center rainbow-position_relative rainbow-p-vertical_xx-large"
 >
     <Spinner variant="brand" size="medium" />
-    <h1 className="rainbow-color_brand rainbow-font-size-text_medium rainbow-p-top_xx-large rainbow-m-top_xx-large rainbow-m-bottom_large">
+    <Loading className="rainbow-font-size-text_medium rainbow-p-top_xx-large rainbow-m-top_xx-large rainbow-m-bottom_large">
         Loading…
-    </h1>
+    </Loading>
 </div>
 ```
 
