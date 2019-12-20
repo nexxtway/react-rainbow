@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function LeftArrow() {
     return (
-        <svg fill="#01b6f5" width="8px" height="14px" viewBox="0 0 8 14">
+        <svg fill="currentColor" width="8px" height="14px" viewBox="0 0 8 14">
             <g transform="translate(-301.000000, -285.000000)">
                 <g transform="translate(-83.000000, 268.000000)">
                     <g transform="translate(368.000000, 3.000000)">

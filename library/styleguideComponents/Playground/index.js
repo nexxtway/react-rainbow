@@ -13,7 +13,7 @@ export default function PlaygroundRenderer(props) {
 
     return (
         <div className="rainbow-position_relative rainbow-m-bottom_large">
-            <article {...rest} className="react-rainbow-playground" data-preview={name}>
+            <article {...rest} data-preview={name}>
                 {preview}
                 {toolbar}
             </article>

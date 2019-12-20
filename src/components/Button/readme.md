@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import { Application, Button } from 'react-rainbow-components';
+import { Button } from 'react-rainbow-components';
 
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
         <Button variant="base" label="Button Base" className="rainbow-m-around_medium" />
@@ -19,7 +19,7 @@ import { Application, Button } from 'react-rainbow-components';
 
 ```js
 import React from 'react';
-import { Application, Button } from 'react-rainbow-components';
+import { Button } from 'react-rainbow-components';
 
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <Button
