@@ -20,13 +20,8 @@ import { Spinner } from 'react-rainbow-components';
 import React from 'react';
 import { Spinner } from 'react-rainbow-components';
 
-const containerStyles = {
-    borderRadius: '0 0 0.875rem 0.875rem',
-};
-
 <div
-    className="rainbow-background-color_white rainbow-align-content_center rainbow-position_relative rainbow-p-vertical_xx-large"
-    style={containerStyles}
+    className="rainbow-align-content_center rainbow-position_relative rainbow-p-vertical_xx-large"
 >
     <Spinner variant="brand" size="medium" />
     <h1 className="rainbow-color_brand rainbow-font-size-text_medium rainbow-p-top_xx-large rainbow-m-top_xx-large rainbow-m-bottom_large">
