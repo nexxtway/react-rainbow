@@ -42,11 +42,7 @@ import React from 'react';
 import { Spinner, Card, Button } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTasks } from '@fortawesome/free-solid-svg-icons';
-
-const iconContainerStyles = {
-    width: '2rem',
-    height: '2rem',
-};
+import styled from 'styled-components';
 
 const spinner = (
     <div className="rainbow-align-content_center">
@@ -58,15 +54,28 @@ const spinner = (
         </h1>
     </div>
 );
+const Icon = styled.div.attrs(props => { 
+    const palette = props.theme.rainbow.palette;
+    const brandMainColor = palette.brand.main;
+    const brandMainContrastText = palette.getContrastText(brandMainColor);
+
+    return {
+        brandMainColor,
+        brandMainContrastText,
+    };
+})`
+    width: 2rem;
+    height: 2rem;
+    background-color: ${props => props.brandMainColor};
+    color: ${props => props.brandMainContrastText};
+`;
 <div className="rainbow-p-vertical_large rainbow-p-horizontal_large">
     <Card
         icon={
-            <div
-                className="rainbow-background-color_brand rainbow-border-radius_circle rainbow-align-content_center"
-                style={iconContainerStyles}
-            >
-                <FontAwesomeIcon icon={faTasks} size="lg" className="rainbow-color_white" />
-            </div>
+            <Icon
+                className="rainbow-border-radius_circle rainbow-align-content_center">
+                <FontAwesomeIcon icon={faTasks} size="lg" />
+            </Icon>
         }
         title="Task"
         footer={spinner}
