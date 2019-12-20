@@ -27,9 +27,6 @@ const StyledTh = styled.th.attrs(props => {
         .rainbow-table_header-container {
             background-color: ${COLOR_WHITE};
             border-color: ${props => props.brandMainColor};
-        }
-
-        .rainbow-table_header-content {
             color: ${props => props.brandMainColor};
         }
 
@@ -97,16 +94,6 @@ const StyledTh = styled.th.attrs(props => {
             .rainbow-table_header-arrow {
                 visibility: visible;
                 margin-left: 12px;
-            }
-        
-            .rainbow-table_header-arrow > g {
-                fill: #576574;
-            }
-        
-            :focus {
-                .rainbow-table_header-arrow > g {
-                    fill: #01b6f5;
-                }
             }
         `};
 `;
