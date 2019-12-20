@@ -171,7 +171,7 @@ class TimePicker extends Component {
                         okLabel={okLabel}
                         value={value}
                         ref={this.timeSelectRef}
-                        hours24={hour24}
+                        hour24={hour24}
                     />
                 </StyledModal>
             </StyledContainer>
