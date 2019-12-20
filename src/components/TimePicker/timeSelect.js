@@ -82,28 +82,31 @@ export default class TimeSelect extends Component {
 
     handleChangeHour(event) {
         const { hour } = this.state;
+        const { hours24 } = this.props;
         const { value } = event.target;
         let normalizedValue;
 
         if (isNumber(value)) {
             this.value = value;
-            if (Number(value) > 19 || this.isUpOrDownKeyPressed || this.hasPropValue) {
+            if (Number(value) > 23 || this.isUpOrDownKeyPressed || this.hasPropValue) {
                 const newTypedValue = getSingleNewTypedValue(hour, value);
-                normalizedValue = normalizeHour(newTypedValue);
+                normalizedValue = normalizeHour(newTypedValue, hours24);
                 this.setState({
                     hour: normalizedValue,
                 });
             } else {
-                normalizedValue = normalizeHour(value);
+                normalizedValue = normalizeHour(value, hours24);
                 this.defaultAmPM = getDefaultAmPm(value);
                 this.setState({
                     hour: normalizedValue,
                 });
             }
 
-            const shouldNotFocusNextInput =
-                Number(normalizedValue) < 2 &&
-                (!hour || this.isUpOrDownKeyPressed || this.hasPropValue);
+            const shouldNotFocusNextInput = !hours24
+                ? Number(normalizedValue) < 2 &&
+                  (!hour || this.isUpOrDownKeyPressed || this.hasPropValue)
+                : Number(normalizedValue) < 3 &&
+                  (!hour || this.isUpOrDownKeyPressed || this.hasPropValue);
 
             if (shouldNotFocusNextInput) {
                 this.isUpOrDownKeyPressed = false;
@@ -144,6 +147,7 @@ export default class TimeSelect extends Component {
     handleChangeMinutes(event) {
         const { minutes } = this.state;
         const { value } = event.target;
+        const { hours24 } = this.props;
         let normalizedValue;
 
         if (isNumber(value)) {
@@ -167,7 +171,7 @@ export default class TimeSelect extends Component {
                 this.isUpOrDownKeyPressed = false;
                 return;
             }
-            this.amPmInputRef.current.focus();
+            if (!hours24) this.amPmInputRef.current.focus();
         }
     }
 
@@ -216,7 +220,7 @@ export default class TimeSelect extends Component {
     handleRightKeyPressed() {
         const nextInputIndex = this.inputFocusedIndex + 1;
         const nextInputToFocus = this.inputsMap[nextInputIndex];
-        if (nextInputToFocus) {
+        if (nextInputToFocus && nextInputToFocus.current != null) {
             this.inputFocusedIndex += 1;
             nextInputToFocus.current.focus();
         }
@@ -299,17 +303,23 @@ export default class TimeSelect extends Component {
 
     incrementHour() {
         const { hour } = this.state;
+        const { hours24 } = this.props;
         const hourValue = hour || this.prevHour;
         this.setState({
-            hour: normalizeHour(getNextHour(hourValue)),
+            hour: hours24
+                ? normalizeHour(getNextHour(hourValue, true), true)
+                : normalizeHour(getNextHour(hourValue)),
         });
     }
 
     decrementHour() {
         const { hour } = this.state;
+        const { hours24 } = this.props;
         const hourValue = hour || this.prevHour;
         this.setState({
-            hour: normalizeHour(getPrevHour(hourValue)),
+            hour: hours24
+                ? normalizeHour(getPrevHour(hourValue, true), true)
+                : normalizeHour(getPrevHour(hourValue)),
         });
     }
 
@@ -333,7 +343,7 @@ export default class TimeSelect extends Component {
         event.preventDefault();
         event.stopPropagation();
         const { hour, minutes, ampm } = this.state;
-        const { onChange, onCloseModal } = this.props;
+        const { onChange, onCloseModal, hours24 } = this.props;
         const currentHour = hour || this.prevHour;
         const currentMinutes = minutes || this.prevMinutes;
         const time = get24HourTime({
@@ -342,7 +352,10 @@ export default class TimeSelect extends Component {
             ampm,
         });
 
-        if (currentHour && currentMinutes && ampm) {
+        if (
+            (currentHour && currentMinutes && ampm && !hours24) ||
+            (currentHour && currentMinutes && hours24)
+        ) {
             onChange(time);
         }
         onCloseModal();

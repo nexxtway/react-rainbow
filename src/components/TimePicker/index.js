@@ -19,7 +19,7 @@ class TimePicker extends Component {
         super(props);
         this.state = {
             isOpen: false,
-            value: get12HourTime(props.value),
+            value: props.hour24 ? props.value : get12HourTime(props.value),
         };
         this.inputRef = React.createRef();
         this.timeSelectRef = React.createRef();
@@ -40,8 +40,8 @@ class TimePicker extends Component {
 
     getTriggerInputValue() {
         const { value } = this.state;
-        const { placeholder } = this.props;
-        return getInputValue(value, placeholder);
+        const { placeholder, hour24 } = this.props;
+        return getInputValue(value, placeholder, hour24);
     }
 
     setFocusToHourInput() {
@@ -49,9 +49,9 @@ class TimePicker extends Component {
     }
 
     updateValue() {
-        const { value } = this.props;
+        const { value, hour24 } = this.props;
         this.setState({
-            value: get12HourTime(value),
+            value: hour24 ? value : get12HourTime(value),
         });
     }
 
@@ -129,6 +129,7 @@ class TimePicker extends Component {
             cancelLabel,
             okLabel,
             onChange,
+            hour24,
         } = this.props;
         const { isOpen, value } = this.state;
 
@@ -170,6 +171,7 @@ class TimePicker extends Component {
                         okLabel={okLabel}
                         value={value}
                         ref={this.timeSelectRef}
+                        hours24={hour24}
                     />
                 </StyledModal>
             </StyledContainer>
@@ -222,6 +224,8 @@ TimePicker.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** Specifies that the TimePicker will be in a 24hr format. This value defaults to false. */
+    hour24: PropTypes.bool,
 };
 
 TimePicker.defaultProps = {
@@ -246,6 +250,7 @@ TimePicker.defaultProps = {
     id: undefined,
     className: undefined,
     style: undefined,
+    hour24: false,
 };
 
 export default withReduxForm(TimePicker);
