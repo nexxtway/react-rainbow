@@ -44,7 +44,6 @@ const StyledUploadFileLabel = styled.label.attrs(props => {
     }
 
     &:active {
-        color: ${props => props.brandDarkContrastText};
         transform: scale(0.95);
         transition: all 0.2s ease;
         text-decoration: none;

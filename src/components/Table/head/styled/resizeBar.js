@@ -1,15 +1,7 @@
 import styled from 'styled-components';
-import getTheme from '../../../../styles/helpers/getTheme';
+import { COLOR_BRAND, COLOR_BRAND_ACTIVE } from '../../../../styles/colors';
 
-const StyledResizeBar = styled.span.attrs(props => {
-    const brand = getTheme(props).palette.brand;
-    const { main: brandMainColor, dark: brandDarkColor } = brand;
-
-    return {
-        brandMainColor,
-        brandDarkColor,
-    };
-})`
+const StyledResizeBar = styled.span`
     background-color: transparent;
     border-radius: 100px;
     height: 100%;
@@ -21,18 +13,18 @@ const StyledResizeBar = styled.span.attrs(props => {
     cursor: col-resize;
 
     :hover {
-        background-color: ${props => props.brandMainColor} !important;
+        background-color: ${COLOR_BRAND} !important;
 
         & span {
-            background-color: ${props => props.brandMainColor};
+            background-color: ${COLOR_BRAND};
         }
     }
 
     :active {
-        background-color: ${props => props.brandDarkColor} !important;
+        background-color: ${COLOR_BRAND_ACTIVE} !important;
 
         & span {
-            background-color: ${props => props.brandDarkColor};
+            background-color: ${COLOR_BRAND_ACTIVE};
         }
     }
 `;
