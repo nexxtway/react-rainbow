@@ -1,8 +1,19 @@
 import styled from 'styled-components';
-import { COLOR_WHITE, COLOR_BRAND, COLOR_GRAY_4, COLOR_GRAY_2 } from '../../../../styles/colors';
+import { COLOR_WHITE, COLOR_GRAY_4, COLOR_GRAY_2 } from '../../../../styles/colors';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../../styles/fontSizes';
+import getTheme from '../../../../styles/helpers/getTheme';
 
-const StyledTh = styled.th`
+const StyledTh = styled.th.attrs(props => {
+    const theme = getTheme(props);
+    const { getContrastText, brand } = theme.palette;
+    const { main: brandMainColor } = brand;
+    const brandMainContrastText = getContrastText(brandMainColor);
+
+    return {
+        brandMainColor,
+        brandMainContrastText,
+    };
+})`
     text-transform: uppercase;
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
     font-weight: 900;
@@ -21,11 +32,11 @@ const StyledTh = styled.th`
     :focus {
         .rainbow-table_header-container {
             background-color: ${COLOR_WHITE};
-            border-color: ${COLOR_BRAND};
+            border-color: ${props => props.brandMainColor};
         }
 
         .rainbow-table_header-content {
-            color: ${COLOR_BRAND};
+            color: ${props => props.brandMainColor};
         }
 
         .rainbow-table_header-arrow {
@@ -34,11 +45,11 @@ const StyledTh = styled.th`
 
         .rainbow-table_header-resize-bar,
         &:hover .rainbow-table_header-resize-bar {
-            background-color: ${COLOR_BRAND};
+            background-color: ${props => props.brandMainColor};
         }
 
         &:hover .rainbow-table_header-container {
-            border-color: ${COLOR_BRAND};
+            border-color: ${props => props.brandMainColor};
         }
     }
 

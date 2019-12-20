@@ -1,7 +1,13 @@
 import styled from 'styled-components';
-import { COLOR_BRAND } from '../../../../styles/colors';
+import getTheme from '../../../../styles/helpers/getTheme';
 
-const StyledCell = styled.th`
+const StyledCell = styled.th.attrs(props => {
+    const brandMainColor = getTheme(props).palette.brand.main;
+
+    return {
+        brandMainColor,
+    };
+})`
     padding: 0;
     text-align: left;
     box-sizing: border-box;
@@ -14,7 +20,7 @@ const StyledCell = styled.th`
         outline: none;
 
         > div {
-            border-color: ${COLOR_BRAND};
+            border-color: ${props => props.brandMainColor};
         }
     }
 `;
