@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import RenderIf from '../RenderIf';
 import { uniqueId } from '../../libs/utils';
 import StyledContainer from './styled/container';
-import ErrorText from '../../components/Input/styled/errorText';
+import ErrorText from '../Input/styled/errorText';
 
 export default class ReCaptchaComponent extends Component {
     constructor(props) {

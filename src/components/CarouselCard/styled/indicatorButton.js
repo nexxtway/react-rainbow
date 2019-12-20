@@ -3,15 +3,14 @@ import { COLOR_GRAY_2, COLOR_GRAY_3 } from '../../../styles/colors';
 import getTheme from '../../../styles/helpers/getTheme';
 
 const StyledIndicatorButton = styled.button.attrs(props => {
-    const { brand, success } = getTheme(props).palette;
+    const brand = getTheme(props).palette.brand;
     const brandMainColor = brand.main;
-    const successMainColor = success.main;
+    const brandDarkColor = brand.dark;
 
     return {
         brandMainColor,
-        successMainColor,
+        brandDarkColor,
         brandShadow: `0 0 2px ${brandMainColor}`,
-        successShadow: `0 0 2px ${successMainColor}`,
     };
 })`
     font: inherit;
@@ -52,8 +51,8 @@ const StyledIndicatorButton = styled.button.attrs(props => {
             border: 1px solid ${props.brandMainColor};
 
             :hover {
-                background: ${props.successMainColor};
-                border: 1px solid ${props.successMainColor};
+                background: ${props.brandDarkColor};
+                border: 1px solid ${props.brandDarkColor};
             }
         `};
 `;
