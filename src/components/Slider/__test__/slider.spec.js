@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Slider from '../index';
-import ErrorText from '../../../components/Input/styled/errorText';
+import ErrorText from '../../Input/styled/errorText';
 
 describe('<Slider />', () => {
     it('should fire an event when the user change the input', () => {

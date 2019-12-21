@@ -7,7 +7,7 @@ import StyledContainer from './styled/container';
 import StyledSlider from './styled/slider';
 import StyledInputRange from './styled/inputRange';
 import StyledValue from './styled/value';
-import ErrorText from '../../components/Input/styled/errorText';
+import ErrorText from '../Input/styled/errorText';
 
 /**
  * An input range slider lets the user specify a numeric value which must be between

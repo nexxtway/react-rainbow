@@ -4,13 +4,13 @@ import { COLOR_GRAY_2 } from '../../../styles/colors';
 import getTheme from '../../../styles/helpers/getTheme';
 
 const StyledInputRange = styled.input.attrs(props => {
-    const { brand, success } = getTheme(props).palette;
+    const brand = getTheme(props).palette.brand;
     const brandMainColor = brand.main;
-    const successMainColor = success.main;
+    const brandDarkColor = brand.dark;
 
     return {
         brandMainColor,
-        successMainColor,
+        brandDarkColor,
     };
 })`
     appearance: none;
@@ -95,15 +95,15 @@ const StyledInputRange = styled.input.attrs(props => {
     }
 
     &::-webkit-slider-thumb:hover {
-        background-color: ${props => props.successMainColor};
+        background-color: ${props => props.brandDarkColor};
     }
 
     &::-moz-range-thumb:hover {
-        background-color: ${props => props.successMainColor};
+        background-color: ${props => props.brandDarkColor};
     }
 
     &::-ms-thumb:hover {
-        background-color: ${props => props.successMainColor};
+        background-color: ${props => props.brandDarkColor};
     }
 
     &:focus::-webkit-slider-thumb {
