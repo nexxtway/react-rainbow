@@ -1,9 +1,23 @@
 import styled from 'styled-components';
 import { MARGIN_SMALL } from '../../../styles/margins';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
-import { COLOR_BRAND, COLOR_SUCCESS, COLOR_ERROR, COLOR_YELLOW_1 } from '../../../styles/colors';
+import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledIconContainer = styled.div`
+const StyledIconContainer = styled.div.attrs(props => {
+    const theme = getTheme(props);
+    const { brand, success, error, warning } = theme.palette;
+    const brandMainColor = brand.main;
+    const successMainColor = success.main;
+    const errorMainColor = error.main;
+    const warningMainColor = warning.main;
+
+    return {
+        brandMainColor,
+        successMainColor,
+        errorMainColor,
+        warningMainColor,
+    };
+})`
     margin-right: ${MARGIN_SMALL};
     flex-shrink: 0;
     ${props =>
@@ -16,7 +30,7 @@ const StyledIconContainer = styled.div`
             height: 2rem;
             border-radius: ${BORDER_RADIUS_2};
             margin-right: ${MARGIN_SMALL};
-            background-color: ${COLOR_BRAND};
+            background-color: ${props.brandMainColor};
         `};
     ${props =>
         props.icon === 'success' &&
@@ -28,7 +42,7 @@ const StyledIconContainer = styled.div`
             height: 2rem;
             border-radius: ${BORDER_RADIUS_2};
             margin-right: ${MARGIN_SMALL};
-            background-color: ${COLOR_SUCCESS};
+            background-color: ${props.successMainColor};
         `};
     ${props =>
         props.icon === 'error' &&
@@ -40,7 +54,7 @@ const StyledIconContainer = styled.div`
             height: 2rem;
             border-radius: ${BORDER_RADIUS_2};
             margin-right: ${MARGIN_SMALL};
-            background-color: ${COLOR_ERROR};
+            background-color: ${props.errorMainColor};
         `};
     ${props =>
         props.icon === 'warning' &&
@@ -52,7 +66,7 @@ const StyledIconContainer = styled.div`
             height: 2rem;
             border-radius: ${BORDER_RADIUS_2};
             margin-right: ${MARGIN_SMALL};
-            background-color: ${COLOR_YELLOW_1};
+            background-color: ${props.warningMainColor};
         `};
 `;
 

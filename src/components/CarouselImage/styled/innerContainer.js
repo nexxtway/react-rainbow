@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 import { BORDER_RADIUS_1 } from '../../../styles/borderRadius';
-import { COLOR_BRAND } from '../../../styles/colors';
+import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledInnerContainer = styled.div`
+const StyledInnerContainer = styled.div.attrs(props => {
+    const brandMainColor = getTheme(props).palette.brand.main;
+
+    return { brandMainColor };
+})`
     border-radius: ${BORDER_RADIUS_1};
     overflow: hidden;
     line-height: inherit;
@@ -26,7 +30,7 @@ const StyledInnerContainer = styled.div`
         :focus {
             color: inherit;
             text-decoration: none;
-            border: 1px solid ${COLOR_BRAND};
+            border: 1px solid ${props.brandMainColor};
             outline: 0;
         }
     `}

@@ -7,7 +7,7 @@ import StyledContainer from './styled/container';
 import StyledSlider from './styled/slider';
 import StyledInputRange from './styled/inputRange';
 import StyledValue from './styled/value';
-import StyledError from './styled/error';
+import ErrorText from '../Input/styled/errorText';
 
 /**
  * An input range slider lets the user specify a numeric value which must be between
@@ -96,7 +96,7 @@ export default class Slider extends Component {
                     <StyledValue aria-hidden>{value}</StyledValue>
                 </StyledSlider>
                 <RenderIf isTrue={!!error}>
-                    <StyledError id={this.errorMessageId}>{error}</StyledError>
+                    <ErrorText id={this.errorMessageId}>{error}</ErrorText>
                 </RenderIf>
             </StyledContainer>
         );
