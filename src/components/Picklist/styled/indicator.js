@@ -1,7 +1,14 @@
 import styled from 'styled-components';
-import { COLOR_BRAND, COLOR_GRAY_2 } from '../../../styles/colors';
+import { COLOR_GRAY_2 } from '../../../styles/colors';
+import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledIndicator = styled.span`
+const StyledIndicator = styled.span.attrs(props => {
+    const brandMainColor = getTheme(props).palette.brand.main;
+
+    return {
+        brandMainColor,
+    };
+})`
     height: 100%;
     right: 1.2rem;
     position: absolute;
@@ -22,7 +29,7 @@ const StyledIndicator = styled.span`
         border-style: solid;
         border-width: 0.15em 0.15em 0 0;
         transform: rotate(135deg);
-        color: ${COLOR_BRAND};
+        color: ${props => props.brandMainColor};
         box-sizing: border-box;
     }
 

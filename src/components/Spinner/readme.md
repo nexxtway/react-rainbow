@@ -19,19 +19,25 @@ import { Spinner } from 'react-rainbow-components';
 ```js
 import React from 'react';
 import { Spinner } from 'react-rainbow-components';
+import styled from 'styled-components';
 
-const containerStyles = {
-    borderRadius: '0 0 0.875rem 0.875rem',
-};
+const Loading = styled.h1.attrs(props => { 
+    const brandMainColor = props.theme.rainbow.palette.brand.main;
+
+    return {
+        brandMainColor,
+    };
+})`
+    color: ${props => props.brandMainColor};
+`;
 
 <div
-    className="rainbow-background-color_white rainbow-align-content_center rainbow-position_relative rainbow-p-vertical_xx-large"
-    style={containerStyles}
+    className="rainbow-align-content_center rainbow-position_relative rainbow-p-vertical_xx-large"
 >
     <Spinner variant="brand" size="medium" />
-    <h1 className="rainbow-color_brand rainbow-font-size-text_medium rainbow-p-top_xx-large rainbow-m-top_xx-large rainbow-m-bottom_large">
+    <Loading className="rainbow-font-size-text_medium rainbow-p-top_xx-large rainbow-m-top_xx-large rainbow-m-bottom_large">
         Loading…
-    </h1>
+    </Loading>
 </div>
 ```
 
@@ -42,11 +48,7 @@ import React from 'react';
 import { Spinner, Card, Button } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTasks } from '@fortawesome/free-solid-svg-icons';
-
-const iconContainerStyles = {
-    width: '2rem',
-    height: '2rem',
-};
+import styled from 'styled-components';
 
 const spinner = (
     <div className="rainbow-align-content_center">
@@ -58,15 +60,28 @@ const spinner = (
         </h1>
     </div>
 );
+const Icon = styled.div.attrs(props => { 
+    const palette = props.theme.rainbow.palette;
+    const brandMainColor = palette.brand.main;
+    const brandMainContrastText = palette.getContrastText(brandMainColor);
+
+    return {
+        brandMainColor,
+        brandMainContrastText,
+    };
+})`
+    width: 2rem;
+    height: 2rem;
+    background-color: ${props => props.brandMainColor};
+    color: ${props => props.brandMainContrastText};
+`;
 <div className="rainbow-p-vertical_large rainbow-p-horizontal_large">
     <Card
         icon={
-            <div
-                className="rainbow-background-color_brand rainbow-border-radius_circle rainbow-align-content_center"
-                style={iconContainerStyles}
-            >
-                <FontAwesomeIcon icon={faTasks} size="lg" className="rainbow-color_white" />
-            </div>
+            <Icon
+                className="rainbow-border-radius_circle rainbow-align-content_center">
+                <FontAwesomeIcon icon={faTasks} size="lg" />
+            </Icon>
         }
         title="Task"
         footer={spinner}

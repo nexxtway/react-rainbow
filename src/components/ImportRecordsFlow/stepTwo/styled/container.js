@@ -1,7 +1,15 @@
 import styled from 'styled-components';
-import { COLOR_BRAND_LIGHT } from '../../../../styles/colors';
+import getTheme from '../../../../styles/helpers/getTheme';
 
-const StyledContainer = styled.div`
+const StyledContainer = styled.div.attrs(props => {
+    const theme = getTheme(props);
+    const { brand } = theme.palette;
+    const { light: brandLightColor } = brand;
+
+    return {
+        brandLightColor,
+    };
+})`
     border-radius: 4px;
     border: dashed 1px #eaeef5;
     background-color: #fcfcfc;
@@ -16,7 +24,7 @@ const StyledContainer = styled.div`
         props.isDragOver &&
         `
             background-color: rgba(234, 238, 245, 0.4);
-            border: dashed 1.5px ${COLOR_BRAND_LIGHT};
+            border: dashed 1.5px ${props.brandLightColor};
         `};
 `;
 

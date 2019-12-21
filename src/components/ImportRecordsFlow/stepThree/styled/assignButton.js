@@ -1,10 +1,17 @@
 import styled from 'styled-components';
+import getTheme from '../../../../styles/helpers/getTheme';
 
-const StyledAssignButton = styled.button`
+const StyledAssignButton = styled.button.attrs(props => {
+    const brandMainColor = getTheme(props).palette.brand.main;
+
+    return {
+        brandMainColor,
+    };
+})`
     font: inherit;
     background: transparent;
     border: none;
-    color: #01b6f5;
+    color: ${props => props.brandMainColor};
     cursor: pointer;
     font-size: 14px;
     outline: none;

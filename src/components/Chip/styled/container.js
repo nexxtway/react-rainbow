@@ -2,9 +2,20 @@ import styled from 'styled-components';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 import { PADDING_SMALL } from '../../../styles/paddings';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
-import { COLOR_GRAY_2, COLOR_GRAY_4, COLOR_WHITE, COLOR_BRAND } from '../../../styles/colors';
+import { COLOR_GRAY_2, COLOR_GRAY_4, COLOR_WHITE } from '../../../styles/colors';
+import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledContainer = styled.span`
+const StyledContainer = styled.span.attrs(props => {
+    const theme = getTheme(props);
+    const { getContrastText, brand } = theme.palette;
+    const { main: brandMainColor } = brand;
+    const brandMainContrastText = getContrastText(brandMainColor);
+
+    return {
+        brandMainColor,
+        brandMainContrastText,
+    };
+})`
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
@@ -32,15 +43,15 @@ const StyledContainer = styled.span`
         props.variant === 'outline-brand' &&
         `
             background-color: transparent;
-            border: 1px solid ${COLOR_BRAND};
-            color: ${COLOR_BRAND};
+            border: 1px solid ${props.brandMainColor};
+            color: ${props.brandMainColor};
         `};
     ${props =>
         props.variant === 'brand' &&
         `
-            background-color: ${COLOR_BRAND};
-            border: 1px solid ${COLOR_BRAND};
-            color: ${COLOR_WHITE};
+            background-color: ${props.brandMainColor};
+            border: 1px solid ${props.brandMainColor};
+            color: ${props.brandMainContrastText};
         `};
 `;
 
