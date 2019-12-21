@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PlayIcon from './playIcon';
 import PauseIcon from './pauseIcon';
-import ButtonIcon from '../../ButtonIcon';
+import StyledAutoplayButton from '../styled/autoplayButton';
 
 export default function AnimationButton({ isAnimationPaused, onClick }) {
     const getIcon = () => {
@@ -20,7 +20,7 @@ export default function AnimationButton({ isAnimationPaused, onClick }) {
     };
 
     return (
-        <ButtonIcon
+        <StyledAutoplayButton
             variant="border-filled"
             size="small"
             icon={getIcon()}
