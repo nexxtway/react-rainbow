@@ -1,13 +1,18 @@
 import styled from 'styled-components';
-import {
-    COLOR_GRAY_2,
-    COLOR_GRAY_3,
-    COLOR_BRAND_ACTIVE,
-    COLOR_BRAND,
-} from '../../../styles/colors';
-import { SHADOW_OUTLINE } from '../../../styles/shadows';
+import { COLOR_GRAY_2, COLOR_GRAY_3 } from '../../../styles/colors';
+import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledIndicatorButton = styled.button`
+const StyledIndicatorButton = styled.button.attrs(props => {
+    const brand = getTheme(props).palette.brand;
+    const brandMainColor = brand.main;
+    const brandDarkColor = brand.dark;
+
+    return {
+        brandMainColor,
+        brandDarkColor,
+        brandShadow: `0 0 2px ${brandMainColor}`,
+    };
+})`
     font: inherit;
     width: 0.5rem;
     height: 0.5rem;
@@ -35,19 +40,19 @@ const StyledIndicatorButton = styled.button`
 
     :focus {
         outline: 0;
-        box-shadow: ${SHADOW_OUTLINE};
-        border: 1px solid ${COLOR_BRAND_ACTIVE};
+        box-shadow: ${props => props.brandShadow};
+        border: 1px solid ${props => props.brandMainColor};
     }
 
     ${props =>
         props.isSelected &&
         `
-            background: ${COLOR_BRAND};
-            border: 1px solid ${COLOR_BRAND};
+            background: ${props.brandMainColor};
+            border: 1px solid ${props.brandMainColor};
 
             :hover {
-                background: ${COLOR_BRAND_ACTIVE};
-                border: 1px solid ${COLOR_BRAND_ACTIVE};
+                background: ${props.brandDarkColor};
+                border: 1px solid ${props.brandDarkColor};
             }
         `};
 `;
