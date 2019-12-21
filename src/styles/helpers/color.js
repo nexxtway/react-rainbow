@@ -159,6 +159,7 @@ export function getContrastText(background) {
     }
     const isDefaultBackground =
         background === COLOR_BRAND ||
+        background === darken(COLOR_BRAND) ||
         background === COLOR_SUCCESS ||
         background === darken(COLOR_SUCCESS);
 

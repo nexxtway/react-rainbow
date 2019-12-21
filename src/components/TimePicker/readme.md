@@ -39,6 +39,28 @@ initialState = { time: '13:32' };
 />;
 ```
 
+##### TimePicker with 24hr format:
+
+```js
+import React from 'react';
+import { TimePicker } from 'react-rainbow-components';
+
+const containerStyles = {
+    maxWidth: 400,
+};
+
+initialState = { time: '16:32' };
+
+<TimePicker
+    value={state.time}
+    label="TimePicker Label"
+    onChange={value => setState({ time: value })}
+    style={containerStyles}
+    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+    hour24
+/>;
+```
+
 ##### TimePicker required:
 
 ```js

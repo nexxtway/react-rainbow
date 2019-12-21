@@ -58,6 +58,7 @@ import React from 'react';
 import { Chip, Avatar } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
 
 const AvatarStyles = {
     width: '30px',
@@ -68,6 +69,22 @@ const AvatarStyles = {
 const ChipContainer = {
     paddingLeft: 0,
 };
+
+const Icon = styled.span.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    ${props =>
+        props.variant === 'brand' &&
+        `
+            color: ${props.getContrastText(props.brand.main)};
+        `};
+    ${props =>
+        props.variant === 'outline-brand' &&
+        `
+            color: ${props.brand.main};
+        `};
+    
+`;
 
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <Chip
@@ -112,13 +129,13 @@ const ChipContainer = {
         className="rainbow-m-around_medium"
         variant="outline-brand"
         label={
-            <span>
+            <Icon variant="outline-brand">
                 <FontAwesomeIcon
                     icon={faStar}
-                    className="rainbow-color_brand rainbow-m-right_xx-small"
+                    className="rainbow-m-right_xx-small"
                 />{' '}
                 Chip Outline Brand with Icon
-            </span>
+            </Icon>
         }
     />
 
@@ -127,13 +144,13 @@ const ChipContainer = {
         variant="brand"
         onDelete={() => alert('Delete Chip!')}
         label={
-            <span>
+            <Icon variant="brand">
                 <FontAwesomeIcon
                     icon={faStar}
-                    className="rainbow-color_white rainbow-m-right_xx-small"
+                    className="rainbow-m-right_xx-small"
                 />{' '}
                 Chip Brand{' '}
-            </span>
+            </Icon>
         }
     />
 </div>
