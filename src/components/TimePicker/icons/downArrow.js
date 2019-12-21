@@ -1,12 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function DownArrow() {
+export default function DownArrow({ className }) {
     return (
-        <svg width="8px" height="5px" viewBox="0 0 8 5">
+        <svg width="8px" height="5px" viewBox="0 0 8 5" className={className}>
             <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g
                     transform="translate(-622.000000, -294.000000)"
-                    fill="#01b6f5"
+                    fill="currentColor"
                     fillRule="nonzero"
                 >
                     <g transform="translate(380.000000, 256.000000)">
@@ -23,3 +24,11 @@ export default function DownArrow() {
         </svg>
     );
 }
+
+DownArrow.propTypes = {
+    className: PropTypes.string,
+};
+
+DownArrow.defaultProps = {
+    className: undefined,
+};

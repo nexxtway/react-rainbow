@@ -18,7 +18,7 @@ const containerStyles = {
 />;
 ```
 
-##### TimePicker with inital value:
+##### TimePicker with initial value:
 
 ```js
 import React from 'react';

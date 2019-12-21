@@ -1,13 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function UpArrow() {
+export default function UpArrow({ className }) {
     return (
-        <svg width="8px" height="5px" viewBox="0 0 8 5">
+        <svg width="8px" height="5px" viewBox="0 0 8 5" className={className}>
             <g strokeWidth="1" fill="none" fillRule="evenodd">
                 <g
                     id="Components-Datepicker-open-clock-3"
                     transform="translate(-622.000000, -276.000000)"
-                    fill="#01b6f5"
+                    fill="currentColor"
                     fillRule="nonzero"
                 >
                     <g transform="translate(380.000000, 256.000000)">
@@ -24,3 +25,11 @@ export default function UpArrow() {
         </svg>
     );
 }
+
+UpArrow.propTypes = {
+    className: PropTypes.string,
+};
+
+UpArrow.defaultProps = {
+    className: undefined,
+};
