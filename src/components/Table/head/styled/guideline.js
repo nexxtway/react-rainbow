@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import getTheme from '../../../../styles/helpers/getTheme';
 
 const StyledGuideline = styled.span.attrs(props => {
-    const { brand, success } = getTheme(props).palette;
+    const brand = getTheme(props).palette;
     const brandMainColor = brand.main;
-    const successMainColor = success.main;
+    const brandDarkColor = brand.dark;
 
     return {
         brandMainColor,
-        successMainColor,
+        brandDarkColor,
     };
 })`
     background-color: transparent;
@@ -22,7 +22,7 @@ const StyledGuideline = styled.span.attrs(props => {
     }
 
     :active {
-        background-color: ${props => props.successMainColor};
+        background-color: ${props => props.brandDarkColor};
     }
 `;
 
