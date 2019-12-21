@@ -14,6 +14,35 @@ export function hexToRgb(color) {
     return colors ? `rgb(${colors.map(n => parseInt(n, 16)).join(', ')})` : '';
 }
 
+/* eslint-disable no-param-reassign */
+export function hexToRgba(color, alpha) {
+    color = color.substr(1);
+
+    const re = new RegExp(`.{1,${color.length / 3}}`, 'g');
+    let colors = color.match(re);
+
+    if (colors && colors[0].length === 1) {
+        colors = colors.map(n => n + n);
+    }
+
+    return colors ? `rgba(${colors.map(n => parseInt(n, 16)).join(', ')}, ${alpha})` : '';
+}
+
+export function replaceAlpha(color, alpha) {
+    const rgx = /^rgba\(((,?\s*\d+){3}).+$/;
+    return color.replace(rgx, `rgba($1, ${alpha})`);
+}
+
+export function rgbaToRgb(color) {
+    const rgx = /^rgba\(((,?\s*\d+){3}).+$/;
+    return color.replace(rgx, 'rgb($1)');
+}
+
+export function rgbToRgba(color, alpha) {
+    const rgx = /^rgb\(((,?\s*\d+){3}).+$/;
+    return color.replace(rgx, `rgba($1, ${alpha})`);
+}
+
 export function decomposeColor(color) {
     // Idempotent
     if (color.type) {
@@ -147,7 +176,7 @@ export const light = {
 // TODO: this to values can be customizables
 const dark = {
     text: {
-        primary: '#fff',
+        primary: 'rgba(255, 255, 255, 1)',
     },
 };
 // TODO: need to be 3
