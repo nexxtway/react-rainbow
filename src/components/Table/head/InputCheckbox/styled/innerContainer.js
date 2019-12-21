@@ -1,9 +1,16 @@
 /* stylelint-disable */
 import styled from 'styled-components';
-import { COLOR_WHITE, COLOR_GRAY_2, COLOR_GRAY_1, COLOR_BRAND } from '../../../../../styles/colors';
-import { SHADOW_OUTLINE } from '../../../../../styles/shadows';
+import { COLOR_WHITE, COLOR_GRAY_2, COLOR_GRAY_1 } from '../../../../../styles/colors';
+import getTheme from '../../../../../styles/helpers/getTheme';
 
-const StyledInnerContainer = styled.div`
+const StyledInnerContainer = styled.div.attrs(props => {
+    const brandMainColor = getTheme(props).palette.brand.main;
+
+    return {
+        brandMainColor,
+        brandShadow: `0 0 2px ${brandMainColor}`,
+    };
+})`
     display: inline-block;
 
     [type='checkbox'] {
@@ -28,30 +35,30 @@ const StyledInnerContainer = styled.div`
         top: 46%;
         left: 50%;
         transform: translate3d(-50%, -50%, 0) rotate(-45deg);
-        border-bottom: 2px solid ${COLOR_BRAND};
-        border-left: 2px solid ${COLOR_BRAND};
+        border-bottom: 2px solid ${props => props.brandMainColor};
+        border-left: 2px solid ${props => props.brandMainColor};
     }
 
     [type='checkbox']:checked + .rainbow-table-input-checkbox_faux,
     [type='checkbox']:checked ~ .rainbow-table-input-checkbox_faux,
     [type='checkbox']:checked + label .rainbow-table-input-checkbox_faux {
-        border: 2px solid ${COLOR_BRAND};
+        border: 2px solid ${props => props.brandMainColor};
     }
 
     [type='checkbox']:focus + .rainbow-table-input-checkbox_faux,
     [type='checkbox']:focus ~ .rainbow-table-input-checkbox_faux,
     [type='checkbox']:focus + label .rainbow-table-input-checkbox_faux {
         content: '';
-        border: 2px solid ${COLOR_BRAND};
-        box-shadow: ${SHADOW_OUTLINE};
+        border: 2px solid ${props => props.brandMainColor};
+        box-shadow: ${props => props.brandShadow};
     }
 
     [type='checkbox']:focus:checked > .rainbow-table-input-checkbox_faux,
     [type='checkbox']:focus:checked ~ .rainbow-table-input-checkbox_faux,
     [type='checkbox']:focus:checked + label .rainbow-table-input-checkbox_faux {
-        border-color: ${COLOR_BRAND};
+        border-color: ${props => props.brandMainColor};
         background-color: ${COLOR_WHITE};
-        box-shadow: ${SHADOW_OUTLINE};
+        box-shadow: ${props => props.brandShadow};
     }
 
     [type='checkbox'][disabled] + .rainbow-table-input-checkbox_faux,
@@ -71,7 +78,7 @@ const StyledInnerContainer = styled.div`
         left: 50%;
         width: 0.5rem;
         height: 2px;
-        background-color: #01b6f5;
+        background-color: ${props => props.brandMainColor};
         border: 0;
         transform: translate3d(-50%, -50%, 0);
     }

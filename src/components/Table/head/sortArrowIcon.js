@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import StyledSortArrowIcon from './styled/sortArrowIcon';
 
-export default function SortArrowIcon({ direction, color }) {
+export default function SortArrowIcon({ direction }) {
     const arrowAscendent = direction === 'asc';
 
     return (
@@ -15,7 +15,7 @@ export default function SortArrowIcon({ direction, color }) {
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
         >
-            <g id="components" stroke="none" strokeWidth="1" fill={color} fillRule="evenodd">
+            <g id="components" stroke="none" strokeWidth="1" fill="currentColor" fillRule="evenodd">
                 <g
                     id="Components-Data-Table-V2"
                     transform="translate(-355.000000, -1997.000000)"
@@ -41,10 +41,8 @@ export default function SortArrowIcon({ direction, color }) {
 
 SortArrowIcon.propTypes = {
     direction: PropTypes.oneOf(['asc', 'desc']),
-    color: PropTypes.string,
 };
 
 SortArrowIcon.defaultProps = {
     direction: 'asc',
-    color: '#01B6F5',
 };
