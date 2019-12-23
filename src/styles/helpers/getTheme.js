@@ -4,3 +4,14 @@ import defaultTheme from '../defaultTheme';
 export default function getTheme(props) {
     return props.theme.rainbow || defaultTheme;
 }
+
+export function getRainbowTheme(props) {
+    if (!props.theme.rainbow) {
+        return {
+            theme: {
+                rainbow: defaultTheme,
+            },
+        };
+    }
+    return {};
+}

@@ -32,8 +32,8 @@ export const dark = {
     },
     divider: 'rgba(255, 255, 255, 0.12)',
     background: {
-        primary: '#424242',
-        secondary: '#303030',
+        primary: '#303030',
+        secondary: '#424242',
         disabled: 'rgba(255, 255, 255, 0.12)',
     },
     action: {

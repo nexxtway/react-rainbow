@@ -4,16 +4,14 @@ import getTheme from '../../../src/styles/helpers/getTheme';
 import { darken } from '../../../src/styles/helpers/color';
 
 export const StyledGlobalHeader = styled.header.attrs(props => {
-    const { primary: primaryBackground, secondary: secondaryBackground } = getTheme(
-        props,
-    ).palette.background;
+    const secondaryBackground = getTheme(props).palette.background.secondary;
     const divider = darken(secondaryBackground, 0.1);
     return {
-        primaryBackground,
+        secondaryBackground,
         divider,
     };
 })`
-    background-color: ${props => props.primaryBackground};
+    background-color: ${props => props.secondaryBackground};
     border-bottom: 1px solid ${props => props.divider};
 `;
 

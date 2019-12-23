@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { BORDER_RADIUS_1 } from '../../../styles/borderRadius';
-import { COLOR_WHITE } from '../../../styles/colors';
+import { getRainbowTheme } from '../../../styles/helpers/getTheme';
 
-const StyledModalContainer = styled.section`
+const StyledModalContainer = styled.section.attrs(props => getRainbowTheme(props))`
     top: 0;
     right: 0;
     bottom: 0;
@@ -11,7 +11,8 @@ const StyledModalContainer = styled.section`
     min-width: 18rem;
     max-height: 80vh;
     min-height: 4rem;
-    background-color: ${COLOR_WHITE};
+    background-color: ${props => props.theme.rainbow.palette.background.primary};
+    color: ${props => props.theme.rainbow.palette.text.primary};
     border-radius: ${BORDER_RADIUS_1};
     box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16);
     flex-direction: column;

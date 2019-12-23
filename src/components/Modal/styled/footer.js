@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_2 } from '../../../styles/colors';
+import { getRainbowTheme } from '../../../styles/helpers/getTheme';
 
-const StyledFooter = styled.footer`
-    border-top: 0.0625px solid ${COLOR_GRAY_2};
+const StyledFooter = styled.footer.attrs(props => getRainbowTheme(props))`
+    border-top: 0.0625px solid ${props => props.theme.rainbow.palette.divider};
     padding: 0.75rem 1rem;
     flex-shrink: 0;
     display: block;

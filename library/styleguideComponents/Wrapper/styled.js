@@ -7,22 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const StyledWrapper = styled.div.attrs(props => {
     const palette = getTheme(props).palette;
-    const secondaryBackground = palette.background.secondary;
-    const divider = palette.divider;
-    return {
-        secondaryBackground,
-        divider,
-    };
-})`
-    padding: 0;
-    border-radius: 0.875rem;
-    background-color: ${props => props.secondaryBackground};
-    background-clip: padding-box;
-    border: solid 1px ${props => props.divider};
-`;
-
-export const StyledTopBar = styled.header.attrs(props => {
-    const palette = getTheme(props).palette;
     const primaryBackground = palette.background.primary;
     const divider = palette.divider;
     return {
@@ -30,7 +14,23 @@ export const StyledTopBar = styled.header.attrs(props => {
         divider,
     };
 })`
+    padding: 0;
+    border-radius: 0.875rem;
     background-color: ${props => props.primaryBackground};
+    background-clip: padding-box;
+    border: solid 1px ${props => props.divider};
+`;
+
+export const StyledTopBar = styled.header.attrs(props => {
+    const palette = getTheme(props).palette;
+    const secondaryBackground = palette.background.secondary;
+    const divider = palette.divider;
+    return {
+        secondaryBackground,
+        divider,
+    };
+})`
+    background-color: ${props => props.secondaryBackground};
     width: 100%;
     display: flex;
     justify-content: space-between;
