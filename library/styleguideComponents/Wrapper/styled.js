@@ -8,22 +8,26 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 export const StyledWrapper = styled.div.attrs(props => {
     const palette = getTheme(props).palette;
     const secondaryBackground = palette.background.secondary;
+    const divider = palette.divider;
     return {
         secondaryBackground,
+        divider,
     };
 })`
     padding: 0;
     border-radius: 0.875rem;
     background-color: ${props => props.secondaryBackground};
     background-clip: padding-box;
-    border: solid 1px rgba(0, 0, 0, 0.08);
+    border: solid 1px ${props => props.divider};
 `;
 
 export const StyledTopBar = styled.header.attrs(props => {
     const palette = getTheme(props).palette;
     const primaryBackground = palette.background.primary;
+    const divider = palette.divider;
     return {
         primaryBackground,
+        divider,
     };
 })`
     background-color: ${props => props.primaryBackground};
@@ -31,7 +35,7 @@ export const StyledTopBar = styled.header.attrs(props => {
     display: flex;
     justify-content: space-between;
     border-radius: 0.875rem 0.875rem 0 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid ${props => props.divider};
     padding: 8px 60px 8px 12px;
 
     @media (max-width: 600px) {
