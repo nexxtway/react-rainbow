@@ -1,13 +1,14 @@
 import styled from 'styled-components';
-import { COLOR_WHITE, COLOR_GRAY_2 } from '../../../styles/colors';
 import { BORDER_RADIUS_1 } from '../../../styles/borderRadius';
 import { SHADOW_4, SHADOW_6 } from '../../../styles/shadows';
 import { MARGIN_LARGE } from '../../../styles/margins';
+import { getRainbowTheme } from '../../../styles/helpers/getTheme';
 
-const StyledContainer = styled.article`
+const StyledContainer = styled.article.attrs(props => getRainbowTheme(props))`
     position: relative;
-    background-color: ${COLOR_WHITE};
-    border: 0.0625rem solid ${COLOR_GRAY_2};
+    background-color: ${props => props.theme.rainbow.palette.background.primary};
+    color: ${props => props.theme.rainbow.palette.text.primary};
+    border: 0.0625rem solid ${props => props.theme.rainbow.palette.divider};
     border-radius: ${BORDER_RADIUS_1};
     background-clip: padding-box;
     box-shadow: ${SHADOW_4};
