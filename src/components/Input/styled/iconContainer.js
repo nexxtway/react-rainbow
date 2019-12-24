@@ -1,12 +1,16 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_3 } from '../../../styles/colors';
 import getTheme from '../../../styles/helpers/getTheme';
 
 const IconContainer = styled.span.attrs(props => {
-    const errorMainColor = getTheme(props).palette.error.main;
-    return { errorMainColor };
+    const palette = getTheme(props).palette;
+    const errorMainColor = palette.error.main;
+    const textSecondary = palette.text.secondary;
+    return {
+        errorMainColor,
+        textSecondary,
+    };
 })`
-    fill: ${COLOR_GRAY_3};
+    color: ${props => props.textSecondary};
     height: 100%;
     width: 22px;
     top: 0;

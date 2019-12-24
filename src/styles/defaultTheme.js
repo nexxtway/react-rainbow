@@ -4,7 +4,10 @@ import {
     COLOR_ERROR,
     COLOR_WARNING,
     COLOR_WHITE,
+    COLOR_GRAY_1,
     COLOR_GRAY_2,
+    COLOR_GRAY_4,
+    COLOR_DARK_1,
 } from './colors';
 import { darken, getContrastText, lighten } from './helpers/color';
 
@@ -12,13 +15,13 @@ export const light = {
     background: {
         primary: COLOR_WHITE,
         secondary: '#f9fafc',
-        disabled: 'rgba(0, 0, 0, 0.26)',
+        disabled: COLOR_GRAY_1,
     },
     divider: COLOR_GRAY_2,
     text: {
-        primary: '#061c3f',
-        secondary: 'rgba(0, 0, 0, 0.54)',
-        disabled: 'rgba(0, 0, 0, 0.38)',
+        primary: COLOR_DARK_1,
+        secondary: COLOR_GRAY_4,
+        disabled: COLOR_GRAY_2,
         hint: 'rgba(0, 0, 0, 0.38)',
     },
     action: {

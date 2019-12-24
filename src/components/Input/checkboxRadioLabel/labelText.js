@@ -1,14 +1,22 @@
 import styled from 'styled-components';
-import { COLOR_DARK_1, COLOR_GRAY_3 } from '../../../styles/colors';
 import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
+import getTheme from '../../../styles/helpers/getTheme';
 
-const LabelText = styled.span`
+const LabelText = styled.span.attrs(props => {
+    const text = getTheme(props).palette.text;
+    const textPrimary = text.primary;
+    const textDisabled = text.disabled;
+    return {
+        textPrimary,
+        textDisabled,
+    };
+})`
     display: inline;
     vertical-align: middle;
-    color: ${COLOR_DARK_1};
+    color: ${props => props.textPrimary};
     font-size: ${FONT_SIZE_TEXT_LARGE};
     line-height: 1.65rem;
-    ${props => props.disabled && `color: ${COLOR_GRAY_3};`};
+    ${props => props.disabled && `color: ${props.textDisabled};`};
 `;
 
 export default LabelText;

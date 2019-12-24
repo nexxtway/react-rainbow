@@ -1,17 +1,20 @@
 import styled from 'styled-components';
 import Input from '../../styled/input';
-import { COLOR_DARK_1 } from '../../../../styles/colors';
+import getTheme from '../../../../styles/helpers/getTheme';
 
 const hasLeftIcon = props => props.icon && props.iconPosition === 'left';
 const hasRightIcon = props => props.icon && props.iconPosition === 'right';
 
-const StyledInput = styled(Input)`
+const StyledInput = styled(Input).attrs(props => {
+    const textPrimary = getTheme(props).palette.text.primary;
+    return { textPrimary };
+})`
     &[readonly] {
         padding-left: 0;
         padding-right: 0;
         background-color: transparent;
         border: 2px transparent solid;
-        color: ${COLOR_DARK_1};
+        color: ${props => props.textPrimary};
         font-weight: 400;
         cursor: text;
         box-sizing: border-box;
