@@ -1,15 +1,10 @@
 import styled from 'styled-components';
 import { BORDER_RADIUS_1 } from '../../../styles/borderRadius';
-import { getRainbowTheme } from '../../../styles/helpers/getTheme';
+import getTheme from '../../../styles/helpers/getTheme';
 
 const StyledModalContainer = styled.section.attrs(props => {
-    const theme = getRainbowTheme(props);
-    const palette = theme.rainbow.palette;
-    const textColor = palette.getContrastText(palette.background.primary);
-    return {
-        textColor,
-        ...theme,
-    };
+    const palette = getTheme(props).palette;
+    return { palette };
 })`
     top: 0;
     right: 0;
@@ -19,8 +14,8 @@ const StyledModalContainer = styled.section.attrs(props => {
     min-width: 18rem;
     max-height: 80vh;
     min-height: 4rem;
-    background-color: ${props => props.theme.rainbow.palette.background.primary};
-    color: ${props => props.textColor};
+    background-color: ${props => props.palette.background.primary};
+    color: ${props => props.palette.text.primary};
     border-radius: ${BORDER_RADIUS_1};
     box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16);
     flex-direction: column;

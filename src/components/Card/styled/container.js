@@ -1,21 +1,29 @@
 import styled from 'styled-components';
 import { BORDER_RADIUS_1 } from '../../../styles/borderRadius';
-import { SHADOW_4, SHADOW_6 } from '../../../styles/shadows';
 import { MARGIN_LARGE } from '../../../styles/margins';
-import { getRainbowTheme } from '../../../styles/helpers/getTheme';
+import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledContainer = styled.article.attrs(props => getRainbowTheme(props))`
+const StyledContainer = styled.article.attrs(props => {
+    const palette = getTheme(props).palette;
+    const shadow4 = `0 1px 2px 0 ${palette.divider}`;
+    const shadow6 = `0 2px 12px 0 ${palette.divider}`;
+    return {
+        palette,
+        shadow4,
+        shadow6,
+    };
+})`
     position: relative;
-    background-color: ${props => props.theme.rainbow.palette.background.primary};
-    color: ${props => props.theme.rainbow.palette.text.primary};
-    border: 0.0625rem solid ${props => props.theme.rainbow.palette.divider};
+    background-color: ${props => props.palette.background.primary};
+    color: ${props => props.palette.text.primary};
+    border: 0.0625rem solid ${props => props.palette.divider};
     border-radius: ${BORDER_RADIUS_1};
     background-clip: padding-box;
-    box-shadow: ${SHADOW_4};
+    box-shadow: ${props => props.shadow4};
     overflow: hidden;
 
     &:hover {
-        box-shadow: ${SHADOW_6};
+        box-shadow: ${props => props.shadow6};
         transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     }
 

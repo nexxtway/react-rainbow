@@ -32,18 +32,8 @@ function normalizeColors(colors) {
     }, {});
 }
 
-function getLightOrDark(type, property) {
-    if (type) {
-        if (type === 'light' || type === 'dark') {
-            const typeObject = type === 'light' ? light : dark;
-            if (property) {
-                if (typeObject[property]) {
-                    return typeObject[property];
-                }
-            }
-        }
-    }
-    return undefined;
+function getLightOrDark(type) {
+    return type === 'dark' ? dark : light;
 }
 
 export default function normalizeTheme(theme) {
@@ -52,34 +42,13 @@ export default function normalizeTheme(theme) {
             palette: {
                 ...defaultTheme.palette,
                 ...pickColors(['type'], get(theme, 'rainbow.palette')),
-                ...pickColors(['divider'], get(theme, 'rainbow.palette')),
                 ...normalizeColors(
                     pickColors(
                         ['brand', 'success', 'error', 'warning'],
                         get(theme, 'rainbow.palette'),
                     ),
                 ),
-                background: {
-                    ...defaultTheme.palette.background,
-                    ...pickColors(
-                        ['primary', 'secondary', 'disabled'],
-                        getLightOrDark(get(theme, 'rainbow.palette.type'), 'background'),
-                    ),
-                },
-                text: {
-                    ...defaultTheme.palette.text,
-                    ...pickColors(
-                        ['primary', 'secondary', 'disabled', 'hint'],
-                        getLightOrDark(get(theme, 'rainbow.palette.type'), 'text'),
-                    ),
-                },
-                action: {
-                    ...defaultTheme.palette.action,
-                    ...pickColors(
-                        ['active', 'hover', 'hoverOpacity', 'selected', 'disabled'],
-                        getLightOrDark(get(theme, 'rainbow.palette.type'), 'action'),
-                    ),
-                },
+                ...getLightOrDark(get(theme, 'rainbow.palette.type')),
             },
         },
     };

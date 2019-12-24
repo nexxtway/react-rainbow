@@ -1,4 +1,11 @@
-import { COLOR_BRAND, COLOR_SUCCESS, COLOR_ERROR, COLOR_WARNING, COLOR_WHITE } from './colors';
+import {
+    COLOR_BRAND,
+    COLOR_SUCCESS,
+    COLOR_ERROR,
+    COLOR_WARNING,
+    COLOR_WHITE,
+    COLOR_GRAY_2,
+} from './colors';
 import { darken, getContrastText, lighten } from './helpers/color';
 
 export const light = {
@@ -7,7 +14,7 @@ export const light = {
         secondary: '#f9fafc',
         disabled: 'rgba(0, 0, 0, 0.26)',
     },
-    divider: 'rgba(0, 0, 0, 0.08)',
+    divider: COLOR_GRAY_2,
     text: {
         primary: '#061c3f',
         secondary: 'rgba(0, 0, 0, 0.54)',
