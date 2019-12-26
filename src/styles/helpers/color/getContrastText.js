@@ -7,13 +7,12 @@ const light = {
     },
 };
 
-// TODO: this to values can be customizables
 const dark = {
     text: {
         primary: 'rgba(255, 255, 255, 1)',
     },
 };
-// TODO: need to be 3
+
 const contrastThreshold = 3;
 
 export default function getContrastText(background) {

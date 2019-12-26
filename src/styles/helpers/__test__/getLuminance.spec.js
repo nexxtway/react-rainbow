@@ -1,0 +1,40 @@
+import { getLuminance } from '../color';
+
+jest.mock('../color/decomposeColor', () => () => {
+    const result = {
+        type: 'rgb',
+        values: [1, 182, 245],
+    };
+    return result;
+});
+jest.mock('../color/hslToRgb', () => () => 'rgb(1, 182, 245)');
+
+describe('getLuminance', () => {
+    const colors = [
+        {
+            main: '#01b6f5',
+            luminance: 0.401,
+        },
+        {
+            main: 'rgb(1, 182, 245)',
+            luminance: 0.401,
+        },
+        {
+            main: 'hsl(0, 100%, 50%)',
+            luminance: 0.401,
+        },
+    ];
+
+    it('should return a number', () => {
+        expect.assertions(3);
+        colors.forEach(v => {
+            expect(getLuminance(v.main)).toStrictEqual(expect.any(Number));
+        });
+    });
+    it('should return the right value', () => {
+        expect.assertions(3);
+        colors.forEach((v, i) => {
+            expect(getLuminance(v.main)).toStrictEqual(colors[i].luminance);
+        });
+    });
+});

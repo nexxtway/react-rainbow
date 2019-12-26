@@ -1,6 +1,14 @@
 /* eslint-disable no-param-reassign */
 export default function hexToRgb(color) {
+    if (color.charAt(0) !== '#') {
+        return '';
+    }
+
     color = color.substr(1);
+
+    if (color.length !== 3 && color.length !== 6) {
+        return '';
+    }
 
     const re = new RegExp(`.{1,${color.length / 3}}`, 'g');
     let colors = color.match(re);
