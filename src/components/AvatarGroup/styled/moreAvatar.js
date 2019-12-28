@@ -22,7 +22,6 @@ const StyledMoreAvatar = styled.span.attrs(props => {
     width: 2.5rem;
     box-sizing: border-box;
     text-align: center;
-
     ${props =>
         props.size === 'large' &&
         `
