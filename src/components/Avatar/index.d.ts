@@ -9,6 +9,7 @@ export interface AvatarProps extends BaseProps {
     initialsVariant?: 'default' | 'inverse';
     title?: string;
     assistiveText?: string;
+    counter?: boolean;
 }
 
 export default function(props: AvatarProps): JSX.Element | null;

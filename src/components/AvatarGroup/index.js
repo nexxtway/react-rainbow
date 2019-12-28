@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Avatar } from '../';
-import StyledMoreAvatar from './styled/moreAvatar';
+// import StyledCounter from '../Avatar/styled/container';
 import StyledContainer from './styled/container';
 
 /**
@@ -11,17 +11,26 @@ import StyledContainer from './styled/container';
 export default function AvatarGroup(props) {
     const { size, className, style, avatars, maxAvatars, showCounter } = props;
 
-    const spacing = '-6px';
+    const spacing = {
+        'x-small': '-0.625rem',
+        small: '-0.75rem',
+        medium: '-1.25rem',
+        large: '-1.6rem',
+    };
 
-    const renderMoreItems = (max, total) => {
+    const renderCounter = (max, total) => {
         if (total <= max || !showCounter) return null;
 
         const moreItems = avatars.slice(max).length;
 
         return (
-            <StyledMoreAvatar style={{ zIndex: 0, marginLeft: `${spacing}` }}>
-                <span>{`+${moreItems}`}</span>
-            </StyledMoreAvatar>
+            <Avatar
+                assistiveText="Counter"
+                title="Counter"
+                style={{ zIndex: 1000, marginLeft: `${spacing[size]}` }}
+                initials={`+${moreItems}`}
+                counter
+            />
         );
     };
 
@@ -34,15 +43,15 @@ export default function AvatarGroup(props) {
             <Avatar
                 {...avatar.props}
                 size={size}
-                style={{ zIndex: `${maxAvatar - idx}`, marginLeft: `${spacing}` }}
+                style={{ zIndex: `${maxAvatar - idx}`, marginLeft: `${spacing[size]}` }}
                 key={idx}
             />
         ));
 
     return (
         <StyledContainer className={className} style={style} role="group">
+            {renderCounter(+maxAvatar, total)}
             {items}
-            {renderMoreItems(+maxAvatar, total)}
         </StyledContainer>
     );
 }

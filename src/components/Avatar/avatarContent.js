@@ -20,7 +20,7 @@ export default class AvatarContent extends Component {
     }
 
     render() {
-        const { src, initials, title, icon, assistiveText, initialsVariant } = this.props;
+        const { src, initials, title, icon, assistiveText, initialsVariant, counter } = this.props;
 
         const { imageFailed } = this.state;
         if (src && !imageFailed) {
@@ -35,7 +35,7 @@ export default class AvatarContent extends Component {
         } else if (initials) {
             return (
                 <StyledContent as="abbr" initialsVariant={initialsVariant} title={title}>
-                    {normalizeInitials(initials)}
+                    {counter ? initials : normalizeInitials(initials)}
                 </StyledContent>
             );
         } else if (icon) {
@@ -56,6 +56,7 @@ AvatarContent.propTypes = {
     title: PropTypes.string,
     icon: PropTypes.node,
     assistiveText: PropTypes.string,
+    counter: PropTypes.bool,
 };
 
 AvatarContent.defaultProps = {
@@ -64,4 +65,5 @@ AvatarContent.defaultProps = {
     title: undefined,
     icon: null,
     assistiveText: undefined,
+    counter: false,
 };
