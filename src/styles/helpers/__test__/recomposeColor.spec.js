@@ -15,18 +15,16 @@ describe('recomposeColor', () => {
     const EMPTY_STRING = '';
 
     it('should return a string', () => {
-        expect.assertions(2);
         colorsDecomposed.forEach(v => {
             expect(recomposeColor(v)).toStrictEqual(expect.any(String));
         });
     });
     it('should return the right value', () => {
-        expect.assertions(2);
         colorsDecomposed.forEach((v, i) => {
-            expect(recomposeColor(v)).toStrictEqual(colors[i]);
+            expect(recomposeColor(v)).toBe(colors[i]);
         });
     });
     it('should return an empty string with the wrong color', () => {
-        expect(recomposeColor('#f00')).toStrictEqual(EMPTY_STRING);
+        expect(recomposeColor('#f00')).toBe(EMPTY_STRING);
     });
 });

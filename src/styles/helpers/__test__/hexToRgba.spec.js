@@ -17,19 +17,16 @@ describe('hexToRgba', () => {
     const EMPTY_STRING = '';
 
     it('should return the right value in rgba format', () => {
-        expect.assertions(2);
         colors.forEach(v => {
             expect(hexToRgba(v.hex, alpha)).toBe(v.rgba);
         });
     });
     it('should return an empty string when wrong color is passed', () => {
-        expect.assertions(3);
         ['#f00000000', '#f0', 'f00000'].forEach(v => {
-            expect(hexToRgba(v, alpha)).toEqual(EMPTY_STRING);
+            expect(hexToRgba(v, alpha)).toBe(EMPTY_STRING);
         });
     });
     it('should return rgba with alpha = 0.5 wich is the default value', () => {
-        expect.assertions(2);
         colors.forEach(v => {
             expect(hexToRgba(v.hex)).toBe(v.rgbad);
         });

@@ -33,21 +33,18 @@ describe('lighten', () => {
     const coefficient = 0.9;
 
     it('should return a string', () => {
-        expect.assertions(3);
         colors.forEach(v => {
             expect(lighten(v.main)).toStrictEqual(expect.any(String));
         });
     });
     it('should return the right value with coefficient by default', () => {
-        expect.assertions(3);
         colors.forEach((v, i) => {
-            expect(lighten(v.main)).toStrictEqual(colors[i].light);
+            expect(lighten(v.main)).toBe(colors[i].light);
         });
     });
     it('should return the right value with custom coefficient', () => {
-        expect.assertions(3);
         colors.forEach((v, i) => {
-            expect(lighten(v.main, coefficient)).toStrictEqual(colors[i].lightc);
+            expect(lighten(v.main, coefficient)).toBe(colors[i].lightc);
         });
     });
 });

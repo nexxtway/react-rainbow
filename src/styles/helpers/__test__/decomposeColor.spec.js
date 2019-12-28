@@ -10,9 +10,11 @@ describe('decomposeColor', () => {
     };
 
     it('should return an object', () => {
-        expect.assertions(3);
         colors.forEach(v => {
-            expect(decomposeColor(v)).toStrictEqual(expect.any(Object));
+            expect(decomposeColor(v)).toStrictEqual({
+                type: expect.any(String),
+                values: expect.any(Array),
+            });
         });
     });
     it('should return an object with type as string and values as array', () => {
@@ -22,7 +24,10 @@ describe('decomposeColor', () => {
         });
     });
     it('should return the same value when color is decomposed already', () => {
-        expect(decomposeColor(colorDecomposed)).toStrictEqual(colorDecomposed);
+        expect(decomposeColor(colorDecomposed)).toStrictEqual({
+            type: expect.any(String),
+            values: expect.any(Array),
+        });
     });
     it('should return the right value', () => {
         expect(decomposeColor(colors[0])).toStrictEqual(colorDecomposed);

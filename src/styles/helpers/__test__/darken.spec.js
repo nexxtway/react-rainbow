@@ -32,22 +32,14 @@ describe('darken', () => {
     ];
     const coefficient = 0.3;
 
-    it('should return a string', () => {
-        expect.assertions(3);
-        colors.forEach(v => {
-            expect(darken(v.main)).toStrictEqual(expect.any(String));
-        });
-    });
     it('should return the right value with coefficient by default', () => {
-        expect.assertions(3);
         colors.forEach((v, i) => {
-            expect(darken(v.main)).toStrictEqual(colors[i].dark);
+            expect(darken(v.main)).toBe(colors[i].dark);
         });
     });
     it('should return the right value with custom coefficient', () => {
-        expect.assertions(3);
         colors.forEach((v, i) => {
-            expect(darken(v.main, coefficient)).toStrictEqual(colors[i].darkc);
+            expect(darken(v.main, coefficient)).toBe(colors[i].darkc);
         });
     });
 });

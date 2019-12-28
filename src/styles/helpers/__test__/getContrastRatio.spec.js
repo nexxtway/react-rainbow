@@ -26,14 +26,7 @@ describe('getContrastRatio', () => {
         },
     ];
 
-    it('should return a number', () => {
-        expect.assertions(3);
-        colors.forEach(v => {
-            expect(getContrastRatio(v.foreground, v.background)).toStrictEqual(expect.any(Number));
-        });
-    });
     it('should return the right value', () => {
-        expect.assertions(3);
         colors.forEach((v, i) => {
             expect(getContrastRatio(v.foreground, v.background)).toBeCloseTo(colors[i].result);
         });
