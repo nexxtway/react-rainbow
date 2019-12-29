@@ -5,26 +5,26 @@ import React from 'react';
 import { Avatar, AvatarGroup } from 'react-rainbow-components';
 
 const avatars = [
-    <Avatar
-        src="images/user/user1.jpg"
-        assistiveText="Jose Leandro"
-        title="Jose Leandro"
-    />,
-    <Avatar
-        src="images/user/user2.jpg"
-        assistiveText="Tahimi Leon"
-        title="Tahimi Leon"
-    />,
-    <Avatar
-        src="images/user/user3.jpg"
-        assistiveText="Carlos Miguel"
-        title="Carlos Miguel"
-    />,
-    <Avatar
-        src="images/user/user4.jpg"
-        assistiveText="Jane Doe"
-        title="Jane Doe"
-    />,
+    {
+        src:"images/user/user1.jpg",
+        assistiveText:"Jose Leandro",
+        title:"Jose Leandro",
+    },
+    {
+        src:"images/user/user2.jpg",
+        assistiveText:"Tahimi Leon",
+        title:"Tahimi Leon",
+    },
+    {
+        src:"images/user/user3.jpg",
+        assistiveText:"Carlos Miguel",
+        title:"Carlos Miguel",
+    },
+    {
+        src:"images/user/user4.jpg",
+        assistiveText:"Jane Doe",
+        title:"Jane Doe",
+    },
 ];
 
 <div className="rainbow-p-vertical_large rainbow-p-left_medium rainbow-flex_column rainbow-align_center">
@@ -49,26 +49,26 @@ import React from 'react';
 import { Avatar, AvatarGroup } from 'react-rainbow-components';
 
 const avatars = [
-    <Avatar
-        initials="JL"
-        assistiveText="Jose Leandro"
-        title="Jose Leandro"
-    />,
-    <Avatar
-        initials="TL"
-        assistiveText="Tahimi Leon"
-        title="Tahimi Leon"
-    />,
-    <Avatar
-        initials="CM"
-        assistiveText="Carlos Miguel"
-        title="Carlos Miguel"
-    />,
-    <Avatar
-        initials="JD"
-        assistiveText="Jane Doe"
-        title="Jane Doe"
-    />,
+    {
+        initials:"JL",
+        assistiveText:"Jose Leandro",
+        title:"Jose Leandro",
+    },
+    {
+        initials:"TL",
+        assistiveText:"Tahimi Leon",
+        title:"Tahimi Leon",
+    },
+    {
+        initials:"CM",
+        assistiveText:"Carlos Miguel",
+        title:"Carlos Miguel",
+    },
+    {
+        initials:"JD",
+        assistiveText:"Jane Doe",
+        title:"Jane Doe",
+    },
 ];
 
 <div className="rainbow-p-vertical_large rainbow-p-left_medium rainbow-flex_column rainbow-align_center">
@@ -93,26 +93,26 @@ import React from 'react';
 import { Avatar, AvatarGroup } from 'react-rainbow-components';
 
 const avatars = [
-    <Avatar
-        icon={<img src="icons/user.svg" alt="icon" />}
-        assistiveText="Jose Leandro"
-        title="Jose Leandro"
-    />,
-    <Avatar
-        icon={<img src="icons/user.svg" alt="icon" />}
-        assistiveText="Tahimi Leon"
-        title="Tahimi Leon"
-    />,
-    <Avatar
-        icon={<img src="icons/user.svg" alt="icon" />}
-        assistiveText="Carlos Miguel"
-        title="Carlos Miguel"
-    />,
-    <Avatar
-        icon={<img src="icons/user.svg" alt="icon" />}
-        assistiveText="Jane Doe"
-        title="Jane Doe"
-    />,
+    {
+        icon:"icons/user.svg",
+        assistiveText:"Jose Leandro",
+        title:"Jose Leandro",
+    },
+    {
+        icon:"icons/user.svg",
+        assistiveText:"Tahimi Leon",
+        title:"Tahimi Leon",
+    },
+    {
+        icon:"icons/user.svg",
+        assistiveText:"Carlos Miguel",
+        title:"Carlos Miguel",
+    },
+    {
+        icon:"icons/user.svg",
+        assistiveText:"Jane Doe",
+        title:"Jane Doe",
+    },
 ];
 
 <div className="rainbow-p-vertical_large rainbow-p-left_medium rainbow-flex_column rainbow-align_center">
@@ -141,30 +141,30 @@ const avatarContainerStyles = {
 };
 
 const avatars = [
-    <Avatar
-        initials="JL"
-        assistiveText="Jose Leandro"
-        title="Jose Leandro"
-        initialsVariant="inverse"
-    />,
-    <Avatar
-        initials="TL"
-        assistiveText="Tahimi Leon"
-        title="Tahimi Leon"
-        initialsVariant="inverse"
-    />,
-    <Avatar
-        initials="CM"
-        assistiveText="Carlos Miguel"
-        title="Carlos Miguel"
-        initialsVariant="inverse"
-    />,
-    <Avatar
-        initials="JD"
-        assistiveText="Jane Doe"
-        title="Jane Doe"
-        initialsVariant="inverse"
-    />,
+    {
+        initials:"JL",
+        assistiveText:"Jose Leandro",
+        title:"Jose Leandro",
+        initialsVariant:"inverse",
+    },
+    {
+        initials:"TL",
+        assistiveText:"Tahimi Leon",
+        title:"Tahimi Leon",
+        initialsVariant:"inverse",
+    },
+    {
+        initials:"CM",
+        assistiveText:"Carlos Miguel",
+        title:"Carlos Miguel",
+        initialsVariant:"inverse",
+    },
+    {
+        initials:"JD",
+        assistiveText:"Jane Doe",
+        title:"Jane Doe",
+        initialsVariant:"inverse",
+    },
 ];
 
 <div className="rainbow-p-vertical_large rainbow-p-left_medium rainbow-flex_column rainbow-align_center rainbow-background-color_dark-1">
@@ -191,26 +191,26 @@ import React from 'react';
 import { Avatar, AvatarGroup } from 'react-rainbow-components';
 
 const avatars = [
-    <Avatar
-        src="images/user/user1.jpg"
-        assistiveText="Jose Leandro"
-        title="Jose Leandro"
-    />,
-    <Avatar
-        src="images/user/user2.jpg"
-        assistiveText="Tahimi Leon"
-        title="Tahimi Leon"
-    />,
-    <Avatar
-        src="images/user/user3.jpg"
-        assistiveText="Carlos Miguel"
-        title="Carlos Miguel"
-    />,
-    <Avatar
-        src="images/user/user4.jpg"
-        assistiveText="Jane Doe"
-        title="Jane Doe"
-    />,
+    {
+        src:"images/user/user1.jpg",
+        assistiveText:"Jose Leandro",
+        title:"Jose Leandro",
+    },
+    {
+        src:"images/user/user2.jpg",
+        assistiveText:"Tahimi Leon",
+        title:"Tahimi Leon",
+    },
+    {
+        src:"images/user/user3.jpg",
+        assistiveText:"Carlos Miguel",
+        title:"Carlos Miguel",
+    },
+    {
+        src:"images/user/user4.jpg",
+        assistiveText:"Jane Doe",
+        title:"Jane Doe",
+    },
 ];
 
 <div className="rainbow-p-vertical_large rainbow-p-left_medium rainbow-flex_column rainbow-align_center">
