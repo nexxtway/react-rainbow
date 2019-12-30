@@ -15,7 +15,7 @@ export default function Counter(props) {
 
     return (
         <StyledCounter size={size}>
-            <span>{`+${abbreviateNumber(moreItems)}`}</span>
+            <span>{abbreviateNumber(moreItems)}</span>
         </StyledCounter>
     );
 }

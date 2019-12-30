@@ -6,6 +6,7 @@ const StyledCounter = styled(StyledContainer)`
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid white;
 `;
 
 export default StyledCounter;
