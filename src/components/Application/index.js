@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from './context';
-import legacyStyles from './rainbowLegacyStyles';
+import legacyStyles from './styles/rainbowLegacyStyles';
 import normalizeTheme from '../../styles/helpers/normalizeTheme';
 
 /**
