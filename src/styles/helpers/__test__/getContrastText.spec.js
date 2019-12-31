@@ -16,7 +16,7 @@ const mockColors = [
     },
     {
         background: 'hsl(0, 100%, 50%)',
-        result: 'rgba(0, 0, 0, 0.87)',
+        result: 'rgba(255, 255, 255, 1)',
         ratio: 3.992,
     },
     {
@@ -42,7 +42,7 @@ const mockColors = [
 ];
 
 jest.mock('../color/getContrastRatio', () => background =>
-    mockColors.filter(v => v.background === background && v.ratio),
+    mockColors.filter(v => v.background === background).shift().ratio,
 );
 jest.mock('../color/darken', () => color => {
     if (color === '#01b6f5') {

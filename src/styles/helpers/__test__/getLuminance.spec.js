@@ -25,11 +25,6 @@ describe('getLuminance', () => {
         },
     ];
 
-    it('should return a number', () => {
-        colors.forEach(v => {
-            expect(getLuminance(v.main)).toStrictEqual(expect.any(Number));
-        });
-    });
     it('should return the right value', () => {
         colors.forEach((v, i) => {
             expect(getLuminance(v.main)).toBeCloseTo(colors[i].luminance);

@@ -32,11 +32,6 @@ describe('lighten', () => {
     ];
     const coefficient = 0.9;
 
-    it('should return a string', () => {
-        colors.forEach(v => {
-            expect(lighten(v.main)).toStrictEqual(expect.any(String));
-        });
-    });
     it('should return the right value with coefficient by default', () => {
         colors.forEach((v, i) => {
             expect(lighten(v.main)).toBe(colors[i].light);

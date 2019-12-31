@@ -14,11 +14,6 @@ describe('recomposeColor', () => {
     ];
     const EMPTY_STRING = '';
 
-    it('should return a string', () => {
-        colorsDecomposed.forEach(v => {
-            expect(recomposeColor(v)).toStrictEqual(expect.any(String));
-        });
-    });
     it('should return the right value', () => {
         colorsDecomposed.forEach((v, i) => {
             expect(recomposeColor(v)).toBe(colors[i]);
