@@ -1,8 +1,18 @@
+import LatoBlackEot from './fonts/Lato-Black/Lato-Black.eot';
+import LatoBlackSvg from './fonts/Lato-Black/Lato-Black.svg';
+import LatoBlackTtf from './fonts/Lato-Black/Lato-Black.ttf';
+import LatoBlackWoff from './fonts/Lato-Black/Lato-Black.woff';
+import LatoBlackWoff2 from './fonts/Lato-Black/Lato-Black.woff2';
+
+// import LatoBlackItalicEot from './fonts/Lato-BlackItalic/Lato-BlackItalic.eot';
+
+// import LatoRegularEot from './fonts/Lato-Regular/Lato-Regular.eot';
+
 export default `
 @font-face {
     font-family: 'Lato Black';
-    src: url("../fonts/Lato-Black/Lato-Black.eot");
-    src: url("../fonts/Lato-Black/Lato-Black.woff2") format("woff2"), url("../fonts/Lato-Black/Lato-Black.woff") format("woff"), url("../fonts/Lato-Black/Lato-Black.ttf") format("truetype"), url("../fonts/Lato-Black/Lato-Black.svg#Lato-Black") format("svg"), url("../fonts/Lato-Black/Lato-Black.eot?#iefix") format("embedded-opentype");
+    src: url(${LatoBlackEot});
+    src: url(${LatoBlackWoff2}}) format("woff2"), url(${LatoBlackWoff}) format("woff"), url(${LatoBlackTtf}) format("truetype"), url('${LatoBlackSvg}#Lato-Black') format("svg"), url('${LatoBlackEot}?#iefix') format("embedded-opentype");
     font-weight: normal;
     font-style: normal; }
   

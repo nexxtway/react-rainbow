@@ -62,7 +62,6 @@ module.exports = {
         },
     },
     require: [
-        path.resolve(__dirname, 'assets/styles.css'),
         path.resolve(__dirname, 'library/setup.js'),
         path.resolve(__dirname, 'library/ga.js'),
     ],
@@ -162,7 +161,7 @@ module.exports = {
                     test: /\.(ttf|eot|woff|woff2)$/,
                     loader: 'file-loader',
                     options: {
-                        name: 'fonts/[name].[ext]',
+                        name: 'fonts/[name]/[name].[ext]',
                     },
                 },
                 {
