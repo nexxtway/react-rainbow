@@ -42,8 +42,6 @@ Avatar.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
-    /** Decide if it is a Counter. */
-    counter: PropTypes.bool,
 };
 
 Avatar.defaultProps = {
@@ -56,5 +54,4 @@ Avatar.defaultProps = {
     assistiveText: undefined,
     className: undefined,
     style: undefined,
-    counter: false,
 };

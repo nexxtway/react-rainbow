@@ -33,8 +33,7 @@ AvatarGroup.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
-    /** The content of the AvatarGroup.
-     * Accepted avatars are Avatar | Avatar[]. */
+    /** The content of the AvatarGroup. */
     avatars: PropTypes.array,
     /** Specify how many Avatars will render. */
     maxAvatars: PropTypes.number,
