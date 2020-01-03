@@ -29,7 +29,6 @@ export default function Avatars(props) {
 Avatars.propTypes = {
     /** Defines the size of the avatar */
     size: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
-    /** A CSS class for the outer element, in addition to the component's base classes. */
     /** Dataset to built avatar. */
     avatars: PropTypes.array,
     /** Specify how many Avatars will render. */

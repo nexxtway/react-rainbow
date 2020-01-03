@@ -96,22 +96,22 @@ const icon = <img src="icons/user.svg" alt="icon" />;
 
 const avatars = [
     {
-        icon:icon,
+        icon,
         assistiveText:"Jose Leandro",
         title:"Jose Leandro",
     },
     {
-        icon:icon,
+        icon,
         assistiveText:"Tahimi Leon",
         title:"Tahimi Leon",
     },
     {
-        icon:icon,
+        icon,
         assistiveText:"Carlos Miguel",
         title:"Carlos Miguel",
     },
     {
-        icon:icon,
+        icon,
         assistiveText:"Jane Doe",
         title:"Jane Doe",
     },
