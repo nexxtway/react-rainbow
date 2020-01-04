@@ -132,64 +132,14 @@ const avatars = [
 </div>
 ```
 
-##### fallback user initials inverse
-
-```js
-import React from 'react';
-import { AvatarGroup } from 'react-rainbow-components';
-
-const avatarContainerStyles = {
-    borderRadius: '0 0 0.875rem 0.875rem',
-};
-
-const avatars = [
-    {
-        initials:"JL",
-        assistiveText:"Jose Leandro",
-        title:"Jose Leandro",
-    },
-    {
-        initials:"TL",
-        assistiveText:"Tahimi Leon",
-        title:"Tahimi Leon",
-    },
-    {
-        initials:"CM",
-        assistiveText:"Carlos Miguel",
-        title:"Carlos Miguel",
-    },
-    {
-        initials:"JD",
-        assistiveText:"Jane Doe",
-        title:"Jane Doe",
-    },
-];
-
-<div className="rainbow-p-vertical_large rainbow-p-left_medium rainbow-flex_column rainbow-align_center rainbow-background-color_dark-1">
-    <AvatarGroup
-        className="rainbow-m-horizontal_medium"
-        avatars={avatars}
-        maxAvatars={4}
-        style={avatarContainerStyles}
-    />
-    <AvatarGroup
-        className="rainbow-m-horizontal_medium"
-        avatars={avatars}
-        maxAvatars={3}
-        style={avatarContainerStyles}
-        showCounter={true}
-    />
-</div>
-```
-
 ##### photo-url sizes
 
 ```js
 import React from 'react';
-import { AvatarGroup, Card } from 'react-rainbow-components';
+import { AvatarGroup } from 'react-rainbow-components';
 import styled from 'styled-components';
 
-const CustomText = styled.span.attrs(props => {
+const CustomText = styled.h1.attrs(props => {
     return props.theme.rainbow.palette;
 })`
     color: #a4a7b5;
@@ -246,55 +196,51 @@ const avatars = [
     },
 ];
 
-<div className="rainbow-m-around_large">
-    <Card
-        className="rainbow-p-around_small"
-    >
-        <div className="rainbow-flex_column rainbow-align-content_space-between rainbow-m-bottom_small">
-            <CustomText>
-                x-small
-            </CustomText>
-            <AvatarGroup
-                className="rainbow-m-horizontal_medium"
-                avatars={avatars}
-                maxAvatars={4}
-                size="x-small"
-            />
-        </div>
-        <div className="rainbow-flex_column rainbow-align-content_space-between rainbow-m-bottom_small">
-            <CustomText>
-                small
-            </CustomText>
-            <AvatarGroup
-                className="rainbow-m-horizontal_medium"
-                avatars={avatars}
-                maxAvatars={4}
-                size="small"
-            />
-        </div>
-        <div className="rainbow-flex_column rainbow-align-content_space-between rainbow-m-bottom_small">
-            <CustomText>
-                medium
-            </CustomText>
-            <AvatarGroup
-                className="rainbow-m-horizontal_medium"
-                avatars={avatars}
-                maxAvatars={4}
-                size="medium"
-            />
-        </div>
-        <div className="rainbow-flex_column rainbow-align-content_space-between rainbow-m-bottom_small">
-            <CustomText>
-                large
-            </CustomText>
-            <AvatarGroup
-                className="rainbow-m-horizontal_medium"
-                avatars={avatars}
-                maxAvatars={4}
-                size="large"
-            />
-        </div>
-    </Card>
+<div className="rainbow-flex rainbow-justify_center rainbow-m-around_large">
+    <div className="rainbow-flex_column rainbow-align-content_space-between rainbow-m-bottom_small">
+        <AvatarGroup
+            className="rainbow-m-horizontal_medium"
+            avatars={avatars}
+            maxAvatars={4}
+            size="x-small"
+        />
+        <CustomText>
+            x-small
+        </CustomText>
+    </div>
+    <div className="rainbow-flex_column rainbow-align-content_space-between rainbow-m-bottom_small">
+        <AvatarGroup
+            className="rainbow-m-horizontal_medium"
+            avatars={avatars}
+            maxAvatars={4}
+            size="small"
+        />
+        <CustomText>
+            small
+        </CustomText>
+    </div>
+    <div className="rainbow-flex_column rainbow-align-content_space-between rainbow-m-bottom_small">
+        <AvatarGroup
+            className="rainbow-m-horizontal_medium"
+            avatars={avatars}
+            maxAvatars={4}
+            size="medium"
+        />
+        <CustomText>
+            medium
+        </CustomText>
+    </div>
+    <div className="rainbow-flex_column rainbow-align-content_space-between rainbow-m-bottom_small">
+        <AvatarGroup
+            className="rainbow-m-horizontal_medium"
+            avatars={avatars}
+            maxAvatars={4}
+            size="large"
+        />
+        <CustomText>
+            large
+        </CustomText>
+    </div>
 </div>
 ```
 
@@ -305,7 +251,12 @@ import React from 'react';
 import { AvatarGroup, Card } from 'react-rainbow-components';
 import styled from 'styled-components';
 
-const CustomText = styled.span.attrs(props => {
+const columnStyles = {
+    width: '25%',
+    alignItems: 'space-around',
+};
+
+const CustomText = styled.h1.attrs(props => {
     return props.theme.rainbow.palette;
 })`
     color: #a4a7b5;
@@ -364,9 +315,9 @@ const avatars = [
 
 <div className="rainbow-m-around_large">
     <Card
-        className="rainbow-p-around_small rainbow-align-content_space-between rainbow-m-bottom_small"
+        className="rainbow-p-vertical_small rainbow-p-horizontal_large rainbow-flex rainbow-justify_space-around rainbow-m-bottom_small"
     >
-        <div className="rainbow-flex_column rainbow-align-content_space-between">
+        <div style={columnStyles}>
             <CustomText>
                 Organization
             </CustomText>
@@ -377,19 +328,18 @@ const avatars = [
                 Nexxtway
             </CustomText>
         </div>
-        <div className="rainbow-flex_column rainbow-align-content_space-between">
+        <div style={columnStyles}>
             <CustomText>
                 Members
             </CustomText>
             <AvatarGroup
-                className="rainbow-m-horizontal_medium"
                 avatars={avatars}
                 maxAvatars={3}
                 showCounter={true}
                 size='small'
             />
         </div>
-        <div className="rainbow-flex_column rainbow-align-content_space-between">
+        <div style={columnStyles}>
             <CustomText>
                 Localization
             </CustomText>
@@ -400,7 +350,7 @@ const avatars = [
                 Miami, FL
             </CustomText>
         </div>
-        <div className="rainbow-flex_column rainbow-align-content_space-between">
+        <div style={columnStyles}>
             <CustomText>
                 Earnings
             </CustomText>
@@ -413,9 +363,9 @@ const avatars = [
         </div>
     </Card>
     <Card
-        className="rainbow-p-around_small rainbow-align-content_space-between rainbow-m-bottom_small"
+        className="rainbow-p-vertical_small rainbow-p-horizontal_large rainbow-flex rainbow-justify_space-around rainbow-m-bottom_small"
     >
-        <div className="rainbow-flex_column rainbow-align-content_space-between">
+        <div style={columnStyles}>
             <CustomText>
                 Organization
             </CustomText>
@@ -426,18 +376,17 @@ const avatars = [
                 Rainbow
             </CustomText>
         </div>
-        <div className="rainbow-flex_column rainbow-align-content_space-between">
+        <div style={columnStyles}>
             <CustomText>
                 Members
             </CustomText>
             <AvatarGroup
-                className="rainbow-m-horizontal_medium"
                 avatars={avatars}
                 maxAvatars={4}
                 size='small'
             />
         </div>
-        <div className="rainbow-flex_column rainbow-align-content_space-between">
+        <div style={columnStyles}>
             <CustomText>
                 Localization
             </CustomText>
@@ -448,7 +397,7 @@ const avatars = [
                 Miami, FL
             </CustomText>
         </div>
-        <div className="rainbow-flex_column rainbow-align-content_space-between">
+        <div style={columnStyles}>
             <CustomText>
                 Earnings
             </CustomText>
@@ -461,9 +410,9 @@ const avatars = [
         </div>
     </Card>
     <Card
-        className="rainbow-p-around_small rainbow-align-content_space-between"
+        className="rainbow-p-vertical_small rainbow-p-horizontal_large rainbow-flex rainbow-justify_space-around"
     >
-        <div className="rainbow-flex_column rainbow-align-content_space-between">
+        <div style={columnStyles}>
             <CustomText>
                 Organization
             </CustomText>
@@ -474,18 +423,17 @@ const avatars = [
                 OpenSource
             </CustomText>
         </div>
-        <div className="rainbow-flex_column rainbow-align-content_space-between">
+        <div style={columnStyles}>
             <CustomText>
                 Members
             </CustomText>
             <AvatarGroup
-                className="rainbow-m-horizontal_medium"
                 avatars={avatars}
                 maxAvatars={2}
                 size='small'
             />
         </div>
-        <div className="rainbow-flex_column rainbow-align-content_space-between">
+        <div style={columnStyles}>
             <CustomText>
                 Localization
             </CustomText>
@@ -496,7 +444,7 @@ const avatars = [
                 world-wide
             </CustomText>
         </div>
-        <div className="rainbow-flex_column rainbow-align-content_space-between">
+        <div style={columnStyles}>
             <CustomText>
                 Earnings
             </CustomText>
