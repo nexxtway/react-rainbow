@@ -199,56 +199,6 @@ const CardExampleData2 = [
 </div>
 ```
 
-##### fallback user initials inverse
-
-```js
-import React from 'react';
-import { AvatarGroup } from 'react-rainbow-components';
-
-const avatarContainerStyles = {
-    borderRadius: '0 0 0.875rem 0.875rem',
-};
-
-const avatars = [
-    {
-        initials:"JL",
-        assistiveText:"Jose Leandro",
-        title:"Jose Leandro",
-    },
-    {
-        initials:"TL",
-        assistiveText:"Tahimi Leon",
-        title:"Tahimi Leon",
-    },
-    {
-        initials:"CM",
-        assistiveText:"Carlos Miguel",
-        title:"Carlos Miguel",
-    },
-    {
-        initials:"JD",
-        assistiveText:"Jane Doe",
-        title:"Jane Doe",
-    },
-];
-
-<div className="rainbow-p-vertical_large rainbow-p-left_medium rainbow-flex_column rainbow-align_center rainbow-background-color_dark-1">
-    <AvatarGroup
-        className="rainbow-m-horizontal_medium"
-        avatars={avatars}
-        maxAvatars={4}
-        style={avatarContainerStyles}
-    />
-    <AvatarGroup
-        className="rainbow-m-horizontal_medium"
-        avatars={avatars}
-        maxAvatars={3}
-        style={avatarContainerStyles}
-        showCounter={true}
-    />
-</div>
-```
-
 ##### photo-url sizes
 
 ```js
@@ -492,7 +442,6 @@ const CardExampleData = [
         Organization: 'Nexxtway',
         Members: (
             <AvatarGroup
-                className="rainbow-m-horizontal_medium"
                 avatars={avatars}
                 maxAvatars={3}
                 showCounter={true}
@@ -506,7 +455,6 @@ const CardExampleData = [
         Organization: 'Rainbow',
         Members: (
             <AvatarGroup
-                className="rainbow-m-horizontal_medium"
                 avatars={avatars}
                 maxAvatars={4}
                 size='small'
@@ -519,7 +467,6 @@ const CardExampleData = [
         Organization: 'OpenSource',
         Members: (
             <AvatarGroup
-                className="rainbow-m-horizontal_medium"
                 avatars={avatars}
                 maxAvatars={2}
                 size='small'
