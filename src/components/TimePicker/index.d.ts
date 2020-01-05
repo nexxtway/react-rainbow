@@ -21,6 +21,7 @@ export interface TimePickerProps extends BaseProps {
     onFocus?: (value: string) => void;
     onBlur?: (value: string) => void;
     id?: string;
+    hour24?: boolean;
 }
 
 declare const TimePicker: ComponentType<TimePickerProps>;
