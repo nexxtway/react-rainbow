@@ -12,7 +12,7 @@ export default function AvatarGroup(props) {
     const { size, className, style, avatars, maxAvatars, showCounter } = props;
 
     return (
-        <StyledContainer className={className} style={style}>
+        <StyledContainer className={className} style={style} size={size}>
             <RenderIf isTrue={showCounter}>
                 <Counter size={size} avatars={avatars} maxAvatars={maxAvatars} />
             </RenderIf>

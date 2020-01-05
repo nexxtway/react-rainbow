@@ -1,10 +1,45 @@
-##### photo-url
+##### AvatarGroup types
 
 ```js
 import React from 'react';
-import { AvatarGroup } from 'react-rainbow-components';
+import { AvatarGroup, Card } from 'react-rainbow-components';
+import styled from 'styled-components';
 
-const avatars = [
+const CustomText = styled.h1.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: #a4a7b5;
+    font-size: 14px;
+    ${props =>
+        props.custom &&
+        `
+            font-size: 18px;
+            font-weight: 900;
+
+        `};
+    ${props =>
+        props.variant === 'brand' &&
+        `
+            color: ${props.brand.main};
+        `};
+    ${props =>
+        props.variant === 'success' &&
+        `
+            color: ${props.success.main};
+        `};
+    ${props =>
+        props.variant === 'warning' &&
+        `
+            color: ${props.warning.main};
+        `};
+    ${props =>
+        props.variant === 'error' &&
+        `
+            color: ${props.error.main};
+        `};
+`;
+
+const avatarsUrl = [
     {
         src:"images/user/user1.jpg",
         assistiveText:"Jose Leandro",
@@ -27,28 +62,7 @@ const avatars = [
     },
 ];
 
-<div className="rainbow-p-vertical_large rainbow-p-left_medium rainbow-flex_column rainbow-align_center">
-    <AvatarGroup
-        className="rainbow-m-horizontal_medium"
-        avatars={avatars}
-        maxAvatars={4}
-    />
-    <AvatarGroup
-        className="rainbow-m-horizontal_medium"
-        avatars={avatars}
-        maxAvatars={3}
-        showCounter={true}
-    />
-</div>
-```
-
-##### fallback user initials
-
-```js
-import React from 'react';
-import { AvatarGroup } from 'react-rainbow-components';
-
-const avatars = [
+const avatarsInitials = [
     {
         initials:"JL",
         assistiveText:"Jose Leandro",
@@ -71,30 +85,9 @@ const avatars = [
     },
 ];
 
-<div className="rainbow-p-vertical_large rainbow-p-left_medium rainbow-flex_column rainbow-align_center">
-    <AvatarGroup
-        className="rainbow-m-horizontal_medium"
-        avatars={avatars}
-        maxAvatars={4}
-    />
-    <AvatarGroup
-        className="rainbow-m-horizontal_medium"
-        avatars={avatars}
-        maxAvatars={3}
-        showCounter={true}
-    />
-</div>
-```
-
-##### fallback user icon
-
-```js
-import React from 'react';
-import { AvatarGroup } from 'react-rainbow-components';
-
 const icon = <img src="icons/user.svg" alt="icon" />;
 
-const avatars = [
+const avatarsIcon = [
     {
         icon,
         assistiveText:"Jose Leandro",
@@ -117,17 +110,91 @@ const avatars = [
     },
 ];
 
-<div className="rainbow-p-vertical_large rainbow-p-left_medium rainbow-flex_column rainbow-align_center">
-    <AvatarGroup
-        className="rainbow-m-horizontal_medium"
-        avatars={avatars}
-        maxAvatars={4}
+const CardExample = props => {
+    const { data } = props;
+
+    const innerObjects = data.map((innerData, idx) => {
+        const key = `avatargroup-example-${idx}`;
+        return (
+                <div 
+                    className="rainbow-flex_column rainbow-align-content_space-between"
+                    key={key}
+                >
+                    {innerData}
+                </div>
+        );
+    });
+
+    return (
+        <Card
+            className="rainbow-p-around_small rainbow-align-content_space-between rainbow-m-bottom_small"
+        >
+            {innerObjects}
+        </Card>
+    );
+}
+
+const CardExampleData1 = [
+    (
+        <React.Fragment>
+            <CustomText>
+                photo-url
+            </CustomText>
+            <AvatarGroup
+                className="rainbow-m-horizontal_medium"
+                avatars={avatarsUrl}
+                maxAvatars={4}
+            />
+        </React.Fragment>
+    ),
+    (
+        <React.Fragment>
+            <CustomText>
+                fallback user initials
+            </CustomText>
+            <AvatarGroup
+                className="rainbow-m-horizontal_medium"
+                avatars={avatarsInitials}
+                maxAvatars={4}
+            />
+        </React.Fragment>
+    ),
+];
+
+const CardExampleData2 = [
+    (
+        <React.Fragment>
+            <CustomText>
+                fallback user icon
+            </CustomText>
+            <AvatarGroup
+                className="rainbow-m-horizontal_medium"
+                avatars={avatarsIcon}
+                maxAvatars={4}
+            />
+        </React.Fragment>
+    ),
+    (
+        <React.Fragment>
+            <CustomText>
+                counter
+            </CustomText>
+            <AvatarGroup
+                className="rainbow-m-horizontal_medium"
+                avatars={avatarsUrl}
+                maxAvatars={3}
+                showCounter={true}
+            />
+        </React.Fragment>
+    ),
+];
+
+<div className="rainbow-m-around_large">
+    <CardExample
+        data={CardExampleData1}
     />
-    <AvatarGroup
-        className="rainbow-m-horizontal_medium"
-        avatars={avatars}
-        maxAvatars={3}
-        showCounter={true}
+    <CardExample
+        data={CardExampleData2}
     />
 </div>
 ```
@@ -189,7 +256,7 @@ import React from 'react';
 import { AvatarGroup, Card } from 'react-rainbow-components';
 import styled from 'styled-components';
 
-const CustomText = styled.span.attrs(props => {
+const CustomText = styled.h1.attrs(props => {
     return props.theme.rainbow.palette;
 })`
     color: #a4a7b5;
@@ -246,55 +313,49 @@ const avatars = [
     },
 ];
 
+const CardExample = props => {
+    const { data } = props;
+
+    const innerObjects = data.map((size, idx) => {
+        const key = `avatargroup-example-sizes-${idx}`;
+        return (
+                <div 
+                    className="rainbow-flex_column rainbow-align-content_space-between rainbow-m-bottom_small"
+                    key={key}
+                >
+                    <CustomText>
+                        {size}
+                    </CustomText>
+                    <AvatarGroup
+                        className="rainbow-m-horizontal_medium"
+                        avatars={avatars}
+                        maxAvatars={4}
+                        size={size}
+                    />
+                </div>
+        );
+    });
+
+    return (
+        <Card
+            className="rainbow-p-around_small"
+        >
+            {innerObjects}
+        </Card>
+    );
+}
+
+const CardExampleData = [
+    "x-small",
+    "small",
+    "medium",
+    "large",
+];
+
 <div className="rainbow-m-around_large">
-    <Card
-        className="rainbow-p-around_small"
-    >
-        <div className="rainbow-flex_column rainbow-align-content_space-between rainbow-m-bottom_small">
-            <CustomText>
-                x-small
-            </CustomText>
-            <AvatarGroup
-                className="rainbow-m-horizontal_medium"
-                avatars={avatars}
-                maxAvatars={4}
-                size="x-small"
-            />
-        </div>
-        <div className="rainbow-flex_column rainbow-align-content_space-between rainbow-m-bottom_small">
-            <CustomText>
-                small
-            </CustomText>
-            <AvatarGroup
-                className="rainbow-m-horizontal_medium"
-                avatars={avatars}
-                maxAvatars={4}
-                size="small"
-            />
-        </div>
-        <div className="rainbow-flex_column rainbow-align-content_space-between rainbow-m-bottom_small">
-            <CustomText>
-                medium
-            </CustomText>
-            <AvatarGroup
-                className="rainbow-m-horizontal_medium"
-                avatars={avatars}
-                maxAvatars={4}
-                size="medium"
-            />
-        </div>
-        <div className="rainbow-flex_column rainbow-align-content_space-between rainbow-m-bottom_small">
-            <CustomText>
-                large
-            </CustomText>
-            <AvatarGroup
-                className="rainbow-m-horizontal_medium"
-                avatars={avatars}
-                maxAvatars={4}
-                size="large"
-            />
-        </div>
-    </Card>
+    <CardExample
+        data={CardExampleData}
+    />
 </div>
 ```
 
@@ -305,7 +366,7 @@ import React from 'react';
 import { AvatarGroup, Card } from 'react-rainbow-components';
 import styled from 'styled-components';
 
-const CustomText = styled.span.attrs(props => {
+const CustomText = styled.h1.attrs(props => {
     return props.theme.rainbow.palette;
 })`
     color: #a4a7b5;
@@ -362,25 +423,74 @@ const avatars = [
     },
 ];
 
-<div className="rainbow-m-around_large">
-    <Card
-        className="rainbow-p-around_small rainbow-align-content_space-between rainbow-m-bottom_small"
-    >
-        <div className="rainbow-flex_column rainbow-align-content_space-between">
-            <CustomText>
-                Organization
-            </CustomText>
+const CardColumn = props => {
+    const { header, data } = props;
+
+    let columnData = data;
+    
+    if (['Organization', 'Localization', 'Earnings'].includes(header)) {
+        columnData = (
             <CustomText
                 custom
                 variant="brand"
             >
-                Nexxtway
+                {data}
             </CustomText>
-        </div>
-        <div className="rainbow-flex_column rainbow-align-content_space-between">
-            <CustomText>
-                Members
-            </CustomText>
+        );
+    };
+
+    return (
+            <div 
+                className="rainbow-flex_column rainbow-align-content_space-between"
+            >
+                <CustomText>
+                    {header}
+                </CustomText>
+                {columnData}
+            </div>
+    );
+}
+
+const CardExample = props => {
+    const { data } = props;
+
+    const innerObjects = data.map((innerData, idx) => {
+        const key = `avatargroup-example-report-${idx}`;
+        const columns = Object.entries(innerData);
+        const column = columns.map((col, i) => {
+            const colKey = `avatargroup-column-${i}`;
+            const colHeader = col[0];
+            let colData = col[1];
+            
+            return (
+                <CardColumn 
+                    header={colHeader}
+                    data={colData}
+                    key={colKey}
+                />
+            );
+        });
+        return (
+            <Card
+                className="rainbow-p-around_small rainbow-align-content_space-between rainbow-m-bottom_small"
+                key={key}
+            >
+                {column}
+            </Card>
+        );
+    });
+
+    return (     
+        <React.Fragment>
+            {innerObjects}     
+        </React.Fragment>
+    );
+}
+
+const CardExampleData = [
+    {
+        Organization: 'Nexxtway',
+        Members: (
             <AvatarGroup
                 className="rainbow-m-horizontal_medium"
                 avatars={avatars}
@@ -388,125 +498,41 @@ const avatars = [
                 showCounter={true}
                 size='small'
             />
-        </div>
-        <div className="rainbow-flex_column rainbow-align-content_space-between">
-            <CustomText>
-                Localization
-            </CustomText>
-            <CustomText
-                custom
-                variant="brand"
-            >
-                Miami, FL
-            </CustomText>
-        </div>
-        <div className="rainbow-flex_column rainbow-align-content_space-between">
-            <CustomText>
-                Earnings
-            </CustomText>
-            <CustomText
-                custom
-                variant="brand"
-            >
-                $120M
-            </CustomText>
-        </div>
-    </Card>
-    <Card
-        className="rainbow-p-around_small rainbow-align-content_space-between rainbow-m-bottom_small"
-    >
-        <div className="rainbow-flex_column rainbow-align-content_space-between">
-            <CustomText>
-                Organization
-            </CustomText>
-            <CustomText
-                custom
-                variant="brand"
-            >
-                Rainbow
-            </CustomText>
-        </div>
-        <div className="rainbow-flex_column rainbow-align-content_space-between">
-            <CustomText>
-                Members
-            </CustomText>
+        ),
+        Localization: 'Miami, FL',
+        Earnings: '$120M',
+    },
+    {
+        Organization: 'Rainbow',
+        Members: (
             <AvatarGroup
                 className="rainbow-m-horizontal_medium"
                 avatars={avatars}
                 maxAvatars={4}
                 size='small'
             />
-        </div>
-        <div className="rainbow-flex_column rainbow-align-content_space-between">
-            <CustomText>
-                Localization
-            </CustomText>
-            <CustomText
-                custom
-                variant="brand"
-            >
-                Miami, FL
-            </CustomText>
-        </div>
-        <div className="rainbow-flex_column rainbow-align-content_space-between">
-            <CustomText>
-                Earnings
-            </CustomText>
-            <CustomText
-                custom
-                variant="brand"
-            >
-                $66M
-            </CustomText>
-        </div>
-    </Card>
-    <Card
-        className="rainbow-p-around_small rainbow-align-content_space-between"
-    >
-        <div className="rainbow-flex_column rainbow-align-content_space-between">
-            <CustomText>
-                Organization
-            </CustomText>
-            <CustomText
-                custom
-                variant="brand"
-            >
-                OpenSource
-            </CustomText>
-        </div>
-        <div className="rainbow-flex_column rainbow-align-content_space-between">
-            <CustomText>
-                Members
-            </CustomText>
+        ),
+        Localization: 'Miami, FL',
+        Earnings: '$66M',
+    },
+    {
+        Organization: 'OpenSource',
+        Members: (
             <AvatarGroup
                 className="rainbow-m-horizontal_medium"
                 avatars={avatars}
                 maxAvatars={2}
                 size='small'
             />
-        </div>
-        <div className="rainbow-flex_column rainbow-align-content_space-between">
-            <CustomText>
-                Localization
-            </CustomText>
-            <CustomText
-                custom
-                variant="brand"
-            >
-                world-wide
-            </CustomText>
-        </div>
-        <div className="rainbow-flex_column rainbow-align-content_space-between">
-            <CustomText>
-                Earnings
-            </CustomText>
-            <CustomText
-                custom
-                variant="brand"
-            >
-                $8K
-            </CustomText>
-        </div>
-    </Card>
+        ),
+        Localization: 'world-wide',
+        Earnings: '$8K',
+    },
+];
+
+<div className="rainbow-m-around_large">
+    <CardExample
+        data={CardExampleData}
+    />
 </div>
 ```

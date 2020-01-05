@@ -9,7 +9,7 @@ export default function Counter(props) {
 
     return (
         <StyledCounter size={size}>
-            <span>{abbreviateNumber(total)}</span>
+            <h1>{abbreviateNumber(total)}</h1>
         </StyledCounter>
     );
 }
