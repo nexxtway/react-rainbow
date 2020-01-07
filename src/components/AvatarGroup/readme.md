@@ -91,7 +91,7 @@ const avatarsIcon = [
             <AvatarGroup
                 avatars={avatarsUrl}
                 maxAvatars={3}
-                showCounter={true}
+                showCounter
             />
         </div>
         <div className="rainbow-flex_column rainbow-m-around_large">

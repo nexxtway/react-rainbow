@@ -33,13 +33,13 @@ describe('darken', () => {
     const coefficient = 0.3;
 
     it('should return the right value with coefficient by default', () => {
-        colors.forEach((v, i) => {
-            expect(darken(v.main)).toBe(colors[i].dark);
+        colors.forEach((value, idx) => {
+            expect(darken(value.main)).toBe(colors[idx].dark);
         });
     });
     it('should return the right value with custom coefficient', () => {
-        colors.forEach((v, i) => {
-            expect(darken(v.main, coefficient)).toBe(colors[i].darkc);
+        colors.forEach((value, idx) => {
+            expect(darken(value.main, coefficient)).toBe(colors[idx].darkc);
         });
     });
 });

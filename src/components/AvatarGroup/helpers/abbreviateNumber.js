@@ -1,4 +1,7 @@
 export default function abbreviateNumber(number) {
+    if (!number || number < 0) {
+        throw Error('Invalid number');
+    }
     const SI_POSTFIXES = ['', 'k', 'M', 'G'];
     // eslint-disable-next-line no-bitwise
     const tier = (Math.log10(Math.abs(number)) / 3) | 0;

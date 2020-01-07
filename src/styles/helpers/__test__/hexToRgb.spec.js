@@ -14,13 +14,13 @@ describe('hexToRgb', () => {
     const EMPTY_STRING = '';
 
     it('should return the right value in rgb format', () => {
-        colors.forEach(v => {
-            expect(hexToRgb(v.hex)).toBe(v.rgb);
+        colors.forEach(value => {
+            expect(hexToRgb(value.hex)).toBe(value.rgb);
         });
     });
     it('should return an empty string when wrong color is passed', () => {
-        ['#f00000000', '#f0', 'f00000'].forEach(v => {
-            expect(hexToRgb(v)).toBe(EMPTY_STRING);
+        ['#f00000000', '#f0', 'f00000'].forEach(value => {
+            expect(hexToRgb(value)).toBe(EMPTY_STRING);
         });
     });
 });

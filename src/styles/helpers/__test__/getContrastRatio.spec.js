@@ -27,8 +27,10 @@ describe('getContrastRatio', () => {
     ];
 
     it('should return the right value', () => {
-        colors.forEach((v, i) => {
-            expect(getContrastRatio(v.foreground, v.background)).toBeCloseTo(colors[i].result);
+        colors.forEach((value, idx) => {
+            expect(getContrastRatio(value.foreground, value.background)).toBeCloseTo(
+                colors[idx].result,
+            );
         });
     });
 });

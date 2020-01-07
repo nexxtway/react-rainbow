@@ -27,11 +27,8 @@ export default function Avatars(props) {
 }
 
 Avatars.propTypes = {
-    /** Defines the size of the avatar */
     size: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
-    /** Dataset to built avatar. */
     avatars: PropTypes.array,
-    /** Specify how many Avatars will render. */
     maxAvatars: PropTypes.number,
 };
 
