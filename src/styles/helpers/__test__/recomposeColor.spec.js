@@ -15,8 +15,8 @@ describe('recomposeColor', () => {
     const EMPTY_STRING = '';
 
     it('should return the right value', () => {
-        colorsDecomposed.forEach((v, i) => {
-            expect(recomposeColor(v)).toBe(colors[i]);
+        colorsDecomposed.forEach((value, idx) => {
+            expect(recomposeColor(value)).toBe(colors[idx]);
         });
     });
     it('should return an empty string with the wrong color', () => {

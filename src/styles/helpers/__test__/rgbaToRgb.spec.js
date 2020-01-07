@@ -11,8 +11,8 @@ describe('rgbaToRgb', () => {
         expect(rgbaToRgb(color.rgba)).toBe(color.rgb);
     });
     it('should return an empty string when wrong color is passed', () => {
-        ['#f00000000', '#f0', 'f00000'].forEach(v => {
-            expect(rgbaToRgb(v)).toBe(EMPTY_STRING);
+        ['#f00000000', '#f0', 'f00000'].forEach(value => {
+            expect(rgbaToRgb(value)).toBe(EMPTY_STRING);
         });
     });
 });

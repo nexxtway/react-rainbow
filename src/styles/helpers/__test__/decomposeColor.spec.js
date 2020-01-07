@@ -10,8 +10,8 @@ describe('decomposeColor', () => {
     };
 
     it('should return an object', () => {
-        colors.forEach(v => {
-            expect(decomposeColor(v)).toStrictEqual({
+        colors.forEach(value => {
+            expect(decomposeColor(value)).toStrictEqual({
                 type: expect.any(String),
                 values: expect.any(Array),
             });
