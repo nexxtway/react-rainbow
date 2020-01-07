@@ -6,7 +6,8 @@ import RenderIf from '../RenderIf';
 import Counter from './counter';
 
 /**
- * Avatar groups are used to bunch together avatars
+ * An AvatarGroup is an element that communicates to the user
+ *  that there are many entities associated to an item.
  */
 export default function AvatarGroup(props) {
     const { size, className, style, avatars, maxAvatars, showCounter } = props;
@@ -27,17 +28,27 @@ export default function AvatarGroup(props) {
 }
 
 AvatarGroup.propTypes = {
-    /** Defines the size of the avatar */
+    /** The size of the AvatarGroup. Valid values are x-small, small, medium, and large.
+     * This value defaults to medium. */
     size: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
-    /** A CSS class for the outer element, in addition to the component's base classes. */
+    /** A CSS class for the outer element, in addition to the component’s base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
-    /** The content of the AvatarGroup. */
-    avatars: PropTypes.array,
+    /** An array with the Avatars data. */
+    avatars: PropTypes.arrayOf(
+        PropTypes.shape({
+            src: PropTypes.string,
+            initials: PropTypes.string,
+            icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+            title: PropTypes.string,
+            assistiveText: PropTypes.string,
+        }),
+    ),
     /** Specify how many Avatars will render. */
     maxAvatars: PropTypes.number,
-    /** An object with custom style applied to the outer element. */
+    /** This shows a counter with the total value of the number of avatars.
+     * It is independent of the number of avatars displayed in the component. */
     showCounter: PropTypes.bool,
 };
 
