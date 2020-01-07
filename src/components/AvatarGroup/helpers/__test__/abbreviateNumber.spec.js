@@ -90,9 +90,9 @@ describe('abbreviateNumber', () => {
             expect(abbreviateNumber(number.value)).toBe(number.result);
         });
     });
-    it('should throw an error with invalid numbers', () => {
+    it('should return an empty string with invalid numbers', () => {
         [null, undefined, '', -5].forEach(number => {
-            expect(() => abbreviateNumber(number)).toThrow(Error);
+            expect(abbreviateNumber(number)).toBe('');
         });
     });
 });

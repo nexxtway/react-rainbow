@@ -1,6 +1,8 @@
 export default function abbreviateNumber(number) {
     if (!number || number < 0) {
-        throw Error('Invalid number');
+        // eslint-disable-next-line no-console
+        console.error('Invalid number');
+        return '';
     }
     const SI_POSTFIXES = ['', 'k', 'M', 'G'];
     // eslint-disable-next-line no-bitwise

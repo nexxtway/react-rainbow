@@ -3,11 +3,6 @@ import { mount } from 'enzyme';
 import AvatarGroup from '../';
 import RenderIf from '../../RenderIf';
 
-jest.mock('../../RenderIf', () => () =>
-    // eslint-disable-next-line no-shadow
-    RenderIf => props => <RenderIf {...props} />,
-);
-
 describe('<AvatarGroup />', () => {
     const avatars = [
         {

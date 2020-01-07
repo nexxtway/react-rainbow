@@ -28,7 +28,7 @@ describe('<Counter />', () => {
         },
     ];
 
-    it('should call abbreviateNumber with the total of avatars and should render that number in the text', () => {
+    it('should render the right total number of avatars', () => {
         const component = mount(<Counter avatars={avatars} />);
         expect(component.find(Counter).text()).toBe('4k');
     });
