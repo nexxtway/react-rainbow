@@ -4,7 +4,7 @@ import getTheme from '../../../styles/helpers/getTheme';
 const StyledContainer = styled.span.attrs(props => {
     const theme = getTheme(props);
     const { getContrastText, brand } = theme.palette;
-    const brandMainColor = brand.main;
+    const brandMainColor = props.color ? props.color : brand.main;
 
     return {
         brandMainColor,

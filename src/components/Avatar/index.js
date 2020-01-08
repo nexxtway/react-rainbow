@@ -3,15 +3,18 @@ import PropTypes from 'prop-types';
 import AvatarContent from './avatarContent';
 import AssistiveText from './../AssistiveText';
 import StyledContainer from './styled/container';
+import { validateColor } from '../../styles/helpers/color';
 
 /**
  * An avatar component represents an object or entity
  */
 export default function Avatar(props) {
-    const { className, style, size, assistiveText, ...rest } = props;
+    const { className, style, size, assistiveText, color, ...rest } = props;
+
+    const validatedColor = validateColor(color);
 
     return (
-        <StyledContainer className={className} style={style} size={size}>
+        <StyledContainer className={className} style={style} size={size} color={validatedColor}>
             <AvatarContent {...rest} assistiveText={assistiveText} />
             <AssistiveText text={assistiveText} />
         </StyledContainer>
@@ -42,6 +45,8 @@ Avatar.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** A valid color. */
+    color: PropTypes.string,
 };
 
 Avatar.defaultProps = {
@@ -54,4 +59,5 @@ Avatar.defaultProps = {
     assistiveText: undefined,
     className: undefined,
     style: undefined,
+    color: '',
 };
