@@ -65,7 +65,7 @@ import { Avatar } from 'react-rainbow-components';
             assistiveText="Jane Doe"
             initials="JD"
             title="Jane Doe"
-            color="#f00"
+            backgroundColor="#f00"
         />
     </div>
 </div>
