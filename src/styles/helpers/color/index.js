@@ -10,3 +10,4 @@ export { default as lighten } from './lighten';
 export { default as getLuminance } from './getLuminance';
 export { default as getContrastRatio } from './getContrastRatio';
 export { default as getContrastText } from './getContrastText';
+export { default as isValidColor } from './isValidColor';

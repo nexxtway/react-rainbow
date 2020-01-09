@@ -8,10 +8,15 @@ import StyledContainer from './styled/container';
  * An avatar component represents an object or entity
  */
 export default function Avatar(props) {
-    const { className, style, size, assistiveText, ...rest } = props;
+    const { className, style, size, assistiveText, backgroundColor, ...rest } = props;
 
     return (
-        <StyledContainer className={className} style={style} size={size}>
+        <StyledContainer
+            className={className}
+            style={style}
+            size={size}
+            backgroundColor={backgroundColor}
+        >
             <AvatarContent {...rest} assistiveText={assistiveText} />
             <AssistiveText text={assistiveText} />
         </StyledContainer>
@@ -42,6 +47,8 @@ Avatar.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** A valid background color to customize the avatar. */
+    backgroundColor: PropTypes.string,
 };
 
 Avatar.defaultProps = {
@@ -54,4 +61,5 @@ Avatar.defaultProps = {
     assistiveText: undefined,
     className: undefined,
     style: undefined,
+    backgroundColor: '',
 };
