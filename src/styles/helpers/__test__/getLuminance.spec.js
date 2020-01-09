@@ -26,8 +26,8 @@ describe('getLuminance', () => {
     ];
 
     it('should return the right value', () => {
-        colors.forEach((v, i) => {
-            expect(getLuminance(v.main)).toBeCloseTo(colors[i].luminance);
+        colors.forEach((value, idx) => {
+            expect(getLuminance(value.main)).toBeCloseTo(colors[idx].luminance);
         });
     });
 });

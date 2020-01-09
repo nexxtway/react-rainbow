@@ -42,7 +42,7 @@ const mockColors = [
 ];
 
 jest.mock('../color/getContrastRatio', () => background =>
-    mockColors.filter(v => v.background === background).shift().ratio,
+    mockColors.find(color => color.background === background).ratio,
 );
 jest.mock('../color/darken', () => color => {
     if (color === '#01b6f5') {
@@ -53,8 +53,8 @@ jest.mock('../color/darken', () => color => {
 
 describe('getContrastText', () => {
     it('should return the right value', () => {
-        mockColors.forEach((v, i) => {
-            expect(getContrastText(v.background)).toBe(mockColors[i].result);
+        mockColors.forEach((value, idx) => {
+            expect(getContrastText(value.background)).toBe(mockColors[idx].result);
         });
     });
     it('should return an error without background', () => {
