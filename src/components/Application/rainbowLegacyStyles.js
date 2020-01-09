@@ -1,71 +1,131 @@
+import LatoBlackEot from './fonts/Lato-Black/Lato-Black.eot';
+import LatoBlackSvg from './fonts/Lato-Black/Lato-Black.svg';
+import LatoBlackTtf from './fonts/Lato-Black/Lato-Black.ttf';
+import LatoBlackWoff from './fonts/Lato-Black/Lato-Black.woff';
+import LatoBlackWoff2 from './fonts/Lato-Black/Lato-Black.woff2';
+
+import LatoBlackItalicEot from './fonts/Lato-BlackItalic/Lato-BlackItalic.eot';
+import LatoBlackItalicSvg from './fonts/Lato-BlackItalic/Lato-BlackItalic.svg';
+import LatoBlackItalicTtf from './fonts/Lato-BlackItalic/Lato-BlackItalic.ttf';
+import LatoBlackItalicWoff from './fonts/Lato-BlackItalic/Lato-BlackItalic.woff';
+import LatoBlackItalicWoff2 from './fonts/Lato-BlackItalic/Lato-BlackItalic.woff2';
+
+import LatoBoldEot from './fonts/Lato-Bold/Lato-Bold.eot';
+import LatoBoldSvg from './fonts/Lato-Bold/Lato-Bold.svg';
+import LatoBoldTtf from './fonts/Lato-Bold/Lato-Bold.ttf';
+import LatoBoldWoff from './fonts/Lato-Bold/Lato-Bold.woff';
+import LatoBoldWoff2 from './fonts/Lato-Bold/Lato-Bold.woff2';
+
+import LatoBoldItalicEot from './fonts/Lato-BoldItalic/Lato-BoldItalic.eot';
+import LatoBoldItalicSvg from './fonts/Lato-BoldItalic/Lato-BoldItalic.svg';
+import LatoBoldItalicTtf from './fonts/Lato-BoldItalic/Lato-BoldItalic.ttf';
+import LatoBoldItalicWoff from './fonts/Lato-BoldItalic/Lato-BoldItalic.woff';
+import LatoBoldItalicWoff2 from './fonts/Lato-BoldItalic/Lato-BoldItalic.woff2';
+
+import LatoHairlineEot from './fonts/Lato-Hairline/Lato-Hairline.eot';
+import LatoHairlineSvg from './fonts/Lato-Hairline/Lato-Hairline.svg';
+import LatoHairlineTtf from './fonts/Lato-Hairline/Lato-Hairline.ttf';
+import LatoHairlineWoff from './fonts/Lato-Hairline/Lato-Hairline.woff';
+import LatoHairlineWoff2 from './fonts/Lato-Hairline/Lato-Hairline.woff2';
+
+import LatoHairlineItalicEot from './fonts/Lato-HairlineItalic/Lato-HairlineItalic.eot';
+import LatoHairlineItalicSvg from './fonts/Lato-HairlineItalic/Lato-HairlineItalic.svg';
+import LatoHairlineItalicTtf from './fonts/Lato-HairlineItalic/Lato-HairlineItalic.ttf';
+import LatoHairlineItalicWoff from './fonts/Lato-HairlineItalic/Lato-HairlineItalic.woff';
+import LatoHairlineItalicWoff2 from './fonts/Lato-HairlineItalic/Lato-HairlineItalic.woff2';
+
+import LatoItalicEot from './fonts/Lato-Italic/Lato-Italic.eot';
+import LatoItalicSvg from './fonts/Lato-Italic/Lato-Italic.svg';
+import LatoItalicTtf from './fonts/Lato-Italic/Lato-Italic.ttf';
+import LatoItalicWoff from './fonts/Lato-Italic/Lato-Italic.woff';
+import LatoItalicWoff2 from './fonts/Lato-Italic/Lato-Italic.woff2';
+
+import LatoLightEot from './fonts/Lato-Light/Lato-Light.eot';
+import LatoLightSvg from './fonts/Lato-Light/Lato-Light.svg';
+import LatoLightTtf from './fonts/Lato-Light/Lato-Light.ttf';
+import LatoLightWoff from './fonts/Lato-Light/Lato-Light.woff';
+import LatoLightWoff2 from './fonts/Lato-Light/Lato-Light.woff2';
+
+import LatoLightItalicEot from './fonts/Lato-LightItalic/Lato-LightItalic.eot';
+import LatoLightItalicSvg from './fonts/Lato-LightItalic/Lato-LightItalic.svg';
+import LatoLightItalicTtf from './fonts/Lato-LightItalic/Lato-LightItalic.ttf';
+import LatoLightItalicWoff from './fonts/Lato-LightItalic/Lato-LightItalic.woff';
+import LatoLightItalicWoff2 from './fonts/Lato-LightItalic/Lato-LightItalic.woff2';
+
+import LatoRegularEot from './fonts/Lato-Regular/Lato-Regular.eot';
+import LatoRegularSvg from './fonts/Lato-Regular/Lato-Regular.svg';
+import LatoRegularTtf from './fonts/Lato-Regular/Lato-Regular.ttf';
+import LatoRegularWoff from './fonts/Lato-Regular/Lato-Regular.woff';
+import LatoRegularWoff2 from './fonts/Lato-Regular/Lato-Regular.woff2';
+
 export default `
 @font-face {
     font-family: 'Lato Black';
-    src: url("../fonts/Lato-Black/Lato-Black.eot");
-    src: url("../fonts/Lato-Black/Lato-Black.woff2") format("woff2"), url("../fonts/Lato-Black/Lato-Black.woff") format("woff"), url("../fonts/Lato-Black/Lato-Black.ttf") format("truetype"), url("../fonts/Lato-Black/Lato-Black.svg#Lato-Black") format("svg"), url("../fonts/Lato-Black/Lato-Black.eot?#iefix") format("embedded-opentype");
+    src: url(${LatoBlackEot});
+    src: url(${LatoBlackWoff2}) format("woff2"), url(${LatoBlackWoff}) format("woff"), url(${LatoBlackTtf}) format("truetype"), url("${LatoBlackSvg}#Lato-Black") format("svg"), url("${LatoBlackEot}?#iefix") format("embedded-opentype");
     font-weight: normal;
     font-style: normal; }
   
   @font-face {
     font-family: 'Lato Black Italic';
-    src: url("../fonts/Lato-BlackItalic/Lato-BlackItalic.eot");
-    src: url("../fonts/Lato-BlackItalic/Lato-BlackItalic.woff2") format("woff2"), url("../fonts/Lato-BlackItalic/Lato-BlackItalic.woff") format("woff"), url("../fonts/Lato-BlackItalic/Lato-BlackItalic.ttf") format("truetype"), url("../fonts/Lato-BlackItalic/Lato-BlackItalic.svg#Lato-BlackItalic") format("svg"), url("../fonts/Lato-BlackItalic/Lato-BlackItalic.eot?#iefix") format("embedded-opentype");
+    src: url(${LatoBlackItalicEot});
+    src: url(${LatoBlackItalicWoff2}) format("woff2"), url(${LatoBlackItalicWoff}) format("woff"), url(${LatoBlackItalicTtf}) format("truetype"), url("${LatoBlackItalicSvg}#Lato-BlackItalic") format("svg"), url("${LatoBlackItalicEot}?#iefix") format("embedded-opentype");
     font-weight: normal;
     font-style: normal; }
   
   @font-face {
     font-family: 'Lato Bold';
-    src: url("../fonts/Lato-Bold/Lato-Bold.eot");
-    src: url("../fonts/Lato-Bold/Lato-Bold.woff2") format("woff2"), url("../fonts/Lato-Bold/Lato-Bold.woff") format("woff"), url("../fonts/Lato-Bold/Lato-Bold.ttf") format("truetype"), url("../fonts/Lato-Bold/Lato-Bold.svg#Lato-Bold") format("svg"), url("../fonts/Lato-Bold/Lato-Bold.eot?#iefix") format("embedded-opentype");
+    src: url(${LatoBoldEot});
+    src: url(${LatoBoldWoff2}) format("woff2"), url(${LatoBoldWoff}) format("woff"), url(${LatoBoldTtf}) format("truetype"), url("${LatoBoldSvg}#Lato-Bold") format("svg"), url("${LatoBoldEot}?#iefix") format("embedded-opentype");
     font-weight: normal;
     font-style: normal; }
   
   @font-face {
     font-family: 'Lato Bold Italic';
-    src: url("../fonts/Lato-BoldItalic/Lato-BoldItalic.eot");
-    src: url("../fonts/Lato-BoldItalic/Lato-BoldItalic.woff2") format("woff2"), url("../fonts/Lato-BoldItalic/Lato-BoldItalic.woff") format("woff"), url("../fonts/Lato-BoldItalic/Lato-BoldItalic.ttf") format("truetype"), url("../fonts/Lato-BoldItalic/Lato-BoldItalic.svg#Lato-BoldItalic") format("svg"), url("../fonts/Lato-BoldItalic/Lato-BoldItalic.eot?#iefix") format("embedded-opentype");
+    src: url(${LatoBoldItalicEot});
+    src: url(${LatoBoldItalicWoff2}) format("woff2"), url(${LatoBoldItalicWoff}) format("woff"), url(${LatoBoldItalicTtf}) format("truetype"), url("${LatoBoldItalicSvg}#Lato-BoldItalic") format("svg"), url("${LatoBoldItalicEot}?#iefix") format("embedded-opentype");
     font-weight: normal;
     font-style: normal; }
   
   @font-face {
     font-family: 'Lato Hairline';
-    src: url("../fonts/Lato-Hairline/Lato-Hairline.eot");
-    src: url("../fonts/Lato-Hairline/Lato-Hairline.woff2") format("woff2"), url("../fonts/Lato-Hairline/Lato-Hairline.woff") format("woff"), url("../fonts/Lato-Hairline/Lato-Hairline.ttf") format("truetype"), url("../fonts/Lato-Hairline/Lato-Hairline.svg#Lato-Hairline") format("svg"), url("../fonts/Lato-Hairline/Lato-Hairline.eot?#iefix") format("embedded-opentype");
+    src: url(${LatoHairlineEot});
+    src: url(${LatoHairlineWoff2}) format("woff2"), url(${LatoHairlineWoff}) format("woff"), url(${LatoHairlineTtf}) format("truetype"), url("${LatoHairlineSvg}#Lato-Hairline") format("svg"), url("${LatoHairlineEot}?#iefix") format("embedded-opentype");
     font-weight: normal;
     font-style: normal; }
   
   @font-face {
     font-family: 'Lato Hairline Italic';
-    src: url("../fonts/Lato-HairlineItalic/Lato-HairlineItalic.eot");
-    src: url("../fonts/Lato-HairlineItalic/Lato-HairlineItalic.woff2") format("woff2"), url("../fonts/Lato-HairlineItalic/Lato-HairlineItalic.woff") format("woff"), url("../fonts/Lato-HairlineItalic/Lato-HairlineItalic.ttf") format("truetype"), url("../fonts/Lato-HairlineItalic/Lato-HairlineItalic.svg#Lato-HairlineItalic") format("svg"), url("../fonts/Lato-HairlineItalic/Lato-HairlineItalic.eot?#iefix") format("embedded-opentype");
+    src: url(${LatoHairlineItalicEot});
+    src: url(${LatoHairlineItalicWoff2}) format("woff2"), url(${LatoHairlineItalicWoff}) format("woff"), url(${LatoHairlineItalicTtf}) format("truetype"), url("${LatoHairlineItalicSvg}#Lato-HairlineItalic") format("svg"), url("${LatoHairlineItalicEot}?#iefix") format("embedded-opentype");
     font-weight: normal;
     font-style: normal; }
   
   @font-face {
     font-family: 'Lato Italic';
-    src: url("../fonts/Lato-Italic/Lato-Italic.eot");
-    src: url("../fonts/Lato-Italic/Lato-Italic.woff2") format("woff2"), url("../fonts/Lato-Italic/Lato-Italic.woff") format("woff"), url("../fonts/Lato-Italic/Lato-Italic.ttf") format("truetype"), url("../fonts/Lato-Italic/Lato-Italic.svg#Lato-Italic") format("svg"), url("../fonts/Lato-Italic/Lato-Italic.eot?#iefix") format("embedded-opentype");
+    src: url(${LatoItalicEot});
+    src: url(${LatoItalicWoff2}) format("woff2"), url(${LatoItalicWoff}) format("woff"), url(${LatoItalicTtf}) format("truetype"), url("${LatoItalicSvg}#Lato-Italic") format("svg"), url("${LatoItalicEot}?#iefix") format("embedded-opentype");
     font-weight: normal;
     font-style: normal; }
   
   @font-face {
     font-family: 'Lato Light';
-    src: url("../fonts/Lato-Light/Lato-Light.eot");
-    src: url("../fonts/Lato-Light/Lato-Light.woff2") format("woff2"), url("../fonts/Lato-Light/Lato-Light.woff") format("woff"), url("../fonts/Lato-Light/Lato-Light.ttf") format("truetype"), url("../fonts/Lato-Light/Lato-Light.svg#Lato-Light") format("svg"), url("../fonts/Lato-Light/Lato-Light.eot?#iefix") format("embedded-opentype");
+    src: url(${LatoLightEot});
+    src: url(${LatoLightWoff2}) format("woff2"), url(${LatoLightWoff}) format("woff"), url(${LatoLightTtf}) format("truetype"), url("${LatoLightSvg}#Lato-Light") format("svg"), url("${LatoLightEot}?#iefix") format("embedded-opentype");
     font-weight: normal;
     font-style: normal; }
   
   @font-face {
     font-family: 'Lato Light Italic';
-    src: url("../fonts/Lato-LightItalic/Lato-LightItalic.eot");
-    src: url("../fonts/Lato-LightItalic/Lato-LightItalic.woff2") format("woff2"), url("../fonts/Lato-LightItalic/Lato-LightItalic.woff") format("woff"), url("../fonts/Lato-LightItalic/Lato-LightItalic.ttf") format("truetype"), url("../fonts/Lato-LightItalic/Lato-LightItalic.svg#Lato-LightItalic") format("svg"), url("../fonts/Lato-LightItalic/Lato-LightItalic.eot?#iefix") format("embedded-opentype");
+    src: url(${LatoLightItalicEot});
+    src: url(${LatoLightItalicWoff2}) format("woff2"), url(${LatoLightItalicWoff}) format("woff"), url(${LatoLightItalicTtf}) format("truetype"), url("${LatoLightItalicSvg}#Lato-LightItalic") format("svg"), url("${LatoLightItalicEot}?#iefix") format("embedded-opentype");
     font-weight: normal;
     font-style: normal; }
   
   @font-face {
     font-family: 'Lato';
-    src: url("../fonts/Lato-Regular/Lato-Regular.eot");
-    src: url("../fonts/Lato-Regular/Lato-Regular.woff2") format("woff2"), url("../fonts/Lato-Regular/Lato-Regular.woff") format("woff"), url("../fonts/Lato-Regular/Lato-Regular.ttf") format("truetype"), url("../fonts/Lato-Regular/Lato-Regular.svg#Lato-Regular") format("svg"), url("../fonts/Lato-Regular/Lato-Regular.eot?#iefix") format("embedded-opentype");
+    src: url(${LatoRegularEot});
+    src: url(${LatoRegularWoff2}) format("woff2"), url(${LatoRegularWoff}) format("woff"), url(${LatoRegularTtf}) format("truetype"), url("${LatoRegularSvg}#Lato-Regular") format("svg"), url("${LatoRegularEot}?#iefix") format("embedded-opentype");
     font-weight: normal;
     font-style: normal; }
   
