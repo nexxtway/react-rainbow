@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import AvatarContent from './avatarContent';
 import AssistiveText from './../AssistiveText';
 import StyledContainer from './styled/container';
-import { validateColor } from '../../styles/helpers/color';
 
 /**
  * An avatar component represents an object or entity
@@ -11,10 +10,8 @@ import { validateColor } from '../../styles/helpers/color';
 export default function Avatar(props) {
     const { className, style, size, assistiveText, color, ...rest } = props;
 
-    const validatedColor = validateColor(color);
-
     return (
-        <StyledContainer className={className} style={style} size={size} color={validatedColor}>
+        <StyledContainer className={className} style={style} size={size} color={color}>
             <AvatarContent {...rest} assistiveText={assistiveText} />
             <AssistiveText text={assistiveText} />
         </StyledContainer>

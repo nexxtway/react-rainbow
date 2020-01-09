@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 import getTheme from '../../../styles/helpers/getTheme';
+import { validateColor } from '../../../styles/helpers/color';
 
 const StyledContainer = styled.span.attrs(props => {
     const theme = getTheme(props);
     const { getContrastText, brand } = theme.palette;
-    const brandMainColor = props.color ? props.color : brand.main;
+    const isValidColor = validateColor(props.color);
+    const brandMainColor = isValidColor ? props.color : brand.main;
 
     return {
         brandMainColor,
