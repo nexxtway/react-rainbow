@@ -42,7 +42,7 @@ const Checkbox = styled(HiddenElement).attrs(props => {
         vertical-align: middle;
         border: ${getInitialBorder};
         border-radius: ${BORDER_RADIUS_3};
-        background: ${props => props.palette.background.primary};
+        background: ${props => props.palette.background.main};
         margin-right: ${MARGIN_SMALL};
         transition: border 0.1s linear, background-color 0.1s linear;
         box-sizing: border-box;
@@ -82,13 +82,13 @@ const Checkbox = styled(HiddenElement).attrs(props => {
     }
 
     &[disabled] ~ label > .rainbow-input_faux::after {
-        border-color: ${props => props.palette.background.primary};
+        border-color: ${props => props.palette.background.main};
         box-sizing: border-box;
     }
 
     :focus:checked ~ label > .rainbow-input_faux {
         border-color: ${getColor};
-        background-color: ${props => props.palette.background.primary};
+        background-color: ${props => props.palette.background.main};
         box-shadow: ${getShadow};
     }
 `;

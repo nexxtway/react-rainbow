@@ -14,8 +14,8 @@ const StyledContainer = styled.article.attrs(props => {
     };
 })`
     position: relative;
-    background-color: ${props => props.palette.background.primary};
-    color: ${props => props.palette.text.primary};
+    background-color: ${props => props.palette.background.main};
+    color: ${props => props.palette.text.main};
     border: 0.0625rem solid ${props => props.palette.divider};
     border-radius: ${BORDER_RADIUS_1};
     background-clip: padding-box;

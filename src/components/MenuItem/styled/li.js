@@ -4,10 +4,10 @@ import getTheme from '../../../styles/helpers/getTheme';
 
 const StyledLi = styled.li.attrs(props => {
     const palette = getTheme(props).palette;
-    const textPrimaryColor = palette.text.primary;
+    const mainText = palette.text.main;
     const { hover, disabled } = palette.action;
     return {
-        textPrimaryColor,
+        mainText,
         hover,
         disabled,
     };
@@ -26,7 +26,7 @@ const StyledLi = styled.li.attrs(props => {
     justify-content: space-between;
     align-items: center;
     padding: 0.75rem 0.75rem;
-    color: ${props => props.textPrimaryColor};
+    color: ${props => props.mainText};
     white-space: nowrap;
     cursor: pointer;
     text-decoration: none;

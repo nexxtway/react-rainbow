@@ -3,10 +3,10 @@ import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 import getTheme from '../../../styles/helpers/getTheme';
 
 const Label = styled.label.attrs(props => {
-    const textSecondary = getTheme(props).palette.text.secondary;
-    return { textSecondary };
+    const secondaryText = getTheme(props).palette.text.secondary;
+    return { secondaryText };
 })`
-    color: ${props => props.textSecondary};
+    color: ${props => props.secondaryText};
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
     line-height: 1.5;
     margin-bottom: 0.125rem;

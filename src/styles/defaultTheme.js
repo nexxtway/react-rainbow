@@ -11,50 +11,6 @@ import {
 } from './colors';
 import { darken, getContrastText, lighten } from './helpers/color';
 
-export const light = {
-    background: {
-        primary: COLOR_WHITE,
-        secondary: '#f9fafc',
-        disabled: COLOR_GRAY_1,
-    },
-    divider: COLOR_GRAY_2,
-    text: {
-        primary: COLOR_DARK_1,
-        secondary: COLOR_GRAY_4,
-        disabled: COLOR_GRAY_2,
-        hint: 'rgba(0, 0, 0, 0.38)',
-    },
-    action: {
-        active: 'rgba(0, 0, 0, 0.54)',
-        hover: 'rgba(0, 0, 0, 0.08)',
-        hoverOpacity: 0.08,
-        selected: 'rgba(0, 0, 0, 0.14)',
-        disabled: 'rgba(0, 0, 0, 0.26)',
-    },
-};
-
-export const dark = {
-    text: {
-        primary: COLOR_WHITE,
-        secondary: 'rgba(255, 255, 255, 0.7)',
-        disabled: 'rgba(255, 255, 255, 0.5)',
-        hint: 'rgba(255, 255, 255, 0.5)',
-    },
-    divider: 'rgba(255, 255, 255, 0.12)',
-    background: {
-        primary: '#303030',
-        secondary: '#424242',
-        disabled: 'rgba(255, 255, 255, 0.12)',
-    },
-    action: {
-        active: COLOR_WHITE,
-        hover: 'rgba(255, 255, 255, 0.1)',
-        hoverOpacity: 0.1,
-        selected: 'rgba(255, 255, 255, 0.2)',
-        disabled: 'rgba(255, 255, 255, 0.3)',
-    },
-};
-
 export default {
     palette: {
         type: 'light',
@@ -75,6 +31,22 @@ export default {
         },
         warning: {
             main: COLOR_WARNING,
+        },
+        background: {
+            main: COLOR_WHITE,
+            secondary: darken(COLOR_WHITE, 0.2),
+        },
+        divider: darken(COLOR_WHITE, 0.12),
+        text: {
+            main: COLOR_DARK_1,
+            secondary: darken(COLOR_DARK_1, 0.3),
+            disabled: darken(COLOR_DARK_1, 0.5),
+        },
+        action: {
+            active: darken(COLOR_WHITE, 0.54),
+            hover: darken(COLOR_WHITE, 0.1),
+            selected: darken(COLOR_WHITE, 0.2),
+            disabled: darken(COLOR_WHITE, 0.3),
         },
         getContrastText,
         ...light,

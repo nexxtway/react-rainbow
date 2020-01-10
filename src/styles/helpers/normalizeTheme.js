@@ -1,5 +1,5 @@
-import defaultTheme, { light, dark } from '../defaultTheme';
-import { darken, lighten } from './color';
+import defaultTheme from '../defaultTheme';
+import { darken, lighten, isDark, getContrastText } from './color';
 
 function pickColors(colors, obj = {}) {
     return colors.reduce((seed, color) => {
@@ -32,8 +32,31 @@ function normalizeColors(colors) {
     }, {});
 }
 
-function getLightOrDark(type) {
-    return type === 'dark' ? dark : light;
+function normalizeBackground(background) {
+    if (background) {
+        const dark = isDark(background);
+        const mainText = getContrastText(background);
+        const theme = {
+            background: {
+                main: background,
+                secondary: dark ? lighten(background, 0.2) : darken(background, 0.2),
+            },
+            divider: dark ? lighten(background, 0.12) : darken(background, 0.12),
+            text: {
+                main: mainText,
+                secondary: dark ? lighten(mainText, 0.3) : darken(mainText, 0.3),
+                disabled: dark ? lighten(mainText, 0.5) : darken(mainText, 0.5),
+            },
+            action: {
+                active: dark ? lighten(background, 0.54) : darken(background, 0.54),
+                hover: dark ? lighten(background, 0.1) : darken(background, 0.1),
+                selected: dark ? lighten(background, 0.2) : darken(background, 0.2),
+                disabled: dark ? lighten(background, 0.3) : darken(background, 0.3),
+            },
+        };
+        return theme;
+    }
+    return {};
 }
 
 export default function normalizeTheme(theme) {
@@ -41,14 +64,15 @@ export default function normalizeTheme(theme) {
         rainbow: {
             palette: {
                 ...defaultTheme.palette,
-                ...pickColors(['type'], get(theme, 'rainbow.palette')),
                 ...normalizeColors(
                     pickColors(
                         ['brand', 'success', 'error', 'warning'],
                         get(theme, 'rainbow.palette'),
                     ),
                 ),
-                ...getLightOrDark(get(theme, 'rainbow.palette.type')),
+                ...normalizeBackground(
+                    pickColors(['background'], get(theme, 'rainbow.palette')).background,
+                ),
             },
         },
     };

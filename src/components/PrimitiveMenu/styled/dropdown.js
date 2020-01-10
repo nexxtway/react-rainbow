@@ -4,11 +4,11 @@ import getTheme from '../../../styles/helpers/getTheme';
 const StyledDropdown = styled.div.attrs(props => {
     const palette = getTheme(props).palette;
     const divider = palette.divider;
-    const backgroundPrimary = palette.background.primary;
+    const mainBackground = palette.background.main;
     const shadow2 = `0 2px 4px 0 ${divider}`;
 
     return {
-        backgroundPrimary,
+        mainBackground,
         divider,
         shadow2,
     };
@@ -25,7 +25,7 @@ const StyledDropdown = styled.div.attrs(props => {
     border-radius: 0.875rem;
     padding: 0.5rem 0;
     font-size: 0.75rem;
-    background: ${props => props.backgroundPrimary};
+    background: ${props => props.mainBackground};
     box-shadow: ${props => props.shadow2};
     transform: translateX(-50%);
     display: none;

@@ -42,7 +42,7 @@ const Radio = styled(HiddenElement).attrs(props => {
         vertical-align: middle;
         border: ${getInitialBorder};
         border-radius: ${BORDER_RADIUS_2};
-        background: ${props => props.palette.background.primary};
+        background: ${props => props.palette.background.main};
         margin-right: ${MARGIN_SMALL};
         transition: border 0.1s linear, background-color 0.1s linear;
         box-sizing: border-box;
@@ -65,7 +65,7 @@ const Radio = styled(HiddenElement).attrs(props => {
     }
 
     :checked ~ label > .rainbow-input_faux {
-        background: ${props => props.palette.background.primary};
+        background: ${props => props.palette.background.main};
         border: 2px solid;
         border-color: ${getColor};
 
@@ -90,7 +90,7 @@ const Radio = styled(HiddenElement).attrs(props => {
     }
 
     &[disabled] ~ label > .rainbow-input_faux::after {
-        background: ${props => props.palette.background.primary};
+        background: ${props => props.palette.background.main};
         box-sizing: border-box;
     }
 `;

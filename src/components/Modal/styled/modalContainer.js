@@ -14,8 +14,8 @@ const StyledModalContainer = styled.section.attrs(props => {
     min-width: 18rem;
     max-height: 80vh;
     min-height: 4rem;
-    background-color: ${props => props.palette.background.primary};
-    color: ${props => props.palette.text.primary};
+    background-color: ${props => props.palette.background.main};
+    color: ${props => props.palette.text.main};
     border-radius: ${BORDER_RADIUS_1};
     box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16);
     flex-direction: column;

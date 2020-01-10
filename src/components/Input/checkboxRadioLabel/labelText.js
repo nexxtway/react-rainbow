@@ -4,19 +4,19 @@ import getTheme from '../../../styles/helpers/getTheme';
 
 const LabelText = styled.span.attrs(props => {
     const text = getTheme(props).palette.text;
-    const textPrimary = text.primary;
-    const textDisabled = text.disabled;
+    const mainText = text.main;
+    const disabledText = text.disabled;
     return {
-        textPrimary,
-        textDisabled,
+        mainText,
+        disabledText,
     };
 })`
     display: inline;
     vertical-align: middle;
-    color: ${props => props.textPrimary};
+    color: ${props => props.mainText};
     font-size: ${FONT_SIZE_TEXT_LARGE};
     line-height: 1.65rem;
-    ${props => props.disabled && `color: ${props.textDisabled};`};
+    ${props => props.disabled && `color: ${props.disabledText};`};
 `;
 
 export default LabelText;

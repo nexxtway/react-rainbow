@@ -7,16 +7,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const StyledWrapper = styled.div.attrs(props => {
     const palette = getTheme(props).palette;
-    const primaryBackground = palette.background.primary;
+    const mainBackground = palette.background.main;
     const divider = palette.divider;
     return {
-        primaryBackground,
+        mainBackground,
         divider,
     };
 })`
     padding: 0;
     border-radius: 0.875rem;
-    background-color: ${props => props.primaryBackground};
+    background-color: ${props => props.mainBackground};
     background-clip: padding-box;
     border: solid 1px ${props => props.divider};
 `;

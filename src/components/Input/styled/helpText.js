@@ -8,13 +8,13 @@ function getAlignSelf(props) {
 }
 
 const HelpText = styled.div.attrs(props => {
-    const textPrimary = getTheme(props).palette.text.primary;
-    return { textPrimary };
+    const mainText = getTheme(props).palette.text.main;
+    return { mainText };
 })`
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
     margin-top: ${MARGIN_X_SMALL};
     align-self: ${getAlignSelf};
-    color: ${props => props.textPrimary};
+    color: ${props => props.mainText};
 `;
 
 export default HelpText;

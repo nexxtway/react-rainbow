@@ -6,15 +6,15 @@ const hasLeftIcon = props => props.icon && props.iconPosition === 'left';
 const hasRightIcon = props => props.icon && props.iconPosition === 'right';
 
 const StyledInput = styled(Input).attrs(props => {
-    const textPrimary = getTheme(props).palette.text.primary;
-    return { textPrimary };
+    const mainText = getTheme(props).palette.text.main;
+    return { mainText };
 })`
     &[readonly] {
         padding-left: 0;
         padding-right: 0;
         background-color: transparent;
         border: 2px transparent solid;
-        color: ${props => props.textPrimary};
+        color: ${props => props.mainText};
         font-weight: 400;
         cursor: text;
         box-sizing: border-box;

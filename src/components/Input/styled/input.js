@@ -16,7 +16,7 @@ const Input = styled.input.attrs(props => {
     };
 })`
     font: inherit;
-    background-color: ${props => props.palette.background.primary};
+    background-color: ${props => props.palette.background.main};
     border: 1px solid ${props => props.palette.divider};
     border-radius: ${BORDER_RADIUS_2};
     width: 100%;
@@ -25,7 +25,7 @@ const Input = styled.input.attrs(props => {
     padding: 0 1rem;
     line-height: 2.5rem;
     height: 2.5rem;
-    color: ${props => props.palette.text.primary};
+    color: ${props => props.palette.text.main};
     font-size: ${FONT_SIZE_TEXT_LARGE};
     box-sizing: border-box;
     margin: 0;
@@ -45,7 +45,7 @@ const Input = styled.input.attrs(props => {
         outline: 0;
         padding: 0 0.9375rem;
         border: 2px solid ${props => props.palette.brand.main};
-        background-color: ${props => props.palette.background.primary};
+        background-color: ${props => props.palette.background.main};
         box-shadow: ${props => props.brandShadow};
     }
 
@@ -74,13 +74,13 @@ const Input = styled.input.attrs(props => {
     ${props =>
         props.error &&
         `
-        background-color: ${props.palette.background.primary};
+        background-color: ${props.palette.background.main};
         border: 2px solid ${props.palette.error.main};
         background-clip: padding-box;
 
         :focus,
         :active {
-            background-color: ${props.palette.background.primary};
+            background-color: ${props.palette.background.main};
             border: 2px solid ${props.palette.error.main};
             box-shadow: ${props.errorShadow};
             padding: 0 1rem;
@@ -113,7 +113,7 @@ const Input = styled.input.attrs(props => {
             background-color: transparent;
             border: 0;
             padding: 0 0.75rem;
-            color: ${props.palette.text.primary};
+            color: ${props.palette.text.main};
             line-height: 2.5rem;
             transition: none;
 
@@ -199,7 +199,7 @@ const Input = styled.input.attrs(props => {
                 border-width: 0.15em 0.15em 0 0;
                 transform: rotate(135deg);
                 vertical-align: top;
-                color: ${props => props.palette.text.primary};
+                color: ${props => props.palette.text.main};
                 box-sizing: border-box;
             }
 

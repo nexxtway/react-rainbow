@@ -4,13 +4,13 @@ import getTheme from '../../../styles/helpers/getTheme';
 const IconContainer = styled.span.attrs(props => {
     const palette = getTheme(props).palette;
     const errorMainColor = palette.error.main;
-    const textSecondary = palette.text.secondary;
+    const secondaryText = palette.text.secondary;
     return {
         errorMainColor,
-        textSecondary,
+        secondaryText,
     };
 })`
-    color: ${props => props.textSecondary};
+    color: ${props => props.secondaryText};
     height: 100%;
     width: 22px;
     top: 0;
