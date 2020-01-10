@@ -2,7 +2,9 @@ import isValidColor from './isValidColor';
 import decomposeColor from './decomposeColor';
 import hslToRgb from './hslToRgb';
 
-//http://www.w3.org/TR/AERT#color-contrast
+/* http://www.w3.org/TR/AERT#color-contrast */
+
+/* eslint-disable no-param-reassign */
 export default function getBrightness(color) {
     if (isValidColor(color)) {
         color = decomposeColor(color);

@@ -4,16 +4,12 @@ import {
     COLOR_ERROR,
     COLOR_WARNING,
     COLOR_WHITE,
-    COLOR_GRAY_1,
-    COLOR_GRAY_2,
-    COLOR_GRAY_4,
     COLOR_DARK_1,
 } from './colors';
 import { darken, getContrastText, lighten } from './helpers/color';
 
 export default {
     palette: {
-        type: 'light',
         brand: {
             main: COLOR_BRAND,
             dark: darken(COLOR_BRAND),
@@ -49,6 +45,5 @@ export default {
             disabled: darken(COLOR_WHITE, 0.3),
         },
         getContrastText,
-        ...light,
     },
 };
