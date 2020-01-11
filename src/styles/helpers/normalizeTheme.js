@@ -1,5 +1,5 @@
 import defaultTheme from '../defaultTheme';
-import { darken, lighten, isDark, getContrastText } from './color';
+import { darken, lighten, isDark, getContrastText, isValidColor } from './color';
 
 function pickColors(colors, obj = {}) {
     return colors.reduce((seed, color) => {
@@ -33,7 +33,7 @@ function normalizeColors(colors) {
 }
 
 function normalizeBackground(background) {
-    if (background) {
+    if (background && isValidColor(background)) {
         const dark = isDark(background);
         const mainText = getContrastText(background);
         const theme = {
@@ -69,7 +69,7 @@ export default function normalizeTheme(theme) {
                     ),
                 ),
                 ...normalizeBackground(
-                    pickColors(['background'], get(theme, 'rainbow.palette')).background,
+                    pickColors(['mainBackground'], get(theme, 'rainbow.palette')).mainBackground,
                 ),
             },
         },

@@ -62,7 +62,7 @@ const cyanDarkTheme = {
             brand: '#80deea',
             success: '#b9f6ca',
             error: '#ff5252',
-            background: '#303030',
+            mainBackground: '#303030',
         },
     },
 };
