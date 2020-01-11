@@ -25,7 +25,7 @@ const StyledContainer = styled.span.attrs(props => {
 
     &:hover,
     &:focus {
-        color: currentColor;
+        color: ${props => props.getContrastText(props.brandMainColor)};
     }
 
     ${props =>
