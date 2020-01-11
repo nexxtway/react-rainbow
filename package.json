@@ -36,12 +36,12 @@
         "clipboard-copy": "^2.0.0",
         "prop-types": "^15.6.2",
         "react-async-script-loader": "^0.3.0",
+        "styled-components": "^4.3.2",
         "xlsx": "^0.14.4"
     },
     "peerDependencies": {
-        "react": "^16.8.6",
-        "react-dom": "^16.8.6",
-        "styled-components": "^4.3.2"
+        "react": ">=16.8.0",
+        "react-dom": ">=16.8.0"
     },
     "main": "components/index.js",
     "files": [
@@ -142,7 +142,6 @@
         "sass-loader": "^7.1.0",
         "shelljs": "^0.8.3",
         "style-loader": "^0.22.1",
-        "styled-components": "^4.3.2",
         "stylelint": "^9.5.0",
         "stylelint-config-standard": "^18.2.0",
         "stylelint-config-styled-components": "^0.1.1",
