@@ -4,12 +4,12 @@ import getTheme from '../../../styles/helpers/getTheme';
 
 const StyledLi = styled.li.attrs(props => {
     const palette = getTheme(props).palette;
-    const mainText = palette.text.main;
-    const { hover, disabled } = palette.action;
+    const { main: mainText, disabled: disabledText } = palette.text;
+    const hover = palette.action.hover;
     return {
         mainText,
         hover,
-        disabled,
+        disabledText,
     };
 })`
     font: inherit;
@@ -43,7 +43,7 @@ const StyledLi = styled.li.attrs(props => {
     }
 
     &[aria-disabled='true'] {
-        color: ${props => props.disabled};
+        color: ${props => props.disabledText};
         cursor: default;
 
         &:hover,

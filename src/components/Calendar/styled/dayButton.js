@@ -1,13 +1,17 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_2 } from '../../../styles/colors';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 import getTheme from '../../../styles/helpers/getTheme';
 
 const StyledDayButton = styled.button.attrs(props => {
-    const brandMainColor = getTheme(props).palette.brand.main;
+    const palette = getTheme(props).palette;
+    const brandMainColor = palette.brand.main;
+    const hover = palette.action.hover;
+    const getContrastText = palette.getContrastText;
     return {
         brandMainColor,
+        hover,
         brandShadow: `0 0 2px ${brandMainColor}`,
+        getContrastText,
     };
 })`
     font: inherit;
@@ -29,7 +33,7 @@ const StyledDayButton = styled.button.attrs(props => {
 
     &:hover {
         transition: all 0.2s ease;
-        background-color: ${COLOR_GRAY_2};
+        background-color: ${props => props.hover};
     }
 
     &:active {
@@ -49,7 +53,7 @@ const StyledDayButton = styled.button.attrs(props => {
     ${props =>
         props.isSelected &&
         `
-            color: white;
+            color: ${props.getContrastText(props.brandMainColor)};
             background-color: ${props.brandMainColor};
             text-align: center;
             font-size: ${FONT_SIZE_TEXT_MEDIUM};

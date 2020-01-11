@@ -44,14 +44,11 @@ function normalizeBackground(background) {
             divider: dark ? lighten(background, 0.12) : darken(background, 0.12),
             text: {
                 main: mainText,
-                secondary: dark ? lighten(mainText, 0.3) : darken(mainText, 0.3),
-                disabled: dark ? lighten(mainText, 0.5) : darken(mainText, 0.5),
+                secondary: dark ? darken(mainText, 0.3) : lighten(mainText, 0.3),
+                disabled: dark ? darken(mainText, 0.5) : lighten(mainText, 0.8),
             },
             action: {
-                active: dark ? lighten(background, 0.54) : darken(background, 0.54),
                 hover: dark ? lighten(background, 0.1) : darken(background, 0.1),
-                selected: dark ? lighten(background, 0.2) : darken(background, 0.2),
-                disabled: dark ? lighten(background, 0.3) : darken(background, 0.3),
             },
         };
         return theme;
