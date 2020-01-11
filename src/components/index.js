@@ -3,6 +3,7 @@ export { default as AccordionSection } from './AccordionSection';
 export { default as ActivityTimeline } from './ActivityTimeline';
 export { default as Application } from './Application';
 export { default as Avatar } from './Avatar';
+export { default as AvatarGroup } from './AvatarGroup';
 export { default as AvatarMenu } from './AvatarMenu';
 export { default as Badge } from './Badge';
 export { default as Breadcrumb } from './Breadcrumb';
