@@ -174,7 +174,7 @@ module.exports = {
             new CopyWebpackPlugin([{ from: './assets/' }]),
             new webpack.DefinePlugin(envKeys),
             new webpack.DefinePlugin({
-                reactVersion: JSON.stringify(require('./package.json').dependencies.react),
+                reactVersion: JSON.stringify(require('./package.json').devDependencies.react),
             }),
         ],
     },

@@ -31,13 +31,21 @@ ReactDOM.render(
 );
 `;
 
+function getReactVersion() {
+    // eslint-disable-next-line no-undef
+    const version = reactVersion;
+    if (version && typeof version === 'string') {
+        return version[0] === '^' ? version.slice(1) : version;
+    }
+    return '16.8.0';
+}
+
 export default class GettingStartedPage extends Component {
     constructor(props) {
         super(props);
         this.state = { activeTabName: 'overview' };
         this.handleTabChange = this.handleTabChange.bind(this);
-        // eslint-disable-next-line no-undef
-        this.reactV = reactVersion[0] === '^' ? reactVersion.slice(1) : reactVersion;
+        this.reactV = getReactVersion();
     }
 
     handleTabChange(e, tabName) {
