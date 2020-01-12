@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { COLOR_WHITE, COLOR_GRAY_2, COLOR_GRAY_4 } from '../../../styles/colors';
+import { COLOR_GRAY_2, COLOR_GRAY_4 } from '../../../styles/colors';
 import { SHADOW_1 } from '../../../styles/shadows';
 
 const StyledContent = styled.span`
@@ -12,12 +12,13 @@ const StyledContent = styled.span`
     box-sizing: border-box;
 
     &:hover {
-        color: ${COLOR_WHITE};
+        color: currentColor;
         cursor: default;
     }
 
     &[title] {
         text-decoration: none;
+        cursor: default;
     }
 
     ${props =>
