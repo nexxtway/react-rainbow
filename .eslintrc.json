@@ -13,7 +13,8 @@
         "react/forbid-prop-types": "off",
         "no-mixed-operators": "off",
         "arrow-parens": ["error", "as-needed"],
-        "linebreak-style": 0
+        "linebreak-style": 0,
+        "react/default-props-match-prop-types": ["error", { "allowRequiredDefaults": true }]
     },
     "env": {
         "es6": true,
