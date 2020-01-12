@@ -6,14 +6,15 @@ const StyledContainer = styled.span.attrs(props => {
     const theme = getTheme(props);
     const { getContrastText, brand } = theme.palette;
     const brandMainColor = isValidColor(props.backgroundColor) ? props.backgroundColor : brand.main;
+    const brandContrastTextColor = getContrastText(brandMainColor);
 
     return {
         brandMainColor,
-        getContrastText,
+        brandContrastTextColor,
     };
 })`
     background-color: ${props => props.brandMainColor};
-    color: ${props => props.getContrastText(props.brandMainColor)};
+    color: ${props => props.brandContrastTextColor};
     border-radius: 50%;
     display: inline-block;
     height: 2.5rem;
@@ -25,7 +26,7 @@ const StyledContainer = styled.span.attrs(props => {
 
     &:hover,
     &:focus {
-        color: ${props => props.getContrastText(props.brandMainColor)};
+        color: ${props => props.brandContrastTextColor};
     }
 
     ${props =>
