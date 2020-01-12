@@ -26,6 +26,7 @@ import StyledSelectValue from './styled/selectValue';
 import StyledVerticalButtonsContainer from './styled/verticalButtonsContainer';
 import StyledFooter from './styled/footer';
 import StyledButton from './styled/button';
+import outsideClick from '../../libs/outsideClick';
 
 function preventDefault(event) {
     event.preventDefault();
@@ -39,6 +40,7 @@ export default class TimeSelect extends Component {
             minutes: getMinutes(props.value),
             ampm: getAmPm(props.value),
         };
+        this.containerRef = React.createRef();
         this.hourInputRef = React.createRef();
         this.minutesInputRef = React.createRef();
         this.amPmInputRef = React.createRef();
@@ -62,6 +64,11 @@ export default class TimeSelect extends Component {
         this.handleButtonsFocus = this.handleButtonsFocus.bind(this);
         this.handleChangeTime = this.handleChangeTime.bind(this);
         this.handleButtonsDown = this.handleButtonsDown.bind(this);
+        this.handleClickOutside = this.handleClickOutside.bind(this);
+    }
+
+    componentDidMount() {
+        outsideClick.startListening(this.containerRef.current, this.handleClickOutside);
     }
 
     componentDidUpdate(prevProps) {
@@ -72,12 +79,21 @@ export default class TimeSelect extends Component {
         }
     }
 
+    componentWillUnmount() {
+        outsideClick.stopListening();
+    }
+
     setNextAmPmValue() {
         const { ampm } = this.state;
         const nextAmPmValue = getNextAmPmValue(ampm);
         this.setState({
             ampm: nextAmPmValue,
         });
+    }
+
+    handleClickOutside() {
+        this.inputFocusedIndex = -1;
+        this.forceUpdate();
     }
 
     handleChangeHour(event) {
@@ -185,6 +201,7 @@ export default class TimeSelect extends Component {
     }
 
     handleAmPmChange(value) {
+        this.inputFocusedIndex = -1;
         this.setState({
             ampm: value,
         });
@@ -192,6 +209,7 @@ export default class TimeSelect extends Component {
 
     hanldeFocusAmPm() {
         this.inputFocusedIndex = 2;
+        this.forceUpdate();
     }
 
     handleKeyDown(event) {
@@ -365,7 +383,11 @@ export default class TimeSelect extends Component {
 
         return (
             <article className={className}>
-                <StyledSelectContent role="presentation" onKeyDown={this.handleKeyDown}>
+                <StyledSelectContent
+                    ref={this.containerRef}
+                    role="presentation"
+                    onKeyDown={this.handleKeyDown}
+                >
                     <StyledSelectValue
                         aria-label="hour"
                         onDrop={preventDefault}
@@ -378,6 +400,7 @@ export default class TimeSelect extends Component {
                         onFocus={this.handleFocusHour}
                         onBlur={this.handleBlurHour}
                         inputMode="numeric"
+                        isFocused={this.inputFocusedIndex === 0}
                         pattern="\d*"
                         ref={this.hourInputRef}
                     />
@@ -395,6 +418,7 @@ export default class TimeSelect extends Component {
                         placeholder={minutesPlaceholder}
                         onChange={this.handleChangeMinutes}
                         onFocus={this.handleFocusMinutes}
+                        isFocused={this.inputFocusedIndex === 1}
                         inputMode="numeric"
                         pattern="\d*"
                         ref={this.minutesInputRef}
@@ -407,6 +431,7 @@ export default class TimeSelect extends Component {
                             defaultValue={this.defaultAmPM}
                             onFocus={this.hanldeFocusAmPm}
                             onChange={this.handleAmPmChange}
+                            isFocused={this.inputFocusedIndex === 2}
                             ref={this.amPmInputRef}
                         />
                     </RenderIf>

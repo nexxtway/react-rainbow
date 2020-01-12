@@ -94,6 +94,53 @@ const StyledSelectValue = styled.input.attrs(props => {
         caret-color: transparent;
     }
 
+    ${props =>
+        props.isFocused === true &&
+        `
+        color: ${props.brandMainContrastText};
+        background-color: ${props.brandMainColor};
+        box-shadow: ${props.brandShadow};
+        outline: none;
+        caret-color: transparent;
+
+        &[placeholder]::-webkit-input-placeholder {
+            color: ${props.brandMainContrastText};
+        }
+
+        &[placeholder]::-moz-placeholder {
+            color: ${props.brandMainContrastText};
+        }
+
+        &[placeholder]:-ms-input-placeholder {
+            color: ${props.brandMainContrastText};
+        }
+
+        &[placeholder]:-moz-placeholder {
+            color: ${props.brandMainContrastText};
+        }
+
+    `};
+    ${props =>
+        props.isFocused === false &&
+        `
+        &[placeholder]::-webkit-input-placeholder {
+            color: ${props.brandMainColor};
+        }
+
+        &[placeholder]::-moz-placeholder {
+            color: ${props.brandMainColor};
+        }
+
+        &[placeholder]:-ms-input-placeholder {
+            color: ${props.brandMainColor};
+        }
+
+        &[placeholder]:-moz-placeholder {
+            color: ${props.brandMainColor};
+        }
+
+    `};
+
     @media (max-width: 600px) {
         width: 24%;
         font-size: 32px;
