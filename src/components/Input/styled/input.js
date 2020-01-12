@@ -6,18 +6,10 @@ import getTheme from '../../../styles/helpers/getTheme';
 const hasLeftIcon = props => props.icon && props.iconPosition === 'left';
 const hasRightIcon = props => props.icon && props.iconPosition === 'right';
 
-const Input = styled.input.attrs(props => {
-    const palette = getTheme(props).palette;
-
-    return {
-        palette,
-        brandShadow: `0 0 2px ${palette.brand.main}`,
-        errorShadow: `0 0 2px ${palette.error.main}`,
-    };
-})`
+const Input = styled.input.attrs(props => getTheme(props))`
     font: inherit;
     background-color: ${props => props.palette.background.main};
-    border: 1px solid ${props => props.palette.divider};
+    border: 1px solid ${props => props.palette.border.main};
     border-radius: ${BORDER_RADIUS_2};
     width: 100%;
     transition: all 0.1s linear, padding 0s, border 0s;
@@ -46,18 +38,18 @@ const Input = styled.input.attrs(props => {
         padding: 0 0.9375rem;
         border: 2px solid ${props => props.palette.brand.main};
         background-color: ${props => props.palette.background.main};
-        box-shadow: ${props => props.brandShadow};
+        box-shadow: ${props => props.palette.shadows.brand};
     }
 
     ::placeholder {
-        color: ${props => props.palette.text.secondary};
+        color: ${props => props.palette.text.header};
         font-weight: 300;
         font-size: ${FONT_SIZE_TEXT_LARGE};
     }
 
     &[disabled] {
         background-color: ${props => props.palette.background.disabled};
-        border: 1px solid ${props => props.palette.text.disabled};
+        border: 1px solid ${props => props.palette.border.disabled};
         color: ${props => props.palette.text.disabled};
         cursor: not-allowed;
         user-select: none;
@@ -67,7 +59,7 @@ const Input = styled.input.attrs(props => {
         &:active {
             box-shadow: none;
             background-color: ${props => props.palette.background.disabled};
-            border: 1px solid ${props => props.palette.text.disabled};
+            border: 1px solid ${props => props.palette.border.disabled};
         }
     }
 
@@ -82,7 +74,7 @@ const Input = styled.input.attrs(props => {
         :active {
             background-color: ${props.palette.background.main};
             border: 2px solid ${props.palette.error.main};
-            box-shadow: ${props.errorShadow};
+            box-shadow: ${props.palette.shadows.error};
             padding: 0 1rem;
             outline: 0;
         }

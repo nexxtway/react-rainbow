@@ -5,7 +5,7 @@ import getTheme from '../../../styles/helpers/getTheme';
 const LabelText = styled.span.attrs(props => {
     const text = getTheme(props).palette.text;
     const mainText = text.main;
-    const disabledText = text.disabled;
+    const disabledText = text.header;
     return {
         mainText,
         disabledText,

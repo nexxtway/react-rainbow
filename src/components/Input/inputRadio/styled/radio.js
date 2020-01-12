@@ -8,7 +8,7 @@ function getInitialBorder(props) {
     if (props.error) {
         return `2px solid ${props.palette.error.main}`;
     }
-    return `1px solid ${props.palette.divider}`;
+    return `1px solid ${props.palette.border.divider}`;
 }
 
 function getColor(props) {
@@ -20,20 +20,12 @@ function getColor(props) {
 
 function getShadow(props) {
     if (props.error) {
-        return props.errorShadow;
+        return props.palette.shadows.error;
     }
-    return props.brandShadow;
+    return props.palette.shadows.brand;
 }
 
-const Radio = styled(HiddenElement).attrs(props => {
-    const palette = getTheme(props).palette;
-    return {
-        palette,
-        // TODO: move up to defaultTheme or normalizeTheme
-        brandShadow: `0 0 2px ${palette.brand.main}`,
-        errorShadow: `0 0 2px ${palette.error.main}`,
-    };
-})`
+const Radio = styled(HiddenElement).attrs(props => getTheme(props))`
     & ~ label > .rainbow-input_faux {
         width: 20px;
         height: 20px;
@@ -86,7 +78,7 @@ const Radio = styled(HiddenElement).attrs(props => {
 
     &[disabled] ~ label > .rainbow-input_faux {
         background-color: ${props => props.palette.background.disabled};
-        border-color: ${props => props.palette.divider};
+        border-color: ${props => props.palette.border.divider};
     }
 
     &[disabled] ~ label > .rainbow-input_faux::after {

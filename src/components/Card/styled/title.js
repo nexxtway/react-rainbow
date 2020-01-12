@@ -3,12 +3,12 @@ import { FONT_SIZE_HEADING_MEDIUM } from '../../../styles/fontSizes';
 import getTheme from '../../../styles/helpers/getTheme';
 
 const StyledTitle = styled.h2.attrs(props => {
-    const textSecondary = getTheme(props).palette.text.secondary;
-    return { textSecondary };
+    const titleText = getTheme(props).palette.text.title;
+    return { titleText };
 })`
     font-size: ${FONT_SIZE_HEADING_MEDIUM};
     font-weight: 500;
-    color: ${props => props.textSecondary};
+    color: ${props => props.titleText};
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

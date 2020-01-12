@@ -53,6 +53,10 @@ describe('normalizeTheme', () => {
                         dark: '#ccc',
                         light: '#ededed',
                     },
+                    shadows: {
+                        ...defaultTheme.palette.shadows,
+                        brand: `0 0 2px #fff`,
+                    },
                 },
             },
         });

@@ -6,11 +6,12 @@ const StyledDayButton = styled.button.attrs(props => {
     const palette = getTheme(props).palette;
     const brandMainColor = palette.brand.main;
     const hover = palette.action.hover;
+    const brandShadow = palette.shadows.brand;
     const getContrastText = palette.getContrastText;
     return {
         brandMainColor,
         hover,
-        brandShadow: `0 0 2px ${brandMainColor}`,
+        brandShadow,
         getContrastText,
     };
 })`

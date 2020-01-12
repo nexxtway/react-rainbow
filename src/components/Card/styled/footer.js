@@ -4,7 +4,7 @@ import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 import getTheme from '../../../styles/helpers/getTheme';
 
 const StyledFooter = styled.footer.attrs(props => {
-    const divider = getTheme(props).palette.divider;
+    const divider = getTheme(props).palette.border.divider;
     return { divider };
 })`
     font-size: ${FONT_SIZE_TEXT_MEDIUM};

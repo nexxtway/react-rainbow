@@ -1,14 +1,14 @@
 /* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
 import { ButtonMenu, Badge } from '../../../src/components/index';
-import { COLOR_BRAND, COLOR_GRAY_3 } from '../../../src/styles/colors';
+import { COLOR_BRAND } from '../../../src/styles/colors';
 import getTheme from '../../../src/styles/helpers/getTheme';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const StyledWrapper = styled.div.attrs(props => {
     const palette = getTheme(props).palette;
     const mainBackground = palette.background.main;
-    const divider = palette.divider;
+    const divider = palette.border.divider;
     return {
         mainBackground,
         divider,
@@ -24,7 +24,7 @@ export const StyledWrapper = styled.div.attrs(props => {
 export const StyledTopBar = styled.header.attrs(props => {
     const palette = getTheme(props).palette;
     const secondaryBackground = palette.background.secondary;
-    const divider = palette.divider;
+    const divider = palette.border.divider;
     return {
         secondaryBackground,
         divider,
@@ -95,9 +95,12 @@ export const StyledPickerTheme = styled(ButtonMenu)`
     }
 `;
 
-export const StyledTitle = styled.h1`
+export const StyledTitle = styled.h1.attrs(props => {
+    const headerText = getTheme(props).palette.text.header;
+    return { headerText };
+})`
     font-size: 14px;
-    color: ${COLOR_GRAY_3};
+    color: ${props => props.headerText};
     margin-left: 4px;
     margin-right: 8px;
 

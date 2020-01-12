@@ -1,18 +1,7 @@
 import styled from 'styled-components';
 import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledDropdown = styled.div.attrs(props => {
-    const palette = getTheme(props).palette;
-    const divider = palette.divider;
-    const mainBackground = palette.background.main;
-    const shadow2 = `0 2px 4px 0 ${divider}`;
-
-    return {
-        mainBackground,
-        divider,
-        shadow2,
-    };
-})`
+const StyledDropdown = styled.div.attrs(props => getTheme(props))`
     position: absolute;
     z-index: 2000;
     left: 50%;
@@ -21,12 +10,12 @@ const StyledDropdown = styled.div.attrs(props => {
     max-width: 20rem;
     margin-top: 0.125rem;
     margin-bottom: 0.125rem;
-    border: solid 1px ${props => props.divider};
+    border: solid 1px ${props => props.palette.border.divider};
     border-radius: 0.875rem;
     padding: 0.5rem 0;
     font-size: 0.75rem;
-    background: ${props => props.mainBackground};
-    box-shadow: ${props => props.shadow2};
+    background: ${props => props.palette.background.main};
+    box-shadow: ${props => props.palette.shadows.shadow_2};
     transform: translateX(-50%);
     display: none;
     opacity: 0;

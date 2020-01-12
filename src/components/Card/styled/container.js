@@ -3,27 +3,18 @@ import { BORDER_RADIUS_1 } from '../../../styles/borderRadius';
 import { MARGIN_LARGE } from '../../../styles/margins';
 import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledContainer = styled.article.attrs(props => {
-    const palette = getTheme(props).palette;
-    const shadow4 = `0 1px 2px 0 ${palette.divider}`;
-    const shadow6 = `0 2px 12px 0 ${palette.divider}`;
-    return {
-        palette,
-        shadow4,
-        shadow6,
-    };
-})`
+const StyledContainer = styled.article.attrs(props => getTheme(props))`
     position: relative;
     background-color: ${props => props.palette.background.main};
     color: ${props => props.palette.text.main};
-    border: 0.0625rem solid ${props => props.palette.divider};
+    border: 0.0625rem solid ${props => props.palette.border.divider};
     border-radius: ${BORDER_RADIUS_1};
     background-clip: padding-box;
-    box-shadow: ${props => props.shadow4};
+    box-shadow: ${props => props.palette.shadows.shadow_4};
     overflow: hidden;
 
     &:hover {
-        box-shadow: ${props => props.shadow6};
+        box-shadow: ${props => props.palette.shadows.shadow_6};
         transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     }
 

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import getTheme from '../../../styles/helpers/getTheme';
 
 const StyledFooter = styled.footer.attrs(props => {
-    const divider = getTheme(props).palette.divider;
+    const divider = getTheme(props).palette.border.divider;
     return { divider };
 })`
     border-top: 0.0625px solid ${props => props.divider};
