@@ -6,6 +6,7 @@ export { default as Accordion } from './Accordion';
 export { default as AccordionSection } from './AccordionSection';
 export { default as Application } from './Application';
 export { default as Avatar } from './Avatar';
+export { default as AvatarGroup } from './AvatarGroup';
 export { default as AvatarMenu } from './AvatarMenu';
 export { default as Breadcrumb } from './Breadcrumb';
 export { default as Breadcrumbs } from './Breadcrumbs';

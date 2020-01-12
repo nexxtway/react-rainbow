@@ -11,7 +11,7 @@ initialState = {
 
 const calendarContainerStyles = {
     width: '28rem',
-    height: '25rem',
+    height: '27rem',
 };
 const selectStyles = {
     width: '8rem',
@@ -52,11 +52,11 @@ import { Card, Calendar, Avatar } from 'react-rainbow-components';
 initialState = { date: new Date('2019-11-11 00:00:00') };
 const calendarContainerStyles = {
     width: '28rem',
-    height: '25rem',
+    height: '27rem',
 };
 
 <div>
-    <header className="rainbow-align-content_space-between rainbow-p-vertical_small rainbow-p-horizontal_medium react-rainbow-golbal-header rainbow-background-color_white">
+    <header className="rainbow-align-content_space-between rainbow-p-vertical_small rainbow-p-horizontal_medium react-rainbow-global-header rainbow-background-color_white">
         <img src="images/rainbow-logo.svg" height="40" width="40" alt="rainbow logo" />
         <div className="rainbow-flex rainbow-align_center">
             <Avatar src="images/user/user3.jpg" variant="circle" />

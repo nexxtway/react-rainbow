@@ -4,7 +4,6 @@ const StyledIcon = styled.span`
     width: 1rem;
     height: 1rem;
     line-height: 1.5;
-    fill: white;
     ${props =>
         props.position === 'left' &&
         `

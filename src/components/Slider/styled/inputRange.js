@@ -1,8 +1,18 @@
 import styled from 'styled-components';
 import { BORDER_RADIUS_3, BORDER_RADIUS_2 } from '../../../styles/borderRadius';
-import { COLOR_BRAND, COLOR_GRAY_2, COLOR_BRAND_ACTIVE } from '../../../styles/colors';
+import { COLOR_GRAY_2 } from '../../../styles/colors';
+import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledInputRange = styled.input`
+const StyledInputRange = styled.input.attrs(props => {
+    const brand = getTheme(props).palette.brand;
+    const brandMainColor = brand.main;
+    const brandDarkColor = brand.dark;
+
+    return {
+        brandMainColor,
+        brandDarkColor,
+    };
+})`
     appearance: none;
     width: 100%;
     margin: 0.5rem 0;
@@ -23,7 +33,7 @@ const StyledInputRange = styled.input`
         width: 1rem;
         height: 1rem;
         border-radius: 50%;
-        background: ${COLOR_BRAND};
+        background: ${props => props.brandMainColor};
         border: 0;
         box-shadow: rgba(0, 0, 0, 0.16) 0 2px 3px;
         cursor: pointer;
@@ -44,7 +54,7 @@ const StyledInputRange = styled.input`
         width: 1rem;
         height: 1rem;
         border-radius: 50%;
-        background: ${COLOR_BRAND};
+        background: ${props => props.brandMainColor};
         border: 0;
         box-shadow: rgba(0, 0, 0, 0.16) 0 2px 3px;
         cursor: pointer;
@@ -73,7 +83,7 @@ const StyledInputRange = styled.input`
         width: 1rem;
         height: 1rem;
         border-radius: ${BORDER_RADIUS_2};
-        background: ${COLOR_BRAND};
+        background: ${props => props.brandMainColor};
         border: 0;
         box-shadow: rgba(0, 0, 0, 0.16) 0 2px 3px;
         cursor: pointer;
@@ -85,35 +95,35 @@ const StyledInputRange = styled.input`
     }
 
     &::-webkit-slider-thumb:hover {
-        background-color: ${COLOR_BRAND_ACTIVE};
+        background-color: ${props => props.brandDarkColor};
     }
 
     &::-moz-range-thumb:hover {
-        background-color: ${COLOR_BRAND_ACTIVE};
+        background-color: ${props => props.brandDarkColor};
     }
 
     &::-ms-thumb:hover {
-        background-color: ${COLOR_BRAND_ACTIVE};
+        background-color: ${props => props.brandDarkColor};
     }
 
     &:focus::-webkit-slider-thumb {
-        background-color: ${COLOR_BRAND};
+        background-color: ${props => props.brandMainColor};
         box-shadow: $shadow-outline;
     }
 
     &:active::-webkit-slider-thumb {
-        background-color: ${COLOR_BRAND};
+        background-color: ${props => props.brandMainColor};
         transition: all 0.3s ease 0s;
         transform: scale3d(1.5, 1.5, 1);
     }
 
     &:focus::-moz-range-thumb {
-        background-color: ${COLOR_BRAND};
+        background-color: ${props => props.brandMainColor};
         box-shadow: $shadow-outline;
     }
 
     &:active::-moz-range-thumb {
-        background-color: ${COLOR_BRAND};
+        background-color: ${props => props.brandMainColor};
     }
 
     &[disabled]::-webkit-slider-thumb {

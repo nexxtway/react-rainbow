@@ -7,10 +7,17 @@ import {
     COLOR_GRAY_1,
     COLOR_DARK_1,
 } from '../../../styles/colors';
-import { SHADOW_OUTLINE } from '../../../styles/shadows';
 import { FONT_SIZE_TEXT_LARGE, FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
+import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledButton = styled.button`
+const StyledButton = styled.button.attrs(props => {
+    const theme = getTheme(props);
+
+    return {
+        // TODO: move up to defaultTheme or normalizeTheme
+        brandShadow: `0 0 2px ${theme.palette.brand.main}`,
+    };
+})`
     font: inherit;
     padding: 0;
     transition: color 0.1s linear;
@@ -36,7 +43,7 @@ const StyledButton = styled.button`
 
     :focus,
     :active {
-        box-shadow: ${SHADOW_OUTLINE};
+        box-shadow: ${props => props.brandShadow};
         background-color: ${COLOR_WHITE};
         outline: none;
     }

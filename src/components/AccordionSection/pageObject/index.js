@@ -43,6 +43,17 @@ class PageAccordionSection {
             .$('[data-id="accordion-section-content"]')
             .isDisplayed();
     }
+
+    /**
+     * Returns the label of the accordion section.
+     * @method
+     * @returns {string}
+     */
+    getLabel() {
+        return $(this.rootElement)
+            .$('[title="Accordion Label"]')
+            .getText();
+    }
 }
 
 module.exports = PageAccordionSection;

@@ -25,6 +25,10 @@ export default class Indicator extends Component {
             ref: this.indicatorRef,
         });
     }
+    componentWillUnmount() {
+        const { onDestroy } = this.props;
+        onDestroy(this.indicatorRef);
+    }
 
     getTabIndex(id) {
         if (this.isSelected(id)) {
@@ -68,6 +72,7 @@ Indicator.propTypes = {
     header: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     onSelect: PropTypes.func,
     onCreate: PropTypes.func,
+    onDestroy: PropTypes.func,
     selectedItem: PropTypes.string,
 };
 
@@ -77,5 +82,6 @@ Indicator.defaultProps = {
     header: undefined,
     onSelect: () => {},
     onCreate: () => {},
+    onDestroy: () => {},
     selectedItem: undefined,
 };

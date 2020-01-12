@@ -1,6 +1,7 @@
 .react-rainbow-toolbar-button {
     position: absolute;
     right: 0;
-    top: -26px;
+    top: 12px;
+    right: 16px;
     font-size: 1rem;
 }

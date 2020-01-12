@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ButtonIcon from '../ButtonIcon';
 import AmPmSelect from './ampmSelect';
-import UpIcon from './icons/upArrow';
-import DownIcon from './icons/downArrow';
+import StyledUpArrow from './styled/upArrow';
+import StyledDownArrow from './styled/downArrow';
 import RenderIf from '../RenderIf';
 import normalizeHour from './helpers/normalizeHour';
 import normalizeMinutes from './helpers/normalizeMinutes';
@@ -82,28 +82,31 @@ export default class TimeSelect extends Component {
 
     handleChangeHour(event) {
         const { hour } = this.state;
+        const { hour24 } = this.props;
         const { value } = event.target;
         let normalizedValue;
 
         if (isNumber(value)) {
             this.value = value;
-            if (Number(value) > 19 || this.isUpOrDownKeyPressed || this.hasPropValue) {
+            if (Number(value) > 23 || this.isUpOrDownKeyPressed || this.hasPropValue) {
                 const newTypedValue = getSingleNewTypedValue(hour, value);
-                normalizedValue = normalizeHour(newTypedValue);
+                normalizedValue = normalizeHour(newTypedValue, hour24);
                 this.setState({
                     hour: normalizedValue,
                 });
             } else {
-                normalizedValue = normalizeHour(value);
+                normalizedValue = normalizeHour(value, hour24);
                 this.defaultAmPM = getDefaultAmPm(value);
                 this.setState({
                     hour: normalizedValue,
                 });
             }
 
-            const shouldNotFocusNextInput =
-                Number(normalizedValue) < 2 &&
-                (!hour || this.isUpOrDownKeyPressed || this.hasPropValue);
+            const shouldNotFocusNextInput = !hour24
+                ? Number(normalizedValue) < 2 &&
+                  (!hour || this.isUpOrDownKeyPressed || this.hasPropValue)
+                : Number(normalizedValue) < 3 &&
+                  (!hour || this.isUpOrDownKeyPressed || this.hasPropValue);
 
             if (shouldNotFocusNextInput) {
                 this.isUpOrDownKeyPressed = false;
@@ -144,6 +147,7 @@ export default class TimeSelect extends Component {
     handleChangeMinutes(event) {
         const { minutes } = this.state;
         const { value } = event.target;
+        const { hour24 } = this.props;
         let normalizedValue;
 
         if (isNumber(value)) {
@@ -167,7 +171,7 @@ export default class TimeSelect extends Component {
                 this.isUpOrDownKeyPressed = false;
                 return;
             }
-            this.amPmInputRef.current.focus();
+            if (!hour24) this.amPmInputRef.current.focus();
         }
     }
 
@@ -216,7 +220,7 @@ export default class TimeSelect extends Component {
     handleRightKeyPressed() {
         const nextInputIndex = this.inputFocusedIndex + 1;
         const nextInputToFocus = this.inputsMap[nextInputIndex];
-        if (nextInputToFocus) {
+        if (nextInputToFocus && nextInputToFocus.current != null) {
             this.inputFocusedIndex += 1;
             nextInputToFocus.current.focus();
         }
@@ -299,17 +303,19 @@ export default class TimeSelect extends Component {
 
     incrementHour() {
         const { hour } = this.state;
+        const { hour24 } = this.props;
         const hourValue = hour || this.prevHour;
         this.setState({
-            hour: normalizeHour(getNextHour(hourValue)),
+            hour: normalizeHour(getNextHour(hourValue, hour24), hour24),
         });
     }
 
     decrementHour() {
         const { hour } = this.state;
+        const { hour24 } = this.props;
         const hourValue = hour || this.prevHour;
         this.setState({
-            hour: normalizeHour(getPrevHour(hourValue)),
+            hour: normalizeHour(getPrevHour(hourValue, hour24), hour24),
         });
     }
 
@@ -333,7 +339,7 @@ export default class TimeSelect extends Component {
         event.preventDefault();
         event.stopPropagation();
         const { hour, minutes, ampm } = this.state;
-        const { onChange, onCloseModal } = this.props;
+        const { onChange, onCloseModal, hour24 } = this.props;
         const currentHour = hour || this.prevHour;
         const currentMinutes = minutes || this.prevMinutes;
         const time = get24HourTime({
@@ -342,7 +348,10 @@ export default class TimeSelect extends Component {
             ampm,
         });
 
-        if (currentHour && currentMinutes && ampm) {
+        if (
+            (currentHour && currentMinutes && ampm && !hour24) ||
+            (currentHour && currentMinutes && hour24)
+        ) {
             onChange(time);
         }
         onCloseModal();
@@ -350,7 +359,7 @@ export default class TimeSelect extends Component {
 
     render() {
         const { hour, minutes, ampm } = this.state;
-        const { onCloseModal, cancelLabel, okLabel, hours24, className } = this.props;
+        const { onCloseModal, cancelLabel, okLabel, hour24, className } = this.props;
         const hourPlaceholder = this.prevHour || '--';
         const minutesPlaceholder = this.prevMinutes || '--';
 
@@ -391,7 +400,7 @@ export default class TimeSelect extends Component {
                         ref={this.minutesInputRef}
                     />
 
-                    <RenderIf isTrue={!hours24}>
+                    <RenderIf isTrue={!hour24}>
                         <AmPmSelect
                             tabIndex="-1"
                             value={ampm}
@@ -407,7 +416,7 @@ export default class TimeSelect extends Component {
                             id="time-picker_up-button"
                             tabIndex="-1"
                             variant="border-filled"
-                            icon={<UpIcon />}
+                            icon={<StyledUpArrow />}
                             size="small"
                             onMouseDown={this.handleButtonsDown}
                             onClick={this.incrementHandler}
@@ -419,7 +428,7 @@ export default class TimeSelect extends Component {
                             id="time-picker_down-button"
                             tabIndex="-1"
                             variant="border-filled"
-                            icon={<DownIcon />}
+                            icon={<StyledDownArrow />}
                             size="small"
                             onMouseDown={this.handleButtonsDown}
                             onClick={this.decrementHandler}
@@ -451,7 +460,7 @@ export default class TimeSelect extends Component {
 
 TimeSelect.propTypes = {
     onCloseModal: PropTypes.func,
-    hours24: PropTypes.bool,
+    hour24: PropTypes.bool,
     cancelLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     okLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     onChange: PropTypes.func,
@@ -461,7 +470,7 @@ TimeSelect.propTypes = {
 
 TimeSelect.defaultProps = {
     onCloseModal: () => {},
-    hours24: false,
+    hour24: false,
     cancelLabel: 'Cancel',
     okLabel: 'OK',
     onChange: () => {},

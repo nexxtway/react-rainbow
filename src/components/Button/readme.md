@@ -5,13 +5,13 @@ import React from 'react';
 import { Button } from 'react-rainbow-components';
 
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
-    <Button variant="base" label="Button Base" className="rainbow-m-around_medium" />
-    <Button label="Button Neutral" variant="neutral" className="rainbow-m-around_medium" />
-    <Button
-        label="Button Outline Brand"
-        variant="outline-brand"
-        className="rainbow-m-around_medium"
-    />
+        <Button variant="base" label="Button Base" className="rainbow-m-around_medium" />
+        <Button label="Button Neutral" variant="neutral" className="rainbow-m-around_medium" />
+        <Button
+            label="Button Outline Brand"
+            variant="outline-brand"
+            className="rainbow-m-around_medium"
+        />
 </div>
 ```
 
@@ -129,7 +129,7 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 const buttonsContainerStyles = {
     backgroundColor: '#061c3f',
-    borderRadius: '0.875rem',
+    borderRadius: '0 0 0.875rem 0.875rem',
 };
 
 <div

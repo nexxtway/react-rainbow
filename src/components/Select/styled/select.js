@@ -1,19 +1,27 @@
 import styled from 'styled-components';
 import {
-    COLOR_BRAND,
     COLOR_GRAY_2,
     COLOR_GRAY_3,
     COLOR_WHITE,
     COLOR_DARK_1,
     COLOR_GRAY_1,
-    COLOR_ERROR,
 } from '../../../styles/colors';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 import { PADDING_MEDIUM } from '../../../styles/paddings';
 import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
-import { SHADOW_OUTLINE, SHADOW_ERROR } from '../../../styles/shadows';
+import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledSelect = styled.select`
+const StyledSelect = styled.select.attrs(props => {
+    const { brand, error } = getTheme(props).palette;
+    const brandMainColor = brand.main;
+    const errorMainColor = error.main;
+    return {
+        brandMainColor,
+        errorMainColor,
+        brandShadow: `0 0 2px ${brandMainColor}`,
+        errorShadow: `0 0 2px ${errorMainColor}`,
+    };
+})`
     font: inherit;
     margin: 0;
     text-transform: none;
@@ -40,8 +48,8 @@ const StyledSelect = styled.select`
         outline: 0;
         padding-left: 0.9375rem;
         padding-right: 1.7375rem;
-        border: 0.125rem ${COLOR_BRAND} solid;
-        box-shadow: ${SHADOW_OUTLINE};
+        border: 0.125rem ${props => props.brandMainColor} solid;
+        box-shadow: ${props => props.brandShadow};
         line-height: 2rem;
     }
 
@@ -66,14 +74,14 @@ const StyledSelect = styled.select`
         props.error &&
         `
             background-color: ${COLOR_WHITE};
-            border: 0.125rem ${COLOR_ERROR} solid;
+            border: 0.125rem ${props.errorMainColor} solid;
             background-clip: padding-box;
             padding-left: ${PADDING_MEDIUM};
             padding-right: 1.8rem;
 
             &:focus, &:active {
-                box-shadow: ${SHADOW_ERROR};
-                border: 0.125rem ${COLOR_ERROR} solid;
+                box-shadow: ${props.errorShadow};
+                border: 0.125rem ${props.errorMainColor} solid;
             }
         `};
 `;

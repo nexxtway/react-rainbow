@@ -1,8 +1,13 @@
 import styled from 'styled-components';
 import { BORDER_RADIUS_1 } from '../../../styles/borderRadius';
-import { SHADOW_4, SHADOW_OUTLINE_2 } from '../../../styles/shadows';
+import { SHADOW_4 } from '../../../styles/shadows';
+import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledImagesUl = styled.ul`
+const StyledImagesUl = styled.ul.attrs(props => {
+    const brandMainColor = getTheme(props).palette.brand.main;
+
+    return { shadowBrand2: `0 0 8px ${brandMainColor}` };
+})`
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -20,7 +25,7 @@ const StyledImagesUl = styled.ul`
     :focus {
         color: inherit;
         text-decoration: inherit;
-        box-shadow: ${SHADOW_OUTLINE_2};
+        box-shadow: ${props => props.shadowBrand2};
         outline: none;
     }
 `;

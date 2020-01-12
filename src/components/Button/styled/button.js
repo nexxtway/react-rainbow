@@ -1,21 +1,36 @@
 import styled from 'styled-components';
 import {
     COLOR_WHITE,
-    COLOR_BRAND_ACTIVE,
-    COLOR_BRAND,
     COLOR_GRAY_1,
     COLOR_GRAY_2,
     COLOR_GRAY_3,
     COLOR_GRAY_4,
-    COLOR_ERROR,
-    COLOR_ERROR_ACTIVE,
-    COLOR_SUCCESS,
-    COLOR_SUCCESS_ACTIVE,
 } from '../../../styles/colors';
 import { FONT_SIZE_HEADING_SMALL } from '../../../styles/fontSizes';
-import { SHADOW_OUTLINE, SHADOW_5, SHADOW_1 } from '../../../styles/shadows';
+import { SHADOW_5, SHADOW_1 } from '../../../styles/shadows';
+import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledButton = styled.button`
+const StyledButton = styled.button.attrs(props => {
+    const theme = getTheme(props);
+    const { getContrastText, brand, success, error } = theme.palette;
+    const { main: brandMainColor, dark: brandDarkColor } = brand;
+    const { main: successMainColor, dark: successDarkColor } = success;
+    const { main: errorMainColor, dark: errorDarkColor } = error;
+
+    return {
+        brandMainColor,
+        brandDarkColor,
+        successMainColor,
+        successDarkColor,
+        errorMainColor,
+        errorDarkColor,
+        getContrastText,
+        // TODO: move up to defaultTheme or normalizeTheme
+        brandShadow: `0 0 2px ${brandMainColor}`,
+        successShadow: `0 0 2px ${successMainColor}`,
+        errorShadow: `0 0 2px ${errorMainColor}`,
+    };
+})`
     font: inherit;
     align-items: center;
     display: inline-flex;
@@ -28,7 +43,7 @@ const StyledButton = styled.button`
     border-radius: 100px;
     line-height: 2.375rem;
     text-decoration: none;
-    color: ${COLOR_BRAND};
+    color: ${props => props.brandMainColor};
     padding: 0 1rem;
     cursor: pointer;
     white-space: normal;
@@ -56,16 +71,16 @@ const StyledButton = styled.button`
 
     &:hover,
     &:focus {
-        color: ${COLOR_BRAND_ACTIVE};
+        color: ${props => props.brandDarkColor};
     }
 
     &:focus {
         outline: 0;
-        box-shadow: ${SHADOW_OUTLINE};
+        box-shadow: ${props => props.brandShadow};
     }
 
     &:active {
-        color: ${COLOR_BRAND_ACTIVE};
+        color: ${props => props.brandDarkColor};
         transform: scale(0.95);
         transition: all 0.2s ease;
     }
@@ -85,7 +100,7 @@ const StyledButton = styled.button`
         `
             background-color: ${COLOR_WHITE};
             border: 1px solid ${COLOR_GRAY_2};
-            color: ${COLOR_BRAND};
+            color: ${props.brandMainColor};
 
             &:hover,
             &:focus,
@@ -97,50 +112,54 @@ const StyledButton = styled.button`
                 background-color: ${props.isLoading ? COLOR_WHITE : 'transparent'};
             }
         `};
-    ${props =>
-        props.variant === 'brand' &&
-        `
-            background-color: ${COLOR_BRAND};
-            border: 1px solid ${COLOR_BRAND};
-            color: ${COLOR_WHITE};
+    ${props => {
+        const brandMainContrastText = props.getContrastText(props.brandMainColor);
+        const brandDarkContrastText = props.getContrastText(props.brandDarkColor);
+
+        return (
+            props.variant === 'brand' &&
+            `
+            background-color: ${props.brandMainColor};
+            border: 1px solid ${props.brandMainColor};
+            color: ${brandMainContrastText};
 
             &:link,
-            &:visited,
-            &:active {
-                color: ${COLOR_WHITE}
+            &:visited {
+                color: ${brandMainContrastText}
             }
 
             &:hover,
             &:focus,
             &:active {
-                background-color: ${COLOR_BRAND_ACTIVE};
-                border-color: ${COLOR_BRAND_ACTIVE};
-                color: ${COLOR_WHITE};
+                background-color: ${props.brandDarkColor};
+                border-color: ${props.brandDarkColor};
+                color: ${brandDarkContrastText};
             }
-        
+
             &[disabled] {
-                background-color: ${props.isLoading ? COLOR_BRAND : COLOR_GRAY_1};
-                border-color: ${props.isLoading ? COLOR_BRAND : COLOR_GRAY_1};
+                background-color: ${props.isLoading ? props.brandMainColor : COLOR_GRAY_1};
+                border-color: ${props.isLoading ? props.brandMainColor : COLOR_GRAY_1};
                 color: ${COLOR_GRAY_2};
             }
-        `};
+        `
+        );
+    }};
     ${props =>
         props.variant === 'outline-brand' &&
         `
             background-color: transparent;
-            border: 1px solid ${COLOR_BRAND};
-            color: ${COLOR_BRAND};
+            border: 1px solid ${props.brandMainColor};
+            color: ${props.brandMainColor};
 
             &:hover,
             &:focus,
             &:active {
-                border-color: ${COLOR_BRAND_ACTIVE};
+                border-color: ${props.brandDarkColor};
             }
         
             &[disabled] {
                 background-color: transparent;
-                border-color: ${props.isLoading ? COLOR_BRAND : COLOR_GRAY_2};
-                
+                border-color: ${props.isLoading ? props.brandMainColor : COLOR_GRAY_2};
             }
         `};
     ${props =>
@@ -190,64 +209,83 @@ const StyledButton = styled.button`
                 color: ${COLOR_GRAY_4};
             }
         `};
-    ${props =>
-        props.variant === 'destructive' &&
-        `
-            background-color: ${COLOR_ERROR};
-            border: 1px solid ${COLOR_ERROR};
-            color: ${COLOR_WHITE};
+    ${props => {
+        const errorMainContrastText = props.getContrastText(props.errorMainColor);
+        const errorDarkContrastText = props.getContrastText(props.errorDarkColor);
+
+        return (
+            props.variant === 'destructive' &&
+            `
+            background-color: ${props.errorMainColor};
+            border: 1px solid ${props.errorMainColor};
+            color: ${errorMainContrastText};
 
             &:link,
-            &:visited,
-            &:active {
-                color: ${COLOR_WHITE};
+            &:visited {
+                color: ${errorMainContrastText};
             }
         
             &:hover,
             &:focus {
-                background-color: ${COLOR_ERROR_ACTIVE};
-                color: ${COLOR_WHITE};
+                background-color: ${props.errorDarkColor};
+                border-color: ${props.errorDarkColor};
+                color: ${errorDarkContrastText};
+            }
+
+            &:focus {
+                box-shadow: ${props.errorShadow};
             }
         
             &:active {
-                background-color: ${COLOR_ERROR_ACTIVE};
-                border-color: ${COLOR_ERROR_ACTIVE};
+                background-color: ${props.errorDarkColor};
+                border-color: ${props.errorDarkColor};
+                color: ${errorDarkContrastText};
             }
         
             &[disabled] {
-                background-color: ${props.isLoading ? COLOR_ERROR : COLOR_GRAY_1};
-                border-color: ${props.isLoading ? COLOR_ERROR : COLOR_GRAY_1};
+                background-color: ${props.isLoading ? props.errorMainColor : COLOR_GRAY_1};
+                border-color: ${props.isLoading ? props.errorMainColor : COLOR_GRAY_1};
                 color: ${COLOR_GRAY_2};
             }
-        `};
-    ${props =>
-        props.variant === 'success' &&
         `
-            background-color: ${COLOR_SUCCESS};
-            border: 1px solid ${COLOR_SUCCESS};
-            color: ${COLOR_WHITE};
+        );
+    }};
+    ${props => {
+        const successMainContrastText = props.getContrastText(props.successMainColor);
+        const successDarkContrastText = props.getContrastText(props.successDarkColor);
+
+        return (
+            props.variant === 'success' &&
+            `
+            background-color: ${props.successMainColor};
+            border: 1px solid ${props.successMainColor};
+            color: ${successMainContrastText};
 
             &:link,
-            &:visited,
-            &:active,
-            &:hover,
-            &:focus {
-                color: ${COLOR_WHITE};
+            &:visited {
+                color: ${successMainContrastText};
             }
         
             &:hover,
             &:focus,
             &:active {
-                background-color: ${COLOR_SUCCESS_ACTIVE};
-                border-color: ${COLOR_SUCCESS_ACTIVE};
+                background-color: ${props.successDarkColor};
+                border-color: ${props.successDarkColor};
+                color: ${successDarkContrastText};
+            }
+
+            &:focus {
+                box-shadow: ${props.successShadow};
             }
         
             &[disabled] {
-                background-color: ${props.isLoading ? COLOR_SUCCESS : COLOR_GRAY_1};
-                border-color: ${props.isLoading ? COLOR_SUCCESS : COLOR_GRAY_1};
+                background-color: ${props.isLoading ? props.successMainColor : COLOR_GRAY_1};
+                border-color: ${props.isLoading ? props.successMainColor : COLOR_GRAY_1};
                 color: ${COLOR_GRAY_2};
             }
-        `};
+        `
+        );
+    }};
     ${props => props.shaded && `box-shadow: ${SHADOW_1};`};
 `;
 

@@ -195,6 +195,68 @@ class PageLookup {
     waitUntilOpen() {
         browser.waitUntil(() => this.isMenuOpen());
     }
+
+    /**
+     * It moves the pointer over the menu scroll up arrow
+     * @method
+     */
+    hoverScrollUpArrow() {
+        return $(this.rootElement)
+            .$('[data-id=lookup-arrow-button-up]')
+            .moveTo();
+    }
+
+    /**
+     * It moves the pointer out of the menu scroll up arrow
+     * @method
+     */
+    mouseLeaveScrollUpArrow() {
+        return $(this.rootElement)
+            .$('input[type="text"]')
+            .moveTo();
+    }
+
+    /**
+     * It moves the pointer over the menu scroll down arrow
+     * @method
+     */
+    hoverScrollDownArrow() {
+        return $(this.rootElement)
+            .$('[data-id=lookup-arrow-button-down]')
+            .moveTo();
+    }
+
+    /**
+     * It moves the pointer out of the menu scroll down arrow
+     * @method
+     */
+    mouseLeaveScrollDownArrow() {
+        return $(this.rootElement)
+            .$('input[type="text"]')
+            .moveTo();
+    }
+
+    /**
+     * Returns true when the the arrow to scroll down exits, false otherwise.
+     * @method
+     * @returns {bool}
+     */
+    arrowDownExists() {
+        return $(this.rootElement)
+            .$('[data-id="lookup-arrow-button-down"]')
+            .isExisting();
+    }
+
+    /**
+     * Returns true when the the arrow to scroll down exits, false otherwise.
+     * @method
+     * @returns {bool}
+     */
+    arrowUpExists() {
+        return $(this.rootElement)
+            .$('[data-id="lookup-arrow-button-up"]')
+            .isExisting();
+    }
 }
 
 module.exports = PageLookup;

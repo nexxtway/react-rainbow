@@ -39,7 +39,7 @@ const inputStyles = {
 
 <Application>
     <section>
-        <header className="rainbow-align-content_space-between rainbow-background-color_white rainbow-p-vertical_medium react-rainbow-golbal-header">
+        <header className="rainbow-align-content_space-between rainbow-background-color_white rainbow-p-vertical_medium react-rainbow-global-header">
             <img
                 src="images/rainbow-logo.svg"
                 alt="rainbow logo"

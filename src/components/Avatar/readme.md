@@ -53,6 +53,24 @@ import { Avatar } from 'react-rainbow-components';
 </div>
 ```
 
+##### fallback user initials with specific color
+
+```js
+import React from 'react';
+import { Avatar } from 'react-rainbow-components';
+
+<div className="rainbow-p-vertical_x-large rainbow-p-left_medium">
+    <div className="rainbow-m-horizontal_medium">
+        <Avatar
+            assistiveText="Jane Doe"
+            initials="JD"
+            title="Jane Doe"
+            backgroundColor="#f00"
+        />
+    </div>
+</div>
+```
+
 ##### fallback user icon
 
 ```js
@@ -77,7 +95,7 @@ import React from 'react';
 import { Avatar } from 'react-rainbow-components';
 
 const avatarContainerStyles = {
-    borderRadius: '0.875rem',
+    borderRadius: '0 0 0.875rem 0.875rem',
 };
 
 <div

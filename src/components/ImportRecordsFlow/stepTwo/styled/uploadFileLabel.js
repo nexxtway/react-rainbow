@@ -1,11 +1,25 @@
 import styled from 'styled-components';
-import { SHADOW_OUTLINE } from '../../../../styles/shadows';
-import { COLOR_BRAND_ACTIVE, COLOR_WHITE } from '../../../../styles/colors';
+import getTheme from '../../../../styles/helpers/getTheme';
 
-const StyledUploadFileLabel = styled.label`
-    background-color: #01b6f5;
-    border: 1px solid #01b6f5;
-    color: white;
+const StyledUploadFileLabel = styled.label.attrs(props => {
+    const theme = getTheme(props);
+    const { getContrastText, brand } = theme.palette;
+    const { main: brandMainColor, dark: brandDarkColor } = brand;
+    const brandMainContrastText = getContrastText(brandMainColor);
+    const brandDarkContrastText = getContrastText(brandDarkColor);
+
+    return {
+        brandMainColor,
+        brandDarkColor,
+        brandMainContrastText,
+        brandDarkContrastText,
+        // TODO: move up to defaultTheme or normalizeTheme
+        brandShadow: `0 0 2px ${brandMainColor}`,
+    };
+})`
+    background-color: ${props => props.brandMainColor};
+    border: 1px solid ${props => props.brandMainColor};
+    color: ${props => props.brandMainContrastText};
     padding: 0 1rem;
     text-align: center;
     vertical-align: middle;
@@ -26,11 +40,10 @@ const StyledUploadFileLabel = styled.label`
 
     &:focus {
         outline: 0;
-        box-shadow: ${SHADOW_OUTLINE};
+        box-shadow: ${props => props.brandShadow};
     }
 
     &:active {
-        color: ${COLOR_BRAND_ACTIVE};
         transform: scale(0.95);
         transition: all 0.2s ease;
         text-decoration: none;
@@ -39,9 +52,9 @@ const StyledUploadFileLabel = styled.label`
     &:hover,
     &:focus,
     &:active {
-        background-color: ${COLOR_BRAND_ACTIVE};
-        border-color: ${COLOR_BRAND_ACTIVE};
-        color: ${COLOR_WHITE};
+        background-color: ${props => props.brandDarkColor};
+        border-color: ${props => props.brandDarkColor};
+        color: ${props => props.brandMainContrastText};
     }
 `;
 

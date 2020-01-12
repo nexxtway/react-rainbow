@@ -1,38 +1,45 @@
 import styled from 'styled-components';
 import HiddenElement from '../../../Structural/hiddenElement';
-import {
-    COLOR_GRAY_1,
-    COLOR_GRAY_2,
-    COLOR_WHITE,
-    COLOR_BRAND,
-    COLOR_ERROR,
-} from '../../../../styles/colors';
+import { COLOR_GRAY_1, COLOR_GRAY_2, COLOR_WHITE } from '../../../../styles/colors';
 import { BORDER_RADIUS_3 } from '../../../../styles/borderRadius';
 import { MARGIN_SMALL } from '../../../../styles/margins';
-import { SHADOW_OUTLINE, SHADOW_ERROR } from '../../../../styles/shadows';
+import getTheme from '../../../../styles/helpers/getTheme';
 
 function getInitialBorder(props) {
     if (props.error) {
-        return `2px solid ${COLOR_ERROR}`;
+        return `2px solid ${props.errorMainColor}`;
     }
     return `1px solid ${COLOR_GRAY_2}`;
 }
 
 function getColor(props) {
     if (props.error) {
-        return COLOR_ERROR;
+        return props.errorMainColor;
     }
-    return COLOR_BRAND;
+    return props.brandMainColor;
 }
 
 function getShadow(props) {
     if (props.error) {
-        return SHADOW_ERROR;
+        return props.errorShadow;
     }
-    return SHADOW_OUTLINE;
+    return props.brandShadow;
 }
 
-const Checkbox = styled(HiddenElement)`
+const Checkbox = styled(HiddenElement).attrs(props => {
+    const theme = getTheme(props);
+    const { brand, error } = theme.palette;
+    const { main: brandMainColor } = brand;
+    const { main: errorMainColor } = error;
+
+    return {
+        brandMainColor,
+        errorMainColor,
+        // TODO: move up to defaultTheme or normalizeTheme
+        brandShadow: `0 0 2px ${brandMainColor}`,
+        errorShadow: `0 0 2px ${errorMainColor}`,
+    };
+})`
     & ~ label > .rainbow-input_faux {
         width: 20px;
         height: 20px;
