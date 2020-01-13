@@ -1,14 +1,11 @@
 import styled from 'styled-components';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledDayAdjacent = styled.span.attrs(props => {
-    const disabledText = getTheme(props).palette.text.disabled;
-    return { disabledText };
-})`
+const StyledDayAdjacent = attachThemeAttrs(styled.span)`
     display: inline-block;
     background-color: transparent;
-    color: ${props => props.disabledText};
+    color: ${props => props.palette.text.disabled};
     text-align: center;
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
     font-weight: 400;

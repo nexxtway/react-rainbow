@@ -1,17 +1,8 @@
 import styled from 'styled-components';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledLi = styled.li.attrs(props => {
-    const palette = getTheme(props).palette;
-    const { main: mainText, disabled: disabledText } = palette.text;
-    const hover = palette.action.hover;
-    return {
-        mainText,
-        hover,
-        disabledText,
-    };
-})`
+const StyledLi = attachThemeAttrs(styled.li)`
     font: inherit;
     line-height: 1.5;
     width: 100%;
@@ -26,7 +17,7 @@ const StyledLi = styled.li.attrs(props => {
     justify-content: space-between;
     align-items: center;
     padding: 0.75rem 0.75rem;
-    color: ${props => props.mainText};
+    color: ${props => props.palette.text.main};
     white-space: nowrap;
     cursor: pointer;
     text-decoration: none;
@@ -34,16 +25,16 @@ const StyledLi = styled.li.attrs(props => {
 
     &:focus {
         outline: 0;
-        background-color: ${props => props.hover};
+        background-color: ${props => props.palette.action.hover};
     }
 
     &:active {
-        background-color: ${props => props.hover};
+        background-color: ${props => props.palette.action.hover};
         outline: 0;
     }
 
     &[aria-disabled='true'] {
-        color: ${props => props.disabledText};
+        color: ${props => props.palette.text.disabled};
         cursor: default;
 
         &:hover,

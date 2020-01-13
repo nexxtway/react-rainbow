@@ -1,13 +1,10 @@
 import styled from 'styled-components';
 import { FONT_SIZE_HEADING_MEDIUM } from '../../../styles/fontSizes';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledMonth = styled.h3.attrs(props => {
-    const mainText = getTheme(props).palette.text.main;
-    return { mainText };
-})`
+const StyledMonth = attachThemeAttrs(styled.h3)`
     font-size: ${FONT_SIZE_HEADING_MEDIUM};
-    color: ${props => props.mainText};
+    color: ${props => props.palette.text.main};
     text-transform: capitalize;
     font-weight: 500;
     margin: 0;

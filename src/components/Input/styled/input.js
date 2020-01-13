@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
 const hasLeftIcon = props => props.icon && props.iconPosition === 'left';
 const hasRightIcon = props => props.icon && props.iconPosition === 'right';
 
-const Input = styled.input.attrs(props => getTheme(props))`
+const Input = attachThemeAttrs(styled.input)`
     font: inherit;
     background-color: ${props => props.palette.background.main};
     border: 1px solid ${props => props.palette.border.main};
@@ -38,7 +38,7 @@ const Input = styled.input.attrs(props => getTheme(props))`
         padding: 0 0.9375rem;
         border: 2px solid ${props => props.palette.brand.main};
         background-color: ${props => props.palette.background.main};
-        box-shadow: ${props => props.palette.shadows.brand};
+        box-shadow: ${props => props.shadows.brand};
     }
 
     ::placeholder {
@@ -74,7 +74,7 @@ const Input = styled.input.attrs(props => getTheme(props))`
         :active {
             background-color: ${props.palette.background.main};
             border: 2px solid ${props.palette.error.main};
-            box-shadow: ${props.palette.shadows.error};
+            box-shadow: ${props.shadows.error};
             padding: 0 1rem;
             outline: 0;
         }

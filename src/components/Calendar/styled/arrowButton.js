@@ -1,21 +1,13 @@
 import styled from 'styled-components';
 import ButtonIcon from '../../ButtonIcon';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledArrowButton = styled(ButtonIcon).attrs(props => {
-    const palette = getTheme(props).palette;
-    const brandMainColor = palette.brand.main;
-    const disabledText = palette.text.disabled;
-    return {
-        brandMainColor,
-        disabledText,
-    };
-})`
-    color: ${props => props.brandMainColor};
+const StyledArrowButton = attachThemeAttrs(styled(ButtonIcon))`
+    color: ${props => props.palette.brand.main};
     ${props =>
         props.disabled &&
         `
-            color: ${props.disabledText};
+            color: ${props.palette.text.disabled};
         `};
 `;
 

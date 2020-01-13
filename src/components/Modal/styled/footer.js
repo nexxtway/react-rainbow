@@ -1,11 +1,8 @@
 import styled from 'styled-components';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledFooter = styled.footer.attrs(props => {
-    const divider = getTheme(props).palette.border.divider;
-    return { divider };
-})`
-    border-top: 0.0625px solid ${props => props.divider};
+const StyledFooter = attachThemeAttrs(styled.footer)`
+    border-top: 0.0625px solid ${props => props.palette.border.divider};
     padding: 0.75rem 1rem;
     flex-shrink: 0;
     display: block;

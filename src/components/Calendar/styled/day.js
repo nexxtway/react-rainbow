@@ -1,13 +1,10 @@
 import styled from 'styled-components';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledDay = styled.td.attrs(props => {
-    const mainText = getTheme(props).palette.text.main;
-    return { mainText };
-})`
+const StyledDay = attachThemeAttrs(styled.td)`
     text-align: center;
-    color: ${props => props.mainText};
+    color: ${props => props.palette.text.main};
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
     font-weight: 400;
     border-radius: 100%;

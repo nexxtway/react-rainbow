@@ -1,20 +1,8 @@
 import styled from 'styled-components';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledDayButton = styled.button.attrs(props => {
-    const palette = getTheme(props).palette;
-    const brandMainColor = palette.brand.main;
-    const hover = palette.action.hover;
-    const brandShadow = palette.shadows.brand;
-    const getContrastText = palette.getContrastText;
-    return {
-        brandMainColor,
-        hover,
-        brandShadow,
-        getContrastText,
-    };
-})`
+const StyledDayButton = attachThemeAttrs(styled.button)`
     font: inherit;
     border: none;
     outline: none;
@@ -34,7 +22,7 @@ const StyledDayButton = styled.button.attrs(props => {
 
     &:hover {
         transition: all 0.2s ease;
-        background-color: ${props => props.hover};
+        background-color: ${props => props.palette.action.hover};
     }
 
     &:active {
@@ -44,7 +32,7 @@ const StyledDayButton = styled.button.attrs(props => {
 
     &:focus,
     &:active {
-        box-shadow: ${props => props.brandShadow};
+        box-shadow: ${props => props.shadows.brand};
     }
 
     @media (max-width: 600px) {
@@ -54,8 +42,8 @@ const StyledDayButton = styled.button.attrs(props => {
     ${props =>
         props.isSelected &&
         `
-            color: ${props.getContrastText(props.brandMainColor)};
-            background-color: ${props.brandMainColor};
+            color: ${props.palette.getContrastText(props.palette.brand.main)};
+            background-color: ${props.palette.brand.main};
             text-align: center;
             font-size: ${FONT_SIZE_TEXT_MEDIUM};
             font-weight: 600;
@@ -74,7 +62,7 @@ const StyledDayButton = styled.button.attrs(props => {
             }
         
             &:hover {
-                background-color: ${props.brandMainColor};
+                background-color: ${props.palette.brand.main};
             }
 
             @media (max-width: 600px) {

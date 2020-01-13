@@ -32,7 +32,7 @@ function normalizeColors(colors) {
     }, {});
 }
 
-function normalizeBackground(background) {
+function resolveCustomBackground(background) {
     if (background && isValidColor(background)) {
         const dark = isDark(background);
         const mainText = getContrastText(background);
@@ -44,10 +44,10 @@ function normalizeBackground(background) {
             },
             text: {
                 main: mainText,
-                title: dark ? darken(mainText, 0.6) : lighten(mainText, 0.6),
-                header: dark ? darken(mainText, 0.5) : lighten(mainText, 0.5),
-                label: dark ? darken(mainText, 0.6) : lighten(mainText, 0.6),
-                disabled: dark ? darken(mainText, 0.7) : lighten(mainText, 0.7),
+                title: dark ? darken(mainText, 0.5) : lighten(mainText, 0.5),
+                header: dark ? darken(mainText, 0.7) : lighten(mainText, 0.7),
+                label: dark ? darken(mainText, 0.5) : lighten(mainText, 0.5),
+                disabled: dark ? darken(mainText, 0.6) : lighten(mainText, 0.6),
             },
             border: {
                 main: dark ? lighten(background, 0.3) : darken(background, 0.3),
@@ -63,7 +63,7 @@ function normalizeBackground(background) {
     return {};
 }
 
-function normalizeSahdows(colors, background) {
+function resolveCustomSahdows(colors, background) {
     let shadows = {};
     if (colors.brand) {
         shadows.brand = `0 0 2px ${colors.brand.main}`;
@@ -101,11 +101,11 @@ export default function normalizeTheme(theme) {
             palette: {
                 ...defaultTheme.palette,
                 ...colors,
-                ...normalizeBackground(mainBackground),
-                shadows: {
-                    ...defaultTheme.palette.shadows,
-                    ...normalizeSahdows(colors, mainBackground),
-                },
+                ...resolveCustomBackground(mainBackground),
+            },
+            shadows: {
+                ...defaultTheme.shadows,
+                ...resolveCustomSahdows(colors, mainBackground),
             },
         },
     };

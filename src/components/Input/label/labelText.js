@@ -1,12 +1,9 @@
 import styled from 'styled-components';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const Label = styled.label.attrs(props => {
-    const lebelText = getTheme(props).palette.text.label;
-    return { lebelText };
-})`
-    color: ${props => props.lebelText};
+const Label = attachThemeAttrs(styled.label)`
+    color: ${props => props.palette.text.label};
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
     line-height: 1.5;
     margin-bottom: 0.125rem;

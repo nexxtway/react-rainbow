@@ -1,20 +1,20 @@
 import styled from 'styled-components';
 import { BORDER_RADIUS_1 } from '../../../styles/borderRadius';
 import { MARGIN_LARGE } from '../../../styles/margins';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledContainer = styled.article.attrs(props => getTheme(props))`
+const StyledContainer = attachThemeAttrs(styled.article)`
     position: relative;
     background-color: ${props => props.palette.background.main};
     color: ${props => props.palette.text.main};
     border: 0.0625rem solid ${props => props.palette.border.divider};
     border-radius: ${BORDER_RADIUS_1};
     background-clip: padding-box;
-    box-shadow: ${props => props.palette.shadows.shadow_4};
+    box-shadow: ${props => props.shadows.shadow_4};
     overflow: hidden;
 
     &:hover {
-        box-shadow: ${props => props.palette.shadows.shadow_6};
+        box-shadow: ${props => props.shadows.shadow_6};
         transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     }
 

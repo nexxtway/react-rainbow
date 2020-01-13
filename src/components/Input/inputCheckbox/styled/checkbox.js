@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import HiddenElement from '../../../Structural/hiddenElement';
 import { BORDER_RADIUS_3 } from '../../../../styles/borderRadius';
 import { MARGIN_SMALL } from '../../../../styles/margins';
-import getTheme from '../../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttr';
 
 function getInitialBorder(props) {
     if (props.error) {
@@ -20,12 +20,12 @@ function getColor(props) {
 
 function getShadow(props) {
     if (props.error) {
-        return props.palette.shadows.error;
+        return props.shadows.error;
     }
-    return props.palette.shadows.brand;
+    return props.shadows.brand;
 }
 
-const Checkbox = styled(HiddenElement).attrs(props => getTheme(props))`
+const Checkbox = attachThemeAttrs(styled(HiddenElement))`
     & ~ label > .rainbow-input_faux {
         width: 20px;
         height: 20px;

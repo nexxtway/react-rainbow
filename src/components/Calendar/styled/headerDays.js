@@ -1,13 +1,10 @@
 import styled from 'styled-components';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledHeaderDays = styled.th.attrs(props => {
-    const headerText = getTheme(props).palette.text.header;
-    return { headerText };
-})`
+const StyledHeaderDays = attachThemeAttrs(styled.th)`
     text-align: center;
-    color: ${props => props.headerText};
+    color: ${props => props.palette.text.header};
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
     font-weight: 400;
     line-height: 40px;

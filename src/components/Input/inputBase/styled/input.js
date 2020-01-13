@@ -1,20 +1,17 @@
 import styled from 'styled-components';
 import Input from '../../styled/input';
-import getTheme from '../../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttr';
 
 const hasLeftIcon = props => props.icon && props.iconPosition === 'left';
 const hasRightIcon = props => props.icon && props.iconPosition === 'right';
 
-const StyledInput = styled(Input).attrs(props => {
-    const mainText = getTheme(props).palette.text.main;
-    return { mainText };
-})`
+const StyledInput = attachThemeAttrs(styled(Input))`
     &[readonly] {
         padding-left: 0;
         padding-right: 0;
         background-color: transparent;
         border: 2px transparent solid;
-        color: ${props => props.mainText};
+        color: ${props => props.palette.text.main};
         font-weight: 400;
         cursor: text;
         box-sizing: border-box;

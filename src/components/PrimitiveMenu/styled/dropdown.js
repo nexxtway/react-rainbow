@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledDropdown = styled.div.attrs(props => getTheme(props))`
+const StyledDropdown = attachThemeAttrs(styled.div)`
     position: absolute;
     z-index: 2000;
     left: 50%;
@@ -15,7 +15,7 @@ const StyledDropdown = styled.div.attrs(props => getTheme(props))`
     padding: 0.5rem 0;
     font-size: 0.75rem;
     background: ${props => props.palette.background.main};
-    box-shadow: ${props => props.palette.shadows.shadow_2};
+    box-shadow: ${props => props.shadows.shadow_2};
     transform: translateX(-50%);
     display: none;
     opacity: 0;

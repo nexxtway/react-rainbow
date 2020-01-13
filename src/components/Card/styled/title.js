@@ -1,14 +1,11 @@
 import styled from 'styled-components';
 import { FONT_SIZE_HEADING_MEDIUM } from '../../../styles/fontSizes';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledTitle = styled.h2.attrs(props => {
-    const titleText = getTheme(props).palette.text.title;
-    return { titleText };
-})`
+const StyledTitle = attachThemeAttrs(styled.h2)`
     font-size: ${FONT_SIZE_HEADING_MEDIUM};
     font-weight: 500;
-    color: ${props => props.titleText};
+    color: ${props => props.palette.text.title};
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

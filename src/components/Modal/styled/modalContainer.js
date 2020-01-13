@@ -1,11 +1,8 @@
 import styled from 'styled-components';
 import { BORDER_RADIUS_1 } from '../../../styles/borderRadius';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledModalContainer = styled.section.attrs(props => {
-    const palette = getTheme(props).palette;
-    return { palette };
-})`
+const StyledModalContainer = attachThemeAttrs(styled.section)`
     top: 0;
     right: 0;
     bottom: 0;

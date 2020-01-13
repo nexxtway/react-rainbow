@@ -52,17 +52,17 @@ export default {
         action: {
             hover: COLOR_GRAY_1,
         },
-        shadows: {
-            brand: `0 0 2px ${COLOR_BRAND}`,
-            success: `0 0 2px ${COLOR_SUCCESS}`,
-            error: `0 0 2px ${COLOR_ERROR}`,
-            shadow_1: `0 0 2px 0 ${COLOR_GRAY_3}`,
-            shadow_2: `0 2px 4px 0 ${COLOR_GRAY_2}`,
-            shadow_3: `0 0 1px 0 ${COLOR_GRAY_3}`,
-            shadow_4: `0 1px 2px 0 ${COLOR_GRAY_2}`,
-            shadow_5: `0 0 3px ${COLOR_GRAY_1}`,
-            shadow_6: `0 2px 12px 0 ${COLOR_GRAY_2}`,
-        },
         getContrastText,
+    },
+    shadows: {
+        brand: `0 0 2px ${COLOR_BRAND}`,
+        success: `0 0 2px ${COLOR_SUCCESS}`,
+        error: `0 0 2px ${COLOR_ERROR}`,
+        shadow_1: `0 0 2px 0 ${COLOR_GRAY_3}`,
+        shadow_2: `0 2px 4px 0 ${COLOR_GRAY_2}`,
+        shadow_3: `0 0 1px 0 ${COLOR_GRAY_3}`,
+        shadow_4: `0 1px 2px 0 ${COLOR_GRAY_2}`,
+        shadow_5: `0 0 3px ${COLOR_GRAY_1}`,
+        shadow_6: `0 2px 12px 0 ${COLOR_GRAY_2}`,
     },
 };

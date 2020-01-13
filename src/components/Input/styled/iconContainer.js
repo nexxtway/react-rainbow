@@ -1,16 +1,8 @@
 import styled from 'styled-components';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const IconContainer = styled.span.attrs(props => {
-    const palette = getTheme(props).palette;
-    const errorMainColor = palette.error.main;
-    const headerText = palette.text.header;
-    return {
-        errorMainColor,
-        headerText,
-    };
-})`
-    color: ${props => props.headerText};
+const IconContainer = attachThemeAttrs(styled.span)`
+    color: ${props => props.palette.text.header};
     height: 100%;
     width: 22px;
     top: 0;
@@ -45,8 +37,8 @@ const IconContainer = styled.span.attrs(props => {
     ${props =>
         props.error &&
         `
-        fill: ${props.errorMainColor};
-        color: ${props.errorMainColor};
+        fill: ${props.palette.error.main};
+        color: ${props.palette.error.main};
     `}
 `;
 
