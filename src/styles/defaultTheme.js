@@ -50,6 +50,7 @@ export default {
             disabled: COLOR_GRAY_2,
         },
         action: {
+            active: COLOR_GRAY_1,
             hover: COLOR_GRAY_1,
         },
         getContrastText,

@@ -55,6 +55,7 @@ function resolveCustomBackground(background) {
                 disabled: dark ? lighten(background, 0.1) : darken(background, 0.1),
             },
             action: {
+                active: dark ? lighten(background, 0.08) : darken(background, 0.08),
                 hover: dark ? lighten(background, 0.08) : darken(background, 0.08),
             },
         };
