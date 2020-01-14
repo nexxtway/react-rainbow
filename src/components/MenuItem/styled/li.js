@@ -25,7 +25,7 @@ const StyledLi = attachThemeAttrs(styled.li)`
 
     &:focus {
         outline: 0;
-        background-color: ${props => props.palette.action.hover};
+        background-color: ${props => props.palette.action.active};
     }
 
     &:active {

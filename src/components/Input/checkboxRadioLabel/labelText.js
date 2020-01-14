@@ -8,7 +8,7 @@ const LabelText = attachThemeAttrs(styled.span)`
     color: ${props => props.palette.text.main};
     font-size: ${FONT_SIZE_TEXT_LARGE};
     line-height: 1.65rem;
-    ${props => props.disabled && `color: ${props.palette.text.header};`};
+    ${props => props.disabled && `color: ${props.palette.text.disabled};`};
 `;
 
 export default LabelText;
