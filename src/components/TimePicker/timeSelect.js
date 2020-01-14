@@ -92,6 +92,7 @@ export default class TimeSelect extends Component {
     }
 
     handleClickOutside() {
+        if (this.inputFocusedIndex === -1) return;
         this.inputFocusedIndex = -1;
         this.forceUpdate();
     }
