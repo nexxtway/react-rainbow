@@ -47,18 +47,18 @@ Application.propTypes = {
     locale: PropTypes.string,
     /** The application theme. */
     theme: PropTypes.shape({
-        rainbow: {
+        rainbow: PropTypes.shape({
             palette: PropTypes.shape({
                 brand: PropTypes.string,
                 success: PropTypes.string,
                 error: PropTypes.string,
                 warning: PropTypes.string,
-                background: {
+                background: PropTypes.shape({
                     primary: PropTypes.string,
                     secondary: PropTypes.string,
-                },
+                }),
             }),
-        },
+        }),
     }),
 };
 
