@@ -20,6 +20,11 @@ export default class AmPmSelect extends PureComponent {
         this.handleOnChange = this.handleOnChange.bind(this);
     }
 
+    componentDidUpdate() {
+        const { isFocused } = this.props;
+        if (isFocused) this.focus();
+    }
+
     handleFocus() {
         const { onChange, onFocus, defaultValue, value } = this.props;
         if (!value) {
