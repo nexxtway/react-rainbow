@@ -26,6 +26,7 @@ import StyledSelectValue from './styled/selectValue';
 import StyledVerticalButtonsContainer from './styled/verticalButtonsContainer';
 import StyledFooter from './styled/footer';
 import StyledButton from './styled/button';
+import OutsideClick from '../../libs/outsideClick';
 
 function preventDefault(event) {
     event.preventDefault();
@@ -38,7 +39,9 @@ export default class TimeSelect extends Component {
             hour: getHour(props.value),
             minutes: getMinutes(props.value),
             ampm: getAmPm(props.value),
+            inputFocusedIndex: 0,
         };
+        this.containerRef = React.createRef();
         this.hourInputRef = React.createRef();
         this.minutesInputRef = React.createRef();
         this.amPmInputRef = React.createRef();
@@ -47,7 +50,6 @@ export default class TimeSelect extends Component {
             1: this.minutesInputRef,
             2: this.amPmInputRef,
         };
-        this.inputFocusedIndex = 0;
         this.hasPropValue = !!props.value;
         this.handleChangeHour = this.handleChangeHour.bind(this);
         this.handleFocusHour = this.handleFocusHour.bind(this);
@@ -62,6 +64,12 @@ export default class TimeSelect extends Component {
         this.handleButtonsFocus = this.handleButtonsFocus.bind(this);
         this.handleChangeTime = this.handleChangeTime.bind(this);
         this.handleButtonsDown = this.handleButtonsDown.bind(this);
+        this.handleClickOutside = this.handleClickOutside.bind(this);
+        this.outsideClick = new OutsideClick();
+    }
+
+    componentDidMount() {
+        this.outsideClick.startListening(this.containerRef.current, this.handleClickOutside);
     }
 
     componentDidUpdate(prevProps) {
@@ -72,12 +80,22 @@ export default class TimeSelect extends Component {
         }
     }
 
+    componentWillUnmount() {
+        this.outsideClick.stopListening();
+    }
+
     setNextAmPmValue() {
         const { ampm } = this.state;
         const nextAmPmValue = getNextAmPmValue(ampm);
         this.setState({
             ampm: nextAmPmValue,
         });
+    }
+
+    handleClickOutside() {
+        const { inputFocusedIndex } = this.state;
+        if (inputFocusedIndex === -1) return;
+        this.setState({ inputFocusedIndex: -1 });
     }
 
     handleChangeHour(event) {
@@ -120,9 +138,9 @@ export default class TimeSelect extends Component {
 
     handleFocusHour() {
         const { hour } = this.state;
-        this.inputFocusedIndex = 0;
         this.prevHour = hour || this.prevHour;
         this.setState({
+            inputFocusedIndex: 0,
             hour: '',
         });
     }
@@ -177,21 +195,22 @@ export default class TimeSelect extends Component {
 
     handleFocusMinutes() {
         const { minutes } = this.state;
-        this.inputFocusedIndex = 1;
         this.prevMinutes = minutes || this.prevMinutes;
         this.setState({
+            inputFocusedIndex: 1,
             minutes: '',
         });
     }
 
     handleAmPmChange(value) {
         this.setState({
+            inputFocusedIndex: -1,
             ampm: value,
         });
     }
 
     hanldeFocusAmPm() {
-        this.inputFocusedIndex = 2;
+        this.setState({ inputFocusedIndex: 2 });
     }
 
     handleKeyDown(event) {
@@ -218,45 +237,49 @@ export default class TimeSelect extends Component {
     }
 
     handleRightKeyPressed() {
-        const nextInputIndex = this.inputFocusedIndex + 1;
+        const { inputFocusedIndex } = this.state;
+        const nextInputIndex = inputFocusedIndex + 1;
         const nextInputToFocus = this.inputsMap[nextInputIndex];
         if (nextInputToFocus && nextInputToFocus.current != null) {
-            this.inputFocusedIndex += 1;
+            this.setState({ inputFocusedIndex: inputFocusedIndex + 1 });
             nextInputToFocus.current.focus();
         }
     }
 
     handleLeftKeyPressed() {
-        const prevInputIndex = this.inputFocusedIndex - 1;
+        const { inputFocusedIndex } = this.state;
+        const prevInputIndex = inputFocusedIndex - 1;
         const prevInputToFocus = this.inputsMap[prevInputIndex];
         if (prevInputToFocus) {
-            this.inputFocusedIndex -= 1;
+            this.setState({ inputFocusedIndex: inputFocusedIndex - 1 });
             prevInputToFocus.current.focus();
         }
     }
 
     incrementHandler() {
+        const { inputFocusedIndex } = this.state;
         this.isUpOrDownKeyPressed = true;
-        if (this.inputFocusedIndex === 0) {
+        if (inputFocusedIndex === 0) {
             this.incrementHour();
         }
-        if (this.inputFocusedIndex === 1) {
+        if (inputFocusedIndex === 1) {
             this.incrementMinutes();
         }
-        if (this.inputFocusedIndex === 2) {
+        if (inputFocusedIndex === 2) {
             this.setNextAmPmValue();
         }
     }
 
     decrementHandler() {
+        const { inputFocusedIndex } = this.state;
         this.isUpOrDownKeyPressed = true;
-        if (this.inputFocusedIndex === 0) {
+        if (inputFocusedIndex === 0) {
             this.decrementHour();
         }
-        if (this.inputFocusedIndex === 1) {
+        if (inputFocusedIndex === 1) {
             this.decrementMinutes();
         }
-        if (this.inputFocusedIndex === 2) {
+        if (inputFocusedIndex === 2) {
             this.setNextAmPmValue();
         }
     }
@@ -266,20 +289,22 @@ export default class TimeSelect extends Component {
     }
 
     handleButtonsFocus() {
-        const currentInputFocused = this.inputsMap[this.inputFocusedIndex];
+        const { inputFocusedIndex } = this.state;
+        const currentInputFocused = this.inputsMap[inputFocusedIndex];
         if (currentInputFocused) {
             currentInputFocused.current.focus();
         }
     }
 
     resetState() {
-        if (this.inputFocusedIndex === 0) {
+        const { inputFocusedIndex } = this.state;
+        if (inputFocusedIndex === 0) {
             this.setState({
                 hour: '',
             });
             this.prevHour = '';
         }
-        if (this.inputFocusedIndex === 1) {
+        if (inputFocusedIndex === 1) {
             this.setState({
                 minutes: '',
             });
@@ -298,7 +323,7 @@ export default class TimeSelect extends Component {
 
     focusHourInput() {
         this.hourInputRef.current.focus();
-        this.inputFocusedIndex = 0;
+        this.setState({ inputFocusedIndex: 0 });
     }
 
     incrementHour() {
@@ -358,14 +383,18 @@ export default class TimeSelect extends Component {
     }
 
     render() {
-        const { hour, minutes, ampm } = this.state;
+        const { hour, minutes, ampm, inputFocusedIndex } = this.state;
         const { onCloseModal, cancelLabel, okLabel, hour24, className } = this.props;
         const hourPlaceholder = this.prevHour || '--';
         const minutesPlaceholder = this.prevMinutes || '--';
 
         return (
             <article className={className}>
-                <StyledSelectContent role="presentation" onKeyDown={this.handleKeyDown}>
+                <StyledSelectContent
+                    ref={this.containerRef}
+                    role="presentation"
+                    onKeyDown={this.handleKeyDown}
+                >
                     <StyledSelectValue
                         aria-label="hour"
                         onDrop={preventDefault}
@@ -378,6 +407,7 @@ export default class TimeSelect extends Component {
                         onFocus={this.handleFocusHour}
                         onBlur={this.handleBlurHour}
                         inputMode="numeric"
+                        isFocused={inputFocusedIndex === 0}
                         pattern="\d*"
                         ref={this.hourInputRef}
                     />
@@ -395,6 +425,7 @@ export default class TimeSelect extends Component {
                         placeholder={minutesPlaceholder}
                         onChange={this.handleChangeMinutes}
                         onFocus={this.handleFocusMinutes}
+                        isFocused={inputFocusedIndex === 1}
                         inputMode="numeric"
                         pattern="\d*"
                         ref={this.minutesInputRef}
@@ -407,6 +438,7 @@ export default class TimeSelect extends Component {
                             defaultValue={this.defaultAmPM}
                             onFocus={this.hanldeFocusAmPm}
                             onChange={this.handleAmPmChange}
+                            isFocused={inputFocusedIndex === 2}
                             ref={this.amPmInputRef}
                         />
                     </RenderIf>
