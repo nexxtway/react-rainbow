@@ -399,8 +399,8 @@ describe('<TimeSelect/>', () => {
         container.simulate('keyDown', { keyCode: RIGHT_KEY });
         container.simulate('keyDown', { keyCode: RIGHT_KEY });
         container.simulate('keyDown', { keyCode: RIGHT_KEY });
-        const focusedElementAriaLabel = document.activeElement.getAttribute('aria-label');
-        expect(focusedElementAriaLabel).toBe('am-pm selector');
+        const focusedElementAriaLabel = document.activeElement.getAttribute('data-id');
+        expect(focusedElementAriaLabel).toBe('fieldset-element');
     });
     it('should pass the right defaultValue to AmPmSelect when up or down key is not pressed and does not have value initially', () => {
         const component = mount(<TimeSelect />);
