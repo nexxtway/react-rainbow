@@ -4,6 +4,7 @@ class OutsideClick {
         this.containerRef = null;
         this.callback = null;
         this.listening = false;
+        this[privateHandleClick] = this[privateHandleClick].bind(this);
     }
 
     [privateHandleClick](event) {
