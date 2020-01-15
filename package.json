@@ -34,6 +34,7 @@
         "autosize": "^4.0.2",
         "chart.js": "^2.7.3",
         "clipboard-copy": "^2.0.0",
+        "daynight": "^2.0.8",
         "prop-types": "^15.6.2",
         "react-async-script-loader": "^0.3.0",
         "styled-components": "^4.3.2",

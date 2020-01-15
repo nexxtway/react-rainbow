@@ -14,10 +14,13 @@ const styles = {
     <div className="rainbow-p-vertical_x-large rainbow-p-horizontal_small" style={styles}>
         <GMap
             apiKey={LIBRARY_GOOGLE_MAPS_APIKEY}
-            zoom={10}
+            zoom={15}
             latitude={-33.836538}
             longitude={151.1279}
             header="Title"
+            currentPosition
+            dayNightMode="night"
+            showTraffic
         >
             <MapMarker
                 latitude={-33.941264}

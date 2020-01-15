@@ -8,6 +8,10 @@ export interface GMapProps extends BaseProps {
     zoom?: number;
     header?: ReactNode;
     children?: ReactNode;
+    showTraffic?: boolean;
+    showTransit?: boolean;
+    dayNightMode?: string;
+    currentPosition?: boolean;
 }
 
 export default function(props: GMapProps): JSX.Element | null;
