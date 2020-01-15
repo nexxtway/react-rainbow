@@ -1,13 +1,12 @@
+const privateHandleClick = Symbol('hanldeClick');
 class OutsideClick {
     constructor() {
         this.containerRef = null;
         this.callback = null;
         this.listening = false;
-        this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick(event) {
-        if (!this.containerRef || !this.callback) return;
+    [privateHandleClick](event) {
         if (!this.containerRef.contains(event.target)) this.callback(this);
     }
 
@@ -15,7 +14,7 @@ class OutsideClick {
         if (!containerRef || !callback) return;
         this.containerRef = containerRef;
         this.callback = callback;
-        document.addEventListener('click', this.handleClick);
+        document.addEventListener('click', this[privateHandleClick]);
         this.listening = true;
     }
 
@@ -23,11 +22,10 @@ class OutsideClick {
         if (!this.listening) return;
 
         this.listening = false;
-        document.removeEventListener('click', this.handleClick);
+        document.removeEventListener('click', this[privateHandleClick]);
         this.containerRef = null;
         this.callback = null;
     }
 }
 
-const outsideClick = new OutsideClick();
-export default outsideClick;
+export default OutsideClick;

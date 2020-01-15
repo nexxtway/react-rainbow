@@ -26,7 +26,7 @@ import StyledSelectValue from './styled/selectValue';
 import StyledVerticalButtonsContainer from './styled/verticalButtonsContainer';
 import StyledFooter from './styled/footer';
 import StyledButton from './styled/button';
-import outsideClick from '../../libs/outsideClick';
+import OutsideClick from '../../libs/outsideClick';
 
 function preventDefault(event) {
     event.preventDefault();
@@ -65,10 +65,11 @@ export default class TimeSelect extends Component {
         this.handleChangeTime = this.handleChangeTime.bind(this);
         this.handleButtonsDown = this.handleButtonsDown.bind(this);
         this.handleClickOutside = this.handleClickOutside.bind(this);
+        this.outsideClick = new OutsideClick();
     }
 
     componentDidMount() {
-        outsideClick.startListening(this.containerRef.current, this.handleClickOutside);
+        this.outsideClick.startListening(this.containerRef.current, this.handleClickOutside);
     }
 
     componentDidUpdate(prevProps) {
@@ -80,7 +81,7 @@ export default class TimeSelect extends Component {
     }
 
     componentWillUnmount() {
-        outsideClick.stopListening();
+        this.outsideClick.stopListening();
     }
 
     setNextAmPmValue() {
