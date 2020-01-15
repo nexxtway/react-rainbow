@@ -44,10 +44,10 @@ function resolveCustomBackground(background) {
             },
             text: {
                 main: mainText,
-                title: dark ? darken(mainText, 0.5) : lighten(mainText, 0.5),
-                header: dark ? darken(mainText, 0.7) : lighten(mainText, 0.7),
-                label: dark ? darken(mainText, 0.5) : lighten(mainText, 0.5),
-                disabled: dark ? darken(mainText, 0.6) : lighten(mainText, 0.6),
+                title: dark ? darken(mainText, 0.3) : lighten(mainText, 0.3),
+                header: dark ? darken(mainText, 0.6) : lighten(mainText, 0.6),
+                label: dark ? darken(mainText, 0.3) : lighten(mainText, 0.3),
+                disabled: dark ? darken(mainText, 0.7) : lighten(mainText, 0.7),
             },
             border: {
                 main: dark ? lighten(background, 0.3) : darken(background, 0.3),
@@ -59,6 +59,8 @@ function resolveCustomBackground(background) {
                 hover: dark ? lighten(background, 0.08) : darken(background, 0.08),
             },
         };
+        // eslint-disable-next-line no-debugger
+        debugger;
         return theme;
     }
     return {};

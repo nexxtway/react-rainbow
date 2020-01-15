@@ -42,6 +42,7 @@ const deepPurpleTheme = {
     rainbow: {
         palette: {
             brand: '#6860db',
+            mainBackground: '#f2f2f2',
         },
     },
 };
