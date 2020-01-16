@@ -77,10 +77,12 @@ const pageStatus = {
 };
 
 function registerExample() {
-    const registeredExamplesCount = pageStatus.examplesCount;
-    pageStatus.examplesThemes.push(undefined);
+    const index = pageStatus.examplesCount * 2 + 1;
+    if (!pageStatus.examplesThemes[index]) {
+        pageStatus.examplesThemes[index] = undefined;
+    }
     pageStatus.examplesCount += 1;
-    return registeredExamplesCount * 2 + 1;
+    return index;
 }
 
 function reset() {
