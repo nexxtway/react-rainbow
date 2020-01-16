@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_3 } from '../../../styles/colors';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledHeaderDays = styled.th`
+const StyledHeaderDays = attachThemeAttrs(styled.th)`
     text-align: center;
-    color: ${COLOR_GRAY_3};
+    color: ${props => props.palette.text.header};
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
     font-weight: 400;
     line-height: 40px;

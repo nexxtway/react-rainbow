@@ -42,6 +42,7 @@ const deepPurpleTheme = {
     rainbow: {
         palette: {
             brand: '#6860db',
+            mainBackground: '#f2f2f2',
         },
     },
 };
@@ -62,10 +63,7 @@ const cyanDarkTheme = {
             brand: '#80deea',
             success: '#b9f6ca',
             error: '#ff5252',
-            background: {
-                primary: '#242424',
-                secondary: '#333333',
-            },
+            mainBackground: '#303030',
         },
     },
 };

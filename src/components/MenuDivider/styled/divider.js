@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_2 } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledDivider = styled.li`
-    border-top: solid 1px ${COLOR_GRAY_2};
+const StyledDivider = attachThemeAttrs(styled.li)`
+    border-top: solid 1px ${props => props.palette.border.divider};
     box-sizing: border-box;
     ${props =>
         props.variant === 'space' &&

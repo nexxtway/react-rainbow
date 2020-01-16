@@ -54,6 +54,10 @@ describe('normalizeTheme', () => {
                         light: '#ededed',
                     },
                 },
+                shadows: {
+                    ...defaultTheme.shadows,
+                    brand: '0 0 2px #fff',
+                },
             },
         });
     });

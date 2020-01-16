@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import { SHADOW_2 } from '../../../styles/shadows';
-import { COLOR_GRAY_2 } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledDropdown = styled.div`
+const StyledDropdown = attachThemeAttrs(styled.div)`
     position: absolute;
     z-index: 2000;
     left: 50%;
@@ -11,12 +10,12 @@ const StyledDropdown = styled.div`
     max-width: 20rem;
     margin-top: 0.125rem;
     margin-bottom: 0.125rem;
-    border: solid 1px ${COLOR_GRAY_2};
+    border: solid 1px ${props => props.palette.border.divider};
     border-radius: 0.875rem;
     padding: 0.5rem 0;
     font-size: 0.75rem;
-    background: white;
-    box-shadow: ${SHADOW_2};
+    background: ${props => props.palette.background.main};
+    box-shadow: ${props => props.shadows.shadow_2};
     transform: translateX(-50%);
     display: none;
     opacity: 0;

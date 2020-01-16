@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { BORDER_RADIUS_1 } from '../../../styles/borderRadius';
-import { COLOR_WHITE } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledModalContainer = styled.section`
+const StyledModalContainer = attachThemeAttrs(styled.section)`
     top: 0;
     right: 0;
     bottom: 0;
@@ -11,7 +11,8 @@ const StyledModalContainer = styled.section`
     min-width: 18rem;
     max-height: 80vh;
     min-height: 4rem;
-    background-color: ${COLOR_WHITE};
+    background-color: ${props => props.palette.background.main};
+    color: ${props => props.palette.text.main};
     border-radius: ${BORDER_RADIUS_1};
     box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16);
     flex-direction: column;

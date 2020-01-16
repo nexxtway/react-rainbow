@@ -104,7 +104,7 @@ const iconContainerStyles = {
                 src="images/illustrations/Illustration-rainbow-2.svg"
                 alt="landscape with rainbows and colorful birds"
             />
-            <h1 className="rainbow-p-top_large rainbow-font-size-heading_small rainbow-color_dark-1">
+            <h1 className="rainbow-p-top_large rainbow-font-size-heading_small">
                 No new tasks
             </h1>
         </div>

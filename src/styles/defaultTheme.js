@@ -1,4 +1,15 @@
-import { COLOR_BRAND, COLOR_SUCCESS, COLOR_ERROR, COLOR_WARNING, COLOR_WHITE } from './colors';
+import {
+    COLOR_BRAND,
+    COLOR_SUCCESS,
+    COLOR_ERROR,
+    COLOR_WARNING,
+    COLOR_WHITE,
+    COLOR_DARK_1,
+    COLOR_GRAY_1,
+    COLOR_GRAY_2,
+    COLOR_GRAY_3,
+    COLOR_GRAY_4,
+} from './colors';
 import { darken, getContrastText, lighten } from './helpers/color';
 
 export default {
@@ -22,9 +33,37 @@ export default {
             main: COLOR_WARNING,
         },
         background: {
-            primary: COLOR_WHITE,
+            main: COLOR_WHITE,
             secondary: '#f9fafc',
+            disabled: COLOR_GRAY_1,
+        },
+        text: {
+            main: COLOR_DARK_1,
+            title: COLOR_GRAY_4,
+            header: COLOR_GRAY_3,
+            label: COLOR_GRAY_4,
+            disabled: COLOR_GRAY_2,
+        },
+        border: {
+            main: COLOR_GRAY_3,
+            divider: COLOR_GRAY_2,
+            disabled: COLOR_GRAY_2,
+        },
+        action: {
+            active: COLOR_GRAY_1,
+            hover: COLOR_GRAY_1,
         },
         getContrastText,
+    },
+    shadows: {
+        brand: `0 0 2px ${COLOR_BRAND}`,
+        success: `0 0 2px ${COLOR_SUCCESS}`,
+        error: `0 0 2px ${COLOR_ERROR}`,
+        shadow_1: `0 0 2px 0 ${COLOR_GRAY_3}`,
+        shadow_2: `0 2px 4px 0 ${COLOR_GRAY_2}`,
+        shadow_3: `0 0 1px 0 ${COLOR_GRAY_3}`,
+        shadow_4: `0 1px 2px 0 ${COLOR_GRAY_2}`,
+        shadow_5: `0 0 3px ${COLOR_GRAY_1}`,
+        shadow_6: `0 2px 12px 0 ${COLOR_GRAY_2}`,
     },
 };

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
-import { COLOR_GRAY_2, COLOR_DARK_1, COLOR_GRAY_1 } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledLi = styled.li`
+const StyledLi = attachThemeAttrs(styled.li)`
     font: inherit;
     line-height: 1.5;
     width: 100%;
@@ -17,7 +17,7 @@ const StyledLi = styled.li`
     justify-content: space-between;
     align-items: center;
     padding: 0.75rem 0.75rem;
-    color: ${COLOR_DARK_1};
+    color: ${props => props.palette.text.main};
     white-space: nowrap;
     cursor: pointer;
     text-decoration: none;
@@ -25,16 +25,16 @@ const StyledLi = styled.li`
 
     &:focus {
         outline: 0;
-        background-color: ${COLOR_GRAY_1};
+        background-color: ${props => props.palette.action.active};
     }
 
     &:active {
-        background-color: ${COLOR_GRAY_1};
+        background-color: ${props => props.palette.action.active};
         outline: 0;
     }
 
     &[aria-disabled='true'] {
-        color: ${COLOR_GRAY_2};
+        color: ${props => props.palette.text.disabled};
         cursor: default;
 
         &:hover,
