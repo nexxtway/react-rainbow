@@ -1,15 +1,8 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_2 } from '../../../styles/colors';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledDayButton = styled.button.attrs(props => {
-    const brandMainColor = getTheme(props).palette.brand.main;
-    return {
-        brandMainColor,
-        brandShadow: `0 0 2px ${brandMainColor}`,
-    };
-})`
+const StyledDayButton = attachThemeAttrs(styled.button)`
     font: inherit;
     border: none;
     outline: none;
@@ -29,7 +22,7 @@ const StyledDayButton = styled.button.attrs(props => {
 
     &:hover {
         transition: all 0.2s ease;
-        background-color: ${COLOR_GRAY_2};
+        background-color: ${props => props.palette.action.hover};
     }
 
     &:active {
@@ -39,7 +32,7 @@ const StyledDayButton = styled.button.attrs(props => {
 
     &:focus,
     &:active {
-        box-shadow: ${props => props.brandShadow};
+        box-shadow: ${props => props.shadows.brand};
     }
 
     @media (max-width: 600px) {
@@ -49,8 +42,8 @@ const StyledDayButton = styled.button.attrs(props => {
     ${props =>
         props.isSelected &&
         `
-            color: white;
-            background-color: ${props.brandMainColor};
+            color: ${props.palette.getContrastText(props.palette.brand.main)};
+            background-color: ${props.palette.brand.main};
             text-align: center;
             font-size: ${FONT_SIZE_TEXT_MEDIUM};
             font-weight: 600;
@@ -69,7 +62,7 @@ const StyledDayButton = styled.button.attrs(props => {
             }
         
             &:hover {
-                background-color: ${props.brandMainColor};
+                background-color: ${props.palette.brand.main};
             }
 
             @media (max-width: 600px) {

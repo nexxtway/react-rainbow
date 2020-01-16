@@ -1,17 +1,13 @@
 import styled from 'styled-components';
 import ButtonIcon from '../../ButtonIcon';
-import { COLOR_GRAY_2 } from '../../../styles/colors';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledArrowButton = styled(ButtonIcon).attrs(props => {
-    const brandMainColor = getTheme(props).palette.brand.main;
-    return { brandMainColor };
-})`
-    color: ${props => props.brandMainColor};
+const StyledArrowButton = attachThemeAttrs(styled(ButtonIcon))`
+    color: ${props => props.palette.brand.main};
     ${props =>
         props.disabled &&
         `
-            color: ${COLOR_GRAY_2};
+            color: ${props.palette.text.disabled};
         `};
 `;
 

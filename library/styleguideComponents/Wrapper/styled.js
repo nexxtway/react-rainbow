@@ -1,37 +1,26 @@
 /* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
 import { ButtonMenu, Badge } from '../../../src/components/index';
-import { COLOR_BRAND, COLOR_GRAY_3 } from '../../../src/styles/colors';
+import { COLOR_BRAND } from '../../../src/styles/colors';
 import getTheme from '../../../src/styles/helpers/getTheme';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import attachThemeAttrs from '../../../src/styles/helpers/attachThemeAttr';
 
-export const StyledWrapper = styled.div.attrs(props => {
-    const palette = getTheme(props).palette;
-    const secondaryBackground = palette.background.secondary;
-    return {
-        secondaryBackground,
-    };
-})`
+export const StyledWrapper = attachThemeAttrs(styled.div)`
     padding: 0;
     border-radius: 0.875rem;
-    background-color: ${props => props.secondaryBackground};
+    background-color: ${props => props.palette.background.secondary};
     background-clip: padding-box;
-    border: solid 1px rgba(0, 0, 0, 0.08);
+    border: solid 1px ${props => props.palette.border.divider};
 `;
 
-export const StyledTopBar = styled.header.attrs(props => {
-    const palette = getTheme(props).palette;
-    const primaryBackground = palette.background.primary;
-    return {
-        primaryBackground,
-    };
-})`
-    background-color: ${props => props.primaryBackground};
+export const StyledTopBar = attachThemeAttrs(styled.header)`
+    background-color: ${props => props.palette.background.main};
     width: 100%;
     display: flex;
     justify-content: space-between;
     border-radius: 0.875rem 0.875rem 0 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid ${props => props.palette.border.divider};
     padding: 8px 60px 8px 12px;
 
     @media (max-width: 600px) {
@@ -91,9 +80,9 @@ export const StyledPickerTheme = styled(ButtonMenu)`
     }
 `;
 
-export const StyledTitle = styled.h1`
+export const StyledTitle = attachThemeAttrs(styled.h1)`
     font-size: 14px;
-    color: ${COLOR_GRAY_3};
+    color: ${props => props.palette.text.header};
     margin-left: 4px;
     margin-right: 8px;
 
@@ -102,21 +91,15 @@ export const StyledTitle = styled.h1`
     }
 `;
 
-export const StyledColorCircle = styled.div.attrs(props => {
-    const { main: brandMainColor, dark: brandDarkColor } = getTheme(props).palette.brand;
-    return {
-        brandMainColor,
-        brandDarkColor,
-    };
-})`
+export const StyledColorCircle = attachThemeAttrs(styled.div)`
     height: 20px;
     width: 20px;
-    background-color: ${props => props.brandMainColor};
+    background-color: ${props => props.palette.brand.main};
     display: inline-block;
     border-radius: 11px;
 
     &:hover {
-        background-color: ${props => props.brandDarkColor};
+        background-color: ${props => props.palette.brand.dark};
     }
 `;
 
@@ -145,9 +128,6 @@ export const StyledIcon = styled.span`
     flex-shrink: 0;
 `;
 
-export const StyledCheckIcon = styled(FontAwesomeIcon).attrs(props => {
-    const brand = getTheme(props).palette.brand.main;
-    return { brand };
-})`
-    color: ${props => props.brand};
+export const StyledCheckIcon = attachThemeAttrs(styled(FontAwesomeIcon))`
+    color: ${props => props.palette.brand.main};
 `;

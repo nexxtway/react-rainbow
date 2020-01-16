@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { FONT_SIZE_HEADING_MEDIUM } from '../../../styles/fontSizes';
-import { COLOR_GRAY_4 } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledTitle = styled.h2`
+const StyledTitle = attachThemeAttrs(styled.h2)`
     font-size: ${FONT_SIZE_HEADING_MEDIUM};
     font-weight: 500;
-    color: ${COLOR_GRAY_4};
+    color: ${props => props.palette.text.title};
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

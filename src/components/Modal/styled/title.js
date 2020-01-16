@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_4 } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledTitle = styled.h1`
+const StyledTitle = attachThemeAttrs(styled.h1)`
     font-family: 'Lato Light', Arial, sans-serif;
     padding: 0;
     text-align: center;
     font-size: 1.5rem;
-    color: ${COLOR_GRAY_4};
+    color: ${props => props.palette.text.title};
     margin: 0;
     font-weight: inherit;
 `;

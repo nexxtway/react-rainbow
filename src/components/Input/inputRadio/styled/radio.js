@@ -1,45 +1,31 @@
 import styled from 'styled-components';
 import HiddenElement from '../../../Structural/hiddenElement';
-import { COLOR_GRAY_1, COLOR_GRAY_2, COLOR_WHITE } from '../../../../styles/colors';
 import { BORDER_RADIUS_2 } from '../../../../styles/borderRadius';
 import { MARGIN_SMALL } from '../../../../styles/margins';
-import getTheme from '../../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttr';
 
 function getInitialBorder(props) {
     if (props.error) {
-        return `2px solid ${props.errorMainColor}`;
+        return `2px solid ${props.palette.error.main}`;
     }
-    return `1px solid ${COLOR_GRAY_2}`;
+    return `1px solid ${props.palette.border.divider}`;
 }
 
 function getColor(props) {
     if (props.error) {
-        return props.errorMainColor;
+        return props.palette.error.main;
     }
-    return props.brandMainColor;
+    return props.palette.brand.main;
 }
 
 function getShadow(props) {
     if (props.error) {
-        return props.errorShadow;
+        return props.shadows.error;
     }
-    return props.brandShadow;
+    return props.shadows.brand;
 }
 
-const Radio = styled(HiddenElement).attrs(props => {
-    const theme = getTheme(props);
-    const { brand, error } = theme.palette;
-    const { main: brandMainColor } = brand;
-    const { main: errorMainColor } = error;
-
-    return {
-        brandMainColor,
-        errorMainColor,
-        // TODO: move up to defaultTheme or normalizeTheme
-        brandShadow: `0 0 2px ${brandMainColor}`,
-        errorShadow: `0 0 2px ${errorMainColor}`,
-    };
-})`
+const Radio = attachThemeAttrs(styled(HiddenElement))`
     & ~ label > .rainbow-input_faux {
         width: 20px;
         height: 20px;
@@ -48,7 +34,7 @@ const Radio = styled(HiddenElement).attrs(props => {
         vertical-align: middle;
         border: ${getInitialBorder};
         border-radius: ${BORDER_RADIUS_2};
-        background: ${COLOR_WHITE};
+        background: ${props => props.palette.background.main};
         margin-right: ${MARGIN_SMALL};
         transition: border 0.1s linear, background-color 0.1s linear;
         box-sizing: border-box;
@@ -71,7 +57,7 @@ const Radio = styled(HiddenElement).attrs(props => {
     }
 
     :checked ~ label > .rainbow-input_faux {
-        background: ${COLOR_WHITE};
+        background: ${props => props.palette.background.main};
         border: 2px solid;
         border-color: ${getColor};
 
@@ -91,12 +77,12 @@ const Radio = styled(HiddenElement).attrs(props => {
     }
 
     &[disabled] ~ label > .rainbow-input_faux {
-        background-color: ${COLOR_GRAY_1};
-        border-color: ${COLOR_GRAY_2};
+        background-color: ${props => props.palette.background.disabled};
+        border-color: ${props => props.palette.border.divider};
     }
 
     &[disabled] ~ label > .rainbow-input_faux::after {
-        background: ${COLOR_WHITE};
+        background: ${props => props.palette.background.main};
         box-sizing: border-box;
     }
 `;

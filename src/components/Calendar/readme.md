@@ -56,12 +56,6 @@ const calendarContainerStyles = {
 };
 
 <div>
-    <header className="rainbow-align-content_space-between rainbow-p-vertical_small rainbow-p-horizontal_medium react-rainbow-global-header rainbow-background-color_white">
-        <img src="images/rainbow-logo.svg" height="40" width="40" alt="rainbow logo" />
-        <div className="rainbow-flex rainbow-align_center">
-            <Avatar src="images/user/user3.jpg" variant="circle" />
-        </div>
-    </header>
     <div className="rainbow-align-content_center rainbow-p-vertical_xx-large rainbow-p-horizontal_medium">
         <Card style={calendarContainerStyles} className="rainbow-p-around_large">
             <Calendar
