@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { createStore, combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
@@ -21,6 +21,7 @@ import {
     StyledColorCircle,
     StyledCheckIcon,
 } from './styled';
+import useCachedState from '../../hooks/useCachedState';
 
 const rootReducer = combineReducers({
     form: formReducer,
@@ -70,63 +71,10 @@ const cyanDarkTheme = {
     },
 };
 
-const pageStatus = {
-    pageName: window.location.hash.split('/')[1],
-    examplesCount: 0,
-    examplesThemes: [],
-};
-
-function registerExample() {
-    const index = pageStatus.examplesCount * 2 + 1;
-    if (!pageStatus.examplesThemes[index]) {
-        pageStatus.examplesThemes[index] = undefined;
-    }
-    pageStatus.examplesCount += 1;
-    return index;
-}
-
-function reset() {
-    pageStatus.examplesThemes = [];
-    pageStatus.examplesCount = 0;
-}
-
-function getThemeFromCache(id) {
-    const index = (Number(id) - 1) / 2;
-    return pageStatus.examplesThemes[index] || undefined;
-}
-
-function updateThemeInCache(id, theme) {
-    const index = (Number(id) - 1) / 2;
-    pageStatus.examplesThemes[index] = theme;
-}
-
-function urlChanged() {
-    const pageName = window.location.hash.split('/')[1];
-    if (pageStatus.pageName !== pageName) {
-        pageStatus.pageName = pageName;
-        reset();
-    }
-    pageStatus.examplesCount = 0;
-}
-
-window.addEventListener('hashchange', urlChanged, false);
-
 export default function Wrapper(props) {
     const { children } = props;
-    const [theme, setTheme] = useState();
+    const [theme, setTheme] = useCachedState('theme');
     const pageName = window.location.hash.split('/')[1];
-    const exampleId = useRef();
-
-    useEffect(() => {
-        exampleId.current = window.location.hash.split('/')[2] || registerExample();
-        const cachedTheme = getThemeFromCache(exampleId.current);
-        if (cachedTheme) setTheme(cachedTheme);
-    }, []);
-
-    useEffect(() => {
-        const cachedTheme = getThemeFromCache(exampleId.current);
-        if (cachedTheme !== theme) updateThemeInCache(exampleId.current, theme);
-    }, [theme]);
 
     if (isNotComponentPage(pageName)) {
         return children;
