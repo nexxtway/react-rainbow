@@ -59,8 +59,6 @@ function resolveCustomBackground(background) {
                 hover: dark ? lighten(background, 0.08) : darken(background, 0.08),
             },
         };
-        // eslint-disable-next-line no-debugger
-        debugger;
         return theme;
     }
     return {};
