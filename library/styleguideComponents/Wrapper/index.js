@@ -1,15 +1,15 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { createStore, combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import { Provider } from 'react-redux';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import Application from '../../../src/components/Application';
 import MenuItem from '../../../src/components/MenuItem';
 import InfoFilled from '../../exampleComponents/Icons/infoFilled';
 import isNotComponentPage from '../utils';
 import ColorBox from './colorBox';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import {
     StyledWrapper,
     StyledTopBar,
@@ -70,10 +70,61 @@ const cyanDarkTheme = {
     },
 };
 
+const pageStatus = {
+    pageName: window.location.hash.split('/')[1],
+    examplesCount: 0,
+    examplesThemes: [],
+};
+
+function registerExample() {
+    const registeredExamplesCount = pageStatus.examplesCount;
+    pageStatus.examplesThemes.push(undefined);
+    pageStatus.examplesCount += 1;
+    return registeredExamplesCount * 2 + 1;
+}
+
+function reset() {
+    pageStatus.examplesThemes = [];
+    pageStatus.examplesCount = 0;
+}
+
+function getThemeFromCache(id) {
+    const index = (Number(id) - 1) / 2;
+    return pageStatus.examplesThemes[index] || undefined;
+}
+
+function updateThemeInCache(id, theme) {
+    const index = (Number(id) - 1) / 2;
+    pageStatus.examplesThemes[index] = theme;
+}
+
+function urlChanged() {
+    const pageName = window.location.hash.split('/')[1];
+    if (pageStatus.pageName !== pageName) {
+        pageStatus.pageName = pageName;
+        reset();
+    }
+    pageStatus.examplesCount = 0;
+}
+
+window.addEventListener('hashchange', urlChanged, false);
+
 export default function Wrapper(props) {
     const { children } = props;
     const [theme, setTheme] = useState();
     const pageName = window.location.hash.split('/')[1];
+    const exampleId = useRef();
+
+    useEffect(() => {
+        exampleId.current = window.location.hash.split('/')[2] || registerExample();
+        const cachedTheme = getThemeFromCache(exampleId.current);
+        if (cachedTheme) setTheme(cachedTheme);
+    }, []);
+
+    useEffect(() => {
+        const cachedTheme = getThemeFromCache(exampleId.current);
+        if (cachedTheme !== theme) updateThemeInCache(exampleId.current, theme);
+    }, [theme]);
 
     if (isNotComponentPage(pageName)) {
         return children;
