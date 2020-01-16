@@ -46,26 +46,19 @@ import { Avatar } from 'react-rainbow-components';
 import React from 'react';
 import { Avatar } from 'react-rainbow-components';
 
-<div className="rainbow-p-vertical_x-large rainbow-p-left_medium">
-    <div className="rainbow-m-horizontal_medium">
-        <Avatar assistiveText="Jane Doe" initials="JD" title="Jane Doe" />
-    </div>
-</div>
-```
-
-##### fallback user initials with specific color
-
-```js
-import React from 'react';
-import { Avatar } from 'react-rainbow-components';
-
-<div className="rainbow-p-vertical_x-large rainbow-p-left_medium">
-    <div className="rainbow-m-horizontal_medium">
+<div className="rainbow-p-vertical_large rainbow-p-left_medium">
+    <div className="rainbow-m-horizontal_small">
         <Avatar
+            className="rainbow-m-around_x-small"
+            assistiveText="Jane Doe"
+            initials="JD"
+            title="Jane Doe" />
+        <Avatar
+            className="rainbow-m-around_x-small"
             assistiveText="Jane Doe"
             initials="JD"
             title="Jane Doe"
-            backgroundColor="#f00"
+            backgroundColor="#FE4849"
         />
     </div>
 </div>
@@ -77,12 +70,20 @@ import { Avatar } from 'react-rainbow-components';
 import React from 'react';
 import { Avatar } from 'react-rainbow-components';
 
-<div className="rainbow-p-vertical_x-large rainbow-p-left_medium">
-    <div className="rainbow-m-horizontal_medium">
+<div className="rainbow-p-vertical_large rainbow-p-left_medium">
+    <div className="rainbow-m-horizontal_small">
         <Avatar
+            className="rainbow-m-around_x-small"
             icon={<img src="icons/user.svg" alt="icon" />}
             assistiveText="user icon"
             title="user icon"
+        />
+        <Avatar
+            className="rainbow-m-around_x-small"
+            icon={<img src="icons/user.svg" alt="icon" />}
+            assistiveText="user icon"
+            title="user icon"
+            backgroundColor="#FE4849"
         />
     </div>
 </div>

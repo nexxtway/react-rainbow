@@ -13,43 +13,30 @@ function handleAmPmBlur(event) {
 export default class AmPmSelect extends PureComponent {
     constructor(props) {
         super(props);
-        this.state = {
-            isFocused: false,
-        };
         this.fieldsetRef = React.createRef();
         this.inputAmId = uniqueId('am');
         this.inputPmId = uniqueId('pm');
         this.handleFocus = this.handleFocus.bind(this);
-        this.handleBlur = this.handleBlur.bind(this);
         this.handleOnChange = this.handleOnChange.bind(this);
-        this.handleClick = this.handleClick.bind(this);
+    }
+
+    componentDidUpdate() {
+        const { isFocused } = this.props;
+        if (isFocused) this.focus();
     }
 
     handleFocus() {
-        const { onChange, defaultValue, value } = this.props;
-        this.setState({
-            isFocused: true,
-        });
-        setTimeout(() => this.fieldsetRef.current.focus(), 0);
+        const { onChange, onFocus, defaultValue, value } = this.props;
         if (!value) {
             onChange(defaultValue || 'AM');
         }
-    }
-
-    handleBlur() {
-        this.setState({
-            isFocused: false,
-        });
+        onFocus();
     }
 
     handleOnChange(event) {
         const { onChange } = this.props;
         const { value } = event.target;
         onChange(value);
-    }
-
-    handleClick() {
-        this.setState({ isFocused: false });
     }
 
     isInputChecked(inputValue) {
@@ -62,7 +49,7 @@ export default class AmPmSelect extends PureComponent {
     }
 
     render() {
-        const { isFocused } = this.state;
+        const { isFocused } = this.props;
         const { tabIndex, onFocus, value } = this.props;
 
         if (isFocused) {
@@ -72,9 +59,9 @@ export default class AmPmSelect extends PureComponent {
                     data-id="fieldset-element"
                     role="presentation"
                     tabIndex={tabIndex}
-                    onBlur={this.handleBlur}
                     onFocus={onFocus}
                     ref={this.fieldsetRef}
+                    isFocused={isFocused}
                 >
                     <StyledInputHidden
                         as="input"
@@ -84,7 +71,6 @@ export default class AmPmSelect extends PureComponent {
                         value="AM"
                         checked={this.isInputChecked('AM')}
                         onChange={this.handleOnChange}
-                        onClick={this.handleClick}
                         onBlur={handleAmPmBlur}
                     />
 
@@ -97,7 +83,6 @@ export default class AmPmSelect extends PureComponent {
                         value="PM"
                         checked={this.isInputChecked('PM')}
                         onChange={this.handleOnChange}
-                        onClick={this.handleClick}
                         onBlur={handleAmPmBlur}
                     />
 
@@ -124,6 +109,7 @@ AmPmSelect.propTypes = {
     onChange: PropTypes.func,
     onFocus: PropTypes.func,
     tabIndex: PropTypes.string,
+    isFocused: PropTypes.bool,
 };
 
 AmPmSelect.defaultProps = {
@@ -132,4 +118,5 @@ AmPmSelect.defaultProps = {
     onChange: () => {},
     onFocus: () => {},
     tabIndex: undefined,
+    isFocused: false,
 };
