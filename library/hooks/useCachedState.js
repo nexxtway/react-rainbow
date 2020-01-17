@@ -28,7 +28,11 @@ function getIndexFromId(id) {
 
 function getStateFromCache(id, stateName) {
     const index = getIndexFromId(id);
-    return pageState.states[index][stateName] || undefined;
+    try {
+        return pageState.states[index][stateName];
+    } catch (error) {
+        return undefined;
+    }
 }
 
 function updateStateInCache(id, stateName, stateValue) {
