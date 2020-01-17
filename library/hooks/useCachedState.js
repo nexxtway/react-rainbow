@@ -10,13 +10,22 @@ function getIndexFromId(id) {
     return (Number(id) - 1) / 2;
 }
 
+function addStateToCache(index, stateName, stateValue) {
+    if (!pageState.states[index]) {
+        pageState.states[index] = {};
+    }
+    pageState.states[index][stateName] = stateValue;
+}
+
+function updateStateInCache(id, stateName, stateValue) {
+    const index = getIndexFromId(id);
+    pageState.states[index][stateName] = stateValue;
+}
+
 function registerExample(stateName, exampleId) {
     const id = exampleId || pageState.examplesCount * 2 + 1;
     const index = getIndexFromId(id);
-    if (!pageState.states[index]) {
-        pageState.states[index] = {};
-        pageState.states[index][stateName] = undefined;
-    }
+    addStateToCache(index, stateName);
     pageState.examplesCount += 1;
     return id;
 }
@@ -35,11 +44,6 @@ function getStateFromCache(id, stateName) {
     }
 }
 
-function updateStateInCache(id, stateName, stateValue) {
-    const index = getIndexFromId(id);
-    pageState.states[index][stateName] = stateValue;
-}
-
 function urlChanged() {
     const pageName = window.location.hash.split('/')[1];
     if (pageState.pageName !== pageName) {
@@ -49,7 +53,7 @@ function urlChanged() {
     pageState.examplesCount = 0;
 }
 
-window.addEventListener('hashchange', urlChanged, false);
+window.addEventListener('hashchange', urlChanged);
 
 export default function useCachedState(stateName, initialValue) {
     const [state, setState] = useState(initialValue);
@@ -58,13 +62,16 @@ export default function useCachedState(stateName, initialValue) {
     useEffect(() => {
         exampleId.current = registerExample(stateName, window.location.hash.split('/')[2]);
         const cachedState = getStateFromCache(exampleId.current, stateName);
-        if (cachedState) setState(cachedState);
+        if (cachedState) {
+            setState(cachedState);
+        }
     }, []);
 
-    const setStateValue = value => {
-        setState(value);
-        updateStateInCache(exampleId.current, stateName, value);
-    };
-
-    return [state, setStateValue];
+    return [
+        state,
+        value => {
+            updateStateInCache(exampleId.current, stateName, value);
+            setState(value);
+        },
+    ];
 }
