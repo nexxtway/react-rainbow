@@ -6,9 +6,13 @@ const pageState = {
     states: [],
 };
 
-function registerExample(stateName) {
-    const id = pageState.examplesCount * 2 + 1;
-    const index = pageState.examplesCount;
+function getIndexFromId(id) {
+    return (Number(id) - 1) / 2;
+}
+
+function registerExample(stateName, exampleId) {
+    const id = exampleId || pageState.examplesCount * 2 + 1;
+    const index = getIndexFromId(id);
     if (!pageState.states[index]) {
         pageState.states[index] = {};
         pageState.states[index][stateName] = undefined;
@@ -20,10 +24,6 @@ function registerExample(stateName) {
 function resetPageState() {
     pageState.states = [];
     pageState.examplesCount = 0;
-}
-
-function getIndexFromId(id) {
-    return (Number(id) - 1) / 2;
 }
 
 function getStateFromCache(id, stateName) {
@@ -56,15 +56,15 @@ export default function useCachedState(stateName, initialValue) {
     const exampleId = useRef();
 
     useEffect(() => {
-        exampleId.current = window.location.hash.split('/')[2] || registerExample(stateName);
+        exampleId.current = registerExample(stateName, window.location.hash.split('/')[2]);
         const cachedState = getStateFromCache(exampleId.current, stateName);
         if (cachedState) setState(cachedState);
     }, []);
 
-    useEffect(() => {
-        const cachedState = getStateFromCache(exampleId.current, stateName);
-        if (cachedState !== state) updateStateInCache(exampleId.current, stateName, state);
-    }, [state, stateName]);
+    const setStateValue = value => {
+        setState(value);
+        updateStateInCache(exampleId.current, stateName, value);
+    };
 
-    return [state, setState];
+    return [state, setStateValue];
 }
