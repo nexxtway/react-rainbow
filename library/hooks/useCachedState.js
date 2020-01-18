@@ -10,15 +10,18 @@ function getIndexFromId(id) {
     return (Number(id) - 1) / 2;
 }
 
-function addStateToCache(index, stateName, stateValue) {
+function addStateToCache(index, stateName, stateValue = undefined) {
     if (!pageState.states[index]) {
         pageState.states[index] = {};
+        pageState.states[index][stateName] = stateValue;
     }
-    pageState.states[index][stateName] = stateValue;
 }
 
 function updateStateInCache(id, stateName, stateValue) {
     const index = getIndexFromId(id);
+    if (!pageState.states[index]) {
+        pageState.states[index] = {};
+    }
     pageState.states[index][stateName] = stateValue;
 }
 
@@ -53,7 +56,7 @@ function urlChanged() {
     pageState.examplesCount = 0;
 }
 
-window.addEventListener('hashchange', urlChanged);
+window.addEventListener('hashchange', urlChanged, false);
 
 export default function useCachedState(stateName, initialValue) {
     const [state, setState] = useState(initialValue);
