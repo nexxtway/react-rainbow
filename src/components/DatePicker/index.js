@@ -165,13 +165,11 @@ class DatePickerComponent extends Component {
     }
 }
 
-function DatePicker({ locale, ...rest }) {
-    return (
-        <Consumer>
-            {values => <DatePickerComponent locale={getLocale(values, locale)} {...rest} />}
-        </Consumer>
-    );
-}
+const DatePicker = React.forwardRef(({ locale, ...rest }, ref) => (
+    <Consumer>
+        {values => <DatePickerComponent ref={ref} locale={getLocale(values, locale)} {...rest} />}
+    </Consumer>
+));
 
 DatePicker.propTypes = {
     /** Sets the date for the DatePicker programmatically. */
