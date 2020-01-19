@@ -18,7 +18,7 @@ const StyledInputHidden = attachThemeAttrs(styled(HiddenElement))`
     :active + label,
     :focus + label {
         font-weight: 300;
-        color: ${props => props.getContrastText(props.palette.brand.main)};
+        color: ${props => props.palette.getContrastText(props.palette.brand.main)};
         outline: none;
         user-select: none;
         -webkit-tap-highlight-color: transparent;

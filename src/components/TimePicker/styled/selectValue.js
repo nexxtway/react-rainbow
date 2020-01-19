@@ -17,29 +17,29 @@ const StyledSelectValue = attachThemeAttrs(styled.input)`
     line-height: normal;
 
     &::selection {
-        color: ${props => props.getContrastText(props.palette.brand.dark)};
+        color: ${props => props.palette.getContrastText(props.palette.brand.dark)};
         background: ${props => props.palette.brand.dark};
     }
 
     &::-moz-selection {
-        color: ${props => props.getContrastText(props.palette.brand.dark)};
+        color: ${props => props.palette.getContrastText(props.palette.brand.dark)};
         background: ${props => props.palette.brand.dark};
     }
 
     &[placeholder]:focus::-webkit-input-placeholder {
-        color: ${props => props.getContrastText(props.palette.brand.main)};
+        color: ${props => props.palette.getContrastText(props.palette.brand.main)};
     }
 
     &[placeholder]:focus::-moz-placeholder {
-        color: ${props => props.getContrastText(props.palette.brand.main)};
+        color: ${props => props.palette.getContrastText(props.palette.brand.main)};
     }
 
     &[placeholder]:focus:-ms-input-placeholder {
-        color: ${props => props.getContrastText(props.palette.brand.main)};
+        color: ${props => props.palette.getContrastText(props.palette.brand.main)};
     }
 
     &[placeholder]:focus:-moz-placeholder {
-        color: ${props => props.getContrastText(props.palette.brand.main)};
+        color: ${props => props.palette.getContrastText(props.palette.brand.main)};
     }
 
     &::-webkit-input-placeholder {
@@ -72,7 +72,7 @@ const StyledSelectValue = attachThemeAttrs(styled.input)`
 
     &:focus,
     &:active {
-        color: ${props => props.getContrastText(props.palette.brand.main)};
+        color: ${props => props.palette.getContrastText(props.palette.brand.main)};
         background-color: ${props => props.palette.brand.main};
         box-shadow: ${props => props.shadows.brand};
         outline: none;
@@ -82,26 +82,26 @@ const StyledSelectValue = attachThemeAttrs(styled.input)`
     ${props =>
         props.isFocused === true &&
         `
-        color: ${props.getContrastText(props.palette.brand.main)};
+        color: ${props.palette.getContrastText(props.palette.brand.main)};
         background-color: ${props.palette.brand.main};
         box-shadow: ${props.shadows.brand};
         outline: none;
         caret-color: transparent;
 
         &[placeholder]::-webkit-input-placeholder {
-            color: ${props.getContrastText(props.palette.brand.main)};
+            color: ${props.palette.getContrastText(props.palette.brand.main)};
         }
 
         &[placeholder]::-moz-placeholder {
-            color: ${props.getContrastText(props.palette.brand.main)};
+            color: ${props.palette.getContrastText(props.palette.brand.main)};
         }
 
         &[placeholder]:-ms-input-placeholder {
-            color: ${props.getContrastText(props.palette.brand.main)};
+            color: ${props.palette.getContrastText(props.palette.brand.main)};
         }
 
         &[placeholder]:-moz-placeholder {
-            color: ${props.getContrastText(props.palette.brand.main)};
+            color: ${props.palette.getContrastText(props.palette.brand.main)};
         }
 
     `};

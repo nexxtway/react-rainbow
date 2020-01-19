@@ -8,7 +8,7 @@ const StyledOptionLabel = attachThemeAttrs(styled.label)`
     font-size: 24px;
     font-weight: 200;
     text-transform: uppercase;
-    color: ${props => replaceAlpha(props.getContrastText(props.palette.brand.main), 0.3)};
+    color: ${props => replaceAlpha(props.palette.getContrastText(props.palette.brand.main), 0.3)};
     text-align: center;
     display: flex;
     align-items: center;
