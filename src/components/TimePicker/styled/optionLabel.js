@@ -1,26 +1,14 @@
 /* eslint-disable indent */
 import styled from 'styled-components';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 import { replaceAlpha } from '../../../styles/helpers/color';
 
-const StyledOptionLabel = styled.label.attrs(props => {
-    const theme = getTheme(props);
-    const { getContrastText, brand } = theme.palette;
-    const brandDarkColor = brand.dark;
-    const brandMainColor = brand.main;
-    const brandMainContrastText = getContrastText(brandMainColor);
-    const brandMainContrastTextInactive = replaceAlpha(brandMainContrastText, 0.3);
-
-    return {
-        brandDarkColor,
-        brandMainContrastTextInactive,
-    };
-})`
+const StyledOptionLabel = attachThemeAttrs(styled.label)`
     box-sizing: border-box;
     font-size: 24px;
     font-weight: 200;
     text-transform: uppercase;
-    color: ${props => props.brandMainContrastTextInactive};
+    color: ${props => replaceAlpha(props.getContrastText(props.palette.brand.main), 0.3)};
     text-align: center;
     display: flex;
     align-items: center;
@@ -29,7 +17,7 @@ const StyledOptionLabel = styled.label.attrs(props => {
 
     &:hover {
         cursor: pointer;
-        background-color: ${props => props.brandDarkColor};
+        background-color: ${props => props.palette.brand.dark};
         border-radius: 4px;
     }
 

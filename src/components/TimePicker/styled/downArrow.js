@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import DownArrow from '../icons/downArrow';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledDownArrow = styled(DownArrow)`
-    color: ${props => getTheme(props).palette.brand.main};
+const StyledDownArrow = attachThemeAttrs(styled(DownArrow))`
+    color: ${props => props.palette.brand.main};
 `;
 
 export default StyledDownArrow;
