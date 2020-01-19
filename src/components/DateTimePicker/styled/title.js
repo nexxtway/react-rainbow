@@ -1,11 +1,8 @@
 import styled from 'styled-components';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledTitle = styled.h2.attrs(props => {
-    const brandMainColor = getTheme(props).palette.brand.main;
-    return { brandMainColor };
-})`
-    color: ${props => props.brandMainColor};
+const StyledTitle = attachThemeAttrs(styled.h2)`
+    color: ${props => props.palette.brand.main};
     font-size: 1.5rem;
     font-weight: 500;
     text-transform: capitalize;
