@@ -26,7 +26,7 @@ const StyledInnerContainer = attachThemeAttrs(styled.div)`
         :focus {
             color: inherit;
             text-decoration: none;
-            border: 1px solid ${props.palette.brand.main};
+            border: 1px solid ${props.palette.border.divider};
             outline: 0;
         }
     `}

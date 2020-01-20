@@ -17,7 +17,7 @@ export default function ImageContainer(props) {
             <RenderIf isTrue={hasContent}>
                 <StyledImageFooter>
                     <RenderIf isTrue={!!header}>
-                        <StyledFooterTitle title="Imagen Header">{header}</StyledFooterTitle>
+                        <StyledFooterTitle title="Image Header">{header}</StyledFooterTitle>
                     </RenderIf>
                     <RenderIf isTrue={!!description}>
                         <StyledFooterDescription>{description}</StyledFooterDescription>
