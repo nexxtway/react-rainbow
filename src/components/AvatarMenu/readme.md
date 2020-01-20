@@ -23,8 +23,8 @@ const StyledUserEmailContainer = styled.p.attrs(props => {
     color: ${props => props.text.label};
 `;;
 
-<div className="rainbow-m-bottom_xx-large">
-    <GlobalHeader hideAvatar>
+<div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
+    <GlobalHeader hideAvatar className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
         <AvatarMenu
             className="rainbow-m-horizontal_medium"
             id="avatar-menu"
