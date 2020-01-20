@@ -1,20 +1,12 @@
+/* eslint-disable no-confusing-arrow */
 import styled from 'styled-components';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 import { isValidColor } from '../../../styles/helpers/color';
 
-const StyledContainer = styled.span.attrs(props => {
-    const theme = getTheme(props);
-    const { getContrastText, brand } = theme.palette;
-    const brandMainColor = isValidColor(props.backgroundColor) ? props.backgroundColor : brand.main;
-    const brandContrastTextColor = getContrastText(brandMainColor);
-
-    return {
-        brandMainColor,
-        brandContrastTextColor,
-    };
-})`
-    background-color: ${props => props.brandMainColor};
-    color: ${props => props.brandContrastTextColor};
+const StyledContainer = attachThemeAttrs(styled.span)`
+    background-color: ${props =>
+        isValidColor(props.backgroundColor) ? props.backgroundColor : props.palette.brand.main};
+    color: ${props => props.palette.getContrastText(props.palette.brand.main)};
     border-radius: 50%;
     display: inline-block;
     height: 2.5rem;
@@ -26,7 +18,7 @@ const StyledContainer = styled.span.attrs(props => {
 
     &:hover,
     &:focus {
-        color: ${props => props.brandContrastTextColor};
+        color: ${props => props.palette.getContrastText(props.palette.brand.main)};
     }
 
     ${props =>
