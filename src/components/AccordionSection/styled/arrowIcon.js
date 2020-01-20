@@ -1,18 +1,9 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_2 } from '../../../styles/colors';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledArrowIcon = styled.svg.attrs(props => {
-    const theme = getTheme(props);
-    const { brand } = theme.palette;
-    const { main: brandMainColor } = brand;
-
-    return {
-        brandMainColor,
-    };
-})`
+const StyledArrowIcon = attachThemeAttrs(styled.svg)`
     transform: rotate(0deg);
-    fill: ${props => props.brandMainColor};
+    fill: ${props => props.palette.brand.main};
     transition: transform 0.15s linear;
     vertical-align: middle;
 
@@ -26,7 +17,7 @@ const StyledArrowIcon = styled.svg.attrs(props => {
             transform: rotate(-180deg);
             transition: transform 0.15s linear;
         `};
-    ${props => props.disabled && `fill: ${COLOR_GRAY_2};`};
+    ${props => props.disabled && `fill: ${props.palette.text.disabled};`};
 `;
 
 export default StyledArrowIcon;

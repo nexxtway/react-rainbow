@@ -65,5 +65,6 @@ export default {
         shadow_4: `0 1px 2px 0 ${COLOR_GRAY_2}`,
         shadow_5: `0 0 3px ${COLOR_GRAY_1}`,
         shadow_6: `0 2px 12px 0 ${COLOR_GRAY_2}`,
+        shadow_7: `0 0 0 4px ${COLOR_GRAY_2}`,
     },
 };
