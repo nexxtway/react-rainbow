@@ -53,10 +53,7 @@ Application.propTypes = {
                 success: PropTypes.string,
                 error: PropTypes.string,
                 warning: PropTypes.string,
-                background: PropTypes.shape({
-                    primary: PropTypes.string,
-                    secondary: PropTypes.string,
-                }),
+                mainBackground: PropTypes.string,
             }),
         }),
     }),

@@ -1,14 +1,13 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_2, COLOR_GRAY_4 } from '../../../styles/colors';
-import { SHADOW_1 } from '../../../styles/shadows';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledContent = styled.span`
+const StyledContent = attachThemeAttrs(styled.span)`
     display: flex;
     justify-content: center;
     align-content: center;
     align-items: center;
     height: 100%;
-    text-shadow: ${SHADOW_1};
+    text-shadow: ${props => props.shadows.shadow_1};
     box-sizing: border-box;
 
     &:hover {
@@ -24,12 +23,12 @@ const StyledContent = styled.span`
     ${props =>
         props.initialsVariant === 'inverse' &&
         `
-            background-color: ${COLOR_GRAY_2};
-            color: ${COLOR_GRAY_4};
+            background-color: ${props.palette.background.secondary};
+            color: ${props.palette.text.title};
             text-shadow: none;
         
             &:hover {
-                color: ${COLOR_GRAY_4};
+                color: ${props.palette.text.title};
                 cursor: default;
             }
         `};

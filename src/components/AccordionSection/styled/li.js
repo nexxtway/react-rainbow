@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_2 } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledLi = styled.li`
-    border-top: 1px solid ${COLOR_GRAY_2};
+const StyledLi = attachThemeAttrs(styled.li)`
+    border-top: 1px solid ${props => props.palette.border.divider};
     list-style: none;
     box-sizing: border-box;
 

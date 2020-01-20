@@ -39,7 +39,7 @@ function resolveCustomBackground(background) {
         const theme = {
             background: {
                 main: background,
-                secondary: dark ? lighten(background, 0.1) : darken(background, 0.1),
+                secondary: dark ? lighten(background, 0.04) : darken(background, 0.04),
                 disabled: dark ? lighten(background, 0.08) : darken(background, 0.08),
             },
             text: {
@@ -88,6 +88,7 @@ function resolveCustomSahdows(colors, background) {
             shadow_4: `0 1px 2px 0 ${gray2}`,
             shadow_5: `0 0 3px ${gray1}`,
             shadow_6: `0 2px 12px 0 ${gray2}`,
+            shadow_7: `0 0 0 4px ${gray2}`,
         };
     }
     return shadows;
