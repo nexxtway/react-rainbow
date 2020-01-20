@@ -9,7 +9,7 @@ const StyledImagesUl = attachThemeAttrs(styled.ul)`
     position: relative;
     display: flex;
     border-radius: ${BORDER_RADIUS_1};
-    border: 1px solid #dddbda;
+    border: 1px solid ${props => props.palette.border.divider};
     box-shadow: ${props => props.shadows.shadow_4};
     margin: 0;
     padding: 0;
