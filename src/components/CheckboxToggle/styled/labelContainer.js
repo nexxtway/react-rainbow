@@ -1,7 +1,6 @@
 /* stylelint-disable no-descending-specificity, max-line-length */
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
-import { COLOR_GRAY_2 } from '../../../styles/colors';
 
 const StyledLabelContainer = attachThemeAttrs(styled.label)`
     display: inline-flex;
@@ -15,15 +14,16 @@ const StyledLabelContainer = attachThemeAttrs(styled.label)`
         padding: 0.125rem;
         transition: all 0.3s cubic-bezier(0.75, 0, 0.08, 1);
         border-radius: 1rem;
-        border: solid 0.125rem #dcdfe7;
-        background-color: ${props => props.palette.border.divider};
+        border: solid 0.125rem ${props => props.palette.border.secondary};
+        background-color: ${props => props.palette.border.secondary};
         position: relative;
         box-sizing: border-box;
 
         &:hover,
         &:focus {
             cursor: pointer;
-            background-color: #dcdfe7;
+            background-color: ${props => props.palette.border.main};
+            border: solid 0.125rem ${props => props.palette.border.main};
         }
 
         &::after {
@@ -53,10 +53,10 @@ const StyledLabelContainer = attachThemeAttrs(styled.label)`
         :focus + .rainbow-checkbox-toggle_faux,
         :focus ~ .rainbow-checkbox-toggle_faux,
         :focus + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux {
-            background-color: ${props => props.palette.background.main};
-            border-color: #dcdfe7;
+            border-color: ${props => props.palette.border.main};
+            background-color: ${props => props.palette.border.main};
             outline: 0;
-            box-shadow: 0 0 4px ${props => props.palette.brand.main};
+            box-shadow: ${props => props.shadows.brand}
         }
 
         :checked + .rainbow-checkbox-toggle_faux,
@@ -104,8 +104,7 @@ const StyledLabelContainer = attachThemeAttrs(styled.label)`
         &[disabled] + .rainbow-checkbox-toggle_faux::after,
         &[disabled] ~ .rainbow-checkbox-toggle_faux::after,
         &[disabled] + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux::after {
-            background-color: ${props => props.palette.background.main};
-            box-shadow: 0 0 1px 0 ${COLOR_GRAY_2};
+            background-color: ${props => props.palette.background.secondary};
             box-sizing: border-box;
         }
 

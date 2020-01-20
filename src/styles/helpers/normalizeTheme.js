@@ -39,7 +39,7 @@ function resolveCustomBackground(background) {
         const theme = {
             background: {
                 main: background,
-                secondary: dark ? lighten(background, 0.04) : darken(background, 0.04),
+                secondary: dark ? lighten(background, 0.1) : darken(background, 0.1),
                 disabled: dark ? lighten(background, 0.08) : darken(background, 0.08),
             },
             text: {
@@ -51,6 +51,7 @@ function resolveCustomBackground(background) {
             },
             border: {
                 main: dark ? lighten(background, 0.3) : darken(background, 0.3),
+                secondary: dark ? lighten(background, 0.2) : darken(background, 0.2),
                 divider: dark ? lighten(background, 0.1) : darken(background, 0.1),
                 disabled: dark ? lighten(background, 0.1) : darken(background, 0.1),
             },
