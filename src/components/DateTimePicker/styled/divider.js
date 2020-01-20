@@ -8,7 +8,7 @@ const StyledDivider = attachThemeAttrs(styled.div)`
 
     &::after {
         content: '';
-        background-color: ${props => props.palette.border.divider};
+        border: 0.5px solid ${props => props.palette.border.divider};
         margin: 0 auto;
         width: 1px;
         height: 100%;

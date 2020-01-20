@@ -8,7 +8,7 @@ const StyledSelectContent = attachThemeAttrs(styled.div)`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: ${props => props.palette.action.active};
+    background-color: ${props => props.palette.background.secondary};
     border-radius: 8px;
     margin: 48px 12px 32px 12px;
     padding: ${PADDING_X_SMALL};
