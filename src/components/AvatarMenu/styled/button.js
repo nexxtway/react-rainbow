@@ -1,8 +1,8 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
-import { COLOR_GRAY_2 } from '../../../styles/colors';
 
-const StyledButton = styled.button`
+const StyledButton = attachThemeAttrs(styled.button)`
     background-color: transparent;
     padding: 0;
     margin: 0;
@@ -25,7 +25,7 @@ const StyledButton = styled.button`
     :focus,
     :active {
         outline: 0;
-        box-shadow: 0 0 0 4px ${COLOR_GRAY_2};
+        box-shadow: ${props => props.shadows.shadow_7};
     }
 
     :active {
@@ -34,7 +34,7 @@ const StyledButton = styled.button`
     }
 
     :hover {
-        box-shadow: 0 0 0 4px ${COLOR_GRAY_2};
+        box-shadow: ${props => props.shadows.shadow_7};
         transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
         cursor: pointer;
     }
