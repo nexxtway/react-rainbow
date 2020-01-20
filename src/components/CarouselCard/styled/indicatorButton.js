@@ -5,9 +5,9 @@ const StyledIndicatorButton = attachThemeAttrs(styled.button)`
     font: inherit;
     width: 0.5rem;
     height: 0.5rem;
-    background: ${props => props.palette.border.divider};
+    background: ${props => props.palette.border.secondary};
     border-radius: 50%;
-    border: 1px solid ${props => props.palette.border.divider};
+    border: 1px solid ${props => props.palette.border.secondary};
     padding: 0;
     box-sizing: border-box;
     cursor: pointer;
