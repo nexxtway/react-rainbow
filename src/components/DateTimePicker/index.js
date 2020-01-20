@@ -11,7 +11,11 @@ import StyledInput from './styled/input';
 import { AppContext } from '../Application/context';
 import { getLocale } from '../../libs/utils';
 
-function PickerComponent(props, ref) {
+/**
+ * A DateTimePicker is used to select a day and a time.
+ * @category Form
+ */
+const DateTimePicker = React.forwardRef((props, ref) => {
     const {
         placeholder,
         hideLabel,
@@ -136,13 +140,7 @@ function PickerComponent(props, ref) {
             />
         </StyledContainer>
     );
-}
-
-/**
- * A DateTimePicker is used to select a day and a time.
- * @category Form
- */
-const DateTimePicker = React.forwardRef(PickerComponent);
+});
 
 DateTimePicker.propTypes = {
     /** Sets the date for the DateTimePicker programmatically. */
