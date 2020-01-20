@@ -5,10 +5,23 @@ import React from 'react';
 import { Avatar, AvatarMenu, MenuDivider, MenuItem } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt, faPowerOff } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
 
 const containerStyles = {
     paddingBottom: '12rem',
 };
+
+const StyledUserFullnameContainer = styled.p.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.main};
+`;
+
+const StyledUserEmailContainer = styled.p.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.label};
+`;;
 
 <div className="rainbow-m-bottom_xx-large">
     <GlobalHeader hideAvatar>
@@ -30,10 +43,10 @@ const containerStyles = {
                     size="medium"
                 />
                 <div className="rainbow-m-left_x-small">
-                    <p className="rainbow-font-size-text_medium rainbow-color_dark-1">Tahimi</p>
-                    <p className="rainbow-font-size-text_small rainbow-color_gray-3">
+                    <StyledUserFullnameContainer className="rainbow-font-size-text_medium">Tahimi</StyledUserFullnameContainer>
+                    <StyledUserEmailContainer className="rainbow-font-size-text_small">
                         janedoe@gmail.com
-                    </p>
+                    </StyledUserEmailContainer>
                 </div>
             </li>
             <MenuDivider variant="space" />
