@@ -1,15 +1,15 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { createStore, combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import { Provider } from 'react-redux';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import Application from '../../../src/components/Application';
 import MenuItem from '../../../src/components/MenuItem';
 import InfoFilled from '../../exampleComponents/Icons/infoFilled';
 import isNotComponentPage from '../utils';
 import ColorBox from './colorBox';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import {
     StyledWrapper,
     StyledTopBar,
@@ -21,6 +21,7 @@ import {
     StyledColorCircle,
     StyledCheckIcon,
 } from './styled';
+import useCachedState from '../../hooks/useCachedState';
 
 const rootReducer = combineReducers({
     form: formReducer,
@@ -70,7 +71,7 @@ const cyanDarkTheme = {
 
 export default function Wrapper(props) {
     const { children } = props;
-    const [theme, setTheme] = useState();
+    const [theme, setTheme] = useCachedState('theme');
     const pageName = window.location.hash.split('/')[1];
 
     if (isNotComponentPage(pageName)) {
