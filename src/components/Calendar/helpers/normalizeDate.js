@@ -1,3 +1,5 @@
 export default function normalizeDate(date) {
-    return date || new Date().setHours(0, 0, 0, 0);
+    const ret = date || new Date();
+    ret.setHours(0, 0, 0, 0);
+    return ret;
 }
