@@ -8,11 +8,15 @@ import application from '../../../assets/icons/application.svg';
 import messages from '../../../assets/icons/messages.svg';
 import charts from '../../../assets/icons/charts.svg';
 import puzzle from '../../../assets/icons/puzzle.svg';
+import styled from 'styled-components';
 
-const sidebarContainerStyles = {
-    width: '88px',
-    borderBottomLeftRadius: '0.875rem',
-};
+const SideBarContainer = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    background: ${props => props.background.main};
+    width: 88px;
+    border-bottom-left-radius: 0.875rem;
+`;
 
 class SimpleSidebar extends React.Component {
     constructor(props) {
@@ -48,11 +52,8 @@ class SimpleSidebar extends React.Component {
 
 <div>
     <GlobalHeader src="images/user/user3.jpg" />
-    <div
-        className="rainbow-background-color_white rainbow-p-top_small rainbow-p-bottom_medium"
-        style={sidebarContainerStyles}
-    >
+    <SideBarContainer className="rainbow-p-top_small rainbow-p-bottom_medium">
         <SimpleSidebar />
-    </div>
+    </SideBarContainer>
 </div>
 ```
