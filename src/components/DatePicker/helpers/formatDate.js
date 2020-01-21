@@ -10,6 +10,7 @@ export default function formatDate(date, formatStyle = 'medium', locale = 'en-US
         try {
             const options = FORMATS[formatStyle] || FORMATS.medium;
             const value = typeof date === 'string' ? new Date(date) : date;
+            value.setHours(0, 0, 0, 0);
             return new Intl.DateTimeFormat(locale, options).format(value);
         } catch (error) {
             console.error(error);
