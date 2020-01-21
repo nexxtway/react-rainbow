@@ -1,17 +1,8 @@
 import styled from 'styled-components';
 import ButtonIcon from '../../ButtonIcon';
-import { COLOR_GRAY_2, COLOR_WHITE } from '../../../styles/colors';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledStepButton = styled(ButtonIcon).attrs(props => {
-    const palette = getTheme(props).palette;
-    const brandMainColor = palette.brand.main;
-    const errorMainColor = palette.error.main;
-    return {
-        brandMainColor,
-        errorMainColor,
-    };
-})`
+const StyledStepButton = attachThemeAttrs(styled(ButtonIcon))`
     width: 1.25rem;
     height: 1.25rem;
     cursor: auto;
@@ -20,15 +11,15 @@ const StyledStepButton = styled(ButtonIcon).attrs(props => {
         `
             width: 0.75rem;
             height: 0.75rem;
-            background-color: ${COLOR_GRAY_2};
+            background-color: ${props.palette.background.disabled};
         `};
     ${props =>
         props.stepState === 'Completed' &&
         `
-            color: ${props.brandMainColor};
+            color: ${props.palette.brand.main};
 
             &:hover, &:focus, &active {
-                color: ${props.brandMainColor};
+                color: ${props.palette.brand.main};
             }
 
             > svg {
@@ -38,15 +29,15 @@ const StyledStepButton = styled(ButtonIcon).attrs(props => {
     ${props =>
         props.stepState === 'Active' &&
         `
-            background-color: ${COLOR_WHITE};
+            background-color: ${props.palette.background.main};
         `};
     ${props =>
         props.stepState === 'Error' &&
         `
-            color: ${props.errorMainColor};
+            color: ${props.palette.error.main};
 
             &:hover, &:focus, &active {
-                color: ${props.errorMainColor};
+                color: ${props.palette.error.main};
             }
 
             > svg {
