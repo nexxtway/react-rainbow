@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_2 } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledRingPath = styled.circle`
-    stroke: ${COLOR_GRAY_2};
+const StyledRingPath = attachThemeAttrs(styled.circle)`
+    stroke: ${props => props.palette.border.divider};
 `;
 
 export default StyledRingPath;
