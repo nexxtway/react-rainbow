@@ -17,7 +17,7 @@ describe('<DateTimePickerModal/>', () => {
     });
     it('should pass the right time to TimeSelect component', () => {
         const component = mount(<DateTimePickerModal isOpen value={value} />);
-        expect(component.find('TimeSelect').props().value).toBe('08:48 PM');
+        expect(component.find('TimeSelect').props().value).toBe('12:00 AM');
     });
     it('should set 12:00 AM to TimeSelect when value is null and date is changed', () => {
         const component = mount(<DateTimePickerModal isOpen />);
