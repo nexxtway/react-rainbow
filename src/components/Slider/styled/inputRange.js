@@ -35,7 +35,7 @@ const StyledInputRange = attachThemeAttrs(styled.input)`
         width: 100%;
         height: 4px;
         cursor: pointer;
-        background: ${props => props.palette.background.disabled};
+        background: ${props => props.palette.border.divider};
         border-radius: ${BORDER_RADIUS_3};
     }
 
