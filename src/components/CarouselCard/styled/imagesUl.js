@@ -20,7 +20,7 @@ const StyledImagesUl = attachThemeAttrs(styled.ul)`
     :focus {
         color: inherit;
         text-decoration: inherit;
-        box-shadow: 0 0 8px ${props => props.palette.brand.main};
+        box-shadow: 0 0 1px ${props => props.palette.brand.main};
         outline: none;
     }
 `;
