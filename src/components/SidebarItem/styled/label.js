@@ -7,17 +7,12 @@ const StyledLabel = attachThemeAttrs(styled.span)`
     font-size: ${FONT_SIZE_TEXT_X_SMALL};
     letter-spacing: -0.2px;
     text-align: center;
-
-    ${props =>
-        !props.isSelected &&
-        `
-        color: ${props.palette.text.label};
-    `};
+    color: ${props => props.palette.text.header};
 
     ${props =>
         props.isSelected &&
         `
-        color: ${props.palette.text.main};
+        color: ${props.palette.text.label};
     `};
 `;
 
