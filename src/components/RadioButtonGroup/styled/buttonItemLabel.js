@@ -1,22 +1,12 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_4, COLOR_GRAY_3, COLOR_GRAY_2, COLOR_DARK_1 } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
 import { PADDING_LARGE } from '../../../styles/paddings';
-import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledButtonItemLabel = styled.label.attrs(props => {
-    const theme = getTheme(props);
-    const { getContrastText, brand } = theme.palette;
-    const { main: brandMainColor } = brand;
-
-    return {
-        brandMainColor,
-        getContrastText,
-    };
-})`
+const StyledButtonItemLabel = attachThemeAttrs(styled.label)`
     display: inline-flex;
     font-size: ${FONT_SIZE_TEXT_LARGE};
-    color: ${COLOR_GRAY_3};
+    color: ${props => props.palette.text.label};
     padding: 0 ${PADDING_LARGE};
     font-weight: 400;
     box-sizing: border-box;
@@ -28,15 +18,14 @@ const StyledButtonItemLabel = styled.label.attrs(props => {
     ${props =>
         props.isChecked &&
         `
-            color: ${COLOR_DARK_1};
+            color: ${props.palette.text.main};
         `};
     ${props =>
         props.disabled &&
         `   
             background-color: transparent;
-            border-color: ${COLOR_GRAY_4};
-            color: ${COLOR_GRAY_2};
-            color: $color-gray-2;
+            border-color: ${props.palette.border.main};
+            color: ${props.palette.text.disabled};
 
             :hover {
                 cursor: not-allowed;
@@ -46,13 +35,13 @@ const StyledButtonItemLabel = styled.label.attrs(props => {
         props.variant === 'brand' &&
         props.isChecked &&
         `
-            color: ${props.getContrastText(props.brandMainColor)};
+            color: ${props.palette.getContrastText(props.palette.brand.main)};
         `};
     ${props =>
         props.variant === 'inverse' &&
         props.isChecked &&
         `
-            color: ${props.getContrastText(props.brandMainColor)};
+            color: ${props.palette.getContrastText(props.palette.brand.main)};
         `};
 `;
 

@@ -1,8 +1,9 @@
 /* stylelint-disable max-line-length */
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 
-const StyledButtonItem = styled.span`
+const StyledButtonItem = attachThemeAttrs(styled.span)`
     display: inline-flex;
     justify-content: center;
     align-items: center;

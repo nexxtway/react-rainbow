@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledInput = styled.input`
+const StyledInput = attachThemeAttrs(styled.input)`
     color: inherit;
     font: inherit;
     margin: 0;
