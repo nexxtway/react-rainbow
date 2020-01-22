@@ -46,7 +46,6 @@ export default {
         },
         border: {
             main: COLOR_GRAY_3,
-            secondary: COLOR_GRAY_2,
             divider: COLOR_GRAY_2,
             disabled: COLOR_GRAY_2,
         },

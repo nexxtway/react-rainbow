@@ -14,8 +14,8 @@ const StyledLabelContainer = attachThemeAttrs(styled.label)`
         padding: 0.125rem;
         transition: all 0.3s cubic-bezier(0.75, 0, 0.08, 1);
         border-radius: 1rem;
-        border: solid 0.125rem ${props => props.palette.border.secondary};
-        background-color: ${props => props.palette.border.secondary};
+        border: solid 0.125rem ${props => props.palette.border.divider};
+        background-color: ${props => props.palette.border.divider};
         position: relative;
         box-sizing: border-box;
 
