@@ -1,16 +1,7 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_2 } from '../../../styles/colors';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledInnerContainer = styled.div.attrs(props => {
-    const { brand, error } = getTheme(props).palette;
-    const brandMainColor = brand.main;
-    const errorMainColor = error.main;
-    return {
-        brandMainColor,
-        errorMainColor,
-    };
-})`
+const StyledInnerContainer = attachThemeAttrs(styled.div)`
     position: relative;
 
     ::after {
@@ -26,19 +17,19 @@ const StyledInnerContainer = styled.div.attrs(props => {
         border-width: 0.15em 0.15em 0 0;
         transform: rotate(135deg);
         vertical-align: top;
-        color: ${props => props.brandMainColor};
+        color: ${props => props.palette.brand.main};
         box-sizing: border-box;
     }
 
     &[disabled]::after {
-        color: ${COLOR_GRAY_2};
+        color: ${props => props.palette.background.disabled};
     }
 
     ${props =>
         props.error &&
         `
             ::after {
-                color: ${props.errorMainColor};
+                color: ${props.palette.error.main};
             }
         `};
 `;
