@@ -11,7 +11,7 @@ const StyledStepButton = attachThemeAttrs(styled(ButtonIcon))`
         `
             width: 0.75rem;
             height: 0.75rem;
-            background-color: ${props.palette.background.disabled};
+            background-color: ${props.palette.background.highlight};
         `};
     ${props =>
         props.stepState === 'Completed' &&
