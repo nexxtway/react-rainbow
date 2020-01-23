@@ -1,12 +1,8 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 import { BORDER_RADIUS_1 } from '../../../styles/borderRadius';
-import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledInnerContainer = styled.div.attrs(props => {
-    const brandMainColor = getTheme(props).palette.brand.main;
-
-    return { brandMainColor };
-})`
+const StyledInnerContainer = attachThemeAttrs(styled.div)`
     border-radius: ${BORDER_RADIUS_1};
     overflow: hidden;
     line-height: inherit;
@@ -30,7 +26,7 @@ const StyledInnerContainer = styled.div.attrs(props => {
         :focus {
             color: inherit;
             text-decoration: none;
-            border: 1px solid ${props.brandMainColor};
+            border: 1px solid ${props.palette.brand.main};
             outline: 0;
         }
     `}

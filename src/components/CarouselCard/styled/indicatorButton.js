@@ -1,24 +1,13 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_2, COLOR_GRAY_3 } from '../../../styles/colors';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledIndicatorButton = styled.button.attrs(props => {
-    const brand = getTheme(props).palette.brand;
-    const brandMainColor = brand.main;
-    const brandDarkColor = brand.dark;
-
-    return {
-        brandMainColor,
-        brandDarkColor,
-        brandShadow: `0 0 2px ${brandMainColor}`,
-    };
-})`
+const StyledIndicatorButton = attachThemeAttrs(styled.button)`
     font: inherit;
     width: 0.5rem;
     height: 0.5rem;
-    background: ${COLOR_GRAY_2};
+    background: ${props => props.palette.border.divider};
     border-radius: 50%;
-    border: 1px solid ${COLOR_GRAY_2};
+    border: 1px solid ${props => props.palette.border.divider};
     padding: 0;
     box-sizing: border-box;
     cursor: pointer;
@@ -34,25 +23,25 @@ const StyledIndicatorButton = styled.button.attrs(props => {
     }
 
     :hover {
-        background-color: ${COLOR_GRAY_3};
-        border: 1px solid ${COLOR_GRAY_3};
+        background-color: ${props => props.palette.border.main};
+        border: 1px solid ${props => props.palette.border.main};
     }
 
     :focus {
         outline: 0;
-        box-shadow: ${props => props.brandShadow};
-        border: 1px solid ${props => props.brandMainColor};
+        box-shadow: ${props => props.shadows.brand};
+        border: 1px solid ${props => props.palette.brand.main};
     }
 
     ${props =>
         props.isSelected &&
         `
-            background: ${props.brandMainColor};
-            border: 1px solid ${props.brandMainColor};
+            background: ${props.palette.brand.main};
+            border: 1px solid ${props.palette.brand.main};
 
             :hover {
-                background: ${props.brandDarkColor};
-                border: 1px solid ${props.brandDarkColor};
+                background: ${props.palette.brand.dark};
+                border: 1px solid ${props.palette.brand.dark};
             }
         `};
 `;
