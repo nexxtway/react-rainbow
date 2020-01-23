@@ -10,7 +10,7 @@ import isOptionChecked from './helpers/isOptionChecked';
 import StyledContainer from './styled/container';
 import StyledLabel from './styled/label';
 import StyledButtonItemsContainer from './styled/buttonItemsContainer';
-import StyledTextError from '../Input/styled/errorText';
+import StyledTextError from './styled/errorText';
 
 /**
  * A button list that can have a single entry checked at any one time.
