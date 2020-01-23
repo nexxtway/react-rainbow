@@ -1,6 +1,7 @@
 /* stylelint-disable max-line-length */
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import { replaceAlpha } from '../../../styles/helpers/color';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 
 const StyledButtonItem = attachThemeAttrs(styled.span)`
@@ -15,7 +16,7 @@ const StyledButtonItem = attachThemeAttrs(styled.span)`
     transform: translate3d(0, 0, 0);
 
     &:hover {
-        background-color: rgba(227, 229, 237, 0.4);
+        background-color: ${props => replaceAlpha(props.palette.background.secondary, 0.4)};
         cursor: pointer;
     }
 

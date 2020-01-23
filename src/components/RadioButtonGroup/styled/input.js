@@ -15,7 +15,7 @@ const StyledInput = attachThemeAttrs(styled.input)`
     }
 
     :-ms-input-placeholder {
-        color: #706e6b;
+        color: ${props => props.palette.text.label};
         font-weight: 400;
     }
 

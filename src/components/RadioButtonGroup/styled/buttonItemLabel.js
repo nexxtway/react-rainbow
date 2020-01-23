@@ -3,7 +3,14 @@ import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
 import { PADDING_LARGE } from '../../../styles/paddings';
 
-const StyledButtonItemLabel = attachThemeAttrs(styled.label)`
+const StyledButtonItemLabel = attachThemeAttrs(styled.label).attrs(props => {
+    const { getContrastText, brand } = props.palette;
+    const brandMainContrastText = getContrastText(brand.main);
+
+    return {
+        brandMainContrastText,
+    };
+})`
     display: inline-flex;
     font-size: ${FONT_SIZE_TEXT_LARGE};
     color: ${props => props.palette.text.label};
@@ -35,13 +42,13 @@ const StyledButtonItemLabel = attachThemeAttrs(styled.label)`
         props.variant === 'brand' &&
         props.isChecked &&
         `
-            color: ${props.palette.getContrastText(props.palette.brand.main)};
+            color: ${props.brandMainContrastText};
         `};
     ${props =>
         props.variant === 'inverse' &&
         props.isChecked &&
         `
-            color: ${props.palette.getContrastText(props.palette.brand.main)};
+            color: ${props.brandMainContrastText};
         `};
 `;
 

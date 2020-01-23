@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import { replaceAlpha } from '../../../styles/helpers/color';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 
 const StyledButtonItemsContainer = attachThemeAttrs(styled.div)`
@@ -8,7 +9,7 @@ const StyledButtonItemsContainer = attachThemeAttrs(styled.div)`
     align-items: center;
     border-radius: ${BORDER_RADIUS_2};
     border: solid 1px ${props => props.palette.border.divider};
-    background-color: rgba(227, 229, 237, 0.4);
+    background-color: ${props => replaceAlpha(props.palette.background.secondary, 0.4)};
     line-height: 2.5rem;
     height: 2.5rem;
 
