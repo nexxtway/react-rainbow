@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import StyledWrapper from './wrapper';
-import { COLOR_GRAY_1 } from '../../../../styles/colors';
+import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttr';
 
-const StyledCheckboxWrapper = styled(StyledWrapper)`
+const StyledCheckboxWrapper = attachThemeAttrs(styled(StyledWrapper))`
     align-items: center;
     display: flex;
     padding: 0 15px;
-    border: 1px solid ${COLOR_GRAY_1};
+    border: 1px solid ${props => props.palette.border.divider};
 `;
 
 export default StyledCheckboxWrapper;

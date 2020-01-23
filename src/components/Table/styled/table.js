@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { COLOR_WHITE } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledTable = styled.table`
+const StyledTable = attachThemeAttrs(styled.table)`
     table-layout: fixed;
     border-collapse: separate;
-    background-color: ${COLOR_WHITE};
+    background-color: ${props => props.palette.background.main};
     border-spacing: 0;
     width: 100%;
     box-sizing: border-box;

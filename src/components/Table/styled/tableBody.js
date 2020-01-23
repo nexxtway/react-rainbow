@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { COLOR_WHITE } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledTableBody = styled.tbody`
-    background-color: ${COLOR_WHITE};
+const StyledTableBody = attachThemeAttrs(styled.tbody)`
+    background-color: ${props => props.palette.background.main};
 `;
 
 export default StyledTableBody;

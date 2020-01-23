@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_1, COLOR_GRAY_2 } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledScrollableX = styled.div`
-    background-color: ${COLOR_GRAY_1};
+const StyledScrollableX = attachThemeAttrs(styled.div)`
+    background-color: ${props => props.palette.background.secondary};
     height: 100%;
     max-width: 100%;
     overflow: hidden;
@@ -10,7 +10,7 @@ const StyledScrollableX = styled.div`
     padding-top: 44px;
     position: relative;
     -webkit-overflow-scrolling: touch;
-    border-top: 1px solid ${COLOR_GRAY_2};
+    border-top: 1px solid ${props => props.palette.border.divider};
 `;
 
 export default StyledScrollableX;

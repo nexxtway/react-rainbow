@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_4 } from '../../../../styles/colors';
+import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttr';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../../styles/fontSizes';
 
-const StyledCellContent = styled.div`
+const StyledCellContent = attachThemeAttrs(styled.div)`
     border: 1px solid transparent;
-    color: ${COLOR_GRAY_4};
+    color: ${props => props.palette.text.label};
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
     height: 42px;
     line-height: 40px;

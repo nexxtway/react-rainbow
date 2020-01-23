@@ -1,13 +1,13 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_2, COLOR_WHITE } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledScrollableY = styled.div`
+const StyledScrollableY = attachThemeAttrs(styled.div)`
     height: 100%;
     overflow: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    border-top: 1px solid ${COLOR_GRAY_2};
-    background-color: ${COLOR_WHITE};
+    border-top: 1px solid ${props => props.palette.border.divider};
+    background-color: ${props => props.palette.background.main};
     ${props =>
         props.isEmpty &&
         !props.isLoading &&
