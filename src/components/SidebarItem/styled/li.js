@@ -1,15 +1,7 @@
 import styled from 'styled-components';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledLi = styled.li.attrs(props => {
-    const theme = getTheme(props);
-    const { brand } = theme.palette;
-    const { main: brandMainColor } = brand;
-
-    return {
-        brandMainColor,
-    };
-})`
+const StyledLi = attachThemeAttrs(styled.li)`
     position: relative;
     margin-bottom: 1.375rem;
     padding-bottom: 0.75rem;
@@ -30,7 +22,7 @@ const StyledLi = styled.li.attrs(props => {
                 top: 0;
                 bottom: 0;
                 position: absolute;
-                background-color: ${props.brandMainColor};
+                background-color: ${props.palette.brand.main};
                 border-radius: 100px;
         `};
 `;

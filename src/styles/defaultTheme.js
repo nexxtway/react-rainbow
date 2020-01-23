@@ -34,6 +34,7 @@ export default {
         },
         background: {
             main: COLOR_WHITE,
+            highlight: COLOR_GRAY_2,
             secondary: '#f9fafc',
             disabled: COLOR_GRAY_1,
         },
