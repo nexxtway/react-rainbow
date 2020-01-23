@@ -1,14 +1,14 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_1 } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 import { PADDING_X_SMALL } from '../../../styles/paddings';
 
-const StyledSelectContent = styled.div`
+const StyledSelectContent = attachThemeAttrs(styled.div)`
     height: 100px;
     width: 360px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: ${COLOR_GRAY_1};
+    background-color: ${props => props.palette.background.secondary};
     border-radius: 8px;
     margin: 48px 12px 32px 12px;
     padding: ${PADDING_X_SMALL};
