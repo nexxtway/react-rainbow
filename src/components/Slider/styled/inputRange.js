@@ -25,7 +25,7 @@ const StyledInputRange = attachThemeAttrs(styled.input)`
         border-radius: 50%;
         background: ${props => props.palette.brand.main};
         border: 0;
-        box-shadow: rgba(0, 0, 0, 0.16) 0 2px 3px;
+        box-shadow: ${props => props.shadows.shadow_1};
         cursor: pointer;
         transition: all 0.3s ease 0s;
         margin-top: calc(((1rem / 2) - (4px / 2)) * -1);
@@ -46,7 +46,7 @@ const StyledInputRange = attachThemeAttrs(styled.input)`
         border-radius: 50%;
         background: ${props => props.palette.brand.main};
         border: 0;
-        box-shadow: rgba(0, 0, 0, 0.16) 0 2px 3px;
+        box-shadow: ${props => props.shadows.shadow_1};
         cursor: pointer;
         transition: background 0.15s ease-in-out;
     }
@@ -55,7 +55,7 @@ const StyledInputRange = attachThemeAttrs(styled.input)`
         width: 100%;
         height: 4px;
         cursor: pointer;
-        background: ${props => props.palette.background.disabled};
+        background: ${props => props.palette.background.highlight};
         border-radius: ${BORDER_RADIUS_3};
     }
 
@@ -118,6 +118,7 @@ const StyledInputRange = attachThemeAttrs(styled.input)`
 
     &[disabled]::-webkit-slider-thumb {
         background-color: ${props => props.palette.background.disabled};
+        box-shadow: ${props => props.shadows.shadow_4};
         cursor: default;
     }
 
