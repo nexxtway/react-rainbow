@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { COLOR_BRAND } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledSelectContainer = styled.div`
+const StyledSelectContainer = attachThemeAttrs(styled.div)`
     flex-shrink: 0;
     position: relative;
     margin: 0 12px;
@@ -20,7 +20,7 @@ const StyledSelectContainer = styled.div`
         border-width: 0.15em 0.15em 0 0;
         transform: rotate(135deg);
         vertical-align: top;
-        color: ${COLOR_BRAND};
+        color: ${props => props.palette.brand.main};
     }
 `;
 

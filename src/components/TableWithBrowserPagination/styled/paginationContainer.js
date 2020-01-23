@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_1, COLOR_GRAY_2 } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 import { PADDING_SMALL } from '../../../styles/paddings';
 
-const StyledPaginationContainer = styled.div`
+const StyledPaginationContainer = attachThemeAttrs(styled.div)`
     padding: ${PADDING_SMALL};
-    background-color: ${COLOR_GRAY_1};
-    border-top: 1px solid ${COLOR_GRAY_2};
-    border-bottom: 1px solid ${COLOR_GRAY_2};
+    background-color: ${props => props.palette.background.secondary};
+    border-top: 1px solid ${props => props.palette.border.divider};
+    border-bottom: 1px solid ${props => props.palette.border.divider};
     display: flex;
     align-items: center;
     justify-content: center;
