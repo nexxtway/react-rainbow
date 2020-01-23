@@ -39,6 +39,18 @@ const ActiveCirlce = styled.span.attrs(props => {
         `};
 `;
 
+const StyledHeader = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.main};
+`;
+
+const StyledExampleHeader = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.main};
+`;
+
 function ActiveUsersCard({ title, variant }) {
     const [percent, setPercent] = React.useState(60);
 
@@ -53,7 +65,7 @@ function ActiveUsersCard({ title, variant }) {
 
     return (
         <Card className="rainbow-m-horizontal_large rainbow-m-bottom_large rainbow-p-around_small">
-            <h1 className="rainbow-font-size-heading_medium">{title}</h1>
+            <StyledHeader className="rainbow-font-size-heading_medium">{title}</StyledHeader>
             <h2 className="rainbow-font-size-heading_small rainbow-color_gray-3">Active users</h2>
             <div className="rainbow-p-around_medium">
                 <ProgressCircular variant={variant} value={percent} />
@@ -69,9 +81,9 @@ function ActiveUsersCard({ title, variant }) {
 }
 
 <div className="rainbow-m-around_xx-large rainbow-flex_column rainbow-align-content_center">
-    <h1 className="rainbow-font-size-heading_large rainbow-p-bottom_small">
+    <StyledExampleHeader className="rainbow-font-size-heading_large rainbow-p-bottom_small">
         Social Network Activity
-    </h1>
+    </StyledExampleHeader>
     <div className="rainbow-flex rainbow-flex_wrap">
         <ActiveUsersCard title="snapchat" variant="warning" />
         <ActiveUsersCard title="twitter" />
