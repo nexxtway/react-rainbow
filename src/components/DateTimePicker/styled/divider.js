@@ -1,14 +1,14 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_2 } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledDivider = styled.div`
+const StyledDivider = attachThemeAttrs(styled.div)`
     display: flex;
     align-items: center;
     width: 2rem;
 
     &::after {
         content: '';
-        background-color: ${COLOR_GRAY_2};
+        border: 0.5px solid ${props => props.palette.border.divider};
         margin: 0 auto;
         width: 1px;
         height: 100%;
