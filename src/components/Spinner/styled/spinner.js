@@ -1,14 +1,8 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 import { COLOR_WHITE, COLOR_GRAY_3 } from '../../../styles/colors';
-import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledSpinner = styled.div.attrs(props => {
-    const brandMainColor = getTheme(props).palette.brand.main;
-
-    return {
-        brandMainColor,
-    };
-})`
+const StyledSpinner = attachThemeAttrs(styled.div)`
     box-sizing: border-box;
     position: absolute;
     top: 50%;
@@ -219,7 +213,7 @@ const StyledSpinner = styled.div.attrs(props => {
         props.variant === 'brand' &&
         `
             > div {
-                color: ${props.brandMainColor} !important;
+                color: ${props.palette.brand.main} !important;
             }
         `};
     ${props =>
