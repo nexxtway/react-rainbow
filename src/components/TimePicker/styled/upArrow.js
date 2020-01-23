@@ -1,9 +1,9 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 import UpArrow from '../icons/upArrow';
-import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledUpArrow = styled(UpArrow)`
-    color: ${props => getTheme(props).palette.brand.main};
+const StyledUpArrow = attachThemeAttrs(styled(UpArrow))`
+    color: ${props => props.palette.brand.main};
 `;
 
 export default StyledUpArrow;
