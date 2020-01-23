@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { COLOR_WHITE } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledImageFooter = styled.div`
-    background: ${COLOR_WHITE};
+const StyledImageFooter = attachThemeAttrs(styled.div)`
+    background: ${props => props.palette.background.main};
     padding: 0.75rem;
     text-align: center;
 `;

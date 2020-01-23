@@ -1,18 +1,8 @@
 /* stylelint-disable no-descending-specificity, max-line-length */
 import styled from 'styled-components';
-import { COLOR_WHITE, COLOR_GRAY_2, COLOR_GRAY_1, COLOR_GRAY_3 } from '../../../styles/colors';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledLabelContainer = styled.label.attrs(props => {
-    const theme = getTheme(props);
-    const { brand } = theme.palette;
-    const { main: brandMainColor, dark: brandDarkColor } = brand;
-
-    return {
-        brandMainColor,
-        brandDarkColor,
-    };
-})`
+const StyledLabelContainer = attachThemeAttrs(styled.label)`
     display: inline-flex;
     align-items: center;
     box-sizing: border-box;
@@ -24,15 +14,16 @@ const StyledLabelContainer = styled.label.attrs(props => {
         padding: 0.125rem;
         transition: all 0.3s cubic-bezier(0.75, 0, 0.08, 1);
         border-radius: 1rem;
-        border: solid 0.125rem #dcdfe7;
-        background-color: ${COLOR_GRAY_2};
+        border: solid 0.125rem ${props => props.palette.border.divider};
+        background-color: ${props => props.palette.border.divider};
         position: relative;
         box-sizing: border-box;
 
         &:hover,
         &:focus {
             cursor: pointer;
-            background-color: #dcdfe7;
+            background-color: ${props => props.palette.border.main};
+            border: solid 0.125rem ${props => props.palette.border.main};
         }
 
         &::after {
@@ -43,11 +34,11 @@ const StyledLabelContainer = styled.label.attrs(props => {
             left: 0.015625rem;
             width: 1.25rem;
             height: 1.25rem;
-            box-shadow: 0 0 2px 0 ${COLOR_GRAY_3};
+            box-shadow: ${props => props.shadows.shadow_1};
             transition: all 0.3s cubic-bezier(0.75, 0, 0.08, 1);
             border-radius: 1rem;
             border: solid 0.125rem transparent;
-            background-color: ${COLOR_WHITE};
+            background-color: ${props => props.palette.background.main};
             position: absolute;
             box-sizing: border-box;
         }
@@ -55,24 +46,24 @@ const StyledLabelContainer = styled.label.attrs(props => {
 
     [type='checkbox'] + .rainbow-checkbox-toggle_faux-container {
         font-size: 0.625rem;
-        color: ${COLOR_GRAY_2};
+        color: ${props => props.palette.border.divider};
     }
 
     [type='checkbox'] {
         :focus + .rainbow-checkbox-toggle_faux,
         :focus ~ .rainbow-checkbox-toggle_faux,
         :focus + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux {
-            background-color: ${COLOR_GRAY_2};
-            border-color: #dcdfe7;
+            border-color: ${props => props.palette.border.main};
+            background-color: ${props => props.palette.border.main};
             outline: 0;
-            box-shadow: 0 0 4px ${props => props.brandMainColor};
+            box-shadow: ${props => props.shadows.brand}
         }
 
         :checked + .rainbow-checkbox-toggle_faux,
         :checked ~ .rainbow-checkbox-toggle_faux,
         :checked + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux {
-            border-color: ${props => props.brandDarkColor};
-            background-color: ${props => props.brandMainColor};
+            border-color: ${props => props.palette.brand.dark};
+            background-color: ${props => props.palette.brand.main};
         }
 
         :checked + .rainbow-checkbox-toggle_faux:hover,
@@ -81,8 +72,8 @@ const StyledLabelContainer = styled.label.attrs(props => {
         :checked ~ .rainbow-checkbox-toggle_faux:focus,
         :checked + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux:hover,
         :checked + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux:focus {
-            background-color: ${props => props.brandDarkColor};
-            border-color: ${props => props.brandDarkColor};
+            background-color: ${props => props.palette.brand.dark};
+            border-color: ${props => props.palette.brand.dark};
         }
 
         :checked + .rainbow-checkbox-toggle_faux::after,
@@ -97,7 +88,7 @@ const StyledLabelContainer = styled.label.attrs(props => {
         :checked:focus + .rainbow-checkbox-toggle_faux,
         :checked:focus ~ .rainbow-checkbox-toggle_faux,
         :checked:focus + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux {
-            background-color: ${props => props.brandMainColor};
+            background-color: ${props => props.palette.brand.main};
         }
 
         &[disabled] + .rainbow-checkbox-toggle_faux,
@@ -106,15 +97,14 @@ const StyledLabelContainer = styled.label.attrs(props => {
             pointer-events: none;
             border-radius: 1rem;
             border: solid 0.125rem rgba(164, 167, 181, 0.1);
-            background-color: ${COLOR_GRAY_1};
+            background-color: ${props => props.palette.background.disabled};
             position: relative;
         }
 
         &[disabled] + .rainbow-checkbox-toggle_faux::after,
         &[disabled] ~ .rainbow-checkbox-toggle_faux::after,
         &[disabled] + .rainbow-checkbox-toggle_faux-container .rainbow-checkbox-toggle_faux::after {
-            background-color: ${COLOR_WHITE};
-            box-shadow: 0 0 1px 0 ${COLOR_GRAY_2};
+            background-color: ${props => props.palette.background.secondary};
             box-sizing: border-box;
         }
 

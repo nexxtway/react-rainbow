@@ -1,13 +1,12 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_1 } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 import { BORDER_RADIUS_1 } from '../../../styles/borderRadius';
-import { SHADOW_4 } from '../../../styles/shadows';
 
-const StyledMapContainer = styled.div`
+const StyledMapContainer = attachThemeAttrs(styled.div)`
     align-self: center;
-    border: solid 1px ${COLOR_GRAY_1};
+    border: solid 1px ${props => props.palette.border.divider};
     border-radius: ${BORDER_RADIUS_1};
-    box-shadow: ${SHADOW_4};
+    box-shadow: ${props => props.shadows.shadow_4};
     height: 99%;
     width: 99%;
 `;
