@@ -1,17 +1,8 @@
 import styled from 'styled-components';
 import HiddenElement from '../../Structural/hiddenElement';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledInputHidden = styled(HiddenElement).attrs(props => {
-    const theme = getTheme(props);
-    const { getContrastText, brand } = theme.palette;
-    const { main: brandMainColor } = brand;
-
-    return {
-        brandMainColor,
-        getContrastText,
-    };
-})`
+const StyledInputHidden = attachThemeAttrs(styled(HiddenElement))`
     color: inherit;
     font: inherit;
     line-height: normal;
@@ -27,7 +18,7 @@ const StyledInputHidden = styled(HiddenElement).attrs(props => {
     :active + label,
     :focus + label {
         font-weight: 300;
-        color: ${props => props.getContrastText(props.brandMainColor)};
+        color: ${props => props.palette.getContrastText(props.palette.brand.main)};
         outline: none;
         user-select: none;
         -webkit-tap-highlight-color: transparent;

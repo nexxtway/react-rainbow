@@ -1,12 +1,9 @@
 import styled from 'styled-components';
 import { FONT_SIZE_HEADING_LARGE } from '../../../styles/fontSizes';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledHeaderTitle = styled.h1.attrs(props => {
-    const brandMainColor = getTheme(props).palette.brand.main;
-    return { brandMainColor };
-})`
-    color: ${props => props.brandMainColor};
+const StyledHeaderTitle = attachThemeAttrs(styled.h1)`
+    color: ${props => props.palette.brand.main};
     font-size: ${FONT_SIZE_HEADING_LARGE};
     font-weight: 500;
     text-transform: capitalize;

@@ -8,10 +8,7 @@ type ThemeType = {
             success?: string;
             error?: string;
             warning?: string;
-            background?: {
-                primary?: string;
-                secondary?: string;
-            };
+            mainBackground?: string;
         };
     };
 };
