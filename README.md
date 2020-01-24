@@ -23,7 +23,6 @@ React Rainbow is a collection of components that will reliably help you build yo
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 [![CLA assistant](https://cla-assistant.io/readme/badge/nexxtway/react-rainbow)](https://cla-assistant.io/nexxtway/react-rainbow)
-
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/react-rainbow-components/community?source=orgpage)
 
 </div>
@@ -135,3 +134,8 @@ We are excited that you are interested in contributing to this project!
 You can help us improve React Rainbow Components, the first step to begin collaborate is to create an issue before submitting a pull request, it's always good to file an issue, so we can discuss the details of your approach or suggestion.
 
 [See more details about how to collaborate?](https://github.com/nexxtway/react-rainbow/blob/master/CONTRIBUTING.md)
+
+### License
+
+The [MIT license][license] governs your use of React Rainbow Components.
+
