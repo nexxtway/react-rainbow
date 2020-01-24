@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
-import { COLOR_WHITE, COLOR_GRAY_3 } from '../../../styles/colors';
+import { COLOR_WHITE } from '../../../styles/colors';
 
 const StyledSpinner = attachThemeAttrs(styled.div)`
     box-sizing: border-box;
@@ -227,7 +227,7 @@ const StyledSpinner = attachThemeAttrs(styled.div)`
         props.variant === 'neutral' &&
         `
             > div {
-                color: ${COLOR_GRAY_3} !important;
+                color: ${props.palette.background.highlight} !important;
             }
         `};
 `;

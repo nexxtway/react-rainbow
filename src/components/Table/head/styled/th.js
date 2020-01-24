@@ -6,7 +6,7 @@ const StyledTh = attachThemeAttrs(styled.th)`
     text-transform: uppercase;
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
     font-weight: 900;
-    color: ${props => props.palette.text.main};
+    color: ${props => props.palette.text.title};
     line-height: normal;
     white-space: nowrap;
     position: static;
