@@ -3,7 +3,6 @@
 <p align="center">
   <a href="https://react-rainbow.firebaseapp.com/" rel="noopener" target="_blank"><img width="15%" src="https://raw.githubusercontent.com/nexxtway/react-rainbow/master/assets/images/rainbow-logo.svg?sanitize=true" alt="React Rainbow Component logo"></a>
 </p>
-<br/>
 
 <h2 align="center">
 <a href="https://react-rainbow.firebaseapp.com/" rel="noopener" target="_blank">React Rainbow</a>
