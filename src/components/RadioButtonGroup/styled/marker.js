@@ -1,6 +1,7 @@
 /* stylelint-disable max-line-length */
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import { hexToRgba } from '../../../styles/helpers/color';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 
 const StyledMarker = attachThemeAttrs(styled.span)`
@@ -22,16 +23,16 @@ const StyledMarker = attachThemeAttrs(styled.span)`
     ${props =>
         props.variant === 'inverse' &&
         `
-            box-shadow: 0 0 4px 0 ${props.palette.brand.main};
-            background-color: ${props.palette.brand.main};
-            border: solid 1px ${props.palette.brand.main};
+        background-color: ${props.palette.brand.main};
+        border: solid 1px ${props.palette.brand.main};
+        box-shadow: 0 0 4px 0 ${props.palette.brand.main};
         `};
     ${props =>
         props.variant === 'brand' &&
         `
             background-color: ${props.palette.brand.main};
             border-color: ${props.palette.brand.dark};
-            box-shadow: 0 0 3px 0 rgba(1, 38, 96, 0.4);
+            box-shadow: 0 0 3px 0 ${hexToRgba(props.palette.brand.dark, 0.1)};
         `};
 `;
 
