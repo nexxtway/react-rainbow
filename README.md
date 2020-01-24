@@ -1,8 +1,9 @@
 <br/>
 
 <p align="center">
-  <a href="https://react-rainbow.firebaseapp.com/" rel="noopener" target="_blank"><img width="20%" src="https://raw.githubusercontent.com/nexxtway/react-rainbow/master/assets/images/rainbow-logo.svg?sanitize=true" alt="React Rainbow Component logo"></a>
+  <a href="https://react-rainbow.firebaseapp.com/" rel="noopener" target="_blank"><img width="15%" src="https://raw.githubusercontent.com/nexxtway/react-rainbow/master/assets/images/rainbow-logo.svg?sanitize=true" alt="React Rainbow Component logo"></a>
 </p>
+<br/>
 
 <h2 align="center">
 <a href="https://react-rainbow.firebaseapp.com/" rel="noopener" target="_blank">React Rainbow</a>
@@ -135,7 +136,9 @@ You can help us improve React Rainbow Components, the first step to begin collab
 
 [See more details about how to collaborate?](https://github.com/nexxtway/react-rainbow/blob/master/CONTRIBUTING.md)
 
-### License
+<br/>
 
-The [MIT license][license] governs your use of React Rainbow Components.
+### ⚖️ License
+
+The [MIT license](https://github.com/nexxtway/react-rainbow/blob/master/LICENSE) governs your use of React Rainbow Components.
 
