@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttr';
-import { replaceAlpha } from '../../../../styles/helpers/color';
 
 const StyledRow = attachThemeAttrs(styled.tr)`
     box-shadow: ${props => props.shadows.shadow_8};
@@ -8,14 +7,14 @@ const StyledRow = attachThemeAttrs(styled.tr)`
     box-sizing: border-box;
 
     &:hover {
-        background-color: ${props => replaceAlpha(props.palette.background.secondary, 0.4)};
+        background-color: ${props => props.palette.background.highlight};
         box-shadow: ${props => props.shadows.shadow_9}, ${props => props.shadows.shadow_3};
     }
 
     ${props =>
         props.isSelected &&
         `
-        background-color: ${replaceAlpha(props.palette.background.secondary, 0.4)};
+        background-color: ${props.palette.background.secondary};
         `};
 `;
 
