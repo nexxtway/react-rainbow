@@ -40,6 +40,7 @@ function resolveCustomBackground(background) {
             background: {
                 main: background,
                 secondary: dark ? lighten(background, 0.04) : darken(background, 0.04),
+                highlight: dark ? lighten(background, 0.2) : darken(background, 0.2),
                 disabled: dark ? lighten(background, 0.08) : darken(background, 0.08),
             },
             text: {

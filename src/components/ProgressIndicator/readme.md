@@ -11,6 +11,13 @@ import {
 } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
+
+const StyledIndicatorText = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.main};
+`;
 
 const stepNames = ['step-1', 'step-2', 'step-3', 'step-4', 'step-5'];
 
@@ -88,7 +95,7 @@ class SimpleProgressIndicator extends React.Component {
                     <ProgressStep name="step-5" />
                 </ProgressIndicator>
                 <div className="rainbow-m-top_xx-large rainbow-align-content_center rainbow-flex_wrap">
-                    <p>{`This is the ${steps[currentStepIndex]} step`}</p>
+                    <StyledIndicatorText>{`This is the ${steps[currentStepIndex]} step`}</StyledIndicatorText>
                 </div>
                 <div className="rainbow-m-top_xx-large rainbow-align-content_center rainbow-flex_wrap">
                     <Button
@@ -127,10 +134,17 @@ import {
 } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
 
 const stepNames = ['step-1', 'step-2', 'step-3', 'step-4', 'step-5'];
 
 const steps = ['first', 'second', 'third', 'fourth', 'fifth'];
+
+const StyledIndicatorText = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.main};
+`;
 
 class ProgressIndicatorWithLabel extends React.Component {
     constructor(props) {
@@ -204,7 +218,7 @@ class ProgressIndicatorWithLabel extends React.Component {
                     <ProgressStep name="step-5" label="Step 5" />
                 </ProgressIndicator>
                 <div className="rainbow-m-top_xx-large rainbow-align-content_center rainbow-flex_wrap">
-                    <p>{`This is the ${steps[currentStepIndex]} step`}</p>
+                    <StyledIndicatorText>{`This is the ${steps[currentStepIndex]} step`}</StyledIndicatorText>
                 </div>
                 <div className="rainbow-m-top_xx-large rainbow-align-content_center rainbow-flex_wrap">
                     <Button
@@ -243,10 +257,17 @@ import {
 } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
 
 const stepNames = ['step-1', 'step-2', 'step-3', 'step-4', 'step-5'];
 
 const steps = ['first', 'second', 'third', 'fourth', 'fifth'];
+
+const StyledIndicatorText = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.main};
+`;
 
 class ProgressIndicatorWithError extends React.Component {
     constructor(props) {
@@ -320,7 +341,7 @@ class ProgressIndicatorWithError extends React.Component {
                     <ProgressStep name="step-5" label="Step 5" />
                 </ProgressIndicator>
                 <div className="rainbow-m-top_xx-large rainbow-align-content_center rainbow-flex_wrap">
-                    <p>{`This is the ${steps[currentStepIndex]} step`}</p>
+                    <StyledIndicatorText>{`This is the ${steps[currentStepIndex]} step`}</StyledIndicatorText>
                 </div>
                 <div className="rainbow-m-top_xx-large rainbow-align-content_center rainbow-flex_wrap">
                     <Button
@@ -353,6 +374,7 @@ import React from 'react';
 import { ProgressIndicator, ProgressStep, ButtonGroup, ButtonIcon } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
 
 const steps = {
     'step-1': 'first',
@@ -361,6 +383,12 @@ const steps = {
     'step-4': 'fourth',
     'step-5': 'fifth',
 };
+
+const StyledIndicatorText = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.main};
+`;
 
 class OnClickProgressIndicator extends React.Component {
     constructor(props) {
@@ -404,7 +432,7 @@ class OnClickProgressIndicator extends React.Component {
                     <ProgressStep name="step-5" label="Step 5" />
                 </ProgressIndicator>
                 <div className="rainbow-m-top_xx-large rainbow-align-content_center rainbow-flex_wrap">
-                    <p>{`This is the ${steps[currentStepName]} step`}</p>
+                    <StyledIndicatorText>{`This is the ${steps[currentStepName]} step`}</StyledIndicatorText>
                 </div>
             </div>
         );

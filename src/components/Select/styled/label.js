@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_4 } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 import { MARGIN_SMALL, MARGIN_XX_SMALL } from '../../../styles/margins';
 
-const StyledLabel = styled.label`
-    color: ${COLOR_GRAY_4};
+const StyledLabel = attachThemeAttrs(styled.label)`
+    color: ${props => props.palette.text.label};
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
     line-height: 1.5;
     margin-right: ${MARGIN_SMALL};
