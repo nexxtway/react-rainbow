@@ -17,7 +17,7 @@ export const COLOR_ERROR = '#fe4849';
 export const COLOR_ERROR_ACTIVE = '#ea4243';
 
 // gray colors
-export const COLOR_GRAY_1 = '#f4f6f9';
+export const COLOR_GRAY_1 = '#EFF1F5';
 export const COLOR_GRAY_2 = '#e3e5ed';
 export const COLOR_GRAY_3 = '#a4a7b5';
 export const COLOR_GRAY_4 = '#576574';

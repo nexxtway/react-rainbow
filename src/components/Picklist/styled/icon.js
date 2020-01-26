@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { COLOR_ERROR } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledIcon = styled.span`
+const StyledIcon = attachThemeAttrs(styled.span)`
     width: 2.5rem;
     height: 100%;
     position: absolute;
@@ -14,8 +14,8 @@ const StyledIcon = styled.span`
     ${props =>
         props.error &&
         `
-            fill: ${COLOR_ERROR};
-            color: ${COLOR_ERROR};
+            fill: ${props.palette.error.main};
+            color: ${props.palette.error.main};
     `}
 `;
 

@@ -1,18 +1,8 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 import { BORDER_RADIUS_3, BORDER_RADIUS_2 } from '../../../styles/borderRadius';
-import { COLOR_GRAY_2 } from '../../../styles/colors';
-import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledInputRange = styled.input.attrs(props => {
-    const brand = getTheme(props).palette.brand;
-    const brandMainColor = brand.main;
-    const brandDarkColor = brand.dark;
-
-    return {
-        brandMainColor,
-        brandDarkColor,
-    };
-})`
+const StyledInputRange = attachThemeAttrs(styled.input)`
     appearance: none;
     width: 100%;
     margin: 0.5rem 0;
@@ -33,9 +23,9 @@ const StyledInputRange = styled.input.attrs(props => {
         width: 1rem;
         height: 1rem;
         border-radius: 50%;
-        background: ${props => props.brandMainColor};
+        background: ${props => props.palette.brand.main};
         border: 0;
-        box-shadow: rgba(0, 0, 0, 0.16) 0 2px 3px;
+        box-shadow: ${props => props.shadows.shadow_1};
         cursor: pointer;
         transition: all 0.3s ease 0s;
         margin-top: calc(((1rem / 2) - (4px / 2)) * -1);
@@ -45,7 +35,7 @@ const StyledInputRange = styled.input.attrs(props => {
         width: 100%;
         height: 4px;
         cursor: pointer;
-        background: ${COLOR_GRAY_2};
+        background: ${props => props.palette.background.highlight};
         border-radius: ${BORDER_RADIUS_3};
     }
 
@@ -54,9 +44,9 @@ const StyledInputRange = styled.input.attrs(props => {
         width: 1rem;
         height: 1rem;
         border-radius: 50%;
-        background: ${props => props.brandMainColor};
+        background: ${props => props.palette.brand.main};
         border: 0;
-        box-shadow: rgba(0, 0, 0, 0.16) 0 2px 3px;
+        box-shadow: ${props => props.shadows.shadow_1};
         cursor: pointer;
         transition: background 0.15s ease-in-out;
     }
@@ -65,7 +55,7 @@ const StyledInputRange = styled.input.attrs(props => {
         width: 100%;
         height: 4px;
         cursor: pointer;
-        background: ${COLOR_GRAY_2};
+        background: ${props => props.palette.background.highlight};
         border-radius: ${BORDER_RADIUS_3};
     }
 
@@ -83,7 +73,7 @@ const StyledInputRange = styled.input.attrs(props => {
         width: 1rem;
         height: 1rem;
         border-radius: ${BORDER_RADIUS_2};
-        background: ${props => props.brandMainColor};
+        background: ${props => props.palette.brand.main};
         border: 0;
         box-shadow: rgba(0, 0, 0, 0.16) 0 2px 3px;
         cursor: pointer;
@@ -95,63 +85,64 @@ const StyledInputRange = styled.input.attrs(props => {
     }
 
     &::-webkit-slider-thumb:hover {
-        background-color: ${props => props.brandDarkColor};
+        background-color: ${props => props.palette.brand.dark};
     }
 
     &::-moz-range-thumb:hover {
-        background-color: ${props => props.brandDarkColor};
+        background-color: ${props => props.palette.brand.dark};
     }
 
     &::-ms-thumb:hover {
-        background-color: ${props => props.brandDarkColor};
+        background-color: ${props => props.palette.brand.dark};
     }
 
     &:focus::-webkit-slider-thumb {
-        background-color: ${props => props.brandMainColor};
+        background-color: ${props => props.palette.brand.main};
         box-shadow: $shadow-outline;
     }
 
     &:active::-webkit-slider-thumb {
-        background-color: ${props => props.brandMainColor};
+        background-color: ${props => props.palette.brand.main};
         transition: all 0.3s ease 0s;
         transform: scale3d(1.5, 1.5, 1);
     }
 
     &:focus::-moz-range-thumb {
-        background-color: ${props => props.brandMainColor};
+        background-color: ${props => props.palette.brand.main};
         box-shadow: $shadow-outline;
     }
 
     &:active::-moz-range-thumb {
-        background-color: ${props => props.brandMainColor};
+        background-color: ${props => props.palette.brand.main};
     }
 
     &[disabled]::-webkit-slider-thumb {
-        background-color: ${COLOR_GRAY_2};
+        background-color: ${props => props.palette.background.disabled};
+        box-shadow: ${props => props.shadows.shadow_4};
         cursor: default;
     }
 
     &[disabled]::-webkit-slider-runnable-track {
-        background-color: ${COLOR_GRAY_2};
+        background-color: ${props => props.palette.background.disabled};
         cursor: default;
     }
 
     &[disabled]::-moz-range-thumb {
-        background-color: ${COLOR_GRAY_2};
+        background-color: ${props => props.palette.background.disabled};
         cursor: default;
     }
 
     &[disabled]::-moz-range-track {
-        background-color: ${COLOR_GRAY_2};
+        background-color: ${props => props.palette.background.disabled};
     }
 
     &[disabled]::-ms-thumb {
-        background-color: ${COLOR_GRAY_2};
+        background-color: ${props => props.palette.background.disabled};
         cursor: default;
     }
 
     &[disabled]::-ms-track {
-        background-color: ${COLOR_GRAY_2};
+        background-color: ${props => props.palette.background.disabled};
         cursor: default;
     }
 `;

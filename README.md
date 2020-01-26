@@ -1,7 +1,7 @@
 <br/>
 
 <p align="center">
-  <a href="https://react-rainbow.firebaseapp.com/" rel="noopener" target="_blank"><img width="20%" src="https://raw.githubusercontent.com/nexxtway/react-rainbow/master/assets/images/rainbow-logo.svg?sanitize=true" alt="React Rainbow Component logo"></a>
+  <a href="https://react-rainbow.firebaseapp.com/" rel="noopener" target="_blank"><img width="15%" src="https://raw.githubusercontent.com/nexxtway/react-rainbow/master/assets/images/rainbow-logo.svg?sanitize=true" alt="React Rainbow Component logo"></a>
 </p>
 
 <h2 align="center">
@@ -22,6 +22,7 @@ React Rainbow is a collection of components that will reliably help you build yo
 [![Coverage Status](https://coveralls.io/repos/github/nexxtway/react-rainbow/badge.svg?branch=master)](https://coveralls.io/github/nexxtway/react-rainbow?branch=master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+[![CLA assistant](https://cla-assistant.io/readme/badge/nexxtway/react-rainbow)](https://cla-assistant.io/nexxtway/react-rainbow)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/react-rainbow-components/community?source=orgpage)
 
 </div>
@@ -133,3 +134,10 @@ We are excited that you are interested in contributing to this project!
 You can help us improve React Rainbow Components, the first step to begin collaborate is to create an issue before submitting a pull request, it's always good to file an issue, so we can discuss the details of your approach or suggestion.
 
 [See more details about how to collaborate?](https://github.com/nexxtway/react-rainbow/blob/master/CONTRIBUTING.md)
+
+<br/>
+
+### ⚖️ License
+
+The [MIT license](https://github.com/nexxtway/react-rainbow/blob/master/LICENSE) governs your use of React Rainbow Components.
+

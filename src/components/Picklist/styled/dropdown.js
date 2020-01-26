@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledDropdown = styled.div`
+const StyledDropdown = attachThemeAttrs(styled.div)`
     position: absolute;
     overflow: hidden;
     z-index: 2000;
@@ -9,12 +10,12 @@ const StyledDropdown = styled.div`
     width: 100%;
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
-    border: solid 1px #e3e5ed;
+    border: solid 1px ${props => props.palette.border.divider};
     border-radius: 0.875rem;
     padding: 1rem 0;
     font-size: 0.75rem;
-    background: white;
-    box-shadow: 0 2px 4px 0 #e3e5ed;
+    background: ${props => props.palette.background.main};
+    box-shadow: ${props => props.shadows.shadow_2};
     transform: translateX(-50%);
     display: none;
     opacity: 0;

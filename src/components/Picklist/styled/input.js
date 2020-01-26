@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_4 } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 import StyledInput from '../../Input/styled/input';
 
-const PickerInput = styled(StyledInput)`
+const PickerInput = attachThemeAttrs(styled(StyledInput))`
     padding-right: 2.35rem;
     font-weight: 400;
 
@@ -16,7 +16,7 @@ const PickerInput = styled(StyledInput)`
     }
 
     &::placeholder {
-        color: ${COLOR_GRAY_4};
+        color: ${props => props.palette.text.label};
         font-weight: 400;
     }
 
