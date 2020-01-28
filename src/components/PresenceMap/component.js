@@ -10,7 +10,6 @@ export default function MapComponent(props) {
     const { showTraffic, showTransit, center, zoom, objects, style } = props;
     const container = useRef();
     const mapContainer = useRef();
-    const [markers, setMarker] = useState([]);
     const [map, setMap] = useState(null);
 
     const prevIsScriptLoaded = useRef(props.isScriptLoaded);
@@ -95,7 +94,7 @@ export default function MapComponent(props) {
         };
         // eslint-disable-next-line
         const map = new window.google.maps.Map(mapContainer.current, mapOptions);
-        const markersCopy = [...markers];
+        const markersCopy = [];
 
         objects.forEach(marker => {
             const heading = marker.heading ? marker.heading : 0;
@@ -136,7 +135,6 @@ export default function MapComponent(props) {
                         map.fitBounds(bounds);
                     }
 
-                    setMarker(markersCopy);
                     setMap(map);
                 })
                 .catch(error => {
