@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { COLOR_WHITE } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledIcon = styled.span`
+const StyledIcon = attachThemeAttrs(styled.span)`
     width: 1rem;
     height: 1rem;
     line-height: 1;
-    fill: ${COLOR_WHITE};
+    fill: ${props => props.palette.background.main};
     ${props =>
         props.position === 'left' &&
         `

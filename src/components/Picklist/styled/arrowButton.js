@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { COLOR_WHITE, COLOR_GRAY_3 } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledArrowButton = styled.div`
+const StyledArrowButton = attachThemeAttrs(styled.div)`
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -9,7 +9,7 @@ const StyledArrowButton = styled.div`
     position: fixed;
     width: 100%;
     z-index: 10;
-    background: ${COLOR_WHITE};
+    background: ${props => props.palette.background.main};
 
     &::after {
         content: '';
@@ -20,7 +20,7 @@ const StyledArrowButton = styled.div`
         width: 0.45rem;
         height: 0.45rem;
         border-style: solid;
-        color: ${COLOR_GRAY_3};
+        border-color: ${props => props.palette.border.main};
         transform: rotate(135deg);
     }
 
