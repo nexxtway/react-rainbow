@@ -9,14 +9,13 @@ export interface IPosition {
 export interface MapObject {
     position: IPosition;
     heading?: number;
-    image?: string;
+    image?: string | object;
     onClick?: (event: MouseEvent<HTMLElement>) => void;
 }
 
 export interface PresenceMapProps extends BaseProps {
     apiKey: string;
     objects?: MapObject[];
-    className?: string;
     style?: object;
     zoom?: number;
     center?: IPosition;

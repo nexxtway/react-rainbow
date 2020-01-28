@@ -25,7 +25,7 @@ PresenceMap.propTypes = {
                 lng: PropTypes.number,
             }),
             heading: PropTypes.number,
-            image: PropTypes.string,
+            image: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
             onClick: PropTypes.func,
         }),
     ),

@@ -15,18 +15,24 @@ const objects = [
             lat: -33.836538,
             lng: 151.1279,
         },
+        image: "http://chart.googleapis.com/chart?chst=d_map_pin_letter&chld=xxx%7c5680FC%7c000000&.png",
+        heading: 45,
     },
     {
         position: {
             lat: -33.840538,
             lng: 151.1279,
         },
+        image: "http://chart.googleapis.com/chart?chst=d_map_pin_letter&chld=xxx%7c5680FC%7c000000&.png",
+        heading: 160,
     },
     {
         position: {
             lat: -33.850538,
             lng: 151.1279,
         },
+        image: "http://chart.googleapis.com/chart?chst=d_map_pin_letter&chld=xxx%7c5680FC%7c000000&.png",
+        heading: 270,
     },
 ];
 
