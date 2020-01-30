@@ -2,24 +2,118 @@ import React, { useRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import getMapContainerStyles from './getMapContainerStyles';
 import StyledContainer from './styled/container';
-import StyledMapContainer from './styled/mapContainer';
+import { usePrevious } from '../../libs/hooks';
 
-const MAX_ZOOM = 14;
+const MAX_ZOOM = 15;
 
 export default function MapComponent(props) {
-    const { showTraffic, showTransit, center, zoom, objects, style } = props;
+    const { showTraffic, showTransit, center, zoom, objects, style, className } = props;
     const container = useRef();
     const mapContainer = useRef();
     const [map, setMap] = useState(null);
 
-    const prevIsScriptLoaded = useRef(props.isScriptLoaded);
+    const prevIsScriptLoaded = usePrevious(props.isScriptLoaded);
     useEffect(() => {
-        if (!prevIsScriptLoaded.current && props.isScriptLoaded && props.isScriptLoadSucceed) {
-            // eslint-disable-next-line
+        if (!prevIsScriptLoaded && props.isScriptLoaded && props.isScriptLoadSucceed) {
+            const getImage = async url =>
+                new Promise((resolve, reject) => {
+                    const img = new Image();
+                    img.crossOrigin = 'anonymous';
+                    img.onload = () => resolve(img);
+                    img.onerror = reject;
+                    img.src = url;
+                });
+
+            const getBase64Image = async (srcUrl, heading) => {
+                const img = await getImage(srcUrl);
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                canvas.width = 40;
+                canvas.height = 50;
+                const cache = img;
+                const imageWidth = cache.width;
+                const imageHeight = cache.height;
+                ctx.save();
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.translate(canvas.width / 2, canvas.height / 2);
+                ctx.rotate((Math.PI / 180) * heading);
+                ctx.translate(-(canvas.width / 2), -(canvas.height / 2));
+                const xCenter = canvas.width / 2 - imageWidth / 2;
+                const yCenter = canvas.height / 2 - imageHeight / 2;
+                ctx.drawImage(img, xCenter, yCenter, imageWidth, imageHeight);
+                ctx.restore();
+
+                return canvas.toDataURL();
+            };
+
+            const initMap = () => {
+                const mapOptions = {
+                    zoom: zoom === 'auto' ? MAX_ZOOM : zoom,
+                    center: center !== 'auto' ? center : null,
+                    disableDefaultUI: true,
+                };
+                const newMap = new window.google.maps.Map(mapContainer.current, mapOptions);
+                const markersCopy = [];
+
+                objects.forEach(marker => {
+                    const heading = marker.heading ? marker.heading : 0;
+
+                    const markerOptions = {
+                        position: marker.position,
+                        map: newMap,
+                        zIndex: Math.round(marker.position.lat * 100000),
+                    };
+
+                    let promImage = null;
+
+                    if (marker.image) {
+                        promImage = new Promise((resolve, reject) => {
+                            const result = getBase64Image(marker.image, heading);
+                            result
+                                .then(img => {
+                                    markerOptions.icon = img;
+                                    resolve(true);
+                                })
+                                .catch(error => {
+                                    reject(`Error creating new image. Details: ${error}`);
+                                });
+                        });
+                    } else {
+                        promImage = new Promise(resolve => resolve(true));
+                    }
+
+                    promImage
+                        .then(() => {
+                            const markerMap = new window.google.maps.Marker(markerOptions);
+                            markersCopy.push(markerMap);
+
+                            if (center === 'auto') {
+                                const bounds = new window.google.maps.LatLngBounds();
+                                markersCopy.forEach(markerObj =>
+                                    bounds.extend(markerObj.getPosition()),
+                                );
+                                newMap.setCenter(bounds.getCenter());
+                                newMap.fitBounds(bounds);
+                            }
+
+                            setMap(newMap);
+                        })
+                        .catch(error => {
+                            // eslint-disable-next-line no-console
+                            console.log(`Error. Details: ${error}`);
+                        });
+                });
+            };
             initMap();
         }
-        // eslint-disable-next-line
-    }, [props.isScriptLoaded, props.isScriptLoadSucceed]);
+    }, [
+        center,
+        objects,
+        zoom,
+        prevIsScriptLoaded,
+        props.isScriptLoaded,
+        props.isScriptLoadSucceed,
+    ]);
 
     useEffect(() => {
         if (map && showTraffic) {
@@ -55,101 +149,9 @@ export default function MapComponent(props) {
         }
     }, [map, center, zoom]);
 
-    const getImage = async url =>
-        new Promise((resolve, reject) => {
-            const img = new Image();
-            img.crossOrigin = 'anonymous';
-            img.onload = () => resolve(img);
-            img.onerror = reject;
-            img.src = url;
-        });
-
-    const getBase64Image = async (srcUrl, heading) => {
-        const img = await getImage(srcUrl);
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = 40;
-        canvas.height = 50;
-        const cache = img;
-        const imageWidth = cache.width;
-        const imageHeight = cache.height;
-        ctx.save();
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.translate(canvas.width / 2, canvas.height / 2);
-        ctx.rotate((Math.PI / 180) * heading);
-        ctx.translate(-(canvas.width / 2), -(canvas.height / 2));
-        const xCenter = canvas.width / 2 - imageWidth / 2;
-        const yCenter = canvas.height / 2 - imageHeight / 2;
-        ctx.drawImage(img, xCenter, yCenter, imageWidth, imageHeight);
-        ctx.restore();
-
-        return canvas.toDataURL();
-    };
-
-    const initMap = () => {
-        const mapOptions = {
-            zoom: zoom === 'auto' ? MAX_ZOOM : zoom,
-            center: center !== 'auto' ? center : null,
-            disableDefaultUI: true,
-        };
-        // eslint-disable-next-line
-        const map = new window.google.maps.Map(mapContainer.current, mapOptions);
-        const markersCopy = [];
-
-        objects.forEach(marker => {
-            const heading = marker.heading ? marker.heading : 0;
-
-            const markerOptions = {
-                position: marker.position,
-                map,
-                zIndex: Math.round(marker.position.lat * 100000),
-            };
-
-            let promImage = null;
-
-            if (marker.image) {
-                promImage = new Promise((resolve, reject) => {
-                    const result = getBase64Image(marker.image, heading);
-                    result
-                        .then(img => {
-                            markerOptions.icon = img;
-                            resolve(true);
-                        })
-                        .catch(error => {
-                            reject(`Error creating new image. Details: ${error}`);
-                        });
-                });
-            } else {
-                promImage = new Promise(resolve => resolve(true));
-            }
-
-            promImage
-                .then(() => {
-                    const markerMap = new window.google.maps.Marker(markerOptions);
-                    markersCopy.push(markerMap);
-
-                    if (center === 'auto') {
-                        const bounds = new window.google.maps.LatLngBounds();
-                        markersCopy.forEach(markerObj => bounds.extend(markerObj.getPosition()));
-                        map.setCenter(bounds.getCenter());
-                        map.fitBounds(bounds);
-                    }
-
-                    setMap(map);
-                })
-                .catch(error => {
-                    // eslint-disable-next-line no-console
-                    console.log(`Error. Details: ${error}`);
-                });
-        });
-    };
-
     return (
-        <StyledContainer style={style} ref={container}>
-            <StyledMapContainer
-                ref={mapContainer}
-                style={getMapContainerStyles(container.current)}
-            />
+        <StyledContainer style={style} className={className} ref={container}>
+            <div ref={mapContainer} style={getMapContainerStyles(container.current)} />
         </StyledContainer>
     );
 }
@@ -164,27 +166,29 @@ MapComponent.propTypes = {
                 lng: PropTypes.number,
             }),
             heading: PropTypes.number,
-            image: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+            image: PropTypes.string,
             onClick: PropTypes.func,
         }),
     ),
+    className: PropTypes.string,
     style: PropTypes.object,
-    zoom: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    center: PropTypes.oneOfType([
+    zoom: PropTypes.oneOf([PropTypes.number, 'auto']),
+    center: PropTypes.oneOf([
         PropTypes.shape({
             lat: PropTypes.number,
             lng: PropTypes.number,
         }),
-        PropTypes.string,
+        'auto',
     ]),
     showTraffic: PropTypes.bool,
     showTransit: PropTypes.bool,
     // eslint-disable-next-line
-    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
+    children: PropTypes.node,
 };
 
 MapComponent.defaultProps = {
     objects: [],
+    className: undefined,
     style: undefined,
     zoom: 'auto',
     center: 'auto',

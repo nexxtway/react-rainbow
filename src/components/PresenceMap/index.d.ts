@@ -9,18 +9,17 @@ export interface IPosition {
 export interface MapObject {
     position: IPosition;
     heading?: number;
-    image?: string | object;
+    image?: string;
     onClick?: (event: MouseEvent<HTMLElement>) => void;
 }
 
 export interface PresenceMapProps extends BaseProps {
     apiKey: string;
     objects?: MapObject[];
-    style?: object;
-    zoom?: number;
-    center?: IPosition;
+    zoom?: number | 'auto';
+    center?: IPosition | 'auto';
     showTraffic?: boolean;
-    children?: ReactNode[] | ReactNode;
+    children?: ReactNode;
 }
 
 export default function(props: PresenceMapProps): JSX.Element | null;

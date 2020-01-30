@@ -25,7 +25,7 @@ PresenceMap.propTypes = {
                 lng: PropTypes.number,
             }),
             heading: PropTypes.number,
-            image: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+            image: PropTypes.string,
             onClick: PropTypes.func,
         }),
     ),
@@ -37,14 +37,14 @@ PresenceMap.propTypes = {
      * where zoom 0 corresponds to a map of the Earth fully zoomed out,
      * and larger zoom levels zoom in at a higher resolution.
      * Specify zoom level as an integer. This value defaults to 8. */
-    zoom: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    zoom: PropTypes.oneOf([PropTypes.number, 'auto']),
     /** Map center point  */
-    center: PropTypes.oneOfType([
+    center: PropTypes.oneOf([
         PropTypes.shape({
             lat: PropTypes.number,
             lng: PropTypes.number,
         }),
-        PropTypes.string,
+        'auto',
     ]),
     /** Option to show traffic in map */
     showTraffic: PropTypes.bool,
@@ -54,7 +54,7 @@ PresenceMap.propTypes = {
      * This prop that should not be visible in the documentation.
      * @ignore
      */
-    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
+    children: PropTypes.node,
 };
 
 PresenceMap.defaultProps = {
