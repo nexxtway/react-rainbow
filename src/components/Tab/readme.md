@@ -6,11 +6,39 @@ import { Tabset, Tab, ButtonGroup, ButtonIcon } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 import { faClock, faStar } from '@fortawesome/free-regular-svg-icons';
+import styled from 'styled-components';
 
-const tabsContainerStyles = {
-    backgroundColor: 'white',
-    borderRadius: '0 0 0.875rem 0.875rem',
-};
+const StyledContainer = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    background: ${props => props.background.main};
+    border-radius: 0 0 0.875rem 0.875rem;
+`;
+
+const StyledHeaderContainer = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    background: ${props => props.background.secondary};
+`;
+
+const StyledHeader = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.main};
+`;
+
+const StyledTabset = styled(Tabset).attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    background: ${props => props.background.secondary};
+`;
+
+const StyledTabContent = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    background: ${props => props.background.main};
+    color: ${props => props.text.label};
+`;
 
 class TabExample extends React.Component {
     constructor(props) {
@@ -28,52 +56,52 @@ class TabExample extends React.Component {
 
         if (selected === 'primary') {
             return (
-                <div
+                <StyledTabContent
                     aria-labelledby="primary"
                     id="primaryTab"
-                    className="rainbow-p-around_xx-large rainbow-m-bottom_xx-large rainbow-font-size-text_large rainbow-align-text-center rainbow-color_gray-3"
+                    className="rainbow-p-around_xx-large rainbow-m-bottom_xx-large rainbow-font-size-text_large rainbow-align-text-center"
                 >
                     A rainbow is a meteorological phenomenon that is caused by reflection,
                     refraction and dispersion of light in water droplets resulting in a spectrum of
                     light appearing in the sky.
-                </div>
+                </StyledTabContent>
             );
         } else if (selected === 'recents') {
             return (
-                <div
+                <StyledTabContent
                     aria-labelledby="recents"
                     id="recentsTab"
-                    className="rainbow-p-around_xx-large rainbow-m-bottom_xx-large rainbow-font-size-text_large rainbow-align-text-center rainbow-color_gray-3"
+                    className="rainbow-p-around_xx-large rainbow-m-bottom_xx-large rainbow-font-size-text_large rainbow-align-text-center"
                 >
                     Rainbows caused by sunlight always appear in the section of sky directly
                     opposite the sun.
-                </div>
+                </StyledTabContent>
             );
         }
         return (
-            <div
+            <StyledTabContent
                 aria-labelledby="shared"
                 id="sharedTab"
-                className="rainbow-p-around_xx-large rainbow-m-bottom_xx-large rainbow-font-size-text_large rainbow-align-text-center rainbow-color_gray-3"
+                className="rainbow-p-around_xx-large rainbow-m-bottom_xx-large rainbow-font-size-text_large rainbow-align-text-center"
             >
                 Rainbows can be full circles. However, the observer normally sees only an arc formed
                 by illuminated droplets above the ground, and centered on a line from the sun to the
                 observer's eye.
-            </div>
+            </StyledTabContent>
         );
     }
 
     render() {
         const { selected } = this.state;
         return (
-            <div style={tabsContainerStyles} className="rainbow-p-bottom_xx-large">
+            <StyledContainer className="rainbow-p-bottom_xx-large">
                 <GlobalHeader>
                     <ButtonIcon icon={<FontAwesomeIcon icon={faCog} />} disabled />
                 </GlobalHeader>
-                <div className="rainbow-p-around_large rainbow-align-content_space-between rainbow-background-color_gray-1">
-                    <h3 className="rainbow-font-size-heading_medium rainbow-color_dark-1">
+                <StyledHeaderContainer className="rainbow-p-around_large rainbow-align-content_space-between">
+                    <StyledHeader className="rainbow-font-size-heading_medium">
                         This is the header
-                    </h3>
+                    </StyledHeader>
                     <ButtonGroup>
                         <ButtonIcon
                             variant="border"
@@ -86,13 +114,13 @@ class TabExample extends React.Component {
                             disabled
                         />
                     </ButtonGroup>
-                </div>
+                </StyledHeaderContainer>
                 <div className="rainbow-flex rainbow-flex_column rainbow_vertical-stretch">
-                    <Tabset
+                    <StyledTabset
                         id="tabset-1"
                         onSelect={this.handleOnSelect}
                         activeTabName={selected}
-                        className="rainbow-background-color_gray-1 rainbow-p-horizontal_x-large"
+                        className="rainbow-p-horizontal_x-large"
                     >
                         <Tab
                             label="PRIMARY"
@@ -109,10 +137,10 @@ class TabExample extends React.Component {
                         />
 
                         <Tab label="SHARED" name="shared" id="shared" ariaControls="sharedTab" />
-                    </Tabset>
+                    </StyledTabset>
                     {this.getTabContent()}
                 </div>
-            </div>
+            </StyledContainer>
         );
     }
 }
@@ -128,11 +156,39 @@ import { Tabset, Tab, ButtonGroup, ButtonIcon } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 import { faClock, faStar } from '@fortawesome/free-regular-svg-icons';
+import styled from 'styled-components';
 
-const tabsContainerStyles = {
-    backgroundColor: 'white',
-    borderRadius: '0 0 0.875rem 0.875rem',
-};
+const StyledContainer = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    background: ${props => props.background.main};
+    border-radius: 0 0 0.875rem 0.875rem;
+`;
+
+const StyledHeaderContainer = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    background: ${props => props.background.secondary};
+`;
+
+const StyledHeader = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.main};
+`;
+
+const StyledTabset = styled(Tabset).attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    background: ${props => props.background.secondary};
+`;
+
+const StyledTabContent = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    background: ${props => props.background.main};
+    color: ${props => props.text.label};
+`;
 
 class TabExample extends React.Component {
     constructor(props) {
@@ -150,52 +206,52 @@ class TabExample extends React.Component {
 
         if (selected === 'primary') {
             return (
-                <div
+                <StyledTabContent
                     aria-labelledby="primary"
                     id="primaryTab"
-                    className="rainbow-p-around_xx-large rainbow-m-bottom_xx-large rainbow-font-size-text_large rainbow-align-text-center rainbow-color_gray-3"
+                    className="rainbow-p-around_xx-large rainbow-m-bottom_xx-large rainbow-font-size-text_large rainbow-align-text-center"
                 >
                     A rainbow is a meteorological phenomenon that is caused by reflection,
                     refraction and dispersion of light in water droplets resulting in a spectrum of
                     light appearing in the sky.
-                </div>
+                </StyledTabContent>
             );
         } else if (selected === 'recents') {
             return (
-                <div
+                <StyledTabContent
                     aria-labelledby="recents"
                     id="recentsTab"
-                    className="rainbow-p-around_xx-large rainbow-m-bottom_xx-large rainbow-font-size-text_large rainbow-align-text-center rainbow-color_gray-3"
+                    className="rainbow-p-around_xx-large rainbow-m-bottom_xx-large rainbow-font-size-text_large rainbow-align-text-center"
                 >
                     Rainbows caused by sunlight always appear in the section of sky directly
                     opposite the sun.
-                </div>
+                </StyledTabContent>
             );
         }
         return (
-            <div
+            <StyledTabContent
                 aria-labelledby="shared"
                 id="sharedTab"
-                className="rainbow-p-around_xx-large rainbow-m-bottom_xx-large rainbow-font-size-text_large rainbow-align-text-center rainbow-color_gray-3"
+                className="rainbow-p-around_xx-large rainbow-m-bottom_xx-large rainbow-font-size-text_large rainbow-align-text-center"
             >
                 Rainbows can be full circles. However, the observer normally sees only an arc formed
                 by illuminated droplets above the ground, and centered on a line from the sun to the
                 observer's eye.
-            </div>
+            </StyledTabContent>
         );
     }
 
     render() {
         const { selected } = this.state;
         return (
-            <div style={tabsContainerStyles} className="rainbow-p-bottom_xx-large">
+            <StyledContainer className="rainbow-p-bottom_xx-large">
                 <GlobalHeader>
                     <ButtonIcon icon={<FontAwesomeIcon icon={faCog} />} disabled />
                 </GlobalHeader>
-                <div className="rainbow-p-around_large rainbow-align-content_space-between rainbow-background-color_gray-1">
-                    <h3 className="rainbow-font-size-heading_medium rainbow-color_dark-1">
+                <StyledHeaderContainer className="rainbow-p-around_large rainbow-align-content_space-between">
+                    <StyledHeader className="rainbow-font-size-heading_medium">
                         This is the header
-                    </h3>
+                    </StyledHeader>
                     <ButtonGroup>
                         <ButtonIcon
                             variant="border"
@@ -208,13 +264,13 @@ class TabExample extends React.Component {
                             disabled
                         />
                     </ButtonGroup>
-                </div>
+                </StyledHeaderContainer>
                 <div className="rainbow-flex rainbow-flex_column rainbow_vertical-stretch">
-                    <Tabset
+                    <StyledTabset
                         id="tabset-2"
                         onSelect={this.handleOnSelect}
                         activeTabName={selected}
-                        className="rainbow-background-color_gray-1 rainbow-p-horizontal_x-large"
+                        className="rainbow-p-horizontal_x-large"
                     >
                         <Tab
                             name="primary"
@@ -242,10 +298,10 @@ class TabExample extends React.Component {
                                 </span>
                             }
                         />
-                    </Tabset>
+                    </StyledTabset>
                     {this.getTabContent()}
                 </div>
-            </div>
+            </StyledContainer>
         );
     }
 }
@@ -261,11 +317,39 @@ import { Tabset, Tab, ButtonGroup, ButtonIcon } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faEllipsisV, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 import { faClock, faStar } from '@fortawesome/free-regular-svg-icons';
+import styled from 'styled-components';
 
-const tabsContainerStyles = {
-    backgroundColor: 'white',
-    borderRadius: '0 0 0.875rem 0.875rem',
-};
+const StyledContainer = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    background: ${props => props.background.main};
+    border-radius: 0 0 0.875rem 0.875rem;
+`;
+
+const StyledHeaderContainer = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    background: ${props => props.background.secondary};
+`;
+
+const StyledHeader = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.main};
+`;
+
+const StyledTabset = styled(Tabset).attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    background: ${props => props.background.secondary};
+`;
+
+const StyledTabContent = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    background: ${props => props.background.main};
+    color: ${props => props.text.label};
+`;
 
 class TabExample extends React.Component {
     constructor(props) {
@@ -283,52 +367,52 @@ class TabExample extends React.Component {
 
         if (selected === 'primary') {
             return (
-                <div
+                <StyledTabContent
                     aria-labelledby="primary"
                     id="primaryTab"
-                    className="rainbow-p-around_xx-large rainbow-m-bottom_xx-large rainbow-font-size-text_large rainbow-align-text-center rainbow-color_gray-3"
+                    className="rainbow-p-around_xx-large rainbow-m-bottom_xx-large rainbow-font-size-text_large rainbow-align-text-center"
                 >
                     A rainbow is a meteorological phenomenon that is caused by reflection,
                     refraction and dispersion of light in water droplets resulting in a spectrum of
                     light appearing in the sky.
-                </div>
+                </StyledTabContent>
             );
         } else if (selected === 'recents') {
             return (
-                <div
+                <StyledTabContent
                     aria-labelledby="recents"
                     id="recentsTab"
-                    className="rainbow-p-around_xx-large rainbow-m-bottom_xx-large rainbow-font-size-text_large rainbow-align-text-center rainbow-color_gray-3"
+                    className="rainbow-p-around_xx-large rainbow-m-bottom_xx-large rainbow-font-size-text_large rainbow-align-text-center"
                 >
                     Rainbows caused by sunlight always appear in the section of sky directly
                     opposite the sun.
-                </div>
+                </StyledTabContent>
             );
         }
         return (
-            <div
+            <StyledTabContent
                 aria-labelledby="shared"
                 id="sharedTab"
-                className="rainbow-p-around_xx-large rainbow-m-bottom_xx-large rainbow-font-size-text_large rainbow-align-text-center rainbow-color_gray-3"
+                className="rainbow-p-around_xx-large rainbow-m-bottom_xx-large rainbow-font-size-text_large rainbow-align-text-center"
             >
                 Rainbows can be full circles. However, the observer normally sees only an arc formed
                 by illuminated droplets above the ground, and centered on a line from the sun to the
                 observer's eye.
-            </div>
+            </StyledTabContent>
         );
     }
 
     render() {
         const { selected } = this.state;
         return (
-            <div style={tabsContainerStyles} className="rainbow-p-bottom_xx-large">
+            <StyledContainer className="rainbow-p-bottom_xx-large">
                 <GlobalHeader>
                     <ButtonIcon icon={<FontAwesomeIcon icon={faCog} />} disabled />
                 </GlobalHeader>
-                <div className="rainbow-p-around_large rainbow-align-content_space-between rainbow-background-color_gray-1">
-                    <h3 className="rainbow-font-size-heading_medium rainbow-color_dark-1">
+                <StyledHeaderContainer className="rainbow-p-around_large rainbow-align-content_space-between">
+                    <StyledHeader className="rainbow-font-size-heading_medium">
                         This is the header
-                    </h3>
+                    </StyledHeader>
                     <ButtonGroup>
                         <ButtonIcon
                             variant="border"
@@ -341,13 +425,13 @@ class TabExample extends React.Component {
                             disabled
                         />
                     </ButtonGroup>
-                </div>
+                </StyledHeaderContainer>
                 <div className="rainbow-flex rainbow-flex_column rainbow_vertical-stretch">
-                    <Tabset
+                    <StyledTabset
                         id="tabset-3"
                         onSelect={this.handleOnSelect}
                         activeTabName={selected}
-                        className="rainbow-background-color_gray-1 rainbow-p-horizontal_x-large"
+                        className="rainbow-p-horizontal_x-large"
                     >
                         <Tab
                             name="primary"
@@ -376,10 +460,10 @@ class TabExample extends React.Component {
                             }
                             disabled
                         />
-                    </Tabset>
+                    </StyledTabset>
                     {this.getTabContent()}
                 </div>
-            </div>
+            </StyledContainer>
         );
     }
 }
