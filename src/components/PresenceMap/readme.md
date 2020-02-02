@@ -30,13 +30,29 @@ const objects = [
     },
 ];
 
+const controls = [
+    {
+        position: 'TOP_RIGHT',
+        title: 'Show Traffic',
+        text: 'Show Traffic',
+        action: 'showtraffic',
+    },
+    {
+        position: 'TOP_RIGHT',
+        title: 'Show Transit',
+        text: 'Show Transit',
+        action: 'showtransit',
+    },
+];
+
 <div>
     <div className="rainbow-p-around_small">
         <PresenceMap
             apiKey={LIBRARY_GOOGLE_MAPS_APIKEY}
             objects={objects}
-        >
-        </PresenceMap>
+            showTraffic={true}
+            controls={controls}
+        />
     </div>
 </div>
 ```

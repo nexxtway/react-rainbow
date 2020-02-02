@@ -13,13 +13,21 @@ export interface MapObject {
     onClick?: (event: MouseEvent<HTMLElement>) => void;
 }
 
+export interface MapControl {
+    position?: string;
+    title?: string;
+    text?: string;
+    action?: string;
+}
+
 export interface PresenceMapProps extends BaseProps {
     apiKey: string;
     objects?: MapObject[];
     zoom?: number | 'auto';
     center?: IPosition | 'auto';
     showTraffic?: boolean;
-    children?: ReactNode;
+    showTransit?: boolean;
+    controls?: MapControl[];
 }
 
 export default function(props: PresenceMapProps): JSX.Element | null;
