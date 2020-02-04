@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_1, COLOR_GRAY_TRANSPARENT_1 } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import { COLOR_GRAY_TRANSPARENT_1 } from '../../../styles/colors';
 
-const StyledNav = styled.nav`
+const StyledNav = attachThemeAttrs(styled.nav)`
     display: block;
     position: relative;
     box-sizing: border-box;
@@ -16,11 +17,11 @@ const StyledNav = styled.nav`
         props.shaded &&
         `
             li {
-                background-color: ${COLOR_GRAY_TRANSPARENT_1};
+                background-color: ${props.palette.background.main};
 
                 :hover,
                 :active {
-                    background-color: ${COLOR_GRAY_1};
+                    background-color: ${props.palette.action.active};
                 }
             }
         `};
