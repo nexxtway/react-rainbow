@@ -13,12 +13,14 @@ const StyledHeader = styled.h1.attrs(props => {
     color: ${props => props.text.main};
 `;
 
-const textStyles = {
-    fontSize: 15,
-    color: '#a4a7b5',
-    marginTop: 8,
-    fontWeight: 300,
-};
+const StyledLabel = styled.h2.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    font-size: 15px;
+    font-weight: 300;
+    margin-top:6px
+    color: ${props => props.text.label};
+`;
 
 class SimpleVisualPicker extends React.Component {
     constructor(props) {
@@ -42,15 +44,15 @@ class SimpleVisualPicker extends React.Component {
             >
                 <VisualPickerOption name="option-1">
                     <DesignIcon />
-                    <h2 style={textStyles}>Design</h2>
+                    <StyledLabel>Design</StyledLabel>
                 </VisualPickerOption>
                 <VisualPickerOption name="option-2">
                     <PhotographerIcon />
-                    <h2 style={textStyles}>Photographer</h2>
+                    <StyledLabel>Photographer</StyledLabel>
                 </VisualPickerOption>
                 <VisualPickerOption name="option-3">
                     <CodeIcon />
-                    <h2 style={textStyles}>Programmer</h2>
+                    <StyledLabel>Programmer</StyledLabel>
                 </VisualPickerOption>
             </VisualPicker>
         );
@@ -80,12 +82,14 @@ const StyledHeader = styled.h1.attrs(props => {
     color: ${props => props.text.main};
 `;
 
-const textStyles = {
-    fontSize: 15,
-    color: '#a4a7b5',
-    marginTop: 8,
-    fontWeight: 300,
-};
+const StyledLabel = styled.h2.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    font-size: 15px;
+    font-weight: 300;
+    margin-top:6px
+    color: ${props => props.text.label};
+`;
 
 class SimpleVisualPicker extends React.Component {
     constructor(props) {
@@ -109,15 +113,15 @@ class SimpleVisualPicker extends React.Component {
             >
                 <VisualPickerOption name="option-1">
                     <DesignIcon />
-                    <h2 style={textStyles}>Design</h2>
+                    <StyledLabel>Design</StyledLabel>
                 </VisualPickerOption>
                 <VisualPickerOption name="option-2">
                     <PhotographerIcon />
-                    <h2 style={textStyles}>Photographer</h2>
+                    <StyledLabel>Photographer</StyledLabel>
                 </VisualPickerOption>
                 <VisualPickerOption name="option-3" disabled>
                     <CodeIcon />
-                    <h2 style={textStyles}>Programmer</h2>
+                    <StyledLabel>Programmer</StyledLabel>
                 </VisualPickerOption>
             </VisualPicker>
         );
