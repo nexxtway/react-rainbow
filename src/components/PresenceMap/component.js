@@ -1,73 +1,19 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import getMapContainerStyles from './getMapContainerStyles';
 import StyledContainer from './styled/container';
 import { usePrevious } from '../../libs/hooks';
-import StyledControl from './styled/control';
-import { Input } from '../../components';
+import StyledControls from './styled/controls';
 
 const MAX_ZOOM = 15;
-let trafficLayer = null;
-let transitLayer = null;
 
 export default function MapComponent(props) {
-    const { showTraffic, showTransit, center, zoom, objects, style, className, controls } = props;
+    const { showTraffic, showTransit, center, zoom, objects, style, className, children } = props;
     const container = useRef();
     const mapContainer = useRef();
     const [map, setMap] = useState(null);
-    const [showTrafficState, setShowTrafficState] = useState(showTraffic);
-    const [showTransitState, setShowTransitState] = useState(showTransit);
 
     const initMap = useCallback(() => {
-        const toggleTraffic = _map => {
-            if (trafficLayer) {
-                if (trafficLayer.getMap() === null) {
-                    trafficLayer.setMap(_map);
-                } else {
-                    trafficLayer.setMap(null);
-                }
-                setShowTrafficState(!showTrafficState);
-            }
-        };
-
-        const toggleTransit = _map => {
-            if (transitLayer) {
-                if (transitLayer.getMap() === null) {
-                    transitLayer.setMap(_map);
-                } else {
-                    transitLayer.setMap(null);
-                }
-                setShowTransitState(!showTransitState);
-            }
-        };
-
-        const createControl = (controlDiv, _map, control) => {
-            ReactDOM.render(
-                <StyledControl>
-                    {control.action === 'showtraffic' && (
-                        <Input
-                            label={control.text}
-                            type="checkbox"
-                            onClick={() => toggleTraffic(_map)}
-                            checked={showTrafficState}
-                            style={{ cursor: 'pointer' }}
-                        />
-                    )}
-                    {control.action === 'showtransit' && (
-                        <Input
-                            label={control.text}
-                            type="checkbox"
-                            onClick={() => toggleTransit(_map)}
-                            checked={showTransitState}
-                            style={{ cursor: 'pointer' }}
-                        />
-                    )}
-                </StyledControl>,
-                controlDiv,
-            );
-        };
-
         const getImage = async url =>
             new Promise((resolve, reject) => {
                 const img = new Image();
@@ -151,18 +97,8 @@ export default function MapComponent(props) {
                 });
         });
 
-        trafficLayer = new window.google.maps.TrafficLayer();
-        transitLayer = new window.google.maps.TransitLayer();
-
-        controls.forEach(control => {
-            const controlDiv = document.createElement('div');
-            createControl(controlDiv, newMap, control);
-            controlDiv.index = 1;
-            newMap.controls[window.google.maps.ControlPosition[control.position]].push(controlDiv);
-        });
-
         setMap(newMap);
-    }, [objects, controls, center, zoom, showTrafficState, showTransitState]);
+    }, [objects, center, zoom]);
 
     const prevIsScriptLoaded = usePrevious(props.isScriptLoaded);
     useEffect(() => {
@@ -173,12 +109,14 @@ export default function MapComponent(props) {
 
     useEffect(() => {
         if (map && showTraffic) {
+            const trafficLayer = new window.google.maps.TrafficLayer();
             trafficLayer.setMap(map);
         }
     }, [map, showTraffic]);
 
     useEffect(() => {
         if (map && showTransit) {
+            const transitLayer = new window.google.maps.TransitLayer();
             transitLayer.setMap(map);
         }
     }, [map, showTransit]);
@@ -206,6 +144,7 @@ export default function MapComponent(props) {
     return (
         <StyledContainer style={style} className={className} ref={container}>
             <div ref={mapContainer} style={getMapContainerStyles(container.current)} />
+            <StyledControls>{children}</StyledControls>
         </StyledContainer>
     );
 }
@@ -236,14 +175,7 @@ MapComponent.propTypes = {
     ]),
     showTraffic: PropTypes.bool,
     showTransit: PropTypes.bool,
-    controls: PropTypes.arrayOf(
-        PropTypes.shape({
-            position: PropTypes.string,
-            title: PropTypes.string,
-            text: PropTypes.string,
-            action: PropTypes.string,
-        }),
-    ),
+    children: PropTypes.node,
 };
 
 MapComponent.defaultProps = {
@@ -254,5 +186,5 @@ MapComponent.defaultProps = {
     center: 'auto',
     showTraffic: false,
     showTransit: false,
-    controls: [],
+    children: null,
 };

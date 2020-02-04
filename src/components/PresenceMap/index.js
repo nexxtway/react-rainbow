@@ -50,15 +50,11 @@ PresenceMap.propTypes = {
     showTraffic: PropTypes.bool,
     /** Option to show transit in map */
     showTransit: PropTypes.bool,
-    /** An array with the Map controls. */
-    controls: PropTypes.arrayOf(
-        PropTypes.shape({
-            position: PropTypes.string,
-            title: PropTypes.string,
-            text: PropTypes.string,
-            action: PropTypes.string,
-        }),
-    ),
+    /**
+     * This prop that should not be visible in the documentation.
+     * @ignore
+     */
+    children: PropTypes.node,
 };
 
 PresenceMap.defaultProps = {
@@ -69,5 +65,5 @@ PresenceMap.defaultProps = {
     center: 'auto',
     showTraffic: false,
     showTransit: false,
-    controls: [],
+    children: null,
 };
