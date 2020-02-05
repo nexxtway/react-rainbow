@@ -43,7 +43,7 @@ const StyledAnchor = attachThemeAttrs(styled.button)`
     }
 
     &:hover {
-        background-color: ${props => props.palette.background.secondary};
+        background-color: ${props => props.palette.action.hover};
         color: ${props => props.palette.text.label};
         z-index: 1;
     }
@@ -101,7 +101,7 @@ const StyledAnchor = attachThemeAttrs(styled.button)`
             z-index: 2;
             background-color: ${props.palette.background.main};
             color: ${props.palette.brand.main};
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            box-shadow: ${props.shadows.shadow_4};
             border-radius: 14px 14px 0 0;
 
             &:hover, &:active, &:visited, &:focus {
