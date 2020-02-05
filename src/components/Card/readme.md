@@ -119,28 +119,43 @@ import React from 'react';
 import { Card, Button } from 'react-rainbow-components';
 import styled from 'styled-components';
 
-const Title = styled.h1`
+const Title = styled.h1.attrs(props => props.theme.rainbow)`
     font-family: 'Lato Light';
     font-size: 32px;
-    font-weight: 100;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: 1px;
     text-align: center;
-    color: ${props => props.theme.rainbow.palette.text.main};
+    color: ${props => props.palette.text.main};
 `;
 
 const Subtitle = styled.h2`
     font-family: 'Lato Light';
     font-size: 16px;
     font-weight: 700;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: 0.5px;
     text-align: center;
     color: ${props => props.theme.rainbow.palette.text.header};
+    ${props => props.uppercase && 'text-transform: uppercase;'}
+`;
+
+const BigPriceText = styled.h2`
+    font-family: 'Lato Black';
+    font-size: 56px;
+    line-height: 56px;
+    color: ${props => props.theme.rainbow.palette.brand.main};
+`;
+
+const NormalPriceText = styled.h3`
+    font-family: Lato;
+    font-size: 20px;
+    font-weight: 500;
+    color: ${props => props.theme.rainbow.palette.brand.main};
+    ${props => props.alignEnd && 'align-self: flex-end'}
+`;
+
+const OutputText = styled.h5`
+    font-family: ${props => (props.bold && 'Lato Bold') || 'Lato Light'};
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    display: inline;
+    color: ${props => props.theme.rainbow.palette.text.main};
 `;
 
 const StyledCard = styled(Card)`
@@ -148,77 +163,23 @@ const StyledCard = styled(Card)`
     height: 363px;
 `;
 
-const StyledH2 = styled.h2`
-    font-family: 'Lato Black';
-    font-size: 56px;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 56px;
-    letter-spacing: normal;
-    color: ${props => props.theme.rainbow.palette.brand.main};
-`;
-
-const StyledH3 = styled.h3`
-    font-family: Lato;
-    font-size: 20px;
-    font-weight: 500;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    color: ${props => props.theme.rainbow.palette.brand.main};
-`;
-
-const StyledP = styled.p`
-    font-family: 'Lato Light';
-    font-size: 15px;
-    font-weight: 700;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: 0.5px;
-    text-align: center;
-    color: ${props => props.theme.rainbow.palette.text.main};
-`;
-
-const StyledB = styled.b`
-    font-family: 'Lato Bold';
-`;
-
 function PriceCard(props) {
     const { packageType, packagePrice, projectsCount, members, contacts} = props;
     return (
         <StyledCard
-            className="rainbow-flex rainbow-flex_column rainbow-align_center rainbow-justify_space-around"
+            className="rainbow-flex rainbow-flex_column rainbow-align_center rainbow-justify_space-around rainbow-p-vertical_small rainbow-m-around_small"
         >
-            <Subtitle
-                style={{
-                    textTransform: 'uppercase',
-                }}
-            >
-                { packageType }
-            </Subtitle>
+            <Subtitle uppercase>{ packageType }</Subtitle>
             <div
                 className="rainbow-flex rainbow-m-bottom_xsmall"
             >
-                <StyledH3 
-                    style={{
-                        paddingTop: '5px'
-                    }}
-                >$</StyledH3>
-                <StyledH2>{ packagePrice }</StyledH2>
-                <StyledH3
-                    style={{
-                        alignSelf: 'flex-end',
-                        paddingBottom: '3px'
-                    }}
-                >
-                    /mo
-                </StyledH3>
+                <NormalPriceText>$</NormalPriceText>
+                <BigPriceText>{ packagePrice }</BigPriceText>
+                <NormalPriceText alignEnd>/mo</NormalPriceText>
             </div>
-            <StyledP><StyledB >{ projectsCount }</StyledB>  Projects</StyledP>
-            <StyledP><StyledB>{ members }</StyledB>  Team Members</StyledP>
-            <StyledP><StyledB>{ contacts }</StyledB>  Personal Contacts</StyledP>
+            <OutputText><OutputText bold>{ projectsCount }</OutputText>  Projects</OutputText>
+            <OutputText><OutputText bold>{ members }</OutputText>  Team Members</OutputText>
+            <OutputText><OutputText bold>{ contacts }</OutputText>  Personal Contacts</OutputText>
             <Button
                 label="Buy Now!!"
                 variant="brand"
@@ -226,7 +187,6 @@ function PriceCard(props) {
         </StyledCard>
     )
 }
-
 
 <div>
     <Title
@@ -243,7 +203,6 @@ function PriceCard(props) {
 
 
     <div className="rainbow-flex rainbow-justify_space-around rainbow-flex_wrap rainbow-p-around_medium">
-        
         <PriceCard packageType="Standard" packagePrice="24" projectsCount="100" members="5" contacts="50"/>
         <PriceCard packageType="Standard" packagePrice="85" projectsCount="500" members="50" contacts="150"/>
         <PriceCard packageType="Standard" packagePrice="149" projectsCount="1000" members="100" contacts="200"/>
