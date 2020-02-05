@@ -8,19 +8,17 @@ import { faCog } from '@fortawesome/free-solid-svg-icons';
 
 <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
     <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
-        <ButtonGroup>
-            <ButtonMenu
-                menuAlignment="right"
-                menuSize="x-small"
-                buttonVariant="base"
-                icon={<FontAwesomeIcon icon={faCog} />}
-            >
-                <MenuItem label="Menu Item One" />
-                <MenuItem label="Menu Item Two" />
-                <MenuItem label="Menu Item Three" />
-                <MenuItem label="Menu Item Four" />
-            </ButtonMenu>
-        </ButtonGroup>
+        <ButtonMenu
+            menuAlignment="right"
+            menuSize="x-small"
+            buttonVariant="base"
+            icon={<FontAwesomeIcon icon={faCog} />}
+        >
+            <MenuItem label="Menu Item One" />
+            <MenuItem label="Menu Item Two" />
+            <MenuItem label="Menu Item Three" />
+            <MenuItem label="Menu Item Four" />
+        </ButtonMenu>
     </GlobalHeader>
 </div>
 ```
@@ -329,21 +327,19 @@ import { faCog } from '@fortawesome/free-solid-svg-icons';
 
 <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
     <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
-        <ButtonGroup>
-            <ButtonMenu
-                id="button-menu-disabled-items"
-                menuAlignment="right"
-                menuSize="x-small"
-                buttonVariant="base"
-                icon={<FontAwesomeIcon icon={faCog} />}
-            >
-                <MenuItem label="Menu Item One" />
-                <MenuItem disabled label="Menu Item Two" />
-                <MenuItem label="Menu Item Three" />
-                <MenuItem label="Menu Item Four" />
-                <MenuItem disabled label="Menu Item Five" />
-            </ButtonMenu>
-        </ButtonGroup>
+        <ButtonMenu
+            id="button-menu-disabled-items"
+            menuAlignment="right"
+            menuSize="x-small"
+            buttonVariant="base"
+            icon={<FontAwesomeIcon icon={faCog} />}
+        >
+            <MenuItem label="Menu Item One" />
+            <MenuItem disabled label="Menu Item Two" />
+            <MenuItem label="Menu Item Three" />
+            <MenuItem label="Menu Item Four" />
+            <MenuItem disabled label="Menu Item Five" />
+        </ButtonMenu>
     </GlobalHeader>
 </div>
 ```
@@ -361,15 +357,13 @@ import { faBell } from '@fortawesome/free-solid-svg-icons';
         className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large"
         src="images/user/user3.jpg"
     >
-        <ButtonGroup>
-            <ButtonMenu
-                menuAlignment="right"
-                menuSize="x-small"
-                label="Custom Apps"
-                isLoading
-                icon={<FontAwesomeIcon icon={faBell} />}
-            />
-        </ButtonGroup>
+        <ButtonMenu
+            menuAlignment="right"
+            menuSize="x-small"
+            label="Custom Apps"
+            isLoading
+            icon={<FontAwesomeIcon icon={faBell} />}
+        />
     </GlobalHeader>
 </div>
 ```
@@ -423,7 +417,7 @@ class ButtonMenuExample extends React.Component {
                     className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large"
                 >
                     <ButtonGroup>
-                        <ButtonIcon 
+                        <ButtonIcon
                             icon={<FontAwesomeIcon icon={faPencilAlt} />}
                             variant="border-filled"
                             disabled
