@@ -24,7 +24,7 @@ describe('<DateTimePickerModal/>', () => {
         component
             .find('Calendar')
             .find('td')
-            .at(5)
+            .at(6)
             .find('button')
             .simulate('click');
         expect(component.find('TimeSelect').props().value).toBe('12:00 AM');
@@ -35,7 +35,7 @@ describe('<DateTimePickerModal/>', () => {
         component
             .find('Calendar')
             .find('td')
-            .at(5)
+            .at(6)
             .find('button')
             .simulate('click');
         component
