@@ -151,7 +151,7 @@ const NormalPriceText = styled.h3`
 `;
 
 const OutputText = styled.h5`
-    font-family: ${props => (props.bold && 'Lato Bold') || 'Lato Light'};
+    font-family: ${props => props.bold ? 'Lato Bold' : 'Lato Light'};
     font-size: 15px;
     letter-spacing: 0.5px;
     display: inline;
