@@ -111,3 +111,143 @@ const iconContainerStyles = {
     </Card>
 </div>
 ```
+
+##### pricing card
+
+```js
+import React from 'react';
+import { Card, Button } from 'react-rainbow-components';
+import styled from 'styled-components';
+
+const Title = styled.h1`
+    font-family: 'Lato Light';
+    font-size: 32px;
+    font-weight: 100;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 1px;
+    text-align: center;
+    color: ${props => props.theme.rainbow.palette.text.main};
+`;
+
+const Subtitle = styled.h2`
+    font-family: 'Lato Light';
+    font-size: 16px;
+    font-weight: 700;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.5px;
+    text-align: center;
+    color: ${props => props.theme.rainbow.palette.text.header};
+`;
+
+const StyledCard = styled(Card)`
+    width: 240px;
+    height: 363px;
+`;
+
+const StyledH2 = styled.h2`
+    font-family: 'Lato Black';
+    font-size: 56px;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 56px;
+    letter-spacing: normal;
+    color: ${props => props.theme.rainbow.palette.brand.main};
+`;
+
+const StyledH3 = styled.h3`
+    font-family: Lato;
+    font-size: 20px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: ${props => props.theme.rainbow.palette.brand.main};
+`;
+
+const StyledP = styled.p`
+    font-family: 'Lato Light';
+    font-size: 15px;
+    font-weight: 700;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.5px;
+    text-align: center;
+    color: ${props => props.theme.rainbow.palette.text.main};
+`;
+
+const StyledB = styled.b`
+    font-family: 'Lato Bold';
+`;
+
+function PriceCard(props) {
+    const { packageType, packagePrice, projectsCount, members, contacts} = props;
+    return (
+        <StyledCard
+            className="rainbow-flex rainbow-flex_column rainbow-align_center rainbow-justify_space-around"
+        >
+            <Subtitle
+                style={{
+                    textTransform: 'uppercase',
+                }}
+            >
+                { packageType }
+            </Subtitle>
+            <div
+                className="rainbow-flex rainbow-m-bottom_xsmall"
+            >
+                <StyledH3 
+                    style={{
+                        paddingTop: '5px'
+                    }}
+                >$</StyledH3>
+                <StyledH2>{ packagePrice }</StyledH2>
+                <StyledH3
+                    style={{
+                        alignSelf: 'flex-end',
+                        paddingBottom: '3px'
+                    }}
+                >
+                    /mo
+                </StyledH3>
+            </div>
+            <StyledP><StyledB >{ projectsCount }</StyledB>  Projects</StyledP>
+            <StyledP><StyledB>{ members }</StyledB>  Team Members</StyledP>
+            <StyledP><StyledB>{ contacts }</StyledB>  Personal Contacts</StyledP>
+            <Button
+                label="Buy Now!!"
+                variant="brand"
+            />
+        </StyledCard>
+    )
+}
+
+
+<div>
+    <Title
+        className="rainbow-p-top_x-large"
+    >
+        Our Prices
+    </Title>
+
+    <Subtitle
+        className="rainbow-p-around_medium"
+    >
+        You have Free Unlimited Updates and Premium Support on each package.
+    </Subtitle>
+
+
+    <div className="rainbow-flex rainbow-justify_space-around rainbow-flex_wrap rainbow-p-around_medium">
+        
+        <PriceCard packageType="Standard" packagePrice="24" projectsCount="100" members="5" contacts="50"/>
+        <PriceCard packageType="Standard" packagePrice="85" projectsCount="500" members="50" contacts="150"/>
+        <PriceCard packageType="Standard" packagePrice="149" projectsCount="1000" members="100" contacts="200"/>
+    </div>
+</div>
+
+```
