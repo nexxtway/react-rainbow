@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Input from '../../styled/input';
-import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 
 const hasLeftIcon = props => props.icon && props.iconPosition === 'left';
 const hasRightIcon = props => props.icon && props.iconPosition === 'right';

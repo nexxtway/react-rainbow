@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { MARGIN_X_SMALL } from '../../../styles/margins';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 function getAlignSelf(props) {
     return props.alignSelf || 'center';
