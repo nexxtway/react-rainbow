@@ -1,13 +1,13 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_1, COLOR_GRAY_4 } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 
-const StyledButton = styled.button`
+const StyledButton = attachThemeAttrs(styled.button)`
     border: 0;
     display: flex;
     padding: 1rem 1rem 1rem 1.25rem;
     border-radius: 0;
-    color: ${COLOR_GRAY_4};
+    color: ${props => props.palette.text.label};
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
     background-clip: border-box;
     background-color: transparent;
@@ -22,7 +22,7 @@ const StyledButton = styled.button`
 
     :focus {
         outline: 0;
-        background-color: ${COLOR_GRAY_1};
+        background-color: ${props => props.palette.action.active};
     }
 
     ${props =>

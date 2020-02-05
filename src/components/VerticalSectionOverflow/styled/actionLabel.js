@@ -1,13 +1,10 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 import TruncatedText from '../../Structural/truncatedText';
-import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledActionLabel = styled(TruncatedText).attrs(props => {
-    const brandMainColor = getTheme(props).palette.brand.main;
-    return { brandMainColor };
-})`
+const StyledActionLabel = attachThemeAttrs(styled(TruncatedText))`
     font-size: 0.9375rem;
-    color: ${props => props.brandMainColor};
+    color: ${props => props.palette.brand.main};
     max-width: 100%;
 `;
 
