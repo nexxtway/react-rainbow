@@ -94,8 +94,6 @@ export default function VisualPickerOption(props) {
 VisualPickerOption.propTypes = {
     /** It is a unique value that identifies the picker option. */
     name: PropTypes.string,
-    /** It is used for screen-readers. */
-    ariaDescribedby: PropTypes.string,
     /** It is what will be displayed at the bottom of the component. */
     footer: PropTypes.node,
     /** Specifies that an VisualPickerOption element should be disabled.
@@ -119,5 +117,4 @@ VisualPickerOption.defaultProps = {
     className: undefined,
     style: undefined,
     children: [],
-    ariaDescribedby: undefined,
 };
