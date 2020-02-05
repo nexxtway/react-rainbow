@@ -147,19 +147,35 @@ export default class GettingStartedPage extends Component {
                     </RenderIf>
                     <RenderIf isTrue={activeTabName === 'contributing'}>
                         <div className="rainbow-flex rainbow-flex_column">
-                            <div className="react-rainbow-getting-started_section-heading-container rainbow-align_center rainbow-m-bottom_medium">
+                            <div className="react-rainbow-getting-started_section-heading-container">
                                 <div className="rainbow-m-right_medium">
                                     <h3 className="react-rainbow-getting-started_section-heading">
                                         We are excited that you are interested in contributing to
                                         this project!
                                     </h3>
                                     <h2 className="react-rainbow-getting-started_section-heading-2">
-                                        {' '}
-                                        Get your git on
+                                        Managing Node/Yarn versions with Volta
                                     </h2>
+                                    <h5 className="react-rainbow-getting-started_section-heading-5">
+                                        Our project runs with specific Node/Yarn versions contrains,
+                                        as a good practice you should consider to install Volta that
+                                        it will take care of managing seamlessly Node/Yarn versions
+                                        for you.
+                                    </h5>
+                                    <a
+                                        className="rainbow-link rainbow-m-left_xx-small react-rainbow-getting-started_issue-link"
+                                        href="https://docs.volta.sh/guide/getting-started"
+                                        rel="noopener noreferrer"
+                                        target="_blank"
+                                    >
+                                        Getting started with Volta
+                                    </a>
                                 </div>
                                 <CarbonAds className="react-rainbow-getting-started_carbon-ad" />
                             </div>
+                            <h2 className="react-rainbow-getting-started_section-heading-2">
+                                Get your git on
+                            </h2>
                             <h5 className="react-rainbow-getting-started_section-heading-5">
                                 You can help us improve React Rainbow Components, the first step to
                                 begin collaborating is to create an issue before submitting a pull
