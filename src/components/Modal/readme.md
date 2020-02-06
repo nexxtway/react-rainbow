@@ -708,3 +708,276 @@ class FormModal extends React.Component {
     </GlobalHeader>
 </div>
 ```
+
+##### make reservation modal
+
+```js
+import React from 'react';
+import { Modal, Button, Input, TimePicker, DatePicker, Textarea, Select } from 'react-rainbow-components';
+import { Field, reduxForm } from 'redux-form';
+import styled from 'styled-components';
+
+const Content = styled.div.attrs( props => ({
+    imgWidth: '328px'
+}))`
+    div:nth-child(2) img {
+        min-width: ${props => props.imgWidth};
+    }
+
+    @media (max-width: 768px) {
+        flex-direction: column-reverse;
+        
+        > div:nth-child(1) {
+            text-align: center;
+        }
+        
+        div:nth-child(2) img {
+            min-width: 0;
+            width: ${props => props.imgWidth};
+            max-width: 100%;
+        }
+    }
+`;
+
+const Title = styled.h2.attrs(props => {
+   return props.theme.rainbow.palette;
+})`
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 'normal';
+    color: ${props => {
+        return (props.brand.main === '#80deea') ? '#fff' : '#061c3f';
+    }}
+`;
+
+const Description = styled.p.attrs(props => {
+   return props.theme.rainbow.palette;
+})`
+    font-size: 16px;
+    color: ${props => {
+            return (props.brand.main === '#80deea') ? '#fff' : 'rgba(0, 0, 0, 0.5)';
+    }}
+`;
+
+const countries = [
+    { value: '', label: 'Select country' },
+    { value: 'Mexico', label: 'Mexico' },
+    { value: 'United States of America', label: 'United States of America' },
+    { value: 'France', label: 'France' },
+    { value: 'Germany', label: 'Germany' },
+    { value: 'Argentina', label: 'Argentina' },
+    { value: 'Chile', label: 'Chile' },
+    { value: 'Colombia', label: 'Colombia' },
+    { value: 'China', label: 'China' },
+    { value: 'Brasil', label: 'Brasil' },
+    { value: 'Spain', label: 'Spain' },
+    { value: 'Greece', label: 'Greece' },
+    { value: 'Canada', label: 'Canada' }
+]; 
+
+function validate(values) {
+    const { date, time, email, country } = values;
+    const errors = {};
+    if (!date) {
+        errors.date = 'Date is a required field';
+    }
+    if (!time) {
+        errors.time = 'Time is a required field';
+    }
+    if (!email) {
+        errors.email = 'Email is a required field';
+    }
+    if (!country) {
+        errors.country = 'Country is a required field';
+    }
+    return errors;
+}
+
+function ReservationForm(props) {
+    const { handleSubmit, reset, onSubmit } = props;
+
+    const styles = {
+        input: {
+            marginTop: 24,
+        },
+        inputColumn: {
+            width: '48%',
+            marginTop: 24,
+        }
+    };
+
+    const submit = values => {
+        onSubmit(values);
+        reset();
+    };
+
+    return (
+        <form id="redux-form-id" noValidate onSubmit={handleSubmit(submit)}>
+            <div className="rainbow-flex rainbow-justify_spread">
+                <Field
+                    style={styles.inputColumn}
+                    component={DatePicker}
+                    name="date"
+                    required
+                    label="Reservation Date"
+                    placeholder="Select a date"
+                />
+
+                <Field
+                    style={styles.inputColumn}
+                    component={TimePicker}
+                    name="time"
+                    required
+                    label="Reservation Time"
+                    placeholder="Select an hour"
+                />
+            </div>
+
+            <div className="rainbow-flex rainbow-justify_spread">
+                <Field
+                    style={styles.inputColumn}
+                    component={Input}
+                    name="email"
+                    required
+                    label="Email Address"
+                />
+                
+                <Field
+                    style={styles.inputColumn}
+                    required
+                    component={Select}
+                    name="country"
+                    label="Country"
+                    placeholder="Enter country"
+                    options={countries}
+                />
+            </div>
+
+            <Field
+                className="rainbow-m-bottom_medium"
+                style={styles.input}
+                component={Textarea}
+                name="description"
+                label="Description"
+                placeholder="Add note"
+            />
+        </form>
+    );
+}
+
+const Form = reduxForm({
+    form: 'make-reservation-form',
+    validate,
+    touchOnBlur: false,
+})(ReservationForm);
+
+class FormModal extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isOpen: false,
+            options: null,
+            initialValues: {
+                date: new Date(),
+                time: '00:00',
+                email: '',
+                country: '',
+                description: '',
+            },
+        };
+        this.handleOnClick = this.handleOnClick.bind(this);
+        this.handleOnClose = this.handleOnClose.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleOnClick() {
+        return this.setState({
+            isOpen: true,
+        });
+    }
+
+    handleOnClose() {
+        return this.setState({
+            isOpen: false,
+            options: null,
+        });
+    }
+
+    handleSubmit(values) {
+        console.log(values);
+        this.setState({
+            options: null,
+        });
+    }
+
+    render() {
+        const { isOpen, initialValues, isLoading, options } = this.state;
+        return (
+            <div>
+                <Button
+                    id="button-12"
+                    variant="neutral"
+                    label="Book Now!!"
+                    onClick={this.handleOnClick}
+                    variant="brand"
+                />
+                <Modal
+                    id="modal-12"
+                    title="Add your reservation"
+                    isOpen={isOpen}
+                    onRequestClose={this.handleOnClose}
+                    footer={
+                        <div className="rainbow-flex rainbow-justify_end">
+                            <Button
+                                form="redux-form-id"
+                                className="rainbow-m-right_large"
+                                label="Cancel"
+                                variant="neutral"
+                                onClick={this.handleOnClose}
+                            />
+                            <Button
+                                form="redux-form-id"
+                                label="Save"
+                                variant="brand"
+                                type="submit"
+                            />
+                        </div>
+                    }
+                >
+                    <Form
+                        onSubmit={this.handleSubmit}
+                        onSearch={this.search}
+                        isLoading={isLoading}
+                        options={options}
+                        initialValues={initialValues}
+                    />
+                </Modal>
+            </div>
+        );
+    }
+}
+
+<div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
+    <GlobalHeader className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large" />
+
+    <Content className="rainbow-p-around_xx-large rainbow-flex rainbow-align-content_center">
+        <div>
+            <div className="rainbow-m-bottom_medium">
+                <Title>Make your reservation</Title>
+            </div>
+           
+            <div className="rainbow-m-bottom_medium">
+                <Description>This is a reservation system UI practice. Hope you will let me know how you feel about this. Thanks</Description>
+            </div>
+
+            <FormModal />
+        </div>
+
+        <div>
+            <img className="rainbow-m-bottom_medium" src="/images/illustrations/illustration-traveler.svg" />
+        </div>
+    </Content>
+
+</div>
+
+``` 
