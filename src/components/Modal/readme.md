@@ -717,11 +717,11 @@ import { Modal, Button, Input, TimePicker, DatePicker, Textarea, Select } from '
 import { Field, reduxForm } from 'redux-form';
 import styled from 'styled-components';
 
-const Content = styled.div.attrs( props => ({
-    imgWidth: '328px'
-}))`
+const imgWidth = '328px';
+
+const Content = styled.div`
     div:nth-child(2) img {
-        min-width: ${props => props.imgWidth};
+        min-width: ${imgWidth};
     }
 
     @media (max-width: 768px) {
@@ -733,7 +733,7 @@ const Content = styled.div.attrs( props => ({
         
         div:nth-child(2) img {
             min-width: 0;
-            width: ${props => props.imgWidth};
+            width: ${imgWidth};
             max-width: 100%;
         }
     }
@@ -745,19 +745,26 @@ const Title = styled.h2.attrs(props => {
     font-size: 36px;
     font-weight: 300;
     line-height: 'normal';
-    color: ${props => {
-        return (props.brand.main === '#80deea') ? '#fff' : '#061c3f';
-    }}
+    color: ${props => props.getContrastText(props.background.secondary)}
 `;
 
 const Description = styled.p.attrs(props => {
    return props.theme.rainbow.palette;
 })`
     font-size: 16px;
-    color: ${props => {
-            return (props.brand.main === '#80deea') ? '#fff' : 'rgba(0, 0, 0, 0.5)';
-    }}
+    color: ${props => props.getContrastText(props.background.secondary)}
 `;
+
+const styles = {
+    input: {
+        marginTop: 24,
+    },
+    inputColumn: {
+        width: '48%',
+        marginTop: 24,
+    }
+};
+
 
 const countries = [
     { value: '', label: 'Select country' },
@@ -795,16 +802,6 @@ function validate(values) {
 
 function ReservationForm(props) {
     const { handleSubmit, reset, onSubmit } = props;
-
-    const styles = {
-        input: {
-            marginTop: 24,
-        },
-        inputColumn: {
-            width: '48%',
-            marginTop: 24,
-        }
-    };
 
     const submit = values => {
         onSubmit(values);
@@ -944,13 +941,7 @@ class FormModal extends React.Component {
                         </div>
                     }
                 >
-                    <Form
-                        onSubmit={this.handleSubmit}
-                        onSearch={this.search}
-                        isLoading={isLoading}
-                        options={options}
-                        initialValues={initialValues}
-                    />
+                    <Form onSubmit={this.handleSubmit} initialValues={initialValues} />
                 </Modal>
             </div>
         );
