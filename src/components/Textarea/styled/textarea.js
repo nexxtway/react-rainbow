@@ -1,37 +1,19 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 import { BORDER_RADIUS_1 } from '../../../styles/borderRadius';
-import {
-    COLOR_WHITE,
-    COLOR_GRAY_3,
-    COLOR_DARK_1,
-    COLOR_GRAY_1,
-    COLOR_GRAY_2,
-} from '../../../styles/colors';
 import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
-import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledTextarea = styled.textarea.attrs(props => {
-    const { brand, error } = getTheme(props).palette;
-    const brandMainColor = brand.main;
-    const errorMainColor = error.main;
-
-    return {
-        brandMainColor,
-        errorMainColor,
-        brandShadow: `0 0 2px ${brandMainColor}`,
-        errorShadow: `0 0 2px ${errorMainColor}`,
-    };
-})`
+const StyledTextarea = attachThemeAttrs(styled.textarea)`
     border-radius: ${BORDER_RADIUS_1};
-    background-color: ${COLOR_WHITE};
-    border: solid 1px ${COLOR_GRAY_3};
+    background-color: ${props => props.palette.background.main};
+    border: solid 1px ${props => props.palette.border.main};
     transition: all 0.1s linear;
     width: 100%;
     padding: 0.625rem 1rem;
     resize: none;
     font-size: ${FONT_SIZE_TEXT_LARGE};
     line-height: 1.57;
-    color: ${COLOR_DARK_1};
+    color: ${props => props.palette.text.main};
     box-sizing: border-box;
     margin: 0;
     overflow: auto;
@@ -39,14 +21,14 @@ const StyledTextarea = styled.textarea.attrs(props => {
     :focus,
     :active {
         outline: 0;
-        background-color: ${COLOR_WHITE};
-        border: solid 2px ${propps => propps.brandMainColor};
-        box-shadow: ${props => props.brandShadow};
+        background-color: ${props => props.palette.background.main};
+        border: solid 2px ${props => props.palette.brand.main};
+        box-shadow: ${props => props.shadows.brand};
         padding: 0.5625rem 0.9375rem;
     }
 
     ::placeholder {
-        color: ${COLOR_GRAY_3};
+        color: ${props => props.palette.text.header};
         font-weight: 300;
         font-size: ${FONT_SIZE_TEXT_LARGE};
     }
@@ -54,9 +36,9 @@ const StyledTextarea = styled.textarea.attrs(props => {
     &[disabled] {
         cursor: not-allowed;
         user-select: none;
-        background-color: ${COLOR_GRAY_1};
-        border: solid 1px ${COLOR_GRAY_2};
-        color: ${COLOR_GRAY_2};
+        background-color: ${props => props.palette.background.disabled};
+        border: solid 1px ${props => props.palette.border.disabled};
+        color: ${props => props.palette.text.disabled};
 
         &:focus,
         &:active {
@@ -65,7 +47,7 @@ const StyledTextarea = styled.textarea.attrs(props => {
         }
 
         &::placeholder {
-            color: ${COLOR_GRAY_2};
+            color: ${props => props.palette.text.disabled};
         }
     }
 
@@ -85,15 +67,15 @@ const StyledTextarea = styled.textarea.attrs(props => {
     ${props =>
         props.error &&
         `
-            background-color: ${COLOR_WHITE};
-            border: solid 2px ${props.errorMainColor};
+            background-color: ${props.palette.background.main};
+            border: solid 2px ${props.palette.error.main};
             background-clip: padding-box;
 
             &:focus,
             &:active {
                 padding: 0.625rem 1rem;
-                box-shadow: ${props.errorShadow};
-                border: solid 2px ${props.errorMainColor};
+                box-shadow: ${props.shadows.error};
+                border: solid 2px ${props.palette.error.main};
             }
         `};
 `;
