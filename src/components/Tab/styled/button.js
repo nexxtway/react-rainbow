@@ -1,13 +1,9 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 import { PADDING_X_SMALL } from '../../../styles/paddings';
 import { FONT_SIZE_TEXT_SMALL, FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
-import { COLOR_GRAY_4, COLOR_WHITE, COLOR_GRAY_3 } from '../../../styles/colors';
-import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledAnchor = styled.button.attrs(props => {
-    const brandMainColor = getTheme(props).palette.brand.main;
-    return { brandMainColor };
-})`
+const StyledAnchor = attachThemeAttrs(styled.button)`
     font: inherit;
     background: none;
     border: none;
@@ -24,7 +20,7 @@ const StyledAnchor = styled.button.attrs(props => {
     letter-spacing: 0.9px;
     font-size: ${FONT_SIZE_TEXT_SMALL};
     font-weight: 600;
-    color: ${COLOR_GRAY_4};
+    color: ${props => props.palette.text.label};
     z-index: 0;
     box-sizing: border-box;
     cursor: pointer;
@@ -47,8 +43,8 @@ const StyledAnchor = styled.button.attrs(props => {
     }
 
     &:hover {
-        background-color: #f9fafc;
-        color: ${COLOR_GRAY_4};
+        background-color: ${props => props.palette.action.hover};
+        color: ${props => props.palette.text.label};
         z-index: 1;
     }
 
@@ -64,7 +60,7 @@ const StyledAnchor = styled.button.attrs(props => {
         left: -2px;
         height: 20px;
         width: 1px;
-        background-color: ${COLOR_GRAY_3};
+        background-color: ${props => props.palette.border.divider};
         box-sizing: border-box;
     }
 
@@ -75,7 +71,7 @@ const StyledAnchor = styled.button.attrs(props => {
     @media (max-width: 600px) {
         height: 100%;
         border-radius: 0;
-        color: ${props => props.brandMainColor};
+        color: ${props => props.palette.brand.main};
         font-size: ${FONT_SIZE_TEXT_MEDIUM};
         width: 100%;
         padding: 0 1rem 0 1rem;
@@ -103,14 +99,14 @@ const StyledAnchor = styled.button.attrs(props => {
         props.isActive &&
         `
             z-index: 2;
-            background-color: ${COLOR_WHITE};
-            color: ${props.brandMainColor};
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            background-color: ${props.palette.background.main};
+            color: ${props.palette.brand.main};
+            box-shadow: ${props.shadows.shadow_4};
             border-radius: 14px 14px 0 0;
 
             &:hover, &:active, &:visited, &:focus {
-                background-color: ${COLOR_WHITE};
-                color: ${props.brandMainColor};
+                background-color: ${props.palette.background.main};
+                color: ${props.palette.brand.main};
             }
 
             &::after {
@@ -124,7 +120,7 @@ const StyledAnchor = styled.button.attrs(props => {
                 border-radius: 100%;
                 border-width: 16px;
                 border-style: solid;
-                border-color: transparent white transparent transparent;
+                border-color: transparent ${props.palette.background.main} transparent transparent;
                 -webkit-transform: rotate(45deg);
                 box-sizing: border-box;
             }
@@ -140,7 +136,7 @@ const StyledAnchor = styled.button.attrs(props => {
                 border-radius: 100%;
                 border-width: 16px;
                 border-style: solid;
-                border-color: transparent white transparent transparent;
+                border-color: transparent ${props.palette.background.main} transparent transparent;
                 -webkit-transform: rotate(145deg);
                 box-sizing: border-box;
             }
@@ -177,7 +173,7 @@ const StyledAnchor = styled.button.attrs(props => {
                     left: 0;
                     bottom: 0;
                     position: absolute;
-                    background-color: ${props.brandMainColor};
+                    background-color: ${props.palette.brand.main};
                     border-radius: 100px;
                 }
             }
@@ -185,7 +181,7 @@ const StyledAnchor = styled.button.attrs(props => {
     ${props =>
         props.disabled &&
         `
-            color: ${COLOR_GRAY_3};
+            color: ${props.palette.text.disabled};
             cursor: pointer;
             pointer-events: none;
         
