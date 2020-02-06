@@ -111,3 +111,102 @@ const iconContainerStyles = {
     </Card>
 </div>
 ```
+
+##### pricing card
+
+```js
+import React from 'react';
+import { Card, Button } from 'react-rainbow-components';
+import styled from 'styled-components';
+
+const Title = styled.h1.attrs(props => props.theme.rainbow)`
+    font-family: 'Lato Light';
+    font-size: 32px;
+    text-align: center;
+    color: ${props => props.palette.text.main};
+`;
+
+const Subtitle = styled.h2`
+    font-family: 'Lato Light';
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    color: ${props => props.theme.rainbow.palette.text.header};
+    ${props => props.uppercase && 'text-transform: uppercase;'}
+`;
+
+const BigPriceText = styled.h2`
+    font-family: 'Lato Black';
+    font-size: 56px;
+    line-height: 56px;
+    color: ${props => props.theme.rainbow.palette.brand.main};
+`;
+
+const NormalPriceText = styled.h3`
+    font-family: Lato;
+    font-size: 20px;
+    font-weight: 500;
+    color: ${props => props.theme.rainbow.palette.brand.main};
+    ${props => props.alignEnd && 'align-self: flex-end'}
+`;
+
+const OutputText = styled.h5`
+    font-family: ${props => props.bold ? 'Lato Bold' : 'Lato Light'};
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    display: inline;
+    color: ${props => props.theme.rainbow.palette.text.main};
+`;
+
+const StyledCard = styled(Card)`
+    width: 240px;
+    height: 363px;
+`;
+
+function PriceCard(props) {
+    const { packageType, packagePrice, projectsCount, members, contacts} = props;
+    return (
+        <StyledCard
+            className="rainbow-flex rainbow-flex_column rainbow-align_center rainbow-justify_space-around rainbow-p-vertical_small rainbow-m-around_small"
+        >
+            <Subtitle uppercase>{ packageType }</Subtitle>
+            <div
+                className="rainbow-flex rainbow-m-bottom_xsmall"
+            >
+                <NormalPriceText>$</NormalPriceText>
+                <BigPriceText>{ packagePrice }</BigPriceText>
+                <NormalPriceText alignEnd>/mo</NormalPriceText>
+            </div>
+            <OutputText><OutputText bold>{ projectsCount }</OutputText>  Projects</OutputText>
+            <OutputText><OutputText bold>{ members }</OutputText>  Team Members</OutputText>
+            <OutputText><OutputText bold>{ contacts }</OutputText>  Personal Contacts</OutputText>
+            <Button
+                label="Buy Now!!"
+                variant="brand"
+            />
+        </StyledCard>
+    )
+}
+
+<div>
+    <Title
+        className="rainbow-p-top_x-large"
+    >
+        Our Prices
+    </Title>
+
+    <Subtitle
+        className="rainbow-p-around_medium"
+    >
+        You have Free Unlimited Updates and Premium Support on each package.
+    </Subtitle>
+
+
+    <div className="rainbow-flex rainbow-justify_space-around rainbow-flex_wrap rainbow-p-around_medium">
+        <PriceCard packageType="Standard" packagePrice="24" projectsCount="100" members="5" contacts="50"/>
+        <PriceCard packageType="Standard" packagePrice="85" projectsCount="500" members="50" contacts="150"/>
+        <PriceCard packageType="Standard" packagePrice="149" projectsCount="1000" members="100" contacts="200"/>
+    </div>
+</div>
+
+```

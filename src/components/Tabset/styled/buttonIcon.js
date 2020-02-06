@@ -1,23 +1,19 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 import ButtonIcon from '../../ButtonIcon';
-import { COLOR_WHITE, COLOR_GRAY_2 } from '../../../styles/colors';
-import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledButtonIcon = styled(ButtonIcon).attrs(props => {
-    const brandMainColor = getTheme(props).palette.brand.main;
-    return { brandMainColor };
-})`
-    color: ${props => props.brandMainColor};
+const StyledButtonIcon = attachThemeAttrs(styled(ButtonIcon))`
+    color: ${props => props.palette.brand.main};
 
     &:hover,
     &:active,
     &:focus {
-        color: ${props => props.brandMainColor};
+        color: ${props => props.palette.brand.main};
     }
 
     &[disabled] {
-        background-color: ${COLOR_WHITE};
-        color: ${COLOR_GRAY_2};
+        background-color: ${props => props.palette.background.main};
+        color: ${props => props.palette.text.disabled};
     }
 `;
 

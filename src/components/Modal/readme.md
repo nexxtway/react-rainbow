@@ -50,14 +50,6 @@ class EmptyModal extends React.Component {
         <div className="rainbow-m-right_medium">
             <EmptyModal />
         </div>
-        <ButtonGroup>
-            <ButtonIcon icon={<FontAwesomeIcon icon={faPlus} />} variant="border-filled" disabled />
-            <ButtonIcon
-                icon={<FontAwesomeIcon icon={faEllipsisV} />}
-                variant="border-filled"
-                disabled
-            />
-        </ButtonGroup>
     </GlobalHeader>
 </div>
 ```
@@ -713,14 +705,6 @@ class FormModal extends React.Component {
         <div className="rainbow-m-right_medium">
             <FormModal />
         </div>
-        <ButtonGroup>
-            <ButtonIcon icon={<FontAwesomeIcon icon={faPlus} />} variant="border-filled" disabled />
-            <ButtonIcon
-                icon={<FontAwesomeIcon icon={faEllipsisV} />}
-                variant="border-filled"
-                disabled
-            />
-        </ButtonGroup>
     </GlobalHeader>
 </div>
 ```
