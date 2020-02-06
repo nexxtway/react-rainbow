@@ -1,13 +1,13 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_1, COLOR_WHITE } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledContainer = styled.div`
+const StyledContainer = attachThemeAttrs(styled.div)`
     width: 100%;
     box-sizing: border-box;
 
     @media (max-width: 600px) {
-        border-bottom: solid 1px ${COLOR_GRAY_1};
-        background-color: ${COLOR_WHITE} !important;
+        border-bottom: solid 1px ${props => props.palette.border.divider};
+        background-color: ${props => props.palette.background.main} !important;
     }
 `;
 
