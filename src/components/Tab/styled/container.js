@@ -1,11 +1,7 @@
 import styled from 'styled-components';
-import { COLOR_WHITE } from '../../../styles/colors';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledContainer = styled.li.attrs(props => {
-    const brandMainColor = getTheme(props).palette.brand.main;
-    return { brandMainColor };
-})`
+const StyledContainer = attachThemeAttrs(styled.li)`
     position: relative;
     display: flex;
     justify-content: center;
@@ -36,8 +32,8 @@ const StyledContainer = styled.li.attrs(props => {
     ${props =>
         props.isActive &&
         `
-            background-color: ${COLOR_WHITE};
-            color: ${props.brandMainColor};
+            background-color: ${props.palette.background.main};
+            color: ${props.palette.brand.main};
             border-radius: 14px 14px 0 0;
             z-index: 2;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -54,7 +50,7 @@ const StyledContainer = styled.li.attrs(props => {
                 border-radius: 100%;
                 border-width: 16px;
                 border-style: solid;
-                border-color: transparent white transparent transparent;
+                border-color: transparent ${props.palette.background.main} transparent transparent;
                 -webkit-transform: rotate(45deg);
                 box-sizing: border-box;
             }
@@ -70,7 +66,7 @@ const StyledContainer = styled.li.attrs(props => {
                 border-radius: 100%;
                 border-width: 16px;
                 border-style: solid;
-                border-color: transparent white transparent transparent;
+                border-color: transparent ${props.palette.background.main} transparent transparent;
                 -webkit-transform: rotate(145deg);
                 box-sizing: border-box;
             }
