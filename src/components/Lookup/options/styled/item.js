@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_1 } from '../../../../styles/colors';
+import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttr';
 
-const StyledItem = styled.div`
+const StyledItem = attachThemeAttrs(styled.div)`
     box-sizing: border-box;
     align-items: center;
     display: flex;
@@ -13,7 +13,7 @@ const StyledItem = styled.div`
     ${props =>
         props.isActive &&
         `
-            background-color: ${COLOR_GRAY_1};
+            background-color: ${props.palette.action.active};
     `}
 `;
 
