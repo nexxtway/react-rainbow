@@ -29,6 +29,9 @@ import SettingsIcon from './exampleComponents/Icons/settings';
 import CompanyIcon from './exampleComponents/Icons/company';
 import AdvancedSettingsIcon from './exampleComponents/Icons/advanced-settings';
 import Users from './data/users';
+import TrashIcon from './exampleComponents/Icons/trash';
+import PricingIcon from './exampleComponents/Icons/pricing';
+import PencilIcon from './exampleComponents/Icons/pencil';
 
 global.GlobalHeader = GlobalHeader;
 global.CodeEditor = CodeEditor;
@@ -63,3 +66,6 @@ global.SettingsIcon = SettingsIcon;
 global.CompanyIcon = CompanyIcon;
 global.AdvancedSettingsIcon = AdvancedSettingsIcon;
 global.Users = Users;
+global.TrashIcon = TrashIcon;
+global.PricingIcon = PricingIcon;
+global.PencilIcon = PencilIcon;

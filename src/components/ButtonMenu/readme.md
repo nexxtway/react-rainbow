@@ -454,3 +454,254 @@ class ButtonMenuExample extends React.Component {
 }
 <ButtonMenuExample/>
 ```
+
+##### ButtonMenu
+
+```js
+import React from 'react';
+import { ButtonMenu, MenuItem, Card } from 'react-rainbow-components';
+import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import styled from 'styled-components';
+
+const Title = styled.h1.attrs(props => props.theme.rainbow)`
+    font-family: 'Lato Light';
+    font-size: 24px;
+    text-align: left;
+    color: ${props => props.palette.text.main};
+`;
+
+const CardSubtitle = styled.h4.attrs(props => props.theme.rainbow)`
+    font-family: Lato;
+    font-size: 12px;
+    color: ${props => props.palette.text.header};
+    display: block;
+`;
+
+const Label = styled.span.attrs(props => props.theme.rainbow)`
+    font-family: Lato Bold;
+    font-size: 24px;
+    line-height: 24px;
+    color: ${props => props.blue? props.palette.brand.main : props.palette.text.main};
+    text-transform: uppercase;
+`;
+
+const Description = styled.span.attrs(props => props.theme.rainbow)`
+    font-family: Lato;
+    font-size: 14px;
+    color: ${props => props.palette.text.disabled};
+`;
+
+const ColumnContainer = styled.div.attrs(props => props.theme.rainbow)`
+    min-height: 92px;
+    border-left: ${props => props.noBorder? "0":"1"}px solid ${props => props.palette.text.disabled};
+    ${props => !!props.flex ? 'flex: ' + props.flex + ';' :(props.noBorder? "width: 49%;":"width: 17%;")}
+    @media (max-width: 700px) {
+        border-left: none;
+        width: 100%;
+    }
+`;
+
+const Column = props => {
+    const { label, description, specialColor, noBorder, children, flex } = props;
+
+    return (
+        <ColumnContainer
+            className="rainbow-flex rainbow-flex_column rainbow-justify_center rainbow-align_center"
+            noBorder={!!noBorder}
+            flex={flex}
+        >
+            {children}
+            <Label blue={!!specialColor}>
+                {label}
+            </Label>
+            <Description>
+                {description}
+            </Description>
+        </ColumnContainer>
+    );
+}
+
+const RowContainer = styled.div`
+    min-height: 92px;
+    width: 49%;
+    @media (max-width: 700px) {
+        width: 100%;
+    }
+`;
+
+const Row = props => {
+    const { children } = props;
+    return (
+        <RowContainer className="rainbow-flex rainbow-justify_space-around">
+            {children}
+        </RowContainer>
+    );
+};
+
+const Point = styled.span.attrs(props => props.theme.rainbow)`
+    height: 10px;
+    width: 10px;
+    background-color: ${props => props.palette.brand.main};
+    border-radius: 50%;
+    display: inline-block;
+`;
+
+const Line = styled.hr.attrs(props => props.theme.rainbow)`
+    border: 1px solid ${props => props.palette.brand.main};
+    background-color: ${props => props.palette.brand.main};
+    width: 98%;
+    padding: 0;
+    margin: 0;
+`;
+
+const SegmentContainer = styled.div`
+    width: 100%;
+    height: 20px;
+`;
+
+const Segment = props => {
+    return (
+        <SegmentContainer className="rainbow-flex rainbow-align_center">
+            <Point />
+            <Line />  
+            <Point />  
+        </SegmentContainer>
+    );
+}
+
+function getdDateDiference ( dateIni, dateEnd ) {
+    var dateIni_ms = dateIni.getTime();
+    var dateEnd_ms = dateEnd.getTime();
+    var difference_ms = dateEnd_ms - dateIni_ms;
+    difference_ms = difference_ms/1000/60; 
+    const minutes = Math.floor(difference_ms % 60);
+    difference_ms = difference_ms/60; 
+    const hours = Math.floor(difference_ms);
+    
+    return (hours<10?'0':'')+hours+'hr ' + minutes + 'min';
+}
+
+function getFormatedTime(date) {
+    const rawHours  = date.getHours();
+    let h = rawHours > 12 ? rawHours%12 : (rawHours===0 ? 12 : rawHours);
+    h = h<10?'0'+h:h;
+    const m = date.getMinutes();
+    const format = rawHours>=12?'PM':'AM';
+    return `${h}:${m} ${format}`;
+}
+
+function getMonth(date) {
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    return months[date.getMonth()];
+}
+
+function FlightCard( props ) {
+    const { 
+        departureDate,
+        arrivalDate,
+        origin,
+        originAbbreviation,
+        destination,
+        destinationAbbreviation,
+        airline,
+        flightNumber,
+        price
+    } = props;
+
+    return (
+        <div className="rainbow-m-top_small">
+            <CardSubtitle>
+                Departure flight: { origin } - { destination } • {getMonth(departureDate)} {departureDate.getDate()}
+            </CardSubtitle>
+            <Card>
+                <div className="rainbow-flex rainbow-flex_wrap">
+                    <Row>
+                        <Column
+                            flex="1"
+                            label={originAbbreviation}
+                            description={getFormatedTime(departureDate)}
+                            noBorder
+                        />
+                        <Column
+                            flex="1.3"
+                            noBorder
+                            description={getdDateDiference(departureDate, arrivalDate)}
+                        >
+                            <Segment />
+                        </Column>
+                        <Column
+                            flex="1"
+                            label={destinationAbbreviation}
+                            description={getFormatedTime(arrivalDate)}
+                            noBorder
+                        />
+                    </Row>
+                    <Column label={airline} description="Airline" specialColor />
+                    <Column label={flightNumber} description="Flight No" />
+                    <Column label={'$'+price} description="Total" />
+                </div>
+            </Card>
+        </div>   
+    )
+}
+
+<div>
+    <GlobalHeader
+        src="images/user/user3.jpg"
+    />
+    <div className="rainbow-m-around_large">
+        <div className="rainbow-flex rainbow-justify_spread">
+            <Title>
+                Flight Booking
+            </Title>
+            <ButtonMenu
+                menuAlignment="right"
+                menuSize="x-small"
+                icon={<FontAwesomeIcon icon={faEllipsisV} />}
+            >
+                <MenuItem
+                    label="Edit Resevation"
+                    icon={<PencilIcon />}
+                    iconPosition="left"
+                />
+                <MenuItem
+                    label="Delete Reservation"
+                    icon={<TrashIcon />}
+                    iconPosition="left"
+                />
+                <MenuItem
+                    label="Add Promo Code"
+                    icon={<PricingIcon />}
+                    iconPosition="left"
+                />
+            </ButtonMenu>
+        </div>
+        <div>
+            <FlightCard
+                origin="Guadalajara"
+                originAbbreviation="GDL"
+                destination="New York"
+                destinationAbbreviation="NYR"
+                departureDate={new Date(2020, 3, 25, 10, 20)}
+                arrivalDate={new Date(2020, 3, 25, 19, 50)}
+                airline="AirBus"
+                flightNumber="2161"
+                price="350"
+            />
+            <FlightCard
+                origin="New York"
+                originAbbreviation="NYR"
+                destination="Guadalajara"
+                destinationAbbreviation="GDL"
+                departureDate={new Date(2020, 4, 5, 8, 20)}
+                arrivalDate={new Date(2020, 4, 5, 17, 50)}
+                airline="AirBus"
+                flightNumber="3345"
+                price="360"
+            />
+        </div>
+    </div>
+</div>
+
+```
