@@ -781,6 +781,14 @@ const countries = [
     { value: 'Canada', label: 'Canada' }
 ]; 
 
+const formInitialValues = {
+    date: new Date(),
+    time: '00:00',
+    email: '',
+    country: '',
+    description: ''
+};
+
 function validate(values) {
     const { date, time, email, country } = values;
     const errors = {};
@@ -867,20 +875,8 @@ const Form = reduxForm({
     touchOnBlur: false,
 })(ReservationForm);
 
-
 const FormModal = () => {
     const [isOpen, setOpenStatus] = useState(false);
-    const [initialValues, setInitialValues] = useState({});
- 
-    useEffect( () => {
-        setInitialValues({
-            date: new Date(),
-            time: '00:00',
-            email: '',
-            country: '',
-            description: ''
-        });
-    }, []);
 
     const submit = (values) => {
         console.log(values);
@@ -918,7 +914,7 @@ const FormModal = () => {
                     </div>
                 }
             >
-                <Form onSubmit={submit} initialValues={initialValues} />
+                <Form onSubmit={submit} initialValues={formInitialValues} />
             </Modal>
         </div>
     );
