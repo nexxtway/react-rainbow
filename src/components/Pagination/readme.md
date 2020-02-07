@@ -3,6 +3,7 @@
 ```js
 import React from 'react';
 import { Card, Pagination } from 'react-rainbow-components';
+import styled from 'styled-components';
 
 function getCardImageContainerStyles(src) {
     return {
@@ -14,6 +15,12 @@ function getCardImageContainerStyles(src) {
 }
 
 const cardStyles = { width: 240 };
+
+const StyledTitle = styled.span.attrs(props => {
+        return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.title};
+`;
 
 class PaginationExample extends React.Component {
     constructor(props) {
@@ -80,9 +87,9 @@ class PaginationExample extends React.Component {
                 style={cardStyles}
                 className="rainbow-m-bottom_x-large rainbow-m-right_small"
                 footer={
-                    <span className="rainbow-font-size-text_large rainbow-color_dark-1">
+                    <StyledTitle className="rainbow-font-size-text_large">
                         {title}
-                    </span>
+                    </StyledTitle>
                 }
             >
                 <div style={getCardImageContainerStyles(src)} />
