@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 import { MARGIN_SMALL } from '../../../styles/margins';
 
-const StyledIcon = styled.span`
+const StyledIcon = attachThemeAttrs(styled.span)`
     flex-shrink: 0;
-    background-color: rgba(82, 95, 127, 0.1);
+    background-color: ${props => props.palette.background.highlight};
     border-radius: ${BORDER_RADIUS_2};
     display: flex;
     align-items: center;

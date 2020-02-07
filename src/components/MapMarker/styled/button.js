@@ -1,8 +1,8 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
-import { COLOR_GRAY_1 } from '../../../styles/colors';
 
-const StyledButton = styled.button`
+const StyledButton = attachThemeAttrs(styled.button)`
     font: inherit;
     display: flex;
     align-items: center;
@@ -27,16 +27,16 @@ const StyledButton = styled.button`
     }
 
     &:hover {
-        background-color: ${COLOR_GRAY_1};
+        background-color: ${props => props.palette.action.hover};
     }
 
     &:focus {
         outline: none;
-        background-color: ${COLOR_GRAY_1};
+        background-color: ${props => props.palette.action.hover};
     }
 
     &[aria-pressed='true'] {
-        background-color: ${COLOR_GRAY_1};
+        background-color: ${props => props.palette.action.active};
     }
 
     & * {
