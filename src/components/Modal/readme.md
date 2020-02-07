@@ -745,14 +745,14 @@ const Title = styled.h2.attrs(props => {
     font-size: 36px;
     font-weight: 300;
     line-height: 'normal';
-    color: ${props => props.getContrastText(props.background.secondary)}
+    color: ${props => props.text.label}
 `;
 
 const Description = styled.p.attrs(props => {
    return props.theme.rainbow.palette;
 })`
     font-size: 16px;
-    color: ${props => props.getContrastText(props.background.secondary)}
+    color: ${props => props.text.label}
 `;
 
 const styles = {
