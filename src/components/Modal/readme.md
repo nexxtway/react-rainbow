@@ -920,15 +920,15 @@ const FormModal = () => {
     );
 };
 
-<div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
-    <GlobalHeader className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large" />
+<div>
+    <GlobalHeader/>
 
     <Content className="rainbow-p-around_xx-large rainbow-flex rainbow-align-content_center">
         <div>
             <div className="rainbow-m-bottom_medium">
                 <Title>Make your reservation</Title>
             </div>
-           
+
             <div className="rainbow-m-bottom_medium">
                 <Description>This is a reservation system UI practice. Hope you will let me know how you feel about this. Thanks</Description>
             </div>
@@ -943,4 +943,4 @@ const FormModal = () => {
 
 </div>
 
-``` 
+```
