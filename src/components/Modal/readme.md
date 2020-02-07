@@ -712,7 +712,7 @@ class FormModal extends React.Component {
 ##### make reservation modal
 
 ```js
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, Button, Input, TimePicker, DatePicker, Textarea, Select } from 'react-rainbow-components';
 import { Field, reduxForm } from 'redux-form';
 import styled from 'styled-components';
@@ -764,7 +764,6 @@ const styles = {
         marginTop: 24,
     }
 };
-
 
 const countries = [
     { value: '', label: 'Select country' },
@@ -868,85 +867,64 @@ const Form = reduxForm({
     touchOnBlur: false,
 })(ReservationForm);
 
-class FormModal extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isOpen: false,
-            options: null,
-            initialValues: {
-                date: new Date(),
-                time: '00:00',
-                email: '',
-                country: '',
-                description: '',
-            },
-        };
-        this.handleOnClick = this.handleOnClick.bind(this);
-        this.handleOnClose = this.handleOnClose.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
 
-    handleOnClick() {
-        return this.setState({
-            isOpen: true,
+const FormModal = (props) => {
+    const [isOpen, setOpenStatus] = useState(false);
+    const [options, setOptions] = useState(null);
+    const [initialValues, setInitialValues] = useState({});
+
+    useEffect( () => {
+        setInitialValues({
+            date: new Date(),
+            time: '00:00',
+            email: '',
+            country: '',
+            description: ''
         });
-    }
+    }, []);
 
-    handleOnClose() {
-        return this.setState({
-            isOpen: false,
-            options: null,
-        });
-    }
-
-    handleSubmit(values) {
+    const submit = (values) => {
         console.log(values);
-        this.setState({
-            options: null,
-        });
+        setOptions(null);
     }
 
-    render() {
-        const { isOpen, initialValues, isLoading, options } = this.state;
-        return (
-            <div>
-                <Button
-                    id="button-12"
-                    variant="neutral"
-                    label="Book Now!!"
-                    onClick={this.handleOnClick}
-                    variant="brand"
-                />
-                <Modal
-                    id="modal-12"
-                    title="Add your reservation"
-                    isOpen={isOpen}
-                    onRequestClose={this.handleOnClose}
-                    footer={
-                        <div className="rainbow-flex rainbow-justify_end">
-                            <Button
-                                form="redux-form-id"
-                                className="rainbow-m-right_large"
-                                label="Cancel"
-                                variant="neutral"
-                                onClick={this.handleOnClose}
-                            />
-                            <Button
-                                form="redux-form-id"
-                                label="Save"
-                                variant="brand"
-                                type="submit"
-                            />
-                        </div>
-                    }
-                >
-                    <Form onSubmit={this.handleSubmit} initialValues={initialValues} />
-                </Modal>
-            </div>
-        );
-    }
-}
+    return (
+        <div>
+            <Button
+                id="button-12"
+                variant="neutral"
+                label="Book Now!!"
+                onClick={() => setOpenStatus(true)}
+                variant="brand"
+            />
+            <Modal
+                id="modal-12"
+                title="Add your reservation"
+                isOpen={isOpen}
+                onRequestClose={() => setOpenStatus(false)}
+                footer={
+                    <div className="rainbow-flex rainbow-justify_end">
+                        <Button
+                            form="redux-form-id"
+                            className="rainbow-m-right_large"
+                            label="Cancel"
+                            variant="neutral"
+                            onClick={() => setOpenStatus(false)}
+                        />
+                        <Button
+                            form="redux-form-id"
+                            label="Save"
+                            variant="brand"
+                            type="submit"
+                        />
+                    </div>
+                }
+            >
+                <Form onSubmit={submit} initialValues={initialValues} />
+            </Modal>
+        </div>
+    );
+};
 
 <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
     <GlobalHeader className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large" />
