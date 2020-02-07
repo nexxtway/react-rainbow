@@ -10,12 +10,12 @@ caret-color: transparent;
     padding-right: 2.35rem;
     text-overflow: ellipsis;
     box-shadow: inset 0 0 0 3px ${props => props.palette.background.main},
-                inset 0 0 0 4px ${props => props.palette.border.main};
+                inset 0 0 0 4px ${props => props.palette.border.divider};
 
     :focus,
     :active {
         box-shadow: inset 0 0 0 2px ${props => props.palette.background.main},
-                    inset 0 0 0 3px ${props => props.palette.border.main},
+                    inset 0 0 0 3px ${props => props.palette.border.divider};
                     ${props => props.shadows.brand};
         padding-right: 2.35rem;
         text-overflow: ellipsis;
