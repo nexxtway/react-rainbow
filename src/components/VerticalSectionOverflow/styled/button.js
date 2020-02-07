@@ -22,7 +22,7 @@ const StyledButton = attachThemeAttrs(styled.button)`
 
     :focus {
         outline: 0;
-        background-color: ${props => props.palette.action.active};
+        background-color: ${props => props.palette.background.secondary};
     }
 
     ${props =>

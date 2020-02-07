@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
-import { COLOR_GRAY_TRANSPARENT_1 } from '../../../styles/colors';
 
 const StyledNav = attachThemeAttrs(styled.nav)`
     display: block;
@@ -17,7 +16,7 @@ const StyledNav = attachThemeAttrs(styled.nav)`
         props.shaded &&
         `
             li {
-                background-color: ${props.palette.background.main};
+                background-color: ${props.palette.background.secondary};
 
                 :hover,
                 :active {
