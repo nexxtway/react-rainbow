@@ -2,22 +2,51 @@
 
 ```js
 import React, { useState, useEffect } from 'react';
-import { PresenceMap, Input } from 'react-rainbow-components';
+import { PresenceMap, Input, Picklist, PicklistOption } from 'react-rainbow-components';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCrosshairs } from '@fortawesome/free-solid-svg-icons';
 import { COLOR_WHITE } from '../../styles/colors';
 import { SHADOW_1 } from '../../styles/shadows';
 import { BORDER_RADIUS_1 } from '../../styles/borderRadius';
 
-const StyledControl = styled(Input)`
+const RegularControl = styled(Input)`
     background-color: ${COLOR_WHITE};
     border-radius: ${BORDER_RADIUS_1};
     box-shadow: ${SHADOW_1};
     cursor: pointer;
-    margin: 10px;
+    margin: 10px 10px 10px;
     text-align: center;
     padding: 5px;
     width: fit-content;
     float: left;
+`;
+
+const CircularControl = styled.div`
+    background-color: ${COLOR_WHITE};
+    border-radius: 20px;
+    box-shadow: ${SHADOW_1};
+    cursor: pointer;
+    margin: 10px 10px 10px;
+    text-align: center;
+    padding: 5px;
+    width: 40px;
+    height: 40px;
+    float: left;
+`;
+
+const MenuControl = styled(Picklist)`
+    cursor: pointer;
+    margin: 10px 10px 10px;
+    text-align: center;
+    padding: 5px;
+    width: fit-content;
+    float: left;
+`;
+
+const Icon = styled(FontAwesomeIcon)`
+    vertical-align: bottom;
+    margin-top: 20%;
 `;
 
 const PresenceMapExample = () => {
@@ -25,6 +54,7 @@ const PresenceMapExample = () => {
     const [showTransitState, setShowTransit] = useState(false);
     const [zoomState, setZoom] = useState('auto');
     const [centerState, setCenter] = useState('auto');
+    const [mapTypeState, setMapType] = useState({ name: 'roadmap', label: 'ROADMAP' });
 
     const objects = [
         {
@@ -69,12 +99,37 @@ const PresenceMapExample = () => {
     }, [centerState]);
 
     const handleShowTraffic = () => {
-        setShowTraffic(!showTrafficState)
-    }
+        setShowTraffic(!showTrafficState);
+    };
 
     const handleShowTransit = () => {
-        setShowTransit(!showTransitState)
-    }
+        setShowTransit(!showTransitState);
+    };
+
+    const handleCenterGeolocation = () => {
+        const geo_success = position => {
+            setCenter({
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            });
+        };
+
+        const geo_error = () => {
+            alert("Sorry, no position available.");
+        };
+
+        const geo_options = {
+            enableHighAccuracy: true, 
+            maximumAge: 30000, 
+            timeout: 27000,
+        };
+
+        navigator.geolocation.getCurrentPosition(geo_success, geo_error, geo_options);
+    };
+
+    const handleMapStyle = value => {
+        setMapType(value);
+    };
 
     return (
         <PresenceMap
@@ -84,20 +139,42 @@ const PresenceMapExample = () => {
             showTransit={showTransitState}
             zoom={zoomState}
             center={centerState}
+            type={mapTypeState.name}
         >
-            <StyledControl
+            <MenuControl
+                id="picklist-mapstyle-1"
+                style={{ float: "right" }}
+                onChange={value => handleMapStyle(value)}
+                value={mapTypeState}
+                label=""
+                hideLabel
+            >
+                <PicklistOption name="roadmap" label="ROADMAP" />
+                <PicklistOption name="satellite" label="SATELLITE" />
+                <PicklistOption name="hybrid" label="HYBRID" />
+                <PicklistOption name="terrain" label="TERRAIN" />
+            </MenuControl>
+            <RegularControl
                 className="rainbow-m-around_medium"
+                style={{ float: "right" }}
                 type="checkbox"
                 label="Show Traffic"
                 onClick={handleShowTraffic}
                 checked={showTrafficState} />
-            <StyledControl
+            <RegularControl
                 className="rainbow-m-around_medium"
                 style={{ float: "right" }}
                 type="checkbox"
                 label="Show Transit"
                 onClick={handleShowTransit}
                 checked={showTransitState} />
+            <CircularControl
+                className="rainbow-m-around_medium"
+                style={{ float: "right" }}
+                onClick={handleCenterGeolocation}
+            >
+                <Icon icon={faCrosshairs}  className="rainbow-color_brand" size="lg" />
+            </CircularControl>
         </PresenceMap>
     );
 }

@@ -55,6 +55,8 @@ PresenceMap.propTypes = {
      * @ignore
      */
     children: PropTypes.node,
+    /** Map type. */
+    type: PropTypes.string,
 };
 
 PresenceMap.defaultProps = {
@@ -66,4 +68,5 @@ PresenceMap.defaultProps = {
     showTraffic: false,
     showTransit: false,
     children: null,
+    type: 'roadmap',
 };

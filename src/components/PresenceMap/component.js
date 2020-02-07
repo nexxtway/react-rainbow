@@ -8,7 +8,17 @@ import StyledControls from './styled/controls';
 const MAX_ZOOM = 15;
 
 export default function MapComponent(props) {
-    const { showTraffic, showTransit, center, zoom, objects, style, className, children } = props;
+    const {
+        showTraffic,
+        showTransit,
+        center,
+        zoom,
+        objects,
+        style,
+        className,
+        children,
+        type,
+    } = props;
     const container = useRef();
     const mapContainer = useRef();
     const [map, setMap] = useState(null);
@@ -141,6 +151,12 @@ export default function MapComponent(props) {
         }
     }, [map, center, zoom]);
 
+    useEffect(() => {
+        if (map && type) {
+            map.setMapTypeId(type);
+        }
+    }, [map, type]);
+
     return (
         <StyledContainer style={style} className={className} ref={container}>
             <div ref={mapContainer} style={getMapContainerStyles(container.current)} />
@@ -176,6 +192,7 @@ MapComponent.propTypes = {
     showTraffic: PropTypes.bool,
     showTransit: PropTypes.bool,
     children: PropTypes.node,
+    type: PropTypes.string,
 };
 
 MapComponent.defaultProps = {
@@ -187,4 +204,5 @@ MapComponent.defaultProps = {
     showTraffic: false,
     showTransit: false,
     children: null,
+    type: 'roadmap',
 };

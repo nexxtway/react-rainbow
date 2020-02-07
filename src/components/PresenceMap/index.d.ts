@@ -28,6 +28,7 @@ export interface PresenceMapProps extends BaseProps {
     showTraffic?: boolean;
     showTransit?: boolean;
     controls?: MapControl[];
+    type?: string;
 }
 
 export default function(props: PresenceMapProps): JSX.Element | null;
