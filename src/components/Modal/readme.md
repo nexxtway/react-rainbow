@@ -712,7 +712,7 @@ class FormModal extends React.Component {
 ##### make reservation modal
 
 ```js
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Modal, Button, Input, TimePicker, DatePicker, Textarea, Select } from 'react-rainbow-components';
 import { Field, reduxForm } from 'redux-form';
 import styled from 'styled-components';
@@ -868,11 +868,10 @@ const Form = reduxForm({
 })(ReservationForm);
 
 
-const FormModal = (props) => {
+const FormModal = () => {
     const [isOpen, setOpenStatus] = useState(false);
-    const [options, setOptions] = useState(null);
     const [initialValues, setInitialValues] = useState({});
-
+ 
     useEffect( () => {
         setInitialValues({
             date: new Date(),
@@ -885,7 +884,6 @@ const FormModal = (props) => {
 
     const submit = (values) => {
         console.log(values);
-        setOptions(null);
     }
 
     return (
