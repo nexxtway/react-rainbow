@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_3 } from '../../../../styles/colors';
+import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttr';
 
-const StyledHeaderLi = styled.li`
+const StyledHeaderLi = attachThemeAttrs(styled.li)`
     display: flex;
     align-items: center;
-    color: ${COLOR_GRAY_3};
+    color: ${props => props.palette.text.header};
     font-size: 14px;
     font-weight: normal;
     height: 48px;
