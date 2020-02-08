@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 import Avatar from '../../Avatar';
 
-const StyledAvatar = styled(Avatar)`
-    border: 2px solid white;
+const StyledAvatar = attachThemeAttrs(styled(Avatar))`
+    border: 2px solid ${props => props.palette.background.main};
     ${props =>
         props.zIndex &&
         `

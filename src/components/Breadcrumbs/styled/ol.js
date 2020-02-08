@@ -29,10 +29,7 @@ const StyledOl = attachThemeAttrs(styled.ol)`
     > li:not(:last-child)::after {
         margin: 0 10px;
         content: '>';
-
-        :hover {
-            color: ${props => props.palette.text.label};
-        }
+        color: ${props => props.palette.text.label};
     }
 `;
 
