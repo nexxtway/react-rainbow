@@ -1,20 +1,11 @@
 import styled from 'styled-components';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledCheckmarkIcon = styled.svg.attrs(props => {
-    const theme = getTheme(props);
-    const { brand, getContrastText } = theme.palette;
-    const { main: brandMainColor } = brand;
-
-    return {
-        brandMainColor,
-        getContrastText,
-    };
-})`
+const StyledCheckmarkIcon = attachThemeAttrs(styled.svg)`
     position: absolute;
     top: 8px;
     right: 8px;
-    fill: ${props => props.getContrastText(props.brandMainColor)};
+    fill: ${props => props.palette.getContrastText(props.palette.brand.main)};
 `;
 
 export default StyledCheckmarkIcon;

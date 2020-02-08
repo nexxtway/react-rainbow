@@ -5,7 +5,7 @@ describe('rgbToRgba', () => {
     const colors = {
         rgb: 'rgb(1, 182, 245)',
         rgba: `rgba(1, 182, 245, ${alpha})`,
-        rgbad: 'rgba(1, 182, 245, 0.5)',
+        rgbad: 'rgba(1, 182, 245, 1)',
     };
     const EMPTY_STRING = '';
 
