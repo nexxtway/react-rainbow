@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import scriptLoader from 'react-async-script-loader';
 import MapComponent from './component';
 
+/**
+ * @category Layout
+ */
 export default function PresenceMap(props) {
     const { apiKey, ...rest } = props;
 
