@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-export default function hexToRgba(color, alpha = 0.5) {
+export default function hexToRgba(color, alpha = 1) {
     if (color.charAt(0) !== '#') {
         return '';
     }
