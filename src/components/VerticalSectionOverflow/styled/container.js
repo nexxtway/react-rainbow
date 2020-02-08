@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_TRANSPARENT_1 } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledContainer = styled.div`
+const StyledContainer = attachThemeAttrs(styled.div)`
     transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
 
     :hover {
-        background-color: ${COLOR_GRAY_TRANSPARENT_1};
+        background-color: ${props => props.palette.background.secondary};
     }
 
     .rainbow-vertical-item_action {
@@ -15,8 +15,8 @@ const StyledContainer = styled.div`
     ${props =>
         props.isExpanded &&
         `
-            background-color: ${COLOR_GRAY_TRANSPARENT_1};
-            box-shadow: inset 0 0 2px 0 #e3e5ed;
+            background-color: ${props.palette.background.secondary};
+            box-shadow: inset 0 0 2px 0 ${props.palette.background.secondary};
             padding-bottom: 16px;
         `};
 `;

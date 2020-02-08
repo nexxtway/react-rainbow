@@ -1,22 +1,14 @@
 import styled from 'styled-components';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledCheckedTriangle = styled.span.attrs(props => {
-    const theme = getTheme(props);
-    const { brand } = theme.palette;
-    const { main: brandMainColor } = brand;
-
-    return {
-        brandMainColor,
-    };
-})`
+const StyledCheckedTriangle = attachThemeAttrs(styled.span)`
     position: absolute;
     top: -1px;
     right: -1px;
     border: 1.5rem solid transparent;
     border-radius: 0 20px 0 0;
-    border-right-color: ${props => props.brandMainColor};
-    border-top-color: ${props => props.brandMainColor};
+    border-right-color: ${props => props.palette.brand.main};
+    border-top-color: ${props => props.palette.brand.main};
     margin: 0;
     padding: 0;
 `;
