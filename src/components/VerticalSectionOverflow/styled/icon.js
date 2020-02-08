@@ -1,11 +1,8 @@
 import styled from 'styled-components';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledIcon = styled.svg.attrs(props => {
-    const brandMainColor = getTheme(props).palette.brand.main;
-    return { brandMainColor };
-})`
-    color: ${props => props.brandMainColor};
+const StyledIcon = attachThemeAttrs(styled.svg)`
+    color: ${props => props.palette.brand.main};
     margin-left: 0.5rem;
     margin-top: 0.625rem;
     transform: rotate(0deg);

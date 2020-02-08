@@ -1,16 +1,13 @@
 import styled from 'styled-components';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledTitle = styled.h2.attrs(props => {
-    const brandMainColor = getTheme(props).palette.brand.main;
-    return { brandMainColor };
-})`
+const StyledTitle = attachThemeAttrs(styled.h2)`
     margin: 0;
     padding: 0.5rem 0.5rem 0.5rem 1.25rem;
     line-height: 1.5rem;
     font-size: 0.9375rem;
     font-weight: inherit;
-    color: ${props => props.brandMainColor};
+    color: ${props => props.palette.brand.main};
     text-transform: uppercase;
     overflow: hidden;
     text-overflow: ellipsis;

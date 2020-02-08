@@ -3,19 +3,24 @@
 ```js
 import React from 'react';
 import { VisualPicker, VisualPickerOption } from 'react-rainbow-components';
+import styled from 'styled-components';
 
-const titleStyles = {
-    fontSize: 24,
-    color: '#061c3f',
-    fontWeight: 300,
-};
+const StyledHeader = styled.h1.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    font-size: 24px;
+    font-weight: 300;
+    color: ${props => props.text.main};
+`;
 
-const textStyles = {
-    fontSize: 15,
-    color: '#a4a7b5',
-    marginTop: 8,
-    fontWeight: 300,
-};
+const StyledLabel = styled.h2.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    font-size: 15px;
+    font-weight: 300;
+    margin-top:6px
+    color: ${props => props.text.label};
+`;
 
 class SimpleVisualPicker extends React.Component {
     constructor(props) {
@@ -40,15 +45,15 @@ class SimpleVisualPicker extends React.Component {
             >
                 <VisualPickerOption name="option-1">
                     <DesignIcon />
-                    <h2 style={textStyles}>Design</h2>
+                    <StyledLabel>Design</StyledLabel>
                 </VisualPickerOption>
                 <VisualPickerOption name="option-2">
                     <PhotographerIcon />
-                    <h2 style={textStyles}>Photographer</h2>
+                    <StyledLabel>Photographer</StyledLabel>
                 </VisualPickerOption>
                 <VisualPickerOption name="option-3">
                     <CodeIcon />
-                    <h2 style={textStyles}>Programmer</h2>
+                    <StyledLabel>Programmer</StyledLabel>
                 </VisualPickerOption>
             </VisualPicker>
         );
@@ -56,9 +61,9 @@ class SimpleVisualPicker extends React.Component {
 }
 
 <div className="rainbow-align-content_center rainbow-m-around_xx-large rainbow-flex_column">
-    <h1 style={titleStyles} className="rainbow-m-bottom_medium">
+    <StyledHeader className="rainbow-m-bottom_medium">
         What are you doing?
-    </h1>
+    </StyledHeader>
     <SimpleVisualPicker />
 </div>
 ```
@@ -68,18 +73,24 @@ class SimpleVisualPicker extends React.Component {
 ```js
 import React from 'react';
 import { VisualPicker, VisualPickerOption } from 'react-rainbow-components';
+import styled from 'styled-components';
 
-const titleStyles = {
-    fontSize: 24,
-    color: '#061c3f',
-    fontWeight: 300,
-};
+const StyledHeader = styled.h1.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    font-size: 24px;
+    font-weight: 300;
+    color: ${props => props.text.main};
+`;
 
-const textStyles = {
-    fontSize: 15,
-    color: '#a4a7b5',
-    marginTop: 4,
-};
+const StyledLabel = styled.h2.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    font-size: 15px;
+    font-weight: 300;
+    margin-top:6px
+    color: ${props => props.text.label};
+`;
 
 class MultipleVisualPicker extends React.Component {
     constructor(props) {
@@ -105,15 +116,15 @@ class MultipleVisualPicker extends React.Component {
             >
                 <VisualPickerOption name="option-1">
                     <DesignIcon />
-                    <h2 style={textStyles}>Design</h2>
+                    <StyledLabel>Design</StyledLabel>
                 </VisualPickerOption>
                 <VisualPickerOption name="option-2">
                     <PhotographerIcon />
-                    <h2 style={textStyles}>Photographer</h2>
+                    <StyledLabel>Photographer</StyledLabel>
                 </VisualPickerOption>
                 <VisualPickerOption name="option-3">
                     <CodeIcon />
-                    <h2 style={textStyles}>Programmer</h2>
+                    <StyledLabel>Programmer</StyledLabel>
                 </VisualPickerOption>
             </VisualPicker>
         );
@@ -121,9 +132,9 @@ class MultipleVisualPicker extends React.Component {
 }
 
 <div className="rainbow-align-content_center rainbow-m-around_xx-large rainbow-flex_column">
-    <h1 style={titleStyles} className="rainbow-m-bottom_medium">
+    <StyledHeader className="rainbow-m-bottom_medium">
         What are you doing?
-    </h1>
+    </StyledHeader>
     <MultipleVisualPicker />
 </div>
 ```
@@ -137,24 +148,31 @@ import {
     VisualPickerOption,
     VisualPickerOptionFooter,
 } from 'react-rainbow-components';
+import styled from 'styled-components';
 
-const headerStyles = {
-    fontSize: 24,
-    color: '#061c3f',
-    fontWeight: 300,
-};
+const StyledHeader = styled.h1.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    font-size: 24px;
+    font-weight: 300;
+    color: ${props => props.text.main};
+`;
 
-const titleStyles = {
-    fontSize: 36,
-    color: '#061c3f',
-    fontWeight: 200,
-};
+const StyledTitle = styled.h2.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    font-size: 36px;
+    font-weight: 200;
+    color: ${props => props.text.main};
+`;
 
-const descriptionStyles = {
-    fontSize: 14,
-    color: '#a4a7b5',
-    fontWeight: 300,
-};
+const StyledDescription = styled.h3.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    font-size: 14px;
+    font-weight: 300;
+    color: ${props => props.text.label};
+`;
 
 class SimpleVisualPickerWithFooter extends React.Component {
     constructor(props) {
@@ -186,8 +204,8 @@ class SimpleVisualPickerWithFooter extends React.Component {
                         />
                     }
                 >
-                    <h2 style={titleStyles}>$30</h2>
-                    <h3 style={descriptionStyles}>user/month</h3>
+                    <StyledTitle>$30</StyledTitle>
+                    <StyledDescription>user/month</StyledDescription>
                 </VisualPickerOption>
                 <VisualPickerOption
                     name="option-2"
@@ -198,8 +216,8 @@ class SimpleVisualPickerWithFooter extends React.Component {
                         />
                     }
                 >
-                    <h2 style={titleStyles}>$60</h2>
-                    <h3 style={descriptionStyles}>user/month</h3>
+                    <StyledTitle>$60</StyledTitle>
+                    <StyledDescription>user/month</StyledDescription>
                 </VisualPickerOption>
                 <VisualPickerOption
                     name="option-3"
@@ -210,8 +228,8 @@ class SimpleVisualPickerWithFooter extends React.Component {
                         />
                     }
                 >
-                    <h2 style={titleStyles}>$90</h2>
-                    <h3 style={descriptionStyles}>user/month</h3>
+                    <StyledTitle>$90</StyledTitle>
+                    <StyledDescription>user/month</StyledDescription>
                 </VisualPickerOption>
             </VisualPicker>
         );
@@ -219,9 +237,9 @@ class SimpleVisualPickerWithFooter extends React.Component {
 }
 
 <div className="rainbow-align-content_center rainbow-m-around_xx-large rainbow-flex_column">
-    <h1 style={headerStyles} className="rainbow-m-bottom_medium">
+    <StyledHeader className="rainbow-m-bottom_medium">
         Select plan
-    </h1>
+    </StyledHeader>
     <SimpleVisualPickerWithFooter />
 </div>
 ```

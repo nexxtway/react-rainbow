@@ -3,12 +3,16 @@
 ```js
 import React from 'react';
 import { VerticalNavigation, VerticalSection, VerticalItem } from 'react-rainbow-components';
+import styled from 'styled-components';
 
-const verticalNavigationContainerStyles = {
-    width: '220px',
-    borderBottomLeftRadius: '0.875rem',
-    borderRight: '1px solid #e3e5ed',
-};
+const StyledContainer = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    width: 220px;
+    background: ${props => props.background.main};
+    border-bottom-left-radius: 0.875rem;
+    border-right: 1px solid ${props => props.border.divider};
+`;
 
 class SimpleVerticalNavigation extends React.Component {
     constructor(props) {
@@ -43,12 +47,9 @@ class SimpleVerticalNavigation extends React.Component {
 
 <div>
     <GlobalHeader src="images/user/user3.jpg" />
-    <div
-        className="rainbow-background-color_white rainbow-p-top_small rainbow-p-bottom_medium"
-        style={verticalNavigationContainerStyles}
-    >
+    <StyledContainer className="rainbow-p-top_small rainbow-p-bottom_medium">
         <SimpleVerticalNavigation />
-    </div>
+    </StyledContainer>
 </div>
 ```
 
@@ -57,12 +58,16 @@ class SimpleVerticalNavigation extends React.Component {
 ```js
 import React from 'react';
 import { VerticalNavigation, VerticalSection, VerticalItem } from 'react-rainbow-components';
+import styled from 'styled-components';
 
-const verticalNavigationContainerStyles = {
-    width: '220px',
-    borderBottomLeftRadius: '0.875rem',
-    borderRight: '1px solid #e3e5ed',
-};
+const StyledContainer = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    width: 220px;
+    background: ${props => props.background.main};
+    border-bottom-left-radius: 0.875rem;
+    border-right: 1px solid ${props => props.border.divider};
+`;
 
 class CompactVerticalNavigation extends React.Component {
     constructor(props) {
@@ -111,12 +116,9 @@ class CompactVerticalNavigation extends React.Component {
 
 <div>
     <GlobalHeader src="images/user/user2.jpg" />
-    <div
-        className="rainbow-background-color_white rainbow-p-top_small rainbow-p-vertical_medium"
-        style={verticalNavigationContainerStyles}
-    >
+    <StyledContainer className="rainbow-p-top_small rainbow-p-vertical_medium">
         <CompactVerticalNavigation />
-    </div>
+    </StyledContainer>
 </div>
 ```
 
@@ -125,12 +127,16 @@ class CompactVerticalNavigation extends React.Component {
 ```js
 import React from 'react';
 import { VerticalNavigation, VerticalSection, VerticalItem } from 'react-rainbow-components';
+import styled from 'styled-components';
 
-const verticalNavigationContainerStyles = {
-    width: '220px',
-    borderBottomLeftRadius: '0.875rem',
-    borderRight: '1px solid #e3e5ed',
-};
+const StyledContainer = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    width: 220px;
+    background: ${props => props.background.main};
+    border-bottom-left-radius: 0.875rem;
+    border-right: 1px solid ${props => props.border.divider};
+`;
 
 class VerticalNavigationWithHeaders extends React.Component {
     constructor(props) {
@@ -167,12 +173,9 @@ class VerticalNavigationWithHeaders extends React.Component {
 
 <div>
     <GlobalHeader src="images/user/user3.jpg" />
-    <div
-        style={verticalNavigationContainerStyles}
-        className="rainbow-background-color_white rainbow-p-top_small rainbow-p-vertical_medium"
-    >
+    <StyledContainer className="rainbow-p-top_small rainbow-p-vertical_medium">
         <VerticalNavigationWithHeaders />
-    </div>
+    </StyledContainer>
 </div>
 ```
 
@@ -183,12 +186,16 @@ import React from 'react';
 import { VerticalNavigation, VerticalSection, VerticalItem } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faCog, faFolderOpen, faBook, faReceipt } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
 
-const verticalNavigationContainerStyles = {
-    width: '220px',
-    borderBottomLeftRadius: '0.875rem',
-    borderRight: '1px solid #e3e5ed',
-};
+const StyledContainer = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    width: 220px;
+    background: ${props => props.background.main};
+    border-bottom-left-radius: 0.875rem;
+    border-right: 1px solid ${props => props.border.divider};
+`;
 
 class VerticalNavigationWithIcons extends React.Component {
     constructor(props) {
@@ -243,12 +250,9 @@ class VerticalNavigationWithIcons extends React.Component {
 
 <div>
     <GlobalHeader />
-    <div
-        style={verticalNavigationContainerStyles}
-        className="rainbow-background-color_white rainbow-p-top_small rainbow-p-bottom_large"
-    >
+    <StyledContainer className="rainbow-p-top_small rainbow-p-bottom_large">
         <VerticalNavigationWithIcons />
-    </div>
+    </StyledContainer>
 </div>
 ```
 
@@ -259,12 +263,16 @@ import React from 'react';
 import { VerticalNavigation, VerticalSection, VerticalItem } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faCog, faFolderOpen, faBook, faReceipt } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
 
-const verticalNavigationContainerStyles = {
-    width: '220px',
-    borderBottomLeftRadius: '0.875rem',
-    borderRight: '1px solid #e3e5ed',
-};
+const StyledContainer = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    width: 220px;
+    background: ${props => props.background.main};
+    border-bottom-left-radius: 0.875rem;
+    border-right: 1px solid ${props => props.border.divider};
+`;
 
 class VerticalNavigationWithIcons extends React.Component {
     constructor(props) {
@@ -322,12 +330,9 @@ class VerticalNavigationWithIcons extends React.Component {
 
 <div>
     <GlobalHeader src="images/user/user2.jpg" />
-    <div
-        style={verticalNavigationContainerStyles}
-        className="rainbow-background-color_white rainbow-p-vertical_medium rainbow-p-top_small"
-    >
+    <StyledContainer className="rainbow-p-vertical_medium rainbow-p-top_small">
         <VerticalNavigationWithIcons />
-    </div>
+    </StyledContainer>
 </div>
 ```
 
@@ -342,12 +347,16 @@ import {
 } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faTh, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
 
-const containerStyles = {
-    width: '220px',
-    borderBottomLeftRadius: '0.875rem',
-    borderRight: '1px solid #e3e5ed',
-};
+const StyledContainer = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    width: 220px;
+    background: ${props => props.background.main};
+    border-bottom-left-radius: 0.875rem;
+    border-right: 1px solid ${props => props.border.divider};
+`;
 
 class ShadedVerticalNavigation extends React.Component {
     constructor(props) {
@@ -402,12 +411,9 @@ class ShadedVerticalNavigation extends React.Component {
 
 <div>
     <GlobalHeader />
-    <div
-        className="rainbow-background-color_white rainbow-p-top_small rainbow-p-bottom_x-large"
-        style={containerStyles}
-    >
+    <StyledContainer className="rainbow-p-top_small rainbow-p-bottom_x-large">
         <ShadedVerticalNavigation />
-    </div>
+    </StyledContainer>
 </div>
 ```
 
@@ -416,12 +422,16 @@ class ShadedVerticalNavigation extends React.Component {
 ```js
 import React from 'react';
 import { VerticalNavigation, VerticalSection, VerticalItem, Badge } from 'react-rainbow-components';
+import styled from 'styled-components';
 
-const containerStyles = {
-    width: '220px',
-    borderBottomLeftRadius: '0.875rem',
-    borderRight: '1px solid #e3e5ed',
-};
+const StyledContainer = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    width: 220px;
+    background: ${props => props.background.main};
+    border-bottom-left-radius: 0.875rem;
+    border-right: 1px solid ${props => props.border.divider};
+`;
 
 class VerticalNavigationWithNotifications extends React.Component {
     constructor(props) {
@@ -465,12 +475,9 @@ class VerticalNavigationWithNotifications extends React.Component {
 
 <div>
     <GlobalHeader src="images/user/user3.jpg" />
-    <div
-        className="rainbow-background-color_white rainbow-p-top_small rainbow-p-bottom_x-large"
-        style={containerStyles}
-    >
+    <StyledContainer className="rainbow-p-top_small rainbow-p-bottom_x-large">
         <VerticalNavigationWithNotifications />
-    </div>
+    </StyledContainer>
 </div>
 ```
 
@@ -479,12 +486,16 @@ class VerticalNavigationWithNotifications extends React.Component {
 ```js
 import React from 'react';
 import { VerticalNavigation, VerticalSection, VerticalItem } from 'react-rainbow-components';
+import styled from 'styled-components';
 
-const verticalNavigationContainerStyles = {
-    width: '220px',
-    borderBottomLeftRadius: '0.875rem',
-    borderRight: '1px solid #e3e5ed',
-};
+const StyledContainer = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    width: 220px;
+    background: ${props => props.background.main};
+    border-bottom-left-radius: 0.875rem;
+    border-right: 1px solid ${props => props.border.divider};
+`;
 
 class SimpleVerticalNavigation extends React.Component {
     constructor(props) {
@@ -520,11 +531,8 @@ class SimpleVerticalNavigation extends React.Component {
 
 <div>
     <GlobalHeader src="images/user/user3.jpg" />
-    <div
-        className="rainbow-background-color_white rainbow-p-top_small rainbow-p-bottom_medium"
-        style={verticalNavigationContainerStyles}
-    >
+    <StyledContainer className="rainbow-p-top_small rainbow-p-bottom_medium">
         <SimpleVerticalNavigation />
-    </div>
+    </StyledContainer>
 </div>
 ```
