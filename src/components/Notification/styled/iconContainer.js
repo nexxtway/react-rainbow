@@ -1,23 +1,9 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 import { MARGIN_SMALL } from '../../../styles/margins';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
-import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledIconContainer = styled.div.attrs(props => {
-    const theme = getTheme(props);
-    const { brand, success, error, warning } = theme.palette;
-    const brandMainColor = brand.main;
-    const successMainColor = success.main;
-    const errorMainColor = error.main;
-    const warningMainColor = warning.main;
-
-    return {
-        brandMainColor,
-        successMainColor,
-        errorMainColor,
-        warningMainColor,
-    };
-})`
+const StyledIconContainer = attachThemeAttrs(styled.div)`
     margin-right: ${MARGIN_SMALL};
     flex-shrink: 0;
     ${props =>
@@ -30,7 +16,7 @@ const StyledIconContainer = styled.div.attrs(props => {
             height: 2rem;
             border-radius: ${BORDER_RADIUS_2};
             margin-right: ${MARGIN_SMALL};
-            background-color: ${props.brandMainColor};
+            background-color: ${props.palette.brand.main};
         `};
     ${props =>
         props.icon === 'success' &&
@@ -42,7 +28,7 @@ const StyledIconContainer = styled.div.attrs(props => {
             height: 2rem;
             border-radius: ${BORDER_RADIUS_2};
             margin-right: ${MARGIN_SMALL};
-            background-color: ${props.successMainColor};
+            background-color: ${props.palette.success.main};
         `};
     ${props =>
         props.icon === 'error' &&
@@ -54,7 +40,7 @@ const StyledIconContainer = styled.div.attrs(props => {
             height: 2rem;
             border-radius: ${BORDER_RADIUS_2};
             margin-right: ${MARGIN_SMALL};
-            background-color: ${props.errorMainColor};
+            background-color: ${props.palette.error.main};
         `};
     ${props =>
         props.icon === 'warning' &&
@@ -66,7 +52,7 @@ const StyledIconContainer = styled.div.attrs(props => {
             height: 2rem;
             border-radius: ${BORDER_RADIUS_2};
             margin-right: ${MARGIN_SMALL};
-            background-color: ${props.warningMainColor};
+            background-color: ${props.palette.warning.main};
         `};
 `;
 

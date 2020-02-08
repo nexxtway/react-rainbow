@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_4 } from '../../../../styles/colors';
+import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttr';
 
-const StyledDescription = styled.span`
+const StyledDescription = attachThemeAttrs(styled.span)`
     font-size: 10px;
     font-weight: normal;
-    color: ${COLOR_GRAY_4};
+    color: ${props => props.palette.text.label};
     letter-spacing: 0.5px;
 `;
 
