@@ -117,5 +117,4 @@ VisualPickerOption.defaultProps = {
     className: undefined,
     style: undefined,
     children: [],
-    ariaDescribedby: undefined,
 };

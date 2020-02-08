@@ -1,23 +1,9 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
-import {
-    COLOR_WHITE,
-    COLOR_GRAY_2,
-    COLOR_GRAY_4,
-    COLOR_GRAY_1,
-    COLOR_DARK_1,
-} from '../../../styles/colors';
 import { FONT_SIZE_TEXT_LARGE, FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
-import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledButton = styled.button.attrs(props => {
-    const theme = getTheme(props);
-
-    return {
-        // TODO: move up to defaultTheme or normalizeTheme
-        brandShadow: `0 0 2px ${theme.palette.brand.main}`,
-    };
-})`
+const StyledButton = attachThemeAttrs(styled.button)`
     font: inherit;
     padding: 0;
     transition: color 0.1s linear;
@@ -31,9 +17,9 @@ const StyledButton = styled.button.attrs(props => {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: ${COLOR_WHITE};
-    border: 1px solid ${COLOR_GRAY_2};
-    color: ${COLOR_GRAY_4};
+    background-color: ${props => props.palette.background.main};
+    border: 1px solid ${props => props.palette.border.divider};
+    color: ${props => props.palette.text.label};
     outline: none;
     margin: 0;
     overflow: visible;
@@ -43,14 +29,14 @@ const StyledButton = styled.button.attrs(props => {
 
     :focus,
     :active {
-        box-shadow: ${props => props.brandShadow};
-        background-color: ${COLOR_WHITE};
+        box-shadow: ${props => props.shadows.brand};
+        background-color: ${props => props.palette.background.main};
         outline: none;
     }
 
     :hover {
-        color: ${COLOR_GRAY_4};
-        background-color: ${COLOR_GRAY_1};
+        color: ${props => props.palette.text.label};
+        background-color: ${props => props.palette.action.hover};
         text-decoration: none;
         outline: 0;
     }
@@ -60,8 +46,8 @@ const StyledButton = styled.button.attrs(props => {
     &:visited {
         font-size: ${FONT_SIZE_TEXT_LARGE};
         text-decoration: none;
-        color: ${COLOR_DARK_1};
-        background-color: ${COLOR_GRAY_2};
+        color: ${props => props.palette.text.main};
+        background-color: ${props => props.palette.background.highlight};
         z-index: 100;
         outline: 0;
     }
@@ -71,13 +57,13 @@ const StyledButton = styled.button.attrs(props => {
         `
             font-size: ${FONT_SIZE_TEXT_LARGE};
             line-height: 0;
-            color: ${COLOR_DARK_1};
-            background-color: ${COLOR_GRAY_2};
+            color: ${props.palette.text.main};
+            background-color: ${props.palette.background.highlight};
             z-index: 100;
 
             :hover {
-                background-color: ${COLOR_GRAY_2};
-                color: ${COLOR_DARK_1};
+                background-color: ${props.palette.action.hover};
+                color: ${props.palette.text.main};
             }
         `};
     ${props =>
@@ -99,7 +85,7 @@ const StyledButton = styled.button.attrs(props => {
             }
 
             > svg {
-                fill: ${COLOR_GRAY_2};
+                fill: ${props.palette.background.highlight};
         `};
 `;
 
