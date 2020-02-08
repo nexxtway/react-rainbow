@@ -1,7 +1,7 @@
 /* eslint-disable indent */
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
-import { COLOR_WHITE, COLOR_GRAY_1, COLOR_GRAY_3, COLOR_GRAY_4 } from '../../../styles/colors';
+import { COLOR_WHITE, COLOR_GRAY_3, COLOR_GRAY_4 } from '../../../styles/colors';
 import { FONT_SIZE_HEADING_SMALL } from '../../../styles/fontSizes';
 
 const StyledButton = attachThemeAttrs(styled.button)`
@@ -113,7 +113,9 @@ const StyledButton = attachThemeAttrs(styled.button)`
             }
 
             &[disabled] {
-                background-color: ${props.isLoading ? props.palette.brand.main : COLOR_GRAY_1};
+                background-color: ${
+                    props.isLoading ? props.palette.brand.main : props.palette.background.disabled
+                };
                 border-color: ${
                     props.isLoading ? props.palette.brand.main : props.palette.border.divider
                 };
@@ -223,8 +225,12 @@ const StyledButton = attachThemeAttrs(styled.button)`
             }
         
             &[disabled] {
-                background-color: ${props.isLoading ? props.palette.error.main : COLOR_GRAY_1};
-                border-color: ${props.isLoading ? props.palette.error.main : COLOR_GRAY_1};
+                background-color: ${
+                    props.isLoading ? props.palette.error.main : props.palette.background.disabled
+                };
+                border-color: ${
+                    props.isLoading ? props.palette.error.main : props.palette.background.disabled
+                };
                 color: ${props.palette.text.disabled};
             }
         `
@@ -259,8 +265,12 @@ const StyledButton = attachThemeAttrs(styled.button)`
             }
         
             &[disabled] {
-                background-color: ${props.isLoading ? props.palette.success.main : COLOR_GRAY_1};
-                border-color: ${props.isLoading ? props.palette.success.main : COLOR_GRAY_1};
+                background-color: ${
+                    props.isLoading ? props.palette.success.main : props.palette.background.disabled
+                };
+                border-color: ${
+                    props.isLoading ? props.palette.success.main : props.palette.background.disabled
+                };
                 color: ${props.palette.text.disabled};
             }
         `
