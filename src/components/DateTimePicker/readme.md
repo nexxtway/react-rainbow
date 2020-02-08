@@ -118,6 +118,49 @@ initialState = { value: new Date() };
 </div>
 ```
 
+##### DateTimePicker with different time formats:
+
+```js
+import React from 'react';
+import { DateTimePicker } from 'react-rainbow-components';
+
+const inputStyles = {
+    maxWidth: 320,
+};
+
+initialState = { value: new Date('2019-10-25 18:44') };
+
+<div className="rainbow-align-content_center rainbow-m-vertical_large rainbow-flex_wrap">
+    <DateTimePicker
+        formatStyle="small"
+        value={state.value}
+        label="DateTimePicker Label"
+        onChange={value => setState({ value })}
+        className="rainbow-m-around_small"
+        style={inputStyles}
+        hour24
+    />
+    <DateTimePicker
+        formatStyle="medium"
+        value={state.value}
+        label="DateTimePicker Label"
+        onChange={value => setState({ value })}
+        className="rainbow-m-around_small"
+        style={inputStyles}
+        hour24
+    />
+    <DateTimePicker
+        formatStyle="large"
+        value={state.value}
+        label="DateTimePicker Label"
+        onChange={value => setState({ value })}
+        className="rainbow-m-around_small"
+        style={inputStyles}
+        hour24
+    />
+</div>
+```
+
 ##### DateTimePicker required:
 
 ```js
