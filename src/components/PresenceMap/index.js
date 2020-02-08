@@ -37,14 +37,14 @@ PresenceMap.propTypes = {
      * where zoom 0 corresponds to a map of the Earth fully zoomed out,
      * and larger zoom levels zoom in at a higher resolution.
      * Specify zoom level as an integer. This value defaults to 8. */
-    zoom: PropTypes.oneOf([PropTypes.number, 'auto']),
+    zoom: PropTypes.oneOfType([PropTypes.number, PropTypes.oneOf(['auto'])]),
     /** Map center point  */
-    center: PropTypes.oneOf([
+    center: PropTypes.oneOfType([
         PropTypes.shape({
             lat: PropTypes.number,
             lng: PropTypes.number,
         }),
-        'auto',
+        PropTypes.oneOf(['auto']),
     ]),
     /** Option to show traffic in map */
     showTraffic: PropTypes.bool,

@@ -49,54 +49,48 @@ const Icon = styled(FontAwesomeIcon)`
     margin-top: 20%;
 `;
 
+const objects = [
+    {
+        position: {
+            lat: -33.836538,
+            lng: 151.1279,
+        },
+        image: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+        heading: 270,
+    },
+    {
+        position: {
+            lat: -33.850538,
+            lng: 151.279,
+        },
+        image: "http://chart.googleapis.com/chart?chst=d_map_pin_letter&chld=xxx%7c5680FC%7c000000&.png",
+        heading: 90,
+    },
+    {
+        position: {
+            lat: -33.860538,
+            lng: 151.1479,
+        },
+        image: "http://chart.googleapis.com/chart?chst=d_map_pin_letter&chld=xxx%7c5680FC%7c000000&.png",
+        onClick: () => alert('ddsadsa'),
+    },
+];
+
+function geoError() {
+    alert("Sorry, no position available.");
+};
+
+const geoOptions = {
+    enableHighAccuracy: true,
+    maximumAge: 30000,
+    timeout: 27000,
+};
+
 const PresenceMapExample = () => {
     const [showTrafficState, setShowTraffic] = useState(false);
     const [showTransitState, setShowTransit] = useState(false);
-    const [zoomState, setZoom] = useState('auto');
     const [centerState, setCenter] = useState('auto');
     const [mapTypeState, setMapType] = useState({ name: 'roadmap', label: 'ROADMAP' });
-
-    const objects = [
-        {
-            position: {
-                lat: -33.836538,
-                lng: 151.1279,
-            },
-            image: "http://chart.googleapis.com/chart?chst=d_map_pin_letter&chld=xxx%7c5680FC%7c000000&.png",
-            heading: 270,
-        },
-        {
-            position: {
-                lat: -34.840538,
-                lng: 150.1279,
-            },
-            image: "http://chart.googleapis.com/chart?chst=d_map_pin_letter&chld=xxx%7c5680FC%7c000000&.png",
-            heading: 90,
-        },
-        {
-            position: {
-                lat: -35.850538,
-                lng: 151.1279,
-            },
-            image: "http://chart.googleapis.com/chart?chst=d_map_pin_letter&chld=xxx%7c5680FC%7c000000&.png",
-        },
-    ];
-
-    useEffect(() => {
-        setShowTraffic(showTrafficState);
-    }, [showTrafficState]);
-
-    useEffect(() => {
-        setShowTransit(showTransitState);
-    }, [showTransitState]);
-
-    useEffect(() => {
-        setZoom(zoomState);
-    }, [zoomState]);
-
-    useEffect(() => {
-        setCenter(centerState);
-    }, [centerState]);
 
     const handleShowTraffic = () => {
         setShowTraffic(!showTrafficState);
@@ -107,24 +101,14 @@ const PresenceMapExample = () => {
     };
 
     const handleCenterGeolocation = () => {
-        const geo_success = position => {
+        const geoSuccess = position => {
             setCenter({
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             });
         };
 
-        const geo_error = () => {
-            alert("Sorry, no position available.");
-        };
-
-        const geo_options = {
-            enableHighAccuracy: true, 
-            maximumAge: 30000, 
-            timeout: 27000,
-        };
-
-        navigator.geolocation.getCurrentPosition(geo_success, geo_error, geo_options);
+        navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
     };
 
     const handleMapStyle = value => {
@@ -137,14 +121,14 @@ const PresenceMapExample = () => {
             objects={objects}
             showTraffic={showTrafficState}
             showTransit={showTransitState}
-            zoom={zoomState}
+            zoom="auto"
             center={centerState}
             type={mapTypeState.name}
         >
             <MenuControl
                 id="picklist-mapstyle-1"
                 style={{ float: "right" }}
-                onChange={value => handleMapStyle(value)}
+                onChange={handleMapStyle}
                 value={mapTypeState}
                 label=""
                 hideLabel

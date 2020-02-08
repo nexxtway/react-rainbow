@@ -2,22 +2,15 @@ import { ReactNode } from 'react';
 import { BaseProps } from '../types';
 
 export interface IPosition {
-    lat: number;
-    lng: number;
+    lat?: number;
+    lng?: number;
 }
 
 export interface MapObject {
-    position: IPosition;
+    position?: IPosition;
     heading?: number;
     image?: string;
     onClick?: (event: MouseEvent<HTMLElement>) => void;
-}
-
-export interface MapControl {
-    position?: string;
-    title?: string;
-    text?: string;
-    action?: string;
 }
 
 export interface PresenceMapProps extends BaseProps {
@@ -27,7 +20,7 @@ export interface PresenceMapProps extends BaseProps {
     center?: IPosition | 'auto';
     showTraffic?: boolean;
     showTransit?: boolean;
-    controls?: MapControl[];
+    children?: ReactNode;
     type?: string;
 }
 
