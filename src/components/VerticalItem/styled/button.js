@@ -1,13 +1,8 @@
 import styled from 'styled-components';
-import {
-    COLOR_GRAY_4,
-    COLOR_GRAY_1,
-    COLOR_GRAY_TRANSPARENT_1,
-    COLOR_DARK_1,
-} from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 
-const StyledAnchor = styled.button`
+const StyledAnchor = attachThemeAttrs(styled.button)`
     border: none;
     outline: 0;
     display: flex;
@@ -15,7 +10,7 @@ const StyledAnchor = styled.button`
     width: 100%;
     padding: 1rem 1rem 1rem 3rem;
     border-radius: 0;
-    color: ${COLOR_GRAY_4};
+    color: ${props => props.palette.text.label};
     cursor: pointer;
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
     background-color: transparent;
@@ -26,7 +21,7 @@ const StyledAnchor = styled.button`
     :hover,
     :focus,
     :active {
-        color: ${COLOR_DARK_1};
+        color: ${props => props.palette.text.main};
         text-decoration: none;
         outline: 0;
     }
@@ -34,18 +29,18 @@ const StyledAnchor = styled.button`
     :focus,
     :active {
         font-family: 'Lato Black', Arial, sans-serif;
-        background-color: ${COLOR_GRAY_1};
+        background-color: ${props => props.palette.action.active};
     }
 
     :hover {
-        background-color: ${COLOR_GRAY_TRANSPARENT_1};
+        background-color: ${props => props.palette.action.hover};
     }
 
     ${props =>
         props.isSelected &&
         `
-            color: ${COLOR_DARK_1};
-            background-color: ${COLOR_GRAY_1};
+            color: ${props.palette.text.main};
+            background-color: ${props.palette.action.active};
             font-family: 'Lato Black', Arial, sans-serif;
         `};
 `;
