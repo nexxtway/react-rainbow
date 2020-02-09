@@ -29,6 +29,8 @@ import SettingsIcon from './exampleComponents/Icons/settings';
 import CompanyIcon from './exampleComponents/Icons/company';
 import AdvancedSettingsIcon from './exampleComponents/Icons/advanced-settings';
 import Users from './data/users';
+import GitHubIcon from './exampleComponents/Icons/gitHub';
+import LinkedinIcon from './exampleComponents/Icons/linkedin';
 
 global.GlobalHeader = GlobalHeader;
 global.CodeEditor = CodeEditor;
@@ -63,3 +65,5 @@ global.SettingsIcon = SettingsIcon;
 global.CompanyIcon = CompanyIcon;
 global.AdvancedSettingsIcon = AdvancedSettingsIcon;
 global.Users = Users;
+global.GitHubIcon = GitHubIcon;
+global.LinkedinIcon = LinkedinIcon;
