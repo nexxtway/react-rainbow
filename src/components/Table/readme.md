@@ -815,7 +815,20 @@ const Subtitle = styled.h3.attrs(props => props.theme.rainbow)`
     color: ${props => props.palette.text.title};
 `;
 
-const ProfileLink = ({value, row}) => <a href={row.link}>{ value }</a>;
+const StyledLink = styled.a.attrs(props => props.theme.rainbow)`
+    color: ${props => props.palette.brand.main}
+    &:hover {
+        color: ${props => props.palette.brand.main};
+    }
+    &:visited {
+        color: ${props => props.palette.brand.main};
+    }
+    &:active {
+        color: ${props => props.palette.brand.main};
+    }
+`;
+
+const ProfileLink = ({value, row}) => <StyledLink href={row.link}>{ value }</StyledLink>;
 
 function TableExample (props) {
     const [ data, setData ] = useState(props.data);
