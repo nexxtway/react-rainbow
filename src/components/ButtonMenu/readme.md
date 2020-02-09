@@ -482,37 +482,40 @@ const Label = styled.span.attrs(props => props.theme.rainbow)`
     font-family: Lato Bold;
     font-size: 24px;
     line-height: 24px;
-    color: ${props => props.blue? props.palette.brand.main : props.palette.text.main};
+    color: ${props => props.isBrand? props.palette.brand.main : props.palette.text.main};
     text-transform: uppercase;
 `;
 
 const Description = styled.span.attrs(props => props.theme.rainbow)`
     font-family: Lato;
     font-size: 14px;
-    color: ${props => props.palette.text.disabled};
+    color: ${props => props.palette.text.label};
 `;
 
 const ColumnContainer = styled.div.attrs(props => props.theme.rainbow)`
     min-height: 92px;
-    border-left: ${props => props.noBorder? "0":"1"}px solid ${props => props.palette.text.disabled};
-    ${props => !!props.flex ? 'flex: ' + props.flex + ';' :(props.noBorder? "width: 49%;":"width: 17%;")}
+    ${props => props.hasBorder && `border-left: 1px dashed ${props.palette.background.disabled};`}
+    ${props => (props.width || props.width === 0) && `width: ${props.width};`}
+    ${props => (props.flex || props.flex === 0) && `flex: ${props.flex};`}
     @media (max-width: 700px) {
         border-left: none;
         width: 100%;
+        ${props => props.hasBorder && `border-top: 1px dashed ${props.palette.background.disabled};`}
     }
 `;
 
 const Column = props => {
-    const { label, description, specialColor, noBorder, children, flex } = props;
+    const { label, description, isBrand, hasBorder, children, flex, width } = props;
 
     return (
         <ColumnContainer
             className="rainbow-flex rainbow-flex_column rainbow-justify_center rainbow-align_center"
-            noBorder={!!noBorder}
+            hasBorder={ hasBorder }
             flex={flex}
+            width={width}
         >
             {children}
-            <Label blue={!!specialColor}>
+            <Label isBrand={isBrand}>
                 {label}
             </Label>
             <Description>
@@ -524,35 +527,35 @@ const Column = props => {
 
 const RowContainer = styled.div`
     min-height: 92px;
-    width: 49%;
+    ${props => (props.width || props.width === 0) && `width: ${props.width};`}
     @media (max-width: 700px) {
         width: 100%;
     }
 `;
 
 const Row = props => {
-    const { children } = props;
+    const { children, width } = props;
     return (
-        <RowContainer className="rainbow-flex rainbow-justify_space-around">
+        <RowContainer className="rainbow-flex rainbow-justify_space-around" width={width}>
             {children}
         </RowContainer>
     );
 };
 
 const Point = styled.span.attrs(props => props.theme.rainbow)`
-    height: 10px;
-    width: 10px;
+    height: 8px;
+    width: 8px;
     background-color: ${props => props.palette.brand.main};
-    border-radius: 50%;
-    display: inline-block;
+    border-radius: 100px;
+    padding: 3px;
 `;
 
 const Line = styled.hr.attrs(props => props.theme.rainbow)`
-    border: 1px solid ${props => props.palette.brand.main};
+    border-bottom: 1px solid ${props => props.palette.brand.main};
     background-color: ${props => props.palette.brand.main};
     width: 98%;
-    padding: 0;
-    margin: 0;
+    margin-left: -2px;
+    margin-right: -2px;
 `;
 
 const SegmentContainer = styled.div`
@@ -570,33 +573,34 @@ const Segment = props => {
     );
 }
 
-function getdDateDiference ( dateIni, dateEnd ) {
-    var dateIni_ms = dateIni.getTime();
-    var dateEnd_ms = dateEnd.getTime();
-    var difference_ms = dateEnd_ms - dateIni_ms;
-    difference_ms = difference_ms/1000/60; 
-    const minutes = Math.floor(difference_ms % 60);
-    difference_ms = difference_ms/60; 
-    const hours = Math.floor(difference_ms);
+const getDateDiference = ( startDate, endDate ) => {
+    const startDateInMs = startDate.getTime();
+    const endDateInMs = endDate.getTime();
+    var differenceInMs = endDateInMs - startDateInMs;
+    differenceInMs = differenceInMs/1000/60; 
+    const minutes = Math.floor(differenceInMs % 60);
+    differenceInMs = differenceInMs/60; 
+    const hours = Math.floor(differenceInMs);
     
-    return (hours<10?'0':'')+hours+'hr ' + minutes + 'min';
+    return `${ hours<10 && 0}${hours}hr ${minutes}min`;
 }
 
-function getFormatedTime(date) {
-    const rawHours  = date.getHours();
-    let h = rawHours > 12 ? rawHours%12 : (rawHours===0 ? 12 : rawHours);
-    h = h<10?'0'+h:h;
-    const m = date.getMinutes();
-    const format = rawHours>=12?'PM':'AM';
-    return `${h}:${m} ${format}`;
+const getFormatedTime = ( date ) => {
+    return date.toLocaleString('en-US', {
+        hour12: true,
+        hour: "2-digit",
+        minute: "2-digit",
+    });
 }
 
-function getMonth(date) {
-    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    return months[date.getMonth()];
+const getFormatedDate = ( date ) => {
+    return date.toLocaleString('en-US', {      
+        month: 'long',
+        day: '2-digit',
+    });
 }
 
-function FlightCard( props ) {
+const FlightCard = ( props ) => {
     const { 
         departureDate,
         arrivalDate,
@@ -612,21 +616,19 @@ function FlightCard( props ) {
     return (
         <div className="rainbow-m-top_small">
             <CardSubtitle>
-                Departure flight: { origin } - { destination } • {getMonth(departureDate)} {departureDate.getDate()}
+                Departure flight: { origin } - { destination } • { getFormatedDate(departureDate) }
             </CardSubtitle>
             <Card>
                 <div className="rainbow-flex rainbow-flex_wrap">
-                    <Row>
+                    <Row width="49%">
                         <Column
                             flex="1"
                             label={originAbbreviation}
                             description={getFormatedTime(departureDate)}
-                            noBorder
                         />
                         <Column
                             flex="1.3"
-                            noBorder
-                            description={getdDateDiference(departureDate, arrivalDate)}
+                            description={getDateDiference(departureDate, arrivalDate)}
                         >
                             <Segment />
                         </Column>
@@ -634,12 +636,11 @@ function FlightCard( props ) {
                             flex="1"
                             label={destinationAbbreviation}
                             description={getFormatedTime(arrivalDate)}
-                            noBorder
                         />
                     </Row>
-                    <Column label={airline} description="Airline" specialColor />
-                    <Column label={flightNumber} description="Flight No" />
-                    <Column label={'$'+price} description="Total" />
+                    <Column label={airline} description="Airline" isBrand hasBorder width="17%" />
+                    <Column label={flightNumber} description="Flight No" hasBorder width="17%" />
+                    <Column label={`$${price}`} description="Total" hasBorder width="17%" />
                 </div>
             </Card>
         </div>   
