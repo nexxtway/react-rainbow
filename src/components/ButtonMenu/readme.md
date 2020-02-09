@@ -489,7 +489,7 @@ const Label = styled.span.attrs(props => props.theme.rainbow)`
 const Description = styled.span.attrs(props => props.theme.rainbow)`
     font-family: Lato;
     font-size: 14px;
-    color: ${props => props.palette.text.label};
+    color: ${props => props.palette.text.header};
 `;
 
 const ColumnContainer = styled.div.attrs(props => props.theme.rainbow)`
@@ -577,11 +577,11 @@ const getDateDiference = ( startDate, endDate ) => {
     const startDateInMs = startDate.getTime();
     const endDateInMs = endDate.getTime();
     var differenceInMs = endDateInMs - startDateInMs;
-    differenceInMs = differenceInMs/1000/60; 
+    differenceInMs = differenceInMs/1000/60;
     const minutes = Math.floor(differenceInMs % 60);
-    differenceInMs = differenceInMs/60; 
+    differenceInMs = differenceInMs/60;
     const hours = Math.floor(differenceInMs);
-    
+
     return `${ hours<10 && 0}${hours}hr ${minutes}min`;
 }
 
@@ -594,7 +594,7 @@ const getFormatedTime = ( date ) => {
 }
 
 const getFormatedDate = ( date ) => {
-    return date.toLocaleString('en-US', {      
+    return date.toLocaleString('en-US', {
         month: 'long',
         day: '2-digit',
     });
@@ -643,7 +643,7 @@ const FlightCard = ( props ) => {
                     <Column label={`$${price}`} description="Total" hasBorder width="17%" />
                 </div>
             </Card>
-        </div>   
+        </div>
     )
 }
 
