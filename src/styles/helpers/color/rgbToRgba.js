@@ -1,4 +1,4 @@
-export default function rgbToRgba(color, alpha = 0.5) {
+export default function rgbToRgba(color, alpha = 1) {
     if (color.substring(0, 3) !== 'rgb') {
         return '';
     }

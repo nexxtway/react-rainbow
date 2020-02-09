@@ -3,12 +3,16 @@
 ```js
 import React from 'react';
 import { VerticalNavigation, VerticalSection, VerticalItem } from 'react-rainbow-components';
+import styled from 'styled-components';
 
-const containerStyles = {
-    width: '220px',
-    borderBottomLeftRadius: '0.875rem',
-    borderRight: '1px solid #e3e5ed',
-};
+const StyledContainer = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    width: 220px;
+    background: ${props => props.background.main};
+    border-bottom-left-radius: 0.875rem;
+    border-right: 1px solid ${props => props.border.divider};
+`;
 
 class SimpleVerticalNavigation extends React.Component {
     constructor(props) {
@@ -56,11 +60,8 @@ class SimpleVerticalNavigation extends React.Component {
 
 <div>
     <GlobalHeader src="images/user/user3.jpg" />
-    <div
-        className="rainbow-background-color_white rainbow-p-vertical_small"
-        style={containerStyles}
-    >
+    <StyledContainer className="rainbow-p-vertical_small">
         <SimpleVerticalNavigation />
-    </div>
+    </StyledContainer>
 </div>
 ```
