@@ -1,13 +1,13 @@
 import styled from 'styled-components';
-import { COLOR_WHITE, COLOR_GRAY_2 } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledOptionsMenu = styled.div`
+const StyledOptionsMenu = attachThemeAttrs(styled.div)`
     position: absolute;
     width: 100%;
     border-radius: 12px;
-    background-color: ${COLOR_WHITE};
-    box-shadow: 0 2px 4px 0 ${COLOR_GRAY_2};
-    border: solid 1px ${COLOR_GRAY_2};
+    background-color: ${props => props.palette.background.main};
+    box-shadow: ${props => props.shadows.shadow_2};
+    border: solid 1px ${props => props.palette.border.divider};
     overflow: hidden;
     margin-top: 0.2rem;
     z-index: 2000;

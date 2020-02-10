@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { COLOR_ERROR } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledInputIcon = styled.span`
+const StyledInputIcon = attachThemeAttrs(styled.span)`
     height: 100%;
     width: 22px;
     position: absolute;
@@ -27,8 +27,8 @@ const StyledInputIcon = styled.span`
     ${props =>
         props.error &&
         `
-            fill: ${COLOR_ERROR};
-            color: ${COLOR_ERROR};
+            fill: ${props.palette.error.main};
+            color: ${props.palette.error.main};
         `};
 `;
 
