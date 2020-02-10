@@ -168,7 +168,7 @@ class CheckboxGroupTry extends React.Component {
 ##### Checkbox Group basic
 
 ```js
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import { CheckboxGroup } from 'react-rainbow-components';
 import styled from 'styled-components';
 
@@ -227,12 +227,8 @@ const defaultOptions = ['email'];
 
 
 const CheckBoxGroupProfile = () => {
-    const [values, setSelected] = useState([]);
+    const [values, setSelected] = useState(defaultOptions);
     
-    useEffect( () => {
-         setSelected(defaultOptions);   
-    }, []);
-
     return (
         <Container className="rainbow-p-around_x-large rainbow-p-bottom_xx-large">
             <Title>Profile</Title>
