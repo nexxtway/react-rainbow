@@ -218,8 +218,6 @@ const ProfileLeftCol = styled.div`
     }
 `;
 
-const ProfileRightCol = styled.div``;
-
 const options = [
     { value: 'push-notifications', label: 'Push Notifications', disabled: false },
     { value: 'email', label: 'Email', disabled: false },
@@ -261,15 +259,15 @@ const CheckBoxGroupProfile = () => {
 
                 </ProfileLeftCol>
 
-                <ProfileRightCol>
+                <div>
                     <CheckboxGroup
                         id="checkbox-group-2"
                         label="Checkbox Group Label"
                         options={options}
                         value={values}
-                        onChange={ (values) => setSelected(values) }
+                        onChange={setSelected}
                     />
-                </ProfileRightCol>
+                </div>
 
             </ProfileContainer>
         </Container>
