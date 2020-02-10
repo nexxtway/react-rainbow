@@ -1,12 +1,7 @@
-import attachThemeAttrs from '../attachThemeAttrs';
 import styled from 'styled-components';
+import attachThemeAttrs from '../attachThemeAttrs';
 
 describe('attachThemeAttrs', () => {
-    const rainbow = {
-        foo: 'foo',
-        bar: 'bar',
-    };
-
     jest.mock('../getTheme', rainbow => {
         const result = {
             theme: { rainbow },
@@ -14,10 +9,13 @@ describe('attachThemeAttrs', () => {
         };
         return result;
     });
+    const rainbow = {
+        foo: 'foo',
+        bar: 'bar',
+    };
     const styledElement = styled.p.attrs({ theme: { rainbow } });
-
-    it('should return a merged object with props and props.theme.rainbow', async done => {
-        attachThemeAttrs(styled.p).attrs(props => {
+    it('should return a merged object with props and props.theme.rainbow', done => {
+        attachThemeAttrs(styledElement).attrs(props => {
             expect(props.rainbow).toBe(rainbow);
             done();
         });
