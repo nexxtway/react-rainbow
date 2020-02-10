@@ -199,18 +199,8 @@ const SubTitle = styled.span.attrs(props => {
 `;
 
 const Content = styled.div`
-    > a { width: 100%; }
-
-    @media (min-width: 768px) {
-        > a:first-child > article { margin-left: 0; }
-        > a:last-child > article { margin-right: 0; }
-    }
-
     @media (max-width: 767px) {
         flex-direction: column;
-        > a {
-            max-width: 235px;
-        }       
     }
 `;
 
@@ -219,8 +209,18 @@ const SocialContent = styled.div`
 `;
 
 const SocialContentLink = styled.a`
+    width: 100%;
     text-decoration: none;
     &:hover, &:focus { text-decoration: none; }
+
+    :nth-child(2) {
+        margin-left: 10px;
+        margin-right: 10px; 
+    }
+        
+    @media (max-width: 767px) {
+        max-width: 235px;
+    }
 `;
 
 const SocialContentName = styled.span.attrs(props => {
@@ -257,6 +257,10 @@ const socials = [
     }
 ];
 
+const styles = {
+    socialCard: { marginLeft: 0, marginRight: 0 }
+};
+
 <div>
     <HeadingContent className="rainbow-p-vertical_large rainbow-align-content_space-between rainbow-m-horizontal_medium rainbow-flex">
         <div className="rainbow-m-bottom_medium">
@@ -282,10 +286,11 @@ const socials = [
     
     <Content className="rainbow-p-vertical_large rainbow-align-content_space-between rainbow-m-horizontal_medium rainbow-flex">
 
-        {socials.map( social => {
+        {socials.map( (social) => {
             return (
                 <SocialContentLink href={social.url} target="_blank">
-                    <Card className="rainbow-m-horizontal_medium rainbow-p-around_medium rainbow_vertical-stretch rainbow-m-bottom_medium">
+                    <Card className="rainbow-m-horizontal_medium rainbow-p-around_medium rainbow_vertical-stretch rainbow-m-bottom_medium"
+                        style={styles.socialCard}>
 
                         <SocialContent className="rainbow-inline-flex rainbow-align-content_space-between">
                             <div>
