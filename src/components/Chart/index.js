@@ -36,7 +36,7 @@ export default class Chart extends Component {
             datasets: this.datasets,
         };
 
-        if (this.chartInstance.config.type !== type) {
+        if (type && this.chartInstance.config && type !== this.chartInstance.config.type) {
             this.chartInstance.config.type = type;
         }
 
