@@ -16,16 +16,10 @@ describe('attachThemeAttrs', () => {
     });
     const styledElement = styled.p.attrs({ theme: { rainbow } });
 
-    it('should return a merged object with props and props.theme.rainbow', async () => {
-        expect.assertions(1);
-        await attachThemeAttrs(styledElement).attrs(props => {
-            console.log('pwpreweprpwer');
-            console.log(props);
-            expect(props).toEqual({
-                feoo: 12,
-                theme: { rainbow },
-                ...rainbow,
-            });
+    it('should return a merged object with props and props.theme.rainbow', async done => {
+        attachThemeAttrs(styled.p).attrs(props => {
+            expect(props.rainbow).toBe(rainbow);
+            done();
         });
     });
 });
