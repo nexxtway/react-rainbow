@@ -747,6 +747,12 @@ const data = {
     facebook: [30, 60, 68, 79, 100, 112, 100, 121, 130, 105, 145, 185]
 };
 
+const chartTypeMap = {
+    line: 'Lines',
+    horizontalBar: 'Horizontal Bar',
+    bar: 'Bar'
+};
+
 const CurrentChartType = styled.span.attrs(props => {
     return props.theme.rainbow.palette;
 })`
@@ -776,11 +782,7 @@ const InteractiveChart = () => {
                     </ChartHeading>
 
                     <CurrentChartType className="rainbow-flex rainbow-align-content_center rainbow-m-bottom_medium">
-                        { chartTypes.map( type => {
-                            if(type.value === chartType) {
-                                return type.label;
-                            }           
-                        })}         
+                        {chartTypeMap[chartType]}        
                     </CurrentChartType>            
         
                     <Chart labels={months} type={chartType} >
