@@ -376,7 +376,7 @@ const EmailLabel = styled.span.attrs(props => props.theme.rainbow)`
     display: block;
 `;
 
-const ConctactContainer = styled.div.attrs(props => props.theme.rainbow)`
+const ConctactContainer = styled.div`
     width: max-content;
 `;
 
@@ -407,16 +407,33 @@ const Contact = (props) => {
     );
 };
 
-const Contacts = ({data}) => {
-    const [showActive, setShowActive] = useState('active');
+const options = [
+    { value: 'active', label: 'Actives' },
+    { value: 'all', label: 'All' },
+];
 
-    const options = [
-        { value: 'active', label: 'Actives' },
-        { value: 'all', label: 'All' },
-    ];
+const ContactsFilteredContainer = (props) => {
+    const {statusToShow, data} = props;
+    return data.filter(contact => statusToShow === 'all' || contact.isActive).map((contact, i) => {
+        const key = `contact-${i}`;
+        return (
+            <Contact
+                key={key}
+                avatar={contact.avatar}
+                name={contact.name}
+                email={contact.email}
+                linkedin={contact.linkedin}
+                github={contact.github}
+            />
+        );
+    });
+}
+
+const Contacts = ({data}) => {
+    const [statusToShow, setStatusToShow] = useState('active');
 
     const handleOnChange = ( event ) => {
-        setShowActive(event.target.value);
+        setStatusToShow(event.target.value);
     }
     
     return (
@@ -424,24 +441,12 @@ const Contacts = ({data}) => {
             <RadioButtonGroup
                 className="rainbow-m-top_large rainbow-m-bottom_medium"
                 options={options}
-                value={showActive}
+                value={statusToShow}
                 variant="brand"
                 onChange={handleOnChange}
             />
             <div className="rainbow-flex rainbow-flex_wrap rainbow-justify_space-around">
-                {data.filter(contact => showActive === 'all' || contact.isActive).map((contact, i) => {
-                    return (
-                        <Contact
-                            key={i}
-                            avatar={contact.avatar}
-                            name={contact.name}
-                            email={contact.email}
-                            linkedin={contact.linkedin}
-                            github={contact.github}
-                        />
-                    );
-
-                })}
+                <ContactsFilteredContainer statusToShow={statusToShow} data={data}/>
             </div>
         </div>
     );
