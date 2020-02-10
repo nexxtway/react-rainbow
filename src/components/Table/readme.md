@@ -817,12 +817,8 @@ const Subtitle = styled.h3.attrs(props => props.theme.rainbow)`
 
 const StyledLink = styled.a.attrs(props => props.theme.rainbow)`
     color: ${props => props.palette.brand.main}
-    &:hover {
-        color: ${props => props.palette.brand.main};
-    }
-    &:visited {
-        color: ${props => props.palette.brand.main};
-    }
+    &:hover,
+    &:visited,
     &:active {
         color: ${props => props.palette.brand.main};
     }
@@ -832,7 +828,7 @@ const ProfileLink = ({value, row}) => <StyledLink href={row.link}>{ value }</Sty
 
 function TableExample (props) {
     const [ data, setData ] = useState(props.data);
-    const [ sortedBy, setSortedBy ] = useState(undefined);
+    const [ sortedBy, setSortedBy ] = useState();
     const [ sortDirection, setSortDirection ] = useState('asc');
     const [ selection, setSelection ] = useState([]);
 
@@ -854,7 +850,8 @@ function TableExample (props) {
     }
 
     function handleOnDeleteElements() {
-        const newData = data.filter( e =>  !(selection.map(x=>x.id).includes(e.id)));
+        const selectionIds = selection.map(x => x.id);
+        const newData = data.filter( e =>  !(selectionIds.includes(e.id)));
         return setData(newData);
     }
 
@@ -889,7 +886,7 @@ function TableExample (props) {
                 keyField="id"
                 showCheckboxColumn
                 data={data}
-                onRowSelection={sel => setSelection(sel)}
+                onRowSelection={setSelection}
                 onSort={handleOnSort}
                 sortDirection={sortDirection}
                 sortedBy={sortedBy}
