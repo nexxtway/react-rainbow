@@ -31,6 +31,9 @@ import AdvancedSettingsIcon from './exampleComponents/Icons/advanced-settings';
 import Users from './data/users';
 import GitHubIcon from './exampleComponents/Icons/gitHub';
 import LinkedinIcon from './exampleComponents/Icons/linkedin';
+import TrashIcon from './exampleComponents/Icons/trash';
+import PricingIcon from './exampleComponents/Icons/pricing';
+import PencilIcon from './exampleComponents/Icons/pencil';
 
 global.GlobalHeader = GlobalHeader;
 global.CodeEditor = CodeEditor;
@@ -67,3 +70,6 @@ global.AdvancedSettingsIcon = AdvancedSettingsIcon;
 global.Users = Users;
 global.GitHubIcon = GitHubIcon;
 global.LinkedinIcon = LinkedinIcon;
+global.TrashIcon = TrashIcon;
+global.PricingIcon = PricingIcon;
+global.PencilIcon = PencilIcon;
