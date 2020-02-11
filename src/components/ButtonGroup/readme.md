@@ -169,3 +169,145 @@ import { faPlus, faPencilAlt, faPaste, faAngleDown } from '@fortawesome/free-sol
     </ButtonGroup>
 </div>
 ```
+
+##### button group with content layout
+
+```js
+import { ButtonGroup, Button, ButtonMenu, MenuItem, Card } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
+
+const HeadingContent = styled.div`
+    @media (max-width: 991px) {
+        flex-direction: column;
+        :nth-child(1) { text-align: center; }
+    }
+`;
+
+const Title = styled.h2.attrs(props => {
+   return props.theme.rainbow.palette;
+})`
+    font-size: 26px;
+    color: ${props => props.text.label}
+`;
+
+const SubTitle = styled.span.attrs(props => {
+   return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.header};
+`;
+
+const Content = styled.div`
+    @media (max-width: 767px) {
+        flex-direction: column;
+    }
+`;
+
+const SocialContent = styled.div`
+    > div:last-child { text-align: right; }
+`;
+
+const SocialContentLink = styled.a`
+    width: 100%;
+    text-decoration: none;
+    &:hover, &:focus { text-decoration: none; }
+
+    :nth-child(2) {
+        margin-left: 10px;
+        margin-right: 10px; 
+    }
+        
+    @media (max-width: 767px) {
+        max-width: 235px;
+    }
+`;
+
+const SocialContentName = styled.span.attrs(props => {
+   return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.header};  
+`;
+
+const SocialContentCount = styled.h2.attrs(props => {
+   return props.theme.rainbow.palette;
+})`
+    font-size: 28px;
+    color: ${props => props.text.main};  
+`;
+
+const socials = [
+    {
+        url: 'https://facebook.com',
+        name: 'facebook',
+        icon: '/icons/facebook.svg',
+        countInThousands: 143
+    },
+    {
+        url: 'https://google.com',
+        name: 'google',
+        icon: '/icons/google.svg',
+        countInThousands: 20
+    },
+    {
+        url: 'https://twitter.com',
+        name: 'twitter',
+        icon: '/icons/twitter-blue.svg',
+        countInThousands: 42
+    }
+];
+
+const styles = {
+    socialCard: { marginLeft: 0, marginRight: 0 }
+};
+
+<div>
+    <HeadingContent className="rainbow-p-vertical_large rainbow-align-content_space-between rainbow-m-horizontal_medium rainbow-flex">
+        <div className="rainbow-m-bottom_medium">
+            <Title>Social Network</Title>
+            <SubTitle>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</SubTitle>
+        </div>
+    
+        <ButtonGroup>
+            <Button label="New" variant="neutral" />
+            <Button label="Edit" variant="neutral" />
+            <Button label="Remove" variant="neutral" />
+            <ButtonMenu
+                menuAlignment="right"
+                menuSize="x-small"
+                icon={<FontAwesomeIcon icon={faAngleDown} className="rainbow-color_brand" />}
+            >
+                <MenuItem label="Settings" />
+                <MenuItem label="Utilities" />
+                <MenuItem label="Store" />
+            </ButtonMenu>
+        </ButtonGroup>
+    </HeadingContent>
+    
+    <Content className="rainbow-p-vertical_large rainbow-align-content_space-between rainbow-m-horizontal_medium rainbow-flex">
+
+        {socials.map( (social) => {
+            return (
+                <SocialContentLink href={social.url} target="_blank">
+                    <Card className="rainbow-m-horizontal_medium rainbow-p-around_medium rainbow_vertical-stretch rainbow-m-bottom_medium"
+                        style={styles.socialCard}>
+
+                        <SocialContent className="rainbow-inline-flex rainbow-align-content_space-between">
+                            <div>
+                                <img src={social.icon} />
+                            </div>
+                            <div>
+                                <SocialContentName>{ social.name }</SocialContentName>
+                                <SocialContentCount>{ social.countInThousands}K</SocialContentCount>
+                            </div>
+                        </SocialContent>
+
+                    </Card>
+                </SocialContentLink>
+            );
+        })}
+
+    </Content>
+</div>
+
+```

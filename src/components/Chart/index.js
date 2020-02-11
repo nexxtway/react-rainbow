@@ -30,11 +30,16 @@ export default class Chart extends Component {
     }
 
     updateChart() {
-        const { labels, ...conditions } = this.props;
+        const { labels, type, ...conditions } = this.props;
         this.chartInstance.data = {
             labels,
             datasets: this.datasets,
         };
+
+        if (type && this.chartInstance.config && type !== this.chartInstance.config.type) {
+            this.chartInstance.config.type = type;
+        }
+
         this.chartInstance.options = resolveOptions({ ...conditions });
         this.chartInstance.update();
     }
