@@ -695,3 +695,213 @@ const tableContainerStyles = { height: 300 };
     </Table>
 </div>
 ```
+
+##### Table
+
+```js
+import { Table, Column, ButtonGroup, ButtonIcon, Badge, MenuItem, ButtonMenu } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import styled from 'styled-components';
+import React, { useState, useEffect } from 'react';
+
+import {
+    faCog,
+    faEllipsisV,
+} from '@fortawesome/free-solid-svg-icons';
+
+const tableContainerStyles = { height: 300 };
+
+const StatusBadge = ({ value }) => {
+    if(value === 'verified'){
+        return <Badge label={value} variant="outline-brand"/>;
+    }
+    return <Badge label={value} variant="lightest" />;
+};
+
+const data = [
+    {
+        name: 'Leandro Torres',
+        company: 'nexxtway',
+        email: 'leandro@gmail.com',
+        status: 'verified',
+        id: '1234qwerty',
+        link: '#',
+    },
+    {
+        name: 'Jose Torres',
+        company: 'Google',
+        email: 'jose@gmail.com',
+        status: 'pending',
+        id: '1234asdfgh',
+        link: '#',
+    },
+    {
+        name: 'Reinier',
+        company: 'nexxtway',
+        email: 'reinier@gmail.com',
+        status: 'verified',
+        id: '1234zxcvbn',
+        link: '#',
+    },
+    {
+        name: 'Sara',
+        company: 'nexxtway',
+        email: 'sara@gmail.com',
+        status: 'verified',
+        id: '5678qwerty',
+        link: '#',
+    },
+    {
+        name: 'Tahimi',
+        company: 'nexxtway',
+        email: 'tahimi@gmail.com',
+        status: 'verified',
+        id: '5678asdfgh',
+        link: '#',
+    },
+    {
+        name: 'Leo',
+        company: 'nexxtway',
+        email: 'leo@gmail.com',
+        status: 'verified',
+        id: '5678zxcvbn',
+        link: '#',
+    },
+    {
+        name: 'Tahimi Leon',
+        company: 'nexxtway',
+        email: 'leon@nexxtway.com',
+        status: 'verified',
+        id: '9012qwerty',
+        link: '#',
+    },
+    {
+        name: 'Alejandro',
+        company: 'Google',
+        email: 'alejandro@gmail.com',
+        status: 'verified',
+        id: '5678zdfgdf',
+        link: '#',
+    },
+    {
+        name: 'Carlos',
+        company: 'Oracle',
+        email: 'carlos@gmail.com',
+        status: 'verified',
+        id: '3434fgfgdf',
+        link: '#',
+    },
+    {
+        name: 'Luis',
+        company: 'Google',
+        email: 'luis@gmail.com',
+        status: 'verified',
+        id: '9012asdfgh',
+        link: '#',
+    },
+];
+
+const Title = styled.h1.attrs(props => props.theme.rainbow)`
+    font-family: 'Lato Light';
+    font-size: 25px;
+    text-align: left;
+    margin-bottom: 10px;
+    color: ${props => props.palette.text.main};
+`;
+
+const Subtitle = styled.h3.attrs(props => props.theme.rainbow)`
+    font-family: Lato;
+    font-size: 14px;
+    color: ${props => props.palette.text.title};
+`;
+
+const StyledLink = styled.a.attrs(props => props.theme.rainbow)`
+    color: ${props => props.palette.brand.main}
+    &:hover,
+    &:visited,
+    &:active {
+        color: ${props => props.palette.brand.main};
+    }
+`;
+
+const ProfileLink = ({value, row}) => <StyledLink href={row.link}>{ value }</StyledLink>;
+
+function TableExample (props) {
+    const [ data, setData ] = useState(props.data);
+    const [ sortedBy, setSortedBy ] = useState();
+    const [ sortDirection, setSortDirection ] = useState('asc');
+    const [ selection, setSelection ] = useState([]);
+
+    function handleOnSort(event, field, nextSortDirection) {
+        let newData = [...data];
+
+        const key = x => x[field];
+        const reverse = nextSortDirection === 'asc' ? 1 : -1;
+
+        const sortedData = newData.sort((a, b) => {
+            a = key(a);
+            b = key(b);
+            return reverse * ((a > b) - (b > a));
+        });
+
+        setData(sortedData);
+        setSortedBy(field);
+        setSortDirection(nextSortDirection);
+    }
+
+    function handleOnDeleteElements() {
+        const selectionIds = selection.map(x => x.id);
+        const newData = data.filter( e =>  !(selectionIds.includes(e.id)));
+        return setData(newData);
+    }
+
+    return (
+        <div className="rainbow-p-bottom_xx-large">
+            <GlobalHeader src="images/user/user3.jpg" />
+            <div className="rainbow-flex rainbow-justify_spread rainbow-align_center rainbow-p-around_large">
+                <div>
+                    <Title>
+                        Company Members
+                    </Title>
+                    <Subtitle>
+                        Total • {data.length}
+                    </Subtitle>
+                </div>
+                <ButtonGroup className="rainbow-m-right_medium">
+                    <ButtonIcon
+                        variant="border-filled"
+                        icon={<FontAwesomeIcon icon={faCog} />}
+                    />
+                    <ButtonMenu
+                        menuAlignment="right"
+                        menuSize="xx-small"
+                        icon={<FontAwesomeIcon icon={faEllipsisV} />}
+                    >
+                        <MenuItem label="Delete Selection" onClick={handleOnDeleteElements} />
+                    </ButtonMenu>
+                </ButtonGroup>
+            </div>
+            <Table
+                style={ tableContainerStyles }
+                keyField="id"
+                showCheckboxColumn
+                data={data}
+                onRowSelection={setSelection}
+                onSort={handleOnSort}
+                sortDirection={sortDirection}
+                sortedBy={sortedBy}
+            >
+                <Column header="Name" field="name" component={ProfileLink} sortable/>
+                <Column header="Company" field="company" sortable/>
+                <Column header="Email" field="email" />
+                <Column header="Status" field="status" component={StatusBadge} />
+                <Column type="action">
+                    <MenuItem label="Edit" />
+                </Column>
+            </Table>
+        </div>
+    );
+}
+
+<TableExample data={data}/>;
+```
