@@ -731,12 +731,14 @@ const Title = styled.h2.attrs(props => {
 `;
 
 const styles = {
-    container: { width: '100%' }
+    container: { width: '100%' },
+    chart: {
+        height: '300px'
+    }
 };
 
 const chartTypes = [
     { value: 'line', label: 'Lines'},
-    { value: 'horizontalBar', label: 'Horizontal Bar'},
     { value: 'bar', label: 'Bars' }
 ];
 
@@ -749,7 +751,6 @@ const data = {
 
 const chartTypeMap = {
     line: 'Lines',
-    horizontalBar: 'Horizontal Bar',
     bar: 'Bar'
 };
 
@@ -760,7 +761,7 @@ const CurrentChartType = styled.span.attrs(props => {
 `;
 
 const InteractiveChart = () => {
-    const [chartType, setChartType] = useState('horizontalBar');
+    const [chartType, setChartType] = useState('line');
     
     return (
         <div className="rainbow-p-vertical_medium rainbow-m_auto">
@@ -784,8 +785,8 @@ const InteractiveChart = () => {
                     <CurrentChartType className="rainbow-flex rainbow-align-content_center rainbow-m-bottom_medium">
                         {chartTypeMap[chartType]}        
                     </CurrentChartType>            
-        
-                    <Chart labels={months} type={chartType} >
+                       
+                    <Chart labels={months} type={chartType}  style={styles.chart} maintainAspectRatio={false}>
                         <Dataset
                             title="Google"
                             values={data.google}
