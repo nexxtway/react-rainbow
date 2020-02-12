@@ -50,14 +50,14 @@ function resolveCustomBackground(background) {
                 title: dark ? darken(mainText, 0.3) : lighten(mainText, 0.3),
                 header: dark ? darken(mainText, 0.6) : lighten(mainText, 0.6),
                 label: dark ? darken(mainText, 0.3) : lighten(mainText, 0.3),
-                inverse: inverse,
+                inverse,
                 disabled: dark ? darken(mainText, 0.7) : lighten(mainText, 0.7),
                 disabled_inverse: dark ? lighten(inverse, 0.6) : darken(inverse, 0.6),
             },
             border: {
                 main: dark ? lighten(background, 0.3) : darken(background, 0.3),
                 divider: dark ? lighten(background, 0.1) : darken(background, 0.1),
-                inverse: inverse,
+                inverse,
                 disabled: dark ? lighten(background, 0.1) : darken(background, 0.1),
             },
             action: {
