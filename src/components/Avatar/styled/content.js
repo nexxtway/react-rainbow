@@ -20,18 +20,23 @@ const StyledContent = attachThemeAttrs(styled.span)`
         cursor: default;
     }
 
-    ${props =>
-        props.initialsVariant === 'inverse' &&
-        `
-            background-color: ${props.palette.background.secondary};
-            color: ${props.palette.text.title};
-            text-shadow: none;
-        
-            &:hover {
-                color: ${props.palette.text.title};
-                cursor: default;
-            }
-        `};
+    ${props => {
+        const inverseText = props.palette.getContrastText(props.palette.background.inverse);
+
+        return (
+            props.initialsVariant === 'inverse' &&
+            `
+                background-color: ${props.palette.background.inverse};
+                color: ${inverseText};
+                text-shadow: none;
+            
+                &:hover {
+                    color: ${inverseText};
+                    cursor: default;
+                }
+            `
+        );
+    }};
     ${props =>
         props.as === 'abbr' &&
         `

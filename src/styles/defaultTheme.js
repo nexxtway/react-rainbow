@@ -36,6 +36,7 @@ export default {
             main: COLOR_WHITE,
             highlight: COLOR_GRAY_2,
             secondary: '#f9fafc',
+            inverse: '#f9fafc',
             disabled: COLOR_GRAY_1,
         },
         text: {

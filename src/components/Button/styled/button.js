@@ -187,7 +187,7 @@ const StyledButton = attachThemeAttrs(styled.button)`
                 background-color: transparent;
                 border-color: ${
                     props.isLoading
-                        ? props.palette.text.inverse
+                        ? props.palette.text.invers
                         : props.palette.text.disabled_inverse
                 };
                 color: ${props.palette.text.disabled_inverse};
