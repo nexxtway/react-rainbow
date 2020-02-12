@@ -1,5 +1,6 @@
 import defaultTheme from '../defaultTheme';
 import { darken, lighten, isDark, getContrastText, isValidColor } from './color';
+import { COLOR_DARK_1, COLOR_WHITE } from '../colors';
 
 function pickColors(colors, obj = {}) {
     return colors.reduce((seed, color) => {
@@ -36,6 +37,7 @@ function resolveCustomBackground(background) {
     if (background && isValidColor(background)) {
         const dark = isDark(background);
         const mainText = getContrastText(background);
+        const inverse = dark ? COLOR_DARK_1 : COLOR_WHITE;
         const theme = {
             background: {
                 main: background,
@@ -48,17 +50,22 @@ function resolveCustomBackground(background) {
                 title: dark ? darken(mainText, 0.3) : lighten(mainText, 0.3),
                 header: dark ? darken(mainText, 0.6) : lighten(mainText, 0.6),
                 label: dark ? darken(mainText, 0.3) : lighten(mainText, 0.3),
+                inverse: inverse,
                 disabled: dark ? darken(mainText, 0.7) : lighten(mainText, 0.7),
+                disabled_inverse: dark ? lighten(inverse, 0.6) : darken(inverse, 0.6),
             },
             border: {
                 main: dark ? lighten(background, 0.3) : darken(background, 0.3),
                 divider: dark ? lighten(background, 0.1) : darken(background, 0.1),
+                inverse: inverse,
                 disabled: dark ? lighten(background, 0.1) : darken(background, 0.1),
             },
             action: {
                 active: dark ? lighten(background, 0.08) : darken(background, 0.08),
                 hover: dark ? lighten(background, 0.08) : darken(background, 0.08),
+                active_inverse: dark ? lighten(inverse, 0.3) : darken(inverse, 0.3),
             },
+            isDark: dark,
         };
         return theme;
     }

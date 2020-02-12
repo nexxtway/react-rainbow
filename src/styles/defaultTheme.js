@@ -43,18 +43,23 @@ export default {
             title: COLOR_GRAY_4,
             header: COLOR_GRAY_3,
             label: COLOR_GRAY_4,
+            inverse: COLOR_WHITE,
             disabled: COLOR_GRAY_2,
+            disabled_inverse: COLOR_GRAY_3,
         },
         border: {
             main: COLOR_GRAY_3,
             divider: COLOR_GRAY_2,
+            inverse: COLOR_WHITE,
             disabled: COLOR_GRAY_2,
         },
         action: {
             active: COLOR_GRAY_1,
             hover: COLOR_GRAY_1,
+            active_inverse: COLOR_GRAY_3,
         },
         getContrastText,
+        isDark: false,
     },
     shadows: {
         brand: `0 0 2px ${COLOR_BRAND}`,
