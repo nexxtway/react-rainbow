@@ -34,6 +34,7 @@ import LinkedinIcon from './exampleComponents/Icons/linkedin';
 import TrashIcon from './exampleComponents/Icons/trash';
 import PricingIcon from './exampleComponents/Icons/pricing';
 import PencilIcon from './exampleComponents/Icons/pencil';
+import InverseContainer from './../library/exampleComponents/InverseContainer';
 
 global.GlobalHeader = GlobalHeader;
 global.CodeEditor = CodeEditor;
@@ -73,3 +74,4 @@ global.LinkedinIcon = LinkedinIcon;
 global.TrashIcon = TrashIcon;
 global.PricingIcon = PricingIcon;
 global.PencilIcon = PencilIcon;
+global.InverseContainer = InverseContainer;

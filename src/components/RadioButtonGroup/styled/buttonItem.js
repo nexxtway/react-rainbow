@@ -1,8 +1,22 @@
 /* stylelint-disable max-line-length */
 import styled from 'styled-components';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledButtonItem = styled.span`
+function getHover(props) {
+    if (props.palette.isDark) {
+        return {
+            main: 'rgba(28, 26, 18, 0.4)',
+            inverse: 'rgba(250, 250, 250, 0.95)',
+        };
+    }
+    return {
+        main: 'rgba(227, 229, 237, 0.4)',
+        inverse: 'rgba(250, 250, 250, 0.10)',
+    };
+}
+
+const StyledButtonItem = attachThemeAttrs(styled.span)`
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -14,7 +28,7 @@ const StyledButtonItem = styled.span`
     transform: translate3d(0, 0, 0);
 
     &:hover {
-        background-color: rgba(227, 229, 237, 0.4);
+        background-color: ${props => getHover(props).main};
         cursor: pointer;
     }
 
@@ -33,7 +47,7 @@ const StyledButtonItem = styled.span`
         props.variant === 'inverse' &&
         `
                 &:hover {
-                    background-color: rgba(0, 0, 0, 0.95);
+                    background-color: ${getHover(props).inverse};
                     cursor: pointer;
                 }
             `};

@@ -1,21 +1,11 @@
 /* stylelint-disable max-line-length */
 import styled from 'styled-components';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
-import { COLOR_WHITE } from '../../../styles/colors';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledMarker = styled.span.attrs(props => {
-    const theme = getTheme(props);
-    const { brand } = theme.palette;
-    const { main: brandMainColor, dark: brandDarkColor } = brand;
-
-    return {
-        brandMainColor,
-        brandDarkColor,
-    };
-})`
+const StyledMarker = attachThemeAttrs(styled.span)`
     position: absolute;
-    background: ${COLOR_WHITE};
+    background: ${props => props.palette.background.main};
     opacity: 0;
     top: 0;
     bottom: 0;
@@ -32,15 +22,15 @@ const StyledMarker = styled.span.attrs(props => {
     ${props =>
         props.variant === 'inverse' &&
         `
-            box-shadow: 0 0 4px 0 ${props.brandMainColor};
-            background-color: ${props.brandMainColor};
-            border: solid 1px ${props.brandMainColor};
+            box-shadow: 0 0 4px 0 ${props.palette.brand.main};
+            background-color: ${props.palette.brand.main};
+            border: solid 1px ${props.palette.brand.main};
         `};
     ${props =>
         props.variant === 'brand' &&
         `
-            background-color: ${props.brandMainColor};
-            border-color: ${props.brandDarkColor};
+            background-color: ${props.palette.brand.main};
+            border-color: ${props.palette.brand.dark};
             box-shadow: 0 0 3px 0 rgba(1, 38, 96, 0.4);
         `};
 `;
