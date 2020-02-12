@@ -21,12 +21,12 @@ const StyledContent = attachThemeAttrs(styled.span)`
     }
 
     ${props => {
-        const inverseText = props.palette.getContrastText(props.palette.background.inverse);
+        const inverseText = props.palette.getContrastText(props.palette.background.secondary);
 
         return (
             props.initialsVariant === 'inverse' &&
             `
-                background-color: ${props.palette.background.inverse};
+                background-color: ${props.palette.background.secondary};
                 color: ${inverseText};
                 text-shadow: none;
             

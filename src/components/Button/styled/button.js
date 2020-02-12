@@ -1,8 +1,29 @@
 import styled from 'styled-components';
 import { FONT_SIZE_HEADING_SMALL } from '../../../styles/fontSizes';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import { COLOR_WHITE, COLOR_GRAY_3, COLOR_DARK_1 } from '../../../styles/colors';
+import { lighten } from '../../../styles/helpers/color';
 
-const StyledButton = attachThemeAttrs(styled.button)`
+const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
+    if (props.palette.isDark) {
+        return {
+            inverse: {
+                text: COLOR_DARK_1,
+                active: lighten(COLOR_DARK_1, 0.6),
+                border: COLOR_DARK_1,
+                disabled: lighten(COLOR_DARK_1, 0.6),
+            },
+        };
+    }
+    return {
+        inverse: {
+            text: COLOR_WHITE,
+            active: COLOR_GRAY_3,
+            border: COLOR_WHITE,
+            disabled: COLOR_GRAY_3,
+        },
+    };
+})`
     font: inherit;
     align-items: center;
     display: inline-flex;
@@ -147,12 +168,12 @@ const StyledButton = attachThemeAttrs(styled.button)`
         `
             background-color: transparent;
             border: 1px solid transparent;
-            color: ${props.palette.text.inverse};
+            color: ${props.inverse.text};
 
             &:hover,
             &:focus,
             &:active {
-                color: ${props.palette.action.active_inverse};
+                color: ${props.inverse.active};
             }
         
             &:focus {
@@ -162,20 +183,20 @@ const StyledButton = attachThemeAttrs(styled.button)`
         
             &[disabled] {
                 background-color: transparent;
-                color: ${props.palette.text.disabled_inverse};
+                color: ${props.inverse.disabled};
             }
         `};
     ${props =>
         props.variant === 'border-inverse' &&
         `   background-color: transparent;
-            border: 1px solid ${props.palette.border.inverse};
-            color: ${props.palette.text.inverse};
+            border: 1px solid ${props.inverse.text};
+            color: ${props.inverse.border};
 
             &:hover,
             &:focus,
             &:active {
-                border-color: ${props.palette.action.active_inverse};
-                color: ${props.palette.action.active_inverse};
+                border-color: ${props.inverse.active};
+                color: ${props.inverse.active};
             }
         
             &:focus {
@@ -185,12 +206,8 @@ const StyledButton = attachThemeAttrs(styled.button)`
         
             &[disabled] {
                 background-color: transparent;
-                border-color: ${
-                    props.isLoading
-                        ? props.palette.text.inverse
-                        : props.palette.text.disabled_inverse
-                };
-                color: ${props.palette.text.disabled_inverse};
+                border-color: ${props.isLoading ? props.inverse.text : props.inverse.disabled};
+                color: ${props.inverse.disabled};
             }
         `};
     ${props => {
@@ -227,9 +244,8 @@ const StyledButton = attachThemeAttrs(styled.button)`
             }
         
             &[disabled] {
-                background-color: ${
-                    props.isLoading ? props.palette.error.main : props.palette.background.disabled
-                };
+                background-color: $
+                    props.isLoading ? props.palette.error.main : props.palette.background.disabled};
                 border-color: ${
                     props.isLoading ? props.palette.error.main : props.palette.background.disabled
                 };

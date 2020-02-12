@@ -36,7 +36,6 @@ export default {
             main: COLOR_WHITE,
             highlight: COLOR_GRAY_2,
             secondary: '#f9fafc',
-            inverse: '#f9fafc',
             disabled: COLOR_GRAY_1,
         },
         text: {
@@ -44,20 +43,16 @@ export default {
             title: COLOR_GRAY_4,
             header: COLOR_GRAY_3,
             label: COLOR_GRAY_4,
-            inverse: COLOR_WHITE,
             disabled: COLOR_GRAY_2,
-            disabled_inverse: COLOR_GRAY_3,
         },
         border: {
             main: COLOR_GRAY_3,
             divider: COLOR_GRAY_2,
-            inverse: COLOR_WHITE,
             disabled: COLOR_GRAY_2,
         },
         action: {
             active: COLOR_GRAY_1,
             hover: COLOR_GRAY_1,
-            active_inverse: COLOR_GRAY_3,
         },
         getContrastText,
         isDark: false,

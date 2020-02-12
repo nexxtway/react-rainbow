@@ -126,25 +126,14 @@ import { Button } from 'react-rainbow-components';
 // visit https://github.com/FortAwesome/react-fontawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import styled from 'styled-components';
 
-const StyledButtonsContainer = styled.div.attrs(props => {
-    if(props.theme.rainbow.palette.isDark) {
-        return {background: '#eee'};
-    }
-    return { background: '#061c3f' };
-})`
-    background-color: ${props => props.background};
-    border-radius: 0 0 0.875rem 0.875rem;
-`;
-
-<StyledButtonsContainer className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
+<InverseContainer className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <Button label="Button Inverse" variant="inverse" className="rainbow-m-around_medium" />
     <Button variant="border-inverse" className="rainbow-m-around_medium">
         Button Inverse with icon
         <FontAwesomeIcon icon={faArrowRight} className="rainbow-m-left_medium" />
     </Button>
-</StyledButtonsContainer>
+</InverseContainer>
 ```
 
 ##### buttons loadings
