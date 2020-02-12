@@ -94,4 +94,13 @@ describe('isNotSameColumns', () => {
         ];
         expect(isNotSameColumns(prevColumns, currentColumns)).toBe(true);
     });
+    it('should return true when column children property changed', () => {
+        const prevColumns = [
+            { header: 'Action', type: 'action', children: [{ onClick: () => 20 + 5 }] },
+        ];
+        const currentColumns = [
+            { header: 'Action', type: 'action', children: [{ onClick: () => 20 + 4 }] },
+        ];
+        expect(isNotSameColumns(prevColumns, currentColumns)).toBe(true);
+    });
 });
