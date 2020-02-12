@@ -108,7 +108,6 @@ VisualPickerOption.propTypes = {
      * @ignore
      */
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
-    ariaDescribedby: PropTypes.string,
 };
 
 VisualPickerOption.defaultProps = {
@@ -118,5 +117,4 @@ VisualPickerOption.defaultProps = {
     className: undefined,
     style: undefined,
     children: [],
-    ariaDescribedby: undefined,
 };
