@@ -123,15 +123,22 @@ import React from 'react';
 import { ButtonIcon } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-regular-svg-icons';
+import styled from 'styled-components';
 
-const buttonsIconContainerStyles = {
-    borderRadius: '0.25rem',
-};
+const StyledButtonsContainer = styled.div.attrs(props => {
+    if(props.theme.rainbow.palette.isDark) {
+        return {background: '#eee'};
+    }
+    return { background: '#061c3f' };
+})`
+    background-color: ${props => props.background};
+    border-radius: 0 0 0.875rem 0.875rem;
+`;
 
-<div className="rainbow-p-vertical_large rainbow-p-left_x-large rainbow-flex rainbow-align_center rainbow-background-color_dark-1 rainbow-border-radius_oval">
+<StyledButtonsContainer className="rainbow-p-vertical_large rainbow-p-left_x-large rainbow-flex rainbow-align_center">
     <div className="rainbow-p-right_large">
         <ButtonIcon variant="border-inverse" icon={<FontAwesomeIcon icon={faStar} />} />
     </div>
     <ButtonIcon variant="inverse" icon={<FontAwesomeIcon icon={faStar} />} />
-</div>
+</StyledButtonsContainer>
 ```
