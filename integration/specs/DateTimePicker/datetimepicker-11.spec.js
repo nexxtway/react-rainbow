@@ -1,10 +1,10 @@
 const PageDateTimePicker = require('../../../src/components/DateTimePicker/pageObject');
 
-const DATETIMEPICKER = '#datetimepicker-9';
+const DATETIMEPICKER = '#datetimepicker-11';
 
 describe('DateTimePicker', () => {
     beforeAll(() => {
-        browser.url('/#!/DateTimePicker/9');
+        browser.url('/#!/DateTimePicker/11');
     });
     beforeEach(() => {
         browser.refresh();
