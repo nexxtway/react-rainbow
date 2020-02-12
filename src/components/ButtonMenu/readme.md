@@ -8,19 +8,17 @@ import { faCog } from '@fortawesome/free-solid-svg-icons';
 
 <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
     <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
-        <ButtonGroup>
-            <ButtonMenu
-                menuAlignment="right"
-                menuSize="x-small"
-                buttonVariant="base"
-                icon={<FontAwesomeIcon icon={faCog} />}
-            >
-                <MenuItem label="Menu Item One" />
-                <MenuItem label="Menu Item Two" />
-                <MenuItem label="Menu Item Three" />
-                <MenuItem label="Menu Item Four" />
-            </ButtonMenu>
-        </ButtonGroup>
+        <ButtonMenu
+            menuAlignment="right"
+            menuSize="x-small"
+            buttonVariant="base"
+            icon={<FontAwesomeIcon icon={faCog} />}
+        >
+            <MenuItem label="Menu Item One" />
+            <MenuItem label="Menu Item Two" />
+            <MenuItem label="Menu Item Three" />
+            <MenuItem label="Menu Item Four" />
+        </ButtonMenu>
     </GlobalHeader>
 </div>
 ```
@@ -329,21 +327,19 @@ import { faCog } from '@fortawesome/free-solid-svg-icons';
 
 <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
     <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
-        <ButtonGroup>
-            <ButtonMenu
-                id="button-menu-disabled-items"
-                menuAlignment="right"
-                menuSize="x-small"
-                buttonVariant="base"
-                icon={<FontAwesomeIcon icon={faCog} />}
-            >
-                <MenuItem label="Menu Item One" />
-                <MenuItem disabled label="Menu Item Two" />
-                <MenuItem label="Menu Item Three" />
-                <MenuItem label="Menu Item Four" />
-                <MenuItem disabled label="Menu Item Five" />
-            </ButtonMenu>
-        </ButtonGroup>
+        <ButtonMenu
+            id="button-menu-disabled-items"
+            menuAlignment="right"
+            menuSize="x-small"
+            buttonVariant="base"
+            icon={<FontAwesomeIcon icon={faCog} />}
+        >
+            <MenuItem label="Menu Item One" />
+            <MenuItem disabled label="Menu Item Two" />
+            <MenuItem label="Menu Item Three" />
+            <MenuItem label="Menu Item Four" />
+            <MenuItem disabled label="Menu Item Five" />
+        </ButtonMenu>
     </GlobalHeader>
 </div>
 ```
@@ -361,15 +357,13 @@ import { faBell } from '@fortawesome/free-solid-svg-icons';
         className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large"
         src="images/user/user3.jpg"
     >
-        <ButtonGroup>
-            <ButtonMenu
-                menuAlignment="right"
-                menuSize="x-small"
-                label="Custom Apps"
-                isLoading
-                icon={<FontAwesomeIcon icon={faBell} />}
-            />
-        </ButtonGroup>
+        <ButtonMenu
+            menuAlignment="right"
+            menuSize="x-small"
+            label="Custom Apps"
+            isLoading
+            icon={<FontAwesomeIcon icon={faBell} />}
+        />
     </GlobalHeader>
 </div>
 ```
@@ -423,7 +417,7 @@ class ButtonMenuExample extends React.Component {
                     className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large"
                 >
                     <ButtonGroup>
-                        <ButtonIcon 
+                        <ButtonIcon
                             icon={<FontAwesomeIcon icon={faPencilAlt} />}
                             variant="border-filled"
                             disabled
@@ -459,4 +453,256 @@ class ButtonMenuExample extends React.Component {
     }
 }
 <ButtonMenuExample/>
+```
+
+##### ButtonMenu
+
+```js
+import React from 'react';
+import { ButtonMenu, MenuItem, Card } from 'react-rainbow-components';
+import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import styled from 'styled-components';
+
+const Title = styled.h1.attrs(props => props.theme.rainbow)`
+    font-family: 'Lato Light';
+    font-size: 24px;
+    text-align: left;
+    color: ${props => props.palette.text.main};
+`;
+
+const CardSubtitle = styled.h4.attrs(props => props.theme.rainbow)`
+    font-family: Lato;
+    font-size: 12px;
+    color: ${props => props.palette.text.header};
+    display: block;
+`;
+
+const Label = styled.span.attrs(props => props.theme.rainbow)`
+    font-family: Lato Bold;
+    font-size: 24px;
+    line-height: 24px;
+    color: ${props => props.isBrand? props.palette.brand.main : props.palette.text.main};
+    text-transform: uppercase;
+`;
+
+const Description = styled.span.attrs(props => props.theme.rainbow)`
+    font-family: Lato;
+    font-size: 14px;
+    color: ${props => props.palette.text.header};
+`;
+
+const ColumnContainer = styled.div.attrs(props => props.theme.rainbow)`
+    min-height: 92px;
+    ${props => props.hasBorder && `border-left: 1px dashed ${props.palette.background.disabled};`}
+    ${props => (props.width || props.width === 0) && `width: ${props.width};`}
+    ${props => (props.flex || props.flex === 0) && `flex: ${props.flex};`}
+    @media (max-width: 700px) {
+        border-left: none;
+        width: 100%;
+        ${props => props.hasBorder && `border-top: 1px dashed ${props.palette.background.disabled};`}
+    }
+`;
+
+const Column = props => {
+    const { label, description, isBrand, hasBorder, children, flex, width } = props;
+
+    return (
+        <ColumnContainer
+            className="rainbow-flex rainbow-flex_column rainbow-justify_center rainbow-align_center"
+            hasBorder={ hasBorder }
+            flex={flex}
+            width={width}
+        >
+            {children}
+            <Label isBrand={isBrand}>
+                {label}
+            </Label>
+            <Description>
+                {description}
+            </Description>
+        </ColumnContainer>
+    );
+}
+
+const RowContainer = styled.div`
+    min-height: 92px;
+    ${props => (props.width || props.width === 0) && `width: ${props.width};`}
+    @media (max-width: 700px) {
+        width: 100%;
+    }
+`;
+
+const Row = props => {
+    const { children, width } = props;
+    return (
+        <RowContainer className="rainbow-flex rainbow-justify_space-around" width={width}>
+            {children}
+        </RowContainer>
+    );
+};
+
+const Point = styled.span.attrs(props => props.theme.rainbow)`
+    height: 8px;
+    width: 8px;
+    background-color: ${props => props.palette.brand.main};
+    border-radius: 100px;
+    padding: 3px;
+`;
+
+const Line = styled.hr.attrs(props => props.theme.rainbow)`
+    border-bottom: 1px solid ${props => props.palette.brand.main};
+    background-color: ${props => props.palette.brand.main};
+    width: 98%;
+    margin-left: -2px;
+    margin-right: -2px;
+`;
+
+const SegmentContainer = styled.div`
+    width: 100%;
+    height: 20px;
+`;
+
+const Segment = props => {
+    return (
+        <SegmentContainer className="rainbow-flex rainbow-align_center">
+            <Point />
+            <Line />  
+            <Point />  
+        </SegmentContainer>
+    );
+}
+
+const getDateDiference = ( startDate, endDate ) => {
+    const startDateInMs = startDate.getTime();
+    const endDateInMs = endDate.getTime();
+    var differenceInMs = endDateInMs - startDateInMs;
+    differenceInMs = differenceInMs/1000/60;
+    const minutes = Math.floor(differenceInMs % 60);
+    differenceInMs = differenceInMs/60;
+    const hours = Math.floor(differenceInMs);
+
+    return `${ hours<10 && 0}${hours}hr ${minutes}min`;
+}
+
+const getFormatedTime = ( date ) => {
+    return date.toLocaleString('en-US', {
+        hour12: true,
+        hour: "2-digit",
+        minute: "2-digit",
+    });
+}
+
+const getFormatedDate = ( date ) => {
+    return date.toLocaleString('en-US', {
+        month: 'long',
+        day: '2-digit',
+    });
+}
+
+const FlightCard = ( props ) => {
+    const { 
+        departureDate,
+        arrivalDate,
+        origin,
+        originAbbreviation,
+        destination,
+        destinationAbbreviation,
+        airline,
+        flightNumber,
+        price
+    } = props;
+
+    return (
+        <div className="rainbow-m-top_small">
+            <CardSubtitle>
+                Departure flight: { origin } - { destination } • { getFormatedDate(departureDate) }
+            </CardSubtitle>
+            <Card>
+                <div className="rainbow-flex rainbow-flex_wrap">
+                    <Row width="49%">
+                        <Column
+                            flex="1"
+                            label={originAbbreviation}
+                            description={getFormatedTime(departureDate)}
+                        />
+                        <Column
+                            flex="1.3"
+                            description={getDateDiference(departureDate, arrivalDate)}
+                        >
+                            <Segment />
+                        </Column>
+                        <Column
+                            flex="1"
+                            label={destinationAbbreviation}
+                            description={getFormatedTime(arrivalDate)}
+                        />
+                    </Row>
+                    <Column label={airline} description="Airline" isBrand hasBorder width="17%" />
+                    <Column label={flightNumber} description="Flight No" hasBorder width="17%" />
+                    <Column label={`$${price}`} description="Total" hasBorder width="17%" />
+                </div>
+            </Card>
+        </div>
+    )
+}
+
+<div>
+    <GlobalHeader
+        src="images/user/user3.jpg"
+    />
+    <div className="rainbow-m-around_large">
+        <div className="rainbow-flex rainbow-justify_spread">
+            <Title>
+                Flight Booking
+            </Title>
+            <ButtonMenu
+                menuAlignment="right"
+                menuSize="x-small"
+                icon={<FontAwesomeIcon icon={faEllipsisV} />}
+            >
+                <MenuItem
+                    label="Edit Resevation"
+                    icon={<PencilIcon />}
+                    iconPosition="left"
+                />
+                <MenuItem
+                    label="Delete Reservation"
+                    icon={<TrashIcon />}
+                    iconPosition="left"
+                />
+                <MenuItem
+                    label="Add Promo Code"
+                    icon={<PricingIcon />}
+                    iconPosition="left"
+                />
+            </ButtonMenu>
+        </div>
+        <div>
+            <FlightCard
+                origin="Guadalajara"
+                originAbbreviation="GDL"
+                destination="New York"
+                destinationAbbreviation="NYR"
+                departureDate={new Date(2020, 3, 25, 10, 20)}
+                arrivalDate={new Date(2020, 3, 25, 19, 50)}
+                airline="AirBus"
+                flightNumber="2161"
+                price="350"
+            />
+            <FlightCard
+                origin="New York"
+                originAbbreviation="NYR"
+                destination="Guadalajara"
+                destinationAbbreviation="GDL"
+                departureDate={new Date(2020, 4, 5, 8, 20)}
+                arrivalDate={new Date(2020, 4, 5, 17, 50)}
+                airline="AirBus"
+                flightNumber="3345"
+                price="360"
+            />
+        </div>
+    </div>
+</div>
+
 ```

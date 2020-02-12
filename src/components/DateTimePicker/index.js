@@ -41,6 +41,7 @@ const DateTimePicker = React.forwardRef((props, ref) => {
         cancelLabel,
         isCentered,
         bottomHelpText,
+        hour24,
         locale: localeProp,
     } = props;
 
@@ -63,11 +64,12 @@ const DateTimePicker = React.forwardRef((props, ref) => {
 
     const [isOpen, setIsOpen] = useState(false);
     const [formattedDatetime, setFormattedDatetime] = useState(
-        formatDateTime(value, formatStyle, locale),
+        formatDateTime(value, formatStyle, locale, hour24),
     );
+
     useEffect(() => {
-        setFormattedDatetime(formatDateTime(value, formatStyle, locale));
-    }, [value, formatStyle, locale]);
+        setFormattedDatetime(formatDateTime(value, formatStyle, locale, hour24));
+    }, [value, formatStyle, locale, hour24]);
 
     const openModal = event => {
         if (!readOnly) {
@@ -137,6 +139,7 @@ const DateTimePicker = React.forwardRef((props, ref) => {
                 okLabel={okLabel}
                 cancelLabel={cancelLabel}
                 locale={locale}
+                hour24={hour24}
             />
         </StyledContainer>
     );
@@ -199,6 +202,8 @@ DateTimePicker.propTypes = {
     cancelLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The DateTimePicker locale. Defaults to browser's language. */
     locale: PropTypes.string,
+    /** Specifies that the DateTimePicker will be in a 24hr format. This value defaults to false. */
+    hour24: PropTypes.bool,
 };
 
 DateTimePicker.defaultProps = {
@@ -227,6 +232,7 @@ DateTimePicker.defaultProps = {
     bottomHelpText: '',
     isCentered: false,
     locale: undefined,
+    hour24: false,
 };
 
 export default withReduxForm(DateTimePicker);

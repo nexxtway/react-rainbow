@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_TRANSPARENT_3 } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledColumnLeft = styled.div`
+const StyledColumnLeft = attachThemeAttrs(styled.div)`
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -9,7 +9,7 @@ const StyledColumnLeft = styled.div`
 
     ::before {
         content: '';
-        background-color: ${COLOR_GRAY_TRANSPARENT_3};
+        background-color: ${props => props.palette.background.highlight};
         height: 100%;
         width: 1px;
         position: absolute;
