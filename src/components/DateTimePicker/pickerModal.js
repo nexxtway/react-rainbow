@@ -25,21 +25,22 @@ function DateTimePickerModal(props) {
         onRequestClose,
         onChange,
         locale,
+        hour24,
     } = props;
 
     const [date, setDate] = useState(value);
-    const [time, setTime] = useState(extractTime(value));
+    const [time, setTime] = useState(extractTime(value, hour24));
     const [modalTitle, setModalTitle] = useState(title);
 
     useEffect(() => {
         setDate(value);
-        setTime(!value ? '' : extractTime(value));
-    }, [isOpen, value]);
+        setTime(!value ? '' : extractTime(value, hour24));
+    }, [isOpen, value, hour24]);
 
     useEffect(() => {
         const currentDateTime = new Date(`${extractDate(date)} ${time}`);
-        setModalTitle(formatDateTime(currentDateTime, formatStyle, locale));
-    }, [date, time, formatStyle, locale]);
+        setModalTitle(formatDateTime(currentDateTime, formatStyle, locale, hour24));
+    }, [date, time, formatStyle, locale, hour24]);
 
     const handleChange = selectedTime => {
         const currentValue = new Date(`${extractDate(date)} ${selectedTime}`);
@@ -74,6 +75,7 @@ function DateTimePickerModal(props) {
                     cancelLabel={cancelLabel}
                     onCloseModal={onRequestClose}
                     onChange={handleChange}
+                    hour24={hour24}
                 />
             </StyledResponsiveContainer>
         </StyledModal>
@@ -93,6 +95,7 @@ DateTimePickerModal.propTypes = {
     cancelLabel: PropTypes.string,
     onChange: PropTypes.func,
     locale: PropTypes.string,
+    hour24: PropTypes.bool,
 };
 
 DateTimePickerModal.defaultProps = {
@@ -105,6 +108,7 @@ DateTimePickerModal.defaultProps = {
     cancelLabel: 'Cancel',
     onChange: () => {},
     locale: undefined,
+    hour24: false,
 };
 
 export default DateTimePickerModal;

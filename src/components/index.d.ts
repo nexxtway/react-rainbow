@@ -39,6 +39,7 @@ export { default as Notification } from './Notification';
 export { default as Pagination } from './Pagination';
 export { default as Picklist } from './Picklist';
 export { default as PicklistOption } from './PicklistOption';
+export { default as PresenceMap } from './PresenceMap';
 export { default as ProgressBar } from './ProgressBar';
 export { default as ProgressCircular } from './ProgressCircular';
 export { default as ProgressIndicator } from './ProgressIndicator';

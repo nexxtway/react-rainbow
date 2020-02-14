@@ -705,3 +705,113 @@ class DoughnutChartExample extends React.Component {
 
 <DoughnutChartExample />;
 ```
+
+##### Interactive chart:
+
+```js
+import { useState } from 'react';
+import { Chart, Dataset, Card, RadioButtonGroup } from 'react-rainbow-components';
+import styled from 'styled-components';
+
+const ChartHeading = styled.div`
+    padding-left: 7px;
+    padding-right: 7px;    
+
+    @media (max-width: 991px) {
+        flex-direction: column;
+        :nth-child(1) { text-align: center; }
+    }
+`;
+
+const Title = styled.h2.attrs(props => {
+   return props.theme.rainbow.palette;
+})`
+    font-size: 26px;
+    color: ${props => props.text.label}
+`;
+
+const styles = {
+    container: { width: '100%' },
+    chart: {
+        height: '300px'
+    }
+};
+
+const chartTypes = [
+    { value: 'line', label: 'Lines'},
+    { value: 'bar', label: 'Bars' }
+];
+
+const months = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+const data = {
+    google: [23, 45, 123, 56, 65, 11, 54, 92, 26, 86, 95, 78],
+    twitter: [66, 70, 80, 62, 60, 75, 120, 111, 90, 93, 99, 69],
+    facebook: [30, 60, 68, 79, 100, 112, 100, 121, 130, 105, 145, 185]
+};
+
+const chartTypeMap = {
+    line: 'Lines',
+    bar: 'Bar'
+};
+
+const CurrentChartType = styled.span.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.header}
+`;
+
+const InteractiveChart = () => {
+    const [chartType, setChartType] = useState('line');
+    
+    return (
+        <div className="rainbow-p-vertical_medium rainbow-m_auto">
+            <div className="rainbow-align-content_center">
+                <Card className="rainbow-m-horizontal_large rainbow-m-top_x-large rainbow-m-bottom_x-large rainbow-p-around_large" style={styles.container} >
+        
+                     <ChartHeading className="rainbow-align-content_space-between rainbow-flex rainbow-m-bottom_large">
+                        <div className="rainbow-m-bottom_medium">
+                            <Title>Performance</Title>
+                        </div>
+                    
+                         <RadioButtonGroup
+                            id="radio-button-group-component-1"
+                            options={chartTypes}
+                            value={chartType}
+                            variant="brand"
+                            onChange={ (e) => setChartType(e.target.value) }
+                        />
+                    </ChartHeading>
+
+                    <CurrentChartType className="rainbow-flex rainbow-align-content_center rainbow-m-bottom_medium">
+                        {chartTypeMap[chartType]}        
+                    </CurrentChartType>            
+                       
+                    <Chart labels={months} type={chartType}  style={styles.chart} maintainAspectRatio={false}>
+                        <Dataset
+                            title="Google"
+                            values={data.google}
+                            backgroundColor="#fe4849"
+                            borderColor="#fe4849"
+                        />
+                        <Dataset
+                            title="Twitter"
+                            values={data.twitter}
+                            backgroundColor="#01b6f5"
+                            borderColor="#01b6f5"
+                        />
+                        <Dataset
+                            title="Facebook"
+                            values={data.facebook}
+                            backgroundColor="#3c5997"
+                            borderColor="#3c5997"
+                        />
+                    </Chart>
+                </Card>
+            </div>
+        </div>
+    );
+};
+
+<InteractiveChart />
+
+```

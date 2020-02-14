@@ -1,21 +1,8 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 import HiddenElement from '../../Structural/hiddenElement';
-import { COLOR_GRAY_2, COLOR_GRAY_1 } from '../../../styles/colors';
-import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledInput = styled(HiddenElement).attrs(props => {
-    const theme = getTheme(props);
-    const { brand } = theme.palette;
-    const { light: brandLightColor } = brand;
-    const { main: brandMainColor } = brand;
-
-    return {
-        brandMainColor,
-        brandLightColor,
-        // TODO: move up to defaultTheme or normalizeTheme
-        brandShadow: `0 0 2px ${brandMainColor}`,
-    };
-})`
+const StyledInput = attachThemeAttrs(styled(HiddenElement))`
     color: inherit;
     font: inherit;
     margin: 0;
@@ -23,24 +10,24 @@ const StyledInput = styled(HiddenElement).attrs(props => {
 
     :hover ~ label > [data-id='visual-picker_option'] {
         cursor: pointer;
-        border: solid 1.5px ${props => props.brandMainColor};
-        box-shadow: 0 2px 4px 0 rgba(136, 152, 170, 0.5);
+        border: solid 1.5px ${props => props.palette.brand.main};
+        box-shadow: ${props => props.shadows.shadow_2};
     }
 
     :focus ~ label > [data-id='visual-picker_option'] {
-        border: solid 1px ${props => props.brandLightColor};
-        box-shadow: 0 1px 2px 0 rgba(136, 152, 170, 0.5), ${props => props.brandShadow};
+        border: solid 1px ${props => props.palette.brand.light};
+        box-shadow: ${props => props.shadows.shadow_4}, ${props => props.shadows.brand};
     }
 
     :checked ~ label > [data-id='visual-picker_option'] {
-        border: solid 2px ${props => props.brandMainColor};
+        border: solid 2px ${props => props.palette.brand.main};
         position: relative;
     }
 
     &[disabled] ~ label > [data-id='visual-picker_option'] {
-        border: solid 1.5px ${COLOR_GRAY_2};
+        border: solid 1.5px ${props => props.palette.border.disabled};
         box-shadow: 0 0 0 0 transparent;
-        background-color: ${COLOR_GRAY_1};
+        background-color: ${props => props.palette.background.disabled};
         cursor: not-allowed;
     }
 `;

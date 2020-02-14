@@ -1,13 +1,13 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_2, COLOR_WHITE } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledContent = styled.span`
+const StyledContent = attachThemeAttrs(styled.span)`
     height: 142px;
     width: 100%;
     border-radius: 22px;
-    box-shadow: 0 1px 2px 0 rgba(136, 152, 170, 0.5);
-    border: solid 2px ${COLOR_GRAY_2};
-    background-color: ${COLOR_WHITE};
+    box-shadow: ${props => props.shadows.shadow_4};
+    border: solid 2px ${props => props.palette.border.divider};
+    background-color: ${props => props.palette.background.main};
     display: flex;
     flex-direction: column;
     justify-content: center;

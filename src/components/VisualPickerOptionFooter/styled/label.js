@@ -1,12 +1,12 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 import { FONT_SIZE_HEADING_SMALL } from '../../../styles/fontSizes';
-import { COLOR_DARK_1 } from '../../../styles/colors';
 
-const StyledLabel = styled.h1`
+const StyledLabel = attachThemeAttrs(styled.h1)`
     margin: 0;
     padding: 0;
     font-size: ${FONT_SIZE_HEADING_SMALL};
-    color: ${COLOR_DARK_1};
+    color: ${props => props.palette.text.main};
     text-align: center;
     font-weight: 300;
 `;
