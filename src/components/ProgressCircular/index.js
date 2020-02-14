@@ -10,7 +10,7 @@ import StyledPercentValue from './styled/percentValue';
  * ProgressCircular component communicates to the user the progress of a particular process.
  */
 export default function ProgressCircular(props) {
-    const { value, variant, assistiveText, className, style } = props;
+    const { value, variant, color, assistiveText, className, style } = props;
 
     const normalizedValue = normalizeValue(value);
 
@@ -23,8 +23,11 @@ export default function ProgressCircular(props) {
             role="progressbar"
             style={style}
         >
-            <ProgressRing variant={variant} percent={normalizedValue} />
-            <StyledPercentValue variant={variant}>{`${normalizedValue}%`}</StyledPercentValue>
+            <ProgressRing variant={variant} color={color} percent={normalizedValue} />
+            <StyledPercentValue
+                variant={variant}
+                color={color}
+            >{`${normalizedValue}%`}</StyledPercentValue>
             <AssistiveText text={assistiveText} />
         </StyledContainer>
     );
@@ -41,6 +44,8 @@ ProgressCircular.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** A valid color to customize the progress circular. */
+    color: PropTypes.string,
 };
 
 ProgressCircular.defaultProps = {
@@ -49,4 +54,5 @@ ProgressCircular.defaultProps = {
     assistiveText: '',
     className: undefined,
     style: undefined,
+    color: '',
 };

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import { isValidColor } from '../../../styles/helpers/color';
 
 const StyledRingFill = attachThemeAttrs(styled.circle)`
     stroke: ${props => props.palette.brand.main};
@@ -18,6 +19,11 @@ const StyledRingFill = attachThemeAttrs(styled.circle)`
         props.variant === 'error' &&
         `
             stroke: ${props.palette.error.main};
+        `};
+    ${props =>
+        isValidColor(props.color) &&
+        `
+            stroke: ${props.color};
         `};
 `;
 

@@ -1,0 +1,127 @@
+.react-rainbow-customization_top-container {
+    padding-top: 40px;
+    background-color: #f4f6f9;
+}
+
+.react-rainbow-customization_top-container-tabset {
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.react-rainbow-customization_container {
+    background-color: white;
+    padding: 1.25rem 2rem 0 2rem;
+}
+
+.react-rainbow-customization_section-heading-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.react-rainbow-customization_carbon-ad {
+    margin-top: 1rem;
+    min-width: 340px;
+}
+
+.react-rainbow-customization_section-heading {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #061c3f;
+    font-family: Lato Light;
+    margin-top: 1rem;
+}
+
+.react-rainbow-customization_section-heading-2 {
+    font-size: 1.25rem;
+    line-height: 1.25;
+    color: #061c3f;
+    font-family: Lato Light;
+    margin-bottom: 1rem;
+    margin-top: 1.75rem;
+}
+
+.react-rainbow-customization_section-heading-5 {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: #576574;
+    font-family: Lato;
+    letter-spacing: 0.5;
+}
+
+.react-rainbow-customization_section-link {
+    margin-left: 3px;
+    font-size: inherit;
+    color: #009acf;
+    text-decoration: none;
+}
+
+.react-rainbow-customization_section-italic {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    color: #333;
+    font-family: -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Roboto",
+    "Oxygen",
+    "Ubuntu",
+    "Cantarell",
+    "Fira Sans",
+    "Droid Sans",
+    "Helvetica Neue",
+    sans-serif;
+    font-size: inherit;
+    line-height: 1.5;
+    font-style: italic;
+}
+.react-rainbow-customization_top-container-tab {
+    overflow: unset;
+}
+
+.react-rainbow-customization_example {
+    width: 100%;
+    height: 350px;
+    border: 0;
+}
+
+.react-rainbow-customization_issue-link {
+    justify-content: flex-start;
+    margin: 8px 0;
+    width: max-content;
+}
+
+.react-rainbow-customization_ul {
+    list-style: disc;
+    margin: 12px 0 12px 32px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #061c3f;
+    font-family: Lato Light;
+    margin-top: 1rem;
+}
+
+@media (max-width: 650px) {
+    .react-rainbow-customization_top-container-tabset {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    .react-rainbow-customization_top-container-tab a {
+        padding: 0 12px;
+    }
+    .react-rainbow-customization_container {
+        padding: 1rem 1rem 0 1rem;
+    }
+    .react-rainbow-customization_section-heading-container {
+        flex-direction: column;
+    }
+    .react-rainbow-customization_carbon-ad {
+        margin-bottom: 1rem;
+        align-self: center;
+    }
+    .react-rainbow-customization_section-heading {
+        text-align: center;
+    }
+    .react-rainbow-customization_top-container-tab_shortened {
+        overflow: hidden;
+    }
+}

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import { isValidColor } from '../../../styles/helpers/color';
 
 const StyledPercentValue = attachThemeAttrs(styled.h1)`
     font-size: 2rem;
@@ -21,6 +22,11 @@ const StyledPercentValue = attachThemeAttrs(styled.h1)`
         props.variant === 'error' &&
         `
             color: ${props.palette.error.main};
+        `};
+    ${props =>
+        isValidColor(props.color) &&
+        `
+            color: ${props.color};
         `};
 `;
 

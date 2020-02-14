@@ -5,7 +5,7 @@ import StyledRingPath from './styled/ringPath';
 import StyledRingFill from './styled/ringFill';
 import StyledSvg from './styled/svg';
 
-export default function ProgressRing({ percent, variant }) {
+export default function ProgressRing({ percent, variant, color }) {
     return (
         <StyledRingContainer>
             <StyledSvg
@@ -19,6 +19,7 @@ export default function ProgressRing({ percent, variant }) {
                 <StyledRingPath strokeWidth="1.6" fill="none" cx="0" cy="0" r="16" />
                 <StyledRingFill
                     variant={variant}
+                    color={color}
                     strokeWidth="1.6"
                     strokeDasharray={`${percent} ${100 - percent}`}
                     fill="none"
@@ -35,4 +36,9 @@ export default function ProgressRing({ percent, variant }) {
 ProgressRing.propTypes = {
     percent: PropTypes.number.isRequired,
     variant: PropTypes.oneOf(['brand', 'success', 'warning', 'error']).isRequired,
+    color: PropTypes.string,
+};
+
+ProgressRing.defaultProps = {
+    color: '',
 };
