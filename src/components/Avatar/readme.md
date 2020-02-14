@@ -98,9 +98,9 @@ import styled from 'styled-components';
 
 const StyledAvatarContainer = styled.div.attrs(props => {
     if(props.theme.rainbow.palette.isDark) {
-        return {background: '#eee'};
+        return {background: '#f9fafc'};
     }
-    return { background: '#061c3f' };
+    return { background: '#303030' };
 })`
     background-color: ${props => props.background};
     border-radius: 0 0 0.875rem 0.875rem;
