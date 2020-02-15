@@ -95,7 +95,21 @@ import { Avatar } from 'react-rainbow-components';
 import React from 'react';
 import { Avatar } from 'react-rainbow-components';
 
+<<<<<<< HEAD
 <InverseContainer className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
+=======
+const StyledAvatarContainer = styled.div.attrs(props => {
+    if(props.theme.rainbow.palette.isDark) {
+        return {background: '#f9fafc'};
+    }
+    return { background: '#303030' };
+})`
+    background-color: ${props => props.background};
+    border-radius: 0 0 0.875rem 0.875rem;
+`;
+
+<StyledAvatarContainer className="rainbow-p-vertical_x-large rainbow-p-left_medium">
+>>>>>>> c21e1eb0fb67908612d1f4d5a91b44d28d7911b5
     <div className="rainbow-m-horizontal_medium">
         <Avatar assistiveText="Jane Doe" initials="JD" title="Jane Doe" initialsVariant="inverse" />
     </div>

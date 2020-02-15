@@ -3,9 +3,9 @@ import attachThemeAttrs from '../../../src/styles/helpers/attachThemeAttr';
 
 const StyledInverseContainer = attachThemeAttrs(styled.div).attrs(props => {
     if (props.palette.isDark) {
-        return { background: '#fff' };
+        return { background: '#f9fafc' };
     }
-    return { background: '#061c3f' };
+    return { background: '#303030' };
 })`
     background-color: ${props => props.background};
     border-radius: 0 0 0.875rem 0.875rem;
