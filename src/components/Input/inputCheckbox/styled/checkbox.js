@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import HiddenElement from '../../../Structural/hiddenElement';
 import { BORDER_RADIUS_3 } from '../../../../styles/borderRadius';
 import { MARGIN_SMALL } from '../../../../styles/margins';
-import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 
 function getInitialBorder(props) {
     if (props.error) {

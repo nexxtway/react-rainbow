@@ -937,7 +937,7 @@ const FormModal = () => {
         </div>
 
         <div>
-            <img className="rainbow-m-bottom_medium" src="/images/illustrations/illustration-traveler.svg" />
+            <img className="rainbow-m-bottom_medium" src="/images/illustrations/Illustration-traveler.svg" />
         </div>
     </Content>
 

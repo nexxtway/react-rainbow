@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { FONT_SIZE_HEADING_LARGE } from '../../../styles/fontSizes';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledHeaderTitle = attachThemeAttrs(styled.h1)`
     color: ${props => props.palette.brand.main};

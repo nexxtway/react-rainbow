@@ -118,6 +118,32 @@ initialState = { value: new Date() };
 </div>
 ```
 
+##### DateTimePicker with time in 24h format:
+
+```js
+import React from 'react';
+import { DateTimePicker } from 'react-rainbow-components';
+
+const containerStyles = {
+    maxWidth: 400,
+};
+
+initialState = { value: new Date('2019-10-25 18:44') };
+
+<div
+    className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
+    style={containerStyles}
+>
+    <DateTimePicker
+        value={state.value}
+        label="DateTimePicker Label"
+        onChange={value => setState({ value })}
+        className="rainbow-m-around_small"
+        hour24
+    />
+</div>
+```
+
 ##### DateTimePicker required:
 
 ```js
@@ -158,7 +184,7 @@ initialState = { value: undefined };
     style={containerStyles}
 >
     <DateTimePicker
-        id="datetimepicker-9"
+        id="datetimepicker-11"
         required
         error="Field is required"
         placeholder="Select date and time"

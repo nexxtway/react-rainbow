@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { MARGIN_SMALL } from '../../../styles/margins';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 
