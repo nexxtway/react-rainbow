@@ -94,21 +94,10 @@ import { Avatar } from 'react-rainbow-components';
 ```js
 import React from 'react';
 import { Avatar } from 'react-rainbow-components';
-import styled from 'styled-components';
 
-const StyledAvatarContainer = styled.div.attrs(props => {
-    if(props.theme.rainbow.palette.isDark) {
-        return {background: '#eee'};
-    }
-    return { background: '#061c3f' };
-})`
-    background-color: ${props => props.background};
-    border-radius: 0 0 0.875rem 0.875rem;
-`;
-
-<StyledAvatarContainer className="rainbow-p-vertical_x-large rainbow-p-left_medium">
+<InverseContainer className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <div className="rainbow-m-horizontal_medium">
         <Avatar assistiveText="Jane Doe" initials="JD" title="Jane Doe" initialsVariant="inverse" />
     </div>
-</StyledAvatarContainer>
+</InverseContainer>
 ```
