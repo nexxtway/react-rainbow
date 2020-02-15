@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_4, COLOR_DARK_1 } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 
-const StyledOl = styled.ol`
+const StyledOl = attachThemeAttrs(styled.ol)`
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -16,23 +16,20 @@ const StyledOl = styled.ol`
 
     > li:last-child > a {
         font-weight: 900;
-        color: ${COLOR_DARK_1};
+        color: ${props => props.palette.text.main};
         pointer-events: none;
     }
 
     > li:last-child > button {
         font-weight: 900;
-        color: ${COLOR_DARK_1};
+        color: ${props => props.palette.text.main};
         pointer-events: none;
     }
 
     > li:not(:last-child)::after {
         margin: 0 10px;
         content: '>';
-
-        :hover {
-            color: ${COLOR_GRAY_4};
-        }
+        color: ${props => props.palette.text.label};
     }
 `;
 
