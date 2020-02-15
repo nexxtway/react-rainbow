@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import Avatar from '../../Avatar';
 
 const StyledAvatar = attachThemeAttrs(styled(Avatar))`
