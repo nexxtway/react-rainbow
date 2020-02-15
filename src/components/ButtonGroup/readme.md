@@ -140,7 +140,7 @@ import { ButtonGroup, Button, ButtonIcon } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faPencilAlt, faPaste, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
-<div className="rainbow-border-radius_oval rainbow-background-color_dark-1 rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
+<InverseContainer className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <ButtonGroup className="rainbow-m-around_medium">
         <Button label="Refresh" variant="border-inverse" />
         <Button label="Edit" variant="border-inverse" />
@@ -167,7 +167,7 @@ import { faPlus, faPencilAlt, faPaste, faAngleDown } from '@fortawesome/free-sol
         <ButtonIcon variant="border-inverse" icon={<FontAwesomeIcon icon={faPaste} />} />
         <ButtonIcon variant="border-inverse" icon={<FontAwesomeIcon icon={faAngleDown} />} />
     </ButtonGroup>
-</div>
+</InverseContainer>
 ```
 
 ##### button group with content layout
