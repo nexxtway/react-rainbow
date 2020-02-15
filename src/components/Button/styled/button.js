@@ -1,6 +1,6 @@
 /* eslint-disable indent */
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { COLOR_WHITE, COLOR_GRAY_3, COLOR_GRAY_4 } from '../../../styles/colors';
 import { FONT_SIZE_HEADING_SMALL } from '../../../styles/fontSizes';
 

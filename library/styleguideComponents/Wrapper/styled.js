@@ -4,7 +4,7 @@ import { ButtonMenu, Badge } from '../../../src/components/index';
 import { COLOR_BRAND } from '../../../src/styles/colors';
 import getTheme from '../../../src/styles/helpers/getTheme';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import attachThemeAttrs from '../../../src/styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../src/styles/helpers/attachThemeAttrs';
 
 export const StyledWrapper = attachThemeAttrs(styled.div)`
     padding: 0;
