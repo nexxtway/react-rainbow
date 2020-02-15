@@ -1,17 +1,8 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_4 } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
-import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledButton = styled.button.attrs(props => {
-    const theme = getTheme(props);
-    const { brand } = theme.palette;
-    const { main: brandMainColor } = brand;
-
-    return {
-        brandMainColor,
-    };
-})`
+const StyledButton = attachThemeAttrs(styled.button)`
     font: inherit;
     background: none;
     border: none;
@@ -20,7 +11,7 @@ const StyledButton = styled.button.attrs(props => {
     cursor: pointer;
     letter-spacing: 0.3px;
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
-    color: ${COLOR_GRAY_4};
+    color: ${props => props.palette.text.label};
     margin: 0;
     overflow: visible;
     text-transform: none;
@@ -33,13 +24,13 @@ const StyledButton = styled.button.attrs(props => {
     }
 
     :hover {
-        color: ${props => props.brandMainColor};
+        color: ${props => props.palette.brand.main};
     }
 
     ${props =>
         props.disabled &&
         `
-            color: #d2d4de;
+            color: ${props.palette.text.disabled};
             pointer-events: none;
     `};
 `;
