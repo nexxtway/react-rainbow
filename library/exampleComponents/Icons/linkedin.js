@@ -1,42 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import isValidColor from '../../../src/styles/helpers/color/isValidColor';
 
 const Linkedin = props => {
-    const { className, style } = props;
+    const { className, style, color } = props;
     return (
         <svg
             className={className}
             style={style}
-            width="17px"
-            height="16px"
-            viewBox="0 0 17 16"
+            width="40px"
+            height="38px"
+            viewBox="0 0 40 38"
             version="1.1"
         >
-            <g id="components" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+            <title>linkedin</title>
+            <g id="pages" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g
-                    id="Components-Radio-Button-Group"
-                    transform="translate(-352.000000, -1590.000000)"
-                    fill="#0E76A8"
+                    id="customization-theming"
+                    transform="translate(-1011.000000, -1802.000000)"
+                    fill={isValidColor(color) ? color : '#0077b5'}
                     fillRule="nonzero"
                 >
-                    <g id="Group-34" transform="translate(322.000000, 1409.000000)">
-                        <g id="Group-30">
-                            <g id="Group-188">
-                                <g id="Group-187" transform="translate(0.000000, 120.000000)">
-                                    <g id="Group-29" transform="translate(0.000000, 26.000000)">
-                                        <g
-                                            id="Group-34-Copy-3"
-                                            transform="translate(20.000000, 26.000000)"
-                                        >
-                                            <g id="linkedin-copy-2">
-                                                <path
-                                                    d="M10.1193288,24.6743014 L13.482,24.6743014 L13.482,13.4662192 L10.1193288,13.4662192 L10.1193288,24.6743014 Z M23.2197534,13.0779863 C21.5877945,13.0779863 20.1275753,13.6739589 19.0917123,14.9894384 L19.0917123,13.4293562 L15.7167123,13.4293562 L15.7167123,24.6744247 L19.0917123,24.6744247 L19.0917123,18.5933836 C19.0917123,17.3082329 20.2691096,16.0545205 21.7438767,16.0545205 C23.2186438,16.0545205 23.5823425,17.3082329 23.5823425,18.5619452 L23.5823425,24.6733151 L26.9450137,24.6733151 L26.9450137,18.3116712 C26.9448904,13.8927945 24.8528219,13.0779863 23.2197534,13.0779863 Z M11.7849452,12.3461507 C12.7142877,12.3461507 13.4685616,11.5918767 13.4685616,10.6625342 C13.4685616,9.73319178 12.7142877,8.9790411 11.7849452,8.9790411 C10.8556027,8.9790411 10.1013288,9.73331507 10.1013288,10.6626575 C10.1013288,11.592 10.8556027,12.3461507 11.7849452,12.3461507 Z"
-                                                    id="Shape"
-                                                />
-                                            </g>
-                                        </g>
-                                    </g>
-                                </g>
+                    <g id="tile/social-copy-3" transform="translate(999.000000, 1770.000000)">
+                        <g id="tile/social">
+                            <g id="linkedin" transform="translate(12.000000, 32.000000)">
+                                <path
+                                    d="M0.0427459907,37.2727472 L8.02834118,37.2727472 L8.02834118,10.6560485 L0.0427459907,10.6560485 L0.0427459907,37.2727472 Z M31.1533366,9.73408188 C27.2777977,9.73408188 23.8101024,11.1493841 21.3501585,14.2733548 L21.3501585,10.568507 L13.3352852,10.568507 L13.3352852,37.27304 L21.3501585,37.27304 L21.3501585,22.8319219 C21.3501585,19.7799753 24.1462147,16.8026877 27.6484581,16.8026877 C31.1507016,16.8026877 32.0144048,19.7799753 32.0144048,22.7572628 L32.0144048,37.270405 L40,37.270405 L40,22.1629179 C39.9997072,11.6690699 35.0315105,9.73408188 31.1533366,9.73408188 Z M3.99821404,7.99613529 C6.20519539,7.99613529 7.99642807,6.20490261 7.99642807,3.99792126 C7.99642807,1.7909399 6.20519539,0 3.99821404,0 C1.79123268,0 0,1.79123268 0,3.99821404 C0,6.20519539 1.79123268,7.99613529 3.99821404,7.99613529 Z"
+                                    id="Shape"
+                                />
                             </g>
                         </g>
                     </g>
@@ -49,11 +40,13 @@ const Linkedin = props => {
 Linkedin.propTypes = {
     className: PropTypes.string,
     style: PropTypes.object,
+    color: PropTypes.string,
 };
 
 Linkedin.defaultProps = {
     className: undefined,
     style: undefined,
+    color: undefined,
 };
 
 export default Linkedin;

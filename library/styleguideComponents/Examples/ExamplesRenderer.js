@@ -11,16 +11,11 @@ var styles = function styles() {
 };
 
 export function ExamplesRenderer(_ref) {
-    var classes = _ref.classes,
-        name = _ref.name,
-        children = _ref.children;
-    return React.createElement(
-        'article',
-        {
-            className: classes.root,
-            'data-testid': name + '-examples',
-        },
-        children,
+    var { classes, name, children } = _ref;
+    return (
+        <article className={classes.root} data-testid={name + '-examples'}>
+            {children}
+        </article>
     );
 }
 ExamplesRenderer.propTypes = {

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import isValidColor from '../../../src/styles/helpers/color/isValidColor';
 
-const GoogleIcon = props => {
+const Google = props => {
     const { className, style, color } = props;
     const isValid = isValidColor(color);
     return (
@@ -14,8 +14,8 @@ const GoogleIcon = props => {
             viewBox="0 0 40 40"
             version="1.1"
         >
-            <title>icon-facebook</title>
-            <g id="components" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <title>icon-google</title>
+            <g id="components" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g id="Components-Button-Group" transform="translate(-459.000000, -1407.000000)">
                     <g id="Group-178" transform="translate(224.000000, 1305.000000)">
                         <g id="Group-176">
@@ -25,7 +25,7 @@ const GoogleIcon = props => {
                                         <g id="google" transform="translate(4.000000, 4.000000)">
                                             <g
                                                 transform="translate(0.833333, 0.833333)"
-                                                fill-rule="nonzero"
+                                                fillRule="nonzero"
                                                 id="Shape"
                                             >
                                                 <path
@@ -57,16 +57,16 @@ const GoogleIcon = props => {
     );
 };
 
-GoogleIcon.propTypes = {
+Google.propTypes = {
     className: PropTypes.string,
     style: PropTypes.object,
     color: PropTypes.string,
 };
 
-GoogleIcon.defaultProps = {
+Google.defaultProps = {
     className: undefined,
     style: undefined,
     color: undefined,
 };
 
-export default GoogleIcon;
+export default Google;

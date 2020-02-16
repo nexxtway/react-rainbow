@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import isValidColor from '../../../src/styles/helpers/color/isValidColor';
 
-const TwitterIcon = props => {
+const Twitter = props => {
     const { className, style, color } = props;
     return (
         <svg
@@ -14,12 +14,12 @@ const TwitterIcon = props => {
             version="1.1"
         >
             <title>icon-twitter</title>
-            <g id="components" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="components" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g
                     id="Components-Button-Group"
                     transform="translate(-683.000000, -1411.000000)"
                     fill={isValidColor(color) ? color : '#00b0f3'}
-                    fill-rule="nonzero"
+                    fillRule="nonzero"
                 >
                     <g id="Group-178" transform="translate(224.000000, 1305.000000)">
                         <g id="Group-176">
@@ -44,16 +44,16 @@ const TwitterIcon = props => {
     );
 };
 
-TwitterIcon.propTypes = {
+Twitter.propTypes = {
     className: PropTypes.string,
     style: PropTypes.object,
     color: PropTypes.string,
 };
 
-TwitterIcon.defaultProps = {
+Twitter.defaultProps = {
     className: undefined,
     style: undefined,
     color: undefined,
 };
 
-export default TwitterIcon;
+export default Twitter;

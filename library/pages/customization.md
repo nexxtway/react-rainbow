@@ -15,19 +15,19 @@ import { Button } from 'react-rainbow-components';
 
 ##### theme example
 ```js
-import React from 'react';
+import React, { useState } from 'react';
 import {
-  Button,
-  ButtonGroup,
-  ButtonIcon,
-  ButtonMenu,
-  MenuItem,
-  MenuDivider,
-  Input,
-  Sidebar,
-  SidebarItem,
-  Card,
-  ProgressCircular,
+    Button,
+    ButtonGroup,
+    ButtonIcon,
+    ButtonMenu,
+    MenuItem,
+    MenuDivider,
+    Input,
+    Sidebar,
+    SidebarItem,
+    Card,
+    ProgressCircular,
 } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -37,10 +37,10 @@ import {
     faSearch,
     faTasks
 } from '@fortawesome/free-solid-svg-icons';
-import FacebookIcon from '../exampleComponents/Icons/facebookIcon';
-import GoogleIcon from '../exampleComponents/Icons/googleIcon';
-import TwitterIcon from '../exampleComponents/Icons/twitterIcon';
-import LinkedinIcon from '../exampleComponents/Icons/linkedinIcon';
+import Facebook from '../exampleComponents/Icons/facebook';
+import Google from '../exampleComponents/Icons/google';
+import Twitter from '../exampleComponents/Icons/twitter';
+import Linkedin from '../exampleComponents/Icons/linkedin';
 import dashboard from '../../assets/icons/dashboard.svg';
 import puzzle from '../../assets/icons/puzzle.svg';
 import messages from '../../assets/icons/messages.svg';
@@ -54,7 +54,7 @@ const Container = styled.div.attrs(props => {
 })`
     position: relative;
     padding-left: 90px;
-	min-height: 257px;
+    min-height: 257px;
 `;
 
 const Title = styled.h2.attrs(props => {
@@ -79,38 +79,23 @@ const SidebarContainer = styled.aside.attrs(props => {
     return props.theme.rainbow.palette;
 })`
     background: ${props => props.background.main};
-	width: 88px;
+    width: 88px;
     position: absolute;
     border-bottom-left-radius: 0.875rem;
-	left: 0px;
-	height: 100%;
+    left: 0px;
+    height: 100%;
 `;
 
-class SimpleSidebar extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            selectedItem: 'Dashboard',
-        };
-        this.handleOnSelect = this.handleOnSelect.bind(this);
-    }
-
-    handleOnSelect(e, selectedItem) {
-        return this.setState({ selectedItem });
-    }
-
-    render() {
-        const { selectedItem } = this.state;
-
-        return (
-            <Sidebar selectedItem={selectedItem} onSelect={this.handleOnSelect} id="sidebar-1">
-                <SidebarItem icon={<img src={dashboard} />} name="Dashboard" label="Dashboard" />
-                <SidebarItem icon={<img src={puzzle} />} name="Components" label="Components" />
-                <SidebarItem icon={<img src={messages} />} name="Messages" label="Messages" />
-            </Sidebar>
-        );
-    }
-}
+const SimpleSidebar = function(props) {
+    const [activeItem, setActiveItem] = useState('Dashboard');
+    return (
+        <Sidebar selectedItem={activeItem} onSelect={(e, name) => setActiveItem(name)} id="sidebar-1">
+            <SidebarItem icon={<img src={dashboard} />} name="Dashboard" label="Dashboard" />
+            <SidebarItem icon={<img src={puzzle} />} name="Components" label="Components" />
+            <SidebarItem icon={<img src={messages} />} name="Messages" label="Messages" />
+        </Sidebar>
+    );
+};
 
 const Content = styled.section`
     @media (max-width: 767px) {
@@ -177,7 +162,7 @@ const socials = [
     {
         url: 'https://facebook.com',
         name: 'facebook',
-        icon: <FacebookIcon color="#ffffff"/>,
+        icon: <Facebook color="#ffffff"/>,
         countInThousands: 143,
         percent: 60,
         background: '#3c5997',
@@ -186,7 +171,7 @@ const socials = [
     {
         url: 'https://google.com',
         name: 'google',
-        icon: <GoogleIcon/>,
+        icon: <Google/>,
         countInThousands: 20,
         percent: 45,
         background: '#ffffff',
@@ -195,7 +180,7 @@ const socials = [
     {
         url: 'https://twitter.com',
         name: 'twitter',
-        icon: <TwitterIcon color="#ffffff"/>,
+        icon: <Twitter color="#ffffff"/>,
         countInThousands: 13,
         percent: 72,
         background: '#00b0f3',
@@ -204,13 +189,76 @@ const socials = [
     {
         url: 'https://linkedin.com',
         name: 'linkedin',
-        icon: <LinkedinIcon color="#ffffff"/>,
+        icon: <Linkedin color="#ffffff"/>,
         countInThousands: 10,
         percent: 30,
         background: '#0077b5',
         color: '#ffffff',
     }
 ];
+
+const Social = function (props) {
+    const { socials } = props;
+    const renderCards = socials.map( (social, index) => {
+        return (
+            <SocialContentLink key={index} href={social.url} target="_blank">
+                <SocialCard 
+                    background={social.background} 
+                    color={ social.name === 'google' ? '#061c3f' : social.color} 
+                    className="rainbow-m-horizontal_medium rainbow-p-around_medium rainbow_vertical-stretch rainbow-m-bottom_medium"
+                >
+                    <SocialContent className="rainbow-inline-flex rainbow-align-content_space-between">
+                        <div>
+                            {social.icon}
+                        </div>
+                        <div>
+                            <span>{ social.name }</span>
+                            <SocialContentCount>{ social.countInThousands}K</SocialContentCount>
+                        </div>
+                    </SocialContent>
+                </SocialCard>
+            </SocialContentLink>
+        );
+    });
+    return (
+        <Content className="rainbow-p-vertical_large rainbow-align-content_space-between rainbow-m-horizontal_medium rainbow-flex">{renderCards}</Content>
+    );
+};
+
+const ColorProgressCircular = styled(ProgressCircular)`
+    circle:nth-child(2) {
+        stroke: ${props => props.color};
+    }
+    h1 {
+        color: ${props => props.color};
+    }
+`;
+
+const SocialPercent = function (props) {
+    const { socials } = props;
+    const renderCards = socials.map( (social, index) => {
+        return (
+            <Card key={index} className="rainbow-m-horizontal_large rainbow-m-bottom_large rainbow-p-around_small">
+                <PercentHeader className="rainbow-font-size-heading_medium">{social.name}</PercentHeader>
+                <PercentSubtitle>Active users</PercentSubtitle>
+                <div className="rainbow-p-around_medium">
+                    <ColorProgressCircular
+                    color={ social.name === 'google' ? social.color : social.background}
+                    value={social.percent} />
+                </div>
+                <div className="rainbow-flex rainbow_vertical-stretch">
+                    <ActiveCirlce color={ social.name === 'google' ? social.color : social.background}>
+                        <FontAwesomeIcon icon={faCircle} />
+                    </ActiveCirlce>
+                    <h3 className="rainbow-font-size_small">Active Now</h3>
+                </div>
+            </Card>
+        );
+    });
+    return (
+        <Content className="rainbow-p-vertical_large rainbow-align-content_space-between rainbow-m-horizontal_medium rainbow-flex">{renderCards}</Content>
+    )
+};
 
 <div>
     <GlobalHeader src="images/user/user2.jpg">
@@ -251,50 +299,8 @@ const socials = [
         </SidebarContainer>
         <Title>Dashboard</Title>
         <Subtitle>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Subtitle>
-        <Content className="rainbow-p-vertical_large rainbow-align-content_space-between rainbow-m-horizontal_medium rainbow-flex">
-            {socials.map( (social) => {
-                return (
-                    <SocialContentLink href={social.url} target="_blank">
-                        <SocialCard 
-                            background={social.background} 
-                            color={ social.name === 'google' ? '#061c3f' : social.color} 
-                            className="rainbow-m-horizontal_medium rainbow-p-around_medium rainbow_vertical-stretch rainbow-m-bottom_medium"
-                        >
-                            <SocialContent className="rainbow-inline-flex rainbow-align-content_space-between">
-                                <div>
-                                    {social.icon}
-                                </div>
-                                <div>
-                                    <span>{ social.name }</span>
-                                    <SocialContentCount>{ social.countInThousands}K</SocialContentCount>
-                                </div>
-                            </SocialContent>
-                        </SocialCard>
-                    </SocialContentLink>
-                );
-            })}
-        </Content>
-        <Content className="rainbow-p-vertical_large rainbow-align-content_space-between rainbow-m-horizontal_medium rainbow-flex">
-            {socials.map( (social) => {
-                return (
-                    <Card className="rainbow-m-horizontal_large rainbow-m-bottom_large rainbow-p-around_small">
-                        <PercentHeader className="rainbow-font-size-heading_medium">{social.name}</PercentHeader>
-                        <PercentSubtitle>Active users</PercentSubtitle>
-                        <div className="rainbow-p-around_medium">
-                            <ProgressCircular
-                            color={ social.name === 'google' ? social.color : social.background}
-                            value={social.percent} />
-                        </div>
-                        <div className="rainbow-flex rainbow_vertical-stretch">
-                            <ActiveCirlce color={ social.name === 'google' ? social.color : social.background}>
-                                <FontAwesomeIcon icon={faCircle} />
-                            </ActiveCirlce>
-                            <h3 className="rainbow-font-size_small">Active Now</h3>
-                        </div>
-                    </Card>
-              );
-            })}
-        </Content>
+        <Social socials={socials}/>
+        <SocialPercent socials={socials}/>
   </Container>
 </div>
 ```

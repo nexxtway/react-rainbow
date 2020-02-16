@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import isValidColor from '../../../src/styles/helpers/color/isValidColor';
 
-const FacebookIcon = props => {
+const Facebook = props => {
     const { className, style, color } = props;
     return (
         <svg
@@ -14,12 +14,12 @@ const FacebookIcon = props => {
             version="1.1"
         >
             <title>icon-facebook</title>
-            <g id="components" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="components" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g
                     id="Components-Button-Group"
                     transform="translate(-246.000000, -1407.000000)"
                     fill={isValidColor(color) ? color : '#3c5997'}
-                    fill-rule="nonzero"
+                    fillRule="nonzero"
                 >
                     <g id="Group-178" transform="translate(224.000000, 1305.000000)">
                         <g id="Group-176">
@@ -41,16 +41,16 @@ const FacebookIcon = props => {
     );
 };
 
-FacebookIcon.propTypes = {
+Facebook.propTypes = {
     className: PropTypes.string,
     style: PropTypes.object,
     color: PropTypes.string,
 };
 
-FacebookIcon.defaultProps = {
+Facebook.defaultProps = {
     className: undefined,
     style: undefined,
     color: undefined,
 };
 
-export default FacebookIcon;
+export default Facebook;

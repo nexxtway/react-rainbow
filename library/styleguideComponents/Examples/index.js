@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Playground from 'rsg-components/Playground';
 import Markdown from 'rsg-components/Markdown';
 import ExamplesRenderer from './ExamplesRenderer';
+import CustomizationPage from '../../pages/CustomizationPage';
 
 export default function Examples(_ref1, _ref2) {
     const { examples, name, exampleMode } = _ref1;
@@ -18,20 +19,21 @@ export default function Examples(_ref1, _ref2) {
                         <Playground
                             code={examples[0].content}
                             evalInContext={examples[0].evalInContext}
+                            key={`${codeRevision}/0`}
                             name={name}
+                            index={0}
                             settings={examples[0].settings}
                             exampleMode={exampleMode}
                         />
                     </div>
                 </ExamplesRenderer>
             );
-        } else {
-            return (
-                <ExamplesRenderer name={name}>
-                    <CustomizationPage {..._ref1} codeRevision={codeRevision} />;
-                </ExamplesRenderer>
-            );
         }
+        return (
+            <ExamplesRenderer name={name}>
+                <CustomizationPage {..._ref1} codeRevision={codeRevision} />;
+            </ExamplesRenderer>
+        );
     }
 
     return (
