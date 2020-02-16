@@ -1,11 +1,11 @@
-import { getContrastText } from '../color';
+import { getContrastText, colorToRgba } from '../color';
 import { COLOR_BRAND, COLOR_SUCCESS, COLOR_WARNING } from '../../colors';
 
-const mockDarkenColorBrand = 'rgb(0, 163, 220)';
-const mockDarkenColorSuccess = 'rgb(26, 209, 163)';
+const mockDarkenColorBrand = 'rgba(0, 163, 220, 1)';
+const mockDarkenColorSuccess = 'rgba(26, 209, 163, 1)';
 const mockColors = [
     {
-        background: COLOR_BRAND,
+        background: colorToRgba(COLOR_BRAND),
         result: 'rgba(255, 255, 255, 1)',
         ratio: 2.328,
     },
@@ -20,7 +20,7 @@ const mockColors = [
         ratio: 3.992,
     },
     {
-        background: COLOR_SUCCESS,
+        background: colorToRgba(COLOR_SUCCESS),
         result: 'rgba(255, 255, 255, 1)',
         ratio: 1.569,
     },
@@ -35,7 +35,7 @@ const mockColors = [
         ratio: 1.962,
     },
     {
-        background: COLOR_WARNING,
+        background: colorToRgba(COLOR_WARNING),
         result: 'rgba(0, 0, 0, 0.87)',
         ratio: 1.512,
     },
