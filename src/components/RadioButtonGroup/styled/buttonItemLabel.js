@@ -14,34 +14,36 @@ const StyledButtonItemLabel = attachThemeAttrs(styled.label)`
     &:hover {
         cursor: pointer;
     }
+    ${props => {
+        const brandContrastColor = props.palette.getContrastText(props.palette.brand.main);
 
-    ${props =>
-        props.isChecked &&
-        `
-            color: ${props.palette.text.main};
-        `};
-    ${props =>
-        props.disabled &&
-        `   
-            background-color: transparent;
-            color: ${props.palette.text.disabled};
+        return `
+                ${props.isChecked &&
+                    `
+                    color: ${props.palette.text.main};
+                `};
+                ${props.disabled &&
+                    `   
+                    background-color: transparent;
+                    color: ${props.palette.text.disabled};
+        
+                    :hover {
+                        cursor: not-allowed;
+                    }
+                `};
+                ${props.variant === 'brand' &&
+                    props.isChecked &&
+                    `
+                    color: ${brandContrastColor};
+                `};
+                ${props.variant === 'inverse' &&
+                    props.isChecked &&
+                    `
+                    color: ${brandContrastColor};
+                `};
+            `;
+    }};
 
-            :hover {
-                cursor: not-allowed;
-            }
-        `};
-    ${props =>
-        props.variant === 'brand' &&
-        props.isChecked &&
-        `
-            color: ${props.palette.getContrastText(props.palette.brand.main)};
-        `};
-    ${props =>
-        props.variant === 'inverse' &&
-        props.isChecked &&
-        `
-            color: ${props.palette.getContrastText(props.palette.brand.main)};
-        `};
 `;
 
 export default StyledButtonItemLabel;
