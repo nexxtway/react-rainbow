@@ -49,12 +49,12 @@ export default function CustomizationPage(props) {
             <section className="react-rainbow-customization_container">
                 <RenderIf isTrue={activeTab === 'theming'}>
                     <div>
-                        <h2 className="react-rainbow-customization_section-heading-2">
+                        <h2 className="react-rainbow-getting-started_section-heading">
                             Customize React Rainbow with your own palette. You can change the main
                             colors on your palette brand, success, warning, error and more…
                         </h2>
                         <h2 className="react-rainbow-customization_section-heading-2">Overview</h2>
-                        <h3 className="react-rainbow-customization_section-heading">
+                        <h3 className="react-rainbow-customization_section-text">
                             The theme specifies the color of the components, darkness of the
                             surfaces, level of shadow, appropriate opacity of texts elements, etc.
                             Themes let you apply a consistent tone to your app. It allows you to
@@ -66,7 +66,7 @@ export default function CustomizationPage(props) {
                         <h2 className="react-rainbow-customization_section-heading-2">
                             Application
                         </h2>
-                        <h3 className="react-rainbow-customization_section-heading">
+                        <h3 className="react-rainbow-customization_section-text">
                             If you wish to customize the theme, you need to use the{' '}
                             {'<Application />'} component in order to inject a theme into your
                             application. However, this is optional; React Rainbow components come
@@ -88,18 +88,20 @@ export default function CustomizationPage(props) {
                         />
 
                         <h2 className="react-rainbow-customization_section-heading-2">API</h2>
-                        <h3 className="react-rainbow-customization_section-heading">
+                        <h3 className="react-rainbow-customization_section-text">
                             Generate a theme base on the options received.
                         </h3>
                         <br />
                         <CodeEditor code={defaultTheme} />
                         <h3 className="react-rainbow-customization_section-heading">Palette</h3>
-                        <h3 className="react-rainbow-customization_section-heading">
+                        <h3 className="react-rainbow-customization_section-text">
                             The palette enables you to modify the color of the components to suit
                             your brand.
                         </h3>
-                        <h3 className="react-rainbow-customization_section-heading">Intentions:</h3>
-                        <h3 className="react-rainbow-customization_section-heading">
+                        <h3 className="react-rainbow-getting-started_section-heading">
+                            Intentions:
+                        </h3>
+                        <h3 className="react-rainbow-customization_section-text">
                             A color intention is a mapping of a palette to a given intention within
                             your application. The theme exposes the following color intentions:
                         </h3>
@@ -124,7 +126,7 @@ export default function CustomizationPage(props) {
                                 user.
                             </li>
                         </ul>
-                        <h3 className="react-rainbow-customization_section-heading">
+                        <h3 className="react-rainbow-customization_section-text">
                             The default palette uses the ….
                         </h3>
 

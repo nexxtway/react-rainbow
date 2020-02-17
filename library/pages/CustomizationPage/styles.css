@@ -23,12 +23,21 @@
     min-width: 340px;
 }
 
+.react-rainbow-customization_section-text {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #576574;
+    font-family: Lato Light;
+    margin-top: 1rem;
+}
+
 .react-rainbow-customization_section-heading {
     font-size: 1rem;
     line-height: 1.5;
     color: #061c3f;
     font-family: Lato Light;
-    margin-top: 1rem;
+    text-decoration: underline;
+    margin-top: 1.5rem;
 }
 
 .react-rainbow-customization_section-heading-2 {
@@ -74,9 +83,6 @@
     line-height: 1.5;
     font-style: italic;
 }
-.react-rainbow-customization_top-container-tab {
-    overflow: unset;
-}
 
 .react-rainbow-customization_example {
     width: 100%;
@@ -104,9 +110,6 @@
     .react-rainbow-customization_top-container-tabset {
         padding-left: 0.5rem;
         padding-right: 0.5rem;
-    }
-    .react-rainbow-customization_top-container-tab a {
-        padding: 0 12px;
     }
     .react-rainbow-customization_container {
         padding: 1rem 1rem 0 1rem;
