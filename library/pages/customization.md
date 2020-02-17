@@ -1,22 +1,31 @@
 ##### button brand
 ```js
 import React from 'react';
-import { Button } from 'react-rainbow-components';
+import { Application, Button } from 'react-rainbow-components';
 
-<div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
+const theme = {
+    rainbow: {
+        palette: {
+            brand: '#ffcc23',
+        },
+    },
+};
+
+<Application theme={theme} className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <Button
         label="Button Brand"
         onClick={() => alert('clicked!')}
         variant="brand"
         className="rainbow-m-around_medium"
     />
-</div>
+</Application>
 ```
 
 ##### theme example
 ```js
 import React, { useState } from 'react';
 import {
+    Application,
     Button,
     ButtonGroup,
     ButtonIcon,
@@ -45,6 +54,15 @@ import dashboard from '../../assets/icons/dashboard.svg';
 import puzzle from '../../assets/icons/puzzle.svg';
 import messages from '../../assets/icons/messages.svg';
 import styled from 'styled-components';
+
+const theme = {
+    rainbow: {
+        palette: {
+            brand: '#6860db',
+            mainBackground: '#f2f2f2',
+        },
+    },
+};
 
 const containerStyles = {
     maxWidth: 200,
@@ -260,7 +278,7 @@ const SocialPercent = function (props) {
     )
 };
 
-<div>
+<Application theme={theme}>
     <GlobalHeader src="images/user/user2.jpg">
         <Input
         label="aplication component search"
@@ -302,5 +320,5 @@ const SocialPercent = function (props) {
         <Social socials={socials}/>
         <SocialPercent socials={socials}/>
   </Container>
-</div>
+</Application>
 ```

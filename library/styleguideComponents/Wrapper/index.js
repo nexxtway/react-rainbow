@@ -78,6 +78,23 @@ export default function Wrapper(props) {
         return children;
     }
 
+    if (pageName === 'Customization') {
+        return (
+            <StyledWrapper>
+                <StyledTopBar>
+                    <StyledLeftElement>
+                        <InfoFilled />
+                        <StyledTitle>
+                            The theme support is <StyledBadge label="BETA" /> and{' '}
+                            <StyledBadge label="WIP" />
+                        </StyledTitle>
+                    </StyledLeftElement>
+                </StyledTopBar>
+                <StyledContent>{children}</StyledContent>
+            </StyledWrapper>
+        );
+    }
+
     return (
         <Application theme={theme}>
             <StyledWrapper>

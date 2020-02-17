@@ -95,6 +95,8 @@ module.exports = {
         {
             name: 'Customization',
             content: 'library/pages/customization.md',
+            usageMode: 'expand',
+            exampleMode: 'expand',
         },
         {
             name: 'Experiences',
