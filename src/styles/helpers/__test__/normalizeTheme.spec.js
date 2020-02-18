@@ -4,6 +4,7 @@ import defaultTheme from '../../defaultTheme';
 jest.mock('../color', () => ({
     darken: jest.fn(() => '#ccc'),
     lighten: jest.fn(() => '#ededed'),
+    colorToRgba: jest.fn(() => 'rgba(255, 255, 255, 1)'),
 }));
 
 const rainbowTheme = {
@@ -49,9 +50,9 @@ describe('normalizeTheme', () => {
                 palette: {
                     ...defaultTheme.palette,
                     brand: {
-                        main: '#fff',
-                        dark: '#ccc',
-                        light: '#ededed',
+                        main: 'rgba(255, 255, 255, 1)',
+                        dark: 'rgba(255, 255, 255, 1)',
+                        light: 'rgba(255, 255, 255, 1)',
                     },
                 },
                 shadows: {
