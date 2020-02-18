@@ -39,4 +39,15 @@ describe('formatDateTime', () => {
         expect(formatDateTime(new Date('04/24/2019 13:23'), 'big')).toBe('04/24/2019, 1:23 PM');
         expect(formatDateTime('04/24/2019 20:48', 'short')).toBe('04/24/2019, 8:48 PM');
     });
+    it('should return the right formatted time when in 24h format', () => {
+        expect(formatDateTime(new Date(2019, 3, 24, 18, 34, 43), 'normal', 'en-US', true)).toBe(
+            '04/24/2019, 18:34',
+        );
+        expect(formatDateTime(new Date('04/24/2019 13:23'), 'big', 'en-US', true)).toBe(
+            '04/24/2019, 13:23',
+        );
+        expect(formatDateTime('04/24/2019 20:48', 'short', 'en-US', true)).toBe(
+            '04/24/2019, 20:48',
+        );
+    });
 });

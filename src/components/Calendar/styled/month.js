@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { FONT_SIZE_HEADING_MEDIUM } from '../../../styles/fontSizes';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledMonth = attachThemeAttrs(styled.h3)`
     font-size: ${FONT_SIZE_HEADING_MEDIUM};

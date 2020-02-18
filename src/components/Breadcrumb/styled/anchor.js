@@ -1,20 +1,11 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_4 } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
-import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledAnchor = styled.a.attrs(props => {
-    const theme = getTheme(props);
-    const { brand } = theme.palette;
-    const { main: brandMainColor } = brand;
-
-    return {
-        brandMainColor,
-    };
-})`
+const StyledAnchor = attachThemeAttrs(styled.a)`
     letter-spacing: 0.3px;
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
-    color: ${COLOR_GRAY_4};
+    color: ${props => props.palette.text.label};
     background-color: transparent;
     text-decoration: none;
     transition: color 0.1s linear;
@@ -24,11 +15,11 @@ const StyledAnchor = styled.a.attrs(props => {
     :hover,
     :focus {
         text-decoration: underline;
-        color: ${props => props.brandMainColor};
+        color: ${props => props.palette.brand.main};
     }
 
     :active {
-        color: ${props => props.brandMainColor};
+        color: ${props => props.palette.brand.main};
     }
 
     :active,
@@ -37,13 +28,13 @@ const StyledAnchor = styled.a.attrs(props => {
     }
 
     :hover {
-        color: ${props => props.brandMainColor};
+        color: ${props => props.palette.brand.main};
     }
 
     ${props =>
         props.disabled &&
         `
-            color: #d2d4de;
+            color: ${props.palette.text.disabled};
             pointer-events: none;
     `};
 `;
