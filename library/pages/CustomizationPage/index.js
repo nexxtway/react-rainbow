@@ -12,7 +12,7 @@ const defaultTheme = `const theme = {
         rainbow: {
             palette: {
                 add the normalize API
-        	  },
+        	},
         },
       };
     `;
@@ -60,7 +60,7 @@ export default function CustomizationPage(props) {
                             How you can customize React Rainbow Components?
                         </h2>
                         <h3 className="react-rainbow-customization_section-text">
-                            Customization is allow by using our {'<Application />'} component as a
+                            Customization is allowed by using our {'<Application />'} component as a
                             wrapper of your entire application, the property theme it will accept an
                             object where you can specify your palette of colors.
                         </h3>
@@ -99,11 +99,12 @@ export default function CustomizationPage(props) {
                         </h2>
                         <h3 className="react-rainbow-customization_section-text">
                             You might wonder how all the components colors are being set based on
-                            five colors brand success warning error and mainBackground . Well we do
+                            five colors brand success warning error and mainBackground . Well, we do
                             compute the rest of the color we use in our internal implementation
-                            based on accessibily standars and also we expose those generated values
-                            to you through the react context because you might want to make use of
-                            those values in order to be consistent with the colors of your app.
+                            based on accessibility standards and also we expose those generated
+                            values to you through the react context because you might want to make
+                            use of those values in order to be consistent with the colors of your
+                            app.
                         </h3>
 
                         <CodeEditor code={defaultTheme} />
