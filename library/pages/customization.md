@@ -6,7 +6,7 @@ import { Application, Button } from 'react-rainbow-components';
 const theme = {
     rainbow: {
         palette: {
-            brand: '#ffcc23',
+            brand: '#5c56b6',
         },
     },
 };
