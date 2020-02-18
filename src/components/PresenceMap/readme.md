@@ -18,35 +18,37 @@ const RegularControl = styled(Input).attrs(props => {
     border-radius: ${BORDER_RADIUS_2};
     box-shadow: ${props => props.shadows.shadow_1};
     cursor: pointer;
-    margin: 10px 10px;
     text-align: center;
-    padding: 5px;
+    padding: 0 16px 0 10px;
     width: fit-content;
     display: inline-block;
-    flex-grow: 0;
+    height: 40px;
+    line-height: 36px;
 `;
 
-const CircularControl = styled(ButtonIcon).attrs(props => {
+const MenuControl = styled(Picklist).attrs(props => {
     return props.theme.rainbow;
 })`
-    margin: 10px 10px;
-    display: inline-block;
-    flex-grow: 0;
-`;
-
-const MenuControl = styled(Picklist)`
     cursor: pointer;
-    margin: 10px 10px 10px;
     text-align: center;
-    padding: 5px;
     width: 170px;
     display: inline-block;
     flex-grow: 0;
+    box-shadow: ${props => props.shadows.shadow_1};
+    border-radius: ${BORDER_RADIUS_2};
 `;
 
-const Icon = styled(FontAwesomeIcon)`
-    vertical-align: bottom;
-    margin-top: 20%;
+const Icon = styled(FontAwesomeIcon).attrs(props => {
+    return props.theme.rainbow;
+})`
+    color: ${props => props.palette.brand.main};
+`;
+
+const ControlsContainer = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 12px;
 `;
 
 const markers = [
@@ -162,36 +164,39 @@ const PresenceMapExample = () => {
             type={mapTypeState.name}
             onMarkerClick={(marker, idx) => handleMarkerClick(marker, idx)}
         >
-            <CircularControl
-                size="medium"
-                icon={<FontAwesomeIcon icon={faCrosshairs} className="rainbow-color_brand" />}
-                variant="border-filled"
-                onClick={handleCenterGeolocation}
-            />
-            <RegularControl
-                className="rainbow-m-around_medium"
-                type="checkbox"
-                label="Show Traffic"
-                onClick={handleShowTraffic}
-                checked={showTrafficState} />
-            <RegularControl
-                className="rainbow-m-around_medium"
-                type="checkbox"
-                label="Show Transit"
-                onClick={handleShowTransit}
-                checked={showTransitState} />
-            <MenuControl
-                id="picklist-mapstyle-1"
-                onChange={handleMapStyle}
-                value={mapTypeState}
-                label="Select Map Type"
-                hideLabel
-            >
-                <PicklistOption name="roadmap" label="Roadmap" icon={<LocationIcon />} />
-                <PicklistOption name="satellite" label="Satellite" icon={<LocationIcon />} />
-                <PicklistOption name="hybrid" label="Hybrid" icon={<LocationIcon />} />
-                <PicklistOption name="terrain" label="Terrain" icon={<LocationIcon />} />
-            </MenuControl>
+            <ControlsContainer>
+                <ButtonIcon
+                    size="medium"
+                    icon={<Icon icon={faCrosshairs} />}
+                    variant="border-filled"
+                    onClick={handleCenterGeolocation}
+                    className="rainbow-m-right_medium"
+                />
+                <RegularControl
+                    className="rainbow-m-right_medium"
+                    type="checkbox"
+                    label="Traffic"
+                    onClick={handleShowTraffic}
+                    checked={showTrafficState} />
+                <RegularControl
+                    className="rainbow-m-right_medium"
+                    type="checkbox"
+                    label="Transit"
+                    onClick={handleShowTransit}
+                    checked={showTransitState} />
+                <MenuControl
+                    id="picklist-mapstyle-1"
+                    onChange={handleMapStyle}
+                    value={mapTypeState}
+                    label="Select Map Type"
+                    hideLabel
+                >
+                    <PicklistOption name="roadmap" label="Roadmap" icon={<LocationIcon />} />
+                    <PicklistOption name="satellite" label="Satellite" icon={<LocationIcon />} />
+                    <PicklistOption name="hybrid" label="Hybrid" icon={<LocationIcon />} />
+                    <PicklistOption name="terrain" label="Terrain" icon={<LocationIcon />} />
+                </MenuControl>
+            </ControlsContainer>
         </PresenceMap>
     );
 }
