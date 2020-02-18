@@ -49,10 +49,6 @@ export default function CustomizationPage(props) {
             <section className="react-rainbow-customization_container">
                 <RenderIf isTrue={activeTab === 'theming'}>
                     <div>
-                        <h2 className="react-rainbow-getting-started_section-heading">
-                            Customize React Rainbow with your own palette. You can change the main
-                            colors on your palette brand, success, warning, error and more…
-                        </h2>
                         <h2 className="react-rainbow-customization_section-heading-2">Overview</h2>
                         <h3 className="react-rainbow-customization_section-text">
                             The theme specifies the color of the components, darkness of the
@@ -69,10 +65,20 @@ export default function CustomizationPage(props) {
                         <h3 className="react-rainbow-customization_section-text">
                             If you wish to customize the theme, you need to use the{' '}
                             {'<Application />'} component in order to inject a theme into your
-                            application. However, this is optional; React Rainbow components come
-                            with a default theme. Application relies on the context feature of React
-                            to pass the theme down to the components, so you need to make sure that
-                            Application is a parent of the components you are trying to customize.
+                            application, by defaulth React Rainbow components come with a default
+                            theme that use a light apparence and our branding color.
+                        </h3>
+                        <h3 className="react-rainbow-customization_section-text">
+                            This component receive a theme property, and makes it available down the
+                            React tree.
+                        </h3>
+                        <h3 className="react-rainbow-customization_section-text">
+                            Application relies on the context feature of React to pass the theme
+                            down to the components, so you need to make sure that Application is a
+                            parent of the components you are trying to customize. It is recomended
+                            to use it at the root of your component tree.
+                        </h3>
+                        <h3 className="react-rainbow-customization_section-text">
                             You can learn more about this in the{' '}
                             <a href="/#/Application">API section</a>
                         </h3>
@@ -92,7 +98,6 @@ export default function CustomizationPage(props) {
                         <h3 className="react-rainbow-customization_section-text">
                             Generate a theme base on the options received.
                         </h3>
-                        <br />
                         <CodeEditor code={defaultTheme} />
                         <h3 className="react-rainbow-customization_section-heading">Palette</h3>
                         <h3 className="react-rainbow-customization_section-text">

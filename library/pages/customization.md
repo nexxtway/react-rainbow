@@ -11,12 +11,11 @@ const theme = {
     },
 };
 
-<Application theme={theme} className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
+<Application theme={theme} className="rainbow-p-vertical_xx-large rainbow-align-content_center">
     <Button
         label="Button Brand"
         onClick={() => alert('clicked!')}
         variant="brand"
-        className="rainbow-m-around_medium"
     />
 </Application>
 ```

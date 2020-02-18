@@ -24,27 +24,26 @@
 }
 
 .react-rainbow-customization_section-text {
-    font-size: 1rem;
-    line-height: 1.5;
+    font-size: 0.88rem;
+    line-height: 1.75;
     color: #576574;
-    font-family: Lato Light;
-    margin-top: 1rem;
+    font-family: Lato;
 }
 
 .react-rainbow-customization_section-heading {
     font-size: 1rem;
     line-height: 1.5;
     color: #061c3f;
-    font-family: Lato Light;
+    font-family: Lato;
     text-decoration: underline;
     margin-top: 1.5rem;
 }
 
 .react-rainbow-customization_section-heading-2 {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     line-height: 1.25;
     color: #061c3f;
-    font-family: Lato Light;
+    font-family: Lato;
     margin-bottom: 1rem;
     margin-top: 1.75rem;
 }
