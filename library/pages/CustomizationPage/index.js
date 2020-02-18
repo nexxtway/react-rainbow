@@ -130,6 +130,17 @@ export default function CustomizationPage(props) {
                             </div>
                             <CarbonAds className="react-rainbow-customization_carbon-ad" />
                         </div>
+                        <ul>
+                            <li className="react-rainbow-customization_section-text">
+                                Theme variation on all the components at the same time.
+                            </li>
+                            <li className="react-rainbow-customization_section-text">
+                                Theme variation for a specific component.
+                            </li>
+                            <li className="react-rainbow-customization_section-text">
+                                Theme variation for your own UI
+                            </li>
+                        </ul>
                     </div>
                 </RenderIf>
             </section>
