@@ -99,12 +99,14 @@ export default function CustomizationPage(props) {
                         </h2>
                         <h3 className="react-rainbow-customization_section-text">
                             You might wonder how all the components colors are being set based on
-                            five colors brand success warning error and mainBackground . Well, we do
-                            compute the rest of the color we use in our internal implementation
-                            based on accessibility standards and also we expose those generated
-                            values to you through the react context because you might want to make
-                            use of those values in order to be consistent with the colors of your
-                            app.
+                            five colors brand success warning error and mainBackground app.
+                        </h3>
+                        <h3 className="react-rainbow-customization_section-text">
+                            Well, we do compute the rest of the color we use in our internal
+                            implementation based on accessibility standards and also we expose those
+                            generated values to you through the react context because you might want
+                            to make use of those values in order to be consistent with the colors of
+                            your app.
                         </h3>
 
                         <CodeEditor code={defaultTheme} />
