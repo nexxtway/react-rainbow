@@ -16,4 +16,9 @@ describe('extractTime', () => {
         expect(extractTime(new Date('04/24/2019 13:23'))).toBe('01:23 PM');
         expect(extractTime('04/24/2019 20:48')).toBe('08:48 PM');
     });
+    it('should return the right time when hour24 param is true', () => {
+        expect(extractTime(new Date(2019, 3, 24, 11, 34, 43), true)).toBe('11:34');
+        expect(extractTime(new Date('04/24/2019 13:23'), true)).toBe('13:23');
+        expect(extractTime('04/24/2019 20:48', true)).toBe('20:48');
+    });
 });

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import ButtonIcon from '../../ButtonIcon';
 
 const StyledButtonIcon = attachThemeAttrs(styled(ButtonIcon))`

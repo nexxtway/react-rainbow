@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { PADDING_X_SMALL } from '../../../styles/paddings';
 
 const StyledSelectContent = attachThemeAttrs(styled.div)`

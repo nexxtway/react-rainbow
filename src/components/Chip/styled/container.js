@@ -1,21 +1,10 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 import { PADDING_SMALL } from '../../../styles/paddings';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
-import { COLOR_GRAY_2, COLOR_GRAY_4, COLOR_WHITE } from '../../../styles/colors';
-import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledContainer = styled.span.attrs(props => {
-    const theme = getTheme(props);
-    const { getContrastText, brand } = theme.palette;
-    const { main: brandMainColor } = brand;
-    const brandMainContrastText = getContrastText(brandMainColor);
-
-    return {
-        brandMainColor,
-        brandMainContrastText,
-    };
-})`
+const StyledContainer = attachThemeAttrs(styled.span)`
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
@@ -29,29 +18,29 @@ const StyledContainer = styled.span.attrs(props => {
     line-height: 2rem;
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
     letter-spacing: 0.5;
-    background-color: ${COLOR_GRAY_2};
-    border: 1px solid ${COLOR_GRAY_2};
-    color: ${COLOR_GRAY_4};
+    background-color: ${props => props.palette.background.secondary};
+    border: 1px solid ${props => props.palette.border.divider};
+    color: ${props => props.palette.text.label};
     ${props =>
         props.variant === 'neutral' &&
         `
-            background-color: ${COLOR_WHITE};
-            border: 1px solid ${COLOR_GRAY_2};
-            color: ${COLOR_GRAY_4};
+            background-color: ${props.palette.background.main};
+            border: 1px solid ${props.palette.border.divider};
+            color: ${props.palette.text.label};
         `};
     ${props =>
         props.variant === 'outline-brand' &&
         `
             background-color: transparent;
-            border: 1px solid ${props.brandMainColor};
-            color: ${props.brandMainColor};
+            border: 1px solid ${props.palette.brand.main};
+            color: ${props.palette.brand.main};
         `};
     ${props =>
         props.variant === 'brand' &&
         `
-            background-color: ${props.brandMainColor};
-            border: 1px solid ${props.brandMainColor};
-            color: ${props.brandMainContrastText};
+            background-color: ${props.palette.brand.main};
+            border: 1px solid ${props.palette.brand.main};
+            color: ${props.palette.getContrastText(props.palette.brand.main)};
         `};
 `;
 

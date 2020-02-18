@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledContainer = attachThemeAttrs(styled.div)`
     transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
