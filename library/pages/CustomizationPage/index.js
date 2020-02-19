@@ -1,13 +1,28 @@
 /* eslint-disable react/no-unescaped-entities, import/no-extraneous-dependencies */
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Tabset from '../../../src/components/Tabset';
 import Tab from '../../../src/components/Tab';
+import Table from '../../../src/components/Table';
+import Column from '../../../src/components/Column';
+import Badge from '../../../src/components/Badge';
 import RenderIf from '../../../src/components/RenderIf';
 import CodeEditor from '../components/CodeEditor';
 import CarbonAds from '../components/CarbonAds';
 import Playground from 'rsg-components/Playground';
+import {
+    COLOR_WHITE,
+    COLOR_GRAY_2,
+    COLOR_GRAY_4,
+    COLOR_BRAND,
+    COLOR_SUCCESS,
+    COLOR_ERROR,
+    COLOR_WARNING,
+} from '../../../src/styles/colors';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faList } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
+import { ThemeContext } from 'styled-components';
 import './styles.css';
-import { withTheme } from 'styled-components';
 
 const defaultTheme = `const theme = {
         rainbow: {
@@ -67,15 +82,76 @@ const defaultTheme = `const theme = {
             },
         },
     };
-    `;
+`;
 
-const CustomizationPage = function(props) {
+const data = [
+    {
+        name: 'brand',
+        type: 'string',
+        required: 'false',
+        default: COLOR_BRAND,
+    },
+    {
+        name: 'success',
+        type: 'string',
+        required: 'false',
+        default: COLOR_SUCCESS,
+    },
+    {
+        name: 'error',
+        type: 'string',
+        required: 'false',
+        default: COLOR_ERROR,
+    },
+    {
+        name: 'warning',
+        type: 'string',
+        required: 'false',
+        default: COLOR_WARNING,
+    },
+    {
+        name: 'mainBackground',
+        type: 'string',
+        required: 'false',
+        default: COLOR_WHITE,
+    },
+];
+
+const StyledPanel = styled.div`
+    border: 1px solid ${props => props.theme.rainbow.palette.border.divider};
+    border-radius: 14px;
+    padding-bottom: 12px;
+`;
+
+const RequiredBadge = ({ value }) => <Badge label={value} variant="brand" />;
+
+const StyledDefaultBadge = styled(Badge)`
+    ${props => {
+        const contrastColor = props.theme.rainbow.palette.getContrastText(props.color);
+        return `
+            color: ${contrastColor};
+            background-color: ${props.color};
+            border-color: ${props.theme.rainbow.palette.border.divider};
+        `;
+    }}
+`;
+
+const DefaultBadge = ({ value }) => (
+    <StyledDefaultBadge label={value} variant="brand" color={value} />
+);
+
+const StyledBadge = styled.span`
+    color: ${COLOR_GRAY_4};
+    background-color: ${COLOR_GRAY_2};
+    border: 1px solid ${COLOR_GRAY_2};
+    padding: 0 0.25rem;
+    margin: 0 0.15rem;
+`;
+
+export default function CustomizationPage(props) {
     const { examples, name, exampleMode, codeRevision } = props;
     const [activeTab, setActiveTab] = useState('overview');
-
-    const code = `const theme = {
-        rainbow: ${JSON.stringify(props.theme)}
-    };`;
+    const theme = useContext(ThemeContext);
 
     return (
         <div className="react-rainbow-customization_top-container">
@@ -116,9 +192,10 @@ const CustomizationPage = function(props) {
                             How you can customize React Rainbow Components?
                         </h2>
                         <h3 className="react-rainbow-customization_section-text">
-                            Customization is allowed by using our {'<Application />'} component as a
-                            wrapper of your entire application, the property theme it will accept an
-                            object where you can specify your palette of colors.
+                            Customization is allowed by using our{' '}
+                            <StyledBadge>{'<Application />'}</StyledBadge> component as a wrapper of
+                            your entire application, the property theme it will accept an object
+                            where you can specify your palette of colors.
                         </h3>
 
                         <br />
@@ -144,9 +221,26 @@ const CustomizationPage = function(props) {
 
                         <br />
 
-                        <h3 className="react-rainbow-customization_section-text">
-                            Table with props
-                        </h3>
+                        <StyledPanel>
+                            <h3 className="react-rainbow-customization_section-text rainbow-m-vertical_medium rainbow-m-horizontal_small">
+                                <FontAwesomeIcon
+                                    className="rainbow-m-right_small"
+                                    icon={faList}
+                                    color={theme.rainbow.palette.brand.main}
+                                />{' '}
+                                Props
+                            </h3>
+                            <Table data={data} keyField="name">
+                                <Column header="Name" field="name" />
+                                <Column header="Type" field="type" />
+                                <Column
+                                    header="Required"
+                                    field="required"
+                                    component={RequiredBadge}
+                                />
+                                <Column header="Default" field="default" component={DefaultBadge} />
+                            </Table>
+                        </StyledPanel>
 
                         <br />
 
@@ -155,7 +249,10 @@ const CustomizationPage = function(props) {
                         </h2>
                         <h3 className="react-rainbow-customization_section-text">
                             You might wonder how all the components colors are being set based on
-                            five colors brand success warning error and mainBackground app.
+                            five colors <StyledBadge>brand</StyledBadge>{' '}
+                            <StyledBadge>success</StyledBadge> <StyledBadge>warning</StyledBadge>{' '}
+                            <StyledBadge>error</StyledBadge> and{' '}
+                            <StyledBadge>mainBackground</StyledBadge> app.
                         </h3>
                         <h3 className="react-rainbow-customization_section-text">
                             Well, we do compute the rest of the color we use in our internal
@@ -205,5 +302,4 @@ const CustomizationPage = function(props) {
             </section>
         </div>
     );
-};
-export default withTheme(CustomizationPage);
+}
