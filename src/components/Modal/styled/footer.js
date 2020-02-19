@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledFooter = attachThemeAttrs(styled.footer)`
     border-top: 0.0625px solid ${props => props.palette.border.divider};

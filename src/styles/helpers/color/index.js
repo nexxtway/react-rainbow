@@ -13,3 +13,4 @@ export { default as getContrastText } from './getContrastText';
 export { default as isValidColor } from './isValidColor';
 export { default as getBrightness } from './getBrightness';
 export { default as isDark } from './isDark';
+export { default as colorToRgba } from './colorToRgba';
