@@ -32,87 +32,72 @@ import {
     MenuItem,
     MenuDivider,
     Input,
-    Sidebar,
-    SidebarItem,
     Card,
     ProgressCircular,
 } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faPlus,
-    faCircle,
     faEllipsisV,
     faSearch,
-    faTasks
+    faArrowDown,
+    faArrowUp,
 } from '@fortawesome/free-solid-svg-icons';
-import Facebook from '../exampleComponents/Icons/facebook';
-import Google from '../exampleComponents/Icons/google';
-import Twitter from '../exampleComponents/Icons/twitter';
-import Linkedin from '../exampleComponents/Icons/linkedin';
-import dashboard from '../../assets/icons/dashboard.svg';
-import puzzle from '../../assets/icons/puzzle.svg';
-import messages from '../../assets/icons/messages.svg';
 import styled from 'styled-components';
 
 const theme = {
     rainbow: {
         palette: {
             brand: '#6860db',
-            mainBackground: '#f2f2f2',
         },
     },
 };
 
-const containerStyles = {
-    maxWidth: 200,
-};
-const Container = styled.div.attrs(props => {
-    return props.theme.rainbow.palette;
-})`
-    position: relative;
-    padding-left: 90px;
-    min-height: 257px;
-`;
-
-const Title = styled.h2.attrs(props => {
-    return props.theme.rainbow.palette;
-})`
-    color: ${props => props.brand.main};
+const Title = styled.h2`
+    color: ${props => props.theme.rainbow.palette.brand.main};
     font-size: 1.25rem;
     margin-right: 2rem;
     margin-left: 2rem;
     padding-top: 1rem;
 `;
-const Subtitle = styled.h3.attrs(props => {
-    return props.theme.rainbow.palette;
-})`
-    color: ${props => props.text.header};
+
+const Subtitle = styled.h3`
+    color: ${props => props.theme.rainbow.palette.text.header};
     font-size: 1rem;
     margin-right: 2rem;
     margin-left: 2rem;
 `;
 
-const SidebarContainer = styled.aside.attrs(props => {
-    return props.theme.rainbow.palette;
-})`
-    background: ${props => props.background.main};
-    width: 88px;
-    position: absolute;
-    border-bottom-left-radius: 0.875rem;
-    left: 0px;
-    height: 100%;
-`;
-
-const SimpleSidebar = function(props) {
-    const [activeItem, setActiveItem] = useState('Dashboard');
-    return (
-        <Sidebar selectedItem={activeItem} onSelect={(e, name) => setActiveItem(name)} id="sidebar-1">
-            <SidebarItem icon={<img src={dashboard} />} name="Dashboard" label="Dashboard" />
-            <SidebarItem icon={<img src={puzzle} />} name="Components" label="Components" />
-            <SidebarItem icon={<img src={messages} />} name="Messages" label="Messages" />
-        </Sidebar>
-    );
-};
+const platforms = [
+    {
+        url: 'https://whatsapp.com',
+        name: 'WhatsApp',
+        percent: 60,
+        trend: 10,
+        color: '#44d7b6',
+    },
+    {
+        url: 'https://google.com',
+        name: 'Google',
+        percent: 40,
+        trend: -60,
+        color: '#f14336',
+    },
+    {
+        url: 'https://snapchat.com',
+        name: 'Snapchat',
+        percent: 55,
+        trend: -5,
+        color: '#f7b500',
+    },
+    {
+        url: 'https://react-rainbow.firebaseapp.com/',
+        name: 'Rainbow',
+        percent: 70,
+        trend: 10,
+        color: '#5c56b6',
+    },
+];
 
 const Content = styled.section`
     @media (max-width: 767px) {
@@ -120,127 +105,14 @@ const Content = styled.section`
     }
 `;
 
-const SocialContent = styled.div`
-    > div:last-child { text-align: right; }
+const PercentHeader = styled.div`
+    color: ${props => props.theme.rainbow.palette.text.main};
 `;
 
-const SocialContentLink = styled.a`
-    width: 100%;
-    text-decoration: none;
-    &:hover, &:focus { text-decoration: none; }
-
-    :nth-child(2) {
-        margin-left: 10px;
-        margin-right: 10px; 
-    }
-        
-    @media (max-width: 767px) {
-        max-width: 235px;
-    }
-`;
-
-const SocialCard = styled(Card)`
-    background-color: ${props => props.background};
-    color: ${props => props.color};  
-`;
-
-const SocialContentCount = styled.h2.attrs(props => {
-   return props.theme.rainbow.palette;
-})`
-    font-size: 28px; 
-`;
-
-const ActiveCirlce = styled.span.attrs(props => {
-    return props.theme.rainbow.palette;
-})`
-    width: 24;
-    height: 20;
-    display: 'flex';
-    align-items: 'center';
-    justify-content: 'center';
-    margin-right: 8px;
-    color: ${props => props.color};
-`;
-
-const PercentHeader = styled.div.attrs(props => {
-    return props.theme.rainbow.palette;
-})`
-    color: ${props => props.text.main};
-`;
-
-const PercentSubtitle = styled.h3.attrs(props => {
-    return props.theme.rainbow.palette;
-})`
-    color: ${props => props.text.header};
+const PercentSubtitle = styled.h3`
+    color: ${props => props.theme.rainbow.palette.text.header};
     font-size: 1rem;
 `;
-
-const socials = [
-    {
-        url: 'https://facebook.com',
-        name: 'facebook',
-        icon: <Facebook color="#ffffff"/>,
-        countInThousands: 143,
-        percent: 60,
-        background: '#3c5997',
-        color: '#ffffff',
-    },
-    {
-        url: 'https://google.com',
-        name: 'google',
-        icon: <Google/>,
-        countInThousands: 20,
-        percent: 45,
-        background: '#ffffff',
-        color: '#f14336',
-    },
-    {
-        url: 'https://twitter.com',
-        name: 'twitter',
-        icon: <Twitter color="#ffffff"/>,
-        countInThousands: 13,
-        percent: 72,
-        background: '#00b0f3',
-        color: '#ffffff',
-    },
-    {
-        url: 'https://linkedin.com',
-        name: 'linkedin',
-        icon: <Linkedin color="#ffffff"/>,
-        countInThousands: 10,
-        percent: 30,
-        background: '#0077b5',
-        color: '#ffffff',
-    }
-];
-
-const Social = function (props) {
-    const { socials } = props;
-    const renderCards = socials.map( (social, index) => {
-        return (
-            <SocialContentLink key={index} href={social.url} target="_blank">
-                <SocialCard 
-                    background={social.background} 
-                    color={ social.name === 'google' ? '#061c3f' : social.color} 
-                    className="rainbow-m-horizontal_medium rainbow-p-around_medium rainbow_vertical-stretch rainbow-m-bottom_medium"
-                >
-                    <SocialContent className="rainbow-inline-flex rainbow-align-content_space-between">
-                        <div>
-                            {social.icon}
-                        </div>
-                        <div>
-                            <span>{ social.name }</span>
-                            <SocialContentCount>{ social.countInThousands}K</SocialContentCount>
-                        </div>
-                    </SocialContent>
-                </SocialCard>
-            </SocialContentLink>
-        );
-    });
-    return (
-        <Content className="rainbow-p-vertical_large rainbow-align-content_space-between rainbow-m-horizontal_medium rainbow-flex">{renderCards}</Content>
-    );
-};
 
 const ColorProgressCircular = styled(ProgressCircular)`
     circle:nth-child(2) {
@@ -251,29 +123,49 @@ const ColorProgressCircular = styled(ProgressCircular)`
     }
 `;
 
-const SocialPercent = function (props) {
-    const { socials } = props;
-    const renderCards = socials.map( (social, index) => {
+const StyledTrend = styled.span`
+    color: ${props => props.color};
+    margin: 0 5px;
+`;
+
+const PlatformTrend = function(props) {
+    const { trend, color } = props;
+    if (trend < 0) {
+        return (
+            <div className="rainbow-flex rainbow_vertical-stretch">
+                <FontAwesomeIcon icon={faArrowDown} color={color}/> 
+                <StyledTrend color={color}>{trend * -1} % </StyledTrend>
+                <h3 className="rainbow-font-size_small"> Decrease</h3>
+            </div>
+        );
+    }
+    return (
+        <div className="rainbow-flex rainbow_vertical-stretch">
+            <FontAwesomeIcon icon={faArrowUp} color={color}/> 
+            <StyledTrend color={color}>{trend} % </StyledTrend>
+            <h3 className="rainbow-font-size_small"> Increase</h3>
+        </div>
+    );
+};
+
+const PlatformPercent = function (props) {
+    const { platforms } = props;
+    const renderCards = platforms.map( (platform, index) => {
         return (
             <Card key={index} className="rainbow-m-horizontal_large rainbow-m-bottom_large rainbow-p-around_small">
-                <PercentHeader className="rainbow-font-size-heading_medium">{social.name}</PercentHeader>
-                <PercentSubtitle>Active users</PercentSubtitle>
+                <PercentHeader className="rainbow-font-size-heading_medium">{platform.name}</PercentHeader>
+                <PercentSubtitle>New users</PercentSubtitle>
                 <div className="rainbow-p-around_medium">
                     <ColorProgressCircular
-                    color={ social.name === 'google' ? social.color : social.background}
-                    value={social.percent} />
+                    color={platform.color}
+                    value={platform.percent} />
                 </div>
-                <div className="rainbow-flex rainbow_vertical-stretch">
-                    <ActiveCirlce color={ social.name === 'google' ? social.color : social.background}>
-                        <FontAwesomeIcon icon={faCircle} />
-                    </ActiveCirlce>
-                    <h3 className="rainbow-font-size_small">Active Now</h3>
-                </div>
+                <PlatformTrend trend={platform.trend} color={platform.color}/>
             </Card>
         );
     });
     return (
-        <Content className="rainbow-p-vertical_large rainbow-align-content_space-between rainbow-m-horizontal_medium rainbow-flex">{renderCards}</Content>
+        <Content className="rainbow-p-vertical_large rainbow-align-content_space-between rainbow-flex">{renderCards}</Content>
     )
 };
 
@@ -292,32 +184,21 @@ const SocialPercent = function (props) {
                 variant="border"
                 icon={<FontAwesomeIcon icon={faPlus} />}
                 />
-            <ButtonMenu
-                menuSize="x-small"
-                menuAlignment="right"
+            <ButtonIcon
+                variant="border"
                 icon={<FontAwesomeIcon icon={faEllipsisV} />}
-                >
-                <MenuItem label="Options" variant="header" />
-                <MenuItem label="Menu Item" />
-                <MenuItem label="Menu Item" />
-                <MenuDivider variant="space" />
-                <MenuItem
-                label="Right Icon"
-                icon={<FontAwesomeIcon icon={faTasks} />}
-                iconPosition="right"
                 />
-            </ButtonMenu>
         </ButtonGroup>
     </GlobalHeader>
-  
-    <Container>
-        <SidebarContainer>
-        <SimpleSidebar/>
-        </SidebarContainer>
-        <Title>Dashboard</Title>
-        <Subtitle>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Subtitle>
-        <Social socials={socials}/>
-        <SocialPercent socials={socials}/>
-  </Container>
+    <section className="rainbow-m-horizontal_xx-large">
+        <Content className="rainbow-p-vertical_large rainbow-align-content_space-between rainbow-flex">
+            <div>
+                <Title>Dashboard</Title>
+                <Subtitle>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Subtitle>
+            </div>
+            <Button className="rainbow-m-right_large" variant="brand">Import Data</Button>
+        </Content>
+        <PlatformPercent platforms={platforms}/>
+    </section>
 </Application>
 ```
