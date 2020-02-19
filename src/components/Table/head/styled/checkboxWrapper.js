@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import StyledWrapper from './wrapper';
-import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 
 const StyledCheckboxWrapper = attachThemeAttrs(styled(StyledWrapper))`
     align-items: center;

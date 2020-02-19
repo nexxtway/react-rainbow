@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
-import { COLOR_WHITE } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledSpinner = attachThemeAttrs(styled.div)`
     box-sizing: border-box;
@@ -220,7 +219,7 @@ const StyledSpinner = attachThemeAttrs(styled.div)`
         props.variant === 'inverse' &&
         `
             > div {
-                color: ${COLOR_WHITE} !important;
+                color: ${props.palette.background.main} !important;
             }
         `};
     ${props =>

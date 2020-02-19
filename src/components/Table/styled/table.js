@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledTable = attachThemeAttrs(styled.table)`
     table-layout: fixed;

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledScrollableX = attachThemeAttrs(styled.div)`
-    background-color: ${props => props.palette.background.secondary};
+    background-color: ${props => props.palette.action.active};
     height: 100%;
     max-width: 100%;
     overflow: hidden;
