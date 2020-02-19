@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledLi = attachThemeAttrs(styled.li)`
     border-top: 1px solid ${props => props.palette.border.divider};

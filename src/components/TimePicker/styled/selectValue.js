@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledSelectValue = attachThemeAttrs(styled.input).attrs(props => {
     const { getContrastText, brand } = props.palette;

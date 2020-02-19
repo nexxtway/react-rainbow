@@ -1,5 +1,6 @@
 import defaultTheme from '../defaultTheme';
 import { darken, lighten, isDark, getContrastText, isValidColor } from './color';
+import normalizeThemeColors from './normalizeThemeColors';
 
 function pickColors(colors, obj = {}) {
     return colors.reduce((seed, color) => {
@@ -65,7 +66,7 @@ function resolveCustomBackground(background) {
     return {};
 }
 
-function resolveCustomSahdows(colors, background) {
+function resolveCustomShadows(colors, background) {
     let shadows = {};
     if (colors.brand) {
         shadows.brand = `0 0 2px ${colors.brand.main}`;
@@ -101,14 +102,16 @@ export default function normalizeTheme(theme) {
     const mainBackground = get(theme, 'rainbow.palette.mainBackground');
     return {
         rainbow: {
-            palette: {
-                ...defaultTheme.palette,
-                ...colors,
-                ...resolveCustomBackground(mainBackground),
-            },
+            ...normalizeThemeColors({
+                palette: {
+                    ...defaultTheme.palette,
+                    ...colors,
+                    ...resolveCustomBackground(mainBackground),
+                },
+            }),
             shadows: {
                 ...defaultTheme.shadows,
-                ...resolveCustomSahdows(colors, mainBackground),
+                ...resolveCustomShadows(colors, mainBackground),
             },
         },
     };

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { PADDING_XX_SMALL } from '../../../styles/paddings';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledDots = attachThemeAttrs(styled.span)`
     font-size: 32px;

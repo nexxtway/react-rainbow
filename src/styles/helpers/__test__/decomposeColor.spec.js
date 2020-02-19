@@ -5,8 +5,8 @@ jest.mock('../color/hexToRgb', () => () => 'rgb(1, 182, 245)');
 describe('decomposeColor', () => {
     const colors = ['#01b6f5', 'rgb(1, 182, 245)', 'rgba(1, 182, 245, 0.5)'];
     const colorDecomposed = {
-        type: 'rgb',
-        values: [1, 182, 245],
+        type: 'rgba',
+        values: [1, 182, 245, 1],
     };
 
     it('should return an object', () => {
