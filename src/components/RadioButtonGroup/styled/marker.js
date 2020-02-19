@@ -1,7 +1,7 @@
 /* stylelint-disable max-line-length */
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
-import { hexToRgba } from '../../../styles/helpers/color';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+import { replaceAlpha } from '../../../styles/helpers/color';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 
 const StyledMarker = attachThemeAttrs(styled.span)`
@@ -32,7 +32,7 @@ const StyledMarker = attachThemeAttrs(styled.span)`
         `
             background-color: ${props.palette.brand.main};
             border-color: ${props.palette.brand.dark};
-            box-shadow: 0 0 3px 0 ${hexToRgba(props.palette.brand.dark, 0.1)};
+            box-shadow: 0 0 3px 0 ${replaceAlpha(props.palette.brand.dark, 0.1)};
         `};
 `;
 

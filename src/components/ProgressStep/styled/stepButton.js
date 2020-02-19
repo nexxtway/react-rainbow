@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import ButtonIcon from '../../ButtonIcon';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledStepButton = attachThemeAttrs(styled(ButtonIcon))`
     width: 1.25rem;
