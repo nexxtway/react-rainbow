@@ -380,6 +380,11 @@ const ConctactContainer = styled.div`
     width: max-content;
 `;
 
+const LinkedinIconStyle = {
+    width: "20px",
+    height: "20px",
+};
+
 const Contact = (props) => {
     const {avatar, name, email, linkedin, github} = props;
     return (
@@ -400,7 +405,7 @@ const Contact = (props) => {
                     <GitHubIcon />
                 </a>
                 <a href={github}>
-                    <LinkedinIcon />
+                    <LinkedinIcon style={LinkedinIconStyle}/>
                 </a>
             </div>
         </ConctactContainer>
