@@ -31,7 +31,8 @@ export default function MapComponent(props) {
     useEffect(() => {
         if (isScriptLoaded && isScriptLoadSucceed) {
             const mapOptions = {
-                center: null,
+                zoom: 2,
+                center: { lat: 0, lng: 0 },
                 disableDefaultUI: true,
             };
             const mapInstance = new window.google.maps.Map(mapContainer.current, mapOptions);
@@ -45,29 +46,34 @@ export default function MapComponent(props) {
 
     useEffect(() => {
         if (map) {
-            mapMarkers.forEach(marker => marker.setMap(null));
-            const instances = markers.map((marker, idx) => {
-                const instance = new window.google.maps.Marker({
-                    position: marker.position,
-                    icon: marker.icon,
-                    map,
-                    zIndex: Math.round(marker.position.lat * 100000),
-                });
-                instance.addListener('click', () => onMarkerClick(marker, idx));
-                return instance;
-            });
+            if (markers.length > 0) {
+                mapMarkers.forEach(marker => marker.setMap(null));
 
-            const noPreviousMarkers = mapMarkers.length === 0;
-            const hasNewMarkers = instances.length > 0;
-            if (noPreviousMarkers && hasNewMarkers) {
-                updateMapMarkers(instances);
-                if (center === 'auto') {
-                    const bounds = new window.google.maps.LatLngBounds();
-                    instances.forEach(markerInstance =>
-                        bounds.extend(markerInstance.getPosition()),
-                    );
-                    map.setCenter(bounds.getCenter());
-                    map.fitBounds(bounds);
+                const instances = markers.map((marker, idx) => {
+                    const instance = new window.google.maps.Marker({
+                        position: marker.position,
+                        icon: marker.icon,
+                        map,
+                        zIndex: Math.round(marker.position.lat * 100000),
+                    });
+                    instance.addListener('click', () => onMarkerClick(marker, idx));
+                    return instance;
+                });
+
+                const noPreviousMarkers = mapMarkers.length === 0;
+                const hasNewMarkers = instances.length > 0;
+                const markersChanged = mapMarkers.length !== instances.length;
+
+                if ((noPreviousMarkers && hasNewMarkers) || markersChanged) {
+                    updateMapMarkers(instances);
+                    if (center === 'auto') {
+                        const bounds = new window.google.maps.LatLngBounds();
+                        instances.forEach(markerInstance =>
+                            bounds.extend(markerInstance.getPosition()),
+                        );
+                        map.setCenter(bounds.getCenter());
+                        map.fitBounds(bounds);
+                    }
                 }
             }
         }
@@ -86,17 +92,28 @@ export default function MapComponent(props) {
     }, [showTransit, map, transitLayer]);
 
     useEffect(() => {
-        const hasMarkers = mapMarkers.length > 0;
-        if (center === 'auto') {
-            if (hasMarkers) {
-                const bounds = new window.google.maps.LatLngBounds();
-                mapMarkers.forEach(markerInstance => bounds.extend(markerInstance.getPosition()));
-                map.setCenter(bounds.getCenter());
-                map.fitBounds(bounds);
+        if (map) {
+            const hasMarkers = mapMarkers.length > 0;
+            if (center === 'auto') {
+                if (hasMarkers) {
+                    if (mapMarkers.length === 1) {
+                        map.setCenter(
+                            mapMarkers.find(marker => marker !== undefined).getPosition(),
+                        );
+                        map.setZoom(MAX_ZOOM);
+                    } else {
+                        const bounds = new window.google.maps.LatLngBounds();
+                        mapMarkers.forEach(markerInstance =>
+                            bounds.extend(markerInstance.getPosition()),
+                        );
+                        map.setCenter(bounds.getCenter());
+                        map.fitBounds(bounds);
+                    }
+                }
+            } else {
+                map.setCenter(center);
+                map.setZoom(zoom);
             }
-        } else {
-            map.setCenter(center);
-            map.setZoom(zoom);
         }
     }, [center, map, mapMarkers, zoom]);
 
@@ -162,7 +179,7 @@ MapComponent.defaultProps = {
     markers: [],
     className: undefined,
     style: undefined,
-    zoom: 15,
+    zoom: 2,
     center: 'auto',
     showTraffic: false,
     showTransit: false,

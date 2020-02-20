@@ -74,7 +74,7 @@ PresenceMap.propTypes = {
 
 PresenceMap.defaultProps = {
     markers: [],
-    zoom: 15,
+    zoom: 2,
     className: undefined,
     style: undefined,
     center: 'auto',
