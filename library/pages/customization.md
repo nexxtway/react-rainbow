@@ -68,37 +68,6 @@ const Subtitle = styled.h3`
     margin-left: 2rem;
 `;
 
-const platforms = [
-    {
-        url: 'https://whatsapp.com',
-        name: 'WhatsApp',
-        percent: 60,
-        trend: 10,
-        color: '#44d7b6',
-    },
-    {
-        url: 'https://google.com',
-        name: 'Google',
-        percent: 40,
-        trend: -60,
-        color: '#f14336',
-    },
-    {
-        url: 'https://snapchat.com',
-        name: 'Snapchat',
-        percent: 55,
-        trend: -5,
-        color: '#f7b500',
-    },
-    {
-        url: 'https://react-rainbow.firebaseapp.com/',
-        name: 'Rainbow',
-        percent: 70,
-        trend: 10,
-        color: '#5c56b6',
-    },
-];
-
 const Content = styled.section`
     @media (max-width: 767px) {
         flex-direction: column;
@@ -114,59 +83,54 @@ const PercentSubtitle = styled.h3`
     font-size: 1rem;
 `;
 
-const ColorProgressCircular = styled(ProgressCircular)`
-    circle:nth-child(2) {
-        stroke: ${props => props.color};
-    }
-    h1 {
-        color: ${props => props.color};
-    }
-`;
-
 const StyledTrend = styled.span`
-    color: ${props => props.color};
+    color: ${props => props.theme.rainbow.palette.brand.main};
     margin: 0 5px;
 `;
 
-const PlatformTrend = function(props) {
-    const { trend, color } = props;
-    if (trend < 0) {
-        return (
-            <div className="rainbow-flex rainbow_vertical-stretch">
-                <FontAwesomeIcon icon={faArrowDown} color={color}/> 
-                <StyledTrend color={color}>{trend * -1} % </StyledTrend>
-                <h3 className="rainbow-font-size_small"> Decrease</h3>
-            </div>
-        );
-    }
-    return (
-        <div className="rainbow-flex rainbow_vertical-stretch">
-            <FontAwesomeIcon icon={faArrowUp} color={color}/> 
-            <StyledTrend color={color}>{trend} % </StyledTrend>
-            <h3 className="rainbow-font-size_small"> Increase</h3>
-        </div>
-    );
-};
+const StyledIcon = styled(FontAwesomeIcon)`
+    color: ${props => props.theme.rainbow.palette.brand.main};
+`;
 
-const PlatformPercent = function (props) {
-    const { platforms } = props;
-    const renderCards = platforms.map( (platform, index) => {
-        return (
-            <Card key={index} className="rainbow-m-horizontal_large rainbow-m-bottom_large rainbow-p-around_small">
-                <PercentHeader className="rainbow-font-size-heading_medium">{platform.name}</PercentHeader>
-                <PercentSubtitle>New users</PercentSubtitle>
-                <div className="rainbow-p-around_medium">
-                    <ColorProgressCircular
-                    color={platform.color}
-                    value={platform.percent} />
-                </div>
-                <PlatformTrend trend={platform.trend} color={platform.color}/>
-            </Card>
-        );
-    });
+const PercentCard = function(props) {
+    const { name, percent, trend } = props;
+
     return (
-        <Content className="rainbow-p-vertical_large rainbow-align-content_space-between rainbow-flex">{renderCards}</Content>
-    )
+        <Card className="rainbow-m-horizontal_large rainbow-m-bottom_large rainbow-p-around_small">
+            <PercentHeader className="rainbow-font-size-heading_medium">{name}</PercentHeader>
+            <PercentSubtitle>New users</PercentSubtitle>
+            <div className="rainbow-p-around_medium">
+                <ProgressCircular varient="brand" value={percent} />
+            </div>
+            <div className="rainbow-flex rainbow_vertical-stretch">
+                <StyledIcon icon={trend < 0 ? faArrowDown : faArrowUp}/> 
+                <StyledTrend >{trend < 0 ? trend * -1 : trend} % </StyledTrend>
+                <h3 className="rainbow-font-size_small"> {trend < 0 ? "Decrease" : "Increase"} </h3>
+            </div>
+        </Card>
+    );
+}
+
+const whatsappTheme = {
+    rainbow: {
+        palette: {
+            brand: '#44d7b6',
+        },
+    },
+};
+const googleTheme = {
+    rainbow: {
+        palette: {
+            brand: '#f14336',
+        },
+    },
+};
+const snapchatTheme = {
+    rainbow: {
+        palette: {
+            brand: '#f7b500',
+        },
+    },
 };
 
 <Application theme={theme}>
@@ -175,7 +139,7 @@ const PlatformPercent = function (props) {
         label="aplication component search"
         hideLabel
         placeholder="Search"
-        icon={<FontAwesomeIcon icon={faSearch}/>}
+        icon={<StyledIcon icon={faSearch}/>}
         type="search"
         className="rainbow-m-right_small"
         />
@@ -198,7 +162,18 @@ const PlatformPercent = function (props) {
             </div>
             <Button className="rainbow-m-right_large" variant="brand">Import Data</Button>
         </Content>
-        <PlatformPercent platforms={platforms}/>
+        <Content className="rainbow-p-vertical_large rainbow-align-content_space-between rainbow-flex">
+            <Application theme={whatsappTheme}>
+                <PercentCard name="Whatsapp" percent={60} trend={10} />
+            </Application>
+            <Application theme={googleTheme}>
+                <PercentCard name="Google" percent={40} trend={-60} />
+            </Application>
+            <Application theme={snapchatTheme}>
+                <PercentCard name="Snapchat" percent={55} trend={-5} />
+            </Application>
+            <PercentCard name="Rainbow" percent={70} trend={10} />
+        </Content>
     </section>
 </Application>
 ```
