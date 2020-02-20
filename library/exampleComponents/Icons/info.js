@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { isValidColor } from '../../../src/styles/helpers/color';
 
 const Info = props => {
-    const { className, style } = props;
+    const { className, style, color } = props;
     return (
         <svg
             className={className}
@@ -16,7 +17,7 @@ const Info = props => {
                 <g
                     id="component-page-(interactive-example)"
                     transform="translate(-134.000000, -415.000000)"
-                    fill="#01B6F5"
+                    fill={isValidColor(color) ? color : '#01B6F5'}
                     fillRule="nonzero"
                 >
                     <g id="info" transform="translate(135.000000, 416.000000)">
@@ -44,11 +45,13 @@ const Info = props => {
 Info.propTypes = {
     className: PropTypes.string,
     style: PropTypes.object,
+    color: PropTypes.string,
 };
 
 Info.defaultProps = {
     className: undefined,
     style: undefined,
+    color: undefined,
 };
 
 export default Info;

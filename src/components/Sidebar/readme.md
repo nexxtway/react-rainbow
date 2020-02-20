@@ -3,11 +3,6 @@
 ```js
 import React from 'react';
 import { Sidebar, SidebarItem } from 'react-rainbow-components';
-import dashboard from '../../../assets/icons/dashboard.svg';
-import application from '../../../assets/icons/application.svg';
-import messages from '../../../assets/icons/messages.svg';
-import charts from '../../../assets/icons/charts.svg';
-import puzzle from '../../../assets/icons/puzzle.svg';
 import styled from 'styled-components';
 
 const SideBarContainer = styled.div.attrs(props => {
@@ -36,15 +31,11 @@ class SimpleSidebar extends React.Component {
 
         return (
             <Sidebar selectedItem={selectedItem} onSelect={this.handleOnSelect} id="sidebar-1">
-                <SidebarItem icon={<img src={dashboard} />} name="Dashboard" label="Dashboard" />
-                <SidebarItem
-                    icon={<img src={application} />}
-                    name="Aplications"
-                    label="Aplications"
-                />
-                <SidebarItem icon={<img src={puzzle} />} name="Components" label="Components" />
-                <SidebarItem icon={<img src={messages} />} name="Messages" label="Messages" />
-                <SidebarItem icon={<img src={charts} />} name="Charts" label="Charts" />
+                <SidebarItem icon={<DashboardPurpleIcon />} name="Dashboard" label="Dashboard" />
+                <SidebarItem icon={<ApplicationIcon />} name="Aplications" label="Aplications" />
+                <SidebarItem icon={<PuzzleIcon />} name="Components" label="Components" />
+                <SidebarItem icon={<MessagesIcon />} name="Messages" label="Messages" />
+                <SidebarItem icon={<ChartsIcon />} name="Charts" label="Charts" />
             </Sidebar>
         );
     }

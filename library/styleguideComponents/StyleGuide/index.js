@@ -9,8 +9,8 @@ import ButtonIcon from '../../../src/components/ButtonIcon';
 import ComponentsPage from '../../pages/ComponentsPage';
 import ProjectSelector from '../ProjectSelector';
 import GitterChat from '../GitterChat';
-import chat from './../../../assets/icons/chat.svg';
-import twitter from './../../../assets/icons/twitter.svg';
+import ChatIcon from './chat';
+import TwitterIcon from '../../exampleComponents/Icons/twitter';
 import BarsIcon from './barsIcon';
 import './styles.css';
 
@@ -74,6 +74,10 @@ class StyleGuide extends React.Component {
     render() {
         const { children, toc } = this.props;
         const components = toc.props.sections[1].components;
+        const styleTwitterIcon = {
+            width: '18px',
+            height: '15px',
+        };
 
         return (
             <div className="react-rainbow-styleguide-container rainbow-position-align_start">
@@ -86,7 +90,7 @@ class StyleGuide extends React.Component {
                         rel="noopener noreferrer"
                         className="react-rainbow-styleguide_twitter-link"
                     >
-                        <img src={twitter} alt="twitter logo" />
+                        <TwitterIcon color="#ffffff" style={styleTwitterIcon} />
                     </a>
                 </aside>
                 <div
@@ -111,7 +115,7 @@ class StyleGuide extends React.Component {
                     shaded
                     variant="brand"
                     size="large"
-                    icon={<img src={chat} alt="chat icon" />}
+                    icon={<ChatIcon />}
                 />
                 <GitterChat
                     room="react-rainbow-components/community"

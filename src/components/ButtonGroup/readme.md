@@ -240,19 +240,19 @@ const socials = [
     {
         url: 'https://facebook.com',
         name: 'facebook',
-        icon: '/icons/facebook.svg',
+        icon: <FacebookIcon />,
         countInThousands: 143
     },
     {
         url: 'https://google.com',
         name: 'google',
-        icon: '/icons/google.svg',
+        icon: <GoogleIcon />,
         countInThousands: 20
     },
     {
         url: 'https://twitter.com',
         name: 'twitter',
-        icon: '/icons/twitter-blue.svg',
+        icon: <TwitterIcon />,
         countInThousands: 42
     }
 ];
@@ -294,7 +294,7 @@ const styles = {
 
                         <SocialContent className="rainbow-inline-flex rainbow-align-content_space-between">
                             <div>
-                                <img src={social.icon} />
+                                {social.icon}
                             </div>
                             <div>
                                 <SocialContentName>{ social.name }</SocialContentName>

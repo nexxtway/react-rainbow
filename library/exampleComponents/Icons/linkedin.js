@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { isValidColor } from '../../../src/styles/helpers/color';
 
 const Linkedin = props => {
-    const { className, style } = props;
+    const { className, style, color } = props;
     return (
         <svg
             className={className}
@@ -16,7 +17,7 @@ const Linkedin = props => {
                 <g
                     id="Components-Radio-Button-Group"
                     transform="translate(-352.000000, -1590.000000)"
-                    fill="#0E76A8"
+                    fill={isValidColor(color) ? color : '#0E76A8'}
                     fillRule="nonzero"
                 >
                     <g id="Group-34" transform="translate(322.000000, 1409.000000)">
@@ -49,11 +50,13 @@ const Linkedin = props => {
 Linkedin.propTypes = {
     className: PropTypes.string,
     style: PropTypes.object,
+    color: PropTypes.string,
 };
 
 Linkedin.defaultProps = {
     className: undefined,
     style: undefined,
+    color: undefined,
 };
 
 export default Linkedin;
