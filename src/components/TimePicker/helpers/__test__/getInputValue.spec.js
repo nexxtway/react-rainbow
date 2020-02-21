@@ -12,4 +12,9 @@ describe('getInputValue', () => {
     it('should return "--:-- --" when value and placeholder are not passed', () => {
         expect(getInputValue()).toBe('--:-- --');
     });
+    it('should return "--:--" when hour24 is true and value and placeholder are falsey', () => {
+        expect(getInputValue(undefined, undefined, true)).toBe('--:--');
+        expect(getInputValue(null, null, true)).toBe('--:--');
+        expect(getInputValue(false, false, true)).toBe('--:--');
+    });
 });
