@@ -1,5 +1,5 @@
 {
-    "extends": "airbnb",
+    "extends": ["plugin:prettier/recommended"],
     "plugins": ["babel", "react", "jest", "jsx-a11y", "import", "webdriverio", "react-hooks"],
     "rules": {
         "react-hooks/rules-of-hooks": "error",
