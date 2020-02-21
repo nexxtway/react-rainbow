@@ -1,4 +1,4 @@
-import { hexToRgb } from './index';
+import { hexToRgba } from './index';
 
 export default function decomposeColor(color) {
     // Idempotent
@@ -7,7 +7,7 @@ export default function decomposeColor(color) {
     }
 
     if (color.charAt(0) === '#') {
-        return decomposeColor(hexToRgb(color));
+        return decomposeColor(hexToRgba(color));
     }
 
     const marker = color.indexOf('(');
