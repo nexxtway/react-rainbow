@@ -88,32 +88,37 @@ const data = [
     {
         name: 'brand',
         type: 'string',
-        required: 'false',
+        required: '',
         default: COLOR_BRAND,
-    },
-    {
-        name: 'success',
-        type: 'string',
-        required: 'false',
-        default: COLOR_SUCCESS,
+        description: 'Used to represent the predominant color of your brand.',
     },
     {
         name: 'error',
         type: 'string',
-        required: 'false',
+        required: '',
         default: COLOR_ERROR,
+        description: 'Used to represent interface elements that the user should be made aware of.',
     },
     {
         name: 'warning',
         type: 'string',
-        required: 'false',
+        required: '',
         default: COLOR_WARNING,
+        description: 'Used to represent potentially dangerous actions or important messages.',
+    },
+    {
+        name: 'success',
+        type: 'string',
+        required: '',
+        default: COLOR_SUCCESS,
+        description: 'Used to indicate the successful completion of an action that user triggered.',
     },
     {
         name: 'mainBackground',
         type: 'string',
-        required: 'false',
+        required: '',
         default: COLOR_WHITE,
+        description: 'Used to represent primary interface elements for a user.',
     },
 ];
 
@@ -122,8 +127,6 @@ const StyledPanel = styled.div`
     border-radius: 14px;
     padding-bottom: 12px;
 `;
-
-const RequiredBadge = ({ value }) => <Badge label={value} variant="brand" />;
 
 const StyledDefaultBadge = styled(Badge)`
     ${props => {
@@ -139,6 +142,7 @@ const StyledDefaultBadge = styled(Badge)`
 const DefaultBadge = ({ value }) => (
     <StyledDefaultBadge label={value} variant="brand" color={value} />
 );
+const Description = ({ value }) => <p>{value}</p>;
 
 const StyledBadge = styled.span`
     color: ${COLOR_GRAY_4};
@@ -231,14 +235,20 @@ export default function CustomizationPage(props) {
                                 Props
                             </h3>
                             <Table data={data} keyField="name">
-                                <Column header="Name" field="name" />
-                                <Column header="Type" field="type" />
+                                <Column header="Prop Name" field="name" defaultWidth={200} />
+                                <Column header="Type" field="type" defaultWidth={80} />
+                                <Column header="Required" field="required" defaultWidth={100} />
                                 <Column
-                                    header="Required"
-                                    field="required"
-                                    component={RequiredBadge}
+                                    header="Default"
+                                    field="default"
+                                    defaultWidth={130}
+                                    component={DefaultBadge}
                                 />
-                                <Column header="Default" field="default" component={DefaultBadge} />
+                                <Column
+                                    header="Description"
+                                    field="description"
+                                    component={Description}
+                                />
                             </Table>
                         </StyledPanel>
 
