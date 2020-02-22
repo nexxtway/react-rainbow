@@ -45,14 +45,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 
-const theme = {
-    rainbow: {
-        palette: {
-            brand: '#6860db',
-        },
-    },
-};
-
 const Title = styled.h2`
     color: ${props => props.theme.rainbow.palette.brand.main};
     font-size: 1.25rem;
@@ -69,9 +61,18 @@ const Subtitle = styled.h3`
 `;
 
 const Content = styled.section`
-    @media (max-width: 767px) {
-        flex-direction: column;
-    }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+`;
+
+const Container = styled.section`
+    max-width: 1024px;
+    display: flex;
+    flex-direction: column;
+    margin: 24px auto;
 `;
 
 const PercentHeader = styled.div`
@@ -93,14 +94,14 @@ const StyledIcon = styled(FontAwesomeIcon)`
 `;
 
 const PercentCard = function(props) {
-    const { name, percent, trend } = props;
+    const { name, percent, trend, variant } = props;
 
     return (
-        <Card className="rainbow-m-horizontal_large rainbow-m-bottom_large rainbow-p-around_small">
+        <Card className="rainbow-m-around_small rainbow-p-around_small">
             <PercentHeader className="rainbow-font-size-heading_medium">{name}</PercentHeader>
             <PercentSubtitle>New users</PercentSubtitle>
             <div className="rainbow-p-around_medium">
-                <ProgressCircular varient="brand" value={percent} />
+                <ProgressCircular variant={variant} value={percent} />
             </div>
             <div className="rainbow-flex rainbow_vertical-stretch">
                 <StyledIcon icon={trend < 0 ? faArrowDown : faArrowUp}/> 
@@ -111,24 +112,22 @@ const PercentCard = function(props) {
     );
 }
 
-const whatsappTheme = {
+const theme = {
+    rainbow: {
+        palette: {
+            success: '#44d7b6',
+            error: '#f14336',
+            warning: '#f7b500',
+            brand: '#6860db',
+            mainBackground: '#f4f5f7',
+        },
+    },
+};
+
+const themeFacebook = {
     rainbow: {
         palette: {
             brand: '#44d7b6',
-        },
-    },
-};
-const googleTheme = {
-    rainbow: {
-        palette: {
-            brand: '#f14336',
-        },
-    },
-};
-const snapchatTheme = {
-    rainbow: {
-        palette: {
-            brand: '#f7b500',
         },
     },
 };
@@ -154,26 +153,20 @@ const snapchatTheme = {
                 />
         </ButtonGroup>
     </GlobalHeader>
-    <section className="rainbow-m-horizontal_xx-large">
-        <Content className="rainbow-p-vertical_large rainbow-align-content_space-between rainbow-flex">
+    <Container>
+        <Content>
             <div>
                 <Title>Dashboard</Title>
                 <Subtitle>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Subtitle>
             </div>
             <Button className="rainbow-m-right_large" variant="brand">Import Data</Button>
         </Content>
-        <Content className="rainbow-p-vertical_large rainbow-align-content_space-between rainbow-flex">
-            <Application theme={whatsappTheme}>
-                <PercentCard name="Whatsapp" percent={60} trend={10} />
-            </Application>
-            <Application theme={googleTheme}>
-                <PercentCard name="Google" percent={40} trend={-60} />
-            </Application>
-            <Application theme={snapchatTheme}>
-                <PercentCard name="Snapchat" percent={55} trend={-5} />
-            </Application>
-            <PercentCard name="Rainbow" percent={70} trend={10} />
+        <Content>
+            <PercentCard variant="success" name="Whatsapp" percent={60} trend={10} />
+            <PercentCard variant="error" name="Google" percent={40} trend={-60} />
+            <PercentCard variant="warning" name="Snapchat" percent={55} trend={-5} />
+            <PercentCard variant="brand" name="Rainbow" percent={70} trend={10} />
         </Content>
-    </section>
+    </Container>
 </Application>
 ```
