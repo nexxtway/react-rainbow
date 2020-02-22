@@ -1,13 +1,15 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+import { replaceAlpha } from '../../../styles/helpers/color';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 
-const StyledButtonItemsContainer = styled.div`
+const StyledButtonItemsContainer = attachThemeAttrs(styled.div)`
     display: inline-flex;
     justify-content: center;
     align-items: center;
     border-radius: ${BORDER_RADIUS_2};
-    border: solid 1px #e3e5ed;
-    background-color: rgba(227, 229, 237, 0.4);
+    border: solid 1px ${props => props.palette.border.divider};
+    background-color: ${props => replaceAlpha(props.palette.background.highlight, 0.4)};
     line-height: 2.5rem;
     height: 2.5rem;
 

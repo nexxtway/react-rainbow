@@ -1,15 +1,12 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
-import getTheme from '../../../styles/helpers/getTheme';
 
-const StyledActiveIcon = styled.div.attrs(props => {
-    const brandMainColor = getTheme(props).palette.brand.main;
-    return { brandMainColor };
-})`
+const StyledActiveIcon = attachThemeAttrs(styled.div)`
     width: 1.25rem;
     height: 1.25rem;
     border-radius: ${BORDER_RADIUS_2};
-    border: 0.375rem solid ${props => props.brandMainColor};
+    border: 0.375rem solid ${props => props.palette.brand.main};
     box-sizing: border-box;
 `;
 
