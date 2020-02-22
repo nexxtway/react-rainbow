@@ -59,25 +59,11 @@ export default function MapComponent(props) {
                     instance.addListener('click', () => onMarkerClick(marker, idx));
                     return instance;
                 });
-
-                const noPreviousMarkers = mapMarkers.length === 0;
-                const hasNewMarkers = instances.length > 0;
-                const markersChanged = mapMarkers.length !== instances.length;
-
-                if ((noPreviousMarkers && hasNewMarkers) || markersChanged) {
-                    updateMapMarkers(instances);
-                    if (center === 'auto') {
-                        const bounds = new window.google.maps.LatLngBounds();
-                        instances.forEach(markerInstance =>
-                            bounds.extend(markerInstance.getPosition()),
-                        );
-                        map.setCenter(bounds.getCenter());
-                        map.fitBounds(bounds);
-                    }
-                }
+                updateMapMarkers(instances);
             }
         }
-    }, [markers, map, center, mapMarkers, onMarkerClick]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [markers, map, onMarkerClick]);
 
     useEffect(() => {
         if (map) {
@@ -93,29 +79,17 @@ export default function MapComponent(props) {
 
     useEffect(() => {
         if (map) {
-            const hasMarkers = mapMarkers.length > 0;
-            if (center === 'auto') {
-                if (hasMarkers) {
-                    if (mapMarkers.length === 1) {
-                        map.setCenter(
-                            mapMarkers.find(marker => marker !== undefined).getPosition(),
-                        );
-                        map.setZoom(MAX_ZOOM);
-                    } else {
-                        const bounds = new window.google.maps.LatLngBounds();
-                        mapMarkers.forEach(markerInstance =>
-                            bounds.extend(markerInstance.getPosition()),
-                        );
-                        map.setCenter(bounds.getCenter());
-                        map.fitBounds(bounds);
-                    }
-                }
+            const hasNewMarkers = mapMarkers.length > 0;
+            if (hasNewMarkers && center === 'auto') {
+                const bounds = new window.google.maps.LatLngBounds();
+                mapMarkers.forEach(markerInstance => bounds.extend(markerInstance.getPosition()));
+                map.setCenter(bounds.getCenter());
+                map.fitBounds(bounds);
             } else {
                 map.setCenter(center);
-                map.setZoom(zoom);
             }
         }
-    }, [center, map, mapMarkers, zoom]);
+    }, [center, map, mapMarkers]);
 
     useEffect(() => {
         if (map) {
