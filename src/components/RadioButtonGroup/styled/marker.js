@@ -1,7 +1,7 @@
 /* stylelint-disable max-line-length */
 import styled from 'styled-components';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledMarker = attachThemeAttrs(styled.span)`
     position: absolute;
