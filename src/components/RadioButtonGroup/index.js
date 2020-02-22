@@ -6,7 +6,7 @@ import RenderIf from '../RenderIf';
 import RequiredAsterisk from '../RequiredAsterisk';
 import { uniqueId } from '../../libs/utils';
 import Marker from './marker';
-import ErrorText from '../Input/styled/errorText';
+import StyledErrorText from './styled/errorText';
 import isOptionChecked from './helpers/isOptionChecked';
 import StyledContainer from './styled/container';
 import StyledLabel from './styled/label';
@@ -144,7 +144,7 @@ class RadioButtonGroup extends Component {
                     />
                 </StyledButtonItemsContainer>
                 <RenderIf isTrue={!!error}>
-                    <ErrorText id={this.getErrorMessageId()}>{error}</ErrorText>
+                    <StyledErrorText id={this.getErrorMessageId()}>{error}</StyledErrorText>
                 </RenderIf>
             </StyledContainer>
         );
