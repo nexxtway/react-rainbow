@@ -1,7 +1,6 @@
 /* stylelint-disable max-line-length */
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
-import { replaceAlpha } from '../../../styles/helpers/color';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 
 const StyledMarker = attachThemeAttrs(styled.span)`
