@@ -132,9 +132,9 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
             }
 
             &[disabled] {
-                background-color: ${
-                    props.isLoading ? props.palette.brand.main : props.palette.background.disabled
-                };
+            background-color: ${
+                props.isLoading ? props.palette.brand.main : props.palette.background.disabled
+            };
                 border-color: ${
                     props.isLoading ? props.palette.brand.main : props.palette.background.disabled
                 };
