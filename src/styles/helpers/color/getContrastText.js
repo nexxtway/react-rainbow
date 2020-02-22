@@ -1,5 +1,5 @@
 import { COLOR_BRAND, COLOR_SUCCESS } from '../../colors';
-import { darken, getContrastRatio } from './index';
+import { darken, getContrastRatio, colorToRgba } from './index';
 
 const light = {
     text: {
@@ -20,10 +20,10 @@ export default function getContrastText(background) {
         throw new TypeError(`Missing background argument in getContrastText(${background}).`);
     }
     const isDefaultBackground =
-        background === COLOR_BRAND ||
-        background === darken(COLOR_BRAND) ||
-        background === COLOR_SUCCESS ||
-        background === darken(COLOR_SUCCESS);
+        background === colorToRgba(COLOR_BRAND) ||
+        background === colorToRgba(darken(COLOR_BRAND)) ||
+        background === colorToRgba(COLOR_SUCCESS) ||
+        background === colorToRgba(darken(COLOR_SUCCESS));
 
     const contrastText =
         getContrastRatio(background, dark.text.primary) >= contrastThreshold || isDefaultBackground

@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import TimePicker from '../';
 import { SPACE_KEY, ENTER_KEY } from '../../../libs/constants';
 
@@ -96,5 +96,26 @@ describe('<TimePicker/>', () => {
         component.setProps({ value: '23:01' });
         component.update();
         expect(component.find('input').prop('value')).toBe('11:01 PM');
+    });
+    it('should initialize value state to the right value when hour24 is passed', () => {
+        const wrapper = shallow(
+            <TimePicker label="unit-testing-timePicker" value="18:35" hour24 />,
+        );
+        const component = wrapper.find('TimePicker').dive();
+        expect(component.state().value).toBe('18:35');
+    });
+    it('should initialize value state to the right value when hour24 is not passed', () => {
+        const wrapper = shallow(<TimePicker label="unit-testing-timePicker" value="18:35" />);
+        const component = wrapper.find('TimePicker').dive();
+        expect(component.state().value).toBe('06:35 PM');
+    });
+    it('should set the right value state when value prop is changed dynamically', () => {
+        const wrapper = shallow(
+            <TimePicker label="unit-testing-timePicker" value="22:59" hour24 />,
+        );
+        wrapper.setProps({ value: '23:01' });
+        wrapper.update();
+        const component = wrapper.find('TimePicker').dive();
+        expect(component.state().value).toBe('23:01');
     });
 });

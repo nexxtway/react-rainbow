@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 import { COLOR_WHITE, COLOR_GRAY_3, COLOR_DARK_1 } from '../../../styles/colors';
 import { lighten } from '../../../styles/helpers/color';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
     if (props.palette.isDark) {
@@ -107,7 +107,7 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
             
                 &[disabled] {
                     background-color: ${props.palette.background.disabled};
-                    border: 1px solid ${props.palette.background.disabled};
+                    border: 1px solid ${props.palette.border.disabled};
                     color: ${props.palette.text.disabled};
                 }
             `
@@ -140,7 +140,7 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
             
                 &[disabled] {
                     background-color: ${props.palette.background.disabled};
-                    border: 1px solid ${props.palette.background.disabled};
+                    border: 1px solid ${props.palette.border.disabled};
                     color: ${props.palette.text.disabled};
                 }
             `

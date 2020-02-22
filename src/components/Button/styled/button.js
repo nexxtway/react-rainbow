@@ -1,6 +1,7 @@
+/* eslint-disable indent */
 import styled from 'styled-components';
 import { FONT_SIZE_HEADING_SMALL } from '../../../styles/fontSizes';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { COLOR_WHITE, COLOR_GRAY_3, COLOR_DARK_1 } from '../../../styles/colors';
 import { lighten } from '../../../styles/helpers/color';
 
@@ -132,11 +133,11 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
             }
 
             &[disabled] {
-            background-color: ${
-                props.isLoading ? props.palette.brand.main : props.palette.background.disabled
-            };
-                border-color: ${
+                background-color: ${
                     props.isLoading ? props.palette.brand.main : props.palette.background.disabled
+                };
+                border-color: ${
+                    props.isLoading ? props.palette.brand.main : props.palette.border.divider
                 };
                 color: ${props.palette.text.disabled};
             }
@@ -159,7 +160,7 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
             &[disabled] {
                 background-color: transparent;
                 border-color: ${
-                    props.isLoading ? props.palette.brand.main : props.palette.border.disabled
+                    props.isLoading ? props.palette.brand.main : props.palette.border.divider
                 };
             }
         `};

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import TruncatedText from '../../Structural/truncatedText';
 import { FONT_SIZE_TEXT_X_SMALL } from '../../../styles/fontSizes';
 

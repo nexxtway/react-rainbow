@@ -11,8 +11,9 @@ import {
     COLOR_GRAY_4,
 } from './colors';
 import { darken, getContrastText, lighten } from './helpers/color';
+import normalizeThemeColors from './helpers/normalizeThemeColors';
 
-export default {
+const defaultTheme = {
     palette: {
         brand: {
             main: COLOR_BRAND,
@@ -70,3 +71,5 @@ export default {
         shadow_7: `0 0 0 4px ${COLOR_GRAY_2}`,
     },
 };
+
+export default normalizeThemeColors(defaultTheme);
