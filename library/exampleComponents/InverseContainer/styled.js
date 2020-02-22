@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../src/styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../src/styles/helpers/attachThemeAttrs';
 
 const StyledInverseContainer = attachThemeAttrs(styled.div)`
     background-color: ${props => (props.palette.isDark ? '#f9fafc' : '#303030')};
