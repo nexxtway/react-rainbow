@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import scriptLoader from 'react-async-script-loader';
 import MapComponent from './component';
+
+const googleMapApiUrl = 'https://maps.googleapis.com/maps/api/js';
 
 /**
  * @category Layout
  */
 export default function PresenceMap(props) {
     const { apiKey, ...rest } = props;
+    const Component = useCallback(scriptLoader(`${googleMapApiUrl}?key=${apiKey}`)(MapComponent), [
+        apiKey,
+    ]);
 
-    const Component = scriptLoader(`https://maps.googleapis.com/maps/api/js?key=${apiKey}`)(
-        MapComponent,
-    );
     return <Component {...rest} />;
 }
 
@@ -20,16 +22,23 @@ PresenceMap.propTypes = {
      * you must get an API Key. See https://console.cloud.google.com/google/maps-apis/overview
      * to get an API Key. */
     apiKey: PropTypes.string.isRequired,
-    /** An array with the Map objects. */
-    objects: PropTypes.arrayOf(
+    /** An array of Markers. */
+    markers: PropTypes.arrayOf(
         PropTypes.shape({
             position: PropTypes.shape({
                 lat: PropTypes.number,
                 lng: PropTypes.number,
+            }).isRequired,
+            icon: PropTypes.shape({
+                path: PropTypes.string.isRequired,
+                fillColor: PropTypes.string,
+                fillOpacity: PropTypes.number,
+                scale: PropTypes.number,
+                strokeColor: PropTypes.string,
+                strokeOpacity: PropTypes.number,
+                strokeWeight: PropTypes.number,
+                rotation: PropTypes.number,
             }),
-            heading: PropTypes.number,
-            image: PropTypes.string,
-            onClick: PropTypes.func,
         }),
     ),
     /** A CSS class for the outer element, in addition to the component's base classes. */
@@ -40,7 +49,7 @@ PresenceMap.propTypes = {
      * where zoom 0 corresponds to a map of the Earth fully zoomed out,
      * and larger zoom levels zoom in at a higher resolution.
      * Specify zoom level as an integer. This value defaults to 8. */
-    zoom: PropTypes.oneOfType([PropTypes.number, PropTypes.oneOf(['auto'])]),
+    zoom: PropTypes.number,
     /** Map center point  */
     center: PropTypes.oneOfType([
         PropTypes.shape({
@@ -59,12 +68,13 @@ PresenceMap.propTypes = {
      */
     children: PropTypes.node,
     /** Map type. */
-    type: PropTypes.string,
+    type: PropTypes.oneOf(['roadmap', 'satellite', 'hybrid', 'terrain']),
+    onMarkerClick: PropTypes.func,
 };
 
 PresenceMap.defaultProps = {
-    objects: [],
-    zoom: 'auto',
+    markers: [],
+    zoom: 2,
     className: undefined,
     style: undefined,
     center: 'auto',
@@ -72,4 +82,5 @@ PresenceMap.defaultProps = {
     showTransit: false,
     children: null,
     type: 'roadmap',
+    onMarkerClick: () => {},
 };
