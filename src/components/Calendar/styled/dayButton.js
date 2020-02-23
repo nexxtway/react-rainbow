@@ -62,7 +62,11 @@ const StyledDayButton = attachThemeAttrs(styled.button)`
             }
         
             &:hover {
-                background-color: ${props.palette.brand.main};
+                background-color: ${props.palette.brand.dark};
+            }
+
+            &:focus {
+                box-shadow: 0 0 8px ${props.palette.brand.main};
             }
 
             @media (max-width: 600px) {
