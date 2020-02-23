@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-const StyledStartInput = styled.input`
+const StyledStartInput = attachThemeAttrs(styled.input)`
     box-sizing: border-box;
     position: absolute;
     opacity: 0;
@@ -19,7 +20,7 @@ const StyledStartInput = styled.input`
     }
 
     :-ms-input-placeholder {
-        color: #706e6b;
+        color: ${props => props.palette.text.label};
         font-weight: 400;
         font-size: 0.8125rem;
     }

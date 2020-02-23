@@ -11,10 +11,17 @@ import {
 } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
 
 const stepNames = ['step-1', 'step-2', 'step-3', 'step-4', 'step-5'];
 
 const steps = ['first', 'second', 'third', 'fourth', 'fifth'];
+
+const StyledLabel = styled.p.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.label};
+`;
 
 class SimpleProgressStep extends React.Component {
     constructor(props) {
@@ -88,7 +95,7 @@ class SimpleProgressStep extends React.Component {
                     <ProgressStep name="step-5" />
                 </ProgressIndicator>
                 <div className="rainbow-m-top_xx-large rainbow-align-content_center rainbow-flex_wrap">
-                    <p>{`This is the ${steps[currentStepIndex]} step`}</p>
+                    <StyledLabel>{`This is the ${steps[currentStepIndex]} step`}</StyledLabel>
                 </div>
                 <div className="rainbow-m-top_xx-large rainbow-align-content_center rainbow-flex_wrap">
                     <Button
