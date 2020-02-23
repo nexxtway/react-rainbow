@@ -4,7 +4,7 @@ import { PADDING_SMALL } from '../../../styles/paddings';
 
 const StyledPaginationContainer = attachThemeAttrs(styled.div)`
     padding: ${PADDING_SMALL};
-    background-color: ${props => props.palette.background.secondary};
+    background-color: ${props => props.palette.background.highlight};
     border-top: 1px solid ${props => props.palette.border.divider};
     border-bottom: 1px solid ${props => props.palette.border.divider};
     display: flex;
