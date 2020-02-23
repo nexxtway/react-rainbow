@@ -3,7 +3,7 @@ import attchThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledContainer = attchThemeAttrs(styled.span).attrs(props => {
     const inverse = props.palette.text.label;
-    return inverse;
+    return { inverse };
 })`
     color: ${props => props.palette.text.label};
     background-color: ${props => props.palette.background.highlight};
