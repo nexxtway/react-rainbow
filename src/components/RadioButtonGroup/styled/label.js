@@ -9,7 +9,7 @@ const StyledLabel = attachThemeAttrs(styled.legend)`
     color: ${props => props.palette.text.label};
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
     line-height: 1.5;
-    margin: 0 auto 0.125rem auto;
+    margin: 0 auto 0.5rem auto;
     text-align: center;
     box-sizing: border-box;
     ${props =>

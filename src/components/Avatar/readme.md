@@ -95,7 +95,7 @@ import { Avatar } from 'react-rainbow-components';
 import React from 'react';
 import { Avatar } from 'react-rainbow-components';
 
-<InverseContainer className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
+<InverseContainer className="rainbow-p-vertical_large rainbow-p-left_medium">
     <div className="rainbow-m-horizontal_medium">
         <Avatar assistiveText="Jane Doe" initials="JD" title="Jane Doe" initialsVariant="inverse" />
     </div>

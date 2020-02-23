@@ -6,11 +6,11 @@ import RenderIf from '../RenderIf';
 import RequiredAsterisk from '../RequiredAsterisk';
 import { uniqueId } from '../../libs/utils';
 import Marker from './marker';
+import StyledErrorText from './styled/errorText';
 import isOptionChecked from './helpers/isOptionChecked';
 import StyledContainer from './styled/container';
 import StyledLabel from './styled/label';
 import StyledButtonItemsContainer from './styled/buttonItemsContainer';
-import StyledTextError from '../Input/styled/errorText';
 
 /**
  * A button list that can have a single entry checked at any one time.
@@ -144,7 +144,7 @@ class RadioButtonGroup extends Component {
                     />
                 </StyledButtonItemsContainer>
                 <RenderIf isTrue={!!error}>
-                    <StyledTextError id={this.getErrorMessageId()}>{error}</StyledTextError>
+                    <StyledErrorText id={this.getErrorMessageId()}>{error}</StyledErrorText>
                 </RenderIf>
             </StyledContainer>
         );

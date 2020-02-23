@@ -1,26 +1,24 @@
 /* stylelint-disable max-line-length */
 import styled from 'styled-components';
-import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+import { replaceAlpha } from '../../../styles/helpers/color';
+import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 
 const StyledButtonItem = attachThemeAttrs(styled.span)`
-    ${props => `
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        height: 2.5rem;
-        border-radius: ${BORDER_RADIUS_2};
-        border: solid 1px transparent;
-        transition: transform 600ms cubic-bezier(0.02, 0.94, 0.09, 0.97),
-            all 300ms cubic-bezier(0.17, 0.67, 0.14, 1.03);
-        transform: translate3d(0, 0, 0);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.5rem;
+    border-radius: ${BORDER_RADIUS_2};
+    border: solid 1px transparent;
+    transition: transform 600ms cubic-bezier(0.02, 0.94, 0.09, 0.97),
+        all 300ms cubic-bezier(0.17, 0.67, 0.14, 1.03);
+    transform: translate3d(0, 0, 0);
 
-        &:hover {
-            background-color: ${
-                props.palette.isDark ? 'rgba(28, 26, 18, 0.4)' : 'rgba(227, 229, 237, 0.4)'
-            };
-            cursor: pointer;
-        }
+    &:hover {
+        background-color: ${props => replaceAlpha(props.palette.background.highlight, 0.6)};
+        cursor: pointer;
+    }
 
         > [type='radio'] {
             width: 1px;
@@ -33,7 +31,8 @@ const StyledButtonItem = attachThemeAttrs(styled.span)`
             position: absolute;
         }
 
-        ${props.variant === 'inverse' &&
+        ${props =>
+            props.variant === 'inverse' &&
             `
                 &:hover {
                     background-color: ${
@@ -44,7 +43,8 @@ const StyledButtonItem = attachThemeAttrs(styled.span)`
                     cursor: pointer;
                 }
             `};
-        ${props.isChecked &&
+        ${props =>
+            props.isChecked &&
             `
                 transition: transform 600ms cubic-bezier(0.02, 0.94, 0.09, 0.97), all 300ms cubic-bezier(0.17, 0.67, 0.14, 1.03);
                 transform: translate3d(0, 0, 0);
@@ -55,13 +55,13 @@ const StyledButtonItem = attachThemeAttrs(styled.span)`
                     cursor: pointer;
                 }
             `};
-        ${props.disabled &&
+        ${props =>
+            props.disabled &&
             `
                 &:hover {
                     background-color: transparent;
                 }
             `};
-    `};
 `;
 
 export default StyledButtonItem;
