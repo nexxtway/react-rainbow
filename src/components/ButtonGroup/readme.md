@@ -240,7 +240,7 @@ const socials = [
     {
         url: 'https://facebook.com',
         name: 'facebook',
-        icon: <FacebookIcon />,
+        icon: <FacebookIcon style={{color: "#3C5997"}}/>,
         countInThousands: 143
     },
     {
@@ -252,7 +252,7 @@ const socials = [
     {
         url: 'https://twitter.com',
         name: 'twitter',
-        icon: <TwitterIcon />,
+        icon: <TwitterIcon style={{color: '#00B0F3'}} />,
         countInThousands: 42
     }
 ];

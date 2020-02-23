@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { isValidColor } from '../../../src/styles/helpers/color';
 
 const Facebook = props => {
-    const { className, style, color } = props;
+    const { className, style } = props;
     return (
         <svg
             className={className}
@@ -18,7 +17,7 @@ const Facebook = props => {
                 <g
                     id="Components-Button-Group"
                     transform="translate(-246.000000, -1407.000000)"
-                    fill={isValidColor(color) ? color : '#3C5997'}
+                    fill="currentColor"
                     fillRule="nonzero"
                 >
                     <g id="Group-178" transform="translate(224.000000, 1305.000000)">
@@ -44,13 +43,11 @@ const Facebook = props => {
 Facebook.propTypes = {
     className: PropTypes.string,
     style: PropTypes.object,
-    color: PropTypes.string,
 };
 
 Facebook.defaultProps = {
     className: undefined,
     style: undefined,
-    color: undefined,
 };
 
 export default Facebook;

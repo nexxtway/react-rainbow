@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { isValidColor } from '../../../src/styles/helpers/color';
 
 const Twitter = props => {
-    const { className, style, color } = props;
+    const { className, style } = props;
     return (
         <svg
             className={className}
@@ -18,7 +17,7 @@ const Twitter = props => {
                 <g
                     id="Components-Button-Group"
                     transform="translate(-683.000000, -1411.000000)"
-                    fill={isValidColor(color) ? color : '#00B0F3'}
+                    fill="currentColor"
                     fillRule="nonzero"
                 >
                     <g id="Group-178" transform="translate(224.000000, 1305.000000)">
@@ -47,13 +46,11 @@ const Twitter = props => {
 Twitter.propTypes = {
     className: PropTypes.string,
     style: PropTypes.object,
-    color: PropTypes.string,
 };
 
 Twitter.defaultProps = {
     className: undefined,
     style: undefined,
-    color: undefined,
 };
 
 export default Twitter;

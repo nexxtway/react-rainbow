@@ -400,7 +400,7 @@ const Contact = (props) => {
                     <GitHubIcon />
                 </a>
                 <a href={github}>
-                    <LinkedinIcon />
+                    <LinkedinIcon style={{color: '#0E76A8'}} />
                 </a>
             </div>
         </ConctactContainer>

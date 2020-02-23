@@ -77,6 +77,7 @@ class StyleGuide extends React.Component {
         const styleTwitterIcon = {
             width: '18px',
             height: '15px',
+            color: '#ffffff',
         };
 
         return (
@@ -90,7 +91,7 @@ class StyleGuide extends React.Component {
                         rel="noopener noreferrer"
                         className="react-rainbow-styleguide_twitter-link"
                     >
-                        <TwitterIcon color="#ffffff" style={styleTwitterIcon} />
+                        <TwitterIcon style={styleTwitterIcon} />
                     </a>
                 </aside>
                 <div
