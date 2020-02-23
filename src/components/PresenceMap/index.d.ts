@@ -6,22 +6,32 @@ export interface IPosition {
     lng?: number;
 }
 
-export interface MapObject {
-    position?: IPosition;
-    heading?: number;
-    image?: string;
-    onClick?: (event: MouseEvent<HTMLElement>) => void;
+export interface ISymbol {
+    path: string;
+    fillColor?: string;
+    fillOpacity?: number;
+    scale?: number;
+    strokeColor?: string;
+    strokeOpacity?: number;
+    strokeWeight?: number;
+    rotation?: number;
+}
+
+export interface IMarker {
+    position: IPosition;
+    icon?: ISymbol;
 }
 
 export interface PresenceMapProps extends BaseProps {
     apiKey: string;
-    objects?: MapObject[];
-    zoom?: number | 'auto';
+    markers?: IMarker[];
+    zoom?: number;
     center?: IPosition | 'auto';
     showTraffic?: boolean;
     showTransit?: boolean;
     children?: ReactNode;
-    type?: string;
+    type?: 'roadmap' | 'satellite' | 'hybrid' | 'terrain';
+    onMarkerClick: function;
 }
 
 export default function(props: PresenceMapProps): JSX.Element | null;

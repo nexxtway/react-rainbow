@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 
 const StyledEmptyMessage = attachThemeAttrs(styled.span)`
     margin-top: 12px;

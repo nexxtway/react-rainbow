@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { BORDER_RADIUS_1 } from '../../../styles/borderRadius';
 
 const StyledImagesUl = attachThemeAttrs(styled.ul)`
