@@ -23,7 +23,7 @@ export default function MapComponent(props) {
     } = props;
     const container = useRef();
     const mapContainer = useRef();
-    const [map, setMap] = useState(false);
+    const [map, setMap] = useState();
     const [mapMarkers, updateMapMarkers] = useState([]);
     const [trafficLayer, setTrafficLayer] = useState(false);
     const [transitLayer, setTransitLayer] = useState(false);
@@ -44,26 +44,31 @@ export default function MapComponent(props) {
         }
     }, [isScriptLoaded, isScriptLoadSucceed]);
 
+    const handleMarkerClick = (marker, index) => {
+        onMarkerClick(marker, index);
+    };
+
     useEffect(() => {
         if (map) {
-            if (markers.length > 0) {
-                mapMarkers.forEach(marker => marker.setMap(null));
-
-                const instances = markers.map((marker, idx) => {
+            mapMarkers.forEach(marker => marker.setMap(null));
+            if (Array.isArray(markers)) {
+                const instances = markers.map((marker, index) => {
                     const instance = new window.google.maps.Marker({
                         position: marker.position,
                         icon: marker.icon,
                         map,
                         zIndex: Math.round(marker.position.lat * 100000),
                     });
-                    instance.addListener('click', () => onMarkerClick(marker, idx));
+                    instance.addListener('click', () => handleMarkerClick(marker, index));
                     return instance;
                 });
                 updateMapMarkers(instances);
+            } else {
+                updateMapMarkers([]);
             }
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [markers, map, onMarkerClick]);
+    }, [markers, map]);
 
     useEffect(() => {
         if (map) {
@@ -75,7 +80,8 @@ export default function MapComponent(props) {
         if (map) {
             transitLayer.setMap(showTransit ? map : null);
         }
-    }, [showTransit, map, transitLayer]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [showTransit, map]);
 
     useEffect(() => {
         if (map) {

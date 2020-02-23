@@ -151,7 +151,7 @@ const PresenceMapExample = () => {
             showTransit={showTransitState}
             center={centerState}
             type={mapTypeState.name}
-            onMarkerClick={useCallback((marker, idx) => handleMarkerClick(marker, idx), [])}
+            onMarkerClick={(marker, idx) => handleMarkerClick(marker, idx)}
         >
             <ControlsContainer>
                 <ButtonIcon
@@ -356,7 +356,7 @@ const PresenceMapExample = () => {
             showTransit={showTransitState}
             center={centerState}
             type={mapTypeState.name}
-            onMarkerClick={useCallback((marker, idx) => handleMarkerClick(marker, idx), [])}
+            onMarkerClick={(marker, idx) => handleMarkerClick(marker, idx)}
         >
             <ControlsContainer>
                 <ButtonIcon
