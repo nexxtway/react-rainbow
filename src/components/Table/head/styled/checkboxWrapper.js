@@ -6,7 +6,7 @@ const StyledCheckboxWrapper = attachThemeAttrs(styled(StyledWrapper))`
     align-items: center;
     display: flex;
     padding: 0 15px;
-    border: 1px solid ${props => props.palette.border.divider};
+    border: 1px solid transparent;
 `;
 
 export default StyledCheckboxWrapper;

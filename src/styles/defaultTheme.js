@@ -35,7 +35,7 @@ const defaultTheme = {
         },
         background: {
             main: COLOR_WHITE,
-            highlight: COLOR_GRAY_2,
+            highlight: '#eff1f5',
             secondary: '#f9fafc',
             disabled: COLOR_GRAY_1,
         },
