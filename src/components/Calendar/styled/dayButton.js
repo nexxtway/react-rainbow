@@ -33,6 +33,8 @@ const StyledDayButton = attachThemeAttrs(styled.button)`
     &:focus,
     &:active {
         box-shadow: ${props => props.shadows.brand};
+        border: 1px solid ${props => props.palette.brand.main};
+        line-height: 36px;
     }
 
     @media (max-width: 600px) {
@@ -49,8 +51,8 @@ const StyledDayButton = attachThemeAttrs(styled.button)`
             font-weight: 600;
             border-radius: 48px;
             line-height: 36px;
-            height: 36px;
-            width: 36px;
+            height: 38px;
+            width: 38px;
             margin: 5px auto;
             padding: 0;
             border: none;
