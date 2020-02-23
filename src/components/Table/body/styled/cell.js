@@ -1,11 +1,7 @@
 import styled from 'styled-components';
-import getTheme from '../../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 
-const StyledCell = styled.th.attrs(props => {
-    const brandMainColor = getTheme(props).palette.brand.main;
-
-    return { brandMainColor };
-})`
+const StyledCell = attachThemeAttrs(styled.th)`
     padding: 0;
     text-align: left;
     box-sizing: border-box;
@@ -18,7 +14,7 @@ const StyledCell = styled.th.attrs(props => {
         outline: none;
 
         > div {
-            border-color: ${props => props.brandMainColor};
+            border-color: ${props => props.palette.brand.main};
         }
     }
 `;
