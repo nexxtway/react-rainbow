@@ -14,7 +14,7 @@ import StyledCloseButton from './styled/closeButton';
 import StyledFooter from './styled/footer';
 import Header from './header';
 import CloseIcon from './closeIcon';
-import useUniqueIdentifier from './hooks/useUniqueIdentifier';
+import { useUniqueIdentifier } from '../../libs/hooks';
 
 /**
  * Drawers are surfaces containing supplementary content on your app.

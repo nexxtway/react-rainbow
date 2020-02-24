@@ -2,14 +2,16 @@ import { ReactNode, ComponentType } from 'react';
 import { BaseProps } from '../types';
 
 export interface DrawerProps extends BaseProps {
-    title?: ReactNode;
+    header?: ReactNode;
+    footer?: ReactNode;
+    size?: 'small' | 'medium' | 'large';
+    slideFrom?: 'left' | 'right';
     isOpen?: boolean;
+    onRequestClose?: () => void;
+    onOpened?: () => void;
     id?: string;
     children?: ReactNode;
-    position?: 'left' | 'top' | 'right' | 'bottom';
-    size?: 'small' | 'medium' | 'full';
-    footer?: ReactNode;
+    hideCloseButton?: boolean;
 }
 
-declare const Drawer: ComponentType<DrawerProps>;
-export default Drawer;
+export default function(props: DrawerProps): JSX.Element | null;
