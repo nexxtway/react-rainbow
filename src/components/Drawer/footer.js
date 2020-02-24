@@ -1,13 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import StyledTitle from './styled/title';
 import StyledDivider from './styled/divider';
 
-export default function Header({ title }) {
+export default function DrawerFooter({ footer }) {
     if (typeof title === 'string') {
         return (
             <>
-                <StyledTitle>{title}</StyledTitle>
                 <StyledDivider />
             </>
         );
@@ -21,10 +19,10 @@ export default function Header({ title }) {
     );
 }
 
-Header.propTypes = {
+DrawerFooter.propTypes = {
     title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 };
 
-Header.defaultProps = {
+DrawerFooter.defaultProps = {
     title: undefined,
 };

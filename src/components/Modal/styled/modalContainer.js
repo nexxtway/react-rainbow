@@ -27,14 +27,14 @@ const StyledModalContainer = attachThemeAttrs(styled.section)`
     }
 
     ${props =>
-        props.isOpen &&
+        props.show &&
         `
             animation: slide-up-in 0.2s linear;
             opacity: 1;
             transform: scale(1, 1) translateY(0);
         `};
     ${props =>
-        !props.isOpen &&
+        !props.show &&
         `
             animation: slide-down-out 0.2s linear;
             opacity: 0;

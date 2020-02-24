@@ -17,18 +17,13 @@ const StyledBackDrop = attachThemeAttrs(styled.div)`
     align-items: center;
     position: fixed;
     transition: opacity 0.3s linear, z-index 0.3s linear;
-    ${
-        '' /* ${props =>
+    ${props =>
         props.isOpen &&
         `
             visibility: visible;
             z-index: 1000000;
             opacity: 1;
-        `}; */
-    }
-    visibility: visible;
-    z-index: 1000000;
-    opacity: 1;
+        `};
 `;
 
 export default StyledBackDrop;

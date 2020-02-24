@@ -58,6 +58,7 @@ const initialState = {
     <Drawer
         header="This is a drawer"
         isOpen={state.isOpen}
+        slideFrom={state.drawerPosition}
         onRequestClose={() => setState({ isOpen : false })}
     />
 </div>

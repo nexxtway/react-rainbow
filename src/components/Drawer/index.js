@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import {
@@ -25,7 +25,11 @@ export default function Drawer(props) {
         isOpen,
         hideCloseButton,
         onRequestClose,
+        onOpened,
         header,
+        footer,
+        size,
+        slideFrom,
         children,
         className,
         style,
@@ -42,36 +46,39 @@ export default function Drawer(props) {
         }
     }, [isOpen]);
 
-    if (isOpen) {
-        return createPortal(
-            <StyledBackDrop id={id} role="presentation" onClick={onRequestClose}>
-                <StyledContainer
-                    role="dialog"
-                    tabIndex={-1}
-                    aria-labelledby={headerId}
-                    aria-modal
-                    aria-hidden
-                    aria-describedby={contentId}
-                    className={className}
-                    isOpen={isOpen}
-                    style={style}
-                >
-                    <Header title={header} />
-                    <StyledContent ref={contentRef}>{children}</StyledContent>
-                    <RenderIf isTrue={!hideCloseButton}>
-                        <StyledCloseButton
-                            icon={<CloseIcon />}
-                            title="Hide"
-                            onClick={onRequestClose}
-                        />
-                    </RenderIf>
-                    <StyledFooter />
-                </StyledContainer>
-            </StyledBackDrop>,
-            document.body,
-        );
-    }
-    return null;
+    // if (isOpen) {
+    return createPortal(
+        <StyledBackDrop isOpen={isOpen} id={id} role="presentation" onClick={onRequestClose}>
+            <StyledContainer
+                role="dialog"
+                tabIndex={-1}
+                aria-labelledby={headerId}
+                aria-modal
+                aria-hidden
+                aria-describedby={contentId}
+                className={className}
+                isOpen={isOpen}
+                style={style}
+                size={size}
+                slideFrom={slideFrom}
+            >
+                <Header title={header} />
+                <StyledContent ref={contentRef}>{children}</StyledContent>
+                <StyledFooter />
+                <RenderIf isTrue={!hideCloseButton}>
+                    <StyledCloseButton
+                        icon={<CloseIcon />}
+                        title="Hide"
+                        onClick={onRequestClose}
+                        slideFrom={slideFrom}
+                    />
+                </RenderIf>
+            </StyledContainer>
+        </StyledBackDrop>,
+        document.body,
+    );
+    // }
+    // return null;
 }
 
 Drawer.propTypes = {
