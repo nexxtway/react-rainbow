@@ -236,11 +236,17 @@ const SocialContentCount = styled.h2.attrs(props => {
     color: ${props => props.text.main};  
 `;
 
+const styles = {
+    socialCard: { marginLeft: 0, marginRight: 0 },
+    facebookIcon: { color: "#3C5997"} ,
+    twitterIcon : { color: '#00B0F3' },
+};
+
 const socials = [
     {
         url: 'https://facebook.com',
         name: 'facebook',
-        icon: <FacebookIcon style={{color: "#3C5997"}}/>,
+        icon: <FacebookIcon style={styles.facebookIcon}/>,
         countInThousands: 143
     },
     {
@@ -252,14 +258,10 @@ const socials = [
     {
         url: 'https://twitter.com',
         name: 'twitter',
-        icon: <TwitterIcon style={{color: '#00B0F3'}} />,
+        icon: <TwitterIcon style={styles.twitterIcon} />,
         countInThousands: 42
     }
 ];
-
-const styles = {
-    socialCard: { marginLeft: 0, marginRight: 0 }
-};
 
 <div>
     <HeadingContent className="rainbow-p-vertical_large rainbow-align-content_space-between rainbow-m-horizontal_medium rainbow-flex">

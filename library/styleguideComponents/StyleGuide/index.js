@@ -19,6 +19,12 @@ function trackPageview() {
     ReactGA.pageview(window.location.hash);
 }
 
+const styleTwitterIcon = {
+    width: '18px',
+    height: '15px',
+    color: '#ffffff',
+};
+
 class StyleGuide extends React.Component {
     constructor(props) {
         super(props);
@@ -74,11 +80,6 @@ class StyleGuide extends React.Component {
     render() {
         const { children, toc } = this.props;
         const components = toc.props.sections[1].components;
-        const styleTwitterIcon = {
-            width: '18px',
-            height: '15px',
-            color: '#ffffff',
-        };
 
         return (
             <div className="react-rainbow-styleguide-container rainbow-position-align_start">
