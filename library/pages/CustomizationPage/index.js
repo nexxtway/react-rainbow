@@ -18,6 +18,7 @@ import {
     COLOR_SUCCESS,
     COLOR_ERROR,
     COLOR_WARNING,
+    COLOR_DARK_1,
 } from '../../../src/styles/colors';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faList } from '@fortawesome/free-solid-svg-icons';
@@ -145,7 +146,7 @@ const DefaultBadge = ({ value }) => (
 );
 
 const StyledBadge = styled.span`
-    color: ${COLOR_GRAY_4};
+    color: ${COLOR_DARK_1};
     background-color: ${COLOR_GRAY_1};
     border: 1px solid ${COLOR_GRAY_1};
     padding: 0.1rem 0.25rem 0.1rem 0.25rem;
@@ -263,12 +264,12 @@ export default function CustomizationPage(props) {
                         </h2>
                         <h3 className="react-rainbow-customization_section-text">
                             You might wonder how all the components colors are being set based on
-                            five colors <StyledBadge>brand</StyledBadge>{' '}
-                            <StyledBadge>success</StyledBadge> <StyledBadge>warning</StyledBadge>{' '}
-                            <StyledBadge>error</StyledBadge> and{' '}
-                            <StyledBadge>mainBackground</StyledBadge> app.
+                            five colors
+                            <StyledBadge>brand</StyledBadge> <StyledBadge>success</StyledBadge>{' '}
+                            <StyledBadge>warning</StyledBadge> <StyledBadge>error</StyledBadge> and{' '}
+                            <StyledBadge>mainBackground</StyledBadge>
                         </h3>
-                        <h3 className="react-rainbow-customization_section-text">
+                        <h3 className="react-rainbow-customization_section-text rainbow-m-bottom_medium">
                             Well, we do compute the rest of the color we use in our internal
                             implementation based on accessibility standards and also we expose those
                             generated values to you through the react context because you might want

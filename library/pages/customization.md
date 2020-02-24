@@ -47,17 +47,15 @@ import styled from 'styled-components';
 
 const Title = styled.h2`
     color: ${props => props.theme.rainbow.palette.brand.main};
-    font-size: 1.25rem;
-    margin-right: 0.5rem;
-    margin-left: 1rem;
-    padding-top: 1rem;
+    font-size: 1.5rem;
+    margin: 0 0.5rem 0 1rem;
+    font-weight: 500;
 `;
 
 const Subtitle = styled.h3`
     color: ${props => props.theme.rainbow.palette.text.header};
     font-size: 1rem;
-    margin-right: 0.5rem;
-    margin-left: 1rem;
+    margin: 0 0.5rem 0 1rem;
 `;
 
 const Content = styled.section`
@@ -69,14 +67,15 @@ const Content = styled.section`
 `;
 
 const Container = styled.section`
-    max-width: 1024px;
+    max-width: 900px;
     display: flex;
     flex-direction: column;
-    margin: 24px auto;
+    margin: 32px auto 40px auto;
 `;
 
-const PercentCardHeader = styled.div`
+const PercentCardHeader = styled.h2`
     color: ${props => props.theme.rainbow.palette.text.main};
+    font-size: 1.25rem;
 `;
 
 const PercentCardSubtitle = styled.h3`
@@ -84,17 +83,26 @@ const PercentCardSubtitle = styled.h3`
     font-size: 1rem;
 `;
 
-const StyledTrend = styled.span`
-    color: ${props => props.theme.rainbow.palette.brand.main};
+const colorMap = {
+    'brand': palette => palette.brand.main,
+    'success': palette => palette.success.main,
+    'warning': palette => palette.warning.main,
+    'error': palette => palette.error.main,
+};
+
+const StyledPercent = styled.span`
+    color: ${props => props.variant && colorMap[props.variant](props.theme.rainbow.palette)};
     margin: 0 5px;
 `;
 
 const StyledIcon = styled(FontAwesomeIcon)`
-    color: ${props => props.theme.rainbow.palette.brand.main};
+    color: ${props => props.variant && colorMap[props.variant](props.theme.rainbow.palette)};
 `;
 
 const PercentCard = function(props) {
     const { name, percent, trend, variant } = props;
+    const icon = trend < 0 ? faArrowDown : faArrowUp;
+    const percentTrend = trend < 0 ? trend * -1 : trend;
 
     return (
         <Card className="rainbow-m-around_small rainbow-p-around_small">
@@ -103,10 +111,10 @@ const PercentCard = function(props) {
             <div className="rainbow-p-around_medium">
                 <ProgressCircular variant={variant} value={percent} />
             </div>
-            <div className="rainbow-flex rainbow_vertical-stretch">
-                <StyledIcon icon={trend < 0 ? faArrowDown : faArrowUp}/>
-                <StyledTrend>{trend < 0 ? trend * -1 : trend} % </StyledTrend>
-                <h3 className="rainbow-font-size_small"> {trend < 0 ? "Decrease" : "Increase"} </h3>
+            <div className="rainbow-flex rainbow-align_center">
+                <StyledIcon variant={variant} icon={icon}/>
+                <StyledPercent variant={variant}>{percentTrend} % </StyledPercent>
+                <h3 className="rainbow-font-size-heading_small"> {trend < 0 ? "Decrease" : "Increase"} </h3>
             </div>
         </Card>
     );
@@ -124,16 +132,17 @@ const theme = {
     },
 };
 
-const themeLightPurple = {
+const themeBlue = {
     rainbow: {
         palette: {
-            brand: '#8F89E7',
+            brand: '#01B6F5',
+            mainBackground: '#f4f5f7',
         },
     },
 };
 
 <Application theme={theme}>
-    <GlobalHeader src="images/user/user2.jpg">
+    <GlobalHeader>
         <Input
         label="aplication component search"
         hideLabel
@@ -142,16 +151,10 @@ const themeLightPurple = {
         type="search"
         className="rainbow-m-right_small"
         />
-        <ButtonGroup>
-            <ButtonIcon
-                variant="border"
-                icon={<FontAwesomeIcon icon={faPlus} />}
-                />
-            <ButtonIcon
-                variant="border"
-                icon={<FontAwesomeIcon icon={faEllipsisV} />}
-                />
-        </ButtonGroup>
+        <ButtonIcon
+            variant="border"
+            icon={<FontAwesomeIcon icon={faEllipsisV} />}
+            />
     </GlobalHeader>
     <Container>
         <Content>
@@ -165,7 +168,7 @@ const themeLightPurple = {
             <PercentCard variant="success" name="Whatsapp" percent={60} trend={10} />
             <PercentCard variant="error" name="Google" percent={40} trend={-60} />
             <PercentCard variant="warning" name="Snapchat" percent={55} trend={-5} />
-            <Application theme={themeLightPurple}>
+            <Application theme={themeBlue}>
                 <PercentCard variant="brand" name="Rainbow" percent={70} trend={10} />
             </Application>
         </Content>
