@@ -48,16 +48,16 @@ import styled from 'styled-components';
 const Title = styled.h2`
     color: ${props => props.theme.rainbow.palette.brand.main};
     font-size: 1.25rem;
-    margin-right: 2rem;
-    margin-left: 2rem;
+    margin-right: 0.5rem;
+    margin-left: 1rem;
     padding-top: 1rem;
 `;
 
 const Subtitle = styled.h3`
     color: ${props => props.theme.rainbow.palette.text.header};
     font-size: 1rem;
-    margin-right: 2rem;
-    margin-left: 2rem;
+    margin-right: 0.5rem;
+    margin-left: 1rem;
 `;
 
 const Content = styled.section`
@@ -65,7 +65,7 @@ const Content = styled.section`
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    margin-bottom: 24px;
+    margin-bottom: 12px;
 `;
 
 const Container = styled.section`
@@ -75,11 +75,11 @@ const Container = styled.section`
     margin: 24px auto;
 `;
 
-const PercentHeader = styled.div`
+const PercentCardHeader = styled.div`
     color: ${props => props.theme.rainbow.palette.text.main};
 `;
 
-const PercentSubtitle = styled.h3`
+const PercentCardSubtitle = styled.h3`
     color: ${props => props.theme.rainbow.palette.text.header};
     font-size: 1rem;
 `;
@@ -98,14 +98,14 @@ const PercentCard = function(props) {
 
     return (
         <Card className="rainbow-m-around_small rainbow-p-around_small">
-            <PercentHeader className="rainbow-font-size-heading_medium">{name}</PercentHeader>
-            <PercentSubtitle>New users</PercentSubtitle>
+            <PercentCardHeader className="rainbow-font-size-heading_medium">{name}</PercentCardHeader>
+            <PercentCardSubtitle>New users</PercentCardSubtitle>
             <div className="rainbow-p-around_medium">
                 <ProgressCircular variant={variant} value={percent} />
             </div>
             <div className="rainbow-flex rainbow_vertical-stretch">
-                <StyledIcon icon={trend < 0 ? faArrowDown : faArrowUp}/> 
-                <StyledTrend >{trend < 0 ? trend * -1 : trend} % </StyledTrend>
+                <StyledIcon icon={trend < 0 ? faArrowDown : faArrowUp}/>
+                <StyledTrend>{trend < 0 ? trend * -1 : trend} % </StyledTrend>
                 <h3 className="rainbow-font-size_small"> {trend < 0 ? "Decrease" : "Increase"} </h3>
             </div>
         </Card>
@@ -124,10 +124,10 @@ const theme = {
     },
 };
 
-const themeFacebook = {
+const themeLightPurple = {
     rainbow: {
         palette: {
-            brand: '#44d7b6',
+            brand: '#8F89E7',
         },
     },
 };
@@ -157,15 +157,17 @@ const themeFacebook = {
         <Content>
             <div>
                 <Title>Dashboard</Title>
-                <Subtitle>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Subtitle>
+                <Subtitle>February Summary</Subtitle>
             </div>
-            <Button className="rainbow-m-right_large" variant="brand">Import Data</Button>
+            <Button className="rainbow-m-right_small" variant="brand">Import Data</Button>
         </Content>
         <Content>
             <PercentCard variant="success" name="Whatsapp" percent={60} trend={10} />
             <PercentCard variant="error" name="Google" percent={40} trend={-60} />
             <PercentCard variant="warning" name="Snapchat" percent={55} trend={-5} />
-            <PercentCard variant="brand" name="Rainbow" percent={70} trend={10} />
+            <Application theme={themeLightPurple}>
+                <PercentCard variant="brand" name="Rainbow" percent={70} trend={10} />
+            </Application>
         </Content>
     </Container>
 </Application>

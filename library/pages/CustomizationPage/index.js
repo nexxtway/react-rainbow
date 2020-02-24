@@ -12,6 +12,7 @@ import Playground from 'rsg-components/Playground';
 import {
     COLOR_WHITE,
     COLOR_GRAY_2,
+    COLOR_GRAY_1,
     COLOR_GRAY_4,
     COLOR_BRAND,
     COLOR_SUCCESS,
@@ -90,35 +91,35 @@ const data = [
         type: 'string',
         required: '',
         default: COLOR_BRAND,
-        description: 'Used to represent the predominant color of your brand.',
+        description: 'Represent the predominant color of your brand.',
     },
     {
         name: 'error',
         type: 'string',
         required: '',
         default: COLOR_ERROR,
-        description: 'Used to represent interface elements that the user should be made aware of.',
+        description: 'Represent interface elements that the user should be made aware of.',
     },
     {
         name: 'warning',
         type: 'string',
         required: '',
         default: COLOR_WARNING,
-        description: 'Used to represent potentially dangerous actions or important messages.',
+        description: 'Represent potentially dangerous actions or important messages.',
     },
     {
         name: 'success',
         type: 'string',
         required: '',
         default: COLOR_SUCCESS,
-        description: 'Used to indicate the successful completion of an action that user triggered.',
+        description: 'Indicate the successful completion of an action that user triggered.',
     },
     {
         name: 'mainBackground',
         type: 'string',
         required: '',
         default: COLOR_WHITE,
-        description: 'Used to represent primary interface elements for a user.',
+        description: 'Used to represent primary interface elements for an app.',
     },
 ];
 
@@ -142,14 +143,21 @@ const StyledDefaultBadge = styled(Badge)`
 const DefaultBadge = ({ value }) => (
     <StyledDefaultBadge label={value} variant="brand" color={value} />
 );
-const Description = ({ value }) => <p>{value}</p>;
 
 const StyledBadge = styled.span`
     color: ${COLOR_GRAY_4};
-    background-color: ${COLOR_GRAY_2};
-    border: 1px solid ${COLOR_GRAY_2};
-    padding: 0 0.25rem;
+    background-color: ${COLOR_GRAY_1};
+    border: 1px solid ${COLOR_GRAY_1};
+    padding: 0.1rem 0.25rem 0.1rem 0.25rem;
     margin: 0 0.15rem;
+    border-radius: 4px;
+    font-family: Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: 14px;
+`;
+
+const StyledTable = styled(Table)`
+    font-family: Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: 12px;
 `;
 
 export default function CustomizationPage(props) {
@@ -234,22 +242,18 @@ export default function CustomizationPage(props) {
                                 />{' '}
                                 Props
                             </h3>
-                            <Table data={data} keyField="name">
-                                <Column header="Prop Name" field="name" defaultWidth={200} />
+                            <StyledTable data={data} keyField="name">
+                                <Column header="Prop Name" field="name" defaultWidth={160} />
                                 <Column header="Type" field="type" defaultWidth={80} />
-                                <Column header="Required" field="required" defaultWidth={100} />
+                                <Column header="Required" field="required" defaultWidth={120} />
                                 <Column
                                     header="Default"
                                     field="default"
                                     defaultWidth={130}
                                     component={DefaultBadge}
                                 />
-                                <Column
-                                    header="Description"
-                                    field="description"
-                                    component={Description}
-                                />
-                            </Table>
+                                <Column header="Description" field="description" />
+                            </StyledTable>
                         </StyledPanel>
 
                         <br />
