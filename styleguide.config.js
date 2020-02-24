@@ -137,6 +137,10 @@ module.exports = {
                     content: 'library/pages/Designs/createProfile.md',
                 },
                 {
+                    name: 'FindBook',
+                    content: 'library/pages/Designs/findBook.md',
+                },
+                {
                     name: 'Team',
                     content: 'library/pages/Designs/team.md',
                 },

@@ -3,9 +3,12 @@
 ```js
 import React from 'react';
 import { Table, Column, Badge } from 'react-rainbow-components';
+import styled from 'styled-components';
 
-const badgeStyles = { color: '#1de9b6' };
-const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
+const StyledBadge = styled(Badge)`
+    color: #1de9b6;
+`;
+const StatusBadge = ({ value }) => <StyledBadge label={value} variant="lightest" />;
 
 <div className="rainbow-m-bottom_xx-large">
     <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg" />
@@ -25,11 +28,14 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 ```js
 import React from 'react';
 import { Table, Column, Badge } from 'react-rainbow-components';
+import styled from 'styled-components';
 
-const badgeStyles = { color: '#1de9b6' };
-const containerStyles = { height: 312, backgroundColor: '#f4f6f9' };
+const StyledBadge = styled(Badge)`
+    color: #1de9b6;
+`;
+const StatusBadge = ({ value }) => <StyledBadge label={value} variant="lightest" />;
+const containerStyles = { height: 312 };
 const containerTableStyles = { height: 256 };
-const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
 
 <div className="rainbow-p-bottom_xx-large">
     <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg" />
@@ -57,9 +63,12 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 ```js
 import React from 'react';
 import { Table, Column, Badge } from 'react-rainbow-components';
+import styled from 'styled-components';
 
-const badgeStyles = { color: '#1de9b6' };
-const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
+const StyledBadge = styled(Badge)`
+    color: #1de9b6;
+`;
+const StatusBadge = ({ value }) => <StyledBadge label={value} variant="lightest" />;
 
 <div className="rainbow-p-bottom_xx-large">
     <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg" />
@@ -79,9 +88,12 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
 ```js
 import React from 'react';
 import { Table, Column, Badge } from 'react-rainbow-components';
+import styled from 'styled-components';
 
-const badgeStyles = { color: '#1de9b6' };
-const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
+const StyledBadge = styled(Badge)`
+    color: #1de9b6;
+`;
+const StatusBadge = ({ value }) => <StyledBadge label={value} variant="lightest" />;
 
 <div className="rainbow-p-bottom_xx-large">
     <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg" />
