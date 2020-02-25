@@ -99,18 +99,19 @@ const Icon = styled.div.attrs(props => {
 ```js
 import React from 'react';
 import { Spinner } from 'react-rainbow-components';
+import styled from 'styled-components';
 
-const textStyles = {
-    color: '#fff',
-};
+const Loading = styled.h1.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.getContrastText(props.text.main)};
+`;
 
 <InverseContainer className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <Spinner variant="inverse" size="medium" />
-    <h1
-        className="rainbow-font-size-text_medium rainbow-p-top_xx-large rainbow-m-top_xx-large rainbow-m-bottom_large"
-        style={textStyles}
-    >
+    <Loading
+        className="rainbow-font-size-text_medium rainbow-p-top_xx-large rainbow-m-top_xx-large rainbow-m-bottom_large">
         Loading…
-    </h1>
+    </Loading>
 </InverseContainer>
 ```
