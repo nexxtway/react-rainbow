@@ -1,17 +1,12 @@
 import styled from 'styled-components';
-import { COLOR_WHITE, COLOR_GRAY_4, COLOR_GRAY_2 } from '../../../../styles/colors';
+import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../../styles/fontSizes';
-import getTheme from '../../../../styles/helpers/getTheme';
 
-const StyledTh = styled.th.attrs(props => {
-    const brandMainColor = getTheme(props).palette.brand.main;
-
-    return { brandMainColor };
-})`
+const StyledTh = attachThemeAttrs(styled.th)`
     text-transform: uppercase;
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
     font-weight: 900;
-    color: ${COLOR_GRAY_4};
+    color: ${props => props.palette.text.title};
     line-height: normal;
     white-space: nowrap;
     position: static;
@@ -25,9 +20,9 @@ const StyledTh = styled.th.attrs(props => {
 
     :focus {
         .rainbow-table_header-container {
-            background-color: ${COLOR_WHITE};
-            border-color: ${props => props.brandMainColor};
-            color: ${props => props.brandMainColor};
+            background-color: ${props => props.palette.background.main};
+            border-color: ${props => props.palette.brand.main};
+            color: ${props => props.palette.brand.main};
         }
 
         .rainbow-table_header-arrow {
@@ -36,11 +31,11 @@ const StyledTh = styled.th.attrs(props => {
 
         .rainbow-table_header-resize-bar,
         &:hover .rainbow-table_header-resize-bar {
-            background-color: ${props => props.brandMainColor};
+            background-color: ${props => props.palette.brand.main};
         }
 
         &:hover .rainbow-table_header-container {
-            border-color: ${props => props.brandMainColor};
+            border-color: ${props => props.palette.brand.main};
         }
     }
 
@@ -51,11 +46,11 @@ const StyledTh = styled.th.attrs(props => {
 
             &:hover {
                 > div {
-                    background-color: ${COLOR_WHITE};
+                    background-color: ${props.palette.background.main};
                 }
 
                 .rainbow-table_header-resize-bar {
-                    background-color: ${COLOR_GRAY_2};
+                    background-color: ${props.palette.border.divider};
                 }
 
                 .rainbow-table_header-container {
@@ -71,15 +66,15 @@ const StyledTh = styled.th.attrs(props => {
 
             :hover {
                 > div {
-                    background-color: ${COLOR_WHITE};
+                    background-color: ${props.palette.background.main};
                 }
             
                 .rainbow-table_header-resize-bar {
-                    background-color: ${COLOR_GRAY_2};
+                    background-color: ${props.palette.border.divider};
                 }
             
                 .rainbow-table_header-container {
-                    border-color: ${COLOR_GRAY_2};
+                    border-color: ${props.palette.border.divider};
                 }
             
                 .rainbow-table_header-arrow {

@@ -21,14 +21,10 @@ import React from 'react';
 import { Spinner } from 'react-rainbow-components';
 import styled from 'styled-components';
 
-const Loading = styled.h1.attrs(props => { 
-    const brandMainColor = props.theme.rainbow.palette.brand.main;
-
-    return {
-        brandMainColor,
-    };
+const Loading = styled.h1.attrs(props => {
+    return props.theme.rainbow.palette;
 })`
-    color: ${props => props.brandMainColor};
+    color: ${props => props.brand.main};
 `;
 
 <div
@@ -49,6 +45,12 @@ import { Spinner, Card, Button } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTasks } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
+
+const Loading = styled.h1.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.label};
+`;
 
 const spinner = (
     <div className="rainbow-align-content_center">

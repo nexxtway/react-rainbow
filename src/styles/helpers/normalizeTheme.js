@@ -91,6 +91,8 @@ function resolveCustomShadows(colors, background) {
             shadow_5: `0 0 3px ${gray1}`,
             shadow_6: `0 2px 12px 0 ${gray2}`,
             shadow_7: `0 0 0 4px ${gray2}`,
+            shadow_8: `0 1px 0 0 ${gray2}`,
+            shadow_9: `0 1px 1px 0 ${gray2}`,
         };
     }
     return shadows;
