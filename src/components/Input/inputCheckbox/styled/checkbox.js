@@ -27,7 +27,7 @@ function getShadow(props) {
 
 const flash = keyframes`
     100% {
-        box-shadow: 0 0 0 6px rgba(0, 184, 245, 0.2)
+        box-shadow: 0 0 0 6px rgba(0, 184, 245, 0.2);
     }
 `;
 
