@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import getTheme from '../../../styles/helpers/getTheme';
+import { replaceAlpha } from '../../../styles/helpers/color';
 
 const StyledBar = styled.span.attrs(props => {
     const theme = getTheme(props);
@@ -13,13 +14,13 @@ const StyledBar = styled.span.attrs(props => {
     };
 })`
     display: block;
-    background: ${props => props.brandMainColor};
+    background: ${props => replaceAlpha(props.brandMainColor, 0.7)};
     height: 100%;
     border-radius: 1rem;
     ${props =>
         props.variant === 'success' &&
         `
-            background: ${props.successMainColor};
+            background: ${replaceAlpha(props.successMainColor, 0.7)};
         `};
 `;
 
