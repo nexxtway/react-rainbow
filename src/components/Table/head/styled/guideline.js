@@ -1,16 +1,7 @@
 import styled from 'styled-components';
-import getTheme from '../../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 
-const StyledGuideline = styled.span.attrs(props => {
-    const brand = getTheme(props).palette;
-    const brandMainColor = brand.main;
-    const brandDarkColor = brand.dark;
-
-    return {
-        brandMainColor,
-        brandDarkColor,
-    };
-})`
+const StyledGuideline = attachThemeAttrs(styled.span)`
     background-color: transparent;
     height: 100vh;
     position: absolute;
@@ -18,11 +9,11 @@ const StyledGuideline = styled.span.attrs(props => {
     width: 1px;
 
     :hover {
-        background-color: ${props => props.brandMainColor};
+        background-color: ${props => props.palette.brand.main};
     }
 
     :active {
-        background-color: ${props => props.brandDarkColor};
+        background-color: ${props => props.palette.brand.dark};
     }
 `;
 
