@@ -27,7 +27,7 @@ export default function PageButtons(props) {
                 const isActivePage = activePage === page;
 
                 return (
-                    <StyledPageButton key={key}>
+                    <StyledPageButton key={key} pages={pages}>
                         <StyledButton
                             isActivePage={isActivePage}
                             onClick={event => onChange(event, page)}
