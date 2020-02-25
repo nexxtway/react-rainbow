@@ -9,6 +9,7 @@ const pages = [
     'ComingSoon',
     'NotFound404',
     'CreateProfile',
+    'FindBook',
     'Team',
     'SocialIconsSet',
     '',
