@@ -66,9 +66,8 @@ const Checkbox = attachThemeAttrs(styled(HiddenElement))`
         animation: ${props => {
             if (props.error) {
                 return flash(props.palette.error.light);
-            } else {
-                return flash(props.palette.brand.light);
             }
+            return flash(props.palette.brand.light);
         }} 0.2s linear;
         border: 2px solid;
         border-color: ${getColor};
