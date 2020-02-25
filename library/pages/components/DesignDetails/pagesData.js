@@ -6,6 +6,7 @@ import ChatImage from './../../../../assets/images/designsImages/chat.svg';
 import ComingSoonImage from './../../../../assets/images/designsImages/coming-soon.svg';
 import NotFound404Image from './../../../../assets/images/designsImages/not-found-404.svg';
 import CreateProfileImage from './../../../../assets/images/designsImages/create-profile.svg';
+import FindBook from './../../../../assets/images/designsImages/find-book.svg';
 import TeamImage from './../../../../assets/images/designsImages/team.svg';
 import SocialIconsImage from './../../../../assets/images/designsImages/social.svg';
 
@@ -99,5 +100,16 @@ export const websitePages = [
         name: 'Rainbow Team',
         icon: <img alt="Team" className="react-rainbow-designs_image-websites" src={TeamImage} />,
         href: '/#/Designs/Team',
+    },
+    {
+        name: 'Rainbow Algolia Search',
+        icon: (
+            <img
+                alt="Rainbow Algolia Search"
+                className="react-rainbow-designs_image-websites"
+                src={FindBook}
+            />
+        ),
+        href: '/#/Designs/FindBook',
     },
 ];

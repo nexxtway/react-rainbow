@@ -1,7 +1,7 @@
 .react-rainbow-experience-example-cards_example-container {
     position: relative;
     margin: 0 8px 12px 8px;
-    width: 280px;
+    width: 296px;
     transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
@@ -10,7 +10,7 @@
 }
 
 .react-rainbow-experience-example-cards {
-    width: 280px;
+    width: 296px;
     transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
@@ -47,13 +47,13 @@
     content:'...';
     position: absolute;
     bottom: 0.75rem;
-    right: 0.375rem;
+    right: 0.275rem;
 }
 
 .react-rainbow-experience-example-cards_description::after {
     content: '';
     position: absolute;
-    width: 10rem;
+    width: 12rem;
     height: 2rem;
     background-color: white;
 }
