@@ -32,7 +32,7 @@ import { Badge } from 'react-rainbow-components';
 
     <Badge
         className="rainbow-m-around_medium"
-        label="Darker Badge"
+        label="Inverse Badge"
         variant="inverse"
         title="the badge title"
     />
