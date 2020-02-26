@@ -35,7 +35,7 @@ jobs:
             - run:
                   name: Create directory test; used by the reporters
                   command: |
-                      mkdir /tmp/test-results/jest-unit;
+                      sudo mkdir test-results/jest-unit;
 
             - run:
                   name: run test
@@ -47,11 +47,11 @@ jobs:
                       fi
 
             - store_test_results:
-                  path: ./tmp/test-results/jest-unit
+                  path: ./test-results/jest-unit
                   destination: results.xml
 
             - store_artifacts:
-                  path: ./tmp/test-results/jest-unit
+                  path: ./test-results/jest-unit
 
     integration_tests:
         <<: *defaults
