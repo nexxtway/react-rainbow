@@ -4410,6 +4410,11 @@ date-now@^0.1.4:
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
   integrity sha1-6vQ5/U1ISK105cx9vvIAZyueNFs=
 
+dateformat@3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/dateformat/-/dateformat-3.0.2.tgz#9a4df4bff158ac2f34bc637abdb15471607e1659"
+  integrity sha1-mk30v/FYrC80vGN6vbFUcWB+Flk=
+
 debug@2.6.9, debug@^2.1.2, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.8, debug@^2.6.9:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
@@ -8138,6 +8143,16 @@ jest-haste-map@^24.9.0:
   optionalDependencies:
     fsevents "^1.2.7"
 
+jest-html-reporter@^2.8.0:
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/jest-html-reporter/-/jest-html-reporter-2.8.0.tgz#0fe7d7e4181fe25194bb40a50467f70bbdae94b5"
+  integrity sha512-Lk6LxAdCfDlzE4AMVCvW+UqNpFxXwsoQZ5Y7/usuQ/2ikFvyb20BVzepMg/sUGGAjGsc+mssGNvW2zPHKDn6yw==
+  dependencies:
+    dateformat "3.0.2"
+    mkdirp "0.5.1"
+    strip-ansi "3.0.1"
+    xmlbuilder "13.0.2"
+
 jest-jasmine2@^24.9.0:
   version "24.9.0"
   resolved "https://registry.yarnpkg.com/jest-jasmine2/-/jest-jasmine2-24.9.0.tgz#1f7b1bd3242c1774e62acabb3646d96afc3be6a0"
@@ -8159,17 +8174,6 @@ jest-jasmine2@^24.9.0:
     jest-util "^24.9.0"
     pretty-format "^24.9.0"
     throat "^4.0.0"
-
-jest-junit@^10.0.0:
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/jest-junit/-/jest-junit-10.0.0.tgz#c94b91c24920a327c9d2a075e897b2dba4af494b"
-  integrity sha512-dbOVRyxHprdSpwSAR9/YshLwmnwf+RSl5hf0kCGlhAcEeZY9aRqo4oNmaT0tLC16Zy9D0zekDjWkjHGjXlglaQ==
-  dependencies:
-    jest-validate "^24.9.0"
-    mkdirp "^0.5.1"
-    strip-ansi "^5.2.0"
-    uuid "^3.3.3"
-    xml "^1.0.1"
 
 jest-leak-detector@^24.9.0:
   version "24.9.0"
@@ -9765,7 +9769,7 @@ mixin-object@^2.0.1:
     for-in "^0.1.3"
     is-extendable "^0.1.1"
 
-mkdirp@0.5.x, mkdirp@0.x.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.1:
+mkdirp@0.5.1, mkdirp@0.5.x, mkdirp@0.x.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.1:
   version "0.5.1"
   resolved "https://registry.npmjs.org/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
   integrity sha1-MAV0OOrGz3+MR2fzhkjWaX11yQM=
@@ -13920,19 +13924,19 @@ stringstream@~0.0.4:
   resolved "https://registry.yarnpkg.com/stringstream/-/stringstream-0.0.6.tgz#7880225b0d4ad10e30927d167a1d6f2fd3b33a72"
   integrity sha512-87GEBAkegbBcweToUrdzf3eLhWNg06FJTebl4BVJz/JgWy8CvEr9dRtX5qWphiynMSQlxxi+QqN0z5T32SLlhA==
 
+strip-ansi@3.0.1, strip-ansi@^3.0.0, strip-ansi@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-3.0.1.tgz#6a385fb8853d952d5ff05d0e8aaf94278dc63dcf"
+  integrity sha1-ajhfuIU9lS1f8F0Oiq+UJ43GPc8=
+  dependencies:
+    ansi-regex "^2.0.0"
+
 strip-ansi@5.2.0, strip-ansi@^5.0.0, strip-ansi@^5.1.0, strip-ansi@^5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-5.2.0.tgz#8c9a536feb6afc962bdfa5b104a5091c1ad9c0ae"
   integrity sha512-DuRs1gKbBqsMKIZlrffwlug8MHkcnpjs5VPmL1PAh+mA30U0DTotfDZ0d2UUsXpPmPmMMJ6W773MaA3J+lbiWA==
   dependencies:
     ansi-regex "^4.1.0"
-
-strip-ansi@^3.0.0, strip-ansi@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-3.0.1.tgz#6a385fb8853d952d5ff05d0e8aaf94278dc63dcf"
-  integrity sha1-ajhfuIU9lS1f8F0Oiq+UJ43GPc8=
-  dependencies:
-    ansi-regex "^2.0.0"
 
 strip-ansi@^4.0.0:
   version "4.0.0"
@@ -15043,11 +15047,6 @@ uuid@^3.0.0, uuid@^3.0.1, uuid@^3.1.0, uuid@^3.3.2:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
   integrity sha512-yXJmeNaw3DnnKAOKJE51sL/ZaYfWJRl1pK9dr19YFCu0ObS231AB1/LbqTKRAQ5kw8A90rA6fr4riOUpTZvQZA==
 
-uuid@^3.3.3:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
-  integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
-
 valid-url@^1:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/valid-url/-/valid-url-1.0.9.tgz#1c14479b40f1397a75782f115e4086447433a200"
@@ -15623,10 +15622,10 @@ xml-name-validator@^3.0.0:
   resolved "https://registry.yarnpkg.com/xml-name-validator/-/xml-name-validator-3.0.0.tgz#6ae73e06de4d8c6e47f9fb181f78d648ad457c6a"
   integrity sha512-A5CUptxDsvxKJEU3yO6DuWBSJz/qizqzJKOMIfUJHETbBw/sFaDxgd6fxm1ewUaM0jZ444Fc5vC5ROYurg/4Pw==
 
-xml@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/xml/-/xml-1.0.1.tgz#78ba72020029c5bc87b8a81a3cfcd74b4a2fc1e5"
-  integrity sha1-eLpyAgApxbyHuKgaPPzXS0ovweU=
+xmlbuilder@13.0.2:
+  version "13.0.2"
+  resolved "https://registry.yarnpkg.com/xmlbuilder/-/xmlbuilder-13.0.2.tgz#02ae33614b6a047d1c32b5389c1fdacb2bce47a7"
+  integrity sha512-Eux0i2QdDYKbdbA6AM6xE4m6ZTZr4G4xF9kahI2ukSEMCzwce2eX9WlTI5J3s+NU7hpasFsr8hWIONae7LluAQ==
 
 xmlbuilder@^10.0.0:
   version "10.1.1"
