@@ -197,7 +197,7 @@ const PresenceMapExample = () => {
 
 ```js
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import { PresenceMap, Input, Picklist, PicklistOption, ButtonIcon } from 'react-rainbow-components';
+import { PresenceMap, Input, Picklist, PicklistOption, ButtonIcon, RenderIf } from 'react-rainbow-components';
 import styled from 'styled-components';
 import LocationIcon from './icons/locationIcon';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -346,6 +346,7 @@ const PresenceMapExample = () => {
     
     const handleCarAvailability = value => {
         setCarAvailability(value);
+        setCenter('auto');
     };
 
     return (
@@ -391,17 +392,18 @@ const PresenceMapExample = () => {
                     <PicklistOption name="hybrid" label="Hybrid" icon={<LocationIcon />} />
                     <PicklistOption name="terrain" label="Terrain" icon={<LocationIcon />} />
                 </MenuControl>
-                <MenuControl
-                    id="picklist-availability-1"
-                    onChange={handleCarAvailability}
-                    value={carAvailabilityState}
-                    label="Select Car Availability"
-                    hideLabel
-                >
-                    <PicklistOption name="all" label="All" />
-                    <PicklistOption name="availables" label="Availables" />
-                    <PicklistOption name="busy" label="Busy" />
-                </MenuControl>
+                {markers.length &&
+                    <MenuControl
+                        id="picklist-availability-1"
+                        onChange={handleCarAvailability}
+                        value={carAvailabilityState}
+                        label="Select Car Availability"
+                        hideLabel
+                    >
+                        <PicklistOption name="all" label="All" />
+                        <PicklistOption name="availables" label="Availables" />
+                        <PicklistOption name="busy" label="Busy" />
+                    </MenuControl>}
             </ControlsContainer>
         </PresenceMap>
     );

@@ -85,14 +85,24 @@ export default function MapComponent(props) {
 
     useEffect(() => {
         if (map) {
+            console.log(center);
             const hasNewMarkers = mapMarkers.length > 0;
-            if (hasNewMarkers && center === 'auto') {
-                const bounds = new window.google.maps.LatLngBounds();
-                mapMarkers.forEach(markerInstance => bounds.extend(markerInstance.getPosition()));
-                map.setCenter(bounds.getCenter());
-                map.fitBounds(bounds);
+            if (center === 'auto') {
+                if (hasNewMarkers) {
+                    const bounds = new window.google.maps.LatLngBounds();
+                    mapMarkers.forEach(markerInstance =>
+                        bounds.extend(markerInstance.getPosition()),
+                    );
+                    map.setCenter(bounds.getCenter());
+                    if (mapMarkers.length > 1) {
+                        map.fitBounds(bounds);
+                    } else {
+                        map.setZoom(MAX_ZOOM);
+                    }
+                }
             } else {
                 map.setCenter(center);
+                map.setZoom(MAX_ZOOM);
             }
         }
     }, [center, map, mapMarkers]);
