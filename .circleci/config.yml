@@ -33,11 +33,6 @@ jobs:
             - run: yarn lint
 
             - run:
-                  name: Create directory test; used by the reporters
-                  command: |
-                      sudo mkdir test-results/jest-unit;
-
-            - run:
                   name: run test
                   command: |
                       if [ -n "$COVERALLS_REPO_TOKEN" ]; then
@@ -47,11 +42,10 @@ jobs:
                       fi
 
             - store_test_results:
-                  path: ./test-results/jest-unit
-                  destination: results.xml
+                  path: test-results/jest-junit-results
 
             - store_artifacts:
-                  path: ./test-results/jest-unit
+                  path: test-results/jest-junit-results
 
     integration_tests:
         <<: *defaults
