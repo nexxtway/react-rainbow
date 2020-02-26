@@ -33,6 +33,11 @@ jobs:
             - run: yarn lint
 
             - run:
+                  name: Create directory test; user by the reporters
+                  command: |
+                      mkdir /test-results/jest-unit;
+
+            - run:
                   name: run test
                   command: |
                       if [ -n "$COVERALLS_REPO_TOKEN" ]; then
