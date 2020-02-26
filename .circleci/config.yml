@@ -76,13 +76,13 @@ jobs:
 
             - run: sleep 10
 
-            - run: yarn test:integration --headless
+            - run: yarn test:integration --reporters=junit --headless
 
             - store_test_results:
-                  path: ./junit-results
+                  path: test-results/wdio-junit-results
 
             - store_artifacts:
-                  path: ./errorShots
+                  path: test-results/wdio-junit-results
 
     publish_canary:
         <<: *defaults

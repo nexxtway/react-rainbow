@@ -8,7 +8,7 @@ exports.config = {
     // on a remote machine).
     runner: 'local',
     //
-    outputDir: `${__dirname}/junit-results`,
+    outputDir: `${__dirname}/test-results/wdio-junit-results`,
     // ==================
     // Specify Test Files
     // ==================
