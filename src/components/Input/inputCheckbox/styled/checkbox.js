@@ -3,6 +3,7 @@ import HiddenElement from '../../../Structural/hiddenElement';
 import { BORDER_RADIUS_3 } from '../../../../styles/borderRadius';
 import { MARGIN_SMALL } from '../../../../styles/margins';
 import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
+import { replaceAlpha } from '../../../../styles/helpers/color';
 
 function getInitialBorder(props) {
     if (props.error) {
@@ -65,8 +66,8 @@ const Checkbox = attachThemeAttrs(styled(HiddenElement))`
     :checked ~ label > .rainbow-input_faux {
         animation: ${props =>
             props.error
-                ? flash(props.palette.error.light)
-                : flash(props.palette.brand.light)} 0.2s linear;
+                ? flash(replaceAlpha(props.palette.error.main, 0.5))
+                : flash(replaceAlpha(props.palette.brand.main, 0.5))} 0.2s linear;
         border: 2px solid;
         border-color: ${getColor};
     }
