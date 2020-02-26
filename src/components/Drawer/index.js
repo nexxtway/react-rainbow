@@ -60,7 +60,7 @@ export default function Drawer(props) {
         } else if (drawerState === DrawerState.HIDDEN) {
             onRequestClose();
         }
-    }, [drawerState, onOpened, onRequestClose]);
+    }, [drawerState]);
 
     const onSlideEnd = () => {
         if (drawerState === DrawerState.SHOWING) {
