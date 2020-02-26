@@ -84,7 +84,7 @@ class SimpleRating extends React.Component {
 </div>
 ```
 
-#### Rating readOnly
+##### Rating readOnly
 
 ```js
 import React from 'react';
