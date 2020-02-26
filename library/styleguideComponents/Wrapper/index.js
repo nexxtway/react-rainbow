@@ -35,6 +35,8 @@ const orangeTheme = {
             brand: '#f8752d',
             success: '#00a042',
             error: '#e53935',
+            header: 'rgb(248,117,45)',
+            badge: '#061c3f',
         },
     },
 };
@@ -44,6 +46,8 @@ const deepPurpleTheme = {
         palette: {
             brand: '#6860db',
             mainBackground: '#f2f2f2',
+            header: 'rgb(104,96,219)',
+            badge: '#061c3f',
         },
     },
 };
@@ -54,6 +58,8 @@ const yellowTheme = {
             brand: '#ffcc00',
             success: '#aeea00',
             error: '#ff5252',
+            header: 'rgb(255,204,0)',
+            badge: '#061c3f',
         },
     },
 };
@@ -65,6 +71,8 @@ const cyanDarkTheme = {
             success: '#b9f6ca',
             error: '#ff5252',
             mainBackground: '#303030',
+            header: 'rgba(255, 255, 255, 0.64)',
+            badge: 'white',
         },
     },
 };
@@ -84,9 +92,9 @@ export default function Wrapper(props) {
                 <StyledTopBar>
                     <StyledLeftElement>
                         <InfoFilled />
-                        <StyledTitle>
-                            The theme support is <StyledBadge label="BETA" /> and{' '}
-                            <StyledBadge label="WIP" />
+                        <StyledTitle theme={theme}>
+                            The theme support is <StyledBadge label="BETA" theme={theme} /> and{' '}
+                            <StyledBadge label="WIP" theme={theme} />
                         </StyledTitle>
                     </StyledLeftElement>
                     <StyledPickerTheme

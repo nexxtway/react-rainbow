@@ -60,7 +60,15 @@ export const StyledContentText = styled.h2`
 `;
 
 export const StyledBadge = styled(Badge)`
-    margin: 2px 8px;
+    margin: 2px 6px;
+    padding: 0;
+    border-radius: 0;
+    font-size: 14px;
+    font-family: 'Lato';
+    font-weight: 900;
+    letter-spacing: normal;
+    color: ${props => props.theme.rainbow.palette.badge || '#061c3f'};
+    background-color: transparent;
 
     @media (max-width: 600px) {
         margin: 2px 2px;
@@ -82,9 +90,11 @@ export const StyledPickerTheme = styled(ButtonMenu)`
 
 export const StyledTitle = attachThemeAttrs(styled.h1)`
     font-size: 14px;
-    color: ${props => props.palette.text.header};
-    margin-left: 4px;
-    margin-right: 8px;
+    font-family: Lato Light;
+    color: ${props => props.theme.rainbow.palette.header || props.palette.text.header};
+    margin-left: 6px;
+    margin-right: 0;
+    padding: 0;
 
     @media (max-width: 600px) {
         font-size: 12px;
