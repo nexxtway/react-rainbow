@@ -40,4 +40,15 @@ describe('<Star />', () => {
         const component = mount(<Star value={1} />);
         expect(component.find('AssistiveText').prop('text')).toBe('1 Star');
     });
+    it('should not fire onChange event when readOnly is true', () => {
+        const onChangeMockFn = jest.fn();
+        const component = mount(<Star value={1} onChange={onChangeMockFn} readOnly />);
+        component.find('input').simulate('click');
+        component.find('input').simulate('change');
+        expect(onChangeMockFn).not.toHaveBeenCalled();
+    });
+    it('should render half star when filled and half props are true', () => {
+        const component = mount(<Star value={1} filled half />);
+        expect(component.find('StarHalf').exists()).toBe(true);
+    });
 });

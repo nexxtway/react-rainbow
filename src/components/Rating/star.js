@@ -6,6 +6,7 @@ import StarFill from './starFill';
 import StarBordered from './starBordered';
 import StyledStartContainer from './styled/starContainer';
 import StyledStartInput from './styled/starInput';
+import StarHalf from './starHalf';
 
 export default class Star extends Component {
     constructor(props) {
@@ -22,15 +23,15 @@ export default class Star extends Component {
     }
 
     renderStar() {
-        const { filled } = this.props;
+        const { filled, half } = this.props;
         if (filled) {
-            return <StarFill />;
+            return half ? <StarHalf /> : <StarFill />;
         }
         return <StarBordered />;
     }
 
     render() {
-        const { onChange, value, name } = this.props;
+        const { onChange, value, name, readOnly } = this.props;
 
         return (
             <StyledStartContainer>
@@ -39,7 +40,8 @@ export default class Star extends Component {
                     id={this.starId}
                     value={value}
                     name={name}
-                    onChange={onChange}
+                    onChange={!readOnly ? onChange : null}
+                    disabled={readOnly}
                 />
 
                 <label htmlFor={this.starId}>
@@ -55,11 +57,15 @@ Star.propTypes = {
     value: PropTypes.number,
     onChange: PropTypes.func,
     filled: PropTypes.bool.isRequired,
+    half: PropTypes.bool,
     name: PropTypes.string,
+    readOnly: PropTypes.bool,
 };
 
 Star.defaultProps = {
     value: 1,
     onChange: () => {},
     name: undefined,
+    readOnly: false,
+    half: false,
 };
