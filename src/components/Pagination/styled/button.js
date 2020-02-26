@@ -65,10 +65,14 @@ const StyledButton = attachThemeAttrs(styled.button)`
                 background-color: ${props.palette.action.hover};
                 color: ${props.palette.text.main};
             }
+
+            > svg {
+                fill: ${props.palette.brand.main};
+            }
         `};
-    ${props =>
-        props.disabled &&
-        `
+    ${props => {
+        if (props.disabled) {
+            return `
             background-color: transparent;
             pointer-events: none;
         
@@ -85,8 +89,15 @@ const StyledButton = attachThemeAttrs(styled.button)`
             }
 
             > svg {
-                fill: ${props.palette.background.highlight};
-        `};
+                fill: ${props.palette.disabled};
+        `;
+        }
+        return `
+        > svg {
+            fill: ${props.palette.text.main};
+        }
+        `;
+    }}
 `;
 
 export default StyledButton;
