@@ -75,7 +75,7 @@
         }
     },
     "jest-junit": {
-        "outputDirectory": "./test-results/jest-junit",
+        "outputDirectory": "<rootDir>/test-results/jest-junit",
         "outputName": "results.xml"
     },
     "devDependencies": {
