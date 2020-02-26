@@ -40,7 +40,7 @@ AvatarGroup.propTypes = {
         PropTypes.shape({
             src: PropTypes.string,
             initials: PropTypes.string,
-            icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+            icon: PropTypes.node,
             title: PropTypes.string,
             assistiveText: PropTypes.string,
         }),
