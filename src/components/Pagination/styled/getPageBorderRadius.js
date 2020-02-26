@@ -1,7 +1,8 @@
-const getPageBorderRadius = totalPages => {
-    const hasMultiplePages = !!totalPages && totalPages > 1;
-
-    return hasMultiplePages ? '0 100px 100px 0' : '100px';
+const getPageBorderRadius = pages => {
+    if (pages === 1) {
+        return '100px';
+    }
+    return '0 100px 100px 0';
 };
 
 export default getPageBorderRadius;
