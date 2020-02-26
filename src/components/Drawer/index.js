@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import {
@@ -7,7 +7,6 @@ import {
     clearAllBodyScrollLocks,
 } from '../Modal/scrollController';
 import RenderIf from '../RenderIf';
-import StyledBackDrop from './styled/backDrop';
 import StyledContainer from './styled/container';
 import StyledContent from './styled/content';
 import StyledCloseButton from './styled/closeButton';
@@ -15,6 +14,13 @@ import StyledFooter from './styled/footer';
 import Header from './header';
 import CloseIcon from './closeIcon';
 import { useUniqueIdentifier } from '../../libs/hooks';
+
+const DrawerState = {
+    SHOWING: 0,
+    VISIBLE: 1,
+    HIDDING: 2,
+    HIDDEN: 3,
+};
 
 /**
  * Drawers are surfaces containing supplementary content on your app.
@@ -37,48 +43,63 @@ export default function Drawer(props) {
     const headerId = useUniqueIdentifier('drawer-header');
     const contentId = useUniqueIdentifier('drawer-content');
     const contentRef = useRef(null);
+    const [drawerState, setDrawerState] = useState(DrawerState.HIDDEN);
 
     useEffect(() => {
         if (isOpen) {
             disableBodyScroll(contentRef.current);
+            setDrawerState(DrawerState.SHOWING);
         } else {
             clearAllBodyScrollLocks();
         }
     }, [isOpen]);
 
-    // if (isOpen) {
-    return createPortal(
-        <StyledBackDrop isOpen={isOpen} id={id} role="presentation" onClick={onRequestClose}>
+    useEffect(() => {
+        if (drawerState === DrawerState.VISIBLE) {
+            onOpened();
+        } else if (drawerState === DrawerState.HIDDEN) {
+            onRequestClose();
+        }
+    }, [drawerState, onOpened, onRequestClose]);
+
+    const onSlideEnd = () => {
+        if (drawerState === DrawerState.SHOWING) {
+            setDrawerState(DrawerState.VISIBLE);
+        } else if (drawerState === DrawerState.HIDDING) {
+            setDrawerState(DrawerState.HIDDEN);
+        }
+    };
+
+    const closeDrawer = () => setDrawerState(DrawerState.HIDDING);
+
+    if (isOpen && drawerState !== DrawerState.HIDDEN) {
+        return createPortal(
             <StyledContainer
                 role="dialog"
                 tabIndex={-1}
+                id={id}
                 aria-labelledby={headerId}
                 aria-modal
                 aria-hidden
                 aria-describedby={contentId}
                 className={className}
-                isOpen={isOpen}
+                isOpen={[DrawerState.SHOWING, DrawerState.VISIBLE].includes(drawerState)}
                 style={style}
                 size={size}
                 slideFrom={slideFrom}
+                onAnimationEnd={onSlideEnd}
             >
                 <Header title={header} />
+                <RenderIf isTrue={!hideCloseButton}>
+                    <StyledCloseButton icon={<CloseIcon />} title="Hide" onClick={closeDrawer} />
+                </RenderIf>
                 <StyledContent ref={contentRef}>{children}</StyledContent>
                 <StyledFooter />
-                <RenderIf isTrue={!hideCloseButton}>
-                    <StyledCloseButton
-                        icon={<CloseIcon />}
-                        title="Hide"
-                        onClick={onRequestClose}
-                        slideFrom={slideFrom}
-                    />
-                </RenderIf>
-            </StyledContainer>
-        </StyledBackDrop>,
-        document.body,
-    );
-    // }
-    // return null;
+            </StyledContainer>,
+            document.body,
+        );
+    }
+    return null;
 }
 
 Drawer.propTypes = {

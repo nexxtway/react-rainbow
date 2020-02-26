@@ -23,10 +23,12 @@ const getPosition = slideFrom => {
         left: {
             left: 0,
             top: 0,
+            bottom: 0,
         },
         right: {
             right: 0,
             top: 0,
+            bottom: 0,
         },
     };
 
@@ -46,9 +48,10 @@ const StyledContainer = attachThemeAttrs(styled.div).attrs(props => {
     flex-direction: column;
     box-sizing: border-box;
     display: flex;
+    z-index: 1000000;
     justify-content: center;
     align-items: normal;
-    position: absolute;
+    position: fixed;
     padding: 0;
     background: ${props => props.palette.background.main};
     box-shadow: ${props => props.shadows.shadow_2};
@@ -60,12 +63,12 @@ const StyledContainer = attachThemeAttrs(styled.div).attrs(props => {
     // size
     width: ${props => props.size.width}%;
     min-width: ${props => props.size.width}%;
-    height: ${props => props.size.height}vh;
-    min-height: ${props => props.size.height}vh;
+    height: ${props => props.size.height}%;
+    min-height: ${props => props.size.height}%;
     ${props =>
         ['left', 'right'].includes(props.slideFrom) &&
         `
-        max-height: ${props.size.height}vh;
+        max-height: ${props.size.height}%;
         `}
             
     // position
