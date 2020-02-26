@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const StyledFieldset = styled.fieldset`
-    line-height: 1.5em;
+    line-height: 1.5rem;
     height: 1.5rem;
     margin: 0;
     padding: 0;
