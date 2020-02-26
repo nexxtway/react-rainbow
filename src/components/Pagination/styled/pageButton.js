@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { MARGIN_X_SMALL } from '../../../styles/margins';
-import getBorderRadius from '../helpers/getBorderRadius/getBorderRadius';
+import getPageBorderRadius from './getPageBorderRadius';
 
 const StyledPageButton = styled.li`
     box-sizing: border-box;
@@ -17,7 +17,7 @@ const StyledPageButton = styled.li`
 
     :nth-last-child(2) > button {
         margin-right: ${MARGIN_X_SMALL};
-        border-radius: ${props => getBorderRadius(props.pages)};
+        border-radius: ${props => getPageBorderRadius(props.pages)};
     }
 `;
 
