@@ -63,11 +63,10 @@ const Checkbox = attachThemeAttrs(styled(HiddenElement))`
     }
 
     :checked ~ label > .rainbow-input_faux {
-        animation: ${props => {
-            return props.error
+        animation: ${props =>
+            props.error
                 ? flash(props.palette.error.light)
-                : flash(props.palette.brand.light);
-        }} 0.2s linear;
+                : flash(props.palette.brand.light)} 0.2s linear;
         border: 2px solid;
         border-color: ${getColor};
     }
