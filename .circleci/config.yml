@@ -42,10 +42,10 @@ jobs:
                       fi
 
             - store_test_results:
-                  path: test-results/jest-html-results
+                  path: test-results
 
             - store_artifacts:
-                  path: test-results/jest-html-results
+                  path: test-results
 
     integration_tests:
         <<: *defaults
@@ -79,10 +79,10 @@ jobs:
             - run: yarn test:integration --headless
 
             - store_test_results:
-                  path: test-results/wdio-junit-results
+                  path: test-results
 
             - store_artifacts:
-                  path: test-results/wdio-junit-results
+                  path: test-results
 
     publish_canary:
         <<: *defaults
