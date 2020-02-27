@@ -136,7 +136,19 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
-    reporters: ['spec', 'junit', ['timeline', { outputDir: './test-results/wdio-junit-results' }]],
+    reporters: [
+        'spec',
+        'junit',
+        ['timeline', { outputDir: './test-results/wdio-timeline-results' }],
+        [
+            'allure',
+            {
+                outputDir: 'test-results/wdio-allure-results',
+                disableWebdriverStepsReporting: true,
+                disableWebdriverScreenshotsReporting: true,
+            },
+        ],
+    ],
 
     //
     // Options to be passed to Jasmine.

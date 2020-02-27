@@ -76,7 +76,7 @@ jobs:
 
             - run: sleep 10
 
-            - run: yarn test:integration --reporters=junit --headless
+            - run: yarn test:integration --headless
 
             - store_test_results:
                   path: test-results/wdio-junit-results
