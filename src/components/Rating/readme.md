@@ -112,12 +112,6 @@ const StyledHeader = styled.h3.attrs(props => {
     color: ${props => props.text.main};
 `;
 
-const StyledText = styled.h3.attrs(props => {
-    return props.theme.rainbow.palette;
-})`
-    color: ${props => props.text.label};
-`;
-
 <div className="rainbow-p-bottom_xx-large">
     <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
         <ButtonGroup className="rainbow-m-right_medium">
@@ -138,11 +132,8 @@ const StyledText = styled.h3.attrs(props => {
                         <StyledHeader className="rainbow-font-size-heading_medium">
                             Rainbow Image
                         </StyledHeader>
-                        <StyledText>
-                            2.45 of 5
-                        </StyledText>
                     </div>
-                    <Rating value={'2.45'} readOnly />
+                    <Rating value={'2.45'} readOnly label="2.45 of 5" />
                 </div>
             }
         >
