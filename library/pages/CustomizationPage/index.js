@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities, import/no-extraneous-dependencies */
 import React, { useState, useContext } from 'react';
+import Application from '../../../src/components/Application';
 import Tabset from '../../../src/components/Tabset';
 import Tab from '../../../src/components/Tab';
 import Table from '../../../src/components/Table';
@@ -11,9 +12,7 @@ import CarbonAds from '../components/CarbonAds';
 import Playground from 'rsg-components/Playground';
 import {
     COLOR_WHITE,
-    COLOR_GRAY_2,
     COLOR_GRAY_1,
-    COLOR_GRAY_4,
     COLOR_BRAND,
     COLOR_SUCCESS,
     COLOR_ERROR,
@@ -161,6 +160,15 @@ const StyledTable = styled(Table)`
     font-size: 12px;
 `;
 
+const darkTheme = {
+    rainbow: {
+        palette: {
+            brand: '#80deea',
+            mainBackground: '#303030',
+        },
+    },
+};
+
 export default function CustomizationPage(props) {
     const { examples, name, exampleMode, codeRevision } = props;
     const [activeTab, setActiveTab] = useState('overview');
@@ -301,17 +309,43 @@ export default function CustomizationPage(props) {
                             </div>
                             <CarbonAds className="react-rainbow-customization_carbon-ad" />
                         </div>
-                        <ul>
-                            <li className="react-rainbow-customization_section-text">
-                                Theme variation on all the components at the same time.
-                            </li>
-                            <li className="react-rainbow-customization_section-text">
-                                Theme variation for a specific component.
-                            </li>
-                            <li className="react-rainbow-customization_section-text">
-                                Theme variation for your own UI
-                            </li>
-                        </ul>
+                        <h3 className="react-rainbow-customization_section-heading">
+                            Theme variation on all the components at the same time.
+                        </h3>
+                        <Playground
+                            code={examples[5].content}
+                            evalInContext={examples[5].evalInContext}
+                            key={`${codeRevision}/5`}
+                            name={name}
+                            index={5}
+                            settings={examples[5].settings}
+                            exampleMode={exampleMode}
+                        />
+
+                        <h3 className="react-rainbow-customization_section-heading">
+                            Theme variation for a specific component.
+                        </h3>
+                        <Playground
+                            code={examples[7].content}
+                            evalInContext={examples[7].evalInContext}
+                            key={`${codeRevision}/7`}
+                            name={name}
+                            index={7}
+                            settings={examples[7].settings}
+                            exampleMode={exampleMode}
+                        />
+                        <h3 className="react-rainbow-customization_section-heading">
+                            Theme variation for your own UI.
+                        </h3>
+                        <Playground
+                            code={examples[9].content}
+                            evalInContext={examples[9].evalInContext}
+                            key={`${codeRevision}/9`}
+                            name={name}
+                            index={9}
+                            settings={examples[9].settings}
+                            exampleMode={exampleMode}
+                        />
                     </div>
                 </RenderIf>
             </section>

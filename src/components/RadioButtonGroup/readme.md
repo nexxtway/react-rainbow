@@ -383,6 +383,7 @@ const ConctactContainer = styled.div`
 const LinkedinIconStyle = {
     width: "20px",
     height: "20px",
+    color: "#0E76A8",
 };
 
 const Contact = (props) => {
@@ -401,10 +402,10 @@ const Contact = (props) => {
                 { email }
             </EmailLabel>
             <div className="rainbow-flex rainbow-justify_space-around rainbow-m-top_small">
-                <a href={linkedin}>
+                <a href={github}>
                     <GitHubIcon />
                 </a>
-                <a href={github}>
+                <a href={linkedin}>
                     <LinkedinIcon style={LinkedinIconStyle}/>
                 </a>
             </div>

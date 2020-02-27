@@ -12,7 +12,7 @@ export default function Examples(_ref1, _ref2) {
     const codeRevision = _ref2.codeRevision;
 
     if (name === 'Customization') {
-        if (examples.length == 1) {
+        if (examples.length === 1) {
             return (
                 <ExamplesRenderer name={name}>
                     <div className="react-rainbow-customization_container">

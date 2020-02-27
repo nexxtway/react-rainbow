@@ -90,7 +90,9 @@ export default function Wrapper(props) {
                         </StyledTitle>
                     </StyledLeftElement>
                 </StyledTopBar>
-                <StyledContent>{children}</StyledContent>
+                <StyledContent>
+                    <Provider>{children}</Provider>
+                </StyledContent>
             </StyledWrapper>
         );
     }
