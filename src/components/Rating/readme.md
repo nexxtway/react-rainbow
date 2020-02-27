@@ -118,25 +118,6 @@ const StyledText = styled.h3.attrs(props => {
     color: ${props => props.text.label};
 `;
 
-class SimpleRating extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            value: '3.5',
-        };
-        this.handleOnChange = this.handleOnChange.bind(this);
-    }
-
-    handleOnChange(event) {
-        console.log(' changed! ');
-        return this.setState({ value: event.target.value });
-    }
-
-    render() {
-        return <Rating value={this.state.value} onChange={this.handleOnChange} readOnly />;
-    }
-}
-
 <div className="rainbow-p-bottom_xx-large">
     <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
         <ButtonGroup className="rainbow-m-right_medium">
@@ -161,7 +142,7 @@ class SimpleRating extends React.Component {
                             Give us your rate about how you like this…
                         </StyledText>
                     </div>
-                    <SimpleRating />
+                    <Rating value={'3.5'} readOnly />
                 </div>
             }
         >
