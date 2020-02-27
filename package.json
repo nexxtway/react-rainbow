@@ -37,7 +37,6 @@
         "prop-types": "^15.6.2",
         "react-async-script-loader": "^0.3.0",
         "styled-components": "^4.3.2",
-        "wdio-timeline-reporter": "^5.1.2",
         "xlsx": "^0.14.4"
     },
     "peerDependencies": {
