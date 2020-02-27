@@ -134,15 +134,15 @@ const StyledText = styled.h3.attrs(props => {
             style={cardStyles}
             footer={
                 <div>
-                    <div className="rainbow-flex rainbow-flex_column rainbow-align_start rainbow-m-bottom_x-small">
+                    <div className="rainbow-flex rainbow-flex_column rainbow-align_center rainbow-m-bottom_x-small">
                         <StyledHeader className="rainbow-font-size-heading_medium">
-                            Rainbow
+                            Rainbow Image
                         </StyledHeader>
                         <StyledText>
-                            Give us your rate about how you like this…
+                            2.45 of 5
                         </StyledText>
                     </div>
-                    <Rating value={'3.5'} readOnly />
+                    <Rating value={'2.45'} readOnly />
                 </div>
             }
         >
