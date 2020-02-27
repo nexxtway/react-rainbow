@@ -2160,6 +2160,11 @@ ajv@^6.10.2:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
+allure-commandline@^2.13.0:
+  version "2.13.0"
+  resolved "https://registry.yarnpkg.com/allure-commandline/-/allure-commandline-2.13.0.tgz#54d77ab8733ded6a8fe2379b60213cd00f5c6425"
+  integrity sha512-KUByc0nT+vVVsnW/p36R92+FS2o3xVX27p+AW/8T4dlXVh7jx6V0v6+rRBCpK7AhBKD9/T3jsSq14hS0sxp64Q==
+
 allure-js-commons@^1.3.2:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/allure-js-commons/-/allure-js-commons-1.3.2.tgz#e1cf0466e36695bb3ced1228f6570eac6c2e9eda"

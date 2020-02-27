@@ -78,11 +78,16 @@ jobs:
 
             - run: yarn test:integration --headless
 
+            - run:
+                  name: allure generate html report from xml results
+                  command: |
+                      yarn allure generate test-results/wdio-allure-results --clean --output test-results/allure-report
+
             - store_test_results:
-                  path: test-results
+                  path: test-results/allure-report
 
             - store_artifacts:
-                  path: test-results
+                  path: test-results/allure-report
 
     publish_canary:
         <<: *defaults

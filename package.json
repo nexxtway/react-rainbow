@@ -100,6 +100,7 @@
         "@wdio/selenium-standalone-service": "^5.7.8",
         "@wdio/spec-reporter": "^5.7.13",
         "@wdio/sync": "^5.7.13",
+        "allure-commandline": "^2.13.0",
         "assert": "^1.4.1",
         "babel-eslint": "^10.0.3",
         "babel-jest": "^24.9.0",

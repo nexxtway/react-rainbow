@@ -138,14 +138,12 @@ exports.config = {
     // see also: https://webdriver.io/docs/dot-reporter.html
     reporters: [
         'spec',
-        'junit',
-        ['timeline', { outputDir: './test-results/wdio-timeline-results' }],
         [
             'allure',
             {
                 outputDir: 'test-results/wdio-allure-results',
-                disableWebdriverStepsReporting: true,
-                disableWebdriverScreenshotsReporting: true,
+                disableWebdriverStepsReporting: false,
+                disableWebdriverScreenshotsReporting: false,
             },
         ],
     ],
