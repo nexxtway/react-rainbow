@@ -79,7 +79,7 @@ jobs:
             - run: yarn test:integration --headless
 
             - run:
-                  name: allure generate html report from xml results
+                  name: allure html report generation
                   command: |
                       yarn allure generate test-results/wdio-allure-results --clean --output test-results/allure-report
 
