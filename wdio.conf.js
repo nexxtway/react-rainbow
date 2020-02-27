@@ -142,7 +142,7 @@ exports.config = {
             'allure',
             {
                 outputDir: 'test-results/wdio-allure-results',
-                disableWebdriverStepsReporting: false,
+                disableWebdriverStepsReporting: true,
                 disableWebdriverScreenshotsReporting: false,
             },
         ],
