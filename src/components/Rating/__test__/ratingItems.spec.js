@@ -18,22 +18,14 @@ describe('<RatingItems />', () => {
         const component = mount(<RatingItems />);
         expect(component.children().length).toBe(5);
     });
-    it('should render half star at the right position when value is a float', () => {
+    it('should set isHalf to true when the value passed is not integer', () => {
         const component = mount(<RatingItems value="3.5" />);
         const star = component.childAt(3);
-        expect(star.find('StarHalf').exists()).toBe(true);
+        expect(star.props().isHalf).toBe(true);
     });
-    it('should not render any half star when value is an integer', () => {
-        const component = mount(<RatingItems value={'5'} />);
-        Array(5)
-            .fill(0)
-            .forEach((item, index) => {
-                expect(
-                    component
-                        .childAt(index)
-                        .find('StarHalf')
-                        .exists(),
-                ).toBe(false);
-            });
+    it('should pass the right isFilled when the value passed is float', () => {
+        const component = mount(<RatingItems value="3.5" />);
+        const star = component.childAt(3);
+        expect(star.props().isFilled).toBe(true);
     });
 });
