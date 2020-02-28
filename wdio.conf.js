@@ -139,6 +139,15 @@ exports.config = {
     reporters: [
         'spec',
         [
+            'junit',
+            {
+                outputDir: 'test-results/wdio-junit-results',
+                outputFileFormat: options => {
+                    return `results-${options.cid}.xml`;
+                },
+            },
+        ],
+        [
             'allure',
             {
                 outputDir: 'test-results/wdio-allure-results',
