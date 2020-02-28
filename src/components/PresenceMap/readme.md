@@ -56,8 +56,8 @@ const iconPath = 'M11.9871,1.1364008 L12.2359799,1.23823648 L14.0335516,2.030504
 const markers = [
     {
         position: {
-            lat: -32.836538,
-            lng: 151.1279,
+            lat: 41.878113,
+            lng: -87.629799,
         },
         icon: {
             path: iconPath,
@@ -71,8 +71,8 @@ const markers = [
     },
     {
         position: {
-            lat: -33.850538,
-            lng: 151.279,
+            lat: 41.878189,
+            lng: -87.627691,
         },
         icon: {
             path: iconPath,
@@ -85,8 +85,8 @@ const markers = [
     },
     {
         position: {
-            lat: -31.860538,
-            lng: 151.1479,
+            lat: 41.872125,
+            lng: -87.633570,
         },
         icon: {
             path: iconPath,
@@ -251,8 +251,8 @@ const iconPath = 'M11.9871,1.1364008 L12.2359799,1.23823648 L14.0335516,2.030504
 const markers = [
     {
         position: {
-            lat: -32.836538,
-            lng: 151.1279,
+            lat: 41.878113,
+            lng: -87.629799,
         },
         icon: {
             path: iconPath,
@@ -267,8 +267,8 @@ const markers = [
     },
     {
         position: {
-            lat: -33.850538,
-            lng: 151.279,
+            lat: 41.878189,
+            lng: -87.627691,
         },
         icon: {
             path: iconPath,
@@ -282,8 +282,8 @@ const markers = [
     },
     {
         position: {
-            lat: -31.860538,
-            lng: 150.1479,
+            lat: 41.872125,
+            lng: -87.633570,
         },
         icon: {
             path: iconPath,

@@ -85,7 +85,6 @@ export default function MapComponent(props) {
 
     useEffect(() => {
         if (map) {
-            console.log(center);
             const hasNewMarkers = mapMarkers.length > 0;
             if (center === 'auto') {
                 if (hasNewMarkers) {
