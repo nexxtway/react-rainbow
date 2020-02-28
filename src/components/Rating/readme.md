@@ -133,7 +133,7 @@ const StyledHeader = styled.h3.attrs(props => {
                             Rainbow Image
                         </StyledHeader>
                     </div>
-                    <Rating value={'2.45'} readOnly label="2.45 of 5" />
+                    <Rating value="2.45" readOnly label="2.45 of 5" />
                 </div>
             }
         >
