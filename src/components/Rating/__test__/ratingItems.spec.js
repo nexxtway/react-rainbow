@@ -19,7 +19,7 @@ describe('<RatingItems />', () => {
         expect(component.children().length).toBe(5);
     });
     it('should render half star at the right position when value is a float', () => {
-        const component = mount(<RatingItems value={'3.5'} />);
+        const component = mount(<RatingItems value="3.5" />);
         const star = component.childAt(3);
         expect(star.find('StarHalf').exists()).toBe(true);
     });
