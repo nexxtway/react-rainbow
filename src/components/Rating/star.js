@@ -12,6 +12,7 @@ export default class Star extends Component {
     constructor(props) {
         super(props);
         this.starId = uniqueId('star');
+        this.handleChange = this.handleChange.bind(this);
     }
 
     getAssitiveText() {
@@ -20,6 +21,12 @@ export default class Star extends Component {
             return `${value} Star`;
         }
         return `${value} Stars`;
+    }
+
+    handleChange(event) {
+        const { isReadOnly, onChange } = this.props;
+        if (isReadOnly) return null;
+        return onChange(event);
     }
 
     renderStar() {
@@ -31,7 +38,7 @@ export default class Star extends Component {
     }
 
     render() {
-        const { onChange, value, name, isReadOnly } = this.props;
+        const { value, name, isReadOnly } = this.props;
 
         return (
             <StyledStartContainer>
@@ -40,7 +47,7 @@ export default class Star extends Component {
                     id={this.starId}
                     value={value}
                     name={name}
-                    onChange={!isReadOnly ? onChange : null}
+                    onChange={this.handleChange}
                     disabled={isReadOnly}
                 />
 
