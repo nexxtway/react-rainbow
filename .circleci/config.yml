@@ -36,16 +36,16 @@ jobs:
                   name: run test
                   command: |
                       if [ -n "$COVERALLS_REPO_TOKEN" ]; then
-                          yarn test --ci --maxWorkers=2 --reporters=jest-html-reporter --coverage --coverageReporters=text-lcov | ./node_modules/coveralls/bin/coveralls.js
+                          yarn test --ci --maxWorkers=2 --coverage --coverageReporters=text-lcov | ./node_modules/coveralls/bin/coveralls.js
                       else
-                          yarn test --ci --maxWorkers=2 --reporters=jest-html-reporter
+                          yarn test --ci --maxWorkers=2 
                       fi
 
             - store_test_results:
-                  path: test-results
+                  path: test-results/jest-junit-results
 
             - store_artifacts:
-                  path: test-results
+                  path: test-results/jest-junit-results
 
     integration_tests:
         <<: *defaults
@@ -84,7 +84,7 @@ jobs:
                       yarn allure generate test-results/wdio-allure-results --clean --output test-results/allure-report
 
             - store_test_results:
-                  path: test-results/allure-report
+                  path: test-results/wdio-allure-results
 
             - store_artifacts:
                   path: test-results/allure-report

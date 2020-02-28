@@ -72,10 +72,19 @@
         ],
         "moduleNameMapper": {
             "\\.(css|less|svg)$": "<rootDir>/__mocks__/assetsMock.js"
-        }
+        },
+        "reporters": [
+            "default",
+            "jest-junit",
+            "jest-html-reporter"
+        ]
+    },
+    "jest-junit": {
+        "outputDirectory": "./test-results/jest-junit-results",
+        "outputName": "junit.xml"
     },
     "jest-html-reporter": {
-        "outputPath": "./test-results/jest-html-results/results.html"
+        "outputPath": "./test-results/jest-junit-results/results.html"
     },
     "devDependencies": {
         "@babel/cli": "^7.6.0",
@@ -130,6 +139,7 @@
         "jest": "^24.9.0",
         "jest-axe": "^3.2.0",
         "jest-html-reporter": "^2.8.0",
+        "jest-junit": "^10.0.0",
         "jsdoc": "^3.5.5",
         "jsdom": "^12.0.0",
         "node-sass": "^4.9.3",
