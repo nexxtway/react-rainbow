@@ -77,12 +77,12 @@ jobs:
             - run: sleep 10
 
             - run:
-                  name: Generate test results (junit xml && allure xml)
+                  name: run integration test
                   command: |
                       yarn test:integration --headless
 
             - run:
-                  name: allure generate html report from allure xml results
+                  name: generate report
                   command: |
                       yarn allure generate test-results/wdio-allure-results --clean --output test-results/allure-report
 
