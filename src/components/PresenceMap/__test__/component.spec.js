@@ -10,7 +10,7 @@ describe('<MapComponent/>', () => {
     });
 
     beforeEach(() => {
-        window.google = {
+        global.google = {
             maps: {
                 Map: jest.fn(() => ({
                     setCenter: jest.fn(),
@@ -54,7 +54,7 @@ describe('<MapComponent/>', () => {
             isScriptLoadSucceed: false,
         };
         component.setProps(newProps);
-        expect(window.google.maps.Map).not.toHaveBeenCalled();
+        expect(global.google.maps.Map).not.toHaveBeenCalled();
     });
     it('should not call google.maps.Map when isScriptLoaded is true and isScriptLoadSucceed is false', () => {
         const newProps = {
@@ -62,7 +62,7 @@ describe('<MapComponent/>', () => {
             isScriptLoadSucceed: false,
         };
         component.setProps(newProps);
-        expect(window.google.maps.Map).not.toHaveBeenCalled();
+        expect(global.google.maps.Map).not.toHaveBeenCalled();
     });
     it('should not call google.maps.Map when isScriptLoaded is false and isScriptLoadSucceed is true', () => {
         const newProps = {
@@ -70,7 +70,7 @@ describe('<MapComponent/>', () => {
             isScriptLoadSucceed: true,
         };
         component.setProps(newProps);
-        expect(window.google.maps.Map).not.toHaveBeenCalled();
+        expect(global.google.maps.Map).not.toHaveBeenCalled();
     });
     it('should call google.maps.Map, google.maps.TrafficLayer and google.maps.TransitLayer when isScriptLoaded and isScriptLoadSucceed are true', () => {
         const newProps = {
@@ -78,9 +78,9 @@ describe('<MapComponent/>', () => {
             isScriptLoadSucceed: true,
         };
         component.setProps(newProps);
-        expect(window.google.maps.Map).toHaveBeenCalled();
-        expect(window.google.maps.TrafficLayer).toHaveBeenCalled();
-        expect(window.google.maps.TransitLayer).toHaveBeenCalled();
+        expect(global.google.maps.Map).toHaveBeenCalled();
+        expect(global.google.maps.TrafficLayer).toHaveBeenCalled();
+        expect(global.google.maps.TransitLayer).toHaveBeenCalled();
     });
     it('should call google.maps.Map with the right data', () => {
         const newProps = {
