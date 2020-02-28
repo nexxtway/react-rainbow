@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import classnames from 'classnames';
 import Application from './../../../src/components/Application';
@@ -9,9 +10,10 @@ import ButtonIcon from '../../../src/components/ButtonIcon';
 import ComponentsPage from '../../pages/ComponentsPage';
 import ProjectSelector from '../ProjectSelector';
 import GitterChat from '../GitterChat';
-import ChatIcon from './chat';
+import ChatIcon from '../../exampleComponents/Icons/chat';
 import TwitterIcon from '../../exampleComponents/Icons/twitter';
 import BarsIcon from './barsIcon';
+
 import './styles.css';
 
 // analytics
@@ -19,11 +21,19 @@ function trackPageview() {
     ReactGA.pageview(window.location.hash);
 }
 
-const styleTwitterIcon = {
+const twitterIconStyle = {
     width: '18px',
     height: '15px',
     color: '#ffffff',
 };
+
+const StyleButtonIcon = styled(ButtonIcon)`
+    svg {
+        width: 36px !important;
+        height: 35px !important;
+        color: #ffffff;
+    }
+`;
 
 class StyleGuide extends React.Component {
     constructor(props) {
@@ -92,7 +102,7 @@ class StyleGuide extends React.Component {
                         rel="noopener noreferrer"
                         className="react-rainbow-styleguide_twitter-link"
                     >
-                        <TwitterIcon style={styleTwitterIcon} />
+                        <TwitterIcon style={twitterIconStyle} />
                     </a>
                 </aside>
                 <div
@@ -112,7 +122,7 @@ class StyleGuide extends React.Component {
                     size="large"
                     onClick={this.toggleSidebar}
                 />
-                <ButtonIcon
+                <StyleButtonIcon
                     className="react-rainbow-styleguide-open-chat-button"
                     shaded
                     variant="brand"
