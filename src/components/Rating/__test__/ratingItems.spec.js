@@ -9,9 +9,9 @@ describe('<RatingItems />', () => {
             value: 1,
             name: 'name-1',
             onChange: expect.any(Function),
-            filled: true,
-            half: false,
-            readOnly: false,
+            isFilled: true,
+            isHalf: false,
+            isReadOnly: false,
         });
     });
     it('should render the right amount of Star components', () => {

@@ -27,8 +27,8 @@ export default class Rating extends Component {
     }
 
     handleOnHover(event) {
-        const { readOnly } = this.props;
-        if (event.target.value && !readOnly) {
+        const { isReadOnly } = this.props;
+        if (event.target.value && !isReadOnly) {
             return this.setState({ value: event.target.value });
         }
         return null;
@@ -39,7 +39,7 @@ export default class Rating extends Component {
     }
 
     render() {
-        const { style, className, onChange, label, readOnly } = this.props;
+        const { style, className, onChange, label, isReadOnly } = this.props;
         const { value } = this.state;
         return (
             <StyledFieldset
@@ -55,7 +55,7 @@ export default class Rating extends Component {
                     onChange={onChange}
                     value={value}
                     name={this.getName()}
-                    readOnly={readOnly}
+                    isReadOnly={isReadOnly}
                 />
             </StyledFieldset>
         );
@@ -76,7 +76,7 @@ Rating.propTypes = {
     /** An object with custom style applied for the outer element. */
     style: PropTypes.object,
     /** Whether it is read only or not */
-    readOnly: PropTypes.bool,
+    isReadOnly: PropTypes.bool,
 };
 
 Rating.defaultProps = {
@@ -86,5 +86,5 @@ Rating.defaultProps = {
     label: null,
     className: undefined,
     style: undefined,
-    readOnly: false,
+    isReadOnly: false,
 };
