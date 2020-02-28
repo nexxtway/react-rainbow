@@ -75,7 +75,7 @@ Rating.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied for the outer element. */
     style: PropTypes.object,
-    /** Whether it is read only or not */
+    /** Specifies that the Rating is read-only. This value defaults to false. */
     isReadOnly: PropTypes.bool,
 };
 
