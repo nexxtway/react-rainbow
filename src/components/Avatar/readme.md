@@ -74,13 +74,13 @@ import { Avatar } from 'react-rainbow-components';
     <div className="rainbow-m-horizontal_small">
         <Avatar
             className="rainbow-m-around_x-small"
-            icon={<img src="icons/user.svg" alt="icon" />}
+            icon={<UserAvatarIcon />}
             assistiveText="user icon"
             title="user icon"
         />
         <Avatar
             className="rainbow-m-around_x-small"
-            icon={<img src="icons/user.svg" alt="icon" />}
+            icon={<UserAvatarIcon />}
             assistiveText="user icon"
             title="user icon"
             backgroundColor="#FE4849"

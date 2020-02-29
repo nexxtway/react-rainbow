@@ -1,17 +1,12 @@
 import styled from 'styled-components';
-import { COLOR_WHITE, COLOR_GRAY_2, COLOR_GRAY_4 } from '../../../styles/colors';
-import getTheme from '../../../styles/helpers/getTheme';
+import attchThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-const StyledContainer = styled.span.attrs(props => {
-    const { getContrastText, brand } = getTheme(props).palette;
-    const brandMainColor = brand.main;
-    return {
-        brandMainColor,
-        getContrastText,
-    };
+const StyledContainer = attchThemeAttrs(styled.span).attrs(props => {
+    const inverse = props.palette.text.label;
+    return { inverse };
 })`
-    color: ${COLOR_GRAY_4};
-    background-color: ${COLOR_GRAY_2};
+    color: ${props => props.palette.text.label};
+    background-color: ${props => props.palette.background.highlight};
     border: 1px solid;
     border-color: transparent;
     display: inline-flex;
@@ -33,27 +28,27 @@ const StyledContainer = styled.span.attrs(props => {
     ${props =>
         props.variant === 'lightest' &&
         `
-            background-color: ${COLOR_WHITE};
-            border-color: ${COLOR_GRAY_2};
+            background-color: ${props.palette.background.main};
+            border-color: ${props.palette.border.divider};
         `};
     ${props =>
         props.variant === 'brand' &&
         `
-            color: ${props.getContrastText(props.brandMainColor)};
-            background-color: ${props.brandMainColor};
+            color: ${props.palette.getContrastText(props.palette.brand.main)};
+            background-color: ${props.palette.brand.main};
         `};
     ${props =>
         props.variant === 'outline-brand' &&
         `
-            color: ${props.brandMainColor};
+            color: ${props.palette.brand.main};
             background-color: transparent;
-            border-color: ${props.brandMainColor};
+            border-color: ${props.palette.brand.main};
         `};
     ${props =>
         props.variant === 'inverse' &&
         `
-            color: ${COLOR_WHITE};
-            background-color: ${COLOR_GRAY_4};
+            color: ${props.palette.getContrastText(props.inverse)};
+            background-color: ${props.inverse};
         `};
 `;
 
