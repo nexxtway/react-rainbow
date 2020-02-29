@@ -21,6 +21,7 @@ const StyledModalContainer = attachThemeAttrs(styled.section)`
     justify-content: center;
     align-items: normal;
     position: relative;
+    transform-origin: center;
 
     &:focus {
         outline: 0;

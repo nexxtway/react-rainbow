@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import StyledTitle from './styled/title';
 import StyledDivider from './styled/divider';
 
-export default function Header({ title }) {
-    if (typeof title === 'string') {
+export default function Header({ content }) {
+    if (typeof content === 'string') {
         return (
             <>
-                <StyledTitle>{title}</StyledTitle>
+                <StyledTitle>{content}</StyledTitle>
                 <StyledDivider />
             </>
         );
@@ -15,14 +15,14 @@ export default function Header({ title }) {
 
     return (
         <>
-            {title}
+            {content}
             <StyledDivider />
         </>
     );
 }
 
 Header.propTypes = {
-    title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    content: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 };
 
 Header.defaultProps = {

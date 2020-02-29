@@ -48,7 +48,7 @@ const StyledContainer = attachThemeAttrs(styled.div).attrs(props => {
     flex-direction: column;
     box-sizing: border-box;
     display: flex;
-    z-index: 1000000;
+    z-index: 10000;
     justify-content: center;
     align-items: normal;
     position: fixed;
@@ -81,18 +81,18 @@ const StyledContainer = attachThemeAttrs(styled.div).attrs(props => {
     ${props =>
         props.isOpen &&
         `
-            animation: slide-${props.slideFrom}-in 0.2s linear;
+            animation: drawer-slide-${props.slideFrom}-in 0.2s linear;
             transform: translateX(0%);
         `};
     ${props =>
         !props.isOpen &&
         `
-            animation: slide-${props.slideFrom}-out 0.2s linear;
+            animation: drawer-slide-${props.slideFrom}-out 0.2s linear;
             transform:  ${props.slideFrom === 'left' ? 'translateX(-100%)' : 'translateX(100%)'};
         `};
 
     // slide from left animation
-    @keyframes slide-left-in {
+    @keyframes drawer-slide-left-in {
         0% {
             transform:  translateX(-100%);
         }
@@ -100,7 +100,7 @@ const StyledContainer = attachThemeAttrs(styled.div).attrs(props => {
             transform: translateX(0);
         }
     }
-    @keyframes slide-left-out {
+    @keyframes drawer-slide-left-out {
         0% {
             transform: translateX(0);
         }
@@ -110,7 +110,7 @@ const StyledContainer = attachThemeAttrs(styled.div).attrs(props => {
     }
 
     // slide from right animation
-    @keyframes slide-right-in {
+    @keyframes drawer-slide-right-in {
         0% {
             transform:  translateX(100%);
         }
@@ -118,7 +118,7 @@ const StyledContainer = attachThemeAttrs(styled.div).attrs(props => {
             transform: translateX(0);
         }
     }
-    @keyframes slide-right-out {
+    @keyframes drawer-slide-right-out {
         0% {
             transform: translateX(0%);
         }

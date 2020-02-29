@@ -1,28 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import StyledDivider from './styled/divider';
+import StyledFooter from './styled/footer';
 
-export default function DrawerFooter({ footer }) {
-    if (typeof title === 'string') {
+export default function DrawerFooter({ content }) {
+    if (typeof content === 'string') {
         return (
             <>
                 <StyledDivider />
+                <StyledFooter>{content}</StyledFooter>
             </>
         );
     }
 
     return (
         <>
-            {title}
             <StyledDivider />
+            {content}
         </>
     );
 }
 
 DrawerFooter.propTypes = {
-    title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    content: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 };
 
 DrawerFooter.defaultProps = {
-    title: undefined,
+    content: undefined,
 };

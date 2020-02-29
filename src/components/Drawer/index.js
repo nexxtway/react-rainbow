@@ -1,19 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
-import {
-    disableBodyScroll,
-    enableBodyScroll,
-    clearAllBodyScrollLocks,
-} from '../Modal/scrollController';
 import RenderIf from '../RenderIf';
 import StyledContainer from './styled/container';
 import StyledContent from './styled/content';
 import StyledCloseButton from './styled/closeButton';
-import StyledFooter from './styled/footer';
 import Header from './header';
+import Footer from './footer';
 import CloseIcon from './closeIcon';
-import { useUniqueIdentifier } from '../../libs/hooks';
+import { useUniqueIdentifier, useOutsideClick } from '../../libs/hooks';
 
 const DrawerState = {
     SHOWING: 0,
@@ -42,24 +37,31 @@ export default function Drawer(props) {
     } = props;
     const headerId = useUniqueIdentifier('drawer-header');
     const contentId = useUniqueIdentifier('drawer-content');
+    const drawerRef = useRef(null);
     const contentRef = useRef(null);
-    const [drawerState, setDrawerState] = useState(DrawerState.HIDDEN);
+    const [drawerState, setDrawerState] = useState(
+        isOpen ? DrawerState.VISIBLE : DrawerState.HIDDEN,
+    );
+
+    const closeDrawer = () => setDrawerState(DrawerState.HIDDING);
+
+    useOutsideClick(drawerRef, closeDrawer);
 
     useEffect(() => {
         if (isOpen) {
-            disableBodyScroll(contentRef.current);
-            setDrawerState(DrawerState.SHOWING);
-        } else {
-            clearAllBodyScrollLocks();
+            if (drawerState === DrawerState.HIDDEN) {
+                setDrawerState(DrawerState.SHOWING);
+            }
         }
-    }, [isOpen]);
+    }, [isOpen, drawerState]);
 
     useEffect(() => {
         if (drawerState === DrawerState.VISIBLE) {
             onOpened();
-        } else if (drawerState === DrawerState.HIDDEN) {
+        } else if (isOpen && drawerState === DrawerState.HIDDEN) {
             onRequestClose();
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [drawerState]);
 
     const onSlideEnd = () => {
@@ -69,8 +71,6 @@ export default function Drawer(props) {
             setDrawerState(DrawerState.HIDDEN);
         }
     };
-
-    const closeDrawer = () => setDrawerState(DrawerState.HIDDING);
 
     if (isOpen && drawerState !== DrawerState.HIDDEN) {
         return createPortal(
@@ -88,13 +88,14 @@ export default function Drawer(props) {
                 size={size}
                 slideFrom={slideFrom}
                 onAnimationEnd={onSlideEnd}
+                ref={drawerRef}
             >
-                <Header title={header} />
+                <Header content={header} />
                 <RenderIf isTrue={!hideCloseButton}>
                     <StyledCloseButton icon={<CloseIcon />} title="Hide" onClick={closeDrawer} />
                 </RenderIf>
                 <StyledContent ref={contentRef}>{children}</StyledContent>
-                <StyledFooter />
+                <Footer content={footer} />
             </StyledContainer>,
             document.body,
         );
