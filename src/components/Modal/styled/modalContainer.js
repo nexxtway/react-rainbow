@@ -21,21 +21,20 @@ const StyledModalContainer = attachThemeAttrs(styled.section)`
     justify-content: center;
     align-items: normal;
     position: relative;
-    transform-origin: center;
 
     &:focus {
         outline: 0;
     }
 
     ${props =>
-        props.show &&
+        props.isOpen &&
         `
             animation: slide-up-in 0.2s linear;
             opacity: 1;
             transform: scale(1, 1) translateY(0);
         `};
     ${props =>
-        !props.show &&
+        !props.isOpen &&
         `
             animation: slide-down-out 0.2s linear;
             opacity: 0;
