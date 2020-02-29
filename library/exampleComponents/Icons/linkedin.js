@@ -15,8 +15,8 @@ const Linkedin = props => {
             <title>linkedin</title>
             <g id="pages" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g
-                    id="customization-theming"
-                    transform="translate(-1011.000000, -1802.000000)"
+                    id="Components-Radio-Button-Group"
+                    transform="translate(-352.000000, -1590.000000)"
                     fill="currentColor"
                     fillRule="nonzero"
                 >

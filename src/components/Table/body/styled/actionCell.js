@@ -6,6 +6,7 @@ const StyledActionCell = styled.div`
     align-content: center;
     align-items: center;
     margin: auto;
+    box-sizing: border-box;
 `;
 
 export default StyledActionCell;

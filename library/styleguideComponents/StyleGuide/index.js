@@ -31,7 +31,7 @@ const StyleButtonIcon = styled(ButtonIcon)`
     svg {
         width: 36px !important;
         height: 35px !important;
-        color: #ffffff;
+        color: #fff;
     }
 `;
 

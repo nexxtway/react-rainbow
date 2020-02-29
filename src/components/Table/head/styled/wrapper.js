@@ -7,6 +7,7 @@ const StyledWrapper = attachThemeAttrs(styled.div)`
     top: 0;
     height: 44px;
     background-color: ${props => props.palette.background.highlight};
+    box-sizing: border-box;
 `;
 
 export default StyledWrapper;

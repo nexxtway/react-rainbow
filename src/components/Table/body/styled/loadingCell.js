@@ -6,6 +6,7 @@ const StyledLoadingCell = styled.div`
     display: flex;
     align-items: center;
     padding: 0 24px 0 8px;
+    box-sizing: border-box;
 `;
 
 export default StyledLoadingCell;
