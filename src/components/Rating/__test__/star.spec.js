@@ -28,12 +28,10 @@ describe('<Star />', () => {
     });
     it('should render the StarFill when the prop isFilled is true', () => {
         const component = mount(<Star isFilled />);
-        component.find('input').simulate('change');
         expect(component.find('StarFill').exists()).toBe(true);
     });
     it('should render the StarBordered when the prop isFilled is false', () => {
         const component = mount(<Star isFilled={false} />);
-        component.find('input').simulate('change');
         expect(component.find('StarBordered').exists()).toBe(true);
     });
     it('should pass the right text to the AssistiveText component', () => {
