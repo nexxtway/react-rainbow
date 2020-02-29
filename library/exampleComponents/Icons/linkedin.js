@@ -16,7 +16,7 @@ const Linkedin = props => {
                 <g
                     id="Components-Radio-Button-Group"
                     transform="translate(-352.000000, -1590.000000)"
-                    fill="#0E76A8"
+                    fill="currentColor"
                     fillRule="nonzero"
                 >
                     <g id="Group-34" transform="translate(322.000000, 1409.000000)">
