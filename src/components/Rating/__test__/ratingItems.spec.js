@@ -18,10 +18,15 @@ describe('<RatingItems />', () => {
         const component = mount(<RatingItems />);
         expect(component.children().length).toBe(5);
     });
-    it('should set isHalf to true when the value passed is not integer', () => {
-        const component = mount(<RatingItems value="3.5" />);
+    it('should set isHalf to true when the value passed is not integer and readOnly is true', () => {
+        const component = mount(<RatingItems value="3.5" readOnly />);
         const star = component.childAt(3);
         expect(star.props().isHalf).toBe(true);
+    });
+    it('should set isHalf to false when readOnly is false', () => {
+        const component = mount(<RatingItems value="3.5" />);
+        const star = component.childAt(3);
+        expect(star.props().isHalf).toBe(false);
     });
     it('should pass the right isFilled when the value passed is float', () => {
         const component = mount(<RatingItems value="3.5" />);

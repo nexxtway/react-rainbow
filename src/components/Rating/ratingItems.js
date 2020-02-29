@@ -9,8 +9,9 @@ export default function RatingItems(props) {
         .fill(0)
         .map((item, index) => {
             const key = `star-${index}`;
-            const isFilled = index < Math.ceil(value);
-            const isHalf = value < index + 1 && !Number.isInteger(Number(value));
+            const normalizedValue = readOnly ? Math.ceil(value) : Math.round(value);
+            const isFilled = index < normalizedValue;
+            const isHalf = readOnly && value < index + 1 && !Number.isInteger(Number(value));
             return (
                 <Star
                     key={key}
