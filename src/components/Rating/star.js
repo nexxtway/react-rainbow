@@ -24,8 +24,8 @@ export default class Star extends Component {
     }
 
     handleChange(event) {
-        const { isReadOnly, onChange } = this.props;
-        if (isReadOnly) return null;
+        const { readOnly, onChange } = this.props;
+        if (readOnly) return null;
         return onChange(event);
     }
 
@@ -38,7 +38,7 @@ export default class Star extends Component {
     }
 
     render() {
-        const { value, name, isReadOnly } = this.props;
+        const { value, name, readOnly } = this.props;
 
         return (
             <StyledStartContainer>
@@ -48,7 +48,7 @@ export default class Star extends Component {
                     value={value}
                     name={name}
                     onChange={this.handleChange}
-                    disabled={isReadOnly}
+                    disabled={readOnly}
                 />
 
                 <label htmlFor={this.starId}>
@@ -66,13 +66,13 @@ Star.propTypes = {
     isFilled: PropTypes.bool.isRequired,
     isHalf: PropTypes.bool,
     name: PropTypes.string,
-    isReadOnly: PropTypes.bool,
+    readOnly: PropTypes.bool,
 };
 
 Star.defaultProps = {
     value: 1,
     onChange: () => {},
     name: undefined,
-    isReadOnly: false,
+    readOnly: false,
     isHalf: false,
 };

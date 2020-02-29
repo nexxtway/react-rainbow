@@ -40,9 +40,9 @@ describe('<Star />', () => {
         const component = mount(<Star value={1} />);
         expect(component.find('AssistiveText').prop('text')).toBe('1 Star');
     });
-    it('should not fire onChange event when isReadOnly is true', () => {
+    it('should not fire onChange event when readOnly is true', () => {
         const onChangeMockFn = jest.fn();
-        const component = mount(<Star value={1} onChange={onChangeMockFn} isReadOnly />);
+        const component = mount(<Star value={1} onChange={onChangeMockFn} readOnly />);
         component.find('input').simulate('click');
         component.find('input').simulate('change');
         expect(onChangeMockFn).not.toHaveBeenCalled();

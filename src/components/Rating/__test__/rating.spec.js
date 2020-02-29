@@ -10,8 +10,8 @@ describe('<Rating />', () => {
         component.simulate('mouseleave');
         expect(component.state().value).toBe('2');
     });
-    it('should not set the value of the star hovered to the state when isReadOnly is true', () => {
-        const component = mount(<Rating value="2" isReadOnly />);
+    it('should not set the value of the star hovered to the state when readOnly is true', () => {
+        const component = mount(<Rating value="2" readOnly />);
         component.find('input[value=4]').simulate('mouseover');
         expect(component.state().value).toBe('2');
     });
