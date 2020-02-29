@@ -8,6 +8,7 @@ const StyledEmptyContainer = styled.div`
     width: 100%;
     height: 100%;
     margin: 32px auto;
+    box-sizing: border-box;
 `;
 
 export default StyledEmptyContainer;
