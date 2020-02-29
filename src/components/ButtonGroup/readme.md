@@ -198,6 +198,11 @@ const SubTitle = styled.span.attrs(props => {
     color: ${props => props.text.header};
 `;
 
+const Container = styled.div`
+    max-width: 780px;
+    margin: auto;
+`;
+
 const Content = styled.div`
     @media (max-width: 767px) {
         flex-direction: column;
@@ -215,9 +220,8 @@ const SocialContentLink = styled.a`
 
     :nth-child(2) {
         margin-left: 10px;
-        margin-right: 10px; 
+        margin-right: 10px;
     }
-        
     @media (max-width: 767px) {
         max-width: 235px;
     }
@@ -263,14 +267,14 @@ const socials = [
     }
 ];
 
-<div>
-    <HeadingContent className="rainbow-p-vertical_large rainbow-align-content_space-between rainbow-m-horizontal_medium rainbow-flex">
+<Container>
+    <HeadingContent className="rainbow-p-top_large rainbow-align-content_space-between rainbow-m-horizontal_medium rainbow-flex">
         <div className="rainbow-m-bottom_medium">
             <Title>Social Network</Title>
             <SubTitle>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</SubTitle>
         </div>
-    
-        <ButtonGroup>
+
+        <ButtonGroup className="rainbow-m-bottom_medium">
             <Button label="New" variant="neutral" />
             <Button label="Edit" variant="neutral" />
             <Button label="Remove" variant="neutral" />
@@ -285,8 +289,8 @@ const socials = [
             </ButtonMenu>
         </ButtonGroup>
     </HeadingContent>
-    
-    <Content className="rainbow-p-vertical_large rainbow-align-content_space-between rainbow-m-horizontal_medium rainbow-flex">
+
+    <Content className="rainbow-p-bottom_large rainbow-align-content_space-between rainbow-m-horizontal_medium rainbow-flex">
 
         {socials.map( (social) => {
             return (
@@ -310,6 +314,5 @@ const socials = [
         })}
 
     </Content>
-</div>
-
+</Container>
 ```
