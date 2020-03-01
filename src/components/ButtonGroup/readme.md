@@ -198,6 +198,11 @@ const SubTitle = styled.span.attrs(props => {
     color: ${props => props.text.header};
 `;
 
+const Container = styled.div`
+    max-width: 780px;
+    margin: auto;
+`;
+
 const Content = styled.div`
     @media (max-width: 767px) {
         flex-direction: column;
@@ -215,9 +220,8 @@ const SocialContentLink = styled.a`
 
     :nth-child(2) {
         margin-left: 10px;
-        margin-right: 10px; 
+        margin-right: 10px;
     }
-        
     @media (max-width: 767px) {
         max-width: 235px;
     }
@@ -236,39 +240,41 @@ const SocialContentCount = styled.h2.attrs(props => {
     color: ${props => props.text.main};  
 `;
 
+const styles = {
+    socialCard: { marginLeft: 0, marginRight: 0 },
+    facebookIcon: { color: "#3C5997"} ,
+    twitterIcon : { color: '#00B0F3' },
+};
+
 const socials = [
     {
         url: 'https://facebook.com',
         name: 'facebook',
-        icon: '/icons/facebook.svg',
+        icon: <FacebookIcon style={styles.facebookIcon}/>,
         countInThousands: 143
     },
     {
         url: 'https://google.com',
         name: 'google',
-        icon: '/icons/google.svg',
+        icon: <GoogleIcon />,
         countInThousands: 20
     },
     {
         url: 'https://twitter.com',
         name: 'twitter',
-        icon: '/icons/twitter-blue.svg',
+        icon: <TwitterIcon style={styles.twitterIcon} />,
         countInThousands: 42
     }
 ];
 
-const styles = {
-    socialCard: { marginLeft: 0, marginRight: 0 }
-};
-
-<div>
-    <HeadingContent className="rainbow-p-vertical_large rainbow-align-content_space-between rainbow-m-horizontal_medium rainbow-flex">
+<Container>
+    <HeadingContent className="rainbow-p-top_large rainbow-align-content_space-between rainbow-m-horizontal_medium rainbow-flex">
         <div className="rainbow-m-bottom_medium">
             <Title>Social Network</Title>
             <SubTitle>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</SubTitle>
         </div>
-    
-        <ButtonGroup>
+
+        <ButtonGroup className="rainbow-m-bottom_medium">
             <Button label="New" variant="neutral" />
             <Button label="Edit" variant="neutral" />
             <Button label="Remove" variant="neutral" />
@@ -283,8 +289,8 @@ const styles = {
             </ButtonMenu>
         </ButtonGroup>
     </HeadingContent>
-    
-    <Content className="rainbow-p-vertical_large rainbow-align-content_space-between rainbow-m-horizontal_medium rainbow-flex">
+
+    <Content className="rainbow-p-bottom_large rainbow-align-content_space-between rainbow-m-horizontal_medium rainbow-flex">
 
         {socials.map( (social) => {
             return (
@@ -294,7 +300,7 @@ const styles = {
 
                         <SocialContent className="rainbow-inline-flex rainbow-align-content_space-between">
                             <div>
-                                <img src={social.icon} />
+                                {social.icon}
                             </div>
                             <div>
                                 <SocialContentName>{ social.name }</SocialContentName>
@@ -308,6 +314,5 @@ const styles = {
         })}
 
     </Content>
-</div>
-
+</Container>
 ```

@@ -14,6 +14,7 @@ const StyledCellContent = attachThemeAttrs(styled.div)`
     text-overflow: ellipsis;
     white-space: nowrap;
     font-weight: 400;
+    box-sizing: border-box;
 `;
 
 export default StyledCellContent;
