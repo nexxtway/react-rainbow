@@ -59,8 +59,13 @@ export const StyledContentText = styled.h2`
     letter-spacing: 0.5;
 `;
 
-export const StyledBadge = styled(Badge)`
-    margin: 2px 8px;
+export const StyledBadge = attachThemeAttrs(styled.span)`
+    margin: 2px 6px;
+    font-size: 14px;
+    font-family: 'Lato';
+    font-weight: 900;
+    letter-spacing: normal;
+    color: ${props => props.palette.text.main};
 
     @media (max-width: 600px) {
         margin: 2px 2px;
@@ -82,9 +87,10 @@ export const StyledPickerTheme = styled(ButtonMenu)`
 
 export const StyledTitle = attachThemeAttrs(styled.h1)`
     font-size: 14px;
-    color: ${props => props.palette.text.header};
-    margin-left: 4px;
-    margin-right: 8px;
+    font-family: Lato Light;
+    color: ${props => props.palette.text.title};
+    margin-left: 6px;
+    margin-right: 0;
 
     @media (max-width: 600px) {
         font-size: 12px;

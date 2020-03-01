@@ -85,8 +85,8 @@ export default function Wrapper(props) {
                     <StyledLeftElement>
                         <InfoFilled />
                         <StyledTitle>
-                            The theme support is <StyledBadge label="BETA" /> and{' '}
-                            <StyledBadge label="WIP" />
+                            The theme support is <StyledBadge>BETA</StyledBadge>and{' '}
+                            <StyledBadge>WIP</StyledBadge>
                         </StyledTitle>
                     </StyledLeftElement>
                     <StyledPickerTheme
