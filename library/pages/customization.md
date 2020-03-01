@@ -417,7 +417,7 @@ import styled from 'styled-components';
 const Section = styled.section`
     max-width: 900px;
     display: flex;
-	justify-content: center;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     margin: 40px auto;
@@ -425,7 +425,7 @@ const Section = styled.section`
 
 const PercentCardHeader = styled.h2`
     color: ${props => props.theme.rainbow.palette.text.main};
-    font-size: 1.25rem;
+    font-size: 1rem;
 `;
 
 const PercentCardSubtitle = styled.h3`
@@ -474,7 +474,7 @@ const PercentCard = function(props) {
                 <ActiveCirlce variant={variant}>
                     <FontAwesomeIcon icon={faCircle} />
                 </ActiveCirlce>
-                <h3 className="rainbow-font-size-heading_small">Active</h3>
+                <PercentCardHeader>Active</PercentCardHeader>
             </div>
         </Card>
       </Application>
