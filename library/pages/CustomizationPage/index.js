@@ -301,27 +301,29 @@ export default function CustomizationPage(props) {
                     <div className="rainbow-flex rainbow-flex_column">
                         <div className="react-rainbow-customization_section-heading-container">
                             <div className="rainbow-m-right_medium">
-                                <h2 className="react-rainbow-getting-started_section-heading-2">
-                                    Q&A
-                                </h2>
                                 <h3 className="react-rainbow-getting-started_section-heading rainbow-m-right_medium rainbow-m-bottom_medium">
                                     Here are the frequently question and answer about how implement
                                     the theme on React Rainbow and antd that you should look up
                                     before you ask in the community or create a new issue.
                                 </h3>
-                                <a className="react-rainbow-customization_link">
-                                    How customize the main color for all the components on my app?
-                                </a>
-                                <a className="react-rainbow-customization_link">
-                                    How to do a variation with a specific color for only one
-                                    component on my app?
-                                </a>
-                                <a className="react-rainbow-customization_link">
-                                    How use the colors defined on the theme on my own elements of my
-                                    app?
-                                </a>
+                                <h2 className="react-rainbow-getting-started_section-heading-2">
+                                    Q&A
+                                </h2>
                             </div>
                             <CarbonAds className="react-rainbow-customization_carbon-ad" />
+                        </div>
+                        <div>
+                            <a className="react-rainbow-customization_link">
+                                How customize the main color for all the components on my app?
+                            </a>
+                            <a className="react-rainbow-customization_link">
+                                How to do a variation with a specific color for only one component
+                                on my app?
+                            </a>
+                            <a className="react-rainbow-customization_link">
+                                How use the colors defined on the theme on my own elements of my
+                                app?
+                            </a>
                         </div>
                         <h3 className="react-rainbow-customization_section-heading">
                             How customize the main color for all the components on my app?
