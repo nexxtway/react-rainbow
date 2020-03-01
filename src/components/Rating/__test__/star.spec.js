@@ -26,18 +26,27 @@ describe('<Star />', () => {
         component.find('input').simulate('change');
         expect(onChangeFn).toHaveBeenCalledTimes(1);
     });
-    it('should render the StarFill when the prop filled is true', () => {
-        const component = mount(<Star filled />);
-        component.find('input').simulate('change');
+    it('should render the StarFill when the prop isFilled is true', () => {
+        const component = mount(<Star isFilled />);
         expect(component.find('StarFill').exists()).toBe(true);
     });
-    it('should render the StarBordered when the prop filled is false', () => {
-        const component = mount(<Star filled={false} />);
-        component.find('input').simulate('change');
+    it('should render the StarBordered when the prop isFilled is false', () => {
+        const component = mount(<Star isFilled={false} />);
         expect(component.find('StarBordered').exists()).toBe(true);
     });
     it('should pass the right text to the AssistiveText component', () => {
         const component = mount(<Star value={1} />);
         expect(component.find('AssistiveText').prop('text')).toBe('1 Star');
+    });
+    it('should not fire onChange event when readOnly is true', () => {
+        const onChangeMockFn = jest.fn();
+        const component = mount(<Star value={1} onChange={onChangeMockFn} readOnly />);
+        component.find('input').simulate('click');
+        component.find('input').simulate('change');
+        expect(onChangeMockFn).not.toHaveBeenCalled();
+    });
+    it('should render half star when isFilled and isHalf props are true', () => {
+        const component = mount(<Star value={1} isFilled isHalf />);
+        expect(component.find('StarHalf').exists()).toBe(true);
     });
 });

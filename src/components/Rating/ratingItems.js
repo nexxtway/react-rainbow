@@ -3,15 +3,25 @@ import PropTypes from 'prop-types';
 import Star from './star';
 
 export default function RatingItems(props) {
-    const { onChange, value, name } = props;
+    const { onChange, value, name, readOnly } = props;
 
     return Array(5)
         .fill(0)
         .map((item, index) => {
             const key = `star-${index}`;
-            const filled = index < value;
+            const normalizedValue = readOnly ? Math.ceil(value) : Math.round(value);
+            const isFilled = index < normalizedValue;
+            const isHalf = readOnly && value < index + 1 && !Number.isInteger(Number(value));
             return (
-                <Star key={key} name={name} onChange={onChange} value={index + 1} filled={filled} />
+                <Star
+                    key={key}
+                    name={name}
+                    onChange={onChange}
+                    value={index + 1}
+                    isFilled={isFilled}
+                    isHalf={isHalf}
+                    readOnly={readOnly}
+                />
             );
         });
 }
@@ -20,10 +30,12 @@ RatingItems.propTypes = {
     value: PropTypes.string,
     onChange: PropTypes.func,
     name: PropTypes.string,
+    readOnly: PropTypes.bool,
 };
 
 RatingItems.defaultProps = {
     value: undefined,
     onChange: () => {},
     name: undefined,
+    readOnly: false,
 };
