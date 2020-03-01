@@ -75,6 +75,10 @@
     margin-bottom: 4px;
 }
 
+.react-rainbow-customization_link:hover {
+    color: #009acf;
+}
+
 .react-rainbow-customization_section-italic {
     margin-top: 4px;
     margin-bottom: 4px;
