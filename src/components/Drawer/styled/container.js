@@ -48,7 +48,6 @@ const StyledContainer = attachThemeAttrs(styled.div).attrs(props => {
     flex-direction: column;
     box-sizing: border-box;
     display: flex;
-    z-index: 10000;
     justify-content: center;
     align-items: normal;
     position: fixed;
@@ -70,6 +69,11 @@ const StyledContainer = attachThemeAttrs(styled.div).attrs(props => {
         `
         max-height: ${props.size.height}%;
         `}
+
+    @media (max-width: 800px) {
+        width: 100%;
+        min-width: 100%;
+    }
             
     // position
     left: ${props => props.position.left};

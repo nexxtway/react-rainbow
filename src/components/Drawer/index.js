@@ -1,21 +1,23 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
+import { ESCAPE_KEY, TAB_KEY } from './../../libs/constants';
+import {
+    disableBodyScroll,
+    enableBodyScroll,
+    clearAllBodyScrollLocks,
+} from '../Modal/scrollController';
+import CounterManager from '../Modal/counterManager';
+import manageTab from '../Modal/manageTab';
 import RenderIf from '../RenderIf';
+import StyledBackDrop from './styled/backDrop';
 import StyledContainer from './styled/container';
 import StyledContent from './styled/content';
 import StyledCloseButton from './styled/closeButton';
 import Header from './header';
 import Footer from './footer';
 import CloseIcon from './closeIcon';
-import { useUniqueIdentifier, useOutsideClick } from '../../libs/hooks';
-
-const DrawerState = {
-    SHOWING: 0,
-    VISIBLE: 1,
-    HIDDING: 2,
-    HIDDEN: 3,
-};
+import { useUniqueIdentifier } from '../../libs/hooks';
 
 /**
  * Drawers are surfaces containing supplementary content on your app.
@@ -37,66 +39,85 @@ export default function Drawer(props) {
     } = props;
     const headerId = useUniqueIdentifier('drawer-header');
     const contentId = useUniqueIdentifier('drawer-content');
+    const triggerRef = useRef(null);
     const drawerRef = useRef(null);
     const contentRef = useRef(null);
-    const [drawerState, setDrawerState] = useState(
-        isOpen ? DrawerState.VISIBLE : DrawerState.HIDDEN,
-    );
-
-    const closeDrawer = () => setDrawerState(DrawerState.HIDDING);
-
-    useOutsideClick(drawerRef, closeDrawer);
 
     useEffect(() => {
+        const contentElement = contentRef.current;
         if (isOpen) {
-            if (drawerState === DrawerState.HIDDEN) {
-                setDrawerState(DrawerState.SHOWING);
-            }
-        }
-    }, [isOpen, drawerState]);
-
-    useEffect(() => {
-        if (drawerState === DrawerState.VISIBLE) {
+            CounterManager.increment();
+            disableBodyScroll(contentElement);
+            triggerRef.current = document.activeElement;
+            drawerRef.current.focus();
             onOpened();
-        } else if (isOpen && drawerState === DrawerState.HIDDEN) {
-            onRequestClose();
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [drawerState]);
 
-    const onSlideEnd = () => {
-        if (drawerState === DrawerState.SHOWING) {
-            setDrawerState(DrawerState.VISIBLE);
-        } else if (drawerState === DrawerState.HIDDING) {
-            setDrawerState(DrawerState.HIDDEN);
+        return () => {
+            if (isOpen) CounterManager.decrement();
+            if (triggerRef.current) triggerRef.current.focus();
+            if (!CounterManager.hasModalsOpen()) {
+                enableBodyScroll(contentElement);
+            }
+            clearAllBodyScrollLocks();
+        };
+    }, [isOpen, onOpened]);
+
+    const closeDrawer = () => onRequestClose();
+
+    const handleBackDropClick = event => {
+        if (isOpen && drawerRef.current.contains(event.target)) {
+            return null;
         }
+        return closeDrawer();
     };
 
-    if (isOpen && drawerState !== DrawerState.HIDDEN) {
+    const handleKeyPressed = event => {
+        event.stopPropagation();
+        if (isOpen && event.keyCode === ESCAPE_KEY) {
+            closeDrawer();
+        }
+        if (event.keyCode === TAB_KEY) {
+            manageTab(drawerRef.current, event);
+        }
+        return null;
+    };
+
+    if (isOpen) {
         return createPortal(
-            <StyledContainer
-                role="dialog"
-                tabIndex={-1}
+            <StyledBackDrop
                 id={id}
-                aria-labelledby={headerId}
-                aria-modal
-                aria-hidden
-                aria-describedby={contentId}
-                className={className}
-                isOpen={[DrawerState.SHOWING, DrawerState.VISIBLE].includes(drawerState)}
-                style={style}
-                size={size}
-                slideFrom={slideFrom}
-                onAnimationEnd={onSlideEnd}
-                ref={drawerRef}
+                role="presentation"
+                isOpen={isOpen}
+                onClick={handleBackDropClick}
+                onKeyDown={handleKeyPressed}
             >
-                <Header content={header} />
-                <RenderIf isTrue={!hideCloseButton}>
-                    <StyledCloseButton icon={<CloseIcon />} title="Hide" onClick={closeDrawer} />
-                </RenderIf>
-                <StyledContent ref={contentRef}>{children}</StyledContent>
-                <Footer content={footer} />
-            </StyledContainer>,
+                <StyledContainer
+                    role="dialog"
+                    tabIndex={-1}
+                    aria-labelledby={headerId}
+                    aria-modal
+                    aria-hidden
+                    aria-describedby={contentId}
+                    className={className}
+                    isOpen={isOpen}
+                    style={style}
+                    size={size}
+                    slideFrom={slideFrom}
+                    ref={drawerRef}
+                >
+                    <Header content={header} />
+                    <RenderIf isTrue={!hideCloseButton}>
+                        <StyledCloseButton
+                            icon={<CloseIcon />}
+                            title="Hide"
+                            onClick={closeDrawer}
+                        />
+                    </RenderIf>
+                    <StyledContent ref={contentRef}>{children}</StyledContent>
+                    <Footer content={footer} />
+                </StyledContainer>
+            </StyledBackDrop>,
             document.body,
         );
     }
