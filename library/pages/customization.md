@@ -184,7 +184,7 @@ const themeBlue = {
 </Application>
 ```
 
-##### Theme variation on all the components at the same time.
+##### How customize the main color for all the components on my app?
 ```js
 import React, {useState} from 'react';
 import {
@@ -194,7 +194,7 @@ import {
     Avatar,
     ButtonGroup,
     ButtonIcon,
-  	CheckboxGroup
+    CheckboxGroup
 } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
@@ -223,7 +223,7 @@ const Section = styled.section`
 
 const Content = styled.div`
     display: flex;
-	justify-content: space-between;
+    justify-content: space-between;
     align-items: flex-start;
     flex-wrap: wrap;
 `;
@@ -238,7 +238,7 @@ const Profile = styled.div`
 `;
 const ProfileInfoItem = styled.div`
     margin-bottom: 5px;
-	margin-left: 10px;
+    margin-left: 10px;
     :last-child{ margin-bottom: 0; }
 `;
 
@@ -290,7 +290,7 @@ const CalendarProfile = () => {
                         />
                     </CalendarCard>
                     <Profile>
-                        <Content>
+                        <Content className="rainbow-m-bottom_medium">
                             <Content>
                                 <Avatar
                                 assistiveText="Albert Bush"
@@ -335,6 +335,14 @@ import styled from 'styled-components';
 const theme = {
     rainbow: {
         palette: {
+            mainBackground: '#fbfcfd',
+        },
+    },
+};
+
+const customTheme = {
+    rainbow: {
+        palette: {
             mainBackground: '#3c5997',
         },
     },
@@ -343,39 +351,18 @@ const theme = {
 const Section = styled.section`
     display: flex;
     flex-wrap: wrap;
-	justify-content: center;
+    justify-content: center;
     align-content: center;
-    align-items: center;    
-    margin: 40px 1rem 30px 1rem;
-    
-    @media (max-width: 767px) {
-        flex-direction: column;
-    }
-
-    > div {
-        margin-left: 10px;
-        margin-right: 10px;
-        flex-grow: 1;
-        @media (max-width: 767px) {
-            margin-left: 0;
-            margin-right: 0;
-            width: 100%;
-        }
-    }
+    align-items: center;
+    margin: 40px auto 30px auto;
+    max-width: 860px;
 `;
 
 const SocialCard = styled(Card)`
     padding: 1rem;
-    flex-grow: 1;
-    margin-bottom: 10px;
-    @media (max-width: 767px) {
-        width: 100%;
-    }
+    margin: 12px;
+    width: 250px;
 `
-
-const SocialContent = styled.div`
-    > div:last-child { text-align: right; }
-`;
 
 const SocialContentName = styled.span`
     color: ${props => props.theme.rainbow.palette.text.main};  
@@ -392,8 +379,7 @@ const SocialCounter = (props) => {
     const { name, icon, countInThousands } = props;
 
     return (
-        <SocialCard>
-            <SocialContent className="rainbow-inline-flex rainbow-align-content_space-between">
+        <SocialCard className="rainbow-inline-flex rainbow-align-content_space-between">
             <div>
                 {icon}
             </div>
@@ -401,15 +387,14 @@ const SocialCounter = (props) => {
                 <SocialContentName>{name}</SocialContentName>
                 <SocialContentCount>{countInThousands}K</SocialContentCount>
             </div>
-            </SocialContent>
         </SocialCard>
     );
 }
 
-<Application>
+<Application theme={theme}>
     <Section>
         <SocialCounter name="google" icon={<GoogleIcon />} countInThousands={20} />
-        <Application theme={theme}>
+        <Application theme={customTheme}>
             <SocialCounter name="facebook" icon={<FacebookIcon />} countInThousands={143} />
         </Application>
         <SocialCounter name="twitter" icon={<TwitterIcon style={twitterIconStyle} />} countInThousands={20} />

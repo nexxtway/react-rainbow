@@ -195,16 +195,14 @@ export default function CustomizationPage(props) {
             <section className="react-rainbow-customization_container">
                 <RenderIf isTrue={activeTab === 'overview'}>
                     <div>
-                        <div className="rainbow-flex rainbow-flex_column rainbow-m-bottom_xx-large">
+                        <div className="rainbow-flex rainbow-flex_column rainbow-m-bottom_large">
                             <div className="react-rainbow-customization_section-heading-container">
                                 <h3 className="react-rainbow-getting-started_section-heading rainbow-m-right_medium">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                    enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                    nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                                    nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                                    sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    If you are using React Rainbow on your app, some times you can
+                                    to need customize our design to satisfy UI diversity from
+                                    business or brand requirements. You need use the color of a
+                                    specific bussiness brand or a specific color palette You can
+                                    need add support for a dark o custom theme on your app.
                                 </h3>
                                 <CarbonAds className="react-rainbow-customization_carbon-ad" />
                             </div>
@@ -306,11 +304,27 @@ export default function CustomizationPage(props) {
                                 <h2 className="react-rainbow-getting-started_section-heading-2">
                                     Q&A
                                 </h2>
+                                <h3 className="react-rainbow-getting-started_section-heading rainbow-m-right_medium rainbow-m-bottom_medium">
+                                    Here are the frequently question and answer about how implement
+                                    the theme on React Rainbow and antd that you should look up
+                                    before you ask in the community or create a new issue.
+                                </h3>
+                                <a className="react-rainbow-customization_link">
+                                    How customize the main color for all the components on my app?
+                                </a>
+                                <a className="react-rainbow-customization_link">
+                                    How to do a variation with a specific color for only one
+                                    component on my app?
+                                </a>
+                                <a className="react-rainbow-customization_link">
+                                    How use the colors defined on the theme on my own elements of my
+                                    app?
+                                </a>
                             </div>
                             <CarbonAds className="react-rainbow-customization_carbon-ad" />
                         </div>
                         <h3 className="react-rainbow-customization_section-heading">
-                            Theme variation on all the components at the same time.
+                            How customize the main color for all the components on my app?
                         </h3>
                         <Playground
                             code={examples[5].content}
@@ -323,7 +337,8 @@ export default function CustomizationPage(props) {
                         />
 
                         <h3 className="react-rainbow-customization_section-heading">
-                            Theme variation for a specific component.
+                            How to do a variation with a specific color for only one component on my
+                            app?
                         </h3>
                         <Playground
                             code={examples[7].content}
@@ -335,7 +350,7 @@ export default function CustomizationPage(props) {
                             exampleMode={exampleMode}
                         />
                         <h3 className="react-rainbow-customization_section-heading">
-                            Theme variation for your own UI.
+                            How customize the main color for all the components on my app?
                         </h3>
                         <Playground
                             code={examples[9].content}
