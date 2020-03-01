@@ -6,7 +6,7 @@ export interface RatingProps extends BaseProps {
     onChange?: (event: ChangeEvent<HTMLElement>) => void;
     name?: string;
     label?: ReactNode;
-    isReadOnly?: boolean;
+    readOnly?: boolean;
 }
 
 declare const Rating: React.ComponentType<RatingProps>;
