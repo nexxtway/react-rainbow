@@ -11,7 +11,7 @@ const Label = styled.h1`
     margin-bottom: 4px;
 `;
 
-const icon = <img src="icons/user.svg" alt="icon" />;
+const icon = <UserAvatarIcon />;
 
 const avatarsUrl = [
     {
