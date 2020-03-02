@@ -72,7 +72,10 @@ class Option extends Component {
 
     unregister() {
         const { privateUnregisterChild } = this.props;
-        return setTimeout(() => privateUnregisterChild(this.itemRef.current), 0);
+        if (privateUnregisterChild) {
+            return privateUnregisterChild(this.itemRef.current);
+        }
+        return null;
     }
 
     renderRightIcon() {

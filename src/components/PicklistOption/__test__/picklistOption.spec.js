@@ -96,4 +96,17 @@ describe('<PicklistOption />', () => {
         const component = mount(<PicklistOption name="option1" currentValueName="option1" />);
         expect(component.find(CheckmarkIcon).exists()).toBe(true);
     });
+    it('should call privateUnregisterChild with the right parameters on unmount', () => {
+        const privateUnregisterChildMockFn = jest.fn();
+        const component = mount(
+            <PicklistOption
+                name="option1"
+                currentValueName="option1"
+                privateUnregisterChild={privateUnregisterChildMockFn}
+            />,
+        );
+        component.unmount();
+        expect(privateUnregisterChildMockFn).toHaveBeenCalledTimes(1);
+        expect(privateUnregisterChildMockFn.mock.calls[0][0]).not.toBeFalsy();
+    });
 });
