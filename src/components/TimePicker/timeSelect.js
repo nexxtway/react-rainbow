@@ -396,10 +396,10 @@ export default class TimeSelect extends Component {
         const { hour, minutes } = this.state;
 
         if (hour && this.prevMinutes) {
-            const incrementt = event === 'increment';
+            const increment = event === 'increment';
             const decrement = event === 'decrement';
 
-            if (incrementt && Number(minutes) === 0) {
+            if (increment && Number(minutes) === 0) {
                 this.incrementHour();
             }
 
