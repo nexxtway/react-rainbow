@@ -16,7 +16,7 @@ import {
     StyledLeftElement,
     StyledTitle,
     StyledContent,
-    StyledBadge,
+    StyledHighlight,
     StyledPickerTheme,
     StyledColorCircle,
     StyledCheckIcon,
@@ -85,8 +85,8 @@ export default function Wrapper(props) {
                     <StyledLeftElement>
                         <InfoFilled />
                         <StyledTitle>
-                            The theme support is <StyledBadge>BETA</StyledBadge>and{' '}
-                            <StyledBadge>WIP</StyledBadge>
+                            The theme support is <StyledHighlight>BETA</StyledHighlight>and{' '}
+                            <StyledHighlight>WIP</StyledHighlight>
                         </StyledTitle>
                     </StyledLeftElement>
                     <StyledPickerTheme

@@ -2,7 +2,6 @@
 import styled from 'styled-components';
 import { ButtonMenu, Badge } from '../../../src/components/index';
 import { COLOR_BRAND } from '../../../src/styles/colors';
-import getTheme from '../../../src/styles/helpers/getTheme';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import attachThemeAttrs from '../../../src/styles/helpers/attachThemeAttrs';
 
@@ -59,7 +58,7 @@ export const StyledContentText = styled.h2`
     letter-spacing: 0.5;
 `;
 
-export const StyledBadge = attachThemeAttrs(styled.span)`
+export const StyledHighlight = attachThemeAttrs(styled.span)`
     margin: 2px 6px;
     font-size: 14px;
     font-family: 'Lato';
