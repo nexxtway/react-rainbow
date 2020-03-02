@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import { ESCAPE_KEY, TAB_KEY } from './../../libs/constants';
@@ -18,6 +18,13 @@ import Header from './header';
 import Footer from './footer';
 import CloseIcon from './closeIcon';
 import { useUniqueIdentifier } from '../../libs/hooks';
+
+const DrawerState = {
+    OPENING: 0,
+    OPENED: 1,
+    CLOSING: 2,
+    CLOSED: 3,
+};
 
 /**
  * Drawers are surfaces containing supplementary content on your app.
@@ -42,26 +49,54 @@ export default function Drawer(props) {
     const triggerRef = useRef(null);
     const drawerRef = useRef(null);
     const contentRef = useRef(null);
+    const [drawerState, setDrawerState] = useState(DrawerState.CLOSED);
 
     useEffect(() => {
+        console.log(`Effect [isOpen] -> isOpen: ${isOpen}, drawerState: ${drawerState}`);
         const contentElement = contentRef.current;
         if (isOpen) {
             CounterManager.increment();
             disableBodyScroll(contentElement);
             triggerRef.current = document.activeElement;
+            setDrawerState(DrawerState.OPENING);
+        } else if (!isOpen && drawerState === DrawerState.OPENED) {
+            setDrawerState(DrawerState.CLOSING);
+        }
+
+        return () => {
+            console.log(`CleanUp [isOpen] -> isOpen: ${isOpen}, drawerState: ${drawerState}`);
+            if (isOpen) {
+                CounterManager.decrement();
+                if (triggerRef.current) triggerRef.current.focus();
+                if (!CounterManager.hasModalsOpen()) {
+                    enableBodyScroll(contentElement);
+                }
+                clearAllBodyScrollLocks();
+                // setDrawerState(DrawerState.CLOSING);
+            }
+        };
+    }, [isOpen]);
+
+    useEffect(() => {
+        console.log(`Effect [drawerState] -> isOpen: ${isOpen}, drawerState: ${drawerState}`);
+        if (drawerState === DrawerState.OPENED) {
             drawerRef.current.focus();
             onOpened();
         }
 
         return () => {
-            if (isOpen) CounterManager.decrement();
-            if (triggerRef.current) triggerRef.current.focus();
-            if (!CounterManager.hasModalsOpen()) {
-                enableBodyScroll(contentElement);
-            }
-            clearAllBodyScrollLocks();
+            console.log(`CleanUp [drawerState] -> isOpen: ${isOpen}, drawerState: ${drawerState}`);
         };
-    }, [isOpen, onOpened]);
+    }, [drawerState]);
+
+    const onSlideEnd = () => {
+        console.log(`onAnimationEnd -> drawerState: ${drawerState}`);
+        if (drawerState === DrawerState.OPENING) {
+            setDrawerState(DrawerState.OPENED);
+        } else if (drawerState === DrawerState.CLOSING) {
+            setDrawerState(DrawerState.CLOSED);
+        }
+    };
 
     const closeDrawer = () => onRequestClose();
 
@@ -83,12 +118,13 @@ export default function Drawer(props) {
         return null;
     };
 
-    if (isOpen) {
+    const drawerIsOpen = [DrawerState.OPENING, DrawerState.OPENED].includes(drawerState);
+    console.log('render', drawerState, isOpen);
+    if (drawerState !== null && drawerState !== DrawerState.CLOSED) {
         return createPortal(
             <StyledBackDrop
                 id={id}
                 role="presentation"
-                isOpen={isOpen}
                 onClick={handleBackDropClick}
                 onKeyDown={handleKeyPressed}
             >
@@ -100,11 +136,12 @@ export default function Drawer(props) {
                     aria-hidden
                     aria-describedby={contentId}
                     className={className}
-                    isOpen={isOpen}
+                    isOpen={drawerIsOpen}
                     style={style}
                     size={size}
                     slideFrom={slideFrom}
                     ref={drawerRef}
+                    onAnimationEnd={onSlideEnd}
                 >
                     <Header content={header} />
                     <RenderIf isTrue={!hideCloseButton}>

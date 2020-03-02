@@ -55,24 +55,10 @@ const initialState = {
         />
     </div>
     <Drawer
-        id="drawer-top-1"
-        header="This is a drawer"
-        isOpen={state.isOpenTop}
-        slideFrom="top"
-        onRequestClose={() => setState({ isOpenTop : false })}
-    />
-    <Drawer
         id="drawer-right-1"
         header="This is a drawer"
         isOpen={state.isOpenRight}
         onRequestClose={() => setState({ isOpenRight : false })}
-    />
-    <Drawer
-        id="drawer-bottom-1"
-        header="This is a drawer"
-        isOpen={state.isOpenBottom}
-        slideFrom="bottom"
-        onRequestClose={() => setState({ isOpenBottom : false })}
     />
     <Drawer
         id="drawer-left-1"
@@ -187,7 +173,7 @@ const StyledFooterButton = styled(Button)
     width: 100px;
 `;
 
-const closeDrawer = () => setState({ isOpen : false, info: null });
+const closeDrawer = () => setState({ isOpen : false });
 
 function Contact({ avatar, name, email, onShowDetails }) {
     return (
@@ -276,14 +262,14 @@ function DrawerFooter() {
             <div className="rainbow-p-around_small">
                 <StyledFooterButton
                     label="Cancel"
-                    onClick={closeDrawer}
+                    onClick={() => closeDrawer()}
                 />
             </div>
             <div className="rainbow-p-around_small">
                 <StyledFooterButton
                     variant="brand"
                     label="Save"
-                    onClick={closeDrawer}
+                    onClick={() => closeDrawer()}
                 />
             </div>
         </div>
@@ -330,7 +316,7 @@ const initialState = { isOpen: false, info: null };
         header="Edit Information"
         footer={<DrawerFooter />}
         isOpen={state.isOpen}
-        onRequestClose={closeDrawer}
+        onRequestClose={() => closeDrawer()}
     >
         <EditContactForm contactInfo={state.info} />
     </StyledDrawer>
