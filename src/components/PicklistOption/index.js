@@ -7,7 +7,7 @@ import StyledHeader from './styled/header';
 import StyledHeaderLabel from './styled/headerLabel';
 import StyledItem from './styled/item';
 import StyledIconContainer from './styled/iconContainer';
-import CheckmarkIcon from './checkmark';
+import StyledCheckmarkIcon from './styled/checkmarkIcon';
 
 function preventDefault(event) {
     event.preventDefault();
@@ -79,7 +79,7 @@ class Option extends Component {
         const { name, currentValueName, icon, iconPosition } = this.props;
         const hasRightIcon = !!(icon && iconPosition === 'right');
         if (name === currentValueName) {
-            return <CheckmarkIcon />;
+            return <StyledCheckmarkIcon />;
         }
         return (
             <Icon

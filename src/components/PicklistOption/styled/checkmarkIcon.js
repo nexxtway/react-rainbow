@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+import CheckmarkIcon from '../checkmark';
 
-const StyledCheckmarkIcon = attachThemeAttrs(styled.svg)`
+const StyledCheckmarkIcon = attachThemeAttrs(styled(CheckmarkIcon))`
     width: 0.8rem;
     height: 0.8rem;
     line-height: 1;
