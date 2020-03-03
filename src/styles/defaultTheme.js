@@ -56,6 +56,7 @@ const defaultTheme = {
             hover: COLOR_GRAY_1,
         },
         getContrastText,
+        isDark: false,
     },
     shadows: {
         brand: `0 0 2px ${COLOR_BRAND}`,
