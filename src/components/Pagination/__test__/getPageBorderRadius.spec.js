@@ -1,7 +1,7 @@
 import getPageBorderRadius from '../styled/getPageBorderRadius';
 
 describe('getPageBorderRadius function', () => {
-    it('should return square border radius styles for no pages', () => {
+    it('should return square border radius styles for 0 pages', () => {
         const pages = 0;
         const result = getPageBorderRadius(pages);
         expect(result).toBe('0 100px 100px 0');
