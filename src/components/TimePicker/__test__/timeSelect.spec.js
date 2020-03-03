@@ -746,6 +746,6 @@ describe('<TimeSelect/>', () => {
                 .find('input')
                 .at(0)
                 .prop('value'),
-        ).toBe('09');
+        ).toBe('12');
     });
 });
