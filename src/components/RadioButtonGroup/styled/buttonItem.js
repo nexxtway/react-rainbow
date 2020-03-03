@@ -35,7 +35,7 @@ const StyledButtonItem = attachThemeAttrs(styled.span)`
         `
             &:hover {
                 background-color: ${
-                    props.palette.isDark ? 'rgba(250, 250, 250, 0.95)' : 'rgba(250, 250, 250, 0.10)'
+                    props.palette.isDark ? 'rgba(193, 193, 193, 0.4)' : 'rgba(250, 250, 250, 0.10)'
                 };
                 cursor: pointer;
             }
