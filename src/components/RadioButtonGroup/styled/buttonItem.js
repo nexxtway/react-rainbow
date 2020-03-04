@@ -16,7 +16,7 @@ const StyledButtonItem = attachThemeAttrs(styled.span)`
     transform: translate3d(0, 0, 0);
 
     &:hover {
-        background-color: ${props => replaceAlpha(props.palette.background.highlight, 0.4)};
+        background-color: ${props => replaceAlpha(props.palette.background.highlight, 0.6)};
         cursor: pointer;
     }
 
@@ -30,15 +30,16 @@ const StyledButtonItem = attachThemeAttrs(styled.span)`
         padding: 0;
         position: absolute;
     }
-
     ${props =>
         props.variant === 'inverse' &&
         `
-                &:hover {
-                    background-color: rgba(0, 0, 0, 0.95);
-                    cursor: pointer;
-                }
-            `};
+            &:hover {
+                background-color: ${
+                    props.palette.isDark ? 'rgba(193, 193, 193, 0.4)' : 'rgba(250, 250, 250, 0.10)'
+                };
+                cursor: pointer;
+            }
+        `};
     ${props =>
         props.isChecked &&
         `
