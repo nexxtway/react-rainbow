@@ -256,20 +256,20 @@ function EditContactForm({ contactInfo }) {
     );
 }
 
-function DrawerFooter() {
+function DrawerFooter({ onCancel, onSave }) {
     return (
         <div className="rainbow-p-around_small rainbow-flex  rainbow-align-content_center">
             <div className="rainbow-p-around_small">
                 <StyledFooterButton
                     label="Cancel"
-                    onClick={() => closeDrawer()}
+                    onClick={onCancel}
                 />
             </div>
             <div className="rainbow-p-around_small">
                 <StyledFooterButton
                     variant="brand"
                     label="Save"
-                    onClick={() => closeDrawer()}
+                    onClick={onSave}
                 />
             </div>
         </div>
@@ -314,7 +314,12 @@ const initialState = { isOpen: false, info: null };
     <StyledDrawer
         id="drawer-3"
         header="Edit Information"
-        footer={<DrawerFooter />}
+        footer={
+            <DrawerFooter
+                onCancel={() => closeDrawer()}
+                onSave={() => closeDrawer()}
+            />
+            }
         isOpen={state.isOpen}
         onRequestClose={() => closeDrawer()}
     >
