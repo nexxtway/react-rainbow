@@ -28,6 +28,7 @@ export default function Pagination(props) {
                 />
 
                 <PageButtons onChange={onChange} pages={pages} activePage={activePage} />
+
                 <NavigationButton
                     dataId="next-page-button"
                     icon={<RightArrow />}

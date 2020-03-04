@@ -7,6 +7,7 @@ import StyledHeader from './styled/header';
 import StyledHeaderLabel from './styled/headerLabel';
 import StyledItem from './styled/item';
 import StyledIconContainer from './styled/iconContainer';
+import StyledCheckmarkIcon from './styled/checkmarkIcon';
 
 function preventDefault(event) {
     event.preventDefault();
@@ -21,24 +22,12 @@ class Option extends Component {
     }
 
     componentDidMount() {
-        const { disabled, variant, name, currentValueName } = this.props;
+        const { disabled, variant, name } = this.props;
         const isHeader = variant === 'header';
-        if (disabled || isHeader || typeof name !== 'string' || name === currentValueName) {
+        if (disabled || isHeader || typeof name !== 'string') {
             return null;
         }
         return this.register();
-    }
-
-    componentDidUpdate(prevProps) {
-        const { currentValueName, name } = this.props;
-        const { currentValueName: prevCurrentValueName } = prevProps;
-        if (prevCurrentValueName !== currentValueName) {
-            if (prevCurrentValueName === name && currentValueName !== name) {
-                this.register();
-            } else if (prevCurrentValueName !== name && currentValueName === name) {
-                this.unregister();
-            }
-        }
     }
 
     componentWillUnmount() {
@@ -83,7 +72,26 @@ class Option extends Component {
 
     unregister() {
         const { privateUnregisterChild } = this.props;
-        return setTimeout(() => privateUnregisterChild(this.itemRef.current), 0);
+        if (privateUnregisterChild) {
+            return privateUnregisterChild(this.itemRef.current);
+        }
+        return null;
+    }
+
+    renderRightIcon() {
+        const { name, currentValueName, icon, iconPosition } = this.props;
+        const hasRightIcon = !!(icon && iconPosition === 'right');
+        if (name === currentValueName) {
+            return <StyledCheckmarkIcon />;
+        }
+        return (
+            <Icon
+                data-id="menu-item-right-icon"
+                icon={icon}
+                isVisible={hasRightIcon}
+                position={iconPosition}
+            />
+        );
     }
 
     render() {
@@ -118,7 +126,6 @@ class Option extends Component {
         }
 
         const hasLeftIcon = !!(icon && iconPosition === 'left');
-        const hasRightIcon = !!(icon && iconPosition === 'right');
 
         return (
             <li
@@ -148,12 +155,7 @@ class Option extends Component {
 
                         {label}
                     </StyledIconContainer>
-                    <Icon
-                        data-id="menu-item-right-icon"
-                        icon={icon}
-                        isVisible={hasRightIcon}
-                        position={iconPosition}
-                    />
+                    {this.renderRightIcon()}
                 </StyledItem>
             </li>
         );

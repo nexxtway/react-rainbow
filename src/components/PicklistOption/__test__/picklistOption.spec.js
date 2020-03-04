@@ -3,6 +3,7 @@ import { mount, shallow } from 'enzyme';
 import { Option as PicklistOption } from '../index';
 import StyledHeader from '../styled/header';
 import StyledItem from '../styled/item';
+import CheckmarkIcon from '../checkmark';
 
 describe('<PicklistOption />', () => {
     let optionRegisterFn;
@@ -43,18 +44,9 @@ describe('<PicklistOption />', () => {
         mount(<PicklistOption name={{}} currentValueName="option1" />);
         expect(optionRegisterFn).not.toHaveBeenCalled();
     });
-    it('should not register when it is selected', () => {
-        mount(<PicklistOption name="option1" currentValueName="option1" />);
-        expect(optionRegisterFn).not.toHaveBeenCalled();
-    });
     it('should register when mount', () => {
         mount(<PicklistOption name="option1" />);
         expect(optionRegisterFn).toHaveBeenCalled();
-    });
-    it('should unregister when selected', () => {
-        const component = mount(<PicklistOption label="option 1" name="option1" />);
-        component.setProps({ currentValueName: 'option1' });
-        expect(optionUnregisterFn).toHaveBeenCalled();
     });
     it('should register when deselected', () => {
         const component = mount(
@@ -99,5 +91,22 @@ describe('<PicklistOption />', () => {
         );
         component.find('li').simulate('mouseEnter');
         expect(hoverFn).not.toHaveBeenCalled();
+    });
+    it('should render a checkmark icon when selected', () => {
+        const component = mount(<PicklistOption name="option1" currentValueName="option1" />);
+        expect(component.find(CheckmarkIcon).exists()).toBe(true);
+    });
+    it('should call privateUnregisterChild with the right parameters on unmount', () => {
+        const privateUnregisterChildMockFn = jest.fn();
+        const component = mount(
+            <PicklistOption
+                name="option1"
+                currentValueName="option1"
+                privateUnregisterChild={privateUnregisterChildMockFn}
+            />,
+        );
+        component.unmount();
+        expect(privateUnregisterChildMockFn).toHaveBeenCalledTimes(1);
+        expect(privateUnregisterChildMockFn.mock.calls[0][0]).not.toBeFalsy();
     });
 });
