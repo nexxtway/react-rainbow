@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import scriptLoader from 'react-async-script-loader';
 import MapComponent from './component';
+
+const googleMapApiUrl = 'https://maps.googleapis.com/maps/api/js';
 
 /**
  * The GMap component is used to find a location.
@@ -9,9 +11,9 @@ import MapComponent from './component';
 export default function GMap(props) {
     const { apiKey, ...rest } = props;
 
-    const Component = scriptLoader(`https://maps.googleapis.com/maps/api/js?key=${apiKey}`)(
-        MapComponent,
-    );
+    const Component = useCallback(scriptLoader(`${googleMapApiUrl}?key=${apiKey}`)(MapComponent), [
+        apiKey,
+    ]);
     return <Component {...rest} />;
 }
 
