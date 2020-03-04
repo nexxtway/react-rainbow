@@ -14,9 +14,9 @@ export default function GoogleAddressLookup(props) {
     const { apiKey, ...rest } = props;
 
     const Component = useCallback(
-        scriptLoader(`${googleMapApiUrl}?key=${apiKey}&libraries=places`),
+        scriptLoader(`${googleMapApiUrl}?key=${apiKey}&libraries=places`)(PlacesLookupComponent),
         [apiKey],
-    )(PlacesLookupComponent);
+    );
 
     return <Component {...rest} />;
 }
