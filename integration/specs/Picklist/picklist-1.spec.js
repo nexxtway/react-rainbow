@@ -99,7 +99,7 @@ describe('Picklist base example', () => {
         option.hover();
         expect(option.isActive()).toBe(true);
     });
-    it('should set active the first option when other is active and close the menu and open it again', () => {
+    it.skip('should set active the first option when other is active and close the menu and open it again', () => {
         const picklist = new PagePicklist(PICKLIST);
         picklist.clickInput();
         picklist.waitUntilOpen();
