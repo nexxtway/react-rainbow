@@ -1,4 +1,7 @@
-export default function resolveOptions(conditions) {
+import { replaceAlpha } from '../../styles/helpers/color';
+import defaultTheme from '../../styles/defaultTheme';
+
+export default function resolveOptions(type, conditions) {
     const {
         disableAnimations,
         disableLines,
@@ -7,7 +10,13 @@ export default function resolveOptions(conditions) {
         legendPosition,
         showStacked,
         maintainAspectRatio,
+        theme,
     } = conditions;
+    const palette = theme ? theme.rainbow.palette : defaultTheme.rainbow.palette;
+    const tooltips = {
+        background: replaceAlpha(palette.getContrastText(palette.background.main), 0.8),
+        color: palette.getContrastText(palette.text.main),
+    };
 
     let options = {
         maintainAspectRatio,
@@ -17,9 +26,39 @@ export default function resolveOptions(conditions) {
             fullWidth: true,
             labels: {
                 usePointStyle: true,
+                fontColor: palette.text.label,
             },
         },
+        tooltips: {
+            backgroundColor: tooltips.background,
+            titleFontColor: tooltips.color,
+            bodyFontColor: tooltips.color,
+        },
     };
+
+    if (type === 'bar' || type === 'horizontalBar' || type === 'line') {
+        options = {
+            ...options,
+            scales: {
+                xAxes: [
+                    {
+                        gridLines: {
+                            color: palette.border.divider,
+                            zeroLineColor: palette.border.divider,
+                        },
+                    },
+                ],
+                yAxes: [
+                    {
+                        gridLines: {
+                            color: palette.border.divider,
+                            zeroLineColor: palette.border.divider,
+                        },
+                    },
+                ],
+            },
+        };
+    }
 
     if (disableAnimations) {
         options = {
@@ -56,11 +95,19 @@ export default function resolveOptions(conditions) {
                 xAxes: [
                     {
                         stacked: true,
+                        gridLines: {
+                            color: palette.border.divider,
+                            zeroLineColor: palette.border.divider,
+                        },
                     },
                 ],
                 yAxes: [
                     {
                         stacked: true,
+                        gridLines: {
+                            color: palette.border.divider,
+                            zeroLineColor: palette.border.divider,
+                        },
                     },
                 ],
             },
