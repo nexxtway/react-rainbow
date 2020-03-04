@@ -221,6 +221,7 @@ function EditContactForm({ contactInfo }) {
                 <DatePicker
                     placeholder="mm/dd/yyyy"
                     label="Birthday"
+                    value={contactInfo.birthdate}
                     className="rainbow-m-top_large"
                 />
                 <Input
@@ -274,14 +275,17 @@ const users = [{
     avatar: 'images/user/avatar-2.svg',
     name: 'Jane Doe',
     email: 'jane@gmail.com',
+    birthdate: '1995-12-01', 
 }, {
     avatar: 'images/user/avatar-4.svg',
     name: 'John Doe',
     email: 'john@gmail.com',
+    birthdate: '1985-02-12',
 }, {
     avatar: 'images/user/avatar-5.svg',
     name: 'Ana Doe',
     email: 'ana@gmail.com',
+    birthdate: '1998-05-21',
 }];
 
 const initialState = { isOpen: false, info: null };
