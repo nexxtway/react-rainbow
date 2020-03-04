@@ -1,7 +1,7 @@
 import { replaceAlpha } from '../../styles/helpers/color';
 import defaultTheme from '../../styles/defaultTheme';
 
-export default function resolveOptions(type, conditions) {
+export default function resolveOptions(conditions) {
     const {
         disableAnimations,
         disableLines,
@@ -11,8 +11,13 @@ export default function resolveOptions(type, conditions) {
         showStacked,
         maintainAspectRatio,
         theme,
+        type,
     } = conditions;
-    const palette = theme ? theme.rainbow.palette : defaultTheme.rainbow.palette;
+    const palette = theme ? theme.rainbow.palette : defaultTheme.palette;
+    const legend = {
+        label: palette.text.label,
+        border: palette.border.divider,
+    };
     const tooltips = {
         background: replaceAlpha(palette.getContrastText(palette.background.main), 0.8),
         color: palette.getContrastText(palette.text.main),
@@ -26,7 +31,7 @@ export default function resolveOptions(type, conditions) {
             fullWidth: true,
             labels: {
                 usePointStyle: true,
-                fontColor: palette.text.label,
+                fontColor: legend.label,
             },
         },
         tooltips: {
@@ -42,17 +47,23 @@ export default function resolveOptions(type, conditions) {
             scales: {
                 xAxes: [
                     {
+                        ticks: {
+                            fontColor: legend.label,
+                        },
                         gridLines: {
-                            color: palette.border.divider,
-                            zeroLineColor: palette.border.divider,
+                            color: legend.border,
+                            zeroLineColor: legend.border,
                         },
                     },
                 ],
                 yAxes: [
                     {
+                        ticks: {
+                            fontColor: legend.label,
+                        },
                         gridLines: {
-                            color: palette.border.divider,
-                            zeroLineColor: palette.border.divider,
+                            color: legend.border,
+                            zeroLineColor: legend.border,
                         },
                     },
                 ],
@@ -95,18 +106,24 @@ export default function resolveOptions(type, conditions) {
                 xAxes: [
                     {
                         stacked: true,
+                        ticks: {
+                            fontColor: legend.label,
+                        },
                         gridLines: {
-                            color: palette.border.divider,
-                            zeroLineColor: palette.border.divider,
+                            color: legend.border,
+                            zeroLineColor: legend.border,
                         },
                     },
                 ],
                 yAxes: [
                     {
                         stacked: true,
+                        ticks: {
+                            fontColor: legend.label,
+                        },
                         gridLines: {
-                            color: palette.border.divider,
-                            zeroLineColor: palette.border.divider,
+                            color: legend.border,
+                            zeroLineColor: legend.border,
                         },
                     },
                 ],

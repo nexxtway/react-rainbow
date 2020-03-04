@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { withTheme } from 'styled-components';
 import PropTypes from 'prop-types';
 import ChartJS from 'chart.js';
+import { withTheme } from 'styled-components';
 import resolveOptions from './resolveOptions';
 import resolveDatasets from './resolveDatasets';
 import StyledContainer from './styled/container';
@@ -11,7 +11,7 @@ import StyledContainer from './styled/container';
  * You can learn more about it here:
  * @category DataView
  */
-class Chart extends Component {
+export class Chart extends Component {
     constructor(props) {
         super(props);
         this.chartRef = React.createRef();
@@ -41,7 +41,7 @@ class Chart extends Component {
             this.chartInstance.config.type = type;
         }
 
-        this.chartInstance.options = resolveOptions(type, { ...conditions });
+        this.chartInstance.options = resolveOptions({ type, ...conditions });
         this.chartInstance.update();
     }
 
@@ -55,7 +55,7 @@ class Chart extends Component {
                 labels,
                 datasets: this.datasets,
             },
-            options: resolveOptions(type, { ...conditions }),
+            options: resolveOptions({ type, ...conditions }),
         });
     }
 
