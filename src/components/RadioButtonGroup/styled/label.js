@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
-import { COLOR_WHITE } from '../../../styles/colors';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledLabel = attachThemeAttrs(styled.legend)`
     border: 0;
@@ -16,7 +15,7 @@ const StyledLabel = attachThemeAttrs(styled.legend)`
     ${props =>
         props.variant === 'inverse' &&
         `
-            color: ${COLOR_WHITE}
+            color: ${props.palette.isDark ? '#576574' : 'rgb(178,178,178)'}
         `};
 `;
 
