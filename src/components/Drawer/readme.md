@@ -144,12 +144,6 @@ const ConctactContainer = styled.div`
     width: max-content;
 `;
 
-const StyledDrawer = styled(Drawer)
-`
-    width: 320px;
-    min-width: 320px;
-`;
-
 const FormNameLabel = styled.label.attrs(props => props.theme.rainbow)`
     font-family: Lato;
     font-size: 24px;
@@ -311,7 +305,7 @@ const initialState = { isOpen: false, info: null };
             );
         })}
     </div>
-    <StyledDrawer
+    <Drawer
         id="drawer-3"
         header="Edit Information"
         footer={
@@ -324,6 +318,6 @@ const initialState = { isOpen: false, info: null };
         onRequestClose={() => closeDrawer()}
     >
         <EditContactForm contactInfo={state.info} />
-    </StyledDrawer>
+    </Drawer>
 </div>
 ```

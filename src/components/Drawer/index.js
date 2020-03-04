@@ -52,19 +52,15 @@ export default function Drawer(props) {
     const [drawerState, setDrawerState] = useState(DrawerState.CLOSED);
 
     useEffect(() => {
-        console.log(`Effect [isOpen] -> isOpen: ${isOpen}, drawerState: ${drawerState}`);
         const contentElement = contentRef.current;
         if (isOpen) {
             CounterManager.increment();
             disableBodyScroll(contentElement);
             triggerRef.current = document.activeElement;
             setDrawerState(DrawerState.OPENING);
-        } else if (!isOpen && drawerState === DrawerState.OPENED) {
-            setDrawerState(DrawerState.CLOSING);
         }
 
         return () => {
-            console.log(`CleanUp [isOpen] -> isOpen: ${isOpen}, drawerState: ${drawerState}`);
             if (isOpen) {
                 CounterManager.decrement();
                 if (triggerRef.current) triggerRef.current.focus();
@@ -72,25 +68,19 @@ export default function Drawer(props) {
                     enableBodyScroll(contentElement);
                 }
                 clearAllBodyScrollLocks();
-                // setDrawerState(DrawerState.CLOSING);
+                setDrawerState(DrawerState.CLOSING);
             }
         };
     }, [isOpen]);
 
     useEffect(() => {
-        console.log(`Effect [drawerState] -> isOpen: ${isOpen}, drawerState: ${drawerState}`);
         if (drawerState === DrawerState.OPENED) {
             drawerRef.current.focus();
             onOpened();
         }
-
-        return () => {
-            console.log(`CleanUp [drawerState] -> isOpen: ${isOpen}, drawerState: ${drawerState}`);
-        };
-    }, [drawerState]);
+    }, [drawerState, onOpened]);
 
     const onSlideEnd = () => {
-        console.log(`onAnimationEnd -> drawerState: ${drawerState}`);
         if (drawerState === DrawerState.OPENING) {
             setDrawerState(DrawerState.OPENED);
         } else if (drawerState === DrawerState.CLOSING) {
@@ -119,7 +109,6 @@ export default function Drawer(props) {
     };
 
     const drawerIsOpen = [DrawerState.OPENING, DrawerState.OPENED].includes(drawerState);
-    console.log('render', drawerState, isOpen);
     if (drawerState !== null && drawerState !== DrawerState.CLOSED) {
         return createPortal(
             <StyledBackDrop
