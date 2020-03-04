@@ -84,6 +84,65 @@ class SimpleRating extends React.Component {
 </div>
 ```
 
+##### Rating readOnly
+
+```js
+import React from 'react';
+import { Card, ButtonGroup, ButtonIcon, Rating } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
+
+const cardStyles = {
+    width: 300,
+};
+
+const imageStyles = {
+    borderTopLeftRadius: '0.875rem',
+    borderTopRightRadius: '0.875rem',
+    height: 170,
+    width: '100%',
+    backgroundImage: 'url(images/illustrations/Illustration-rainbow-4.svg)',
+    backgroundSize: 'cover',
+};
+
+const StyledHeader = styled.h3.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.main};
+`;
+
+<div className="rainbow-p-bottom_xx-large">
+    <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
+        <ButtonGroup className="rainbow-m-right_medium">
+            <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faPlus} />} />
+            <ButtonIcon
+                variant="border-filled"
+                disabled
+                icon={<FontAwesomeIcon icon={faEllipsisV} />}
+            />
+        </ButtonGroup>
+    </GlobalHeader>
+    <div className="rainbow-align-content_center">
+        <Card
+            style={cardStyles}
+            footer={
+                <div>
+                    <div className="rainbow-flex rainbow-flex_column rainbow-align_center rainbow-m-bottom_x-small">
+                        <StyledHeader className="rainbow-font-size-heading_medium">
+                            Rainbow Image
+                        </StyledHeader>
+                    </div>
+                    <Rating value="2.45" readOnly label="2.45 of 5" />
+                </div>
+            }
+        >
+            <div style={imageStyles} />
+        </Card>
+    </div>
+</div>
+```
+
 ##### rating with details
 
 ```js

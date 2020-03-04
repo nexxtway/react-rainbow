@@ -2,8 +2,17 @@ import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { replaceAlpha } from '../../../styles/helpers/color';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
+import { COLOR_GRAY_2 } from '../../../styles/colors';
 
-const StyledButtonItemsContainer = attachThemeAttrs(styled.div)`
+const StyledButtonItemsContainer = attachThemeAttrs(styled.div).attrs(props => {
+    const isDark = props.palette.isDark;
+    const inverse = {
+        border: isDark ? COLOR_GRAY_2 : 'rgba(0, 0, 0, 0.4)',
+        background: isDark ? 'rgba(239,241,245,0.4)' : 'rgba(0, 0, 0, 0.4)',
+    };
+
+    return { inverse };
+})`
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -24,8 +33,8 @@ const StyledButtonItemsContainer = attachThemeAttrs(styled.div)`
     ${props =>
         props.variant === 'inverse' &&
         `
-            border-color: rgba(0, 0, 0, 0.4);
-            background-color: rgba(0, 0, 0, 0.4);
+            border: solid 1px ${props.inverse.border};
+            background-color: ${props.inverse.background};
         `};
 `;
 

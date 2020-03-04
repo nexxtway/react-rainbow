@@ -60,6 +60,7 @@ function resolveCustomBackground(background) {
                 active: dark ? lighten(background, 0.08) : darken(background, 0.08),
                 hover: dark ? lighten(background, 0.08) : darken(background, 0.08),
             },
+            isDark: dark,
         };
         return theme;
     }

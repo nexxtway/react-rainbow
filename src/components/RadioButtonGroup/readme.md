@@ -99,11 +99,6 @@ const options = [
     { value: 'on', label: 'On' },
 ];
 
-const buttonsContainerStyles = {
-    backgroundColor: '#061c3f',
-    borderRadius: '0 0 0.875rem 0.875rem',
-};
-
 class RadioButtonGroupInverse extends React.Component {
     constructor(props) {
         super(props);
@@ -130,12 +125,9 @@ class RadioButtonGroupInverse extends React.Component {
     }
 }
 
-<div
-    className="rainbow-p-around_x-large rainbow-align-content_center"
-    style={buttonsContainerStyles}
->
+<InverseContainer className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <RadioButtonGroupInverse />
-</div>
+</InverseContainer>
 ```
 
 ##### RadioButtonGroup disabled
