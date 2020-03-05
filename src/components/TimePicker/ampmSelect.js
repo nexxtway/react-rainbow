@@ -13,9 +13,6 @@ function handleAmPmBlur(event) {
 export default class AmPmSelect extends PureComponent {
     constructor(props) {
         super(props);
-        this.state = {
-            value: props.defaultValue,
-        };
         this.fieldsetRef = React.createRef();
         this.inputAmId = uniqueId('am');
         this.inputPmId = uniqueId('pm');

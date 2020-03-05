@@ -383,10 +383,10 @@ export default class TimeSelect extends Component {
         const { hour, hour24, ampm } = this.state;
 
         if (!hour24 && ampm) {
-            const increment = event === 'increment';
-            const decrement = event === 'decrement';
+            const isIncreasing = event === 'increment';
+            const isDecreasing = event === 'decrement';
 
-            if ((increment && Number(hour) === 12) || (decrement && Number(hour) === 11)) {
+            if ((isIncreasing && Number(hour) === 12) || (isDecreasing && Number(hour) === 11)) {
                 this.setNextAmPmValue();
             }
         }
@@ -396,14 +396,14 @@ export default class TimeSelect extends Component {
         const { hour, minutes } = this.state;
 
         if (hour && this.prevMinutes) {
-            const increment = event === 'increment';
-            const decrement = event === 'decrement';
+            const isIncreasing = event === 'increment';
+            const isDecreasing = event === 'decrement';
 
-            if (increment && Number(minutes) === 0) {
+            if (isIncreasing && Number(minutes) === 0) {
                 this.incrementHour();
             }
 
-            if (decrement && Number(minutes) === 59) {
+            if (isDecreasing && Number(minutes) === 59) {
                 this.decrementHour();
             }
         }
