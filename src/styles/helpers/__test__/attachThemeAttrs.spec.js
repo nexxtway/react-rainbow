@@ -21,7 +21,7 @@ describe('attachThemeAttrs', () => {
     it('should return a merge object with props and default themes values when props.theme.rainbow is an empty', () => {
         mount(<StyledComponent test />);
         expect(interpolatedProps.test).toBe(true);
-        expect(interpolatedProps.palette).toBe(defaultTheme.palette);
+        expect(interpolatedProps.palette).toEqual(defaultTheme.palette);
     });
     it('should return a merge object with props and props.theme.rainbow when props.theme.rainbow was passed', () => {
         const theme = {
@@ -37,6 +37,6 @@ describe('attachThemeAttrs', () => {
         };
         mount(<StyledComponent test theme={theme} />);
         expect(interpolatedProps.test).toBe(true);
-        expect(interpolatedProps.palette).toBe(theme.rainbow.palette);
+        expect(interpolatedProps.palette).toEqual(theme.rainbow.palette);
     });
 });
