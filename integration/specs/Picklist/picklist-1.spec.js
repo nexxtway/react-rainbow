@@ -112,15 +112,4 @@ describe('Picklist base example', () => {
         option = picklist.getOption(0);
         expect(option.isActive()).toBe(true);
     });
-    it('should hide the option selected', () => {
-        const picklist = new PagePicklist(PICKLIST);
-        picklist.clickInput();
-        picklist.waitUntilOpen();
-        const option = picklist.getOption(0);
-        expect(option.isVisible()).toBe(true);
-        browser.keys(ENTER_KEY);
-        picklist.clickInput();
-        picklist.waitUntilOpen();
-        expect(option.isVisible()).toBe(false);
-    });
 });
