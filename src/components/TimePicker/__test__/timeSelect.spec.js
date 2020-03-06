@@ -722,12 +722,7 @@ describe('<TimeSelect/>', () => {
         container.simulate('keyDown', { keyCode: UP_KEY });
         container.simulate('keyDown', { keyCode: UP_KEY });
         container.simulate('keyDown', { keyCode: UP_KEY });
-        expect(
-            component
-                .find('input')
-                .at(0)
-                .prop('value'),
-        ).toBe('09');
+        expect(hourInput.prop('value')).toBe('09');
     });
     it('should decrease hour to "12" when hour is "01", minutes are "03", minutes input is focused and down key is pressed 4 times', () => {
         const component = mount(<TimeSelect />);
