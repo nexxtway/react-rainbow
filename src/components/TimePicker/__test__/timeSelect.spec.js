@@ -736,11 +736,6 @@ describe('<TimeSelect/>', () => {
         container.simulate('keyDown', { keyCode: DOWN_KEY });
         container.simulate('keyDown', { keyCode: DOWN_KEY });
         container.simulate('keyDown', { keyCode: DOWN_KEY });
-        expect(
-            component
-                .find('input')
-                .at(0)
-                .prop('value'),
-        ).toBe('12');
+        expect(hourInput.prop('value')).toBe('12');
     });
 });
