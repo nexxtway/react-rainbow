@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import ChartJS from 'chart.js';
-import Chart from '../index';
+import { Chart } from '../index';
 import Dataset from '../../Dataset';
 
 jest.mock('chart.js', () =>
