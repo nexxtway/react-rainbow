@@ -31,6 +31,8 @@
         "prepare:canary": "node scripts/prepare-canary.js"
     },
     "dependencies": {
+        "@stripe/react-stripe-js": "^1.0.3",
+        "@stripe/stripe-js": "^1.0.2",
         "autosize": "^4.0.2",
         "chart.js": "^2.7.3",
         "clipboard-copy": "^2.0.0",
