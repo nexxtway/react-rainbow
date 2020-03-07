@@ -193,23 +193,24 @@ export default function CustomizationPage(props) {
                         <div className="rainbow-flex rainbow-flex_column rainbow-m-bottom_large">
                             <div className="react-rainbow-customization_section-heading-container">
                                 <h3 className="react-rainbow-getting-started_section-heading rainbow-m-right_medium">
-                                    If you are using React Rainbow on your app, some times you can
-                                    to need customize our design to satisfy UI diversity from
-                                    business or brand requirements. You need use the color of a
-                                    specific bussiness brand or a specific color palette You can
-                                    need add support for a dark o custom theme on your app.
+                                    If you are using React Rainbow on your app, sometimes you may
+                                    need to customize our design to satisfy UI diversity from
+                                    business or brand requirements. Either you will need to use the
+                                    color of a specific business brand or a specific color palette
+                                    or you will need additional support for a dark or custom theme
+                                    on your app.
                                 </h3>
                                 <CarbonAds className="react-rainbow-customization_carbon-ad" />
                             </div>
                         </div>
                         <h2 className="react-rainbow-customization_section-heading-2">
-                            How you can customize React Rainbow Components?
+                            How can you customize React Rainbow Components?
                         </h2>
                         <h3 className="react-rainbow-customization_section-text">
                             Customization is allowed by using our{' '}
                             <StyledBadge>{'<Application />'}</StyledBadge> component as a wrapper of
-                            your entire application, the property theme it will accept an object
-                            where you can specify your palette of colors.
+                            your entire application, the property theme will accept an object where
+                            you can specify your palette of colors.
                         </h3>
 
                         <br />
@@ -297,8 +298,8 @@ export default function CustomizationPage(props) {
                         <div className="react-rainbow-customization_section-heading-container">
                             <div className="rainbow-m-right_medium">
                                 <h3 className="react-rainbow-getting-started_section-heading rainbow-m-right_medium rainbow-m-bottom_medium">
-                                    Here are the frequently question and answer about how implement
-                                    the theme on React Rainbow and antd that you should look up
+                                    Here are the frequent questions and answers about how to
+                                    implement the theme on React Rainbow and that you should look up
                                     before you ask in the community or create a new issue.
                                 </h3>
                                 <h2 className="react-rainbow-getting-started_section-heading-2">
