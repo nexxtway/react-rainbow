@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_TRANSPARENT_2 } from '../../../styles/colors';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+import { replaceAlpha } from '../../../styles/helpers/color';
 
-const StyledBackDrop = styled.div`
+const StyledBackDrop = attachThemeAttrs(styled.div)`
     z-index: -1;
     top: 0;
     right: 0;
@@ -10,7 +11,7 @@ const StyledBackDrop = styled.div`
     width: 100%;
     height: 100%;
     opacity: 0;
-    background: ${COLOR_GRAY_TRANSPARENT_2};
+    background: ${props => replaceAlpha(props.palette.background.highlight, 0.64)};
     display: flex;
     justify-content: center;
     align-items: center;
