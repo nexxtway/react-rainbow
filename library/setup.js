@@ -64,6 +64,7 @@ global.Team = Team;
 global.SocialIconsSet = SocialIconsSet;
 global.LIBRARY_GOOGLE_MAPS_APIKEY = process.env.REACT_APP_GOOGLE_MAPS_APIKEY;
 global.LIBRARY_RECAPTCHA_APIKEY = process.env.REACT_APP_RECAPTCHA_APIKEY;
+global.LIBRARY_STRIPE_APIKEY = process.env.REACT_APP_STRIPE_APIKEY;
 global.StartupIcon = StartupIcon;
 global.PhotographerIcon = PhotographerIcon;
 global.DesignIcon = DesignIcon;

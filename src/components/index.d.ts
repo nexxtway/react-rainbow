@@ -37,6 +37,7 @@ export { default as MenuItem } from './MenuItem';
 export { default as Modal } from './Modal';
 export { default as Notification } from './Notification';
 export { default as Pagination } from './Pagination';
+export { default as PaymentStripe } from './PaymentStripe';
 export { default as Picklist } from './Picklist';
 export { default as PicklistOption } from './PicklistOption';
 export { default as PresenceMap } from './PresenceMap';
