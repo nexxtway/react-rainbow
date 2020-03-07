@@ -1,8 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
-import { ButtonMenu, Badge } from '../../../src/components/index';
-import { COLOR_BRAND } from '../../../src/styles/colors';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { ButtonMenu } from '../../../src/components/index';
+import { COLOR_BRAND } from '../../../src/styles/colors';
 import attachThemeAttrs from '../../../src/styles/helpers/attachThemeAttrs';
 
 export const StyledWrapper = attachThemeAttrs(styled.div)`
@@ -21,6 +21,7 @@ export const StyledTopBar = attachThemeAttrs(styled.header)`
     border-radius: 0.875rem 0.875rem 0 0;
     border-bottom: 1px solid ${props => props.palette.border.divider};
     padding: 8px 60px 8px 12px;
+    min-height: 50px;
 
     @media (max-width: 600px) {
         padding-right: 50px;

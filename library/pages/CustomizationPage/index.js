@@ -1,6 +1,9 @@
 /* eslint-disable react/no-unescaped-entities, import/no-extraneous-dependencies */
-import React, { useState, useContext } from 'react';
-import Application from '../../../src/components/Application';
+import React, { useState, useContext, useRef } from 'react';
+import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faList } from '@fortawesome/free-solid-svg-icons';
+import styled, { ThemeContext } from 'styled-components';
 import Tabset from '../../../src/components/Tabset';
 import Tab from '../../../src/components/Tab';
 import Table from '../../../src/components/Table';
@@ -19,10 +22,6 @@ import {
     COLOR_WARNING,
     COLOR_DARK_1,
 } from '../../../src/styles/colors';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faList } from '@fortawesome/free-solid-svg-icons';
-import styled from 'styled-components';
-import { ThemeContext } from 'styled-components';
 import './styles.css';
 
 const defaultTheme = `const theme = {
@@ -160,19 +159,15 @@ const StyledTable = styled(Table)`
     font-size: 12px;
 `;
 
-const darkTheme = {
-    rainbow: {
-        palette: {
-            brand: '#80deea',
-            mainBackground: '#303030',
-        },
-    },
-};
-
 export default function CustomizationPage(props) {
     const { examples, name, exampleMode, codeRevision } = props;
     const [activeTab, setActiveTab] = useState('overview');
+    const example5Ref = useRef();
+    const example7Ref = useRef();
+    const example9Ref = useRef();
     const theme = useContext(ThemeContext);
+
+    const scrollTo = elem => window.scrollTo(0, elem.current.offsetTop - 70);
 
     return (
         <div className="react-rainbow-customization_top-container">
@@ -313,59 +308,90 @@ export default function CustomizationPage(props) {
                             <CarbonAds className="react-rainbow-customization_carbon-ad" />
                         </div>
                         <div>
-                            <a className="react-rainbow-customization_link">
+                            <a
+                                className="react-rainbow-customization_link"
+                                onClick={() => scrollTo(example5Ref)}
+                                role="link"
+                            >
                                 How customize the main color for all the components on my app?
                             </a>
-                            <a className="react-rainbow-customization_link">
+                            <a
+                                className="react-rainbow-customization_link"
+                                onClick={() => scrollTo(example7Ref)}
+                                role="link"
+                            >
                                 How to do a variation with a specific color for only one component
                                 on my app?
                             </a>
-                            <a className="react-rainbow-customization_link">
+                            <a
+                                className="react-rainbow-customization_link"
+                                onClick={() => scrollTo(example9Ref)}
+                                role="link"
+                            >
                                 How use the colors defined on the theme on my own elements of my
                                 app?
                             </a>
                         </div>
-                        <h3 className="react-rainbow-customization_section-heading">
-                            How customize the main color for all the components on my app?
-                        </h3>
-                        <Playground
-                            code={examples[5].content}
-                            evalInContext={examples[5].evalInContext}
-                            key={`${codeRevision}/5`}
-                            name={name}
-                            index={5}
-                            settings={examples[5].settings}
-                            exampleMode={exampleMode}
-                        />
-
-                        <h3 className="react-rainbow-customization_section-heading">
-                            How to do a variation with a specific color for only one component on my
-                            app?
-                        </h3>
-                        <Playground
-                            code={examples[7].content}
-                            evalInContext={examples[7].evalInContext}
-                            key={`${codeRevision}/7`}
-                            name={name}
-                            index={7}
-                            settings={examples[7].settings}
-                            exampleMode={exampleMode}
-                        />
-                        <h3 className="react-rainbow-customization_section-heading">
-                            How customize the main color for all the components on my app?
-                        </h3>
-                        <Playground
-                            code={examples[9].content}
-                            evalInContext={examples[9].evalInContext}
-                            key={`${codeRevision}/9`}
-                            name={name}
-                            index={9}
-                            settings={examples[9].settings}
-                            exampleMode={exampleMode}
-                        />
+                        <section ref={example5Ref}>
+                            <h3 className="react-rainbow-customization_section-heading">
+                                How customize the main color for all the components on my app?
+                            </h3>
+                            <Playground
+                                code={examples[5].content}
+                                evalInContext={examples[5].evalInContext}
+                                key={`${codeRevision}/5`}
+                                name={name}
+                                index={5}
+                                settings={examples[5].settings}
+                                exampleMode="collapse"
+                            />
+                        </section>
+                        <section ref={example7Ref}>
+                            <h3 className="react-rainbow-customization_section-heading">
+                                How to do a variation with a specific color for only one component
+                                on my app?
+                            </h3>
+                            <Playground
+                                code={examples[7].content}
+                                evalInContext={examples[7].evalInContext}
+                                key={`${codeRevision}/7`}
+                                name={name}
+                                index={7}
+                                settings={examples[7].settings}
+                                exampleMode="collapse"
+                            />
+                        </section>
+                        <section ref={example9Ref}>
+                            <h3 className="react-rainbow-customization_section-heading">
+                                How customize the main color for all the components on my app?
+                            </h3>
+                            <Playground
+                                code={examples[9].content}
+                                evalInContext={examples[9].evalInContext}
+                                key={`${codeRevision}/9`}
+                                name={name}
+                                index={9}
+                                settings={examples[9].settings}
+                                exampleMode="collapse"
+                            />
+                        </section>
                     </div>
                 </RenderIf>
             </section>
         </div>
     );
 }
+
+CustomizationPage.propTypes = {
+    examples: PropTypes.array.isRequired,
+    name: PropTypes.string.isRequired,
+    exampleMode: PropTypes.string.isRequired,
+    codeRevision: PropTypes.number.isRequired,
+};
+
+CustomizationPage.defaultProps = {
+    examples: null,
+    name: undefined,
+    exampleMode: undefined,
+    codeRevision: undefined,
+};

@@ -85,13 +85,13 @@ export default function Wrapper(props) {
                     <StyledLeftElement>
                         <InfoFilled />
                         <StyledTitle>
-                            The theme support is <StyledBadge label="BETA" /> and{' '}
-                            <StyledBadge label="WIP" />
+                            The theme support is <StyledHighlight>BETA</StyledHighlight>and{' '}
+                            <StyledHighlight>WIP</StyledHighlight>
                         </StyledTitle>
                     </StyledLeftElement>
                 </StyledTopBar>
                 <StyledContent>
-                    <Provider>{children}</Provider>
+                    <Provider store={store}>{children}</Provider>
                 </StyledContent>
             </StyledWrapper>
         );
