@@ -7,7 +7,13 @@ const baseOptions = {
         fullWidth: true,
         labels: {
             usePointStyle: true,
+            fontColor: 'rgba(87, 101, 116, 1)',
         },
+    },
+    tooltips: {
+        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+        titleFontColor: 'rgba(255, 255, 255, 1)',
+        bodyFontColor: 'rgba(255, 255, 255, 1)',
     },
 };
 
@@ -106,11 +112,25 @@ describe('resolveOptions function', () => {
                 xAxes: [
                     {
                         stacked: true,
+                        gridLines: {
+                            color: 'rgba(227, 229, 237, 1)',
+                            zeroLineColor: 'rgba(227, 229, 237, 1)',
+                        },
+                        ticks: {
+                            fontColor: 'rgba(87, 101, 116, 1)',
+                        },
                     },
                 ],
                 yAxes: [
                     {
                         stacked: true,
+                        gridLines: {
+                            color: 'rgba(227, 229, 237, 1)',
+                            zeroLineColor: 'rgba(227, 229, 237, 1)',
+                        },
+                        ticks: {
+                            fontColor: 'rgba(87, 101, 116, 1)',
+                        },
                     },
                 ],
             },
@@ -147,11 +167,25 @@ describe('resolveOptions function', () => {
                 xAxes: [
                     {
                         stacked: true,
+                        gridLines: {
+                            color: 'rgba(227, 229, 237, 1)',
+                            zeroLineColor: 'rgba(227, 229, 237, 1)',
+                        },
+                        ticks: {
+                            fontColor: 'rgba(87, 101, 116, 1)',
+                        },
                     },
                 ],
                 yAxes: [
                     {
                         stacked: true,
+                        gridLines: {
+                            color: 'rgba(227, 229, 237, 1)',
+                            zeroLineColor: 'rgba(227, 229, 237, 1)',
+                        },
+                        ticks: {
+                            fontColor: 'rgba(87, 101, 116, 1)',
+                        },
                     },
                 ],
             },
