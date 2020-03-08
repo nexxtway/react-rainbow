@@ -1,17 +1,21 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import CounterManager from '../counterManager';
-import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from '../scrollController';
+import CounterManager from '../../../libs/counterManager';
+import {
+    disableBodyScroll,
+    enableBodyScroll,
+    clearAllBodyScrollLocks,
+} from '../../../libs/scrollController';
 import Modal from '../';
 import StyledContent from '../styled/content';
 import StyledCloseButton from '../styled/closeButton';
 
-jest.mock('../counterManager', () => ({
+jest.mock('../../../libs/counterManager', () => ({
     increment: jest.fn(),
     decrement: jest.fn(),
     hasModalsOpen: jest.fn(() => false),
 }));
-jest.mock('../scrollController', () => ({
+jest.mock('../../../libs/scrollController', () => ({
     disableBodyScroll: jest.fn(),
     enableBodyScroll: jest.fn(),
     clearAllBodyScrollLocks: jest.fn(),
