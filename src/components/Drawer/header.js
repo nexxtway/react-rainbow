@@ -26,5 +26,5 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
-    title: undefined,
+    content: undefined,
 };

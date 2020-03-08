@@ -8,10 +8,8 @@ const StyledTitle = attachThemeAttrs(styled.div)`
     padding: 1.375rem 0 1.325rem;
     display: block;
     box-sizing: border-box;
-    // border-bottom: 0.5px solid ${props => props.palette.border.divider};
     font-family: 'Lato Light';
     font-weight: 300;
-    font-size: 24px;
     font-size: ${FONT_SIZE_HEADING_LARGE};
     font-stretch: normal;
     font-style: normal;

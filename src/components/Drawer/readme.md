@@ -5,25 +5,13 @@ import React from 'react';
 import { Button, Drawer } from 'react-rainbow-components';
 
 const initialState = {
-    isOpenTop: false,
     isOpenRight: false,
-    isOpenBottom: false,
     isOpenLeft: false,
 };
 
 <div
     className="rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto rainbow-flex_wrap"
 >
-    <div className="rainbow-align-content_center rainbow-p-medium">
-        <Button
-            disabled
-            className="rainbow-m-around_medium"
-            label="Open Top"
-            onClick={() => setState({
-                isOpenTop: true,
-            })}
-        />
-    </div>
     <div className="rainbow-flex rainbow-flex_row">
         <div className="rainbow-align-content_center rainbow-p-medium rainbow-m_auto">
             <Button
@@ -44,19 +32,10 @@ const initialState = {
             />
         </div>
     </div>
-    <div className="rainbow-align-content_center rainbow-p-medium">
-        <Button
-            disabled
-            className="rainbow-m-around_medium"
-            label="Open Bottom"
-            onClick={() => setState({
-                isOpenBottom: true,
-            })}
-        />
-    </div>
     <Drawer
         id="drawer-right-1"
         header="This is a drawer"
+        slideFrom="right"
         isOpen={state.isOpenRight}
         onRequestClose={() => setState({ isOpenRight : false })}
     />
@@ -64,7 +43,6 @@ const initialState = {
         id="drawer-left-1"
         header="This is a drawer"
         isOpen={state.isOpenLeft}
-        slideFrom="left"
         onRequestClose={() => setState({ isOpenLeft : false })}
     />
 </div>
@@ -230,6 +208,7 @@ function EditContactForm({ contactInfo }) {
                     className="rainbow-m-top_large"
                 />
                 <GoogleAddressLookup
+                    apiKey={LIBRARY_GOOGLE_MAPS_APIKEY}
                     placeholder="Enter location"
                     label="Address"
                     className="rainbow-m-top_large"
@@ -253,7 +232,7 @@ function EditContactForm({ contactInfo }) {
 
 function DrawerFooter({ onCancel, onSave }) {
     return (
-        <div className="rainbow-p-around_small rainbow-flex  rainbow-align-content_center">
+        <div className="rainbow-flex rainbow-align-content_center">
             <div className="rainbow-p-around_small">
                 <StyledFooterButton
                     label="Cancel"
@@ -269,6 +248,24 @@ function DrawerFooter({ onCancel, onSave }) {
             </div>
         </div>
     )
+}
+
+function UsersList({ values }) {
+    return values.map((user, index) => {
+        const key = `contact-${index}`;
+        return (
+            <Contact
+                key={key}
+                name={user.name}
+                email={user.email}
+                avatar={user.avatar}
+                onShowDetails={() => setState({
+                    isOpen: true,
+                    info: user,
+                })}
+            />
+        );
+    });
 }
 
 const users = [{
@@ -293,25 +290,12 @@ const initialState = { isOpen: false, info: null };
 <div className="rainbow-m-around_xx-large rainbow-flex_column rainbow-align-content_center">
     <StyledExampleHeader className="rainbow-p-bottom_small">Contributors</StyledExampleHeader>
     <div className="rainbow-flex rainbow-flex_wrap">
-        {users.map((user, index) => {
-            const key = `contact-${index}`;
-            return (
-                <Contact
-                    key={key}
-                    name={user.name}
-                    email={user.email}
-                    avatar={user.avatar}
-                    onShowDetails={() => setState({
-                        isOpen: true,
-                        info: user,
-                    })}
-                />
-            );
-        })}
+        <UsersList values={users} />
     </div>
     <Drawer
         id="drawer-3"
         header="Edit Information"
+        slideFrom="right"
         footer={
             <DrawerFooter
                 onCancel={() => closeDrawer()}

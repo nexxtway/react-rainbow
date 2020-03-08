@@ -1,13 +1,26 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-const getSize = (size, slideFrom) => {
-    const percents = {
-        small: 30,
-        medium: 60,
-        large: 100,
-    };
+const percents = {
+    small: 30,
+    medium: 60,
+    large: 100,
+};
 
+const positions = {
+    left: {
+        left: 0,
+        top: 0,
+        bottom: 0,
+    },
+    right: {
+        right: 0,
+        top: 0,
+        bottom: 0,
+    },
+};
+
+const getSize = (size, slideFrom) => {
     if (['left', 'right'].includes(slideFrom)) {
         return {
             width: percents[size],
@@ -19,19 +32,6 @@ const getSize = (size, slideFrom) => {
 };
 
 const getPosition = slideFrom => {
-    const positions = {
-        left: {
-            left: 0,
-            top: 0,
-            bottom: 0,
-        },
-        right: {
-            right: 0,
-            top: 0,
-            bottom: 0,
-        },
-    };
-
     return {
         ...positions[slideFrom],
     };

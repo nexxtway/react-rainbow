@@ -6,18 +6,20 @@ import {
     disableBodyScroll,
     enableBodyScroll,
     clearAllBodyScrollLocks,
-} from '../Modal/scrollController';
-import CounterManager from '../Modal/counterManager';
-import manageTab from '../Modal/manageTab';
+} from '../../libs/scrollController';
+import CounterManager from '../../libs/counterManager';
+import manageTab from '../../libs/manageTab';
 import RenderIf from '../RenderIf';
 import StyledBackDrop from './styled/backDrop';
 import StyledContainer from './styled/container';
 import StyledContent from './styled/content';
 import StyledCloseButton from './styled/closeButton';
+import StyledDivider from './styled/divider';
+import StyledFooter from './styled/footer';
 import Header from './header';
-import Footer from './footer';
 import CloseIcon from './closeIcon';
 import { useUniqueIdentifier } from '../../libs/hooks';
+import getSlideFrom from './helpers/getSlideFrom';
 
 const DrawerState = {
     OPENING: 0,
@@ -74,11 +76,11 @@ export default function Drawer(props) {
     }, [isOpen]);
 
     useEffect(() => {
-        if (drawerState === DrawerState.OPENED) {
+        if (isOpen && drawerState === DrawerState.OPENED) {
             drawerRef.current.focus();
             onOpened();
         }
-    }, [drawerState, onOpened]);
+    }, [drawerState, isOpen, onOpened]);
 
     const onSlideEnd = () => {
         if (drawerState === DrawerState.OPENING) {
@@ -122,17 +124,17 @@ export default function Drawer(props) {
                     tabIndex={-1}
                     aria-labelledby={headerId}
                     aria-modal
-                    aria-hidden
+                    aria-hidden={!drawerIsOpen}
                     aria-describedby={contentId}
                     className={className}
                     isOpen={drawerIsOpen}
                     style={style}
                     size={size}
-                    slideFrom={slideFrom}
+                    slideFrom={getSlideFrom(slideFrom, 'left')}
                     ref={drawerRef}
                     onAnimationEnd={onSlideEnd}
                 >
-                    <Header content={header} />
+                    <Header id={headerId} content={header} />
                     <RenderIf isTrue={!hideCloseButton}>
                         <StyledCloseButton
                             icon={<CloseIcon />}
@@ -140,14 +142,19 @@ export default function Drawer(props) {
                             onClick={closeDrawer}
                         />
                     </RenderIf>
-                    <StyledContent ref={contentRef}>{children}</StyledContent>
-                    <Footer content={footer} />
+                    <StyledContent id={contentId} ref={contentRef}>
+                        {children}
+                    </StyledContent>
+                    <RenderIf isTrue={!!footer}>
+                        <StyledDivider />
+                        <StyledFooter>{footer}</StyledFooter>
+                    </RenderIf>
                 </StyledContainer>
             </StyledBackDrop>,
             document.body,
         );
     }
-    return null;
+    return <></>;
 }
 
 Drawer.propTypes = {
@@ -197,5 +204,5 @@ Drawer.defaultProps = {
     onRequestClose: () => {},
     onOpened: () => {},
     hideCloseButton: false,
-    slideFrom: 'right',
+    slideFrom: 'left',
 };
