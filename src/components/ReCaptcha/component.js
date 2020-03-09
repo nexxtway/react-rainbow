@@ -49,15 +49,15 @@ ReCaptchaComponent.propTypes = {
     tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     error: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
     onChange: PropTypes.func.isRequired,
+    onCreateRecaptcha: PropTypes.func,
     className: PropTypes.string,
     style: PropTypes.object,
-    onCreateRecaptcha: PropTypes.func,
 };
 
 ReCaptchaComponent.defaultProps = {
     error: undefined,
     onChange: () => {},
+    onCreateRecaptcha: () => {},
     className: undefined,
     style: undefined,
-    onCreateRecaptcha: () => {},
 };
