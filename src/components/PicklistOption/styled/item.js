@@ -30,7 +30,6 @@ const StyledItem = attachThemeAttrs(styled.div)`
         `
             background-color: ${props.palette.action.active};
         `};
-    ${props => props.isSelected && 'display: none;'}
 `;
 
 export default StyledItem;

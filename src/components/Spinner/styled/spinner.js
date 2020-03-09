@@ -219,7 +219,7 @@ const StyledSpinner = attachThemeAttrs(styled.div)`
         props.variant === 'inverse' &&
         `
             > div {
-                color: ${props.palette.background.main} !important;
+                color: ${props.palette.getContrastText(props.palette.text.main)} !important;
             }
         `};
     ${props =>

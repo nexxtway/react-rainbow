@@ -189,12 +189,20 @@ class PicklistExample extends React.Component {
         super(props);
         this.state = {
             isBuildingsAdded: false,
+            value: initialState.value,
         };
+        this.handleChange = this.handleChange.bind(this);
     }
 
     addNewBuildings() {
         const { isBuildingsAdded } = this.state;
-        this.setState({ isBuildingsAdded: !isBuildingsAdded  });
+        this.setState({ isBuildingsAdded: !isBuildingsAdded });
+    }
+
+    handleChange(value) {
+        this.setState({ 
+            value: value 
+        });
     }
 
     renderNewBuildings() {
@@ -213,8 +221,8 @@ class PicklistExample extends React.Component {
                         <Picklist
                             id="picklist-9"
                             style={containerStyles}
-                            onChange={value => setState({ value })}
-                            value={state.value}
+                            onChange={this.handleChange}
+                            value={this.state.value}
                             label="Select Building"
                             hideLabel
                         >
