@@ -171,7 +171,7 @@ class ReCaptchaExample extends React.Component {
 ##### dark recaptcha with redux form
 
 ```js
-import React, {useState} from 'react';
+import React, {useRef} from 'react';
 import { ReCaptcha, Input, Textarea, Button } from 'react-rainbow-components';
 import { Field, reduxForm } from 'redux-form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -183,11 +183,12 @@ const titleStyles = { textAlign: 'center' };
 
 function SimpleForm(props) {
     const { handleSubmit, onSubmit, reset } = props;
-    const [reCaptchaRef, setReCaptchaRef] = useState( React.createRef() );
+
+    const reCaptchaRef = useRef();
 
     const submit = values => {
         onSubmit(values);
-        reCaptchaRef.getRenderedComponent().reset()
+        reCaptchaRef.current.getRenderedComponent().reset()
         reset();
     };
 
@@ -229,7 +230,7 @@ function SimpleForm(props) {
             <div className="rainbow-flex rainbow-align-content_space-between">
                 <Field
                     component={ReCaptcha}
-                    ref={(ref) => setReCaptchaRef(ref) }
+                    ref={reCaptchaRef}
                     withRef
                     name="recaptcha"
                     theme="dark"
