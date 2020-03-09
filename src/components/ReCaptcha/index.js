@@ -13,11 +13,10 @@ class ReCaptcha extends Component {
         super(props);
         const { lang } = props;
         this.ReCaptchaComponent = scriptLoader(getUrl(lang))(ReCaptchaWrapper);
-        this.optWidgetID = '';
     }
 
     reset() {
-        if (window.grecaptcha) {
+        if (window.grecaptcha && this.optWidgetID) {
             window.grecaptcha.reset(this.optWidgetID);
         }
     }
