@@ -16,8 +16,8 @@ export default class ReCaptchaComponent extends Component {
     }
 
     renderReCaptcha() {
-        const { siteKey, theme, size, tabIndex, onChange } = this.props;
-        window.grecaptcha.render(this.recaptchaID, {
+        const { siteKey, theme, size, tabIndex, onChange, onCreateRecaptcha } = this.props;
+        const optWidgetID = window.grecaptcha.render(this.recaptchaID, {
             sitekey: siteKey,
             theme,
             size,
@@ -26,6 +26,7 @@ export default class ReCaptchaComponent extends Component {
             'expired-callback': onChange,
             'error-callback': onChange,
         });
+        onCreateRecaptcha(optWidgetID);
     }
 
     render() {
@@ -50,6 +51,7 @@ ReCaptchaComponent.propTypes = {
     onChange: PropTypes.func.isRequired,
     className: PropTypes.string,
     style: PropTypes.object,
+    onCreateRecaptcha: PropTypes.func,
 };
 
 ReCaptchaComponent.defaultProps = {
@@ -57,4 +59,5 @@ ReCaptchaComponent.defaultProps = {
     onChange: () => {},
     className: undefined,
     style: undefined,
+    onCreateRecaptcha: () => {},
 };

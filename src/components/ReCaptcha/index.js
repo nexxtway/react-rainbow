@@ -13,11 +13,25 @@ class ReCaptcha extends Component {
         super(props);
         const { lang } = props;
         this.ReCaptchaComponent = scriptLoader(getUrl(lang))(ReCaptchaWrapper);
+        this.optWidgetID = '';
+    }
+
+    reset() {
+        if (window.grecaptcha) {
+            window.grecaptcha.reset(this.optWidgetID);
+        }
     }
 
     render() {
         const ReCaptchaComponent = this.ReCaptchaComponent;
-        return <ReCaptchaComponent {...this.props} />;
+        return (
+            <ReCaptchaComponent
+                {...this.props}
+                onCreateRecaptcha={optWidgetID => {
+                    this.optWidgetID = optWidgetID;
+                }}
+            />
+        );
     }
 }
 
