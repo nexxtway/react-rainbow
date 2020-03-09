@@ -124,14 +124,10 @@ import { ButtonIcon } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-regular-svg-icons';
 
-const buttonsIconContainerStyles = {
-    borderRadius: '0.25rem',
-};
-
-<div className="rainbow-p-vertical_large rainbow-p-left_x-large rainbow-flex rainbow-align_center rainbow-background-color_dark-1 rainbow-border-radius_oval">
+<InverseContainer className="rainbow-p-vertical_large rainbow-p-left_x-large rainbow-flex rainbow-align_center">
     <div className="rainbow-p-right_large">
         <ButtonIcon variant="border-inverse" icon={<FontAwesomeIcon icon={faStar} />} />
     </div>
     <ButtonIcon variant="inverse" icon={<FontAwesomeIcon icon={faStar} />} />
-</div>
+</InverseContainer>
 ```

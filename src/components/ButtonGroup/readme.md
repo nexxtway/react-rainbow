@@ -140,7 +140,7 @@ import { ButtonGroup, Button, ButtonIcon } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faPencilAlt, faPaste, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
-<div className="rainbow-border-radius_oval rainbow-background-color_dark-1 rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
+<InverseContainer className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <ButtonGroup className="rainbow-m-around_medium">
         <Button label="Refresh" variant="border-inverse" />
         <Button label="Edit" variant="border-inverse" />
@@ -167,7 +167,7 @@ import { faPlus, faPencilAlt, faPaste, faAngleDown } from '@fortawesome/free-sol
         <ButtonIcon variant="border-inverse" icon={<FontAwesomeIcon icon={faPaste} />} />
         <ButtonIcon variant="border-inverse" icon={<FontAwesomeIcon icon={faAngleDown} />} />
     </ButtonGroup>
-</div>
+</InverseContainer>
 ```
 
 ##### button group with content layout
@@ -240,6 +240,12 @@ const SocialContentCount = styled.h2.attrs(props => {
     color: ${props => props.text.main};  
 `;
 
+const StyledButtonMenuIcon = styled(FontAwesomeIcon).attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.brand.main};
+`;
+
 const styles = {
     socialCard: { marginLeft: 0, marginRight: 0 },
     facebookIcon: { color: "#3C5997"} ,
@@ -281,7 +287,7 @@ const socials = [
             <ButtonMenu
                 menuAlignment="right"
                 menuSize="x-small"
-                icon={<FontAwesomeIcon icon={faAngleDown} className="rainbow-color_brand" />}
+                icon={<StyledButtonMenuIcon icon={faAngleDown} border={false} />}
             >
                 <MenuItem label="Settings" />
                 <MenuItem label="Utilities" />

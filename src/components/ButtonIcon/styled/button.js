@@ -1,9 +1,29 @@
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
-import { COLOR_WHITE, COLOR_GRAY_3 } from '../../../styles/colors';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
+import { COLOR_WHITE, COLOR_GRAY_3, COLOR_DARK_1 } from '../../../styles/colors';
+import { lighten } from '../../../styles/helpers/color';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-const StyledButton = attachThemeAttrs(styled.button)`
+const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
+    if (props.palette.isDark) {
+        return {
+            inverse: {
+                text: COLOR_DARK_1,
+                active: lighten(COLOR_DARK_1, 0.6),
+                border: COLOR_DARK_1,
+                disabled: lighten(COLOR_DARK_1, 0.6),
+            },
+        };
+    }
+    return {
+        inverse: {
+            text: COLOR_WHITE,
+            active: COLOR_GRAY_3,
+            border: COLOR_WHITE,
+            disabled: COLOR_GRAY_3,
+        },
+    };
+})`
     font: inherit;
     display: inline-flex;
     justify-content: center;
@@ -171,12 +191,12 @@ const StyledButton = attachThemeAttrs(styled.button)`
         `
             background-color: transparent;
             border: 1px solid transparent;
-            color: ${COLOR_WHITE};
+            color: ${props.inverse.text};
         
             &:hover,
             &:focus,
             &:active {
-                color: ${COLOR_GRAY_3};
+                color: ${props.inverse.active};
             }
         
             &:focus {
@@ -186,21 +206,21 @@ const StyledButton = attachThemeAttrs(styled.button)`
         
             &[disabled] {
                 background-color: transparent;
-                color: ${props.palette.text.disabled};
+                color: ${props.inverse.disabled};
             }
         `};
     ${props =>
         props.variant === 'border-inverse' &&
         `
             background-color: transparent;
-            border: 1px solid ${COLOR_WHITE};
-            color: ${COLOR_WHITE};
+            border: 1px solid ${props.inverse.border};
+            color: ${props.inverse.text};
         
             &:hover,
             &:focus,
             &:active {
-                border-color: ${COLOR_GRAY_3};
-                color: ${COLOR_GRAY_3};
+                border-color: ${props.inverse.active};
+                color: ${props.inverse.active};
             }
         
             &:focus {
@@ -210,8 +230,8 @@ const StyledButton = attachThemeAttrs(styled.button)`
         
             &[disabled] {
                 background-color: transparent;
-                border-color: ${props.palette.border.disabled};
-                color: ${props.palette.text.disabled};
+                border-color: ${props.inverse.disabled};
+                color: ${props.inverse.disabled};
             }
         `};
     ${props =>
