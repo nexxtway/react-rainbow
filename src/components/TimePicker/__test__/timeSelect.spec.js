@@ -674,4 +674,78 @@ describe('<TimeSelect/>', () => {
         hourInput.simulate('blur');
         expect(component.state().hour).toBe('00');
     });
+    it('should set ampm to "PM" when ampm is "AM", hour input is "09", hour input is focused and up key is pressed 3 times', () => {
+        const component = mount(<TimeSelect />);
+        const container = component.find('div[role="presentation"]');
+        const hourInput = component.find('input').at(0);
+        container.simulate('keyDown', { keyCode: RIGHT_KEY });
+        container.simulate('keyDown', { keyCode: RIGHT_KEY });
+        container.simulate('keyDown', { keyCode: DOWN_KEY });
+        container.simulate('keyDown', { keyCode: DOWN_KEY });
+        hourInput.simulate('change', { target: { value: '09' } });
+        hourInput.simulate('focus');
+        container.simulate('keyDown', { keyCode: UP_KEY });
+        container.simulate('keyDown', { keyCode: UP_KEY });
+        container.simulate('keyDown', { keyCode: UP_KEY });
+        expect(
+            component
+                .find('input')
+                .at(2)
+                .prop('value'),
+        ).toBe('PM');
+    });
+    it('should set ampm to "AM" when ampm is "PM", hour input is "12", hour input is focused and down key is pressed 1 time', () => {
+        const component = mount(<TimeSelect />);
+        const container = component.find('div[role="presentation"]');
+        const hourInput = component.find('input').at(0);
+        container.simulate('keyDown', { keyCode: RIGHT_KEY });
+        container.simulate('keyDown', { keyCode: RIGHT_KEY });
+        container.simulate('keyDown', { keyCode: DOWN_KEY });
+        hourInput.simulate('change', { target: { value: '12' } });
+        hourInput.simulate('focus');
+        container.simulate('keyDown', { keyCode: DOWN_KEY });
+        expect(
+            component
+                .find('input')
+                .at(2)
+                .prop('value'),
+        ).toBe('AM');
+    });
+    it('should increase hour to "09" when hour is "08", minutes are "57", minutes input is focused and up key is pressed 3 times', () => {
+        const component = mount(<TimeSelect />);
+        const container = component.find('div[role="presentation"]');
+        const hourInput = component.find('input').at(0);
+        const minutesInput = component.find('input').at(1);
+        hourInput.simulate('change', { target: { value: '08' } });
+        minutesInput.simulate('change', { target: { value: '57' } });
+        minutesInput.simulate('focus');
+        container.simulate('keyDown', { keyCode: UP_KEY });
+        container.simulate('keyDown', { keyCode: UP_KEY });
+        container.simulate('keyDown', { keyCode: UP_KEY });
+        expect(
+            component
+                .find('input')
+                .at(0)
+                .prop('value'),
+        ).toBe('09');
+    });
+    it('should decrease hour to "12" when hour is "01", minutes are "03", minutes input is focused and down key is pressed 4 times', () => {
+        const component = mount(<TimeSelect />);
+        const container = component.find('div[role="presentation"]');
+        const hourInput = component.find('input').at(0);
+        const minutesInput = component.find('input').at(1);
+        hourInput.simulate('change', { target: { value: '01' } });
+        minutesInput.simulate('change', { target: { value: '03' } });
+        minutesInput.simulate('focus');
+        container.simulate('keyDown', { keyCode: DOWN_KEY });
+        container.simulate('keyDown', { keyCode: DOWN_KEY });
+        container.simulate('keyDown', { keyCode: DOWN_KEY });
+        container.simulate('keyDown', { keyCode: DOWN_KEY });
+        expect(
+            component
+                .find('input')
+                .at(0)
+                .prop('value'),
+        ).toBe('12');
+    });
 });
