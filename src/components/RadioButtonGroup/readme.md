@@ -390,12 +390,9 @@ const Contact = (props) => {
             <EmailLabel className="rainbow-m-top_x-small">
                 { email }
             </EmailLabel>
-            <div className="rainbow-flex rainbow-justify_space-around rainbow-m-top_small">
+            <div className="rainbow-flex rainbow-justify_center rainbow-m-top_small">
                 <a href={linkedin}>
                     <GitHubIcon />
-                </a>
-                <a href={github}>
-                    <LinkedinIcon style={linkedinIconStyle} />
                 </a>
             </div>
         </ConctactContainer>

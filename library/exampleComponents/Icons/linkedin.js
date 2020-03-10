@@ -13,7 +13,7 @@ const Linkedin = props => {
             version="1.1"
         >
             <title>linkedin</title>
-            <g id="pages" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+            <g id="pages" stroke="none" strokeWidth="1" fillRule="evenodd">
                 <g
                     id="Components-Radio-Button-Group"
                     transform="translate(-352.000000, -1590.000000)"
