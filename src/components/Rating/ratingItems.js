@@ -35,7 +35,7 @@ RatingItems.propTypes = {
 };
 
 RatingItems.defaultProps = {
-    value: undefined,
+    value: 0,
     onChange: () => {},
     name: undefined,
     readOnly: false,

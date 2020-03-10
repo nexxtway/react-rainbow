@@ -80,7 +80,7 @@ Rating.propTypes = {
 };
 
 Rating.defaultProps = {
-    value: undefined,
+    value: 0,
     onChange: () => {},
     name: undefined,
     label: null,
