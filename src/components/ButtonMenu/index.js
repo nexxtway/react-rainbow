@@ -63,17 +63,19 @@ ButtonMenu.propTypes = {
     /** The content of the ButtonMenu. Used to render the menuItem elements
      * when the ButtonMenu is open. */
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
-    /** The variant changes the look of the button. Accepted variants include base,
-     * brand, success, border, border-filled, bare-inverse, and inverse.
-     * This value defaults to border-filled. */
+    /** The variant changes the look of the button.
+     * Accepted variants include base, brand, success, destructive, neutral, outline-brand, border, border-filled, inverse and border-inverse. */
     buttonVariant: PropTypes.oneOf([
         'base',
         'brand',
         'success',
+        'destructive',
+        'neutral',
+        'outline-brand',
         'border',
         'border-filled',
-        'border-inverse',
         'inverse',
+        'border-inverse',
     ]),
     /** The size of the button. Options include xx-small, x-small, medium, or large.
      * This value defaults to medium. */
