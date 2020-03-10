@@ -1,4 +1,4 @@
-import isContentHidden from '../isContentHidden';
+import isContentHidden from '../../../libs/manageTab/isContentHidden';
 
 window.getComputedStyle = element => ({
     getPropertyValue: property => element.style[property],

@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import StyledTitle from './styled/title';
 import StyledDivider from './styled/divider';
 
-export default function Header({ content }) {
+export default function Header({ content, id }) {
     if (typeof content === 'string') {
         return (
             <>
-                <StyledTitle>{content}</StyledTitle>
+                <StyledTitle id={id}>{content}</StyledTitle>
                 <StyledDivider />
             </>
         );
