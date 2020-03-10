@@ -25,63 +25,63 @@ import {
 import './styles.css';
 
 const defaultTheme = `const theme = {
-        rainbow: {
-            palette: { 
-                brand: {
-                    main: "#01b6f5",
-                    dark: "rgb(0, 163, 220)",
-                    light: "rgb(204, 240, 253)",
-                },
-                success: {
-                    main: "#1de9b6",
-                    dark: "rgb(26, 209, 163)",
-                    light: "rgb(209, 250, 240)",
-                },
-                error: {
-                    main: "#fe4849",
-                    dark: "rgb(228, 64, 65)",
-                    light: "rgb(254, 218, 218)",
-                },
-                warning: {
-                    main: "#fc0",
-                },
-                background: {
-                    main: "#fff",
-                    highlight: "#e3e5ed",
-                    secondary: "#f9fafc",
-                    disabled: "#EFF1F5",
-                },
-                text: {
-                    main: "#061c3f",
-                    title: "#576574",
-                    header: "#a4a7b5",
-                    label: "#576574",
-                    disabled: "#e3e5ed",
-                },
-                border: {
-                    main: "#a4a7b5",
-                    divider: "#e3e5ed",
-                    disabled: "#e3e5ed",
-                },
-                action: {
-                    active: "#EFF1F5",
-                    hover: "#EFF1F5",
-                },
+    rainbow: {
+        palette: { 
+            brand: {
+                main: String,
+                dark: String,
+                light: String,
             },
-            shadows: {
-                brand: "0 0 2px #01b6f5",
-                success: "0 0 2px #1de9b6",
-                error: "0 0 2px #fe4849",
-                shadow_1: "0 0 2px 0 #a4a7b5",
-                shadow_2: "0 2px 4px 0 #e3e5ed",
-                shadow_3: "0 0 1px 0 #a4a7b5",
-                shadow_4: "0 1px 2px 0 #e3e5ed",
-                shadow_5: "0 0 3px #EFF1F5",
-                shadow_6: "0 2px 12px 0 #e3e5ed",
-                shadow_7: "0 0 0 4px #e3e5ed",
+            success: {
+                main: String,
+                dark: String,
+                light: String,
+            },
+            error: {
+                main: String,
+                dark: String,
+                light: String,
+            },
+            warning: {
+                main: String,
+            },
+            background: {
+                main: String,
+                highlight: String,
+                secondary: String,
+                disabled: String,
+            },
+            text: {
+                main: String,
+                title: String,
+                header: String,
+                label: String,
+                disabled: String,
+            },
+            border: {
+                main: String,
+                divider: String,
+                disabled: String,
+            },
+            action: {
+                active: String,
+                hover: String,
             },
         },
-    };
+        shadows: {
+            brand: String,
+            success: String,
+            error: String,
+            shadow_1: String,
+            shadow_2: String,
+            shadow_3: String,
+            shadow_4: String,
+            shadow_5: String,
+            shadow_6: String,
+            shadow_7: String,
+        },
+    },
+};
 `;
 
 const data = [
