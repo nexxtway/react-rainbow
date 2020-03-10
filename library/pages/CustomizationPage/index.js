@@ -268,9 +268,15 @@ export default function CustomizationPage(props) {
 
                         <br />
 
-                        <h2 className="react-rainbow-customization_section-heading-2">
-                            Theme generate API
-                        </h2>
+                        <div className="rainbow-flex rainbow-align_end">
+                            <h2 className="react-rainbow-customization_section-heading-2">
+                                Theme generate API
+                            </h2>
+                            <Badge
+                                className="rainbow-m-left_small rainbow-m-bottom_medium"
+                                label="BETA"
+                            />
+                        </div>
                         <h3 className="react-rainbow-customization_section-text">
                             You might wonder how all the components colors are being set based on
                             five colors
