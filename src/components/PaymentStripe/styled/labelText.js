@@ -12,7 +12,6 @@ const Label = attachThemeAttrs(styled.label)`
     width: 100%;
     display: block;
     text-align: center;
-    margin-top: 10px;
 `;
 
 export default Label;
