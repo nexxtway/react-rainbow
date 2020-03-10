@@ -11,7 +11,8 @@ export default function RatingItems(props) {
             const key = `star-${index}`;
             const normalizedValue = readOnly ? Math.ceil(value) : Math.round(value);
             const isFilled = index < normalizedValue;
-            const isHalf = readOnly && value < index + 1 && !Number.isInteger(Number(value));
+            const isHalf =
+                readOnly && Number(value) < index + 1 && !Number.isInteger(Number(value));
             return (
                 <Star
                     key={key}
@@ -27,7 +28,7 @@ export default function RatingItems(props) {
 }
 
 RatingItems.propTypes = {
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     onChange: PropTypes.func,
     name: PropTypes.string,
     readOnly: PropTypes.bool,
