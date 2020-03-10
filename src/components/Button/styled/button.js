@@ -164,53 +164,6 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
                 };
             }
         `};
-    ${props =>
-        props.variant === 'inverse' &&
-        `
-            background-color: transparent;
-            border: 1px solid transparent;
-            color: ${props.inverse.text};
-
-            &:hover,
-            &:focus,
-            &:active {
-                color: ${props.inverse.active};
-            }
-        
-            &:focus {
-                outline: none;
-                box-shadow: ${props.shadows.shadow_5};
-            }
-        
-            &[disabled] {
-                background-color: transparent;
-                color: ${props.inverse.disabled};
-            }
-        `};
-    ${props =>
-        props.variant === 'border-inverse' &&
-        `   background-color: transparent;
-            border: 1px solid ${props.inverse.text};
-            color: ${props.inverse.border};
-
-            &:hover,
-            &:focus,
-            &:active {
-                border-color: ${props.inverse.active};
-                color: ${props.inverse.active};
-            }
-        
-            &:focus {
-                outline: none;
-                box-shadow: ${props.shadows.shadow_5};
-            }
-        
-            &[disabled] {
-                background-color: transparent;
-                border-color: ${props.isLoading ? props.inverse.text : props.inverse.disabled};
-                color: ${props.inverse.disabled};
-            }
-        `};
     ${props => {
         const errorMainContrastText = props.palette.getContrastText(props.palette.error.main);
         const errorDarkContrastText = props.palette.getContrastText(props.palette.error.dark);
@@ -296,6 +249,94 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
         `
         );
     }};
+    ${props =>
+        props.variant === 'border' &&
+        `
+            background-color: transparent;
+            border: 1px solid ${props.palette.border.divider};
+            color: ${props.palette.text.label};
+            transition: border 0.15s linear;
+        
+            &:hover,
+            &:focus,
+            &:active {
+                background-color: transparent;
+                border: 1px solid ${props.palette.brand.dark};
+                color: ${props.palette.brand.dark};
+            }
+        
+            &[disabled] {
+                background-color: transparent;
+                border: 1px solid ${props.palette.border.disabled};
+                color: ${props.palette.text.disabled};
+            }
+        `};
+    ${props =>
+        props.variant === 'border-filled' &&
+        `
+            background-color: ${props.palette.background.main};
+            border: 1px solid ${props.palette.border.divider};
+            color: ${props.palette.text.label};
+            transition: border 0.15s linear;
+        
+            &:hover,
+            &:focus,
+            &:active {
+                background-color: ${props.palette.action.active};
+            }
+        
+            &[disabled] {
+                background-color: transparent;
+            }
+        `};
+    ${props =>
+        props.variant === 'inverse' &&
+        `
+            background-color: transparent;
+            border: 1px solid transparent;
+            color: ${props.inverse.text};
+
+            &:hover,
+            &:focus,
+            &:active {
+                color: ${props.inverse.active};
+            }
+        
+            &:focus {
+                outline: none;
+                box-shadow: ${props.shadows.shadow_5};
+            }
+        
+            &[disabled] {
+                background-color: transparent;
+                color: ${props.inverse.disabled};
+            }
+        `};
+    ${props =>
+        props.variant === 'border-inverse' &&
+        `   background-color: transparent;
+            border: 1px solid ${props.inverse.text};
+            color: ${props.inverse.border};
+
+            &:hover,
+            &:focus,
+            &:active {
+                border-color: ${props.inverse.active};
+                color: ${props.inverse.active};
+            }
+        
+            &:focus {
+                outline: none;
+                box-shadow: ${props.shadows.shadow_5};
+            }
+        
+            &[disabled] {
+                background-color: transparent;
+                border-color: ${props.isLoading ? props.inverse.text : props.inverse.disabled};
+                color: ${props.inverse.disabled};
+            }
+        `};   
+    
     ${props => props.shaded && `box-shadow: ${props.shadows.shadow_1};`};
 `;
 
