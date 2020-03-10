@@ -331,34 +331,82 @@ export default class TimeSelect extends Component {
         const { hour } = this.state;
         const { hour24 } = this.props;
         const hourValue = hour || this.prevHour;
-        this.setState({
-            hour: normalizeHour(getNextHour(hourValue, hour24), hour24),
-        });
+        this.setState(
+            {
+                hour: normalizeHour(getNextHour(hourValue, hour24), hour24),
+            },
+            () => this.calculateNextAmPm('increment'),
+        );
     }
 
     decrementHour() {
         const { hour } = this.state;
         const { hour24 } = this.props;
         const hourValue = hour || this.prevHour;
-        this.setState({
-            hour: normalizeHour(getPrevHour(hourValue, hour24), hour24),
-        });
+        this.setState(
+            {
+                hour: normalizeHour(getPrevHour(hourValue, hour24), hour24),
+            },
+            () => this.calculateNextAmPm('decrement'),
+        );
     }
 
     incrementMinutes() {
         const { minutes } = this.state;
         const minutesValue = minutes || this.prevMinutes;
-        this.setState({
-            minutes: normalizeMinutes(getNextMinute(minutesValue)),
-        });
+        this.setState(
+            {
+                minutes: normalizeMinutes(getNextMinute(minutesValue)),
+            },
+            () => {
+                this.prevMinutes = minutesValue;
+                this.calculateNextHour('increment');
+            },
+        );
     }
 
     decrementMinutes() {
         const { minutes } = this.state;
         const minutesValue = minutes || this.prevMinutes;
-        this.setState({
-            minutes: normalizeMinutes(getPrevMinute(minutesValue)),
-        });
+        this.setState(
+            {
+                minutes: normalizeMinutes(getPrevMinute(minutesValue)),
+            },
+            () => {
+                this.prevMinutes = minutesValue;
+                this.calculateNextHour('decrement');
+            },
+        );
+    }
+
+    calculateNextAmPm(event) {
+        const { hour, hour24, ampm } = this.state;
+
+        if (!hour24 && ampm) {
+            const isIncreasing = event === 'increment';
+            const isDecreasing = event === 'decrement';
+
+            if ((isIncreasing && Number(hour) === 12) || (isDecreasing && Number(hour) === 11)) {
+                this.setNextAmPmValue();
+            }
+        }
+    }
+
+    calculateNextHour(event) {
+        const { hour, minutes } = this.state;
+
+        if (hour && this.prevMinutes) {
+            const isIncreasing = event === 'increment';
+            const isDecreasing = event === 'decrement';
+
+            if (isIncreasing && Number(minutes) === 0) {
+                this.incrementHour();
+            }
+
+            if (isDecreasing && Number(minutes) === 59) {
+                this.decrementHour();
+            }
+        }
     }
 
     handleChangeTime(event) {
