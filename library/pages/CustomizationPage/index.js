@@ -227,8 +227,15 @@ export default function CustomizationPage(props) {
                         />
 
                         <br />
-
-                        <h2 className="react-rainbow-customization_section-heading-2">Theme API</h2>
+                        <div className="rainbow-flex rainbow-align_end">
+                            <h2 className="react-rainbow-customization_section-heading-2">
+                                Theme API
+                            </h2>
+                            <Badge
+                                className="rainbow-m-left_small rainbow-m-bottom_medium"
+                                label="BETA"
+                            />
+                        </div>
                         <h3 className="react-rainbow-customization_section-heading">Palette</h3>
                         <h3 className="react-rainbow-customization_section-text">
                             The palette enables you to modify the color of the components.

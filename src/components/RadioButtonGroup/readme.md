@@ -261,7 +261,7 @@ class ErrorRadioButtonGroup extends React.Component {
 </div>
 ```
 
-#### RadioButtonGroup brand with label
+##### RadioButtonGroup brand with label
 ```js
 import React, { useState, useEffect } from 'react';
 import { RadioButtonGroup, Avatar } from 'react-rainbow-components';
@@ -372,15 +372,11 @@ const ConctactContainer = styled.div`
     width: max-content;
 `;
 
-<<<<<<< HEAD
 const linkedinIconStyle = {
     width: "20px",
     height: "20px",
     color: "#0E76A8",
 };
-=======
-const linkedinIconStyle = {color: '#0E76A8'};
->>>>>>> 6ce373d340621fba600f33896ca1800d599409a5
 
 const Contact = (props) => {
     const {avatar, name, email, linkedin, github} = props;
@@ -437,7 +433,7 @@ const Contacts = ({data}) => {
     const handleOnChange = ( event ) => {
         setStatusToShow(event.target.value);
     }
-    
+
     return (
         <div className="rainbow-flex rainbow-flex_column rainbow-align_center">
             <RadioButtonGroup
