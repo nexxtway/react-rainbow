@@ -377,7 +377,8 @@ export default function CustomizationPage(props) {
                         </section>
                         <section ref={example9Ref}>
                             <h3 className="react-rainbow-customization_section-heading">
-                                How customize the main color for all the components on my app?
+                                How use the colors defined on the theme on my own elements of my
+                                app?
                             </h3>
                             <Playground
                                 code={examples[9].content}
