@@ -2,9 +2,7 @@
 
 ```js
 import React, { useState } from 'react';
-import { PaymentStripe, RenderIf } from 'react-rainbow-components';
-import { loadStripe}  from '@stripe/stripe-js';
-import { Elements } from '@stripe/react-stripe-js';
+import { PaymentStripe } from 'react-rainbow-components';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -26,10 +24,6 @@ const ErrorText = styled.div`
     color: ${props => props.theme.rainbow.palette.error.main};
 `;
 
-const stripePromise = loadStripe(LIBRARY_STRIPE_APIKEY);
-const elementOptions = {
-    locale: 'en'
-};
 
 const Payment = () => {
     const [ error, setError ] = useState();
@@ -46,21 +40,20 @@ const Payment = () => {
     return (
         <Container>
             <Title>Complete your payment</Title>
-            <Elements stripe={stripePromise} options={elementOptions}>
-                <PaymentStripe
-                    apiKeyGMap={LIBRARY_GOOGLE_MAPS_APIKEY}
-                    onProcessed={onProcessed}
-                    getPaymentIntent={getPaymentIntent}
-                    onError={({message}) => setError(message)}
-                    onChange={event => console.log(event)}
-                    inline
-                />
-            </Elements>
+            <PaymentStripe
+                apiKeyStripe={LIBRARY_STRIPE_APIKEY}
+                apiKeyGMap={LIBRARY_GOOGLE_MAPS_APIKEY}
+                onProcessed={onProcessed}
+                getPaymentIntent={getPaymentIntent}
+                onError={({ message }) => setError(message)}
+                onChange={event => console.log(event)}
+                inline
+            />
             <ErrorText>{error}</ErrorText>
         </Container>
+        
     );
 };
-
 <Payment/>
 
 ```
@@ -69,9 +62,7 @@ const Payment = () => {
 
 ```js
 import React, { useState } from 'react';
-import { PaymentStripe, RenderIf } from 'react-rainbow-components';
-import { loadStripe}  from '@stripe/stripe-js';
-import { Elements } from '@stripe/react-stripe-js';
+import { Application, PaymentStripe } from 'react-rainbow-components';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -93,10 +84,6 @@ const ErrorText = styled.div`
     color: ${props => props.theme.rainbow.palette.error.main};
 `;
 
-const stripePromise = loadStripe(LIBRARY_STRIPE_APIKEY);
-const elementOptions = {
-    locale: 'en'
-};
 
 const Payment = () => {
     const [ error, setError ] = useState();
@@ -113,26 +100,27 @@ const Payment = () => {
     return (
         <Container>
             <Title>Complete your payment</Title>
-            <Elements stripe={stripePromise} options={elementOptions}>
-                <PaymentStripe
-                    apiKeyGMap={LIBRARY_GOOGLE_MAPS_APIKEY}
-                    onProcessed={onProcessed}
-                    getPaymentIntent={getPaymentIntent}
-                    onError={({message}) => setError(message)}
-                    onChange={event => console.log(event)}
-                    buttonLabel="Pay  $85"
-                    hasName
-                    hasEmail
-                    hasPhone
-                    hasAddress
-                    hasRememderMe
-                />
-            </Elements>
+            <PaymentStripe
+                apiKeyStripe={LIBRARY_STRIPE_APIKEY}
+                apiKeyGMap={LIBRARY_GOOGLE_MAPS_APIKEY}
+                onProcessed={onProcessed}
+                getPaymentIntent={getPaymentIntent}
+                onError={({ message }) => setError(message)}
+                onChange={event => console.log(event)}
+                buttonLabel="Pay  $85"
+                hasName
+                hasEmail
+                hasPhone
+                hasAddress
+                hasRememderMe
+            />
             <ErrorText>{error}</ErrorText>
         </Container>
+        
     );
 };
-
-<Payment/>
+<Application locale="es">
+    <Payment/>
+</Application>
 
 ```
