@@ -30,7 +30,8 @@ const DrawerState = {
 
 /**
  * Drawers are surfaces containing supplementary content on your app.
- */
+ * @category Layout
+ * */
 export default function Drawer(props) {
     const {
         id,
@@ -163,7 +164,7 @@ Drawer.propTypes = {
     header: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The size of the drawer. Valid values are small, medium, and large.
      * This value defaults to small. */
-    size: PropTypes.oneOf(['small', 'medium', 'full']),
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
     /** The footer can include text or another component
      * and is displayed at the bottom of the component. */
     footer: PropTypes.node,
