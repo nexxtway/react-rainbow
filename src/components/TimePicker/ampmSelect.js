@@ -96,8 +96,7 @@ export default class AmPmSelect extends PureComponent {
                 tabIndex={tabIndex}
                 onFocus={this.handleFocus}
                 placeholder="--"
-                value={value}
-                onChange={() => {}}
+                defaultValue={value}
                 ref={this.fieldsetRef}
             />
         );

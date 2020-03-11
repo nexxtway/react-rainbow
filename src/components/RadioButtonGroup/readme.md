@@ -261,7 +261,8 @@ class ErrorRadioButtonGroup extends React.Component {
 </div>
 ```
 
-#### RadioButtonGroup brand with label
+
+##### RadioButtonGroup brand with label
 ```js
 import React, { useState, useEffect } from 'react';
 import { RadioButtonGroup, Avatar } from 'react-rainbow-components';
@@ -389,12 +390,9 @@ const Contact = (props) => {
             <EmailLabel className="rainbow-m-top_x-small">
                 { email }
             </EmailLabel>
-            <div className="rainbow-flex rainbow-justify_space-around rainbow-m-top_small">
+            <div className="rainbow-flex rainbow-justify_center rainbow-m-top_small">
                 <a href={linkedin}>
                     <GitHubIcon />
-                </a>
-                <a href={github}>
-                    <LinkedinIcon style={linkedinIconStyle} />
                 </a>
             </div>
         </ConctactContainer>
