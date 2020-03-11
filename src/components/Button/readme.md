@@ -1,4 +1,4 @@
-##### simple buttons
+##### base buttons
 
 ```js
 import React from 'react';
@@ -6,9 +6,20 @@ import { Button } from 'react-rainbow-components';
 
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
         <Button variant="base" label="Button Base" className="rainbow-m-around_medium" />
-        <Button label="Button Neutral" variant="neutral" className="rainbow-m-around_medium" />
         <Button label="Button Outline Brand" variant="outline-brand" className="rainbow-m-around_medium" />
         <Button label="Button Border" variant="border" className="rainbow-m-around_medium" />
+</div>
+```
+
+##### simple buttons
+
+```js
+import React from 'react';
+import { Button } from 'react-rainbow-components';
+
+<div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
+    <Button label="Button Neutral" variant="neutral" className="rainbow-m-around_medium" />
+    <Button label="Button Border Filled" variant="border-filled" className="rainbow-m-around_medium" />
 </div>
 ```
 
@@ -32,7 +43,6 @@ import { Button } from 'react-rainbow-components';
         className="rainbow-m-around_medium"
     />
     <Button label="Button Destructive" variant="destructive" className="rainbow-m-around_medium" />
-    <Button label="Button Border Filled" variant="border-filled" className="rainbow-m-around_medium" />
 </div>
 ```
 
