@@ -59,6 +59,38 @@ import {
 </div>
 ```
 
+##### button icon outline-brand
+
+```js
+import React from 'react';
+import { ButtonIcon } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-regular-svg-icons';
+import {
+    faTrashAlt,
+    faPencilAlt,
+    faLocationArrow,
+    faArrowDown,
+} from '@fortawesome/free-solid-svg-icons';
+
+<div className="rainbow-p-vertical_large rainbow-p-left_x-large rainbow-flex rainbow-align_center">
+    <div className="rainbow-p-right_large">
+        <ButtonIcon variant="outline-brand" size="large" icon={<FontAwesomeIcon icon={faStar} />} />
+    </div>
+    <div className="rainbow-p-right_large">
+        <ButtonIcon variant="outline-brand" size="medium" icon={<FontAwesomeIcon icon={faLocationArrow} />}
+        />
+    </div>
+    <div className="rainbow-p-right_large">
+        <ButtonIcon variant="outline-brand" size="small" icon={<FontAwesomeIcon icon={faPencilAlt} />} />
+    </div>
+    <div className="rainbow-p-right_large">
+        <ButtonIcon variant="outline-brand" size="x-small" icon={<FontAwesomeIcon icon={faTrashAlt} />} />
+    </div>
+    <ButtonIcon variant="outline-brand" size="xx-small" icon={<FontAwesomeIcon icon={faArrowDown} />} />
+</div>
+```
+
 ##### button icon filled
 
 ```js
@@ -79,10 +111,7 @@ import { faStar } from '@fortawesome/free-regular-svg-icons';
     </div>
     <div className="rainbow-p-right_large">
         <ButtonIcon variant="destructive" icon={<FontAwesomeIcon icon={faStar} />} />
-    </div> 
-    <div className="rainbow-p-right_large">
-        <ButtonIcon variant="outline-brand" icon={<FontAwesomeIcon icon={faStar} />} />
-    </div>       
+    </div>     
     <ButtonIcon variant="neutral" icon={<FontAwesomeIcon icon={faStar} />} />
 </div>
 ```
