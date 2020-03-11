@@ -158,6 +158,7 @@ const StyledTable = styled(Table)`
     font-family: Consolas, 'Liberation Mono', Menlo, monospace;
     font-size: 12px;
 `;
+const scrollTo = elem => window.scrollTo(0, elem.current.offsetTop - 70);
 
 export default function CustomizationPage(props) {
     const { examples, name, exampleMode, codeRevision } = props;
@@ -167,14 +168,12 @@ export default function CustomizationPage(props) {
     const example9Ref = useRef();
     const theme = useContext(ThemeContext);
 
-    const scrollTo = elem => window.scrollTo(0, elem.current.offsetTop - 70);
-
     return (
         <div className="react-rainbow-customization_top-container">
             <Tabset
                 className="react-rainbow-customization_top-container-tabset"
                 activeTabName={activeTab}
-                onSelect={(e, name) => setActiveTab(name)}
+                onSelect={(e, tapName) => setActiveTab(tapName)}
             >
                 <Tab
                     name="overview"
@@ -325,14 +324,12 @@ export default function CustomizationPage(props) {
                             <a
                                 className="react-rainbow-customization_link"
                                 onClick={() => scrollTo(example5Ref)}
-                                role="link"
                             >
                                 How customize the main color for all the components on my app?
                             </a>
                             <a
                                 className="react-rainbow-customization_link"
                                 onClick={() => scrollTo(example7Ref)}
-                                role="link"
                             >
                                 How to do a variation with a specific color for only one component
                                 on my app?
@@ -340,7 +337,6 @@ export default function CustomizationPage(props) {
                             <a
                                 className="react-rainbow-customization_link"
                                 onClick={() => scrollTo(example9Ref)}
-                                role="link"
                             >
                                 How use the colors defined on the theme on my own elements of my
                                 app?
@@ -377,7 +373,8 @@ export default function CustomizationPage(props) {
                         </section>
                         <section ref={example9Ref}>
                             <h3 className="react-rainbow-customization_section-heading">
-                                How customize the main color for all the components on my app?
+                                How use the colors defined on the theme on my own elements of my
+                                app?
                             </h3>
                             <Playground
                                 code={examples[9].content}
