@@ -90,7 +90,7 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
     }
 
     ${props =>
-        props.variant === 'neutral' &&
+        (props.variant === 'neutral' || (props.variant === 'border-filled' && props.isLoading)) &&
         `
             background-color: ${props.palette.background.main};
             border: 1px solid ${props.palette.border.divider};
@@ -273,6 +273,7 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
         `};
     ${props =>
         props.variant === 'border-filled' &&
+        !props.isLoading &&
         `
             background-color: ${props.palette.background.main};
             border: 1px solid ${props.palette.border.divider};
