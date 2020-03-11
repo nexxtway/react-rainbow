@@ -1,5 +1,5 @@
 .react-rainbow-code-editor-header {
-    background: #04132c !important;
+    background: #101723 !important;
     border-radius: 10px 10px 0 0;
     height: 34px;
     display: flex;
@@ -30,7 +30,7 @@
 }
 
 .CodeMirror-gutters {
-    background-color: #061c3f !important;
+    background-color: #141c2a !important;
     border: none !important;
 }
 
