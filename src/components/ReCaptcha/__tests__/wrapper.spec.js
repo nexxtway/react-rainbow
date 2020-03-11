@@ -27,6 +27,7 @@ describe('<ReCaptchaWrapper />', () => {
         const component = mount(
             <ReCaptchaWrapper
                 onChange={() => {}}
+                onCreateRecaptcha={() => {}}
                 value="site-key"
                 theme="dark"
                 size="normal"
@@ -41,6 +42,7 @@ describe('<ReCaptchaWrapper />', () => {
         expect(loader.exists()).toBe(true);
         expect(loader.props()).toEqual({
             onChange: expect.any(Function),
+            onCreateRecaptcha: expect.any(Function),
             value: 'site-key',
             theme: 'dark',
             size: 'normal',
