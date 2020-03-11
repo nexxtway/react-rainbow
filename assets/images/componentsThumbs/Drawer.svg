@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="147px" height="89px" viewBox="0 0 147 89" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>Drawer</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-1.7%" y="-2.9%" width="103.4%" height="105.7%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.692381308   0 0 0 0 0.70649789   0 0 0 0 0.762964221  0 0 0 0.425508086 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Drawer" filter="url(#filter-1)" transform="translate(1.000000, 1.000000)" fill-rule="nonzero">
+            <path d="M4,0 L141,0 C143.209139,0 145,1.790861 145,4 L145,83 C145,85.209139 143.209139,87 141,87 L4,87 C1.790861,87 0,85.209139 0,83 L0,4 C0,1.790861 1.790861,0 4,0 Z" id="Rectangle" fill="#E3E5ED"></path>
+            <path d="M140.75,0.25 C142.959139,0.25 144.75,2.0305687 144.75,4.22701149 L144.75,82.7729885 C144.75,84.9694313 142.959139,86.75 140.75,86.75 L105.75,86.75 L105.75,0.25 L140.75,0.25 Z" id="Path" fill="#FFFFFF"></path>
+            <path d="M140,5 C139.447715,5 139,4.55228475 139,4 C139,3.44771525 139.447715,3 140,3 L140.75,3 C141.302285,3 141.75,3.44771525 141.75,4 C141.75,4.55228475 141.302285,5 140.75,5 L140,5 Z" id="Line-9" fill="#A4A7B5"></path>
+            <path d="M110,6 C109.447715,6 109,5.55228475 109,5 C109,4.44771525 109.447715,4 110,4 L126.75,4 C127.302285,4 127.75,4.44771525 127.75,5 C127.75,5.55228475 127.302285,6 126.75,6 L110,6 Z" id="Line-9-Copy-10" fill="#868A99"></path>
+        </g>
+    </g>
+</svg>
