@@ -29,6 +29,7 @@ class ReCaptchaExample extends React.Component {
         this.handleUserNameChange = this.handleUserNameChange.bind(this);
         this.handleReCaptchaSuccess = this.handleReCaptchaSuccess.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.reCaptchaRef = React.createRef();
     }
 
     handleUserNameChange(event) {
@@ -96,6 +97,7 @@ class ReCaptchaExample extends React.Component {
             this.setState({ ...error });
         } else {
             alert(JSON.stringify(this.state));
+            this.reCaptchaRef.current.reset();
         }
     }
 
@@ -151,6 +153,7 @@ class ReCaptchaExample extends React.Component {
                     <div className="rainbow-flex rainbow-align-content_space-between">
                         <ReCaptcha
                             siteKey={LIBRARY_RECAPTCHA_APIKEY}
+                            ref={this.reCaptchaRef} 
                             error={recaptchaError}
                             onChange={this.handleReCaptchaSuccess}
                         />
@@ -168,7 +171,7 @@ class ReCaptchaExample extends React.Component {
 ##### dark recaptcha with redux form
 
 ```js
-import React from 'react';
+import React, {useRef} from 'react';
 import { ReCaptcha, Input, Textarea, Button } from 'react-rainbow-components';
 import { Field, reduxForm } from 'redux-form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -181,9 +184,11 @@ const titleStyles = { textAlign: 'center' };
 function SimpleForm(props) {
     const { handleSubmit, onSubmit, reset } = props;
 
+    const reCaptchaRef = useRef();
+
     const submit = values => {
         onSubmit(values);
-        window.grecaptcha.reset();
+        reCaptchaRef.current.getRenderedComponent().reset()
         reset();
     };
 
@@ -225,6 +230,8 @@ function SimpleForm(props) {
             <div className="rainbow-flex rainbow-align-content_space-between">
                 <Field
                     component={ReCaptcha}
+                    ref={reCaptchaRef}
+                    withRef
                     name="recaptcha"
                     theme="dark"
                     siteKey={LIBRARY_RECAPTCHA_APIKEY}
