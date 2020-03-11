@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const percents = {
-    small: 30,
-    medium: 60,
-    large: 100,
+    small: 25,
+    medium: 50,
+    large: 75,
 };
 
 const positions = {
@@ -32,9 +32,7 @@ const getSize = (size, slideFrom) => {
 };
 
 const getPosition = slideFrom => {
-    return {
-        ...positions[slideFrom],
-    };
+    return positions[slideFrom];
 };
 
 const StyledContainer = attachThemeAttrs(styled.div).attrs(props => {
