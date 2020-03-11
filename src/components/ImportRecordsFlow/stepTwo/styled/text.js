@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 
-const StyledText = styled.h1`
+const StyledText = attachThemeAttrs(styled.h1)`
     font-size: 14px;
     font-weight: 300;
     text-align: center;
-    color: #a0a0bc;
+    color: ${props => props.palette.text.main};
     position: absolute;
     bottom: 8px;
     margin: 0;
