@@ -193,11 +193,11 @@ export default function CustomizationPage(props) {
                             <div className="react-rainbow-customization_section-heading-container">
                                 <h3 className="react-rainbow-getting-started_section-heading rainbow-m-right_medium">
                                     If you are using React Rainbow on your app, sometimes you may
-                                    need to customize our design to satisfy UI diversity from
-                                    business or brand requirements. Either you will need to use the
-                                    color of a specific business brand or a specific color palette
-                                    or you will need additional support for a dark or custom theme
-                                    on your app.
+                                    need to customize the default styles to satisfy your UI/UX based
+                                    on business or brand requirements. Either you will need to use
+                                    the color of a specific business brand or a specific color
+                                    palette or you will need additional support for a dark or custom
+                                    theme on your app.
                                 </h3>
                                 <CarbonAds className="react-rainbow-customization_carbon-ad" />
                             </div>
@@ -208,8 +208,8 @@ export default function CustomizationPage(props) {
                         <h3 className="react-rainbow-customization_section-text">
                             Customization is allowed by using our{' '}
                             <StyledBadge>{'<Application />'}</StyledBadge> component as a wrapper of
-                            your entire application, the property theme will accept an object where
-                            you can specify your palette of colors.
+                            your entire application, the component property theme will accept an
+                            object where you can specify your palette of colors.
                         </h3>
 
                         <br />
@@ -251,7 +251,7 @@ export default function CustomizationPage(props) {
                                 />{' '}
                                 Props
                             </h3>
-                            <StyledTable data={data} keyField="name">
+                            <StyledTable data={data} keyField="name" resizeColumnDisabled>
                                 <Column header="Prop Name" field="name" defaultWidth={160} />
                                 <Column header="Type" field="type" defaultWidth={80} />
                                 <Column header="Required" field="required" defaultWidth={120} />
