@@ -34,6 +34,10 @@ export default function withReduxForm(WrappedComponent) {
             this.fieldRef.current.blur();
         }
 
+        reset() {
+            this.fieldRef.current.reset();
+        }
+
         render() {
             const { error, input, meta, ...rest } = this.props;
 

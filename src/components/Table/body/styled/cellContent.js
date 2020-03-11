@@ -6,7 +6,7 @@ const StyledCellContent = attachThemeAttrs(styled.div)`
     border: 1px solid transparent;
     color: ${props => props.palette.text.label};
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
-    height: 42px;
+    min-height: 42px;
     line-height: 40px;
     padding: 0 0.5rem;
     max-width: 100%;
