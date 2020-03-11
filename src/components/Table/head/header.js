@@ -9,6 +9,7 @@ import StyledTh from './styled/th';
 import StyledWrapper from './styled/wrapper';
 import StyledHeaderContainer from './styled/headerContainer';
 import StyledContent from './styled/content';
+import StyledScrollShadow from './styled/scrollShadow';
 
 export default class Header extends Component {
     constructor(props) {
@@ -65,10 +66,13 @@ export default class Header extends Component {
             tableId,
             maxRowSelection,
             bulkSelection,
+            hasScroll,
         } = this.props;
+
         const headerStyles = {
             width: computedWidth,
         };
+
         const isResizable = this.isResizable();
 
         if (type === SELECTABLE_CHECKBOX) {
@@ -79,6 +83,7 @@ export default class Header extends Component {
                     tableId={tableId}
                     maxRowSelection={maxRowSelection}
                     bulkSelection={bulkSelection}
+                    hasScroll={hasScroll}
                     style={headerStyles}
                 />
             );
@@ -118,6 +123,7 @@ export default class Header extends Component {
                         onResize={this.handleResize}
                         headerWidth={computedWidth}
                     />
+                    <StyledScrollShadow hasScroll={hasScroll} />
                 </StyledWrapper>
             </StyledTh>
         );
@@ -144,6 +150,7 @@ Header.propTypes = {
     tableId: PropTypes.string.isRequired,
     maxRowSelection: PropTypes.number,
     bulkSelection: PropTypes.oneOf(['none', 'some', 'all']),
+    hasScroll: PropTypes.bool,
 };
 
 Header.defaultProps = {
@@ -164,4 +171,5 @@ Header.defaultProps = {
     onDeselectAllRows: () => {},
     maxRowSelection: undefined,
     bulkSelection: 'none',
+    hasScroll: false,
 };
