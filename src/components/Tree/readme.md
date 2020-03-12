@@ -1,4 +1,4 @@
-##### Tree
+##### Tree basic
 
 ```js
     const data = [
@@ -65,7 +65,7 @@
     />
 ```
 
-##### Tree
+##### Tree with chekboxes
 
 ```js
     const data = [
