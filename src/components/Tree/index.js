@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import TreeChildren from './tree-children';
 import TreeContainerUl from './styled/treeContainerUl';
 
+/**
+ * A Tree is visualization of a structure hierarchy with nested elements. A branch can be expanded or collapsed or selected.
+ * @category Layout
+ */
+
 const Tree = props => {
     const { data, onExpandCollapse, onSelect, className, style } = props;
 
