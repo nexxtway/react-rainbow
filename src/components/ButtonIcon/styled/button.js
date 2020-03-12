@@ -80,7 +80,25 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
             fill: ${props => props.palette.text.disabled};
         }
     }
+    ${props =>
+        props.variant === 'neutral' &&
+        `
+            background-color: ${props.palette.background.main};
+            border: 1px solid ${props.palette.border.divider};
+            color: ${props.palette.brand.main};
 
+            &:hover,
+            &:focus,
+            &:active {
+                background-color: ${props.palette.action.active};
+            }
+
+            &[disabled] {
+                background-color: ${
+                    props.isLoading ? props.palette.background.main : 'transparent'
+                };
+            }
+        `};
     ${props => {
         const brandMainContrastText = props.palette.getContrastText(props.palette.brand.main);
         const brandDarkContrastText = props.palette.getContrastText(props.palette.brand.dark);
@@ -111,6 +129,71 @@ const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
                     color: ${props.palette.text.disabled};
                 }
             `
+        );
+    }};
+    ${props =>
+        props.variant === 'outline-brand' &&
+        `
+            background-color: transparent;
+            border: 1px solid ${props.palette.brand.main};
+            color: ${props.palette.brand.main};
+
+            &:hover,
+            &:focus,
+            &:active {
+                border-color: ${props.palette.brand.dark};
+            }
+        
+            &[disabled] {
+                background-color: transparent;
+                border-color: ${
+                    props.isLoading ? props.palette.brand.main : props.palette.border.divider
+                };
+            }
+        `};
+    ${props => {
+        const errorMainContrastText = props.palette.getContrastText(props.palette.error.main);
+        const errorDarkContrastText = props.palette.getContrastText(props.palette.error.dark);
+
+        return (
+            props.variant === 'destructive' &&
+            `
+            background-color: ${props.palette.error.main};
+            border: 1px solid ${props.palette.error.main};
+            color: ${errorMainContrastText};
+
+            &:link,
+            &:visited {
+                color: ${errorMainContrastText};
+            }
+        
+            &:hover,
+            &:focus {
+                background-color: ${props.palette.error.dark};
+                border-color: ${props.palette.error.dark};
+                color: ${errorDarkContrastText};
+            }
+
+            &:focus {
+                box-shadow: ${props.shadows.error};
+            }
+        
+            &:active {
+                background-color: ${props.palette.error.dark};
+                border-color: ${props.palette.error.dark};
+                color: ${errorDarkContrastText};
+            }
+        
+            &[disabled] {
+                background-color: ${
+                    props.isLoading ? props.palette.error.main : props.palette.background.disabled
+                };
+                border-color: ${
+                    props.isLoading ? props.palette.error.main : props.palette.background.disabled
+                };
+                color: ${props.palette.text.disabled};
+            }
+        `
         );
     }};
     ${props => {
