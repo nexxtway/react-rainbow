@@ -34,6 +34,9 @@ import LinkedinIcon from './exampleComponents/Icons/linkedin';
 import TrashIcon from './exampleComponents/Icons/trash';
 import PricingIcon from './exampleComponents/Icons/pricing';
 import PencilIcon from './exampleComponents/Icons/pencil';
+import FileIcon from './exampleComponents/Icons/file';
+import FolderOpenIcon from './exampleComponents/Icons/folderOpen';
+import FolderCloseIcon from './exampleComponents/Icons/folderClose';
 
 global.GlobalHeader = GlobalHeader;
 global.CodeEditor = CodeEditor;
@@ -73,3 +76,6 @@ global.LinkedinIcon = LinkedinIcon;
 global.TrashIcon = TrashIcon;
 global.PricingIcon = PricingIcon;
 global.PencilIcon = PencilIcon;
+global.FileIcon = FileIcon;
+global.FolderOpenIcon = FolderOpenIcon;
+global.FolderCloseIcon = FolderCloseIcon;

@@ -1,30 +1,34 @@
 import React from 'react';
-import propTypes from 'prop-types';
-import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import TreeChildren from './tree-children';
-
-const TreeContainer = styled.ul``;
+import TreeContainerUl from './styled/treeContainerUl';
 
 const Tree = props => {
-    const { data, onExpandCollapse, onSelect } = props;
+    const { data, onExpandCollapse, onSelect, className, style } = props;
 
     return (
-        <TreeContainer>
+        <TreeContainerUl className={className} style={style}>
             <TreeChildren data={data} onExpandCollapse={onExpandCollapse} onSelect={onSelect} />
-        </TreeContainer>
+        </TreeContainerUl>
     );
 };
 
 Tree.propTypes = {
-    data: propTypes.array,
-    onExpandCollapse: propTypes.func,
-    onSelect: propTypes.func,
+    data: PropTypes.array,
+    onExpandCollapse: PropTypes.func,
+    onSelect: PropTypes.func,
+    /** A CSS class for the outer element, in addition to the component's base classes. */
+    className: PropTypes.string,
+    /** An object with custom style applied for the outer element. */
+    style: PropTypes.object,
 };
 
 Tree.defaultProps = {
     data: [],
     onExpandCollapse: () => {},
     onSelect: () => {},
+    className: undefined,
+    style: undefined,
 };
 
 export default Tree;
