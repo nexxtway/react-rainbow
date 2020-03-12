@@ -111,7 +111,7 @@ import { faStar } from '@fortawesome/free-regular-svg-icons';
     </div>
     <div className="rainbow-p-right_large">
         <ButtonIcon variant="destructive" icon={<FontAwesomeIcon icon={faStar} />} />
-    </div>     
+    </div>
     <ButtonIcon variant="neutral" icon={<FontAwesomeIcon icon={faStar} />} />
 </div>
 ```
@@ -129,6 +129,9 @@ import { faStar } from '@fortawesome/free-regular-svg-icons';
         <ButtonIcon shaded variant="border-filled" icon={<FontAwesomeIcon icon={faStar} />} />
     </div>
     <div className="rainbow-p-right_large">
+        <ButtonIcon shaded variant="neutral" icon={<FontAwesomeIcon icon={faStar} />} />
+    </div>
+    <div className="rainbow-p-right_large">
         <ButtonIcon shaded variant="brand" icon={<FontAwesomeIcon icon={faStar} />} />
     </div>
     <div className="rainbow-p-right_large">
@@ -136,11 +139,7 @@ import { faStar } from '@fortawesome/free-regular-svg-icons';
     </div>
     <div className="rainbow-p-right_large">
         <ButtonIcon shaded variant="destructive" icon={<FontAwesomeIcon icon={faStar} />} />
-    </div> 
-    <div className="rainbow-p-right_large">
-        <ButtonIcon shaded variant="outline-brand" icon={<FontAwesomeIcon icon={faStar} />} />
-    </div>       
-    <ButtonIcon shaded variant="neutral" icon={<FontAwesomeIcon icon={faStar} />} />
+    </div>
 </div>
 ```
 
