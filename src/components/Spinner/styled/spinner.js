@@ -1,14 +1,7 @@
 import styled from 'styled-components';
-import { COLOR_WHITE, COLOR_GRAY_3 } from '../../../styles/colors';
-import getTheme from '../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-const StyledSpinner = styled.div.attrs(props => {
-    const brandMainColor = getTheme(props).palette.brand.main;
-
-    return {
-        brandMainColor,
-    };
-})`
+const StyledSpinner = attachThemeAttrs(styled.div)`
     box-sizing: border-box;
     position: absolute;
     top: 50%;
@@ -219,21 +212,21 @@ const StyledSpinner = styled.div.attrs(props => {
         props.variant === 'brand' &&
         `
             > div {
-                color: ${props.brandMainColor} !important;
+                color: ${props.palette.brand.main} !important;
             }
         `};
     ${props =>
         props.variant === 'inverse' &&
         `
             > div {
-                color: ${COLOR_WHITE} !important;
+                color: ${props.palette.getContrastText(props.palette.text.main)} !important;
             }
         `};
     ${props =>
         props.variant === 'neutral' &&
         `
             > div {
-                color: ${COLOR_GRAY_3} !important;
+                color: ${props.palette.background.highlight} !important;
             }
         `};
 `;

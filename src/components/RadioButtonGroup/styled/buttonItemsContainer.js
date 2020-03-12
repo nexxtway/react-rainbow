@@ -1,13 +1,24 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+import { replaceAlpha } from '../../../styles/helpers/color';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
+import { COLOR_GRAY_2 } from '../../../styles/colors';
 
-const StyledButtonItemsContainer = styled.div`
+const StyledButtonItemsContainer = attachThemeAttrs(styled.div).attrs(props => {
+    const isDark = props.palette.isDark;
+    const inverse = {
+        border: isDark ? COLOR_GRAY_2 : 'rgba(0, 0, 0, 0.4)',
+        background: isDark ? 'rgba(239,241,245,0.4)' : 'rgba(0, 0, 0, 0.4)',
+    };
+
+    return { inverse };
+})`
     display: inline-flex;
     justify-content: center;
     align-items: center;
     border-radius: ${BORDER_RADIUS_2};
-    border: solid 1px #e3e5ed;
-    background-color: rgba(227, 229, 237, 0.4);
+    border: solid 1px ${props => props.palette.border.divider};
+    background-color: ${props => replaceAlpha(props.palette.background.highlight, 0.4)};
     line-height: 2.5rem;
     height: 2.5rem;
 
@@ -22,8 +33,8 @@ const StyledButtonItemsContainer = styled.div`
     ${props =>
         props.variant === 'inverse' &&
         `
-            border-color: rgba(0, 0, 0, 0.4);
-            background-color: rgba(0, 0, 0, 0.4);
+            border: solid 1px ${props.inverse.border};
+            background-color: ${props.inverse.background};
         `};
 `;
 

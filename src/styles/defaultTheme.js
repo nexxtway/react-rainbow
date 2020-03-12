@@ -11,8 +11,9 @@ import {
     COLOR_GRAY_4,
 } from './colors';
 import { darken, getContrastText, lighten } from './helpers/color';
+import normalizeThemeColors from './helpers/normalizeThemeColors';
 
-export default {
+const defaultTheme = {
     palette: {
         brand: {
             main: COLOR_BRAND,
@@ -34,7 +35,7 @@ export default {
         },
         background: {
             main: COLOR_WHITE,
-            highlight: COLOR_GRAY_2,
+            highlight: '#eff1f5',
             secondary: '#f9fafc',
             disabled: COLOR_GRAY_1,
         },
@@ -55,6 +56,7 @@ export default {
             hover: COLOR_GRAY_1,
         },
         getContrastText,
+        isDark: false,
     },
     shadows: {
         brand: `0 0 2px ${COLOR_BRAND}`,
@@ -67,5 +69,9 @@ export default {
         shadow_5: `0 0 3px ${COLOR_GRAY_1}`,
         shadow_6: `0 2px 12px 0 ${COLOR_GRAY_2}`,
         shadow_7: `0 0 0 4px ${COLOR_GRAY_2}`,
+        shadow_8: `0 1px 0 0 ${COLOR_GRAY_2}`,
+        shadow_9: `0 1px 1px 0 ${COLOR_GRAY_2}`,
     },
 };
+
+export default normalizeThemeColors(defaultTheme);

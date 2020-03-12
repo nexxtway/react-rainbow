@@ -31,7 +31,7 @@ styles
 styleguide
 errorShots
 allure-results
-junit-results
+test-results
 *.css.map
 .editorconfig
 .vscode

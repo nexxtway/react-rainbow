@@ -99,11 +99,6 @@ const options = [
     { value: 'on', label: 'On' },
 ];
 
-const buttonsContainerStyles = {
-    backgroundColor: '#061c3f',
-    borderRadius: '0 0 0.875rem 0.875rem',
-};
-
 class RadioButtonGroupInverse extends React.Component {
     constructor(props) {
         super(props);
@@ -130,12 +125,9 @@ class RadioButtonGroupInverse extends React.Component {
     }
 }
 
-<div
-    className="rainbow-p-around_x-large rainbow-align-content_center"
-    style={buttonsContainerStyles}
->
+<InverseContainer className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <RadioButtonGroupInverse />
-</div>
+</InverseContainer>
 ```
 
 ##### RadioButtonGroup disabled
@@ -269,7 +261,8 @@ class ErrorRadioButtonGroup extends React.Component {
 </div>
 ```
 
-#### RadioButtonGroup brand with label
+
+##### RadioButtonGroup brand with label
 ```js
 import React, { useState, useEffect } from 'react';
 import { RadioButtonGroup, Avatar } from 'react-rainbow-components';
@@ -380,6 +373,8 @@ const ConctactContainer = styled.div`
     width: max-content;
 `;
 
+const linkedinIconStyle = {color: '#0E76A8'};
+
 const Contact = (props) => {
     const {avatar, name, email, linkedin, github} = props;
     return (
@@ -395,12 +390,9 @@ const Contact = (props) => {
             <EmailLabel className="rainbow-m-top_x-small">
                 { email }
             </EmailLabel>
-            <div className="rainbow-flex rainbow-justify_space-around rainbow-m-top_small">
+            <div className="rainbow-flex rainbow-justify_center rainbow-m-top_small">
                 <a href={linkedin}>
                     <GitHubIcon />
-                </a>
-                <a href={github}>
-                    <LinkedinIcon />
                 </a>
             </div>
         </ConctactContainer>

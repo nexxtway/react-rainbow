@@ -575,4 +575,103 @@ describe('<TimeSelect/>', () => {
         });
         expect(preventDefaultMockFn).toHaveBeenCalledTimes(1);
     });
+    it('should set the right value when hour24 is true and hour value changes', () => {
+        const component = mount(<TimeSelect hour24 />);
+        const values = [
+            '000',
+            '001',
+            '002',
+            '005',
+            '009',
+            '010',
+            '011',
+            '012',
+            '013',
+            '014',
+            '015',
+            '016',
+            '017',
+            '018',
+            '019',
+            '2',
+            '3',
+            '6',
+            '9',
+        ];
+        const expects = [
+            '00',
+            '01',
+            '02',
+            '05',
+            '09',
+            '10',
+            '11',
+            '12',
+            '13',
+            '14',
+            '15',
+            '16',
+            '17',
+            '18',
+            '19',
+            '02',
+            '03',
+            '06',
+            '09',
+        ];
+
+        values.forEach((value, index) => {
+            const hourInput = component.find('input').at(0);
+            hourInput.simulate('focus');
+            hourInput.simulate('change', { target: { value } });
+            expect(component.state('hour')).toBe(expects[index]);
+        });
+    });
+    it('should not change focus when hour24 is true and minute value changes', () => {
+        const component = mount(<TimeSelect hour24 />);
+        const minutesInput = component.find('input').at(1);
+
+        minutesInput.simulate('focus');
+        minutesInput.simulate('change', { target: { value: '36' } });
+
+        const focusedElementDataId = document.activeElement.getAttribute('data-id');
+        expect(focusedElementDataId).toBe('minutes');
+    });
+    it('should not change focus when hour24 is true, minute input has focus and right key is pressed', () => {
+        const component = mount(<TimeSelect hour24 />);
+        const container = component.find('div[role="presentation"]');
+        const minutesInput = component.find('input').at(1);
+
+        minutesInput.simulate('focus');
+        container.simulate('keyDown', { keyCode: RIGHT_KEY });
+
+        const focusedElementDataId = document.activeElement.getAttribute('data-id');
+        expect(focusedElementDataId).toBe('minutes');
+    });
+    it('should call onChange when press enter key while hour, minutes has value', () => {
+        const onChangeMockFn = jest.fn();
+        const component = mount(<TimeSelect onChange={onChangeMockFn} hour24 />);
+        const container = component.find('div[role="presentation"]');
+        const hourInput = component.find('input').at(0);
+        const minutesInput = component.find('input').at(1);
+
+        hourInput.simulate('change', { target: { value: '14' } });
+        minutesInput.simulate('change', { target: { value: '05' } });
+        container.simulate('keyDown', { keyCode: ENTER_KEY });
+
+        expect(onChangeMockFn).toHaveBeenCalledWith('14:05');
+    });
+    it('should not render ampm input when hour24 is true', () => {
+        const component = mount(<TimeSelect hour24 />);
+        const inputs = component.find('input');
+        expect(inputs.length).toBe(2);
+    });
+    it('should set hour value to "00" when hour24 is true, hour input is focused, type 0 and then blur the hour input', () => {
+        const component = mount(<TimeSelect hour24 />);
+        const hourInput = component.find('input').at(0);
+        hourInput.simulate('focus');
+        hourInput.simulate('change', { target: { value: '0' } });
+        hourInput.simulate('blur');
+        expect(component.state().hour).toBe('00');
+    });
 });

@@ -3,7 +3,7 @@ import React from 'react';
 export default function RightArrow() {
     return (
         <svg
-            fill="#576574"
+            fill="currentColor"
             width="6.46px"
             height="10px"
             viewBox="0 0 6.46 10"

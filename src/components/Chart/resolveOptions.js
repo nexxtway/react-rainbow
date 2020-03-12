@@ -1,3 +1,6 @@
+import { replaceAlpha } from '../../styles/helpers/color';
+import defaultTheme from '../../styles/defaultTheme';
+
 export default function resolveOptions(conditions) {
     const {
         disableAnimations,
@@ -7,7 +10,18 @@ export default function resolveOptions(conditions) {
         legendPosition,
         showStacked,
         maintainAspectRatio,
+        theme,
+        type,
     } = conditions;
+    const palette = theme ? theme.rainbow.palette : defaultTheme.palette;
+    const legend = {
+        label: palette.text.label,
+        border: palette.border.divider,
+    };
+    const tooltips = {
+        background: replaceAlpha(palette.getContrastText(palette.background.main), 0.8),
+        color: palette.getContrastText(palette.text.main),
+    };
 
     let options = {
         maintainAspectRatio,
@@ -17,9 +31,45 @@ export default function resolveOptions(conditions) {
             fullWidth: true,
             labels: {
                 usePointStyle: true,
+                fontColor: legend.label,
             },
         },
+        tooltips: {
+            backgroundColor: tooltips.background,
+            titleFontColor: tooltips.color,
+            bodyFontColor: tooltips.color,
+        },
     };
+
+    if (type === 'bar' || type === 'horizontalBar' || type === 'line') {
+        options = {
+            ...options,
+            scales: {
+                xAxes: [
+                    {
+                        ticks: {
+                            fontColor: legend.label,
+                        },
+                        gridLines: {
+                            color: legend.border,
+                            zeroLineColor: legend.border,
+                        },
+                    },
+                ],
+                yAxes: [
+                    {
+                        ticks: {
+                            fontColor: legend.label,
+                        },
+                        gridLines: {
+                            color: legend.border,
+                            zeroLineColor: legend.border,
+                        },
+                    },
+                ],
+            },
+        };
+    }
 
     if (disableAnimations) {
         options = {
@@ -56,11 +106,25 @@ export default function resolveOptions(conditions) {
                 xAxes: [
                     {
                         stacked: true,
+                        ticks: {
+                            fontColor: legend.label,
+                        },
+                        gridLines: {
+                            color: legend.border,
+                            zeroLineColor: legend.border,
+                        },
                     },
                 ],
                 yAxes: [
                     {
                         stacked: true,
+                        ticks: {
+                            fontColor: legend.label,
+                        },
+                        gridLines: {
+                            color: legend.border,
+                            zeroLineColor: legend.border,
+                        },
                     },
                 ],
             },

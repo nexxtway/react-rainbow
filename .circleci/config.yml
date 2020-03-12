@@ -38,8 +38,14 @@ jobs:
                       if [ -n "$COVERALLS_REPO_TOKEN" ]; then
                           yarn test --ci --maxWorkers=2 --coverage --coverageReporters=text-lcov | ./node_modules/coveralls/bin/coveralls.js
                       else
-                          yarn test --ci --maxWorkers=2
+                          yarn test --ci --maxWorkers=2 
                       fi
+
+            - store_test_results:
+                  path: test-results/jest-junit-results
+
+            - store_artifacts:
+                  path: test-results/jest-junit-results
 
     integration_tests:
         <<: *defaults
@@ -70,13 +76,21 @@ jobs:
 
             - run: sleep 10
 
-            - run: yarn test:integration --headless
+            - run:
+                  name: run integration test
+                  command: |
+                      yarn test:integration --headless
+
+            - run:
+                  name: generate report
+                  command: |
+                      yarn allure generate test-results/wdio-allure-results --clean --output test-results/allure-report
 
             - store_test_results:
-                  path: ./junit-results
+                  path: test-results/wdio-junit-results
 
             - store_artifacts:
-                  path: ./errorShots
+                  path: test-results/allure-report
 
     publish_canary:
         <<: *defaults

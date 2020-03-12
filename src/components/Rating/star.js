@@ -6,11 +6,13 @@ import StarFill from './starFill';
 import StarBordered from './starBordered';
 import StyledStartContainer from './styled/starContainer';
 import StyledStartInput from './styled/starInput';
+import StarHalf from './starHalf';
 
 export default class Star extends Component {
     constructor(props) {
         super(props);
         this.starId = uniqueId('star');
+        this.handleChange = this.handleChange.bind(this);
     }
 
     getAssitiveText() {
@@ -21,16 +23,22 @@ export default class Star extends Component {
         return `${value} Stars`;
     }
 
+    handleChange(event) {
+        const { readOnly, onChange } = this.props;
+        if (readOnly) return null;
+        return onChange(event);
+    }
+
     renderStar() {
-        const { filled } = this.props;
-        if (filled) {
-            return <StarFill />;
+        const { isFilled, isHalf } = this.props;
+        if (isFilled) {
+            return isHalf ? <StarHalf /> : <StarFill />;
         }
         return <StarBordered />;
     }
 
     render() {
-        const { onChange, value, name } = this.props;
+        const { value, name, readOnly } = this.props;
 
         return (
             <StyledStartContainer>
@@ -39,7 +47,8 @@ export default class Star extends Component {
                     id={this.starId}
                     value={value}
                     name={name}
-                    onChange={onChange}
+                    onChange={this.handleChange}
+                    disabled={readOnly}
                 />
 
                 <label htmlFor={this.starId}>
@@ -54,12 +63,16 @@ export default class Star extends Component {
 Star.propTypes = {
     value: PropTypes.number,
     onChange: PropTypes.func,
-    filled: PropTypes.bool.isRequired,
+    isFilled: PropTypes.bool.isRequired,
+    isHalf: PropTypes.bool,
     name: PropTypes.string,
+    readOnly: PropTypes.bool,
 };
 
 Star.defaultProps = {
     value: 1,
     onChange: () => {},
     name: undefined,
+    readOnly: false,
+    isHalf: false,
 };

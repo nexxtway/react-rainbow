@@ -147,6 +147,7 @@ export default class TimeSelect extends Component {
 
     handleBlurHour() {
         const { hour } = this.state;
+        const { hour24 } = this.props;
         if (this.isUpOrDownButtonPressed) {
             this.isUpOrDownButtonPressed = false;
             return;
@@ -155,7 +156,7 @@ export default class TimeSelect extends Component {
             this.isMinutesInputFocused = false;
             return;
         }
-        if (hour === '00' && this.value >= '0') {
+        if (hour === '00' && this.value >= '0' && !hour24) {
             this.setState({
                 hour: '12',
             });

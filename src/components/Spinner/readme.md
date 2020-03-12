@@ -21,14 +21,10 @@ import React from 'react';
 import { Spinner } from 'react-rainbow-components';
 import styled from 'styled-components';
 
-const Loading = styled.h1.attrs(props => { 
-    const brandMainColor = props.theme.rainbow.palette.brand.main;
-
-    return {
-        brandMainColor,
-    };
+const Loading = styled.h1.attrs(props => {
+    return props.theme.rainbow.palette;
 })`
-    color: ${props => props.brandMainColor};
+    color: ${props => props.brand.main};
 `;
 
 <div
@@ -49,6 +45,12 @@ import { Spinner, Card, Button } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTasks } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
+
+const Loading = styled.h1.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.label};
+`;
 
 const spinner = (
     <div className="rainbow-align-content_center">
@@ -97,26 +99,19 @@ const Icon = styled.div.attrs(props => {
 ```js
 import React from 'react';
 import { Spinner } from 'react-rainbow-components';
+import styled from 'styled-components';
 
-const containerStyles = {
-    backgroundColor: '#061c3f',
-    borderRadius: '0 0 0.875rem 0.875rem',
-};
+const Loading = styled.h1.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.getContrastText(props.text.main)};
+`;
 
-const textStyles = {
-    color: '#fff',
-};
-
-<div
-    className="rainbow-background-color_white rainbow-align-content_center rainbow-position_relative rainbow-p-vertical_xx-large"
-    style={containerStyles}
->
+<InverseContainer className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <Spinner variant="inverse" size="medium" />
-    <h1
-        className="rainbow-font-size-text_medium rainbow-p-top_xx-large rainbow-m-top_xx-large rainbow-m-bottom_large"
-        style={textStyles}
-    >
+    <Loading
+        className="rainbow-font-size-text_medium rainbow-p-top_xx-large rainbow-m-top_xx-large rainbow-m-bottom_large">
         Loading…
-    </h1>
-</div>
+    </Loading>
+</InverseContainer>
 ```
