@@ -26,6 +26,7 @@ export { default as Column } from './Column';
 export { default as Dataset } from './Dataset';
 export { default as DatePicker } from './DatePicker';
 export { default as DateTimePicker } from './DateTimePicker';
+export { default as Drawer } from './Drawer';
 export { default as GMap } from './GMap';
 export { default as GoogleAddressLookup } from './GoogleAddressLookup';
 export { default as ImportRecordsFlow } from './ImportRecordsFlow';

@@ -6,9 +6,13 @@ import { uniqueId } from './../../libs/utils';
 import { ESCAPE_KEY, TAB_KEY } from './../../libs/constants';
 import Header from './header';
 import CloseIcon from './closeIcon';
-import manageTab from './manageTab';
-import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from './scrollController';
-import CounterManager from './counterManager';
+import manageTab from '../../libs/manageTab';
+import {
+    disableBodyScroll,
+    enableBodyScroll,
+    clearAllBodyScrollLocks,
+} from '../../libs/scrollController';
+import CounterManager from '../../libs/counterManager';
 import StyledBackDrop from './styled/backDrop';
 import StyledModalContainer from './styled/modalContainer';
 import StyledCloseButton from './styled/closeButton';

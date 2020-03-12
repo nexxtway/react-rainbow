@@ -7,7 +7,7 @@ export default function CloseIcon(props) {
         <svg
             className={className}
             style={style}
-            fill="currentColor"
+            fill="#a4a7b5"
             width="1rem"
             height="1rem"
             viewBox="0 0 16 16"
