@@ -5,17 +5,11 @@ import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 const StyledContainer = attachThemeAttrs(
     styled.div.attrs(props => {
         const theme = getTheme(props);
-        const { brand } = theme.palette;
-        const { light: brandLightColor } = brand;
-
-        return {
-            brandLightColor,
-        };
     }),
 )`
     border-radius: 4px;
-    border: dashed 1px #eaeef5;
-    background-color: ${props => props.palette.background.main};
+    border: dashed 1px ${props => props.palette.background.highlight};
+    background-color: ${props => props.palette.background.secondary};
     height: 260px;
     margin: 0 16px 24px 16px;
     display: flex;
@@ -26,8 +20,8 @@ const StyledContainer = attachThemeAttrs(
     ${props =>
         props.isDragOver &&
         `
-            background-color: rgba(234, 238, 245, 0.4);
-            border: dashed 1.5px ${props.brandLightColor};
+            background-color: ${props.palette.action.active};
+            border: dashed 1px ${props.palette.brand.main};
         `};
 `;
 
