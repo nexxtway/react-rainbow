@@ -2,11 +2,7 @@ import styled from 'styled-components';
 import getTheme from '../../../../styles/helpers/getTheme';
 import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 
-const StyledContainer = attachThemeAttrs(
-    styled.div.attrs(props => {
-        const theme = getTheme(props);
-    }),
-)`
+const StyledContainer = attachThemeAttrs(styled.div)`
     border-radius: 4px;
     border: dashed 1px ${props => props.palette.background.highlight};
     background-color: ${props => props.palette.background.secondary};
