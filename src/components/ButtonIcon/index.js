@@ -99,12 +99,15 @@ ButtonIcon.propTypes = {
     /** The icon to show if it is passed.
      * It must be a svg icon or a font icon. It is a required value. */
     icon: PropTypes.node,
-    /** The variant changes the appearance of buttonIcon. Accepted variants include base,
-     *  brand, success, border, border-filled, border-inverse and inverse.
+    /** The variant changes the appearance of the button. Accepted variants include
+     * base, brand, success, destructive, neutral, outline-brand, border, border-filled, inverse and border-inverse.
      * This value defaults to base. */
     variant: PropTypes.oneOf([
         'base',
+        'neutral',
         'brand',
+        'outline-brand',
+        'destructive',
         'success',
         'border',
         'border-filled',
