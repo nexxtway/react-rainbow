@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import getTheme from '../../../../styles/helpers/getTheme';
 import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 
 const StyledContainer = attachThemeAttrs(styled.div)`
