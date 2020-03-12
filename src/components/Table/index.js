@@ -63,7 +63,6 @@ export default class Table extends Component {
                 selectedRowsKeys: {},
             }),
             bulkSelection: 'none',
-            hasScroll: false,
         };
         this.indexes = getIndexes(this.state.rows);
         this.selectedRowsKeys = getSelectedRowKeysFromSelectedRows(selectedRows, this.indexes);
@@ -222,14 +221,12 @@ export default class Table extends Component {
         });
     }
 
-    detectActiveScroll() {
+    isScrollActive() {
         if (this.scrollableY.current) {
             const { clientHeight, scrollHeight } = this.scrollableY.current;
-            const hasScroll = clientHeight < scrollHeight;
-            this.setState({ hasScroll });
-        } else {
-            this.setState({ hasScroll: false });
+            return clientHeight < scrollHeight;
         }
+        return false;
     }
 
     updateColumnsAndTableWidth(newColumns) {
@@ -252,7 +249,6 @@ export default class Table extends Component {
                 tableWidth: getTableWidth(updatedColumns),
             });
         }
-        this.detectActiveScroll();
     }
 
     handleSelectAllRows() {
@@ -403,7 +399,7 @@ export default class Table extends Component {
             emptyDescription,
             keyField,
         } = this.props;
-        const { columns, tableWidth, rows, bulkSelection, hasScroll } = this.state;
+        const { columns, tableWidth, rows, bulkSelection } = this.state;
         const tableStyles = {
             width: tableWidth,
         };
@@ -443,7 +439,7 @@ export default class Table extends Component {
                                                 tableId={this.tableId}
                                                 maxRowSelection={maxRowSelection}
                                                 bulkSelection={bulkSelection}
-                                                hasScroll={hasScroll}
+                                                hasScroll={this.isScrollActive()}
                                             />
                                         </tr>
                                     </thead>
