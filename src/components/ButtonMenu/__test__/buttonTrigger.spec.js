@@ -9,10 +9,10 @@ describe('<ButtonTrigger/>', () => {
     });
     it('should render a Button with label and left icon when iconPosition value is different from "right"', () => {
         const component = mount(<ButtonTrigger icon={<svg />} label="Menu" />);
-        expect(component.render().html()).toBe('<svg/>Menu');
+        expect(component.render().html()).toBe('<svg class="rainbow-m-right_xx-small "/>Menu');
     });
     it('should render a Button with label and right icon when iconPosition value is "right"', () => {
         const component = mount(<ButtonTrigger icon={<svg />} iconPosition="right" label="Menu" />);
-        expect(component.render().html()).toBe('Menu<svg/>');
+        expect(component.render().html()).toBe('Menu<svg class="rainbow-m-left_xx-small "/>');
     });
 });
