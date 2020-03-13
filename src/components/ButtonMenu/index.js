@@ -58,6 +58,7 @@ ButtonMenu.propTypes = {
      * It must be a svg icon or a font icon. */
     icon: PropTypes.node,
     /** Describes the position of the icon with respect to label. Options include left and right.
+     * Only makes sense when icon and label are provided.
      * This value defaults to left. */
     iconPosition: PropTypes.oneOf(['left', 'right']),
     /** The content of the ButtonMenu. Used to render the menuItem elements
