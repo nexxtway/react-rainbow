@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../../../src/styles/helpers/attachThemeAttrs';
 
-const StyledText = styled.h1`
+const StyledText = attachThemeAttrs(styled.h1)`
     font-size: 14px;
     font-weight: 300;
     text-align: center;
@@ -10,6 +11,12 @@ const StyledText = styled.h1`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    pointer-events: none;
+    ${props =>
+        props.isDragOver &&
+        `
+            color: ${props.palette.brand.main};
+        `};
 `;
 
 export default StyledText;

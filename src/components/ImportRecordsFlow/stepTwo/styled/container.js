@@ -1,17 +1,11 @@
 import styled from 'styled-components';
-import getTheme from '../../../../styles/helpers/getTheme';
+import attachThemeAttrs from '../../../../../src/styles/helpers/attachThemeAttrs';
+import replaceAlpha from '../../../../styles/helpers/color/replaceAlpha';
 
-const StyledContainer = styled.div.attrs(props => {
-    const theme = getTheme(props);
-    const { brand } = theme.palette;
-    const { light: brandLightColor } = brand;
-
-    return {
-        brandLightColor,
-    };
-})`
+const StyledContainer = attachThemeAttrs(styled.div)`
     border-radius: 4px;
-    border: dashed 1px #eaeef5;
+    border: dashed 3px;
+    border-color: #eaeef5;
     background-color: #fcfcfc;
     height: 260px;
     margin: 0 16px 24px 16px;
@@ -23,8 +17,8 @@ const StyledContainer = styled.div.attrs(props => {
     ${props =>
         props.isDragOver &&
         `
-            background-color: rgba(234, 238, 245, 0.4);
-            border: dashed 1.5px ${props.brandLightColor};
+            background-color: ${replaceAlpha(props.palette.brand.main, 0.05)};
+            border-color: ${props.palette.brand.light};
         `};
 `;
 
