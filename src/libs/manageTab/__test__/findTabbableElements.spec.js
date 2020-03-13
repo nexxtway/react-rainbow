@@ -1,7 +1,7 @@
 import { JSDOM } from 'jsdom';
 import findTabbableElements from '../findTabbableElements';
 
-jest.mock('./../isContentHidden', () => jest.fn(() => false));
+jest.mock('../isContentHidden', () => jest.fn(() => false));
 
 describe('findTabbableElements', () => {
     it('should return the 5 tabbable elements', () => {
