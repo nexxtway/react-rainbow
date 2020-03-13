@@ -38,7 +38,7 @@ import { faCog } from '@fortawesome/free-solid-svg-icons';
             menuSize="x-small"
             buttonVariant="base"
             label="Config"
-            icon={<FontAwesomeIcon icon={faCog} className="rainbow-m-right_xx-small" />}
+            icon={<FontAwesomeIcon icon={faCog} />}
         >
             <MenuItem label="Menu Item One" />
             <MenuItem label="Menu Item Two" />

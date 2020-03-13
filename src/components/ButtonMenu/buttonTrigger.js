@@ -7,11 +7,16 @@ export default function ButtonTrigger(props) {
     const { label, icon, iconPosition, ...rest } = props;
     const hasLeftIcon = iconPosition !== 'right';
 
+    const marginClass = hasLeftIcon ? 'rainbow-m-right_xx-small ' : 'rainbow-m-left_xx-small ';
+    const className =
+        icon && icon.props.className ? marginClass.concat(icon.props.className) : marginClass;
+    const iconElement = icon !== null ? React.cloneElement(icon, { className }) : null;
+
     return (
         <Button {...rest}>
-            <RenderIf isTrue={hasLeftIcon}>{icon}</RenderIf>
+            <RenderIf isTrue={hasLeftIcon}>{iconElement}</RenderIf>
             {label}
-            <RenderIf isTrue={!hasLeftIcon}>{icon}</RenderIf>
+            <RenderIf isTrue={!hasLeftIcon}>{iconElement}</RenderIf>
         </Button>
     );
 }
