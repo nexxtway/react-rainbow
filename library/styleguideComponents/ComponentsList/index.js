@@ -12,7 +12,7 @@ const name = window.location.href.split('#/')[1];
 const pageName = name && name.split('/')[0];
 
 function resolveCurrentUrl() {
-    if (isNotComponentPage(pageName) || pageName === 'Customization') {
+    if (isNotComponentPage(pageName)) {
         return pageName;
     } else if (pageName) {
         return 'Components';
