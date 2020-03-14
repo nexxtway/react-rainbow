@@ -138,6 +138,7 @@ export default function Drawer(props) {
                     <Header id={headerId} content={header} />
                     <RenderIf isTrue={!hideCloseButton}>
                         <StyledCloseButton
+                            data-id="drawer-close-button"
                             icon={<CloseIcon />}
                             title="Hide"
                             onClick={closeDrawer}
