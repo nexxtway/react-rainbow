@@ -1,22 +1,24 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import Button from '../Button';
 import RenderIf from '../RenderIf';
+import LeftIcon from './styled/styledLeftIcon';
+import RightIcon from './styled/styledRightIcon';
 
 export default function ButtonTrigger(props) {
     const { label, icon, iconPosition, ...rest } = props;
-    const hasLeftIcon = iconPosition !== 'right';
-
-    const marginClass = hasLeftIcon ? 'rainbow-m-right_xx-small ' : 'rainbow-m-left_xx-small ';
-    const className =
-        icon && icon.props.className ? marginClass.concat(icon.props.className) : marginClass;
-    const iconElement = icon !== null ? React.cloneElement(icon, { className }) : null;
+    const hasLeftIcon = icon && iconPosition !== 'right';
+    const hasRightIcon = icon && iconPosition === 'right';
 
     return (
         <Button {...rest}>
-            <RenderIf isTrue={hasLeftIcon}>{iconElement}</RenderIf>
+            <RenderIf isTrue={hasLeftIcon}>
+                <LeftIcon>{icon}</LeftIcon>
+            </RenderIf>
             {label}
-            <RenderIf isTrue={!hasLeftIcon}>{iconElement}</RenderIf>
+            <RenderIf isTrue={hasRightIcon}>
+                <RightIcon>{icon}</RightIcon>
+            </RenderIf>
         </Button>
     );
 }
