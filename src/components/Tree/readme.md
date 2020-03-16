@@ -84,7 +84,7 @@
     />
 ```
 
-##### Tree with chekboxes
+##### Tree with checkboxes
 
 ```js
     const data = [

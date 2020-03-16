@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const FolderOpen = props => {
     const { className, style } = props;
     return (
-        <svg className={className} style={style} width="18px" height="13px" viewBox="0 0 20 15">
+        <svg className={className} style={style} width="20px" height="15px" viewBox="0 0 20 15">
             <g id="components" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g
                     id="Components-Tree"

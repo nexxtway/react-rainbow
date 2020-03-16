@@ -24,7 +24,16 @@ const Tree = props => {
 };
 
 Tree.propTypes = {
-    data: PropTypes.array,
+    /** A array with the nodes of the ButtonGroupPicker. This is a recursive shape that is used for render the nested nodes passed on children of the array. */
+    data: PropTypes.arrayOf(
+        PropTypes.shape({
+            label: PropTypes.node,
+            icon: PropTypes.node,
+            isExpanded: PropTypes.bool,
+            isChecked: PropTypes.bool,
+            children: PropTypes.array,
+        }),
+    ),
     /** The action triggered when the user clicking in the tree node expand or collapse button. */
     onExpandCollapse: PropTypes.func,
     /** The action triggered when the user clicking in the tree node checkbox. */

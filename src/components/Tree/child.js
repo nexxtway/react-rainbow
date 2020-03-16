@@ -25,7 +25,7 @@ const Child = props => {
     const hasCheckbox = typeof isChecked === 'boolean';
     const hasIcon = !!icon;
     return (
-        <ItemContainerLi hasChildren={hasChildren}>
+        <ItemContainerLi hasChildren={hasChildren} icon={icon}>
             <NodeContainer>
                 <CollapseExpandButton
                     hasChildren={hasChildren}
