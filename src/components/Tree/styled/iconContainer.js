@@ -5,6 +5,8 @@ const IconContainer = styled.span`
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 20px;
+    height: 20px;
 `;
 
 export default IconContainer;

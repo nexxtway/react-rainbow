@@ -25,7 +25,7 @@ const Child = props => {
     const hasCheckbox = typeof isChecked === 'boolean';
     const hasIcon = !!icon;
     return (
-        <ItemContainerLi>
+        <ItemContainerLi hasChildren={hasChildren}>
             <NodeContainer>
                 <CollapseExpandButton
                     hasChildren={hasChildren}
@@ -42,7 +42,7 @@ const Child = props => {
                 <RenderIf isTrue={hasIcon}>
                     <IconContainer>{icon}</IconContainer>
                 </RenderIf>
-                <Label>{label}</Label>
+                <Label icon={icon}>{label}</Label>
             </NodeContainer>
             <RenderIf isTrue={hasChildren && isExpanded}>
                 <ChildrenContainer icon={icon} isChecked={isChecked}>
@@ -66,7 +66,7 @@ Child.propTypes = {
     children: PropTypes.array,
     onExpandCollapse: PropTypes.func,
     onSelect: PropTypes.func,
-    // childPath: PropTypes.array,
+    childPath: PropTypes.array,
 };
 
 Child.defaultProps = {
@@ -77,7 +77,7 @@ Child.defaultProps = {
     icon: null,
     onExpandCollapse: () => {},
     onSelect: () => {},
-    // childPath: [],
+    childPath: [],
 };
 
 export default Child;

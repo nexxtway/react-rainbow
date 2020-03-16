@@ -25,7 +25,9 @@ const Tree = props => {
 
 Tree.propTypes = {
     data: PropTypes.array,
+    /** The action triggered when the user clicking in the tree node expand or collapse button. */
     onExpandCollapse: PropTypes.func,
+    /** The action triggered when the user clicking in the tree node checkbox. */
     onSelect: PropTypes.func,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
