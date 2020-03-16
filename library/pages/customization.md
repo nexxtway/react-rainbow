@@ -151,17 +151,14 @@ const themeBlue = {
     <Container>
         <GlobalHeader>
             <Input
-            label="aplication component search"
-            hideLabel
-            placeholder="Search"
-            icon={<StyledIcon icon={faSearch}/>}
-            type="search"
-            className="rainbow-m-right_small"
+                label="aplication component search"
+                hideLabel
+                placeholder="Search"
+                icon={<StyledIcon icon={faSearch}/>}
+                type="search"
+                className="rainbow-m-right_small"
             />
-            <ButtonIcon
-                variant="border"
-                icon={<FontAwesomeIcon icon={faEllipsisV} />}
-                />
+            <ButtonIcon variant="border" icon={<FontAwesomeIcon icon={faEllipsisV} />} />
         </GlobalHeader>
         <Section>
             <Content>
