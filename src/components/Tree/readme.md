@@ -9,17 +9,30 @@
             isExpanded: true,
             children: [
                 { label: 'Node # 3.1' },
-                { label: 'Node # 3.2' },
+                { 
+                    label: 'Node # 3.2',
+                    children: [
+                        { label: 'Node # 3.2.1' },
+                    ]
+                },
             ],
         },
         {
             label: 'Node # 4',
-            children: [],
+            children: [
+                { label: 'Node # 4.1' }
+            ],
         }
     ];
+    const initialState = { data };
+    const openNode = ({ childPath }) => {
+        const child = Tree.getChild(state.data, childPath);
+        child.isExpanded = !child.isExpanded;
+        setState({ data: state.data });
+    }
     <Tree
-        data={data}
-        onExpandCollapse={() => alert('OK')}
+        data={state.data}
+        onExpandCollapse={openNode}
         className="rainbow-m-around_xx-large"
     />
 ```
@@ -58,9 +71,15 @@
             ],
         },
     ];
+    const initialState = { data };
+    const openNode = ({ childPath }) => {
+        const child = Tree.getChild(state.data, childPath);
+        child.isExpanded = !child.isExpanded;
+        setState({ data: state.data });
+    }
     <Tree
-        data={data}
-        onExpandCollapse={() => alert('OK')}
+        data={state.data}
+        onExpandCollapse={openNode}
         className="rainbow-m-around_xx-large"
     />
 ```
@@ -93,9 +112,21 @@
             ],
         },
     ];
+    const initialState = { data };
+    const openNode = ({ childPath }) => {
+        const child = Tree.getChild(state.data, childPath);
+        child.isExpanded = !child.isExpanded;
+        setState({ data: state.data });
+    }
+    const selectNode = ({ childPath }) => {
+        const child = Tree.getChild(state.data, childPath);
+        child.isChecked = !child.isChecked;
+        setState({ data: state.data });
+    }
     <Tree
-        data={data}
-        onExpandCollapse={() => alert('OK')}
+        data={state.data}
+        onExpandCollapse={openNode}
+        onSelect={selectNode}
         className="rainbow-m-around_xx-large"
     />
 ```

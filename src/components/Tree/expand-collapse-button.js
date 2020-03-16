@@ -5,12 +5,12 @@ import RightArrow from './icons/rightArrow';
 import DownArrow from './icons/downArrow';
 
 const ExpandCollapseButton = props => {
-    const { hasChildren, isExpanded } = props;
+    const { hasChildren, isExpanded, onClick } = props;
     if (hasChildren) {
         if (isExpanded) {
-            return <Button size="x-small" icon={<DownArrow />} />;
+            return <Button size="x-small" icon={<DownArrow />} onClick={onClick} />;
         }
-        return <Button size="x-small" icon={<RightArrow />} />;
+        return <Button size="x-small" icon={<RightArrow />} onClick={onClick} />;
     }
     return null;
 };

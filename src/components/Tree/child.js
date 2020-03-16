@@ -11,27 +11,47 @@ import IconContainer from './styled/iconContainer';
 import ChildrenContainer from './styled/childrenContainer';
 
 const Child = props => {
-    const { label, isExpanded, children, isChecked, icon, onExpandCollapse, onSelect } = props;
+    const {
+        label,
+        isExpanded,
+        children,
+        isChecked,
+        icon,
+        childPath,
+        onExpandCollapse,
+        onSelect,
+    } = props;
     const hasChildren = Array.isArray(children);
+    const hasCheckbox = typeof isChecked === 'boolean';
+    const hasIcon = !!icon;
     return (
         <ItemContainerLi>
             <NodeContainer>
                 <CollapseExpandButton
                     hasChildren={hasChildren}
                     isExpanded={isExpanded === true}
-                    onExpandCollapse={onExpandCollapse}
+                    onClick={() => onExpandCollapse({ childPath })}
                 />
-                <RenderIf isTrue={typeof isChecked === 'boolean'}>
-                    <Input type="checkbox" checked={isChecked === true} onSelect={onSelect} />
+                <RenderIf isTrue={hasCheckbox}>
+                    <Input
+                        type="checkbox"
+                        checked={isChecked === true}
+                        onChange={() => onSelect({ childPath })}
+                    />
                 </RenderIf>
-                <RenderIf isTrue={icon}>
-                    <IconContainer> {icon} </IconContainer>
+                <RenderIf isTrue={hasIcon}>
+                    <IconContainer>{icon}</IconContainer>
                 </RenderIf>
                 <Label>{label}</Label>
             </NodeContainer>
             <RenderIf isTrue={hasChildren && isExpanded}>
                 <ChildrenContainer icon={icon} isChecked={isChecked}>
-                    <TreeChildren data={children} />
+                    <TreeChildren
+                        data={children}
+                        onSelect={onSelect}
+                        onExpandCollapse={onExpandCollapse}
+                        childPath={childPath}
+                    />
                 </ChildrenContainer>
             </RenderIf>
         </ItemContainerLi>

@@ -2,18 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TreeChildren from './tree-children';
 import TreeContainerUl from './styled/treeContainerUl';
+import getChild from './helpers/get-child';
 
 /**
  * A Tree is visualization of a structure hierarchy with nested elements. A branch can be expanded or collapsed or selected.
  * @category Layout
  */
-
 const Tree = props => {
     const { data, onExpandCollapse, onSelect, className, style } = props;
 
     return (
         <TreeContainerUl className={className} style={style}>
-            <TreeChildren data={data} onExpandCollapse={onExpandCollapse} onSelect={onSelect} />
+            <TreeChildren
+                data={data}
+                onExpandCollapse={onExpandCollapse}
+                onSelect={onSelect}
+                childPath={[]}
+            />
         </TreeContainerUl>
     );
 };
@@ -35,5 +40,7 @@ Tree.defaultProps = {
     className: undefined,
     style: undefined,
 };
+
+Tree.getChild = getChild;
 
 export default Tree;
