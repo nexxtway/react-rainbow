@@ -11,6 +11,7 @@ describe('<Drawer/>', () => {
                 <p>A rainbow is a meteorological phenomenon ...</p>
             </Drawer>,
         );
+
         setTimeout(async () => {
             expect.assertions(1);
             const html = wrapper.html();

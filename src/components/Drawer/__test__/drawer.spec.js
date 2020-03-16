@@ -51,6 +51,7 @@ describe('<Drawer />', () => {
             </Drawer>,
         );
         setTimeout(() => {
+            expect.assertions(1);
             expect(component.find('p[data-id="drawer-children"]').text()).toBe('drawer content');
         }, 300);
     });
@@ -61,6 +62,7 @@ describe('<Drawer />', () => {
             </Drawer>,
         );
         setTimeout(() => {
+            expect.assertions(1);
             expect(component.find('footer').text()).toBe('drawer footer');
         }, 300);
     });
@@ -71,6 +73,7 @@ describe('<Drawer />', () => {
             </Drawer>,
         );
         setTimeout(() => {
+            expect.assertions(1);
             expect(component.find('section[role="dialog"]').prop('tabIndex')).toBe(-1);
         }, 300);
     });
@@ -81,6 +84,7 @@ describe('<Drawer />', () => {
             </Drawer>,
         );
         setTimeout(() => {
+            expect.assertions(1);
             expect(component.find('section[role="dialog"]').prop('aria-labelledby')).toMatch(
                 /drawer-heading/,
             );
@@ -94,6 +98,7 @@ describe('<Drawer />', () => {
             </Drawer>,
         );
         setTimeout(() => {
+            expect.assertions(1);
             expect(component.find('section[role="dialog"]').prop('aria-describedby')).toMatch(
                 /drawer-content/,
             );
@@ -107,6 +112,7 @@ describe('<Drawer />', () => {
             </Drawer>,
         );
         setTimeout(() => {
+            expect.assertions(1);
             expect(component.find('section[role="dialog"]').prop('aria-modal')).toBe(true);
         }, 300);
     });
@@ -117,6 +123,7 @@ describe('<Drawer />', () => {
             </Drawer>,
         );
         setTimeout(() => {
+            expect.assertions(1);
             expect(component.find('section[role="dialog"]').prop('aria-hidden')).toBe(false);
         }, 300);
     });
@@ -128,6 +135,7 @@ describe('<Drawer />', () => {
             </Drawer>,
         );
         setTimeout(() => {
+            expect.assertions(1);
             component.find('ButtonIcon').simulate('click');
             expect(closeMockFn).toHaveBeenCalledTimes(1);
         }, 300);
@@ -140,6 +148,7 @@ describe('<Drawer />', () => {
             </Drawer>,
         );
         setTimeout(() => {
+            expect.assertions(1);
             component.find('div[role="presentation"]').simulate('click');
             expect(closeMockFn).toHaveBeenCalledTimes(1);
         }, 300);
@@ -152,6 +161,7 @@ describe('<Drawer />', () => {
             </Drawer>,
         );
         setTimeout(() => {
+            expect.assertions(1);
             component.find('div[role="presentation"]').simulate('keyDown', { keyCode: 27 });
             expect(closeMockFn).toHaveBeenCalledTimes(1);
         }, 300);
@@ -163,6 +173,7 @@ describe('<Drawer />', () => {
             </Drawer>,
         );
         setTimeout(() => {
+            expect.assertions(1);
             expect(disableBodyScroll).toHaveBeenCalledWith(expect.any(Node));
         }, 300);
     });
@@ -176,6 +187,7 @@ describe('<Drawer />', () => {
             isOpen: false,
         });
         setTimeout(() => {
+            expect.assertions(1);
             expect(enableBodyScroll).toHaveBeenCalledWith(expect.any(Node));
         }, 300);
     });
@@ -188,6 +200,7 @@ describe('<Drawer />', () => {
         );
         component.unmount();
         setTimeout(() => {
+            expect.assertions(1);
             expect(CounterManager.decrement).toHaveBeenCalledTimes(1);
         }, 300);
     });
@@ -200,6 +213,7 @@ describe('<Drawer />', () => {
         );
         component.unmount();
         setTimeout(() => {
+            expect.assertions(1);
             expect(CounterManager.decrement).toHaveBeenCalledTimes(1);
         }, 300);
     });
@@ -210,6 +224,7 @@ describe('<Drawer />', () => {
             </Drawer>,
         );
         setTimeout(() => {
+            expect.assertions(1);
             expect(component.find(StyledCloseButton).exists()).toBe(true);
         }, 300);
     });
@@ -220,6 +235,7 @@ describe('<Drawer />', () => {
             </Drawer>,
         );
         setTimeout(() => {
+            expect.assertions(1);
             expect(component.find(StyledCloseButton).exists()).toBe(false);
         }, 300);
     });
@@ -230,6 +246,7 @@ describe('<Drawer />', () => {
             </Drawer>,
         );
         setTimeout(() => {
+            expect.assertions(1);
             expect(setState).toHaveBeenCalledWith(DrawerState.OPENING);
             expect(setState).toHaveBeenCalledWith(DrawerState.OPENED);
         }, 300);
@@ -244,6 +261,7 @@ describe('<Drawer />', () => {
             isOpen: false,
         });
         setTimeout(() => {
+            expect.assertions(1);
             expect(setState).toHaveBeenCalledWith(DrawerState.CLOSING);
             expect(setState).toHaveBeenCalledWith(DrawerState.CLOSED);
         }, 300);
@@ -256,6 +274,7 @@ describe('<Drawer />', () => {
             </Drawer>,
         );
         setTimeout(() => {
+            expect.assertions(1);
             expect(onOpenedMockFn).toHaveBeenCalledTimes(1);
         }, 300);
     });
