@@ -1,5 +1,5 @@
 import React from 'react';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import Button from './styled/button';
 import RightArrow from './icons/rightArrow';
 import DownArrow from './icons/downArrow';
@@ -16,8 +16,10 @@ const ExpandCollapseButton = props => {
 };
 
 ExpandCollapseButton.propTypes = {
-    hasChildren: propTypes.bool.isRequired,
-    isExpanded: propTypes.bool.isRequired,
+    hasChildren: PropTypes.bool.isRequired,
+    isExpanded: PropTypes.bool.isRequired,
+    /** The action triggered when the element is clicked. */
+    onClick: PropTypes.func.isRequired,
 };
 
 export default ExpandCollapseButton;

@@ -1,5 +1,5 @@
 import React from 'react';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import Input from '../Input';
 import RenderIf from '../RenderIf';
 import TreeChildren from './tree-children';
@@ -59,13 +59,14 @@ const Child = props => {
 };
 
 Child.propTypes = {
-    label: propTypes.string,
-    isChecked: propTypes.bool,
-    isExpanded: propTypes.bool,
-    icon: propTypes.node,
-    children: propTypes.array,
-    onExpandCollapse: propTypes.func,
-    onSelect: propTypes.func,
+    label: PropTypes.string,
+    isChecked: PropTypes.bool,
+    isExpanded: PropTypes.bool,
+    icon: PropTypes.node,
+    children: PropTypes.array,
+    onExpandCollapse: PropTypes.func,
+    onSelect: PropTypes.func,
+    // childPath: PropTypes.array,
 };
 
 Child.defaultProps = {
@@ -76,6 +77,7 @@ Child.defaultProps = {
     icon: null,
     onExpandCollapse: () => {},
     onSelect: () => {},
+    // childPath: [],
 };
 
 export default Child;
