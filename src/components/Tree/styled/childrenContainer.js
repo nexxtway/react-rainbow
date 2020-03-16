@@ -1,19 +1,22 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-const ChildrenContainer = styled.div`
-    margin-left: 40px;
+const ChildrenContainer = attachThemeAttrs(styled.div)`
+    margin-left: 10px;
     margin-top: 2px;
     margin-bottom: 2px;
+    border-left: 1px solid ${props => props.palette.border.divider};
+    padding-left: 20px;
 
     ${props =>
         props.icon &&
         `
-        margin-left: 48px;
+        padding-left: 46px;
     `};
     ${props =>
         props.isChecked === false &&
         `
-        margin-left: 56px;
+        padding-left: 46px;
     `};
 `;
 

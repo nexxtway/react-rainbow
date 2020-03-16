@@ -2,25 +2,25 @@
 
 ```js
     const data = [
-        { label: 'Node # 1' },
-        { label: 'Node # 2' },
+        { label: 'Tree Item' },
+        { label: 'Tree Item' },
         {
-            label: 'Node # 3',
+            label: 'Tree Branch',
             isExpanded: true,
             children: [
-                { label: 'Node # 3.1' },
+                { label: 'Tree Item' },
                 { 
-                    label: 'Node # 3.2',
+                    label: 'Tree Branch',
                     children: [
-                        { label: 'Node # 3.2.1' },
+                        { label: 'Tree Item' },
                     ]
                 },
             ],
         },
         {
-            label: 'Node # 4',
+            label: 'Tree Branch',
             children: [
-                { label: 'Node # 4.1' }
+                { label: 'Tree Item' }
             ],
         }
     ];
@@ -41,33 +41,33 @@
 
 ```js
     const data = [
-        { label: 'Node # 1', icon: <FileIcon /> },
-        { label: 'Node # 2', icon: <FileIcon /> },
-        { label: 'Node # 3', icon: <FileIcon /> },
+        { label: 'Tree Item', icon: <FileIcon /> },
+        { label: 'Tree Item', icon: <FileIcon /> },
+        { label: 'Tree Item', icon: <FileIcon /> },
         {
-            label: 'Node # 4',
+            label: 'Tree Branch',
             icon: <FolderCloseIcon />,
             isExpanded: true,
             children: [
-                { label: 'Node # 4.1', icon: <FileIcon />  },
-                { label: 'Node # 4.2', icon: <FileIcon />  },
+                { label: 'Tree Item', icon: <FileIcon />  },
+                { label: 'Tree Item', icon: <FileIcon />  },
             ],
         },
         {
-            label: 'Node # 5',
+            label: 'Tree Branch',
             icon: <FolderCloseIcon />,
             isExpanded: true,
             children: [
-                { label: 'Node # 5.1'},
-                { label: 'Node # 5.2'},
+                { label: 'Tree Item'},
+                { label: 'Tree Item'},
             ],
         },
         {
-            label: 'Node # 6',
+            label: 'Tree Branch',
             icon: <FolderCloseIcon />,
             children: [
-                { label: 'Node # 6.1' },
-                { label: 'Node # 6.2' },
+                { label: 'Tree Item' },
+                { label: 'Tree Item' },
             ],
         },
     ];
@@ -88,27 +88,27 @@
 
 ```js
     const data = [
-        { label: 'Node # 1', icon: <FileIcon /> },
-        { label: 'Node # 2', icon: <FileIcon /> },
-        { label: 'Node # 3', icon: <FileIcon /> },
+        { label: 'Tree Item', icon: <FileIcon /> },
+        { label: 'Tree Item', icon: <FileIcon /> },
+        { label: 'Tree Item', icon: <FileIcon /> },
         {
-            label: 'Node # 4',
+            label: 'Tree Branch',
             icon: <FolderCloseIcon />,
             isExpanded: true,
             isChecked: false,
             children: [
-                { label: 'Node # 4.1', isChecked: false },
-                { label: 'Node # 4.2', isChecked: false },
+                { label: 'Tree Item', isChecked: false },
+                { label: 'Tree Item', isChecked: false },
             ],
         },
         {
-            label: 'Node # 4',
+            label: 'Tree Branch',
             icon: <FolderCloseIcon />,
             isExpanded: true,
             isChecked: false,
             children: [
-                { label: 'Node # 4.1', isChecked: false, icon: <FileIcon /> },
-                { label: 'Node # 4.2', isChecked: false, icon: <FileIcon /> },
+                { label: 'Tree Item', isChecked: false, icon: <FileIcon /> },
+                { label: 'Tree Item', isChecked: false, icon: <FileIcon /> },
             ],
         },
     ];

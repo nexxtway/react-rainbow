@@ -5,7 +5,7 @@ import TreeContainerUl from './styled/treeContainerUl';
 import getChild from './helpers/get-child';
 
 /**
- * A Tree is visualization of a structure hierarchy with nested elements. A branch can be expanded or collapsed or selected.
+ * A Tree is visualization of a structure hierarchy with nested elements. A branch can be expanded or collapsed or selected. This is a BETA version.
  * @category Layout
  */
 const Tree = props => {
