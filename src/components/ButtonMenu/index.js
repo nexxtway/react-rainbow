@@ -65,7 +65,7 @@ ButtonMenu.propTypes = {
      * when the ButtonMenu is open. */
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
     /** The variant changes the look of the button.
-     * Accepted variants include base, brand, success, destructive, neutral, outline-brand, border, border-filled, inverse and border-inverse.
+     * Accepted variants include base, neutral, brand, success, destructive, outline-brand, border, border-filled, inverse and border-inverse.
      * This value defaults to border-filled. */
     buttonVariant: PropTypes.oneOf([
         'base',
