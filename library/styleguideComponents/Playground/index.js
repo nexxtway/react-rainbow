@@ -6,8 +6,9 @@ import './styles.css';
 export default function PlaygroundRenderer(props) {
     const { name, preview, previewProps, tabButtons, tabBody, toolbar } = props;
     const { ...rest } = previewProps;
+    const isCustimizationPage = name === 'Customization';
 
-    if (isNotComponentPage(name)) {
+    if (isNotComponentPage(name) && !isCustimizationPage) {
         return <div className="rainbow-position_relative">{preview}</div>;
     }
 
