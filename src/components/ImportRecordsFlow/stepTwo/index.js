@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import RenderIf from '../../../components/RenderIf';
 import UploadFileButton from './uploadFileButton';
 import Preview from './preview';
-import StyledUploadFileWrapper from './styled/uploadFileWrapper';
 import StyledContainer from './styled/container';
 import StyledDropImg from './styled/dropImg';
 import StyledDropTitle from './styled/dropTitle';
