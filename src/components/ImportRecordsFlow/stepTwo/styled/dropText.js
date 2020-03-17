@@ -1,18 +1,16 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../../../src/styles/helpers/attachThemeAttrs';
 
-const StyledText = attachThemeAttrs(styled.h1)`
+const StyledDropText = attachThemeAttrs(styled.h1)`
     font-size: 14px;
     font-weight: 300;
     text-align: center;
-    color: #a0a0bc;
-    position: absolute;
+    color: ${props => props.palette.brand.main};
     bottom: 8px;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
-    ${props => props.isDragOver && `display: none;`};
+    pointer-events: none;
 `;
 
-export default StyledText;
+export default StyledDropText;

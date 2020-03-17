@@ -7,6 +7,7 @@ import StyledUploadFileWrapper from './styled/uploadFileWrapper';
 import StyledContainer from './styled/container';
 import StyledDropImg from './styled/dropImg';
 import StyledDropTitle from './styled/dropTitle';
+import StyledDropText from './styled/dropText';
 import StyledText from './styled/text';
 
 function preventDefault(event) {
@@ -79,16 +80,12 @@ export default function StepTwo(props) {
             <RenderIf isTrue={isDragOver}>
                 <StyledDropImg />
                 <StyledDropTitle>Drop your file here</StyledDropTitle>
+                <StyledDropText>
+                    Drop your files for upload them instantly to the system
+                </StyledDropText>
             </RenderIf>
 
-            <StyledText isDragOver={isDragOver}>
-                <RenderIf isTrue={isDragOver}>
-                    <>Drop your files for upload them instantly to the system</>
-                </RenderIf>
-                <RenderIf isTrue={!isDragOver}>
-                    <>Find the file in your desktop.</>
-                </RenderIf>
-            </StyledText>
+            <StyledText isDragOver={isDragOver}>Find the file in your desktop.</StyledText>
         </StyledContainer>
     );
 }

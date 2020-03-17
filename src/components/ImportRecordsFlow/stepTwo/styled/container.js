@@ -4,7 +4,7 @@ import replaceAlpha from '../../../../styles/helpers/color/replaceAlpha';
 
 const StyledContainer = attachThemeAttrs(styled.div)`
     border-radius: 4px;
-    border: dashed 3px;
+    border: dashed 1px;
     border-color: #eaeef5;
     background-color: #fcfcfc;
     height: 260px;
