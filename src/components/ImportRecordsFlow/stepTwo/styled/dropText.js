@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../../../src/styles/helpers/attachThemeAttrs';
 
-const StyledDropText = attachThemeAttrs(styled.h1)`
+const StyledDropText = attachThemeAttrs(styled.p)`
     font-size: 14px;
     font-weight: 300;
     text-align: center;
