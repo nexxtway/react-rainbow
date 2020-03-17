@@ -73,9 +73,7 @@ export default function StepTwo(props) {
             onDrop={handleDrop}
             draggable
         >
-            <StyledUploadFileWrapper isDragOver={isDragOver}>
-                <UploadFileButton onChange={handleChange} />
-            </StyledUploadFileWrapper>
+            <UploadFileButton onChange={handleChange} isDragOver={isDragOver} />
 
             <RenderIf isTrue={isDragOver}>
                 <StyledDropImg />
@@ -85,7 +83,9 @@ export default function StepTwo(props) {
                 </StyledDropText>
             </RenderIf>
 
-            <StyledText isDragOver={isDragOver}>Find the file in your desktop.</StyledText>
+            <RenderIf isTrue={!isDragOver}>
+                <StyledText>Find the file in your desktop.</StyledText>
+            </RenderIf>
         </StyledContainer>
     );
 }

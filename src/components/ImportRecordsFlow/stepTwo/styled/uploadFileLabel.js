@@ -38,6 +38,14 @@ const StyledUploadFileLabel = styled.label.attrs(props => {
     user-select: none;
     box-sizing: border-box;
 
+    ${props =>
+        props.isDragOver &&
+        `
+            width: 0;
+            height: 0;
+            overflow: hidden;
+    `};
+
     &:focus {
         outline: 0;
         box-shadow: ${props => props.brandShadow};
