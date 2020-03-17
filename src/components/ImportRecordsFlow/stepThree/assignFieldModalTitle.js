@@ -1,16 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import StyledAssignFieldHeader from './styled/assignFieldHeader';
 import StyledAssignFieldTitle from './styled/assignFieldTitle';
 
-const AssignFieldModalTitle = props => {
-    const { field } = props;
+const AssignFieldModalTitle = ({ field }) => {
     return (
-        <StyledAssignFieldHeader>
-            <StyledAssignFieldTitle>
-                Assign to the field: <b>{field}</b>
-            </StyledAssignFieldTitle>
-        </StyledAssignFieldHeader>
+        <StyledAssignFieldTitle>
+            Assign to the field: <b>{field}</b>
+        </StyledAssignFieldTitle>
     );
 };
 
