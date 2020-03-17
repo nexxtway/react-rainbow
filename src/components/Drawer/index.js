@@ -52,7 +52,9 @@ export default function Drawer(props) {
     const triggerRef = useRef(null);
     const drawerRef = useRef(null);
     const contentRef = useRef(null);
-    const [drawerState, setDrawerState] = useState(DrawerState.CLOSED);
+    const [drawerState, setDrawerState] = useState(
+        isOpen ? DrawerState.OPENED : DrawerState.CLOSED,
+    );
 
     useEffect(() => {
         const contentElement = contentRef.current;
@@ -138,7 +140,7 @@ export default function Drawer(props) {
                     <Header id={headerId} content={header} />
                     <RenderIf isTrue={!hideCloseButton}>
                         <StyledCloseButton
-                            data-id="drawer-close-button"
+                            id="drawer-close-button"
                             icon={<CloseIcon />}
                             title="Hide"
                             onClick={closeDrawer}

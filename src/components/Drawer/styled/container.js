@@ -35,7 +35,7 @@ const getPosition = slideFrom => {
     return positions[slideFrom];
 };
 
-const StyledContainer = attachThemeAttrs(styled.div).attrs(props => {
+const StyledContainer = attachThemeAttrs(styled.section).attrs(props => {
     const size = getSize(props.size, props.slideFrom);
     const position = getPosition(props.slideFrom);
     return {
