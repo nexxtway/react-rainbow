@@ -109,6 +109,19 @@ describe('<Drawer />', () => {
         component.find('ButtonIcon').simulate('click');
         expect(closeMockFn).toHaveBeenCalledTimes(1);
     });
+    it('should fire an event when the drawer is opened', async done => {
+        expect.assertions(1);
+        const onOpenedMockFn = jest.fn();
+        mount(
+            <Drawer isOpen onOpened={onOpenedMockFn}>
+                <p />
+            </Drawer>,
+        );
+        setTimeout(() => {
+            expect(onOpenedMockFn).toHaveBeenCalledTimes(1);
+            done();
+        }, 300);
+    });
     it('should fire an event when the drawer backdrop is clicked and the drawer is open', () => {
         const closeMockFn = jest.fn();
         const component = mount(
