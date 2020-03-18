@@ -10,7 +10,7 @@ import Label from './styled/label';
 import IconContainer from './styled/iconContainer';
 import ChildrenContainer from './styled/childrenContainer';
 
-const Child = props => {
+export default function Child(props) {
     const {
         label,
         isExpanded,
@@ -56,7 +56,7 @@ const Child = props => {
             </RenderIf>
         </ItemContainerLi>
     );
-};
+}
 
 Child.propTypes = {
     label: PropTypes.string,
@@ -79,5 +79,3 @@ Child.defaultProps = {
     onSelect: () => {},
     childPath: [],
 };
-
-export default Child;

@@ -8,7 +8,7 @@ import getChild from './helpers/get-child';
  * A Tree is visualization of a structure hierarchy with nested elements. A branch can be expanded or collapsed or selected. This is a BETA version.
  * @category Layout
  */
-const Tree = props => {
+export default function Tree(props) {
     const { data, onExpandCollapse, onSelect, className, style } = props;
 
     return (
@@ -21,7 +21,7 @@ const Tree = props => {
             />
         </TreeContainerUl>
     );
-};
+}
 
 Tree.propTypes = {
     /** A array with the nodes of the ButtonGroupPicker. This is a recursive shape that is used for render the nested nodes passed on children of the array. */
@@ -53,5 +53,3 @@ Tree.defaultProps = {
 };
 
 Tree.getChild = getChild;
-
-export default Tree;

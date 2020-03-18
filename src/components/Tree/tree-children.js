@@ -1,7 +1,7 @@
 import React from 'react';
 import Child from './child';
 
-const TreeChildren = ({ data, onSelect, onExpandCollapse, childPath }) => {
+export default function TreeChildren({ data, onSelect, onExpandCollapse, childPath }) {
     return data.map((props, index) => (
         <Child
             {...props}
@@ -10,6 +10,4 @@ const TreeChildren = ({ data, onSelect, onExpandCollapse, childPath }) => {
             childPath={[...childPath, index]}
         />
     ));
-};
-
-export default TreeChildren;
+}
