@@ -5,7 +5,7 @@ const StyledText = attachThemeAttrs(styled.p)`
     font-size: 14px;
     font-weight: 300;
     text-align: center;
-    color: #a0a0bc;
+    color: ${props => props.palette.text.label};
     position: absolute;
     bottom: 8px;
     margin: 0;

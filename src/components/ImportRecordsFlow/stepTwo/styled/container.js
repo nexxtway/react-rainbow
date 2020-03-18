@@ -1,12 +1,10 @@
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../../../src/styles/helpers/attachThemeAttrs';
-import replaceAlpha from '../../../../styles/helpers/color/replaceAlpha';
+import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 
 const StyledContainer = attachThemeAttrs(styled.div)`
     border-radius: 4px;
-    border: dashed 1px;
-    border-color: #eaeef5;
-    background-color: #fcfcfc;
+    border: dashed 1px ${props => props.palette.background.highlight};
+    background-color: ${props => props.palette.background.secondary};
     height: 260px;
     margin: 0 16px 24px 16px;
     display: flex;
@@ -17,8 +15,8 @@ const StyledContainer = attachThemeAttrs(styled.div)`
     ${props =>
         props.isDragOver &&
         `
-            background-color: ${replaceAlpha(props.palette.brand.main, 0.05)};
-            border-color: ${props.palette.brand.light};
+            background-color: ${props.palette.action.active};
+            border: dashed 1px ${props.palette.brand.main};
         `};
 `;
 
