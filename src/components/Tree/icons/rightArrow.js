@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function RightArrow({ className }) {
+export default function RightArrow(props) {
+    const { className, style } = props;
     return (
-        <svg width="6px" height="10px" viewBox="0 0 6 10" className={className}>
+        <svg width="6px" height="10px" viewBox="0 0 6 10" className={className} style={style}>
             <g id="components" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g id="Components-Tree" transform="translate(-173.000000, -660.000000)">
                     <g id="Group-18" transform="translate(127.000000, 350.000000)">
@@ -29,8 +30,10 @@ export default function RightArrow({ className }) {
 
 RightArrow.propTypes = {
     className: PropTypes.string,
+    style: PropTypes.object,
 };
 
 RightArrow.defaultProps = {
     className: undefined,
+    style: undefined,
 };

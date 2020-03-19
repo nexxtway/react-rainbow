@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function DownArrow({ className }) {
+export default function DownArrow(props) {
+    const { className, style } = props;
     return (
-        <svg width="10px" height="6px" viewBox="0 0 10 6" className={className}>
+        <svg width="10px" height="6px" viewBox="0 0 10 6" className={className} style={style}>
             <g id="components" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g id="Components-Tree" transform="translate(-171.000000, -534.000000)">
                     <g id="Group-18" transform="translate(127.000000, 350.000000)">
@@ -29,8 +30,10 @@ export default function DownArrow({ className }) {
 
 DownArrow.propTypes = {
     className: PropTypes.string,
+    style: PropTypes.object,
 };
 
 DownArrow.defaultProps = {
     className: undefined,
+    style: undefined,
 };

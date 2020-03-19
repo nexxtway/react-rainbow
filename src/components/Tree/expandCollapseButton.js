@@ -22,6 +22,5 @@ export default function ExpandCollapseButton(props) {
 ExpandCollapseButton.propTypes = {
     hasChildren: PropTypes.bool.isRequired,
     isExpanded: PropTypes.bool.isRequired,
-    /** The action triggered when the element is clicked. */
     onClick: PropTypes.func.isRequired,
 };

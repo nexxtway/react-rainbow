@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TreeChildren from './treeChildren';
 import TreeContainerUl from './styled/treeContainerUl';
-import getChild from './helpers/get-child';
+import getChild from './helpers/getChild';
 
 /**
  * A Tree is visualization of a structure hierarchy with nested elements. A branch can be expanded or collapsed or selected. This is a BETA version.
@@ -24,7 +24,9 @@ export default function Tree(props) {
 }
 
 Tree.propTypes = {
-    /** A array with the nodes of the ButtonGroupPicker. This is a recursive shape that is used for render the nested nodes passed on children of the array. */
+    /** A array with the nodes of the ButtonGroupPicker. This is a recursive shape that is used for render the nested nodes passed on children of the array.
+     *
+     * `isChecked`: can be `true | false | undefined`,  if is true the checkbox is checked, if is false the checkbox is rendered unfilled and if is not passed the checkbox is not rendered. */
     data: PropTypes.arrayOf(
         PropTypes.shape({
             label: PropTypes.node,
@@ -34,9 +36,9 @@ Tree.propTypes = {
             children: PropTypes.array,
         }),
     ),
-    /** The action triggered when the user clicking in the tree node expand or collapse button. */
+    /** The action triggered when the user clicks in the tree node expand or collapse button. */
     onExpandCollapse: PropTypes.func,
-    /** The action triggered when the user clicking in the tree node checkbox. */
+    /** The action triggered when the user clicks in the tree node checkbox. */
     onSelect: PropTypes.func,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
@@ -52,4 +54,8 @@ Tree.defaultProps = {
     style: undefined,
 };
 
+/**
+ * Add documentation.
+ * @public
+ */
 Tree.getChild = getChild;

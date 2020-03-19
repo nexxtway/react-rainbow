@@ -59,7 +59,7 @@ export default function Child(props) {
 }
 
 Child.propTypes = {
-    label: PropTypes.string,
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     isChecked: PropTypes.bool,
     isExpanded: PropTypes.bool,
     icon: PropTypes.node,
@@ -70,7 +70,7 @@ Child.propTypes = {
 };
 
 Child.defaultProps = {
-    label: '',
+    label: undefined,
     isChecked: undefined,
     isExpanded: undefined,
     children: undefined,
