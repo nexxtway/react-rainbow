@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TreeChildren from './tree-children';
+import TreeChildren from './treeChildren';
 import TreeContainerUl from './styled/treeContainerUl';
 import getChild from './helpers/get-child';
 
