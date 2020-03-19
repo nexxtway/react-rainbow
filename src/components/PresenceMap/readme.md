@@ -241,7 +241,7 @@ const Icon = styled(FontAwesomeIcon).attrs(props => {
 
 const ControlsContainer = styled.div`
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     padding: 12px;
 `;
@@ -360,39 +360,7 @@ const PresenceMapExample = () => {
             onMarkerClick={(marker, idx) => handleMarkerClick(marker, idx)}
         >
             <ControlsContainer>
-                <ButtonIcon
-                    size="medium"
-                    icon={<Icon icon={faCrosshairs} />}
-                    variant="border-filled"
-                    onClick={handleCenterGeolocation}
-                    className="rainbow-m-right_medium"
-                />
-                <RegularControl
-                    className="rainbow-m-right_medium"
-                    type="checkbox"
-                    label="Traffic"
-                    onClick={handleShowTraffic}
-                    checked={showTrafficState} />
-                <RegularControl
-                    className="rainbow-m-right_medium"
-                    type="checkbox"
-                    label="Transit"
-                    onClick={handleShowTransit}
-                    checked={showTransitState} />
-                <MenuControl
-                    id="picklist-mapstyle-1"
-                    onChange={handleMapStyle}
-                    value={mapTypeState}
-                    label="Select Map Type"
-                    hideLabel
-                    className="rainbow-m-right_medium"
-                >
-                    <PicklistOption name="roadmap" label="Roadmap" icon={<LocationIcon />} />
-                    <PicklistOption name="satellite" label="Satellite" icon={<LocationIcon />} />
-                    <PicklistOption name="hybrid" label="Hybrid" icon={<LocationIcon />} />
-                    <PicklistOption name="terrain" label="Terrain" icon={<LocationIcon />} />
-                </MenuControl>
-                {markers.length &&
+                                {markers.length &&
                     <MenuControl
                         id="picklist-availability-1"
                         onChange={handleCarAvailability}
@@ -404,6 +372,39 @@ const PresenceMapExample = () => {
                         <PicklistOption name="availables" label="Availables" />
                         <PicklistOption name="busy" label="Busy" />
                     </MenuControl>}
+                <div className="rainbow-flex">
+                    <ButtonIcon
+                        size="medium"
+                        icon={<Icon icon={faCrosshairs} />}
+                        variant="border-filled"
+                        onClick={handleCenterGeolocation}
+                        className="rainbow-m-right_medium"
+                    />
+                    <RegularControl
+                        className="rainbow-m-right_medium"
+                        type="checkbox"
+                        label="Traffic"
+                        onClick={handleShowTraffic}
+                        checked={showTrafficState} />
+                    <RegularControl
+                        className="rainbow-m-right_medium"
+                        type="checkbox"
+                        label="Transit"
+                        onClick={handleShowTransit}
+                        checked={showTransitState} />
+                    <MenuControl
+                        id="picklist-mapstyle-1"
+                        onChange={handleMapStyle}
+                        value={mapTypeState}
+                        label="Select Map Type"
+                        hideLabel
+                    >
+                        <PicklistOption name="roadmap" label="Roadmap" icon={<LocationIcon />} />
+                        <PicklistOption name="satellite" label="Satellite" icon={<LocationIcon />} />
+                        <PicklistOption name="hybrid" label="Hybrid" icon={<LocationIcon />} />
+                        <PicklistOption name="terrain" label="Terrain" icon={<LocationIcon />} />
+                    </MenuControl>
+                </div>
             </ControlsContainer>
         </PresenceMap>
     );

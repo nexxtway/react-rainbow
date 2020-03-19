@@ -16,7 +16,7 @@ const initialState = {
         <div className="rainbow-align-content_center rainbow-p-medium rainbow-m_auto">
             <Button
                 className="rainbow-m-around_medium"
-                label="Open Left"
+                label="Slide from Left"
                 onClick={() => setState({
                     isOpenLeft: true,
                 })}
@@ -25,7 +25,7 @@ const initialState = {
         <div className="rainbow-align-content_center rainbow-p-medium rainbow-m_auto">
             <Button
                 className="rainbow-m-around_medium"
-                label="Open Right"
+                label="Slide from Right"
                 onClick={() => setState({
                     isOpenRight: true,
                 })}
