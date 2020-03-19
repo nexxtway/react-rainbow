@@ -5,11 +5,11 @@ import StyledUploadFileLabel from './styled/uploadFileLabel';
 import StyledUploadIcon from './styled/uploadIcon';
 import HiddenElement from '../../Structural/hiddenElement';
 
-export default function UploadFileButton({ onChange }) {
+export default function UploadFileButton({ onChange, isDragOver }) {
     const [uploadFileInputId] = useState(uniqueId('upload-file-input'));
 
     return (
-        <StyledUploadFileLabel htmlFor={uploadFileInputId}>
+        <StyledUploadFileLabel htmlFor={uploadFileInputId} isDragOver={isDragOver}>
             <HiddenElement
                 as="input"
                 id={uploadFileInputId}
@@ -26,4 +26,9 @@ export default function UploadFileButton({ onChange }) {
 
 UploadFileButton.propTypes = {
     onChange: PropTypes.func.isRequired,
+    isDragOver: PropTypes.bool,
+};
+
+UploadFileButton.defaultProps = {
+    isDragOver: false,
 };
