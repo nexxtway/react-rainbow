@@ -10,4 +10,4 @@ export interface ColumnProps<P> {
     type?: 'text' | 'action';
 }
 
-export default function<P>(props: ColumnProps<P>  & P): JSX.Element | null;
+export default function<P>(props: ColumnProps<P> & P): JSX.Element | null;
