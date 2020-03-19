@@ -25,8 +25,7 @@ export default function Tree(props) {
 
 Tree.propTypes = {
     /** A array with the nodes of the ButtonGroupPicker. This is a recursive shape that is used for render the nested nodes passed on children of the array.
-     *
-     * `isChecked`: can be `true | false | undefined`,  if is true the checkbox is checked, if is false the checkbox is rendered unfilled and if is not passed the checkbox is not rendered. */
+     */
     data: PropTypes.arrayOf(
         PropTypes.shape({
             label: PropTypes.node,
