@@ -5,6 +5,7 @@ import ExperiencesIcon from './icons/experiencesIcon';
 import PuzzleIcon from './icons/puzzleIcon';
 import StartupIcon from './icons/startupIcon';
 import DesignIcon from './icons/designIcon';
+import ConsoleIcon from './icons/consoleIcon';
 import isNotComponentPage from './../utils';
 
 const name = window.location.href.split('#/')[1];
@@ -36,29 +37,37 @@ export default class ComponentsList extends Component {
         const { selectedItem } = this.state;
 
         return (
-            <Sidebar
-                selectedItem={selectedItem}
-                onSelect={this.handleOnSelect}>
+            <Sidebar selectedItem={selectedItem} onSelect={this.handleOnSelect}>
                 <SidebarItem
                     icon={<StartupIcon />}
                     name="GettingStarted"
                     label="Getting Started"
-                    href="/#/GettingStarted" />
+                    href="/#/GettingStarted"
+                />
                 <SidebarItem
                     icon={<PuzzleIcon />}
                     name="Components"
                     label="Components"
-                    href="/#/Components" />
+                    href="/#/Components"
+                />
+                <SidebarItem
+                    icon={<ConsoleIcon />}
+                    name="Customization"
+                    label="Customization"
+                    href="/#/Customization"
+                />
                 <SidebarItem
                     icon={<ExperiencesIcon />}
                     name="Experiences"
                     label="Experiences"
-                    href="/#/Experiences" />
+                    href="/#/Experiences"
+                />
                 <SidebarItem
                     icon={<DesignIcon />}
                     name="Designs"
                     label="Designs"
-                    href="/#/Designs" />
+                    href="/#/Designs"
+                />
             </Sidebar>
         );
     }

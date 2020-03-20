@@ -41,12 +41,12 @@ function resolveCustomBackground(background) {
             background: {
                 main: background,
                 secondary: dark ? lighten(background, 0.04) : darken(background, 0.04),
-                highlight: dark ? lighten(background, 0.2) : darken(background, 0.2),
+                highlight: dark ? lighten(background, 0.15) : darken(background, 0.1),
                 disabled: dark ? lighten(background, 0.08) : darken(background, 0.08),
             },
             text: {
                 main: mainText,
-                title: dark ? darken(mainText, 0.3) : lighten(mainText, 0.3),
+                title: dark ? darken(mainText, 0.25) : lighten(mainText, 0.24),
                 header: dark ? darken(mainText, 0.6) : lighten(mainText, 0.6),
                 label: dark ? darken(mainText, 0.3) : lighten(mainText, 0.3),
                 disabled: dark ? darken(mainText, 0.7) : lighten(mainText, 0.7),

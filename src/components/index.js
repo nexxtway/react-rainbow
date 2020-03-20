@@ -24,6 +24,7 @@ export { default as Column } from './Column';
 export { default as Dataset } from './Dataset';
 export { default as DatePicker } from './DatePicker';
 export { default as DateTimePicker } from './DateTimePicker';
+export { default as Drawer } from './Drawer';
 export { default as GMap } from './GMap';
 export { default as GoogleAddressLookup } from './GoogleAddressLookup';
 export { default as ImportRecordsFlow } from './ImportRecordsFlow';
@@ -58,6 +59,7 @@ export { default as TableWithBrowserPagination } from './TableWithBrowserPaginat
 export { default as Textarea } from './Textarea';
 export { default as TimelineMarker } from './TimelineMarker';
 export { default as TimePicker } from './TimePicker';
+export { default as Tree } from './Tree';
 export { default as VerticalItem } from './VerticalItem';
 export { default as VerticalNavigation } from './VerticalNavigation';
 export { default as VerticalSection } from './VerticalSection';

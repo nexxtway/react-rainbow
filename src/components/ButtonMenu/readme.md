@@ -706,3 +706,29 @@ const FlightCard = ( props ) => {
 </div>
 
 ```
+
+##### button menu with label
+
+```js
+import React from 'react';
+import { ButtonGroup, ButtonMenu, MenuItem } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
+
+<div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
+    <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large">
+        <ButtonMenu
+            menuAlignment="right"
+            menuSize="x-small"
+            buttonVariant="base"
+            label="Config"
+            icon={<FontAwesomeIcon icon={faCog} />}
+        >
+            <MenuItem label="Menu Item One" />
+            <MenuItem label="Menu Item Two" />
+            <MenuItem label="Menu Item Three" />
+            <MenuItem label="Menu Item Four" />
+        </ButtonMenu>
+    </GlobalHeader>
+</div>
+```

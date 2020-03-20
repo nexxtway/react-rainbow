@@ -56,8 +56,8 @@ const iconPath = 'M11.9871,1.1364008 L12.2359799,1.23823648 L14.0335516,2.030504
 const markers = [
     {
         position: {
-            lat: -32.836538,
-            lng: 151.1279,
+            lat: 41.878113,
+            lng: -87.629799,
         },
         icon: {
             path: iconPath,
@@ -71,8 +71,8 @@ const markers = [
     },
     {
         position: {
-            lat: -33.850538,
-            lng: 151.279,
+            lat: 41.878189,
+            lng: -87.627691,
         },
         icon: {
             path: iconPath,
@@ -85,8 +85,8 @@ const markers = [
     },
     {
         position: {
-            lat: -31.860538,
-            lng: 151.1479,
+            lat: 41.872125,
+            lng: -87.633570,
         },
         icon: {
             path: iconPath,
@@ -197,7 +197,7 @@ const PresenceMapExample = () => {
 
 ```js
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import { PresenceMap, Input, Picklist, PicklistOption, ButtonIcon } from 'react-rainbow-components';
+import { PresenceMap, Input, Picklist, PicklistOption, ButtonIcon, RenderIf } from 'react-rainbow-components';
 import styled from 'styled-components';
 import LocationIcon from './icons/locationIcon';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -241,7 +241,7 @@ const Icon = styled(FontAwesomeIcon).attrs(props => {
 
 const ControlsContainer = styled.div`
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     padding: 12px;
 `;
@@ -251,8 +251,8 @@ const iconPath = 'M11.9871,1.1364008 L12.2359799,1.23823648 L14.0335516,2.030504
 const markers = [
     {
         position: {
-            lat: -32.836538,
-            lng: 151.1279,
+            lat: 41.878113,
+            lng: -87.629799,
         },
         icon: {
             path: iconPath,
@@ -267,8 +267,8 @@ const markers = [
     },
     {
         position: {
-            lat: -33.850538,
-            lng: 151.279,
+            lat: 41.878189,
+            lng: -87.627691,
         },
         icon: {
             path: iconPath,
@@ -282,8 +282,8 @@ const markers = [
     },
     {
         position: {
-            lat: -31.860538,
-            lng: 150.1479,
+            lat: 41.872125,
+            lng: -87.633570,
         },
         icon: {
             path: iconPath,
@@ -346,6 +346,7 @@ const PresenceMapExample = () => {
     
     const handleCarAvailability = value => {
         setCarAvailability(value);
+        setCenter('auto');
     };
 
     return (
@@ -359,49 +360,51 @@ const PresenceMapExample = () => {
             onMarkerClick={(marker, idx) => handleMarkerClick(marker, idx)}
         >
             <ControlsContainer>
-                <ButtonIcon
-                    size="medium"
-                    icon={<Icon icon={faCrosshairs} />}
-                    variant="border-filled"
-                    onClick={handleCenterGeolocation}
-                    className="rainbow-m-right_medium"
-                />
-                <RegularControl
-                    className="rainbow-m-right_medium"
-                    type="checkbox"
-                    label="Traffic"
-                    onClick={handleShowTraffic}
-                    checked={showTrafficState} />
-                <RegularControl
-                    className="rainbow-m-right_medium"
-                    type="checkbox"
-                    label="Transit"
-                    onClick={handleShowTransit}
-                    checked={showTransitState} />
-                <MenuControl
-                    id="picklist-mapstyle-1"
-                    onChange={handleMapStyle}
-                    value={mapTypeState}
-                    label="Select Map Type"
-                    hideLabel
-                    className="rainbow-m-right_medium"
-                >
-                    <PicklistOption name="roadmap" label="Roadmap" icon={<LocationIcon />} />
-                    <PicklistOption name="satellite" label="Satellite" icon={<LocationIcon />} />
-                    <PicklistOption name="hybrid" label="Hybrid" icon={<LocationIcon />} />
-                    <PicklistOption name="terrain" label="Terrain" icon={<LocationIcon />} />
-                </MenuControl>
-                <MenuControl
-                    id="picklist-availability-1"
-                    onChange={handleCarAvailability}
-                    value={carAvailabilityState}
-                    label="Select Car Availability"
-                    hideLabel
-                >
-                    <PicklistOption name="all" label="All" />
-                    <PicklistOption name="availables" label="Availables" />
-                    <PicklistOption name="busy" label="Busy" />
-                </MenuControl>
+                                {markers.length &&
+                    <MenuControl
+                        id="picklist-availability-1"
+                        onChange={handleCarAvailability}
+                        value={carAvailabilityState}
+                        label="Select Car Availability"
+                        hideLabel
+                    >
+                        <PicklistOption name="all" label="All" />
+                        <PicklistOption name="availables" label="Availables" />
+                        <PicklistOption name="busy" label="Busy" />
+                    </MenuControl>}
+                <div className="rainbow-flex">
+                    <ButtonIcon
+                        size="medium"
+                        icon={<Icon icon={faCrosshairs} />}
+                        variant="border-filled"
+                        onClick={handleCenterGeolocation}
+                        className="rainbow-m-right_medium"
+                    />
+                    <RegularControl
+                        className="rainbow-m-right_medium"
+                        type="checkbox"
+                        label="Traffic"
+                        onClick={handleShowTraffic}
+                        checked={showTrafficState} />
+                    <RegularControl
+                        className="rainbow-m-right_medium"
+                        type="checkbox"
+                        label="Transit"
+                        onClick={handleShowTransit}
+                        checked={showTransitState} />
+                    <MenuControl
+                        id="picklist-mapstyle-1"
+                        onChange={handleMapStyle}
+                        value={mapTypeState}
+                        label="Select Map Type"
+                        hideLabel
+                    >
+                        <PicklistOption name="roadmap" label="Roadmap" icon={<LocationIcon />} />
+                        <PicklistOption name="satellite" label="Satellite" icon={<LocationIcon />} />
+                        <PicklistOption name="hybrid" label="Hybrid" icon={<LocationIcon />} />
+                        <PicklistOption name="terrain" label="Terrain" icon={<LocationIcon />} />
+                    </MenuControl>
+                </div>
             </ControlsContainer>
         </PresenceMap>
     );

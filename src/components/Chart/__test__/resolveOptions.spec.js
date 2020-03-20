@@ -1,5 +1,22 @@
 import resolveOptions from '../resolveOptions';
 
+jest.mock('../../../styles/defaultTheme', () => ({
+    palette: {
+        background: {
+            main: '#000',
+        },
+        text: {
+            main: 'main text color',
+            label: 'label color',
+        },
+        border: {
+            divider: 'divider color',
+        },
+        getContrastText: () => 'contrast text',
+    },
+}));
+jest.mock('../../../styles/helpers/color/replaceAlpha', () => () => 'replace alpha color');
+
 const baseOptions = {
     legend: {
         display: true,
@@ -7,13 +24,13 @@ const baseOptions = {
         fullWidth: true,
         labels: {
             usePointStyle: true,
-            fontColor: 'rgba(87, 101, 116, 1)',
+            fontColor: 'label color',
         },
     },
     tooltips: {
-        backgroundColor: 'rgba(0, 0, 0, 0.8)',
-        titleFontColor: 'rgba(255, 255, 255, 1)',
-        bodyFontColor: 'rgba(255, 255, 255, 1)',
+        backgroundColor: 'replace alpha color',
+        titleFontColor: 'contrast text',
+        bodyFontColor: 'contrast text',
     },
 };
 
@@ -113,11 +130,11 @@ describe('resolveOptions function', () => {
                     {
                         stacked: true,
                         gridLines: {
-                            color: 'rgba(227, 229, 237, 1)',
-                            zeroLineColor: 'rgba(227, 229, 237, 1)',
+                            color: 'divider color',
+                            zeroLineColor: 'divider color',
                         },
                         ticks: {
-                            fontColor: 'rgba(87, 101, 116, 1)',
+                            fontColor: 'label color',
                         },
                     },
                 ],
@@ -125,11 +142,11 @@ describe('resolveOptions function', () => {
                     {
                         stacked: true,
                         gridLines: {
-                            color: 'rgba(227, 229, 237, 1)',
-                            zeroLineColor: 'rgba(227, 229, 237, 1)',
+                            color: 'divider color',
+                            zeroLineColor: 'divider color',
                         },
                         ticks: {
-                            fontColor: 'rgba(87, 101, 116, 1)',
+                            fontColor: 'label color',
                         },
                     },
                 ],
@@ -168,11 +185,11 @@ describe('resolveOptions function', () => {
                     {
                         stacked: true,
                         gridLines: {
-                            color: 'rgba(227, 229, 237, 1)',
-                            zeroLineColor: 'rgba(227, 229, 237, 1)',
+                            color: 'divider color',
+                            zeroLineColor: 'divider color',
                         },
                         ticks: {
-                            fontColor: 'rgba(87, 101, 116, 1)',
+                            fontColor: 'label color',
                         },
                     },
                 ],
@@ -180,11 +197,11 @@ describe('resolveOptions function', () => {
                     {
                         stacked: true,
                         gridLines: {
-                            color: 'rgba(227, 229, 237, 1)',
-                            zeroLineColor: 'rgba(227, 229, 237, 1)',
+                            color: 'divider color',
+                            zeroLineColor: 'divider color',
                         },
                         ticks: {
-                            fontColor: 'rgba(87, 101, 116, 1)',
+                            fontColor: 'label color',
                         },
                     },
                 ],

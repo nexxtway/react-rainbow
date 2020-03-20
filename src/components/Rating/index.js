@@ -64,7 +64,7 @@ export default class Rating extends Component {
 
 Rating.propTypes = {
     /** The value of the rating stars. This value defaults to 0. */
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     /** The action triggered when a value attribute changes. */
     onChange: PropTypes.func,
     /** An identifier for the group of radio items. */
@@ -80,7 +80,7 @@ Rating.propTypes = {
 };
 
 Rating.defaultProps = {
-    value: undefined,
+    value: 0,
     onChange: () => {},
     name: undefined,
     label: null,
