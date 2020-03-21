@@ -149,6 +149,7 @@ import {
     GoogleAddressLookup,
     Select,
 } from 'react-rainbow-components';
+import { Field, reduxForm } from 'redux-form';
 import styled from 'styled-components';
 
 const countries = [
@@ -268,6 +269,7 @@ function Contact({ avatar, name, email, onShowDetails }) {
             </EmailLabel>
             <div className="rainbow-flex rainbow-justify_space-around">
                 <DetailsButton
+                    className="show-details-button"
                     variant="base"
                     label="Details"
                     onClick={onShowDetails}
@@ -277,7 +279,9 @@ function Contact({ avatar, name, email, onShowDetails }) {
     );
 }
 
-function EditContactForm({ contactInfo }) {
+function EditContactForm(props) {
+    const { contactInfo, handleSubmit, reset } = props;
+
     if (!contactInfo) return null;
 
     return (
@@ -298,44 +302,61 @@ function EditContactForm({ contactInfo }) {
                     </FormEmailLabel>
                 </div>
             </div>
-            <div className=" rainbow-flex_column">
-                <DatePicker
-                    placeholder="mm/dd/yyyy"
-                    label="Birthday"
-                    value={contactInfo.birthdate}
-                    className="rainbow-m-top_large"
-                />
-                <Input
-                    placeholder="Enter company name"
-                    label="Company"
-                    className="rainbow-m-top_large"
-                />
-                <GoogleAddressLookup
-                    apiKey={LIBRARY_GOOGLE_MAPS_APIKEY}
-                    placeholder="Enter location"
-                    label="Address"
-                    className="rainbow-m-top_large"
-                />
-                <Select
-                    label="Country"
-                    options={countries}
-                    value={contactInfo.country}
-                    className="rainbow-m-top_large"
-                />
-                <Select
-                    label="Role"
-                    options={roles}
-                    value={contactInfo.role}
-                    className="rainbow-m-top_large"
-                />
-                <Input
-                    placeholder="Your skills"
-                    className="rainbow-m-top_large"
-                />
+            <div className="rainbow-flex_column">
+                <form id="redux-form-id" noValidate onSubmit={handleSubmit}>
+                    <Field
+                        id="contact-birthday-input"
+                        name="birthdate"
+                        component={DatePicker}
+                        placeholder="mm/dd/yyyy"
+                        label="Birthday"
+                    />
+                    <Field
+                        className="rainbow-m-top_large"
+                        component={Input}
+                        name="company"
+                        placeholder="Enter company name"
+                        label="Company"
+                    />
+                    <Field
+                        id="contact-address-input"
+                        component={GoogleAddressLookup}
+                        name="location"
+                        apiKey={LIBRARY_GOOGLE_MAPS_APIKEY}
+                        placeholder="Enter location"
+                        label="Address"
+                        className="rainbow-m-top_large"
+                    />
+                    <Field
+                        className="rainbow-m-top_large"
+                        component={Select}
+                        name="country"
+                        label="Country"
+                        options={countries}
+                    />
+                    <Field
+                        className="rainbow-m-top_large"
+                        component={Select}
+                        name="role"
+                        label="Role"
+                        options={roles}
+                    />
+                    <Field
+                        className="rainbow-m-top_large"
+                        name="skills"
+                        component={Input}
+                        placeholder="Your skills"
+                    />
+                </form>
             </div>
         </div>
     );
 }
+
+const Form = reduxForm({
+    form: 'edit-contact-form',
+    touchOnBlur: false,
+})(EditContactForm);
 
 function DrawerFooter({ onCancel, onSave }) {
     return (
@@ -406,7 +427,7 @@ const initialState = { isOpen: false, info: null };
         <UsersList values={users} />
     </div>
     <Drawer
-        id="drawer-5"
+        id="drawer-7"
         header="Edit Information"
         slideFrom="right"
         footer={
@@ -418,7 +439,10 @@ const initialState = { isOpen: false, info: null };
         isOpen={state.isOpen}
         onRequestClose={() => closeDrawer()}
     >
-        <EditContactForm contactInfo={state.info} />
+        <Form
+            contactInfo={state.info}
+            initialValues={state.info}
+        />
     </Drawer>
 </div>
 ```
