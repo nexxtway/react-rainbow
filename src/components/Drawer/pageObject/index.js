@@ -18,11 +18,6 @@ class PageDrawer {
      * @method
      */
     clickCloseButton() {
-        // browser.waitUntil(() =>
-        //     $(this.rootElement)
-        //         .$('[id="modal-close-button"]')
-        //         .isDisplayed(),
-        // );
         $(this.rootElement)
             .$('[id="drawer-close-button"]')
             .waitForDisplayed();
