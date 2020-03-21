@@ -1,15 +1,20 @@
 import { ReactNode } from 'react';
-import {
-    Stripe,
-    StripeElement,
-    StripeCardElementChangeEvent,
-    StripeError,
-} from '@stripe/stripe-js';
+import { Stripe, StripeElement } from '@stripe/stripe-js';
 import { BaseProps } from '../types';
 
-interface Payment extends StripeCardElementChangeEvent {
+interface Payment {
     stripe?: Stripe;
     element?: StripeElement;
+    empty?: boolean;
+    complete?: boolean;
+    brand?: 'visa' | 'mastercard' | 'amex' | 'discover' | 'diners' | 'jcb' | 'unionpay' | 'unknown';
+    error?:
+        | undefined
+        | {
+              type?: 'validation_error';
+              code?: string;
+              message?: string;
+          };
 }
 
 export interface PaymentStripe extends BaseProps {
@@ -18,13 +23,9 @@ export interface PaymentStripe extends BaseProps {
     hideLabel?: boolean;
     bottomHelpText?: ReactNode;
     error?: ReactNode;
-    hidePostalCode?: boolean;
-    hideIcon?: boolean;
     iconStyle?: 'default' | 'solid';
     disabled?: boolean;
-    postalCode?: string;
     onChange?: (payment: Payment) => void;
-    onReady?: () => void;
     onBlur?: () => void;
     onFocus?: () => void;
 }

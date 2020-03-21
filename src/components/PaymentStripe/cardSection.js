@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect } from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { useTheme, useUniqueIdentifier } from '../../libs/hooks';
@@ -16,13 +16,9 @@ const CardSection = props => {
         error,
         className,
         style,
-        hidePostalCode,
-        hideIcon,
         iconStyle,
         disabled,
-        postalCode,
         onChange,
-        onReady,
         onFocus,
         onBlur,
     } = props;
@@ -45,36 +41,30 @@ const CardSection = props => {
                     },
                 },
             },
-            hidePostalCode,
-            hideIcon,
             iconStyle,
             disabled,
-            value: { postalCode },
         }),
-        [theme, hidePostalCode, hideIcon, iconStyle, disabled, postalCode],
+        [theme, iconStyle, disabled],
     );
-    useEffect(() => {
-        if (!elements) {
-            return;
-        }
-        const cardElement = elements.getElement(CardElement);
-        if (cardElement) {
-            cardElement.update({
-                value: { postalCode },
-            });
-        }
-    }, [elements, postalCode]);
 
     const handleChange = event => {
-        if (!stripe || !elements) {
-            return;
+        if (stripe && elements) {
+            const payment = {
+                stripe,
+                element: elements.getElement(CardElement),
+                empty: event.empty,
+                complete: event.complete,
+                brand: event.brand,
+                error: event.error
+                    ? {
+                          code: event.error.code,
+                          type: event.error.type,
+                          message: event.error.message,
+                      }
+                    : undefined,
+            };
+            onChange(payment);
         }
-        const payment = {
-            ...event,
-            stripe,
-            element: elements.getElement(CardElement),
-        };
-        onChange(payment);
     };
     return (
         <StyledContainer className={className} style={style}>
@@ -83,7 +73,6 @@ const CardSection = props => {
                 id={cardElementId}
                 options={cardElementOptions}
                 onChange={handleChange}
-                onReady={() => onReady()}
                 onFocus={onFocus}
                 onBlur={onBlur}
             />
@@ -102,13 +91,9 @@ CardSection.propTypes = {
     hideLabel: PropTypes.bool,
     bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    hidePostalCode: PropTypes.bool,
-    hideIcon: PropTypes.bool,
     iconStyle: PropTypes.oneOf(['default', 'solid']),
     disabled: PropTypes.bool,
-    postalCode: PropTypes.string,
     onChange: PropTypes.func.isRequired,
-    onReady: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
     className: PropTypes.string,
@@ -120,13 +105,9 @@ CardSection.defaultProps = {
     hideLabel: false,
     bottomHelpText: null,
     error: null,
-    hidePostalCode: false,
-    hideIcon: false,
     iconStyle: 'default',
     disabled: false,
-    postalCode: undefined,
     onChange: () => {},
-    onReady: () => {},
     onFocus: () => {},
     onBlur: () => {},
     className: undefined,

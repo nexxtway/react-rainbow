@@ -35,23 +35,12 @@ PaymentStripe.propTypes = {
     bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies that an input field must be filled out before submitting the form. */
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /**
-     * Hide the postal code field.
-     * If you are already collecting a full billing address or postal code elsewhere, set this to `true`.
-     */
-    hidePostalCode: PropTypes.bool,
-    /** Hides the icon in the Card Element. */
-    hideIcon: PropTypes.bool,
     /** Appearance of the icon in the Card Element. */
     iconStyle: PropTypes.oneOf(['default', 'solid']),
     /** Specifies that an input element should be disabled. This value defaults to false. */
     disabled: PropTypes.bool,
-    /** A pre-filled set of zipCode. */
-    postalCode: PropTypes.string,
     /** The action triggered when some value of the component changes. */
     onChange: PropTypes.func.isRequired,
-    /** The action triggered when the component is ready. */
-    onReady: PropTypes.func,
     /** The action triggered when the element receives focus. */
     onFocus: PropTypes.func,
     /** The action triggered when the element releases focus. */
@@ -67,13 +56,9 @@ PaymentStripe.defaultProps = {
     hideLabel: false,
     bottomHelpText: null,
     error: null,
-    hidePostalCode: false,
-    hideIcon: false,
     iconStyle: 'default',
     disabled: false,
-    postalCode: undefined,
     onChange: () => {},
-    onReady: () => {},
     onFocus: () => {},
     onBlur: () => {},
     className: undefined,
