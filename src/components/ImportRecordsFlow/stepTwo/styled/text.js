@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 
-const StyledText = attachThemeAttrs(styled.h1)`
+const StyledText = attachThemeAttrs(styled.p)`
     font-size: 14px;
     font-weight: 300;
     text-align: center;

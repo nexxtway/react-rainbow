@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Modal from '../../Modal';
 import getFileFieldsOptions from '../helpers/getFileFieldsOptions';
+import AssignFieldModalTitle from './assignFieldModalTitle';
 import AssignFieldModalFooter from './assignFieldModalFooter';
 import SelectedFieldsToAssign from './selectedFieldsToAssign';
 import Preview from './preview';
@@ -19,7 +20,7 @@ export default function AssignFieldModal(props) {
         data,
         attributes,
     } = props;
-    const modalTitle = `Assign to the field: ${databaseFieldToAssign}`;
+    const modalTitle = <AssignFieldModalTitle field={databaseFieldToAssign} />;
 
     const [fileFieldsOptions, setFileFieldsOptions] = useState([]);
     useEffect(() => {
