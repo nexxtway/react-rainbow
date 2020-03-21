@@ -18,14 +18,30 @@ class PageDrawer {
      * @method
      */
     clickCloseButton() {
-        browser.waitUntil(() =>
-            $(this.rootElement)
-                .$('[data-id="drawer-close-button"]')
-                .isDisplayed(),
-        );
+        // browser.waitUntil(() =>
+        //     $(this.rootElement)
+        //         .$('[id="modal-close-button"]')
+        //         .isDisplayed(),
+        // );
         $(this.rootElement)
-            .$('[data-id="drawer-close-button"]')
+            .$('[id="drawer-close-button"]')
+            .waitForDisplayed();
+        $(this.rootElement)
+            .$('[id="drawer-close-button"]')
             .click();
+    }
+
+    /**
+     * Clicks the drawer's backdrop element.
+     * @method
+     */
+    clickBackDrop() {
+        $(this.rootElement)
+            .$('[id="drawer-close-button"]')
+            .waitForDisplayed();
+        $(this.rootElement)
+            .$('[id="drawer-close-button"]')
+            .click({ x: 350 });
     }
 
     /**
@@ -34,17 +50,15 @@ class PageDrawer {
      * @returns {bool}
      */
     isOpen() {
-        if ($(this.rootElement).isDisplayed()) {
-            return (
+        return (
+            $(this.rootElement).isExisting() &&
+            ($(this.rootElement)
+                .$('section[role="dialog"]')
+                .isDisplayed() &&
                 $(this.rootElement)
-                    .$('section[role="dialog"]')
-                    .isDisplayed() &&
-                $(this.rootElement)
-                    .$('[data-id="drawer-close-button"]')
-                    .isDisplayed()
-            );
-        }
-        return false;
+                    .$('[id="drawer-close-button"]')
+                    .isDisplayed())
+        );
     }
 
     /**
@@ -54,7 +68,7 @@ class PageDrawer {
      */
     hasFocusCloseButton() {
         return $(this.rootElement)
-            .$('[data-id="drawer-close-button"]')
+            .$('[id="drawer-close-button"]')
             .isFocused();
     }
 
@@ -63,6 +77,7 @@ class PageDrawer {
      * @method
      */
     waitUntilOpen() {
+        browser.pause(1000);
         browser.waitUntil(() => this.isOpen());
     }
 
@@ -71,6 +86,7 @@ class PageDrawer {
      * @method
      */
     waitUntilClose() {
+        browser.pause(1000);
         browser.waitUntil(() => !this.isOpen());
     }
 }

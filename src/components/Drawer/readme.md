@@ -5,6 +5,40 @@ import React from 'react';
 import { Button, Drawer } from 'react-rainbow-components';
 
 const initialState = {
+    isOpen: false,
+};
+
+<div
+    className="rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto rainbow-flex_wrap"
+>
+    <div className="rainbow-flex rainbow-flex_row">
+        <div className="rainbow-align-content_center rainbow-p-medium rainbow-m_auto">
+            <Button
+                id="button-1"
+                className="rainbow-m-around_medium"
+                label="Open Drawer"
+                onClick={() => setState({
+                    isOpen: true,
+                })}
+            />
+        </div>
+    </div>
+    <Drawer
+        id="drawer-1"
+        header="This is a drawer"
+        isOpen={state.isOpen}
+        onRequestClose={() => setState({ isOpen : false })}
+    />
+</div>
+```
+
+##### Drawer example with position:
+
+```js
+import React from 'react';
+import { Button, Drawer } from 'react-rainbow-components';
+
+const initialState = {
     isOpenRight: false,
     isOpenLeft: false,
 };
@@ -33,14 +67,12 @@ const initialState = {
         </div>
     </div>
     <Drawer
-        id="drawer-right-1"
         header="This is a drawer"
         slideFrom="right"
         isOpen={state.isOpenRight}
         onRequestClose={() => setState({ isOpenRight : false })}
     />
     <Drawer
-        id="drawer-left-1"
         header="This is a drawer"
         isOpen={state.isOpenLeft}
         onRequestClose={() => setState({ isOpenLeft : false })}
