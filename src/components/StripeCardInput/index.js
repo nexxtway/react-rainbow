@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import { useLocale } from '../../libs/hooks';
-import CardSection from './cardSection';
+import CardInput from './cardInput';
 
 /**
- * Payment Stripe component are used for freeform data entry.
+ * Stripe Card Input component are used for freeform data entry.
  * @category Form
  */
-const PaymentStripe = props => {
+const StripeCardInput = props => {
     const { apiKey, ...rest } = props;
     const locale = useLocale();
     const elementOptions = useMemo(() => ({ locale }), [locale]);
@@ -17,12 +17,12 @@ const PaymentStripe = props => {
 
     return (
         <Elements stripe={stripePromise} options={elementOptions}>
-            <CardSection {...rest} />
+            <CardInput {...rest} />
         </Elements>
     );
 };
 
-PaymentStripe.propTypes = {
+StripeCardInput.propTypes = {
     /** The application's API key. To use Stripe,
      * you must get an API Key. See https://dashboard.stripe.com/account/apikeys
      * to get an API Key. */
@@ -35,12 +35,10 @@ PaymentStripe.propTypes = {
     bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies that an input field must be filled out before submitting the form. */
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    /** Appearance of the icon in the Card Element. */
-    iconStyle: PropTypes.oneOf(['default', 'solid']),
     /** Specifies that an input element should be disabled. This value defaults to false. */
     disabled: PropTypes.bool,
     /** The action triggered when some value of the component changes. */
-    onChange: PropTypes.func.isRequired,
+    onChange: PropTypes.func,
     /** The action triggered when the element receives focus. */
     onFocus: PropTypes.func,
     /** The action triggered when the element releases focus. */
@@ -51,12 +49,11 @@ PaymentStripe.propTypes = {
     style: PropTypes.object,
 };
 
-PaymentStripe.defaultProps = {
+StripeCardInput.defaultProps = {
     label: 'Card Details',
     hideLabel: false,
     bottomHelpText: null,
     error: null,
-    iconStyle: 'default',
     disabled: false,
     onChange: () => {},
     onFocus: () => {},
@@ -65,4 +62,4 @@ PaymentStripe.defaultProps = {
     style: undefined,
 };
 
-export default PaymentStripe;
+export default StripeCardInput;

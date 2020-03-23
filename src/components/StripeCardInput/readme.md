@@ -2,7 +2,7 @@
 
 ```js
 import React, { useState } from 'react';
-import { PaymentStripe } from 'react-rainbow-components';
+import { StripeCardInput } from 'react-rainbow-components';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -16,7 +16,7 @@ const Payment = () => {
 
     return (
         <Container>
-            <PaymentStripe
+            <StripeCardInput
                 apiKey={LIBRARY_STRIPE_APIKEY}
                 label="Credit/Debit Card Information"
                 onChange={setPayment}
@@ -33,7 +33,7 @@ const Payment = () => {
 
 ```js
 import React, { useState } from 'react';
-import { PaymentStripe, GoogleAddressLookup, Input, Button } from 'react-rainbow-components';
+import { StripeCardInput, GoogleAddressLookup, Input, Button } from 'react-rainbow-components';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -118,7 +118,7 @@ const Payment = () => {
                     />
                 </Field>
                 <Field>
-                    <PaymentStripe
+                    <StripeCardInput
                         apiKey={LIBRARY_STRIPE_APIKEY}
                         label="Card Number"
                         onChange={setPayment}
@@ -146,7 +146,7 @@ const Payment = () => {
                 <Actions>
                     <Button
                         label="Pay $85"
-                        disabled={(!payment || !payment.complete )}
+                        disabled={(!payment || !payment.isComplete )}
                         variant="brand"
                         type="submit"
                     />

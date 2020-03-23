@@ -7,8 +7,10 @@ import Label from '../Input/label';
 import HelpText from '../Input/styled/helpText';
 import ErrorText from '../Input/styled/errorText';
 import StyledContainer from './styled/container';
+import getError from './helpers/getErrror';
+import StyledFakeDisabled from './styled/fakeDisabled';
 
-const CardSection = props => {
+const CardInput = props => {
     const {
         label,
         hideLabel,
@@ -16,7 +18,6 @@ const CardSection = props => {
         error,
         className,
         style,
-        iconStyle,
         disabled,
         onChange,
         onFocus,
@@ -32,45 +33,52 @@ const CardSection = props => {
                 base: {
                     iconColor: theme.palette.text.main,
                     fontFamily: '"Lato", Arial, sans-serif',
-                    backgroundColor: theme.palette.background.main,
+                    backgroundColor: disabled
+                        ? theme.palette.background.disabled
+                        : theme.palette.background.main,
                     color: theme.palette.text.main,
                     fontSize: '1.1rem',
                     '::placeholder': {
                         color: theme.palette.text.header,
                         fontVariant: 300,
                     },
+                    ':disabled': {
+                        color: theme.palette.text.disabled,
+                        iconColor: theme.palette.text.disabled,
+                        backgroundColor: theme.palette.background.disabled,
+                    },
+                },
+                invalid: {
+                    iconColor: theme.palette.error.main,
+                    color: theme.palette.error.main,
                 },
             },
-            iconStyle,
             disabled,
         }),
-        [theme, iconStyle, disabled],
+        [theme, disabled],
     );
-
     const handleChange = event => {
         if (stripe && elements) {
             const payment = {
                 stripe,
                 element: elements.getElement(CardElement),
-                empty: event.empty,
-                complete: event.complete,
-                brand: event.brand,
-                error: event.error
-                    ? {
-                          code: event.error.code,
-                          type: event.error.type,
-                          message: event.error.message,
-                      }
-                    : undefined,
+                iEmpty: event.empty,
+                isComplete: event.complete,
+                cardBrand: event.brand,
+                error: getError(event.error),
             };
             onChange(payment);
         }
     };
     return (
-        <StyledContainer className={className} style={style}>
+        <StyledContainer disabled={disabled} className={className} style={style}>
             <Label label={label} hideLabel={hideLabel} inputId={cardElementId} required />
+            <RenderIf isTrue={disabled}>
+                <StyledFakeDisabled />
+            </RenderIf>
             <CardElement
                 id={cardElementId}
+                className="card-element"
                 options={cardElementOptions}
                 onChange={handleChange}
                 onFocus={onFocus}
@@ -86,12 +94,11 @@ const CardSection = props => {
     );
 };
 
-CardSection.propTypes = {
+CardInput.propTypes = {
     label: PropTypes.string,
     hideLabel: PropTypes.bool,
     bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    iconStyle: PropTypes.oneOf(['default', 'solid']),
     disabled: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
     onFocus: PropTypes.func,
@@ -100,12 +107,11 @@ CardSection.propTypes = {
     style: PropTypes.object,
 };
 
-CardSection.defaultProps = {
+CardInput.defaultProps = {
     label: 'Card Details',
     hideLabel: false,
     bottomHelpText: null,
     error: null,
-    iconStyle: 'default',
     disabled: false,
     onChange: () => {},
     onFocus: () => {},
@@ -114,4 +120,4 @@ CardSection.defaultProps = {
     style: undefined,
 };
 
-export default CardSection;
+export default CardInput;

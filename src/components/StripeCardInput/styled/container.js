@@ -4,17 +4,21 @@ import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledContainer = attachThemeAttrs(styled.div)`
-    label {
-        width: 100%;
-        display: block;
-        text-align: center;
-    }
+    display: flex;
+    flex-direction: column;
+    position: relative;
 
-    div:nth-child(2){
+    .card-element{
         height: 2.5rem;
         background-color: ${props => props.palette.background.main};
         border: 1px solid ${props => props.palette.border.main};
         border-radius: ${BORDER_RADIUS_2};
+        ${props =>
+            props.disabled &&
+            `
+            background-color: ${props.palette.background.disabled} !important;
+            border: 1px solid ${props.palette.border.disabled} !important;
+        `}
     }
 
     .StripeElement {
@@ -32,6 +36,23 @@ const StyledContainer = attachThemeAttrs(styled.div)`
         font-size: ${FONT_SIZE_TEXT_LARGE};
         box-sizing: border-box;
         margin: 0;
+
+        ${props =>
+            props.disabled &&
+            `
+            background-color: ${props.palette.background.disabled} !important;
+            border: 1px solid ${props.palette.border.disabled} !important;
+            color: ${props.palette.text.disabled} !important;
+            cursor: not-allowed;
+            user-select: none;
+
+            &:focus,
+            &:active {
+                box-shadow: none;
+                background-color: ${props.palette.background.disabled} !important;
+                border: 1px solid ${props.palette.border.disabled} !important;
+            }
+        `}
     }
 
     .StripeElement--focus {
@@ -54,20 +75,6 @@ const StyledContainer = attachThemeAttrs(styled.div)`
         background-color: ${props => props.palette.background.main} !important;
     }
 
-    .StripeElement--disabled {
-        background-color: ${props => props.palette.background.disabled} !important;
-        border: 1px solid ${props => props.palette.border.disabled} !important;
-        color: ${props => props.palette.text.disabled} !important;
-        cursor: not-allowed;
-        user-select: none;
-
-        &:focus,
-        &:active {
-            box-shadow: none;
-            background-color: ${props => props.palette.background.disabled} !important;
-            border: 1px solid ${props => props.palette.border.disabled} !important;
-        }
-    }
 `;
 
 export default StyledContainer;
