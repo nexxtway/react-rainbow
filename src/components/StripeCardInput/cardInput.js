@@ -7,8 +7,9 @@ import Label from '../Input/label';
 import HelpText from '../Input/styled/helpText';
 import ErrorText from '../Input/styled/errorText';
 import StyledContainer from './styled/container';
-import getError from './helpers/getErrror';
 import StyledFakeDisabled from './styled/fakeDisabled';
+import getError from './helpers/getErrror';
+import getCardElementOptions from './helpers/getCardElementOptions';
 
 const CardInput = props => {
     const {
@@ -27,47 +28,21 @@ const CardInput = props => {
     const elements = useElements();
     const cardElementId = useUniqueIdentifier('card-element');
     const theme = useTheme().rainbow;
-    const cardElementOptions = useMemo(
-        () => ({
-            style: {
-                base: {
-                    iconColor: theme.palette.text.main,
-                    fontFamily: '"Lato", Arial, sans-serif',
-                    backgroundColor: disabled
-                        ? theme.palette.background.disabled
-                        : theme.palette.background.main,
-                    color: theme.palette.text.main,
-                    fontSize: '1.1rem',
-                    '::placeholder': {
-                        color: theme.palette.text.header,
-                        fontVariant: 300,
-                    },
-                    ':disabled': {
-                        color: theme.palette.text.disabled,
-                        iconColor: theme.palette.text.disabled,
-                        backgroundColor: theme.palette.background.disabled,
-                    },
-                },
-                invalid: {
-                    iconColor: theme.palette.error.main,
-                    color: theme.palette.error.main,
-                },
-            },
-            disabled,
-        }),
-        [theme, disabled],
-    );
+    const cardElementOptions = useMemo(() => getCardElementOptions(theme, disabled), [
+        theme,
+        disabled,
+    ]);
     const handleChange = event => {
         if (stripe && elements) {
-            const payment = {
+            const card = {
                 stripe,
                 element: elements.getElement(CardElement),
                 iEmpty: event.empty,
                 isComplete: event.complete,
-                cardBrand: event.brand,
+                brand: event.brand,
                 error: getError(event.error),
             };
-            onChange(payment);
+            onChange(card);
         }
     };
     return (
@@ -88,7 +63,7 @@ const CardInput = props => {
                 <HelpText alignSelf="center">{bottomHelpText}</HelpText>
             </RenderIf>
             <RenderIf isTrue={!!error}>
-                <ErrorText>{error}</ErrorText>
+                <ErrorText alignSelf="center">{error}</ErrorText>
             </RenderIf>
         </StyledContainer>
     );
@@ -100,7 +75,7 @@ CardInput.propTypes = {
     bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     disabled: PropTypes.bool,
-    onChange: PropTypes.func.isRequired,
+    onChange: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
     className: PropTypes.string,

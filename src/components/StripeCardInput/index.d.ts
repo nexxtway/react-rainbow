@@ -2,20 +2,12 @@ import { ReactNode } from 'react';
 import { Stripe, StripeElement } from '@stripe/stripe-js';
 import { BaseProps } from '../types';
 
-interface Payment {
+interface Card {
     stripe: Stripe;
     element: StripeElement;
     isEmpty: boolean;
     isComplete: boolean;
-    cardBrand:
-        | 'visa'
-        | 'mastercard'
-        | 'amex'
-        | 'discover'
-        | 'diners'
-        | 'jcb'
-        | 'unionpay'
-        | 'unknown';
+    brand: 'visa' | 'mastercard' | 'amex' | 'discover' | 'diners' | 'jcb' | 'unionpay' | 'unknown';
     error:
         | undefined
         | {
@@ -32,7 +24,7 @@ export interface StripeCardInput extends BaseProps {
     bottomHelpText?: ReactNode;
     error?: ReactNode;
     disabled?: boolean;
-    onChange?: (payment: Payment) => void;
+    onChange?: (card: Card) => void;
     onBlur?: () => void;
     onFocus?: () => void;
 }

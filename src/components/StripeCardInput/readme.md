@@ -2,8 +2,8 @@
 
 ```js
 import React, { useState } from 'react';
-import { StripeCardInput } from 'react-rainbow-components';
 import styled from 'styled-components';
+import { StripeCardInput } from 'react-rainbow-components';
 
 const Container = styled.div`
     max-width: 700px;
@@ -12,15 +12,15 @@ const Container = styled.div`
 `;
 
 const Payment = () => {
-    const [payment, setPayment] = useState();
+    const [card, setCard] = useState();
 
     return (
         <Container>
             <StripeCardInput
                 apiKey={LIBRARY_STRIPE_APIKEY}
                 label="Credit/Debit Card Information"
-                onChange={setPayment}
-                error={(payment && payment.error && payment.error.message)}
+                onChange={setCard}
+                error={(card && card.error && card.error.message)}
             />
         </Container>
     );
@@ -33,8 +33,8 @@ const Payment = () => {
 
 ```js
 import React, { useState } from 'react';
-import { StripeCardInput, GoogleAddressLookup, Input, Button } from 'react-rainbow-components';
 import styled from 'styled-components';
+import { StripeCardInput, GoogleAddressLookup, Input, Button } from 'react-rainbow-components';
 
 const Container = styled.div`
     max-width: 700px;
@@ -68,19 +68,18 @@ const Payment = () => {
     const [address, setAddress] = useState();
     const [saveCard, setSaveCard] = useState(false);
     const [error, setError] = useState();
-    const [payment, setPayment] = useState();
+    const [card, setCard] = useState();
     const handleSubmit = async event => {
         event.preventDefault();
-        if (payment && payment.complete) {
+
+        if (card && card.isComplete) {
             try {
-                //TODO call a sever-side to create a PaymentIntent
-                const response = { client_secret: 'client_secret'};
-                const result = await payment.stripe.confirmCardPayment(response.client_secret, {
+                const result = await card.stripe.confirmCardPayment('{CLIENT_SECRET}', {
                     payment_method: {
-                        card: payment.element,
+                        card: card.element,
                         billing_details: {
-                            address,
                             name,
+                            address: address.address_components,
                         },
                     },
                     setup_future_usage: saveCard ? 'off_session' : 'on_session',
@@ -91,10 +90,6 @@ const Payment = () => {
                     // The payment has been processed!
                     if (result.paymentIntent.status === 'succeeded') {
                         // Show a success message to your customer
-                        // There's a risk of the customer closing the window before callback
-                        // execution. Set up a webhook or plugin to listen for the
-                        // payment_intent.succeeded event that handles any business critical
-                        // post-payment actions.
                     }
                 }
             } catch (e) {
@@ -121,8 +116,8 @@ const Payment = () => {
                     <StripeCardInput
                         apiKey={LIBRARY_STRIPE_APIKEY}
                         label="Card Number"
-                        onChange={setPayment}
-                        error={(payment && payment.error && payment.error.message)}
+                        onChange={setCard}
+                        error={(card && card.error && card.error.message)}
                     />
                 </Field>
                 <Field>
@@ -133,6 +128,7 @@ const Payment = () => {
                         onChange={setAddress}
                         apiKey={LIBRARY_GOOGLE_MAPS_APIKEY}
                         searchOptions={searchOptions}
+                        required
                     />
                 </Field>
                 <Field>
@@ -146,7 +142,7 @@ const Payment = () => {
                 <Actions>
                     <Button
                         label="Pay $85"
-                        disabled={(!payment || !payment.isComplete )}
+                        disabled={(!card || !card.isComplete )}
                         variant="brand"
                         type="submit"
                     />
