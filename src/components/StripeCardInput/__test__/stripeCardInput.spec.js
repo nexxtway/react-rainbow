@@ -34,7 +34,7 @@ const event = {
 };
 
 describe('<StripeCardInput>', () => {
-    it('should fire onChange with especific event', () => {
+    it('should fire onChange with specific event', () => {
         const onChangeMockFn = jest.fn();
         const component = mount(
             <StripeCardInput apiKey="STRIPE_API_KEY" onChange={onChangeMockFn} />,
