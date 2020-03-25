@@ -33,17 +33,15 @@ const CardInput = props => {
         disabled,
     ]);
     const handleChange = event => {
-        if (stripe && elements) {
-            const card = {
-                stripe,
-                element: elements.getElement(CardElement),
-                iEmpty: event.empty,
-                isComplete: event.complete,
-                brand: event.brand,
-                error: getError(event.error),
-            };
-            onChange(card);
-        }
+        const stripeCardEvent = {
+            stripe,
+            card: elements.getElement(CardElement),
+            iEmpty: event.empty,
+            isComplete: event.complete,
+            cardBrand: event.brand,
+            error: getError(event.error),
+        };
+        onChange(stripeCardEvent);
     };
     return (
         <StyledContainer disabled={disabled} className={className} style={style}>

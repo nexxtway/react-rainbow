@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { Stripe, StripeElement } from '@stripe/stripe-js';
 import { BaseProps } from '../types';
 
-interface Card {
+interface StripeCardEvent {
     stripe: Stripe;
     element: StripeElement;
     isEmpty: boolean;
@@ -24,7 +24,7 @@ export interface StripeCardInput extends BaseProps {
     bottomHelpText?: ReactNode;
     error?: ReactNode;
     disabled?: boolean;
-    onChange?: (card: Card) => void;
+    onChange?: (event: StripeCardEvent) => void;
     onBlur?: () => void;
     onFocus?: () => void;
 }

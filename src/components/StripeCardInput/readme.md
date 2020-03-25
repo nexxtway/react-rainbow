@@ -68,15 +68,16 @@ const Payment = () => {
     const [address, setAddress] = useState();
     const [saveCard, setSaveCard] = useState(false);
     const [error, setError] = useState();
-    const [card, setCard] = useState();
+    const [stripeCard, setStripeCard] = useState();
     const handleSubmit = async event => {
         event.preventDefault();
+        const { stripe, card, isComplete } = stripeCard;
 
-        if (card && card.isComplete) {
+        if (isComplete) {
             try {
-                const result = await card.stripe.confirmCardPayment('{CLIENT_SECRET}', {
+                const result = await stripe.confirmCardPayment('{CLIENT_SECRET}', {
                     payment_method: {
-                        card: card.element,
+                        card,
                         billing_details: {
                             name,
                             address: address.address_components,
@@ -116,8 +117,8 @@ const Payment = () => {
                     <StripeCardInput
                         apiKey={LIBRARY_STRIPE_APIKEY}
                         label="Card Number"
-                        onChange={setCard}
-                        error={(card && card.error && card.error.message)}
+                        onChange={setStripeCard}
+                        error={(stripeCard && stripeCard.error && stripeCard.error.message)}
                     />
                 </Field>
                 <Field>
@@ -142,7 +143,7 @@ const Payment = () => {
                 <Actions>
                     <Button
                         label="Pay $85"
-                        disabled={(!card || !card.isComplete )}
+                        disabled={(!stripeCard || !stripeCard.isComplete )}
                         variant="brand"
                         type="submit"
                     />
