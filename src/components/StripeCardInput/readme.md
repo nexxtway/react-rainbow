@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { StripeCardInput } from 'react-rainbow-components';
 
 const Container = styled.div`
-    max-width: 700px;
+    max-width: 500px;
     margin: 30px auto;
     padding: 20px 10px;
 `;
@@ -37,7 +37,7 @@ import styled from 'styled-components';
 import { StripeCardInput, GoogleAddressLookup, Input, Button } from 'react-rainbow-components';
 
 const Container = styled.div`
-    max-width: 700px;
+    max-width: 500px;
     margin: 20px auto;
     padding: 20px 10px;
 `;
@@ -48,7 +48,7 @@ const Title = styled.h2`
     color: ${props => props.theme.rainbow.palette.brand.main};
 `;
 const Field = styled.fieldset`
-    margin-bottom: 10px;
+    margin-bottom: 24px;
 `;
 const Actions = styled.div`
     display: flex;
