@@ -1,4 +1,4 @@
-export default function abbreviateNumber(number) {
+export default function getSuffixSI(number) {
     if (!number || number < 0) {
         // eslint-disable-next-line no-console
         console.error('Invalid number');

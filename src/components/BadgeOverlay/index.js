@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import RenderIf from './../RenderIf';
 import StyledContainer from './styled/container';
 import StyledComponent from './styled/component';
-import abbreviateNumber from './helpers/abbreviateNumber';
+import { getSuffixSI } from '../../libs/utils';
 
 /**
  * BadgeOverlay is used to show small numerical value or status
@@ -28,7 +28,7 @@ export default function BadgeOverlay(props) {
                     overlap={overlap}
                     value={value}
                 >
-                    {abbreviateNumber(value)}
+                    {getSuffixSI(value)}
                 </StyledComponent>
             </RenderIf>
         </StyledContainer>
@@ -41,8 +41,7 @@ BadgeOverlay.propTypes = {
     /** Wrapped shape the badge should overlap. This property is used
      * to place the badge relative to the corner of the wrapped element. */
     overlap: PropTypes.oneOf(['circle', 'rectangle']),
-    /** The content of the badge. Used to render icon or text elements inside the badge.
-     * Children takes precedence over label. */
+    /** Object that will have the BadgeOverlay. */
     children: PropTypes.node,
     /** The variant changes the appearance of the badge. Accepted variants include brand, success, error and warning. The default value is error. */
     variant: PropTypes.oneOf(['brand', 'success', 'error', 'warning']),
