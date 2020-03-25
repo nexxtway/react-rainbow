@@ -14,7 +14,9 @@ const StyledComponent = attachThemeAttrs(styled.span)`
     line-height: 1;
     padding: 0 6px;
     height: 20px;
-    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 100px;
     z-index: 1;
     transition-timing-function: ease-in-out;
     transition: 0.2s;
@@ -52,8 +54,8 @@ const StyledComponent = attachThemeAttrs(styled.span)`
         props.position === 'top-left' &&
         props.overlap === 'circle' &&
         `
-            top: 14%;
-            left: 14%;
+            top: 12%;
+            left: 12%;
             transform: scale(1) translate(-50%, -50%);
             transform-origin: 0% 0%;
         `};
@@ -70,8 +72,8 @@ const StyledComponent = attachThemeAttrs(styled.span)`
         props.position === 'top-right' &&
         props.overlap === 'circle' &&
         `
-            top: 14%;
-            right: 14%;
+            top: 12%;
+            right: 12%;
             transform: scale(1) translate(50%, -50%);
             transform-origin: 100% 0%;
         `};
@@ -88,8 +90,8 @@ const StyledComponent = attachThemeAttrs(styled.span)`
         props.position === 'bottom-left' &&
         props.overlap === 'circle' &&
         `
-            bottom: 14%;
-            left: 14%;
+            bottom: 12%;
+            left: 12%;
             transform: scale(1) translate(-50%, 50%);
             transform-origin: 0% 100%;
         `};
@@ -106,8 +108,8 @@ const StyledComponent = attachThemeAttrs(styled.span)`
         props.position === 'bottom-right' &&
         props.overlap === 'circle' &&
         `
-            bottom: 14%;
-            right: 14%;
+            bottom: 12%;
+            right: 12%;
             transform: scale(1) translate(50%, 50%);
             transform-origin: 100% 100%;
         `};

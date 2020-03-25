@@ -94,6 +94,7 @@ import { BadgeOverlay, Avatar, ButtonIcon } from 'react-rainbow-components';
     <BadgeOverlay
         className="rainbow-m-around_medium"
         value={1}
+        overlap="circle"
     >
         <Avatar
             src="images/user/user2.jpg"
@@ -119,27 +120,27 @@ import { BadgeOverlay, ButtonIcon } from 'react-rainbow-components';
 
 <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
     <BadgeOverlay
-        className="rainbow-m-around_medium"
+        className="rainbow-m-around_x-large"
         value={1}
         position='top-left'
     >
         <BellIcon />
     </BadgeOverlay>
     <BadgeOverlay
-        className="rainbow-m-around_medium"
+        className="rainbow-m-around_xx-large"
         value={1}
     >
         <PhoneIcon />
     </BadgeOverlay>
     <BadgeOverlay
-        className="rainbow-m-around_medium"
+        className="rainbow-m-around_xx-large"
         value={1}
         position='bottom-left'
     >
         <EmailIcon />
     </BadgeOverlay>
     <BadgeOverlay
-        className="rainbow-m-around_medium"
+        className="rainbow-m-around_x-large"
         value={1}
         position='bottom-right'
     >
