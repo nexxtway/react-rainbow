@@ -9,8 +9,11 @@ describe('getPreviewDataToImport', () => {
             params.fieldsMap,
             params.schema.attributes,
         );
-        expect(params.data.length).toBe(previewData.length);
-        expect(previewData[0].name).toBe('John Doe');
-        expect(previewData[2].email).toBe('fred@gmail.com');
+        const expectedPreviewData = [
+            { name: 'John Doe', email: 'jonh@gmail.com' },
+            { name: 'Jane Doe', email: 'jane@gmail.com' },
+            { name: 'Fred Flinstone', email: 'fred@gmail.com' },
+        ];
+        expect(previewData).toEqual(expectedPreviewData);
     });
 });

@@ -10,9 +10,8 @@ describe('getHeaderRowFromWorkbook', () => {
     it('should return headers values using the first row values from the workBook', () => {
         const workbook = getWorkbookParams();
         const headers = getHeaderRowFromWorkbook(workbook);
-        expect(headers.length).toBe(3);
-        expect(headers[0]).toBe('First_Name');
-        expect(headers[1]).toBe('Last_Name');
+        const expectedHeaders = ['First_Name', 'Last_Name', 'Email'];
+        expect(headers).toEqual(expectedHeaders);
     });
     it('should return empty values if workbook sheet is not valid', () => {
         const headers = getHeaderRowFromWorkbook([]);

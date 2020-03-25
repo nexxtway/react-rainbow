@@ -12,8 +12,11 @@ describe('getFieldAssignedPreviewData', () => {
             fileFields,
             params.schema.attributes,
         );
-        expect(params.data.length).toBe(assignedPreviewData.length);
-        expect(assignedPreviewData[0].name).toBe('John Doe');
-        expect(assignedPreviewData[2].name).toBe('Fred Flinstone');
+        const expectedPreviewData = [
+            { name: 'John Doe' },
+            { name: 'Jane Doe' },
+            { name: 'Fred Flinstone' },
+        ];
+        expect(assignedPreviewData).toEqual(expectedPreviewData);
     });
 });

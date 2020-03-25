@@ -19,7 +19,12 @@ describe('getAssignFieldsData', () => {
             },
             matchField: '',
         });
-        expect(assignFields.length).toBe(3);
+        const expectedAssignFields = [
+            { required: true, databaseField: 'name' },
+            { required: false, databaseField: 'street' },
+            { required: false, databaseField: 'age' },
+        ];
+        expect(assignFields).toEqual(expectedAssignFields);
     });
     it('should return required attribute as true when the required attribute param is set as true', () => {
         const assignFields = getAssignFieldsData({
