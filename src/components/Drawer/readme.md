@@ -48,6 +48,62 @@ const initialState = {
 </div>
 ```
 
+##### Drawer with different sizes:
+
+```js
+import React from 'react';
+import { Button, Drawer } from 'react-rainbow-components';
+
+const initialState = {
+    isOpen: false,
+    size: null,
+};
+
+<div
+    className="rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto rainbow-flex_wrap"
+>
+    <div className="rainbow-flex rainbow-flex_row">
+        <div className="rainbow-align-content_center rainbow-p-medium rainbow-m_auto">
+            <Button
+                className="rainbow-m-around_medium"
+                label="Drawer small"
+                onClick={() => setState({
+                    isOpen: true,
+                    size: 'small',
+                })}
+            />
+        </div>
+        <div className="rainbow-align-content_center rainbow-p-medium rainbow-m_auto">
+            <Button
+                className="rainbow-m-around_medium"
+                label="Drawer medium"
+                onClick={() => setState({
+                    isOpen: true,
+                    size: 'medium',
+                })}
+            />
+        </div>
+        <div className="rainbow-align-content_center rainbow-p-medium rainbow-m_auto">
+            <Button
+                className="rainbow-m-around_medium"
+                label="Drawer large"
+                onClick={() => setState({
+                    isOpen: true,
+                    size: 'large',
+                })}
+            />
+        </div>
+    </div>
+    <Drawer
+        id="drawer-3"
+        header="This is a drawer"
+        size={state.size}
+        isOpen={state.isOpen}
+        onRequestClose={() => setState({ isOpen : false })}
+    />
+</div>
+```
+
 ##### Drawer:
 
 ```js
@@ -62,6 +118,21 @@ import {
     Select,
 } from 'react-rainbow-components';
 import styled from 'styled-components';
+
+const countries = [
+    { value: '', label: 'Select your country' },
+    { value: 'ca', label: 'Canada' },
+    { value: 'fr', label: 'France' },
+    { value: 'uk', label: 'United Kingdom' },
+    { value: 'us', label: 'United States' },
+];
+
+const roles = [
+    { value: '', label: 'Select role' },
+    { value: 'manager', label: 'Manager' },
+    { value: 'developer', label: 'Developer' },
+];
+
 
 const StyledExampleHeader = styled.h3.attrs(props => {
     return props.theme.rainbow.palette;
@@ -215,14 +286,18 @@ function EditContactForm({ contactInfo }) {
                 />
                 <Select
                     label="Country"
+                    options={countries}
+                    value={contactInfo.country}
                     className="rainbow-m-top_large"
                 />
                 <Select
                     label="Role"
+                    options={roles}
+                    value={contactInfo.role}
                     className="rainbow-m-top_large"
                 />
-                <Select
-                    label="Skills"
+                <Input
+                    placeholder="Your skills"
                     className="rainbow-m-top_large"
                 />
             </div>
@@ -272,17 +347,23 @@ const users = [{
     avatar: 'images/user/avatar-2.svg',
     name: 'Jane Doe',
     email: 'jane@gmail.com',
-    birthdate: '1995-12-01', 
+    birthdate: '1995-12-01',
+    country: 'ca',
+    role: 'developer',
 }, {
     avatar: 'images/user/avatar-4.svg',
     name: 'John Doe',
     email: 'john@gmail.com',
     birthdate: '1985-02-12',
+    country: 'us',
+    role: 'developer',
 }, {
     avatar: 'images/user/avatar-5.svg',
     name: 'Ana Doe',
     email: 'ana@gmail.com',
     birthdate: '1998-05-21',
+    country: 'us',
+    role: 'manager',
 }];
 
 const initialState = { isOpen: false, info: null };
@@ -293,7 +374,7 @@ const initialState = { isOpen: false, info: null };
         <UsersList values={users} />
     </div>
     <Drawer
-        id="drawer-3"
+        id="drawer-5"
         header="Edit Information"
         slideFrom="right"
         footer={
