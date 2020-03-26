@@ -53,7 +53,7 @@ describe('Drawer base example', () => {
         drawer.waitUntilOpen();
         drawer.clickBackDrop();
         drawer.waitUntilClose();
-        expect(triggerButton.isFocused()).toBe(true);
+        expect(drawer.isOpen()).toBe(false);
     });
     it('should close the drawer when is opened and click the close button', () => {
         const drawer = new PageDrawer(DRAWER);

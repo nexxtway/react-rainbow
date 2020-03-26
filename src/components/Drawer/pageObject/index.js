@@ -3,6 +3,13 @@
  * @class
  * @tutorial drawer
  */
+
+function getPointOutsideDrawer(drawerPosition, drawerSize) {
+    const x = drawerPosition.x > 0 ? drawerPosition.x - 2 : drawerSize.width + 2;
+    const y = drawerPosition.y > 0 ? drawerPosition.y - 2 : drawerSize.height + 2;
+    return { x, y };
+}
+
 class PageDrawer {
     /**
      * Create a new PageDrawer page object.
@@ -20,9 +27,6 @@ class PageDrawer {
     clickCloseButton() {
         $(this.rootElement)
             .$('[id="drawer-close-button"]')
-            .waitForDisplayed();
-        $(this.rootElement)
-            .$('[id="drawer-close-button"]')
             .click();
     }
 
@@ -34,9 +38,19 @@ class PageDrawer {
         $(this.rootElement)
             .$('[id="drawer-close-button"]')
             .waitForDisplayed();
+
+        const { x, y } = getPointOutsideDrawer(
+            $(this.rootElement)
+                .$('section[role="dialog"]')
+                .getLocation(),
+            $(this.rootElement)
+                .$('section[role="dialog"]')
+                .getSize(),
+        );
+
         $(this.rootElement)
             .$('[id="drawer-close-button"]')
-            .click({ x: 350 });
+            .click({ x, y });
     }
 
     /**
@@ -47,12 +61,12 @@ class PageDrawer {
     isOpen() {
         return (
             $(this.rootElement).isExisting() &&
-            ($(this.rootElement)
+            $(this.rootElement)
                 .$('section[role="dialog"]')
                 .isDisplayed() &&
-                $(this.rootElement)
-                    .$('[id="drawer-close-button"]')
-                    .isDisplayed())
+            $(this.rootElement)
+                .$('[id="drawer-close-button"]')
+                .isDisplayed()
         );
     }
 
@@ -82,7 +96,7 @@ class PageDrawer {
      */
     waitUntilClose() {
         browser.pause(1000);
-        browser.waitUntil(() => !this.isOpen());
+        browser.waitUntil(() => !$(this.rootElement).isExisting());
     }
 }
 
