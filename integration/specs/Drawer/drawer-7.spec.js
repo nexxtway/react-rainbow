@@ -5,7 +5,7 @@ const { ESCAPE_KEY, TAB_KEY, ARROW_DOWN_KEY, ENTER_KEY } = require('../../consta
 
 const BUTTON = '.show-details-button:nth-child(1)';
 const DRAWER = '#drawer-7';
-const LOOKUP = '#contact-address-input';
+const LOOKUP = '#contact-country-input';
 const DATEPICKER = '#contact-birthday-input';
 
 describe('Drawer advanced example', () => {
@@ -41,7 +41,7 @@ describe('Drawer advanced example', () => {
         const triggerButton = $(BUTTON);
         triggerButton.click();
         drawer.waitUntilOpen();
-        lookup.setQuery('Arizona');
+        lookup.setQuery('can');
         lookup.waitUntilOpen();
         browser.keys(ESCAPE_KEY);
         expect(drawer.isOpen()).toBe(true);
@@ -53,7 +53,7 @@ describe('Drawer advanced example', () => {
         triggerButton.click();
         drawer.waitUntilOpen();
         lookup.click();
-        lookup.setQuery('Arizona');
+        lookup.setQuery('can');
         lookup.waitUntilOpen();
         lookup.clickCloseButton();
         browser.keys(ESCAPE_KEY);
@@ -79,9 +79,9 @@ describe('Drawer advanced example', () => {
         triggerButton.click();
         drawer.waitUntilOpen();
         lookup.click();
-        lookup.setQuery('Arizona');
+        lookup.setQuery('c');
         lookup.waitUntilOpen();
-        const option = lookup.getOption(3);
+        const option = lookup.getOption(1);
         option.click();
         browser.keys(ESCAPE_KEY);
         drawer.waitUntilClose();
@@ -94,12 +94,12 @@ describe('Drawer advanced example', () => {
         triggerButton.click();
         drawer.waitUntilOpen();
         lookup.click();
-        lookup.setQuery('Arizona');
+        lookup.setQuery('c');
         lookup.waitUntilOpen();
         browser.keys(ARROW_DOWN_KEY);
         browser.keys(ARROW_DOWN_KEY);
         browser.keys(ENTER_KEY);
-        expect(lookup.getSelectedOptionLabel()).toBe('Arizona, USA');
+        expect(lookup.getSelectedOptionLabel()).toBe('France');
         browser.keys(ESCAPE_KEY);
         drawer.waitUntilClose();
         expect(drawer.isOpen()).toBe(false);

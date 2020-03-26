@@ -139,7 +139,7 @@ const initialState = {
 ##### Drawer:
 
 ```js
-import React from 'react';
+import React, { useState } from 'react';
 import {
     Button,
     Avatar,
@@ -147,15 +147,19 @@ import {
     DatePicker,
     Input,
     GoogleAddressLookup,
+    Lookup,
     Select,
 } from 'react-rainbow-components';
 import { Field, reduxForm } from 'redux-form';
 import styled from 'styled-components';
 
 const countries = [
-    { value: '', label: 'Select your country' },
     { value: 'ca', label: 'Canada' },
+    { value: 'co', label: 'Colombia' },
     { value: 'fr', label: 'France' },
+    { value: 'it', label: 'Italy' },
+    { value: 'es', label: 'Spain' },
+    { value: 'mx', label: 'Mexico' },
     { value: 'uk', label: 'United Kingdom' },
     { value: 'us', label: 'United States' },
 ];
@@ -165,7 +169,6 @@ const roles = [
     { value: 'manager', label: 'Manager' },
     { value: 'developer', label: 'Developer' },
 ];
-
 
 const StyledExampleHeader = styled.h3.attrs(props => {
     return props.theme.rainbow.palette;
@@ -281,8 +284,29 @@ function Contact({ avatar, name, email, onShowDetails }) {
 
 function EditContactForm(props) {
     const { contactInfo, handleSubmit, reset } = props;
+    const [countriesList, setCountriesList] = useState(countries);
 
     if (!contactInfo) return null;
+
+    const filter = (query, options) => {
+        if (query) {
+            return options.filter(item => {
+                const regex = new RegExp(query, 'i');
+                return regex.test(item.label);
+            });
+        }
+        return [];
+    };
+
+    const handleSearch = value => {
+        if (countriesList && contactInfo.country && value.length > contactInfo.country.value.length) {
+            setCountriesList(filter(value, countries));
+        } else if (value) {
+            setCountriesList(filter(value, countries));
+        } else {
+            setCountriesList(null);
+        }
+    };
 
     return (
         <div className="rainbow-p-around_small rainbow-flex rainbow-flex_wrap  rainbow-align-content_center">
@@ -319,7 +343,6 @@ function EditContactForm(props) {
                         label="Company"
                     />
                     <Field
-                        id="contact-address-input"
                         component={GoogleAddressLookup}
                         name="location"
                         apiKey={LIBRARY_GOOGLE_MAPS_APIKEY}
@@ -328,11 +351,14 @@ function EditContactForm(props) {
                         className="rainbow-m-top_large"
                     />
                     <Field
+                        id="contact-country-input"
                         className="rainbow-m-top_large"
-                        component={Select}
+                        component={Lookup}
                         name="country"
                         label="Country"
-                        options={countries}
+                        placeholder="Select your country"
+                        options={countriesList}
+                        onSearch={handleSearch}
                     />
                     <Field
                         className="rainbow-m-top_large"
@@ -401,21 +427,18 @@ const users = [{
     name: 'Jane Doe',
     email: 'jane@gmail.com',
     birthdate: '1995-12-01',
-    country: 'ca',
     role: 'developer',
 }, {
     avatar: 'images/user/avatar-4.svg',
     name: 'John Doe',
     email: 'john@gmail.com',
     birthdate: '1985-02-12',
-    country: 'us',
     role: 'developer',
 }, {
     avatar: 'images/user/avatar-5.svg',
     name: 'Ana Doe',
     email: 'ana@gmail.com',
     birthdate: '1998-05-21',
-    country: 'us',
     role: 'manager',
 }];
 
