@@ -34,11 +34,6 @@ const StyledLegend = attachThemeAttrs(styled.legend)`
     margin: 0 auto 0.1rem auto;
     text-align: center;
     box-sizing: border-box;
-    ${props =>
-        props.variant === 'inverse' &&
-        `
-            color: ${props.palette.isDark ? '#576574' : 'rgb(178,178,178)'}
-        `};
 `;
 
 export { StyledErrorText, StyledHelpText, StyledContainer, StyledLegend, StyledButtonGroup };
