@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import InputCheckbox from './InputCheckbox';
 import StyledWrapper from './styled/wrapper';
 import StyledCheckboxWrapper from './styled/checkboxWrapper';
+import StyledScrollShadow from './styled/scrollShadow';
 
 export default function SelectableHeader(props) {
     const {
@@ -11,6 +12,7 @@ export default function SelectableHeader(props) {
         tableId,
         maxRowSelection,
         bulkSelection,
+        hasScroll,
         style,
     } = props;
     const name = `${tableId}-options`;
@@ -27,7 +29,11 @@ export default function SelectableHeader(props) {
     };
 
     if (isRadio) {
-        return <StyledWrapper as="th" style={style} scope="col" tabIndex={-1} />;
+        return (
+            <StyledWrapper as="th" style={style} scope="col" tabIndex={-1}>
+                <StyledScrollShadow hasScroll={hasScroll} />
+            </StyledWrapper>
+        );
     }
 
     return (
@@ -45,6 +51,7 @@ export default function SelectableHeader(props) {
                     onClick={handleClick}
                 />
             </StyledCheckboxWrapper>
+            <StyledScrollShadow hasScroll={hasScroll} />
         </th>
     );
 }
@@ -55,6 +62,7 @@ SelectableHeader.propTypes = {
     tableId: PropTypes.string.isRequired,
     maxRowSelection: PropTypes.number,
     bulkSelection: PropTypes.oneOf(['none', 'some', 'all']),
+    hasScroll: PropTypes.bool,
     style: PropTypes.object,
 };
 
@@ -63,5 +71,6 @@ SelectableHeader.defaultProps = {
     onDeselectAllRows: () => {},
     maxRowSelection: undefined,
     bulkSelection: 'none',
+    hasScroll: false,
     style: undefined,
 };
