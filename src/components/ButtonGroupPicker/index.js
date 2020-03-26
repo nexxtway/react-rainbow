@@ -22,14 +22,6 @@ class ButtonGroupPicker extends Component {
         this.handleOnChange = this.handleOnChange.bind(this);
     }
 
-    getValue() {
-        const { value } = this.props;
-        if (typeof value === 'string') {
-            return [];
-        }
-        return value;
-    }
-
     getErrorMessageId() {
         const { error } = this.props;
         if (error) {
@@ -39,25 +31,24 @@ class ButtonGroupPicker extends Component {
     }
 
     handleOnChange(event) {
-        const { value, checked } = event.target;
-        const { value: values, multiple, onChange } = this.props;
+        const { value: eventValue, checked } = event.target;
+        const { value, multiple, onChange } = this.props;
 
         if (!multiple) {
-            return onChange([value]);
+            return onChange(eventValue);
         }
 
-        if (checked && Array.isArray(values)) {
-            return onChange(values.concat([value]));
+        if (checked && Array.isArray(value)) {
+            return onChange(value.concat([eventValue]));
         }
-        if (checked && !Array.isArray(values)) {
-            return onChange([value]);
+        if (checked && !Array.isArray(value)) {
+            return onChange(eventValue);
         }
-        return onChange(values.filter(valueId => valueId !== value));
+        return onChange(value.filter(valueId => valueId !== eventValue));
     }
 
     render() {
         const {
-            name,
             className,
             style,
             label,
@@ -66,14 +57,16 @@ class ButtonGroupPicker extends Component {
             size,
             error,
             bottomHelpText,
+            value,
         } = this.props;
 
+        const errorMessageId = this.getErrorMessageId();
         const context = {
             onChange: this.handleOnChange,
-            values: this.getValue(),
+            values: value,
             type: multiple ? 'checkbox' : 'radio',
-            name: name || uniqueId('option'),
-            ariaDescribedBy: this.getErrorMessageId(),
+            name: this.groupNameId,
+            ariaDescribedBy: errorMessageId,
         };
 
         return (
@@ -82,13 +75,13 @@ class ButtonGroupPicker extends Component {
                     <StyledLegend>{label}</StyledLegend>
                 </RenderIf>
                 <StyledButtonGroup size={size} role="group">
-                    <Provider value={{ ...context }}>{children}</Provider>
+                    <Provider value={context}>{children}</Provider>
                 </StyledButtonGroup>
                 <RenderIf isTrue={!!bottomHelpText}>
                     <StyledHelpText>{bottomHelpText}</StyledHelpText>
                 </RenderIf>
                 <RenderIf isTrue={!!error}>
-                    <StyledErrorText id={this.getErrorMessageId()}>{error}</StyledErrorText>
+                    <StyledErrorText id={errorMessageId}>{error}</StyledErrorText>
                 </RenderIf>
             </StyledContainer>
         );
