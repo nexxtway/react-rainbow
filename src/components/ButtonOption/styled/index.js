@@ -14,6 +14,22 @@ const StyledLabel = attachThemeAttrs(styled.label)`
     input:active + span {
         color: ${props => props.palette.brand.dark};
     }
+
+    input[disabled] + span {
+        color: ${props => props.palette.text.disabled};
+        cursor: default;
+        background-color: transparent;
+    }  
+
+    input[disabled] + span {
+        cursor: default;
+        pointer-events: none;
+
+        svg {
+            fill: ${props => props.palette.text.disabled};
+        }
+    }
+
     ${props =>
         props.checked &&
         `
