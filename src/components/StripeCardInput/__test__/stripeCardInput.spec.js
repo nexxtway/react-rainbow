@@ -42,7 +42,7 @@ describe('<StripeCardInput>', () => {
         component.find('input').simulate('change', event);
         expect(onChangeMockFn).toHaveBeenCalledWith({
             cardBrand: 'unknown',
-            iEmpty: false,
+            isEmpty: false,
             isComplete: false,
             error,
             stripe: {},
