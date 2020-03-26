@@ -114,7 +114,7 @@ class ButtonGroupPickerTry extends React.Component {
                     className="rainbow-m-around_medium" 
                     value={value} 
                     onChange={this.handleOnChange} 
-                    name="text-options-multiple"
+                    name="text-options"
                 >
                     <ButtonOption label={<FontAwesomeIcon icon={faAlignLeft} />} name="left" disabled />
                     <ButtonOption label={<FontAwesomeIcon icon={faAlignCenter} />} name="center" />
@@ -154,8 +154,9 @@ class ButtonGroupPickerTry extends React.Component {
                     label="Select view type" 
                     value={value} 
                     onChange={this.handleOnChange} 
-                    name="text-options-multiple" 
+                    name="date-filter" 
                     error="This field is required"
+                    required
                 >
                     <ButtonOption label="Month" name="month" />
                     <ButtonOption label="Week" name="week" />
