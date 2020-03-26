@@ -36,7 +36,7 @@ const CardInput = props => {
         const stripeCardEvent = {
             stripe,
             card: elements.getElement(CardElement),
-            iEmpty: event.empty,
+            isEmpty: event.empty,
             isComplete: event.complete,
             cardBrand: event.brand,
             error: getError(event.error),
