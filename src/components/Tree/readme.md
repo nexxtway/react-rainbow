@@ -19,8 +19,14 @@
         },
         {
             label: 'Tree Branch',
+            isLoading: true,
             children: [
-                { label: 'Tree Item' }
+                { label: 'Tree Item' },
+                 { label: 'Tree Item' },
+                  { label: 'Tree Item' },
+                   { label: 'Tree Item' },
+                    { label: 'Tree Item' },
+              
             ],
         }
     ];
@@ -30,6 +36,7 @@
         child.isExpanded = !child.isExpanded;
         setState({ data: state.data });
     }
+
     <Tree
         data={state.data}
         onExpandCollapse={openNode}
@@ -64,6 +71,7 @@
         },
         {
             label: 'Tree Branch',
+            isLoading: true,
             icon: <FolderCloseIcon />,
             children: [
                 { label: 'Tree Item' },
@@ -104,7 +112,7 @@
         {
             label: 'Tree Branch',
             icon: <FolderCloseIcon />,
-            isExpanded: true,
+            isLoading: true,
             isChecked: false,
             children: [
                 { label: 'Tree Item', isChecked: false, icon: <FileIcon /> },

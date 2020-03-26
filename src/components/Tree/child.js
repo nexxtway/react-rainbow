@@ -14,6 +14,7 @@ export default function Child(props) {
     const {
         label,
         isExpanded,
+        isLoading,
         children,
         isChecked,
         icon,
@@ -30,6 +31,7 @@ export default function Child(props) {
                 <CollapseExpandButton
                     hasChildren={hasChildren}
                     isExpanded={isExpanded === true}
+                    isLoading={isLoading === true}
                     onClick={() => onExpandCollapse({ childPath })}
                 />
                 <RenderIf isTrue={hasCheckbox}>
@@ -62,6 +64,7 @@ Child.propTypes = {
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     isChecked: PropTypes.bool,
     isExpanded: PropTypes.bool,
+    isLoading: PropTypes.bool,
     icon: PropTypes.node,
     children: PropTypes.array,
     onExpandCollapse: PropTypes.func,
@@ -73,6 +76,7 @@ Child.defaultProps = {
     label: undefined,
     isChecked: undefined,
     isExpanded: undefined,
+    isLoading: undefined,
     children: undefined,
     icon: null,
     onExpandCollapse: () => {},
