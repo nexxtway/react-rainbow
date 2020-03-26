@@ -7,21 +7,21 @@ import { ButtonGroupPicker, ButtonOption } from 'react-rainbow-components';
 class ButtonGroupPickerTry extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { values: [] };
+        this.state = { value: '' };
         this.handleOnChange = this.handleOnChange.bind(this);
     }
 
-    handleOnChange(values) {
-        this.setState({ values });
+    handleOnChange(value) {
+        this.setState({ value });
     }
 
     render() {
-        const { values } = this.state;
+        const { value } = this.state;
         return (
             <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
                 <ButtonGroupPicker 
                     label="Select view type" 
-                    value={values} 
+                    value={value} 
                     onChange={this.handleOnChange} 
                     name="filter" 
                     size="medium" 
@@ -98,21 +98,21 @@ import { faAlignLeft, faAlignCenter, faAlignRight } from '@fortawesome/free-soli
 class ButtonGroupPickerTry extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { values: []};
+        this.state = { value: ''};
         this.handleOnChange = this.handleOnChange.bind(this);
     }
 
-    handleOnChange(values) {
-        this.setState({ values });
+    handleOnChange(value) {
+        this.setState({ value });
     }
 
     render() {
-        const { values } = this.state;
+        const { value } = this.state;
         return (
             <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
                 <ButtonGroupPicker 
                     className="rainbow-m-around_medium" 
-                    value={values} 
+                    value={value} 
                     onChange={this.handleOnChange} 
                     name="text-options-multiple"
                 >
@@ -138,21 +138,21 @@ import { ButtonGroupPicker, ButtonOption } from 'react-rainbow-components';
 class ButtonGroupPickerTry extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { values: []};
+        this.state = { value: ''};
         this.handleOnChange = this.handleOnChange.bind(this);
     }
 
-    handleOnChange(values) {
-        this.setState({ values });
+    handleOnChange(value) {
+        this.setState({ value });
     }
 
     render() {
-        const { values } = this.state;
+        const { value } = this.state;
         return (
             <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
                 <ButtonGroupPicker 
                     label="Select view type" 
-                    value={values} 
+                    value={value} 
                     onChange={this.handleOnChange} 
                     name="text-options-multiple" 
                     error="This field is required"
