@@ -127,7 +127,7 @@ ButtonGroupPicker.defaultProps = {
     className: undefined,
     style: undefined,
     label: undefined,
-    value: [],
+    value: undefined,
     onChange: () => {},
     multiple: false,
     name: undefined,
