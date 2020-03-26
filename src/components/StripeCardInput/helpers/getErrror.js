@@ -1,9 +1,11 @@
 export default function getError(error) {
-    return error
-        ? {
+    if (error) {
+        return {
               code: error.code,
               type: error.type,
               message: error.message,
-          }
-        : undefined;
+          };
+    }
+    return undefined;
+      
 }
