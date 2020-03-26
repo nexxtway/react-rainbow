@@ -1,16 +1,25 @@
 import styled from 'styled-components';
-import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-const StyledHeaderDays = attachThemeAttrs(styled.th)`
-    text-align: center;
-    color: ${props => props.palette.brand.main};
-    font-size: ${FONT_SIZE_TEXT_MEDIUM};
-    font-weight: 400;
-    line-height: 40px;
-    height: 40px;
-    padding: 0;
-    box-sizing: border-box;
+const StyledHearderDays = attachThemeAttrs(styled.div)`
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: row;
+    overflow: hidden;
+    position: relative;
+    align-items: flex-start;
+
+    > div:first-child {
+        width: 9px;
+        min-width: 9px;
+        height: 100%;
+    }
+
+    > div:last-child {
+        width: 16px;
+        min-width: 16px;
+        height: 100%;
+    }
 `;
 
-export default StyledHeaderDays;
+export default StyledHearderDays;

@@ -1,25 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Hour from './hour';
+import Day from './day';
+import StyledContentDays from './styled/contentDays';
+import StyledGrid from './styled/grid';
+import StyledGridLine from './styled/gridLine';
 
 export default function Week(props) {
     const { currentWeek, onChange } = props;
 
-    function Hours() {
-        const date = new Date(currentWeek);
-        const hours = [];
+    function Days() {
+        const days = [];
+        for (let i = 0; i < 7; i += 1) {
+            days.push(<Day currentWeek={currentWeek} key={i} onChange={onChange} />);
+        }
+        return days;
+    }
+
+    function GridLines() {
+        const gridLines = [];
 
         for (let i = 0; i < 24; i += 1) {
-            date.setHours(i);
-            hours.push(<Hour currentWeek={currentWeek} hour={i} key={i} onChange={onChange} />);
+            gridLines.push(<StyledGridLine />);
         }
-        return hours;
+        return gridLines;
     }
 
     return (
-        <tbody>
-            <Hours />
-        </tbody>
+        <StyledContentDays>
+            <StyledGrid>
+                <GridLines />
+            </StyledGrid>
+            <Days />
+        </StyledContentDays>
     );
 }
 

@@ -2,7 +2,15 @@
 
 ```js
 import React from 'react';
+import styled from 'styled-components';
 import { WeeklyScheduler } from 'react-rainbow-components';
 
-<WeeklyScheduler/>; 
+const Container = styled.div`
+    padding: 10px;
+    height: 400px;;
+`;
+
+<Container>
+    <WeeklyScheduler/>
+</Container>
 ```

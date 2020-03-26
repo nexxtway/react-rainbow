@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import Select from './../Select';
 import RightIcon from './icons/rightArrow';
 import LeftIcon from './icons/leftArrow';
-import StyledControlsContainer from './styled/controlsContainer';
+import StyledControls from './styled/controls';
 import StyledWeekContainer from './styled/weekContainer';
 import StyledWeek from './styled/week';
 import StyledArrowButton from './styled/arrowButton';
-import StyledTable from './styled/table';
 import DaysOfWeek from './daysOfWeek';
 import {
     normalizeDate,
@@ -18,6 +17,8 @@ import {
 } from './helpers';
 import Week from './week';
 import StyledContainer from './styled/container';
+import StyledContent from './styled/content';
+import Hours from './hours';
 
 export default function WeeklyScheduler(props) {
     const { events, date, minDate, maxDate, onChange, className, style } = props;
@@ -44,7 +45,7 @@ export default function WeeklyScheduler(props) {
 
     return (
         <StyledContainer className={className} style={style}>
-            <StyledControlsContainer>
+            <StyledControls>
                 <StyledWeekContainer>
                     <StyledArrowButton
                         onClick={() => setCurrentWeek(addWeeks(currentWeek, -1))}
@@ -71,11 +72,12 @@ export default function WeeklyScheduler(props) {
                     options={yearsRange}
                     onChange={handleYearChange}
                 />
-            </StyledControlsContainer>
-            <StyledTable>
-                <DaysOfWeek locale={locale} currentWeek={currentWeek} />
+            </StyledControls>
+            <DaysOfWeek locale={locale} currentWeek={currentWeek} />
+            <StyledContent>
+                <Hours />
                 <Week currentWeek={currentWeek} onChange={onChange} />
-            </StyledTable>
+            </StyledContent>
         </StyledContainer>
     );
 }

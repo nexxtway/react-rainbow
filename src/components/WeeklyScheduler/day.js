@@ -10,7 +10,7 @@ export default function Day(props) {
     const locale = 'es';
     const id = useUniqueIdentifier('event');
     return (
-        <StyledDay role="gridcell">
+        <StyledDay>
             <Event id={id} title={id} />
         </StyledDay>
     );
