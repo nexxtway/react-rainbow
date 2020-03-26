@@ -2,19 +2,18 @@ import { ReactNode } from 'react';
 import { Stripe, StripeElement } from '@stripe/stripe-js';
 import { BaseProps } from '../types';
 
+type Error = {
+    type: 'validation_error';
+    code: string;
+    message: string;
+};
 interface StripeCardEvent {
     stripe: Stripe;
     element: StripeElement;
     isEmpty: boolean;
     isComplete: boolean;
     brand: 'visa' | 'mastercard' | 'amex' | 'discover' | 'diners' | 'jcb' | 'unionpay' | 'unknown';
-    error:
-        | undefined
-        | {
-              type: 'validation_error';
-              code: string;
-              message: string;
-          };
+    error?: Error;
 }
 
 export interface StripeCardInput extends BaseProps {
