@@ -35,11 +35,17 @@ export default function ButtonOption(props) {
 }
 
 ButtonOption.propTypes = {
+    /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
+    /** An object with a custom style applied to the outer element. */
     style: PropTypes.object,
+    /** It is a unique value that identifies the picker option. */
     name: PropTypes.string.isRequired,
+    /** The content to be displayed inside the ButtonOption */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    /** Specifies whether this button should be displayed in a disabled state. Disabled buttons can't be clicked. */
     disabled: PropTypes.bool,
+    /** The action triggered when the element is clicked. */
     onClick: PropTypes.func,
 };
 
