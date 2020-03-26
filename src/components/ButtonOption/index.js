@@ -2,8 +2,7 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { ButtonGroupPickerContext } from '../ButtonGroupPicker/context';
 import HiddenElement from '../Structural/hiddenElement';
-import StyledLabel from './styled/label';
-import StyledText from './styled/text';
+import { StyledLabel, StyledText } from './styled';
 import isOptionSelected from './helpers/isOptionSelected';
 import { uniqueId } from '../../libs/utils';
 

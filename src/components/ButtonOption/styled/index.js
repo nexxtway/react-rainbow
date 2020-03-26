@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+import StyledText from './text';
 
 const StyledLabel = attachThemeAttrs(styled.label)`
     input:focus + span {
@@ -20,4 +21,4 @@ const StyledLabel = attachThemeAttrs(styled.label)`
         `}
 `;
 
-export default StyledLabel;
+export { StyledLabel, StyledText };

@@ -1,13 +1,15 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import StyledContainer from './styled/container';
-import StyledButtonGroup from './styled/buttonGroup';
-import StyledLegend from './styled/label';
+import React, { Component } from 'react';
 import { uniqueId } from '../../libs/utils';
-import { Provider } from './context';
 import RenderIf from '../RenderIf';
-import HelpText from './styled/helpText';
-import ErrorText from './styled/errorText';
+import { Provider } from './context';
+import {
+    StyledButtonGroup,
+    StyledContainer,
+    StyledErrorText,
+    StyledHelpText,
+    StyledLegend,
+} from './styled';
 
 /**
  * ButtonGroupPicker can be used to group related options. The ButtonGroupPicker will control the selected state of its child ButtonOption.
@@ -83,10 +85,10 @@ class ButtonGroupPicker extends Component {
                     <Provider value={{ ...context }}>{children}</Provider>
                 </StyledButtonGroup>
                 <RenderIf isTrue={!!bottomHelpText}>
-                    <HelpText alignSelf="center">{bottomHelpText}</HelpText>
+                    <StyledHelpText>{bottomHelpText}</StyledHelpText>
                 </RenderIf>
                 <RenderIf isTrue={!!error}>
-                    <ErrorText id={this.getErrorMessageId()}>{error}</ErrorText>
+                    <StyledErrorText id={this.getErrorMessageId()}>{error}</StyledErrorText>
                 </RenderIf>
             </StyledContainer>
         );
