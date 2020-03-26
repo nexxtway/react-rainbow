@@ -1,5 +1,5 @@
+import { ComponentType, MouseEvent, ReactNode } from 'react';
 import { BaseProps } from '../types';
-import { ReactNode, MouseEvent, ComponentType } from 'react';
 
 export interface ButtonOptionProps extends BaseProps {
     name?: string;

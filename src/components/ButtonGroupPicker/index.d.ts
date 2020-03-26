@@ -1,4 +1,4 @@
-import { ChangeEvent, ComponentType, ReactNode } from 'react';
+import { ComponentType, ReactNode } from 'react';
 import { BaseProps } from '../types';
 
 type Value = string | string[];
