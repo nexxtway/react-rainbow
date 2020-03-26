@@ -1,29 +1,8 @@
 import styled from 'styled-components';
 import { FONT_SIZE_HEADING_SMALL } from '../../../styles/fontSizes';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
-import { COLOR_WHITE, COLOR_GRAY_3, COLOR_DARK_1 } from '../../../styles/colors';
-import { lighten } from '../../../styles/helpers/color';
 
-const StyledText = attachThemeAttrs(styled.span).attrs(props => {
-    if (props.palette.isDark) {
-        return {
-            inverse: {
-                text: COLOR_DARK_1,
-                active: lighten(COLOR_DARK_1, 0.6),
-                border: COLOR_DARK_1,
-                disabled: lighten(COLOR_DARK_1, 0.6),
-            },
-        };
-    }
-    return {
-        inverse: {
-            text: COLOR_WHITE,
-            active: COLOR_GRAY_3,
-            border: COLOR_WHITE,
-            disabled: COLOR_GRAY_3,
-        },
-    };
-})`
+const StyledText = attachThemeAttrs(styled.span)`
     font: inherit;
     align-items: center;
     display: inline-flex;
@@ -80,18 +59,7 @@ const StyledText = attachThemeAttrs(styled.span).attrs(props => {
     &:active {
         transform: scale(0.95);
         transition: all 0.2s ease;
-    }
-
-    &[disabled] {
-        color: ${props => props.palette.text.disabled};
-        cursor: default;
-        background-color: transparent;
-    }  
-
-    &[disabled] * {
-        cursor: default;
-        pointer-events: none;
-    } 
+    }     
 
     ${props =>
         props.checked &&
