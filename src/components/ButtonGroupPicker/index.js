@@ -1,5 +1,6 @@
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import withReduxForm from './../../libs/hocs/withReduxForm';
 import { uniqueId } from '../../libs/utils';
 import RenderIf from '../RenderIf';
 import { Provider } from './context';
@@ -10,6 +11,7 @@ import {
     StyledHelpText,
     StyledLegend,
 } from './styled';
+import RequiredAsterisk from '../RequiredAsterisk';
 
 /**
  * ButtonGroupPicker can be used to group related options. The ButtonGroupPicker will control the selected state of its child ButtonOption.
@@ -58,6 +60,7 @@ class ButtonGroupPicker extends Component {
             error,
             bottomHelpText,
             value,
+            required,
         } = this.props;
 
         const errorMessageId = this.getErrorMessageId();
@@ -72,7 +75,10 @@ class ButtonGroupPicker extends Component {
         return (
             <StyledContainer className={className} style={style}>
                 <RenderIf isTrue={!!label}>
-                    <StyledLegend>{label}</StyledLegend>
+                    <StyledLegend>
+                        <RequiredAsterisk required={required} />
+                        {label}
+                    </StyledLegend>
                 </RenderIf>
                 <StyledButtonGroup size={size}>
                     <Provider value={context}>{children}</Provider>
@@ -97,6 +103,8 @@ ButtonGroupPicker.propTypes = {
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The name of the ButtonOption selected or if multiple an array of names. */
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
+    /** Set to true if at least one option must be selected. This value defaults to false. */
+    required: PropTypes.bool,
     /** It will fire when selected option(s) can change based on user interactions. */
     onChange: PropTypes.func,
     /**
@@ -128,6 +136,7 @@ ButtonGroupPicker.defaultProps = {
     style: undefined,
     label: undefined,
     value: undefined,
+    required: false,
     onChange: () => {},
     multiple: false,
     name: undefined,
@@ -137,4 +146,4 @@ ButtonGroupPicker.defaultProps = {
     children: undefined,
 };
 
-export default ButtonGroupPicker;
+export default withReduxForm(ButtonGroupPicker);
