@@ -74,7 +74,7 @@ class ButtonGroupPicker extends Component {
                 <RenderIf isTrue={!!label}>
                     <StyledLegend>{label}</StyledLegend>
                 </RenderIf>
-                <StyledButtonGroup size={size} role="group">
+                <StyledButtonGroup size={size}>
                     <Provider value={context}>{children}</Provider>
                 </StyledButtonGroup>
                 <RenderIf isTrue={!!bottomHelpText}>
