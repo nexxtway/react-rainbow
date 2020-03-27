@@ -23,6 +23,7 @@ const CardInput = props => {
         onChange,
         onFocus,
         onBlur,
+        tabIndex,
     } = props;
     const stripe = useStripe();
     const elements = useElements();
@@ -44,7 +45,12 @@ const CardInput = props => {
         onChange(stripeCardEvent);
     };
     return (
-        <StyledContainer disabled={disabled} className={className} style={style}>
+        <StyledContainer
+            disabled={disabled}
+            className={className}
+            style={style}
+            tabIndex={tabIndex}
+        >
             <Label label={label} hideLabel={hideLabel} inputId={cardElementId} required />
             <RenderIf isTrue={disabled}>
                 <StyledFakeDisabled />
@@ -78,6 +84,7 @@ CardInput.propTypes = {
     onBlur: PropTypes.func,
     className: PropTypes.string,
     style: PropTypes.object,
+    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 CardInput.defaultProps = {
@@ -91,6 +98,7 @@ CardInput.defaultProps = {
     onBlur: () => {},
     className: undefined,
     style: undefined,
+    tabIndex: undefined,
 };
 
 export default CardInput;

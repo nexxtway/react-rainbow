@@ -8,10 +8,10 @@ export default function getCardElementOptions(theme, disabled) {
                     ? theme.palette.background.disabled
                     : theme.palette.background.main,
                 color: theme.palette.text.main,
-                fontSize: '1.1rem',
+                fontSize: '16px',
                 '::placeholder': {
                     color: theme.palette.text.header,
-                    fontVariant: 300,
+                    fontWeight: 300,
                 },
                 ':disabled': {
                     color: theme.palette.text.disabled,

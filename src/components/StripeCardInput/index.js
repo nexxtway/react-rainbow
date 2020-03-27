@@ -12,7 +12,17 @@ import CardInput from './cardInput';
 const StripeCardInput = props => {
     const { apiKey, ...rest } = props;
     const locale = useLocale();
-    const elementOptions = useMemo(() => ({ locale }), [locale]);
+    const elementOptions = useMemo(
+        () => ({
+            locale,
+            fonts: [
+                {
+                    cssSrc: 'https://fonts.googleapis.com/css?family=Lato&display=swap',
+                },
+            ],
+        }),
+        [locale],
+    );
     const stripePromise = useMemo(() => loadStripe(apiKey), [apiKey]);
 
     return (
@@ -47,6 +57,8 @@ StripeCardInput.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** Specifies the tab order of an element (when the tab button is used for navigating). */
+    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 StripeCardInput.defaultProps = {
@@ -60,6 +72,7 @@ StripeCardInput.defaultProps = {
     onBlur: () => {},
     className: undefined,
     style: undefined,
+    tabIndex: undefined,
 };
 
 export default StripeCardInput;

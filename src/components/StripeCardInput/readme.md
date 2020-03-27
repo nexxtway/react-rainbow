@@ -21,6 +21,8 @@ const Payment = () => {
                 label="Credit/Debit Card Information"
                 onChange={setCard}
                 error={(card && card.error && card.error.message)}
+                hideLabel
+                disabled
             />
         </Container>
     );
@@ -111,6 +113,7 @@ const Payment = () => {
                         icon={<UserIcon/>}
                         onChange={event => setName(event.currentTarget.value)}
                         required
+                        tabIndex={1}
                     />
                 </Field>
                 <Field>
@@ -119,6 +122,7 @@ const Payment = () => {
                         label="Card Number"
                         onChange={setStripeCard}
                         error={(stripeCard && stripeCard.error && stripeCard.error.message)}
+                        tabIndex="4"
                     />
                 </Field>
                 <Field>
@@ -130,6 +134,7 @@ const Payment = () => {
                         apiKey={LIBRARY_GOOGLE_MAPS_APIKEY}
                         searchOptions={searchOptions}
                         required
+                        tabIndex={3}
                     />
                 </Field>
                 <Field>
@@ -138,6 +143,7 @@ const Payment = () => {
                         type="checkbox"
                         value={saveCard}
                         onChange={event => setSaveCard(event.currentTarget.checked)}
+                        tabIndex={2}
                     />
                 </Field>
                 <Actions>
