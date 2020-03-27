@@ -4,7 +4,7 @@ import { BaseProps } from '../types';
 export interface ButtonOptionProps extends BaseProps {
     name?: string;
     label?: ReactNode;
-    onClick?: (event: MouseEvent<HTMLElement>) => void;
+    onClick?: (event: { isSelected: boolean }) => void;
     disabled?: boolean;
 }
 
