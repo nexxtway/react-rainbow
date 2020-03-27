@@ -4,29 +4,33 @@ import { ButtonGroupPickerContext } from '../ButtonGroupPicker/context';
 import HiddenElement from '../Structural/hiddenElement';
 import { StyledLabel, StyledText } from './styled';
 import isOptionSelected from './helpers/isOptionSelected';
-import { uniqueId } from '../../libs/utils';
+import { useUniqueIdentifier } from '../../libs/hooks';
 
 export default function ButtonOption(props) {
-    const inputId = uniqueId('button-option');
+    const inputId = useUniqueIdentifier('button-option');
     const { className, style, name, label, disabled, onClick } = props;
 
-    const context = useContext(ButtonGroupPickerContext);
-    const checked = isOptionSelected(context.values, name);
+    const { type, values, name: contextName, onChange, ariaDescribedBy } = useContext(
+        ButtonGroupPickerContext,
+    );
+    const checked = isOptionSelected(values, name);
+
+    const handleClick = () => onClick({ isSelected: checked });
 
     return (
-        <StyledLabel className={className} style={style} checked={checked} for={inputId}>
+        <StyledLabel className={className} style={style} checked={checked} htmlFor={inputId}>
             <HiddenElement
                 id={inputId}
                 as="input"
-                type={context.type}
-                name={context.name}
+                type={type}
+                name={contextName}
                 value={name}
-                aria-describedby={context.ariaDescribedBy}
+                aria-describedby={ariaDescribedBy}
                 checked={checked}
-                onChange={context.onChange}
+                onChange={onChange}
                 disabled={disabled}
             />
-            <StyledText onClick={onClick} disabled={disabled} checked={checked}>
+            <StyledText onClick={handleClick} disabled={disabled} checked={checked}>
                 {label}
             </StyledText>
         </StyledLabel>
