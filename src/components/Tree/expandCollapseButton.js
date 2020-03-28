@@ -12,20 +12,13 @@ function getIcon(isExpanded) {
     return <RightArrow />;
 }
 
-function getButton(isExpanded, isLoading, onClick) {
-    const spinner = <BrandSpinner variant="brand" size="x-small" />;
-    return !isExpanded && isLoading ? (
-        <Button size="x-small" variant="base" icon={spinner} disabled />
-    ) : (
-        <Button size="x-small" icon={getIcon(isExpanded)} onClick={onClick} />
-    );
-}
-
 export default function ExpandCollapseButton(props) {
     const { hasChildren, isExpanded, isLoading, onClick } = props;
-
+    if (isLoading) {
+        return <BrandSpinner variant="brand" size="x-small" />;
+    }
     if (hasChildren) {
-        return getButton(isExpanded, isLoading, onClick);
+        return <Button size="x-small" icon={getIcon(isExpanded)} onClick={onClick} />;
     }
     return null;
 }

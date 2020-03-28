@@ -4,7 +4,11 @@ import Spinner from '../../Spinner';
 
 const BrandSpinner = attachThemeAttrs(styled(Spinner))`
     color: ${props => props.palette.brand.main};
-    margin-right: 8px;
+    margin-top: 18px;
+    margin-left: 8px;
+    position: relative;
+    top: inherit;
+    left: inherit;
 `;
 
 export default BrandSpinner;

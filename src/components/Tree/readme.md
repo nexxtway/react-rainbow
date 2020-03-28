@@ -11,6 +11,7 @@
                 { label: 'Tree Item' },
                 { 
                     label: 'Tree Branch',
+                    isLoading: true,
                     children: [
                         { label: 'Tree Item' },
                     ]
@@ -19,14 +20,12 @@
         },
         {
             label: 'Tree Branch',
-            isLoading: true,
             children: [
                 { label: 'Tree Item' },
                  { label: 'Tree Item' },
                   { label: 'Tree Item' },
                    { label: 'Tree Item' },
-                    { label: 'Tree Item' },
-              
+                    { label: 'Tree Item' },              
             ],
         }
     ];
@@ -36,7 +35,6 @@
         child.isExpanded = !child.isExpanded;
         setState({ data: state.data });
     }
-
     <Tree
         data={state.data}
         onExpandCollapse={openNode}
