@@ -70,6 +70,7 @@ class ButtonGroupPicker extends Component {
             type: multiple ? 'checkbox' : 'radio',
             name: this.groupNameId,
             ariaDescribedBy: errorMessageId,
+            size,
         };
 
         return (
@@ -80,7 +81,7 @@ class ButtonGroupPicker extends Component {
                         {label}
                     </StyledLegend>
                 </RenderIf>
-                <StyledButtonGroup size={size}>
+                <StyledButtonGroup>
                     <Provider value={context}>{children}</Provider>
                 </StyledButtonGroup>
                 <RenderIf isTrue={!!bottomHelpText}>

@@ -12,8 +12,6 @@ const StyledText = attachThemeAttrs(styled.span)`
     background: transparent;
     background-clip: border-box;
     border: 1px solid transparent;
-    border-radius: 100px;
-    line-height: 2.375rem;
     text-decoration: none;
     padding: 0 1rem;
     cursor: pointer;
@@ -26,6 +24,11 @@ const StyledText = attachThemeAttrs(styled.span)`
     text-transform: none;
     appearance: button;
     box-sizing: border-box;
+    border-radius: 0;
+    border-width: 1px;
+    margin-left: -1px;
+    height: 2.5rem;
+    line-height: 2.5;
 
     ::-moz-focus-inner,
     ::-moz-focus-inner {
@@ -49,6 +52,7 @@ const StyledText = attachThemeAttrs(styled.span)`
     &:focus,
     &:active {
         color: ${props => props.palette.brand.dark};
+        z-index: 1;
     }
 
     &:focus {
@@ -59,7 +63,56 @@ const StyledText = attachThemeAttrs(styled.span)`
     &:active {
         transform: scale(0.95);
         transition: all 0.2s ease;
-    }     
+    }
+
+    svg,
+    span {
+        width: 1rem !important;
+        height: 1rem !important;
+        font-size: 1rem !important;
+    }
+
+    ${props =>
+        props.size === 'x-small' &&
+        `
+            height: 1.25rem;
+            line-height: 1.25;
+            padding: 0 0.3rem;
+            font-size: 0.6rem !important;
+
+            svg, span {
+                width: 0.6rem !important;
+                height: 0.6rem !important;
+                font-size: 0.6rem !important;
+            }
+        `};
+    ${props =>
+        props.size === 'small' &&
+        `
+            height: 1.65rem;
+            line-height: 1.65;
+            padding: 0 0.6rem;
+            font-size: 0.65rem !important;
+
+            svg, span {
+                width: 0.65rem !important;
+                height: 0.65rem !important;
+        
+                font-size: 0.65rem !important;
+            }
+        `};
+    ${props =>
+        props.size === 'large' &&
+        `
+            height: 3rem;
+            line-height: 3;
+
+            svg, span {
+                width: 1.5rem !important;
+                height: 1.5rem !important;
+                font-size: 1rem !important;
+            }
+        `};
 
     ${props =>
         props.checked &&

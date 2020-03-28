@@ -10,7 +10,7 @@ export default function ButtonOption(props) {
     const inputId = useUniqueIdentifier('button-option');
     const { className, style, name, label, disabled, onClick } = props;
 
-    const { type, values, name: contextName, onChange, ariaDescribedBy } = useContext(
+    const { type, values, name: contextName, onChange, ariaDescribedBy, size } = useContext(
         ButtonGroupPickerContext,
     );
     const checked = isOptionSelected(values, name);
@@ -30,7 +30,7 @@ export default function ButtonOption(props) {
                 onChange={onChange}
                 disabled={disabled}
             />
-            <StyledText onClick={handleClick} disabled={disabled} checked={checked}>
+            <StyledText size={size} onClick={handleClick} disabled={disabled} checked={checked}>
                 {label}
             </StyledText>
         </StyledLabel>
