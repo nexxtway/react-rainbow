@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Stripe, StripeElement } from '@stripe/stripe-js';
+import { Stripe, StripeCardElement } from '@stripe/stripe-js';
 import { BaseProps } from '../types';
 
 type Error = {
@@ -9,10 +9,18 @@ type Error = {
 };
 interface StripeCardEvent {
     stripe: Stripe;
-    element: StripeElement;
+    card: StripeCardElement;
     isEmpty: boolean;
     isComplete: boolean;
-    brand: 'visa' | 'mastercard' | 'amex' | 'discover' | 'diners' | 'jcb' | 'unionpay' | 'unknown';
+    cardBrand:
+        | 'visa'
+        | 'mastercard'
+        | 'amex'
+        | 'discover'
+        | 'diners'
+        | 'jcb'
+        | 'unionpay'
+        | 'unknown';
     error?: Error;
 }
 
@@ -23,6 +31,8 @@ export interface StripeCardInput extends BaseProps {
     bottomHelpText?: ReactNode;
     error?: ReactNode;
     disabled?: boolean;
+    tabIndex?: number | string;
+    required?: boolean;
     onChange?: (event: StripeCardEvent) => void;
     onBlur?: () => void;
     onFocus?: () => void;

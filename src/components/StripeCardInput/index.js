@@ -1,35 +1,20 @@
-import React, { useMemo } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { loadStripe } from '@stripe/stripe-js';
-import { Elements } from '@stripe/react-stripe-js';
-import { useLocale } from '../../libs/hooks';
-import CardInput from './cardInput';
+import scriptLoader from 'react-async-script-loader';
+import CardInput from './component';
+
+const stripeApiV3Url = 'https://js.stripe.com/v3';
 
 /**
  * Stripe Card Input component are used for freeform data entry.
  * @category Form
  */
 const StripeCardInput = props => {
-    const { apiKey, ...rest } = props;
-    const locale = useLocale();
-    const elementOptions = useMemo(
-        () => ({
-            locale,
-            fonts: [
-                {
-                    cssSrc: 'https://fonts.googleapis.com/css?family=Lato&display=swap',
-                },
-            ],
-        }),
-        [locale],
-    );
-    const stripePromise = useMemo(() => loadStripe(apiKey), [apiKey]);
+    const { ...rest } = props;
 
-    return (
-        <Elements stripe={stripePromise} options={elementOptions}>
-            <CardInput {...rest} />
-        </Elements>
-    );
+    const Component = useCallback(scriptLoader(stripeApiV3Url)(CardInput), []);
+
+    return <Component {...rest} />;
 };
 
 StripeCardInput.propTypes = {
@@ -47,6 +32,11 @@ StripeCardInput.propTypes = {
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies that an input element should be disabled. This value defaults to false. */
     disabled: PropTypes.bool,
+    /** Specifies that an input field must be filled out before submitting the form.
+     * This value defaults to false. */
+    required: PropTypes.bool,
+    /** Specifies the tab order of an element (when the tab button is used for navigating). */
+    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** The action triggered when some value of the component changes. */
     onChange: PropTypes.func,
     /** The action triggered when the element receives focus. */
@@ -57,22 +47,21 @@ StripeCardInput.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
-    /** Specifies the tab order of an element (when the tab button is used for navigating). */
-    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 StripeCardInput.defaultProps = {
-    label: 'Card Details',
+    label: undefined,
     hideLabel: false,
     bottomHelpText: null,
     error: null,
     disabled: false,
+    required: false,
+    tabIndex: undefined,
     onChange: () => {},
     onFocus: () => {},
     onBlur: () => {},
     className: undefined,
     style: undefined,
-    tabIndex: undefined,
 };
 
 export default StripeCardInput;

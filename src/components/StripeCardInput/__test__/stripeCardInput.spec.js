@@ -1,25 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import StripeCardInput from '..';
-
-jest.mock('@stripe/stripe-js', () => {
-    return {
-        loadStripe: jest.fn(() => Promise.resolve()),
-    };
-});
-
-jest.mock('@stripe/react-stripe-js', () => {
-    return {
-        // eslint-disable-next-line react/prop-types
-        Elements: props => <div>{props.children}</div>,
-        // eslint-disable-next-line react/prop-types
-        CardElement: ({ onChange }) => <input onChange={onChange} />,
-        useElements: jest.fn().mockReturnValue({
-            getElement: jest.fn().mockReturnValue({}),
-        }),
-        useStripe: jest.fn().mockReturnValue({}),
-    };
-});
+import { Component as CardInput } from '../component';
 
 const error = {
     code: 'invalid_number',
@@ -32,21 +13,42 @@ const event = {
     complete: false,
     brand: 'unknown',
 };
+const elementMock = {
+    mount: jest.fn(),
+    on: jest.fn((eventType = 'change', callback) => {
+        if (eventType === 'change') {
+            callback(event);
+        }
+    }),
+};
+const elementsMock = {
+    create: jest.fn().mockReturnValue(elementMock),
+};
+const stripeMock = {
+    elements: jest.fn().mockReturnValue(elementsMock),
+};
+window.Stripe = jest.fn().mockReturnValue(stripeMock);
 
 describe('<StripeCardInput>', () => {
-    it('should fire onChange with specific event', () => {
-        const onChangeMockFn = jest.fn();
-        const component = mount(
-            <StripeCardInput apiKey="STRIPE_API_KEY" onChange={onChangeMockFn} />,
+    it('should fire onChange with specific event', done => {
+        const onChangeMockFn = e => {
+            expect(e).toEqual({
+                cardBrand: 'unknown',
+                isEmpty: false,
+                isComplete: false,
+                error,
+                stripe: stripeMock,
+                card: elementMock,
+            });
+            done();
+        };
+        mount(
+            <CardInput
+                apiKey="STRIPE_API_KEY"
+                isScriptLoaded
+                isScriptLoadSucceed
+                onChange={onChangeMockFn}
+            />,
         );
-        component.find('input').simulate('change', event);
-        expect(onChangeMockFn).toHaveBeenCalledWith({
-            cardBrand: 'unknown',
-            isEmpty: false,
-            isComplete: false,
-            error,
-            stripe: {},
-            card: {},
-        });
     });
 });
