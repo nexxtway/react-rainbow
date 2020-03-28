@@ -37,6 +37,30 @@ StripeCardInput.propTypes = {
     required: PropTypes.bool,
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
     tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    /** The Calendar locale. Defaults to browser's language. */
+    locale: PropTypes.oneOf([
+        'ar',
+        'da',
+        'de',
+        'en',
+        'es',
+        'fi',
+        'fr',
+        'he',
+        'it',
+        'ja',
+        'lt',
+        'lv',
+        'ms',
+        'nb',
+        'nl',
+        'pl',
+        'pt',
+        'pt-BR',
+        'ru',
+        'sv',
+        'zh',
+    ]),
     /** The action triggered when some value of the component changes. */
     onChange: PropTypes.func,
     /** The action triggered when the element receives focus. */
@@ -57,6 +81,7 @@ StripeCardInput.defaultProps = {
     disabled: false,
     required: false,
     tabIndex: undefined,
+    locale: undefined,
     onChange: () => {},
     onFocus: () => {},
     onBlur: () => {},

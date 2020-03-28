@@ -22,6 +22,7 @@ const CardInput = React.forwardRef((props, ref) => {
         style,
         disabled,
         required,
+        locale,
         onChange,
         onFocus,
         onBlur,
@@ -33,21 +34,18 @@ const CardInput = React.forwardRef((props, ref) => {
     const cardRef = useRef();
     const cardElementId = useUniqueIdentifier('card-element');
     const theme = useTheme().rainbow;
-    const cardElementOptions = useMemo(() => getCardElementOptions(theme, disabled), [
-        theme,
-        disabled,
-    ]);
-    const locale = useLocale();
+    const cardElementOptions = useMemo(() => getCardElementOptions(theme), [theme]);
+    const localeStripe = useLocale(locale);
     const elementOptions = useMemo(
         () => ({
-            locale,
+            locale: localeStripe,
             fonts: [
                 {
                     cssSrc: 'https://fonts.googleapis.com/css?family=Lato&display=swap',
                 },
             ],
         }),
-        [locale],
+        [localeStripe],
     );
     useEffect(() => {
         if (isScriptLoaded && isScriptLoadSucceed && window.Stripe) {
@@ -122,6 +120,29 @@ CardInput.propTypes = {
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     disabled: PropTypes.bool,
     required: PropTypes.bool,
+    locale: PropTypes.oneOf([
+        'ar',
+        'da',
+        'de',
+        'en',
+        'es',
+        'fi',
+        'fr',
+        'he',
+        'it',
+        'ja',
+        'lt',
+        'lv',
+        'ms',
+        'nb',
+        'nl',
+        'pl',
+        'pt',
+        'pt-BR',
+        'ru',
+        'sv',
+        'zh',
+    ]),
     onChange: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
@@ -139,6 +160,7 @@ CardInput.defaultProps = {
     error: null,
     disabled: false,
     required: false,
+    locale: undefined,
     onChange: () => {},
     onFocus: () => {},
     onBlur: () => {},

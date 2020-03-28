@@ -36,6 +36,28 @@ export interface StripeCardInput extends BaseProps {
     onChange?: (event: StripeCardEvent) => void;
     onBlur?: () => void;
     onFocus?: () => void;
+    locale?:
+        | 'ar'
+        | 'da'
+        | 'de'
+        | 'en'
+        | 'es'
+        | 'fi'
+        | 'fr'
+        | 'he'
+        | 'it'
+        | 'ja'
+        | 'lt'
+        | 'lv'
+        | 'ms'
+        | 'nb'
+        | 'nl'
+        | 'pl'
+        | 'pt'
+        | 'pt-BR'
+        | 'ru'
+        | 'sv'
+        | 'zh';
 }
 
 export default function(props: StripeCardInput): JSX.Element | null;
