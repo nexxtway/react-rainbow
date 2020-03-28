@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import BadgeOverlay from '..';
-import StyledComponent from '../styled/component';
+import StyledBadge from '../styled/badge';
 
 const defaultProps = {
     value: undefined,
@@ -21,7 +21,7 @@ describe('<BadgeOverlay/>', () => {
     });
     it('should not render when the children is not passed', () => {
         const component = mount(<BadgeOverlay {...defaultProps} />);
-        expect(component.find(StyledComponent).exists()).toBe(false);
+        expect(component.find(StyledBadge).exists()).toBe(false);
     });
     it('should render with right default props', () => {
         const children = <div id="child" />;
@@ -32,23 +32,23 @@ describe('<BadgeOverlay/>', () => {
     it('should render the right value', () => {
         const children = <div id="child" />;
         const component = mount(<BadgeOverlay {...defaultProps}>{children}</BadgeOverlay>);
-        expect(component.find(StyledComponent).text()).toBe('');
+        expect(component.find(StyledBadge).text()).toBe('');
         component.setProps({
             value: 3,
         });
-        expect(component.find(StyledComponent).text()).toBe('3');
+        expect(component.find(StyledBadge).text()).toBe('3');
         component.setProps({
             value: 1000,
         });
-        expect(component.find(StyledComponent).text()).toBe('1k');
+        expect(component.find(StyledBadge).text()).toBe('1k');
     });
     it('should not render when isHidden is true', () => {
         const children = <div id="child" />;
         const component = mount(<BadgeOverlay {...defaultProps}>{children}</BadgeOverlay>);
-        expect(component.find(StyledComponent).exists()).toBe(true);
+        expect(component.find(StyledBadge).exists()).toBe(true);
         component.setProps({
             isHidden: true,
         });
-        expect(component.find(StyledComponent).exists()).toBe(false);
+        expect(component.find(StyledBadge).exists()).toBe(false);
     });
 });

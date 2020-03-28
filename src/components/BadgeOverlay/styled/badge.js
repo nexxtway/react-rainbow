@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-const StyledComponent = attachThemeAttrs(styled.span)`
+const StyledBadge = attachThemeAttrs(styled.span)`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -123,4 +123,4 @@ const StyledComponent = attachThemeAttrs(styled.span)`
         `};
 `;
 
-export default StyledComponent;
+export default StyledBadge;

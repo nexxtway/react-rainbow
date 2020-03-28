@@ -6,8 +6,6 @@ const StyledContainer = attchThemeAttrs(styled.span)`
     display: inline-flex;
     vertical-align: middle;
     flex-shrink: 0;
-    width: 40;
-    height: 40;
 
     ${props =>
         props.overlap === 'circle' &&
