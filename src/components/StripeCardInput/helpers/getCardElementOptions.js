@@ -1,15 +1,21 @@
-export default function getCardElementOptions(theme) {
+export default function getCardElementOptions(theme, disabled) {
     return {
         style: {
             base: {
                 iconColor: theme.palette.text.main,
                 fontFamily: '"Lato", Arial, sans-serif',
-                backgroundColor: theme.palette.background.main,
+                backgroundColor: disabled
+                    ? theme.palette.background.disabled
+                    : theme.palette.background.main,
                 color: theme.palette.text.main,
                 fontSize: '16px',
                 '::placeholder': {
                     color: theme.palette.text.header,
                     fontWeight: 300,
+                },
+                ':disabled': {
+                    color: theme.palette.text.disabled,
+                    backgroundColor: theme.palette.background.disabled,
                 },
             },
             invalid: {
@@ -17,5 +23,6 @@ export default function getCardElementOptions(theme) {
                 color: theme.palette.error.main,
             },
         },
+        disabled,
     };
 }

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
@@ -7,19 +6,6 @@ const StyledContainer = attachThemeAttrs(styled.div)`
     display: flex;
     flex-direction: column;
     position: relative;
-
-    .card-element{
-        height: 2.5rem;
-        background-color: ${props => props.palette.background.main};
-        border: 1px solid ${props => props.palette.border.main};
-        border-radius: ${BORDER_RADIUS_2};
-        ${props =>
-            props.disabled &&
-            `
-            background-color: ${props.palette.background.disabled} !important;
-            border: 1px solid ${props.palette.border.disabled} !important;
-        `}
-    }
 
     .StripeElement {
         font: inherit;
@@ -32,23 +18,6 @@ const StyledContainer = attachThemeAttrs(styled.div)`
         font-size: ${FONT_SIZE_TEXT_LARGE};
         box-sizing: border-box;
         margin: 0;
-
-        ${props =>
-            props.disabled &&
-            `
-            background-color: ${props.palette.background.disabled} !important;
-            border: 1px solid ${props.palette.border.disabled} !important;
-            color: ${props.palette.text.disabled} !important;
-            cursor: not-allowed;
-            user-select: none;
-
-            &:focus,
-            &:active {
-                box-shadow: none;
-                background-color: ${props.palette.background.disabled} !important;
-                border: 1px solid ${props.palette.border.disabled} !important;
-            }
-        `}
     }
 
     .StripeElement--focus {

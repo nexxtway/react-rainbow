@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { Component as CardInput } from '../component';
+import { Component as StripeCardInput } from '..';
 
 const error = {
     code: 'invalid_number',
@@ -43,7 +43,7 @@ describe('<StripeCardInput>', () => {
             done();
         };
         mount(
-            <CardInput
+            <StripeCardInput
                 apiKey="STRIPE_API_KEY"
                 isScriptLoaded
                 isScriptLoadSucceed
