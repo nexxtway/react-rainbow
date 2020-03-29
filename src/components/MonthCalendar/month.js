@@ -16,6 +16,9 @@ export default function Month(props) {
             const startDate = addDays(date, -dayOfWeek);
             const endDate = addDays(date, daysAfter);
 
+            startDate.setHours(0, 0, 0, 0);
+            endDate.setHours(11, 59, 59, 999);
+
             weeks.push(
                 <Week
                     selectedDate={selectedDate}
