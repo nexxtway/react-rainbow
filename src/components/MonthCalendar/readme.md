@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import { Card, MonthCalendar } from 'react-rainbow-components';
+import { Card, MonthCalendar, RenderIf } from 'react-rainbow-components';
 import styled from 'styled-components';
 
 const StyledContainer = styled.div
@@ -12,14 +12,13 @@ const StyledContainer = styled.div
     flex: 1;
     align-items: start;
     justify-content: end;
-    padding: 0 10px 10px;
+    padding: 0 10px 11px;
 `;
 
 const StyledAssignedLabel = styled.div
 `
     text-transform: uppercase;
     font-size: 12px;
-    margin: 4px 0;
     cursor: default;
     padding-left: 2px;
 `;
@@ -32,7 +31,7 @@ const StyledAvailableLabel = styled.div.attrs(props => {
     cursor: default;
     font-size: 10px;
     border-radius: 1rem;
-    margin: 4px 0 0;
+    margin: 8px 0 2px;
     padding: 2px 10px 3px 9px;
     color: ${props => props.getContrastText(props.text.main)};
     ${props => props.count <= 1 &&
@@ -58,12 +57,16 @@ function DailyTasks(props) {
 
     return (
         <StyledContainer>
-            <StyledAssignedLabel>
-                {`${assignedTasksCount} Assigned`}
-            </StyledAssignedLabel>
-            <StyledAvailableLabel count={availableTasksCount}>
-                {`${availableTasksCount} Availables`}
-            </StyledAvailableLabel>
+            {assignedTasksCount > 0 &&
+                <StyledAssignedLabel>
+                    {`${assignedTasksCount} Assigned`}
+                </StyledAssignedLabel>
+            }
+            {availableTasksCount > 0 &&
+                <StyledAvailableLabel count={availableTasksCount}>
+                    {`${availableTasksCount} Availables`}
+                </StyledAvailableLabel>
+            }
         </StyledContainer>
     );
 }
@@ -86,15 +89,39 @@ function getAssignedTasksCountForDate(date, tasks) {
 }
 
 const tasksList = [
-    { date: '2019-03-03', isAssigned: true },
-    { date: '2019-03-03', isAssigned: true },
-    { date: '2019-03-03', isAssigned: false },
-    { date: '2019-03-03', isAssigned: false },
-    { date: '2019-03-03', isAssigned: false },
+    { date: '2019-03-02', isAssigned: true },
+    { date: '2019-03-02', isAssigned: true },
+    { date: '2019-03-02', isAssigned: true },
+    { date: '2019-03-02', isAssigned: true },
+    { date: '2019-03-02', isAssigned: true },
+    { date: '2019-03-02', isAssigned: true },
+    { date: '2019-03-02', isAssigned: true },
+    { date: '2019-03-02', isAssigned: true },
+    { date: '2019-03-02', isAssigned: true },
+    { date: '2019-03-02', isAssigned: true },
+    { date: '2019-03-02', isAssigned: true },
+    { date: '2019-03-02', isAssigned: true },
+    { date: '2019-03-02', isAssigned: true },
+    { date: '2019-03-02', isAssigned: true },
+    { date: '2019-03-02', isAssigned: true },
+    { date: '2019-03-02', isAssigned: true },
+    { date: '2019-03-02', isAssigned: true },
+    { date: '2019-03-02', isAssigned: true },
+    { date: '2019-03-02', isAssigned: true },
+    { date: '2019-03-02', isAssigned: true },
     { date: '2019-03-05', isAssigned: true },
     { date: '2019-03-05', isAssigned: false },
     { date: '2019-03-05', isAssigned: false },
-    { date: '2019-03-13', isAssigned: true },
+    { date: '2019-03-07', isAssigned: false },
+    { date: '2019-03-07', isAssigned: false },
+    { date: '2019-03-07', isAssigned: false },
+    { date: '2019-03-07', isAssigned: false },
+    { date: '2019-03-07', isAssigned: false },
+    { date: '2019-03-07', isAssigned: true },
+    { date: '2019-03-07', isAssigned: true },
+    { date: '2019-03-07', isAssigned: true },
+    { date: '2019-03-09', isAssigned: true },
+    { date: '2019-03-09', isAssigned: true },
     { date: '2019-03-13', isAssigned: true },
     { date: '2019-03-13', isAssigned: true },
     { date: '2019-03-13', isAssigned: true },
@@ -105,6 +132,17 @@ const tasksList = [
     { date: '2019-03-13', isAssigned: true },
     { date: '2019-03-13', isAssigned: true },
     { date: '2019-03-13', isAssigned: true },
+    { date: '2019-03-15', isAssigned: false },
+    { date: '2019-03-15', isAssigned: false },
+    { date: '2019-03-15', isAssigned: false },
+    { date: '2019-03-15', isAssigned: false },
+    { date: '2019-03-15', isAssigned: false },
+    { date: '2019-03-19', isAssigned: false },
+    { date: '2019-03-19', isAssigned: true },
+    { date: '2019-03-19', isAssigned: true },
+    { date: '2019-03-23', isAssigned: false },
+    { date: '2019-03-23', isAssigned: true },
+    { date: '2019-03-23', isAssigned: true },
     { date: '2019-03-21', isAssigned: true },
     { date: '2019-03-21', isAssigned: false },
     { date: '2019-03-21', isAssigned: false },
@@ -114,6 +152,19 @@ const tasksList = [
     { date: '2019-03-21', isAssigned: false },
     { date: '2019-03-21', isAssigned: false },
     { date: '2019-03-21', isAssigned: false },
+    { date: '2019-03-27', isAssigned: true },
+    { date: '2019-03-27', isAssigned: true },
+    { date: '2019-03-27', isAssigned: true },
+    { date: '2019-03-27', isAssigned: true },
+    { date: '2019-03-27', isAssigned: true },
+    { date: '2019-03-27', isAssigned: false },
+    { date: '2019-03-27', isAssigned: false },
+    { date: '2019-03-27', isAssigned: false },
+    { date: '2019-03-29', isAssigned: true },
+    { date: '2019-03-29', isAssigned: true },
+    { date: '2019-03-29', isAssigned: false },
+    { date: '2019-03-29', isAssigned: false },
+    { date: '2019-03-29', isAssigned: false },
 ];
 
 const initialState = {
