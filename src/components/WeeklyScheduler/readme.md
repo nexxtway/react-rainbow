@@ -7,7 +7,7 @@ import { WeeklyScheduler } from 'react-rainbow-components';
 
 const Container = styled.div`
     padding: 10px;
-    height: 400px;;
+    height: 500px;;
 `;
 
 <Container>

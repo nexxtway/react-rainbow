@@ -5,5 +5,6 @@ const StyledContent = styled.div`
     overflow-y: scroll;
     display: flex;
     flex-direction: row;
+    position: relative;
 `;
 export default StyledContent;

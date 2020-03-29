@@ -1,17 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Day from './day';
-import StyledContentDays from './styled/contentDays';
+import StyledContainer from './styled/container';
 import StyledGrid from './styled/grid';
 import StyledGridLine from './styled/gridLine';
+import { addDays } from '../helpers';
 
 export default function Week(props) {
     const { currentWeek, onChange } = props;
 
     function Days() {
         const days = [];
+        let day = new Date(currentWeek);
         for (let i = 0; i < 7; i += 1) {
-            days.push(<Day currentWeek={currentWeek} key={i} onChange={onChange} />);
+            days.push(
+                <Day currentWeek={currentWeek} key={day.getTime()} day={day} onChange={onChange} />,
+            );
+            day = addDays(day, 1);
         }
         return days;
     }
@@ -26,12 +31,12 @@ export default function Week(props) {
     }
 
     return (
-        <StyledContentDays>
+        <StyledContainer>
             <StyledGrid>
                 <GridLines />
             </StyledGrid>
             <Days />
-        </StyledContentDays>
+        </StyledContainer>
     );
 }
 

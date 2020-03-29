@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { MARGIN_SMALL } from '../../../styles/margins';
 
 const StyledControls = styled.div`
     display: flex;
@@ -6,6 +7,18 @@ const StyledControls = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 0 0 8px 0;
+
+    > div:first-child {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-grow: 1;
+        margin-right: 12px;
+    }
+
+    button {
+        margin-right: ${MARGIN_SMALL};
+    }
 `;
 
 export default StyledControls;

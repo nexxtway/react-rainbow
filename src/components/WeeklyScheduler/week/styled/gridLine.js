@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 
 const StyledGridLine = attachThemeAttrs(styled.div)`
     height: 40px;

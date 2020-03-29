@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 
 const StyledDay = attachThemeAttrs(styled.div)`
-    flex: 1 0 auto;
+    flex: 1 0 10%;
     border-right: 1px solid ${props => props.palette.border.divider};
     position: relative;
     height: 100%;

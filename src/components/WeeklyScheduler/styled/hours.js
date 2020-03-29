@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-const StyledContentHours = attachThemeAttrs(styled.div)`
+const StyledHours = attachThemeAttrs(styled.div)`
     flex: none;
     color: ${props => props.palette.text.main};
     height: auto;
@@ -12,4 +12,4 @@ const StyledContentHours = attachThemeAttrs(styled.div)`
     min-width: 60px;
 `;
 
-export default StyledContentHours;
+export default StyledHours;

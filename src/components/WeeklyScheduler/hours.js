@@ -1,10 +1,11 @@
 import React from 'react';
-import StyledContentHours from './styled/contentHours';
+import PropTypes from 'prop-types';
+import StyledHours from './styled/hours';
 import StyledHour from './styled/hour';
 
-export default function Hours() {
-    const locale = 'en';
-    function getHours() {
+export default function Hours(props) {
+    const { locale } = props;
+    function ListHours() {
         const date = new Date();
         date.setMinutes(0);
         const hours = [];
@@ -16,8 +17,6 @@ export default function Hours() {
                     <span>
                         {new Intl.DateTimeFormat(locale, {
                             hour: 'numeric',
-                            minute: 'numeric',
-                            hour12: false,
                         }).format(date)}
                     </span>
                 </StyledHour>,
@@ -26,5 +25,17 @@ export default function Hours() {
         return hours;
     }
 
-    return <StyledContentHours>{getHours()}</StyledContentHours>;
+    return (
+        <StyledHours>
+            <ListHours />
+        </StyledHours>
+    );
 }
+
+Hours.propTypes = {
+    locale: PropTypes.string,
+};
+
+Hours.defaultProps = {
+    locale: undefined,
+};

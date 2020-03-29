@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Select from './../Select';
+import ButtonIcon from '../ButtonIcon';
 import RightIcon from './icons/rightArrow';
 import LeftIcon from './icons/leftArrow';
+import Header from './header';
+import Week from './week';
+import Hours from './hours';
+import HourLine from './hourLine';
+import StyledContainer from './styled/container';
+import StyledContent from './styled/content';
 import StyledControls from './styled/controls';
-import StyledWeekContainer from './styled/weekContainer';
-import StyledWeek from './styled/week';
-import StyledArrowButton from './styled/arrowButton';
-import DaysOfWeek from './daysOfWeek';
+import StyledWeek from './week/styled/week';
 import {
     normalizeDate,
     getFirstDayOfWeek,
@@ -15,14 +19,9 @@ import {
     getYearsRange,
     addWeeks,
 } from './helpers';
-import Week from './week';
-import StyledContainer from './styled/container';
-import StyledContent from './styled/content';
-import Hours from './hours';
 
 export default function WeeklyScheduler(props) {
-    const { events, date, minDate, maxDate, onChange, className, style } = props;
-    const locale = 'en';
+    const { events, date, minDate, maxDate, locale, onChange, className, style } = props;
     const [currentWeek, setCurrentWeek] = useState(getFirstDayOfWeek(normalizeDate(date)));
     const formattedWeek = getFormattedWeek(currentWeek, locale);
     const yearsRange = getYearsRange({
@@ -46,25 +45,25 @@ export default function WeeklyScheduler(props) {
     return (
         <StyledContainer className={className} style={style}>
             <StyledControls>
-                <StyledWeekContainer>
-                    <StyledArrowButton
+                <div>
+                    <ButtonIcon
                         onClick={() => setCurrentWeek(addWeeks(currentWeek, -1))}
-                        size="medium"
+                        variant="outline-brand"
+                        size="small"
                         disabled={disablePreviousMonth}
                         icon={<LeftIcon />}
                         assistiveText="Previous Month"
                     />
-
-                    <StyledWeek data-id="week">{formattedWeek}</StyledWeek>
-
-                    <StyledArrowButton
+                    <ButtonIcon
                         onClick={() => setCurrentWeek(addWeeks(currentWeek, 1))}
-                        size="medium"
+                        variant="outline-brand"
+                        size="small"
                         disabled={disableNextMonth}
                         icon={<RightIcon />}
                         assistiveText="Next Month"
                     />
-                </StyledWeekContainer>
+                    <StyledWeek data-id="week">{formattedWeek}</StyledWeek>
+                </div>
                 <Select
                     label="select year"
                     hideLabel
@@ -73,10 +72,11 @@ export default function WeeklyScheduler(props) {
                     onChange={handleYearChange}
                 />
             </StyledControls>
-            <DaysOfWeek locale={locale} currentWeek={currentWeek} />
+            <Header locale={locale} currentWeek={currentWeek} />
             <StyledContent>
                 <Hours />
                 <Week currentWeek={currentWeek} onChange={onChange} />
+                <HourLine />
             </StyledContent>
         </StyledContainer>
     );
@@ -93,6 +93,8 @@ WeeklyScheduler.propTypes = {
     /** The beginning of a range of valid dates. The range includes the startDate.
      * The default value is current date - 100 years. */
     minDate: PropTypes.instanceOf(Date),
+    /** The Calendar locale. Defaults to browser's language. */
+    locale: PropTypes.string,
     /** The action triggered when a events attribute changes. */
     onChange: PropTypes.func,
     /** A CSS class for the outer element, in addition to the component's base classes. */
@@ -106,6 +108,7 @@ WeeklyScheduler.defaultProps = {
     date: undefined,
     minDate: undefined,
     maxDate: undefined,
+    locale: undefined,
     onChange: () => {},
     className: undefined,
     style: undefined,
