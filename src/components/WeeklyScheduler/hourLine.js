@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import StyledHourLine from './styled/hourLine';
-import { getHourHeight } from './helpers';
+import { getHeightOfDate } from './helpers';
 import StyledCircle from './styled/circle';
 import StyledLine from './styled/line';
 
@@ -21,7 +21,7 @@ export default function HourLine(props) {
     }, [timer]);
 
     return (
-        <StyledHourLine hourHeight={() => getHourHeight(date)}>
+        <StyledHourLine hourHeight={() => getHeightOfDate(date)}>
             <span>
                 {new Intl.DateTimeFormat(locale, {
                     hour: 'numeric',

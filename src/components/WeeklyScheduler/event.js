@@ -2,16 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import RenderIf from '../RenderIf';
 import StyledEvent from './styled/event';
-import { getDiffDate, getHourHeight } from './helpers';
+import { getDiffDate, getHeightOfMinutes } from './helpers';
 
 export default function Event(props) {
     const { id, title, start, end, locale } = props;
     const duration = getDiffDate(start, end, 'minutes');
-    const height = getHourHeight(new Date(getDiffDate(start, end)));
-
+    const height = getHeightOfMinutes(duration);
     return (
         <StyledEvent id={id} height={height}>
-            <RenderIf isTrue={duration < 30}>
+            <RenderIf isTrue={duration > 30}>
                 <span>
                     {`${new Intl.DateTimeFormat(locale, {
                         hour: 'numeric',

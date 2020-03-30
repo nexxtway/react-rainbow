@@ -10,7 +10,7 @@ const StyledGridLine = attachThemeAttrs(styled.div)`
         position: absolute;
         width: 100%;
         margin-top: -1px;
-        z-index: 3;
+        z-index: 0;
         pointer-events: none;
     }
 `;

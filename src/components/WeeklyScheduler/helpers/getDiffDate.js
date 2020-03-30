@@ -12,7 +12,7 @@ export default function getDiffDate(date1, date2, unit) {
         weeks: 604800000,
     };
     if (units[unit]) {
-        return diff * units[unit];
+        return diff / units[unit];
     }
     if (unit === 'months') {
         return getMonthsDiff(date1, date2);

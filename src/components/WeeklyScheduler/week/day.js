@@ -11,7 +11,7 @@ export default function Day(props) {
     const start = new Date(day);
     start.setMinutes(3 * 60);
     const end = new Date(start);
-    end.setMinutes(30);
+    end.setMinutes(120);
     return (
         <StyledDay>
             <Event id={id} title={id} start={start} end={end} locale={locale} />

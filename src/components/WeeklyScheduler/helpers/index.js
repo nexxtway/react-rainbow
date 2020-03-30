@@ -7,5 +7,6 @@ export { default as addWeeks } from './addWeeks';
 export { default as addDays } from './addDays';
 export { default as getHours } from './getHours';
 export { default as isToday } from './isToday';
-export { default as getHourHeight } from './getHourHeight';
+export { default as getHeightOfDate } from './getHeightOfDate';
+export { default as getHeightOfMinutes } from './getHeightOfMinutes';
 export { default as getDiffDate } from './getDiffDate';
