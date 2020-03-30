@@ -49,6 +49,10 @@ import MessagesIcon from './exampleComponents/Icons/messages';
 import PuzzleIcon from './exampleComponents/Icons/puzzle';
 import TwitterIcon from './exampleComponents/Icons/twitter';
 import UserAvatarIcon from './exampleComponents/Icons/userAvatar';
+import BellIcon from './exampleComponents/Icons/bell';
+import EmailIcon from './exampleComponents/Icons/email';
+import PhoneIcon from './exampleComponents/Icons/phone';
+import ShoppingCartIcon from './exampleComponents/Icons/shoppingCart';
 
 global.GlobalHeader = GlobalHeader;
 global.CodeEditor = CodeEditor;
@@ -103,3 +107,7 @@ global.MessagesIcon = MessagesIcon;
 global.PuzzleIcon = PuzzleIcon;
 global.TwitterIcon = TwitterIcon;
 global.UserAvatarIcon = UserAvatarIcon;
+global.BellIcon = BellIcon;
+global.EmailIcon = EmailIcon;
+global.PhoneIcon = PhoneIcon;
+global.ShoppingCartIcon = ShoppingCartIcon;
