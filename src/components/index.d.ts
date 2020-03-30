@@ -1,6 +1,5 @@
 declare module 'react-rainbow-components';
 
-export { default as Badge } from './Badge';
 export { default as ActivityTimeline } from './ActivityTimeline';
 export { default as Accordion } from './Accordion';
 export { default as AccordionSection } from './AccordionSection';
@@ -8,6 +7,8 @@ export { default as Application } from './Application';
 export { default as Avatar } from './Avatar';
 export { default as AvatarGroup } from './AvatarGroup';
 export { default as AvatarMenu } from './AvatarMenu';
+export { default as Badge } from './Badge';
+export { default as BadgeOverlay } from './BadgeOverlay';
 export { default as Breadcrumb } from './Breadcrumb';
 export { default as Breadcrumbs } from './Breadcrumbs';
 export { default as Button } from './Button';
