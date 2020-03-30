@@ -108,6 +108,7 @@ export default function MonthCalendar(props) {
                     />
                 </StyledMonthContainer>
                 <Select
+                    label="select year"
                     hideLabel
                     value={currentYear}
                     options={yearsRange}
