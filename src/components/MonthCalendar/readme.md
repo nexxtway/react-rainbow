@@ -168,7 +168,8 @@ const tasksList = [
 ];
 
 const initialState = {
-    date: new Date('2019-03-12 00:00:00'),
+    currentMonth: new Date('2019-03-12 00:00:00'),
+    selectedDate: new Date('2019-03-12 00:00:00'),
 };
 
 <div
@@ -176,8 +177,10 @@ const initialState = {
 >
     <Card className="rainbow-p-horizontal_medium rainbow-p-vertical_large">
         <MonthCalendar
-            selectedDate={state.date}
-            onSelectDate={date => setState({ date })}
+            currentMonth={state.currentMonth}
+            selectedDate={state.selectedDate}
+            onSelectDate={date => seselectedDatetState({ selectedDate: date })}
+            onMonthChanged={date => setState({ currentMonth: date })}
             dateComponent={date => (
                 <DailyTasks
                     availableTasksCount={getAvailableTasksCountForDate(date, tasksList)}
