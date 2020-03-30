@@ -169,7 +169,7 @@ const tasksList = [
 
 const initialState = {
     currentMonth: new Date('2019-03-12 00:00:00'),
-    selectedDate: new Date('2019-03-12 00:00:00'),
+    selectedDate: undefined,
 };
 
 <div
@@ -179,7 +179,7 @@ const initialState = {
         <MonthCalendar
             currentMonth={state.currentMonth}
             selectedDate={state.selectedDate}
-            onSelectDate={date => seselectedDatetState({ selectedDate: date })}
+            onSelectDate={date => setState({ selectedDate: date })}
             onMonthChanged={date => setState({ currentMonth: date })}
             dateComponent={date => (
                 <DailyTasks
