@@ -18,6 +18,8 @@ export default function Day(props) {
         [date, maxDate, minDate],
     );
 
+    const handleSelectDate = () => onSelect(date);
+
     if (isAdjacentDate || isDisabled) {
         return (
             <StyledDayContainer role="gridcell" aria-selected="false">
@@ -30,7 +32,7 @@ export default function Day(props) {
 
     return (
         <StyledDayContainer role="gridcell">
-            <StyledDay isSelected={isSelected} onClick={() => onSelect(date)}>
+            <StyledDay isSelected={isSelected} onClick={handleSelectDate}>
                 <StyledDayLabel>{day}</StyledDayLabel>
                 <StyledDayContent>{dateComponent && dateComponent(date)}</StyledDayContent>
             </StyledDay>
