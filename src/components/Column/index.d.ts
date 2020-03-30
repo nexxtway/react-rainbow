@@ -1,8 +1,8 @@
 import { ReactNode, ComponentType } from 'react';
 
-export interface ColumnProps {
+export interface ColumnProps<P> {
     header?: ReactNode;
-    component?: ComponentType;
+    component?: ComponentType<P>;
     field?: string;
     sortable?: boolean;
     width?: number | string;
@@ -10,4 +10,4 @@ export interface ColumnProps {
     type?: 'text' | 'action';
 }
 
-export default function(props: ColumnProps): JSX.Element | null;
+export default function<P>(props: ColumnProps<P> & P): JSX.Element | null;

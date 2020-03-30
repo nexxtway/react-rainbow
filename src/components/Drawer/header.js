@@ -22,9 +22,11 @@ export default function Header({ content, id }) {
 }
 
 Header.propTypes = {
+    id: PropTypes.string,
     content: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 };
 
 Header.defaultProps = {
+    id: undefined,
     content: undefined,
 };
