@@ -9,7 +9,6 @@ const StyledText = attachThemeAttrs(styled.span)`
     font-size: ${FONT_SIZE_HEADING_SMALL};
     justify-content: center;
     position: relative;
-    background: transparent;
     background-clip: border-box;
     border: 1px solid transparent;
     text-decoration: none;
@@ -117,7 +116,7 @@ const StyledText = attachThemeAttrs(styled.span)`
     ${props =>
         props.checked &&
         `
-            background-color: transparent;
+            background-color: ${props.palette.background.main};
             border: 1px solid ${props.palette.brand.main};
             color: ${props.palette.brand.main};
         
