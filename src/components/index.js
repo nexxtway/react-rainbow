@@ -6,6 +6,7 @@ export { default as Avatar } from './Avatar';
 export { default as AvatarGroup } from './AvatarGroup';
 export { default as AvatarMenu } from './AvatarMenu';
 export { default as Badge } from './Badge';
+export { default as BadgeOverlay } from './BadgeOverlay';
 export { default as Breadcrumb } from './Breadcrumb';
 export { default as Breadcrumbs } from './Breadcrumbs';
 export { default as Button } from './Button';

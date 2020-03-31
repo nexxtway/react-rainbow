@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import DropIcon from '../../icons/drop';
-import attachThemeAttrs from '../../../../../src/styles/helpers/attachThemeAttrs';
+import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 
 const StyledDropImg = attachThemeAttrs(styled(DropIcon))`
     pointer-events: none;
