@@ -1,7 +1,8 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import getPreviewDataToImport from '../../helpers/getPreviewDataToImport';
 import StepFour from '../';
+import Column from '../../../Column';
 
 jest.mock('../../helpers/getPreviewDataToImport', () => jest.fn());
 
@@ -18,13 +19,25 @@ const props = {
     },
 };
 
-describe('<Preview />', () => {
-    it('should get preview data to import with the right values', () => {
+describe('<StepFour />', () => {
+    it('should call getPreviewDataToImport with the right values', () => {
         mount(<StepFour {...props} />);
-        expect(getPreviewDataToImport).toHaveBeenCalledWith(
-            props.data.slice(0, 5),
-            props.fieldsMap,
-            props.attributes,
-        );
+        const data = [
+            { Name: 'John', Email: 'john@gmail.com' },
+            { Name: 'Marie', Email: 'marie@gmail.com' },
+        ];
+        const fieldsMap = {
+            name: 'Name',
+            email: 'Email',
+        };
+        const attributes = {
+            name: { required: true },
+            email: {},
+        };
+        expect(getPreviewDataToImport).toHaveBeenCalledWith(data, fieldsMap, attributes);
+    });
+    it('should render the right amount of columns', () => {
+        const component = shallow(<StepFour {...props} />);
+        expect(component.find(Column).length).toBe(2);
     });
 });

@@ -14,8 +14,7 @@ describe('<Preview />', () => {
         expect(type.text()).toBe('Unknow File Type');
     });
     it('should set the right labels according to params', () => {
-        const params = { fileName: 'preview-title', fileType: 'text/csv' };
-        const component = mount(<Preview {...params} />);
+        const component = mount(<Preview fileName="preview-title" fileType="text/csv" />);
         const title = component.find(StyledFileCardTitle);
         const type = component.find(StyledFileCardDescription);
         expect(title.text()).toBe('preview-title');
@@ -38,11 +37,6 @@ describe('<Preview />', () => {
             isLoading: true,
         };
         const component = mount(<Preview {...props} />);
-        const expectedPassedData = {
-            data: component.find('PreviewTable').prop('data'),
-            columns: component.find('PreviewTable').prop('columns'),
-            isLoading: component.find('PreviewTable').prop('isLoading'),
-        };
-        expect(expectedPassedData).toEqual(props);
+        expect(component.find('PreviewTable').props()).toEqual(props);
     });
 });
