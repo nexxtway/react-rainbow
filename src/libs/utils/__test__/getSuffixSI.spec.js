@@ -1,6 +1,6 @@
-import abbreviateNumber from '../abbreviateNumber';
+import getSuffixSI from '../getSuffixSI';
 
-describe('abbreviateNumber', () => {
+describe('getSuffixSI', () => {
     const lessThan1k = [
         {
             value: 5,
@@ -72,27 +72,27 @@ describe('abbreviateNumber', () => {
 
     it('should return the same number passed when it is less than 1000', () => {
         lessThan1k.forEach(number => {
-            expect(abbreviateNumber(number.value)).toBe(number.result);
+            expect(getSuffixSI(number.value)).toBe(number.result);
         });
     });
     it('should attach k suffix when it is greater than 1000 and less than 1 Million', () => {
         greaterThan1k.forEach(number => {
-            expect(abbreviateNumber(number.value)).toBe(number.result);
+            expect(getSuffixSI(number.value)).toBe(number.result);
         });
     });
     it('should attach M suffix when it is greater than 1 Million and less than 1 Billion', () => {
         greaterThan1M.forEach(number => {
-            expect(abbreviateNumber(number.value)).toBe(number.result);
+            expect(getSuffixSI(number.value)).toBe(number.result);
         });
     });
     it('should attach G suffix when it is greater than 1 Billion and less than 1 Trillion', () => {
         greaterThan1G.forEach(number => {
-            expect(abbreviateNumber(number.value)).toBe(number.result);
+            expect(getSuffixSI(number.value)).toBe(number.result);
         });
     });
     it('should return an empty string with invalid numbers', () => {
         [null, undefined, '', -5].forEach(number => {
-            expect(abbreviateNumber(number)).toBe('');
+            expect(getSuffixSI(number)).toBe('');
         });
     });
 });

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../../../src/styles/helpers/attachThemeAttrs';
+import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 
 const StyledDropTitle = attachThemeAttrs(styled.p)`
     font-size: 20px;
