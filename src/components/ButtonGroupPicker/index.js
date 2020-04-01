@@ -119,7 +119,7 @@ ButtonGroupPicker.propTypes = {
      */
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
     /** The name of the options inside the form. */
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
     /**
      * The size of the ButtonOption.
      * Options includes x-small, small, medium and large.
