@@ -15,7 +15,7 @@ const event = {
 };
 const elementMock = {
     mount: jest.fn(),
-    on: jest.fn((eventType = 'change', callback) => {
+    on: jest.fn((eventType, callback) => {
         if (eventType === 'change') {
             callback(event);
         }

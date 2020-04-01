@@ -2,12 +2,12 @@ import { ReactNode } from 'react';
 import { Stripe, StripeCardElement } from '@stripe/stripe-js';
 import { BaseProps } from '../types';
 
-type Error = {
+export type StripeCardError = {
     type: 'validation_error';
     code: string;
     message: string;
 };
-interface StripeCardEvent {
+export interface StripeCardEvent {
     stripe: Stripe;
     card: StripeCardElement;
     isEmpty: boolean;
@@ -21,7 +21,7 @@ interface StripeCardEvent {
         | 'jcb'
         | 'unionpay'
         | 'unknown';
-    error?: Error;
+    error?: StripeCardError;
 }
 
 export interface StripeCardInput extends BaseProps {
@@ -31,7 +31,6 @@ export interface StripeCardInput extends BaseProps {
     bottomHelpText?: ReactNode;
     error?: ReactNode;
     disabled?: boolean;
-    tabIndex?: number | string;
     required?: boolean;
     onChange?: (event: StripeCardEvent) => void;
     onBlur?: () => void;

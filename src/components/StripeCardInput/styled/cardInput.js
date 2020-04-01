@@ -7,7 +7,9 @@ const StyledCardInput = attachThemeAttrs(styled.div)`
     background-color: ${props => props.palette.background.main};
     border: 1px solid ${props => props.palette.border.main};
     border-radius: ${BORDER_RADIUS_2};
+    padding: 0.58rem 1rem 0 1rem;
     cursor: text;
+
     ${props =>
         props.disabled &&
         `

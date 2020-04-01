@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 import scriptLoader from 'react-async-script-loader';
 import withReduxForm from '../../libs/hocs/withReduxForm';
 import { useTheme, useUniqueIdentifier, useLocale } from '../../libs/hooks';
+import { getError, getCardElementOptions, getElementsOptions } from './helpers';
 import RenderIf from '../RenderIf';
 import Label from '../Input/label';
 import HelpText from '../Input/styled/helpText';
 import ErrorText from '../Input/styled/errorText';
 import StyledContainer from './styled/container';
-import getError from './helpers/getErrror';
-import getCardElementOptions from './helpers/getCardElementOptions';
 import StyledCardInput from './styled/cardInput';
 
 /**
@@ -23,38 +22,29 @@ const StripeCardInput = React.forwardRef((props, ref) => {
         hideLabel,
         bottomHelpText,
         error,
-        className,
-        style,
         disabled,
         required,
         locale,
         onChange,
         onFocus,
         onBlur,
-        tabIndex,
+        className,
+        style,
         isScriptLoaded,
         isScriptLoadSucceed,
     } = props;
     const [stripe, setStripe] = useState(null);
     const cardRef = useRef();
-    const cardElementId = useUniqueIdentifier('card-element');
+    const stripeCardInputId = useUniqueIdentifier('stripe-card-input');
+    const errorMessageId = useUniqueIdentifier('error-message');
     const theme = useTheme().rainbow;
     const cardElementOptions = useMemo(() => getCardElementOptions(theme, disabled), [
         disabled,
         theme,
     ]);
     const localeStripe = useLocale(locale);
-    const elementOptions = useMemo(
-        () => ({
-            locale: localeStripe,
-            fonts: [
-                {
-                    cssSrc: 'https://fonts.googleapis.com/css?family=Lato&display=swap',
-                },
-            ],
-        }),
-        [localeStripe],
-    );
+    const elementsOptions = useMemo(() => getElementsOptions(localeStripe), [localeStripe]);
+
     useEffect(() => {
         if (isScriptLoaded && isScriptLoadSucceed && window.Stripe) {
             setStripe(window.Stripe(apiKey));
@@ -65,7 +55,7 @@ const StripeCardInput = React.forwardRef((props, ref) => {
     useEffect(() => {
         if (stripe) {
             const cardNode = cardRef.current;
-            const elements = stripe.elements(elementOptions);
+            const elements = stripe.elements(elementsOptions);
             const card = elements.create('card', cardElementOptions);
 
             card.mount(cardNode);
@@ -80,41 +70,37 @@ const StripeCardInput = React.forwardRef((props, ref) => {
                 };
                 onChange(stripeCardEvent);
             });
-
             card.on('focus', onFocus);
             card.on('blur', onBlur);
-            const handlerBlur = () => card.blur();
-            const handlerFocus = () => card.focus();
-            cardNode.addEventListener('blur', handlerBlur);
-            cardNode.addEventListener('focus', handlerFocus);
             return () => {
-                cardNode.removeEventListener('blur', handlerBlur);
-                cardNode.removeEventListener('focus', handlerFocus);
                 card.unmount();
                 card.destroy();
             };
         }
-    }, [cardElementOptions, elementOptions, onBlur, onChange, onFocus, stripe]);
+    }, [cardElementOptions, elementsOptions, onBlur, onChange, onFocus, stripe]);
 
     return (
-        <StyledContainer disabled={disabled} className={className} style={style} ref={ref}>
+        <StyledContainer
+            ref={ref}
+            className={className}
+            style={style}
+            disabled={disabled}
+            error={error}
+        >
             <Label
                 label={label}
                 hideLabel={hideLabel}
-                inputId={cardElementId}
+                inputId={stripeCardInputId}
                 required={required}
             />
-            <StyledCardInput
-                ref={cardRef}
-                id={cardElementId}
-                tabIndex={tabIndex}
-                disabled={disabled}
-            />
+            <StyledCardInput ref={cardRef} id={stripeCardInputId} disabled={disabled} />
             <RenderIf isTrue={!!bottomHelpText}>
                 <HelpText alignSelf="center">{bottomHelpText}</HelpText>
             </RenderIf>
             <RenderIf isTrue={!!error}>
-                <ErrorText alignSelf="center">{error}</ErrorText>
+                <ErrorText id={errorMessageId} alignSelf="center">
+                    {error}
+                </ErrorText>
             </RenderIf>
         </StyledContainer>
     );
@@ -138,8 +124,6 @@ StripeCardInput.propTypes = {
     /** Specifies that an input field must be filled out before submitting the form.
      * This value defaults to false. */
     required: PropTypes.bool,
-    /** Specifies the tab order of an element (when the tab button is used for navigating). */
-    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** The Calendar locale. Defaults to browser's language. */
     locale: PropTypes.oneOf([
         'ar',
@@ -183,7 +167,6 @@ StripeCardInput.defaultProps = {
     error: null,
     disabled: false,
     required: false,
-    tabIndex: undefined,
     locale: undefined,
     onChange: () => {},
     onFocus: () => {},

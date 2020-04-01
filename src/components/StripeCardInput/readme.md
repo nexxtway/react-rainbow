@@ -12,15 +12,15 @@ const Container = styled.div`
 `;
 
 const Payment = () => {
-    const [card, setCard] = useState();
+    const [stripeCard, setStripeCard] = useState();
 
     return (
         <Container>
             <StripeCardInput
                 apiKey={LIBRARY_STRIPE_APIKEY}
                 label="Credit/Debit Card Information"
-                onChange={setCard}
-                error={(card && card.error && card.error.message)}
+                onChange={setStripeCard}
+                error={(stripeCard && stripeCard.error && stripeCard.error.message)}
             />
         </Container>
     );
