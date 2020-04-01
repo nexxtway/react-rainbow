@@ -44,7 +44,7 @@ class ButtonGroupPicker extends Component {
             return onChange(value.concat([eventValue]));
         }
         if (checked && !Array.isArray(value)) {
-            return onChange(eventValue);
+            return onChange([eventValue]);
         }
         return onChange(value.filter(valueId => valueId !== eventValue));
     }
