@@ -25,7 +25,7 @@ class PageButtonMenu {
         const buttonMenuItems = $(this.rootElement).$$('ul > *');
         if (menuItems[itemPosition]) {
             const indexPosition = buttonMenuItems.findIndex(
-                element => element.ELEMENT === menuItems[itemPosition].ELEMENT,
+                element => element.elementId === menuItems[itemPosition].elementId,
             );
             return new PageMenuItem(
                 `${this.rootElement} li[role="menuitem"]:nth-child(${indexPosition + 1})`,

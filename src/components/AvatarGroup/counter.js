@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import StyledCounter from './styled/counter';
-import abbreviateNumber from './helpers/abbreviateNumber';
+import { getSuffixSI } from '../../libs/utils';
 
 export default function Counter(props) {
     const { avatars, size } = props;
@@ -9,7 +9,7 @@ export default function Counter(props) {
 
     return (
         <StyledCounter size={size}>
-            <h1>{abbreviateNumber(total)}</h1>
+            <h1>{getSuffixSI(total)}</h1>
         </StyledCounter>
     );
 }

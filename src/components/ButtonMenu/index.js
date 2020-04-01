@@ -2,13 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ButtonIcon from './../ButtonIcon';
 import PrimitiveMenu from '../PrimitiveMenu';
+import ButtonTrigger from './buttonTrigger';
 
 /**
  * A Button Menu offers a list of actions or functions that a user can access.
  */
 export default function ButtonMenu(props) {
     const {
+        label,
         icon,
+        iconPosition,
         buttonSize,
         title,
         assistiveText,
@@ -23,10 +26,14 @@ export default function ButtonMenu(props) {
         ...rest
     } = props;
 
+    const trigger = label ? ButtonTrigger : ButtonIcon;
+
     return (
         <PrimitiveMenu
             {...rest}
+            label={label}
             icon={icon}
+            iconPosition={iconPosition}
             size={buttonSize}
             assistiveText={assistiveText}
             disabled={disabled}
@@ -37,7 +44,7 @@ export default function ButtonMenu(props) {
             onClick={onClick}
             onFocus={onFocus}
             onBlur={onBlur}
-            trigger={ButtonIcon}
+            trigger={trigger}
         >
             {children}
         </PrimitiveMenu>
@@ -45,23 +52,32 @@ export default function ButtonMenu(props) {
 }
 
 ButtonMenu.propTypes = {
+    /** The text to be displayed inside the button. */
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The icon to show if it is passed.
-     * It must be a svg icon or a font icon. It is a required value. */
+     * It must be a svg icon or a font icon. */
     icon: PropTypes.node,
+    /** Describes the position of the icon with respect to label. Options include left and right.
+     * Only makes sense when icon and label are provided.
+     * This value defaults to left. */
+    iconPosition: PropTypes.oneOf(['left', 'right']),
     /** The content of the ButtonMenu. Used to render the menuItem elements
      * when the ButtonMenu is open. */
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.object]),
-    /** The variant changes the look of the button. Accepted variants include base,
-     * brand, success, border, border-filled, bare-inverse, and inverse.
+    /** The variant changes the look of the button.
+     * Accepted variants include base, neutral, brand, success, destructive, outline-brand, border, border-filled, inverse and border-inverse.
      * This value defaults to border-filled. */
     buttonVariant: PropTypes.oneOf([
         'base',
         'brand',
         'success',
+        'destructive',
+        'neutral',
+        'outline-brand',
         'border',
         'border-filled',
-        'border-inverse',
         'inverse',
+        'border-inverse',
     ]),
     /** The size of the button. Options include xx-small, x-small, medium, or large.
      * This value defaults to medium. */
@@ -110,7 +126,9 @@ ButtonMenu.propTypes = {
 };
 
 ButtonMenu.defaultProps = {
+    label: undefined,
     icon: null,
+    iconPosition: 'left',
     children: null,
     buttonVariant: 'border-filled',
     buttonSize: 'medium',
