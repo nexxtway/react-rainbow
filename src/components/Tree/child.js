@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Input from '../Input';
 import RenderIf from '../RenderIf';
 import TreeChildren from './treeChildren';
-import CollapseExpandButton from './expandCollapseButton';
+import ExpandCollapseButton from './expandCollapseButton';
 import ItemContainerLi from './styled/itemContainerLi';
 import NodeContainer from './styled/nodeContainer';
 import Label from './styled/label';
@@ -28,7 +28,7 @@ export default function Child(props) {
     return (
         <ItemContainerLi hasChildren={hasChildren} icon={icon}>
             <NodeContainer>
-                <CollapseExpandButton
+                <ExpandCollapseButton
                     hasChildren={hasChildren}
                     isExpanded={isExpanded === true}
                     isLoading={isLoading === true}

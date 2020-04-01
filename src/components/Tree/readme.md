@@ -9,7 +9,7 @@
             isExpanded: true,
             children: [
                 { label: 'Tree Item' },
-                { 
+                {
                     label: 'Tree Branch',
                     isLoading: true,
                     children: [
@@ -22,10 +22,10 @@
             label: 'Tree Branch',
             children: [
                 { label: 'Tree Item' },
-                 { label: 'Tree Item' },
-                  { label: 'Tree Item' },
-                   { label: 'Tree Item' },
-                    { label: 'Tree Item' },              
+                { label: 'Tree Item' },
+                { label: 'Tree Item' },
+                { label: 'Tree Item' },
+                { label: 'Tree Item' },
             ],
         }
     ];
