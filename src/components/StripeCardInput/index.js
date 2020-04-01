@@ -124,7 +124,7 @@ StripeCardInput.propTypes = {
     /** Specifies that an input field must be filled out before submitting the form.
      * This value defaults to false. */
     required: PropTypes.bool,
-    /** The Calendar locale. Defaults to browser's language. */
+    /** The component locale. Defaults to browser's language. */
     locale: PropTypes.oneOf([
         'ar',
         'da',
