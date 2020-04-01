@@ -103,7 +103,7 @@ ButtonGroupPicker.propTypes = {
     /** The title at the top of the component. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The name of the ButtonOption selected or if multiple an array of names. */
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
     /** Set to true if at least one option must be selected. This value defaults to false. */
     required: PropTypes.bool,
     /** It will fire when selected option(s) can change based on user interactions. */
