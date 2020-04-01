@@ -43,7 +43,7 @@ ButtonOption.propTypes = {
     /** An object with a custom style applied to the outer element. */
     style: PropTypes.object,
     /** It is a unique value that identifies the picker option. */
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
     /** The content to be displayed inside the ButtonOption */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies whether this button should be displayed in a disabled state. Disabled buttons can't be clicked. */
