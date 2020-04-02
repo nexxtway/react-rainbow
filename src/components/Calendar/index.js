@@ -366,7 +366,7 @@ Calendar.propTypes = {
     style: PropTypes.object,
     /** The id of the outer element. */
     id: PropTypes.string,
-    /** The Calendar locale. Defaults to browser's language. */
+    /** The Calendar locale. If it is not passed it defaults to the context languaje, and if the context's lenguaje is not passed it default browser's language. */
     locale: PropTypes.string,
 };
 
