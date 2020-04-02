@@ -3,6 +3,13 @@
  * @class
  * @tutorial drawer
  */
+
+function getPointOutsideDrawer(drawerPosition, drawerSize) {
+    const x = drawerPosition.x > 0 ? drawerPosition.x - 2 : drawerSize.width + 2;
+    const y = drawerPosition.y > 0 ? drawerPosition.y - 2 : drawerSize.height + 2;
+    return { x, y };
+}
+
 class PageDrawer {
     /**
      * Create a new PageDrawer page object.
@@ -18,14 +25,32 @@ class PageDrawer {
      * @method
      */
     clickCloseButton() {
-        browser.waitUntil(() =>
-            $(this.rootElement)
-                .$('[data-id="drawer-close-button"]')
-                .isDisplayed(),
-        );
         $(this.rootElement)
-            .$('[data-id="drawer-close-button"]')
+            .$('[id="drawer-close-button"]')
             .click();
+    }
+
+    /**
+     * Clicks the drawer's backdrop element.
+     * @method
+     */
+    clickBackDrop() {
+        $(this.rootElement)
+            .$('[id="drawer-close-button"]')
+            .waitForDisplayed();
+
+        const { x, y } = getPointOutsideDrawer(
+            $(this.rootElement)
+                .$('section[role="dialog"]')
+                .getLocation(),
+            $(this.rootElement)
+                .$('section[role="dialog"]')
+                .getSize(),
+        );
+
+        $(this.rootElement)
+            .$('[id="drawer-close-button"]')
+            .click({ x, y });
     }
 
     /**
@@ -34,17 +59,15 @@ class PageDrawer {
      * @returns {bool}
      */
     isOpen() {
-        if ($(this.rootElement).isDisplayed()) {
-            return (
-                $(this.rootElement)
-                    .$('section[role="dialog"]')
-                    .isDisplayed() &&
-                $(this.rootElement)
-                    .$('[data-id="drawer-close-button"]')
-                    .isDisplayed()
-            );
-        }
-        return false;
+        return (
+            $(this.rootElement).isExisting() &&
+            $(this.rootElement)
+                .$('section[role="dialog"]')
+                .isDisplayed() &&
+            $(this.rootElement)
+                .$('[id="drawer-close-button"]')
+                .isDisplayed()
+        );
     }
 
     /**
@@ -54,7 +77,7 @@ class PageDrawer {
      */
     hasFocusCloseButton() {
         return $(this.rootElement)
-            .$('[data-id="drawer-close-button"]')
+            .$('[id="drawer-close-button"]')
             .isFocused();
     }
 
@@ -63,6 +86,7 @@ class PageDrawer {
      * @method
      */
     waitUntilOpen() {
+        browser.pause(1000);
         browser.waitUntil(() => this.isOpen());
     }
 
@@ -71,7 +95,8 @@ class PageDrawer {
      * @method
      */
     waitUntilClose() {
-        browser.waitUntil(() => !this.isOpen());
+        browser.pause(1000);
+        browser.waitUntil(() => !$(this.rootElement).isExisting());
     }
 }
 
