@@ -16,7 +16,7 @@ describe('<SelectedFieldsToAssign />', () => {
             .find('button')
             .at(0)
             .simulate('click');
-        expect(onDeleteFn).toHaveBeenCalled();
+        expect(onDeleteFn).toHaveBeenCalledWith('test-1');
     });
     it('should have right label', () => {
         const component = mount(<SelectedFieldsToAssign values={values} />);

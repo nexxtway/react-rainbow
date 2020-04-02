@@ -2,8 +2,14 @@ import React from 'react';
 import { mount } from 'enzyme';
 import StepThree from '../';
 import getAssignFieldsData from '../../helpers/getAssignFieldsData';
+import StyledTable from '../../styled/table';
 
-jest.mock('../../helpers/getAssignFieldsData', () => jest.fn());
+jest.mock('../../helpers/getAssignFieldsData', () =>
+    jest.fn(() => [
+        { required: true, fileField: undefined, databaseField: 'name' },
+        { required: false, fileField: undefined, databaseField: 'age' },
+    ]),
+);
 
 const baseParams = {
     data: [{ Name: 'John', Age: 25 }, { Name: 'Marie', Age: 30 }],
@@ -25,22 +31,60 @@ describe('<StepThree />', () => {
     });
     it('should pass params to modal', () => {
         const component = mount(<StepThree {...baseParams} />);
-        const modal = component.find('AssignFieldModal');
-        const modalProps = {
-            data: modal.prop('data'),
-            attributes: modal.prop('attributes'),
-            columns: modal.prop('columns'),
-            fieldsMap: modal.prop('fieldsMap'),
-        };
-        expect(modalProps).toEqual(baseParams);
+        expect(component.find('AssignFieldModal').props()).toEqual(
+            expect.objectContaining({
+                data: [{ Name: 'John', Age: 25 }, { Name: 'Marie', Age: 30 }],
+                attributes: {
+                    name: { required: true },
+                    age: {},
+                },
+                columns: ['Name', 'Age'],
+                fieldsMap: {
+                    name: 'Name',
+                    age: 'Age',
+                },
+            }),
+        );
     });
-    it('should prepare assign fields data using the passed params', () => {
-        const params = { ...baseParams, matchField: '' };
-        mount(<StepThree {...params} />);
+    it('should call getAssignFieldsData with the right data', () => {
+        mount(<StepThree {...baseParams} matchField="" />);
         expect(getAssignFieldsData).toHaveBeenCalledWith({
-            fieldsMap: baseParams.fieldsMap,
-            attributes: baseParams.attributes,
+            fieldsMap: {
+                name: 'Name',
+                age: 'Age',
+            },
+            attributes: {
+                name: { required: true },
+                age: {},
+            },
             matchField: '',
         });
     });
+    it('should pass only the first three elements of data prop to AssignFieldModal', () => {
+        const onAssignFieldFn = jest.fn();
+        const component = mount(<StepThree onAssignField={onAssignFieldFn} {...baseParams} />);
+        expect(component.find('AssignFieldModal').props()).toEqual(
+            expect.objectContaining({
+                attributes: {
+                    name: { required: true },
+                    age: {},
+                },
+                columns: ['Name', 'Age'],
+                onAssignField: onAssignFieldFn,
+            }),
+        );
+    });
+    it('should pass the right data to the Table component', () => {
+        const component = mount(<StepThree {...baseParams} />);
+        expect(component.find(StyledTable).prop('data')).toEqual([
+            { required: true, fileField: undefined, databaseField: 'name' },
+            { required: false, fileField: undefined, databaseField: 'age' },
+        ]);
+    });
+    /*
+    it('should open the modal when a column cell is clicked', () => {
+        const component = mount(<StepThree {...baseParams} />);
+    });
+    it('should pass the right databaseFieldToAssign prop to the modal when a column cell is clicked', () => {});
+    */
 });

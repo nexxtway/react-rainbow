@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import ModifyCell from '../modifyCell';
+import StyledAssignButton from '../styled/assignButton';
 
 describe('<ModifyCell />', () => {
     it('should have proper labels according to value status', () => {
@@ -12,15 +13,9 @@ describe('<ModifyCell />', () => {
     });
     it('should trigger click event using database param', () => {
         const onClickFn = jest.fn();
-        const props = {
-            onClick: onClickFn,
-            row: { databaseField: 'name' },
-        };
-        const component = mount(<ModifyCell {...props} />);
-        component
-            .find('button')
-            .at(0)
-            .simulate('click');
-        expect(onClickFn).toHaveBeenCalledWith(props.row.databaseField);
+        const row = { databaseField: 'name' };
+        const component = mount(<ModifyCell onClick={onClickFn} row={row} />);
+        component.find(StyledAssignButton).simulate('click');
+        expect(onClickFn).toHaveBeenCalledWith(row.databaseField);
     });
 });
