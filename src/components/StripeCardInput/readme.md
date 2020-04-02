@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { StripeCardInput } from 'react-rainbow-components';
 
 const Container = styled.div`
-    max-width: 500px;
+    max-width: 480px;
     margin: 30px auto;
     padding: 20px 10px;
 `;
@@ -37,18 +37,18 @@ import styled from 'styled-components';
 import { StripeCardInput, GoogleAddressLookup, Input, Button } from 'react-rainbow-components';
 
 const Container = styled.div`
-    max-width: 500px;
-    margin: 20px auto;
+    max-width: 480px;
+    margin: 36px auto;
     padding: 20px 10px;
 `;
 const Title = styled.h2`
     font-size: 1.2rem;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 32px;
     color: ${props => props.theme.rainbow.palette.brand.main};
 `;
 const Field = styled.fieldset`
-    margin-bottom: 24px;
+    margin-top: 20px;
 `;
 const Actions = styled.div`
     display: flex;
@@ -116,7 +116,7 @@ const Payment = () => {
                 <Field>
                     <StripeCardInput
                         apiKey={LIBRARY_STRIPE_APIKEY}
-                        label="Card Number"
+                        label="Credit/Debit Card"
                         onChange={setStripeCard}
                         error={(stripeCard && stripeCard.error && stripeCard.error.message)}
                         required
@@ -125,7 +125,7 @@ const Payment = () => {
                 <Field>
                     <GoogleAddressLookup
                         label="Address"
-                        placeholder="Enter location"
+                        placeholder="Enter your address"
                         value={address}
                         onChange={setAddress}
                         apiKey={LIBRARY_GOOGLE_MAPS_APIKEY}
@@ -133,14 +133,12 @@ const Payment = () => {
                         required
                     />
                 </Field>
-                <Field>
-                    <Input
-                        label="Save Card for the next time"
-                        type="checkbox"
-                        value={saveCard}
-                        onChange={event => setSaveCard(event.currentTarget.checked)}
-                    />
-                </Field>
+                <Input
+                    label="Save Card for the next time"
+                    type="checkbox"
+                    value={saveCard}
+                    onChange={event => setSaveCard(event.currentTarget.checked)}
+                />
                 <Actions>
                     <Button
                         label="Pay $85"
@@ -155,5 +153,35 @@ const Payment = () => {
     );
 };
 <Payment/>
+```
 
+##### StripeCardInput disabled
+
+```js
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { StripeCardInput } from 'react-rainbow-components';
+
+const Container = styled.div`
+    max-width: 480px;
+    margin: 30px auto;
+    padding: 20px 10px;
+`;
+
+const Payment = () => {
+    const [stripeCard, setStripeCard] = useState();
+
+    return (
+        <Container>
+            <StripeCardInput
+                apiKey={LIBRARY_STRIPE_APIKEY}
+                label="Credit/Debit Card Information"
+                onChange={setStripeCard}
+                error={(stripeCard && stripeCard.error && stripeCard.error.message)}
+                disabled
+            />
+        </Container>
+    );
+};
+<Payment/>
 ```
