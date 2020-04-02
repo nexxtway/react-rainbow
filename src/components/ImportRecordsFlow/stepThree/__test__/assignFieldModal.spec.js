@@ -108,7 +108,7 @@ describe('<AssignFieldModal />', () => {
             { label: 'Email', value: 'Email' },
         ]);
     });
-    it('should set the right values in SelectedFieldsToAssign component when the param fieldsMap[databaseFieldToAssign] exists', () => {
+    it('should set the right values to SelectedFieldsToAssign when fieldsMap and databaseFieldToAssign params exists', () => {
         const columns = ['First_Name', 'Last_Name', 'Email'];
         const fieldsMap = { name: 'First_Name,Last_Name' };
         const databaseFieldToAssign = 'name';
@@ -126,7 +126,7 @@ describe('<AssignFieldModal />', () => {
             'Last_Name',
         ]);
     });
-    it('should set the right values in SelectedFieldsToAssign component when the param fieldsMap[databaseFieldToAssign] does not exists', () => {
+    it('should set the right values to SelectedFieldsToAssign when fieldsMap and databaseFieldToAssign params does not exists', () => {
         const columns = ['First_Name', 'Last_Name', 'Email'];
         const component = mount(
             <AssignFieldModal isAssignFieldModalOpen attributes={attributes} columns={columns} />,

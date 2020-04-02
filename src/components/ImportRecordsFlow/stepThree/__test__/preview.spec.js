@@ -70,7 +70,7 @@ describe('<Preview />', () => {
             'Assigning “First_Name,Last_Name” fields to “name” database field',
         );
     });
-    it('should pass the right data to Table component (mocking getFieldAssignedPreviewData return value)', () => {
+    it('should pass the right data to Table component', () => {
         const component = mount(
             <Preview
                 field={props.field}
