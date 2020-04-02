@@ -254,7 +254,17 @@ const StyledFooterButton = styled(Button)
 
 const closeDrawer = () => setState({ isOpen : false });
 
-function Contact({ avatar, name, email, onShowDetails }) {
+const filter = (query, options) => {
+    if (query) {
+        return options.filter(item => {
+            const regex = new RegExp(query, 'i');
+            return regex.test(item.label);
+        });
+    }
+    return [];
+};
+
+function Contact({ id, avatar, name, email, onShowDetails }) {
     return (
         <ConctactContainer className="rainbow-m-around_large">
             <div className="rainbow-p-around_medium">
@@ -272,6 +282,7 @@ function Contact({ avatar, name, email, onShowDetails }) {
             </EmailLabel>
             <div className="rainbow-flex rainbow-justify_space-around">
                 <DetailsButton
+                    id={id}
                     className="show-details-button"
                     variant="base"
                     label="Details"
@@ -287,16 +298,6 @@ function EditContactForm(props) {
     const [countriesList, setCountriesList] = useState(countries);
 
     if (!contactInfo) return null;
-
-    const filter = (query, options) => {
-        if (query) {
-            return options.filter(item => {
-                const regex = new RegExp(query, 'i');
-                return regex.test(item.label);
-            });
-        }
-        return [];
-    };
 
     const handleSearch = value => {
         if (countriesList && contactInfo.country && value.length > contactInfo.country.value.length) {
@@ -410,6 +411,7 @@ function UsersList({ values }) {
         return (
             <Contact
                 key={key}
+                id={key}
                 name={user.name}
                 email={user.email}
                 avatar={user.avatar}

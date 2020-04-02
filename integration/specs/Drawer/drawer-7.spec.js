@@ -3,7 +3,7 @@ const PageLookup = require('../../../src/components/Lookup/pageObject');
 const PageDatePicker = require('../../../src/components/DatePicker/pageObject');
 const { ESCAPE_KEY, TAB_KEY, ARROW_DOWN_KEY, ENTER_KEY } = require('../../constants');
 
-const BUTTON = '.show-details-button:nth-child(1)';
+const BUTTON = '#contact-1';
 const DRAWER = '#drawer-7';
 const LOOKUP = '#contact-country-input';
 const DATEPICKER = '#contact-birthday-input';
@@ -83,23 +83,6 @@ describe('Drawer advanced example', () => {
         lookup.waitUntilOpen();
         const option = lookup.getOption(1);
         option.click();
-        browser.keys(ESCAPE_KEY);
-        drawer.waitUntilClose();
-        expect(drawer.isOpen()).toBe(false);
-    });
-    it('should close the drawer when select an option with keyboard and then press ESC', () => {
-        const drawer = new PageDrawer(DRAWER);
-        const lookup = new PageLookup(LOOKUP);
-        const triggerButton = $(BUTTON);
-        triggerButton.click();
-        drawer.waitUntilOpen();
-        lookup.click();
-        lookup.setQuery('c');
-        lookup.waitUntilOpen();
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ARROW_DOWN_KEY);
-        browser.keys(ENTER_KEY);
-        expect(lookup.getSelectedOptionLabel()).toBe('France');
         browser.keys(ESCAPE_KEY);
         drawer.waitUntilClose();
         expect(drawer.isOpen()).toBe(false);
