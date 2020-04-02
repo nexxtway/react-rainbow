@@ -81,10 +81,33 @@ describe('<StepThree />', () => {
             { required: false, fileField: undefined, databaseField: 'age' },
         ]);
     });
-    /*
     it('should open the modal when a column cell is clicked', () => {
         const component = mount(<StepThree {...baseParams} />);
+        component
+            .find('ModifyCell')
+            .at(0)
+            .simulate('click');
+        expect(component.find('AssignFieldModal').prop('isAssignFieldModalOpen')).toBe(true);
     });
-    it('should pass the right databaseFieldToAssign prop to the modal when a column cell is clicked', () => {});
-    */
+    it('should close AssignFieldModal when onRequestClose prop is called', () => {
+        const component = mount(<StepThree {...baseParams} />);
+        component
+            .find('ModifyCell')
+            .at(0)
+            .simulate('click');
+        component
+            .find('AssignFieldModalFooter')
+            .find('Button')
+            .at(0)
+            .simulate('click');
+        expect(component.find('AssignFieldModal').prop('isAssignFieldModalOpen')).toBe(false);
+    });
+    it('should pass the right databaseFieldToAssign prop to the modal when a column cell is clicked', () => {
+        const component = mount(<StepThree {...baseParams} />);
+        component
+            .find('ModifyCell')
+            .at(1)
+            .simulate('click');
+        expect(component.find('AssignFieldModal').prop('databaseFieldToAssign')).toBe('age');
+    });
 });
