@@ -6,8 +6,7 @@ import StyledUploadIcon from './styled/uploadIcon';
 import HiddenElement from '../../Structural/hiddenElement';
 
 export default function UploadFileButton({ onChange, isDragOver }) {
-    // const [uploadFileInputId] = useState(uniqueId('upload-file-input'));
-    const uploadFileInputId = uniqueId('upload-file-input');
+    const [uploadFileInputId] = useState(uniqueId('upload-file-input'));
 
     return (
         <StyledUploadFileLabel htmlFor={uploadFileInputId} isDragOver={isDragOver}>
