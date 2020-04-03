@@ -13,10 +13,9 @@ describe('<UploadFileButton />', () => {
         expect(uniqueId).toHaveBeenCalledWith('upload-file-input');
     });
     it('should associate the input and label with the same id', () => {
-        expect.assertions(2);
         const component = mount(<UploadFileButton onChange={() => {}} />);
-        const uploadWrapper = component.find(StyledUploadFileLabel).at(0);
-        const input = component.find(HiddenElement).at(0);
+        const uploadWrapper = component.find(StyledUploadFileLabel);
+        const input = component.find(HiddenElement);
         expect(uploadWrapper.prop('htmlFor')).toBe('uniqueId-value');
         expect(input.prop('id')).toBe('uniqueId-value');
     });
@@ -28,9 +27,8 @@ describe('<UploadFileButton />', () => {
         expect(onChangeFn).toHaveBeenCalled();
     });
     it('should have the right props for the upload input', () => {
-        expect.assertions(3);
         const component = mount(<UploadFileButton onChange={() => {}} />);
-        const input = component.find(HiddenElement).at(0);
+        const input = component.find(HiddenElement);
         expect(input.prop('type')).toBe('file');
         expect(input.prop('accept')).toBe('text/csv');
         expect(input.prop('multiple')).toBe(false);
