@@ -111,7 +111,7 @@ describe('<StepTwo />', () => {
         const onProcessFileFn = jest.fn();
         const component = mount(<StepTwo onProcessFile={onProcessFileFn} />);
         component.find(StyledContainer).simulate('drop', event);
-        expect(onProcessFileFn).toHaveBeenCalledTimes(0);
+        expect(onProcessFileFn).not.toHaveBeenCalled();
     });
     it('should not call onProcessFile if file type is not text/csv', () => {
         const event = {
@@ -122,7 +122,7 @@ describe('<StepTwo />', () => {
         const onProcessFileFn = jest.fn();
         const component = mount(<StepTwo onProcessFile={onProcessFileFn} />);
         component.find(StyledContainer).simulate('drop', event);
-        expect(onProcessFileFn).toHaveBeenCalledTimes(0);
+        expect(onProcessFileFn).not.toHaveBeenCalled();
     });
     it('should call onProcessFile with the right data', () => {
         const event = {
