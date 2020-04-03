@@ -13,7 +13,7 @@ const StyledControls = styled.div`
         justify-content: flex-start;
         align-items: center;
         flex-grow: 1;
-        margin-right: 12px;
+        margin-right: 10px;
     }
 
     button {

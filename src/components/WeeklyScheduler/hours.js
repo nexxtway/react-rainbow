@@ -13,10 +13,11 @@ export default function Hours(props) {
         for (let i = 0; i < 24; i += 1) {
             date.setHours(i);
             hours.push(
-                <StyledHour>
+                <StyledHour key={date.getHours()}>
                     <span>
                         {new Intl.DateTimeFormat(locale, {
                             hour: 'numeric',
+                            hour12: true,
                         }).format(date)}
                     </span>
                 </StyledHour>,

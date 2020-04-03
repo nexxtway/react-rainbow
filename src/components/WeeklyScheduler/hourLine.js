@@ -1,24 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import StyledHourLine from './styled/hourLine';
 import { getHeightOfDate } from './helpers';
 import StyledCircle from './styled/circle';
 import StyledLine from './styled/line';
+import useInterval from './hooks/useInterval';
 
 export default function HourLine(props) {
     const { locale } = props;
-    const [date, setDate] = useState(new Date());
-    const [timer, setTimer] = useState((60 - date.getSeconds()) * 1000);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            if (timer !== 60000) {
-                setTimer(60000);
-            }
-            setDate(new Date());
-        }, timer);
-        return () => clearInterval(interval);
-    }, [timer]);
+    const date = useInterval({ interval: 1, unit: 'minutes' });
 
     return (
         <StyledHourLine hourHeight={() => getHeightOfDate(date)}>
@@ -26,6 +16,7 @@ export default function HourLine(props) {
                 {new Intl.DateTimeFormat(locale, {
                     hour: 'numeric',
                     minute: 'numeric',
+                    hour12: true,
                 }).format(date)}
             </span>
             <StyledCircle />

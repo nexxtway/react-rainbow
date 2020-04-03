@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { FONT_SIZE_TEXT_X_SMALL } from '../../../styles/fontSizes';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledEvent = attachThemeAttrs(styled.div)`
@@ -8,21 +7,24 @@ const StyledEvent = attachThemeAttrs(styled.div)`
     border-left: 3px solid ${props => props.palette.brand.main};
     color: ${props => props.palette.text.main};
     background-color: ${props => props.palette.background.secondary};
+    border-radius: 3px;
     padding: 0;
     padding-left: 2px;
-    margin: 2px 0;
-    border-radius: 3px;
+    position: absolute;
+    left: 2px;
+    right: 2px;
+    top: ${props => props.hourHeight}px;
     height: ${props => props.height}px;
 
-    span {
-        display: block;
-        font-size: 0.20rem;
+    .scheduler-event-dates {
+        font-size: 0.25rem;
+        margin-top: -1px;
         color: ${props => props.palette.brand.main};
     }
 
-    p {
-        font-size: ${FONT_SIZE_TEXT_X_SMALL};
-        margin-top: -4px;
+    .scheduler-event-title {
+        font-size: 0.3rem;
+        margin-top: -1px;
     }
 `;
 

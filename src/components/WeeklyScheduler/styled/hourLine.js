@@ -11,7 +11,7 @@ const StyledHourLine = attachThemeAttrs(styled.div)`
     > span {
         position: absolute;
         top: -8px;
-        width: 52px;
+        width: 57px;
         text-align: right;
         color: ${props => props.palette.error.main};
         font-size: ${FONT_SIZE_TEXT_SMALL};

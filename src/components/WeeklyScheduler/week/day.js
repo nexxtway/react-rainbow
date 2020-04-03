@@ -1,32 +1,32 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import StyledDay from './styled/day';
+import { getEventsOfDay } from '../helpers';
 import Event from '../event';
-import useUniqueIdentifier from '../../../libs/hooks/useUniqueIdentifier';
+import StyledDay from './styled/day';
 
 export default function Day(props) {
-    const { day, locale, onChange } = props;
-    const id = useUniqueIdentifier('Event');
-    const start = new Date(day);
-    start.setMinutes(3 * 60);
-    const end = new Date(start);
-    end.setMinutes(120);
+    const { day, events, locale } = props;
+    const eventsOfDay = useMemo(() => getEventsOfDay(events, day), [day, events]);
+    const Events = () =>
+        // eslint-disable-next-line react/no-array-index-key
+        eventsOfDay.map((event, index) => <Event key={index} locale={locale} {...event} />);
+
     return (
         <StyledDay>
-            <Event id={id} title={id} start={start} end={end} locale={locale} />
+            <Events />
         </StyledDay>
     );
 }
 
 Day.propTypes = {
     day: PropTypes.instanceOf(Date),
+    events: PropTypes.array,
     locale: PropTypes.string,
-    onChange: PropTypes.func,
 };
 
 Day.defaultProps = {
     day: undefined,
+    events: [],
     locale: undefined,
-    onChange: () => {},
 };

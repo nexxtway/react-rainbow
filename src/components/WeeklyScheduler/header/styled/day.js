@@ -4,12 +4,15 @@ import { FONT_SIZE_HEADING_MEDIUM, FONT_SIZE_TEXT_SMALL } from '../../../../styl
 import { BORDER_RADIUS_3 } from '../../../../styles/borderRadius';
 
 const StyledDay = attachThemeAttrs(styled.div)`
-    flex: 1 0 10%;
+    flex: 1 0 auto;
     border-right: 1px solid ${props => props.palette.border.divider};
     position: relative;
+    width: 81px;
+    min-width: 81px;
     height: 100%;
     color: ${props => props.palette.brand.main};
     padding: 3px 0;
+    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -9,7 +9,7 @@ const StyledContainer = attachThemeAttrs(styled.div)`
     align-items: flex-start;
     width: 100%;
     flex: 1 1 auto;
-    height: 960px;
+    height: 1200px;
 
     > div:first-child {
         width: 9px;

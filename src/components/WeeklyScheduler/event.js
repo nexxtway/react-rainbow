@@ -1,33 +1,37 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import RenderIf from '../RenderIf';
 import StyledEvent from './styled/event';
-import { getDiffDate, getHeightOfMinutes } from './helpers';
+import { getDiffDate, getHeightOfMinutes, getHeightOfDate } from './helpers';
+import { useUniqueIdentifier } from '../../libs/hooks';
 
 export default function Event(props) {
-    const { id, title, start, end, locale } = props;
-    const duration = getDiffDate(start, end, 'minutes');
-    const height = getHeightOfMinutes(duration);
+    const { title, start, end, locale } = props;
+    const eventId = useUniqueIdentifier('scheduler-event');
+    const duration = useMemo(() => getDiffDate(start, end, 'minutes'), [end, start]);
+    const height = useMemo(() => getHeightOfMinutes(duration), [duration]);
+
     return (
-        <StyledEvent id={id} height={height}>
-            <RenderIf isTrue={duration > 30}>
-                <span>
+        <StyledEvent id={eventId} height={height} hourHeight={() => getHeightOfDate(start)}>
+            <RenderIf isTrue={duration >= 30}>
+                <p className="scheduler-event-dates">
                     {`${new Intl.DateTimeFormat(locale, {
                         hour: 'numeric',
                         minute: 'numeric',
+                        hour12: true,
                     }).format(start)} - ${new Intl.DateTimeFormat(locale, {
                         hour: 'numeric',
                         minute: 'numeric',
+                        hour12: true,
                     }).format(end)}`}
-                </span>
+                </p>
             </RenderIf>
-            <p>{title}</p>
+            <p className="scheduler-event-title">{title}</p>
         </StyledEvent>
     );
 }
 
 Event.propTypes = {
-    id: PropTypes.string.isRequired,
     title: PropTypes.oneOfType([PropTypes.node, PropTypes.string]).isRequired,
     start: PropTypes.instanceOf(Date),
     end: PropTypes.instanceOf(Date),
@@ -35,7 +39,6 @@ Event.propTypes = {
 };
 
 Event.defaultProps = {
-    id: undefined,
     title: undefined,
     start: undefined,
     end: undefined,

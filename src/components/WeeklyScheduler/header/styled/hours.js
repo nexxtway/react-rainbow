@@ -6,7 +6,7 @@ const StyledHours = attachThemeAttrs(styled.div)`
     flex:none;
     text-align: center;
     color: ${props => props.palette.text.main};
-    min-width: 59px;
+    min-width: 64px;
     display: flex;
     justify-content: center;
     align-items: center;

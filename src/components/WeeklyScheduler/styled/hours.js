@@ -9,7 +9,7 @@ const StyledHours = attachThemeAttrs(styled.div)`
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    min-width: 60px;
+    min-width: 65px;
 `;
 
 export default StyledHours;

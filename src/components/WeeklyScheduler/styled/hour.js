@@ -4,7 +4,8 @@ import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledHour = attachThemeAttrs(styled.div)`
     position: relative;
-    min-height: 40px;
+    height: 50px;
+    min-height: 50px;
     padding-right: 8px;
     text-align: right;
     color: ${props => props.palette.text.main};

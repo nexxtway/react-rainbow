@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { addDays, isToday } from '../helpers';
+import { addDays } from '../../Calendar/helpers';
+import { isToday } from '../helpers';
 import StyledHeader from './styled/header';
 import StyledDay from './styled/day';
 import StyledDays from './styled/days';
 import StyledHours from './styled/hours';
 
-export default function Header({ locale, currentWeek }) {
+export default function Header({ currentWeek, locale }) {
     function Days() {
         let date = new Date(currentWeek);
         const days = [];
@@ -14,7 +15,7 @@ export default function Header({ locale, currentWeek }) {
         for (let i = 0; i < 7; i += 1) {
             const today = isToday(date);
             days.push(
-                <StyledDay isToday={today}>
+                <StyledDay isToday={today} key={date.getDate()}>
                     <div>
                         <h4>
                             {new Intl.DateTimeFormat(locale, {
@@ -53,6 +54,6 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
-    locale: undefined,
     currentWeek: undefined,
+    locale: undefined,
 };

@@ -4,18 +4,18 @@ import Day from './day';
 import StyledContainer from './styled/container';
 import StyledGrid from './styled/grid';
 import StyledGridLine from './styled/gridLine';
-import { addDays } from '../helpers';
+import { addDays } from '../../Calendar/helpers';
+import useInterval from '../hooks/useInterval';
 
 export default function Week(props) {
-    const { currentWeek, onChange } = props;
+    const { currentWeek, events, locale } = props;
+    useInterval({ interval: 1, unit: 'days' });
 
     function Days() {
         const days = [];
         let day = new Date(currentWeek);
         for (let i = 0; i < 7; i += 1) {
-            days.push(
-                <Day currentWeek={currentWeek} key={day.getTime()} day={day} onChange={onChange} />,
-            );
+            days.push(<Day key={day.getDate()} day={day} events={events} locale={locale} />);
             day = addDays(day, 1);
         }
         return days;
@@ -25,7 +25,7 @@ export default function Week(props) {
         const gridLines = [];
 
         for (let i = 0; i < 24; i += 1) {
-            gridLines.push(<StyledGridLine />);
+            gridLines.push(<StyledGridLine key={i} />);
         }
         return gridLines;
     }
@@ -42,10 +42,12 @@ export default function Week(props) {
 
 Week.propTypes = {
     currentWeek: PropTypes.instanceOf(Date),
-    onChange: PropTypes.func,
+    events: PropTypes.array,
+    locale: PropTypes.string,
 };
 
 Week.defaultProps = {
     currentWeek: undefined,
-    onChange: () => {},
+    events: [],
+    locale: undefined,
 };

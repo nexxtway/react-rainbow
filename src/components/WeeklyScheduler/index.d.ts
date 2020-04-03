@@ -2,7 +2,6 @@ import { ReactNode, ComponentType } from 'react';
 import { BaseProps } from '../types';
 
 interface SchedulerEvent {
-    id: string;
     title: string;
     start: Date;
     end: Date;

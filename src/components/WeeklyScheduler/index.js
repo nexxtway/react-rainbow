@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useLocale } from '../../libs/hooks';
 import Select from './../Select';
 import ButtonIcon from '../ButtonIcon';
 import RightIcon from './icons/rightArrow';
@@ -12,16 +13,12 @@ import StyledContainer from './styled/container';
 import StyledContent from './styled/content';
 import StyledControls from './styled/controls';
 import StyledWeek from './week/styled/week';
-import {
-    normalizeDate,
-    getFirstDayOfWeek,
-    getFormattedWeek,
-    getYearsRange,
-    addWeeks,
-} from './helpers';
+import { normalizeDate, getYearsRange } from '../Calendar/helpers';
+import { getFirstDayOfWeek, getFormattedWeek, addWeeks } from './helpers';
 
 export default function WeeklyScheduler(props) {
-    const { events, date, minDate, maxDate, locale, onChange, className, style } = props;
+    const { events, date, minDate, maxDate, locale: localLocale, className, style } = props;
+    const locale = useLocale(localLocale);
     const [currentWeek, setCurrentWeek] = useState(getFirstDayOfWeek(normalizeDate(date)));
     const formattedWeek = getFormattedWeek(currentWeek, locale);
     const yearsRange = getYearsRange({
@@ -72,11 +69,11 @@ export default function WeeklyScheduler(props) {
                     onChange={handleYearChange}
                 />
             </StyledControls>
-            <Header locale={locale} currentWeek={currentWeek} />
+            <Header currentWeek={currentWeek} locale={locale} />
             <StyledContent>
-                <Hours />
-                <Week currentWeek={currentWeek} onChange={onChange} />
-                <HourLine />
+                <Hours locale={locale} />
+                <Week currentWeek={currentWeek} events={events} locale={locale} />
+                <HourLine locale={locale} />
             </StyledContent>
         </StyledContainer>
     );
@@ -95,8 +92,6 @@ WeeklyScheduler.propTypes = {
     minDate: PropTypes.instanceOf(Date),
     /** The Calendar locale. Defaults to browser's language. */
     locale: PropTypes.string,
-    /** The action triggered when a events attribute changes. */
-    onChange: PropTypes.func,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
@@ -109,7 +104,6 @@ WeeklyScheduler.defaultProps = {
     minDate: undefined,
     maxDate: undefined,
     locale: undefined,
-    onChange: () => {},
     className: undefined,
     style: undefined,
 };

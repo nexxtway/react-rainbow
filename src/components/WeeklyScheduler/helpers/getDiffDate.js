@@ -1,6 +1,6 @@
 const getYearsDiff = (date1, date2) => date2.getFullYear() - date1.getFullYear();
 const getMonthsDiff = (date1, date2) =>
-    getYearsDiff(date1, date2) * 8 + date2.getMoths() - date1.getgetMoths();
+    getYearsDiff(date1, date2) * 12 + date2.getMonth() - date1.getMonth();
 
 export default function getDiffDate(date1, date2, unit) {
     const diff = date2 - date1;

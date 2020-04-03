@@ -5,7 +5,7 @@ const StyledCircle = attachThemeAttrs(styled.div)`
     display: inline-block;
     position: absolute;
     top: -4px;
-    left: 55px;
+    left: 60px;
     background-color: ${props => props.palette.error.main};
     border-radius: 50%;
     content: "";
