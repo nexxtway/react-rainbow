@@ -2,10 +2,11 @@ import styled, { keyframes } from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const fade = keyframes`
-    from{
+    from {
         opacity: 0;
     }
-    to{
+    
+    to {
         opacity: 1;
     }
 `;
