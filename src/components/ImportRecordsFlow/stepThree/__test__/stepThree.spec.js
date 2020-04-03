@@ -61,18 +61,18 @@ describe('<StepThree />', () => {
         });
     });
     it('should pass only the first three elements of data prop to AssignFieldModal', () => {
-        const onAssignFieldFn = jest.fn();
-        const component = mount(<StepThree onAssignField={onAssignFieldFn} {...baseParams} />);
-        expect(component.find('AssignFieldModal').props()).toEqual(
-            expect.objectContaining({
-                attributes: {
-                    name: { required: true },
-                    age: {},
-                },
-                columns: ['Name', 'Age'],
-                onAssignField: onAssignFieldFn,
-            }),
-        );
+        baseParams.data = [
+            { First_Name: 'John', Last_Name: 'Doe', Age: 27 },
+            { First_Name: 'Marie', Last_Name: 'Doe', Age: 28 },
+            { First_Name: 'Sophia', Last_Name: 'Doe', Age: 29 },
+            { First_Name: 'Joseph', Last_Name: 'Doe', Age: 30 },
+        ];
+        const component = mount(<StepThree {...baseParams} />);
+        expect(component.find('AssignFieldModal').prop('data')).toEqual([
+            { First_Name: 'John', Last_Name: 'Doe', Age: 27 },
+            { First_Name: 'Marie', Last_Name: 'Doe', Age: 28 },
+            { First_Name: 'Sophia', Last_Name: 'Doe', Age: 29 },
+        ]);
     });
     it('should pass the right data to the Table component', () => {
         const component = mount(<StepThree {...baseParams} />);

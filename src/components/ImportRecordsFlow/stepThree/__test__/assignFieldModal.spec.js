@@ -41,7 +41,7 @@ describe('<AssignFieldModal />', () => {
         );
         component
             .find('AssignFieldModalFooter')
-            .find('Button')
+            .find(Button)
             .at(0)
             .simulate('click');
         expect(onRequestCloseFn).toHaveBeenCalled();
@@ -178,7 +178,6 @@ describe('<AssignFieldModal />', () => {
         expect(onAssignFieldFn).toHaveBeenCalledWith('name', ['First_Name', 'Last_Name']);
     });
     it('should update Select options, value and SelectedFieldsToAssign when changing Select value', () => {
-        expect.assertions(2);
         const columns = ['First_Name', 'Last_Name', 'Email'];
         const fieldsMap = {};
         const databaseFieldToAssign = 'name';
