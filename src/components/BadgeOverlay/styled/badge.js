@@ -2,12 +2,13 @@ import styled, { keyframes } from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const fade = keyframes`
-0% {
-    opacity: 0;
-}
-100% {
-    opacity: 1;
-}
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 `;
 
 const StyledBadge = attachThemeAttrs(styled.span)`
