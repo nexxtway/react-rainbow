@@ -1,5 +1,14 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+
+const fade = keyframes`
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+`;
 
 const StyledBadge = attachThemeAttrs(styled.span)`
     display: flex;
@@ -20,6 +29,7 @@ const StyledBadge = attachThemeAttrs(styled.span)`
     z-index: 1;
     transition-timing-function: ease-in-out;
     transition: 0.2s;
+    animation: 0.7s ${fade} ease-out;
     background-color: ${props => props.palette.error.main};
     color: ${props => props.palette.getContrastText(props.palette.error.main)};
 
