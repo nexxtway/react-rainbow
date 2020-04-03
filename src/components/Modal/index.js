@@ -73,6 +73,7 @@ export default class Modal extends Component {
             }
             if (!CounterManager.hasModalsOpen()) {
                 enableBodyScroll(this.contentElement);
+                clearAllBodyScrollLocks();
             }
         }
 
