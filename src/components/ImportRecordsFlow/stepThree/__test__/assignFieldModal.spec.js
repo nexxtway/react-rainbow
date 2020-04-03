@@ -1,13 +1,14 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import AssignFieldModal from '../assignFieldModal';
 import Button from '../../../Button';
-import getFileFieldsOptions from '../../helpers/getFileFieldsOptions';
-import StyledSelect from '../styled/select';
+import Chip from '../../../Chip';
+import AssignFieldModal from '../assignFieldModal';
 import SelectedFieldsToAssign from '../selectedFieldsToAssign';
 import AssignFieldModalFooter from '../assignFieldModalFooter';
-import Chip from '../../../Chip';
+import getFileFieldsOptions from '../../helpers/getFileFieldsOptions';
 import StyledButtonIcon from '../../../Chip/styled/buttonIcon';
+import StyledSelect from '../styled/select';
+import StyledCancelButton from '../styled/cancelButton';
 
 const attributes = {
     name: { required: true },
@@ -40,9 +41,8 @@ describe('<AssignFieldModal />', () => {
             />,
         );
         component
-            .find('AssignFieldModalFooter')
-            .find(Button)
-            .at(0)
+            .find(AssignFieldModalFooter)
+            .find(StyledCancelButton)
             .simulate('click');
         expect(onRequestCloseFn).toHaveBeenCalled();
     });
