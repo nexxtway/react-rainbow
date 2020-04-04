@@ -1,0 +1,11 @@
+.rainbow-lybrary_sidebar-item-container {
+    width: 100%;
+}
+
+.rainbow-lybrary_sidebar-item-container > span {
+    margin-left: 10px;
+}
+
+.rainbow-lybrary_sidebar-item {
+   width: 100%;
+}

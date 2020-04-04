@@ -84,13 +84,7 @@ export default function Wrapper(props) {
         <Application theme={theme}>
             <StyledWrapper>
                 <StyledTopBar>
-                    <StyledLeftElement>
-                        <InfoFilled />
-                        <StyledTitle>
-                            The theme support is <StyledHighlight>BETA</StyledHighlight>and{' '}
-                            <StyledHighlight>WIP</StyledHighlight>
-                        </StyledTitle>
-                    </StyledLeftElement>
+                    <StyledLeftElement />
                     <RenderIf isTrue={!isCustimizationPage}>
                         <StyledPickerTheme
                             menuAlignment="right"
