@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Input from '../Input';
+import InputCheckbox from '../Table/head/InputCheckbox';
 import RenderIf from '../RenderIf';
 import TreeChildren from './treeChildren';
 import ExpandCollapseButton from './expandCollapseButton';
@@ -8,6 +8,7 @@ import ItemContainerLi from './styled/itemContainerLi';
 import NodeContainer from './styled/nodeContainer';
 import Label from './styled/label';
 import IconContainer from './styled/iconContainer';
+import InputContainer from './styled/inputContainer';
 import ChildrenContainer from './styled/childrenContainer';
 
 export default function Child(props) {
@@ -17,6 +18,7 @@ export default function Child(props) {
         isLoading,
         children,
         isChecked,
+        isIndeterminate,
         icon,
         childPath,
         onExpandCollapse,
@@ -35,11 +37,14 @@ export default function Child(props) {
                     onClick={() => onExpandCollapse({ childPath })}
                 />
                 <RenderIf isTrue={hasCheckbox}>
-                    <Input
-                        type="checkbox"
-                        checked={isChecked === true}
-                        onChange={() => onSelect({ childPath })}
-                    />
+                    <InputContainer>
+                        <InputCheckbox
+                            type="checkbox"
+                            checked={isChecked === true}
+                            indeterminate={isIndeterminate === true}
+                            onChange={() => onSelect({ childPath })}
+                        />
+                    </InputContainer>
                 </RenderIf>
                 <RenderIf isTrue={hasIcon}>
                     <IconContainer>{icon}</IconContainer>
@@ -63,6 +68,7 @@ export default function Child(props) {
 Child.propTypes = {
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     isChecked: PropTypes.bool,
+    isIndeterminate: PropTypes.bool,
     isExpanded: PropTypes.bool,
     isLoading: PropTypes.bool,
     icon: PropTypes.node,
@@ -75,6 +81,7 @@ Child.propTypes = {
 Child.defaultProps = {
     label: undefined,
     isChecked: undefined,
+    isIndeterminate: undefined,
     isExpanded: undefined,
     isLoading: undefined,
     children: undefined,

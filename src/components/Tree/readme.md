@@ -102,9 +102,10 @@
             icon: <FolderCloseIcon />,
             isExpanded: true,
             isChecked: false,
+            isIndeterminate: true,
             children: [
                 { label: 'Tree Item', isChecked: false },
-                { label: 'Tree Item', isChecked: false },
+                { label: 'Tree Item', isChecked: true },
             ],
         },
         {
@@ -112,6 +113,7 @@
             icon: <FolderCloseIcon />,
             isLoading: true,
             isChecked: false,
+            isIndeterminate: false,
             children: [
                 { label: 'Tree Item', isChecked: false, icon: <FileIcon /> },
                 { label: 'Tree Item', isChecked: false, icon: <FileIcon /> },
