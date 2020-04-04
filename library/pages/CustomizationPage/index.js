@@ -290,10 +290,10 @@ export default function CustomizationPage(props) {
                             to make use of those values in order to be consistent with the colors of
                             your app.
                         </h3>
-
                         <CodeEditor code={defaultTheme} />
 
                         <h3 className="react-rainbow-customization_section-heading">Example</h3>
+
                         <Playground
                             code={examples[3].content}
                             evalInContext={examples[3].evalInContext}
@@ -301,7 +301,7 @@ export default function CustomizationPage(props) {
                             name={name}
                             index={3}
                             settings={examples[3].settings}
-                            exampleMode={exampleMode}
+                            exampleMode="collapse"
                         />
                     </div>
                 </RenderIf>
