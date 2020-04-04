@@ -1,15 +1,5 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
-
-const fade = keyframes`
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-`;
 
 const StyledBadge = attachThemeAttrs(styled.span)`
     display: flex;
@@ -30,7 +20,6 @@ const StyledBadge = attachThemeAttrs(styled.span)`
     z-index: 1;
     transition-timing-function: ease-in-out;
     transition: 0.2s;
-    animation: 0.7s ${fade} ease-out;
     background-color: ${props => props.palette.error.main};
     color: ${props => props.palette.getContrastText(props.palette.error.main)};
 
@@ -60,6 +49,10 @@ const StyledBadge = attachThemeAttrs(styled.span)`
             left: 0;
             transform: scale(1) translate(-50%, -50%);
             transform-origin: 0% 0%;
+            ${props.isHidden === true &&
+                `
+                    transform: scale(0) translate(-50%, -50%);
+            `};
         `};
     ${props =>
         props.position === 'top-left' &&
@@ -69,6 +62,10 @@ const StyledBadge = attachThemeAttrs(styled.span)`
             left: 12%;
             transform: scale(1) translate(-50%, -50%);
             transform-origin: 0% 0%;
+            ${props.isHidden === true &&
+                `
+                    transform: scale(0) translate(-50%, -50%);
+            `};
         `};
     ${props =>
         props.position === 'top-right' &&
@@ -78,6 +75,10 @@ const StyledBadge = attachThemeAttrs(styled.span)`
             right: 0;
             transform: scale(1) translate(50%, -50%);
             transform-origin: 100% 0%;
+            ${props.isHidden === true &&
+                `
+                    transform: scale(0) translate(50%, -50%);
+            `};
         `};
     ${props =>
         props.position === 'top-right' &&
@@ -87,6 +88,10 @@ const StyledBadge = attachThemeAttrs(styled.span)`
             right: 12%;
             transform: scale(1) translate(50%, -50%);
             transform-origin: 100% 0%;
+            ${props.isHidden === true &&
+                `
+                    transform: scale(0) translate(50%, -50%);
+            `};
         `};
     ${props =>
         props.position === 'bottom-left' &&
@@ -96,6 +101,10 @@ const StyledBadge = attachThemeAttrs(styled.span)`
             left: 0;
             transform: scale(1) translate(-50%, 50%);
             transform-origin: 0% 100%;
+            ${props.isHidden === true &&
+                `
+                    transform: scale(0) translate(-50%, 50%);
+            `};
         `};
     ${props =>
         props.position === 'bottom-left' &&
@@ -105,6 +114,10 @@ const StyledBadge = attachThemeAttrs(styled.span)`
             left: 12%;
             transform: scale(1) translate(-50%, 50%);
             transform-origin: 0% 100%;
+            ${props.isHidden === true &&
+                `
+                    transform: scale(0) translate(-50%, 50%);
+            `};
         `};
     ${props =>
         props.position === 'bottom-right' &&
@@ -114,6 +127,10 @@ const StyledBadge = attachThemeAttrs(styled.span)`
             right: 0;
             transform: scale(1) translate(50%, 50%);
             transform-origin: 100% 100%;
+            ${props.isHidden === true &&
+                `
+                    transform: scale(0) translate(50%, 50%);
+            `};
         `};
     ${props =>
         props.position === 'bottom-right' &&
@@ -123,6 +140,10 @@ const StyledBadge = attachThemeAttrs(styled.span)`
             right: 12%;
             transform: scale(1) translate(50%, 50%);
             transform-origin: 100% 100%;
+            ${props.isHidden === true &&
+                `
+                    transform: scale(0) translate(50%, 50%);
+            `};
         `};
     ${props =>
         !props.value &&
