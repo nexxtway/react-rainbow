@@ -49,11 +49,7 @@ export default class ComponentsList extends Component {
 
         return (
             <Application theme={theme}>
-                <Sidebar
-                    className="rainbow-lybrary_sidebar-container"
-                    selectedItem={selectedItem}
-                    onSelect={this.handleOnSelect}
-                >
+                <Sidebar selectedItem={selectedItem} onSelect={this.handleOnSelect}>
                     <SidebarItem
                         icon={<StartupIcon />}
                         name="GettingStarted"
@@ -67,14 +63,14 @@ export default class ComponentsList extends Component {
                         href="/#/Components"
                     />
                     <BadgeOverlay
-                        className="rainbow-lybrary_sidebar-item-container"
+                        className="rainbow-library_sidebar-item-container"
                         position="top-left"
                         value="Beta"
                         variant="warning"
                         overlap="circle"
                     >
                         <SidebarItem
-                            className="rainbow-lybrary_sidebar-item"
+                            className="rainbow-library_sidebar-item"
                             icon={<ConsoleIcon />}
                             name="Customization"
                             label="Customization"
