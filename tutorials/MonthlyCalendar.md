@@ -1,7 +1,7 @@
-Here is an overview about how to use the MonthCalendar page object:
+Here is an overview about how to use the MonthlyCalendar page object:
 
-    const PageMonthCalendar = require('react-rainbow-components/components/MonthCalendar/pageObject');
-    const MONTH_CALENDAR = '#month-calendar-1';
+    const PageMonthlyCalendar = require('react-rainbow-components/components/MonthlyCalendar/pageObject');
+    const MONTHLY_CALENDAR = '#monthly-calendar-1';
 
     describe('Calendar', () => {
         beforeAll(() => {
@@ -9,11 +9,11 @@ Here is an overview about how to use the MonthCalendar page object:
         });
         beforeEach(() => {
             browser.refresh();
-            const component = $(CALENDAR);
+            const component = $(MONTHLY_CALENDAR);
             component.waitForExist();
         });
         it('should change selected month when clicked on left and right arrows', () => {
-            const calendar = new PageMonthCalendar(MONTH_CALENDAR);
+            const calendar = new PageMonthlyCalendar(MONTHLY_CALENDAR);
             expect(calendar.getSelectedMonth()).toBe('December');
             calendar.clickPrevMonthButton();
             expect(calendar.getSelectedMonth()).toBe('November');
@@ -22,7 +22,7 @@ Here is an overview about how to use the MonthCalendar page object:
             expect(calendar.getSelectedMonth()).toBe('January');
         });
         it('should change year when month is December and click next month button', () => {
-            const calendar = new PageMonthCalendar(MONTH_CALENDAR);
+            const calendar = new PageMonthlyCalendar(MONTHLY_CALENDAR);
             expect(calendar.getSelectedMonth()).toBe('December');
             expect(calendar.getSelectedYear()).toBe('2019');
             calendar.clickNextMonthButton();

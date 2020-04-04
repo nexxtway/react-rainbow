@@ -1,8 +1,8 @@
-##### MonthCalendar
+##### MonthlyCalendar
 
 ```js
 import React from 'react';
-import { Card, MonthCalendar, RenderIf } from 'react-rainbow-components';
+import { Card, MonthlyCalendar, RenderIf } from 'react-rainbow-components';
 import styled from 'styled-components';
 
 const StyledContainer = styled.div
@@ -178,12 +178,12 @@ const initialState = {
     className="rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto rainbow-flex_wrap"
 >
     <Card className="rainbow-p-horizontal_medium rainbow-p-vertical_large">
-        <MonthCalendar
-            id="month-calendar-1"
+        <MonthlyCalendar
+            id="monthly-calendar-1"
             currentMonth={state.currentMonth}
             selectedDate={state.selectedDate}
             onSelectDate={date => setState({ selectedDate: date })}
-            onMonthChanged={date => setState({ currentMonth: date })}
+            onMonthChange={({ month }) => setState({ currentMonth: month })}
             minDate={new Date('01/04/2018')}
             maxDate={new Date('01/04/2020')}
             dateComponent={date => (

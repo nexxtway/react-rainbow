@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useUniqueIdentifier, useLocale } from '../../libs/hooks';
-import { getFormattedMonth, getYearsRange, getLastDayMonth, addMonths } from '../Calendar/helpers';
-import getCurrentMonth from './helpers/getCurrentMonth';
+import { getLastDayMonth, addMonths } from '../Calendar/helpers';
+import { useYearsRange, useCurrentMonth, useFormattedMonth } from './hooks';
 import { Provider } from './context';
 import Select from '../Select';
 import RightIcon from './icons/rightArrow';
@@ -15,7 +15,7 @@ import StyledArrowButton from './styled/arrowButton';
 import StyledMonth from './styled/month';
 import StyledTable from './styled/table';
 
-export default function MonthCalendar(props) {
+export default function MonthlyCalendar(props) {
     const {
         id,
         className,
@@ -26,31 +26,16 @@ export default function MonthCalendar(props) {
         selectedDate,
         locale,
         onSelectDate,
-        onMonthChanged,
+        onMonthChange,
         dateComponent,
     } = props;
     const monthLabelId = useUniqueIdentifier('month');
     const currentLocale = useLocale(locale);
-    const month = useMemo(() => getCurrentMonth(currentMonth, minDate, maxDate), [
-        currentMonth,
-        minDate,
-        maxDate,
-    ]);
-    const currentYear = month.getFullYear();
-    const yearsRange = useMemo(
-        () =>
-            getYearsRange({
-                minDate,
-                maxDate,
-                currentMonth: month.getMonth(),
-            }),
-        [minDate, maxDate, month],
-    );
-    const formattedMonth = useMemo(() => getFormattedMonth(month, currentLocale), [
-        currentLocale,
-        month,
-    ]);
+    const month = useCurrentMonth(currentMonth, minDate, maxDate);
+    const yearsRange = useYearsRange(minDate, maxDate, month);
+    const formattedMonth = useFormattedMonth(month, currentLocale);
 
+    const currentYear = month.getFullYear();
     const lastYearItem = yearsRange[yearsRange.length - 1];
     const maxSelectableDate = maxDate || new Date(lastYearItem.value, 11, 31);
     const disableNextMonth = addMonths(month, 1) > maxSelectableDate;
@@ -61,13 +46,13 @@ export default function MonthCalendar(props) {
     const selectPreviousMonth = () => {
         const newMonth = addMonths(month, -1);
         newMonth.setHours(0, 0, 0, 0);
-        return onMonthChanged(newMonth);
+        onMonthChange({ month: newMonth });
     };
 
     const selectNextMonth = () => {
         const newMonth = addMonths(month, 1);
         newMonth.setHours(0, 0, 0, 0);
-        onMonthChanged(newMonth);
+        onMonthChange({ month: newMonth });
     };
 
     const handleYearChange = event => {
@@ -75,7 +60,7 @@ export default function MonthCalendar(props) {
         const newMonth = new Date(month);
         newMonth.setHours(0, 0, 0, 0);
         newMonth.setFullYear(year);
-        onMonthChanged(newMonth);
+        onMonthChange({ month: newMonth });
     };
 
     return (
@@ -126,18 +111,18 @@ export default function MonthCalendar(props) {
     );
 }
 
-MonthCalendar.propTypes = {
+MonthlyCalendar.propTypes = {
     /** The id of the outer element. */
     id: PropTypes.string,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
-    /** The MonthCalendar locale. Defaults to browser's language. */
+    /** The MonthlyCalendar locale. Defaults to browser's language. */
     locale: PropTypes.string,
-    /** Sets the current month for the MonthCalendar programmatically. */
+    /** Sets the current month for the MonthlyCalendar programmatically. */
     currentMonth: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
-    /** Sets the selected date for the MonthCalendar programmatically. */
+    /** Sets the selected date for the MonthlyCalendar programmatically. */
     selectedDate: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
     /** The beginning of a range of valid dates. The range includes the startDate.
      * The default value is current date - 100 years. */
@@ -148,14 +133,14 @@ MonthCalendar.propTypes = {
     /** Function triggered when a day is clicked */
     onSelectDate: PropTypes.func,
     /** Function triggered when month is changed */
-    onMonthChanged: PropTypes.func,
+    onMonthChange: PropTypes.func,
     /** A render function that takes a date and returns a
      * react component that renders the content of the cell
      */
     dateComponent: PropTypes.func,
 };
 
-MonthCalendar.defaultProps = {
+MonthlyCalendar.defaultProps = {
     id: undefined,
     className: undefined,
     style: undefined,
@@ -166,5 +151,5 @@ MonthCalendar.defaultProps = {
     maxDate: undefined,
     dateComponent: undefined,
     onSelectDate: () => {},
-    onMonthChanged: () => {},
+    onMonthChange: () => {},
 };

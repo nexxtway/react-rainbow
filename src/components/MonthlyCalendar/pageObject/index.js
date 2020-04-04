@@ -1,13 +1,13 @@
 /**
- * MonthCalendar page object class.
+ * MonthlyCalendar page object class.
  * @class
  * @tutorial Monthcalendar
  */
-class PageMonthCalendar {
+class PageMonthlyCalendar {
     /**
-     * Create a new PageMonthCalendar page object.
+     * Create a new PageMonthlyCalendar page object.
      * @constructor
-     * @param {string} rootElement - The selector of the PageMonthCalendar root element.
+     * @param {string} rootElement - The selector of the PageMonthlyCalendar root element.
      */
     constructor(rootElement) {
         this.rootElement = rootElement;
@@ -97,4 +97,4 @@ class PageMonthCalendar {
     }
 }
 
-module.exports = PageMonthCalendar;
+module.exports = PageMonthlyCalendar;
