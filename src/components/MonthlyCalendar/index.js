@@ -46,13 +46,13 @@ export default function MonthlyCalendar(props) {
     const selectPreviousMonth = () => {
         const newMonth = addMonths(month, -1);
         newMonth.setHours(0, 0, 0, 0);
-        onMonthChange({ month: newMonth });
+        return onMonthChange({ month: newMonth });
     };
 
     const selectNextMonth = () => {
         const newMonth = addMonths(month, 1);
         newMonth.setHours(0, 0, 0, 0);
-        onMonthChange({ month: newMonth });
+        return onMonthChange({ month: newMonth });
     };
 
     const handleYearChange = event => {
@@ -60,7 +60,7 @@ export default function MonthlyCalendar(props) {
         const newMonth = new Date(month);
         newMonth.setHours(0, 0, 0, 0);
         newMonth.setFullYear(year);
-        onMonthChange({ month: newMonth });
+        return onMonthChange({ month: newMonth });
     };
 
     return (
