@@ -1,4 +1,3 @@
-import { ReactNode, ComponentType } from 'react';
 import { BaseProps } from '../types';
 
 interface SchedulerEvent {
@@ -12,7 +11,7 @@ export interface WeeklySchedulerProps extends BaseProps {
     date?: Date;
     minDate?: Date;
     maxDate?: Date;
-    onChange?: (events: Array<SchedulerEvent>) => void;
+    locale?: string;
 }
 
 export default function(props: WeeklySchedulerProps): JSX.Element | null;

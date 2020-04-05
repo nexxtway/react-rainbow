@@ -7,10 +7,12 @@ const StyledDays = attachThemeAttrs(styled.div)`
     align-items: flex-start;
     width: 100%;
     flex: 1 1 auto;
+    overflow-y: hidden;
+    overflow-x: hidden;
 
     > div:first-child {
-        width: 9px;
-        min-width: 9px;
+        width: 11px;
+        min-width: 11px;
         height: 100%;
         border-right: 1px solid ${props => props.palette.border.divider};
     }

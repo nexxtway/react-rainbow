@@ -1,11 +1,10 @@
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 
 const StyledCircle = attachThemeAttrs(styled.div)`
     display: inline-block;
     position: absolute;
     top: -4px;
-    left: 60px;
     background-color: ${props => props.palette.error.main};
     border-radius: 50%;
     content: "";

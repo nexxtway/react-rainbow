@@ -7,7 +7,9 @@ import StyledDay from './styled/day';
 import StyledDays from './styled/days';
 import StyledHours from './styled/hours';
 
-export default function Header({ currentWeek, locale }) {
+const Header = React.forwardRef((props, ref) => {
+    const { currentWeek, locale } = props;
+
     function Days() {
         let date = new Date(currentWeek);
         const days = [];
@@ -39,14 +41,14 @@ export default function Header({ currentWeek, locale }) {
             <StyledHours>
                 <h2>Hr</h2>
             </StyledHours>
-            <StyledDays>
+            <StyledDays ref={ref}>
                 <div />
                 <Days />
             </StyledDays>
             <div />
         </StyledHeader>
     );
-}
+});
 
 Header.propTypes = {
     locale: PropTypes.string,
@@ -57,3 +59,5 @@ Header.defaultProps = {
     currentWeek: undefined,
     locale: undefined,
 };
+
+export default Header;

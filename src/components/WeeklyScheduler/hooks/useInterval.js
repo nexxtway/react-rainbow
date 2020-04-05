@@ -31,7 +31,7 @@ const defaultSettings = {
 };
 
 export default function useInterval(settings) {
-    const { interval, unit, sync } = settings || defaultSettings;
+    const { interval, unit, sync } = { ...defaultSettings, ...settings };
     const time = useMemo(() => (units[unit] ? interval * units[unit].time : interval), [
         interval,
         unit,

@@ -1,18 +1,19 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import RenderIf from '../RenderIf';
+import { useUniqueIdentifier } from '../../../libs/hooks';
+import { getDiffDate, getHeightOfMinutes, getHeightOfDate } from '../helpers';
+import RenderIf from '../../RenderIf';
 import StyledEvent from './styled/event';
-import { getDiffDate, getHeightOfMinutes, getHeightOfDate } from './helpers';
-import { useUniqueIdentifier } from '../../libs/hooks';
 
 export default function Event(props) {
     const { title, start, end, locale } = props;
     const eventId = useUniqueIdentifier('scheduler-event');
     const duration = useMemo(() => getDiffDate(start, end, 'minutes'), [end, start]);
     const height = useMemo(() => getHeightOfMinutes(duration), [duration]);
+    const hourHeight = useMemo(() => getHeightOfDate(start), [start]);
 
     return (
-        <StyledEvent id={eventId} height={height} hourHeight={() => getHeightOfDate(start)}>
+        <StyledEvent id={eventId} height={height} hourHeight={hourHeight}>
             <RenderIf isTrue={duration >= 30}>
                 <p className="scheduler-event-dates">
                     {`${new Intl.DateTimeFormat(locale, {

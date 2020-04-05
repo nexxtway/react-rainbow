@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import { FONT_SIZE_HEADING_MEDIUM } from '../../../../styles/fontSizes';
-import { MARGIN_LARGE } from '../../../../styles/margins';
-import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
+import { FONT_SIZE_HEADING_MEDIUM } from '../../../styles/fontSizes';
+import { MARGIN_LARGE } from '../../../styles/margins';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-const StyledWeek = attachThemeAttrs(styled.h3)`
+const StyledTitle = attachThemeAttrs(styled.h3)`
     font-size: ${FONT_SIZE_HEADING_MEDIUM};
     color: ${props => props.palette.brand.main};
     text-transform: capitalize;
@@ -14,4 +14,4 @@ const StyledWeek = attachThemeAttrs(styled.h3)`
     box-sizing: border-box;
 `;
 
-export default StyledWeek;
+export default StyledTitle;

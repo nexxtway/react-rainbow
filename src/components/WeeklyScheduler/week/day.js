@@ -2,7 +2,7 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { getEventsOfDay } from '../helpers';
-import Event from '../event';
+import Event from './event';
 import StyledDay from './styled/day';
 
 export default function Day(props) {

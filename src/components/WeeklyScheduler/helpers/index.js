@@ -2,7 +2,6 @@ export { default as getFirstDayOfWeek } from './getFirstDayOfWeek';
 export { default as getLastDayOfWeek } from './getLastDayOfWeek';
 export { default as getFormattedWeek } from './getFormattedWeek';
 export { default as addWeeks } from './addWeeks';
-export { default as getHours } from './getHours';
 export { default as isToday } from './isToday';
 export { default as getHeightOfDate } from './getHeightOfDate';
 export { default as getHeightOfMinutes } from './getHeightOfMinutes';

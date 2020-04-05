@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useLocale } from '../../libs/hooks';
+import { useYearRange } from './hooks';
+import { normalizeDate } from '../Calendar/helpers';
+import { getFirstDayOfWeek, getFormattedWeek, addWeeks } from './helpers';
 import Select from './../Select';
 import ButtonIcon from '../ButtonIcon';
 import RightIcon from './icons/rightArrow';
@@ -8,35 +11,35 @@ import LeftIcon from './icons/leftArrow';
 import Header from './header';
 import Week from './week';
 import Hours from './hours';
-import HourLine from './hourLine';
 import StyledContainer from './styled/container';
 import StyledContent from './styled/content';
 import StyledControls from './styled/controls';
-import StyledWeek from './week/styled/week';
-import { normalizeDate, getYearsRange } from '../Calendar/helpers';
-import { getFirstDayOfWeek, getFormattedWeek, addWeeks } from './helpers';
+import StyledTitle from './styled/title';
 
 export default function WeeklyScheduler(props) {
     const { events, date, minDate, maxDate, locale: localLocale, className, style } = props;
     const locale = useLocale(localLocale);
+    const hoursRef = useRef();
+    const daysRef = useRef();
     const [currentWeek, setCurrentWeek] = useState(getFirstDayOfWeek(normalizeDate(date)));
     const formattedWeek = getFormattedWeek(currentWeek, locale);
-    const yearsRange = getYearsRange({
-        minDate,
-        maxDate,
-        currentMonth: currentWeek.getMonth(),
-    });
+    const yearsRange = useYearRange(minDate, maxDate, currentWeek);
     const lastYearItem = yearsRange[yearsRange.length - 1];
     const maxSelectableDate = maxDate || new Date(lastYearItem.value, 11, 31);
-    const disableNextMonth = addWeeks(currentWeek, 1) > maxSelectableDate;
+    const disableNext = addWeeks(currentWeek, 1) > maxSelectableDate;
     const minSelectableDate = minDate || new Date(yearsRange[0].value, 0, 1);
     const prevDate = addWeeks(currentWeek, -1);
-    const disablePreviousMonth = prevDate.setDate(prevDate.getDate() + 6) < minSelectableDate;
+    const disablePrevious = prevDate.setDate(prevDate.getDate() + 6) < minSelectableDate;
 
     const handleYearChange = event => {
         const newWeek = new Date(currentWeek);
         newWeek.setFullYear(event.target.value);
-        setCurrentWeek(getFirstDayOfWeek(newWeek));
+        setCurrentWeek(newWeek);
+    };
+
+    const handlerScroll = event => {
+        hoursRef.current.scrollTop = event.target.scrollTop;
+        daysRef.current.scrollLeft = event.target.scrollLeft;
     };
 
     return (
@@ -47,19 +50,19 @@ export default function WeeklyScheduler(props) {
                         onClick={() => setCurrentWeek(addWeeks(currentWeek, -1))}
                         variant="outline-brand"
                         size="small"
-                        disabled={disablePreviousMonth}
+                        disabled={disablePrevious}
                         icon={<LeftIcon />}
-                        assistiveText="Previous Month"
+                        assistiveText="Previous Week"
                     />
                     <ButtonIcon
                         onClick={() => setCurrentWeek(addWeeks(currentWeek, 1))}
                         variant="outline-brand"
                         size="small"
-                        disabled={disableNextMonth}
+                        disabled={disableNext}
                         icon={<RightIcon />}
-                        assistiveText="Next Month"
+                        assistiveText="Next Week"
                     />
-                    <StyledWeek data-id="week">{formattedWeek}</StyledWeek>
+                    <StyledTitle data-id="week">{formattedWeek}</StyledTitle>
                 </div>
                 <Select
                     label="select year"
@@ -69,11 +72,15 @@ export default function WeeklyScheduler(props) {
                     onChange={handleYearChange}
                 />
             </StyledControls>
-            <Header currentWeek={currentWeek} locale={locale} />
+            <Header currentWeek={currentWeek} locale={locale} ref={daysRef} />
             <StyledContent>
-                <Hours locale={locale} />
-                <Week currentWeek={currentWeek} events={events} locale={locale} />
-                <HourLine locale={locale} />
+                <Hours locale={locale} ref={hoursRef} />
+                <Week
+                    currentWeek={currentWeek}
+                    events={events}
+                    locale={locale}
+                    onScroll={handlerScroll}
+                />
             </StyledContent>
         </StyledContainer>
     );

@@ -13,8 +13,9 @@ const StyledHour = attachThemeAttrs(styled.div)`
 
     span {
         display: block;
-        position: relative;
         top: -7px;
+        position: relative;
+        visibility: ${props => (props.visible ? 'visible' : 'hidden')};
     }
 
     :first-child>span {

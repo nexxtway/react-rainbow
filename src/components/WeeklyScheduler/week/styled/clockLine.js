@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { FONT_SIZE_TEXT_SMALL } from '../../../styles/fontSizes';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+import { FONT_SIZE_TEXT_SMALL } from '../../../../styles/fontSizes';
+import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 
-const StyledHourLine = attachThemeAttrs(styled.div)`
+const StyledClockLine = attachThemeAttrs(styled.div)`
     position: absolute;
-    top: ${props => props.hourHeight}px;
+    top: ${props => props.clockHeight}px;
     width: 100%;
     z-index: 504;
 
@@ -18,4 +18,4 @@ const StyledHourLine = attachThemeAttrs(styled.div)`
     }
 `;
 
-export default StyledHourLine;
+export default StyledClockLine;
