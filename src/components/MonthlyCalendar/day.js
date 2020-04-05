@@ -18,7 +18,7 @@ export default function Day(props) {
         [date, maxDate, minDate],
     );
 
-    const handleSelectDate = () => onSelect(date);
+    const handleSelectDate = () => onSelect({ date });
 
     if (isAdjacentDate || isDisabled) {
         return (

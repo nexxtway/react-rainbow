@@ -28,7 +28,7 @@ describe('Day', () => {
             </Provider>,
         );
         component.find(StyledDay).simulate('click');
-        expect(onSelectMockFn).toHaveBeenCalledWith(new Date('04/24/2019'));
+        expect(onSelectMockFn).toHaveBeenCalledWith({ date });
     });
     it('should render the right day when is adjacent', () => {
         const date = new Date('03/29/2019');

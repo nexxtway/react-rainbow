@@ -182,7 +182,7 @@ const initialState = {
             id="monthly-calendar-1"
             currentMonth={state.currentMonth}
             selectedDate={state.selectedDate}
-            onSelectDate={date => setState({ selectedDate: date })}
+            onSelectDate={({ date }) => setState({ selectedDate: date })}
             onMonthChange={({ month }) => setState({ currentMonth: month })}
             minDate={new Date('01/04/2018')}
             maxDate={new Date('01/04/2020')}
