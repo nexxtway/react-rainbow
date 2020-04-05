@@ -11,16 +11,19 @@ const StyledContainer = styled.div
     flex-direction: column;
     flex: 1;
     align-items: start;
-    justify-content: end;
-    padding: 0 10px 11px;
+    justify-content: flex-end;
+    padding: 4px;
 `;
 
-const StyledAssignedLabel = styled.div
+const StyledAssignedLabel = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})
 `
     text-transform: uppercase;
     font-size: 12px;
-    cursor: default;
+    cursor: pointer;
     padding-left: 2px;
+    color: ${props => props.text.header};
 `;
 
 const StyledAvailableLabel = styled.div.attrs(props => {
@@ -28,10 +31,10 @@ const StyledAvailableLabel = styled.div.attrs(props => {
 })
 `
     text-transform: uppercase;
-    cursor: default;
-    font-size: 10px;
+    cursor: pointer;
+    font-size: 12px;
     border-radius: 1rem;
-    margin: 8px 0 2px;
+    margin: 4px 0 2px;
     padding: 2px 10px 3px 9px;
     color: ${props => props.getContrastText(props.text.main)};
     ${props => props.count <= 1 &&
