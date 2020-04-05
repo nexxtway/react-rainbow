@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { MARGIN_SMALL } from '../../../styles/margins';
+import { MARGIN_MEDIUM } from '../../../styles/margins';
 
 const StyledControls = styled.div`
     display: flex;
@@ -13,11 +13,7 @@ const StyledControls = styled.div`
         justify-content: flex-start;
         align-items: center;
         flex-grow: 1;
-        margin-right: 10px;
-    }
-
-    button {
-        margin-right: ${MARGIN_SMALL};
+        margin-right: ${MARGIN_MEDIUM};
     }
 `;
 

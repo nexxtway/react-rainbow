@@ -3,7 +3,7 @@
 ```js
 import React from 'react';
 import styled from 'styled-components';
-import { WeeklyScheduler } from 'react-rainbow-components';
+import { WeeklyScheduler, Card } from 'react-rainbow-components';
 
 const titles = [
     'Leandro Torres',
@@ -64,10 +64,15 @@ events.push({title: 'Yuri V. Munayev', start, end });
 
 const Container = styled.div`
     padding: 10px;
-    height: 600px;;
+`;
+const StyledCard = styled(Card)`
+    height: 600px;
+    padding: 1rem;
 `;
 
 <Container>
-    <WeeklyScheduler events={events} locale="en"/>
+    <StyledCard>
+        <WeeklyScheduler events={events} minDate={minDate} maxDate={maxDate} locale="en"/>
+    </StyledCard>
 </Container>
 ```

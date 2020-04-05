@@ -5,7 +5,6 @@ import { useYearRange } from './hooks';
 import { normalizeDate } from '../Calendar/helpers';
 import { getFirstDayOfWeek, getFormattedWeek, addWeeks } from './helpers';
 import Select from './../Select';
-import ButtonIcon from '../ButtonIcon';
 import RightIcon from './icons/rightArrow';
 import LeftIcon from './icons/leftArrow';
 import Header from './header';
@@ -15,6 +14,7 @@ import StyledContainer from './styled/container';
 import StyledContent from './styled/content';
 import StyledControls from './styled/controls';
 import StyledTitle from './styled/title';
+import StyledArrowButton from './styled/arrowButton';
 
 export default function WeeklyScheduler(props) {
     const { events, date, minDate, maxDate, locale: localLocale, className, style } = props;
@@ -46,17 +46,17 @@ export default function WeeklyScheduler(props) {
         <StyledContainer className={className} style={style}>
             <StyledControls>
                 <div>
-                    <ButtonIcon
+                    <StyledArrowButton
                         onClick={() => setCurrentWeek(addWeeks(currentWeek, -1))}
-                        variant="outline-brand"
+                        variant="border-filled"
                         size="small"
                         disabled={disablePrevious}
                         icon={<LeftIcon />}
                         assistiveText="Previous Week"
                     />
-                    <ButtonIcon
+                    <StyledArrowButton
                         onClick={() => setCurrentWeek(addWeeks(currentWeek, 1))}
-                        variant="outline-brand"
+                        variant="border-filled"
                         size="small"
                         disabled={disableNext}
                         icon={<RightIcon />}
