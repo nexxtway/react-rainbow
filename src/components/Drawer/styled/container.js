@@ -78,19 +78,22 @@ const StyledContainer = attachThemeAttrs(styled.section).attrs(props => {
     top: ${props => props.position.top};
     right: ${props => props.position.right};
     bottom: ${props => props.position.bottom};
-    
+
     // animations
+    transition: opacity 0.2s ease-in-out;
     ${props =>
         props.isOpen &&
         `
             animation: drawer-slide-${props.slideFrom}-in 0.2s linear;
             transform: translateX(0%);
+            opacity: 1;
         `};
     ${props =>
         !props.isOpen &&
         `
             animation: drawer-slide-${props.slideFrom}-out 0.2s linear;
             transform:  ${props.slideFrom === 'left' ? 'translateX(-100%)' : 'translateX(100%)'};
+            opacity: 0;
         `};
 
     // slide from left animation

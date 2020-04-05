@@ -5,8 +5,9 @@ import React from 'react';
 import { Card, ActivityTimeline, TimelineMarker } from 'react-rainbow-components';
 
 const iconStyles = { width: 32, height: 32 };
+const container = { width: 500, margin: 'auto', marginTop: 36, };
 
-<div className="rainbow-m-around_xx-large">
+<div style={container}>
     <ActivityTimeline>
         <TimelineMarker
             label="User Sign Up."
@@ -26,11 +27,10 @@ const iconStyles = { width: 32, height: 32 };
             datetime="3 hours ago"
             description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore etdolore magna aliqua."
         >
-            <Card title="Inside Content">
+            <Card title="Landscape">
                 <img
-                    src="images/illustrations/Illustration-chef.svg"
-                    className="rainbow-m_auto rainbow-align-content_center"
-                    alt="landscape with rainbows, birds and colorful balloons"
+                    src="images/illustrations/Illustration-landscape.svg"
+                    alt="landscape with mountain"
                 />
             </Card>
         </TimelineMarker>

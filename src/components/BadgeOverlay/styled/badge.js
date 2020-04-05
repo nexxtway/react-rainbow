@@ -4,7 +4,6 @@ import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 const StyledBadge = attachThemeAttrs(styled.span)`
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: center;
     align-content: center;
     align-items: center;
