@@ -1,4 +1,4 @@
-export default function getFormattedWeek(firstDay, locale = 'en-US') {
+export default function getFormattedWeek(firstDay, locale) {
     try {
         const lastDay = new Date(firstDay);
         lastDay.setDate(firstDay.getDate() + 6);

@@ -1,9 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useLocale } from '../../libs/hooks';
-import { useYearRange } from './hooks';
-import { normalizeDate } from '../Calendar/helpers';
-import { getFirstDayOfWeek, getFormattedWeek, addWeeks } from './helpers';
+import { useCurrentWeek, useYearRange, useFormattedWeek, useDisabledControls } from './hooks';
+import { addWeeks } from './helpers';
 import Select from './../Select';
 import RightIcon from './icons/rightArrow';
 import LeftIcon from './icons/leftArrow';
@@ -16,25 +15,49 @@ import StyledControls from './styled/controls';
 import StyledTitle from './styled/title';
 import StyledArrowButton from './styled/arrowButton';
 
-export default function WeeklyScheduler(props) {
-    const { events, date, minDate, maxDate, locale: localLocale, className, style } = props;
+export default function WeeklyCalendar(props) {
+    const {
+        events,
+        currentWeek,
+        minDate,
+        maxDate,
+        locale: localLocale,
+        onWeekChange,
+        onEventClick,
+        className,
+        style,
+    } = props;
     const locale = useLocale(localLocale);
     const hoursRef = useRef();
     const daysRef = useRef();
-    const [currentWeek, setCurrentWeek] = useState(getFirstDayOfWeek(normalizeDate(date)));
-    const formattedWeek = getFormattedWeek(currentWeek, locale);
-    const yearsRange = useYearRange(minDate, maxDate, currentWeek);
-    const lastYearItem = yearsRange[yearsRange.length - 1];
-    const maxSelectableDate = maxDate || new Date(lastYearItem.value, 11, 31);
-    const disableNext = addWeeks(currentWeek, 1) > maxSelectableDate;
-    const minSelectableDate = minDate || new Date(yearsRange[0].value, 0, 1);
-    const prevDate = addWeeks(currentWeek, -1);
-    const disablePrevious = prevDate.setDate(prevDate.getDate() + 6) < minSelectableDate;
+    const week = useCurrentWeek(currentWeek);
+    const formattedWeek = useFormattedWeek(week, locale);
+    const [today, setToday] = useState(new Date());
+    const yearsRange = useYearRange(minDate, maxDate, week);
+    const { disableNext, disablePrevious } = useDisabledControls(
+        yearsRange,
+        week,
+        minDate,
+        maxDate,
+    );
+
+    const selectPreviousWeek = () => {
+        const newWeek = addWeeks(week, -1);
+        newWeek.setHours(0, 0, 0, 0);
+        return onWeekChange({ week: newWeek });
+    };
+
+    const selectNextWeek = () => {
+        const newWeek = addWeeks(week, 1);
+        newWeek.setHours(0, 0, 0, 0);
+        return onWeekChange({ week: newWeek });
+    };
 
     const handleYearChange = event => {
-        const newWeek = new Date(currentWeek);
+        const newWeek = new Date(week);
         newWeek.setFullYear(event.target.value);
-        setCurrentWeek(newWeek);
+        newWeek.setHours(0, 0, 0, 0);
+        return onWeekChange({ week: newWeek });
     };
 
     const handlerScroll = event => {
@@ -47,7 +70,7 @@ export default function WeeklyScheduler(props) {
             <StyledControls>
                 <div>
                     <StyledArrowButton
-                        onClick={() => setCurrentWeek(addWeeks(currentWeek, -1))}
+                        onClick={selectPreviousWeek}
                         variant="border-filled"
                         size="small"
                         disabled={disablePrevious}
@@ -55,7 +78,7 @@ export default function WeeklyScheduler(props) {
                         assistiveText="Previous Week"
                     />
                     <StyledArrowButton
-                        onClick={() => setCurrentWeek(addWeeks(currentWeek, 1))}
+                        onClick={selectNextWeek}
                         variant="border-filled"
                         size="small"
                         disabled={disableNext}
@@ -67,18 +90,19 @@ export default function WeeklyScheduler(props) {
                 <Select
                     label="select year"
                     hideLabel
-                    value={currentWeek.getFullYear()}
+                    value={week.getFullYear()}
                     options={yearsRange}
                     onChange={handleYearChange}
                 />
             </StyledControls>
-            <Header currentWeek={currentWeek} locale={locale} ref={daysRef} />
+            <Header week={week} locale={locale} today={today} ref={daysRef} />
             <StyledContent>
-                <Hours locale={locale} ref={hoursRef} />
+                <Hours locale={locale} ref={hoursRef} today={today} setToday={setToday} />
                 <Week
-                    currentWeek={currentWeek}
+                    week={week}
                     events={events}
                     locale={locale}
+                    onEventClick={onEventClick}
                     onScroll={handlerScroll}
                 />
             </StyledContent>
@@ -86,11 +110,11 @@ export default function WeeklyScheduler(props) {
     );
 }
 
-WeeklyScheduler.propTypes = {
+WeeklyCalendar.propTypes = {
     /** An array that contains events that should be displayed on the calendar. */
     events: PropTypes.array,
     /** Sets the date for the Calendar programmatically. */
-    date: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
+    currentWeek: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
     /** The ending of a range of valid dates. The range includes the endDate.
      * The default value is current date + 100 years. */
     maxDate: PropTypes.instanceOf(Date),
@@ -99,17 +123,23 @@ WeeklyScheduler.propTypes = {
     minDate: PropTypes.instanceOf(Date),
     /** The Calendar locale. Defaults to browser's language. */
     locale: PropTypes.string,
+    /** Function triggered when week is changed */
+    onWeekChange: PropTypes.func,
+    /** Function triggered when a event is clicked */
+    onEventClick: PropTypes.func,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
 };
 
-WeeklyScheduler.defaultProps = {
+WeeklyCalendar.defaultProps = {
     events: [],
-    date: undefined,
+    currentWeek: undefined,
     minDate: undefined,
     maxDate: undefined,
+    onWeekChange: () => {},
+    onEventClick: () => {},
     locale: undefined,
     className: undefined,
     style: undefined,

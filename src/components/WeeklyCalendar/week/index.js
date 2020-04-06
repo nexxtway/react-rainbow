@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useInterval } from '../hooks';
 import { addDays } from '../../Calendar/helpers';
 import Day from './day';
 import ClockLine from './clockLine';
@@ -10,14 +9,21 @@ import StyledGridLine from './styled/gridLine';
 import StyledScroll from './styled/scroll';
 
 export default function Week(props) {
-    const { currentWeek, events, locale, onScroll } = props;
-    useInterval({ interval: 1, unit: 'days' });
+    const { week, events, onEventClick, onScroll, locale } = props;
 
     function Days() {
         const days = [];
-        let day = new Date(currentWeek);
+        let day = new Date(week);
         for (let i = 0; i < 7; i += 1) {
-            days.push(<Day key={i} day={day} events={events} locale={locale} />);
+            days.push(
+                <Day
+                    key={i}
+                    day={day}
+                    events={events}
+                    onEventClick={onEventClick}
+                    locale={locale}
+                />,
+            );
             day = addDays(day, 1);
         }
         return days;
@@ -47,15 +53,17 @@ export default function Week(props) {
 }
 
 Week.propTypes = {
-    currentWeek: PropTypes.instanceOf(Date),
+    week: PropTypes.instanceOf(Date),
     events: PropTypes.array,
-    locale: PropTypes.string,
     onScroll: PropTypes.func,
+    onEventClick: PropTypes.func,
+    locale: PropTypes.string,
 };
 
 Week.defaultProps = {
-    currentWeek: undefined,
+    week: undefined,
     events: [],
-    locale: undefined,
     onScroll: () => {},
+    onEventClick: () => {},
+    locale: undefined,
 };

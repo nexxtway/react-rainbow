@@ -13,8 +13,7 @@ const StyledEvent = attachThemeAttrs(styled.div)`
     position: absolute;
     left: 2px;
     right: 2px;
-    top: ${props => props.hourHeight}px;
-    height: ${props => props.height}px;
+    cursor: pointer;
 
     .scheduler-event-dates {
         font-size: 0.25rem;

@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useInterval } from './hooks';
+import { useTimer } from './hooks';
+import { isSameDay } from '../Calendar/helpers';
 import { getHeightOfDate } from './helpers';
 import StyledHours from './styled/hours';
 import StyledHour from './styled/hour';
 import StyledClock from './styled/clock';
 
 const Hours = React.forwardRef((props, ref) => {
-    const { locale } = props;
-    const clock = useInterval({ interval: 1, unit: 'minutes' });
+    const { today, setToday, locale } = props;
+    const clock = useTimer();
+    useEffect(() => {
+        if (!isSameDay(today, clock)) {
+            setToday(clock);
+        }
+    }, [clock, setToday, today]);
+
     const before = new Date(clock);
     before.setMinutes(before.getMinutes() + 15);
     const after = new Date(clock);
@@ -52,10 +59,14 @@ const Hours = React.forwardRef((props, ref) => {
 
 Hours.propTypes = {
     locale: PropTypes.string,
+    today: PropTypes.instanceOf(Date),
+    setToday: PropTypes.func,
 };
 
 Hours.defaultProps = {
     locale: undefined,
+    today: undefined,
+    setToday: () => {},
 };
 
 export default Hours;

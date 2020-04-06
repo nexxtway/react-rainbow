@@ -3,7 +3,7 @@
 ```js
 import React from 'react';
 import styled from 'styled-components';
-import { WeeklyScheduler, Card } from 'react-rainbow-components';
+import { WeeklyCalendar, Card } from 'react-rainbow-components';
 
 const titles = [
     'Leandro Torres',
@@ -50,17 +50,17 @@ const randomDate = () => {
 const randomMinutes = (min, max) => (Math.floor(Math.random() * (max - min + 1) ) + min) * 5;
 
 const events = titles.map( title => {
-    const start = randomDate();
-    start.setMinutes(randomMinutes(0, 12));
-    const end = new Date(start);
-    end.setMinutes(end.getMinutes() + randomMinutes(3, 12));
-    return {title, start, end };
+    const startDate = randomDate();
+    startDate.setMinutes(randomMinutes(0, 12));
+    const endDate = new Date(startDate);
+    endDate.setMinutes(endDate.getMinutes() + randomMinutes(3, 12));
+    return {title, startDate, endDate };
 });
-const start = new Date();
-start.setMinutes(0);
-const end = new Date(start);
-end.setMinutes(30);
-events.push({title: 'Yuri V. Munayev', start, end });
+const startDate = new Date();
+startDate.setMinutes(0);
+const endDate = new Date(startDate);
+endDate.setMinutes(30);
+events.push({title: 'Yuri V. Munayev', startDate, endDate });
 
 const Container = styled.div`
     padding: 10px;
@@ -69,10 +69,20 @@ const StyledCard = styled(Card)`
     height: 600px;
     padding: 1rem;
 `;
+const initialState = {
+    currentWeek: new Date(),
+};
 
 <Container>
     <StyledCard>
-        <WeeklyScheduler events={events} minDate={minDate} maxDate={maxDate} locale="en"/>
+        <WeeklyCalendar
+            events={events}
+            currentWeek={state.currentWeek}
+            onWeekChange={({ week }) => setState({ currentWeek: week })}
+            minDate={minDate}
+            maxDate={maxDate}
+            locale="en"
+        />
     </StyledCard>
 </Container>
 ```
