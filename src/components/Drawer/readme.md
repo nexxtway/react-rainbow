@@ -5,6 +5,40 @@ import React from 'react';
 import { Button, Drawer } from 'react-rainbow-components';
 
 const initialState = {
+    isOpen: false,
+};
+
+<div
+    className="rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto rainbow-flex_wrap"
+>
+    <div className="rainbow-flex rainbow-flex_row">
+        <div className="rainbow-align-content_center rainbow-p-medium rainbow-m_auto">
+            <Button
+                id="button-1"
+                className="rainbow-m-around_medium"
+                label="Open Drawer"
+                onClick={() => setState({
+                    isOpen: true,
+                })}
+            />
+        </div>
+    </div>
+    <Drawer
+        id="drawer-1"
+        header="This is a drawer"
+        isOpen={state.isOpen}
+        onRequestClose={() => setState({ isOpen : false })}
+    />
+</div>
+```
+
+##### Drawer example with position:
+
+```js
+import React from 'react';
+import { Button, Drawer } from 'react-rainbow-components';
+
+const initialState = {
     isOpenRight: false,
     isOpenLeft: false,
 };
@@ -16,7 +50,7 @@ const initialState = {
         <div className="rainbow-align-content_center rainbow-p-medium rainbow-m_auto">
             <Button
                 className="rainbow-m-around_medium"
-                label="Slide from Left"
+                label="Slide from left"
                 onClick={() => setState({
                     isOpenLeft: true,
                 })}
@@ -25,7 +59,7 @@ const initialState = {
         <div className="rainbow-align-content_center rainbow-p-medium rainbow-m_auto">
             <Button
                 className="rainbow-m-around_medium"
-                label="Slide from Right"
+                label="Slide from right"
                 onClick={() => setState({
                     isOpenRight: true,
                 })}
@@ -33,14 +67,12 @@ const initialState = {
         </div>
     </div>
     <Drawer
-        id="drawer-right-1"
         header="This is a drawer"
         slideFrom="right"
         isOpen={state.isOpenRight}
         onRequestClose={() => setState({ isOpenRight : false })}
     />
     <Drawer
-        id="drawer-left-1"
         header="This is a drawer"
         isOpen={state.isOpenLeft}
         onRequestClose={() => setState({ isOpenLeft : false })}
@@ -107,7 +139,7 @@ const initialState = {
 ##### Drawer:
 
 ```js
-import React from 'react';
+import React, { useState } from 'react';
 import {
     Button,
     Avatar,
@@ -115,14 +147,19 @@ import {
     DatePicker,
     Input,
     GoogleAddressLookup,
+    Lookup,
     Select,
 } from 'react-rainbow-components';
+import { Field, reduxForm } from 'redux-form';
 import styled from 'styled-components';
 
 const countries = [
-    { value: '', label: 'Select your country' },
     { value: 'ca', label: 'Canada' },
+    { value: 'co', label: 'Colombia' },
     { value: 'fr', label: 'France' },
+    { value: 'it', label: 'Italy' },
+    { value: 'es', label: 'Spain' },
+    { value: 'mx', label: 'Mexico' },
     { value: 'uk', label: 'United Kingdom' },
     { value: 'us', label: 'United States' },
 ];
@@ -132,7 +169,6 @@ const roles = [
     { value: 'manager', label: 'Manager' },
     { value: 'developer', label: 'Developer' },
 ];
-
 
 const StyledExampleHeader = styled.h3.attrs(props => {
     return props.theme.rainbow.palette;
@@ -218,7 +254,17 @@ const StyledFooterButton = styled(Button)
 
 const closeDrawer = () => setState({ isOpen : false });
 
-function Contact({ avatar, name, email, onShowDetails }) {
+const filter = (query, options) => {
+    if (query) {
+        return options.filter(item => {
+            const regex = new RegExp(query, 'i');
+            return regex.test(item.label);
+        });
+    }
+    return [];
+};
+
+function Contact({ id, avatar, name, email, onShowDetails }) {
     return (
         <ConctactContainer className="rainbow-m-around_large">
             <div className="rainbow-p-around_medium">
@@ -236,6 +282,8 @@ function Contact({ avatar, name, email, onShowDetails }) {
             </EmailLabel>
             <div className="rainbow-flex rainbow-justify_space-around">
                 <DetailsButton
+                    id={id}
+                    className="show-details-button"
                     variant="base"
                     label="Details"
                     onClick={onShowDetails}
@@ -245,8 +293,21 @@ function Contact({ avatar, name, email, onShowDetails }) {
     );
 }
 
-function EditContactForm({ contactInfo }) {
+function EditContactForm(props) {
+    const { contactInfo, handleSubmit, reset } = props;
+    const [countriesList, setCountriesList] = useState(countries);
+
     if (!contactInfo) return null;
+
+    const handleSearch = value => {
+        if (countriesList && contactInfo.country && value.length > contactInfo.country.value.length) {
+            setCountriesList(filter(value, countries));
+        } else if (value) {
+            setCountriesList(filter(value, countries));
+        } else {
+            setCountriesList(null);
+        }
+    };
 
     return (
         <div className="rainbow-p-around_small rainbow-flex rainbow-flex_wrap  rainbow-align-content_center">
@@ -266,44 +327,63 @@ function EditContactForm({ contactInfo }) {
                     </FormEmailLabel>
                 </div>
             </div>
-            <div className=" rainbow-flex_column">
-                <DatePicker
-                    placeholder="mm/dd/yyyy"
-                    label="Birthday"
-                    value={contactInfo.birthdate}
-                    className="rainbow-m-top_large"
-                />
-                <Input
-                    placeholder="Enter company name"
-                    label="Company"
-                    className="rainbow-m-top_large"
-                />
-                <GoogleAddressLookup
-                    apiKey={LIBRARY_GOOGLE_MAPS_APIKEY}
-                    placeholder="Enter location"
-                    label="Address"
-                    className="rainbow-m-top_large"
-                />
-                <Select
-                    label="Country"
-                    options={countries}
-                    value={contactInfo.country}
-                    className="rainbow-m-top_large"
-                />
-                <Select
-                    label="Role"
-                    options={roles}
-                    value={contactInfo.role}
-                    className="rainbow-m-top_large"
-                />
-                <Input
-                    placeholder="Your skills"
-                    className="rainbow-m-top_large"
-                />
+            <div className="rainbow-flex_column">
+                <form id="redux-form-id" noValidate onSubmit={handleSubmit}>
+                    <Field
+                        id="contact-birthday-input"
+                        name="birthdate"
+                        component={DatePicker}
+                        placeholder="mm/dd/yyyy"
+                        label="Birthday"
+                    />
+                    <Field
+                        className="rainbow-m-top_large"
+                        component={Input}
+                        name="company"
+                        placeholder="Enter company name"
+                        label="Company"
+                    />
+                    <Field
+                        component={GoogleAddressLookup}
+                        name="location"
+                        apiKey={LIBRARY_GOOGLE_MAPS_APIKEY}
+                        placeholder="Enter location"
+                        label="Address"
+                        className="rainbow-m-top_large"
+                    />
+                    <Field
+                        id="contact-country-input"
+                        className="rainbow-m-top_large"
+                        component={Lookup}
+                        name="country"
+                        label="Country"
+                        placeholder="Select your country"
+                        options={countriesList}
+                        onSearch={handleSearch}
+                    />
+                    <Field
+                        className="rainbow-m-top_large"
+                        component={Select}
+                        name="role"
+                        label="Role"
+                        options={roles}
+                    />
+                    <Field
+                        className="rainbow-m-top_large"
+                        name="skills"
+                        component={Input}
+                        placeholder="Your skills"
+                    />
+                </form>
             </div>
         </div>
     );
 }
+
+const Form = reduxForm({
+    form: 'edit-contact-form',
+    touchOnBlur: false,
+})(EditContactForm);
 
 function DrawerFooter({ onCancel, onSave }) {
     return (
@@ -331,6 +411,7 @@ function UsersList({ values }) {
         return (
             <Contact
                 key={key}
+                id={key}
                 name={user.name}
                 email={user.email}
                 avatar={user.avatar}
@@ -348,21 +429,18 @@ const users = [{
     name: 'Jane Doe',
     email: 'jane@gmail.com',
     birthdate: '1995-12-01',
-    country: 'ca',
     role: 'developer',
 }, {
     avatar: 'images/user/avatar-4.svg',
     name: 'John Doe',
     email: 'john@gmail.com',
     birthdate: '1985-02-12',
-    country: 'us',
     role: 'developer',
 }, {
     avatar: 'images/user/avatar-5.svg',
     name: 'Ana Doe',
     email: 'ana@gmail.com',
     birthdate: '1998-05-21',
-    country: 'us',
     role: 'manager',
 }];
 
@@ -374,7 +452,7 @@ const initialState = { isOpen: false, info: null };
         <UsersList values={users} />
     </div>
     <Drawer
-        id="drawer-5"
+        id="drawer-7"
         header="Edit Information"
         slideFrom="right"
         footer={
@@ -386,7 +464,10 @@ const initialState = { isOpen: false, info: null };
         isOpen={state.isOpen}
         onRequestClose={() => closeDrawer()}
     >
-        <EditContactForm contactInfo={state.info} />
+        <Form
+            contactInfo={state.info}
+            initialValues={state.info}
+        />
     </Drawer>
 </div>
 ```

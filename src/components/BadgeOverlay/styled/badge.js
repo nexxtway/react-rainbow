@@ -4,7 +4,6 @@ import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 const StyledBadge = attachThemeAttrs(styled.span)`
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: center;
     align-content: center;
     align-items: center;
@@ -62,10 +61,14 @@ const StyledBadge = attachThemeAttrs(styled.span)`
             left: 12%;
             transform: scale(1) translate(-50%, -50%);
             transform-origin: 0% 0%;
+<<<<<<< HEAD
             ${props.isHidden &&
                 `
                     transform: scale(0) translate(-50%, -50%);
             `};
+=======
+            align-self: flex-start;
+>>>>>>> 4adb71899b4e9f0242def7acd5caff0661a83b2c
         `};
     ${props =>
         props.position === 'top-right' &&
