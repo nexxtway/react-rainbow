@@ -12,7 +12,7 @@ class PageButtonOption {
         this.rootElement = rootElement;
     }
 
-    /** Click the radiobutton.
+    /** Click the ButtonOption.
      * @method
      */
     click() {
@@ -20,18 +20,18 @@ class PageButtonOption {
     }
 
     /**
-     * Returns true when the radiobutton has the focus.
+     * Returns true when the ButtonOption has the focus.
      * @method
      * @returns {bool}
      */
     hasFocus() {
         return $(this.rootElement)
-            .$('input[type="radio"]')
+            .$('input')
             .isFocused();
     }
 
     /**
-     * Returns true when the radio is checked.
+     * Returns true when the ButtonOption is checked.
      * @method
      * @returns {bool}
      */

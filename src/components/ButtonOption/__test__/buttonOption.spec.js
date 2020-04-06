@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { Component as ButtonGroupPicker } from '../../ButtonGroupPicker/index';
+import { ButtonGroupPickerContext } from '../../ButtonGroupPicker/context';
 import ButtonOption from '../index';
 
 jest.mock('../helpers/isOptionSelected', () => jest.fn(() => true));
@@ -32,7 +33,7 @@ describe('<ButtonOption />', () => {
             </ButtonGroupPicker>,
         );
         component.find('label').simulate('click');
-        expect(onClickFn).toHaveBeenCalledTimes(1);
+        expect(onClickFn).toHaveBeenCalledWith({ isSelected: true });
     });
 
     it('should pass a generated id to the input element and set the same id to the htmFor of the label element', () => {
@@ -48,13 +49,12 @@ describe('<ButtonOption />', () => {
 
     it('should set the name passed through context to the name prop of the input element', () => {
         const component = mount(
-            <ButtonGroupPicker>
+            <ButtonGroupPickerContext.Provider value={{ name: 'group-name' }}>
                 <ButtonOption label="Option 1" />
-            </ButtonGroupPicker>,
+            </ButtonGroupPickerContext.Provider>,
         );
-        const contextName = component.instance().getContext().name;
         const inputName = component.find('input').prop('name');
-        expect(contextName).toBe(inputName);
+        expect(inputName).toBe('group-name');
     });
 
     it('should set the prop name passed to the value prop of the input element', () => {
@@ -69,27 +69,25 @@ describe('<ButtonOption />', () => {
 
     it('should set the ariaDescribedBy passed through context to the aria-describedby prop of the input element', () => {
         const component = mount(
-            <ButtonGroupPicker>
+            <ButtonGroupPickerContext.Provider value={{ ariaDescribedBy: 'aria-describedby' }}>
                 <ButtonOption label="Option 1" />
-            </ButtonGroupPicker>,
+            </ButtonGroupPickerContext.Provider>,
         );
-        const contextAriaDescribedBy = component.instance().getContext().ariaDescribedBy;
         const inputAriaDescribedBy = component.find('input').prop('aria-describedby');
-        expect(contextAriaDescribedBy).toBe(inputAriaDescribedBy);
+        expect(inputAriaDescribedBy).toBe('aria-describedby');
     });
 
     it('should set the type passed through context to the type prop of the input element', () => {
         const component = mount(
-            <ButtonGroupPicker>
+            <ButtonGroupPickerContext.Provider value={{ type: 'checkbox' }}>
                 <ButtonOption label="Option 1" />
-            </ButtonGroupPicker>,
+            </ButtonGroupPickerContext.Provider>,
         );
-        const contextType = component.instance().getContext().type;
         const inputType = component.find('input').prop('type');
-        expect(contextType).toBe(inputType);
+        expect(inputType).toBe('checkbox');
     });
 
-    it('should set the input selected prop equal to the value returned by function isOptionSelected', () => {
+    it('should pass the right checked value to the input', () => {
         const component = mount(
             <ButtonGroupPicker>
                 <ButtonOption label="Option 1" />

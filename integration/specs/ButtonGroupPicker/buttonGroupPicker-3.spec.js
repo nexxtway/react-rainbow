@@ -35,6 +35,8 @@ describe('ButtonGroupPicker base example', () => {
         const option2 = groupPicker.getItem(1);
         const option3 = groupPicker.getItem(2);
         option3.click();
-        expect(option1.isChecked() && option2.isChecked() && option3.isChecked()).toBe(true);
+        expect(option1.isChecked()).toBe(true);
+        expect(option2.isChecked()).toBe(true);
+        expect(option3.isChecked()).toBe(true);
     });
 });

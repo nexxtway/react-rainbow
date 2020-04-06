@@ -89,7 +89,7 @@ class ButtonGroupPicker extends Component {
                     <StyledHelpText>{bottomHelpText}</StyledHelpText>
                 </RenderIf>
                 <RenderIf isTrue={!!error}>
-                    <StyledErrorText id={this.errorMessageId}>{error}</StyledErrorText>
+                    <StyledErrorText id={this.getErrorMessageId()}>{error}</StyledErrorText>
                 </RenderIf>
             </StyledContainer>
         );
