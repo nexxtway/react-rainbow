@@ -9,6 +9,7 @@ import withReduxForm from '../../libs/hocs/withReduxForm';
 import { ENTER_KEY, SPACE_KEY } from '../../libs/constants';
 import StyledContainer from './styled/container';
 import StyledModal from './styled/modal';
+import { uniqueId } from '../../libs/utils';
 
 /**
  * A TimePicker is used to input a time by displaying an interface the user can interact with.
@@ -136,7 +137,7 @@ class TimePicker extends Component {
         return (
             <StyledContainer id={id} className={className} style={style}>
                 <Input
-                    id="time-picker_time-input"
+                    id={uniqueId('time-picker_time-input')}
                     ref={this.inputRef}
                     label={label}
                     placeholder={placeholder}
@@ -159,7 +160,7 @@ class TimePicker extends Component {
                 />
 
                 <StyledModal
-                    id="time-picker_modal"
+                    id={uniqueId('time-picker_modal')}
                     isOpen={isOpen}
                     onRequestClose={this.closeModal}
                     onOpened={this.setFocusToHourInput}

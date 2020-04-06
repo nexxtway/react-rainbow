@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { uniqueId } from '../../../libs/utils';
 
 export default function ClockIcon(props) {
     const { className, style } = props;
@@ -7,7 +8,7 @@ export default function ClockIcon(props) {
     return (
         <svg className={className} style={style} width="24px" height="24px" viewBox="0 0 24 24">
             <g transform="translate(-900.000000, -386.000000)">
-                <g id="clock" transform="translate(900.000000, 386.000000)">
+                <g id={uniqueId('clock')} transform="translate(900.000000, 386.000000)">
                     <circle fill="#E3E5ED" cx="12" cy="12" r="12" />
                     <circle fill="#FFFFFF" cx="12" cy="12" r="11.6109844" />
                     <circle fill="#B5BCC9" cx="12" cy="12" r="10.4715" />

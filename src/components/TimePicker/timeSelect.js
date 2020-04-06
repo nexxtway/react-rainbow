@@ -27,6 +27,7 @@ import StyledVerticalButtonsContainer from './styled/verticalButtonsContainer';
 import StyledFooter from './styled/footer';
 import StyledButton from './styled/button';
 import OutsideClick from '../../libs/outsideClick';
+import { uniqueId } from '../../libs/utils';
 
 function preventDefault(event) {
     event.preventDefault();
@@ -446,7 +447,7 @@ export default class TimeSelect extends Component {
 
                     <StyledVerticalButtonsContainer>
                         <ButtonIcon
-                            id="time-picker_up-button"
+                            id={uniqueId('time-picker_up-button')}
                             tabIndex="-1"
                             variant="border-filled"
                             icon={<StyledUpArrow />}
@@ -458,7 +459,7 @@ export default class TimeSelect extends Component {
                         />
 
                         <ButtonIcon
-                            id="time-picker_down-button"
+                            id={uniqueId('time-picker_down-button')}
                             tabIndex="-1"
                             variant="border-filled"
                             icon={<StyledDownArrow />}
@@ -473,14 +474,14 @@ export default class TimeSelect extends Component {
 
                 <StyledFooter>
                     <StyledButton
-                        id="time-picker_cancel-button"
+                        id={uniqueId('time-picker_cancel-button')}
                         variant="base"
                         label={cancelLabel}
                         onClick={onCloseModal}
                     />
 
                     <StyledButton
-                        id="time-picker_ok-button"
+                        id={uniqueId('time-picker_ok-button')}
                         variant="brand"
                         label={okLabel}
                         onClick={this.handleChangeTime}
