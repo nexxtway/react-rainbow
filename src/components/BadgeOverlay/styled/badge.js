@@ -49,7 +49,7 @@ const StyledBadge = attachThemeAttrs(styled.span)`
             left: 0;
             transform: scale(1) translate(-50%, -50%);
             transform-origin: 0% 0%;
-            ${props.isHidden === true &&
+            ${props.isHidden &&
                 `
                     transform: scale(0) translate(-50%, -50%);
             `};
@@ -62,7 +62,7 @@ const StyledBadge = attachThemeAttrs(styled.span)`
             left: 12%;
             transform: scale(1) translate(-50%, -50%);
             transform-origin: 0% 0%;
-            ${props.isHidden === true &&
+            ${props.isHidden &&
                 `
                     transform: scale(0) translate(-50%, -50%);
             `};
@@ -75,7 +75,7 @@ const StyledBadge = attachThemeAttrs(styled.span)`
             right: 0;
             transform: scale(1) translate(50%, -50%);
             transform-origin: 100% 0%;
-            ${props.isHidden === true &&
+            ${props.isHidden &&
                 `
                     transform: scale(0) translate(50%, -50%);
             `};
@@ -88,7 +88,7 @@ const StyledBadge = attachThemeAttrs(styled.span)`
             right: 12%;
             transform: scale(1) translate(50%, -50%);
             transform-origin: 100% 0%;
-            ${props.isHidden === true &&
+            ${props.isHidden &&
                 `
                     transform: scale(0) translate(50%, -50%);
             `};
@@ -101,7 +101,7 @@ const StyledBadge = attachThemeAttrs(styled.span)`
             left: 0;
             transform: scale(1) translate(-50%, 50%);
             transform-origin: 0% 100%;
-            ${props.isHidden === true &&
+            ${props.isHidden &&
                 `
                     transform: scale(0) translate(-50%, 50%);
             `};
@@ -114,7 +114,7 @@ const StyledBadge = attachThemeAttrs(styled.span)`
             left: 12%;
             transform: scale(1) translate(-50%, 50%);
             transform-origin: 0% 100%;
-            ${props.isHidden === true &&
+            ${props.isHidden &&
                 `
                     transform: scale(0) translate(-50%, 50%);
             `};
@@ -127,7 +127,7 @@ const StyledBadge = attachThemeAttrs(styled.span)`
             right: 0;
             transform: scale(1) translate(50%, 50%);
             transform-origin: 100% 100%;
-            ${props.isHidden === true &&
+            ${props.isHidden &&
                 `
                     transform: scale(0) translate(50%, 50%);
             `};
@@ -140,7 +140,7 @@ const StyledBadge = attachThemeAttrs(styled.span)`
             right: 12%;
             transform: scale(1) translate(50%, 50%);
             transform-origin: 100% 100%;
-            ${props.isHidden === true &&
+            ${props.isHidden &&
                 `
                     transform: scale(0) translate(50%, 50%);
             `};
