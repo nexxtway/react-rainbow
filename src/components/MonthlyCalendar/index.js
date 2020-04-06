@@ -96,7 +96,7 @@ export default function MonthlyCalendar(props) {
                 />
             </StyledControlsContainer>
             <StyledTable role="grid" aria-labelledby={monthLabelId}>
-                <DaysOfWeek locale={locale} />
+                <DaysOfWeek locale={currentLocale} />
                 <Provider value={{ dateComponent }}>
                     <Month
                         selectedDate={selectedDate}
