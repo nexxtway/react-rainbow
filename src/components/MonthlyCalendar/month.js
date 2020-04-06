@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { addDays, getLastDayMonth } from './helpers';
+import { addDays, getLastDayMonth } from '../Calendar/helpers';
 import Week from './week';
 
 export default function Month(props) {
-    const { firstDayMonth, value, minDate, maxDate, onChange } = props;
-    const lastDayMonth = getLastDayMonth(firstDayMonth);
+    const { firstDayMonth, selectedDate, minDate, maxDate, onSelectDate } = props;
     let date = new Date(firstDayMonth);
+    const lastDayMonth = useMemo(() => getLastDayMonth(firstDayMonth), [firstDayMonth]);
 
     function Weeks() {
         const weeks = [];
@@ -21,14 +21,14 @@ export default function Month(props) {
 
             weeks.push(
                 <Week
-                    value={value}
+                    selectedDate={selectedDate}
                     startDate={startDate}
                     endDate={endDate}
                     minDate={minDate}
                     maxDate={maxDate}
                     firstDayMonth={firstDayMonth}
                     key={date.getTime()}
-                    onChange={onChange}
+                    onSelectDate={onSelectDate}
                 />,
             );
             date = addDays(date, 7);
@@ -47,14 +47,14 @@ Month.propTypes = {
     firstDayMonth: PropTypes.instanceOf(Date),
     minDate: PropTypes.instanceOf(Date),
     maxDate: PropTypes.instanceOf(Date),
-    value: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
-    onChange: PropTypes.func,
+    selectedDate: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
+    onSelectDate: PropTypes.func,
 };
 
 Month.defaultProps = {
     firstDayMonth: undefined,
     minDate: undefined,
     maxDate: undefined,
-    value: undefined,
-    onChange: () => {},
+    selectedDate: undefined,
+    onSelectDate: () => {},
 };
