@@ -48,9 +48,8 @@ describe('<ButtonGroupPicker />', () => {
 
     it('should pass the error message id to context', () => {
         const component = shallow(<ButtonGroupPicker error="error" />);
-        const errorMessageId = component.instance().errorMessageId;
-        const context = component.instance().getContext();
-        expect(context.ariaDescribedBy).toBe(errorMessageId);
+        const context = component.find(Provider).prop('value');
+        expect(context.ariaDescribedBy).toBe('unique-error-id');
     });
 
     it('should fire onchange with the right value when multiple is false and option is checked', () => {
