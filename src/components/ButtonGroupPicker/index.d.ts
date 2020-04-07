@@ -3,6 +3,7 @@ import { BaseProps } from '../types';
 
 type Value = string | string[];
 export interface ButtonGroupPickerProps extends BaseProps {
+    id?: string;
     label?: ReactNode;
     value?: Value;
     onChange?: (value: Value) => void;
