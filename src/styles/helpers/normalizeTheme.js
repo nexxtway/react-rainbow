@@ -1,5 +1,6 @@
 import defaultTheme from '../defaultTheme';
 import { darken, lighten, isDark, getContrastText, isValidColor } from './color';
+import normalizeThemeColors from './normalizeThemeColors';
 
 function pickColors(colors, obj = {}) {
     return colors.reduce((seed, color) => {
@@ -40,12 +41,12 @@ function resolveCustomBackground(background) {
             background: {
                 main: background,
                 secondary: dark ? lighten(background, 0.04) : darken(background, 0.04),
-                highlight: dark ? lighten(background, 0.2) : darken(background, 0.2),
+                highlight: dark ? lighten(background, 0.15) : darken(background, 0.1),
                 disabled: dark ? lighten(background, 0.08) : darken(background, 0.08),
             },
             text: {
                 main: mainText,
-                title: dark ? darken(mainText, 0.3) : lighten(mainText, 0.3),
+                title: dark ? darken(mainText, 0.25) : lighten(mainText, 0.24),
                 header: dark ? darken(mainText, 0.6) : lighten(mainText, 0.6),
                 label: dark ? darken(mainText, 0.3) : lighten(mainText, 0.3),
                 disabled: dark ? darken(mainText, 0.7) : lighten(mainText, 0.7),
@@ -59,13 +60,14 @@ function resolveCustomBackground(background) {
                 active: dark ? lighten(background, 0.08) : darken(background, 0.08),
                 hover: dark ? lighten(background, 0.08) : darken(background, 0.08),
             },
+            isDark: dark,
         };
         return theme;
     }
     return {};
 }
 
-function resolveCustomSahdows(colors, background) {
+function resolveCustomShadows(colors, background) {
     let shadows = {};
     if (colors.brand) {
         shadows.brand = `0 0 2px ${colors.brand.main}`;
@@ -89,6 +91,8 @@ function resolveCustomSahdows(colors, background) {
             shadow_5: `0 0 3px ${gray1}`,
             shadow_6: `0 2px 12px 0 ${gray2}`,
             shadow_7: `0 0 0 4px ${gray2}`,
+            shadow_8: `0 1px 0 0 ${gray2}`,
+            shadow_9: `0 1px 1px 0 ${gray2}`,
         };
     }
     return shadows;
@@ -101,14 +105,16 @@ export default function normalizeTheme(theme) {
     const mainBackground = get(theme, 'rainbow.palette.mainBackground');
     return {
         rainbow: {
-            palette: {
-                ...defaultTheme.palette,
-                ...colors,
-                ...resolveCustomBackground(mainBackground),
-            },
+            ...normalizeThemeColors({
+                palette: {
+                    ...defaultTheme.palette,
+                    ...colors,
+                    ...resolveCustomBackground(mainBackground),
+                },
+            }),
             shadows: {
                 ...defaultTheme.shadows,
-                ...resolveCustomSahdows(colors, mainBackground),
+                ...resolveCustomShadows(colors, mainBackground),
             },
         },
     };

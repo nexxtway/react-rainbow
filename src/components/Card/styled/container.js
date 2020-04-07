@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { BORDER_RADIUS_1 } from '../../../styles/borderRadius';
 import { MARGIN_LARGE } from '../../../styles/margins';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledContainer = attachThemeAttrs(styled.article)`
     position: relative;

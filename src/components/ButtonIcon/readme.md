@@ -59,6 +59,38 @@ import {
 </div>
 ```
 
+##### button icon outline-brand
+
+```js
+import React from 'react';
+import { ButtonIcon } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-regular-svg-icons';
+import {
+    faTrashAlt,
+    faPencilAlt,
+    faLocationArrow,
+    faArrowDown,
+} from '@fortawesome/free-solid-svg-icons';
+
+<div className="rainbow-p-vertical_large rainbow-p-left_x-large rainbow-flex rainbow-align_center">
+    <div className="rainbow-p-right_large">
+        <ButtonIcon variant="outline-brand" size="large" icon={<FontAwesomeIcon icon={faStar} />} />
+    </div>
+    <div className="rainbow-p-right_large">
+        <ButtonIcon variant="outline-brand" size="medium" icon={<FontAwesomeIcon icon={faLocationArrow} />}
+        />
+    </div>
+    <div className="rainbow-p-right_large">
+        <ButtonIcon variant="outline-brand" size="small" icon={<FontAwesomeIcon icon={faPencilAlt} />} />
+    </div>
+    <div className="rainbow-p-right_large">
+        <ButtonIcon variant="outline-brand" size="x-small" icon={<FontAwesomeIcon icon={faTrashAlt} />} />
+    </div>
+    <ButtonIcon variant="outline-brand" size="xx-small" icon={<FontAwesomeIcon icon={faArrowDown} />} />
+</div>
+```
+
 ##### button icon filled
 
 ```js
@@ -74,7 +106,13 @@ import { faStar } from '@fortawesome/free-regular-svg-icons';
     <div className="rainbow-p-right_large">
         <ButtonIcon variant="brand" icon={<FontAwesomeIcon icon={faStar} />} />
     </div>
-    <ButtonIcon variant="success" icon={<FontAwesomeIcon icon={faStar} />} />
+    <div className="rainbow-p-right_large">
+        <ButtonIcon variant="success" icon={<FontAwesomeIcon icon={faStar} />} />
+    </div>
+    <div className="rainbow-p-right_large">
+        <ButtonIcon variant="destructive" icon={<FontAwesomeIcon icon={faStar} />} />
+    </div>
+    <ButtonIcon variant="neutral" icon={<FontAwesomeIcon icon={faStar} />} />
 </div>
 ```
 
@@ -91,9 +129,17 @@ import { faStar } from '@fortawesome/free-regular-svg-icons';
         <ButtonIcon shaded variant="border-filled" icon={<FontAwesomeIcon icon={faStar} />} />
     </div>
     <div className="rainbow-p-right_large">
+        <ButtonIcon shaded variant="neutral" icon={<FontAwesomeIcon icon={faStar} />} />
+    </div>
+    <div className="rainbow-p-right_large">
         <ButtonIcon shaded variant="brand" icon={<FontAwesomeIcon icon={faStar} />} />
     </div>
-    <ButtonIcon shaded variant="success" icon={<FontAwesomeIcon icon={faStar} />} />
+    <div className="rainbow-p-right_large">
+        <ButtonIcon shaded variant="success" icon={<FontAwesomeIcon icon={faStar} />} />
+    </div>
+    <div className="rainbow-p-right_large">
+        <ButtonIcon shaded variant="destructive" icon={<FontAwesomeIcon icon={faStar} />} />
+    </div>
 </div>
 ```
 
@@ -124,14 +170,10 @@ import { ButtonIcon } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-regular-svg-icons';
 
-const buttonsIconContainerStyles = {
-    borderRadius: '0.25rem',
-};
-
-<div className="rainbow-p-vertical_large rainbow-p-left_x-large rainbow-flex rainbow-align_center rainbow-background-color_dark-1 rainbow-border-radius_oval">
+<InverseContainer className="rainbow-p-vertical_large rainbow-p-left_x-large rainbow-flex rainbow-align_center">
     <div className="rainbow-p-right_large">
         <ButtonIcon variant="border-inverse" icon={<FontAwesomeIcon icon={faStar} />} />
     </div>
     <ButtonIcon variant="inverse" icon={<FontAwesomeIcon icon={faStar} />} />
-</div>
+</InverseContainer>
 ```

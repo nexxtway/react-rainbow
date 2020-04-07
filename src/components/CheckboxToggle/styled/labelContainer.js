@@ -1,6 +1,6 @@
 /* stylelint-disable no-descending-specificity, max-line-length */
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledLabelContainer = attachThemeAttrs(styled.label)`
     display: inline-flex;

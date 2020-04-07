@@ -1,20 +1,21 @@
 import styled from 'styled-components';
-import { COLOR_GRAY_TRANSPARENT_1, COLOR_GRAY_2 } from '../../../../styles/colors';
+import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
+import { replaceAlpha } from '../../../../styles/helpers/color';
 
-const StyledRow = styled.tr`
-    box-shadow: 0 1px 0 0 ${COLOR_GRAY_2};
+const StyledRow = attachThemeAttrs(styled.tr)`
+    box-shadow: ${props => props.shadows.shadow_8};
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     box-sizing: border-box;
 
     &:hover {
-        background-color: ${COLOR_GRAY_TRANSPARENT_1};
-        box-shadow: 0 1px 1px 0 ${COLOR_GRAY_2}, 0 0 1px 0 ${COLOR_GRAY_2};
+        background-color: ${props => replaceAlpha(props.palette.action.hover, 0.4)};
+        box-shadow: ${props => props.shadows.shadow_9}, ${props => props.shadows.shadow_3};
     }
 
     ${props =>
         props.isSelected &&
         `
-            background-color: ${COLOR_GRAY_TRANSPARENT_1};
+        background-color: ${replaceAlpha(props.palette.action.active, 0.4)};
         `};
 `;
 

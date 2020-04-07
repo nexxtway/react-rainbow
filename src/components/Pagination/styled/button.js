@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 import { FONT_SIZE_TEXT_LARGE, FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 
@@ -26,6 +26,7 @@ const StyledButton = attachThemeAttrs(styled.button)`
     text-transform: none;
     appearance: button;
     box-sizing: border-box;
+    color: ${props => props.palette.text.label};
 
     :focus,
     :active {
@@ -71,6 +72,7 @@ const StyledButton = attachThemeAttrs(styled.button)`
         `
             background-color: transparent;
             pointer-events: none;
+            color: ${props.palette.text.disabled};
         
             &:hover {
                 background-color: transparent;
@@ -82,11 +84,8 @@ const StyledButton = attachThemeAttrs(styled.button)`
                 background-color: transparent;
                 pointer-events: none;
                 z-index: 100;
-            }
-
-            > svg {
-                fill: ${props.palette.background.highlight};
-        `};
+            }      
+    `};
 `;
 
 export default StyledButton;

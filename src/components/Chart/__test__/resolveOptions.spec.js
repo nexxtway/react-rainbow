@@ -1,5 +1,22 @@
 import resolveOptions from '../resolveOptions';
 
+jest.mock('../../../styles/defaultTheme', () => ({
+    palette: {
+        background: {
+            main: '#000',
+        },
+        text: {
+            main: 'main text color',
+            label: 'label color',
+        },
+        border: {
+            divider: 'divider color',
+        },
+        getContrastText: () => 'contrast text',
+    },
+}));
+jest.mock('../../../styles/helpers/color/replaceAlpha', () => () => 'replace alpha color');
+
 const baseOptions = {
     legend: {
         display: true,
@@ -7,7 +24,13 @@ const baseOptions = {
         fullWidth: true,
         labels: {
             usePointStyle: true,
+            fontColor: 'label color',
         },
+    },
+    tooltips: {
+        backgroundColor: 'replace alpha color',
+        titleFontColor: 'contrast text',
+        bodyFontColor: 'contrast text',
     },
 };
 
@@ -106,11 +129,25 @@ describe('resolveOptions function', () => {
                 xAxes: [
                     {
                         stacked: true,
+                        gridLines: {
+                            color: 'divider color',
+                            zeroLineColor: 'divider color',
+                        },
+                        ticks: {
+                            fontColor: 'label color',
+                        },
                     },
                 ],
                 yAxes: [
                     {
                         stacked: true,
+                        gridLines: {
+                            color: 'divider color',
+                            zeroLineColor: 'divider color',
+                        },
+                        ticks: {
+                            fontColor: 'label color',
+                        },
                     },
                 ],
             },
@@ -147,11 +184,25 @@ describe('resolveOptions function', () => {
                 xAxes: [
                     {
                         stacked: true,
+                        gridLines: {
+                            color: 'divider color',
+                            zeroLineColor: 'divider color',
+                        },
+                        ticks: {
+                            fontColor: 'label color',
+                        },
                     },
                 ],
                 yAxes: [
                     {
                         stacked: true,
+                        gridLines: {
+                            color: 'divider color',
+                            zeroLineColor: 'divider color',
+                        },
+                        ticks: {
+                            fontColor: 'label color',
+                        },
                     },
                 ],
             },

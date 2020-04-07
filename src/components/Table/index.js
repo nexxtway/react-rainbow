@@ -221,6 +221,14 @@ export default class Table extends Component {
         });
     }
 
+    isScrollActive() {
+        if (this.scrollableY.current) {
+            const { clientHeight, scrollHeight } = this.scrollableY.current;
+            return clientHeight < scrollHeight;
+        }
+        return false;
+    }
+
     updateColumnsAndTableWidth(newColumns) {
         const { columns } = this.state;
         const { minColumnWidth, maxColumnWidth } = this.props;
@@ -431,6 +439,7 @@ export default class Table extends Component {
                                                 tableId={this.tableId}
                                                 maxRowSelection={maxRowSelection}
                                                 bulkSelection={bulkSelection}
+                                                hasScroll={this.isScrollActive()}
                                             />
                                         </tr>
                                     </thead>

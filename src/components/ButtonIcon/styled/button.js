@@ -1,29 +1,27 @@
 import styled from 'styled-components';
-import {
-    COLOR_WHITE,
-    COLOR_GRAY_1,
-    COLOR_GRAY_2,
-    COLOR_GRAY_3,
-    COLOR_GRAY_4,
-} from '../../../styles/colors';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
-import { SHADOW_5, SHADOW_3 } from '../../../styles/shadows';
-import getTheme from '../../../styles/helpers/getTheme';
+import { COLOR_WHITE, COLOR_GRAY_3, COLOR_DARK_1 } from '../../../styles/colors';
+import { lighten } from '../../../styles/helpers/color';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-const StyledButton = styled.button.attrs(props => {
-    const theme = getTheme(props);
-    const { getContrastText, brand, success } = theme.palette;
-    const { main: brandMainColor, dark: brandDarkColor } = brand;
-    const { main: successMainColor, dark: successDarkColor } = success;
-
+const StyledButton = attachThemeAttrs(styled.button).attrs(props => {
+    if (props.palette.isDark) {
+        return {
+            inverse: {
+                text: COLOR_DARK_1,
+                active: lighten(COLOR_DARK_1, 0.6),
+                border: COLOR_DARK_1,
+                disabled: lighten(COLOR_DARK_1, 0.6),
+            },
+        };
+    }
     return {
-        brandMainColor,
-        brandDarkColor,
-        successMainColor,
-        successDarkColor,
-        getContrastText,
-        // TODO: move up to defaultTheme or normalizeTheme
-        brandShadow: `0 0 2px ${brandMainColor}`,
+        inverse: {
+            text: COLOR_WHITE,
+            active: COLOR_GRAY_3,
+            border: COLOR_WHITE,
+            disabled: COLOR_GRAY_3,
+        },
     };
 })`
     font: inherit;
@@ -38,7 +36,7 @@ const StyledButton = styled.button.attrs(props => {
     border-radius: ${BORDER_RADIUS_2};
     line-height: 1.875rem;
     text-decoration: none;
-    color: ${COLOR_GRAY_4};
+    color: ${props => props.palette.text.label};
     cursor: pointer;
     white-space: normal;
     user-select: none;
@@ -56,7 +54,7 @@ const StyledButton = styled.button.attrs(props => {
     &:hover,
     &:focus,
     &:active {
-        color: ${props => props.brandDarkColor};
+        color: ${props => props.palette.brand.dark};
     }
 
     &:active {
@@ -66,11 +64,11 @@ const StyledButton = styled.button.attrs(props => {
 
     &:focus {
         outline: 0;
-        box-shadow: ${props => props.brandShadow};
+        box-shadow: ${props => props.shadows.brand};
     }
 
     &[disabled] {
-        color: ${COLOR_GRAY_2};
+        color: ${props => props.palette.text.disabled};
         cursor: default;
     }
 
@@ -79,18 +77,36 @@ const StyledButton = styled.button.attrs(props => {
         pointer-events: none;
 
         svg {
-            fill: ${COLOR_GRAY_2};
+            fill: ${props => props.palette.text.disabled};
         }
     }
+    ${props =>
+        props.variant === 'neutral' &&
+        `
+            background-color: ${props.palette.background.main};
+            border: 1px solid ${props.palette.border.divider};
+            color: ${props.palette.brand.main};
 
+            &:hover,
+            &:focus,
+            &:active {
+                background-color: ${props.palette.action.active};
+            }
+
+            &[disabled] {
+                background-color: ${
+                    props.isLoading ? props.palette.background.main : 'transparent'
+                };
+            }
+        `};
     ${props => {
-        const brandMainContrastText = props.getContrastText(props.brandMainColor);
-        const brandDarkContrastText = props.getContrastText(props.brandDarkColor);
+        const brandMainContrastText = props.palette.getContrastText(props.palette.brand.main);
+        const brandDarkContrastText = props.palette.getContrastText(props.palette.brand.dark);
         return (
             props.variant === 'brand' &&
             `
-                background-color: ${props.brandMainColor};
-                border: 1px solid ${props.brandMainColor};
+                background-color: ${props.palette.brand.main};
+                border: 1px solid ${props.palette.brand.main};
                 color: ${brandMainContrastText};
                 
                 &:link,
@@ -102,28 +118,93 @@ const StyledButton = styled.button.attrs(props => {
                 &:hover,
                 &:focus,
                 &:active {
-                    background-color: ${props.brandDarkColor};
-                    border: 1px solid ${props.brandDarkColor};
+                    background-color: ${props.palette.brand.dark};
+                    border: 1px solid ${props.palette.brand.dark};
                     color: ${brandDarkContrastText};
                 }
             
                 &[disabled] {
-                    background-color: ${COLOR_GRAY_1};
-                    border: 1px solid ${COLOR_GRAY_1};
-                    color: ${COLOR_GRAY_2};
+                    background-color: ${props.palette.background.disabled};
+                    border: 1px solid ${props.palette.border.disabled};
+                    color: ${props.palette.text.disabled};
                 }
             `
         );
     }};
+    ${props =>
+        props.variant === 'outline-brand' &&
+        `
+            background-color: transparent;
+            border: 1px solid ${props.palette.brand.main};
+            color: ${props.palette.brand.main};
+
+            &:hover,
+            &:focus,
+            &:active {
+                border-color: ${props.palette.brand.dark};
+            }
+        
+            &[disabled] {
+                background-color: transparent;
+                border-color: ${
+                    props.isLoading ? props.palette.brand.main : props.palette.border.divider
+                };
+            }
+        `};
     ${props => {
-        const successMainContrastText = props.getContrastText(props.successMainColor);
-        const successDarkContrastText = props.getContrastText(props.successDarkColor);
+        const errorMainContrastText = props.palette.getContrastText(props.palette.error.main);
+        const errorDarkContrastText = props.palette.getContrastText(props.palette.error.dark);
+
+        return (
+            props.variant === 'destructive' &&
+            `
+            background-color: ${props.palette.error.main};
+            border: 1px solid ${props.palette.error.main};
+            color: ${errorMainContrastText};
+
+            &:link,
+            &:visited {
+                color: ${errorMainContrastText};
+            }
+        
+            &:hover,
+            &:focus {
+                background-color: ${props.palette.error.dark};
+                border-color: ${props.palette.error.dark};
+                color: ${errorDarkContrastText};
+            }
+
+            &:focus {
+                box-shadow: ${props.shadows.error};
+            }
+        
+            &:active {
+                background-color: ${props.palette.error.dark};
+                border-color: ${props.palette.error.dark};
+                color: ${errorDarkContrastText};
+            }
+        
+            &[disabled] {
+                background-color: ${
+                    props.isLoading ? props.palette.error.main : props.palette.background.disabled
+                };
+                border-color: ${
+                    props.isLoading ? props.palette.error.main : props.palette.background.disabled
+                };
+                color: ${props.palette.text.disabled};
+            }
+        `
+        );
+    }};
+    ${props => {
+        const successMainContrastText = props.palette.getContrastText(props.palette.success.main);
+        const successDarkContrastText = props.palette.getContrastText(props.palette.success.dark);
 
         return (
             props.variant === 'success' &&
             `
-                background-color: ${props.successMainColor};
-                border: 1px solid ${props.successMainColor};
+                background-color: ${props.palette.success.main};
+                border: 1px solid ${props.palette.success.main};
                 color: ${successMainContrastText};
                 
                 &:link,
@@ -135,15 +216,15 @@ const StyledButton = styled.button.attrs(props => {
                 &:hover,
                 &:focus,
                 &:active {
-                    background-color: ${props.successDarkColor};
-                    border: 1px solid ${props.successDarkColor};
+                    background-color: ${props.palette.success.dark};
+                    border: 1px solid ${props.palette.success.dark};
                     color: ${successDarkContrastText};
                 }
             
                 &[disabled] {
-                    background-color: ${COLOR_GRAY_1};
-                    border: 1px solid ${COLOR_GRAY_1};
-                    color: ${COLOR_GRAY_2};
+                    background-color: ${props.palette.background.disabled};
+                    border: 1px solid ${props.palette.border.disabled};
+                    color: ${props.palette.text.disabled};
                 }
             `
         );
@@ -152,36 +233,36 @@ const StyledButton = styled.button.attrs(props => {
         props.variant === 'border' &&
         `
             background-color: transparent;
-            border: 1px solid ${COLOR_GRAY_2};
-            color: ${COLOR_GRAY_4};
+            border: 1px solid ${props.palette.border.divider};
+            color: ${props.palette.text.label};
             transition: border 0.15s linear;
         
             &:hover,
             &:focus,
             &:active {
                 background-color: transparent;
-                border: 1px solid ${props.brandDarkColor};
-                color: ${props.brandDarkColor};
+                border: 1px solid ${props.palette.brand.dark};
+                color: ${props.palette.brand.dark};
             }
         
             &[disabled] {
                 background-color: transparent;
-                border: 1px solid ${COLOR_GRAY_2};
-                color: ${COLOR_GRAY_2};
+                border: 1px solid ${props.palette.border.disabled};
+                color: ${props.palette.text.disabled};
             }
         `};
     ${props =>
         props.variant === 'border-filled' &&
         `
-            background-color: ${COLOR_WHITE};
-            border: 1px solid ${COLOR_GRAY_2};
-            color: ${COLOR_GRAY_4};
+            background-color: ${props.palette.background.main};
+            border: 1px solid ${props.palette.border.divider};
+            color: ${props.palette.text.label};
             transition: border 0.15s linear;
         
             &:hover,
             &:focus,
             &:active {
-                background-color: ${COLOR_GRAY_1};
+                background-color: ${props.palette.action.active};
             }
         
             &[disabled] {
@@ -193,53 +274,53 @@ const StyledButton = styled.button.attrs(props => {
         `
             background-color: transparent;
             border: 1px solid transparent;
-            color: ${COLOR_WHITE};
+            color: ${props.inverse.text};
         
             &:hover,
             &:focus,
             &:active {
-                color: ${COLOR_GRAY_3};
+                color: ${props.inverse.active};
             }
         
             &:focus {
                 outline: none;
-                box-shadow: ${SHADOW_5};
+                box-shadow: ${props.shadows.shadow_5};
             }
         
             &[disabled] {
                 background-color: transparent;
-                color: ${COLOR_GRAY_4};
+                color: ${props.inverse.disabled};
             }
         `};
     ${props =>
         props.variant === 'border-inverse' &&
         `
             background-color: transparent;
-            border: 1px solid ${COLOR_WHITE};
-            color: ${COLOR_WHITE};
+            border: 1px solid ${props.inverse.border};
+            color: ${props.inverse.text};
         
             &:hover,
             &:focus,
             &:active {
-                border-color: ${COLOR_GRAY_3};
-                color: ${COLOR_GRAY_3};
+                border-color: ${props.inverse.active};
+                color: ${props.inverse.active};
             }
         
             &:focus {
                 outline: none;
-                box-shadow: ${SHADOW_5};
+                box-shadow: ${props.shadows.shadow_5};
             }
         
             &[disabled] {
                 background-color: transparent;
-                border-color: ${COLOR_GRAY_4};
-                color: ${COLOR_GRAY_4};
+                border-color: ${props.inverse.disabled};
+                color: ${props.inverse.disabled};
             }
         `};
     ${props =>
         props.shaded &&
         `
-            box-shadow: ${SHADOW_3};
+            box-shadow: ${props.shadows.shadow_3};
         `};
     ${props =>
         props.size === 'xx-small' &&

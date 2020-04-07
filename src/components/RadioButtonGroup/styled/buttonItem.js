@@ -1,8 +1,10 @@
 /* stylelint-disable max-line-length */
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+import { replaceAlpha } from '../../../styles/helpers/color';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 
-const StyledButtonItem = styled.span`
+const StyledButtonItem = attachThemeAttrs(styled.span)`
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -14,7 +16,7 @@ const StyledButtonItem = styled.span`
     transform: translate3d(0, 0, 0);
 
     &:hover {
-        background-color: rgba(227, 229, 237, 0.4);
+        background-color: ${props => replaceAlpha(props.palette.background.highlight, 0.6)};
         cursor: pointer;
     }
 
@@ -28,15 +30,16 @@ const StyledButtonItem = styled.span`
         padding: 0;
         position: absolute;
     }
-
     ${props =>
         props.variant === 'inverse' &&
         `
-                &:hover {
-                    background-color: rgba(0, 0, 0, 0.95);
-                    cursor: pointer;
-                }
-            `};
+            &:hover {
+                background-color: ${
+                    props.palette.isDark ? 'rgba(193, 193, 193, 0.4)' : 'rgba(250, 250, 250, 0.10)'
+                };
+                cursor: pointer;
+            }
+        `};
     ${props =>
         props.isChecked &&
         `

@@ -27,7 +27,8 @@ export default class Rating extends Component {
     }
 
     handleOnHover(event) {
-        if (event.target.value) {
+        const { readOnly } = this.props;
+        if (event.target.value && !readOnly) {
             return this.setState({ value: event.target.value });
         }
         return null;
@@ -38,7 +39,7 @@ export default class Rating extends Component {
     }
 
     render() {
-        const { style, className, onChange, label } = this.props;
+        const { style, className, onChange, label, readOnly } = this.props;
         const { value } = this.state;
         return (
             <StyledFieldset
@@ -50,7 +51,12 @@ export default class Rating extends Component {
                 <RenderIf isTrue={!!label}>
                     <StyledLabel>{label}</StyledLabel>
                 </RenderIf>
-                <RatingItems onChange={onChange} value={value} name={this.getName()} />
+                <RatingItems
+                    onChange={onChange}
+                    value={value}
+                    name={this.getName()}
+                    readOnly={readOnly}
+                />
             </StyledFieldset>
         );
     }
@@ -58,7 +64,7 @@ export default class Rating extends Component {
 
 Rating.propTypes = {
     /** The value of the rating stars. This value defaults to 0. */
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     /** The action triggered when a value attribute changes. */
     onChange: PropTypes.func,
     /** An identifier for the group of radio items. */
@@ -69,13 +75,16 @@ Rating.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied for the outer element. */
     style: PropTypes.object,
+    /** Specifies that the Rating is read-only. This value defaults to false. */
+    readOnly: PropTypes.bool,
 };
 
 Rating.defaultProps = {
-    value: undefined,
+    value: 0,
     onChange: () => {},
     name: undefined,
     label: null,
     className: undefined,
     style: undefined,
+    readOnly: false,
 };

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledDayButton = attachThemeAttrs(styled.button)`
     font: inherit;
@@ -33,6 +33,8 @@ const StyledDayButton = attachThemeAttrs(styled.button)`
     &:focus,
     &:active {
         box-shadow: ${props => props.shadows.brand};
+        border: 1px solid ${props => props.palette.brand.main};
+        line-height: 36px;
     }
 
     @media (max-width: 600px) {
@@ -49,8 +51,8 @@ const StyledDayButton = attachThemeAttrs(styled.button)`
             font-weight: 600;
             border-radius: 48px;
             line-height: 36px;
-            height: 36px;
-            width: 36px;
+            height: 38px;
+            width: 38px;
             margin: 5px auto;
             padding: 0;
             border: none;
@@ -62,7 +64,11 @@ const StyledDayButton = attachThemeAttrs(styled.button)`
             }
         
             &:hover {
-                background-color: ${props.palette.brand.main};
+                background-color: ${props.palette.brand.dark};
+            }
+
+            &:focus {
+                box-shadow: 0 0 8px ${props.palette.brand.main};
             }
 
             @media (max-width: 600px) {

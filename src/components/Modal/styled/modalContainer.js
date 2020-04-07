@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { BORDER_RADIUS_1 } from '../../../styles/borderRadius';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledModalContainer = attachThemeAttrs(styled.section)`
     top: 0;
@@ -14,7 +14,7 @@ const StyledModalContainer = attachThemeAttrs(styled.section)`
     background-color: ${props => props.palette.background.main};
     color: ${props => props.palette.text.main};
     border-radius: ${BORDER_RADIUS_1};
-    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16);
+    box-shadow: ${props => props.shadows.shadow_2};
     flex-direction: column;
     box-sizing: border-box;
     display: flex;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ChartJS from 'chart.js';
+import { withTheme } from 'styled-components';
 import resolveOptions from './resolveOptions';
 import resolveDatasets from './resolveDatasets';
 import StyledContainer from './styled/container';
@@ -10,7 +11,7 @@ import StyledContainer from './styled/container';
  * You can learn more about it here:
  * @category DataView
  */
-export default class Chart extends Component {
+export class Chart extends Component {
     constructor(props) {
         super(props);
         this.chartRef = React.createRef();
@@ -30,12 +31,17 @@ export default class Chart extends Component {
     }
 
     updateChart() {
-        const { labels, ...conditions } = this.props;
+        const { labels, type, ...conditions } = this.props;
         this.chartInstance.data = {
             labels,
             datasets: this.datasets,
         };
-        this.chartInstance.options = resolveOptions({ ...conditions });
+
+        if (type && this.chartInstance.config && type !== this.chartInstance.config.type) {
+            this.chartInstance.config.type = type;
+        }
+
+        this.chartInstance.options = resolveOptions({ type, ...conditions });
         this.chartInstance.update();
     }
 
@@ -49,7 +55,7 @@ export default class Chart extends Component {
                 labels,
                 datasets: this.datasets,
             },
-            options: resolveOptions({ ...conditions }),
+            options: resolveOptions({ type, ...conditions }),
         });
     }
 
@@ -121,3 +127,5 @@ Chart.defaultProps = {
     style: undefined,
     children: undefined,
 };
+
+export default withTheme(Chart);

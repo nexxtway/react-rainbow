@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import RenderIf from '../../../components/RenderIf';
 import UploadFileButton from './uploadFileButton';
 import Preview from './preview';
 import StyledContainer from './styled/container';
+import StyledDropImg from './styled/dropImg';
+import StyledDropTitle from './styled/dropTitle';
+import StyledDropText from './styled/dropText';
 import StyledText from './styled/text';
 
 function preventDefault(event) {
@@ -68,8 +72,19 @@ export default function StepTwo(props) {
             onDrop={handleDrop}
             draggable
         >
-            <UploadFileButton onChange={handleChange} />
-            <StyledText>Find the file in your desktop.</StyledText>
+            <UploadFileButton onChange={handleChange} isDragOver={isDragOver} />
+
+            <RenderIf isTrue={isDragOver}>
+                <StyledDropImg />
+                <StyledDropTitle>Drop your file here</StyledDropTitle>
+                <StyledDropText>
+                    Drop your files for upload them instantly to the system
+                </StyledDropText>
+            </RenderIf>
+
+            <RenderIf isTrue={!isDragOver}>
+                <StyledText>Find the file in your desktop.</StyledText>
+            </RenderIf>
         </StyledContainer>
     );
 }

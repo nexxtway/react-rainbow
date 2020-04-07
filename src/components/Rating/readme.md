@@ -5,6 +5,7 @@ import React from 'react';
 import { Card, ButtonGroup, ButtonIcon, Rating } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
 
 const cardStyles = {
     width: 300,
@@ -18,6 +19,18 @@ const imageStyles = {
     backgroundImage: 'url(images/illustrations/Illustration-rainbow-4.svg)',
     backgroundSize: 'cover',
 };
+
+const StyledHeader = styled.h3.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.main};
+`;
+
+const StyledText = styled.h3.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.label};
+`;
 
 class SimpleRating extends React.Component {
     constructor(props) {
@@ -54,14 +67,73 @@ class SimpleRating extends React.Component {
             footer={
                 <div>
                     <div className="rainbow-flex rainbow-flex_column rainbow-align_start rainbow-m-bottom_x-small">
-                        <h3 className="rainbow-font-size-heading_medium rainbow-color_dark-1">
+                        <StyledHeader className="rainbow-font-size-heading_medium">
                             Rainbow
-                        </h3>
-                        <p className="rainbow-color_gray-4">
+                        </StyledHeader>
+                        <StyledText>
                             Give us your rate about how you like this…
-                        </p>
+                        </StyledText>
                     </div>
                     <SimpleRating />
+                </div>
+            }
+        >
+            <div style={imageStyles} />
+        </Card>
+    </div>
+</div>
+```
+
+##### Rating readOnly
+
+```js
+import React from 'react';
+import { Card, ButtonGroup, ButtonIcon, Rating } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
+
+const cardStyles = {
+    width: 300,
+};
+
+const imageStyles = {
+    borderTopLeftRadius: '0.875rem',
+    borderTopRightRadius: '0.875rem',
+    height: 170,
+    width: '100%',
+    backgroundImage: 'url(images/illustrations/Illustration-rainbow-4.svg)',
+    backgroundSize: 'cover',
+};
+
+const StyledHeader = styled.h3.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.main};
+`;
+
+<div className="rainbow-p-bottom_xx-large">
+    <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
+        <ButtonGroup className="rainbow-m-right_medium">
+            <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faPlus} />} />
+            <ButtonIcon
+                variant="border-filled"
+                disabled
+                icon={<FontAwesomeIcon icon={faEllipsisV} />}
+            />
+        </ButtonGroup>
+    </GlobalHeader>
+    <div className="rainbow-align-content_center">
+        <Card
+            style={cardStyles}
+            footer={
+                <div>
+                    <div className="rainbow-flex rainbow-flex_column rainbow-align_center rainbow-m-bottom_x-small">
+                        <StyledHeader className="rainbow-font-size-heading_medium">
+                            Rainbow Image
+                        </StyledHeader>
+                    </div>
+                    <Rating value="2.45" readOnly label="2.45 of 5" />
                 </div>
             }
         >
@@ -86,6 +158,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faEllipsisV, faImages } from '@fortawesome/free-solid-svg-icons';
 import smallStar from '../../../assets/images/smallStar.svg';
+import styled from 'styled-components';
 
 const iconContainerStyles = {
     width: '2rem',
@@ -113,6 +186,22 @@ const carouselStyles = {
 };
 
 const ratingCountStyles = { fontSize: '2rem' };
+
+const StyledHeader = styled.h3.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.main};
+`;
+
+const StyledText = styled.h3.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.header};
+
+    span {
+        color: ${props => props.text.title};
+    }
+`;
 
 class DetailRating extends React.Component {
     constructor(props) {
@@ -157,18 +246,18 @@ class DetailRating extends React.Component {
             footer={
                 <div className="rainbow-flex rainbow-justify_spread rainbow-m-top_xx-small rainbow-m-bottom_medium">
                     <div>
-                        <h3 className="rainbow-font-size-heading_small rainbow-color_dark-1">
+                        <StyledHeader className="rainbow-font-size-heading_small">
                             Give us your rate
-                        </h3>
-                        <p
-                            className="rainbow-color_gray-3 rainbow-m-top_x-small"
+                        </StyledHeader>
+                        <StyledText
+                            className="rainbow-m-top_x-small"
                             style={ratingCountStyles}
                         >
                             992
-                            <span className="rainbow-font-size-text_x-small rainbow-m-left_x-small rainbow-color_gray-4">
+                            <span className="rainbow-font-size-text_x-small rainbow-m-left_x-small">
                                 Ratings
                             </span>
-                        </p>
+                        </StyledText>
                     </div>
                     <div style={detailContainerStyles}>
                         <div className="rainbow-flex rainbow-justify_end">

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 
 const StyledItem = attachThemeAttrs(styled.div)`
@@ -30,7 +30,6 @@ const StyledItem = attachThemeAttrs(styled.div)`
         `
             background-color: ${props.palette.action.active};
         `};
-    ${props => props.isSelected && 'display: none;'}
 `;
 
 export default StyledItem;

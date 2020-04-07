@@ -74,13 +74,13 @@ import { Avatar } from 'react-rainbow-components';
     <div className="rainbow-m-horizontal_small">
         <Avatar
             className="rainbow-m-around_x-small"
-            icon={<img src="icons/user.svg" alt="icon" />}
+            icon={<UserAvatarIcon />}
             assistiveText="user icon"
             title="user icon"
         />
         <Avatar
             className="rainbow-m-around_x-small"
-            icon={<img src="icons/user.svg" alt="icon" />}
+            icon={<UserAvatarIcon />}
             assistiveText="user icon"
             title="user icon"
             backgroundColor="#FE4849"
@@ -95,16 +95,9 @@ import { Avatar } from 'react-rainbow-components';
 import React from 'react';
 import { Avatar } from 'react-rainbow-components';
 
-const avatarContainerStyles = {
-    borderRadius: '0 0 0.875rem 0.875rem',
-};
-
-<div
-    className="rainbow-p-vertical_x-large rainbow-p-left_medium rainbow-background-color_dark-1"
-    style={avatarContainerStyles}
->
+<InverseContainer className="rainbow-p-vertical_large rainbow-p-left_medium">
     <div className="rainbow-m-horizontal_medium">
         <Avatar assistiveText="Jane Doe" initials="JD" title="Jane Doe" initialsVariant="inverse" />
     </div>
-</div>
+</InverseContainer>
 ```

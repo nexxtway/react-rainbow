@@ -80,6 +80,7 @@ module.exports = {
         PathlineRenderer: path.join(__dirname, 'library/styleguideComponents/Pathline'),
         Wrapper: path.join(__dirname, 'library/styleguideComponents/Wrapper'),
         SectionRenderer: path.join(__dirname, 'library/styleguideComponents/SectionRenderer'),
+        Examples: path.join(__dirname, 'library/styleguideComponents/Examples'),
     },
     sections: [
         {
@@ -90,6 +91,12 @@ module.exports = {
             name: 'Components',
             components: 'src/components/**/index.js',
             usageMode: 'expand',
+        },
+        {
+            name: 'Customization',
+            content: 'library/pages/customization.md',
+            usageMode: 'expand',
+            exampleMode: 'expand',
         },
         {
             name: 'Experiences',
@@ -128,6 +135,10 @@ module.exports = {
                 {
                     name: 'CreateProfile',
                     content: 'library/pages/Designs/createProfile.md',
+                },
+                {
+                    name: 'FindBook',
+                    content: 'library/pages/Designs/findBook.md',
                 },
                 {
                     name: 'Team',

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import getTheme from '../../../styles/helpers/getTheme';
+import { replaceAlpha } from '../../../styles/helpers/color';
 
 const StyledContainer = styled.div.attrs(props => {
     const theme = getTheme(props);
@@ -16,7 +17,7 @@ const StyledContainer = styled.div.attrs(props => {
     border: 0;
     position: relative;
     display: block;
-    background: ${props => props.brandLightColor};
+    background: ${props => replaceAlpha(props.brandLightColor, 0.7)};
     height: 0.5rem;
     border-radius: 1rem;
     ${props => props.size === 'x-small' && 'height: 0.125rem;'}
@@ -26,7 +27,7 @@ const StyledContainer = styled.div.attrs(props => {
     ${props =>
         props.variant === 'success' &&
         `
-            background: ${props.successLightColor};
+            background: ${replaceAlpha(props.successLightColor, 0.7)};
         `};
 `;
 

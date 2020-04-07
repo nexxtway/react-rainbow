@@ -8,7 +8,7 @@ exports.config = {
     // on a remote machine).
     runner: 'local',
     //
-    outputDir: `${__dirname}/junit-results`,
+    outputDir: `${__dirname}/test-results/wdio-junit-results`,
     // ==================
     // Specify Test Files
     // ==================
@@ -136,7 +136,26 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
-    reporters: ['spec', 'junit'],
+    reporters: [
+        'spec',
+        [
+            'junit',
+            {
+                outputDir: 'test-results/wdio-junit-results',
+                outputFileFormat: options => {
+                    return `results-${options.cid}.xml`;
+                },
+            },
+        ],
+        [
+            'allure',
+            {
+                outputDir: 'test-results/wdio-allure-results',
+                disableWebdriverStepsReporting: true,
+                disableWebdriverScreenshotsReporting: true,
+            },
+        ],
+    ],
 
     //
     // Options to be passed to Jasmine.

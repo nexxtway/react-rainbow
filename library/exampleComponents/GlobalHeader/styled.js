@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../src/styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../src/styles/helpers/attachThemeAttrs';
 
 export const StyledGlobalHeader = attachThemeAttrs(styled.header)`
     background-color: ${props => props.palette.background.main};

@@ -1,8 +1,9 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import HiddenElement from '../../../Structural/hiddenElement';
 import { BORDER_RADIUS_3 } from '../../../../styles/borderRadius';
 import { MARGIN_SMALL } from '../../../../styles/margins';
-import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttr';
+import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
+import { replaceAlpha } from '../../../../styles/helpers/color';
 
 function getInitialBorder(props) {
     if (props.error) {
@@ -24,6 +25,12 @@ function getShadow(props) {
     }
     return props.shadows.brand;
 }
+
+const flash = color => keyframes`
+    100% {
+        box-shadow: 0 0 0 5px ${color};
+    }
+`;
 
 const Checkbox = attachThemeAttrs(styled(HiddenElement))`
     & ~ label > .rainbow-input_faux {
@@ -57,6 +64,10 @@ const Checkbox = attachThemeAttrs(styled(HiddenElement))`
     }
 
     :checked ~ label > .rainbow-input_faux {
+        animation: ${props =>
+            props.error
+                ? flash(replaceAlpha(props.palette.error.main, 0.5))
+                : flash(replaceAlpha(props.palette.brand.main, 0.5))} 0.2s linear;
         border: 2px solid;
         border-color: ${getColor};
     }

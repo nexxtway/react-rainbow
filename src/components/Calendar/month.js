@@ -15,6 +15,10 @@ export default function Month(props) {
         while (date <= lastDayMonth || addDays(date, -dayOfWeek) <= lastDayMonth) {
             const startDate = addDays(date, -dayOfWeek);
             const endDate = addDays(date, daysAfter);
+
+            startDate.setHours(0, 0, 0, 0);
+            endDate.setHours(11, 59, 59, 999);
+
             weeks.push(
                 <Week
                     value={value}
