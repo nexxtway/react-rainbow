@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RenderIf from './../RenderIf';
 import StyledContainer from './styled/container';
 import StyledBadge from './styled/badge';
 import { getSuffixSI } from '../../libs/utils';
@@ -21,11 +20,15 @@ export default function BadgeOverlay(props) {
     return (
         <StyledContainer className={className} style={style} overlap={overlap}>
             {children}
-            <RenderIf isTrue={!isHidden}>
-                <StyledBadge variant={variant} position={position} overlap={overlap} value={value}>
-                    {getSuffixSI(value)}
-                </StyledBadge>
-            </RenderIf>
+            <StyledBadge
+                variant={variant}
+                position={position}
+                overlap={overlap}
+                value={value}
+                isHidden={isHidden}
+            >
+                {getSuffixSI(value)}
+            </StyledBadge>
         </StyledContainer>
     );
 }

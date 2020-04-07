@@ -42,13 +42,4 @@ describe('<BadgeOverlay/>', () => {
         });
         expect(component.find(StyledBadge).text()).toBe('1k');
     });
-    it('should not render when isHidden is true', () => {
-        const children = <div id="child" />;
-        const component = mount(<BadgeOverlay {...defaultProps}>{children}</BadgeOverlay>);
-        expect(component.find(StyledBadge).exists()).toBe(true);
-        component.setProps({
-            isHidden: true,
-        });
-        expect(component.find(StyledBadge).exists()).toBe(false);
-    });
 });
