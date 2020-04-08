@@ -171,47 +171,6 @@ describe('<Modal/>', () => {
         });
         expect(enableBodyScroll).not.toHaveBeenCalled();
     });
-    it('should call enableBodyScroll when modal starts closed, then opened and closed again', () => {
-        CounterManager.hasModalsOpen.mockReturnValue(false);
-        const component = mount(
-            <Modal>
-                <p />
-            </Modal>,
-        );
-        CounterManager.hasModalsOpen.mockReturnValue(true);
-        component.setProps({
-            isOpen: true,
-        });
-        CounterManager.hasModalsOpen.mockReturnValue(false);
-        component.setProps({
-            isOpen: false,
-        });
-        expect(enableBodyScroll).toHaveBeenCalledTimes(1);
-    });
-    it('should call enableBodyScroll when modal is closed manually, had no previous interactions and has no opened modals', () => {
-        CounterManager.hasModalsOpen.mockReturnValue(false);
-        const component = mount(
-            <Modal>
-                <p />
-            </Modal>,
-        );
-        component.setProps({
-            isOpen: false,
-        });
-        expect(enableBodyScroll).toHaveBeenCalledTimes(1);
-    });
-    it('should not call enableBodyScroll when modal is closed manually, had no previous interactions and has opened modals', () => {
-        CounterManager.hasModalsOpen.mockReturnValue(true);
-        const component = mount(
-            <Modal>
-                <p />
-            </Modal>,
-        );
-        component.setProps({
-            isOpen: false,
-        });
-        expect(enableBodyScroll).not.toHaveBeenCalled();
-    });
     it('should call CounterManager.decrement when the component unmount and it is open', () => {
         CounterManager.decrement.mockReset();
         const component = mount(
