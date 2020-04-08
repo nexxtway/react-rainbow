@@ -20,6 +20,7 @@ class ButtonGroupPickerTry extends React.Component {
         return (
             <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
                 <ButtonGroupPicker 
+                    id="button-group-picker-component-1"
                     label="Select view type" 
                     value={value} 
                     onChange={this.handleOnChange} 
@@ -67,6 +68,7 @@ class ButtonGroupPickerTry extends React.Component {
         return (
             <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
                 <ButtonGroupPicker 
+                    id="button-group-picker-component-3"
                     className="rainbow-m-around_medium" 
                     value={values} 
                     onChange={this.handleOnChange} 
@@ -111,6 +113,7 @@ class ButtonGroupPickerTry extends React.Component {
         return (
             <div className="rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
                 <ButtonGroupPicker 
+                    id="button-group-picker-component-5"
                     className="rainbow-m-around_medium" 
                     value={value} 
                     onChange={this.handleOnChange} 
