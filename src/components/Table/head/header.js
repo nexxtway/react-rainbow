@@ -149,7 +149,7 @@ Header.propTypes = {
     onDeselectAllRows: PropTypes.func,
     tableId: PropTypes.string.isRequired,
     maxRowSelection: PropTypes.number,
-    bulkSelection: PropTypes.oneOf(['none', 'some', 'all']),
+    bulkSelection: PropTypes.oneOf([true, false, 'indeterminate']),
     hasScroll: PropTypes.bool,
 };
 
@@ -170,6 +170,6 @@ Header.defaultProps = {
     onSelectAllRows: () => {},
     onDeselectAllRows: () => {},
     maxRowSelection: undefined,
-    bulkSelection: 'none',
+    bulkSelection: false,
     hasScroll: false,
 };

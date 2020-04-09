@@ -62,7 +62,7 @@ export default class Table extends Component {
                 maxRowSelection: maxRowSelection && Number(maxRowSelection),
                 selectedRowsKeys: {},
             }),
-            bulkSelection: 'none',
+            bulkSelection: false,
         };
         this.indexes = getIndexes(this.state.rows);
         this.selectedRowsKeys = getSelectedRowKeysFromSelectedRows(selectedRows, this.indexes);

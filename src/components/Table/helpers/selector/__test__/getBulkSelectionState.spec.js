@@ -7,26 +7,26 @@ const selectedRowsKeys = {
 };
 
 describe('getBulkSelectionState', () => {
-    it('should return "none" when any params are passed', () => {
-        expect(getBulkSelectionState()).toBe('none');
+    it('should return false when any params are passed', () => {
+        expect(getBulkSelectionState()).toBe(false);
     });
-    it('should return "none" when selectedRowsKeys length is 0', () => {
+    it('should return false when selectedRowsKeys length is 0', () => {
         expect(
             getBulkSelectionState({
                 maxRowSelection: 3,
                 selectedRowsKeys: {},
             }),
-        ).toBe('none');
+        ).toBe(false);
     });
-    it('should return "all" when maxRowSelection match with the selectedRowsKeys length', () => {
+    it('should return true when maxRowSelection match with the selectedRowsKeys length', () => {
         expect(
             getBulkSelectionState({
                 maxRowSelection: 3,
                 selectedRowsKeys,
             }),
-        ).toBe('all');
+        ).toBe(true);
     });
-    it('should return "some" when selectedRowsKeys length is other than 0 and does not match with maxRowSelection', () => {
+    it('should return "indeterminate" when selectedRowsKeys length is other than 0 and does not match with maxRowSelection', () => {
         const values = [0, 1, 2, 4, 5];
         values.forEach(value => {
             expect(
@@ -34,7 +34,7 @@ describe('getBulkSelectionState', () => {
                     maxRowSelection: value,
                     selectedRowsKeys,
                 }),
-            ).toBe('some');
+            ).toBe('indeterminate');
         });
     });
 });

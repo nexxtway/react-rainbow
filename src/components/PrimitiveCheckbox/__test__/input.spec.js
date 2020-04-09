@@ -36,19 +36,4 @@ describe('<InputCheckbox/>', () => {
             inputId: expect.any(String),
         });
     });
-    it('should set indeterminate prop to true in input reference when it is passed', () => {
-        const component = mount(<InputCheckbox indeterminate />);
-        expect(component.instance().inputRef.current.indeterminate).toBe(true);
-    });
-    it('should set indeterminate prop to true in input reference when it is passed later the component is mounted', () => {
-        const component = mount(<InputCheckbox />);
-        component.setProps({
-            indeterminate: true,
-        });
-        expect(component.instance().inputRef.current.indeterminate).toBe(true);
-    });
-    it('should set checked prop passed in input element', () => {
-        const component = mount(<InputCheckbox checked />);
-        expect(component.find('input').prop('checked')).toBe(true);
-    });
 });

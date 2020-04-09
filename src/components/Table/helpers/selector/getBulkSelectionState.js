@@ -5,9 +5,9 @@ export default function getBulkSelectionState(params = {}) {
     const selected = getCurrentSelectionLength(selectedRowsKeys);
 
     if (selected === 0) {
-        return 'none';
+        return false;
     } else if (selected === maxRowSelection) {
-        return 'all';
+        return true;
     }
-    return 'some';
+    return 'indeterminate';
 }

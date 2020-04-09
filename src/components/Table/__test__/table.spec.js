@@ -411,23 +411,23 @@ describe('<Table />', () => {
             },
         ]);
     });
-    it('should set the bulkSelection initially to "none" when there are not selected rows', () => {
+    it('should set the bulkSelection initially to false when there are not selected rows', () => {
         const component = mount(
             <Table data={tableData} showCheckboxColumn keyField="id">
                 <Column field="name" header="Name" />
             </Table>,
         );
-        expect(component.state().bulkSelection).toBe('none');
+        expect(component.state().bulkSelection).toBe(false);
     });
-    it('should set the bulkSelection initially to "some" when there are one row selected', () => {
+    it('should set the bulkSelection initially to "indeterminate" when there are one row selected', () => {
         const component = mount(
             <Table data={tableData} selectedRows={['1234qwerty']} showCheckboxColumn keyField="id">
                 <Column field="name" header="Name" />
             </Table>,
         );
-        expect(component.state().bulkSelection).toBe('some');
+        expect(component.state().bulkSelection).toBe('indeterminate');
     });
-    it('should set the bulkSelection initially to "all" when all rows are selected', () => {
+    it('should set the bulkSelection initially to true when all rows are selected', () => {
         const component = mount(
             <Table
                 data={tableData}
@@ -438,7 +438,7 @@ describe('<Table />', () => {
                 <Column field="name" header="Name" />
             </Table>,
         );
-        expect(component.state().bulkSelection).toBe('all');
+        expect(component.state().bulkSelection).toBe(true);
     });
     it('should set the right state when change the maxRowSelection', () => {
         const component = mount(
@@ -472,7 +472,7 @@ describe('<Table />', () => {
                 key: '9012zxcvbn',
             },
         ]);
-        expect(component.state().bulkSelection).toBe('all');
+        expect(component.state().bulkSelection).toBe(true);
         component.setProps({
             maxRowSelection: 3,
         });
@@ -496,7 +496,7 @@ describe('<Table />', () => {
                 key: '9012zxcvbn',
             },
         ]);
-        expect(component.state().bulkSelection).toBe('some');
+        expect(component.state().bulkSelection).toBe('indeterminate');
     });
     it('should set the right state when change the selectedRows', () => {
         const component = mount(
@@ -524,7 +524,7 @@ describe('<Table />', () => {
                 key: '9012zxcvbn',
             },
         ]);
-        expect(component.state().bulkSelection).toBe('some');
+        expect(component.state().bulkSelection).toBe('indeterminate');
         component.setProps({
             selectedRows: ['1234qwerty', '9012zxcvbn'],
         });
@@ -548,7 +548,7 @@ describe('<Table />', () => {
                 key: '9012zxcvbn',
             },
         ]);
-        expect(component.state().bulkSelection).toBe('some');
+        expect(component.state().bulkSelection).toBe('indeterminate');
     });
     it('should fire onRowSelection with new selected data when change the selectedRows', () => {
         const onRowSelectionMockFn = jest.fn();
@@ -611,7 +611,9 @@ describe('<Table />', () => {
                 key: '9012zxcvbn',
             },
         ]);
-        const headCheckbox = component.find('InputCheckbox[label="select all rows"]').find('input');
+        const headCheckbox = component
+            .find('PrimitiveCheckbox[label="select all rows"]')
+            .find('input');
         headCheckbox.simulate('click');
         expect(component.state().rows).toEqual([
             {
@@ -667,7 +669,9 @@ describe('<Table />', () => {
                 key: '9012zxcvbn',
             },
         ]);
-        const headCheckbox = component.find('InputCheckbox[label="select all rows"]').find('input');
+        const headCheckbox = component
+            .find('PrimitiveCheckbox[label="select all rows"]')
+            .find('input');
         headCheckbox.simulate('click');
         expect(component.state().rows).toEqual([
             {
@@ -949,7 +953,7 @@ describe('<Table />', () => {
                 key: '9012zxcvbn',
             },
         ]);
-        expect(state.bulkSelection).toBe('none');
+        expect(state.bulkSelection).toBe(false);
     });
     it('should set the right state when data prop changes and have selected rows', () => {
         const component = mount(
@@ -981,7 +985,7 @@ describe('<Table />', () => {
                 key: '9012zxcvbn',
             },
         ]);
-        expect(state.bulkSelection).toBe('some');
+        expect(state.bulkSelection).toBe('indeterminate');
     });
     it('should set the initial selectedRowsKeys to empty object when not pass selectedRows', () => {
         const component = mount(
@@ -1099,9 +1103,11 @@ describe('<Table />', () => {
                 <Column field="id" header="ID" />
             </Table>,
         );
-        const headCheckbox = component.find('InputCheckbox[label="select all rows"]').find('input');
+        const headCheckbox = component
+            .find('PrimitiveCheckbox[label="select all rows"]')
+            .find('input');
         headCheckbox.simulate('click');
-        expect(component.state('bulkSelection')).toBe('all');
+        expect(component.state('bulkSelection')).toBe(true);
         expect(component.instance().selectedRowsKeys).toEqual({
             '1234qwerty': true,
             '5678asdfgh': true,
@@ -1119,7 +1125,7 @@ describe('<Table />', () => {
                 },
             ],
         });
-        expect(component.state('bulkSelection')).toBe('all');
+        expect(component.state('bulkSelection')).toBe(true);
         expect(component.instance().selectedRowsKeys).toEqual({
             '1234qwerty': true,
             '9012zxcvbn': true,
