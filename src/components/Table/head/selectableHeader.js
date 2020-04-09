@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import InputCheckbox from './InputCheckbox';
+import PrimitiveCheckbox from '../../PrimitiveCheckbox';
 import StyledWrapper from './styled/wrapper';
 import StyledCheckboxWrapper from './styled/checkboxWrapper';
 import StyledScrollShadow from './styled/scrollShadow';
@@ -18,8 +18,8 @@ export default function SelectableHeader(props) {
     const name = `${tableId}-options`;
     const isDisabled = maxRowSelection === 0;
     const isRadio = maxRowSelection === 1;
-    const isIndeterminate = bulkSelection === 'some';
-    const isAllSelected = bulkSelection === 'all';
+    const bulkStateMap = new Map([['all', true], ['some', 'indeterminate'], ['none', false]]);
+    const checked = bulkStateMap.get(bulkSelection);
 
     const handleClick = event => {
         if (bulkSelection === 'none') {
@@ -39,14 +39,13 @@ export default function SelectableHeader(props) {
     return (
         <th style={style} scope="col" tabIndex={-1}>
             <StyledCheckboxWrapper style={style}>
-                <InputCheckbox
+                <PrimitiveCheckbox
                     name={name}
                     label="select all rows"
                     hideLabel
                     type="checkbox"
                     tabIndex="-1"
-                    checked={isAllSelected}
-                    indeterminate={isIndeterminate}
+                    checked={checked}
                     disabled={isDisabled}
                     onClick={handleClick}
                 />

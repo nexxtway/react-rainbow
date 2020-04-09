@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import InputCheckbox from '../Table/head/InputCheckbox';
+import PrimitiveCheckbox from '../PrimitiveCheckbox';
 import RenderIf from '../RenderIf';
 import TreeChildren from './treeChildren';
 import ExpandCollapseButton from './expandCollapseButton';
@@ -18,14 +18,13 @@ export default function Child(props) {
         isLoading,
         children,
         isChecked,
-        isIndeterminate,
         icon,
         childPath,
         onExpandCollapse,
         onSelect,
     } = props;
     const hasChildren = Array.isArray(children);
-    const hasCheckbox = typeof isChecked === 'boolean';
+    const hasCheckbox = isChecked !== undefined;
     const hasIcon = !!icon;
     return (
         <ItemContainerLi hasChildren={hasChildren} icon={icon}>
@@ -38,10 +37,9 @@ export default function Child(props) {
                 />
                 <RenderIf isTrue={hasCheckbox}>
                     <InputContainer>
-                        <InputCheckbox
+                        <PrimitiveCheckbox
                             type="checkbox"
-                            checked={isChecked === true}
-                            indeterminate={isIndeterminate === true}
+                            checked={isChecked}
                             onChange={() => onSelect({ childPath })}
                         />
                     </InputContainer>
@@ -67,8 +65,7 @@ export default function Child(props) {
 
 Child.propTypes = {
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    isChecked: PropTypes.bool,
-    isIndeterminate: PropTypes.bool,
+    isChecked: PropTypes.oneOf([true, false, 'indeterminate']),
     isExpanded: PropTypes.bool,
     isLoading: PropTypes.bool,
     icon: PropTypes.node,
@@ -81,7 +78,6 @@ Child.propTypes = {
 Child.defaultProps = {
     label: undefined,
     isChecked: undefined,
-    isIndeterminate: undefined,
     isExpanded: undefined,
     isLoading: undefined,
     children: undefined,

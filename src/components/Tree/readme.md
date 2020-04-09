@@ -94,15 +94,14 @@
 
 ```js
     const data = [
-        { label: 'Tree Item', icon: <FileIcon /> },
-        { label: 'Tree Item', icon: <FileIcon /> },
-        { label: 'Tree Item', icon: <FileIcon /> },
+        { label: 'Tree Item',isChecked: false, icon: <FileIcon /> },
+        { label: 'Tree Item',isChecked: false, icon: <FileIcon /> },
+        { label: 'Tree Item',isChecked: false, icon: <FileIcon /> },
         {
             label: 'Tree Branch',
             icon: <FolderCloseIcon />,
             isExpanded: true,
-            isChecked: false,
-            isIndeterminate: true,
+            isChecked: 'indeterminate',
             children: [
                 { label: 'Tree Item', isChecked: false },
                 { label: 'Tree Item', isChecked: true },
@@ -113,7 +112,6 @@
             icon: <FolderCloseIcon />,
             isLoading: true,
             isChecked: false,
-            isIndeterminate: false,
             children: [
                 { label: 'Tree Item', isChecked: false, icon: <FileIcon /> },
                 { label: 'Tree Item', isChecked: false, icon: <FileIcon /> },

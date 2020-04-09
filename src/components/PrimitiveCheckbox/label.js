@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import StyledFaux from './styled/faux';
-import HiddenElement from '../../../Structural/hiddenElement';
+import HiddenElement from '../Structural/hiddenElement';
 
 export default function Label(props) {
     const { label, inputId } = props;
