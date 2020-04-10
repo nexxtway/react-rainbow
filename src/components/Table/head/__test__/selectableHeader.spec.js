@@ -24,24 +24,6 @@ describe('SelectableHeader', () => {
         const component = mount(<SelectableHeader bulkSelection="all" />);
         expect(component.find('PrimitiveCheckbox').prop('checked')).toBe(true);
     });
-    it('should set checked to false in PrimitiveCheckbox component when bulkSelection is other than "all"', () => {
-        const values = ['none', 'some', '', 123, undefined];
-        values.forEach(value => {
-            const component = mount(<SelectableHeader bulkSelection={value} />);
-            expect(component.find('PrimitiveCheckbox').prop('checked')).toBe(false);
-        });
-    });
-    it('should set indeterminate to true in PrimitiveCheckbox component when bulkSelection is "some"', () => {
-        const component = mount(<SelectableHeader bulkSelection="some" />);
-        expect(component.find('PrimitiveCheckbox').prop('indeterminate')).toBe(true);
-    });
-    it('should set indeterminate to false in PrimitiveCheckbox component when bulkSelection is other than "some"', () => {
-        const values = ['none', 'all', '', 123, undefined];
-        values.forEach(value => {
-            const component = mount(<SelectableHeader bulkSelection={value} />);
-            expect(component.find('PrimitiveCheckbox').prop('indeterminate')).toBe(false);
-        });
-    });
     it('should set disabled to true in PrimitiveCheckbox component when maxRowSelection passed is 0', () => {
         const component = mount(<SelectableHeader maxRowSelection={0} />);
         expect(component.find('PrimitiveCheckbox').prop('disabled')).toBe(true);
