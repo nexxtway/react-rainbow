@@ -39,7 +39,7 @@ export { default as MapMarker } from './MapMarker';
 export { default as MenuDivider } from './MenuDivider';
 export { default as MenuItem } from './MenuItem';
 export { default as Modal } from './Modal';
-export { default as MonthCalendar } from './MonthCalendar';
+export { default as MonthlyCalendar } from './MonthlyCalendar';
 export { default as Notification } from './Notification';
 export { default as Pagination } from './Pagination';
 export { default as Picklist } from './Picklist';
