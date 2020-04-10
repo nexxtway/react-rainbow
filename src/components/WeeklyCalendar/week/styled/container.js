@@ -8,7 +8,7 @@ const StyledContainer = attachThemeAttrs(styled.div)`
     width: 100%;
     flex: 1 1 auto;
     height: 1200px;
-    min-width: 579px;
+    min-width: 677px;
 
     > div:nth-child(2) {
         width: 11px;

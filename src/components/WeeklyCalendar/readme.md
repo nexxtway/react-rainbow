@@ -1,4 +1,4 @@
-##### Weekly Scheduler basic
+##### Weekly Calendar basic
 
 ```js
 import React from 'react';
@@ -38,29 +38,38 @@ const titles = [
     'S Pacheco',
     'T Leon',
     'Jose Torres',
+    'Yuri V. Munayev',
 ];
+const randomDate = (minDate, maxDate) => {
+    return new Date(minDate.getTime() + Math.random() * (maxDate.getTime() - minDate.getTime()));
+}
+const randomMinutes = (min, max) => (Math.floor(Math.random() * (max - min + 1) ) + min) * 30;
+const randomEvents = (minDate, maxDate) => {
+    let events = [];
+    const firstDay = new Date(minDate);
+    const lastDay = new Date(minDate);
+    lastDay.setDate(lastDay.getDate() + 7);
+    while (lastDay <= maxDate) {
+        events = events.concat(titles.map( title => {
+            const startDate = randomDate(firstDay, lastDay);
+            startDate.setMinutes(randomMinutes(0, 1));
+            const endDate = new Date(startDate);
+            endDate.setMinutes(endDate.getMinutes() + 30);
+            return {title, startDate, endDate };
+        }));
+        firstDay.setDate(firstDay.getDate() + 7);
+        lastDay.setDate(lastDay.getDate() + 7);
+    }
+    return events;
+};
+
 const minDate = new Date();
+minDate.setHours(0, 0, 0, 0);
 minDate.setDate(minDate.getDate() - minDate.getDay() - 7);
 const maxDate = new Date(minDate);
 maxDate.setDate(maxDate.getDate() + 21);
 
-const randomDate = () => {
-    return new Date(minDate.getTime() + Math.random() * (maxDate.getTime() - minDate.getTime()));
-}
-const randomMinutes = (min, max) => (Math.floor(Math.random() * (max - min + 1) ) + min) * 5;
-
-const events = titles.map( title => {
-    const startDate = randomDate();
-    startDate.setMinutes(randomMinutes(0, 12));
-    const endDate = new Date(startDate);
-    endDate.setMinutes(endDate.getMinutes() + randomMinutes(3, 12));
-    return {title, startDate, endDate };
-});
-const startDate = new Date();
-startDate.setMinutes(0);
-const endDate = new Date(startDate);
-endDate.setMinutes(30);
-events.push({title: 'Yuri V. Munayev', startDate, endDate });
+const events = randomEvents(minDate, maxDate);
 
 const Container = styled.div`
     padding: 10px;

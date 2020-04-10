@@ -1,11 +1,9 @@
 import styled from 'styled-components';
 import ButtonIcon from '../../ButtonIcon';
-import { MARGIN_SMALL } from '../../../styles/margins';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledArrowButton = attachThemeAttrs(styled(ButtonIcon))`
     color: ${props => props.palette.brand.main};
-    margin-right: ${MARGIN_SMALL};
     ${props =>
         props.disabled &&
         `

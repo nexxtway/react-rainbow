@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { addDays, isSameDay } from '../../Calendar/helpers';
+import { getFormattedWeekDay, getFormattedDay } from './helpers';
 import StyledHeader from './styled/header';
 import StyledDay from './styled/day';
 import StyledDays from './styled/days';
@@ -11,28 +12,18 @@ const Header = React.forwardRef((props, ref) => {
 
     function Days() {
         let day = new Date(week);
-        const days = [];
-
-        for (let i = 0; i < 7; i += 1) {
-            days.push(
-                <StyledDay isToday={isSameDay(today, day)} key={i}>
+        return Array.from(Array(7), (_value, index) => {
+            const item = (
+                <StyledDay isToday={isSameDay(today, day)} key={index}>
                     <div>
-                        <h4>
-                            {new Intl.DateTimeFormat(locale, {
-                                weekday: 'short',
-                            }).format(day)}
-                        </h4>
-                        <h1>
-                            {new Intl.DateTimeFormat(locale, {
-                                day: 'numeric',
-                            }).format(day)}
-                        </h1>
+                        <p>{getFormattedWeekDay(day, locale)}</p>
+                        <h1>{getFormattedDay(day, locale)}</h1>
                     </div>
-                </StyledDay>,
+                </StyledDay>
             );
             day = addDays(day, 1);
-        }
-        return days;
+            return item;
+        });
     }
     return (
         <StyledHeader role="presentation">

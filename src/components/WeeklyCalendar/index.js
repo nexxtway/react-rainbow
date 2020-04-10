@@ -14,6 +14,7 @@ import StyledContent from './styled/content';
 import StyledControls from './styled/controls';
 import StyledTitle from './styled/title';
 import StyledArrowButton from './styled/arrowButton';
+import StyledGradient from './styled/gradient';
 
 export default function WeeklyCalendar(props) {
     const {
@@ -77,6 +78,7 @@ export default function WeeklyCalendar(props) {
                         icon={<LeftIcon />}
                         assistiveText="Previous Week"
                     />
+                    <StyledTitle data-id="week">{formattedWeek}</StyledTitle>
                     <StyledArrowButton
                         onClick={selectNextWeek}
                         variant="border-filled"
@@ -85,7 +87,6 @@ export default function WeeklyCalendar(props) {
                         icon={<RightIcon />}
                         assistiveText="Next Week"
                     />
-                    <StyledTitle data-id="week">{formattedWeek}</StyledTitle>
                 </div>
                 <Select
                     label="select year"
@@ -106,6 +107,7 @@ export default function WeeklyCalendar(props) {
                     onScroll={handlerScroll}
                 />
             </StyledContent>
+            <StyledGradient />
         </StyledContainer>
     );
 }

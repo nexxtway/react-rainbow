@@ -12,21 +12,20 @@ export default function Week(props) {
     const { week, events, onEventClick, onScroll, locale } = props;
 
     function Days() {
-        const days = [];
         let day = new Date(week);
-        for (let i = 0; i < 7; i += 1) {
-            days.push(
+        return Array.from(Array(7), (_value, index) => {
+            const item = (
                 <Day
-                    key={i}
+                    key={index}
                     day={day}
                     events={events}
                     onEventClick={onEventClick}
                     locale={locale}
-                />,
+                />
             );
             day = addDays(day, 1);
-        }
-        return days;
+            return item;
+        });
     }
 
     function GridLines() {
