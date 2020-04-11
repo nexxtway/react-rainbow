@@ -18,9 +18,9 @@ export default class PrimitiveCheckbox extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        const { indeterminate: prevIndeterminate } = prevProps;
+        const { checked: prevChecked } = prevProps;
         const { checked } = this.props;
-        if (prevIndeterminate !== (checked === 'indeterminate')) {
+        if (typeof prevChecked !== typeof checked) {
             this.inputRef.current.indeterminate = checked === 'indeterminate';
         }
     }

@@ -9,7 +9,7 @@ interface DataItem {
     label?: ReactNode;
     icon?: ReactNode;
     isExpanded?: boolean;
-    isChecked?: boolean;
+    isChecked?: boolean | 'indeterminate';
     children?: DataItem[];
 }
 

@@ -31,7 +31,7 @@ Tree.propTypes = {
             label: PropTypes.node,
             icon: PropTypes.node,
             isExpanded: PropTypes.bool,
-            isChecked: PropTypes.bool,
+            isChecked: PropTypes.oneOf([true, false, 'indeterminate']),
             children: PropTypes.array,
         }),
     ),

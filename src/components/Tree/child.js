@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PrimitiveCheckbox from '../PrimitiveCheckbox';
 import RenderIf from '../RenderIf';
 import TreeChildren from './treeChildren';
 import ExpandCollapseButton from './expandCollapseButton';
@@ -8,7 +7,7 @@ import ItemContainerLi from './styled/itemContainerLi';
 import NodeContainer from './styled/nodeContainer';
 import Label from './styled/label';
 import IconContainer from './styled/iconContainer';
-import InputContainer from './styled/inputContainer';
+import InputCheckbox from './styled/inputCheckbox';
 import ChildrenContainer from './styled/childrenContainer';
 
 export default function Child(props) {
@@ -24,7 +23,7 @@ export default function Child(props) {
         onSelect,
     } = props;
     const hasChildren = Array.isArray(children);
-    const hasCheckbox = isChecked !== undefined;
+    const hasCheckbox = typeof isChecked === 'boolean' || isChecked === 'indeterminate';
     const hasIcon = !!icon;
     return (
         <ItemContainerLi hasChildren={hasChildren} icon={icon}>
@@ -36,13 +35,11 @@ export default function Child(props) {
                     onClick={() => onExpandCollapse({ childPath })}
                 />
                 <RenderIf isTrue={hasCheckbox}>
-                    <InputContainer>
-                        <PrimitiveCheckbox
-                            type="checkbox"
-                            checked={isChecked}
-                            onChange={() => onSelect({ childPath })}
-                        />
-                    </InputContainer>
+                    <InputCheckbox
+                        type="checkbox"
+                        checked={isChecked}
+                        onChange={() => onSelect({ childPath })}
+                    />
                 </RenderIf>
                 <RenderIf isTrue={hasIcon}>
                     <IconContainer>{icon}</IconContainer>
