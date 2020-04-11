@@ -65,6 +65,7 @@ export default class PrimitiveCheckbox extends Component {
             id,
             name,
             checked,
+            indeterminate,
         } = this.props;
 
         return (
@@ -83,6 +84,7 @@ export default class PrimitiveCheckbox extends Component {
                         onKeyDown={onKeyDown}
                         disabled={disabled}
                         checked={checked}
+                        indeterminate={indeterminate}
                         ref={this.inputRef}
                     />
 
