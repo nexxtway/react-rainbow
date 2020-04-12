@@ -101,10 +101,12 @@
             label: 'Tree Branch',
             icon: <FolderCloseIcon />,
             isExpanded: true,
-            isChecked: 'indeterminate',
+            isChecked: false,
             children: [
                 { label: 'Tree Item', isChecked: false },
-                { label: 'Tree Item', isChecked: true },
+                { label: 'Tree Item', isChecked: false },               
+                { label: 'Tree Item', isChecked: false },
+
             ],
         },
         {
@@ -119,6 +121,7 @@
         },
     ];
     const initialState = { data };
+    const stateMap = { all: true, some: 'indeterminate', none: false };
     const openNode = ({ childPath }) => {
         const child = Tree.getChild(state.data, childPath);
         child.isExpanded = !child.isExpanded;
@@ -127,6 +130,14 @@
     const selectNode = ({ childPath }) => {
         const child = Tree.getChild(state.data, childPath);
         child.isChecked = !child.isChecked;
+        if(childPath.length > 1) {           
+            const parent = Tree.getParent(state.data, childPath);
+            const brothersState = Tree.getBrothersState(parent);
+            parent.isChecked = stateMap[brothersState];
+        }
+        if (child.children) {
+            child.children = Tree.passParentState(child);
+        }
         setState({ data: state.data });
     }
     <Tree
