@@ -7,19 +7,9 @@ import getHeaderRowFromWorkbook from './helpers/getHeaderRowFromWorkbook';
 import getDataToImport from './helpers/getDataToImport';
 import isStepThreeNextButtonDisabled from './helpers/isStepThreeNextButtonDisabled';
 import Footer from './footer';
-import StepOne from './stepOne';
-import StepTwo from './stepTwo';
-import StepThree from './stepThree';
-import StepFour from './stepFour';
+import getStepComponent from './helpers/getStepComponent';
 
 const stepNames = ['step-1', 'step-2', 'step-3', 'step-4'];
-
-const stepsMap = {
-    'step-1': StepOne,
-    'step-2': StepTwo,
-    'step-3': StepThree,
-    'step-4': StepFour,
-};
 
 const modalTitleMap = {
     'step-1': 'Whats do you want to do?',
@@ -28,21 +18,22 @@ const modalTitleMap = {
     'step-4': 'Review and Start Import',
 };
 
-function EmptyComponent() {
-    return null;
-}
-
 const ADD_RECORDS = Symbol('add-records');
 const MERGE_RECORDS = Symbol('merge-records');
+const ADD_RECORDS_TYPE = 'add-records';
 
 /**
  * @category Experiences
  */
 
 function ImportRecordsFlow(props) {
-    const { className, style, isOpen, onRequestClose, schema, onComplete } = props;
-    const [currentStepIndex, setCurrentStepIndex] = useState(0);
-    const [actionOption, setActionOption] = useState('');
+    const { className, style, isOpen, onRequestClose, schema, onComplete, actionType } = props;
+    const [currentStepIndex, setCurrentStepIndex] = useState(
+        actionType === ADD_RECORDS_TYPE ? 1 : 0,
+    );
+    const [actionOption, setActionOption] = useState(
+        actionType === ADD_RECORDS_TYPE ? ADD_RECORDS_TYPE : '',
+    );
     const [matchField, setMatchField] = useState('default');
     const [fileName, setFileName] = useState('');
     const [fileType, setFileType] = useState('');
@@ -53,9 +44,8 @@ function ImportRecordsFlow(props) {
     const [fieldsMap, setFieldsMap] = useState({});
     const [schemaFields, setSchemaFields] = useState([]);
 
-    const isBackButtonDisabled = currentStepIndex === 0;
     const currentStep = stepNames[currentStepIndex];
-    const StepComponent = stepsMap[currentStep] || EmptyComponent;
+    const StepComponent = getStepComponent({ currentStep });
 
     const removeFile = () => {
         setHasFileSelected(false);
@@ -113,6 +103,13 @@ function ImportRecordsFlow(props) {
         }
     };
 
+    const isBackButtonDisabled = () => {
+        if (actionType === ADD_RECORDS_TYPE) {
+            return currentStepIndex === 1;
+        }
+        return currentStepIndex === 0;
+    };
+
     const isNextButtonDisabled = () => {
         if (currentStepIndex === 0) {
             return !actionOption || (actionOption === 'merge-records' && matchField === 'default');
@@ -167,8 +164,9 @@ function ImportRecordsFlow(props) {
                     onBack={goBackStep}
                     onNext={goNextStep}
                     currentStep={currentStep}
-                    isBackButtonDisabled={isBackButtonDisabled}
+                    isBackButtonDisabled={isBackButtonDisabled()}
                     isNextButtonDisabled={isNextButtonDisabled()}
+                    actionType={actionType}
                 />
             }
         >
@@ -210,6 +208,8 @@ ImportRecordsFlow.propTypes = {
     onRequestClose: PropTypes.func,
     /** The action triggered when all flow steps are completed. */
     onComplete: PropTypes.func,
+    /** */
+    actionType: PropTypes.oneOf(['add-records']),
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
@@ -225,6 +225,7 @@ ImportRecordsFlow.defaultProps = {
     isOpen: false,
     onRequestClose: () => {},
     onComplete: () => {},
+    actionType: undefined,
 };
 
 ImportRecordsFlow.MERGE_RECORDS = MERGE_RECORDS;
