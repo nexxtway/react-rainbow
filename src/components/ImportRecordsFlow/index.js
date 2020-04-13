@@ -208,7 +208,7 @@ ImportRecordsFlow.propTypes = {
     onRequestClose: PropTypes.func,
     /** The action triggered when all flow steps are completed. */
     onComplete: PropTypes.func,
-    /** */
+    /** The action type to use. When set to "add-records" it will use this type and start the flow in the second step. */
     actionType: PropTypes.oneOf(['add-records']),
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
