@@ -16,6 +16,7 @@ const getScrollTop = () => {
         return window.pageYOffset;
     });
 };
+
 const scrollDown = () => {
     browser.keys(ARROW_DOWN_KEY);
     browser.keys(ARROW_DOWN_KEY);
