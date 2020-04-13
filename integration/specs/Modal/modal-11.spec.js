@@ -1,13 +1,27 @@
 const PageModal = require('../../../src/components/Modal/pageObject');
 const PageLookup = require('../../../src/components/Lookup/pageObject');
+const PageDatePicker = require('../../../src/components/DatePicker/pageObject');
 const { ESCAPE_KEY, ENTER_KEY, ARROW_DOWN_KEY } = require('../../constants');
 
 const BUTTON = '#button-11';
 const MODAL = '#modal-11';
+const MODAL_DATEPICKER = '#modal-datepicker-11';
 const TITLE_INPUT = '#modal-11 input[placeholder="Enter company name"]';
 const DATE_PICKER_INPUT = '#modal-11 input[placeholder="Select a date"]';
 const TIME_PICKER_INPUT = '#modal-11 input[name="time"]';
 const MODAL_LOOKUP = '#modal-lookup-11';
+
+const getScrollTop = () => {
+    return browser.execute(() => {
+        return window.pageYOffset;
+    });
+};
+const scrollDown = () => {
+    browser.keys(ARROW_DOWN_KEY);
+    browser.keys(ARROW_DOWN_KEY);
+    browser.keys(ARROW_DOWN_KEY);
+    browser.keys(ARROW_DOWN_KEY);
+};
 
 describe('Modal with redux form example', () => {
     beforeAll(() => {
@@ -18,7 +32,78 @@ describe('Modal with redux form example', () => {
         const component = $(BUTTON);
         component.waitForExist();
     });
-
+    it('should have scroll disabled when modal is opened', () => {
+        const modal = new PageModal(MODAL);
+        const triggerButton = $(BUTTON);
+        triggerButton.click();
+        modal.waitUntilOpen();
+        const initialScrollTop = getScrollTop();
+        scrollDown();
+        const finalScrollTop = getScrollTop();
+        const hasNotScrolled = finalScrollTop === initialScrollTop;
+        expect(hasNotScrolled).toBe(true);
+    });
+    it('should have scroll enabled after closing modal', () => {
+        const modal = new PageModal(MODAL);
+        const initialScrollTop = getScrollTop();
+        const triggerButton = $(BUTTON);
+        triggerButton.click();
+        modal.waitUntilOpen();
+        browser.keys(ESCAPE_KEY);
+        modal.waitUntilClose();
+        scrollDown();
+        const finalScrollTop = getScrollTop();
+        const hasScrolled = finalScrollTop > initialScrollTop;
+        expect(hasScrolled).toBe(true);
+    });
+    it('should have scroll disabled when modal is opened and another modal is opened above', () => {
+        const modal = new PageModal(MODAL);
+        const triggerButton = $(BUTTON);
+        triggerButton.click();
+        modal.waitUntilOpen();
+        const datepicker = new PageDatePicker(MODAL_DATEPICKER);
+        datepicker.click();
+        datepicker.waitUntilOpen();
+        const initialScrollTop = getScrollTop();
+        scrollDown();
+        const finalScrollTop = getScrollTop();
+        const hasNotScrolled = finalScrollTop === initialScrollTop;
+        expect(hasNotScrolled).toBe(true);
+    });
+    it('should have scroll disabled when modal is opened and another modal is opened above and then closed', () => {
+        const modal = new PageModal(MODAL);
+        const triggerButton = $(BUTTON);
+        triggerButton.click();
+        modal.waitUntilOpen();
+        const datepicker = new PageDatePicker(MODAL_DATEPICKER);
+        datepicker.click();
+        datepicker.waitUntilOpen();
+        browser.keys(ESCAPE_KEY);
+        datepicker.waitUntilClose();
+        const initialScrollTop = getScrollTop();
+        scrollDown();
+        const finalScrollTop = getScrollTop();
+        const hasNotScrolled = finalScrollTop === initialScrollTop;
+        expect(hasNotScrolled).toBe(true);
+    });
+    it('should have scroll enabled when modal is opened and another modal is opened above and then all modals are closed', () => {
+        const modal = new PageModal(MODAL);
+        const triggerButton = $(BUTTON);
+        triggerButton.click();
+        modal.waitUntilOpen();
+        const datepicker = new PageDatePicker(MODAL_DATEPICKER);
+        datepicker.click();
+        datepicker.waitUntilOpen();
+        browser.keys(ESCAPE_KEY);
+        datepicker.waitUntilClose();
+        browser.keys(ESCAPE_KEY);
+        modal.waitUntilClose();
+        const initialScrollTop = getScrollTop();
+        scrollDown();
+        const finalScrollTop = getScrollTop();
+        const hasScrolled = finalScrollTop > initialScrollTop;
+        expect(hasScrolled).toBe(true);
+    });
     it('should reset form state when close modal', () => {
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);

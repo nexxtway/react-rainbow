@@ -523,6 +523,7 @@ function SimpleForm(props) {
 
             <div className="rainbow-flex rainbow-justify_spread">
                 <Field
+                    id="modal-datepicker-11"
                     style={styles.inputColumn}
                     component={DatePicker}
                     name="date"
