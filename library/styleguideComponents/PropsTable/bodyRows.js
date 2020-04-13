@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import propTypeShapeRender from './renderers/propTypeShape';
+import propTypeUnionRender from './renderers/propTypeUnion';
 
 function getTitleValue(value) {
     if (!value) {
@@ -19,13 +20,27 @@ function renderValue(value, caption, row) {
         return '';
     }
 
-    if (caption === 'Description' && type && type.name === 'shape') {
-        return (
-            <div>
-                {description}
-                {propTypeShapeRender(type.value)}
-            </div>
-        );
+    if (caption === 'Description') {
+        if (type) {
+            if (type.name === 'shape') {
+                return (
+                    <div>
+                        {description}
+                        {propTypeShapeRender(type.value)}
+                    </div>
+                );
+            }
+
+            if (type.name === 'union') {
+                return (
+                    <div>
+                        {description}
+                        <p>One of type:</p>
+                        {propTypeUnionRender(type.value)}
+                    </div>
+                );
+            }
+        }
     }
 
     return value;

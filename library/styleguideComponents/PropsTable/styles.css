@@ -81,6 +81,15 @@
 
 .react-rainbow-proptype-shape-list li > ul {
     margin-left: 1.5rem;
+    list-style-type: none;
+}
+
+.react-rainbow-proptype-union-list {
+    list-style-type: disc;
+}
+
+.react-rainbow-proptype-union-list li > ul {
+    margin-left: 1.5rem;
 }
 
 .react-rainbow-prop-name-label {
