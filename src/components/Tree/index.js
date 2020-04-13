@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import TreeChildren from './treeChildren';
 import TreeContainerUl from './styled/treeContainerUl';
 import getChild from './helpers/getChild';
-import getParent from './helpers/getParent';
-import getBrothersState from './helpers/getBrothersState';
 import passParentState from './helpers/passParentState';
+import passChildState from './helpers/passChildState';
 
 /**
  * A Tree is visualization of a structure hierarchy with nested elements. A branch can be expanded or collapsed or selected. This is a BETA version.
@@ -61,6 +60,5 @@ Tree.defaultProps = {
  * @public
  */
 Tree.getChild = getChild;
-Tree.getParent = getParent;
-Tree.getBrothersState = getBrothersState;
 Tree.passParentState = passParentState;
+Tree.passChildState = passChildState;
