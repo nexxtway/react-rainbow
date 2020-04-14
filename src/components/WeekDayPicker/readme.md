@@ -143,7 +143,7 @@ import React, { useState } from 'react';
 import { WeekDayPicker } from 'react-rainbow-components';
 
 function ErrorWeekDayPicker(props) {
-    const [day, setDay] = useState('monday');
+    const [day, setDay] = useState('');
     const [error, setError] = useState('This field is required');
 
     const handleOnChange = weekDay => {
