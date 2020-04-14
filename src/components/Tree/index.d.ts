@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 import { BaseProps } from '../types';
 
-interface ChildPath {
-    childPath: number[];
+interface nodePath {
+    nodePath: number[];
 }
 
 interface DataItem {
@@ -15,8 +15,8 @@ interface DataItem {
 
 export interface TreeProps extends BaseProps {
     data?: DataItem[];
-    onExpandCollapse?: (args: ChildPath) => void;
-    onSelect?: (args: ChildPath) => void;
+    onExpandCollapse?: (args: nodePath) => void;
+    onSelect?: (args: nodePath) => void;
 }
 
 export default function(props: TreeProps): JSX.Element | null;

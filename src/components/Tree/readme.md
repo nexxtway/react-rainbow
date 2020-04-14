@@ -30,8 +30,8 @@
         }
     ];
     const initialState = { data };
-    const openNode = ({ childPath }) => {
-        const child = Tree.getChild(state.data, childPath);
+    const openNode = ({ nodePath }) => {
+        const child = Tree.getNode(state.data, nodePath);
         child.isExpanded = !child.isExpanded;
         setState({ data: state.data });
     }
@@ -78,8 +78,8 @@
         },
     ];
     const initialState = { data };
-    const openNode = ({ childPath }) => {
-        const child = Tree.getChild(state.data, childPath);
+    const openNode = ({ nodePath }) => {
+        const child = Tree.getNode(state.data, nodePath);
         child.isExpanded = !child.isExpanded;
         setState({ data: state.data });
     }
@@ -144,22 +144,73 @@
         },
     ];
     const initialState = { data };
-    const openNode = ({ childPath }) => {
-        const child = Tree.getChild(state.data, childPath);
+    const openNode = ({ nodePath }) => {
+        const child = Tree.getNode(state.data, nodePath);
         child.isExpanded = !child.isExpanded;
         setState({ data: state.data });
     }
-    const stateMap = { all: true, some: 'indeterminate', none: false };
-    const selectNode = ({ childPath }) => {
-        const child = Tree.getChild(state.data, childPath);
-        child.isChecked = !child.isChecked;
 
-        if(childPath.length > 1) {
-            Tree.passChildState(state.data, childPath);
+    function getSiblingSelectionState(parent) {
+        const siblings = parent.children;
+        const maxSiblingsSelection = siblings.length;
+        let selected = 0;
+        let indeterminate = 0;
+
+        siblings.forEach(sibling => {
+            if (sibling.isChecked === true) {
+                selected += 1;
+            }
+            if (sibling.isChecked === 'indeterminate') {
+                indeterminate += 1;
+            }
+        });
+
+        if (selected === 0 && indeterminate === 0) {
+            return 'none';
+        }
+        if (selected === maxSiblingsSelection) {
+            return 'all';
+        }
+        return 'some';
+    }
+
+    const stateMap = { all: true, some: 'indeterminate', none: false };
+
+    function passChildState(tree, nodePath) {
+        const parent = Tree.getNode(tree, nodePath.slice(0, nodePath.length - 1));
+        const siblingsState = getSiblingSelectionState(parent);
+        parent.isChecked = stateMap[siblingsState];
+
+        if (nodePath.length === 2) {
+            return parent;
         }
 
-        if (child.children) {
-            child.children = Tree.passParentState(child);
+        return passChildState(tree, nodePath.slice(0, nodePath.length - 1));
+    }
+
+    function passParentState(node) {
+        const children = node.children;
+
+        children.forEach(child => {
+            child.isChecked = node.isChecked;
+            if (child.children) {
+                child.children = passParentState(child);
+            }
+        });
+
+        return children;
+    }
+
+    const selectNode = ({ nodePath }) => {
+        const node = Tree.getNode(state.data, nodePath);
+        node.isChecked = !node.isChecked;
+
+        if(nodePath.length > 1) {
+            passChildState(state.data, nodePath);
+        }
+
+        if (node.children) {
+            node.children = passParentState(node);
         }
         setState({ data: state.data });
     }
