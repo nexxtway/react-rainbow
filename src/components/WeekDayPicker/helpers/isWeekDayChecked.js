@@ -1,4 +1,4 @@
-const isWeekDayChecked = (weekDay, value, multiple) => {
+export default function isWeekDayChecked(weekDay, value, multiple) {
     if (multiple) {
         if (Array.isArray(value)) {
             return value.some(day => day === weekDay);
@@ -6,6 +6,4 @@ const isWeekDayChecked = (weekDay, value, multiple) => {
         return false;
     }
     return weekDay === value;
-};
-
-export default isWeekDayChecked;
+}

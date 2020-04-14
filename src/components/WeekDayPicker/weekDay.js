@@ -52,7 +52,7 @@ export default function WeekDay(props) {
 
 WeekDay.propTypes = {
     name: PropTypes.string,
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    value: PropTypes.string,
     isChecked: PropTypes.bool,
     disabled: PropTypes.bool,
     required: PropTypes.bool,
@@ -64,7 +64,7 @@ WeekDay.propTypes = {
 
 WeekDay.defaultProps = {
     name: undefined,
-    value: '',
+    value: undefined,
     isChecked: false,
     disabled: false,
     required: false,

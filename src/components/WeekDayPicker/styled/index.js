@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { MARGIN_X_SMALL } from '../../../styles/margins';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
+import HelpText from '../../Input/styled/helpText';
 
 const StyledFieldset = styled.fieldset`
     line-height: 1.5rem;
@@ -9,6 +10,10 @@ const StyledFieldset = styled.fieldset`
     padding: 0;
     border: 0;
     box-sizing: border-box;
+    text-align: center;
+`;
+
+const StyledHelpText = styled(HelpText)`
     text-align: center;
 `;
 
@@ -98,4 +103,11 @@ const StyledWeekDayLabel = attachThemeAttrs(styled.label).attrs(props => {
     
 `;
 
-export { StyledFieldset, StyledLabel, StyledTextError, StyledWeekDayContainer, StyledWeekDayLabel };
+export {
+    StyledFieldset,
+    StyledHelpText,
+    StyledLabel,
+    StyledTextError,
+    StyledWeekDayContainer,
+    StyledWeekDayLabel,
+};
