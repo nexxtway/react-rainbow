@@ -63,7 +63,8 @@ describe('Modal with redux form example', () => {
         triggerButton.click();
         modal.waitUntilOpen();
         const datepicker = new PageDatePicker(MODAL_DATEPICKER);
-        datepicker.click();
+        const datepickerTriggerButton = $(DATE_PICKER_INPUT);
+        datepickerTriggerButton.click();
         datepicker.waitUntilOpen();
         const initialScrollTop = getScrollTop();
         scrollDown();
@@ -77,7 +78,8 @@ describe('Modal with redux form example', () => {
         triggerButton.click();
         modal.waitUntilOpen();
         const datepicker = new PageDatePicker(MODAL_DATEPICKER);
-        datepicker.click();
+        const datepickerTriggerButton = $(DATE_PICKER_INPUT);
+        datepickerTriggerButton.click();
         datepicker.waitUntilOpen();
         browser.keys(ESCAPE_KEY);
         datepicker.waitUntilClose();
@@ -93,7 +95,8 @@ describe('Modal with redux form example', () => {
         triggerButton.click();
         modal.waitUntilOpen();
         const datepicker = new PageDatePicker(MODAL_DATEPICKER);
-        datepicker.click();
+        const datepickerTriggerButton = $(DATE_PICKER_INPUT);
+        datepickerTriggerButton.click();
         datepicker.waitUntilOpen();
         browser.keys(ESCAPE_KEY);
         datepicker.waitUntilClose();
