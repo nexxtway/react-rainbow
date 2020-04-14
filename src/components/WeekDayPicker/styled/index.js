@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
-import { MARGIN_X_SMALL } from '../../../styles/margins';
-import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 import HelpText from '../../Input/styled/helpText';
 
 const StyledFieldset = styled.fieldset`
@@ -17,28 +15,6 @@ const StyledHelpText = styled(HelpText)`
     text-align: center;
 `;
 
-const StyledLabel = attachThemeAttrs(styled.legend)`
-    border: 0;
-    padding: 0;
-    color: ${props => props.palette.text.label};
-    font-size: ${FONT_SIZE_TEXT_MEDIUM};
-    line-height: 1.5;
-    margin-bottom: 0.125rem;
-    align-self: center;
-    box-sizing: border-box;
-    text-align: center;
-
-    &:empty {
-        margin: 0;
-    }
-`;
-
-const StyledTextError = attachThemeAttrs(styled.div)`
-    font-size: ${FONT_SIZE_TEXT_MEDIUM};
-    margin-top: ${MARGIN_X_SMALL};
-    color: ${props => props.palette.error.main};
-`;
-
 const StyledWeekDayContainer = styled.span`
     line-height: inherit;
     height: inherit;
@@ -51,12 +27,14 @@ const StyledWeekDayContainer = styled.span`
 const StyledWeekDayLabel = attachThemeAttrs(styled.label).attrs(props => {
     const { palette } = props;
 
+    const borderColor = palette.border.divider;
     const defaultColor = palette.text.label;
     const defaultBackground = '#ffffff';
     const activeColor = palette.getContrastText(palette.brand.main);
     const activeBackground = palette.brand.main;
 
     return {
+        borderColor,
         defaultColor,
         defaultBackground,
         activeColor,
@@ -71,7 +49,8 @@ const StyledWeekDayLabel = attachThemeAttrs(styled.label).attrs(props => {
     font-size: 10px;
     color: ${props => props.defaultColor};
     background: ${props => props.defaultBackground};
-    border: 1px solid ${props => props.defaultColor};
+    border: 1px solid ${props => props.borderColor};
+    transition: all 0.2s ease;
 
     ${props =>
         !props.readOnly &&
@@ -81,6 +60,8 @@ const StyledWeekDayLabel = attachThemeAttrs(styled.label).attrs(props => {
             color: ${props.activeColor};
             background: ${props.activeBackground};
             border: 1px solid ${props.activeBackground};
+            cursor: pointer;
+            box-shadow: ${props.shadows.brand};
         }
     `}
 
@@ -90,6 +71,13 @@ const StyledWeekDayLabel = attachThemeAttrs(styled.label).attrs(props => {
         color: ${props.activeColor};
         background: ${props.activeBackground};
         border: 1px solid ${props.activeBackground};
+
+        &:hover {
+            background: ${props.palette.brand.dark};
+            border: 1px solid ${props.palette.brand.dark};
+            cursor: pointer;
+            box-shadow: ${props.shadows.brand};
+        }
     `}
 
     ${props =>
@@ -103,11 +91,4 @@ const StyledWeekDayLabel = attachThemeAttrs(styled.label).attrs(props => {
     
 `;
 
-export {
-    StyledFieldset,
-    StyledHelpText,
-    StyledLabel,
-    StyledTextError,
-    StyledWeekDayContainer,
-    StyledWeekDayLabel,
-};
+export { StyledFieldset, StyledHelpText, StyledWeekDayContainer, StyledWeekDayLabel };

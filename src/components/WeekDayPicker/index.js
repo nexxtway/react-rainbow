@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import valuePropValidation from './helpers/valuePropValidation';
 import sortWeekDays from './helpers/sortWeekDays';
 import { useUniqueIdentifier } from '../../libs/hooks';
-import RequiredAsterisk from '../RequiredAsterisk';
 import RenderIf from '../RenderIf';
 import WeekDayItems from './weekDayItems';
-import { StyledFieldset, StyledHelpText, StyledLabel, StyledTextError } from './styled';
+import Label from '../Input/label';
+import StyledTextError from '../Input/styled/errorText';
+import { StyledFieldset, StyledHelpText } from './styled';
 
 /**
  * A WeekDayPicker allows to select the days of the week
@@ -54,12 +55,7 @@ function WeekDayPicker(props) {
 
     return (
         <StyledFieldset className={className} style={style} id={id}>
-            <RenderIf isTrue={!!label}>
-                <StyledLabel>
-                    <RequiredAsterisk required={required} />
-                    {label}
-                </StyledLabel>
-            </RenderIf>
+            <Label label={label} hideLabel={!label} required={required} readOnly={readOnly} />
             <WeekDayItems
                 name={fieldsetName}
                 value={value}

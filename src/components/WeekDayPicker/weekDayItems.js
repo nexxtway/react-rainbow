@@ -31,7 +31,7 @@ export default function WeekDayItems(props) {
         return disabled || !isDayAvailable(day);
     };
 
-    return getWeekDays().map((weekDay, index) => {
+    const weekDayElements = getWeekDays().map((weekDay, index) => {
         const key = `week-day-${index}`;
         return (
             <WeekDay
@@ -48,6 +48,8 @@ export default function WeekDayItems(props) {
             />
         );
     });
+
+    return <div>{weekDayElements}</div>;
 }
 
 WeekDayItems.propTypes = {
