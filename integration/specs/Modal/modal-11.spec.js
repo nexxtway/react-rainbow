@@ -11,7 +11,7 @@ const DATE_PICKER_INPUT = '#modal-11 input[placeholder="Select a date"]';
 const TIME_PICKER_INPUT = '#modal-11 input[name="time"]';
 const MODAL_LOOKUP = '#modal-lookup-11';
 
-const getScrollTop = () => {
+const getScrollTopPosition = () => {
     return browser.execute(() => {
         return window.pageYOffset;
     });
@@ -38,22 +38,22 @@ describe('Modal with redux form example', () => {
         const triggerButton = $(BUTTON);
         triggerButton.click();
         modal.waitUntilOpen();
-        const initialScrollTop = getScrollTop();
+        const initialScrollTop = getScrollTopPosition();
         scrollDown();
-        const finalScrollTop = getScrollTop();
+        const finalScrollTop = getScrollTopPosition();
         const hasNotScrolled = finalScrollTop === initialScrollTop;
         expect(hasNotScrolled).toBe(true);
     });
     it('should have scroll enabled after closing modal', () => {
         const modal = new PageModal(MODAL);
-        const initialScrollTop = getScrollTop();
+        const initialScrollTop = getScrollTopPosition();
         const triggerButton = $(BUTTON);
         triggerButton.click();
         modal.waitUntilOpen();
         browser.keys(ESCAPE_KEY);
         modal.waitUntilClose();
         scrollDown();
-        const finalScrollTop = getScrollTop();
+        const finalScrollTop = getScrollTopPosition();
         const hasScrolled = finalScrollTop > initialScrollTop;
         expect(hasScrolled).toBe(true);
     });
@@ -66,9 +66,9 @@ describe('Modal with redux form example', () => {
         const datepickerTriggerButton = $(DATE_PICKER_INPUT);
         datepickerTriggerButton.click();
         datepicker.waitUntilOpen();
-        const initialScrollTop = getScrollTop();
+        const initialScrollTop = getScrollTopPosition();
         scrollDown();
-        const finalScrollTop = getScrollTop();
+        const finalScrollTop = getScrollTopPosition();
         const hasNotScrolled = finalScrollTop === initialScrollTop;
         expect(hasNotScrolled).toBe(true);
     });
@@ -83,13 +83,14 @@ describe('Modal with redux form example', () => {
         datepicker.waitUntilOpen();
         browser.keys(ESCAPE_KEY);
         datepicker.waitUntilClose();
-        const initialScrollTop = getScrollTop();
+        const initialScrollTop = getScrollTopPosition();
         scrollDown();
-        const finalScrollTop = getScrollTop();
+        const finalScrollTop = getScrollTopPosition();
         const hasNotScrolled = finalScrollTop === initialScrollTop;
         expect(hasNotScrolled).toBe(true);
     });
     it('should have scroll enabled when modal is opened and another modal is opened above and then all modals are closed', () => {
+        const initialScrollTop = getScrollTopPosition();
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);
         triggerButton.click();
@@ -102,9 +103,8 @@ describe('Modal with redux form example', () => {
         datepicker.waitUntilClose();
         browser.keys(ESCAPE_KEY);
         modal.waitUntilClose();
-        const initialScrollTop = getScrollTop();
         scrollDown();
-        const finalScrollTop = getScrollTop();
+        const finalScrollTop = getScrollTopPosition();
         const hasScrolled = finalScrollTop > initialScrollTop;
         expect(hasScrolled).toBe(true);
     });
