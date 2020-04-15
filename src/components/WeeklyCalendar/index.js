@@ -23,7 +23,7 @@ export default function WeeklyCalendar(props) {
         minDate,
         maxDate,
         locale: localLocale,
-        onWeekChanged,
+        onWeekChange,
         onEventClick,
         className,
         style,
@@ -45,20 +45,20 @@ export default function WeeklyCalendar(props) {
     const selectPreviousWeek = () => {
         const newWeek = addWeeks(week, -1);
         newWeek.setHours(0, 0, 0, 0);
-        return onWeekChanged({ week: newWeek });
+        return onWeekChange({ week: newWeek });
     };
 
     const selectNextWeek = () => {
         const newWeek = addWeeks(week, 1);
         newWeek.setHours(0, 0, 0, 0);
-        return onWeekChanged({ week: newWeek });
+        return onWeekChange({ week: newWeek });
     };
 
     const handleYearChange = event => {
         const newWeek = new Date(week);
         newWeek.setFullYear(event.target.value);
         newWeek.setHours(0, 0, 0, 0);
-        return onWeekChanged({ week: newWeek });
+        return onWeekChange({ week: newWeek });
     };
 
     const handlerScroll = event => {
@@ -126,7 +126,7 @@ WeeklyCalendar.propTypes = {
     /** The Calendar locale. Defaults to browser's language. */
     locale: PropTypes.string,
     /** Function triggered when week is changed */
-    onWeekChanged: PropTypes.func,
+    onWeekChange: PropTypes.func,
     /** Function triggered when a event is clicked */
     onEventClick: PropTypes.func,
     /** A CSS class for the outer element, in addition to the component's base classes. */
@@ -140,7 +140,7 @@ WeeklyCalendar.defaultProps = {
     currentWeek: undefined,
     minDate: undefined,
     maxDate: undefined,
-    onWeekChanged: () => {},
+    onWeekChange: () => {},
     onEventClick: () => {},
     locale: undefined,
     className: undefined,
