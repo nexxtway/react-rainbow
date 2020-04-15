@@ -7,6 +7,7 @@ import StyledContainer from './styled/container';
 import StyledGrid from './styled/grid';
 import StyledGridLine from './styled/gridLine';
 import StyledScroll from './styled/scroll';
+import StyledDays from './styled/days';
 
 export default function Week(props) {
     const { week, events, onEventClick, onScroll, locale } = props;
@@ -43,9 +44,12 @@ export default function Week(props) {
                 <StyledGrid>
                     <GridLines />
                 </StyledGrid>
-                <div />
-                <Days />
+
                 <ClockLine />
+                <StyledDays>
+                    <div />
+                    <Days />
+                </StyledDays>
             </StyledContainer>
         </StyledScroll>
     );

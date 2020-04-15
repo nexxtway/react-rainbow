@@ -8,9 +8,9 @@ const StyledHeader = attachThemeAttrs(styled.div)`
     border: 1px solid ${props => props.palette.border.divider};
 
     > div:last-child {
-        width: 14px;
-        min-width: 14px;
-        height: 100%;
+        overflow: scroll;
+        visibility: hidden;
+        flex: none;
     }
 `;
 export default StyledHeader;
