@@ -4,7 +4,6 @@ import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledClock = attachThemeAttrs(styled.div)`
     position: absolute;
-    top: ${props => props.clockHeight}px;
     right: 8px;
     width: 57px;
     text-align: right;

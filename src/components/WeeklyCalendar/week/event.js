@@ -8,14 +8,15 @@ import StyledEventDates from './styled/eventDates';
 import StyledEventTitle from './styled/eventTitle';
 
 export default function Event(props) {
-    const { title, startDate, endDate, onEventClick, locale } = props;
+    const { event, onEventClick, locale } = props;
+    const { title, startDate, endDate } = event;
     const eventId = useUniqueIdentifier('calendar-event');
     const duration = useEventDuration(startDate, endDate);
     const style = useEventStyle(duration, startDate);
     const dates = useFormattedEventDates(startDate, endDate, locale);
 
     return (
-        <StyledEvent id={eventId} style={style} onClick={onEventClick}>
+        <StyledEvent id={eventId} style={style} onClick={() => onEventClick(event)}>
             <RenderIf isTrue={duration >= 30}>
                 <StyledEventDates>{dates}</StyledEventDates>
             </RenderIf>
@@ -25,17 +26,13 @@ export default function Event(props) {
 }
 
 Event.propTypes = {
-    title: PropTypes.oneOfType([PropTypes.node, PropTypes.string]).isRequired,
-    startDate: PropTypes.instanceOf(Date),
-    endDate: PropTypes.instanceOf(Date),
+    event: PropTypes.object.isRequired,
     onEventClick: PropTypes.func,
     locale: PropTypes.string,
 };
 
 Event.defaultProps = {
-    title: undefined,
-    startDate: undefined,
-    endDate: undefined,
+    event: undefined,
     onEventClick: () => {},
     locale: undefined,
 };

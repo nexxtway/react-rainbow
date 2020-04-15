@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useTimer } from './hooks';
 import { isSameDay } from '../Calendar/helpers';
-import { getHeightOfDate, getFormattedClock, getFormattedHour } from './helpers';
+import { getHeightOfDate } from './helpers';
 import StyledHours from './styled/hours';
 import StyledHour from './styled/hour';
 import StyledClock from './styled/clock';
@@ -27,20 +27,29 @@ const Hours = React.forwardRef((props, ref) => {
         hour.setSeconds(0);
         return Array.from(Array(24), (_value, index) => {
             hour.setHours(index);
+            const formattedHours = new Intl.DateTimeFormat(locale, {
+                hour: 'numeric',
+                hour12: true,
+            }).format(hour);
             return (
                 <StyledHour key={index} visible={before < hour || after > hour}>
-                    <span>{getFormattedHour(hour, locale)}</span>
+                    <span>{formattedHours}</span>
                 </StyledHour>
             );
         });
     }
+    const formattedClock = new Intl.DateTimeFormat(locale, {
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true,
+    }).format(clock);
+
+    const style = { top: `${getHeightOfDate(clock) - 8}px` };
 
     return (
-        <StyledHours ref={ref}>
+        <StyledHours ref={ref} data-id="25">
             <ListHours />
-            <StyledClock clockHeight={() => getHeightOfDate(clock) - 8}>
-                {getFormattedClock(clock, locale)}
-            </StyledClock>
+            <StyledClock style={style}>{formattedClock}</StyledClock>
         </StyledHours>
     );
 });

@@ -1,4 +1,4 @@
-import { addDays } from '../../Calendar/helpers';
+import { addDays } from '../../../Calendar/helpers';
 
 export default function getEventsOfDay(events, day) {
     const first = new Date(day);

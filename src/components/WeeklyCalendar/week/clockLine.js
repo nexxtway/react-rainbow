@@ -7,9 +7,9 @@ import StyledLine from './styled/line';
 
 export default function ClockLine() {
     const clock = useTimer();
-
+    const style = { top: `${getHeightOfDate(clock)}px` };
     return (
-        <StyledClockLine clockHeight={() => getHeightOfDate(clock)}>
+        <StyledClockLine style={style}>
             <StyledCircle />
             <StyledLine />
         </StyledClockLine>

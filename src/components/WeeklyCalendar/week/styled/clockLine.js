@@ -4,7 +4,6 @@ import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 
 const StyledClockLine = attachThemeAttrs(styled.div)`
     position: absolute;
-    top: ${props => props.clockHeight}px;
     width: 100%;
     z-index: 504;
 
