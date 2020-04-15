@@ -41,34 +41,34 @@ describe('WeeklyCalendar', () => {
             done();
         }, 300);
     });
-    it('should fire onWeekChanged when the prev week button is clicked', () => {
+    it('should fire onWeekChange when the prev week button is clicked', () => {
         const week = new Date('04/12/2020');
         const prevWeek = { week: new Date('04/05/2020  00:00:00:000') };
-        const onWeekChangedMockFn = jest.fn();
+        const onWeekChangeMockFn = jest.fn();
         const component = mount(
-            <WeeklyCalendar currentWeek={week} onWeekChanged={onWeekChangedMockFn} />,
+            <WeeklyCalendar currentWeek={week} onWeekChange={onWeekChangeMockFn} />,
         );
         const prevWeekButton = component.find('ButtonIcon').at(0);
         prevWeekButton.simulate('click');
-        expect(onWeekChangedMockFn).toHaveBeenCalledWith(prevWeek);
+        expect(onWeekChangeMockFn).toHaveBeenCalledWith(prevWeek);
     });
-    it('should fire onWeekChanged with right params when the next week button is clicked', () => {
+    it('should fire onWeekChange with right params when the next week button is clicked', () => {
         const week = new Date('04/14/2020');
         const nextWeek = { week: new Date('04/19/2020  00:00:00:000') };
-        const onWeekChangedMockFn = jest.fn();
+        const onWeekChangeMockFn = jest.fn();
         const component = mount(
-            <WeeklyCalendar currentWeek={week} onWeekChanged={onWeekChangedMockFn} />,
+            <WeeklyCalendar currentWeek={week} onWeekChange={onWeekChangeMockFn} />,
         );
         const nextWeekButton = component.find('ButtonIcon').at(1);
         nextWeekButton.simulate('click');
-        expect(onWeekChangedMockFn).toHaveBeenCalledWith(nextWeek);
+        expect(onWeekChangeMockFn).toHaveBeenCalledWith(nextWeek);
     });
-    it('should fire onWeekChanged when the year is changed', () => {
+    it('should fire onWeekChange when the year is changed', () => {
         const currentWeek = new Date('04/5/2019');
         const newWeek = { week: new Date('03/31/2022 00:00:00:000') };
-        const onWeekChangedMockFn = jest.fn();
+        const onWeekChangeMockFn = jest.fn();
         const component = mount(
-            <WeeklyCalendar currentWeek={currentWeek} onWeekChanged={onWeekChangedMockFn} />,
+            <WeeklyCalendar currentWeek={currentWeek} onWeekChange={onWeekChangeMockFn} />,
         );
         const select = component.find('Select');
         expect(select.prop('value')).toBe(2019);
@@ -76,6 +76,6 @@ describe('WeeklyCalendar', () => {
             target: { value: 2022 },
         });
 
-        expect(onWeekChangedMockFn).toHaveBeenCalledWith(newWeek);
+        expect(onWeekChangeMockFn).toHaveBeenCalledWith(newWeek);
     });
 });
