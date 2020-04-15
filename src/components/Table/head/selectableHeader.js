@@ -5,6 +5,7 @@ import StyledWrapper from './styled/wrapper';
 import StyledCheckboxWrapper from './styled/checkboxWrapper';
 import StyledScrollShadow from './styled/scrollShadow';
 
+const bulkStateMap = { all: true, some: 'indeterminate', none: false };
 export default function SelectableHeader(props) {
     const {
         onSelectAllRows,
@@ -18,8 +19,7 @@ export default function SelectableHeader(props) {
     const name = `${tableId}-options`;
     const isDisabled = maxRowSelection === 0;
     const isRadio = maxRowSelection === 1;
-    const bulkStateMap = new Map([['all', true], ['some', 'indeterminate'], ['none', false]]);
-    const checked = bulkStateMap.get(bulkSelection);
+    const checked = bulkStateMap[bulkSelection];
 
     const handleClick = event => {
         if (bulkSelection === 'none') {
