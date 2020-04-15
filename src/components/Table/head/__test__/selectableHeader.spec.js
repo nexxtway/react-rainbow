@@ -20,6 +20,14 @@ describe('SelectableHeader', () => {
         const component = mount(<SelectableHeader />);
         expect(component.find('PrimitiveCheckbox').prop('type')).toBe('checkbox');
     });
+    it('should set checked to false in PrimitiveCheckbox component when bulkSelection is "none"', () => {
+        const component = mount(<SelectableHeader bulkSelection="none" />);
+        expect(component.find('PrimitiveCheckbox').prop('checked')).toBe(false);
+    });
+    it('should set checked to "indeterminate" in PrimitiveCheckbox component when bulkSelection is "some"', () => {
+        const component = mount(<SelectableHeader bulkSelection="some" />);
+        expect(component.find('PrimitiveCheckbox').prop('checked')).toBe('indeterminate');
+    });
     it('should set checked to true in PrimitiveCheckbox component when bulkSelection is "all"', () => {
         const component = mount(<SelectableHeader bulkSelection="all" />);
         expect(component.find('PrimitiveCheckbox').prop('checked')).toBe(true);
