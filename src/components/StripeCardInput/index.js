@@ -158,6 +158,16 @@ StripeCardInput.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /**
+     * This prop that should not be visible in the documentation.
+     * @ignore
+     */
+    isScriptLoaded: PropTypes.bool.isRequired,
+    /**
+     * This prop that should not be visible in the documentation.
+     * @ignore
+     */
+    isScriptLoadSucceed: PropTypes.bool.isRequired,
 };
 
 StripeCardInput.defaultProps = {
