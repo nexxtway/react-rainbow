@@ -1,6 +1,7 @@
 import React from 'react';
 import buildShapeAttrList from './shapeAttrList';
 import buildArrayOfTypeList from './arrayOfTypeList';
+import buildEnumTypeList from './enumTypeList';
 
 export default function buildUnionTypeList(data) {
     return Object.keys(data).map(index => {
@@ -9,6 +10,10 @@ export default function buildUnionTypeList(data) {
 
         if (type === 'arrayOf') {
             return buildArrayOfTypeList(value, index);
+        }
+
+        if (type === 'enum') {
+            return buildEnumTypeList(value, index);
         }
 
         let childrensList;

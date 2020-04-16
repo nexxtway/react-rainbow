@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import propTypeShapeRender from './renderers/propTypeShape';
 import propTypeUnionRender from './renderers/propTypeUnion';
 import propTypeArrayOfRender from './renderers/propTypeArrayOf';
+import propTypeEnumRender from './renderers/propTypeEnum';
 
 function getTitleValue(value) {
     if (!value) {
@@ -47,6 +48,16 @@ function renderValue(value, caption, row) {
                         {description}
                         <p>One of type:</p>
                         {propTypeUnionRender(type.value)}
+                    </div>
+                );
+            }
+
+            if (type.name === 'enum') {
+                return (
+                    <div>
+                        {description}
+                        <p>One of type:</p>
+                        {propTypeEnumRender(type.value)}
                     </div>
                 );
             }

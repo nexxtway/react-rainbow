@@ -107,3 +107,7 @@
 .react-rainbow-prop-type-array-pad {
     padding-left: 1rem;
 }
+
+.react-rainbow-prop-type-enum {
+    color: #a2aab7;
+}
