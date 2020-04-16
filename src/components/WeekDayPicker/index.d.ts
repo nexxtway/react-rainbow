@@ -1,18 +1,21 @@
 import { ReactNode, ChangeEvent } from 'react';
 import { BaseProps } from '../types';
 
+type WeekDays = 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday';
+type Value = WeekDays | WeekDays[];
+
 export interface WeekDayPickerProps extends BaseProps {
     id?: string;
     name?: string;
-    value?: string | Array<string>;
-    label?: string | ReactNode;
+    value?: Value;
+    label?: ReactNode;
     hideLabel?: boolean;
     disabled?: boolean;
     required?: boolean;
     readOnly?: boolean;
     multiple?: boolean;
-    error?: string | ReactNode;
-    onChange?: (event: ChangeEvent<HTMLElement>) => void;
+    error?: ReactNode;
+    onChange?: (value: Value) => void;
 }
 
 declare const WeekDayPicker: React.ComponentType<WeekDayPickerProps>;

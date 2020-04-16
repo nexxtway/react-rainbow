@@ -4,20 +4,19 @@
 import React, { useState } from 'react';
 import { WeekDayPicker } from 'react-rainbow-components';
 
-const SimpleWeekDayPicker = (props) => {
-    const [day, setDay] = useState('');
+function SimpleWeekDayPicker(props) {
+    const [day, setDay] = useState('monday');
 
-    const handleOnChange = e => {
-        const weekDay = e.currentTarget.value;
+    const handleOnChange = weekDay => {
         setDay(weekDay);
-        console.log(weekDay);
     };
 
     return (
         <WeekDayPicker 
-            label="Select a day" 
+            label="Week Days" 
+            bottomHelpText="Pick the a day"
             value={day}
-            onChange={(e) => handleOnChange(e)}
+            onChange={handleOnChange}
         /> 
     );
 };
@@ -27,36 +26,56 @@ const SimpleWeekDayPicker = (props) => {
 </div>
 ```
 
+
+##### WeekDayPicker days available:
+
+```js
+import React, { useState } from 'react';
+import { WeekDayPicker } from 'react-rainbow-components';
+
+const availableDates = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
+
+function AvailableDaysWeekDayPicker(props) {
+    const [day, setDay] = useState('');
+
+    const handleOnChange = weekDay => {
+        setDay(weekDay);
+    };
+
+    return (
+        <WeekDayPicker 
+            label="Select a day" 
+            value={day}
+            availableDates={availableDates}
+            onChange={handleOnChange}
+        /> 
+    );
+};
+
+<div className="rainbow-align-content_center rainbow-m-around_xx-large">
+    <AvailableDaysWeekDayPicker  />
+</div>
+```
+
 ##### WeekDayPicker multiple selection:
 
 ```js
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { WeekDayPicker } from 'react-rainbow-components';
 
-const MultipleWeekDayPicker = (props) => {
+function MultipleWeekDayPicker(props) {
     const [days, setDays] = useState([]);
 
-    useEffect( () => {
-        console.log(days);
-    }, [days])
-
-    const handleOnChange = e => {
-        const weekDay = e.currentTarget.value;
-        const isChecked = e.currentTarget.checked;
-
-        if (isChecked && !days.includes(weekDay)) {
-            setDays([...days, weekDay]);
-        } else {
-            setDays(days.filter(day => day !== weekDay))
-        }
+    const handleOnChange = weekDays => {
+        setDays(weekDays);
     };
 
     return (
         <WeekDayPicker 
             label="Select active days" 
             value={days}
-            multiple={true}
-            onChange={(e) => handleOnChange(e)}
+            multiple
+            onChange={handleOnChange}
         /> 
     );
 };
@@ -72,14 +91,14 @@ const MultipleWeekDayPicker = (props) => {
 import React, { useState } from 'react';
 import { WeekDayPicker } from 'react-rainbow-components';
 
-const ReadOnlyWeekDayPicker = (props) => {
+function ReadOnlyWeekDayPicker(props) {
     const [day, setDay] = useState('tuesday');
 
     return (
         <WeekDayPicker 
             label="Select a day (readOnly)" 
             value={day}
-            readOnly={true}
+            readOnly
         /> 
     );
 };
@@ -95,21 +114,19 @@ const ReadOnlyWeekDayPicker = (props) => {
 import React, { useState } from 'react';
 import { WeekDayPicker } from 'react-rainbow-components';
 
-const RequiredWeekDayPicker = (props) => {
-    const [day, setDay] = useState('');
+function RequiredWeekDayPicker(props) {
+    const [day, setDay] = useState('monday');
 
-    const handleOnChange = e => {
-        const weekDay = e.currentTarget.value;
+    const handleOnChange = weekDay => {
         setDay(weekDay);
-        console.log(weekDay);
     };
 
     return (
         <WeekDayPicker 
             label="Select a day" 
             value={day}
-            required={true}
-            onChange={(e) => handleOnChange(e)}
+            required
+            onChange={handleOnChange}
         /> 
     );
 };
@@ -125,12 +142,11 @@ const RequiredWeekDayPicker = (props) => {
 import React, { useState } from 'react';
 import { WeekDayPicker } from 'react-rainbow-components';
 
-const ErrorWeekDayPicker = (props) => {
+function ErrorWeekDayPicker(props) {
     const [day, setDay] = useState('');
     const [error, setError] = useState('This field is required');
 
-    const handleOnChange = e => {
-        const weekDay = e.currentTarget.value;
+    const handleOnChange = weekDay => {
         setDay(weekDay);
         setError(null);
     };
@@ -139,9 +155,9 @@ const ErrorWeekDayPicker = (props) => {
         <WeekDayPicker 
             label="Select a day" 
             value={day}
-            required={true}
+            required
             error={error}
-            onChange={(e) => handleOnChange(e)}
+            onChange={handleOnChange}
         /> 
     );
 };
@@ -157,14 +173,15 @@ const ErrorWeekDayPicker = (props) => {
 import React, { useState } from 'react';
 import { WeekDayPicker } from 'react-rainbow-components';
 
-const DisabledWeekDayPicker = (props) => {
+function DisabledWeekDayPicker(props) {
+    const [days, setDays] = useState(['monday', 'friday']);
 
     return (
         <WeekDayPicker 
             label="Select a day" 
-            value={['monday', 'saturday']}
-            multiple={true}
-            disabled={true}
+            value={days}
+            multiple
+            disabled
         /> 
     );
 };
