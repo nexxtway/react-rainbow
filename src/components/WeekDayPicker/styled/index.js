@@ -29,7 +29,7 @@ const StyledWeekDayLabel = attachThemeAttrs(styled.label).attrs(props => {
 
     const borderColor = palette.border.divider;
     const defaultColor = palette.text.label;
-    const defaultBackground = '#ffffff';
+    const defaultBackground = palette.background.main;
     const activeColor = palette.getContrastText(palette.brand.main);
     const activeBackground = palette.brand.main;
 
