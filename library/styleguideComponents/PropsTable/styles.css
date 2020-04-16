@@ -103,3 +103,7 @@
     font-size: 13px;
     color: #905;    
 }
+
+.react-rainbow-prop-type-array-pad {
+    padding-left: 1rem;
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import propTypeShapeRender from './renderers/propTypeShape';
 import propTypeUnionRender from './renderers/propTypeUnion';
+import propTypeArrayOfRender from './renderers/propTypeArrayOf';
 
 function getTitleValue(value) {
     if (!value) {
@@ -27,6 +28,15 @@ function renderValue(value, caption, row) {
                     <div>
                         {description}
                         {propTypeShapeRender(type.value)}
+                    </div>
+                );
+            }
+
+            if (type.name === 'arrayOf') {
+                return (
+                    <div>
+                        {description}
+                        {propTypeArrayOfRender(type.value)}
                     </div>
                 );
             }

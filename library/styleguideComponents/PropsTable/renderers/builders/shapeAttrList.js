@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 
 function buildSimpleUnionType(data) {
@@ -13,7 +14,7 @@ function buildSimpleUnionType(data) {
 }
 
 export default function buildShapeAttrList(data) {
-    return Object.keys(data).map(name => {
+    return Object.keys(data).map((name, index) => {
         const type = data[name].name;
         const value = data[name].value;
         let valueType;
@@ -40,7 +41,7 @@ export default function buildShapeAttrList(data) {
         );
 
         return (
-            <li>
+            <li key={`item0-${index}`}>
                 {label}
                 {childrensList && <ul>{childrensList}</ul>}
             </li>

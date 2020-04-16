@@ -8,7 +8,7 @@ export default function buildUnionTypeList(data) {
         const value = data[index].value;
 
         if (type === 'arrayOf') {
-            return buildArrayOfTypeList(value);
+            return buildArrayOfTypeList(value, index);
         }
 
         let childrensList;
@@ -21,7 +21,7 @@ export default function buildUnionTypeList(data) {
         }
 
         return (
-            <li>
+            <li key={index}>
                 <code className="react-rainbow-prop-type-label">{type}</code>
                 {childrensList && <ul>{childrensList}</ul>}
             </li>
