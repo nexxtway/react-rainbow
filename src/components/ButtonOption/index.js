@@ -6,6 +6,9 @@ import { StyledLabel, StyledText } from './styled';
 import isOptionSelected from './helpers/isOptionSelected';
 import { useUniqueIdentifier } from '../../libs/hooks';
 
+/**
+ * @category Form
+ */
 export default function ButtonOption(props) {
     const inputId = useUniqueIdentifier('button-option');
     const { className, style, name, label, disabled, onClick } = props;

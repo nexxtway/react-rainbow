@@ -15,6 +15,7 @@ export interface ImportRecordsFlowProps extends BaseProps {
     isOpen?: boolean;
     onRequestClose?: () => void;
     onComplete?: (value: CompleteValue) => void;
+    actionType?: 'add-records';
 }
 
 export default function(props: ImportRecordsFlowProps): JSX.Element | null;

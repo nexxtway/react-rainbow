@@ -15,6 +15,7 @@ import RequiredAsterisk from '../RequiredAsterisk';
 
 /**
  * ButtonGroupPicker can be used to group related options. The ButtonGroupPicker will control the selected state of its child ButtonOption.
+ * @category Form
  */
 class ButtonGroupPicker extends Component {
     constructor(props) {
