@@ -6,8 +6,8 @@ const StyledDay = attachThemeAttrs(styled.div)`
     border-right: 1px solid ${props => props.palette.border.divider};
     position: relative;
     height: 100%;
-    width: 95px;
-    min-width: 85px;
+    width: 100px;
+    min-width: 100px;
 
     :last-child {
         border-right: none;
