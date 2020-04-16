@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { uniqueId } from '../../../../libs/utils';
+import { uniqueId } from '../../libs/utils';
 import Label from './label';
 import StyledContainer from './styled/container';
 import StyledInnerContainer from './styled/innerContainer';
 
-export default class InputCheckbox extends Component {
+export default class PrimitiveCheckbox extends Component {
     constructor(props) {
         super(props);
         this.inputId = uniqueId('input-checkbox');
@@ -13,15 +13,15 @@ export default class InputCheckbox extends Component {
     }
 
     componentDidMount() {
-        const { indeterminate } = this.props;
-        this.inputRef.current.indeterminate = indeterminate;
+        const { checked } = this.props;
+        this.inputRef.current.indeterminate = checked === 'indeterminate';
     }
 
     componentDidUpdate(prevProps) {
-        const { indeterminate: prevIndeterminate } = prevProps;
-        const { indeterminate } = this.props;
-        if (prevIndeterminate !== indeterminate) {
-            this.inputRef.current.indeterminate = indeterminate;
+        const { checked: prevChecked } = prevProps;
+        const { checked } = this.props;
+        if (typeof prevChecked !== typeof checked) {
+            this.inputRef.current.indeterminate = checked === 'indeterminate';
         }
     }
 
@@ -93,7 +93,7 @@ export default class InputCheckbox extends Component {
     }
 }
 
-InputCheckbox.propTypes = {
+PrimitiveCheckbox.propTypes = {
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
     name: PropTypes.string,
@@ -104,14 +104,13 @@ InputCheckbox.propTypes = {
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
     onKeyDown: PropTypes.func,
-    checked: PropTypes.bool,
-    indeterminate: PropTypes.bool,
+    checked: PropTypes.oneOf([true, false, 'indeterminate']),
     className: PropTypes.string,
     style: PropTypes.object,
     id: PropTypes.string,
 };
 
-InputCheckbox.defaultProps = {
+PrimitiveCheckbox.defaultProps = {
     value: undefined,
     name: undefined,
     disabled: false,
@@ -122,7 +121,6 @@ InputCheckbox.defaultProps = {
     onBlur: () => {},
     onKeyDown: () => {},
     checked: undefined,
-    indeterminate: undefined,
     className: undefined,
     style: undefined,
     id: undefined,
