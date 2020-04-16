@@ -56,7 +56,6 @@ function renderValue(value, caption, row) {
                 return (
                     <div>
                         {description}
-                        <p>One of type:</p>
                         {propTypeEnumRender(type.value)}
                     </div>
                 );
