@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Input from '../Input';
 import RenderIf from '../RenderIf';
 import TreeChildren from './treeChildren';
 import ExpandCollapseButton from './expandCollapseButton';
@@ -8,6 +7,7 @@ import ItemContainerLi from './styled/itemContainerLi';
 import NodeContainer from './styled/nodeContainer';
 import Label from './styled/label';
 import IconContainer from './styled/iconContainer';
+import InputCheckbox from './styled/inputCheckbox';
 import ChildrenContainer from './styled/childrenContainer';
 
 export default function Child(props) {
@@ -18,12 +18,12 @@ export default function Child(props) {
         children,
         isChecked,
         icon,
-        childPath,
+        nodePath,
         onExpandCollapse,
         onSelect,
     } = props;
     const hasChildren = Array.isArray(children);
-    const hasCheckbox = typeof isChecked === 'boolean';
+    const hasCheckbox = typeof isChecked === 'boolean' || isChecked === 'indeterminate';
     const hasIcon = !!icon;
     return (
         <ItemContainerLi hasChildren={hasChildren} icon={icon}>
@@ -32,13 +32,13 @@ export default function Child(props) {
                     hasChildren={hasChildren}
                     isExpanded={isExpanded === true}
                     isLoading={isLoading === true}
-                    onClick={() => onExpandCollapse({ childPath })}
+                    onClick={() => onExpandCollapse({ nodePath })}
                 />
                 <RenderIf isTrue={hasCheckbox}>
-                    <Input
+                    <InputCheckbox
                         type="checkbox"
-                        checked={isChecked === true}
-                        onChange={() => onSelect({ childPath })}
+                        checked={isChecked}
+                        onChange={() => onSelect({ nodePath })}
                     />
                 </RenderIf>
                 <RenderIf isTrue={hasIcon}>
@@ -52,7 +52,7 @@ export default function Child(props) {
                         data={children}
                         onSelect={onSelect}
                         onExpandCollapse={onExpandCollapse}
-                        childPath={childPath}
+                        nodePath={nodePath}
                     />
                 </ChildrenContainer>
             </RenderIf>
@@ -62,14 +62,14 @@ export default function Child(props) {
 
 Child.propTypes = {
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    isChecked: PropTypes.bool,
+    isChecked: PropTypes.oneOf([true, false, 'indeterminate']),
     isExpanded: PropTypes.bool,
     isLoading: PropTypes.bool,
     icon: PropTypes.node,
     children: PropTypes.array,
     onExpandCollapse: PropTypes.func,
     onSelect: PropTypes.func,
-    childPath: PropTypes.array,
+    nodePath: PropTypes.array,
 };
 
 Child.defaultProps = {
@@ -81,5 +81,5 @@ Child.defaultProps = {
     icon: null,
     onExpandCollapse: () => {},
     onSelect: () => {},
-    childPath: [],
+    nodePath: [],
 };
