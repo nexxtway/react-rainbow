@@ -33,6 +33,10 @@ const WeekDayItems = React.forwardRef((props, ref) => {
 
     return getWeekDays().map((weekDay, index) => {
         const key = `week-day-${index}`;
+
+        const isFirstInput = index === 0;
+        const inputRef = isFirstInput ? ref : undefined;
+
         return (
             <WeekDay
                 key={key}
@@ -45,7 +49,7 @@ const WeekDayItems = React.forwardRef((props, ref) => {
                 multiple={multiple}
                 error={error}
                 onChange={onChange}
-                ref={ref}
+                ref={inputRef}
             />
         );
     });

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import HelpText from '../../Input/styled/helpText';
+import HiddenElement from '../../Structural/hiddenElement';
 
 export const StyledFieldset = styled.fieldset`
     line-height: 1.5rem;
@@ -14,6 +15,22 @@ export const StyledFieldset = styled.fieldset`
 
 export const StyledHelpText = styled(HelpText)`
     text-align: center;
+`;
+
+export const StyledInput = attachThemeAttrs(styled(HiddenElement))`
+    &:focus + label {
+        border: 1px solid ${props => props.palette.brand.main};
+        box-shadow: ${props => props.shadows.brand};
+    }
+
+    ${props =>
+        props.readOnly &&
+        ` 
+            &:focus + label {
+                border-color: ${props.palette.border.divider};
+                box-shadow: none;
+            }
+        `}
 `;
 
 export const StyledLabel = attachThemeAttrs(styled.legend)`
@@ -88,14 +105,6 @@ export const StyledWeekDayLabel = attachThemeAttrs(styled.label).attrs(props => 
             border: 1px solid ${props.palette.brand.dark};
         }
     `}
-
-    ${props =>
-        props.isFocused &&
-        !props.readOnly &&
-        `
-        border: 1px solid ${props.activeBackground};
-        box-shadow: ${props.shadows.brand};
-        `}
 
     ${props =>
         props.disabled &&
