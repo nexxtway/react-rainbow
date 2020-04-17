@@ -9,7 +9,8 @@ export interface WeekDayPickerProps extends BaseProps {
     name?: string;
     value?: Value;
     label?: ReactNode;
-    hideLabel?: boolean;
+    bottomHelpText?: string;
+    availableDates: WeekDays[];
     disabled?: boolean;
     required?: boolean;
     readOnly?: boolean;

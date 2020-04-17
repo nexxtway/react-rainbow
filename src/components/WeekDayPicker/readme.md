@@ -14,7 +14,7 @@ function SimpleWeekDayPicker(props) {
     return (
         <WeekDayPicker 
             label="Week Days" 
-            bottomHelpText="Pick the a day"
+            bottomHelpText="Select your working days"
             value={day}
             onChange={handleOnChange}
         /> 
@@ -36,7 +36,7 @@ import { WeekDayPicker } from 'react-rainbow-components';
 const availableDates = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
 
 function AvailableDaysWeekDayPicker(props) {
-    const [day, setDay] = useState('');
+    const [day, setDay] = useState();
 
     const handleOnChange = weekDay => {
         setDay(weekDay);
@@ -143,7 +143,7 @@ import React, { useState } from 'react';
 import { WeekDayPicker } from 'react-rainbow-components';
 
 function ErrorWeekDayPicker(props) {
-    const [day, setDay] = useState('');
+    const [day, setDay] = useState();
     const [error, setError] = useState('This field is required');
 
     const handleOnChange = weekDay => {

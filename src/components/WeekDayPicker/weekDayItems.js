@@ -5,7 +5,7 @@ import WeekDay from './weekDay';
 import getWeekDays from './helpers/getWeekDays';
 import isWeekDayChecked from './helpers/isWeekDayChecked';
 
-export default function WeekDayItems(props) {
+const WeekDayItems = React.forwardRef((props, ref) => {
     const {
         name,
         value,
@@ -31,7 +31,7 @@ export default function WeekDayItems(props) {
         return disabled || !isDayAvailable(day);
     };
 
-    const weekDayElements = getWeekDays().map((weekDay, index) => {
+    return getWeekDays().map((weekDay, index) => {
         const key = `week-day-${index}`;
         return (
             <WeekDay
@@ -45,12 +45,11 @@ export default function WeekDayItems(props) {
                 multiple={multiple}
                 error={error}
                 onChange={onChange}
+                ref={ref}
             />
         );
     });
-
-    return <div>{weekDayElements}</div>;
-}
+});
 
 WeekDayItems.propTypes = {
     name: PropTypes.string,
@@ -66,7 +65,6 @@ WeekDayItems.propTypes = {
             'friday',
             'saturday',
             'sunday',
-            '',
         ]),
     ]),
     availableDates: PropTypes.arrayOf((propValue, key, componentName, location, propFullName) => {
@@ -91,3 +89,5 @@ WeekDayItems.defaultProps = {
     error: null,
     onChange: () => {},
 };
+
+export default WeekDayItems;

@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import HelpText from '../../Input/styled/helpText';
 
-const StyledFieldset = styled.fieldset`
+export const StyledFieldset = styled.fieldset`
     line-height: 1.5rem;
     margin: 0;
     padding: 0;
@@ -11,11 +12,27 @@ const StyledFieldset = styled.fieldset`
     text-align: center;
 `;
 
-const StyledHelpText = styled(HelpText)`
+export const StyledHelpText = styled(HelpText)`
     text-align: center;
 `;
 
-const StyledWeekDayContainer = styled.span`
+export const StyledLabel = attachThemeAttrs(styled.legend)`
+    border: 0;
+    padding: 0;
+    color: ${props => props.palette.text.label};
+    font-size: ${FONT_SIZE_TEXT_MEDIUM};
+    line-height: 1.5;
+    margin-bottom: 0.125rem;
+    align-self: center;
+    box-sizing: border-box;
+    text-align: center;
+
+    &:empty {
+        margin: 0;
+    }
+`;
+
+export const StyledWeekDayContainer = styled.span`
     line-height: inherit;
     height: inherit;
 
@@ -24,7 +41,7 @@ const StyledWeekDayContainer = styled.span`
     }
 `;
 
-const StyledWeekDayLabel = attachThemeAttrs(styled.label).attrs(props => {
+export const StyledWeekDayLabel = attachThemeAttrs(styled.label).attrs(props => {
     const { palette } = props;
 
     const borderColor = palette.border.divider;
@@ -75,20 +92,27 @@ const StyledWeekDayLabel = attachThemeAttrs(styled.label).attrs(props => {
         &:hover {
             background: ${props.palette.brand.dark};
             border: 1px solid ${props.palette.brand.dark};
-            cursor: pointer;
             box-shadow: ${props.shadows.brand};
+
+            ${!props.readOnly &&
+                `
+                cursor: pointer;
+            `}
         }
     `}
+
+    ${props =>
+        props.isFocused &&
+        `
+        border: 1px solid ${props.activeBackground};
+        `}
 
     ${props =>
         props.disabled &&
         !props.isChecked &&
         `
         border-color: ${props.palette.border.disabled};
-        background-color: ${props.palette.background.disabled};
+        background-color: ${props.palette.text.disabled};
     `};
 
-    
 `;
-
-export { StyledFieldset, StyledHelpText, StyledWeekDayContainer, StyledWeekDayLabel };
