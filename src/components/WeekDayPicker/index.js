@@ -3,17 +3,18 @@ import PropTypes from 'prop-types';
 import valuePropValidation from './helpers/valuePropValidation';
 import sortWeekDays from './helpers/sortWeekDays';
 import { useUniqueIdentifier } from '../../libs/hooks';
+import withReduxForm from './../../libs/hocs/withReduxForm';
+import RequiredAsterisk from '../RequiredAsterisk';
 import RenderIf from '../RenderIf';
 import WeekDayItems from './weekDayItems';
-import Label from '../Input/label';
 import StyledTextError from '../Input/styled/errorText';
-import { StyledFieldset, StyledHelpText } from './styled';
+import { StyledFieldset, StyledHelpText, StyledLabel } from './styled';
 
 /**
  * A WeekDayPicker allows to select the days of the week
  * @category Form
  */
-function WeekDayPicker(props) {
+const WeekDayPicker = React.forwardRef((props, ref) => {
     const {
         id,
         name,
@@ -34,7 +35,7 @@ function WeekDayPicker(props) {
     const defaultFieldsetName = useUniqueIdentifier('week-day-items');
     const fieldsetName = name || defaultFieldsetName;
 
-    const prepareReturnValue = (weekDayValue, isChecked) => {
+    const getNormalizedValue = (weekDayValue, isChecked) => {
         if (multiple) {
             if (isChecked && !value.includes(weekDayValue)) {
                 return sortWeekDays([...value, weekDayValue]);
@@ -50,12 +51,17 @@ function WeekDayPicker(props) {
         const weekDayValue = e.currentTarget.value;
         const isChecked = e.currentTarget.checked;
 
-        return onChange(prepareReturnValue(weekDayValue, isChecked));
+        return onChange(getNormalizedValue(weekDayValue, isChecked));
     };
 
     return (
         <StyledFieldset className={className} style={style} id={id}>
-            <Label label={label} hideLabel={!label} required={required} readOnly={readOnly} />
+            <RenderIf isTrue={!!label}>
+                <StyledLabel>
+                    <RequiredAsterisk required={required} />
+                    {label}
+                </StyledLabel>
+            </RenderIf>
             <WeekDayItems
                 name={fieldsetName}
                 value={value}
@@ -66,6 +72,7 @@ function WeekDayPicker(props) {
                 multiple={multiple}
                 error={error}
                 onChange={handleOnChange}
+                ref={ref}
             />
             <RenderIf isTrue={!!bottomHelpText}>
                 <StyledHelpText>{bottomHelpText}</StyledHelpText>
@@ -75,7 +82,7 @@ function WeekDayPicker(props) {
             </RenderIf>
         </StyledFieldset>
     );
-}
+});
 
 WeekDayPicker.propTypes = {
     /** The id of the outer element. */
@@ -95,13 +102,12 @@ WeekDayPicker.propTypes = {
             'friday',
             'saturday',
             'sunday',
-            '',
         ]),
     ]),
     /** The WeekDayPicker label. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Shows the help message below the WeekDayPicker */
-    bottomHelpText: PropTypes.string,
+    bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies the available days from the week for selection. */
     availableDates: PropTypes.arrayOf((propValue, key, componentName, location, propFullName) => {
         return valuePropValidation(propValue, key, componentName, location, propFullName);
@@ -141,4 +147,4 @@ WeekDayPicker.defaultProps = {
     style: undefined,
 };
 
-export default WeekDayPicker;
+export default withReduxForm(WeekDayPicker);
