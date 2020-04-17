@@ -1,4 +1,7 @@
 export default function getFirstDayOfWeek(date) {
+    if (date === Infinity || date === -Infinity) {
+        return date;
+    }
     const clone = new Date(date);
     const isValidDate = !isNaN(clone.getTime());
     if (isValidDate) {

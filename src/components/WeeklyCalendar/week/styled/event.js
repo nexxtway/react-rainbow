@@ -14,17 +14,6 @@ const StyledEvent = attachThemeAttrs(styled.div)`
     left: 2px;
     right: 2px;
     cursor: pointer;
-
-    .scheduler-event-dates {
-        font-size: 0.25rem;
-        margin-top: -1px;
-        color: ${props => props.palette.brand.main};
-    }
-
-    .scheduler-event-title {
-        font-size: 0.3rem;
-        margin-top: -1px;
-    }
 `;
 
 export default StyledEvent;

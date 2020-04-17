@@ -22,4 +22,8 @@ describe('getFirstDayOfWeek', () => {
         expect(getFirstDayOfWeek('29-23-2033').getTime()).toBe(currentWeek.getTime());
         expect(getFirstDayOfWeek('wrong date').getTime()).toBe(currentWeek.getTime());
     });
+    it('should return Infinity or -Infinity when call for that value ', () => {
+        expect(getFirstDayOfWeek(Infinity)).toBe(Infinity);
+        expect(getFirstDayOfWeek(-Infinity)).toBe(-Infinity);
+    });
 });

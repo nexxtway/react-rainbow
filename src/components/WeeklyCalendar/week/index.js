@@ -13,9 +13,9 @@ export default function Week(props) {
     const { week, events, onEventClick, onScroll, locale } = props;
 
     function Days() {
-        let day = new Date(week);
         return Array.from(Array(7), (_value, index) => {
-            const item = (
+            const day = addDays(week, index);
+            return (
                 <Day
                     key={index}
                     day={day}
@@ -24,18 +24,13 @@ export default function Week(props) {
                     locale={locale}
                 />
             );
-            day = addDays(day, 1);
-            return item;
         });
     }
 
     function GridLines() {
-        const gridLines = [];
-
-        for (let i = 0; i < 24; i += 1) {
-            gridLines.push(<StyledGridLine key={i} />);
-        }
-        return gridLines;
+        return Array.from(Array(24), (_value, index) => {
+            return <StyledGridLine key={index} />;
+        });
     }
 
     return (

@@ -35,7 +35,7 @@ export default function WeeklyCalendar(props) {
     const formattedWeek = useFormattedWeek(week, locale);
     const [today, setToday] = useState(new Date());
     const yearsRange = useYearRange(minDate, maxDate, week);
-    const { disableNext, disablePrevious } = useDisabledControls(
+    const { isDisableNext, isDisablePrevious } = useDisabledControls(
         yearsRange,
         week,
         minDate,
@@ -61,7 +61,7 @@ export default function WeeklyCalendar(props) {
         return onWeekChange({ week: newWeek });
     };
 
-    const handlerScroll = event => {
+    const handleScroll = event => {
         hoursRef.current.scrollTop = event.target.scrollTop;
         daysRef.current.scrollLeft = event.target.scrollLeft;
     };
@@ -74,7 +74,7 @@ export default function WeeklyCalendar(props) {
                         onClick={selectPreviousWeek}
                         variant="border-filled"
                         size="small"
-                        disabled={disablePrevious}
+                        disabled={isDisablePrevious}
                         icon={<LeftIcon />}
                         assistiveText="Previous Week"
                     />
@@ -83,7 +83,7 @@ export default function WeeklyCalendar(props) {
                         onClick={selectNextWeek}
                         variant="border-filled"
                         size="small"
-                        disabled={disableNext}
+                        disabled={isDisableNext}
                         icon={<RightIcon />}
                         assistiveText="Next Week"
                     />
@@ -104,7 +104,7 @@ export default function WeeklyCalendar(props) {
                     events={events}
                     locale={locale}
                     onEventClick={onEventClick}
-                    onScroll={handlerScroll}
+                    onScroll={handleScroll}
                 />
             </StyledContent>
             <StyledGradient />

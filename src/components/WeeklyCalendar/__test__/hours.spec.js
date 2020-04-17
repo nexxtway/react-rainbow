@@ -2,16 +2,17 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Hours from '../hours';
 import StyledClock from '../styled/clock';
+import StyledTitleHour from '../styled/titleHour';
 
-jest.mock('../hooks', () => ({
-    useTimer: jest
+jest.mock('../hooks/useTimer', () =>
+    jest
         .fn()
         .mockReturnValue(new Date())
         .mockReturnValueOnce(new Date().setHours(3, 10, 0, 0))
         .mockReturnValueOnce(new Date().setHours(3, 16, 0, 0))
         .mockReturnValueOnce(new Date().setHours(3, 0, 0, 0))
         .mockReturnValueOnce(new Date().setHours(8, 0, 0, 0)),
-}));
+);
 
 describe('<Hours />', () => {
     it('should hidden 3 AM when clock is 3:10 AM', () => {
@@ -20,13 +21,15 @@ describe('<Hours />', () => {
             wrapper
                 .find('ListHours')
                 .find({ visible: false })
-                .find('span')
+                .find(StyledTitleHour)
                 .text(),
         ).toBe('3 AM');
     });
     it('should render all visible hours  when clock is 3:15 AM', () => {
         const wrapper = mount(<Hours />);
-        expect(wrapper.find('ListHours').children({ visible: true }).length).toBe(24);
+        wrapper.find(StyledTitleHour).forEach(item => {
+            expect(item.prop('visible')).toBe(true);
+        });
     });
     it('should render clock 3:00 AM when the clock is 3:00 AM', () => {
         const wrapper = mount(<Hours />);
@@ -58,7 +61,7 @@ describe('<Hours />', () => {
             if (index > 12) {
                 hour = index - 12;
             }
-            expect(item.find('span').text()).toBe(`${hour} ${ampm}`);
+            expect(item.find(StyledTitleHour).text()).toBe(`${hour} ${ampm}`);
         });
     });
 });

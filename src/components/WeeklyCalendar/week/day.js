@@ -8,9 +8,8 @@ export default function Day(props) {
     const { day, events, onEventClick, locale } = props;
     const eventsOfDay = useEventsOfDay(events, day);
     const Events = () =>
-        eventsOfDay.map((event, index) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <Event key={index} onEventClick={onEventClick} locale={locale} event={event} />
+        eventsOfDay.map(event => (
+            <Event key={event.id} onEventClick={onEventClick} locale={locale} {...event} />
         ));
 
     return (

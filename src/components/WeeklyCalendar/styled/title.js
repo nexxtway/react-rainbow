@@ -12,7 +12,6 @@ const StyledTitle = attachThemeAttrs(styled.h3)`
     margin: 0 1.5rem;
     min-width: 380px;
     padding: 0;
-    
     text-transform: capitalize;
 `;
 

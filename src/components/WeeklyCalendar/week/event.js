@@ -8,7 +8,7 @@ import StyledEventDates from './styled/eventDates';
 import StyledEventTitle from './styled/eventTitle';
 
 export default function Event(props) {
-    const { event, onEventClick, locale } = props;
+    const { onEventClick, locale, ...event } = props;
     const { title, startDate, endDate } = event;
     const eventId = useUniqueIdentifier('calendar-event');
     const duration = useEventDuration(startDate, endDate);
@@ -26,13 +26,17 @@ export default function Event(props) {
 }
 
 Event.propTypes = {
-    event: PropTypes.object.isRequired,
+    title: PropTypes.string.isRequired,
+    startDate: PropTypes.instanceOf(Date).isRequired,
+    endDate: PropTypes.instanceOf(Date).isRequired,
     onEventClick: PropTypes.func,
     locale: PropTypes.string,
 };
 
 Event.defaultProps = {
-    event: undefined,
+    title: undefined,
+    startDate: undefined,
+    endDate: undefined,
     onEventClick: () => {},
     locale: undefined,
 };

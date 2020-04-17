@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useTimer } from './hooks';
+import { useTimer, useClockStyle } from './hooks';
 import { isSameDay } from '../Calendar/helpers';
-import { getHeightOfDate } from './helpers';
 import StyledHours from './styled/hours';
 import StyledHour from './styled/hour';
 import StyledClock from './styled/clock';
+import StyledTitleHour from './styled/titleHour';
 
 const Hours = React.forwardRef((props, ref) => {
     const { today, setToday, locale } = props;
@@ -32,8 +32,10 @@ const Hours = React.forwardRef((props, ref) => {
                 hour12: true,
             }).format(hour);
             return (
-                <StyledHour key={index} visible={before < hour || after > hour}>
-                    <span>{formattedHours}</span>
+                <StyledHour key={index}>
+                    <StyledTitleHour visible={before < hour || after > hour}>
+                        {formattedHours}
+                    </StyledTitleHour>
                 </StyledHour>
             );
         });
@@ -44,7 +46,7 @@ const Hours = React.forwardRef((props, ref) => {
         hour12: true,
     }).format(clock);
 
-    const style = { top: `${getHeightOfDate(clock) - 8}px` };
+    const style = useClockStyle(clock);
 
     return (
         <StyledHours ref={ref} data-id="25">

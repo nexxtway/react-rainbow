@@ -46,6 +46,7 @@ const randomDate = (minDate, maxDate) => {
 const randomMinutes = (min, max) => (Math.floor(Math.random() * (max - min + 1) ) + min) * 30;
 const randomEvents = (minDate, maxDate) => {
     let events = [];
+    let eventCounter = 0;
     const firstDay = new Date(minDate);
     const lastDay = new Date(minDate);
     lastDay.setDate(lastDay.getDate() + 7);
@@ -55,7 +56,8 @@ const randomEvents = (minDate, maxDate) => {
             startDate.setMinutes(randomMinutes(0, 1));
             const endDate = new Date(startDate);
             endDate.setMinutes(endDate.getMinutes() + 30);
-            return {title, startDate, endDate };
+            eventCounter += 1;
+            return {id: eventCounter, title, startDate, endDate };
         }));
         firstDay.setDate(firstDay.getDate() + 7);
         lastDay.setDate(lastDay.getDate() + 7);

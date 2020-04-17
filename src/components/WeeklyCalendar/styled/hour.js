@@ -11,14 +11,7 @@ const StyledHour = attachThemeAttrs(styled.div)`
     color: ${props => props.palette.text.main};
     font-size: ${FONT_SIZE_TEXT_SMALL};
 
-    span {
-        display: block;
-        top: -7px;
-        position: relative;
-        visibility: ${props => (props.visible ? 'visible' : 'hidden')};
-    }
-
-    :first-child>span {
+    :first-child>div {
         display: none;
     }
 `;
