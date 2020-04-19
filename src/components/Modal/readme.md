@@ -533,6 +533,7 @@ function SimpleForm(props) {
                 />
 
                 <Field
+                    id="modal-timepicker-11"
                     style={styles.inputColumn}
                     component={TimePicker}
                     name="time"

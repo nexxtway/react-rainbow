@@ -1,14 +1,14 @@
 const PageModal = require('../../../src/components/Modal/pageObject');
 const PageLookup = require('../../../src/components/Lookup/pageObject');
 const PageDatePicker = require('../../../src/components/DatePicker/pageObject');
+const PageTimePicker = require('../../../src/components/TimePicker/pageObject');
 const { ESCAPE_KEY, ENTER_KEY, ARROW_DOWN_KEY } = require('../../constants');
 
 const BUTTON = '#button-11';
 const MODAL = '#modal-11';
-const MODAL_DATEPICKER = '#modal-datepicker-11';
+const DATE_PICKER_INPUT = '#modal-datepicker-11';
 const TITLE_INPUT = '#modal-11 input[placeholder="Enter company name"]';
-const DATE_PICKER_INPUT = '#modal-11 input[placeholder="Select a date"]';
-const TIME_PICKER_INPUT = '#modal-11 input[name="time"]';
+const TIME_PICKER_INPUT = '#modal-timepicker-11';
 const MODAL_LOOKUP = '#modal-lookup-11';
 
 const getScrollTopPosition = () => {
@@ -62,9 +62,8 @@ describe('Modal with redux form example', () => {
         const triggerButton = $(BUTTON);
         triggerButton.click();
         modal.waitUntilOpen();
-        const datepicker = new PageDatePicker(MODAL_DATEPICKER);
-        const datepickerTriggerButton = $(DATE_PICKER_INPUT);
-        datepickerTriggerButton.click();
+        const datepicker = new PageDatePicker(DATE_PICKER_INPUT);
+        datepicker.click();
         datepicker.waitUntilOpen();
         const initialScrollTop = getScrollTopPosition();
         scrollDown();
@@ -77,9 +76,8 @@ describe('Modal with redux form example', () => {
         const triggerButton = $(BUTTON);
         triggerButton.click();
         modal.waitUntilOpen();
-        const datepicker = new PageDatePicker(MODAL_DATEPICKER);
-        const datepickerTriggerButton = $(DATE_PICKER_INPUT);
-        datepickerTriggerButton.click();
+        const datepicker = new PageDatePicker(DATE_PICKER_INPUT);
+        datepicker.click();
         datepicker.waitUntilOpen();
         browser.keys(ESCAPE_KEY);
         datepicker.waitUntilClose();
@@ -95,9 +93,8 @@ describe('Modal with redux form example', () => {
         const triggerButton = $(BUTTON);
         triggerButton.click();
         modal.waitUntilOpen();
-        const datepicker = new PageDatePicker(MODAL_DATEPICKER);
-        const datepickerTriggerButton = $(DATE_PICKER_INPUT);
-        datepickerTriggerButton.click();
+        const datepicker = new PageDatePicker(DATE_PICKER_INPUT);
+        datepicker.click();
         datepicker.waitUntilOpen();
         browser.keys(ESCAPE_KEY);
         datepicker.waitUntilClose();
@@ -178,13 +175,13 @@ describe('Modal with redux form example', () => {
         browser.keys(ESCAPE_KEY);
         expect(modal.isOpen()).toBe(false);
     });
-    it.skip('should return focus to date picker input when both modals are opened and press esc key', () => {
+    it('should return focus to date picker input when both modals are opened and press esc key', () => {
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);
         triggerButton.click();
         modal.waitUntilOpen();
-        const datePickerInput = $(DATE_PICKER_INPUT);
-        datePickerInput.click();
+        const datePicker = new PageDatePicker(DATE_PICKER_INPUT);
+        datePicker.click();
         modal.waitUntilOpen();
         browser.keys(ESCAPE_KEY);
         browser.waitUntil(
@@ -194,15 +191,15 @@ describe('Modal with redux form example', () => {
                     .react$('Modal')
                     .isDisplayed(),
         );
-        expect(datePickerInput.isFocused()).toBe(true);
+        expect(datePicker.hasFocusInput()).toBe(true);
     });
-    it.skip('should return focus to time picker input when both modals are opened and select a time', () => {
+    it('should return focus to time picker input when both modals are opened and select a time', () => {
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);
         triggerButton.click();
         modal.waitUntilOpen();
-        const timePickerInput = $(TIME_PICKER_INPUT);
-        timePickerInput.click();
+        const timePicker = new PageTimePicker(TIME_PICKER_INPUT);
+        timePicker.clickTimeInput();
         modal.waitUntilOpen();
         browser.keys('0');
         browser.keys('0');
@@ -216,6 +213,6 @@ describe('Modal with redux form example', () => {
                     .react$('Modal')
                     .isDisplayed(),
         );
-        expect(timePickerInput.isFocused()).toBe(true);
+        expect(timePicker.hasFocusTimeInput()).toBe(true);
     });
 });
