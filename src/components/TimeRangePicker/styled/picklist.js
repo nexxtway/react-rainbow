@@ -2,7 +2,11 @@ import styled from 'styled-components';
 import Picklist from '../../Picklist';
 
 const StyledPicklist = styled(Picklist)`
-    position: relative;
+    flex-grow: 1;
+
+    input {
+        border-color: transparent;
+    }
 `;
 
 export default StyledPicklist;

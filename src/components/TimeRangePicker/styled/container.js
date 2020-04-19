@@ -5,7 +5,6 @@ const StyledContainer = styled.div`
     display: flex;
     justify-content: center;
     flex-direction: column;
-    position: relative;
 `;
 
 export default StyledContainer;

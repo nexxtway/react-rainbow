@@ -5,12 +5,12 @@ import React from 'react';
 import { TimeRangePicker } from 'react-rainbow-components';
 
 const containerStyle = {
-    width: "280px"
+    margin: '48px auto',
+    maxWidth: 300,
 };
 
-<div className="rainbow-m-around_medium rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
+<div style={containerStyle}>
     <TimeRangePicker
-        style={containerStyle}
         id="time-range-picker-1"
         label="TimeRangePicker Label"
         value="08:00 - 16:00"
@@ -25,12 +25,12 @@ import React from 'react';
 import { TimeRangePicker } from 'react-rainbow-components';
 
 const containerStyle = {
-    width: "280px"
+    margin: '48px auto',
+    maxWidth: 300,
 };
 
-<div className="rainbow-m-around_medium rainbow-p-vertical_large rainbow-align-content_center rainbow-flex_wrap">
+<div style={containerStyle}>
     <TimeRangePicker
-        style={containerStyle}
         id="time-range-picker-2"
         label="TimeRangePicker Label"
         value="08:00 - 16:00"
@@ -46,25 +46,59 @@ import React from 'react';
 import { TimeRangePicker } from 'react-rainbow-components';
 
 const containerStyle = {
-    width: "280px"
+    margin: '48px auto',
+    maxWidth: 300,
 };
 
-<div className="rainbow-m-around_medium rainbow-p-horizontal_large rainbow-align-content_center">
+<div style={containerStyle}>
     <TimeRangePicker
-        style={containerStyle}
-        className="rainbow-m-horizontal_x-large"
         id="time-range-picker-3"
         label="TimeRangePicker Label"
         value="08:00 - 16:00"
         allowCustomTime={true}
     />
+</div>
+```
+
+##### TimeRangePicker 24hours
+
+```js
+import React from 'react';
+import { TimeRangePicker } from 'react-rainbow-components';
+
+const containerStyle = {
+    margin: '48px auto',
+    maxWidth: 300,
+};
+
+<div style={containerStyle}>
     <TimeRangePicker
-        className="rainbow-m-horizontal_x-large"
-        style={containerStyle}
-        id="time-range-picker-4"
+        id="time-range-picker-3"
         label="TimeRangePicker Label"
         value="08:00 - 16:00"
-        allowCustomTime={true}
+        hour24
+    />
+</div>
+```
+
+
+##### TimeRangePicker disabled
+
+```js
+import React from 'react';
+import { TimeRangePicker } from 'react-rainbow-components';
+
+const containerStyle = {
+    margin: '48px auto',
+    maxWidth: 300,
+};
+
+<div style={containerStyle}>
+    <TimeRangePicker
+        id="time-range-picker-3"
+        label="TimeRangePicker Label"
+        value="08:00 - 16:00"
+        disabled
     />
 </div>
 ```

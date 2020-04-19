@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 
 const StyledLine = styled.div`
-    height: 1px;
-    width: 15px;
-    border: 1.5px solid rgb(164, 167, 179);
-    margin: 0 5px;
-    border-radius: 5px;
+    height: 4px;
+    width: 12px;
+    margin: 0 12px;
+    background-color: rgb(164, 167, 179);
+    border-radius: 4px;
+    flex-shrink: 0;
 `;
 
 export default StyledLine;
