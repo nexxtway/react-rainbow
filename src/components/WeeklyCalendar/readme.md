@@ -5,73 +5,82 @@ import React from 'react';
 import styled from 'styled-components';
 import { WeeklyCalendar, Card } from 'react-rainbow-components';
 
-const titles = [
-    'Leandro Torres',
-    'JL Torres',
-    'Reinier',
-    'Sara',
-    'Tahimi L',
-    'Sara',
-    'Leandro Torres',
-    'Tahimi',
-    'Sara P',
-    'Leo Torres',
-    'Tahimi',
-    'Jose Torres',
-    'Reinier',
-    'Tahimi',
-    'Tahimi Leon',
-    'Leandro Torres',
-    'Sara Pacheco',
-    'Jose Torres',
-    'Reinier',
-    'Tahimi',
-    'Leandro Torres',
-    'Sara',
-    'Saray',
-    'Leandro Torres',
-    'Reinier G',
-    'Tahy',
-    'Leandro Torres',
-    'Rey',
-    'Jose Torres',
-    'S Pacheco',
-    'T Leon',
-    'Jose Torres',
-    'Yuri V. Munayev',
+const firstDay = new Date();
+firstDay.setDate(firstDay.getDate() - firstDay.getDay());
+const daysOfWeek = Array.from(Array(7), (_value, index) => {
+    const day = new Date(firstDay);
+    day.setDate(day.getDate() + index);
+    return day;
+});
+
+const events = [
+    {
+        id: 1,
+        title: 'Leandro Torres',
+        startDate: new Date(daysOfWeek[0].setHours(6, 0, 0, 0)),
+        endDate: new Date(daysOfWeek[0].setHours(6,30, 0, 0)),
+    },
+    {
+        id: 2,
+        title: 'JL Torres',
+        startDate: new Date(daysOfWeek[0].setHours(7, 30, 0, 0)),
+        endDate: new Date(daysOfWeek[0].setHours(8, 0, 0, 0)),
+    },
+    {
+        id: 3,
+        title: 'Reinier',
+        startDate: new Date(daysOfWeek[0].setHours(10, 0, 0, 0)),
+        endDate: new Date(daysOfWeek[0].setHours(11, 15, 0, 0)),
+    },
+    {
+        id: 4,
+        title: 'Sara',
+        startDate: new Date(daysOfWeek[1].setHours(6, 30, 0, 0)),
+        endDate: new Date(daysOfWeek[1].setHours(7, 30, 0, 0)),
+    },
+    {
+        id: 5,
+        title: 'Tahimi L',
+        startDate: new Date(daysOfWeek[2].setHours(8, 0, 0, 0)),
+        endDate: new Date(daysOfWeek[2].setHours(9, 30, 0, 0)),
+    },
+    {
+        id: 6,
+        title: 'Sara',
+        startDate: new Date(daysOfWeek[3].setHours(6, 0, 0, 0)),
+        endDate: new Date(daysOfWeek[1].setHours(6, 30, 0, 0)),
+    },
+    {
+        id: 7,
+        title: 'Leandro Torres',
+        startDate: new Date(daysOfWeek[3].setHours(6, 30, 0, 0)),
+        endDate: new Date(daysOfWeek[3].setHours(7, 0, 0, 0)),
+    },
+    {
+        id: 8,
+        title: 'Tahimi',
+        startDate: new Date(daysOfWeek[3].setHours(7, 30, 0, 0)),
+        endDate: new Date(daysOfWeek[3].setHours(8, 0, 0, 0)),
+    },
+    {
+        id: 9,
+        title: 'Sara P',
+        startDate: new Date(daysOfWeek[4].setHours(6, 30, 0, 0)),
+        endDate: new Date(daysOfWeek[4].setHours(8, 0, 0, 0)),
+    },
+    {
+        id: 10,
+        title: 'Leo Torres',
+        startDate: new Date(daysOfWeek[5].setHours(6, 0, 0, 0)),
+        endDate: new Date(daysOfWeek[5].setHours(7, 0, 0, 0)),
+    },
+    {
+        id: 11,
+        title: 'Tahimi',
+        startDate: new Date(daysOfWeek[6].setHours(8, 0, 0, 0)),
+        endDate: new Date(daysOfWeek[6].setHours(9, 30, 0, 0)),
+    },
 ];
-const randomDate = (minDate, maxDate) => {
-    return new Date(minDate.getTime() + Math.random() * (maxDate.getTime() - minDate.getTime()));
-}
-const randomMinutes = (min, max) => (Math.floor(Math.random() * (max - min + 1) ) + min) * 30;
-const randomEvents = (minDate, maxDate) => {
-    let events = [];
-    let eventCounter = 0;
-    const firstDay = new Date(minDate);
-    const lastDay = new Date(minDate);
-    lastDay.setDate(lastDay.getDate() + 7);
-    while (lastDay <= maxDate) {
-        events = events.concat(titles.map( title => {
-            const startDate = randomDate(firstDay, lastDay);
-            startDate.setMinutes(randomMinutes(0, 1));
-            const endDate = new Date(startDate);
-            endDate.setMinutes(endDate.getMinutes() + 30);
-            eventCounter += 1;
-            return {id: eventCounter, title, startDate, endDate };
-        }));
-        firstDay.setDate(firstDay.getDate() + 7);
-        lastDay.setDate(lastDay.getDate() + 7);
-    }
-    return events;
-};
-
-const minDate = new Date();
-minDate.setHours(0, 0, 0, 0);
-minDate.setDate(minDate.getDate() - minDate.getDay() - 7);
-const maxDate = new Date(minDate);
-maxDate.setDate(maxDate.getDate() + 21);
-
-const events = randomEvents(minDate, maxDate);
 
 const Container = styled.div`
     padding: 10px;
@@ -90,8 +99,6 @@ const initialState = {
             events={events}
             currentWeek={state.currentWeek}
             onWeekChange={({ week }) => setState({ currentWeek: week })}
-            minDate={minDate}
-            maxDate={maxDate}
             locale="en"
         />
     </StyledCard>

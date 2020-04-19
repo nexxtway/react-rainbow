@@ -1,15 +1,10 @@
 import { useMemo } from 'react';
+import { getFormattedEventDates } from '../helpers';
 
 export default function useFormattedEventDates(startDate, endDate, locale) {
-    return useMemo(() => {
-        return `${new Intl.DateTimeFormat(locale, {
-            hour: 'numeric',
-            minute: 'numeric',
-            hour12: true,
-        }).format(startDate)} - ${new Intl.DateTimeFormat(locale, {
-            hour: 'numeric',
-            minute: 'numeric',
-            hour12: true,
-        }).format(endDate)}`;
-    }, [endDate, locale, startDate]);
+    return useMemo(() => getFormattedEventDates(startDate, endDate, locale), [
+        endDate,
+        locale,
+        startDate,
+    ]);
 }

@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useUniqueIdentifier } from '../../../libs/hooks';
-import { useEventDuration, useEventStyle, useFormattedEventDates } from './hooks';
-import RenderIf from '../../RenderIf';
+import { useEventStyle, useFormattedEventDates } from './hooks';
 import StyledEvent from './styled/event';
 import StyledEventDates from './styled/eventDates';
 import StyledEventTitle from './styled/eventTitle';
@@ -11,16 +10,13 @@ export default function Event(props) {
     const { onEventClick, locale, ...event } = props;
     const { title, startDate, endDate } = event;
     const eventId = useUniqueIdentifier('calendar-event');
-    const duration = useEventDuration(startDate, endDate);
-    const style = useEventStyle(duration, startDate);
+    const style = useEventStyle(startDate, endDate);
     const dates = useFormattedEventDates(startDate, endDate, locale);
 
     return (
         <StyledEvent id={eventId} style={style} onClick={() => onEventClick(event)}>
-            <RenderIf isTrue={duration >= 30}>
-                <StyledEventDates>{dates}</StyledEventDates>
-            </RenderIf>
             <StyledEventTitle>{title}</StyledEventTitle>
+            <StyledEventDates>{dates}</StyledEventDates>
         </StyledEvent>
     );
 }

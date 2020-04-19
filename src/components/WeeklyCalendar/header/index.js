@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { addDays, isSameDay } from '../../Calendar/helpers';
 import StyledHeader from './styled/header';
@@ -8,30 +8,21 @@ import StyledHours from './styled/hours';
 import StyledContentDay from './styled/contentDay';
 import StyledWeekDay from './styled/weekDay';
 import StyledNumberDay from './styled/numberDay';
+import { useFormatedWeekDay, useFormattedNumberDay } from './hooks';
+
+const timeZone = new Date().toTimeString().substring(9, 15);
 
 const Header = React.forwardRef((props, ref) => {
     const { week, today, locale } = props;
-    const formattedWeekDay = useCallback(
-        day =>
-            new Intl.DateTimeFormat(locale, {
-                weekday: 'short',
-            }).format(day),
-        [locale],
-    );
-    const formattedNumberDay = useCallback(
-        day =>
-            new Intl.DateTimeFormat(locale, {
-                day: 'numeric',
-            }).format(day),
-        [locale],
-    );
+    const formattedWeekDay = useFormatedWeekDay(locale);
+    const formattedNumberDay = useFormattedNumberDay(locale);
 
     function Days() {
         return Array.from(Array(7), (_value, index) => {
             const day = addDays(week, index);
             return (
-                <StyledDay isToday={isSameDay(today, day)} key={index}>
-                    <StyledContentDay>
+                <StyledDay key={index}>
+                    <StyledContentDay isToday={isSameDay(today, day)}>
                         <StyledWeekDay>{formattedWeekDay(day)}</StyledWeekDay>
                         <StyledNumberDay>{formattedNumberDay(day)}</StyledNumberDay>
                     </StyledContentDay>
@@ -41,7 +32,7 @@ const Header = React.forwardRef((props, ref) => {
     }
     return (
         <StyledHeader role="presentation">
-            <StyledHours>Hr</StyledHours>
+            <StyledHours>{timeZone}</StyledHours>
             <StyledDays ref={ref}>
                 <div />
                 <Days />

@@ -1,18 +1,17 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
+import { replaceAlpha } from '../../../../styles/helpers/color';
 
 const StyledEvent = attachThemeAttrs(styled.div)`
     text-align: left;
-    border: 1px solid ${props => props.palette.border.divider};
-    border-left: 3px solid ${props => props.palette.brand.main};
-    color: ${props => props.palette.text.main};
-    background-color: ${props => props.palette.background.secondary};
-    border-radius: 3px;
-    padding: 0;
-    padding-left: 2px;
+    border: 1px solid ${props => replaceAlpha(props.palette.background.main, 0.19)};
+    color: ${props => props.palette.getContrastText(props.palette.brand.main)};
+    background-color: ${props => props.palette.brand.main};
+    width: 100%;
+    border-radius: 8px;
+    padding: 0 5px;
+    overflow: hidden;
     position: absolute;
-    left: 2px;
-    right: 2px;
     cursor: pointer;
 `;
 

@@ -5,8 +5,8 @@ const StyledDay = attachThemeAttrs(styled.div)`
     flex: 1 0 auto;
     border-right: 1px solid ${props => props.palette.border.divider};
     position: relative;
-    width: 100px;
-    min-width: 100px;
+    width: 90px;
+    min-width: 90px;
     height: 100%;
     color: ${props => props.palette.brand.main};
     padding: 3px 0;

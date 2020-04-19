@@ -1,11 +1,12 @@
+import getLastDayOfWeek from './getLastDayOfWeek';
+
 const formattedMonth = (day, locale) =>
     new Intl.DateTimeFormat(locale, {
         month: 'short',
     }).format(day);
 
 export default function getFormattedWeek(firstDay, locale) {
-    const lastDay = new Date(firstDay);
-    lastDay.setDate(firstDay.getDate() + 6);
+    const lastDay = getLastDayOfWeek(firstDay);
 
     let formattedWeek = `${formattedMonth(firstDay, locale)} ${firstDay.getDate()}`;
 

@@ -20,7 +20,7 @@ describe('<Event />', () => {
     it('should render the right event data', () => {
         const wrapper = mount(<Event {...event} />);
         expect(wrapper.find(StyledEventTitle).text()).toBe(event.title);
-        expect(wrapper.find(StyledEventDates).text()).toBe('8:00 AM - 8:30 AM');
+        expect(wrapper.find(StyledEventDates).text()).toBe('8:00 - 8:30 AM');
     });
     it('should render on top 400px and height 25px when the startDate is 8:00 AM and endDate 8:30 AM', () => {
         const wrapper = mount(<Event {...event} />);
@@ -33,11 +33,5 @@ describe('<Event />', () => {
         const wrapper = mount(<Event {...event} onEventClick={onEventClickMockFn} />);
         wrapper.find(StyledEvent).simulate('click');
         expect(onEventClickMockFn).toHaveBeenCalledWith(event);
-    });
-
-    it('should don t render the dates when the startDate is 8:00 AM and endDate 8:15 AM', () => {
-        event.endDate.setHours(8, 15, 0, 0);
-        const wrapper = mount(<Event {...event} />);
-        expect(wrapper.find(StyledEventDates).exists()).toBe(false);
     });
 });
