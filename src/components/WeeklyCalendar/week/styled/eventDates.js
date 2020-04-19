@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const StyledEventDates = styled.p`
-    font-size: 0.5rem;
-    margin-top: -2px;
+    font-size: 11px;
+    margin-top: -3px;
 `;
 
 export default StyledEventDates;

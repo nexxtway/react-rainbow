@@ -22,11 +22,11 @@ describe('<Event />', () => {
         expect(wrapper.find(StyledEventTitle).text()).toBe(event.title);
         expect(wrapper.find(StyledEventDates).text()).toBe('8:00 - 8:30 AM');
     });
-    it('should render on top 400px and height 25px when the startDate is 8:00 AM and endDate 8:30 AM', () => {
+    it('should render on top 480px and height 25px when the startDate is 8:00 AM and endDate 8:30 AM', () => {
         const wrapper = mount(<Event {...event} />);
         const style = wrapper.find(StyledEvent).prop('style');
-        expect(style.top).toBe('400px');
-        expect(style.height).toBe('25px');
+        expect(style.top).toBe('480px');
+        expect(style.height).toBe('30px');
     });
     it('should call onEventClick with the right event when click the button', () => {
         const onEventClickMockFn = jest.fn();

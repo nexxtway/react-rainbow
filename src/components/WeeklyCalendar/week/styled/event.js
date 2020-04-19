@@ -4,7 +4,7 @@ import { replaceAlpha } from '../../../../styles/helpers/color';
 
 const StyledEvent = attachThemeAttrs(styled.div)`
     text-align: left;
-    border: 1px solid ${props => replaceAlpha(props.palette.background.main, 0.19)};
+    border: 1px solid ${props => replaceAlpha(props.palette.background.main, 0.8)};
     color: ${props => props.palette.getContrastText(props.palette.brand.main)};
     background-color: ${props => props.palette.brand.main};
     width: 100%;

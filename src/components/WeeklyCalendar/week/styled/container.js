@@ -6,7 +6,7 @@ const StyledContainer = attachThemeAttrs(styled.div)`
     display: flex;
     width: 100%;
     flex: 1 1 auto;
-    height: 1200px;
+    height: 1440px;
     min-width: 642px;
 `;
 

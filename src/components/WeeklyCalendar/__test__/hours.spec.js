@@ -35,9 +35,9 @@ describe('<Hours />', () => {
         const wrapper = mount(<Hours />);
         expect(wrapper.find(StyledClock).text()).toBe('3:00 AM');
     });
-    it('should render on top 392px when the clock is 8:00 AM', () => {
+    it('should render on top 472px when the clock is 8:00 AM', () => {
         const wrapper = mount(<Hours />);
-        expect(wrapper.find(StyledClock).prop('style').top).toBe('392px');
+        expect(wrapper.find(StyledClock).prop('style').top).toBe('472px');
     });
     it('should call setToday when today is differrent to day of clock', async done => {
         const today = new Date();

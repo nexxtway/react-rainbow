@@ -34,7 +34,7 @@ const events = [
     },
     {
         id: 4,
-        title: 'Sara',
+        title: 'Yuri V. Munayev',
         startDate: new Date(daysOfWeek[1].setHours(6, 30, 0, 0)),
         endDate: new Date(daysOfWeek[1].setHours(7, 30, 0, 0)),
     },
@@ -48,7 +48,7 @@ const events = [
         id: 6,
         title: 'Sara',
         startDate: new Date(daysOfWeek[3].setHours(6, 0, 0, 0)),
-        endDate: new Date(daysOfWeek[1].setHours(6, 30, 0, 0)),
+        endDate: new Date(daysOfWeek[3].setHours(6, 30, 0, 0)),
     },
     {
         id: 7,

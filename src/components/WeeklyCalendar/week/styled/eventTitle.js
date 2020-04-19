@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 const StyledEventTitle = styled.p`
-    font-size: 0.7rem;
+    font-size: 12px;
+    margin-top: -1px;
     font-weight: 900;
-    margin-top: -2px;
 `;
 
 export default StyledEventTitle;
