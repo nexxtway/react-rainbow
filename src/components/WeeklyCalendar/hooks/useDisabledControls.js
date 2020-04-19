@@ -10,6 +10,6 @@ export default function useDisabledControls(yearsRange, week, minDate, maxDate) 
         const prevDate = addWeeks(week, -1);
         const isDisablePrevious = prevDate.setDate(prevDate.getDate() + 6) < minSelectableDate;
 
-        return { isDisableNext, isDisablePrevious };
+        return [isDisableNext, isDisablePrevious];
     }, [maxDate, minDate, week, yearsRange]);
 }

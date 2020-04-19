@@ -35,7 +35,7 @@ export default function WeeklyCalendar(props) {
     const formattedWeek = useFormattedWeek(week, locale);
     const [today, setToday] = useState(new Date());
     const yearsRange = useYearRange(minDate, maxDate, week);
-    const { isDisableNext, isDisablePrevious } = useDisabledControls(
+    const [isDisableNext, isDisablePrevious] = useDisabledControls(
         yearsRange,
         week,
         minDate,
