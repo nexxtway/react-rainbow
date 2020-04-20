@@ -33,30 +33,7 @@ describe('Modal with redux form example', () => {
         const component = $(BUTTON);
         component.waitForExist();
     });
-    it('should have scroll disabled when modal is opened', () => {
-        const modal = new PageModal(MODAL);
-        const triggerButton = $(BUTTON);
-        triggerButton.click();
-        modal.waitUntilOpen();
-        const initialScrollTop = getScrollTopPosition();
-        scrollDown();
-        const finalScrollTop = getScrollTopPosition();
-        const hasNotScrolled = finalScrollTop === initialScrollTop;
-        expect(hasNotScrolled).toBe(true);
-    });
-    it('should have scroll enabled after closing modal', () => {
-        const modal = new PageModal(MODAL);
-        const initialScrollTop = getScrollTopPosition();
-        const triggerButton = $(BUTTON);
-        triggerButton.click();
-        modal.waitUntilOpen();
-        browser.keys(ESCAPE_KEY);
-        modal.waitUntilClose();
-        scrollDown();
-        const finalScrollTop = getScrollTopPosition();
-        const hasScrolled = finalScrollTop > initialScrollTop;
-        expect(hasScrolled).toBe(true);
-    });
+
     it('should reset form state when close modal', () => {
         const modal = new PageModal(MODAL);
         const triggerButton = $(BUTTON);
@@ -151,6 +128,30 @@ describe('Modal with redux form example', () => {
                     .isDisplayed(),
         );
         expect(timePicker.hasFocusTimeInput()).toBe(true);
+    });
+    it('should have scroll disabled when modal is opened', () => {
+        const modal = new PageModal(MODAL);
+        const triggerButton = $(BUTTON);
+        triggerButton.click();
+        modal.waitUntilOpen();
+        const initialScrollTop = getScrollTopPosition();
+        scrollDown();
+        const finalScrollTop = getScrollTopPosition();
+        const hasNotScrolled = finalScrollTop === initialScrollTop;
+        expect(hasNotScrolled).toBe(true);
+    });
+    it('should have scroll enabled after closing modal', () => {
+        const modal = new PageModal(MODAL);
+        const initialScrollTop = getScrollTopPosition();
+        const triggerButton = $(BUTTON);
+        triggerButton.click();
+        modal.waitUntilOpen();
+        browser.keys(ESCAPE_KEY);
+        modal.waitUntilClose();
+        scrollDown();
+        const finalScrollTop = getScrollTopPosition();
+        const hasScrolled = finalScrollTop > initialScrollTop;
+        expect(hasScrolled).toBe(true);
     });
     it('should have scroll disabled when modal is opened and another modal is opened above', () => {
         const modal = new PageModal(MODAL);
