@@ -158,6 +158,7 @@ const StyledTable = styled(Table)`
     font-family: Consolas, 'Liberation Mono', Menlo, monospace;
     font-size: 12px;
 `;
+const scrollTo = elem => window.scrollTo(0, elem.current.offsetTop - 70);
 
 export default function CustomizationPage(props) {
     const { examples, name, exampleMode, codeRevision } = props;
@@ -167,14 +168,12 @@ export default function CustomizationPage(props) {
     const example9Ref = useRef();
     const theme = useContext(ThemeContext);
 
-    const scrollTo = elem => window.scrollTo(0, elem.current.offsetTop - 70);
-
     return (
         <div className="react-rainbow-customization_top-container">
             <Tabset
                 className="react-rainbow-customization_top-container-tabset"
                 activeTabName={activeTab}
-                onSelect={(e, name) => setActiveTab(name)}
+                onSelect={(e, tapName) => setActiveTab(tapName)}
             >
                 <Tab
                     name="overview"
@@ -194,11 +193,11 @@ export default function CustomizationPage(props) {
                             <div className="react-rainbow-customization_section-heading-container">
                                 <h3 className="react-rainbow-getting-started_section-heading rainbow-m-right_medium">
                                     If you are using React Rainbow on your app, sometimes you may
-                                    need to customize our design to satisfy UI diversity from
-                                    business or brand requirements. Either you will need to use the
-                                    color of a specific business brand or a specific color palette
-                                    or you will need additional support for a dark or custom theme
-                                    on your app.
+                                    need to customize the default styles to satisfy your UI/UX based
+                                    on business or brand requirements. Either you will need to use
+                                    the color of a specific business brand or a specific color
+                                    palette or you will need additional support for a dark or custom
+                                    theme on your app.
                                 </h3>
                                 <CarbonAds className="react-rainbow-customization_carbon-ad" />
                             </div>
@@ -209,8 +208,8 @@ export default function CustomizationPage(props) {
                         <h3 className="react-rainbow-customization_section-text">
                             Customization is allowed by using our{' '}
                             <StyledBadge>{'<Application />'}</StyledBadge> component as a wrapper of
-                            your entire application, the property theme will accept an object where
-                            you can specify your palette of colors.
+                            your entire application, the component property theme will accept an
+                            object where you can specify your palette of colors.
                         </h3>
 
                         <br />
@@ -252,7 +251,7 @@ export default function CustomizationPage(props) {
                                 />{' '}
                                 Props
                             </h3>
-                            <StyledTable data={data} keyField="name">
+                            <StyledTable data={data} keyField="name" resizeColumnDisabled>
                                 <Column header="Prop Name" field="name" defaultWidth={160} />
                                 <Column header="Type" field="type" defaultWidth={80} />
                                 <Column header="Required" field="required" defaultWidth={120} />
@@ -291,10 +290,10 @@ export default function CustomizationPage(props) {
                             to make use of those values in order to be consistent with the colors of
                             your app.
                         </h3>
-
                         <CodeEditor code={defaultTheme} />
 
                         <h3 className="react-rainbow-customization_section-heading">Example</h3>
+
                         <Playground
                             code={examples[3].content}
                             evalInContext={examples[3].evalInContext}
@@ -302,7 +301,7 @@ export default function CustomizationPage(props) {
                             name={name}
                             index={3}
                             settings={examples[3].settings}
-                            exampleMode={exampleMode}
+                            exampleMode="collapse"
                         />
                     </div>
                 </RenderIf>
@@ -325,14 +324,12 @@ export default function CustomizationPage(props) {
                             <a
                                 className="react-rainbow-customization_link"
                                 onClick={() => scrollTo(example5Ref)}
-                                role="link"
                             >
                                 How customize the main color for all the components on my app?
                             </a>
                             <a
                                 className="react-rainbow-customization_link"
                                 onClick={() => scrollTo(example7Ref)}
-                                role="link"
                             >
                                 How to do a variation with a specific color for only one component
                                 on my app?
@@ -340,7 +337,6 @@ export default function CustomizationPage(props) {
                             <a
                                 className="react-rainbow-customization_link"
                                 onClick={() => scrollTo(example9Ref)}
-                                role="link"
                             >
                                 How use the colors defined on the theme on my own elements of my
                                 app?

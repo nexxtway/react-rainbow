@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Counter from '../counter';
 
-jest.mock('../helpers/abbreviateNumber', () => total => `${total}k`);
+jest.mock('../../../libs/utils/getSuffixSI', () => total => `${total}k`);
 
 describe('<Counter />', () => {
     const avatars = [

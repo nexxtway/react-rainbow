@@ -12,6 +12,7 @@ const pages = [
     'FindBook',
     'Team',
     'SocialIconsSet',
+    'Customization',
     '',
 ];
 
