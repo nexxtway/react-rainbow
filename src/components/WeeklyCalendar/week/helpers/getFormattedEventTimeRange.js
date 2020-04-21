@@ -9,7 +9,7 @@ const partsToString = parts => {
     return parts.map(({ value }) => value).reduce((string, part) => string + part);
 };
 
-export default function getFormattedEventDates(startDate, endDate, locale) {
+export default function getFormattedEventTimeRange(startDate, endDate, locale) {
     const startDateParts = formatter(locale).formatToParts(startDate);
     const endDateParts = formatter(locale).formatToParts(endDate);
 

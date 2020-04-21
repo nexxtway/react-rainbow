@@ -12,6 +12,7 @@ const StyledEvent = attachThemeAttrs(styled.div)`
     padding: 0 5px;
     overflow: hidden;
     position: absolute;
+    display: flex;
     cursor: pointer;
 `;
 

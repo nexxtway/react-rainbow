@@ -1,22 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useUniqueIdentifier } from '../../../libs/hooks';
-import { useEventStyle, useFormattedEventDates } from './hooks';
+import { useEventStyle, useFormattedEventTimeRange } from './hooks';
 import StyledEvent from './styled/event';
-import StyledEventDates from './styled/eventDates';
+import StyledEventTimeRange from './styled/eventTimeRange';
 import StyledEventTitle from './styled/eventTitle';
+import RenderIf from '../../RenderIf';
 
 export default function Event(props) {
     const { onEventClick, locale, ...event } = props;
     const { title, startDate, endDate } = event;
     const eventId = useUniqueIdentifier('calendar-event');
     const style = useEventStyle(startDate, endDate);
-    const dates = useFormattedEventDates(startDate, endDate, locale);
+    const formattedTimeRange = useFormattedEventTimeRange(startDate, endDate, locale);
 
     return (
         <StyledEvent id={eventId} style={style} onClick={() => onEventClick(event)}>
-            <StyledEventTitle>{title}</StyledEventTitle>
-            <StyledEventDates>{dates}</StyledEventDates>
+            <StyledEventTitle>
+                {title}
+                <RenderIf isTrue={style.flexDirection === 'row'}>,&nbsp;</RenderIf>
+            </StyledEventTitle>
+            <StyledEventTimeRange>{formattedTimeRange}</StyledEventTimeRange>
         </StyledEvent>
     );
 }
