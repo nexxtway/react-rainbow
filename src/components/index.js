@@ -72,4 +72,5 @@ export { default as VerticalSectionOverflow } from './VerticalSectionOverflow';
 export { default as VisualPicker } from './VisualPicker';
 export { default as VisualPickerOption } from './VisualPickerOption';
 export { default as VisualPickerOptionFooter } from './VisualPickerOptionFooter';
+export { default as WeeklyCalendar } from './WeeklyCalendar';
 export { default as withDebounce } from '../libs/hocs/withDebounce';
