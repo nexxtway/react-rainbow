@@ -15,6 +15,7 @@ import RequiredAsterisk from '../RequiredAsterisk';
 
 /**
  * ButtonGroupPicker can be used to group related options. The ButtonGroupPicker will control the selected state of its child ButtonOption.
+ * @category Form
  */
 class ButtonGroupPicker extends Component {
     constructor(props) {
@@ -30,6 +31,18 @@ class ButtonGroupPicker extends Component {
             return this.errorMessageId;
         }
         return undefined;
+    }
+
+    getContext() {
+        const { multiple, size, value } = this.props;
+        return {
+            onChange: this.handleOnChange,
+            values: value,
+            type: multiple ? 'checkbox' : 'radio',
+            name: this.groupNameId,
+            ariaDescribedBy: this.getErrorMessageId(),
+            size,
+        };
     }
 
     handleOnChange(event) {
@@ -51,30 +64,19 @@ class ButtonGroupPicker extends Component {
 
     render() {
         const {
+            id,
             className,
             style,
             label,
-            multiple,
             children,
-            size,
             error,
             bottomHelpText,
-            value,
             required,
         } = this.props;
-
-        const errorMessageId = this.getErrorMessageId();
-        const context = {
-            onChange: this.handleOnChange,
-            values: value,
-            type: multiple ? 'checkbox' : 'radio',
-            name: this.groupNameId,
-            ariaDescribedBy: errorMessageId,
-            size,
-        };
+        const context = this.getContext();
 
         return (
-            <StyledContainer className={className} style={style}>
+            <StyledContainer id={id} className={className} style={style}>
                 <RenderIf isTrue={!!label}>
                     <StyledLegend>
                         <RequiredAsterisk required={required} />
@@ -88,7 +90,7 @@ class ButtonGroupPicker extends Component {
                     <StyledHelpText>{bottomHelpText}</StyledHelpText>
                 </RenderIf>
                 <RenderIf isTrue={!!error}>
-                    <StyledErrorText id={errorMessageId}>{error}</StyledErrorText>
+                    <StyledErrorText id={this.getErrorMessageId()}>{error}</StyledErrorText>
                 </RenderIf>
             </StyledContainer>
         );
@@ -100,6 +102,8 @@ ButtonGroupPicker.propTypes = {
     className: PropTypes.string,
     /** An object with a custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The id of the outer element. */
+    id: PropTypes.string,
     /** The title at the top of the component. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The name of the ButtonOption selected or if multiple an array of names. */
@@ -135,6 +139,7 @@ ButtonGroupPicker.propTypes = {
 ButtonGroupPicker.defaultProps = {
     className: undefined,
     style: undefined,
+    id: undefined,
     label: undefined,
     value: undefined,
     required: false,
@@ -148,3 +153,4 @@ ButtonGroupPicker.defaultProps = {
 };
 
 export default withReduxForm(ButtonGroupPicker);
+export { ButtonGroupPicker as Component };

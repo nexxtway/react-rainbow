@@ -9,6 +9,7 @@ import {
     COLOR_GRAY_2,
     COLOR_GRAY_3,
     COLOR_GRAY_4,
+    COLOR_GRAY_TRANSPARENT_3,
 } from './colors';
 import { darken, getContrastText, lighten } from './helpers/color';
 import normalizeThemeColors from './helpers/normalizeThemeColors';
@@ -49,7 +50,7 @@ const defaultTheme = {
         border: {
             main: COLOR_GRAY_3,
             divider: COLOR_GRAY_2,
-            disabled: COLOR_GRAY_2,
+            disabled: COLOR_GRAY_TRANSPARENT_3,
         },
         action: {
             active: COLOR_GRAY_1,

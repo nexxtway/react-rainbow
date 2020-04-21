@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../../../styles/helpers/attachThemeAttrs';
-import { BORDER_RADIUS_3 } from '../../../../../styles/borderRadius';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+import { BORDER_RADIUS_3 } from '../../../styles/borderRadius';
 
 const StyledFaux = attachThemeAttrs(styled.span)`
     width: 1.25rem;

@@ -6,6 +6,9 @@ import { StyledLabel, StyledText } from './styled';
 import isOptionSelected from './helpers/isOptionSelected';
 import { useUniqueIdentifier } from '../../libs/hooks';
 
+/**
+ * @category Form
+ */
 export default function ButtonOption(props) {
     const inputId = useUniqueIdentifier('button-option');
     const { className, style, name, label, disabled, onClick } = props;
@@ -18,7 +21,13 @@ export default function ButtonOption(props) {
     const handleClick = () => onClick({ isSelected: checked });
 
     return (
-        <StyledLabel className={className} style={style} checked={checked} htmlFor={inputId}>
+        <StyledLabel
+            className={className}
+            style={style}
+            onClick={handleClick}
+            checked={checked}
+            htmlFor={inputId}
+        >
             <HiddenElement
                 id={inputId}
                 as="input"
@@ -30,7 +39,7 @@ export default function ButtonOption(props) {
                 onChange={onChange}
                 disabled={disabled}
             />
-            <StyledText size={size} onClick={handleClick} disabled={disabled} checked={checked}>
+            <StyledText size={size} disabled={disabled} checked={checked}>
                 {label}
             </StyledText>
         </StyledLabel>

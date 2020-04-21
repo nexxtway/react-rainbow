@@ -611,7 +611,9 @@ describe('<Table />', () => {
                 key: '9012zxcvbn',
             },
         ]);
-        const headCheckbox = component.find('InputCheckbox[label="select all rows"]').find('input');
+        const headCheckbox = component
+            .find('PrimitiveCheckbox[label="select all rows"]')
+            .find('input');
         headCheckbox.simulate('click');
         expect(component.state().rows).toEqual([
             {
@@ -667,7 +669,9 @@ describe('<Table />', () => {
                 key: '9012zxcvbn',
             },
         ]);
-        const headCheckbox = component.find('InputCheckbox[label="select all rows"]').find('input');
+        const headCheckbox = component
+            .find('PrimitiveCheckbox[label="select all rows"]')
+            .find('input');
         headCheckbox.simulate('click');
         expect(component.state().rows).toEqual([
             {
@@ -1099,7 +1103,9 @@ describe('<Table />', () => {
                 <Column field="id" header="ID" />
             </Table>,
         );
-        const headCheckbox = component.find('InputCheckbox[label="select all rows"]').find('input');
+        const headCheckbox = component
+            .find('PrimitiveCheckbox[label="select all rows"]')
+            .find('input');
         headCheckbox.simulate('click');
         expect(component.state('bulkSelection')).toBe('all');
         expect(component.instance().selectedRowsKeys).toEqual({

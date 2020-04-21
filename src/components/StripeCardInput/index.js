@@ -124,7 +124,7 @@ StripeCardInput.propTypes = {
     /** Specifies that an input field must be filled out before submitting the form.
      * This value defaults to false. */
     required: PropTypes.bool,
-    /** The component locale. Defaults to browser's language. */
+    /** The component locale. If the locale is not passed, it defaults to the context language, and if the context language is not passed, it will default to the browser's language. */
     locale: PropTypes.oneOf([
         'ar',
         'da',
@@ -158,6 +158,16 @@ StripeCardInput.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /**
+     * This prop that should not be visible in the documentation.
+     * @ignore
+     */
+    isScriptLoaded: PropTypes.bool.isRequired,
+    /**
+     * This prop that should not be visible in the documentation.
+     * @ignore
+     */
+    isScriptLoadSucceed: PropTypes.bool.isRequired,
 };
 
 StripeCardInput.defaultProps = {

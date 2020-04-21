@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TreeChildren from './treeChildren';
 import TreeContainerUl from './styled/treeContainerUl';
-import getChild from './helpers/getChild';
+import getNode from './helpers/getNode';
 
 /**
  * A Tree is visualization of a structure hierarchy with nested elements. A branch can be expanded or collapsed or selected. This is a BETA version.
@@ -17,21 +17,21 @@ export default function Tree(props) {
                 data={data}
                 onExpandCollapse={onExpandCollapse}
                 onSelect={onSelect}
-                childPath={[]}
+                nodePath={[]}
             />
         </TreeContainerUl>
     );
 }
 
 Tree.propTypes = {
-    /** A array with the nodes of the ButtonGroupPicker. This is a recursive shape that is used for render the nested nodes passed on children of the array.
+    /** A array with the nodes of the Tree. This is a recursive shape that is used for render the nested nodes passed on children of the array.
      */
     data: PropTypes.arrayOf(
         PropTypes.shape({
             label: PropTypes.node,
             icon: PropTypes.node,
             isExpanded: PropTypes.bool,
-            isChecked: PropTypes.bool,
+            isChecked: PropTypes.oneOf([true, false, 'indeterminate']),
             children: PropTypes.array,
         }),
     ),
@@ -57,4 +57,4 @@ Tree.defaultProps = {
  * Add documentation.
  * @public
  */
-Tree.getChild = getChild;
+Tree.getNode = getNode;
