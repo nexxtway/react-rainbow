@@ -57,6 +57,7 @@ export { default as SidebarItem } from './SidebarItem';
 export { default as Slider } from './Slider';
 export { default as Spinner } from './Spinner';
 export { default as StripeCardInput } from './StripeCardInput';
+export { default as StrongPasswordInput } from './StrongPasswordInput';
 export { default as Tab } from './Tab';
 export { default as Tabset } from './Tabset';
 export { default as Table } from './Table';
