@@ -397,6 +397,7 @@ class Picklist extends Component {
                         type="text"
                         name={name}
                         value={value}
+                        error={error}
                         onClick={this.handleInputClick}
                         onFocus={this.handleFocus}
                         onBlur={this.handleBlur}
