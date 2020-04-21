@@ -12,9 +12,10 @@ import StrengthBar from './strengthBar';
 import { StyledContainer } from './styled';
 
 /**
- * StrongPasswordInput
+ * StrongPasswordInput component is used to provide feedback about password strength
+ * @category Form
  */
-export default function StrongPasswordInput(props) {
+const StrongPasswordInput = React.forwardRef((props, ref) => {
     const inputId = uniqueId('input');
     const errorMessageId = uniqueId('error-message');
     const inlineTextLabelId = uniqueId('inline-text-label');
@@ -66,8 +67,6 @@ export default function StrongPasswordInput(props) {
         isCentered,
         iconPosition,
     } = props;
-    const inputProps = { ...props };
-    inputProps.type = 'password';
 
     let status;
     if (passwordState === 'poor') {
@@ -127,6 +126,7 @@ export default function StrongPasswordInput(props) {
                     icon={icon}
                     error={error}
                     status={status}
+                    ref={ref}
                 />
             </RelativeElement>
             <StrengthBar passwordState={passwordState} passwordStateLabel={passwordStateLabel} />
@@ -142,7 +142,7 @@ export default function StrongPasswordInput(props) {
             </RenderIf>
         </StyledContainer>
     );
-}
+});
 
 StrongPasswordInput.propTypes = {
     /** Specifies the value of an input element. */
@@ -244,3 +244,5 @@ StrongPasswordInput.defaultProps = {
     passwordState: undefined,
     passwordStateLabel: undefined,
 };
+
+export default StrongPasswordInput;
