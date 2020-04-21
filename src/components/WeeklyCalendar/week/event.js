@@ -18,7 +18,9 @@ export default function Event(props) {
         <StyledEvent id={eventId} style={style} onClick={() => onEventClick(event)}>
             <StyledEventTitle>
                 {title}
-                <RenderIf isTrue={style.flexDirection === 'row'}>,&nbsp;</RenderIf>
+                <RenderIf isTrue={style.flexDirection === 'row'}>
+                    <span>,&nbsp;</span>
+                </RenderIf>
             </StyledEventTitle>
             <StyledEventTimeRange>{formattedTimeRange}</StyledEventTimeRange>
         </StyledEvent>
