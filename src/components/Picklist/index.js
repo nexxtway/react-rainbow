@@ -389,7 +389,7 @@ class Picklist extends Component {
                         <StyledIcon error={error}>{icon}</StyledIcon>
                     </RenderIf>
                     <RenderIf isTrue={!readOnly}>
-                        <StyledIndicator disabled={disabled} />
+                        <StyledIndicator error={error} disabled={disabled} />
                     </RenderIf>
                     <StyledInput
                         aria-controls={this.listboxId}

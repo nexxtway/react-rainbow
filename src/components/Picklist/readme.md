@@ -254,30 +254,23 @@ import React from 'react';
 import { Picklist, PicklistOption } from 'react-rainbow-components';
 
 const containerStyles = {
-    width: '200px',
+    maxWidth: 700,
 };
 
-<div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
-    <GlobalHeader
-        src="images/user/user2.jpg"
-        className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large"
-    >
-        <div className="rainbow-flex rainbow-align_right">
-            <Picklist
-                id="picklist-1"
-                style={containerStyles}
-                onChange={value => setState({ value })}
-                value={state.value}
-                error= {!state.value ? "This Field is Required" : null}
-                label="Select Building"
-                hideLabel
-            >
-                <PicklistOption name="header" label="Your Buildings" variant="header" />
-                <PicklistOption name="option 1" label="Experimental Building" />
-                <PicklistOption name="option 2" label="Empire State" />
-                <PicklistOption name="option 3" label="Central Park" />
-            </Picklist>
-        </div>
-    </GlobalHeader>
-</div>
+initialState = { value: { name: 'option 3', label: 'Central Park' } };
+
+<Picklist
+    id="picklist-11"
+    style={containerStyles}
+    onChange={value => setState({ value })}
+    value={state.value}
+    error= "This Field is Required"
+    label="Select Building"
+    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+>
+    <PicklistOption name="header" label="Your Buildings" variant="header" />
+    <PicklistOption name="option 1" label="Experimental Building" />
+    <PicklistOption name="option 2" label="Empire State" />
+    <PicklistOption name="option 3" label="Central Park" />
+</Picklist>
 ```
