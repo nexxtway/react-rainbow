@@ -5,43 +5,60 @@ import React from 'react';
 import { StrongPasswordInput } from 'react-rainbow-components';
 
 const containerStyles = {
-    maxWidth: 700,
+    maxWidth: 500,
 };
 
 <StrongPasswordInput
-    id="strongpasswordinput-component-1"
-    label="Input Label"
+    id="strong-password-input-1"
+    label="Password"
     placeholder="Placeholder text"
     style={containerStyles}
-    type="text"
     bottomHelpText="Your password must be at least 8 characters long."
     className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+/>;
+```
+
+##### StrongPasswordInput with icon
+
+```js
+import React from 'react';
+import { StrongPasswordInput } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faKey } from '@fortawesome/free-solid-svg-icons';
+
+const containerStyles = {
+    maxWidth: 500,
+};
+
+<StrongPasswordInput
+    id="strong-password-input-3"
+    label="Password"
+    placeholder="Placeholder text"
+    style={containerStyles}
+    bottomHelpText="Your password must be at least 8 characters long."
+    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+    icon={<FontAwesomeIcon icon={faKey} className="rainbow-color_gray-3" />}
 />;
 ```
 
 ##### StrongPasswordInput working
 
 ```js
-import React from 'react';
+import React, { useState } from 'react';
 import { StrongPasswordInput } from 'react-rainbow-components';
 
 const containerStyles = {
-    maxWidth: 700,
+    maxWidth: 500,
 };
 
-class ControlledStrongPasswordInput extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { value: ''};
-        this.handleOnChange = this.handleOnChange.bind(this);
+function ControlledStrongPasswordInput(props) {
+    const [value, setValue] = useState('');
+
+    function handleOnChange(event) {
+        setValue(event.target.value);
     }
 
-    handleOnChange(event) {
-        this.setState({ value: event.target.value });
-    }
-
-    getStrength() {
-        const { value } = this.state;
+    function getStrength() {
         const length = value.length;
 
         if (length === 0) {
@@ -55,27 +72,75 @@ class ControlledStrongPasswordInput extends React.Component {
         }
     }
 
-    render() {
-        const passwordState = this.getStrength();        
+    const passwordState = getStrength();
 
-        return (
-            <div>
-                <StrongPasswordInput
-                    id="input-component-1"
-                    label="Input Label"
-                    placeholder="Placeholder text"
-                    style={containerStyles}
-                    type="text"
-                    bottomHelpText="Your password must be at least 8 characters long."
-                    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-                    passwordState={passwordState}
-                    passwordStateLabel={passwordState}
-                    onChange={this.handleOnChange}
-                    required
-                />;                
-            </div>
-        )
+    return (
+        <StrongPasswordInput
+            id="strong-password-input-5"
+            label="Password"
+            placeholder="Placeholder text"
+            value={value}
+            style={containerStyles}
+            bottomHelpText="Your password must be at least 8 characters long."
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+            passwordState={passwordState}
+            passwordStateLabel={passwordState}
+            onChange={handleOnChange}
+            required
+        />;
+    )
+}
+
+<ControlledStrongPasswordInput />
+```
+
+##### StrongPasswordInput working without password state label
+
+```js
+import React, { useState } from 'react';
+import { StrongPasswordInput } from 'react-rainbow-components';
+
+const containerStyles = {
+    maxWidth: 500,
+};
+
+function ControlledStrongPasswordInput(props) {
+    const [value, setValue] = useState('');
+
+    function handleOnChange(event) {
+        setValue(event.target.value);
     }
+
+    function getStrength() {
+        const length = value.length;
+
+        if (length === 0) {
+            return undefined;
+        } else if (length <= 3) {
+            return 'poor';
+        } else if (length > 3 && length < 8) {
+            return 'average';
+        } else {
+            return 'strong';
+        }
+    }
+
+    const passwordState = getStrength();
+
+    return (
+        <StrongPasswordInput
+            id="strong-password-input-7"
+            label="Password"
+            placeholder="Placeholder text"
+            value={value}
+            style={containerStyles}
+            bottomHelpText="Your password must be at least 8 characters long."
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+            passwordState={passwordState}
+            onChange={handleOnChange}
+            required
+        />;
+    )
 }
 
 <ControlledStrongPasswordInput />

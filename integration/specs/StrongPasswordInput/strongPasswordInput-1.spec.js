@@ -1,6 +1,6 @@
 const PageStrongPasswordInput = require('../../../src/components/StrongPasswordInput/pageObject');
 
-const INPUT = '#strongpasswordinput-component-1';
+const INPUT = '#strong-password-input-1';
 
 describe('StrongPasswordInput base example', () => {
     beforeAll(() => {
