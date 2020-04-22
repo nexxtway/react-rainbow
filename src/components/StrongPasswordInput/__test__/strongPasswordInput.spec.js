@@ -63,9 +63,9 @@ describe('<StrongPasswordInput />', () => {
     });
 
     it('should pass a generated id to the Label component and set the same id to the aria-labelledby for the input when a bottomHelpText is passed', () => {
-        const component = mount(<StrongPasswordInput bottomHelpText="Help text" />);
-        expect(component.find('Label').prop('id')).toMatch(/inline-text-label/);
-        expect(component.find('input').prop('aria-labelledby')).toMatch(/inline-text-label/);
+        const component = mount(<StrongPasswordInput label="custom label" />);
+        expect(component.find('Label').prop('id')).toMatch(/label/);
+        expect(component.find('input').prop('aria-labelledby')).toMatch(/label/);
     });
 
     it('should pass a generated id to the Error element and set the same id to the aria-describedby for the input when a error is passed', () => {
@@ -82,6 +82,7 @@ describe('<StrongPasswordInput />', () => {
             readOnly: false,
             hideLabel: false,
             inputId: expect.any(String),
+            id: expect.any(String),
         });
     });
 
