@@ -25,7 +25,7 @@ StrengthBar.propTypes = {
     /**
      * The label to show at the right of the bar
      */
-    passwordStateLabel: PropTypes.string,
+    passwordStateLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 };
 
 StrengthBar.defaultProps = {
