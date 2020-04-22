@@ -15,7 +15,7 @@ const containerStyles = {
     style={containerStyles}
     bottomHelpText="Your password must be at least 8 characters long."
     className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-/>;
+/>
 ```
 
 ##### StrongPasswordInput with icon
@@ -38,7 +38,7 @@ const containerStyles = {
     bottomHelpText="Your password must be at least 8 characters long."
     className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
     icon={<FontAwesomeIcon icon={faKey} className="rainbow-color_gray-3" />}
-/>;
+/>
 ```
 
 ##### StrongPasswordInput working
@@ -87,7 +87,7 @@ function ControlledStrongPasswordInput(props) {
             passwordStateLabel={passwordState}
             onChange={handleOnChange}
             required
-        />;
+        />
     )
 }
 
@@ -139,7 +139,7 @@ function ControlledStrongPasswordInput(props) {
             passwordState={passwordState}
             onChange={handleOnChange}
             required
-        />;
+        />
     )
 }
 
