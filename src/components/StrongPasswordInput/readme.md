@@ -37,7 +37,7 @@ const containerStyles = {
     style={containerStyles}
     bottomHelpText="Your password must be at least 8 characters long."
     className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-    icon={<FontAwesomeIcon icon={faKey} className="rainbow-color_gray-3" />}
+    icon={<FontAwesomeIcon icon={faKey} />}
 />
 ```
 
