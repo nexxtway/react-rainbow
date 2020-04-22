@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { uniqueId } from '../../libs/utils';
 import Label from '../Input/label';
 import StyledIconContainer from '../Input/styled/iconContainer';
 import RelativeElement from '../Structural/relativeElement';
@@ -10,32 +9,14 @@ import HelpText from '../Input/styled/helpText';
 import ErrorText from '../Input/styled/errorText';
 import StrengthBar from './strengthBar';
 import { StyledContainer } from './styled';
+import { useUniqueIdentifier, useErrorMessageId, useLabelId } from '../../libs/hooks';
+import usePasswordState from './hooks/usePasswordState';
 
 /**
  * StrongPasswordInput component is used to provide feedback about password strength
  * @category Form
  */
 const StrongPasswordInput = React.forwardRef((props, ref) => {
-    const inputId = uniqueId('input');
-    const errorMessageId = uniqueId('error-message');
-    const inlineTextLabelId = uniqueId('inline-text-label');
-
-    function getInlineTextLabelId() {
-        const { bottomHelpText } = props;
-        if (bottomHelpText) {
-            return inlineTextLabelId;
-        }
-        return undefined;
-    }
-
-    function getErrorMessageId() {
-        const { error } = props;
-        if (error) {
-            return errorMessageId;
-        }
-        return undefined;
-    }
-
     const {
         id,
         className,
@@ -68,14 +49,10 @@ const StrongPasswordInput = React.forwardRef((props, ref) => {
         iconPosition,
     } = props;
 
-    let status;
-    if (passwordState === 'poor') {
-        status = 'error';
-    } else if (passwordState === 'average') {
-        status = 'warning';
-    } else if (passwordState === 'strong') {
-        status = 'success';
-    }
+    const inputId = useUniqueIdentifier('input');
+    const errorMessageId = useErrorMessageId(error);
+    const labelId = useLabelId(label);
+    const status = usePasswordState(passwordState);
 
     return (
         <StyledContainer id={id} className={className} style={style}>
@@ -85,7 +62,7 @@ const StrongPasswordInput = React.forwardRef((props, ref) => {
                 required={required}
                 inputId={inputId}
                 readOnly={readOnly}
-                id={getInlineTextLabelId()}
+                id={labelId}
             />
 
             <RelativeElement>
@@ -118,8 +95,8 @@ const StrongPasswordInput = React.forwardRef((props, ref) => {
                     minLength={minLength}
                     pattern={pattern}
                     autoComplete={autoComplete}
-                    aria-labelledby={getInlineTextLabelId()}
-                    aria-describedby={getErrorMessageId()}
+                    aria-labelledby={labelId}
+                    aria-describedby={errorMessageId}
                     isBare={isBare}
                     isCentered={isCentered}
                     iconPosition={iconPosition}
@@ -136,7 +113,7 @@ const StrongPasswordInput = React.forwardRef((props, ref) => {
                 </HelpText>
             </RenderIf>
             <RenderIf isTrue={!!error}>
-                <ErrorText alignSelf="center" id={getErrorMessageId()}>
+                <ErrorText alignSelf="center" id={errorMessageId}>
                     {error}
                 </ErrorText>
             </RenderIf>
