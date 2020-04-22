@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 import Input from '../../Input/styled/input';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
-import { COLOR_WARNING } from '../../../styles/colors';
 
 const hasLeftIcon = props => props.icon && props.iconPosition === 'left';
 const hasRightIcon = props => props.icon && props.iconPosition === 'right';
 
-const WARNING_SHADOW = `0 0 2px ${COLOR_WARNING}`;
-
-const StyledInput = attachThemeAttrs(styled(Input))`
+const StyledInput = attachThemeAttrs(styled(Input)).attrs(props => {
+    const shadowWarning = `0 0 2px ${props.palette.warning.main}`;
+    return { shadowWarning };
+})`
     &[readonly] {
         padding-left: 0;
         padding-right: 0;
@@ -89,7 +89,7 @@ const StyledInput = attachThemeAttrs(styled(Input))`
             :focus,
             :active {
                 border: 2px solid ${props.palette.warning.main};
-                box-shadow: ${WARNING_SHADOW};
+                box-shadow: ${props.shadowWarning};
             }
         `}
 
