@@ -146,8 +146,7 @@ StrongPasswordInput.propTypes = {
     /** Specifies that an input field must be filled out before submitting the form.
      * This value defaults to false. */
     required: PropTypes.bool,
-    /** Specifies the regular expression that the input's value is checked against.
-     * This attribute is supported for text, search, url, tel, email, and password types. */
+    /** Specifies the regular expression that the input's value is checked against. */
     pattern: PropTypes.string,
     /** Specifies that an input text will be centered. This value defaults to false. */
     isCentered: PropTypes.bool,
@@ -180,13 +179,9 @@ StrongPasswordInput.propTypes = {
     /** A string indicating the type of autocomplete functionality.
      * If any, to allow on the input. */
     autoComplete: PropTypes.string,
-    /**
-     * The state of the password strenght
-     */
+    /** The state of the password strenght */
     passwordState: PropTypes.oneOf(['poor', 'average', 'strong']),
-    /**
-     * The label to show at the right of the bar
-     */
+    /** The label to show at the right of the bar */
     passwordStateLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 };
 
