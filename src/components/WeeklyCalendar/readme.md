@@ -42,7 +42,7 @@ const events = [
         id: 5,
         title: 'Tahimi',
         startDate: new Date(daysOfWeek[1].setHours(8, 0, 0, 0)),
-        endDate: new Date(daysOfWeek[1].setHours(8, 20, 0, 0)),
+        endDate: new Date(daysOfWeek[1].setHours(8, 15, 0, 0)),
     },
     {
         id: 6,

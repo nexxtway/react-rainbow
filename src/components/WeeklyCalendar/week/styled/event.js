@@ -8,6 +8,7 @@ const StyledEvent = attachThemeAttrs(styled.div)`
     color: ${props => props.palette.getContrastText(props.palette.brand.main)};
     background-color: ${props => props.palette.brand.main};
     width: 100%;
+    min-height: 18px;
     border-radius: 8px;
     padding: 0 5px;
     overflow: hidden;
