@@ -42,7 +42,7 @@ const events = [
         id: 5,
         title: 'Tahimi',
         startDate: new Date(daysOfWeek[1].setHours(8, 0, 0, 0)),
-        endDate: new Date(daysOfWeek[1].setHours(8, 15, 0, 0)),
+        endDate: new Date(daysOfWeek[1].setHours(8, 20, 0, 0)),
     },
     {
         id: 6,
@@ -105,6 +105,7 @@ const initialState = {
             events={events}
             currentWeek={state.currentWeek}
             onWeekChange={({ week }) => setState({ currentWeek: week })}
+            onEventClick={event => alert(event.title)}
             locale="en"
         />
     </StyledCard>
@@ -164,8 +165,7 @@ const StyleTitle = styled.h1`
 `;
 
 const StyleTimeRange = styled.p`
-    font-size: 0.5rem;
-    color: ${props => props.theme.rainbow.palette.text.main};
+    color: ${props => props.theme.rainbow.palette.text.header};
 `;
 
 const StyleDescription = styled.p`
