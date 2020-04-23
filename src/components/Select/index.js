@@ -116,7 +116,7 @@ Select.propTypes = {
     onFocus: PropTypes.func,
     /** The action triggered when the element releases focus. */
     onBlur: PropTypes.func,
-    /** Text help for the select. */
+    /** Shows the help message below the Select. */
     bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies that an input field must be filled out before submitting the form.
      * This value defaults to false. */
