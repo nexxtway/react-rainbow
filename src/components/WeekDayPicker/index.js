@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import valuePropValidation from './helpers/valuePropValidation';
 import sortWeekDays from './helpers/sortWeekDays';
@@ -42,7 +42,7 @@ const WeekDayPicker = React.forwardRef((props, ref) => {
     const fieldsetName = name || defaultFieldsetName;
 
     const getNormalizedValue = (weekDayValue, isChecked) => {
-        if (multiple) {
+        if (multiple && value) {
             if (isChecked && !value.includes(weekDayValue)) {
                 return sortWeekDays([...value, weekDayValue]);
             }
