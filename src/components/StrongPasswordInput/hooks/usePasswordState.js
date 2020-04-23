@@ -1,8 +1,9 @@
 import { useMemo } from 'react';
 
+const mapStatuses = { poor: 'error', average: 'warning', strong: 'success' };
+
 export default function usePasswordState(passwordState) {
     return useMemo(() => {
-        const mapStatuses = { poor: 'error', average: 'warning', strong: 'success' };
         return mapStatuses[passwordState];
     }, [passwordState]);
 }
