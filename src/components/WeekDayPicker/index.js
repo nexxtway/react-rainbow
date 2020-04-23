@@ -57,11 +57,8 @@ const WeekDayPicker = React.forwardRef((props, ref) => {
         const weekDayValue = e.target.value;
         const isChecked = e.target.checked;
 
-        console.log(e.currentTarget.value);
-        console.log(e.currentTarget.checked);
-
         if (!disabled && !readOnly) {
-            return onChange(getNormalizedValue(weekDayValue, isChecked));
+            onChange(getNormalizedValue(weekDayValue, isChecked));
         }
     };
 

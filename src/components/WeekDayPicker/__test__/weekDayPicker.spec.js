@@ -3,11 +3,8 @@ import { mount } from 'enzyme';
 import { useUniqueIdentifier } from '../../../libs/hooks';
 import WeekDayPicker from '../';
 import StyledTextError from '../../Input/styled/errorText';
-import sortWeekDays from '../helpers/sortWeekDays';
-import WeekDay from '../weekDay';
 
 jest.mock('../../../libs/hooks/useUniqueIdentifier', () => jest.fn(() => 'week-day'));
-jest.mock('../helpers/sortWeekDays', () => jest.fn());
 
 describe('<WeekDayPicker />', () => {
     it('should render a label when label prop is passed', () => {
@@ -53,18 +50,18 @@ describe('<WeekDayPicker />', () => {
                 .prop('disabled'),
         ).toBe(true);
     });
-    it('should have inputs checked, when multiple values are sent initially', () => {
-        const component = mount(<WeekDayPicker value={['monday', 'tuesday']} multiple />);
+    it('should set checked status for default input values', () => {
+        const component = mount(<WeekDayPicker value={['sunday', 'monday']} multiple />);
         expect(
             component
                 .find('input')
-                .at(1)
+                .at(0)
                 .prop('checked'),
         ).toBe(true);
         expect(
             component
                 .find('input')
-                .at(2)
+                .at(1)
                 .prop('checked'),
         ).toBe(true);
     });
@@ -77,9 +74,15 @@ describe('<WeekDayPicker />', () => {
                 .prop('readOnly'),
         ).toBe(true);
     });
-    it('should change checked status when value changes and multiple is false', () => {
+    it('should change checked properly status for single day selection', () => {
         const component = mount(<WeekDayPicker value={'friday'} />);
         component.setProps({ value: 'monday' });
+        expect(
+            component
+                .find('input')
+                .at(5)
+                .prop('checked'),
+        ).toBe(false);
         expect(
             component
                 .find('input')
@@ -87,9 +90,15 @@ describe('<WeekDayPicker />', () => {
                 .prop('checked'),
         ).toBe(true);
     });
-    it('should change checked status values properly when value changes and multiple is true', () => {
+    it('should change checked status properly for multiple selection', () => {
         const component = mount(<WeekDayPicker value={['saturday']} multiple />);
-        component.setProps({ value: ['monday'] });
+        component.setProps({ value: ['sunday', 'monday'] });
+        expect(
+            component
+                .find('input')
+                .at(0)
+                .prop('checked'),
+        ).toBe(true);
         expect(
             component
                 .find('input')
@@ -103,49 +112,46 @@ describe('<WeekDayPicker />', () => {
                 .prop('checked'),
         ).toBe(false);
     });
-    it('should call set useUniqueIdentifier 8 times: 7 for weekDays and 1 for weeDaysItems', () => {
+    it('should call set useUniqueIdentifier for the days and the days wrapper element', () => {
         useUniqueIdentifier.mockReset();
         mount(<WeekDayPicker />);
         expect(useUniqueIdentifier).toHaveBeenCalledTimes(8);
     });
-    it('should not run change event, when input changes and readOnly param is true', () => {
+    it('should not run onChange when checkbox change is triggered and readOnly is true', () => {
         const onChangeFn = jest.fn();
         const component = mount(<WeekDayPicker onChange={onChangeFn} readOnly />);
         component
             .find('input')
             .at(0)
-            .simulate('change', { currentTarget: { checked: true, value: 'sunday' } });
+            .simulate('change', { target: { checked: true, value: 'sunday' } });
         expect(onChangeFn).not.toHaveBeenCalled();
     });
-    it('should not run change event, when input changes and disabled param is true', () => {
+    it('should not run onChange when input change is triggered and disabled is true', () => {
         const onChangeFn = jest.fn();
         const component = mount(<WeekDayPicker onChange={onChangeFn} disabled />);
         component
             .find('input')
             .at(0)
-            .simulate('change', { currentTarget: { checked: true, value: 'sunday' } });
+            .simulate('change', { target: { checked: true, value: 'sunday' } });
         expect(onChangeFn).not.toHaveBeenCalled();
     });
-    it('should call set sortWeekDays when input changes and multiple is true', () => {
-        const component = mount(<WeekDayPicker multiple />);
-        sortWeekDays.mockReset();
-        component
-            .find('input')
-            .at(0)
-            .simulate('change', { currentTarget: { checked: true, value: 'sunday' } });
-
-        expect(sortWeekDays).toHaveBeenCalled();
-    });
-    it('should fire onchange with an array of values including the value checked when multiple is true', () => {
+    it('should run onChange with the right value when multiple is not set', () => {
         const onChangeFn = jest.fn();
-        const component = mount(
-            <WeekDayPicker value={['monday']} onChange={onChangeFn} multiple />,
-        );
+        const component = mount(<WeekDayPicker value={'monday'} onChange={onChangeFn} />);
         component
             .find('input')
             .at(0)
-            .simulate('change', { currentTarget: { checked: true, value: 'sunday' } });
-
-        expect(onChangeFn).toHaveBeenCalledWith(['sunday', 'monday']);
+            .simulate('change', { target: { checked: true, value: 'sunday' } });
+        expect(onChangeFn).toHaveBeenCalledWith('sunday');
+    });
+    it('should run onChange with the right sorted values when multiple is true', () => {
+        const onChangeFn = jest.fn();
+        const value = ['friday', 'monday'];
+        const component = mount(<WeekDayPicker value={value} multiple onChange={onChangeFn} />);
+        component
+            .find('input')
+            .at(0)
+            .simulate('change', { target: { checked: true, value: 'sunday' } });
+        expect(onChangeFn).toHaveBeenCalledWith(['sunday', 'monday', 'friday']);
     });
 });
