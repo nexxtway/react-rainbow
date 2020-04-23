@@ -5,13 +5,17 @@ import { StyledStrenghtBar, StyledStateBar, StyledStateLabel } from './styled';
 
 export default function StrengthBar(props) {
     const { passwordState, passwordStateLabel } = props;
+
+    let label;
+    if (passwordStateLabel) {
+        label = passwordStateLabel[passwordState];
+    }
+
     return (
         <StyledStrenghtBar>
             <StyledStateBar passwordState={passwordState} />
-            <RenderIf isTrue={!!passwordStateLabel}>
-                <StyledStateLabel passwordState={passwordState}>
-                    {passwordStateLabel}
-                </StyledStateLabel>
+            <RenderIf isTrue={!!label}>
+                <StyledStateLabel passwordState={passwordState}>{label}</StyledStateLabel>
             </RenderIf>
         </StyledStrenghtBar>
     );
@@ -21,11 +25,15 @@ StrengthBar.propTypes = {
     /**
      * The state of the password strenght
      */
-    passwordState: PropTypes.oneOf(['poor', 'average', 'strong']),
+    passwordState: PropTypes.oneOf(['weak', 'average', 'strong']),
     /**
      * The label to show at the right of the bar
      */
-    passwordStateLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    passwordStateLabel: PropTypes.shape({
+        weak: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+        average: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+        strong: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    }),
 };
 
 StrengthBar.defaultProps = {

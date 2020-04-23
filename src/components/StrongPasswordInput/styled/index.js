@@ -33,7 +33,7 @@ const StyledStateBar = attachThemeAttrs(styled.div)`
     }
 
     ${props =>
-        props.passwordState === 'poor' &&
+        props.passwordState === 'weak' &&
         `
             background-color: ${props.palette.error.light};
 
@@ -71,7 +71,7 @@ const StyledStateLabel = attachThemeAttrs(styled.span)`
     color: ${props => props.palette.text.disabled};
 
     ${props =>
-        props.passwordState === 'poor' &&
+        props.passwordState === 'weak' &&
         `
             color: ${props.palette.error.main};
         `}

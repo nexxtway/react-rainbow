@@ -21,7 +21,7 @@ function ControlledStrongPasswordInput(props) {
             return undefined;
         }
         if (length <= 3) {
-            return 'poor';
+            return 'weak';
         }        
         if (length > 3 && length < 8) {
             return 'average';
@@ -74,7 +74,7 @@ function ControlledStrongPasswordInput(props) {
             return undefined;
         }
         if (length <= 3) {
-            return 'poor';
+            return 'weak';
         }        
         if (length > 3 && length < 8) {
             return 'average';
@@ -113,6 +113,12 @@ const containerStyles = {
     maxWidth: 500,
 };
 
+const passwordStateLabelMap = {
+    weak: 'Weak',
+    average: 'Average',
+    strong: 'Strong',
+};
+
 function ControlledStrongPasswordInput(props) {
     const [value, setValue] = useState('');
 
@@ -126,7 +132,7 @@ function ControlledStrongPasswordInput(props) {
             return undefined;
         }
         if (length <= 3) {
-            return 'poor';
+            return 'weak';
         }        
         if (length > 3 && length < 8) {
             return 'average';
@@ -146,7 +152,7 @@ function ControlledStrongPasswordInput(props) {
             style={containerStyles}
             value={value}
             passwordState={passwordState}
-            passwordStateLabel={passwordState}
+            passwordStateLabel={passwordStateLabelMap}
             onChange={handleOnChange}
         />
     )
@@ -178,7 +184,7 @@ function ControlledStrongPasswordInput(props) {
             return undefined;
         }
         if (length <= 3) {
-            return 'poor';
+            return 'weak';
         }        
         if (length > 3 && length < 8) {
             return 'average';

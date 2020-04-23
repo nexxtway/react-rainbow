@@ -163,9 +163,13 @@ StrongPasswordInput.propTypes = {
     /** The id of the outer element. */
     id: PropTypes.string,
     /** The state of the password strenght */
-    passwordState: PropTypes.oneOf(['poor', 'average', 'strong']),
+    passwordState: PropTypes.oneOf(['weak', 'average', 'strong']),
     /** The label to show at the right of the bar */
-    passwordStateLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    passwordStateLabel: PropTypes.shape({
+        weak: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+        average: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+        strong: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    }),
 };
 
 StrongPasswordInput.defaultProps = {
@@ -178,9 +182,6 @@ StrongPasswordInput.defaultProps = {
     minLength: undefined,
     bottomHelpText: null,
     required: false,
-    pattern: undefined,
-    isCentered: false,
-    isBare: false,
     error: null,
     disabled: false,
     readOnly: false,
@@ -193,7 +194,6 @@ StrongPasswordInput.defaultProps = {
     className: undefined,
     style: undefined,
     id: undefined,
-    autoComplete: 'on',
     label: undefined,
     hideLabel: false,
     passwordState: undefined,

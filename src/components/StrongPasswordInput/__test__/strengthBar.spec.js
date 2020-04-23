@@ -5,14 +5,21 @@ import { StyledStateBar, StyledStateLabel } from '../styled';
 
 describe('<StrengthBar />', () => {
     it('should render a StyledStateBar with the right `passwordState`', () => {
-        const component = mount(<StrengthBar passwordState="poor" />);
+        const component = mount(<StrengthBar passwordState="weak" />);
         const styledStateBar = component.find(StyledStateBar);
         expect(styledStateBar.length).toBe(1);
-        expect(styledStateBar.prop('passwordState')).toBe('poor');
+        expect(styledStateBar.prop('passwordState')).toBe('weak');
     });
 
     it('should render the password state label when passed', () => {
-        const component = mount(<StrengthBar passwordState="poor" passwordStateLabel="poor" />);
+        const passwordStateLabelMap = {
+            weak: 'Weak',
+            average: 'Average',
+            strong: 'Strong',
+        };
+        const component = mount(
+            <StrengthBar passwordState="weak" passwordStateLabel={passwordStateLabelMap} />,
+        );
         expect(component.find(StyledStateLabel).length).toBe(1);
     });
 });
