@@ -16,8 +16,9 @@ const StyledStateBar = attachThemeAttrs(styled.div)`
     position: relative;
     flex-grow: 1;
     height: 2px;
-    background-color: ${props => props.palette.text.disabled};
+    background-color: ${props => props.palette.border.divider};
     margin: 0.65em;
+    border-radius: 2px;
 
     ::before {
         content: '';
@@ -28,6 +29,7 @@ const StyledStateBar = attachThemeAttrs(styled.div)`
         transition-duration: .5s;
         width: 0;
         background-color: ${props => props.palette.error.main}
+        border-radius: 2px;
     }
 
     ${props =>
