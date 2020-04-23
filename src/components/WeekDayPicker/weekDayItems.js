@@ -10,6 +10,7 @@ const WeekDayItems = React.forwardRef((props, ref) => {
         name,
         value,
         availableDates,
+        locale,
         disabled,
         required,
         readOnly,
@@ -19,6 +20,8 @@ const WeekDayItems = React.forwardRef((props, ref) => {
     } = props;
 
     const isChecked = weekDay => isWeekDayChecked(weekDay, value, multiple);
+
+    // console.log(locale);
 
     const isDayAvailable = day => {
         if (availableDates.length) {
@@ -74,6 +77,7 @@ WeekDayItems.propTypes = {
     availableDates: PropTypes.arrayOf((propValue, key, componentName, location, propFullName) => {
         return valuePropValidation(propValue, key, componentName, location, propFullName);
     }),
+    locale: PropTypes.string,
     disabled: PropTypes.bool,
     required: PropTypes.bool,
     readOnly: PropTypes.bool,
@@ -86,6 +90,7 @@ WeekDayItems.defaultProps = {
     name: undefined,
     value: undefined,
     availableDates: [],
+    locale: undefined,
     disabled: false,
     required: false,
     readOnly: false,
