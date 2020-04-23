@@ -2,7 +2,7 @@ import { ReactNode, ChangeEvent, MouseEvent, FocusEvent, KeyboardEvent } from 'r
 import { BaseProps, IconPosition } from '../types';
 
 export interface StrongPasswordInputProps extends BaseProps {
-    value?: string | boolean;
+    value?: string;
     name?: string;
     label?: ReactNode;
     hideLabel?: boolean;
@@ -13,9 +13,6 @@ export interface StrongPasswordInputProps extends BaseProps {
     minLength?: number;
     bottomHelpText?: ReactNode;
     required?: boolean;
-    pattern?: string;
-    isCentered?: boolean;
-    isBare?: boolean;
     error?: ReactNode;
     disabled?: boolean;
     readOnly?: boolean;
@@ -26,7 +23,6 @@ export interface StrongPasswordInputProps extends BaseProps {
     onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
     onKeyDown?: (event: KeyboardEvent<HTMLInputElement>) => void;
     id?: string;
-    autoComplete?: string;
     passwordState?: 'poor' | 'average' | 'strong';
     passwordStateLabel?: ReactNode;
 }

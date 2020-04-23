@@ -37,15 +37,11 @@ const StrongPasswordInput = React.forwardRef((props, ref) => {
         onKeyDown,
         maxLength,
         minLength,
-        pattern,
         icon,
         required,
-        autoComplete,
         name,
         label,
         hideLabel,
-        isBare,
-        isCentered,
         iconPosition,
     } = props;
 
@@ -93,12 +89,8 @@ const StrongPasswordInput = React.forwardRef((props, ref) => {
                     required={required}
                     maxLength={maxLength}
                     minLength={minLength}
-                    pattern={pattern}
-                    autoComplete={autoComplete}
                     aria-labelledby={labelId}
                     aria-describedby={errorMessageId}
-                    isBare={isBare}
-                    isCentered={isCentered}
                     iconPosition={iconPosition}
                     icon={icon}
                     error={error}
@@ -123,7 +115,7 @@ const StrongPasswordInput = React.forwardRef((props, ref) => {
 
 StrongPasswordInput.propTypes = {
     /** Specifies the value of an input element. */
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+    value: PropTypes.string,
     /** The name of the input. */
     name: PropTypes.string,
     /** Text label for the input. */
@@ -146,12 +138,6 @@ StrongPasswordInput.propTypes = {
     /** Specifies that an input field must be filled out before submitting the form.
      * This value defaults to false. */
     required: PropTypes.bool,
-    /** Specifies the regular expression that the input's value is checked against. */
-    pattern: PropTypes.string,
-    /** Specifies that an input text will be centered. This value defaults to false. */
-    isCentered: PropTypes.bool,
-    /** Specifies that an input will not have border. This value defaults to false. */
-    isBare: PropTypes.bool,
     /** Specifies that an input field must be filled out before submitting the form. */
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies that an input element should be disabled. This value defaults to false. */
@@ -176,9 +162,6 @@ StrongPasswordInput.propTypes = {
     style: PropTypes.object,
     /** The id of the outer element. */
     id: PropTypes.string,
-    /** A string indicating the type of autocomplete functionality.
-     * If any, to allow on the input. */
-    autoComplete: PropTypes.string,
     /** The state of the password strenght */
     passwordState: PropTypes.oneOf(['poor', 'average', 'strong']),
     /** The label to show at the right of the bar */
