@@ -8,7 +8,7 @@ const StyledCheckmarkIcon = attachThemeAttrs(styled(CheckmarkIcon))`
     line-height: 1;
     margin-left: 0.75rem;
     flex-shrink: 0;
-    fill: ${props => props.palette.brand.main};
+    color: ${props => props.palette.brand.main};
 `;
 
 export default StyledCheckmarkIcon;
