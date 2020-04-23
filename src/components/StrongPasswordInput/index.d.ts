@@ -1,4 +1,5 @@
-import { ReactNode } from 'react';
+import { ReactNode, ChangeEvent, MouseEvent, FocusEvent, KeyboardEvent } from 'react';
+import { BaseProps, IconPosition } from '../types';
 
 export interface StrongPasswordInputProps extends BaseProps {
     value?: string | boolean;
