@@ -15,6 +15,7 @@ export interface SelectProps extends BaseProps {
     onClick?: (event: MouseEvent<HTMLElement>) => void;
     onFocus?: (event: FocusEvent<HTMLElement>) => void;
     onBlur?: (event: FocusEvent<HTMLElement>) => void;
+    bottomHelpText?: ReactNode;
     error?: ReactNode;
     required?: boolean;
     disabled?: boolean;
