@@ -57,11 +57,6 @@ describe('<StrongPasswordInput />', () => {
         expect(component.find('input').prop('minLength')).toBe(0);
     });
 
-    it('should set the pattern passed in the Input element', () => {
-        const component = mount(<StrongPasswordInput pattern="Input Pattern" />);
-        expect(component.find('input').prop('pattern')).toBe('Input Pattern');
-    });
-
     it('should pass a generated id to the Label component and set the same id to the aria-labelledby for the input when a bottomHelpText is passed', () => {
         const component = mount(<StrongPasswordInput label="custom label" />);
         expect(component.find('Label').prop('id')).toMatch(/label/);
