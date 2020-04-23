@@ -60,16 +60,16 @@ function ControlledStrongPasswordInput(props) {
 
     function getStrength() {
         const length = value.length;
-
         if (length === 0) {
             return undefined;
-        } else if (length <= 3) {
-            return 'poor';
-        } else if (length > 3 && length < 8) {
-            return 'average';
-        } else {
-            return 'strong';
         }
+        if (length <= 3) {
+            return 'poor';
+        }        
+        if (length > 3 && length < 8) {
+            return 'average';
+        }        
+        return 'strong';
     }
 
     const passwordState = getStrength();
@@ -113,16 +113,16 @@ function ControlledStrongPasswordInput(props) {
 
     function getStrength() {
         const length = value.length;
-
         if (length === 0) {
             return undefined;
-        } else if (length <= 3) {
-            return 'poor';
-        } else if (length > 3 && length < 8) {
-            return 'average';
-        } else {
-            return 'strong';
         }
+        if (length <= 3) {
+            return 'poor';
+        }        
+        if (length > 3 && length < 8) {
+            return 'average';
+        }        
+        return 'strong';
     }
 
     const passwordState = getStrength();
