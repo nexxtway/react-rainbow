@@ -1,4 +1,8 @@
 import React from 'react';
+import getBrowserLocale from '../../libs/utils/getBrowserLocale';
 
-export const AppContext = React.createContext();
+const defaultContext = {
+    locale: getBrowserLocale(),
+};
+export const AppContext = React.createContext(defaultContext);
 export const { Provider, Consumer } = AppContext;
