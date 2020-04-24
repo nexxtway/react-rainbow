@@ -5,10 +5,9 @@ import StyledIconContainer from '../Input/styled/iconContainer';
 import RelativeElement from '../Structural/relativeElement';
 import StyledInput from './styled/input'; // TODO: change to import from index
 import RenderIf from '../RenderIf';
-import HelpText from '../Input/styled/helpText';
 import ErrorText from '../Input/styled/errorText';
 import StrengthBar from './strengthBar';
-import { StyledContainer } from './styled';
+import { StyledContainer, StyledHelpText } from './styled';
 import { useUniqueIdentifier, useErrorMessageId, useLabelId } from '../../libs/hooks';
 import usePasswordState from './hooks/usePasswordState';
 
@@ -100,9 +99,7 @@ const StrongPasswordInput = React.forwardRef((props, ref) => {
             </RelativeElement>
             <StrengthBar passwordState={passwordState} passwordStateLabel={passwordStateLabel} />
             <RenderIf isTrue={!!bottomHelpText}>
-                <HelpText alignSelf="center" style={{ margin: 0 }}>
-                    {bottomHelpText}
-                </HelpText>
+                <StyledHelpText alignSelf="center">{bottomHelpText}</StyledHelpText>
             </RenderIf>
             <RenderIf isTrue={!!error}>
                 <ErrorText alignSelf="center" id={errorMessageId}>

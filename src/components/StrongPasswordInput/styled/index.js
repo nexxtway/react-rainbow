@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import lighten from '../../../styles/helpers/color/lighten';
+import HelpText from '../../Input/styled/helpText';
 
 const StyledContainer = styled.div`
     display: flex;
@@ -89,4 +90,8 @@ const StyledStateLabel = attachThemeAttrs(styled.span)`
         `}
 `;
 
-export { StyledContainer, StyledStrenghtBar, StyledStateBar, StyledStateLabel };
+const StyledHelpText = styled(HelpText)`
+    margin: 0;
+`;
+
+export { StyledContainer, StyledStrenghtBar, StyledStateBar, StyledStateLabel, StyledHelpText };
