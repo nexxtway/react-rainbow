@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Consumer as VisualPickerConsumer } from '../VisualPicker/context';
 import { uniqueId } from '../../libs/utils';
 import RenderIf from '../RenderIf';
-import CheckmarkIcon from './checkmark';
+import StyledCheckmarkIcon from './styled/checkmarkIcon';
 import StyledContainer from './styled/container';
 import StyledInput from './styled/input';
 import StyledLabel from './styled/label';
@@ -66,7 +66,7 @@ class PickerOption extends Component {
                     <StyledContent data-id="visual-picker_option">
                         <RenderIf isTrue={this.isChecked()}>
                             <StyledCheckedTriangle />
-                            <CheckmarkIcon />
+                            <StyledCheckmarkIcon />
                         </RenderIf>
                         {children}
                     </StyledContent>

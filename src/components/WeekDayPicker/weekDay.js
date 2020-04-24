@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useUniqueIdentifier } from '../../libs/hooks';
-import HiddenElement from '../Structural/hiddenElement';
 import getFirstLetter from './helpers/getFirstLetter';
-import { StyledWeekDayContainer, StyledWeekDayLabel } from './styled';
+import { StyledInput, StyledWeekDayContainer, StyledWeekDayLabel } from './styled';
 
 const WeekDay = React.forwardRef((props, ref) => {
     const {
@@ -21,11 +20,9 @@ const WeekDay = React.forwardRef((props, ref) => {
     const weekDayId = useUniqueIdentifier('week-day');
     const inputType = multiple ? 'checkbox' : 'radio';
 
-    const [isFocused, setIsFocused] = useState();
-
     return (
         <StyledWeekDayContainer>
-            <HiddenElement
+            <StyledInput
                 id={weekDayId}
                 as="input"
                 name={name}
@@ -37,15 +34,12 @@ const WeekDay = React.forwardRef((props, ref) => {
                 readOnly={readOnly}
                 error={error}
                 onChange={onChange}
-                onFocus={() => setIsFocused(true)}
-                onBlur={() => setIsFocused(false)}
                 ref={ref}
             />
 
             <StyledWeekDayLabel
                 htmlFor={weekDayId}
                 isChecked={isChecked}
-                isFocused={isFocused}
                 readOnly={readOnly}
                 disabled={disabled}
                 error={error}

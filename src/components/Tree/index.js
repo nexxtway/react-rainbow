@@ -24,7 +24,7 @@ export default function Tree(props) {
 }
 
 Tree.propTypes = {
-    /** A array with the nodes of the ButtonGroupPicker. This is a recursive shape that is used for render the nested nodes passed on children of the array.
+    /** A array with the nodes of the Tree. This is a recursive shape that is used for render the nested nodes passed on children of the array.
      */
     data: PropTypes.arrayOf(
         PropTypes.shape({

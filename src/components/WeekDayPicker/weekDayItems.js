@@ -33,6 +33,10 @@ const WeekDayItems = React.forwardRef((props, ref) => {
 
     return getWeekDays().map((weekDay, index) => {
         const key = `week-day-${index}`;
+
+        const isFirstInput = index === 0;
+        const inputRef = isFirstInput ? ref : undefined;
+
         return (
             <WeekDay
                 key={key}
@@ -45,7 +49,7 @@ const WeekDayItems = React.forwardRef((props, ref) => {
                 multiple={multiple}
                 error={error}
                 onChange={onChange}
-                ref={ref}
+                ref={inputRef}
             />
         );
     });
@@ -70,6 +74,7 @@ WeekDayItems.propTypes = {
     availableDates: PropTypes.arrayOf((propValue, key, componentName, location, propFullName) => {
         return valuePropValidation(propValue, key, componentName, location, propFullName);
     }),
+    locale: PropTypes.string,
     disabled: PropTypes.bool,
     required: PropTypes.bool,
     readOnly: PropTypes.bool,
@@ -82,6 +87,7 @@ WeekDayItems.defaultProps = {
     name: undefined,
     value: undefined,
     availableDates: [],
+    locale: undefined,
     disabled: false,
     required: false,
     readOnly: false,

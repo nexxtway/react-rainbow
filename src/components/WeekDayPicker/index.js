@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import valuePropValidation from './helpers/valuePropValidation';
 import sortWeekDays from './helpers/sortWeekDays';
@@ -9,6 +9,8 @@ import RenderIf from '../RenderIf';
 import WeekDayItems from './weekDayItems';
 import StyledTextError from '../Input/styled/errorText';
 import { StyledFieldset, StyledHelpText, StyledLabel } from './styled';
+import { AppContext } from '../Application/context';
+import { getLocale } from '../../libs/utils';
 
 /**
  * A WeekDayPicker allows to select the days of the week
@@ -22,6 +24,7 @@ const WeekDayPicker = React.forwardRef((props, ref) => {
         label,
         bottomHelpText,
         availableDates,
+        locale: localeProp,
         disabled,
         required,
         readOnly,
@@ -32,11 +35,14 @@ const WeekDayPicker = React.forwardRef((props, ref) => {
         style,
     } = props;
 
+    const context = useContext(AppContext);
+    const locale = getLocale(context, localeProp);
+
     const defaultFieldsetName = useUniqueIdentifier('week-day-items');
     const fieldsetName = name || defaultFieldsetName;
 
     const getNormalizedValue = (weekDayValue, isChecked) => {
-        if (multiple) {
+        if (multiple && value) {
             if (isChecked && !value.includes(weekDayValue)) {
                 return sortWeekDays([...value, weekDayValue]);
             }
@@ -48,10 +54,12 @@ const WeekDayPicker = React.forwardRef((props, ref) => {
     };
 
     const handleOnChange = e => {
-        const weekDayValue = e.currentTarget.value;
-        const isChecked = e.currentTarget.checked;
+        const weekDayValue = e.target.value;
+        const isChecked = e.target.checked;
 
-        return onChange(getNormalizedValue(weekDayValue, isChecked));
+        if (!disabled && !readOnly) {
+            onChange(getNormalizedValue(weekDayValue, isChecked));
+        }
     };
 
     return (
@@ -66,6 +74,7 @@ const WeekDayPicker = React.forwardRef((props, ref) => {
                 name={fieldsetName}
                 value={value}
                 availableDates={availableDates}
+                locale={locale}
                 disabled={disabled}
                 required={required}
                 readOnly={readOnly}
@@ -112,7 +121,9 @@ WeekDayPicker.propTypes = {
     availableDates: PropTypes.arrayOf((propValue, key, componentName, location, propFullName) => {
         return valuePropValidation(propValue, key, componentName, location, propFullName);
     }),
-    /** A boolean to hide the WeekDayPicker. */
+    /** The WeekDayPicker locale. Defaults to browser's language. */
+    locale: PropTypes.string,
+    /** Specifies that the WeekDayPicker element should be disabled. This value defaults to false. */
     disabled: PropTypes.bool,
     /** Specifies that the WeekDayPicker field must be filled before submitting the form. */
     required: PropTypes.bool,
@@ -137,6 +148,7 @@ WeekDayPicker.defaultProps = {
     label: undefined,
     bottomHelpText: undefined,
     availableDates: [],
+    locale: undefined,
     disabled: false,
     required: false,
     readOnly: false,
@@ -148,3 +160,4 @@ WeekDayPicker.defaultProps = {
 };
 
 export default withReduxForm(WeekDayPicker);
+export { WeekDayPicker as Component };

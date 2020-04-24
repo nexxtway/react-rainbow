@@ -78,3 +78,36 @@
         width: 100%;
     }
 }
+
+.react-rainbow-proptype-shape-list li > ul {
+    margin-left: 1.5rem;
+    list-style-type: none;
+}
+
+.react-rainbow-proptype-union-list {
+    list-style-type: disc;
+}
+
+.react-rainbow-proptype-union-list li > ul {
+    margin-left: 1.5rem;
+}
+
+.react-rainbow-prop-name-label {
+    font-family: Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 13px;
+    color: #690;
+}
+
+.react-rainbow-prop-type-label {
+    font-family: Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 13px;
+    color: #905;    
+}
+
+.react-rainbow-prop-type-array-pad {
+    padding-left: 1rem;
+}
+
+.react-rainbow-prop-type-enum {
+    color: #a2aab7;
+}

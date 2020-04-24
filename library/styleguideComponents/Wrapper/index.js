@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { createStore, combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import { Provider } from 'react-redux';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import Application from '../../../src/components/Application';
 import MenuItem from '../../../src/components/MenuItem';
 import InfoFilled from '../../exampleComponents/Icons/infoFilled';
@@ -100,19 +99,19 @@ export default function Wrapper(props) {
                             <MenuItem label="THEME SELECTOR" variant="header" />
                             <MenuItem
                                 label={<ColorBox label="Default" />}
-                                icon={!theme && <StyledCheckIcon icon={faCheck} />}
+                                icon={!theme && <StyledCheckIcon />}
                                 iconPosition="right"
                                 onClick={() => setTheme()}
                             />
                             <MenuItem
                                 label={<ColorBox label="Orange" color={orangeTheme.rainbow} />}
-                                icon={theme === orangeTheme && <StyledCheckIcon icon={faCheck} />}
+                                icon={theme === orangeTheme && <StyledCheckIcon />}
                                 iconPosition="right"
                                 onClick={() => setTheme(orangeTheme)}
                             />
                             <MenuItem
                                 label={<ColorBox label="Yellow" color={yellowTheme.rainbow} />}
-                                icon={theme === yellowTheme && <StyledCheckIcon icon={faCheck} />}
+                                icon={theme === yellowTheme && <StyledCheckIcon />}
                                 iconPosition="right"
                                 onClick={() => setTheme(yellowTheme)}
                             />
@@ -120,15 +119,13 @@ export default function Wrapper(props) {
                                 label={
                                     <ColorBox label="Deep Purple" color={deepPurpleTheme.rainbow} />
                                 }
-                                icon={
-                                    theme === deepPurpleTheme && <StyledCheckIcon icon={faCheck} />
-                                }
+                                icon={theme === deepPurpleTheme && <StyledCheckIcon />}
                                 iconPosition="right"
                                 onClick={() => setTheme(deepPurpleTheme)}
                             />
                             <MenuItem
                                 label={<ColorBox label="Cyan Dark" color={cyanDarkTheme.rainbow} />}
-                                icon={theme === cyanDarkTheme && <StyledCheckIcon icon={faCheck} />}
+                                icon={theme === cyanDarkTheme && <StyledCheckIcon />}
                                 iconPosition="right"
                                 onClick={() => setTheme(cyanDarkTheme)}
                             />

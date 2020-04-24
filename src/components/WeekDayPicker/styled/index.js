@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import HelpText from '../../Input/styled/helpText';
+import HiddenElement from '../../Structural/hiddenElement';
 
 export const StyledFieldset = styled.fieldset`
     line-height: 1.5rem;
@@ -14,6 +15,22 @@ export const StyledFieldset = styled.fieldset`
 
 export const StyledHelpText = styled(HelpText)`
     text-align: center;
+`;
+
+export const StyledInput = attachThemeAttrs(styled(HiddenElement))`
+    &:focus + label {
+        border: 1px solid ${props => props.palette.brand.main};
+        box-shadow: ${props => props.shadows.brand};
+    }
+
+    ${props =>
+        props.readOnly &&
+        ` 
+            &:focus + label {
+                border-color: ${props.palette.border.divider};
+                box-shadow: none;
+            }
+        `}
 `;
 
 export const StyledLabel = attachThemeAttrs(styled.legend)`
@@ -65,54 +82,69 @@ export const StyledWeekDayLabel = attachThemeAttrs(styled.label).attrs(props => 
     text-align: center;
     font-size: 10px;
     color: ${props => props.defaultColor};
-    background: ${props => props.defaultBackground};
+    background-color: ${props => props.defaultBackground};
     border: 1px solid ${props => props.borderColor};
     transition: all 0.2s ease;
 
-    ${props =>
-        !props.readOnly &&
-        !props.disabled &&
-        `
-        &:hover {
-            color: ${props.activeColor};
-            background: ${props.activeBackground};
-            border: 1px solid ${props.activeBackground};
-            cursor: pointer;
-            box-shadow: ${props.shadows.brand};
-        }
-    `}
+    &:hover {
+        color: ${props => props.activeColor};
+        background-color: ${props => props.activeBackground};
+        border: 1px solid ${props => props.activeBackground};
+        cursor: pointer;
+    }
 
     ${props =>
         props.isChecked &&
         `
         color: ${props.activeColor};
-        background: ${props.activeBackground};
+        background-color: ${props.activeBackground};
         border: 1px solid ${props.activeBackground};
 
         &:hover {
-            background: ${props.palette.brand.dark};
+            background-color: ${props.palette.brand.dark};
             border: 1px solid ${props.palette.brand.dark};
-            box-shadow: ${props.shadows.brand};
-
-            ${!props.readOnly &&
-                `
-                cursor: pointer;
-            `}
         }
     `}
 
     ${props =>
-        props.isFocused &&
-        `
-        border: 1px solid ${props.activeBackground};
-        `}
-
-    ${props =>
         props.disabled &&
-        !props.isChecked &&
         `
         border-color: ${props.palette.border.disabled};
-        background-color: ${props.palette.text.disabled};
+        background-color: ${props.palette.background.disabled};
+        color: ${props.palette.text.disabled};
+        cursor: default;
+
+        &:hover {
+            cursor: default;
+            border-color: transparent;
+            background-color: ${props.palette.background.disabled};
+            color: ${props.palette.text.disabled};
+            border-color: ${props.palette.border.disabled};
+        }
+    `};
+
+    ${props =>
+        props.readOnly &&
+        `
+        &:hover {
+            color: ${props.defaultColor};
+            background-color: ${props.defaultBackground};
+            border: 1px solid ${props.borderColor};
+            cursor: default;
+
+            ${props.isChecked &&
+                `
+                color: ${props.activeColor};
+                background-color: ${props.activeBackground};
+                border: 1px solid ${props.activeBackground};
+            `}
+        }
+
+        ${props.disabled &&
+            `
+            cursor: default;
+            border: 1px solid ${props.activeBackground};
+        `}
     `};
 
 `;

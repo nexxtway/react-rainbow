@@ -1,9 +1,9 @@
 /* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ButtonMenu } from '../../../src/components/index';
 import { COLOR_BRAND } from '../../../src/styles/colors';
 import attachThemeAttrs from '../../../src/styles/helpers/attachThemeAttrs';
+import CheckmarkIcon from '../../exampleComponents/Icons/checkmark';
 
 export const StyledWrapper = attachThemeAttrs(styled.div)`
     padding: 0;
@@ -134,6 +134,10 @@ export const StyledIcon = styled.span`
     flex-shrink: 0;
 `;
 
-export const StyledCheckIcon = attachThemeAttrs(styled(FontAwesomeIcon))`
+export const StyledCheckIcon = attachThemeAttrs(styled(CheckmarkIcon))`
+    width: 0.8rem;
+    height: 0.8rem;
+    line-height: 1.5;
+    margin-bottom: 7px;
     color: ${props => props.palette.brand.main};
 `;

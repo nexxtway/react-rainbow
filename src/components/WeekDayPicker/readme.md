@@ -12,12 +12,12 @@ function SimpleWeekDayPicker(props) {
     };
 
     return (
-        <WeekDayPicker 
-            label="Week Days" 
+        <WeekDayPicker
+            label="Week Days"
             bottomHelpText="Select your working days"
             value={day}
             onChange={handleOnChange}
-        /> 
+        />
     );
 };
 
@@ -43,12 +43,12 @@ function AvailableDaysWeekDayPicker(props) {
     };
 
     return (
-        <WeekDayPicker 
-            label="Select a day" 
+        <WeekDayPicker
+            label="Select a day"
             value={day}
             availableDates={availableDates}
             onChange={handleOnChange}
-        /> 
+        />
     );
 };
 
@@ -71,8 +71,8 @@ function MultipleWeekDayPicker(props) {
     };
 
     return (
-        <WeekDayPicker 
-            label="Select active days" 
+        <WeekDayPicker
+            label="Select your working days"
             value={days}
             multiple
             onChange={handleOnChange}
@@ -95,11 +95,11 @@ function ReadOnlyWeekDayPicker(props) {
     const [day, setDay] = useState('tuesday');
 
     return (
-        <WeekDayPicker 
-            label="Select a day (readOnly)" 
+        <WeekDayPicker
+            label="Your wroking days"
             value={day}
             readOnly
-        /> 
+        />
     );
 };
 
@@ -122,12 +122,12 @@ function RequiredWeekDayPicker(props) {
     };
 
     return (
-        <WeekDayPicker 
-            label="Select a day" 
+        <WeekDayPicker
+            label="Select a day"
             value={day}
             required
             onChange={handleOnChange}
-        /> 
+        />
     );
 };
 
@@ -152,13 +152,13 @@ function ErrorWeekDayPicker(props) {
     };
 
     return (
-        <WeekDayPicker 
-            label="Select a day" 
+        <WeekDayPicker
+            label="Select a day"
             value={day}
             required
             error={error}
             onChange={handleOnChange}
-        /> 
+        />
     );
 };
 
@@ -170,23 +170,14 @@ function ErrorWeekDayPicker(props) {
 ##### WeekDayPicker disabled:
 
 ```js
-import React, { useState } from 'react';
+import React from 'react';
 import { WeekDayPicker } from 'react-rainbow-components';
 
-function DisabledWeekDayPicker(props) {
-    const [days, setDays] = useState(['monday', 'friday']);
-
-    return (
-        <WeekDayPicker 
-            label="Select a day" 
-            value={days}
-            multiple
-            disabled
-        /> 
-    );
-};
-
 <div className="rainbow-align-content_center rainbow-m-around_xx-large">
-    <DisabledWeekDayPicker  />
+    <WeekDayPicker
+        label="Select a day"
+        multiple
+        disabled
+    />
 </div>
 ```
