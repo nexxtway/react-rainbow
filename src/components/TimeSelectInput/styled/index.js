@@ -1,5 +1,97 @@
 import styled from 'styled-components';
+import { PADDING_X_SMALL, PADDING_XX_SMALL } from '../../../styles/paddings';
+import { MARGIN_XX_SMALL, MARGIN_X_SMALL } from '../../../styles/margins';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+import { replaceAlpha } from '../../../styles/helpers/color';
+import { DownArrow, UpArrow } from '../icons';
+import HiddenElement from '../../Structural/hiddenElement';
+
+const StyledContainer = styled.div`
+    width: 100%;
+`;
+
+const StyledDots = attachThemeAttrs(styled.span)`
+    font-size: 32px;
+    font-weight: 200;
+    height: 100%;
+    color: ${props => props.palette.brand.main};
+    margin: auto ${PADDING_XX_SMALL};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: 600px) {
+        margin: 0;
+    }
+`;
+
+const StyledDownArrow = attachThemeAttrs(styled(DownArrow))`
+    color: ${props => props.palette.brand.main};
+`;
+
+const StyledInputHidden = attachThemeAttrs(styled(HiddenElement))`
+    color: inherit;
+    font: inherit;
+    line-height: normal;
+    box-sizing: border-box;
+    visibility: hidden;
+
+    ::-moz-focus-inner {
+        border: 0;
+        padding: 0 !important;
+    }
+
+    :checked + label,
+    :active + label,
+    :focus + label {
+        font-weight: 300;
+        color: ${props => props.palette.getContrastText(props.palette.brand.main)};
+        outline: none;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-user-drag: none;
+    }
+`;
+
+const StyledOptionLabel = attachThemeAttrs(styled.label)`
+    box-sizing: border-box;
+    font-size: 24px;
+    font-weight: 200;
+    text-transform: uppercase;
+    color: ${props => replaceAlpha(props.palette.getContrastText(props.palette.brand.main), 0.3)};
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+
+    &:hover {
+        cursor: pointer;
+        background-color: ${props => props.palette.brand.dark};
+        border-radius: 4px;
+    }
+
+    @media (max-width: 340px) {
+        font-size: 22px;
+    }
+`;
+
+const StyledSelectContent = attachThemeAttrs(styled.div)`
+    height: 100px;
+    width: 360px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: ${props => props.palette.background.secondary};
+    border-radius: 8px;
+    margin: 48px 12px 32px 12px;
+    padding: ${PADDING_X_SMALL};
+
+    @media (max-width: 600px) {
+        width: 100%;
+        margin: 56px 0 40px 0;
+    }
+`;
 
 const StyledSelectValue = attachThemeAttrs(styled.input).attrs(props => {
     const { getContrastText, brand } = props.palette;
@@ -173,4 +265,37 @@ const StyledSelectValue = attachThemeAttrs(styled.input).attrs(props => {
         `};
 `;
 
-export default StyledSelectValue;
+const StyledUpArrow = attachThemeAttrs(styled(UpArrow))`
+    color: ${props => props.palette.brand.main};
+`;
+
+const StyledVerticalButtonsContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin: 0 ${MARGIN_XX_SMALL} 0 ${MARGIN_X_SMALL};
+
+    > :first-child {
+        border-radius: 24px 24px 0 0;
+    }
+
+    > :last-child {
+        border-radius: 0 0 24px 24px;
+        margin-top: -1px;
+    }
+
+    @media (max-width: 600px) {
+        margin-left: 0;
+    }
+`;
+
+export {
+    StyledContainer,
+    StyledDots,
+    StyledDownArrow,
+    StyledInputHidden,
+    StyledOptionLabel,
+    StyledSelectContent,
+    StyledSelectValue,
+    StyledUpArrow,
+    StyledVerticalButtonsContainer,
+};

@@ -3,16 +3,17 @@
 ```js
 import React from 'react';
 import { TimeSelectInput } from 'react-rainbow-components';
+import styled from 'styled-components';
 
-const containerStyles = {
-    display: "flex",
-    justifyContent: "center",
-};
-<div style={containerStyles}>
+const StyledContainer = styled.div`
+    display: flex;
+    justify-content: center;
+`;
+<StyledContainer>
     <TimeSelectInput
         id="time-select-input-1"
     />;
-</div>
+</StyledContainer>
 ```
 
 ##### TimeSelectInput with initial value:
@@ -20,18 +21,19 @@ const containerStyles = {
 ```js
 import React from 'react';
 import { TimeSelectInput } from 'react-rainbow-components';
+import styled from 'styled-components';
 
-const containerStyles = {
-    display: "flex",
-    justifyContent: "center",
-};
+const StyledContainer = styled.div`
+    display: flex;
+    justify-content: center;
+`;
 
-<div style={containerStyles}>
+<StyledContainer>
     <TimeSelectInput
         id="time-select-input-2"
         value="08:00 AM"
     />;
-</div>
+</StyledContainer>
 ```
 
 ##### TimeSelectInput with 24 hour format:
@@ -39,16 +41,17 @@ const containerStyles = {
 ```js
 import React from 'react';
 import { TimeSelectInput } from 'react-rainbow-components';
+import styled from 'styled-components';
 
-const containerStyles = {
-    display: "flex",
-    justifyContent: "center",
-};
+const StyledContainer = styled.div`
+    display: flex;
+    justify-content: center;
+`;
 
-<div style={containerStyles}>
+<StyledContainer>
     <TimeSelectInput
         id="time-select-input-2"
         hour24={true}
     />;
-</div>
+</StyledContainer>
 ```
