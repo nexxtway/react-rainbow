@@ -8,8 +8,8 @@ jest.mock('../../hooks', () => ({
 }));
 
 describe('<ClockLine />', () => {
-    it('should render on top 480px when the clock is 8:00 AM', () => {
+    it('should render on top 320px when the clock is 8:00 AM', () => {
         const wrapper = mount(<ClockLine />);
-        expect(wrapper.find(StyledClockLine).prop('style').top).toBe('480px');
+        expect(wrapper.find(StyledClockLine).prop('style').top).toBe('320px');
     });
 });

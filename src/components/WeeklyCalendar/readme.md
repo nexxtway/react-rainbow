@@ -16,7 +16,7 @@ const daysOfWeek = Array.from(Array(7), (_value, index) => {
 const events = [
     {
         id: 1,
-        title: 'Leandro Torres',
+        title: 'Reinier',
         startDate: new Date(daysOfWeek[0].setHours(6, 0, 0, 0)),
         endDate: new Date(daysOfWeek[0].setHours(6,30, 0, 0)),
     },
@@ -28,9 +28,9 @@ const events = [
     },
     {
         id: 3,
-        title: 'Reinier',
-        startDate: new Date(daysOfWeek[0].setHours(10, 0, 0, 0)),
-        endDate: new Date(daysOfWeek[0].setHours(11, 15, 0, 0)),
+        title: 'Leandro Torres',
+        startDate: new Date(daysOfWeek[0].setHours(11, 0, 0, 0)),
+        endDate: new Date(daysOfWeek[0].setHours(12, 15, 0, 0)),
     },
     {
         id: 4,
@@ -58,15 +58,15 @@ const events = [
     },
     {
         id: 8,
-        title: 'Leandro Torres',
+        title: 'Tahimi',
         startDate: new Date(daysOfWeek[3].setHours(6, 30, 0, 0)),
         endDate: new Date(daysOfWeek[3].setHours(7, 0, 0, 0)),
     },
     {
         id: 9,
-        title: 'Tahimi',
+        title: 'Reinier',
         startDate: new Date(daysOfWeek[3].setHours(7, 30, 0, 0)),
-        endDate: new Date(daysOfWeek[3].setHours(8, 0, 0, 0)),
+        endDate: new Date(daysOfWeek[3].setHours(8, 15, 0, 0)),
     },
     {
         id: 10,
@@ -123,14 +123,14 @@ const today = new Date();
 const events = [
     {
         id: 1,
-        title: 'Leandro Torres',
+        title: 'JL Torres',
         startDate: new Date(today.setHours(5, 0, 0, 0)),
         endDate: new Date(today.setHours(5,30, 0, 0)),
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     },
     {
         id: 2,
-        title: 'JL Torres',
+        title: 'Leandro Torres',
         startDate: new Date(today.setHours(5, 30, 0, 0)),
         endDate: new Date(today.setHours(6, 30, 0, 0)),
         description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',

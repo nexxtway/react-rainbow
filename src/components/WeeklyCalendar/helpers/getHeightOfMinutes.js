@@ -1,3 +1,3 @@
 export default function getHeightOfMinutes(minutes) {
-    return (minutes * 1440) / 1440;
+    return (minutes * 960) / 1440;
 }
