@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import RenderIf from '../RenderIf';
 import { StyledStrenghtBar, StyledStateBar, StyledStateLabel } from './styled';
@@ -6,10 +6,10 @@ import { StyledStrenghtBar, StyledStateBar, StyledStateLabel } from './styled';
 export default function StrengthBar(props) {
     const { passwordState, passwordStateLabel } = props;
 
-    let label;
-    if (passwordStateLabel) {
-        label = passwordStateLabel[passwordState];
-    }
+    const label = useMemo(
+        () => (passwordStateLabel ? passwordStateLabel[passwordState] : undefined),
+        [passwordState, passwordStateLabel],
+    );
 
     return (
         <StyledStrenghtBar>
