@@ -152,7 +152,7 @@ Select.defaultProps = {
     onClick: () => {},
     onFocus: () => {},
     onBlur: () => {},
-    bottomHelpText: undefined,
+    bottomHelpText: null,
     error: null,
     required: false,
     disabled: false,
