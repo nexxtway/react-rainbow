@@ -4,11 +4,11 @@ import RenderIf from '../RenderIf';
 import { StyledStrenghtBar, StyledStateBar, StyledStateLabel } from './styled';
 
 export default function StrengthBar(props) {
-    const { passwordState, passwordStateLabel } = props;
+    const { passwordState, passwordStateLabels } = props;
 
     const label = useMemo(
-        () => (passwordStateLabel ? passwordStateLabel[passwordState] : undefined),
-        [passwordState, passwordStateLabel],
+        () => (passwordStateLabels ? passwordStateLabels[passwordState] : undefined),
+        [passwordState, passwordStateLabels],
     );
 
     return (
@@ -29,7 +29,7 @@ StrengthBar.propTypes = {
     /**
      * The label to show at the right of the bar
      */
-    passwordStateLabel: PropTypes.shape({
+    passwordStateLabels: PropTypes.shape({
         weak: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
         average: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
         strong: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
@@ -38,5 +38,5 @@ StrengthBar.propTypes = {
 
 StrengthBar.defaultProps = {
     passwordState: undefined,
-    passwordStateLabel: undefined,
+    passwordStateLabels: undefined,
 };

@@ -113,7 +113,7 @@ const containerStyles = {
     maxWidth: 500,
 };
 
-const passwordStateLabelMap = {
+const passwordStateLabels = {
     weak: 'Weak',
     average: 'Average',
     strong: 'Strong',
@@ -152,7 +152,7 @@ function ControlledStrongPasswordInput(props) {
             style={containerStyles}
             value={value}
             passwordState={passwordState}
-            passwordStateLabel={passwordStateLabelMap}
+            passwordStateLabels={passwordStateLabels}
             onChange={handleOnChange}
         />
     )

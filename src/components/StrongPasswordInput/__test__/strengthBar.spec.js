@@ -12,13 +12,13 @@ describe('<StrengthBar />', () => {
     });
 
     it('should render the password state label when passed', () => {
-        const passwordStateLabelMap = {
+        const passwordStateLabels = {
             weak: 'Weak',
             average: 'Average',
             strong: 'Strong',
         };
         const component = mount(
-            <StrengthBar passwordState="weak" passwordStateLabel={passwordStateLabelMap} />,
+            <StrengthBar passwordState="weak" passwordStateLabels={passwordStateLabels} />,
         );
         expect(component.find(StyledStateLabel).length).toBe(1);
     });

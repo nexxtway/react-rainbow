@@ -24,7 +24,7 @@ const StrongPasswordInput = React.forwardRef((props, ref) => {
         bottomHelpText,
         error,
         passwordState,
-        passwordStateLabel,
+        passwordStateLabels,
         value,
         placeholder,
         onChange,
@@ -111,7 +111,7 @@ const StrongPasswordInput = React.forwardRef((props, ref) => {
                     ref={inputRef}
                 />
             </RelativeElement>
-            <StrengthBar passwordState={passwordState} passwordStateLabel={passwordStateLabel} />
+            <StrengthBar passwordState={passwordState} passwordStateLabels={passwordStateLabels} />
             <RenderIf isTrue={!!bottomHelpText}>
                 <StyledHelpText alignSelf="center">{bottomHelpText}</StyledHelpText>
             </RenderIf>
@@ -176,7 +176,7 @@ StrongPasswordInput.propTypes = {
     /** The state of the password strenght */
     passwordState: PropTypes.oneOf(['weak', 'average', 'strong']),
     /** The label to show at the right of the bar */
-    passwordStateLabel: PropTypes.shape({
+    passwordStateLabels: PropTypes.shape({
         weak: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
         average: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
         strong: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
@@ -208,7 +208,7 @@ StrongPasswordInput.defaultProps = {
     label: undefined,
     hideLabel: false,
     passwordState: undefined,
-    passwordStateLabel: undefined,
+    passwordStateLabels: undefined,
 };
 
 export default withReduxForm(StrongPasswordInput);

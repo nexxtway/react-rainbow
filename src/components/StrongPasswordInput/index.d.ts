@@ -1,7 +1,7 @@
 import { ReactNode, ChangeEvent, MouseEvent, FocusEvent, KeyboardEvent } from 'react';
 import { BaseProps, IconPosition } from '../types';
 
-export interface PasswordStateLabel {
+export interface PasswordStateLabels {
     weak?: ReactNode;
     average?: ReactNode;
     strong?: ReactNode;
@@ -30,7 +30,7 @@ export interface StrongPasswordInputProps extends BaseProps {
     onKeyDown?: (event: KeyboardEvent<HTMLInputElement>) => void;
     id?: string;
     passwordState?: 'weak' | 'average' | 'strong';
-    passwordStateLabel?: PasswordStateLabel;
+    passwordStateLabels?: PasswordStateLabels;
 }
 
 export default function(props: StrongPasswordInputProps): JSX.Element | null;
