@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useUniqueIdentifier } from '../../libs/hooks';
-import getFirstLetter from './helpers/getFirstLetter';
+import getWeekDayLabel from './helpers/getWeekDayLabel';
 import { StyledInput, StyledWeekDayContainer, StyledWeekDayLabel } from './styled';
 
 const WeekDay = React.forwardRef((props, ref) => {
     const {
         name,
         value,
+        locale,
         isChecked,
         disabled,
         required,
@@ -44,7 +45,7 @@ const WeekDay = React.forwardRef((props, ref) => {
                 disabled={disabled}
                 error={error}
             >
-                {getFirstLetter(value)}
+                {getWeekDayLabel(value, locale)}
             </StyledWeekDayLabel>
         </StyledWeekDayContainer>
     );
@@ -53,6 +54,7 @@ const WeekDay = React.forwardRef((props, ref) => {
 WeekDay.propTypes = {
     name: PropTypes.string,
     value: PropTypes.string,
+    locale: PropTypes.string,
     isChecked: PropTypes.bool,
     disabled: PropTypes.bool,
     required: PropTypes.bool,
@@ -65,6 +67,7 @@ WeekDay.propTypes = {
 WeekDay.defaultProps = {
     name: undefined,
     value: undefined,
+    locale: undefined,
     isChecked: false,
     disabled: false,
     required: false,

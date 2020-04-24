@@ -181,3 +181,30 @@ import { WeekDayPicker } from 'react-rainbow-components';
     />
 </div>
 ```
+
+##### WeekDayPicker localization:
+
+```js
+import React, { useState } from 'react';
+import { WeekDayPicker } from 'react-rainbow-components';
+
+function LocaleWeekDayPicker(props) {
+    return (
+        <>
+            <div className="rainbow-m-vertical_x-large">
+                <WeekDayPicker label="Spanish" locale="es-MX" />
+            </div>
+            <div className="rainbow-m-vertical_x-large">
+                <WeekDayPicker label="Russian" locale="ru-RU" />
+            </div>
+            <div className="rainbow-m-vertical_x-large">
+                <WeekDayPicker label="Japanese" locale="ja-JP" />
+            </div>
+        </>
+    );
+};
+
+<div className="rainbow-m-around_xx-large">
+    <LocaleWeekDayPicker  />
+</div>
+```

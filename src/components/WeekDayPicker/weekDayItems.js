@@ -10,6 +10,7 @@ const WeekDayItems = React.forwardRef((props, ref) => {
         name,
         value,
         availableDates,
+        locale,
         disabled,
         required,
         readOnly,
@@ -42,6 +43,7 @@ const WeekDayItems = React.forwardRef((props, ref) => {
                 key={key}
                 name={name}
                 value={weekDay}
+                locale={locale}
                 isChecked={isChecked(weekDay)}
                 disabled={isDisabled(weekDay)}
                 required={required}
