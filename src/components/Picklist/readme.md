@@ -264,6 +264,7 @@ initialState = { value: { name: 'option 3', label: 'Central Park' } };
     style={containerStyles}
     onChange={value => setState({ value })}
     value={state.value}
+    required
     error= "This Field is Required"
     label="Select Building"
     className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
