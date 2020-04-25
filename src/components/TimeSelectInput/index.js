@@ -94,7 +94,7 @@ export default class TimeSelectInput extends Component {
     setNextAmPmValue() {
         const { ampm } = this.state;
         const nextAmPmValue = getNextAmPmValue(ampm);
-        this.setState({
+        this.handleChangeTime({
             ampm: nextAmPmValue,
         });
     }
@@ -180,12 +180,12 @@ export default class TimeSelectInput extends Component {
             if (Number(value) > 60 || this.isUpOrDownKeyPressed) {
                 const newTypedValue = getSingleNewTypedValue(minutes, value);
                 normalizedValue = normalizeMinutes(newTypedValue);
-                this.setState({
+                this.handleChangeTime({
                     minutes: normalizedValue,
                 });
             } else {
                 normalizedValue = normalizeMinutes(value);
-                this.setState({
+                this.handleChangeTime({
                     minutes: normalizedValue,
                 });
             }

@@ -2,8 +2,8 @@
 
 ```js
 import React from 'react';
-import { TimeSelectInput } from 'react-rainbow-components';
 import styled from 'styled-components';
+import { TimeSelectInput } from 'react-rainbow-components';
 
 const StyledContainer = styled.div`
     display: flex;
@@ -20,8 +20,8 @@ const StyledContainer = styled.div`
 
 ```js
 import React from 'react';
-import { TimeSelectInput } from 'react-rainbow-components';
 import styled from 'styled-components';
+import { TimeSelectInput } from 'react-rainbow-components';
 
 const StyledContainer = styled.div`
     display: flex;
@@ -40,8 +40,8 @@ const StyledContainer = styled.div`
 
 ```js
 import React from 'react';
-import { TimeSelectInput } from 'react-rainbow-components';
 import styled from 'styled-components';
+import { TimeSelectInput } from 'react-rainbow-components';
 
 const StyledContainer = styled.div`
     display: flex;
