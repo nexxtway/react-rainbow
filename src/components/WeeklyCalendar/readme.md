@@ -117,7 +117,9 @@ const initialState = {
 ```js
 import React, { useState, useMemo } from 'react';
 import styled from 'styled-components';
-import { WeeklyCalendar, Card, Drawer } from 'react-rainbow-components';
+import { WeeklyCalendar, Card, Drawer, ButtonIcon } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const today = new Date();
 const events = [
@@ -127,6 +129,11 @@ const events = [
         startDate: new Date(today.setHours(5, 0, 0, 0)),
         endDate: new Date(today.setHours(5,30, 0, 0)),
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+        user: {
+            hangouts: 'hangout.google.com/1234556-444',
+            phone: '+1 111 111 1111 PIN: 1111 1111',
+            location: 'US State: California (CA)',
+        }
     },
     {
         id: 2,
@@ -134,6 +141,11 @@ const events = [
         startDate: new Date(today.setHours(5, 30, 0, 0)),
         endDate: new Date(today.setHours(6, 30, 0, 0)),
         description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        user: {
+            hangouts: 'hangout.google.com/1234556-444',
+            phone: '+1 111 111 1111 PIN: 1111 1111',
+            location: 'US State: California (CA)',
+        }
     },
     {
         id: 3,
@@ -141,6 +153,11 @@ const events = [
         startDate: new Date(today.setHours(7, 0, 0, 0)),
         endDate: new Date(today.setHours(7, 30, 0, 0)),
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+        user: {
+            hangouts: 'hangout.google.com/1234556-444',
+            phone: '+1 111 111 1111 PIN: 1111 1111',
+            location: 'US State: California (CA)',
+        }
     },
     {
         id: 4,
@@ -148,6 +165,11 @@ const events = [
         startDate: new Date(today.setHours(7, 30, 0, 0)),
         endDate: new Date(today.setHours(8, 30, 0, 0)),
         description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        user: {
+            hangouts: 'hangout.google.com/1234556-444',
+            phone: '+1 111 111 1111 PIN: 1111 1111',
+            location: 'US State: California (CA)',
+        }
     },
 ];
 
@@ -159,65 +181,138 @@ const StyledCard = styled(Card)`
     padding: 1rem;
 `;
 
-const StyleTitle = styled.h1`
-    font-size: 1.5rem;
+const StyledFlex = styled.div`
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+`;
+
+const StyledHeader = styled.div`
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+`;
+const StyledButtonIcon = styled(ButtonIcon)`
+    width: 30px;
+    min-width: 30px;
+    height: 30px;
+    margin-right: 15px;
+`;
+
+const StyleEventTitle = styled.h1`
+    font-size: 20px;
     color: ${props => props.theme.rainbow.palette.brand.main};
 `;
 
-const StyleTimeRange = styled.p`
+const StyleTitle = styled.h2`
+    font-size: 16px;
+    color: ${props => props.theme.rainbow.palette.brand.main};
+`;
+
+const StyleSubTitle = styled.p`
+    font-size: 14px;
     color: ${props => props.theme.rainbow.palette.text.header};
 `;
 
-const StyleDescription = styled.p`
-    color: ${props => props.theme.rainbow.palette.text.main};
-`;
+const commetStyle = {
+    alignItems: 'flex-start',
+}
 
-const formatter = new Intl.DateTimeFormat('en', {
+const commetIconStyle = {
+    marginTop: '10px',
+}
+
+const fomatterTime = time => new Intl.DateTimeFormat('en', {
     hour: 'numeric',
     minute: 'numeric',
     hour12: true,
-});
+}).format(time);
 
-const getFormattedTimeRange = (startDate, endDate) =>
-    `${formatter.format(startDate)} - ${formatter.format(endDate)}`;
+const fomatterDay = day => new Intl.DateTimeFormat('en', {
+    day: 'numeric',
+    month: 'short',
+}).format(day);
+
+const formattedTimeRange = (startDate, endDate) => 
+    `${fomatterDay(startDate)}, ${fomatterTime(startDate)} - ${fomatterTime(endDate)}`;
+
+const EventHeader = ({ title, startDate, endDate }) => (
+    <StyledHeader>
+        <StyledButtonIcon variant="neutral" size="medium" icon={<FontAwesomeIcon icon={faEllipsisV} />} />
+        <div>
+            <StyleEventTitle>{title}</StyleEventTitle>
+            <StyleSubTitle>{formattedTimeRange(startDate, endDate)}</StyleSubTitle>
+        </div>
+    </StyledHeader>
+);
 
 const WeeklyCalendarExample = () => {
     const [currentWeek, setCurrentWeek] = useState(new Date());
     const [isOpen, setIsOpen] = useState(false);
-    const [event, setEvent] = useState({
-        title: '',
-        startDate: null,
-        endDate: null,
-        description: ''
-    })
-    const formattedTimeRange = useMemo(() => getFormattedTimeRange(event.startDate, event.endDate), [
-        event.startDate, event.endDate,
-    ]);
+    const [event, setEvent] = useState(events[0]);
 
     const handleEventClick = currentEvent => {
         setEvent(currentEvent);
         setIsOpen(true)
     };
 
-    return (<StyledCard>
-        <WeeklyCalendar
-            events={events}
-            currentWeek={currentWeek}
-            onWeekChange={({ week }) => setCurrentWeek(week )}
-            onEventClick={handleEventClick}
-            locale="en"
-        />
-        <Drawer
-            header="Event"
-            slideFrom="right"
-            isOpen={isOpen}
-            onRequestClose={() => setIsOpen(false)}
-        >
-            <StyleTitle>{event.title}</StyleTitle>
-            <StyleTimeRange>{formattedTimeRange}</StyleTimeRange>
-            <StyleDescription>{event.description}</StyleDescription>
-        </Drawer>
-    </StyledCard>);
+    return (
+        <StyledCard>
+            <WeeklyCalendar
+                events={events}
+                currentWeek={currentWeek}
+                onWeekChange={({ week }) => setCurrentWeek(week )}
+                onEventClick={handleEventClick}
+                locale="en"
+            />
+            <Drawer
+                header={
+                    <EventHeader
+                        title={event.title}
+                        startDate={event.startDate}
+                        endDate={event.endDate}
+                    />
+                }
+                slideFrom="right"
+                isOpen={isOpen}
+                onRequestClose={() => setIsOpen(false)}
+            >
+                <StyledFlex>
+                    <StyledButtonIcon variant="border-filled" size="large" icon={<HangoutsIcon/>} />
+                    <div>
+                        <StyleTitle>Join Hangouts Link</StyleTitle>
+                        <StyleSubTitle>{event.user.hangouts}</StyleSubTitle>
+                    </div>
+                </StyledFlex>
+                <StyledFlex>
+                    <StyledButtonIcon variant="border-filled" size="medium" icon={<PhoneSolidIcon />} />
+                    <div>
+                        <StyleTitle>Join by phone</StyleTitle>
+                        <StyleSubTitle>{event.user.phone}</StyleSubTitle>
+                    </div>
+                </StyledFlex>
+                <StyledFlex>
+                    <StyledButtonIcon variant="border-filled" size="medium" icon={<MarkerIcon />} />
+                    <div>
+                        <StyleTitle>Client Location</StyleTitle>
+                        <StyleSubTitle>{event.user.location}</StyleSubTitle>
+                    </div>
+                </StyledFlex>
+                <StyledFlex style={commetStyle}>
+                    <StyledButtonIcon
+                        variant="border-filled"
+                        size="medium"
+                        icon={<CommentsIcon />}
+                        style={commetIconStyle}
+                    />
+                    <div>
+                        <StyleTitle>Comment</StyleTitle>
+                        <StyleSubTitle>{event.description}</StyleSubTitle>
+                    </div>
+                </StyledFlex>
+            </Drawer>
+        </StyledCard>
+    );
 }
 
 <Container>

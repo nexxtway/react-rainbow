@@ -53,6 +53,10 @@ import BellIcon from './exampleComponents/Icons/bell';
 import EmailIcon from './exampleComponents/Icons/email';
 import PhoneIcon from './exampleComponents/Icons/phone';
 import ShoppingCartIcon from './exampleComponents/Icons/shoppingCart';
+import HangoutsIcon from './exampleComponents/Icons/hangouts';
+import PhoneSolidIcon from './exampleComponents/Icons/phoneSolid';
+import MarkerIcon from './exampleComponents/Icons/marker';
+import CommentsIcon from './exampleComponents/Icons/comments';
 
 global.GlobalHeader = GlobalHeader;
 global.CodeEditor = CodeEditor;
@@ -112,3 +116,7 @@ global.BellIcon = BellIcon;
 global.EmailIcon = EmailIcon;
 global.PhoneIcon = PhoneIcon;
 global.ShoppingCartIcon = ShoppingCartIcon;
+global.HangoutsIcon = HangoutsIcon;
+global.PhoneSolidIcon = PhoneSolidIcon;
+global.MarkerIcon = MarkerIcon;
+global.CommentsIcon = CommentsIcon;
