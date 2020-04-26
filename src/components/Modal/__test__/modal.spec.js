@@ -27,7 +27,6 @@ describe('<Modal/>', () => {
         enableBodyScroll.mockReset();
         clearAllBodyScrollLocks.mockReset();
     });
-
     it('should render the children passed', () => {
         const component = mount(
             <Modal isOpen>
@@ -198,7 +197,6 @@ describe('<Modal/>', () => {
                 <p />
             </Modal>,
         );
-
         expect(component.find(StyledCloseButton).exists()).toBe(true);
     });
     it('should not render the close button when the hideCloseButton prop is equal to true', () => {
@@ -207,7 +205,6 @@ describe('<Modal/>', () => {
                 <p />
             </Modal>,
         );
-
         expect(component.find(StyledCloseButton).exists()).toBe(false);
     });
 });

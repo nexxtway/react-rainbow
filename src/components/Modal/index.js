@@ -52,20 +52,27 @@ export default class Modal extends Component {
     componentDidUpdate(prevProps) {
         const { isOpen, onOpened } = this.props;
         const { isOpen: prevIsOpen } = prevProps;
-        if (isOpen && !prevIsOpen) {
+
+        const wasOpened = isOpen && !prevIsOpen;
+        const wasClosed = !isOpen && prevIsOpen;
+
+        if (wasOpened) {
             CounterManager.increment();
             this.contentElement = this.contentRef.current;
             disableBodyScroll(this.contentRef.current);
             this.modalTriggerElement = document.activeElement;
             this.modalRef.current.focus();
             onOpened();
-        } else if (!isOpen && prevIsOpen) {
+        }
+
+        if (wasClosed) {
             CounterManager.decrement();
             if (this.modalTriggerElement) {
                 this.modalTriggerElement.focus();
             }
             if (!CounterManager.hasModalsOpen()) {
                 enableBodyScroll(this.contentElement);
+                clearAllBodyScrollLocks();
             }
         }
     }
@@ -77,8 +84,8 @@ export default class Modal extends Component {
         }
         if (!CounterManager.hasModalsOpen()) {
             enableBodyScroll(this.contentElement);
+            clearAllBodyScrollLocks();
         }
-        clearAllBodyScrollLocks();
     }
 
     handleKeyPressed(event) {

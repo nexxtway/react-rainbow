@@ -33,6 +33,14 @@ const StyledIndicator = attachThemeAttrs(styled.span)`
                 color: ${props.palette.text.disabled};
             }
     `}
+
+    ${props =>
+        props.error &&
+        `
+            ::after {
+                color: ${props.palette.error.main};
+            }
+    `}
 `;
 
 export default StyledIndicator;

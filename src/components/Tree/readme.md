@@ -11,7 +11,7 @@
                 { label: 'Tree Item' },
                 {
                     label: 'Tree Branch',
-                    isLoading: true,
+                    isLoading: false,
                     children: [
                         { label: 'Tree Item' },
                     ]
@@ -42,6 +42,76 @@
     />
 ```
 
+##### Tree loading data when a node is expanded
+
+```js
+    const initialData = [
+        { label: 'Tree Item' },
+        { label: 'Tree Item' },
+        {
+            label: 'Tree Branch',
+            isExpanded: false,
+            isLoading: false,
+            children: [
+                { label: 'Tree Item' },
+                {
+                    label: 'Tree Branch',
+                    isExpanded: false,
+                    isLoading: false,
+                    children: [
+                        { label: 'Tree Item' },
+                    ]
+                },
+            ],
+        },
+        {
+            label: 'Tree Branch',
+            isExpanded: false,
+            isLoading: false,
+            children: [
+                { label: 'Tree Item' },
+                { label: 'Tree Item' },
+                { label: 'Tree Item' },
+                { label: 'Tree Item' },
+                { label: 'Tree Item' },
+            ],
+        }
+    ];
+
+    import React, { useState, useEffect } from 'react';
+
+    const TreeExample = () => {
+        const [data, setData] = React.useState(initialData);
+        const openNode = ({ nodePath }) => {
+            const child = Tree.getNode(data, nodePath);
+            if(!child.isExpanded){
+                child.isLoading = !child.isLoading;
+                setTimeout(() => {
+                    child.isLoading = !child.isLoading;
+                    child.isExpanded = !child.isExpanded;
+                    let newData = [...data];
+                    newData[nodePath] = child;
+                    setData(newData);
+                }, 1000);
+            }
+            else {child.isExpanded = !child.isExpanded}
+            let newData = [...data];
+            newData[nodePath] = child;
+            setData(newData);
+        
+        }
+        return (
+            <Tree
+                data={data}
+                onExpandCollapse={openNode}
+                className="rainbow-m-around_xx-large"
+            />
+        );
+    }
+
+    <TreeExample />
+```
+
 ##### Tree with icons
 
 ```js
@@ -69,7 +139,7 @@
         },
         {
             label: 'Tree Branch',
-            isLoading: true,
+            isLoading: false,
             icon: <FolderCloseIcon />,
             children: [
                 { label: 'Tree Item' },
@@ -135,7 +205,7 @@
         {
             label: 'Tree Branch',
             icon: <FolderCloseIcon />,
-            isLoading: true,
+            isLoading: false,
             isChecked: false,
             children: [
                 { label: 'Tree Item', isChecked: false, icon: <FileIcon /> },

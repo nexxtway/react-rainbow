@@ -247,3 +247,31 @@ class PicklistExample extends React.Component {
 
 <PicklistExample />;
 ```
+##### Picklist error
+
+```js
+import React from 'react';
+import { Picklist, PicklistOption } from 'react-rainbow-components';
+
+const containerStyles = {
+    maxWidth: 700,
+};
+
+initialState = { value: { name: 'option 3', label: 'Central Park' } };
+
+<Picklist
+    id="picklist-11"
+    style={containerStyles}
+    onChange={value => setState({ value })}
+    value={state.value}
+    required
+    error= "This Field is Required"
+    label="Select Building"
+    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+>
+    <PicklistOption name="header" label="Your Buildings" variant="header" />
+    <PicklistOption name="option 1" label="Experimental Building" />
+    <PicklistOption name="option 2" label="Empire State" />
+    <PicklistOption name="option 3" label="Central Park" />
+</Picklist>
+```
