@@ -10,7 +10,7 @@ import StrengthBar from './strengthBar';
 import { StyledContainer, StyledHelpText } from './styled';
 import { useUniqueIdentifier, useErrorMessageId, useLabelId } from '../../libs/hooks';
 import usePasswordState from './hooks/usePasswordState';
-import withReduxForm from '../../libs/hocs/withReduxForm';
+import useReduxForm from '../../libs/hooks/useReduxForm';
 
 /**
  * StrongPasswordInput component is used to provide feedback about password strength
@@ -43,7 +43,7 @@ const StrongPasswordInput = React.forwardRef((props, ref) => {
         label,
         hideLabel,
         iconPosition,
-    } = props;
+    } = useReduxForm(props);
 
     const inputRef = useRef();
     useImperativeHandle(ref, () => ({
@@ -211,4 +211,4 @@ StrongPasswordInput.defaultProps = {
     passwordStateLabels: undefined,
 };
 
-export default withReduxForm(StrongPasswordInput);
+export default StrongPasswordInput;
