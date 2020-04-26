@@ -57,6 +57,7 @@ import HangoutsIcon from './exampleComponents/Icons/hangouts';
 import PhoneSolidIcon from './exampleComponents/Icons/phoneSolid';
 import MarkerIcon from './exampleComponents/Icons/marker';
 import CommentsIcon from './exampleComponents/Icons/comments';
+import CheckmarkIcon from './exampleComponents/Icons/checkmark';
 
 global.GlobalHeader = GlobalHeader;
 global.CodeEditor = CodeEditor;
@@ -120,3 +121,4 @@ global.HangoutsIcon = HangoutsIcon;
 global.PhoneSolidIcon = PhoneSolidIcon;
 global.MarkerIcon = MarkerIcon;
 global.CommentsIcon = CommentsIcon;
+global.CheckmarkIcon = CheckmarkIcon;
