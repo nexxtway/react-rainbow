@@ -1,4 +1,4 @@
-import React, { useRef, useImperativeHandle } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Label from '../Input/label';
 import StyledIconContainer from '../Input/styled/iconContainer';
@@ -44,19 +44,6 @@ const StrongPasswordInput = React.forwardRef((props, ref) => {
         hideLabel,
         iconPosition,
     } = useReduxForm(props);
-
-    const inputRef = useRef();
-    useImperativeHandle(ref, () => ({
-        focus: () => {
-            inputRef.current.focus();
-        },
-        click: () => {
-            inputRef.current.click();
-        },
-        blur: () => {
-            inputRef.current.blur();
-        },
-    }));
 
     const inputId = useUniqueIdentifier('input');
     const errorMessageId = useErrorMessageId(error);
@@ -108,7 +95,7 @@ const StrongPasswordInput = React.forwardRef((props, ref) => {
                     icon={icon}
                     error={error}
                     status={status}
-                    ref={inputRef}
+                    ref={ref}
                 />
             </RelativeElement>
             <StrengthBar passwordState={passwordState} passwordStateLabels={passwordStateLabels} />
