@@ -31,6 +31,7 @@ const StyledDropdown = attachThemeAttrs(styled.div)`
             visibility: visible;
 
             & > ul {
+                height: 200px;
                 overflow-y: auto;
             }
     `}

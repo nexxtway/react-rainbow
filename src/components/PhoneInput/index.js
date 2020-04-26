@@ -9,12 +9,14 @@ import StyledIconContainer from '../Input/styled/iconContainer';
 import HelpText from '../Input/styled/helpText';
 import ErrorText from '../Input/styled/errorText';
 import StyledInput from './styled/input';
-import StyledIndicator from '../Picklist/styled/indicator';
+import StyledIndicator from './styled/indicator';
+import FlagIcon from './flagIcon';
 import { useUniqueIdentifier, useLocale } from '../../libs/hooks';
-import COUNTRIES from './countries';
-import getCountry from './helpers/getCountry';
 import CountryPickerDropdown from './countryPickerDropdown';
 import StyledTrigger from './styled/trigger';
+import useCountry from './hooks/useCountry';
+import { normalizePhone } from './helpers';
+import StyledCountryCode from './styled/countryCode';
 
 /**
  * phone input are used for freeform data entry.
@@ -31,8 +33,6 @@ const PhoneInput = React.forwardRef((props, ref) => {
         bottomHelpText,
         required,
         pattern,
-        isCentered,
-        isBare,
         error,
         disabled,
         readOnly,
@@ -41,44 +41,48 @@ const PhoneInput = React.forwardRef((props, ref) => {
         onClick,
         onFocus,
         onBlur,
-        onKeyDown,
         className,
         style,
         id,
-        autoComplete,
         label,
         hideLabel,
         locale: localLocale,
     } = props;
-    const iconPosition = icon ? 'left' : undefined;
+    const iconPosition = icon ? 'right' : undefined;
+    const phone = normalizePhone(value);
+    const { isoCode, countryCode } = useCountry(value);
     const locale = useLocale(localLocale);
     const inputId = useUniqueIdentifier('phone-input');
-    const messageId = useUniqueIdentifier('phone-input');
-    const inlineTextLabelId = useUniqueIdentifier('phone-input');
-    const [selectedCountry, setCountry] = useState(getCountry(COUNTRIES[25]));
+    const messageId = useUniqueIdentifier('phone-input-label');
+    const inlineTextLabelId = useUniqueIdentifier('phone-input-error');
     const [isOpen, setIsOpen] = useState(false);
-
-    const { phone } = value || { phone: '' };
-
-    function handleChange(phoneNumberValue) {
-        onChange({
-            countryCode: selectedCountry.countryCode,
-            isoCode: selectedCountry.isoCode,
-            phone: phoneNumberValue,
-        });
-    }
-
-    function handleSelect(country) {
-        setCountry(country);
-        setIsOpen(false);
-        handleChange(phone);
-    }
+    const formattedCountryCode = `+(${countryCode})`;
 
     function toggleDropdown() {
         if (isOpen) {
             return setIsOpen(false);
         }
         return setIsOpen(true);
+    }
+
+    function handleChange(event) {
+        const newPhone = event.target.value;
+        if (!isNaN(newPhone) || newPhone === '') {
+            onChange({
+                countryCode,
+                isoCode,
+                phone: newPhone,
+            });
+        }
+    }
+
+    function handleSelect(newCountry) {
+        setIsOpen(false);
+        onChange({
+            countryCode: newCountry.countryCode,
+            isoCode: newCountry.isoCode,
+            phone,
+        });
     }
 
     return (
@@ -91,7 +95,6 @@ const PhoneInput = React.forwardRef((props, ref) => {
                 readOnly={readOnly}
                 id={inlineTextLabelId}
             />
-
             <RelativeElement>
                 <RenderIf isTrue={!!icon}>
                     <StyledIconContainer
@@ -103,44 +106,39 @@ const PhoneInput = React.forwardRef((props, ref) => {
                     </StyledIconContainer>
                 </RenderIf>
 
-                <StyledTrigger
-                    label={
-                        <span>
-                            {selectedCountry.flagIcon} <StyledIndicator disabled={disabled} />
-                        </span>
-                    }
-                    onClick={toggleDropdown}
-                />
+                <StyledTrigger onClick={toggleDropdown}>
+                    <FlagIcon isoCode={isoCode} />
+                    <StyledIndicator error={error} disabled={disabled} />
+                    <StyledCountryCode>{formattedCountryCode}</StyledCountryCode>
+                </StyledTrigger>
 
                 <StyledInput
                     id={inputId}
                     name={name}
-                    value={value}
+                    value={phone}
+                    type="tel"
                     placeholder={placeholder}
-                    onChange={handleChange}
                     tabIndex={tabIndex}
                     onFocus={onFocus}
                     onBlur={onBlur}
                     onClick={onClick}
-                    onKeyDown={onKeyDown}
+                    onChange={handleChange}
                     disabled={disabled}
                     readOnly={readOnly}
                     required={required}
                     maxLength={maxLength}
                     minLength={minLength}
                     pattern={pattern}
-                    autoComplete={autoComplete}
                     aria-labelledby={inlineTextLabelId}
                     aria-describedby={messageId}
-                    // ref={this.inputRef}
-                    isBare={isBare}
-                    isCentered={isCentered}
+                    ref={ref}
                     iconPosition={iconPosition}
                     icon={icon}
                     error={error}
                 />
                 <CountryPickerDropdown isOpen={isOpen} onSelect={handleSelect} locale={locale} />
             </RelativeElement>
+
             <RenderIf isTrue={!!bottomHelpText}>
                 <HelpText alignSelf="center">{bottomHelpText}</HelpText>
             </RenderIf>
@@ -155,7 +153,7 @@ const PhoneInput = React.forwardRef((props, ref) => {
 
 PhoneInput.propTypes = {
     /** Specifies the value of an input element. */
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     /** The name of the input. */
     name: PropTypes.string,
     /** Text label for the input. */
@@ -174,10 +172,6 @@ PhoneInput.propTypes = {
     /** Specifies the regular expression that the input's value is checked against.
      * This attribute is supported for text, search, url, tel, email, and password types. */
     pattern: PropTypes.string,
-    /** Specifies that an input text will be centered. This value defaults to false. */
-    isCentered: PropTypes.bool,
-    /** Specifies that an input will not have border. This value defaults to false. */
-    isBare: PropTypes.bool,
     /** Specifies that an input field must be filled out before submitting the form. */
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies that an input element should be disabled. This value defaults to false. */
@@ -194,17 +188,12 @@ PhoneInput.propTypes = {
     onFocus: PropTypes.func,
     /** The action triggered when the element releases focus. */
     onBlur: PropTypes.func,
-    /** The action triggered when a key is pressed on the element. */
-    onKeyDown: PropTypes.func,
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
     /** The id of the outer element. */
     id: PropTypes.string,
-    /** A string indicating the type of autocomplete functionality.
-     * If any, to allow on the input. */
-    autoComplete: PropTypes.string,
     /** The component locale. If the locale is not passed, it defaults to the context language, and if the context language is not passed, it will default to the browser's language. */
     locale: PropTypes.string,
 };
@@ -221,19 +210,15 @@ PhoneInput.defaultProps = {
     bottomHelpText: null,
     required: false,
     pattern: undefined,
-    isCentered: false,
-    isBare: false,
     error: null,
     disabled: false,
     readOnly: false,
     tabIndex: undefined,
-    autoComplete: 'on',
     className: undefined,
     style: undefined,
     onClick: () => {},
     onFocus: () => {},
     onBlur: () => {},
-    onKeyDown: () => {},
     onChange: () => {},
     value: undefined,
     locale: undefined,

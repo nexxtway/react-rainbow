@@ -1,27 +1,26 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
 import PropTypes from 'prop-types';
+import FlagIcon from '../flagIcon';
 
 const CountryOption = props => {
     const { onSelect, ...rest } = props;
-    const { country, countryCode, flagIcon } = rest;
+    const { name, isoCode, countryCode } = rest;
     return (
         <li onMouseDown={() => onSelect(rest)}>
-            {flagIcon}
-            <span>{country}</span>
+            <FlagIcon isoCode={isoCode} />
+            <span>{name}</span>
             <span>{countryCode}</span>
         </li>
     );
 };
 
 CountryOption.propTypes = {
-    isOpen: PropTypes.bool,
     onRequestClose: PropTypes.func,
     onSelect: PropTypes.func,
 };
 
 CountryOption.defaultProps = {
-    isOpen: false,
     onRequestClose: () => {},
     onSelect: () => {},
 };

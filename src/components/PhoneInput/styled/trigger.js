@@ -1,14 +1,21 @@
 import styled from 'styled-components';
-import Button from '../../Button';
+import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-const StyledTrigger = styled(Button)`
+const StyledTrigger = attachThemeAttrs(styled.div)`
     height: 100%;
-    width: 40px;
-    top: 0;
     position: absolute;
-    line-height: 1;
-    z-index: 2;
-    border-radius: 100px 0 0 100px;
+    padding-left: 1rem;
+    line-height: 2.5rem;
+    color: ${props => props.palette.text.header};
+    font-weight: 300;
+    font-size: ${FONT_SIZE_TEXT_LARGE};
+
+    ${props =>
+        props.disabled &&
+        `
+        color: ${props.palette.text.disabled};
+    `}
 `;
 
 export default StyledTrigger;

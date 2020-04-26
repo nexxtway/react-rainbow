@@ -16,16 +16,13 @@ export interface PhoneInputProps extends BaseProps {
     icon?: ReactNode;
     maxLength?: number;
     minLength?: number;
+    pattern?: string;
     bottomHelpText?: ReactNode;
     required?: boolean;
-    pattern?: string;
-    isCentered?: boolean;
-    isBare?: boolean;
     error?: ReactNode;
     disabled?: boolean;
     readOnly?: boolean;
     tabIndex?: number | string;
-    autoComplete?: string;
     onClick?: (event: MouseEvent<HTMLInputElement>) => void;
     onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
     onBlur?: (event: FocusEvent<HTMLInputElement>) => void;

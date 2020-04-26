@@ -11,11 +11,26 @@ const Container = styled.div`
     padding: 20px 10px;
 `;
 
+const Form = () => {
+    const [phone, setPhone] = useState();
+
+    function handleChange(value) {
+        console.log(value);
+        setPhone(value);
+    }
+    return (
+        <PhoneInput
+            label="Phone Number"
+            placeholder="Enter your phone number"
+            icon={<PhoneIcon />}
+            onChange={setPhone}
+            value={phone}
+        />
+    );
+};
+
 <Container>
-    <PhoneInput
-        label="Phone Number"
-        icon={<BellIcon />}
-    />
+    <Form />
 </Container>
 
 ```
