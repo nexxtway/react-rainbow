@@ -10,13 +10,14 @@ describe('<WeekDayItems />', () => {
     });
     it('should have keys assignation using week-day and input index', () => {
         const component = mount(<WeekDayItems />);
-        [0, 1, 2, 3, 4, 5, 6].forEach(index => {
+        const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+        days.forEach((day, index) => {
             expect(
                 component
                     .find(WeekDay)
                     .at(index)
                     .key(),
-            ).toBe(`week-day-${index}`);
+            ).toBe(day);
         });
     });
 });
