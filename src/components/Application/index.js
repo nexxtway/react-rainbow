@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
-import { AppContext, Provider } from './context';
+import { Provider } from './context';
+import { useLocale } from '../../libs/hooks';
 import legacyStyles from './rainbowLegacyStyles';
 import normalizeTheme from '../../styles/helpers/normalizeTheme';
 
@@ -14,8 +15,7 @@ import normalizeTheme from '../../styles/helpers/normalizeTheme';
 export default function Application(props) {
     const { children, className, style, locale, theme } = props;
 
-    const context = useContext(AppContext);
-    const contextValue = locale ? { locale } : { locale: context.locale };
+    const contextValue = { locale: useLocale(locale) };
 
     const [normalizedTheme, setTheme] = useState(() => normalizeTheme(theme));
 
