@@ -13,6 +13,7 @@ function SimpleWeekDayPicker(props) {
 
     return (
         <WeekDayPicker
+            id="weekday-picker-1"
             label="Week Days"
             bottomHelpText="Select your working days"
             value={day}
@@ -44,6 +45,7 @@ function AvailableDaysWeekDayPicker(props) {
 
     return (
         <WeekDayPicker
+            id="weekday-picker-3"
             label="Select a day"
             value={day}
             availableDates={availableDates}
@@ -72,6 +74,7 @@ function MultipleWeekDayPicker(props) {
 
     return (
         <WeekDayPicker
+            id="weekday-picker-5"
             label="Select your working days"
             value={days}
             multiple
@@ -96,6 +99,7 @@ function ReadOnlyWeekDayPicker(props) {
 
     return (
         <WeekDayPicker
+            id="weekday-picker-7"
             label="Your wroking days"
             value={day}
             readOnly
@@ -175,6 +179,7 @@ import { WeekDayPicker } from 'react-rainbow-components';
 
 <div className="rainbow-align-content_center rainbow-m-around_xx-large">
     <WeekDayPicker
+        id="weekday-picker-13"
         label="Select a day"
         multiple
         disabled
@@ -192,7 +197,7 @@ function LocaleWeekDayPicker(props) {
     return (
         <>
             <div className="rainbow-m-vertical_x-large">
-                <WeekDayPicker label="Spanish" locale="es-MX" />
+                <WeekDayPicker label="Spanish" locale="es-MX" id="weekday-picker-15"/>
             </div>
             <div className="rainbow-m-vertical_x-large">
                 <WeekDayPicker label="Russian" locale="ru-RU" />
