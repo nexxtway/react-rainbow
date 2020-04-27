@@ -88,9 +88,6 @@ const events = [
     },
 ];
 
-const Container = styled.div`
-    padding: 10px;
-`;
 const StyledCard = styled(Card)`
     height: 600px;
     padding: 1rem;
@@ -99,7 +96,7 @@ const initialState = {
     currentWeek: new Date(),
 };
 
-<Container>
+<div className="rainbow-m-around_large">
     <StyledCard>
         <WeeklyCalendar
             events={events}
@@ -109,7 +106,7 @@ const initialState = {
             locale="en"
         />
     </StyledCard>
-</Container>
+</div>
 ```
 
 ##### Weekly Calendar opens a Drawer when clicking on the event
@@ -117,7 +114,7 @@ const initialState = {
 ```js
 import React, { useState, useMemo } from 'react';
 import styled from 'styled-components';
-import { WeeklyCalendar, Card, Drawer, ButtonIcon } from 'react-rainbow-components';
+import { WeeklyCalendar, Card, Drawer, ButtonIcon, Avatar } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
@@ -181,22 +178,21 @@ const StyledCard = styled(Card)`
     padding: 1rem;
 `;
 
-const StyledFlex = styled.div`
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-`;
-
 const StyledHeader = styled.div`
     display: flex;
     align-items: center;
     padding: 10px 20px;
 `;
-const StyledButtonIcon = styled(ButtonIcon)`
+const StyledIcon = styled.span`
     width: 30px;
     min-width: 30px;
     height: 30px;
     margin-right: 15px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: ${props => props.theme.rainbow.palette.background.secondary};
 `;
 
 const StyleEventTitle = styled.h1`
@@ -214,14 +210,6 @@ const StyleSubTitle = styled.p`
     color: ${props => props.theme.rainbow.palette.text.header};
 `;
 
-const commetStyle = {
-    alignItems: 'flex-start',
-}
-
-const commetIconStyle = {
-    marginTop: '10px',
-}
-
 const fomatterTime = time => new Intl.DateTimeFormat('en', {
     hour: 'numeric',
     minute: 'numeric',
@@ -238,7 +226,7 @@ const formattedTimeRange = (startDate, endDate) =>
 
 const EventHeader = ({ title, startDate, endDate }) => (
     <StyledHeader>
-        <StyledButtonIcon variant="neutral" size="medium" icon={<FontAwesomeIcon icon={faEllipsisV} />} />
+        <Avatar src="images/user/user1.jpg" className="rainbow-m-right_medium" />
         <div>
             <StyleEventTitle>{title}</StyleEventTitle>
             <StyleSubTitle>{formattedTimeRange(startDate, endDate)}</StyleSubTitle>
@@ -275,48 +263,47 @@ const WeeklyCalendarExample = () => {
                 }
                 slideFrom="right"
                 isOpen={isOpen}
-                onRequestClose={() => setIsOpen(false)}
-            >
-                <StyledFlex>
-                    <StyledButtonIcon variant="border-filled" size="large" icon={<HangoutsIcon/>} />
+                onRequestClose={() => setIsOpen(false)}>
+                <div className="rainbow-flex rainbow-m-bottom_medium rainbow-align_center">
+                    <HangoutsIcon className="rainbow-m-right_medium rainbow-m-left_xx-small" />
                     <div>
                         <StyleTitle>Join Hangouts Link</StyleTitle>
                         <StyleSubTitle>{event.user.hangouts}</StyleSubTitle>
                     </div>
-                </StyledFlex>
-                <StyledFlex>
-                    <StyledButtonIcon variant="border-filled" size="medium" icon={<PhoneSolidIcon />} />
+                </div>
+                <div className="rainbow-flex rainbow-m-bottom_medium">
+                    <StyledIcon>
+                        <PhoneSolidIcon />
+                    </StyledIcon>
                     <div>
                         <StyleTitle>Join by phone</StyleTitle>
                         <StyleSubTitle>{event.user.phone}</StyleSubTitle>
                     </div>
-                </StyledFlex>
-                <StyledFlex>
-                    <StyledButtonIcon variant="border-filled" size="medium" icon={<MarkerIcon />} />
+                </div>
+                <div className="rainbow-flex rainbow-m-bottom_medium">
+                    <StyledIcon>
+                        <MarkerIcon />
+                    </StyledIcon>
                     <div>
                         <StyleTitle>Client Location</StyleTitle>
                         <StyleSubTitle>{event.user.location}</StyleSubTitle>
                     </div>
-                </StyledFlex>
-                <StyledFlex style={commetStyle}>
-                    <StyledButtonIcon
-                        variant="border-filled"
-                        size="medium"
-                        icon={<CommentsIcon />}
-                        style={commetIconStyle}
-                    />
+                </div>
+                <div className="rainbow-flex rainbow-m-bottom_medium">
+                    <StyledIcon>
+                        <CommentsIcon />
+                    </StyledIcon>
                     <div>
                         <StyleTitle>Comment</StyleTitle>
                         <StyleSubTitle>{event.description}</StyleSubTitle>
                     </div>
-                </StyledFlex>
+                </div>
             </Drawer>
         </StyledCard>
     );
 }
 
-<Container>
+<div className="rainbow-m-around_large">
     <WeeklyCalendarExample />
-</Container>
+</div>
 ```
-
