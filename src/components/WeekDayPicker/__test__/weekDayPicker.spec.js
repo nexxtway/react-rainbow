@@ -130,10 +130,6 @@ describe('<WeekDayPicker />', () => {
                 .prop('name'),
         ).toBe('week-day-items');
     });
-    it('should have locale configured properly if locale is sent', () => {
-        const component = mount(<WeekDayPicker locale="en-US" />);
-        expect(component.prop('locale')).toBe('en-US');
-    });
     it('should not run onChange when checkbox change is triggered and readOnly is true', () => {
         const onChangeFn = jest.fn();
         const component = mount(<WeekDayPicker onChange={onChangeFn} readOnly />);

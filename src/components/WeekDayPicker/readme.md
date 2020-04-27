@@ -194,16 +194,33 @@ import React, { useState } from 'react';
 import { WeekDayPicker } from 'react-rainbow-components';
 
 function LocaleWeekDayPicker(props) {
+    const [day, setDay] = useState();
+    const [day2, setDay2] = useState();
+    const [day3, setDay3] = useState();
+
     return (
         <>
             <div className="rainbow-m-vertical_x-large">
-                <WeekDayPicker label="Spanish" locale="es-MX" id="weekday-picker-15"/>
+                <WeekDayPicker 
+                    label="Spanish" 
+                    value={day} 
+                    locale="es-MX" 
+                    onChange={(day) => setDay(day)}
+                    id="weekday-picker-15" />
             </div>
             <div className="rainbow-m-vertical_x-large">
-                <WeekDayPicker label="Russian" locale="ru-RU" />
+                <WeekDayPicker 
+                    label="Russian" 
+                    value={day2} 
+                    locale="ru-RU" 
+                    onChange={(day) => setDay2(day)} />
             </div>
             <div className="rainbow-m-vertical_x-large">
-                <WeekDayPicker label="Japanese" locale="ja-JP" />
+                <WeekDayPicker 
+                    label="Japanese" 
+                    value={day3} 
+                    locale="ja-JP" 
+                    onChange={(day) => setDay3(day)} />
             </div>
         </>
     );

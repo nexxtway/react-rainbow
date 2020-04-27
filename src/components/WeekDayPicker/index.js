@@ -1,16 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import valuePropValidation from './helpers/valuePropValidation';
-import sortWeekDays from './helpers/sortWeekDays';
-import { useUniqueIdentifier } from '../../libs/hooks';
+import getNormalizedValue from './helpers/getNormalizedValue';
+import { useUniqueIdentifier, useLocale } from '../../libs/hooks';
 import withReduxForm from './../../libs/hocs/withReduxForm';
 import RequiredAsterisk from '../RequiredAsterisk';
 import RenderIf from '../RenderIf';
 import WeekDayItems from './weekDayItems';
 import StyledTextError from '../Input/styled/errorText';
 import { StyledFieldset, StyledHelpText, StyledLabel } from './styled';
-import { AppContext } from '../Application/context';
-import { getLocale } from '../../libs/utils';
 
 /**
  * A WeekDayPicker allows to select the days of the week
@@ -35,30 +33,17 @@ const WeekDayPicker = React.forwardRef((props, ref) => {
         style,
     } = props;
 
-    const context = useContext(AppContext);
-    const locale = getLocale(context, localeProp);
+    const locale = useLocale(localeProp);
 
     const defaultFieldsetName = useUniqueIdentifier('week-day-items');
     const fieldsetName = name || defaultFieldsetName;
-
-    const getNormalizedValue = (weekDayValue, isChecked) => {
-        if (multiple && value) {
-            if (isChecked && !value.includes(weekDayValue)) {
-                return sortWeekDays([...value, weekDayValue]);
-            }
-
-            return sortWeekDays(value.filter(day => day !== weekDayValue));
-        }
-
-        return weekDayValue;
-    };
 
     const handleOnChange = e => {
         const weekDayValue = e.target.value;
         const isChecked = e.target.checked;
 
         if (!disabled && !readOnly) {
-            onChange(getNormalizedValue(weekDayValue, isChecked));
+            onChange(getNormalizedValue(weekDayValue, isChecked, multiple, value));
         }
     };
 
