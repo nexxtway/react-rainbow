@@ -26,8 +26,8 @@ export default function Child(props) {
     const hasCheckbox = typeof isChecked === 'boolean' || isChecked === 'indeterminate';
     const hasIcon = !!icon;
     return (
-        <ItemContainerLi hasChildren={hasChildren} icon={icon}>
-            <NodeContainer>
+        <ItemContainerLi hasChildren={hasChildren} icon={icon} data-id="node-element-li">
+            <NodeContainer data-id="node-element">
                 <ExpandCollapseButton
                     hasChildren={hasChildren}
                     isExpanded={isExpanded === true}

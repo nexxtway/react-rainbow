@@ -11,6 +11,7 @@ interface DataItem {
     isExpanded?: boolean;
     isChecked?: boolean | 'indeterminate';
     children?: DataItem[];
+    id?: string;
 }
 
 export interface TreeProps extends BaseProps {

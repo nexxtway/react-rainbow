@@ -36,6 +36,7 @@
         setState({ data: state.data });
     }
     <Tree
+        id="tree-component-1"
         data={state.data}
         onExpandCollapse={openNode}
         className="rainbow-m-around_xx-large"
