@@ -3,11 +3,11 @@ import { mount } from 'enzyme';
 import Child from './../child';
 
 describe('<Child/>', () => {
-    it('should render the PrimitiveCheckbox component when isCecked prop is true', () => {
+    it('should render the PrimitiveCheckbox component when isChecked prop is true', () => {
         const component = mount(<Child isChecked />);
         expect(component.find('PrimitiveCheckbox').exists()).toBe(true);
     });
-    it('should render the PrimitiveCheckbox component when isCecked prop is false', () => {
+    it('should render the PrimitiveCheckbox component when isChecked prop is false', () => {
         const component = mount(<Child isChecked={false} />);
         expect(component.find('PrimitiveCheckbox').exists()).toBe(true);
     });
