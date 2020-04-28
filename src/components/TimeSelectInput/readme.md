@@ -13,7 +13,7 @@ const TimeSelectInputExample = () => {
     const [time, setTime] = useState(null); 
     return (
         <TimeSelectInput 
-            id="time-select-input-2" 
+            id="time-select-input-1" 
             value={time} 
             onChange={setTime} 
         />
@@ -39,7 +39,7 @@ const TimeSelectInputExample = () => {
     const [time, setTime] = useState('08:00 AM'); 
     return ( 
         <TimeSelectInput 
-            id="time-select-input-2" 
+            id="time-select-input-3" 
             value={time} 
             onChange={setTime} 
         /> 
@@ -65,7 +65,7 @@ const TimeSelectInputExample = () => {
     const [time, setTime] = useState(null); 
     return ( 
         <TimeSelectInput 
-            id="time-select-input-2" 
+            id="time-select-input-5" 
             value={time} 
             onChange={setTime} 
             hour24={true}

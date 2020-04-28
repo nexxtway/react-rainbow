@@ -272,6 +272,7 @@ export default class TimeSelectInput extends Component {
             this.incrementMinutes();
         }
         if (inputFocusedIndex === 2) {
+            event.preventDefault();
             this.setNextAmPmValue();
         }
     }
@@ -286,6 +287,7 @@ export default class TimeSelectInput extends Component {
             this.decrementMinutes();
         }
         if (inputFocusedIndex === 2) {
+            event.preventDefault();
             this.setNextAmPmValue();
         }
     }
