@@ -1,4 +1,4 @@
-import getWeekDays from '../helpers/getWeekDays';
+const getWeekDays = require('../helpers/getWeekDays');
 
 const weekDays = getWeekDays();
 
