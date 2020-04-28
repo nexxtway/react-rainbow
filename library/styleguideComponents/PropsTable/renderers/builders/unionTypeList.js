@@ -2,6 +2,7 @@ import React from 'react';
 import buildShapeAttrList from './shapeAttrList';
 import buildArrayOfTypeList from './arrayOfTypeList';
 import buildEnumTypeList from './enumTypeList';
+import buildInstanceOfType from './instanceOfType';
 
 export default function buildUnionTypeList(data) {
     return Object.keys(data).map(index => {
@@ -14,6 +15,10 @@ export default function buildUnionTypeList(data) {
 
         if (type === 'enum') {
             return buildEnumTypeList(value, index);
+        }
+
+        if (type === 'instanceOf') {
+            return buildInstanceOfType(value, index);
         }
 
         let childrensList;
