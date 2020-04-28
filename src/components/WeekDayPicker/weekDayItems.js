@@ -58,9 +58,7 @@ const WeekDayItems = React.forwardRef((props, ref) => {
 WeekDayItems.propTypes = {
     name: PropTypes.string,
     value: PropTypes.oneOfType([
-        PropTypes.arrayOf((propValue, key, componentName, location, propFullName) => {
-            return valuePropValidation(propValue, key, componentName, location, propFullName);
-        }),
+        PropTypes.arrayOf(valuePropValidation),
         PropTypes.oneOf([
             'monday',
             'tuesday',
@@ -71,9 +69,7 @@ WeekDayItems.propTypes = {
             'sunday',
         ]),
     ]),
-    availableDates: PropTypes.arrayOf((propValue, key, componentName, location, propFullName) => {
-        return valuePropValidation(propValue, key, componentName, location, propFullName);
-    }),
+    availableDates: PropTypes.arrayOf(valuePropValidation),
     locale: PropTypes.string,
     disabled: PropTypes.bool,
     required: PropTypes.bool,

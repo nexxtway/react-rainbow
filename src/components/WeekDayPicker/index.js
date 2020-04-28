@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import valuePropValidation from './helpers/valuePropValidation';
 import getNormalizedValue from './helpers/getNormalizedValue';
-import { useUniqueIdentifier, useLocale } from '../../libs/hooks';
-import withReduxForm from './../../libs/hocs/withReduxForm';
+import { useLocale, useUniqueIdentifier } from '../../libs/hooks';
+import useReduxForm from './../../libs/hooks/useReduxForm';
 import RequiredAsterisk from '../RequiredAsterisk';
 import RenderIf from '../RenderIf';
 import WeekDayItems from './weekDayItems';
@@ -31,7 +31,7 @@ const WeekDayPicker = React.forwardRef((props, ref) => {
         onChange,
         className,
         style,
-    } = props;
+    } = useReduxForm(props);
 
     const locale = useLocale(localeProp);
 
@@ -85,9 +85,7 @@ WeekDayPicker.propTypes = {
     name: PropTypes.string,
     /** The value of WeekDayPicker, a list of days selected. */
     value: PropTypes.oneOfType([
-        PropTypes.arrayOf((propValue, key, componentName, location, propFullName) => {
-            return valuePropValidation(propValue, key, componentName, location, propFullName);
-        }),
+        PropTypes.arrayOf(valuePropValidation),
         PropTypes.oneOf([
             'monday',
             'tuesday',
@@ -103,9 +101,7 @@ WeekDayPicker.propTypes = {
     /** Shows the help message below the WeekDayPicker */
     bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies the available days from the week for selection. */
-    availableDates: PropTypes.arrayOf((propValue, key, componentName, location, propFullName) => {
-        return valuePropValidation(propValue, key, componentName, location, propFullName);
-    }),
+    availableDates: PropTypes.arrayOf(valuePropValidation),
     /** The WeekDayPicker locale. Defaults to browser's language. */
     locale: PropTypes.string,
     /** Specifies that the WeekDayPicker element should be disabled. This value defaults to false. */
@@ -144,5 +140,4 @@ WeekDayPicker.defaultProps = {
     style: undefined,
 };
 
-export default withReduxForm(WeekDayPicker);
-export { WeekDayPicker as Component };
+export default WeekDayPicker;

@@ -13,4 +13,8 @@ describe('getWeekDayLabel', () => {
         const label = getWeekDayLabel('wrong-day-value');
         expect(label).toBe('');
     });
+    it('should return localized string', () => {
+        const label = getWeekDayLabel('monday', 'es-MX');
+        expect(label).toBe('L');
+    });
 });
