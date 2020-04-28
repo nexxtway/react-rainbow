@@ -217,7 +217,7 @@ function LocaleWeekDayPicker(props) {
                 <WeekDayPicker 
                     value={day} 
                     locale={locale} 
-                    onChange={day => setDay(weekDay)}
+                    onChange={weekDay => setDay(weekDay)}
                     id="weekday-picker-15" />
             </div>
         </>
