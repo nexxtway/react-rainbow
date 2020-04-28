@@ -11,6 +11,7 @@ import {
     getNextMinute,
     getPrevMinute,
     getNextAmPmValue,
+    get12HourTime,
     get24HourTime,
     getSingleNewTypedValue,
     isNumber,
@@ -29,7 +30,6 @@ import {
     StyledDownArrow,
 } from './styled';
 import OutsideClick from '../../libs/outsideClick';
-import get12HourTime from '../TimePicker/helpers/get12HourTime';
 
 function preventDefault(event) {
     event.preventDefault();
