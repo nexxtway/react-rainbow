@@ -29,6 +29,7 @@ import {
     StyledDownArrow,
 } from './styled';
 import OutsideClick from '../../libs/outsideClick';
+import get12HourTime from '../TimePicker/helpers/get12HourTime';
 
 function preventDefault(event) {
     event.preventDefault();
@@ -319,6 +320,7 @@ export default class TimeSelectInput extends Component {
 
     updateTime() {
         const { value } = this.props;
+
         this.setState({
             hour: getHour(value),
             minutes: getMinutes(value),
@@ -371,11 +373,12 @@ export default class TimeSelectInput extends Component {
         const currentHour = newState.hour || hour || this.prevHour;
         const currentMinutes = newState.minutes || minutes || this.prevMinutes;
         const currentAmPm = newState.ampm || ampm;
-        const time = get24HourTime({
+        const time24 = get24HourTime({
             hour: currentHour,
             minutes: currentMinutes,
             ampm: currentAmPm,
         });
+        const time = hour24 ? time24 : get12HourTime(time24);
         this.setState(newState);
 
         if (

@@ -11,12 +11,12 @@ const StyledContainer = styled.div`
 `;
 const TimeSelectInputExample = () => {
     const [time, setTime] = useState(null); 
-    return ( 
+    return (
         <TimeSelectInput 
             id="time-select-input-2" 
-            value="" 
+            value={time} 
             onChange={setTime} 
-        /> 
+        />
     ); 
 }
 <StyledContainer>
@@ -36,11 +36,11 @@ const StyledContainer = styled.div`
     justify-content: center;
 `;
 const TimeSelectInputExample = () => {
-    const [time, setTime] = useState(null); 
+    const [time, setTime] = useState('08:00 AM'); 
     return ( 
         <TimeSelectInput 
             id="time-select-input-2" 
-            value="08:00 AM" 
+            value={time} 
             onChange={setTime} 
         /> 
     ); 
@@ -66,10 +66,10 @@ const TimeSelectInputExample = () => {
     return ( 
         <TimeSelectInput 
             id="time-select-input-2" 
-            value="08:00" 
+            value={time} 
             onChange={setTime} 
             hour24={true}
-        /> 
+        />
     ); 
 }
 <StyledContainer>
