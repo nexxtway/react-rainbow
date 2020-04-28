@@ -1,6 +1,4 @@
-const getWeekDays = require('../helpers/getWeekDays');
-
-const weekDays = getWeekDays();
+const weekDays = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 
 /**
  * PageWeekDayPicker page object class.
