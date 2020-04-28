@@ -13,6 +13,7 @@ function SimpleWeekDayPicker(props) {
 
     return (
         <WeekDayPicker
+            id="weekday-picker-1"
             label="Week Days"
             bottomHelpText="Select your working days"
             value={day}
@@ -44,6 +45,7 @@ function AvailableDaysWeekDayPicker(props) {
 
     return (
         <WeekDayPicker
+            id="weekday-picker-3"
             label="Select a day"
             value={day}
             availableDates={availableDates}
@@ -72,6 +74,7 @@ function MultipleWeekDayPicker(props) {
 
     return (
         <WeekDayPicker
+            id="weekday-picker-5"
             label="Select your working days"
             value={days}
             multiple
@@ -96,6 +99,7 @@ function ReadOnlyWeekDayPicker(props) {
 
     return (
         <WeekDayPicker
+            id="weekday-picker-7"
             label="Your wroking days"
             value={day}
             readOnly
@@ -175,9 +179,54 @@ import { WeekDayPicker } from 'react-rainbow-components';
 
 <div className="rainbow-align-content_center rainbow-m-around_xx-large">
     <WeekDayPicker
+        id="weekday-picker-13"
         label="Select a day"
         multiple
         disabled
     />
+</div>
+```
+
+##### WeekDayPicker localization:
+
+```js
+import React, { useState } from 'react';
+import { WeekDayPicker } from 'react-rainbow-components';
+
+function LocaleWeekDayPicker(props) {
+    const [day, setDay] = useState();
+    const [day2, setDay2] = useState();
+    const [day3, setDay3] = useState();
+
+    return (
+        <>
+            <div className="rainbow-m-vertical_x-large">
+                <WeekDayPicker 
+                    label="Spanish" 
+                    value={day} 
+                    locale="es-MX" 
+                    onChange={(day) => setDay(day)}
+                    id="weekday-picker-15" />
+            </div>
+            <div className="rainbow-m-vertical_x-large">
+                <WeekDayPicker 
+                    label="Russian" 
+                    value={day2} 
+                    locale="ru-RU" 
+                    onChange={(day) => setDay2(day)} />
+            </div>
+            <div className="rainbow-m-vertical_x-large">
+                <WeekDayPicker 
+                    label="Japanese" 
+                    value={day3} 
+                    locale="ja-JP" 
+                    onChange={(day) => setDay3(day)} />
+            </div>
+        </>
+    );
+};
+
+<div className="rainbow-m-around_xx-large">
+    <LocaleWeekDayPicker  />
 </div>
 ```

@@ -1,10 +1,12 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { useUniqueIdentifier } from '../../../libs/hooks';
 import WeekDayPicker from '../';
+import { StyledHelpText } from '../styled';
 import StyledTextError from '../../Input/styled/errorText';
+import WeekDayItems from '../weekDayItems';
+import { useUniqueIdentifier } from '../../../libs/hooks';
 
-jest.mock('../../../libs/hooks/useUniqueIdentifier', () => jest.fn(() => 'week-day'));
+jest.mock('../../../libs/hooks/useUniqueIdentifier', () => jest.fn(() => 'week-day-items'));
 
 describe('<WeekDayPicker />', () => {
     it('should render a label when label prop is passed', () => {
@@ -13,7 +15,7 @@ describe('<WeekDayPicker />', () => {
     });
     it('should render bottom help text when bottomHelpText prop is passed', () => {
         const component = mount(<WeekDayPicker bottomHelpText="My help text" />);
-        expect(component.find('div[children="My help text"]').length).toBe(1);
+        expect(component.find(StyledHelpText).length).toBe(1);
     });
     it('should render required asterisk when required prop is true', () => {
         const component = mount(<WeekDayPicker label="My label" required />);
@@ -42,28 +44,29 @@ describe('<WeekDayPicker />', () => {
         expect(component.find(StyledTextError).exists()).toBe(true);
     });
     it('should have the opposite days disabled when a list of availableDates is sent', () => {
-        const component = mount(<WeekDayPicker availableDates={['sunday', 'monday']} />);
-        expect(
-            component
+        const weekDays = [
+            'sunday',
+            'monday',
+            'tuesday',
+            'wednesday',
+            'thursday',
+            'friday',
+            'saturday',
+        ];
+        const availableDates = ['wednesday', 'friday'];
+        const component = mount(<WeekDayPicker availableDates={availableDates} />);
+        weekDays.forEach((weekDay, index) => {
+            const isDisabled = component
                 .find('input')
-                .at(5)
-                .prop('disabled'),
-        ).toBe(true);
-    });
-    it('should set checked status for default input values', () => {
-        const component = mount(<WeekDayPicker value={['sunday', 'monday']} multiple />);
-        expect(
-            component
-                .find('input')
-                .at(0)
-                .prop('checked'),
-        ).toBe(true);
-        expect(
-            component
-                .find('input')
-                .at(1)
-                .prop('checked'),
-        ).toBe(true);
+                .at(index)
+                .prop('disabled');
+            const shouldDisable = !availableDates.includes(weekDay);
+            if (shouldDisable) {
+                expect(isDisabled).toBe(true);
+            } else {
+                expect(isDisabled).toBe(false);
+            }
+        });
     });
     it('should have readonly prop as true when readOnly param is passed', () => {
         const component = mount(<WeekDayPicker readOnly />);
@@ -75,7 +78,7 @@ describe('<WeekDayPicker />', () => {
         ).toBe(true);
     });
     it('should change checked properly status for single day selection', () => {
-        const component = mount(<WeekDayPicker value={'friday'} />);
+        const component = mount(<WeekDayPicker value="friday" />);
         component.setProps({ value: 'monday' });
         expect(
             component
@@ -91,7 +94,8 @@ describe('<WeekDayPicker />', () => {
         ).toBe(true);
     });
     it('should change checked status properly for multiple selection', () => {
-        const component = mount(<WeekDayPicker value={['saturday']} multiple />);
+        const value = ['saturday'];
+        const component = mount(<WeekDayPicker value={value} multiple />);
         component.setProps({ value: ['sunday', 'monday'] });
         expect(
             component
@@ -112,10 +116,19 @@ describe('<WeekDayPicker />', () => {
                 .prop('checked'),
         ).toBe(false);
     });
-    it('should call set useUniqueIdentifier for the days and the days wrapper element', () => {
-        useUniqueIdentifier.mockReset();
+    it('should call useUniqueIdentifier 8 times for the ids generations', () => {
+        useUniqueIdentifier.mockClear();
         mount(<WeekDayPicker />);
         expect(useUniqueIdentifier).toHaveBeenCalledTimes(8);
+    });
+    it('should have default name when name params is not sent', () => {
+        const component = mount(<WeekDayPicker />);
+        expect(
+            component
+                .find(WeekDayItems)
+                .at(0)
+                .prop('name'),
+        ).toBe('week-day-items');
     });
     it('should not run onChange when checkbox change is triggered and readOnly is true', () => {
         const onChangeFn = jest.fn();
@@ -137,7 +150,7 @@ describe('<WeekDayPicker />', () => {
     });
     it('should run onChange with the right value when multiple is not set', () => {
         const onChangeFn = jest.fn();
-        const component = mount(<WeekDayPicker value={'monday'} onChange={onChangeFn} />);
+        const component = mount(<WeekDayPicker value="monday" onChange={onChangeFn} />);
         component
             .find('input')
             .at(0)
