@@ -14,21 +14,32 @@ class PageWeekDayPicker {
         this.rootElement = rootElement;
     }
 
+    /**
+     * Triggers a click over the checkbox/radio input by clicking his label reference.
+     * @method
+     * @param {string} weekDay - The value of the day we want the make click.
+     */
     clickOn(weekDay) {
         const inputRef = this.getInputRef(weekDay);
         inputRef.click();
     }
 
+    /**
+     * Returns a boolean specifying is the input is checked.
+     * @method
+     * @param {string} weekDay - The value to checkbox/radio input we want to verify.
+     */
     isInputChecked(weekDay) {
         return this.getInput(weekDay).getAttribute('checked') === 'true';
     }
 
+    /**
+     * Returns a boolean specifying is the input is focused.
+     * @method
+     * @param {string} weekDay - The value of the checkbox/radio input we want to verify.
+     */
     isInputFocused(weekDay) {
         return this.getInput(weekDay).isFocused();
-    }
-
-    getInputLabel(weekDay) {
-        return this.getInputRef(weekDay).getText();
     }
 
     getInput(weekDay) {
