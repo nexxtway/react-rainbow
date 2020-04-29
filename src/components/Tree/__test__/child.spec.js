@@ -15,10 +15,6 @@ describe('<Child/>', () => {
         const component = mount(<Child isChecked="indeterminate" />);
         expect(component.find('PrimitiveCheckbox').exists()).toBe(true);
     });
-    it('should set the label passed in the Child component', () => {
-        const component = mount(<Child label="Tree Item" />);
-        expect(component.find('Child').prop('label')).toBe('Tree Item');
-    });
     it('should render the TreeChildren component when children prop is not undefined', () => {
         const children = [{ label: 'Tree Item' }, { label: 'Tree Item' }];
         // eslint-disable-next-line react/no-children-prop
