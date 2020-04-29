@@ -15,11 +15,6 @@ const PickerInput = attachThemeAttrs(styled(StyledInput))`
         padding-right: 2.35rem;
     }
 
-    &::placeholder {
-        color: ${props => props.palette.text.label};
-        font-weight: 400;
-    }
-
     &[disabled] {
         cursor: not-allowed;
     }
@@ -39,6 +34,7 @@ const PickerInput = attachThemeAttrs(styled(StyledInput))`
             cursor: text;
         }
 
+        
         &::-ms-expand {
             display: none;
         }

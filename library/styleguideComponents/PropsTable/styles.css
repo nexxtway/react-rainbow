@@ -111,3 +111,7 @@
 .react-rainbow-prop-type-enum {
     color: #a2aab7;
 }
+
+.react-rainbow-prop-description {
+    white-space: normal;
+}

@@ -23,10 +23,11 @@ function renderValue(value, caption, row) {
     }
 
     if (caption === 'Description') {
+        const className = 'react-rainbow-prop-description';
         if (type) {
             if (type.name === 'shape') {
                 return (
-                    <div>
+                    <div className={className}>
                         {description}
                         {propTypeShapeRender(type.value)}
                     </div>
@@ -35,7 +36,7 @@ function renderValue(value, caption, row) {
 
             if (type.name === 'arrayOf') {
                 return (
-                    <div>
+                    <div className={className}>
                         {description}
                         {propTypeArrayOfRender(type.value)}
                     </div>
@@ -44,7 +45,7 @@ function renderValue(value, caption, row) {
 
             if (type.name === 'union') {
                 return (
-                    <div>
+                    <div className={className}>
                         {description}
                         <p>One of type:</p>
                         {propTypeUnionRender(type.value)}
@@ -54,7 +55,7 @@ function renderValue(value, caption, row) {
 
             if (type.name === 'enum') {
                 return (
-                    <div>
+                    <div className={className}>
                         {description}
                         {propTypeEnumRender(type.value)}
                     </div>
