@@ -19,7 +19,7 @@ class PageTree {
      * @method
      * @param {number} itemPosition - The base 0 index of the Node.
      */
-    getItem(itemPosition) {
+    getNode(itemPosition) {
         const items = $(this.rootElement).$$('[data-id="node-element-li"]');
         if (items[itemPosition]) {
             return new PageNodeItem(

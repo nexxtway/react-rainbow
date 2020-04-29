@@ -16,7 +16,7 @@ class PageNodeItem {
      * Clicks the button icon element.
      * @method
      */
-    clickButtonIcon() {
+    click() {
         $(this.rootElement)
             .$('[data-id="node-element"] > button')
             .click();
@@ -27,7 +27,7 @@ class PageNodeItem {
      * @method
      * @returns {bool}
      */
-    hasFocusButtonIcon() {
+    hasFocus() {
         return $(this.rootElement)
             .$('[data-id="node-element"] > button')
             .isFocused();
