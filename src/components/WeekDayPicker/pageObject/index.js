@@ -25,21 +25,26 @@ class PageWeekDayPicker {
     }
 
     /**
-     * Returns a boolean specifying is the input is checked.
+     * Returns an array with the days selected
      * @method
-     * @param {string} weekDay - The value to checkbox/radio input we want to verify.
      */
-    isInputChecked(weekDay) {
-        return this.getInput(weekDay).getAttribute('checked') === 'true';
+    getSelectedDays() {
+        const selected = weekDays.filter((weekDay, index) => {
+            const elem = $(this.rootElement).$$('input');
+            const input = elem[index];
+            return input.getAttribute('checked') === 'true';
+        });
+
+        return selected;
     }
 
     /**
-     * Returns a boolean specifying is the input is focused.
+     * Returns the day that has the current focus or empty
      * @method
-     * @param {string} weekDay - The value of the checkbox/radio input we want to verify.
      */
-    isInputFocused(weekDay) {
-        return this.getInput(weekDay).isFocused();
+    getFocusedDay() {
+        const focusedDay = weekDays.filter(weekDay => this.getInput(weekDay).isFocused());
+        return focusedDay.length ? focusedDay[0] : '';
     }
 
     getInput(weekDay) {

@@ -15,19 +15,22 @@ describe('WeekDayPicker base example', () => {
     it('should check the option clicked', () => {
         const weekDayPicker = new PageWeekDayPicker(WEEKDAY_PICKER);
         weekDayPicker.clickOn('sunday');
-        expect(weekDayPicker.isInputChecked('sunday')).toBe(true);
+        const selected = weekDayPicker.getSelectedDays();
+        expect(selected.includes('sunday')).toBe(true);
     });
     it('should uncheck the previous option when another one is clicked', () => {
         const weekDayPicker = new PageWeekDayPicker(WEEKDAY_PICKER);
         weekDayPicker.clickOn('monday');
         weekDayPicker.clickOn('sunday');
-        expect(weekDayPicker.isInputChecked('monday')).toBe(false);
+        const selected = weekDayPicker.getSelectedDays();
+        expect(selected.includes('monday')).toBe(false);
     });
     it('should check the left input option when press arrow left key', () => {
         const weekDayPicker = new PageWeekDayPicker(WEEKDAY_PICKER);
         weekDayPicker.clickOn('friday');
         browser.keys(ARROW_LEFT_KEY);
-        expect(weekDayPicker.isInputChecked('thursday')).toBe(true);
+        const selected = weekDayPicker.getSelectedDays();
+        expect(selected.includes('thursday')).toBe(true);
     });
     it('should check thursday when focus is on monday and press right key 3 times', () => {
         const weekDayPicker = new PageWeekDayPicker(WEEKDAY_PICKER);
@@ -35,15 +38,13 @@ describe('WeekDayPicker base example', () => {
         browser.keys(ARROW_RIGHT_KEY);
         browser.keys(ARROW_RIGHT_KEY);
         browser.keys(ARROW_RIGHT_KEY);
-        expect(weekDayPicker.isInputChecked('thursday')).toBe(true);
+        const selected = weekDayPicker.getSelectedDays();
+        expect(selected.includes('thursday')).toBe(true);
     });
     it('should leave focus on all inputs when press tab key', () => {
         const weekDayPicker = new PageWeekDayPicker(WEEKDAY_PICKER);
         weekDayPicker.clickOn('monday');
         browser.keys(TAB_KEY);
-        const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-        days.forEach(day => {
-            expect(weekDayPicker.isInputFocused(day)).toBe(false);
-        });
+        expect(weekDayPicker.getFocusedDay()).toBe('');
     });
 });

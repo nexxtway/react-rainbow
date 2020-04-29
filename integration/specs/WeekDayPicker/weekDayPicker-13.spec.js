@@ -14,6 +14,7 @@ describe('WeekDayPicker disabled', () => {
     it('should keep checkbox status when input is disabled', () => {
         const weekDayPicker = new PageWeekDayPicker(WEEKDAY_PICKER);
         weekDayPicker.clickOn('monday');
-        expect(weekDayPicker.isInputChecked('monday')).toBe(false);
+        const selected = weekDayPicker.getSelectedDays();
+        expect(selected.includes('monday')).toBe(false);
     });
 });

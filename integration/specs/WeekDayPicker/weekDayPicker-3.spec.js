@@ -14,8 +14,9 @@ describe('WeekDayPicker days available', () => {
     it('should keep uncheck status for unavailable days', () => {
         const weekDayPicker = new PageWeekDayPicker(WEEKDAY_PICKER);
         weekDayPicker.clickOn('friday');
-        expect(weekDayPicker.isInputChecked('friday')).toBe(true);
         weekDayPicker.clickOn('saturday');
-        expect(weekDayPicker.isInputChecked('saturday')).toBe(false);
+        const selected = weekDayPicker.getSelectedDays();
+        expect(selected.includes('friday')).toBe(true);
+        expect(selected.includes('saturday')).toBe(false);
     });
 });

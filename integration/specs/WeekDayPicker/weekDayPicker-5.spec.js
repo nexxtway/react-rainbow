@@ -17,28 +17,30 @@ describe('WeekDayPicker multiple selection', () => {
         weekDayPicker.clickOn('monday');
         weekDayPicker.clickOn('friday');
         weekDayPicker.clickOn('saturday');
-        expect(weekDayPicker.isInputChecked('monday')).toBe(true);
-        expect(weekDayPicker.isInputChecked('friday')).toBe(true);
-        expect(weekDayPicker.isInputChecked('saturday')).toBe(true);
+        const initiallySelected = weekDayPicker.getSelectedDays();
+        expect(initiallySelected.includes('monday')).toBe(true);
+        expect(initiallySelected.includes('friday')).toBe(true);
+        expect(initiallySelected.includes('saturday')).toBe(true);
         weekDayPicker.clickOn('monday');
         weekDayPicker.clickOn('friday');
         weekDayPicker.clickOn('saturday');
-        expect(weekDayPicker.isInputChecked('monday')).toBe(false);
-        expect(weekDayPicker.isInputChecked('friday')).toBe(false);
-        expect(weekDayPicker.isInputChecked('saturday')).toBe(false);
+        const selected = weekDayPicker.getSelectedDays();
+        expect(selected.includes('monday')).toBe(false);
+        expect(selected.includes('friday')).toBe(false);
+        expect(selected.includes('saturday')).toBe(false);
     });
-    it('should change focus when tab key is pressed', () => {
+    it('should change focus and selection when tab key is pressed', () => {
         const weekDayPicker = new PageWeekDayPicker(WEEKDAY_PICKER);
         weekDayPicker.clickOn('monday');
         browser.keys(TAB_KEY);
-        expect(weekDayPicker.isInputFocused('tuesday')).toBe(true);
-        expect(weekDayPicker.isInputChecked('tuesday')).toBe(false);
+        expect(weekDayPicker.getFocusedDay()).toBe('tuesday');
     });
     it('should check input when input is focused and space key is pressed', () => {
         const weekDayPicker = new PageWeekDayPicker(WEEKDAY_PICKER);
         weekDayPicker.clickOn('monday');
         browser.keys(TAB_KEY);
         browser.keys(SPACE_KEY);
-        expect(weekDayPicker.isInputChecked('tuesday')).toBe(true);
+        const selected = weekDayPicker.getSelectedDays();
+        expect(selected.includes('tuesday')).toBe(true);
     });
 });
