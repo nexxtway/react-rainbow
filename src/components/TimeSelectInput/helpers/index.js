@@ -15,6 +15,7 @@ import isChecked from './isChecked';
 import isNumber from './isNumber';
 import normalizeHour from './normalizeHour';
 import normalizeMinutes from './normalizeMinutes';
+import normalizeValue from './normalizeValue';
 
 export {
     get12HourTime,
@@ -34,4 +35,5 @@ export {
     isNumber,
     normalizeHour,
     normalizeMinutes,
+    normalizeValue,
 };

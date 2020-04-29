@@ -41,7 +41,7 @@ const TimeSelectInputExample = () => {
         <TimeSelectInput 
             id="time-select-input-3" 
             value={time} 
-            onChange={setTime} 
+            onChange={setTime}
         /> 
     ); 
 }

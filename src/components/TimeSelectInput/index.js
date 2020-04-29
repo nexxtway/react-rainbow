@@ -19,6 +19,7 @@ import {
     getMinutes,
     getAmPm,
     getDefaultAmPm,
+    normalizeValue,
 } from './helpers';
 import { LEFT_KEY, RIGHT_KEY, UP_KEY, DOWN_KEY, DELETE_KEY } from '../../libs/constants';
 import {
@@ -43,12 +44,8 @@ function preventDefault(event) {
 export default class TimeSelectInput extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            hour: getHour(props.value),
-            minutes: getMinutes(props.value),
-            ampm: getAmPm(props.value),
-            inputFocusedIndex: 0,
-        };
+        const { hour, minutes, ampm } = normalizeValue(props.value, props.hour24);
+        this.state = { hour, minutes, ampm, inputFocusedIndex: 0 };
         this.containerRef = React.createRef();
         this.hourInputRef = React.createRef();
         this.minutesInputRef = React.createRef();
