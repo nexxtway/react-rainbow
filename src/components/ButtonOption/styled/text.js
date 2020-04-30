@@ -77,27 +77,27 @@ const StyledText = attachThemeAttrs(styled.span)`
             height: 1.25rem;
             line-height: 1.25;
             padding: 0 0.3rem;
-            font-size: 0.6rem !important;
-
-            svg, span {
-                width: 0.6rem !important;
-                height: 0.6rem !important;
-                font-size: 0.6rem !important;
-            }
-        `};
-    ${props =>
-        props.size === 'small' &&
-        `
-            height: 1.65rem;
-            line-height: 1.65;
-            padding: 0 0.6rem;
             font-size: 0.65rem !important;
 
             svg, span {
                 width: 0.65rem !important;
                 height: 0.65rem !important;
-        
                 font-size: 0.65rem !important;
+            }
+        `};
+    ${props =>
+        props.size === 'small' &&
+        `
+            height: 1.75rem;
+            line-height: 1.75;
+            padding: 0 0.7rem;
+            font-size: 0.875rem !important;
+
+            svg, span {
+                width: 0.875rem !important;
+                height: 0.875rem !important;
+        
+                font-size: 0.875rem !important;
             }
         `};
     ${props =>
