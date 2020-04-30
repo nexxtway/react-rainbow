@@ -43,7 +43,7 @@ const Input = attachThemeAttrs(styled.input)`
 
     ::placeholder {
         color: ${props => props.palette.text.header};
-        font-weight: 300;
+        font-weight: 500;
         font-size: ${FONT_SIZE_TEXT_LARGE};
     }
 
