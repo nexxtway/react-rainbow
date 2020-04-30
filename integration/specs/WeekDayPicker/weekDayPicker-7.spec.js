@@ -13,10 +13,8 @@ describe('WeekDayPicker readOnly', () => {
     });
     it('should keep checkbox status when WeekDayPicker is readOnly', () => {
         const weekDayPicker = new PageWeekDayPicker(WEEKDAY_PICKER);
-        const initiallySelected = weekDayPicker.getSelectedDays();
-        expect(initiallySelected.includes('tuesday')).toBe(true);
+        expect(weekDayPicker.getSelectedDays()).toEqual(['tuesday']);
         weekDayPicker.clickOn('saturday');
-        const selected = weekDayPicker.getSelectedDays();
-        expect(selected.includes('saturday')).toBe(false);
+        expect(weekDayPicker.getSelectedDays()).toEqual(['tuesday']);
     });
 });

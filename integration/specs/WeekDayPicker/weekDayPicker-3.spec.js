@@ -15,8 +15,6 @@ describe('WeekDayPicker days available', () => {
         const weekDayPicker = new PageWeekDayPicker(WEEKDAY_PICKER);
         weekDayPicker.clickOn('friday');
         weekDayPicker.clickOn('saturday');
-        const selected = weekDayPicker.getSelectedDays();
-        expect(selected.includes('friday')).toBe(true);
-        expect(selected.includes('saturday')).toBe(false);
+        expect(weekDayPicker.getSelectedDays()).toEqual(['friday']);
     });
 });

@@ -25,7 +25,7 @@ class PageWeekDayPicker {
     }
 
     /**
-     * Returns an array with the days selected
+     * Returns an array with the selected days
      * @method
      */
     getSelectedDays() {
@@ -44,7 +44,7 @@ class PageWeekDayPicker {
      */
     getFocusedDay() {
         const focusedDay = weekDays.filter(weekDay => this.getInput(weekDay).isFocused());
-        return focusedDay.length ? focusedDay[0] : '';
+        return focusedDay.length ? focusedDay[0] : undefined;
     }
 
     getInput(weekDay) {

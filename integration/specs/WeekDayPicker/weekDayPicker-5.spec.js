@@ -17,17 +17,11 @@ describe('WeekDayPicker multiple selection', () => {
         weekDayPicker.clickOn('monday');
         weekDayPicker.clickOn('friday');
         weekDayPicker.clickOn('saturday');
-        const initiallySelected = weekDayPicker.getSelectedDays();
-        expect(initiallySelected.includes('monday')).toBe(true);
-        expect(initiallySelected.includes('friday')).toBe(true);
-        expect(initiallySelected.includes('saturday')).toBe(true);
+        expect(weekDayPicker.getSelectedDays()).toEqual(['monday', 'friday', 'saturday']);
         weekDayPicker.clickOn('monday');
         weekDayPicker.clickOn('friday');
         weekDayPicker.clickOn('saturday');
-        const selected = weekDayPicker.getSelectedDays();
-        expect(selected.includes('monday')).toBe(false);
-        expect(selected.includes('friday')).toBe(false);
-        expect(selected.includes('saturday')).toBe(false);
+        expect(weekDayPicker.getSelectedDays()).toEqual([]);
     });
     it('should change focus and selection when tab key is pressed', () => {
         const weekDayPicker = new PageWeekDayPicker(WEEKDAY_PICKER);
@@ -40,7 +34,6 @@ describe('WeekDayPicker multiple selection', () => {
         weekDayPicker.clickOn('monday');
         browser.keys(TAB_KEY);
         browser.keys(SPACE_KEY);
-        const selected = weekDayPicker.getSelectedDays();
-        expect(selected.includes('tuesday')).toBe(true);
+        expect(weekDayPicker.getSelectedDays()).toEqual(['monday', 'tuesday']);
     });
 });
