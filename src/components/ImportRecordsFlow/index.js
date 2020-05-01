@@ -63,13 +63,13 @@ function ImportRecordsFlow(props) {
     const prevIsOpen = useRef(isOpen);
     useEffect(() => {
         if (prevIsOpen.current && !isOpen) {
-            setCurrentStepIndex(0);
+            setCurrentStepIndex(actionType === ADD_RECORDS_TYPE ? 1 : 0);
             removeFile();
             setActionOption('');
             setMatchField('default');
         }
         prevIsOpen.current = isOpen;
-    }, [isOpen]);
+    }, [isOpen, actionType]);
 
     const getModalTitle = () => {
         if (currentStepIndex === 1 && hasFileSelected) {
