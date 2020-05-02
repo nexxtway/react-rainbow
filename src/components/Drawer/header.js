@@ -15,7 +15,7 @@ export default function Header({ content, id }) {
 
     return (
         <>
-            {content}
+            <StyledTitle>{content}</StyledTitle>
             <StyledDivider />
         </>
     );
