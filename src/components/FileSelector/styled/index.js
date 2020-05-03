@@ -88,15 +88,6 @@ const TruncatedText = styled.span`
     pointer-events: none;
 `;
 
-const StyledInput = styled.input`
-    position: absolute;
-    width: 0;
-    height: 0;
-    opacity: 0;
-    overflow: hidden;
-    z-index: -1;
-`;
-
 const StyledBackdrop = styled.div`
     position: relative;
     height: 100%;
@@ -186,7 +177,6 @@ const StyledButtonIcon = styled(ButtonIcon)`
 export {
     StyledContainer,
     StyledDropzone,
-    StyledInput,
     TruncatedText,
     StyledBackdrop,
     StyledIconContainer,
