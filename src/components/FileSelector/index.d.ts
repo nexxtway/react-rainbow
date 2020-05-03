@@ -1,5 +1,5 @@
 import { BaseProps } from '../types';
-import { ReactNode } from 'react';
+import { ReactNode, FocusEvent } from 'react';
 
 export interface FileSelectorProps extends BaseProps {
     id: string;
