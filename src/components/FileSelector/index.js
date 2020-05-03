@@ -1,7 +1,6 @@
 import React, { useRef, useState, useEffect, useImperativeHandle } from 'react';
 import PropTypes from 'prop-types';
 import Label from '../Input/label';
-import useReduxForm from '../../libs/hooks/useReduxForm';
 import RenderIf from '../RenderIf';
 import containsFiles from './helpers/containsFiles';
 import HelpText from '../Input/styled/helpText';
@@ -9,14 +8,16 @@ import ErrorText from '../Input/styled/errorText';
 import {
     StyledContainer,
     StyledDropzone,
-    StyledInput,
     TruncatedText,
     StyledBackdrop,
     StyledIconContainer,
     StyledButtonIcon,
 } from './styled';
-import { UploadIcon, ErrorIcon, FileIcon, FilesIcon, CancelIcon } from './icons';
-import { useUniqueIdentifier, useErrorMessageId, useLabelId } from '../../libs/hooks';
+import { CancelIcon } from './icons';
+import { useUniqueIdentifier, useErrorMessageId, useLabelId, useReduxForm } from '../../libs/hooks';
+import HiddenElement from '../Structural/hiddenElement';
+import getIcon from './helpers/getIcon';
+import getText from './helpers/getText';
 
 const FileSelector = React.forwardRef((props, ref) => {
     const {
@@ -115,7 +116,7 @@ const FileSelector = React.forwardRef((props, ref) => {
         const eventFiles = event.nativeEvent.dataTransfer.files;
         if (!multiple && eventFiles.length > 1) {
             const list = new DataTransfer();
-            list.items.add(eventFiles.item(0));
+            list.items.add(eventFiles[0]);
             setFiles(list.files);
             if (onChange) {
                 onChange([...list.files]);
@@ -158,31 +159,8 @@ const FileSelector = React.forwardRef((props, ref) => {
         onBlur(event);
     };
 
-    const getIcon = () => {
-        if (error) {
-            return <ErrorIcon />;
-        }
-        if (files && files.length === 1) {
-            return <FileIcon />;
-        }
-        if (files && files.length > 1) {
-            return <FilesIcon />;
-        }
-        return <UploadIcon />;
-    };
-
-    const getText = () => {
-        if (!files) {
-            return placeholder;
-        }
-        if (files.length === 0) {
-            return placeholder;
-        }
-        if (files.length === 1) {
-            return files[0].name;
-        }
-        return `${files.length} files`;
-    };
+    const icon = getIcon(files, error);
+    const text = getText(files, placeholder);
 
     const isFileSelected = files && files.length > 0;
     const isSingleFile = files && files.length === 1;
@@ -216,9 +194,9 @@ const FileSelector = React.forwardRef((props, ref) => {
                         isSingleFile={isSingleFile}
                         variant={variant}
                     >
-                        {getIcon()}
+                        {icon}
                     </StyledIconContainer>
-                    <TruncatedText>{getText()}</TruncatedText>
+                    <TruncatedText>{text}</TruncatedText>
                     <RenderIf isTrue={shouldRenderCancel}>
                         <StyledIconContainer iconPosition="right">
                             <StyledButtonIcon
@@ -239,10 +217,11 @@ const FileSelector = React.forwardRef((props, ref) => {
                     {error}
                 </ErrorText>
             </RenderIf>
-            <StyledInput
+            <HiddenElement
+                as="input"
+                type="file"
                 id={inputId}
                 name={name}
-                type="file"
                 multiple={multiple}
                 disabled={disabled}
                 onChange={handleChange}
