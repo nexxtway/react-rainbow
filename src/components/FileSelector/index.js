@@ -224,11 +224,14 @@ const FileSelector = React.forwardRef((props, ref) => {
                 name={name}
                 multiple={multiple}
                 disabled={disabled}
+                required={required}
                 onChange={handleChange}
                 tabIndex={tabIndex}
                 accept={accept}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
+                aria-labelledby={labelId}
+                aria-describedby={errorMessageId}
                 ref={inputRef}
             />
         </StyledContainer>
