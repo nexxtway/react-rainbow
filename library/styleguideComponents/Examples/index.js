@@ -31,7 +31,7 @@ export default function Examples(_ref1, _ref2) {
         }
         return (
             <ExamplesRenderer name={name}>
-                <CustomizationPage {..._ref1} codeRevision={codeRevision} />;
+                <CustomizationPage {..._ref1} codeRevision={codeRevision} />
             </ExamplesRenderer>
         );
     }
