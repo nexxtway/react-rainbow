@@ -4,3 +4,4 @@ export { default as useTheme } from './useTheme';
 export { default as useLocale } from './useLocale';
 export { default as useErrorMessageId } from './useErrorMessageId';
 export { default as useLabelId } from './useLabelId';
+export { default as useReduxForm } from './useReduxForm';
