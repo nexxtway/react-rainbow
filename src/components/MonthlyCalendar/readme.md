@@ -206,8 +206,6 @@ const initialState = {
 import React from 'react';
 import { Card, MonthlyCalendar, RenderIf, Drawer, Avatar, Button, Badge } from 'react-rainbow-components';
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarAlt, faCheckCircle } from '@fortawesome/free-regular-svg-icons';
 
 const StyledContainer = styled.div
 `
@@ -329,7 +327,7 @@ const StyledHourContainer = styled.div`
 const StyledContentContainer = styled.div`
     display: flex;
     align-items: center;    
-    font-size: 12px;
+    font-size: 13px;
     margin: 0 4px 4px 65px;
 `;
 
@@ -337,11 +335,11 @@ const StyledIconContainer = styled.div`
     margin-right: 5px;
 `;
 
-const StyledAssignedText = styled.div.attrs(props => {
+const StyledStatusText = styled.div.attrs(props => {
     return props.theme.rainbow.palette;
 })
 `
-    font-size: 12px;
+    font-size: 13px;
     color: ${props => props.text.header};
 `;
 
@@ -380,15 +378,15 @@ function TaskStatus({task}) {
         return (
             <StyledContentContainer>
                 <StyledIconContainer>
-                    <FontAwesomeIcon icon={faCheckCircle} size="lg" color="#1de9b6"/>
+                    <Avatar icon={<CheckmarkIcon />} size="x-small" backgroundColor="#1de9b6" />
                 </StyledIconContainer>
-                <StyledAssignedText>Confirmed</StyledAssignedText>
+                <StyledStatusText>Confirmed</StyledStatusText>
             </StyledContentContainer>
         );
     }
     return (
         <StyledContentContainer>
-            <StyledAssignedText>Not confirmed</StyledAssignedText>
+            <StyledStatusText>Not confirmed</StyledStatusText>
         </StyledContentContainer>
     );
 }
@@ -398,7 +396,7 @@ function AvailableTaskInformation({task}) {
             <StyledCardContainer>
                 <Card>
                     <StyledHeaderContainer>
-                        <Avatar icon={<FontAwesomeIcon icon={faCalendarAlt} />} />
+                        <Avatar icon={<CalendarIcon />} size="medium" backgroundColor="#f4f6f9" />
                         <StyledHourContainer>{task.hour}</StyledHourContainer>
                     </StyledHeaderContainer>
                     <StyledContentContainer>
@@ -415,7 +413,7 @@ function AssignedTaskInformation({task}) {
             <StyledCardContainer>
                 <Card>
                     <StyledHeaderContainer>
-                        <Avatar icon={<FontAwesomeIcon icon={faCalendarAlt} />} />
+                        <Avatar icon={<CalendarIcon />} size="medium" backgroundColor="#f4f6f9" />
                         <StyledHourContainer>{task.hour}</StyledHourContainer>
                     </StyledHeaderContainer>
                     <StyledContentContainer>

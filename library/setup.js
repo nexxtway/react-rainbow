@@ -54,6 +54,7 @@ import EmailIcon from './exampleComponents/Icons/email';
 import PhoneIcon from './exampleComponents/Icons/phone';
 import ShoppingCartIcon from './exampleComponents/Icons/shoppingCart';
 import CheckmarkIcon from './exampleComponents/Icons/checkmark';
+import CalendarIcon from './exampleComponents/Icons/calendar';
 
 global.GlobalHeader = GlobalHeader;
 global.CodeEditor = CodeEditor;
@@ -114,3 +115,4 @@ global.EmailIcon = EmailIcon;
 global.PhoneIcon = PhoneIcon;
 global.ShoppingCartIcon = ShoppingCartIcon;
 global.CheckmarkIcon = CheckmarkIcon;
+global.CalendarIcon = CalendarIcon;
