@@ -13,6 +13,7 @@ export interface VisualPickerProps extends BaseProps {
     error?: ReactNode;
     children?: ReactNode;
     multiple?: boolean;
+    size?: string;
 }
 
 declare const VisualPicker: React.ComponentType<VisualPickerProps>;

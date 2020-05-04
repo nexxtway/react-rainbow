@@ -13,6 +13,21 @@ const StyledContent = attachThemeAttrs(styled.span)`
     justify-content: center;
     align-items: center;
     position: relative;
+    ${props =>
+        props.size === 'large' &&
+        `
+            height: 210px;
+        `};
+    ${props =>
+        props.size === 'medium' &&
+        `
+            height: 142px;
+        `};
+    ${props =>
+        props.size === 'small' &&
+        `
+            height: 100px;
+        `};
 `;
 
 export default StyledContent;
