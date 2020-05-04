@@ -142,11 +142,8 @@ export default class TimeSelectInput extends Component {
     }
 
     handleFocusHour() {
-        const { hour } = this.state;
-        this.prevHour = hour || this.prevHour;
         this.setState({
             inputFocusedIndex: 0,
-            hour: '',
         });
     }
 
@@ -162,7 +159,7 @@ export default class TimeSelectInput extends Component {
             return;
         }
         if (hour === '00' && this.value >= '0' && !hour24) {
-            this.setState({
+            this.handleChangeTime({
                 hour: '12',
             });
         }
@@ -200,11 +197,8 @@ export default class TimeSelectInput extends Component {
     }
 
     handleFocusMinutes() {
-        const { minutes } = this.state;
-        this.prevMinutes = minutes || this.prevMinutes;
         this.setState({
             inputFocusedIndex: 1,
-            minutes: '',
         });
     }
 
@@ -304,7 +298,7 @@ export default class TimeSelectInput extends Component {
     resetState() {
         const { inputFocusedIndex } = this.state;
         if (inputFocusedIndex === 0) {
-            this.handleChangeTime()({
+            this.handleChangeTime({
                 hour: '',
             });
             this.prevHour = '';
@@ -369,9 +363,13 @@ export default class TimeSelectInput extends Component {
     handleChangeTime(newState) {
         const { hour, minutes, ampm } = this.state;
         const { onChange, hour24 } = this.props;
-        const currentHour = newState.hour || hour || this.prevHour;
-        const currentMinutes = newState.minutes || minutes || this.prevMinutes;
-        const currentAmPm = newState.ampm || ampm;
+        const currentHour =
+            newState && typeof newState.hour === 'string' ? newState.hour : hour || this.prevHour;
+        const currentMinutes =
+            newState && typeof newState.minutes === 'string'
+                ? newState.minutes
+                : minutes || this.prevMinutes;
+        const currentAmPm = newState && typeof newState.ampm === 'string' ? newState.ampm : ampm;
         const time24 = get24HourTime({
             hour: currentHour,
             minutes: currentMinutes,

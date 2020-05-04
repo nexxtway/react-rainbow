@@ -1,4 +1,2 @@
-import DownArrow from './downArrow';
-import UpArrow from './upArrow';
-
-export { DownArrow, UpArrow };
+export { default as DownArrow } from './downArrow';
+export { default as UpArrow } from './upArrow';

@@ -6,11 +6,11 @@ import { replaceAlpha } from '../../../styles/helpers/color';
 import { DownArrow, UpArrow } from '../icons';
 import HiddenElement from '../../Structural/hiddenElement';
 
-const StyledContainer = styled.div`
+export const StyledContainer = styled.div`
     width: 100%;
 `;
 
-const StyledDots = attachThemeAttrs(styled.span)`
+export const StyledDots = attachThemeAttrs(styled.span)`
     font-size: 32px;
     font-weight: 200;
     height: 100%;
@@ -25,11 +25,11 @@ const StyledDots = attachThemeAttrs(styled.span)`
     }
 `;
 
-const StyledDownArrow = attachThemeAttrs(styled(DownArrow))`
+export const StyledDownArrow = attachThemeAttrs(styled(DownArrow))`
     color: ${props => props.palette.brand.main};
 `;
 
-const StyledInputHidden = attachThemeAttrs(styled(HiddenElement))`
+export const StyledInputHidden = attachThemeAttrs(styled(HiddenElement))`
     color: inherit;
     font: inherit;
     line-height: normal;
@@ -53,7 +53,7 @@ const StyledInputHidden = attachThemeAttrs(styled(HiddenElement))`
     }
 `;
 
-const StyledOptionLabel = attachThemeAttrs(styled.label)`
+export const StyledOptionLabel = attachThemeAttrs(styled.label)`
     box-sizing: border-box;
     font-size: 24px;
     font-weight: 200;
@@ -76,7 +76,7 @@ const StyledOptionLabel = attachThemeAttrs(styled.label)`
     }
 `;
 
-const StyledSelectContent = attachThemeAttrs(styled.div)`
+export const StyledSelectContent = attachThemeAttrs(styled.div)`
     height: 100px;
     width: 360px;
     display: flex;
@@ -93,7 +93,7 @@ const StyledSelectContent = attachThemeAttrs(styled.div)`
     }
 `;
 
-const StyledSelectValue = attachThemeAttrs(styled.input).attrs(props => {
+export const StyledSelectValue = attachThemeAttrs(styled.input).attrs(props => {
     const { getContrastText, brand } = props.palette;
     const brandDarkContrastText = getContrastText(brand.dark);
     const brandMainContrastText = getContrastText(brand.main);
@@ -265,11 +265,11 @@ const StyledSelectValue = attachThemeAttrs(styled.input).attrs(props => {
         `};
 `;
 
-const StyledUpArrow = attachThemeAttrs(styled(UpArrow))`
+export const StyledUpArrow = attachThemeAttrs(styled(UpArrow))`
     color: ${props => props.palette.brand.main};
 `;
 
-const StyledVerticalButtonsContainer = styled.div`
+export const StyledVerticalButtonsContainer = styled.div`
     display: flex;
     flex-direction: column;
     margin: 0 ${MARGIN_XX_SMALL} 0 ${MARGIN_X_SMALL};
@@ -287,15 +287,3 @@ const StyledVerticalButtonsContainer = styled.div`
         margin-left: 0;
     }
 `;
-
-export {
-    StyledContainer,
-    StyledDots,
-    StyledDownArrow,
-    StyledInputHidden,
-    StyledOptionLabel,
-    StyledSelectContent,
-    StyledSelectValue,
-    StyledUpArrow,
-    StyledVerticalButtonsContainer,
-};
