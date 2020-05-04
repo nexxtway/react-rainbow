@@ -53,7 +53,7 @@ describe('<FileSelector />', () => {
 
     it('should render HelpText when bottomHelpText is passed', () => {
         const component = mount(<FileSelector bottomHelpText="help text" />);
-        expect(component.find(HelpText).length).toBe(1);
+        expect(component.find(HelpText).exists()).toBe(true);
     });
 
     it('should fire change event when a file is picked', () => {
