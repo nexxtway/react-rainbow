@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-const StyledEventTitle = styled.p`
-    font-size: 12px;
-    margin-top: -1px;
+const StyledEventTitle = styled.span`
     font-weight: 900;
 `;
 
