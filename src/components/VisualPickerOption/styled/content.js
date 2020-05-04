@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
+const sizeMap = { large: '210px', medium: '142px', small: '100px' };
 const StyledContent = attachThemeAttrs(styled.span)`
-    height: 142px;
+    height: ${props => sizeMap[props.size] || '142px'};
     width: 100%;
     border-radius: 22px;
     box-shadow: ${props => props.shadows.shadow_4};
@@ -13,21 +14,6 @@ const StyledContent = attachThemeAttrs(styled.span)`
     justify-content: center;
     align-items: center;
     position: relative;
-    ${props =>
-        props.size === 'large' &&
-        `
-            height: 210px;
-        `};
-    ${props =>
-        props.size === 'medium' &&
-        `
-            height: 142px;
-        `};
-    ${props =>
-        props.size === 'small' &&
-        `
-            height: 100px;
-        `};
 `;
 
 export default StyledContent;

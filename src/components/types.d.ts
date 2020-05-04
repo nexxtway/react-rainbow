@@ -18,6 +18,7 @@ export type ButtonIconVariant =
     | 'border-filled'
     | 'border-inverse'
     | 'inverse';
+export type VisualPickerSize = 'small' | 'medium' | 'large';
 
 export type IconPosition = 'left' | 'right';
 
