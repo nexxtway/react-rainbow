@@ -35,7 +35,7 @@ const StyledDropzone = attachThemeAttrs(styled.div)`
         `}
 
     ${props =>
-        props.variant === 'normal' &&
+        props.variant === 'multiline' &&
         `
         height: 12rem;
         border-radius: 27px;
@@ -108,7 +108,7 @@ const StyledBackdrop = styled.div`
         `}
 
     ${props =>
-        props.variant === 'normal' &&
+        props.variant === 'multiline' &&
         `
         flex-direction: column;
         justify-content: center;
@@ -150,7 +150,7 @@ const StyledIconContainer = styled(IconContainer)`
     `}
 
     ${props =>
-        props.variant === 'normal' &&
+        props.variant === 'multiline' &&
         `
         position: static;
         width: 64px;

@@ -265,7 +265,7 @@ FileSelector.propTypes = {
     /** Specifies that an input element should be disabled. This value defaults to false. */
     disabled: PropTypes.bool,
     /** Specifies that the variant of the file selector. */
-    variant: PropTypes.oneOf(['inline', 'normal']),
+    variant: PropTypes.oneOf(['inline', 'multiline']),
     /** A boolean to hide the input label. */
     hideLabel: PropTypes.bool,
     /** A string that defines the file types the file input should accept. */

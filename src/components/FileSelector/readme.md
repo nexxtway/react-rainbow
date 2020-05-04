@@ -59,7 +59,7 @@ function FileSelectorExample(props) {
 <FileSelectorExample />
 ```
 
-##### FileSelector normal
+##### FileSelector multiline
 
 ```js
 import React, { useState } from 'react';
@@ -86,7 +86,7 @@ function FileSelectorExample(props) {
                 label="File selector" 
                 placeholder="Drag & Drop or Click to Browse"
                 bottomHelpText="Select only one file"
-                variant="normal"
+                variant="multiline"
                 onChange={handleChange}          
             />
 
@@ -96,7 +96,7 @@ function FileSelectorExample(props) {
                 label="File selector multiple" 
                 placeholder="Drag & Drop or Click to Browse"
                 bottomHelpText="Can select multiple files"
-                variant="normal"         
+                variant="multiline"         
                 multiple
             />
 
@@ -105,7 +105,7 @@ function FileSelectorExample(props) {
                 style={containerStyles} 
                 label="File selector with error" 
                 placeholder="Drag & Drop or Click to Browse"
-                variant="normal"
+                variant="multiline"
                 disabled
             />
 
@@ -115,7 +115,7 @@ function FileSelectorExample(props) {
                 label="File selector with error" 
                 placeholder="Drag & Drop or Click to Browse"
                 error="File type not supported"
-                variant="normal"
+                variant="multiline"
             />
         </div>
     );
