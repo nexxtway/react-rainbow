@@ -3,7 +3,7 @@ import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const sizeMap = { large: '210px', medium: '142px', small: '100px' };
 const StyledContent = attachThemeAttrs(styled.span)`
-    height: ${props => sizeMap[props.size] || '142px'};
+    height: ${props => sizeMap[props.size]};
     width: 100%;
     border-radius: 22px;
     box-shadow: ${props => props.shadows.shadow_4};
