@@ -166,7 +166,7 @@ const themeBlue = {
                     <Title>Dashboard</Title>
                     <Subtitle>February Summary</Subtitle>
                 </div>
-                <Button className="rainbow-m-right_small" variant="brand">Import Data</Button>
+                <Button label="Import Data" className="rainbow-m-right_small" variant="brand" />
             </Content>
             <Content>
                 <PercentCard variant="success" name="Whatsapp" percent={60} trend={10} />
