@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import { Card, MonthlyCalendar, RenderIf } from 'react-rainbow-components';
+import { Card, MonthlyCalendar } from 'react-rainbow-components';
 import styled from 'styled-components';
 
 const StyledContainer = styled.div
@@ -89,6 +89,11 @@ function getAvailableTasksCountForDate(date, tasks) {
 
 function getAssignedTasksCountForDate(date, tasks) {
     return tasks.filter(task => areDatesEqual(date, task.date) && task.isAssigned).length;
+}
+
+function onSelectDate(date, tasksList) {
+    alert(`Availables: ${getAvailableTasksCountForDate(date, tasksList)}
+    \n Assigned: ${getAssignedTasksCountForDate(date, tasksList)}`);
 }
 
 const tasksList = [
@@ -185,7 +190,7 @@ const initialState = {
             id="monthly-calendar-1"
             currentMonth={state.currentMonth}
             selectedDate={state.selectedDate}
-            onSelectDate={({ date }) => setState({ selectedDate: date })}
+            onSelectDate={({ date }) => (setState({ selectedDate: date }), onSelectDate(date, tasksList))}
             onMonthChange={({ month }) => setState({ currentMonth: month })}
             minDate={new Date('01/04/2018')}
             maxDate={new Date('01/04/2020')}
@@ -204,7 +209,7 @@ const initialState = {
 
 ```js
 import React from 'react';
-import { Card, MonthlyCalendar, RenderIf, Drawer, Avatar, Button, Badge } from 'react-rainbow-components';
+import { Card, MonthlyCalendar, Drawer, Avatar, Button, Badge } from 'react-rainbow-components';
 import styled from 'styled-components';
 
 const StyledContainer = styled.div
@@ -299,47 +304,76 @@ function getDrawerTitle(selectedDate, currentMonth) {
     return selectedDate ? `${monthNames[currentMonth.getMonth()]} ${selectedDate.getDate()}` : null
 }
 
-const StyledCardContainer = styled.div`
-    margin-top: 8px;
-    margin-Bottom: 8px;
+const StyledTitle = styled.h1.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.label};
+    margin: 0 1.25rem;
+    padding: 1.375rem 0 1.325rem;
+    display: block;
+    box-sizing: border-box;
+    font-family: 'Lato Light';
+    font-size: 24px;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
 `;
 
-const StyledStatisticsContainer = styled.div`
+const StyledStatisticsContainer = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.main};
     display: flex;
-    align-items: center;    
+    align-items: center;
     font-size: 16px;
     justify-content: space-between;
-    padding: 0 0 8px 0;
+`;
+
+const StyledInformationContainer = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.header};
+    margin-Bottom: 8px;
+    border-radius: 12px;
+    border: solid 1px #f0f0f7;
+    padding-bottom: 12px;
 `;
 
 const StyledHeaderContainer = styled.div`
     display: flex;
-    align-items: center;    
+    align-items: center;
     font-size: 16px;
-    margin: 8px 4px 0 16px;
+    margin: 8px 0 0 9px;
 `;
 
-const StyledHourContainer = styled.div`   
+const StyledHourContainer = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.main};
     font-size: 14px;
-    margin-left: 8px;
+    margin-left: 11px;
 `;
 
-const StyledContentContainer = styled.div`
+const StyledContentContainer = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    color: ${props => props.text.main};
     display: flex;
-    align-items: center;    
-    font-size: 13px;
-    margin: 0 4px 4px 65px;
+    align-items: center;
+    font-size: 14px;
+    margin-left: 62px;
 `;
 
 const StyledIconContainer = styled.div`
-    margin-right: 5px;
+    margin-right: 10px;
 `;
 
 const StyledStatusText = styled.div.attrs(props => {
     return props.theme.rainbow.palette;
 })
 `
-    font-size: 13px;
+    font-size: 14px;
     color: ${props => props.text.header};
 `;
 
@@ -393,8 +427,7 @@ function TaskStatus({task}) {
 
 function AvailableTaskInformation({task}) {
     return (
-            <StyledCardContainer>
-                <Card>
+            <StyledInformationContainer>
                     <StyledHeaderContainer>
                         <Avatar icon={<CalendarIcon />} size="medium" backgroundColor="#f4f6f9" />
                         <StyledHourContainer>{task.hour}</StyledHourContainer>
@@ -403,15 +436,13 @@ function AvailableTaskInformation({task}) {
                         {task.description}
                     </StyledContentContainer>
                     <TaskStatus task={task}/>
-                </Card>
-            </StyledCardContainer>
+            </StyledInformationContainer>
     );
 }
 
 function AssignedTaskInformation({task}) {
     return (
-            <StyledCardContainer>
-                <Card>
+            <StyledInformationContainer>
                     <StyledHeaderContainer>
                         <Avatar icon={<CalendarIcon />} size="medium" backgroundColor="#f4f6f9" />
                         <StyledHourContainer>{task.hour}</StyledHourContainer>
@@ -420,8 +451,7 @@ function AssignedTaskInformation({task}) {
                         {task.description}
                     </StyledContentContainer>
                     <TaskStatus task={task}/>
-                </Card>
-            </StyledCardContainer>
+            </StyledInformationContainer>
     );
 }
 
@@ -561,7 +591,7 @@ const initialState = {
     <div>
         <Drawer
             slideFrom="right"
-            header={getDrawerTitle(state.selectedDate, state.currentMonth)}
+            header={<StyledTitle>{getDrawerTitle(state.selectedDate, state.currentMonth)}</StyledTitle>}
             isOpen={state.isOpen}
             onRequestClose={() => setState({ isOpen : false })}
         >
