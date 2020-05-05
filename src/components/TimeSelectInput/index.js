@@ -107,35 +107,26 @@ export default class TimeSelectInput extends Component {
         const { hour } = this.state;
         const { hour24 } = this.props;
         const { value } = event.target;
-        let normalizedValue;
 
-        if (isNumber(value)) {
-            this.value = value;
-            if (Number(value) > 23 || this.isUpOrDownKeyPressed || this.hasPropValue) {
-                const newTypedValue = getSingleNewTypedValue(hour, value);
-                normalizedValue = normalizeHour(newTypedValue, hour24);
-                this.handleChangeTime({
-                    hour: normalizedValue,
-                });
-            } else {
-                normalizedValue = normalizeHour(value, hour24);
-                this.defaultAmPM = getDefaultAmPm(value);
-                this.handleChangeTime({
-                    hour: normalizedValue,
-                });
-            }
+        const conditionalHour = hour24 ? 23 : 12;
+        const conditionalDigit = hour24 ? 3 : 2;
+        const newTypedValue = getSingleNewTypedValue(hour, value);
+        const strValue = `${hour}${newTypedValue}`;
+        const newTransformedValue = +strValue;
+        const invalidHour = newTransformedValue > conditionalHour;
+        const invalidDigit = +newTypedValue > conditionalDigit && invalidHour;
+        const invalidValue = invalidHour || invalidDigit;
 
-            const shouldNotFocusNextInput = !hour24
-                ? Number(normalizedValue) < 2 &&
-                  (!hour || this.isUpOrDownKeyPressed || this.hasPropValue)
-                : Number(normalizedValue) < 3 &&
-                  (!hour || this.isUpOrDownKeyPressed || this.hasPropValue);
+        const normalizedValue = invalidValue
+            ? normalizeHour(newTypedValue, hour24)
+            : normalizeHour(newTransformedValue, hour24);
 
-            if (shouldNotFocusNextInput) {
-                this.isUpOrDownKeyPressed = false;
-                this.hasPropValue = false;
-                return;
-            }
+        this.handleChangeTime({
+            hour: normalizedValue,
+        });
+
+        const shouldFocusNextInput = +newTypedValue >= conditionalDigit || +normalizedValue > 9;
+        if (shouldFocusNextInput) {
             this.isMinutesInputFocused = true;
             this.minutesInputRef.current.focus();
         }
@@ -169,30 +160,28 @@ export default class TimeSelectInput extends Component {
         const { minutes } = this.state;
         const { value } = event.target;
         const { hour24 } = this.props;
-        let normalizedValue;
 
-        if (isNumber(value)) {
-            if (Number(value) > 60 || this.isUpOrDownKeyPressed) {
-                const newTypedValue = getSingleNewTypedValue(minutes, value);
-                normalizedValue = normalizeMinutes(newTypedValue);
-                this.handleChangeTime({
-                    minutes: normalizedValue,
-                });
-            } else {
-                normalizedValue = normalizeMinutes(value);
-                this.handleChangeTime({
-                    minutes: normalizedValue,
-                });
-            }
+        const conditionalMinutes = 59;
+        const conditionalDigit = 5;
+        const newTypedValue = getSingleNewTypedValue(minutes, value);
+        const strValue = `${minutes}${newTypedValue}`;
+        const newTransformedValue = +strValue;
+        const invalidMinute = newTransformedValue > conditionalMinutes;
+        const invalidDigit = +newTypedValue > conditionalDigit && invalidMinute;
+        const invalidValue = invalidMinute || invalidDigit;
 
-            const shouldNotFocusNextInput =
-                Number(normalizedValue) < 6 && (!minutes || this.isUpOrDownKeyPressed);
+        const normalizedValue = invalidValue
+            ? normalizeHour(newTypedValue, hour24)
+            : normalizeHour(newTransformedValue, hour24);
 
-            if (shouldNotFocusNextInput) {
-                this.isUpOrDownKeyPressed = false;
-                return;
-            }
-            if (!hour24) this.amPmInputRef.current.focus();
+        this.handleChangeTime({
+            minutes: normalizedValue,
+        });
+
+        const shouldFocusNextInput =
+            (!hour24 && +newTypedValue > conditionalDigit) || +normalizedValue > 9;
+        if (shouldFocusNextInput) {
+            this.amPmInputRef.current.focus();
         }
     }
 
