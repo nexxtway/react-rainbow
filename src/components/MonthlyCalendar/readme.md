@@ -258,52 +258,6 @@ const StyledAvailableLabel = styled.div.attrs(props => {
         `}
 `;
 
-function DailyTasks(props) {
-    const {
-        availableTasksCount, assignedTasksCount
-    } = props;
-
-    if (!availableTasksCount && !assignedTasksCount) return null;
-
-    return (
-        <StyledContainer>
-            {assignedTasksCount > 0 &&
-                <StyledAssignedLabel>
-                    {`${assignedTasksCount} Assigned`}
-                </StyledAssignedLabel>
-            }
-            {availableTasksCount > 0 &&
-                <StyledAvailableLabel count={availableTasksCount}>
-                    {`${availableTasksCount} Availables`}
-                </StyledAvailableLabel>
-            }
-        </StyledContainer>
-    );
-}
-
-function areDatesEqual(date1, date2) {
-    const first = new Date(date1);
-    const second = new Date(date2);
-
-    return first.getYear() === second.getYear()
-        && first.getMonth() === second.getMonth()
-        && first.getDate() === second.getDate();
-}
-
-function getAvailableTasksCountForDate(date, tasks) {
-    return tasks.filter(task => areDatesEqual(date, task.date) && !task.isAssigned).length;
-}
-
-function getAssignedTasksCountForDate(date, tasks) {
-    return tasks.filter(task => areDatesEqual(date, task.date) && task.isAssigned).length;
-}
-
-function getDrawerTitle(selectedDate, currentMonth) {
-    const monthNames = ["January", "February", "March", "April", "May", "June",
-                        "July", "August", "September", "October", "November", "December"];
-    return selectedDate ? `${monthNames[currentMonth.getMonth()]} ${selectedDate.getDate()}` : null
-}
-
 const StyledTitle = styled.h1.attrs(props => {
     return props.theme.rainbow.palette;
 })`
@@ -377,6 +331,51 @@ const StyledStatusText = styled.div.attrs(props => {
     color: ${props => props.text.header};
 `;
 
+function DailyTasks(props) {
+    const {
+        availableTasksCount, assignedTasksCount
+    } = props;
+
+    if (!availableTasksCount && !assignedTasksCount) return null;
+
+    return (
+        <StyledContainer>
+            {assignedTasksCount > 0 &&
+                <StyledAssignedLabel>
+                    {`${assignedTasksCount} Assigned`}
+                </StyledAssignedLabel>
+            }
+            {availableTasksCount > 0 &&
+                <StyledAvailableLabel count={availableTasksCount}>
+                    {`${availableTasksCount} Availables`}
+                </StyledAvailableLabel>
+            }
+        </StyledContainer>
+    );
+}
+
+function areDatesEqual(date1, date2) {
+    const first = new Date(date1);
+    const second = new Date(date2);
+
+    return first.getYear() === second.getYear()
+        && first.getMonth() === second.getMonth()
+        && first.getDate() === second.getDate();
+}
+
+function getAvailableTasksCountForDate(date, tasks) {
+    return tasks.filter(task => areDatesEqual(date, task.date) && !task.isAssigned).length;
+}
+
+function getAssignedTasksCountForDate(date, tasks) {
+    return tasks.filter(task => areDatesEqual(date, task.date) && task.isAssigned).length;
+}
+
+function getDrawerTitle(selectedDate) {
+    const option = { month: 'long', day: 'numeric' }
+    return selectedDate ? new Intl.DateTimeFormat( 'en-US', option).format(selectedDate) : null
+}
+
 function AssignedTasksBasicInformation(props) {
     const {assignedTasksCount} = props;
 
@@ -425,22 +424,7 @@ function TaskStatus({task}) {
     );
 }
 
-function AvailableTaskInformation({task}) {
-    return (
-            <StyledInformationContainer>
-                    <StyledHeaderContainer>
-                        <Avatar icon={<CalendarIcon />} size="medium" backgroundColor="#f4f6f9" />
-                        <StyledHourContainer>{task.hour}</StyledHourContainer>
-                    </StyledHeaderContainer>
-                    <StyledContentContainer>
-                        {task.description}
-                    </StyledContentContainer>
-                    <TaskStatus task={task}/>
-            </StyledInformationContainer>
-    );
-}
-
-function AssignedTaskInformation({task}) {
+function TaskInformation({task}) {
     return (
             <StyledInformationContainer>
                     <StyledHeaderContainer>
@@ -456,27 +440,25 @@ function AssignedTaskInformation({task}) {
 }
 
 function GetDrawerTasks({date, tasks}) {
-    const assignedTasks=[<AssignedTasksBasicInformation
-    assignedTasksCount={getAssignedTasksCountForDate(date, tasksList)}/>];
-
-    const availableTasks=[< AvailableTasksBasicInformation
-    availableTasksCount={getAvailableTasksCountForDate(date, tasksList)}/>];
+    const assignedTasks = [], availableTasks = [];
 
     if (tasks) {
         tasks.forEach((task, index) => {
             if (areDatesEqual(date, task.date) && !task.isAssigned){
                 availableTasks.push(
-                    <AvailableTaskInformation task={task}/>
+                    <TaskInformation task={task}/>
                 );
             }
             if (areDatesEqual(date, task.date) && task.isAssigned){
                 assignedTasks.push(
-                    <AssignedTaskInformation task={task}/>
+                    <TaskInformation task={task}/>
                 );
             }
         });
-        const allTasks = assignedTasks.concat(availableTasks);
-        return allTasks;
+        assignedTasks.unshift(<AssignedTasksBasicInformation assignedTasksCount={assignedTasks.length}/>);
+        availableTasks.unshift(<AvailableTasksBasicInformation availableTasksCount={availableTasks.length}/>);
+        
+        return assignedTasks.concat(availableTasks);
     }
     return null;
 }
@@ -591,7 +573,7 @@ const initialState = {
     <div>
         <Drawer
             slideFrom="right"
-            header={<StyledTitle>{getDrawerTitle(state.selectedDate, state.currentMonth)}</StyledTitle>}
+            header={<StyledTitle>{getDrawerTitle(state.selectedDate)}</StyledTitle>}
             isOpen={state.isOpen}
             onRequestClose={() => setState({ isOpen : false })}
         >
