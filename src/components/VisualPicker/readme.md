@@ -262,7 +262,7 @@ const StyledHeader = styled.h1.attrs(props => {
 const StyledLabel = styled.h2.attrs(props => {
     return props.theme.rainbow.palette;
 })`
-    font-size: 15px;
+    font-size: 12px;
     font-weight: 300;
     margin-top:6px
     color: ${props => props.text.label};
