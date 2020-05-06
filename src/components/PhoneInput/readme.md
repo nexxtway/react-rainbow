@@ -9,7 +9,10 @@ const Container = styled.div`
     max-width: 480px;
     margin: 30px auto;
     padding: 20px 10px;
+    min-height: 400px;
 `;
+
+const countries = ['us', 'es', 'ar', 'ru', 'it', 'cu', 've', 'ec', 'af'];
 
 const Form = () => {
     const [phone, setPhone] = useState();
@@ -25,6 +28,7 @@ const Form = () => {
             icon={<PhoneIcon />}
             onChange={setPhone}
             value={phone}
+            countries={countries}
         />
     );
 };

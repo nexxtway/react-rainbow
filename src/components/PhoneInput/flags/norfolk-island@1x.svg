@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>norfolk-island@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="flags" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="norfolk-island" fill-rule="nonzero">
+            <path d="M22.9565,1.587625 C20.853,0.5705 18.4931875,0 16,0 C13.5068125,0 11.147,0.5705 9.0435,1.587625 L7.6521875,16 L9.0435,30.412375 C11.147,31.4295 13.5068125,32 16,32 C18.4931875,32 20.853,31.4295 22.9565,30.412375 L24.3478125,16 L22.9565,1.587625 Z" id="Shape" fill="#F0F0F0"></path>
+            <g id="Group" transform="translate(0.000000, 1.562500)" fill="#6DA544">
+                <path d="M9.0435,0.0256875 C3.6915625,2.6135625 0,8.094125 0,14.4375 C0,20.780875 3.6915625,26.2614375 9.0435,28.8493125 L9.0435,0.0256875 Z" id="Shape"></path>
+                <path d="M22.9565,0.0256875 L22.9565,28.8493125 C28.3084375,26.2614375 32,20.7808125 32,14.4375 C32,8.0941875 28.3084375,2.6135625 22.9565,0.0256875 Z" id="Shape"></path>
+                <polygon id="Shape" points="20.1739375 19.3070625 16 6.0896875 11.8260625 19.3070625 14.9565 19.3070625 14.9565 22.7853125 17.0435 22.7853125 17.0435 19.3070625"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

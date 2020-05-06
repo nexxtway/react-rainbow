@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import withReduxForm from './../../libs/hocs/withReduxForm';
 import StyledContainer from '../Input/styled/container';
@@ -10,13 +10,12 @@ import HelpText from '../Input/styled/helpText';
 import ErrorText from '../Input/styled/errorText';
 import StyledInput from './styled/input';
 import StyledIndicator from './styled/indicator';
-import FlagIcon from './flagIcon';
-import { useUniqueIdentifier, useLocale } from '../../libs/hooks';
-import CountryPickerDropdown from './countryPickerDropdown';
 import StyledTrigger from './styled/trigger';
-import useCountry from './hooks/useCountry';
-import { normalizePhone } from './helpers';
 import StyledCountryCode from './styled/countryCode';
+import { useUniqueIdentifier } from '../../libs/hooks';
+import { usePhone, useCountries, useIsOpen } from './hooks';
+import { getCountryFromValue } from './helpers';
+import CountriesList from './countriesList';
 
 /**
  * phone input are used for freeform data entry.
@@ -46,23 +45,49 @@ const PhoneInput = React.forwardRef((props, ref) => {
         id,
         label,
         hideLabel,
-        locale: localLocale,
+        countries: countriesProps,
     } = props;
-    const iconPosition = icon ? 'right' : undefined;
-    const phone = normalizePhone(value);
-    const { isoCode, countryCode } = useCountry(value);
-    const locale = useLocale(localLocale);
+
     const inputId = useUniqueIdentifier('phone-input');
     const messageId = useUniqueIdentifier('phone-input-label');
     const inlineTextLabelId = useUniqueIdentifier('phone-input-error');
-    const [isOpen, setIsOpen] = useState(false);
-    const formattedCountryCode = `+(${countryCode})`;
 
-    function toggleDropdown() {
-        if (isOpen) {
-            return setIsOpen(false);
+    const containerRef = useRef();
+    const triggerRef = useRef();
+
+    const phone = usePhone(value);
+    const countries = useCountries(countriesProps);
+    const [country, setCountry] = useState(getCountryFromValue(value, countries));
+    const { countryCode, isoCode, flagIcon } = country;
+    const [isOpen, toggleIsOpen] = useIsOpen(containerRef);
+    const [isFocus, setIsFocus] = useState(false);
+
+    function handleTrigger(event) {
+        if (event.target.focus) {
+            return toggleIsOpen();
         }
-        return setIsOpen(true);
+        return toggleIsOpen(true);
+    }
+
+    function handleFocus(event) {
+        setIsFocus(true);
+        onFocus(event);
+    }
+
+    function handleBlur(event) {
+        setIsFocus(false);
+        onBlur(event);
+    }
+
+    function handleCountryChange(newCountry) {
+        ref.current.focus();
+        toggleIsOpen(false);
+        setCountry(newCountry);
+        onChange({
+            countryCode: newCountry.countryCode,
+            isoCode: newCountry.isoCode,
+            phone,
+        });
     }
 
     function handleChange(event) {
@@ -76,17 +101,10 @@ const PhoneInput = React.forwardRef((props, ref) => {
         }
     }
 
-    function handleSelect(newCountry) {
-        setIsOpen(false);
-        onChange({
-            countryCode: newCountry.countryCode,
-            isoCode: newCountry.isoCode,
-            phone,
-        });
-    }
+    const formattedCountryCode = `(${countryCode})`;
 
     return (
-        <StyledContainer id={id} className={className} style={style} ref={ref}>
+        <StyledContainer id={id} ref={containerRef} className={className} style={style}>
             <Label
                 label={label}
                 hideLabel={hideLabel}
@@ -97,30 +115,34 @@ const PhoneInput = React.forwardRef((props, ref) => {
             />
             <RelativeElement>
                 <RenderIf isTrue={!!icon}>
-                    <StyledIconContainer
-                        iconPosition={iconPosition}
-                        readOnly={readOnly}
-                        error={error}
-                    >
+                    <StyledIconContainer iconPosition="right" readOnly={readOnly} error={error}>
                         {icon}
                     </StyledIconContainer>
                 </RenderIf>
 
-                <StyledTrigger onClick={toggleDropdown}>
-                    <FlagIcon isoCode={isoCode} />
-                    <StyledIndicator error={error} disabled={disabled} />
+                <StyledTrigger
+                    ref={triggerRef}
+                    onClick={handleTrigger}
+                    onFocus={() => setIsFocus(true)}
+                    onBlur={() => setIsFocus(false)}
+                    tabIndex={tabIndex}
+                >
+                    <div>
+                        {flagIcon}
+                        <StyledIndicator error={error} disabled={disabled} />
+                    </div>
                     <StyledCountryCode>{formattedCountryCode}</StyledCountryCode>
                 </StyledTrigger>
-
                 <StyledInput
                     id={inputId}
+                    ref={ref}
                     name={name}
                     value={phone}
                     type="tel"
                     placeholder={placeholder}
                     tabIndex={tabIndex}
-                    onFocus={onFocus}
-                    onBlur={onBlur}
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
                     onClick={onClick}
                     onChange={handleChange}
                     disabled={disabled}
@@ -131,12 +153,21 @@ const PhoneInput = React.forwardRef((props, ref) => {
                     pattern={pattern}
                     aria-labelledby={inlineTextLabelId}
                     aria-describedby={messageId}
-                    ref={ref}
-                    iconPosition={iconPosition}
+                    iconPosition="right"
                     icon={icon}
                     error={error}
+                    isFocus={isFocus}
                 />
-                <CountryPickerDropdown isOpen={isOpen} onSelect={handleSelect} locale={locale} />
+                <CountriesList
+                    country={country}
+                    countries={countries}
+                    isOpen={isOpen}
+                    setIsFocus={setIsFocus}
+                    inputRef={ref}
+                    triggerRef={triggerRef}
+                    toggleIsOpen={toggleIsOpen}
+                    onCountryChange={handleCountryChange}
+                />
             </RelativeElement>
 
             <RenderIf isTrue={!!bottomHelpText}>
@@ -196,6 +227,7 @@ PhoneInput.propTypes = {
     id: PropTypes.string,
     /** The component locale. If the locale is not passed, it defaults to the context language, and if the context language is not passed, it will default to the browser's language. */
     locale: PropTypes.string,
+    countries: PropTypes.array,
 };
 
 PhoneInput.defaultProps = {
@@ -222,6 +254,250 @@ PhoneInput.defaultProps = {
     onChange: () => {},
     value: undefined,
     locale: undefined,
+    countries: [
+        'af',
+        'ax',
+        'al',
+        'dz',
+        'as',
+        'ad',
+        'ao',
+        'ai',
+        'ag',
+        'ar',
+        'am',
+        'aw',
+        'ac',
+        'au',
+        'at',
+        'az',
+        'bs',
+        'bh',
+        'bd',
+        'bb',
+        'by',
+        'be',
+        'bz',
+        'bj',
+        'bm',
+        'bt',
+        'bo',
+        'bq',
+        'ba',
+        'bw',
+        'br',
+        'vg',
+        'bn',
+        'bg',
+        'bf',
+        'bi',
+        'kh',
+        'cm',
+        'ca',
+        'cv',
+        'ky',
+        'cf',
+        'td',
+        'cl',
+        'cn',
+        'cx',
+        'cc',
+        'co',
+        'km',
+        'cg',
+        'cd',
+        'ck',
+        'cr',
+        'ci',
+        'hr',
+        'cu',
+        'cw',
+        'cy',
+        'cz',
+        'dk',
+        'dj',
+        'dm',
+        'do',
+        'ec',
+        'eg',
+        'sv',
+        'gq',
+        'er',
+        'ee',
+        'et',
+        'fk',
+        'fo',
+        'fj',
+        'fi',
+        'fr',
+        'gf',
+        'pf',
+        'ga',
+        'gm',
+        'ge',
+        'de',
+        'gh',
+        'gi',
+        'gr',
+        'gl',
+        'gd',
+        'gp',
+        'gu',
+        'gt',
+        'gg',
+        'gn',
+        'gw',
+        'gy',
+        'ht',
+        'hn',
+        'hk',
+        'hu',
+        'is',
+        'in',
+        'id',
+        'ir',
+        'iq',
+        'ie',
+        'im',
+        'il',
+        'it',
+        'jm',
+        'jp',
+        'je',
+        'jo',
+        'kz',
+        'ke',
+        'ki',
+        'kv',
+        'kw',
+        'kg',
+        'la',
+        'lv',
+        'lb',
+        'ls',
+        'lr',
+        'ly',
+        'li',
+        'lt',
+        'lu',
+        'mo',
+        'mk',
+        'mg',
+        'mw',
+        'my',
+        'mv',
+        'ml',
+        'mt',
+        'mh',
+        'mq',
+        'mr',
+        'mu',
+        'yt',
+        'mx',
+        'fm',
+        'md',
+        'mc',
+        'mn',
+        'me',
+        'ms',
+        'ma',
+        'mz',
+        'mm',
+        'na',
+        'nr',
+        'np',
+        'nl',
+        'nc',
+        'nz',
+        'ni',
+        'ne',
+        'ng',
+        'nu',
+        'nf',
+        'kp',
+        'mp',
+        'no',
+        'om',
+        'pk',
+        'pw',
+        'ps',
+        'pa',
+        'pg',
+        'py',
+        'pe',
+        'ph',
+        'pl',
+        'pt',
+        'pr',
+        'qa',
+        're',
+        'ro',
+        'ru',
+        'rw',
+        'bl',
+        'sh',
+        'kn',
+        'lc',
+        'mf',
+        'pm',
+        'vc',
+        'ws',
+        'sm',
+        'st',
+        'sa',
+        'sn',
+        'rs',
+        'sc',
+        'sl',
+        'sg',
+        'sx',
+        'sk',
+        'si',
+        'sb',
+        'so',
+        'za',
+        'kr',
+        'ss',
+        'es',
+        'lk',
+        'sd',
+        'sr',
+        'sj',
+        'sz',
+        'se',
+        'ch',
+        'sy',
+        'tw',
+        'tj',
+        'tz',
+        'th',
+        'tl',
+        'tg',
+        'tk',
+        'to',
+        'tt',
+        'tn',
+        'tr',
+        'tm',
+        'tc',
+        'tv',
+        'vi',
+        'ug',
+        'ua',
+        'ae',
+        'gb',
+        'us',
+        'uy',
+        'uz',
+        'vu',
+        'va',
+        've',
+        'vn',
+        'wf',
+        'ye',
+        'zm',
+        'zw',
+    ],
 };
 
 export default withReduxForm(PhoneInput);

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>czech-republic@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="flags" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="czech-republic" fill-rule="nonzero">
+            <circle id="Oval" fill="#F0F0F0" cx="16.0311891" cy="15.9688109" r="15.9688109"></circle>
+            <path d="M14.6425887,15.9688109 C14.6425887,15.9688109 4.7488499,27.2626901 4.73949318,27.2604444 C7.62922417,30.1502378 11.6214893,31.9376218 16.0311891,31.9376218 C24.8504639,31.9376218 32,24.7880858 32,15.9688109 L14.6425887,15.9688109 Z" id="Shape" fill="#D80027"></path>
+            <path d="M4.73949318,4.67711501 C-1.49670175,10.9133099 -1.49670175,21.0242495 4.73949318,27.2605068 C7.31652242,24.6834776 9.79499415,22.2050058 16.0311891,15.9688109 L4.73949318,4.67711501 Z" id="Shape" fill="#0052B4"></path>
+        </g>
+    </g>
+</svg>

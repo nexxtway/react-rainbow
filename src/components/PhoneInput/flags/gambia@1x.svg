@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>gambia@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="flags" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="gambia" fill-rule="nonzero">
+            <circle id="Oval" fill="#F0F0F0" cx="16" cy="16" r="16"></circle>
+            <path d="M16,0 C9.3853125,0 3.7085625,4.014125 1.27175,9.739125 L30.7283125,9.739125 C28.2915,4.014125 22.6146875,0 16,0 Z" id="Shape" fill="#FF4B55"></path>
+            <path d="M16,32 C22.6146875,32 28.2915,27.985875 30.72825,22.260875 L1.27175,22.260875 C3.7085625,27.985875 9.3853125,32 16,32 Z" id="Shape" fill="#73AF00"></path>
+            <path d="M31.4488125,11.8260625 L0.5511875,11.8260625 C0.1925,13.156875 0,14.5558125 0,16 C0,17.4441875 0.1925,18.843125 0.5511875,20.1739375 L31.448875,20.1739375 C31.8075,18.843125 32,17.4441875 32,16 C32,14.5558125 31.8075,13.156875 31.4488125,11.8260625 Z" id="Shape" fill="#41479B"></path>
+        </g>
+    </g>
+</svg>

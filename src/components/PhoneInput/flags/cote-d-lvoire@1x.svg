@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>ivory-coast@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="flags" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ivory-coast" fill-rule="nonzero">
+            <path d="M16,32 C17.957125,32 19.8319375,31.648 21.5651875,31.0048125 L22.260875,16 L21.56525,0.9951875 C19.8319375,0.3520625 17.957125,0 16,0 C14.042875,0 12.1680625,0.3520625 10.4348125,0.9951875 L9.739125,16 L10.43475,31.0048125 C12.1680625,31.648 14.042875,32 16,32 Z" id="Shape" fill="#F0F0F0"></path>
+            <path d="M0,16 C0,22.8794375 4.342,28.744125 10.4348125,31.0048125 L10.4348125,0.9951875 C4.342,3.255875 0,9.1205625 0,16 Z" id="Shape" fill="#FF9811"></path>
+            <path d="M21.5651875,0.9951875 L21.5651875,31.004875 C27.658,28.744125 32,22.8794375 32,16 C32,9.1205625 27.658,3.255875 21.5651875,0.9951875 Z" id="Shape" fill="#6DA544"></path>
+        </g>
+    </g>
+</svg>

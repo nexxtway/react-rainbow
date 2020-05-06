@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 
 const StyledIndicator = styled.span`
-    height: 100%;
-    line-height: 1;
     z-index: 2;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-top: -5px;
+    margin-left: 8px;
+    flex: 0 0 auto;
 
     &::after {
         content: '';
