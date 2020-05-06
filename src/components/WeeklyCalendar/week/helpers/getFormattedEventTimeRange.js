@@ -1,3 +1,5 @@
+import getFormattedEventTime from './getFormattedEventTime';
+
 const formatter = locale =>
     new Intl.DateTimeFormat(locale, {
         hour: 'numeric',
@@ -5,15 +7,11 @@ const formatter = locale =>
         hour12: true,
     });
 
-const partsToString = parts => {
-    return parts.map(({ value }) => value).reduce((string, part) => string + part);
-};
-
-export default function getFormattedEventDates(startDate, endDate, locale) {
+export default function getFormattedEventTimeRange(startDate, endDate, locale) {
     const startDateParts = formatter(locale).formatToParts(startDate);
     const endDateParts = formatter(locale).formatToParts(endDate);
 
-    const formattedStartDate = partsToString(
+    const formattedStartDate = getFormattedEventTime(
         startDateParts.filter(({ type, value }, index, arr) => {
             if (type.toLowerCase() === 'dayperiod' && value === endDateParts[index].value) {
                 return false;
@@ -29,7 +27,7 @@ export default function getFormattedEventDates(startDate, endDate, locale) {
             return true;
         }),
     );
-    const formattedEndDate = partsToString(endDateParts);
+    const formattedEndDate = getFormattedEventTime(endDateParts);
 
     return `${formattedStartDate} - ${formattedEndDate}`;
 }

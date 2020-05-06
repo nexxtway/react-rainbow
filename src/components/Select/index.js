@@ -10,6 +10,7 @@ import StyledLabel from './styled/label';
 import StyledInnerContainer from './styled/innerContainer';
 import StyledSelect from './styled/select';
 import ErrorText from '../../components/Input/styled/errorText';
+import HelpText from '../../components/Input/styled/helpText';
 
 /**
  * Select element presents a menu of options.
@@ -54,6 +55,7 @@ class Select extends Component {
             onFocus,
             onBlur,
             onClick,
+            bottomHelpText,
             error,
             required,
             disabled,
@@ -88,6 +90,9 @@ class Select extends Component {
                         <Options options={options} />
                     </StyledSelect>
                 </StyledInnerContainer>
+                <RenderIf isTrue={!!bottomHelpText}>
+                    <HelpText>{bottomHelpText}</HelpText>
+                </RenderIf>
                 <RenderIf isTrue={!!error}>
                     <ErrorText>{error}</ErrorText>
                 </RenderIf>
@@ -111,6 +116,8 @@ Select.propTypes = {
     onFocus: PropTypes.func,
     /** The action triggered when the element releases focus. */
     onBlur: PropTypes.func,
+    /** Shows the help message below the Select. */
+    bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies that an input field must be filled out before submitting the form.
      * This value defaults to false. */
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
@@ -145,6 +152,7 @@ Select.defaultProps = {
     onClick: () => {},
     onFocus: () => {},
     onBlur: () => {},
+    bottomHelpText: null,
     error: null,
     required: false,
     disabled: false,
