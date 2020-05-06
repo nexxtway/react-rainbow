@@ -376,53 +376,11 @@ function getDrawerTitle(selectedDate) {
     return selectedDate ? new Intl.DateTimeFormat( 'en-US', option).format(selectedDate) : null
 }
 
-function AssignedTasksBasicInformation(props) {
-    const {assignedTasksCount} = props;
-
-    if (!assignedTasksCount) return null;
-    return (
-        <StyledStatisticsContainer>
-            ASSIGNED
-            <Badge
-                className="rainbow-m-around_medium"
-                label={assignedTasksCount}
-                title="AssignedTasks" />
-        </StyledStatisticsContainer>
-    );
-}
-
-function AvailableTasksBasicInformation(props) {
-    const {availableTasksCount} = props;
-
-    if (!availableTasksCount) return null;
-    return (
-        <StyledStatisticsContainer>
-            AVAILABLE
-            <Badge 
-                className="rainbow-m-around_medium"
-                label={availableTasksCount}
-                title="availableTasks" />
-        </StyledStatisticsContainer>
-    );
-}
-
-function TaskStatus({task}) {
-    if (task.isConfirmed) {
-        return (
-            <StyledContentContainer>
-                <StyledIconContainer>
-                    <Avatar icon={<CheckmarkIcon />} size="x-small" backgroundColor="#1de9b6" />
-                </StyledIconContainer>
-                <StyledStatusText>Confirmed</StyledStatusText>
-            </StyledContentContainer>
-        );
-    }
-    return (
-        <StyledContentContainer>
-            <StyledStatusText>Not confirmed</StyledStatusText>
-        </StyledContentContainer>
-    );
-}
+const TasksBasicInformation = ({ count, name, title }) => count ? (
+    <StyledStatisticsContainer> 
+        {name}
+        <Badge className="rainbow-m-around_medium" label={count} title={title} />
+    </StyledStatisticsContainer> ) : null;
 
 function TaskInformation({task}) {
     return (
@@ -434,7 +392,17 @@ function TaskInformation({task}) {
                     <StyledContentContainer>
                         {task.description}
                     </StyledContentContainer>
-                    <TaskStatus task={task}/>
+                    {task.isConfirmed ?
+                        <StyledContentContainer>
+                            <StyledIconContainer>
+                                <Avatar icon={<CheckmarkIcon />} size="x-small" backgroundColor="#1de9b6" />
+                            </StyledIconContainer>
+                            <StyledStatusText>Confirmed</StyledStatusText>
+                        </StyledContentContainer> :
+                        <StyledContentContainer>
+                            <StyledStatusText> not confirmed</StyledStatusText>
+                        </StyledContentContainer>
+                    }
             </StyledInformationContainer>
     );
 }
@@ -443,7 +411,7 @@ function GetDrawerTasks({date, tasks}) {
     const assignedTasks = [], availableTasks = [];
 
     if (tasks) {
-        tasks.forEach((task, index) => {
+        tasks.forEach((task) => {
             if (areDatesEqual(date, task.date) && !task.isAssigned){
                 availableTasks.push(
                     <TaskInformation task={task}/>
@@ -455,8 +423,20 @@ function GetDrawerTasks({date, tasks}) {
                 );
             }
         });
-        assignedTasks.unshift(<AssignedTasksBasicInformation assignedTasksCount={assignedTasks.length}/>);
-        availableTasks.unshift(<AvailableTasksBasicInformation availableTasksCount={availableTasks.length}/>);
+        assignedTasks.unshift(
+            <TasksBasicInformation
+                count={assignedTasks.length }
+                name="ASSIGNED"
+                title="AssignedTasks"
+            />
+        );
+        availableTasks.unshift(
+            <TasksBasicInformation
+                count={availableTasks.length }
+                name="AVAILABLE"
+                title="AvailableTasks"
+            />
+        );
         
         return assignedTasks.concat(availableTasks);
     }
@@ -577,7 +557,7 @@ const initialState = {
             isOpen={state.isOpen}
             onRequestClose={() => setState({ isOpen : false })}
         >
-            <GetDrawerTasks 
+            <GetDrawerTasks
                 date={state.selectedDate}
                 tasks={tasksList}
             />
