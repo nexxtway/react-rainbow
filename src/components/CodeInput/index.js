@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useUniqueIdentifier } from '../../libs/hooks';
-import useReduxForm from './../../libs/hooks/useReduxForm';
-import getNormalizedValue from './helpers/getNormalizedValue';
+import { getNormalizedValue, getValidValue } from './helpers';
 import HelpText from '../Input/styled/helpText';
 import InputItems from './inputItems';
 import Label from '../Input/label';
@@ -14,14 +13,14 @@ import StyledTextError from '../Input/styled/errorText';
  * The CodeInput is an element that allows to fill a list of numbers, suitable for code validations.
  * @category Form
  */
-const CodeInput = React.forwardRef((props, ref) => {
+function CodeInput(props) {
     const {
         id,
         name,
         value,
         label,
         bottomHelpText,
-        length,
+        codeLength,
         disabled,
         required,
         readOnly,
@@ -34,17 +33,18 @@ const CodeInput = React.forwardRef((props, ref) => {
         onKeyDown,
         className,
         style,
-    } = useReduxForm(props);
+    } = props;
 
-    const inputId = id || useUniqueIdentifier('code-input');
-    const fieldsetName = name || useUniqueIdentifier('code-input-fieldset');
+    const valueProp = getValidValue(value, codeLength);
+    const inputId = useUniqueIdentifier('code-input');
+    const inputRef = useRef();
 
-    const handleOnChange = (inputValue, index, onChangeCallback) => {
-        onChange(getNormalizedValue(inputValue, index, value, length, onChangeCallback));
+    const handleOnChange = (inputValue, inputIndex) => {
+        onChange(getNormalizedValue(inputValue, inputIndex, valueProp, codeLength));
     };
 
     return (
-        <StyledFieldset className={className} name={fieldsetName} style={style} id={inputId}>
+        <StyledFieldset className={className} name={name} style={style} id={id}>
             <Label
                 label={label}
                 hideLabel={!label}
@@ -54,8 +54,8 @@ const CodeInput = React.forwardRef((props, ref) => {
             />
 
             <InputItems
-                value={value}
-                length={length}
+                value={valueProp}
+                codeLength={codeLength}
                 disabled={disabled}
                 readOnly={readOnly}
                 error={error}
@@ -65,7 +65,8 @@ const CodeInput = React.forwardRef((props, ref) => {
                 onFocus={onFocus}
                 onBlur={onBlur}
                 onKeyDown={onKeyDown}
-                ref={ref}
+                inputId={inputId}
+                ref={inputRef}
             />
 
             <RenderIf isTrue={!!bottomHelpText}>
@@ -76,7 +77,7 @@ const CodeInput = React.forwardRef((props, ref) => {
             </RenderIf>
         </StyledFieldset>
     );
-});
+}
 
 CodeInput.propTypes = {
     /** The id of the outer element. */
@@ -84,13 +85,13 @@ CodeInput.propTypes = {
     /** An identifier for the CodeInput element. */
     name: PropTypes.string,
     /** Specifies the value of CodeInput. */
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    value: PropTypes.string,
     /** Specifies the label CodeInput. */
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Shows the help message below the CodeInput */
     bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies the numeric length to be filled. */
-    length: PropTypes.number,
+    codeLength: PropTypes.number,
     /** Specifies that the CodeInput element should be disabled. This value defaults to false. */
     disabled: PropTypes.bool,
     /** Specifies that the CodeInput field must be filled before submitting the form. */
@@ -120,10 +121,10 @@ CodeInput.propTypes = {
 CodeInput.defaultProps = {
     id: undefined,
     name: undefined,
-    value: undefined,
+    value: '',
     label: undefined,
     bottomHelpText: undefined,
-    length: 4,
+    codeLength: 4,
     disabled: false,
     required: false,
     readOnly: false,

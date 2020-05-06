@@ -9,7 +9,7 @@ export interface CodeInputProps extends BaseProps {
     value?: Value;
     label?: ReactNode;
     bottomHelpText?: ReactNode;
-    length: number;
+    codeLength: number;
     disabled?: boolean;
     required?: boolean;
     readOnly?: boolean;
@@ -22,5 +22,4 @@ export interface CodeInputProps extends BaseProps {
     onKeyDown?: (event: KeyboardEvent<HTMLInputElement>) => void;
 }
 
-declare const CodeInput: ComponentType<CodeInputProps>;
-export default CodeInput;
+export default function(props: CodeInputProps): JSX.Element | null;

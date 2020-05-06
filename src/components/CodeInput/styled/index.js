@@ -70,6 +70,7 @@ export const StyledInput = attachThemeAttrs(styled.input)`
             outline: 0;
         }
     `}
+
 `;
 
 const StyledFieldset = styled.fieldset`
