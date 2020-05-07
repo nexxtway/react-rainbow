@@ -408,37 +408,40 @@ function TaskInformation({task}) {
 }
 
 function GetDrawerTasks({date, tasks}) {
-    const assignedTasks = [], availableTasks = [];
+    let assignedTasksCount = 0, availableTasksCount = 0;
+    const tasksMap = { assigned: [], available: [] };
 
     if (tasks) {
         tasks.forEach((task) => {
-            if (areDatesEqual(date, task.date) && !task.isAssigned){
-                availableTasks.push(
-                    <TaskInformation task={task}/>
-                );
-            }
             if (areDatesEqual(date, task.date) && task.isAssigned){
-                assignedTasks.push(
+                tasksMap['assigned'].push(
                     <TaskInformation task={task}/>
                 );
+                assignedTasksCount += 1;
+            }
+            if (areDatesEqual(date, task.date) && !task.isAssigned){
+                tasksMap['available'].push(
+                    <TaskInformation task={task}/>
+                );
+                availableTasksCount += 1;
             }
         });
-        assignedTasks.unshift(
+        tasksMap['assigned'].unshift(
             <TasksBasicInformation
-                count={assignedTasks.length }
+                count={assignedTasksCount}
                 name="ASSIGNED"
                 title="AssignedTasks"
             />
         );
-        availableTasks.unshift(
+        tasksMap['available'].unshift(
             <TasksBasicInformation
-                count={availableTasks.length }
+                count={availableTasksCount}
                 name="AVAILABLE"
                 title="AvailableTasks"
             />
         );
         
-        return assignedTasks.concat(availableTasks);
+        return tasksMap['assigned'].concat(tasksMap['available']);
     }
     return null;
 }
