@@ -9,7 +9,7 @@ export interface CodeInputProps extends BaseProps {
     value?: Value;
     label?: ReactNode;
     bottomHelpText?: ReactNode;
-    length: number;
+    length?: number;
     disabled?: boolean;
     required?: boolean;
     readOnly?: boolean;
