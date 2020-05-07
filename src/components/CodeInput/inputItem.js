@@ -1,4 +1,5 @@
 import React from 'react';
+import { DELETE_KEY } from '../../libs/constants';
 import PropTypes from 'prop-types';
 import { StyledInput } from './styled';
 
@@ -21,12 +22,12 @@ const InputItem = React.forwardRef((props, ref) => {
         isActive,
     } = props;
 
-    const handleOnChange = (e, inputIndex) => {
-        onChange(e.target.value, inputIndex);
+    const handleOnChange = (inputValue, inputIndex) => {
+        onChange(inputValue, inputIndex);
     };
 
     const handleOnKeyDown = (e, inputIndex) => {
-        const shouldMovePrev = !value && e.key === 'Backspace';
+        const shouldMovePrev = !value && e.keyCode === DELETE_KEY;
         if (shouldMovePrev) {
             onChange('', inputIndex - 1);
         }
@@ -42,10 +43,10 @@ const InputItem = React.forwardRef((props, ref) => {
             readOnly={readOnly}
             error={error}
             tabIndex={tabIndex}
-            onClick={e => onClick(e, index)}
-            onChange={e => handleOnChange(e, index)}
+            onClick={onClick}
+            onChange={e => handleOnChange(e.target.value, index)}
             onFocus={e => onFocus(e, index)}
-            onBlur={e => onBlur(e, index)}
+            onBlur={onBlur}
             onKeyDown={e => handleOnKeyDown(e, index)}
             onPaste={onPaste}
             ref={ref}

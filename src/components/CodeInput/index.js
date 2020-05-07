@@ -65,7 +65,7 @@ const CodeInput = React.forwardRef((props, ref) => {
     return (
         <StyledFieldset className={className} name={name} style={style} id={id}>
             <RenderIf isTrue={!!label}>
-                <StyledLabel htmlFor={inputId}>
+                <StyledLabel>
                     <RequiredAsterisk required={required} />
                     {label}
                 </StyledLabel>

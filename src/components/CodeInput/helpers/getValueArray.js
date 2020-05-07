@@ -1,6 +1,6 @@
 export default function getValueArray(value, maxLength) {
     if (value) {
-        const extractedNumbers = value.match(/\d+/g);
+        const extractedNumbers = value.toString().match(/\d+/g);
 
         if (extractedNumbers) {
             const numbersArray = extractedNumbers

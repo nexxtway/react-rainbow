@@ -1,12 +1,10 @@
 import { ReactNode, MouseEvent, FocusEvent, KeyboardEvent } from 'react';
 import { BaseProps } from '../types';
 
-type Value = string | number;
-
 export interface CodeInputProps extends BaseProps {
     id?: string;
     name?: string;
-    value?: Value;
+    value?: string;
     label?: ReactNode;
     bottomHelpText?: ReactNode;
     length?: number;
@@ -16,7 +14,7 @@ export interface CodeInputProps extends BaseProps {
     error?: ReactNode;
     tabIndex?: number | string;
     onClick?: (event: MouseEvent<HTMLInputElement>) => void;
-    onChange?: (value: Value) => void;
+    onChange?: (value: string) => void;
     onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
     onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
     onKeyDown?: (event: KeyboardEvent<HTMLInputElement>) => void;

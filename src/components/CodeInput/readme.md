@@ -17,8 +17,8 @@ function CodeInputBase() {
             id="codeinput-1"
             value={code}
             label="Code"
-            required={true}
-            onChange={(code) => { setCode(code); }}
+            required
+            onChange={setCode}
             bottomHelpText="Fill the validation code"
             ref={codeInputRef}
         />
@@ -55,10 +55,9 @@ const codeInputStyle = { marginBottom: '41px' };
 function CodeInputBase() {
     const [code, setCode] = useState();
     const [error, setError] = useState();
-    const codeInputRef = useRef();
 
     const handleOnSubmit = () => {
-        const isValid = code.split('').length === 6;
+        const isValid = code.length === 6;
         if(!isValid) {
             setError('Invalid Code');
         }else{
@@ -73,10 +72,9 @@ function CodeInputBase() {
                 value={code}
                 label={<MyLabel />}
                 length={6}
-                onChange={code => setCode(code)}
+                onChange={setCode}
                 style={codeInputStyle}
                 error={error}
-                ref={codeInputRef}
             />
             <div className="rainbow-flex rainbow-justify_center">
                 <Button
