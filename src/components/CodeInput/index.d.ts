@@ -1,4 +1,4 @@
-import { ComponentType, MouseEvent, FocusEvent, KeyboardEvent } from 'react';
+import { ReactNode, MouseEvent, FocusEvent, KeyboardEvent } from 'react';
 import { BaseProps } from '../types';
 
 type Value = string | number;
@@ -9,7 +9,7 @@ export interface CodeInputProps extends BaseProps {
     value?: Value;
     label?: ReactNode;
     bottomHelpText?: ReactNode;
-    codeLength: number;
+    length: number;
     disabled?: boolean;
     required?: boolean;
     readOnly?: boolean;

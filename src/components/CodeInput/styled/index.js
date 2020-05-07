@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
+import { FONT_SIZE_TEXT_LARGE, FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-export const StyledInput = attachThemeAttrs(styled.input)`
+const StyledInput = attachThemeAttrs(styled.input)`
     font: inherit;
     background-color: ${props => props.palette.background.main};
     border: 1px solid ${props => props.palette.border.main};
@@ -71,6 +71,16 @@ export const StyledInput = attachThemeAttrs(styled.input)`
         }
     `}
 
+    ${props =>
+        !props.isActive &&
+        `
+        :focus,
+        :active {
+            box-shadow: none;
+            background-color: ${props.palette.background.main};
+            border: 1px solid ${props.palette.border.main};
+        }
+    `}
 `;
 
 const StyledFieldset = styled.fieldset`
@@ -82,4 +92,19 @@ const StyledFieldset = styled.fieldset`
     text-align: center;
 `;
 
-export default StyledFieldset;
+const StyledLabel = attachThemeAttrs(styled.legend)`
+    border: 0;
+    padding: 0;
+    color: ${props => props.palette.text.label};
+    font-size: ${FONT_SIZE_TEXT_MEDIUM};
+    line-height: 1.5;
+    margin-bottom: 0.125rem;
+    align-self: center;
+    box-sizing: border-box;
+    text-align: center;
+    &:empty {
+        margin: 0;
+    }
+`;
+
+export { StyledInput, StyledFieldset, StyledLabel };

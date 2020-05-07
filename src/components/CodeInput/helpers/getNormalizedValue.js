@@ -1,10 +1,10 @@
-export default function getNormalizedValue(inputValue, inputIndex, value, codeLength) {
-    const valueArray = value.split('');
-    for (let i = 0; i < codeLength; i += 1) {
-        if (i === inputIndex) {
-            valueArray[i] = inputValue;
-        }
-    }
+import { isNumeric } from './';
 
-    return valueArray.join('');
+export default function getNormalizedValue(inputValue, inputIndex, value) {
+    if (isNumeric(inputValue) || inputValue === '') {
+        const newValue = [...value];
+        newValue[inputIndex] = inputValue;
+        return newValue.join('');
+    }
+    return value.join('');
 }

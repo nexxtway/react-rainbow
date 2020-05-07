@@ -1,20 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { useReduxForm } from './../../libs/hooks';
-import { getLoopArray, getValidValue, isNumeric } from './helpers';
-import { StyledInput } from './styled';
-
-const setFocus = ref => {
-    if (ref && ref.current) {
-        ref.current.focus();
-        ref.current.select();
-    }
-};
+import InputItem from './inputItem';
 
 const InputItems = React.forwardRef((props, ref) => {
     const {
         value,
-        codeLength,
         disabled,
         required,
         readOnly,
@@ -25,80 +15,37 @@ const InputItems = React.forwardRef((props, ref) => {
         onFocus,
         onBlur,
         onKeyDown,
-    } = useReduxForm(props);
+        onPaste,
+        focusedIndex,
+        id,
+    } = props;
 
-    const arrayValue = value.split('');
-    const defaultActiveIndex = value ? arrayValue.length - 1 : 0;
-    const [activeIndex, setActiveIndex] = useState(defaultActiveIndex);
-
-    useEffect(() => {
-        setFocus(ref);
-    });
-
-    useEffect(() => {
-        setFocus(ref);
-    }, [ref, activeIndex]);
-
-    const handleOnChange = (inputValue, inputIndex) => {
-        const shouldChange = inputValue === '' || (inputValue !== '' && isNumeric(inputValue));
-        if (shouldChange) {
-            const filteredValue = inputValue.match(/\d+/g);
-            const newValue = filteredValue ? filteredValue.join('') : '';
-            const shouldMovePrev = newValue === '' && inputIndex !== 0;
-            const shouldMoveNext = newValue !== '' && inputIndex <= codeLength - 1;
-            onChange(newValue, inputIndex);
-            if (shouldMovePrev) setActiveIndex(inputIndex - 1);
-            if (shouldMoveNext) setActiveIndex(inputIndex + 1);
-        }
-    };
-
-    const handleOnFocus = e => {
-        setFocus(ref);
-        onFocus(e);
-    };
-
-    const handleOnKeyDown = (e, inputIndex) => {
-        const shouldMovePrev = e.key === 'Backspace' && !arrayValue[inputIndex];
-        if (shouldMovePrev) {
-            const newIndex = inputIndex !== 0 ? inputIndex - 1 : 0;
-            onChange('', newIndex);
-            setActiveIndex(newIndex);
-        }
-        onKeyDown(e);
-    };
-
-    const handleOnPaste = e => {
-        const clipboard = getValidValue(e.clipboardData.getData('Text'));
-        const copiedLength = clipboard.split('').length;
-        const newIndex = copiedLength < codeLength ? copiedLength : copiedLength - 1;
-        onChange(clipboard, 0);
-        setActiveIndex(newIndex);
-    };
-
-    const inputs = getLoopArray(codeLength).map((v, index) => {
+    const inputs = value.map((inputValue, index) => {
         const inputIndex = index;
-        const inputValue = arrayValue[inputIndex] ? arrayValue[inputIndex] : '';
-        const inputRef = inputIndex === activeIndex ? ref : null;
-        const inputTabIndex = inputIndex === activeIndex ? tabIndex : -1;
+        const isActive = inputIndex === focusedIndex;
+        const inputRef = isActive ? ref : null;
+        const inputId = isActive ? id : null;
+        const inputTabIndex = isActive ? tabIndex : -1;
 
         return (
-            <StyledInput
+            <InputItem
                 key={inputIndex}
                 value={inputValue}
+                index={inputIndex}
                 disabled={disabled}
                 required={required}
                 readOnly={readOnly}
                 error={error}
                 tabIndex={inputTabIndex}
                 onClick={onClick}
-                onChange={e => handleOnChange(e.target.value, inputIndex)}
-                onFocus={e => handleOnFocus(e)}
+                onChange={onChange}
+                onFocus={onFocus}
                 onBlur={onBlur}
-                onKeyDown={e => handleOnKeyDown(e, inputIndex)}
-                onPaste={e => handleOnPaste(e, inputIndex)}
+                onKeyDown={onKeyDown}
+                onPaste={onPaste}
                 ref={inputRef}
-                pattern="\d*"
-                maxLength="1"
+                id={inputId}
+                isActive={isActive}
             />
         );
     });
@@ -107,8 +54,8 @@ const InputItems = React.forwardRef((props, ref) => {
 });
 
 InputItems.propTypes = {
-    value: PropTypes.string,
-    codeLength: PropTypes.number,
+    value: PropTypes.array,
+    length: PropTypes.number,
     disabled: PropTypes.bool,
     required: PropTypes.bool,
     readOnly: PropTypes.bool,
@@ -119,11 +66,14 @@ InputItems.propTypes = {
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
     onKeyDown: PropTypes.func,
+    onPaste: PropTypes.func,
+    focusedIndex: PropTypes.number,
+    id: PropTypes.string,
 };
 
 InputItems.defaultProps = {
-    value: '',
-    codeLength: 4,
+    value: [],
+    length: 4,
     disabled: false,
     required: false,
     readOnly: false,
@@ -134,6 +84,9 @@ InputItems.defaultProps = {
     onFocus: () => {},
     onBlur: () => {},
     onKeyDown: () => {},
+    onPaste: () => {},
+    focusedIndex: undefined,
+    id: undefined,
 };
 
 export default InputItems;

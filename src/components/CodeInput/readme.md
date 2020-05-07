@@ -1,11 +1,16 @@
 ##### CodeInput base:
 
 ```js
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { CodeInput } from 'react-rainbow-components';
 
 function CodeInputBase() {
     const [code, setCode] = useState();
+    const codeInputRef = useRef();
+
+    useEffect(() => {
+        codeInputRef.current.focus();
+    }, []);
 
     return (
         <CodeInput
@@ -15,6 +20,7 @@ function CodeInputBase() {
             required={true}
             onChange={(code) => { setCode(code); }}
             bottomHelpText="Fill the validation code"
+            ref={codeInputRef}
         />
     );
 };
@@ -23,10 +29,10 @@ function CodeInputBase() {
     <CodeInputBase  />
 </div>
 ```
-##### CodeInput base:
+##### CodeInput with length:
 
 ```js
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Button, Card, CodeInput } from 'react-rainbow-components';
 
 const labelStyle = { 
@@ -48,6 +54,17 @@ const codeInputStyle = { marginBottom: '41px' };
 
 function CodeInputBase() {
     const [code, setCode] = useState();
+    const [error, setError] = useState();
+    const codeInputRef = useRef();
+
+    const handleOnSubmit = () => {
+        const isValid = code.split('').length === 6;
+        if(!isValid) {
+            setError('Invalid Code');
+        }else{
+            setError();
+        }
+    };
 
     return (
         <Card style={cardStyle}>
@@ -55,14 +72,16 @@ function CodeInputBase() {
                 id="codeinput-3"
                 value={code}
                 label={<MyLabel />}
-                codeLength={6}
-                onChange={(code) => setCode(code)}
+                length={6}
+                onChange={code => setCode(code)}
                 style={codeInputStyle}
+                error={error}
+                ref={codeInputRef}
             />
             <div className="rainbow-flex rainbow-justify_center">
                 <Button
                     label="CONTINUE"
-                    onClick={() => alert(code)}
+                    onClick={handleOnSubmit}
                     variant="brand"
                 />
             </div>
@@ -74,6 +93,3 @@ function CodeInputBase() {
     <CodeInputBase  />
 </div>
 ```
- No newline at end of file
-
- 

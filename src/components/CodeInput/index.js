@@ -1,26 +1,27 @@
-import React, { useRef } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useUniqueIdentifier } from '../../libs/hooks';
-import { getNormalizedValue, getValidValue } from './helpers';
 import HelpText from '../Input/styled/helpText';
 import InputItems from './inputItems';
-import Label from '../Input/label';
 import RenderIf from '../RenderIf';
-import StyledFieldset from './styled';
+import RequiredAsterisk from '../RequiredAsterisk';
 import StyledTextError from '../Input/styled/errorText';
+import { useReduxForm, useUniqueIdentifier } from '../../libs/hooks';
+import { useFocusedIndexState, useValueState, usePreviousIndex } from './hooks';
+import { getNormalizedValue, getNumbersFromClipboard, setFocus } from './helpers';
+import { StyledFieldset, StyledLabel } from './styled';
 
 /**
  * The CodeInput is an element that allows to fill a list of numbers, suitable for code validations.
  * @category Form
  */
-function CodeInput(props) {
+const CodeInput = React.forwardRef((props, ref) => {
     const {
         id,
         name,
-        value,
+        value: valueProp,
         label,
         bottomHelpText,
-        codeLength,
+        length,
         disabled,
         required,
         readOnly,
@@ -33,42 +34,59 @@ function CodeInput(props) {
         onKeyDown,
         className,
         style,
-    } = props;
+    } = useReduxForm(props);
 
-    const valueProp = getValidValue(value, codeLength);
+    const value = useValueState(valueProp, length);
+    const focusedIndex = useFocusedIndexState(value, length);
+    const previousFocusedIndex = usePreviousIndex(focusedIndex);
     const inputId = useUniqueIdentifier('code-input');
-    const inputRef = useRef();
+
+    useEffect(() => {
+        if (previousFocusedIndex !== undefined) {
+            setFocus(ref);
+        }
+    }, [ref, focusedIndex, previousFocusedIndex]);
 
     const handleOnChange = (inputValue, inputIndex) => {
-        onChange(getNormalizedValue(inputValue, inputIndex, valueProp, codeLength));
+        onChange(getNormalizedValue(inputValue, inputIndex, value));
+    };
+
+    const handleOnFocus = (e, index) => {
+        if (focusedIndex !== index) {
+            setFocus(ref);
+        }
+        onFocus(e);
+    };
+
+    const handleOnPaste = e => {
+        onChange(getNumbersFromClipboard(e.clipboardData.getData('Text')));
     };
 
     return (
         <StyledFieldset className={className} name={name} style={style} id={id}>
-            <Label
-                label={label}
-                hideLabel={!label}
-                required={required}
-                readOnly={readOnly}
-                inputId={inputId}
-            />
+            <RenderIf isTrue={!!label}>
+                <StyledLabel htmlFor={inputId}>
+                    <RequiredAsterisk required={required} />
+                    {label}
+                </StyledLabel>
+            </RenderIf>
 
             <InputItems
-                value={valueProp}
-                codeLength={codeLength}
+                value={value}
                 disabled={disabled}
                 readOnly={readOnly}
                 error={error}
                 tabIndex={tabIndex}
                 onClick={onClick}
                 onChange={handleOnChange}
-                onFocus={onFocus}
+                onFocus={handleOnFocus}
                 onBlur={onBlur}
                 onKeyDown={onKeyDown}
-                inputId={inputId}
-                ref={inputRef}
+                onPaste={handleOnPaste}
+                id={inputId}
+                focusedIndex={focusedIndex}
+                ref={ref}
             />
-
             <RenderIf isTrue={!!bottomHelpText}>
                 <HelpText>{bottomHelpText}</HelpText>
             </RenderIf>
@@ -77,7 +95,7 @@ function CodeInput(props) {
             </RenderIf>
         </StyledFieldset>
     );
-}
+});
 
 CodeInput.propTypes = {
     /** The id of the outer element. */
@@ -91,7 +109,7 @@ CodeInput.propTypes = {
     /** Shows the help message below the CodeInput */
     bottomHelpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies the numeric length to be filled. */
-    codeLength: PropTypes.number,
+    length: PropTypes.number,
     /** Specifies that the CodeInput element should be disabled. This value defaults to false. */
     disabled: PropTypes.bool,
     /** Specifies that the CodeInput field must be filled before submitting the form. */
@@ -124,7 +142,7 @@ CodeInput.defaultProps = {
     value: '',
     label: undefined,
     bottomHelpText: undefined,
-    codeLength: 4,
+    length: 4,
     disabled: false,
     required: false,
     readOnly: false,
