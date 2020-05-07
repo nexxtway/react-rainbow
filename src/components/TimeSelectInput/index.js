@@ -14,11 +14,9 @@ import {
     get12HourTime,
     get24HourTime,
     getSingleNewTypedValue,
-    isNumber,
     getHour,
     getMinutes,
     getAmPm,
-    getDefaultAmPm,
     normalizeValue,
 } from './helpers';
 import { LEFT_KEY, RIGHT_KEY, UP_KEY, DOWN_KEY, DELETE_KEY } from '../../libs/constants';
