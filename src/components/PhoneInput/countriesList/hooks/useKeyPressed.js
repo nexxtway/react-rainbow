@@ -10,6 +10,7 @@ import {
 export default function useKeyPressed(
     country,
     countries,
+    scrollableRef,
     inputRef,
     triggerRef,
     toggleIsOpen,
@@ -22,9 +23,11 @@ export default function useKeyPressed(
         const step = country === countries[activeIndex - 1] ? 2 : 1;
         const previewsActiveIndex = (countries.length + activeIndex - step) % countries.length;
         if (previewsActiveIndex < activeIndex) {
+            scrollableRef.current.scrollTo(0, previewsActiveIndex * 45);
             setActiveIndex(previewsActiveIndex);
         }
         if (activeIndex === 0 && isFilteredCountry) {
+            scrollableRef.current.scrollTo(0, 0);
             setActiveIndex(-1);
         }
     }
@@ -33,6 +36,7 @@ export default function useKeyPressed(
         const step = country === countries[activeIndex + 1] ? 2 : 1;
         const nextActiveIndex = (activeIndex + step) % countries.length;
         if (nextActiveIndex > 0 || activeIndex === -1) {
+            scrollableRef.current.scrollTo(0, nextActiveIndex * 45);
             setActiveIndex(nextActiveIndex);
         }
     }
@@ -51,7 +55,6 @@ export default function useKeyPressed(
         if (newCountry) {
             handleCountryChange(newCountry);
         }
-        handleKeyTapPressed();
     }
 
     const keyHandlerMap = {

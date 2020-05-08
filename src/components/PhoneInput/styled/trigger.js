@@ -19,8 +19,6 @@ const StyledTrigger = attachThemeAttrs(styled.button)`
     border-radius: ${BORDER_RADIUS_2} 0 0 ${BORDER_RADIUS_2};
     width: 6.5rem;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
 
     :hover,
     :focus,

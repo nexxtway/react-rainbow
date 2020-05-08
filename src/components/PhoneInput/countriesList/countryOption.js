@@ -1,11 +1,9 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useContext, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../../PicklistOption/icon';
-import StyledItem from '../../PicklistOption/styled/item';
 import StyledIconContainer from '../../PicklistOption/styled/iconContainer';
 import { PhoneIputContext } from '../context';
-import StyledCountryCode from '../styled/countryCode';
+import { StyledItem, StyledCountryCodeItem } from './styled';
 
 const CountryOption = props => {
     const { index, country } = props;
@@ -20,24 +18,28 @@ const CountryOption = props => {
         return null;
     }
 
+    function handleClick(event) {
+        event.preventDefault();
+        onCountryChange(country);
+    }
+
     return (
-        <li
+        <StyledItem
             ref={itemRef}
             data-selected={isSelected}
             role="presentation"
-            onMouseDown={() => onCountryChange(country)}
+            onMouseDown={handleClick}
             onMouseEnter={() => setActiveIndex(index)}
+            isActive={isActive}
         >
-            <StyledItem isActive={isActive}>
-                <StyledIconContainer>
-                    <Icon icon={flagIcon} isVisible position="left" />
-                    {name}
-                </StyledIconContainer>
-                <div>
-                    <StyledCountryCode>{formattedCountryCode}</StyledCountryCode>
-                </div>
-            </StyledItem>
-        </li>
+            <StyledIconContainer>
+                <Icon icon={flagIcon} isVisible position="left" />
+                {name}
+            </StyledIconContainer>
+            <div>
+                <StyledCountryCodeItem>{formattedCountryCode}</StyledCountryCodeItem>
+            </div>
+        </StyledItem>
     );
 };
 

@@ -10,6 +10,7 @@ export default function filterCountries(query, countries) {
                 if (index === 0 || index === 1) {
                     return true;
                 }
+                return false;
             }) || []
         );
     }

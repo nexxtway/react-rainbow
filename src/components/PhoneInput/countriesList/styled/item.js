@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
-import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
+import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
+import { FONT_SIZE_TEXT_MEDIUM } from '../../../../styles/fontSizes';
 
-const StyledItem = attachThemeAttrs(styled.div)`
+const StyledItem = attachThemeAttrs(styled.li)`
     position: relative;
     font-size: ${FONT_SIZE_TEXT_MEDIUM};
     display: flex;
@@ -21,9 +21,15 @@ const StyledItem = attachThemeAttrs(styled.div)`
     }
 
     ${props =>
-        props.isSelected &&
+        (props.isSelected || props.isActive) &&
         `
             background-color: ${props.palette.action.active};
+        `};
+
+    ${props =>
+        !props.isSelected &&
+        `
+            padding-right: 37px;
         `};
 
     &[aria-disabled='true'] {

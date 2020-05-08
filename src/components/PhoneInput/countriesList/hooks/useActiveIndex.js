@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export default function useActiveIndex(isOpen, isFilteredCountry) {
+export default function useActiveIndex(isOpen, isFilteredCountry, countriesFiltered) {
     const [activeIndex, setActiveIndex] = useState();
 
     useEffect(() => {
@@ -9,7 +9,7 @@ export default function useActiveIndex(isOpen, isFilteredCountry) {
         } else {
             setActiveIndex(-1);
         }
-    }, [isFilteredCountry, isOpen]);
+    }, [isFilteredCountry, isOpen, countriesFiltered]);
 
     return [activeIndex, setActiveIndex];
 }

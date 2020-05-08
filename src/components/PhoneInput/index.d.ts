@@ -30,7 +30,6 @@ export interface PhoneInputProps extends BaseProps {
     onChange?: (value: PhoneInputValue) => void;
     value?: PhoneInputValue;
     countries?: Array<string>;
-    locale: string;
 }
 
 export default function(props: PhoneInputProps): JSX.Element | null;

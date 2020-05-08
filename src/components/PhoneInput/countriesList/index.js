@@ -1,13 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from '../context';
-import StyledDropdown from '../styled/dropdown';
-import StyledUl from '../../Picklist/styled/ul';
 import Icon from '../../PicklistOption/icon';
-import StyledItem from '../../PicklistOption/styled/item';
 import StyledIconContainer from '../../PicklistOption/styled/iconContainer';
 import StyledCheckmarkIcon from '../../PicklistOption/styled/checkmarkIcon';
-import StyledCountryCode from '../styled/countryCode';
 import RenderIf from '../../RenderIf';
 import {
     useFilterCountries,
@@ -15,7 +11,17 @@ import {
     useActiveIndex,
     useIsFilteredCountry,
     useKeyPressed,
+    useInfinityScroll,
 } from './hooks';
+import {
+    StyledScrollable,
+    StyledUl,
+    StyledDropdown,
+    StyledSearchContainer,
+    StyledSearch,
+    StyledItem,
+    StyledCountryCodeItem,
+} from './styled';
 
 const CountriesList = props => {
     const {
@@ -29,22 +35,33 @@ const CountriesList = props => {
         setIsFocus,
     } = props;
     const { countryCode, isoCode, country: name, flagIcon } = country;
-    const ulRef = useRef();
+    const scrollableRef = useRef();
     const searchRef = useRef();
     const [query, setQuery] = useState('');
     const countriesFiltered = useFilterCountries(query, countries);
     const countriesList = useCountriesList(countriesFiltered);
     const isFilteredCountry = useIsFilteredCountry(country, countriesFiltered);
-    const [activeIndex, setActiveIndex] = useActiveIndex(isOpen, isFilteredCountry);
+    const [activeIndex, setActiveIndex] = useActiveIndex(
+        isOpen,
+        isFilteredCountry,
+        countriesFiltered,
+    );
 
-    function handleCountryChange(newCountry) {
-        setQuery('');
-        onCountryChange(newCountry);
-    }
+    const handleCountryChange = useCallback(
+        newCountry => {
+            setQuery('');
+            toggleIsOpen(false);
+            scrollableRef.current.scrollTo(0, 0);
+            inputRef.current.focus();
+            onCountryChange(newCountry);
+        },
+        [inputRef, onCountryChange, toggleIsOpen],
+    );
 
     const handleKeyPressed = useKeyPressed(
         country,
         countriesFiltered,
+        scrollableRef,
         inputRef,
         triggerRef,
         toggleIsOpen,
@@ -54,11 +71,16 @@ const CountriesList = props => {
         handleCountryChange,
     );
 
+    const [infinityChildren, handleScroll] = useInfinityScroll(countriesList, 10, 45);
+
     useEffect(() => {
         if (isOpen) {
             searchRef.current.focus();
         }
     }, [isOpen]);
+    useEffect(() => {
+        scrollableRef.current.scrollTo(0, 0);
+    }, [countriesFiltered]);
 
     const context = {
         selected: isoCode,
@@ -67,36 +89,41 @@ const CountriesList = props => {
         setActiveIndex,
     };
     const formattedCountryCode = `(${countryCode})`;
+    const height = countriesFiltered.length * 45;
 
     return (
         <StyledDropdown isOpen={isOpen} onKeyDown={handleKeyPressed}>
             <Provider value={context}>
-                <input
-                    ref={searchRef}
-                    type="search"
-                    value={query}
-                    onChange={event => setQuery(event.target.value)}
-                    onFocus={() => setIsFocus(true)}
-                    onBlur={() => setIsFocus(false)}
-                    tabIndex={-1}
-                />
-                <StyledUl ref={ulRef}>
-                    <RenderIf isTrue={isFilteredCountry}>
-                        <li key={isoCode} data-selected role="presentation">
-                            <StyledItem isActive>
+                <StyledSearchContainer>
+                    <StyledSearch
+                        ref={searchRef}
+                        type="search"
+                        value={query}
+                        onChange={event => setQuery(event.target.value)}
+                        onFocus={() => setIsFocus(true)}
+                        onBlur={() => setIsFocus(false)}
+                        tabIndex={-1}
+                    />
+                </StyledSearchContainer>
+                <StyledScrollable ref={scrollableRef} onScroll={handleScroll}>
+                    <StyledUl height={height}>
+                        <RenderIf isTrue={isFilteredCountry}>
+                            <StyledItem key={isoCode} data-selected isSelected>
                                 <StyledIconContainer>
                                     <Icon icon={flagIcon} isVisible position="left" />
                                     {name}
                                 </StyledIconContainer>
                                 <div>
-                                    <StyledCountryCode>{formattedCountryCode}</StyledCountryCode>
+                                    <StyledCountryCodeItem>
+                                        {formattedCountryCode}
+                                    </StyledCountryCodeItem>
                                     <StyledCheckmarkIcon />
                                 </div>
                             </StyledItem>
-                        </li>
-                    </RenderIf>
-                    {countriesList}
-                </StyledUl>
+                        </RenderIf>
+                        {infinityChildren}
+                    </StyledUl>
+                </StyledScrollable>
             </Provider>
         </StyledDropdown>
     );

@@ -4,8 +4,8 @@ import CountryOption from '../countryOption';
 export default function useCountriesList(countries) {
     return useMemo(
         () =>
-            countries.map((country, index) => (
-                <CountryOption key={country.isoCode} index={index} country={country} />
+            countries.map((value, index) => (
+                <CountryOption key={value.isoCode} index={index} country={value} />
             )),
         [countries],
     );

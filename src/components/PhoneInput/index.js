@@ -1,20 +1,22 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import withReduxForm from './../../libs/hocs/withReduxForm';
-import StyledContainer from '../Input/styled/container';
 import Label from '../Input/label';
 import RenderIf from '../RenderIf';
 import RelativeElement from '../Structural/relativeElement';
+import StyledContainer from '../Input/styled/container';
 import StyledIconContainer from '../Input/styled/iconContainer';
 import HelpText from '../Input/styled/helpText';
 import ErrorText from '../Input/styled/errorText';
-import StyledInput from './styled/input';
-import StyledIndicator from './styled/indicator';
-import StyledTrigger from './styled/trigger';
-import StyledCountryCode from './styled/countryCode';
+import {
+    StyledInput,
+    StyledIndicator,
+    StyledTrigger,
+    StyledFlagContainer,
+    StyledCountryCode,
+} from './styled';
 import { useUniqueIdentifier } from '../../libs/hooks';
-import { usePhone, useCountries, useIsOpen } from './hooks';
-import { getCountryFromValue } from './helpers';
+import { useCountry, useCountries, useIsOpen } from './hooks';
 import CountriesList from './countriesList';
 
 /**
@@ -55,9 +57,9 @@ const PhoneInput = React.forwardRef((props, ref) => {
     const containerRef = useRef();
     const triggerRef = useRef();
 
-    const phone = usePhone(value);
+    const phone = (value && value.phone) || '';
     const countries = useCountries(countriesProps);
-    const [country, setCountry] = useState(getCountryFromValue(value, countries));
+    const country = useCountry(value, countries);
     const { countryCode, isoCode, flagIcon } = country;
     const [isOpen, toggleIsOpen] = useIsOpen(containerRef);
     const [isFocus, setIsFocus] = useState(false);
@@ -80,9 +82,6 @@ const PhoneInput = React.forwardRef((props, ref) => {
     }
 
     function handleCountryChange(newCountry) {
-        ref.current.focus();
-        toggleIsOpen(false);
-        setCountry(newCountry);
         onChange({
             countryCode: newCountry.countryCode,
             isoCode: newCountry.isoCode,
@@ -127,10 +126,10 @@ const PhoneInput = React.forwardRef((props, ref) => {
                     onBlur={() => setIsFocus(false)}
                     tabIndex={tabIndex}
                 >
-                    <div>
+                    <StyledFlagContainer>
                         {flagIcon}
                         <StyledIndicator error={error} disabled={disabled} />
-                    </div>
+                    </StyledFlagContainer>
                     <StyledCountryCode>{formattedCountryCode}</StyledCountryCode>
                 </StyledTrigger>
                 <StyledInput
@@ -174,9 +173,7 @@ const PhoneInput = React.forwardRef((props, ref) => {
                 <HelpText alignSelf="center">{bottomHelpText}</HelpText>
             </RenderIf>
             <RenderIf isTrue={!!error}>
-                <ErrorText alignSelf="center" id={messageId}>
-                    {error}
-                </ErrorText>
+                <ErrorText alignSelf="center">{error}</ErrorText>
             </RenderIf>
         </StyledContainer>
     );

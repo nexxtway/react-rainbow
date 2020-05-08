@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 
 const StyledDropdown = attachThemeAttrs(styled.div)`
     position: absolute;
@@ -29,11 +29,6 @@ const StyledDropdown = attachThemeAttrs(styled.div)`
             opacity: 1;
             transition: opacity 0.1s linear, visibility 0.1s linear;
             visibility: visible;
-
-            & > ul {
-                height: 200px;
-                overflow-y: auto;
-            }
     `}
 `;
 

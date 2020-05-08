@@ -28,7 +28,6 @@ const Form = () => {
             icon={<PhoneIcon />}
             onChange={setPhone}
             value={phone}
-            countries={countries}
         />
     );
 };

@@ -1,6 +1,6 @@
 /* eslint-disable global-require */
 import React from 'react';
-import StyledFlagIcon from './styled/flagIcon';
+import { StyledFlagIcon } from './styled';
 
 export default [
     {
