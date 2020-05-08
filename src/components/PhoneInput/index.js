@@ -1,6 +1,5 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useImperativeHandle } from 'react';
 import PropTypes from 'prop-types';
-import withReduxForm from './../../libs/hocs/withReduxForm';
 import Label from '../Input/label';
 import RenderIf from '../RenderIf';
 import RelativeElement from '../Structural/relativeElement';
@@ -15,7 +14,7 @@ import {
     StyledFlagContainer,
     StyledCountryCode,
 } from './styled';
-import { useUniqueIdentifier } from '../../libs/hooks';
+import { useUniqueIdentifier, useReduxForm, useErrorMessageId, useLabelId } from '../../libs/hooks';
 import { useCountry, useCountries, useIsOpen } from './hooks';
 import CountriesList from './countriesList';
 
@@ -48,11 +47,24 @@ const PhoneInput = React.forwardRef((props, ref) => {
         label,
         hideLabel,
         countries: countriesProps,
-    } = props;
+    } = useReduxForm(props);
+
+    const inputRef = useRef();
+    useImperativeHandle(ref, () => ({
+        focus: () => {
+            inputRef.current.focus();
+        },
+        click: () => {
+            inputRef.current.click();
+        },
+        blur: () => {
+            inputRef.current.blur();
+        },
+    }));
 
     const inputId = useUniqueIdentifier('phone-input');
-    const messageId = useUniqueIdentifier('phone-input-label');
-    const inlineTextLabelId = useUniqueIdentifier('phone-input-error');
+    const errorMessageId = useErrorMessageId(error);
+    const labelId = useLabelId(label);
 
     const containerRef = useRef();
     const triggerRef = useRef();
@@ -110,7 +122,7 @@ const PhoneInput = React.forwardRef((props, ref) => {
                 required={required}
                 inputId={inputId}
                 readOnly={readOnly}
-                id={inlineTextLabelId}
+                id={labelId}
             />
             <RelativeElement>
                 <RenderIf isTrue={!!icon}>
@@ -134,7 +146,7 @@ const PhoneInput = React.forwardRef((props, ref) => {
                 </StyledTrigger>
                 <StyledInput
                     id={inputId}
-                    ref={ref}
+                    ref={inputRef}
                     name={name}
                     value={phone}
                     type="tel"
@@ -150,8 +162,8 @@ const PhoneInput = React.forwardRef((props, ref) => {
                     maxLength={maxLength}
                     minLength={minLength}
                     pattern={pattern}
-                    aria-labelledby={inlineTextLabelId}
-                    aria-describedby={messageId}
+                    aria-labelledby={labelId}
+                    aria-describedby={errorMessageId}
                     iconPosition="right"
                     icon={icon}
                     error={error}
@@ -162,7 +174,7 @@ const PhoneInput = React.forwardRef((props, ref) => {
                     countries={countries}
                     isOpen={isOpen}
                     setIsFocus={setIsFocus}
-                    inputRef={ref}
+                    inputRef={inputRef}
                     triggerRef={triggerRef}
                     toggleIsOpen={toggleIsOpen}
                     onCountryChange={handleCountryChange}
@@ -173,7 +185,9 @@ const PhoneInput = React.forwardRef((props, ref) => {
                 <HelpText alignSelf="center">{bottomHelpText}</HelpText>
             </RenderIf>
             <RenderIf isTrue={!!error}>
-                <ErrorText alignSelf="center">{error}</ErrorText>
+                <ErrorText alignSelf="center" id={errorMessageId}>
+                    {error}
+                </ErrorText>
             </RenderIf>
         </StyledContainer>
     );
@@ -222,8 +236,6 @@ PhoneInput.propTypes = {
     style: PropTypes.object,
     /** The id of the outer element. */
     id: PropTypes.string,
-    /** The component locale. If the locale is not passed, it defaults to the context language, and if the context language is not passed, it will default to the browser's language. */
-    locale: PropTypes.string,
     countries: PropTypes.array,
 };
 
@@ -250,7 +262,6 @@ PhoneInput.defaultProps = {
     onBlur: () => {},
     onChange: () => {},
     value: undefined,
-    locale: undefined,
     countries: [
         'af',
         'ax',
@@ -497,4 +508,4 @@ PhoneInput.defaultProps = {
     ],
 };
 
-export default withReduxForm(PhoneInput);
+export default PhoneInput;

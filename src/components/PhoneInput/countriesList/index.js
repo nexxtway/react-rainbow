@@ -50,8 +50,8 @@ const CountriesList = props => {
     const handleCountryChange = useCallback(
         newCountry => {
             setQuery('');
-            toggleIsOpen(false);
             scrollableRef.current.scrollTo(0, 0);
+            toggleIsOpen(false);
             inputRef.current.focus();
             onCountryChange(newCountry);
         },
