@@ -6,7 +6,7 @@ import RenderIf from '../RenderIf';
 import RequiredAsterisk from '../RequiredAsterisk';
 import StyledTextError from '../Input/styled/errorText';
 import { useReduxForm, useUniqueIdentifier } from '../../libs/hooks';
-import { useFocusedIndexState, useValueState, usePreviousIndex } from './hooks';
+import { useFocusedIndexState, usePreviousIndex, useRefState, useValueState } from './hooks';
 import { getNormalizedValue, getNumbersFromClipboard, setFocus } from './helpers';
 import { StyledFieldset, StyledLabel } from './styled';
 
@@ -36,6 +36,7 @@ const CodeInput = React.forwardRef((props, ref) => {
         style,
     } = useReduxForm(props);
 
+    const inputRef = useRefState(ref);
     const value = useValueState(valueProp, length);
     const focusedIndex = useFocusedIndexState(value, length);
     const previousFocusedIndex = usePreviousIndex(focusedIndex);
@@ -43,9 +44,9 @@ const CodeInput = React.forwardRef((props, ref) => {
 
     useEffect(() => {
         if (previousFocusedIndex !== undefined) {
-            setFocus(ref);
+            setFocus(inputRef);
         }
-    }, [ref, focusedIndex, previousFocusedIndex]);
+    }, [inputRef, focusedIndex, previousFocusedIndex]);
 
     const handleOnChange = (inputValue, inputIndex) => {
         onChange(getNormalizedValue(inputValue, inputIndex, value));
@@ -53,7 +54,7 @@ const CodeInput = React.forwardRef((props, ref) => {
 
     const handleOnFocus = (e, index) => {
         if (focusedIndex !== index) {
-            setFocus(ref);
+            setFocus(inputRef);
         }
         onFocus(e);
     };
@@ -85,7 +86,7 @@ const CodeInput = React.forwardRef((props, ref) => {
                 onPaste={handleOnPaste}
                 id={inputId}
                 focusedIndex={focusedIndex}
-                ref={ref}
+                ref={inputRef}
             />
             <RenderIf isTrue={!!bottomHelpText}>
                 <HelpText>{bottomHelpText}</HelpText>
