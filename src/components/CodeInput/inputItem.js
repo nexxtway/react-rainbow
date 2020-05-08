@@ -1,6 +1,6 @@
 import React from 'react';
-import { DELETE_KEY } from '../../libs/constants';
 import PropTypes from 'prop-types';
+import { DELETE_KEY } from '../../libs/constants';
 import { StyledInput } from './styled';
 
 const InputItem = React.forwardRef((props, ref) => {
