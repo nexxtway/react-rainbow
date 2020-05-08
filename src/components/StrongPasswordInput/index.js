@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useImperativeHandle, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Label from '../Input/label';
 import StyledIconContainer from '../Input/styled/iconContainer';
@@ -50,6 +50,19 @@ const StrongPasswordInput = React.forwardRef((props, ref) => {
     const labelId = useLabelId(label);
     const status = usePasswordState(passwordState);
 
+    const inputRef = useRef();
+    useImperativeHandle(ref, () => ({
+        focus: () => {
+            inputRef.current.focus();
+        },
+        click: () => {
+            inputRef.current.click();
+        },
+        blur: () => {
+            inputRef.current.blur();
+        },
+    }));
+
     return (
         <StyledContainer id={id} className={className} style={style}>
             <Label
@@ -95,7 +108,7 @@ const StrongPasswordInput = React.forwardRef((props, ref) => {
                     icon={icon}
                     error={error}
                     status={status}
-                    ref={ref}
+                    ref={inputRef}
                 />
             </RelativeElement>
             <StrengthBar passwordState={passwordState} passwordStateLabels={passwordStateLabels} />
