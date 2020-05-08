@@ -23,6 +23,7 @@ export { default as Chart } from './Chart';
 export { default as CheckboxGroup } from './CheckboxGroup';
 export { default as CheckboxToggle } from './CheckboxToggle';
 export { default as Chip } from './Chip';
+export { default as CodeInput } from './CodeInput';
 export { default as Column } from './Column';
 export { default as Dataset } from './Dataset';
 export { default as DatePicker } from './DatePicker';
