@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useImperativeHandle, useRef } from 'react';
 import PropTypes from 'prop-types';
 import valuePropValidation from './helpers/valuePropValidation';
 import getNormalizedValue from './helpers/getNormalizedValue';
@@ -34,9 +34,21 @@ const WeekDayPicker = React.forwardRef((props, ref) => {
     } = useReduxForm(props);
 
     const locale = useLocale(localeProp);
-
     const defaultFieldsetName = useUniqueIdentifier('week-day-items');
     const fieldsetName = name || defaultFieldsetName;
+
+    const inputRef = useRef();
+    useImperativeHandle(ref, () => ({
+        focus: () => {
+            inputRef.current.focus();
+        },
+        click: () => {
+            inputRef.current.click();
+        },
+        blur: () => {
+            inputRef.current.blur();
+        },
+    }));
 
     const handleOnChange = e => {
         const weekDayValue = e.target.value;
@@ -66,7 +78,7 @@ const WeekDayPicker = React.forwardRef((props, ref) => {
                 multiple={multiple}
                 error={error}
                 onChange={handleOnChange}
-                ref={ref}
+                ref={inputRef}
             />
             <RenderIf isTrue={!!bottomHelpText}>
                 <StyledHelpText>{bottomHelpText}</StyledHelpText>
