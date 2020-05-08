@@ -6,6 +6,6 @@ const StyledContent = styled.div`
     display: flex;
     flex-direction: row;
     position: relative;
-    height: 1200px;
+    height: 960px;
 `;
 export default StyledContent;

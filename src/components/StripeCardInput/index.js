@@ -46,7 +46,7 @@ const StripeCardInput = React.forwardRef((props, ref) => {
     const elementsOptions = useMemo(() => getElementsOptions(localeStripe), [localeStripe]);
 
     useEffect(() => {
-        if (isScriptLoaded && isScriptLoadSucceed && window.Stripe) {
+        if (isScriptLoaded && isScriptLoadSucceed && window.Stripe && apiKey) {
             setStripe(window.Stripe(apiKey));
         }
     }, [apiKey, isScriptLoadSucceed, isScriptLoaded]);

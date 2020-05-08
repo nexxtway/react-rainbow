@@ -9,10 +9,10 @@ import getNode from './helpers/getNode';
  * @category Layout
  */
 export default function Tree(props) {
-    const { data, onExpandCollapse, onSelect, className, style } = props;
+    const { data, onExpandCollapse, onSelect, className, style, id } = props;
 
     return (
-        <TreeContainerUl className={className} style={style}>
+        <TreeContainerUl className={className} style={style} id={id}>
             <TreeChildren
                 data={data}
                 onExpandCollapse={onExpandCollapse}
@@ -31,6 +31,7 @@ Tree.propTypes = {
             label: PropTypes.node,
             icon: PropTypes.node,
             isExpanded: PropTypes.bool,
+            isLoading: PropTypes.bool,
             isChecked: PropTypes.oneOf([true, false, 'indeterminate']),
             children: PropTypes.array,
         }),
@@ -43,6 +44,8 @@ Tree.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied for the outer element. */
     style: PropTypes.object,
+    /** The id of the outer element. */
+    id: PropTypes.string,
 };
 
 Tree.defaultProps = {
@@ -51,6 +54,7 @@ Tree.defaultProps = {
     onSelect: () => {},
     className: undefined,
     style: undefined,
+    id: undefined,
 };
 
 /**
