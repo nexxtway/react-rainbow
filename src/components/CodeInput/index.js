@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useImperativeHandle, useRef } from 'react';
 import PropTypes from 'prop-types';
 import HelpText from '../Input/styled/helpText';
 import InputItems from './inputItems';
@@ -6,7 +6,7 @@ import RenderIf from '../RenderIf';
 import RequiredAsterisk from '../RequiredAsterisk';
 import StyledTextError from '../Input/styled/errorText';
 import { useReduxForm, useUniqueIdentifier } from '../../libs/hooks';
-import { useFocusedIndexState, usePreviousIndex, useRefState, useValueState } from './hooks';
+import { useFocusedIndexState, usePreviousIndex, useValueState } from './hooks';
 import { getNormalizedValue, getNumbersFromClipboard, setFocus } from './helpers';
 import { StyledFieldset, StyledLabel } from './styled';
 
@@ -36,11 +36,23 @@ const CodeInput = React.forwardRef((props, ref) => {
         style,
     } = useReduxForm(props);
 
-    const inputRef = useRefState(ref);
+    const inputRef = useRef();
     const value = useValueState(valueProp, length);
     const focusedIndex = useFocusedIndexState(value, length);
     const previousFocusedIndex = usePreviousIndex(focusedIndex);
     const inputId = useUniqueIdentifier('code-input');
+
+    useImperativeHandle(ref, () => ({
+        focus: () => {
+            inputRef.current.focus();
+        },
+        click: () => {
+            inputRef.current.click();
+        },
+        blur: () => {
+            inputRef.current.blur();
+        },
+    }));
 
     useEffect(() => {
         if (previousFocusedIndex !== undefined) {
