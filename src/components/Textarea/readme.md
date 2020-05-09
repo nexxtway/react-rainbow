@@ -129,7 +129,7 @@ const StyledFooter = styled.div
 `
     font-size: 12px;
     text-align: center;
-    padding: 10px 10px 10px 10px;
+    padding: 10px;
 `;
 
 const containerStyles = {
@@ -137,7 +137,6 @@ const containerStyles = {
 };
 
 <Textarea
-    id="example-textarea-1"
     label="Textarea Label"
     rows={4}
     placeholder="Placeholder Text"
