@@ -10,6 +10,7 @@ import { BaseProps } from '../types';
 
 export interface TextareaProps extends BaseProps {
     label?: ReactNode;
+    footer?: ReactNode;
     hideLabel?: boolean;
     name?: string;
     value?: string;

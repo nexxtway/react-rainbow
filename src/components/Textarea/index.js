@@ -9,6 +9,7 @@ import StyledContainer from './styled/container';
 import StyledTextarea from './styled/textarea';
 import StyledBottomHelp from '../Input/styled/helpText';
 import StyledError from '../Input/styled/errorText';
+import StyledFooter from './styled/footer';
 
 /**
  * Textarea inputs are used for freeform data entry.
@@ -94,6 +95,7 @@ class Textarea extends Component {
             id,
             hideLabel,
             name,
+            footer,
         } = this.props;
 
         return (
@@ -134,6 +136,9 @@ class Textarea extends Component {
                 </RenderIf>
                 <RenderIf isTrue={!!error}>
                     <StyledError id={this.getErrorMessageId()}>{error}</StyledError>
+                </RenderIf>
+                <RenderIf isTrue={!!footer}>
+                    <StyledFooter>{footer}</StyledFooter>
                 </RenderIf>
             </StyledContainer>
         );
@@ -186,6 +191,8 @@ Textarea.propTypes = {
     style: PropTypes.object,
     /** The id of the outer element. */
     id: PropTypes.string,
+    /** It is what will be displayed at the bottom of the component. */
+    footer: PropTypes.node,
 };
 
 Textarea.defaultProps = {
@@ -211,6 +218,7 @@ Textarea.defaultProps = {
     style: undefined,
     id: undefined,
     hideLabel: false,
+    footer: undefined,
 };
 
 export default withReduxForm(Textarea);

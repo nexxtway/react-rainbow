@@ -117,3 +117,35 @@ const containerStyles = {
     className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
 />;
 ```
+
+##### Textarea with footer
+
+```js
+import React from 'react';
+import { Textarea } from 'react-rainbow-components';
+import styled from 'styled-components';
+
+const StyledFooter = styled.div
+`
+    font-size: 12px;
+    text-align: center;
+    padding: 10px 10px 10px 10px;
+`;
+
+const containerStyles = {
+    maxWidth: 700,
+};
+
+<Textarea
+    id="example-textarea-1"
+    label="Textarea Label"
+    rows={4}
+    placeholder="Placeholder Text"
+    style={containerStyles}
+    footer={
+        <StyledFooter>
+            {"A rainbow is a meteorological phenomenon that is caused by reflection, refraction and dispersion of light inwater droplets resulting in a spectrum of light appearing in the sky. It takes the form of a multicoloured circular arc. Rainbows caused by sunlight always appear in the section of sky directly opposite the sun."}
+        </StyledFooter>}
+    className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+/>;
+```
