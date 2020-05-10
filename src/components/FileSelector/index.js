@@ -100,7 +100,7 @@ const FileSelector = React.forwardRef((props, ref) => {
         const list = new DataTransfer();
         setFiles(list.files);
         if (onChange) {
-            onChange([...list.files]);
+            onChange(list.files);
         }
     };
 
