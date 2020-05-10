@@ -98,7 +98,6 @@ const StyledBackdrop = styled.div`
     padding-right: ${PADDING_MEDIUM};
     border-radius: ${BORDER_RADIUS_2};
     pointer-events: none;
-
     ${props =>
         props.isFileSelected &&
         `
@@ -174,6 +173,15 @@ const StyledButtonIcon = styled(ButtonIcon)`
     }
 `;
 
+const StyledInput = styled.input`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+`;
+
 export {
     StyledContainer,
     StyledDropzone,
@@ -181,4 +189,5 @@ export {
     StyledBackdrop,
     StyledIconContainer,
     StyledButtonIcon,
+    StyledInput,
 };

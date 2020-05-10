@@ -1,8 +1,7 @@
-import React, { useRef, useState, useEffect, useImperativeHandle } from 'react';
+import React, { useState, useEffect, useRef, useImperativeHandle } from 'react';
 import PropTypes from 'prop-types';
 import Label from '../Input/label';
 import RenderIf from '../RenderIf';
-import containsFiles from './helpers/containsFiles';
 import HelpText from '../Input/styled/helpText';
 import ErrorText from '../Input/styled/errorText';
 import {
@@ -12,10 +11,10 @@ import {
     StyledBackdrop,
     StyledIconContainer,
     StyledButtonIcon,
+    StyledInput,
 } from './styled';
 import { CancelIcon } from './icons';
 import { useUniqueIdentifier, useErrorMessageId, useLabelId, useReduxForm } from '../../libs/hooks';
-import HiddenElement from '../Structural/hiddenElement';
 import getIcon from './helpers/getIcon';
 import getText from './helpers/getText';
 
@@ -66,75 +65,31 @@ const FileSelector = React.forwardRef((props, ref) => {
 
     useEffect(() => {
         inputRef.current.files = files;
-    });
+    }, [files]);
 
-    const handleClick = () => {
+    const handleDragEnter = () => {
         if (disabled) {
             return;
         }
-        inputRef.current.focus();
-        inputRef.current.click();
-    };
-
-    const handleDragEnter = event => {
-        if (!containsFiles(event.nativeEvent) || disabled) {
-            return;
-        }
-        event.preventDefault();
-        event.stopPropagation();
         setIsDragOver(true);
     };
 
     const handleDragLeave = event => {
-        if (!containsFiles(event.nativeEvent) || disabled) {
-            return;
-        }
-        event.preventDefault();
-        event.stopPropagation();
-        if (event.relatedTarget.id !== buttonId && event.relatedTarget.id !== dropzoneId) {
+        if (!event.relatedTarget || event.relatedTarget.id !== buttonId) {
             setIsDragOver(false);
         }
     };
 
-    const handleDragOver = event => {
-        if (!containsFiles(event.nativeEvent) || disabled) {
-            return;
-        }
-        event.preventDefault();
-        event.stopPropagation();
-    };
-
     const handleDrop = event => {
-        if (!containsFiles(event.nativeEvent) || disabled) {
-            return;
-        }
-
-        event.preventDefault();
-        event.stopPropagation();
         setIsDragOver(false);
-
-        const eventFiles = event.nativeEvent.dataTransfer.files;
-        if (!multiple && eventFiles.length > 1) {
-            const list = new DataTransfer();
-            list.items.add(eventFiles[0]);
-            setFiles(list.files);
-            if (onChange) {
-                onChange([...list.files]);
-            }
-            return;
-        }
-
-        setFiles(eventFiles);
-        if (onChange) {
-            onChange([...eventFiles]);
-        }
+        setFiles(event.nativeEvent.dataTransfer.files);
     };
 
     const handleChange = event => {
         const eventFiles = event.target.files;
         setFiles(eventFiles);
         if (onChange) {
-            onChange([...eventFiles]);
+            onChange(eventFiles);
         }
     };
 
@@ -164,7 +119,7 @@ const FileSelector = React.forwardRef((props, ref) => {
 
     const isFileSelected = files && files.length > 0;
     const isSingleFile = files && files.length === 1;
-    const shouldRenderCancel = variant === 'inline' && isFileSelected;
+    const shouldRenderCancel = variant === 'inline' && isFileSelected && !isDragOver;
 
     return (
         <StyledContainer id={id} className={className} style={style}>
@@ -182,12 +137,26 @@ const FileSelector = React.forwardRef((props, ref) => {
                 hasFocus={hasFocus}
                 disabled={disabled}
                 error={error}
-                onClick={handleClick}
-                onDragEnter={handleDragEnter}
-                onDragOver={handleDragOver}
-                onDragLeave={handleDragLeave}
-                onDrop={handleDrop}
             >
+                <StyledInput
+                    type="file"
+                    id={inputId}
+                    name={name}
+                    multiple={multiple}
+                    disabled={disabled}
+                    required={required}
+                    onChange={handleChange}
+                    tabIndex={tabIndex}
+                    accept={accept}
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
+                    aria-labelledby={labelId}
+                    aria-describedby={errorMessageId}
+                    ref={inputRef}
+                    onDragEnter={handleDragEnter}
+                    onDragLeave={handleDragLeave}
+                    onDrop={handleDrop}
+                />
                 <StyledBackdrop isFileSelected={isFileSelected} variant={variant}>
                     <StyledIconContainer
                         iconPosition="left"
@@ -217,23 +186,6 @@ const FileSelector = React.forwardRef((props, ref) => {
                     {error}
                 </ErrorText>
             </RenderIf>
-            <HiddenElement
-                as="input"
-                type="file"
-                id={inputId}
-                name={name}
-                multiple={multiple}
-                disabled={disabled}
-                required={required}
-                onChange={handleChange}
-                tabIndex={tabIndex}
-                accept={accept}
-                onFocus={handleFocus}
-                onBlur={handleBlur}
-                aria-labelledby={labelId}
-                aria-describedby={errorMessageId}
-                ref={inputRef}
-            />
         </StyledContainer>
     );
 });
