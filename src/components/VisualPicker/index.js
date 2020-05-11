@@ -56,6 +56,7 @@ class VisualPicker extends Component {
             value,
             multiple,
             className,
+            size,
         } = this.props;
         const context = {
             ariaDescribedby: this.getErrorMessageId(),
@@ -63,6 +64,7 @@ class VisualPicker extends Component {
             privateOnChange: this.handleChange,
             value,
             multiple,
+            size,
         };
 
         return (
@@ -103,6 +105,9 @@ VisualPicker.propTypes = {
     className: PropTypes.string,
     /** It is an object with custom style applied to the root element. */
     style: PropTypes.object,
+    /** The size of the VisualPicker. Valid values are small, medium, and large.
+     * This value defaults to medium. */
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
     /**
      * This prop that should not be visible in the documentation.
      * @ignore
@@ -122,6 +127,7 @@ VisualPicker.defaultProps = {
     error: null,
     className: undefined,
     style: undefined,
+    size: 'medium',
     children: [],
     multiple: false,
 };

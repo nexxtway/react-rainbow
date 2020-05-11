@@ -42,7 +42,7 @@ class PickerOption extends Component {
     }
 
     render() {
-        const { disabled, children, footer, style, className } = this.props;
+        const { disabled, children, footer, style, className, size } = this.props;
         const { groupName, ariaDescribedby } = this.props;
 
         return (
@@ -63,7 +63,7 @@ class PickerOption extends Component {
                 />
 
                 <StyledLabel data-id="visual-picker_option-label" htmlFor={this.inputId}>
-                    <StyledContent data-id="visual-picker_option">
+                    <StyledContent data-id="visual-picker_option" size={size}>
                         <RenderIf isTrue={this.isChecked()}>
                             <StyledCheckedTriangle />
                             <StyledCheckmarkIcon />
