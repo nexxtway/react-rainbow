@@ -15,7 +15,7 @@ export interface FileSelectorProps extends BaseProps {
     variant?: 'inline' | 'multiline';
     hideLabel?: boolean;
     accept?: string;
-    onChange?: (value: Array<File>) => void;
+    onChange?: (value: FileList) => void;
     onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
     onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
 }
