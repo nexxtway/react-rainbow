@@ -20,14 +20,11 @@ const InputItem = React.forwardRef((props, ref) => {
         onPaste,
         id,
         isActive,
+        ariaLabelledBy,
     } = props;
 
-    const handleOnChange = (inputValue, inputIndex) => {
-        onChange(inputValue, inputIndex);
-    };
-
     const handleOnKeyDown = (e, inputIndex) => {
-        const shouldMovePrev = !value && e.keyCode === DELETE_KEY;
+        const shouldMovePrev = inputIndex !== 0 && !value && e.keyCode === DELETE_KEY;
         if (shouldMovePrev) {
             onChange('', inputIndex - 1);
         }
@@ -44,7 +41,7 @@ const InputItem = React.forwardRef((props, ref) => {
             error={error}
             tabIndex={tabIndex}
             onClick={onClick}
-            onChange={e => handleOnChange(e.target.value, index)}
+            onChange={e => onChange(e.target.value, index)}
             onFocus={e => onFocus(e, index)}
             onBlur={onBlur}
             onKeyDown={e => handleOnKeyDown(e, index)}
@@ -54,6 +51,8 @@ const InputItem = React.forwardRef((props, ref) => {
             maxLength="1"
             id={id}
             isActive={isActive}
+            aria-label="Enter a number"
+            aria-labelledby={ariaLabelledBy}
         />
     );
 });
@@ -73,6 +72,7 @@ InputItem.propTypes = {
     onKeyDown: PropTypes.func,
     onPaste: PropTypes.func,
     isActive: PropTypes.bool,
+    ariaLabelledBy: PropTypes.string,
 };
 
 InputItem.defaultProps = {
@@ -90,6 +90,7 @@ InputItem.defaultProps = {
     onKeyDown: () => {},
     onPaste: () => {},
     isActive: false,
+    ariaLabelledBy: null,
 };
 
 export default InputItem;

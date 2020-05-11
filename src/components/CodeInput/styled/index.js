@@ -28,9 +28,15 @@ const StyledInput = attachThemeAttrs(styled.input)`
     :active {
         outline: 0;
         padding: 0 0.9375rem;
-        border: 2px solid ${props => props.palette.brand.main};
-        background-color: ${props => props.palette.background.main};
-        box-shadow: ${props => props.shadows.brand};
+        
+        ${props =>
+            !props.readOnly &&
+            `
+            border: 2px solid ${props.palette.brand.main};
+            background-color: ${props.palette.background.main};
+            box-shadow: ${props.shadows.brand};
+        `};
+
     }
 
     ::placeholder {
@@ -92,6 +98,16 @@ const StyledFieldset = styled.fieldset`
     text-align: center;
 `;
 
+const StyledHiddenLabel = styled.label`
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    border: 0;
+    border-color: transparent;
+    margin: 0;
+`;
+
 const StyledLabel = attachThemeAttrs(styled.legend)`
     border: 0;
     padding: 0;
@@ -107,4 +123,4 @@ const StyledLabel = attachThemeAttrs(styled.legend)`
     }
 `;
 
-export { StyledInput, StyledFieldset, StyledLabel };
+export { StyledInput, StyledFieldset, StyledHiddenLabel, StyledLabel };

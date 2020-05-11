@@ -32,7 +32,7 @@ function CodeInputBase() {
 ##### CodeInput with length:
 
 ```js
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Card, CodeInput } from 'react-rainbow-components';
 
 const labelStyle = { 
@@ -84,6 +84,70 @@ function CodeInputBase() {
                 />
             </div>
         </Card>
+    );
+};
+
+<div className="rainbow-align-content_center rainbow-m-around_xx-large">
+    <CodeInputBase  />
+</div>
+```
+
+##### CodeInput events:
+
+```js
+import React, { useEffect, useState } from 'react';
+import { CodeInput } from 'react-rainbow-components';
+
+function CodeInputBase() {
+    const [code, setCode] = useState();
+    const [eventName, setEventName] = useState();
+
+    useEffect(() => {
+        setEventName('interact to see events in action');
+    }, []);
+
+    return (
+        <>
+            <div>
+                <CodeInput
+                    className="rainbow-m-bottom_large"
+                    id="codeinput-5"
+                    value={code}
+                    label="Code"
+                    onChange={code => setCode(code)}
+                    onClick={(e) => setEventName('onClick')}
+                    onFocus={(e) => setEventName('onFocus')}
+                    onBlur={(e) => setEventName('onBlur')}
+                    onKeyDown={(e) => setEventName('onKeyDown')}
+                />
+                <p class="rainbow-align-content_center">
+                    Event -- {eventName}
+                </p>
+            </div>
+        </>
+    
+    );
+};
+
+<div className="rainbow-align-content_center rainbow-m-around_xx-large">
+    <CodeInputBase  />
+</div>
+```
+
+##### CodeInput readOnly:
+
+```js
+import React from 'react';
+import { CodeInput } from 'react-rainbow-components';
+
+function CodeInputBase() {
+    return (
+        <CodeInput
+            id="codeinput-7"
+            label="Code"
+            readOnly
+            bottomHelpText="This is a readOnly CodeInput"
+        />
     );
 };
 
