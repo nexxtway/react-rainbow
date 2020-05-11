@@ -71,7 +71,7 @@ InputItems.propTypes = {
     onPaste: PropTypes.func,
     focusedIndex: PropTypes.number,
     id: PropTypes.string,
-    labelId: PropTypes.labelId,
+    labelId: PropTypes.string,
 };
 
 InputItems.defaultProps = {
