@@ -64,6 +64,17 @@ const StyledTextarea = attachThemeAttrs(styled.textarea)`
         }
     }
 
+    &[required] {
+        border: none;
+
+        :focus,
+        :active {
+            padding: 0.625rem 1rem;
+            border: solid 2px ${props => props.palette.brand.main};
+            box-shadow: ${props => props.shadows.brand};
+        }
+    }
+
     ${props =>
         props.error &&
         `
@@ -76,6 +87,20 @@ const StyledTextarea = attachThemeAttrs(styled.textarea)`
                 padding: 0.625rem 1rem;
                 box-shadow: ${props.shadows.error};
                 border: solid 2px ${props.palette.error.main};
+            }
+        `};
+    
+    ${props =>
+        props.footer &&
+        `
+            border: none;
+            border-radius: ${BORDER_RADIUS_1} ${BORDER_RADIUS_1} 0 0;
+            
+            &:focus,
+            &:active {
+                padding: 0.625rem 1rem;
+                box-shadow: none;
+                border: none;
             }
         `};
 `;

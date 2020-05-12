@@ -6,10 +6,10 @@ import { uniqueId } from './../../libs/utils';
 import RenderIf from '../RenderIf';
 import Label from './../Input/label';
 import StyledContainer from './styled/container';
+import StyledTextareaContainer from './styled/textareaContainer';
 import StyledTextarea from './styled/textarea';
 import StyledBottomHelp from '../Input/styled/helpText';
 import StyledError from '../Input/styled/errorText';
-import StyledFooter from './styled/footer';
 
 /**
  * Textarea inputs are used for freeform data entry.
@@ -108,37 +108,36 @@ class Textarea extends Component {
                     readOnly={readOnly}
                     id={this.getInlineTextLabelId()}
                 />
-
-                <StyledTextarea
-                    error={error}
-                    id={this.textareaId}
-                    name={name}
-                    placeholder={placeholder}
-                    disabled={disabled}
-                    required={required}
-                    maxLength={maxLength}
-                    minLength={minLength}
-                    onChange={onChange}
-                    onClick={onClick}
-                    onFocus={onFocus}
-                    onBlur={onBlur}
-                    onPaste={onPaste}
-                    readOnly={readOnly}
-                    rows={rows}
-                    value={value}
-                    aria-labelledby={this.getInlineTextLabelId()}
-                    aria-describedby={this.getErrorMessageId()}
-                    ref={this.textareaRef}
-                />
-
+                <StyledTextareaContainer footer={footer}>
+                    <StyledTextarea
+                        error={error}
+                        id={this.textareaId}
+                        name={name}
+                        placeholder={placeholder}
+                        disabled={disabled}
+                        required={required}
+                        maxLength={maxLength}
+                        minLength={minLength}
+                        onChange={onChange}
+                        onClick={onClick}
+                        onFocus={onFocus}
+                        onBlur={onBlur}
+                        onPaste={onPaste}
+                        readOnly={readOnly}
+                        rows={rows}
+                        value={value}
+                        aria-labelledby={this.getInlineTextLabelId()}
+                        aria-describedby={this.getErrorMessageId()}
+                        ref={this.textareaRef}
+                        footer={footer}
+                    />
+                    <RenderIf isTrue={!!footer}>{footer}</RenderIf>
+                </StyledTextareaContainer>
                 <RenderIf isTrue={!!bottomHelpText}>
                     <StyledBottomHelp>{bottomHelpText}</StyledBottomHelp>
                 </RenderIf>
                 <RenderIf isTrue={!!error}>
                     <StyledError id={this.getErrorMessageId()}>{error}</StyledError>
-                </RenderIf>
-                <RenderIf isTrue={!!footer}>
-                    <StyledFooter>{footer}</StyledFooter>
                 </RenderIf>
             </StyledContainer>
         );
