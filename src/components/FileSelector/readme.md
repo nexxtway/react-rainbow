@@ -19,36 +19,119 @@ function FileSelectorExample(props) {
 
     return (
         <div>
-            <FileSelector 
+            <FileSelector
                 className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-                style={containerStyles} 
-                label="File selector" 
+                style={containerStyles}
+                label="File selector"
                 placeholder="Drag & Drop or Click to Browse"
                 bottomHelpText="Select only one file"
-                onChange={handleChange}          
+                onChange={handleChange}
             />
+        </div>
+    );
+}
 
-            <FileSelector 
+<FileSelectorExample />
+```
+
+##### FileSelector inline with multiple selections
+
+```js
+import React, { useState } from 'react';
+import { FileSelector } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUpload } from '@fortawesome/free-solid-svg-icons';
+
+const containerStyles = {
+    maxWidth: 300,
+};
+
+function FileSelectorExample(props) {
+    const [files, setFiles] = useState([]);
+
+    const handleChange = files => {
+        setFiles(files);
+    }
+
+    return (
+        <div>
+            <FileSelector
                 className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-                style={containerStyles} 
-                label="File selector multiple" 
+                style={containerStyles}
+                label="File selector multiple"
                 placeholder="Drag & Drop or Click to Browse"
-                bottomHelpText="Can select multiple files"       
+                bottomHelpText="Can select multiple files"
                 multiple
             />
+        </div>
+    );
+}
 
-            <FileSelector 
+<FileSelectorExample />
+```
+
+
+##### FileSelector inline disabled
+
+```js
+import React, { useState } from 'react';
+import { FileSelector } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUpload } from '@fortawesome/free-solid-svg-icons';
+
+const containerStyles = {
+    maxWidth: 300,
+};
+
+function FileSelectorExample(props) {
+    const [files, setFiles] = useState([]);
+
+    const handleChange = files => {
+        setFiles(files);
+    }
+
+    return (
+        <div>
+            <FileSelector
                 className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-                style={containerStyles} 
-                label="File selector with error" 
+                style={containerStyles}
+                label="File selector disabled"
                 placeholder="Drag & Drop or Click to Browse"
                 disabled
             />
+        </div>
+    );
+}
 
-            <FileSelector 
+<FileSelectorExample />
+```
+
+
+##### FileSelector inline with error
+
+```js
+import React, { useState } from 'react';
+import { FileSelector } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUpload } from '@fortawesome/free-solid-svg-icons';
+
+const containerStyles = {
+    maxWidth: 300,
+};
+
+function FileSelectorExample(props) {
+    const [files, setFiles] = useState([]);
+
+    const handleChange = files => {
+        setFiles(files);
+    }
+
+    return (
+        <div>
+            <FileSelector
                 className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-                style={containerStyles} 
-                label="File selector with error" 
+                style={containerStyles}
+                label="File selector with error"
                 placeholder="Drag & Drop or Click to Browse"
                 error="File type not supported"
             />
@@ -89,17 +172,71 @@ function FileSelectorExample(props) {
                 variant="multiline"
                 onChange={handleChange}          
             />
+        </div>
+    );
+}
 
-            <FileSelector 
+<FileSelectorExample />
+```
+
+##### FileSelector multiline with multiple selections
+
+```js
+import React, { useState } from 'react';
+import { FileSelector } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUpload } from '@fortawesome/free-solid-svg-icons';
+
+const containerStyles = {
+    maxWidth: 300,
+};
+
+function FileSelectorExample(props) {
+    const [files, setFiles] = useState([]);
+
+    const handleChange = files => {
+        setFiles(files);
+    }
+
+    return (
+        <div>
+            <FileSelector
                 className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-                style={containerStyles} 
-                label="File selector multiple" 
+                style={containerStyles}
+                label="File selector multiple"
                 placeholder="Drag & Drop or Click to Browse"
                 bottomHelpText="Can select multiple files"
-                variant="multiline"         
+                variant="multiline"
                 multiple
             />
+        </div>
+    );
+}
 
+<FileSelectorExample />
+```
+
+##### FileSelector multiline disabled
+
+```js
+import React, { useState } from 'react';
+import { FileSelector } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUpload } from '@fortawesome/free-solid-svg-icons';
+
+const containerStyles = {
+    maxWidth: 300,
+};
+
+function FileSelectorExample(props) {
+    const [files, setFiles] = useState([]);
+
+    const handleChange = files => {
+        setFiles(files);
+    }
+
+    return (
+        <div>
             <FileSelector 
                 className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
                 style={containerStyles} 
@@ -108,7 +245,35 @@ function FileSelectorExample(props) {
                 variant="multiline"
                 disabled
             />
+        </div>
+    );
+}
 
+<FileSelectorExample />
+```
+
+
+##### FileSelector multiline with error
+
+```js
+import React, { useState } from 'react';
+import { FileSelector } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUpload } from '@fortawesome/free-solid-svg-icons';
+
+const containerStyles = {
+    maxWidth: 300,
+};
+
+function FileSelectorExample(props) {
+    const [files, setFiles] = useState([]);
+
+    const handleChange = files => {
+        setFiles(files);
+    }
+
+    return (
+        <div>
             <FileSelector 
                 className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
                 style={containerStyles} 
