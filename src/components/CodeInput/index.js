@@ -8,7 +8,7 @@ import StyledTextError from '../Input/styled/errorText';
 import { useReduxForm, useUniqueIdentifier } from '../../libs/hooks';
 import { useFocusedIndexState, usePreviousIndex, useValueState } from './hooks';
 import { getNormalizedValue, getNumbersFromClipboard, setFocus } from './helpers';
-import { StyledFieldset, StyledHiddenLabel, StyledLabel } from './styled';
+import { StyledFieldset, StyledLabel } from './styled';
 
 /**
  * The CodeInput is an element that allows to fill a list of numbers, suitable for code validations.
@@ -41,7 +41,6 @@ const CodeInput = React.forwardRef((props, ref) => {
     const focusedIndex = useFocusedIndexState(value, length);
     const previousFocusedIndex = usePreviousIndex(focusedIndex);
     const inputId = useUniqueIdentifier('code-input');
-    const labelId = useUniqueIdentifier('code-input-label');
 
     useImperativeHandle(ref, () => ({
         focus: () => {
@@ -83,8 +82,6 @@ const CodeInput = React.forwardRef((props, ref) => {
                     <RequiredAsterisk required={required} />
                     {label}
                 </StyledLabel>
-
-                <StyledHiddenLabel id={labelId}>{label}</StyledHiddenLabel>
             </RenderIf>
 
             <InputItems
@@ -102,7 +99,6 @@ const CodeInput = React.forwardRef((props, ref) => {
                 id={inputId}
                 focusedIndex={focusedIndex}
                 ref={inputRef}
-                labelId={labelId}
             />
             <RenderIf isTrue={!!bottomHelpText}>
                 <HelpText>{bottomHelpText}</HelpText>

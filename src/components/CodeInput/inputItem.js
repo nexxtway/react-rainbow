@@ -20,7 +20,6 @@ const InputItem = React.forwardRef((props, ref) => {
         onPaste,
         id,
         isActive,
-        ariaLabelledBy,
     } = props;
 
     const handleOnKeyDown = (e, inputIndex) => {
@@ -51,8 +50,6 @@ const InputItem = React.forwardRef((props, ref) => {
             maxLength="1"
             id={id}
             isActive={isActive}
-            aria-label="Enter a number"
-            aria-labelledby={ariaLabelledBy}
         />
     );
 });
@@ -72,7 +69,6 @@ InputItem.propTypes = {
     onKeyDown: PropTypes.func,
     onPaste: PropTypes.func,
     isActive: PropTypes.bool,
-    ariaLabelledBy: PropTypes.string,
 };
 
 InputItem.defaultProps = {
@@ -90,7 +86,6 @@ InputItem.defaultProps = {
     onKeyDown: () => {},
     onPaste: () => {},
     isActive: false,
-    ariaLabelledBy: null,
 };
 
 export default InputItem;

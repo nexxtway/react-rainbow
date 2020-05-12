@@ -18,7 +18,6 @@ const InputItems = React.forwardRef((props, ref) => {
         onPaste,
         focusedIndex,
         id,
-        labelId,
     } = props;
 
     const inputs = value.map((inputValue, index) => {
@@ -27,7 +26,6 @@ const InputItems = React.forwardRef((props, ref) => {
         const inputRef = isActive ? ref : null;
         const inputId = isActive ? id : `${id}-${index}`;
         const inputTabIndex = isActive ? tabIndex : -1;
-        const ariaLabelledBy = isActive ? labelId : null;
 
         return (
             <InputItem
@@ -48,7 +46,6 @@ const InputItems = React.forwardRef((props, ref) => {
                 ref={inputRef}
                 id={inputId}
                 isActive={isActive}
-                ariaLabelledBy={ariaLabelledBy}
             />
         );
     });
@@ -71,7 +68,6 @@ InputItems.propTypes = {
     onPaste: PropTypes.func,
     focusedIndex: PropTypes.number,
     id: PropTypes.string,
-    labelId: PropTypes.string,
 };
 
 InputItems.defaultProps = {
@@ -89,7 +85,6 @@ InputItems.defaultProps = {
     onPaste: () => {},
     focusedIndex: undefined,
     id: undefined,
-    labelId: undefined,
 };
 
 export default InputItems;

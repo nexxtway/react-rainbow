@@ -98,16 +98,6 @@ const StyledFieldset = styled.fieldset`
     text-align: center;
 `;
 
-const StyledHiddenLabel = styled.label`
-    display: block;
-    width: 0;
-    height: 0;
-    overflow: hidden;
-    border: 0;
-    border-color: transparent;
-    margin: 0;
-`;
-
 const StyledLabel = attachThemeAttrs(styled.legend)`
     border: 0;
     padding: 0;
@@ -123,4 +113,4 @@ const StyledLabel = attachThemeAttrs(styled.legend)`
     }
 `;
 
-export { StyledInput, StyledFieldset, StyledHiddenLabel, StyledLabel };
+export { StyledInput, StyledFieldset, StyledLabel };
