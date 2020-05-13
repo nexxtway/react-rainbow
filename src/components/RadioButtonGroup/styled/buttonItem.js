@@ -4,11 +4,12 @@ import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { replaceAlpha } from '../../../styles/helpers/color';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 
+const sizeMap = { large: '3rem', medium: '2.5rem', small: '1.75rem', 'x-small': '1.25rem' };
 const StyledButtonItem = attachThemeAttrs(styled.span)`
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    height: 2.5rem;
+    height: ${props => sizeMap[props.size] || sizeMap.medium};
     border-radius: ${BORDER_RADIUS_2};
     border: solid 1px transparent;
     transition: transform 600ms cubic-bezier(0.02, 0.94, 0.09, 0.97),

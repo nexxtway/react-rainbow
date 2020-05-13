@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 
+const sizeMap = { large: '3.1rem', medium: '2.6rem', small: '1.76rem', 'x-small': '1.26rem' };
 const StyledMarker = attachThemeAttrs(styled.span)`
     position: absolute;
     background: ${props => props.palette.background.main};
@@ -10,7 +11,7 @@ const StyledMarker = attachThemeAttrs(styled.span)`
     top: 0;
     bottom: 0;
     margin: auto;
-    height: 2.6rem;
+    height: ${props => sizeMap[props.size] || sizeMap.medium};
     margin-top: -0.05rem;
     border-color: ${props => props.palette.border.main};
     border-radius: ${BORDER_RADIUS_2};
