@@ -22,9 +22,8 @@ const StyledTextarea = attachThemeAttrs(styled.textarea)`
     :active {
         outline: 0;
         background-color: ${props => props.palette.background.main};
-        border: solid 2px ${props => props.palette.brand.main};
+        border: solid 1px ${props => props.palette.brand.main};
         box-shadow: ${props => props.shadows.brand};
-        padding: 0.5625rem 0.9375rem;
     }
 
     ::placeholder {
@@ -65,12 +64,12 @@ const StyledTextarea = attachThemeAttrs(styled.textarea)`
     }
 
     &[required] {
-        border: none;
+        border: solid 1px transparent;
 
         :focus,
         :active {
             padding: 0.625rem 1rem;
-            border: solid 2px ${props => props.palette.brand.main};
+            border: solid 1px ${props => props.palette.brand.main};
             box-shadow: ${props => props.shadows.brand};
         }
     }
