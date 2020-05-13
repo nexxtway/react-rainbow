@@ -16,7 +16,7 @@ const StyledInput = attachThemeAttrs(styled.input)`
     color: ${props => props.palette.text.main};
     font-size: 28px;
     box-sizing: border-box;
-    margin: 0 6px;
+    margin: 0 6px 12px 6px;
     text-align: center;
 
     ::-moz-focus-inner {
@@ -89,6 +89,11 @@ const StyledInput = attachThemeAttrs(styled.input)`
     `}
 `;
 
+const StyledInputItems = attachThemeAttrs(styled.div)`
+    position: relative;
+    margin-bottom: -6px;
+`;
+
 const StyledFieldset = styled.fieldset`
     line-height: 1.5rem;
     margin: 0;
@@ -113,4 +118,4 @@ const StyledLabel = attachThemeAttrs(styled.legend)`
     }
 `;
 
-export { StyledInput, StyledFieldset, StyledLabel };
+export { StyledInput, StyledInputItems, StyledFieldset, StyledLabel };

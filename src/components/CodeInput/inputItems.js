@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import InputItem from './inputItem';
+import { StyledInputItems } from './styled';
 
 const InputItems = React.forwardRef((props, ref) => {
     const {
@@ -24,7 +25,7 @@ const InputItems = React.forwardRef((props, ref) => {
         const inputIndex = index;
         const isActive = inputIndex === focusedIndex;
         const inputRef = isActive ? ref : null;
-        const inputId = isActive ? id : `${id}-${index}`;
+        const inputId = `${id}-${index}`;
         const inputTabIndex = isActive ? tabIndex : -1;
 
         return (
@@ -50,7 +51,7 @@ const InputItems = React.forwardRef((props, ref) => {
         );
     });
 
-    return <div>{inputs}</div>;
+    return <StyledInputItems>{inputs}</StyledInputItems>;
 });
 
 InputItems.propTypes = {

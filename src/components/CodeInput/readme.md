@@ -52,7 +52,7 @@ function MyLabel() {
 const cardStyle = { padding: '40px' };
 const codeInputStyle = { marginBottom: '41px' };
 
-function CodeInputBase() {
+function CodeInputWithLength() {
     const [code, setCode] = useState();
     const [error, setError] = useState();
 
@@ -88,7 +88,7 @@ function CodeInputBase() {
 };
 
 <div className="rainbow-align-content_center rainbow-m-around_xx-large">
-    <CodeInputBase  />
+    <CodeInputWithLength  />
 </div>
 ```
 
@@ -98,13 +98,9 @@ function CodeInputBase() {
 import React, { useEffect, useState } from 'react';
 import { CodeInput } from 'react-rainbow-components';
 
-function CodeInputBase() {
+function CodeInputEvents() {
     const [code, setCode] = useState();
-    const [eventName, setEventName] = useState();
-
-    useEffect(() => {
-        setEventName('interact to see events in action');
-    }, []);
+    const [eventName, setEventName] = useState('interact to see events in action');
 
     return (
         <>
@@ -120,7 +116,7 @@ function CodeInputBase() {
                     onBlur={(e) => setEventName('onBlur')}
                     onKeyDown={(e) => setEventName('onKeyDown')}
                 />
-                <p class="rainbow-align-content_center">
+                <p className="rainbow-align-content_center">
                     Event -- {eventName}
                 </p>
             </div>
@@ -130,7 +126,7 @@ function CodeInputBase() {
 };
 
 <div className="rainbow-align-content_center rainbow-m-around_xx-large">
-    <CodeInputBase  />
+    <CodeInputEvents  />
 </div>
 ```
 
@@ -140,7 +136,7 @@ function CodeInputBase() {
 import React from 'react';
 import { CodeInput } from 'react-rainbow-components';
 
-function CodeInputBase() {
+function CodeInputReadOnly() {
     return (
         <CodeInput
             id="codeinput-7"
@@ -152,6 +148,6 @@ function CodeInputBase() {
 };
 
 <div className="rainbow-align-content_center rainbow-m-around_xx-large">
-    <CodeInputBase  />
+    <CodeInputReadOnly  />
 </div>
 ```
