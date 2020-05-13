@@ -91,7 +91,7 @@ const StyledInput = attachThemeAttrs(styled.input)`
 
 const StyledInputItems = attachThemeAttrs(styled.div)`
     position: relative;
-    margin-bottom: -6px;
+    margin-bottom: -12px;
 `;
 
 const StyledFieldset = styled.fieldset`
