@@ -21,6 +21,21 @@ const InputItems = React.forwardRef((props, ref) => {
         id,
     } = props;
 
+    const handleOnClick = e => {
+        if (readOnly || disabled) {
+            ref.current.blur();
+        }
+        onClick(e);
+    };
+
+    const handleOnFocus = e => {
+        if (readOnly || disabled) {
+            ref.current.blur();
+        } else {
+            onFocus(e);
+        }
+    };
+
     const inputs = value.map((inputValue, index) => {
         const inputIndex = index;
         const isActive = inputIndex === focusedIndex;
@@ -38,9 +53,9 @@ const InputItems = React.forwardRef((props, ref) => {
                 readOnly={readOnly}
                 error={error}
                 tabIndex={inputTabIndex}
-                onClick={onClick}
+                onClick={handleOnClick}
                 onChange={onChange}
-                onFocus={onFocus}
+                onFocus={handleOnFocus}
                 onBlur={onBlur}
                 onKeyDown={onKeyDown}
                 onPaste={onPaste}

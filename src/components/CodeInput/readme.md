@@ -151,3 +151,46 @@ function CodeInputReadOnly() {
     <CodeInputReadOnly  />
 </div>
 ```
+
+##### CodeInput disabled:
+
+```js
+import React from 'react';
+import { CodeInput } from 'react-rainbow-components';
+
+function CodeInputDisabled() {
+    return (
+        <CodeInput
+            id="codeinput-9"
+            label="Code"
+            disabled
+            bottomHelpText="This is a disabled CodeInput"
+        />
+    );
+};
+
+<div className="rainbow-align-content_center rainbow-m-around_xx-large">
+    <CodeInputDisabled  />
+</div>
+```
+
+##### CodeInput error:
+
+```js
+import React from 'react';
+import { CodeInput } from 'react-rainbow-components';
+
+function CodeInputError() {
+    return (
+        <CodeInput
+            id="codeinput-11"
+            label="Code"
+            error="Please a valid code"
+        />
+    );
+};
+
+<div className="rainbow-align-content_center rainbow-m-around_xx-large">
+    <CodeInputError  />
+</div>
+```
