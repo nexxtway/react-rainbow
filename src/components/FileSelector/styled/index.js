@@ -88,7 +88,7 @@ const TruncatedText = styled.span`
     pointer-events: none;
 `;
 
-const StyledBackdrop = styled.div`
+const StyledBackdrop = attachThemeAttrs(styled.div)`
     position: relative;
     height: 100%;
     display: flex;
@@ -102,7 +102,7 @@ const StyledBackdrop = styled.div`
         props.isFileSelected &&
         `
         justify-content: left;
-        background-color: rgba(0, 0, 0, 0.1);
+        background-color: ${props.palette.background.highlight};
         padding-right: 2.35rem;
         `}
 
@@ -119,11 +119,12 @@ const StyledBackdrop = styled.div`
         `}
 `;
 
-const StyledIconContainer = styled(IconContainer)`
+const StyledIconContainer = attachThemeAttrs(styled(IconContainer))`
     svg {
         width: 24px !important;
         height: 24px !important;
         font-size: 24px !important;
+        color: ${props => props.palette.brand.main};
     }
 
     ${props =>
