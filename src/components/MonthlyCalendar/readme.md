@@ -371,7 +371,7 @@ function getAssignedTasksCountForDate(date, tasks) {
     return tasks.filter(task => areDatesEqual(date, task.date) && task.isAssigned).length;
 }
 
-function getDrawerTitle(selectedDate) {
+function getFormattedDate(selectedDate) {
     const option = { month: 'long', day: 'numeric' }
     return selectedDate ? new Intl.DateTimeFormat( 'en-US', option).format(selectedDate) : null
 }
@@ -382,68 +382,52 @@ const TasksBasicInformation = ({ count, name, title }) => count ? (
         <Badge className="rainbow-m-around_medium" label={count} title={title} />
     </StyledStatisticsContainer> ) : null;
 
-function TaskInformation({task}) {
+const TaskInformation = ({hour, description, isConfirmed}) => (
+    <StyledInformationContainer>
+        <StyledHeaderContainer>
+            <Avatar icon={<CalendarIcon />} size="medium" backgroundColor="#f4f6f9" />
+            <StyledHourContainer>{hour}</StyledHourContainer>
+        </StyledHeaderContainer>
+        <StyledContentContainer>
+            {description}
+        </StyledContentContainer>
+        {isConfirmed ?
+            <StyledContentContainer>
+                <StyledIconContainer>
+                    <Avatar icon={<CheckmarkIcon />} size="x-small" backgroundColor="#1de9b6" />
+                </StyledIconContainer>
+                <StyledStatusText>Confirmed</StyledStatusText>
+            </StyledContentContainer> :
+            <StyledContentContainer>
+                <StyledStatusText> Not confirmed</StyledStatusText>
+            </StyledContentContainer> }
+    </StyledInformationContainer> );
+
+const DrawerTasks = props => {
+    const { date, tasks } = props;
+    const assignedTasks = tasks.filter(task => areDatesEqual(date, task.date) && task.isAssigned);
+    const availableTasks = tasks.filter(task => areDatesEqual(date, task.date) && !task.isAssigned);
+
     return (
-            <StyledInformationContainer>
-                    <StyledHeaderContainer>
-                        <Avatar icon={<CalendarIcon />} size="medium" backgroundColor="#f4f6f9" />
-                        <StyledHourContainer>{task.hour}</StyledHourContainer>
-                    </StyledHeaderContainer>
-                    <StyledContentContainer>
-                        {task.description}
-                    </StyledContentContainer>
-                    {task.isConfirmed ?
-                        <StyledContentContainer>
-                            <StyledIconContainer>
-                                <Avatar icon={<CheckmarkIcon />} size="x-small" backgroundColor="#1de9b6" />
-                            </StyledIconContainer>
-                            <StyledStatusText>Confirmed</StyledStatusText>
-                        </StyledContentContainer> :
-                        <StyledContentContainer>
-                            <StyledStatusText> not confirmed</StyledStatusText>
-                        </StyledContentContainer>
-                    }
-            </StyledInformationContainer>
-    );
-}
-
-function GetDrawerTasks({date, tasks}) {
-    let assignedTasksCount = 0, availableTasksCount = 0;
-    const tasksMap = { assigned: [], available: [] };
-
-    if (tasks) {
-        tasks.forEach((task) => {
-            if (areDatesEqual(date, task.date) && task.isAssigned){
-                tasksMap['assigned'].push(
-                    <TaskInformation task={task}/>
-                );
-                assignedTasksCount += 1;
-            }
-            if (areDatesEqual(date, task.date) && !task.isAssigned){
-                tasksMap['available'].push(
-                    <TaskInformation task={task}/>
-                );
-                availableTasksCount += 1;
-            }
-        });
-        tasksMap['assigned'].unshift(
+        <div>
             <TasksBasicInformation
-                count={assignedTasksCount}
+                count={assignedTasks.length}
                 name="ASSIGNED"
                 title="AssignedTasks"
             />
-        );
-        tasksMap['available'].unshift(
+            {assignedTasks.map(task => (
+                <TaskInformation {...task} />
+            ))}
             <TasksBasicInformation
-                count={availableTasksCount}
+                count={availableTasks.length}
                 name="AVAILABLE"
                 title="AvailableTasks"
             />
-        );
-        
-        return tasksMap['assigned'].concat(tasksMap['available']);
-    }
-    return null;
+            {availableTasks.map(task => (
+                <TaskInformation {...task} />
+            ))}
+        </div>
+    );
 }
 
 const tasksList = [
@@ -556,11 +540,11 @@ const initialState = {
     <div>
         <Drawer
             slideFrom="right"
-            header={<StyledTitle>{getDrawerTitle(state.selectedDate)}</StyledTitle>}
+            header={<StyledTitle>{getFormattedDate(state.selectedDate)}</StyledTitle>}
             isOpen={state.isOpen}
             onRequestClose={() => setState({ isOpen : false })}
         >
-            <GetDrawerTasks
+            <DrawerTasks
                 date={state.selectedDate}
                 tasks={tasksList}
             />
