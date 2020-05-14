@@ -12,7 +12,6 @@ describe('CodeInput base example', () => {
         const component = $(CODEINPUT);
         component.waitForExist();
     });
-    /*
     it('should have focus on the first input on load', () => {
         const codeInput = new PageCodeInput(CODEINPUT);
         expect(codeInput.getFocusedIndex()).toBe(0);
@@ -97,7 +96,6 @@ describe('CodeInput base example', () => {
         expect(codeInput.getInputValueByIndex(2)).toBe('3');
         expect(codeInput.getInputValueByIndex(3)).toBe('4');
     });
-    */
     it('should fill numbers only when we paste a mixed string with text and numbers', () => {
         const codeInput = new PageCodeInput(CODEINPUT);
         browser.keys(['', 'a4b3c2d1e9f8g7']);
