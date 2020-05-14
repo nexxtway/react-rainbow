@@ -6,12 +6,13 @@ describe('usePreviousIndex', () => {
         const { result } = renderHook(() => usePreviousIndex());
         expect(result.current).toBe(undefined);
     });
-    it('should return 1 when focusedIndex is 1', () => {
-        const { result, rerender } = renderHook(initialValue => usePreviousIndex(initialValue));
+    it('should return previous focused index after focusedIndex is updated; it is controlled by useRef internally inside usePreviousIndex hook', () => {
+        const { result, rerender } = renderHook(focusedIndex => usePreviousIndex(focusedIndex));
+        rerender(1);
         expect(result.current).toBe(undefined);
         rerender(2);
-        setTimeout(() => {
-            expect(result.current).toEqual(2);
-        }, 1000);
+        expect(result.current).toEqual(1);
+        rerender(3);
+        expect(result.current).toEqual(2);
     });
 });

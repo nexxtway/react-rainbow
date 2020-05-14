@@ -5,7 +5,7 @@ import InputItems from './inputItems';
 import RenderIf from '../RenderIf';
 import RequiredAsterisk from '../RequiredAsterisk';
 import StyledTextError from '../Input/styled/errorText';
-import { useReduxForm, useUniqueIdentifier } from '../../libs/hooks';
+import { useReduxForm } from '../../libs/hooks';
 import { useFocusedIndexState, usePreviousIndex, useValueState } from './hooks';
 import { getNormalizedValue, getNumbersFromClipboard, setFocus } from './helpers';
 import { StyledFieldset, StyledLabel } from './styled';
@@ -39,7 +39,6 @@ const CodeInput = React.forwardRef((props, ref) => {
     const value = useValueState(valueProp, length);
     const focusedIndex = useFocusedIndexState(value, length);
     const previousFocusedIndex = usePreviousIndex(focusedIndex);
-    const inputId = useUniqueIdentifier('code-input');
 
     useImperativeHandle(ref, () => ({
         focus: () => {
@@ -99,7 +98,6 @@ const CodeInput = React.forwardRef((props, ref) => {
                 onBlur={onBlur}
                 onKeyDown={onKeyDown}
                 onPaste={handleOnPaste}
-                id={inputId}
                 focusedIndex={focusedIndex}
                 ref={inputRef}
             />

@@ -41,34 +41,22 @@ describe('<InputItems />', () => {
             ).toBe(value);
         });
     });
-    it('should have unique ids on each input identified by base id and input index', () => {
-        const values = ['', '', '', ''];
-        const id = 'code-input-base';
-        const component = mount(<InputItems value={values} id={id} />);
-        values.forEach((value, index) => {
-            const singleId = `${id}-${index}`;
-            expect(
-                component
-                    .find(InputItem)
-                    .at(index)
-                    .prop('id'),
-            ).toBe(singleId);
-        });
-    });
     it('should have ref passed only to the focusedIndex input', () => {
         const ref = React.createRef();
         const component = mount(
             <InputItems value={['1', '', '', '']} focusedIndex={1} ref={ref} />,
         );
-        const input0 = component
-            .find(InputItem)
-            .at(0)
-            .getDOMNode();
-        const input1 = component
-            .find(InputItem)
-            .at(1)
-            .getDOMNode();
-        expect(input0).not.toBe(ref.current);
-        expect(input1).toBe(ref.current);
+        expect(
+            component
+                .find(InputItem)
+                .at(0)
+                .getDOMNode(),
+        ).not.toEqual(ref.current);
+        expect(
+            component
+                .find(InputItem)
+                .at(1)
+                .getDOMNode(),
+        ).toEqual(ref.current);
     });
 });

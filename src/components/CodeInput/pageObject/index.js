@@ -45,7 +45,7 @@ class PageCodeInput {
         if (focusedInput) {
             return focusedInput.index;
         }
-        return -1;
+        return undefined;
     }
 
     /**
@@ -57,7 +57,7 @@ class PageCodeInput {
         if (focusedInput) {
             return focusedInput.getValue();
         }
-        return -1;
+        return undefined;
     }
 
     /**
@@ -65,12 +65,12 @@ class PageCodeInput {
      * @method
      * @param {string} inputIndex - The index of the input
      */
-    getInputValueByIndex(inputIndex) {
+    getInputValueAtIndex(inputIndex) {
         const input = this.getInputByIndex(inputIndex);
         if (input) {
             return input.getValue();
         }
-        return -1;
+        return undefined;
     }
 
     getFocusedInput() {
@@ -79,8 +79,11 @@ class PageCodeInput {
     }
 
     getInputByIndex(inputIndex) {
-        const inputs = $(this.rootElement).$$('input');
-        return inputs.filter((elem, index) => index === inputIndex).shift();
+        const input = $(this.rootElement).$$('input')[inputIndex];
+        if (input) {
+            return input;
+        }
+        return undefined;
     }
 }
 

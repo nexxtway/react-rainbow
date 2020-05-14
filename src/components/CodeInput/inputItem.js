@@ -18,7 +18,6 @@ const InputItem = React.forwardRef((props, ref) => {
         onBlur,
         onKeyDown,
         onPaste,
-        id,
         isActive,
     } = props;
 
@@ -48,7 +47,6 @@ const InputItem = React.forwardRef((props, ref) => {
             ref={ref}
             pattern="\d*"
             maxLength="1"
-            id={id}
             isActive={isActive}
         />
     );

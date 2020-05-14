@@ -7,14 +7,12 @@ import HelpText from '../../Input/styled/helpText';
 import StyledTextError from '../../Input/styled/errorText';
 import { StyledLabel } from '../styled';
 
-import useUniqueIdentifier from '../../../libs/hooks/useUniqueIdentifier';
 import useFocusedIndexState from '../hooks/useFocusedIndexState';
 import usePreviousIndex from '../hooks/usePreviousIndex';
 import useValueState from '../hooks/useValueState';
 import getNormalizedValue from '../helpers/getNormalizedValue';
 import getNumbersFromClipboard from '../helpers/getNumbersFromClipboard';
 
-jest.mock('../../../libs/hooks/useUniqueIdentifier', () => jest.fn(() => 'code-input'));
 jest.mock('../hooks/useFocusedIndexState', () => jest.fn(() => 0));
 jest.mock('../hooks/usePreviousIndex', () => jest.fn(() => undefined));
 jest.mock('../hooks/useValueState', () => jest.fn(() => ['', '', '', '']));
@@ -125,6 +123,21 @@ describe('<CodeInput />', () => {
             });
         expect(getNumbersFromClipboard).toHaveBeenCalledWith('12345abcdfe');
     });
+    it('should call onChange with numbers only when we copy and paste a mixed text and numbers string', () => {
+        getNumbersFromClipboard.mockImplementation(() => '12345');
+        const onChangeFn = jest.fn();
+        const component = mount(<CodeInput onChange={onChangeFn} length={5} />);
+        component
+            .find(InputItem)
+            .at(0)
+            .props()
+            .onPaste({
+                clipboardData: {
+                    getData: () => '12345abcdfe',
+                },
+            });
+        expect(onChangeFn).toHaveBeenCalledWith('12345');
+    });
     it('should call getNormalizedValue with the right values when value changes', () => {
         useValueState.mockImplementation(() => ['1', '2', '', '']);
         const component = mount(<CodeInput value="12" />);
@@ -136,24 +149,19 @@ describe('<CodeInput />', () => {
         expect(getNormalizedValue).toHaveBeenCalledWith('3', 2, ['1', '2', '', '']);
     });
     it('should call useValueState with the right value and length', () => {
-        useValueState.mockImplementation(() => ['1', '', '', '']);
-        mount(<CodeInput value="1" />);
+        useValueState.mockReset();
+        mount(<CodeInput value="1" length={4} />);
         expect(useValueState).toHaveBeenCalledWith('1', 4);
     });
     it('should call useFocusedIndexState with the right value and length', () => {
-        useFocusedIndexState.mockImplementation(() => 1);
-        mount(<CodeInput value="1" />);
-        expect(useValueState).toHaveBeenCalledWith('1', 4);
+        useValueState.mockReset();
+        mount(<CodeInput value="6" length={3} />);
+        expect(useValueState).toHaveBeenCalledWith('6', 3);
     });
     it('should call usePreviousIndex with the right focusedIndex value', () => {
-        useValueState.mockImplementation(() => ['1', '2', '', '']);
+        usePreviousIndex.mockReset();
         useFocusedIndexState.mockImplementation(() => 2);
-        usePreviousIndex.mockImplementation(() => 2);
         mount(<CodeInput value="12" />);
         expect(usePreviousIndex).toHaveBeenCalledWith(2);
-    });
-    it('should call useUniqueIdentifier with the right value', () => {
-        mount(<CodeInput value="1" />);
-        expect(useUniqueIdentifier).toHaveBeenCalledWith('code-input');
     });
 });
