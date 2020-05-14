@@ -151,12 +151,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpload } from '@fortawesome/free-solid-svg-icons';
 
 const containerStyles = {
-
-};
-
-const container = {
-    height: 600,
-    width: 600,
+    maxWidth: 300,
 };
 
 function FileSelectorExample(props) {
@@ -167,8 +162,9 @@ function FileSelectorExample(props) {
     }
 
     return (
-        <div style={container}>
+        <div>
             <FileSelector
+                className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
                 style={containerStyles}
                 label="File selector"
                 placeholder="Drag & Drop or Click to Browse"
