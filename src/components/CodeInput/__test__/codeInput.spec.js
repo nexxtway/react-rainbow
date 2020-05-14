@@ -100,7 +100,7 @@ describe('<CodeInput />', () => {
             .onChange('3', inputIndex);
         expect(onChangeFn).toHaveBeenCalledWith('3');
     });
-    it('should call onChange with empty string when input value changes and is not a number', () => {
+    it('should not call onChange when input value changes and is not a number', () => {
         getNormalizedValue.mockImplementation(() => '');
         const onChangeFn = jest.fn();
         const component = mount(<CodeInput onChange={onChangeFn} />);
@@ -109,7 +109,7 @@ describe('<CodeInput />', () => {
             .find(InputItems)
             .props()
             .onChange('A', inputIndex);
-        expect(onChangeFn).toHaveBeenCalledWith('');
+        expect(onChangeFn).not.toHaveBeenCalled();
     });
     it('should call getNumbersFromClipboard with the copy and pasted value', () => {
         getNumbersFromClipboard.mockClear();

@@ -21,13 +21,6 @@ const InputItems = React.forwardRef((props, ref) => {
         id,
     } = props;
 
-    const handleOnClick = e => {
-        if (readOnly || disabled) {
-            ref.current.blur();
-        }
-        onClick(e);
-    };
-
     const handleOnFocus = e => {
         if (readOnly || disabled) {
             ref.current.blur();
@@ -53,7 +46,7 @@ const InputItems = React.forwardRef((props, ref) => {
                 readOnly={readOnly}
                 error={error}
                 tabIndex={inputTabIndex}
-                onClick={handleOnClick}
+                onClick={onClick}
                 onChange={onChange}
                 onFocus={handleOnFocus}
                 onBlur={onBlur}

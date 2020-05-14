@@ -17,7 +17,6 @@ import { StyledFieldset, StyledLabel } from './styled';
 const CodeInput = React.forwardRef((props, ref) => {
     const {
         id,
-        name,
         value: valueProp,
         label,
         bottomHelpText,
@@ -61,7 +60,11 @@ const CodeInput = React.forwardRef((props, ref) => {
     }, [inputRef, focusedIndex, previousFocusedIndex]);
 
     const handleOnChange = (inputValue, inputIndex) => {
-        onChange(getNormalizedValue(inputValue, inputIndex, value));
+        const newValue = getNormalizedValue(inputValue, inputIndex, value);
+        const hasValueChanged = newValue !== valueProp;
+        if (hasValueChanged) {
+            onChange(newValue);
+        }
     };
 
     const handleOnFocus = (e, index) => {
@@ -76,7 +79,7 @@ const CodeInput = React.forwardRef((props, ref) => {
     };
 
     return (
-        <StyledFieldset className={className} name={name} style={style} id={id}>
+        <StyledFieldset className={className} style={style} id={id}>
             <RenderIf isTrue={!!label}>
                 <StyledLabel>
                     <RequiredAsterisk required={required} />
@@ -113,8 +116,6 @@ const CodeInput = React.forwardRef((props, ref) => {
 CodeInput.propTypes = {
     /** The id of the outer element. */
     id: PropTypes.string,
-    /** An identifier for the CodeInput element. */
-    name: PropTypes.string,
     /** Specifies the value of CodeInput. */
     value: PropTypes.string,
     /** Specifies the label CodeInput. */
@@ -151,7 +152,6 @@ CodeInput.propTypes = {
 
 CodeInput.defaultProps = {
     id: undefined,
-    name: undefined,
     value: '',
     label: undefined,
     bottomHelpText: undefined,
