@@ -3,9 +3,7 @@ import { mount } from 'enzyme';
 import CodeInput from '../';
 import InputItems from '../inputItems';
 import InputItem from '../inputItem';
-import HelpText from '../../Input/styled/helpText';
-import StyledTextError from '../../Input/styled/errorText';
-import { StyledLabel } from '../styled';
+import { StyledErrorMsg, StyledHelpText, StyledLabel } from '../styled';
 
 import useFocusedIndexState from '../hooks/useFocusedIndexState';
 import usePreviousIndex from '../hooks/usePreviousIndex';
@@ -35,19 +33,19 @@ describe('<CodeInput />', () => {
     });
     it('should have bottomHelpText rendered if is sent as param', () => {
         const component = mount(<CodeInput bottomHelpText="help-text-test" />);
-        expect(component.find(HelpText).exists()).toBe(true);
+        expect(component.find(StyledHelpText).exists()).toBe(true);
     });
     it('should not have bottomHelpText rendered when bottomHelpText is empty', () => {
         const component = mount(<CodeInput />);
-        expect(component.find(HelpText).exists()).toBe(false);
+        expect(component.find(StyledHelpText).exists()).toBe(false);
     });
     it('should have error rendered if is sent as param', () => {
         const component = mount(<CodeInput error="error-test" />);
-        expect(component.find(StyledTextError).exists()).toBe(true);
+        expect(component.find(StyledErrorMsg).exists()).toBe(true);
     });
     it('should not have error rendered if is not sent as param', () => {
         const component = mount(<CodeInput />);
-        expect(component.find(StyledTextError).exists()).toBe(false);
+        expect(component.find(StyledErrorMsg).exists()).toBe(false);
     });
     it('should keep isActive as true on active input whenever any other input is clicked', () => {
         const component = mount(<CodeInput />);
