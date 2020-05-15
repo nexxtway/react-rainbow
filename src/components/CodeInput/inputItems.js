@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import InputItem from './inputItem';
-import { StyledInputItems } from './styled';
 
 const InputItems = React.forwardRef((props, ref) => {
     const {
@@ -48,7 +47,7 @@ const InputItems = React.forwardRef((props, ref) => {
         );
     });
 
-    return <StyledInputItems>{inputs}</StyledInputItems>;
+    return <>{inputs}</>;
 });
 
 InputItems.propTypes = {

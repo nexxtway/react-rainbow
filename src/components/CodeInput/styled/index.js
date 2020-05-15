@@ -97,11 +97,6 @@ const StyledInput = attachThemeAttrs(styled.input)`
     `};
 `;
 
-const StyledInputItems = attachThemeAttrs(styled.div)`
-    position: relative;
-    margin-bottom: -12px;
-`;
-
 const StyledFieldset = styled.fieldset`
     line-height: 1.5rem;
     margin: 0;
@@ -126,4 +121,4 @@ const StyledLabel = attachThemeAttrs(styled.legend)`
     }
 `;
 
-export { StyledInput, StyledInputItems, StyledFieldset, StyledLabel };
+export { StyledInput, StyledFieldset, StyledLabel };
