@@ -4,7 +4,7 @@ import { replaceAlpha } from '../../../styles/helpers/color';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 import { COLOR_GRAY_2 } from '../../../styles/colors';
 
-const sizeMap = { large: '3rem', medium: '2.5rem', small: '1.75rem', 'x-small': '1.25rem' };
+const sizeMap = { large: '3rem', medium: '2.5rem', small: '1.8rem', 'x-small': '1.3rem' };
 const StyledButtonItemsContainer = attachThemeAttrs(styled.div).attrs(props => {
     const isDark = props.palette.isDark;
     const inverse = {

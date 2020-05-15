@@ -4,7 +4,7 @@ import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { replaceAlpha } from '../../../styles/helpers/color';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 
-const sizeMap = { large: '3rem', medium: '2.5rem', small: '1.75rem', 'x-small': '1.25rem' };
+const sizeMap = { large: '3rem', medium: '2.5rem', small: '1.8rem', 'x-small': '1.3rem' };
 const StyledButtonItem = attachThemeAttrs(styled.span)`
     display: inline-flex;
     justify-content: center;

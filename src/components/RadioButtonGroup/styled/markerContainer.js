@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const sizeMap = { large: '3rem', medium: '2.5rem', small: '1.75rem', 'x-small': '1.25rem' };
+const sizeMap = { large: '3rem', medium: '2.5rem', small: '1.8rem', 'x-small': '1.3rem' };
 const StyledMarkerContainer = styled.div`
     display: inline-flex;
     justify-content: center;
