@@ -1,21 +1,9 @@
-function get24Hour(hour, ampm) {
-    const hourNumber = Number(hour);
-    if (ampm === 'AM') {
-        if (hourNumber === 12) {
-            return '00';
-        }
-        return hour;
-    }
-    if (ampm === 'PM') {
-        if (hourNumber === 12) {
-            return '12';
-        }
-        return String(hourNumber + 12);
-    }
-    return hour;
-}
+import get24Hour from './get24Hour';
 
-export default function get24HourTime({ hour, minutes, ampm }) {
+const get24HourTime = ({ hour, minutes, ampm }) => {
+    if (!hour && !minutes) return '';
     const hour24 = get24Hour(hour, ampm);
-    return `${hour24}:${minutes}`;
-}
+    return typeof minutes === 'string' ? `${hour24}:${minutes}` : `${hour24}:`;
+};
+
+export default get24HourTime;

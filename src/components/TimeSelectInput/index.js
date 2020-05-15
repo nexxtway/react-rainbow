@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import ButtonIcon from '../ButtonIcon';
 import AmPmSelect from './ampmSelect';
@@ -11,12 +11,10 @@ import {
     getNextMinute,
     getPrevMinute,
     getNextAmPmValue,
-    get12HourTime,
     get24HourTime,
     getSingleNewTypedValue,
     getHour,
     getMinutes,
-    getAmPm,
     normalizeValue,
 } from './helpers';
 import { LEFT_KEY, RIGHT_KEY, UP_KEY, DOWN_KEY, DELETE_KEY } from '../../libs/constants';
@@ -39,11 +37,10 @@ function preventDefault(event) {
  * @category Form
  */
 
-export default class TimeSelectInput extends Component {
+export default class TimeSelectInput extends PureComponent {
     constructor(props) {
         super(props);
-        const { hour, minutes, ampm } = normalizeValue(props.value, props.hour24);
-        this.state = { hour, minutes, ampm, inputFocusedIndex: 0 };
+        this.state = { inputFocusedIndex: 0 };
         this.containerRef = React.createRef();
         this.hourInputRef = React.createRef();
         this.minutesInputRef = React.createRef();
@@ -75,20 +72,13 @@ export default class TimeSelectInput extends Component {
         this.outsideClick.startListening(this.containerRef.current, this.handleClickOutside);
     }
 
-    componentDidUpdate(prevProps) {
-        const { value: prevValue } = prevProps;
-        const { value } = this.props;
-        if (prevValue !== value) {
-            this.updateTime();
-        }
-    }
-
     componentWillUnmount() {
         this.outsideClick.stopListening();
     }
 
     setNextAmPmValue() {
-        const { ampm } = this.state;
+        const { value, hour24 } = this.props;
+        const { ampm } = normalizeValue(value, hour24);
         const nextAmPmValue = getNextAmPmValue(ampm);
         this.handleChangeTime({
             ampm: nextAmPmValue,
@@ -102,9 +92,9 @@ export default class TimeSelectInput extends Component {
     }
 
     handleChangeHour(event) {
-        const { hour } = this.state;
-        const { hour24 } = this.props;
+        const { hour24, value: propValue } = this.props;
         const { value } = event.target;
+        const { hour } = normalizeValue(propValue, hour24);
 
         const conditionalHour = hour24 ? 23 : 12;
         const conditionalDigit = hour24 ? 3 : 2;
@@ -137,27 +127,19 @@ export default class TimeSelectInput extends Component {
     }
 
     handleBlurHour() {
-        const { hour } = this.state;
-        const { hour24 } = this.props;
         if (this.isUpOrDownButtonPressed) {
             this.isUpOrDownButtonPressed = false;
             return;
         }
         if (this.isMinutesInputFocused) {
             this.isMinutesInputFocused = false;
-            return;
-        }
-        if (hour === '00' && this.value >= '0' && !hour24) {
-            this.handleChangeTime({
-                hour: '12',
-            });
         }
     }
 
     handleChangeMinutes(event) {
-        const { minutes } = this.state;
+        const { hour24, value: propValue } = this.props;
         const { value } = event.target;
-        const { hour24 } = this.props;
+        const minutes = getMinutes(propValue);
 
         const conditionalMinutes = 59;
         const conditionalDigit = 5;
@@ -177,7 +159,7 @@ export default class TimeSelectInput extends Component {
         });
 
         const shouldFocusNextInput =
-            (!hour24 && +newTypedValue > conditionalDigit) || +normalizedValue > 9;
+            !hour24 && (+newTypedValue > conditionalDigit || +normalizedValue > 9);
         if (shouldFocusNextInput) {
             this.amPmInputRef.current.focus();
         }
@@ -190,8 +172,8 @@ export default class TimeSelectInput extends Component {
     }
 
     handleAmPmChange(value) {
+        this.setState({ inputFocusedIndex: -1 });
         this.handleChangeTime({
-            inputFocusedIndex: -1,
             ampm: value,
         });
     }
@@ -225,7 +207,9 @@ export default class TimeSelectInput extends Component {
         const nextInputIndex = inputFocusedIndex + 1;
         const nextInputToFocus = this.inputsMap[nextInputIndex];
         if (nextInputToFocus && nextInputToFocus.current != null) {
-            this.setState({ inputFocusedIndex: inputFocusedIndex + 1 });
+            this.setState({
+                inputFocusedIndex: inputFocusedIndex + 1,
+            });
             nextInputToFocus.current.focus();
         }
     }
@@ -235,7 +219,9 @@ export default class TimeSelectInput extends Component {
         const prevInputIndex = inputFocusedIndex - 1;
         const prevInputToFocus = this.inputsMap[prevInputIndex];
         if (prevInputToFocus) {
-            this.setState({ inputFocusedIndex: inputFocusedIndex - 1 });
+            this.setState({
+                inputFocusedIndex: inputFocusedIndex - 1,
+            });
             prevInputToFocus.current.focus();
         }
     }
@@ -284,28 +270,23 @@ export default class TimeSelectInput extends Component {
 
     resetState() {
         const { inputFocusedIndex } = this.state;
+        const { value } = this.props;
+        const hour = getHour(value);
+        const minutes = getMinutes(value);
+        const reset = {};
+
         if (inputFocusedIndex === 0) {
-            this.handleChangeTime({
-                hour: '',
-            });
+            reset.hour = '';
+            if (!minutes) reset.ampm = '';
+            this.handleChangeTime(reset);
             this.prevHour = '';
         }
         if (inputFocusedIndex === 1) {
-            this.handleChangeTime({
-                minutes: '',
-            });
+            reset.minutes = '';
+            if (!hour) reset.ampm = '';
+            this.handleChangeTime(reset);
             this.prevMinutes = '';
         }
-    }
-
-    updateTime() {
-        const { value } = this.props;
-
-        this.setState({
-            hour: getHour(value),
-            minutes: getMinutes(value),
-            ampm: getAmPm(value),
-        });
     }
 
     focusHourInput() {
@@ -314,8 +295,8 @@ export default class TimeSelectInput extends Component {
     }
 
     incrementHour() {
-        const { hour } = this.state;
-        const { hour24 } = this.props;
+        const { hour24, value } = this.props;
+        const { hour } = normalizeValue(value, hour24);
         const hourValue = hour || this.prevHour;
         this.handleChangeTime({
             hour: normalizeHour(getNextHour(hourValue, hour24), hour24),
@@ -323,8 +304,8 @@ export default class TimeSelectInput extends Component {
     }
 
     decrementHour() {
-        const { hour } = this.state;
-        const { hour24 } = this.props;
+        const { hour24, value } = this.props;
+        const { hour } = normalizeValue(value, hour24);
         const hourValue = hour || this.prevHour;
         this.handleChangeTime({
             hour: normalizeHour(getPrevHour(hourValue, hour24), hour24),
@@ -332,7 +313,8 @@ export default class TimeSelectInput extends Component {
     }
 
     incrementMinutes() {
-        const { minutes } = this.state;
+        const { value } = this.props;
+        const minutes = getMinutes(value);
         const minutesValue = minutes || this.prevMinutes;
         this.handleChangeTime({
             minutes: normalizeMinutes(getNextMinute(minutesValue)),
@@ -340,7 +322,8 @@ export default class TimeSelectInput extends Component {
     }
 
     decrementMinutes() {
-        const { minutes } = this.state;
+        const { value } = this.props;
+        const minutes = getMinutes(value);
         const minutesValue = minutes || this.prevMinutes;
         this.handleChangeTime({
             minutes: normalizeMinutes(getPrevMinute(minutesValue)),
@@ -348,34 +331,36 @@ export default class TimeSelectInput extends Component {
     }
 
     handleChangeTime(newState) {
-        const { hour, minutes, ampm } = this.state;
-        const { onChange, hour24 } = this.props;
-        const currentHour =
-            newState && typeof newState.hour === 'string' ? newState.hour : hour || this.prevHour;
-        const currentMinutes =
-            newState && typeof newState.minutes === 'string'
-                ? newState.minutes
-                : minutes || this.prevMinutes;
-        const currentAmPm = newState && typeof newState.ampm === 'string' ? newState.ampm : ampm;
+        const { onChange, hour24, value } = this.props;
+        const { hour, minutes, ampm } = normalizeValue(value, hour24);
+        const currentHour = (() => {
+            if (newState && typeof newState.hour === 'string') return newState.hour;
+            if (typeof hour === 'string') return hour;
+            return this.prevHour;
+        })();
+        const currentMinutes = (() => {
+            if (newState && typeof newState.minutes === 'string') return newState.minutes;
+            if (typeof minutes === 'string') return minutes;
+            return this.prevMinutes;
+        })();
+        const currentAmPm = (() => {
+            if (newState && typeof newState.ampm === 'string') return newState.ampm;
+            if (typeof ampm === 'string') return ampm;
+            return '';
+        })();
         const time24 = get24HourTime({
             hour: currentHour,
             minutes: currentMinutes,
             ampm: currentAmPm,
         });
-        const time = hour24 ? time24 : get12HourTime(time24);
-        this.setState(newState);
 
-        if (
-            (currentHour && currentMinutes && ampm && !hour24) ||
-            (currentHour && currentMinutes && hour24)
-        ) {
-            onChange(time);
-        }
+        onChange(time24);
     }
 
     render() {
-        const { hour, minutes, ampm, inputFocusedIndex } = this.state;
-        const { hour24, className, style, id } = this.props;
+        const { inputFocusedIndex } = this.state;
+        const { hour24, className, style, id, value } = this.props;
+        const { hour, minutes, ampm } = normalizeValue(value, hour24);
         const hourPlaceholder = this.prevHour || '--';
         const minutesPlaceholder = this.prevMinutes || '--';
 

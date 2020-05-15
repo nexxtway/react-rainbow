@@ -1,8 +1,13 @@
-import getHour from './getHour';
-import getMinutes from './getMinutes';
-import getAmPm from './getAmPm';
-import normalizeHour from '../../TimePicker/helpers/normalizeHour';
-import normalizeMinutes from '../../TimePicker/helpers/normalizeMinutes';
+import {
+    get12Hour,
+    get24Hour,
+    getAmPmValue,
+    getHour,
+    getMinutes,
+    normalizeHour,
+    normalizeMinutes,
+    getAmPm,
+} from '.';
 
 export default function normalizeValue(value, hour24) {
     const invalidValue = {
@@ -10,42 +15,26 @@ export default function normalizeValue(value, hour24) {
         minutes: '',
         ampm: '',
     };
+
     if (!value) return invalidValue;
 
     let hour = getHour(value);
-    if (!hour || Number(hour) > 23) return invalidValue;
+    if (!hour) {
+        hour = '';
+    }
 
-    const minutes = getMinutes(value);
-    if (!minutes || Number(minutes) > 59) return invalidValue;
-
-    if (hour.length !== 2 || minutes.length !== 2) return invalidValue;
+    let minutes = getMinutes(value);
+    if (!minutes || Number(minutes) > 59) {
+        minutes = '';
+    }
 
     let ampm = getAmPm(value);
-    if (ampm) ampm.toUpperCase();
-    if (ampm !== undefined && ampm !== 'AM' && ampm !== 'PM') {
-        return invalidValue;
+    if (!ampm) {
+        ampm = !hour24 ? getAmPmValue(hour) : '';
     }
 
-    if (hour24 && ampm && Number(hour) > 12) {
-        return invalidValue;
-    }
-    if (hour24 && ampm && ampm === 'PM' && hour < 12) {
-        hour = Number(hour) + 12;
-    }
-    if (hour24 && ampm && ampm === 'AM' && Number(hour) === 12) {
-        hour = '00';
-    }
-    if (!hour24 && hour === '00' && ampm) {
-        return invalidValue;
-    }
-    if (!hour24 && Number(hour) > 12) {
-        if (ampm) return invalidValue;
-        hour = Number(hour) - 12;
-        ampm = 'PM';
-    }
-    if (!hour24 && Number(hour) < 12) {
-        if (!ampm) ampm = 'AM';
-        if (hour === '00') hour = 12;
+    if (hour) {
+        hour = hour24 ? get24Hour(hour, ampm) : get12Hour(hour);
     }
 
     return {

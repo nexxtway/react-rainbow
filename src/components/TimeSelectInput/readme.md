@@ -15,7 +15,7 @@ const TimeSelectInputExample = () => {
         <TimeSelectInput 
             id="time-select-input-1" 
             value={time} 
-            onChange={setTime} 
+            onChange={time => {setTime(time), console.log('[README] ', time)}} 
         />
     ); 
 }
@@ -36,7 +36,7 @@ const StyledContainer = styled.div`
     justify-content: center;
 `;
 const TimeSelectInputExample = () => {
-    const [time, setTime] = useState('08:00 AM'); 
+    const [time, setTime] = useState('08:00'); 
     return ( 
         <TimeSelectInput 
             id="time-select-input-3" 

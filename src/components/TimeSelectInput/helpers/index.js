@@ -1,6 +1,9 @@
+export { default as get12Hour } from './get12Hour';
 export { default as get12HourTime } from './get12HourTime';
+export { default as get24Hour } from './get24Hour';
 export { default as get24HourTime } from './get24HourTime';
 export { default as getAmPm } from './getAmPm';
+export { default as getAmPmValue } from './getAmPmValue';
 export { default as getDefaultAmPm } from './getDefaultAmPm';
 export { default as getHour } from './getHour';
 export { default as getInputValue } from './getInputValue';

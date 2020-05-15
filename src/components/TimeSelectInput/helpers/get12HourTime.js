@@ -1,29 +1,10 @@
-function is12HourTimeAlready(value) {
+import get12Hour from './get12Hour';
+import getAmPmValue from './getAmPmValue';
+
+const is12HourTimeAlready = value => {
     const values = value.split(' ');
     return values[0].length === 5 && (values[1] === 'AM' || values[1] === 'PM');
-}
-
-function get12Hour(hour) {
-    const hourNumber = Number(hour);
-    if (hourNumber === 0) {
-        return '12';
-    }
-    if (hourNumber > 12 && hourNumber < 24) {
-        if (hourNumber < 22) {
-            return `0${String(hourNumber - 12)}`;
-        }
-        return String(hourNumber - 12);
-    }
-    return hour;
-}
-
-function getAmPmValue(hour) {
-    const hourNumber = Number(hour);
-    if (hourNumber > 11) {
-        return 'PM';
-    }
-    return 'AM';
-}
+};
 
 export default function get12HourTime(value) {
     if (value && typeof value === 'string') {
