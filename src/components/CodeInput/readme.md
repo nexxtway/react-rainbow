@@ -141,6 +141,7 @@ function CodeInputReadOnly() {
         <CodeInput
             id="codeinput-7"
             label="Code"
+            value="1234"
             readOnly
             bottomHelpText="This is a readOnly CodeInput"
         />

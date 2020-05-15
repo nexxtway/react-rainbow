@@ -67,14 +67,14 @@ describe('CodeInput base example', () => {
     it('should keep current input focus when unfocused inputs are clicked', () => {
         const codeInput = new PageCodeInput(CODEINPUT);
         expect(codeInput.getFocusedIndex()).toBe(0);
-        codeInput.clickInputByIndex(2);
+        codeInput.clickInputAtIndex(2);
         expect(codeInput.getFocusedIndex()).toBe(0);
     });
     it('should keep focus on the second input when any input is clicked and the first input has a number already', () => {
         const codeInput = new PageCodeInput(CODEINPUT);
         browser.keys('2');
         expect(codeInput.getFocusedIndex()).toBe(1);
-        codeInput.clickInputByIndex(0);
+        codeInput.clickInputAtIndex(0);
         expect(codeInput.getFocusedIndex()).toBe(1);
     });
     it('should leave focus on all inputs when "Tab" key is pressed', () => {
@@ -88,7 +88,7 @@ describe('CodeInput base example', () => {
         expect(codeInput.getFocusedIndex()).toBe(0);
         browser.keys(TAB_KEY);
         expect(codeInput.getFocusedIndex()).toBe(undefined);
-        codeInput.clickInputByIndex(3);
+        codeInput.clickInputAtIndex(3);
         expect(codeInput.getFocusedIndex()).toBe(0);
     });
     it('should have all inputs filled when we type 4 numbers in a row and codeInput has a length of 4', () => {

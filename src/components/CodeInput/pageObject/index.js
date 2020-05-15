@@ -29,8 +29,8 @@ class PageCodeInput {
      * @method
      * @param {string} inputIndex - The index of the input
      */
-    clickInputByIndex(inputIndex) {
-        const input = this.getInputByIndex(inputIndex);
+    clickInputAtIndex(inputIndex) {
+        const input = this.getInputAtIndex(inputIndex);
         if (input) {
             input.click();
         }
@@ -66,7 +66,7 @@ class PageCodeInput {
      * @param {string} inputIndex - The index of the input
      */
     getInputValueAtIndex(inputIndex) {
-        const input = this.getInputByIndex(inputIndex);
+        const input = this.getInputAtIndex(inputIndex);
         if (input) {
             return input.getValue();
         }
@@ -78,7 +78,7 @@ class PageCodeInput {
         return inputs.filter(input => input.isFocused()).shift();
     }
 
-    getInputByIndex(inputIndex) {
+    getInputAtIndex(inputIndex) {
         const input = $(this.rootElement).$$('input')[inputIndex];
         if (input) {
             return input;

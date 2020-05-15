@@ -14,8 +14,8 @@ describe('CodeInput readOnly example', () => {
     it('should keep inputs unfocused when codeInput is disabled and inputs are clicked', () => {
         const codeInput = new PageCodeInput(CODEINPUT);
         expect(codeInput.getFocusedIndex()).toBe(undefined);
-        codeInput.clickInputByIndex(1);
-        codeInput.clickInputByIndex(2);
+        codeInput.clickInputAtIndex(1);
+        codeInput.clickInputAtIndex(2);
         expect(codeInput.getFocusedIndex()).toBe(undefined);
     });
 });

@@ -87,6 +87,14 @@ const StyledInput = attachThemeAttrs(styled.input)`
             border: 1px solid ${props.palette.border.main};
         }
     `}
+    
+    ${props =>
+        props.readOnly &&
+        `
+        border: 2px solid transparent;
+        background-color: transparent;
+        box-shadow: none;
+    `};
 `;
 
 const StyledInputItems = attachThemeAttrs(styled.div)`
