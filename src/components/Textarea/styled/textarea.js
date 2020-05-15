@@ -7,7 +7,7 @@ const StyledTextarea = attachThemeAttrs(styled.textarea)`
     border-radius: ${BORDER_RADIUS_1};
     background-color: ${props => props.palette.background.main};
     border: solid 1px ${props => props.palette.border.main};
-    transition: all 0.1s linear;
+    transition: all 0.1s linear, padding 0s, border 0s;
     width: 100%;
     padding: 0.625rem 1rem;
     resize: none;
@@ -22,7 +22,8 @@ const StyledTextarea = attachThemeAttrs(styled.textarea)`
     :active {
         outline: 0;
         background-color: ${props => props.palette.background.main};
-        border: solid 1px ${props => props.palette.brand.main};
+        padding: 0.563rem 0.9375rem;
+        border: solid 2px ${props => props.palette.brand.main};
         box-shadow: ${props => props.shadows.brand};
     }
 
@@ -64,12 +65,12 @@ const StyledTextarea = attachThemeAttrs(styled.textarea)`
     }
 
     &[required] {
-        border: solid 1px transparent;
+        border: solid 1px ${props => props.palette.error.main};
 
         :focus,
         :active {
-            padding: 0.625rem 1rem;
-            border: solid 1px ${props => props.palette.brand.main};
+            padding: 0.563rem 0.9375rem;
+            border: solid 2px ${props => props.palette.brand.main};
             box-shadow: ${props => props.shadows.brand};
         }
     }
@@ -97,7 +98,7 @@ const StyledTextarea = attachThemeAttrs(styled.textarea)`
             
             &:focus,
             &:active {
-                padding: 0.625rem 1rem;
+                padding: 0.563rem 0.9375rem;
                 box-shadow: none;
                 border: none;
             }
