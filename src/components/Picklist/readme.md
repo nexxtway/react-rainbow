@@ -276,7 +276,7 @@ initialState = { value: { name: 'option 3', label: 'Central Park' } };
 </Picklist>
 ```
 
-##### Picklist with shaded GlobalHeader
+##### Picklist with neutral GlobalHeader
 
 ```js
 import React from 'react';
@@ -292,7 +292,7 @@ initialState = { value: { name: 'option 3', label: 'Central Park' } };
     <GlobalHeader
         src="images/user/user2.jpg"
         className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large"
-        variant="shaded"
+        variant="neutral"
     >
         <div className="rainbow-flex rainbow-align_right">
             <Picklist

@@ -7,7 +7,7 @@ export const StyledGlobalHeader = attachThemeAttrs(styled.header)`
     border-bottom: 1px solid ${props => props.palette.border.divider};
 
     ${props =>
-        props.variant === 'shaded' &&
+        props.variant === 'neutral' &&
         `
             background-color: ${props.palette.background.secondary};
             border-bottom: none;

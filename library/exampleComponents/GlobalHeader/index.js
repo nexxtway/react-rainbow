@@ -35,7 +35,7 @@ GlobalHeader.propTypes = {
     className: PropTypes.string,
     src: PropTypes.string,
     hideAvatar: PropTypes.bool,
-    variant: PropTypes.oneOf(['default', 'shaded']),
+    variant: PropTypes.oneOf(['default', 'neutral']),
 };
 
 GlobalHeader.defaultProps = {
