@@ -15,7 +15,7 @@ const TimeSelectInputExample = () => {
         <TimeSelectInput 
             id="time-select-input-1" 
             value={time} 
-            onChange={time => {setTime(time), console.log('[README] ', time)}} 
+            onChange={setTime} 
         />
     ); 
 }
