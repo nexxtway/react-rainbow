@@ -1,14 +1,12 @@
 import React, { useEffect, useImperativeHandle, useRef } from 'react';
 import PropTypes from 'prop-types';
-import HelpText from '../Input/styled/helpText';
 import InputItems from './inputItems';
 import RenderIf from '../RenderIf';
 import RequiredAsterisk from '../RequiredAsterisk';
-import StyledTextError from '../Input/styled/errorText';
 import { useReduxForm } from '../../libs/hooks';
 import { useFocusedIndexState, usePreviousIndex, useValueState } from './hooks';
 import { getNormalizedValue, getNumbersFromClipboard, setFocus } from './helpers';
-import { StyledFieldset, StyledLabel } from './styled';
+import { StyledErrorMsg, StyledFieldset, StyledHelpText, StyledLabel } from './styled';
 
 /**
  * The CodeInput is an element that allows to fill a list of numbers, suitable for code validations.
@@ -102,10 +100,10 @@ const CodeInput = React.forwardRef((props, ref) => {
                 ref={inputRef}
             />
             <RenderIf isTrue={!!bottomHelpText}>
-                <HelpText>{bottomHelpText}</HelpText>
+                <StyledHelpText>{bottomHelpText}</StyledHelpText>
             </RenderIf>
             <RenderIf isTrue={!!error}>
-                <StyledTextError>{error}</StyledTextError>
+                <StyledErrorMsg>{error}</StyledErrorMsg>
             </RenderIf>
         </StyledFieldset>
     );

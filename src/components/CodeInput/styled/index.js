@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 import { FONT_SIZE_TEXT_LARGE, FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+import HelpText from '../../Input/styled/helpText';
+import StyledTextError from '../../Input/styled/errorText';
+
+const StyledErrorMsg = styled(StyledTextError)`
+    margin-top: 0;
+`;
 
 const StyledInput = attachThemeAttrs(styled.input)`
     font: inherit;
@@ -97,6 +103,10 @@ const StyledInput = attachThemeAttrs(styled.input)`
     `};
 `;
 
+const StyledHelpText = styled(HelpText)`
+    margin-top: 0;
+`;
+
 const StyledFieldset = styled.fieldset`
     line-height: 1.5rem;
     margin: 0;
@@ -121,4 +131,4 @@ const StyledLabel = attachThemeAttrs(styled.legend)`
     }
 `;
 
-export { StyledInput, StyledFieldset, StyledLabel };
+export { StyledErrorMsg, StyledInput, StyledHelpText, StyledFieldset, StyledLabel };
