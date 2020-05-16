@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import CodeInput from '../';
 import InputItems from '../inputItems';
 import InputItem from '../inputItem';
-import { StyledErrorMsg, StyledHelpText, StyledLabel } from '../styled';
+import { StyledErrorMessage, StyledHelpText, StyledLabel } from '../styled';
 
 import useFocusedIndexState from '../hooks/useFocusedIndexState';
 import usePreviousIndex from '../hooks/usePreviousIndex';
@@ -41,11 +41,11 @@ describe('<CodeInput />', () => {
     });
     it('should have error rendered if is sent as param', () => {
         const component = mount(<CodeInput error="error-test" />);
-        expect(component.find(StyledErrorMsg).exists()).toBe(true);
+        expect(component.find(StyledErrorMessage).exists()).toBe(true);
     });
     it('should not have error rendered if is not sent as param', () => {
         const component = mount(<CodeInput />);
-        expect(component.find(StyledErrorMsg).exists()).toBe(false);
+        expect(component.find(StyledErrorMessage).exists()).toBe(false);
     });
     it('should keep isActive as true on active input whenever any other input is clicked', () => {
         const component = mount(<CodeInput />);
