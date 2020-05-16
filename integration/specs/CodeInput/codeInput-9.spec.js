@@ -11,7 +11,7 @@ describe('CodeInput readOnly example', () => {
         const component = $(CODEINPUT);
         component.waitForExist();
     });
-    it('should keep inputs unfocused when codeInput is disabled and inputs are clicked', () => {
+    it('should keep inputs unfocused when codeInput is readOnly and inputs are clicked', () => {
         const codeInput = new PageCodeInput(CODEINPUT);
         expect(codeInput.getFocusedIndex()).toBe(undefined);
         codeInput.clickInputAtIndex(1);

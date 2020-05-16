@@ -91,28 +91,6 @@ function CodeInputWithLength() {
 </div>
 ```
 
-##### CodeInput readOnly:
-
-```js
-import React from 'react';
-import { CodeInput } from 'react-rainbow-components';
-
-function CodeInputReadOnly() {
-    return (
-        <CodeInput
-            id="codeinput-7"
-            label="Enter your Code"
-            value="1234"
-            readOnly
-        />
-    );
-};
-
-<div className="rainbow-align-content_center rainbow-m-around_xx-large">
-    <CodeInputReadOnly  />
-</div>
-```
-
 ##### CodeInput disabled:
 
 ```js
@@ -122,7 +100,7 @@ import { CodeInput } from 'react-rainbow-components';
 function CodeInputDisabled() {
     return (
         <CodeInput
-            id="codeinput-9"
+            id="codeinput-5"
             label="Enter your Code"
             disabled
             bottomHelpText="This is a disabled CodeInput"
@@ -144,7 +122,7 @@ import { CodeInput } from 'react-rainbow-components';
 function CodeInputError() {
     return (
         <CodeInput
-            id="codeinput-11"
+            id="codeinput-7"
             label="Enter your Code"
             error="Looks like the code is invalid"
             required
@@ -154,5 +132,27 @@ function CodeInputError() {
 
 <div className="rainbow-align-content_center rainbow-m-around_xx-large">
     <CodeInputError  />
+</div>
+```
+
+##### CodeInput readOnly:
+
+```js
+import React from 'react';
+import { CodeInput } from 'react-rainbow-components';
+
+function CodeInputReadOnly() {
+    return (
+        <CodeInput
+            id="codeinput-9"
+            label="Enter your Code"
+            value="1234"
+            readOnly
+        />
+    );
+};
+
+<div className="rainbow-align-content_center rainbow-m-around_xx-large">
+    <CodeInputReadOnly  />
 </div>
 ```
