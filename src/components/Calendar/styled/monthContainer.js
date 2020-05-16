@@ -5,7 +5,22 @@ const StyledMonthContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     flex-grow: 1;
-    margin-right: 12px;
+
+    ${props =>
+        props.variant === 'single' &&
+        `
+        margin-right: 12px
+        `};
+    ${props =>
+        props.variant === 'double' &&
+        `
+        justify-content: stretch;
+        
+        & > h3 {
+            flex: 1;
+            text-align: center;            
+        }
+        `};
 `;
 
 export default StyledMonthContainer;

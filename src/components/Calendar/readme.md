@@ -69,3 +69,27 @@ const calendarContainerStyles = {
     </div>
 </div>
 ```
+
+##### Calendar with variant double:
+
+```js
+import React from 'react';
+import { Card, Calendar, Avatar } from 'react-rainbow-components';
+
+initialState = { date: new Date('2019-11-11 00:00:00') };
+const calendarContainerStyles = {
+    width: '80%',
+};
+
+<div>
+    <div className="rainbow-align-content_center rainbow-p-vertical_xx-large rainbow-p-horizontal_small">
+        <div style={calendarContainerStyles}>
+            <Calendar
+                variant="double"
+                value={state.date}
+                onChange={value => setState({ date: value })}
+            />
+        </div>
+    </div>
+</div>
+```

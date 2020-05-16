@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Select from './../Select';
+import RenderIf from '../RenderIf';
+import Select from '../Select';
 import RightIcon from './icons/rightArrow';
 import LeftIcon from './icons/leftArrow';
-import DaysOfWeek from './daysOfWeek';
-import Month from './month';
+import CalendarMonth from './calendarMonth';
 import {
     normalizeDate,
     addDays,
@@ -26,7 +26,7 @@ import StyledControlsContainer from './styled/controlsContainer';
 import StyledMonthContainer from './styled/monthContainer';
 import StyledMonth from './styled/month';
 import StyledArrowButton from './styled/arrowButton';
-import StyledTable from './styled/table';
+import StyledCalendarContainer from './styled/calendarContainer';
 import {
     UP_KEY,
     DOWN_KEY,
@@ -46,12 +46,16 @@ import { Provider } from './context';
 class CalendarComponent extends Component {
     constructor(props) {
         super(props);
+        const currentMonth = getFirstDayMonth(normalizeDate(props.value));
+
         this.state = {
             focusedDate: normalizeDate(props.value),
-            currentMonth: getFirstDayMonth(normalizeDate(props.value)),
+            currentMonth,
+            nextMonth: addMonths(currentMonth, 1),
         };
         this.enableNavKeys = false;
         this.monthLabelId = uniqueId('month');
+        this.nextMonthLabelId = uniqueId('month');
         this.previousMonth = this.previousMonth.bind(this);
         this.nextMonth = this.nextMonth.bind(this);
         this.handleYearChange = this.handleYearChange.bind(this);
@@ -142,6 +146,7 @@ class CalendarComponent extends Component {
         this.setState({
             focusedDate: nextFocusedDate,
             currentMonth: nextFocusedMonth,
+            nextMonth: addMonths(nextFocusedMonth, 1),
         });
     }
 
@@ -164,8 +169,10 @@ class CalendarComponent extends Component {
     }
 
     updateCurrentMonth(value) {
+        const currentMonth = getFirstDayMonth(value);
         this.setState({
-            currentMonth: getFirstDayMonth(value),
+            currentMonth,
+            nextMonth: addMonths(currentMonth, 1),
         });
     }
 
@@ -183,6 +190,7 @@ class CalendarComponent extends Component {
         this.setState({
             focusedDate,
             currentMonth: newMonth,
+            nextMonth: addMonths(newMonth, 1),
         });
     }
 
@@ -194,6 +202,7 @@ class CalendarComponent extends Component {
         this.setState({
             focusedDate,
             currentMonth: newMonth,
+            nextMonth: addMonths(newMonth, 1),
         });
     }
 
@@ -208,6 +217,7 @@ class CalendarComponent extends Component {
         this.setState({
             focusedDate,
             currentMonth: newMonth,
+            nextMonth: addMonths(newMonth, 1),
         });
     }
 
@@ -271,9 +281,20 @@ class CalendarComponent extends Component {
     }
 
     render() {
-        const { currentMonth } = this.state;
-        const { id, value, onChange, minDate, maxDate, className, style, locale } = this.props;
+        const { currentMonth, nextMonth } = this.state;
+        const {
+            id,
+            value,
+            onChange,
+            minDate,
+            maxDate,
+            className,
+            style,
+            locale,
+            variant,
+        } = this.props;
         const formattedMonth = getFormattedMonth(currentMonth, locale);
+        const formattedNextMonth = getFormattedMonth(nextMonth, locale);
         const currentYear = currentMonth.getFullYear();
         const yearsRange = getYearsRange({
             minDate,
@@ -289,8 +310,8 @@ class CalendarComponent extends Component {
 
         return (
             <section id={id} className={className} style={style}>
-                <StyledControlsContainer>
-                    <StyledMonthContainer>
+                <StyledControlsContainer variant={variant}>
+                    <StyledMonthContainer variant={variant}>
                         <StyledArrowButton
                             onClick={this.previousMonth}
                             size="medium"
@@ -302,6 +323,12 @@ class CalendarComponent extends Component {
                         <StyledMonth id={this.monthLabelId} data-id="month">
                             {formattedMonth}
                         </StyledMonth>
+
+                        <RenderIf isTrue={variant === 'double'}>
+                            <StyledMonth id={this.nextMonthLabelId} data-id="month">
+                                {formattedNextMonth}
+                            </StyledMonth>
+                        </RenderIf>
 
                         <StyledArrowButton
                             onClick={this.nextMonth}
@@ -319,18 +346,29 @@ class CalendarComponent extends Component {
                         onChange={this.handleYearChange}
                     />
                 </StyledControlsContainer>
-                <StyledTable role="grid" aria-labelledby={this.monthLabelId}>
-                    <DaysOfWeek locale={locale} />
+                <StyledCalendarContainer variant={variant}>
                     <Provider value={this.getContext()}>
-                        <Month
+                        <CalendarMonth
+                            monthLabelId={this.monthLabelId}
                             value={value}
-                            firstDayMonth={currentMonth}
+                            month={currentMonth}
+                            onChange={onChange}
                             minDate={minDate}
                             maxDate={maxDate}
-                            onChange={onChange}
+                            locale={locale}
                         />
+                        <RenderIf isTrue={variant === 'double'}>
+                            <CalendarMonth
+                                monthLabelId={this.nextMonthLabelId}
+                                month={nextMonth}
+                                onChange={onChange}
+                                minDate={minDate}
+                                maxDate={maxDate}
+                                locale={locale}
+                            />
+                        </RenderIf>
                     </Provider>
-                </StyledTable>
+                </StyledCalendarContainer>
             </section>
         );
     }
@@ -368,6 +406,8 @@ Calendar.propTypes = {
     id: PropTypes.string,
     /** The component locale. If the locale is not passed, it defaults to the context language, and if the context language is not passed, it will default to the browser's language. */
     locale: PropTypes.string,
+    /** The component variant. Defaults to 'single' */
+    variant: PropTypes.oneOf(['single', 'double']),
 };
 
 Calendar.defaultProps = {
@@ -379,4 +419,5 @@ Calendar.defaultProps = {
     style: undefined,
     id: undefined,
     locale: undefined,
+    variant: 'single',
 };

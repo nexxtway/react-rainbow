@@ -7,6 +7,7 @@ export interface CalendarProps extends BaseProps {
     minDate?: Date;
     onChange?: (date: Date) => void;
     locale?: string;
+    variant?: 'single' | 'double';
 }
 
 declare const Calendar: ComponentType<CalendarProps>;
