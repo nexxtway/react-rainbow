@@ -108,7 +108,12 @@ class Textarea extends Component {
                     readOnly={readOnly}
                     id={this.getInlineTextLabelId()}
                 />
-                <StyledTextareaContainer footer={footer}>
+                <StyledTextareaContainer
+                    footer={footer}
+                    error={error}
+                    readOnly={readOnly}
+                    disabled={disabled}
+                >
                     <StyledTextarea
                         error={error}
                         id={this.textareaId}

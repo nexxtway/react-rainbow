@@ -69,7 +69,7 @@ const containerStyles = {
 };
 
 <Textarea
-    label="Textarea Label Error"
+    label="Textarea Label"
     bottomHelpText="This is the bottom help"
     placeholder="Placeholder Text"
     rows={4}
