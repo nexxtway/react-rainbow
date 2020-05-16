@@ -6,7 +6,7 @@ import RequiredAsterisk from '../RequiredAsterisk';
 import { useReduxForm } from '../../libs/hooks';
 import { useFocusedIndexState, usePreviousIndex, useValueState } from './hooks';
 import { getNormalizedValue, getNumbersFromClipboard, setFocus } from './helpers';
-import { StyledErrorMsg, StyledFieldset, StyledHelpText, StyledLabel } from './styled';
+import { StyledErrorMessage, StyledFieldset, StyledHelpText, StyledLabel } from './styled';
 
 /**
  * The CodeInput is an element that allows to fill a list of numbers, suitable for code validations.
@@ -103,7 +103,7 @@ const CodeInput = React.forwardRef((props, ref) => {
                 <StyledHelpText>{bottomHelpText}</StyledHelpText>
             </RenderIf>
             <RenderIf isTrue={!!error}>
-                <StyledErrorMsg>{error}</StyledErrorMsg>
+                <StyledErrorMessage>{error}</StyledErrorMessage>
             </RenderIf>
         </StyledFieldset>
     );

@@ -4,7 +4,7 @@ import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import HelpText from '../../Input/styled/helpText';
 import StyledTextError from '../../Input/styled/errorText';
 
-const StyledErrorMsg = styled(StyledTextError)`
+const StyledErrorMessage = styled(StyledTextError)`
     margin-top: 0;
 `;
 
@@ -34,14 +34,9 @@ const StyledInput = attachThemeAttrs(styled.input)`
     :active {
         outline: 0;
         padding: 0 0.9375rem;
-        
-        ${props =>
-            !props.readOnly &&
-            `
-            border: 2px solid ${props.palette.brand.main};
-            background-color: ${props.palette.background.main};
-            box-shadow: ${props.shadows.brand};
-        `};
+        border: 2px solid ${props => props.palette.brand.main};
+        background-color: ${props => props.palette.background.main};
+        box-shadow: ${props => props.shadows.brand};
 
     }
 
@@ -100,6 +95,14 @@ const StyledInput = attachThemeAttrs(styled.input)`
         border: 2px solid transparent;
         background-color: transparent;
         box-shadow: none;
+        margin: 0 0 12px 0;
+
+        &:focus,
+        &:active {
+            border: 2px solid transparent;
+            background-color: transparent;
+            box-shadow: none;
+        }
     `};
 `;
 
@@ -131,4 +134,4 @@ const StyledLabel = attachThemeAttrs(styled.legend)`
     }
 `;
 
-export { StyledErrorMsg, StyledInput, StyledHelpText, StyledFieldset, StyledLabel };
+export { StyledErrorMessage, StyledInput, StyledHelpText, StyledFieldset, StyledLabel };

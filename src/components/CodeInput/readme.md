@@ -16,10 +16,8 @@ function CodeInputBase() {
         <CodeInput
             id="codeinput-1"
             value={code}
-            label="Code"
-            required
+            label="Enter your Code"
             onChange={setCode}
-            bottomHelpText="Fill the validation code"
             ref={codeInputRef}
         />
     );
@@ -29,16 +27,17 @@ function CodeInputBase() {
     <CodeInputBase  />
 </div>
 ```
+
 ##### CodeInput with length:
 
 ```js
 import React, { useState } from 'react';
 import { Button, Card, CodeInput } from 'react-rainbow-components';
 
-const labelStyle = { 
-    fontSize: '16px', 
-    maxWidth: '287px', 
-    marginBottom: '40px' 
+const labelStyle = {
+    fontSize: '16px',
+    maxWidth: '287px',
+    marginBottom: '40px'
 };
 
 function MyLabel() {
@@ -78,7 +77,7 @@ function CodeInputWithLength() {
             />
             <div className="rainbow-flex rainbow-justify_center">
                 <Button
-                    label="CONTINUE"
+                    label="Continue"
                     onClick={handleOnSubmit}
                     variant="brand"
                 />
@@ -102,10 +101,9 @@ function CodeInputReadOnly() {
     return (
         <CodeInput
             id="codeinput-7"
-            label="Code"
+            label="Enter your Code"
             value="1234"
             readOnly
-            bottomHelpText="This is a readOnly CodeInput"
         />
     );
 };
@@ -125,7 +123,7 @@ function CodeInputDisabled() {
     return (
         <CodeInput
             id="codeinput-9"
-            label="Code"
+            label="Enter your Code"
             disabled
             bottomHelpText="This is a disabled CodeInput"
         />
@@ -147,8 +145,9 @@ function CodeInputError() {
     return (
         <CodeInput
             id="codeinput-11"
-            label="Code"
-            error="Please a valid code"
+            label="Enter your Code"
+            error="Looks like the code is invalid"
+            required
         />
     );
 };
