@@ -9,7 +9,7 @@ const StyledControlsContainer = styled.div`
     ${props =>
         props.variant === 'double' &&
         `
-            align-items: end;
+            align-items: flex-end;
             justify-content: stretch;
             flex-direction: column;
 
