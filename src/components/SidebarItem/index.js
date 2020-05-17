@@ -6,7 +6,6 @@ import RenderIf from '../RenderIf';
 import StyledLi from './styled/li';
 import StyledAnchorContent from './styled/anchorContent';
 import StyledButtonContent from './styled/buttonContent';
-import StyledContainer from './styled/container';
 import ItemContent from './itemContent';
 /**
  * @category Layout
@@ -34,27 +33,27 @@ function SidebarItem(props) {
             className={className}
             style={style}
         >
-            <StyledContainer isSelected={isSelected}>
-                <RenderIf isTrue={!!href}>
-                    <StyledAnchorContent
-                        data-id="sidebar-item-clickable-element"
-                        href={href}
-                        onClick={hanldeOnClick}
-                        aria-current={getAriaCurrent()}
-                    >
-                        <ItemContent isSelected={isSelected} label={label} icon={icon} />
-                    </StyledAnchorContent>
-                </RenderIf>
-                <RenderIf isTrue={!href}>
-                    <StyledButtonContent
-                        data-id="sidebar-item-clickable-element"
-                        onClick={hanldeOnClick}
-                        aria-current={getAriaCurrent()}
-                    >
-                        <ItemContent isSelected={isSelected} label={label} icon={icon} />
-                    </StyledButtonContent>
-                </RenderIf>
-            </StyledContainer>
+            <RenderIf isTrue={!!href}>
+                <StyledAnchorContent
+                    data-id="sidebar-item-clickable-element"
+                    href={href}
+                    onClick={hanldeOnClick}
+                    aria-current={getAriaCurrent()}
+                    isSelected={isSelected}
+                >
+                    <ItemContent isSelected={isSelected} label={label} icon={icon} />
+                </StyledAnchorContent>
+            </RenderIf>
+            <RenderIf isTrue={!href}>
+                <StyledButtonContent
+                    data-id="sidebar-item-clickable-element"
+                    onClick={hanldeOnClick}
+                    aria-current={getAriaCurrent()}
+                    isSelected={isSelected}
+                >
+                    <ItemContent isSelected={isSelected} label={label} icon={icon} />
+                </StyledButtonContent>
+            </RenderIf>
         </StyledLi>
     );
 }

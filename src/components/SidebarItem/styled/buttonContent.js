@@ -1,14 +1,15 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-const StyledButtonContent = styled.button`
+const StyledButtonContent = attachThemeAttrs(styled.button)`
     border: none;
-    border-radius: 0;
+    border-radius: 12px;
     outline: 0;
     padding-left: 1rem;
     padding-right: 1rem;
     background-color: transparent;
     width: 100%;
-    height: 100%;
+    height: 6rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -26,6 +27,20 @@ const StyledButtonContent = styled.button`
         border: 0;
         padding: 0;
     }
+
+    :hover,
+    :active,
+    :focus {
+        background-color: ${props => props.palette.action.hover};
+        outline: 0;
+    }
+
+    ${props =>
+        props.isSelected &&
+        `
+        background-color: ${props.palette.action.active};
+            outline: 0;
+        `};
 `;
 
 export default StyledButtonContent;

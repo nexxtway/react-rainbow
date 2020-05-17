@@ -3,9 +3,7 @@ import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledLi = attachThemeAttrs(styled.li)`
     position: relative;
-    margin-bottom: 1.375rem;
-    padding-bottom: 0.75rem;
-    padding-top: 0.75rem;
+    padding: 0.75rem 1rem;
     box-sizing: border-box;
     display: flex;
     align-items: center;

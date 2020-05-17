@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-const StyledAnchorContent = styled.a`
+const StyledAnchorContent = attachThemeAttrs(styled.a)`
     padding-left: 1rem;
     padding-right: 1rem;
     background-color: transparent;
@@ -9,9 +10,9 @@ const StyledAnchorContent = styled.a`
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    height: 6rem;
     width: 100%;
-    border-radius: 0;
+    border-radius: 12px;
     cursor: pointer;
     flex-direction: column;
     box-sizing: border-box;
@@ -20,10 +21,18 @@ const StyledAnchorContent = styled.a`
     :hover,
     :active,
     :focus {
+        background-color: ${props => props.palette.action.hover};
         text-decoration: none;
-        outline: 0;
         color: transparent;
+        outline: 0;
     }
+
+    ${props =>
+        props.isSelected &&
+        `
+        background-color: ${props.palette.action.active};
+            outline: 0;
+        `};
 `;
 
 export default StyledAnchorContent;
