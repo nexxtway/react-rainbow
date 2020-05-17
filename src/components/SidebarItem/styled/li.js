@@ -7,6 +7,9 @@ const StyledLi = attachThemeAttrs(styled.li)`
     padding-bottom: 0.75rem;
     padding-top: 0.75rem;
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 
     :last-child {
         margin-bottom: 0;

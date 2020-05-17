@@ -2,14 +2,16 @@ import styled from 'styled-components';
 
 const StyledButtonContent = styled.button`
     border: none;
-    padding: 0;
+    border-radius: 0;
     outline: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
     background-color: transparent;
-    transition: color 0.1s linear;
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
-    width: 100%;
-    border-radius: 0;
+    justify-content: center;
     cursor: pointer;
     flex-direction: column;
     box-sizing: border-box;
