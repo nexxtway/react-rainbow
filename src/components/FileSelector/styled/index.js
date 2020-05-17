@@ -7,12 +7,16 @@ import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 import { PADDING_MEDIUM } from '../../../styles/paddings';
 
-const StyledContainer = styled.div`
+export const StyledContainer = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
 `;
 
-const StyledDropzone = attachThemeAttrs(styled.div)`     
+export const StyledDropzone = attachThemeAttrs(styled.div)`     
     position: relative;
     height: 2.5rem;   
     padding: 4px;
@@ -20,6 +24,10 @@ const StyledDropzone = attachThemeAttrs(styled.div)`
     border-radius: ${BORDER_RADIUS_2};
     background-color: ${props => props.palette.background.disabled};
     color: ${props => props.palette.text.main};
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
 
     &:hover {
         cursor: pointer;
@@ -37,8 +45,10 @@ const StyledDropzone = attachThemeAttrs(styled.div)`
     ${props =>
         props.variant === 'multiline' &&
         `
-        height: 12rem;
+        min-height: 12rem;
         border-radius: 27px;
+        height: 100%;
+        width: 100%;
         `}
 
     ${props =>
@@ -80,7 +90,7 @@ const StyledDropzone = attachThemeAttrs(styled.div)`
         `}
 `;
 
-const TruncatedText = styled.span`
+export const TruncatedText = styled.span`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -88,7 +98,7 @@ const TruncatedText = styled.span`
     pointer-events: none;
 `;
 
-const StyledBackdrop = styled.div`
+export const StyledBackdrop = attachThemeAttrs(styled.div)`
     position: relative;
     height: 100%;
     display: flex;
@@ -102,7 +112,7 @@ const StyledBackdrop = styled.div`
         props.isFileSelected &&
         `
         justify-content: left;
-        background-color: rgba(0, 0, 0, 0.1);
+        background-color: ${props.palette.background.highlight};
         padding-right: 2.35rem;
         `}
 
@@ -116,14 +126,17 @@ const StyledBackdrop = styled.div`
         font-size: ${FONT_SIZE_TEXT_MEDIUM};
         padding: ${PADDING_MEDIUM};
         background: transparent;
+        height: 100%;
+        width: 100%;
         `}
 `;
 
-const StyledIconContainer = styled(IconContainer)`
+export const StyledIconContainer = attachThemeAttrs(styled(IconContainer))`
     svg {
         width: 24px !important;
         height: 24px !important;
         font-size: 24px !important;
+        color: ${props => props.palette.brand.main};
     }
 
     ${props =>
@@ -163,7 +176,7 @@ const StyledIconContainer = styled(IconContainer)`
         `}
 `;
 
-const StyledButtonIcon = styled(ButtonIcon)`
+export const StyledButtonIcon = styled(ButtonIcon)`
     width: unset;
     height: unset;
     pointer-events: auto;
@@ -173,7 +186,7 @@ const StyledButtonIcon = styled(ButtonIcon)`
     }
 `;
 
-const StyledInput = styled.input`
+export const StyledInput = styled.input`
     position: absolute;
     top: 0;
     left: 0;
@@ -181,13 +194,3 @@ const StyledInput = styled.input`
     height: 100%;
     opacity: 0;
 `;
-
-export {
-    StyledContainer,
-    StyledDropzone,
-    TruncatedText,
-    StyledBackdrop,
-    StyledIconContainer,
-    StyledButtonIcon,
-    StyledInput,
-};
