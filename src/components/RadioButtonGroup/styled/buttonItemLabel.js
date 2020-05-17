@@ -7,8 +7,8 @@ import {
     FONT_SIZE_TEXT_X_SMALL,
 } from '../../../styles/fontSizes';
 import {
+    PADDING_X_LARGE,
     PADDING_LARGE,
-    PADDING_MEDIUM,
     PADDING_SMALL,
     PADDING_X_SMALL,
 } from '../../../styles/paddings';
@@ -21,8 +21,8 @@ const fontSizeMap = {
     'x-small': FONT_SIZE_TEXT_X_SMALL,
 };
 const paddingMap = {
-    large: PADDING_LARGE,
-    medium: PADDING_MEDIUM,
+    large: PADDING_X_LARGE,
+    medium: PADDING_LARGE,
     small: PADDING_SMALL,
     'x-small': PADDING_X_SMALL,
 };
