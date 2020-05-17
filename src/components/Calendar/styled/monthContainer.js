@@ -5,7 +5,6 @@ const StyledMonthContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     flex-grow: 1;
-
     ${props =>
         props.variant === 'single' &&
         `
@@ -18,7 +17,7 @@ const StyledMonthContainer = styled.div`
         
         & > h3 {
             flex: 1;
-            text-align: center;            
+            text-align: center;
         }
         `};
 `;
