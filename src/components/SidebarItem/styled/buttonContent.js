@@ -5,11 +5,9 @@ const StyledButtonContent = attachThemeAttrs(styled.button)`
     border: none;
     border-radius: 12px;
     outline: 0;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding: 0.5rem 0;
     background-color: transparent;
     width: 100%;
-    height: 6rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -38,7 +36,7 @@ const StyledButtonContent = attachThemeAttrs(styled.button)`
     ${props =>
         props.isSelected &&
         `
-        background-color: ${props.palette.action.active};
+            background-color: ${props.palette.action.active};
             outline: 0;
         `};
 `;
