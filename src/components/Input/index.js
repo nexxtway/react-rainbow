@@ -130,7 +130,12 @@ Input.propTypes = {
     /** The id of the outer element. */
     id: PropTypes.string,
     /** A string indicating the type of autocomplete functionality.
-     * If any, to allow on the input. */
+     * If any, to allow on the input. 
+     * 
+     * Values accepted by the autocomplete prop: name, organization-title, username, new-password, 
+     * street-address, country, cc-name, transaction currency, language, bday, sex, url, photo, tel email and impp.
+     * 
+     * For a detail list, go to: https://www.w3.org/TR/WCAG21/#input-purposes */
     autoComplete: PropTypes.string,
 };
 
