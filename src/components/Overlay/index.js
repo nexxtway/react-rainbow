@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import ContentMetaResolver from './ContentMetaResolver';
 import defaultPositionResolver from './defaultPositionResolver';
 import { disableScroll, enableScroll } from './scroll';
+
 const Container = styled.div`
     position: fixed;
     z-index: 999999999;
@@ -67,6 +68,10 @@ const resolvePosition = opts => {
     });
 };
 
+/**
+ * Overlay are used to.
+ * @category Internal
+ */
 const Overlay = props => {
     const { render: ContentComponent, isVisible, triggerElementRef, positionResolver } = props;
     const [contentMeta, updateContentMeta] = useState(false);
