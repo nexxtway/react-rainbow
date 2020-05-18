@@ -276,7 +276,7 @@ initialState = { value: { name: 'option 3', label: 'Central Park' } };
 </Picklist>
 ```
 
-##### Picklist with neutral GlobalHeader
+##### Picklist shaded with neutral GlobalHeader
 
 ```js
 import React from 'react';
@@ -302,6 +302,7 @@ initialState = { value: { name: 'option 3', label: 'Central Park' } };
                 value={state.value}
                 label="Select Building"
                 hideLabel
+                variant="shaded"
             >
                 <PicklistOption name="header" label="Your Buildings" variant="header" />
                 <PicklistOption name="option 1" label="Experimental Building" />

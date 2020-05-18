@@ -338,6 +338,7 @@ class Picklist extends Component {
             hideLabel,
             style,
             className,
+            variant,
             error,
             isLoading,
             disabled,
@@ -413,6 +414,7 @@ class Picklist extends Component {
                         aria-activedescendant={this.getAriaActivedescendant()}
                         icon={icon}
                         iconPosition="left"
+                        variant={variant}
                     />
                     <StyledDropdown
                         id={this.listboxId}
@@ -503,6 +505,9 @@ Picklist.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
+    /** The variant changes the appearance of the Picklist. Accepted variants include default,
+     * and shaded. This value defaults to default. */
+    variant: PropTypes.oneOf(['default', 'shaded']),
 };
 
 Picklist.defaultProps = {
@@ -525,6 +530,7 @@ Picklist.defaultProps = {
     required: false,
     className: undefined,
     style: undefined,
+    variant: 'default',
 };
 
 export default withReduxForm(Picklist);

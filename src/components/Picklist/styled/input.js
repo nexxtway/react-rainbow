@@ -20,6 +20,13 @@ const PickerInput = attachThemeAttrs(styled(StyledInput))`
     }
 
     ${props =>
+        props.variant === 'shaded' &&
+        `
+        box-shadow: ${props.shadows.shadow_11};
+        border: 1px solid transparent;
+    `}
+
+    ${props =>
         props.isReadOnly &&
         `
         box-shadow: none;
