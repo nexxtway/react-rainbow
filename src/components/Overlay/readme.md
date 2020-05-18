@@ -106,7 +106,7 @@ const Cell = styled.div`
     border: solid 1px ${props => props.theme.rainbow.palette.border.divider};
     height: 120px;
     width: 200px;
-    background: ${props => props.theme.rainbow.palette.background.main};
+    background: transparent;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -135,7 +135,7 @@ const Event = styled.button`
 `;
 
 const Dropdown = styled.div`
-    width: 400px;
+    width: 440px;
     border: solid 1px ${props => props.theme.rainbow.palette.border.divider};
     border-radius: 0.875rem;
     padding: 0.5rem;
@@ -155,7 +155,7 @@ const Icon = styled.div`
     width: 20px;
     height: 20px;
     border-radius: 4px;
-    margin: 8px 24px 0 12px;
+    margin: 12px 24px 0 8px;
 `;
 
 const Title = styled.h1`
@@ -189,7 +189,7 @@ const Component = () => {
                     ref={ref}
                     onClick={handleClick}
                     type="button">
-                    Nexxtway Event
+                    React Rainbow Event
                 </Event>
                 <Overlay
                     isVisible={isOpen}
@@ -205,15 +205,15 @@ const Component = () => {
                                     <Icon />
                                     <div>
                                         <Title>
-                                            Nexxtway Event
+                                            React Rainbow Event
                                         </Title>
                                         <Description>
-                                            May 5, 2020
+                                            Wednesday, May 5 ⋅ 11:00 – 11:30am
                                         </Description>
                                     </div>
                                 </div>
                                 <Body>
-                                    React Rainbow is a collection of components that will reliably help you build your application in a snap. Give it a hack and let us know what you think.
+                                    React Rainbow is a collection of components that will reliably help you build your application in a snap.
                                 </Body>
                             </Dropdown>);
                     }}
