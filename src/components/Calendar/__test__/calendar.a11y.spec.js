@@ -10,4 +10,11 @@ describe('<Calendar/>', () => {
         const results = await axe(html);
         expect(results).toHaveNoViolations();
     });
+
+    it('should be accessible when variant is double', async () => {
+        expect.assertions(1);
+        const html = ReactDOMServer.renderToString(<Calendar variant="double" />);
+        const results = await axe(html);
+        expect(results).toHaveNoViolations();
+    });
 });
