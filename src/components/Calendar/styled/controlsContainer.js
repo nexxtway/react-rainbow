@@ -6,7 +6,7 @@ const StyledControlsContainer = styled.div`
     justify-content: space-between;
     padding: 0 0 8px 0;
     ${props =>
-        props.variant === 'double' &&
+        props.isDouble &&
         `
         align-items: flex-end;
         justify-content: stretch;

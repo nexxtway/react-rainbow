@@ -6,12 +6,12 @@ const StyledMonthContainer = styled.div`
     align-items: center;
     flex-grow: 1;
     ${props =>
-        props.variant === 'single' &&
+        !props.isDouble &&
         `
         margin-right: 12px
         `};
     ${props =>
-        props.variant === 'double' &&
+        props.isDouble &&
         `
         justify-content: stretch;
         
