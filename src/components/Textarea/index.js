@@ -6,6 +6,7 @@ import { uniqueId } from './../../libs/utils';
 import RenderIf from '../RenderIf';
 import Label from './../Input/label';
 import StyledContainer from './styled/container';
+import StyledTextareaContainer from './styled/textareaContainer';
 import StyledTextarea from './styled/textarea';
 import StyledBottomHelp from '../Input/styled/helpText';
 import StyledError from '../Input/styled/errorText';
@@ -94,6 +95,7 @@ class Textarea extends Component {
             id,
             hideLabel,
             name,
+            footer,
         } = this.props;
 
         return (
@@ -106,29 +108,36 @@ class Textarea extends Component {
                     readOnly={readOnly}
                     id={this.getInlineTextLabelId()}
                 />
-
-                <StyledTextarea
+                <StyledTextareaContainer
+                    footer={footer}
                     error={error}
-                    id={this.textareaId}
-                    name={name}
-                    placeholder={placeholder}
-                    disabled={disabled}
-                    required={required}
-                    maxLength={maxLength}
-                    minLength={minLength}
-                    onChange={onChange}
-                    onClick={onClick}
-                    onFocus={onFocus}
-                    onBlur={onBlur}
-                    onPaste={onPaste}
                     readOnly={readOnly}
-                    rows={rows}
-                    value={value}
-                    aria-labelledby={this.getInlineTextLabelId()}
-                    aria-describedby={this.getErrorMessageId()}
-                    ref={this.textareaRef}
-                />
-
+                    disabled={disabled}
+                >
+                    <StyledTextarea
+                        error={error}
+                        id={this.textareaId}
+                        name={name}
+                        placeholder={placeholder}
+                        disabled={disabled}
+                        required={required}
+                        maxLength={maxLength}
+                        minLength={minLength}
+                        onChange={onChange}
+                        onClick={onClick}
+                        onFocus={onFocus}
+                        onBlur={onBlur}
+                        onPaste={onPaste}
+                        readOnly={readOnly}
+                        rows={rows}
+                        value={value}
+                        aria-labelledby={this.getInlineTextLabelId()}
+                        aria-describedby={this.getErrorMessageId()}
+                        ref={this.textareaRef}
+                        footer={footer}
+                    />
+                    <RenderIf isTrue={!!footer}>{footer}</RenderIf>
+                </StyledTextareaContainer>
                 <RenderIf isTrue={!!bottomHelpText}>
                     <StyledBottomHelp>{bottomHelpText}</StyledBottomHelp>
                 </RenderIf>
@@ -186,6 +195,8 @@ Textarea.propTypes = {
     style: PropTypes.object,
     /** The id of the outer element. */
     id: PropTypes.string,
+    /** It is what will be displayed at the bottom of the component. */
+    footer: PropTypes.node,
 };
 
 Textarea.defaultProps = {
@@ -211,6 +222,7 @@ Textarea.defaultProps = {
     style: undefined,
     id: undefined,
     hideLabel: false,
+    footer: undefined,
 };
 
 export default withReduxForm(Textarea);

@@ -39,6 +39,7 @@ function SidebarItem(props) {
                     href={href}
                     onClick={hanldeOnClick}
                     aria-current={getAriaCurrent()}
+                    isSelected={isSelected}
                 >
                     <ItemContent isSelected={isSelected} label={label} icon={icon} />
                 </StyledAnchorContent>
@@ -48,6 +49,7 @@ function SidebarItem(props) {
                     data-id="sidebar-item-clickable-element"
                     onClick={hanldeOnClick}
                     aria-current={getAriaCurrent()}
+                    isSelected={isSelected}
                 >
                     <ItemContent isSelected={isSelected} label={label} icon={icon} />
                 </StyledButtonContent>

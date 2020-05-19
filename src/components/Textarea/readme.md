@@ -69,7 +69,7 @@ const containerStyles = {
 };
 
 <Textarea
-    label="Textarea Label Error"
+    label="Textarea Label"
     bottomHelpText="This is the bottom help"
     placeholder="Placeholder Text"
     rows={4}
@@ -116,4 +116,52 @@ const containerStyles = {
     style={containerStyles}
     className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
 />;
+```
+
+##### Textarea with footer
+
+```js
+import React, { useState } from 'react';
+import { Textarea } from 'react-rainbow-components';
+import styled from 'styled-components';
+
+const StyledFooter = styled.div.attrs(props => {
+    return props.theme.rainbow.palette;
+})
+`
+    font-size: 12px;
+    color: ${props => props.text.header};
+    text-align: right;
+    padding: 10px;
+    border-radius: 0 0 0.875rem 0.875rem;
+    background-color: #F6F7F9;
+    padding: 16px;
+`;
+
+const containerStyles = {
+    maxWidth: 700,
+};
+
+function TextareaExample(props) {
+    const [count, setCount] = useState(0);
+    const maxLength = props.maxLength;
+    
+    return (
+        <Textarea
+            label="Textarea Label"
+            rows={4}
+            onChange={(event) => setCount(event.target.value.length)}
+            maxLength={maxLength}
+            placeholder="Placeholder Text"
+            style={containerStyles}
+            footer={
+                <StyledFooter>
+                    {`${count}/${maxLength}`}
+                </StyledFooter>}
+            className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
+        />
+    );
+}
+
+<TextareaExample maxLength={160} />
 ```

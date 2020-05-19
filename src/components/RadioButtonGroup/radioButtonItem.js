@@ -23,12 +23,14 @@ export default class RadioButtonItem extends Component {
             name,
             required,
             variant,
+            size,
         } = this.props;
 
         return (
             <StyledButtonItem
                 data-id="radio-button-group_radio-container"
                 variant={variant}
+                size={size}
                 isChecked={isChecked}
                 disabled={disabled}
                 ref={itemRef}
@@ -50,6 +52,7 @@ export default class RadioButtonItem extends Component {
                     isChecked={isChecked}
                     variant={variant}
                     htmlFor={this.radioId}
+                    size={size}
                 >
                     {label}
                 </StyledButtonItemLabel>
@@ -69,6 +72,7 @@ RadioButtonItem.propTypes = {
     required: PropTypes.bool.isRequired,
     itemRef: PropTypes.object.isRequired,
     variant: PropTypes.oneOf(['default', 'inverse', 'brand']),
+    size: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
 };
 
 RadioButtonItem.defaultProps = {
@@ -79,4 +83,5 @@ RadioButtonItem.defaultProps = {
     isChecked: false,
     name: undefined,
     variant: 'default',
+    size: 'medium',
 };
