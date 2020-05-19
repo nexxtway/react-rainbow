@@ -21,6 +21,7 @@ describe('<ButtonItems />', () => {
                 ariaDescribedby="error-1"
                 onChange={() => {}}
                 variant="inverse"
+                size="small"
             />,
         );
         expect(component.find('RadioButtonItem').props()).toEqual({
@@ -34,6 +35,7 @@ describe('<ButtonItems />', () => {
             onChange: expect.any(Function),
             isChecked: false,
             required: undefined,
+            size: 'small',
             variant: 'inverse',
         });
     });
