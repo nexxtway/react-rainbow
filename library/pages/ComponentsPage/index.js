@@ -33,6 +33,7 @@ export default class ComponentsPage extends Component {
             dataViews: [],
             miscellaneous: [],
             experiences: [],
+            internal: [],
         };
         filtered.forEach((component, index) => {
             const key = `component-${index}`;
@@ -58,6 +59,8 @@ export default class ComponentsPage extends Component {
                     categorizedComponents.layouts.push(card);
                 } else if (category === 'Experiences') {
                     categorizedComponents.experiences.push(card);
+                } else if (category === 'Internal') {
+                    categorizedComponents.internal.push(card);
                 } else if (category === 'DataView') {
                     categorizedComponents.dataViews.push(card);
                 }
@@ -79,6 +82,7 @@ export default class ComponentsPage extends Component {
             layouts,
             miscellaneous,
             experiences,
+            internal,
         } = this.getComponentsByCategory();
         return (
             <div className="react-rainbow-components-page_cards-container">
@@ -110,6 +114,16 @@ export default class ComponentsPage extends Component {
                 <div className="react-rainbow-components-page_card-group-container">
                     {experiences}
                 </div>
+                <RenderIf isTrue={!!internal.length}>
+                    <h1 className="react-rainbow-components-page_category-title">Internal</h1>
+                    <h1 className="react-rainbow-components-page_category-description">
+                        These components are for internal use only, it's not recommended to use them
+                        directly since it's the main purpose is as a building block of other
+                        components. API or behaviors could change causing breaking change for anyone
+                        using them directly.
+                    </h1>
+                </RenderIf>
+                <div className="react-rainbow-components-page_card-group-container">{internal}</div>
             </div>
         );
     }

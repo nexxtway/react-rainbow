@@ -3,10 +3,12 @@ import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledLi = attachThemeAttrs(styled.li)`
     position: relative;
-    margin-bottom: 1.375rem;
-    padding-bottom: 0.75rem;
-    padding-top: 0.75rem;
+    padding: 0 0.5rem;
+    margin: 1rem 0;
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 
     :last-child {
         margin-bottom: 0;
