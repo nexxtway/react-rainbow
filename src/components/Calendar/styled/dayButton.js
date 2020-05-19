@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
-import { replaceAlpha } from '../../../styles/helpers/color';
 
 const StyledDayButton = attachThemeAttrs(styled.button)`
     font: inherit;
@@ -13,7 +12,6 @@ const StyledDayButton = attachThemeAttrs(styled.button)`
     line-height: 38px;
     height: 38px;
     width: 38px;
-    margin: 6px auto;
     box-sizing: border-box;
     cursor: pointer;
     color: inherit;
@@ -38,10 +36,6 @@ const StyledDayButton = attachThemeAttrs(styled.button)`
         line-height: 36px;
     }
 
-    @media (max-width: 600px) {
-        margin: 3px auto;
-    }
-
     ${props =>
         props.isSelected &&
         `
@@ -54,7 +48,6 @@ const StyledDayButton = attachThemeAttrs(styled.button)`
             line-height: 36px;
             height: 38px;
             width: 38px;
-            margin: 5px auto;
             padding: 0;
             border: none;
             outline: none;
@@ -71,17 +64,6 @@ const StyledDayButton = attachThemeAttrs(styled.button)`
             &:focus {
                 box-shadow: 0 0 8px ${props.palette.brand.main};
             }
-
-            @media (max-width: 600px) {
-                margin: 3px auto;
-            }
-        `};
-
-    ${props =>
-        props.isWithinRange &&
-        !props.isSelected &&
-        `
-        background-color: ${replaceAlpha(props.palette.brand.light, 1)};
         `};
 `;
 

@@ -5,7 +5,8 @@ import { Consumer } from './context';
 import StyledDay from './styled/day';
 import StyledDayAdjacent from './styled/dayAdjacent';
 import StyledDayButton from './styled/dayButton';
-import { isSameDay, compareDates } from './helpers';
+import StyledRangeHighlight from './styled/rangeHighlight';
+import { isSameDay, compareDates, isEmptyRange } from './helpers';
 
 function DayComponent(props) {
     const {
@@ -16,22 +17,29 @@ function DayComponent(props) {
         maxDate,
         onChange,
         isWithinRange,
-        // isFirstDayOfWeek,
-        // isLastDayOfWeek,
+        isFirstDayOfWeek,
+        isLastDayOfWeek,
     } = props;
     const {
         useAutoFocus,
         focusedDate,
+        currentRange,
         privateKeyDown,
         privateOnFocus,
         privateOnBlur,
-        privateOnHover,
+        // privateOnHover,
     } = props;
     const day = date.getDate();
     const isAdjacentDate = date.getMonth() !== firstDayMonth.getMonth();
     const isDisabled = compareDates(date, maxDate) > 0 || compareDates(date, minDate) < 0;
     const tabIndex = isSameDay(focusedDate, date) ? 0 : -1;
     const buttonRef = useRef();
+
+    const isRangeStartDate = !isEmptyRange(currentRange) ? isSameDay(date, currentRange[0]) : false;
+    const isRangeEndDate =
+        !isEmptyRange(currentRange) && currentRange.length >= 2
+            ? isSameDay(date, currentRange[1])
+            : false;
 
     useEffect(() => {
         if (!useAutoFocus || !buttonRef.current || tabIndex === -1) return;
@@ -48,20 +56,28 @@ function DayComponent(props) {
 
     return (
         <StyledDay role="gridcell">
-            <StyledDayButton
-                ref={buttonRef}
-                tabIndex={tabIndex}
-                onClick={() => onChange(new Date(date))}
-                onMouseOver={() => privateOnHover(new Date(date))}
-                isSelected={isSelected}
-                data-selected={isSelected}
-                onKeyDown={privateKeyDown}
-                onFocus={privateOnFocus}
-                onBlur={privateOnBlur}
-                isWithinRange={isWithinRange}
+            <StyledRangeHighlight
+                isVisible={isWithinRange}
+                isFirstInRange={isRangeStartDate}
+                isLastInRange={isRangeEndDate}
+                isFirstDayOfWeek={isFirstDayOfWeek}
+                isLastDayOfWeek={isLastDayOfWeek}
             >
-                {day}
-            </StyledDayButton>
+                <StyledDayButton
+                    ref={buttonRef}
+                    tabIndex={tabIndex}
+                    onClick={() => onChange(new Date(date))}
+                    // onMouseOver={() => privateOnHover(new Date(date))}
+                    isSelected={isSelected}
+                    data-selected={isSelected}
+                    onKeyDown={privateKeyDown}
+                    onFocus={privateOnFocus}
+                    onBlur={privateOnBlur}
+                    isWithinRange={isWithinRange}
+                >
+                    {day}
+                </StyledDayButton>
+            </StyledRangeHighlight>
         </StyledDay>
     );
 }
