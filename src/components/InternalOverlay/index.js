@@ -69,10 +69,11 @@ const resolvePosition = opts => {
 };
 
 /**
- * Overlay are used to.
+ * InternalOverlay is a solution for creating any UI element floating.
+ * To make all of them integrations possible, it does not come with any style, you need to provide your own.
  * @category Internal
  */
-const Overlay = props => {
+const InternalOverlay = props => {
     const { render: ContentComponent, isVisible, triggerElementRef, positionResolver } = props;
     const [contentMeta, updateContentMeta] = useState(false);
     useEffect(() => {
@@ -104,17 +105,21 @@ const Overlay = props => {
     return null;
 };
 
-Overlay.propTypes = {
+InternalOverlay.propTypes = {
+    /** Add description. */
     render: PropTypes.func,
+    /** Controls whether the InternalOverlay is visible or not. If true, the content of the Overlay is shown. */
     isVisible: PropTypes.bool,
+    /** Add description */
     triggerElementRef: PropTypes.oneOfType(PropTypes.object, PropTypes.func).isRequired,
+    /** Add description */
     positionResolver: PropTypes.func,
 };
 
-Overlay.defaultProps = {
+InternalOverlay.defaultProps = {
     render: () => {},
     isVisible: false,
     positionResolver: undefined,
 };
 
-export default Overlay;
+export default InternalOverlay;

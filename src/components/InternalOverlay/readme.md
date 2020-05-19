@@ -1,4 +1,4 @@
-##### Using Overlay with default position resolver:
+##### Using InternalOverlay with default position resolver:
 
 ```js
 import { ButtonIcon } from 'react-rainbow-components';
@@ -54,7 +54,7 @@ const Component = () => {
                 ref={ref}
                 onClick={handleClick}
             />
-            <Overlay
+            <InternalOverlay
                 isVisible={isOpen}
                 render={() => {
                     return (
@@ -85,7 +85,7 @@ const Component = () => {
 </Container>
 ```
 
-##### Using Overlay with custom position resolver:
+##### Using InternalOverlay with custom position resolver:
 
 ```js
 import { Button, ButtonIcon } from 'react-rainbow-components';
@@ -191,7 +191,7 @@ const Component = () => {
                     type="button">
                     React Rainbow Event
                 </Event>
-                <Overlay
+                <InternalOverlay
                     isVisible={isOpen}
                     render={() => {
                         return (
