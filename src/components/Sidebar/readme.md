@@ -9,7 +9,7 @@ const SideBarContainer = styled.div.attrs(props => {
     return props.theme.rainbow.palette;
 })`
     background: ${props => props.background.main};
-    width: 88px;
+    width: 120px;
     border-bottom-left-radius: 0.875rem;
 `;
 

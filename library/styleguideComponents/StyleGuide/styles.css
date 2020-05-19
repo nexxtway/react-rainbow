@@ -28,7 +28,7 @@
 }
 
 .react-rainbow-styleguide-sidebar {
-    width: 87px;
+    width: 104px;
     height: calc(100vh - 68px);
     position: fixed;
     z-index: 3000;
@@ -49,7 +49,7 @@
     transition: all 0.05s ease;
     position: absolute;
     bottom: 24px;
-    left: 26px;
+    left: 34px;
 }
 
 .react-rainbow-styleguide_twitter-link:hover,
@@ -66,9 +66,9 @@
 .react-rainbow-main-content {
     background-color: white;
     min-height: calc(100vh - 68px);
-    width: calc(100vw - 87px);
+    width: calc(100vw - 104px);
     margin-top: 68px;
-    margin-left: 87px;
+    margin-left: 104px;
 }
 
 .rsg--root-3 {
