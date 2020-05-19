@@ -15,7 +15,8 @@ const TimeSelectInputExample = () => {
         <TimeSelectInput 
             id="time-select-input-1" 
             value={time} 
-            onChange={setTime} 
+            onChange={setTime}
+            label="TimeSelectInput Label"
         />
     ); 
 }
@@ -42,6 +43,7 @@ const TimeSelectInputExample = () => {
             id="time-select-input-3" 
             value={time} 
             onChange={setTime}
+            label="TimeSelectInput Label"
         /> 
     ); 
 }
@@ -69,6 +71,92 @@ const TimeSelectInputExample = () => {
             value={time} 
             onChange={setTime} 
             hour24={true}
+            label="TimeSelectInput Label"
+        />
+    ); 
+}
+<StyledContainer>
+    <TimeSelectInputExample />
+</StyledContainer>
+```
+
+##### TimeSelectInput disabled:
+
+```js
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { TimeSelectInput } from 'react-rainbow-components';
+
+const StyledContainer = styled.div`
+    display: flex;
+    justify-content: center;
+`;
+const TimeSelectInputExample = () => {
+    const [time, setTime] = useState(null); 
+    return ( 
+        <TimeSelectInput 
+            id="time-select-input-5" 
+            value={time} 
+            onChange={setTime} 
+            label="TimeSelectInput Label"
+            disabled
+        />
+    ); 
+}
+<StyledContainer>
+    <TimeSelectInputExample />
+</StyledContainer>
+```
+
+##### TimeSelectInput required:
+
+```js
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { TimeSelectInput } from 'react-rainbow-components';
+
+const StyledContainer = styled.div`
+    display: flex;
+    justify-content: center;
+`;
+const TimeSelectInputExample = () => {
+    const [time, setTime] = useState(null); 
+    return ( 
+        <TimeSelectInput 
+            id="time-select-input-5" 
+            value={time} 
+            onChange={setTime} 
+            label="TimeSelectInput Label"
+            required
+            error="Enter a valid time to continue"
+        />
+    ); 
+}
+<StyledContainer>
+    <TimeSelectInputExample />
+</StyledContainer>
+```
+
+##### TimeSelectInput with help text:
+
+```js
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { TimeSelectInput } from 'react-rainbow-components';
+
+const StyledContainer = styled.div`
+    display: flex;
+    justify-content: center;
+`;
+const TimeSelectInputExample = () => {
+    const [time, setTime] = useState(null); 
+    return ( 
+        <TimeSelectInput 
+            id="time-select-input-5" 
+            value={time} 
+            onChange={setTime} 
+            label="TimeSelectInput Label"
+            bottomHelpText="Enter a time in format hh:mm tt"
         />
     ); 
 }

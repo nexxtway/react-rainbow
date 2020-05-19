@@ -5,9 +5,15 @@ import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { replaceAlpha } from '../../../styles/helpers/color';
 import { DownArrow, UpArrow } from '../icons';
 import HiddenElement from '../../Structural/hiddenElement';
+import Label from '../../Input/label';
+import HelpText from '../../Input/styled/helpText';
+import ErrorText from '../../Input/styled/errorText';
 
 export const StyledContainer = styled.div`
     width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 `;
 
 export const StyledDots = attachThemeAttrs(styled.span)`
@@ -19,6 +25,13 @@ export const StyledDots = attachThemeAttrs(styled.span)`
     display: flex;
     align-items: center;
     justify-content: center;
+    ${props =>
+        (props.disabled || props.readOnly) &&
+        `
+        cursor: default;
+        pointer-events: none;
+        color: ${props.palette.text.disabled};
+    `};
 
     @media (max-width: 600px) {
         margin: 0;
@@ -26,7 +39,8 @@ export const StyledDots = attachThemeAttrs(styled.span)`
 `;
 
 export const StyledDownArrow = attachThemeAttrs(styled(DownArrow))`
-    color: ${props => props.palette.brand.main};
+    color: ${props =>
+        props.disabled || props.readOnly ? props.palette.text.disabled : props.palette.brand.main};
 `;
 
 export const StyledInputHidden = attachThemeAttrs(styled(HiddenElement))`
@@ -226,6 +240,29 @@ export const StyledSelectValue = attachThemeAttrs(styled.input).attrs(props => {
         }
 
     `};
+    ${props =>
+        (props.disabled || props.readOnly) &&
+        `
+        cursor: default;
+        pointer-events: none;
+        color: ${props.palette.text.disabled};
+        
+        &[placeholder]::-webkit-input-placeholder {
+            color: ${props.palette.text.disabled};
+        }
+
+        &[placeholder]::-moz-placeholder {
+            color: ${props.palette.text.disabled};
+        }
+
+        &[placeholder]:-ms-input-placeholder {
+            color: ${props.palette.text.disabled};
+        }
+
+        &[placeholder]:-moz-placeholder {
+            color: ${props.palette.text.disabled};
+        }
+    `};
 
     @media (max-width: 600px) {
         width: 24%;
@@ -266,7 +303,8 @@ export const StyledSelectValue = attachThemeAttrs(styled.input).attrs(props => {
 `;
 
 export const StyledUpArrow = attachThemeAttrs(styled(UpArrow))`
-    color: ${props => props.palette.brand.main};
+    color: ${props =>
+        props.disabled || props.readOnly ? props.palette.text.disabled : props.palette.brand.main};
 `;
 
 export const StyledVerticalButtonsContainer = styled.div`
@@ -286,4 +324,14 @@ export const StyledVerticalButtonsContainer = styled.div`
     @media (max-width: 600px) {
         margin-left: 0;
     }
+`;
+
+export const StyledLabel = styled(Label)``;
+
+export const StyledHelpText = styled(HelpText)`
+    text-align: center;
+`;
+
+export const StyledErrorText = styled(ErrorText)`
+    text-align: center;
 `;

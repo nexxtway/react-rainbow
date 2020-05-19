@@ -48,9 +48,9 @@ export default class AmPmSelect extends PureComponent {
 
     render() {
         const { isFocused } = this.props;
-        const { tabIndex, onFocus, value } = this.props;
+        const { tabIndex, onFocus, value, disabled, readOnly } = this.props;
 
-        if (isFocused) {
+        if (isFocused && (!disabled || !readOnly)) {
             return (
                 <StyledSelectValue
                     as="fieldset"
@@ -96,6 +96,8 @@ export default class AmPmSelect extends PureComponent {
                 placeholder="--"
                 defaultValue={value}
                 ref={this.fieldsetRef}
+                disabled={disabled}
+                readOnly={readOnly}
             />
         );
     }
@@ -108,6 +110,8 @@ AmPmSelect.propTypes = {
     onFocus: PropTypes.func,
     tabIndex: PropTypes.string,
     isFocused: PropTypes.bool,
+    readOnly: PropTypes.bool,
+    disabled: PropTypes.bool,
 };
 
 AmPmSelect.defaultProps = {
@@ -117,4 +121,6 @@ AmPmSelect.defaultProps = {
     onFocus: () => {},
     tabIndex: undefined,
     isFocused: false,
+    readOnly: false,
+    disabled: false,
 };

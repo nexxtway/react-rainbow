@@ -17,12 +17,16 @@ import {
 } from './helpers';
 import { LEFT_KEY, RIGHT_KEY, UP_KEY, DOWN_KEY, DELETE_KEY } from '../../libs/constants';
 import {
+    StyledContainer,
     StyledSelectContent,
     StyledDots,
     StyledSelectValue,
     StyledVerticalButtonsContainer,
     StyledUpArrow,
     StyledDownArrow,
+    StyledLabel,
+    StyledHelpText,
+    StyledErrorText,
 } from './styled';
 import OutsideClick from '../../libs/outsideClick';
 
@@ -58,6 +62,8 @@ export default class TimeSelectInput extends Component {
         this.handleAmPmChange = this.handleAmPmChange.bind(this);
         this.hanldeFocusAmPm = this.hanldeFocusAmPm.bind(this);
         this.handleKeyDown = this.handleKeyDown.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+        this.handleBlur = this.handleBlur.bind(this);
         this.incrementHandler = this.incrementHandler.bind(this);
         this.decrementHandler = this.decrementHandler.bind(this);
         this.handleButtonsFocus = this.handleButtonsFocus.bind(this);
@@ -94,6 +100,7 @@ export default class TimeSelectInput extends Component {
 
     handleClickOutside() {
         const { inputFocusedIndex } = this.state;
+        this.handleBlur();
         if (inputFocusedIndex === -1) return;
         this.setState({ inputFocusedIndex: -1 });
     }
@@ -190,7 +197,11 @@ export default class TimeSelectInput extends Component {
     }
 
     hanldeFocusAmPm() {
-        this.setState({ inputFocusedIndex: 2 });
+        const { disabled, readOnly } = this.props;
+
+        if (!disabled && !readOnly) {
+            this.setState({ inputFocusedIndex: 2 });
+        }
     }
 
     handleKeyDown(event) {
@@ -210,6 +221,20 @@ export default class TimeSelectInput extends Component {
         }
         if (keyCode === DELETE_KEY) {
             this.resetState();
+        }
+    }
+
+    handleBlur() {
+        const { onBlur, value } = this.props;
+
+        onBlur(value);
+    }
+
+    handleClick(event) {
+        const { onClick, disabled, readOnly } = this.props;
+
+        if (!disabled && !readOnly) {
+            onClick(event);
         }
     }
 
@@ -384,6 +409,22 @@ export default class TimeSelectInput extends Component {
         }
     }
 
+    /**
+     * Sets focus on the element.
+     * @public
+     */
+    focus() {
+        this.containerRef.current.focus();
+    }
+
+    /**
+     * Sets click on the element.
+     * @public
+     */
+    click() {
+        this.containerRef.current.click();
+    }
+
     render() {
         const {
             hour: stateHour,
@@ -394,7 +435,22 @@ export default class TimeSelectInput extends Component {
         let hour = stateHour || this.prevHour || '';
         let minutes = stateMinutes || this.prevMinutes || '';
         let ampm = stateAmPm || '';
-        const { hour24, className, style, id, value } = this.props;
+        const {
+            hour24,
+            className,
+            style,
+            id,
+            value,
+            label,
+            hideLabel,
+            required,
+            bottomHelpText,
+            error,
+            disabled,
+            readOnly,
+            tabIndex,
+            onFocus,
+        } = this.props;
         if (value) {
             const { hour: valueHour, minutes: valueMinutes, ampm: valueAmPm } = normalizeValue(
                 value,
@@ -408,11 +464,20 @@ export default class TimeSelectInput extends Component {
         const minutesPlaceholder = this.prevMinutes || '--';
 
         return (
-            <article className={className} style={style} id={id}>
+            <StyledContainer className={className} style={style} id={id}>
+                <RenderIf isTrue={!!label}>
+                    <StyledLabel
+                        label={label}
+                        hideLabel={hideLabel}
+                        required={required}
+                        inputId="timeselectinput-label"
+                    />
+                </RenderIf>
                 <StyledSelectContent
                     ref={this.containerRef}
-                    role="presentation"
                     onKeyDown={this.handleKeyDown}
+                    onClick={this.handleClick}
+                    onFocus={onFocus}
                 >
                     <StyledSelectValue
                         aria-label="hour"
@@ -429,9 +494,14 @@ export default class TimeSelectInput extends Component {
                         isFocused={inputFocusedIndex === 0}
                         pattern="\d*"
                         ref={this.hourInputRef}
+                        disabled={disabled}
+                        readOnly={readOnly}
+                        tabIndex={tabIndex || null}
                     />
 
-                    <StyledDots>:</StyledDots>
+                    <StyledDots disabled={disabled} readOnly={readOnly}>
+                        :
+                    </StyledDots>
 
                     <StyledSelectValue
                         aria-label="minutes"
@@ -448,6 +518,8 @@ export default class TimeSelectInput extends Component {
                         inputMode="numeric"
                         pattern="\d*"
                         ref={this.minutesInputRef}
+                        disabled={disabled}
+                        readOnly={readOnly}
                     />
 
                     <RenderIf isTrue={!hour24}>
@@ -459,6 +531,8 @@ export default class TimeSelectInput extends Component {
                             onChange={this.handleAmPmChange}
                             isFocused={inputFocusedIndex === 2}
                             ref={this.amPmInputRef}
+                            disabled={disabled}
+                            readOnly={readOnly}
                         />
                     </RenderIf>
 
@@ -467,28 +541,36 @@ export default class TimeSelectInput extends Component {
                             id="time-picker_up-button"
                             tabIndex="-1"
                             variant="border-filled"
-                            icon={<StyledUpArrow />}
+                            icon={<StyledUpArrow disabled={disabled} readOnly={readOnly} />}
                             size="small"
                             onMouseDown={this.handleButtonsDown}
                             onClick={this.incrementHandler}
                             onFocus={this.handleButtonsFocus}
                             assistiveText="Next value"
+                            disabled={disabled || readOnly}
                         />
 
                         <ButtonIcon
                             id="time-picker_down-button"
                             tabIndex="-1"
                             variant="border-filled"
-                            icon={<StyledDownArrow />}
+                            icon={<StyledDownArrow disabled={disabled} readOnly={readOnly} />}
                             size="small"
                             onMouseDown={this.handleButtonsDown}
                             onClick={this.decrementHandler}
                             onFocus={this.handleButtonsFocus}
                             assistiveText="Previous value"
+                            disabled={disabled || readOnly}
                         />
                     </StyledVerticalButtonsContainer>
                 </StyledSelectContent>
-            </article>
+                <RenderIf isTrue={!!bottomHelpText}>
+                    <StyledHelpText>{bottomHelpText}</StyledHelpText>
+                </RenderIf>
+                <RenderIf isTrue={!!error}>
+                    <StyledErrorText>{error}</StyledErrorText>
+                </RenderIf>
+            </StyledContainer>
         );
     }
 }
@@ -496,6 +578,28 @@ export default class TimeSelectInput extends Component {
 TimeSelectInput.propTypes = {
     /** Sets the date for the TimeSelectInput programmatically. */
     value: PropTypes.string,
+    /** Text label for the TimeSelectInput. */
+    label: PropTypes.node,
+    /** A boolean to hide the TimeSelectInput label. */
+    hideLabel: PropTypes.bool,
+    /** Specifies that the TimeSelectInput must be filled out before submitting the form. */
+    required: PropTypes.bool,
+    /** Shows the help message below the TimeSelectInput. */
+    bottomHelpText: PropTypes.node,
+    /** Specifies that the TimeSelectInput must be filled out before submitting the form. */
+    error: PropTypes.node,
+    /** Specifies that the TimeSelectInput is read-only. */
+    readOnly: PropTypes.bool,
+    /** Specifies that the TimeSelectInput element should be disabled. */
+    disabled: PropTypes.bool,
+    /** Specifies the tab order (when the tab button is used for navigating). */
+    tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    /** The action triggered when the element is clicked. */
+    onClick: PropTypes.func,
+    /** The action triggered when the element receives focus. */
+    onFocus: PropTypes.func,
+    /** The action triggered when the element releases focus. */
+    onBlur: PropTypes.func,
     /** The action triggered when a value attribute changes. */
     onChange: PropTypes.func,
     /** The id of the outer element. */
@@ -504,12 +608,23 @@ TimeSelectInput.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
-    /** Specifies that the TimeSelectInput will be in a 24hr format. This value defaults to false. */
+    /** Specifies that the TimeSelectInput will be in a 24hr format. */
     hour24: PropTypes.bool,
 };
 
 TimeSelectInput.defaultProps = {
     value: undefined,
+    label: undefined,
+    hideLabel: false,
+    required: false,
+    bottomHelpText: null,
+    error: null,
+    readOnly: false,
+    disabled: false,
+    tabIndex: undefined,
+    onClick: () => {},
+    onFocus: () => {},
+    onBlur: () => {},
     onChange: () => {},
     id: undefined,
     className: undefined,
