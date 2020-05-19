@@ -1,39 +1,20 @@
-import addDays from './addDays';
-import addMonths from './addMonths';
-import formatDate from './formatDate';
-import getFirstDayMonth from './getFirstDayMonth';
-import getFormattedMonth from './getFormattedMonth';
-import getLastDayMonth from './getLastDayMonth';
-import getYearsRange from './getYearsRange';
-import isSameDay from './isSameDay';
-import normalizeDate from './normalizeDate';
-import getFormattedDayName from './getFormattedDayName';
-import compareDates from './compareDates';
-import isSameMonth from './isSameMonth';
-import isSameYear from './isSameYear';
-import getSign from './getSign';
-import getCalendarBounds from './getCalendarBounds';
-import isDateBelowLimit from './isDateBelowLimit';
-import isDateBeyondLimit from './isDateBeyondLimit';
-import getNextFocusedDate from './getNextFocusedDate';
-
-export {
-    addDays,
-    addMonths,
-    formatDate,
-    getFirstDayMonth,
-    getFormattedMonth,
-    getLastDayMonth,
-    getYearsRange,
-    isSameDay,
-    normalizeDate,
-    getFormattedDayName,
-    compareDates,
-    isSameMonth,
-    isSameYear,
-    getSign,
-    getCalendarBounds,
-    isDateBelowLimit,
-    isDateBeyondLimit,
-    getNextFocusedDate,
-};
+export { default as addDays } from './addDays';
+export { default as addMonths } from './addMonths';
+export { default as formatDate } from './formatDate';
+export { default as getFirstDayMonth } from './getFirstDayMonth';
+export { default as getFormattedMonth } from './getFormattedMonth';
+export { default as getLastDayMonth } from './getLastDayMonth';
+export { default as getYearsRange } from './getYearsRange';
+export { default as isSameDay } from './isSameDay';
+export { default as normalizeDate } from './normalizeDate';
+export { default as getFormattedDayName } from './getFormattedDayName';
+export { default as compareDates } from './compareDates';
+export { default as isSameMonth } from './isSameMonth';
+export { default as isSameYear } from './isSameYear';
+export { default as getSign } from './getSign';
+export { default as getCalendarBounds } from './getCalendarBounds';
+export { default as isDateBelowLimit } from './isDateBelowLimit';
+export { default as isDateBeyondLimit } from './isDateBeyondLimit';
+export { default as getNextFocusedDate } from './getNextFocusedDate';
+export { default as isDateWithinRange } from './isDateWithinRange';
+export { default as buildNewRangeFromValue } from './buildNewRangeFromValue';
