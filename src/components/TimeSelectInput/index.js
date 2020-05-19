@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ButtonIcon from '../ButtonIcon';
 import AmPmSelect from './ampmSelect';
@@ -13,8 +13,6 @@ import {
     getNextAmPmValue,
     get24HourTime,
     getSingleNewTypedValue,
-    getHour,
-    getMinutes,
     normalizeValue,
 } from './helpers';
 import { LEFT_KEY, RIGHT_KEY, UP_KEY, DOWN_KEY, DELETE_KEY } from '../../libs/constants';
@@ -37,10 +35,11 @@ function preventDefault(event) {
  * @category Form
  */
 
-export default class TimeSelectInput extends PureComponent {
+export default class TimeSelectInput extends Component {
     constructor(props) {
         super(props);
-        this.state = { inputFocusedIndex: 0 };
+        const { hour, minutes, ampm } = normalizeValue(props.value, props.hour24);
+        this.state = { hour, minutes, ampm, inputFocusedIndex: -1 };
         this.containerRef = React.createRef();
         this.hourInputRef = React.createRef();
         this.minutesInputRef = React.createRef();
@@ -72,13 +71,21 @@ export default class TimeSelectInput extends PureComponent {
         this.outsideClick.startListening(this.containerRef.current, this.handleClickOutside);
     }
 
+    componentDidUpdate(prevProps) {
+        const { value: prevValue } = prevProps;
+        const { value } = this.props;
+
+        if (prevValue !== value && value) {
+            this.updateTime();
+        }
+    }
+
     componentWillUnmount() {
         this.outsideClick.stopListening();
     }
 
     setNextAmPmValue() {
-        const { value, hour24 } = this.props;
-        const { ampm } = normalizeValue(value, hour24);
+        const { ampm } = this.state;
         const nextAmPmValue = getNextAmPmValue(ampm);
         this.handleChangeTime({
             ampm: nextAmPmValue,
@@ -92,9 +99,9 @@ export default class TimeSelectInput extends PureComponent {
     }
 
     handleChangeHour(event) {
-        const { hour24, value: propValue } = this.props;
+        const { hour24 } = this.props;
         const { value } = event.target;
-        const { hour } = normalizeValue(propValue, hour24);
+        const { hour } = this.state;
 
         const conditionalHour = hour24 ? 23 : 12;
         const conditionalDigit = hour24 ? 3 : 2;
@@ -121,6 +128,8 @@ export default class TimeSelectInput extends PureComponent {
     }
 
     handleFocusHour() {
+        const { hour } = this.state;
+        this.prevHour = hour || this.prevHour;
         this.setState({
             inputFocusedIndex: 0,
         });
@@ -137,9 +146,9 @@ export default class TimeSelectInput extends PureComponent {
     }
 
     handleChangeMinutes(event) {
-        const { hour24, value: propValue } = this.props;
+        const { minutes } = this.state;
         const { value } = event.target;
-        const minutes = getMinutes(propValue);
+        const { hour24 } = this.props;
 
         const conditionalMinutes = 59;
         const conditionalDigit = 5;
@@ -166,14 +175,16 @@ export default class TimeSelectInput extends PureComponent {
     }
 
     handleFocusMinutes() {
+        const { minutes } = this.state;
+        this.prevMinutes = minutes || this.prevMinutes;
         this.setState({
             inputFocusedIndex: 1,
         });
     }
 
     handleAmPmChange(value) {
-        this.setState({ inputFocusedIndex: -1 });
         this.handleChangeTime({
+            inputFocusedIndex: -1,
             ampm: value,
         });
     }
@@ -270,23 +281,30 @@ export default class TimeSelectInput extends PureComponent {
 
     resetState() {
         const { inputFocusedIndex } = this.state;
-        const { value } = this.props;
-        const hour = getHour(value);
-        const minutes = getMinutes(value);
-        const reset = {};
-
         if (inputFocusedIndex === 0) {
-            reset.hour = '';
-            if (!minutes) reset.ampm = '';
-            this.handleChangeTime(reset);
+            this.handleChangeTime({
+                hour: '',
+            });
             this.prevHour = '';
         }
         if (inputFocusedIndex === 1) {
-            reset.minutes = '';
-            if (!hour) reset.ampm = '';
-            this.handleChangeTime(reset);
+            this.handleChangeTime({
+                minutes: '',
+            });
             this.prevMinutes = '';
         }
+    }
+
+    updateTime() {
+        const { value, hour24 } = this.props;
+
+        const { hour, minutes, ampm } = normalizeValue(value, hour24);
+
+        this.setState({
+            hour,
+            minutes,
+            ampm,
+        });
     }
 
     focusHourInput() {
@@ -295,8 +313,8 @@ export default class TimeSelectInput extends PureComponent {
     }
 
     incrementHour() {
-        const { hour24, value } = this.props;
-        const { hour } = normalizeValue(value, hour24);
+        const { hour } = this.state;
+        const { hour24 } = this.props;
         const hourValue = hour || this.prevHour;
         this.handleChangeTime({
             hour: normalizeHour(getNextHour(hourValue, hour24), hour24),
@@ -304,8 +322,8 @@ export default class TimeSelectInput extends PureComponent {
     }
 
     decrementHour() {
-        const { hour24, value } = this.props;
-        const { hour } = normalizeValue(value, hour24);
+        const { hour } = this.state;
+        const { hour24 } = this.props;
         const hourValue = hour || this.prevHour;
         this.handleChangeTime({
             hour: normalizeHour(getPrevHour(hourValue, hour24), hour24),
@@ -313,8 +331,7 @@ export default class TimeSelectInput extends PureComponent {
     }
 
     incrementMinutes() {
-        const { value } = this.props;
-        const minutes = getMinutes(value);
+        const { minutes } = this.state;
         const minutesValue = minutes || this.prevMinutes;
         this.handleChangeTime({
             minutes: normalizeMinutes(getNextMinute(minutesValue)),
@@ -322,8 +339,7 @@ export default class TimeSelectInput extends PureComponent {
     }
 
     decrementMinutes() {
-        const { value } = this.props;
-        const minutes = getMinutes(value);
+        const { minutes } = this.state;
         const minutesValue = minutes || this.prevMinutes;
         this.handleChangeTime({
             minutes: normalizeMinutes(getPrevMinute(minutesValue)),
@@ -331,8 +347,8 @@ export default class TimeSelectInput extends PureComponent {
     }
 
     handleChangeTime(newState) {
-        const { onChange, hour24, value } = this.props;
-        const { hour, minutes, ampm } = normalizeValue(value, hour24);
+        const { hour, minutes, ampm } = this.state;
+        const { onChange, hour24 } = this.props;
         const currentHour = (() => {
             if (newState && typeof newState.hour === 'string') return newState.hour;
             if (typeof hour === 'string') return hour;
@@ -348,19 +364,46 @@ export default class TimeSelectInput extends PureComponent {
             if (typeof ampm === 'string') return ampm;
             return '';
         })();
-        const time24 = get24HourTime({
-            hour: currentHour,
-            minutes: currentMinutes,
-            ampm: currentAmPm,
-        });
 
-        onChange(time24);
+        this.setState(newState);
+
+        if (
+            (currentHour && currentMinutes && ampm && !hour24) ||
+            (currentHour && currentMinutes && hour24)
+        ) {
+            const time24 = get24HourTime({
+                hour: currentHour,
+                minutes: currentMinutes,
+                ampm: currentAmPm,
+            });
+            this.prevValue = time24;
+            onChange(time24);
+        } else if (this.prevValue) {
+            this.prevValue = '';
+            onChange('');
+        }
     }
 
     render() {
-        const { inputFocusedIndex } = this.state;
+        const {
+            hour: stateHour,
+            minutes: stateMinutes,
+            ampm: stateAmPm,
+            inputFocusedIndex,
+        } = this.state;
+        let hour = stateHour || this.prevHour || '';
+        let minutes = stateMinutes || this.prevMinutes || '';
+        let ampm = stateAmPm || '';
         const { hour24, className, style, id, value } = this.props;
-        const { hour, minutes, ampm } = normalizeValue(value, hour24);
+        if (value) {
+            const { hour: valueHour, minutes: valueMinutes, ampm: valueAmPm } = normalizeValue(
+                value,
+                hour24,
+            );
+            hour = valueHour || '';
+            minutes = valueMinutes || '';
+            ampm = valueAmPm || '';
+        }
         const hourPlaceholder = this.prevHour || '--';
         const minutesPlaceholder = this.prevMinutes || '--';
 
