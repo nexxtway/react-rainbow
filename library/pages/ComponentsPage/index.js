@@ -117,9 +117,10 @@ export default class ComponentsPage extends Component {
                 <RenderIf isTrue={!!internal.length}>
                     <h1 className="react-rainbow-components-page_category-title">Internal</h1>
                     <h1 className="react-rainbow-components-page_category-description">
-                        The Internal category groups the components that are used to build other
-                        components. We do not recommend you use these components because your API
-                        can change on the future.
+                        These components are for internal use only, it's not recommended to use them
+                        directly since it's the main purpose is as a building block of other
+                        components. API or behaviors could change causing breaking change for anyone
+                        using them directly.
                     </h1>
                 </RenderIf>
                 <div className="react-rainbow-components-page_card-group-container">{internal}</div>

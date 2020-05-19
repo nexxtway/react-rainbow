@@ -69,8 +69,7 @@ const resolvePosition = opts => {
 };
 
 /**
- * InternalOverlay is a solution for creating any UI element floating.
- * To make all of them integrations possible, it does not come with any style, you need to provide your own.
+ * This component implements the positioning of a component (inserted in the DOM at the body level) based on a trigger DOM element. By the way of example, you can think of the use case of a Menu Options, Tooltip, Popup that should be floating on top of all the elements and it should be correctly positioned based on the component/element that triggers the show/open action.
  * @category Internal
  */
 const InternalOverlay = props => {
@@ -106,13 +105,13 @@ const InternalOverlay = props => {
 };
 
 InternalOverlay.propTypes = {
-    /** Add description. */
+    /** Functional component or class that will be rendered when the isVisible prop is true. */
     render: PropTypes.func,
     /** Controls whether the InternalOverlay is visible or not. If true, the content of the Overlay is shown. */
     isVisible: PropTypes.bool,
-    /** Add description */
+    /** Ref or function that returns a ref to a DOM element, the DOM element resolved by this ref will be used to positioning the component passed when visible. */
     triggerElementRef: PropTypes.oneOfType(PropTypes.object, PropTypes.func).isRequired,
-    /** Add description */
+    /** It could be used to write your own position resolution. The function passed here will receive the necessary data to compute an object with { top, left } CSS position of the component rendered. */
     positionResolver: PropTypes.func,
 };
 
