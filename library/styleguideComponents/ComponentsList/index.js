@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import Sidebar from '../../../src/components/Sidebar';
 import SidebarItem from '../../../src/components/SidebarItem';
 import Application from '../../../src/components/Application';
@@ -11,6 +12,11 @@ import isNotComponentPage from './../utils';
 
 const name = window.location.href.split('#/')[1];
 const pageName = name && name.split('/')[0];
+
+const Icon = styled(StartupIcon)`
+    width: 26px;
+    height: 26px;
+`;
 
 function resolveCurrentUrl() {
     if (isNotComponentPage(pageName)) {
@@ -49,31 +55,31 @@ export default class ComponentsList extends Component {
             <Application theme={theme}>
                 <Sidebar selectedItem={selectedItem} onSelect={this.handleOnSelect}>
                     <SidebarItem
-                        icon={<StartupIcon />}
+                        icon={<Icon />}
                         name="GettingStarted"
                         label="Getting Started"
                         href="/#/GettingStarted"
                     />
                     <SidebarItem
-                        icon={<PuzzleIcon />}
+                        icon={<Icon as={PuzzleIcon} />}
                         name="Components"
                         label="Components"
                         href="/#/Components"
                     />
                     <SidebarItem
-                        icon={<ConsoleIcon />}
+                        icon={<Icon as={ConsoleIcon} />}
                         name="Customization"
                         label="Customization"
                         href="/#/Customization"
                     />
                     <SidebarItem
-                        icon={<ExperiencesIcon />}
+                        icon={<Icon as={ExperiencesIcon} />}
                         name="Experiences"
                         label="Experiences"
                         href="/#/Experiences"
                     />
                     <SidebarItem
-                        icon={<DesignIcon />}
+                        icon={<Icon as={DesignIcon} />}
                         name="Designs"
                         label="Designs"
                         href="/#/Designs"

@@ -1,27 +1,11 @@
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-const StyledIcon = attachThemeAttrs(styled.div)`
-    height: 32px;
-    width: 32px;
+const StyledIcon = styled.div`
+    height: 42px;
+    width: 42px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 100%;
-
-    :hover,
-    :active,
-    :focus {
-        background-color: ${props => props.palette.action.hover};
-        outline: 0;
-    }
-
-    ${props =>
-        props.isSelected &&
-        `
-        background-color: ${props.palette.action.active};
-            outline: 0;
-        `};
 `;
 
 export default StyledIcon;

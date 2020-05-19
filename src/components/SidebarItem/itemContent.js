@@ -8,7 +8,7 @@ export default function ItemContent(props) {
     const { label, icon, isSelected } = props;
     return (
         <Fragment>
-            <StyledIcon isSelected={isSelected}>{icon}</StyledIcon>
+            <StyledIcon>{icon}</StyledIcon>
             <RenderIf isTrue={!!label}>
                 <StyledLabel isSelected={isSelected}>{label}</StyledLabel>
             </RenderIf>
