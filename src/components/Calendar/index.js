@@ -1,27 +1,18 @@
 /* eslint-disable react/prop-types */
-import React, { useContext, useMemo, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { getLocale } from '../../libs/utils';
-import { AppContext } from '../Application/context';
+import { useLocale } from '../../libs/hooks';
 import SingleCalendar from './singleCalendar';
 import { buildNewRangeFromValue } from './helpers';
+import { useCurrentDateFromValue, useRangeFromValue } from './hooks';
 
 /**
  * Calendar provide a simple way to select a single date.
  */
 export default function Calendar({ locale, selectionType, value, onChange, ...rest }) {
-    const context = useContext(AppContext);
-    const currentValue = useMemo(() => {
-        if (!Array.isArray(value)) return value;
-        const [rangeStart, rangeEnd] = value;
-        return rangeEnd || rangeStart;
-    }, [value]);
-
-    const range = useMemo(() => {
-        if (selectionType === 'single') return undefined;
-        if (!!value && !Array.isArray(value)) return [value];
-        return value;
-    }, [value, selectionType]);
+    const currentLocale = useLocale(locale);
+    const currentValue = useCurrentDateFromValue(value);
+    const range = useRangeFromValue(value, selectionType);
 
     const handleChange = useCallback(
         newValue => {
@@ -33,7 +24,7 @@ export default function Calendar({ locale, selectionType, value, onChange, ...re
 
     return (
         <SingleCalendar
-            locale={getLocale(context, locale)}
+            locale={currentLocale}
             value={currentValue}
             range={range}
             selectionType={selectionType}
