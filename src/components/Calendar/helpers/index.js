@@ -18,3 +18,5 @@ export { default as isDateBeyondLimit } from './isDateBeyondLimit';
 export { default as getNextFocusedDate } from './getNextFocusedDate';
 export { default as isDateWithinRange } from './isDateWithinRange';
 export { default as buildNewRangeFromValue } from './buildNewRangeFromValue';
+export { default as shouldDateBeSelected } from './shouldDateBeSelected';
+export { default as isSameDatesRange } from './isSameDatesRange';

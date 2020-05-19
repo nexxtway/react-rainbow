@@ -21,6 +21,7 @@ import {
     isDateBelowLimit,
     isDateBeyondLimit,
     getNextFocusedDate,
+    isSameDatesRange,
 } from './helpers';
 import StyledControlsContainer from './styled/controlsContainer';
 import StyledMonthContainer from './styled/monthContainer';
@@ -48,6 +49,7 @@ class SingleCalendar extends Component {
         this.state = {
             focusedDate: normalizeDate(props.value),
             currentMonth: getFirstDayMonth(normalizeDate(props.value)),
+            currentRange: props.selectedRange,
         };
         this.enableNavKeys = false;
         this.monthLabelId = uniqueId('month');
@@ -87,15 +89,19 @@ class SingleCalendar extends Component {
 
         this.onDayFocus = this.onDayFocus.bind(this);
         this.onDayBlur = this.onDayBlur.bind(this);
+        this.onDayHover = this.onDayHover.bind(this);
     }
 
     componentDidUpdate(prevProps) {
-        const { value: prevValue } = prevProps;
-        const { value } = this.props;
+        const { selectedRange: prevSelectedRange, value: prevValue } = prevProps;
+        const { selectedRange, value } = this.props;
         const normalizedDate = normalizeDate(value);
         if (formatDate(normalizeDate(prevValue)) !== formatDate(normalizedDate)) {
             this.updateCurrentMonth(normalizedDate);
             this.updateFocusedDate(normalizedDate);
+        }
+        if (!isSameDatesRange(prevSelectedRange, selectedRange)) {
+            this.updateCurrentRange(selectedRange);
         }
     }
 
@@ -107,14 +113,26 @@ class SingleCalendar extends Component {
         this.enableNavKeys = false;
     }
 
+    // eslint-disable-next-line class-methods-use-this, no-unused-vars
+    onDayHover(date) {
+        // console.log(date, this.props);
+        // const { selectedRange } = this.props;
+        // this.setState({});
+    }
+
     getContext() {
-        const { focusedDate } = this.state;
+        const { focusedDate, currentRange } = this.state;
+        const { selectionType, selectedRange } = this.props;
         return {
             focusedDate,
             useAutoFocus: this.enableNavKeys,
+            selectionType,
+            selectedRange,
+            currentRange,
             privateKeyDown: this.handleKeyDown,
             privateOnFocus: this.onDayFocus,
             privateOnBlur: this.onDayBlur,
+            privateOnHover: this.onDayHover,
         };
     }
 
@@ -171,6 +189,12 @@ class SingleCalendar extends Component {
     updateFocusedDate(value) {
         this.setState({
             focusedDate: value,
+        });
+    }
+
+    updateCurrentRange(value) {
+        this.setState({
+            currentRange: value,
         });
     }
 
@@ -270,7 +294,7 @@ class SingleCalendar extends Component {
     }
 
     render() {
-        const { currentMonth } = this.state;
+        const { currentMonth, currentRange } = this.state;
         const { id, value, onChange, minDate, maxDate, className, style, locale } = this.props;
         const formattedMonth = getFormattedMonth(currentMonth, locale);
         const currentYear = currentMonth.getFullYear();
@@ -327,6 +351,7 @@ class SingleCalendar extends Component {
                             minDate={minDate}
                             maxDate={maxDate}
                             onChange={onChange}
+                            selectedRange={currentRange}
                         />
                     </Provider>
                 </StyledTable>
@@ -337,8 +362,6 @@ class SingleCalendar extends Component {
 
 SingleCalendar.propTypes = {
     value: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
-    // eslint-disable-next-line react/no-unused-prop-types
-    range: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string])),
     maxDate: PropTypes.instanceOf(Date),
     minDate: PropTypes.instanceOf(Date),
     onChange: PropTypes.func,
@@ -346,6 +369,10 @@ SingleCalendar.propTypes = {
     style: PropTypes.object,
     id: PropTypes.string,
     locale: PropTypes.string,
+    selectionType: PropTypes.oneOf(['single', 'range']),
+    selectedRange: PropTypes.arrayOf(
+        PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
+    ),
 };
 
 SingleCalendar.defaultProps = {
@@ -357,7 +384,8 @@ SingleCalendar.defaultProps = {
     style: undefined,
     id: undefined,
     locale: undefined,
-    range: undefined,
+    selectionType: 'single',
+    selectedRange: undefined,
 };
 
 export default SingleCalendar;

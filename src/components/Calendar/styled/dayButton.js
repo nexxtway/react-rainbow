@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+import { replaceAlpha } from '../../../styles/helpers/color';
 
 const StyledDayButton = attachThemeAttrs(styled.button)`
     font: inherit;
@@ -74,6 +75,13 @@ const StyledDayButton = attachThemeAttrs(styled.button)`
             @media (max-width: 600px) {
                 margin: 3px auto;
             }
+        `};
+
+    ${props =>
+        props.isWithinRange &&
+        !props.isSelected &&
+        `
+        background-color: ${replaceAlpha(props.palette.brand.light, 1)};
         `};
 `;
 

@@ -26,7 +26,7 @@ export default function Calendar({ locale, selectionType, value, onChange, ...re
         <SingleCalendar
             locale={currentLocale}
             value={currentValue}
-            range={range}
+            selectedRange={range}
             selectionType={selectionType}
             onChange={handleChange}
             {...rest}

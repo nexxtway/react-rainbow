@@ -8,8 +8,25 @@ import StyledDayButton from './styled/dayButton';
 import { isSameDay, compareDates } from './helpers';
 
 function DayComponent(props) {
-    const { date, firstDayMonth, isSelected, minDate, maxDate, onChange } = props;
-    const { useAutoFocus, focusedDate, privateKeyDown, privateOnFocus, privateOnBlur } = props;
+    const {
+        date,
+        firstDayMonth,
+        isSelected,
+        minDate,
+        maxDate,
+        onChange,
+        isWithinRange,
+        // isFirstDayOfWeek,
+        // isLastDayOfWeek,
+    } = props;
+    const {
+        useAutoFocus,
+        focusedDate,
+        privateKeyDown,
+        privateOnFocus,
+        privateOnBlur,
+        privateOnHover,
+    } = props;
     const day = date.getDate();
     const isAdjacentDate = date.getMonth() !== firstDayMonth.getMonth();
     const isDisabled = compareDates(date, maxDate) > 0 || compareDates(date, minDate) < 0;
@@ -35,11 +52,13 @@ function DayComponent(props) {
                 ref={buttonRef}
                 tabIndex={tabIndex}
                 onClick={() => onChange(new Date(date))}
+                onMouseOver={() => privateOnHover(new Date(date))}
                 isSelected={isSelected}
                 data-selected={isSelected}
                 onKeyDown={privateKeyDown}
                 onFocus={privateOnFocus}
                 onBlur={privateOnBlur}
+                isWithinRange={isWithinRange}
             >
                 {day}
             </StyledDayButton>
@@ -57,6 +76,9 @@ Day.propTypes = {
     minDate: PropTypes.instanceOf(Date),
     maxDate: PropTypes.instanceOf(Date),
     isSelected: PropTypes.bool,
+    isWithinRange: PropTypes.bool,
+    isFirstDayOfWeek: PropTypes.bool,
+    isLastDayOfWeek: PropTypes.bool,
     onChange: PropTypes.func,
 };
 
@@ -66,5 +88,8 @@ Day.defaultProps = {
     minDate: undefined,
     maxDate: undefined,
     isSelected: false,
+    isWithinRange: false,
+    isFirstDayOfWeek: false,
+    isLastDayOfWeek: false,
     onChange: () => {},
 };

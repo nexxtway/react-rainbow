@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { addDays, isSameDay } from './helpers';
+import { addDays, shouldDateBeSelected, isDateWithinRange } from './helpers';
+import { CalendarContext } from './context';
 import Day from './day';
 
 export default function Week(props) {
     const { value, startDate, endDate, minDate, maxDate, firstDayMonth, onChange } = props;
+    const { currentRange, selectionType, selectedRange } = useContext(CalendarContext);
 
     function Days() {
         let date = new Date(startDate);
         const days = [];
 
+        let index = 0;
         while (date <= endDate) {
             days.push(
                 <Day
@@ -19,10 +22,14 @@ export default function Week(props) {
                     minDate={minDate}
                     maxDate={maxDate}
                     onChange={onChange}
-                    isSelected={isSameDay(date, value)}
+                    isSelected={shouldDateBeSelected(date, value, selectionType, selectedRange)}
+                    isWithinRange={isDateWithinRange(date, currentRange)}
+                    isFirstDayOfWeek={index === 0}
+                    isLastDayOfWeek={index === 6}
                 />,
             );
             date = addDays(date, 1);
+            index += 1;
         }
         return days;
     }
