@@ -151,17 +151,21 @@ export const StyledIconContainer = attachThemeAttrs(styled(IconContainer))`
     `}
 
     ${props =>
+        props.variant === 'inline' &&
         props.iconPosition === 'left' &&
         `
         left: ${props.readOnly ? 0 : '0.8rem'};
     `}
+
     ${props =>
+        props.variant === 'inline' &&
         props.iconPosition === 'right' &&
         `
         right: ${props.readOnly ? 0 : '0.3rem'};
     `}
 
     ${props =>
+        !props.isCloseIconContainer &&
         props.variant === 'multiline' &&
         `
         position: static;
@@ -173,7 +177,22 @@ export const StyledIconContainer = attachThemeAttrs(styled(IconContainer))`
             height: 64px !important;
             font-size: 64px !important;
         }
-        `}
+    `}
+
+    ${props =>
+        props.isCloseIconContainer &&
+        props.variant === 'multiline' &&
+        `
+        position: static;
+        width: 100%;
+        height: 0;
+
+        svg {
+            width: 24px !important;
+            height: 24px !important;
+            font-size: 24px !important;
+        }
+    `}
 `;
 
 export const StyledButtonIcon = styled(ButtonIcon)`
@@ -184,6 +203,12 @@ export const StyledButtonIcon = styled(ButtonIcon)`
     svg {
         pointer-events: none;
     }
+
+    ${props =>
+        props.variant === 'multiline' &&
+        `
+        top: 21px;
+    `}
 `;
 
 export const StyledInput = styled.input`

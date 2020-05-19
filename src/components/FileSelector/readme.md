@@ -240,7 +240,7 @@ function FileSelectorExample(props) {
             <FileSelector 
                 className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
                 style={containerStyles} 
-                label="File selector with error" 
+                label="File selector multiline disabled" 
                 placeholder="Drag & Drop or Click to Browse"
                 variant="multiline"
                 disabled
