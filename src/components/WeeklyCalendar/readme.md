@@ -96,7 +96,7 @@ const initialState = {
     currentWeek: new Date(),
 };
 
-<div className="rainbow-m-around_large">
+<div className="rainbow-m-around_large ">
     <StyledCard>
         <WeeklyCalendar
             events={events}

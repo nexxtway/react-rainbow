@@ -10,10 +10,11 @@ import HelpText from '../../Input/styled/helpText';
 import ErrorText from '../../Input/styled/errorText';
 
 export const StyledContainer = styled.div`
-    width: 100%;
+    width: fit-content;
     display: flex;
     justify-content: center;
     flex-direction: column;
+    align-items: center;
 `;
 
 export const StyledDots = attachThemeAttrs(styled.span)`
@@ -98,7 +99,6 @@ export const StyledSelectContent = attachThemeAttrs(styled.div)`
     justify-content: space-between;
     background-color: ${props => props.palette.background.secondary};
     border-radius: 8px;
-    margin: 48px 12px 32px 12px;
     padding: ${PADDING_X_SMALL};
 
     @media (max-width: 600px) {

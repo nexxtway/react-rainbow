@@ -8,17 +8,21 @@ import { TimeSelectInput } from 'react-rainbow-components';
 const StyledContainer = styled.div`
     display: flex;
     justify-content: center;
+    background-color: ${props => props.theme.rainbow.palette.background.main};
+    border-radius: 0 0 14px 14px;
+    padding: 48px 16px;
 `;
+
 const TimeSelectInputExample = () => {
-    const [time, setTime] = useState(null); 
+    const [time, setTime] = useState(null);
     return (
-        <TimeSelectInput 
-            id="time-select-input-1" 
+        <TimeSelectInput
+            id="time-select-input-1"
             value={time} 
             onChange={setTime}
             label="TimeSelectInput Label"
         />
-    ); 
+    );
 }
 <StyledContainer>
     <TimeSelectInputExample />
@@ -35,17 +39,21 @@ import { TimeSelectInput } from 'react-rainbow-components';
 const StyledContainer = styled.div`
     display: flex;
     justify-content: center;
+    background-color: ${props => props.theme.rainbow.palette.background.main};
+    border-radius: 0 0 14px 14px;
+    padding: 48px 16px;
 `;
+
 const TimeSelectInputExample = () => {
-    const [time, setTime] = useState('08:00'); 
-    return ( 
-        <TimeSelectInput 
-            id="time-select-input-3" 
-            value={time} 
+    const [time, setTime] = useState('08:00');
+    return (
+        <TimeSelectInput
+            id="time-select-input-3"
+            value={time}
             onChange={setTime}
             label="TimeSelectInput Label"
-        /> 
-    ); 
+        />
+    );
 }
 <StyledContainer>
     <TimeSelectInputExample />
@@ -62,18 +70,22 @@ import { TimeSelectInput } from 'react-rainbow-components';
 const StyledContainer = styled.div`
     display: flex;
     justify-content: center;
+    background-color: ${props => props.theme.rainbow.palette.background.main};
+    border-radius: 0 0 14px 14px;
+    padding: 48px 16px;
 `;
+
 const TimeSelectInputExample = () => {
-    const [time, setTime] = useState(null); 
-    return ( 
-        <TimeSelectInput 
-            id="time-select-input-5" 
-            value={time} 
-            onChange={setTime} 
+    const [time, setTime] = useState(null);
+    return (
+        <TimeSelectInput
+            id="time-select-input-5"
+            value={time}
+            onChange={setTime}
             hour24={true}
             label="TimeSelectInput Label"
         />
-    ); 
+    );
 }
 <StyledContainer>
     <TimeSelectInputExample />
@@ -90,18 +102,22 @@ import { TimeSelectInput } from 'react-rainbow-components';
 const StyledContainer = styled.div`
     display: flex;
     justify-content: center;
+    background-color: ${props => props.theme.rainbow.palette.background.main};
+    border-radius: 0 0 14px 14px;
+    padding: 48px 16px;
 `;
+
 const TimeSelectInputExample = () => {
-    const [time, setTime] = useState(null); 
-    return ( 
-        <TimeSelectInput 
-            id="time-select-input-5" 
-            value={time} 
-            onChange={setTime} 
+    const [time, setTime] = useState(null);
+    return (
+        <TimeSelectInput
+            id="time-select-input-5"
+            value={time}
+            onChange={setTime}
             label="TimeSelectInput Label"
             disabled
         />
-    ); 
+    );
 }
 <StyledContainer>
     <TimeSelectInputExample />
@@ -118,19 +134,23 @@ import { TimeSelectInput } from 'react-rainbow-components';
 const StyledContainer = styled.div`
     display: flex;
     justify-content: center;
+    background-color: ${props => props.theme.rainbow.palette.background.main};
+    border-radius: 0 0 14px 14px;
+    padding: 48px 16px;
 `;
+
 const TimeSelectInputExample = () => {
-    const [time, setTime] = useState(null); 
-    return ( 
-        <TimeSelectInput 
-            id="time-select-input-5" 
-            value={time} 
-            onChange={setTime} 
+    const [time, setTime] = useState(null);
+    return (
+        <TimeSelectInput
+            id="time-select-input-5"
+            value={time}
+            onChange={setTime}
             label="TimeSelectInput Label"
             required
             error="Enter a valid time to continue"
         />
-    ); 
+    );
 }
 <StyledContainer>
     <TimeSelectInputExample />
@@ -147,18 +167,21 @@ import { TimeSelectInput } from 'react-rainbow-components';
 const StyledContainer = styled.div`
     display: flex;
     justify-content: center;
+    background-color: ${props => props.theme.rainbow.palette.background.main};
+    border-radius: 0 0 14px 14px;
+    padding: 48px 16px;
 `;
 const TimeSelectInputExample = () => {
-    const [time, setTime] = useState(null); 
-    return ( 
-        <TimeSelectInput 
-            id="time-select-input-5" 
-            value={time} 
-            onChange={setTime} 
+    const [time, setTime] = useState(null);
+    return (
+        <TimeSelectInput
+            id="time-select-input-5"
+            value={time}
+            onChange={setTime}
             label="TimeSelectInput Label"
             bottomHelpText="Enter a time in format hh:mm tt"
         />
-    ); 
+    );
 }
 <StyledContainer>
     <TimeSelectInputExample />

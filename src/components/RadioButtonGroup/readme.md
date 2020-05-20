@@ -427,7 +427,7 @@ const Contacts = ({data}) => {
     const handleOnChange = ( event ) => {
         setStatusToShow(event.target.value);
     }
-    
+
     return (
         <div className="rainbow-flex rainbow-flex_column rainbow-align_center">
             <RadioButtonGroup
