@@ -88,6 +88,10 @@ export const StyledDropzone = attachThemeAttrs(styled.div)`
         background-color: ${props.palette.brand.light};
         border-color: ${props.palette.brand.main};
         `}
+
+    &:hover button {
+        display: block;
+    }
 `;
 
 export const TruncatedText = styled.span`
@@ -205,8 +209,9 @@ export const StyledButtonIcon = styled(ButtonIcon)`
     }
 
     ${props =>
-        props.variant === 'multiline' &&
+        props.variantValue === 'multiline' &&
         `
+        display: none;
         top: 21px;
     `}
 `;
