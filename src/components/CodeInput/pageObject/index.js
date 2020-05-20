@@ -12,6 +12,13 @@ class PageCodeInput {
         this.rootElement = rootElement;
     }
 
+    typeKey(key) {
+        const focusedInput = this.getFocusedInput();
+        if (focusedInput) {
+            focusedInput.setValue(key);
+        }
+    }
+
     /**
      * Triggers a click over the focused input
      * @method

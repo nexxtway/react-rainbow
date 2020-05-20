@@ -35,7 +35,7 @@ const CodeInput = React.forwardRef((props, ref) => {
 
     const inputRef = useRef();
     const value = useValueState(valueProp, length);
-    const focusedIndex = useFocusedIndexState(value, length);
+    const focusedIndex = useFocusedIndexState(value, length, disabled, readOnly);
     const previousFocusedIndex = usePreviousIndex(focusedIndex);
 
     useImperativeHandle(ref, () => ({
@@ -56,8 +56,15 @@ const CodeInput = React.forwardRef((props, ref) => {
         }
     }, [inputRef, focusedIndex, previousFocusedIndex]);
 
-    const handleOnChange = (inputValue, inputIndex) => {
-        const newValue = getNormalizedValue(inputValue, inputIndex, value);
+    const handleOnClick = e => {
+        if (readOnly && inputRef && inputRef.current) {
+            inputRef.current.blur();
+        }
+        onClick(e);
+    };
+
+    const handleOnChange = (inputValue, index) => {
+        const newValue = getNormalizedValue(inputValue, index, value);
         const hasValueChanged = newValue !== valueProp;
         if (hasValueChanged) {
             onChange(newValue);
@@ -90,7 +97,7 @@ const CodeInput = React.forwardRef((props, ref) => {
                 readOnly={readOnly}
                 error={error}
                 tabIndex={tabIndex}
-                onClick={onClick}
+                onClick={handleOnClick}
                 onChange={handleOnChange}
                 onFocus={handleOnFocus}
                 onBlur={onBlur}
