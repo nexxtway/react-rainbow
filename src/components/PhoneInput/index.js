@@ -1,4 +1,4 @@
-import React, { useRef, useState, useImperativeHandle } from 'react';
+import React, { useRef, useImperativeHandle } from 'react';
 import PropTypes from 'prop-types';
 import Label from '../Input/label';
 import RenderIf from '../RenderIf';
@@ -15,8 +15,15 @@ import {
     StyledCountryCode,
 } from './styled';
 import { useUniqueIdentifier, useReduxForm, useErrorMessageId, useLabelId } from '../../libs/hooks';
-import { useCountry, useCountries, useIsOpen } from './hooks';
-import CountriesList from './countriesList';
+import {
+    useCountry,
+    useCountries,
+    useFocusIndex,
+    useHandleFocus,
+    useHandleBlur,
+    useHandleCountryChange,
+} from './hooks';
+import CountriesDropdown from './countriesDropdown';
 
 /**
  * phone input are used for freeform data entry.
@@ -36,8 +43,8 @@ const PhoneInput = React.forwardRef((props, ref) => {
         error,
         disabled,
         readOnly,
-        onChange,
         tabIndex,
+        onChange,
         onClick,
         onFocus,
         onBlur,
@@ -49,6 +56,9 @@ const PhoneInput = React.forwardRef((props, ref) => {
         countries: countriesProps,
     } = useReduxForm(props);
 
+    const containerRef = useRef();
+    const triggerRef = useRef();
+    const searchRef = useRef();
     const inputRef = useRef();
     useImperativeHandle(ref, () => ({
         focus: () => {
@@ -66,42 +76,22 @@ const PhoneInput = React.forwardRef((props, ref) => {
     const errorMessageId = useErrorMessageId(error);
     const labelId = useLabelId(label);
 
-    const containerRef = useRef();
-    const triggerRef = useRef();
-
     const phone = (value && value.phone) || '';
     const countries = useCountries(countriesProps);
     const country = useCountry(value, countries);
     const { countryCode, isoCode, flagIcon } = country;
-    const [isOpen, toggleIsOpen] = useIsOpen(containerRef);
-    const [isFocus, setIsFocus] = useState(false);
+    const [focusIndex, setFocusIndex] = useFocusIndex(
+        containerRef,
+        triggerRef,
+        searchRef,
+        inputRef,
+    );
+    const isOpen = focusIndex === 1;
+    const handleFocus = useHandleFocus(focusIndex, onFocus, setFocusIndex);
+    const handleBlur = useHandleBlur(focusIndex, onBlur);
+    const handleCountryChange = useHandleCountryChange(phone, onChange, setFocusIndex, isOpen);
 
-    function handleTrigger(event) {
-        if (event.target.focus) {
-            return toggleIsOpen();
-        }
-        return toggleIsOpen(true);
-    }
-
-    function handleFocus(event) {
-        setIsFocus(true);
-        onFocus(event);
-    }
-
-    function handleBlur(event) {
-        setIsFocus(false);
-        onBlur(event);
-    }
-
-    function handleCountryChange(newCountry) {
-        onChange({
-            countryCode: newCountry.countryCode,
-            isoCode: newCountry.isoCode,
-            phone,
-        });
-    }
-
-    function handleChange(event) {
+    function handlePhoneChange(event) {
         const newPhone = event.target.value;
         if (!isNaN(newPhone) || newPhone === '') {
             onChange({
@@ -112,6 +102,15 @@ const PhoneInput = React.forwardRef((props, ref) => {
         }
     }
 
+    function handleClick() {
+        if (focusIndex === 1) {
+            setFocusIndex(0);
+        } else {
+            setFocusIndex(1);
+        }
+    }
+
+    const isFocus = focusIndex > -1;
     const formattedCountryCode = `(${countryCode})`;
 
     return (
@@ -133,9 +132,9 @@ const PhoneInput = React.forwardRef((props, ref) => {
 
                 <StyledTrigger
                     ref={triggerRef}
-                    onClick={handleTrigger}
-                    onFocus={() => setIsFocus(true)}
-                    onBlur={() => setIsFocus(false)}
+                    onClick={handleClick}
+                    onFocus={event => handleFocus(event, 0)}
+                    onBlur={handleBlur}
                     tabIndex={tabIndex}
                 >
                     <StyledFlagContainer>
@@ -152,10 +151,10 @@ const PhoneInput = React.forwardRef((props, ref) => {
                     type="tel"
                     placeholder={placeholder}
                     tabIndex={tabIndex}
-                    onFocus={handleFocus}
+                    onFocus={event => handleFocus(event, 2)}
                     onBlur={handleBlur}
                     onClick={onClick}
-                    onChange={handleChange}
+                    onChange={handlePhoneChange}
                     disabled={disabled}
                     readOnly={readOnly}
                     required={required}
@@ -169,14 +168,15 @@ const PhoneInput = React.forwardRef((props, ref) => {
                     error={error}
                     isFocus={isFocus}
                 />
-                <CountriesList
+
+                <CountriesDropdown
                     country={country}
                     countries={countries}
                     isOpen={isOpen}
-                    setIsFocus={setIsFocus}
-                    inputRef={inputRef}
-                    triggerRef={triggerRef}
-                    toggleIsOpen={toggleIsOpen}
+                    searchRef={searchRef}
+                    setFocusIndex={setFocusIndex}
+                    handleFocus={handleFocus}
+                    handleBlur={handleBlur}
                     onCountryChange={handleCountryChange}
                 />
             </RelativeElement>

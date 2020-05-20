@@ -6,7 +6,6 @@ const StyledSearch = attachThemeAttrs(styled.input)`
     font: inherit;
     background-color: transparent;
     border: 0;
-    border-left: 2px solid ${props => props.palette.brand.main};
     color: ${props => props.palette.text.main};
     font-size: ${FONT_SIZE_TEXT_LARGE};
     margin: 0;
@@ -20,7 +19,6 @@ const StyledSearch = attachThemeAttrs(styled.input)`
         outline: 0;
         background-color: transparent;
         border: 0;
-        border-left: 2px solid ${props => props.palette.brand.main};
     }
 `;
 

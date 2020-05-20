@@ -16,12 +16,13 @@ const StyledItem = attachThemeAttrs(styled.li)`
     text-decoration: none;
 
     &:hover,
-    &:active {
+    &:active,
+    &[aria-selected="true"] {
         background-color: ${props => props.palette.action.active};
     }
 
     ${props =>
-        (props.isSelected || props.isActive) &&
+        props.isSelected &&
         `
             background-color: ${props.palette.action.active};
         `};

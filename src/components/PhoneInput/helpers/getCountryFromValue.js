@@ -12,5 +12,5 @@ export default function getCountryFromValue(isoCode, countries) {
         return country;
     }
 
-    return findCountryByIsoCode(countries[0], countries);
+    return countries[0];
 }

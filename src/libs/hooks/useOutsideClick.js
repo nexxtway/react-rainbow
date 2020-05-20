@@ -1,17 +1,18 @@
-import { useEffect, useState, useMemo, useCallback } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 export default function useOutsideClick(ref, handler) {
     const [isListening, setIsListening] = useState(false);
 
-    const listener = useMemo(() => {
-        return event => {
+    const listener = useCallback(
+        event => {
             if (!ref.current || ref.current.contains(event.target)) {
                 return;
             }
 
             handler(event);
-        };
-    }, [ref, handler]);
+        },
+        [ref, handler],
+    );
 
     useEffect(() => {
         if (isListening) {
