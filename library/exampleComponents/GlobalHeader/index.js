@@ -6,11 +6,14 @@ import RenderIf from './../../../src/components/RenderIf';
 import { StyledGlobalHeader, StyledLogo } from './styled';
 
 export default function GlobalHeader(props) {
-    const { className, children, src, hideAvatar } = props;
+    const { className, children, src, hideAvatar, variant } = props;
 
     return (
         <div className={className}>
-            <StyledGlobalHeader className="rainbow-align-content_space-between rainbow-p-vertical_small">
+            <StyledGlobalHeader
+                className="rainbow-align-content_space-between rainbow-p-vertical_small"
+                variant={variant}
+            >
                 <StyledLogo src={logo} alt="rainbow logo" className="rainbow-m-left_medium" />
                 <div className="rainbow-flex rainbow-align_center">
                     {children}
@@ -32,6 +35,7 @@ GlobalHeader.propTypes = {
     className: PropTypes.string,
     src: PropTypes.string,
     hideAvatar: PropTypes.bool,
+    variant: PropTypes.oneOf(['default', 'neutral']),
 };
 
 GlobalHeader.defaultProps = {
@@ -39,4 +43,5 @@ GlobalHeader.defaultProps = {
     className: undefined,
     src: 'images/user/user1.jpg',
     hideAvatar: false,
+    variant: 'default',
 };

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import RadioButtonItem from './radioButtonItem';
 
 export default function ButtonItems(props) {
-    const { options, ariaDescribedby, onChange, value, name, required, variant } = props;
+    const { options, ariaDescribedby, onChange, value, name, required, variant, size } = props;
 
     const isChecked = option => option.value === value;
 
@@ -19,6 +19,7 @@ export default function ButtonItems(props) {
                 ariaDescribedby={ariaDescribedby}
                 name={name}
                 variant={variant}
+                size={size}
                 {...option}
             />
         );
