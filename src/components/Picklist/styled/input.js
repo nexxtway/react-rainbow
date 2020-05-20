@@ -22,7 +22,7 @@ const PickerInput = attachThemeAttrs(styled(StyledInput))`
     ${props =>
         props.variant === 'shaded' &&
         `
-        box-shadow: ${props.shadows.shadow_11};
+        box-shadow: ${props.shadows.shadow_10};
         border: 1px solid transparent;
     `}
 
