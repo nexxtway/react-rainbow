@@ -121,9 +121,18 @@ class SingleCalendar extends Component {
         const [rangeStart, rangeEnd] = selectedRange;
         if (rangeEnd !== undefined) return;
 
-        this.setState({
-            currentRange: [rangeStart, date],
-        });
+        const { currentRange } = this.state;
+        const [currentRangeStart] = currentRange;
+
+        if (isDateBelowLimit(date, rangeStart)) {
+            this.setState({
+                currentRange: [currentRangeStart],
+            });
+        } else {
+            this.setState({
+                currentRange: [rangeStart, date],
+            });
+        }
     }
 
     getContext() {

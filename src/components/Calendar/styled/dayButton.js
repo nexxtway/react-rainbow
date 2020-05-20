@@ -6,10 +6,10 @@ const StyledDayButton = attachThemeAttrs(styled.button)`
     font: inherit;
     border: none;
     outline: none;
-    // transition: all 0.2s ease;
+    transition: all 0.2s ease;
     background-color: transparent;
     border-radius: 48px;
-    line-height: 38px;
+    line-height: 36px;
     height: 38px;
     width: 38px;
     box-sizing: border-box;
@@ -20,8 +20,9 @@ const StyledDayButton = attachThemeAttrs(styled.button)`
     appearance: button;
 
     &:hover {
-        // transition: all 0.2s ease;
-        background-color: ${props => props.palette.action.hover};
+        transition: all 0.2s ease;
+        background-color: transparent;
+        border: 1px solid ${props => props.palette.brand.main};
     }
 
     &:active {
@@ -69,7 +70,14 @@ const StyledDayButton = attachThemeAttrs(styled.button)`
     ${props =>
         props.isHovered &&
         `
-        background-color: ${props.palette.action.hover};
+        transition: all 0.2s ease;
+        color: ${props.palette.getContrastText(props.palette.brand.main)};
+        background-color: ${props.palette.brand.main};
+
+        :hover {
+            color: ${props.palette.getContrastText(props.palette.brand.main)};
+            background-color: ${props.palette.brand.main};    
+        }
         `};
 `;
 
