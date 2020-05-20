@@ -57,7 +57,7 @@ function DayComponent(props) {
     return (
         <StyledDay role="gridcell">
             <StyledRangeHighlight
-                isVisible={isWithinRange}
+                isVisible={isWithinRange && !(isRangeStartDate && isRangeEndDate)}
                 isFirstInRange={isRangeStartDate}
                 isLastInRange={isRangeEndDate}
                 isFirstDayOfWeek={isFirstDayOfWeek}
