@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { CalendarContext } from './context';
 import { useDaysBuilder } from './hooks';
-import Day from './day';
 
 export default function Week(props) {
     const {
@@ -16,7 +15,7 @@ export default function Week(props) {
         onChange,
     } = props;
     const { currentRange, selectionType, selectedRange } = useContext(CalendarContext);
-    const Days = useDaysBuilder(Day, {
+    const Days = useDaysBuilder(
         value,
         startDate,
         endDate,
@@ -28,7 +27,7 @@ export default function Week(props) {
         currentRange,
         selectionType,
         selectedRange,
-    });
+    );
 
     return <tr>{Days}</tr>;
 }

@@ -7,6 +7,7 @@ export { default as getLastDayMonth } from './getLastDayMonth';
 export { default as getYearsRange } from './getYearsRange';
 export { default as isSameDay } from './isSameDay';
 export { default as normalizeDate } from './normalizeDate';
+export { default as normalizeRange } from './normalizeRange';
 export { default as getFormattedDayName } from './getFormattedDayName';
 export { default as compareDates } from './compareDates';
 export { default as isSameMonth } from './isSameMonth';

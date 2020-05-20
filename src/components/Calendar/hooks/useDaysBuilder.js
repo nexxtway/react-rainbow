@@ -1,28 +1,26 @@
 import React, { useMemo } from 'react';
 import { addDays, shouldDateBeSelected, isDateWithinRange, isSameDay } from '../helpers';
+import Day from '../day';
 
-export default function useDaysBuilder(Component, props) {
-    const {
-        startDate,
-        endDate,
-        firstDayMonth,
-        lastDayMonth,
-        minDate,
-        maxDate,
-        selectionType,
-        value,
-        selectedRange,
-        currentRange,
-        onChange,
-    } = props;
+export default function useDaysBuilder(
+    value,
+    startDate,
+    endDate,
+    minDate,
+    maxDate,
+    firstDayMonth,
+    lastDayMonth,
+    onChange,
+    currentRange,
+    selectionType,
+    selectedRange,
+) {
     return useMemo(() => {
-        let date = new Date(startDate);
-        const days = [];
-
-        let index = 0;
-        while (date <= endDate) {
-            days.push(
-                <Component
+        const daysDiff = endDate.getDay() - startDate.getDay() + 1;
+        return Array.from(Array(daysDiff), (_, index) => {
+            const date = addDays(startDate, index);
+            return (
+                <Day
                     date={date}
                     firstDayMonth={firstDayMonth}
                     key={date.getTime()}
@@ -33,12 +31,9 @@ export default function useDaysBuilder(Component, props) {
                     isWithinRange={isDateWithinRange(date, currentRange)}
                     isFirstDayOfWeek={index === 0 || isSameDay(date, firstDayMonth)}
                     isLastDayOfWeek={index === 6 || isSameDay(date, lastDayMonth)}
-                />,
+                />
             );
-            date = addDays(date, 1);
-            index += 1;
-        }
-        return days;
+        });
     }, [
         currentRange,
         endDate,

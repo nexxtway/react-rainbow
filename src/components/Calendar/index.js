@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useLocale } from '../../libs/hooks';
@@ -9,7 +8,8 @@ import { useCurrentDateFromValue, useRangeFromValue } from './hooks';
 /**
  * Calendar provide a simple way to select a single date.
  */
-export default function Calendar({ locale, selectionType, value, onChange, ...rest }) {
+export default function Calendar(props) {
+    const { locale, selectionType, value, onChange, ...rest } = props;
     const currentLocale = useLocale(locale);
     const currentValue = useCurrentDateFromValue(value);
     const range = useRangeFromValue(value, selectionType);
