@@ -50,7 +50,8 @@ const StyledRangeHighlight = attachThemeAttrs(styled.div).attrs(props => {
         background: linear-gradient(
             to left,
             ${props.gradientStart}, 
-            ${props.gradientEnd} 60%, 
+            ${props.gradientStart} 50%, 
+            ${props.gradientEnd} 50%, 
             ${props.gradientEnd}
             );    
         `};
@@ -61,7 +62,8 @@ const StyledRangeHighlight = attachThemeAttrs(styled.div).attrs(props => {
         background: linear-gradient(
             to right,
             ${props.gradientStart}, 
-            ${props.gradientEnd} 60%, 
+            ${props.gradientStart} 50%, 
+            ${props.gradientEnd} 50%, 
             ${props.gradientEnd}
             );    
         `};
