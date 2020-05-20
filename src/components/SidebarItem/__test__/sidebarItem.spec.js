@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock } from '@fortawesome/free-solid-svg-icons';
+import { faClock, faUser } from '@fortawesome/free-solid-svg-icons';
 import Sidebar from '../../Sidebar';
 import SidebarItem from '../index';
 
@@ -36,6 +36,22 @@ describe('<SidebarItem when href is passed />', () => {
         sidebarLink.simulate('click');
         expect(handleOnClickMockFn).toHaveBeenCalledTimes(1);
     });
+    it('should render the right icon when the item is selected', () => {
+        const component = mount(
+            <Sidebar selectedItem="sidebaritem-test-4">
+                <SidebarItem
+                    href="/#/Components"
+                    icon={<FontAwesomeIcon icon={faUser} />}
+                    selectedIcon={<FontAwesomeIcon icon={faClock} />}
+                    name="sidebaritem-test-4"
+                    label="sidebaritem-test-4"
+                />
+            </Sidebar>,
+        );
+        const sidebarLink = component.find('a');
+        sidebarLink.simulate('click');
+        expect(component.find({ 'data-icon': 'clock' }).exists()).toBe(true);
+    });
 });
 
 describe('<SidebarItem when href is not passed />', () => {
@@ -66,5 +82,20 @@ describe('<SidebarItem when href is not passed />', () => {
         const sidebarLink = component.find('button');
         sidebarLink.simulate('click');
         expect(handleOnClickMockFn).toHaveBeenCalledTimes(1);
+    });
+    it('should render the right icon when the item is selected', () => {
+        const component = mount(
+            <Sidebar selectedItem="sidebaritem-test-4">
+                <SidebarItem
+                    icon={<FontAwesomeIcon icon={faClock} />}
+                    selectedIcon={<FontAwesomeIcon icon={faUser} />}
+                    name="sidebaritem-test-4"
+                    label="sidebaritem-test-4"
+                />
+            </Sidebar>,
+        );
+        const sidebarLink = component.find('button');
+        sidebarLink.simulate('click');
+        expect(component.find({ 'data-icon': 'user' }).exists()).toBe(true);
     });
 });

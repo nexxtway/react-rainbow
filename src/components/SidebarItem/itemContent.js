@@ -5,10 +5,10 @@ import StyledIcon from './styled/icon';
 import StyledLabel from './styled/label';
 
 export default function ItemContent(props) {
-    const { label, icon, isSelected } = props;
+    const { label, icon, selectedIcon, isSelected } = props;
     return (
         <Fragment>
-            <StyledIcon>{icon}</StyledIcon>
+            {isSelected ? <StyledIcon>{selectedIcon}</StyledIcon> : <StyledIcon>{icon}</StyledIcon>}
             <RenderIf isTrue={!!label}>
                 <StyledLabel isSelected={isSelected}>{label}</StyledLabel>
             </RenderIf>
@@ -19,10 +19,12 @@ export default function ItemContent(props) {
 ItemContent.propTypes = {
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     icon: PropTypes.node,
+    selectedIcon: PropTypes.node,
     isSelected: PropTypes.bool.isRequired,
 };
 
 ItemContent.defaultProps = {
     label: undefined,
     icon: null,
+    selectedIcon: null,
 };

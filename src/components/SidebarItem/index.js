@@ -11,8 +11,20 @@ import ItemContent from './itemContent';
  * @category Layout
  */
 function SidebarItem(props) {
-    const { label, icon, name, href, onClick, className, style, selectedItem, onSelect } = props;
+    const {
+        label,
+        icon,
+        selectedIcon,
+        name,
+        href,
+        onClick,
+        className,
+        style,
+        selectedItem,
+        onSelect,
+    } = props;
     const isSelected = name === selectedItem;
+    const selectIcon = selectedIcon || icon;
 
     const getAriaCurrent = () => {
         if (isSelected) {
@@ -41,7 +53,12 @@ function SidebarItem(props) {
                     aria-current={getAriaCurrent()}
                     isSelected={isSelected}
                 >
-                    <ItemContent isSelected={isSelected} label={label} icon={icon} />
+                    <ItemContent
+                        isSelected={isSelected}
+                        label={label}
+                        icon={icon}
+                        selectedIcon={selectIcon}
+                    />
                 </StyledAnchorContent>
             </RenderIf>
             <RenderIf isTrue={!href}>
@@ -51,7 +68,12 @@ function SidebarItem(props) {
                     aria-current={getAriaCurrent()}
                     isSelected={isSelected}
                 >
-                    <ItemContent isSelected={isSelected} label={label} icon={icon} />
+                    <ItemContent
+                        isSelected={isSelected}
+                        label={label}
+                        icon={icon}
+                        selectedIcon={selectIcon}
+                    />
                 </StyledButtonContent>
             </RenderIf>
         </StyledLi>
@@ -65,6 +87,10 @@ SidebarItem.propTypes = {
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** The icon displayed for the SidebarItem. It must be a svg icon or a font icon. */
     icon: PropTypes.node,
+    /** The icon displayed for the SidebarItem when it is selected. It must be a svg icon or a font icon.
+     * By default it takes the value of icon prop
+     */
+    selectedIcon: PropTypes.node,
     /** The URL of the page that the navigation item goes to. */
     href: PropTypes.string,
     /** Event fired when the item is clicked. */
@@ -79,6 +105,7 @@ SidebarItem.defaultProps = {
     name: undefined,
     label: undefined,
     icon: null,
+    selectedIcon: null,
     href: undefined,
     onClick: () => {},
     className: undefined,

@@ -31,10 +31,26 @@ class SimpleSidebar extends React.Component {
 
         return (
             <Sidebar selectedItem={selectedItem} onSelect={this.handleOnSelect} id="sidebar-1">
-                <SidebarItem icon={<DashboardPurpleIcon />} name="Dashboard" label="Dashboard" />
-                <SidebarItem icon={<ApplicationIcon />} name="Aplications" label="Aplications" />
-                <SidebarItem icon={<PuzzleIcon />} name="Components" label="Components" />
-                <SidebarItem icon={<MessagesIcon />} name="Messages" label="Messages" />
+                <SidebarItem
+                    icon={<DashboardPurpleIcon />}
+                    selectedIcon={<UserIcon />}
+                    name="Dashboard"
+                    label="Dashboard" />
+                <SidebarItem
+                    icon={<ApplicationIcon />}
+                    selectedIcon={<StartupIcon />}
+                    name="Aplications"
+                    label="Aplications" />
+                <SidebarItem
+                    icon={<PuzzleIcon />}
+                    selectedIcon={<AddFilledIcon />}
+                    name="Components"
+                    label="Components" />
+                <SidebarItem
+                    icon={<MessagesIcon />}
+                    selectedIcon={<AdvancedSettingsIcon />}
+                    name="Messages"
+                    label="Messages" />
                 <SidebarItem icon={<ChartsIcon />} name="Charts" label="Charts" />
             </Sidebar>
         );
