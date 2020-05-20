@@ -22,7 +22,7 @@ import {
     isDateBeyondLimit,
     getNextFocusedDate,
     isSameDatesRange,
-    // isEmptyRange,
+    isEmptyRange,
 } from './helpers';
 import StyledControlsContainer from './styled/controlsContainer';
 import StyledMonthContainer from './styled/monthContainer';
@@ -90,7 +90,7 @@ class SingleCalendar extends Component {
 
         this.onDayFocus = this.onDayFocus.bind(this);
         this.onDayBlur = this.onDayBlur.bind(this);
-        // this.onDayHover = this.onDayHover.bind(this);
+        this.onDayHover = this.onDayHover.bind(this);
     }
 
     componentDidUpdate(prevProps) {
@@ -114,17 +114,17 @@ class SingleCalendar extends Component {
         this.enableNavKeys = false;
     }
 
-    // onDayHover(date) {
-    //     const { selectionType, selectedRange } = this.props;
-    //     if (selectionType === 'single' || isEmptyRange(selectedRange)) return;
+    onDayHover(date) {
+        const { selectionType, selectedRange } = this.props;
+        if (selectionType === 'single' || isEmptyRange(selectedRange)) return;
 
-    //     const [rangeStart, rangeEnd] = selectedRange;
-    //     if (rangeEnd !== undefined) return;
+        const [rangeStart, rangeEnd] = selectedRange;
+        if (rangeEnd !== undefined) return;
 
-    //     this.setState({
-    //         currentRange: [rangeStart, date],
-    //     });
-    // }
+        this.setState({
+            currentRange: [rangeStart, date],
+        });
+    }
 
     getContext() {
         const { focusedDate, currentRange } = this.state;
@@ -138,7 +138,7 @@ class SingleCalendar extends Component {
             privateKeyDown: this.handleKeyDown,
             privateOnFocus: this.onDayFocus,
             privateOnBlur: this.onDayBlur,
-            // privateOnHover: this.onDayHover,
+            privateOnHover: this.onDayHover,
         };
     }
 

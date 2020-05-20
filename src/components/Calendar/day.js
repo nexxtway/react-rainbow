@@ -27,7 +27,7 @@ function DayComponent(props) {
         privateKeyDown,
         privateOnFocus,
         privateOnBlur,
-        // privateOnHover,
+        privateOnHover,
     } = props;
     const day = date.getDate();
     const isAdjacentDate = date.getMonth() !== firstDayMonth.getMonth();
@@ -67,8 +67,9 @@ function DayComponent(props) {
                     ref={buttonRef}
                     tabIndex={tabIndex}
                     onClick={() => onChange(new Date(date))}
-                    // onMouseOver={() => privateOnHover(new Date(date))}
+                    onMouseEnter={() => privateOnHover(new Date(date))}
                     isSelected={isSelected}
+                    isHovered={!isSelected && isRangeEndDate}
                     data-selected={isSelected}
                     onKeyDown={privateKeyDown}
                     onFocus={privateOnFocus}

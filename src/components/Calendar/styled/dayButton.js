@@ -6,7 +6,7 @@ const StyledDayButton = attachThemeAttrs(styled.button)`
     font: inherit;
     border: none;
     outline: none;
-    transition: all 0.2s ease;
+    // transition: all 0.2s ease;
     background-color: transparent;
     border-radius: 48px;
     line-height: 38px;
@@ -20,7 +20,7 @@ const StyledDayButton = attachThemeAttrs(styled.button)`
     appearance: button;
 
     &:hover {
-        transition: all 0.2s ease;
+        // transition: all 0.2s ease;
         background-color: ${props => props.palette.action.hover};
     }
 
@@ -64,6 +64,12 @@ const StyledDayButton = attachThemeAttrs(styled.button)`
             &:focus {
                 box-shadow: 0 0 8px ${props.palette.brand.main};
             }
+        `};
+
+    ${props =>
+        props.isHovered &&
+        `
+        background-color: ${props.palette.action.hover};
         `};
 `;
 
