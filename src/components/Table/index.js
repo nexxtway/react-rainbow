@@ -490,7 +490,7 @@ Table.propTypes = {
     resizeColumnDisabled: PropTypes.bool,
     /** The minimum width for all columns. The default value is 50px. */
     minColumnWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    /** The maximum width for all columns. The default value is infinity. */
+    /** The maximum width for all columns. The default value is Infinity. */
     maxColumnWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** Show or hide the checkbox column for row selection. To show set
      * showCheckboxColumn to true. The default value is false. */
