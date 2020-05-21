@@ -1,29 +1,22 @@
 import React, { useMemo } from 'react';
-import { addDays } from '../helpers';
+import { addDays, getLastDayMonth } from '../helpers';
 import Week from '../week';
 
-export default function useWeeksBuilder(
-    value,
-    firstDayMonth,
-    lastDayMonth,
-    minDate,
-    maxDate,
-    onChange,
-) {
+export default function useWeeksBuilder(value, firstDayMonth, minDate, maxDate, onChange) {
     return useMemo(() => {
-        let date = new Date(firstDayMonth);
-        const weeks = [];
+        const date = new Date(firstDayMonth);
+        const lastDayMonth = getLastDayMonth(firstDayMonth);
         const dayOfWeek = date.getDay();
-        const daysAfter = 6 - dayOfWeek;
+        const totalWeeks = (lastDayMonth.getDate() + dayOfWeek + 6 - lastDayMonth.getDay()) / 7;
+        const week = addDays(date, -dayOfWeek);
 
-        while (date <= lastDayMonth || addDays(date, -dayOfWeek) <= lastDayMonth) {
-            const startDate = addDays(date, -dayOfWeek);
-            const endDate = addDays(date, daysAfter);
+        return Array.from(Array(totalWeeks), (_, index) => {
+            const startDate = addDays(week, 7 * index);
+            const endDate = addDays(startDate, 6);
 
             startDate.setHours(0, 0, 0, 0);
             endDate.setHours(11, 59, 59, 999);
-
-            weeks.push(
+            return (
                 <Week
                     value={value}
                     startDate={startDate}
@@ -32,13 +25,10 @@ export default function useWeeksBuilder(
                     maxDate={maxDate}
                     firstDayMonth={firstDayMonth}
                     lastDayMonth={lastDayMonth}
-                    key={date.getTime()}
+                    key={startDate.getTime()}
                     onChange={onChange}
-                />,
+                />
             );
-
-            date = addDays(date, 7);
-        }
-        return weeks;
-    }, [value, firstDayMonth, lastDayMonth, minDate, maxDate, onChange]);
+        });
+    }, [value, firstDayMonth, minDate, maxDate, onChange]);
 }

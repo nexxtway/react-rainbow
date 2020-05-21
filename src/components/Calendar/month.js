@@ -1,14 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getLastDayMonth } from './helpers';
 import { useWeeksBuilder } from './hooks';
 
 export default function Month(props) {
     const { firstDayMonth, value, minDate, maxDate, onChange } = props;
-    const lastDayMonth = getLastDayMonth(firstDayMonth);
-    const Weeks = useWeeksBuilder(value, firstDayMonth, lastDayMonth, minDate, maxDate, onChange);
+    const weeks = useWeeksBuilder(value, firstDayMonth, minDate, maxDate, onChange);
 
-    return <tbody>{Weeks}</tbody>;
+    return <tbody>{weeks}</tbody>;
 }
 
 Month.propTypes = {
