@@ -50,7 +50,14 @@ export const StyledDropzone = attachThemeAttrs(styled.div)`
         border-radius: 27px;
         height: 100%;
         width: 100%;
-        `}
+
+        &:hover {
+            button {
+                width: auto;
+                height: auto;
+            }
+        }
+    `}
 
     ${props =>
         props.disabled &&
@@ -89,10 +96,7 @@ export const StyledDropzone = attachThemeAttrs(styled.div)`
         background-color: ${props.palette.brand.light};
         border-color: ${props.palette.brand.main};
         `}
-
-    &:hover button {
-        display: block;
-    }
+        
 `;
 
 export const TruncatedText = styled.span`
@@ -213,8 +217,11 @@ export const StyledButtonIcon = styled(ButtonIcon)`
     ${props =>
         props.variantValue === 'multiline' &&
         `
-        display: none;
+        position: relative;
         top: 21px;
+        width: 0;
+        height: 0;
+        overflow: hidden;
     `}
 `;
 
