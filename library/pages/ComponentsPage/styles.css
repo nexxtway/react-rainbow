@@ -51,6 +51,15 @@
     margin-left: 0.8rem;
 }
 
+.react-rainbow-components-page_category-description {
+    font-family: Lato;
+    font-size: 15px;
+    font-weight: 400;
+    color: #576574;
+    margin-top: 0.5rem;
+    margin-left: 0.8rem;
+}
+
 .react-rainbow-components-page_card {
     width: 14rem;
     font-family: Lato;
