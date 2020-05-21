@@ -12,7 +12,7 @@ class PageCodeInput {
         this.rootElement = rootElement;
     }
 
-    typeKey(key) {
+    type(key) {
         const focusedInput = this.getFocusedInput();
         if (focusedInput) {
             focusedInput.setValue(key);

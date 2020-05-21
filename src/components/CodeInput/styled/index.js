@@ -37,13 +37,26 @@ const StyledInput = attachThemeAttrs(styled.input)`
         border: 2px solid ${props => props.palette.brand.main};
         background-color: ${props => props.palette.background.main};
         box-shadow: ${props => props.shadows.brand};
-
     }
 
     ::placeholder {
         color: ${props => props.palette.text.header};
         font-weight: 500;
         font-size: ${FONT_SIZE_TEXT_LARGE};
+    }
+
+    &[readonly] {
+        border: 2px solid transparent;
+        background-color: transparent;
+        box-shadow: none;
+        margin: 0 0 12px 0;
+
+        &:focus,
+        &:active {
+            border: 2px solid transparent;
+            background-color: transparent;
+            box-shadow: none;
+        }
     }
 
     &[disabled] {
@@ -88,22 +101,6 @@ const StyledInput = attachThemeAttrs(styled.input)`
             border: 1px solid ${props.palette.border.main};
         }
     `}
-    
-    ${props =>
-        props.readOnly &&
-        `
-        border: 2px solid transparent;
-        background-color: transparent;
-        box-shadow: none;
-        margin: 0 0 12px 0;
-
-        &:focus,
-        &:active {
-            border: 2px solid transparent;
-            background-color: transparent;
-            box-shadow: none;
-        }
-    `};
 `;
 
 const StyledHelpText = styled(HelpText)`

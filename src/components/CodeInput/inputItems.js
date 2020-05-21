@@ -21,7 +21,7 @@ const InputItems = React.forwardRef((props, ref) => {
 
     const inputs = value.map((inputValue, index) => {
         const inputIndex = index;
-        const isActive = inputIndex === focusedIndex || (readOnly && index === 0);
+        const isActive = inputIndex === focusedIndex;
         const inputRef = isActive ? ref : null;
         const inputTabIndex = isActive ? tabIndex : -1;
 

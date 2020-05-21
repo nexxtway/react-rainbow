@@ -56,13 +56,6 @@ const CodeInput = React.forwardRef((props, ref) => {
         }
     }, [inputRef, focusedIndex, previousFocusedIndex]);
 
-    const handleOnClick = e => {
-        if (readOnly && inputRef && inputRef.current) {
-            inputRef.current.blur();
-        }
-        onClick(e);
-    };
-
     const handleOnChange = (inputValue, index) => {
         const newValue = getNormalizedValue(inputValue, index, value);
         const hasValueChanged = newValue !== valueProp;
@@ -97,7 +90,7 @@ const CodeInput = React.forwardRef((props, ref) => {
                 readOnly={readOnly}
                 error={error}
                 tabIndex={tabIndex}
-                onClick={handleOnClick}
+                onClick={onClick}
                 onChange={handleOnChange}
                 onFocus={handleOnFocus}
                 onBlur={onBlur}
