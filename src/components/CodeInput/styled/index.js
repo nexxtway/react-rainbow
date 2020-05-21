@@ -77,8 +77,12 @@ const StyledInput = attachThemeAttrs(styled.input)`
         :focus,
         :active {
             box-shadow: none;
-            background-color: ${props.palette.background.main};
-            border: 1px solid ${props.palette.border.main};
+
+            ${!props.error &&
+                `
+                background-color: ${props.palette.background.main};
+                border: 1px solid ${props.palette.border.main};
+            `}
         }
     `}
 `;
