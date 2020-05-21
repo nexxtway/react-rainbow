@@ -217,8 +217,9 @@ export const StyledButtonIcon = styled(ButtonIcon)`
     ${props =>
         props.variantValue === 'multiline' &&
         `
-        position: relative;
-        top: 21px;
+        position: absolute;
+        top: -14px;
+        right: 14px
         width: 0;
         height: 0;
         overflow: hidden;
