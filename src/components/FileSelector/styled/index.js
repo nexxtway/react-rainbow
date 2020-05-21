@@ -59,7 +59,7 @@ export const StyledDropzone = attachThemeAttrs(styled.div)`
 
         &:hover {
             cursor: not-allowed;
-            border-color: ${props.palette.text.disabled}
+            border-color: ${props.palette.text.disabled};
         }
     `}
 
@@ -68,7 +68,7 @@ export const StyledDropzone = attachThemeAttrs(styled.div)`
         `
         color: ${props.palette.error.main};
         border: dashed 1px ${props.palette.error.main};
-        background-color: ${props.palette.error.light};
+        background-color: ${replaceAlpha(props.palette.error.main, 0.1)};
 
         &:hover {
             border: dashed 1px ${props.palette.error.main};
@@ -180,6 +180,18 @@ export const StyledIconContainer = attachThemeAttrs(styled(IconContainer))`
             width: 64px !important;
             height: 64px !important;
             font-size: 64px !important;
+
+            ${props.error &&
+                `
+                height: 40px !important;
+                width: 40px !important;
+                font-size: 40px !important;
+                color: ${props.palette.error.main};
+                
+                #OvalPartialShape {
+                    color: ${props.palette.error.dark};
+                }
+            `}
         }
     `}
 `;
