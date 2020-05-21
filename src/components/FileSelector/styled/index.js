@@ -6,6 +6,7 @@ import { MARGIN_X_SMALL } from '../../../styles/margins';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 import { PADDING_MEDIUM } from '../../../styles/paddings';
+import replaceAlpha from '../../../styles/helpers/color/replaceAlpha';
 
 export const StyledContainer = styled.div`
     display: flex;
@@ -40,7 +41,7 @@ export const StyledDropzone = attachThemeAttrs(styled.div)`
         outline: 0;
         border: solid 1px ${props.palette.brand.main};
         box-shadow: ${props.shadows.brand};
-        `}
+    `}
 
     ${props =>
         props.variant === 'multiline' &&
@@ -49,7 +50,7 @@ export const StyledDropzone = attachThemeAttrs(styled.div)`
         border-radius: 27px;
         height: 100%;
         width: 100%;
-        `}
+    `}
 
     ${props =>
         props.disabled &&
@@ -60,7 +61,7 @@ export const StyledDropzone = attachThemeAttrs(styled.div)`
             cursor: not-allowed;
             border-color: ${props.palette.text.disabled}
         }
-        `}
+    `}
 
     ${props =>
         props.error &&
@@ -85,9 +86,9 @@ export const StyledDropzone = attachThemeAttrs(styled.div)`
         props.isDragOver &&
         `
         color: ${props.palette.brand.main};
-        background-color: ${props.palette.brand.light};
+        background-color: ${replaceAlpha(props.palette.brand.main, 0.05)};
         border-color: ${props.palette.brand.main};
-        `}
+    `}
 `;
 
 export const TruncatedText = styled.span`
@@ -108,6 +109,7 @@ export const StyledBackdrop = attachThemeAttrs(styled.div)`
     padding-right: ${PADDING_MEDIUM};
     border-radius: ${BORDER_RADIUS_2};
     pointer-events: none;
+
     ${props =>
         props.isFileSelected &&
         `
@@ -137,6 +139,12 @@ export const StyledIconContainer = attachThemeAttrs(styled(IconContainer))`
         height: 24px !important;
         font-size: 24px !important;
         color: ${props => props.palette.brand.main};
+
+        ${props =>
+            props.error &&
+            `
+            color: ${props.palette.error.main}
+        `}
     }
 
     ${props =>
@@ -173,7 +181,7 @@ export const StyledIconContainer = attachThemeAttrs(styled(IconContainer))`
             height: 64px !important;
             font-size: 64px !important;
         }
-        `}
+    `}
 `;
 
 export const StyledButtonIcon = styled(ButtonIcon)`
