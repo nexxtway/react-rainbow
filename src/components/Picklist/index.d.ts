@@ -14,6 +14,7 @@ export interface PicklistProps extends BaseProps {
     children?: ReactNode;
     isLoading?: boolean;
     value?: PicklistValue;
+    variant?: 'default' | 'shaded';
     onChange?: (value: PicklistValue) => void;
     onClick?: (event: MouseEvent<HTMLElement>) => void;
     onFocus?: (event: null | PicklistValue) => void;

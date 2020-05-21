@@ -243,3 +243,145 @@ class SimpleVisualPickerWithFooter extends React.Component {
     <SimpleVisualPickerWithFooter />
 </div>
 ```
+
+##### VisualPicker small
+
+```js
+import React from 'react';
+import { VisualPicker, VisualPickerOption } from 'react-rainbow-components';
+import styled from 'styled-components';
+
+const StyledHeader = styled.h1.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    font-size: 24px;
+    font-weight: 300;
+    color: ${props => props.text.main};
+`;
+
+const StyledLabel = styled.h2.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    font-size: 12px;
+    font-weight: 300;
+    margin-top:6px
+    color: ${props => props.text.label};
+`;
+
+class SimpleVisualPicker extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            value: null,
+        };
+        this.handleOnChange = this.handleOnChange.bind(this);
+    }
+
+    handleOnChange(value) {
+        return this.setState({ value });
+    }
+
+    render() {
+        return (
+            <VisualPicker
+                id="visual-picker-component-7"
+                label="Select Option"
+                value={this.state.value}
+                onChange={this.handleOnChange}
+                size="small"
+            >
+                <VisualPickerOption name="option-1">
+                    <DesignIcon />
+                    <StyledLabel>Design</StyledLabel>
+                </VisualPickerOption>
+                <VisualPickerOption name="option-2">
+                    <PhotographerIcon />
+                    <StyledLabel>Photographer</StyledLabel>
+                </VisualPickerOption>
+                <VisualPickerOption name="option-3">
+                    <CodeIcon />
+                    <StyledLabel>Programmer</StyledLabel>
+                </VisualPickerOption>
+            </VisualPicker>
+        );
+    }
+}
+
+<div className="rainbow-align-content_center rainbow-m-around_xx-large rainbow-flex_column">
+    <StyledHeader className="rainbow-m-bottom_medium">
+        What are you doing?
+    </StyledHeader>
+    <SimpleVisualPicker />
+</div>
+```
+
+##### VisualPicker large
+
+```js
+import React from 'react';
+import { VisualPicker, VisualPickerOption } from 'react-rainbow-components';
+import styled from 'styled-components';
+
+const StyledHeader = styled.h1.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    font-size: 24px;
+    font-weight: 300;
+    color: ${props => props.text.main};
+`;
+
+const StyledLabel = styled.h2.attrs(props => {
+    return props.theme.rainbow.palette;
+})`
+    font-size: 15px;
+    font-weight: 300;
+    margin-top:6px
+    color: ${props => props.text.label};
+`;
+
+class SimpleVisualPicker extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            value: null,
+        };
+        this.handleOnChange = this.handleOnChange.bind(this);
+    }
+
+    handleOnChange(value) {
+        return this.setState({ value });
+    }
+
+    render() {
+        return (
+            <VisualPicker
+                id="visual-picker-component-9"
+                label="Select Option"
+                value={this.state.value}
+                onChange={this.handleOnChange}
+                size="large"
+            >
+                <VisualPickerOption name="option-1">
+                    <DesignIcon />
+                    <StyledLabel>Design</StyledLabel>
+                </VisualPickerOption>
+                <VisualPickerOption name="option-2">
+                    <PhotographerIcon />
+                    <StyledLabel>Photographer</StyledLabel>
+                </VisualPickerOption>
+                <VisualPickerOption name="option-3">
+                    <CodeIcon />
+                    <StyledLabel>Programmer</StyledLabel>
+                </VisualPickerOption>
+            </VisualPicker>
+        );
+    }
+}
+
+<div className="rainbow-align-content_center rainbow-m-around_xx-large rainbow-flex_column">
+    <StyledHeader className="rainbow-m-bottom_medium">
+        What are you doing?
+    </StyledHeader>
+    <SimpleVisualPicker />
+</div>
+```
