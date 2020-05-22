@@ -24,7 +24,7 @@ function SidebarItem(props) {
         onSelect,
     } = props;
     const isSelected = name === selectedItem;
-    const selectIcon = selectedIcon || icon;
+    const currentIcon = isSelected && !!selectedIcon ? selectedIcon : icon;
 
     const getAriaCurrent = () => {
         if (isSelected) {
@@ -53,12 +53,7 @@ function SidebarItem(props) {
                     aria-current={getAriaCurrent()}
                     isSelected={isSelected}
                 >
-                    <ItemContent
-                        isSelected={isSelected}
-                        label={label}
-                        icon={icon}
-                        selectedIcon={selectIcon}
-                    />
+                    <ItemContent isSelected={isSelected} label={label} icon={currentIcon} />
                 </StyledAnchorContent>
             </RenderIf>
             <RenderIf isTrue={!href}>
@@ -68,12 +63,7 @@ function SidebarItem(props) {
                     aria-current={getAriaCurrent()}
                     isSelected={isSelected}
                 >
-                    <ItemContent
-                        isSelected={isSelected}
-                        label={label}
-                        icon={icon}
-                        selectedIcon={selectIcon}
-                    />
+                    <ItemContent isSelected={isSelected} label={label} icon={currentIcon} />
                 </StyledButtonContent>
             </RenderIf>
         </StyledLi>
