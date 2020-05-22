@@ -2,17 +2,17 @@ import React, { useRef, useImperativeHandle } from 'react';
 import PropTypes from 'prop-types';
 import Label from '../Input/label';
 import RenderIf from '../RenderIf';
-import RelativeElement from '../Structural/relativeElement';
 import StyledContainer from '../Input/styled/container';
-import StyledIconContainer from '../Input/styled/iconContainer';
 import HelpText from '../Input/styled/helpText';
 import ErrorText from '../Input/styled/errorText';
 import {
+    StyledInputContainer,
     StyledInput,
     StyledIndicator,
     StyledTrigger,
     StyledFlagContainer,
     StyledCountryCode,
+    StyledIconContainer,
 } from './styled';
 import { useUniqueIdentifier, useReduxForm, useErrorMessageId, useLabelId } from '../../libs/hooks';
 import {
@@ -123,26 +123,34 @@ const PhoneInput = React.forwardRef((props, ref) => {
                 readOnly={readOnly}
                 id={labelId}
             />
-            <RelativeElement>
-                <RenderIf isTrue={!!icon}>
-                    <StyledIconContainer iconPosition="right" readOnly={readOnly} error={error}>
-                        {icon}
-                    </StyledIconContainer>
+            <StyledInputContainer
+                disabled={disabled}
+                readOnly={readOnly}
+                iconPosition="right"
+                icon={icon}
+                error={error}
+                isFocus={isFocus}
+            >
+                <RenderIf isTrue={readOnly && !disabled}>
+                    <StyledFlagContainer readOnly>{flagIcon}</StyledFlagContainer>
+                </RenderIf>
+                <RenderIf isTrue={!readOnly || disabled}>
+                    <StyledTrigger
+                        ref={triggerRef}
+                        onClick={handleClick}
+                        onFocus={event => handleFocus(event, 0)}
+                        onBlur={handleBlur}
+                        tabIndex={tabIndex}
+                        disabled={disabled}
+                    >
+                        <StyledFlagContainer disabled={disabled}>
+                            {flagIcon}
+                            <StyledIndicator error={error} disabled={disabled} />
+                        </StyledFlagContainer>
+                    </StyledTrigger>
                 </RenderIf>
 
-                <StyledTrigger
-                    ref={triggerRef}
-                    onClick={handleClick}
-                    onFocus={event => handleFocus(event, 0)}
-                    onBlur={handleBlur}
-                    tabIndex={tabIndex}
-                >
-                    <StyledFlagContainer>
-                        {flagIcon}
-                        <StyledIndicator error={error} disabled={disabled} />
-                    </StyledFlagContainer>
-                    <StyledCountryCode>{formattedCountryCode}</StyledCountryCode>
-                </StyledTrigger>
+                <StyledCountryCode>{formattedCountryCode}</StyledCountryCode>
                 <StyledInput
                     id={inputId}
                     ref={inputRef}
@@ -168,7 +176,9 @@ const PhoneInput = React.forwardRef((props, ref) => {
                     error={error}
                     isFocus={isFocus}
                 />
-
+                <RenderIf isTrue={!!icon}>
+                    <StyledIconContainer error={error}>{icon}</StyledIconContainer>
+                </RenderIf>
                 <CountriesDropdown
                     country={country}
                     countries={countries}
@@ -179,8 +189,7 @@ const PhoneInput = React.forwardRef((props, ref) => {
                     handleBlur={handleBlur}
                     onCountryChange={handleCountryChange}
                 />
-            </RelativeElement>
-
+            </StyledInputContainer>
             <RenderIf isTrue={!!bottomHelpText}>
                 <HelpText alignSelf="center">{bottomHelpText}</HelpText>
             </RenderIf>

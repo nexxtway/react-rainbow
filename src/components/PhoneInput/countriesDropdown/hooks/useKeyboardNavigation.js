@@ -88,5 +88,12 @@ export default function useKeyboardNavigation(
         activeIndex.current = 0;
     }, [handleActiveChange, itemsRef, length, scrollableRef]);
 
+    useEffect(() => {
+        const currentItem = itemsRef.current[activeIndex.current];
+        if (currentItem) {
+            currentItem.setAttribute('aria-selected', true);
+        }
+    });
+
     return handleActiveChange;
 }

@@ -10,7 +10,7 @@ const StyledSearch = attachThemeAttrs(styled.input)`
     font-size: ${FONT_SIZE_TEXT_LARGE};
     margin: 0;
     width: 100%;
-    padding: 0 .5rem;
+    padding: 0;
     line-height: 2rem;
     height: 2rem;
 

@@ -4,10 +4,7 @@ import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledTrigger = attachThemeAttrs(styled.button)`
-    position: absolute;
-    top: 2px;
-    bottom: 2px;
-    left: 2px;
+    flex: 0 0 auto;
     padding-left: .4rem;
     padding-right: 0;
     border: none;
@@ -17,7 +14,6 @@ const StyledTrigger = attachThemeAttrs(styled.button)`
     font-weight: 300;
     font-size: ${FONT_SIZE_TEXT_LARGE};
     border-radius: ${BORDER_RADIUS_2} 0 0 ${BORDER_RADIUS_2};
-    width: 6.5rem;
     display: flex;
 
     :hover,
@@ -26,6 +22,16 @@ const StyledTrigger = attachThemeAttrs(styled.button)`
         text-decoration: none;
         outline: 0;
         background-color: ${props => props.palette.action.active};
+    }
+
+    &[disabled] {
+        cursor: not-allowed;
+        user-select: none;
+
+        &:focus,
+        &:active {
+            background-color: transparent;
+        }
     }
 
     ${props =>

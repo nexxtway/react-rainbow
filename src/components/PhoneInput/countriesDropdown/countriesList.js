@@ -5,11 +5,13 @@ import Icon from '../../PicklistOption/icon';
 import StyledIconContainer from '../../PicklistOption/styled/iconContainer';
 import StyledCheckmarkIcon from '../../PicklistOption/styled/checkmarkIcon';
 import { StyledItem, StyledCountryCodeItem } from './styled';
+import { useSimulatedLoading } from './hooks';
 
 const CountriesList = memo(props => {
     const { countries, country, itemsRef, handleCountryChange, handleActiveChange } = props;
+    const list = useSimulatedLoading(countries, 15);
 
-    return countries.map((value, index) => {
+    return list.map((value, index) => {
         const { isoCode, country: name, countryCode, flagIcon } = value;
         const isSelected = value === country;
         const formattedCountryCode = `(${countryCode})`;

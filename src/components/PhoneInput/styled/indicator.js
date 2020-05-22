@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const StyledIndicator = styled.span`
     z-index: 2;
-    margin-top: -5px;
+    margin-top: -4px;
     margin-left: 8px;
     flex: 0 0 auto;
 

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
+import MenuArrowButton from '../../../Picklist/menuArrowButton';
 
 export const StyledScrollable = styled.div`
     margin: 0;
@@ -15,16 +16,27 @@ export const StyledUl = styled.ul`
     padding: 0;
     list-style: none;
     box-sizing: border-box;
+    height: ${props => props.listHeight}px;
 `;
 
 export const StyledSearchContainer = attachThemeAttrs(styled.div)`
     width: 100%;
-    padding: 0 0.75rem 5px 0.75rem;
     border-bottom: 1px solid ${props => props.palette.border.divider};
+    padding: 0 1rem;
+    margin-top: -10px;
 `;
 
 export const StyledCountryCodeItem = attachThemeAttrs(styled.span)`
     flex: 0 0 auto;
+`;
+
+export const StyledScrollControls = styled.div`
+    position: relative;
+    padding-top: 1rem;
+`;
+
+export const StyledMenuArrowButton = styled(MenuArrowButton)`
+    position: absolute;
 `;
 
 export { default as StyledDropdown } from './dropdown';

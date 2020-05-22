@@ -11,7 +11,6 @@ const Container = styled.div`
     padding: 20px 10px;
     min-height: 400px;
 `;
-
 const Form = () => {
     const [phone, setPhone] = useState();
 

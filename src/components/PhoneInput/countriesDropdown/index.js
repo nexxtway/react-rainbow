@@ -1,14 +1,20 @@
 import React, { useRef, useEffect, useCallback, memo } from 'react';
 import PropTypes from 'prop-types';
-import { useFilterCountries, useKeyboardNavigation } from './hooks';
+import { useFilterCountries, useKeyboardNavigation, useScrollControls } from './hooks';
 import {
     StyledScrollable,
     StyledUl,
     StyledDropdown,
     StyledSearchContainer,
     StyledSearch,
+    StyledScrollControls,
+    StyledMenuArrowButton,
 } from './styled';
 import CountriesList from './countriesList';
+import RenderIf from '../../RenderIf';
+import StyledSearchIcon from '../../Lookup/options/styled/searchIcon';
+import StyledOptionsContainer from '../../Lookup/options/styled//optionsContainer';
+import StyledEmptyMessage from '../../Lookup/options/styled/emptyMessage';
 
 const CountriesDropdown = memo(props => {
     const {
@@ -53,6 +59,16 @@ const CountriesDropdown = memo(props => {
         setFocusIndex,
     );
 
+    const {
+        showScrollUp,
+        showScrollDown,
+        handleScrollUpMouseEnter,
+        handleScrollDownouseEnter,
+        stopScroll,
+    } = useScrollControls(scrollableRef);
+
+    const listHeight = countriesFiltered.length * 45;
+
     return (
         <StyledDropdown isOpen={isOpen}>
             <StyledSearchContainer>
@@ -65,17 +81,44 @@ const CountriesDropdown = memo(props => {
                     onBlur={handleBlur}
                 />
             </StyledSearchContainer>
-            <StyledScrollable ref={scrollableRef}>
-                <StyledUl role="listbox">
-                    <CountriesList
-                        countries={countriesFiltered}
-                        country={country}
-                        itemsRef={itemsRef}
-                        handleCountryChange={handleCountryChange}
-                        handleActiveChange={handleActiveChange}
+            <StyledScrollControls>
+                <RenderIf isTrue={showScrollUp}>
+                    <StyledMenuArrowButton
+                        arrow="up"
+                        onMouseEnter={handleScrollUpMouseEnter}
+                        onMouseLeave={stopScroll}
                     />
-                </StyledUl>
-            </StyledScrollable>
+                </RenderIf>
+                <StyledScrollable ref={scrollableRef}>
+                    <RenderIf isTrue={countriesFiltered.length > 0}>
+                        <StyledUl role="listbox" listHeight={listHeight}>
+                            <CountriesList
+                                countries={countriesFiltered}
+                                country={country}
+                                itemsRef={itemsRef}
+                                handleCountryChange={handleCountryChange}
+                                handleActiveChange={handleActiveChange}
+                            />
+                        </StyledUl>
+                    </RenderIf>
+                    <RenderIf isTrue={countriesFiltered.length === 0}>
+                        <StyledOptionsContainer as="div" data-id="phone-country-empty-container">
+                            <StyledSearchIcon />
+                            <StyledEmptyMessage>
+                                Our robots did not find any match for
+                                <span>{` "${query}"`}</span>
+                            </StyledEmptyMessage>
+                        </StyledOptionsContainer>
+                    </RenderIf>
+                </StyledScrollable>
+            </StyledScrollControls>
+            <RenderIf isTrue={showScrollDown}>
+                <StyledMenuArrowButton
+                    arrow="down"
+                    onMouseEnter={handleScrollDownouseEnter}
+                    onMouseLeave={stopScroll}
+                />
+            </RenderIf>
         </StyledDropdown>
     );
 });
