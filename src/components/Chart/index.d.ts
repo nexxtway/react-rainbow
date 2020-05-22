@@ -10,6 +10,12 @@ export interface ChartProps extends BaseProps {
     disableAnimations?: boolean;
     disableLines?: boolean;
     disableCurves?: boolean;
+    disableXAxisGridLines?: boolean;
+    disableYAxisGridLines?: boolean;
+    disableXAxisBorders?: boolean;
+    disableYAxisBorders?: boolean;
+    disableXAxisTickLabels?: boolean;
+    disableYAxisTickLabels?: boolean;
     maintainAspectRatio?: boolean;
     children?: ReactNode;
 }
