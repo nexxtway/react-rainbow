@@ -4,7 +4,7 @@ import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledInput = attachThemeAttrs(styled.input).attrs(props => {
     return {
-        renderActiveInputStyles: !props.error,
+        renderFocusStyle: props.isActive && !props.error && !props.readOnly,
     };
 })`
     font: inherit;
@@ -32,9 +32,14 @@ const StyledInput = attachThemeAttrs(styled.input).attrs(props => {
     :active {
         outline: 0;
         padding: 0 0.9375rem;
-        border: 2px solid ${props => props.palette.brand.main};
-        background-color: ${props => props.palette.background.main};
-        box-shadow: ${props => props.shadows.brand};
+
+        ${props =>
+            props.renderFocusStyle &&
+            `
+            border: 2px solid ${props.palette.brand.main};
+            background-color: ${props.palette.background.main};
+            box-shadow: ${props.shadows.brand};
+        `}
     }
 
     ::placeholder {
@@ -64,30 +69,6 @@ const StyledInput = attachThemeAttrs(styled.input).attrs(props => {
         background-color: ${props.palette.background.main};
         border: 2px solid ${props.palette.error.main};
         background-clip: padding-box;
-
-        :focus,
-        :active {
-            background-color: ${props.palette.background.main};
-            border: 2px solid ${props.palette.error.main};
-            box-shadow: ${props.shadows.error};
-            padding: 0 1rem;
-            outline: 0;
-        }
-    `}
-
-    ${props =>
-        !props.isActive &&
-        `
-        :focus,
-        :active {
-            box-shadow: none;
-
-            ${props.renderActiveInputStyles &&
-                `
-                background-color: ${props.palette.background.main};
-                border: 1px solid ${props.palette.border.main};
-            `}
-        }
     `}
 `;
 
