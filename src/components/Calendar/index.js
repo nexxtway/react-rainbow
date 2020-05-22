@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useLocale } from '../../libs/hooks';
 import SingleCalendar from './singleCalendar';
@@ -11,15 +11,19 @@ import { useCurrentDateFromValue, useRangeFromValue } from './hooks';
 export default function Calendar(props) {
     const { locale, selectionType, value, onChange, ...rest } = props;
     const currentLocale = useLocale(locale);
+    const [currentRangeUpdatePosition, setCurrentRangeUpdatePosition] = useState(0);
     const currentValue = useCurrentDateFromValue(value);
     const range = useRangeFromValue(value, selectionType);
 
     const handleChange = useCallback(
         newValue => {
             if (selectionType === 'single') return onChange(newValue);
-            return onChange(buildNewRangeFromValue(newValue, range));
+            const result = buildNewRangeFromValue(newValue, range, currentRangeUpdatePosition);
+            if (Number.isInteger(result.nextUpdatePosition))
+                setCurrentRangeUpdatePosition(result.nextUpdatePosition);
+            return onChange(result.range);
         },
-        [onChange, selectionType, range],
+        [selectionType, onChange, range, currentRangeUpdatePosition],
     );
 
     return (
