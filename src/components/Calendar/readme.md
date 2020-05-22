@@ -77,8 +77,8 @@ import React from 'react';
 import { Card, Calendar, Avatar } from 'react-rainbow-components';
 
 initialState = { range: [
-    new Date(2019, 0, 5),
-    new Date(2019, 0, 6)
+    new Date(2019, 0, 3),
+    new Date(2019, 0, 15)
 ] };
 const calendarContainerStyles = {
     width: '28rem',
