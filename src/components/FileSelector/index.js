@@ -138,6 +138,20 @@ const FileSelector = React.forwardRef((props, ref) => {
                 disabled={disabled}
                 error={error}
             >
+                <RenderIf isTrue={variant === 'multiline'}>
+                    <StyledIconContainer
+                        iconPosition="right"
+                        variant={variant}
+                        isFileSelected={isFileSelected}
+                        isCloseIconContainerFloated
+                    >
+                        <StyledButtonIcon
+                            size="xx-small"
+                            icon={<CancelIcon />}
+                            onClick={handleCancel}
+                        />
+                    </StyledIconContainer>
+                </RenderIf>
                 <StyledInput
                     type="file"
                     id={inputId}
@@ -162,6 +176,7 @@ const FileSelector = React.forwardRef((props, ref) => {
                         iconPosition="left"
                         isSingleFile={isSingleFile}
                         variant={variant}
+                        isMainIconContainer
                     >
                         {icon}
                     </StyledIconContainer>
@@ -177,7 +192,6 @@ const FileSelector = React.forwardRef((props, ref) => {
                                 size="xx-small"
                                 icon={<CancelIcon />}
                                 onClick={handleCancel}
-                                variantValue={variant}
                             />
                         </StyledIconContainer>
                     </RenderIf>

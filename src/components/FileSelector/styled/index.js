@@ -50,13 +50,6 @@ export const StyledDropzone = attachThemeAttrs(styled.div)`
         border-radius: 27px;
         height: 100%;
         width: 100%;
-
-        &:hover {
-            button {
-                width: auto;
-                height: auto;
-            }
-        }
     `}
 
     ${props =>
@@ -175,7 +168,7 @@ export const StyledIconContainer = attachThemeAttrs(styled(IconContainer))`
     `}
 
     ${props =>
-        !props.isCloseIconContainer &&
+        props.isMainIconContainer &&
         props.variant === 'multiline' &&
         `
         position: static;
@@ -193,16 +186,28 @@ export const StyledIconContainer = attachThemeAttrs(styled(IconContainer))`
         props.isCloseIconContainer &&
         props.variant === 'multiline' &&
         `
-        position: static;
-        width: 100%;
+        width: 0;
         height: 0;
-
-        svg {
-            width: 24px !important;
-            height: 24px !important;
-            font-size: 24px !important;
-        }
+        overflow: hidden;
     `}
+
+    ${props =>
+        props.isCloseIconContainerFloated &&
+        !props.isFileSelected &&
+        `
+        display: none;
+    `};
+
+    ${props =>
+        props.isCloseIconContainerFloated &&
+        props.isFileSelected &&
+        `
+        display: flex;
+        align-items: flex-start;
+        padding-top: 22px;
+        padding-right: 15px;
+    `}
+    
 `;
 
 export const StyledButtonIcon = styled(ButtonIcon)`
@@ -213,17 +218,6 @@ export const StyledButtonIcon = styled(ButtonIcon)`
     svg {
         pointer-events: none;
     }
-
-    ${props =>
-        props.variantValue === 'multiline' &&
-        `
-        position: absolute;
-        top: -14px;
-        right: 14px
-        width: 0;
-        height: 0;
-        overflow: hidden;
-    `}
 `;
 
 export const StyledInput = styled.input`
