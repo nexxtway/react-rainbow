@@ -26,7 +26,7 @@ const StyledDayButton = attachThemeAttrs(styled.button)`
             background-color: transparent;
             border: 1px solid ${props.palette.brand.main};
         }
-        `}
+    `}
 
     &:active {
         transform: scale(0.85);
