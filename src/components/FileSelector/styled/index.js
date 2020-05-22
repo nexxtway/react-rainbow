@@ -187,10 +187,6 @@ export const StyledIconContainer = attachThemeAttrs(styled(IconContainer))`
                 width: 40px !important;
                 font-size: 40px !important;
                 color: ${props.palette.error.main};
-                
-                #OvalPartialShape {
-                    color: ${props.palette.error.dark};
-                }
             `}
         }
     `}
