@@ -19,6 +19,7 @@ export const StyledContainer = styled.div`
 
 export const StyledDropzone = attachThemeAttrs(styled.div)`     
     position: relative;
+    width: 100%;
     height: 2.5rem;   
     padding: 4px;
     border: dashed 1px ${props => props.palette.text.disabled};
@@ -101,6 +102,7 @@ export const TruncatedText = styled.span`
 
 export const StyledBackdrop = attachThemeAttrs(styled.div)`
     position: relative;
+    width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;

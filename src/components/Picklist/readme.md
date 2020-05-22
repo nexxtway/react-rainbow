@@ -275,3 +275,41 @@ initialState = { value: { name: 'option 3', label: 'Central Park' } };
     <PicklistOption name="option 3" label="Central Park" />
 </Picklist>
 ```
+
+##### Picklist shaded with neutral GlobalHeader
+
+```js
+import React from 'react';
+import { Picklist, PicklistOption } from 'react-rainbow-components';
+
+const containerStyles = {
+    width: '200px',
+};
+
+initialState = { value: { name: 'option 3', label: 'Central Park' } };
+
+<div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
+    <GlobalHeader
+        src="images/user/user2.jpg"
+        className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large"
+        variant="neutral"
+    >
+        <div className="rainbow-flex rainbow-align_right">
+            <Picklist
+                id="picklist-13"
+                style={containerStyles}
+                onChange={value => setState({ value })}
+                value={state.value}
+                label="Select Building"
+                hideLabel
+                variant="shaded"
+            >
+                <PicklistOption name="header" label="Your Buildings" variant="header" />
+                <PicklistOption name="option 1" label="Experimental Building" />
+                <PicklistOption name="option 2" label="Empire State" />
+                <PicklistOption name="option 3" label="Central Park" />
+            </Picklist>
+        </div>
+    </GlobalHeader>
+</div>
+```
