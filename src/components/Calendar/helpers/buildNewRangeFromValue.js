@@ -16,7 +16,7 @@ export default function buildNewRangeFromValue(value, currentRange, currentUpdat
             };
         }
         return {
-            range: [value, rangeStart],
+            range: [value],
         };
     }
 
