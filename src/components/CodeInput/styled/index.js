@@ -2,7 +2,11 @@ import styled from 'styled-components';
 import { FONT_SIZE_TEXT_LARGE, FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-const StyledInput = attachThemeAttrs(styled.input)`
+const StyledInput = attachThemeAttrs(styled.input).attrs(props => {
+    return {
+        renderActiveInputStyles: !props.error,
+    };
+})`
     font: inherit;
     background-color: ${props => props.palette.background.main};
     border: 1px solid ${props => props.palette.border.main};
@@ -78,7 +82,7 @@ const StyledInput = attachThemeAttrs(styled.input)`
         :active {
             box-shadow: none;
 
-            ${!props.error &&
+            ${props.renderActiveInputStyles &&
                 `
                 background-color: ${props.palette.background.main};
                 border: 1px solid ${props.palette.border.main};
