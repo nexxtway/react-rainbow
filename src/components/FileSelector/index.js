@@ -176,6 +176,7 @@ const FileSelector = React.forwardRef((props, ref) => {
                         iconPosition="left"
                         isSingleFile={isSingleFile}
                         variant={variant}
+                        error={error}
                         isMainIconContainer
                     >
                         {icon}

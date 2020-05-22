@@ -134,7 +134,11 @@ export const StyledBackdrop = attachThemeAttrs(styled.div)`
         `}
 `;
 
-export const StyledIconContainer = attachThemeAttrs(styled(IconContainer))`
+export const StyledIconContainer = attachThemeAttrs(styled(IconContainer)).attrs(props => {
+    return {
+        setSvgIconMediumSize: props.error && props.variant === 'multiline',
+    };
+})`
     svg {
         width: 24px !important;
         height: 24px !important;
@@ -179,6 +183,13 @@ export const StyledIconContainer = attachThemeAttrs(styled(IconContainer))`
             width: 64px !important;
             height: 64px !important;
             font-size: 64px !important;
+
+            ${props.setSvgIconMediumSize &&
+                `
+                width: 40px !important;
+                height: 40px !important;
+                font-size: 40px !important;
+            `}
         }
     `}
 
