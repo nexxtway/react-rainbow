@@ -13,6 +13,7 @@ const StyledRangeHighlight = attachThemeAttrs(styled.div).attrs(props => {
     height: 38px;
     line-height: 38px;
     margin: 5px auto;
+    color: ${props => props.palette.text.main};
 
     @media (max-width: 600px) {
         margin: 3px auto;
@@ -21,6 +22,7 @@ const StyledRangeHighlight = attachThemeAttrs(styled.div).attrs(props => {
     ${props =>
         props.isVisible &&
         `
+        color: ${props.palette.getContrastText(props.gradientStart)};
         background: ${props.gradientStart};
         `};
     ${props =>
