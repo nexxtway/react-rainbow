@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+import replaceAlpha from '../../../styles/helpers/color/replaceAlpha';
 
 const StyledRangeHighlight = attachThemeAttrs(styled.div).attrs(props => {
-    const gradientStart = props.palette.brand.light;
-    const gradientEnd = props.palette.background.main;
+    const gradientStart = replaceAlpha(props.palette.brand.main, 0.2);
+    const gradientEnd = replaceAlpha(props.palette.brand.main, 0);
 
     return {
         gradientStart,
@@ -22,7 +23,6 @@ const StyledRangeHighlight = attachThemeAttrs(styled.div).attrs(props => {
     ${props =>
         props.isVisible &&
         `
-        color: ${props.palette.getContrastText(props.gradientStart)};
         background: ${props.gradientStart};
         `};
     ${props =>
