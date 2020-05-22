@@ -48,6 +48,7 @@ const StyledRangeHighlight = attachThemeAttrs(styled.div).attrs(props => {
     ${props =>
         props.isVisible &&
         props.isFirstInRange &&
+        !props.isLastDayOfWeek &&
         `
         background: linear-gradient(
             to left,
@@ -59,7 +60,21 @@ const StyledRangeHighlight = attachThemeAttrs(styled.div).attrs(props => {
         `};
     ${props =>
         props.isVisible &&
+        props.isFirstInRange &&
+        props.isLastDayOfWeek &&
+        `
+        background: linear-gradient(
+            to right,
+            ${props.gradientEnd},
+            ${props.gradientEnd} 50%,
+            ${props.gradientStart} 50%, 
+            ${props.gradientEnd}
+            );    
+        `};
+    ${props =>
+        props.isVisible &&
         props.isLastInRange &&
+        !props.isFirstDayOfWeek &&
         `
         background: linear-gradient(
             to right,
@@ -69,7 +84,19 @@ const StyledRangeHighlight = attachThemeAttrs(styled.div).attrs(props => {
             ${props.gradientEnd}
             );    
         `};
-    
+    ${props =>
+        props.isVisible &&
+        props.isLastInRange &&
+        props.isFirstDayOfWeek &&
+        `
+        background: linear-gradient(
+            to left,
+            ${props.gradientEnd},
+            ${props.gradientEnd} 50%,
+            ${props.gradientStart} 50%,
+            ${props.gradientEnd}
+            );    
+        `};                
 `;
 
 export default StyledRangeHighlight;
