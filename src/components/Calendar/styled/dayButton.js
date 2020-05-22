@@ -17,6 +17,7 @@ const StyledDayButton = attachThemeAttrs(styled.button)`
     overflow: visible;
     text-transform: none;
     appearance: button;
+    border: 1px solid transparent;
 
     ${props =>
         !props.isHovered &&
