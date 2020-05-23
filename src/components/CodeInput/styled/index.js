@@ -69,6 +69,13 @@ const StyledInput = attachThemeAttrs(styled.input).attrs(props => {
         background-color: ${props.palette.background.main};
         border: 2px solid ${props.palette.error.main};
         background-clip: padding-box;
+
+        :focus,
+        :active {
+            box-shadow: ${props.shadows.error};
+            padding: 0 1rem;
+            outline: 0;
+        }
     `}
 `;
 
