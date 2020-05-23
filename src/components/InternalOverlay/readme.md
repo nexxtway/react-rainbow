@@ -5,6 +5,8 @@ import { ButtonIcon } from 'react-rainbow-components';
 import { useRef, useState } from 'react';
 import styled from 'styled-components';
 import RenderIf from '../RenderIf';
+import useOutsideClick from '../../libs/hooks/useOutsideClick';
+import useWindowResize from '../../libs/hooks/useWindowResize';
 
 const Container = styled.div`
     height: 240px;
@@ -40,17 +42,48 @@ const Images = styled(ParisIcon)`
     height: 60%;
 `;
 
-const Component = () => {
+const StyledPlusIcon = styled(PlusIcon)`
+    pointer-events: none;
+`;
+
+const Component = (props) => {
+    const { id, buttonId } = props;
     const ref = useRef(null);
+    const containerRef = useRef();
+    const iconRef = useRef();
     const [isOpen, setIsOpen] = useState(false);
-    const handleClick = () => {
+    const handleOutsideClick = event => {
+        if (event.target !== ref.current.buttonRef.current) {
+            stopListening();
+            setIsOpen(false);
+        }        
+    }
+    const handleWindowResize = event => {
+        stopListening();
+        setIsOpen(false);
+    }
+    const handleClick = (event) => {
         setIsOpen(!isOpen);
+        if (!isOpen) {
+            startListening();
+        }        
     };
+    const startListening = () => {
+        startListeningOutsideClick();
+        startListeningWindowResize();
+    }
+    const stopListening = () => {
+        stopListeningOutsideClick();
+        stopListeningWindowResize();
+    }
+    const [startListeningOutsideClick, stopListeningOutsideClick] = useOutsideClick(containerRef, handleOutsideClick);
+    const [startListeningWindowResize, stopListeningWindowResize] = useWindowResize(handleWindowResize);
     return (
         <>
             <ButtonIcon
+                id={buttonId}
                 variant="neutral"
-                icon={<PlusIcon />}
+                icon={<StyledPlusIcon />}
                 ref={ref}
                 onClick={handleClick}
             />
@@ -58,7 +91,7 @@ const Component = () => {
                 isVisible={isOpen}
                 render={() => {
                     return (
-                        <Dropdown>
+                        <Dropdown id={id} ref={containerRef}>
                             <Images />
                             <Text>
                                 Paris
@@ -74,7 +107,7 @@ const Component = () => {
 
 <Container>
     <div className="rainbow-flex rainbow-justify_spread">
-        <Component />
+        <Component id="overlay-1" buttonId="button-icon-element" />
         <Component />
     </div>
     <div className="rainbow-flex rainbow-justify_spread">
@@ -92,6 +125,8 @@ import { Button, ButtonIcon } from 'react-rainbow-components';
 import { useRef, useState } from 'react';
 import styled from 'styled-components';
 import RenderIf from '../RenderIf';
+import useOutsideClick from '../../libs/hooks/useOutsideClick';
+import useWindowResize from '../../libs/hooks/useWindowResize';
 
 const Container = styled.div`
     height: 240px;
@@ -177,10 +212,28 @@ const Body = styled.p`
 
 const Component = () => {
     const ref = useRef(null);
+    const containerRef = useRef();
     const [isOpen, setIsOpen] = useState(false);
+    const handleOutsideClick = event => {
+        stopListeningOutsideClick();
+        if (event.target !== ref.current) {
+            setIsOpen(false);
+        }
+    }
+    const handleWindowResize = event => {
+        stopListeningWindowResize();
+        setIsOpen(false);
+    }
     const handleClick = () => {
         setIsOpen(!isOpen);
+        if (!isOpen) {
+            startListeningOutsideClick();
+            startListeningWindowResize();
+        }        
     };
+    const [startListeningOutsideClick, stopListeningOutsideClick] = useOutsideClick(containerRef, handleOutsideClick);
+    const [startListeningWindowResize, stopListeningWindowResize] = useWindowResize(handleWindowResize);
+    
     return (
         <Container>
             <Cell>
@@ -195,7 +248,7 @@ const Component = () => {
                     isVisible={isOpen}
                     render={() => {
                         return (
-                            <Dropdown>
+                            <Dropdown ref={containerRef}>
                                 <Header>
                                     <ButtonIcon icon={<TrashBorderIcon />} />
                                     <ButtonIcon icon={<PencilBorderIcon />} className="rainbow-m-left_small" />
@@ -220,15 +273,33 @@ const Component = () => {
                     triggerElementRef={() => ref}
                     positionResolver={(opts) => {
                         const { trigger, viewport, content } = opts;
-                        if (trigger.leftBottomAnchor.y + content.height + 5 <= viewport.height) {
+                        if (trigger.rightBottomAnchor.x + content.width + 15 <= viewport.width) {
+                            if (trigger.rightBottomAnchor.y - content.height >= 0) {
+                                return {
+                                    top: trigger.rightBottomAnchor.y - content.height + 25,
+                                    left: trigger.rightBottomAnchor.x + 15,
+                                }
+                            }
                             return {
-                                top: trigger.leftBottomAnchor.y + 5,
-                                left: trigger.leftBottomAnchor.x,
-                            };
+                                top: trigger.rightBottomAnchor.y,
+                                left: trigger.rightBottomAnchor.x + 15,
+                            }
+                        }
+                        if (trigger.leftBottomAnchor.x - content.width - 15 >= 0) {
+                            if (trigger.rightBottomAnchor.y - content.height >= 0) {
+                                return {
+                                    top: trigger.rightBottomAnchor.y - content.height + 25,
+                                    left: trigger.leftBottomAnchor.x - content.width - 15,
+                                }
+                            }
+                            return {
+                                top: trigger.rightBottomAnchor.y,
+                                left: trigger.leftBottomAnchor.x - content.width - 15,
+                            }
                         }
                         return {
                             top: trigger.leftUpAnchor.y - 5 - content.height,
-                            left: trigger.leftBottomAnchor.x,
+                            left: trigger.leftUpAnchor.x - content.width/2 + (trigger.rightUpAnchor.x - trigger.leftUpAnchor.x)/2,
                         };
                     }}
                 />
