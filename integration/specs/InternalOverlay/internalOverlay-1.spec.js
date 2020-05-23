@@ -14,11 +14,13 @@ describe('InternalOverlay with default position resolver', () => {
         component.waitForExist();
     });
 
-    it('should exist after click on trigger', () => {
+    it('should exist after one click on trigger and destroy on second click', () => {
         const button = new PageInternalOverlayButton(BUTTON);
         const internalOverlay = new PageInternalOverlay(OVERLAY);
         button.click();
         expect(internalOverlay.exists()).toBe(true);
+        button.click();
+        expect(internalOverlay.exists()).toBe(false);
     });
 
     it('should not exists after click outside of element', () => {
