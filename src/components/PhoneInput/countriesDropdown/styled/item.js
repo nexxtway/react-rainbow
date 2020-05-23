@@ -22,12 +22,6 @@ const StyledItem = attachThemeAttrs(styled.li)`
     }
 
     ${props =>
-        props.isSelected &&
-        `
-            background-color: ${props.palette.action.active};
-        `};
-
-    ${props =>
         !props.isSelected &&
         `
             padding-right: 37px;
