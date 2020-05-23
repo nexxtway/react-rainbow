@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useMemo, useState, useCallback } from 'react';
+import React, { useMemo, useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useUniqueIdentifier } from '../../../libs/hooks';
 import {
@@ -90,9 +90,27 @@ export default function DoubleCalendar(props) {
         setCurrentMonth(newMonth);
     }, [value, currentMonth]);
 
-    const handleYearChange = useCallback(event => {
-        const year = +event.target.value;
-    }, []);
+    const handleLeftCalendarYearChange = useCallback(
+        event => {
+            const year = +event.target.value;
+            const newMonth = new Date(currentMonth);
+            newMonth.setFullYear(year);
+            setFocusedDate(getNextFocusedDate(value, newMonth));
+            setCurrentMonth(newMonth);
+        },
+        [currentMonth, value],
+    );
+
+    const handleRightCalendarYearChange = useCallback(
+        event => {
+            const year = +event.target.value;
+            const newMonth = new Date(rightCalendarMonth);
+            newMonth.setFullYear(year);
+            setFocusedDate(getNextFocusedDate(value, newMonth));
+            setCurrentMonth(addMonths(newMonth, -1));
+        },
+        [rightCalendarMonth, value],
+    );
 
     const keyHandlerMap = useMemo(
         () => ({
@@ -159,13 +177,23 @@ export default function DoubleCalendar(props) {
             [PAGEUP_KEY]: () => {
                 const result = moveFocusedMonth(-12);
                 setFocusedDate(result.day);
+                if (isSameMonth(result.month, rightCalendarMonth)) {
+                    setCurrentMonth(addMonths(result.month, -1));
+                } else {
+                    setCurrentMonth(result.month);
+                }
             },
             [PAGEDN_KEY]: () => {
                 const result = moveFocusedMonth(12);
                 setFocusedDate(result.day);
+                if (isSameMonth(result.month, rightCalendarMonth)) {
+                    setCurrentMonth(addMonths(result.month, -1));
+                } else {
+                    setCurrentMonth(result.month);
+                }
             },
         }),
-        [focusedDate, moveFocusedDay, moveFocusedMonth],
+        [focusedDate, moveFocusedDay, moveFocusedMonth, rightCalendarMonth],
     );
 
     const handleKeyDown = useCallback(
@@ -182,6 +210,10 @@ export default function DoubleCalendar(props) {
         },
         [enableNavKeys, keyHandlerMap, keyHandlerMapAlt],
     );
+
+    useEffect(() => {
+        setFocusedDate(normalizeDate(value));
+    }, [value]);
 
     return (
         <section id={id} className={className} style={style}>
@@ -200,7 +232,7 @@ export default function DoubleCalendar(props) {
                         month={currentMonth}
                         currentYear={currentYear}
                         yearsRange={yearsRange}
-                        onYearChange={handleYearChange}
+                        onYearChange={handleLeftCalendarYearChange}
                     />
                     <StyledDivider />
                     <MonthHeader
@@ -209,7 +241,7 @@ export default function DoubleCalendar(props) {
                         month={rightCalendarMonth}
                         currentYear={rightCalendarYear}
                         yearsRange={yearsRange}
-                        onYearChange={handleYearChange}
+                        onYearChange={handleRightCalendarYearChange}
                     />
                 </StyledMonthsContainer>
                 <StyledArrowButton
