@@ -48,12 +48,12 @@ const StyledPlusIcon = styled(PlusIcon)`
 
 const Component = (props) => {
     const { id, buttonId } = props;
-    const ref = useRef(null);
-    const containerRef = useRef();
+    const triggerRef = useRef(null);
+    const dropdownRef = useRef();
     const iconRef = useRef();
     const [isOpen, setIsOpen] = useState(false);
     const handleOutsideClick = event => {
-        if (event.target !== ref.current.buttonRef.current) {
+        if (event.target !== triggerRef.current.buttonRef.current) {
             stopListening();
             setIsOpen(false);
         }        
@@ -76,7 +76,7 @@ const Component = (props) => {
         stopListeningOutsideClick();
         stopListeningWindowResize();
     }
-    const [startListeningOutsideClick, stopListeningOutsideClick] = useOutsideClick(containerRef, handleOutsideClick);
+    const [startListeningOutsideClick, stopListeningOutsideClick] = useOutsideClick(dropdownRef, handleOutsideClick);
     const [startListeningWindowResize, stopListeningWindowResize] = useWindowResize(handleWindowResize);
     return (
         <>
@@ -84,21 +84,21 @@ const Component = (props) => {
                 id={buttonId}
                 variant="neutral"
                 icon={<StyledPlusIcon />}
-                ref={ref}
+                ref={triggerRef}
                 onClick={handleClick}
             />
             <InternalOverlay
                 isVisible={isOpen}
                 render={() => {
                     return (
-                        <Dropdown id={id} ref={containerRef}>
+                        <Dropdown id={id} ref={dropdownRef}>
                             <Images />
                             <Text>
                                 Paris
                             </Text>
                         </Dropdown>);
                 }}
-                triggerElementRef={() => ref.current.buttonRef}
+                triggerElementRef={() => triggerRef.current.buttonRef}
             />
 
         </>
@@ -210,13 +210,45 @@ const Body = styled.p`
     margin: 0 24px 24px 24px;
 `;
 
+const positionResolver = (opts) => {
+    const { trigger, viewport, content } = opts;
+    if (trigger.rightBottomAnchor.x + content.width + 15 <= viewport.width) {
+        if (trigger.rightBottomAnchor.y - content.height >= 0) {
+            return {
+                top: trigger.rightBottomAnchor.y - content.height + 25,
+                left: trigger.rightBottomAnchor.x + 15,
+            }
+        }
+        return {
+            top: trigger.rightBottomAnchor.y,
+            left: trigger.rightBottomAnchor.x + 15,
+        }
+    }
+    if (trigger.leftBottomAnchor.x - content.width - 15 >= 0) {
+        if (trigger.rightBottomAnchor.y - content.height >= 0) {
+            return {
+                top: trigger.rightBottomAnchor.y - content.height + 25,
+                left: trigger.leftBottomAnchor.x - content.width - 15,
+            }
+        }
+        return {
+            top: trigger.rightBottomAnchor.y,
+            left: trigger.leftBottomAnchor.x - content.width - 15,
+        }
+    }
+    return {
+        top: trigger.leftUpAnchor.y - 5 - content.height,
+        left: trigger.leftUpAnchor.x - content.width/2 + (trigger.rightUpAnchor.x - trigger.leftUpAnchor.x)/2,
+    };
+};
+
 const Component = () => {
-    const ref = useRef(null);
-    const containerRef = useRef();
+    const triggerRef = useRef(null);
+    const dropdownRef = useRef();
     const [isOpen, setIsOpen] = useState(false);
     const handleOutsideClick = event => {
         stopListeningOutsideClick();
-        if (event.target !== ref.current) {
+        if (event.target !== triggerRef.current) {
             setIsOpen(false);
         }
     }
@@ -231,7 +263,7 @@ const Component = () => {
             startListeningWindowResize();
         }        
     };
-    const [startListeningOutsideClick, stopListeningOutsideClick] = useOutsideClick(containerRef, handleOutsideClick);
+    const [startListeningOutsideClick, stopListeningOutsideClick] = useOutsideClick(dropdownRef, handleOutsideClick);
     const [startListeningWindowResize, stopListeningWindowResize] = useWindowResize(handleWindowResize);
     
     return (
@@ -239,7 +271,7 @@ const Component = () => {
             <Cell>
                 <Day>May 5</Day>
                 <Event
-                    ref={ref}
+                    ref={triggerRef}
                     onClick={handleClick}
                     type="button">
                     React Rainbow Event
@@ -248,7 +280,7 @@ const Component = () => {
                     isVisible={isOpen}
                     render={() => {
                         return (
-                            <Dropdown ref={containerRef}>
+                            <Dropdown ref={dropdownRef}>
                                 <Header>
                                     <ButtonIcon icon={<TrashBorderIcon />} />
                                     <ButtonIcon icon={<PencilBorderIcon />} className="rainbow-m-left_small" />
@@ -270,38 +302,8 @@ const Component = () => {
                                 </Body>
                             </Dropdown>);
                     }}
-                    triggerElementRef={() => ref}
-                    positionResolver={(opts) => {
-                        const { trigger, viewport, content } = opts;
-                        if (trigger.rightBottomAnchor.x + content.width + 15 <= viewport.width) {
-                            if (trigger.rightBottomAnchor.y - content.height >= 0) {
-                                return {
-                                    top: trigger.rightBottomAnchor.y - content.height + 25,
-                                    left: trigger.rightBottomAnchor.x + 15,
-                                }
-                            }
-                            return {
-                                top: trigger.rightBottomAnchor.y,
-                                left: trigger.rightBottomAnchor.x + 15,
-                            }
-                        }
-                        if (trigger.leftBottomAnchor.x - content.width - 15 >= 0) {
-                            if (trigger.rightBottomAnchor.y - content.height >= 0) {
-                                return {
-                                    top: trigger.rightBottomAnchor.y - content.height + 25,
-                                    left: trigger.leftBottomAnchor.x - content.width - 15,
-                                }
-                            }
-                            return {
-                                top: trigger.rightBottomAnchor.y,
-                                left: trigger.leftBottomAnchor.x - content.width - 15,
-                            }
-                        }
-                        return {
-                            top: trigger.leftUpAnchor.y - 5 - content.height,
-                            left: trigger.leftUpAnchor.x - content.width/2 + (trigger.rightUpAnchor.x - trigger.leftUpAnchor.x)/2,
-                        };
-                    }}
+                    triggerElementRef={() => triggerRef}
+                    positionResolver={positionResolver}
                 />
             </Cell>
         </Container>
