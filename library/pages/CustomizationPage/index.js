@@ -79,6 +79,9 @@ const defaultTheme = `const theme = {
             shadow_5: String,
             shadow_6: String,
             shadow_7: String,
+            shadow_8: String,
+            shadow_9: String,
+            shadow_10: String,
         },
     },
 };

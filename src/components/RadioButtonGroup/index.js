@@ -111,6 +111,7 @@ class RadioButtonGroup extends Component {
             id,
             onChange,
             variant,
+            size,
         } = this.props;
         const { options, markerLeft, markerWidth } = this.state;
         const markerStyle = {
@@ -126,11 +127,12 @@ class RadioButtonGroup extends Component {
                         {label}
                     </StyledLabel>
                 </RenderIf>
-                <StyledButtonItemsContainer variant={variant}>
+                <StyledButtonItemsContainer variant={variant} size={size}>
                     <Marker
                         variant={variant}
                         isVisible={this.isMarkerActive()}
                         style={markerStyle}
+                        size={size}
                     />
 
                     <ButtonItems
@@ -141,6 +143,7 @@ class RadioButtonGroup extends Component {
                         required={required}
                         ariaDescribedby={this.getErrorMessageId()}
                         variant={variant}
+                        size={size}
                     />
                 </StyledButtonItemsContainer>
                 <RenderIf isTrue={!!error}>
@@ -173,6 +176,12 @@ RadioButtonGroup.propTypes = {
             disabled: PropTypes.bool,
         }),
     ),
+    /**
+     * The size of the RadioButton.
+     * Options includes x-small, small, medium and large.
+     * This value defaults to medium.
+     */
+    size: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
     /** Specifies that an radio group must be filled out before submitting the form. */
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** A CSS class for the outer element, in addition to the component's base classes. */
@@ -193,6 +202,7 @@ RadioButtonGroup.defaultProps = {
     onChange: () => {},
     required: false,
     options: [],
+    size: 'medium',
     error: null,
     id: undefined,
 };

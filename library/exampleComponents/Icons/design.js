@@ -4,14 +4,7 @@ import PropTypes from 'prop-types';
 const Design = props => {
     const { className, style } = props;
     return (
-        <svg
-            className={className}
-            style={style}
-            width="49px"
-            height="53px"
-            viewBox="0 0 49 53"
-            version="1.1"
-        >
+        <svg className={className} style={style} width="49px" height="53px" viewBox="0 0 49 53">
             <g id="components" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                 <g id="Components-VisualPicker" transform="translate(-363.000000, -537.000000)">
                     <g id="Group-6" transform="translate(203.000000, 333.000000)">

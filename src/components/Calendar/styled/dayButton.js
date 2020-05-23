@@ -6,24 +6,27 @@ const StyledDayButton = attachThemeAttrs(styled.button)`
     font: inherit;
     border: none;
     outline: none;
-    transition: all 0.2s ease;
     background-color: transparent;
     border-radius: 48px;
-    line-height: 38px;
+    line-height: 36px;
     height: 38px;
     width: 38px;
-    margin: 6px auto;
     box-sizing: border-box;
     cursor: pointer;
     color: inherit;
     overflow: visible;
     text-transform: none;
     appearance: button;
+    border: 1px solid transparent;
 
-    &:hover {
-        transition: all 0.2s ease;
-        background-color: ${props => props.palette.action.hover};
-    }
+    ${props =>
+        !props.isHovered &&
+        `
+        &:hover {
+            background-color: transparent;
+            border: 1px solid ${props.palette.brand.main};
+        }
+    `}
 
     &:active {
         transform: scale(0.85);
@@ -35,10 +38,6 @@ const StyledDayButton = attachThemeAttrs(styled.button)`
         box-shadow: ${props => props.shadows.brand};
         border: 1px solid ${props => props.palette.brand.main};
         line-height: 36px;
-    }
-
-    @media (max-width: 600px) {
-        margin: 3px auto;
     }
 
     ${props =>
@@ -53,7 +52,6 @@ const StyledDayButton = attachThemeAttrs(styled.button)`
             line-height: 36px;
             height: 38px;
             width: 38px;
-            margin: 5px auto;
             padding: 0;
             border: none;
             outline: none;
@@ -70,10 +68,13 @@ const StyledDayButton = attachThemeAttrs(styled.button)`
             &:focus {
                 box-shadow: 0 0 8px ${props.palette.brand.main};
             }
+        `};
 
-            @media (max-width: 600px) {
-                margin: 3px auto;
-            }
+    ${props =>
+        props.isHovered &&
+        `
+        color: ${props.palette.getContrastText(props.palette.brand.main)};
+        background-color: ${props.palette.brand.dark};
         `};
 `;
 

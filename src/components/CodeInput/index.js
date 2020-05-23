@@ -1,14 +1,12 @@
 import React, { useEffect, useImperativeHandle, useRef } from 'react';
 import PropTypes from 'prop-types';
-import HelpText from '../Input/styled/helpText';
 import InputItems from './inputItems';
 import RenderIf from '../RenderIf';
 import RequiredAsterisk from '../RequiredAsterisk';
-import StyledTextError from '../Input/styled/errorText';
-import { useReduxForm, useUniqueIdentifier } from '../../libs/hooks';
+import { useReduxForm } from '../../libs/hooks';
 import { useFocusedIndexState, usePreviousIndex, useValueState } from './hooks';
 import { getNormalizedValue, getNumbersFromClipboard, setFocus } from './helpers';
-import { StyledFieldset, StyledLabel } from './styled';
+import { StyledErrorMessage, StyledFieldset, StyledHelpText, StyledLabel } from './styled';
 
 /**
  * The CodeInput is an element that allows to fill a list of numbers, suitable for code validations.
@@ -17,7 +15,6 @@ import { StyledFieldset, StyledLabel } from './styled';
 const CodeInput = React.forwardRef((props, ref) => {
     const {
         id,
-        name,
         value: valueProp,
         label,
         bottomHelpText,
@@ -38,9 +35,8 @@ const CodeInput = React.forwardRef((props, ref) => {
 
     const inputRef = useRef();
     const value = useValueState(valueProp, length);
-    const focusedIndex = useFocusedIndexState(value, length);
+    const focusedIndex = useFocusedIndexState(value, length, disabled, readOnly);
     const previousFocusedIndex = usePreviousIndex(focusedIndex);
-    const inputId = useUniqueIdentifier('code-input');
 
     useImperativeHandle(ref, () => ({
         focus: () => {
@@ -60,8 +56,12 @@ const CodeInput = React.forwardRef((props, ref) => {
         }
     }, [inputRef, focusedIndex, previousFocusedIndex]);
 
-    const handleOnChange = (inputValue, inputIndex) => {
-        onChange(getNormalizedValue(inputValue, inputIndex, value));
+    const handleOnChange = (inputValue, index) => {
+        const newValue = getNormalizedValue(inputValue, index, value);
+        const hasValueChanged = newValue !== valueProp;
+        if (hasValueChanged) {
+            onChange(newValue);
+        }
     };
 
     const handleOnFocus = (e, index) => {
@@ -76,7 +76,7 @@ const CodeInput = React.forwardRef((props, ref) => {
     };
 
     return (
-        <StyledFieldset className={className} name={name} style={style} id={id}>
+        <StyledFieldset className={className} style={style} id={id}>
             <RenderIf isTrue={!!label}>
                 <StyledLabel>
                     <RequiredAsterisk required={required} />
@@ -96,15 +96,14 @@ const CodeInput = React.forwardRef((props, ref) => {
                 onBlur={onBlur}
                 onKeyDown={onKeyDown}
                 onPaste={handleOnPaste}
-                id={inputId}
                 focusedIndex={focusedIndex}
                 ref={inputRef}
             />
             <RenderIf isTrue={!!bottomHelpText}>
-                <HelpText>{bottomHelpText}</HelpText>
+                <StyledHelpText>{bottomHelpText}</StyledHelpText>
             </RenderIf>
             <RenderIf isTrue={!!error}>
-                <StyledTextError>{error}</StyledTextError>
+                <StyledErrorMessage>{error}</StyledErrorMessage>
             </RenderIf>
         </StyledFieldset>
     );
@@ -113,8 +112,6 @@ const CodeInput = React.forwardRef((props, ref) => {
 CodeInput.propTypes = {
     /** The id of the outer element. */
     id: PropTypes.string,
-    /** An identifier for the CodeInput element. */
-    name: PropTypes.string,
     /** Specifies the value of CodeInput. */
     value: PropTypes.string,
     /** Specifies the label CodeInput. */
@@ -151,7 +148,6 @@ CodeInput.propTypes = {
 
 CodeInput.defaultProps = {
     id: undefined,
-    name: undefined,
     value: '',
     label: undefined,
     bottomHelpText: undefined,
