@@ -1,13 +1,14 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 export default function useWindowResize(handler) {
     const [isListening, setIsListening] = useState(false);
 
-    const listener = useMemo(() => {
-        return event => {
+    const listener = useCallback(
+        event => {
             handler(event);
-        };
-    }, [handler]);
+        },
+        [handler],
+    );
 
     useEffect(() => {
         if (isListening) {
@@ -19,5 +20,8 @@ export default function useWindowResize(handler) {
         };
     }, [isListening, listener]);
 
-    return [() => setIsListening(true), () => setIsListening(false)];
+    const startListening = useCallback(() => setIsListening(true), [setIsListening]);
+    const stopListening = useCallback(() => setIsListening(false), [setIsListening]);
+
+    return [startListening, stopListening];
 }
