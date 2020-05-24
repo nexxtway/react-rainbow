@@ -71,5 +71,9 @@ export default function getColumns(params) {
         null,
     );
 
-    return configColumns.concat(columnsData);
+    if (configColumns.length) {
+        return configColumns.concat(columnsData);
+    }
+
+    return columnsData;
 }
