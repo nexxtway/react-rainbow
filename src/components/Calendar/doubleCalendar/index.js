@@ -70,7 +70,7 @@ export default function DoubleCalendar(props) {
     const minSelectableDate = minDate || new Date(yearsRange[0].value, 0, 1);
     const maxSelectableDate = maxDate || new Date(lastYearItem.value, 11, 31);
     const lastDayMonth = useLastDayMonth(currentMonth);
-    const disableNextMonth = addMonths(currentMonth, 1) > maxSelectableDate;
+    const disableNextMonth = addMonths(rightCalendarMonth, 1) > maxSelectableDate;
     const disablePreviousMonth = lastDayMonth < minSelectableDate;
 
     const moveFocusedDay = useMoveFocusedDayFunction(focusedDate, currentMonth, minDate, maxDate);
