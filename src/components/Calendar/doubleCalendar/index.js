@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useMemo, useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useUniqueIdentifier } from '../../../libs/hooks';
@@ -25,6 +24,8 @@ import {
     addMonths,
     getNextFocusedDate,
     isSameMonth,
+    isEmptyRange,
+    isDateBelowLimit,
 } from '../helpers';
 import {
     useYearsRange,
@@ -75,8 +76,25 @@ export default function DoubleCalendar(props) {
     const moveFocusedDay = useMoveFocusedDayFunction(focusedDate, currentMonth, minDate, maxDate);
     const moveFocusedMonth = useMoveFocusedMonthFunction(focusedDate, minDate, maxDate);
 
-    const onDayFocus = () => setEnableNavKeys(true);
-    const onDayBlur = () => setEnableNavKeys(false);
+    const handleOnDayFocus = () => setEnableNavKeys(true);
+    const handleOnDayBlur = () => setEnableNavKeys(false);
+    const handleOnDayHover = useCallback(
+        date => {
+            if (selectionType === 'single' || isEmptyRange(selectedRange)) return;
+
+            const [rangeStart, rangeEnd] = selectedRange;
+            if (rangeEnd) return;
+
+            const [currentRangeStart] = currentRange;
+
+            if (isDateBelowLimit(date, rangeStart)) {
+                setCurrentRange([currentRangeStart]);
+            } else {
+                setCurrentRange([rangeStart, date]);
+            }
+        },
+        [currentRange, selectedRange, selectionType],
+    );
 
     const prevMonthClick = useCallback(() => {
         const newMonth = addMonths(currentMonth, -1);
@@ -215,6 +233,10 @@ export default function DoubleCalendar(props) {
         setFocusedDate(normalizeDate(value));
     }, [value]);
 
+    useEffect(() => {
+        setCurrentRange(selectedRange);
+    }, [selectedRange]);
+
     return (
         <section id={id} className={className} style={style}>
             <StyledControlsContainer>
@@ -260,10 +282,10 @@ export default function DoubleCalendar(props) {
                         selectionType,
                         selectedRange,
                         currentRange,
-                        privateOnFocus: onDayFocus,
-                        privateOnBlur: onDayBlur,
+                        privateOnFocus: handleOnDayFocus,
+                        privateOnBlur: handleOnDayBlur,
                         privateKeyDown: handleKeyDown,
-                        privateOnHover: () => {},
+                        privateOnHover: handleOnDayHover,
                     }}
                 >
                     <StyledCalendar>
