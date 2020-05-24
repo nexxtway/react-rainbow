@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useCallback } from 'react';
 import {
     addMonths,
     isDateBelowLimit,
@@ -8,8 +8,8 @@ import {
 } from '../../helpers';
 
 export default function useMoveFocusedMonthFunction(focusedDate, minDate, maxDate) {
-    return useMemo(
-        () => increment => {
+    return useCallback(
+        increment => {
             const { minCalendarDate, maxCalendarDate } = getCalendarBounds(minDate, maxDate);
             const nextFocusedDate = addMonths(focusedDate, increment);
             if (isDateBelowLimit(nextFocusedDate, minCalendarDate))

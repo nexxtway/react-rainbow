@@ -29,18 +29,16 @@ import {
 } from '../helpers';
 import {
     useYearsRange,
-    useLastDayMonth,
-    useMoveFocusedDayFunction,
-    useMoveFocusedMonthFunction,
+    useMoveFocusedDay,
+    useFormattedMonth,
+    useMoveFocusedMonth,
+    useDisabledControls,
 } from './hooks';
+import MonthHeader from './monthHeader';
 import StyledControlsContainer from '../styled/controlsContainer';
 import StyledArrowButton from '../styled/arrowButton';
-import StyledMonthsContainer from './styled/monthsContainer';
 import StyledTable from '../styled/table';
-import StyledContainer from './styled/container';
-import StyledCalendar from './styled/calendar';
-import StyledDivider from './styled/divider';
-import MonthHeader from './monthHeader';
+import { StyledMonthsContainer, StyledContainer, StyledCalendar, StyledDivider } from './styled';
 
 export default function DoubleCalendar(props) {
     const {
@@ -61,20 +59,23 @@ export default function DoubleCalendar(props) {
     const [enableNavKeys, setEnableNavKeys] = useState(false);
 
     const rightCalendarMonth = addMonths(currentMonth, 1);
-    const firstMonthLabelId = useUniqueIdentifier('first-month');
-    const secondMonthLabelId = useUniqueIdentifier('second-month');
+    const currentMonthLabelId = useUniqueIdentifier('first-month');
+    const rightMonthLabelId = useUniqueIdentifier('second-month');
+    const currentMonthFormattedLabel = useFormattedMonth(currentMonth, locale);
+    const rightMonthFormattedLabel = useFormattedMonth(rightCalendarMonth, locale);
+
     const currentYear = currentMonth.getFullYear();
     const rightCalendarYear = rightCalendarMonth.getFullYear();
     const yearsRange = useYearsRange(minDate, maxDate, currentMonth);
-    const lastYearItem = yearsRange[yearsRange.length - 1];
-    const minSelectableDate = minDate || new Date(yearsRange[0].value, 0, 1);
-    const maxSelectableDate = maxDate || new Date(lastYearItem.value, 11, 31);
-    const lastDayMonth = useLastDayMonth(currentMonth);
-    const disableNextMonth = addMonths(rightCalendarMonth, 1) > maxSelectableDate;
-    const disablePreviousMonth = lastDayMonth < minSelectableDate;
-
-    const moveFocusedDay = useMoveFocusedDayFunction(focusedDate, currentMonth, minDate, maxDate);
-    const moveFocusedMonth = useMoveFocusedMonthFunction(focusedDate, minDate, maxDate);
+    const [disablePreviousMonth, disableNextMonth] = useDisabledControls(
+        yearsRange,
+        minDate,
+        maxDate,
+        currentMonth,
+        rightCalendarMonth,
+    );
+    const moveFocusedDay = useMoveFocusedDay(focusedDate, currentMonth, minDate, maxDate);
+    const moveFocusedMonth = useMoveFocusedMonth(focusedDate, minDate, maxDate);
 
     const handleOnDayFocus = () => setEnableNavKeys(true);
     const handleOnDayBlur = () => setEnableNavKeys(false);
@@ -249,18 +250,16 @@ export default function DoubleCalendar(props) {
                 />
                 <StyledMonthsContainer>
                     <MonthHeader
-                        id={firstMonthLabelId}
-                        locale={locale}
-                        month={currentMonth}
+                        id={currentMonthLabelId}
+                        label={currentMonthFormattedLabel}
                         currentYear={currentYear}
                         yearsRange={yearsRange}
                         onYearChange={handleLeftCalendarYearChange}
                     />
                     <StyledDivider />
                     <MonthHeader
-                        locale={locale}
-                        id={secondMonthLabelId}
-                        month={rightCalendarMonth}
+                        id={rightMonthLabelId}
+                        label={rightMonthFormattedLabel}
                         currentYear={rightCalendarYear}
                         yearsRange={yearsRange}
                         onYearChange={handleRightCalendarYearChange}
@@ -289,7 +288,7 @@ export default function DoubleCalendar(props) {
                     }}
                 >
                     <StyledCalendar>
-                        <StyledTable role="grid" aria-labelledby={firstMonthLabelId}>
+                        <StyledTable role="grid" aria-labelledby={currentMonthLabelId}>
                             <DaysOfWeek locale={locale} />
                             <Month
                                 value={value}
@@ -303,7 +302,7 @@ export default function DoubleCalendar(props) {
                     </StyledCalendar>
                     <StyledDivider />
                     <StyledCalendar>
-                        <StyledTable role="grid" aria-labelledby={secondMonthLabelId}>
+                        <StyledTable role="grid" aria-labelledby={rightMonthLabelId}>
                             <DaysOfWeek locale={locale} />
                             <Month
                                 value={value}

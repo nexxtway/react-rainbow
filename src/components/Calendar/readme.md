@@ -102,7 +102,7 @@ const calendarContainerStyles = {
 
 ```js
 import React from 'react';
-import { Card, Calendar, Avatar } from 'react-rainbow-components';
+import { Calendar } from 'react-rainbow-components';
 
 initialState = { date: new Date('2019-12-11 00:00:00') };
 const calendarContainerStyles = {
@@ -126,7 +126,7 @@ const calendarContainerStyles = {
 
 ```js
 import React from 'react';
-import { Card, Calendar, Avatar } from 'react-rainbow-components';
+import { Calendar } from 'react-rainbow-components';
 
 initialState = {
     range: [

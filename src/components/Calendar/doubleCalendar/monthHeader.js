@@ -1,18 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useFormattedMonth } from './hooks';
-import StyledHeaderContainer from './styled/headerContainer';
-import StyledMonth from './styled/month';
+import { StyledHeaderContainer, StyledMonth } from './styled';
 import YearSelect from './yearSelect';
 
 export default function MonthHeader(props) {
-    const { id, month, locale, currentYear, yearsRange, onYearChange } = props;
-    const formattedLabel = useFormattedMonth(month, locale);
+    const { id, label, currentYear, yearsRange, onYearChange } = props;
 
     return (
         <StyledHeaderContainer>
             <StyledMonth id={id} data-id="month">
-                {formattedLabel}
+                {label}
             </StyledMonth>
             <YearSelect
                 currentYear={currentYear}
@@ -25,18 +22,16 @@ export default function MonthHeader(props) {
 
 MonthHeader.propTypes = {
     id: PropTypes.string,
-    month: PropTypes.instanceOf(Date),
+    label: PropTypes.string,
     currentYear: PropTypes.number,
     yearsRange: PropTypes.arrayOf(PropTypes.object),
     onYearChange: PropTypes.func,
-    locale: PropTypes.string,
 };
 
 MonthHeader.defaultProps = {
     id: undefined,
-    month: undefined,
+    label: undefined,
     currentYear: undefined,
     yearsRange: undefined,
     onYearChange: () => {},
-    locale: undefined,
 };
