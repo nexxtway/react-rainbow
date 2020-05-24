@@ -54,36 +54,25 @@ export default function getColumns(params) {
         null,
     );
 
-    const extraColumns = {
-        withCheckbox: undefined,
-        withEnumerable: undefined,
-    };
+    const extraColumns = [];
 
     if (showRowNumberColumn) {
-        extraColumns.withEnumerable = {
+        extraColumns.push({
             type: WITH_ENUMERABLE,
             rowNumberOffset,
             width: getEnumerableWidth(rowNumberOffset),
-        };
+        });
     }
 
     if (showCheckboxColumn) {
-        extraColumns.withCheckbox = {
+        extraColumns.push({
             type: SELECTABLE_CHECKBOX,
             width: 52,
-        };
+        });
     }
 
-    const withEnumerableColumnOnly = showRowNumberColumn && !showCheckboxColumn;
-    const withCheckboxColumnOnly = !showRowNumberColumn && showCheckboxColumn;
-    const withEnumerableAndCheckboxColumns = showRowNumberColumn && showCheckboxColumn;
-
-    if (withEnumerableColumnOnly) {
-        return [extraColumns.withEnumerable, ...columnsData];
-    } else if (withCheckboxColumnOnly) {
-        return [extraColumns.withCheckbox, ...columnsData];
-    } else if (withEnumerableAndCheckboxColumns) {
-        return [extraColumns.withEnumerable, extraColumns.withCheckbox, ...columnsData];
+    if (extraColumns.length) {
+        return extraColumns.concat(columnsData);
     }
 
     return columnsData;
