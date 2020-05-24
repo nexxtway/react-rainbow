@@ -31,6 +31,23 @@ export default function getColumns(params) {
         maxColumnWidth,
     } = params;
 
+    const configColumns = [];
+
+    if (showRowNumberColumn) {
+        configColumns.push({
+            type: WITH_ENUMERABLE,
+            rowNumberOffset,
+            width: getEnumerableWidth(rowNumberOffset),
+        });
+    }
+
+    if (showCheckboxColumn) {
+        configColumns.push({
+            type: SELECTABLE_CHECKBOX,
+            width: 52,
+        });
+    }
+
     const columnsData = React.Children.map(
         children,
         column => {
@@ -54,26 +71,5 @@ export default function getColumns(params) {
         null,
     );
 
-    const extraColumns = [];
-
-    if (showRowNumberColumn) {
-        extraColumns.push({
-            type: WITH_ENUMERABLE,
-            rowNumberOffset,
-            width: getEnumerableWidth(rowNumberOffset),
-        });
-    }
-
-    if (showCheckboxColumn) {
-        extraColumns.push({
-            type: SELECTABLE_CHECKBOX,
-            width: 52,
-        });
-    }
-
-    if (extraColumns.length) {
-        return extraColumns.concat(columnsData);
-    }
-
-    return columnsData;
+    return configColumns.concat(columnsData);
 }
