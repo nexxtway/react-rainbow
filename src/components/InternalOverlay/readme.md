@@ -54,30 +54,21 @@ const Component = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     const handleOutsideClick = event => {
         if (event.target !== triggerRef.current.buttonRef.current) {
-            stopListening();
+            stopListeningOutsideClick();
             setIsOpen(false);
         }        
-    }
-    const handleWindowResize = event => {
-        stopListening();
-        setIsOpen(false);
     }
     const handleClick = (event) => {
         setIsOpen(!isOpen);
         if (!isOpen) {
-            startListening();
+            startListeningOutsideClick();
         }        
     };
     const startListening = () => {
         startListeningOutsideClick();
-        startListeningWindowResize();
-    }
-    const stopListening = () => {
-        stopListeningOutsideClick();
-        stopListeningWindowResize();
     }
     const [startListeningOutsideClick, stopListeningOutsideClick] = useOutsideClick(dropdownRef, handleOutsideClick);
-    const [startListeningWindowResize, stopListeningWindowResize] = useWindowResize(handleWindowResize);
+    useWindowResize(() => setIsOpen(false), isOpen);
     return (
         <>
             <ButtonIcon
@@ -252,19 +243,14 @@ const Component = () => {
             setIsOpen(false);
         }
     }
-    const handleWindowResize = event => {
-        stopListeningWindowResize();
-        setIsOpen(false);
-    }
     const handleClick = () => {
         setIsOpen(!isOpen);
         if (!isOpen) {
             startListeningOutsideClick();
-            startListeningWindowResize();
         }        
     };
     const [startListeningOutsideClick, stopListeningOutsideClick] = useOutsideClick(dropdownRef, handleOutsideClick);
-    const [startListeningWindowResize, stopListeningWindowResize] = useWindowResize(handleWindowResize);
+    useWindowResize(() => setIsOpen(false), isOpen);
     
     return (
         <Container>

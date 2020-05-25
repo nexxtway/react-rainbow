@@ -1,8 +1,6 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useCallback } from 'react';
 
-export default function useWindowResize(handler) {
-    const [isListening, setIsListening] = useState(false);
-
+export default function useWindowResize(handler, isListening = true) {
     const listener = useCallback(
         event => {
             handler(event);
@@ -19,9 +17,4 @@ export default function useWindowResize(handler) {
             window.removeEventListener('resize', listener);
         };
     }, [isListening, listener]);
-
-    const startListening = useCallback(() => setIsListening(true), [setIsListening]);
-    const stopListening = useCallback(() => setIsListening(false), [setIsListening]);
-
-    return [startListening, stopListening];
 }
