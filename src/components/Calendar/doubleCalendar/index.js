@@ -40,13 +40,13 @@ export default function DoubleCalendar(props) {
     const [enableNavKeys, setEnableNavKeys] = useState(false);
 
     const rightCalendarMonth = addMonths(currentMonth, 1);
+    const currentYear = currentMonth.getFullYear();
+    const rightCalendarYear = rightCalendarMonth.getFullYear();
+
     const currentMonthLabelId = useUniqueIdentifier('first-month');
     const rightMonthLabelId = useUniqueIdentifier('second-month');
     const currentMonthFormattedLabel = useFormattedMonth(currentMonth, locale);
     const rightMonthFormattedLabel = useFormattedMonth(rightCalendarMonth, locale);
-
-    const currentYear = currentMonth.getFullYear();
-    const rightCalendarYear = rightCalendarMonth.getFullYear();
     const yearsRange = useYearsRange(minDate, maxDate, currentMonth);
     const [disablePreviousMonth, disableNextMonth] = useDisabledControls(
         yearsRange,
@@ -66,6 +66,7 @@ export default function DoubleCalendar(props) {
         setFocusedDate,
         setCurrentMonth,
     );
+
     const handleOnDayFocus = () => setEnableNavKeys(true);
     const handleOnDayBlur = () => setEnableNavKeys(false);
     const handleOnDayHover = useCallback(
