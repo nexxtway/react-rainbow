@@ -11,11 +11,11 @@ const StyledContainer = attachThemeAttrs(styled.div)`
             content: '';
             position: absolute;
             display: block;
-            right: 1rem;
+            right: 0.6rem;
             bottom: 45%;
             pointer-events: none;
-            width: 0.5rem;
-            height: 0.5rem;
+            width: 0.45rem;
+            height: 0.45rem;
             border-style: solid;
             border-width: 0.15em 0.15em 0 0;
             transform: rotate(135deg);
