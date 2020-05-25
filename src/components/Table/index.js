@@ -399,6 +399,7 @@ export default class Table extends Component {
             sortDirection,
             defaultSortDirection,
             resizeColumnDisabled,
+            rowNumberOffset,
             minColumnWidth,
             maxColumnWidth,
             style,
@@ -453,7 +454,7 @@ export default class Table extends Component {
                                             />
                                         </tr>
                                     </thead>
-                                    <StyledTableBody>
+                                    <StyledTableBody rowNumberOffset={rowNumberOffset}>
                                         <Body
                                             data={normalizeData(data)}
                                             columns={columns}

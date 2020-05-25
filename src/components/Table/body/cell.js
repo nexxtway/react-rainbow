@@ -57,8 +57,7 @@ export default function Cell(props) {
     };
 
     if (columnType === WITH_ENUMERABLE) {
-        const { rowNumberOffset } = restColumnProps;
-        return <EnumerableCell rowNumberOffset={rowNumberOffset} rowIndex={rowIndex} />;
+        return <EnumerableCell />;
     }
 
     if (columnType === 'action') {

@@ -1,15 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { SELECTABLE_CHECKBOX } from '../helpers/columns';
+import { SELECTABLE_CHECKBOX, WITH_ENUMERABLE } from '../helpers/columns';
 import { getFieldValue } from '../helpers/rows';
 import Cell from './cell';
 import LoadingCells from './loadingCells';
 import StyledRow from './styled/row';
 
-function isFirstAndNoSelectable(index, type) {
-    if (index === 0 && type !== SELECTABLE_CHECKBOX) {
+function isNotAConfigurationColumn(index, type) {
+    const shouldAttempVerification = index === 0 || index === 1;
+
+    if (shouldAttempVerification && type !== SELECTABLE_CHECKBOX && type !== WITH_ENUMERABLE) {
         return true;
     }
+
     return false;
 }
 
@@ -34,7 +37,7 @@ export default function Row(props) {
         const key = `cell-${index}`;
         const value = getFieldValue(rowData, field);
         isFirstColumn =
-            !isFirstColumn && (isFirstAndNoSelectable(index, columnType) || index === 1);
+            !isFirstColumn && (isNotAConfigurationColumn(index, columnType) || index === 2);
 
         return (
             <Cell
