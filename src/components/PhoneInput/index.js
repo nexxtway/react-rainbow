@@ -86,9 +86,10 @@ const PhoneInput = React.forwardRef((props, ref) => {
         searchRef,
         inputRef,
     );
-    const isOpen = focusIndex === 1;
     const handleFocus = useHandleFocus(focusIndex, onFocus, setFocusIndex);
     const handleBlur = useHandleBlur(focusIndex, onBlur);
+
+    const isOpen = focusIndex === 1;
     const handleCountryChange = useHandleCountryChange(phone, onChange, setFocusIndex, isOpen);
 
     function handlePhoneChange(event) {
@@ -245,6 +246,7 @@ PhoneInput.propTypes = {
     style: PropTypes.object,
     /** The id of the outer element. */
     id: PropTypes.string,
+    /** Specifies the available countries for selection. */
     countries: PropTypes.array,
 };
 

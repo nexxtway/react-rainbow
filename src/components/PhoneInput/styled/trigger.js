@@ -14,7 +14,6 @@ const StyledTrigger = attachThemeAttrs(styled.button)`
     font-weight: 300;
     font-size: ${FONT_SIZE_TEXT_LARGE};
     border-radius: ${BORDER_RADIUS_2} 0 0 ${BORDER_RADIUS_2};
-    display: flex;
 
     :hover,
     :focus,

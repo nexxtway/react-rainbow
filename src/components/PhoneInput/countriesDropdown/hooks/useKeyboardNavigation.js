@@ -13,11 +13,12 @@ import isOptionVisible from '../../../Picklist/helpers/isOptionVisible';
 import calculateScrollOffset from '../../../Picklist/helpers/calculateScrollOffset';
 
 export default function useKeyboardNavigation(
+    country,
     list,
     ref,
     scrollableRef,
     itemsRef,
-    onEnter,
+    handleCountryChange,
     setFocusIndex,
 ) {
     const activeIndex = useRef(0);
@@ -64,14 +65,14 @@ export default function useKeyboardNavigation(
                     [DOWN_KEY]: () => moveToOption(getNewIndex(active + 1, length)),
                     [HOME_KEY]: () => moveToOption(0),
                     [END_KEY]: () => moveToOption(length - 1),
-                    [ENTER_KEY]: () => onEnter(event, active),
+                    [ENTER_KEY]: () => handleCountryChange(list[active]),
                     [ESCAPE_KEY]: () => setFocusIndex(0),
                     [TAB_KEY]: () => setFocusIndex(2),
                 };
                 keyHandlerMap[event.keyCode]();
             }
         },
-        [length, moveToOption, onEnter, setFocusIndex],
+        [handleCountryChange, length, list, moveToOption, setFocusIndex],
     );
 
     useEffect(() => {
@@ -86,7 +87,7 @@ export default function useKeyboardNavigation(
         handleActiveChange(0);
         scrollableRef.current.scrollTo(0, 0);
         activeIndex.current = 0;
-    }, [handleActiveChange, itemsRef, length, scrollableRef]);
+    }, [country, handleActiveChange, itemsRef, length, scrollableRef]);
 
     useEffect(() => {
         const currentItem = itemsRef.current[activeIndex.current];

@@ -11,6 +11,6 @@ export default function useHandleCountryChange(phone, onChange, setFocusIndex, i
             });
         },
         // eslint-disable-next-line react-hooks/exhaustive-deps
-        [onChange, isOpen],
+        [isOpen],
     );
 }

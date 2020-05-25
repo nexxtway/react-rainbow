@@ -1,6 +1,12 @@
-import React, { useRef, useEffect, useCallback, memo } from 'react';
+import React, { useRef, memo } from 'react';
 import PropTypes from 'prop-types';
-import { useFilterCountries, useKeyboardNavigation, useScrollControls } from './hooks';
+import {
+    useFilterCountries,
+    useKeyboardNavigation,
+    useScrollControls,
+    useItemsRef,
+    useHandleCountryChange,
+} from './hooks';
 import {
     StyledScrollable,
     StyledUl,
@@ -30,35 +36,17 @@ const CountriesDropdown = memo(props => {
 
     const scrollableRef = useRef();
     const [query, countriesFiltered, setQuery] = useFilterCountries(countries, country);
-
-    const handleCountryChange = useCallback(
-        newCountry => {
-            setQuery('');
-            scrollableRef.current.scrollTo(0, 0);
-            onCountryChange(newCountry);
-        },
-        [onCountryChange, setQuery],
-    );
-
-    const onEnter = useCallback((event, index) => handleCountryChange(countriesFiltered[index]), [
-        handleCountryChange,
-        countriesFiltered,
-    ]);
-
-    const itemsRef = useRef([]);
-    useEffect(() => {
-        itemsRef.current = itemsRef.current.slice(0, countriesFiltered.length);
-    }, [countriesFiltered.length]);
-
+    const itemsRef = useItemsRef(countriesFiltered.length);
+    const handleCountryChange = useHandleCountryChange(scrollableRef, onCountryChange, setQuery);
     const handleActiveChange = useKeyboardNavigation(
+        country,
         countriesFiltered,
         searchRef,
         scrollableRef,
         itemsRef,
-        onEnter,
+        handleCountryChange,
         setFocusIndex,
     );
-
     const {
         showScrollUp,
         showScrollDown,

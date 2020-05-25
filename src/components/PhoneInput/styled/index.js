@@ -8,9 +8,8 @@ export const StyledCountryCode = attachThemeAttrs(styled.div)`
 `;
 
 export const StyledFlagIcon = styled.img`
-    width: 20px;
-    height: 20px;
-    flex: 0 0 auto;
+    width: 28px;
+    height: 100%;
 `;
 
 export { default as StyledIndicator } from './indicator';
