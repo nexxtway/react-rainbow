@@ -50,7 +50,7 @@ describe('<SidebarItem when href is passed />', () => {
         );
         const sidebarLink = component.find('a');
         sidebarLink.simulate('click');
-        expect(component.find({ 'data-icon': 'clock' }).exists()).toBe(true);
+        expect(component.find(FontAwesomeIcon).prop('icon')).toBe(faClock);
     });
 });
 
@@ -96,6 +96,6 @@ describe('<SidebarItem when href is not passed />', () => {
         );
         const sidebarLink = component.find('button');
         sidebarLink.simulate('click');
-        expect(component.find({ 'data-icon': 'user' }).exists()).toBe(true);
+        expect(component.find(FontAwesomeIcon).prop('icon')).toBe(faUser);
     });
 });
