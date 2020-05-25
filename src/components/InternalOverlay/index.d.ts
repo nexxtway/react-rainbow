@@ -1,6 +1,6 @@
 import { RefObject, ComponentClass, FunctionComponent } from 'react';
 
-type TriggerElementRefFunction = () => RefObject;
+type TriggerElementRefFunction = () => RefObject<HTMLElement>;
 
 interface Position {
     top: number;
@@ -31,10 +31,10 @@ interface PositionResolverOpts {
 }
 
 export interface InternalOverlayProps {
-    render: ComponentClass | FunctionComponent;
+    render?: ComponentClass | FunctionComponent;
     isVisible?: boolean;
-    triggerElementRef: RefObject | TriggerElementRefFunction;
-    positionResolver: (opts: PositionResolverOpts) => Position;
+    triggerElementRef?: RefObject<HTMLElement> | TriggerElementRefFunction;
+    positionResolver?: (opts: PositionResolverOpts) => Position;
 }
 
 export default function(props: InternalOverlayProps): JSX.Element | null;
