@@ -67,6 +67,7 @@ describe('<InternalOverlay />', () => {
                 isVisible
             />,
         );
+        mockEnableScroll.mockClear();
         component.setProps({
             isVisible: false,
         });
@@ -74,6 +75,9 @@ describe('<InternalOverlay />', () => {
     });
 
     it('should resolve content meta', () => {
+        const setState = jest.fn();
+        const useStateMock = initState => [initState, setState];
+        jest.spyOn(React, 'useState').mockImplementation(useStateMock);
         const component = mount(
             <InternalOverlay
                 render={() => <div id="test-id" />}
@@ -81,6 +85,7 @@ describe('<InternalOverlay />', () => {
                 isVisible
             />,
         );
+        // expect(setState).toHaveBeenCalledTimes(1);
         expect(component.find(ContentMetaResolver).exists()).toBe(true);
     });
 });
