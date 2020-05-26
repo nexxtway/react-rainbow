@@ -3,7 +3,6 @@ import { BaseProps } from '../types';
 
 export interface CodeInputProps extends BaseProps {
     id?: string;
-    name?: string;
     value?: string;
     label?: ReactNode;
     bottomHelpText?: ReactNode;

@@ -114,7 +114,7 @@ const FileSelector = React.forwardRef((props, ref) => {
         onBlur(event);
     };
 
-    const icon = getIcon(files, error);
+    const icon = getIcon(files, error, isDragOver);
     const text = getText(files, placeholder);
 
     const isFileSelected = files && files.length > 0;

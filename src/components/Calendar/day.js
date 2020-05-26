@@ -5,16 +5,36 @@ import { Consumer } from './context';
 import StyledDay from './styled/day';
 import StyledDayAdjacent from './styled/dayAdjacent';
 import StyledDayButton from './styled/dayButton';
+import StyledRangeHighlight from './styled/rangeHighlight';
 import { isSameDay, compareDates } from './helpers';
+import { useRangeStartDate, useRangeEndDate } from './hooks';
 
 function DayComponent(props) {
-    const { date, firstDayMonth, isSelected, minDate, maxDate, onChange } = props;
-    const { useAutoFocus, focusedDate, privateKeyDown, privateOnFocus, privateOnBlur } = props;
+    const {
+        date,
+        firstDayMonth,
+        isSelected,
+        minDate,
+        maxDate,
+        onChange,
+        isWithinRange,
+        isFirstDayOfWeek,
+        isLastDayOfWeek,
+        useAutoFocus,
+        focusedDate,
+        currentRange,
+        privateKeyDown,
+        privateOnFocus,
+        privateOnBlur,
+        privateOnHover,
+    } = props;
     const day = date.getDate();
     const isAdjacentDate = date.getMonth() !== firstDayMonth.getMonth();
     const isDisabled = compareDates(date, maxDate) > 0 || compareDates(date, minDate) < 0;
     const tabIndex = isSameDay(focusedDate, date) ? 0 : -1;
     const buttonRef = useRef();
+    const isRangeStartDate = useRangeStartDate(date, currentRange);
+    const isRangeEndDate = useRangeEndDate(date, currentRange);
 
     useEffect(() => {
         if (!useAutoFocus || !buttonRef.current || tabIndex === -1) return;
@@ -31,18 +51,29 @@ function DayComponent(props) {
 
     return (
         <StyledDay role="gridcell">
-            <StyledDayButton
-                ref={buttonRef}
-                tabIndex={tabIndex}
-                onClick={() => onChange(new Date(date))}
-                isSelected={isSelected}
-                data-selected={isSelected}
-                onKeyDown={privateKeyDown}
-                onFocus={privateOnFocus}
-                onBlur={privateOnBlur}
+            <StyledRangeHighlight
+                isVisible={isWithinRange && !(isRangeStartDate && isRangeEndDate)}
+                isFirstInRange={isRangeStartDate}
+                isLastInRange={isRangeEndDate}
+                isFirstDayOfWeek={isFirstDayOfWeek}
+                isLastDayOfWeek={isLastDayOfWeek}
             >
-                {day}
-            </StyledDayButton>
+                <StyledDayButton
+                    ref={buttonRef}
+                    tabIndex={tabIndex}
+                    onClick={() => onChange(date)}
+                    onMouseEnter={() => privateOnHover(date)}
+                    isSelected={isSelected}
+                    isHovered={!isSelected && isRangeEndDate}
+                    data-selected={isSelected}
+                    onKeyDown={privateKeyDown}
+                    onFocus={privateOnFocus}
+                    onBlur={privateOnBlur}
+                    isWithinRange={isWithinRange}
+                >
+                    {day}
+                </StyledDayButton>
+            </StyledRangeHighlight>
         </StyledDay>
     );
 }
@@ -57,6 +88,9 @@ Day.propTypes = {
     minDate: PropTypes.instanceOf(Date),
     maxDate: PropTypes.instanceOf(Date),
     isSelected: PropTypes.bool,
+    isWithinRange: PropTypes.bool,
+    isFirstDayOfWeek: PropTypes.bool,
+    isLastDayOfWeek: PropTypes.bool,
     onChange: PropTypes.func,
 };
 
@@ -66,5 +100,8 @@ Day.defaultProps = {
     minDate: undefined,
     maxDate: undefined,
     isSelected: false,
+    isWithinRange: false,
+    isFirstDayOfWeek: false,
+    isLastDayOfWeek: false,
     onChange: () => {},
 };

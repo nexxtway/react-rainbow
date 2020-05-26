@@ -6,6 +6,7 @@ import { MARGIN_X_SMALL } from '../../../styles/margins';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 import { PADDING_MEDIUM } from '../../../styles/paddings';
+import replaceAlpha from '../../../styles/helpers/color/replaceAlpha';
 
 export const StyledContainer = styled.div`
     display: flex;
@@ -41,7 +42,7 @@ export const StyledDropzone = attachThemeAttrs(styled.div)`
         outline: 0;
         border: solid 1px ${props.palette.brand.main};
         box-shadow: ${props.shadows.brand};
-        `}
+    `}
 
     ${props =>
         props.variant === 'multiline' &&
@@ -59,16 +60,16 @@ export const StyledDropzone = attachThemeAttrs(styled.div)`
 
         &:hover {
             cursor: not-allowed;
-            border-color: ${props.palette.text.disabled}
+            border-color: ${props.palette.text.disabled};
         }
-        `}
+    `}
 
     ${props =>
         props.error &&
         `
         color: ${props.palette.error.main};
         border: dashed 1px ${props.palette.error.main};
-        background-color: ${props.palette.error.light};
+        background-color: ${replaceAlpha(props.palette.error.main, 0.1)};
 
         &:hover {
             border: dashed 1px ${props.palette.error.main};
@@ -86,10 +87,9 @@ export const StyledDropzone = attachThemeAttrs(styled.div)`
         props.isDragOver &&
         `
         color: ${props.palette.brand.main};
-        background-color: ${props.palette.brand.light};
+        background-color: ${replaceAlpha(props.palette.brand.main, 0.05)};
         border-color: ${props.palette.brand.main};
-        `}
-        
+    `}
 `;
 
 export const TruncatedText = styled.span`
@@ -111,6 +111,7 @@ export const StyledBackdrop = attachThemeAttrs(styled.div)`
     padding-right: ${PADDING_MEDIUM};
     border-radius: ${BORDER_RADIUS_2};
     pointer-events: none;
+
     ${props =>
         props.isFileSelected &&
         `
@@ -144,6 +145,12 @@ export const StyledIconContainer = attachThemeAttrs(styled(IconContainer)).attrs
         height: 24px !important;
         font-size: 24px !important;
         color: ${props => props.palette.brand.main};
+
+        ${props =>
+            props.error &&
+            `
+            color: ${props.palette.error.main}
+        `}
     }
 
     ${props =>
@@ -218,7 +225,6 @@ export const StyledIconContainer = attachThemeAttrs(styled(IconContainer)).attrs
         padding-top: 22px;
         padding-right: 15px;
     `}
-    
 `;
 
 export const StyledButtonIcon = styled(ButtonIcon)`
