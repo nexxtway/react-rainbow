@@ -1,8 +1,7 @@
 import React, { useRef, useEffect, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import Options from './options';
-import StyledContainer from './styled/container';
-import StyledSelect from './styled/select';
+import { StyledContainer, StyledSelect } from './styled';
 
 export default function YearSelect(props) {
     const { currentYear, yearsRange, onYearChange } = props;

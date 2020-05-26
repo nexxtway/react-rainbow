@@ -1,8 +1,33 @@
 import styled from 'styled-components';
-import { FONT_SIZE_HEADING_MEDIUM } from '../../../../../styles/fontSizes';
 import attachThemeAttrs from '../../../../../styles/helpers/attachThemeAttrs';
+import { FONT_SIZE_HEADING_MEDIUM } from '../../../../../styles/fontSizes';
 
-const StyledSelect = attachThemeAttrs(styled.select)`
+export const StyledContainer = attachThemeAttrs(styled.div)`
+    position: relative;
+
+    ${props =>
+        props.editMode &&
+        `
+        ::after {
+            content: '';
+            position: absolute;
+            display: block;
+            right: 0.6rem;
+            bottom: 45%;
+            pointer-events: none;
+            width: 0.45rem;
+            height: 0.45rem;
+            border-style: solid;
+            border-width: 0.15em 0.15em 0 0;
+            transform: rotate(135deg);
+            vertical-align: top;
+            color: ${props.palette.brand.main};
+            box-sizing: border-box;
+        }
+        `};
+`;
+
+export const StyledSelect = attachThemeAttrs(styled.select)`
     font: inherit;
     margin: 0;
     text-transform: none;
@@ -42,5 +67,3 @@ const StyledSelect = attachThemeAttrs(styled.select)`
         box-shadow: ${props => props.shadows.brand};
     }
 `;
-
-export default StyledSelect;
