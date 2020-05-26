@@ -65,7 +65,7 @@ export default function useKeyboardNavigation(
                     [DOWN_KEY]: () => moveToOption(getNewIndex(active + 1, length)),
                     [HOME_KEY]: () => moveToOption(0),
                     [END_KEY]: () => moveToOption(length - 1),
-                    [ENTER_KEY]: () => handleCountryChange(list[active]),
+                    [ENTER_KEY]: () => list[active] && handleCountryChange(list[active]),
                     [ESCAPE_KEY]: () => setFocusIndex(0),
                     [TAB_KEY]: () => setFocusIndex(2),
                 };

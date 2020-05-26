@@ -23,7 +23,7 @@ export const StyledSearchContainer = attachThemeAttrs(styled.div)`
     width: 100%;
     border-bottom: 1px solid ${props => props.palette.border.divider};
     padding: 0 1rem;
-    margin-top: -10px;
+    margin-top: 5px;
 `;
 
 export const StyledCountryCodeItem = attachThemeAttrs(styled.span)`
