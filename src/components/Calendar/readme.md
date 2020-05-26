@@ -69,3 +69,31 @@ const calendarContainerStyles = {
     </div>
 </div>
 ```
+
+##### Calendar with range selection:
+
+```js
+import React from 'react';
+import { Card, Calendar, Avatar } from 'react-rainbow-components';
+
+initialState = { range: [
+    new Date(2019, 0, 3),
+    new Date(2019, 0, 15)
+] };
+const calendarContainerStyles = {
+    width: '28rem',
+    height: '27rem',
+};
+
+<div>
+    <div className="rainbow-align-content_center rainbow-p-vertical_xx-large rainbow-p-horizontal_medium">
+        <Card style={calendarContainerStyles} className="rainbow-p-around_large">
+            <Calendar
+                selectionType="range"
+                value={state.range}
+                onChange={value => setState({ range: value })}
+            />
+        </Card>
+    </div>
+</div>
+```

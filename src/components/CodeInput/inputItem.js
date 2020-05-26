@@ -18,16 +18,11 @@ const InputItem = React.forwardRef((props, ref) => {
         onBlur,
         onKeyDown,
         onPaste,
-        id,
         isActive,
     } = props;
 
-    const handleOnChange = (inputValue, inputIndex) => {
-        onChange(inputValue, inputIndex);
-    };
-
     const handleOnKeyDown = (e, inputIndex) => {
-        const shouldMovePrev = !value && e.keyCode === DELETE_KEY;
+        const shouldMovePrev = inputIndex !== 0 && !value && e.keyCode === DELETE_KEY;
         if (shouldMovePrev) {
             onChange('', inputIndex - 1);
         }
@@ -44,7 +39,7 @@ const InputItem = React.forwardRef((props, ref) => {
             error={error}
             tabIndex={tabIndex}
             onClick={onClick}
-            onChange={e => handleOnChange(e.target.value, index)}
+            onChange={e => onChange(e.target.value, index)}
             onFocus={e => onFocus(e, index)}
             onBlur={onBlur}
             onKeyDown={e => handleOnKeyDown(e, index)}
@@ -52,7 +47,6 @@ const InputItem = React.forwardRef((props, ref) => {
             ref={ref}
             pattern="\d*"
             maxLength="1"
-            id={id}
             isActive={isActive}
         />
     );

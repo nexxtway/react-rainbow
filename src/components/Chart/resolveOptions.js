@@ -6,6 +6,12 @@ export default function resolveOptions(conditions) {
         disableAnimations,
         disableLines,
         disableCurves,
+        disableXAxisGridLines,
+        disableYAxisGridLines,
+        disableXAxisBorders,
+        disableYAxisBorders,
+        disableXAxisTickLabels,
+        disableYAxisTickLabels,
         showLegend,
         legendPosition,
         showStacked,
@@ -48,9 +54,12 @@ export default function resolveOptions(conditions) {
                 xAxes: [
                     {
                         ticks: {
+                            display: !disableXAxisTickLabels,
                             fontColor: legend.label,
                         },
                         gridLines: {
+                            display: !disableXAxisGridLines,
+                            drawBorder: !disableXAxisBorders,
                             color: legend.border,
                             zeroLineColor: legend.border,
                         },
@@ -59,9 +68,12 @@ export default function resolveOptions(conditions) {
                 yAxes: [
                     {
                         ticks: {
+                            display: !disableYAxisTickLabels,
                             fontColor: legend.label,
                         },
                         gridLines: {
+                            display: !disableYAxisGridLines,
+                            drawBorder: !disableYAxisBorders,
                             color: legend.border,
                             zeroLineColor: legend.border,
                         },
