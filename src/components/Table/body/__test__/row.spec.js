@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Row from '../row';
-import { SELECTABLE_CHECKBOX } from '../../helpers/columns';
+import { SELECTABLE_CHECKBOX, WITH_ENUMERABLE } from '../../helpers/columns';
 
 const data = { name: 'a', number: 26 };
 
@@ -52,6 +52,51 @@ describe('<Row />', () => {
         const cell = component.find('Cell');
         expect(cell.at(0).prop('isFirst')).toBe(true);
         expect(cell.at(1).prop('isFirst')).toBe(false);
+    });
+    it('should set the right value to isFirst prop in the rendered Cell components when the first column contains the configurable selectable checkbox column data', () => {
+        const columnsWithSelectable = [
+            {
+                type: SELECTABLE_CHECKBOX,
+            },
+            ...columns,
+        ];
+        const component = mount(<Row rowData={data} columns={columnsWithSelectable} />);
+        const cell = component.find('Cell');
+        expect(cell.at(0).prop('isFirst')).toBe(false);
+        expect(cell.at(1).prop('isFirst')).toBe(true);
+        expect(cell.at(2).prop('isFirst')).toBe(false);
+    });
+    it('should set the right value to isFirst prop in the rendered Cell components when the first column contains the configurable enumerable column data', () => {
+        const columnsWithEnumerable = [
+            {
+                type: WITH_ENUMERABLE,
+            },
+            ...columns,
+        ];
+        const component = mount(<Row rowData={data} columns={columnsWithEnumerable} />);
+        const cell = component.find('Cell');
+        expect(cell.at(0).prop('isFirst')).toBe(false);
+        expect(cell.at(1).prop('isFirst')).toBe(true);
+        expect(cell.at(2).prop('isFirst')).toBe(false);
+    });
+    it('should set the right value to isFirst prop in the rendered Cell components when the first two columns contains the configurable selectable checkbox and enumerable column data', () => {
+        const columnsWithEnumerableAndSelectable = [
+            {
+                type: WITH_ENUMERABLE,
+            },
+            {
+                type: SELECTABLE_CHECKBOX,
+            },
+            ...columns,
+        ];
+        const component = mount(
+            <Row rowData={data} columns={columnsWithEnumerableAndSelectable} />,
+        );
+        const cell = component.find('Cell');
+        expect(cell.at(0).prop('isFirst')).toBe(false);
+        expect(cell.at(1).prop('isFirst')).toBe(false);
+        expect(cell.at(2).prop('isFirst')).toBe(true);
+        expect(cell.at(3).prop('isFirst')).toBe(false);
     });
     it('should set empty string to value prop in Cell component when the column field does not exists', () => {
         const values = [

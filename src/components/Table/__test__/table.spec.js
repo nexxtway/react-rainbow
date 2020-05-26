@@ -3,6 +3,8 @@ import { mount } from 'enzyme';
 import Table from '../index';
 import Column from '../../Column';
 
+jest.mock('../helpers/columns/getEnumerableWidth', () => jest.fn(() => 50));
+
 const data = [
     {
         name: 'a',
@@ -56,7 +58,7 @@ describe('<Table />', () => {
         expect(header.text()).toBe('Name');
         expect(cell.text()).toBe('a');
     });
-    it('should not add a column when showCheckboxColumn is not passed', () => {
+    it('should not add a column when showCheckboxColumn and showRowNumberColumn are not passed', () => {
         const component = mount(
             <Table data={data} keyField="name">
                 <Column field="name" header="Name" />
@@ -89,7 +91,59 @@ describe('<Table />', () => {
         expect(component.find('th[scope="row"]').length).toBe(1);
         expect(component.find('td[role="gridcell"]').length).toBe(2);
     });
-    it('should update the columns state when add a column and showCheckboxColumn is not passed', () => {
+    it('should add a column when showRowNumberColumn is passed', () => {
+        const component = mount(
+            <Table data={data} keyField="name" showRowNumberColumn>
+                <Column field="name" header="Name" />
+            </Table>,
+        );
+        expect(component.find('th[scope="row"]').length).toBe(1);
+        expect(component.find('td[role="gridcell"]').length).toBe(1);
+        component.setProps({
+            children: [<Column field="name" header="Name" />, <Column field="number" />],
+        });
+        component.update();
+        expect(component.find('th[scope="row"]').length).toBe(1);
+        expect(component.find('td[role="gridcell"]').length).toBe(2);
+    });
+    it('should have the right value passed for enumerable column when showRowNumberColumn and rowNumberOffset are passed', () => {
+        const component = mount(
+            <Table data={data} keyField="name" showRowNumberColumn rowNumberOffset={19}>
+                <Column field="name" header="Name" />
+            </Table>,
+        );
+        expect(component.state().columns).toEqual([
+            {
+                computedWidth: 50,
+                type: 'WITH_ENUMERABLE',
+                rowNumberOffset: 19,
+                width: 50,
+            },
+            {
+                field: 'name',
+                header: 'Name',
+                sortable: false,
+                computedWidth: 50,
+                type: 'text',
+            },
+        ]);
+    });
+    it('should add two columns when showCheckboxColumn showRowNumberColumn are passed', () => {
+        const component = mount(
+            <Table data={data} keyField="name" showCheckboxColumn showRowNumberColumn>
+                <Column field="name" header="Name" />
+            </Table>,
+        );
+        expect(component.find('th[scope="row"]').length).toBe(1);
+        expect(component.find('td[role="gridcell"]').length).toBe(2);
+        component.setProps({
+            children: [<Column field="name" header="Name" />, <Column field="number" />],
+        });
+        component.update();
+        expect(component.find('th[scope="row"]').length).toBe(1);
+        expect(component.find('td[role="gridcell"]').length).toBe(3);
+    });
+    it('should update the columns state when add a column and (showCheckboxColumn and showRowNumberColumn) are not passed', () => {
         const component = mount(
             <Table data={data} keyField="name">
                 <Column field="name" header="Name" />
@@ -153,6 +207,53 @@ describe('<Table />', () => {
                 computedWidth: 52,
                 type: 'SELECTABLE_CHECKBOX',
                 width: 52,
+            },
+            {
+                field: 'name',
+                header: 'Name',
+                sortable: false,
+                computedWidth: 50,
+                type: 'text',
+            },
+            {
+                field: 'number',
+                sortable: true,
+                computedWidth: 50,
+                type: 'text',
+            },
+        ]);
+    });
+    it('should update the columns state when add a column and showRowNumberColumn is passed', () => {
+        const component = mount(
+            <Table data={data} keyField="name" showRowNumberColumn>
+                <Column field="name" header="Name" />
+            </Table>,
+        );
+        expect(component.state().columns).toEqual([
+            {
+                computedWidth: 50,
+                type: 'WITH_ENUMERABLE',
+                rowNumberOffset: 0,
+                width: 50,
+            },
+            {
+                field: 'name',
+                header: 'Name',
+                sortable: false,
+                computedWidth: 50,
+                type: 'text',
+            },
+        ]);
+        component.setProps({
+            children: [<Column field="name" header="Name" />, <Column field="number" sortable />],
+        });
+        component.update();
+        expect(component.state().columns).toEqual([
+            {
+                computedWidth: 50,
+                type: 'WITH_ENUMERABLE',
+                rowNumberOffset: 0,
+                width: 50,
             },
             {
                 field: 'name',

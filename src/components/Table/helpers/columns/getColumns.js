@@ -1,5 +1,5 @@
 import React from 'react';
-import { SELECTABLE_CHECKBOX, WITH_ENUMERABLE } from './';
+import { getEnumerableWidth, SELECTABLE_CHECKBOX, WITH_ENUMERABLE } from './';
 
 function getDefaultWidth(defaultWidth, minColumnWidth, maxColumnWidth) {
     const minColWidth = Number(minColumnWidth);
@@ -13,12 +13,6 @@ function getDefaultWidth(defaultWidth, minColumnWidth, maxColumnWidth) {
         return maxColWidth;
     }
     return defaultWidtNumber || undefined;
-}
-
-function getEnumerableWidth(numberValue) {
-    const enumerableColumnOffset = 40;
-    const enumerableStringWidth = 8 * numberValue.toString().length;
-    return enumerableStringWidth + enumerableColumnOffset;
 }
 
 export default function getColumns(params) {
