@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import InternalOverlay from '..';
 import * as scroll from '../scroll';
-import ContentMetaResolver from '../ContentMetaResolver';
+import * as resolver from '../ContentMetaResolver';
 
 const mockDisableScroll = jest.fn();
 const mockEnableScroll = jest.fn();
@@ -75,17 +75,14 @@ describe('<InternalOverlay />', () => {
     });
 
     it('should resolve content meta', () => {
-        const setState = jest.fn();
-        const useStateMock = initState => [initState, setState];
-        jest.spyOn(React, 'useState').mockImplementation(useStateMock);
-        const component = mount(
+        const mockContentMetaResolver = jest.spyOn(resolver, 'default');
+        mount(
             <InternalOverlay
                 render={() => <div id="test-id" />}
                 triggerElementRef={{}}
                 isVisible
             />,
         );
-        // expect(setState).toHaveBeenCalledTimes(1);
-        expect(component.find(ContentMetaResolver).exists()).toBe(true);
+        expect(mockContentMetaResolver).toHaveBeenCalledTimes(1);
     });
 });
