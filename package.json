@@ -36,7 +36,7 @@
         "clipboard-copy": "^2.0.0",
         "prop-types": "^15.6.2",
         "react-async-script-loader": "^0.3.0",
-        "styled-components": "^4.3.2",
+        "styled-components": "^5.0.0",
         "xlsx": "^0.14.4"
     },
     "peerDependencies": {
