@@ -115,3 +115,37 @@ const Loading = styled.h1.attrs(props => {
     </Loading>
 </InverseContainer>
 ```
+
+##### list loading using spinner - brand - large - arc
+
+```js
+import React from 'react';
+import { Spinner } from 'react-rainbow-components';
+
+<div>
+    <GlobalHeader src="images/user/user3.jpg" />
+    <div className="rainbow-p-vertical_xx-large">
+        <div className="rainbow-align-content_center rainbow-position_relative rainbow-p-vertical_xx-large">
+            <Spinner size="large" type="arc" variant="brand" />
+        </div>
+    </div>
+</div>
+```
+
+##### list loading using spinner - brand - x-large - arc - with logo
+
+```js
+import React from 'react';
+import { Spinner } from 'react-rainbow-components';
+
+<div>
+    <GlobalHeader src="images/user/user3.jpg" />
+    <div className="rainbow-p-vertical_xx-large">
+        <div className="rainbow-align-content_center rainbow-position_relative rainbow-p-vertical_xx-large">
+            <Spinner size="x-large" type="arc" variant="brand">
+                <GoogleIcon />
+            </Spinner>
+        </div>
+    </div>
+</div>
+```
