@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 import { FONT_SIZE_TEXT_LARGE, FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+import HelpText from '../../Input/styled/helpText';
+import StyledTextError from '../../Input/styled/errorText';
+
+const StyledErrorMessage = styled(StyledTextError)`
+    margin-top: 0;
+`;
 
 const StyledInput = attachThemeAttrs(styled.input)`
     font: inherit;
@@ -16,7 +22,7 @@ const StyledInput = attachThemeAttrs(styled.input)`
     color: ${props => props.palette.text.main};
     font-size: 28px;
     box-sizing: border-box;
-    margin: 0 6px;
+    margin: 0 6px 12px 6px;
     text-align: center;
 
     ::-moz-focus-inner {
@@ -37,6 +43,20 @@ const StyledInput = attachThemeAttrs(styled.input)`
         color: ${props => props.palette.text.header};
         font-weight: 500;
         font-size: ${FONT_SIZE_TEXT_LARGE};
+    }
+
+    &[readonly] {
+        border: 2px solid transparent;
+        background-color: transparent;
+        box-shadow: none;
+        margin: 0 0 12px 0;
+
+        &:focus,
+        &:active {
+            border: 2px solid transparent;
+            background-color: transparent;
+            box-shadow: none;
+        }
     }
 
     &[disabled] {
@@ -83,6 +103,10 @@ const StyledInput = attachThemeAttrs(styled.input)`
     `}
 `;
 
+const StyledHelpText = styled(HelpText)`
+    margin-top: 0;
+`;
+
 const StyledFieldset = styled.fieldset`
     line-height: 1.5rem;
     margin: 0;
@@ -107,4 +131,4 @@ const StyledLabel = attachThemeAttrs(styled.legend)`
     }
 `;
 
-export { StyledInput, StyledFieldset, StyledLabel };
+export { StyledErrorMessage, StyledInput, StyledHelpText, StyledFieldset, StyledLabel };

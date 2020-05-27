@@ -6,6 +6,7 @@ import { MARGIN_X_SMALL } from '../../../styles/margins';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 import { PADDING_MEDIUM } from '../../../styles/paddings';
+import replaceAlpha from '../../../styles/helpers/color/replaceAlpha';
 
 export const StyledContainer = styled.div`
     display: flex;
@@ -18,6 +19,7 @@ export const StyledContainer = styled.div`
 
 export const StyledDropzone = attachThemeAttrs(styled.div)`     
     position: relative;
+    width: 100%;
     height: 2.5rem;   
     padding: 4px;
     border: dashed 1px ${props => props.palette.text.disabled};
@@ -40,7 +42,7 @@ export const StyledDropzone = attachThemeAttrs(styled.div)`
         outline: 0;
         border: solid 1px ${props.palette.brand.main};
         box-shadow: ${props.shadows.brand};
-        `}
+    `}
 
     ${props =>
         props.variant === 'multiline' &&
@@ -49,7 +51,7 @@ export const StyledDropzone = attachThemeAttrs(styled.div)`
         border-radius: 27px;
         height: 100%;
         width: 100%;
-        `}
+    `}
 
     ${props =>
         props.disabled &&
@@ -58,16 +60,16 @@ export const StyledDropzone = attachThemeAttrs(styled.div)`
 
         &:hover {
             cursor: not-allowed;
-            border-color: ${props.palette.text.disabled}
+            border-color: ${props.palette.text.disabled};
         }
-        `}
+    `}
 
     ${props =>
         props.error &&
         `
         color: ${props.palette.error.main};
         border: dashed 1px ${props.palette.error.main};
-        background-color: ${props.palette.error.light};
+        background-color: ${replaceAlpha(props.palette.error.main, 0.1)};
 
         &:hover {
             border: dashed 1px ${props.palette.error.main};
@@ -85,9 +87,9 @@ export const StyledDropzone = attachThemeAttrs(styled.div)`
         props.isDragOver &&
         `
         color: ${props.palette.brand.main};
-        background-color: ${props.palette.brand.light};
+        background-color: ${replaceAlpha(props.palette.brand.main, 0.05)};
         border-color: ${props.palette.brand.main};
-        `}
+    `}
 `;
 
 export const TruncatedText = styled.span`
@@ -100,6 +102,7 @@ export const TruncatedText = styled.span`
 
 export const StyledBackdrop = attachThemeAttrs(styled.div)`
     position: relative;
+    width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -108,6 +111,7 @@ export const StyledBackdrop = attachThemeAttrs(styled.div)`
     padding-right: ${PADDING_MEDIUM};
     border-radius: ${BORDER_RADIUS_2};
     pointer-events: none;
+
     ${props =>
         props.isFileSelected &&
         `
@@ -137,6 +141,12 @@ export const StyledIconContainer = attachThemeAttrs(styled(IconContainer))`
         height: 24px !important;
         font-size: 24px !important;
         color: ${props => props.palette.brand.main};
+
+        ${props =>
+            props.error &&
+            `
+            color: ${props.palette.error.main}
+        `}
     }
 
     ${props =>
@@ -172,8 +182,16 @@ export const StyledIconContainer = attachThemeAttrs(styled(IconContainer))`
             width: 64px !important;
             height: 64px !important;
             font-size: 64px !important;
+
+            ${props.error &&
+                `
+                height: 40px !important;
+                width: 40px !important;
+                font-size: 40px !important;
+                color: ${props.palette.error.main};
+            `}
         }
-        `}
+    `}
 `;
 
 export const StyledButtonIcon = styled(ButtonIcon)`

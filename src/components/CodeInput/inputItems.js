@@ -17,14 +17,12 @@ const InputItems = React.forwardRef((props, ref) => {
         onKeyDown,
         onPaste,
         focusedIndex,
-        id,
     } = props;
 
     const inputs = value.map((inputValue, index) => {
         const inputIndex = index;
         const isActive = inputIndex === focusedIndex;
         const inputRef = isActive ? ref : null;
-        const inputId = isActive ? id : null;
         const inputTabIndex = isActive ? tabIndex : -1;
 
         return (
@@ -44,18 +42,16 @@ const InputItems = React.forwardRef((props, ref) => {
                 onKeyDown={onKeyDown}
                 onPaste={onPaste}
                 ref={inputRef}
-                id={inputId}
                 isActive={isActive}
             />
         );
     });
 
-    return <div>{inputs}</div>;
+    return <>{inputs}</>;
 });
 
 InputItems.propTypes = {
     value: PropTypes.array,
-    length: PropTypes.number,
     disabled: PropTypes.bool,
     required: PropTypes.bool,
     readOnly: PropTypes.bool,
@@ -73,7 +69,6 @@ InputItems.propTypes = {
 
 InputItems.defaultProps = {
     value: [],
-    length: 4,
     disabled: false,
     required: false,
     readOnly: false,

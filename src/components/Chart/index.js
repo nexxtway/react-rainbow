@@ -88,6 +88,18 @@ Chart.propTypes = {
     showStacked: PropTypes.bool,
     /** Defines if the legend is shown. */
     showLegend: PropTypes.bool,
+    /** If true, do not display grid lines for x axis. */
+    disableXAxisGridLines: PropTypes.bool,
+    /** If true, do not display grid lines for y axis. */
+    disableYAxisGridLines: PropTypes.bool,
+    /** If true, do not draw border at the edge between the x axis and the chart area. */
+    disableXAxisBorders: PropTypes.bool,
+    /** If true, do not draw border at the edge between the y axis and the chart area. */
+    disableYAxisBorders: PropTypes.bool,
+    /** If true, do not show tick labels for x axis. */
+    disableXAxisTickLabels: PropTypes.bool,
+    /** If true, do not show tick labels for y axis. */
+    disableYAxisTickLabels: PropTypes.bool,
     /** The position of the legend. */
     legendPosition: PropTypes.oneOf(['top', 'bottom', 'right', 'left']),
     /** Determines whether it should perform animations when rendering the chart,
@@ -122,6 +134,12 @@ Chart.defaultProps = {
     disableAnimations: false,
     disableLines: false,
     disableCurves: false,
+    disableXAxisGridLines: false,
+    disableYAxisGridLines: false,
+    disableXAxisBorders: false,
+    disableYAxisBorders: false,
+    disableXAxisTickLabels: false,
+    disableYAxisTickLabels: false,
     maintainAspectRatio: true,
     className: undefined,
     style: undefined,
