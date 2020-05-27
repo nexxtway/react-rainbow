@@ -16,7 +16,7 @@ export const StyledContainer = styled.div`
 
 export const StyledDivider = styled.div`
     display: flex;
-    width: 5rem;
+    min-width: 2.5rem;
 `;
 
 export const StyledHeaderContainer = styled.div`
