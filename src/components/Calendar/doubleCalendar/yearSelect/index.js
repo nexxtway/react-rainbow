@@ -1,11 +1,13 @@
 import React, { useRef, useEffect, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useUniqueIdentifier } from '../../../../libs/hooks';
 import Options from './options';
-import { StyledContainer, StyledSelect } from './styled';
+import { StyledContainer, StyledLabel, StyledSelect } from './styled';
 
 export default function YearSelect(props) {
     const { currentYear, yearsRange, onYearChange } = props;
     const selectRef = useRef(null);
+    const selectId = useUniqueIdentifier('select');
     const [isEditMode, setEditMode] = useState(false);
     const [isFocused, setIsFocused] = useState(false);
 
@@ -38,10 +40,10 @@ export default function YearSelect(props) {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
+            <StyledLabel htmlFor={selectId}>select year</StyledLabel>
             <StyledSelect
+                id={selectId}
                 ref={selectRef}
-                label="select year"
-                hideLabel
                 value={currentYear}
                 editMode={isEditMode}
                 onChange={handleYearChange}
