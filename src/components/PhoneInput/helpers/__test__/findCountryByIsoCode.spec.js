@@ -33,7 +33,7 @@ describe('findCountryByIsoCode', () => {
         expect(findCountryByIsoCode('us', countries)).toEqual(country);
     });
 
-    it('should return undefined when isoCode is wront', () => {
+    it('should return undefined when isoCode is wrong', () => {
         expect(findCountryByIsoCode('ww', countries)).toEqual(undefined);
     });
 });

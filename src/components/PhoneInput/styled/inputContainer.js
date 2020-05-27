@@ -67,7 +67,7 @@ const StyledInputContainer = attachThemeAttrs(styled.div)`
         color: ${props => props.palette.text.disabled};
         cursor: not-allowed;
         user-select: none;
-        ${props => !props.icon && 'padding: 0 1rem;'}
+        ${props => !props.icon && 'padding-right: 0.9375rem;'}
 
         &:focus,
         &:active {

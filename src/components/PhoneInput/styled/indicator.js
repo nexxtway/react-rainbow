@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 const StyledIndicator = styled.span`
-    z-index: 2;
-    margin-top: -4px;
     margin-left: 8px;
 
     &::after {

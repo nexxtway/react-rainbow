@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
 const StyledFlagContainer = attachThemeAttrs(styled.div)`
+    display: flex;
     padding-right: 12px;
     border-right: 1px solid ${props => props.palette.text.header};
     ${props =>
@@ -9,14 +10,11 @@ const StyledFlagContainer = attachThemeAttrs(styled.div)`
         `
         border-right: 1px solid transparent;
         padding-right: 8px;
-        margin-top: -1px;
     `};
 
     ${props =>
         props.disabled &&
         `
-        padding-right: 12px;
-        margin-top: 0;
         border-right: 1px solid ${props.palette.border.disabled};
     `};
 `;
