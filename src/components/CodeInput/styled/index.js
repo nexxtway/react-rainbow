@@ -8,7 +8,11 @@ const StyledErrorMessage = styled(StyledTextError)`
     margin-top: 0;
 `;
 
-const StyledInput = attachThemeAttrs(styled.input)`
+const StyledInput = attachThemeAttrs(styled.input).attrs(props => {
+    return {
+        renderFocusStyle: props.isActive && !props.error && !props.readOnly,
+    };
+})`
     font: inherit;
     background-color: ${props => props.palette.background.main};
     border: 1px solid ${props => props.palette.border.main};
@@ -34,9 +38,14 @@ const StyledInput = attachThemeAttrs(styled.input)`
     :active {
         outline: 0;
         padding: 0 0.9375rem;
-        border: 2px solid ${props => props.palette.brand.main};
-        background-color: ${props => props.palette.background.main};
-        box-shadow: ${props => props.shadows.brand};
+
+        ${props =>
+            props.renderFocusStyle &&
+            `
+            border: 2px solid ${props.palette.brand.main};
+            background-color: ${props.palette.background.main};
+            box-shadow: ${props.shadows.brand};
+        `}
     }
 
     ::placeholder {
@@ -83,22 +92,9 @@ const StyledInput = attachThemeAttrs(styled.input)`
 
         :focus,
         :active {
-            background-color: ${props.palette.background.main};
-            border: 2px solid ${props.palette.error.main};
             box-shadow: ${props.shadows.error};
             padding: 0 1rem;
             outline: 0;
-        }
-    `}
-
-    ${props =>
-        !props.isActive &&
-        `
-        :focus,
-        :active {
-            box-shadow: none;
-            background-color: ${props.palette.background.main};
-            border: 1px solid ${props.palette.border.main};
         }
     `}
 `;
