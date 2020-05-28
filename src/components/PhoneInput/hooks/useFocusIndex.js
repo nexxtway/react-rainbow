@@ -7,19 +7,17 @@ export default function useFocusIndex(containerRef, triggerRef, searchRef, input
     const [startListener, stopListener] = useOutsideClick(containerRef, () => {
         setFocusIndex(-1);
     });
-    useEffect(() => {
-        startListener();
-        return () => {
-            stopListener();
-        };
-    }, [startListener, stopListener]);
 
     useEffect(() => {
         if (focusIndex > -1) {
             const refsMap = [triggerRef, searchRef, inputRef];
             refsMap[focusIndex].current.focus();
+            startListener();
         }
-    }, [focusIndex, inputRef, searchRef, triggerRef]);
+        return () => {
+            stopListener();
+        };
+    }, [focusIndex, inputRef, searchRef, startListener, stopListener, triggerRef]);
 
     return [focusIndex, setFocusIndex];
 }
