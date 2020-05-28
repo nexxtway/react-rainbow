@@ -19,18 +19,22 @@ export default function normalizeValue(value, hour24) {
     if (!value) return invalidValue;
 
     let hour = getHour(value);
-    if (!hour) {
-        hour = '';
+    if (!hour || +hour > 23) {
+        return invalidValue;
     }
 
-    let minutes = getMinutes(value);
-    if (!minutes || Number(minutes) > 59) {
-        minutes = '';
+    const minutes = getMinutes(value);
+    if (!minutes || +minutes > 59) {
+        return invalidValue;
     }
 
     let ampm = getAmPm(value);
     if (!ampm) {
         ampm = !hour24 ? getAmPmValue(hour) : '';
+    }
+
+    if (ampm && ampm.toUpperCase() !== 'AM' && ampm.toUpperCase() !== 'PM') {
+        return invalidValue;
     }
 
     if (hour) {

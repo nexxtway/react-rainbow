@@ -1,20 +1,32 @@
 import styled from 'styled-components';
 import { PADDING_X_SMALL, PADDING_XX_SMALL } from '../../../styles/paddings';
 import { MARGIN_XX_SMALL, MARGIN_X_SMALL } from '../../../styles/margins';
+import { FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { replaceAlpha } from '../../../styles/helpers/color';
 import { DownArrow, UpArrow } from '../icons';
 import HiddenElement from '../../Structural/hiddenElement';
-import Label from '../../Input/label';
 import HelpText from '../../Input/styled/helpText';
 import ErrorText from '../../Input/styled/errorText';
 
-export const StyledContainer = styled.div`
+export const StyledFieldset = styled.fieldset`
     width: fit-content;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+`;
+
+export const StyledLegend = attachThemeAttrs(styled.legend)`
+    border: 0;
+    padding: 0;
+    margin: auto;
+    display: inline-block;
+    color: ${props => props.palette.text.label};
+    font-size: ${FONT_SIZE_TEXT_MEDIUM};
+    line-height: 1.5;
+    margin-bottom: ${MARGIN_X_SMALL};
+    box-sizing: border-box;
 `;
 
 export const StyledDots = attachThemeAttrs(styled.span)`
@@ -246,7 +258,7 @@ export const StyledSelectValue = attachThemeAttrs(styled.input).attrs(props => {
         cursor: default;
         pointer-events: none;
         color: ${props.palette.text.disabled};
-        
+
         &[placeholder]::-webkit-input-placeholder {
             color: ${props.palette.text.disabled};
         }
@@ -325,8 +337,6 @@ export const StyledVerticalButtonsContainer = styled.div`
         margin-left: 0;
     }
 `;
-
-export const StyledLabel = styled(Label)``;
 
 export const StyledHelpText = styled(HelpText)`
     text-align: center;

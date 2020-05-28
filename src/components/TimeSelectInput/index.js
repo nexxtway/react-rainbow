@@ -17,18 +17,20 @@ import {
 } from './helpers';
 import { LEFT_KEY, RIGHT_KEY, UP_KEY, DOWN_KEY, DELETE_KEY } from '../../libs/constants';
 import {
-    StyledContainer,
     StyledSelectContent,
     StyledDots,
     StyledSelectValue,
     StyledVerticalButtonsContainer,
     StyledUpArrow,
     StyledDownArrow,
-    StyledLabel,
     StyledHelpText,
     StyledErrorText,
+    StyledLegend,
+    StyledFieldset,
 } from './styled';
 import OutsideClick from '../../libs/outsideClick';
+import { uniqueId } from '../../libs/utils';
+import RequiredAsterisk from '../RequiredAsterisk';
 
 function preventDefault(event) {
     event.preventDefault();
@@ -43,15 +45,19 @@ export default class TimeSelectInput extends Component {
     constructor(props) {
         super(props);
         const { hour, minutes, ampm } = normalizeValue(props.value, props.hour24);
+        this.prevValue = get24HourTime({ hour, minutes, ampm });
         this.state = { hour, minutes, ampm, inputFocusedIndex: -1 };
+        this.inputId = uniqueId('timeselectinput-input');
         this.containerRef = React.createRef();
         this.hourInputRef = React.createRef();
         this.minutesInputRef = React.createRef();
         this.amPmInputRef = React.createRef();
+        this.buttonsInputRef = React.createRef();
         this.inputsMap = {
             0: this.hourInputRef,
             1: this.minutesInputRef,
             2: this.amPmInputRef,
+            3: this.buttonsInputRef,
         };
         this.hasPropValue = !!props.value;
         this.handleChangeHour = this.handleChangeHour.bind(this);
@@ -64,6 +70,7 @@ export default class TimeSelectInput extends Component {
         this.handleKeyDown = this.handleKeyDown.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
+        this.handleFocus = this.handleFocus.bind(this);
         this.incrementHandler = this.incrementHandler.bind(this);
         this.decrementHandler = this.decrementHandler.bind(this);
         this.handleButtonsFocus = this.handleButtonsFocus.bind(this);
@@ -98,10 +105,18 @@ export default class TimeSelectInput extends Component {
         });
     }
 
+    handleFocus() {
+        // console.log('[HANDLEFOCUS] ', e.target);
+        const { onFocus, value } = this.props;
+        const { inputFocusedIndex } = this.state;
+        if (inputFocusedIndex !== -1) return;
+        onFocus(value || '');
+    }
+
     handleClickOutside() {
         const { inputFocusedIndex } = this.state;
-        this.handleBlur();
         if (inputFocusedIndex === -1) return;
+        this.handleBlur();
         this.setState({ inputFocusedIndex: -1 });
     }
 
@@ -191,9 +206,10 @@ export default class TimeSelectInput extends Component {
 
     handleAmPmChange(value) {
         this.handleChangeTime({
-            inputFocusedIndex: -1,
+            inputFocusedIndex: 3,
             ampm: value,
         });
+        this.buttonsInputRef.current.focus();
     }
 
     hanldeFocusAmPm() {
@@ -227,7 +243,7 @@ export default class TimeSelectInput extends Component {
     handleBlur() {
         const { onBlur, value } = this.props;
 
-        onBlur(value);
+        onBlur(value || '');
     }
 
     handleClick(event) {
@@ -425,6 +441,14 @@ export default class TimeSelectInput extends Component {
         this.containerRef.current.click();
     }
 
+    /**
+     * Sets blur on the element.
+     * @public
+     */
+    blur() {
+        this.containerRef.current.blur();
+    }
+
     render() {
         const {
             hour: stateHour,
@@ -449,7 +473,6 @@ export default class TimeSelectInput extends Component {
             disabled,
             readOnly,
             tabIndex,
-            onFocus,
         } = this.props;
         if (value) {
             const { hour: valueHour, minutes: valueMinutes, ampm: valueAmPm } = normalizeValue(
@@ -464,20 +487,18 @@ export default class TimeSelectInput extends Component {
         const minutesPlaceholder = this.prevMinutes || '--';
 
         return (
-            <StyledContainer className={className} style={style} id={id}>
-                <RenderIf isTrue={!!label}>
-                    <StyledLabel
-                        label={label}
-                        hideLabel={hideLabel}
-                        required={required}
-                        inputId="timeselectinput-label"
-                    />
+            <StyledFieldset className={className} style={style} id={id}>
+                <RenderIf isTrue={!!label && !hideLabel}>
+                    <StyledLegend>
+                        <RequiredAsterisk required={required} />
+                        {label}
+                    </StyledLegend>
                 </RenderIf>
                 <StyledSelectContent
                     ref={this.containerRef}
                     onKeyDown={this.handleKeyDown}
                     onClick={this.handleClick}
-                    onFocus={onFocus}
+                    onFocus={this.handleFocus}
                 >
                     <StyledSelectValue
                         aria-label="hour"
@@ -496,7 +517,7 @@ export default class TimeSelectInput extends Component {
                         ref={this.hourInputRef}
                         disabled={disabled}
                         readOnly={readOnly}
-                        tabIndex={tabIndex || null}
+                        tabIndex={tabIndex}
                     />
 
                     <StyledDots disabled={disabled} readOnly={readOnly}>
@@ -536,7 +557,7 @@ export default class TimeSelectInput extends Component {
                         />
                     </RenderIf>
 
-                    <StyledVerticalButtonsContainer>
+                    <StyledVerticalButtonsContainer ref={this.buttonsInputRef}>
                         <ButtonIcon
                             id="time-picker_up-button"
                             tabIndex="-1"
@@ -570,7 +591,7 @@ export default class TimeSelectInput extends Component {
                 <RenderIf isTrue={!!error}>
                     <StyledErrorText>{error}</StyledErrorText>
                 </RenderIf>
-            </StyledContainer>
+            </StyledFieldset>
         );
     }
 }

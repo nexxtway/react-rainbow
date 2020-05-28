@@ -18,7 +18,7 @@ const TimeSelectInputExample = () => {
     return (
         <TimeSelectInput
             id="time-select-input-1"
-            value={time} 
+            value={time}
             onChange={setTime}
             label="TimeSelectInput Label"
         />
@@ -111,7 +111,7 @@ const TimeSelectInputExample = () => {
     const [time, setTime] = useState(null);
     return (
         <TimeSelectInput
-            id="time-select-input-5"
+            id="time-select-input-7"
             value={time}
             onChange={setTime}
             label="TimeSelectInput Label"
@@ -143,7 +143,7 @@ const TimeSelectInputExample = () => {
     const [time, setTime] = useState(null);
     return (
         <TimeSelectInput
-            id="time-select-input-5"
+            id="time-select-input-9"
             value={time}
             onChange={setTime}
             label="TimeSelectInput Label"
@@ -175,7 +175,7 @@ const TimeSelectInputExample = () => {
     const [time, setTime] = useState(null);
     return (
         <TimeSelectInput
-            id="time-select-input-5"
+            id="time-select-input-11"
             value={time}
             onChange={setTime}
             label="TimeSelectInput Label"
