@@ -1,7 +1,7 @@
 /* eslint-disable no-script-url, react/prop-types, jsx-a11y/anchor-is-valid */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Consumer } from '../Picklist/context';
+import { Consumer } from '../InternalDropdown/context';
 import Icon from './icon';
 import StyledHeader from './styled/header';
 import StyledHeaderLabel from './styled/headerLabel';
