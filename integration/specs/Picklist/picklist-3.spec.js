@@ -3,7 +3,8 @@ const { ARROW_UP_KEY, ARROW_DOWN_KEY } = require('../../constants');
 
 const PICKLIST = '#picklist-3';
 
-describe('Picklist with multiple options', () => {
+// TODO: test suite skipped, remove the x in describe to run it again
+xdescribe('Picklist with multiple options', () => {
     beforeAll(() => {
         browser.url('/#!/Picklist/3');
     });

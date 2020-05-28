@@ -19,6 +19,7 @@ import insertChildOrderly from './helpers/insertChildOrderly';
 import isScrollPositionAtMenuBottom from './helpers/isScrollPositionAtMenuBottom';
 import isOptionVisible from './helpers/isOptionVisible';
 import getNormalizedValue from './helpers/getNormalizedValue';
+import scrollTo from './helpers/scrollTo';
 
 const sizeMap = {
     medium: 227,
@@ -55,16 +56,12 @@ const InternalDropdown = forwardRef((props, reference) => {
         setShowScrollDownArrow(!isScrollPositionAtMenuBottom(menu));
     };
 
-    const scrollTo = offset => {
-        menuRef.current.scrollTo(0, offset);
-    };
-
     const scrollBy = offset => {
         menuRef.current.scrollBy(0, offset);
     };
 
     useEffect(() => {
-        scrollTo(0);
+        scrollTo(menuRef, 0);
         updateScrollingArrows();
     }, []);
 
@@ -72,7 +69,7 @@ const InternalDropdown = forwardRef((props, reference) => {
         const firstOptionName =
             activeChildren.current.length > 0 ? activeChildren.current[0].name : null;
         setActiveOptionName(firstOptionName);
-    }, [activeChildren]);
+    }, []);
 
     const registerChild = useCallback(
         (childRef, childProps) => {
@@ -145,7 +142,7 @@ const InternalDropdown = forwardRef((props, reference) => {
 
         if (nextActiveIndex < activeOptionIndex) {
             if (nextActiveIndex === 0) {
-                scrollTo(0);
+                scrollTo(menuRef, 0);
             } else {
                 scrollToOption(nextActiveIndex);
             }
