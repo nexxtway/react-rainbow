@@ -1,36 +1,4 @@
-##### TimeSelectInput base:
-
-```js
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { TimeSelectInput } from 'react-rainbow-components';
-
-const StyledContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    background-color: ${props => props.theme.rainbow.palette.background.main};
-    border-radius: 0 0 14px 14px;
-    padding: 48px 16px;
-`;
-
-const TimeSelectInputExample = () => {
-    const [time, setTime] = useState(null);
-
-    return (
-        <TimeSelectInput
-            id="time-select-input-1"
-            value={time}
-            onChange={setTime}
-            label="TimeSelectInput Label"
-        />
-    );
-}
-<StyledContainer>
-    <TimeSelectInputExample />
-</StyledContainer>
-```
-
-##### TimeSelectInput focused when init:
+##### TimeSelectInput base focused when init:
 
 ```js
 import React, { useEffect, useRef, useState } from 'react';
@@ -54,11 +22,43 @@ const TimeSelectInputExample = () => {
     }, []);
     return (
         <TimeSelectInput
-            id="time-select-input-3"
+            id="time-select-input-1"
             value={time}
             onChange={setTime}
             label="TimeSelectInput Label"
             ref={inputRef}
+        />
+    );
+}
+<StyledContainer>
+    <TimeSelectInputExample />
+</StyledContainer>
+```
+
+##### TimeSelectInput base:
+
+```js
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { TimeSelectInput } from 'react-rainbow-components';
+
+const StyledContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    background-color: ${props => props.theme.rainbow.palette.background.main};
+    border-radius: 0 0 14px 14px;
+    padding: 48px 16px;
+`;
+
+const TimeSelectInputExample = () => {
+    const [time, setTime] = useState(null);
+
+    return (
+        <TimeSelectInput
+            id="time-select-input-3"
+            value={time}
+            onChange={setTime}
+            label="TimeSelectInput Label"
         />
     );
 }
@@ -218,6 +218,39 @@ const TimeSelectInputExample = () => {
             onChange={setTime}
             label="TimeSelectInput Label"
             bottomHelpText="Enter a time in format hh:mm tt"
+        />
+    );
+}
+<StyledContainer>
+    <TimeSelectInputExample />
+</StyledContainer>
+```
+
+##### TimeSelectInput read only:
+
+```js
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { TimeSelectInput } from 'react-rainbow-components';
+
+const StyledContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    background-color: ${props => props.theme.rainbow.palette.background.main};
+    border-radius: 0 0 14px 14px;
+    padding: 48px 16px;
+`;
+
+const TimeSelectInputExample = () => {
+    const [time, setTime] = useState('08:00');
+
+    return (
+        <TimeSelectInput
+            id="time-select-input-15"
+            value={time}
+            onChange={setTime}
+            label="TimeSelectInput Label"
+            readOnly
         />
     );
 }

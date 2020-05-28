@@ -511,6 +511,7 @@ class TimeSelectInput extends Component {
                     onKeyDown={this.handleKeyDown}
                     onClick={this.handleClick}
                     onFocus={this.handleFocus}
+                    readOnly={readOnly}
                 >
                     <StyledSelectValue
                         aria-label="hour"
@@ -569,31 +570,31 @@ class TimeSelectInput extends Component {
                         />
                     </RenderIf>
 
-                    <StyledVerticalButtonsContainer ref={this.buttonsInputRef}>
+                    <StyledVerticalButtonsContainer ref={this.buttonsInputRef} readOnly={readOnly}>
                         <ButtonIcon
                             id="time-picker_up-button"
                             tabIndex="-1"
                             variant="border-filled"
-                            icon={<StyledUpArrow disabled={disabled} readOnly={readOnly} />}
+                            icon={<StyledUpArrow disabled={disabled} />}
                             size="small"
                             onMouseDown={this.handleButtonsDown}
                             onClick={this.incrementHandler}
                             onFocus={this.handleButtonsFocus}
                             assistiveText="Next value"
-                            disabled={disabled || readOnly}
+                            disabled={disabled}
                         />
 
                         <ButtonIcon
                             id="time-picker_down-button"
                             tabIndex="-1"
                             variant="border-filled"
-                            icon={<StyledDownArrow disabled={disabled} readOnly={readOnly} />}
+                            icon={<StyledDownArrow disabled={disabled} />}
                             size="small"
                             onMouseDown={this.handleButtonsDown}
                             onClick={this.decrementHandler}
                             onFocus={this.handleButtonsFocus}
                             assistiveText="Previous value"
-                            disabled={disabled || readOnly}
+                            disabled={disabled}
                         />
                     </StyledVerticalButtonsContainer>
                 </StyledSelectContent>

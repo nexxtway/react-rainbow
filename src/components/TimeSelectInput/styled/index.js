@@ -39,11 +39,19 @@ export const StyledDots = attachThemeAttrs(styled.span)`
     align-items: center;
     justify-content: center;
     ${props =>
-        (props.disabled || props.readOnly) &&
+        props.disabled &&
         `
         cursor: default;
         pointer-events: none;
         color: ${props.palette.text.disabled};
+    `};
+    ${props =>
+        props.readOnly &&
+        `
+        cursor: default;
+        pointer-events: none;
+        background-color: transparent;
+        color: ${props.palette.text.label};
     `};
 
     @media (max-width: 600px) {
@@ -52,8 +60,7 @@ export const StyledDots = attachThemeAttrs(styled.span)`
 `;
 
 export const StyledDownArrow = attachThemeAttrs(styled(DownArrow))`
-    color: ${props =>
-        props.disabled || props.readOnly ? props.palette.text.disabled : props.palette.brand.main};
+    color: ${props => (props.disabled ? props.palette.text.disabled : props.palette.brand.main)};
 `;
 
 export const StyledInputHidden = attachThemeAttrs(styled(HiddenElement))`
@@ -112,6 +119,13 @@ export const StyledSelectContent = attachThemeAttrs(styled.div)`
     background-color: ${props => props.palette.background.secondary};
     border-radius: 8px;
     padding: ${PADDING_X_SMALL};
+    ${props =>
+        props.readOnly &&
+        `
+        cursor: default;
+        pointer-events: none;
+        background-color: transparent;
+    `};
 
     @media (max-width: 600px) {
         width: 100%;
@@ -253,7 +267,7 @@ export const StyledSelectValue = attachThemeAttrs(styled.input).attrs(props => {
 
     `};
     ${props =>
-        (props.disabled || props.readOnly) &&
+        props.disabled &&
         `
         cursor: default;
         pointer-events: none;
@@ -275,6 +289,21 @@ export const StyledSelectValue = attachThemeAttrs(styled.input).attrs(props => {
             color: ${props.palette.text.disabled};
         }
     `};
+    ${props =>
+        props.readOnly &&
+        `
+        border: none;
+        border-radius: 0;
+        background-color: transparent;
+        cursor: default;
+        pointer-events: none;
+        color: ${props.palette.text.label};
+
+        :focus-within {
+            box-shadow: none;
+            border: none;
+        }
+    `}
 
     @media (max-width: 600px) {
         width: 24%;
@@ -315,8 +344,7 @@ export const StyledSelectValue = attachThemeAttrs(styled.input).attrs(props => {
 `;
 
 export const StyledUpArrow = attachThemeAttrs(styled(UpArrow))`
-    color: ${props =>
-        props.disabled || props.readOnly ? props.palette.text.disabled : props.palette.brand.main};
+    color: ${props => (props.disabled ? props.palette.text.disabled : props.palette.brand.main)};
 `;
 
 export const StyledVerticalButtonsContainer = styled.div`
@@ -336,6 +364,12 @@ export const StyledVerticalButtonsContainer = styled.div`
     @media (max-width: 600px) {
         margin-left: 0;
     }
+
+    ${props =>
+        props.readOnly &&
+        `
+        display: none;
+    `};
 `;
 
 export const StyledHelpText = styled(HelpText)`
