@@ -7,14 +7,20 @@ import LeftIcon from '../icons/leftArrow';
 import DaysOfWeek from '../daysOfWeek';
 import Month from '../month';
 import {
-    normalizeDate,
     getFirstDayMonth,
     addMonths,
     getNextFocusedDate,
     isEmptyRange,
     isDateBelowLimit,
+    isSameMonth,
 } from '../helpers';
-import { useYearsRange, useDisabledControls, useFormattedMonth, useHandleKeyDown } from './hooks';
+import {
+    useNormalizedValue,
+    useYearsRange,
+    useDisabledControls,
+    useFormattedMonth,
+    useHandleKeyDown,
+} from './hooks';
 import MonthHeader from './monthHeader';
 import StyledControlsContainer from '../styled/controlsContainer';
 import StyledArrowButton from '../styled/arrowButton';
@@ -34,8 +40,9 @@ export default function DoubleCalendar(props) {
         selectedRange,
         selectionType,
     } = props;
-    const [focusedDate, setFocusedDate] = useState(normalizeDate(value));
-    const [currentMonth, setCurrentMonth] = useState(getFirstDayMonth(normalizeDate(value)));
+    const currentValue = useNormalizedValue(value);
+    const [focusedDate, setFocusedDate] = useState(currentValue);
+    const [currentMonth, setCurrentMonth] = useState(getFirstDayMonth(currentValue));
     const [currentRange, setCurrentRange] = useState(selectedRange);
     const [enableNavKeys, setEnableNavKeys] = useState(false);
 
@@ -122,8 +129,15 @@ export default function DoubleCalendar(props) {
     );
 
     useEffect(() => {
-        setFocusedDate(normalizeDate(value));
-    }, [value]);
+        setFocusedDate(currentValue);
+        if (
+            !isSameMonth(currentValue, rightCalendarMonth) &&
+            !isSameMonth(currentValue, currentMonth)
+        ) {
+            setCurrentMonth(getFirstDayMonth(currentValue));
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [currentValue]);
 
     useEffect(() => {
         setCurrentRange(selectedRange);

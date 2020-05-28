@@ -64,6 +64,6 @@ YearSelect.propTypes = {
 
 YearSelect.defaultProps = {
     currentYear: undefined,
-    yearsRange: undefined,
+    yearsRange: [],
     onYearChange: () => {},
 };
