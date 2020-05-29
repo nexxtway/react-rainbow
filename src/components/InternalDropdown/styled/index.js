@@ -1,15 +1,49 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-const StyledArrowButton = attachThemeAttrs(styled.div)`
+export const Dropdown = attachThemeAttrs(styled.div)`
+    position: relative;
+    overflow: hidden;
+    z-index: 2000;
+    width: 100%;
+    border: solid 1px ${props => props.palette.border.divider};
+    border-radius: 0.875rem;
+    padding: 1rem 0;
+    font-size: 0.75rem;
+    background: ${props => props.palette.background.main};
+    box-shadow: ${props => props.shadows.shadow_2};
+    transition: opacity 0.1s linear, visibility 0.1s linear;
+
+    &:focus,
+    &:active {
+        outline: none;
+    }
+
+    ${props =>
+        props.isLoading &&
+        `
+            padding: 2rem;
+    `}
+`;
+
+export const Ul = styled.ul`
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+    overflow-y: auto;
+`;
+
+export const Arrow = attachThemeAttrs(styled.div)`
     display: flex;
     justify-content: flex-start;
     align-items: center;
     height: 1rem;
-    position: fixed;
+    position: absolute;
     width: 100%;
     z-index: 10;
     background: ${props => props.palette.background.main};
+    cursor: pointer;
 
     &::after {
         content: '';
@@ -25,7 +59,7 @@ const StyledArrowButton = attachThemeAttrs(styled.div)`
     }
 
     ${props =>
-        props.arrow === 'up' &&
+        props.direction === 'up' &&
         `
             top: 0;
             margin-top: 0.2rem;
@@ -37,7 +71,7 @@ const StyledArrowButton = attachThemeAttrs(styled.div)`
     `}
 
     ${props =>
-        props.arrow === 'down' &&
+        props.direction === 'down' &&
         `
             bottom: 0;
             margin-bottom: 0.2rem;
@@ -47,5 +81,3 @@ const StyledArrowButton = attachThemeAttrs(styled.div)`
             }
     `}
 `;
-
-export default StyledArrowButton;
