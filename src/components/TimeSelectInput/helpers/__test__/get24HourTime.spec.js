@@ -67,10 +67,10 @@ describe('get24HourTime', () => {
         const values = [
             { hour: '04', minutes: '35', ampm: false },
             { hour: '14', minutes: '35', ampm: undefined },
-            { hour: '16', minutes: '35', ampm: 'am' },
+            { hour: '16', minutes: '35', ampm: 'ss' },
             { hour: '23', minutes: '35' },
         ];
-        const expects = ['04:35', '14:35', '16:35', '23:35'];
-        values.forEach((value, index) => expect(get24HourTime(value)).toBe(expects[index]));
+        const expected = ['04:35', '14:35', '16:35', '23:35'];
+        values.forEach((value, index) => expect(get24HourTime(value)).toBe(expected[index]));
     });
 });

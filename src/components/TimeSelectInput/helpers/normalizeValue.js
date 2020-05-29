@@ -19,12 +19,12 @@ export default function normalizeValue(value, hour24) {
     if (!value) return invalidValue;
 
     let hour = getHour(value);
-    if (!hour || +hour > 23) {
+    if (!hour || isNaN(+hour) || +hour > 23) {
         return invalidValue;
     }
 
     const minutes = getMinutes(value);
-    if (!minutes || +minutes > 59) {
+    if (!minutes || isNaN(+minutes) || +minutes > 59) {
         return invalidValue;
     }
 
@@ -33,7 +33,10 @@ export default function normalizeValue(value, hour24) {
         ampm = !hour24 ? getAmPmValue(hour) : '';
     }
 
-    if (ampm && ampm.toUpperCase() !== 'AM' && ampm.toUpperCase() !== 'PM') {
+    if (
+        ampm &&
+        ((ampm.toUpperCase() !== 'AM' && ampm.toUpperCase() !== 'PM') || ampm.length !== 2)
+    ) {
         return invalidValue;
     }
 
