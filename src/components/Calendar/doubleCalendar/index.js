@@ -144,7 +144,7 @@ export default function DoubleCalendar(props) {
     }, [selectedRange]);
 
     return (
-        <section id={id} className={className} style={style}>
+        <section id={id} className={className} style={style} data-calendar-type="double">
             <StyledControlsContainer>
                 <StyledArrowButton
                     onClick={prevMonthClick}
