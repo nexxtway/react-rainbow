@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import withReduxForm from './../../libs/hocs/withReduxForm';
 import ButtonIcon from '../ButtonIcon';
 import AmPmSelect from './ampmSelect';
 import RenderIf from '../RenderIf';
@@ -597,7 +598,7 @@ class TimeSelectInput extends Component {
     }
 }
 
-export default TimeSelectInput;
+export default withReduxForm(TimeSelectInput);
 
 TimeSelectInput.propTypes = {
     /** Sets the date for the TimeSelectInput programmatically. */
