@@ -16,7 +16,9 @@ export default function normalizeValue(value, hour24) {
         ampm: '',
     };
 
-    if (!value) return invalidValue;
+    if (!value || hour24 === undefined || hour24 === null || typeof hour24 !== 'boolean') {
+        return invalidValue;
+    }
 
     let hour = getHour(value);
     if (!hour || isNaN(+hour) || +hour > 23) {
@@ -47,6 +49,6 @@ export default function normalizeValue(value, hour24) {
     return {
         hour: normalizeHour(hour, hour24),
         minutes: normalizeMinutes(minutes, hour24),
-        ampm,
+        ampm: hour24 ? '' : ampm,
     };
 }
