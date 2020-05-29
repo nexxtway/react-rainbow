@@ -116,7 +116,7 @@ const Loading = styled.h1.attrs(props => {
 </InverseContainer>
 ```
 
-##### list loading using spinner - brand - large - arc
+##### Spinner arc large brand
 
 ```js
 import React from 'react';
@@ -132,7 +132,7 @@ import { Spinner } from 'react-rainbow-components';
 </div>
 ```
 
-##### list loading using spinner - brand - x-large - arc - with logo
+##### Spinner arc x-large brand with logo
 
 ```js
 import React from 'react';

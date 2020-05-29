@@ -6,23 +6,42 @@ import StyledArcSpinner from './styled/arcSpinner';
 import StyledSpinnerContainer from './styled/spinnerContainer';
 import StyledChildContainer from './styled/childContainer';
 
+const sizeMap = {
+    'x-large': '82',
+    large: '48',
+    medium: '32',
+    small: '26',
+    'x-small': '20',
+    'xx-small': '16',
+};
 /**
  * Spinners should be shown when retrieving data or performing slow,
  * help to reassure the user that the system is actively retrieving data.
  */
 export default function Spinner(props) {
     const { className, style, assistiveText, isVisible, size, variant, type, children } = props;
+    const currentSize = sizeMap[size] || sizeMap.medium;
 
     if (isVisible) {
         if (type === 'arc') {
             return (
                 <StyledSpinnerContainer>
                     <StyledArcSpinner
+                        viewBox={`${0} ${0} ${currentSize} ${currentSize}`}
                         className={className}
                         size={size}
                         variant={variant}
                         style={style}
-                    />
+                    >
+                        <circle
+                            className="path"
+                            cx={currentSize / 2}
+                            cy={currentSize / 2}
+                            r={(currentSize - 3) / 2}
+                            fill="none"
+                            strokeWidth="3"
+                        />
+                    </StyledArcSpinner>
                     <StyledChildContainer>{children}</StyledChildContainer>
                     <AssistiveText text={assistiveText} />
                 </StyledSpinnerContainer>
