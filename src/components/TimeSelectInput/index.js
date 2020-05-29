@@ -31,7 +31,6 @@ import {
 import OutsideClick from '../../libs/outsideClick';
 import { uniqueId } from '../../libs/utils';
 import RequiredAsterisk from '../RequiredAsterisk';
-import withForwardedRef from './hoc/withForwardedRef';
 
 function preventDefault(event) {
     event.preventDefault();
@@ -83,15 +82,7 @@ class TimeSelectInput extends Component {
     }
 
     componentDidMount() {
-        // eslint-disable-next-line react/prop-types
-        const refListening = this.props.forwardedRef || this.containerRef;
-        this.outsideClick.startListening(refListening.current, this.handleClickOutside);
-
-        // eslint-disable-next-line react/prop-types
-        if (this.props.forwardedRef) {
-            this.hourInputRef.current.focus();
-            this.hourInputRef.current.select();
-        }
+        this.outsideClick.startListening(this.containerRef.current, this.handleClickOutside);
     }
 
     componentDidUpdate(prevProps) {
@@ -439,8 +430,7 @@ class TimeSelectInput extends Component {
      * @public
      */
     focus() {
-        // eslint-disable-next-line react/prop-types
-        this.props.forwardedRef.current.focus();
+        this.hourInputRef.current.focus();
     }
 
     /**
@@ -448,8 +438,7 @@ class TimeSelectInput extends Component {
      * @public
      */
     click() {
-        // eslint-disable-next-line react/prop-types
-        this.props.forwardedRef.current.click();
+        this.containerRef.current.click();
     }
 
     /**
@@ -457,8 +446,7 @@ class TimeSelectInput extends Component {
      * @public
      */
     blur() {
-        // eslint-disable-next-line react/prop-types
-        this.props.forwardedRef.current.blur();
+        this.containerRef.current.blur();
     }
 
     render() {
@@ -507,7 +495,7 @@ class TimeSelectInput extends Component {
                     </StyledLegend>
                 </RenderIf>
                 <StyledSelectContent
-                    ref={this.props.forwardedRef || this.containerRef}
+                    ref={this.containerRef}
                     onKeyDown={this.handleKeyDown}
                     onClick={this.handleClick}
                     onFocus={this.handleFocus}
@@ -609,7 +597,7 @@ class TimeSelectInput extends Component {
     }
 }
 
-export default withForwardedRef(TimeSelectInput);
+export default TimeSelectInput;
 
 TimeSelectInput.propTypes = {
     /** Sets the date for the TimeSelectInput programmatically. */
