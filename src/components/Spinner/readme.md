@@ -1,4 +1,4 @@
-##### list loading using spinner - base - large
+##### spinner base large
 
 ```js
 import React from 'react';
@@ -14,7 +14,7 @@ import { Spinner } from 'react-rainbow-components';
 </div>
 ```
 
-##### full screen loading using spinner - brand - medium
+##### spinner brand medium
 
 ```js
 import React from 'react';
@@ -37,7 +37,7 @@ const Loading = styled.h1.attrs(props => {
 </div>
 ```
 
-##### lazy loading using spinner - neutral - small
+##### lazy loading using spinner neutral small
 
 ```js
 import React from 'react';
@@ -94,7 +94,7 @@ const Icon = styled.div.attrs(props => {
 </div>
 ```
 
-##### full screen loading using spinner - inverse - medium
+##### spinner inverse medium
 
 ```js
 import React from 'react';
@@ -116,7 +116,7 @@ const Loading = styled.h1.attrs(props => {
 </InverseContainer>
 ```
 
-##### Spinner arc large brand
+##### spinner arc large brand
 
 ```js
 import React from 'react';
@@ -132,7 +132,7 @@ import { Spinner } from 'react-rainbow-components';
 </div>
 ```
 
-##### Spinner arc x-large brand with logo
+##### spinner arc x-large brand with logo
 
 ```js
 import React from 'react';

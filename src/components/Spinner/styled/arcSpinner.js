@@ -1,14 +1,7 @@
 import styled, { keyframes } from 'styled-components';
+import getSizeValue from '../helpers/getSizeValue';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-const sizeMap = {
-    'x-large': '82px',
-    large: '48px',
-    medium: '32px',
-    small: '26px',
-    'x-small': '20px',
-    'xx-small': '16px',
-};
 const dashXLarge = keyframes`
     0% {
         stroke-dasharray: 1, 248;
@@ -17,7 +10,7 @@ const dashXLarge = keyframes`
 
     50% {
         stroke-dasharray: 177, 248;
-        stroke-dashoffset: -15;
+        stroke-dashoffset: -75;
     }
 
     100% {
@@ -33,7 +26,7 @@ const dashLarge = keyframes`
 
     50% {
         stroke-dasharray: 100, 141;
-        stroke-dashoffset: -11;
+        stroke-dashoffset: -43;
     }
 
     100% {
@@ -49,7 +42,7 @@ const dashMedium = keyframes`
 
     50% {
         stroke-dasharray: 65, 91;
-        stroke-dashoffset: -9;
+        stroke-dashoffset: -28;
     }
 
     100% {
@@ -65,7 +58,7 @@ const dashSmall = keyframes`
 
     50% {
         stroke-dasharray: 51, 72;
-        stroke-dashoffset: -7;
+        stroke-dashoffset: -22;
     }
 
     100% {
@@ -81,7 +74,7 @@ const dashXSmall = keyframes`
 
     50% {
         stroke-dasharray: 38, 53;
-        stroke-dashoffset: -5;
+        stroke-dashoffset: -16;
     }
 
     100% {
@@ -97,7 +90,7 @@ const dashXXSmall = keyframes`
 
     50% {
         stroke-dasharray: 29, 41;
-        stroke-dashoffset: -3;
+        stroke-dashoffset: -12;
     }
 
     100% {
@@ -115,11 +108,11 @@ const dashMap = {
 };
 
 const StyledArcSpinner = attachThemeAttrs(styled.svg)`
-    animation: rotate 1.5s linear infinite;
+    animation: rotate 1s linear infinite;
     display: block;
     transform-origin: 50% 50%;
-    width: ${props => sizeMap[props.size] || sizeMap.medium};
-    height: ${props => sizeMap[props.size] || sizeMap.medium};
+    width: ${props => getSizeValue(props.size)}px;
+    height: ${props => getSizeValue(props.size)}px;
 
     & .path {
         stroke: ${props => props.palette.border.main};
