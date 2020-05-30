@@ -193,6 +193,7 @@ class Picklist extends Component {
             placeholder,
             name,
             value: valueInProps,
+            enableSearch,
         } = this.props;
         const { label: valueLabel, icon } = getNormalizeValue(valueInProps);
         const value = valueLabel || '';
@@ -265,6 +266,7 @@ class Picklist extends Component {
                                 isLoading={isLoading}
                                 value={valueInProps}
                                 onChange={this.handleChange}
+                                enableSearch={enableSearch}
                                 ref={this.dropdownRef}
                             >
                                 {children}
@@ -333,6 +335,8 @@ Picklist.propTypes = {
     /** The variant changes the appearance of the Picklist. Accepted variants include default,
      * and shaded. This value defaults to default. */
     variant: PropTypes.oneOf(['default', 'shaded']),
+    /** If is set to true, then a search input to filter is showed. */
+    enableSearch: PropTypes.bool,
 };
 
 Picklist.defaultProps = {
@@ -356,6 +360,7 @@ Picklist.defaultProps = {
     className: undefined,
     style: undefined,
     variant: 'default',
+    enableSearch: false,
 };
 
 export default withReduxForm(Picklist);

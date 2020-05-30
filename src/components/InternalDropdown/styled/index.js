@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
 
 export const Dropdown = attachThemeAttrs(styled.div)`
     position: relative;
     overflow: hidden;
-    z-index: 2000;
+    z-index: 1999;
     width: 100%;
     border: solid 1px ${props => props.palette.border.divider};
     border-radius: 0.875rem;
-    padding: 1rem 0;
     font-size: 0.75rem;
     background: ${props => props.palette.background.main};
     box-shadow: ${props => props.shadows.shadow_2};
@@ -80,4 +80,35 @@ export const Arrow = attachThemeAttrs(styled.div)`
                 border-width: 0.15em 0.15em 0 0;
             }
     `}
+`;
+
+export const UlContainer = styled.div`
+    position: relative;
+    padding: 1rem 0;
+`;
+
+export const Search = attachThemeAttrs(styled.input)`
+    font: inherit;
+    background-color: transparent;
+    border: 0;
+    color: ${props => props.palette.text.main};
+    font-size: ${FONT_SIZE_TEXT_LARGE};
+    margin: 0;
+    width: 100%;
+    padding: 0;
+    line-height: 45px;
+    height: 45px;
+
+    width: 100%;
+    border-bottom: 1px solid ${props => props.palette.border.divider};
+    padding: 0 1rem;
+    margin-top: 5px;
+
+    :focus,
+    :active {
+        outline: 0;
+        background-color: transparent;
+        border: 0;
+        border-bottom: 1px solid ${props => props.palette.border.divider};
+    }
 `;

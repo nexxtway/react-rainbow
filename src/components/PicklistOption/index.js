@@ -16,6 +16,9 @@ function preventDefault(event) {
 class Option extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            showOption: true,
+        };
         this.itemRef = React.createRef();
         this.handleClick = this.handleClick.bind(this);
         this.handleHover = this.handleHover.bind(this);
@@ -28,6 +31,18 @@ class Option extends Component {
             return null;
         }
         return this.register();
+    }
+
+    componentDidUpdate(prevProps) {
+        const { activeChildrenMap: prevActiveChildrenMap } = prevProps;
+        const { activeChildrenMap, name, variant } = this.props;
+        if (prevActiveChildrenMap !== activeChildrenMap && variant === 'default') {
+            if (activeChildrenMap[name]) {
+                this.register();
+            } else {
+                this.unregister();
+            }
+        }
     }
 
     componentWillUnmount() {
@@ -71,9 +86,9 @@ class Option extends Component {
     }
 
     unregister() {
-        const { privateUnregisterChild } = this.props;
+        const { privateUnregisterChild, name } = this.props;
         if (privateUnregisterChild) {
-            return privateUnregisterChild(this.itemRef.current);
+            return privateUnregisterChild(this.itemRef.current, name);
         }
         return null;
     }
@@ -107,6 +122,7 @@ class Option extends Component {
             activeOptionName,
             name,
             currentValueName,
+            activeChildrenMap,
         } = this.props;
         const isSelected = currentValueName === name;
         const isActive = activeOptionName === name;
@@ -125,40 +141,45 @@ class Option extends Component {
             );
         }
 
-        const hasLeftIcon = !!(icon && iconPosition === 'left');
+        const showOption = !activeChildrenMap || activeChildrenMap[name];
 
-        return (
-            <li
-                data-selected={isSelected}
-                className={className}
-                style={style}
-                role="presentation"
-                onMouseDown={this.handleClick}
-                onMouseEnter={this.handleHover}
-            >
-                <StyledItem
-                    id={name}
-                    role="option"
-                    aria-selected={isActive}
-                    aria-disabled={disabled}
-                    ref={this.itemRef}
-                    isSelected={isSelected}
-                    isActive={isActive}
+        if (showOption) {
+            const hasLeftIcon = !!(icon && iconPosition === 'left');
+
+            return (
+                <li
+                    data-selected={isSelected}
+                    className={className}
+                    style={style}
+                    role="presentation"
+                    onMouseDown={this.handleClick}
+                    onMouseEnter={this.handleHover}
                 >
-                    <StyledIconContainer title={title}>
-                        <Icon
-                            data-id="menu-item-left-icon"
-                            icon={icon}
-                            isVisible={hasLeftIcon}
-                            position={iconPosition}
-                        />
+                    <StyledItem
+                        id={name}
+                        role="option"
+                        aria-selected={isActive}
+                        aria-disabled={disabled}
+                        ref={this.itemRef}
+                        isSelected={isSelected}
+                        isActive={isActive}
+                    >
+                        <StyledIconContainer title={title}>
+                            <Icon
+                                data-id="menu-item-left-icon"
+                                icon={icon}
+                                isVisible={hasLeftIcon}
+                                position={iconPosition}
+                            />
 
-                        {label}
-                    </StyledIconContainer>
-                    {this.renderRightIcon()}
-                </StyledItem>
-            </li>
-        );
+                            {label}
+                        </StyledIconContainer>
+                        {this.renderRightIcon()}
+                    </StyledItem>
+                </li>
+            );
+        }
+        return null;
     }
 }
 
