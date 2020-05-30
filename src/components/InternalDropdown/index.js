@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import RenderIf from '../RenderIf';
 import { UP_KEY, DOWN_KEY, SPACE_KEY, ENTER_KEY } from '../../libs/constants';
 import { Provider } from './context';
-import { Dropdown, Ul, Arrow } from './styled';
+import { Dropdown, Ul, Arrow, Search, UlContainer } from './styled';
 import Content from './content';
 import isChildRegistered from './helpers/isChildRegistered';
 import getChildMenuItemNodes from './helpers/getChildMenuItemNodes';
@@ -20,6 +20,7 @@ import isScrollPositionAtMenuBottom from './helpers/isScrollPositionAtMenuBottom
 import isOptionVisible from './helpers/isOptionVisible';
 import getNormalizedValue from './helpers/getNormalizedValue';
 import scrollTo from './helpers/scrollTo';
+import searchFilter from './helpers/searchFilter';
 
 const sizeMap = {
     medium: 227,
@@ -29,24 +30,34 @@ const preventDefaultKeys = {
     [DOWN_KEY]: true,
     [SPACE_KEY]: true,
 };
+const menuContainerStyles = {
+    maxHeight: sizeMap.medium,
+};
 
+/**
+ * @category Internal
+ */
 const InternalDropdown = forwardRef((props, reference) => {
-    const { isLoading, children, value, onChange, id, className, style } = props;
+    const { isLoading, children, value, onChange, enableSearch, id, className, style } = props;
     const [showScrollUpArrow, setShowScrollUpArrow] = useState(false);
     const [showScrollDownArrow, setShowScrollDownArrow] = useState(false);
     const [activeOptionName, setActiveOptionName] = useState(null);
     const [activeOptionIndex, setActiveOptionIndex] = useState(0);
+    const [activeChildrenMap, setActiveChildrenMap] = useState();
+    const activeChildren = useRef([]);
+    const allActiveChildren = useRef();
+    const firstChild = useRef();
     const menuRef = useRef();
     const containerRef = useRef();
-    const activeChildren = useRef([]);
     const scrollingTimer = useRef();
-    const menuContainerStyles = {
-        maxHeight: sizeMap.medium,
-    };
+    const searchRef = useRef();
 
     useImperativeHandle(reference, () => ({
         focus: () => {
-            containerRef.current.focus();
+            if (enableSearch) {
+                return searchRef.current.focus();
+            }
+            return containerRef.current.focus();
         },
     }));
 
@@ -65,31 +76,28 @@ const InternalDropdown = forwardRef((props, reference) => {
         updateScrollingArrows();
     }, []);
 
-    useEffect(() => {
-        const firstOptionName =
-            activeChildren.current.length > 0 ? activeChildren.current[0].name : null;
-        setActiveOptionName(firstOptionName);
+    const registerChild = useCallback((childRef, childProps) => {
+        if (isChildRegistered(childProps.name, activeChildren.current)) return;
+        if (!firstChild.current) {
+            firstChild.current = childProps;
+            setActiveOptionName(childProps.name);
+        }
+        const [...nodes] = getChildMenuItemNodes(containerRef.current);
+        const newChildren = insertChildOrderly(
+            activeChildren.current,
+            {
+                ref: childRef,
+                ...childProps,
+            },
+            nodes,
+        );
+        activeChildren.current = newChildren;
     }, []);
 
-    const registerChild = useCallback(
-        (childRef, childProps) => {
-            if (isChildRegistered(childRef, activeChildren.current)) return;
-            const [...nodes] = getChildMenuItemNodes(containerRef.current);
-            activeChildren.current = insertChildOrderly(
-                activeChildren.current,
-                {
-                    ref: childRef,
-                    ...childProps,
-                },
-                nodes,
-            );
-        },
-        [containerRef],
-    );
-
-    const unregisterChild = useCallback(childRef => {
-        if (!isChildRegistered(childRef, activeChildren.current)) return;
-        activeChildren.current = activeChildren.current.filter(child => child.ref !== childRef);
+    const unregisterChild = useCallback((childRef, name) => {
+        if (!isChildRegistered(name, activeChildren.current)) return;
+        const newChildren = activeChildren.current.filter(child => child.name !== name);
+        activeChildren.current = newChildren;
     }, []);
 
     const hoverChild = useCallback((event, name) => {
@@ -178,6 +186,28 @@ const InternalDropdown = forwardRef((props, reference) => {
         }
     };
 
+    const handleSearch = event => {
+        if (!allActiveChildren.current) {
+            allActiveChildren.current = [...activeChildren.current];
+        }
+        const filteredOptions = searchFilter({
+            query: event.target.value,
+            data: allActiveChildren.current,
+        });
+        setActiveChildrenMap(
+            filteredOptions.reduce((acc, option) => {
+                acc[option.name] = true;
+                return acc;
+            }, {}),
+        );
+        setActiveOptionIndex(0);
+        const firstActiveChild = activeChildren.current[0];
+        if (firstActiveChild) {
+            setActiveOptionName(firstActiveChild.name);
+        }
+        setTimeout(() => updateScrollingArrows(), 0);
+    };
+
     const context = useMemo(() => {
         const { name } = getNormalizedValue(value);
         return {
@@ -187,8 +217,17 @@ const InternalDropdown = forwardRef((props, reference) => {
             privateOnHover: hoverChild,
             activeOptionName,
             currentValueName: name,
+            activeChildrenMap,
         };
-    }, [activeOptionName, hoverChild, onChange, registerChild, unregisterChild, value]);
+    }, [
+        value,
+        registerChild,
+        unregisterChild,
+        hoverChild,
+        activeOptionName,
+        activeChildrenMap,
+        onChange,
+    ]);
 
     return (
         <Dropdown
@@ -201,32 +240,37 @@ const InternalDropdown = forwardRef((props, reference) => {
             tabIndex="-1"
             ref={containerRef}
         >
-            <RenderIf isTrue={showScrollUpArrow}>
-                <Arrow
-                    data-id="internal-dropdown-arrow-up"
-                    direction="up"
-                    onMouseEnter={handleScrollUpArrowHover}
-                    onMouseLeave={stopArrowScoll}
-                />
+            <RenderIf isTrue={enableSearch}>
+                <Search onChange={handleSearch} ref={searchRef} />
             </RenderIf>
-            <Ul
-                role="presentation"
-                onScroll={updateScrollingArrows}
-                ref={menuRef}
-                style={menuContainerStyles}
-            >
-                <Content isLoading={isLoading}>
-                    <Provider value={context}>{children}</Provider>
-                </Content>
-            </Ul>
-            <RenderIf isTrue={showScrollDownArrow}>
-                <Arrow
-                    data-id="internal-dropdown-arrow-down"
-                    direction="down"
-                    onMouseEnter={handleScrollDownArrowHover}
-                    onMouseLeave={stopArrowScoll}
-                />
-            </RenderIf>
+            <UlContainer>
+                <RenderIf isTrue={showScrollUpArrow}>
+                    <Arrow
+                        data-id="internal-dropdown-arrow-up"
+                        direction="up"
+                        onMouseEnter={handleScrollUpArrowHover}
+                        onMouseLeave={stopArrowScoll}
+                    />
+                </RenderIf>
+                <Ul
+                    role="presentation"
+                    onScroll={updateScrollingArrows}
+                    ref={menuRef}
+                    style={menuContainerStyles}
+                >
+                    <Content isLoading={isLoading}>
+                        <Provider value={context}>{children}</Provider>
+                    </Content>
+                </Ul>
+                <RenderIf isTrue={showScrollDownArrow}>
+                    <Arrow
+                        data-id="internal-dropdown-arrow-down"
+                        direction="down"
+                        onMouseEnter={handleScrollDownArrowHover}
+                        onMouseLeave={stopArrowScoll}
+                    />
+                </RenderIf>
+            </UlContainer>
         </Dropdown>
     );
 });
@@ -249,8 +293,10 @@ InternalDropdown.propTypes = {
     value: PropTypes.shape({
         name: PropTypes.string,
     }),
-    /**  The action triggered when click/select an option. */
+    /** The action triggered when click/select an option. */
     onChange: PropTypes.func,
+    /** If is set to true, then a search input to filter is showed. */
+    enableSearch: PropTypes.bool,
 };
 
 InternalDropdown.defaultProps = {
@@ -261,6 +307,7 @@ InternalDropdown.defaultProps = {
     children: null,
     value: undefined,
     onChange: () => {},
+    enableSearch: false,
 };
 
 export default InternalDropdown;

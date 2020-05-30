@@ -60,6 +60,7 @@ initialState = { value: null };
                 value={state.value}
                 label="Select Building"
                 hideLabel
+                enableSearch
             >
                 <PicklistOption name="option 1" label="All Buildings" icon={<DashboardIcon />} />
                 <PicklistOption name="option 2" label="New Building" icon={<AddFilledIcon />} />
