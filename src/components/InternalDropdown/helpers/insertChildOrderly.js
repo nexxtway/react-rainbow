@@ -10,15 +10,8 @@ function sortChildren(children, nodes) {
     return newChildren;
 }
 
-export function insertChildOrderly(children, child, nodes) {
+export default function insertChildOrderly(children, child, nodes) {
     const newChildren = children.concat([child]);
     const sortedChildren = sortChildren(newChildren, nodes);
     return sortedChildren;
-}
-
-export function getChildMenuItemNodes(ref) {
-    if (ref) {
-        return ref.querySelectorAll('div[role="option"]');
-    }
-    return [];
 }

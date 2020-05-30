@@ -2,37 +2,36 @@ import isDateWithinRange from './isDateWithinRange';
 import compareDates from './compareDates';
 
 export default function buildNewRangeFromValue(value, currentRange, currentUpdatePosition = 0) {
-    if (!currentRange || currentRange.length === 0)
-        return {
-            range: [value],
-        };
+    if (currentRange && currentRange.length > 0) {
+        const [rangeStart, rangeEnd] = currentRange;
+        const newRangeStart = new Date(rangeStart);
+        newRangeStart.setHours(0, 0, 0, 0);
 
-    const [rangeStart, rangeEnd] = currentRange;
+        if (rangeEnd && isDateWithinRange(value, currentRange)) {
+            if (currentUpdatePosition === 0) {
+                value.setHours(0, 0, 0, 0);
+                const newRangeEnd = new Date(rangeEnd);
+                newRangeEnd.setHours(23, 59, 59, 999);
+                return {
+                    range: [value, newRangeEnd],
+                    nextUpdatePosition: 1,
+                };
+            }
 
-    if (!rangeEnd) {
-        if (compareDates(value, rangeStart) >= 0) {
+            value.setHours(23, 59, 59, 999);
             return {
-                range: [rangeStart, value],
+                range: [newRangeStart, value],
+                nextUpdatePosition: 0,
+            };
+        } else if (!rangeEnd && compareDates(value, newRangeStart) >= 0) {
+            value.setHours(23, 59, 59, 999);
+            return {
+                range: [newRangeStart, value],
             };
         }
-        return {
-            range: [value],
-        };
     }
 
-    if (isDateWithinRange(value, currentRange)) {
-        if (currentUpdatePosition === 0) {
-            return {
-                range: [value, rangeEnd],
-                nextUpdatePosition: 1,
-            };
-        }
-        return {
-            range: [rangeStart, value],
-            nextUpdatePosition: 0,
-        };
-    }
-
+    value.setHours(0, 0, 0, 0);
     return {
         range: [value],
     };

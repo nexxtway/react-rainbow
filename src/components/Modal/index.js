@@ -196,7 +196,7 @@ Modal.propTypes = {
     /** The action triggered when the component request to close
      *  (e.g click close button, press esc key or click outside the modal). */
     onRequestClose: PropTypes.func,
-    /** A callback triggered when the modal is opened. This is usefull for example to set focus
+    /** A callback triggered when the modal is opened. This is useful for example to set focus
      * to an element inside the modal content after it is opened.
      */
     onOpened: PropTypes.func,

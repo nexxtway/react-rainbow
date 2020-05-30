@@ -97,3 +97,57 @@ const calendarContainerStyles = {
     </div>
 </div>
 ```
+
+##### Calendar with variant double:
+
+```js
+import React from 'react';
+import { Calendar } from 'react-rainbow-components';
+
+initialState = { date: new Date('2019-12-11 00:00:00') };
+const calendarContainerStyles = {
+    width: '80%',
+};
+
+<div>
+    <div className="rainbow-align-content_center rainbow-p-vertical_xx-large rainbow-p-horizontal_small">
+        <div style={calendarContainerStyles}>
+            <Calendar
+                variant="double"
+                value={state.date}
+                onChange={value => setState({ date: value })}
+            />
+        </div>
+    </div>
+</div>
+```
+
+##### Calendar with variant double and range selection:
+
+```js
+import React from 'react';
+import { Calendar } from 'react-rainbow-components';
+
+initialState = {
+    range: [
+        new Date(2019, 11, 23),
+        new Date(2020, 0, 15)
+    ]
+};
+const calendarContainerStyles = {
+    width: '80%',
+};
+
+<div>
+    <div className="rainbow-align-content_center rainbow-p-vertical_xx-large rainbow-p-horizontal_small">
+        <div style={calendarContainerStyles}>
+            <Calendar
+                variant="double"
+                selectionType="range"
+                value={state.range}
+                onChange={value => setState({ range: value })}
+            />
+        </div>
+    </div>
+</div>
+```
