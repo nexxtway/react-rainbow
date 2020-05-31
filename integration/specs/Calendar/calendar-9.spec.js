@@ -22,7 +22,6 @@ describe('Calendar', () => {
     it('should set range initial date and end date button elements as selected', () => {
         const calendar = new PageCalendar(CALENDAR);
         calendar.clickLeftMonthDay(2);
-        calendar.clickLeftMonthDay(2);
         calendar.clickRightMonthDay(16);
         expect(calendar.isLeftMonthDaySelected(2)).toBe(true);
         expect(calendar.isRightMonthDaySelected(16)).toBe(true);
