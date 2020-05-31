@@ -37,7 +37,7 @@ describe('Calendar', () => {
         expect(calendar.getLeftSelectedMonth()).toBe('January');
         expect(calendar.getRightSelectedMonth()).toBe('February');
     });
-    it('should select the right day button element', () => {
+    it.skip('should select the right day button element', () => {
         const calendar = new PageCalendar(CALENDAR);
         expect(calendar.getLeftMonthSelectedDay()).toBe('11');
         expect(calendar.getRightMonthSelectedDay()).toBe(undefined);
