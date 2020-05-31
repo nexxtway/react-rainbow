@@ -17,13 +17,11 @@ export default function Spinner(props) {
     if (isVisible) {
         if (type === 'arc') {
             return (
-                <StyledSpinnerContainer>
+                <StyledSpinnerContainer className={className} style={style}>
                     <StyledArcSpinner
                         viewBox={`${0} ${0} ${currentSize} ${currentSize}`}
-                        className={className}
                         size={size}
                         variant={variant}
-                        style={style}
                     >
                         <circle
                             className="path"
