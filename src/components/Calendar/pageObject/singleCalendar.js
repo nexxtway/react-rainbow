@@ -88,6 +88,18 @@ class PageSingleCalendar {
     }
 
     /**
+     * Returns true when the specific day element is selected.
+     * @method
+     * @returns {string}
+     */
+    isDaySelected(day) {
+        const buttonEl = $(this.rootElement)
+            .$('table')
+            .$(`button=${day}`);
+        return buttonEl.isExisting() && buttonEl.getAttribute('data-selected') === 'true';
+    }
+
+    /**
      * Set the value of the year select element
      * @method
      * @param {string}
@@ -107,8 +119,7 @@ class PageSingleCalendar {
         const buttonEl = $(this.rootElement)
             .$('table')
             .$(`button=${day}`);
-        if (!buttonEl.isExisting()) return false;
-        return buttonEl.isFocused();
+        return buttonEl.isExisting() && buttonEl.isFocused();
     }
 
     /**
