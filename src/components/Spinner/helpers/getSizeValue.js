@@ -8,8 +8,5 @@ const sizeMap = {
 };
 
 export default function getSizeValue(size) {
-    if (size) {
-        return sizeMap[size] || sizeMap.medium;
-    }
-    return sizeMap.medium;
+    return sizeMap[size] || sizeMap.medium;
 }
