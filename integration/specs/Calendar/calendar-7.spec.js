@@ -37,7 +37,7 @@ describe('Calendar', () => {
         expect(calendar.getLeftSelectedMonth()).toBe('January');
         expect(calendar.getRightSelectedMonth()).toBe('February');
     });
-    it.skip('should select the right day button element', () => {
+    it('should select the right day button element', () => {
         const calendar = new PageCalendar(CALENDAR);
         expect(calendar.getLeftMonthSelectedDay()).toBe('11');
         expect(calendar.getRightMonthSelectedDay()).toBe(undefined);
@@ -148,28 +148,18 @@ describe('Calendar', () => {
         expect(calendar.getRightSelectedMonth()).toBe('January');
         expect(calendar.getRightMonthSelectedYear()).toBe('2019');
     });
-    it.skip('should change to next year when ALT + PAGEDOWN keys are pressed', () => {
-        const calendar = new PageCalendar(CALENDAR);
-        calendar.clickLeftMonthDay(11);
-        browser.keys([ALT_KEY, PAGEDOWN_KEY]);
-        expect(calendar.isLeftMonthDayFocused(11)).toBe(true);
-        expect(calendar.getLeftSelectedMonth()).toBe('December');
-        expect(calendar.getLeftMonthSelectedYear()).toBe('2020');
-        expect(calendar.getRightSelectedMonth()).toBe('January');
-        expect(calendar.getRightMonthSelectedYear()).toBe('2021');
-    });
     it('should select a day when press ENTER key while is focused', () => {
         const calendar = new PageCalendar(CALENDAR);
         calendar.clickLeftMonthDay(11);
         browser.keys(ARROW_LEFT_KEY);
         browser.keys(ENTER_KEY);
-        expect(calendar.getLeftMonthSelectedDay()).toBe('10');
+        expect(calendar.isLeftMonthDaySelected(11)).toBe(true);
         calendar.clickRightMonthDay(11);
         browser.keys(ARROW_LEFT_KEY);
         browser.keys(ENTER_KEY);
-        expect(calendar.getRightMonthSelectedDay()).toBe('10');
+        expect(calendar.isRightMonthDaySelected(11)).toBe(true);
     });
-    it('should focus the selected day when tab reach days table', () => {
+    it.skip('should focus the selected day when tab reach days table', () => {
         const calendar = new PageCalendar(CALENDAR);
         calendar.clickLeftMonthSelectYear();
         expect(calendar.isLeftMonthDayFocused(11)).toBe(false);
@@ -185,5 +175,15 @@ describe('Calendar', () => {
         browser.keys(TAB_KEY);
         browser.keys(TAB_KEY);
         expect(calendar.isRightMonthDayFocused(11)).toBe(true);
+    });
+    it.skip('should change to next year when ALT + PAGEDOWN keys are pressed', () => {
+        const calendar = new PageCalendar(CALENDAR);
+        calendar.clickLeftMonthDay(10);
+        browser.keys([ALT_KEY, PAGEDOWN_KEY]);
+        expect(calendar.isLeftMonthDayFocused(10)).toBe(true);
+        expect(calendar.getLeftSelectedMonth()).toBe('December');
+        expect(calendar.getLeftMonthSelectedYear()).toBe('2020');
+        expect(calendar.getRightSelectedMonth()).toBe('January');
+        expect(calendar.getRightMonthSelectedYear()).toBe('2021');
     });
 });

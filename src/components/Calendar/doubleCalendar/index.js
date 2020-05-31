@@ -12,7 +12,6 @@ import {
     getNextFocusedDate,
     isEmptyRange,
     isDateBelowLimit,
-    isSameMonth,
 } from '../helpers';
 import {
     useNormalizedValue,
@@ -26,6 +25,7 @@ import StyledControlsContainer from '../styled/controlsContainer';
 import StyledArrowButton from '../styled/arrowButton';
 import StyledTable from '../styled/table';
 import { StyledMonthsContainer, StyledContainer, StyledCalendar, StyledDivider } from './styled';
+import shouldUpdateCurrentMonth from './helpers/shouldUpdateCurrentMonth';
 
 export default function DoubleCalendar(props) {
     const {
@@ -130,10 +130,7 @@ export default function DoubleCalendar(props) {
 
     useEffect(() => {
         setFocusedDate(currentValue);
-        if (
-            !isSameMonth(currentValue, rightCalendarMonth) &&
-            !isSameMonth(currentValue, currentMonth)
-        ) {
+        if (shouldUpdateCurrentMonth(currentValue, currentMonth, rightCalendarMonth)) {
             setCurrentMonth(getFirstDayMonth(currentValue));
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
