@@ -133,6 +133,18 @@ class PageDoubleCalendar {
     }
 
     /**
+     * Returns true when the specific day element in left month is selected.
+     * @method
+     * @returns {string}
+     */
+    isLeftMonthDaySelected(day) {
+        const buttonEl = $(this.rootElement)
+            .$$('table[role=grid')[0]
+            .$(`button=${day}`);
+        return buttonEl.isExisting() && buttonEl.getAttribute('data-selected') === 'true';
+    }
+
+    /**
      * Clicks the select year element on the right month.
      * @method
      */
@@ -209,6 +221,18 @@ class PageDoubleCalendar {
             .$$('table[role=grid')[1]
             .$(`button=${day}`);
         return buttonEl.isExisting() && buttonEl.isFocused();
+    }
+
+    /**
+     * Returns true when the specific day element in right month is selected.
+     * @method
+     * @returns {string}
+     */
+    isRightMonthDaySelected(day) {
+        const buttonEl = $(this.rootElement)
+            .$$('table[role=grid')[1]
+            .$(`button=${day}`);
+        return buttonEl.isExisting() && buttonEl.getAttribute('data-selected') === 'true';
     }
 }
 
