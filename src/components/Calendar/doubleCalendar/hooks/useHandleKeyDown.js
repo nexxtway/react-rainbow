@@ -29,49 +29,70 @@ export default function useHandleKeyDown(
     const moveFocusedDay = useMoveFocusedDay(focusedDate, currentMonth, minDate, maxDate);
     const moveFocusedMonth = useMoveFocusedMonth(focusedDate, minDate, maxDate);
 
+    const shouldUpdateCurrentMonth = useCallback(
+        value => {
+            if (isSameMonth(value, rightCalendarMonth) || isSameMonth(value, currentMonth))
+                return false;
+            return true;
+        },
+        [currentMonth, rightCalendarMonth],
+    );
+
     const keyHandlerMap = useMemo(
         () => ({
             [UP_KEY]: () => {
                 const result = moveFocusedDay(-7);
                 setFocusedDate(result.day);
+                if (shouldUpdateCurrentMonth(result.day)) {
+                    setCurrentMonth(result.month);
+                }
             },
             [DOWN_KEY]: () => {
                 const result = moveFocusedDay(7);
                 setFocusedDate(result.day);
+                if (shouldUpdateCurrentMonth(result.day)) {
+                    setCurrentMonth(result.month);
+                }
             },
             [LEFT_KEY]: () => {
                 const result = moveFocusedDay(-1);
                 setFocusedDate(result.day);
+                if (shouldUpdateCurrentMonth(result.day)) {
+                    setCurrentMonth(result.month);
+                }
             },
             [RIGHT_KEY]: () => {
                 const result = moveFocusedDay(1);
                 setFocusedDate(result.day);
+                if (shouldUpdateCurrentMonth(result.day)) {
+                    setCurrentMonth(result.month);
+                }
             },
             [HOME_KEY]: () => {
                 const result = moveFocusedDay(-focusedDate.getDay());
                 setFocusedDate(result.day);
+                if (shouldUpdateCurrentMonth(result.day)) {
+                    setCurrentMonth(result.month);
+                }
             },
             [END_KEY]: () => {
                 const result = moveFocusedDay(6 - focusedDate.getDay());
                 setFocusedDate(result.day);
+                if (shouldUpdateCurrentMonth(result.day)) {
+                    setCurrentMonth(result.month);
+                }
             },
             [PAGEUP_KEY]: () => {
                 const result = moveFocusedMonth(-1);
                 setFocusedDate(result.day);
-                if (
-                    !isSameMonth(result.month, rightCalendarMonth) &&
-                    !isSameMonth(result.month, currentMonth)
-                ) {
+                if (shouldUpdateCurrentMonth(result.month)) {
                     setCurrentMonth(result.month);
                 }
             },
             [PAGEDN_KEY]: () => {
                 const result = moveFocusedMonth(1);
                 setFocusedDate(result.day);
-                if (
-                    !isSameMonth(result.month, rightCalendarMonth) &&
-                    !isSameMonth(result.month, currentMonth)
-                ) {
+                if (shouldUpdateCurrentMonth(result.month)) {
                     setCurrentMonth(rightCalendarMonth);
                 }
             },
@@ -79,7 +100,6 @@ export default function useHandleKeyDown(
             [ENTER_KEY]: () => onChange(new Date(focusedDate)),
         }),
         [
-            currentMonth,
             focusedDate,
             moveFocusedDay,
             moveFocusedMonth,
@@ -87,6 +107,7 @@ export default function useHandleKeyDown(
             rightCalendarMonth,
             setCurrentMonth,
             setFocusedDate,
+            shouldUpdateCurrentMonth,
         ],
     );
 
@@ -95,10 +116,16 @@ export default function useHandleKeyDown(
             [HOME_KEY]: () => {
                 const result = moveFocusedDay(-focusedDate.getDay());
                 setFocusedDate(result.day);
+                if (shouldUpdateCurrentMonth(result.day)) {
+                    setCurrentMonth(result.month);
+                }
             },
             [END_KEY]: () => {
                 const result = moveFocusedDay(6 - focusedDate.getDay());
                 setFocusedDate(result.day);
+                if (shouldUpdateCurrentMonth(result.day)) {
+                    setCurrentMonth(result.month);
+                }
             },
             [PAGEUP_KEY]: () => {
                 const result = moveFocusedMonth(-12);
@@ -126,6 +153,7 @@ export default function useHandleKeyDown(
             rightCalendarMonth,
             setCurrentMonth,
             setFocusedDate,
+            shouldUpdateCurrentMonth,
         ],
     );
 

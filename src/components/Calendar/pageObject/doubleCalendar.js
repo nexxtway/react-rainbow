@@ -57,7 +57,7 @@ class PageDoubleCalendar {
      * Clicks the select year element on the left month.
      * @method
      */
-    clickLeftMonthYearSelect() {
+    clickLeftMonthSelectYear() {
         $(this.rootElement)
             .$$('select')[0]
             .click();
