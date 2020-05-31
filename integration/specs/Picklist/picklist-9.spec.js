@@ -5,7 +5,8 @@ const PICKLIST = '#picklist-9';
 
 const addNewBuildings = () => $('#button-icon_add-new-buildings').click();
 
-describe('Picklist with PicklistOption changed dynamically', () => {
+// TODO: test suite skipped, remove the x in describe to run it again
+xdescribe('Picklist with PicklistOption changed dynamically', () => {
     beforeAll(() => {
         browser.url('/#!/Picklist/9');
     });

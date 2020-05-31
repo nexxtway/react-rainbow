@@ -8,6 +8,7 @@ export interface CalendarProps extends BaseProps {
     minDate?: Date;
     onChange?: (date: Date) => void;
     selectionType?: 'single' | 'range';
+    variant?: 'single' | 'double';
     locale?: string;
 }
 
