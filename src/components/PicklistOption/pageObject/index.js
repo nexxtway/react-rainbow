@@ -1,5 +1,5 @@
 /**
- * Option page object class.
+ * PicklistOption page object class.
  * @class
  */
 
@@ -9,11 +9,11 @@ function isPointWithinRect(point, rect) {
     return x >= left && y >= top && x <= right && y <= bottom;
 }
 
-class PageOption {
+class PagePicklistOption {
     /**
-     * Create a new Option page object.
+     * Create a new PicklistOption page object.
      * @constructor
-     * @param {string} rootElement - The selector of the Option root element.
+     * @param {string} rootElement - The selector of the PicklistOption root element.
      */
     constructor(rootElement, containerRect) {
         this.rootElement = rootElement;
@@ -21,7 +21,7 @@ class PageOption {
     }
 
     /**
-     * Clicks the Option
+     * Clicks the PicklistOption
      * @method
      */
     click() {
@@ -29,7 +29,7 @@ class PageOption {
     }
 
     /**
-     * It moves the pointer over the Option
+     * It moves the pointer over the PicklistOption
      * @method
      */
     hover() {
@@ -38,7 +38,7 @@ class PageOption {
     }
 
     /**
-     * Get the label of the Option.
+     * Get the label of the PicklistOption.
      * @method
      * @returns {string}
      */
@@ -47,7 +47,7 @@ class PageOption {
     }
 
     /**
-     * Returns true when the Option is active.
+     * Returns true when the PicklistOption is active.
      * @method
      * @returns {bool}
      */
@@ -56,7 +56,7 @@ class PageOption {
     }
 
     /**
-     * Returns true when the Option is selected.
+     * Returns true when the PicklistOption is selected.
      * @method
      * @returns {bool}
      */
@@ -65,7 +65,7 @@ class PageOption {
     }
 
     /**
-     * Returns true when the Option is visible inside the menu container.
+     * Returns true when the PicklistOption is visible inside the menu container.
      * @method
      * @returns {bool}
      */
@@ -89,4 +89,4 @@ class PageOption {
     }
 }
 
-module.exports = PageOption;
+module.exports = PagePicklistOption;
