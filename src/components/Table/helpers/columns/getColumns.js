@@ -44,7 +44,7 @@ export default function getColumns(params) {
 
     const columnsData = React.Children.map(
         children,
-        column => {
+        (column, index) => {
             if (column && column.props) {
                 const { type, width, defaultWidth } = column.props;
                 const widthNumber = Number(width);
@@ -58,6 +58,7 @@ export default function getColumns(params) {
                     ...column.props,
                     width: widthNumber || undefined,
                     defaultWidth: getDefaultWidth(defaultWidth, minColumnWidth, maxColumnWidth),
+                    isFirstDataColumn: index === 0,
                 };
             }
             return null;

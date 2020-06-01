@@ -15,14 +15,17 @@ const data = [
 const tableData = [
     {
         name: 'Pepe',
+        email: 'pepe@gmail.com',
         id: '1234qwerty',
     },
     {
         name: 'John',
+        email: 'john@gmail.com',
         id: '5678asdfgh',
     },
     {
         name: 'Josep',
+        email: 'josep@gmail.com',
         id: '9012zxcvbn',
     },
 ];
@@ -91,58 +94,6 @@ describe('<Table />', () => {
         expect(component.find('th[scope="row"]').length).toBe(1);
         expect(component.find('td[role="gridcell"]').length).toBe(2);
     });
-    it('should add a column when showRowNumberColumn is passed', () => {
-        const component = mount(
-            <Table data={data} keyField="name" showRowNumberColumn>
-                <Column field="name" header="Name" />
-            </Table>,
-        );
-        expect(component.find('th[scope="row"]').length).toBe(1);
-        expect(component.find('td[role="gridcell"]').length).toBe(1);
-        component.setProps({
-            children: [<Column field="name" header="Name" />, <Column field="number" />],
-        });
-        component.update();
-        expect(component.find('th[scope="row"]').length).toBe(1);
-        expect(component.find('td[role="gridcell"]').length).toBe(2);
-    });
-    it('should have the right value passed for enumerable column when showRowNumberColumn and rowNumberOffset are passed', () => {
-        const component = mount(
-            <Table data={data} keyField="name" showRowNumberColumn rowNumberOffset={19}>
-                <Column field="name" header="Name" />
-            </Table>,
-        );
-        expect(component.state().columns).toEqual([
-            {
-                computedWidth: 50,
-                type: 'WITH_ENUMERABLE',
-                rowNumberOffset: 19,
-                width: 50,
-            },
-            {
-                field: 'name',
-                header: 'Name',
-                sortable: false,
-                computedWidth: 50,
-                type: 'text',
-            },
-        ]);
-    });
-    it('should add two columns when showCheckboxColumn showRowNumberColumn are passed', () => {
-        const component = mount(
-            <Table data={data} keyField="name" showCheckboxColumn showRowNumberColumn>
-                <Column field="name" header="Name" />
-            </Table>,
-        );
-        expect(component.find('th[scope="row"]').length).toBe(1);
-        expect(component.find('td[role="gridcell"]').length).toBe(2);
-        component.setProps({
-            children: [<Column field="name" header="Name" />, <Column field="number" />],
-        });
-        component.update();
-        expect(component.find('th[scope="row"]').length).toBe(1);
-        expect(component.find('td[role="gridcell"]').length).toBe(3);
-    });
     it('should update the columns state when add a column and (showCheckboxColumn and showRowNumberColumn) are not passed', () => {
         const component = mount(
             <Table data={data} keyField="name">
@@ -156,6 +107,7 @@ describe('<Table />', () => {
                 sortable: false,
                 computedWidth: 50,
                 type: 'text',
+                isFirstDataColumn: true,
             },
         ]);
         component.setProps({
@@ -169,12 +121,14 @@ describe('<Table />', () => {
                 sortable: false,
                 computedWidth: 50,
                 type: 'text',
+                isFirstDataColumn: true,
             },
             {
                 field: 'number',
                 sortable: true,
                 computedWidth: 50,
                 type: 'text',
+                isFirstDataColumn: false,
             },
         ]);
     });
@@ -196,6 +150,7 @@ describe('<Table />', () => {
                 sortable: false,
                 computedWidth: 50,
                 type: 'text',
+                isFirstDataColumn: true,
             },
         ]);
         component.setProps({
@@ -214,59 +169,14 @@ describe('<Table />', () => {
                 sortable: false,
                 computedWidth: 50,
                 type: 'text',
+                isFirstDataColumn: true,
             },
             {
                 field: 'number',
                 sortable: true,
                 computedWidth: 50,
                 type: 'text',
-            },
-        ]);
-    });
-    it('should update the columns state when add a column and showRowNumberColumn is passed', () => {
-        const component = mount(
-            <Table data={data} keyField="name" showRowNumberColumn>
-                <Column field="name" header="Name" />
-            </Table>,
-        );
-        expect(component.state().columns).toEqual([
-            {
-                computedWidth: 50,
-                type: 'WITH_ENUMERABLE',
-                rowNumberOffset: 0,
-                width: 50,
-            },
-            {
-                field: 'name',
-                header: 'Name',
-                sortable: false,
-                computedWidth: 50,
-                type: 'text',
-            },
-        ]);
-        component.setProps({
-            children: [<Column field="name" header="Name" />, <Column field="number" sortable />],
-        });
-        component.update();
-        expect(component.state().columns).toEqual([
-            {
-                computedWidth: 50,
-                type: 'WITH_ENUMERABLE',
-                rowNumberOffset: 0,
-                width: 50,
-            },
-            {
-                field: 'name',
-                header: 'Name',
-                sortable: false,
-                computedWidth: 50,
-                type: 'text',
-            },
-            {
-                field: 'number',
-                sortable: true,
-                computedWidth: 50,
-                type: 'text',
+                isFirstDataColumn: false,
             },
         ]);
     });
@@ -278,6 +188,7 @@ describe('<Table />', () => {
                 sortable: false,
                 computedWidth: 50,
                 type: 'text',
+                isFirstDataColumn: true,
             },
         ];
         const component = mount(
@@ -324,6 +235,7 @@ describe('<Table />', () => {
                 computedWidth: 50,
                 sortable: false,
                 type: 'text',
+                isFirstDataColumn: true,
             },
             {
                 field: 'number',
@@ -331,6 +243,7 @@ describe('<Table />', () => {
                 computedWidth: 50,
                 sortable: false,
                 type: 'text',
+                isFirstDataColumn: false,
             },
         ]);
         resizeBar.at(0).simulate('mousedown', { clientX: 100 });
@@ -345,6 +258,7 @@ describe('<Table />', () => {
                 isResized: true,
                 sortable: false,
                 type: 'text',
+                isFirstDataColumn: true,
             },
             {
                 field: 'number',
@@ -352,6 +266,7 @@ describe('<Table />', () => {
                 computedWidth: 50,
                 sortable: false,
                 type: 'text',
+                isFirstDataColumn: false,
             },
         ]);
     });
@@ -675,8 +590,8 @@ describe('<Table />', () => {
             '9012zxcvbn': true,
         });
         expect(onRowSelectionMockFn).toHaveBeenCalledWith([
-            { id: '1234qwerty', name: 'Pepe' },
-            { id: '9012zxcvbn', name: 'Josep' },
+            { id: '1234qwerty', name: 'Pepe', email: 'pepe@gmail.com' },
+            { id: '9012zxcvbn', name: 'Josep', email: 'josep@gmail.com' },
         ]);
     });
     it('should call onRowSelection with the right data when select all rows and there are selected rows', () => {
@@ -797,14 +712,17 @@ describe('<Table />', () => {
         expect(onRowSelectionMockFn).toHaveBeenCalledWith([
             {
                 name: 'Pepe',
+                email: 'pepe@gmail.com',
                 id: '1234qwerty',
             },
             {
                 name: 'John',
+                email: 'john@gmail.com',
                 id: '5678asdfgh',
             },
             {
                 name: 'Josep',
+                email: 'josep@gmail.com',
                 id: '9012zxcvbn',
             },
         ]);
@@ -850,10 +768,12 @@ describe('<Table />', () => {
         expect(onRowSelectionMockFn).toHaveBeenCalledWith([
             {
                 name: 'Pepe',
+                email: 'pepe@gmail.com',
                 id: '1234qwerty',
             },
             {
                 name: 'Josep',
+                email: 'josep@gmail.com',
                 id: '9012zxcvbn',
             },
         ]);
@@ -906,14 +826,17 @@ describe('<Table />', () => {
         expect(onRowSelectionMockFn).toHaveBeenCalledWith([
             {
                 name: 'Pepe',
+                email: 'pepe@gmail.com',
                 id: '1234qwerty',
             },
             {
                 name: 'John',
+                email: 'john@gmail.com',
                 id: '5678asdfgh',
             },
             {
                 name: 'Josep',
+                email: 'josep@gmail.com',
                 id: '9012zxcvbn',
             },
         ]);
@@ -959,6 +882,7 @@ describe('<Table />', () => {
         expect(onRowSelectionMockFn).toHaveBeenCalledWith([
             {
                 name: 'John',
+                email: 'john@gmail.com',
                 id: '5678asdfgh',
             },
         ]);
@@ -1004,6 +928,7 @@ describe('<Table />', () => {
         expect(onRowSelectionMockFn).toHaveBeenCalledWith([
             {
                 id: '5678asdfgh',
+                email: 'john@gmail.com',
                 name: 'John',
             },
         ]);
@@ -1173,6 +1098,7 @@ describe('<Table />', () => {
         expect(onRowSelectionMockFn.mock.calls[0][0]).toEqual([
             {
                 id: '5678asdfgh',
+                email: 'john@gmail.com',
                 name: 'John',
             },
         ]);
@@ -1255,5 +1181,269 @@ describe('<Table />', () => {
         );
         const input = component.find('Input[label="select row"]').find('input');
         expect(input.prop('type')).toBe('checkbox');
+    });
+    it('should render the right amount of columns headers with the right props', () => {
+        const component = mount(
+            <Table data={data} keyField="id">
+                <Column field="name" header="Name" />
+                <Column field="email" header="Email" />
+                <Column field="id" header="User Id" />
+            </Table>,
+        );
+        const thElements = component.find('thead').find('th');
+        expect(thElements.length).toBe(3);
+        thElements.forEach(th =>
+            expect(th.props()).toEqual(
+                expect.objectContaining({
+                    'aria-label': th.text(),
+                    scope: 'col',
+                    tabIndex: -1,
+                }),
+            ),
+        );
+    });
+    it('should render the right amount of columns headers with the right props when showCheckboxColumn is passed', () => {
+        const component = mount(
+            <Table data={data} keyField="id" showCheckboxColumn>
+                <Column field="name" header="Name" />
+                <Column field="email" header="Email" />
+                <Column field="id" header="User Id" />
+            </Table>,
+        );
+        const thElements = component.find('thead').find('th');
+        expect(thElements.length).toBe(4);
+        thElements.forEach((th, index) => {
+            if (index === 0) {
+                expect(th.props()).toEqual(
+                    expect.objectContaining({
+                        scope: 'col',
+                        tabIndex: -1,
+                    }),
+                );
+            } else {
+                expect(th.props()).toEqual(
+                    expect.objectContaining({
+                        'aria-label': th.text(),
+                        scope: 'col',
+                        tabIndex: -1,
+                    }),
+                );
+            }
+        });
+    });
+    it('should render the right amount of columns headers with the right props when showRowNumberColumn is passed', () => {
+        const component = mount(
+            <Table data={data} keyField="id" showRowNumberColumn>
+                <Column field="name" header="Name" />
+                <Column field="email" header="Email" />
+                <Column field="id" header="User Id" />
+            </Table>,
+        );
+        const thElements = component.find('thead').find('th');
+        expect(thElements.length).toBe(4);
+        thElements.forEach((th, index) => {
+            if (index === 0) {
+                expect(th.props()).toEqual(
+                    expect.objectContaining({
+                        scope: 'col',
+                        tabIndex: -1,
+                    }),
+                );
+            } else {
+                expect(th.props()).toEqual(
+                    expect.objectContaining({
+                        'aria-label': th.text(),
+                        scope: 'col',
+                        tabIndex: -1,
+                    }),
+                );
+            }
+        });
+    });
+    it('should render the right amount of columns headers with the right props when showCheckboxColumn and showRowNumberColumn are passed', () => {
+        const component = mount(
+            <Table data={data} keyField="id" showCheckboxColumn showRowNumberColumn>
+                <Column field="name" header="Name" />
+                <Column field="email" header="Email" />
+                <Column field="id" header="User Id" />
+            </Table>,
+        );
+        const thElements = component.find('thead').find('th');
+        expect(thElements.length).toBe(5);
+        thElements.forEach((th, index) => {
+            if (index === 0 || index === 1) {
+                expect(th.props()).toEqual(
+                    expect.objectContaining({
+                        scope: 'col',
+                        tabIndex: -1,
+                    }),
+                );
+            } else {
+                expect(th.props()).toEqual(
+                    expect.objectContaining({
+                        'aria-label': th.text(),
+                        scope: 'col',
+                        tabIndex: -1,
+                    }),
+                );
+            }
+        });
+    });
+    it('should render the right amount of body cells with the right props', () => {
+        const component = mount(
+            <Table data={data} keyField="id">
+                <Column field="name" header="Name" />
+                <Column field="email" header="Email" />
+                <Column field="id" header="User Id" />
+            </Table>,
+        );
+        const firstRowChildren = component
+            .find('tbody')
+            .find('tr')
+            .at(0)
+            .children();
+        expect(firstRowChildren.length).toBe(3);
+        firstRowChildren.forEach((element, index) => {
+            if (index === 0) {
+                expect(element.find('th').props()).toEqual(
+                    expect.objectContaining({
+                        scope: 'row',
+                        tabIndex: -1,
+                        'data-label': expect.any(String),
+                    }),
+                );
+            } else {
+                expect(element.find('td').props()).toEqual(
+                    expect.objectContaining({
+                        role: 'gridcell',
+                        tabIndex: -1,
+                        'data-label': expect.any(String),
+                    }),
+                );
+            }
+        });
+    });
+    it('should render the right amount of body cells with the right props when showCheckboxColumn is passed', () => {
+        const component = mount(
+            <Table data={data} keyField="id" showCheckboxColumn>
+                <Column field="name" header="Name" />
+                <Column field="email" header="Email" />
+                <Column field="id" header="User Id" />
+            </Table>,
+        );
+        const firstRowChildren = component
+            .find('tbody')
+            .find('tr')
+            .at(0)
+            .children();
+        expect(firstRowChildren.length).toBe(4);
+        firstRowChildren.forEach((element, index) => {
+            if (index === 0) {
+                expect(element.find('td').props()).toEqual(
+                    expect.objectContaining({
+                        role: 'gridcell',
+                        tabIndex: -1,
+                    }),
+                );
+            } else if (index === 1) {
+                expect(element.find('th').props()).toEqual(
+                    expect.objectContaining({
+                        scope: 'row',
+                        tabIndex: -1,
+                        'data-label': expect.any(String),
+                    }),
+                );
+            } else {
+                expect(element.find('td').props()).toEqual(
+                    expect.objectContaining({
+                        role: 'gridcell',
+                        tabIndex: -1,
+                        'data-label': expect.any(String),
+                    }),
+                );
+            }
+        });
+    });
+    it('should render the right amount of body cells with the right props when showRowNumberColumn is passed', () => {
+        const component = mount(
+            <Table data={data} keyField="id" showRowNumberColumn>
+                <Column field="name" header="Name" />
+                <Column field="email" header="Email" />
+                <Column field="id" header="User Id" />
+            </Table>,
+        );
+        const firstRowChildren = component
+            .find('tbody')
+            .find('tr')
+            .at(0)
+            .children();
+        expect(firstRowChildren.length).toBe(4);
+        firstRowChildren.forEach((element, index) => {
+            if (index === 0) {
+                expect(element.find('td').props()).toEqual(
+                    expect.objectContaining({
+                        role: 'gridcell',
+                        tabIndex: -1,
+                    }),
+                );
+            } else if (index === 1) {
+                expect(element.find('th').props()).toEqual(
+                    expect.objectContaining({
+                        scope: 'row',
+                        tabIndex: -1,
+                        'data-label': expect.any(String),
+                    }),
+                );
+            } else {
+                expect(element.find('td').props()).toEqual(
+                    expect.objectContaining({
+                        role: 'gridcell',
+                        tabIndex: -1,
+                        'data-label': expect.any(String),
+                    }),
+                );
+            }
+        });
+    });
+    it('should render the right amount of body cells with the right props when showCheckboxColumn and showRowNumberColumn are passed', () => {
+        const component = mount(
+            <Table data={data} keyField="id" showCheckboxColumn showRowNumberColumn>
+                <Column field="name" header="Name" />
+                <Column field="email" header="Email" />
+                <Column field="id" header="User Id" />
+            </Table>,
+        );
+        const firstRowChildren = component
+            .find('tbody')
+            .find('tr')
+            .at(0)
+            .children();
+        expect(firstRowChildren.length).toBe(5);
+        firstRowChildren.forEach((element, index) => {
+            if (index === 0 || index === 1) {
+                expect(element.find('td').props()).toEqual(
+                    expect.objectContaining({
+                        role: 'gridcell',
+                        tabIndex: -1,
+                    }),
+                );
+            } else if (index === 2) {
+                expect(element.find('th').props()).toEqual(
+                    expect.objectContaining({
+                        scope: 'row',
+                        tabIndex: -1,
+                        'data-label': expect.any(String),
+                    }),
+                );
+            } else {
+                expect(element.find('td').props()).toEqual(
+                    expect.objectContaining({
+                        role: 'gridcell',
+                        tabIndex: -1,
+                        'data-label': expect.any(String),
+                    }),
+                );
+            }
+        });
     });
 });

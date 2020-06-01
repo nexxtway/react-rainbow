@@ -34,6 +34,7 @@ describe('getColumns', () => {
                 component: <span />,
                 sortable: false,
                 type: 'text',
+                isFirstDataColumn: true,
                 width: undefined,
             },
         ]);
@@ -52,6 +53,7 @@ describe('getColumns', () => {
                 component: <span />,
                 sortable: false,
                 type: 'text',
+                isFirstDataColumn: true,
                 width: undefined,
             },
         ]);
@@ -72,6 +74,7 @@ describe('getColumns', () => {
                 component: <span />,
                 sortable: false,
                 type: 'text',
+                isFirstDataColumn: true,
                 width: undefined,
             },
         ]);
@@ -99,6 +102,7 @@ describe('getColumns', () => {
                 component: <span />,
                 sortable: false,
                 type: 'text',
+                isFirstDataColumn: true,
                 width: undefined,
             },
         ]);
@@ -116,6 +120,7 @@ describe('getColumns', () => {
                 component: <span />,
                 sortable: false,
                 type: 'text',
+                isFirstDataColumn: true,
                 width: undefined,
             },
             {
@@ -145,6 +150,7 @@ describe('getColumns', () => {
                 component: <span />,
                 sortable: false,
                 type: 'text',
+                isFirstDataColumn: true,
                 defaultWidth: 160,
                 width: 30,
             },
@@ -153,6 +159,7 @@ describe('getColumns', () => {
                 header: 'header b',
                 sortable: false,
                 type: 'text',
+                isFirstDataColumn: false,
                 defaultWidth: 150,
             },
         ]);
@@ -179,6 +186,7 @@ describe('getColumns', () => {
                 component: <span />,
                 sortable: false,
                 type: 'text',
+                isFirstDataColumn: true,
                 defaultWidth: 150,
             },
             {
@@ -186,6 +194,7 @@ describe('getColumns', () => {
                 header: 'header b',
                 sortable: false,
                 type: 'text',
+                isFirstDataColumn: false,
                 defaultWidth: 50,
             },
         ]);
