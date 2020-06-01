@@ -5,6 +5,8 @@ import { ButtonIcon } from 'react-rainbow-components';
 import { useRef, useState } from 'react';
 import styled from 'styled-components';
 import RenderIf from '../RenderIf';
+import useOutsideClick from '../../libs/hooks/useOutsideClick';
+import useWindowResize from '../../libs/hooks/useWindowResize';
 
 const Container = styled.div`
     height: 240px;
@@ -40,32 +42,54 @@ const Images = styled(ParisIcon)`
     height: 60%;
 `;
 
-const Component = () => {
-    const ref = useRef(null);
+const StyledPlusIcon = styled(PlusIcon)`
+    pointer-events: none;
+`;
+
+const Component = (props) => {
+    const { id, buttonId } = props;
+    const triggerRef = useRef(null);
+    const dropdownRef = useRef();
+    const iconRef = useRef();
     const [isOpen, setIsOpen] = useState(false);
-    const handleClick = () => {
+    const handleOutsideClick = event => {
+        if (event.target !== triggerRef.current.buttonRef.current) {
+            stopListeningOutsideClick();
+            setIsOpen(false);
+        }        
+    }
+    const handleClick = (event) => {
         setIsOpen(!isOpen);
+        if (!isOpen) {
+            startListeningOutsideClick();
+        }        
     };
+    const startListening = () => {
+        startListeningOutsideClick();
+    }
+    const [startListeningOutsideClick, stopListeningOutsideClick] = useOutsideClick(dropdownRef, handleOutsideClick);
+    useWindowResize(() => setIsOpen(false), isOpen);
     return (
         <>
             <ButtonIcon
+                id={buttonId}
                 variant="neutral"
-                icon={<PlusIcon />}
-                ref={ref}
+                icon={<StyledPlusIcon />}
+                ref={triggerRef}
                 onClick={handleClick}
             />
             <InternalOverlay
                 isVisible={isOpen}
                 render={() => {
                     return (
-                        <Dropdown>
+                        <Dropdown id={id} ref={dropdownRef}>
                             <Images />
                             <Text>
                                 Paris
                             </Text>
                         </Dropdown>);
                 }}
-                triggerElementRef={() => ref.current.buttonRef}
+                triggerElementRef={() => triggerRef.current.buttonRef}
             />
 
         </>
@@ -74,7 +98,7 @@ const Component = () => {
 
 <Container>
     <div className="rainbow-flex rainbow-justify_spread">
-        <Component />
+        <Component id="overlay-1" buttonId="button-icon-element" />
         <Component />
     </div>
     <div className="rainbow-flex rainbow-justify_spread">
@@ -92,6 +116,8 @@ import { Button, ButtonIcon } from 'react-rainbow-components';
 import { useRef, useState } from 'react';
 import styled from 'styled-components';
 import RenderIf from '../RenderIf';
+import useOutsideClick from '../../libs/hooks/useOutsideClick';
+import useWindowResize from '../../libs/hooks/useWindowResize';
 
 const Container = styled.div`
     height: 240px;
@@ -175,18 +201,63 @@ const Body = styled.p`
     margin: 0 24px 24px 24px;
 `;
 
+const positionResolver = (opts) => {
+    const { trigger, viewport, content } = opts;
+    if (trigger.rightBottomAnchor.x + content.width + 15 <= viewport.width) {
+        if (trigger.rightBottomAnchor.y - content.height >= 0) {
+            return {
+                top: trigger.rightBottomAnchor.y - content.height + 25,
+                left: trigger.rightBottomAnchor.x + 15,
+            }
+        }
+        return {
+            top: trigger.rightBottomAnchor.y,
+            left: trigger.rightBottomAnchor.x + 15,
+        }
+    }
+    if (trigger.leftBottomAnchor.x - content.width - 15 >= 0) {
+        if (trigger.rightBottomAnchor.y - content.height >= 0) {
+            return {
+                top: trigger.rightBottomAnchor.y - content.height + 25,
+                left: trigger.leftBottomAnchor.x - content.width - 15,
+            }
+        }
+        return {
+            top: trigger.rightBottomAnchor.y,
+            left: trigger.leftBottomAnchor.x - content.width - 15,
+        }
+    }
+    return {
+        top: trigger.leftUpAnchor.y - 5 - content.height,
+        left: trigger.leftUpAnchor.x - content.width/2 + (trigger.rightUpAnchor.x - trigger.leftUpAnchor.x)/2,
+    };
+};
+
 const Component = () => {
-    const ref = useRef(null);
+    const triggerRef = useRef(null);
+    const dropdownRef = useRef();
     const [isOpen, setIsOpen] = useState(false);
+    const handleOutsideClick = event => {
+        stopListeningOutsideClick();
+        if (event.target !== triggerRef.current) {
+            setIsOpen(false);
+        }
+    }
     const handleClick = () => {
         setIsOpen(!isOpen);
+        if (!isOpen) {
+            startListeningOutsideClick();
+        }        
     };
+    const [startListeningOutsideClick, stopListeningOutsideClick] = useOutsideClick(dropdownRef, handleOutsideClick);
+    useWindowResize(() => setIsOpen(false), isOpen);
+    
     return (
         <Container>
             <Cell>
                 <Day>May 5</Day>
                 <Event
-                    ref={ref}
+                    ref={triggerRef}
                     onClick={handleClick}
                     type="button">
                     React Rainbow Event
@@ -195,7 +266,7 @@ const Component = () => {
                     isVisible={isOpen}
                     render={() => {
                         return (
-                            <Dropdown>
+                            <Dropdown ref={dropdownRef}>
                                 <Header>
                                     <ButtonIcon icon={<TrashBorderIcon />} />
                                     <ButtonIcon icon={<PencilBorderIcon />} className="rainbow-m-left_small" />
@@ -217,20 +288,8 @@ const Component = () => {
                                 </Body>
                             </Dropdown>);
                     }}
-                    triggerElementRef={() => ref}
-                    positionResolver={(opts) => {
-                        const { trigger, viewport, content } = opts;
-                        if (trigger.leftBottomAnchor.y + content.height + 5 <= viewport.height) {
-                            return {
-                                top: trigger.leftBottomAnchor.y + 5,
-                                left: trigger.leftBottomAnchor.x,
-                            };
-                        }
-                        return {
-                            top: trigger.leftUpAnchor.y - 5 - content.height,
-                            left: trigger.leftBottomAnchor.x,
-                        };
-                    }}
+                    triggerElementRef={() => triggerRef}
+                    positionResolver={positionResolver}
                 />
             </Cell>
         </Container>

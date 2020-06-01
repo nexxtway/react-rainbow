@@ -244,7 +244,7 @@ export default class Table extends Component {
         const { minColumnWidth, maxColumnWidth } = this.props;
         const domTableWidth = this.getTableWidthFromDom();
         const minColWidth = Number(minColumnWidth) || 50;
-        const maxColWidth = Number(maxColumnWidth) || 1000;
+        const maxColWidth = Number(maxColumnWidth) || Infinity;
         const updatedColumns = getUpdatedColumns({
             columns: newColumns || columns,
             domTableWidth,
@@ -416,7 +416,7 @@ export default class Table extends Component {
         };
         const maxRowSelection = this.getMaxRowSelection();
         const minColWidth = Number(minColumnWidth) || 50;
-        const maxColWidth = Number(maxColumnWidth) || 1000;
+        const maxColWidth = Number(maxColumnWidth) || 5000;
 
         const isEmpty = data.length === 0;
 
@@ -501,7 +501,7 @@ Table.propTypes = {
     resizeColumnDisabled: PropTypes.bool,
     /** The minimum width for all columns. The default value is 50px. */
     minColumnWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    /** The maximum width for all columns. The default value is 1000px. */
+    /** The maximum width for all columns. The default value is Infinity. */
     maxColumnWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     /** Show or hide the checkbox column for row selection. To show set
      * showCheckboxColumn to true. The default value is false. */
@@ -555,7 +555,7 @@ Table.defaultProps = {
     onSort: () => {},
     resizeColumnDisabled: false,
     minColumnWidth: 50,
-    maxColumnWidth: 1000,
+    maxColumnWidth: Infinity,
     showCheckboxColumn: false,
     showRowNumberColumn: false,
     rowNumberOffset: 0,

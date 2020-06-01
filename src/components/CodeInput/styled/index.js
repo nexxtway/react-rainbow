@@ -1,8 +1,18 @@
 import styled from 'styled-components';
 import { FONT_SIZE_TEXT_LARGE, FONT_SIZE_TEXT_MEDIUM } from '../../../styles/fontSizes';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+import HelpText from '../../Input/styled/helpText';
+import StyledTextError from '../../Input/styled/errorText';
 
-const StyledInput = attachThemeAttrs(styled.input)`
+const StyledErrorMessage = styled(StyledTextError)`
+    margin-top: 0;
+`;
+
+const StyledInput = attachThemeAttrs(styled.input).attrs(props => {
+    return {
+        renderFocusStyle: props.isActive && !props.error && !props.readOnly,
+    };
+})`
     font: inherit;
     background-color: ${props => props.palette.background.main};
     border: 1px solid ${props => props.palette.border.main};
@@ -16,7 +26,7 @@ const StyledInput = attachThemeAttrs(styled.input)`
     color: ${props => props.palette.text.main};
     font-size: 28px;
     box-sizing: border-box;
-    margin: 0 6px;
+    margin: 0 6px 12px 6px;
     text-align: center;
 
     ::-moz-focus-inner {
@@ -28,15 +38,34 @@ const StyledInput = attachThemeAttrs(styled.input)`
     :active {
         outline: 0;
         padding: 0 0.9375rem;
-        border: 2px solid ${props => props.palette.brand.main};
-        background-color: ${props => props.palette.background.main};
-        box-shadow: ${props => props.shadows.brand};
+
+        ${props =>
+            props.renderFocusStyle &&
+            `
+            border: 2px solid ${props.palette.brand.main};
+            background-color: ${props.palette.background.main};
+            box-shadow: ${props.shadows.brand};
+        `}
     }
 
     ::placeholder {
         color: ${props => props.palette.text.header};
         font-weight: 500;
         font-size: ${FONT_SIZE_TEXT_LARGE};
+    }
+
+    &[readonly] {
+        border: 2px solid transparent;
+        background-color: transparent;
+        box-shadow: none;
+        margin: 0 0 12px 0;
+
+        &:focus,
+        &:active {
+            border: 2px solid transparent;
+            background-color: transparent;
+            box-shadow: none;
+        }
     }
 
     &[disabled] {
@@ -63,24 +92,15 @@ const StyledInput = attachThemeAttrs(styled.input)`
 
         :focus,
         :active {
-            background-color: ${props.palette.background.main};
-            border: 2px solid ${props.palette.error.main};
             box-shadow: ${props.shadows.error};
             padding: 0 1rem;
             outline: 0;
         }
     `}
+`;
 
-    ${props =>
-        !props.isActive &&
-        `
-        :focus,
-        :active {
-            box-shadow: none;
-            background-color: ${props.palette.background.main};
-            border: 1px solid ${props.palette.border.main};
-        }
-    `}
+const StyledHelpText = styled(HelpText)`
+    margin-top: 0;
 `;
 
 const StyledFieldset = styled.fieldset`
@@ -107,4 +127,4 @@ const StyledLabel = attachThemeAttrs(styled.legend)`
     }
 `;
 
-export { StyledInput, StyledFieldset, StyledLabel };
+export { StyledErrorMessage, StyledInput, StyledHelpText, StyledFieldset, StyledLabel };

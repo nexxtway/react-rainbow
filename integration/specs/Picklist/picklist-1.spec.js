@@ -13,7 +13,8 @@ const {
 const PICKLIST = '#picklist-1';
 const REACT_LOGO = 'img[alt="react-rainbow"]';
 
-describe('Picklist base example', () => {
+// TODO: test suite skipped, remove the x in describe to run it again
+xdescribe('Picklist base example', () => {
     beforeAll(() => {
         browser.url('/#!/Picklist/1');
     });
