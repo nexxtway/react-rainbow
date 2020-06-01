@@ -6,9 +6,8 @@ const StyledEnumerable = attachThemeAttrs(styled.span)`
     text-align: center;
     color: ${props => props.palette.text.header};
 
-    &::before {
+    &::after {
         content: counter(rowCounter);
-        counter-increment: rowCounter;                   
     }
 `;
 
