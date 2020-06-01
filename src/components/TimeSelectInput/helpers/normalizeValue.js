@@ -16,7 +16,7 @@ export default function normalizeValue(value, hour24) {
         ampm: '',
     };
 
-    if (!value || hour24 === undefined || hour24 === null || typeof hour24 !== 'boolean') {
+    if (!value || typeof hour24 !== 'boolean') {
         return invalidValue;
     }
 
