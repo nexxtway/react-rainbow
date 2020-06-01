@@ -137,7 +137,7 @@ class TimeSelectInput extends Component {
 
         const normalizedValue = invalidValue
             ? normalizeHour(newTypedValue, hour24)
-            : normalizeHour(newTransformedValue, hour24);
+            : normalizeHour(strValue, hour24);
 
         this.handleChangeTime({
             hour: normalizedValue,
