@@ -303,6 +303,22 @@ export const StyledSelectValue = attachThemeAttrs(styled.input).attrs(props => {
             box-shadow: none;
             border: none;
         }
+
+        &[placeholder]::-webkit-input-placeholder {
+            color: ${props.palette.text.label};
+        }
+
+        &[placeholder]::-moz-placeholder {
+            color: ${props.palette.text.label};
+        }
+
+        &[placeholder]:-ms-input-placeholder {
+            color: ${props.palette.text.label};
+        }
+
+        &[placeholder]:-moz-placeholder {
+            color: ${props.palette.text.label};
+        }
     `}
 
     @media (max-width: 600px) {
