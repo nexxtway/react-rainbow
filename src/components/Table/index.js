@@ -42,6 +42,8 @@ export default class Table extends Component {
             showCheckboxColumn,
             keyField,
             data,
+            showRowNumberColumn,
+            rowNumberOffset,
             maxRowSelection,
             minColumnWidth,
             maxColumnWidth,
@@ -52,6 +54,8 @@ export default class Table extends Component {
             columns: getColumns({
                 children,
                 showCheckboxColumn,
+                showRowNumberColumn,
+                rowNumberOffset,
                 minColumnWidth,
                 maxColumnWidth,
             }),
@@ -103,6 +107,8 @@ export default class Table extends Component {
         const {
             children,
             showCheckboxColumn,
+            showRowNumberColumn,
+            rowNumberOffset,
             maxRowSelection,
             selectedRows,
             data,
@@ -114,12 +120,16 @@ export default class Table extends Component {
         const prevColumns = getColumns({
             children: prevChildren,
             showCheckboxColumn: prevShowCheckboxColumn,
+            showRowNumberColumn,
+            rowNumberOffset,
             minColumnWidth: prevMinColumnWidth,
             maxColumnWidth: prevMaxColumnWidth,
         });
         const currentColumns = getColumns({
             children,
             showCheckboxColumn,
+            showRowNumberColumn,
+            rowNumberOffset,
             minColumnWidth,
             maxColumnWidth,
         });
@@ -389,6 +399,7 @@ export default class Table extends Component {
             sortDirection,
             defaultSortDirection,
             resizeColumnDisabled,
+            rowNumberOffset,
             minColumnWidth,
             maxColumnWidth,
             style,
@@ -443,7 +454,7 @@ export default class Table extends Component {
                                             />
                                         </tr>
                                     </thead>
-                                    <StyledTableBody>
+                                    <StyledTableBody rowNumberOffset={rowNumberOffset}>
                                         <Body
                                             data={normalizeData(data)}
                                             columns={columns}
@@ -495,6 +506,10 @@ Table.propTypes = {
     /** Show or hide the checkbox column for row selection. To show set
      * showCheckboxColumn to true. The default value is false. */
     showCheckboxColumn: PropTypes.bool,
+    /** Shows or hides the row number column. Set to true to show the row number column. The default is false. */
+    showRowNumberColumn: PropTypes.bool,
+    /** Determines where to start counting the row number. The default is 0. */
+    rowNumberOffset: PropTypes.number,
     /** The action triggered when a row is selected. Receive the selectedRows array. */
     onRowSelection: PropTypes.func,
     /** The maximum number of rows that can be selected. When the value is
@@ -542,6 +557,8 @@ Table.defaultProps = {
     minColumnWidth: 50,
     maxColumnWidth: Infinity,
     showCheckboxColumn: false,
+    showRowNumberColumn: false,
+    rowNumberOffset: 0,
     onRowSelection: () => {},
     maxRowSelection: undefined,
     selectedRows: [],

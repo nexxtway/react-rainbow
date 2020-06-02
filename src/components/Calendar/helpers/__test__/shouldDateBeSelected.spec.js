@@ -39,4 +39,10 @@ describe('shouldDateBeSelected', () => {
         expect(shouldDateBeSelected(date1, value, 'range', range)).toBe(false);
         expect(shouldDateBeSelected(date2, value, 'range', range)).toBe(false);
     });
+    it('should return false when selectionType is range and range is not an array or is an empty array', () => {
+        const date1 = new Date(2019, 1, 2);
+        const value = new Date(2019, 1, 1);
+        expect(shouldDateBeSelected(date1, value, 'range', 23)).toBe(false);
+        expect(shouldDateBeSelected(date1, value, 'range', [])).toBe(false);
+    });
 });
