@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
-import MenuArrowButton from '../../../Picklist/menuArrowButton';
+import CheckmarkIcon from '../../../Option/checkmark';
 
 export const StyledScrollable = styled.div`
     margin: 0;
@@ -35,8 +35,12 @@ export const StyledScrollControls = styled.div`
     padding-top: 1rem;
 `;
 
-export const StyledMenuArrowButton = styled(MenuArrowButton)`
-    position: absolute;
+export const StyledCheckmarkIcon = styled(CheckmarkIcon)`
+    width: 0.8rem;
+    height: 0.8rem;
+    line-height: 1;
+    margin-left: 0.75rem;
+    flex-shrink: 0;
 `;
 
 export { default as StyledDropdown } from './dropdown';

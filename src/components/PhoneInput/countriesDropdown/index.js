@@ -14,8 +14,8 @@ import {
     StyledSearchContainer,
     StyledSearch,
     StyledScrollControls,
-    StyledMenuArrowButton,
 } from './styled';
+import { Arrow } from '../../InternalDropdown/styled';
 import CountriesList from './countriesList';
 import RenderIf from '../../RenderIf';
 import StyledSearchIcon from '../../Lookup/options/styled/searchIcon';
@@ -71,8 +71,8 @@ const CountriesDropdown = memo(props => {
             </StyledSearchContainer>
             <StyledScrollControls>
                 <RenderIf isTrue={showScrollUp}>
-                    <StyledMenuArrowButton
-                        arrow="up"
+                    <Arrow
+                        direction="up"
                         onMouseEnter={handleScrollUpMouseEnter}
                         onMouseLeave={stopScroll}
                     />
@@ -101,8 +101,8 @@ const CountriesDropdown = memo(props => {
                 </StyledScrollable>
             </StyledScrollControls>
             <RenderIf isTrue={showScrollDown}>
-                <StyledMenuArrowButton
-                    arrow="down"
+                <Arrow
+                    direction="down"
                     onMouseEnter={handleScrollDownouseEnter}
                     onMouseLeave={stopScroll}
                 />

@@ -9,8 +9,7 @@ import {
     TAB_KEY,
 } from '../../../../libs/constants';
 import getNewIndex from '../helpers/getNewIndex';
-import isOptionVisible from '../../../Picklist/helpers/isOptionVisible';
-import calculateScrollOffset from '../../../Picklist/helpers/calculateScrollOffset';
+import isOptionVisible from '../../../InternalDropdown/helpers/isOptionVisible';
 
 export default function useKeyboardNavigation(
     country,
@@ -43,7 +42,7 @@ export default function useKeyboardNavigation(
             const newItem = itemsRef.current[newIndex];
             if (currentItem && newItem) {
                 if (!isOptionVisible(newItem, scrollableRef.current)) {
-                    const amount = calculateScrollOffset(currentItem.offsetTop, newItem.offsetTop);
+                    const amount = newItem.offsetTop - currentItem.offsetTop;
                     scrollableRef.current.scrollBy(0, amount);
                 }
                 handleActiveChange(newIndex);

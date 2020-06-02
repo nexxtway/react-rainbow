@@ -14,9 +14,6 @@ export interface PhoneInputProps extends BaseProps {
     hideLabel?: boolean;
     placeholder?: string;
     icon?: ReactNode;
-    maxLength?: number;
-    minLength?: number;
-    pattern?: string;
     bottomHelpText?: ReactNode;
     required?: boolean;
     error?: ReactNode;

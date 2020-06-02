@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 
-export const StyledCountryCode = attachThemeAttrs(styled.div)`
+export const StyledCountryCode = styled.div`
     flex: 0 0 auto;
-    padding: 0px 8px 0px 8px;
+    padding: 0 8px 0 8px;
     line-height: 2.2rem;
 `;
 

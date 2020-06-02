@@ -24,6 +24,14 @@ const countries = [
     },
 ];
 
+jest.mock('../../countries', () => [
+    {
+        countryCode: '+1',
+        country: 'United States',
+        isoCode: 'us',
+    },
+]);
+
 describe('findCountryByIsoCode', () => {
     it('should return a right country', () => {
         const uy = countries[1];
@@ -40,5 +48,9 @@ describe('findCountryByIsoCode', () => {
     it('should return United Kingdom country', () => {
         const gb = countries[0];
         expect(getCountryFromValue('es', countries)).toEqual(gb);
+    });
+
+    it('should return United States country when countries is empty array', () => {
+        expect(getCountryFromValue('us', [])).toEqual(us);
     });
 });

@@ -1,10 +1,8 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import RenderIf from '../../RenderIf';
-import Icon from '../../PicklistOption/icon';
-import StyledIconContainer from '../../PicklistOption/styled/iconContainer';
-import StyledCheckmarkIcon from '../../PicklistOption/styled/checkmarkIcon';
-import { StyledItem, StyledCountryCodeItem } from './styled';
+import Icon from '../../Option/icon';
+import { StyledItem, StyledCountryCodeItem, StyledCheckmarkIcon } from './styled';
 import { useSimulatedLoading } from './hooks';
 
 const CountriesList = memo(props => {
@@ -28,10 +26,10 @@ const CountriesList = memo(props => {
                 aria-selected={false}
                 isSelected={isSelected}
             >
-                <StyledIconContainer>
+                <div>
                     <Icon icon={flagIcon} isVisible position="left" />
                     {name}
-                </StyledIconContainer>
+                </div>
                 <div>
                     <StyledCountryCodeItem>{formattedCountryCode}</StyledCountryCodeItem>
                     <RenderIf isTrue={isSelected}>

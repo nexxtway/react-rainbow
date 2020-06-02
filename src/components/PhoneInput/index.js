@@ -35,11 +35,8 @@ const PhoneInput = React.forwardRef((props, ref) => {
         name,
         placeholder,
         icon,
-        maxLength,
-        minLength,
         bottomHelpText,
         required,
-        pattern,
         error,
         disabled,
         readOnly,
@@ -167,9 +164,6 @@ const PhoneInput = React.forwardRef((props, ref) => {
                     disabled={disabled}
                     readOnly={readOnly}
                     required={required}
-                    maxLength={maxLength}
-                    minLength={minLength}
-                    pattern={pattern}
                     aria-labelledby={labelId}
                     aria-describedby={errorMessageId}
                     iconPosition="right"
@@ -221,9 +215,6 @@ PhoneInput.propTypes = {
     /** Specifies that an input field must be filled out before submitting the form.
      * This value defaults to false. */
     required: PropTypes.bool,
-    /** Specifies the regular expression that the input's value is checked against.
-     * This attribute is supported for text, search, url, tel, email, and password types. */
-    pattern: PropTypes.string,
     /** Specifies that an input field must be filled out before submitting the form. */
     error: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     /** Specifies that an input element should be disabled. This value defaults to false. */
@@ -257,11 +248,8 @@ PhoneInput.defaultProps = {
     icon: undefined,
     label: undefined,
     hideLabel: false,
-    maxLength: undefined,
-    minLength: undefined,
     bottomHelpText: null,
     required: false,
-    pattern: undefined,
     error: null,
     disabled: false,
     readOnly: false,
