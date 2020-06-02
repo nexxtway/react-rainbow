@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from './context';
-import { useLocale } from '../../libs/hooks';
+import { useLocale, useTheme } from '../../libs/hooks';
 import legacyStyles from './rainbowLegacyStyles';
-import normalizeTheme from '../../styles/helpers/normalizeTheme';
 
 /**
  * This component is used to setup the React Rainbow context for a tree.
@@ -14,14 +13,8 @@ import normalizeTheme from '../../styles/helpers/normalizeTheme';
  */
 export default function Application(props) {
     const { children, className, style, locale, theme } = props;
-
     const contextValue = { locale: useLocale(locale) };
-
-    const [normalizedTheme, setTheme] = useState(() => normalizeTheme(theme));
-
-    useEffect(() => {
-        setTheme(normalizeTheme(theme));
-    }, [theme]);
+    const normalizedTheme = useTheme(theme);
 
     return (
         <Provider value={contextValue}>
@@ -66,5 +59,5 @@ Application.defaultProps = {
     className: undefined,
     style: undefined,
     locale: undefined,
-    theme: {},
+    theme: undefined,
 };
