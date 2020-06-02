@@ -9,10 +9,12 @@ const columns = [
     {
         component: undefined,
         field: 'name',
+        isFirstDataColumn: true,
     },
     {
         component: undefined,
         field: 'number',
+        isFirstDataColumn: false,
     },
 ];
 
@@ -122,9 +124,11 @@ describe('<Row />', () => {
             {
                 component: undefined,
                 field: 'number',
+                isFirstDataColumn: true,
             },
             {
                 field: 'name',
+                isFirstDataColumn: false,
             },
         ];
         const component = mount(<Row rowData={data} columns={columnsWithSelectable} />);
