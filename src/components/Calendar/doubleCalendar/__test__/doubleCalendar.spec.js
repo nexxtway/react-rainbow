@@ -62,14 +62,14 @@ describe('DoubleCalendar', () => {
                 .text(),
         ).toBe('June');
     });
-    it('should set to disable the prev month button when minDate is greater than prev month date', () => {
+    it('should set to disable the prevMonthButton when minDate is greater than prev month date', () => {
         const value = new Date('04/24/2019');
         const minDate = new Date('04/01/2019');
         const component = mount(<DoubleCalendar value={value} minDate={minDate} />);
         const prevMonthButton = component.find('ButtonIcon').at(0);
         expect(prevMonthButton.prop('disabled')).toBe(true);
     });
-    it('should set to disable the next month button when maxDate is less than next month date', () => {
+    it('should set to disable the nextMonthButton when maxDate is less than next month date', () => {
         const value = new Date('04/24/2019');
         const maxDate = new Date('04/30/2019');
         const component = mount(<DoubleCalendar value={value} maxDate={maxDate} />);
@@ -104,7 +104,6 @@ describe('DoubleCalendar', () => {
             .find('button')
             .at(7)
             .simulate('click');
-        expect(mockChangeFn).toHaveBeenCalled();
         expect(mockChangeFn).toHaveBeenCalledWith(new Date('04/08/2019'));
     });
     it('should change right month year when left month year changed', () => {

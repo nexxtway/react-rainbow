@@ -81,7 +81,6 @@ describe('Calendar', () => {
             .find('button')
             .at(7)
             .simulate('click');
-        expect(mockChangeFn).toHaveBeenCalled();
         expect(mockChangeFn).toHaveBeenCalledWith(new Date('04/08/2019'));
     });
     it('should fire onChange with an array of dates as parameter when selectionType is range', () => {

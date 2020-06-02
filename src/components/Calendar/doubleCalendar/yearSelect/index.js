@@ -1,8 +1,9 @@
 import React, { useRef, useEffect, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
+import { HiddenElement } from '../../../Structural';
 import { useUniqueIdentifier } from '../../../../libs/hooks';
 import Options from './options';
-import { StyledContainer, StyledLabel, StyledSelect } from './styled';
+import { StyledContainer, StyledSelect } from './styled';
 
 export default function YearSelect(props) {
     const { currentYear, yearsRange, onYearChange } = props;
@@ -40,7 +41,9 @@ export default function YearSelect(props) {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
-            <StyledLabel htmlFor={selectId}>select year</StyledLabel>
+            <HiddenElement as="label" htmlFor={selectId}>
+                select year
+            </HiddenElement>
             <StyledSelect
                 id={selectId}
                 ref={selectRef}
