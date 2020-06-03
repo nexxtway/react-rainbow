@@ -163,6 +163,7 @@ const FileSelector = React.forwardRef((props, ref) => {
                         isSingleFile={isSingleFile}
                         variant={variant}
                         error={error}
+                        disabled={disabled}
                     >
                         {icon}
                     </StyledIconContainer>

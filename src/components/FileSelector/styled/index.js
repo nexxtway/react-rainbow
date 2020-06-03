@@ -146,6 +146,12 @@ export const StyledIconContainer = attachThemeAttrs(styled(IconContainer))`
             `
             color: ${props.palette.error.main}
         `}
+
+        ${props =>
+            props.disabled &&
+            `
+            color: ${props.palette.text.disabled};
+        `}
     }
 
     ${props =>
