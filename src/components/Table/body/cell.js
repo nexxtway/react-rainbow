@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { SELECTABLE_CHECKBOX } from '../helpers/columns';
+import { SELECTABLE_CHECKBOX, WITH_ENUMERABLE } from '../helpers/columns';
+import EnumerableCell from './enumerableCell';
 import SelectableCell from './selectableCell';
 import ActionsCell from './actionsCell';
 import StyledCell from './styled/cell';
@@ -54,6 +55,10 @@ export default function Cell(props) {
         }
         return undefined;
     };
+
+    if (columnType === WITH_ENUMERABLE) {
+        return <EnumerableCell />;
+    }
 
     if (columnType === 'action') {
         return (

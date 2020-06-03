@@ -1,3 +1,3 @@
-export default function isChildRegistered(childRef, activeChildren) {
-    return activeChildren.findIndex(child => child.ref === childRef) !== -1;
+export default function isChildRegistered(name, activeChildren) {
+    return activeChildren.findIndex(child => child.name === name) !== -1;
 }

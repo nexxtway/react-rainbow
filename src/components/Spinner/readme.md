@@ -1,4 +1,4 @@
-##### list loading using spinner - base - large
+##### spinner base large
 
 ```js
 import React from 'react';
@@ -14,7 +14,7 @@ import { Spinner } from 'react-rainbow-components';
 </div>
 ```
 
-##### full screen loading using spinner - brand - medium
+##### spinner brand medium
 
 ```js
 import React from 'react';
@@ -37,7 +37,7 @@ const Loading = styled.h1.attrs(props => {
 </div>
 ```
 
-##### lazy loading using spinner - neutral - small
+##### lazy loading using spinner neutral small
 
 ```js
 import React from 'react';
@@ -94,7 +94,7 @@ const Icon = styled.div.attrs(props => {
 </div>
 ```
 
-##### full screen loading using spinner - inverse - medium
+##### spinner inverse medium
 
 ```js
 import React from 'react';
@@ -114,4 +114,38 @@ const Loading = styled.h1.attrs(props => {
         Loading…
     </Loading>
 </InverseContainer>
+```
+
+##### spinner arc large brand
+
+```js
+import React from 'react';
+import { Spinner } from 'react-rainbow-components';
+
+<div>
+    <GlobalHeader src="images/user/user3.jpg" />
+    <div className="rainbow-p-vertical_xx-large">
+        <div className="rainbow-align-content_center rainbow-position_relative rainbow-p-vertical_xx-large">
+            <Spinner size="large" type="arc" variant="brand" />
+        </div>
+    </div>
+</div>
+```
+
+##### spinner arc x-large brand with logo
+
+```js
+import React from 'react';
+import { Spinner } from 'react-rainbow-components';
+
+<div>
+    <GlobalHeader src="images/user/user3.jpg" />
+    <div className="rainbow-p-vertical_xx-large">
+        <div className="rainbow-align-content_center rainbow-position_relative rainbow-p-vertical_xx-large">
+            <Spinner size="x-large" type="arc" variant="brand">
+                <GoogleIcon />
+            </Spinner>
+        </div>
+    </div>
+</div>
 ```
