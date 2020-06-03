@@ -37,8 +37,9 @@ function DayComponent(props) {
     const isRangeEndDate = useRangeEndDate(date, currentRange);
 
     useEffect(() => {
-        if (!useAutoFocus || !buttonRef.current || tabIndex === -1) return;
-        buttonRef.current.focus();
+        if (useAutoFocus && buttonRef.current && tabIndex !== -1) {
+            buttonRef.current.focus();
+        }
     }, [tabIndex, useAutoFocus]);
 
     if (isAdjacentDate || isDisabled) {

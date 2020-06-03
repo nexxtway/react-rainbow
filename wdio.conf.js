@@ -56,7 +56,7 @@ exports.config = {
                 // (see https://developers.google.com/web/updates/2017/04/headless-chrome)
                 args: (() => {
                     if (process.argv.indexOf('--headless') !== -1) {
-                        return ['disable-gpu', 'no-sandbox', 'headless'];
+                        return ['disable-gpu', 'no-sandbox', 'headless', 'disable-dev-shm-usage'];
                     }
                     return ['disable-gpu', 'no-sandbox'];
                 })(),
