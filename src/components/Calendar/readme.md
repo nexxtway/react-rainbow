@@ -89,6 +89,7 @@ const calendarContainerStyles = {
     <div className="rainbow-align-content_center rainbow-p-vertical_xx-large rainbow-p-horizontal_medium">
         <Card style={calendarContainerStyles} className="rainbow-p-around_large">
             <Calendar
+                id="calendar-5"
                 selectionType="range"
                 value={state.range}
                 onChange={value => setState({ range: value })}
@@ -113,6 +114,7 @@ const calendarContainerStyles = {
     <div className="rainbow-align-content_center rainbow-p-vertical_xx-large rainbow-p-horizontal_small">
         <div style={calendarContainerStyles}>
             <Calendar
+                id="calendar-7"
                 variant="double"
                 value={state.date}
                 onChange={value => setState({ date: value })}
@@ -142,6 +144,7 @@ const calendarContainerStyles = {
     <div className="rainbow-align-content_center rainbow-p-vertical_xx-large rainbow-p-horizontal_small">
         <div style={calendarContainerStyles}>
             <Calendar
+                id="calendar-9"
                 variant="double"
                 selectionType="range"
                 value={state.range}
