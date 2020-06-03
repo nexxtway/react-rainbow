@@ -188,8 +188,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpload } from '@fortawesome/free-solid-svg-icons';
 
 const containerStyles = {
-    width: 700,
-    height: 700,
+    maxWidth: 300,
 };
 
 function FileSelectorExample(props) {
