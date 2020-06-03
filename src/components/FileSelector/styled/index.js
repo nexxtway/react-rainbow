@@ -101,7 +101,6 @@ export const TruncatedText = styled.span`
 `;
 
 export const StyledBackdrop = attachThemeAttrs(styled.div)`
-    position: relative;
     width: 100%;
     height: 100%;
     display: flex;
@@ -146,6 +145,12 @@ export const StyledIconContainer = attachThemeAttrs(styled(IconContainer))`
             props.error &&
             `
             color: ${props.palette.error.main}
+        `}
+
+        ${props =>
+            props.disabled &&
+            `
+            color: ${props.palette.text.disabled};
         `}
     }
 
@@ -198,6 +203,14 @@ export const StyledButtonIcon = styled(ButtonIcon)`
     width: unset;
     height: unset;
     pointer-events: auto;
+    margin-right: 6px;
+    ${props =>
+        props.variant === 'multiline' &&
+        `
+        position: absolute;
+        top: 12px;
+        right: 2px;
+    `}
 
     svg {
         pointer-events: none;
@@ -211,4 +224,16 @@ export const StyledInput = styled.input`
     width: 100%;
     height: 100%;
     opacity: 0;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    ${props =>
+        props.disabled &&
+        `
+        &:hover {
+            cursor: not-allowed;
+        }
+    `}
 `;

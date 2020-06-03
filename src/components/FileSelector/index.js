@@ -119,7 +119,7 @@ const FileSelector = React.forwardRef((props, ref) => {
 
     const isFileSelected = files && files.length > 0;
     const isSingleFile = files && files.length === 1;
-    const shouldRenderCancel = variant === 'inline' && isFileSelected && !isDragOver;
+    const shouldRenderCancel = isFileSelected && !isDragOver;
 
     return (
         <StyledContainer id={id} className={className} style={style}>
@@ -163,6 +163,7 @@ const FileSelector = React.forwardRef((props, ref) => {
                         isSingleFile={isSingleFile}
                         variant={variant}
                         error={error}
+                        disabled={disabled}
                     >
                         {icon}
                     </StyledIconContainer>
@@ -174,6 +175,7 @@ const FileSelector = React.forwardRef((props, ref) => {
                                 size="xx-small"
                                 icon={<CancelIcon />}
                                 onClick={handleCancel}
+                                variant={variant}
                             />
                         </StyledIconContainer>
                     </RenderIf>

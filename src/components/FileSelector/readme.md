@@ -274,10 +274,10 @@ function FileSelectorExample(props) {
 
     return (
         <div>
-            <FileSelector 
+            <FileSelector
                 className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
-                style={containerStyles} 
-                label="File selector with error" 
+                style={containerStyles}
+                label="File selector with error"
                 placeholder="Drag & Drop or Click to Browse"
                 error="File type not supported"
                 variant="multiline"
