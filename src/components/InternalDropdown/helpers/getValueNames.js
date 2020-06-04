@@ -1,7 +1,11 @@
 export default function getValueNames(value) {
     if (Array.isArray(value)) {
-        const names = value.map(v => v.name);
-        return names.filter(v => !!v);
+        return value.reduce((seed, item) => {
+            if (item.name) {
+                seed.push(item.name);
+            }
+            return seed;
+        }, []);
     }
     if (value && value.name) {
         return [value.name];
