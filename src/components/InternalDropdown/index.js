@@ -154,6 +154,26 @@ const InternalDropdown = forwardRef((props, reference) => {
         }
     };
 
+    const handleChange = useCallback(
+        option => {
+            const { name } = option;
+            if (multiple) {
+                if (Array.isArray(value)) {
+                    if (value.some(v => v.name === name)) {
+                        return null;
+                    }
+                    return onChange(value.concat([option]));
+                }
+                if (value) {
+                    return onChange([value, option]);
+                }
+                return onChange([option]);
+            }
+            return onChange(option);
+        },
+        [multiple, value, onChange],
+    );
+
     const handleKeyUpPressed = () => {
         const nextActiveIndex =
             (activeChildren.current.length + activeOptionIndex - 1) % activeChildren.current.length;
@@ -180,20 +200,7 @@ const InternalDropdown = forwardRef((props, reference) => {
 
     const handleKeyEnterPressed = () => {
         const { ref, ...rest } = activeChildren.current[activeOptionIndex];
-        const { name } = rest;
-        if (multiple) {
-            if (Array.isArray(value)) {
-                if (value.some(v => v.name === name)) {
-                    return null;
-                }
-                return onChange(value.concat([rest]));
-            }
-            if (value) {
-                return onChange([value, rest]);
-            }
-            return onChange([rest]);
-        }
-        return onChange(rest);
+        return handleChange(rest);
     };
 
     const keyHandlerMap = {
@@ -230,26 +237,6 @@ const InternalDropdown = forwardRef((props, reference) => {
         }
         setTimeout(() => updateScrollingArrows(), 0);
     };
-
-    const handleChange = useCallback(
-        option => {
-            const { name } = option;
-            if (multiple) {
-                if (Array.isArray(value)) {
-                    if (value.some(v => v.name === name)) {
-                        return null;
-                    }
-                    return onChange(value.concat([option]));
-                }
-                if (value) {
-                    return onChange([value, option]);
-                }
-                return onChange([option]);
-            }
-            return onChange(option);
-        },
-        [multiple, value, onChange],
-    );
 
     const context = useMemo(() => {
         const currentValues = getValueNames(value);
