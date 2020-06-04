@@ -7,19 +7,25 @@ import LeftIcon from '../icons/leftArrow';
 import DaysOfWeek from '../daysOfWeek';
 import Month from '../month';
 import {
-    normalizeDate,
     getFirstDayMonth,
     addMonths,
     getNextFocusedDate,
     isEmptyRange,
     isDateBelowLimit,
 } from '../helpers';
-import { useYearsRange, useDisabledControls, useFormattedMonth, useHandleKeyDown } from './hooks';
+import {
+    useNormalizedValue,
+    useYearsRange,
+    useDisabledControls,
+    useFormattedMonth,
+    useHandleKeyDown,
+} from './hooks';
 import MonthHeader from './monthHeader';
 import StyledControlsContainer from '../styled/controlsContainer';
 import StyledArrowButton from '../styled/arrowButton';
 import StyledTable from '../styled/table';
 import { StyledMonthsContainer, StyledContainer, StyledCalendar, StyledDivider } from './styled';
+import shouldUpdateCurrentMonth from './helpers/shouldUpdateCurrentMonth';
 
 export default function DoubleCalendar(props) {
     const {
@@ -34,8 +40,9 @@ export default function DoubleCalendar(props) {
         selectedRange,
         selectionType,
     } = props;
-    const [focusedDate, setFocusedDate] = useState(normalizeDate(value));
-    const [currentMonth, setCurrentMonth] = useState(getFirstDayMonth(normalizeDate(value)));
+    const currentValue = useNormalizedValue(value);
+    const [focusedDate, setFocusedDate] = useState(currentValue);
+    const [currentMonth, setCurrentMonth] = useState(getFirstDayMonth(currentValue));
     const [currentRange, setCurrentRange] = useState(selectedRange);
     const [enableNavKeys, setEnableNavKeys] = useState(false);
 
@@ -122,15 +129,19 @@ export default function DoubleCalendar(props) {
     );
 
     useEffect(() => {
-        setFocusedDate(normalizeDate(value));
-    }, [value]);
+        setFocusedDate(currentValue);
+        if (shouldUpdateCurrentMonth(currentValue, currentMonth, rightCalendarMonth)) {
+            setCurrentMonth(getFirstDayMonth(currentValue));
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [currentValue]);
 
     useEffect(() => {
         setCurrentRange(selectedRange);
     }, [selectedRange]);
 
     return (
-        <section id={id} className={className} style={style}>
+        <section id={id} className={className} style={style} data-calendar-type="double">
             <StyledControlsContainer>
                 <StyledArrowButton
                     onClick={prevMonthClick}

@@ -11,6 +11,8 @@ export interface TableProps extends BaseProps {
     minColumnWidth?: string | number;
     maxColumnWidth?: string | number;
     showCheckboxColumn?: boolean;
+    showRowNumberColumn?: boolean;
+    rowNumberOffset?: number;
     onRowSelection?: (rows: object[]) => void;
     maxRowSelection?: string | number;
     selectedRows?: [];

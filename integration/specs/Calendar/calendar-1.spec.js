@@ -33,7 +33,7 @@ describe('Calendar', () => {
         calendar.clickNextMonthButton();
         expect(calendar.getSelectedMonth()).toBe('January');
     });
-    it('should select the rigth day button element', () => {
+    it('should select the right day button element', () => {
         const calendar = new PageCalendar(CALENDAR);
         expect(calendar.getSelectedDay()).toBe('6');
         calendar.clickDay(4);

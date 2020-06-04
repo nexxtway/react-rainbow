@@ -54,7 +54,7 @@ class PagePicklist {
      */
     hoverScrollUpArrow() {
         return $(this.rootElement)
-            .$('[data-id=picklist-arrow-button-up]')
+            .$('[data-id="internal-dropdown-arrow-up"]')
             .moveTo();
     }
 
@@ -74,7 +74,7 @@ class PagePicklist {
      */
     hoverScrollDownArrow() {
         return $(this.rootElement)
-            .$('[data-id=picklist-arrow-button-down]')
+            .$('[data-id="internal-dropdown-arrow-down"]')
             .moveTo();
     }
 

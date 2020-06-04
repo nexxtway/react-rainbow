@@ -2,7 +2,7 @@
 
 ```js
 import React from 'react';
-import { Picklist, PicklistOption } from 'react-rainbow-components';
+import { Picklist, Option } from 'react-rainbow-components';
 
 const containerStyles = {
     width: '200px',
@@ -19,26 +19,26 @@ initialState = { value: { name: 'option 3', label: 'Central Park' } };
             <Picklist
                 id="picklist-1"
                 style={containerStyles}
-                onChange={value => setState({ value })}
+                onChange={(value) => setState({ value })}
                 value={state.value}
                 label="Select Building"
                 hideLabel
             >
-                <PicklistOption name="header" label="Your Buildings" variant="header" />
-                <PicklistOption name="option 1" label="Experimental Building" />
-                <PicklistOption name="option 2" label="Empire State" />
-                <PicklistOption name="option 3" label="Central Park" />
+                <Option name="header" label="Your Buildings" variant="header" />
+                <Option name="option 1" label="Experimental Building" />
+                <Option name="option 2" label="Empire State" />
+                <Option name="option 3" label="Central Park" />
             </Picklist>
         </div>
     </GlobalHeader>
-</div>
+</div>;
 ```
 
 ##### Picklist with multiple options
 
 ```js
 import React from 'react';
-import { Picklist, PicklistOption } from 'react-rainbow-components';
+import { Picklist, Option } from 'react-rainbow-components';
 
 const containerStyles = {
     width: '200px',
@@ -56,31 +56,32 @@ initialState = { value: null };
                 id="picklist-3"
                 style={containerStyles}
                 placeholder="Choose Building"
-                onChange={value => setState({ value })}
+                onChange={(value) => setState({ value })}
                 value={state.value}
                 label="Select Building"
                 hideLabel
+                enableSearch
             >
-                <PicklistOption name="option 1" label="All Buildings" icon={<DashboardIcon />} />
-                <PicklistOption name="option 2" label="New Building" icon={<AddFilledIcon />} />
-                <PicklistOption name="header" label="Your Buildings" variant="header" />
-                <PicklistOption name="option 3" label="Experimental" icon={<BuildingIcon />} />
-                <PicklistOption name="option 4" label="Bennet Towers" icon={<BuildingIcon />} />
-                <PicklistOption name="option 5" label="Empire State" icon={<BuildingIcon />} />
-                <PicklistOption name="option 6" label="Central Park" icon={<BuildingIcon />} />
-                <PicklistOption name="option 7" label="Chrysler" icon={<BuildingIcon />} />
-                <PicklistOption name="option 8" label="Plaza" icon={<BuildingIcon />} />
+                <Option name="option 1" label="All Buildings" icon={<DashboardIcon />} />
+                <Option name="option 2" label="New Building" icon={<AddFilledIcon />} />
+                <Option name="header" label="Your Buildings" variant="header" />
+                <Option name="option 3" label="Experimental" icon={<BuildingIcon />} />
+                <Option name="option 4" label="Bennet Towers" icon={<BuildingIcon />} />
+                <Option name="option 5" label="Empire State" icon={<BuildingIcon />} />
+                <Option name="option 6" label="Central Park" icon={<BuildingIcon />} />
+                <Option name="option 7" label="Chrysler" icon={<BuildingIcon />} />
+                <Option name="option 8" label="Plaza" icon={<BuildingIcon />} />
             </Picklist>
         </div>
     </GlobalHeader>
-</div>
+</div>;
 ```
 
 ##### Picklist disabled
 
 ```js
 import React from 'react';
-import { Picklist, PicklistOption } from 'react-rainbow-components';
+import { Picklist, Option } from 'react-rainbow-components';
 
 const containerStyles = {
     width: '180px',
@@ -101,20 +102,20 @@ initialState = { value: { name: 'option 1', label: 'All Buildings' } };
                 hideLabel
                 style={containerStyles}
             >
-                <PicklistOption name="option 1" label="Experimental Building" />
-                <PicklistOption name="option 2" label="Empire State" />
-                <PicklistOption name="option 3" label="Central Park" />
+                <Option name="option 1" label="Experimental Building" />
+                <Option name="option 2" label="Empire State" />
+                <Option name="option 3" label="Central Park" />
             </Picklist>
         </div>
     </GlobalHeader>
-</div>
+</div>;
 ```
 
 ##### Picklist with redux-form
 
 ```js
 import React from 'react';
-import { Picklist, PicklistOption, ButtonIcon } from 'react-rainbow-components';
+import { Picklist, Option, ButtonIcon } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpload } from '@fortawesome/free-solid-svg-icons';
 import { Field, reduxForm } from 'redux-form';
@@ -138,11 +139,11 @@ function Form({ handleSubmit, onSubmit }) {
                 label="Select Building"
                 hideLabel
             >
-                <PicklistOption name="option 1" label="All Buildings" />
-                <PicklistOption name="option 2" label="New Building" />
-                <PicklistOption name="header 2" label="Your Buildings" variant="header" />
-                <PicklistOption name="option 3" label="Experimental" />
-                <PicklistOption name="option 4" label="Empire State" />
+                <Option name="option 1" label="All Buildings" />
+                <Option name="option 2" label="New Building" />
+                <Option name="header 2" label="Your Buildings" variant="header" />
+                <Option name="option 3" label="Experimental" />
+                <Option name="option 4" label="Empire State" />
             </Field>
             <ButtonIcon
                 variant="border"
@@ -150,7 +151,6 @@ function Form({ handleSubmit, onSubmit }) {
                 className="rainbow-m-left_small"
                 type="submit"
             />
-
         </form>
     );
 }
@@ -165,16 +165,16 @@ const PicklistForm = reduxForm({
         src="images/user/user3.jpg"
         className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large"
     >
-        <PicklistForm onSubmit={values => console.log(values)} />
+        <PicklistForm onSubmit={(values) => console.log(values)} />
     </GlobalHeader>
-</div>
+</div>;
 ```
 
-##### Picklist with PicklistOption changed dynamically
+##### Picklist with Option changed dynamically
 
 ```js
 import React from 'react';
-import { Picklist, PicklistOption, ButtonIcon } from 'react-rainbow-components';
+import { Picklist, Option, ButtonIcon } from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 
@@ -200,15 +200,15 @@ class PicklistExample extends React.Component {
     }
 
     handleChange(value) {
-        this.setState({ 
-            value: value 
+        this.setState({
+            value: value,
         });
     }
 
     renderNewBuildings() {
         const { isBuildingsAdded } = this.state;
         if (isBuildingsAdded) {
-            return <PicklistOption name="option 4" label="One World Trade Center" />;
+            return <Option name="option 4" label="One World Trade Center" />;
         }
         return null;
     }
@@ -216,7 +216,10 @@ class PicklistExample extends React.Component {
     render() {
         return (
             <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
-                <GlobalHeader className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
+                <GlobalHeader
+                    className="rainbow-p-bottom_xx-large rainbow-m-bottom_xx-large"
+                    src="images/user/user3.jpg"
+                >
                     <div className="rainbow-flex rainbow-align_right">
                         <Picklist
                             id="picklist-9"
@@ -226,10 +229,10 @@ class PicklistExample extends React.Component {
                             label="Select Building"
                             hideLabel
                         >
-                            <PicklistOption name="option 1" label="Experimental Building" />
+                            <Option name="option 1" label="Experimental Building" />
                             {this.renderNewBuildings()}
-                            <PicklistOption name="option 2" label="Empire State" />
-                            <PicklistOption name="option 3" label="Central Park" />
+                            <Option name="option 2" label="Empire State" />
+                            <Option name="option 3" label="Central Park" />
                         </Picklist>
                     </div>
                     <ButtonIcon
@@ -239,7 +242,7 @@ class PicklistExample extends React.Component {
                         variant="border"
                         icon={<FontAwesomeIcon icon={faDownload} />}
                     />
-                    </GlobalHeader>
+                </GlobalHeader>
             </div>
         );
     }
@@ -247,11 +250,12 @@ class PicklistExample extends React.Component {
 
 <PicklistExample />;
 ```
+
 ##### Picklist error
 
 ```js
 import React from 'react';
-import { Picklist, PicklistOption } from 'react-rainbow-components';
+import { Picklist, Option } from 'react-rainbow-components';
 
 const containerStyles = {
     maxWidth: 700,
@@ -262,25 +266,25 @@ initialState = { value: { name: 'option 3', label: 'Central Park' } };
 <Picklist
     id="picklist-11"
     style={containerStyles}
-    onChange={value => setState({ value })}
+    onChange={(value) => setState({ value })}
     value={state.value}
     required
-    error= "This Field is Required"
+    error="This Field is Required"
     label="Select Building"
     className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
 >
-    <PicklistOption name="header" label="Your Buildings" variant="header" />
-    <PicklistOption name="option 1" label="Experimental Building" />
-    <PicklistOption name="option 2" label="Empire State" />
-    <PicklistOption name="option 3" label="Central Park" />
-</Picklist>
+    <Option name="header" label="Your Buildings" variant="header" />
+    <Option name="option 1" label="Experimental Building" />
+    <Option name="option 2" label="Empire State" />
+    <Option name="option 3" label="Central Park" />
+</Picklist>;
 ```
 
 ##### Picklist shaded with neutral GlobalHeader
 
 ```js
 import React from 'react';
-import { Picklist, PicklistOption } from 'react-rainbow-components';
+import { Picklist, Option } from 'react-rainbow-components';
 
 const containerStyles = {
     width: '200px',
@@ -298,18 +302,18 @@ initialState = { value: { name: 'option 3', label: 'Central Park' } };
             <Picklist
                 id="picklist-13"
                 style={containerStyles}
-                onChange={value => setState({ value })}
+                onChange={(value) => setState({ value })}
                 value={state.value}
                 label="Select Building"
                 hideLabel
                 variant="shaded"
             >
-                <PicklistOption name="header" label="Your Buildings" variant="header" />
-                <PicklistOption name="option 1" label="Experimental Building" />
-                <PicklistOption name="option 2" label="Empire State" />
-                <PicklistOption name="option 3" label="Central Park" />
+                <Option name="header" label="Your Buildings" variant="header" />
+                <Option name="option 1" label="Experimental Building" />
+                <Option name="option 2" label="Empire State" />
+                <Option name="option 3" label="Central Park" />
             </Picklist>
         </div>
     </GlobalHeader>
-</div>
+</div>;
 ```
