@@ -25,7 +25,7 @@ describe('<Option />', () => {
     });
 
     it('should render a option header when variant is header', () => {
-        const component = mount(<Option label="Header 1" variant="header" currentValues={[]} />);
+        const component = mount(<Option label="Header 1" variant="header" />);
         expect(component.find(StyledHeader).exists()).toBe(true);
     });
     it('should render a regular option when variant is default', () => {
