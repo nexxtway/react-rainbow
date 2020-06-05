@@ -94,9 +94,9 @@ class OptionItem extends Component {
     }
 
     renderRightIcon() {
-        const { name, currentValueName, icon, iconPosition } = this.props;
+        const { name, currentValues, icon, iconPosition } = this.props;
         const hasRightIcon = !!(icon && iconPosition === 'right');
-        if (name === currentValueName) {
+        if (currentValues.includes(name)) {
             return <StyledCheckmarkIcon />;
         }
         return (
@@ -121,10 +121,10 @@ class OptionItem extends Component {
             disabled,
             activeOptionName,
             name,
-            currentValueName,
+            currentValues,
             activeChildrenMap,
         } = this.props;
-        const isSelected = currentValueName === name;
+        const isSelected = currentValues.includes(name);
         const isActive = activeOptionName === name;
 
         if (variant === 'header') {
