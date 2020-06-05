@@ -11,7 +11,7 @@ export default function DatePickerModal(props) {
         minDate,
         maxDate,
         selectionType,
-        calendarType,
+        variant,
         value,
         onChange,
         onRequestClose,
@@ -35,7 +35,7 @@ export default function DatePickerModal(props) {
                 minDate={minDate}
                 maxDate={maxDate}
                 selectionType={selectionType}
-                variant={calendarType}
+                variant={variant}
                 value={value}
                 onChange={onChange}
             />
@@ -63,7 +63,7 @@ DatePickerModal.propTypes = {
     /** The type of the selection. It can be a single date or a range. The default value is 'single'. */
     selectionType: PropTypes.oneOf(['single', 'range']),
     /** The calendar type. Defaults to 'single' */
-    calendarType: PropTypes.oneOf(['single', 'double']),
+    variant: PropTypes.oneOf(['single', 'double']),
     /** The action triggered when a value attribute changes. */
     onChange: PropTypes.func,
     /** Sets the date for the DatePickerModal programmatically. */
@@ -90,7 +90,7 @@ DatePickerModal.defaultProps = {
     maxDate: undefined,
     minDate: undefined,
     selectionType: 'single',
-    calendarType: 'single',
+    variant: 'single',
     value: undefined,
     isOpen: false,
     onChange: () => {},

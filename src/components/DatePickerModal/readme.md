@@ -63,7 +63,7 @@ function getDate(value, selectionType) {
         title={state.title}
         isOpen={state.isOpen}
         value={getDate(state.value)}
-        calendarType="double"
+        variant="double"
         selectionType={state.selectionType}
         onChange={value => setState({ value })}
         onRequestClose={() => setState({ isOpen: false })}
