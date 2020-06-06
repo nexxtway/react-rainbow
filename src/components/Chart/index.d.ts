@@ -5,6 +5,7 @@ export interface ChartProps extends BaseProps {
     type?: 'bar' | 'horizontalBar' | 'line' | 'radar' | 'pie' | 'doughnut' | 'polarArea' | 'bubble';
     labels?: string[];
     showStacked?: boolean;
+    showLabelsOnBars?: boolean;
     showLegend?: boolean;
     legendPosition?: 'top' | 'bottom' | 'right' | 'left';
     disableAnimations?: boolean;

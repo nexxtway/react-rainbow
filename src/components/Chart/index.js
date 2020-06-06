@@ -86,6 +86,8 @@ Chart.propTypes = {
     labels: PropTypes.arrayOf(PropTypes.string),
     /** Determines whether to show the stacked bars in a bar chart. */
     showStacked: PropTypes.bool,
+    /** Determines whether to show the labels on bars in a bar chart. */
+    showLabelsOnBars: PropTypes.bool,
     /** Defines if the legend is shown. */
     showLegend: PropTypes.bool,
     /** If true, do not display grid lines for x axis. */
@@ -129,6 +131,7 @@ Chart.defaultProps = {
     type: 'bar',
     labels: [],
     showStacked: false,
+    showLabelsOnBars: false,
     showLegend: true,
     legendPosition: 'bottom',
     disableAnimations: false,

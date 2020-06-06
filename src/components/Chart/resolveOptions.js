@@ -1,3 +1,7 @@
+/* eslint-disable func-names */
+/* eslint-disable object-shorthand */
+/* eslint-disable no-underscore-dangle */
+import ChartJS from 'chart.js';
 import { replaceAlpha } from '../../styles/helpers/color';
 import defaultTheme from '../../styles/defaultTheme';
 
@@ -15,6 +19,7 @@ export default function resolveOptions(conditions) {
         showLegend,
         legendPosition,
         showStacked,
+        showLabelsOnBars,
         maintainAspectRatio,
         theme,
         type,
@@ -30,7 +35,7 @@ export default function resolveOptions(conditions) {
     };
 
     let options = {
-        maintainAspectRatio,
+        maintainAspectRatio: maintainAspectRatio,
         legend: {
             display: showLegend,
             position: legendPosition,
@@ -50,6 +55,14 @@ export default function resolveOptions(conditions) {
     if (type === 'bar' || type === 'horizontalBar' || type === 'line') {
         options = {
             ...options,
+            layout: {
+                padding: {
+                    left: 0,
+                    right: 0,
+                    top: 15,
+                    bottom: 0,
+                },
+            },
             scales: {
                 xAxes: [
                     {
@@ -92,15 +105,54 @@ export default function resolveOptions(conditions) {
             hover: {
                 animationDuration: 0,
             },
-            responsiveAnimationDuration: 0,
         };
     }
+
+    if (showLabelsOnBars) {
+        options = {
+            ...options,
+            hover: {
+                animationDuration: disableAnimations
+                    ? 0
+                    : ChartJS.defaults.global.hover.animationDuration,
+            },
+            animation: {
+                duration: disableAnimations ? 0 : ChartJS.defaults.global.animation.duration,
+                onComplete:
+                    showLabelsOnBars && type === 'bar'
+                        ? function() {
+                              const chart = this.chart;
+                              const ctx = chart.ctx;
+
+                              ctx.font = ChartJS.helpers.fontString(
+                                  ChartJS.defaults.global.defaultFontSize,
+                                  ChartJS.defaults.global.defaultFontStyle,
+                                  ChartJS.defaults.global.defaultFontFamily,
+                              );
+                              ctx.fillStyle = legend.label;
+                              ctx.textAlign = 'center';
+                              ctx.textBaseline = 'bottom';
+
+                              this.data.datasets.forEach((dataset, i) => {
+                                  const meta = chart.controller.getDatasetMeta(i);
+                                  meta.data.forEach((bar, index) => {
+                                      const dataValue = dataset.data[index];
+                                      ctx.fillText(dataValue, bar._model.x, bar._model.y - 5);
+                                  });
+                              });
+                          }
+                        : null,
+            },
+        };
+    }
+
     if (disableLines) {
         options = {
             ...options,
             showLines: false,
         };
     }
+
     if (disableCurves) {
         options = {
             ...options,
@@ -111,7 +163,8 @@ export default function resolveOptions(conditions) {
             },
         };
     }
-    if (showStacked) {
+
+    if (showStacked && !(showLabelsOnBars && type === 'bar')) {
         options = {
             ...options,
             scales: {

@@ -70,7 +70,6 @@ describe('resolveOptions function', () => {
             hover: {
                 animationDuration: 0,
             },
-            responsiveAnimationDuration: 0,
         });
     });
     it('should return the conf option with legend and line parameters', () => {
@@ -173,7 +172,6 @@ describe('resolveOptions function', () => {
             hover: {
                 animationDuration: 0,
             },
-            responsiveAnimationDuration: 0,
             showLines: false,
             elements: {
                 line: {

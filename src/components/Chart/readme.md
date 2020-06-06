@@ -889,3 +889,40 @@ const containerStyles = {
     </div>
 </div>
 ```
+
+##### Chart with minimalist design and labels on bars:
+
+```js
+import React from 'react';
+import { Chart, Dataset } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+
+const containerStyles = {
+    maxWidth: 600,
+};
+
+<div className="rainbow-p-vertical_medium rainbow-m_auto" style={containerStyles}>
+    <div className="rainbow-align-content_center">
+        <Chart
+            labels={['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']}
+            type="bar"
+            className="rainbow-m-horizontal_xx-large rainbow-m-top_x-large"
+            disableXAxisGridLines
+            disableYAxisGridLines
+            disableXAxisBorders
+            disableYAxisBorders
+            disableXAxisTickLabels
+            disableYAxisTickLabels
+            showLabelsOnBars
+        >
+            <Dataset
+                title="Dataset 1"
+                values={[23, 45, 123, 56, 66, 100, 30, 156]}
+                backgroundColor="#01b6f5"
+                borderColor="#01b6f5"
+            />
+        </Chart>
+    </div>
+</div>
+```
