@@ -32,6 +32,11 @@ export const Ul = styled.ul`
     list-style: none;
     box-sizing: border-box;
     overflow-y: auto;
+    ${props =>
+        props.showEmptyMessage &&
+        `
+        display: none;
+    `}
 `;
 
 export const Arrow = attachThemeAttrs(styled.div)`

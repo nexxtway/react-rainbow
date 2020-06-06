@@ -21,6 +21,7 @@ import isOptionVisible from './helpers/isOptionVisible';
 import scrollTo from './helpers/scrollTo';
 import searchFilter from './helpers/searchFilter';
 import getValueNames from './helpers/getValueNames';
+import isEmptyObject from './helpers/isEmptyObject';
 
 const sizeMap = {
     medium: 227,
@@ -61,6 +62,7 @@ const InternalDropdown = forwardRef((props, reference) => {
     const containerRef = useRef();
     const scrollingTimer = useRef();
     const searchRef = useRef();
+    const showEmptyMessage = isEmptyObject(activeChildrenMap);
 
     useImperativeHandle(reference, () => ({
         focus: () => {
@@ -287,11 +289,15 @@ const InternalDropdown = forwardRef((props, reference) => {
                     onScroll={updateScrollingArrows}
                     ref={menuRef}
                     style={menuContainerStyles}
+                    showEmptyMessage={showEmptyMessage}
                 >
                     <Content isLoading={isLoading}>
                         <Provider value={context}>{children}</Provider>
                     </Content>
                 </Ul>
+                <RenderIf isTrue={showEmptyMessage}>
+                    <div>Empty Message</div>
+                </RenderIf>
                 <RenderIf isTrue={showScrollDownArrow}>
                     <Arrow
                         data-id="internal-dropdown-arrow-down"
