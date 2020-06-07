@@ -1,17 +1,29 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SearchIcon from './icons/searchIcon';
-import { EMContainer } from './styled';
+import {
+    MessageContainer,
+    MessageTextContainer,
+    MessageDescription,
+    MessageHighLight,
+} from './styled';
 
-function EmptyMessage({ emptyMsg }) {
+export default function EmptyMessage({ emptyMessage }) {
     return (
-        <EMContainer>
+        <MessageContainer>
             <SearchIcon />
-            <div className="Our-robots-did-not-f">
-                Our robots did not find any match for{' '}
-                <span className="text-style-1"> “{emptyMsg}”</span>
-            </div>
-        </EMContainer>
+            <MessageTextContainer>
+                <MessageDescription>Our robots did not find any match for</MessageDescription>
+                <MessageHighLight className="text-style-1"> “{emptyMessage}”</MessageHighLight>
+            </MessageTextContainer>
+        </MessageContainer>
     );
 }
 
-export default EmptyMessage;
+EmptyMessage.propTypes = {
+    emptyMessage: PropTypes.string,
+};
+
+EmptyMessage.defaultProps = {
+    emptyMessage: undefined,
+};

@@ -118,25 +118,28 @@ export const Search = attachThemeAttrs(styled.input)`
     }
 `;
 
-export const EMContainer = attachThemeAttrs(styled.div)`
-    text-align: center;
-    .Our-robots-did-not-f {
-        width: 188px;
-        height: 40px;
-        font-family: Lato;
+export const MessageContainer = attachThemeAttrs(styled.div)`    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    margin: 16px;
+    `;
+
+export const MessageTextContainer = attachThemeAttrs(styled.div)`;
+        display: flex;        
+        margin: 15px auto 0 auto;
+    `;
+export const MessageDescription = attachThemeAttrs(styled.p)`
         font-size: 16px;
-        font-weight: normal;
-        font-stretch: normal;
-        font-style: normal;
         line-height: 1.43;
-        letter-spacing: normal;
         text-align: center;
         color: ${props => props.palette.text.label};
-        margin: 15px auto 0 auto;
-    }
-    .text-style-1 {
+        margin-right: 4px;
+`;
+
+export const MessageHighLight = attachThemeAttrs(styled.p)`
         font-size: 16px;
         font-weight: 900;
         color: ${props => props.palette.text.main};
-    }
 `;

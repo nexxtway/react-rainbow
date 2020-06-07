@@ -56,7 +56,7 @@ const InternalDropdown = forwardRef((props, reference) => {
     const [activeOptionName, setActiveOptionName] = useState(null);
     const [activeOptionIndex, setActiveOptionIndex] = useState(0);
     const [activeChildrenMap, setActiveChildrenMap] = useState();
-    const [emptyMsg, setEmptyMsg] = useState('');
+    const [emptyMessage, setEmptyMessage] = useState('');
     const activeChildren = useRef([]);
     const allActiveChildren = useRef();
     const firstChild = useRef();
@@ -229,7 +229,7 @@ const InternalDropdown = forwardRef((props, reference) => {
             data: allActiveChildren.current,
         });
 
-        setEmptyMsg(event.target.value);
+        setEmptyMessage(event.target.value);
 
         setActiveChildrenMap(
             filteredOptions.reduce((acc, option) => {
@@ -301,7 +301,7 @@ const InternalDropdown = forwardRef((props, reference) => {
                     </Content>
                 </Ul>
                 <RenderIf isTrue={showEmptyMessage}>
-                    <EmptyMessage emptyMsg={emptyMsg} />
+                    <EmptyMessage emptyMessage={emptyMessage} />
                 </RenderIf>
                 <RenderIf isTrue={showScrollDownArrow}>
                     <Arrow
