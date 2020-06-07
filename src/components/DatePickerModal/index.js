@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import RenderIf from '../RenderIf';
 import { Header, HeaderTitle, StyledModal, StyledCalendar } from './styled';
 
 export default function DatePickerModal(props) {
@@ -27,9 +28,11 @@ export default function DatePickerModal(props) {
             isOpen={isOpen}
             onRequestClose={onRequestClose}
         >
-            <Header>
-                <HeaderTitle>{title}</HeaderTitle>
-            </Header>
+            <RenderIf isTrue={!!title}>
+                <Header>
+                    <HeaderTitle>{title}</HeaderTitle>
+                </Header>
+            </RenderIf>
             <StyledCalendar
                 locale={locale}
                 minDate={minDate}
