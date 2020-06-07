@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>aruba@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="flags" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="aruba" fill-rule="nonzero">
+            <circle id="Oval" fill="#FFDA44" cx="16" cy="16" r="16"></circle>
+            <g id="Group" fill="#338AF3">
+                <path d="M16,32 C20.8494375,32 25.194625,29.84225 28.1288125,26.4348125 L3.8711875,26.4348125 C6.805375,29.84225 11.1505625,32 16,32 Z" id="Shape"></path>
+                <path d="M32,16 C32,7.1635 24.8365,0 16,0 C7.1635,0 0,7.1635 0,16 C0,17.4441875 0.1925,18.8430625 0.5511875,20.1739375 L31.448875,20.1739375 C31.8075,18.8430625 32,17.4441875 32,16 Z" id="Shape"></path>
+                <path d="M1.2718125,22.260875 C1.58025,22.985625 1.9408125,23.682625 2.348375,24.3478125 L29.651625,24.3478125 C30.0591875,23.6825625 30.41975,22.9855625 30.7283125,22.260875 L1.2718125,22.260875 Z" id="Shape"></path>
+            </g>
+            <polygon id="Shape" fill="#F0F0F0" points="7.3323125 10.0914375 4.2063125 8.7118125 7.3323125 7.3321875 8.711875 4.20625 10.0914375 7.3321875 13.217375 8.7118125 10.0914375 10.0914375 8.711875 13.217375"></polygon>
+            <polygon id="Shape" fill="#D80027" points="8.711875 5.9291875 9.5638125 7.85975 11.4944375 8.7118125 9.5638125 9.5638125 8.711875 11.494375 7.8598125 9.5638125 5.92925 8.7118125 7.8598125 7.85975"></polygon>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>tonga@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="flags" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="tonga" fill-rule="nonzero">
+            <circle id="Oval" fill="#F0F0F0" cx="16" cy="16" r="16"></circle>
+            <g id="Group" fill="#D80027">
+                <polygon id="Shape" points="10.4348125 8.3478125 10.4348125 6.260875 8.3478125 6.260875 8.3478125 8.3478125 6.260875 8.3478125 6.260875 10.4348125 8.3478125 10.4348125 8.3478125 12.52175 10.4348125 12.52175 10.4348125 10.4348125 12.52175 10.4348125 12.52175 8.3478125"></polygon>
+                <path d="M16,0 L16,16 C7.1635,16.0000625 3.6515625,16 0,16.0000625 C0,24.8365 7.1635,32 16,32 C24.8365,32 32,24.8365 32,16 C32,7.1635 24.8365,0 16,0 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

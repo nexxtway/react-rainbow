@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>republic-of-the-congo@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="flags" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="republic-of-the-congo" fill-rule="nonzero">
+            <path d="M8.6562807,30.1688889 L20.3874308,20.3874932 L30.1688265,8.65634308 C28.6480468,5.70909942 26.2366316,3.29637427 23.2905731,1.77366082 L11.5501287,11.5502534 L1.77366082,23.2905731 C3.29624951,26.2367563 5.70897466,28.6481092 8.6562807,30.1688889 Z" id="Shape" fill="#FFDA44"></path>
+            <path d="M27.2609435,27.2610058 C32.2989786,22.2229084 33.266152,14.6566238 30.1643977,8.64673684 L8.64667446,30.16446 C14.6565614,33.266152 22.2229084,32.2989786 27.2609435,27.2610058 Z" id="Shape" fill="#D80027"></path>
+            <path d="M4.67667836,4.67667836 C-0.361356725,9.71471345 -1.32846784,17.2810604 1.77316179,23.2909474 L23.2909474,1.77322417 C17.2810604,-1.32853021 9.71471345,-0.361294347 4.67667836,4.67667836 Z" id="Shape" fill="#6DA544"></path>
+        </g>
+    </g>
+</svg>

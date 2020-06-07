@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>algeria@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="flags" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="algeria">
+            <g>
+                <g>
+                    <path d="M16,0 C24.8365,0 32,7.1635 32,16 C32,24.8365 24.8365,32 16,32 C16,31.304375 13.9130625,16 13.9130625,16 L16,0 Z" id="Shape" fill="#F0F0F0" fill-rule="nonzero"></path>
+                    <path d="M16,32 C7.1635,32 0,24.8365 0,16 C0,7.1635 7.1635,0 16,0" id="Shape" fill="#496E2D" fill-rule="nonzero"></path>
+                    <g id="Group" transform="translate(10.000000, 10.375000)" fill="#D80027" fill-rule="nonzero">
+                        <polygon id="Shape" points="9.4376875 2.556 8.1249375 4.3650625 5.998875 3.6755625 7.31375 5.4830625 6.001125 7.292125 8.126375 6.6001875 9.44125 8.407625 9.439875 6.1725625 11.5651875 5.4805625 9.4391875 4.7911875"></polygon>
+                        <path d="M7.3273125,10.14675 C4.8300625,10.14675 2.8055625,8.12225 2.8055625,5.625 C2.8055625,3.12775 4.8300625,1.10325 7.3273125,1.10325 C8.1059375,1.10325 8.838625,1.300125 9.47825,1.64675 C8.47475,0.6654375 7.1025,0.05975 5.5881875,0.05975 C2.5145625,0.05975 0.023,2.551375 0.023,5.6249375 C0.023,8.6985 2.514625,11.190125 5.5881875,11.190125 C7.1025625,11.190125 8.4748125,10.5844375 9.47825,9.603125 C8.838625,9.949875 8.1059375,10.14675 7.3273125,10.14675 Z" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

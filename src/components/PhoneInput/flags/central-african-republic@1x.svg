@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>central-african-republic@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="flags" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="central-african-republic" fill-rule="nonzero">
+            <circle id="Oval" fill="#F0F0F0" cx="16" cy="16" r="16"></circle>
+            <g id="Group" transform="translate(1.937500, 0.500000)" fill="#0052B4">
+                <path d="M28.1170625,7.8478125 C26.0495625,4.0585 22.494375,1.1979375 18.2364375,0.0503125 L17.5408125,7.8478125 L28.1170625,7.8478125 Z" id="Shape"></path>
+                <path d="M0.0079375,7.8478125 L10.5841875,7.8478125 L9.8885625,0.0503125 C5.630625,1.1979375 2.0755,4.0585625 0.0079375,7.8478125 Z" id="Shape"></path>
+            </g>
+            <g id="Group" transform="translate(0.000000, 16.000000)" fill="#6DA544">
+                <path d="M19.47825,0 L19.47825,7.6521875 L30.0545,7.6521875 C31.2948125,5.379 32,2.771875 32,0 L19.47825,0 Z" id="Shape"></path>
+                <path d="M12.52175,0 L0,0 C0,2.771875 0.7051875,5.379 1.9454375,7.6521875 L12.52175,7.6521875 L12.52175,0 Z" id="Shape"></path>
+            </g>
+            <g id="Group" transform="translate(1.937500, 23.625000)" fill="#FFDA44">
+                <path d="M0.0079375,0.0271875 C2.0755,3.8165 5.630625,6.6770625 9.8885625,7.8246875 L10.5841875,1.005375 L0.0079375,0.0271875 Z" id="Shape"></path>
+                <path d="M18.2364375,7.8246875 C22.494375,6.6770625 26.0495625,3.8165 28.1170625,0.0271875 L17.5408125,1.00525 L18.2364375,7.8246875 Z" id="Shape"></path>
+                <polygon id="Shape" points="17.54075 1.00525 28.1170625 0.0271875 17.54075 0.0271875"></polygon>
+                <polygon id="Shape" points="10.58425 0.0271875 0.0079375 0.0271875 10.58425 1.00525"></polygon>
+            </g>
+            <path d="M16,0 C14.5558125,0 13.1569375,0.1925 11.8260625,0.5511875 L11.8260625,31.448875 C13.1569375,31.8075 14.5558125,32 16,32 C17.4441875,32 18.8430625,31.8075 20.1739375,31.4488125 L20.1739375,0.5511875 C18.8430625,0.1925 17.4441875,0 16,0 Z" id="Shape" fill="#D80027"></path>
+            <polygon id="Shape" fill="#FFDA44" points="8.606125 3.47825 9.03775 4.8068125 10.4348125 4.8068125 9.3046875 5.6279375 9.736375 6.9565 8.606125 6.1354375 7.4759375 6.9565 7.90775 5.6279375 6.777625 4.8068125 8.1745625 4.8068125"></polygon>
+        </g>
+    </g>
+</svg>
