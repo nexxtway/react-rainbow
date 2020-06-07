@@ -117,3 +117,25 @@ export const Search = attachThemeAttrs(styled.input)`
         border-bottom: 1px solid ${props => props.palette.border.divider};
     }
 `;
+
+export const EMContainer = styled.div`
+    text-align: center;
+    .Our-robots-did-not-f {
+        width: 188px;
+        height: 40px;
+        font-family: Lato;
+        font-size: 14px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.43;
+        letter-spacing: normal;
+        text-align: center;
+        color: #a4a7b5;
+        margin: 15px auto 0 auto;
+    }
+    .text-style-1 {
+        font-weight: 900;
+        color: #061c3f;
+    }
+`;

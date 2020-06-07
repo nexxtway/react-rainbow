@@ -22,6 +22,7 @@ import scrollTo from './helpers/scrollTo';
 import searchFilter from './helpers/searchFilter';
 import getValueNames from './helpers/getValueNames';
 import isEmptyObject from './helpers/isEmptyObject';
+import EmptyMessage from './EmptyMessage';
 
 const sizeMap = {
     medium: 227,
@@ -55,6 +56,7 @@ const InternalDropdown = forwardRef((props, reference) => {
     const [activeOptionName, setActiveOptionName] = useState(null);
     const [activeOptionIndex, setActiveOptionIndex] = useState(0);
     const [activeChildrenMap, setActiveChildrenMap] = useState();
+    const [emptyMsg, setEmptyMsg] = useState('');
     const activeChildren = useRef([]);
     const allActiveChildren = useRef();
     const firstChild = useRef();
@@ -226,6 +228,9 @@ const InternalDropdown = forwardRef((props, reference) => {
             query: event.target.value,
             data: allActiveChildren.current,
         });
+
+        setEmptyMsg(event.target.value);
+
         setActiveChildrenMap(
             filteredOptions.reduce((acc, option) => {
                 acc[option.name] = true;
@@ -296,7 +301,7 @@ const InternalDropdown = forwardRef((props, reference) => {
                     </Content>
                 </Ul>
                 <RenderIf isTrue={showEmptyMessage}>
-                    <div>Empty Message</div>
+                    <EmptyMessage emptyMsg={emptyMsg} />
                 </RenderIf>
                 <RenderIf isTrue={showScrollDownArrow}>
                     <Arrow
