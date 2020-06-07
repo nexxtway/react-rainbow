@@ -20,6 +20,8 @@ export default function DatePickerModal(props) {
         title,
     } = props;
 
+    const calendarId = id && `${id}_calendar`;
+
     return (
         <StyledModal
             id={id}
@@ -34,6 +36,7 @@ export default function DatePickerModal(props) {
                 </Header>
             </RenderIf>
             <StyledCalendar
+                id={calendarId}
                 locale={locale}
                 minDate={minDate}
                 maxDate={maxDate}

@@ -14,7 +14,7 @@ class PageDatePicker {
     constructor(rootElement) {
         this.rootElement = rootElement;
         this.modalRootEl = `${rootElement}_modal`;
-        this.calendarRootEl = `${rootElement}_calendar`;
+        this.calendarRootEl = `${rootElement}_modal_calendar`;
     }
 
     /**

@@ -1,175 +1,133 @@
-/* eslint-disable react/prop-types */
-import React, { Component } from 'react';
+import React, { useRef, useImperativeHandle, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import CalendarIcon from './calendarIcon';
-import formatDate from './helpers/formatDate';
 import withReduxForm from '../../libs/hocs/withReduxForm';
+import { useLocale } from '../../libs/hooks';
 import { ENTER_KEY, SPACE_KEY } from '../../libs/constants';
+import CalendarIcon from './calendarIcon';
+import { useFormatDate, useDisclosure } from './hooks';
+import DatePickerModal from '../DatePickerModal';
 import StyledContainer from './styled/container';
-import StyledModal from './styled/modal';
-import StyledHeader from './styled/header';
-import StyledHeaderTitle from './styled/headerTitle';
-import StyledCalendar from './styled/calendar';
 import StyledInput from './styled/input';
-import { Consumer } from '../Application/context';
-import { getLocale } from '../../libs/utils';
 
-/**
- * A DatePicker is a text input to capture a date.
- * @category Form
- */
-class DatePickerComponent extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isOpen: false,
-        };
-        this.inputRef = React.createRef();
-        this.handleChange = this.handleChange.bind(this);
-        this.handleKeyDown = this.handleKeyDown.bind(this);
-        this.openModal = this.openModal.bind(this);
-        this.closeModal = this.closeModal.bind(this);
-        this.handleBlur = this.handleBlur.bind(this);
-        this.handleFocus = this.handleFocus.bind(this);
-    }
+const DatePicker = React.forwardRef((props, ref) => {
+    const {
+        value,
+        minDate,
+        maxDate,
+        placeholder,
+        onClick,
+        onChange,
+        onFocus,
+        onBlur,
+        label,
+        required,
+        style,
+        className,
+        formatStyle,
+        hideLabel,
+        name,
+        bottomHelpText,
+        isCentered,
+        error,
+        readOnly,
+        disabled,
+        tabIndex,
+        id,
+        locale,
+        variant,
+        selectionType,
+    } = props;
 
-    handleChange(...args) {
-        const { onChange } = this.props;
-        this.closeModal();
-        onChange(...args);
-    }
+    const currentLocale = useLocale(locale);
+    const inputRef = useRef();
+    const formattedDate = useFormatDate(value, formatStyle, currentLocale);
+    const { isOpen, open: openModal, close: closeModal } = useDisclosure(false);
+    const modalId = id && `${id}_modal`;
 
-    handleBlur() {
-        const { onBlur, value } = this.props;
-        onBlur(value);
-    }
+    useImperativeHandle(ref, () => ({
+        focus: () => {
+            inputRef.current.focus();
+        },
+        click: () => {
+            inputRef.current.click();
+        },
+        blur: () => {
+            inputRef.current.blur();
+        },
+    }));
 
-    handleFocus() {
-        const { onFocus, value } = this.props;
+    const handleFocus = () => {
         onFocus(value);
-    }
+    };
 
-    handleKeyDown(event) {
-        const { keyCode } = event;
-        const { readOnly } = this.props;
-        const shouldOpenModal = (keyCode === ENTER_KEY || keyCode === SPACE_KEY) && !readOnly;
-        if (shouldOpenModal) {
-            this.setState({ isOpen: true });
-        }
-    }
+    const handleBlur = () => {
+        onBlur(value);
+    };
 
-    openModal(event) {
-        const { onClick, readOnly } = this.props;
-        if (!readOnly) {
-            this.setState({ isOpen: true });
-            onClick(event);
-        }
-    }
+    const handleChange = useCallback(
+        (...args) => {
+            closeModal();
+            onChange(...args);
+        },
+        [closeModal, onChange],
+    );
 
-    closeModal() {
-        this.setState({ isOpen: false });
-    }
+    const handleClick = useCallback(
+        event => {
+            if (!readOnly) {
+                openModal();
+                onClick(event);
+            }
+        },
+        [onClick, openModal, readOnly],
+    );
 
-    /**
-     * Sets focus on the element.
-     * @public
-     */
-    focus() {
-        this.inputRef.current.focus();
-    }
+    const handleKeyDown = useCallback(
+        ({ keyCode }) => {
+            const shouldOpenModal = (keyCode === ENTER_KEY || keyCode === SPACE_KEY) && !readOnly;
+            if (shouldOpenModal) openModal();
+        },
+        [openModal, readOnly],
+    );
 
-    /**
-     * Sets click on the element.
-     * @public
-     */
-    click() {
-        this.inputRef.current.click();
-    }
-
-    /**
-     * Sets blur on the element.
-     * @public
-     */
-    blur() {
-        this.inputRef.current.blur();
-    }
-
-    render() {
-        const {
-            value,
-            minDate,
-            maxDate,
-            placeholder,
-            label,
-            required,
-            style,
-            className,
-            formatStyle,
-            hideLabel,
-            name,
-            bottomHelpText,
-            isCentered,
-            error,
-            readOnly,
-            disabled,
-            tabIndex,
-            id,
-            locale,
-        } = this.props;
-        const { isOpen } = this.state;
-
-        const formattedDate = formatDate(value, formatStyle, locale);
-        const modalId = id && `${id}_modal`;
-        const calendarId = id && `${id}_calendar`;
-
-        return (
-            <StyledContainer id={id} className={className} style={style}>
-                <StyledInput
-                    ref={this.inputRef}
-                    label={label}
-                    placeholder={placeholder}
-                    icon={<CalendarIcon />}
-                    iconPosition="right"
-                    required={required}
-                    value={formattedDate}
-                    onKeyDown={this.handleKeyDown}
-                    onClick={this.openModal}
-                    onFocus={this.handleFocus}
-                    onBlur={this.handleBlur}
-                    hideLabel={hideLabel}
-                    name={name}
-                    bottomHelpText={bottomHelpText}
-                    isCentered={isCentered}
-                    error={error}
-                    readOnly={readOnly}
-                    disabled={disabled}
-                    tabIndex={tabIndex}
-                />
-
-                <StyledModal id={modalId} isOpen={isOpen} onRequestClose={this.closeModal}>
-                    <StyledHeader>
-                        <StyledHeaderTitle>{formattedDate}</StyledHeaderTitle>
-                    </StyledHeader>
-                    <StyledCalendar
-                        id={calendarId}
-                        value={value}
-                        minDate={minDate}
-                        maxDate={maxDate}
-                        formatStyle={formatStyle}
-                        onChange={this.handleChange}
-                        locale={locale}
-                    />
-                </StyledModal>
-            </StyledContainer>
-        );
-    }
-}
-
-const DatePicker = React.forwardRef(({ locale, ...rest }, ref) => (
-    <Consumer>
-        {values => <DatePickerComponent ref={ref} locale={getLocale(values, locale)} {...rest} />}
-    </Consumer>
-));
+    return (
+        <StyledContainer id={id} className={className} style={style}>
+            <StyledInput
+                ref={inputRef}
+                label={label}
+                placeholder={placeholder}
+                icon={<CalendarIcon />}
+                iconPosition="right"
+                required={required}
+                value={formattedDate}
+                onKeyDown={handleKeyDown}
+                onClick={handleClick}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+                hideLabel={hideLabel}
+                name={name}
+                bottomHelpText={bottomHelpText}
+                isCentered={isCentered}
+                error={error}
+                readOnly={readOnly}
+                disabled={disabled}
+                tabIndex={tabIndex}
+            />
+            <DatePickerModal
+                id={modalId}
+                isOpen={isOpen}
+                title={formattedDate || placeholder}
+                variant={variant}
+                selectionType={selectionType}
+                minDate={minDate}
+                maxDate={maxDate}
+                value={value}
+                onChange={handleChange}
+                onRequestClose={closeModal}
+            />
+        </StyledContainer>
+    );
+});
 
 DatePicker.propTypes = {
     /** Sets the date for the DatePicker programmatically. */
@@ -223,6 +181,10 @@ DatePicker.propTypes = {
     style: PropTypes.object,
     /** The DatePicker locale. Defaults to browser's language. */
     locale: PropTypes.string,
+    /** The type of the selection. It can be a single date or a range. The default value is 'single'. */
+    selectionType: PropTypes.oneOf(['single', 'range']),
+    /** The calendar variant. Defaults to 'single' */
+    variant: PropTypes.oneOf(['single', 'double']),
 };
 
 DatePicker.defaultProps = {
@@ -249,6 +211,8 @@ DatePicker.defaultProps = {
     className: undefined,
     style: undefined,
     locale: undefined,
+    selectionType: 'single',
+    variant: 'single',
 };
 
 export default withReduxForm(DatePicker);
