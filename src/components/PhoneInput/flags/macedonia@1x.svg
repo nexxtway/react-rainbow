@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>republic-of-macedonia@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="flags" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="republic-of-macedonia" fill-rule="nonzero">
+            <circle id="Oval" fill="#FFDA44" cx="16" cy="16" r="16"></circle>
+            <g id="Group" transform="translate(0.125000, 0.125000)" fill="#D80027">
+                <path d="M18.30825,31.6910625 C20.9105,31.2940625 23.305875,30.2693125 25.33675,28.7774375 L15.875,15.875 L18.30825,31.6910625 Z" id="Shape"></path>
+                <path d="M13.4416875,0.0589375 C10.8395,0.4559375 8.444125,1.4806875 6.413125,2.9725 L15.875,15.875 L13.4416875,0.0589375 Z" id="Shape"></path>
+                <path d="M6.413125,28.7774375 C8.444,30.26925 10.839375,31.294 13.4415625,31.691125 L15.875,15.875 L6.413125,28.7774375 Z" id="Shape"></path>
+                <path d="M2.9725,6.413125 C1.480625,8.444125 0.456,10.8394375 0.0589375,13.4416875 L15.875,15.875 L2.9725,6.413125 Z" id="Shape"></path>
+                <path d="M0.0589375,18.30825 C0.4559375,20.9105 1.4806875,23.305875 2.9725625,25.33675 L15.875,15.875 L0.0589375,18.30825 Z" id="Shape"></path>
+                <path d="M31.6910625,13.4416875 C31.294,10.8395 30.2693125,8.444125 28.7774375,6.4131875 L15.875,15.875 L31.6910625,13.4416875 Z" id="Shape"></path>
+                <path d="M25.33675,2.9724375 C23.3058125,1.480625 20.9105,0.4559375 18.30825,0.0589375 L15.875,15.875 L25.33675,2.9724375 Z" id="Shape"></path>
+                <path d="M28.7775625,25.3368125 C30.269375,23.305875 31.2940625,20.9104375 31.6911875,18.3083125 L15.875,15.875 L28.7775625,25.3368125 Z" id="Shape"></path>
+                <circle id="Oval" cx="15.875" cy="15.875" r="5.5651875"></circle>
+            </g>
+            <circle id="Oval" fill="#FFDA44" cx="16" cy="16" r="4.1739375"></circle>
+        </g>
+    </g>
+</svg>

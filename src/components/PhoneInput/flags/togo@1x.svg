@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>togo@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="flags" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="togo" fill-rule="nonzero">
+            <circle id="Oval" fill="#FFDA44" cx="16" cy="16" r="16"></circle>
+            <g id="Group" transform="translate(3.187500, 0.000000)" fill="#496E2D">
+                <path d="M12.8125,0 C12.800875,0.000125 12.116875,6.4 12.116875,6.4 L25.61325,6.4 C22.6941875,2.5139375 18.047,0 12.8125,0 Z" id="Shape"></path>
+                <path d="M12.8125,32 C18.047,32 22.6941875,29.4860625 25.6131875,25.6 L0.0118125,25.6 C2.9308125,29.4860625 7.578,32 12.8125,32 Z" id="Shape"></path>
+                <path d="M28.492125,12.8 L12.116875,12.8 L12.8125,19.2 L28.492125,19.2 C28.702125,18.1660625 28.8125,17.0959375 28.8125,16 C28.8125,14.9040625 28.702,13.8339375 28.492125,12.8 Z" id="Shape"></path>
+            </g>
+            <path d="M16,19.2 C16,15.860875 16,3.7565 16,0 C7.1635,0 0,7.1635 0,16 C0,17.0959375 0.1105,18.1660625 0.320375,19.2 L16,19.2 Z" id="Shape" fill="#D80027"></path>
+            <polygon id="Shape" fill="#F0F0F0" points="8.8285625 7.6521875 9.8645625 10.840625 13.217375 10.840625 10.5050625 12.8114375 11.5409375 16 8.8285625 14.029375 6.1161875 16 7.15225 12.8114375 4.4399375 10.840625 7.792625 10.840625"></polygon>
+        </g>
+    </g>
+</svg>

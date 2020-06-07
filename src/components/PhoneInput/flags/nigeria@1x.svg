@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>nigeria@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="flags" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="nigeria" fill-rule="nonzero">
+            <circle id="Oval" fill="#F0F0F0" cx="16" cy="16" r="16"></circle>
+            <g id="Group" transform="translate(0.000000, 0.937500)" fill="#6DA544">
+                <path d="M0,15.0625 C0,21.942 4.342,27.806625 10.4348125,30.067375 L10.4348125,0.05775 C4.342,2.318375 0,8.183125 0,15.0625 Z" id="Shape"></path>
+                <path d="M32,15.0625 C32,8.183125 27.658,2.318375 21.5651875,0.05775 L21.5651875,30.0674375 C27.658,27.806625 32,21.942 32,15.0625 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

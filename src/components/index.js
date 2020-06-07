@@ -43,6 +43,7 @@ export { default as MonthlyCalendar } from './MonthlyCalendar';
 export { default as Notification } from './Notification';
 export { default as Option } from './Option';
 export { default as Pagination } from './Pagination';
+export { default as PhoneInput } from './PhoneInput';
 export { default as Picklist } from './Picklist';
 export { default as PicklistOption } from './PicklistOption';
 export { default as PresenceMap } from './PresenceMap';

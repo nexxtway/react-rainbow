@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>haiti@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="flags" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="haiti" fill-rule="nonzero">
+            <path d="M32,16 C32,24.8365 24.8365,32 16,32 C7.1635,32 0,24.8365 0,16 C0,7.1635 16,0 16,0 C16,0 32,7.1635 32,16 Z" id="Shape" fill="#A2001D"></path>
+            <path d="M0,16 C0,7.1635 7.1635,0 16,0 C24.8365,0 32,7.1635 32,16" id="Shape" fill="#0052B4"></path>
+            <polygon id="Shape" fill="#F0F0F0" points="21.5651875 20.1739375 16 19.47825 10.4348125 20.1739375 10.4348125 11.8260625 21.5651875 11.8260625"></polygon>
+            <circle id="Oval" fill="#0052B4" cx="16" cy="16.695625" r="2.782625"></circle>
+            <circle id="Oval" fill="#A2001D" cx="16" cy="16.695625" r="1.3913125"></circle>
+            <polygon id="Shape" fill="#6DA544" points="13.9130625 13.217375 18.0869375 13.217375 16 15.304375"></polygon>
+            <rect id="Rectangle-path" fill="#FFDA44" x="15.304375" y="14.6086875" width="1.3913125" height="4.1739375"></rect>
+            <polygon id="Shape" fill="#6DA544" points="18.2260625 18.3651875 13.7738125 18.3651875 10.4348125 20.1739375 21.5651875 20.1739375"></polygon>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>United States@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="32" height="32" rx="16"></rect>
+    </defs>
+    <g id="flags" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="United-States">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#F0F0F0" xlink:href="#path-1"></use>
+            <rect id="Rectangle-4" fill="#D0021B" mask="url(#mask-2)" x="16" y="0" width="16" height="2.66666667"></rect>
+            <rect id="Rectangle-4" fill="#D0021B" mask="url(#mask-2)" x="16" y="5.33333333" width="16" height="2.66666667"></rect>
+            <rect id="Rectangle-4" fill="#D0021B" mask="url(#mask-2)" x="16" y="10.6666667" width="16" height="2.66666667"></rect>
+            <rect id="Rectangle-4" fill="#D0021B" mask="url(#mask-2)" x="0" y="16" width="32" height="2.66666667"></rect>
+            <rect id="Rectangle-4" fill="#D0021B" mask="url(#mask-2)" x="0" y="21.3333333" width="32" height="2.66666667"></rect>
+            <rect id="Rectangle-4" fill="#D0021B" mask="url(#mask-2)" x="0" y="26.6666667" width="32" height="2.66666667"></rect>
+            <g id="Group-2" mask="url(#mask-2)">
+                <g transform="translate(-2.666667, 0.000000)">
+                    <rect id="Rectangle-3" fill="#004493" x="0" y="0" width="18.6666667" height="18.6666667"></rect>
+                    <polygon id="Star" fill="#FFFFFF" points="14.6666667 15.544479 13.8426213 16 14 15.0351909 13.3333333 14.3519094 14.254644 14.2111456 14.6666667 13.3333333 15.0786893 14.2111456 16 14.3519094 15.3333333 15.0351909 15.490712 16"></polygon>
+                    <polygon id="Star" fill="#FFFFFF" points="14.6666667 10.2111456 13.8426213 10.6666667 14 9.7018576 13.3333333 9.01857603 14.254644 8.87781228 14.6666667 8 15.0786893 8.87781228 16 9.01857603 15.3333333 9.7018576 15.490712 10.6666667"></polygon>
+                    <polygon id="Star" fill="#FFFFFF" points="9.33333333 15.544479 8.50928802 16 8.66666667 15.0351909 8 14.3519094 8.92131067 14.2111456 9.33333333 13.3333333 9.74535599 14.2111456 10.6666667 14.3519094 10 15.0351909 10.1573787 16"></polygon>
+                    <polygon id="Star" fill="#FFFFFF" points="9.33333333 10.2111456 8.50928802 10.6666667 8.66666667 9.7018576 8 9.01857603 8.92131067 8.87781228 9.33333333 8 9.74535599 8.87781228 10.6666667 9.01857603 10 9.7018576 10.1573787 10.6666667"></polygon>
+                    <polygon id="Star" fill="#FFFFFF" points="4 15.544479 3.17595468 16 3.33333333 15.0351909 2.66666667 14.3519094 3.58797734 14.2111456 4 13.3333333 4.41202266 14.2111456 5.33333333 14.3519094 4.66666667 15.0351909 4.82404532 16"></polygon>
+                    <polygon id="Star" fill="#FFFFFF" points="14.6666667 4.87781228 13.8426213 5.33333333 14 4.36852427 13.3333333 3.6852427 14.254644 3.54447895 14.6666667 2.66666667 15.0786893 3.54447895 16 3.6852427 15.3333333 4.36852427 15.490712 5.33333333"></polygon>
+                    <polygon id="Star" fill="#FFFFFF" points="4 4.87781228 3.17595468 5.33333333 3.33333333 4.36852427 2.66666667 3.6852427 3.58797734 3.54447895 4 2.66666667 4.41202266 3.54447895 5.33333333 3.6852427 4.66666667 4.36852427 4.82404532 5.33333333"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

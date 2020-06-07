@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>sweden@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="flags" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="sweden" fill-rule="nonzero">
+            <circle id="Oval" fill="#FFDA44" cx="16" cy="16" r="16"></circle>
+            <g id="Group" transform="translate(0.125000, 0.000000)" fill="#0052B4">
+                <path d="M12.39675,13.9130625 L31.7395625,13.9130625 C30.716875,6.062625 24.0041875,0 15.875,0 C14.680375,0 13.5166875,0.1320625 12.39675,0.3803125 L12.39675,13.9130625 Z" id="Shape"></path>
+                <path d="M8.2228125,13.9130625 L8.2228125,1.9454375 C3.8294375,4.3425625 0.684375,8.7395 0.0104375,13.9130625 L8.2228125,13.9130625 Z" id="Shape"></path>
+                <path d="M8.2228125,18.0869375 L0.0104375,18.0869375 C0.684375,23.2605 3.8294375,27.6574375 8.2228125,30.0545 L8.2228125,18.0869375 Z" id="Shape"></path>
+                <path d="M12.39675,18.0869375 L12.39675,31.6196875 C13.5166875,31.8679375 14.680375,32 15.875,32 C24.0041875,32 30.716875,25.937375 31.7395625,18.0869375 L12.39675,18.0869375 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>
