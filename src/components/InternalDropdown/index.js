@@ -18,9 +18,9 @@ import getChildMenuItemNodes from './helpers/getChildMenuItemNodes';
 import insertChildOrderly from './helpers/insertChildOrderly';
 import isScrollPositionAtMenuBottom from './helpers/isScrollPositionAtMenuBottom';
 import isOptionVisible from './helpers/isOptionVisible';
-import getNormalizedValue from './helpers/getNormalizedValue';
 import scrollTo from './helpers/scrollTo';
 import searchFilter from './helpers/searchFilter';
+import getValueNames from './helpers/getValueNames';
 
 const sizeMap = {
     medium: 227,
@@ -38,7 +38,17 @@ const menuContainerStyles = {
  * @category Internal
  */
 const InternalDropdown = forwardRef((props, reference) => {
-    const { isLoading, children, value, onChange, enableSearch, id, className, style } = props;
+    const {
+        isLoading,
+        children,
+        value,
+        onChange,
+        enableSearch,
+        id,
+        className,
+        style,
+        multiple,
+    } = props;
     const [showScrollUpArrow, setShowScrollUpArrow] = useState(false);
     const [showScrollDownArrow, setShowScrollDownArrow] = useState(false);
     const [activeOptionName, setActiveOptionName] = useState(null);
@@ -144,6 +154,26 @@ const InternalDropdown = forwardRef((props, reference) => {
         }
     };
 
+    const handleChange = useCallback(
+        option => {
+            const { name } = option;
+            if (multiple) {
+                if (Array.isArray(value)) {
+                    if (value.some(v => v.name === name)) {
+                        return null;
+                    }
+                    return onChange(value.concat([option]));
+                }
+                if (value) {
+                    return onChange([value, option]);
+                }
+                return onChange([option]);
+            }
+            return onChange(option);
+        },
+        [multiple, value, onChange],
+    );
+
     const handleKeyUpPressed = () => {
         const nextActiveIndex =
             (activeChildren.current.length + activeOptionIndex - 1) % activeChildren.current.length;
@@ -170,7 +200,7 @@ const InternalDropdown = forwardRef((props, reference) => {
 
     const handleKeyEnterPressed = () => {
         const { ref, ...rest } = activeChildren.current[activeOptionIndex];
-        return onChange(rest);
+        return handleChange(rest);
     };
 
     const keyHandlerMap = {
@@ -209,14 +239,14 @@ const InternalDropdown = forwardRef((props, reference) => {
     };
 
     const context = useMemo(() => {
-        const { name } = getNormalizedValue(value);
+        const currentValues = getValueNames(value);
         return {
-            privateOnClick: (event, option) => onChange(option),
+            privateOnClick: (event, option) => handleChange(option),
             privateRegisterChild: registerChild,
             privateUnregisterChild: unregisterChild,
             privateOnHover: hoverChild,
             activeOptionName,
-            currentValueName: name,
+            currentValues,
             activeChildrenMap,
         };
     }, [
@@ -226,7 +256,7 @@ const InternalDropdown = forwardRef((props, reference) => {
         hoverChild,
         activeOptionName,
         activeChildrenMap,
-        onChange,
+        handleChange,
     ]);
 
     return (
@@ -290,13 +320,22 @@ InternalDropdown.propTypes = {
     /** Specifies the selected value of the InternalDropdown. Must have a name which identifies de selected option.
      * Also it can have whatever other key value pairs you want.
      */
-    value: PropTypes.shape({
-        name: PropTypes.string,
-    }),
+    value: PropTypes.oneOfType([
+        PropTypes.shape({
+            name: PropTypes.string,
+        }),
+        PropTypes.arrayOf(
+            PropTypes.shape({
+                name: PropTypes.string,
+            }),
+        ),
+    ]),
     /** The action triggered when click/select an option. */
     onChange: PropTypes.func,
     /** If is set to true, then a search input to filter is showed. */
     enableSearch: PropTypes.bool,
+    /** Specifies that multiple items can be selected */
+    multiple: PropTypes.bool,
 };
 
 InternalDropdown.defaultProps = {
@@ -308,6 +347,7 @@ InternalDropdown.defaultProps = {
     value: undefined,
     onChange: () => {},
     enableSearch: false,
+    multiple: false,
 };
 
 export default InternalDropdown;
