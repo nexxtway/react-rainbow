@@ -118,24 +118,25 @@ export const Search = attachThemeAttrs(styled.input)`
     }
 `;
 
-export const EMContainer = styled.div`
+export const EMContainer = attachThemeAttrs(styled.div)`
     text-align: center;
     .Our-robots-did-not-f {
         width: 188px;
         height: 40px;
         font-family: Lato;
-        font-size: 14px;
+        font-size: 16px;
         font-weight: normal;
         font-stretch: normal;
         font-style: normal;
         line-height: 1.43;
         letter-spacing: normal;
         text-align: center;
-        color: #a4a7b5;
+        color: ${props => props.palette.text.label};
         margin: 15px auto 0 auto;
     }
     .text-style-1 {
+        font-size: 16px;
         font-weight: 900;
-        color: #061c3f;
+        color: ${props => props.palette.text.main};
     }
 `;
