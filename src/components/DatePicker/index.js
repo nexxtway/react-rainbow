@@ -6,8 +6,7 @@ import { ENTER_KEY, SPACE_KEY } from '../../libs/constants';
 import CalendarIcon from './calendarIcon';
 import { useFormatDate, useDisclosure } from './hooks';
 import DatePickerModal from '../DatePickerModal';
-import StyledContainer from './styled/container';
-import StyledInput from './styled/input';
+import { StyledContainer, StyledInput } from './styled';
 
 const DatePicker = React.forwardRef((props, ref) => {
     const {
