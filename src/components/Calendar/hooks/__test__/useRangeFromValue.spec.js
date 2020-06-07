@@ -10,15 +10,23 @@ describe('useCurrentDateFromValue', () => {
         const { result } = renderHook(() => useRangeFromValue(date, 'single'));
         expect(result.current).toBe(undefined);
     });
-    it('is should return array with date when selectionType is range and value is null, undefined or not an array', () => {
-        const dates = [null, undefined, new Date(2019, 0, 15), '2019-01-23'];
+    it('is should return array with date when selectionType is range and value is not an array', () => {
+        const dates = [new Date(2019, 0, 15), '2019-01-23'];
         dates.forEach(date => {
             const { result } = renderHook(() => useRangeFromValue(date, 'range'));
             expect(result.current).toEqual(['2019-01-01']);
         });
     });
-    it('is should return empty array when selectionType is range and value is empty array', () => {
-        const dates = [[], [undefined], [null], [undefined, undefined], [null, null]];
+    it('is should return empty array when selectionType is range and value is null, undefined or empty array', () => {
+        const dates = [
+            null,
+            undefined,
+            [],
+            [undefined],
+            [null],
+            [undefined, undefined],
+            [null, null],
+        ];
         dates.forEach(date => {
             const { result } = renderHook(() => useRangeFromValue(date, 'range'));
             expect(result.current).toEqual([]);
