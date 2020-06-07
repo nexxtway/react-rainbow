@@ -14,7 +14,7 @@ export default function EmptyMessage({ emptyMessage }) {
             <SearchIcon />
             <MessageTextContainer>
                 <MessageDescription>Our robots did not find any match for</MessageDescription>
-                <MessageHighLight className="text-style-1"> “{emptyMessage}”</MessageHighLight>
+                <MessageHighLight> “{emptyMessage}”</MessageHighLight>
             </MessageTextContainer>
         </MessageContainer>
     );
