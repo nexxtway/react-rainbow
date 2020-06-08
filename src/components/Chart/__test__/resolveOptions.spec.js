@@ -43,6 +43,7 @@ describe('resolveOptions function', () => {
             showLegend: true,
             legendPosition: 'bottom',
             showStacked: false,
+            showLabelsOnBars: false,
         };
 
         const options = resolveOptions(conditions);
@@ -58,6 +59,7 @@ describe('resolveOptions function', () => {
             showLegend: true,
             legendPosition: 'bottom',
             showStacked: false,
+            showLabelsOnBars: true,
         };
 
         const options = resolveOptions(conditions);
@@ -66,6 +68,7 @@ describe('resolveOptions function', () => {
             ...baseOptions,
             animation: {
                 duration: 0,
+                onComplete: null,
             },
             hover: {
                 animationDuration: 0,
@@ -80,6 +83,7 @@ describe('resolveOptions function', () => {
             showLegend: true,
             legendPosition: 'bottom',
             showStacked: false,
+            showLabelsOnBars: false,
         };
 
         const options = resolveOptions(conditions);
@@ -97,6 +101,7 @@ describe('resolveOptions function', () => {
             showLegend: true,
             legendPosition: 'bottom',
             showStacked: false,
+            showLabelsOnBars: false,
         };
 
         const options = resolveOptions(conditions);
@@ -118,6 +123,7 @@ describe('resolveOptions function', () => {
             showLegend: true,
             legendPosition: 'bottom',
             showStacked: true,
+            showLabelsOnBars: false,
         };
 
         const options = resolveOptions(conditions);
@@ -160,6 +166,7 @@ describe('resolveOptions function', () => {
             showLegend: true,
             legendPosition: 'bottom',
             showStacked: true,
+            showLabelsOnBars: true,
         };
 
         const options = resolveOptions(conditions);
@@ -168,6 +175,7 @@ describe('resolveOptions function', () => {
             ...baseOptions,
             animation: {
                 duration: 0,
+                onComplete: null,
             },
             hover: {
                 animationDuration: 0,

@@ -1,7 +1,5 @@
-/* eslint-disable func-names */
-/* eslint-disable object-shorthand */
-/* eslint-disable no-underscore-dangle */
 import ChartJS from 'chart.js';
+import resolveLabelsOnBars from './resolveLabelsOnBars';
 import { replaceAlpha } from '../../styles/helpers/color';
 import defaultTheme from '../../styles/defaultTheme';
 
@@ -35,7 +33,7 @@ export default function resolveOptions(conditions) {
     };
 
     let options = {
-        maintainAspectRatio: maintainAspectRatio,
+        maintainAspectRatio,
         legend: {
             display: showLegend,
             position: legendPosition,
@@ -118,30 +116,7 @@ export default function resolveOptions(conditions) {
             },
             animation: {
                 duration: disableAnimations ? 0 : ChartJS.defaults.global.animation.duration,
-                onComplete:
-                    showLabelsOnBars && type === 'bar'
-                        ? function() {
-                              const chart = this.chart;
-                              const ctx = chart.ctx;
-
-                              ctx.font = ChartJS.helpers.fontString(
-                                  ChartJS.defaults.global.defaultFontSize,
-                                  ChartJS.defaults.global.defaultFontStyle,
-                                  ChartJS.defaults.global.defaultFontFamily,
-                              );
-                              ctx.fillStyle = legend.label;
-                              ctx.textAlign = 'center';
-                              ctx.textBaseline = 'bottom';
-
-                              this.data.datasets.forEach((dataset, i) => {
-                                  const meta = chart.controller.getDatasetMeta(i);
-                                  meta.data.forEach((bar, index) => {
-                                      const dataValue = dataset.data[index];
-                                      ctx.fillText(dataValue, bar._model.x, bar._model.y - 5);
-                                  });
-                              });
-                          }
-                        : null,
+                onComplete: showLabelsOnBars && type === 'bar' ? resolveLabelsOnBars : null,
             },
         };
     }
