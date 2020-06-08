@@ -34,11 +34,24 @@ export const StyledCalendar = styled(Calendar)`
 
 export const Header = styled.header`
     display: flex;
-    align-items: center;
+    align-items: stretch;
     padding: 4px 48px 8px 20px;
+
+    ${props =>
+        props.variant === 'single' &&
+        `
+        width: 420px;
+        `};
+
+    ${props =>
+        props.variant === 'double' &&
+        `
+        width: 800px;
+        `};
 `;
 
 export const HeaderTitle = attachThemeAttrs(styled.h1)`
+    display: flex;
     color: ${props => props.palette.brand.main};
     font-size: ${FONT_SIZE_HEADING_LARGE};
     font-weight: 500;

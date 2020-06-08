@@ -39,7 +39,7 @@ const DatePicker = React.forwardRef((props, ref) => {
 
     const currentLocale = useLocale(locale);
     const inputRef = useRef();
-    const formattedDate = useFormatDate(value, formatStyle, currentLocale);
+    const formattedDate = useFormatDate(value, formatStyle, currentLocale, selectionType);
     const { isOpen, open: openModal, close: closeModal } = useDisclosure(false);
     const modalId = id && `${id}_modal`;
 
@@ -64,11 +64,18 @@ const DatePicker = React.forwardRef((props, ref) => {
     };
 
     const handleChange = useCallback(
-        (...args) => {
-            closeModal();
-            onChange(...args);
+        newValue => {
+            if (selectionType === 'single') {
+                closeModal();
+                onChange(newValue);
+            } else if (newValue.length > 1) {
+                closeModal();
+                onChange(newValue);
+            } else {
+                onChange(newValue);
+            }
         },
-        [closeModal, onChange],
+        [closeModal, onChange, selectionType],
     );
 
     const handleClick = useCallback(
@@ -130,7 +137,11 @@ const DatePicker = React.forwardRef((props, ref) => {
 
 DatePicker.propTypes = {
     /** Sets the date for the DatePicker programmatically. */
-    value: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
+    value: PropTypes.oneOfType([
+        PropTypes.instanceOf(Date),
+        PropTypes.string,
+        PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string])),
+    ]),
     /** The ending of a range of valid dates. The range includes the endDate.
      * The default value is current date + 100 years. */
     maxDate: PropTypes.instanceOf(Date),
