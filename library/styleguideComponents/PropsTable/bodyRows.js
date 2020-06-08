@@ -64,6 +64,10 @@ function renderValue(value, caption, row) {
         }
     }
 
+    if (caption === 'Default' && type.name === 'array') {
+        return <div className="react-rainbow-defualt-array">{value}</div>;
+    }
+
     return value;
 }
 

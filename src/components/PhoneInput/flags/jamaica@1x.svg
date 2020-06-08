@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>jamaica@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="flags" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="jamaica" fill-rule="nonzero">
+            <circle id="Oval" fill="#FFDA44" cx="16" cy="16" r="16"></circle>
+            <path d="M25.741,3.3075 C23.0430625,1.2336875 19.665875,0 16,0 C12.334125,0 8.956875,1.23375 6.2589375,3.3075 L16,13.0485 L25.741,3.3075 Z" id="Shape" fill="#6DA544"></path>
+            <path d="M3.3074375,6.259 C1.23375,8.9569375 0,12.334125 0,16 C0,19.665875 1.23375,23.043125 3.3075,25.741125 L13.0485625,16 L3.3074375,6.259 Z" id="Shape" fill="#000000"></path>
+            <path d="M6.2589375,28.6925 C8.9569375,30.7663125 12.334125,32 16,32 C19.665875,32 23.0430625,30.76625 25.7410625,28.6925 L16,18.9515 L6.2589375,28.6925 Z" id="Shape" fill="#6DA544"></path>
+            <path d="M28.6925,25.741 C30.7663125,23.0430625 32,19.665875 32,16 C32,12.334125 30.7663125,8.9569375 28.6925,6.259 L18.9515,16 L28.6925,25.741 Z" id="Shape" fill="#000000"></path>
+        </g>
+    </g>
+</svg>

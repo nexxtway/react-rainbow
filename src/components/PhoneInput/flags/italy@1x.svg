@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Italy@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="flags" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Italy" fill-rule="nonzero">
+            <path d="M0.551838604,12.15582 C2.66921038,3.57576884 11.3164921,-1.65004138 19.8748765,0.472690835 C28.4332609,2.59542305 33.6458746,11.2645966 31.5285028,19.8446478 C29.411131,28.416597 20.7638494,33.6505092 12.205465,31.527777 C3.65516213,29.3969427 -1.56553317,20.7277692 0.551838604,12.15582" id="Shape" fill="#F1F2F2"></path>
+            <g id="Group" transform="translate(0.000000, 0.891139)">
+                <path d="M10.6747475,0.0324050633 C5.8020202,1.77417722 1.86666667,5.84911392 0.533333333,11.2607595 C-1.45454545,19.321519 3.03030303,27.4632911 10.6747475,30.1772152 L10.6747475,0.0324050633 Z" id="Shape" fill="#00A94F"></path>
+                <path d="M21.389899,0.0405063291 L21.389899,30.1610127 C26.2464646,28.4111392 30.1737374,24.3443038 31.5070707,18.9407595 C33.4949495,10.8962025 29.0181818,2.76253165 21.389899,0.0405063291" id="Shape" fill="#EF3827"></path>
+            </g>
+        </g>
+    </g>
+</svg>

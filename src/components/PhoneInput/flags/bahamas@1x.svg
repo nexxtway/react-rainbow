@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>bahamas@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="flags" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="bahamas" fill-rule="nonzero">
+            <ellipse id="Oval" fill="#FFDA44" cx="16.0311891" cy="16" rx="15.9688109" ry="16"></ellipse>
+            <g id="Group" transform="translate(4.678363, 0.000000)" fill="#338AF3">
+                <path d="M5.10415595,10.4348125 L26.3283275,10.4348125 C24.0721092,4.342 18.2187914,0 11.3528265,0 C6.94306433,0 2.95129825,1.7911875 0.0616920078,4.6868125 L5.10415595,10.4348125 Z" id="Shape"></path>
+                <path d="M5.10415595,21.5651875 L26.3283275,21.5651875 C24.0721092,27.658 18.2187914,32 11.3528265,32 C6.94306433,32 2.95129825,30.2088125 0.0616920078,27.3131875 L5.10415595,21.5651875 Z" id="Shape"></path>
+            </g>
+            <path d="M4.73949318,4.68625 C-1.49670175,10.934625 -1.49670175,21.0653125 4.73949318,27.31375 C7.31652242,24.7316875 9.79499415,22.248375 16.0311891,16 L4.73949318,4.68625 Z" id="Shape" fill="#000000"></path>
+        </g>
+    </g>
+</svg>

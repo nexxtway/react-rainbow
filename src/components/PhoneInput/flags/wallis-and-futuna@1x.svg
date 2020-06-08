@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>wallis-and-futuna@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="16" cy="16" r="16"></circle>
+    </defs>
+    <g id="flags" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="wallis-and-futuna">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#D8D8D8" xlink:href="#path-1"></use>
+            <g mask="url(#mask-2)" id="Group">
+                <g transform="translate(0.000000, -2.000000)">
+                    <g transform="translate(23.000000, 17.933468) scale(-1, 1) rotate(-180.000000) translate(-23.000000, -17.933468) translate(0.000000, 0.933468)">
+                        <g fill="#ED2939" fill-rule="nonzero" id="Shape">
+                            <path d="M40.3727722,32.8348891 L20.1863306,32.8348891 L20.1863306,18.9567036 L0,18.9567036 L0,5.07862903 C0,2.29170363 2.25965726,0.032046371 5.04658266,0.032046371 L40.3727722,0.032046371 C43.1596976,0.032046371 45.4193548,2.29170363 45.4193548,5.07862903 L45.4193548,27.7883065 C45.4193548,30.5752319 43.1596976,32.8348891 40.3727722,32.8348891 Z"></path>
+                        </g>
+                        <g transform="translate(0.000000, 16.411290)" fill-rule="nonzero" id="Shape">
+                            <path d="M7.56992944,16.4235988 L5.04658266,16.4235988 C2.25965726,16.4235988 0,14.1639415 0,11.3770161 L0,1.28385081 L7.56992944,1.28385081 L7.56992944,16.4235988 Z" fill="#002395"></path>
+                            <polygon fill="#EEEEEE" points="7.56992944 16.4235988 7.56992944 1.28385081 0 1.28385081 0 0.0221774194 23.9713508 0.0221774194 23.9713508 16.4235988"></polygon>
+                            <polygon fill="#ED2939" points="22.7096774 1.28385081 15.139748 1.28385081 15.139748 16.4235988 22.7096774 16.4235988"></polygon>
+                            <polygon fill="#EEEEEE" points="15.139748 1.28385081 7.56992944 1.28385081 7.56992944 16.4235988 15.1398589 16.4235988 15.1398589 1.28385081"></polygon>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

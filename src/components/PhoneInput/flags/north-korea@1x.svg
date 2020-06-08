@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>north-korea@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="flags" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="north-korea" fill-rule="nonzero">
+            <circle id="Oval" fill="#F0F0F0" cx="16" cy="16" r="16"></circle>
+            <g id="Group" transform="translate(3.812500, 0.000000)" fill="#0052B4">
+                <path d="M12.1875,0 C7.3380625,0 2.992875,2.15775 0.0586875,5.5651875 L24.31625,5.5651875 C21.382125,2.15775 17.0369375,0 12.1875,0 Z" id="Shape"></path>
+                <path d="M24.3163125,26.4348125 L0.0586875,26.4348125 C2.992875,29.84225 7.3380625,32 12.1875,32 C17.0369375,32 21.382125,29.84225 24.3163125,26.4348125 Z" id="Shape"></path>
+            </g>
+            <path d="M29.651625,7.6521875 L2.348375,7.6521875 C0.8590625,10.0825 0,12.9408125 0,16 C0,19.0591875 0.8590625,21.9175625 2.348375,24.3478125 L29.651625,24.3478125 C31.1409375,21.9175625 32,19.0591875 32,16 C32,12.9408125 31.1409375,10.0825 29.651625,7.6521875 Z" id="Shape" fill="#D80027"></path>
+            <circle id="Oval" fill="#F0F0F0" cx="9.8435" cy="16" r="6.1565"></circle>
+            <polygon id="Shape" fill="#D80027" points="9.8435 9.8435 11.2248125 14.0948125 15.7021875 14.0948125 12.078625 16.7224375 13.47075 20.9864375 9.8435 18.3463125 6.22175 20.9815 7.608375 16.7224375 3.9880625 14.0948125 8.462125 14.0948125"></polygon>
+        </g>
+    </g>
+</svg>

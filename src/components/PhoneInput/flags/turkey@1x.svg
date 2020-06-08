@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>turkey@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="flags" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="turkey" fill-rule="nonzero">
+            <circle id="Oval" fill="#D80027" cx="16" cy="16" r="16"></circle>
+            <g id="Group" transform="translate(4.437500, 10.375000)" fill="#F0F0F0">
+                <polygon id="Shape" points="10.907375 2.699125 12.2201875 4.5081875 14.34625 3.8188125 13.031375 5.6263125 14.344 7.4353125 12.2186875 6.7433125 10.903875 8.5508125 10.90525 6.31575 8.779875 5.62375 10.906 4.934375"></polygon>
+                <path d="M7.324625,10.14675 C4.827375,10.14675 2.802875,8.12225 2.802875,5.625 C2.802875,3.12775 4.827375,1.10325 7.324625,1.10325 C8.10325,1.10325 8.835875,1.3001875 9.4755,1.64675 C8.4720625,0.665375 7.09975,0.05975 5.5855,0.05975 C2.511875,0.05975 0.0203125,2.551375 0.0203125,5.6249375 C0.0203125,8.6985 2.5119375,11.190125 5.5855,11.190125 C7.099875,11.190125 8.472125,10.5844375 9.4755,9.603125 C8.835875,9.9498125 8.10325,10.14675 7.324625,10.14675 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>
