@@ -1,8 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import ChartJS from 'chart.js';
-import defaultTheme from '../../styles/defaultTheme';
 
-const palette = defaultTheme.palette;
 export default function resolveLabelsOnBars() {
     const chart = this.chart;
     const ctx = chart.ctx;
@@ -12,7 +10,7 @@ export default function resolveLabelsOnBars() {
         ChartJS.defaults.global.defaultFontStyle,
         ChartJS.defaults.global.defaultFontFamily,
     );
-    ctx.fillStyle = palette.text.label;
+    ctx.fillStyle = this.options.legend.labels.fontColor;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'bottom';
 
