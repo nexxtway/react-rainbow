@@ -1,4 +1,4 @@
-import { act, renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react-hooks';
 import useFormatDate from '../useFormatDate';
 
 describe('useFormatDate', () => {
