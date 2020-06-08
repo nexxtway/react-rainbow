@@ -119,6 +119,7 @@ const DatePicker = React.forwardRef((props, ref) => {
                 isOpen={isOpen}
                 title={formattedDate || placeholder}
                 variant={variant}
+                locale={currentLocale}
                 selectionType={selectionType}
                 minDate={minDate}
                 maxDate={maxDate}
