@@ -65,15 +65,10 @@ const DatePicker = React.forwardRef((props, ref) => {
 
     const handleChange = useCallback(
         newValue => {
-            if (selectionType === 'single') {
+            if (selectionType === 'single' || newValue.length > 1) {
                 closeModal();
-                onChange(newValue);
-            } else if (newValue.length > 1) {
-                closeModal();
-                onChange(newValue);
-            } else {
-                onChange(newValue);
             }
+            onChange(newValue);
         },
         [closeModal, onChange, selectionType],
     );

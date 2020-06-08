@@ -36,17 +36,15 @@ export const Header = styled.header`
     display: flex;
     align-items: stretch;
     padding: 4px 48px 8px 20px;
-
     ${props =>
         props.variant === 'single' &&
         `
-        width: 420px;
+        width: 350px;
         `};
-
     ${props =>
         props.variant === 'double' &&
         `
-        width: 800px;
+        width: 730px;
         `};
 `;
 
