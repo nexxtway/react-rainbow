@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>nauru@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="flags" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="nauru" fill-rule="nonzero">
+            <circle id="Oval" fill="#0052B4" cx="16" cy="16" r="16"></circle>
+            <circle id="Oval" fill="#FFDA44" cx="16" cy="16" r="16"></circle>
+            <g id="Group" fill="#0052B4">
+                <path d="M16,0 C7.63225,0 0.766125,6.4238125 0.0609375,14.6086875 L31.939125,14.6086875 C31.233875,6.4238125 24.36775,0 16,0 Z" id="Shape"></path>
+                <path d="M16,32 C24.36775,32 31.233875,25.5761875 31.939125,17.3913125 L0.0609375,17.3913125 C0.766125,25.5761875 7.63225,32 16,32 Z" id="Shape"></path>
+            </g>
+            <polygon id="Shape" fill="#F0F0F0" points="13.2174375 21.5651875 11.4245625 22.4085625 12.37925 24.144875 10.4324375 23.7724375 10.18575 25.739125 8.8296875 24.2926875 7.4736875 25.739125 7.227 23.7724375 5.280125 24.1448125 6.234875 22.4085 4.442 21.5651875 6.2349375 20.721875 5.280125 18.985625 7.2269375 19.358 7.47375 17.3913125 8.8296875 18.83775 10.1858125 17.3913125 10.4324375 19.358 12.3793125 18.985625 11.424625 20.7219375"></polygon>
+        </g>
+    </g>
+</svg>

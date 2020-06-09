@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>greenland@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="flags" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="greenland" fill-rule="nonzero">
+            <path d="M0,16 C0,7.1635 7.1635,0 16,0 C24.8365,0 32,7.1635 32,16 C31.304375,16 16,18.0869375 16,18.0869375 L0,16 Z" id="Shape" fill="#F0F0F0"></path>
+            <path d="M32,16 C32,24.8365 24.8365,32 16,32 C7.1635,32 0,24.8365 0,16" id="Shape" fill="#D80027"></path>
+            <circle id="Oval" fill="#F0F0F0" cx="11.1304375" cy="16" r="7.6521875"></circle>
+            <path d="M3.47825,16 C3.47825,11.7739375 6.90425,8.3478125 11.1304375,8.3478125 C15.3566875,8.3478125 18.782625,11.773875 18.782625,16" id="Shape" fill="#D80027"></path>
+        </g>
+    </g>
+</svg>
