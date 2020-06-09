@@ -19,6 +19,13 @@ const StyledMarker = attachThemeAttrs(styled.span)`
     transition: transform 600ms cubic-bezier(0.02, 0.94, 0.09, 0.97),
         all 300ms cubic-bezier(0.17, 0.67, 0.14, 1.03);
     transform: translate3d(0, 0, 0);
+
+    ${props =>
+        props.size === 'small' &&
+        `
+           margin-left: 1px;
+        `};
+
     ${props =>
         props.variant === 'inverse' &&
         `
