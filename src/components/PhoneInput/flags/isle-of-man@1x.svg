@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>isle-of-man@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="flags" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="isle-of-man" fill-rule="nonzero">
+            <circle id="Oval" fill="#D80027" cx="16" cy="16" r="16"></circle>
+            <polygon id="Shape" fill="#F0F0F0" points="21.9241875 10.72575 20.7933125 14.7614375 17.4001875 14.134875 15.2160625 9.6326875 9.315625 11.7265 8.8503125 10.41525 7.3065625 10.2250625 8.46975 13.503125 12.5303125 12.4646875 13.68425 15.7165 10.87725 19.859125 15.6408125 23.922 14.7379375 24.9805625 15.3450625 26.4126875 17.6024375 23.7661875 14.6728125 20.768875 16.912 18.1436875 21.903125 18.5033125 23.0399375 12.3464375 24.408125 12.599125 25.3449375 11.35725"></polygon>
+        </g>
+    </g>
+</svg>

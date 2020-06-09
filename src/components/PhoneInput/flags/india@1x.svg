@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>india@1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="flags" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="india" fill-rule="nonzero">
+            <circle id="Oval" fill="#F0F0F0" cx="16" cy="16" r="16"></circle>
+            <path d="M16,0 C9.656625,0 4.175625,3.6915625 1.587625,9.0435 L30.4123125,9.0435 C27.824375,3.6915625 22.3433125,0 16,0 Z" id="Shape" fill="#FF9811"></path>
+            <path d="M16,32 C22.3433125,32 27.824375,28.3084375 30.412375,22.9565 L1.587625,22.9565 C4.175625,28.3084375 9.656625,32 16,32 Z" id="Shape" fill="#6DA544"></path>
+            <circle id="Oval" fill="#0052B4" cx="16" cy="16" r="5.5651875"></circle>
+            <circle id="Oval" fill="#F0F0F0" cx="16" cy="16" r="3.47825"></circle>
+            <polygon id="Shape" fill="#0052B4" points="16 11.707875 17.0730625 14.1415 19.7170625 13.8539375 18.1460625 16 19.7170625 18.1460625 17.0730625 17.8585 16 20.292125 14.9269375 17.8585 12.2829375 18.146 13.8539375 16 12.2829375 13.8539375 14.9269375 14.1415"></polygon>
+        </g>
+    </g>
+</svg>
