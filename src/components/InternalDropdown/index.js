@@ -22,7 +22,7 @@ import scrollTo from './helpers/scrollTo';
 import searchFilter from './helpers/searchFilter';
 import getValueNames from './helpers/getValueNames';
 import isEmptyObject from './helpers/isEmptyObject';
-import EmptyMessage from './EmptyMessage';
+import EmptyMessage from './emptyMessage';
 
 const sizeMap = {
     medium: 227,
@@ -56,7 +56,7 @@ const InternalDropdown = forwardRef((props, reference) => {
     const [activeOptionName, setActiveOptionName] = useState(null);
     const [activeOptionIndex, setActiveOptionIndex] = useState(0);
     const [activeChildrenMap, setActiveChildrenMap] = useState();
-    const [emptyMessage, setEmptyMessage] = useState('');
+    const [searchValue, setSearchValue] = useState('');
     const activeChildren = useRef([]);
     const allActiveChildren = useRef();
     const firstChild = useRef();
@@ -229,7 +229,7 @@ const InternalDropdown = forwardRef((props, reference) => {
             data: allActiveChildren.current,
         });
 
-        setEmptyMessage(event.target.value);
+        setSearchValue(event.target.value);
 
         setActiveChildrenMap(
             filteredOptions.reduce((acc, option) => {
@@ -301,7 +301,7 @@ const InternalDropdown = forwardRef((props, reference) => {
                     </Content>
                 </Ul>
                 <RenderIf isTrue={showEmptyMessage}>
-                    <EmptyMessage emptyMessage={emptyMessage} />
+                    <EmptyMessage searchValue={searchValue} />
                 </RenderIf>
                 <RenderIf isTrue={showScrollDownArrow}>
                     <Arrow

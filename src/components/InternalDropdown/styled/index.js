@@ -127,19 +127,19 @@ export const MessageContainer = attachThemeAttrs(styled.div)`
     `;
 
 export const MessageTextContainer = attachThemeAttrs(styled.div)`;
-        display: flex;        
-        margin: 15px auto 0 auto;
+    display: flex;        
+    margin: 15px auto 0 auto;
     `;
 export const MessageDescription = attachThemeAttrs(styled.p)`
-        font-size: 16px;
-        line-height: 1.43;
-        text-align: center;
-        color: ${props => props.palette.text.label};
-        margin-right: 4px;
+    font-size: 16px;
+    line-height: 1.43;
+    text-align: center;
+    color: ${props => props.palette.text.label};
+    margin-right: 4px;
 `;
 
 export const MessageHighLight = attachThemeAttrs(styled.p)`
-        font-size: 16px;
-        font-weight: 900;
-        color: ${props => props.palette.text.main};
+    font-size: 16px;
+    font-weight: 900;
+    color: ${props => props.palette.text.main};
 `;

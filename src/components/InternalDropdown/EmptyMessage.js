@@ -8,22 +8,22 @@ import {
     MessageHighLight,
 } from './styled';
 
-export default function EmptyMessage({ emptyMessage }) {
+export default function EmptyMessage({ searchValue }) {
     return (
         <MessageContainer>
             <SearchIcon />
             <MessageTextContainer>
                 <MessageDescription>Our robots did not find any match for</MessageDescription>
-                <MessageHighLight> “{emptyMessage}”</MessageHighLight>
+                <MessageHighLight> “{searchValue}”</MessageHighLight>
             </MessageTextContainer>
         </MessageContainer>
     );
 }
 
 EmptyMessage.propTypes = {
-    emptyMessage: PropTypes.string,
+    searchValue: PropTypes.string,
 };
 
 EmptyMessage.defaultProps = {
-    emptyMessage: undefined,
+    searchValue: undefined,
 };
