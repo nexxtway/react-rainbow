@@ -12,6 +12,7 @@ import {
     ENTER_KEY,
 } from '../../../../libs/constants';
 import { isSameMonth, addMonths } from '../../helpers';
+import getShouldUpdateCurrentMonth from '../helpers/shouldUpdateCurrentMonth';
 import useMoveFocusedDay from './useMoveFocusedDay';
 import useMoveFocusedMonth from './useMoveFocusedMonth';
 
@@ -29,64 +30,79 @@ export default function useHandleKeyDown(
     const moveFocusedDay = useMoveFocusedDay(focusedDate, currentMonth, minDate, maxDate);
     const moveFocusedMonth = useMoveFocusedMonth(focusedDate, minDate, maxDate);
 
+    const shouldUpdateCurrentMonth = useCallback(
+        value => getShouldUpdateCurrentMonth(value, currentMonth, rightCalendarMonth),
+        [currentMonth, rightCalendarMonth],
+    );
+
     const keyHandlerMap = useMemo(
         () => ({
             [UP_KEY]: () => {
                 const result = moveFocusedDay(-7);
-                setFocusedDate(result.day);
+                return {
+                    day: result.day,
+                    month: shouldUpdateCurrentMonth(result.day) ? result.month : undefined,
+                };
             },
             [DOWN_KEY]: () => {
                 const result = moveFocusedDay(7);
-                setFocusedDate(result.day);
+                return {
+                    day: result.day,
+                    month: shouldUpdateCurrentMonth(result.day) ? result.month : undefined,
+                };
             },
             [LEFT_KEY]: () => {
                 const result = moveFocusedDay(-1);
-                setFocusedDate(result.day);
+                return {
+                    day: result.day,
+                    month: shouldUpdateCurrentMonth(result.day) ? result.month : undefined,
+                };
             },
             [RIGHT_KEY]: () => {
                 const result = moveFocusedDay(1);
-                setFocusedDate(result.day);
+                return {
+                    day: result.day,
+                    month: shouldUpdateCurrentMonth(result.day) ? result.month : undefined,
+                };
             },
             [HOME_KEY]: () => {
                 const result = moveFocusedDay(-focusedDate.getDay());
-                setFocusedDate(result.day);
+                return {
+                    day: result.day,
+                    month: shouldUpdateCurrentMonth(result.day) ? result.month : undefined,
+                };
             },
             [END_KEY]: () => {
                 const result = moveFocusedDay(6 - focusedDate.getDay());
-                setFocusedDate(result.day);
+                return {
+                    day: result.day,
+                    month: shouldUpdateCurrentMonth(result.day) ? result.month : undefined,
+                };
             },
             [PAGEUP_KEY]: () => {
                 const result = moveFocusedMonth(-1);
-                setFocusedDate(result.day);
-                if (
-                    !isSameMonth(result.month, rightCalendarMonth) &&
-                    !isSameMonth(result.month, currentMonth)
-                ) {
-                    setCurrentMonth(result.month);
-                }
+                return {
+                    day: result.day,
+                    month: shouldUpdateCurrentMonth(result.month) ? result.month : undefined,
+                };
             },
             [PAGEDN_KEY]: () => {
                 const result = moveFocusedMonth(1);
-                setFocusedDate(result.day);
-                if (
-                    !isSameMonth(result.month, rightCalendarMonth) &&
-                    !isSameMonth(result.month, currentMonth)
-                ) {
-                    setCurrentMonth(rightCalendarMonth);
-                }
+                return {
+                    day: result.day,
+                    month: shouldUpdateCurrentMonth(result.month) ? rightCalendarMonth : undefined,
+                };
             },
             [SPACE_KEY]: () => onChange(new Date(focusedDate)),
             [ENTER_KEY]: () => onChange(new Date(focusedDate)),
         }),
         [
-            currentMonth,
             focusedDate,
             moveFocusedDay,
             moveFocusedMonth,
             onChange,
             rightCalendarMonth,
-            setCurrentMonth,
-            setFocusedDate,
+            shouldUpdateCurrentMonth,
         ],
     );
 
@@ -94,29 +110,35 @@ export default function useHandleKeyDown(
         () => ({
             [HOME_KEY]: () => {
                 const result = moveFocusedDay(-focusedDate.getDay());
-                setFocusedDate(result.day);
+                return {
+                    day: result.day,
+                    month: shouldUpdateCurrentMonth(result.day) ? result.month : undefined,
+                };
             },
             [END_KEY]: () => {
                 const result = moveFocusedDay(6 - focusedDate.getDay());
-                setFocusedDate(result.day);
+                return {
+                    day: result.day,
+                    month: shouldUpdateCurrentMonth(result.day) ? result.month : undefined,
+                };
             },
             [PAGEUP_KEY]: () => {
                 const result = moveFocusedMonth(-12);
-                setFocusedDate(result.day);
-                if (isSameMonth(result.month, rightCalendarMonth)) {
-                    setCurrentMonth(addMonths(result.month, -1));
-                } else {
-                    setCurrentMonth(result.month);
-                }
+                return {
+                    day: result.day,
+                    month: isSameMonth(result.month, rightCalendarMonth)
+                        ? addMonths(result.month, -1)
+                        : result.month,
+                };
             },
             [PAGEDN_KEY]: () => {
                 const result = moveFocusedMonth(12);
-                setFocusedDate(result.day);
-                if (isSameMonth(result.month, rightCalendarMonth)) {
-                    setCurrentMonth(addMonths(result.month, -1));
-                } else {
-                    setCurrentMonth(result.month);
-                }
+                return {
+                    day: result.day,
+                    month: isSameMonth(result.month, rightCalendarMonth)
+                        ? addMonths(result.month, -1)
+                        : result.month,
+                };
             },
         }),
         [
@@ -124,8 +146,7 @@ export default function useHandleKeyDown(
             moveFocusedDay,
             moveFocusedMonth,
             rightCalendarMonth,
-            setCurrentMonth,
-            setFocusedDate,
+            shouldUpdateCurrentMonth,
         ],
     );
 
@@ -137,10 +158,12 @@ export default function useHandleKeyDown(
                 if (keyHandler[keyCode]) {
                     event.preventDefault();
                     event.stopPropagation();
-                    keyHandler[keyCode]();
+                    const result = keyHandler[keyCode]();
+                    if (result && result.day) setFocusedDate(result.day);
+                    if (result && result.month) setCurrentMonth(result.month);
                 }
             }
         },
-        [enableNavKeys, keyHandlerMap, keyHandlerMapAlt],
+        [enableNavKeys, keyHandlerMap, keyHandlerMapAlt, setCurrentMonth, setFocusedDate],
     );
 }

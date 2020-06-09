@@ -5,6 +5,9 @@ import StyledInput from '../../Input/styled/input';
 const PickerInput = attachThemeAttrs(styled(StyledInput))`
     padding-right: 2.35rem;
     font-weight: 400;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     :hover {
         cursor: pointer;
@@ -24,6 +27,14 @@ const PickerInput = attachThemeAttrs(styled(StyledInput))`
         `
         box-shadow: ${props.shadows.shadow_10};
         border: 1px solid transparent;
+        ${props.error &&
+            `
+            border: 2px solid ${props.palette.error.main};
+        `}
+        ${props.readOnly &&
+            `
+            box-shadow: none;
+        `}
     `}
 
     ${props =>

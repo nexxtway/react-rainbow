@@ -93,7 +93,7 @@ describe('<Option />', () => {
         expect(hoverFn).not.toHaveBeenCalled();
     });
     it('should render a checkmark icon when selected', () => {
-        const component = mount(<Option name="option1" currentValueName="option1" />);
+        const component = mount(<Option name="option1" currentValues={['option1']} />);
         expect(component.find(CheckmarkIcon).exists()).toBe(true);
     });
     it('should call privateUnregisterChild with the right parameters on unmount', () => {

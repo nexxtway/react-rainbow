@@ -55,7 +55,6 @@ export { SingleCalendar as Component };
 
 Calendar.propTypes = {
     /** Sets the date for the Calendar programmatically. */
-    // value: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
     value: PropTypes.oneOfType([
         PropTypes.instanceOf(Date),
         PropTypes.string,

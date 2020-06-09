@@ -54,8 +54,7 @@
         "url": "git://github.com/nexxtway/react-rainbow.git"
     },
     "authors": [
-        "Reinier Guerra",
-        "Leandro Torres"
+        "Nexxtway Team"
     ],
     "license": "MIT",
     "jest": {

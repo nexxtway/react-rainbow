@@ -1,8 +1,8 @@
-##### PicklistOption base
+##### Option base
 
 ```js
 import React from 'react';
-import { Picklist, PicklistOption } from 'react-rainbow-components';
+import { Picklist, Option } from 'react-rainbow-components';
 
 const containerStyles = {
     width: '200px',
@@ -18,27 +18,27 @@ initialState = { value: { name: 'option 1', label: 'Experimental Building' } };
         <div className="rainbow-flex rainbow-align_right">
             <Picklist
                 style={containerStyles}
-                onChange={value => setState({ value })}
+                onChange={(value) => setState({ value })}
                 value={state.value}
                 label="Select Building"
                 hideLabel
             >
-                <PicklistOption name="header" label="Your Buildings" variant="header" />
-                <PicklistOption name="option 1" label="Experimental Building" />
-                <PicklistOption name="option 2" label="Empire State" />
-                <PicklistOption name="option 3" label="Plaza" />
-                <PicklistOption name="option 4" label="Central Park" />
+                <Option name="header" label="Your Buildings" variant="header" />
+                <Option name="option 1" label="Experimental Building" />
+                <Option name="option 2" label="Empire State" />
+                <Option name="option 3" label="Plaza" />
+                <Option name="option 4" label="Central Park" />
             </Picklist>
         </div>
     </GlobalHeader>
-</div>
+</div>;
 ```
 
-##### PicklistOption with icons
+##### Option with icons
 
 ```js
 import React from 'react';
-import { Picklist, PicklistOption } from 'react-rainbow-components';
+import { Picklist, Option } from 'react-rainbow-components';
 
 const containerStyles = {
     width: '200px',
@@ -55,17 +55,17 @@ initialState = { value: null };
             <Picklist
                 style={containerStyles}
                 placeholder="Choose Building"
-                onChange={value => setState({ value })}
+                onChange={(value) => setState({ value })}
                 value={state.value}
                 label="Select Building"
                 hideLabel
             >
-                <PicklistOption name="option 1" label="Empire State" icon={<BuildingIcon />} />
-                <PicklistOption name="option 2" label="Chrysler Building" icon={<BuildingIcon />} />
-                <PicklistOption name="option 3" label="Plaza" icon={<BuildingIcon />} />
-                <PicklistOption name="option 4" label="Central Park" icon={<BuildingIcon />} />
+                <Option name="option 1" label="Empire State" icon={<BuildingIcon />} />
+                <Option name="option 2" label="Chrysler Building" icon={<BuildingIcon />} />
+                <Option name="option 3" label="Plaza" icon={<BuildingIcon />} />
+                <Option name="option 4" label="Central Park" icon={<BuildingIcon />} />
             </Picklist>
         </div>
     </GlobalHeader>
-</div>
+</div>;
 ```
