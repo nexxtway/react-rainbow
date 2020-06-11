@@ -25,6 +25,8 @@ export interface DatePickerProps extends BaseProps {
     onBlur?: (event: Value) => void;
     id?: string;
     locale?: string;
+    selectionType?: 'single' | 'range';
+    variant?: 'single' | 'double';
 }
 
 declare const DatePicker: ComponentType<DatePickerProps>;

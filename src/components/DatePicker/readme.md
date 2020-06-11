@@ -184,3 +184,61 @@ const containerStyles = {
     <DatePicker id="datePicker-13" readOnly value={new Date()} label="DatePicker Label" />
 </div>
 ```
+
+##### DatePicker with range selection:
+
+```js
+import React from 'react';
+import { DatePicker } from 'react-rainbow-components';
+
+const initialState = {
+    range: undefined,
+}
+const containerStyles = {
+    maxWidth: 400,
+};
+
+<div
+    className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
+    style={containerStyles}
+>
+    <DatePicker
+        id="datePicker-15"
+        label="DatePicker Label"
+        placeholder="Select range of dates"
+        selectionType="range"
+        formatStyle="large"
+        variant="single"
+        value={state.range}
+        onChange={value => setState({ range: value })}
+    />
+</div>
+```
+
+##### DatePicker with variant double:
+
+```js
+import React from 'react';
+import { DatePicker } from 'react-rainbow-components';
+
+const initialState = {
+    date: undefined,
+}
+const containerStyles = {
+    maxWidth: 400,
+};
+
+<div
+    className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto"
+    style={containerStyles}
+>
+    <DatePicker
+        id="datePicker-17"
+        label="DatePicker Label"
+        placeholder="Select date"
+        variant="double"
+        value={state.date}
+        onChange={date => setState({ date })}
+    />
+</div>
+```
