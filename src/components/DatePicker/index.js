@@ -39,7 +39,12 @@ const DatePicker = React.forwardRef((props, ref) => {
 
     const currentLocale = useLocale(locale);
     const inputRef = useRef();
-    const formattedDate = useFormatDate(value, formatStyle, currentLocale, selectionType);
+    const formattedDate = useFormatDate({
+        value,
+        format: formatStyle,
+        locale: currentLocale,
+        selectionType,
+    });
     const { isOpen, open: openModal, close: closeModal } = useDisclosure(false);
     const modalId = id && `${id}_modal`;
 
