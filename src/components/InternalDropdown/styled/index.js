@@ -32,6 +32,11 @@ export const Ul = styled.ul`
     list-style: none;
     box-sizing: border-box;
     overflow-y: auto;
+    ${props =>
+        props.showEmptyMessage &&
+        `
+        display: none;
+    `}
 `;
 
 export const Arrow = attachThemeAttrs(styled.div)`
@@ -111,4 +116,30 @@ export const Search = attachThemeAttrs(styled.input)`
         border: 0;
         border-bottom: 1px solid ${props => props.palette.border.divider};
     }
+`;
+
+export const MessageContainer = attachThemeAttrs(styled.div)`    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    margin: 16px;
+    `;
+
+export const MessageTextContainer = attachThemeAttrs(styled.div)`;
+    display: flex;        
+    margin: 15px auto 0 auto;
+    `;
+export const MessageDescription = attachThemeAttrs(styled.p)`
+    font-size: 16px;
+    line-height: 1.43;
+    text-align: center;
+    color: ${props => props.palette.text.label};
+    margin-right: 4px;
+`;
+
+export const MessageHighLight = attachThemeAttrs(styled.p)`
+    font-size: 16px;
+    font-weight: 900;
+    color: ${props => props.palette.text.main};
 `;
