@@ -21,6 +21,8 @@ import isOptionVisible from './helpers/isOptionVisible';
 import scrollTo from './helpers/scrollTo';
 import searchFilter from './helpers/searchFilter';
 import getValueNames from './helpers/getValueNames';
+import isEmptyObject from './helpers/isEmptyObject';
+import EmptyMessage from './emptyMessage';
 
 const sizeMap = {
     medium: 227,
@@ -54,6 +56,7 @@ const InternalDropdown = forwardRef((props, reference) => {
     const [activeOptionName, setActiveOptionName] = useState(null);
     const [activeOptionIndex, setActiveOptionIndex] = useState(0);
     const [activeChildrenMap, setActiveChildrenMap] = useState();
+    const [searchValue, setSearchValue] = useState('');
     const activeChildren = useRef([]);
     const allActiveChildren = useRef();
     const firstChild = useRef();
@@ -61,6 +64,7 @@ const InternalDropdown = forwardRef((props, reference) => {
     const containerRef = useRef();
     const scrollingTimer = useRef();
     const searchRef = useRef();
+    const showEmptyMessage = isEmptyObject(activeChildrenMap);
 
     useImperativeHandle(reference, () => ({
         focus: () => {
@@ -224,6 +228,9 @@ const InternalDropdown = forwardRef((props, reference) => {
             query: event.target.value,
             data: allActiveChildren.current,
         });
+
+        setSearchValue(event.target.value);
+
         setActiveChildrenMap(
             filteredOptions.reduce((acc, option) => {
                 acc[option.name] = true;
@@ -287,11 +294,15 @@ const InternalDropdown = forwardRef((props, reference) => {
                     onScroll={updateScrollingArrows}
                     ref={menuRef}
                     style={menuContainerStyles}
+                    showEmptyMessage={showEmptyMessage}
                 >
                     <Content isLoading={isLoading}>
                         <Provider value={context}>{children}</Provider>
                     </Content>
                 </Ul>
+                <RenderIf isTrue={showEmptyMessage}>
+                    <EmptyMessage searchValue={searchValue} />
+                </RenderIf>
                 <RenderIf isTrue={showScrollDownArrow}>
                     <Arrow
                         data-id="internal-dropdown-arrow-down"
