@@ -22,6 +22,8 @@ const StyledButtonItemsContainer = attachThemeAttrs(styled.div).attrs(props => {
     background-color: ${props => replaceAlpha(props.palette.background.highlight, 0.4)};
     line-height: ${props => sizeMap[props.size] || sizeMap.medium};
     height: ${props => sizeMap[props.size] || sizeMap.medium};
+    margin: 0px auto;
+
 
     > :first-child {
         margin-left: -1px;
