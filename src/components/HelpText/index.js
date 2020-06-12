@@ -1,10 +1,9 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
-import { useUniqueIdentifier } from '../../libs/hooks';
+import { useUniqueIdentifier, useDisclosure } from '../../libs/hooks';
 import InternalOverlay from '../InternalOverlay';
 import RenderIf from '../RenderIf';
 import { ESCAPE_KEY } from '../../libs/constants';
-import useDisclosure from './hooks/useDisclosure';
 import {
     StyledTooltip,
     StyledTitle,

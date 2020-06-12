@@ -1,10 +1,10 @@
 import React, { useRef, useImperativeHandle, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import withReduxForm from '../../libs/hocs/withReduxForm';
-import { useLocale } from '../../libs/hooks';
+import { useLocale, useDisclosure } from '../../libs/hooks';
 import { ENTER_KEY, SPACE_KEY } from '../../libs/constants';
 import CalendarIcon from './calendarIcon';
-import { useFormatDate, useDisclosure } from './hooks';
+import useFormatDate from './hooks/useFormatDate';
 import DatePickerModal from '../DatePickerModal';
 import { StyledContainer, StyledInput } from './styled';
 
