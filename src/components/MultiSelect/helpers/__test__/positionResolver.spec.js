@@ -3,7 +3,7 @@ import positionResolver from '../positionResolver';
 const DEFAULT_MARGIN = 5;
 
 describe('positionResolver', () => {
-    test('should return the correct position', () => {
+    it('should return the correct position', () => {
         const param = {
             trigger: {
                 leftUpAnchor: {
