@@ -1,17 +1,18 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 export default function useOutsideClick(ref, handler) {
     const [isListening, setIsListening] = useState(false);
 
-    const listener = useMemo(() => {
-        return event => {
+    const listener = useCallback(
+        event => {
             if (!ref.current || ref.current.contains(event.target)) {
                 return;
             }
 
             handler(event);
-        };
-    }, [ref, handler]);
+        },
+        [ref, handler],
+    );
 
     useEffect(() => {
         if (isListening) {
@@ -25,5 +26,8 @@ export default function useOutsideClick(ref, handler) {
         };
     }, [isListening, listener]);
 
-    return [() => setIsListening(true), () => setIsListening(false)];
+    const startListener = useCallback(() => setIsListening(true), []);
+    const stopListener = useCallback(() => setIsListening(false), []);
+
+    return [startListener, stopListener];
 }

@@ -8,6 +8,6 @@ export default function useRangeFromValue(value, selectionType) {
             if (isEmptyRange(value)) return [];
             return normalizeRange(value);
         }
-        return [normalizeDate(value)];
+        return value ? [normalizeDate(value)] : [];
     }, [value, selectionType]);
 }

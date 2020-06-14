@@ -115,3 +115,9 @@
 .react-rainbow-prop-description {
     white-space: normal;
 }
+
+.react-rainbow-defualt-array {
+    white-space: normal;
+    max-width: 300px;
+    text-align: justify;
+}

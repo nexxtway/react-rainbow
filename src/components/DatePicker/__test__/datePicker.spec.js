@@ -35,7 +35,7 @@ describe('<DatePicker/>', () => {
         component.find('input').simulate('blur');
         expect(onFocusMockFn).toHaveBeenCalledWith(value);
     });
-    it('should call onChange with the right value when the Calendar date is changed', () => {
+    it('should call onChange with the right value when selectionType is single and the Calendar date is changed', () => {
         const onChangeMockFn = jest.fn();
         const component = mount(<DatePicker value={value} onChange={onChangeMockFn} />);
         component.find('input').simulate('click');
@@ -44,6 +44,31 @@ describe('<DatePicker/>', () => {
             .at('14')
             .simulate('click');
         expect(onChangeMockFn).toHaveBeenCalledWith(new Date('06/12/2019'));
+    });
+    it('should call onChange with the right values when selectionType is range', () => {
+        const onChangeMockFn = jest.fn();
+        const date1 = new Date();
+        date1.setDate(4);
+        date1.setHours(0, 0, 0, 0);
+        const date2 = new Date();
+        date2.setDate(12);
+        date2.setHours(23, 59, 59, 999);
+        const component = mount(
+            <DatePicker value={[]} onChange={onChangeMockFn} selectionType="range" />,
+        );
+        component.find('input').simulate('click');
+        component
+            .find('button')
+            .at('6')
+            .simulate('click');
+        expect(onChangeMockFn).toHaveBeenCalledWith([date1]);
+        component.setProps({ value: [date1] });
+        component.update();
+        component
+            .find('button')
+            .at('14')
+            .simulate('click');
+        expect(onChangeMockFn).toHaveBeenCalledWith([date1, date2]);
     });
     it('should close the modal when the Calendar date is changed', () => {
         const component = mount(<DatePicker value={value} />);
