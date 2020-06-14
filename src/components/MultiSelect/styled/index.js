@@ -13,7 +13,17 @@ export const StyledContainer = styled.div`
     height: 100%;
 `;
 
-export const StyledInput = attachThemeAttrs(styled.div)`
+export const StyledInput = styled.input`
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap; /* added line */
+`;
+
+export const StyledCombobox = attachThemeAttrs(styled.div)`
     font: inherit;
     background-color: ${props => props.palette.background.main};
     border: 1px solid ${props => props.palette.border.main};
@@ -25,12 +35,19 @@ export const StyledInput = attachThemeAttrs(styled.div)`
     font-size: ${FONT_SIZE_TEXT_LARGE};
     box-sizing: border-box;
     margin: 0;
-    padding: 0.1rem 0.0375rem;
+    padding: 0.1rem 1px;
+
+    ${props =>
+        props.variant === 'bare' &&
+        `
+        background: transparent;
+        border-color: transparent;
+        `}
 
     :focus,
     :active {
         outline: 0;
-        padding: 0.0375rem 0;
+        padding: 0.0325rem 0;
         border: 2px solid ${props => props.palette.brand.main};
         background-color: ${props => props.palette.background.main};
         box-shadow: ${props => props.shadows.brand};
@@ -60,23 +77,16 @@ export const StyledInput = attachThemeAttrs(styled.div)`
         cursor: not-allowed;
         user-select: none;
 
-        &:focus,
-        &:active {
+        :focus,
+        :active {
             box-shadow: none;
             background-color: ${props.palette.background.disabled};
             border: 1px solid ${props.palette.border.disabled};
         }
         `}
-
-    ${props =>
-        props.variant === 'bare' &&
-        `
-        background: transparent;
-        border-color: transparent;
-        `}
 `;
 
-export const ChipContainer = styled.div`
+export const StyledChipContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     flex-grow: 1;

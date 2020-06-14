@@ -1,13 +1,20 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useImperativeHandle } from 'react';
 import PropTypes from 'prop-types';
 import Label from '../Input/label';
-import { useUniqueIdentifier, useOutsideClick, useErrorMessageId } from '../../libs/hooks';
+import {
+    useUniqueIdentifier,
+    useOutsideClick,
+    useErrorMessageId,
+    useReduxForm,
+    useLabelId,
+} from '../../libs/hooks';
 import {
     StyledInput,
     StyledContainer,
-    ChipContainer,
+    StyledChipContainer,
     StyledButtonIcon,
     StyledPlaceholder,
+    StyledCombobox,
 } from './styled';
 import InternalDropdown from '../InternalDropdown';
 import InternalOverlay from '../InternalOverlay';
@@ -16,10 +23,12 @@ import HelpText from '../Input/styled/helpText';
 import ErrorText from '../Input/styled/errorText';
 import PlusIcon from './icons/plus';
 import { ENTER_KEY, SPACE_KEY } from '../../libs/constants';
-import { getChips, positionResolver } from './helpers';
+import { hasChips, positionResolver } from './helpers';
+import Chips from './chips';
 
-const MultiSelect = props => {
+const MultiSelect = React.forwardRef((props, ref) => {
     const {
+        id,
         className,
         style,
         label,
@@ -38,13 +47,28 @@ const MultiSelect = props => {
         onFocus,
         onBlur,
         children,
-    } = props;
-    const [isOpen, setIsOpen] = useState(false);
+    } = useReduxForm(props);
 
-    const inputRef = useRef();
     const triggerRef = useRef();
     const dropdownRef = useRef();
+    const comboboxRef = useRef();
+    useImperativeHandle(ref, () => ({
+        focus: () => {
+            comboboxRef.current.focus();
+        },
+        click: () => {
+            comboboxRef.current.click();
+        },
+        blur: () => {
+            comboboxRef.current.blur();
+        },
+    }));
 
+    const [isOpen, setIsOpen] = useState(false);
+
+    const labelId = useLabelId('label');
+    const comboboxId = useUniqueIdentifier('combobox');
+    const dropdownId = useUniqueIdentifier('dropdown');
     const inputId = useUniqueIdentifier('input');
     const errorMessageId = useErrorMessageId();
 
@@ -55,19 +79,18 @@ const MultiSelect = props => {
     }, [isOpen]);
 
     const handleChange = val => {
-        inputRef.current.focus();
-        setIsOpen(false);
         return onChange(val);
     };
 
     const handleDelete = option => {
+        comboboxRef.current.focus();
         if (Array.isArray(value)) {
             return onChange(value.filter(val => val !== option));
         }
         return onChange([]);
     };
 
-    const handleTriggerClick = () => {
+    const toggleDropdown = () => {
         if (disabled || readOnly) return;
         setIsOpen(!isOpen);
         if (!isOpen) {
@@ -77,16 +100,25 @@ const MultiSelect = props => {
     };
 
     const handleKeyDown = event => {
-        if (event.target !== inputRef.current) return;
+        if (event.target !== comboboxRef.current) return;
         if (event.keyCode === ENTER_KEY || event.keyCode === SPACE_KEY) {
             event.preventDefault();
-            if (disabled || readOnly) return;
-            setIsOpen(!isOpen);
-            if (!isOpen) {
-                // eslint-disable-next-line no-use-before-define
-                startListeningOutsideClick();
-            }
+            toggleDropdown();
         }
+    };
+
+    const handleTriggerClick = event => {
+        event.preventDefault();
+        event.stopPropagation();
+        toggleDropdown();
+    };
+
+    const handleFocus = () => {
+        comboboxRef.current.focus();
+    };
+
+    const handleBlur = () => {
+        comboboxRef.current.blur();
     };
 
     const handleOutsideClick = event => {
@@ -104,52 +136,60 @@ const MultiSelect = props => {
         handleOutsideClick,
     );
 
-    const chips = getChips(value, chipVariant, handleDelete);
-    const haveChips = chips && chips.length > 0;
+    const shouldRenderChips = hasChips(value);
 
     return (
-        <StyledContainer className={className} style={style}>
-            <Label label={label} hideLabel={hideLabel} required={required} inputId={inputId} />
-            <StyledInput
+        <StyledContainer id={id} className={className} style={style}>
+            <Label
+                id={labelId}
+                label={label}
+                hideLabel={hideLabel}
+                required={required}
+                inputId={inputId}
+            />
+            <StyledCombobox
+                id={comboboxId}
                 variant={variant}
                 error={error}
                 disabled={disabled}
+                role="combobox"
+                aria-controls={dropdownId}
+                aria-expanded={isOpen}
                 onFocus={onFocus}
                 onBlur={onBlur}
                 onKeyDown={handleKeyDown}
                 tabIndex={tabIndex}
-                ref={inputRef}
+                ref={comboboxRef}
+                aria-labelledby={labelId}
             >
-                <ChipContainer>
-                    <RenderIf isTrue={!haveChips}>
+                <StyledInput
+                    id={inputId}
+                    role="textbox"
+                    aria-autocomplete="none"
+                    tabIndex="-1"
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
+                    readOnly
+                />
+                <StyledChipContainer>
+                    <RenderIf isTrue={!shouldRenderChips}>
                         <StyledPlaceholder>{placeholder}</StyledPlaceholder>
                     </RenderIf>
-                    <RenderIf isTrue={haveChips}>{chips}</RenderIf>
-                </ChipContainer>
+                    <RenderIf isTrue={shouldRenderChips}>
+                        <Chips value={value} variant={chipVariant} onDelete={handleDelete} />
+                    </RenderIf>
+                </StyledChipContainer>
                 <StyledButtonIcon
+                    title="Add"
                     variant="neutral"
                     size="small"
                     icon={<PlusIcon />}
                     onClick={handleTriggerClick}
                     disabled={disabled}
                     ref={triggerRef}
+                    tabIndex="-1"
                 />
-                <InternalOverlay
-                    isVisible={isOpen}
-                    positionResolver={positionResolver}
-                    render={() => (
-                        <InternalDropdown
-                            value={value}
-                            onChange={handleChange}
-                            ref={dropdownRef}
-                            multiple
-                        >
-                            {children}
-                        </InternalDropdown>
-                    )}
-                    triggerElementRef={() => triggerRef.current.buttonRef}
-                />
-            </StyledInput>
+            </StyledCombobox>
             <RenderIf isTrue={!!bottomHelpText}>
                 <HelpText alignSelf="center">{bottomHelpText}</HelpText>
             </RenderIf>
@@ -158,9 +198,25 @@ const MultiSelect = props => {
                     {error}
                 </ErrorText>
             </RenderIf>
+            <InternalOverlay
+                isVisible={isOpen}
+                positionResolver={positionResolver}
+                render={() => (
+                    <InternalDropdown
+                        id={dropdownId}
+                        value={value}
+                        onChange={handleChange}
+                        ref={dropdownRef}
+                        multiple
+                    >
+                        {children}
+                    </InternalDropdown>
+                )}
+                triggerElementRef={() => triggerRef.current.buttonRef}
+            />
         </StyledContainer>
     );
-};
+});
 
 MultiSelect.propTypes = {
     /** A CSS class for the outer element, in addition to the component's base classes. */

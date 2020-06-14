@@ -73,6 +73,7 @@ const InternalDropdown = forwardRef((props, reference) => {
             }
             return containerRef.current.focus();
         },
+        contains: element => containerRef.current.contains(element),
     }));
 
     const updateScrollingArrows = () => {
