@@ -22,6 +22,7 @@ export interface MultiSelectProps extends BaseProps {
     onChange?: (value: Array<MultiSelectOption>) => void;
     onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
     onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
+    children?: ReactNode;
 }
 
 export default function(props: MultiSelectProps): JSX.Element | null;
