@@ -30,7 +30,6 @@ const sizeMap = {
 const preventDefaultKeys = {
     [UP_KEY]: true,
     [DOWN_KEY]: true,
-    [SPACE_KEY]: true,
 };
 const menuContainerStyles = {
     maxHeight: sizeMap.medium,
@@ -214,6 +213,9 @@ const InternalDropdown = forwardRef((props, reference) => {
     };
 
     const handleKeyPressed = event => {
+        if (event.keyCode === SPACE_KEY && !enableSearch) {
+            event.preventDefault();
+        }
         if (preventDefaultKeys[event.keyCode]) event.preventDefault();
         if (keyHandlerMap[event.keyCode]) {
             keyHandlerMap[event.keyCode]();
@@ -280,7 +282,7 @@ const InternalDropdown = forwardRef((props, reference) => {
             <RenderIf isTrue={enableSearch}>
                 <SearchContainer>
                     <Icon />
-                    <InputSearch onChange={handleSearch} ref={searchRef} type="serch" />
+                    <InputSearch onChange={handleSearch} ref={searchRef} type="search" />
                 </SearchContainer>
             </RenderIf>
             <UlContainer>

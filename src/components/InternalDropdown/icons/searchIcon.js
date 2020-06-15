@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { IconSearch } from '../styled';
+import styled from 'styled-components';
+import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
+
+const IconSearch = attachThemeAttrs(styled.svg)`
+    fill: ${props => props.palette.brand.main}
+`;
 
 const SearchIcon = props => {
     const { className } = props;

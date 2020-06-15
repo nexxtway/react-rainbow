@@ -152,7 +152,3 @@ export const MessageHighLight = attachThemeAttrs(styled.p)`
     color: ${props => props.palette.text.main};
     word-wrap: break-word;
 `;
-
-export const IconSearch = attachThemeAttrs(styled.svg)`
-    fill: ${props => props.palette.brand.main}
-`;
