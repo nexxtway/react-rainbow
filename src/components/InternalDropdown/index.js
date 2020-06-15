@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
 import RenderIf from '../RenderIf';
 import { UP_KEY, DOWN_KEY, SPACE_KEY, ENTER_KEY } from '../../libs/constants';
 import { Provider } from './context';
-import { Dropdown, Ul, Arrow, Search, UlContainer } from './styled';
 import Content from './content';
 import isChildRegistered from './helpers/isChildRegistered';
 import getChildMenuItemNodes from './helpers/getChildMenuItemNodes';
@@ -23,6 +22,7 @@ import searchFilter from './helpers/searchFilter';
 import getValueNames from './helpers/getValueNames';
 import isEmptyObject from './helpers/isEmptyObject';
 import EmptyMessage from './emptyMessage';
+import { Dropdown, Ul, Arrow, InputSearch, UlContainer, SearchContainer, Icon } from './styled';
 
 const sizeMap = {
     medium: 227,
@@ -278,7 +278,10 @@ const InternalDropdown = forwardRef((props, reference) => {
             ref={containerRef}
         >
             <RenderIf isTrue={enableSearch}>
-                <Search onChange={handleSearch} ref={searchRef} />
+                <SearchContainer>
+                    <Icon />
+                    <InputSearch onChange={handleSearch} ref={searchRef} type="serch" />
+                </SearchContainer>
             </RenderIf>
             <UlContainer>
                 <RenderIf isTrue={showScrollUpArrow}>
