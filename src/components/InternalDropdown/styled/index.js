@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { FONT_SIZE_TEXT_LARGE } from '../../../styles/fontSizes';
+import SearchIcon from '../icons/searchIcon';
 
 export const Dropdown = attachThemeAttrs(styled.div)`
     position: relative;
@@ -92,7 +93,19 @@ export const UlContainer = styled.div`
     padding: 1rem 0;
 `;
 
-export const Search = attachThemeAttrs(styled.input)`
+export const SearchContainer = attachThemeAttrs(styled.div)`
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid ${props => props.palette.border.divider};
+`;
+
+export const Icon = styled(SearchIcon)`
+    width: 16px;
+    height: 16px;
+    margin-left: 18px;
+`;
+
+export const InputSearch = attachThemeAttrs(styled.input)`
     font: inherit;
     background-color: transparent;
     border: 0;
@@ -103,9 +116,7 @@ export const Search = attachThemeAttrs(styled.input)`
     padding: 0;
     line-height: 45px;
     height: 45px;
-
     width: 100%;
-    border-bottom: 1px solid ${props => props.palette.border.divider};
     padding: 0 1rem;
     margin-top: 5px;
 
@@ -114,7 +125,6 @@ export const Search = attachThemeAttrs(styled.input)`
         outline: 0;
         background-color: transparent;
         border: 0;
-        border-bottom: 1px solid ${props => props.palette.border.divider};
     }
 `;
 
@@ -141,8 +151,4 @@ export const MessageHighLight = attachThemeAttrs(styled.p)`
     text-align: center;
     color: ${props => props.palette.text.main};
     word-wrap: break-word;
-`;
-
-export const IconSearch = attachThemeAttrs(styled.svg)`
-    fill: ${props => props.palette.brand.main}
 `;
