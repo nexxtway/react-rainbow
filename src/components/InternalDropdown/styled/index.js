@@ -132,6 +132,7 @@ export const MessageDescription = attachThemeAttrs(styled.p)`
     text-align: center;
     color: ${props => props.palette.text.header};
     margin-top: 12px;
+    word-wrap: break-word;
 `;
 
 export const MessageHighLight = attachThemeAttrs(styled.p)`
@@ -139,6 +140,7 @@ export const MessageHighLight = attachThemeAttrs(styled.p)`
     font-weight: 900;
     text-align: center;
     color: ${props => props.palette.text.main};
+    word-wrap: break-word;
 `;
 
 export const IconSearch = attachThemeAttrs(styled.svg)`
