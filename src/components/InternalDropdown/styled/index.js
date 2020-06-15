@@ -122,24 +122,25 @@ export const MessageContainer = attachThemeAttrs(styled.div)`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content:center;
+    justify-content: center;
     margin: 16px;
     `;
 
-export const MessageTextContainer = attachThemeAttrs(styled.div)`;
-    display: flex;        
-    margin: 15px auto 0 auto;
-    `;
 export const MessageDescription = attachThemeAttrs(styled.p)`
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1.43;
     text-align: center;
-    color: ${props => props.palette.text.label};
-    margin-right: 4px;
+    color: ${props => props.palette.text.header};
+    margin-top: 12px;
 `;
 
 export const MessageHighLight = attachThemeAttrs(styled.p)`
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 900;
+    text-align: center;
     color: ${props => props.palette.text.main};
+`;
+
+export const IconSearch = attachThemeAttrs(styled.svg)`
+    fill: ${props => props.palette.brand.main}
 `;
