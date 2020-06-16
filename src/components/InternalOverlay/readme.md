@@ -5,8 +5,7 @@ import { ButtonIcon } from 'react-rainbow-components';
 import { useRef, useState } from 'react';
 import styled from 'styled-components';
 import RenderIf from '../RenderIf';
-import useOutsideClick from '../../libs/hooks/useOutsideClick';
-import useWindowResize from '../../libs/hooks/useWindowResize';
+import { useOutsideClick, useWindowResize } from '../../libs/hooks';
 
 const Container = styled.div`
     height: 240px;
@@ -52,23 +51,14 @@ const Component = (props) => {
     const dropdownRef = useRef();
     const iconRef = useRef();
     const [isOpen, setIsOpen] = useState(false);
-    const handleOutsideClick = event => {
+
+    useOutsideClick(dropdownRef, event => {
         if (event.target !== triggerRef.current.buttonRef.current) {
-            stopListeningOutsideClick();
             setIsOpen(false);
         }        
-    }
-    const handleClick = (event) => {
-        setIsOpen(!isOpen);
-        if (!isOpen) {
-            startListeningOutsideClick();
-        }        
-    };
-    const startListening = () => {
-        startListeningOutsideClick();
-    }
-    const [startListeningOutsideClick, stopListeningOutsideClick] = useOutsideClick(dropdownRef, handleOutsideClick);
+    }, isOpen);
     useWindowResize(() => setIsOpen(false), isOpen);
+
     return (
         <>
             <ButtonIcon
@@ -76,7 +66,7 @@ const Component = (props) => {
                 variant="neutral"
                 icon={<StyledPlusIcon />}
                 ref={triggerRef}
-                onClick={handleClick}
+                onClick={() => setIsOpen(!isOpen)}
             />
             <InternalOverlay
                 isVisible={isOpen}
@@ -116,8 +106,7 @@ import { Button, ButtonIcon } from 'react-rainbow-components';
 import { useRef, useState } from 'react';
 import styled from 'styled-components';
 import RenderIf from '../RenderIf';
-import useOutsideClick from '../../libs/hooks/useOutsideClick';
-import useWindowResize from '../../libs/hooks/useWindowResize';
+import { useOutsideClick, useWindowResize } from '../../libs/hooks';
 
 const Container = styled.div`
     height: 240px;
@@ -237,19 +226,12 @@ const Component = () => {
     const triggerRef = useRef(null);
     const dropdownRef = useRef();
     const [isOpen, setIsOpen] = useState(false);
-    const handleOutsideClick = event => {
-        stopListeningOutsideClick();
+
+    useOutsideClick(dropdownRef, event => {
         if (event.target !== triggerRef.current) {
             setIsOpen(false);
-        }
-    }
-    const handleClick = () => {
-        setIsOpen(!isOpen);
-        if (!isOpen) {
-            startListeningOutsideClick();
         }        
-    };
-    const [startListeningOutsideClick, stopListeningOutsideClick] = useOutsideClick(dropdownRef, handleOutsideClick);
+    }, isOpen);
     useWindowResize(() => setIsOpen(false), isOpen);
     
     return (
@@ -258,7 +240,7 @@ const Component = () => {
                 <Day>May 5</Day>
                 <Event
                     ref={triggerRef}
-                    onClick={handleClick}
+                    onClick={() => setIsOpen(!isOpen)}
                     type="button">
                     React Rainbow Event
                 </Event>

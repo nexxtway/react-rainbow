@@ -1,8 +1,10 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useCallback } from 'react';
 
-export default function useOutsideClick(ref, handler) {
-    const [isListening, setIsListening] = useState(false);
-
+/**
+ * This component implements the positioning of a component (inserted in the DOM at the body level) based on a trigger DOM element. By the way of example, you can think of the use case of a Menu Options, Tooltip, Popup that should be floating on top of all the elements and it should be correctly positioned based on the component/element that triggers the show/open action.
+ * @category Internal
+ */
+export default function useOutsideClick(ref, handler, isListening = true) {
     const listener = useCallback(
         event => {
             if (!ref.current || ref.current.contains(event.target)) {
@@ -25,9 +27,4 @@ export default function useOutsideClick(ref, handler) {
             document.removeEventListener('touchstart', listener);
         };
     }, [isListening, listener]);
-
-    const startListener = useCallback(() => setIsListening(true), []);
-    const stopListener = useCallback(() => setIsListening(false), []);
-
-    return [startListener, stopListener];
 }
