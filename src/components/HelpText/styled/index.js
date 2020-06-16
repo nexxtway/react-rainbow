@@ -11,7 +11,6 @@ export const StyledButton = styled.button`
     }
 `;
 export const StyledTooltip = attachThemeAttrs(styled.div)`
-    width: 244px;
     padding: 10px;
     border-radius: 0.875rem;
     box-shadow: ${props => props.shadows.shadow_2};
@@ -43,5 +42,7 @@ export const StyledIconContainer = styled.span`
 `;
 
 export const StyledText = attachThemeAttrs(styled.div)`
+    font-size: 0.8125rem;
+    line-height: 1.42;
     color: ${props => props.palette.text.main}
 `;

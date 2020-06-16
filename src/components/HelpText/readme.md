@@ -12,10 +12,12 @@ const Container = styled.div`
     height: 150px;
 `;
 
+const style = { width: '250px' };
+
 <Container>
     <HelpText
         title="Message Title"
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna." 
+        text={<p style={style}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>}
     />
 </Container>
 ```
@@ -26,6 +28,8 @@ const Container = styled.div`
 import React from 'react';
 import styled from 'styled-components'
 import { HelpText } from 'react-rainbow-components';
+
+const style = { width: '250px' };
 
 const Container = styled.div`
     display: flex;
@@ -38,7 +42,7 @@ const Container = styled.div`
     <HelpText
         variant="error"
         title="Message Title"
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna." 
+        text={<p style={style}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>}
     />
 </Container>
 ```
@@ -57,11 +61,13 @@ const Container = styled.div`
     height: 150px;
 `;
 
+const style = { width: '250px' };
+
 <Container>
     <HelpText
         variant="warning"
         title="Message Title"
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna." 
+        text={<p style={style}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>} 
     />
 </Container>
 ```
@@ -80,11 +86,13 @@ const Container = styled.div`
     height: 150px;
 `;
 
+const style = { width: '250px' };
+
 <Container>
     <HelpText
         variant="question"
         title="Message Title"
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna." 
+        text={<p style={style}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>}
     />
 </Container>
 ```

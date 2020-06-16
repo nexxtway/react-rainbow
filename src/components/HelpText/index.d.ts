@@ -3,8 +3,7 @@ import { BaseProps } from '../types';
 
 export interface HelpTextProps extends BaseProps {
     title?: ReactNode;
-    text: ReactNode;
-    icon?: ReactNode;
+    text?: ReactNode;
     variant?: 'question' | 'info' | 'error' | 'warning';
     tabIndex?: number | string;
 }

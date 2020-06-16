@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useUniqueIdentifier, useDisclosure } from '../../libs/hooks';
 import InternalOverlay from '../InternalOverlay';
@@ -21,6 +21,7 @@ import {
     QuestionInverseIcon,
     WarningInverseIcon,
 } from './icons';
+import positionResolver from './helpers/positionResolver';
 
 const iconMap = {
     question: <QuestionIcon />,
@@ -40,11 +41,26 @@ const inverseIconMap = {
  * HelpText is a popup that displays information related to an element.
  */
 const HelpText = props => {
-    const { id, title, text, variant, icon: iconProp, tabIndex, className, style } = props;
+    const { id, title, text, variant, tabIndex, className, style } = props;
 
     const triggerRef = useRef();
     const helpTextId = useUniqueIdentifier('help-text');
+    const [isFocused, setIsFocused] = useState(false);
     const { isOpen, open: openOverlay, close: closeOverlay } = useDisclosure(false);
+
+    useEffect(() => {
+        if (isFocused) {
+            openOverlay();
+        } else {
+            // closeOverlay();
+        }
+    }, [closeOverlay, isFocused, openOverlay]);
+
+    const handleMouseLeave = () => {
+        if (!isFocused) {
+            closeOverlay();
+        }
+    };
 
     const handleKeyPressed = event => {
         if (event.keyCode === ESCAPE_KEY) {
@@ -53,7 +69,7 @@ const HelpText = props => {
         }
     };
 
-    const icon = iconProp || iconMap[variant] || iconMap.info;
+    const icon = iconMap[variant] || iconMap.info;
     const inverseIcon = inverseIconMap[variant] || inverseIconMap.info;
 
     return (
@@ -61,9 +77,9 @@ const HelpText = props => {
             <StyledButton
                 ref={triggerRef}
                 onMouseEnter={openOverlay}
-                onMouseLeave={closeOverlay}
-                onFocus={openOverlay}
-                onBlur={closeOverlay}
+                onMouseLeave={handleMouseLeave}
+                onFocus={() => setIsFocused(true)}
+                onBlur={() => setIsFocused(false)}
                 onKeyDown={handleKeyPressed}
                 type="button"
                 tabIndex={tabIndex}
@@ -71,25 +87,26 @@ const HelpText = props => {
             >
                 {icon}
             </StyledButton>
-            <InternalOverlay
-                isVisible={isOpen}
-                render={() => {
-                    return (
-                        <StyledTooltip id={helpTextId} role="tooltip">
-                            <RenderIf isTrue={!!title}>
-                                <StyledTitle variant={variant}>
-                                    <RenderIf isTrue={typeof title === 'string'}>
+            <RenderIf isTrue={!!text}>
+                <InternalOverlay
+                    isVisible={isOpen}
+                    positionResolver={positionResolver}
+                    render={() => {
+                        return (
+                            <StyledTooltip id={helpTextId} role="tooltip">
+                                <RenderIf isTrue={!!title}>
+                                    <StyledTitle variant={variant}>
                                         <StyledIconContainer>{inverseIcon}</StyledIconContainer>
-                                    </RenderIf>
-                                    {title}
-                                </StyledTitle>
-                            </RenderIf>
-                            <StyledText>{text}</StyledText>
-                        </StyledTooltip>
-                    );
-                }}
-                triggerElementRef={triggerRef}
-            />
+                                        {title}
+                                    </StyledTitle>
+                                </RenderIf>
+                                <StyledText>{text}</StyledText>
+                            </StyledTooltip>
+                        );
+                    }}
+                    triggerElementRef={triggerRef}
+                />
+            </RenderIf>
         </div>
     );
 };
@@ -102,11 +119,9 @@ HelpText.propTypes = {
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
     /** Displayed the title of component. */
-    title: PropTypes.node,
+    title: PropTypes.string,
     /** Displayed the help message */
-    text: PropTypes.node.isRequired,
-    /** The icon to customize the button. If undefined it is used by default based on the variant. */
-    icon: PropTypes.node,
+    text: PropTypes.node,
     /** The variant changes the appearance of the button. Accepted variants include question, info, error and warning */
     variant: PropTypes.oneOf(['question', 'info', 'error', 'warning']),
     /** Specifies the tab order of an element (when the tab button is used for navigating). */
@@ -119,7 +134,6 @@ HelpText.defaultProps = {
     style: undefined,
     title: undefined,
     text: undefined,
-    icon: undefined,
     variant: 'info',
     tabIndex: undefined,
 };
