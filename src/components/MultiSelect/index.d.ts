@@ -4,6 +4,7 @@ import { BaseProps } from '../types';
 export interface MultiSelectOption {
     name?: string;
     label?: string;
+    value?: any;
 }
 
 export interface MultiSelectProps extends BaseProps {
@@ -18,8 +19,8 @@ export interface MultiSelectProps extends BaseProps {
     variant?: 'default' | 'bare';
     chipVariant?: 'base' | 'neutral' | 'outline-brand' | 'brand';
     hideLabel?: boolean;
-    value?: MultiSelectOption | Array<MultiSelectOption>;
-    onChange?: (value: Array<MultiSelectOption>) => void;
+    value?: MultiSelectOption | MultiSelectOption[];
+    onChange?: (value: MultiSelectOption[]) => void;
     onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
     onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
     children?: ReactNode;

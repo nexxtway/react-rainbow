@@ -25,6 +25,7 @@ import PlusIcon from './icons/plus';
 import { ENTER_KEY, SPACE_KEY } from '../../libs/constants';
 import { hasChips, positionResolver } from './helpers';
 import Chips from './chips';
+import normalizeValue from './helpers/normalizeValue';
 
 const MultiSelect = React.forwardRef((props, ref) => {
     const {
@@ -79,15 +80,15 @@ const MultiSelect = React.forwardRef((props, ref) => {
     }, [isOpen]);
 
     const handleChange = val => {
-        return onChange(val);
+        return onChange(normalizeValue(val));
     };
 
     const handleDelete = option => {
         comboboxRef.current.focus();
         if (Array.isArray(value)) {
-            return onChange(value.filter(val => val !== option));
+            return handleChange(value.filter(val => val !== option));
         }
-        return onChange([]);
+        return handleChange([]);
     };
 
     const toggleDropdown = () => {
