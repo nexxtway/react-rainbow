@@ -23,15 +23,7 @@ const StyledButtonItemsContainer = attachThemeAttrs(styled.div).attrs(props => {
     line-height: ${props => sizeMap[props.size] || sizeMap.medium};
     height: ${props => sizeMap[props.size] || sizeMap.medium};
     margin: 0px auto;
-
-
-    > :first-child {
-        margin-left: -1px;
-    }
-
-    > :last-child {
-        margin-right: -2px;
-    }
+    width: calc(100% - 4px);
 
     ${props =>
         props.variant === 'inverse' &&
