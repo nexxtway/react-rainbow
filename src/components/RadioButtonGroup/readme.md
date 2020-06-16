@@ -41,6 +41,51 @@ class SimpleRadioButtonGroup extends React.Component {
 </div>
 ```
 
+##### RadioButtonGroup small
+
+```js
+import React from 'react';
+import { RadioButtonGroup } from 'react-rainbow-components';
+
+const options = [
+    { value: 'off', label: 'Off' },
+    { value: 'parking', label: 'Parking' },
+    { value: 'auto', label: 'Auto' },
+    { value: 'on', label: 'On' },
+];
+
+class SimpleRadioButtonGroup extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            value: 'auto',
+        };
+        this.handleOnChange = this.handleOnChange.bind(this);
+    }
+
+    handleOnChange(event) {
+        return this.setState({ value: event.target.value });
+    }
+
+    render() {
+        return (
+            <RadioButtonGroup
+                id="radio-button-group-component-1"
+                options={options}
+                value={this.state.value}
+                onChange={this.handleOnChange}
+                size="small"
+                variant="brand"
+            />
+        );
+    }
+}
+
+<div className="rainbow-p-around_x-large rainbow-align-content_center">
+    <SimpleRadioButtonGroup />
+</div>
+```
+
 ##### RadioButtonGroup brand with label
 
 ```js
