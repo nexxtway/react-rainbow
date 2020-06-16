@@ -10,13 +10,6 @@ const containerStyles = {
 
 const MultiSelectExample = props => {
     const [value, setValue] = useState([]);
-    const ref = useRef();
-
-    const handleChange = val => {
-        setValue(val);
-        ref.current.focus();
-        console.log(document.activeElement)
-    }
 
     return (
         <MultiSelect
@@ -26,9 +19,8 @@ const MultiSelectExample = props => {
             style={containerStyles}
             className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
             value={value}
-            onChange={handleChange}
+            onChange={setValue}
             bottomHelpText="You can select several options"
-            ref={ref}
         >
             <Option name="option-1" label="All Buildings" icon={<DashboardIcon />} />
             <Option name="option-2" label="New Building" icon={<AddFilledIcon />} />
