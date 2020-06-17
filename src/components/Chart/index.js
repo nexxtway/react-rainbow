@@ -46,7 +46,10 @@ export class Chart extends Component {
     }
 
     renderChart() {
-        const { type, labels, ...conditions } = this.props;
+        const { type, labels, plugins, ...conditions } = this.props;
+        if (plugins) {
+            ChartJS.plugins.unregister(plugins);
+        }
         const node = this.chartRef.current;
 
         this.chartInstance = new ChartJS(node, {
@@ -55,6 +58,7 @@ export class Chart extends Component {
                 labels,
                 datasets: this.datasets,
             },
+            plugins: plugins || null,
             options: resolveOptions({ type, ...conditions }),
         });
     }
@@ -114,6 +118,10 @@ Chart.propTypes = {
     disableCurves: PropTypes.bool,
     /** Maintain the original canvas aspect ratio. */
     maintainAspectRatio: PropTypes.bool,
+    /** Plugins to customize the Chart. */
+    plugins: PropTypes.arrayOf(PropTypes.any),
+    /** Configuration options for the datalabels. */
+    datalabels: PropTypes.objectOf(PropTypes.string, PropTypes.number),
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied for the outer element. */
@@ -141,6 +149,8 @@ Chart.defaultProps = {
     disableXAxisTickLabels: false,
     disableYAxisTickLabels: false,
     maintainAspectRatio: true,
+    plugins: undefined,
+    datalabels: undefined,
     className: undefined,
     style: undefined,
     children: undefined,

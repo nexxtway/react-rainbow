@@ -17,6 +17,8 @@ export interface ChartProps extends BaseProps {
     disableXAxisTickLabels?: boolean;
     disableYAxisTickLabels?: boolean;
     maintainAspectRatio?: boolean;
+    plugins?: Array<any>;
+    datalabels?: object;
     children?: ReactNode;
 }
 

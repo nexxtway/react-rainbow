@@ -33,6 +33,7 @@
     "dependencies": {
         "autosize": "^4.0.2",
         "chart.js": "2.7.3",
+        "chartjs-plugin-datalabels": "^0.7.0",
         "clipboard-copy": "^2.0.0",
         "prop-types": "^15.6.2",
         "react-async-script-loader": "^0.3.0",

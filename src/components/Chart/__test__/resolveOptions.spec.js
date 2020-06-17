@@ -153,6 +153,37 @@ describe('resolveOptions function', () => {
             },
         });
     });
+    it('should return the conf option with legend, layout and plugins parameters', () => {
+        const conditions = {
+            disableAnimations: false,
+            disableLines: false,
+            disableCurves: false,
+            showLegend: true,
+            legendPosition: 'bottom',
+            showStacked: false,
+            datalabels: { color: '#CCC' },
+            plugins: [],
+        };
+
+        const options = resolveOptions(conditions);
+
+        expect(options).toEqual({
+            ...baseOptions,
+            layout: {
+                padding: {
+                    bottom: 0,
+                    left: 0,
+                    right: 20,
+                    top: 20,
+                },
+            },
+            plugins: {
+                datalabels: {
+                    color: '#CCC',
+                },
+            },
+        });
+    });
     it('should return the conf option with all parameters', () => {
         const conditions = {
             disableAnimations: true,
@@ -161,6 +192,8 @@ describe('resolveOptions function', () => {
             showLegend: true,
             legendPosition: 'bottom',
             showStacked: true,
+            datalabels: { color: '#CCC' },
+            plugins: [],
         };
 
         const options = resolveOptions(conditions);
@@ -178,6 +211,19 @@ describe('resolveOptions function', () => {
             elements: {
                 line: {
                     tension: 0,
+                },
+            },
+            layout: {
+                padding: {
+                    bottom: 0,
+                    left: 0,
+                    right: 20,
+                    top: 20,
+                },
+            },
+            plugins: {
+                datalabels: {
+                    color: '#CCC',
                 },
             },
             scales: {

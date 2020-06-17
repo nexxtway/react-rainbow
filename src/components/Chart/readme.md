@@ -889,3 +889,91 @@ const containerStyles = {
     </div>
 </div>
 ```
+
+##### Bar chart vertical without grid lines and labels on bars:
+
+```js
+import React from 'react';
+import { Chart, Dataset } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import datalabels from 'chartjs-plugin-datalabels';
+
+const plugins = [ datalabels ];
+
+const containerStyles = {
+    maxWidth: 600,
+};
+
+<div className="rainbow-p-vertical_large rainbow-m_auto" style={containerStyles}>
+    <div className="rainbow-align-content_center">
+        <Chart
+            plugins={plugins}
+            datalabels={{color: '#01b6f5', anchor: 'end', align: 'top'}}
+            labels={['A', 'B', 'C', 'D']}
+            type="bar"
+            className="rainbow-m-horizontal_xx-large rainbow-m-top_x-large"
+            disableXAxisGridLines
+            disableYAxisGridLines
+        >
+            <Dataset
+                datalabels={{color: '#fe4849'}}
+                title="Dataset 1"
+                values={[23, 45, 123, 56]}
+                backgroundColor="#fe4849"
+                borderColor="#fe4849"
+            />
+            <Dataset
+                title="Dataset 2"
+                values={[66, 100, 30, 156]}
+                backgroundColor="#01b6f5"
+                borderColor="#01b6f5"
+            />
+        </Chart>
+    </div>
+</div>
+```
+
+##### Bar chart horizontal without grid lines and labels on bars:
+
+```js
+import React from 'react';
+import { Chart, Dataset } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import datalabels from 'chartjs-plugin-datalabels';
+
+const plugins = [ datalabels ];
+
+const containerStyles = {
+    maxWidth: 600,
+};
+
+<div className="rainbow-p-vertical_large rainbow-m_auto" style={containerStyles}>
+    <div className="rainbow-align-content_center">
+        <Chart
+            plugins={plugins}
+            datalabels={{color: 'orange', anchor: 'end', align: 'right'}}
+            labels={['A', 'B', 'C', 'D']}
+            type="horizontalBar"
+            className="rainbow-m-horizontal_xx-large rainbow-m-top_x-large"
+            disableXAxisGridLines
+            disableYAxisGridLines
+        >
+            <Dataset
+                datalabels={{color: '#1de9b6'}}
+                title="Dataset 1"
+                values={[23, 45, 123, 56]}
+                backgroundColor="#1de9b6"
+                borderColor="#1de9b6"
+            />
+            <Dataset
+                title="Dataset 2"
+                values={[66, 100, 30, 146]}
+                backgroundColor="orange"
+                borderColor="orange"
+            />
+        </Chart>
+    </div>
+</div>
+```

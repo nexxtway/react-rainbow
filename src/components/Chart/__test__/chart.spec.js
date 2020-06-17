@@ -25,6 +25,7 @@ describe('<Chart />', () => {
                 labels: ['A', 'B', 'C', 'D'],
                 datasets: [expect.any(Object)],
             },
+            plugins: null,
             options: expect.any(Object),
         });
     });
