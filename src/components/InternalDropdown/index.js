@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
 import RenderIf from '../RenderIf';
 import { UP_KEY, DOWN_KEY, SPACE_KEY, ENTER_KEY } from '../../libs/constants';
 import { Provider } from './context';
-import { Dropdown, Ul, Arrow, Search, UlContainer } from './styled';
 import Content from './content';
 import isChildRegistered from './helpers/isChildRegistered';
 import getChildMenuItemNodes from './helpers/getChildMenuItemNodes';
@@ -23,6 +22,7 @@ import searchFilter from './helpers/searchFilter';
 import getValueNames from './helpers/getValueNames';
 import isEmptyObject from './helpers/isEmptyObject';
 import EmptyMessage from './emptyMessage';
+import { Dropdown, Ul, Arrow, InputSearch, UlContainer, SearchContainer, Icon } from './styled';
 
 const sizeMap = {
     medium: 227,
@@ -30,7 +30,6 @@ const sizeMap = {
 const preventDefaultKeys = {
     [UP_KEY]: true,
     [DOWN_KEY]: true,
-    [SPACE_KEY]: true,
 };
 const menuContainerStyles = {
     maxHeight: sizeMap.medium,
@@ -214,6 +213,9 @@ const InternalDropdown = forwardRef((props, reference) => {
     };
 
     const handleKeyPressed = event => {
+        if (event.keyCode === SPACE_KEY && !enableSearch) {
+            event.preventDefault();
+        }
         if (preventDefaultKeys[event.keyCode]) event.preventDefault();
         if (keyHandlerMap[event.keyCode]) {
             keyHandlerMap[event.keyCode]();
@@ -278,7 +280,10 @@ const InternalDropdown = forwardRef((props, reference) => {
             ref={containerRef}
         >
             <RenderIf isTrue={enableSearch}>
-                <Search onChange={handleSearch} ref={searchRef} />
+                <SearchContainer>
+                    <Icon />
+                    <InputSearch onChange={handleSearch} ref={searchRef} type="search" />
+                </SearchContainer>
             </RenderIf>
             <UlContainer>
                 <RenderIf isTrue={showScrollUpArrow}>
