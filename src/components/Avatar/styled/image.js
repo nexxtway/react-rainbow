@@ -6,6 +6,7 @@ const StyledImage = styled.img`
     height: 100%;
     width: 100%;
     box-sizing: border-box;
+    max-width: none;
 `;
 
 export default StyledImage;
