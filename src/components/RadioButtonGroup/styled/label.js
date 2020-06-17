@@ -12,6 +12,8 @@ const StyledLabel = attachThemeAttrs(styled.legend)`
     margin: 0 auto 0.5rem auto;
     text-align: center;
     box-sizing: border-box;
+    width: 100%;
+
     ${props =>
         props.variant === 'inverse' &&
         `
