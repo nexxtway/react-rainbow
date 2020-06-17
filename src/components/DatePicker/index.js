@@ -1,7 +1,6 @@
 import React, { useRef, useImperativeHandle, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import withReduxForm from '../../libs/hocs/withReduxForm';
-import { useLocale } from '../../libs/hooks';
+import { useLocale, useReduxForm } from '../../libs/hooks';
 import { ENTER_KEY, SPACE_KEY } from '../../libs/constants';
 import CalendarIcon from './calendarIcon';
 import { useFormatDate, useDisclosure } from './hooks';
@@ -35,7 +34,7 @@ const DatePicker = React.forwardRef((props, ref) => {
         locale,
         variant,
         selectionType,
-    } = props;
+    } = useReduxForm(props);
 
     const currentLocale = useLocale(locale);
     const inputRef = useRef();
@@ -226,4 +225,4 @@ DatePicker.defaultProps = {
     variant: 'single',
 };
 
-export default withReduxForm(DatePicker);
+export default DatePicker;
