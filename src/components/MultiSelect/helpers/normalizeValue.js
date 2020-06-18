@@ -6,13 +6,21 @@ export default function normalizeValue(value) {
         if (value.length === 0) {
             return [];
         }
-        return value.map(v => {
-            const newValue = v;
-            delete newValue.icon;
-            return newValue;
+        return value.map(item => {
+            const { label, name, value: itemValue } = item;
+            return {
+                label,
+                name,
+                itemValue,
+            };
         });
     }
-    const newValue = value;
-    delete newValue.icon;
-    return [newValue];
+    const { label, name, value: itemValue } = value;
+    return [
+        {
+            label,
+            name,
+            itemValue,
+        },
+    ];
 }
