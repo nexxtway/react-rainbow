@@ -18,7 +18,7 @@ class PageMultiSelect {
      */
     click() {
         $(this.rootElement)
-            .$('div')
+            .$('[role="combobox"]')
             .click();
     }
 
@@ -39,7 +39,7 @@ class PageMultiSelect {
      */
     hasFocus() {
         return $(this.rootElement)
-            .$('div')
+            .$('[role="combobox"]')
             .isFocused();
     }
 }
