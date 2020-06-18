@@ -1,27 +1,21 @@
 import normalizeValue from '../normalizeValue';
 
 describe('normalizeValue', () => {
-    test('should return the right values', () => {
+    it('should return an empty array', () => {
+        const values = [undefined, null, 0, true, []];
+        values.forEach(val => {
+            expect(normalizeValue(val)).toEqual([]);
+        });
+    });
+
+    it('should return the right values', () => {
         const values = [
-            undefined,
-            null,
-            0,
-            true,
-            [],
             { label: 'Label', name: 'Name', value: 'Value', icon: 'Icon' },
             [{ label: 'Label', name: 'Name', value: 'Value', icon: 'Icon' }],
         ];
-        const expected = [
-            [],
-            [],
-            [],
-            [],
-            [],
-            [{ label: 'Label', name: 'Name', value: 'Value' }],
-            [{ label: 'Label', name: 'Name', value: 'Value' }],
-        ];
-        values.forEach((val, index) => {
-            expect(normalizeValue(val)).toEqual(expected[index]);
+        const expected = [{ label: 'Label', name: 'Name', value: 'Value' }];
+        values.forEach(val => {
+            expect(normalizeValue(val)).toEqual(expected);
         });
     });
 });

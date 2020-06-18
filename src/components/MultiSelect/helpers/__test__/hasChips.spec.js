@@ -1,19 +1,17 @@
 import hasChips from '../hasChips';
 
 describe('hasChips', () => {
-    test('should return the right values', () => {
-        const values = [
-            undefined,
-            null,
-            0,
-            true,
-            [],
-            { label: 'Label', name: 'Name' },
-            [{ label: 'Label', name: 'Name' }],
-        ];
-        const expected = [false, false, false, false, false, true, true];
+    it('should return true', () => {
+        const values = [{ label: 'Label', name: 'Name' }, [{ label: 'Label', name: 'Name' }]];
+        values.forEach(val => {
+            expect(hasChips(val)).toBe(true);
+        });
+    });
+
+    it('should return false', () => {
+        const values = [undefined, null, 0, false, true, []];
         values.forEach((val, index) => {
-            expect(hasChips(val)).toBe(expected[index]);
+            expect(hasChips(val)).toBe(false);
         });
     });
 });
