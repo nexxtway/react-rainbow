@@ -22,7 +22,7 @@ import RenderIf from '../RenderIf';
 import HelpText from '../Input/styled/helpText';
 import ErrorText from '../Input/styled/errorText';
 import PlusIcon from './icons/plus';
-import { ENTER_KEY, SPACE_KEY } from '../../libs/constants';
+import { ENTER_KEY, SPACE_KEY, ESCAPE_KEY, TAB_KEY } from '../../libs/constants';
 import { hasChips, positionResolver } from './helpers';
 import Chips from './chips';
 import normalizeValue from './helpers/normalizeValue';
@@ -73,18 +73,19 @@ const MultiSelect = React.forwardRef((props, ref) => {
     const inputId = useUniqueIdentifier('input');
     const errorMessageId = useErrorMessageId();
 
-    useEffect(() => {
-        if (isOpen) {
-            dropdownRef.current.focus();
-        }
-    }, [isOpen]);
+    const closeAndFocusInput = () => {
+        setIsOpen(false);
+        // eslint-disable-next-line no-use-before-define
+        stopListeningOutsideClick();
+        comboboxRef.current.focus();
+    };
 
     const handleChange = val => {
+        closeAndFocusInput();
         return onChange(normalizeValue(val));
     };
 
     const handleDelete = option => {
-        comboboxRef.current.focus();
         if (Array.isArray(value)) {
             return handleChange(value.filter(val => val !== option));
         }
@@ -101,6 +102,10 @@ const MultiSelect = React.forwardRef((props, ref) => {
     };
 
     const handleKeyDown = event => {
+        if (event.keyCode === ESCAPE_KEY || event.keyCode === TAB_KEY) {
+            event.preventDefault();
+            closeAndFocusInput();
+        }
         if (event.target !== comboboxRef.current) return;
         if (event.keyCode === ENTER_KEY || event.keyCode === SPACE_KEY) {
             event.preventDefault();
@@ -190,6 +195,23 @@ const MultiSelect = React.forwardRef((props, ref) => {
                     ref={triggerRef}
                     tabIndex="-1"
                 />
+                <InternalOverlay
+                    isVisible={isOpen}
+                    positionResolver={positionResolver}
+                    onOpened={() => dropdownRef.current.focus()}
+                    render={() => (
+                        <InternalDropdown
+                            id={dropdownId}
+                            value={value}
+                            onChange={handleChange}
+                            ref={dropdownRef}
+                            multiple
+                        >
+                            {children}
+                        </InternalDropdown>
+                    )}
+                    triggerElementRef={() => triggerRef.current.buttonRef}
+                />
             </StyledCombobox>
             <RenderIf isTrue={!!bottomHelpText}>
                 <HelpText alignSelf="center">{bottomHelpText}</HelpText>
@@ -199,22 +221,6 @@ const MultiSelect = React.forwardRef((props, ref) => {
                     {error}
                 </ErrorText>
             </RenderIf>
-            <InternalOverlay
-                isVisible={isOpen}
-                positionResolver={positionResolver}
-                render={() => (
-                    <InternalDropdown
-                        id={dropdownId}
-                        value={value}
-                        onChange={handleChange}
-                        ref={dropdownRef}
-                        multiple
-                    >
-                        {children}
-                    </InternalDropdown>
-                )}
-                triggerElementRef={() => triggerRef.current.buttonRef}
-            />
         </StyledContainer>
     );
 });
@@ -248,18 +254,13 @@ MultiSelect.propTypes = {
     /** Specifies the variant for the chips. */
     chipVariant: PropTypes.oneOf(['base', 'neutral', 'outline-brand', 'brand']),
     /** Specifies the value of an input element. */
-    value: PropTypes.oneOfType([
+    value: PropTypes.arrayOf(
         PropTypes.shape({
             name: PropTypes.string,
             label: PropTypes.string,
+            value: PropTypes.any,
         }),
-        PropTypes.arrayOf(
-            PropTypes.shape({
-                name: PropTypes.string,
-                label: PropTypes.string,
-            }),
-        ),
-    ]),
+    ),
     /** The action triggered when a value attribute changes. */
     onChange: PropTypes.func,
     /** The action triggered when the element receives focus. */
