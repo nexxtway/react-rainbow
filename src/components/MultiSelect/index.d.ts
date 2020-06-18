@@ -19,7 +19,7 @@ export interface MultiSelectProps extends BaseProps {
     variant?: 'default' | 'bare';
     chipVariant?: 'base' | 'neutral' | 'outline-brand' | 'brand';
     hideLabel?: boolean;
-    value?: MultiSelectOption | MultiSelectOption[];
+    value?: MultiSelectOption[];
     onChange?: (value: MultiSelectOption[]) => void;
     onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
     onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
