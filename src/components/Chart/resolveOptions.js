@@ -19,7 +19,7 @@ export default function resolveOptions(conditions) {
         theme,
         type,
         plugins,
-        datalabels,
+        pluginsChartConf,
     } = conditions;
     const palette = theme ? theme.rainbow.palette : defaultTheme.palette;
     const legend = {
@@ -157,7 +157,7 @@ export default function resolveOptions(conditions) {
                 },
             },
             plugins: {
-                datalabels,
+                ...pluginsChartConf,
             },
         };
     }

@@ -3402,6 +3402,11 @@ chartjs-plugin-datalabels@^0.7.0:
   resolved "https://registry.yarnpkg.com/chartjs-plugin-datalabels/-/chartjs-plugin-datalabels-0.7.0.tgz#f72e44edb2db45ef68913e9320bcc50398a205e6"
   integrity sha512-PKVUX14nYhH0wcdCpgOoC39Gbzvn6cZ7O9n+bwc02yKD9FTnJ7/TSrBcfebmolFZp1Rcicr9xbT0a5HUbigS7g==
 
+chartjs-plugin-deferred@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/chartjs-plugin-deferred/-/chartjs-plugin-deferred-1.0.1.tgz#74a97f38f584a5b180d65d675670a1bf3c97755a"
+  integrity sha512-U/FDFvlCCDBhs+tYm18482VLckWzqfbpYH/Dgp/6x2B9rqwPnaec5iLAbUPDkI0DS1SnWHUynXxtvaLtIR18GA==
+
 cheerio@^1.0.0-rc.2:
   version "1.0.0-rc.2"
   resolved "https://registry.yarnpkg.com/cheerio/-/cheerio-1.0.0-rc.2.tgz#4b9f53a81b27e4d5dac31c0ffd0cfa03cc6830db"

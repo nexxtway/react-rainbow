@@ -4,6 +4,7 @@ import ChartJS from 'chart.js';
 import { withTheme } from 'styled-components';
 import resolveOptions from './resolveOptions';
 import resolveDatasets from './resolveDatasets';
+import getGlobalsPlugins from './helpers/getGlobalsPlugins';
 import StyledContainer from './styled/container';
 
 /**
@@ -48,7 +49,7 @@ export class Chart extends Component {
     renderChart() {
         const { type, labels, plugins, ...conditions } = this.props;
         if (plugins) {
-            ChartJS.plugins.unregister(plugins);
+            ChartJS.plugins.unregister(getGlobalsPlugins(plugins));
         }
         const node = this.chartRef.current;
 
@@ -119,9 +120,11 @@ Chart.propTypes = {
     /** Maintain the original canvas aspect ratio. */
     maintainAspectRatio: PropTypes.bool,
     /** Plugins to customize the Chart. */
-    plugins: PropTypes.arrayOf(PropTypes.any),
-    /** Configuration options for the datalabels. */
-    datalabels: PropTypes.objectOf(PropTypes.string, PropTypes.number),
+    plugins: PropTypes.arrayOf(PropTypes.object),
+    /** The configuration options for the plugins at the Chart level. */
+    pluginsChartConf: PropTypes.objectOf(PropTypes.object),
+    /** The configuration options for the plugins at the Dataset level. */
+    pluginsDatasetConf: PropTypes.objectOf(PropTypes.object),
     /** A CSS class for the outer element, in addition to the component's base classes. */
     className: PropTypes.string,
     /** An object with custom style applied for the outer element. */
@@ -150,7 +153,8 @@ Chart.defaultProps = {
     disableYAxisTickLabels: false,
     maintainAspectRatio: true,
     plugins: undefined,
-    datalabels: undefined,
+    pluginsChartConf: undefined,
+    pluginsDatasetConf: undefined,
     className: undefined,
     style: undefined,
     children: undefined,

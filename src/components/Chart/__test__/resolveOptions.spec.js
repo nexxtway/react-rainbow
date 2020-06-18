@@ -161,8 +161,8 @@ describe('resolveOptions function', () => {
             showLegend: true,
             legendPosition: 'bottom',
             showStacked: false,
-            datalabels: { color: '#CCC' },
             plugins: [],
+            pluginsChartConf: { datalabels: { color: '#CCC' } },
         };
 
         const options = resolveOptions(conditions);
@@ -192,8 +192,8 @@ describe('resolveOptions function', () => {
             showLegend: true,
             legendPosition: 'bottom',
             showStacked: true,
-            datalabels: { color: '#CCC' },
             plugins: [],
+            pluginsChartConf: { datalabels: { color: '#CCC' } },
         };
 
         const options = resolveOptions(conditions);
