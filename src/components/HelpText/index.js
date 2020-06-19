@@ -46,17 +46,47 @@ const HelpText = props => {
     const triggerRef = useRef();
     const helpTextId = useUniqueIdentifier('help-text');
     const [isFocused, setIsFocused] = useState(false);
+    const isHoverTooltip = useRef(false);
+    const isClickTooltip = useRef(false);
     const { isOpen, open: openOverlay, close: closeOverlay } = useDisclosure(false);
 
     useEffect(() => {
         if (isFocused) {
             openOverlay();
         } else {
-            // closeOverlay();
+            closeOverlay();
         }
     }, [closeOverlay, isFocused, openOverlay]);
 
-    const handleMouseLeave = () => {
+    const handleBlur = () => {
+        if (!isClickTooltip.current) {
+            setIsFocused(false);
+        }
+    };
+
+    const handleButtonMouseLeave = () => {
+        if (!isFocused) {
+            setTimeout(() => {
+                if (!isHoverTooltip.current) closeOverlay();
+            });
+        }
+    };
+
+    const handleTooltipMouseDown = () => {
+        isClickTooltip.current = true;
+    };
+
+    const handleTooltipMouseUp = () => {
+        isClickTooltip.current = false;
+        triggerRef.current.focus();
+    };
+
+    const handleTooltipMouseEnter = () => {
+        isHoverTooltip.current = true;
+    };
+
+    const handleTooltipMouseLeave = () => {
+        isHoverTooltip.current = false;
         if (!isFocused) {
             closeOverlay();
         }
@@ -77,9 +107,9 @@ const HelpText = props => {
             <StyledButton
                 ref={triggerRef}
                 onMouseEnter={openOverlay}
-                onMouseLeave={handleMouseLeave}
+                onMouseLeave={handleButtonMouseLeave}
                 onFocus={() => setIsFocused(true)}
-                onBlur={() => setIsFocused(false)}
+                onBlur={handleBlur}
                 onKeyDown={handleKeyPressed}
                 type="button"
                 tabIndex={tabIndex}
@@ -93,7 +123,14 @@ const HelpText = props => {
                     positionResolver={positionResolver}
                     render={() => {
                         return (
-                            <StyledTooltip id={helpTextId} role="tooltip">
+                            <StyledTooltip
+                                id={helpTextId}
+                                role="tooltip"
+                                onMouseDown={handleTooltipMouseDown}
+                                onMouseUp={handleTooltipMouseUp}
+                                onMouseEnter={handleTooltipMouseEnter}
+                                onMouseLeave={handleTooltipMouseLeave}
+                            >
                                 <RenderIf isTrue={!!title}>
                                     <StyledTitle variant={variant}>
                                         <StyledIconContainer>{inverseIcon}</StyledIconContainer>
