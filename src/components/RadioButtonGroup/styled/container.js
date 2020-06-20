@@ -10,6 +10,7 @@ const StyledContainer = styled.fieldset`
     position: relative;
     flex-direction: column;
     box-sizing: border-box;
+    text-align: center;
 `;
 
 export default StyledContainer;

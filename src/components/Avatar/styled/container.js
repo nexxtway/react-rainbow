@@ -8,7 +8,10 @@ const StyledContainer = attachThemeAttrs(styled.span)`
         isValidColor(props.backgroundColor) ? props.backgroundColor : props.palette.brand.main};
     color: ${props => props.palette.getContrastText(props.palette.brand.main)};
     border-radius: 50%;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     height: 2.5rem;
     line-height: 1;
     overflow: hidden;

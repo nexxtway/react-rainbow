@@ -1,6 +1,6 @@
 {
     "name": "react-rainbow-components",
-    "version": "1.15.0",
+    "version": "1.16.0",
     "description": "React Rainbow Components",
     "keywords": [
         "react",
@@ -32,7 +32,7 @@
     },
     "dependencies": {
         "autosize": "^4.0.2",
-        "chart.js": "^2.7.3",
+        "chart.js": "2.7.3",
         "clipboard-copy": "^2.0.0",
         "prop-types": "^15.6.2",
         "react-async-script-loader": "^0.3.0",
@@ -152,6 +152,7 @@
         "react-codemirror2": "^6.0.0",
         "react-dom": "^16.8.6",
         "react-ga": "^2.5.3",
+        "react-is": "16.8.6",
         "react-prismic-cms": "^0.3.1",
         "react-redux": "^5.1.0",
         "react-styleguidist": "^9.2.0",

@@ -1,9 +1,13 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { ForwardRef } from 'react-is';
 import { eachShouldBeOneOrFunction } from './utils';
 
 function isMountedByEnzyme(component) {
-    return typeof component.setProps === 'function'
-        && typeof component.simulate === 'function'
-        && typeof component.instance === 'function';
+    return (
+        typeof component.setProps === 'function' &&
+        typeof component.simulate === 'function' &&
+        typeof component.instance === 'function'
+    );
 }
 
 const focusables = ['button', 'input', 'select', 'textarea'];
@@ -28,16 +32,21 @@ export default function toBeFocusable(component) {
             element.simulate('focus');
         }
 
-        const instance = component.instance();
-
         const results = [
             onClickMockFn.mock.calls.length,
             onFocusMockFn.mock.calls.length,
             onBlurMockFn.mock.calls.length,
-            instance ? typeof instance.click : null,
-            instance ? typeof instance.focus : null,
-            instance ? typeof instance.blur : null,
         ];
+
+        const type = component.type();
+        if (type.$$typeof !== ForwardRef) {
+            const instance = component.instance();
+            results.push(
+                instance ? typeof instance.click : null,
+                instance ? typeof instance.focus : null,
+                instance ? typeof instance.blur : null,
+            );
+        }
 
         if (eachShouldBeOneOrFunction(results)) {
             return {
@@ -45,13 +54,15 @@ export default function toBeFocusable(component) {
                 pass: true,
             };
         }
+
         return {
             message: () => `Expected ${component.name()} to be focusable but it is not.`,
             pass: false,
         };
     }
     return {
-        message: () => 'You need to pass a component returned by mount or shallow enzyme\'s methods to check whether it is focusable or not.',
+        message: () =>
+            "You need to pass a component returned by mount or shallow enzyme's methods to check whether it is focusable or not.",
         pass: false,
     };
 }

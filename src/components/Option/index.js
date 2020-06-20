@@ -184,7 +184,7 @@ class OptionItem extends Component {
 }
 
 /**
- * Represents a list options in a menu.
+ * This component represents a dropdown list with different options. It allows a user to select one among multiple options.
  * @category Form
  */
 export default function Option(props) {
