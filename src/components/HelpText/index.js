@@ -103,8 +103,11 @@ const HelpText = props => {
     const inverseIcon = inverseIconMap[variant] || inverseIconMap.info;
 
     return (
-        <div id={id} className={className} style={style}>
+        <>
             <StyledButton
+                id={id}
+                className={className}
+                style={style}
                 ref={triggerRef}
                 onMouseEnter={openOverlay}
                 onMouseLeave={handleButtonMouseLeave}
@@ -144,7 +147,7 @@ const HelpText = props => {
                     triggerElementRef={triggerRef}
                 />
             </RenderIf>
-        </div>
+        </>
     );
 };
 
