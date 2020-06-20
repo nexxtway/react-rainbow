@@ -102,7 +102,7 @@ const MultiSelect = React.forwardRef((props, ref) => {
     };
 
     const handleKeyDown = event => {
-        if (event.keyCode === ESCAPE_KEY || event.keyCode === TAB_KEY) {
+        if ((event.keyCode === ESCAPE_KEY || event.keyCode === TAB_KEY) && isOpen) {
             event.preventDefault();
             closeAndFocusInput();
         }
