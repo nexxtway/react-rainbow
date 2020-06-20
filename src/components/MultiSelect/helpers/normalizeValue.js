@@ -11,7 +11,7 @@ export default function normalizeValue(value) {
             return {
                 label,
                 name,
-                itemValue,
+                value: itemValue,
             };
         });
     }
@@ -20,7 +20,7 @@ export default function normalizeValue(value) {
         {
             label,
             name,
-            itemValue,
+            value: itemValue,
         },
     ];
 }
