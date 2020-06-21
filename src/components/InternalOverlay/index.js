@@ -94,7 +94,7 @@ const InternalOverlay = props => {
     useEffect(() => {
         if (isVisible && contentMeta) {
             onOpened();
-            disableBodyScroll();
+            disableBodyScroll(undefined, { reserveScrollBarGap: true });
         } else {
             enableBodyScroll();
         }
