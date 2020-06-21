@@ -5,14 +5,14 @@ import React from 'react';
 import styled from 'styled-components'
 import { HelpText } from 'react-rainbow-components';
 
+const style = { width: '250px' };
+
 const Container = styled.div`
     display: flex;
     justify-content: center;
-    padding-top: 50px;
+    align-items: center;
     height: 150px;
 `;
-
-const style = { width: '250px' };
 
 <Container>
     <HelpText
@@ -34,7 +34,7 @@ const style = { width: '250px' };
 const Container = styled.div`
     display: flex;
     justify-content: center;
-    padding-top: 50px;
+    align-items: center;
     height: 150px;
 `;
 
@@ -57,7 +57,7 @@ import { HelpText } from 'react-rainbow-components';
 const Container = styled.div`
     display: flex;
     justify-content: center;
-    padding-top: 50px;
+    align-items: center;
     height: 150px;
 `;
 
@@ -82,7 +82,7 @@ import { HelpText } from 'react-rainbow-components';
 const Container = styled.div`
     display: flex;
     justify-content: center;
-    padding-top: 50px;
+    align-items: center;
     height: 150px;
 `;
 
