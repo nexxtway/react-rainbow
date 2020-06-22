@@ -61,7 +61,7 @@ initialState = { date: new Date() };
         label="DatePicker Label"
         onChange={value => setState({ date: value })}
     />
-</div>
+</div>;
 ```
 
 ##### DatePicker with different date formats:
@@ -96,7 +96,7 @@ initialState = { date: new Date() };
             onChange={value => setState({ date: value })}
         />
     </div>
-</div>
+</div>;
 ```
 
 ##### DatePicker required:
@@ -120,7 +120,7 @@ initialState = { date: new Date() };
         label="DatePicker Label"
         onChange={value => setState({ date: value })}
     />
-</div>
+</div>;
 ```
 
 ##### DatePicker with error:
@@ -146,7 +146,7 @@ initialState = { date: undefined };
         label="DatePicker Label"
         onChange={value => setState({ date: value })}
     />
-</div>
+</div>;
 ```
 
 ##### DatePicker disabled:
@@ -164,7 +164,7 @@ const containerStyles = {
     style={containerStyles}
 >
     <DatePicker disabled value={new Date()} label="DatePicker Label" />
-</div>
+</div>;
 ```
 
 ##### DatePicker readOnly:
@@ -182,7 +182,7 @@ const containerStyles = {
     style={containerStyles}
 >
     <DatePicker id="datePicker-13" readOnly value={new Date()} label="DatePicker Label" />
-</div>
+</div>;
 ```
 
 ##### DatePicker with range selection:
@@ -193,7 +193,7 @@ import { DatePicker } from 'react-rainbow-components';
 
 const initialState = {
     range: undefined,
-}
+};
 const containerStyles = {
     maxWidth: 400,
 };
@@ -212,7 +212,7 @@ const containerStyles = {
         value={state.range}
         onChange={value => setState({ range: value })}
     />
-</div>
+</div>;
 ```
 
 ##### DatePicker with variant double:
@@ -223,7 +223,7 @@ import { DatePicker } from 'react-rainbow-components';
 
 const initialState = {
     date: undefined,
-}
+};
 const containerStyles = {
     maxWidth: 400,
 };
@@ -240,5 +240,76 @@ const containerStyles = {
         value={state.date}
         onChange={date => setState({ date })}
     />
-</div>
+</div>;
+```
+
+##### DatePicker select date:
+
+```js
+import React from 'react';
+import { Picklist, PicklistOption, DatePicker, Input, Avatar } from 'react-rainbow-components';
+import styled from 'styled-components';
+//import img from './icons/avatar-5.svg';
+
+const initialState = {
+    date: '',
+    locale: { name: 'en-US', label: 'English (US)' },
+};
+
+const Title = styled.h2`
+    color: ${props => props.theme.rainbow.palette.text.title};
+    font-size: 2rem;
+    margin: 0 0.5rem 0 1rem;
+`;
+
+const Name = styled.h1`
+    color: ${props => props.theme.rainbow.palette.text.title};
+    font-size: 2rem;
+    margin: 0 0.5rem 0 1rem;
+    font-weight: 800;
+`;
+
+const Email = styled.p`
+    color: ${props => props.theme.rainbow.palette.text.title};
+    font-size: 1rem;
+    margin: 0 0.5rem 0 1rem;
+`;
+
+const StyledAvatar = styled(Avatar)`
+    width: 100px;
+    height: 100px;
+    box-shadow: 0 2px 4px 0 rgba(6, 28, 63, 0.3);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+`;
+
+<div className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto rainbow-flex_column">
+    <div className="rainbow-m-vertical_medium">
+        <Title>Complete your Information</Title>
+    </div>
+    <div className="rainbow-flex rainbow-align_center rainbow-m-vertical_medium">
+        <div>
+            <StyledAvatar src="images/user/avatar-5.svg" assistiveText={name} title={name} />
+        </div>
+        <div>
+            <Name>Ana Doe</Name>
+            <Email>ana@gmail.com</Email>
+        </div>
+    </div>
+    <div className="rainbow-m-vertical_medium" style={{ width: '400px' }}>
+        <DatePicker
+            id="datePicker-1"
+            placeholder="Select your DOB"
+            value={state.date}
+            onChange={value => setState({ date: value })}
+            label="Birthday"
+            formatStyle="medium"
+            locale={state.locale.name}
+        />
+    </div>
+    <div className="rainbow-m-vertical_medium" style={{ width: '400px' }}>
+        <Input id="input-component-1" label="Company Name" placeholder="Enter company name" />
+    </div>
+</div>;
 ```
