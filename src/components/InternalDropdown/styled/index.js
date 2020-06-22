@@ -97,6 +97,12 @@ export const SearchContainer = attachThemeAttrs(styled.div)`
     display: flex;
     align-items: center;
     border-bottom: 1px solid ${props => props.palette.border.divider};
+
+    ${props =>
+        props.isLoading &&
+        `
+            margin-bottom: 1rem;
+    `}
 `;
 
 export const Icon = styled(SearchIcon)`
