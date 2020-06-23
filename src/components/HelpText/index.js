@@ -41,7 +41,7 @@ const inverseIconMap = {
 /**
  * HelpText is a popup that displays information related to an element.
  */
-const HelpText = props => {
+export default function HelpText(props) {
     const { id, title, text, variant, tabIndex, className, style } = props;
 
     const triggerRef = useRef();
@@ -151,7 +151,7 @@ const HelpText = props => {
             </RenderIf>
         </>
     );
-};
+}
 
 HelpText.propTypes = {
     /** The id of the outer element. */
@@ -179,5 +179,3 @@ HelpText.defaultProps = {
     variant: 'info',
     tabIndex: undefined,
 };
-
-export default HelpText;
