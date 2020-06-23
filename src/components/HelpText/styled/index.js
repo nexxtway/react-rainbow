@@ -4,6 +4,7 @@ import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 export const StyledButton = styled.button`
     border: none;
     background: transparent;
+    height: fit-content;
 
     &:focus,
     &:active {
@@ -16,6 +17,8 @@ export const StyledTooltip = attachThemeAttrs(styled.div)`
     box-shadow: ${props => props.shadows.shadow_2};
     border: solid 1px ${props => props.palette.border.divider};
     background-color: ${props => props.palette.background.main};
+    min-width: 60px;
+    max-width: 400px;
 `;
 
 export const StyledTitle = attachThemeAttrs(styled.div).attrs(props => {

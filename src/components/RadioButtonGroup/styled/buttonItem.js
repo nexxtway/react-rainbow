@@ -4,12 +4,11 @@ import attachThemeAttrs from '../../../styles/helpers/attachThemeAttrs';
 import { replaceAlpha } from '../../../styles/helpers/color';
 import { BORDER_RADIUS_2 } from '../../../styles/borderRadius';
 
-const sizeMap = { large: '3rem', medium: '2.5rem', small: '1.8rem', 'x-small': '1.3rem' };
 const StyledButtonItem = attachThemeAttrs(styled.span)`
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    height: ${props => sizeMap[props.size] || sizeMap.medium};
+    height: 100%;
     border-radius: ${BORDER_RADIUS_2};
     border: solid 1px transparent;
     transition: transform 600ms cubic-bezier(0.02, 0.94, 0.09, 0.97),
@@ -17,6 +16,7 @@ const StyledButtonItem = attachThemeAttrs(styled.span)`
     transform: translate3d(0, 0, 0);
 
     &:hover {
+        border: solid 1px transparent;
         background-color: ${props => replaceAlpha(props.palette.background.highlight, 0.6)};
         cursor: pointer;
     }
@@ -35,6 +35,7 @@ const StyledButtonItem = attachThemeAttrs(styled.span)`
         props.variant === 'inverse' &&
         `
             &:hover {
+                border: solid 1px transparent;
                 background-color: ${
                     props.palette.isDark ? 'rgba(193, 193, 193, 0.4)' : 'rgba(250, 250, 250, 0.10)'
                 };

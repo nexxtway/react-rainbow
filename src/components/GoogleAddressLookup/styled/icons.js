@@ -3,7 +3,7 @@ import '../../../styles/defaultTheme';
 import attachThemeAttrs from './../../../styles/helpers/attachThemeAttrs';
 
 export const IconCircleColor = attachThemeAttrs(styled.svg)`
-  fill: ${props => props.palette.text.disabled}
+    fill: ${props => props.palette.text.disabled}
 `;
 
 export const IconPinColor = attachThemeAttrs(styled.svg)`
