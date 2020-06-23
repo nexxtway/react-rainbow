@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useUniqueIdentifier, useDisclosure } from '../../libs/hooks';
 import InternalOverlay from '../InternalOverlay';
 import RenderIf from '../RenderIf';
+import AssistiveText from '../AssistiveText';
 import { ESCAPE_KEY } from '../../libs/constants';
 import {
     StyledTooltip,
@@ -119,6 +120,7 @@ const HelpText = props => {
                 ariaLabelledby={helpTextId}
             >
                 {icon}
+                <AssistiveText text={variant} />
             </StyledButton>
             <RenderIf isTrue={!!text}>
                 <InternalOverlay
