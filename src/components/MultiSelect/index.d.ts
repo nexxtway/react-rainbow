@@ -16,8 +16,9 @@ export interface MultiSelectProps extends BaseProps {
     required?: boolean;
     disabled?: boolean;
     readOnly?: boolean;
-    variant?: 'default' | 'bare';
+    variant?: 'default' | 'chip';
     chipVariant?: 'base' | 'neutral' | 'outline-brand' | 'brand';
+    isBare?: boolean;
     hideLabel?: boolean;
     value?: MultiSelectOption[];
     onChange?: (value: MultiSelectOption[]) => void;

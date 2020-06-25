@@ -38,14 +38,15 @@ export const StyledCombobox = attachThemeAttrs(styled.div)`
     padding: 0.1rem 1px;
 
     ${props =>
-        props.variant === 'bare' &&
+        props.isBare &&
         `
         background: transparent;
         border-color: transparent;
         `}
 
     :focus,
-    :active {
+    :active,
+    :focus-within {
         outline: 0;
         padding: 0.0325rem 0;
         border: 2px solid ${props => props.palette.brand.main};
@@ -121,4 +122,13 @@ export const StyledPlaceholder = attachThemeAttrs(styled.span)`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+`;
+
+export const StyledText = attachThemeAttrs(styled.span)`
+    color: ${props => props.palette.text.main};
+    font-weight: 500;
+    font-size: ${FONT_SIZE_TEXT_LARGE};
+    align-self: center;
+    max-width: 100%;
+    padding: 0.1rem 0.8rem;
 `;
