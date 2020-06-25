@@ -249,7 +249,6 @@ const containerStyles = {
 import React from 'react';
 import { Picklist, PicklistOption, DatePicker, Input, Avatar } from 'react-rainbow-components';
 import styled from 'styled-components';
-//import img from './icons/avatar-5.svg';
 
 const initialState = {
     date: '',
@@ -284,6 +283,14 @@ const StyledAvatar = styled(Avatar)`
     margin-right: auto;
 `;
 
+const StyledDatePicker = styled.div`
+    width: 400px;
+`;
+
+const StyledInput = styled.div`
+    width: 400px;
+`;
+
 <div className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto rainbow-flex_column">
     <div className="rainbow-m-vertical_medium">
         <Title>Complete your Information</Title>
@@ -297,7 +304,7 @@ const StyledAvatar = styled(Avatar)`
             <Email>ana@gmail.com</Email>
         </div>
     </div>
-    <div className="rainbow-m-vertical_medium" style={{ width: '400px' }}>
+    <StyledDatePicker className="rainbow-m-vertical_medium">
         <DatePicker
             id="datePicker-1"
             placeholder="Select your DOB"
@@ -307,9 +314,9 @@ const StyledAvatar = styled(Avatar)`
             formatStyle="medium"
             locale={state.locale.name}
         />
-    </div>
-    <div className="rainbow-m-vertical_medium" style={{ width: '400px' }}>
+    </StyledDatePicker>
+    <StyledInput className="rainbow-m-vertical_medium">
         <Input id="input-component-1" label="Company Name" placeholder="Enter company name" />
-    </div>
+    </StyledInput>
 </div>;
 ```
