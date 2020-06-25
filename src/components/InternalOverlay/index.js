@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import styled from 'styled-components';
 import ContentMetaResolver from './ContentMetaResolver';
-import defaultPositionResolver from './defaultPositionResolver';
+import { defaultPositionResolver } from './helpers';
 import { disableBodyScroll, enableBodyScroll } from '../../libs/scrollController';
 
 const Container = styled.div`

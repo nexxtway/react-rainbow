@@ -1,60 +1,18 @@
-const bottomLeft = opts => {
-    const { trigger, content, viewport } = opts;
-    if (
-        trigger.leftBottomAnchor.x + content.width <= viewport.width &&
-        trigger.leftBottomAnchor.y + content.height <= viewport.height
-    ) {
-        return {
-            top: trigger.leftBottomAnchor.y,
-            left: trigger.leftBottomAnchor.x,
-        };
-    }
-    return false;
-};
+import resolverBottomLeft from '../../InternalOverlay/helpers/resolverBottomLeft';
+import resolverBottomRight from '../../InternalOverlay/helpers/resolverBottomRight';
+import resolverUpLeft from '../../InternalOverlay/helpers/resolverUpLeft';
+import resolverUpRight from '../../InternalOverlay/helpers/resolverUpRight';
+import resolverBottomCenter from './resolverBottomCenter';
+import resolverUpCenter from './resolverUpCenter';
 
-const bottomRight = opts => {
-    const { trigger, content, viewport } = opts;
-    if (
-        trigger.rightBottomAnchor.x - content.width >= 0 &&
-        trigger.leftBottomAnchor.y + content.height <= viewport.height
-    ) {
-        return {
-            top: trigger.leftBottomAnchor.y,
-            left: trigger.rightBottomAnchor.x - content.width,
-        };
-    }
-    return false;
-};
-
-const upLeft = opts => {
-    const { trigger, content, viewport } = opts;
-    if (
-        trigger.leftUpAnchor.x + content.width <= viewport.width &&
-        trigger.leftUpAnchor.y - content.height >= 0
-    ) {
-        return {
-            top: trigger.leftUpAnchor.y - content.height,
-            left: trigger.leftBottomAnchor.x,
-        };
-    }
-    return false;
-};
-
-const upRight = opts => {
-    const { trigger, content } = opts;
-    if (
-        trigger.rightUpAnchor.x - content.width >= 0 &&
-        trigger.rightUpAnchor.y - content.height >= 0
-    ) {
-        return {
-            top: trigger.leftUpAnchor.y - content.height,
-            left: trigger.rightUpAnchor.x - content.width,
-        };
-    }
-    return false;
-};
-
-const resolvers = [bottomRight, bottomLeft, upRight, upLeft];
+const resolvers = [
+    resolverBottomRight,
+    resolverBottomLeft,
+    resolverBottomCenter,
+    resolverUpRight,
+    resolverUpLeft,
+    resolverUpCenter,
+];
 
 const positionResolver = opts => {
     let pos;

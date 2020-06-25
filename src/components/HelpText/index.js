@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useUniqueIdentifier, useDisclosure } from '../../libs/hooks';
+import { useUniqueIdentifier, useDisclosure, useWindowResize } from '../../libs/hooks';
 import InternalOverlay from '../InternalOverlay';
 import RenderIf from '../RenderIf';
 import AssistiveText from '../AssistiveText';
@@ -58,6 +58,8 @@ export default function HelpText(props) {
             closeOverlay();
         }
     }, [closeOverlay, isFocused, openOverlay]);
+
+    useWindowResize(() => closeOverlay(), isOpen);
 
     const handleBlur = () => {
         if (!isClickTooltip.current) {

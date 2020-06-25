@@ -53,7 +53,7 @@ describe('<HelpText />', () => {
         });
     });
 
-    it('should maitime focus bottom when clicking in help text ', () => {
+    it('should maintain focus button when clicking in help text', () => {
         const wrapper = mount(<HelpText text={<div id="test-id">Help Text</div>} />);
         wrapper.find('button').simulate('focus');
         expect(wrapper.find(InternalOverlay).prop('isVisible')).toBe(true);
