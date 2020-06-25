@@ -1,12 +1,24 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import PropTypes from 'prop-types';
+import SectionHeading from '../SectionHeading';
 
 export default function SectionRenderer(props) {
     const { name, slug, content, components, sections, depth, description, pagePerSection } = props;
 
     return (
         <section>
+            {name && (
+                <SectionHeading
+                    depth={depth}
+                    id={slug}
+                    slotName="sectionToolbar"
+                    pagePerSection={pagePerSection}
+                    slotProps={props}
+                >
+                    {name}
+                </SectionHeading>
+            )}
             <div>
                 {description}
                 {content}

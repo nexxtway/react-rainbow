@@ -13,7 +13,6 @@ import GitterChat from '../GitterChat';
 import ChatIcon from '../../exampleComponents/Icons/chat';
 import TwitterIcon from '../../exampleComponents/Icons/twitter';
 import BarsIcon from './barsIcon';
-import SectionHeading from '../../styleguideComponents/SectionHeading';
 
 import './styles.css';
 
@@ -112,7 +111,6 @@ class StyleGuide extends React.Component {
                     onClick={this.toggleSidebar}
                 />
                 <main className="react-rainbow-main-content">
-                    <SectionHeading />
                     <RenderIf isTrue={window.location.hash !== '#/Components'}>{children}</RenderIf>
                     <RenderIf isTrue={window.location.hash === '#/Components'}>
                         <ComponentsPage components={components} />
