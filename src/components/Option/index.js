@@ -8,6 +8,7 @@ import StyledHeaderLabel from './styled/headerLabel';
 import StyledItem from './styled/item';
 import StyledIconContainer from './styled/iconContainer';
 import StyledCheckmarkIcon from './styled/checkmarkIcon';
+import StyledUncheckIcon from './styled/uncheckIcon';
 
 function preventDefault(event) {
     event.preventDefault();
@@ -94,9 +95,12 @@ class OptionItem extends Component {
     }
 
     renderRightIcon() {
-        const { name, currentValues, icon, iconPosition } = this.props;
+        const { name, currentValues, icon, iconPosition, activeOptionName } = this.props;
         const hasRightIcon = !!(icon && iconPosition === 'right');
         if (currentValues && currentValues.includes(name)) {
+            if (activeOptionName === name) {
+                return <StyledUncheckIcon />;
+            }
             return <StyledCheckmarkIcon />;
         }
         return (
