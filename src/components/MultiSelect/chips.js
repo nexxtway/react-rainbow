@@ -11,7 +11,6 @@ function Chips(props) {
     if (Array.isArray(value)) {
         return value.map(val => {
             const onDeleteCallback = disabled || readOnly ? null : () => onDelete(val);
-
             return (
                 <StyledChip
                     key={val.name}
@@ -22,7 +21,8 @@ function Chips(props) {
             );
         });
     }
-    return <StyledChip label={value.label} variant={variant} onDelete={() => onDelete(value)} />;
+    const onDeleteCallback = disabled || readOnly ? null : () => onDelete(value);
+    return <StyledChip label={value.label} variant={variant} onDelete={onDeleteCallback} />;
 }
 
 Chips.propTypes = {
