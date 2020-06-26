@@ -16,7 +16,6 @@ import {
     StyledButtonIcon,
     StyledPlaceholder,
     StyledCombobox,
-    StyledText,
     StyledCountText,
 } from './styled';
 import InternalDropdown from '../InternalDropdown';
@@ -26,10 +25,9 @@ import HelpText from '../Input/styled/helpText';
 import ErrorText from '../Input/styled/errorText';
 import PlusIcon from './icons/plus';
 import { ENTER_KEY, SPACE_KEY, ESCAPE_KEY, TAB_KEY } from '../../libs/constants';
-import { hasChips, positionResolver } from './helpers';
-import Chips from './chips';
+import { hasContent, positionResolver } from './helpers';
 import normalizeValue from './helpers/normalizeValue';
-import getContent from './helpers/getContent';
+import Content from './content';
 
 const MultiSelect = React.forwardRef((props, ref) => {
     const {
@@ -44,7 +42,7 @@ const MultiSelect = React.forwardRef((props, ref) => {
         required,
         disabled,
         readOnly,
-        tabIndex: tabIndexInProps,
+        tabIndex,
         variant,
         chipVariant,
         isBare,
@@ -58,6 +56,7 @@ const MultiSelect = React.forwardRef((props, ref) => {
     const triggerRef = useRef();
     const dropdownRef = useRef();
     const comboboxRef = useRef();
+    const inputRef = useRef();
     useImperativeHandle(ref, () => ({
         focus: () => {
             triggerRef.current.focus();
@@ -118,6 +117,18 @@ const MultiSelect = React.forwardRef((props, ref) => {
         }
     };
 
+    const handleClick = () => {
+        if (disabled) {
+            return;
+        }
+
+        if (readOnly) {
+            inputRef.current.focus();
+            return;
+        }
+        triggerRef.current.focus();
+    };
+
     const handleTriggerClick = event => {
         event.preventDefault();
         event.stopPropagation();
@@ -125,11 +136,15 @@ const MultiSelect = React.forwardRef((props, ref) => {
     };
 
     const handleFocus = () => {
-        comboboxRef.current.focus();
+        if (!readOnly) {
+            triggerRef.current.focus();
+        }
     };
 
     const handleBlur = () => {
-        comboboxRef.current.blur();
+        if (!readOnly) {
+            triggerRef.current.blur();
+        }
     };
 
     const handleOutsideClick = event => {
@@ -148,21 +163,11 @@ const MultiSelect = React.forwardRef((props, ref) => {
     );
     useWindowResize(() => setIsOpen(false), isOpen);
 
-    const shouldRenderChips = hasChips(value);
-    const tabIndex = disabled || readOnly ? '-1' : tabIndexInProps;
-    const content =
-        variant === 'chip' ? (
-            <Chips
-                value={value}
-                variant={chipVariant}
-                readOnly={readOnly}
-                disabled={disabled}
-                onDelete={handleDelete}
-            />
-        ) : (
-            <StyledText>{getContent(value)}</StyledText>
-        );
     const selectedCount = Array.isArray(value) ? value.length : 1;
+    const shouldRenderContent = hasContent(value);
+    const shouldRenderCount = !!value && selectedCount > 0 && variant === 'default';
+    const shouldRenderButton = !readOnly && !disabled;
+    const inputTabIndex = readOnly ? tabIndex : '-1';
 
     return (
         <StyledContainer id={id} className={className} style={style}>
@@ -181,10 +186,8 @@ const MultiSelect = React.forwardRef((props, ref) => {
                 role="combobox"
                 aria-controls={dropdownId}
                 aria-expanded={isOpen}
-                onFocus={onFocus}
-                onBlur={onBlur}
+                onClick={handleClick}
                 onKeyDown={handleKeyDown}
-                tabIndex="-1"
                 ref={comboboxRef}
                 aria-labelledby={labelId}
             >
@@ -192,21 +195,32 @@ const MultiSelect = React.forwardRef((props, ref) => {
                     id={inputId}
                     role="textbox"
                     aria-autocomplete="none"
-                    tabIndex="-1"
+                    tabIndex={inputTabIndex}
+                    disabled={disabled}
                     onFocus={handleFocus}
                     onBlur={handleBlur}
+                    ref={inputRef}
                     readOnly
                 />
                 <StyledChipContainer>
-                    <RenderIf isTrue={!shouldRenderChips}>
+                    <RenderIf isTrue={!shouldRenderContent}>
                         <StyledPlaceholder>{placeholder}</StyledPlaceholder>
                     </RenderIf>
-                    <RenderIf isTrue={shouldRenderChips}>{content}</RenderIf>
+                    <RenderIf isTrue={shouldRenderContent}>
+                        <Content
+                            variant={variant}
+                            chipVariant={chipVariant}
+                            readOnly={readOnly}
+                            disabled={disabled}
+                            value={value}
+                            onDelete={handleDelete}
+                        />
+                    </RenderIf>
                 </StyledChipContainer>
-                <RenderIf isTrue={!!value && selectedCount > 0}>
-                    <StyledCountText>({selectedCount})</StyledCountText>
+                <RenderIf isTrue={shouldRenderCount}>
+                    <StyledCountText readOnly={readOnly}>({selectedCount})</StyledCountText>
                 </RenderIf>
-                <RenderIf isTrue={!readOnly && !disabled}>
+                <RenderIf isTrue={shouldRenderButton}>
                     <StyledButtonIcon
                         title="Add"
                         variant="neutral"
@@ -216,6 +230,8 @@ const MultiSelect = React.forwardRef((props, ref) => {
                         disabled={disabled}
                         ref={triggerRef}
                         tabIndex={tabIndex}
+                        onFocus={onFocus}
+                        onBlur={onBlur}
                     />
                 </RenderIf>
                 <InternalOverlay

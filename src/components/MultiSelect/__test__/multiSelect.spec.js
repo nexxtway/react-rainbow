@@ -5,7 +5,7 @@ import Option from '../../Option';
 import HelpText from '../../Input/styled/helpText';
 import ErrorText from '../../Input/styled/errorText';
 import Label from '../../Input/label/labelText';
-import { StyledChip, StyledPlaceholder, StyledInput, StyledText } from '../styled';
+import { StyledChip, StyledPlaceholder, StyledText, StyledButtonIcon } from '../styled';
 
 describe('<MultiSelect />', () => {
     it('should render Label when label prop is passed', () => {
@@ -85,14 +85,14 @@ describe('<MultiSelect />', () => {
     it('should fire focus event', () => {
         const mockOnFocus = jest.fn();
         const component = mount(<MultiSelect onFocus={mockOnFocus} />);
-        component.find(StyledInput).simulate('focus');
+        component.find(StyledButtonIcon).simulate('focus');
         expect(mockOnFocus).toHaveBeenCalledTimes(1);
     });
 
     it('should fire blur event', () => {
         const mockOnBlur = jest.fn();
         const component = mount(<MultiSelect onBlur={mockOnBlur} />);
-        component.find(StyledInput).simulate('blur');
+        component.find(StyledButtonIcon).simulate('blur');
         expect(mockOnBlur).toHaveBeenCalledTimes(1);
     });
 
