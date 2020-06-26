@@ -15,7 +15,6 @@ export default function MarkdownOutput(props) {
 
     const source = sourceInProps || '';
     const rawAbstractSyntaxTree = useMarkdownParser(source, parserOptions, plugins);
-    console.log(JSON.stringify(rawAbstractSyntaxTree));
     const result = useSyntaxTreeJsxTranform(rawAbstractSyntaxTree, customRenderers);
 
     return (

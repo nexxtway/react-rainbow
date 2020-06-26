@@ -8,6 +8,8 @@ import {
     FONT_SIZE_TEXT_MEDIUM,
 } from '../../../../styles/fontSizes';
 
+const getListStyle = isOrdered => (isOrdered ? 'decimal' : 'circle');
+
 export const Heading = attachThemeAttrs(styled.h1)`
     font-size: ${FONT_SIZE_HEADING_SMALL};
     color: ${props => props.palette.text.main};
@@ -133,5 +135,20 @@ export const TableCell = attachThemeAttrs(styled.td)`
                 border-radius: 0 10px 0 0;
             }
         
+        `};
+`;
+
+export const List = styled.ul`
+    list-style: ${props => getListStyle(props.isOrdered)};
+`;
+
+export const ListItem = styled.li`
+    margin-left: 1rem;
+    ${props =>
+        props.isTask &&
+        `
+        margin-left: 0;
+        display: flex;
+        align-items: center;
         `};
 `;

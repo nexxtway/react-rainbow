@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import unified from 'unified';
 import markdownParse from 'remark-parse';
 import remark2react from 'remark-react';
-import wrapTableRows from '../plugins/wrapTableRows';
+import addWrapToTableRows from '../plugins/addWrapToTableRows';
 
 export default function useMarkdownParser(source, parserOptions, plugins) {
     return useMemo(() => {
@@ -13,6 +13,6 @@ export default function useMarkdownParser(source, parserOptions, plugins) {
 
         const rawSyntaxTree = markdownParser.parse(source);
         const transformedSyntaxTree = markdownParser.runSync(rawSyntaxTree);
-        return wrapTableRows(transformedSyntaxTree, parserOptions);
+        return addWrapToTableRows(transformedSyntaxTree, parserOptions);
     }, [source, parserOptions, plugins]);
 }
