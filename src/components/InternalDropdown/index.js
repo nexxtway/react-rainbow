@@ -164,7 +164,7 @@ const InternalDropdown = forwardRef((props, reference) => {
             if (multiple) {
                 if (Array.isArray(value)) {
                     if (value.some(v => v.name === name)) {
-                        return null;
+                        return onChange(value.filter(v => v.name !== name));
                     }
                     return onChange(value.concat([option]));
                 }
