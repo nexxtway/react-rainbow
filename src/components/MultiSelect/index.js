@@ -17,6 +17,7 @@ import {
     StyledPlaceholder,
     StyledCombobox,
     StyledText,
+    StyledCountText,
 } from './styled';
 import InternalDropdown from '../InternalDropdown';
 import InternalOverlay from '../InternalOverlay';
@@ -161,6 +162,7 @@ const MultiSelect = React.forwardRef((props, ref) => {
         ) : (
             <StyledText>{getContent(value)}</StyledText>
         );
+    const selectedCount = Array.isArray(value) ? value.length : 1;
 
     return (
         <StyledContainer id={id} className={className} style={style}>
@@ -201,6 +203,9 @@ const MultiSelect = React.forwardRef((props, ref) => {
                     </RenderIf>
                     <RenderIf isTrue={shouldRenderChips}>{content}</RenderIf>
                 </StyledChipContainer>
+                <RenderIf isTrue={!!value && selectedCount > 0}>
+                    <StyledCountText>({selectedCount})</StyledCountText>
+                </RenderIf>
                 <RenderIf isTrue={!readOnly && !disabled}>
                     <StyledButtonIcon
                         title="Add"
