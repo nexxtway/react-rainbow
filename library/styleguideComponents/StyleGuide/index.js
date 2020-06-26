@@ -6,7 +6,6 @@ import classnames from 'classnames';
 import Application from './../../../src/components/Application';
 import ReactGA from '.././../ga';
 import RenderIf from '../../../src/components/RenderIf';
-import RibbonHeader from '../../../src/components/RibbonHeader';
 import ButtonIcon from '../../../src/components/ButtonIcon';
 import ComponentsPage from '../../pages/ComponentsPage';
 import ProjectSelector from '../ProjectSelector';
@@ -112,7 +111,6 @@ class StyleGuide extends React.Component {
                     onClick={this.toggleSidebar}
                 />
                 <main className="react-rainbow-main-content">
-                    <RibbonHeader />
                     <RenderIf isTrue={window.location.hash !== '#/Components'}>{children}</RenderIf>
                     <RenderIf isTrue={window.location.hash === '#/Components'}>
                         <ComponentsPage components={components} />

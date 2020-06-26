@@ -5,7 +5,7 @@ import filterSectionsByName from './../../utils/filterSectionsByName';
 import Card from '../../../src/components/Card';
 import Input from '../../../src/components/Input';
 import RenderIf from '../../../src/components/RenderIf';
-import RibbonHeader from '../../../src/components/RibbonHeader';
+import RibbonRenderer from '../../styleguideComponents/RibbonRenderer';
 import SearchIcon from './searchIcon';
 import CarbonAds from '../components/CarbonAds';
 import './styles.css';
@@ -132,21 +132,24 @@ export default class ComponentsPage extends Component {
         const { searchTerm } = this.state;
 
         return (
-            <div className="react-rainbow-components-page_container">
-                <CarbonAds className="react-rainbow-components-page_carbon-ads" />
-                <h1 className="react-rainbow-components-page_title">More than 70 components</h1>
-                <Input
-                    className="react-rainbow-components-page_search"
-                    label="Find Components"
-                    type="search"
-                    hideLabel
-                    value={searchTerm}
-                    placeholder="Find Components"
-                    aria-label="Find Components"
-                    onChange={this.handleOnChange}
-                    icon={<SearchIcon />}
-                />
-                {this.renderCards()}
+            <div>
+                <RibbonRenderer />
+                <div className="react-rainbow-components-page_container">
+                    <CarbonAds className="react-rainbow-components-page_carbon-ads" />
+                    <h1 className="react-rainbow-components-page_title">More than 70 components</h1>
+                    <Input
+                        className="react-rainbow-components-page_search"
+                        label="Find Components"
+                        type="search"
+                        hideLabel
+                        value={searchTerm}
+                        placeholder="Find Components"
+                        aria-label="Find Components"
+                        onChange={this.handleOnChange}
+                        icon={<SearchIcon />}
+                    />
+                    {this.renderCards()}
+                </div>
             </div>
         );
     }

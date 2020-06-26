@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import Badge from '../Badge';
+import Badge from '../../../src/components/Badge';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import githublogo from './image/github.svg';
 import fetchGithubStars from './fetchStars';
 import './styles.css';
 
-export default class RibbonHeader extends Component {
+export default class RibbonRenderer extends Component {
     constructor(props) {
         super(props);
         this.state = { starsCount: '0' };
