@@ -68,7 +68,7 @@ module.exports = {
     styles,
     styleguideComponents: {
         StyleGuideRenderer: path.join(__dirname, 'library/styleguideComponents/StyleGuide'),
-        SectionHeading: path.join(__dirname, 'library/styleguideComponents/SectionHeading'),
+        RibbonHeader: path.join(__dirname, 'src/components/RibbonHeader'),
         ReactComponentRenderer: path.join(__dirname, 'library/styleguideComponents/ReactComponent'),
         TableRenderer: path.join(__dirname, 'library/styleguideComponents/PropsTable'),
         PlaygroundRenderer: path.join(__dirname, 'library/styleguideComponents/Playground'),

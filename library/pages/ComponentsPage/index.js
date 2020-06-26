@@ -5,6 +5,7 @@ import filterSectionsByName from './../../utils/filterSectionsByName';
 import Card from '../../../src/components/Card';
 import Input from '../../../src/components/Input';
 import RenderIf from '../../../src/components/RenderIf';
+import RibbonHeader from '../../../src/components/RibbonHeader';
 import SearchIcon from './searchIcon';
 import CarbonAds from '../components/CarbonAds';
 import './styles.css';
