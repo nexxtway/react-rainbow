@@ -252,7 +252,6 @@ import styled from 'styled-components';
 
 const initialState = {
     date: '',
-    locale: { name: 'en-US', label: 'English (US)' },
 };
 
 const Title = styled.h2`
@@ -312,7 +311,7 @@ const StyledInput = styled.div`
             onChange={value => setState({ date: value })}
             label="Birthday"
             formatStyle="medium"
-            locale={state.locale.name}
+            locale={'en-US'}
         />
     </StyledDatePicker>
     <StyledInput className="rainbow-m-vertical_medium">

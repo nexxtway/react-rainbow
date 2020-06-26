@@ -128,7 +128,7 @@ function setDatesPicker() {
 }
 
 const containerStyles = {
-    width: '200px',
+    width: '160px',
 };
 
 <div className="rainbow-m-bottom_xx-large rainbow-p-bottom_xx-large">
@@ -172,32 +172,33 @@ import {
 import styled from 'styled-components';
 
 const Row = styled.div`
-    background-color: ${props => props.theme.rainbow.palette.background.main};
+    /*background-color: ${props => props.theme.rainbow.palette.background.main};*/
     box-shadow: 0 0 5px ${props => props.theme.rainbow.palette.text.header};
 `;
 
 const Column = styled.div`
-    min-width: 30%;
-    padding: 0.9rem;
+    width: 300px;
+    padding: 0.9rem 0 0.9rem 0;
 `;
 
-const Vl = styled.div`
+const Verticalline = styled.div`
     margin: 1rem 0;
-    border-left: 2px solid ${props => props.theme.rainbow.palette.text.header};
+    border-left: 2px solid ${props => props.theme.rainbow.palette.border.divider};
     height: 50px;
 `;
 
 const Title = styled.h4`
-    color: ${props => props.theme.rainbow.palette.text.title};
+    color: ${props => props.theme.rainbow.palette.text.main};
+    widht: 100%;
     font-size: 1rem;
-    margin: 0 0.5rem 0 1rem;
+    margin: 0 0 0 0.5rem;
     font-weight: 900;
 `;
 
 const Features = styled.p`
     color: ${props => props.theme.rainbow.palette.text.title};
     font-size: 1rem;
-    margin: 0 0.5rem 0 1rem;
+    margin: 0 0 0 0.5rem;
 `;
 
 const initialState = {
@@ -265,109 +266,108 @@ const setDates = value => {
 };
 
 <div className="rainbow-p-around_large">
-    <Row className="rainbow-border-radius_oval">
-        <div className="rainbow-flex rainbow-justify_space-around">
-            <Column className="rainbow-flex rainbow-justify_spread">
-                <div>
-                    <Title>LOCATION</Title>
-                    <Features>{state.location}</Features>
-                </div>
-                <div>
-                    <ButtonMenu
-                        menuAlignment="right"
-                        menuSize="x-small"
-                        buttonVariant="base"
-                        icon={<ArrowIcon />}
-                    >
-                        <MenuItem
-                            label="Mexico"
-                            onClick={() => {
-                                setLocation('Mexico');
-                            }}
-                        />
-                        <MenuItem
-                            label="Brasil"
-                            onClick={() => {
-                                setLocation('Brasil');
-                            }}
-                        />
-                        <MenuItem
-                            label="Canada"
-                            onClick={() => {
-                                setLocation('Canada');
-                            }}
-                        />
-                        <MenuItem
-                            label="United State"
-                            onClick={() => {
-                                setLocation('United State');
-                            }}
-                        />
-                    </ButtonMenu>
-                </div>
-            </Column>
-            <Vl />
-            <Column className="rainbow-flex rainbow-justify_spread">
-                <div>
-                    <Title>CHECK IN / CHECK OUT</Title>
-                    <Features>{state.dates}</Features>
-                </div>
-                <div>
-                    <ButtonIcon
-                        icon={<ArrowIcon />}
-                        onClick={() =>
-                            setState({
-                                isOpen: true,
-                                selectionType: 'range',
-                                value: null,
-                                title: 'Select range of dates',
-                            })
-                        }
+    <Row className=" rainbow-border-radius_oval rainbow-flex rainbow-justify_space-around rainbow-flex_wrap ">
+        <Column className="rainbow-flex rainbow-align_start rainbow-justify_spread">
+            <div>
+                <Title>LOCATION</Title>
+                <Features>{state.location}</Features>
+            </div>
+            <div>
+                <ButtonMenu
+                    menuAlignment="right"
+                    menuSize="x-small"
+                    buttonVariant="base"
+                    icon={<ArrowIcon />}
+                >
+                    <MenuItem
+                        label="Mexico"
+                        onClick={() => {
+                            setLocation('Mexico');
+                        }}
                     />
-                </div>
-            </Column>
-            <Vl />
-            <Column className="rainbow-flex rainbow-justify_spread">
-                <div>
-                    <Title>GUESTS</Title>
-                    <Features>{state.guests}</Features>
-                </div>
-                <div>
-                    <ButtonMenu
-                        menuAlignment="right"
-                        menuSize="xx-small"
-                        buttonVariant="base"
-                        icon={<ArrowIcon />}
-                    >
-                        <MenuItem
-                            label="1"
-                            onClick={() => {
-                                setGuests('1');
-                            }}
-                        />
-                        <MenuItem
-                            label="2"
-                            onClick={() => {
-                                setGuests('2');
-                            }}
-                        />
-                        <MenuItem
-                            label="3"
-                            onClick={() => {
-                                setGuests('3');
-                            }}
-                        />
-                        <MenuItem
-                            label="4"
-                            onClick={() => {
-                                setGuests('4');
-                            }}
-                        />
-                    </ButtonMenu>
-                </div>
-            </Column>
-        </div>
+                    <MenuItem
+                        label="Brasil"
+                        onClick={() => {
+                            setLocation('Brasil');
+                        }}
+                    />
+                    <MenuItem
+                        label="Canada"
+                        onClick={() => {
+                            setLocation('Canada');
+                        }}
+                    />
+                    <MenuItem
+                        label="United State"
+                        onClick={() => {
+                            setLocation('United State');
+                        }}
+                    />
+                </ButtonMenu>
+            </div>
+        </Column>
+        <Verticalline className="rainbow-flex rainbow-align_start" />
+        <Column className="rainbow-flex rainbow-align_start rainbow-justify_spread">
+            <div>
+                <Title>CHECK IN / CHECK OUT</Title>
+                <Features>{state.dates}</Features>
+            </div>
+            <div>
+                <ButtonIcon
+                    icon={<ArrowIcon />}
+                    onClick={() =>
+                        setState({
+                            isOpen: true,
+                            selectionType: 'range',
+                            value: null,
+                            title: 'Select range of dates',
+                        })
+                    }
+                />
+            </div>
+        </Column>
+        <Verticalline className="rainbow-flex rainbow-align_start" />
+        <Column className="rainbow-flex rainbow-align_start rainbow-justify_spread">
+            <div>
+                <Title>GUESTS</Title>
+                <Features>{state.guests}</Features>
+            </div>
+            <div>
+                <ButtonMenu
+                    menuAlignment="right"
+                    menuSize="xx-small"
+                    buttonVariant="base"
+                    icon={<ArrowIcon />}
+                >
+                    <MenuItem
+                        label="1"
+                        onClick={() => {
+                            setGuests('1');
+                        }}
+                    />
+                    <MenuItem
+                        label="2"
+                        onClick={() => {
+                            setGuests('2');
+                        }}
+                    />
+                    <MenuItem
+                        label="3"
+                        onClick={() => {
+                            setGuests('3');
+                        }}
+                    />
+                    <MenuItem
+                        label="4"
+                        onClick={() => {
+                            setGuests('4');
+                        }}
+                    />
+                </ButtonMenu>
+            </div>
+        </Column>
     </Row>
+
     <DatePickerModal
         title={state.title}
         isOpen={state.isOpen}
