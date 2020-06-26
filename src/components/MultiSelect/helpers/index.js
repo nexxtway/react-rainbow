@@ -1,4 +1,6 @@
-import hasChips from './hasChips';
+import hasContent from './hasContent';
 import positionResolver from './positionResolver';
+import getContent from './getContent';
+import normalizeValue from './normalizeValue';
 
-export { hasChips, positionResolver };
+export { hasContent, positionResolver, getContent, normalizeValue };
