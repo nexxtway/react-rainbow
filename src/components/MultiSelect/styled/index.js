@@ -139,4 +139,10 @@ export const StyledCountText = attachThemeAttrs(styled.span)`
     font-weight: bold;
     font-size: ${FONT_SIZE_TEXT_LARGE};
     align-self: center;
+
+    ${props =>
+        props.readOnly &&
+        `
+            margin-right: 0.8rem;
+        `}
 `;
