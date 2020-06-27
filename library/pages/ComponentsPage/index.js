@@ -6,7 +6,6 @@ import Card from '../../../src/components/Card';
 import Input from '../../../src/components/Input';
 import RenderIf from '../../../src/components/RenderIf';
 import SearchIcon from './searchIcon';
-import SectionHeading from '../../styleguideComponents/SectionHeading';
 import CarbonAds from '../components/CarbonAds';
 import './styles.css';
 
@@ -132,24 +131,21 @@ export default class ComponentsPage extends Component {
         const { searchTerm } = this.state;
 
         return (
-            <div>
-                <SectionHeading />
-                <div className="react-rainbow-components-page_container">
-                    <CarbonAds className="react-rainbow-components-page_carbon-ads" />
-                    <h1 className="react-rainbow-components-page_title">More than 80 components</h1>
-                    <Input
-                        className="react-rainbow-components-page_search"
-                        label="Find Components"
-                        type="search"
-                        hideLabel
-                        value={searchTerm}
-                        placeholder="Find Components"
-                        aria-label="Find Components"
-                        onChange={this.handleOnChange}
-                        icon={<SearchIcon />}
-                    />
-                    {this.renderCards()}
-                </div>
+            <div className="react-rainbow-components-page_container">
+                <CarbonAds className="react-rainbow-components-page_carbon-ads" />
+                <h1 className="react-rainbow-components-page_title">More than 70 components</h1>
+                <Input
+                    className="react-rainbow-components-page_search"
+                    label="Find Components"
+                    type="search"
+                    hideLabel
+                    value={searchTerm}
+                    placeholder="Find Components"
+                    aria-label="Find Components"
+                    onChange={this.handleOnChange}
+                    icon={<SearchIcon />}
+                />
+                {this.renderCards()}
             </div>
         );
     }
