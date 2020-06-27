@@ -281,7 +281,7 @@ const InternalDropdown = forwardRef((props, reference) => {
             ref={containerRef}
         >
             <RenderIf isTrue={enableSearch}>
-                <SearchContainer>
+                <SearchContainer isLoading={isLoading}>
                     <Icon />
                     <InputSearch onChange={handleSearch} ref={searchRef} type="search" />
                 </SearchContainer>

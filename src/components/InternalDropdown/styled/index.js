@@ -19,12 +19,6 @@ export const Dropdown = attachThemeAttrs(styled.div)`
     &:active {
         outline: none;
     }
-
-    ${props =>
-        props.isLoading &&
-        `
-            padding: 2rem;
-    `}
 `;
 
 export const Ul = styled.ul`
@@ -100,9 +94,9 @@ export const SearchContainer = attachThemeAttrs(styled.div)`
 `;
 
 export const Icon = styled(SearchIcon)`
-    width: 16px;
-    height: 16px;
-    margin-left: 18px;
+    width: 14px;
+    height: 14px;
+    margin-left: 12px;
 `;
 
 export const InputSearch = attachThemeAttrs(styled.input)`
@@ -110,15 +104,13 @@ export const InputSearch = attachThemeAttrs(styled.input)`
     background-color: transparent;
     border: 0;
     color: ${props => props.palette.text.main};
+    caret-color: ${props => props.palette.brand.main} ;
     font-size: ${FONT_SIZE_TEXT_LARGE};
     margin: 0;
-    width: 100%;
-    padding: 0;
-    line-height: 45px;
-    height: 45px;
-    width: 100%;
-    padding: 0 1rem;
-    margin-top: 5px;
+    line-height: 42px;
+    height: 42px;
+    width: 85%;
+    padding: 0 0.5rem;
 
     :focus,
     :active {
@@ -126,6 +118,13 @@ export const InputSearch = attachThemeAttrs(styled.input)`
         background-color: transparent;
         border: 0;
     }
+`;
+
+export const SpinnerContainer = attachThemeAttrs(styled.div)`    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3.125rem 0;
 `;
 
 export const MessageContainer = attachThemeAttrs(styled.div)`    
