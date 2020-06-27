@@ -21,21 +21,11 @@ function setDates(value) {
                 title: 'Select a Date',
             });
         } else if (value.name === 'Today') {
-            const today = new Date();
-            setState({ selection: { name: 'Today', label: formatDates([today]) } });
+            setState({ selection: { name: 'Today', label: 'Today' } });
         } else if (value.name === 'Yesterday') {
-            const yesterday = new Date(Date.now() - 86400000);
-            setState({ selection: { name: 'Yesterday', label: formatDates([yesterday]) } });
+            setState({ selection: { name: 'Yesterday', label: 'Yesterday' } });
         } else if (value.name === 'This Week') {
-            let pickedDate = new Date();
-            let startSunday = new Date(pickedDate);
-            startSunday.setDate(pickedDate.getDate() - pickedDate.getDay());
-            let endSaturday = new Date(pickedDate);
-            endSaturday.setDate(pickedDate.getDate() + (6 - pickedDate.getDay()));
-
-            setState({
-                selection: { name: 'This Week', label: formatDates([startSunday, endSaturday]) },
-            });
+            setState({ selection: { name: 'This Week', label: 'This Week' } });
         }
     }
 }
@@ -43,37 +33,13 @@ function setDates(value) {
 function formatDates(date) {
     if (date) {
         if (date.length > 1) {
-            startDate =
-                (date[0].getMonth() + 1).toString().padStart(2, '0') +
-                '/' +
-                date[0]
-                    .getDate()
-                    .toString()
-                    .padStart(2, '0') +
-                '/' +
-                date[0].getFullYear();
-            endDate =
-                (date[1].getMonth() + 1).toString().padStart(2, '0') +
-                '/' +
-                date[1]
-                    .getDate()
-                    .toString()
-                    .padStart(2, '0') +
-                '/' +
-                date[1].getFullYear();
-            rangeDate = startDate + ' - ' + endDate;
+            startDay = new Intl.DateTimeFormat().format(date[0]);
+            endDay = new Intl.DateTimeFormat().format(date[1]);
+            formatedDate = startDay + ' - ' + endDay;
         } else {
-            rangeDate =
-                (date[0].getMonth() + 1).toString().padStart(2, '0') +
-                '/' +
-                date[0]
-                    .getDate()
-                    .toString()
-                    .padStart(2, '0') +
-                '/' +
-                date[0].getFullYear();
+            formatedDate = new Intl.DateTimeFormat().format(date[0]);
         }
-        return rangeDate;
+        return formatedDate;
     }
 }
 
@@ -100,15 +66,24 @@ const containerStyles = {
     <DatePickerModal
         title={state.title}
         isOpen={state.isOpen}
+        variant="double"
         value={getDates(state.value)}
         selectionType={state.selectionType}
-        onChange={value => setState({ value })}
-        onRequestClose={() =>
-            setState({
-                selection: { name: 'Custom', label: formatDates(state.value) },
-                isOpen: false,
-            })
-        }
+        onChange={value => {
+            value.length > 1
+                ? setState({
+                      value,
+                      selection: { name: 'Custom', label: formatDates(value) },
+                      title: formatDates(value),
+                      isOpen: false,
+                  })
+                : setState({
+                      value,
+                      selection: { name: 'Custom', label: formatDates(value) },
+                      title: formatDates(value),
+                  });
+        }}
+        onRequestClose={() => setState({ isOpen: false })}
     />
 </div>;
 ```
@@ -197,37 +172,13 @@ function getDate(value, selectionType) {
 function formatDates(date) {
     if (date) {
         if (date.length > 1) {
-            startDate =
-                (date[0].getMonth() + 1).toString().padStart(2, '0') +
-                '/' +
-                date[0]
-                    .getDate()
-                    .toString()
-                    .padStart(2, '0') +
-                '/' +
-                date[0].getFullYear();
-            endDate =
-                (date[1].getMonth() + 1).toString().padStart(2, '0') +
-                '/' +
-                date[1]
-                    .getDate()
-                    .toString()
-                    .padStart(2, '0') +
-                '/' +
-                date[1].getFullYear();
-            rangeDate = startDate + ' - ' + endDate;
+            startDay = new Intl.DateTimeFormat().format(date[0]);
+            endDay = new Intl.DateTimeFormat().format(date[1]);
+            formatedDate = startDay + ' - ' + endDay;
         } else {
-            rangeDate =
-                (date[0].getMonth() + 1).toString().padStart(2, '0') +
-                '/' +
-                date[0]
-                    .getDate()
-                    .toString()
-                    .padStart(2, '0') +
-                '/' +
-                date[0].getFullYear();
+            formatedDate = new Intl.DateTimeFormat().format(date[0]);
         }
-        return rangeDate;
+        return formatedDate;
     }
 }
 
@@ -341,7 +292,21 @@ function formatDates(date) {
         variant="double"
         selectionType={state.selectionType}
         onChange={value => setState({ value })}
-        onRequestClose={() => setState({ dates: formatDates(state.value), isOpen: false })}
+        onChange={value => {
+            value.length > 1
+                ? setState({
+                      value,
+                      dates: formatDates(value),
+                      title: formatDates(value),
+                      isOpen: false,
+                  })
+                : setState({
+                      value,
+                      dates: formatDates(value),
+                      title: formatDates(value),
+                  });
+        }}
+        onRequestClose={() => setState({ isOpen: false })}
     />
 </div>;
 ```
