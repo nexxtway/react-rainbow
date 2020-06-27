@@ -11,11 +11,22 @@ export default function MarkdownOutput(props) {
         renderers: customRenderers,
         parserOptions,
         plugins,
+        linkTarget,
+        transformLinkUri,
+        transformImageUri,
     } = props;
 
     const source = sourceInProps || '';
     const rawAbstractSyntaxTree = useMarkdownParser(source, parserOptions, plugins);
-    const result = useSyntaxTreeJsxTranform(rawAbstractSyntaxTree, customRenderers);
+    const result = useSyntaxTreeJsxTranform(
+        rawAbstractSyntaxTree,
+        {
+            linkTarget,
+            transformLinkUri,
+            transformImageUri,
+        },
+        customRenderers,
+    );
 
     return (
         <div id={id} className={className} style={style}>
@@ -36,11 +47,11 @@ MarkdownOutput.propTypes = {
     /** */
     renderers: PropTypes.object,
     /** */
-    // linkTarget: PropTypes.string,
+    linkTarget: PropTypes.string,
     /** */
-    // transformLinkUri: PropTypes.function,
+    transformLinkUri: PropTypes.func,
     /** */
-    // transformImageUri: PropTypes.function,
+    transformImageUri: PropTypes.func,
     /** */
     plugins: PropTypes.array,
     /** */
@@ -52,9 +63,9 @@ MarkdownOutput.defaultProps = {
     className: undefined,
     style: undefined,
     renderers: undefined,
-    // linkTarget: undefined,
-    // transformLinkUri: () => {},
-    // transformImageUri: () => {},
+    linkTarget: undefined,
+    transformLinkUri: undefined,
+    transformImageUri: undefined,
     plugins: [],
     parserOptions: undefined,
 };

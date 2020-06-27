@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { Card, RadioButtonGroup, Textarea, MarkdownOutput } from 'react-rainbow-components';
 
 initialState = {
-    text: '# Markdown Example\n\n Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n## Divider\n- - -\n## Code highlight\n### Javascript code\n```js\nconst data = \'Lorem ipsum....\';\n\nconst doSomething = (param) => {\n};\n\nconst xx = doSomething(data);\n```\n\n**note**: `doSomenthing` is a method that just do nothing.\n\n## Tables\n| Syntax      | Description |\n| ----------- | ----------- |\n| Header      | Title       |\n| Paragraph   | Text        |\n\n## Lists\n### Basic list\n- Item #1\n- Item #2\n- Item #3\n### Ordered list\n1. Item #1\n2. Item #2\n3. Item #3\n### Tasks list\n- [x] Task #1\n- [ ] Task #2\n- [ ] Task #3\n',
+    text: '# Markdown Example\n\n Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n## Divider\n- - -\n## Code highlight\n### Javascript code\n```js\nconst data = \'Lorem ipsum....\';\n\nconst doSomething = (param) => {\n};\n\nconst xx = doSomething(data);\n```\n\n**note**: `doSomenthing` is a method that just do nothing.\n\n## Tables\n| Syntax      | Description |\n| ----------- | ----------- |\n| Header      | Title       |\n| Paragraph   | Text        |\n\n## Lists\n### Basic list\n- Item #1\n- Item #2\n- Item #3\n### Ordered list\n1. Item #1\n2. Item #2\n3. Item #3\n### Tasks list\n- [x] Task #1\n- [ ] Task #2\n- [ ] Task #3\n\n## Links\nThis is [an example](http://example.com/ "Title") inline link.\n',
 };
 
 const StyledCard = styled(Card)`
@@ -37,7 +37,7 @@ const MarkdownCard = props => {
 
     const content = mode === 'edit'
         ? <Textarea value={text} rows={15} onChange={event => setText(event.target.value)}/>
-        : <MarkdownOutput id="markdown-output-1" source={text} />
+        : <MarkdownOutput id="markdown-output-1" source={text}  linkTarget="_blank" />
 
     return (
         <StyledCard

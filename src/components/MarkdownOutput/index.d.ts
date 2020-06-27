@@ -4,9 +4,9 @@ import { BaseProps } from '../types';
 export interface MarkdownOutputProps extends BaseProps {
     id?: string;
     renderers?: object;
-    // linkTarget?: string;
-    // transformLinkUri?: () => void;
-    // transformImageUri?: () => void;
+    linkTarget?: string;
+    transformLinkUri?: () => void;
+    transformImageUri?: () => void;
     plugins?: object[];
     parserOptions?: object;
 }

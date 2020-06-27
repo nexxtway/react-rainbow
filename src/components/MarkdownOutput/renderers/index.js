@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import RenderIf from '../../RenderIf';
+import Checkbox from '../../Input/inputCheckbox/checkbox';
 import {
     Heading as StyledHeading,
     Paragraph,
@@ -10,6 +12,8 @@ import {
     TableBody,
     TableRow,
     TableCell,
+    List as StyledList,
+    ListItem as StyledListItem,
 } from './styled';
 
 const HeadingRenderer = ({ level, children }) => {
@@ -65,23 +69,26 @@ const TableCellRenderer = ({ align, isHeader, children }) => {
     );
 };
 
-const List = props => {
-    const attrs = {};
-    if (props.start !== null && props.start !== 1 && props.start !== undefined) {
-        attrs.start = props.start.toString();
-    }
-
-    return React.createElement(props.ordered ? 'ol' : 'ul', attrs, props.children);
+const List = ({ start, isOrdered, children }) => {
+    const startAt = start && start !== 1 ? start.toString() : undefined;
+    const tag = isOrdered ? 'ol' : 'ul';
+    return (
+        <StyledList as={tag} start={startAt} isOrdered={isOrdered}>
+            {children}
+        </StyledList>
+    );
 };
 
-const ListItem = props => {
-    let checkbox = null;
-    if (props.checked !== null && props.checked !== undefined) {
-        const checked = props.checked;
-        checkbox = React.createElement('input', { type: 'checkbox', checked, readOnly: true });
-    }
-
-    return React.createElement('li', {}, checkbox, props.children);
+const ListItem = ({ isChecked, children }) => {
+    const hasCheckbox = typeof isChecked === 'boolean';
+    return (
+        <StyledListItem isTask={hasCheckbox}>
+            <RenderIf isTrue={hasCheckbox}>
+                <Checkbox checked={isChecked} />
+            </RenderIf>
+            {children}
+        </StyledListItem>
+    );
 };
 
 export default {
@@ -109,7 +116,4 @@ export default {
     heading: HeadingRenderer,
     inlineCode: InlineCodeRenderer,
     code: CodeBlockRenderer,
-    // html: Html,
-    // virtualHtml: VirtualHtml,
-    // parsedHtml: ParsedHtml,
 };

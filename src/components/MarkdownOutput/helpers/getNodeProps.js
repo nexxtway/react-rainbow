@@ -1,16 +1,20 @@
-export default function getNodeProps(node, key, opts, renderer, parent, index) {
+import isFunction from './isFunction';
+
+export default function getNodeProps(node, key, options, renderer, parent, index) {
     const props = { key };
     const isCustomRenderer = typeof renderer !== 'string';
-    // const ref =
-    //     node.identifier !== null && node.identifier !== undefined
-    //         ? opts.definitions[node.identifier] || {}
-    //         : null;
+    const ref =
+        node.identifier !== null && node.identifier !== undefined
+            ? options.definitions[node.identifier] || {}
+            : null;
 
     switch (node.type) {
         case 'root':
             break;
         case 'definition':
-            Object.assign(props, { identifier: node.identifier, title: node.title, url: node.url });
+            props.identifier = node.identifier;
+            props.title = node.title;
+            props.url = node.url;
             break;
         case 'text':
             props.nodeKey = key;
@@ -21,65 +25,58 @@ export default function getNodeProps(node, key, opts, renderer, parent, index) {
             break;
         case 'list':
             props.start = node.start;
-            props.ordered = node.ordered;
+            props.isOrdered = node.ordered;
             props.tight = !node.loose;
             props.depth = node.depth;
             break;
         case 'listItem':
-            props.checked = node.checked;
+            props.isChecked = node.checked;
             props.tight = !node.loose;
-            props.ordered = node.ordered;
+            props.isOrdered = node.ordered;
             props.index = node.index;
-            // props.children = getListItemChildren(node, parent).map((childNode, i) => {
-            //     return astToReact(childNode, opts, { node: node, props: props }, i);
-            // });
             break;
         case 'code':
-            Object.assign(props, { language: node.lang && node.lang.split(/\s/, 1)[0] });
+            props.language = node.lang && node.lang.split(/\s/, 1)[0];
             break;
         case 'inlineCode':
             props.children = node.value;
             props.inline = true;
             break;
-        // case 'link':
-        //     assignDefined(props, {
-        //         title: node.title || undefined,
-        //         target:
-        //             typeof opts.linkTarget === 'function'
-        //                 ? opts.linkTarget(node.url, node.children, node.title)
-        //                 : opts.linkTarget,
-        //         href: opts.transformLinkUri
-        //             ? opts.transformLinkUri(node.url, node.children, node.title)
-        //             : node.url,
-        //     });
-        //     break;
-        // case 'image':
-        //     assignDefined(props, {
-        //         alt: node.alt || undefined,
-        //         title: node.title || undefined,
-        //         src: opts.transformImageUri
-        //             ? opts.transformImageUri(node.url, node.children, node.title, node.alt)
-        //             : node.url,
-        //     });
-        //     break;
-        // case 'linkReference':
-        //     assignDefined(
-        //         props,
-        //         xtend(ref, {
-        //             href: opts.transformLinkUri ? opts.transformLinkUri(ref.href) : ref.href,
-        //         }),
-        //     );
-        //     break;
-        // case 'imageReference':
-        //     assignDefined(props, {
-        //         src:
-        //             opts.transformImageUri && ref.href
-        //                 ? opts.transformImageUri(ref.href, node.children, ref.title, node.alt)
-        //                 : ref.href,
-        //         title: ref.title || undefined,
-        //         alt: node.alt || undefined,
-        //     });
-        //     break;
+        case 'link':
+            props.title = node.title || undefined;
+            if (options.linkTarget) {
+                props.target = options.linkTarget;
+                props.rel = 'noopener noreferrer';
+            }
+            props.href = isFunction(options.transformLinkUri)
+                ? options.transformLinkUri(node.url, node.children, node.title)
+                : node.url;
+            break;
+        case 'image':
+            props.alt = node.alt || undefined;
+            props.title = node.title || undefined;
+            props.src = isFunction(options.transformImageUri)
+                ? options.transformImageUri(node.url, node.children, node.title, node.alt)
+                : node.url;
+            break;
+        case 'linkReference':
+            Object.assign(props, {
+                ...ref,
+                href: isFunction(options.transformLinkUri)
+                    ? options.transformLinkUri(ref.href)
+                    : ref.href,
+            });
+            break;
+        case 'imageReference':
+            Object.assign(props, {
+                src:
+                    isFunction(options.transformImageUri) && ref.href
+                        ? options.transformImageUri(ref.href, node.children, ref.title, node.alt)
+                        : ref.href,
+                title: ref.title || undefined,
+                alt: node.alt || undefined,
+            });
+            break;
         case 'table':
         case 'tableHead':
         case 'tableBody':
@@ -90,10 +87,8 @@ export default function getNodeProps(node, key, opts, renderer, parent, index) {
             props.columnAlignment = parent.props.columnAlignment;
             break;
         case 'tableCell':
-            Object.assign(props, {
-                isHeader: parent.props.isHeader || false,
-                align: parent.props.columnAlignment[index],
-            });
+            props.isHeader = parent.props.isHeader || false;
+            props.align = parent.props.columnAlignment[index];
             break;
         case 'virtualHtml':
             props.tag = node.tag;
