@@ -1,7 +1,8 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React, { Component } from 'react';
-import Badge from '../../../src/components/Badge';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import Badge from '../../../src/components/Badge';
 import githublogo from './image/github.svg';
 import fetchGithubStars from './fetchStars';
 import './styles.css';
