@@ -13,8 +13,9 @@ class PagePicklist {
      * @constructor
      * @param {string} rootElement - The selector of the PagePicklist root element.
      */
-    constructor(rootElement) {
+    constructor(rootElement, menuElement) {
         this.rootElement = rootElement;
+        this.menuElement = menuElement;
     }
 
     /**
@@ -53,7 +54,7 @@ class PagePicklist {
      * @method
      */
     hoverScrollUpArrow() {
-        return $(this.rootElement)
+        return $(this.menuElement)
             .$('[data-id="internal-dropdown-arrow-up"]')
             .moveTo();
     }
@@ -73,7 +74,7 @@ class PagePicklist {
      * @method
      */
     hoverScrollDownArrow() {
-        return $(this.rootElement)
+        return $(this.menuElement)
             .$('[data-id="internal-dropdown-arrow-down"]')
             .moveTo();
     }
@@ -105,7 +106,7 @@ class PagePicklist {
      * @returns {number}
      */
     getOptionsLength() {
-        return $(this.rootElement).$$('li[data-selected="false"]').length;
+        return $(this.menuElement).$$('li[data-selected="false"]').length;
     }
 
     /**
@@ -114,7 +115,7 @@ class PagePicklist {
      * @param {number} optionIndex - The base 0 index of the PicklistOption.
      */
     getOption(optionIndex) {
-        const activeOptions = $(this.rootElement).$$('li[data-selected="false"]');
+        const activeOptions = $(this.menuElement).$$('li[data-selected="false"]');
         const option = activeOptions[optionIndex];
         if (option && !option.error) {
             return new PagePicklistOption(option, this[privateGetMenuBoundsRect]());
@@ -128,9 +129,7 @@ class PagePicklist {
      * @returns {bool}
      */
     isMenuOpen() {
-        return $(this.rootElement)
-            .$('[role="listbox"]')
-            .isDisplayed();
+        return $(this.menuElement).isDisplayed();
     }
 
     /**
@@ -139,7 +138,7 @@ class PagePicklist {
      * @returns {object}
      */
     [privateGetMenuBoundsRect]() {
-        const menu = $(this.rootElement).$('[role="listbox"]');
+        const menu = $(this.menuElement);
         const { x, y } = menu.getLocation();
         const { width, height } = menu.getSize();
         return {

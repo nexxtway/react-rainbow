@@ -2,9 +2,9 @@ const PagePicklist = require('../../../src/components/Picklist/pageObject');
 const { ARROW_UP_KEY, ARROW_DOWN_KEY } = require('../../constants');
 
 const PICKLIST = '#picklist-3';
+const PICKLISTMENU = 'div[role="listbox"]';
 
-// TODO: test suite skipped, remove the x in describe to run it again
-xdescribe('Picklist with multiple options', () => {
+describe('Picklist with multiple options', () => {
     beforeAll(() => {
         browser.url('/#!/Picklist/3');
     });
@@ -14,7 +14,7 @@ xdescribe('Picklist with multiple options', () => {
         component.waitForExist();
     });
     it('should scroll down to see the next option focused when initially is not visible', () => {
-        const picklist = new PagePicklist(PICKLIST);
+        const picklist = new PagePicklist(PICKLIST, PICKLISTMENU);
         picklist.clickInput();
         picklist.waitUntilOpen();
         const option = picklist.getOption(4);
@@ -24,7 +24,7 @@ xdescribe('Picklist with multiple options', () => {
         expect(option.isVisible()).toBe(true);
     });
     it('should scroll up to see the first option', () => {
-        const picklist = new PagePicklist(PICKLIST);
+        const picklist = new PagePicklist(PICKLIST, PICKLISTMENU);
         picklist.clickInput();
         picklist.waitUntilOpen();
         picklist.getOption(3).hover();
@@ -38,7 +38,7 @@ xdescribe('Picklist with multiple options', () => {
         expect(firstOption.isVisible()).toBe(true);
     });
     it('should scroll down when hover the down arrow', () => {
-        const picklist = new PagePicklist(PICKLIST);
+        const picklist = new PagePicklist(PICKLIST, PICKLISTMENU);
         picklist.clickInput();
         picklist.waitUntilOpen();
         const option = picklist.getOption(6);
@@ -47,8 +47,8 @@ xdescribe('Picklist with multiple options', () => {
         option.waitUntilIsVisible();
         expect(option.isVisible()).toBe(true);
     });
-    it.skip('should up down when hover the up arrow', () => {
-        const picklist = new PagePicklist(PICKLIST);
+    it('should up down when hover the up arrow', () => {
+        const picklist = new PagePicklist(PICKLIST, PICKLISTMENU);
         picklist.clickInput();
         picklist.waitUntilOpen();
         const firstOption = picklist.getOption(0);

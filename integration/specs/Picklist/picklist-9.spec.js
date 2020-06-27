@@ -2,11 +2,11 @@ const PagePicklist = require('../../../src/components/Picklist/pageObject');
 const { ARROW_DOWN_KEY, ENTER_KEY } = require('../../constants');
 
 const PICKLIST = '#picklist-9';
+const PICKLISTMENU = 'div[role="listbox"]';
 
 const addNewBuildings = () => $('#button-icon_add-new-buildings').click();
 
-// TODO: test suite skipped, remove the x in describe to run it again
-xdescribe('Picklist with PicklistOption changed dynamically', () => {
+describe('Picklist with PicklistOption changed dynamically', () => {
     beforeAll(() => {
         browser.url('/#!/Picklist/9');
     });
@@ -17,7 +17,7 @@ xdescribe('Picklist with PicklistOption changed dynamically', () => {
     });
 
     it('should select the new option with keyboard after it is added dynamically', () => {
-        const picklist = new PagePicklist(PICKLIST);
+        const picklist = new PagePicklist(PICKLIST, PICKLISTMENU);
         picklist.clickInput();
         picklist.waitUntilOpen();
         browser.keys(ARROW_DOWN_KEY);
@@ -32,7 +32,7 @@ xdescribe('Picklist with PicklistOption changed dynamically', () => {
         expect(picklist.getSelectedOptionLabel()).toBe('One World Trade Center');
     });
     it('should select the second option with keyboard after it is added and removed dynamically a new element', () => {
-        const picklist = new PagePicklist(PICKLIST);
+        const picklist = new PagePicklist(PICKLIST, PICKLISTMENU);
         addNewBuildings();
         picklist.clickInput();
         picklist.waitUntilOpen();

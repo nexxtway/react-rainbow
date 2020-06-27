@@ -56,15 +56,6 @@ class PagePicklistOption {
     }
 
     /**
-     * Returns true when the PicklistOption is selected.
-     * @method
-     * @returns {bool}
-     */
-    isSelected() {
-        return this.rootElement.$('li[data-selected="true"]').isExisting();
-    }
-
-    /**
      * Returns true when the PicklistOption is visible inside the menu container.
      * @method
      * @returns {bool}
