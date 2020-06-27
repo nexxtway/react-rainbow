@@ -21,110 +21,60 @@ function setDates(value) {
                 title: 'Select a Date',
             });
         } else if (value.name === 'Today') {
-            let today = new Date();
-            today =
-                (today.getMonth() + 1).toString().padStart(2, '0') +
-                '/' +
-                today
-                    .getDate()
-                    .toString()
-                    .padStart(2, '0') +
-                '/' +
-                today.getFullYear();
-            setState({ selection: { name: 'Today', label: today } });
+            const today = new Date();
+            setState({ selection: { name: 'Today', label: formatDates([today]) } });
         } else if (value.name === 'Yesterday') {
-            let yesterday = new Date(Date.now() - 86400000);
-            yesterday =
-                (yesterday.getMonth() + 1).toString().padStart(2, '0') +
-                '/' +
-                yesterday
-                    .getDate()
-                    .toString()
-                    .padStart(2, '0') +
-                '/' +
-                yesterday.getFullYear();
-            setState({ selection: { name: 'Yesterday', label: yesterday } });
+            const yesterday = new Date(Date.now() - 86400000);
+            setState({ selection: { name: 'Yesterday', label: formatDates([yesterday]) } });
         } else if (value.name === 'This Week') {
             let pickedDate = new Date();
             let startSunday = new Date(pickedDate);
             startSunday.setDate(pickedDate.getDate() - pickedDate.getDay());
-            let startMonth = new Date(pickedDate);
-            startMonth.setDate(1);
-            let startDate = Math.max(startMonth, startSunday);
-
             let endSaturday = new Date(pickedDate);
             endSaturday.setDate(pickedDate.getDate() + (6 - pickedDate.getDay()));
-            let endMonth = new Date(pickedDate);
-            endMonth.setMonth(pickedDate.getMonth() + 1); //Add a month
-            endMonth.setDate(0); // to select last day of previous month.
-            let endDate = Math.min(endMonth, endSaturday);
 
-            startDate = new Date(startDate);
-            endDate = new Date(endDate);
-
-            startDate =
-                (startDate.getMonth() + 1).toString().padStart(2, '0') +
-                '/' +
-                startDate
-                    .getDate()
-                    .toString()
-                    .padStart(2, '0') +
-                '/' +
-                startDate.getFullYear();
-
-            endDate =
-                (endDate.getMonth() + 1).toString().padStart(2, '0') +
-                '/' +
-                endDate
-                    .getDate()
-                    .toString()
-                    .padStart(2, '0') +
-                '/' +
-                endDate.getFullYear();
-
-            setState({ selection: { name: 'This Week', label: startDate + ' - ' + endDate } });
+            setState({
+                selection: { name: 'This Week', label: formatDates([startSunday, endSaturday]) },
+            });
         }
     }
 }
 
-function setDatesPicker() {
-    let dates = state.value;
-    if (dates) {
-        if (dates.length > 1) {
+function formatDates(date) {
+    if (date) {
+        if (date.length > 1) {
             startDate =
-                (dates[0].getMonth() + 1).toString().padStart(2, '0') +
+                (date[0].getMonth() + 1).toString().padStart(2, '0') +
                 '/' +
-                dates[0]
+                date[0]
                     .getDate()
                     .toString()
                     .padStart(2, '0') +
                 '/' +
-                dates[0].getFullYear();
+                date[0].getFullYear();
             endDate =
-                (dates[1].getMonth() + 1).toString().padStart(2, '0') +
+                (date[1].getMonth() + 1).toString().padStart(2, '0') +
                 '/' +
-                dates[1]
+                date[1]
                     .getDate()
                     .toString()
                     .padStart(2, '0') +
                 '/' +
-                dates[1].getFullYear();
+                date[1].getFullYear();
             rangeDate = startDate + ' - ' + endDate;
-            setState({ selection: { name: 'Custom', label: rangeDate } });
         } else {
             rangeDate =
-                (dates[0].getMonth() + 1).toString().padStart(2, '0') +
+                (date[0].getMonth() + 1).toString().padStart(2, '0') +
                 '/' +
-                dates[0]
+                date[0]
                     .getDate()
                     .toString()
                     .padStart(2, '0') +
                 '/' +
-                dates[0].getFullYear();
-            setState({ selection: { name: 'Custom', label: rangeDate } });
+                date[0].getFullYear();
         }
+        return rangeDate;
     }
-    setState({ isOpen: false });
 }
 
 const containerStyles = {
@@ -153,7 +103,12 @@ const containerStyles = {
         value={getDates(state.value)}
         selectionType={state.selectionType}
         onChange={value => setState({ value })}
-        onRequestClose={() => setDatesPicker()}
+        onRequestClose={() =>
+            setState({
+                selection: { name: 'Custom', label: formatDates(state.value) },
+                isOpen: false,
+            })
+        }
     />
 </div>;
 ```
@@ -179,25 +134,39 @@ const Row = styled.div`
 const Column = styled.div`
     width: 300px;
     padding: 0.9rem 0 0.9rem 0;
+    @media screen and (max-width: 1025px) {
+        width: 550px;
+    }
+    @media screen and (max-width: 500px) {
+        width: 200px;
+    }
 `;
 
-const Verticalline = styled.div`
-    margin: 1rem 0;
-    border-left: 2px solid ${props => props.theme.rainbow.palette.border.divider};
+const Divider = styled.div`
     height: 50px;
+    width: 2px;
+    margin: 1rem 0;
+    background-color: ${props => props.theme.rainbow.palette.border.divider};
+    @media screen and (max-width: 1025px) {
+        height: 2px;
+        width: 550px;
+    }
+    @media screen and (max-width: 500px) {
+        width: 190px;
+    }
 `;
 
 const Title = styled.h4`
     color: ${props => props.theme.rainbow.palette.text.main};
     widht: 100%;
-    font-size: 1rem;
+    font-size: 0.8rem;
     margin: 0 0 0 0.5rem;
     font-weight: 900;
 `;
 
 const Features = styled.p`
     color: ${props => props.theme.rainbow.palette.text.title};
-    font-size: 1rem;
+    font-size: 0.8rem;
     margin: 0 0 0 0.5rem;
 `;
 
@@ -225,45 +194,42 @@ function getDate(value, selectionType) {
     return value;
 }
 
-const setDates = value => {
-    let dates = getDate(state.value);
-    if (dates) {
-        if (dates.length > 1) {
+function formatDates(date) {
+    if (date) {
+        if (date.length > 1) {
             startDate =
-                (dates[0].getMonth() + 1).toString().padStart(2, '0') +
+                (date[0].getMonth() + 1).toString().padStart(2, '0') +
                 '/' +
-                dates[0]
+                date[0]
                     .getDate()
                     .toString()
                     .padStart(2, '0') +
                 '/' +
-                dates[0].getFullYear();
+                date[0].getFullYear();
             endDate =
-                (dates[1].getMonth() + 1).toString().padStart(2, '0') +
+                (date[1].getMonth() + 1).toString().padStart(2, '0') +
                 '/' +
-                dates[1]
+                date[1]
                     .getDate()
                     .toString()
                     .padStart(2, '0') +
                 '/' +
-                dates[1].getFullYear();
+                date[1].getFullYear();
             rangeDate = startDate + ' - ' + endDate;
-            setState({ dates: rangeDate });
         } else {
             rangeDate =
-                (dates[0].getMonth() + 1).toString().padStart(2, '0') +
+                (date[0].getMonth() + 1).toString().padStart(2, '0') +
                 '/' +
-                dates[0]
+                date[0]
                     .getDate()
                     .toString()
                     .padStart(2, '0') +
                 '/' +
-                dates[0].getFullYear();
-            setState({ dates: rangeDate });
+                date[0].getFullYear();
         }
+        return rangeDate;
     }
-    setState({ isOpen: false });
-};
+}
 
 <div className="rainbow-p-around_large">
     <Row className=" rainbow-border-radius_oval rainbow-flex rainbow-justify_space-around rainbow-flex_wrap ">
@@ -306,7 +272,7 @@ const setDates = value => {
                 </ButtonMenu>
             </div>
         </Column>
-        <Verticalline className="rainbow-flex rainbow-align_start" />
+        <Divider className="rainbow-flex rainbow-align_start" />
         <Column className="rainbow-flex rainbow-align_start rainbow-justify_spread">
             <div>
                 <Title>CHECK IN / CHECK OUT</Title>
@@ -326,7 +292,7 @@ const setDates = value => {
                 />
             </div>
         </Column>
-        <Verticalline className="rainbow-flex rainbow-align_start" />
+        <Divider className="rainbow-flex rainbow-align_start" />
         <Column className="rainbow-flex rainbow-align_start rainbow-justify_spread">
             <div>
                 <Title>GUESTS</Title>
@@ -375,7 +341,7 @@ const setDates = value => {
         variant="double"
         selectionType={state.selectionType}
         onChange={value => setState({ value })}
-        onRequestClose={() => setDates()}
+        onRequestClose={() => setState({ dates: formatDates(state.value), isOpen: false })}
     />
 </div>;
 ```

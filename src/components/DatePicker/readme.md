@@ -283,11 +283,13 @@ const StyledAvatar = styled(Avatar)`
 `;
 
 const StyledDatePicker = styled.div`
-    width: 400px;
+    max-width: 400px;
+    min-width: 250px;
 `;
 
 const StyledInput = styled.div`
-    width: 400px;
+    max-width: 400px;
+    min-width: 250px;
 `;
 
 <div className="rainbow-align-content_center rainbow-m-vertical_large rainbow-p-horizontal_small rainbow-m_auto rainbow-flex_column">
