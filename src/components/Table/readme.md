@@ -148,9 +148,9 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
     <Table data={data} keyField="id">
         {columnsNames.map(item => {
             if (item === 'status') {
-                return <Column header={item.toUpperCase()} field={item} component={StatusBadge} />;
+                return <Column header={item} field={item} component={StatusBadge} />;
             } else {
-                return <Column header={item.toUpperCase()} field={item} />;
+                return <Column header={item} field={item} />;
             }
         })}
     </Table>
