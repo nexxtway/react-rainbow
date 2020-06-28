@@ -14,6 +14,7 @@ class EmptyModal extends React.Component {
         };
         this.handleOnClick = this.handleOnClick.bind(this);
         this.handleOnClose = this.handleOnClose.bind(this);
+        this.buttonRef = React.createRef();
     }
 
     handleOnClick() {
@@ -21,6 +22,7 @@ class EmptyModal extends React.Component {
     }
 
     handleOnClose() {
+        this.buttonRef.current.focus();
         return this.setState({ isOpen: false });
     }
 
@@ -31,6 +33,7 @@ class EmptyModal extends React.Component {
                     id="button-1"
                     variant="neutral"
                     label="Open Modal"
+                    ref={this.buttonRef}
                     onClick={this.handleOnClick}
                 />
                 <Modal id="modal-1" isOpen={this.state.isOpen} onRequestClose={this.handleOnClose}>
@@ -74,6 +77,7 @@ class ModalWHeader extends React.Component {
         };
         this.handleOnClick = this.handleOnClick.bind(this);
         this.handleOnClose = this.handleOnClose.bind(this);
+        this.buttonRef = React.createRef();
     }
 
     handleOnClick() {
@@ -81,6 +85,7 @@ class ModalWHeader extends React.Component {
     }
 
     handleOnClose() {
+        this.buttonRef.current.focus();
         return this.setState({ isOpen: false });
     }
 
@@ -91,6 +96,7 @@ class ModalWHeader extends React.Component {
                     <Button
                         variant="neutral"
                         label="Modal with header"
+                        ref={this.buttonRef}
                         onClick={this.handleOnClick}
                     />
                 </GlobalHeader>
@@ -138,6 +144,7 @@ class ModalWFooter extends React.Component {
         };
         this.handleOnClick = this.handleOnClick.bind(this);
         this.handleOnClose = this.handleOnClose.bind(this);
+        this.buttonRef = React.createRef();
     }
 
     handleOnClick() {
@@ -145,6 +152,7 @@ class ModalWFooter extends React.Component {
     }
 
     handleOnClose() {
+        this.buttonRef.current.focus();
         return this.setState({ isOpen: false });
     }
 
@@ -156,6 +164,7 @@ class ModalWFooter extends React.Component {
                         id="button-2"
                         variant="neutral"
                         label="Modal with footer"
+                        ref={this.buttonRef}
                         onClick={this.handleOnClick}
                     />
                 </GlobalHeader>
@@ -170,6 +179,7 @@ class ModalWFooter extends React.Component {
                                 className="rainbow-m-right_large"
                                 label="Cancel"
                                 variant="neutral"
+                                onClick={this.handleOnClose}
                             />
                             <Button label="Save" variant="brand" />
                         </div>
@@ -243,6 +253,7 @@ class ModalWFooterDirectional extends React.Component {
         };
         this.handleOnClick = this.handleOnClick.bind(this);
         this.handleOnClose = this.handleOnClose.bind(this);
+        this.buttonRef = React.createRef();
     }
 
     handleOnClick() {
@@ -250,6 +261,7 @@ class ModalWFooterDirectional extends React.Component {
     }
 
     handleOnClose() {
+        this.buttonRef.current.focus();
         return this.setState({ isOpen: false });
     }
 
@@ -260,6 +272,7 @@ class ModalWFooterDirectional extends React.Component {
                     <Button
                         variant="neutral"
                         label="Modal with footer"
+                        ref={this.buttonRef}
                         onClick={this.handleOnClick}
                     />
                 </GlobalHeader>
@@ -324,21 +337,29 @@ class ModalWSize extends React.Component {
         this.handleOnClickMedium = this.handleOnClickMedium.bind(this);
         this.handleOnClickLarge = this.handleOnClickLarge.bind(this);
         this.handleOnClose = this.handleOnClose.bind(this);
+        this.smallButtonRef = React.createRef();
+        this.mediumButtonRef = React.createRef();
+        this.largeButtonRef = React.createRef();
+        this.buttonRef = null
     }
 
     handleOnClick() {
+        this.buttonRef = this.smallButtonRef;
         return this.setState({ isOpen: true });
     }
 
     handleOnClickMedium() {
+        this.buttonRef = this.mediumButtonRef;
         return this.setState({ isOpenMedium: true });
     }
 
     handleOnClickLarge() {
+        this.buttonRef = this.largeButtonRef;
         return this.setState({ isOpenLarge: true });
     }
 
     handleOnClose() {
+        this.buttonRef.current.focus();
         return this.setState({
             isOpen: false,
             isOpenMedium: false,
@@ -368,6 +389,7 @@ class ModalWSize extends React.Component {
                             onClick={this.handleOnClick}
                             variant="neutral"
                             label="Modal small"
+                            ref={this.smallButtonRef}
                         />
                     }
                     footer={
@@ -377,11 +399,13 @@ class ModalWSize extends React.Component {
                                     onClick={this.handleOnClickMedium}
                                     variant="outline-brand"
                                     label="Modal medium"
+                                    ref={this.mediumButtonRef}
                                 />
                                 <Button
                                     onClick={this.handleOnClickLarge}
                                     variant="outline-brand"
                                     label="Modal large"
+                                    ref={this.largeButtonRef}
                                 />
                             </ButtonGroup>
                         </div>
@@ -606,6 +630,7 @@ class FormModal extends React.Component {
         this.handleOnClose = this.handleOnClose.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.search = this.search.bind(this);
+        this.buttonRef = React.createRef();
     }
 
     handleOnClick() {
@@ -615,6 +640,7 @@ class FormModal extends React.Component {
     }
 
     handleOnClose() {
+        this.buttonRef.current.focus();
         return this.setState({
             isOpen: false,
             options: null,
@@ -664,6 +690,7 @@ class FormModal extends React.Component {
                     id="button-11"
                     variant="neutral"
                     label="Open Modal"
+                    ref={this.buttonRef}
                     onClick={this.handleOnClick}
                 />
                 <Modal
@@ -714,7 +741,7 @@ class FormModal extends React.Component {
 ##### make reservation modal
 
 ```js
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, Button, Input, TimePicker, DatePicker, Textarea, Select } from 'react-rainbow-components';
 import { Field, reduxForm } from 'redux-form';
 import styled from 'styled-components';
@@ -879,6 +906,7 @@ const Form = reduxForm({
 
 const FormModal = () => {
     const [isOpen, setOpenStatus] = useState(false);
+    this.buttonRef = React.createRef();
 
     const submit = (values) => {
         console.log(values);
@@ -892,12 +920,13 @@ const FormModal = () => {
                 label="Book Now!!"
                 onClick={() => setOpenStatus(true)}
                 variant="brand"
+                ref={this.buttonRef}
             />
             <Modal
                 id="modal-12"
                 title="Add your reservation"
                 isOpen={isOpen}
-                onRequestClose={() => setOpenStatus(false)}
+                onRequestClose={() => {this.buttonRef.current.focus(); setOpenStatus(false)}}
                 footer={
                     <div className="rainbow-flex rainbow-justify_end">
                         <Button
@@ -905,7 +934,7 @@ const FormModal = () => {
                             className="rainbow-m-right_large"
                             label="Cancel"
                             variant="neutral"
-                            onClick={() => setOpenStatus(false)}
+                            onClick={() => {this.buttonRef.current.focus(); setOpenStatus(false)}}
                         />
                         <Button
                             form="redux-form-id"
