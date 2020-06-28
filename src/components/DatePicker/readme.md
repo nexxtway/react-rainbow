@@ -36,7 +36,7 @@ const containerStyles = {
             locale={state.locale.name}
         />
     </div>
-</div>;
+</div>
 ```
 
 ##### DatePicker with date constraints:
@@ -61,7 +61,7 @@ initialState = { date: new Date() };
         label="DatePicker Label"
         onChange={value => setState({ date: value })}
     />
-</div>;
+</div>
 ```
 
 ##### DatePicker with different date formats:
@@ -96,7 +96,7 @@ initialState = { date: new Date() };
             onChange={value => setState({ date: value })}
         />
     </div>
-</div>;
+</div>
 ```
 
 ##### DatePicker required:
@@ -120,7 +120,7 @@ initialState = { date: new Date() };
         label="DatePicker Label"
         onChange={value => setState({ date: value })}
     />
-</div>;
+</div>
 ```
 
 ##### DatePicker with error:
@@ -146,7 +146,7 @@ initialState = { date: undefined };
         label="DatePicker Label"
         onChange={value => setState({ date: value })}
     />
-</div>;
+</div>
 ```
 
 ##### DatePicker disabled:
@@ -182,7 +182,7 @@ const containerStyles = {
     style={containerStyles}
 >
     <DatePicker id="datePicker-13" readOnly value={new Date()} label="DatePicker Label" />
-</div>;
+</div>
 ```
 
 ##### DatePicker with range selection:
@@ -212,7 +212,7 @@ const containerStyles = {
         value={state.range}
         onChange={value => setState({ range: value })}
     />
-</div>;
+</div>
 ```
 
 ##### DatePicker with variant double:
@@ -240,7 +240,7 @@ const containerStyles = {
         value={state.date}
         onChange={date => setState({ date })}
     />
-</div>;
+</div>
 ```
 
 ##### DatePicker select date:
@@ -319,5 +319,5 @@ const StyledInput = styled.div`
     <StyledInput className="rainbow-m-vertical_medium">
         <Input id="input-component-1" label="Company Name" placeholder="Enter company name" />
     </StyledInput>
-</div>;
+</div>
 ```

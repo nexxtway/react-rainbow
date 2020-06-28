@@ -6,40 +6,27 @@ import { Picklist, Option, DatePickerModal } from 'react-rainbow-components';
 
 initialState = { isOpen: false, selection: { name: '', label: '' } };
 
-function getDates(value, selectionType) {
-    if (selectionType === 'single' && Array.isArray(value)) return value[0];
-    return value;
-}
-
-function setDates(value) {
-    if (value) {
-        if (value.name === 'Custom') {
-            setState({
-                isOpen: true,
-                selectionType: 'range',
-                value: null,
-                title: 'Select a Date',
-            });
-        } else if (value.name === 'Today') {
-            setState({ selection: { name: 'Today', label: 'Today' } });
-        } else if (value.name === 'Yesterday') {
-            setState({ selection: { name: 'Yesterday', label: 'Yesterday' } });
-        } else if (value.name === 'This Week') {
-            setState({ selection: { name: 'This Week', label: 'This Week' } });
-        }
+function handlePicklistChange(value) {
+    if (value.name === 'Custom') {
+        setState({
+            isOpen: true,
+            selectionType: 'range',
+            value: null,
+            title: 'Select a Date',
+        });
+    } else {
+        setState({ selection: { name: value.name, label: value.name } });
     }
 }
 
-function formatDates(date) {
-    if (date) {
-        if (date.length > 1) {
-            startDay = new Intl.DateTimeFormat().format(date[0]);
-            endDay = new Intl.DateTimeFormat().format(date[1]);
-            formatedDate = startDay + ' - ' + endDay;
-        } else {
-            formatedDate = new Intl.DateTimeFormat().format(date[0]);
+function formatDates(dates) {
+    if (dates) {
+        const startDay = new Intl.DateTimeFormat().format(dates[0]);
+        if (dates.length > 1) {
+            const endDay = new Intl.DateTimeFormat().format(dates[1]);
+            return startDay + ' - ' + endDay;
         }
-        return formatedDate;
+        return startDay;
     }
 }
 
@@ -54,7 +41,7 @@ const containerStyles = {
                 value={state.selection}
                 style={containerStyles}
                 placeholder="Select Date"
-                onChange={value => setDates(value)}
+                onChange={handlePicklistChange}
             >
                 <Option name="Custom" label="Custom" />
                 <Option name="Today" label="Today" />
@@ -67,8 +54,8 @@ const containerStyles = {
         title={state.title}
         isOpen={state.isOpen}
         variant="double"
-        value={getDates(state.value)}
-        selectionType={state.selectionType}
+        value={state.value}
+        selectionType="range"
         onChange={value => {
             value.length > 1
                 ? setState({
@@ -85,7 +72,7 @@ const containerStyles = {
         }}
         onRequestClose={() => setState({ isOpen: false })}
     />
-</div>;
+</div>
 ```
 
 ##### DatePickerModal select date range:
@@ -102,7 +89,6 @@ import {
 import styled from 'styled-components';
 
 const Row = styled.div`
-    /*background-color: ${props => props.theme.rainbow.palette.background.main};*/
     box-shadow: 0 0 5px ${props => props.theme.rainbow.palette.text.header};
 `;
 
@@ -164,21 +150,14 @@ const setGuests = value => {
     setState({ guests: value });
 };
 
-function getDate(value, selectionType) {
-    if (selectionType === 'single' && Array.isArray(value)) return value[0];
-    return value;
-}
-
-function formatDates(date) {
-    if (date) {
-        if (date.length > 1) {
-            startDay = new Intl.DateTimeFormat().format(date[0]);
-            endDay = new Intl.DateTimeFormat().format(date[1]);
-            formatedDate = startDay + ' - ' + endDay;
-        } else {
-            formatedDate = new Intl.DateTimeFormat().format(date[0]);
+function formatDates(dates) {
+    if (dates) {
+        const startDay = new Intl.DateTimeFormat().format(dates[0]);
+        if (dates.length > 1) {
+            const endDay = new Intl.DateTimeFormat().format(dates[1]);
+            return startDay + ' - ' + endDay;
         }
-        return formatedDate;
+        return startDay;
     }
 }
 
@@ -288,9 +267,9 @@ function formatDates(date) {
     <DatePickerModal
         title={state.title}
         isOpen={state.isOpen}
-        value={getDate(state.value)}
+        value={state.value}
         variant="double"
-        selectionType={state.selectionType}
+        selectionType="range"
         onChange={value => setState({ value })}
         onChange={value => {
             value.length > 1
@@ -308,5 +287,5 @@ function formatDates(date) {
         }}
         onRequestClose={() => setState({ isOpen: false })}
     />
-</div>;
+</div>
 ```
