@@ -258,6 +258,7 @@ const InternalDropdown = forwardRef((props, reference) => {
             activeOptionName,
             currentValues,
             activeChildrenMap,
+            multiple,
         };
     }, [
         value,
@@ -267,6 +268,7 @@ const InternalDropdown = forwardRef((props, reference) => {
         activeOptionName,
         activeChildrenMap,
         handleChange,
+        multiple,
     ]);
 
     return (

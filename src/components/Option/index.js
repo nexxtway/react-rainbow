@@ -95,10 +95,10 @@ class OptionItem extends Component {
     }
 
     renderRightIcon() {
-        const { name, currentValues, icon, iconPosition, activeOptionName } = this.props;
+        const { name, currentValues, icon, iconPosition, activeOptionName, multiple } = this.props;
         const hasRightIcon = !!(icon && iconPosition === 'right');
         if (currentValues && currentValues.includes(name)) {
-            if (activeOptionName === name) {
+            if (multiple && activeOptionName === name) {
                 return <StyledUncheckIcon />;
             }
             return <StyledCheckmarkIcon />;
