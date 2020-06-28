@@ -90,14 +90,13 @@ const PhoneInput = React.forwardRef((props, ref) => {
     const handleCountryChange = useHandleCountryChange(phone, onChange, setFocusIndex, isOpen);
 
     function handlePhoneChange(event) {
-        const newPhone = event.target.value;
-        if (!isNaN(newPhone) || newPhone === '') {
-            onChange({
-                countryCode,
-                isoCode,
-                phone: newPhone,
-            });
-        }
+        const rawPhone = event.target.value;
+        const newPhone = rawPhone.replace(/\D/g, '');
+        onChange({
+            countryCode,
+            isoCode,
+            phone: newPhone,
+        });
     }
 
     function handleClick() {
