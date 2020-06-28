@@ -72,7 +72,89 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
         <Column header="Company" field="company" />
         <Column header="Email" field="email" />
     </Table>
-</div>
+</div>;
+```
+
+##### dinamically Table
+
+```js
+import React from 'react';
+import { Table, Column, ButtonGroup, ButtonIcon, Badge } from 'react-rainbow-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+    faCog,
+    faPencilAlt,
+    faStore,
+    faPlus,
+    faBell,
+    faEllipsisV,
+} from '@fortawesome/free-solid-svg-icons';
+
+const data = [
+    {
+        name: 'Leandro Torres',
+        company: 'Nexxtway',
+        email: 'leandro@gmail.com',
+        status: 'verified',
+        id: '1234qwerty',
+    },
+    {
+        name: 'Jose Torres',
+        company: 'Google',
+        email: 'jose@gmail.com',
+        status: 'verified',
+        id: '1234asdfgh',
+    },
+    {
+        name: 'Reinier',
+        company: 'Nexxtway',
+        email: 'reinier@gmail.com',
+        status: 'verified',
+        id: '1234zxcvbn',
+    },
+    {
+        name: 'Sara',
+        company: 'Nexxtway',
+        email: 'sara@gmail.com',
+        status: 'verified',
+        id: '5678qwerty',
+    },
+    {
+        name: 'Tahimi',
+        company: 'Nexxtway',
+        email: 'tahimi@gmail.com',
+        status: 'verified',
+        id: '5678asdfgh',
+    },
+];
+
+const columnsNames = ['name', 'status', 'company', 'email'];
+
+const badgeStyles = { color: '#1de9b6' };
+
+const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style={badgeStyles} />;
+
+<div className="rainbow-p-bottom_xx-large">
+    <GlobalHeader className="rainbow-m-bottom_xx-large" src="images/user/user3.jpg">
+        <ButtonGroup className="rainbow-m-right_medium">
+            <ButtonIcon variant="border-filled" disabled icon={<FontAwesomeIcon icon={faCog} />} />
+            <ButtonIcon
+                variant="border-filled"
+                disabled
+                icon={<FontAwesomeIcon icon={faEllipsisV} />}
+            />
+        </ButtonGroup>
+    </GlobalHeader>
+    <Table data={data} keyField="id">
+        {columnsNames.map(item => {
+            if (item === 'status') {
+                return <Column header={item.toUpperCase()} field={item} component={StatusBadge} />;
+            } else {
+                return <Column header={item.toUpperCase()} field={item} />;
+            }
+        })}
+    </Table>
+</div>;
 ```
 
 ##### Table with sorting
@@ -444,7 +526,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
         <Column header="Company" field="company" />
         <Column header="Email" field="email" />
     </Table>
-</div>
+</div>;
 ```
 
 ##### Table with Selectable Rows by radio buttons
@@ -528,7 +610,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
         <Column header="Company" field="company" />
         <Column header="Email" field="email" />
     </Table>
-</div>
+</div>;
 ```
 
 ##### Table with row actions
@@ -616,7 +698,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
             <MenuItem label="Delete" onClick={(e, data) => console.log(`Delete ${data.name}`)} />
         </Column>
     </Table>
-</div>
+</div>;
 ```
 
 ##### Table with enumerates row
@@ -693,7 +775,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
         <Column header="Company" field="company" />
         <Column header="Email" field="email" />
     </Table>
-</div>
+</div>;
 ```
 
 ##### Table Loading
@@ -734,7 +816,7 @@ const StatusBadge = ({ value }) => <Badge label={value} variant="lightest" style
         <Column header="Company" field="company" />
         <Column header="Email" field="email" />
     </Table>
-</div>
+</div>;
 ```
 
 ##### Table Empty
@@ -770,27 +852,32 @@ const tableContainerStyles = { height: 300 };
         <Column header="Company" field="company" />
         <Column header="Email" field="email" />
     </Table>
-</div>
+</div>;
 ```
 
 ##### Table
 
 ```js
-import { Table, Column, ButtonGroup, ButtonIcon, Badge, MenuItem, ButtonMenu } from 'react-rainbow-components';
+import {
+    Table,
+    Column,
+    ButtonGroup,
+    ButtonIcon,
+    Badge,
+    MenuItem,
+    ButtonMenu,
+} from 'react-rainbow-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 import React, { useState, useEffect } from 'react';
 
-import {
-    faCog,
-    faEllipsisV,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCog, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const tableContainerStyles = { height: 300 };
 
 const StatusBadge = ({ value }) => {
-    if(value === 'verified'){
-        return <Badge label={value} variant="outline-brand"/>;
+    if (value === 'verified') {
+        return <Badge label={value} variant="outline-brand" />;
     }
     return <Badge label={value} variant="lightest" />;
 };
@@ -901,13 +988,13 @@ const StyledLink = styled.a.attrs(props => props.theme.rainbow)`
     }
 `;
 
-const ProfileLink = ({value, row}) => <StyledLink href={row.link}>{ value }</StyledLink>;
+const ProfileLink = ({ value, row }) => <StyledLink href={row.link}>{value}</StyledLink>;
 
-function TableExample (props) {
-    const [ data, setData ] = useState(props.data);
-    const [ sortedBy, setSortedBy ] = useState();
-    const [ sortDirection, setSortDirection ] = useState('asc');
-    const [ selection, setSelection ] = useState([]);
+function TableExample(props) {
+    const [data, setData] = useState(props.data);
+    const [sortedBy, setSortedBy] = useState();
+    const [sortDirection, setSortDirection] = useState('asc');
+    const [selection, setSelection] = useState([]);
 
     function handleOnSort(event, field, nextSortDirection) {
         let newData = [...data];
@@ -928,7 +1015,7 @@ function TableExample (props) {
 
     function handleOnDeleteElements() {
         const selectionIds = selection.map(x => x.id);
-        const newData = data.filter( e =>  !(selectionIds.includes(e.id)));
+        const newData = data.filter(e => !selectionIds.includes(e.id));
         return setData(newData);
     }
 
@@ -937,18 +1024,11 @@ function TableExample (props) {
             <GlobalHeader src="images/user/user3.jpg" />
             <div className="rainbow-flex rainbow-justify_spread rainbow-align_center rainbow-p-around_large">
                 <div>
-                    <Title>
-                        Company Members
-                    </Title>
-                    <Subtitle>
-                        Total • {data.length}
-                    </Subtitle>
+                    <Title>Company Members</Title>
+                    <Subtitle>Total • {data.length}</Subtitle>
                 </div>
                 <ButtonGroup className="rainbow-m-right_medium">
-                    <ButtonIcon
-                        variant="border-filled"
-                        icon={<FontAwesomeIcon icon={faCog} />}
-                    />
+                    <ButtonIcon variant="border-filled" icon={<FontAwesomeIcon icon={faCog} />} />
                     <ButtonMenu
                         menuAlignment="right"
                         menuSize="xx-small"
@@ -959,7 +1039,7 @@ function TableExample (props) {
                 </ButtonGroup>
             </div>
             <Table
-                style={ tableContainerStyles }
+                style={tableContainerStyles}
                 keyField="id"
                 showCheckboxColumn
                 data={data}
@@ -968,8 +1048,8 @@ function TableExample (props) {
                 sortDirection={sortDirection}
                 sortedBy={sortedBy}
             >
-                <Column header="Name" field="name" component={ProfileLink} sortable/>
-                <Column header="Company" field="company" sortable/>
+                <Column header="Name" field="name" component={ProfileLink} sortable />
+                <Column header="Company" field="company" sortable />
                 <Column header="Email" field="email" />
                 <Column header="Status" field="status" component={StatusBadge} />
                 <Column type="action">
@@ -980,5 +1060,5 @@ function TableExample (props) {
     );
 }
 
-<TableExample data={data}/>;
+<TableExample data={data} />;
 ```
