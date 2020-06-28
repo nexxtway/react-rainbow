@@ -2,28 +2,30 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StyledChip } from './styled';
 
-function Chips(props) {
+const Chips = props => {
     const { value, variant, onDelete, disabled, readOnly } = props;
+    const getDeleteCallback = val => {
+        return disabled || readOnly ? null : () => onDelete(val);
+    };
+
     if (!value) {
         return null;
     }
 
     if (Array.isArray(value)) {
         return value.map(val => {
-            const onDeleteCallback = disabled || readOnly ? null : () => onDelete(val);
             return (
                 <StyledChip
                     key={val.name}
                     label={val.label}
                     variant={variant}
-                    onDelete={onDeleteCallback}
+                    onDelete={getDeleteCallback(val)}
                 />
             );
         });
     }
-    const onDeleteCallback = disabled || readOnly ? null : () => onDelete(value);
-    return <StyledChip label={value.label} variant={variant} onDelete={onDeleteCallback} />;
-}
+    return <StyledChip label={value.label} variant={variant} onDelete={getDeleteCallback(value)} />;
+};
 
 Chips.propTypes = {
     value: PropTypes.oneOfType([

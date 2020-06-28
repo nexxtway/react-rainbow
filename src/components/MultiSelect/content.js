@@ -6,7 +6,6 @@ import Chips from './chips';
 
 const Content = props => {
     const { variant, value, chipVariant, readOnly, disabled, onDelete } = props;
-    const onDeleteCallback = disabled || readOnly ? null : onDelete;
 
     if (variant === 'chip') {
         return (
@@ -15,7 +14,7 @@ const Content = props => {
                 variant={chipVariant}
                 readOnly={readOnly}
                 disabled={disabled}
-                onDelete={onDeleteCallback}
+                onDelete={onDelete}
             />
         );
     }
