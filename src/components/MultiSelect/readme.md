@@ -172,12 +172,12 @@ const containerStyles = {
     maxWidth: 400,
 };
 
-const MultiSelectExample = props => {
-    const value = [{
-        label: 'All buildings',
-        name: 'all',
-    }];
+const value = [{
+    label: 'All buildings',
+    name: 'all',
+}];
 
+const MultiSelectExample = props => {  
     return (
         <div>
             <MultiSelect
