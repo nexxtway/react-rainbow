@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import RenderIf from '../../RenderIf';
-import Checkbox from '../../Input/inputCheckbox/checkbox';
 import {
     Heading as StyledHeading,
     Paragraph,
@@ -15,6 +14,7 @@ import {
     List as StyledList,
     ListItem as StyledListItem,
 } from './styled';
+import Checkbox from './checkbox';
 
 const HeadingRenderer = ({ level, children }) => {
     return (
@@ -84,7 +84,7 @@ const ListItem = ({ isChecked, children }) => {
     return (
         <StyledListItem isTask={hasCheckbox}>
             <RenderIf isTrue={hasCheckbox}>
-                <Checkbox checked={isChecked} />
+                <Checkbox isChecked={isChecked} />
             </RenderIf>
             {children}
         </StyledListItem>

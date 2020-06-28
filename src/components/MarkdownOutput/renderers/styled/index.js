@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import attachThemeAttrs from '../../../../styles/helpers/attachThemeAttrs';
 import {
     FONT_SIZE_HEADING_X_LARGE,
@@ -7,8 +7,18 @@ import {
     FONT_SIZE_HEADING_SMALL,
     FONT_SIZE_TEXT_MEDIUM,
 } from '../../../../styles/fontSizes';
+import { BORDER_RADIUS_3 } from '../../../../styles/borderRadius';
+import { MARGIN_SMALL } from '../../../../styles/margins';
+import { replaceAlpha } from '../../../../styles/helpers/color';
+import HiddenElement from '../../../Structural/hiddenElement';
 
 const getListStyle = isOrdered => (isOrdered ? 'decimal' : 'circle');
+
+const flash = color => keyframes`
+    100% {
+        box-shadow: 0 0 0 5px ${color};
+    }
+`;
 
 export const Heading = attachThemeAttrs(styled.h1)`
     font-size: ${FONT_SIZE_HEADING_SMALL};
@@ -151,4 +161,73 @@ export const ListItem = styled.li`
         display: flex;
         align-items: center;
         `};
+`;
+
+export const CheckboxContainer = styled.div`
+    display: inline-block;
+    margin-bottom: 2px;
+`;
+
+export const Checkbox = attachThemeAttrs(styled(HiddenElement))`
+    & ~ label > .rainbow-input_faux {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        position: relative;
+        vertical-align: middle;
+        border: 1px solid ${props => props.palette.border.divider};
+        border-radius: ${BORDER_RADIUS_3};
+        background: ${props => props.palette.background.main};
+        margin-right: ${MARGIN_SMALL};
+        transition: border 0.1s linear, background-color 0.1s linear;
+        box-sizing: border-box;
+    }
+
+    :checked ~ label > .rainbow-input_faux::after {
+        display: block;
+        content: '';
+        height: 0.4rem;
+        width: 0.65rem;
+        position: absolute;
+        top: 46%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0) rotate(-45deg);
+        border-bottom: 2px solid;
+        border-left: 2px solid;
+        border-color: ${props => props.palette.brand.main};
+        box-sizing: border-box;
+        padding: 0;
+    }
+
+    :checked ~ label > .rainbow-input_faux {
+        animation: ${props =>
+            props.error
+                ? flash(replaceAlpha(props.palette.error.main, 0.5))
+                : flash(replaceAlpha(props.palette.brand.main, 0.5))} 0.2s linear;
+        border: 2px solid;
+        border-color: ${props => props.palette.brand.main};
+    }
+
+    :focus ~ label > .rainbow-input_faux {
+        content: '';
+        border: 2px solid;
+        border-color: ${props => props.palette.brand.main};
+        box-shadow: ${props => props.shadows.brand};
+    }
+
+    &[disabled] ~ label > .rainbow-input_faux {
+        background-color: ${props => props.palette.background.disabled};
+        border-color: ${props => props.palette.border.disabled};
+    }
+
+    &[disabled] ~ label > .rainbow-input_faux::after {
+        border-color: ${props => props.palette.background.main};
+        box-sizing: border-box;
+    }
+
+    :focus:checked ~ label > .rainbow-input_faux {
+        border-color: ${props => props.palette.brand.main};
+        background-color: ${props => props.palette.background.main};
+        box-shadow: ${props => props.shadows.brand};
+    }
 `;

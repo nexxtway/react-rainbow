@@ -13,6 +13,6 @@ export default function useMarkdownParser(source, parserOptions, plugins) {
 
         const rawSyntaxTree = markdownParser.parse(source);
         const transformedSyntaxTree = markdownParser.runSync(rawSyntaxTree);
-        return addWrapToTableRows(transformedSyntaxTree, parserOptions);
+        return addWrapToTableRows(transformedSyntaxTree);
     }, [source, parserOptions, plugins]);
 }
