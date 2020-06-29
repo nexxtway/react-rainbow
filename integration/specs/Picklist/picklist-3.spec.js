@@ -1,8 +1,10 @@
 const PagePicklist = require('../../../src/components/Picklist/pageObject');
+const PageInternalDropdown = require('../../../src/components/InternalDropdown/pageObject');
 const { ARROW_UP_KEY, ARROW_DOWN_KEY } = require('../../constants');
 
 const PICKLIST = '#picklist-3';
-const PICKLISTMENU = 'div[role="listbox"]';
+const INTERNALDROPDOWN =
+    '//div[contains(@id, "listbox-") and @class="sc-cpHetk idpnYm" and @role="listbox"]';
 
 describe('Picklist with multiple options', () => {
     beforeAll(() => {
@@ -14,49 +16,53 @@ describe('Picklist with multiple options', () => {
         component.waitForExist();
     });
     it('should scroll down to see the next option focused when initially is not visible', () => {
-        const picklist = new PagePicklist(PICKLIST, PICKLISTMENU);
+        const picklist = new PagePicklist(PICKLIST);
+        const picklistMenu = new PageInternalDropdown(INTERNALDROPDOWN);
         picklist.clickInput();
-        picklist.waitUntilOpen();
-        const option = picklist.getOption(4);
+        picklistMenu.waitUntilOpen();
+        const option = picklistMenu.getOption(4);
         expect(option.isVisible()).toBe(false);
-        picklist.getOption(3).hover();
+        picklistMenu.getOption(3).hover();
         browser.keys(ARROW_DOWN_KEY);
         expect(option.isVisible()).toBe(true);
     });
     it('should scroll up to see the first option', () => {
-        const picklist = new PagePicklist(PICKLIST, PICKLISTMENU);
+        const picklist = new PagePicklist(PICKLIST);
+        const picklistMenu = new PageInternalDropdown(INTERNALDROPDOWN);
         picklist.clickInput();
-        picklist.waitUntilOpen();
-        picklist.getOption(3).hover();
+        picklistMenu.waitUntilOpen();
+        picklistMenu.getOption(3).hover();
         browser.keys(ARROW_DOWN_KEY);
         browser.keys(ARROW_DOWN_KEY);
-        const firstOption = picklist.getOption(0);
+        const firstOption = picklistMenu.getOption(0);
         expect(firstOption.isVisible()).toBe(false);
-        picklist.getOption(2).hover();
+        picklistMenu.getOption(2).hover();
         browser.keys(ARROW_UP_KEY);
         browser.keys(ARROW_UP_KEY);
         expect(firstOption.isVisible()).toBe(true);
     });
     it('should scroll down when hover the down arrow', () => {
-        const picklist = new PagePicklist(PICKLIST, PICKLISTMENU);
+        const picklist = new PagePicklist(PICKLIST);
+        const picklistMenu = new PageInternalDropdown(INTERNALDROPDOWN);
         picklist.clickInput();
-        picklist.waitUntilOpen();
-        const option = picklist.getOption(6);
+        picklistMenu.waitUntilOpen();
+        const option = picklistMenu.getOption(6);
         expect(option.isVisible()).toBe(false);
-        picklist.hoverScrollDownArrow();
+        picklistMenu.hoverScrollDownArrow();
         option.waitUntilIsVisible();
         expect(option.isVisible()).toBe(true);
     });
     it.skip('should up down when hover the up arrow', () => {
-        const picklist = new PagePicklist(PICKLIST, PICKLISTMENU);
+        const picklist = new PagePicklist(PICKLIST);
+        const picklistMenu = new PageInternalDropdown(INTERNALDROPDOWN);
         picklist.clickInput();
-        picklist.waitUntilOpen();
-        const firstOption = picklist.getOption(0);
-        const latestOption = picklist.getOption(7);
-        picklist.hoverScrollDownArrow();
+        picklistMenu.waitUntilOpen();
+        const firstOption = picklistMenu.getOption(0);
+        const latestOption = picklistMenu.getOption(7);
+        picklistMenu.hoverScrollDownArrow();
         latestOption.waitUntilIsVisible();
         expect(firstOption.isVisible()).toBe(false);
-        picklist.hoverScrollUpArrow();
+        picklistMenu.hoverScrollUpArrow();
         firstOption.waitUntilIsVisible();
         expect(firstOption.isVisible()).toBe(true);
     });
