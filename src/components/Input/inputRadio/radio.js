@@ -67,7 +67,10 @@ export default class Radio extends Component {
                     tabIndex={tabIndex}
                     onFocus={onFocus}
                     onBlur={onBlur}
-                    onClick={onClick}
+                    onClick={event => {
+                        this.inputRef.current.focus();
+                        onClick(event);
+                    }}
                     onKeyDown={onKeyDown}
                     disabled={disabled}
                     checked={checked}

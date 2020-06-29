@@ -9,6 +9,7 @@ export default class RadioButtonItem extends Component {
     constructor(props) {
         super(props);
         this.radioId = uniqueId('radiobutton');
+        this.inputRef = React.createRef();
     }
 
     render() {
@@ -37,6 +38,10 @@ export default class RadioButtonItem extends Component {
             >
                 <StyledInput
                     type="radio"
+                    ref={this.inputRef}
+                    onClick={() => {
+                        this.inputRef.current.focus();
+                    }}
                     required={required}
                     id={this.radioId}
                     name={name}
