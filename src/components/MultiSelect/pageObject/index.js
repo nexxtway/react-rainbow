@@ -37,9 +37,20 @@ class PageMultiSelect {
      * @method
      * @returns {bool}
      */
-    hasFocus() {
+    hasTriggerFocus() {
         return $(this.rootElement)
-            .$('[role="combobox"]')
+            .$('[role="combobox"] > button')
+            .isFocused();
+    }
+
+    /**
+     * Returns true when the combobox element has focus.
+     * @method
+     * @returns {bool}
+     */
+    hasInputFocus() {
+        return $(this.rootElement)
+            .$('[role="textbox"]')
             .isFocused();
     }
 }
