@@ -66,6 +66,7 @@ export default class Modal extends Component {
         if (wasClosed) {
             CounterManager.decrement();
             if (modalTriggerElement) {
+                // Focus the element who trigger the component
                 modalTriggerElement.focus();
             }
             if (!CounterManager.hasModalsOpen()) {
