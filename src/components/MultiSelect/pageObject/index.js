@@ -33,7 +33,7 @@ class PageMultiSelect {
     }
 
     /**
-     * Returns true when the combobox element has focus.
+     * Returns true when the Add button has focus.
      * @method
      * @returns {bool}
      */
@@ -44,7 +44,7 @@ class PageMultiSelect {
     }
 
     /**
-     * Returns true when the combobox element has focus.
+     * Returns true when the textbox input element has focus.
      * @method
      * @returns {bool}
      */
