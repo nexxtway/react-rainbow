@@ -44,6 +44,13 @@ export function getChildrenTotalWidthUpToClickedTab(children, index) {
 }
 
 export function isNotSameChildren(children, prevChildren) {
+    if (!Array.isArray(children)) {
+        if (children && prevChildren) {
+            return children.props.name !== prevChildren.props.name;
+        }
+        return false;
+    }
+
     return children.some((child, index) => {
         if (child && prevChildren[index]) {
             return child.props.name !== prevChildren[index].props.name;
