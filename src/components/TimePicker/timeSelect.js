@@ -56,6 +56,7 @@ export default class TimeSelect extends Component {
         this.handleBlurHour = this.handleBlurHour.bind(this);
         this.handleChangeMinutes = this.handleChangeMinutes.bind(this);
         this.handleFocusMinutes = this.handleFocusMinutes.bind(this);
+        this.handleClickAmPm = this.handleClickAmPm.bind(this);
         this.handleAmPmChange = this.handleAmPmChange.bind(this);
         this.hanldeFocusAmPm = this.hanldeFocusAmPm.bind(this);
         this.handleKeyDown = this.handleKeyDown.bind(this);
@@ -205,8 +206,13 @@ export default class TimeSelect extends Component {
 
     handleAmPmChange(value) {
         this.setState({
-            inputFocusedIndex: -1,
             ampm: value,
+        });
+    }
+
+    handleClickAmPm() {
+        this.setState({
+            inputFocusedIndex: -1,
         });
     }
 
@@ -438,6 +444,7 @@ export default class TimeSelect extends Component {
                             value={ampm}
                             defaultValue={this.defaultAmPM}
                             onFocus={this.hanldeFocusAmPm}
+                            onClick={this.handleClickAmPm}
                             onChange={this.handleAmPmChange}
                             isFocused={inputFocusedIndex === 2}
                             ref={this.amPmInputRef}
