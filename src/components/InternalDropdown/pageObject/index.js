@@ -1,4 +1,4 @@
-const PagePicklistOption = require('../../PicklistOption/pageObject');
+const PageOption = require('../../Option/pageObject');
 
 const privateGetMenuBoundsRect = Symbol('privateGetMenuBoundsRect');
 
@@ -46,15 +46,15 @@ class PageInternalDropdown {
     }
 
     /**
-     * Returns a new PicklistOption page object of the element in item position.
+     * Returns a new Option page object of the element in item position.
      * @method
-     * @param {number} optionIndex - The base 0 index of the PicklistOption.
+     * @param {number} optionIndex - The base 0 index of the Option.
      */
     getOption(optionIndex) {
         const activeOptions = $(this.rootElement).$$('li[data-selected="false"]');
         const option = activeOptions[optionIndex];
         if (option && !option.error) {
-            return new PagePicklistOption(option, this[privateGetMenuBoundsRect]());
+            return new PageOption(option, this[privateGetMenuBoundsRect]());
         }
         return null;
     }

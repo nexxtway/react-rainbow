@@ -1,5 +1,7 @@
 const PageInternalDropdown = require('../../InternalDropdown/pageObject');
 
+const privateGetMenu = Symbol('privateGetMenu');
+
 /**
  * Picklist page object class.
  * @class
@@ -92,7 +94,7 @@ class PagePicklist {
      * Returns a new InternalDropdown page object for the element with the supplied id.
      * @method
      */
-    getMenu() {
+    [privateGetMenu]() {
         const menuId = `#${$(this.rootElement)
             .$('input[type="text"]')
             .getAttribute('aria-controls')}`;
@@ -100,6 +102,40 @@ class PagePicklist {
             return new PageInternalDropdown(menuId);
         }
         return null;
+    }
+
+    /**
+     * It moves the pointer over the menu scroll up arrow
+     * @method
+     */
+    hoverScrollUpArrow() {
+        return this[privateGetMenu]().hoverScrollUpArrow();
+    }
+
+    /**
+     * It moves the pointer over the menu scroll down arrow
+     * @method
+     */
+    hoverScrollDownArrow() {
+        return this[privateGetMenu]().hoverScrollDownArrow();
+    }
+
+    /**
+     * Get the number of registered options.
+     * @method
+     * @returns {number}
+     */
+    getOptionsLength() {
+        return this[privateGetMenu]().getOptionsLength();
+    }
+
+    /**
+     * Returns a new PicklistOption page object of the element in item position.
+     * @method
+     * @param {number} optionIndex - The base 0 index of the PicklistOption.
+     */
+    getOption(optionIndex) {
+        return this[privateGetMenu]().getOption(optionIndex);
     }
 }
 

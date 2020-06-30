@@ -94,8 +94,7 @@ describe('Picklist base example', () => {
         const picklist = new PagePicklist(PICKLIST);
         picklist.clickInput();
         picklist.waitUntilOpen();
-        const picklistMenu = picklist.getMenu();
-        const option = picklistMenu.getOption(0);
+        const option = picklist.getOption(0);
         expect(picklist.isMenuOpen()).toBe(true);
         expect(option.isActive()).toBe(true);
     });
@@ -112,16 +111,14 @@ describe('Picklist base example', () => {
         picklist.clickInput();
         picklist.waitUntilOpen();
         browser.keys(ARROW_DOWN_KEY);
-        const picklistMenu = picklist.getMenu();
-        const option = picklistMenu.getOption(1);
+        const option = picklist.getOption(1);
         expect(option.isActive()).toBe(true);
     });
     it('should set active Empire State when hover the option', () => {
         const picklist = new PagePicklist(PICKLIST);
         picklist.clickInput();
         picklist.waitUntilOpen();
-        const picklistMenu = picklist.getMenu();
-        const option = picklistMenu.getOption(1);
+        const option = picklist.getOption(1);
         option.hover();
         expect(option.isActive()).toBe(true);
     });
@@ -129,8 +126,7 @@ describe('Picklist base example', () => {
         const picklist = new PagePicklist(PICKLIST);
         picklist.clickInput();
         picklist.waitUntilOpen();
-        const picklistMenu = picklist.getMenu();
-        const option = picklistMenu.getOption(1);
+        const option = picklist.getOption(1);
         option.hover();
         browser.keys(ENTER_KEY);
         expect(picklist.getSelectedOptionLabel()).toBe('Empire State');
@@ -139,8 +135,7 @@ describe('Picklist base example', () => {
         const picklist = new PagePicklist(PICKLIST);
         picklist.clickInput();
         picklist.waitUntilOpen();
-        const picklistMenu = picklist.getMenu();
-        const option = picklistMenu.getOption(0);
+        const option = picklist.getOption(0);
         expect(option.isActive()).toBe(true);
         browser.keys(ARROW_DOWN_KEY);
         expect(option.isActive()).toBe(false);
