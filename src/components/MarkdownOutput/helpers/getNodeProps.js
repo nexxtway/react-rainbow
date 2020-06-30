@@ -53,6 +53,7 @@ export default function getNodeProps(node, key, options, renderer, parent, index
                 : node.url;
             break;
         case 'image':
+            props.id = node.identifier;
             props.alt = node.alt || undefined;
             props.title = node.title || undefined;
             props.src = isFunction(options.transformImageUri)
@@ -75,6 +76,7 @@ export default function getNodeProps(node, key, options, renderer, parent, index
                         : ref.href,
                 title: ref.title || undefined,
                 alt: node.alt || undefined,
+                id: node.identifier,
             });
             break;
         case 'table':
