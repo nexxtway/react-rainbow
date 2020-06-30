@@ -1,3 +1,5 @@
+const PageInternalDropdown = require('../../InternalDropdown/pageObject');
+
 /**
  * Picklist page object class.
  * @class
@@ -63,6 +65,41 @@ class PagePicklist {
         return $(this.rootElement)
             .$('input[type="text"]')
             .getValue();
+    }
+
+    /**
+     * Returns true when the options menu is open, false otherwise.
+     * @method
+     * @returns {bool}
+     */
+    isMenuOpen() {
+        return (
+            $(this.rootElement)
+                .$('div[role="combobox"]')
+                .getAttribute('aria-expanded') === 'true'
+        );
+    }
+
+    /**
+     * Wait until the options menu is open.
+     * @method
+     */
+    waitUntilOpen() {
+        browser.waitUntil(() => this.isMenuOpen());
+    }
+
+    /**
+     * Returns a new InternalDropdown page object for the element with the supplied id.
+     * @method
+     */
+    getMenu() {
+        const menuId = `#${$(this.rootElement)
+            .$('input[type="text"]')
+            .getAttribute('aria-controls')}`;
+        if (this.isMenuOpen()) {
+            return new PageInternalDropdown(menuId);
+        }
+        return null;
     }
 }
 

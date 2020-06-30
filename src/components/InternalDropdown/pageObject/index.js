@@ -60,15 +60,6 @@ class PageInternalDropdown {
     }
 
     /**
-     * Returns true when the options menu is open, false otherwise.
-     * @method
-     * @returns {bool}
-     */
-    isMenuOpen() {
-        return $(this.rootElement).isDisplayed();
-    }
-
-    /**
      * Returns the boundaries of Picklist dropdown menu.
      * @method
      * @returns {object}
@@ -83,14 +74,6 @@ class PageInternalDropdown {
             right: x + width,
             bottom: y + height,
         };
-    }
-
-    /**
-     * Wait until the options menu is open.
-     * @method
-     */
-    waitUntilOpen() {
-        browser.waitUntil(() => this.isMenuOpen());
     }
 }
 
