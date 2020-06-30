@@ -2,23 +2,30 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StyledChip } from './styled';
 
-function Chips(props) {
-    const { value, variant, onDelete } = props;
+const Chips = props => {
+    const { value, variant, onDelete, disabled, readOnly } = props;
+    const getDeleteCallback = val => {
+        return disabled || readOnly ? null : () => onDelete(val);
+    };
+
     if (!value) {
         return null;
     }
+
     if (Array.isArray(value)) {
-        return value.map(val => (
-            <StyledChip
-                key={val.name}
-                label={val.label}
-                variant={variant}
-                onDelete={() => onDelete(val)}
-            />
-        ));
+        return value.map(val => {
+            return (
+                <StyledChip
+                    key={val.name}
+                    label={val.label}
+                    variant={variant}
+                    onDelete={getDeleteCallback(val)}
+                />
+            );
+        });
     }
-    return <StyledChip label={value.label} variant={variant} onDelete={() => onDelete(value)} />;
-}
+    return <StyledChip label={value.label} variant={variant} onDelete={getDeleteCallback(value)} />;
+};
 
 Chips.propTypes = {
     value: PropTypes.oneOfType([
@@ -34,12 +41,16 @@ Chips.propTypes = {
         ),
     ]),
     variant: PropTypes.oneOf(['base', 'neutral', 'outline-brand', 'brand']),
+    disabled: PropTypes.bool,
+    readOnly: PropTypes.bool,
     onDelete: PropTypes.func,
 };
 
 Chips.defaultProps = {
     value: undefined,
     variant: 'base',
+    disabled: undefined,
+    readOnly: undefined,
     onDelete: () => {},
 };
 

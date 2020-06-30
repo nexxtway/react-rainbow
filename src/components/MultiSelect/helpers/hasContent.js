@@ -1,4 +1,4 @@
-export default function hasChips(value) {
+export default function hasContent(value) {
     if (!value) {
         return false;
     }
