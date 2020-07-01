@@ -133,7 +133,7 @@ export default class ComponentsPage extends Component {
         return (
             <div className="react-rainbow-components-page_container">
                 <CarbonAds className="react-rainbow-components-page_carbon-ads" />
-                <h1 className="react-rainbow-components-page_title">More than 70 components</h1>
+                <h1 className="react-rainbow-components-page_title">More than 80 components</h1>
                 <Input
                     className="react-rainbow-components-page_search"
                     label="Find Components"
