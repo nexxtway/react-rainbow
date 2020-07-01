@@ -15,7 +15,25 @@ function handlePicklistChange(value) {
             title: 'Select a Date',
         });
     } else {
-        setState({ selection: { name: value.name, label: value.name } });
+        setState({ selection: value });
+    }
+}
+
+function handleDatePickerChange(value) {
+    const formatedDate = formatDates(value);
+    if (value.length > 1) {
+        setState({
+            value,
+            selection: { name: 'Custom', label: formatedDate },
+            title: formatedDate,
+            isOpen: false,
+        });
+    } else {
+        setState({
+            value,
+            selection: { name: 'Custom', label: formatedDate },
+            title: formatedDate,
+        });
     }
 }
 
@@ -56,20 +74,7 @@ const containerStyles = {
         variant="double"
         value={state.value}
         selectionType="range"
-        onChange={value => {
-            value.length > 1
-                ? setState({
-                      value,
-                      selection: { name: 'Custom', label: formatDates(value) },
-                      title: formatDates(value),
-                      isOpen: false,
-                  })
-                : setState({
-                      value,
-                      selection: { name: 'Custom', label: formatDates(value) },
-                      title: formatDates(value),
-                  });
-        }}
+        onChange={handleDatePickerChange}
         onRequestClose={() => setState({ isOpen: false })}
     />
 </div>
@@ -149,6 +154,24 @@ const setLocation = value => {
 const setGuests = value => {
     setState({ guests: value });
 };
+
+function handleDatePickerChange(value) {
+    const formatedDate = formatDates(value);
+    if (value.length > 1) {
+        setState({
+            value,
+            dates: formatedDate,
+            title: formatedDate,
+            isOpen: false,
+        });
+    } else {
+        setState({
+            value,
+            dates: formatedDate,
+            title: formatedDate,
+        });
+    }
+}
 
 function formatDates(dates) {
     if (dates) {
@@ -271,20 +294,7 @@ function formatDates(dates) {
         variant="double"
         selectionType="range"
         onChange={value => setState({ value })}
-        onChange={value => {
-            value.length > 1
-                ? setState({
-                      value,
-                      dates: formatDates(value),
-                      title: formatDates(value),
-                      isOpen: false,
-                  })
-                : setState({
-                      value,
-                      dates: formatDates(value),
-                      title: formatDates(value),
-                  });
-        }}
+        onChange={handleDatePickerChange}
         onRequestClose={() => setState({ isOpen: false })}
     />
 </div>
