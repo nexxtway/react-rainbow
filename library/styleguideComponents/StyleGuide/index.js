@@ -12,6 +12,7 @@ import ProjectSelector from '../ProjectSelector';
 import GitterChat from '../GitterChat';
 import ChatIcon from '../../exampleComponents/Icons/chat';
 import TwitterIcon from '../../exampleComponents/Icons/twitter';
+import Ribbon from '../RibbonRenderer';
 import BarsIcon from './barsIcon';
 
 import './styles.css';
@@ -94,6 +95,7 @@ class StyleGuide extends React.Component {
         return (
             <div className="react-rainbow-styleguide-container rainbow-position-align_start">
                 <ProjectSelector />
+                <Ribbon />
                 <aside className={this.getSideBarClassNames()}>
                     {toc}
                     <a

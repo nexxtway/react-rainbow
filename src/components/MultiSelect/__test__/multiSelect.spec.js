@@ -5,7 +5,7 @@ import Option from '../../Option';
 import HelpText from '../../Input/styled/helpText';
 import ErrorText from '../../Input/styled/errorText';
 import Label from '../../Input/label/labelText';
-import { StyledChip, StyledPlaceholder, StyledInput } from '../styled';
+import { StyledChip, StyledPlaceholder, StyledText, StyledButtonIcon } from '../styled';
 
 describe('<MultiSelect />', () => {
     it('should render Label when label prop is passed', () => {
@@ -28,6 +28,21 @@ describe('<MultiSelect />', () => {
         expect(component.find(StyledPlaceholder).exists()).toBe(true);
     });
 
+    it('should render the default variant', () => {
+        const value = [
+            {
+                label: 'First',
+                name: 'first',
+            },
+            {
+                label: 'Second',
+                name: 'second',
+            },
+        ];
+        const component = mount(<MultiSelect value={value} />);
+        expect(component.find(StyledText).exists()).toBe(true);
+    });
+
     it('should render the correct amount of chips', () => {
         const value = [
             {
@@ -40,7 +55,7 @@ describe('<MultiSelect />', () => {
             },
         ];
         const component = mount(
-            <MultiSelect value={value}>
+            <MultiSelect value={value} variant="chip">
                 <Option name="first" label="First" />
                 <Option name="second" label="Second" />
             </MultiSelect>,
@@ -57,7 +72,7 @@ describe('<MultiSelect />', () => {
         ];
         const mockOnChange = jest.fn();
         const component = mount(
-            <MultiSelect value={value} onChange={mockOnChange}>
+            <MultiSelect value={value} variant="chip" onChange={mockOnChange}>
                 <Option name="first" label="First" />
                 <Option name="second" label="Second" />
             </MultiSelect>,
@@ -70,14 +85,54 @@ describe('<MultiSelect />', () => {
     it('should fire focus event', () => {
         const mockOnFocus = jest.fn();
         const component = mount(<MultiSelect onFocus={mockOnFocus} />);
-        component.find(StyledInput).simulate('focus');
+        component.find(StyledButtonIcon).simulate('focus');
         expect(mockOnFocus).toHaveBeenCalledTimes(1);
     });
 
     it('should fire blur event', () => {
         const mockOnBlur = jest.fn();
         const component = mount(<MultiSelect onBlur={mockOnBlur} />);
-        component.find(StyledInput).simulate('blur');
+        component.find(StyledButtonIcon).simulate('blur');
         expect(mockOnBlur).toHaveBeenCalledTimes(1);
+    });
+
+    it('should not render the buttons when readOnly', () => {
+        const value = [
+            {
+                label: 'First',
+                name: 'first',
+            },
+            {
+                label: 'Second',
+                name: 'second',
+            },
+        ];
+        const component = mount(
+            <MultiSelect value={value} variant="chip" readOnly>
+                <Option name="first" label="First" />
+                <Option name="second" label="Second" />
+            </MultiSelect>,
+        );
+        expect(component.find('button').exists()).toBe(false);
+    });
+
+    it('should not render the buttons when disabled', () => {
+        const value = [
+            {
+                label: 'First',
+                name: 'first',
+            },
+            {
+                label: 'Second',
+                name: 'second',
+            },
+        ];
+        const component = mount(
+            <MultiSelect value={value} variant="chip" disabled>
+                <Option name="first" label="First" />
+                <Option name="second" label="Second" />
+            </MultiSelect>,
+        );
+        expect(component.find('button').exists()).toBe(false);
     });
 });

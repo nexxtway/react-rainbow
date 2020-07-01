@@ -37,6 +37,12 @@ describe('<AmPmSelect/>', () => {
         const fieldsetDataId = component.find('input').prop('aria-label');
         expect(focusedElementAriaLabel).toBe(fieldsetDataId);
     });
+    it('should call onClick when input option "AM" or "PM" is clicked', () => {
+        const onClickMockFn = jest.fn();
+        const component = mount(<AmPmSelect isFocused onClick={onClickMockFn} />);
+        component.find('input[value="AM"]').simulate('click');
+        expect(onClickMockFn).toHaveBeenCalledTimes(1);
+    });
     it('should call event.stopPropagation when component is focused and the input with value "AM" is blurred', () => {
         const stopPropagationMockFn = jest.fn();
         const component = mount(<AmPmSelect isFocused />);
