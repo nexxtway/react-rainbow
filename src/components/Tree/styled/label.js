@@ -9,6 +9,9 @@ const Label = attachThemeAttrs(styled.h1)`
     color: ${props => props.palette.text.main};
     text-align: start;
     line-height: 2;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 `;
 
 export default Label;
