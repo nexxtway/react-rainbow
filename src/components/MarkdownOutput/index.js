@@ -42,19 +42,40 @@ MarkdownOutput.propTypes = {
     className: PropTypes.string,
     /** An object with custom style applied to the outer element. */
     style: PropTypes.object,
-    /** */
+    /** The markdown source to parse. It is required.  */
     source: PropTypes.string.isRequired,
-    /** */
+    /**
+     *  An object where the keys represent the node type and the value is a React component.
+     *  The object is merged with the default renderers. The props passed to the component
+     *  varies based on the type of node.
+     */
     renderers: PropTypes.object,
-    /** */
+    /** Sets the default target attribute for links. Default is undefined (no target attribute). */
     linkTarget: PropTypes.string,
-    /** */
+    /**
+     *  Function that gets called for each encountered link. The returned value is
+     *  used in place of the original URI. If you want to disable the default transformer, pass
+     *  null to this option.
+     *  @param {string} uri
+     *  @returns {string}
+     */
     transformLinkUri: PropTypes.func,
-    /** */
+    /**
+     *  Function that gets called for each encountered image.
+     *  The returned value is used in place of the original image src.
+     *  @param {string} uri
+     *  @returns {string}
+     */
     transformImageUri: PropTypes.func,
-    /** */
+    /**
+     *  An array of unified/remark parser plugins. If you need to pass options
+     *  to the plugin, pass an array with two elements, the first being the
+     *  plugin and the second being the options, for example:
+     *  `{plugins: [[require('remark-shortcodes'), {your: 'options'}]]. (default: [])`
+     *  Note that not all plugins can be used.
+     */
     plugins: PropTypes.array,
-    /** */
+    /** An object containing options to pass to remark-parse. */
     parserOptions: PropTypes.object,
 };
 
