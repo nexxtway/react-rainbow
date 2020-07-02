@@ -9,6 +9,7 @@ export interface MarkdownOutputProps extends BaseProps {
     transformImageUri?: () => void;
     plugins?: object[];
     parserOptions?: object;
+    source: string;
 }
 
 export default function(props: MarkdownOutputProps): JSX.Element | null;

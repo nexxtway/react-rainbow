@@ -84,11 +84,10 @@ export const Table = attachThemeAttrs(styled.table)`
     border: 1px solid ${props => props.palette.border.divider};
 `;
 
-export const TableHead = attachThemeAttrs(styled.thead)`
-`;
-
 export const TableBody = attachThemeAttrs(styled.tbody)`
     background-color: ${props => props.palette.background.main};
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 `;
 
 export const TableRow = attachThemeAttrs(styled.tr)`
@@ -99,6 +98,8 @@ export const TableRow = attachThemeAttrs(styled.tr)`
 
     &:last-of-type {
         box-shadow: none;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
     }
 `;
 
@@ -121,7 +122,8 @@ export const TableCell = attachThemeAttrs(styled.td)`
         overflow: hidden;
         text-overflow: ellipsis;
         font-weight: 400;
-        `};
+        border-radius: 10px;
+    `};
 
     ${props =>
         props.isHeader &&
@@ -138,7 +140,7 @@ export const TableCell = attachThemeAttrs(styled.td)`
                 
             &:first-of-type {
                 padding-left: 18px;
-                border-radius: 10px 0 0 0;    
+                border-radius: 10px 0 0 0;
             }
             
             &:last-of-type {
@@ -208,13 +210,6 @@ export const Checkbox = attachThemeAttrs(styled(HiddenElement))`
         border-color: ${props => props.palette.brand.main};
     }
 
-    :focus ~ label > .rainbow-input_faux {
-        content: '';
-        border: 2px solid;
-        border-color: ${props => props.palette.brand.main};
-        box-shadow: ${props => props.shadows.brand};
-    }
-
     &[disabled] ~ label > .rainbow-input_faux {
         background-color: ${props => props.palette.background.disabled};
         border-color: ${props => props.palette.border.disabled};
@@ -223,11 +218,5 @@ export const Checkbox = attachThemeAttrs(styled(HiddenElement))`
     &[disabled] ~ label > .rainbow-input_faux::after {
         border-color: ${props => props.palette.background.main};
         box-sizing: border-box;
-    }
-
-    :focus:checked ~ label > .rainbow-input_faux {
-        border-color: ${props => props.palette.brand.main};
-        background-color: ${props => props.palette.background.main};
-        box-shadow: ${props => props.shadows.brand};
     }
 `;

@@ -7,7 +7,14 @@ export default function Checkbox({ isChecked }) {
     const inputId = useUniqueIdentifier('markdown-input-checkbox');
     return (
         <StyledCheckboxContainer data-id="input-checkbox_container">
-            <StyledCheckbox as="input" type="checkbox" id={inputId} checked={isChecked} readOnly />
+            <StyledCheckbox
+                as="input"
+                type="checkbox"
+                tabIndex="-1"
+                id={inputId}
+                checked={isChecked}
+                readOnly
+            />
             <label htmlFor={inputId}>
                 <span className="rainbow-input_faux" />
             </label>
