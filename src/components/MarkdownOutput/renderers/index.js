@@ -53,6 +53,8 @@ const HorizontalRuleRenderer = () => <HorizontalRule />;
 
 const TableRenderer = ({ children }) => <Table>{children}</Table>;
 
+const TableHeadRenderer = ({ children }) => <thead>{children}</thead>;
+
 const TableBodyRenderer = ({ children }) => <TableBody>{children}</TableBody>;
 
 const TableRowRenderer = ({ children }) => <TableRow>{children}</TableRow>;
@@ -101,7 +103,7 @@ export default {
     linkReference: 'a',
     imageReference: 'img',
     table: TableRenderer,
-    tableHead: 'thead',
+    tableHead: TableHeadRenderer,
     tableBody: TableBodyRenderer,
     tableRow: TableRowRenderer,
     tableCell: TableCellRenderer,
