@@ -7,7 +7,6 @@ import {
     CodeBlock,
     HorizontalRule,
     Table,
-    TableHead,
     TableBody,
     TableRow,
     TableCell,
