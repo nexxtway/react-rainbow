@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unused-prop-types */
 import React, { useEffect, useImperativeHandle, useRef } from 'react';
 import PropTypes from 'prop-types';
 import InputItems from './inputItems';
