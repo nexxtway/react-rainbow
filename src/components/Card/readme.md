@@ -262,8 +262,7 @@ const progressValue = Math.round(usersActivity.activeUsers * 100 / usersActivity
 function ProgressCard(props) {
     const { usersActivity, progressValue } = props;
     return (
-        <StyledCard
-        className="rainbow-flex rainbow-p-vertical_small rainbow-p-horizontal_small">
+        <StyledCard>
         <Col>
             <Subtitle>
                 <HelpText title="Active Users"
