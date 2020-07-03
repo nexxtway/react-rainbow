@@ -110,6 +110,7 @@ export const TableCell = attachThemeAttrs(styled.td)`
     box-sizing: border-box;
     padding: 0;
     white-space: nowrap;
+    padding: 0 18px;
 
     ${props =>
         !props.isHeader &&
@@ -117,7 +118,6 @@ export const TableCell = attachThemeAttrs(styled.td)`
         color: ${props.palette.text.label};
         min-height: 42px;
         line-height: 40px;
-        padding: 0 0.5rem;
         max-width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -139,14 +139,12 @@ export const TableCell = attachThemeAttrs(styled.td)`
             background-color: ${props.palette.background.highlight};
                 
             &:first-of-type {
-                padding-left: 18px;
                 border-radius: 10px 0 0 0;
             }
             
             &:last-of-type {
                 border-radius: 0 10px 0 0;
             }
-        
         `};
 `;
 
