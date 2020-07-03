@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-prop-types */
 import React, { useState, useEffect, useRef, useImperativeHandle } from 'react';
 import PropTypes from 'prop-types';
 import Label from '../Input/label';

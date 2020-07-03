@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-prop-types */
 import React, { useRef, useImperativeHandle, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useLocale, useReduxForm, useDisclosure } from '../../libs/hooks';
