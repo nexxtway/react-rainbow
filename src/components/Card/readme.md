@@ -232,7 +232,7 @@ const StyledProgressCircular = styled(ProgressCircular)`
 const Subtitle = styled.h2`
     font-family: 'Lato Light';
     font-size: 16px;
-    color: #788497;}
+    color: ${props => props.theme.rainbow.palette.text.header};
 `;
 
 const Col = styled.div`
@@ -250,12 +250,12 @@ const ActiveUsers = styled.h1`
     color: ${props => props.theme.rainbow.palette.brand.main};
 `;
 
-const style = { width: '250px' };
-
 const usersActivity = {
     'usersTotal': 19,
     'activeUsers': 12
 };
+
+const style = { width: '250px' };
 
 const progressValue = Math.round(usersActivity.activeUsers * 100 / usersActivity.usersTotal);
 
@@ -263,21 +263,21 @@ function ProgressCard(props) {
     const { usersActivity, progressValue } = props;
     return (
         <StyledCard
-        className="rainbow-flex rainbow-p-vertical_small rainbow-p-horizontal_small">
-        <Col>
-            <Subtitle>
-                <HelpText title="Active Users"
-                text={<p style={style}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>} />
-                Active Users
-            </Subtitle>
-            <ActiveUsers>{usersActivity.activeUsers}</ActiveUsers>
-        </Col>
+            className="rainbow-flex rainbow-p-vertical_small rainbow-p-horizontal_small">
+            <Col>
+                <Subtitle>
+                    <HelpText title="Active Users"
+                        text={<p style={style}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>} />
+                    Active Users
+                </Subtitle>
+                <ActiveUsers>{usersActivity.activeUsers}</ActiveUsers>
+            </Col>
         <StyledProgressCircular value={progressValue} />
     </StyledCard>
     )
 }
 
 <div className="rainbow-align-content_center rainbow-p-around_large">
-    <ProgressCard usersActivity={usersActivity} progressValue={progressValue}></ProgressCard>
+    <ProgressCard usersActivity={usersActivity} progressValue={progressValue} />
 </div>
 ```
